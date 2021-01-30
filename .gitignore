@@ -40,3 +40,5 @@ yarn-debug.log*
 .yarn-integrity
 
 .env
+
+/config/credentials/test.key

@@ -4,7 +4,9 @@ development:
   channel_prefix: van_dam_development
 
 test:
-  adapter: test
+  adapter: redis
+  url: <%= Rails.application.credentials.redis_url %>
+  channel_prefix: van_dam_test
 
 production:
   adapter: redis
