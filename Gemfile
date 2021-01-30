@@ -52,3 +52,5 @@ gem "stimulus_reflex", "~> 3.4"
 group :development, :test do
   gem 'rspec-rails'
 end
+
+gem "dotenv-rails", "~> 2.7"
