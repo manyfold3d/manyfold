@@ -16,4 +16,8 @@ RSpec.describe Model, type: :model do
   it "is valid if it has a path, name and library" do
     expect(build(:model)).to be_valid
   end
+
+  it "has many parts" do
+    expect(build(:model).parts).to eq []
+  end
 end
