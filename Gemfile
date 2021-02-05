@@ -53,6 +53,8 @@ gem "hiredis"
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_bot'
+  gem "faker", "~> 2.15"
 end
 
 gem "dotenv-rails", "~> 2.7"
