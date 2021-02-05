@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_30_203243) do
+ActiveRecord::Schema.define(version: 2021_02_05_230918) do
 
   create_table "libraries", force: :cascade do |t|
     t.string "path", null: false
@@ -27,5 +27,14 @@ ActiveRecord::Schema.define(version: 2021_01_30_203243) do
     t.index ["library_id"], name: "index_models_on_library_id"
   end
 
+  create_table "parts", force: :cascade do |t|
+    t.string "filename"
+    t.integer "model_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["model_id"], name: "index_parts_on_model_id"
+  end
+
   add_foreign_key "models", "libraries"
+  add_foreign_key "parts", "models"
 end
