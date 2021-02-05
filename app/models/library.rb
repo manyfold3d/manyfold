@@ -1,5 +1,3 @@
 class Library < ApplicationRecord
-
-  validates :path, :presence => true
-
+  validates :path, presence: true
 end
