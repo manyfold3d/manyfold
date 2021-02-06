@@ -75,4 +75,8 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # Do all active job stuff inline to avoid sqlite deadlocks
+  # We'll want to change this at some point when the app gets more complex.
+  config.active_job.queue_adapter = :inline
 end
