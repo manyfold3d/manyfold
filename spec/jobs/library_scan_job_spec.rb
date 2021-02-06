@@ -17,5 +17,4 @@ RSpec.describe LibraryScanJob, type: :job do
   it "queues up model scans" do
     expect { LibraryScanJob.perform_now(library) }.to have_enqueued_job(ModelScanJob).with(library.models.first)
   end
-
 end
