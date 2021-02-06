@@ -1,6 +1,13 @@
 <h1><%= @model.name %></h1>
-<ul>
+<div class="row row-cols-2 row-cols-md-4 mb-4">
   <% @model.parts.each do |part| %>
-    <li><%= part.filename %></li>
+    <div class="col mb-4">
+      <div class="card">
+        <img src="https://placekitten.com/200/150" class="card-img-top" alt="<%= part.filename %>">
+        <div class="card-body">
+          <h5 class="card-title"><%= part.filename %></h5>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>

@@ -1,6 +1,15 @@
 <h1><%= @library.path %></h1>
-<ul>
+<div class="row row-cols-2 row-cols-md-4 mb-4">
   <% @library.models.each do |model| %>
-    <li><%= link_to model.name, [@library, model] %></li>
+    <div class="col mb-4">
+      <div class="card">
+        <img src="https://placekitten.com/200/150" class="card-img-top" alt="<%= model.name %>">
+        <div class="card-body">
+          <h5 class="card-title"><%= model.name %></h5>
+          <p class="card-text"><%= "#{model.parts.count} part".pluralize(model.parts.count) %></p>
+          <%= link_to "Open", [@library, model], {class: "btn btn-primary"} %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
