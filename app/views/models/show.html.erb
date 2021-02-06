@@ -1,0 +1,6 @@
+<h1><%= @model.name %></h1>
+<ul>
+  <% @model.parts.each do |part| %>
+    <li><%= part.filename %></li>
+  <% end %>
+</ul>

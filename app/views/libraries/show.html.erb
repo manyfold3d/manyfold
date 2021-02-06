@@ -1,2 +1,6 @@
 <h1><%= @library.path %></h1>
-<p>Find me in app/views/libraries/show.html.erb</p>
+<ul>
+  <% @library.models.each do |model| %>
+    <li><%= link_to model.name, [@library, model] %></li>
+  <% end %>
+</ul>
