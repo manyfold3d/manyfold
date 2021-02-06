@@ -6,7 +6,7 @@ class LibraryScanJob < ApplicationJob
     Dir.open(library.path) do |dir|
       dir.each_child do |child|
         if Dir.exist?(File.join(dir.path, child))
-          model = library.models.create(name: child.humanize.titleize, path: child)
+          model = library.models.find_or_create_by(name: child.humanize.titleize, path: child)
           ModelScanJob.perform_later(model)
         end
       end
