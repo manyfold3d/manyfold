@@ -5,5 +5,4 @@ class Library < ApplicationRecord
   def name
     File.basename(path)
   end
-
 end
