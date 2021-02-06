@@ -1,6 +1,8 @@
 <h1><%= @model.name %></h1>
-<div class="row row-cols-2 row-cols-md-4 mb-4">
-  <% @model.parts.each do |part| %>
+<% @groups.each_pair do |group, parts| %>
+  <h2><%= group %></h2>
+  <div class="row row-cols-2 row-cols-md-4 mb-4">
+  <% parts.each do |part| %>
     <div class="col mb-4">
       <div class="card">
         <img src="https://placekitten.com/200/150" class="card-img-top" alt="<%= part.filename %>">
@@ -10,4 +12,5 @@
       </div>
     </div>
   <% end %>
-</div>
+  </div>
+<% end %>
