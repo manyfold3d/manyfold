@@ -15,6 +15,6 @@ RSpec.describe ModelScanJob, type: :job do
 
   it "can scan a library directory" do
     expect { ModelScanJob.perform_now(model) }.to change { model.parts.count }.to(1)
-    expect(model.parts.first.filename).to eq "part_one.stl"
+    expect(model.parts.first.filename).to eq "part_one.obj"
   end
 end
