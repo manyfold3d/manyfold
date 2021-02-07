@@ -10,12 +10,12 @@ RSpec.describe LibraryScanJob, type: :job do
   end
 
   it "can scan a library directory" do
-    expect { LibraryScanJob.perform_now(library) }.to change { library.models.count }.to(2)
-    expect(library.models.map(&:name)).to match_array ["Model One", "Model Two"]
-    expect(library.models.map(&:path)).to match_array ["/model_one", "/subfolder/model_two"]
+    expect { LibraryScanJob.perform_now(library) }.to change { library.models.count }.to(3)
+    expect(library.models.map(&:name)).to match_array ["Model One", "Model Two", "Thingiverse Model"]
+    expect(library.models.map(&:path)).to match_array ["/model_one", "/subfolder/model_two", "/thingiverse_model/files"]
   end
 
   it "queues up model scans" do
-    expect { LibraryScanJob.perform_now(library) }.to have_enqueued_job(ModelScanJob).twice
+    expect { LibraryScanJob.perform_now(library) }.to have_enqueued_job(ModelScanJob).exactly(3).times
   end
 end
