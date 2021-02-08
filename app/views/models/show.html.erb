@@ -1,17 +1,11 @@
 <h1><%= @model.name %></h1>
 <h2><%= @model.path %></h2>
+<div class="row row-cols-2 row-cols-md-4 mb-4">
+  <%= render partial: "part", collection: @ungrouped %>
+</div>
 <% @groups.each_pair do |group, parts| %>
-  <h2><%= group %></h2>
+  <h3><%= group %></h3>
   <div class="row row-cols-2 row-cols-md-4 mb-4">
-  <% parts.each do |part| %>
-    <div class="col mb-4">
-      <div class="card">
-        <img src="https://placekitten.com/200/150" class="card-img-top" alt="<%= part.filename %>">
-        <div class="card-body">
-          <h5 class="card-title"><%= part.filename %></h5>
-        </div>
-      </div>
-    </div>
-  <% end %>
+    <%= render partial: "part", collection: parts %>
   </div>
 <% end %>
