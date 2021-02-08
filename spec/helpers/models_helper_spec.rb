@@ -1,15 +1,22 @@
 require "rails_helper"
 
-# Specs in this file have access to a helper object that includes
-# the ModelsHelper. For example:
-#
-# describe ModelsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe ModelsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "string concat" do
+    let(:parts) do
+      %w[
+        foo
+        bar
+        foobar
+        foo_bar
+        bar_foo
+      ].map { |x| build(:part, filename: "#{x}.stl") }
+    end
+
+    it "groups strings together with similar prefixes" do
+      groups = helper.group(parts)
+      expect(groups["foo"].count).to eq(2)
+      expect(groups["bar"].count).to eq(2)
+      expect(groups[nil].count).to eq(1)
+    end
+  end
 end
