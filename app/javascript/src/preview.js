@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
 export function preview(canvas) {
 
@@ -7,26 +8,29 @@ export function preview(canvas) {
 
   var renderer = new THREE.WebGLRenderer({canvas, alpha: true});
 
-  var geometry = new THREE.BoxGeometry(1, 1, 1);
-  var material = new THREE.MeshLambertMaterial({
-    color: 0x00ff00
-  });
-  var cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
 
-  camera.position.z = 5;
+  const loader = new OBJLoader();
+  const objects = new THREE.Group();
+  scene.add(objects);
+  loader.load( canvas.dataset.previewUrl, function ( object ) {
+    objects.add( object );
+  }, undefined, function ( error ) {
+    console.error( error );
+  } );
+
+  camera.position.z = 50;
 
   const light = new THREE.AmbientLight(0x404040); // soft white light
   scene.add(light);
 
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+  const directionalLight = new THREE.DirectionalLight({position: new THREE.Vector3( 0, 1, 1 )});
   scene.add(directionalLight);
 
   var animate = function() {
     requestAnimationFrame(animate);
 
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    objects.rotation.x += 0.01;
+    objects.rotation.y += 0.01;
 
     renderer.render(scene, camera);
   };
