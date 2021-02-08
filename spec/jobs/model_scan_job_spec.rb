@@ -17,4 +17,10 @@ RSpec.describe ModelScanJob, type: :job do
     expect { ModelScanJob.perform_now(model) }.to change { model.parts.count }.to(1)
     expect(model.parts.first.filename).to eq "part_one.obj"
   end
+
+  it "can scan a thingiverse-structured model" do
+    thing = create(:model, path: "thingiverse_model", library: library)
+    expect { ModelScanJob.perform_now(thing) }.to change { thing.parts.count }.to(1)
+    expect(thing.parts.first.filename).to eq "files/part_one.stl"
+  end
 end

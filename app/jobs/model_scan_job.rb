@@ -7,9 +7,11 @@ class ModelScanJob < ApplicationJob
     Dir.open(model_path) do |dir|
       Dir.glob([
         File.join(dir.path, "*.stl"),
-        File.join(dir.path, "*.obj")
+        File.join(dir.path, "*.obj"),
+        File.join(dir.path, "files", "*.stl"),
+        File.join(dir.path, "files", "*.obj")
       ]).each do |filename|
-        model.parts.create(filename: File.basename(filename))
+        model.parts.create(filename: filename.gsub(model_path + "/", ""))
       end
     end
   end
