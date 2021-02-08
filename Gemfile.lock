@@ -119,10 +119,14 @@ GEM
     method_source (1.0.0)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
+    mini_portile2 (2.5.0)
     minitest (5.14.3)
     msgpack (1.4.2)
     nenv (0.3.0)
     nio4r (2.5.5)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     nokogiri (1.11.1-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.11.1-x86_64-linux)
@@ -136,7 +140,7 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    puma (5.2.0)
+    puma (5.2.1)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -271,6 +275,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  ruby
   x86_64-darwin-19
   x86_64-linux
 
@@ -285,7 +290,7 @@ DEPENDENCIES
   hiredis
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  puma (~> 5.0)
+  puma (~> 5.2)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.1)
   redis (>= 4.0)
