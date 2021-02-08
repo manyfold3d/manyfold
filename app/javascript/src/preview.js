@@ -1,13 +1,11 @@
 import * as THREE from 'three';
 
-export function preview(element, url) {
+export function preview(canvas) {
 
   var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  var camera = new THREE.PerspectiveCamera(75, canvas.width / canvas.height, 0.1, 1000);
 
-  var renderer = new THREE.WebGLRenderer();
-  renderer.setSize(200, 150);
-  element.appendChild(renderer.domElement);
+  var renderer = new THREE.WebGLRenderer({canvas, alpha: true});
 
   var geometry = new THREE.BoxGeometry(1, 1, 1);
   var material = new THREE.MeshLambertMaterial({
@@ -37,7 +35,7 @@ export function preview(element, url) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('div[data-preview]').forEach((el) => {
-    preview(el,"")
+  document.querySelectorAll('canvas[data-preview]').forEach((canvas) => {
+    preview(canvas)
   })
 })
