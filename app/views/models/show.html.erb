@@ -1,7 +1,7 @@
 <h1><%= @model.name %></h1>
 <h2><%= @model.path %></h2>
 <div class="row row-cols-2 row-cols-md-4 mb-4">
-  <%= render partial: "part", collection: @ungrouped %>
+  <%= render partial: "part", collection: @groups.delete(nil) %>
 </div>
 <% @groups.each_pair do |group, parts| %>
   <h3><%= group %></h3>
