@@ -8,7 +8,7 @@ class LibraryScanJob < ApplicationJob
       File.join(library.path, "**", "*.obj")
     ])
     model_folders = all_3d_files.map { |f| File.dirname(f) }.uniq
-    model_folders = model_folders.map { |f| f.gsub(/\/files$/, "") }.uniq
+    model_folders = model_folders.map { |f| f.gsub(/\/files$/, "").gsub(/\/images$/, "") }.uniq # Ignore thingiverse subfolders
     model_folders.each do |path|
       relative_path = path.gsub(library.path, "")
       next if relative_path.blank? # For now, ignore files in the root
