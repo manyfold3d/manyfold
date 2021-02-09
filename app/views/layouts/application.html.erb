@@ -24,6 +24,12 @@
         </li>
       </ul>
       <%= yield %>
+      <footer>
+        VanDAM is Open Source, available from <%= link_to "GitHub", "https://github.com/Floppy/van_dam" %>.
+        This server is cataloguing a total of <%= "#{Model.count} model".pluralize(Model.count) %>,
+        with <%= "#{Part.count} part".pluralize(Part.count) %>,
+        in <%= "#{Library.count} library".pluralize(Library.count) %>.
+      </footer>
     </div>
   </body>
 </html>
