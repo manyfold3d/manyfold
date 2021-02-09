@@ -32,6 +32,4 @@ class LibrariesController < ApplicationController
   def library_params
     params.require(:library).permit(:path)
   end
-
-
 end

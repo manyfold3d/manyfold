@@ -12,7 +12,7 @@ class LibraryScanJob < ApplicationJob
     model_folders.each do |path|
       relative_path = path.gsub(library.path, "")
       next if relative_path.blank? # For now, ignore files in the root
-      model = library.models.find_or_create_by(name: File.basename(relative_path).humanize.gsub("+"," ").titleize, path: relative_path)
+      model = library.models.find_or_create_by(name: File.basename(relative_path).humanize.tr("+", " ").titleize, path: relative_path)
       ModelScanJob.perform_later(model)
     end
   end
