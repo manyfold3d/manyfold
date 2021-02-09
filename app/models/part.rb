@@ -3,6 +3,6 @@ class Part < ApplicationRecord
   validates :filename, presence: true, uniqueness: {scope: :model}
 
   def file_format
-    File.extname(filename).delete(".")
+    File.extname(filename).delete(".").downcase
   end
 end
