@@ -1,6 +1,7 @@
 <div class="col mb-4">
   <div class="card">
-    <img src="https://placekitten.com/200/150" class="card-img-top" alt="<%= part.filename %>">
+    <canvas id="preview-part-<%= part.id %>" class="card-img-top" data-preview data-preview-url="<%= library_model_part_path(@library, @model, part, part.file_format.to_sym) %>">
+    </canvas>
     <div class="card-body">
       <h5 class="card-title"><%= part.filename %></h5>
       <%= link_to "Download", library_model_part_path(@library, @model, part, part.file_format.to_sym), {class: "btn btn-primary"} %>

@@ -1,5 +1,4 @@
 class PartsController < ApplicationController
-
   def show
     @library = Library.find(params[:library_id])
     @model = @library.models.find(params[:model_id])
@@ -11,5 +10,4 @@ class PartsController < ApplicationController
       format.obj { send_file File.join(@library.path, @model.path, @part.filename) }
     end
   end
-
 end
