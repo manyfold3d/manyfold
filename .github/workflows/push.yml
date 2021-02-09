@@ -21,5 +21,7 @@ jobs:
       with:
         ruby-version: 3.0
         bundler-cache: true
-    - name: Run tests
+    - name: Lint Ruby code
       run: bundle exec standardrb
+    - name: Lint JS code
+      run: yarn run standard
