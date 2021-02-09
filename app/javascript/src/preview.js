@@ -12,14 +12,8 @@ export function preview (canvas) {
   const objects = new THREE.Group()
   scene.add(objects)
 
-  const light = new THREE.AmbientLight(0x7f7f7f) // soft white light
-  scene.add(light)
-
-  const directionalLight = new THREE.DirectionalLight({ position: new THREE.Vector3(0, 1, 1) })
-  scene.add(directionalLight)
-
-  const material = new THREE.MeshLambertMaterial({
-    color: 0x00ff00
+  const material = new THREE.MeshNormalMaterial({
+    flatShading: true
   })
 
   let loader = null
