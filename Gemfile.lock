@@ -140,7 +140,7 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    puma (5.2.0)
+    puma (5.2.1)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -290,7 +290,7 @@ DEPENDENCIES
   hiredis
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  puma (~> 5.0)
+  puma (~> 5.2)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.1)
   redis (>= 4.0)
