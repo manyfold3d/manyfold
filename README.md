@@ -2,10 +2,12 @@
 
 VanDAM is a Digital Asset Manager (DAM), specifically designed for 3D print files. Create a library pointing at your files on disk, and it will scan for models and parts. It assumes that any folders containing STL or OBJ files are models, and the files within them are parts. You can then view the files easily through your browser!
 
+![preview](https://i.imgur.com/x5eYc15.mp4)
+
 ## Requirements
 
-Ruby 3.x
-Bundler 2.x
+* Ruby 3.x
+* Bundler 2.x
 
 ## Setup
 
