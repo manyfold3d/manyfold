@@ -6,9 +6,9 @@ RSpec.describe "Libraries", type: :request do
   end
 
   describe "GET /libraries" do
-    it "returns http success" do
+    it "redirects to the first available library" do
       get "/libraries"
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:redirect)
     end
   end
 
