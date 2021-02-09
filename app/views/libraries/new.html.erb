@@ -1,0 +1,12 @@
+<h1>New Library</h1>
+
+<%= form_with model: @library do |form| %>
+
+  <div class="form-group">
+    <label for="path">Path</label>
+    <%= form.text_field :path, class: 'form-control', placeholder:"Filesystem path" %>
+    <small id="pathHelp" class="form-text text-muted">The complete path to your library on disk.</small>
+  </div>
+  <%= form.submit "Create", class: 'btn btn-primary' %>
+
+<% end %>
