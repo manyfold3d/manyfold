@@ -1,6 +1,6 @@
 <div class="col mb-4">
   <div class="card">
-    <canvas id="preview-part-<%= part.id %>" class="card-img-top" data-preview data-preview-url="<%= library_model_part_path(@library, @model, part, part.file_format.to_sym) %>">
+    <canvas id="preview-part-<%= part.id %>" class="card-img-top" data-preview data-preview-url="<%= library_model_part_path(@library, @model, part, part.file_format.to_sym) %>" data-format="<%= part.file_format %>">
     </canvas>
     <div class="card-body">
       <h5 class="card-title"><%= part.filename %></h5>
