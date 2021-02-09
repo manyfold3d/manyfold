@@ -11,6 +11,8 @@ jobs:
       with:
         ruby-version: 3.0
         bundler-cache: true
+    - name: Compile assets
+      run: bundle exec rails webpacker:compile
     - name: Run tests
       run: bundle exec rake
   lint:
