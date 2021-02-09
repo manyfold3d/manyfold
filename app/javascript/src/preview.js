@@ -29,7 +29,6 @@ export function preview(canvas) {
   var animate = function() {
     requestAnimationFrame(animate);
 
-    objects.rotation.x += 0.01;
     objects.rotation.y += 0.01;
 
     renderer.render(scene, camera);
