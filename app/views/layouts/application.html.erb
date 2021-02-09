@@ -13,6 +13,16 @@
 
   <body>
     <div class="container">
+      <ul class="nav nav-tabs">
+        <% Library.all.each do |library| %>
+          <li class="nav-item">
+            <%= link_to library.name, library, class: (library == @library ? "nav-link active" : "nav-link") %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to "Add a New Library", new_library_path, class: "nav-link" %>
+        </li>
+      </ul>
       <%= yield %>
     </div>
   </body>
