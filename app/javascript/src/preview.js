@@ -4,7 +4,7 @@ import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
 
 export function preview (canvas) {
   const scene = new THREE.Scene()
-  const camera = new THREE.PerspectiveCamera(75, canvas.width / canvas.height, 0.1, 1000)
+  const camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 0.1, 1000)
   camera.position.z = 50
 
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true })
@@ -19,8 +19,10 @@ export function preview (canvas) {
   let loader = null
   if (canvas.dataset.format === 'obj') { loader = new OBJLoader() } else if (canvas.dataset.format === 'stl') { loader = new STLLoader() }
 
+  const gridHelper = new THREE.GridHelper(250,25);
+
+  let geometry = null;
   loader.load(canvas.dataset.previewUrl, function (model) {
-    let geometry = null
     if (canvas.dataset.format === 'obj') { geometry = model.geometry } else if (canvas.dataset.format === 'stl') { geometry = model }
     const mesh = new THREE.Mesh(geometry, material)
     const bbox = new THREE.Box3().setFromObject(mesh)
@@ -33,17 +35,25 @@ export function preview (canvas) {
     bbox.getCenter(centre)
     mesh.position.set(-centre.x, -centre.y, -centre.z)
     objects.add(mesh)
+    gridHelper.position.y = -centre.z
+    scene.add(gridHelper)
   }, undefined, function (error) {
     console.error(error)
   })
 
   const animate = function () {
-    window.requestAnimationFrame(animate)
-
-    objects.rotation.z += 0.01
-    objects.rotation.x = -1.57
-
-    renderer.render(scene, camera)
+    if (canvas.closest('html')) { // There's probably more efficient way to do this than checking every frame, but I can't make MutationObserver work right now
+      objects.rotation.z += 0.01
+      objects.rotation.x = -1.57
+      renderer.render(scene, camera)
+      window.requestAnimationFrame(animate)
+    }
+    else {
+      gridHelper.dispose()
+      material.dispose()
+      geometry.dispose()
+      renderer.dispose()
+    }
   }
 
   animate()
