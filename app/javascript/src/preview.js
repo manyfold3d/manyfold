@@ -7,7 +7,7 @@ export function preview (canvas) {
   const camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 0.1, 1000)
   camera.position.z = 50
 
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true })
+  const renderer = new THREE.WebGLRenderer({ canvas })
 
   const objects = new THREE.Group()
   scene.add(objects)
@@ -19,7 +19,7 @@ export function preview (canvas) {
   let loader = null
   if (canvas.dataset.format === 'obj') { loader = new OBJLoader() } else if (canvas.dataset.format === 'stl') { loader = new STLLoader() }
 
-  const gridHelper = new THREE.GridHelper(250,25);
+  const gridHelper = new THREE.GridHelper(260,26,"magenta","cyan");
   objects.add(gridHelper)
 
   let geometry = null;
