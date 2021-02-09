@@ -49,7 +49,7 @@ export function preview (canvas) {
   animate()
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
   document.querySelectorAll('canvas[data-preview]').forEach((canvas) => {
     preview(canvas)
   })
