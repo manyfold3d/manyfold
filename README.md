@@ -8,11 +8,14 @@ VanDAM is a Digital Asset Manager (DAM), specifically designed for 3D print file
 
 * Ruby 3.x
 * Bundler 2.x
+* Node.js 14.x
+* Yarn >= 1.22
 
 ## Setup
 
 ```
 bundle install
+yarn install
 bundle exec rake db:migrate
 bundle exec rails server
 ```
