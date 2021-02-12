@@ -5,4 +5,9 @@ class Part < ApplicationRecord
   def file_format
     File.extname(filename).delete(".").downcase
   end
+
+  def name
+    File.basename(filename, ".*").humanize.titleize
+  end
+
 end

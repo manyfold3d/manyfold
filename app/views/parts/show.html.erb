@@ -1,6 +1,12 @@
 <div class="row align-items-start">
   <div class="col">
-    <h1><%= @part.filename %></h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to @model.name, [@library, @model] %></li>
+      </ol>
+    </nav>
+    <h1><%= @part.name %></h1>
+    <p>Filename: <%= @part.filename %></p>
     <%= form_with model: [@library, @model, @part] do |form| %>
       <div class="form-check form-switch">
         <%= form.check_box :printed, class: 'form-check-input' %>

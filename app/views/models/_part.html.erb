@@ -3,7 +3,7 @@
     <canvas id="preview-part-<%= part.id %>" class="card-img-top" data-preview data-preview-url="<%= library_model_part_path(@library, @model, part, part.file_format.to_sym) %>" data-format="<%= part.file_format %>">
     </canvas>
     <div class="card-body">
-      <h5 class="card-title"><%= part.filename %></h5>
+      <h5 class="card-title"><%= part.name %></h5>
       <%= link_to "Open", library_model_part_path(@library, @model, part), {class: "btn btn-primary"} %>
       <%= link_to "Download", library_model_part_path(@library, @model, part, part.file_format.to_sym), {class: "btn btn-secondary"} %>
     </div>
