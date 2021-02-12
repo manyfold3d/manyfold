@@ -61,3 +61,5 @@ group :development, :test do
 end
 
 gem "dotenv-rails", "~> 2.7"
+
+gem "acts-as-taggable-on", "~> 7.0"

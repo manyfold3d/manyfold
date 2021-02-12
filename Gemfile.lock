@@ -60,6 +60,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    acts-as-taggable-on (7.0.0)
+      activerecord (>= 5.0, < 6.2)
     ast (2.4.2)
     bindex (0.8.1)
     bootsnap (1.7.2)
@@ -280,6 +282,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  acts-as-taggable-on (~> 7.0)
   bootsnap (>= 1.4.4)
   byebug
   dotenv-rails (~> 2.7)
