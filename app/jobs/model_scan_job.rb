@@ -15,7 +15,7 @@ class ModelScanJob < ApplicationJob
       end
     end
     # Set tags from folder structure
-    model.tag_list.add(model.path.split(File::SEPARATOR)[1..-2].map{|x|x.gsub("+"," ")})
-    model.save
+    model.tag_list.add(model.path.split(File::SEPARATOR)[1..-2].map{|y| y.split(/[\W_]/).filter{ |x| x.length > 1 }}.flatten)
+    model.save!
   end
 end
