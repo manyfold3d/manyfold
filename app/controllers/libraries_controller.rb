@@ -10,6 +10,7 @@ class LibrariesController < ApplicationController
   def show
     @library = Library.find(params[:id])
     @models = @library.models
+    @tags = @library.models.map(&:tags).flatten.uniq
     # Filter by tag?
     if params[:tag]
       @tag = ActsAsTaggableOn::Tag.find_by_name(params[:tag])

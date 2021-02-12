@@ -17,7 +17,7 @@
   </div>
   <div class="col-3">
     <h5>Tags</h5>
-    <% ActsAsTaggableOn::Tag.all.each do |tag| %>
+    <% @tags.each do |tag| %>
       <% if (tag == @tag) %>
         <%=link_to tag.name, @library, {class: "badge rounded-pill bg-danger"} %>
       <% else %>
