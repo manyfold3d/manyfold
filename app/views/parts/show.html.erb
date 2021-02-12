@@ -1,2 +1,20 @@
-<h1>Parts#show</h1>
-<p>Find me in app/views/parts/show.html.erb</p>
+<div class="row align-items-start">
+  <div class="col">
+    <h1><%= @part.filename %></h1>
+    <%= form_with model: [@library, @model, @part] do |form| %>
+      <div class="form-check form-switch">
+        <%= form.check_box :printed, class: 'form-check-input' %>
+        <label class="form-check-label" for="printed">Printed?</label>
+      </div>
+      <div class="form-check form-switch">
+        <%= form.check_box :presupported, class: 'form-check-input' %>
+        <label class="form-check-label" for="presupported">Presupported?</label>
+      </div>
+      <%= form.submit "Update", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+  <div class="col">
+    <canvas id="preview-part-<%= @part.id %>" class="card-img-top" data-preview data-preview-url="<%= library_model_part_path(@library, @model, @part, @part.file_format.to_sym) %>" data-format="<%= @part.file_format %>">
+    </canvas>
+  </div>
+</div>
