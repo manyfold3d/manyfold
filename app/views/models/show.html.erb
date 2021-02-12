@@ -1,5 +1,10 @@
 <h1><%= @model.name %></h1>
 <h2><%= @model.path %></h2>
+<div>
+  <% @model.tags.each do |tag| %>
+    <span class="badge rounded-pill bg-info text-dark"><%= tag.name %></span>
+  <% end %>
+</div>
 <div class="row row-cols-2 row-cols-md-4 mb-4">
   <%= render partial: "part", collection: @groups.delete(nil) %>
 </div>

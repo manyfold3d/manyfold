@@ -14,5 +14,8 @@ class ModelScanJob < ApplicationJob
         model.parts.create(filename: filename.gsub(model_path + "/", ""))
       end
     end
+    # Set tags from folder structure
+    model.tag_list.add(model.path.split(File::SEPARATOR)[1..-2])
+    model.save
   end
 end
