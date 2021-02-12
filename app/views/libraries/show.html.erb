@@ -1,4 +1,12 @@
 <%= link_to "Rescan", library_path(@library), method: :patch, class: 'float-end btn btn-warning' %>
+<% if @tag %>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to @library.name, @library %></li>
+        <li class="breadcrumb-item"><%= @tag.name %></li>
+    </ol>
+  </nav>
+<% end %>
 <h1><%= @library.name %></h1>
 <div class="row row-cols-2">
   <div class="col-9">
