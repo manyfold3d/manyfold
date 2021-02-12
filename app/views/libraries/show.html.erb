@@ -1,12 +1,4 @@
 <%= link_to "Rescan", library_path(@library), method: :patch, class: 'float-end btn btn-warning' %>
-<% if @tag %>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to @library.name, @library %></li>
-        <li class="breadcrumb-item"><%= @tag.name %></li>
-    </ol>
-  </nav>
-<% end %>
 <h1><%= @library.name %></h1>
 <div class="row row-cols-2">
   <div class="col-9">
@@ -26,7 +18,11 @@
   <div class="col-3">
     <h5>Tags</h5>
     <% ActsAsTaggableOn::Tag.all.each do |tag| %>
-      <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-info text-dark"} %>
+      <% if (tag == @tag) %>
+        <%=link_to tag.name, @library, {class: "badge rounded-pill bg-danger"} %>
+      <% else %>
+        <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-info text-dark"} %>
+      <% end %>
     <% end %>
   </div>
 </div>
