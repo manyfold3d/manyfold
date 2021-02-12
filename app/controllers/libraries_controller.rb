@@ -9,6 +9,8 @@ class LibrariesController < ApplicationController
 
   def show
     @library = Library.find(params[:id])
+    @models = @library.models
+    @models = @models.tagged_with(params[:tag]) if params[:tag]
   end
 
   def new

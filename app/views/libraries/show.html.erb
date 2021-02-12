@@ -1,14 +1,24 @@
 <%= link_to "Rescan", library_path(@library), method: :patch, class: 'float-end btn btn-warning' %>
 <h1><%= @library.name %></h1>
-<div class="row row-cols-2 row-cols-md-4 mb-4">
-  <% @library.models.each do |model| %>
-    <div class="col mb-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= model.name %></h5>
-          <%= link_to "Open", [@library, model], {class: "btn btn-primary"} %>
+<div class="row row-cols-2">
+  <div class="col-9">
+    <div class="row row-cols-2 row-cols-md-4 mb-4">
+      <% @models.each do |model| %>
+        <div class="col mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= model.name %></h5>
+              <%= link_to "Open", [@library, model], {class: "btn btn-primary"} %>
+            </div>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
+  <div class="col-3">
+    <h5>Tags</h5>
+    <% ActsAsTaggableOn::Tag.all.each do |tag| %>
+      <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-info text-dark"} %>
+    <% end %>
+  </div>
 </div>
