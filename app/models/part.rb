@@ -9,5 +9,4 @@ class Part < ApplicationRecord
   def name
     File.basename(filename, ".*").humanize.titleize
   end
-
 end

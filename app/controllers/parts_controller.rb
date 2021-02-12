@@ -24,8 +24,7 @@ class PartsController < ApplicationController
   def part_params
     params.require(:part).permit([
       :printed,
-      :presupported,
+      :presupported
     ])
   end
-
 end
