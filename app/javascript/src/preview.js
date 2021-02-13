@@ -24,7 +24,8 @@ export function preview (canvas) {
 
   let geometry = null
   loader.load(canvas.dataset.previewUrl, function (model) {
-    if (canvas.dataset.format === 'obj') { geometry = model.geometry } else if (canvas.dataset.format === 'stl') { geometry = model }
+    console.log(model)
+    if (canvas.dataset.format === 'obj') { geometry = model.geometry || model.children[0].geometry } else if (canvas.dataset.format === 'stl') { geometry = model }
     // Create mesh and transform to screen coords from print
     const coordSystemTransform = new THREE.Matrix4()
     coordSystemTransform.set(
