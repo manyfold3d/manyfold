@@ -6,7 +6,10 @@
       </ol>
     </nav>
     <h1><%= @part.name %></h1>
-    <p>Filename: <%= @part.filename %></p>
+    <p>
+      Filename: <%= @part.filename %>
+      <%= link_to "Download", library_model_part_path(@library, @model, @part, @part.file_format.to_sym), {class: "btn btn-secondary"} %>
+    </p>
     <%= form_with model: [@library, @model, @part] do |form| %>
       <div class="form-check form-switch">
         <%= form.check_box :printed, class: 'form-check-input' %>
