@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    ports:
+      - 3214:3214
+    volumes:
+      - /path/to/your/libraries:/libraries
+    environment:
+      DATABASE_URL: postgresql://van_dam:password@db/van_dam?pool=5
+      SECRET_KEY_BASE: a_nice_long_random_string
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: van_dam
+      POSTGRES_PASSWORD: password
+    restart: on-failure
+
+  redis:
+    image: redis
+    restart: on-failure
+
+volumes:
+  db_data:
