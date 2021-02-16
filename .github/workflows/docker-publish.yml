@@ -39,7 +39,7 @@ jobs:
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+        run: echo "${{ secrets.CR_PAT }}" | docker login ghcr.io -u ${{ secrets.CR_USERNAME }} --password-stdin
 
       - name: Push image
         run: |
@@ -57,10 +57,8 @@ jobs:
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
 
-          echo ${{ secrets.CR_PAT }} | docker login --username ${{ secrets.CR_USERNAME }} --password-stdin ghcr.io
+          docker tag $IMAGE_NAME $IMAGE_ID:latest
+          [[ "$VERSION" != *"-"* ]] && docker push $IMAGE_ID:latest
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
-
-          docker tag $IMAGE_NAME $IMAGE_ID:latest
-          [[ "$VERSION" != *"-"* ]] && docker push $IMAGE_ID:latest
