@@ -57,11 +57,10 @@ jobs:
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
 
-          docker login ghcr.io -u $CR_USERNAME -p $CR_PAT
+          echo ${{ secrets.CR_PAT }} | docker login --username ${{ secrets.CR_USERNAME }} --password-stdin ghcr.io
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
-
 
           docker tag $IMAGE_NAME $IMAGE_ID:latest
           [[ "$VERSION" != *"-"* ]] && docker push $IMAGE_ID:latest
