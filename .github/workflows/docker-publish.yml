@@ -36,7 +36,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker buildx build . --file Dockerfile --tag $IMAGE_NAME --platform=linux/arm,linux/arm64/v8,linux/amd64
+        run: |
+          docker buildx create --use
+          docker buildx build . --file Dockerfile --tag $IMAGE_NAME --platform=linux/arm,linux/arm64/v8,linux/amd64
 
       - name: Log into registry
         run: echo "${{ secrets.CR_PAT }}" | docker login ghcr.io -u ${{ secrets.CR_USERNAME }} --password-stdin
