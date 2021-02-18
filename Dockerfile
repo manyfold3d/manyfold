@@ -1,11 +1,11 @@
 FROM ruby:3.0-alpine
-RUN apk add tzdata alpine-sdk python postgresql-dev nodejs yarn
+
+RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn python3
 
 ENV PORT 3214
 ENV RACK_ENV production
 ENV NODE_ENV production
 ENV RAILS_SERVE_STATIC_FILES true
-
 
 RUN gem install bundler -v 2.2.4
 
@@ -19,6 +19,11 @@ RUN yarn install --prod
 RUN \
   SECRET_KEY_BASE="placeholder" \
   bundle exec rake assets:precompile
+
+FROM ruby:3.0-alpine
+
+WORKDIR /usr/src/app
+COPY --from=0 . .
 
 EXPOSE 3214
 ENTRYPOINT ["bin/docker-entrypoint.sh"]
