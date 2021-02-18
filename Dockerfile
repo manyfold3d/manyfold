@@ -1,18 +1,11 @@
-FROM ruby:3.0.0
+FROM ruby:3.0-alpine
+RUN apk add tzdata alpine-sdk postgresql-dev nodejs yarn
 
 ENV PORT 3214
 ENV RACK_ENV production
 ENV NODE_ENV production
 ENV RAILS_SERVE_STATIC_FILES true
 
-RUN curl https://deb.nodesource.com/setup_14.x | bash
-RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        nodejs yarn build-essential postgresql-client libpq-dev  \
-    && rm -rf /var/lib/apt/lists/*
 
 RUN gem install bundler -v 2.2.4
 
