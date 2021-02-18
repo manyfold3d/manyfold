@@ -7,18 +7,24 @@ ENV RACK_ENV production
 ENV NODE_ENV production
 ENV RAILS_SERVE_STATIC_FILES true
 
-RUN gem install bundler -v 2.2.4
-
 WORKDIR /usr/src/app
-COPY . .
-RUN bundle config set --local deployment 'true'
-RUN bundle config set --local without 'development test'
-RUN bundle install
+
+COPY package.json .
+COPY yarn.lock .
 RUN yarn install --prod
 
+RUN gem install bundler -v 2.2.4
+RUN bundle config set --local deployment 'true'
+RUN bundle config set --local without 'development test'
+COPY Gemfile* .
+RUN bundle install
+
+COPY . .
 RUN \
   SECRET_KEY_BASE="placeholder" \
   bundle exec rake assets:precompile
+
+RUN rm -rf ./node_modules
 
 FROM ruby:3.0-alpine
 
