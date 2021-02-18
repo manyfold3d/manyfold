@@ -1,6 +1,6 @@
 FROM ruby:3.0-alpine
 
-RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn python3
+RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn python2
 
 ENV PORT 3214
 ENV RACK_ENV production
