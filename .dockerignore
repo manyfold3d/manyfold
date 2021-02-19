@@ -1,3 +1,6 @@
+/Dockerfile
+/docker-compose.*
+/.dockerignore
 /.bundle
 /db/*.sqlite3
 /db/*.sqlite3-*
@@ -11,8 +14,8 @@
 /public/packs-test
 /node_modules
 /yarn-error.log
-yarn-debug.log*
-.yarn-integrity
-.env
+/yarn-debug.log*
+/.yarn-integrity
+/.env
 /config/credentials/*.key
-.git
+/.git
