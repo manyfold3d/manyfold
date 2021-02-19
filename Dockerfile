@@ -1,4 +1,4 @@
-FROM ruby:3.0-alpine
+FROM ruby:3.0-alpine AS build
 
 RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn python2
 
@@ -23,11 +23,6 @@ COPY . .
 RUN \
   SECRET_KEY_BASE="placeholder" \
   bundle exec rake assets:precompile
-
-FROM ruby:3.0-alpine
-
-WORKDIR /usr/src/app
-COPY --from=0 /usr/src/app .
 
 EXPOSE 3214
 ENTRYPOINT ["bin/docker-entrypoint.sh"]
