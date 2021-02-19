@@ -6,8 +6,14 @@ VanDAM is a Digital Asset Manager (DAM), specifically designed for 3D print file
 
 ## Running in Docker
 
+You can run the latest release in docker by using the image `ghcr.io/floppy/van_dam:latest`. The app also needs a PostgreSQL and Redis database to operate.
+
+The docker image supports `linux/amd64`, `linux/arm/v7` and `linux/arm64` architectures, so you should be able to run it on a PC, a Raspberry Pi, or maybe even an M1 Mac.
+
+You can run all the dependencies in one go using `docker-compose`:
+
 1. Copy `docker-compose.example.yml` to `docker-compose.yml` and edit the paths, secret key, and passwords
-2. Run `docker-compose up --build`
+2. Run `docker-compose up`
 3. Once it all starts, Van DAM should be running at http://127.0.0.1:3214
 4. Add a library - remember the path mappings in the compose file, by default your libraries will be available at `/libraries`
 ## Development
