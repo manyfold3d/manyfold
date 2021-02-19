@@ -2,9 +2,6 @@ name: Docker
 
 on:
   push:
-    branches:
-      - docker-build
-      - main
     tags:
       - v*
 
