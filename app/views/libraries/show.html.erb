@@ -6,6 +6,9 @@
       <% @models.each do |model| %>
         <div class="col mb-4">
           <div class="card">
+            <% preview_part = model.parts.first %>
+            <canvas id="preview-part-<%= preview_part.id %>" class="card-img-top" data-preview data-preview-url="<%= library_model_part_path(@library, model, preview_part, preview_part.file_format.to_sym) %>" data-format="<%= preview_part.file_format %>">
+            </canvas>
             <div class="card-body">
               <h5 class="card-title"><%= model.name %></h5>
               <%= link_to "Open", [@library, model], {class: "btn btn-primary"} %>
