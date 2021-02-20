@@ -11,7 +11,7 @@ class ModelScanJob < ApplicationJob
         File.join(dir.path, FILE_PATTERN),
         File.join(dir.path, "files", FILE_PATTERN)
       ]).each do |filename|
-        part = model.parts.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
+        model.parts.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
       end
     end
     # Set tags and default parts

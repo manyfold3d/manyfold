@@ -28,5 +28,4 @@ RSpec.describe ModelScanJob, type: :job do
     expect { ModelScanJob.perform_now(model) }.to change { model.parts.count }.to(2)
     expect(model.preview_part.filename).to eq "part_1.obj"
   end
-
 end
