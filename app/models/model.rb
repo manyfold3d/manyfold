@@ -1,6 +1,7 @@
 class Model < ApplicationRecord
   belongs_to :library
   has_many :parts, dependent: :destroy
+  belongs_to :preview_part, class_name: "Part", optional: true
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
 
