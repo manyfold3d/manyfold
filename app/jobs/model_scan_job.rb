@@ -11,8 +11,10 @@ class ModelScanJob < ApplicationJob
         File.join(dir.path, FILE_PATTERN),
         File.join(dir.path, "files", FILE_PATTERN)
       ]).each do |filename|
-        model.parts.create(filename: filename.gsub(model_path + "/", ""))
+        p = model.parts.create(filename: filename.gsub(model_path + "/", ""))
+        model.preview_part ||= p
       end
+      model.save!
     end
     model.autogenerate_tags_from_path!
   end
