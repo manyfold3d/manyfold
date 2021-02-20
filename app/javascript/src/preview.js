@@ -2,30 +2,42 @@ import * as THREE from 'three'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
 
-export function preview (canvas) {
-  const scene = new THREE.Scene()
-  const camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 0.1, 1000)
-  camera.position.z = 50
+class PartPreview {
 
-  const renderer = new THREE.WebGLRenderer({ canvas })
+  constructor(canvas) {
+    this.canvas = canvas;
+    this.scene = new THREE.Scene()
+    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
+    this.objects = new THREE.Group()
+    this.scene.add(this.objects)
+    this.material = new THREE.MeshNormalMaterial({
+      flatShading: true
+    })
+    this.geometry = null;
+    this.camera = new THREE.PerspectiveCamera(45, this.canvas.width / this.canvas.height, 0.1, 1000)
+    this.camera.position.z = 50
+    // Start animation loop
+    this.animate()
+  }
 
-  const objects = new THREE.Group()
-  scene.add(objects)
+  load(url, format) {
+    let loader = null
+    if (format === 'obj') { loader = new OBJLoader() } else if (format === 'stl') { loader = new STLLoader() }
 
-  const material = new THREE.MeshNormalMaterial({
-    flatShading: true
-  })
+    loader.load(url,
+      this.onLoad.bind(this),
+      undefined,
+      this.onLoadError.bind(this)
+    )
+  }
 
-  let loader = null
-  if (canvas.dataset.format === 'obj') { loader = new OBJLoader() } else if (canvas.dataset.format === 'stl') { loader = new STLLoader() }
-
-  const gridHelper = new THREE.GridHelper(260, 26, 'magenta', 'cyan')
-  objects.add(gridHelper)
-
-  let geometry = null
-  loader.load(canvas.dataset.previewUrl, function (model) {
-    console.log(model)
-    if (canvas.dataset.format === 'obj') { geometry = model.geometry || model.children[0].geometry } else if (canvas.dataset.format === 'stl') { geometry = model }
+  onLoad(model) {
+    if(model.type === "BufferGeometry") {
+      this.geometry = model
+    }
+    else {
+      this.geometry = model.geometry || model.children[0].geometry
+    }
     // Create mesh and transform to screen coords from print
     const coordSystemTransform = new THREE.Matrix4()
     coordSystemTransform.set(
@@ -33,7 +45,7 @@ export function preview (canvas) {
       0, 0, 1, 0, // z -> y
       0, -1, 0, 0, // y -> -z
       0, 0, 0, 1)
-    const mesh = new THREE.Mesh(geometry.applyMatrix4(coordSystemTransform), material)
+    const mesh = new THREE.Mesh(this.geometry.applyMatrix4(coordSystemTransform), this.material)
     // Calculate bounding volumes
     const bbox = new THREE.Box3().setFromObject(mesh)
     const centre = new THREE.Vector3()
@@ -42,35 +54,46 @@ export function preview (canvas) {
     bbox.getBoundingSphere(bsphere)
     const modelheight = bbox.max.y - bbox.min.y
     // Configure camera
-    camera.position.z = bsphere.radius * 2.3
-    camera.position.y = bsphere.radius * 0.75
-    camera.lookAt(0, modelheight / 2, 0)
+    this.camera.position.z = bsphere.radius * 2.3
+    this.camera.position.y = bsphere.radius * 0.75
+    this.camera.lookAt(0, modelheight / 2, 0)
     // Centre the model
     mesh.position.set(-centre.x, -bbox.min.y, -centre.z)
-    objects.add(mesh)
-  }, undefined, function (error) {
-    console.error(error)
-  })
+    this.objects.add(mesh)
+    // Add the grid
+    this.gridHelper = new THREE.GridHelper(260, 26, 'magenta', 'cyan')
+    this.objects.add(this.gridHelper)
+  }
 
-  const animate = function () {
-    if (canvas.closest('html')) { // There's probably more efficient way to do this than checking every frame, but I can't make MutationObserver work right now
-      objects.rotation.y += 0.01
-      renderer.render(scene, camera)
-      window.requestAnimationFrame(animate)
+  onLoadError(error) {
+    console.error(error)
+  }
+
+  animate() {
+    if (this.canvas.closest('html')) { // There's probably more efficient way to do this than checking every frame, but I can't make MutationObserver work right now
+      this.objects.rotation.y += 0.01
+      this.renderer.render(this.scene, this.camera)
+      window.requestAnimationFrame(this.animate.bind(this))
     } else {
-      gridHelper.geometry.dispose()
-      material.dispose()
-      geometry.dispose()
-      renderer.dispose()
+      this.cleanup()
     }
   }
 
-  animate()
+  cleanup() {
+    if (this.geometry) this.geometry.dispose()
+    if (this.gridHelper) this.gridHelper.geometry.dispose()
+    this.material.dispose()
+    this.renderer.dispose()
+  }
 }
 
 document.addEventListener('turbolinks:load', () => {
   document.querySelectorAll('canvas[data-preview]').forEach((canvas) => {
     canvas.height = canvas.width
-    preview(canvas)
+    const p = new PartPreview(canvas)
+    p.load(
+      canvas.dataset.previewUrl,
+      canvas.dataset.format
+    )
   })
 })
