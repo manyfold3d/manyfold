@@ -4,7 +4,7 @@ import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
 
 class PartPreview {
 
-  constructor(canvas) {
+  constructor(canvas, url, format) {
     this.canvas = canvas;
     this.scene = new THREE.Scene()
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
@@ -16,8 +16,21 @@ class PartPreview {
     this.geometry = null;
     this.camera = new THREE.PerspectiveCamera(45, this.canvas.width / this.canvas.height, 0.1, 1000)
     this.camera.position.z = 50
+    // Trigger loading when canvas becomes visible
+    this.loading = false;
+    this.url = url;
+    this.format = format;
+    let observer = new IntersectionObserver(this.onIntersectionChanged.bind(this), {});
+    observer.observe(canvas)
     // Start animation loop
     this.animate()
+  }
+
+  onIntersectionChanged(entries, observer) {
+    if (entries[0].isIntersecting && this.loading == false) {
+      this.loading = true
+      this.load(this.url, this.format)
+    }
   }
 
   load(url, format) {
@@ -90,8 +103,8 @@ class PartPreview {
 document.addEventListener('turbolinks:load', () => {
   document.querySelectorAll('canvas[data-preview]').forEach((canvas) => {
     canvas.height = canvas.width
-    const p = new PartPreview(canvas)
-    p.load(
+    const p = new PartPreview(
+      canvas,
       canvas.dataset.previewUrl,
       canvas.dataset.format
     )
