@@ -3,9 +3,8 @@ import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
 
 class PartPreview {
-
-  constructor(canvas, url, format) {
-    this.canvas = canvas;
+  constructor (canvas, url, format) {
+    this.canvas = canvas
     this.scene = new THREE.Scene()
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
     this.objects = new THREE.Group()
@@ -13,27 +12,27 @@ class PartPreview {
     this.material = new THREE.MeshNormalMaterial({
       flatShading: true
     })
-    this.geometry = null;
+    this.geometry = null
     this.camera = new THREE.PerspectiveCamera(45, this.canvas.width / this.canvas.height, 0.1, 1000)
     this.camera.position.z = 50
     // Trigger loading when canvas becomes visible
-    this.loading = false;
-    this.url = url;
-    this.format = format;
-    let observer = new IntersectionObserver(this.onIntersectionChanged.bind(this), {});
+    this.loading = false
+    this.url = url
+    this.format = format
+    const observer = new window.IntersectionObserver(this.onIntersectionChanged.bind(this), {})
     observer.observe(canvas)
     // Start animation loop
     this.animate()
   }
 
-  onIntersectionChanged(entries, observer) {
-    if (entries[0].isIntersecting && this.loading == false) {
+  onIntersectionChanged (entries, observer) {
+    if (entries[0].isIntersecting && this.loading === false) {
       this.loading = true
       this.load(this.url, this.format)
     }
   }
 
-  load(url, format) {
+  load (url, format) {
     let loader = null
     if (format === 'obj') { loader = new OBJLoader() } else if (format === 'stl') { loader = new STLLoader() }
 
@@ -44,11 +43,10 @@ class PartPreview {
     )
   }
 
-  onLoad(model) {
-    if(model.type === "BufferGeometry") {
+  onLoad (model) {
+    if (model.type === 'BufferGeometry') {
       this.geometry = model
-    }
-    else {
+    } else {
       this.geometry = model.geometry || model.children[0].geometry
     }
     // Create mesh and transform to screen coords from print
@@ -78,11 +76,11 @@ class PartPreview {
     this.objects.add(this.gridHelper)
   }
 
-  onLoadError(error) {
+  onLoadError (error) {
     console.error(error)
   }
 
-  animate() {
+  animate () {
     if (this.canvas.closest('html')) { // There's probably more efficient way to do this than checking every frame, but I can't make MutationObserver work right now
       this.objects.rotation.y += 0.01
       this.renderer.render(this.scene, this.camera)
@@ -92,7 +90,7 @@ class PartPreview {
     }
   }
 
-  cleanup() {
+  cleanup () {
     if (this.geometry) this.geometry.dispose()
     if (this.gridHelper) this.gridHelper.geometry.dispose()
     this.material.dispose()
@@ -103,7 +101,7 @@ class PartPreview {
 document.addEventListener('turbolinks:load', () => {
   document.querySelectorAll('canvas[data-preview]').forEach((canvas) => {
     canvas.height = canvas.width
-    const p = new PartPreview(
+    canvas.renderer = new PartPreview(
       canvas,
       canvas.dataset.previewUrl,
       canvas.dataset.format
