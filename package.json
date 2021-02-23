@@ -18,7 +18,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.0",
-    "husky": "^5.1.0",
+    "husky": "^5.1.1",
     "standard": "^16.0.3",
     "webpack-dev-server": "^3.11.2"
   },
