@@ -12,7 +12,7 @@ jobs:
         ruby-version: 3.0
         bundler-cache: true
     - name: Set up Node
-      uses: actions/setup-node@v2.1.4
+      uses: actions/setup-node@v2.1.5
       with:
         node-version: 14.6.0
     - name: Install yarn packages
@@ -32,7 +32,7 @@ jobs:
         ruby-version: 3.0
         bundler-cache: true
     - name: Set up Node
-      uses: actions/setup-node@v2.1.4
+      uses: actions/setup-node@v2.1.5
       with:
         node-version: 14.6.0
     - name: Install yarn packages
