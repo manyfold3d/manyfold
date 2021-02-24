@@ -82,7 +82,7 @@ class PartPreview {
 
   animate () {
     if (this.canvas.closest('html')) { // There's probably more efficient way to do this than checking every frame, but I can't make MutationObserver work right now
-      this.objects.rotation.y += 0.01
+      this.scene.rotation.y += 0.01
       this.renderer.render(this.scene, this.camera)
       window.requestAnimationFrame(this.animate.bind(this))
     } else {
