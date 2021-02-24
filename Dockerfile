@@ -2,10 +2,15 @@ FROM ruby:3.0-alpine AS build
 
 RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn python2
 
+ARG VAN_DAM_GIT_REF
+ARG VAN_DAM_GIT_SHA
+
 ENV PORT 3214
 ENV RACK_ENV production
 ENV NODE_ENV production
 ENV RAILS_SERVE_STATIC_FILES true
+ENV VAN_DAM_GIT_REF $VAN_DAM_GIT_REF
+ENV VAN_DAM_GIT_SHA $VAN_DAM_GIT_SHA
 
 WORKDIR /usr/src/app
 

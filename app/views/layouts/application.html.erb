@@ -29,6 +29,12 @@
         This server is cataloguing a total of <%= "#{Model.count} model".pluralize(Model.count) %>,
         with <%= "#{Part.count} part".pluralize(Part.count) %>,
         in <%= "#{Library.count} library".pluralize(Library.count) %>.
+        <% if ENV.has_key? "VAN_DAM_GIT_REF" %>
+          <span id='version'>
+            <%= ENV.fetch "VAN_DAM_GIT_REF", "?" %>
+            (<%= ENV.fetch "VAN_DAM_GIT_SHA", "?" %>)
+          </span>
+        <% end %>
       </footer>
     </div>
   </body>

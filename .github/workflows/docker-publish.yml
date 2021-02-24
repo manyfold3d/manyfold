@@ -14,9 +14,10 @@ jobs:
     # needs: test
     runs-on: ubuntu-latest
     steps:
+      - uses: FranzDiebold/github-env-vars-action@v2
+
       - name: Check out code
         uses: actions/checkout@v2
-
       -
         name: Work out Docker tags
         id: docker_meta
@@ -50,3 +51,6 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+          secrets: |
+            VAN_DAM_GIT_REF=$CI_REF_NAME
+            VAN_DAM_GIT_SHA=$CI_SHA
