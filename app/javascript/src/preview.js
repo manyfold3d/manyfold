@@ -91,9 +91,12 @@ class PartPreview {
   }
 
   cleanup () {
-    if (this.geometry) this.geometry.dispose()
-    if (this.gridHelper) this.gridHelper.geometry.dispose()
-    this.material.dispose()
+    this.scene.traverse(function (node) {
+      if (node instanceof THREE.Mesh) {
+        node.geometry.dispose()
+        node.material.dispose()
+      }
+    })
     this.renderer.dispose()
   }
 }
