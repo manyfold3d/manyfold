@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_143006) do
+ActiveRecord::Schema.define(version: 2021_02_20_204055) do
 
   create_table "libraries", force: :cascade do |t|
     t.string "path", null: false
@@ -24,7 +24,9 @@ ActiveRecord::Schema.define(version: 2021_02_12_143006) do
     t.integer "library_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "preview_part_id"
     t.index ["library_id"], name: "index_models_on_library_id"
+    t.index ["preview_part_id"], name: "index_models_on_preview_part_id"
   end
 
   create_table "parts", force: :cascade do |t|
@@ -65,6 +67,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_143006) do
   end
 
   add_foreign_key "models", "libraries"
+  add_foreign_key "models", "parts", column: "preview_part_id"
   add_foreign_key "parts", "models"
   add_foreign_key "taggings", "tags"
 end

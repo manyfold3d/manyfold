@@ -11,6 +11,8 @@ import 'channels'
 import 'controllers'
 import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap/dist/css/bootstrap'
+
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'src/preview'
 
 Rails.start()

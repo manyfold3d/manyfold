@@ -1,11 +1,15 @@
 <div class="col mb-4">
-  <div class="card">
+  <div class="card <%= part === @model.preview_part ? "border-primary" : "" %>"%>
     <canvas id="preview-part-<%= part.id %>" class="card-img-top" data-preview data-preview-url="<%= library_model_part_path(@library, @model, part, part.file_format.to_sym) %>" data-format="<%= part.file_format %>">
     </canvas>
     <div class="card-body">
       <h5 class="card-title"><%= part.name %></h5>
-      <%= link_to "Details", library_model_part_path(@library, @model, part), {class: "btn btn-primary"} %>
-      <%= link_to "Download #{part.file_format.upcase}", library_model_part_path(@library, @model, part, part.file_format.to_sym), {class: "btn btn-secondary"} %>
+      <%= form_with model: [@library, @model] do |form| %>
+        <%= link_to "Details", library_model_part_path(@library, @model, part), {class: "btn btn-primary"} %>
+        <%= link_to icon('cloud-download', 'Download'), library_model_part_path(@library, @model, part, part.file_format.to_sym), {class: "btn btn-secondary"} %>
+        <%= form.hidden_field :preview_part_id, value: part.id %>
+        <%= form.button icon('bookmark-heart', 'Set as preview model'), class: "btn btn-secondary #{part == @model.preview_part ? "disabled" : ""}" %>
+      <% end %>
     </div>
   </div>
 </div>
