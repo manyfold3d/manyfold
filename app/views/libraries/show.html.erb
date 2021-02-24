@@ -23,9 +23,9 @@
     <h5>Tags</h5>
     <% @tags.each do |tag| %>
       <% if (tag == @tag) %>
-        <%=link_to tag.name, @library, {class: "badge rounded-pill bg-danger"} %>
+        <%=link_to tag.name, @library, {class: "badge rounded-pill bg-success"} %>
       <% else %>
-        <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-info text-dark"} %>
+        <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
       <% end %>
     <% end %>
   </div>
