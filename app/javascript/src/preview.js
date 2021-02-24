@@ -73,7 +73,7 @@ class PartPreview {
     this.objects.add(mesh)
     // Add the grid
     this.gridHelper = new THREE.GridHelper(260, 26, 'magenta', 'cyan')
-    this.objects.add(this.gridHelper)
+    this.scene.add(this.gridHelper)
   }
 
   onLoadError (error) {
