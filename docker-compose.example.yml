@@ -15,7 +15,7 @@ services:
       - redis
 
   db:
-    image: postgres
+    image: postgres:13
     volumes:
       - db_data:/var/lib/postgresql/data
     environment:
@@ -24,7 +24,7 @@ services:
     restart: on-failure
 
   redis:
-    image: redis
+    image: redis:6
     restart: on-failure
 
 volumes:
