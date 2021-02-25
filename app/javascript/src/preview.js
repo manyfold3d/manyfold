@@ -42,11 +42,6 @@ class PartPreview {
   }
 
   onLoad (model) {
-    if (model.type === 'BufferGeometry') {
-      this.geometry = model
-    } else {
-      this.geometry = model.geometry || model.children[0].geometry
-    }
     // Create mesh and transform to screen coords from print
     const coordSystemTransform = new THREE.Matrix4()
     coordSystemTransform.set(
@@ -54,7 +49,14 @@ class PartPreview {
       0, 0, 1, 0, // z -> y
       0, -1, 0, 0, // y -> -z
       0, 0, 0, 1)
-    const object = new THREE.Mesh(this.geometry.applyMatrix4(coordSystemTransform), this.material)
+    let object = null
+    if (model.type === 'BufferGeometry') {
+      this.geometry = model
+      object = new THREE.Mesh(model.applyMatrix4(coordSystemTransform), this.material)
+    } else {
+      this.geometry = model.geometry || model.children[0].geometry
+      object = new THREE.Mesh(this.geometry.applyMatrix4(coordSystemTransform), this.material)
+    }
     // Calculate bounding volumes
     const bbox = new THREE.Box3().setFromObject(object)
     const centre = new THREE.Vector3()
