@@ -7,10 +7,6 @@ class PartPreview {
     this.canvas = canvas
     this.scene = new THREE.Scene()
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
-    this.material = new THREE.MeshNormalMaterial({
-      flatShading: true
-    })
-    this.geometry = null
     this.camera = new THREE.PerspectiveCamera(45, this.canvas.width / this.canvas.height, 0.1, 1000)
     this.camera.position.z = 50
     // Trigger loading when canvas becomes visible
@@ -42,21 +38,28 @@ class PartPreview {
   }
 
   onLoad (model) {
-    // Create mesh and transform to screen coords from print
+    const material = new THREE.MeshNormalMaterial({
+      flatShading: true
+    })
+    let object = null
+    if (model.type === 'BufferGeometry') {
+      object = new THREE.Mesh(model, material)
+    } else {
+      model.traverse(function (node) {
+        if (node instanceof THREE.Mesh) {
+          node.material = material
+        }
+      })
+      object = model
+    }
+    // Transform to screen coords from print
     const coordSystemTransform = new THREE.Matrix4()
     coordSystemTransform.set(
       1, 0, 0, 0, // x -> x
       0, 0, 1, 0, // z -> y
       0, -1, 0, 0, // y -> -z
       0, 0, 0, 1)
-    let object = null
-    if (model.type === 'BufferGeometry') {
-      this.geometry = model
-      object = new THREE.Mesh(model.applyMatrix4(coordSystemTransform), this.material)
-    } else {
-      this.geometry = model.geometry || model.children[0].geometry
-      object = new THREE.Mesh(this.geometry.applyMatrix4(coordSystemTransform), this.material)
-    }
+    object.applyMatrix4(coordSystemTransform)
     // Calculate bounding volumes
     const bbox = new THREE.Box3().setFromObject(object)
     const centre = new THREE.Vector3()
