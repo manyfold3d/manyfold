@@ -7,8 +7,6 @@ class PartPreview {
     this.canvas = canvas
     this.scene = new THREE.Scene()
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
-    this.objects = new THREE.Group()
-    this.scene.add(this.objects)
     this.material = new THREE.MeshNormalMaterial({
       flatShading: true
     })
@@ -56,9 +54,9 @@ class PartPreview {
       0, 0, 1, 0, // z -> y
       0, -1, 0, 0, // y -> -z
       0, 0, 0, 1)
-    const mesh = new THREE.Mesh(this.geometry.applyMatrix4(coordSystemTransform), this.material)
+    const object = new THREE.Mesh(this.geometry.applyMatrix4(coordSystemTransform), this.material)
     // Calculate bounding volumes
-    const bbox = new THREE.Box3().setFromObject(mesh)
+    const bbox = new THREE.Box3().setFromObject(object)
     const centre = new THREE.Vector3()
     bbox.getCenter(centre)
     const bsphere = new THREE.Sphere()
@@ -69,8 +67,8 @@ class PartPreview {
     this.camera.position.y = bsphere.radius * 0.75
     this.camera.lookAt(0, modelheight / 2, 0)
     // Centre the model
-    mesh.position.set(-centre.x, -bbox.min.y, -centre.z)
-    this.objects.add(mesh)
+    object.position.set(-centre.x, -bbox.min.y, -centre.z)
+    this.scene.add(object)
     // Add the grid
     this.gridHelper = new THREE.GridHelper(260, 26, 'magenta', 'cyan')
     this.scene.add(this.gridHelper)
