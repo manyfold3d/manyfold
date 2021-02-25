@@ -7,12 +7,6 @@ class PartPreview {
     this.canvas = canvas
     this.scene = new THREE.Scene()
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
-    this.objects = new THREE.Group()
-    this.scene.add(this.objects)
-    this.material = new THREE.MeshNormalMaterial({
-      flatShading: true
-    })
-    this.geometry = null
     this.camera = new THREE.PerspectiveCamera(45, this.canvas.width / this.canvas.height, 0.1, 1000)
     this.camera.position.z = 50
     // Trigger loading when canvas becomes visible
@@ -44,21 +38,30 @@ class PartPreview {
   }
 
   onLoad (model) {
+    const material = new THREE.MeshNormalMaterial({
+      flatShading: true
+    })
+    let object = null
     if (model.type === 'BufferGeometry') {
-      this.geometry = model
+      object = new THREE.Mesh(model, material)
     } else {
-      this.geometry = model.geometry || model.children[0].geometry
+      model.traverse(function (node) {
+        if (node instanceof THREE.Mesh) {
+          node.material = material
+        }
+      })
+      object = model
     }
-    // Create mesh and transform to screen coords from print
+    // Transform to screen coords from print
     const coordSystemTransform = new THREE.Matrix4()
     coordSystemTransform.set(
       1, 0, 0, 0, // x -> x
       0, 0, 1, 0, // z -> y
       0, -1, 0, 0, // y -> -z
       0, 0, 0, 1)
-    const mesh = new THREE.Mesh(this.geometry.applyMatrix4(coordSystemTransform), this.material)
+    object.applyMatrix4(coordSystemTransform)
     // Calculate bounding volumes
-    const bbox = new THREE.Box3().setFromObject(mesh)
+    const bbox = new THREE.Box3().setFromObject(object)
     const centre = new THREE.Vector3()
     bbox.getCenter(centre)
     const bsphere = new THREE.Sphere()
@@ -69,11 +72,11 @@ class PartPreview {
     this.camera.position.y = bsphere.radius * 0.75
     this.camera.lookAt(0, modelheight / 2, 0)
     // Centre the model
-    mesh.position.set(-centre.x, -bbox.min.y, -centre.z)
-    this.objects.add(mesh)
+    object.position.set(-centre.x, -bbox.min.y, -centre.z)
+    this.scene.add(object)
     // Add the grid
     this.gridHelper = new THREE.GridHelper(260, 26, 'magenta', 'cyan')
-    this.objects.add(this.gridHelper)
+    this.scene.add(this.gridHelper)
   }
 
   onLoadError (error) {
@@ -82,7 +85,7 @@ class PartPreview {
 
   animate () {
     if (this.canvas.closest('html')) { // There's probably more efficient way to do this than checking every frame, but I can't make MutationObserver work right now
-      this.objects.rotation.y += 0.01
+      this.scene.rotation.y += 0.01
       this.renderer.render(this.scene, this.camera)
       window.requestAnimationFrame(this.animate.bind(this))
     } else {
@@ -91,9 +94,12 @@ class PartPreview {
   }
 
   cleanup () {
-    if (this.geometry) this.geometry.dispose()
-    if (this.gridHelper) this.gridHelper.geometry.dispose()
-    this.material.dispose()
+    this.scene.traverse(function (node) {
+      if (node instanceof THREE.Mesh) {
+        node.geometry.dispose()
+        node.material.dispose()
+      }
+    })
     this.renderer.dispose()
   }
 }
