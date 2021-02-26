@@ -6,6 +6,7 @@ class CreatorsController < ApplicationController
   end
 
   def show
+    @models = @creator.models
   end
 
   def edit

@@ -1,24 +1,28 @@
-<div class="row align-items-start">
-  <div class="col">
-    <h1><%= @creator.name %></h1>
+<h1><%= @creator.name %></h1>
+
+<div class="row row-cols-2">
+  <div class="col-9">
+    <div class="row row-cols-2 row-cols-md-3 mb-3">
+      <%= render partial: 'libraries/model', collection: @models %>
+    </div>
   </div>
+  <div class="col-3">
+    <% if @creator.thingiverse_user.present? %>
+      <%= link_to "Thingiverse", "https://thingiverse.com/#{@creator.thingiverse_user}" %>
+    <% end %>
 
-  <% if @creator.thingiverse_user.present? %>
-    <%= link_to "Thingiverse", "https://thingiverse.com/#{@creator.thingiverse_user}" %>
-  <% end %>
+    <% if @creator.cults3d_user.present? %>
+      <%= link_to "Cults3D", "https://cults3d.com/en/users/#{@creator.cults3d_user}" %>
+    <% end %>
 
-  <% if @creator.cults3d_user.present? %>
-    <%= link_to "Cults3D", "https://cults3d.com/en/users/#{@creator.cults3d_user}" %>
-  <% end %>
+    <% if @creator.cgtrader_user.present? %>
+      <%= link_to "CGTrader", "https://cgtrader.com/#{@creator.cgtrader_user}" %>
+    <% end %>
 
-  <% if @creator.cgtrader_user.present? %>
-    <%= link_to "CGTrader", "https://cgtrader.com/#{@creator.cgtrader_user}" %>
-  <% end %>
+    <% if @creator.mmf_user.present? %>
+      <%= link_to "MyMiniFactory", "https://myminifactory.com/users/#{@creator.mmf_user}" %>
+    <% end %>
 
-  <% if @creator.mmf_user.present? %>
-    <%= link_to "MyMiniFactory", "https://myminifactory.com/users/#{@creator.mmf_user}" %>
-  <% end %>
-
-  <%= link_to "Edit", edit_creator_path(@creator) %>
-
+    <%= link_to "Edit", edit_creator_path(@creator) %>
+  </div>
 </div>
