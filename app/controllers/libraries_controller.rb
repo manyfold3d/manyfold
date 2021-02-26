@@ -1,4 +1,6 @@
 class LibrariesController < ApplicationController
+  before_action :get_library, except: [:index, :new, :create]
+
   def index
     if Library.count === 0
       redirect_to new_library_path
@@ -8,9 +10,8 @@ class LibrariesController < ApplicationController
   end
 
   def show
-    @library = Library.find(params[:id])
     @models = @library.models
-    @tags = @library.models.map(&:tags).flatten.uniq.sort_by(&:name)
+    @tags = @models.map(&:tags).flatten.uniq.sort_by(&:name)
     # Filter by tag?
     if params[:tag]
       @tag = ActsAsTaggableOn::Tag.find_by_name(params[:tag])
@@ -29,7 +30,6 @@ class LibrariesController < ApplicationController
   end
 
   def update
-    @library = Library.find(params[:id])
     LibraryScanJob.perform_later(@library)
     redirect_to @library
   end
@@ -38,5 +38,9 @@ class LibrariesController < ApplicationController
 
   def library_params
     params.require(:library).permit(:path)
+  end
+
+  def get_library
+    @library = Library.find(params[:id])
   end
 end

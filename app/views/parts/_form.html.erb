@@ -1,0 +1,11 @@
+<%= form_with model: [@library, @model, @part] do |form| %>
+  <div class="form-check form-switch">
+    <%= form.check_box :printed, class: 'form-check-input' %>
+    <label class="form-check-label" for="printed">Printed?</label>
+  </div>
+  <div class="form-check form-switch">
+    <%= form.check_box :presupported, class: 'form-check-input' %>
+    <label class="form-check-label" for="presupported">Presupported?</label>
+  </div>
+  <%= form.submit "Update", class: 'btn btn-primary' %>
+<% end %>

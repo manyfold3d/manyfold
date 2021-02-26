@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_20_204055) do
+ActiveRecord::Schema.define(version: 2021_02_25_232841) do
+
+  create_table "creators", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "thingiverse_user"
+    t.string "cults3d_user"
+    t.string "mmf_user"
+    t.string "cgtrader_user"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "libraries", force: :cascade do |t|
     t.string "path", null: false
@@ -25,6 +35,8 @@ ActiveRecord::Schema.define(version: 2021_02_20_204055) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "preview_part_id"
+    t.integer "creator_id"
+    t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
     t.index ["preview_part_id"], name: "index_models_on_preview_part_id"
   end
@@ -66,6 +78,7 @@ ActiveRecord::Schema.define(version: 2021_02_20_204055) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  add_foreign_key "models", "creators"
   add_foreign_key "models", "libraries"
   add_foreign_key "models", "parts", column: "preview_part_id"
   add_foreign_key "parts", "models"

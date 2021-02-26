@@ -1,10 +1,14 @@
 <h1><%= @model.name %></h1>
 <h2><%= @model.path %></h2>
+<%= link_to "Edit", edit_library_model_path(@library, @model) %>
 <div>
   <% @model.tags.each do |tag| %>
     <span class="badge rounded-pill bg-info text-dark"><%= tag.name %></span>
   <% end %>
 </div>
+
+<%= link_to @model.creator.name, creator_path(@model.creator) if @model.creator %>
+
 <div class="row row-cols-2 row-cols-md-4 mb-4">
   <%= render partial: "part", collection: @groups.delete(nil) %>
 </div>
