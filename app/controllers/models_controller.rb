@@ -7,6 +7,7 @@ class ModelsController < ApplicationController
   end
 
   def edit
+    @creators = Creator.all
   end
 
   def update
@@ -18,7 +19,9 @@ class ModelsController < ApplicationController
 
   def model_params
     params.require(:model).permit([
-      :preview_part_id
+      :preview_part_id,
+      :creator_id,
+      :name
     ])
   end
 

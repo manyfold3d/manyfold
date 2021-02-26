@@ -1,0 +1,17 @@
+<%= form_with model: [@library, @model] do |form| %>
+  <form>
+    <div class="mb-3">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :preview_part %>
+      <%= form.collection_select :preview_part_id, @model.parts, :id, :name, include_blank: true %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :creator %>
+      <%= form.collection_select :creator_id, @creators, :id, :name, include_blank: true %>
+    </div>
+    <%= form.submit "Save", class: "btn btn-primary" %>
+  </form>
+<% end %>
