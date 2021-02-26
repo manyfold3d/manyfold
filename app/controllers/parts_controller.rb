@@ -1,8 +1,9 @@
 class PartsController < ApplicationController
+  before_action :get_library
+  before_action :get_model
+  before_action :get_part
+
   def show
-    @library = Library.find(params[:library_id])
-    @model = @library.models.find(params[:model_id])
-    @part = @model.parts.find(params[:id])
     respond_to do |format|
       format.html
       format.js
@@ -12,9 +13,6 @@ class PartsController < ApplicationController
   end
 
   def update
-    @library = Library.find(params[:library_id])
-    @model = @library.models.find(params[:model_id])
-    @part = @model.parts.find(params[:id])
     @part.update(part_params)
     redirect_to [@library, @model, @part]
   end
@@ -26,5 +24,17 @@ class PartsController < ApplicationController
       :printed,
       :presupported
     ])
+  end
+
+  def get_library
+    @library = Library.find(params[:library_id])
+  end
+
+  def get_model
+    @model = @library.models.find(params[:model_id])
+  end
+
+  def get_part
+    @part = @model.parts.find(params[:id])
   end
 end
