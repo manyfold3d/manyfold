@@ -5,4 +5,5 @@ Rails.application.routes.draw do
       resources :parts, only: [:show, :update]
     end
   end
+  resources :creators
 end
