@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_232841) do
+ActiveRecord::Schema.define(version: 2021_03_01_230017) do
 
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 2021_02_25_232841) do
     t.string "path", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.string "url"
+    t.string "linkable_type"
+    t.integer "linkable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["linkable_type", "linkable_id"], name: "index_links_on_linkable"
   end
 
   create_table "models", force: :cascade do |t|
