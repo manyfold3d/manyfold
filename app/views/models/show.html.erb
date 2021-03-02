@@ -1,34 +1,38 @@
 <h1><%= @model.name %></h1>
+<div class="row row-cols-2">
 
-<div class="col-3">
-
-  <p><%= @model.path %></p>
-
-  <%= link_to "Edit", edit_library_model_path(@library, @model) %>
-
-  <div>
-    <% @model.tags.each do |tag| %>
-      <span class="badge rounded-pill bg-info text-dark"><%= tag.name %></span>
+  <div class="col-9">
+    <div class="row row-cols-2 row-cols-md-4 mb-4">
+      <%= render partial: "part", collection: @groups.delete(nil) %>
+    </div>
+    <% @groups.each_pair do |group, parts| %>
+      <h3><%= group %></h3>
+      <div class="row row-cols-2 row-cols-md-4 mb-4">
+        <%= render partial: "part", collection: parts %>
+      </div>
     <% end %>
   </div>
 
-  <%= link_to @model.creator.name, creator_path(@model.creator) if @model.creator %>
+  <div class="col-3">
+    <p><%= @model.path %></p>
 
-  <ul>
-    <% @model.links.each do |link| %>
-      <li><%= link_to link.url, link.url %></li>
-    <% end %>
-  </ul>
+    <%= link_to "Edit", edit_library_model_path(@library, @model) %>
 
-</div>
+    <div>
+      <% @model.tags.each do |tag| %>
+        <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
+      <% end %>
+    </div>
 
+    <%= link_to @model.creator.name, creator_path(@model.creator) if @model.creator %>
 
-<div class="row row-cols-2 row-cols-md-4 mb-4">
-  <%= render partial: "part", collection: @groups.delete(nil) %>
-</div>
-<% @groups.each_pair do |group, parts| %>
-  <h3><%= group %></h3>
-  <div class="row row-cols-2 row-cols-md-4 mb-4">
-    <%= render partial: "part", collection: parts %>
+    <ul>
+      <% @model.links.each do |link| %>
+        <li><%= link_to link.url, link.url %></li>
+      <% end %>
+    </ul>
   </div>
-<% end %>
+</div>
+
+
+</div>
