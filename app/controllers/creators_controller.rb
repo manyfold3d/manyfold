@@ -40,10 +40,7 @@ class CreatorsController < ApplicationController
   def creator_params
     params.require(:creator).permit([
       :name,
-      :thingiverse_user,
-      :cgtrader_user,
-      :cults3d_user,
-      :mmf_user
+      links_attributes: [:id, :url, :_destroy]
     ])
   end
 end
