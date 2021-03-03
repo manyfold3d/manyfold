@@ -5,6 +5,8 @@ class Model < ApplicationRecord
   belongs_to :preview_part, class_name: "Part", optional: true
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
+  has_many :links, as: :linkable, dependent: :destroy
+  accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
   acts_as_taggable_on :tags
 

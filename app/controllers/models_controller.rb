@@ -18,11 +18,12 @@ class ModelsController < ApplicationController
   private
 
   def model_params
-    params.require(:model).permit([
+    params.require(:model).permit(
       :preview_part_id,
       :creator_id,
-      :name
-    ])
+      :name,
+      links_attributes: [:id, :url, :_destroy]
+    )
   end
 
   def get_library

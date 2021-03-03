@@ -10,14 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_232841) do
+ActiveRecord::Schema.define(version: 2021_03_02_161202) do
 
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
-    t.string "thingiverse_user"
-    t.string "cults3d_user"
-    t.string "mmf_user"
-    t.string "cgtrader_user"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -28,6 +24,15 @@ ActiveRecord::Schema.define(version: 2021_02_25_232841) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "links", force: :cascade do |t|
+    t.string "url"
+    t.string "linkable_type"
+    t.integer "linkable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["linkable_type", "linkable_id"], name: "index_links_on_linkable"
+  end
+
   create_table "models", force: :cascade do |t|
     t.string "name", null: false
     t.string "path", null: false
@@ -36,6 +41,10 @@ ActiveRecord::Schema.define(version: 2021_02_25_232841) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "preview_part_id"
     t.integer "creator_id"
+    t.string "thingiverse_id"
+    t.string "cgtrader_path"
+    t.string "cults3d_path"
+    t.string "mmf_slug"
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
     t.index ["preview_part_id"], name: "index_models_on_preview_part_id"

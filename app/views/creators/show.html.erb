@@ -3,26 +3,24 @@
 <div class="row row-cols-2">
   <div class="col-9">
     <div class="row row-cols-2 row-cols-md-3 mb-3">
-      <%= render partial: 'libraries/model', collection: @models %>
+      <%= render partial: 'model', collection: @models %>
     </div>
   </div>
   <div class="col-3">
-    <% if @creator.thingiverse_user.present? %>
-      <%= link_to "Thingiverse", "https://thingiverse.com/#{@creator.thingiverse_user}" %>
-    <% end %>
-
-    <% if @creator.cults3d_user.present? %>
-      <%= link_to "Cults3D", "https://cults3d.com/en/users/#{@creator.cults3d_user}" %>
-    <% end %>
-
-    <% if @creator.cgtrader_user.present? %>
-      <%= link_to "CGTrader", "https://cgtrader.com/#{@creator.cgtrader_user}" %>
-    <% end %>
-
-    <% if @creator.mmf_user.present? %>
-      <%= link_to "MyMiniFactory", "https://myminifactory.com/users/#{@creator.mmf_user}" %>
-    <% end %>
-
-    <%= link_to "Edit", edit_creator_path(@creator) %>
+    <div class="card mb-4">
+      <div class="card-header text-white bg-secondary">Links</div>
+      <div class="card-body">
+        <div class="card-text">
+          <ul class='links'>
+            <% @creator.links.each do |link| %>
+              <li><%= link_to t(link.site), link.url %></li>
+            <% end %>
+          </ul>
+        </div>
+       </div>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <%= link_to "Edit Details", edit_creator_path(@creator), class: "btn btn-primary" %>
+    </div>
   </div>
 </div>

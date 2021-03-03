@@ -15,6 +15,8 @@ import 'bootstrap/dist/css/bootstrap'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'src/preview'
 
+import '@nathanvda/cocoon'
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

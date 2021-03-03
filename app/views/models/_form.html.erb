@@ -12,6 +12,17 @@
       <%= form.label :creator %>
       <%= form.collection_select :creator_id, @creators, :id, :name, include_blank: true %>
     </div>
+
+    <h3>Links</h3>
+    <div id='links'>
+      <%= form.fields_for :links do |link| %>
+        <%= render 'link_fields', :f => link %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'add link', form, :links %>
+      </div>
+    </div>
+
     <%= form.submit "Save", class: "btn btn-primary" %>
   </form>
 <% end %>

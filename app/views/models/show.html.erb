@@ -1,20 +1,62 @@
 <h1><%= @model.name %></h1>
-<h2><%= @model.path %></h2>
-<%= link_to "Edit", edit_library_model_path(@library, @model) %>
-<div>
-  <% @model.tags.each do |tag| %>
-    <span class="badge rounded-pill bg-info text-dark"><%= tag.name %></span>
-  <% end %>
-</div>
+<div class="row row-cols-2">
 
-<%= link_to @model.creator.name, creator_path(@model.creator) if @model.creator %>
-
-<div class="row row-cols-2 row-cols-md-4 mb-4">
-  <%= render partial: "part", collection: @groups.delete(nil) %>
-</div>
-<% @groups.each_pair do |group, parts| %>
-  <h3><%= group %></h3>
-  <div class="row row-cols-2 row-cols-md-4 mb-4">
-    <%= render partial: "part", collection: parts %>
+  <div class="col-9">
+    <div class="row row-cols-2 row-cols-md-4 mb-4">
+      <%= render partial: "part", collection: @groups.delete(nil) %>
+    </div>
+    <% @groups.each_pair do |group, parts| %>
+      <h3><%= group %></h3>
+      <div class="row row-cols-2 row-cols-md-4 mb-4">
+        <%= render partial: "part", collection: parts %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+
+  <div class="col-3">
+    <div class="card mb-4">
+      <div class="card-header text-white bg-secondary">Details</div>
+      <div class="card-body">
+        <div class="card-text">
+          <% if @model.creator %>
+            <p>
+              Creator: <%= link_to @model.creator.name, creator_path(@model.creator) %>
+            </p>
+          <% end %>
+          <p>
+            Path: <code><%= @model.path %></code>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-header text-white bg-secondary">Tags</div>
+      <div class="card-body">
+       <div class="card-text">
+          <% @model.tags.each do |tag| %>
+            <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-header text-white bg-secondary">Links</div>
+      <div class="card-body">
+        <div class="card-text">
+          <ul class='links'>
+            <% @model.links.each do |link| %>
+              <li><%= link_to t(link.site), link.url %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <%= link_to "Edit Details", edit_library_model_path(@library, @model), class: "btn btn-primary" %>
+    </div>
+
+  </div>
+</div>
+
+
+</div>

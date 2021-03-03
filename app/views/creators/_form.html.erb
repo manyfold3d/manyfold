@@ -4,22 +4,16 @@
       <%= form.label :name %>
       <%= form.text_field :name %>
     </div>
-    <div class="mb-3">
-      <%= form.label :thingiverse_user %>
-      <%= form.text_field :thingiverse_user %>
+
+    <div id='links'>
+      <%= form.fields_for :links do |link| %>
+        <%= render 'link_fields', :f => link %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'add link', form, :links %>
+      </div>
     </div>
-    <div class="mb-3">
-      <%= form.label :cults3d_user %>
-      <%= form.text_field :cults3d_user %>
-    </div>
-    <div class="mb-3">
-      <%= form.label :cgtrader_user %>
-      <%= form.text_field :cgtrader_user %>
-    </div>
-    <div class="mb-3">
-      <%= form.label :mmf_user %>
-      <%= form.text_field :mmf_user %>
-    </div>
+
     <%= form.submit "Save", class: "btn btn-primary" %>
   </form>
 <% end %>
