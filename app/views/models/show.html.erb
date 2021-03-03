@@ -14,23 +14,47 @@
   </div>
 
   <div class="col-3">
-    <p><%= @model.path %></p>
-
-    <%= link_to "Edit", edit_library_model_path(@library, @model) %>
-
-    <div>
-      <% @model.tags.each do |tag| %>
-        <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
-      <% end %>
+    <div class="card mb-4">
+      <div class="card-header text-white bg-secondary">Details</div>
+      <div class="card-body">
+        <div class="card-text">
+          <% if @model.creator %>
+            <p>
+              Creator: <%= link_to @model.creator.name, creator_path(@model.creator) %>
+            </p>
+          <% end %>
+          <p>
+            Path: <code><%= @model.path %></code>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-header text-white bg-secondary">Tags</div>
+      <div class="card-body">
+       <div class="card-text">
+          <% @model.tags.each do |tag| %>
+            <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-header text-white bg-secondary">Links</div>
+      <div class="card-body">
+        <div class="card-text">
+          <ul class='links'>
+            <% @model.links.each do |link| %>
+              <li><%= link_to t(link.site), link.url %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <%= link_to "Edit Details", edit_library_model_path(@library, @model), class: "btn btn-primary" %>
     </div>
 
-    <%= link_to @model.creator.name, creator_path(@model.creator) if @model.creator %>
-
-    <ul>
-      <% @model.links.each do |link| %>
-        <li><%= link_to link.url, link.url %></li>
-      <% end %>
-    </ul>
   </div>
 </div>
 
