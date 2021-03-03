@@ -15,12 +15,13 @@ class LibrariesController < ApplicationController
     # Filter by tag?
     if params[:tag]
       @tag = ActsAsTaggableOn::Tag.find_by_name(params[:tag])
-      @models = @models.tagged_with(@tag) if @tag
+      @models = @models.tagged_withc(@tag) if @tag
     end
   end
 
   def new
     @library = Library.new
+    @title = "New Library"
   end
 
   def create
@@ -42,5 +43,6 @@ class LibrariesController < ApplicationController
 
   def get_library
     @library = Library.find(params[:id])
+    @title = @library.name
   end
 end

@@ -3,6 +3,7 @@ class CreatorsController < ApplicationController
 
   def index
     @creators = Creator.all
+    @title = "Creators"
   end
 
   def show
@@ -19,6 +20,7 @@ class CreatorsController < ApplicationController
 
   def new
     @creator = Creator.new
+    @title = "New Creator"
   end
 
   def create
@@ -35,6 +37,7 @@ class CreatorsController < ApplicationController
 
   def get_creator
     @creator = Creator.find(params[:id])
+    @title = @creator.name
   end
 
   def creator_params

@@ -36,5 +36,6 @@ class PartsController < ApplicationController
 
   def get_part
     @part = @model.parts.find(params[:id])
+    @title = @part.name
   end
 end
