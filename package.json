@@ -10,7 +10,7 @@
     "@rails/webpacker": "5.2.1",
     "bootstrap": "^5.0.0-beta2",
     "bootstrap-icons": "^1.4.0",
-    "jquery": "^3.5.1",
+    "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "stimulus": "^2.0.0",
     "stimulus_reflex": "3.4.1",
