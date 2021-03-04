@@ -19,6 +19,7 @@
 
     <%= card :secondary, "Actions" do %>
       <%= link_to "Rescan", library_path(@library), method: :patch, class: 'btn btn-warning' %>
+      <%= link_to "New Library", new_library_path, class: 'btn btn-secondary' %>
     <% end %>
 
   </div>
