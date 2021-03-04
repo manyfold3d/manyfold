@@ -14,7 +14,7 @@
     "popper.js": "^1.16.1",
     "stimulus": "^2.0.0",
     "stimulus_reflex": "3.4.1",
-    "three": "^0.126.0",
+    "three": "^0.126.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
