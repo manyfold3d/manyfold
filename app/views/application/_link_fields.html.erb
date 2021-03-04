@@ -1,7 +1,9 @@
-<div class='nested-fields'>
-  <div class="field">
-    <%= f.label :url %>
-    <%= f.url_field :url %>
-    <%= link_to_remove_association "remove", f %>
-  </div>
+<div class="row mb-3">
+  <%= f.label :url, class: "col-sm-2 col-form-label" %>
+  <%= tag.div class: "col-sm-9" do %>
+    <%= f.url_field :url, class: "form-control" %>
+  <% end %>
+  <%= tag.div class: "col-sm-1 col-form-label" do %>
+    <%= link_to_remove_association icon(:trash, "Delete"), f %>
+  <% end %>
 </div>
