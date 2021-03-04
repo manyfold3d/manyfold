@@ -20,6 +20,7 @@
 
     <%= card(:secondary, 'Actions') do %>
       <%= link_to "Edit Details", edit_creator_path(@creator), class: "btn btn-primary" %>
+      <%= link_to 'Delete', @creator, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
     <% end %>
 
   </div>
