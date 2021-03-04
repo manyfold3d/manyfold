@@ -1,4 +1,3 @@
-<%= link_to "Rescan", library_path(@library), method: :patch, class: 'float-end btn btn-warning' %>
 <h1><%= @library.name %></h1>
 <div class="row row-cols-2">
   <div class="col-9">
@@ -18,6 +17,14 @@
               <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
             <% end %>
           <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-header text-white bg-secondary">Actions</div>
+      <div class="card-body">
+        <div class="card-text">
+          <%= link_to "Rescan", library_path(@library), method: :patch, class: 'btn btn-warning' %>
         </div>
       </div>
     </div>
