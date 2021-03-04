@@ -7,16 +7,7 @@
       <% end %>
     </div>
 
-    <div id='links'>
-      <%= form.fields_for :links do |f| %>
-        <%= render 'link_fields', :f => f %>
-      <% end %>
-      <div class="row mb-3">
-        <%= tag.div class: "col-sm-10 offset-sm-2" do %>
-          <%= link_to_add_association 'add link', form, :links %>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'links_form', :form => form %>
 
     <%= form.submit "Save", class: "btn btn-primary" %>
   </form>
