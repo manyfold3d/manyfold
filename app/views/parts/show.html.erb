@@ -13,24 +13,16 @@
   </div>
 
   <div class="col-3">
-    <div class="card mb-4">
-      <div class="card-header text-white bg-secondary">Details</div>
-      <div class="card-body">
-        <div class="card-text">
-          <p>
-            Filename: <code><%= @part.filename %></code>
-          </p>
-          <%= render 'form' %>
-        </div>
-      </div>
-    </div>
-    <div class="card mb-4">
-      <div class="card-header text-white bg-secondary">Actions</div>
-      <div class="card-body">
-        <div class="card-text">
-          <%= link_to "Download", library_model_part_path(@library, @model, @part, @part.file_format.to_sym), {class: "btn btn-secondary"} %>
-        </div>
-      </div>
-    </div>
+    <%= card :secondary, "Details" do %>
+      <p>
+        Filename: <code><%= @part.filename %></code>
+      </p>
+      <%= render 'form' %>
+    <% end %>
+
+    <%= card :secondary, "Actions" do %>
+      <%= link_to "Download", library_model_part_path(@library, @model, @part, @part.file_format.to_sym), {class: "btn btn-secondary"} %>
+    <% end %>
+
   </div>
 </div>

@@ -6,27 +6,20 @@
     </div>
   </div>
   <div class="col-3">
-    <div class="card mb-4">
-      <div class="card-header text-white bg-secondary">Tags</div>
-      <div class="card-body">
-       <div class="card-text">
-          <% @tags.each do |tag| %>
-            <% if (tag == @tag) %>
-              <%=link_to tag.name, @library, {class: "badge rounded-pill bg-success"} %>
-            <% else %>
-              <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="card mb-4">
-      <div class="card-header text-white bg-secondary">Actions</div>
-      <div class="card-body">
-        <div class="card-text">
-          <%= link_to "Rescan", library_path(@library), method: :patch, class: 'btn btn-warning' %>
-        </div>
-      </div>
-    </div>
+
+    <%= card :secondary, "Tags" do %>
+      <% @tags.each do |tag| %>
+        <% if (tag == @tag) %>
+          <%=link_to tag.name, @library, {class: "badge rounded-pill bg-success"} %>
+        <% else %>
+          <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= card :secondary, "Actions" do %>
+      <%= link_to "Rescan", library_path(@library), method: :patch, class: 'btn btn-warning' %>
+    <% end %>
+
   </div>
 </div>

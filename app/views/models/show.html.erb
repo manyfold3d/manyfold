@@ -14,55 +14,39 @@
   </div>
 
   <div class="col-3">
-    <div class="card mb-4">
-      <div class="card-header text-white bg-secondary">Details</div>
-      <div class="card-body">
-        <div class="card-text">
-          <% if @model.creator %>
-            <p>
-              Creator: <%= link_to @model.creator.name, creator_path(@model.creator) %>
-            </p>
-          <% end %>
-          <p>
-            Path: <code><%= @model.path %></code>
-          </p>
-        </div>
-      </div>
-    </div>
+
+    <%= card :secondary, "Details" do %>
+      <% if @model.creator %>
+        <p>
+          Creator: <%= link_to @model.creator.name, creator_path(@model.creator) %>
+        </p>
+      <% end %>
+      <p>
+        Path: <code><%= @model.path %></code>
+      </p>
+    <% end %>
+
     <% unless @model.tags.empty? %>
-      <div class="card mb-4">
-        <div class="card-header text-white bg-secondary">Tags</div>
-        <div class="card-body">
-        <div class="card-text">
-            <% @model.tags.each do |tag| %>
-              <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <%= card :secondary, "Tags" do %>
+        <% @model.tags.each do |tag| %>
+          <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
+        <% end %>
+      <% end %>
     <% end %>
+
     <% unless @model.links.empty? %>
-      <div class="card mb-4">
-        <div class="card-header text-white bg-secondary">Links</div>
-        <div class="card-body">
-          <div class="card-text">
-            <ul class='links'>
-              <% @model.links.each do |link| %>
-                <li><%= link_to t(link.site), link.url %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <%= card :secondary, "Links" do %>
+        <ul class='links'>
+          <% @model.links.each do |link| %>
+            <li><%= link_to t(link.site), link.url %></li>
+          <% end %>
+        </ul>
+      <% end %>
     <% end %>
-    <div class="card mb-4">
-      <div class="card-header text-white bg-secondary">Actions</div>
-      <div class="card-body">
-        <div class="card-text">
-          <%= link_to "Edit Details", edit_library_model_path(@library, @model), class: "btn btn-primary" %>
-        </div>
-      </div>
-    </div>
+
+    <%= card :secondary, "Actions" do %>
+      <%= link_to "Edit Details", edit_library_model_path(@library, @model), class: "btn btn-primary" %>
+    <% end %>
 
   </div>
 </div>

@@ -2,25 +2,25 @@
 
 <div class="row row-cols-2">
   <div class="col-9">
+
     <div class="row row-cols-2 row-cols-md-3 mb-3">
       <%= render partial: 'model', collection: @models %>
     </div>
+
   </div>
   <div class="col-3">
-    <div class="card mb-4">
-      <div class="card-header text-white bg-secondary">Links</div>
-      <div class="card-body">
-        <div class="card-text">
-          <ul class='links'>
-            <% @creator.links.each do |link| %>
-              <li><%= link_to t(link.site), link.url %></li>
-            <% end %>
-          </ul>
-        </div>
-       </div>
-    </div>
-    <div class="d-grid gap-2 col-6 mx-auto">
+
+    <%= card(:secondary, 'Links') do %>
+      <ul class='links'>
+        <% @creator.links.each do |link| %>
+          <li><%= link_to t(link.site), link.url %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= card(:secondary, 'Actions') do %>
       <%= link_to "Edit Details", edit_creator_path(@creator), class: "btn btn-primary" %>
-    </div>
+    <% end %>
+
   </div>
 </div>
