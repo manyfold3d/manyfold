@@ -187,7 +187,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.2.5)
-    regexp_parser (2.0.3)
+    regexp_parser (2.1.1)
     rexml (3.2.4)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
@@ -246,7 +246,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
-    standard (0.13.0)
+    standard (1.0.0)
       rubocop (= 1.10.0)
       rubocop-performance (= 1.9.2)
     stimulus_reflex (3.4.1)
@@ -307,7 +307,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   spring
   sqlite3 (~> 1.4)
-  standard (~> 0.13.0)
+  standard (~> 1.0.0)
   stimulus_reflex (~> 3.4)
   turbolinks (~> 5)
   tzinfo-data
