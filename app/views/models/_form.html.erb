@@ -10,7 +10,7 @@
     <div class="row mb-3">
       <%= form.label :preview_part, class: "col-sm-2 col-form-label" %>
       <%= tag.div class: "col-sm-10" do %>
-        <%= form.collection_select :preview_part_id, @model.parts, :id, :name, include_blank: true, class: "form-control" %>
+        <%= form.collection_select :preview_part_id, @model.parts, :id, :name, {include_blank: true}, {class: "form-control form-select"} %>
         <div id="previewPartHelp" class="form-text">The part displayed as a model preview in library pages</div>
       <% end %>
     </div>
@@ -18,7 +18,7 @@
     <div class="row mb-3">
       <%= form.label :creator_id, class: "col-sm-2 col-form-label" %>
       <%= tag.div class: "col-sm-10" do %>
-        <%= form.collection_select :creator_id, @creators, :id, :name, include_blank: true, class: "form-control" %>
+        <%= form.collection_select :creator_id, @creators, :id, :name, {include_blank: true}, {class: "form-control form-select"} %>
         <div id="creatorHelp" class="form-text">Or <%= link_to "add a new Creator", new_creator_path %></div>
       <% end %>
     </div>
