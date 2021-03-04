@@ -1,16 +1,20 @@
 <%= form_with model: @creator do |form| %>
   <form>
-    <div class="mb-3">
-      <%= form.label :name %>
-      <%= form.text_field :name %>
+    <div class="row mb-3">
+      <%= form.label :name, class: "col-sm-2 col-form-label" %>
+      <%= tag.div class: "col-sm-10" do %>
+        <%= form.text_field :name, class: "form-control" %>
+      <% end %>
     </div>
 
     <div id='links'>
-      <%= form.fields_for :links do |link| %>
-        <%= render 'link_fields', :f => link %>
+      <%= form.fields_for :links do |f| %>
+        <%= render 'link_fields', :f => f %>
       <% end %>
-      <div class='links'>
-        <%= link_to_add_association 'add link', form, :links %>
+      <div class="row mb-3">
+        <%= tag.div class: "col-sm-10 offset-sm-2" do %>
+          <%= link_to_add_association 'add link', form, :links %>
+        <% end %>
       </div>
     </div>
 
