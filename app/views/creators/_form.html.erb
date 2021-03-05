@@ -1,10 +1,8 @@
 <%= form_with model: @creator do |form| %>
   <form>
-    <div class="row mb-3">
+    <div class="row mb-3 input-group">
       <%= form.label :name, class: "col-sm-2 col-form-label" %>
-      <%= tag.div class: "col-sm-10" do %>
-        <%= form.text_field :name, class: "form-control" %>
-      <% end %>
+      <%= form.text_field :name, class: "form-control col-auto" %>
     </div>
 
     <%= render 'links_form', :form => form %>
