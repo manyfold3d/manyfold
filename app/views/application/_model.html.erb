@@ -5,8 +5,11 @@
       </canvas>
     <% end %>
     <div class="card-body">
+      <%= link_to "Open", [model.library, model], {class: "btn btn-primary float-end"} %>
       <h5 class="card-title"><%= model.name %></h5>
-      <%= link_to "Open", [model.library, model], {class: "btn btn-primary"} %>
+      <% if @creator.nil? && model.creator %>
+        <small>by <%= link_to model.creator.name, model.creator %></small>
+      <% end %>
     </div>
   </div>
 </div>
