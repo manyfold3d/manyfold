@@ -13,13 +13,7 @@
   </div>
   <div class="col-3">
 
-    <%= card(:secondary, 'Links') do %>
-      <ul class='links'>
-        <% @creator.links.each do |link| %>
-          <li><%= link_to t(link.site), link.url %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    <%= render 'links_card', links: @creator.links %>
 
     <%= card(:secondary, 'Actions') do %>
       <%= link_to "Edit Details", edit_creator_path(@creator), class: "btn btn-primary" %>

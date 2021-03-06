@@ -26,19 +26,8 @@
       </p>
     <% end %>
 
-    <% unless @model.tags.empty? %>
-      <%= render 'tags_card', tags: @model.tags, selected: nil %>
-    <% end %>
-
-    <% unless @model.links.empty? %>
-      <%= card :secondary, "Links" do %>
-        <ul class='links'>
-          <% @model.links.each do |link| %>
-            <li><%= link_to t(link.site), link.url %></li>
-          <% end %>
-        </ul>
-      <% end %>
-    <% end %>
+    <%= render 'tags_card', tags: @model.tags, selected: nil %>
+    <%= render 'links_card', links: @model.links %>
 
     <%= card :secondary, "Actions" do %>
       <%= link_to "Edit Details", edit_library_model_path(@library, @model), class: "btn btn-primary" %>
