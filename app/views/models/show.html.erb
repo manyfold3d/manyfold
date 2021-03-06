@@ -27,11 +27,7 @@
     <% end %>
 
     <% unless @model.tags.empty? %>
-      <%= card :secondary, "Tags" do %>
-        <% @model.tags.each do |tag| %>
-          <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
-        <% end %>
-      <% end %>
+      <%= render 'tags_card', tags: @model.tags, selected: nil %>
     <% end %>
 
     <% unless @model.links.empty? %>

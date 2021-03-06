@@ -7,15 +7,7 @@
   </div>
   <div class="col-3">
 
-    <%= card :secondary, "Tags" do %>
-      <% @tags.each do |tag| %>
-        <% if (tag == @tag) %>
-          <%=link_to tag.name, @library, {class: "badge rounded-pill bg-success"} %>
-        <% else %>
-          <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
-        <% end %>
-      <% end %>
-    <% end %>
+    <%= render 'tags_card', tags: @tags, selected: @tag %>
 
     <%= card :secondary, "Actions" do %>
       <%= link_to "Rescan", library_path(@library), method: :patch, class: 'btn btn-warning' %>
