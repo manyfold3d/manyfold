@@ -32,5 +32,6 @@ class ModelsController < ApplicationController
 
   def get_model
     @model = @library.models.find(params[:id])
+    @title = @model.name
   end
 end

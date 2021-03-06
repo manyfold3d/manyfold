@@ -21,6 +21,7 @@ class LibrariesController < ApplicationController
 
   def new
     @library = Library.new
+    @title = "New Library"
   end
 
   def create
@@ -42,5 +43,6 @@ class LibrariesController < ApplicationController
 
   def get_library
     @library = Library.find(params[:id])
+    @title = @library.name
   end
 end

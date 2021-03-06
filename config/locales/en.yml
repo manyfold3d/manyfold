@@ -30,4 +30,14 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  # Site names
+  thingiverse: Thingiverse
+  myminifactory: MyMiniFactory
+  cults3d: Cults3D
+  cgtrader: CGTrader
+  # ActiveRecord things
+  activerecord:
+    models:
+    attributes:
+      link:
+        url: "URL"

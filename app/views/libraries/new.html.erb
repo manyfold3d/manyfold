@@ -2,11 +2,14 @@
 
 <%= form_with model: @library do |form| %>
 
-  <div class="form-group">
-    <label for="path">Path</label>
-    <%= form.text_field :path, class: 'form-control', placeholder:"Filesystem path" %>
-    <small id="pathHelp" class="form-text text-muted">The complete path to your library on disk.</small>
+  <div class="row mb-3 input-group">
+    <%= form.label :path, class: "col-sm-2 col-form-label" %>
+    <div class='col-sm-10 ps-0'>
+      <%= form.text_field :path, class: 'form-control', placeholder:"Filesystem path" %>
+      <small id="pathHelp" class="form-text text-muted">The complete path to your library on disk.</small>
+    </div>
   </div>
-  <%= form.submit "Create", class: 'btn btn-primary' %>
+
+  <%= form.submit "Save", class: 'btn btn-primary' %>
 
 <% end %>

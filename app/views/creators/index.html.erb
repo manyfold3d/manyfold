@@ -1,7 +1,16 @@
 <h1>Creators</h1>
 
-<div class="row row-cols-2 row-cols-md-4 mb-4">
-  <%= render @creators %>
-</div>
+<div class="row row-cols-2">
+  <div class="col-9">
+    <div class="row row-cols-2 row-cols-md-3 mb-3">
+      <%= render @creators %>
+    </div>
+  </div>
+  <div class="col-3">
 
-<%= link_to "New", new_creator_path %>
+    <%= card :secondary, "Actions" do %>
+      <%= link_to "New Creator", new_creator_path, class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>

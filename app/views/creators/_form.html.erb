@@ -1,18 +1,11 @@
 <%= form_with model: @creator do |form| %>
   <form>
-    <div class="mb-3">
-      <%= form.label :name %>
-      <%= form.text_field :name %>
+    <div class="row mb-3 input-group">
+      <%= form.label :name, class: "col-sm-2 col-form-label" %>
+      <%= form.text_field :name, class: "form-control col-auto" %>
     </div>
 
-    <div id='links'>
-      <%= form.fields_for :links do |link| %>
-        <%= render 'link_fields', :f => link %>
-      <% end %>
-      <div class='links'>
-        <%= link_to_add_association 'add link', form, :links %>
-      </div>
-    </div>
+    <%= render 'links_form', :form => form %>
 
     <%= form.submit "Save", class: "btn btn-primary" %>
   </form>

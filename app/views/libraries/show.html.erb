@@ -1,25 +1,26 @@
-<%= link_to "Rescan", library_path(@library), method: :patch, class: 'float-end btn btn-warning' %>
 <h1><%= @library.name %></h1>
 <div class="row row-cols-2">
   <div class="col-9">
-    <div class="row row-cols-2 row-cols-md-3 mb-3">
+    <div class="row row-cols-2 row-cols-md-3 mb-4">
       <%= render partial: 'model', collection: @models %>
     </div>
   </div>
   <div class="col-3">
-    <div class="card mb-4">
-      <div class="card-header text-white bg-secondary">Tags</div>
-      <div class="card-body">
-       <div class="card-text">
-          <% @tags.each do |tag| %>
-            <% if (tag == @tag) %>
-              <%=link_to tag.name, @library, {class: "badge rounded-pill bg-success"} %>
-            <% else %>
-              <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
+
+    <%= card :secondary, "Tags" do %>
+      <% @tags.each do |tag| %>
+        <% if (tag == @tag) %>
+          <%=link_to tag.name, @library, {class: "badge rounded-pill bg-success"} %>
+        <% else %>
+          <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= card :secondary, "Actions" do %>
+      <%= link_to "Rescan", library_path(@library), method: :patch, class: 'btn btn-warning' %>
+      <%= link_to "New Library", new_library_path, class: 'btn btn-secondary' %>
+    <% end %>
+
   </div>
 </div>

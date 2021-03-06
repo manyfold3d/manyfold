@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VanDAM</title>
+    <title>VanDAM<%= " : #{@title}" if @title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -20,14 +20,11 @@
           </li>
         <% end %>
         <li class="nav-item">
-          <%= link_to "+ New Library", new_library_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
           <%= link_to "Creators", creators_path, class: "nav-link" %>
         </li>
       </ul>
       <%= yield %>
-      <footer>
+      <footer class='mt-5 py-2 border-top'>
         VanDAM is Open Source, available from <%= link_to "GitHub", "https://github.com/Floppy/van_dam" %>.
         This server is cataloguing a total of <%= "#{Model.count} model".pluralize(Model.count) %>,
         with <%= "#{Part.count} part".pluralize(Part.count) %>,
