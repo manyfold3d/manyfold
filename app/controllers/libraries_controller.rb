@@ -15,7 +15,7 @@ class LibrariesController < ApplicationController
     # Filter by tag?
     if params[:tag]
       @tag = ActsAsTaggableOn::Tag.find_by_name(params[:tag])
-      @models = @models.tagged_withc(@tag) if @tag
+      @models = @models.tagged_with(@tag) if @tag
     end
   end
 
