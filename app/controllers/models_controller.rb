@@ -8,6 +8,7 @@ class ModelsController < ApplicationController
 
   def edit
     @creators = Creator.all
+    @model.links.build if @model.links.empty? # populate empty link
   end
 
   def update

@@ -11,6 +11,7 @@ class CreatorsController < ApplicationController
   end
 
   def edit
+    @creator.links.build if @creator.links.empty? # populate empty link
   end
 
   def update
@@ -20,6 +21,7 @@ class CreatorsController < ApplicationController
 
   def new
     @creator = Creator.new
+    @creator.links.build if @creator.links.empty? # populate empty link
     @title = "New Creator"
   end
 
