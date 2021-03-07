@@ -5,22 +5,32 @@ import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
 class PartPreview {
   constructor (canvas, url, format) {
     this.canvas = canvas
+    this.url = url
+    this.format = format
+    // Trigger loading when canvas becomes visible
+    this.loading = false
+    const observer = new window.IntersectionObserver(this.onIntersectionChanged.bind(this), {})
+    observer.observe(canvas)
+    this.setup()
+  }
+
+  setup () {
     this.scene = new THREE.Scene()
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
     this.camera = new THREE.PerspectiveCamera(45, this.canvas.width / this.canvas.height, 0.1, 1000)
     this.camera.position.z = 50
-    // Trigger loading when canvas becomes visible
-    this.loading = false
-    this.url = url
-    this.format = format
-    const observer = new window.IntersectionObserver(this.onIntersectionChanged.bind(this), {})
-    observer.observe(canvas)
     // Start animation loop
     this.animate()
   }
 
   onIntersectionChanged (entries, observer) {
-    if (entries[0].isIntersecting && this.loading === false) {
+    if (entries[0].isIntersecting) {
+      this.onBecomeVisible()
+    }
+  }
+
+  onBecomeVisible () {
+    if (this.loading === false) {
       this.loading = true
       this.load(this.url, this.format)
     }
