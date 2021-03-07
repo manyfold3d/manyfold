@@ -7,8 +7,6 @@ class PartPreview {
     this.canvas = canvas
     this.url = url
     this.format = format
-    // Trigger loading when canvas becomes visible
-    this.loading = false
     const observer = new window.IntersectionObserver(this.onIntersectionChanged.bind(this), {})
     observer.observe(canvas)
     this.setup()
@@ -30,10 +28,7 @@ class PartPreview {
   }
 
   onBecomeVisible () {
-    if (this.loading === false) {
-      this.loading = true
-      this.load(this.url, this.format)
-    }
+    this.load(this.url, this.format)
   }
 
   load (url, format) {
