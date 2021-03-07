@@ -9,7 +9,6 @@ class PartPreview {
     this.format = format
     const observer = new window.IntersectionObserver(this.onIntersectionChanged.bind(this), {})
     observer.observe(canvas)
-    this.setup()
   }
 
   setup () {
@@ -28,6 +27,7 @@ class PartPreview {
   }
 
   onBecomeVisible () {
+    this.setup()
     this.load(this.url, this.format)
   }
 
