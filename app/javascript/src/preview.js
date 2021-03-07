@@ -16,19 +16,23 @@ class PartPreview {
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
     this.camera = new THREE.PerspectiveCamera(45, this.canvas.width / this.canvas.height, 0.1, 1000)
     this.camera.position.z = 50
-    // Start animation loop
-    this.animate()
   }
 
   onIntersectionChanged (entries, observer) {
     if (entries[0].isIntersecting) {
       this.onBecomeVisible()
+    } else {
+      this.onDisappear()
     }
   }
 
   onBecomeVisible () {
     this.setup()
     this.load(this.url, this.format)
+  }
+
+  onDisappear () {
+    this.cleanup()
   }
 
   load (url, format) {
@@ -82,6 +86,8 @@ class PartPreview {
     // Add the grid
     this.gridHelper = new THREE.GridHelper(260, 26, 'magenta', 'cyan')
     this.scene.add(this.gridHelper)
+    // Start animation loop
+    this.animate()
   }
 
   onLoadError (error) {
@@ -89,16 +95,13 @@ class PartPreview {
   }
 
   animate () {
-    if (this.canvas.closest('html')) { // There's probably more efficient way to do this than checking every frame, but I can't make MutationObserver work right now
-      this.scene.rotation.y += 0.01
-      this.renderer.render(this.scene, this.camera)
-      window.requestAnimationFrame(this.animate.bind(this))
-    } else {
-      this.cleanup()
-    }
+    this.scene.rotation.y = Date.now() / 1800
+    this.renderer.render(this.scene, this.camera)
+    this.frame = window.requestAnimationFrame(this.animate.bind(this))
   }
 
   cleanup () {
+    window.cancelAnimationFrame(this.frame)
     this.scene.traverse(function (node) {
       if (node instanceof THREE.Mesh) {
         node.geometry.dispose()
