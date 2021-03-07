@@ -20,19 +20,11 @@ class PartPreview {
 
   onIntersectionChanged (entries, observer) {
     if (entries[0].isIntersecting) {
-      this.onBecomeVisible()
+      this.setup()
+      this.load(this.url, this.format)
     } else {
-      this.onDisappear()
+      this.cleanup()
     }
-  }
-
-  onBecomeVisible () {
-    this.setup()
-    this.load(this.url, this.format)
-  }
-
-  onDisappear () {
-    this.cleanup()
   }
 
   load (url, format) {
@@ -102,13 +94,17 @@ class PartPreview {
 
   cleanup () {
     window.cancelAnimationFrame(this.frame)
-    this.scene.traverse(function (node) {
-      if (node instanceof THREE.Mesh) {
-        node.geometry.dispose()
-        node.material.dispose()
-      }
-    })
-    this.renderer.dispose()
+    if (this.scene) {
+      this.scene.traverse(function (node) {
+        if (node instanceof THREE.Mesh) {
+          node.geometry.dispose()
+          node.material.dispose()
+        }
+      })
+    }
+    if (this.renderer) {
+      this.renderer.dispose()
+    }
   }
 }
 
