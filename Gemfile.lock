@@ -246,7 +246,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
-    standard (1.0.1)
+    standard (1.0.4)
       rubocop (= 1.11.0)
       rubocop-performance (= 1.10.1)
     stimulus_reflex (3.4.1)
@@ -307,7 +307,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   spring
   sqlite3 (~> 1.4)
-  standard (~> 1.0.1)
+  standard (~> 1.0.4)
   stimulus_reflex (~> 3.4)
   turbolinks (~> 5)
   tzinfo-data
