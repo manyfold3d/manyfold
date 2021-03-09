@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@nathanvda/cocoon": "^1.2.14",
-    "@popperjs/core": "^2.9.0",
+    "@popperjs/core": "^2.9.1",
     "@rails/actioncable": "^6.1.3",
     "@rails/activestorage": "^6.1.3",
     "@rails/ujs": "^6.1.3",
