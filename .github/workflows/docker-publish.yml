@@ -51,6 +51,6 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          secrets: |
+          build-args: |
             VAN_DAM_GIT_REF=$CI_REF_NAME
-            VAN_DAM_GIT_SHA=$CI_SHA
+            VAN_DAM_GIT_SHA=$CI_SHA_SHORT
