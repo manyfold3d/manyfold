@@ -10,9 +10,9 @@
     <%= render 'tags_card', tags: @tags, selected: @tag %>
 
     <%= card :secondary, "Actions" do %>
-      <%= link_to "Rescan", library_path(@library), method: :patch, class: 'btn btn-warning' %>
-      <%= link_to "New Library", new_library_path, class: 'btn btn-secondary' %>
-      <%= link_to "Bulk Edit", edit_library_models_path(@library, tag: @tag&.name), class: 'btn btn-secondary' %>
+      <%= link_to "Rescan", library_path(@library), method: :patch, class: 'btn btn-warning mb-3 me-3' %>
+      <%= link_to "New Library", new_library_path, class: 'btn btn-secondary mb-3 me-3' %>
+      <%= link_to "Bulk Edit", edit_library_models_path(@library, tag: @tag&.name), class: 'btn btn-secondary mb-3 me-3' %>
     <% end %>
 
   </div>
