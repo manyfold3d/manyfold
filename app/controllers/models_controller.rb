@@ -1,6 +1,6 @@
 class ModelsController < ApplicationController
   before_action :get_library
-  before_action :get_model
+  before_action :get_model, except: [:bulk_edit, :bulk_update]
 
   def show
     @groups = helpers.group(@model.parts)
@@ -16,7 +16,29 @@ class ModelsController < ApplicationController
     redirect_to [@library, @model]
   end
 
+  def bulk_edit
+    @creators = Creator.all
+    @models = @library.models
+    if (@tag = params[:tag])
+      @models = @models.tagged_with(@tag)
+    end
+  end
+
+  def bulk_update
+    params[:models].each_pair do |id, selected|
+      if selected == "1"
+        model = @library.models.find(id)
+        model.update(bulk_update_params)
+      end
+    end
+    redirect_to @library
+  end
+
   private
+
+  def bulk_update_params
+    params.permit(:creator_id)
+  end
 
   def model_params
     params.require(:model).permit(
