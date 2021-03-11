@@ -1,5 +1,7 @@
 <h1>Bulk Edit Models</h1>
-<%= @tag %>
+<% if @tag %>
+  <p class="lead">Tagged with &quot;<%= @tag %>&quot;</p>
+<% end %>
 
 <%= form_with url: library_models_path(@library), method: :patch do |form| %>
 
@@ -28,6 +30,8 @@
     <%= form.collection_select :creator_id, @creators, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
     <%= link_to "New Creator", new_creator_path, class: "btn btn-outline-secondary col-auto" %>
   </div>
+
+  <%= form.hidden_field :tag, value: @tag if @tag %>
   <%= form.submit "Update Selected Models", class: "btn btn-primary" %>
 
 <% end %>

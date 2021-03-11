@@ -31,7 +31,7 @@ class ModelsController < ApplicationController
         model.update(bulk_update_params)
       end
     end
-    redirect_to @library
+    redirect_to edit_library_models_path(@library, tag: params[:tag])
   end
 
   private
