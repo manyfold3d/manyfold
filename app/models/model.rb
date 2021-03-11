@@ -8,6 +8,8 @@ class Model < ApplicationRecord
   has_many :links, as: :linkable, dependent: :destroy
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
+  default_scope { order(:name) }
+
   acts_as_taggable_on :tags
 
   def autogenerate_tags_from_path!
