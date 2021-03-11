@@ -24,6 +24,7 @@ You can run all the dependencies in one go using `docker-compose`:
 * Bundler 2.x
 * Node.js 14.x
 * Yarn >= 1.22
+* Foreman or [another Procfile runner](https://github.com/ddollar/foreman#ports)
 
 ### Usage
 
@@ -31,10 +32,10 @@ You can run all the dependencies in one go using `docker-compose`:
 bundle install
 yarn install
 bundle exec rake db:migrate
-bundle exec rails server
+foreman start
 ```
 
-The server will then be running at http://127.0.0.1:3000
+The server will then be running at http://127.0.0.1:5000
 ### How to run the test suite
 
 `bundle exec rake`

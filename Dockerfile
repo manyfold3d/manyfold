@@ -1,6 +1,7 @@
 FROM ruby:3.0-alpine AS build
 
 RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn python2
+RUN gem install foreman
 
 ENV PORT 3214
 ENV RACK_ENV production
@@ -28,4 +29,4 @@ RUN \
 
 EXPOSE 3214
 ENTRYPOINT ["bin/docker-entrypoint.sh"]
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD ["foreman", "start"]
