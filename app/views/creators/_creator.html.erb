@@ -2,6 +2,7 @@
   <div class="card"%>
     <div class="card-body">
       <h5 class="card-title"><%= creator.name %></h5>
+      <p class="card-text"><%= pluralize creator.models.count, "models" %></p>
       <%= link_to "Details", creator, {class: "btn btn-primary"} %>
     </div>
   </div>
