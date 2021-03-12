@@ -42,7 +42,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "standard", "~> 1.0.4"
   gem "factory_bot"
-  gem "faker", "~> 2.16"
+  gem "faker", "~> 2.17"
   gem "guard", "~> 2.16"
   gem "guard-rspec", "~> 4.7"
 end
