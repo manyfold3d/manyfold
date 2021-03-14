@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_161202) do
+ActiveRecord::Schema.define(version: 2021_03_14_185822) do
 
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 2021_03_02_161202) do
 
   add_foreign_key "models", "creators"
   add_foreign_key "models", "libraries"
-  add_foreign_key "models", "parts", column: "preview_part_id"
   add_foreign_key "parts", "models"
   add_foreign_key "taggings", "tags"
 end
