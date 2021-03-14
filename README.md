@@ -22,7 +22,8 @@ You can run all the dependencies in one go using `docker-compose`:
 
 1. Copy `docker-compose.example.yml` to `docker-compose.yml` and edit the paths,
    secret key, and passwords
-2. Run `docker-compose up`
+2. Run `docker-compose up` - this might fail the first time it's run due to race
+   conditions in setting up the database
 3. Once it all starts, Van DAM should be running at http://127.0.0.1:3214
 4. Add a library - remember the path mappings in the compose file, by default
    your libraries will be available at `/libraries`
