@@ -21,12 +21,20 @@ even an M1 Mac.
 You can run all the dependencies in one go using `docker-compose`:
 
 1. Copy `docker-compose.example.yml` to `docker-compose.yml` and edit the paths,
-   secret key, and passwords
-2. Run `docker-compose up` - this might fail the first time it's run due to race
-   conditions in setting up the database
-3. Once it all starts, Van DAM should be running at http://127.0.0.1:3214
-4. Add a library - remember the path mappings in the compose file, by default
-   your libraries will be available at `/libraries`
+   secret key, and database password
+
+2. Run `docker-compose up`
+
+   This might fail the first time it's run due to race conditions in setting up
+   the database.
+
+3. Open Van DAM at http://localhost:3214
+
+4. Add a library
+
+   Remember the path mappings in the Docker Compose file? In
+   `docker-compose.example.yml` the libraries at `/path/to/your/libraries` in
+   your file system would be available at `/libraries` in the app.
 
 ## Development
 
