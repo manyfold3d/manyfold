@@ -15,8 +15,8 @@ You can run the latest release in docker by using the image
 database to operate.
 
 The docker image supports `linux/amd64`, `linux/arm/v7` and `linux/arm64`
-architectures, so you should be able to run it on a PC, a Raspberry Pi, or maybe
-even an M1 Mac.
+architectures, so you should be able to run it on a PC, a Raspberry Pi, or an M1
+Mac.
 
 You can run all the dependencies in one go using `docker-compose`:
 
