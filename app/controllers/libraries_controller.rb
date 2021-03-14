@@ -35,6 +35,11 @@ class LibrariesController < ApplicationController
     redirect_to @library
   end
 
+  def destroy
+    @library.destroy
+    redirect_to libraries_path
+  end
+
   private
 
   def library_params
