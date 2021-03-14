@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: "libraries#index"
-  resources :libraries, only: [:index, :show, :new, :create, :update] do
+  resources :libraries do
     resources :models, except: [:index, :destroy] do
       collection do
         get "edit", action: "bulk_edit"
