@@ -11,12 +11,14 @@
     <tr>
       <th>Update</th>
       <th>Name</th>
+      <th>Tags</th>
       <th>Creator</th>
     </tr>
     <% @models.each do |model| %>
       <tr>
         <td><%= form.check_box "models[#{model.id}]"%></td>
-        <td><%= link_to model.name, [@library, model] %></td>
+        <td><%= link_to model.name, [@library, model], title: model.path %></td>
+        <td><%= render partial: 'tag', collection: model.tags, locals: {selected: nil} %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
       </tr>
     <% end %>

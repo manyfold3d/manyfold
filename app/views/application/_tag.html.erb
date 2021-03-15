@@ -1,0 +1,5 @@
+<% if (tag == selected) %>
+  <%=link_to tag.name, @library, {class: "badge rounded-pill bg-success"} %>
+<% else %>
+  <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary"} %>
+<% end %>
