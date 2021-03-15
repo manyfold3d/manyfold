@@ -20,9 +20,10 @@ RSpec.describe Part, type: :model do
   end
 
   it "can have the same filename as a part in a different model" do
-    model1 = create(:model, path: "model1")
+    library = create(:library)
+    model1 = create(:model, library: library, path: "model1")
     create(:part, model: model1, filename: "part.stl")
-    model2 = create(:model, path: "model2")
+    model2 = create(:model, library: library, path: "model2")
     expect(build(:part, model: model2, filename: "part.stl")).to be_valid
   end
 end

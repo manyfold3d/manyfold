@@ -21,16 +21,23 @@ RSpec.describe Model, type: :model do
     expect(build(:model).parts).to eq []
   end
 
-  it "must have a unique path within its library" do
-    library = create(:library, path: "/library")
-    create(:model, library: library, path: "model")
-    expect(build(:model, library: library, path: "model")).not_to be_valid
-  end
+  context "with a library on disk" do
+    before :each do
+      allow(File).to receive(:exists?).with("/library1").and_return(true).once
+      allow(File).to receive(:exists?).with("/library2").and_return(true).once
+    end
 
-  it "can have the same path as a model in a different library" do
-    library1 = create(:library, path: "/library1")
-    create(:model, library: library1, path: "model")
-    library2 = create(:library, path: "/library2")
-    expect(build(:model, library: library2, path: "model")).to be_valid
+    it "must have a unique path within its library" do
+      library = create(:library, path: "/library1")
+      create(:model, library: library, path: "model")
+      expect(build(:model, library: library, path: "model")).not_to be_valid
+    end
+
+    it "can have the same path as a model in a different library" do
+      library1 = create(:library, path: "/library1")
+      create(:model, library: library1, path: "model")
+      library2 = create(:library, path: "/library2")
+      expect(build(:model, library: library2, path: "model")).to be_valid
+    end
   end
 end

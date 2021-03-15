@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :library do
-    path { Faker::File.dir }
+    path { "/tmp" }
   end
 end
