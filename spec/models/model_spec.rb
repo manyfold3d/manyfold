@@ -23,8 +23,8 @@ RSpec.describe Model, type: :model do
 
   context "with a library on disk" do
     before :each do
-      allow(File).to receive(:exists?).with("/library1").and_return(true).once
-      allow(File).to receive(:exists?).with("/library2").and_return(true).once
+      allow(File).to receive(:exist?).with("/library1").and_return(true)
+      allow(File).to receive(:exist?).with("/library2").and_return(true)
     end
 
     it "must have a unique path within its library" do
