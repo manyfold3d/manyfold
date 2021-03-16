@@ -6,7 +6,11 @@
     <%= form.label :path, class: "col-sm-2 col-form-label" %>
     <div class='col-sm-10 ps-0'>
       <%= form.text_field :path, class: 'form-control', placeholder:"Filesystem path" %>
-      <small id="pathHelp" class="form-text text-muted">The complete path to your library on disk.</small>
+      <% if @library.errors.include?(:path) %>
+        <%= tag.div @library.errors.full_messages_for(:path).join("; "), class: "invalid-feedback" %>
+      <% else %>
+        <small id="pathHelp" class="form-text text-muted">The complete path to your library on disk.</small>
+      <% end %>
     </div>
   </div>
 

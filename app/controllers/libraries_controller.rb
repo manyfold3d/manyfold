@@ -26,8 +26,12 @@ class LibrariesController < ApplicationController
 
   def create
     @library = Library.create(library_params)
-    LibraryScanJob.perform_later(@library)
-    redirect_to @library
+    if @library.valid?
+      LibraryScanJob.perform_later(@library)
+      redirect_to @library
+    else
+      render :new
+    end
   end
 
   def update
