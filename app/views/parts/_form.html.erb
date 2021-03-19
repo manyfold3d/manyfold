@@ -7,5 +7,9 @@
     <%= form.check_box :presupported, class: 'form-check-input' %>
     <label class="form-check-label" for="presupported">Presupported?</label>
   </div>
+  <div class="form-check form-switch mb-3">
+    <%= form.check_box :y_up, class: 'form-check-input' %>
+    <label class="form-check-label" for="y_up">Y Up</label>
+  </div>
   <%= form.submit "Update", class: 'btn btn-primary' %>
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_14_185822) do
+ActiveRecord::Schema.define(version: 2021_03_18_202638) do
 
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_03_14_185822) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "presupported", default: false
     t.boolean "printed", default: false
+    t.boolean "y_up", default: false, null: false
     t.index ["model_id"], name: "index_parts_on_model_id"
   end
 
