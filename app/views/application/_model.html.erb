@@ -1,8 +1,9 @@
 <div class="col mb-4">
   <div class="card">
     <% if part = model.preview_part %>
-      <canvas id="preview-part-<%= part.id %>" class="card-img-top" data-preview data-preview-url="<%= library_model_part_path(model.library, model, part, part.file_format.to_sym) %>" data-format="<%= part.file_format %>">
-      </canvas>
+      <div class="card-img-top">
+        <%= render partial: "part_preview", locals: { part: part } %>
+      </div>
     <% end %>
     <div class="card-body">
       <%= link_to "Open", [model.library, model], {class: "btn btn-primary float-end"} %>

@@ -3,10 +3,11 @@ import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
 
 class PartPreview {
-  constructor (canvas, url, format) {
+  constructor (canvas, url, format, yUp) {
     this.canvas = canvas
     this.url = url
     this.format = format
+    this.yUp = yUp
     const observer = new window.IntersectionObserver(this.onIntersectionChanged.bind(this), {})
     observer.observe(canvas)
   }
@@ -54,13 +55,15 @@ class PartPreview {
       object = model
     }
     // Transform to screen coords from print
-    const coordSystemTransform = new THREE.Matrix4()
-    coordSystemTransform.set(
-      1, 0, 0, 0, // x -> x
-      0, 0, 1, 0, // z -> y
-      0, -1, 0, 0, // y -> -z
-      0, 0, 0, 1)
-    object.applyMatrix4(coordSystemTransform)
+    if (this.yUp === false) {
+      const coordSystemTransform = new THREE.Matrix4()
+      coordSystemTransform.set(
+        1, 0, 0, 0, // x -> x
+        0, 0, 1, 0, // z -> y
+        0, -1, 0, 0, // y -> -z
+        0, 0, 0, 1)
+      object.applyMatrix4(coordSystemTransform)
+    }
     // Calculate bounding volumes
     const bbox = new THREE.Box3().setFromObject(object)
     const centre = new THREE.Vector3()
@@ -114,7 +117,8 @@ document.addEventListener('turbolinks:load', () => {
     canvas.renderer = new PartPreview(
       canvas,
       canvas.dataset.previewUrl,
-      canvas.dataset.format
+      canvas.dataset.format,
+      (canvas.dataset.yUp === 'true')
     )
   })
 })
