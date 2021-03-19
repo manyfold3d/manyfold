@@ -16,7 +16,7 @@ export default class extends ApplicationController {
    * call super if you intend to do anything else when this controller connects.
   */
 
-  connect () {
+  connect (): void {
     super.connect()
     // add your code here, if applicable
   }
