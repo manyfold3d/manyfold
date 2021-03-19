@@ -22,6 +22,8 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.10",
+    "@typescript-eslint/parser": "^4.18.0",
+    "eslint": "^7.22.0",
     "husky": "^5.1.3",
     "ts-standard": "^10.0.0",
     "webpack-bundle-analyzer": "^4.4.0",
