@@ -2,4 +2,4 @@
 . "$(dirname "$0")/_/husky.sh"
 
 bundle exec standardrb
-yarn run standard
+yarn run ts-standard

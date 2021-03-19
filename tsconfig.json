@@ -11,6 +11,7 @@
         "*": ["node_modules/*", "app/javascript/*"]
     },
     "sourceMap": true,
+    "strictNullChecks": true,
     "target": "es5",
     "noEmit": true
   },

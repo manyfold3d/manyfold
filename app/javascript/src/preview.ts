@@ -12,15 +12,15 @@ class PartPreview {
     observer.observe(canvas)
   }
 
-  setup () {
+  setup (): void {
     this.scene = new THREE.Scene()
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
     this.camera = new THREE.PerspectiveCamera(45, this.canvas.width / this.canvas.height, 0.1, 1000)
     this.camera.position.z = 50
   }
 
-  onIntersectionChanged (entries, observer) {
-    if (entries[0].isIntersecting) {
+  onIntersectionChanged (entries, observer): void {
+    if (entries[0].isIntersecting === true) {
       this.setup()
       this.load(this.url, this.format)
     } else {
@@ -28,7 +28,7 @@ class PartPreview {
     }
   }
 
-  load (url, format) {
+  load (url, format): void {
     let loader = null
     if (format === 'obj') { loader = new OBJLoader() } else if (format === 'stl') { loader = new STLLoader() }
 
@@ -39,7 +39,7 @@ class PartPreview {
     )
   }
 
-  onLoad (model) {
+  onLoad (model): void {
     const material = new THREE.MeshNormalMaterial({
       flatShading: true
     })
@@ -85,19 +85,19 @@ class PartPreview {
     this.animate()
   }
 
-  onLoadError (error) {
+  onLoadError (error): void {
     console.error(error)
   }
 
-  animate () {
+  animate (): void {
     this.scene.rotation.y = Date.now() / 1800
     this.renderer.render(this.scene, this.camera)
     this.frame = window.requestAnimationFrame(this.animate.bind(this))
   }
 
-  cleanup () {
+  cleanup (): void {
     window.cancelAnimationFrame(this.frame)
-    if (this.scene) {
+    if (this.scene !== null) {
       this.scene.traverse(function (node) {
         if (node instanceof THREE.Mesh) {
           node.geometry.dispose()
@@ -105,7 +105,7 @@ class PartPreview {
         }
       })
     }
-    if (this.renderer) {
+    if (this.renderer !== null) {
       this.renderer.dispose()
     }
   }
