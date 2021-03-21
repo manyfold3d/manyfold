@@ -2,6 +2,7 @@
 <div class="row row-cols-2">
 
   <div class="col-9">
+    <h2>Parts</h2>
     <div class="row row-cols-2 row-cols-md-3 mb-4">
       <%= render partial: "part", collection: @groups.delete(nil) %>
     </div>
@@ -11,6 +12,10 @@
         <%= render partial: "part", collection: parts %>
       </div>
     <% end %>
+    <h2>Images</h2>
+    <div class="row row-cols-2 row-cols-md-3 mb-4">
+      <%= render partial: "image", collection: @model.images %>
+    </div>
   </div>
 
   <div class="col-3">

@@ -1,0 +1,8 @@
+<div class="col mb-4">
+  <div class="card">
+    <%= image_tag library_model_image_path(@library, @model, image, format: image.file_format), class: "card-img-top", alt: image.name %>
+    <div class="card-body">
+      <h5 class="card-title"><%= image.name %></h5>
+    </div>
+  </div>
+</div>

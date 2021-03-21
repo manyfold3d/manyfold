@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_18_202638) do
+ActiveRecord::Schema.define(version: 2021_03_21_164508) do
 
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer "model_id", null: false
+    t.string "filename"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["model_id"], name: "index_images_on_model_id"
   end
 
   create_table "libraries", force: :cascade do |t|
@@ -88,6 +96,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_202638) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  add_foreign_key "images", "models"
   add_foreign_key "models", "creators"
   add_foreign_key "models", "libraries"
   add_foreign_key "parts", "models"

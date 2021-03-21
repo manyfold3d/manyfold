@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         patch "update", action: "bulk_update"
       end
       resources :parts, except: [:index, :destroy]
+      resources :images, only: [:show]
     end
   end
   resources :creators
