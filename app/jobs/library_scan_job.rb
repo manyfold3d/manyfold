@@ -1,12 +1,11 @@
 class LibraryScanJob < ApplicationJob
   queue_as :default
 
+  FILE_PATTERN = "*.{stl,STL,obj,OBJ}"
+
   def perform(library)
     # For each directory in the library, create a model
-    all_3d_files = Dir.glob([
-      File.join(library.path, "**", "*.stl"),
-      File.join(library.path, "**", "*.obj")
-    ])
+    all_3d_files = Dir.glob(File.join(library.path, "**", FILE_PATTERN))
     model_folders = all_3d_files.map { |f| File.dirname(f) }.uniq
     model_folders = model_folders.map { |f| f.gsub(/\/files$/, "").gsub(/\/images$/, "") }.uniq # Ignore thingiverse subfolders
     model_folders.each do |path|
