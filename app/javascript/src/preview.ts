@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 class PartPreview {
   constructor (canvas, url, format, yUp) {
@@ -17,6 +18,9 @@ class PartPreview {
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
     this.camera = new THREE.PerspectiveCamera(45, this.canvas.width / this.canvas.height, 0.1, 1000)
     this.camera.position.z = 50
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+    this.controls.enableDamping = true
+    this.controls.enablePan = false
   }
 
   onIntersectionChanged (entries, observer): void {
@@ -74,30 +78,34 @@ class PartPreview {
     // Configure camera
     this.camera.position.z = bsphere.radius * 2.3
     this.camera.position.y = bsphere.radius * 0.75
-    this.camera.lookAt(0, modelheight / 2, 0)
+    this.controls.target = new THREE.Vector3(0, modelheight / 2, 0)
     // Centre the model
     object.position.set(-centre.x, -bbox.min.y, -centre.z)
     this.scene.add(object)
     // Add the grid
     this.gridHelper = new THREE.GridHelper(260, 26, 'magenta', 'cyan')
     this.scene.add(this.gridHelper)
-    // Start animation loop
-    this.animate()
+    // Render first frame
+    this.onAnimationFrame()
   }
 
   onLoadError (error): void {
     console.error(error)
   }
 
-  animate (): void {
-    this.scene.rotation.y = Date.now() / 1800
+  stopAnimation (): void {
+    window.cancelAnimationFrame(this.frame)
+  }
+
+  onAnimationFrame (): void {
+    this.controls.update()
     this.renderer.render(this.scene, this.camera)
-    this.frame = window.requestAnimationFrame(this.animate.bind(this))
+    this.frame = window.requestAnimationFrame(this.onAnimationFrame.bind(this))
   }
 
   cleanup (): void {
-    window.cancelAnimationFrame(this.frame)
-    if (this.scene !== null) {
+    this.stopAnimation()
+    if (typeof this.scene !== 'undefined' && this.scene !== null) {
       this.scene.traverse(function (node) {
         if (node instanceof THREE.Mesh) {
           node.geometry.dispose()
@@ -105,7 +113,7 @@ class PartPreview {
         }
       })
     }
-    if (this.renderer !== null) {
+    if (typeof this.renderer !== 'undefined' && this.renderer !== null) {
       this.renderer.dispose()
     }
   }
