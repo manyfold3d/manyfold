@@ -13,6 +13,14 @@ RSpec.describe ModelScanJob, type: :job do
     create(:model, path: "model_one", library: library)
   end
 
+  it "generates a case-insensitive pattern for model files" do
+    expect(ModelScanJob.model_pattern).to eq "*.{stl,STL,obj,OBJ}"
+  end
+
+  it "generates a case-insensitive pattern for image files" do
+    expect(ModelScanJob.image_pattern).to eq "*.{jpg,JPG,png,PNG}"
+  end
+
   it "can scan a library directory" do
     expect { ModelScanJob.perform_now(model) }.to change { model.parts.count }.to(2)
     expect(model.parts.map(&:filename)).to eq ["part_1.obj", "part_2.obj"]

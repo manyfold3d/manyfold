@@ -1,22 +1,31 @@
 class ModelScanJob < ApplicationJob
   queue_as :default
 
-  FILE_PATTERN = "*.{stl,STL,obj,OBJ}"
-  IMAGE_FILE_PATTERN = "*.{jpg,JPG,png,PNG}"
+  def self.model_pattern
+    lower = Rails.configuration.formats[:models].map(&:downcase)
+    upper = Rails.configuration.formats[:models].map(&:upcase)
+    "*.{#{lower.zip(upper).flatten.join(",")}}"
+  end
+
+  def self.image_pattern
+    lower = Rails.configuration.formats[:images].map(&:downcase)
+    upper = Rails.configuration.formats[:images].map(&:upcase)
+    "*.{#{lower.zip(upper).flatten.join(",")}}"
+  end
 
   def perform(model)
     # For each file in the model, create a part
     model_path = File.join(model.library.path, model.path)
     Dir.open(model_path) do |dir|
       Dir.glob([
-        File.join(dir.path, FILE_PATTERN),
-        File.join(dir.path, "files", FILE_PATTERN)
+        File.join(dir.path, ModelScanJob.model_pattern),
+        File.join(dir.path, "files", ModelScanJob.model_pattern)
       ]).each do |filename|
         model.parts.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
       end
       Dir.glob([
-        File.join(dir.path, IMAGE_FILE_PATTERN),
-        File.join(dir.path, "images", IMAGE_FILE_PATTERN)
+        File.join(dir.path, ModelScanJob.image_pattern),
+        File.join(dir.path, "images", ModelScanJob.image_pattern)
       ]).each do |filename|
         model.images.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
       end

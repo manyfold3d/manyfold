@@ -1,0 +1,7 @@
+shared:
+  models:
+  - stl
+  - obj
+  images:
+  - jpg
+  - png
