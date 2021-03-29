@@ -24,7 +24,7 @@
     "@babel/eslint-parser": "^7.13.10",
     "@typescript-eslint/parser": "^4.19.0",
     "eslint": "^7.23.0",
-    "husky": "^5.2.0",
+    "husky": "^6.0.0",
     "ts-standard": "^10.0.0",
     "webpack-bundle-analyzer": "^4.4.0",
     "webpack-dev-server": "^3.11.2"
