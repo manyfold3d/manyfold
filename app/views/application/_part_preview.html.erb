@@ -1,7 +1,9 @@
-<canvas
-  id="preview-part-<%= part.id %>"
-  data-preview
-  data-preview-url="<%= library_model_part_path(part.model.library, part.model, part, part.file_format.to_sym) %>"
-  data-format="<%= part.file_format %>"
-  data-y-up="<%= part.y_up %>"
-></canvas>
+<% if can_preview?(part.file_format) %>
+  <canvas
+    id="preview-part-<%= part.id %>"
+    data-preview
+    data-preview-url="<%= library_model_part_path(part.model.library, part.model, part, part.file_format.to_sym) %>"
+    data-format="<%= part.file_format %>"
+    data-y-up="<%= part.y_up %>"
+  ></canvas>
+<% end %>

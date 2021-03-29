@@ -15,4 +15,13 @@ module ApplicationHelper
       ].join.html_safe
     end
   end
+
+  def can_preview?(format)
+    case format
+    when "stl", "obj"
+      true
+    else
+      false
+    end
+  end
 end
