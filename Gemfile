@@ -65,3 +65,5 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "cocoon", "~> 1.2"
 
 gem "public_suffix", "~> 4.0"
+
+gem "logs", "~> 0.3.0"
