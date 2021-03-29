@@ -14,7 +14,7 @@ RSpec.describe ModelScanJob, type: :job do
   end
 
   it "generates a case-insensitive pattern for model files" do
-    expect(ModelScanJob.model_pattern).to eq "*.{stl,STL,obj,OBJ}"
+    expect(ModelScanJob.model_pattern).to eq "*.{stl,STL,obj,OBJ,3mf,3MF,blend,BLEND,mix,MIX,ply,PLY}"
   end
 
   it "generates a case-insensitive pattern for image files" do

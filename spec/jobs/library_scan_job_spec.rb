@@ -10,7 +10,7 @@ RSpec.describe LibraryScanJob, type: :job do
   end
 
   it "generates a case-insensitive pattern for model files" do
-    expect(LibraryScanJob.model_pattern).to eq "*.{stl,STL,obj,OBJ}"
+    expect(LibraryScanJob.model_pattern).to eq "*.{stl,STL,obj,OBJ,3mf,3MF,blend,BLEND,mix,MIX,ply,PLY}"
   end
 
   it "can scan a library directory" do

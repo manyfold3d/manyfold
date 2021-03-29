@@ -2,6 +2,10 @@ shared:
   models:
   - stl
   - obj
+  - 3mf
+  - blend
+  - mix
+  - ply
   images:
   - jpg
   - png
