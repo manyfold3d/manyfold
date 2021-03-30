@@ -12,6 +12,7 @@ class LibrariesController < ApplicationController
   def show
     @models = @library.models.includes(:tags, :preview_part, :creator)
     @tags = @models.map(&:tags).flatten.uniq.sort_by(&:name)
+    @scanning = Delayed::Job.count > 0
     # Filter by tag?
     if params[:tag]
       @tag = ActsAsTaggableOn::Tag.find_by_name(params[:tag])
