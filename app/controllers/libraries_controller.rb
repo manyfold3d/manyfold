@@ -10,7 +10,7 @@ class LibrariesController < ApplicationController
   end
 
   def show
-    @models = @library.models
+    @models = @library.models.includes(:tags, :preview_part, :creator)
     @tags = @models.map(&:tags).flatten.uniq.sort_by(&:name)
     # Filter by tag?
     if params[:tag]

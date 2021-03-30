@@ -1,7 +1,7 @@
 <div class="col mb-4">
   <div class="card <%= part === @model.preview_part ? "border-primary" : "" %>"%>
     <div class="card-img-top">
-      <%= render partial: "part_preview", locals: { part: part } %>
+      <%= render partial: "part_preview", locals: { library: @library, model: @model, part: part } %>
     </div>
     <div class="card-body">
       <h5 class="card-title"><%= part.name %></h5>
