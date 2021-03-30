@@ -14,6 +14,9 @@
   <body>
     <div class="container">
       <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <%= link_to "Search", '/', class: "nav-link" %>
+        </li>
         <% Library.all.each do |library| %>
           <li class="nav-item">
             <%= link_to library.name, library, class: (library == @library ? "nav-link active" : "nav-link") %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: "libraries#index"
+  root to: "search#index"
+  post "/", controller: :search, action: :index
   resources :libraries do
     resources :models, except: [:index, :destroy] do
       collection do
