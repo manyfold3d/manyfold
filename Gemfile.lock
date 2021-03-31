@@ -79,6 +79,11 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
+    delayed_job (4.1.9)
+      activesupport (>= 3.0, < 6.2)
+    delayed_job_active_record (4.1.6)
+      activerecord (>= 3.0, < 6.2)
+      delayed_job (>= 3.0, < 5)
     diff-lcs (1.4.4)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
@@ -314,6 +319,7 @@ DEPENDENCIES
   byebug
   cocoon (~> 1.2)
   database_cleaner-active_record (~> 2.0)
+  delayed_job_active_record (~> 4.1)
   dotenv-rails (~> 2.7)
   factory_bot
   faker (~> 2.17)
