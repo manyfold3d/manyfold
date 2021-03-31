@@ -8,7 +8,7 @@
   <div class="col-3">
 
     <%= card :secondary, "Actions" do %>
-      <%= link_to (@scanning ? "<span class=\"spinner-border spinner-border-sm\" role=\"status\" aria-hidden=\"true\"></span> Scanning".html_safe : "Rescan"),
+      <%= link_to (@scanning ? "<span class=\"spinner-border spinner-border-sm\" aria-hidden=\"true\"></span> Scanning".html_safe : "Rescan"),
         library_path(@library),
         method: :patch,
         class: "btn btn-warning mb-3 me-3 #{"btn-outline-warning disabled" if @scanning}"
