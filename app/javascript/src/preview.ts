@@ -1,6 +1,8 @@
 import * as THREE from 'three'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
+import { ThreeMFLoader } from 'three/examples/jsm/loaders/3MFLoader.js'
+import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 class PartPreview {
@@ -34,13 +36,27 @@ class PartPreview {
 
   load (url, format): void {
     let loader = null
-    if (format === 'obj') { loader = new OBJLoader() } else if (format === 'stl') { loader = new STLLoader() }
-
-    loader.load(url,
-      this.onLoad.bind(this),
-      undefined,
-      this.onLoadError.bind(this)
-    )
+    switch (format) {
+      case 'obj':
+        loader = new OBJLoader()
+        break
+      case 'stl':
+        loader = new STLLoader()
+        break
+      case '3mf':
+        loader = new ThreeMFLoader()
+        break
+      case 'ply':
+        loader = new PLYLoader()
+        break
+    }
+    if (loader !== null) {
+      loader.load(url,
+        this.onLoad.bind(this),
+        undefined,
+        this.onLoadError.bind(this)
+      )
+    }
   }
 
   onLoad (model): void {

@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def can_preview?(format)
     case format
-    when "stl", "obj"
+    when "stl", "obj", "3mf", "ply"
       true
     else
       false
