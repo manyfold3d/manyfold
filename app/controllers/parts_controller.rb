@@ -27,6 +27,8 @@ class PartsController < ApplicationController
     filename = File.join(@library.path, @model.path, @part.filename)
     response.headers["Content-Length"] = File.size(filename).to_s
     send_file filename, disposition: :inline, type: @part.file_format.to_sym
+  rescue Errno::ENOENT
+    head :internal_server_error
   end
 
   def part_params
