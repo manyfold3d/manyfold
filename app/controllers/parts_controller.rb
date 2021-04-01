@@ -9,6 +9,10 @@ class PartsController < ApplicationController
       format.js
       format.stl { send_file_content }
       format.obj { send_file_content }
+      format.threemf { send_file_content }
+      format.ply { send_file_content }
+      format.blend { send_file_content }
+      format.mix { send_file_content }
     end
   end
 
