@@ -10,10 +10,18 @@
     <% end %>
   </div>
 </div>
-<div class="row row-cols-2">
-  <div class="col-8 offset-md-2">
-    <div class="row row-cols-2 row-cols-md-3">
-      <%= render partial: 'model', collection: @results %>
+<% if @results %>
+  <div class="row row-cols-2">
+    <div class="col-8 offset-md-2">
+      <p class="lead"><%= pluralize(@results.count, "result") %></p>
+      <div class="row row-cols-2 row-cols-md-3">
+        <%= render partial: 'model', collection: @results %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
+<% if @query %>
+  <div class="row mb-3 text-center">
+    <a href='https://yeggi.com/q/<%= @query %>/'>Search for more on Yeggi</a>
+  </div>
+<% end %>
