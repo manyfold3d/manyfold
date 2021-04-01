@@ -7,6 +7,7 @@ class SearchController < ApplicationController
       field = Model.arel_table[:name]
       @results = Model.where(field.matches("%#{@query}%"))
       @results += Model.tagged_with(@query)
+      @results.uniq!
     end
   end
 
