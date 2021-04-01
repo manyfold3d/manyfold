@@ -6,8 +6,9 @@ import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 class PartPreview {
-  constructor (canvas, url, format, yUp) {
+  constructor (canvas, progressIndicator, url, format, yUp) {
     this.canvas = canvas
+    this.progressIndicator = progressIndicator
     this.url = url
     this.format = format
     this.yUp = yUp
@@ -27,7 +28,6 @@ class PartPreview {
 
   onIntersectionChanged (entries, observer): void {
     if (entries[0].isIntersecting === true) {
-      this.setup()
       this.load(this.url, this.format)
     } else {
       this.cleanup()
@@ -53,13 +53,21 @@ class PartPreview {
     if (loader !== null) {
       loader.load(url,
         this.onLoad.bind(this),
-        undefined,
+        this.onProgress.bind(this),
         this.onLoadError.bind(this)
       )
     }
   }
 
+  onProgress (xhr): void {
+    const percentage = Math.floor(xhr.loaded / xhr.total * 100).toString() + '%'
+    this.progressIndicator.style.width = percentage
+    this.progressIndicator.ariaValueNow = percentage
+    this.progressIndicator.textContent = percentage
+  }
+
   onLoad (model): void {
+    this.setup()
     const material = new THREE.MeshNormalMaterial({
       flatShading: true
     })
@@ -105,8 +113,11 @@ class PartPreview {
     this.onAnimationFrame()
   }
 
-  onLoadError (error): void {
-    console.error(error)
+  onLoadError (): void {
+    this.progressIndicator.classList.add('bg-danger')
+    this.progressIndicator.style.width = '100%'
+    this.progressIndicator.ariaValueNow = '100%'
+    this.progressIndicator.textContent = 'Load Error'
   }
 
   stopAnimation (): void {
@@ -136,10 +147,12 @@ class PartPreview {
 }
 
 document.addEventListener('turbolinks:load', () => {
-  document.querySelectorAll('canvas[data-preview]').forEach((canvas) => {
+  document.querySelectorAll('[data-preview]').forEach((div) => {
+    const canvas = div.getElementsByTagName('canvas')[0]
     canvas.height = canvas.width
     canvas.renderer = new PartPreview(
       canvas,
+      div.getElementsByClassName('progress-bar')[0],
       canvas.dataset.previewUrl,
       canvas.dataset.format,
       (canvas.dataset.yUp === 'true')

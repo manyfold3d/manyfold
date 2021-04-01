@@ -2,7 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-canvas {
-  width: 100%;
-  background: black;
+
+.part-preview {
+
+  .progress {
+    width: 80%
+  }
+
+  canvas {
+    width: 100%;
+    z-index: 10000;
+  }
+
 }
