@@ -7,8 +7,8 @@ class PartsController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      format.stl { send_file File.join(@library.path, @model.path, @part.filename) }
-      format.obj { send_file File.join(@library.path, @model.path, @part.filename) }
+      format.stl { send_file_content }
+      format.obj { send_file_content }
     end
   end
 
@@ -18,6 +18,12 @@ class PartsController < ApplicationController
   end
 
   private
+
+  def send_file_content
+    filename = File.join(@library.path, @model.path, @part.filename)
+    response.headers["Content-Length"] = File.size(filename).to_s
+    send_file filename, disposition: :inline, type: @part.file_format.to_sym
+  end
 
   def part_params
     params.require(:part).permit([
