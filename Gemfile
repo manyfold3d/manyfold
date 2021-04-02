@@ -69,3 +69,5 @@ gem "public_suffix", "~> 4.0"
 gem "logs", "~> 0.3.0"
 
 gem "delayed_job_active_record", "~> 4.1"
+
+gem "activerecord-nulldb-adapter", "~> 0.7.0"

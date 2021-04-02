@@ -8,6 +8,7 @@ ARG VAN_DAM_GIT_SHA
 
 ENV PORT=3214
 ENV RACK_ENV=production
+ENV RAILS_ENV=production
 ENV NODE_ENV=production
 ENV RAILS_SERVE_STATIC_FILES=true
 ENV VAN_DAM_GIT_REF=${VAN_DAM_GIT_REF}
@@ -27,6 +28,7 @@ RUN bundle install
 
 COPY . .
 RUN \
+  DATABASE_URL="nulldb://user:pass@localhost/db" \
   SECRET_KEY_BASE="placeholder" \
   bundle exec rake assets:precompile
 
