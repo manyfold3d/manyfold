@@ -23,7 +23,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
     "@typescript-eslint/parser": "^4.22.0",
-    "eslint": "^7.24.0",
+    "eslint": "^7.25.0",
     "husky": "^6.0.0",
     "ts-standard": "^10.0.0",
     "webpack-bundle-analyzer": "^4.4.1",
