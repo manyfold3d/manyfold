@@ -26,7 +26,7 @@
     "eslint": "^7.25.0",
     "husky": "^6.0.0",
     "ts-standard": "^10.0.0",
-    "webpack-bundle-analyzer": "^4.4.1",
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-dev-server": "^3.11.2"
   }
 }
