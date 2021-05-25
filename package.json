@@ -22,7 +22,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.3",
-    "@typescript-eslint/parser": "^4.24.0",
+    "@typescript-eslint/parser": "^4.25.0",
     "eslint": "^7.26.0",
     "husky": "^6.0.0",
     "ts-standard": "^10.0.0",
