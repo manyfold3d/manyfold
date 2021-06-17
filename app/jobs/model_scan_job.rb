@@ -30,6 +30,10 @@ class ModelScanJob < ApplicationJob
         model.images.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
       end
     end
+    # Clean out missing parts
+    model.parts.select { |part|
+      !File.exist?(File.join(model_path, part.filename))
+    }.each(&:destroy)
     # Set tags and default parts
     model.parts.reload
     model.preview_part = model.parts.first
