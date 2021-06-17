@@ -108,7 +108,8 @@ class PartPreview {
     object.position.set(-centre.x, -bbox.min.y, -centre.z)
     this.scene.add(object)
     // Add the grid
-    this.gridHelper = new THREE.GridHelper(260, 26, 'magenta', 'cyan')
+    const gridSize = 260
+    this.gridHelper = new THREE.GridHelper(gridSize, gridSize / 10, 'magenta', 'cyan')
     this.scene.add(this.gridHelper)
     // Render first frame
     this.onAnimationFrame()
