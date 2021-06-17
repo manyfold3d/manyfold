@@ -23,5 +23,9 @@ class LibraryScanJob < ApplicationJob
         Rails.logger.error(model.errors.full_messages.inspect)
       end
     end
+    # Remove models with missing path
+    library.models.each do |m|
+      m.destroy unless File.exist?(File.join(library.path, m.path))
+    end
   end
 end

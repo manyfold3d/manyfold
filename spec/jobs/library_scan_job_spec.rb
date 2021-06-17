@@ -22,4 +22,10 @@ RSpec.describe LibraryScanJob, type: :job do
   it "queues up model scans" do
     expect { LibraryScanJob.perform_now(library) }.to have_enqueued_job(ModelScanJob).exactly(3).times
   end
+
+  it "removes models with no parts" do
+    lib = create(:library, path: File.join("/", "tmp"))
+    create(:model, library: lib, path: "missing")
+    expect { LibraryScanJob.perform_now(lib) }.to change { lib.models.count }.from(1).to(0)
+  end
 end
