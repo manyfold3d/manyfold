@@ -10,6 +10,7 @@ services:
     environment:
       DATABASE_URL: postgresql://van_dam:password@db/van_dam?pool=5
       SECRET_KEY_BASE: a_nice_long_random_string
+      GRID_SIZE: 260
     depends_on:
       - db
       - redis

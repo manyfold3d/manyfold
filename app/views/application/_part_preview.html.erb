@@ -6,7 +6,10 @@
     <canvas class="position-relative"
       data-preview-url="<%= library_model_part_path(library, model, part, part.file_format.to_sym)%>"
       data-format="<%= part.file_format %>"
-      data-y-up="<%= part.y_up %>"  >
+      data-y-up="<%= part.y_up %>"
+      data-grid-size-x="<%= ENV.fetch("GRID_SIZE", 200)%>"
+      data-grid-size-z="<%= ENV.fetch("GRID_SIZE", 200)%>"
+    >
     </canvas>
   </div>
 <% end %>

@@ -6,12 +6,14 @@ import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 class PartPreview {
-  constructor (canvas, progressIndicator, url, format, yUp) {
+  constructor (canvas, progressIndicator, url, format, yUp, gridSizeX, gridSizeZ) {
     this.canvas = canvas
     this.progressIndicator = progressIndicator
     this.url = url
     this.format = format
     this.yUp = yUp
+    this.gridSizeX = gridSizeX
+    this.gridSizeZ = gridSizeZ
     const observer = new window.IntersectionObserver(this.onIntersectionChanged.bind(this), {})
     observer.observe(canvas)
   }
@@ -108,8 +110,7 @@ class PartPreview {
     object.position.set(-centre.x, -bbox.min.y, -centre.z)
     this.scene.add(object)
     // Add the grid
-    const gridSize = 260
-    this.gridHelper = new THREE.GridHelper(gridSize, gridSize / 10, 'magenta', 'cyan')
+    this.gridHelper = new THREE.GridHelper(this.gridSizeX, this.gridSizeX / 10, 'magenta', 'cyan')
     this.scene.add(this.gridHelper)
     // Render first frame
     this.onAnimationFrame()
@@ -157,7 +158,9 @@ document.addEventListener('turbolinks:load', () => {
       div.getElementsByClassName('progress-bar')[0],
       canvas.dataset.previewUrl,
       canvas.dataset.format,
-      (canvas.dataset.yUp === 'true')
+      (canvas.dataset.yUp === 'true'),
+      canvas.dataset.gridSizeX,
+      canvas.dataset.gridSizeZ
     )
   })
 })
