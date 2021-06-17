@@ -24,6 +24,7 @@ class PartPreview {
     this.controls = new OrbitControls(this.camera, this.renderer.domElement)
     this.controls.enableDamping = true
     this.controls.enablePan = false
+    this.controls.enableZoom = false
   }
 
   onIntersectionChanged (entries, observer): void {
