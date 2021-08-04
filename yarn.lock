@@ -7909,10 +7909,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three@^0.129.0:
-  version "0.129.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.129.0.tgz#f5e530bbc96eac5d5b4749cb5da886ef0d42f554"
-  integrity sha512-wiWio1yVRg2Oj6WEWsTHQo5eSzYpEwSBtPSi3OofNpvFbf26HFfb9kw4FZJNjII4qxzp0b1xLB11+tKkBGB1ZA==
+three@^0.131.2:
+  version "0.131.2"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.131.2.tgz#95c1c805594bf5bf4d5027b25b2bc07ae20baa81"
+  integrity sha512-1Wmd0xYihEVpU9HjQ3POqnTlx6VZHmmbmtNgAWY/EVwOvkdXpSE6yFVwIvTkEubCd5LzK14pCHwb36SXoAxi3A==
 
 through2@^2.0.0:
   version "2.0.5"
