@@ -26,7 +26,7 @@ gem "hiredis"
 # gem 'image_processing', '~> 1.2'
 
 gem "dotenv-rails", "~> 2.7"
-gem "acts-as-taggable-on", "~> 8.0"
+gem "acts-as-taggable-on", "~> 8.1"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.4", require: false
