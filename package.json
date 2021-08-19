@@ -17,7 +17,7 @@
     "stimulus_reflex": "3.4.1",
     "three": "^0.129.0",
     "turbolinks": "^5.2.0",
-    "typescript": "^4.3.3"
+    "typescript": "^4.3.5"
   },
   "version": "0.1.0",
   "devDependencies": {
