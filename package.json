@@ -8,7 +8,7 @@
     "@rails/actioncable": "^6.1.4",
     "@rails/activestorage": "^6.1.4",
     "@rails/ujs": "^6.1.4",
-    "@rails/webpacker": "5.4.0",
+    "@rails/webpacker": "5.4.2",
     "bootstrap": "^5.0.2",
     "bootstrap-icons": "^1.5.0",
     "jquery": "^3.6.0",
