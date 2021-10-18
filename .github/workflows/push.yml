@@ -8,7 +8,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2.3.4
+    - uses: actions/checkout@v2.3.5
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.0
@@ -28,7 +28,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2.3.4
+    - uses: actions/checkout@v2.3.5
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.0
