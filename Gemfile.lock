@@ -47,8 +47,8 @@ GEM
     activerecord (6.1.4.1)
       activemodel (= 6.1.4.1)
       activesupport (= 6.1.4.1)
-    activerecord-nulldb-adapter (0.7.0)
-      activerecord (>= 5.2.0, < 6.3)
+    activerecord-nulldb-adapter (0.8.0)
+      activerecord (>= 5.2.0, < 7.1)
     activestorage (6.1.4.1)
       actionpack (= 6.1.4.1)
       activejob (= 6.1.4.1)
@@ -308,7 +308,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   ruby
@@ -316,7 +316,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activerecord-nulldb-adapter (~> 0.7.0)
+  activerecord-nulldb-adapter (~> 0.8.0)
   acts-as-taggable-on (~> 8.1)
   bootsnap (>= 1.4.4)
   byebug
