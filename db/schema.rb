@@ -64,10 +64,6 @@ ActiveRecord::Schema.define(version: 2021_03_30_215825) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "preview_part_id"
     t.integer "creator_id"
-    t.string "thingiverse_id"
-    t.string "cgtrader_path"
-    t.string "cults3d_path"
-    t.string "mmf_slug"
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
     t.index ["preview_part_id"], name: "index_models_on_preview_part_id"
