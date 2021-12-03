@@ -1,15 +1,15 @@
 class LibraryScanJob < ApplicationJob
   queue_as :default
 
-  def self.model_pattern
-    lower = Rails.configuration.formats[:models].map(&:downcase)
-    upper = Rails.configuration.formats[:models].map(&:upcase)
+  def self.file_pattern
+    lower = Rails.configuration.formats[:models].map(&:downcase) + Rails.configuration.formats[:images].map(&:downcase)
+    upper = Rails.configuration.formats[:models].map(&:upcase) + Rails.configuration.formats[:images].map(&:upcase)
     "*.{#{lower.zip(upper).flatten.join(",")}}"
   end
 
   def perform(library)
     # For each directory in the library, create a model
-    all_3d_files = Dir.glob(File.join(library.path, "**", LibraryScanJob.model_pattern))
+    all_3d_files = Dir.glob(File.join(library.path, "**", LibraryScanJob.file_pattern))
     model_folders = all_3d_files.map { |f| File.dirname(f) }.uniq
     model_folders = model_folders.map { |f| f.gsub(/\/files$/, "").gsub(/\/images$/, "") }.uniq # Ignore thingiverse subfolders
     model_folders.each do |path|

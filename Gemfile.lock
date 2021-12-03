@@ -147,6 +147,7 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.1)
+    memoist (0.16.2)
     method_source (1.0.0)
     mini_mime (1.1.0)
     mini_portile2 (2.6.1)
@@ -332,6 +333,7 @@ DEPENDENCIES
   jbuilder (~> 2.11)
   listen (~> 3.7)
   logs (~> 0.3.0)
+  memoist (~> 0.16.2)
   pg (~> 1.2)
   public_suffix (~> 4.0)
   puma (~> 5.5)
@@ -353,4 +355,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.4
+   2.2.15
