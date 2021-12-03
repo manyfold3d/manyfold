@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   post "/", controller: :search, action: :index
   resources :libraries do
     resources :models, except: [:index, :destroy] do
+      member do
+        post "merge"
+      end
       collection do
         get "edit", action: "bulk_edit"
         patch "update", action: "bulk_update"

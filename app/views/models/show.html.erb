@@ -33,6 +33,7 @@
 
     <%= card :secondary, "Actions" do %>
       <%= link_to "Edit Details", edit_library_model_path(@library, @model), class: "btn btn-primary" %>
+      <%= link_to "Merge Into Parent", merge_library_model_path(@library, @model), class: "btn btn-danger", method: :post if @model.parent %>
     <% end %>
 
     <%= render 'tags_card', tags: @model.tags, selected: nil %>

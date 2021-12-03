@@ -16,6 +16,15 @@ class ModelsController < ApplicationController
     redirect_to [@library, @model]
   end
 
+  def merge
+    if (@parent = @model.parent)
+      @model.merge_into_parent!
+      redirect_to [@library, @parent]
+    else
+      render status: :bad_request
+    end
+  end
+
   def bulk_edit
     @creators = Creator.all
     @models = @library.models
