@@ -48,7 +48,7 @@ RSpec.describe Model, type: :model do
       allow(File).to receive(:exist?).with("/library").and_return(true)
     end
 
-    let(:library) {create(:library, path: "/library")}
+    let(:library) { create(:library, path: "/library") }
 
     it "identifies the parent" do
       parent = create(:model, library: library, path: "model")
@@ -56,5 +56,33 @@ RSpec.describe Model, type: :model do
       expect(child.parent).to eql parent
     end
 
+    context "merging into parent" do
+      before :each do
+        @parent = create(:model, library: library, path: "model")
+        @child = create(:model, library: library, path: "model/nested")
+      end
+
+      it "moves parts" do
+        part = create(:part, model: @child, filename: "part.stl")
+        @child.merge_into_parent!
+        part.reload
+        expect(part.filename).to eql "nested/part.stl"
+        expect(part.model).to eql @parent
+      end
+
+      it "moves images" do
+        image = create(:image, model: @child, filename: "image.jpg")
+        @child.merge_into_parent!
+        image.reload
+        expect(image.filename).to eql "nested/image.jpg"
+        expect(image.model).to eql @parent
+      end
+
+      it "deletes merged model" do
+        expect {
+          @child.merge_into_parent!
+        }.to change { Model.count }.from(2).to(1)
+      end
+    end
   end
 end

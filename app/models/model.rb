@@ -1,4 +1,6 @@
 class Model < ApplicationRecord
+  extend Memoist
+
   belongs_to :library
   belongs_to :creator, optional: true
   has_many :parts, dependent: :destroy
@@ -20,5 +22,26 @@ class Model < ApplicationRecord
 
   def parent
     library.models.find_by_path File.join(File.split(path)[0..-2])
+  end
+  memoize :parent
+
+  def merge_into_parent!
+    return unless parent
+
+    dirname = File.split(path)[-1]
+    images.each do |image|
+      image.update(
+        filename: File.join(dirname, image.filename),
+        model: parent
+      )
+    end
+    parts.each do |part|
+      part.update(
+        filename: File.join(dirname, part.filename),
+        model: parent
+      )
+    end
+    reload
+    destroy
   end
 end
