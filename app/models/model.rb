@@ -17,4 +17,8 @@ class Model < ApplicationRecord
     tag_list.add(path.split(File::SEPARATOR)[1..-2].map { |y| y.split(/[\W_]/).filter { |x| x.length > 1 } }.flatten)
     save!
   end
+
+  def parent
+    library.models.find_by_path File.join(File.split(path)[0..-2])
+  end
 end

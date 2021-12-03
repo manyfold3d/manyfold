@@ -23,6 +23,7 @@ RSpec.describe Model, type: :model do
 
   context "with a library on disk" do
     before :each do
+      allow(File).to receive(:exist?).and_call_original
       allow(File).to receive(:exist?).with("/library1").and_return(true)
       allow(File).to receive(:exist?).with("/library2").and_return(true)
     end
@@ -39,5 +40,21 @@ RSpec.describe Model, type: :model do
       library2 = create(:library, path: "/library2")
       expect(build(:model, library: library2, path: "model")).to be_valid
     end
+  end
+
+  context "nested inside another" do
+    before :each do
+      allow(File).to receive(:exist?).and_call_original
+      allow(File).to receive(:exist?).with("/library").and_return(true)
+    end
+
+    let(:library) {create(:library, path: "/library")}
+
+    it "identifies the parent" do
+      parent = create(:model, library: library, path: "model")
+      child = create(:model, library: library, path: "model/nested")
+      expect(child.parent).to eql parent
+    end
+
   end
 end
