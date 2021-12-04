@@ -18,6 +18,7 @@ WORKDIR /usr/src/app
 
 COPY package.json .
 COPY yarn.lock .
+RUN yarn config set network-timeout 600000 -g
 RUN yarn install --prod
 
 RUN gem install bundler -v 2.2.4
