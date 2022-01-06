@@ -7,12 +7,6 @@ class ModelScanJob < ApplicationJob
     "*.{#{lower.zip(upper).flatten.join(",")}}"
   end
 
-  def self.image_pattern
-    lower = Rails.configuration.formats[:images].map(&:downcase)
-    upper = Rails.configuration.formats[:images].map(&:upcase)
-    "*.{#{lower.zip(upper).flatten.join(",")}}"
-  end
-
   def perform(model)
     # For each file in the model, create a file object
     model_path = File.join(model.library.path, model.path)
@@ -22,12 +16,6 @@ class ModelScanJob < ApplicationJob
         File.join(dir.path, "files", ModelScanJob.file_pattern)
       ]).each do |filename|
         model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
-      end
-      Dir.glob([
-        File.join(dir.path, ModelScanJob.image_pattern),
-        File.join(dir.path, "images", ModelScanJob.image_pattern)
-      ]).each do |filename|
-        model.images.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
       end
     end
     # Clean out missing files

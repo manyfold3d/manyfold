@@ -4,7 +4,6 @@ class Model < ApplicationRecord
   belongs_to :library
   belongs_to :creator, optional: true
   has_many :model_files, dependent: :destroy
-  has_many :images, dependent: :destroy
   belongs_to :preview_file, class_name: "ModelFile", optional: true
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
@@ -29,12 +28,6 @@ class Model < ApplicationRecord
     return unless parent
 
     dirname = ::File.split(path)[-1]
-    images.each do |image|
-      image.update(
-        filename: File.join(dirname, image.filename),
-        model: parent
-      )
-    end
     model_files.each do |f|
       f.update(
         filename: File.join(dirname, f.filename),

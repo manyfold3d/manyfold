@@ -63,7 +63,7 @@ class ModelsController < ApplicationController
   end
 
   def get_model
-    @model = @library.models.includes(:model_files, :images, :creator).find(params[:id])
+    @model = @library.models.includes(:model_files, :creator).find(params[:id])
     @title = @model.name
   end
 end
