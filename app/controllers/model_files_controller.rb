@@ -1,4 +1,4 @@
-class FilesController < ApplicationController
+class ModelFilesController < ApplicationController
   before_action :get_library
   before_action :get_model
   before_action :get_file
@@ -34,7 +34,7 @@ class FilesController < ApplicationController
   end
 
   def file_params
-    params.require(:file).permit([
+    params.require(:model_file).permit([
       :printed,
       :presupported,
       :y_up

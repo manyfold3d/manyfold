@@ -1,7 +1,7 @@
 <div class="col mb-4">
   <div class="card <%= file === @model.preview_file ? "border-primary" : "" %>"%>
     <% if image?(file.file_format) %>
-      <%= image_tag library_model_file_path(@library, @model, file, format: file.file_format), class: "card-img-top", alt: file.name %>
+      <%= image_tag library_model_model_file_path(@library, @model, file, format: file.file_format), class: "card-img-top image-preview", alt: file.name %>
     <% elsif renderable?(file.file_format) %>
       <div class="card-img-top">
         <%= render partial: "object_preview", locals: { library: @library, model: @model, file: file } %>
@@ -10,8 +10,8 @@
     <div class="card-body">
       <h5 class="card-title"><%= file.name %></h5>
       <%= form_with model: [@library, @model] do |form| %>
-        <%= link_to "Details", library_model_file_path(@library, @model, file), {class: "btn btn-primary"} %>
-        <%= link_to icon('cloud-download', 'Download'), library_model_file_path(@library, @model, file, file.file_format.to_sym), {class: "btn btn-secondary"} %>
+        <%= link_to "Details", library_model_model_file_path(@library, @model, file), {class: "btn btn-primary"} %>
+        <%= link_to icon('cloud-download', 'Download'), library_model_model_file_path(@library, @model, file, file.file_format.to_sym), {class: "btn btn-secondary"} %>
         <%= form.hidden_field :preview_file_id, value: file.id %>
         <%= form.button icon('bookmark-heart', 'Set as preview'), class: "btn btn-secondary #{file == @model.preview_file ? "disabled" : ""}" %>
       <% end %>
