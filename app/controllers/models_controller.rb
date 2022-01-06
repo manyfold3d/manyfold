@@ -3,7 +3,7 @@ class ModelsController < ApplicationController
   before_action :get_model, except: [:bulk_edit, :bulk_update]
 
   def show
-    @groups = helpers.group(@model.parts)
+    @groups = helpers.group(@model.model_files)
   end
 
   def edit
@@ -51,7 +51,7 @@ class ModelsController < ApplicationController
 
   def model_params
     params.require(:model).permit(
-      :preview_part_id,
+      :preview_file_id,
       :creator_id,
       :name,
       links_attributes: [:id, :url, :_destroy]
@@ -63,7 +63,7 @@ class ModelsController < ApplicationController
   end
 
   def get_model
-    @model = @library.models.includes(:parts, :images, :creator).find(params[:id])
+    @model = @library.models.includes(:model_files, :creator).find(params[:id])
     @title = @model.name
   end
 end

@@ -1,9 +1,9 @@
-// Place all the styles related to the Parts controller here.
+// Place all the styles related to the Files controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-.part-preview {
+.object-preview {
 
   .progress {
     width: 80%
@@ -14,4 +14,10 @@
     z-index: 10000;
   }
 
+}
+
+.image-preview {
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
 }

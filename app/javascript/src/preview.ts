@@ -5,7 +5,7 @@ import { ThreeMFLoader } from 'three/examples/jsm/loaders/3MFLoader.js'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
-class PartPreview {
+class ObjectPreview {
   constructor (canvas, progressIndicator, url, format, yUp, gridSizeX, gridSizeZ) {
     this.canvas = canvas
     this.progressIndicator = progressIndicator
@@ -103,7 +103,7 @@ class PartPreview {
     bbox.getBoundingSphere(bsphere)
     const modelheight = bbox.max.y - bbox.min.y
     // Configure camera
-    this.camera.position.z = bsphere.radius * 2.3
+    this.camera.position.z = this.camera.position.x = bsphere.radius * 1.63
     this.camera.position.y = bsphere.radius * 0.75
     this.controls.target = new THREE.Vector3(0, modelheight / 2, 0)
     // Centre the model
@@ -153,7 +153,7 @@ document.addEventListener('turbolinks:load', () => {
   document.querySelectorAll('[data-preview]').forEach((div) => {
     const canvas = div.getElementsByTagName('canvas')[0]
     canvas.height = canvas.width
-    canvas.renderer = new PartPreview(
+    canvas.renderer = new ObjectPreview(
       canvas,
       div.getElementsByClassName('progress-bar')[0],
       canvas.dataset.previewUrl,

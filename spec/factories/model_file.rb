@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :part do
+  factory :model_file do
     filename { Faker::File.file_name(ext: "stl") }
     model { build :model }
   end

@@ -1,4 +1,4 @@
-class Part < ApplicationRecord
+class ModelFile < ApplicationRecord
   belongs_to :model
   validates :filename, presence: true, uniqueness: {scope: :model}
 

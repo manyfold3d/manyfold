@@ -10,8 +10,7 @@ Rails.application.routes.draw do
         get "edit", action: "bulk_edit"
         patch "update", action: "bulk_update"
       end
-      resources :parts, except: [:index, :destroy]
-      resources :images, only: [:show]
+      resources :model_files, except: [:index, :destroy]
     end
   end
   resources :creators

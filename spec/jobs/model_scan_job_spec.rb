@@ -14,38 +14,34 @@ RSpec.describe ModelScanJob, type: :job do
   end
 
   context "but no scanned files" do
-    it "generates a case-insensitive pattern for model files" do
-      expect(ModelScanJob.model_pattern).to eq "*.{stl,STL,obj,OBJ,3mf,3MF,blend,BLEND,mix,MIX,ply,PLY}"
-    end
-
-    it "generates a case-insensitive pattern for image files" do
-      expect(ModelScanJob.image_pattern).to eq "*.{jpg,JPG,png,PNG}"
+    it "generates a case-insensitive pattern for files" do
+      expect(ModelScanJob.file_pattern).to eq "*.{stl,STL,obj,OBJ,3mf,3MF,blend,BLEND,mix,MIX,ply,PLY,jpg,JPG,png,PNG}"
     end
 
     it "can scan a library directory" do
-      expect { ModelScanJob.perform_now(model) }.to change { model.parts.count }.to(2)
-      expect(model.parts.map(&:filename)).to eq ["part_1.obj", "part_2.obj"]
+      expect { ModelScanJob.perform_now(model) }.to change { model.model_files.count }.to(2)
+      expect(model.model_files.map(&:filename)).to eq ["part_1.obj", "part_2.obj"]
     end
 
     it "can scan a thingiverse-structured model" do
       thing = create(:model, path: "thingiverse_model", library: library)
-      expect { ModelScanJob.perform_now(thing) }.to change { thing.parts.count }.to(1)
-      expect(thing.parts.first.filename).to eq "files/part_one.stl"
+      expect { ModelScanJob.perform_now(thing) }.to change { thing.model_files.count }.to(1)
+      expect(thing.model_files.first.filename).to eq "files/part_one.stl"
     end
 
-    it "sets the preview part to the first scanned part by default" do
-      expect { ModelScanJob.perform_now(model) }.to change { model.parts.count }.to(2)
-      expect(model.preview_part.filename).to eq "part_1.obj"
+    it "sets the preview file to the first scanned file by default" do
+      expect { ModelScanJob.perform_now(model) }.to change { model.model_files.count }.to(2)
+      expect(model.preview_file.filename).to eq "part_1.obj"
     end
   end
 
-  context "with already scanned parts" do
-    it "removes parts that don't exist on disk" do
+  context "with already scanned files" do
+    it "removes files that don't exist on disk" do
       thing = create(:model, path: "thingiverse_model", library: library)
-      create(:part, filename: "missing.stl", model: thing)
-      create(:part, filename: "gone.stl", model: thing)
-      expect { ModelScanJob.perform_now(thing) }.to change { thing.parts.count }.from(2).to(1)
-      expect(thing.parts.first.filename).to eq "files/part_one.stl"
+      create(:model_file, filename: "missing.stl", model: thing)
+      create(:model_file, filename: "gone.stl", model: thing)
+      expect { ModelScanJob.perform_now(thing) }.to change { thing.model_files.count }.from(2).to(1)
+      expect(thing.model_files.first.filename).to eq "files/part_one.stl"
     end
   end
 end
