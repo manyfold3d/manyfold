@@ -2,8 +2,8 @@ class ModelScanJob < ApplicationJob
   queue_as :default
 
   def self.file_pattern
-    lower = Rails.configuration.formats[:models].map(&:downcase) + Rails.configuration.formats[:images].map(&:downcase)
-    upper = Rails.configuration.formats[:models].map(&:upcase) + Rails.configuration.formats[:images].map(&:upcase)
+    lower = Rails.configuration.formats.flatten(2).select { |x| x.is_a?(String) }.map(&:downcase)
+    upper = Rails.configuration.formats.flatten(2).select { |x| x.is_a?(String) }.map(&:upcase)
     "*.{#{lower.zip(upper).flatten.join(",")}}"
   end
 
