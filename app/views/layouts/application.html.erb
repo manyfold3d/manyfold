@@ -30,7 +30,7 @@
       <footer class='mt-5 py-2 border-top'>
         VanDAM is Open Source, available from <%= link_to "GitHub", "https://github.com/Floppy/van_dam" %>.
         This server is cataloguing a total of <%= "#{Model.count} model".pluralize(Model.count) %>,
-        with <%= "#{Part.count} part".pluralize(Part.count) %>,
+        with <%= "#{ModelFile.count} file".pluralize(ModelFile.count) %>,
         in <%= "#{Library.count} library".pluralize(Library.count) %>.
         <% if ENV.has_key? "VAN_DAM_GIT_REF" %>
           <span id='version'>

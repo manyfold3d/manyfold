@@ -5,7 +5,7 @@ import { ThreeMFLoader } from 'three/examples/jsm/loaders/3MFLoader.js'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
-class PartPreview {
+class ObjectPreview {
   constructor (canvas, progressIndicator, url, format, yUp, gridSizeX, gridSizeZ) {
     this.canvas = canvas
     this.progressIndicator = progressIndicator
@@ -153,7 +153,7 @@ document.addEventListener('turbolinks:load', () => {
   document.querySelectorAll('[data-preview]').forEach((div) => {
     const canvas = div.getElementsByTagName('canvas')[0]
     canvas.height = canvas.width
-    canvas.renderer = new PartPreview(
+    canvas.renderer = new ObjectPreview(
       canvas,
       div.getElementsByClassName('progress-bar')[0],
       canvas.dataset.previewUrl,

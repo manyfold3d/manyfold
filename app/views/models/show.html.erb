@@ -2,14 +2,14 @@
 <div class="row row-cols-2">
 
   <div class="col-9">
-    <h2>Parts</h2>
+    <h2>Files</h2>
     <div class="row row-cols-2 row-cols-md-3 mb-4">
-      <%= render partial: "part", collection: @groups.delete(nil) %>
+      <%= render partial: "file", collection: @groups.delete(nil) %>
     </div>
-    <% @groups.each_pair do |group, parts| %>
+    <% @groups.each_pair do |group, files| %>
       <h3><%= group %></h3>
       <div class="row row-cols-2 row-cols-md-3 mb-4">
-        <%= render partial: "part", collection: parts %>
+        <%= render partial: "file", collection: files %>
       </div>
     <% end %>
     <h2>Images</h2>

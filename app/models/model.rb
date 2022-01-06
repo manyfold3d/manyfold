@@ -3,9 +3,9 @@ class Model < ApplicationRecord
 
   belongs_to :library
   belongs_to :creator, optional: true
-  has_many :parts, dependent: :destroy
+  has_many :model_files, dependent: :destroy
   has_many :images, dependent: :destroy
-  belongs_to :preview_part, class_name: "Part", optional: true
+  belongs_to :preview_file, class_name: "ModelFile", optional: true
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
   has_many :links, as: :linkable, dependent: :destroy
@@ -28,16 +28,16 @@ class Model < ApplicationRecord
   def merge_into_parent!
     return unless parent
 
-    dirname = File.split(path)[-1]
+    dirname = ::File.split(path)[-1]
     images.each do |image|
       image.update(
         filename: File.join(dirname, image.filename),
         model: parent
       )
     end
-    parts.each do |part|
-      part.update(
-        filename: File.join(dirname, part.filename),
+    model_files.each do |f|
+      f.update(
+        filename: File.join(dirname, f.filename),
         model: parent
       )
     end

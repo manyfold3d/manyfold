@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_215825) do
+ActiveRecord::Schema.define(version: 2022_01_05_233138) do
 
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
@@ -56,20 +56,7 @@ ActiveRecord::Schema.define(version: 2021_03_30_215825) do
     t.index ["linkable_type", "linkable_id"], name: "index_links_on_linkable"
   end
 
-  create_table "models", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "path", null: false
-    t.integer "library_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "preview_part_id"
-    t.integer "creator_id"
-    t.index ["creator_id"], name: "index_models_on_creator_id"
-    t.index ["library_id"], name: "index_models_on_library_id"
-    t.index ["preview_part_id"], name: "index_models_on_preview_part_id"
-  end
-
-  create_table "parts", force: :cascade do |t|
+  create_table "model_files", force: :cascade do |t|
     t.string "filename"
     t.integer "model_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -77,7 +64,24 @@ ActiveRecord::Schema.define(version: 2021_03_30_215825) do
     t.boolean "presupported", default: false
     t.boolean "printed", default: false
     t.boolean "y_up", default: false, null: false
-    t.index ["model_id"], name: "index_parts_on_model_id"
+    t.index ["model_id"], name: "index_model_files_on_model_id"
+  end
+
+  create_table "models", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "path", null: false
+    t.integer "library_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "preview_file_id"
+    t.integer "creator_id"
+    t.string "thingiverse_id"
+    t.string "cgtrader_path"
+    t.string "cults3d_path"
+    t.string "mmf_slug"
+    t.index ["creator_id"], name: "index_models_on_creator_id"
+    t.index ["library_id"], name: "index_models_on_library_id"
+    t.index ["preview_file_id"], name: "index_models_on_preview_file_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -108,8 +112,8 @@ ActiveRecord::Schema.define(version: 2021_03_30_215825) do
   end
 
   add_foreign_key "images", "models"
+  add_foreign_key "model_files", "models"
   add_foreign_key "models", "creators"
   add_foreign_key "models", "libraries"
-  add_foreign_key "parts", "models"
   add_foreign_key "taggings", "tags"
 end

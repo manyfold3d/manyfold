@@ -17,8 +17,8 @@ RSpec.describe Model, type: :model do
     expect(build(:model)).to be_valid
   end
 
-  it "has many parts" do
-    expect(build(:model).parts).to eq []
+  it "has many files" do
+    expect(build(:model).model_files).to eq []
   end
 
   context "with a library on disk" do
@@ -62,20 +62,12 @@ RSpec.describe Model, type: :model do
         @child = create(:model, library: library, path: "model/nested")
       end
 
-      it "moves parts" do
-        part = create(:part, model: @child, filename: "part.stl")
+      it "moves files" do
+        file = create(:model_file, model: @child, filename: "part.stl")
         @child.merge_into_parent!
-        part.reload
-        expect(part.filename).to eql "nested/part.stl"
-        expect(part.model).to eql @parent
-      end
-
-      it "moves images" do
-        image = create(:image, model: @child, filename: "image.jpg")
-        @child.merge_into_parent!
-        image.reload
-        expect(image.filename).to eql "nested/image.jpg"
-        expect(image.model).to eql @parent
+        file.reload
+        expect(file.filename).to eql "nested/part.stl"
+        expect(file.model).to eql @parent
       end
 
       it "deletes merged model" do

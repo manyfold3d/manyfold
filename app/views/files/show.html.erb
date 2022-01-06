@@ -3,24 +3,24 @@
     <li class="breadcrumb-item"><%= link_to @model.name, [@library, @model] %></li>
   </ol>
 </nav>
-<h1><%= @part.name %></h1>
+<h1><%= @file.name %></h1>
 
 <div class="row row-cols-2">
 
   <div class="col-9">
-    <%= render partial: "part_preview", locals: { library: @library, model: @model, part: @part } %>
+    <%= render partial: "object_preview", locals: { library: @library, model: @model, file: @file } %>
   </div>
 
   <div class="col-3">
     <%= card :secondary, "Details" do %>
       <p>
-        Filename: <code><%= @part.filename %></code>
+        Filename: <code><%= @file.filename %></code>
       </p>
       <%= render 'form' %>
     <% end %>
 
     <%= card :secondary, "Actions" do %>
-      <%= link_to "#{icon('cloud-download', 'Download')} Download".html_safe, library_model_part_path(@library, @model, @part, @part.file_format.to_sym), {class: "btn btn-secondary"} %>
+      <%= link_to "#{icon('cloud-download', 'Download')} Download".html_safe, library_model_file_path(@library, @model, @file, @file.file_format.to_sym), {class: "btn btn-secondary"} %>
     <% end %>
 
   </div>

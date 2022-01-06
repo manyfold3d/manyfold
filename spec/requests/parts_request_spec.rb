@@ -1,4 +1,4 @@
 require "rails_helper"
 
-RSpec.describe "Parts", type: :request do
+RSpec.describe "Files", type: :request do
 end

@@ -6,10 +6,10 @@
     </div>
 
     <div class="row mb-3 input-group">
-      <%= form.label :preview_part, class: "col-sm-2 col-form-label" %>
+      <%= form.label :preview_file, class: "col-sm-2 col-form-label" %>
       <div class='col-sm-10 ps-0'>
-        <%= form.collection_select :preview_part_id, @model.parts, :id, :name, {}, {class: "form-control form-select"} %>
-        <span id="previewPartHelp" class="form-text">The part displayed as a model preview in library pages</span>
+        <%= form.collection_select :preview_file_id, @model.model_files, :id, :name, {}, {class: "form-control form-select"} %>
+        <span id="previewFileHelp" class="form-text">The file displayed as a model preview in library pages</span>
       </div>
     </div>
 

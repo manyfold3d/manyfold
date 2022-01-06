@@ -1,8 +1,8 @@
 <div class="col mb-4">
   <div class="card">
-    <% if part = model.preview_part %>
+    <% if file = model.preview_file %>
       <div class="card-img-top">
-        <%= render partial: "part_preview", locals: { library: model.library, model: model, part: part } %>
+        <%= render partial: "object_preview", locals: { library: model.library, model: model, file: file } %>
       </div>
     <% end %>
     <div class="card-body">

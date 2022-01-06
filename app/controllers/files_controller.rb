@@ -1,7 +1,7 @@
-class PartsController < ApplicationController
+class FilesController < ApplicationController
   before_action :get_library
   before_action :get_model
-  before_action :get_part
+  before_action :get_file
 
   def show
     respond_to do |format|
@@ -17,22 +17,22 @@ class PartsController < ApplicationController
   end
 
   def update
-    @part.update(part_params)
-    redirect_to [@library, @model, @part]
+    @file.update(file_params)
+    redirect_to [@library, @model, @file]
   end
 
   private
 
   def send_file_content
-    filename = File.join(@library.path, @model.path, @part.filename)
+    filename = File.join(@library.path, @model.path, @file.filename)
     response.headers["Content-Length"] = File.size(filename).to_s
-    send_file filename, disposition: :inline, type: @part.file_format.to_sym
+    send_file filename, disposition: :inline, type: @file.file_format.to_sym
   rescue Errno::ENOENT
     head :internal_server_error
   end
 
-  def part_params
-    params.require(:part).permit([
+  def file_params
+    params.require(:file).permit([
       :printed,
       :presupported,
       :y_up
@@ -47,8 +47,8 @@ class PartsController < ApplicationController
     @model = @library.models.find(params[:model_id])
   end
 
-  def get_part
-    @part = @model.parts.find(params[:id])
-    @title = @part.name
+  def get_file
+    @file = @model.model_files.find(params[:id])
+    @title = @file.name
   end
 end
