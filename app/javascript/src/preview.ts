@@ -103,7 +103,7 @@ class ObjectPreview {
     bbox.getBoundingSphere(bsphere)
     const modelheight = bbox.max.y - bbox.min.y
     // Configure camera
-    this.camera.position.z = bsphere.radius * 2.3
+    this.camera.position.z = this.camera.position.x = bsphere.radius * 1.63
     this.camera.position.y = bsphere.radius * 0.75
     this.controls.target = new THREE.Vector3(0, modelheight / 2, 0)
     // Centre the model
