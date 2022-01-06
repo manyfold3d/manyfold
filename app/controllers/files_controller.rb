@@ -13,6 +13,8 @@ class FilesController < ApplicationController
       format.ply { send_file_content }
       format.blend { send_file_content }
       format.mix { send_file_content }
+      format.png { send_file File.join(@library.path, @model.path, @file.filename) }
+      format.jpeg { send_file File.join(@library.path, @model.path, @file.filename) }
     end
   end
 

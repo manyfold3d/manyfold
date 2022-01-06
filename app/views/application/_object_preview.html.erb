@@ -1,4 +1,4 @@
-<% if can_preview?(file.file_format) %>
+<% if renderable?(file.file_format) %>
   <div id="preview-file-<%= file.id %>" class="object-preview position-relative" data-preview>
     <div class="progress position-absolute top-50 start-50 translate-middle">
       <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>

@@ -16,9 +16,18 @@ module ApplicationHelper
     end
   end
 
-  def can_preview?(format)
+  def renderable?(format)
     case format
     when "stl", "obj", "3mf", "ply"
+      true
+    else
+      false
+    end
+  end
+
+  def image?(format)
+    case format
+    when "jpg", "png"
       true
     else
       false

@@ -1,9 +1,13 @@
 <div class="col mb-4">
   <div class="card">
     <% if file = model.preview_file %>
-      <div class="card-img-top">
-        <%= render partial: "object_preview", locals: { library: model.library, model: model, file: file } %>
-      </div>
+      <% if image?(file.file_format) %>
+        <%= image_tag library_model_file_path(model.library, model, file, format: file.file_format), class: "card-img-top", alt: file.name %>
+      <% elsif renderable?(file.file_format) %>
+        <div class="card-img-top">
+          <%= render partial: "object_preview", locals: { library: model.library, model: model, file: file } %>
+        </div>
+      <% end %>
     <% end %>
     <div class="card-body">
       <%= link_to "Open", [model.library, model], {class: "btn btn-primary float-end"} %>
