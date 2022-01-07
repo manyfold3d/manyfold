@@ -4,7 +4,7 @@
   "dependencies": {
     "@babel/preset-typescript": "^7.16.7",
     "@nathanvda/cocoon": "^1.2.14",
-    "@popperjs/core": "^2.11.0",
+    "@popperjs/core": "^2.11.2",
     "@rails/actioncable": "^6.1.4",
     "@rails/activestorage": "^6.1.4",
     "@rails/ujs": "^6.1.4",
