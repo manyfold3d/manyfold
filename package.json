@@ -6,7 +6,7 @@
     "@nathanvda/cocoon": "^1.2.14",
     "@popperjs/core": "^2.11.2",
     "@rails/actioncable": "^6.1.4",
-    "@rails/activestorage": "^6.1.4",
+    "@rails/activestorage": "^7.0.2",
     "@rails/ujs": "^6.1.4",
     "@rails/webpacker": "5.4.3",
     "bootstrap": "^5.1.3",
