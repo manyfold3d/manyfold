@@ -239,7 +239,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.3)
-    rubocop (1.25.0)
+    rubocop (1.25.1)
       parallel (~> 1.10)
       parser (>= 3.1.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -278,8 +278,8 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
-    standard (1.7.0)
-      rubocop (= 1.25.0)
+    standard (1.7.1)
+      rubocop (= 1.25.1)
       rubocop-performance (= 1.13.2)
     stimulus_reflex (3.4.1)
       cable_ready (>= 4.5)
@@ -345,7 +345,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   spring
   sqlite3 (~> 1.4)
-  standard (~> 1.7.0)
+  standard (~> 1.7.1)
   stimulus_reflex (~> 3.4)
   turbolinks (~> 5)
   tzinfo-data
