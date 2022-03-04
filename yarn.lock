@@ -8103,10 +8103,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three@^0.138.2:
-  version "0.138.2"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.138.2.tgz#946c7c550b58e16606343cec0e44715e8865c04e"
-  integrity sha512-l49+mdqpevKIk7ByLmt7cc5RdSwSnZ6rP1cLe8VCI/++c0/6AFYyHw6xjT2VyXYxodCnDSw7iARjKL2MlHVCOg==
+three@^0.138.3:
+  version "0.138.3"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.138.3.tgz#7be5153d79dcbf9e9baad82e7faf8c29edda4ed0"
+  integrity sha512-4t1cKC8gimNyJChJbaklg8W/qj3PpsLJUIFm5LIuAy/hVxxNm1ru2FGTSfbTSsuHmC/7ipsyuGKqrSAKLNtkzg==
 
 through2@^2.0.0:
   version "2.0.5"
