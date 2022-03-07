@@ -95,8 +95,8 @@ GEM
     erubis (2.7.0)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
-    faker (2.19.0)
-      i18n (>= 1.6, < 2)
+    faker (2.20.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     formatador (0.3.0)
     globalid (1.0.0)
@@ -130,7 +130,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
-    i18n (1.9.1)
+    i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -327,7 +327,7 @@ DEPENDENCIES
   delayed_job_active_record (~> 4.1)
   dotenv-rails (~> 2.7)
   factory_bot
-  faker (~> 2.19)
+  faker (~> 2.20)
   guard (~> 2.18)
   guard-rspec (~> 4.7)
   hiredis
