@@ -1364,10 +1364,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.2.tgz#830beaec4b4091a9e9398ac50f865ddea52186b9"
   integrity sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==
 
-"@rails/actioncable@>= 6.0", "@rails/actioncable@^6.1.4":
-  version "6.1.4"
-  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.1.4.tgz#c3c5a9f8302c429af9722b6c50ab48049016d2a3"
-  integrity sha512-0LmSKJTuo2dL6BQ+9xxLnS9lbkyfz2mBGeBnQ2J7o9Bn0l0q+ZC6VuoZMZZXPvABI4QT7Nfknv5WhfKYL+boew==
+"@rails/actioncable@>= 6.0", "@rails/actioncable@^6.1.5":
+  version "6.1.5"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.1.5.tgz#c24ec8123a8e7e239ceabda29078df9c93752394"
+  integrity sha512-bV4/Q7NweGFm7t3GvUFm19UF2WKmcvlOXy7AxMWEZCwDxQLagAXhUpKb1AJ6Rg88cPHqXSQHaGKr84lIMd607A==
 
 "@rails/activestorage@^6.1.4":
   version "6.1.4"
