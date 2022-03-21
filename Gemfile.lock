@@ -93,7 +93,7 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     erubis (2.7.0)
-    factory_bot (6.2.0)
+    factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     faker (2.20.0)
       i18n (>= 1.8.11, < 2)
