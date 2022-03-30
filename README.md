@@ -8,6 +8,11 @@ through your browser!
 
 ![preview](https://i.imgur.com/x5eYc15.jpg)
 
+As this is a very young project, there are a few rough edges! This video from DBTech
+explains them pretty nicely though, then the specific details are below:
+
+[![Manage 3D Printing Assets in Docker with VanDAM](http://img.youtube.com/vi/FWj7WNPjOCw/0.jpg)](http://www.youtube.com/watch?v=FWj7WNPjOCw "Manage 3D Printing Assets in Docker with VanDAM")
+
 ## Running in Docker
 
 You can run the latest release in docker by using the image
