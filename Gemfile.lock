@@ -62,8 +62,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    acts-as-taggable-on (8.1.0)
-      activerecord (>= 5.0, < 6.2)
+    acts-as-taggable-on (9.0.1)
+      activerecord (>= 6.0, < 7.1)
     ast (2.4.2)
     bindex (0.8.1)
     bootsnap (1.11.1)
@@ -319,7 +319,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-nulldb-adapter (~> 0.8.0)
-  acts-as-taggable-on (~> 8.1)
+  acts-as-taggable-on (~> 9.0)
   bootsnap (>= 1.4.4)
   byebug
   cocoon (~> 1.2)
