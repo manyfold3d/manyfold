@@ -13,7 +13,7 @@ class LibrariesController < ApplicationController
     @models =
     if Rails.application.config.paginate_models
       page = params[:page] || 1
-      @library.models.includes(:tags, :preview_file, :creator).paginate(page: page, per_page: 5)
+      @library.models.includes(:tags, :preview_file, :creator).paginate(page: page)
     else
       @library.models.includes(:tags, :preview_file, :creator)
     end
