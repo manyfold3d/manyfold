@@ -18,4 +18,13 @@ RSpec.describe "Libraries", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe "GET /libraries/1?page=2" do
+    it "returns paginated models" do
+      allow(Rails.application.config).to receive(:paginate_models).and_return(true)
+      get "/libraries/1?page=2"
+      expect(response).to have_http_status(:success)
+      expect(response.body).to match(/paginate-container/)
+    end
+  end
 end
