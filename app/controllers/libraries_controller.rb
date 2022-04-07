@@ -11,12 +11,12 @@ class LibrariesController < ApplicationController
 
   def show
     @models =
-    if Rails.application.config.paginate_models
-      page = params[:page] || 1
-      @library.models.includes(:tags, :preview_file, :creator).paginate(page: page)
-    else
-      @library.models.includes(:tags, :preview_file, :creator)
-    end
+      if Rails.application.config.paginate_models
+        page = params[:page] || 1
+        @library.models.includes(:tags, :preview_file, :creator).paginate(page: page)
+      else
+        @library.models.includes(:tags, :preview_file, :creator)
+      end
 
     @tags = @models.map(&:tags).flatten.uniq.sort_by(&:name)
     @scanning = Delayed::Job.count > 0

@@ -73,4 +73,4 @@ gem "delayed_job_active_record", "~> 4.1"
 gem "activerecord-nulldb-adapter", "~> 0.8.0"
 
 gem "memoist", "~> 0.16.2"
-gem 'will_paginate', '~> 3.3'
+gem "will_paginate", "~> 3.3"
