@@ -4,6 +4,8 @@
 
 .paginate-container {
   .pagination {
+    span.previous,
+    em.current,
     a {
       padding: 0 0.5em;
     }
