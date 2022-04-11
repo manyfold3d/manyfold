@@ -67,10 +67,6 @@ ActiveRecord::Schema.define(version: 2022_01_06_220519) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "preview_file_id"
     t.integer "creator_id"
-    t.string "thingiverse_id"
-    t.string "cgtrader_path"
-    t.string "cults3d_path"
-    t.string "mmf_slug"
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
     t.index ["preview_file_id"], name: "index_models_on_preview_file_id"

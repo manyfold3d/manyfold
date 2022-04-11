@@ -2,7 +2,13 @@ class CreatorsController < ApplicationController
   before_action :get_creator, except: [:index, :new, :create]
 
   def index
-    @creators = Creator.all
+    @creators =
+    if Rails.application.config.paginate_creators
+      page = params[:page] || 1
+      Creator.all.paginate(page: page)
+    else
+      Creator.all
+    end
     @title = "Creators"
   end
 

@@ -36,5 +36,11 @@ module VanDam
     config.generators.system_tests = nil
 
     config.formats = config_for(:formats)
+
+    config.paginate_models = false
+    config.paginate_creators = false
+
+    # set global per_page
+    WillPaginate.per_page = 10
   end
 end
