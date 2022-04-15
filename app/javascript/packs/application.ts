@@ -14,6 +14,7 @@ import 'bootstrap/dist/css/bootstrap'
 
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'src/preview'
+import 'src/bulk_edit'
 
 import '@nathanvda/cocoon'
 
