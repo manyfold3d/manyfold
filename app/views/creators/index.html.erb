@@ -3,8 +3,13 @@
 <div class="row row-cols-2">
   <div class="col-9">
     <div class="row row-cols-2 row-cols-md-3 mb-3">
-      <%= render @creators %>
+        <%= render @creators %>
     </div>
+    <% if Rails.application.config.paginate_creators %>
+      <div class="paginate-container">
+        <%= will_paginate @creators %>
+      </div>
+    <% end %>
   </div>
   <div class="col-3">
 
