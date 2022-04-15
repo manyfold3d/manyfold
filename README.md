@@ -66,6 +66,17 @@ The server will then be running at http://127.0.0.1:5000
 
 `bundle exec rake`
 
+### Configuration
+
+#### Pagination
+
+Models are displayed with continuous scroll, but you can alternately choose to paginate them.
+
+To enable pagination, modify config/application.rb to include:
+```ruby
+config.paginate_models = true
+```
+
 ## Credits
 
 Built with [Rails 6](https://rubyonrails.org/) and

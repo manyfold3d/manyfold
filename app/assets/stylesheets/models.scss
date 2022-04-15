@@ -1,3 +1,12 @@
 // Place all the styles related to the Models controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.paginate-container {
+  .pagination {
+    a {
+      padding: 0 0.5em;
+    }
+  }
+}
+
