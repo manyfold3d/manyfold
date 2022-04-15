@@ -30,10 +30,9 @@ class ObjectPreview {
   }
 
   onIntersectionChanged (entries, observer): void {
+    this.cleanup()
     if (entries[0].isIntersecting === true) {
       this.load(this.url, this.format)
-    } else {
-      this.cleanup()
     }
   }
 
@@ -105,6 +104,7 @@ class ObjectPreview {
     // Configure camera
     this.camera.position.z = this.camera.position.x = bsphere.radius * 1.63
     this.camera.position.y = bsphere.radius * 0.75
+
     this.controls.target = new THREE.Vector3(0, modelheight / 2, 0)
     // Centre the model
     object.position.set(-centre.x, -bbox.min.y, -centre.z)
@@ -114,6 +114,10 @@ class ObjectPreview {
     this.scene.add(this.gridHelper)
     // Render first frame
     this.onAnimationFrame()
+
+    bbox.dispose()
+    centre.dispose()
+    bsphere.dispose()
   }
 
   onLoadError (): void {
