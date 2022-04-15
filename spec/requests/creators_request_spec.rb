@@ -4,8 +4,8 @@ RSpec.describe "Creators", type: :request do
   before :all do
     11.times do
       FactoryBot.create(:creator) do |creator|
-          FactoryBot.create_list(:link, 1, linkable: creator)
-          FactoryBot.create_list(:model, 1, creator: creator)
+        FactoryBot.create_list(:link, 1, linkable: creator)
+        FactoryBot.create_list(:model, 1, creator: creator)
       end
     end
   end

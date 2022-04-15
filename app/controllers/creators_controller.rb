@@ -3,12 +3,12 @@ class CreatorsController < ApplicationController
 
   def index
     @creators =
-    if Rails.application.config.paginate_creators
-      page = params[:page] || 1
-      Creator.all.paginate(page: page)
-    else
-      Creator.all
-    end
+      if Rails.application.config.paginate_creators
+        page = params[:page] || 1
+        Creator.all.paginate(page: page)
+      else
+        Creator.all
+      end
     @title = "Creators"
   end
 
