@@ -11,8 +11,23 @@ class ModelsController < ApplicationController
     @model.links.build if @model.links.empty? # populate empty link
   end
 
+  def update_tags(tags)
+    old_tags = Set.new(@model.tag_list)
+    new_tags = Set.new(tags.reject(&:blank?))
+
+    # the new set of tags is the intersection of the old and new tags
+    @model.tag_list = existing_tags & new_tags
+    @model.save
+  end
+
   def update
-    @model.update(model_params)
+    hash = model_params
+    tags = hash.delete(:tags){|t| [] }
+
+    if @model.update(hash)
+      update_tags(tags)
+    end
+
     redirect_to [@library, @model]
   end
 
@@ -54,6 +69,7 @@ class ModelsController < ApplicationController
       :preview_file_id,
       :creator_id,
       :name,
+      tags: [],
       links_attributes: [:id, :url, :_destroy]
     )
   end
