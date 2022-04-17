@@ -15,8 +15,12 @@ class Model < ApplicationRecord
   acts_as_taggable_on :tags
 
   def autogenerate_tags_from_path!
-    tag_list.add(path.split(File::SEPARATOR)[1..-2].map { |y| y.split(/[\W_+-]/).filter { |x| x.length > 1 } }.flatten)
-    save!
+    @filter ||= Stopwords::Snowball::Filter.new "en"
+    tags = @filter.filter(File.split(path).last.split(/[\W_+-]/).filter { |x| x.length > 1 })
+    unless tags.empty?
+      tag_list.add(tags)
+      save!
+    end
   end
 
   def parent

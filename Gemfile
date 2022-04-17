@@ -74,3 +74,4 @@ gem "activerecord-nulldb-adapter", "~> 0.8.0"
 
 gem "memoist", "~> 0.16.2"
 gem "will_paginate", "~> 3.3"
+gem "stopwords-filter", require: 'stopwords'
