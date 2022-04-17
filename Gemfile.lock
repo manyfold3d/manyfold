@@ -287,6 +287,7 @@ GEM
       rack
       rails (>= 5.2)
       redis
+    stopwords-filter (0.7.0)
     temple (0.8.2)
     thor (1.2.1)
     thread-local (1.1.0)
@@ -348,6 +349,7 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   standard (~> 1.10.0)
   stimulus_reflex (~> 3.4)
+  stopwords-filter
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
