@@ -1,0 +1,13 @@
+default: &default
+  models: true    # false for infinite scroll
+  creators: true  # false for infinite scroll
+  per_page: 10
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

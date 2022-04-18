@@ -11,7 +11,7 @@ class LibrariesController < ApplicationController
 
   def show
     @models =
-      if Rails.application.config.paginate_models
+      if Rails.application.config.pagination.models
         page = params[:page] || 1
         @library.models.includes(:tags, :preview_file, :creator).paginate(page: page)
       else

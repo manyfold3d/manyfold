@@ -5,7 +5,7 @@
     <div class="row row-cols-2 row-cols-md-3 mb-3">
         <%= render @creators %>
     </div>
-    <% if Rails.application.config.paginate_creators %>
+    <% if Rails.application.config.pagination.creators %>
       <div class="paginate-container">
         <%= will_paginate @creators %>
       </div>

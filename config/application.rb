@@ -37,10 +37,10 @@ module VanDam
 
     config.formats = config_for(:formats)
 
-    config.paginate_models = false
-    config.paginate_creators = false
+    config.pagination = config_for(:pagination)
+    config.tags = config_for(:tags)
 
-    # set global per_page
-    WillPaginate.per_page = 10
+    # # set global per_page
+    WillPaginate.per_page = config.pagination.per_page
   end
 end
