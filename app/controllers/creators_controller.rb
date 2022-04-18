@@ -3,7 +3,7 @@ class CreatorsController < ApplicationController
 
   def index
     @creators =
-      if Rails.application.config.paginate_creators
+      if Rails.application.config.pagination.creators
         page = params[:page] || 1
         Creator.all.paginate(page: page)
       else

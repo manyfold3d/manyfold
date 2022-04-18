@@ -15,8 +15,14 @@ class Model < ApplicationRecord
   acts_as_taggable_on :tags
 
   def autogenerate_tags_from_path!
-    @filter ||= Stopwords::Snowball::Filter.new "en"
-    tags = @filter.filter(File.split(path).last.split(/[\W_+-]/).filter { |x| x.length > 1 })
+    tags = File.split(path).last.split(/[\W_+-]/).filter { |x| x.length > 1 }
+
+    tags_config = Rails.application.config.tags.models
+    if tags_config[:filter_stop_words]
+      @filter ||= Stopwords::Snowball::Filter.new(tags_config[:stop_words_locale], tags_config[:custom_stop_words])
+      tags = @filter.filter(tags)
+    end
+
     unless tags.empty?
       tag_list.add(tags)
       save!

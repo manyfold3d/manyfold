@@ -4,7 +4,7 @@
     <div class="row row-cols-2 row-cols-md-3 mb-4">
       <%= render partial: 'model', collection: @models %>
     </div>
-    <% if Rails.application.config.paginate_models %>
+    <% if Rails.application.config.pagination.models %>
       <div class="paginate-container">
         <%= will_paginate @models %>
       </div>
