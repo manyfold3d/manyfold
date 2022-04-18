@@ -16,13 +16,13 @@ class ModelsController < ApplicationController
     new_tags = Set.new(tags.reject(&:blank?))
 
     # the new set of tags is the intersection of the old and new tags
-    @model.tag_list = existing_tags & new_tags
+    @model.tag_list = old_tags & new_tags
     @model.save
   end
 
   def update
     hash = model_params
-    tags = hash.delete(:tags){|t| [] }
+    tags = hash.delete(:tags) { |t| [] }
 
     if @model.update(hash)
       update_tags(tags)
