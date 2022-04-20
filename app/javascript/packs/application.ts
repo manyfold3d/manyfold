@@ -15,8 +15,11 @@ import 'bootstrap/dist/css/bootstrap'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'src/preview'
 import 'src/bulk_edit'
+import 'src/model_edit'
 
 import '@nathanvda/cocoon'
+import '@selectize/selectize/dist/js/standalone/selectize.min.js'
+import '@selectize/selectize/dist/css/selectize.bootstrap5.css'
 
 Rails.start()
 Turbolinks.start()

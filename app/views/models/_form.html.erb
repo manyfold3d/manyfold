@@ -21,14 +21,11 @@
 
     <div class="row mb-3 input-group">
       <label for="tags" class="col-sm-2 col-form-label">Tags</label>
-      <div class="form-control col-auto">
-        <% unless @model.tags.empty? %>
-          <%= form.collection_check_boxes(:tags, @model.tags, :name, :name) do |tag| %>
-            <div class="form-check form-check-inline">
-                <%= tag.label(class: "form-check-label") { tag.check_box(checked: true, class: "checkbox") + tag.text } %>
-            </div>
-          <% end %>
-        <% end %>
+      <div class="form-control col-auto tag-container">
+        <%= form.text_field :tags,
+          as: :string,
+          value: (@model.tags.map { |tag| tag.name }).join(",")
+        %>
       </div>
     </div>
 
