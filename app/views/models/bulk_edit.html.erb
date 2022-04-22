@@ -7,18 +7,18 @@
 
   <h3>Select models to change:</h3>
 
-  <table class='table table-striped'>
+  <table class="table table-striped" data-bulk-edit>
     <tr>
-      <th><input type="checkbox" aria-label="Select All" value="0" name="bulk_select_all"></th>
+      <th><input type="checkbox" aria-label="Select All" value="0" name="bulk-select-all"></th>
       <th>Name</th>
       <th>Tags</th>
       <th>Creator</th>
     </tr>
     <% @models.each do |model| %>
       <tr>
-        <td><%= form.check_box "models[#{model.id}]", { data: { bulk_item: "#{model.id}"}}%></td>
+        <td><%= form.check_box "models[#{model.id}]", { data: { bulk_item:  "#{model.id}"}}%></td>
         <td><%= link_to model.name, [@library, model], title: model.path %></td>
-        <td><%= render partial: 'tag', collection: model.tags, locals: {selected: nil} %></td>
+        <td><%= render partial: 'tag', collection: model.tags, locals: {selected: nil, model_id: model.id } %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
       </tr>
     <% end %>
@@ -26,12 +26,14 @@
 
   <h3>Select changes to make:</h3>
 
-
   <div class="row mb-3 input-group">
     <%= form.label :creator_id, class: "col-sm-2 col-form-label" %>
     <%= form.collection_select :creator_id, @creators, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
     <%= link_to "New Creator", new_creator_path, class: "btn btn-outline-secondary col-auto" %>
   </div>
+
+  <%= render 'tags_edit', :form => form, :value => "", :label => "Add Tags" %>
+  <%= render 'tags_edit', :form => form, :value => "", :label => "Remove Tags" %>
 
   <%= form.hidden_field :tag, value: @tag if @tag %>
   <%= form.submit "Update Selected Models", class: "btn btn-primary" %>

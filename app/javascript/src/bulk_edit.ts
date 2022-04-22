@@ -1,14 +1,44 @@
-function handleSelectAllChange (event): void {
+function updateTagOptions(tags, input, addTags = true) {
+  tags.forEach((tag) => {
+    if (addTags) {
+      input.addOption({value: tag, text: tag});
+      // input.addItem(tag)
+    } else {
+      input.removeOption({value: tag, text: tag});
+      // input.removeItem(tag)
+    }
+  });
+  input.refreshOptions(false);
+}
+
+function getTags(modelId) {
+  const tagLinks = document.querySelectorAll('[data-bulk-item-tags="' + modelId + '"]')
+  return Array.prototype.slice.call(tagLinks).map((tag) => ( tag.innerText ))
+}
+
+function handleCheckboxChange (event): void {
   event.preventDefault()
-  document.querySelectorAll('[data-bulk-item]').forEach((cb): boolean => {
-    cb.checked = !(cb.checked as boolean)
-  })
+  if (event.target.name == "bulk-select-all") {
+    document.querySelectorAll('[data-bulk-item]').forEach((cb): boolean => {
+      cb.checked = !(cb.checked as boolean)
+    })
+  } else {
+    const modelId = event.target.getAttribute('data-bulk-item')
+    if (modelId) {
+      const tags = getTags(modelId)
+      if (tags && window.tagInputs) {
+        window.tagInputs.forEach((input) => {
+          updateTagOptions(tags, input[0].selectize, event.target.checked)
+        })
+      }
+    }
+  }
 }
 
 document.addEventListener('turbolinks:load', () => {
-  const bulkSelector = document.querySelector('input[name="bulk_select_all"]')
-  if (bulkSelector != null) {
-    bulkSelector.removeEventListener('change', handleSelectAllChange)
-    bulkSelector.addEventListener('change', handleSelectAllChange)
+  const bulkEditTable = document.querySelector('[data-bulk-edit]')
+  if (bulkEditTable != null) {
+    bulkEditTable.removeEventListener('change', handleCheckboxChange)
+    bulkEditTable.addEventListener('change', handleCheckboxChange)
   }
 })

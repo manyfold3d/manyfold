@@ -1,9 +1,13 @@
 document.addEventListener('turbolinks:load', () => {
-  const tagsInput = $('input[name="model[tags]"]')
-  if (tagsInput != null) {
-    tagsInput.selectize({
-      create: true,
-      sortField: 'text'
-    })
-  }
+  window.tagInputs = [];
+  $('input[name="tags"]').each(
+    function() {
+      const tagInput = $(this).selectize({
+        create: true,
+        sortField: 'text',
+        maxItems: null
+      })
+      window.tagInputs.push(tagInput)
+    }
+  )
 })
