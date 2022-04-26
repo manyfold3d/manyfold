@@ -2,10 +2,8 @@ function updateTagOptions(tags, input, addTags = true) {
   tags.forEach((tag) => {
     if (addTags) {
       input.addOption({value: tag, text: tag});
-      // input.addItem(tag)
     } else {
       input.removeOption({value: tag, text: tag});
-      // input.removeItem(tag)
     }
   });
   input.refreshOptions(false);
