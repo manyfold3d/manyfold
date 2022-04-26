@@ -1,7 +1,7 @@
 document.addEventListener('turbolinks:load', () => {
-  window.tagInputs = [];
+  window.tagInputs = []
   $('input[data-tags-edit]').each(
-    function() {
+    function () {
       const tagInput = $(this).selectize({
         create: true,
         sortField: 'text',
