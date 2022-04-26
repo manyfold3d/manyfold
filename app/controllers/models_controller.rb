@@ -23,9 +23,7 @@ class ModelsController < ApplicationController
 
   def update
     hash = model_params
-    p "hash: #{hash}"
     tags = hash.delete(:tags) { |t| "" }
-    p "tags: #{tags}"
 
     if @model.update(hash)
       update_tags(tags.split(","))
@@ -53,6 +51,7 @@ class ModelsController < ApplicationController
 
   def bulk_update
     hash = bulk_update_params
+
     add_tags = (hash.delete(:add_tags) { |t| "" }).split(",").reject(&:blank?)
     remove_tags = (hash.delete(:remove_tags) { |t| "" }).split(",").reject(&:blank?)
 
@@ -63,8 +62,8 @@ class ModelsController < ApplicationController
       if selected == "1"
         model = @library.models.find(id)
         if model.update(hash)
-          tags = Set.new(model.tag_list).add(add_tags).subtract(remove_tags)
-          model.tag_list = tags
+          existing_tags = Set.new(model.tag_list)
+          model.tag_list = existing_tags + add_tags - remove_tags
           model.save
         end
       end
