@@ -19,15 +19,7 @@
       <%= link_to "New Creator", new_creator_path, class: "btn btn-outline-secondary col-auto" %>
     </div>
 
-    <div class="row mb-3 input-group">
-      <label for="tags" class="col-sm-2 col-form-label">Tags</label>
-      <div class="form-control col-auto tag-container">
-        <%= form.text_field :tags,
-          as: :string,
-          value: (@model.tags.map { |tag| tag.name }).join(",")
-        %>
-      </div>
-    </div>
+    <%= render 'tags_edit', :form => form, :name => "model[tags]", :value => (@model.tags.map { |tag| tag.name }).join(","), :label => "Tags" %>
 
     <%= render 'links_form', :form => form %>
 

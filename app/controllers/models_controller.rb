@@ -23,7 +23,7 @@ class ModelsController < ApplicationController
 
   def update
     hash = model_params
-    tags = hash.delete(:tags) { |t| [] }
+    tags = hash.delete(:tags) { |t| "" }
 
     if @model.update(hash)
       update_tags(tags.split(","))
@@ -50,10 +50,22 @@ class ModelsController < ApplicationController
   end
 
   def bulk_update
+    hash = bulk_update_params
+
+    add_tags = (hash.delete(:add_tags) { |t| "" }).split(",").reject(&:blank?)
+    remove_tags = (hash.delete(:remove_tags) { |t| "" }).split(",").reject(&:blank?)
+
+    add_tags = Set.new(add_tags)
+    remove_tags = Set.new(remove_tags)
+
     params[:models].each_pair do |id, selected|
       if selected == "1"
         model = @library.models.find(id)
-        model.update(bulk_update_params)
+        if model.update(hash)
+          existing_tags = Set.new(model.tag_list)
+          model.tag_list = existing_tags + add_tags - remove_tags
+          model.save
+        end
       end
     end
     redirect_to edit_library_models_path(@library, tag: params[:tag])
@@ -62,7 +74,11 @@ class ModelsController < ApplicationController
   private
 
   def bulk_update_params
-    params.permit(:creator_id)
+    params.permit(
+      :creator_id,
+      :add_tags,
+      :remove_tags
+    )
   end
 
   def model_params
