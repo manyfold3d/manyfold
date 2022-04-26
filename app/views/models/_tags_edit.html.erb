@@ -3,8 +3,9 @@
   <div class="form-control col-auto tag-container">
     <%= form.text_field :tags,
       as: :string,
-      name: :tags,
-      value: value
+      name: name,
+      value: value,
+      data: { tags_edit: "" }
     %>
   </div>
 </div>

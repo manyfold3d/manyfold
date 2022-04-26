@@ -32,8 +32,8 @@
     <%= link_to "New Creator", new_creator_path, class: "btn btn-outline-secondary col-auto" %>
   </div>
 
-  <%= render 'tags_edit', :form => form, :value => "", :label => "Add Tags" %>
-  <%= render 'tags_edit', :form => form, :value => "", :label => "Remove Tags" %>
+  <%= render 'tags_edit', :form => form, :name => :add_tags, :value => "", :label => "Add Tags" %>
+  <%= render 'tags_edit', :form => form, :name => :remove_tags, :value => "", :label => "Remove Tags" %>
 
   <%= form.hidden_field :tag, value: @tag if @tag %>
   <%= form.submit "Update Selected Models", class: "btn btn-primary" %>
