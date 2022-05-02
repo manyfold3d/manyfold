@@ -1,6 +1,6 @@
 FROM ruby:3.0-alpine AS build
 
-RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn python2
+RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn python2 xz
 RUN gem install foreman
 
 ARG VAN_DAM_GIT_REF
