@@ -18,7 +18,8 @@ class LibrariesController < ApplicationController
         @library.models.includes(:tags, :preview_file, :creator)
       end
 
-    @tags = @models.map(&:tags).flatten.uniq.sort_by(&:name)
+    @tags = @library.models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
+
     @scanning = Delayed::Job.count > 0
     # Filter by tag?
     if params[:tag]
