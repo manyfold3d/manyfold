@@ -95,7 +95,7 @@ GEM
     erubis (2.7.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
-    faker (2.20.0)
+    faker (2.21.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     formatador (0.3.0)
@@ -329,7 +329,7 @@ DEPENDENCIES
   delayed_job_active_record (~> 4.1)
   dotenv-rails (~> 2.7)
   factory_bot
-  faker (~> 2.20)
+  faker (~> 2.21)
   guard (~> 2.18)
   guard-rspec (~> 4.7)
   hiredis
