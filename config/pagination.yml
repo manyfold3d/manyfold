@@ -1,7 +1,7 @@
 default: &default
   models: true    # false for infinite scroll
   creators: true  # false for infinite scroll
-  per_page: 10
+  per_page: 12
 
 development:
   <<: *default
