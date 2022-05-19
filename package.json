@@ -2,7 +2,7 @@
   "name": "van-dam",
   "private": true,
   "dependencies": {
-    "@babel/preset-typescript": "^7.16.7",
+    "@babel/preset-typescript": "^7.17.12",
     "@nathanvda/cocoon": "^1.2.14",
     "@popperjs/core": "^2.11.5",
     "@rails/actioncable": "^6.1.5",
