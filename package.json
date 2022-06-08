@@ -14,7 +14,7 @@
     "bootstrap-icons": "^1.8.3",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
-    "stimulus": "^2.0.0",
+    "stimulus": "^3.0.1",
     "stimulus_reflex": "3.4.1",
     "three": "^0.141.0",
     "turbolinks": "^5.2.0",
