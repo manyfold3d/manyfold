@@ -1,9 +1,13 @@
 const path = require('path')
 const webpack = require('webpack')
 
+const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production'
+
 module.exports = {
-  mode: 'production',
-  devtool: 'source-map',
+  mode,
+  optimization: {
+    moduleIds: 'hashed'
+  },
   entry: {
     application: './app/javascript/application.js'
   },
@@ -16,5 +20,14 @@ module.exports = {
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx|ts|tsx|)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      }
+    ]
+  }
 }
