@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Libraries", type: :request do
   before :all do
     @library = FactoryBot.create(:library) do |library|
-      FactoryBot.create_list(:model, 11, library: library)
+      FactoryBot.create_list(:model, 13, library: library)
     end
   end
 
