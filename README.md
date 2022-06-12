@@ -47,7 +47,7 @@ You can run all the dependencies in one go using `docker-compose`:
 
 - Ruby 3.x
 - Bundler 2.x
-- Node.js 14.x
+- Node.js 18.x
 - Yarn >= 1.22
 - Foreman or [another Procfile runner](https://github.com/ddollar/foreman#ports)
 
