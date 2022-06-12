@@ -5,7 +5,7 @@
     "@babel/preset-typescript": "^7.17.12",
     "@nathanvda/cocoon": "^1.2.14",
     "@popperjs/core": "^2.11.5",
-    "@rails/actioncable": "^6.1.5",
+    "@rails/actioncable": "^7.0.3",
     "@rails/activestorage": "^6.1.5",
     "@rails/ujs": "^7.0.3",
     "@rails/webpacker": "5.4.3",
