@@ -21,12 +21,12 @@ jobs:
       -
         name: Work out Docker tags
         id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v1
+        uses: docker/metadata-action@v4
         with:
           images: ghcr.io/${{ github.repository }}
-          tag-edge: true
-          tag-semver: |
-            {{version}}
+          tags: |
+            type=edge,branch=main
+            type=semver,pattern={{version}}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2.0.0
