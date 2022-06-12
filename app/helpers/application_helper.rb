@@ -1,6 +1,6 @@
 module ApplicationHelper
   def icon(id, label)
-    tag.i class: "bi bi-#{id}", role: "img", 'aria-label': label, title: label
+    tag.i class: "bi bi-#{id}", role: "img", "aria-label": label, title: label
   end
 
   def card(style, title, &content)
