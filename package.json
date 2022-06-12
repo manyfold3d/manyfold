@@ -2,6 +2,8 @@
   "name": "van-dam",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
     "@babel/preset-typescript": "^7.17.12",
     "@nathanvda/cocoon": "^1.2.14",
     "@popperjs/core": "^2.11.5",
@@ -30,6 +32,12 @@
     "ts-standard": "^11.0.0",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-dev-server": "^4.9.2"
+  },
+  "babel": {
+    "presets": [
+       "@babel/preset-env",
+       "@babel/preset-typescript"
+    ]
   },
   "scripts": {
     "build": "webpack --config ./config/webpack/webpack.config.js"
