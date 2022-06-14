@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: "search#index"
   post "/", controller: :search, action: :index
   resources :libraries do
