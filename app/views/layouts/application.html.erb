@@ -26,6 +26,10 @@
           <%= link_to "Creators", creators_path, class: "nav-link" %>
         </li>
       </ul>
+      <div>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
       <%= yield %>
       <footer class='mt-5 py-2 border-top'>
         VanDAM is Open Source, available from <%= link_to "GitHub", "https://github.com/Floppy/van_dam" %>.
