@@ -57,7 +57,7 @@ You can run all the dependencies in one go using `docker-compose`:
 bundle install
 yarn install
 bundle exec rake db:migrate
-foreman start
+foreman start -f Procfile.dev
 ```
 
 The server will then be running at http://127.0.0.1:5000
