@@ -77,3 +77,5 @@ gem "will_paginate", "~> 3.3"
 gem "stopwords-filter", require: "stopwords"
 
 gem "devise", "~> 4.8"
+
+gem "data_migrate", "~> 8.0"

@@ -17,6 +17,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_14_211256) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
+  end
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
     t.integer "attempts", default: 0, null: false

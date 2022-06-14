@@ -56,7 +56,7 @@ You can run all the dependencies in one go using `docker-compose`:
 ```
 bundle install
 yarn install
-bundle exec rake db:migrate
+bundle exec rake db:migrate:with_data
 foreman start
 ```
 
