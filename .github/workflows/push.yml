@@ -23,6 +23,10 @@ jobs:
       run: bundle exec rails dev:cache
     - name: Compile assets
       run: bundle exec rails webpacker:compile
+    - name: Set up database
+      run: bundle exec rails db:setup
+    - name: Migrate database
+      run: bundle exec rails db:migrate:with_data
     - name: Run tests
       run: bundle exec rake
   lint:
