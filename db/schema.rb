@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_14_213902) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_17_122809) do
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -112,6 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_14_213902) do
     t.datetime "updated_at", null: false
     t.string "username", null: false
     t.boolean "admin", default: false
+    t.json "pagination_settings", default: {"models"=>true, "creators"=>true, "per_page"=>12}
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
