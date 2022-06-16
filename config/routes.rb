@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users do
+    resource :settings, only: [:show, :update]
+  end
+
   root to: "search#index"
   post "/", controller: :search, action: :index
+
   resources :libraries do
     resources :models, except: [:index, :destroy] do
       member do

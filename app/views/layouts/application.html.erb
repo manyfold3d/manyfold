@@ -25,7 +25,9 @@
         <li class="nav-item">
           <%= link_to "Creators", creators_path, class: "nav-link" %>
         </li>
+        <%= link_to "My Settings", user_settings_path(current_user) %>
       </ul>
+
       <div>
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
