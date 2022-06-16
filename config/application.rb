@@ -24,10 +24,6 @@ module VanDam
 
     config.formats = config_for(:formats)
 
-    config.pagination = config_for(:pagination)
     config.tags = config_for(:tags)
-
-    # # set global per_page
-    WillPaginate.per_page = config.pagination.per_page
   end
 end
