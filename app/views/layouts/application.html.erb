@@ -15,7 +15,7 @@
     <div class="container">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <%= link_to "Search", '/', class: "nav-link" %>
+          <%= link_to "#{icon("search", "Search")} Search".html_safe, '/', class: "nav-link" %>
         </li>
         <% Library.all.each do |library| %>
           <li class="nav-item">
@@ -25,7 +25,9 @@
         <li class="nav-item">
           <%= link_to "Creators", creators_path, class: "nav-link" %>
         </li>
-        <%= link_to "My Settings", user_settings_path(current_user) %>
+        <li class="nav-item ms-auto">
+          <%= link_to icon('sliders', 'Settings'), user_settings_path(current_user), class: "nav-link"  %>
+        </li>
       </ul>
 
       <div>

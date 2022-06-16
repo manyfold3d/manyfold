@@ -1,5 +1,28 @@
-Settings
+<h1>Settings</h1>
 
-<%= current_user.pagination_settings.models %>
-<%= current_user.pagination_settings.creators %>
-<%= current_user.pagination_settings.per_page %>
+<%= form_with url: user_settings_path(user: @user), method: :patch do |form| %>
+
+  <h2>Pagination</h2>
+
+  <p>
+    Show only a certain number of items at a time in list pages, rather than everything at once.
+    This can make things quicker to load.
+  </p>
+
+  <div class="form-check form-switch">
+    <%= form.check_box "pagination[models]", checked: @user.pagination_settings["models"], class: "form-check-input" %>
+    <%= form.label "Paginate models", for: "pagination[models]", class: "form-check-label"%>
+  </div>
+  <div class="form-check form-switch">
+    <%= form.check_box "pagination[creators]", checked: @user.pagination_settings["creators"], class: "form-check-input" %>
+    <%= form.label "Paginate creators", for: "pagination[creators]", class: "form-check-label"%>
+  </div>
+  <div class="">
+    <%= form.label "Items per page", for: "pagination[per_page]", class: "form-label"%>
+    <%= form.number_field "pagination[per_page]", value: @user.pagination_settings["per_page"], in: 1..100, class: 'form-control' %>
+  </div>
+  <div class="">
+    <button type="submit" class="btn btn-primary"><%= icon('save', 'Save') %> Save</button>
+  </div>
+
+<% end %>
