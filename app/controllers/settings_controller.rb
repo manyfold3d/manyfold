@@ -17,6 +17,9 @@ class SettingsController < ApplicationController
       SiteSettings.model_tags_custom_stop_words = params[:model_tags][:custom_stop_words].split
       SiteSettings.model_tags_auto_tag_new = params[:model_tags][:auto_tag_new]
     end
+    if params[:renderer]
+      @user.renderer_settings["grid_width"] = params[:renderer][:grid_width].to_i
+    end
     @user.save!
     redirect_to user_settings_path(@user)
   end

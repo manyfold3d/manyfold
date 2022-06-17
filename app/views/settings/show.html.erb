@@ -22,6 +22,17 @@
     <%= form.number_field "pagination[per_page]", value: @user.pagination_settings["per_page"], in: 1..100, class: 'form-control' %>
   </div>
 
+  <h2>Renderer</h2>
+
+  <p>
+    Customise settings for 3d rendered previews.
+  </p>
+
+  <div class="">
+    <%= form.label "Ground plane size (mm)", for: "renderer[grid_width]", class: "form-label"%>
+    <%= form.number_field "renderer[grid_width]", value: @user.renderer_settings["grid_width"], class: "form-control" %>
+  </div>
+
   <% if current_user.admin? %>
 
     <h2>Tagging</h2>
