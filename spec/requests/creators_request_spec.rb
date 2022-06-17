@@ -11,7 +11,6 @@ RSpec.describe "Creators", type: :request do
   end
   describe "GET /creators?page=2" do
     it "returns paginated creators" do
-      allow(Rails.application.config.pagination).to receive(:creators).and_return(true)
       get "/creators?page=2"
       expect(response).to have_http_status(:success)
       expect(response.body).to match(/pagination/)

@@ -3,9 +3,9 @@ class CreatorsController < ApplicationController
 
   def index
     @creators =
-      if Rails.application.config.pagination.creators
+      if current_user.pagination_settings["creators"]
         page = params[:page] || 1
-        Creator.all.paginate(page: page)
+        Creator.all.paginate(page: page, per_page: current_user.pagination_settings["per_page"])
       else
         Creator.all
       end
