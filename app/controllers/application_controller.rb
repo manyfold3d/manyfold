@@ -9,4 +9,9 @@ class ApplicationController < ActionController::Base
       sign_in(:user, User.first)
     end
   end
+
+  def authenticate_admin_user!
+    authenticate_user!
+    render plain: "401 Unauthorized", status: :unauthorized unless current_user.admin?
+  end
 end
