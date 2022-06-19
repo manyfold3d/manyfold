@@ -23,7 +23,5 @@ module VanDam
     config.generators.system_tests = nil
 
     config.formats = config_for(:formats)
-
-    config.tags = config_for(:tags)
   end
 end

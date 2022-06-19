@@ -24,7 +24,7 @@ RSpec.describe Model, type: :model do
   context "tag generation" do
     context "without stop word filtering" do
       before :each do
-        allow(Rails.application.config.tags.models).to receive(:[]).with(:filter_stop_words).and_return(false)
+        allow(SiteSettings).to receive(:model_tags_filter_stop_words).and_return(false)
       end
 
       it "skips single letter tags" do
@@ -60,9 +60,9 @@ RSpec.describe Model, type: :model do
 
     context "with stop word filtering" do
       before :each do
-        allow(Rails.application.config.tags.models).to receive(:[]).with(:filter_stop_words).and_return(true)
-        allow(Rails.application.config.tags.models).to receive(:[]).with(:stop_words_locale).and_return("en")
-        allow(Rails.application.config.tags.models).to receive(:[]).with(:custom_stop_words).and_return(["chicken"])
+        allow(SiteSettings).to receive(:model_tags_stop_words_locale).and_return("en")
+        allow(SiteSettings).to receive(:model_tags_filter_stop_words).and_return(true)
+        allow(SiteSettings).to receive(:model_tags_custom_stop_words).and_return(["chicken"])
       end
 
       it "generates tags from whitespace delimited file names" do

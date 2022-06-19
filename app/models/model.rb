@@ -17,9 +17,8 @@ class Model < ApplicationRecord
   def autogenerate_tags_from_path!
     tags = File.split(path).last.split(/[\W_+-]/).filter { |x| x.length > 1 }
 
-    tags_config = Rails.application.config.tags.models
-    if tags_config[:filter_stop_words]
-      @filter ||= Stopwords::Snowball::Filter.new(tags_config[:stop_words_locale], tags_config[:custom_stop_words])
+    if SiteSettings.model_tags_filter_stop_words
+      @filter ||= Stopwords::Snowball::Filter.new(SiteSettings.model_tags_stop_words_locale, SiteSettings.model_tags_custom_stop_words)
       tags = @filter.filter(tags)
     end
 
