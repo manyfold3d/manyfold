@@ -7,7 +7,7 @@
     </div>
     <% if current_user.pagination_settings["creators"] %>
       <div class="paginate-container">
-        <%= will_paginate @creators %>
+        <%= paginate @creators %>
       </div>
     <% end %>
   </div>

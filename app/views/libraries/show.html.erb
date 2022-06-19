@@ -6,7 +6,7 @@
     </div>
     <% if current_user.pagination_settings["models"] %>
       <div class="paginate-container">
-        <%= will_paginate @models %>
+        <%= paginate @models %>
       </div>
     <% end %>
   </div>
