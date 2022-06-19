@@ -11,6 +11,11 @@ class SettingsController < ApplicationController
       @user.pagination_settings["creators"] = params[:pagination][:creators] == "1"
       @user.pagination_settings["per_page"] = params[:pagination][:per_page].to_i
     end
+    if current_user.admin? && params[:model_tags]
+      SiteSettings.model_tags_filter_stop_words = params[:model_tags][:filter_stop_words] == "1"
+      SiteSettings.model_tags_stop_words_locale = params[:model_tags][:stop_words_locale]
+      SiteSettings.model_tags_custom_stop_words = params[:model_tags][:custom_stop_words].split
+    end
     @user.save!
     redirect_to user_settings_path(@user)
   end
