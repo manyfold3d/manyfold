@@ -1,6 +1,10 @@
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation
 
+  controller do
+    defaults finder: :find_by_username
+  end
+
   index do
     selectable_column
     id_column
