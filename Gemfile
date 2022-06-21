@@ -32,7 +32,7 @@ gem "acts-as-taggable-on", "~> 9.0"
 gem "bootsnap", ">= 1.4.4", require: false
 
 group :production do
-  gem "pg", "~> 1.3"
+  gem "pg", "~> 1.4"
 end
 
 group :development, :test do
