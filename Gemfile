@@ -66,8 +66,6 @@ gem "cocoon", "~> 1.2"
 
 gem "public_suffix", "~> 4.0"
 
-gem "logs", "~> 0.3.0"
-
 gem "delayed_job_active_record", "~> 4.1"
 
 gem "activerecord-nulldb-adapter", "~> 0.8.0"
@@ -83,3 +81,5 @@ gem "rails-settings-cached", "~> 2.8"
 gem "activeadmin", "~> 2.13"
 
 gem "kaminari", "~> 1.2"
+
+gem "lograge", "~> 0.12.0"
