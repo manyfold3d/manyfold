@@ -83,3 +83,5 @@ gem "rails-settings-cached", "~> 2.8"
 gem "activeadmin", "~> 2.13"
 
 gem "kaminari", "~> 1.2"
+
+gem "lograge", "~> 0.12.0"
