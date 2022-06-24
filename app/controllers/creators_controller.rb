@@ -5,7 +5,7 @@ class CreatorsController < ApplicationController
     @creators =
       if current_user.pagination_settings["creators"]
         page = params[:page] || 1
-        Creator.all.paginate(page: page, per_page: current_user.pagination_settings["per_page"])
+        Creator.all.page(page).per(current_user.pagination_settings["per_page"])
       else
         Creator.all
       end

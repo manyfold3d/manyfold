@@ -11,5 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= stub "active_admin"
  *= require_self
  */
