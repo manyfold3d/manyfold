@@ -28,6 +28,11 @@
         <li class="nav-item ms-auto">
           <%= link_to icon('sliders', 'Settings'), user_settings_path(current_user), class: "nav-link"  %>
         </li>
+        <% if current_user.admin? %>
+          <li class="nav-item">
+            <%= link_to icon('tools', 'Administration'), '/admin', class: "nav-link"  %>
+          </li>
+        <% end %>
       </ul>
 
       <div>
