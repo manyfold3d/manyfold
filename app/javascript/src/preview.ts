@@ -6,7 +6,28 @@ import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 class ObjectPreview {
-  constructor (canvas, progressIndicator, url, format, yUp, gridSizeX, gridSizeZ) {
+  canvas: HTMLCanvasElement
+  url: string
+  format: string
+  yUp: boolean
+  gridSizeX: number
+  gridSizeZ: number
+  scene: THREE.Scene
+  renderer: THREE.WebGLRenderer
+  camera: THREE.PerspectiveCamera
+  controls: OrbitControls
+  gridHelper: THREE.GridHelper
+  frame: number
+  progressIndicator: HTMLDivElement
+  constructor (
+    canvas: HTMLCanvasElement,
+    progressIndicator: HTMLDivElement,
+    url: string,
+    format: string,
+    yUp: boolean,
+    gridSizeX: number,
+    gridSizeZ: number
+  ) {
     this.canvas = canvas
     this.progressIndicator = progressIndicator
     this.url = url
@@ -14,16 +35,28 @@ class ObjectPreview {
     this.yUp = yUp
     this.gridSizeX = gridSizeX
     this.gridSizeZ = gridSizeZ
-    const observer = new window.IntersectionObserver(this.onIntersectionChanged.bind(this), {})
+    const observer = new window.IntersectionObserver(
+      this.onIntersectionChanged.bind(this),
+      {}
+    )
     observer.observe(canvas)
   }
 
   setup (): void {
     this.scene = new THREE.Scene()
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
-    this.camera = new THREE.PerspectiveCamera(45, this.canvas.clientWidth / this.canvas.clientHeight, 0.1, 1000)
+    this.camera = new THREE.PerspectiveCamera(
+      45,
+      this.canvas.clientWidth / this.canvas.clientHeight,
+      0.1,
+      1000
+    )
     this.camera.position.z = 50
-    this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight, false)
+    this.renderer.setSize(
+      this.canvas.clientWidth,
+      this.canvas.clientHeight,
+      false
+    )
     this.controls = new OrbitControls(this.camera, this.renderer.domElement)
     this.controls.enableDamping = true
     this.controls.enablePan = false
@@ -37,8 +70,8 @@ class ObjectPreview {
     }
   }
 
-  load (url, format): void {
-    let loader = null
+  load (url: string, format: string): void {
+    let loader: OBJLoader | STLLoader | ThreeMFLoader | PLYLoader | null = null
     switch (format) {
       case 'obj':
         loader = new OBJLoader()
@@ -54,7 +87,8 @@ class ObjectPreview {
         break
     }
     if (loader !== null) {
-      loader.load(url,
+      loader.load(
+        url,
         this.onLoad.bind(this),
         this.onProgress.bind(this),
         this.onLoadError.bind(this)
@@ -63,7 +97,8 @@ class ObjectPreview {
   }
 
   onProgress (xhr): void {
-    const percentage = Math.floor(xhr.loaded / xhr.total * 100).toString() + '%'
+    const percentage =
+      Math.floor((xhr.loaded / xhr.total) * 100).toString() + '%'
     this.progressIndicator.style.width = percentage
     this.progressIndicator.ariaValueNow = percentage
     this.progressIndicator.textContent = percentage
@@ -74,7 +109,7 @@ class ObjectPreview {
     const material = new THREE.MeshNormalMaterial({
       flatShading: true
     })
-    let object = null
+    let object: THREE.Mesh | null = null
     if (model.type === 'BufferGeometry') {
       object = new THREE.Mesh(model, material)
     } else {
@@ -85,14 +120,29 @@ class ObjectPreview {
       })
       object = model
     }
+
+    if (object == null) return
     // Transform to screen coords from print
-    if (this.yUp === false) {
+    if (!this.yUp) {
       const coordSystemTransform = new THREE.Matrix4()
       coordSystemTransform.set(
-        1, 0, 0, 0, // x -> x
-        0, 0, 1, 0, // z -> y
-        0, -1, 0, 0, // y -> -z
-        0, 0, 0, 1)
+        1,
+        0,
+        0,
+        0, // x -> x
+        0,
+        0,
+        1,
+        0, // z -> y
+        0,
+        -1,
+        0,
+        0, // y -> -z
+        0,
+        0,
+        0,
+        1
+      )
       object.applyMatrix4(coordSystemTransform)
     }
     // Calculate bounding volumes
@@ -101,24 +151,25 @@ class ObjectPreview {
     bbox.getCenter(centre)
     const bsphere = new THREE.Sphere()
     bbox.getBoundingSphere(bsphere)
-    const modelheight = bbox.max.y - bbox.min.y
+    const modelHeight = bbox.max.y - bbox.min.y
     // Configure camera
     this.camera.position.z = this.camera.position.x = bsphere.radius * 1.63
     this.camera.position.y = bsphere.radius * 0.75
 
-    this.controls.target = new THREE.Vector3(0, modelheight / 2, 0)
+    this.controls.target = new THREE.Vector3(0, modelHeight / 2, 0)
     // Centre the model
     object.position.set(-centre.x, -bbox.min.y, -centre.z)
     this.scene.add(object)
     // Add the grid
-    this.gridHelper = new THREE.GridHelper(this.gridSizeX, this.gridSizeX / 10, 'magenta', 'cyan')
+    this.gridHelper = new THREE.GridHelper(
+      this.gridSizeX,
+      this.gridSizeX / 10,
+      'magenta',
+      'cyan'
+    )
     this.scene.add(this.gridHelper)
     // Render first frame
     this.onAnimationFrame()
-
-    bbox.dispose()
-    centre.dispose()
-    bsphere.dispose()
   }
 
   onLoadError (): void {
@@ -160,12 +211,14 @@ document.addEventListener('turbolinks:load', () => {
     canvas.height = canvas.width
     canvas.renderer = new ObjectPreview(
       canvas,
-      div.getElementsByClassName('progress-bar')[0],
-      canvas.dataset.previewUrl,
-      canvas.dataset.format,
-      (canvas.dataset.yUp === 'true'),
-      canvas.dataset.gridSizeX,
-      canvas.dataset.gridSizeZ
+      div.getElementsByClassName('progress-bar')[0] as HTMLDivElement,
+      canvas.dataset.previewUrl ?? '/',
+      canvas.dataset.format ?? '',
+      canvas.dataset.yUp === 'true',
+      parseInt(canvas.dataset.gridSizeX ?? '10', 10),
+      parseInt(canvas.dataset.gridSizeZ ?? '10', 10)
     )
   })
 })
+
+export { ObjectPreview }

@@ -8,18 +8,21 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-        "*": ["node_modules/*", "app/javascript/*"]
+      "*": ["node_modules/*", "app/javascript/*"]
     },
     "sourceMap": true,
     "strictNullChecks": true,
     "target": "es5",
-    "noEmit": true
+    "noEmit": true,
+    "types": [
+      "./app/javascript/src/globals",
+      "node",
+      "webpack-env",
+      "three",
+      "jquery",
+      "selectize"
+    ]
   },
-  "exclude": [
-    "**/*.spec.ts",
-    "node_modules",
-    "vendor",
-    "public"
-  ],
+  "exclude": ["**/*.spec.ts", "node_modules", "vendor", "public"],
   "compileOnSave": false
 }

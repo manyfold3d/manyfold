@@ -1,6 +1,9 @@
 {
   "name": "van-dam",
   "private": true,
+  "scripts": {
+    "lint:ts": "ts-standard --fix"
+  },
   "dependencies": {
     "@babel/preset-typescript": "^7.17.12",
     "@nathanvda/cocoon": "^1.2.14",
@@ -23,6 +26,11 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.2",
+    "@types/jquery": "^3.5.14",
+    "@types/node": "^18.0.0",
+    "@types/selectize": "^0.12.35",
+    "@types/three": "^0.141.0",
+    "@types/webpack-env": "^1.17.0",
     "@typescript-eslint/parser": "^4.33.0",
     "eslint": "^7.32.0",
     "husky": "^8.0.1",

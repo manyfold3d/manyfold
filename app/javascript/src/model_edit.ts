@@ -4,8 +4,7 @@ document.addEventListener('turbolinks:load', () => {
     function () {
       const tagInput = $(this).selectize({
         create: true,
-        sortField: 'text',
-        maxItems: null
+        sortField: 'text'
       })
       window.tagInputs.push(tagInput)
     }
