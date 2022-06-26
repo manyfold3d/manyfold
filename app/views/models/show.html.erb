@@ -2,12 +2,12 @@
 <div class="row row-cols-2">
 
   <div class="col-9">
-    <h2>Files</h2>
+    <h2><a name="files">Files</a></h2>
     <div class="row row-cols-2 row-cols-md-3 mb-4">
       <%= render partial: "file", collection: @groups.delete(nil) %>
     </div>
     <% @groups.each_pair do |group, files| %>
-      <h3><%= group %></h3>
+      <h3><a name="<%= group.parameterize %>"><%= group %></a></h3>
       <div class="row row-cols-2 row-cols-md-3 mb-4">
         <%= render partial: "file", collection: files %>
       </div>
@@ -33,6 +33,15 @@
     <%= card :secondary, "Actions" do %>
       <%= link_to "Edit Details", edit_library_model_path(@library, @model), class: "btn btn-primary" %>
       <%= link_to "Merge Into Parent", merge_library_model_path(@library, @model), class: "btn btn-danger", method: :post if @model.parent %>
+    <% end %>
+
+    <%= card :secondary, "Sections" do %>
+      <a href="#files">Files</a>
+      <ul>
+        <% @groups.each_pair do |group, files| %>
+          <li><a href="#<%= group.parameterize %>"><%= group %></a></li>
+        <% end %>
+      </ul>
     <% end %>
 
     <%= render 'tags_card', tags: @model.tags, selected: nil %>
