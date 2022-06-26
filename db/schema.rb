@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_19_174307) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_26_152444) do
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -73,6 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_19_174307) do
     t.string "cgtrader_path"
     t.string "cults3d_path"
     t.string "mmf_slug"
+    t.decimal "scale_factor", default: "100.0", null: false
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
     t.index ["preview_file_id"], name: "index_models_on_preview_file_id"

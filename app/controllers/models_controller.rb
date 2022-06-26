@@ -75,10 +75,11 @@ class ModelsController < ApplicationController
 
   def bulk_update_params
     params.permit(
+      :scale_factor,
       :creator_id,
       :add_tags,
       :remove_tags
-    )
+    ).compact_blank
   end
 
   def model_params
@@ -86,6 +87,7 @@ class ModelsController < ApplicationController
       :preview_file_id,
       :creator_id,
       :name,
+      :scale_factor,
       :tags,
       links_attributes: [:id, :url, :_destroy]
     )

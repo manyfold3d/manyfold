@@ -11,6 +11,7 @@
     <tr>
       <th><input type="checkbox" aria-label="Select All" value="0" name="bulk-select-all"></th>
       <th>Name</th>
+      <th>Scale Factor</th>
       <th>Tags</th>
       <th>Creator</th>
     </tr>
@@ -18,6 +19,7 @@
       <tr>
         <td><%= form.check_box "models[#{model.id}]", { data: { bulk_item:  "#{model.id}"}}%></td>
         <td><%= link_to model.name, [@library, model], title: model.path %></td>
+        <td><%= number_to_percentage model.scale_factor, strip_insignificant_zeros: true %></td>
         <td><%= render partial: 'tag', collection: model.tags, locals: {selected: nil, model_id: model.id } %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
       </tr>
@@ -25,6 +27,11 @@
   </table>
 
   <h3>Select changes to make:</h3>
+
+  <div class="row mb-3 input-group">
+    <%= form.label :scale_factor, class: "col-sm-2 col-form-label" %>
+    <%= form.number_field :scale_factor, class: "form-control col-auto" %>
+  </div>
 
   <div class="row mb-3 input-group">
     <%= form.label :creator_id, class: "col-sm-2 col-form-label" %>
