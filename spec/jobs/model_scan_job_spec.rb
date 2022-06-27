@@ -43,5 +43,32 @@ RSpec.describe ModelScanJob, type: :job do
       expect { ModelScanJob.perform_now(thing) }.to change { thing.model_files.count }.from(2).to(1)
       expect(thing.model_files.first.filename).to eq "files/part_one.stl"
     end
+
+    it "does not recreate parts that have been merged into other models" do
+      # Set up one model nested inside another
+      model_one = create(:model, path: "model_one", library: library)
+      ModelScanJob.perform_now(model_one)
+      nested_model = create(:model, path: "model_one/nested_model", library: library)
+      ModelScanJob.perform_now(nested_model)
+      # Check initial conditions
+      expect(Model.count).to eq 2
+      expect(ModelFile.count).to eq 3
+      expect(model_one.model_files.count).to eq 2
+      expect(nested_model.model_files.count).to eq 1
+      # Merge the models
+      nested_model.merge_into_parent!
+      # Check that worked
+      expect(Model.count).to eq 1
+      expect(ModelFile.count).to eq 3
+      expect(model_one.model_files.count).to eq 3
+      # Now recreate the nested model and rescan
+      nested_model = create(:model, path: "model_one/nested_model", library: library)
+      ModelScanJob.perform_now(nested_model)
+      # That should not have changed anything apart from creating an empty model which will be cleaned up later
+      expect(Model.count).to eq 1
+      expect(ModelFile.count).to eq 3
+      expect(model_one.model_files.count).to eq 3
+      expect(nested_model.model_files.count).to eq 0
+    end
   end
 end
