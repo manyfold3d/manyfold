@@ -15,7 +15,15 @@ class ModelScanJob < ApplicationJob
         File.join(dir.path, ModelScanJob.file_pattern),
         File.join(dir.path, "files", ModelScanJob.file_pattern)
       ]).each do |filename|
-        model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
+        # Create the file
+        file = model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
+        # Try to guess if the file is presupported
+        if !(
+          File.join(model_path, filename).split(/[[:punct:]]|[[:space:]]/).map(&:downcase) &
+          ["presupported", "supported", "sup", "wsupports", "withsupports"]
+        ).empty?
+          file.update!(presupported: true)
+        end
       end
     end
     # Clean out missing files
