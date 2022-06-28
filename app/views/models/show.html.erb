@@ -52,7 +52,9 @@
           Merging moves all files from this model to the target, and removes this model. File metadata is preserved, but any model metadata will be lost!
         </p>
         <strong>Merge with:</strong>
-        <%= link_to @model.parents[0].name, merge_library_model_path(@library, @model), class: "btn btn-danger", method: :post %>
+        <% @model.parents.each do |target| %>
+          <%= link_to target.name, merge_library_model_path(@library, @model, target: target.id), class: "btn btn-danger", method: :post %>
+        <% end %>
       <% end %>
     <% end %>
 

@@ -33,9 +33,9 @@ class ModelsController < ApplicationController
   end
 
   def merge
-    if (@parent = @model.parents[0])
-      @model.merge_into! @parent
-      redirect_to [@library, @parent]
+    if (target = (@model.parents.find { |x| x.id == params[:target].to_i }))
+      @model.merge_into! target
+      redirect_to [@library, target]
     else
       render status: :bad_request
     end
