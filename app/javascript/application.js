@@ -17,6 +17,7 @@ import 'src/model_edit'
 import '@nathanvda/cocoon'
 import '@selectize/selectize/dist/js/standalone/selectize.min.js'
 import '@selectize/selectize/dist/css/selectize.bootstrap5.css'
+import '@hotwired/turbo-rails'
 
 Rails.start()
 Turbolinks.start()
