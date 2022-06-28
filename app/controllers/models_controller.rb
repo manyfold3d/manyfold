@@ -33,7 +33,7 @@ class ModelsController < ApplicationController
   end
 
   def merge
-    if (@parent = @model.parent)
+    if (@parent = @model.parents[0])
       @model.merge_into_parent!
       redirect_to [@library, @parent]
     else

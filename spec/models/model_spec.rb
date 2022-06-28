@@ -129,7 +129,7 @@ RSpec.describe Model, type: :model do
     it "identifies the parent" do
       parent = create(:model, library: library, path: "model")
       child = create(:model, library: library, path: "model/nested")
-      expect(child.parent).to eql parent
+      expect(child.parents).to eql [parent]
     end
 
     context "merging into parent" do

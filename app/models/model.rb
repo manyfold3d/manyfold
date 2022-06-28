@@ -28,19 +28,19 @@ class Model < ApplicationRecord
     end
   end
 
-  def parent
-    library.models.find_by_path File.join(File.split(path)[0..-2])
+  def parents
+    [library.models.find_by_path(File.join(File.split(path)[0..-2]))]
   end
-  memoize :parent
+  memoize :parents
 
   def merge_into_parent!
-    return unless parent
+    return unless parents[0]
 
     dirname = ::File.split(path)[-1]
     model_files.each do |f|
       f.update(
         filename: File.join(dirname, f.filename),
-        model: parent
+        model: parents[0]
       )
     end
     reload
