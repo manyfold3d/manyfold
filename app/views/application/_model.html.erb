@@ -1,5 +1,5 @@
 <div class="col mb-4">
-  <div class="card">
+  <div class="card model-card">
     <% if file = model.preview_file %>
       <% if image?(file.file_format) %>
         <%= image_tag library_model_model_file_path(model.library, model, file, format: file.file_format), class: "card-img-top image-preview ", alt: file.name %>
@@ -7,14 +7,16 @@
         <div class="card-img-top">
           <%= render partial: "object_preview", locals: { library: model.library, model: model, file: file } %>
         </div>
-      <% end %>
+      <% end %>  
+       <% else %> 
+       <div class='preview-empty'> <p>no preview availiable</p></div>
     <% end %>
     <div class="card-body">
-      <%= link_to "Open", [model.library, model], {class: "btn btn-primary float-end"} %>
       <h5 class="card-title"><%= model.name %></h5>
       <% if @creator.nil? && model.creator %>
         <small>by <%= link_to model.creator.name, model.creator %></small>
       <% end %>
+      <%= link_to "Open", [model.library, model], {class: "btn btn-primary float-end btn-sm"} %>
     </div>
   </div>
 </div>
