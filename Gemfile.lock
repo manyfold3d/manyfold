@@ -152,6 +152,9 @@ GEM
     hiredis (0.6.3)
     i18n (1.11.0)
       concurrent-ruby (~> 1.0)
+    importmap-rails (1.1.2)
+      actionpack (>= 6.0.0)
+      railties (>= 6.0.0)
     inherited_resources (1.13.1)
       actionpack (>= 5.2, < 7.1)
       has_scope (~> 0.6)
@@ -336,7 +339,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    semantic_range (3.0.0)
     shellany (0.0.1)
     spring (4.0.0)
     sprockets (4.0.3)
@@ -375,11 +377,6 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (5.4.3)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -407,6 +404,7 @@ DEPENDENCIES
   guard (~> 2.18)
   guard-rspec (~> 4.7)
   hiredis
+  importmap-rails (~> 1.1)
   jbuilder (~> 2.11)
   kaminari (~> 1.2)
   listen (~> 3.7)
@@ -429,7 +427,6 @@ DEPENDENCIES
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
-  webpacker (~> 5.4)
 
 RUBY VERSION
    ruby 3.1.2p20
