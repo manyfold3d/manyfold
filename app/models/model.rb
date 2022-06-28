@@ -29,7 +29,7 @@ class Model < ApplicationRecord
   end
 
   def parents
-    [library.models.find_by_path(File.join(File.split(path)[0..-2]))]
+    [library.models.find_by_path(File.join(File.split(path)[0..-2]))].compact
   end
   memoize :parents
 

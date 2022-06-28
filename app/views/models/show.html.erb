@@ -32,7 +32,7 @@
 
     <%= card :secondary, "Actions" do %>
       <%= link_to "Edit Details", edit_library_model_path(@library, @model), class: "btn btn-primary" %>
-      <%= link_to "Merge Into Parent", merge_library_model_path(@library, @model), class: "btn btn-danger", method: :post unless @model.parents.empty? %>
+      <%= link_to "Merge Into #{@model.parents[0].name}", merge_library_model_path(@library, @model), class: "btn btn-danger", method: :post unless @model.parents.empty? %>
     <% end %>
 
     <%= card :secondary, "Sections" do %>
