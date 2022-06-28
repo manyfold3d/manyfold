@@ -34,7 +34,7 @@ class ModelsController < ApplicationController
 
   def merge
     if (@parent = @model.parents[0])
-      @model.merge_into_parent!
+      @model.merge_into! @parent
       redirect_to [@library, @parent]
     else
       render status: :bad_request

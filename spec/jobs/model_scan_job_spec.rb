@@ -56,7 +56,7 @@ RSpec.describe ModelScanJob, type: :job do
       expect(model_one.model_files.count).to eq 2
       expect(nested_model.model_files.count).to eq 1
       # Merge the models
-      nested_model.merge_into_parent!
+      nested_model.merge_into! model_one
       # Check that worked
       expect(Model.count).to eq 1
       expect(ModelFile.count).to eq 3

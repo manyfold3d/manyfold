@@ -33,14 +33,15 @@ class Model < ApplicationRecord
   end
   memoize :parents
 
-  def merge_into_parent!
-    return unless parents[0]
-
-    dirname = ::File.split(path)[-1]
+  def merge_into!(target)
+    return unless target
+    # Work out path to this model from the target
+    relative_path = Pathname.new(path).relative_path_from(Pathname.new(target.path))
+    # Move files
     model_files.each do |f|
       f.update(
-        filename: File.join(dirname, f.filename),
-        model: parents[0]
+        filename: File.join(relative_path, f.filename),
+        model: target
       )
     end
     reload
