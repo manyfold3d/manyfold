@@ -129,7 +129,7 @@ RSpec.describe Model, type: :model do
     it "identifies the parent" do
       parent = create(:model, library: library, path: "model")
       child = create(:model, library: library, path: "model/nested")
-      expect(child.parent).to eql parent
+      expect(child.parents).to eql [parent]
     end
 
     context "merging into parent" do
@@ -140,7 +140,7 @@ RSpec.describe Model, type: :model do
 
       it "moves files" do
         file = create(:model_file, model: @child, filename: "part.stl")
-        @child.merge_into_parent!
+        @child.merge_into! @parent
         file.reload
         expect(file.filename).to eql "nested/part.stl"
         expect(file.model).to eql @parent
@@ -148,7 +148,7 @@ RSpec.describe Model, type: :model do
 
       it "deletes merged model" do
         expect {
-          @child.merge_into_parent!
+          @child.merge_into! @parent
         }.to change { Model.count }.from(2).to(1)
       end
     end
