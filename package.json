@@ -5,7 +5,7 @@
     "lint:ts": "ts-standard --fix"
   },
   "dependencies": {
-    "@babel/preset-typescript": "^7.17.12",
+    "@babel/preset-typescript": "^7.18.6",
     "@nathanvda/cocoon": "^1.2.14",
     "@popperjs/core": "^2.11.5",
     "@rails/actioncable": "^7.0.3",
