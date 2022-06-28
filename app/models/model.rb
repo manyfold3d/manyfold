@@ -29,12 +29,15 @@ class Model < ApplicationRecord
   end
 
   def parents
-    [library.models.find_by_path(File.join(File.split(path)[0..-2]))].compact
+    Pathname.new(path).parent.descend.map do |path|
+      library.models.find_by_path(path.to_s)
+    end.compact
   end
   memoize :parents
 
   def merge_into!(target)
     return unless target
+
     # Work out path to this model from the target
     relative_path = Pathname.new(path).relative_path_from(Pathname.new(target.path))
     # Move files
