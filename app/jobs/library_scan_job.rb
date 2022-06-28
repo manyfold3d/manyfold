@@ -10,6 +10,11 @@ class LibraryScanJob < ApplicationJob
   def perform(library)
     # For each directory in the library, create a model
     all_3d_files = Dir.glob(File.join(library.path, "**", LibraryScanJob.file_pattern))
+    existing_files = library.model_files.reload.map do |x|
+      File.join(library.path, x.model.path, x.filename)
+    end
+    all_3d_files -= existing_files
+    puts all_3d_files.inspect
     model_folders = all_3d_files.map { |f| File.dirname(f) }.uniq
     model_folders = model_folders.map { |f| f.gsub(/\/files$/, "").gsub(/\/images$/, "") }.uniq # Ignore thingiverse subfolders
     model_folders.each do |path|

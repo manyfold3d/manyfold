@@ -23,6 +23,12 @@ RSpec.describe LibraryScanJob, type: :job do
     expect { LibraryScanJob.perform_now(library) }.to have_enqueued_job(ModelScanJob).exactly(4).times
   end
 
+  it "only scans models with changes on rescan" do
+    model_one = create(:model, path: "model_one", library: library)
+    ModelScanJob.perform_now(model_one)
+    expect { LibraryScanJob.perform_now(library) }.to have_enqueued_job(ModelScanJob).exactly(3).times
+  end
+
   it "removes models with no files" do
     lib = create(:library, path: File.join("/", "tmp"))
     create(:model, library: lib, path: "missing")
