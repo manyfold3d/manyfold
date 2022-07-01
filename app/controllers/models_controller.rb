@@ -23,10 +23,10 @@ class ModelsController < ApplicationController
 
   def update
     hash = model_params
-    tags = hash.delete(:tags) { |t| "" }
+    tags = hash.delete(:tags)
 
     if @model.update(hash)
-      update_tags(tags.split(","))
+      update_tags(tags.split(",")) if tags
     end
 
     redirect_to [@library, @model]
