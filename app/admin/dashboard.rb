@@ -9,9 +9,10 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Recent Models" do
           table do
             tbody do
-              Model.all.order(:created_at).limit(20).map do |model|
+              Model.unscoped.order(created_at: :desc).limit(20).map do |model|
                 tr do
                   td { link_to(model.name, admin_model_path(model)) }
+                  td { "#{time_ago_in_words(model.created_at)} ago" }
                 end
               end
             end
@@ -20,11 +21,16 @@ ActiveAdmin.register_page "Dashboard" do
       end
       column do
         panel "Task Queue" do
+          h2 do
+            "#{Delayed::Job.count} jobs in queue"
+          end
           table do
             tbody do
-              Delayed::Job.all.order(:created_at).limit(20).map do |job|
+              Delayed::Job.order(locked_at: :desc).limit(20).map do |job|
                 tr do
                   td { link_to(job.id, admin_task_path(job)) }
+                  td { job.locked_at ? "running" : "queued" }
+                  td { job.last_error ? "error" : "" }
                 end
               end
             end
