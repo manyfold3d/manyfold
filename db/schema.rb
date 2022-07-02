@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_26_152444) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_02_202932) do
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -58,6 +58,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_26_152444) do
     t.boolean "presupported", default: false
     t.boolean "printed", default: false
     t.boolean "y_up", default: false, null: false
+    t.string "digest"
+    t.index ["digest"], name: "index_model_files_on_digest"
     t.index ["model_id"], name: "index_model_files_on_model_id"
   end
 
