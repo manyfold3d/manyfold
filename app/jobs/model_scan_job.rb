@@ -19,7 +19,15 @@ class ModelScanJob < ApplicationJob
     end
   end
 
+  def clean_up_missing_files(model)
+    model.model_files.select { |f|
+      !File.exist?(File.join(model.library.path, model.path, f.filename))
+    }.each(&:destroy)
+  end
+
   def perform(model)
+    # Clean out missing files
+    clean_up_missing_files(model)
     # For each file in the model, create a file object
     model_path = File.join(model.library.path, model.path)
     all_file_paths = model_file_paths(model.library)
@@ -42,10 +50,6 @@ class ModelScanJob < ApplicationJob
         end
       end
     end
-    # Clean out missing files
-    model.model_files.select { |f|
-      !File.exist?(File.join(model_path, f.filename))
-    }.each(&:destroy)
     # Set tags and default files
     model.model_files.reload
     model.preview_file = model.model_files.first unless model.preview_file
