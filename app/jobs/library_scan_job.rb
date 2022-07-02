@@ -7,30 +7,55 @@ class LibraryScanJob < ApplicationJob
     "*.{#{lower.zip(upper).flatten.join(",")}}"
   end
 
-  def perform(library)
-    # For each directory in the library, create a model
-    all_3d_files = Dir.glob(File.join(library.path, "**", LibraryScanJob.file_pattern))
-    existing_files = library.model_files.reload.map do |x|
+  # Find all files in the library that we might need to look at
+  def filenames_on_disk(library)
+    Dir.glob(File.join(library.path, "**", LibraryScanJob.file_pattern))
+  end
+
+  # Get a list of all the existing filenames
+  def known_filenames(library)
+    library.model_files.reload.map do |x|
       File.join(library.path, x.model.path, x.filename)
     end
-    all_3d_files -= existing_files
-    puts all_3d_files.inspect
-    model_folders = all_3d_files.map { |f| File.dirname(f) }.uniq
-    model_folders = model_folders.map { |f| f.gsub(/\/files$/, "").gsub(/\/images$/, "") }.uniq # Ignore thingiverse subfolders
-    model_folders.each do |path|
-      relative_path = path.gsub(library.path, "")
-      next if relative_path.blank? # For now, ignore files in the root
-      model = library.models.find_or_create_by(name: File.basename(relative_path).humanize.tr("+", " ").titleize, path: relative_path)
+  end
+
+  def clean_up_missing_models(library)
+    library.models.each do |m|
+      m.destroy unless File.exist?(File.join(library.path, m.path))
+    end
+  end
+
+  def filter_out_common_subfolders(folders)
+    ignorable_leaf_folders = [
+      "files", # Thingiverse download structure
+      "images" # Thingiverse download structure
+    ]
+    matcher = /\/(#{ignorable_leaf_folders.join('|')})$/
+    folders.map { |f| f.gsub(matcher, "") }.uniq
+  end
+
+  def perform(library)
+    # Remove models with missing path
+    clean_up_missing_models(library)
+    # Make a list of changed filenames using set XOR
+    changes = (known_filenames(library).to_set ^ filenames_on_disk(library)).to_a
+    # Make a list of library-relative folders with changed files
+    folders_with_changes = changes.map { |f| File.dirname(f.gsub(library.path, "")) }.uniq
+    folders_with_changes = filter_out_common_subfolders(folders_with_changes)
+    folders_with_changes.delete("/")
+    folders_with_changes.compact_blank!
+    # For each folder in the library with a change, find or create a model, then scan it
+    folders_with_changes.each do |path|
+      new_model_properties = {
+        name: File.basename(path).humanize.tr("+", " ").titleize
+      }
+      model = library.models.create_with(new_model_properties).find_or_create_by(path: path)
       if model.valid?
         ModelScanJob.perform_later(model)
       else
         Rails.logger.error(model.inspect)
         Rails.logger.error(model.errors.full_messages.inspect)
       end
-    end
-    # Remove models with missing path
-    library.models.each do |m|
-      m.destroy unless File.exist?(File.join(library.path, m.path))
     end
   end
 end
