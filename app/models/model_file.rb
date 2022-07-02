@@ -11,4 +11,14 @@ class ModelFile < ApplicationRecord
   def name
     File.basename(filename, ".*").humanize.titleize
   end
+
+  def pathname
+    File.join(model.library.path, model.path, filename)
+  end
+
+  def calculate_digest
+    Digest::SHA512.new.file(pathname).hexdigest
+  rescue Errno::ENOENT
+    nil
+  end
 end

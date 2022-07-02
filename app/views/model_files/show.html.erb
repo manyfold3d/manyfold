@@ -16,6 +16,11 @@
       <p>
         Filename: <code><%= @file.filename %></code>
       </p>
+      <% if @file.digest %>
+        <p>
+          Digest: <code><%= @file.digest.slice(0,16) %></code>
+        </p>
+      <% end %>
       <%= render 'form' %>
     <% end %>
 
