@@ -8,7 +8,11 @@
 <div class="row row-cols-2">
 
   <div class="col-9">
-    <%= render partial: "object_preview", locals: { library: @library, model: @model, file: @file } %>
+      <% if image?(@file.file_format) %>
+        <%= image_tag library_model_model_file_path(@model.library, @model, @file, format: @file.file_format), alt: @file.name, style: "width: 100%" %>
+      <% elsif renderable?(@file.file_format) %>
+        <%= render partial: "object_preview", locals: { library: @library, model: @model, file: @file } %>
+      <% end %>
   </div>
 
   <div class="col-3">
