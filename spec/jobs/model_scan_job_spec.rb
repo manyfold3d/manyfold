@@ -25,8 +25,8 @@ RSpec.describe ModelScanJob, type: :job do
 
     it "can scan a thingiverse-structured model" do
       thing = create(:model, path: "thingiverse_model", library: library)
-      expect { ModelScanJob.perform_now(thing) }.to change { thing.model_files.count }.to(1)
-      expect(thing.model_files.first.filename).to eq "files/part_one.stl"
+      expect { ModelScanJob.perform_now(thing) }.to change { thing.model_files.count }.to(2)
+      expect(thing.model_files.map(&:filename)).to eq ["files/part_one.stl", "images/card_preview_DISPLAY.png"]
     end
 
     it "sets the preview file to the first scanned file by default" do
@@ -37,11 +37,11 @@ RSpec.describe ModelScanJob, type: :job do
 
   context "with already scanned files" do
     it "removes files that don't exist on disk" do
-      thing = create(:model, path: "thingiverse_model", library: library)
+      thing = create(:model, path: "model_one/nested_model", library: library)
       create(:model_file, filename: "missing.stl", model: thing)
       create(:model_file, filename: "gone.stl", model: thing)
       expect { ModelScanJob.perform_now(thing) }.to change { thing.model_files.count }.from(2).to(1)
-      expect(thing.model_files.first.filename).to eq "files/part_one.stl"
+      expect(thing.model_files.first.filename).to eq "part_one.stl"
     end
 
     it "does not recreate parts that have been merged into other models" do

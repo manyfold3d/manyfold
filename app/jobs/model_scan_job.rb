@@ -1,6 +1,12 @@
 class ModelScanJob < ApplicationJob
   queue_as :default
 
+  def self.image_pattern
+    lower = Rails.configuration.formats[:images].select { |x| x.is_a?(String) }.map(&:downcase)
+    upper = Rails.configuration.formats[:images].select { |x| x.is_a?(String) }.map(&:upcase)
+    "*.{#{lower.zip(upper).flatten.join(",")}}"
+  end
+
   def self.file_pattern
     lower = Rails.configuration.formats.flatten(2).select { |x| x.is_a?(String) }.map(&:downcase)
     upper = Rails.configuration.formats.flatten(2).select { |x| x.is_a?(String) }.map(&:upcase)
@@ -20,7 +26,8 @@ class ModelScanJob < ApplicationJob
     Dir.open(model_path) do |dir|
       Dir.glob([
         File.join(dir.path, ModelScanJob.file_pattern),
-        File.join(dir.path, "files", ModelScanJob.file_pattern)
+        File.join(dir.path, "files", ModelScanJob.file_pattern),
+        File.join(dir.path, "images", ModelScanJob.image_pattern)
       ]).each do |filename|
         unless all_file_paths.include?(filename)
           # Create the file
