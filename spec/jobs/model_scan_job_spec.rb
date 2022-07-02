@@ -33,6 +33,10 @@ RSpec.describe ModelScanJob, type: :job do
       expect { ModelScanJob.perform_now(model) }.to change { model.model_files.count }.to(2)
       expect(model.preview_file.filename).to eq "part_1.obj"
     end
+
+    it "queues up individual file scans" do
+      expect { ModelScanJob.perform_now(model) }.to have_enqueued_job(ModelFileScanJob).exactly(2).times
+    end
   end
 
   context "with already scanned files" do
