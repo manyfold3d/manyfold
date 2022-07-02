@@ -11,4 +11,8 @@ class ModelFile < ApplicationRecord
   def name
     File.basename(filename, ".*").humanize.titleize
   end
+
+  def pathname
+    File.join(model.library.path, model.path, filename)
+  end
 end
