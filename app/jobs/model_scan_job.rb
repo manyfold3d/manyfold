@@ -13,12 +13,6 @@ class ModelScanJob < ApplicationJob
     "*.{#{lower.zip(upper).flatten.join(",")}}"
   end
 
-  def model_file_paths(library)
-    library.model_files.reload.map do |x|
-      File.join(library.path, x.model.path, x.filename)
-    end
-  end
-
   def clean_up_missing_files(model)
     model.model_files.select { |f|
       !File.exist?(File.join(model.library.path, model.path, f.filename))
@@ -30,18 +24,15 @@ class ModelScanJob < ApplicationJob
     clean_up_missing_files(model)
     # For each file in the model, create a file object
     model_path = File.join(model.library.path, model.path)
-    all_file_paths = model_file_paths(model.library)
     Dir.open(model_path) do |dir|
       Dir.glob([
         File.join(dir.path, ModelScanJob.file_pattern),
         File.join(dir.path, "files", ModelScanJob.file_pattern),
         File.join(dir.path, "images", ModelScanJob.image_pattern)
       ]).uniq.each do |filename|
-        unless all_file_paths.include?(filename)
-          # Create the file
-          file = model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
-          ModelFileScanJob.perform_later(file) if file.valid?
-        end
+        # Create the file
+        file = model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
+        ModelFileScanJob.perform_later(file) if file.valid?
       end
     end
     # Set tags and default files
