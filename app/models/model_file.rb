@@ -15,4 +15,8 @@ class ModelFile < ApplicationRecord
   def pathname
     File.join(model.library.path, model.path, filename)
   end
+
+  def calculate_digest
+    Digest::SHA512.new.file(pathname).hexdigest
+  end
 end

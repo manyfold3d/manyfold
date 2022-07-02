@@ -9,5 +9,7 @@ class ModelFileScanJob < ApplicationJob
     ).empty?
       file.update!(presupported: true)
     end
+    # Calculate digest
+    file.update!(digest: file.calculate_digest)
   end
 end
