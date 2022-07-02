@@ -42,6 +42,7 @@ class LibraryScanJob < ApplicationJob
     # Make a list of library-relative folders with changed files
     folders_with_changes = changes.map { |f| File.dirname(f.gsub(library.path, "")) }.uniq
     folders_with_changes = filter_out_common_subfolders(folders_with_changes)
+    folders_with_changes.delete("/")
     folders_with_changes.compact_blank!
     # For each folder in the library with a change, find or create a model, then scan it
     folders_with_changes.each do |path|
