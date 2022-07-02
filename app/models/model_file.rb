@@ -18,5 +18,7 @@ class ModelFile < ApplicationRecord
 
   def calculate_digest
     Digest::SHA512.new.file(pathname).hexdigest
+  rescue Errno::ENOENT
+    nil
   end
 end
