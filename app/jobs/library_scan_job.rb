@@ -23,6 +23,14 @@ class LibraryScanJob < ApplicationJob
     library.models.each do |m|
       m.destroy unless File.exist?(File.join(library.path, m.path))
     end
+    nil
+  end
+
+  def clean_up_missing_model_files(library)
+    library.model_files.each do |f|
+      f.destroy unless File.exist?(f.pathname)
+    end
+    nil
   end
 
   def filter_out_common_subfolders(folders)
@@ -37,6 +45,7 @@ class LibraryScanJob < ApplicationJob
   def perform(library)
     # Remove models with missing path
     clean_up_missing_models(library)
+    clean_up_missing_model_files(library)
     # Make a list of changed filenames using set XOR
     changes = (known_filenames(library).to_set ^ filenames_on_disk(library)).to_a
     # Make a list of library-relative folders with changed files
