@@ -9,3 +9,6 @@ shared:
   images:
   - jpg
   - png
+  - jpeg
+  - gif
+  - svg

@@ -15,6 +15,8 @@ class ModelFilesController < ApplicationController
       format.mix { send_file_content }
       format.png { send_file File.join(@library.path, @model.path, @file.filename) }
       format.jpeg { send_file File.join(@library.path, @model.path, @file.filename) }
+      format.svg { send_file File.join(@library.path, @model.path, @file.filename) }
+      format.gif { send_file File.join(@library.path, @model.path, @file.filename) }
     end
   end
 
