@@ -41,14 +41,19 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                The folder and files that make up this model will be moved from:<br>
-                <code><%= @model.path %></code><br>
-                to<br>
-                <code><%= @model.formatted_path %></code>
+                <p>
+                  The folder and files that make up this model will be moved from:<br>
+                  <code><%= @model.path %></code><br>
+                  to<br>
+                  <code><%= @model.formatted_path %></code>
+                </p>
+                <p>
+                  Are you sure you want to do this?
+                </p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <%= button_to "Move", library_model_path(@library, @model, "model[path]": @model.formatted_path), method: :patch, class: "btn btn-warning" %>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, cancel</button>
+                <%= button_to "Yes, move the files", library_model_path(@library, @model, "model[path]": @model.formatted_path), method: :patch, class: "btn btn-warning" %>
               </div>
             </div>
           </div>
