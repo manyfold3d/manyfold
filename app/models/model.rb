@@ -10,6 +10,8 @@ class Model < ApplicationRecord
   has_many :links, as: :linkable, dependent: :destroy
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
+  before_update :move_files
+
   default_scope { order(:name) }
 
   acts_as_taggable_on :tags
@@ -49,5 +51,22 @@ class Model < ApplicationRecord
     end
     reload
     destroy
+  end
+
+  private
+
+  def create_folder_if_necessary(folder)
+    return if Dir.exist?(folder)
+    create_folder_if_necessary(File.dirname(folder))
+    Dir.mkdir(folder)
+  end
+
+  def move_files
+    if path_changed?
+      old_path = File.join(library.path, path_was)
+      new_path = File.join(library.path, path)
+      create_folder_if_necessary(File.dirname(new_path))
+      File.rename(old_path, new_path)
+    end
   end
 end
