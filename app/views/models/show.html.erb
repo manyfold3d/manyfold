@@ -32,6 +32,34 @@
 
     <%= card :secondary, "Actions" do %>
       <%= link_to "Edit Details", edit_library_model_path(@library, @model), class: "btn btn-primary" %>
+      <% unless @model.contains_other_models? %>
+        <div class="modal fade" id="confirm-move" data-bs-backdrop='static' tabindex="-1" aria-labelledby="confirmMoveLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="confirmMoveLabel">Move model files</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>
+                  The folder and files that make up this model will be moved from:<br>
+                  <code><%= @model.path %></code><br>
+                  to<br>
+                  <code><%= @model.formatted_path %></code>
+                </p>
+                <p>
+                  Are you sure you want to do this?
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, cancel</button>
+                <%= button_to "Yes, move the files", library_model_path(@library, @model, "model[path]": @model.formatted_path), method: :patch, class: "btn btn-warning" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= button_tag "Reformat Path", class: "btn btn-warning", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move" %>
+      <% end %>
     <% end %>
 
     <%= card :secondary, "Sections" do %>
@@ -45,6 +73,19 @@
 
     <%= render 'tags_card', tags: @model.tags, selected: nil %>
     <%= render 'links_card', links: @model.links %>
+
+    <% if @model.contains_other_models? %>
+      <%= card :warning, "Contained Models" do %>
+        <p>
+          The model folder on disk contains other models. You may wish to merge them into this one, or move them out.
+        </p>
+        <ul>
+          <% @model.contained_models.each do |target| %>
+            <li><%= link_to target.name, library_model_path(@library, target)%></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
 
     <% unless @model.parents.empty? %>
       <%= card :danger, "Merge" do %>

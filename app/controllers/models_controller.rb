@@ -89,6 +89,7 @@ class ModelsController < ApplicationController
       :name,
       :scale_factor,
       :tags,
+      :path,
       links_attributes: [:id, :url, :_destroy]
     )
   end
