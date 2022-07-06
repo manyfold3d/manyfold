@@ -53,6 +53,10 @@ class Model < ApplicationRecord
     destroy
   end
 
+  def formatted_path
+    File.join("", tags.order(taggings_count: :desc).map(&:to_s).map(&:parameterize), name.parameterize) + "##{id}"
+  end
+
   def contained_models
     library.models.where("path LIKE ?", Model.sanitize_sql_like(path) + "/%")
   end
