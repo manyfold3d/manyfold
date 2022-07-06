@@ -46,6 +46,19 @@
     <%= render 'tags_card', tags: @model.tags, selected: nil %>
     <%= render 'links_card', links: @model.links %>
 
+    <% if @model.contains_other_models? %>
+      <%= card :warning, "Contained Models" do %>
+        <p>
+          The model folder on disk contains other models. You may wish to merge them into this one, or move them out.
+        </p>
+        <ul>
+          <% @model.contained_models.each do |target| %>
+            <li><%= link_to target.name, library_model_path(@library, target)%></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+
     <% unless @model.parents.empty? %>
       <%= card :danger, "Merge" do %>
         <p>

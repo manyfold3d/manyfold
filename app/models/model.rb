@@ -53,6 +53,14 @@ class Model < ApplicationRecord
     destroy
   end
 
+  def contained_models
+    library.models.where("path LIKE ?", Model.sanitize_sql_like(path) + "/%")
+  end
+
+  def contains_other_models?
+    contained_models.exists?
+  end
+
   private
 
   def create_folder_if_necessary(folder)
