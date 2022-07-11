@@ -1462,10 +1462,10 @@
     webpack-cli "^3.3.12"
     webpack-sources "^1.4.3"
 
-"@selectize/selectize@^0.13.5":
-  version "0.13.5"
-  resolved "https://registry.yarnpkg.com/@selectize/selectize/-/selectize-0.13.5.tgz#e78c58d20a69b867678bd4881e36253c162639c0"
-  integrity sha512-2wP1BW03Kv84TQFnSjR+aqDcDb2RNM0YB9+lNp1y6phvWaGllrwk6WCJj3MsiQxhGryMRuavgjcUzZC2K305Rg==
+"@selectize/selectize@^0.13.6":
+  version "0.13.6"
+  resolved "https://registry.yarnpkg.com/@selectize/selectize/-/selectize-0.13.6.tgz#d54dd64afa7341e9cb2fc098a34b5a0adbb4484c"
+  integrity sha512-UVkHH92l/4zLH/acfukry419K2yAKiDf6VmFQ9hZzMpWW2epE7xJIgK47mJLjAQnimP0ROo8BStfwelWcoTQyg==
   dependencies:
     "@selectize/sifter" "^0.6.2"
     microplugin "0.0.3"
