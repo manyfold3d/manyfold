@@ -1,0 +1,13 @@
+localhost {
+  handle_path /packs/* {
+    root * ./public/packs
+    file_server
+  }
+  handle_path /files/* {
+    root * {$LIBRARY_ROOT}
+    file_server
+  }
+  handle {
+      reverse_proxy :5100
+  }
+}
