@@ -14,6 +14,7 @@
       <th>Scale Factor</th>
       <th>Tags</th>
       <th>Creator</th>
+      <th>Organize files</th>
     </tr>
     <% @models.each do |model| %>
       <tr>
@@ -22,25 +23,41 @@
         <td><%= number_to_percentage model.scale_factor, strip_insignificant_zeros: true %></td>
         <td><%= render partial: 'tag', collection: model.tags, locals: {selected: nil, model_id: model.id } %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
+        <td><code><%= model.formatted_path if model.formatted_path != model.path %></code></td>
       </tr>
     <% end %>
   </table>
 
   <h3>Select changes to make:</h3>
 
-  <div class="row mb-3 input-group">
+  <div class="row mb-3">
     <%= form.label :scale_factor, class: "col-sm-2 col-form-label" %>
-    <%= form.number_field :scale_factor, class: "form-control col-auto" %>
+    <div class="col-sm-10">
+      <%= form.number_field :scale_factor, class: "form-control col-auto" %>
+    </div>
   </div>
 
-  <div class="row mb-3 input-group">
+  <div class="row mb-3">
     <%= form.label :creator_id, class: "col-sm-2 col-form-label" %>
-    <%= form.collection_select :creator_id, @creators, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
-    <%= link_to "New Creator", new_creator_path, class: "btn btn-outline-secondary col-auto" %>
+    <div class="col-sm-10">
+      <div class="input-group">
+        <%= form.collection_select :creator_id, @creators, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
+        <%= link_to "New Creator", new_creator_path, class: "btn btn-outline-secondary col-auto" %>
+      </div>
+    </div>
   </div>
 
   <%= render 'tags_edit', :form => form, :name => :add_tags, :value => "", :label => "Add Tags" %>
   <%= render 'tags_edit', :form => form, :name => :remove_tags, :value => "", :label => "Remove Tags" %>
+
+  <div class="row mb-3">
+    <%= form.label "Organize files", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <div class="form-switch">
+        <%= form.check_box :organize, class: "form-check-input form-check-inline" %>
+      </div>
+    </div>
+  </div>
 
   <%= form.hidden_field :tag, value: @tag if @tag %>
   <%= form.submit "Update Selected Models", class: "btn btn-primary" %>
