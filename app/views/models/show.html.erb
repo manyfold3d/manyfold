@@ -37,7 +37,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="confirmMoveLabel">Move model files</h5>
+                <h5 class="modal-title" id="confirmMoveLabel">Organize files</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -53,12 +53,12 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, cancel</button>
-                <%= button_to "Yes, move the files", library_model_path(@library, @model, "model[path]": @model.formatted_path), method: :patch, class: "btn btn-warning" %>
+                <%= button_to "Yes, move the files", library_model_path(@library, @model, "model[organize]": true), method: :patch, class: "btn btn-warning" %>
               </div>
             </div>
           </div>
         </div>
-        <%= button_tag "Reformat Path", class: "btn btn-warning", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move" %>
+        <%= button_tag "Organize Files", class: "btn btn-warning", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move" %>
       <% end %>
     <% end %>
 
