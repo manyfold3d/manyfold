@@ -10,6 +10,8 @@ class Model < ApplicationRecord
   has_many :links, as: :linkable, dependent: :destroy
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
+  attr_accessor :organize
+
   before_update :move_files
 
   default_scope { order(:name) }
@@ -74,11 +76,12 @@ class Model < ApplicationRecord
   end
 
   def move_files
-    if path_changed?
-      old_path = File.join(library.path, path_was)
-      new_path = File.join(library.path, path)
+    if ActiveModel::Type::Boolean.new.cast(organize)
+      old_path = File.join(library.path, path)
+      new_path = File.join(library.path, formatted_path)
       create_folder_if_necessary(File.dirname(new_path))
       File.rename(old_path, new_path)
+      self.path = formatted_path
     end
   end
 end

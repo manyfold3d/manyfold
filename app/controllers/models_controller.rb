@@ -78,7 +78,8 @@ class ModelsController < ApplicationController
       :scale_factor,
       :creator_id,
       :add_tags,
-      :remove_tags
+      :remove_tags,
+      :organize
     ).compact_blank
   end
 
@@ -89,7 +90,7 @@ class ModelsController < ApplicationController
       :name,
       :scale_factor,
       :tags,
-      :path,
+      :organize,
       links_attributes: [:id, :url, :_destroy]
     )
   end
