@@ -76,7 +76,7 @@ class Model < ApplicationRecord
   end
 
   def move_files
-    if ActiveModel::Type::Boolean.new.cast(organize)
+    if ActiveModel::Type::Boolean.new.cast(organize) && !contains_other_models?
       old_path = File.join(library.path, path)
       new_path = File.join(library.path, formatted_path)
       create_folder_if_necessary(File.dirname(new_path))
