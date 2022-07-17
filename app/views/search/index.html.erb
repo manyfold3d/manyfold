@@ -25,3 +25,19 @@
     <a href='https://yeggi.com/q/<%= @query %>/'>Search for more on Yeggi</a>
   </div>
 <% end %>
+<% if @recent %>
+  <div class="row row-cols-2">
+    <div class="col-8 offset-md-2">
+      <p class="lead">Recently-added Models</p>
+      <table class="table">
+        <% @recent.each do |model| %>
+        <tr>
+          <td><%= link_to model.name, library_model_path(model.library, model) %></td>
+          <td><%= link_to model.library.name, model.library %></td>
+          <td><%= time_ago_in_words(model.created_at) %> ago</td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+<% end %>

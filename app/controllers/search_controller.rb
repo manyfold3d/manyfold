@@ -8,6 +8,8 @@ class SearchController < ApplicationController
       @results = Model.where(field.matches("%#{@query}%"))
       @results += Model.tagged_with(@query)
       @results.uniq!
+    else
+      @recent = Model.order(created_at: :desc).limit(20)
     end
   end
 
