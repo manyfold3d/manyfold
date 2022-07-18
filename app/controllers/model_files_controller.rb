@@ -1,7 +1,7 @@
 class ModelFilesController < ApplicationController
   before_action :get_library
   before_action :get_model
-  before_action :get_file
+  before_action :get_file, except: [:bulk_edit, :bulk_update]
 
   def show
     respond_to do |format|
@@ -25,6 +25,23 @@ class ModelFilesController < ApplicationController
     redirect_to [@library, @model, @file]
   end
 
+  def bulk_edit
+    @files = @model.model_files
+  end
+
+  def bulk_update
+    hash = bulk_update_params
+    params[:model_files].each_pair do |id, selected|
+      if selected == "1"
+        file = @model.model_files.find(id)
+        if file.update(hash)
+          file.save
+        end
+      end
+    end
+    redirect_to edit_library_model_model_files_path(@library, @model)
+  end
+
   private
 
   def send_file_content
@@ -33,6 +50,14 @@ class ModelFilesController < ApplicationController
     send_file filename, disposition: :inline, type: @file.file_format.to_sym
   rescue Errno::ENOENT
     head :internal_server_error
+  end
+
+  def bulk_update_params
+    params.permit(
+      :printed,
+      :presupported,
+      :y_up
+    ).compact_blank
   end
 
   def file_params
