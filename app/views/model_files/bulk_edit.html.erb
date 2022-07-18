@@ -7,6 +7,7 @@
   <table class="table table-striped" data-bulk-edit>
     <tr>
       <th><input type="checkbox" aria-label="Select All" value="0" name="bulk-select-all"></th>
+      <th></th>
       <th>Name</th>
       <th>Filename</th>
       <th>Printed</th>
@@ -16,6 +17,7 @@
     <% @model.model_files.each do |file| %>
       <tr>
         <td><%= form.check_box "model_files[#{file.id}]", { data: { bulk_item:  "#{file.id}"}}%></td>
+        <td><i class="bi bi-<%= image?(file.file_format) ? 'image' : 'box' %>"></td>
         <td><%= link_to file.name, [@library, @model, file], title: file.filename %></td>
         <td><code><%= file.filename %></code></td>
         <td><i class="bi bi-<%= file.printed ? 'check-circle-fill' : 'circle' %>"></td>
