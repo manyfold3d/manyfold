@@ -1,0 +1,56 @@
+<h1>Bulk Edit Files</h1>
+
+<%= form_with url: library_model_model_files_path(@library, @model), method: :patch do |form| %>
+
+  <h3>Select files to change:</h3>
+
+  <table class="table table-striped" data-bulk-edit>
+    <tr>
+      <th><input type="checkbox" aria-label="Select All" value="0" name="bulk-select-all"></th>
+      <th>Name</th>
+      <th>Filename</th>
+      <th>Printed</th>
+      <th>Presupported</th>
+      <th>Y Up</th>
+    </tr>
+    <% @model.model_files.each do |file| %>
+      <tr>
+        <td><%= form.check_box "model_files[#{file.id}]", { data: { bulk_item:  "#{file.id}"}}%></td>
+        <td><%= link_to file.name, [@library, @model, file], title: file.filename %></td>
+        <td><code><%= file.filename %></code></td>
+        <td><i class="bi bi-<%= file.printed ? 'check-circle-fill' : 'circle' %>"></td>
+        <td><i class="bi bi-<%= file.presupported ? 'check-circle-fill' : 'circle' %>"></td>
+        <td><i class="bi bi-<%= file.y_up ? 'check-circle-fill' : 'circle' %>"></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <h3>Select changes to make:</h3>
+
+  <div class="row mb-3">
+    <%= form.label "Printed", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <div class="form-switch">
+        <%= form.check_box :printed, class: "form-check-input form-check-inline" %>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <%= form.label "Presupported", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <div class="form-switch">
+        <%= form.check_box :presupported, class: "form-check-input form-check-inline" %>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <%= form.label "Y Up", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <div class="form-switch">
+        <%= form.check_box :y_up, class: "form-check-input form-check-inline" %>
+      </div>
+    </div>
+  </div>
+  <%= form.submit "Update Selected Files", class: "btn btn-primary" %>
+
+<% end %>

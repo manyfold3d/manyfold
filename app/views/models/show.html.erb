@@ -32,6 +32,7 @@
 
     <%= card :secondary, "Actions" do %>
       <%= link_to "Edit Details", edit_library_model_path(@library, @model), class: "btn btn-primary" %>
+      <%= link_to "Bulk Edit", edit_library_model_model_files_path(@library, @model), class: 'btn btn-secondary' %>
       <% unless @model.contains_other_models? %>
         <div class="modal fade" id="confirm-move" data-bs-backdrop='static' tabindex="-1" aria-labelledby="confirmMoveLabel" aria-hidden="true">
           <div class="modal-dialog">
