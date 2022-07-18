@@ -9,7 +9,7 @@ class SearchController < ApplicationController
       @results += Model.tagged_with(@query)
       @results.uniq!
     else
-      @recent = Model.order(created_at: :desc).limit(20)
+      @recent = Model.recent.limit(20)
     end
   end
 

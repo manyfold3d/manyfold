@@ -9,7 +9,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Recent Models" do
           table do
             tbody do
-              Model.unscoped.order(created_at: :desc).limit(20).map do |model|
+              Model.recent.limit(20).map do |model|
                 tr do
                   td { link_to(model.name, admin_model_path(model)) }
                   td { "#{time_ago_in_words(model.created_at)} ago" }
