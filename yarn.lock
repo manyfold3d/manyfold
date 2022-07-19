@@ -1299,10 +1299,10 @@
   resolved "https://registry.yarnpkg.com/@hotwired/stimulus-webpack-helpers/-/stimulus-webpack-helpers-1.0.1.tgz#4cd74487adeca576c9865ac2b9fe5cb20cef16dd"
   integrity sha512-wa/zupVG0eWxRYJjC1IiPBdt3Lruv0RqGN+/DTMmUWUyMAEB27KXmVY6a8YpUVTM7QwVuaLNGW4EqDgrS2upXQ==
 
-"@hotwired/stimulus@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@hotwired/stimulus/-/stimulus-3.0.1.tgz#141f15645acaa3b133b7c247cad58ae252ffae85"
-  integrity sha512-oHsJhgY2cip+K2ED7vKUNd2P+BEswVhrCYcJ802DSsblJFv7mPFVk3cQKvm2vHgHeDVdnj7oOKrBbzp1u8D+KA==
+"@hotwired/stimulus@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@hotwired/stimulus/-/stimulus-3.1.0.tgz#20215251e5afe6e0a3787285181ba1bfc9097df0"
+  integrity sha512-iDMHUhiEJ1xFeicyHcZQQgBzhtk5mPR0QZO3L6wtqzMsJEk2TKECuCQTGKjm+KJTHVY0dKq1dOOAWvODjpd2Mg==
 
 "@humanwhocodes/config-array@^0.5.0":
   version "0.5.0"
@@ -7814,12 +7814,12 @@ static-extend@^0.1.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
-stimulus@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-3.0.1.tgz#370e3054eb3b8068904af1888949821255d375d3"
-  integrity sha512-73uZG5E5bwH7W2BldieTXg4yJuEmOfIHgtO/aqwU0JkWNjwY75ZaoOAD2EEPvi5AK43N9adEeOQOmlgWf59HOg==
+stimulus@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-3.1.0.tgz#225298f1936f96b0eafa883b8b304266427912c3"
+  integrity sha512-ln+BtLkhemwJozr5N3I5q0kGlSv6fmcPi3JtDjBo7gnnz2tAYhK2WBhyY/EN/4+CWIwqp3qPm3Pc+i9CjIXrtg==
   dependencies:
-    "@hotwired/stimulus" "^3.0.1"
+    "@hotwired/stimulus" "^3.1.0"
     "@hotwired/stimulus-webpack-helpers" "^1.0.0"
 
 stimulus_reflex@3.4.1:
