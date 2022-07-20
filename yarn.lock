@@ -1628,10 +1628,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/three@^0.141.0":
-  version "0.141.0"
-  resolved "https://registry.yarnpkg.com/@types/three/-/three-0.141.0.tgz#d9d81a54b28ebc2a56931dfd4d9c54d25c20d6c8"
-  integrity sha512-OJdKDgTPVBUgc+s74DYoy4aLznbFFC38Xm4ElmU1YwGNgR7GGFVvFCX7lpVgOsT6S1zSJtGdajTsOYE8/xY9nA==
+"@types/three@^0.142.0":
+  version "0.142.0"
+  resolved "https://registry.yarnpkg.com/@types/three/-/three-0.142.0.tgz#32ca897afc925057174a398416777fcb141666d6"
+  integrity sha512-YNVnlqthfgqsxKuSNbT/G2r+ha/6x+aJm7kvjT+sxa4jUROw/KOPm5xzGj33sk1+Librg6NwH/wJ6LCDX33UZg==
   dependencies:
     "@types/webxr" "*"
 
