@@ -96,9 +96,6 @@ GEM
       popper_js (>= 2.11.5, < 3)
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
-    cable_ready (4.5.0)
-      rails (>= 5.2)
-      thread-local (>= 1.1.0)
     capybara (3.37.1)
       addressable
       matrix
@@ -384,16 +381,9 @@ GEM
       rubocop-performance (= 1.14.3)
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
-    stimulus_reflex (3.4.1)
-      cable_ready (>= 4.5)
-      nokogiri
-      rack
-      rails (>= 5.2)
-      redis
     stopwords-filter (0.7.0)
     strscan (3.0.4)
     thor (1.2.1)
-    thread-local (1.1.0)
     tilt (2.0.10)
     timeout (0.3.0)
     turbo-rails (1.1.1)
@@ -466,7 +456,6 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   standard (~> 1.13.0)
   stimulus-rails
-  stimulus_reflex (~> 3.4)
   stopwords-filter
   turbo-rails
   tzinfo-data
