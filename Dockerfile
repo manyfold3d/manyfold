@@ -1,4 +1,4 @@
-FROM ruby:3.0-alpine AS build
+FROM ruby:3.1-alpine AS build
 
 RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn xz
 RUN gem install foreman
@@ -21,7 +21,7 @@ COPY yarn.lock .
 RUN yarn config set network-timeout 600000 -g
 RUN yarn install --prod
 
-RUN gem install bundler -v 2.2.4
+RUN gem install bundler -v 2.3.18
 RUN bundle config set --local deployment 'true'
 RUN bundle config set --local without 'development test'
 COPY Gemfile* ./
