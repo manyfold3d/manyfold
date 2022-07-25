@@ -64,7 +64,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "cocoon", "~> 1.2"
 
-gem "public_suffix", "~> 4.0"
+gem "public_suffix", "~> 5.0"
 
 gem "delayed_job_active_record", "~> 4.1"
 
