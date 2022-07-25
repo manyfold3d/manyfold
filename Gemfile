@@ -64,6 +64,7 @@ gem "rails-settings-cached", "~> 2.8"
 gem "activeadmin", "~> 2.13"
 gem "kaminari", "~> 1.2"
 gem "lograge", "~> 0.12.0"
+gem "bootstrap", "~> 5.2.0"
 
 group :production do
   gem "pg", "~> 1.4"
