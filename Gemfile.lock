@@ -79,6 +79,8 @@ GEM
       tzinfo (~> 2.0)
     acts-as-taggable-on (9.0.1)
       activerecord (>= 6.0, < 7.1)
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
     arbre (1.5.0)
       activesupport (>= 3.0.0, < 7.1)
       ruby2_keywords (>= 0.0.2, < 1.0)
@@ -88,10 +90,19 @@ GEM
     bootsnap (1.12.0)
       msgpack (~> 1.2)
     builder (3.2.4)
-    byebug (11.1.3)
     cable_ready (4.5.0)
       rails (>= 5.2)
       thread-local (>= 1.1.0)
+    capybara (3.37.1)
+      addressable
+      matrix
+      mini_mime (>= 0.1.3)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (>= 1.5, < 3.0)
+      xpath (~> 3.2)
+    childprocess (4.1.0)
     cocoon (1.2.15)
     coderay (1.1.3)
     concurrent-ruby (1.1.10)
@@ -103,6 +114,9 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
+    debug (1.6.1)
+      irb (>= 1.3.6)
+      reline (>= 0.3.1)
     delayed_job (4.1.10)
       activesupport (>= 3.0, < 8.0)
     delayed_job_active_record (4.1.7)
@@ -150,7 +164,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
     hiredis (0.6.3)
-    i18n (1.11.0)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.2)
       actionpack (>= 6.0.0)
@@ -160,6 +174,9 @@ GEM
       has_scope (~> 0.6)
       railties (>= 5.2, < 7.1)
       responders (>= 2, < 4)
+    io-console (0.5.11)
+    irb (1.4.1)
+      reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -195,6 +212,7 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
+    matrix (0.4.2)
     memoist (0.16.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
@@ -217,12 +235,12 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.7)
+    nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.7-x86_64-darwin)
+    nokogiri (1.13.8-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.7-x86_64-linux)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -242,8 +260,6 @@ GEM
     rack (2.2.4)
     rack-mini-profiler (3.0.0)
       rack (>= 1.2.0)
-    rack-proxy (0.7.0)
-      rack
     rack-test (2.0.2)
       rack (>= 1.3)
     rails (7.0.3.1)
@@ -285,6 +301,8 @@ GEM
       ffi (~> 1.0)
     redis (4.7.1)
     regexp_parser (2.5.0)
+    reline (0.3.1)
+      io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
     responders (3.0.1)
@@ -329,8 +347,7 @@ GEM
       rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
+    rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -339,6 +356,11 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    selenium-webdriver (4.3.0)
+      childprocess (>= 0.5, < 5.0)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     shellany (0.0.1)
     spring (4.0.0)
     sprockets (4.0.3)
@@ -361,16 +383,16 @@ GEM
       rails (>= 5.2)
       redis
     stopwords-filter (0.7.0)
-    strscan (3.0.3)
+    strscan (3.0.4)
     thor (1.2.1)
     thread-local (1.1.0)
     tilt (2.0.10)
-    timeout (0.2.0)
+    timeout (0.3.0)
     turbo-rails (1.1.1)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.2.0)
     warden (1.2.9)
@@ -380,9 +402,16 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webdrivers (5.0.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (~> 4.0)
+    websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    xpath (3.2.0)
+      nokogiri (~> 1.8)
     zeitwerk (2.6.0)
 
 PLATFORMS
@@ -394,11 +423,12 @@ DEPENDENCIES
   activeadmin (~> 2.13)
   activerecord-nulldb-adapter (~> 0.8.0)
   acts-as-taggable-on (~> 9.0)
-  bootsnap (>= 1.4.4)
-  byebug
+  bootsnap
+  capybara
   cocoon (~> 1.2)
   data_migrate (~> 8.0)
   database_cleaner-active_record (~> 2.0)
+  debug
   delayed_job_active_record (~> 4.1)
   devise (~> 4.8)
   dotenv-rails (~> 2.7)
@@ -407,30 +437,32 @@ DEPENDENCIES
   guard (~> 2.18)
   guard-rspec (~> 4.7)
   hiredis
-  importmap-rails (~> 1.1)
-  jbuilder (~> 2.11)
+  importmap-rails
+  jbuilder
   kaminari (~> 1.2)
-  listen (~> 3.7)
   lograge (~> 0.12.0)
   memoist (~> 0.16.2)
   pg (~> 1.4)
   public_suffix (~> 5.0)
   puma (~> 5.6)
-  rack-mini-profiler (~> 3.0)
-  rails (~> 7.0.3)
+  rack-mini-profiler
+  rails (~> 7.0.3, >= 7.0.3.1)
   rails-settings-cached (~> 2.8)
-  redis (>= 4.0)
+  redis (~> 4.0)
   rspec-rails
-  sass-rails (>= 6)
+  sassc-rails
+  selenium-webdriver
   spring
+  sprockets-rails
   sqlite3 (~> 1.4)
   standard (~> 1.12.1)
-  stimulus-rails (~> 1.0)
+  stimulus-rails
   stimulus_reflex (~> 3.4)
   stopwords-filter
-  turbo-rails (~> 1.1)
+  turbo-rails
   tzinfo-data
-  web-console (>= 4.1.0)
+  web-console
+  webdrivers
 
 RUBY VERSION
    ruby 3.1.2p20

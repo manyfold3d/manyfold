@@ -3,47 +3,75 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "~> 3.1.2"
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 7.0.3"
+# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
-# Use Puma as the app server
+# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem "sprockets-rails"
+
+# Use sqlite3 as the database for Active Record
+gem "sqlite3", "~> 1.4"
+
+# Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.6"
 
-# Use SCSS for stylesheets
-gem "sass-rails", ">= 6"
+# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem "importmap-rails"
 
-gem "importmap-rails", "~> 1.1"
-gem "turbo-rails", "~> 1.1"
-gem "stimulus-rails", "~> 1.0"
+# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem "turbo-rails"
+
+# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem "stimulus-rails"
 gem "stimulus_reflex", "~> 3.4"
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder", "~> 2.11"
+# Build JSON APIs with ease [https://github.com/rails/jbuilder]
+gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", ">= 4.0", require: ["redis", "redis/connection/hiredis"]
+gem "redis", "~> 4.0", require: ["redis", "redis/connection/hiredis"]
 gem "hiredis"
 
-# Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
+# gem "kredis"
 
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+# gem "bcrypt", "~> 3.1.7"
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+
+# Reduces boot times through caching; required in config/boot.rb
+gem "bootsnap", require: false
+
+# Use Sass to process CSS
+gem "sassc-rails"
+
+# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+# gem "image_processing", "~> 1.2"
 
 gem "dotenv-rails", "~> 2.7"
 gem "acts-as-taggable-on", "~> 9.0"
-
-# Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", ">= 1.4.4", require: false
+gem "cocoon", "~> 1.2"
+gem "public_suffix", "~> 4.0"
+gem "delayed_job_active_record", "~> 4.1"
+gem "activerecord-nulldb-adapter", "~> 0.8.0"
+gem "memoist", "~> 0.16.2"
+gem "stopwords-filter", require: "stopwords"
+gem "devise", "~> 4.8"
+gem "data_migrate", "~> 8.0"
+gem "rails-settings-cached", "~> 2.8"
+gem "activeadmin", "~> 2.13"
+gem "kaminari", "~> 1.2"
+gem "lograge", "~> 0.12.0"
 
 group :production do
   gem "pg", "~> 1.4"
 end
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem "sqlite3", "~> 1.4"
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "rspec-rails"
   gem "standard", "~> 1.13.0"
   gem "factory_bot"
@@ -55,36 +83,18 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem "web-console", ">= 4.1.0"
-  # Display performance information such as SQL time and flame graphs for each request in your browser.
-  # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
-  gem "rack-mini-profiler", "~> 3.0"
-  gem "listen", "~> 3.7"
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem "web-console"
+
+  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
+  gem "rack-mini-profiler"
+
+  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   gem "spring"
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem "cocoon", "~> 1.2"
-
-gem "public_suffix", "~> 5.0"
-
-gem "delayed_job_active_record", "~> 4.1"
-
-gem "activerecord-nulldb-adapter", "~> 0.8.0"
-
-gem "memoist", "~> 0.16.2"
-gem "stopwords-filter", require: "stopwords"
-
-gem "devise", "~> 4.8"
-
-gem "data_migrate", "~> 8.0"
-
-gem "rails-settings-cached", "~> 2.8"
-gem "activeadmin", "~> 2.13"
-
-gem "kaminari", "~> 1.2"
-
-gem "lograge", "~> 0.12.0"
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "webdrivers"
+end
