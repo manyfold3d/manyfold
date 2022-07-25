@@ -253,7 +253,7 @@ GEM
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    public_suffix (5.0.0)
+    public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -371,9 +371,9 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.4)
-    standard (1.12.1)
-      rubocop (= 1.29.1)
-      rubocop-performance (= 1.13.3)
+    standard (1.13.0)
+      rubocop (= 1.31.2)
+      rubocop-performance (= 1.14.3)
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
     stimulus_reflex (3.4.1)
@@ -443,7 +443,7 @@ DEPENDENCIES
   lograge (~> 0.12.0)
   memoist (~> 0.16.2)
   pg (~> 1.4)
-  public_suffix (~> 5.0)
+  public_suffix (~> 4.0)
   puma (~> 5.6)
   rack-mini-profiler
   rails (~> 7.0.3, >= 7.0.3.1)
@@ -455,7 +455,7 @@ DEPENDENCIES
   spring
   sprockets-rails
   sqlite3 (~> 1.4)
-  standard (~> 1.12.1)
+  standard (~> 1.13.0)
   stimulus-rails
   stimulus_reflex (~> 3.4)
   stopwords-filter
