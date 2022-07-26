@@ -170,9 +170,6 @@ GEM
     hiredis (0.6.3)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
-    importmap-rails (1.1.2)
-      actionpack (>= 6.0.0)
-      railties (>= 6.0.0)
     inherited_resources (1.13.1)
       actionpack (>= 5.2, < 7.1)
       has_scope (~> 0.6)
@@ -188,6 +185,8 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jsbundling-rails (1.0.3)
+      railties (>= 6.0.0)
     json (2.6.2)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -436,8 +435,8 @@ DEPENDENCIES
   guard (~> 2.18)
   guard-rspec (~> 4.7)
   hiredis
-  importmap-rails
   jbuilder
+  jsbundling-rails
   kaminari (~> 1.2)
   lograge (~> 0.12.0)
   memoist (~> 0.16.2)
