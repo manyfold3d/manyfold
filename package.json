@@ -19,7 +19,7 @@
     "popper.js": "^1.16.1",
     "stimulus": "^3.1.0",
     "stimulus_reflex": "3.4.1",
-    "three": "^0.142.0",
+    "three": "^0.143.0",
     "turbolinks": "^5.2.0",
     "typescript": "^4.7.4"
   },
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.9",
     "@types/jquery": "^3.5.14",
-    "@types/node": "^18.6.1",
+    "@types/node": "^18.6.2",
     "@types/selectize": "^0.12.35",
     "@types/three": "^0.142.0",
     "@types/webpack-env": "^1.17.0",
