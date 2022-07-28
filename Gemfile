@@ -25,7 +25,7 @@ gem "hiredis"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-gem "dotenv-rails", "~> 2.7"
+gem "dotenv-rails", "~> 2.8"
 gem "acts-as-taggable-on", "~> 9.0"
 
 # Reduces boot times through caching; required in config/boot.rb
