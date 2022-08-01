@@ -19,8 +19,6 @@ jobs:
         node-version: 14.6.0
     - name: Install yarn packages
       run: yarn install
-    - name: Enable caching for stimulus
-      run: bundle exec rails dev:cache
     - name: Compile assets
       run: bundle exec rails webpacker:compile
     - name: Set up database
