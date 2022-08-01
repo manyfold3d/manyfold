@@ -9,7 +9,6 @@
     "@nathanvda/cocoon": "^1.2.14",
     "@popperjs/core": "^2.11.5",
     "@rails/actioncable": "^7.0.3",
-    "@rails/activestorage": "^7.0.3",
     "@rails/ujs": "^7.0.3",
     "@rails/webpacker": "5.4.3",
     "@selectize/selectize": "^0.13.6",
