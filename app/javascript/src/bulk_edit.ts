@@ -48,7 +48,7 @@ function handleCheckboxChange (event): void {
   }
 }
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const bulkEditTable = document.querySelector(
     '[data-bulk-edit]'
   )
