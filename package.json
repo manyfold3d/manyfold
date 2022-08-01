@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "lint:ts": "ts-standard --fix",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
+    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.18.6",
@@ -17,6 +18,7 @@
     "esbuild": "^0.14.51",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
+    "sass": "^1.54.0",
     "sifter": "^0.5.4",
     "three": "^0.143.0",
     "typescript": "^4.7.4"
