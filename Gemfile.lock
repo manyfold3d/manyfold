@@ -352,9 +352,6 @@ GEM
     thor (1.2.1)
     tilt (2.0.10)
     timeout (0.3.0)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.2.0)
@@ -415,7 +412,6 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   standard (~> 1.14.0)
   stopwords-filter
-  turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
   webpacker (~> 5.4)

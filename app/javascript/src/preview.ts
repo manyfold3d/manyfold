@@ -205,7 +205,7 @@ class ObjectPreview {
   }
 }
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-preview]').forEach((div) => {
     const canvas = div.getElementsByTagName('canvas')[0]
     canvas.height = canvas.width

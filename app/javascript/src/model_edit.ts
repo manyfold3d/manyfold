@@ -1,4 +1,4 @@
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   window.tagInputs = []
   $('input[data-tags-edit]').each(
     function () {
