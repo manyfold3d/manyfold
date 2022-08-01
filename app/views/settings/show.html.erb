@@ -50,3 +50,12 @@
   </div>
 
 <% end %>
+
+<% if current_user.admin? %>
+
+  <h2>Administration</h2>
+
+  <div class="">
+    <%= link_to "#{icon('tools', 'Administration')} Advanced Administration Interface".html_safe, '/admin' %>
+  </div>
+<% end %>
