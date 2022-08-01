@@ -13,4 +13,7 @@
  *= require_tree .
  *= stub "active_admin"
  *= require_self
+ *= require 'bootstrap/dist/css/bootstrap'
+ *= require 'bootstrap-icons/font/bootstrap-icons.css'
+ *= require '@selectize/selectize/dist/css/selectize.bootstrap5.css'
  */

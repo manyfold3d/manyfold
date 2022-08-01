@@ -12,7 +12,7 @@
     },
     "sourceMap": true,
     "strictNullChecks": true,
-    "target": "es5",
+    "target": "es6",
     "noEmit": true,
     "types": [
       "./app/javascript/src/globals",

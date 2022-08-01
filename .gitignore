@@ -45,3 +45,6 @@ yarn-debug.log*
 
 /config/credentials/test.key
 docker-compose.yml
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
