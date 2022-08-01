@@ -15,18 +15,21 @@
     <div class="container">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <%= link_to "#{icon("search", "Search")} Search".html_safe, '/', class: "nav-link" %>
+          <%= link_to "#{icon("search", "Search")} Search".html_safe, root_path, class: (current_page?(root_path) ? "nav-link active" : "nav-link") %>
+        </li>
+        <li class="nav-item">
+          <%= link_to icon("folder-plus", "New Library"), new_library_path, class: (current_page?(new_library_path) ? "nav-link active" : "nav-link") %>
         </li>
         <% Library.all.each do |library| %>
           <li class="nav-item">
-            <%= link_to library.name, library, class: (library == @library ? "nav-link active" : "nav-link") %>
+            <%= link_to library.name, library, class: (current_page?(library) ? "nav-link active" : "nav-link") %>
           </li>
         <% end %>
         <li class="nav-item">
-          <%= link_to "Creators", creators_path, class: "nav-link" %>
+          <%= link_to "#{icon('person-rolodex', 'Creators')} Creators".html_safe, creators_path, class: (current_page?(creators_path) ? "nav-link active" : "nav-link") %>
         </li>
         <li class="nav-item ms-auto">
-          <%= link_to icon('sliders', 'Settings'), user_settings_path(current_user), class: "nav-link"  %>
+          <%= link_to icon('sliders', 'Settings'), user_settings_path(current_user), class: (current_page?(user_settings_path(current_user)) ? "nav-link active" : "nav-link") %>
         </li>
         <% if current_user.admin? %>
           <li class="nav-item">

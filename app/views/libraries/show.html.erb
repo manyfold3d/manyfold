@@ -18,7 +18,6 @@
         method: :patch,
         class: "btn btn-warning mb-3 me-3 #{"btn-outline-warning disabled" if @scanning}"
       %>
-      <%= link_to "New Library", new_library_path, class: 'btn btn-secondary mb-3 me-3' %>
       <%= link_to 'Delete', @library, method: :delete, data: {confirm: "Are you sure? Your files will not be affected."}, class: "btn btn-danger mb-3 me-3" %>
       <%= link_to "Bulk Edit", edit_library_models_path(@library, tag: @tag&.name), class: 'btn btn-secondary mb-3 me-3' %>
     <% end %>
