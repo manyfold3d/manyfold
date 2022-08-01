@@ -20,7 +20,6 @@ class LibrariesController < ApplicationController
 
     @tags = @library.models.includes(:tags).map(&:tags).flatten.uniq.select { |x| x.taggings_count > 1 }.sort_by(&:name)
 
-    @scanning = Delayed::Job.count > 0
     # Filter by tag?
     if params[:tag]
       @tag = ActsAsTaggableOn::Tag.find_by_name(params[:tag])
