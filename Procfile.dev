@@ -1,0 +1,4 @@
+rails: bin/rails server -p $PORT
+worker: bin/rake jobs:work
+js: yarn build --watch
+css: yarn build:css --watch

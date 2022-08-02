@@ -20,7 +20,7 @@ jobs:
     - name: Install yarn packages
       run: yarn install
     - name: Compile assets
-      run: bundle exec rails webpacker:compile
+      run: bundle exec rails assets:precompile
     - name: Set up database
       run: bundle exec rails db:setup
     - name: Migrate database
