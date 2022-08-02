@@ -1,3 +1,12 @@
-ul.links li {
-  list-style: image-url("bootstrap-icons/icons/link-45deg.svg")
+ul.links li::marker {
+  content: "\F470";
+  display: inline-block;
+  font-family: "bootstrap-icons" !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: var(--bs-body-line-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
