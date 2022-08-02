@@ -35,6 +35,8 @@ en:
   myminifactory: MyMiniFactory
   cults3d: Cults3D
   cgtrader: CGTrader
+  theminiindex: The Mini Index
+  comicsgamesandthings: Comics, Games, and Things
   # ActiveRecord things
   activerecord:
     models:
