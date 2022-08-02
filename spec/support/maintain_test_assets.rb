@@ -34,8 +34,7 @@ class MaintainTestAssets
   #
   ASSET_SOURCE_FOLDERS = [
     ["app", "assets", "stylesheets"],
-    ["app", "javascript"],
-    ["vendor"]
+    ["app", "javascript"]
   ]
 
   # The leaf files that ASSET_SOURCE_FOLDERS will build. These are all checked
