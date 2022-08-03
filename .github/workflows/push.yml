@@ -19,6 +19,8 @@ jobs:
         node-version: 14.6.0
     - name: Install yarn packages
       run: yarn install
+    - name: Check typescript
+      run: yarn typecheck
     - name: Compile assets
       run: bundle exec rails assets:precompile
     - name: Set up database

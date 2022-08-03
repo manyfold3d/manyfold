@@ -4,7 +4,8 @@
   "scripts": {
     "lint:ts": "ts-standard --fix",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
-    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "typecheck": "tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.18.6",
@@ -30,6 +31,7 @@
     "@types/node": "^18.6.3",
     "@types/selectize": "^0.12.35",
     "@types/three": "^0.143.0",
+    "@types/webpack-env": "^1.17.0",
     "@typescript-eslint/parser": "^4.33.0",
     "eslint": "^7.32.0",
     "husky": "^8.0.1",

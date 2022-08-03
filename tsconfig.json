@@ -17,6 +17,7 @@
     "types": [
       "./app/javascript/src/globals",
       "node",
+      "webpack-env",
       "three",
       "jquery",
       "selectize"
