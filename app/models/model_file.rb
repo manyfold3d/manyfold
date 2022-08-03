@@ -8,6 +8,8 @@ class ModelFile < ApplicationRecord
 
   default_scope { order(:filename) }
 
+  acts_as_favoritable
+
   def extension
     File.extname(filename).delete(".").downcase
   end

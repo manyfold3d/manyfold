@@ -98,6 +98,8 @@ GEM
       tzinfo (~> 2.0)
     acts-as-taggable-on (9.0.1)
       activerecord (>= 6.0, < 7.1)
+    acts_as_favoritor (6.0.0)
+      activerecord (>= 5.0)
     arbre (1.6.0)
       activesupport (>= 3.0.0, < 7.1)
       ruby2_keywords (>= 0.0.2, < 1.0)
@@ -475,6 +477,7 @@ DEPENDENCIES
   activeadmin (~> 3.0)
   activerecord-nulldb-adapter (~> 0.9.0)
   acts-as-taggable-on (~> 9.0)
+  acts_as_favoritor (~> 6.0)
   bootsnap (>= 1.4.4)
   byebug
   cocoon (~> 1.2)

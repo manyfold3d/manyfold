@@ -90,6 +90,8 @@ gem "kaminari", "~> 1.2"
 
 gem "lograge", "~> 0.13.0"
 
+gem "acts_as_favoritor", "~> 6.0"
+
 gem "sqlite3_ar_regexp", "~> 2.2"
 
 gem "mittsu", github: "danini-the-panini/mittsu", ref: "7f44c46"
