@@ -11,7 +11,7 @@
     "@babel/preset-typescript": "^7.18.6",
     "@nathanvda/cocoon": "^1.2.14",
     "@popperjs/core": "^2.11.6",
-    "@rails/actioncable": "^7.0.3",
+    "@rails/actioncable": "^7.0.4",
     "@rails/ujs": "^7.0.4",
     "@selectize/selectize": "^0.13.6",
     "bootstrap": "^5.2.1",
