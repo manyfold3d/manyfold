@@ -336,7 +336,7 @@ GEM
       sprockets-rails
       tilt
     shellany (0.0.1)
-    spring (4.0.0)
+    spring (4.1.0)
     sprockets (4.0.3)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
