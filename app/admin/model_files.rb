@@ -6,12 +6,12 @@ ActiveAdmin.register ModelFile do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :filename, :model_id, :presupported, :printed, :y_up
+  # permit_params :filename, :model_id, :presupported, :y_up
   #
   # or
   #
   # permit_params do
-  #   permitted = [:filename, :model_id, :presupported, :printed, :y_up]
+  #   permitted = [:filename, :model_id, :presupported, :y_up]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end

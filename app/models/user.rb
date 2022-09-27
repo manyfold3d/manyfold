@@ -5,4 +5,8 @@ class User < ApplicationRecord
   def to_param
     username
   end
+
+  def printed?(file)
+    favorited?(file, scope: :printed)
+  end
 end
