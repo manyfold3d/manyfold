@@ -7,7 +7,7 @@ class Model < ApplicationRecord
   belongs_to :preview_file, class_name: "ModelFile", optional: true
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
-  validate :cannot_move_models_with_submodels
+  validate :cannot_move_models_with_submodels, on: :update
   has_many :links, as: :linkable, dependent: :destroy
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
@@ -72,7 +72,7 @@ class Model < ApplicationRecord
   private
 
   def cannot_move_models_with_submodels
-    if contains_other_models? && (library_id_changed? || ActiveModel::Type::Boolean.new.cast(organize))
+    if (library_id_changed? || ActiveModel::Type::Boolean.new.cast(organize)) && contains_other_models?
       errors.add(library_id_changed? ? :library : :organize, "can't move models containing other models")
     end
   end
