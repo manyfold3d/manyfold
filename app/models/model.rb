@@ -7,6 +7,7 @@ class Model < ApplicationRecord
   belongs_to :preview_file, class_name: "ModelFile", optional: true
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
+  validate :cannot_move_models_with_submodels
   has_many :links, as: :linkable, dependent: :destroy
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
@@ -61,7 +62,7 @@ class Model < ApplicationRecord
   end
 
   def contained_models
-    library.models.where("path LIKE ?", Model.sanitize_sql_like(path) + "/%")
+    Library.find(library_id_was).models.where("path LIKE ?", Model.sanitize_sql_like(path) + "/%")
   end
 
   def contains_other_models?
@@ -70,6 +71,12 @@ class Model < ApplicationRecord
 
   private
 
+  def cannot_move_models_with_submodels
+    if contains_other_models? && (library_id_changed? || ActiveModel::Type::Boolean.new.cast(organize))
+      errors.add(library_id_changed? ? :library : :organize, "can't move models containing other models")
+    end
+  end
+
   def create_folder_if_necessary(folder)
     return if Dir.exist?(folder)
     create_folder_if_necessary(File.dirname(folder))
@@ -77,8 +84,8 @@ class Model < ApplicationRecord
   end
 
   def move_files
-    if ActiveModel::Type::Boolean.new.cast(organize) && !contains_other_models?
-      old_path = File.join(library.path, path)
+    if (library_id_changed? || ActiveModel::Type::Boolean.new.cast(organize)) && !contains_other_models?
+      old_path = File.join(Library.find(library_id_was).path, path)
       new_path = File.join(library.path, formatted_path)
       create_folder_if_necessary(File.dirname(new_path))
       File.rename(old_path, new_path)
