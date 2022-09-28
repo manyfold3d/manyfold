@@ -51,7 +51,8 @@ class ModelsController < ApplicationController
 
   def bulk_update
     hash = bulk_update_params
-    hash[:library_id] = hash.delete(:new_library_id)
+    hash[:library_id] = hash.delete(:new_library_id) if hash[:new_library_id]
+    puts hash.inspect
 
     add_tags = (hash.delete(:add_tags) { |t| "" }).split(",").reject(&:blank?)
     remove_tags = (hash.delete(:remove_tags) { |t| "" }).split(",").reject(&:blank?)
