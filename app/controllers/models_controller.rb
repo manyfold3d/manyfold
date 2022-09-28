@@ -29,7 +29,7 @@ class ModelsController < ApplicationController
       update_tags(tags.split(",")) if tags
     end
 
-    redirect_to [@library, @model]
+    redirect_to [@model.library, @model]
   end
 
   def merge
@@ -51,6 +51,8 @@ class ModelsController < ApplicationController
 
   def bulk_update
     hash = bulk_update_params
+    hash[:library_id] = hash.delete(:new_library_id) if hash[:new_library_id]
+    puts hash.inspect
 
     add_tags = (hash.delete(:add_tags) { |t| "" }).split(",").reject(&:blank?)
     remove_tags = (hash.delete(:remove_tags) { |t| "" }).split(",").reject(&:blank?)
@@ -77,6 +79,7 @@ class ModelsController < ApplicationController
     params.permit(
       :scale_factor,
       :creator_id,
+      :new_library_id,
       :add_tags,
       :remove_tags,
       :organize
@@ -87,6 +90,7 @@ class ModelsController < ApplicationController
     params.require(:model).permit(
       :preview_file_id,
       :creator_id,
+      :library_id,
       :name,
       :scale_factor,
       :tags,
