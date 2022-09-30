@@ -6,9 +6,7 @@
         <%= render @creators %>
     </div>
     <% if current_user.pagination_settings["creators"] %>
-      <div class="paginate-container">
-        <%= paginate @creators %>
-      </div>
+      <%= paginate @creators %>
     <% end %>
   </div>
   <div class="col-3">
