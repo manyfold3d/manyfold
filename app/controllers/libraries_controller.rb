@@ -18,6 +18,14 @@ class LibrariesController < ApplicationController
         @library.models.includes(:tags, :preview_file, :creator)
       end
 
+    # Ordering
+    @models = case session["order"]
+    when "recent"
+      @models.order(created_at: :desc)
+    else
+      @models.order(name: :asc)
+    end
+
     @tags = @library.models.includes(:tags).map(&:tags).flatten.uniq.select { |x| x.taggings_count > 1 }.sort_by(&:name)
 
     # Filter by tag?

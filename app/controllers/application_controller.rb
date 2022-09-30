@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :auto_login_single_user
   before_action :authenticate_user!
   before_action :check_scan_status
+  before_action :remember_ordering
 
   def auto_login_single_user
     # If there is a single user with no password set,
@@ -18,5 +19,10 @@ class ApplicationController < ActionController::Base
 
   def check_scan_status
     @scan_in_progress = Delayed::Job.count > 0
+  end
+
+  def remember_ordering
+    session["order"] ||= "name"
+    session["order"] = params["order"] if params["order"]
   end
 end

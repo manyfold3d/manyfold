@@ -15,8 +15,7 @@ class Model < ApplicationRecord
 
   before_update :move_files
 
-  default_scope { order(:name) }
-  scope :recent, -> { unscoped.order(created_at: :desc) }
+  scope :recent, -> { order(created_at: :desc) }
 
   acts_as_taggable_on :tags
 
