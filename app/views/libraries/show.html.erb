@@ -1,4 +1,16 @@
-<h1><%= @library.name %></h1>
+<div class="row row-cols-2">
+  <div class="col-9">
+    <div class="row row-cols-2 align-items-baseline">
+      <div class="col col-auto me-auto">
+        <h1><%= @library.name %></h1>
+      </div>
+      <div class="col col-auto ">
+        <a href="?order=name" class="btn <%= session["order"] == "name" ? "btn-primary" : "btn-light" %> btn-sm" title="sort by name"><i class="bi bi-book"></i></a>
+        <a href="?order=recent" class="btn <%= session["order"] == "recent" ? "btn-primary" : "btn-light" %> btn-sm" title="sort by time"><i class="bi bi-clock"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="row row-cols-2">
   <div class="col-9">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
