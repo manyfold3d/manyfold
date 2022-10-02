@@ -42,6 +42,10 @@
       <%= form.label "Custom stop words", for: "model_tags[custom_stop_words]", class: "form-label"%>
       <%= form.text_field "model_tags[custom_stop_words]", value: SiteSettings.model_tags_custom_stop_words, class: 'form-control' %>
     </div>
+    <div class="">
+      <%= form.label "Automatically tag new models with", for: "model_tags[auto_tag_new]", class: "form-label"%>
+      <%= form.text_field "model_tags[auto_tag_new]", value: SiteSettings.model_tags_auto_tag_new, class: 'form-control' %>
+    </div>
 
   <% end %>
 

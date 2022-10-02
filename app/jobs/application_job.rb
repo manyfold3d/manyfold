@@ -4,4 +4,8 @@ class ApplicationJob < ActiveJob::Base
 
   # Most jobs are safe to ignore if the underlying records are no longer available
   # discard_on ActiveJob::DeserializationError
+
+  before_perform do |job|
+    SiteSettings.clear_cache
+  end
 end
