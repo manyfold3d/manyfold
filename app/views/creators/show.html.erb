@@ -1,4 +1,4 @@
-<h1><%= @creator.name %></h1>
+<h1><%= @title %></h1>
 
 <div class="row row-cols-2">
   <div class="col-9">
@@ -9,16 +9,19 @@
         <div>No models yet!</div>
       <% end %>
     </div>
+    <% if current_user.pagination_settings["models"] %>
+      <%= paginate @models %>
+    <% end %>
 
   </div>
   <div class="col-3">
 
-    <%= render 'links_card', links: @creator.links %>
+    <%= render 'links_card', links: @creator.links if @creator %>
 
     <%= card(:secondary, 'Actions') do %>
       <%= link_to "Edit Details", edit_creator_path(@creator), class: "btn btn-primary" %>
       <%= link_to 'Delete', @creator, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
-    <% end %>
+    <% end if @creator%>
 
   </div>
 </div>

@@ -13,7 +13,11 @@ class CreatorsController < ApplicationController
   end
 
   def show
-    @models = @creator.models
+    @models = @creator ? @creator.models : Model.where(creator: nil)
+    if current_user.pagination_settings["models"]
+      page = params[:page] || 1
+      @models = @models.page(page).per(current_user.pagination_settings["per_page"])
+    end
   end
 
   def edit
@@ -44,8 +48,13 @@ class CreatorsController < ApplicationController
   private
 
   def get_creator
-    @creator = Creator.find(params[:id])
-    @title = @creator.name
+    if params[:id] == "0"
+      @creator = nil
+      @title = "Unknown"
+    else
+      @creator = Creator.find(params[:id])
+      @title = @creator.name
+    end
   end
 
   def creator_params
