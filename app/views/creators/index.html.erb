@@ -13,6 +13,7 @@
 
     <%= card :secondary, "Actions" do %>
       <%= link_to "New Creator", new_creator_path, class: "btn btn-primary" %>
+      <%= link_to "View unassigned", creator_path(id: 0), class: "btn btn-default" %>
     <% end %>
 
   </div>
