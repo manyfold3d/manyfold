@@ -91,4 +91,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Allow setting of root of the app for use with reverse proxies.
+  if ENV["URL_ROOT"].present?
+    config.relative_url_root = ENV["URL_ROOT"]
+  end
 end
