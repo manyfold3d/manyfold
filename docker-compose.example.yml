@@ -11,6 +11,7 @@ services:
       DATABASE_URL: postgresql://van_dam:password@db/van_dam?pool=5
       SECRET_KEY_BASE: a_nice_long_random_string
       GRID_SIZE: 260
+      # RAILS_RELATIVE_URL_ROOT: /vandam Sets the root of the app to /vandam useful for reverse proxies with nginx
     depends_on:
       - db
       - redis
@@ -30,3 +31,4 @@ services:
 
 volumes:
   db_data:
+  
