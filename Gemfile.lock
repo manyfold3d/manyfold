@@ -122,7 +122,7 @@ GEM
     erubi (1.11.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
-    faker (2.23.0)
+    faker (3.0.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     formatador (0.3.0)
@@ -390,7 +390,7 @@ DEPENDENCIES
   devise (~> 4.8)
   dotenv-rails (~> 2.8)
   factory_bot
-  faker (~> 2.23)
+  faker (~> 3.0)
   guard (~> 2.18)
   guard-rspec (~> 4.7)
   hiredis
