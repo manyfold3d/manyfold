@@ -149,7 +149,6 @@ GEM
     has_scope (0.8.0)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
-    hiredis (0.6.3)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     inherited_resources (1.13.1)
@@ -397,7 +396,6 @@ DEPENDENCIES
   faker (~> 3.0)
   guard (~> 2.18)
   guard-rspec (~> 4.7)
-  hiredis
   jbuilder (~> 2.11)
   jsbundling-rails
   kaminari (~> 1.2)
@@ -410,7 +408,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 3.0)
   rails (~> 7.0.4)
   rails-settings-cached (~> 2.8)
-  redis (>= 4.0)
+  redis (~> 5.0)
   rspec-rails
   sass-rails (>= 6)
   spring
