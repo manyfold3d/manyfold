@@ -39,7 +39,7 @@ class ModelFilesController < ApplicationController
         end
       end
     end
-    redirect_to edit_library_model_model_files_path(@library, @model)
+    redirect_to library_model_path(@library, @model)
   end
 
   def destroy
