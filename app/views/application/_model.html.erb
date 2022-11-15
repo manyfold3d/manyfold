@@ -7,8 +7,8 @@
         <div class="card-img-top">
           <%= render partial: "object_preview", locals: { library: model.library, model: model, file: file } %>
         </div>
-      <% end %>  
-       <% else %> 
+      <% end %>
+       <% else %>
        <div class='preview-empty'> <p>no preview availiable</p></div>
     <% end %>
     <div class="card-body">
@@ -16,7 +16,10 @@
       <% if @creator.nil? && model.creator %>
         <small>by <%= link_to model.creator.name, model.creator %></small>
       <% end %>
-      <%= link_to "Open", [model.library, model], {class: "btn btn-primary float-end btn-sm"} %>
+      <div>
+        <%= link_to "Open", [model.library, model], {class: "btn btn-primary btn-sm"} %>
+        <%= link_to "Edit", edit_library_model_path(model.library, model), {class: "btn btn-secondary btn-sm"} %>
+      </div>
     </div>
   </div>
 </div>
