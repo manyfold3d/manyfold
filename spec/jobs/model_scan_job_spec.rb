@@ -37,6 +37,11 @@ RSpec.describe ModelScanJob, type: :job do
     it "queues up individual file scans" do
       expect { ModelScanJob.perform_now(model) }.to have_enqueued_job(ModelFileScanJob).exactly(2).times
     end
+
+    it "destroys itself if empty on scan" do
+      empty = create(:model, path: "empty_model", library: library)
+      expect { ModelScanJob.perform_now(empty) }.to change { library.models.count }.from(1).to(0)
+    end
   end
 
   context "with already scanned files" do

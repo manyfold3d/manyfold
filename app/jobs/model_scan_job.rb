@@ -46,6 +46,6 @@ class ModelScanJob < ApplicationJob
       end
     end
     # If this model has no files, self destruct
-    model.destroy if model.model_files.reload.count == 0
+    model.destroy if model.reload.empty?
   end
 end

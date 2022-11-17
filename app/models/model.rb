@@ -72,6 +72,10 @@ class Model < ApplicationRecord
     !File.exist?(File.join(library.path, path))
   end
 
+  def empty?
+    model_files.count == 0 && !contains_other_models?
+  end
+
   private
 
   def cannot_move_models_with_submodels
