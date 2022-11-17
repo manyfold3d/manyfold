@@ -21,14 +21,14 @@ class LibraryScanJob < ApplicationJob
 
   def clean_up_missing_models(library)
     library.models.each do |m|
-      m.destroy unless File.exist?(File.join(library.path, m.path))
+      m.destroy if m.missing?
     end
     nil
   end
 
   def clean_up_missing_model_files(library)
     library.model_files.each do |f|
-      f.destroy unless File.exist?(f.pathname)
+      f.destroy if f.missing?
     end
     nil
   end

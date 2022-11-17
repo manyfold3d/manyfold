@@ -24,6 +24,10 @@ class ModelFile < ApplicationRecord
     nil
   end
 
+  def missing?
+    !File.exist?(pathname)
+  end
+
   private
 
   def remove_file
