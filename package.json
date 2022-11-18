@@ -13,7 +13,7 @@
     "@popperjs/core": "^2.11.6",
     "@rails/actioncable": "^7.0.4",
     "@rails/ujs": "^7.0.4",
-    "@selectize/selectize": "^0.15.0",
+    "@selectize/selectize": "^0.15.1",
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.10.2",
     "esbuild": "^0.15.14",
