@@ -1,6 +1,5 @@
-<div class="row mb-3">
+<div class="row mb-3 input-group">
   <label for="tags" class="col-sm-2 col-form-label"><%= label %></label>
-  <div class="col-sm-10">
     <div class="form-control col-auto tag-container">
       <%= form.text_field :tags,
         as: :string,
@@ -8,6 +7,5 @@
         value: value,
         data: { tags_edit: "" }
       %>
-    </div>
   </div>
 </div>
