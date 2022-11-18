@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function () {
       const tagInput = $(this).selectize({
         create: true,
-        sortField: 'text'
+        sortField: 'text',
+        plugins: ['remove_button']
       })
       window.tagInputs.push(tagInput)
     }
