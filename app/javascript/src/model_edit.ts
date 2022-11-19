@@ -3,8 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
   $('input[data-tags-edit]').each(
     function () {
       const tagInput = $(this).selectize({
+        addPrecedence: true,
         create: true,
-        sortField: 'text'
+        sortField: 'text',
+        plugins: ['remove_button']
       })
       window.tagInputs.push(tagInput)
     }
