@@ -26,7 +26,7 @@ class LibrariesController < ApplicationController
       @models.order(name: :asc)
     end
 
-    @tags = @library.models.includes(:tags).map(&:tags).flatten.uniq.select { |x| x.taggings_count > 1 }.sort_by(&:name)
+    @tags = @library.all_tags.select { |x| x.taggings_count > 1 }
 
     # Filter by tag?
     if params[:tag]
