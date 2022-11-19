@@ -7,3 +7,10 @@
 @import 'model_files';
 
 @import '@selectize/selectize/dist/css/selectize.bootstrap5';
+
+.selectize-control {
+	padding: 1px;
+}
+.selectize-input {
+	border: none;
+}
