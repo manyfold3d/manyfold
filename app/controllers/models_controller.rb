@@ -26,7 +26,7 @@ class ModelsController < ApplicationController
     tags = hash.delete(:tags)
 
     if @model.update(hash)
-      update_tags(tags.split(",")) if tags
+      update_tags(tags) if tags
     end
 
     redirect_to [@model.library, @model]
@@ -93,8 +93,8 @@ class ModelsController < ApplicationController
       :library_id,
       :name,
       :scale_factor,
-      :tags,
       :organize,
+      tags: [],
       links_attributes: [:id, :url, :_destroy]
     )
   end

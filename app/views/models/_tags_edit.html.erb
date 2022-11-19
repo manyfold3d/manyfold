@@ -1,11 +1,6 @@
 <div class="row mb-3 input-group">
   <label for="tags" class="col-sm-2 col-form-label"><%= label %></label>
     <div class="form-control col-auto tag-container">
-      <%= form.text_field :tags,
-        as: :string,
-        name: name,
-        value: value,
-        data: { tags_edit: "" }
-      %>
+      <%= form.collection_select :tags, @library.all_tags, :name, :name, {}, {multiple: true, data: { tags_edit: "true" }, class: "form-select"} %>
   </div>
 </div>
