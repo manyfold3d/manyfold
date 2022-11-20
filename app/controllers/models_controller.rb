@@ -53,11 +53,8 @@ class ModelsController < ApplicationController
     hash = bulk_update_params
     hash[:library_id] = hash.delete(:new_library_id) if hash[:new_library_id]
 
-    add_tags = hash.delete(:add_tags)
-    remove_tags = hash.delete(:remove_tags)
-
-    add_tags = Set.new(add_tags)
-    remove_tags = Set.new(remove_tags)
+    add_tags = Set.new(hash.delete(:add_tags))
+    remove_tags = Set.new(hash.delete(:remove_tags))
 
     params[:models].each_pair do |id, selected|
       if selected == "1"

@@ -5,7 +5,7 @@
         :name, :name, {}, {
           multiple: true,
           class: "form-select",
-          name: name,
+          name: name ? "#{name}[]" : nil,
           data: {selectize: "true"}
         }
       %>
