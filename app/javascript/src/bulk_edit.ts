@@ -21,9 +21,7 @@ function getTags (modelId: string): string[] {
 
 function handleCheckboxChange (event): void {
   const target = event.target as HTMLInputElement
-  const { name } = target
   event.preventDefault()
-  console.log({ target }, { name })
   // the bulk select checkbox has been selected
   if (target.name === 'bulk-select-all') {
     document
@@ -38,8 +36,6 @@ function handleCheckboxChange (event): void {
       const tags = getTags(modelId)
 
       if (tags.length > 0 && window.tagInputs != null) {
-        const { tagInputs } = window
-        console.log({ tagInputs })
         window.tagInputs.forEach((input) => {
           updateTagOptions(tags, input[0].selectize, target.checked)
         })
