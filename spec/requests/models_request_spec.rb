@@ -75,7 +75,7 @@ RSpec.describe "Models", type: :request do
         update[model.id] = 1
       end
 
-      patch "/libraries/#{@library.id}/models/update", params: {models: update, add_tags: "a,b,c"}
+      patch "/libraries/#{@library.id}/models/update", params: {models: update, add_tags: ["a", "b", "c"]}
 
       expect(response).to have_http_status(:redirect)
       @library.models.take(2).each do |model|
@@ -91,7 +91,7 @@ RSpec.describe "Models", type: :request do
         update[model.id] = 1
       end
 
-      patch "/libraries/#{@library.id}/models/update", params: {models: update, remove_tags: "a,b"}
+      patch "/libraries/#{@library.id}/models/update", params: {models: update, remove_tags: ["a", "b"]}
 
       expect(response).to have_http_status(:redirect)
       @library.models.take(2).each do |model|
