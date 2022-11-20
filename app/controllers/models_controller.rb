@@ -52,10 +52,9 @@ class ModelsController < ApplicationController
   def bulk_update
     hash = bulk_update_params
     hash[:library_id] = hash.delete(:new_library_id) if hash[:new_library_id]
-    puts hash.inspect
 
-    add_tags = (hash.delete(:add_tags) { |t| "" }).split(",").reject(&:blank?)
-    remove_tags = (hash.delete(:remove_tags) { |t| "" }).split(",").reject(&:blank?)
+    add_tags = hash.delete(:add_tags)
+    remove_tags = hash.delete(:remove_tags)
 
     add_tags = Set.new(add_tags)
     remove_tags = Set.new(remove_tags)
@@ -80,9 +79,9 @@ class ModelsController < ApplicationController
       :scale_factor,
       :creator_id,
       :new_library_id,
-      :add_tags,
-      :remove_tags,
-      :organize
+      :organize,
+      add_tags: [],
+      remove_tags: []
     ).compact_blank
   end
 
