@@ -26,7 +26,7 @@ class ModelsController < ApplicationController
     tags = hash.delete(:tags)
 
     if @model.update(hash)
-      update_tags(tags.split(",")) if tags
+      update_tags(tags) if tags
     end
 
     redirect_to [@model.library, @model]
@@ -52,13 +52,9 @@ class ModelsController < ApplicationController
   def bulk_update
     hash = bulk_update_params
     hash[:library_id] = hash.delete(:new_library_id) if hash[:new_library_id]
-    puts hash.inspect
 
-    add_tags = (hash.delete(:add_tags) { |t| "" }).split(",").reject(&:blank?)
-    remove_tags = (hash.delete(:remove_tags) { |t| "" }).split(",").reject(&:blank?)
-
-    add_tags = Set.new(add_tags)
-    remove_tags = Set.new(remove_tags)
+    add_tags = Set.new(hash.delete(:add_tags))
+    remove_tags = Set.new(hash.delete(:remove_tags))
 
     params[:models].each_pair do |id, selected|
       if selected == "1"
@@ -80,9 +76,9 @@ class ModelsController < ApplicationController
       :scale_factor,
       :creator_id,
       :new_library_id,
-      :add_tags,
-      :remove_tags,
-      :organize
+      :organize,
+      add_tags: [],
+      remove_tags: []
     ).compact_blank
   end
 
@@ -93,8 +89,8 @@ class ModelsController < ApplicationController
       :library_id,
       :name,
       :scale_factor,
-      :tags,
       :organize,
+      tags: [],
       links_attributes: [:id, :url, :_destroy]
     )
   end

@@ -17,7 +17,7 @@ RSpec.describe "Models", type: :request do
 
   describe "Model Update" do
     it "adds tags to a model" do
-      put "/libraries/#{@library.id}/models/#{@library.models.first.id}", params: {model: {tags: "a, b, c"}}
+      put "/libraries/#{@library.id}/models/#{@library.models.first.id}", params: {model: {tags: ["a", "b", "c"]}}
       expect(response).to have_http_status(:redirect)
       tags = @library.models.first.tag_list
       expect(tags.length).to eq 3
@@ -31,7 +31,7 @@ RSpec.describe "Models", type: :request do
       first.tag_list = "a, b, c"
       first.save
 
-      put "/libraries/#{@library.id}/models/#{@library.models.first.id}", params: {model: {tags: "a, b"}}
+      put "/libraries/#{@library.id}/models/#{@library.models.first.id}", params: {model: {tags: ["a", "b"]}}
       expect(response).to have_http_status(:redirect)
       tags = @library.models.first.tag_list
       expect(tags.length).to eq 2
@@ -44,7 +44,7 @@ RSpec.describe "Models", type: :request do
       first.tag_list = "a, b, c"
       first.save
 
-      put "/libraries/#{@library.id}/models/#{@library.models.first.id}", params: {model: {tags: "a, b, d"}}
+      put "/libraries/#{@library.id}/models/#{@library.models.first.id}", params: {model: {tags: ["a", "b", "d"]}}
       expect(response).to have_http_status(:redirect)
       tags = @library.models.first.tag_list
       expect(tags.length).to eq 3
@@ -75,7 +75,7 @@ RSpec.describe "Models", type: :request do
         update[model.id] = 1
       end
 
-      patch "/libraries/#{@library.id}/models/update", params: {models: update, add_tags: "a,b,c"}
+      patch "/libraries/#{@library.id}/models/update", params: {models: update, add_tags: ["a", "b", "c"]}
 
       expect(response).to have_http_status(:redirect)
       @library.models.take(2).each do |model|
@@ -91,7 +91,7 @@ RSpec.describe "Models", type: :request do
         update[model.id] = 1
       end
 
-      patch "/libraries/#{@library.id}/models/update", params: {models: update, remove_tags: "a,b"}
+      patch "/libraries/#{@library.id}/models/update", params: {models: update, remove_tags: ["a", "b"]}
 
       expect(response).to have_http_status(:redirect)
       @library.models.take(2).each do |model|

@@ -8,4 +8,8 @@ class Library < ApplicationRecord
   def name
     File.basename(path)
   end
+
+  def all_tags
+    models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
+  end
 end
