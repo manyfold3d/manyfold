@@ -16,7 +16,7 @@
     "@selectize/selectize": "^0.15.2",
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.10.2",
-    "esbuild": "^0.15.14",
+    "esbuild": "^0.15.15",
     "jquery": "^3.6.1",
     "popper.js": "^1.16.1",
     "sass": "^1.56.1",
