@@ -317,10 +317,10 @@
   resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-7.0.4.tgz#7fe5387d2d82b0547fdfc6667b424ec119c86b1e"
   integrity sha512-UY9yQxBvtqXzXScslgPwZoQd16T0+z3P6BQS4lZDJFg5xVuMIgHkHQI6dhyWEt5l/qwbGaYX+YiZu6J+oxWPOw==
 
-"@selectize/selectize@^0.15.1":
-  version "0.15.1"
-  resolved "https://registry.yarnpkg.com/@selectize/selectize/-/selectize-0.15.1.tgz#203971c594329e9e2ad9df860dadf018e71117d8"
-  integrity sha512-dQyPPD3PBr/sR5FfRoBhHOmNQhQaSOqQxYoH4NfEMIN2EG2wAb9fvwljw9gmN/EVbLKhGBNTFtziv747dJLEwA==
+"@selectize/selectize@^0.15.2":
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/@selectize/selectize/-/selectize-0.15.2.tgz#bc0cb52684bb3e222c13e9463e1c9777e45d0da0"
+  integrity sha512-gY+yzYfrVTc+1ekCAaEtDvN59+upbibFzhkePyyk6PwOXT6kEb05azGA91/w3C/71lUOHPyd3nzLnfyfuRi+pA==
   optionalDependencies:
     jquery-ui "^1.13.2"
 
