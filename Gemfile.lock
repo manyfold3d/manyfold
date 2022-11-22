@@ -283,7 +283,7 @@ GEM
       redis-client (>= 0.9.0)
     redis-client (0.11.1)
       connection_pool
-    regexp_parser (2.6.0)
+    regexp_parser (2.6.1)
     request_store (1.5.1)
       rack (>= 1.4)
     responders (3.0.1)
@@ -323,7 +323,7 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.23.0)
       parser (>= 3.1.1.0)
-    rubocop-performance (1.15.0)
+    rubocop-performance (1.15.1)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.11.0)
@@ -351,9 +351,9 @@ GEM
       mini_portile2 (~> 2.8.0)
     sqlite3 (1.5.4-x86_64-darwin)
     sqlite3 (1.5.4-x86_64-linux)
-    standard (1.18.0)
+    standard (1.18.1)
       rubocop (= 1.39.0)
-      rubocop-performance (= 1.15.0)
+      rubocop-performance (= 1.15.1)
     stopwords-filter (0.7.0)
     strscan (3.0.4)
     thor (1.2.1)
@@ -413,7 +413,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   spring
   sqlite3 (~> 1.5)
-  standard (~> 1.18.0)
+  standard (~> 1.18.1)
   stopwords-filter
   tzinfo-data
   web-console (>= 4.1.0)
