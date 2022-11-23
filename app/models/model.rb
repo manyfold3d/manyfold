@@ -17,7 +17,7 @@ class Model < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
 
-  acts_as_taggable_on :tags
+  acts_as_taggable_on :tags, :collections
 
   def autogenerate_tags_from_path!
     tags = File.split(path).last.split(/[\W_+-]/).filter { |x| x.length > 1 }

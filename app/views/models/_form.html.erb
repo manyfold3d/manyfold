@@ -31,6 +31,17 @@
 
     <%= render 'tags_edit', :form => form, :name => "model[tags]", :value => (@model.tags.map { |tag| tag.name }).join(","), :label => "Tags" %>
 
+    <div class="row mb-3 input-group">
+      <%= form.label :collections, class: "col-sm-2 col-form-label" %>
+      <%= form.collection_select :collection_list, ActsAsTaggableOn::Tag.for_context(:collections),
+        :name, :name, {}, {
+          multiple: true,
+          class: "form-select",
+          data: {selectize: "true"}
+        }
+      %>
+    </div>
+
     <%= render 'links_form', :form => form %>
 
     <%= form.submit "Save", class: "btn btn-primary" %>

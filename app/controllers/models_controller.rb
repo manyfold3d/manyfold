@@ -90,6 +90,7 @@ class ModelsController < ApplicationController
       :name,
       :scale_factor,
       :organize,
+      collection_list: [],
       tags: [],
       links_attributes: [:id, :url, :_destroy]
     )
