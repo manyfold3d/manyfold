@@ -21,9 +21,14 @@
         <li class="nav-item">
           <%= link_to "#{icon('person-rolodex', 'Creators')} Creators".html_safe, creators_path, class: (current_page?(creators_path) ? "nav-link active" : "nav-link") %>
         </li>
+        <% unless ActsAsTaggableOn::Tag.for_context(:collections).empty? %>
+          <li class="nav-item">
+            <%= link_to "#{icon('collection', 'Collections')} Collections".html_safe, collections_path, class: (current_page?(collections_path) ? "nav-link active" : "nav-link") %>
+          </li>
+        <% end %>
         <% Library.all.each do |library| %>
           <li class="nav-item">
-            <%= link_to library.name, library, class: (current_page?(library) ? "nav-link active" : "nav-link") %>
+            <%= link_to "#{icon('folder', '#{library.name}')} #{library.name}".html_safe, library, class: (current_page?(library) ? "nav-link active" : "nav-link") %>
           </li>
         <% end %>
         <li class="nav-item me-auto">
