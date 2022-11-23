@@ -26,4 +26,5 @@ Rails.application.routes.draw do
     end
   end
   resources :creators
+  resources :collections, only: [:index, :show]
 end
