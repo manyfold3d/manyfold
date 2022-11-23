@@ -11,24 +11,8 @@ class ModelsController < ApplicationController
     @model.links.build if @model.links.empty? # populate empty link
   end
 
-  def update_tags(tags)
-    old_tags = Set.new(@model.tag_list)
-    new_tags = Set.new(tags.reject(&:blank?))
-
-    intersect = old_tags & new_tags
-    additions = new_tags.subtract(intersect)
-    @model.tag_list = intersect + additions
-    @model.save
-  end
-
   def update
-    hash = model_params
-    tags = hash.delete(:tags)
-
-    if @model.update(hash)
-      update_tags(tags) if tags
-    end
-
+    @model.update(model_params)
     redirect_to [@model.library, @model]
   end
 
@@ -91,7 +75,7 @@ class ModelsController < ApplicationController
       :scale_factor,
       :organize,
       collection_list: [],
-      tags: [],
+      tag_list: [],
       links_attributes: [:id, :url, :_destroy]
     )
   end
