@@ -1,2 +1,7 @@
-<h1>Collections#index</h1>
-<p>Find me in app/views/collections/index.html.erb</p>
+<h1>Collections</h1>
+
+<ul>
+	<% @collections.each do |collection| %>
+		<li><%= link_to collection.name.titleize, collection_path(collection) %></li>
+	<% end %>
+</ul>
