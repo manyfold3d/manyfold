@@ -10,6 +10,10 @@ class ModelFile < ApplicationRecord
     File.extname(filename).delete(".").downcase
   end
 
+  def is_image?
+    Rails.configuration.formats[:images].include? file_format
+  end
+
   def name
     File.basename(filename, ".*").humanize.titleize
   end

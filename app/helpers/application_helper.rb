@@ -24,13 +24,4 @@ module ApplicationHelper
       false
     end
   end
-
-  def image?(format)
-    case format
-    when "jpg", "jpeg", "png", "svg", "gif"
-      true
-    else
-      false
-    end
-  end
 end
