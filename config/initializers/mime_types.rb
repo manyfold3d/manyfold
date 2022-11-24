@@ -9,3 +9,4 @@ Mime::Type.register "application/vnd.ms-package.3dmanufacturing-3dmodel+xml", :t
 Mime::Type.register "text/plain", :ply
 Mime::Type.register "application/octet-stream", :blend
 Mime::Type.register "application/octet-stream", :mix
+Mime::Type.register "application/octet-stream", :abc

@@ -6,6 +6,7 @@ shared:
   - blend
   - mix
   - ply
+  - abc
   images:
   - jpg
   - png
