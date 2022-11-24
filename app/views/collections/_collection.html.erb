@@ -1,0 +1,24 @@
+<% model = Model.tagged_with(collection, context: :collection).first %>
+<div class="col mb-4">
+  <div class="card model-card">
+
+    <% if file = model.preview_file %>
+      <% if image?(file.file_format) %>
+        <%= image_tag library_model_model_file_path(model.library, model, file, format: file.file_format), class: "card-img-top image-preview ", alt: file.name %>
+      <% elsif renderable?(file.file_format) %>
+        <div class="card-img-top">
+          <%= render partial: "object_preview", locals: { library: model.library, model: model, file: file } %>
+        </div>
+      <% end %>
+       <% else %>
+       <div class='preview-empty'> <p>no preview availiable</p></div>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= collection.name.titleize %></h5>
+      <p class="card-text"><%= pluralize Model.tagged_with(collection, context: :collection).count, "model" %></p>
+      <div>
+        <%= link_to "Open", collection_path(collection), {class: "btn btn-primary btn-sm"} %>
+      </div>
+    </div>
+  </div>
+</div>
