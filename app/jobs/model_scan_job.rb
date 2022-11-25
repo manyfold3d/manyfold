@@ -37,7 +37,7 @@ class ModelScanJob < ApplicationJob
     end
     # Set tags and default files
     model.model_files.reload
-    model.preview_file = model.model_files.first unless model.preview_file
+    model.preview_file = model.model_files.min_by { |x| x.is_image? ? 0 : 1 } unless model.preview_file
     if model.tags.empty?
       model.autogenerate_tags_from_path!
       if SiteSettings.model_tags_auto_tag_new.present?
