@@ -1,7 +1,7 @@
 <div class="col mb-4">
   <div class="card model-card">
     <% if file = model.preview_file %>
-      <% if image?(file.file_format) %>
+      <% if file.is_image? %>
         <%= image_tag library_model_model_file_path(model.library, model, file, format: file.file_format), class: "card-img-top image-preview ", alt: file.name %>
       <% elsif renderable?(file.file_format) %>
         <div class="card-img-top">
