@@ -19,6 +19,17 @@ function getTags (modelId: string): string[] {
     .map((tag: HTMLAnchorElement) => tag.innerHTML)
 }
 
+function updateTagList (modelId: string, add: boolean): void {
+  const tags = getTags(modelId)
+  if (tags.length > 0 && window.tagInputs != null) {
+    window.tagInputs.forEach((input) => {
+      if (input[0].getAttribute('name') === 'remove_tags[]') {
+        updateTagOptions(tags, input[0].selectize, add)
+      }
+    })
+  }
+}
+
 function handleCheckboxChange (event): void {
   const target = event.target as HTMLInputElement
   event.preventDefault()
@@ -27,19 +38,17 @@ function handleCheckboxChange (event): void {
     document
       .querySelectorAll('[data-bulk-item]')
       .forEach((checkbox: HTMLInputElement) => {
+        const modelId = checkbox.getAttribute('data-bulk-item')
+        if (modelId != null) {
+          updateTagList(modelId, target.checked)
+        }
         checkbox.checked = target.checked
       })
   } else {
     // a single checkbox item has been selected.
     const modelId = target.getAttribute('data-bulk-item') as string
     if (modelId != null) {
-      const tags = getTags(modelId)
-
-      if (tags.length > 0 && window.tagInputs != null) {
-        window.tagInputs.forEach((input) => {
-          updateTagOptions(tags, input[0].selectize, target.checked)
-        })
-      }
+      updateTagList(modelId, target.checked)
     }
   }
 }
