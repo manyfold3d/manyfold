@@ -12,13 +12,30 @@
        <div class='preview-empty'> <p>no preview availiable</p></div>
     <% end %>
     <div class="card-body">
-      <h5 class="card-title"><%= model.name %></h5>
-      <% if @creator.nil? && model.creator %>
-        <small>by <%= link_to model.creator.name, model.creator %></small>
-      <% end %>
-      <div>
-        <%= link_to "Open", [model.library, model], {class: "btn btn-primary btn-sm"} %>
-        <%= link_to "Edit", edit_library_model_path(model.library, model), {class: "btn btn-secondary btn-sm"} %>
+      <div class="row ">
+        <div class="col">
+          <h5 class="card-title"><%= model.name %></h5>
+          <div class='mt-2'>
+            <%= link_to "Open", [model.library, model], {class: "btn btn-primary btn-sm"} %>
+            <%= link_to "Edit", edit_library_model_path(model.library, model), {class: "btn btn-outline-secondary btn-sm"} %>
+          </div>
+        </div>
+        <div class="col-auto">
+          <small>
+            <% if @creator.nil? && model.creator %>
+              <%= icon "person", "Creator" %>
+              <%= link_to model.creator.name, model.creator %><br/>
+            <% end %>
+            <% if @collection.nil? && model.collections.count > 0 %>
+              <%= icon "collection", "Collection" %>
+              <%= model.collections.map{ |c| link_to c.name.titleize, collection_path(c) }.join(', ').html_safe %><br/>
+            <% end %>
+            <% if @library.nil? && model.library %>
+              <%= icon "box-seam", "Library" %>
+              <%= link_to model.library.name, model.library %><br/>
+            <% end %>
+          </small>
+        </div>
       </div>
     </div>
   </div>
