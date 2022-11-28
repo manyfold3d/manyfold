@@ -161,6 +161,7 @@ class ObjectPreview {
     object.position.set(-centre.x, -bbox.min.y, -centre.z)
     this.scene.add(object)
     // Add the grid
+    // TODO: use grid size Z here, see #834
     this.gridHelper = new THREE.GridHelper(
       this.gridSizeX,
       this.gridSizeX / 10,
