@@ -23,7 +23,7 @@ function updateTagList (modelId: string, add: boolean): void {
   const tags = getTags(modelId)
   if (tags.length > 0 && window.tagInputs != null) {
     window.tagInputs.forEach((input) => {
-      if (input[0].getAttribute('name') == "remove_tags[]") {
+      if (input[0].getAttribute('name') === 'remove_tags[]') {
         updateTagOptions(tags, input[0].selectize, add)
       }
     })
