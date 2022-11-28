@@ -19,11 +19,25 @@
     <%= card :secondary, "Details" do %>
       <% if @model.creator %>
         <p>
-          Creator: <%= link_to @model.creator.name, creator_path(@model.creator) %>
+          <%= icon "person", "Creator" %>
+          <%= link_to @model.creator.name, creator_path(@model.creator) %>
+        </p>
+      <% end %>
+      <% if @model.collections.count > 0 %>
+        <p>
+          <%= icon "collection", "Collections" %>
+          <%= @model.collections.map{ |c| link_to c.name.titleize, collection_path(c) }.join(', ').html_safe %>
+        </p>
+      <% end %>
+      <% if @model.library %>
+        <p>
+          <%= icon "box-seam", "Library" %>
+          <%= link_to @model.library.name, @model.library %>
         </p>
       <% end %>
       <p>
-        Path: <code><%= @model.path %></code>
+        <%= icon "folder", "Path" %>
+        <code><%= @model.path %></code>
       </p>
       <p>
         Scale: <%= number_to_percentage @model.scale_factor, strip_insignificant_zeros: true %>

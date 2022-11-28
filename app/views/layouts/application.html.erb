@@ -28,11 +28,11 @@
         <% end %>
         <% Library.all.each do |library| %>
           <li class="nav-item">
-            <%= link_to "#{icon('folder', '#{library.name}')} #{library.name}".html_safe, library, class: (current_page?(library) ? "nav-link active" : "nav-link") %>
+            <%= link_to "#{icon('box-seam', '#{library.name}')} #{library.name}".html_safe, library, class: (current_page?(library) ? "nav-link active" : "nav-link") %>
           </li>
         <% end %>
         <li class="nav-item me-auto">
-          <%= link_to icon("folder-plus", "New Library"), new_library_path, class: (current_page?(new_library_path) ? "nav-link active" : "nav-link") %>
+          <%= link_to icon("plus-circle", "New Library"), new_library_path, class: (current_page?(new_library_path) ? "nav-link active" : "nav-link") %>
         </li>
         <% if @library&.persisted? || @scan_in_progress %>
           <li class="nav-item">
