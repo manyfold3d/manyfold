@@ -20,12 +20,10 @@ function getTags (modelId: string): string[] {
 }
 
 function updateTagList (modelId: string, add: boolean): void {
-  if (modelId != null) {
-    const tags = getTags(modelId)
-    if (tags.length > 0 && window.tagInputs != null) {
-      select = document.querySelector('select[name="remove_tags[]"]')
-      updateTagOptions(tags, select.selectize, add)
-    }
+  const tags = getTags(modelId)
+  if (tags.length > 0 && window.tagInputs != null) {
+    const select = document.querySelector('select[name="remove_tags[]"]')
+    updateTagOptions(tags, select.selectize, add)
   }
 }
 
@@ -43,7 +41,9 @@ function handleCheckboxChange (event): void {
   } else {
     // a single checkbox item has been selected.
     const modelId = target.getAttribute('data-bulk-item') as string
-    updateTagList(modelId, target.checked)
+    if (modelId != null) {
+      updateTagList(modelId, target.checked)
+    }
   }
 }
 
