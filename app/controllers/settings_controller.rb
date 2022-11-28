@@ -19,6 +19,7 @@ class SettingsController < ApplicationController
     end
     if params[:renderer]
       @user.renderer_settings["grid_width"] = params[:renderer][:grid_width].to_i
+      @user.renderer_settings["grid_depth"] = params[:renderer][:grid_width].to_i # Store width in both for now. See #834
     end
     @user.save!
     redirect_to user_settings_path(@user)
