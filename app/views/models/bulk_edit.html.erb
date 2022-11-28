@@ -56,8 +56,8 @@
     </div>
   </div>
 
-  <%= render 'tags_edit', :form => form, :name => :add_tags, :value => "", :label => "Add Tags" %>
-  <%= render 'tags_edit', :form => form, :name => :remove_tags, :value => "", :label => "Remove Tags" %>
+  <%= render 'tags_edit', :form => form, :name => :add_tags, :value => "", :label => "Add Tags", tags: @library.all_tags %>
+  <%= render 'tags_edit', :form => form, :name => :remove_tags, :value => "", :label => "Remove Tags", tags: [] %>
 
   <div class="row mb-3 input-group">
     <%= form.label :collections, class: "col-sm-2 col-form-label" %>
