@@ -7,8 +7,8 @@
       data-preview-url="<%= library_model_model_file_path(library, model, file, file.file_format.to_sym)%>"
       data-format="<%= file.file_format %>"
       data-y-up="<%= file.y_up %>"
-      data-grid-size-x="<%= ENV.fetch("GRID_SIZE", 200)%>"
-      data-grid-size-z="<%= ENV.fetch("GRID_SIZE", 200)%>"
+      data-grid-size-x="<%= current_user.renderer_settings["grid_width"] %>"
+      data-grid-size-z="<%= current_user.renderer_settings["grid_width"] %>"
     >
     </canvas>
   </div>
