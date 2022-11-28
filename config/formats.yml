@@ -7,9 +7,14 @@ shared:
   - mix
   - ply
   - abc
+  - stp
+  - lys
+  - lyt
+  - chitubox
   images:
   - jpg
   - png
   - jpeg
   - gif
   - svg
+  - webp

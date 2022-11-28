@@ -15,7 +15,7 @@ RSpec.describe ModelScanJob, type: :job do
 
   context "but no scanned files" do
     it "generates a case-insensitive pattern for files" do
-      expect(ModelScanJob.file_pattern).to eq "*.{stl,STL,obj,OBJ,3mf,3MF,blend,BLEND,mix,MIX,ply,PLY,abc,ABC,jpg,JPG,png,PNG,jpeg,JPEG,gif,GIF,svg,SVG}"
+      expect(ModelScanJob.file_pattern).to include "*.{stl,STL"
     end
 
     it "can scan a library directory" do
