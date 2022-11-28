@@ -14,7 +14,10 @@
     <div class="card-body">
       <div class="row ">
         <div class="col">
-          <h5 class="card-title"><%= model.name %></h5>
+          <h5 class="card-title">
+            <%= model.name %>
+            <%= content_tag :span, "new", class: "badge rounded-pill bg-info" if model.tag_list.include? SiteSettings.model_tags_auto_tag_new %>
+          </h5>
           <div class='mt-2'>
             <%= link_to "Open", [model.library, model], {class: "btn btn-primary btn-sm"} %>
             <%= link_to "Edit", edit_library_model_path(model.library, model), {class: "btn btn-outline-secondary btn-sm"} %>
