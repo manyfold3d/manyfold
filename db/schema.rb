@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_28_165903) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_10_001132) do
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -75,6 +75,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_165903) do
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
     t.index ["preview_file_id"], name: "index_models_on_preview_file_id"
+  end
+
+  create_table "problems", force: :cascade do |t|
+    t.string "problematic_type"
+    t.integer "problematic_id"
+    t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["problematic_type", "problematic_id"], name: "index_problems_on_problematic"
   end
 
   create_table "settings", force: :cascade do |t|
