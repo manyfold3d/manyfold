@@ -1,5 +1,7 @@
 class ModelFile < ApplicationRecord
   belongs_to :model
+  has_many :problems, as: :problematic, dependent: :destroy
+
   validates :filename, presence: true, uniqueness: {scope: :model}
 
   default_scope { order(:filename) }
