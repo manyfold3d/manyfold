@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "problems/index"
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :users do
@@ -27,4 +28,5 @@ Rails.application.routes.draw do
   end
   resources :creators
   resources :collections, only: [:index, :show]
+  resources :problems, only: [:index]
 end
