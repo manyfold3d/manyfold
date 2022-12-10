@@ -80,7 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_001132) do
   create_table "problems", force: :cascade do |t|
     t.string "problematic_type"
     t.integer "problematic_id"
-    t.integer "type"
+    t.integer "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["problematic_type", "problematic_id"], name: "index_problems_on_problematic"
