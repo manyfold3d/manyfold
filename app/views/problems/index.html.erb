@@ -4,7 +4,10 @@
 <table class="table table-striped">
 	<% @problems.each do |problem| %>
 		<tr>
-			<td><%= problem.category %></td>
+			<td>
+				<%= icon("file-x", problem.category) %>
+				<%= problem.category %>
+			</td>
 			<td><%= problem.problematic.name %></td>
 		</tr>
 	<% end %>
