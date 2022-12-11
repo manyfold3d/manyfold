@@ -6,8 +6,6 @@ class ModelFile < ApplicationRecord
 
   default_scope { order(:filename) }
 
-  after_destroy :remove_file
-
   def file_format
     File.extname(filename).delete(".").downcase
   end
@@ -29,8 +27,6 @@ class ModelFile < ApplicationRecord
   rescue Errno::ENOENT
     nil
   end
-
-  private
 
   def remove_file
     File.delete(pathname) if File.exist?(pathname)

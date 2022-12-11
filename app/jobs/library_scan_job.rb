@@ -55,6 +55,10 @@ class LibraryScanJob < ApplicationJob
   end
 
   def perform(library)
+    if !File.exist?(library.path)
+      library.problems.create(category: :missing)
+      return
+    end
     # Remove models with missing path
     clean_up_missing_models(library)
     clean_up_missing_model_files(library)
