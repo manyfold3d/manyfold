@@ -27,6 +27,8 @@ class LibraryScanJob < ApplicationJob
         rescue
           nil
         end
+      else
+        m.problems.where(category: :missing).destroy_all
       end
     end
     nil
@@ -40,6 +42,8 @@ class LibraryScanJob < ApplicationJob
         rescue
           nil
         end
+      else
+        f.problems.where(category: :missing).destroy_all
       end
     end
     nil
@@ -57,7 +61,8 @@ class LibraryScanJob < ApplicationJob
   def perform(library)
     if !File.exist?(library.path)
       library.problems.create(category: :missing)
-      return
+    else
+      library.problems.where(category: :missing).destroy_all
     end
     # Remove models with missing path
     clean_up_missing_models(library)

@@ -21,6 +21,8 @@ class ModelScanJob < ApplicationJob
         rescue
           nil
         end
+      else
+        f.problems.where(category: :missing).destroy_all
       end
     end
   end
@@ -30,9 +32,11 @@ class ModelScanJob < ApplicationJob
     clean_up_missing_files(model)
     # For each file in the model, create a file object
     model_path = File.join(model.library.path, model.path)
-    unless File.exist?(model_path)
+    if !File.exist?(model_path)
       model.problems.create(category: :missing)
       return
+    else
+      model.problems.where(category: :missing).destroy_all
     end
     Dir.open(model_path) do |dir|
       Dir.glob([
@@ -62,6 +66,8 @@ class ModelScanJob < ApplicationJob
       rescue
         nil
       end
+    else
+      model.problems.where(category: :empty).destroy_all
     end
   end
 end
