@@ -55,6 +55,11 @@ class ModelsController < ApplicationController
     redirect_to edit_library_models_path(@library, tag: params[:tag])
   end
 
+  def destroy
+    @model.destroy
+    redirect_to library_path(@library)
+  end
+
   private
 
   def bulk_update_params

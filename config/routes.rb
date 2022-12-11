@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post "/", controller: :search, action: :index
 
   resources :libraries do
-    resources :models, except: [:index, :destroy] do
+    resources :models, except: [:index] do
       member do
         post "merge"
       end
