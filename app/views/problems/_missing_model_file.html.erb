@@ -1,0 +1,2 @@
+<td><%= link_to problem.problematic.name, [problem.problematic.model.library, problem.problematic.model, problem.problematic] %></td>
+<td><%= link_to "Purge", [problem.problematic.model.library, problem.problematic.model, problem.problematic], method: :delete, class: "btn btn-danger" %></td>

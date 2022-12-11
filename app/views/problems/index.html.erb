@@ -8,7 +8,7 @@
 				<%= icon("file-x", problem.category) %>
 				<%= problem.category %>
 			</td>
-			<td><%= problem.problematic.name %></td>
+			<%= render partial: "#{problem.category}_#{problem.problematic_type.underscore}", locals: {problem: problem} %>
 		</tr>
 	<% end %>
 </table>
