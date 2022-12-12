@@ -72,7 +72,7 @@ gem "stopwords-filter", require: "stopwords"
 
 gem "devise", "~> 4.8"
 
-gem "data_migrate", "~> 8.3"
+gem "data_migrate", "~> 8.4"
 
 gem "rails-settings-cached", "~> 2.8"
 gem "activeadmin", "~> 2.13"
