@@ -6,7 +6,7 @@ RSpec.describe LibraryScanJob, type: :job do
   end
 
   let(:library) do
-    create(:library, path: Rails.root.join("spec", "fixtures", "library"))
+    create(:library, path: Rails.root.join("spec/fixtures/library"))
   end
 
   it "generates a case-insensitive pattern for files" do
