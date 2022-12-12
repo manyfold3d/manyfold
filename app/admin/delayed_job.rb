@@ -56,7 +56,7 @@ ActiveAdmin.register Delayed::Job, as: "Task" do
     column(:created_at, sortable: :created_at) { |job| job.created_at.iso8601.tr("T", " ") }
     column(:run_at, sortable: :run_at) { |post| post.run_at.present? ? post.run_at.iso8601.tr("T", " ") : nil }
     column :queue
-    column("Running", sortable: :locked_at) { |dj| dj.locked_at.present? ? "#{(Time.now - dj.locked_at).round(1)}s by #{dj.locked_by}" : "" }
+    column("Running", sortable: :locked_at) { |dj| dj.locked_at.present? ? "#{(Time.zone.now - dj.locked_at).round(1)}s by #{dj.locked_by}" : "" }
     actions
   end
 

@@ -55,7 +55,7 @@ class MaintainTestAssets
   # tests are actually run (just above "RSpec.configure..." works reasonably).
   #
   def self.maintain!
-    newest_mtime = Time.now - 100.years
+    newest_mtime = 100.years.ago
 
     # Find the newest modificaftion time across all source files of any type -
     # for simplicity, timestamps of JS vs CSS aren't considered
