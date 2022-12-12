@@ -4,6 +4,7 @@ require:
   - standard
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-i18n
 
 inherit_gem:
   standard: config/base.yml
@@ -17,3 +18,10 @@ AllCops:
     - 'tmp/**/*'
     - 'vendor/**/*'
     - '.git/**/*'
+
+I18n/GetText:
+  Enabled: false
+I18n/RailsI18n:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
