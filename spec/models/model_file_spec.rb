@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ModelFile, type: :model do
+RSpec.describe ModelFile do
   it "is not valid without a filename" do
     expect(build(:model_file, filename: nil)).not_to be_valid
   end

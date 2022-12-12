@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Problems", type: :request do
+RSpec.describe "Problems" do
   describe "GET /index" do
     it "returns http success" do
       get "/problems/index"

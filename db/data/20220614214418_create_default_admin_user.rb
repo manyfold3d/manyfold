@@ -10,6 +10,6 @@ class CreateDefaultAdminUser < ActiveRecord::Migration[7.0]
   end
 
   def down
-    User.find_by_username("admin").destroy
+    User.find_by(username: "admin").destroy
   end
 end

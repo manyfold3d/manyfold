@@ -10,6 +10,6 @@ require "rails_helper"
 #     end
 #   end
 # end
-RSpec.describe LibrariesHelper, type: :helper do
+RSpec.describe LibrariesHelper do
   pending "add some examples to (or delete) #{__FILE__}"
 end

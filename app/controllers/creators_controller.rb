@@ -20,23 +20,23 @@ class CreatorsController < ApplicationController
     end
   end
 
-  def edit
-    @creator.links.build if @creator.links.empty? # populate empty link
-  end
-
-  def update
-    @creator.update(creator_params)
-    redirect_to @creator
-  end
-
   def new
     @creator = Creator.new
     @creator.links.build if @creator.links.empty? # populate empty link
     @title = "New Creator"
   end
 
+  def edit
+    @creator.links.build if @creator.links.empty? # populate empty link
+  end
+
   def create
     @creator = Creator.create(creator_params)
+    redirect_to @creator
+  end
+
+  def update
+    @creator.update(creator_params)
     redirect_to @creator
   end
 

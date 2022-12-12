@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Searches", type: :request do
+RSpec.describe "Searches" do
   describe "GET /" do
     it "returns http success" do
       get "/"

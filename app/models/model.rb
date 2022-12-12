@@ -36,7 +36,7 @@ class Model < ApplicationRecord
 
   def parents
     Pathname.new(path).parent.descend.map do |path|
-      library.models.find_by_path(path.to_s)
+      library.models.find_by(path: path.to_s)
     end.compact
   end
   memoize :parents
