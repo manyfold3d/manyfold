@@ -9,6 +9,7 @@ class Model < ApplicationRecord
   validates :path, presence: true, uniqueness: {scope: :library}
   validate :cannot_move_models_with_submodels, on: :update
   has_many :links, as: :linkable, dependent: :destroy
+  has_many :problems, as: :problematic, dependent: :destroy
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
   attr_accessor :organize

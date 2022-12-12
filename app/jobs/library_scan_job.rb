@@ -21,14 +21,30 @@ class LibraryScanJob < ApplicationJob
 
   def clean_up_missing_models(library)
     library.models.each do |m|
-      m.destroy unless File.exist?(File.join(library.path, m.path))
+      if !File.exist?(File.join(library.path, m.path))
+        begin
+          m.problems.create(category: :missing)
+        rescue
+          nil
+        end
+      else
+        m.problems.where(category: :missing).destroy_all
+      end
     end
     nil
   end
 
   def clean_up_missing_model_files(library)
     library.model_files.each do |f|
-      f.destroy unless File.exist?(f.pathname)
+      if !File.exist?(f.pathname)
+        begin
+          f.problems.create(category: :missing)
+        rescue
+          nil
+        end
+      else
+        f.problems.where(category: :missing).destroy_all
+      end
     end
     nil
   end
@@ -43,6 +59,11 @@ class LibraryScanJob < ApplicationJob
   end
 
   def perform(library)
+    if !File.exist?(library.path)
+      library.problems.create(category: :missing)
+    else
+      library.problems.where(category: :missing).destroy_all
+    end
     # Remove models with missing path
     clean_up_missing_models(library)
     clean_up_missing_model_files(library)

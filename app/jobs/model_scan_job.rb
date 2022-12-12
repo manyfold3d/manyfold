@@ -14,9 +14,17 @@ class ModelScanJob < ApplicationJob
   end
 
   def clean_up_missing_files(model)
-    model.model_files.select { |f|
-      !File.exist?(File.join(model.library.path, model.path, f.filename))
-    }.each(&:destroy)
+    model.model_files.each do |f|
+      if !File.exist?(File.join(model.library.path, model.path, f.filename))
+        begin
+          f.problems.create(category: :missing)
+        rescue
+          nil
+        end
+      else
+        f.problems.where(category: :missing).destroy_all
+      end
+    end
   end
 
   def perform(model)
@@ -24,6 +32,12 @@ class ModelScanJob < ApplicationJob
     clean_up_missing_files(model)
     # For each file in the model, create a file object
     model_path = File.join(model.library.path, model.path)
+    if !File.exist?(model_path)
+      model.problems.create(category: :missing)
+      return
+    else
+      model.problems.where(category: :missing).destroy_all
+    end
     Dir.open(model_path) do |dir|
       Dir.glob([
         File.join(dir.path, ModelScanJob.file_pattern),
@@ -45,7 +59,15 @@ class ModelScanJob < ApplicationJob
         model.save!
       end
     end
-    # If this model has no files, self destruct
-    model.destroy if model.model_files.reload.count == 0
+    # If this model has no files, flag a problem
+    if model.model_files.reload.count == 0
+      begin
+        model.problems.create(category: :empty)
+      rescue
+        nil
+      end
+    else
+      model.problems.where(category: :empty).destroy_all
+    end
   end
 end

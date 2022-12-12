@@ -1,10 +1,10 @@
 class ModelFile < ApplicationRecord
   belongs_to :model
+  has_many :problems, as: :problematic, dependent: :destroy
+
   validates :filename, presence: true, uniqueness: {scope: :model}
 
   default_scope { order(:filename) }
-
-  after_destroy :remove_file
 
   def file_format
     File.extname(filename).delete(".").downcase
@@ -27,8 +27,6 @@ class ModelFile < ApplicationRecord
   rescue Errno::ENOENT
     nil
   end
-
-  private
 
   def remove_file
     File.delete(pathname) if File.exist?(pathname)

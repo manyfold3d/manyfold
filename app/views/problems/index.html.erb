@@ -1,0 +1,14 @@
+<h1>Problems</h1>
+<p class='lead'><%= pluralize @problems.count, "problem" %> found</p>
+
+<table class="table table-striped">
+	<% @problems.each do |problem| %>
+		<tr>
+			<td>
+				<%= icon("file-x", problem.category) %>
+				<%= problem.category %>
+			</td>
+			<%= render partial: "#{problem.category}_#{problem.problematic_type.underscore}", locals: {problem: problem} %>
+		</tr>
+	<% end %>
+</table>
