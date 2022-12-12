@@ -2,10 +2,10 @@ require "rails_helper"
 
 RSpec.describe "Models" do
   before :all do
-    @library = FactoryBot.create(:library) do |library|
-      FactoryBot.create_list(:model, 11, library: library)
+    @library = create(:library) do |library|
+      create_list(:model, 11, library: library)
     end
-    @creator = FactoryBot.create(:creator)
+    @creator = create(:creator)
   end
 
   describe "GET /libraries/1/models/1" do
