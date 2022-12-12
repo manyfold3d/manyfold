@@ -23,7 +23,7 @@ RSpec.describe Model, type: :model do
 
   context "tag generation" do
     context "without stop word filtering" do
-      before :each do
+      before do
         allow(SiteSettings).to receive(:model_tags_filter_stop_words).and_return(false)
       end
 
@@ -59,7 +59,7 @@ RSpec.describe Model, type: :model do
     end
 
     context "with stop word filtering" do
-      before :each do
+      before do
         allow(SiteSettings).to receive(:model_tags_stop_words_locale).and_return("en")
         allow(SiteSettings).to receive(:model_tags_filter_stop_words).and_return(true)
         allow(SiteSettings).to receive(:model_tags_custom_stop_words).and_return(["chicken"])
@@ -98,7 +98,7 @@ RSpec.describe Model, type: :model do
   end
 
   context "with a library on disk" do
-    before :each do
+    before do
       allow(File).to receive(:exist?).and_call_original
       allow(File).to receive(:exist?).with("/library1").and_return(true)
       allow(File).to receive(:exist?).with("/library2").and_return(true)
@@ -119,7 +119,7 @@ RSpec.describe Model, type: :model do
   end
 
   context "nested inside another" do
-    before :each do
+    before do
       allow(File).to receive(:exist?).and_call_original
       allow(File).to receive(:exist?).with("/library").and_return(true)
     end
@@ -133,7 +133,7 @@ RSpec.describe Model, type: :model do
     end
 
     context "merging into parent" do
-      before :each do
+      before do
         @parent = create(:model, library: library, path: "model")
         @child = create(:model, library: library, path: "model/nested")
       end
