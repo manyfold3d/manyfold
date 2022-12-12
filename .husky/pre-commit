@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-bundle exec standardrb
+bundle exec rubocop
 yarn run ts-standard
