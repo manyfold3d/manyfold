@@ -10,6 +10,6 @@ require "rails_helper"
 #     end
 #   end
 # end
-RSpec.describe SearchHelper, type: :helper do
+RSpec.describe SearchHelper do
   pending "add some examples to (or delete) #{__FILE__}"
 end

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Creators", type: :request do
+RSpec.describe "Creators" do
   before :all do
     FactoryBot.create_list(:creator, 13) do |creator|
       FactoryBot.create_list(:link, 1, linkable: creator)

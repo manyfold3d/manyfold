@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ModelsHelper, type: :helper do
+RSpec.describe ModelsHelper do
   describe "string concat" do
     let(:files) do
       %w[

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe LibraryScanJob, type: :job do
+RSpec.describe LibraryScanJob do
   before :all do
     ActiveJob::Base.queue_adapter = :test
   end

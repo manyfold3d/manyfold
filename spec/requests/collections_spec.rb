@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Collections", type: :request do
+RSpec.describe "Collections" do
   describe "GET /show" do
     it "returns http success" do
       pending

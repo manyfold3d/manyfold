@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Settings", type: :request do
+RSpec.describe "Settings" do
   let(:username) { User.first.username }
 
   describe "GET /" do

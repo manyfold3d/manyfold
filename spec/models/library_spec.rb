@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Library, type: :model do
+RSpec.describe Library do
   before do
     allow(File).to receive(:exist?).with("/library1").and_return(true)
   end

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Model, type: :model do
+RSpec.describe Model do
   it "is not valid without a path" do
     expect(build(:model, path: nil)).not_to be_valid
   end
@@ -149,7 +149,7 @@ RSpec.describe Model, type: :model do
       it "deletes merged model" do
         expect {
           @child.merge_into! @parent
-        }.to change { Model.count }.from(2).to(1)
+        }.to change(described_class, :count).from(2).to(1)
       end
     end
   end
