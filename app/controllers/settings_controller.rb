@@ -28,7 +28,7 @@ class SettingsController < ApplicationController
   private
 
   def get_user
-    @user = User.find_by_username(params[:user_id])
+    @user = User.find_by(username: params[:user_id])
   end
 
   def check_owner_permission
