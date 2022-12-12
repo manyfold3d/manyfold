@@ -13,4 +13,7 @@ AllCops:
   Exclude:
     - db/schema.rb
     - bin/*
-    - vendor/bundle/*
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - '.git/**/*'
