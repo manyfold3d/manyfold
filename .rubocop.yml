@@ -1,10 +1,13 @@
 require:
   - standard
+  - rubocop-rails
+  - rubocop-rspec
 
 inherit_gem:
   standard: config/base.yml
 
 AllCops:
+  NewCops: enable
   Exclude:
     - db/schema.rb
     - bin/*
