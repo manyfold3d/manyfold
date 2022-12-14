@@ -2,6 +2,10 @@
 en:
   active_admin:
     dashboard: Dashboard
+  renderer:
+    style:
+      lambert: Realistically shaded
+      normals: Surface direction
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things

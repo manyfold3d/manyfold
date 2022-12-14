@@ -50,7 +50,7 @@
   </div>
   <div class="">
     <%= form.label "Rendering style", for: "renderer[render_style]", class: "form-label"%>
-    <%= form.select "renderer[render_style]", ["normals", "lambert"], selected: @user.renderer_settings["render_style"], class: "form-control" %>
+    <%= form.select "renderer[render_style]", [[t("renderer.style.normals"), "normals"], [t("renderer.style.lambert"), "lambert"]], selected: @user.renderer_settings["render_style"], class: "form-control" %>
   </div>
 
   <% if current_user.admin? %>
