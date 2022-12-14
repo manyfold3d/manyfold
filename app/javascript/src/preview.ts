@@ -21,20 +21,15 @@ class ObjectPreview {
   progressIndicator: HTMLDivElement
   constructor (
     canvas: HTMLCanvasElement,
-    progressIndicator: HTMLDivElement,
-    url: string,
-    format: string,
-    yUp: boolean,
-    gridSizeX: number,
-    gridSizeZ: number
+    progressIndicator: HTMLDivElement
   ) {
     this.canvas = canvas
     this.progressIndicator = progressIndicator
-    this.url = url
-    this.format = format
-    this.yUp = yUp
-    this.gridSizeX = gridSizeX
-    this.gridSizeZ = gridSizeZ
+    this.url = canvas.dataset.previewUrl
+    this.format = canvas.dataset.format
+    this.yUp = canvas.dataset.yUp === 'true'
+    this.gridSizeX = parseInt(canvas.dataset.gridSizeX ?? '10', 10)
+    this.gridSizeZ = parseInt(canvas.dataset.gridSizeZ ?? '10', 10)
     const observer = new window.IntersectionObserver(
       this.onIntersectionChanged.bind(this),
       {}
@@ -212,12 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.height = canvas.width
     canvas.renderer = new ObjectPreview(
       canvas,
-      div.getElementsByClassName('progress-bar')[0] as HTMLDivElement,
-      canvas.dataset.previewUrl ?? '/',
-      canvas.dataset.format ?? '',
-      canvas.dataset.yUp === 'true',
-      parseInt(canvas.dataset.gridSizeX ?? '10', 10),
-      parseInt(canvas.dataset.gridSizeZ ?? '10', 10)
+      div.getElementsByClassName('progress-bar')[0] as HTMLDivElement
     )
   })
 })
