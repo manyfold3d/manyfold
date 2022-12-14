@@ -15,6 +15,8 @@ class ObjectPreview {
   backgroundColour: string
   objectColour: string
   renderStyle: string
+  enablePanZoom: boolean
+  showGrid: boolean
   scene: THREE.Scene
   renderer: THREE.WebGLRenderer
   camera: THREE.PerspectiveCamera
@@ -37,6 +39,7 @@ class ObjectPreview {
     this.objectColour = canvas.dataset.objectColour
     this.renderStyle = canvas.dataset.renderStyle
     this.enablePanZoom = canvas.dataset.enablePanZoom === 'true'
+    this.showGrid = canvas.dataset.showGrid === 'true'
     const observer = new window.IntersectionObserver(
       this.onIntersectionChanged.bind(this),
       {}
@@ -179,14 +182,16 @@ class ObjectPreview {
     object.position.set(-centre.x, -bbox.min.y, -centre.z)
     this.scene.add(object)
     // Add the grid
-    // TODO: use grid size Z here, see #834
-    this.gridHelper = new THREE.GridHelper(
-      this.gridSizeX,
-      this.gridSizeX / 10,
-      'magenta',
-      'cyan'
-    )
-    this.scene.add(this.gridHelper)
+    if (this.showGrid) {
+      // TODO: use grid size Z here, see #834
+      this.gridHelper = new THREE.GridHelper(
+        this.gridSizeX,
+        this.gridSizeX / 10,
+        'magenta',
+        'cyan'
+      )
+      this.scene.add(this.gridHelper)
+    }
     // Render first frame
     this.onAnimationFrame()
   }
