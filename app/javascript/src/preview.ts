@@ -13,6 +13,8 @@ class ObjectPreview {
   gridSizeX: number
   gridSizeZ: number
   backgroundColour: string
+  objectColour: string
+  renderStyle: string
   scene: THREE.Scene
   renderer: THREE.WebGLRenderer
   camera: THREE.PerspectiveCamera
@@ -32,6 +34,8 @@ class ObjectPreview {
     this.gridSizeX = parseInt(canvas.dataset.gridSizeX ?? '10', 10)
     this.gridSizeZ = parseInt(canvas.dataset.gridSizeZ ?? '10', 10)
     this.backgroundColour = canvas.dataset.backgroundColour
+    this.objectColour = canvas.dataset.objectColour
+    this.renderStyle = canvas.dataset.renderStyle
     const observer = new window.IntersectionObserver(
       this.onIntersectionChanged.bind(this),
       {}
@@ -104,9 +108,15 @@ class ObjectPreview {
 
   onLoad (model): void {
     this.setup()
-    const material = new THREE.MeshNormalMaterial({
-      flatShading: true
-    })
+    const material = this.renderStyle === 'normals'
+      ? new THREE.MeshNormalMaterial({
+        flatShading: true
+      })
+      : new THREE.MeshLambertMaterial({
+        flatShading: false,
+        color: this.objectColour
+      })
+    // find mesh and set material
     let object: THREE.Mesh | null = null
     if (model.type === 'BufferGeometry') {
       object = new THREE.Mesh(model, material)
@@ -118,8 +128,8 @@ class ObjectPreview {
       })
       object = model
     }
-
     if (object == null) return
+
     // Transform to screen coords from print
     if (!this.yUp) {
       const coordSystemTransform = new THREE.Matrix4()
