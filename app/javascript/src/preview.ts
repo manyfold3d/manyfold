@@ -126,7 +126,7 @@ class ObjectPreview {
         flatShading: true
       })
       : new THREE.MeshLambertMaterial({
-        flatShading: false,
+        flatShading: true,
         color: this.objectColour
       })
     // find mesh and set material
