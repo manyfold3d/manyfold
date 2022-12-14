@@ -12,6 +12,11 @@ class ObjectPreview {
   yUp: boolean
   gridSizeX: number
   gridSizeZ: number
+  backgroundColour: string
+  objectColour: string
+  renderStyle: string
+  enablePanZoom: boolean
+  showGrid: boolean
   scene: THREE.Scene
   renderer: THREE.WebGLRenderer
   camera: THREE.PerspectiveCamera
@@ -21,20 +26,20 @@ class ObjectPreview {
   progressIndicator: HTMLDivElement
   constructor (
     canvas: HTMLCanvasElement,
-    progressIndicator: HTMLDivElement,
-    url: string,
-    format: string,
-    yUp: boolean,
-    gridSizeX: number,
-    gridSizeZ: number
+    progressIndicator: HTMLDivElement
   ) {
     this.canvas = canvas
     this.progressIndicator = progressIndicator
-    this.url = url
-    this.format = format
-    this.yUp = yUp
-    this.gridSizeX = gridSizeX
-    this.gridSizeZ = gridSizeZ
+    this.url = canvas.dataset.previewUrl ?? '/'
+    this.format = canvas.dataset.format ?? ''
+    this.yUp = canvas.dataset.yUp === 'true'
+    this.gridSizeX = parseInt(canvas.dataset.gridSizeX ?? '10', 10)
+    this.gridSizeZ = parseInt(canvas.dataset.gridSizeZ ?? '10', 10)
+    this.backgroundColour = canvas.dataset.backgroundColour ?? '#000000'
+    this.objectColour = canvas.dataset.objectColour ?? '#cccccc'
+    this.renderStyle = canvas.dataset.renderStyle ?? 'normals'
+    this.enablePanZoom = canvas.dataset.enablePanZoom === 'true'
+    this.showGrid = canvas.dataset.showGrid === 'true'
     const observer = new window.IntersectionObserver(
       this.onIntersectionChanged.bind(this),
       {}
@@ -44,6 +49,7 @@ class ObjectPreview {
 
   setup (): void {
     this.scene = new THREE.Scene()
+    this.scene.background = new THREE.Color(this.backgroundColour)
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
     this.camera = new THREE.PerspectiveCamera(
       45,
@@ -59,8 +65,16 @@ class ObjectPreview {
     )
     this.controls = new OrbitControls(this.camera, this.renderer.domElement)
     this.controls.enableDamping = true
-    this.controls.enablePan = false
-    this.controls.enableZoom = false
+    this.controls.enablePan = this.enablePanZoom
+    this.controls.enableZoom = this.enablePanZoom
+    // Add lighting
+    this.scene.add(new THREE.HemisphereLight(0xffffff, 0x404040))
+    const light = new THREE.PointLight(0xffffff, 0.25)
+    light.position.set(this.gridSizeX, 50, this.gridSizeZ)
+    this.scene.add(light)
+    const light2 = new THREE.PointLight(0xffffff, 0.25)
+    light2.position.set(-this.gridSizeX, 50, this.gridSizeZ)
+    this.scene.add(light2)
   }
 
   onIntersectionChanged (entries, observer): void {
@@ -106,9 +120,15 @@ class ObjectPreview {
 
   onLoad (model): void {
     this.setup()
-    const material = new THREE.MeshNormalMaterial({
-      flatShading: true
-    })
+    const material = this.renderStyle === 'normals'
+      ? new THREE.MeshNormalMaterial({
+        flatShading: true
+      })
+      : new THREE.MeshLambertMaterial({
+        flatShading: true,
+        color: this.objectColour
+      })
+    // find mesh and set material
     let object: THREE.Mesh | null = null
     if (model.type === 'BufferGeometry') {
       object = new THREE.Mesh(model, material)
@@ -120,8 +140,8 @@ class ObjectPreview {
       })
       object = model
     }
-
     if (object == null) return
+
     // Transform to screen coords from print
     if (!this.yUp) {
       const coordSystemTransform = new THREE.Matrix4()
@@ -161,14 +181,16 @@ class ObjectPreview {
     object.position.set(-centre.x, -bbox.min.y, -centre.z)
     this.scene.add(object)
     // Add the grid
-    // TODO: use grid size Z here, see #834
-    this.gridHelper = new THREE.GridHelper(
-      this.gridSizeX,
-      this.gridSizeX / 10,
-      'magenta',
-      'cyan'
-    )
-    this.scene.add(this.gridHelper)
+    if (this.showGrid) {
+      // TODO: use grid size Z here, see #834
+      this.gridHelper = new THREE.GridHelper(
+        this.gridSizeX,
+        this.gridSizeX / 10,
+        'magenta',
+        'cyan'
+      )
+      this.scene.add(this.gridHelper)
+    }
     // Render first frame
     this.onAnimationFrame()
   }
@@ -212,12 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.height = canvas.width
     canvas.renderer = new ObjectPreview(
       canvas,
-      div.getElementsByClassName('progress-bar')[0] as HTMLDivElement,
-      canvas.dataset.previewUrl ?? '/',
-      canvas.dataset.format ?? '',
-      canvas.dataset.yUp === 'true',
-      parseInt(canvas.dataset.gridSizeX ?? '10', 10),
-      parseInt(canvas.dataset.gridSizeZ ?? '10', 10)
+      div.getElementsByClassName('progress-bar')[0] as HTMLDivElement
     )
   })
 })

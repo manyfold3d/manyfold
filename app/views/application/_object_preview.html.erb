@@ -9,6 +9,11 @@
       data-y-up="<%= file.y_up %>"
       data-grid-size-x="<%= current_user.renderer_settings["grid_width"] %>"
       data-grid-size-z="<%= current_user.renderer_settings["grid_depth"] %>"
+      data-show-grid="<%= current_user.renderer_settings["show_grid"] %>"
+      data-enable-pan-zoom="<%= current_user.renderer_settings["enable_pan_zoom"] %>"
+      data-background-colour="<%= current_user.renderer_settings["background_colour"] %>"
+      data-object-colour="<%= current_user.renderer_settings["object_colour"] %>"
+      data-render-style="<%= current_user.renderer_settings["render_style"] %>"
     >
     </canvas>
   </div>
