@@ -30,14 +30,14 @@ class ObjectPreview {
   ) {
     this.canvas = canvas
     this.progressIndicator = progressIndicator
-    this.url = canvas.dataset.previewUrl
-    this.format = canvas.dataset.format
+    this.url = canvas.dataset.previewUrl ?? '/'
+    this.format = canvas.dataset.format ?? ''
     this.yUp = canvas.dataset.yUp === 'true'
     this.gridSizeX = parseInt(canvas.dataset.gridSizeX ?? '10', 10)
     this.gridSizeZ = parseInt(canvas.dataset.gridSizeZ ?? '10', 10)
-    this.backgroundColour = canvas.dataset.backgroundColour
-    this.objectColour = canvas.dataset.objectColour
-    this.renderStyle = canvas.dataset.renderStyle
+    this.backgroundColour = canvas.dataset.backgroundColour ?? '#000000'
+    this.objectColour = canvas.dataset.objectColour ?? '#cccccc'
+    this.renderStyle = canvas.dataset.renderStyle ?? 'normals'
     this.enablePanZoom = canvas.dataset.enablePanZoom === 'true'
     this.showGrid = canvas.dataset.showGrid === 'true'
     const observer = new window.IntersectionObserver(
@@ -68,8 +68,7 @@ class ObjectPreview {
     this.controls.enablePan = this.enablePanZoom
     this.controls.enableZoom = this.enablePanZoom
     // Add lighting
-    this.hemiLight = new THREE.HemisphereLight(0xffffff, 0x404040)
-    this.scene.add(this.hemiLight)
+    this.scene.add(new THREE.HemisphereLight(0xffffff, 0x404040))
     const light = new THREE.PointLight(0xffffff, 0.25)
     light.position.set(this.gridSizeX, 50, this.gridSizeZ)
     this.scene.add(light)
