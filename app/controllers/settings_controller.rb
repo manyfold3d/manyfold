@@ -20,6 +20,11 @@ class SettingsController < ApplicationController
     if params[:renderer]
       @user.renderer_settings["grid_width"] = params[:renderer][:grid_width].to_i
       @user.renderer_settings["grid_depth"] = params[:renderer][:grid_width].to_i # Store width in both for now. See #834
+      @user.renderer_settings["show_grid"] = params[:renderer][:show_grid] == "1"
+      @user.renderer_settings["enable_pan_zoom"] = params[:renderer][:enable_pan_zoom] == "1"
+      @user.renderer_settings["background_colour"] = params[:renderer][:background_colour]
+      @user.renderer_settings["object_colour"] = params[:renderer][:object_colour]
+      @user.renderer_settings["render_style"] = params[:renderer][:render_style]
     end
     @user.save!
     redirect_to user_settings_path(@user)
