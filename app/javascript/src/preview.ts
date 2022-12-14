@@ -71,10 +71,10 @@ class ObjectPreview {
     this.hemiLight = new THREE.HemisphereLight(0xffffff, 0x404040)
     this.scene.add(this.hemiLight)
     const light = new THREE.PointLight(0xffffff, 0.25)
-    light.position.set(250, 50, 100)
+    light.position.set(this.gridSizeX, 50, this.gridSizeZ)
     this.scene.add(light)
     const light2 = new THREE.PointLight(0xffffff, 0.25)
-    light2.position.set(-250, 50, 100)
+    light2.position.set(-this.gridSizeX, 50, this.gridSizeZ)
     this.scene.add(light2)
   }
 
