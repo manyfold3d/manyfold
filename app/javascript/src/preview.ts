@@ -12,6 +12,7 @@ class ObjectPreview {
   yUp: boolean
   gridSizeX: number
   gridSizeZ: number
+  backgroundColour: string
   scene: THREE.Scene
   renderer: THREE.WebGLRenderer
   camera: THREE.PerspectiveCamera
@@ -30,6 +31,7 @@ class ObjectPreview {
     this.yUp = canvas.dataset.yUp === 'true'
     this.gridSizeX = parseInt(canvas.dataset.gridSizeX ?? '10', 10)
     this.gridSizeZ = parseInt(canvas.dataset.gridSizeZ ?? '10', 10)
+    this.backgroundColour = canvas.dataset.backgroundColour
     const observer = new window.IntersectionObserver(
       this.onIntersectionChanged.bind(this),
       {}
@@ -39,6 +41,7 @@ class ObjectPreview {
 
   setup (): void {
     this.scene = new THREE.Scene()
+    this.scene.background = new THREE.Color(this.backgroundColour)
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
     this.camera = new THREE.PerspectiveCamera(
       45,
