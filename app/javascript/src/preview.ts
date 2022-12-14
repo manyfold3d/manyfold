@@ -36,6 +36,7 @@ class ObjectPreview {
     this.backgroundColour = canvas.dataset.backgroundColour
     this.objectColour = canvas.dataset.objectColour
     this.renderStyle = canvas.dataset.renderStyle
+    this.enablePanZoom = canvas.dataset.enablePanZoom === 'true'
     const observer = new window.IntersectionObserver(
       this.onIntersectionChanged.bind(this),
       {}
@@ -61,8 +62,8 @@ class ObjectPreview {
     )
     this.controls = new OrbitControls(this.camera, this.renderer.domElement)
     this.controls.enableDamping = true
-    this.controls.enablePan = false
-    this.controls.enableZoom = false
+    this.controls.enablePan = this.enablePanZoom
+    this.controls.enableZoom = this.enablePanZoom
     // Add lighting
     this.hemiLight = new THREE.HemisphereLight(0xffffff, 0x404040)
     this.scene.add(this.hemiLight)
