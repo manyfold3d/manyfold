@@ -1,25 +1,34 @@
 <h1>Settings</h1>
 
+
 <%= form_with url: user_settings_path(user: @user), method: :patch do |form| %>
-
-  <%= render "pagination_settings", form: form %>
-  <%= render "renderer_settings", form: form %>
-
-  <% if current_user.admin? %>
-    <%= render "tag_settings", form: form %>
-  <% end %>
-
-  <div class="">
-    <button type="submit" class="btn btn-primary"><%= icon('save', 'Save') %> Save</button>
+  <div class="row mb-4">
+    <div class="col">
+      <%= render "pagination_settings", form: form %>
+    </div>
+    <div class="col">
+      <%= render "renderer_settings", form: form %>
+    </div>
   </div>
 
-<% end %>
+  <% if current_user.admin? %>
 
-<% if current_user.admin? %>
+    <div class="row mb-4">
+      <div class="col">
+        <%= render "tag_settings", form: form %>
+      </div>
+    </div>
+  <% end %>
 
-  <h2>Administration</h2>
-
-  <div class="">
-    <%= link_to "#{icon('tools', 'Administration')} Advanced Administration Interface".html_safe, '/admin' %>
+  <div class="row mb-4">
+    <div class='col'>
+      <button type="submit" class="btn btn-primary"><%= icon('save', 'Save') %> Save Settings</button>
+    </div>
+    <% if current_user.admin? %>
+      <div class='col text-end'>
+        <%= link_to "#{icon('tools', 'Administration')} Advanced Administration".html_safe, '/admin', class: "btn btn-danger" %>
+      </div>
+    <% end %>
+    </p>
   </div>
 <% end %>
