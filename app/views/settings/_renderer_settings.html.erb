@@ -1,0 +1,32 @@
+<div class="card">
+  <h2 class="card-header">Renderer</h2>
+  <div class="card-body">
+		<p>
+			Customise settings for 3d rendered previews.
+		</p>
+		<div class="">
+			<%= form.label "Ground plane size (mm)", for: "renderer[grid_width]", class: "form-label"%>
+			<%= form.number_field "renderer[grid_width]", value: @user.renderer_settings["grid_width"], class: "form-control" %>
+		</div>
+		<div class="form-check form-switch">
+			<%= form.check_box "renderer[show_grid]", checked: @user.renderer_settings["show_grid"], class: "form-check-input" %>
+			<%= form.label "Show ground plane", for: "renderer[show_grid]", class: "form-check-label"%>
+		</div>
+		<div class="form-check form-switch">
+			<%= form.check_box "renderer[enable_pan_zoom]", checked: @user.renderer_settings["enable_pan_zoom"], class: "form-check-input" %>
+			<%= form.label "Enable pan/zoom controls", for: "renderer[enable_pan_zoom]", class: "form-check-label"%>
+		</div>
+		<div class="">
+			<%= form.label "Background colour", for: "renderer[background_colour]", class: "form-label"%>
+			<%= form.color_field "renderer[background_colour]", value: @user.renderer_settings["background_colour"], class: "form-control" %>
+		</div>
+		<div class="">
+			<%= form.label "Object colour", for: "renderer[object_colour]", class: "form-label"%>
+			<%= form.color_field "renderer[object_colour]", value: @user.renderer_settings["object_colour"], class: "form-control" %>
+		</div>
+		<div class="">
+			<%= form.label "Rendering style", for: "renderer[render_style]", class: "form-label"%>
+    	<%= form.select "renderer[render_style]", [[t("renderer.style.normals"), "normals"], [t("renderer.style.lambert"), "lambert"]], selected: @user.renderer_settings["render_style"], class: "form-control" %>
+		</div>
+	</div>
+</div>
