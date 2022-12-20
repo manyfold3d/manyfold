@@ -2530,10 +2530,10 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-ts-standard@^12.0.1:
-  version "12.0.1"
-  resolved "https://registry.yarnpkg.com/ts-standard/-/ts-standard-12.0.1.tgz#1c3968c3daca590923ce6793ba7f595b1e7d24be"
-  integrity sha512-Ewk3l0k/SwckuVoMokkKq5W0B6daOlVzk0Yu9Wrcp3m0/CWneVM8NK/EgUZFkx4OHw1F+RpAC7dFyzO2cLNmsw==
+ts-standard@^12.0.2:
+  version "12.0.2"
+  resolved "https://registry.yarnpkg.com/ts-standard/-/ts-standard-12.0.2.tgz#883db655106f9bde374348fc81c89e8a30414e1b"
+  integrity sha512-XX2wrB9fKKTfBj4yD3ABm9iShzZcS2iWcPK8XzlBvuL20+wMiLgiz/k5tXgZwTaYq5wRhbks1Y9PelhujF/9ag==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.0.0"
     "@typescript-eslint/parser" "^5.0.0"

@@ -35,6 +35,6 @@
     "@typescript-eslint/parser": "^5.47.0",
     "eslint": "^8.30.0",
     "husky": "^8.0.2",
-    "ts-standard": "^12.0.1"
+    "ts-standard": "^12.0.2"
   }
 }
