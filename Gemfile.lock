@@ -333,7 +333,7 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.11.1)
-    rubocop (1.39.0)
+    rubocop (1.40.0)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.1.2.1)
@@ -382,9 +382,9 @@ GEM
       mini_portile2 (~> 2.8.0)
     sqlite3 (1.5.4-x86_64-darwin)
     sqlite3 (1.5.4-x86_64-linux)
-    standard (1.19.1)
+    standard (1.20.0)
       language_server-protocol (~> 3.17.0.2)
-      rubocop (= 1.39.0)
+      rubocop (= 1.40.0)
       rubocop-performance (= 1.15.1)
     stopwords-filter (0.7.0)
     terminal-table (3.0.2)
@@ -450,7 +450,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   spring
   sqlite3 (~> 1.5)
-  standard (~> 1.19.1)
+  standard (~> 1.20.0)
   stopwords-filter
   tzinfo-data
   web-console (>= 4.1.0)
