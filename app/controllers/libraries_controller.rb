@@ -30,9 +30,18 @@ class LibrariesController < ApplicationController
 
     # Filter by tag?
     if params[:tag]
-      @tag = ActsAsTaggableOn::Tag.find_by(name: params[:tag])
-      @models = @models.tagged_with(@tag) if @tag
+      @tag = ActsAsTaggableOn::Tag.named_any(params[:tag])
+      @models = @models.tagged_with(params[:tag]) if params[:tag]
     end
+
+    # Filter by collection?
+    if params[:collection]
+      @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(params[:collection])
+      @models = @models.tagged_with(@collection, context: :collection) if @collection
+    end
+
+    @commontags = ActsAsTaggableOn::Tag.joins(:taggings).where(taggings: {taggable: @models.except(:limit, :offset)})
+
   end
 
   def new

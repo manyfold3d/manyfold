@@ -29,9 +29,9 @@
               <%= icon "person", "Creator" %>
               <%= link_to model.creator.name, model.creator %><br/>
             <% end %>
-            <% if @collection.nil? && model.collections.count > 0 %>
+            <% if model.collections.count > 0 %>
               <%= icon "collection", "Collection" %>
-              <%= model.collections.map{ |c| link_to c.name.titleize, collection_path(c) }.join(', ').html_safe %><br/>
+              <%= model.collections.map{ |c| link_to c.name.titleize, [model.library, collection: c.id] }.join(', ').html_safe %><br/>
             <% end %>
             <% if @library.nil? && model.library %>
               <%= icon "box-seam", "Library" %>

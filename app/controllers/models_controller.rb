@@ -31,6 +31,10 @@ class ModelsController < ApplicationController
     if (@tag = params[:tag])
       @models = @models.tagged_with(@tag)
     end
+    if params[:collection]
+      @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(params[:collection])
+      @models = @models.tagged_with(@collection, context: :collection) if @collection
+    end
   end
 
   def bulk_update

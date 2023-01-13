@@ -1,5 +1,7 @@
-<% if (tag == selected) %>
-  <%=link_to tag.name, @library, {class: "badge rounded-pill bg-success tag", data: {bulk_item_tags: "#{model_id}"} } %>
+<% if ([*selected].include?(tag)) %>
+  <%=link_to tag.name, [@library, tag: [*params[:tag]] - [tag.name],collection: [*params[:collection]]], {class: "badge rounded-pill bg-success tag", data: {bulk_item_tags: "#{model_id}"} } %>
+<% elsif  defined?(commontags) && commontags.include?(tag) %>
+  <%=link_to tag.name, [@library, tag: [*params[:tag]] + [tag.name],collection: [*params[:collection]]], {class: "badge rounded-pill bg-primary tag", data: {bulk_item_tags: "#{model_id}"}} %>
 <% else %>
-  <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary tag", data: {bulk_item_tags: "#{model_id}"}} %>
+  <%=link_to tag.name, [@library, tag: [*params[:tag]] + [tag.name],collection: [*params[:collection]]], {class: "badge rounded-pill bg-secondary tag", data: {bulk_item_tags: "#{model_id}"}} %>
 <% end %>

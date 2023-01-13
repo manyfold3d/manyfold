@@ -17,7 +17,8 @@
       <h5 class="card-title"><%= collection.name.titleize %></h5>
       <p class="card-text"><%= pluralize Model.tagged_with(collection, context: :collection).count, "model" %></p>
       <div>
-        <%= link_to "Open", collection_path(collection), {class: "btn btn-primary btn-sm"} %>
+        <%= icon "collection", "Collection" %>
+        <%= link_to collection.name.titleize, [model.library, collection: collection.id] %>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <% unless tags.empty? %>
   <%= card :secondary, "Tags" do %>
-    <%= render partial: 'tag', collection: tags, locals: {selected: selected, model_id: ""} %>
+    <%= render partial: 'tag', collection: tags, locals: {commontags: commontags, tags: tags, selected: selected, model_id: ""} %>
   <% end %>
 <% end %>

@@ -87,7 +87,7 @@
       </ul>
     <% end %>
 
-    <%= render 'tags_card', tags: @model.tags.sort_by(&:taggings_count), selected: nil %>
+    <%= render 'tags_card', tags: @model.tags.sort_by(&:taggings_count), selected: [], commontags: [] %>
     <%= render 'links_card', links: @model.links %>
 
     <% if @model.contains_other_models? %>
