@@ -34,6 +34,13 @@
         <li class="nav-item me-auto">
           <%= link_to icon("plus-circle", "New Library"), new_library_path, class: (current_page?(new_library_path) ? "nav-link active" : "nav-link") %>
         </li>
+        <li class="nav-item">
+          <%= form_with url: '/libraries/1', method: :get, class: "mt-3" do |f| %>
+            <div class="input-group mb-3">
+              <%= f.text_field :q, class: "form-control", placeholder: "", aria_label: "Search", aria_describedby: "button-search", value: @query, autofocus: true %>
+            </div>
+          <% end %>
+        </li>
         <% if @library&.persisted? || @scan_in_progress %>
           <li class="nav-item">
             <%= link_to (@scan_in_progress ? "<span class=\"spinner-border spinner-border-sm\" aria-hidden=\"true\"></span> Scanning".html_safe : "Rescan"),
