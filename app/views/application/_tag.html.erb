@@ -1,7 +1,15 @@
-<% if ([*selected].include?(tag)) %>
-  <%=link_to tag.name, [@library, tag: [*params[:tag]] - [tag.name],collection: [*params[:collection]]], {class: "badge rounded-pill bg-success tag", data: {bulk_item_tags: "#{model_id}"} } %>
-<% elsif  defined?(commontags) && commontags.include?(tag) %>
-  <%=link_to tag.name, [@library, tag: [*params[:tag]] + [tag.name],collection: [*params[:collection]]], {class: "badge rounded-pill bg-primary tag", data: {bulk_item_tags: "#{model_id}"}} %>
-<% else %>
-  <%=link_to tag.name, [@library, tag: [*params[:tag]] + [tag.name],collection: [*params[:collection]]], {class: "badge rounded-pill bg-secondary tag", data: {bulk_item_tags: "#{model_id}"}} %>
-<% end %>
+<% 
+  paramtag = [*params[:tag]]
+    tagclass = "secondary"
+  if ([*selected].include?(tag))
+    paramtag -= [tag.name]
+    tagclass="success"
+  elsif  defined?(commontags) && commontags.include?(tag) 
+    tagclass="primary"
+    paramtag += [tag.name]
+  else
+    paramtag += [tag.name]
+  end 
+  params.permit!
+%>
+<%=link_to tag.name, params.merge(tag: paramtag), {class: "badge rounded-pill bg-#{tagclass} tag", data: {bulk_item_tags: "#{model_id}"}} %>

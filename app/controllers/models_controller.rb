@@ -35,6 +35,11 @@ class ModelsController < ApplicationController
       @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(params[:collection])
       @models = @models.tagged_with(@collection, context: :collection) if @collection
     end
+    if params[:q]
+      field = Model.arel_table[:name]
+      @models = @models.where("tags.name LIKE ?", "%#{params[:q]}%").or(@models.where(field.matches("%#{params[:q]}%")))
+        .joins("INNER JOIN taggings ON taggings.taggable_id=models.id AND taggings.taggable_type = 'Model' INNER JOIN tags ON tags.id = taggings.tag_id").distinct
+    end
   end
 
   def bulk_update

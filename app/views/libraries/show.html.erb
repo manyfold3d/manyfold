@@ -24,7 +24,8 @@
 
     <%= card :secondary, "Actions" do %>
       <%= link_to 'Delete', @library, method: :delete, data: {confirm: "Are you sure? Your files will not be affected."}, class: "btn btn-danger mb-3 me-3" %>
-      <%= link_to "Bulk Edit", edit_library_models_path(@library, tag: @tag?@tag.map { |t| t.name}:@tag, collection: @collection), class: 'btn btn-secondary mb-3 me-3' %>
+      <% params.permit! %>
+      <%= link_to "Bulk Edit", edit_library_models_path(@library, params), class: 'btn btn-secondary mb-3 me-3' %>
     <% end %>
     <%= render 'tags_card', tags: @tags, selected: @tag, commontags: @commontags %>
 
