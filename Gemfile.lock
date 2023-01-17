@@ -301,9 +301,9 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis (5.0.5)
+    redis (5.0.6)
       redis-client (>= 0.9.0)
-    redis-client (0.11.1)
+    redis-client (0.12.1)
       connection_pool
     regexp_parser (2.6.1)
     request_store (1.5.1)
