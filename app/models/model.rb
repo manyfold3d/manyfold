@@ -21,8 +21,14 @@ class Model < ApplicationRecord
   acts_as_taggable_on :tags, :collections
 
   def autogenerate_tags_from_path!
-    tags = File.split(path).last.split(/[\W_+-]/).filter { |x| x.length > 1 }
+    tags = []
 
+    # Auto-tag based on model directory name:
+    if SiteSettings.model_tags_tag_model_directory_name
+      tags = File.split(path).last.split(/[\W_+-]/).filter { |x| x.length > 1 }
+    end
+
+    # (optional) stopwords to remove from auto tagging
     if SiteSettings.model_tags_filter_stop_words
       @filter ||= Stopwords::Snowball::Filter.new(SiteSettings.model_tags_stop_words_locale, SiteSettings.model_tags_custom_stop_words)
       tags = @filter.filter(tags)
