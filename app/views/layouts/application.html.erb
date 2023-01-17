@@ -16,7 +16,7 @@
     <div class="container">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <%= link_to "#{icon("search", "Search")} Search".html_safe, root_path, class: (current_page?(root_path) ? "nav-link active" : "nav-link") %>
+          <%= link_to "Latest".html_safe, root_path, class: (current_page?(root_path) ? "nav-link active" : "nav-link") %>
         </li>
         <li class="nav-item">
           <%= link_to "#{icon('person-rolodex', 'Creators')} Creators".html_safe, creators_path, class: (current_page?(creators_path) ? "nav-link active" : "nav-link") %>
@@ -35,9 +35,10 @@
           <%= link_to icon("plus-circle", "New Library"), new_library_path, class: (current_page?(new_library_path) ? "nav-link active" : "nav-link") %>
         </li>
         <li class="nav-item">
-          <%= form_with url: '/libraries/1', method: :get, class: "mt-3" do |f| %>
-            <div class="input-group mb-3">
-              <%= f.text_field :q, class: "form-control", placeholder: "", aria_label: "Search", aria_describedby: "button-search", value: @query, autofocus: true %>
+          <%= form_with url: '/libraries/1', method: :get, class: "mt-0" do |f| %>
+            <div class="input-group mt-1">
+              <%= icon("search", "Search") %>
+              <%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: "", aria_label: "Search", aria_describedby: "button-search", value: params[:q], autofocus: true %>
             </div>
           <% end %>
         </li>
