@@ -16,7 +16,7 @@
     "@selectize/selectize": "^0.15.2",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
-    "esbuild": "^0.17.0",
+    "esbuild": "^0.17.2",
     "jquery": "^3.6.3",
     "popper.js": "^1.16.1",
     "sass": "^1.57.1",
@@ -32,7 +32,7 @@
     "@types/selectize": "^0.12.35",
     "@types/three": "^0.148.0",
     "@types/webpack-env": "^1.18.0",
-    "@typescript-eslint/parser": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.2",
     "eslint": "^8.32.0",
     "husky": "^8.0.3",
     "ts-standard": "^12.0.2"
