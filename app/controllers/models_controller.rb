@@ -61,7 +61,12 @@ class ModelsController < ApplicationController
         end
       end
     end
-    redirect_to edit_library_models_path(@library, tag: params[:tag])
+    redirectparams = {}
+    redirectparams[:tag] = params[:tag] if params[:tag]
+    redirectparams[:collection] = params[:collection] if params[:collection]
+    redirectparams[:q] = params[:q] if params[:q]
+    redirect_to edit_library_models_path(@library, redirectparams)
+    #redirect_to edit_library_models_path(@library, tag: params[:tag], collection: params[:collection], q: params[:q])
   end
 
   def destroy

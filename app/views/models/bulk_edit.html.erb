@@ -80,6 +80,8 @@
   </div>
 
   <%= form.hidden_field :tag, value: @tag if @tag %>
+  <%= form.hidden_field :q, value: params[:q] if params[:q] %>
+  <%= form.hidden_field :collection, value: params[:collection] if params[:collection] %>
   <%= form.submit "Update Selected Models", class: "btn btn-primary" %>
 
 <% end %>
