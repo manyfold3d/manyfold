@@ -18,7 +18,7 @@
       <p class="card-text"><%= pluralize Model.tagged_with(collection, context: :collection).count, "model" %></p>
       <div>
         <%= icon "collection", "Collection" %>
-        <%= link_to collection.name.titleize, [model.library, collection: collection.id] %>
+        <%= link_to collection.name.titleize, [model.library, collection: collection.id, tag: params[:tag], q: params[:q]] %>
       </div>
     </div>
   </div>
