@@ -305,7 +305,7 @@ GEM
       redis-client (>= 0.9.0)
     redis-client (0.12.1)
       connection_pool
-    regexp_parser (2.6.1)
+    regexp_parser (2.6.2)
     request_store (1.5.1)
       rack (>= 1.4)
     responders (3.0.1)
@@ -356,9 +356,9 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
-    rubocop-rspec (2.18.0)
+    rubocop-rspec (2.18.1)
       rubocop (~> 1.33)
-      rubocop-capybara
+      rubocop-capybara (~> 2.17)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     sass-rails (6.0.0)
