@@ -1,4 +1,4 @@
-<h1><%= @model.name %></h1>
+<h1><a data-field="model[name]" data-path="<%= library_model_path(@model.library, @model) %>" contenteditable=true><%= @model.name %></a></h1>
 <div class="row row-cols-2">
 
   <div class="col-9">
