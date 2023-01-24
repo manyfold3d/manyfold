@@ -15,7 +15,9 @@
       <div class="row ">
         <div class="col">
           <h5 class="card-title">
-            <%= model.name %>
+            <a data-field="model[name]" data-path="<%= library_model_path(model.library, model) %>" contenteditable=true>
+              <%= model.name %>
+            </a>
             <%= content_tag :span, "new", class: "badge rounded-pill bg-info" if model.tag_list.include? SiteSettings.model_tags_auto_tag_new %>
           </h5>
           <div class='mt-2'>
