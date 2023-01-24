@@ -13,6 +13,7 @@ class SettingsController < ApplicationController
     end
     if current_user.admin? && params[:model_tags]
       SiteSettings.model_tags_filter_stop_words = params[:model_tags][:filter_stop_words] == "1"
+      SiteSettings.model_tags_tag_model_directory_name = params[:model_tags][:tag_model_directory_name] == "1"
       SiteSettings.model_tags_stop_words_locale = params[:model_tags][:stop_words_locale]
       SiteSettings.model_tags_custom_stop_words = params[:model_tags][:custom_stop_words].split
       SiteSettings.model_tags_auto_tag_new = params[:model_tags][:auto_tag_new]
