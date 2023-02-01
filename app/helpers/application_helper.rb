@@ -25,7 +25,7 @@ module ApplicationHelper
     end
   end
 
-  def params_passthrough()
+  def params_passthrough
     params.permit!.slice(:library, :collection, :tag, :q)
   end
 end

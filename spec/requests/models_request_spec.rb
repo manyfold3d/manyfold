@@ -7,7 +7,7 @@ RSpec.describe "Models" do
     end
     @creator = create(:creator)
   end
-  
+
   describe "GET /models?library={id}&page=2" do
     it "returns paginated models" do
       get "/models?library=#{@library.id}&page=2"

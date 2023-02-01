@@ -3,7 +3,7 @@ class ModelsController < ApplicationController
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index]
 
   def index
-    @models = Model.all.includes(:tags, :preview_file, :creator);
+    @models = Model.all.includes(:tags, :preview_file, :creator)
 
     if current_user.pagination_settings["models"]
       page = params[:page] || 1
@@ -112,7 +112,7 @@ class ModelsController < ApplicationController
         end
       end
     end
-    redirect_to edit_models_path(models_path, helpers.params_passthrough())
+    redirect_to edit_models_path(models_path, helpers.params_passthrough)
   end
 
   def destroy
