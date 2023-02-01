@@ -9,6 +9,10 @@ class LibrariesController < ApplicationController
     end
   end
 
+  def show
+    redirect_to models_path(library: params[:id])
+  end
+
   def new
     @library = Library.new
     @title = "New Library"
