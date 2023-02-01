@@ -16,7 +16,7 @@ services:
       - db
       - redis
     networks:
-      - van_dam
+      - vandam
     links:
       - db
       - redis
@@ -36,10 +36,10 @@ services:
     image: redis:7
     restart: on-failure
     networks:
-      - van_dam
+      - vandam
 
 volumes:
   db_data:
 
 networks:
-  van_dam
+  vandam
