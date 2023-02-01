@@ -16,6 +16,9 @@ services:
       - redis
     networks:
       - van_dam
+    links:
+      - "db:db"
+      - "redis:redis"
 
   db:
     image: postgres:15
