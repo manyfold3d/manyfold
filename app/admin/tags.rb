@@ -1,4 +1,4 @@
-ActiveAdmin.register ActsAsTaggableOn::Tag, as: 'Tag' do
+ActiveAdmin.register ActsAsTaggableOn::Tag, as: "Tags" do
   controller do
     def scoped_collection
       end_of_association_chain.for_context(:tags)
