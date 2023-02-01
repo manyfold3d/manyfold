@@ -1,6 +1,51 @@
 class ModelsController < ApplicationController
-  before_action :get_library
-  before_action :get_model, except: [:bulk_edit, :bulk_update]
+  before_action :get_library, except: [:index, :bulk_edit, :bulk_update]
+  before_action :get_model, except: [:bulk_edit, :bulk_update, :index]
+
+  def index
+    @models = Model.all.includes(:tags, :preview_file, :creator);
+
+    if current_user.pagination_settings["models"]
+      page = params[:page] || 1
+      @models = @models.page(page).per(current_user.pagination_settings["per_page"])
+    end
+
+    # Ordering
+    @models = case session["order"]
+    when "recent"
+      @models.order(created_at: :desc)
+    else
+      @models.order(name: :asc)
+    end
+
+    @tags = Model.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name).select { |x| x.taggings_count > 1 }
+
+    # filter by library?
+    if params[:library]
+      @models = @models.where(library: params[:library])
+    end
+
+    # Filter by tag?
+    if params[:tag]
+      @tag = ActsAsTaggableOn::Tag.named_any(params[:tag])
+      @models = @models.tagged_with(params[:tag]) if params[:tag]
+    end
+
+    # Filter by collection?
+    if params[:collection]
+      @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(params[:collection])
+      @models = @models.tagged_with(@collection, context: :collection) if @collection
+    end
+
+    # keyword search filter
+    if params[:q]
+      field = Model.arel_table[:name]
+      @models = @models.where("tags.name LIKE ?", "%#{params[:q]}%").or(@models.where(field.matches("%#{params[:q]}%")))
+        .joins("INNER JOIN taggings ON taggings.taggable_id=models.id AND taggings.taggable_type = 'Model' INNER JOIN tags ON tags.id = taggings.tag_id").distinct
+    end
+
+    @commontags = ActsAsTaggableOn::Tag.joins(:taggings).where(taggings: {taggable: @models.except(:limit, :offset, :distinct)})
+  end
 
   def show
     @groups = helpers.group(@model.model_files)
@@ -27,9 +72,24 @@ class ModelsController < ApplicationController
 
   def bulk_edit
     @creators = Creator.all
-    @models = @library.models
+    @models = Model.all
+    if params[:library]
+      @models = @models.where(library: params[:library])
+      @addtags = @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
+    else
+      @addtags = Model.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
+    end
     if (@tag = params[:tag])
       @models = @models.tagged_with(@tag)
+    end
+    if params[:collection]
+      @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(params[:collection])
+      @models = @models.tagged_with(@collection, context: :collection) if @collection
+    end
+    if params[:q]
+      field = Model.arel_table[:name]
+      @models = @models.where("tags.name LIKE ?", "%#{params[:q]}%").or(@models.where(field.matches("%#{params[:q]}%")))
+        .joins("INNER JOIN taggings ON taggings.taggable_id=models.id AND taggings.taggable_type = 'Model' INNER JOIN tags ON tags.id = taggings.tag_id").distinct
     end
   end
 
@@ -43,7 +103,7 @@ class ModelsController < ApplicationController
 
     params[:models].each_pair do |id, selected|
       if selected == "1"
-        model = @library.models.find(id)
+        model = Model.find(id)
         if model.update(hash)
           existing_tags = Set.new(model.tag_list)
           model.tag_list = existing_tags + add_tags - remove_tags
@@ -52,7 +112,7 @@ class ModelsController < ApplicationController
         end
       end
     end
-    redirect_to edit_library_models_path(@library, tag: params[:tag])
+    redirect_to edit_models_path(models_path, helpers.params_passthrough())
   end
 
   def destroy
@@ -81,6 +141,10 @@ class ModelsController < ApplicationController
       :library_id,
       :name,
       :scale_factor,
+      :collection,
+      :q,
+      :library,
+      :tag,
       :organize,
       collection_list: [],
       tag_list: [],
@@ -89,11 +153,11 @@ class ModelsController < ApplicationController
   end
 
   def get_library
-    @library = Library.find(params[:library_id])
+    @library = Model.find(params[:id]).library
   end
 
   def get_model
-    @model = @library.models.includes(:model_files, :creator).find(params[:id])
+    @model = Model.includes(:model_files, :creator).find(params[:id])
     @title = @model.name
   end
 end

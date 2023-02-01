@@ -1,0 +1,57 @@
+<div class="row row-cols-2">
+  <div class="col-9">
+    <div class="row row-cols-2 align-items-baseline">
+      <div class="col col-auto me-auto">
+        <h1><%= # @library.name
+        %></h1>
+      </div>
+      <div class="col col-auto ">
+        <a href="?order=name" class="btn <%= session["order"] == "name" ? "btn-primary" : "btn-light" %> btn-sm" title="sort by name"><i class="bi bi-book"></i></a>
+        <a href="?order=recent" class="btn <%= session["order"] == "recent" ? "btn-primary" : "btn-light" %> btn-sm" title="sort by time"><i class="bi bi-clock"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row row-cols-2">
+  <div class="col-9">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+      <%= render partial: 'model', collection: @models %>
+    </div>
+    <% if current_user.pagination_settings["models"] %>
+      <%= paginate @models %>
+    <% end %>
+  </div>
+  <div class="col-3">
+
+    <%= card :secondary, "Actions" do %>
+      <%= link_to 'Delete Library', params[:library], method: :delete, data: {confirm: "Are you sure? Your files will not be affected."}, class: "btn btn-danger mb-3 me-3" if params[:library] %>
+      <%= link_to "Bulk Edit", edit_models_path(params_passthrough()), class: 'btn btn-secondary mb-3 me-3' %>
+    <% end %>
+
+    <% if !params_passthrough().empty?() %>
+      <%= card :secondary, "Limits" do %>
+        <% if params[:q] %>
+        <%= sanitize 'Search on: <a class="badge rounded-pill bg-secondary tag">'+params[:q]+'</a>' if params[:q] %>
+          <sup><%= link_to '&times;'.html_safe, params_passthrough().except(:q), {class: "badge bg-danger rounded-circle"} %></sup><br />
+        <% end %>
+        <% if params[:collection] %>
+          <%= sanitize "Collections: "+[*ActsAsTaggableOn::Tag.for_context(:collections).find(params[:collection])]
+            .map{ |c| link_to c.name.titleize, models_path({collection: c.id}) }
+            .join("") %>
+          <sup><%= link_to '&times;'.html_safe, params_passthrough().except(:collection), {class: "badge bg-danger rounded-circle"} %></sup><br />
+        <% end %>
+        <% if params[:library] %>
+          <%= sanitize 'Library: '+[*params[:library]].map{ |l| Library.find(l).name.titleize }.join(", ") %>
+          <sup><%= link_to '&times;'.html_safe, params_passthrough().except(:library), {class: "badge bg-danger rounded-circle"} %></sup><br />
+        <% end %>
+        <% if params[:tag] %>
+          <%= sanitize 'Tags (below)' %>
+          <sup><%= link_to '&times;'.html_safe, params_passthrough().except(:tag), {class: "badge bg-danger rounded-circle"} %></sup><br />
+        <% end %>
+      <% end %> 
+    <% end %>
+
+    <%= render 'tags_card', tags: @tags, selected: @tag, commontags: @commontags %>
+
+  </div>
+</div>

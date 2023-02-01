@@ -26,13 +26,24 @@
             <%= link_to "#{icon('collection', 'Collections')} Collections".html_safe, collections_path, class: (current_page?(collections_path) ? "nav-link active" : "nav-link") %>
           </li>
         <% end %>
+        <li class="nav-item">
+          <%= link_to "#{icon('box-seam', 'Models')} Models".html_safe, {controller: 'models'}, class: (current_page?(models_path) ? "nav-link active" : "nav-link") %>
+        </li>
         <% Library.all.each do |library| %>
           <li class="nav-item">
-            <%= link_to "#{icon('box-seam', '#{library.name}')} #{library.name}".html_safe, library, class: (current_page?(library) ? "nav-link active" : "nav-link") %>
+            <%= link_to "#{icon('box-seam', '#{library.name}')} #{library.name}".html_safe, {controller: 'models', library: library.id}, class: ((current_page?(library) || (library.id.to_s == params[:library])) ? "nav-link active" : "nav-link") %>
           </li>
         <% end %>
         <li class="nav-item me-auto">
           <%= link_to icon("plus-circle", "New Library"), new_library_path, class: (current_page?(new_library_path) ? "nav-link active" : "nav-link") %>
+        </li>
+        <li class="nav-item">
+          <%= form_with url: models_path, method: :get, class: "mt-0" do |f| %>
+            <div class="input-group mt-1">
+              <%= icon("search", "Search") %>
+              <%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: "", aria_label: "Search", aria_describedby: "button-search", value: params[:q], autofocus: true %>
+            </div>
+          <% end %>
         </li>
         <% if @library&.persisted? || @scan_in_progress %>
           <li class="nav-item">

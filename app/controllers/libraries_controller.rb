@@ -5,33 +5,7 @@ class LibrariesController < ApplicationController
     if Library.count === 0
       redirect_to new_library_path
     else
-      redirect_to Library.first
-    end
-  end
-
-  def show
-    @models =
-      if current_user.pagination_settings["models"]
-        page = params[:page] || 1
-        @library.models.includes(:tags, :preview_file, :creator).page(page).per(current_user.pagination_settings["per_page"])
-      else
-        @library.models.includes(:tags, :preview_file, :creator)
-      end
-
-    # Ordering
-    @models = case session["order"]
-    when "recent"
-      @models.order(created_at: :desc)
-    else
-      @models.order(name: :asc)
-    end
-
-    @tags = @library.all_tags.select { |x| x.taggings_count > 1 }
-
-    # Filter by tag?
-    if params[:tag]
-      @tag = ActsAsTaggableOn::Tag.find_by(name: params[:tag])
-      @models = @models.tagged_with(@tag) if @tag
+      redirect_to models_path
     end
   end
 
