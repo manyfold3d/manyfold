@@ -14,19 +14,28 @@ services:
     depends_on:
       - db
       - redis
+    networks:
+      - van_dam
 
   db:
-    image: postgres:13
+    image: postgres:15
     volumes:
       - db_data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: van_dam
       POSTGRES_PASSWORD: password
     restart: on-failure
+    networks:
+      - van_dam
 
   redis:
-    image: redis:6
+    image: redis:7
     restart: on-failure
+    networks:
+      - van_dam
 
 volumes:
   db_data:
+
+networks:
+  van_dam
