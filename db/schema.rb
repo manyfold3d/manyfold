@@ -56,9 +56,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_001132) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "presupported", default: false
+    t.boolean "printed", default: false
     t.boolean "y_up", default: false, null: false
     t.string "digest"
-    t.boolean "printed"
     t.index ["digest"], name: "index_model_files_on_digest"
     t.index ["model_id"], name: "index_model_files_on_model_id"
   end

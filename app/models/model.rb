@@ -48,17 +48,17 @@ class Model < ApplicationRecord
       creatornew = ""
       collectionnew = ""
       tags = []
-      while !templatechunks.empty? && !filepaths.empty? && !(templatechunks.length == 1 && templatechunks[0] == "tags") do
-        if templatechunks[0] == "creator" then
+      while !templatechunks.empty? && !filepaths.empty? && !(templatechunks.length == 1 && templatechunks[0] == "tags")
+        if templatechunks[0] == "creator"
           creatornew = filepaths.shift
           templatechunks.shift
-        elsif templatechunks[0] == "collection" then
+        elsif templatechunks[0] == "collection"
           collectionnew = filepaths.shift
           templatechunks.shift
-        elsif templatechunks[-1] == "creator" then
+        elsif templatechunks[-1] == "creator"
           creatornew = filepaths.pop
           templatechunks.pop
-        elsif templatechunks[-1] == "collection" then
+        elsif templatechunks[-1] == "collection"
           collectionnew = filepaths.pop
           templatechunks.pop
         else
@@ -66,7 +66,7 @@ class Model < ApplicationRecord
           templatechunks.shift
         end
       end
-      if templatechunks.length == 1 && templatechunks[0] == "tags" then
+      if templatechunks.length == 1 && templatechunks[0] == "tags"
         tags = filepaths
       end
       unless tags.empty?
@@ -74,12 +74,10 @@ class Model < ApplicationRecord
       end
       unless creatornew.empty?
         creator = Creator.find_by(name: creatornew)
-        unless creator
-          creator = Creator.create(name: creatornew)
-        end
+        creator ||= Creator.create(name: creatornew)
         self.creator_id = creator.id
       end
-      unless collectionnew.empty? && !self.collection_list
+      unless collectionnew.empty? && !collection_list
         collection_list.add(collectionnew)
       end
       save!
@@ -118,12 +116,12 @@ class Model < ApplicationRecord
       when "creator"
         formatted_path_out.push(creator ? creator.name : "unset-creator")
       when "collection"
-        formatted_path_out.push(collections.count>0 ? collections.map{ |c| c.name } : "unset-collection")
+        formatted_path_out.push((collections.count > 0) ? collections.map { |c| c.name } : "unset-collection")
       else
         formatted_path_out.push("bad-formatted-path-element")
       end
     }
-    File.join("",formatted_path_out, name.parameterize) + (SiteSettings.model_path_suffix_model_id ? "##{id}" : "")
+    File.join("", formatted_path_out, name.parameterize) + (SiteSettings.model_path_suffix_model_id ? "##{id}" : "")
   end
 
   def contained_models
@@ -153,11 +151,11 @@ class Model < ApplicationRecord
       old_path = File.join(Library.find(library_id_was).path, path)
       new_path = File.join(library.path, formatted_path)
       create_folder_if_necessary(File.dirname(new_path))
-      if !File.exists?(new_path)
+      if !File.exist?(new_path)
         File.rename(old_path, new_path)
         self.path = formatted_path
       else
-        self.problems.create(category: :destination_exists)
+        problems.create(category: :destination_exists)
       end
     end
   end
