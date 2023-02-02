@@ -40,6 +40,52 @@ class Model < ApplicationRecord
     end
   end
 
+  def autogenerate_creator_from_prefix_template!
+    if SiteSettings.model_tags_tag_model_path_prefix
+      filepaths = File.dirname(path).split("/")
+      filepaths.shift
+      templatechunks = SiteSettings.model_path_prefix_template.split("/")
+      creatornew = ""
+      collectionnew = ""
+      tags = []
+      while !templatechunks.empty? && !filepaths.empty? && !(templatechunks.length == 1 && templatechunks[0] == "tags") do
+        if templatechunks[0] == "creator" then
+          creatornew = filepaths.shift
+          templatechunks.shift
+        elsif templatechunks[0] == "collection" then
+          collectionnew = filepaths.shift
+          templatechunks.shift
+        elsif templatechunks[-1] == "creator" then
+          creatornew = filepaths.pop
+          templatechunks.pop
+        elsif templatechunks[-1] == "collection" then
+          collectionnew = filepaths.pop
+          templatechunks.pop
+        else
+          logger.error "Invalid model_path_prefix_template: #{SiteSettings.model_path_prefix_template} / #{templatechunks[0]}"
+          templatechunks.shift
+        end
+      end
+      if templatechunks.length == 1 && templatechunks[0] == "tags" then
+        tags = filepaths
+      end
+      unless tags.empty?
+        tag_list.add(tags)
+      end
+      unless creatornew.empty?
+        creator = Creator.find_by(name: creatornew)
+        unless creator
+          creator = Creator.create(name: creatornew)
+        end
+        self.creator_id = creator.id
+      end
+      unless collectionnew.empty? && !self.collection_list
+        collection_list.add(collectionnew)
+      end
+      save!
+    end
+  end
+
   def parents
     Pathname.new(path).parent.descend.map do |path|
       library.models.find_by(path: path.to_s)
@@ -64,7 +110,20 @@ class Model < ApplicationRecord
   end
 
   def formatted_path
-    File.join("", tags.order(taggings_count: :desc).map(&:to_s).map(&:parameterize), name.parameterize) + "##{id}"
+    formatted_path_out = []
+    SiteSettings.model_path_prefix_template.split("/").each { |p|
+      case p
+      when "tags"
+        formatted_path_out.push(tags.order(taggings_count: :desc).map(&:to_s).map(&:parameterize))
+      when "creator"
+        formatted_path_out.push(creator ? creator.name : "unset-creator")
+      when "collection"
+        formatted_path_out.push(collections.count>0 ? collections.map{ |c| c.name } : "unset-collection")
+      else
+        formatted_path_out.push("bad-formatted-path-element")
+      end
+    }
+    File.join("",formatted_path_out, name.parameterize) + (SiteSettings.model_path_suffix_model_id ? "##{id}" : "")
   end
 
   def contained_models
@@ -94,8 +153,12 @@ class Model < ApplicationRecord
       old_path = File.join(Library.find(library_id_was).path, path)
       new_path = File.join(library.path, formatted_path)
       create_folder_if_necessary(File.dirname(new_path))
-      File.rename(old_path, new_path)
-      self.path = formatted_path
+      if !File.exists?(new_path)
+        File.rename(old_path, new_path)
+        self.path = formatted_path
+      else
+        self.problems.create(category: :destination_exists)
+      end
     end
   end
 end

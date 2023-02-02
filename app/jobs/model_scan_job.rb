@@ -59,6 +59,9 @@ class ModelScanJob < ApplicationJob
         model.save!
       end
     end
+    if !model.creator_id
+      model.autogenerate_creator_from_prefix_template!
+    end
     # If this model has no files, flag a problem
     if model.model_files.reload.count == 0
       begin

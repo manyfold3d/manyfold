@@ -3,5 +3,5 @@ class Problem < ApplicationRecord
 
   validates :category, uniqueness: {scope: :problematic}, presence: true
 
-  enum :category, [:missing, :empty]
+  enum :category, [:missing, :empty, :destination_exists]
 end
