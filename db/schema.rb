@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_10_001132) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_02_210001) do
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "notes"
+    t.text "excerpt"
   end
 
   create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
@@ -56,9 +58,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_001132) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "presupported", default: false
+    t.boolean "printed", default: false
     t.boolean "y_up", default: false, null: false
     t.string "digest"
-    t.boolean "printed"
     t.index ["digest"], name: "index_model_files_on_digest"
     t.index ["model_id"], name: "index_model_files_on_model_id"
   end
@@ -72,6 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_001132) do
     t.integer "preview_file_id"
     t.integer "creator_id"
     t.decimal "scale_factor", default: "100.0", null: false
+    t.text "notes"
+    t.text "excerpt"
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
     t.index ["preview_file_id"], name: "index_models_on_preview_file_id"
