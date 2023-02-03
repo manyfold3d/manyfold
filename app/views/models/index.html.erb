@@ -44,6 +44,10 @@
           <%= sanitize 'Library: '+[*params[:library]].map{ |l| Library.find(l).name.titleize }.join(", ") %>
           <sup><%= link_to '&times;'.html_safe, params_passthrough().except(:library), {class: "badge bg-danger rounded-circle"} %></sup><br />
         <% end %>
+        <% if params[:creator] %>
+          <%= sanitize 'Creator: '+Creator.find(params[:creator]).name.titleize %>
+          <sup><%= link_to '&times;'.html_safe, params_passthrough().except(:creator), {class: "badge bg-danger rounded-circle"} %></sup><br />
+        <% end %>
         <% if params[:tag] %>
           <%= sanitize 'Tags (below)' %>
           <sup><%= link_to '&times;'.html_safe, params_passthrough().except(:tag), {class: "badge bg-danger rounded-circle"} %></sup><br />

@@ -21,9 +21,7 @@ class ModelsController < ApplicationController
     @tags = Model.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name).select { |x| x.taggings_count > 1 }
 
     # filter by library?
-    if params[:library]
-      @models = @models.where(library: params[:library])
-    end
+    @models = @models.where(library: params[:library]) if params[:library]
 
     # Filter by tag?
     if params[:tag]
@@ -36,6 +34,9 @@ class ModelsController < ApplicationController
       @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(params[:collection])
       @models = @models.tagged_with(@collection, context: :collection) if @collection
     end
+
+    # Filter by creator
+    @models = @models.where(creator_id: params[:creator]) if params[:creator]
 
     # keyword search filter
     if params[:q]
@@ -86,6 +87,7 @@ class ModelsController < ApplicationController
       @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(params[:collection])
       @models = @models.tagged_with(@collection, context: :collection) if @collection
     end
+    @models = @models.where(creator_id: params[:creator]) if params[:creator]
     if params[:q]
       field = Model.arel_table[:name]
       @models = @models.where("tags.name LIKE ?", "%#{params[:q]}%").or(@models.where(field.matches("%#{params[:q]}%")))
@@ -144,6 +146,7 @@ class ModelsController < ApplicationController
       :collection,
       :q,
       :library,
+      :creator,
       :tag,
       :organize,
       collection_list: [],

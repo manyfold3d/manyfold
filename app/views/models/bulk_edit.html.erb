@@ -83,6 +83,7 @@
   <%= form.hidden_field :q, value: params[:q] if params[:q] %>
   <%= form.hidden_field :collection, value: params[:collection] if params[:collection] %>
   <%= form.hidden_field :library, value: params[:library] if params[:library] %>
+  <%= form.hidden_field :creator, value: params[:creator] if params[:creator] %>
   <%= form.submit "Update Selected Models", class: "btn btn-primary" %>
 
 <% end %>

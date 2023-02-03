@@ -4,6 +4,7 @@
       <h5 class="card-title"><%= creator.name %></h5>
       <p class="card-text"><%= pluralize creator.models.count, "model" %></p>
       <%= link_to "Details", creator, {class: "btn btn-primary"} %>
+      <%= link_to "Models", models_path(creator: creator.id), {class: "btn btn-primary"} %>
     </div>
   </div>
 </div>
