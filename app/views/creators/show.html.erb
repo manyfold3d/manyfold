@@ -23,5 +23,9 @@
       <%= link_to 'Delete', @creator, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
     <% end if @creator%>
 
+    <%= card(:secondary, 'Notes') do %>
+      <p class="card-text"><%= sanitize @creator.notes %></p>
+    <% end if @creator.notes %>
+
   </div>
 </div>

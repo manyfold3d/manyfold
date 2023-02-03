@@ -80,6 +80,8 @@ class ModelsController < ApplicationController
       :creator_id,
       :library_id,
       :name,
+      :excerpt,
+      :notes,
       :scale_factor,
       :organize,
       collection_list: [],

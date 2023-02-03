@@ -60,6 +60,8 @@ class CreatorsController < ApplicationController
   def creator_params
     params.require(:creator).permit([
       :name,
+      :excerpt,
+      :notes,
       links_attributes: [:id, :url, :_destroy]
     ])
   end
