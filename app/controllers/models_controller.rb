@@ -41,9 +41,9 @@ class ModelsController < ApplicationController
     # keyword search filter
     if params[:q]
       field = Model.arel_table[:name]
-      creatorsearch = Creator.where("name LIKE ?","%#{params[:q]}%")
+      creatorsearch = Creator.where("name LIKE ?", "%#{params[:q]}%")
       @models = @models.where("tags.name LIKE ?", "%#{params[:q]}%").or(@models.where(field.matches("%#{params[:q]}%"))).or(@models.where(creator_id: creatorsearch))
-        .joins("INNER JOIN taggings ON taggings.taggable_id=models.id AND taggings.taggable_type = 'Model' INNER JOIN tags ON tags.id = taggings.tag_id").distinct\
+        .joins("INNER JOIN taggings ON taggings.taggable_id=models.id AND taggings.taggable_type = 'Model' INNER JOIN tags ON tags.id = taggings.tag_id").distinct
     end
 
     @commontags = ActsAsTaggableOn::Tag.joins(:taggings).where(taggings: {taggable: @models.except(:limit, :offset, :distinct)})
