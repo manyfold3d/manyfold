@@ -29,5 +29,9 @@
       <%= link_to "#{icon('trash', 'Delete')} Delete".html_safe, library_model_model_file_path(@library, @model, @file, @file.file_format.to_sym), {method: "delete", data: {confirm: "Are you sure you want to remove this file from your filesystem?"}, class: "btn btn-danger"} %>
     <% end %>
 
+    <%= card(:secondary, 'Notes') do %>
+      <p class="card-text"><%= sanitize @file.notes %></p>
+    <% end if @file.notes %>
+
   </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_02_210001) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_03_150000) do
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -61,6 +61,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_02_210001) do
     t.boolean "printed", default: false
     t.boolean "y_up", default: false, null: false
     t.string "digest"
+    t.text "notes"
+    t.text "excerpt"
     t.index ["digest"], name: "index_model_files_on_digest"
     t.index ["model_id"], name: "index_model_files_on_model_id"
   end
