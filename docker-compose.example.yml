@@ -10,23 +10,36 @@ services:
     environment:
       DATABASE_URL: postgresql://van_dam:password@db/van_dam?pool=5
       SECRET_KEY_BASE: a_nice_long_random_string
+      REDIS_URL: redis://redis:6379/1
       # RAILS_RELATIVE_URL_ROOT: /vandam Sets the root of the app to /vandam useful for reverse proxies with nginx
     depends_on:
       - db
       - redis
+    networks:
+      - vandam
+    links:
+      - db
+      - redis
 
   db:
-    image: postgres:13
+    image: postgres:15
     volumes:
       - db_data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: van_dam
       POSTGRES_PASSWORD: password
     restart: on-failure
+    networks:
+      - vandam
 
   redis:
-    image: redis:6
+    image: redis:7
     restart: on-failure
+    networks:
+      - vandam
 
 volumes:
   db_data:
+
+networks:
+  vandam
