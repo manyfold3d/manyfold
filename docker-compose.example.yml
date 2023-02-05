@@ -30,7 +30,7 @@ services:
       POSTGRES_PASSWORD: password
     restart: on-failure
     networks:
-      - van_dam
+      - vandam
 
   redis:
     image: redis:7
