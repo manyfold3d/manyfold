@@ -10,3 +10,9 @@ Mime::Type.register "text/plain", :ply
 Mime::Type.register "application/octet-stream", :blend
 Mime::Type.register "application/octet-stream", :mix
 Mime::Type.register "application/octet-stream", :abc
+Mime::Type.register "application/octet-stream", :stp
+Mime::Type.register "application/octet-stream", :lys
+Mime::Type.register "application/octet-stream", :lyt
+Mime::Type.register "application/octet-stream", :chitubox
+
+Mime::Type.register "image/webp", :webp
