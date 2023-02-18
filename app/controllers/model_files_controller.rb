@@ -7,17 +7,8 @@ class ModelFilesController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      format.stl { send_file_content }
-      format.obj { send_file_content }
-      format.threemf { send_file_content }
-      format.ply { send_file_content }
-      format.blend { send_file_content }
-      format.mix { send_file_content }
-      format.abc { send_file_content }
-      format.png { send_file File.join(@library.path, @model.path, @file.filename) }
-      format.jpeg { send_file File.join(@library.path, @model.path, @file.filename) }
-      format.svg { send_file File.join(@library.path, @model.path, @file.filename) }
-      format.gif { send_file File.join(@library.path, @model.path, @file.filename) }
+      format.any(:stl, :obj, :threemf, :ply, :blend, :mix, :abc) { send_file_content }
+      format.any(:png, :jpeg, :svg, :gif) { send_file File.join(@library.path, @model.path, @file.filename) }
     end
   end
 
