@@ -3,12 +3,20 @@ class ModelFilesController < ApplicationController
   before_action :get_model
   before_action :get_file, except: [:bulk_edit, :bulk_update]
 
+  def mime_types(prefix)
+    Mime::LOOKUP.filter { |mimetype| mimetype.start_with?("#{prefix}/") }.values.map(&:to_sym)
+  end
+
   def show
     respond_to do |format|
       format.html
       format.js
-      format.any(:stl, :obj, :threemf, :ply, :blend, :mix, :abc) { send_file_content }
-      format.any(:png, :jpeg, :svg, :gif) { send_file File.join(@library.path, @model.path, @file.filename) }
+      format.any(*mime_types(:model)) do
+        send_file_content
+      end
+      format.any(*mime_types(:image)) do
+        send_file File.join(@library.path, @model.path, @file.filename)
+      end
     end
   end
 
