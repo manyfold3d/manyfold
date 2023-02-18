@@ -1,15 +1,9 @@
 class LibraryScanJob < ApplicationJob
   queue_as :default
 
-  def self.file_pattern
-    lower = Rails.configuration.formats.flatten(2).select { |x| x.is_a?(String) }.map(&:downcase)
-    upper = Rails.configuration.formats.flatten(2).select { |x| x.is_a?(String) }.map(&:upcase)
-    "*.{#{lower.zip(upper).flatten.join(",")}}"
-  end
-
   # Find all files in the library that we might need to look at
   def filenames_on_disk(library)
-    Dir.glob(File.join(library.path, "**", LibraryScanJob.file_pattern))
+    Dir.glob(File.join(library.path, "**", ApplicationJob.file_pattern))
   end
 
   # Get a list of all the existing filenames

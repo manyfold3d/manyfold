@@ -9,10 +9,6 @@ RSpec.describe LibraryScanJob do
     create(:library, path: Rails.root.join("spec/fixtures/library"))
   end
 
-  it "generates a case-insensitive pattern for files" do
-    expect(described_class.file_pattern).to include "*.{stl,STL"
-  end
-
   it "can scan a library directory" do
     expect { described_class.perform_now(library) }.to change { library.models.count }.to(4)
     expect(library.models.map(&:name)).to match_array ["Model One", "Model Two", "Nested Model", "Thingiverse Model"]
