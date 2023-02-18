@@ -11,7 +11,7 @@ class ModelFile < ApplicationRecord
   end
 
   def is_image?
-    Rails.configuration.formats[:images].include? file_format
+    Mime::EXTENSION_LOOKUP.filter { |k, v| v.to_s.start_with?("image") }.key? file_format
   end
 
   def name
