@@ -16,10 +16,10 @@ class ApplicationJob < ActiveJob::Base
   end
 
   def self.image_pattern
-    case_insensitive_glob Mime::EXTENSION_LOOKUP.filter { |k, v| v.to_s.start_with?("image") }.keys
+    case_insensitive_glob(SupportedMimeTypes.image_extensions)
   end
 
   def self.file_pattern
-    case_insensitive_glob Mime::EXTENSION_LOOKUP.filter { |k, v| v.to_s.start_with?("image", "model") }.keys
+    case_insensitive_glob(SupportedMimeTypes.image_extensions + SupportedMimeTypes.model_extensions)
   end
 end
