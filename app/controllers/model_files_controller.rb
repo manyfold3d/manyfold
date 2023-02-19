@@ -52,7 +52,7 @@ class ModelFilesController < ApplicationController
   def send_file_content
     filename = File.join(@library.path, @model.path, @file.filename)
     response.headers["Content-Length"] = File.size(filename).to_s
-    send_file filename, disposition: :inline, type: @file.file_format.to_sym
+    send_file filename, disposition: :inline, type: @file.extension.to_sym
   rescue Errno::ENOENT
     head :internal_server_error
   end

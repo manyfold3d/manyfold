@@ -6,12 +6,13 @@ class ModelFile < ApplicationRecord
 
   default_scope { order(:filename) }
 
-  def file_format
+
+  def extension
     File.extname(filename).delete(".").downcase
   end
 
   def is_image?
-    Mime::EXTENSION_LOOKUP.filter { |k, v| v.to_s.start_with?("image") }.key? file_format
+    Mime::EXTENSION_LOOKUP.filter { |k, v| v.to_s.start_with?("image") }.key? extension
   end
 
   def name
