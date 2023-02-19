@@ -24,7 +24,6 @@
   <div class="col-3">
 
     <%= card :secondary, "Actions" do %>
-      <%= link_to 'Delete Library', params[:library], method: :delete, data: {confirm: "Are you sure? Your files will not be affected."}, class: "btn btn-danger mb-3 me-3" if params[:library] %>
       <%= link_to "Bulk Edit", edit_models_path(params_passthrough()), class: 'btn btn-secondary mb-3 me-3' %>
     <% end %>
 
