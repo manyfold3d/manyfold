@@ -3,9 +3,17 @@ require "rails_helper"
 RSpec.describe "Models" do
   before :all do
     @library = create(:library) do |library|
-      create_list(:model, 11, library: library)
+      create_list(:model, 15, library: library)
     end
     @creator = create(:creator)
+  end
+
+  describe "GET /models?library={id}&page=2" do
+    it "returns paginated models" do
+      get "/models?library=#{@library.id}&page=2"
+      expect(response).to have_http_status(:success)
+      expect(response.body).to match(/pagination/)
+    end
   end
 
   describe "GET /libraries/1/models/1" do
@@ -61,7 +69,7 @@ RSpec.describe "Models" do
       update[models[0].id] = 1
       update[models[1].id] = 1
 
-      patch "/libraries/#{@library.id}/models/update", params: {models: update, creator_id: @creator.id}
+      patch "/models/update", params: {models: update, creator_id: @creator.id}
 
       expect(response).to have_http_status(:redirect)
       models.each { |model| model.reload }
@@ -75,7 +83,7 @@ RSpec.describe "Models" do
         update[model.id] = 1
       end
 
-      patch "/libraries/#{@library.id}/models/update", params: {models: update, add_tags: ["a", "b", "c"]}
+      patch "/models/update", params: {models: update, add_tags: ["a", "b", "c"]}
 
       expect(response).to have_http_status(:redirect)
       @library.models.take(2).each do |model|
@@ -91,7 +99,7 @@ RSpec.describe "Models" do
         update[model.id] = 1
       end
 
-      patch "/libraries/#{@library.id}/models/update", params: {models: update, remove_tags: ["a", "b"]}
+      patch "/models/update", params: {models: update, remove_tags: ["a", "b"]}
 
       expect(response).to have_http_status(:redirect)
       @library.models.take(2).each do |model|
