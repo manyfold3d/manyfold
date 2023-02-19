@@ -78,6 +78,10 @@
       <% end %>
     <% end %>
 
+    <%= card(:secondary, 'Notes') do %>
+      <p class="card-text"><%= sanitize @model.notes %></p>
+    <% end if @model.notes %>
+
     <%= card :secondary, "Sections" do %>
       <a href="#files">Files</a>
       <ul>

@@ -65,6 +65,8 @@ class ModelFilesController < ApplicationController
     params.require(:model_file).permit([
       :printed,
       :presupported,
+      :notes,
+      :excerpt,
       :y_up
     ])
   end

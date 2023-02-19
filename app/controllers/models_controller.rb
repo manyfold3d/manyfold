@@ -143,6 +143,8 @@ class ModelsController < ApplicationController
       :creator_id,
       :library_id,
       :name,
+      :excerpt,
+      :notes,
       :scale_factor,
       :collection,
       :q,

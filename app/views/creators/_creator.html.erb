@@ -3,6 +3,9 @@
     <div class="card-body">
       <h5 class="card-title"><%= creator.name %></h5>
       <p class="card-text"><%= pluralize creator.models.count, "model" %></p>
+      <% if creator.excerpt %>
+        <p class="card-text"><%= sanitize creator.excerpt %></p>
+      <% end %>
       <%= link_to "Details", creator, {class: "btn btn-primary"} %>
       <%= link_to "Models", models_path(creator: creator.id), {class: "btn btn-primary"} %>
     </div>
