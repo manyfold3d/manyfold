@@ -56,7 +56,7 @@
     </div>
   </div>
 
-  <%= render 'tags_edit', :form => form, :name => :add_tags, :value => "", :label => "Add Tags", tags:  @addtags?@addtags:[] %>
+  <%= render 'tags_edit', :form => form, :name => :add_tags, :value => "", :label => "Add Tags", tags:  @addtags || [] %>
   <%= render 'tags_edit', :form => form, :name => :remove_tags, :value => "", :label => "Remove Tags", tags: @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name) %>
 
   <div class="row mb-3 input-group">
