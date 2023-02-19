@@ -1,11 +1,11 @@
-<% if renderable?(file.file_format) %>
+<% if renderable?(file.extension) %>
   <div id="preview-file-<%= file.id %>" class="object-preview position-relative" data-preview>
     <div class="progress position-absolute top-50 start-50 translate-middle">
       <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
     </div>
     <canvas class="position-relative"
-      data-preview-url="<%= library_model_model_file_path(library, model, file, file.file_format.to_sym)%>"
-      data-format="<%= file.file_format %>"
+      data-preview-url="<%= library_model_model_file_path(library, model, file, file.extension.to_sym)%>"
+      data-format="<%= file.extension %>"
       data-y-up="<%= file.y_up %>"
       data-grid-size-x="<%= current_user.renderer_settings["grid_width"] %>"
       data-grid-size-z="<%= current_user.renderer_settings["grid_depth"] %>"

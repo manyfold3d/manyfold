@@ -7,17 +7,12 @@ class ModelFilesController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      format.stl { send_file_content }
-      format.obj { send_file_content }
-      format.threemf { send_file_content }
-      format.ply { send_file_content }
-      format.blend { send_file_content }
-      format.mix { send_file_content }
-      format.abc { send_file_content }
-      format.png { send_file File.join(@library.path, @model.path, @file.filename) }
-      format.jpeg { send_file File.join(@library.path, @model.path, @file.filename) }
-      format.svg { send_file File.join(@library.path, @model.path, @file.filename) }
-      format.gif { send_file File.join(@library.path, @model.path, @file.filename) }
+      format.any(*SupportedMimeTypes.model_types) do
+        send_file_content
+      end
+      format.any(*SupportedMimeTypes.image_types) do
+        send_file File.join(@library.path, @model.path, @file.filename)
+      end
     end
   end
 
@@ -53,7 +48,7 @@ class ModelFilesController < ApplicationController
   def send_file_content
     filename = File.join(@library.path, @model.path, @file.filename)
     response.headers["Content-Length"] = File.size(filename).to_s
-    send_file filename, disposition: :inline, type: @file.file_format.to_sym
+    send_file filename, disposition: :inline, type: @file.extension.to_sym
   rescue Errno::ENOENT
     head :internal_server_error
   end

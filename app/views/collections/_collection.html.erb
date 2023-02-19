@@ -4,8 +4,8 @@
 
     <% if file = model.preview_file %>
       <% if file.is_image? %>
-        <%= image_tag library_model_model_file_path(model.library, model, file, format: file.file_format), class: "card-img-top image-preview ", alt: file.name %>
-      <% elsif renderable?(file.file_format) %>
+        <%= image_tag library_model_model_file_path(model.library, model, file, format: file.extension), class: "card-img-top image-preview ", alt: file.name %>
+      <% elsif renderable?(file.extension) %>
         <div class="card-img-top">
           <%= render partial: "object_preview", locals: { library: model.library, model: model, file: file } %>
         </div>

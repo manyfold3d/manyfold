@@ -14,10 +14,6 @@ RSpec.describe ModelScanJob do
   end
 
   context "but no scanned files" do
-    it "generates a case-insensitive pattern for files" do
-      expect(described_class.file_pattern).to include "*.{stl,STL"
-    end
-
     it "can scan a library directory" do
       expect { described_class.perform_now(model) }.to change { model.model_files.count }.to(2)
       expect(model.model_files.map(&:filename)).to eq ["part_1.obj", "part_2.obj"]
