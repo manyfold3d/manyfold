@@ -28,7 +28,7 @@
     <% end %>
 
     <% if !params_passthrough().empty?() %>
-      <%= card :secondary, "Limits" do %>
+      <%= card :secondary, "Filters" do %>
         <% if params[:q] %>
         <%= sanitize 'Search on: <a class="badge rounded-pill bg-secondary tag">'+params[:q]+'</a>' if params[:q] %>
           <sup><%= link_to '&times;'.html_safe, params_passthrough().except(:q), {class: "badge bg-danger rounded-circle"} %></sup><br />
