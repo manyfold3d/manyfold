@@ -2,7 +2,7 @@
 <%- filters[:tag] ||= [] %>
 <%=
   link_to tag.name,
-    filters.merge(tag: filters[:tag] | [tag.name]),
+    models_path(filters.merge(tag: filters[:tag] | [tag.name])),
     {
       class: "badge rounded-pill #{tag_class(state)} tag",
       data: {bulk_item_tags: defined?(model_id) ? model_id&.to_s : nil}

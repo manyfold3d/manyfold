@@ -49,7 +49,7 @@
         <% end %>
         <% if @filters[:tag] %>
           <%= sanitize 'Tags: ' %>
-          <%= render partial: 'tag', collection: @tag, locals: {state: :normal} %>
+          <span class='pe-none'><%= render partial: 'tag', collection: @tag, locals: {state: :normal} %></span>
           <sup><%= link_to '&times;'.html_safe, @filters.except(:tag), {class: "badge bg-danger rounded-circle"} %></sup><br />
         <% end %>
       <% end %>
