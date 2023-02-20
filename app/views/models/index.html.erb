@@ -29,29 +29,45 @@
 
     <% if !@filters.empty?() %>
       <%= card :secondary, "Filters" do %>
-        <% if @filters[:q] %>
-        <%= sanitize 'Search on: <a class="badge rounded-pill bg-secondary tag">'+@filters[:q]+'</a>' if @filters[:q] %>
-          <sup><%= link_to '&times;'.html_safe, @filters.except(:q), {class: "badge bg-danger rounded-circle"} %></sup><br />
-        <% end %>
-        <% if @filters[:collection] %>
-          <%= sanitize "Collections: "+[*ActsAsTaggableOn::Tag.for_context(:collections).find(@filters[:collection])]
-            .map{ |c| link_to c.name.titleize, models_path({collection: c.id}) }
-            .join("") %>
-          <sup><%= link_to '&times;'.html_safe, @filters.except(:collection), {class: "badge bg-danger rounded-circle"} %></sup><br />
-        <% end %>
-        <% if @filters[:library] %>
-          <%= sanitize 'Library: '+[*@filters[:library]].map{ |l| Library.find(l).name.titleize }.join(", ") %>
-          <sup><%= link_to '&times;'.html_safe, @filters.except(:library), {class: "badge bg-danger rounded-circle"} %></sup><br />
-        <% end %>
-        <% if @filters[:creator] %>
-          <%= sanitize 'Creator: '+Creator.find(@filters[:creator]).name.titleize %>
-          <sup><%= link_to '&times;'.html_safe, @filters.except(:creator), {class: "badge bg-danger rounded-circle"} %></sup><br />
-        <% end %>
-        <% if @filters[:tag] %>
-          <%= sanitize 'Tags: ' %>
-          <span class='pe-none'><%= render partial: 'tag', collection: @tag, locals: {state: :normal} %></span>
-          <sup><%= link_to '&times;'.html_safe, @filters.except(:tag), {class: "badge bg-danger rounded-circle"} %></sup><br />
-        <% end %>
+        <table class='table table-sm'>
+          <% if @filters[:q] %>
+            <tr>
+              <td>Search</td>
+              <td><%= @filters[:q] %></td>
+              <td><%= link_to '&times;'.html_safe, @filters.except(:q), {class: "badge bg-danger rounded-circle"} %></td>
+            </tr>
+          <% end %>
+          <% if @filters[:collection] %>
+            <tr>
+              <td>Collection</td>
+              <td><%= [*ActsAsTaggableOn::Tag.for_context(:collections).find(@filters[:collection])]
+                .map{ |c| link_to c.name.titleize, models_path({collection: c.id}) }
+                .join("").html_safe %></td>
+              <td><%= link_to '&times;'.html_safe, @filters.except(:collection), {class: "badge bg-danger rounded-circle"} %></td>
+            </tr>
+          <% end %>
+          <% if @filters[:library] %>
+            <tr>
+              <td>Library</td>
+              <td><%= [*@filters[:library]].map{ |l| Library.find(l).name }.join(", ") %></td>
+              <td><%= link_to '&times;'.html_safe, @filters.except(:library), {class: "badge bg-danger rounded-circle"} %></td>
+            </tr>
+          <% end %>
+          <% if @filters[:creator] %>
+            <tr>
+              <td>Creator</td>
+              <td><%= Creator.find(@filters[:creator]).name.titleize %></td>
+              <td><%= link_to '&times;'.html_safe, @filters.except(:creator), {class: "badge bg-danger rounded-circle"} %></td>
+            </tr>
+          <% end %>
+          <% if @filters[:tag] %>
+            <tr>
+              <td>Tags</td>
+              <td><span class='pe-none'><%= render partial: 'tag', collection: @tag, locals: {state: :normal} %></span></td>
+              <td><%= link_to '&times;'.html_safe, @filters.except(:tag), {class: "badge bg-danger rounded-circle"} %></td>
+            </tr>
+          <% end %>
+        </table>
       <% end %>
     <% end %>
 
