@@ -24,8 +24,4 @@ module ApplicationHelper
       false
     end
   end
-
-  def params_passthrough
-    params.permit!.slice(:library, :collection, :tag, :q, :creator)
-  end
 end

@@ -11,4 +11,4 @@
     paramtag += [tag.name]
   end
 %>
-<%=link_to tag.name, params_passthrough().merge(tag: paramtag), {class: "badge rounded-pill bg-#{tagclass} tag", data: {bulk_item_tags: "#{model_id}"}} %>
+<%=link_to tag.name, (@filters||{}).merge(tag: paramtag), {class: "badge rounded-pill bg-#{tagclass} tag", data: {bulk_item_tags: "#{model_id}"}} %>
