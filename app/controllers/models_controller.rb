@@ -25,7 +25,7 @@ class ModelsController < ApplicationController
     @models = @models.where(library: @filters[:library]) if @filters[:library]
 
     # Filter by tag?
-    if @filters[:tag]
+    unless @filters[:tag].empty?
       @tag = ActsAsTaggableOn::Tag.named_any(@filters[:tag])
       @models = @models.tagged_with(@filters[:tag])
     end
@@ -170,6 +170,6 @@ class ModelsController < ApplicationController
 
   def get_filters
     # Get list filters from URL
-    @filters = params.permit(:library, :collection, :q, :creator, tag: [])
+    @filters = params.permit(:library, :collection, :q, :creator, tag: []).with_defaults(tag: [])
   end
 end
