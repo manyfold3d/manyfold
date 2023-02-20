@@ -49,13 +49,13 @@
         <% end %>
         <% if @filters[:tag] %>
           <%= sanitize 'Tags: ' %>
-          <%= render partial: 'tag', collection: @tag, locals: {commontags: [], tags: @tag, selected: [], model_id: ""} %>
+          <%= render partial: 'tag', collection: @tag, locals: {state: :normal} %>
           <sup><%= link_to '&times;'.html_safe, @filters.except(:tag), {class: "badge bg-danger rounded-circle"} %></sup><br />
         <% end %>
       <% end %>
     <% end %>
 
-    <%= render 'tags_card', tags: @tags - (@tag||[]), selected: @tag, commontags: @commontags %>
+    <%= render 'tags_card', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>
 
   </div>
 </div>

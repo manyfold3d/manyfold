@@ -1,5 +1,7 @@
 <% unless tags.empty? %>
   <%= card :secondary, "Tags" do %>
-    <%= render partial: 'tag', collection: tags, locals: {commontags: @commontags, tags: tags, selected: selected, model_id: ""} %>
+    <% tags.each do |tag| %>
+      <%= render partial: 'tag', locals: {tag: tag, state: (defined?(muted_tags) && muted_tags.include?(tag) ? :mute : :normal)} %>
+    <% end %>
   <% end %>
 <% end %>
