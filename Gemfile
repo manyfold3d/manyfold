@@ -74,7 +74,7 @@ gem "activerecord-nulldb-adapter", "~> 0.8.0"
 gem "memoist", "~> 0.16.2"
 gem "stopwords-filter", require: "stopwords"
 
-gem "devise", "~> 4.8"
+gem "devise", "~> 4.9"
 
 gem "data_migrate", "~> 8.5"
 
