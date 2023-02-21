@@ -2,7 +2,7 @@
   <h1>VanDAM</h1>
   <p class='lead'>Helping you keep track of your 3d print files</p>
   <div class="col-8 offset-md-2">
-    <%= form_with url: '/', method: :get, class: "mt-3" do |f| %>
+    <%= form_with url: models_path, method: :get, class: "mt-3" do |f| %>
       <div class="input-group mb-3">
         <%= f.text_field :q, class: "form-control", placeholder: "What are you looking for?", aria_label: "Search", aria_describedby: "button-search", value: @query, autofocus: true %>
         <%= f.submit 'Search', class: "btn btn-primary", name: nil %>
@@ -10,21 +10,6 @@
     <% end %>
   </div>
 </div>
-<% if @results %>
-  <div class="row row-cols-2">
-    <div class="col-8 offset-md-2">
-      <p class="lead"><%= pluralize(@results.count, "result") %></p>
-      <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3">
-        <%= render partial: 'model', collection: @results %>
-      </div>
-    </div>
-  </div>
-<% end %>
-<% if @query %>
-  <div class="row mb-3 text-center">
-    <a href='https://yeggi.com/q/<%= @query %>/'>Search for more on Yeggi</a>
-  </div>
-<% end %>
 <% if @recent %>
   <div class="row row-cols-2">
     <div class="col-8 offset-md-2">
