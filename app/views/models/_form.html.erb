@@ -6,11 +6,6 @@
     </div>
 
     <div class="row mb-3 input-group">
-      <%= form.label :scale_factor, class: "col-sm-2 col-form-label" %>
-      <%= form.number_field :scale_factor, class: "form-control col-auto" %>
-    </div>
-
-    <div class="row mb-3 input-group">
       <%= form.label :preview_file, class: "col-sm-2 col-form-label" %>
       <div class='col-sm-10 ps-0'>
         <%= form.collection_select :preview_file_id, @model.model_files, :id, :name, {}, {class: "form-control form-select"} %>
@@ -53,7 +48,7 @@
       <%= form.label :notes, class: "col-sm-2 col-form-label" %>
       <%= form.text_area :notes, class: "form-control col-auto" %>
     </div>
-    
+
     <%= form.submit "Save", class: "btn btn-primary" %>
   </form>
 <% end %>
