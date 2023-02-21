@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_03_150000) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_21_180921) do
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -75,7 +75,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_03_150000) do
     t.datetime "updated_at", null: false
     t.integer "preview_file_id"
     t.integer "creator_id"
-    t.decimal "scale_factor", default: "100.0", null: false
     t.text "notes"
     t.text "excerpt"
     t.index ["creator_id"], name: "index_models_on_creator_id"
