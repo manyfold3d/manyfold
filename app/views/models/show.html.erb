@@ -39,9 +39,6 @@
         <%= icon "folder", "Path" %>
         <code><%= @model.path %></code>
       </p>
-      <p>
-        Scale: <%= number_to_percentage @model.scale_factor, strip_insignificant_zeros: true %>
-      </p>
     <% end %>
 
     <%= card :secondary, "Actions" do %>

@@ -128,7 +128,6 @@ class ModelsController < ApplicationController
 
   def bulk_update_params
     params.permit(
-      :scale_factor,
       :creator_id,
       :new_library_id,
       :organize,
@@ -146,7 +145,6 @@ class ModelsController < ApplicationController
       :name,
       :excerpt,
       :notes,
-      :scale_factor,
       :collection,
       :q,
       :library,
