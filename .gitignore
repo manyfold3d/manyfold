@@ -48,3 +48,5 @@ docker-compose.yml
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+/coverage
