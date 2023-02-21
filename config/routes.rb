@@ -6,8 +6,7 @@ Rails.application.routes.draw do
     resource :settings, only: [:show, :update]
   end
 
-  root to: "search#index"
-  post "/", controller: :search, action: :index
+  root to: "home#index"
 
   resources :libraries do
     resources :models, except: [:index] do

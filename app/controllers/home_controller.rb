@@ -1,4 +1,4 @@
-class SearchController < ApplicationController
+class HomeController < ApplicationController
   before_action :check_for_first_use
 
   def index
