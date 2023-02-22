@@ -36,7 +36,7 @@
               <%= model.collections.map{ |c| link_to c.name.titleize, (@filters||{}).merge(controller: 'models', collection: c.id) }.join(', ').html_safe %><br/>
             <% end %>
             <% if @library.nil? && model.library %>
-              <%= icon "box-seam", "Library" %>
+              <%= icon "boxes", "Library" %>
               <%= link_to model.library.name, model.library %><br/>
             <% end %>
             <% if model.caption %>
