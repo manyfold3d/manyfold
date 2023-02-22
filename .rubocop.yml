@@ -10,6 +10,7 @@ inherit_gem:
   standard: config/base.yml
 
 AllCops:
+  TargetRubyVersion: 3.1
   NewCops: enable
   Exclude:
     - db/schema.rb
