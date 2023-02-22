@@ -14,7 +14,7 @@
         <% end %>
       </ul>
       <%= link_to "Show #{pluralize(creator.models.count, "model")}", models_path(creator: creator.id), {class: "btn btn-primary"} %>
-      <%= link_to "Edit", edit_creator_path(creator), {class: "btn btn-secondary"} %>
+      <%= link_to "Edit", edit_creator_path(creator), {class: "btn btn-outline-secondary"} %>
     </div>
   </div>
 </div>
