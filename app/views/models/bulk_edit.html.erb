@@ -20,8 +20,8 @@
       <tr>
         <td><%= form.check_box "models[#{model.id}]", { data: { bulk_item:  "#{model.id}"}}%></td>
         <td><%= link_to model.name, [model.library, model], title: model.path %></td>
-        <td><%= render partial: 'tag', collection: model.collections.sort_by(&:name).sort_by(&:taggings_count), locals: {model_id: model.id } %></td>
-        <td><%= render partial: 'tag', collection: model.tags.sort_by(&:name).sort_by(&:taggings_count), locals: {model_id: model.id } %></td>
+        <td><%= render partial: 'tag', collection: model.collections.sort_by(&:name).sort_by(&:taggings_count), locals: {state: :normal, model_id: model.id } %></td>
+        <td><%= render partial: 'tag', collection: model.tags.sort_by(&:name).sort_by(&:taggings_count), locals: {state: :normal, model_id: model.id } %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
         <td><code><%= model.formatted_path if model.formatted_path != model.path %></code></td>
       </tr>
