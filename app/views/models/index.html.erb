@@ -32,14 +32,14 @@
         <table class='table table-sm'>
           <% if @filters[:q] %>
             <tr>
-              <td>Search</td>
+              <td><%= icon "search", "Search" %> Search</td>
               <td><%= @filters[:q] %></td>
               <td><%= link_to icon("trash", "Remove filter"), @filters.except(:q), {class: "text-danger"} %></td>
             </tr>
           <% end %>
           <% if @filters[:collection] %>
             <tr>
-              <td>Collection</td>
+              <td><%= icon "collection", "Collection" %> Collection</td>
               <td><%= [*ActsAsTaggableOn::Tag.for_context(:collections).find(@filters[:collection])]
                 .map{ |c| link_to c.name.titleize, models_path({collection: c.id}) }
                 .join("").html_safe %></td>
@@ -48,21 +48,21 @@
           <% end %>
           <% if @filters[:library] %>
             <tr>
-              <td>Library</td>
+              <td><%= icon "boxes", "Library" %> Library</td>
               <td><%= [*@filters[:library]].map{ |l| Library.find(l).name }.join(", ") %></td>
               <td><%= link_to icon("trash", "Remove filter"), @filters.except(:library), {class: "text-danger"} %></td>
             </tr>
           <% end %>
           <% if @filters[:creator] %>
             <tr>
-              <td>Creator</td>
+              <td><%= icon "person", "Creator" %> Creator</td>
               <td><%= @creator ? @creator.name.titleize : "Unknown" %></td>
               <td><%= link_to icon("trash", "Remove filter"), @filters.except(:creator), {class: "text-danger"} %></td>
             </tr>
           <% end %>
           <% if @filters[:tag] %>
             <tr>
-              <td>Tags</td>
+              <td><%= icon "tag", "Tags" %> Tags</td>
               <td><span class='pe-none'><%= render partial: 'tag', collection: @tag, locals: {state: :normal} %></span></td>
               <td><%= link_to icon("trash", "Remove filter"), @filters.except(:tag), {class: "text-danger"} %></td>
             </tr>

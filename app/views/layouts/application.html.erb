@@ -18,19 +18,19 @@
         <a class="navbar-brand ms-2" href="/">VanDAM</a>
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <%= link_to "#{icon('person-rolodex', 'Creators')} Creators".html_safe, creators_path, class: (current_page?(creators_path) ? "nav-link active" : "nav-link") %>
+            <%= link_to "#{icon('box', 'Models')} Models".html_safe, {controller: 'models'}, class: (current_page?(models_path) ? "nav-link active" : "nav-link") %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "#{icon('people', 'Creators')} Creators".html_safe, creators_path, class: (current_page?(creators_path) ? "nav-link active" : "nav-link") %>
           </li>
           <% unless ActsAsTaggableOn::Tag.for_context(:collections).empty? %>
             <li class="nav-item">
               <%= link_to "#{icon('collection', 'Collections')} Collections".html_safe, collections_path, class: (current_page?(collections_path) ? "nav-link active" : "nav-link") %>
             </li>
           <% end %>
-          <li class="nav-item">
-            <%= link_to "#{icon('box-seam', 'Models')} Models".html_safe, {controller: 'models'}, class: (current_page?(models_path) ? "nav-link active" : "nav-link") %>
-          </li>
           <% Library.all.each do |library| %>
             <li class="nav-item">
-              <%= link_to "#{icon('box-seam', '#{library.name}')} #{library.name}".html_safe, {controller: 'models', library: library.id}, class: ((current_page?(library) || (library.id.to_s == params[:library])) ? "nav-link active" : "nav-link") %>
+              <%= link_to "#{icon('boxes', "#{library.name}")} #{library.name}".html_safe, {controller: 'models', library: library.id}, class: ((current_page?(library) || (library.id.to_s == params[:library])) ? "nav-link active" : "nav-link") %>
             </li>
           <% end %>
           <li class="nav-item me-auto">
@@ -38,15 +38,12 @@
           </li>
         </ul>
         <ul class="navbar-nav">
-          <% if @library&.persisted? || @scan_in_progress %>
-            <li class="nav-item">
-              <%= link_to (@scan_in_progress ? "<span class=\"spinner-border spinner-border-sm\" aria-hidden=\"true\"></span> Scanning".html_safe : "Rescan"),
-                @library ? library_path(@library) : "",
-                method: :patch,
-                class: "btn btn-warning btn-sm mt-1 #{"btn-outline-warning disabled" if @scan_in_progress}"
-              %>
-            </li>
-          <% end %>
+          <li class="nav-item">
+            <%= link_to (@scan_in_progress ? "<span class=\"spinner-border spinner-border-sm\" aria-hidden=\"true\"></span> Scanning".html_safe : "Scan"),
+              scan_libraries_path, method: :post,
+              class: "btn btn-warning btn-sm mt-1 #{"btn-outline-warning disabled" if @scan_in_progress}"
+            %>
+          </li>
           <% if Problem.count > 0 %>
             <li class="nav-item">
               <%= link_to icon("exclamation-triangle-fill", "Problems"), problems_path, class: (current_page?(problems_path) ? "link-danger nav-link active" : "link-danger nav-link") %>

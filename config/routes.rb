@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :libraries do
+    member do
+      post "scan"
+    end
+    collection do
+      post "scan", action: :scan_all
+    end
     resources :models, except: [:index] do
       member do
         post "merge"

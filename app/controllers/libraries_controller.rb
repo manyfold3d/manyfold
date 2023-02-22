@@ -1,5 +1,5 @@
 class LibrariesController < ApplicationController
-  before_action :get_library, except: [:index, :new, :create]
+  before_action :get_library, except: [:index, :new, :create, :scan_all]
 
   def index
     if Library.count === 0
@@ -28,9 +28,16 @@ class LibrariesController < ApplicationController
     end
   end
 
-  def update
+  def scan
     LibraryScanJob.perform_later(@library)
     redirect_to @library
+  end
+
+  def scan_all
+    Library.all.each do |library|
+      LibraryScanJob.perform_later(library)
+    end
+    redirect_to models_path
   end
 
   def destroy
