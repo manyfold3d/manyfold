@@ -10,8 +10,8 @@
     <div class="card-body">
       <h5 class="card-title"><%= file.name %></h5>
       <%= form_with model: [@library, @model] do |form| %>
-        <% if file.excerpt %>
-          <p class="card-text"><%= sanitize file.excerpt %></p>
+        <% if file.caption %>
+          <p class="card-text"><%= sanitize file.caption %></p>
         <% end %>
         <%= link_to "Details", library_model_model_file_path(@library, @model, file), {class: "btn btn-primary"} %>
         <%= link_to icon('cloud-download', 'Download'), library_model_model_file_path(@library, @model, file, file.extension.to_sym), {class: "btn btn-secondary"} %>

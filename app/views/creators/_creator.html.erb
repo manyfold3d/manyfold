@@ -2,8 +2,8 @@
   <div class="card"%>
     <div class="card-body">
       <h5 class="card-title"><%= creator.name %></h5>
-      <% if creator.excerpt %>
-        <h6 class="card-subtitle mb-2 text-muted"><%= sanitize creator.excerpt %></h6>
+      <% if creator.caption %>
+        <h6 class="card-subtitle mb-2 text-muted"><%= sanitize creator.caption %></h6>
       <% end %>
       <% if creator.notes %>
         <p class="card-text"><%= sanitize creator.notes %></p>

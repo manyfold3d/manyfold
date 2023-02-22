@@ -151,7 +151,7 @@ class ModelsController < ApplicationController
       :creator_id,
       :library_id,
       :name,
-      :excerpt,
+      :caption,
       :notes,
       :collection,
       :q,

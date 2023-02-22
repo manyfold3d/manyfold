@@ -39,8 +39,8 @@
               <%= icon "box-seam", "Library" %>
               <%= link_to model.library.name, model.library %><br/>
             <% end %>
-            <% if model.excerpt %>
-              <p class="card-text"><%= sanitize model.excerpt %></p>
+            <% if model.caption %>
+              <p class="card-text"><%= sanitize model.caption %></p>
             <% end %>
           </small>
         </div>
