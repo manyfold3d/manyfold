@@ -3,6 +3,7 @@
 import Rails from '@rails/ujs'
 
 import 'bootstrap'
+import 'masonry-layout'
 
 // JQuery is imported in the main layout just for these
 import '@nathanvda/cocoon'
