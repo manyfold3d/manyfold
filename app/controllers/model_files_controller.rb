@@ -66,7 +66,7 @@ class ModelFilesController < ApplicationController
       :printed,
       :presupported,
       :notes,
-      :excerpt,
+      :caption,
       :y_up
     ])
   end
