@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       patch "/update", action: "bulk_update"
     end
   end
-  resources :creators
+  resources :creators, except: [:show]
   resources :collections, only: [:index, :show]
   resources :problems, only: [:index]
 end

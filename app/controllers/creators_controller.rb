@@ -32,12 +32,12 @@ class CreatorsController < ApplicationController
 
   def create
     @creator = Creator.create(creator_params)
-    redirect_to @creator
+    redirect_to creators_path
   end
 
   def update
     @creator.update(creator_params)
-    redirect_to @creator
+    redirect_to creators_path
   end
 
   def destroy
