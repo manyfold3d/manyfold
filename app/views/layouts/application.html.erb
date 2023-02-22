@@ -14,62 +14,59 @@
 
   <body>
     <div class="container">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <%= link_to "#{icon("search", "Search")} Search".html_safe, root_path, class: (current_page?(root_path) ? "nav-link active" : "nav-link") %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "#{icon('person-rolodex', 'Creators')} Creators".html_safe, creators_path, class: (current_page?(creators_path) ? "nav-link active" : "nav-link") %>
-        </li>
-        <% unless ActsAsTaggableOn::Tag.for_context(:collections).empty? %>
+      <nav class="navbar navbar-expand-lg bg-light">
+        <a class="navbar-brand ms-2" href="/">VanDAM</a>
+        <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <%= link_to "#{icon('collection', 'Collections')} Collections".html_safe, collections_path, class: (current_page?(collections_path) ? "nav-link active" : "nav-link") %>
+            <%= link_to "#{icon('person-rolodex', 'Creators')} Creators".html_safe, creators_path, class: (current_page?(creators_path) ? "nav-link active" : "nav-link") %>
           </li>
-        <% end %>
-        <% Library.all.each do |library| %>
+          <% unless ActsAsTaggableOn::Tag.for_context(:collections).empty? %>
+            <li class="nav-item">
+              <%= link_to "#{icon('collection', 'Collections')} Collections".html_safe, collections_path, class: (current_page?(collections_path) ? "nav-link active" : "nav-link") %>
+            </li>
+          <% end %>
           <li class="nav-item">
-            <%= link_to "#{icon('box-seam', '#{library.name}')} #{library.name}".html_safe, library, class: (current_page?(library) ? "nav-link active" : "nav-link") %>
+            <%= link_to "#{icon('box-seam', 'Models')} Models".html_safe, {controller: 'models'}, class: (current_page?(models_path) ? "nav-link active" : "nav-link") %>
           </li>
-        <% end %>
-        <li class="nav-item me-auto">
-          <%= link_to icon("plus-circle", "New Library"), new_library_path, class: (current_page?(new_library_path) ? "nav-link active" : "nav-link") %>
-        </li>
-        <% if @library&.persisted? || @scan_in_progress %>
+          <% Library.all.each do |library| %>
+            <li class="nav-item">
+              <%= link_to "#{icon('box-seam', '#{library.name}')} #{library.name}".html_safe, {controller: 'models', library: library.id}, class: ((current_page?(library) || (library.id.to_s == params[:library])) ? "nav-link active" : "nav-link") %>
+            </li>
+          <% end %>
+          <li class="nav-item me-auto">
+            <%= link_to icon("plus-circle", "New Library"), new_library_path, class: (current_page?(new_library_path) ? "nav-link active" : "nav-link") %>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <% if @library&.persisted? || @scan_in_progress %>
+            <li class="nav-item">
+              <%= link_to (@scan_in_progress ? "<span class=\"spinner-border spinner-border-sm\" aria-hidden=\"true\"></span> Scanning".html_safe : "Rescan"),
+                @library ? library_path(@library) : "",
+                method: :patch,
+                class: "btn btn-warning btn-sm mt-1 #{"btn-outline-warning disabled" if @scan_in_progress}"
+              %>
+            </li>
+          <% end %>
+          <% if Problem.count > 0 %>
+            <li class="nav-item">
+              <%= link_to icon("exclamation-triangle-fill", "Problems"), problems_path, class: (current_page?(problems_path) ? "link-danger nav-link active" : "link-danger nav-link") %>
+            </li>
+          <% end %>
           <li class="nav-item">
-            <%= link_to (@scan_in_progress ? "<span class=\"spinner-border spinner-border-sm\" aria-hidden=\"true\"></span> Scanning".html_safe : "Rescan"),
-              @library ? library_path(@library) : "",
-              method: :patch,
-              class: "btn btn-warning btn-sm mt-1 #{"btn-outline-warning disabled" if @scan_in_progress}"
-            %>
+            <%= link_to icon('sliders', 'Settings'), user_settings_path(current_user), class: (current_page?(user_settings_path(current_user)) ? "nav-link active" : "nav-link") %>
           </li>
+        </ul>
+        <%= form_with url: models_path, method: :get, class: "d-flex", role: "search" do |f| %>
+          <%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: "Search", aria_label: "Search", aria_describedby: "button-search", value: params[:q], autofocus: true %>
         <% end %>
-        <% if Problem.count > 0 %>
-          <li class="nav-item">
-            <%= link_to icon("exclamation-triangle-fill", "Problems"), problems_path, class: (current_page?(problems_path) ? "link-danger nav-link active" : "link-danger nav-link") %>
-          </li>
-        <% end %>
-        <li class="nav-item">
-          <%= link_to icon('sliders', 'Settings'), user_settings_path(current_user), class: (current_page?(user_settings_path(current_user)) ? "nav-link active" : "nav-link") %>
-        </li>
-      </ul>
+      </nav>
 
       <div>
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
       </div>
       <%= yield %>
-      <footer class='mt-5 py-2 border-top'>
-        VanDAM is Open Source, available from <%= link_to "GitHub", "https://github.com/Floppy/van_dam" %>.
-        This server is cataloguing a total of <%= "#{Model.count} model".pluralize(Model.count) %>,
-        with <%= "#{ModelFile.count} file".pluralize(ModelFile.count) %>,
-        in <%= "#{Library.count} library".pluralize(Library.count) %>.
-        <% if ENV.has_key? "VAN_DAM_GIT_REF" %>
-          <span id='version'>
-            <%= ENV.fetch "VAN_DAM_GIT_REF", "?" %>
-            (<%= ENV.fetch "VAN_DAM_GIT_SHA", "?" %>)
-          </span>
-        <% end %>
-      </footer>
+      <%= render "application/footer" %>
     </div>
   </body>
 </html>

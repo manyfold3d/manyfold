@@ -3,7 +3,7 @@
   <p class="lead">Tagged with &quot;<%= @tag %>&quot;</p>
 <% end %>
 
-<%= form_with url: library_models_path(@library), method: :patch do |form| %>
+<%= form_with url: update_models_path, method: :patch do |form| %>
 
   <h3>Select models to change:</h3>
 
@@ -11,7 +11,6 @@
     <tr>
       <th><input type="checkbox" aria-label="Select All" value="0" name="bulk-select-all"></th>
       <th>Name</th>
-      <th>Scale Factor</th>
       <th>Collections</th>
       <th>Tags</th>
       <th>Creator</th>
@@ -20,10 +19,9 @@
     <% @models.each do |model| %>
       <tr>
         <td><%= form.check_box "models[#{model.id}]", { data: { bulk_item:  "#{model.id}"}}%></td>
-        <td><%= link_to model.name, [@library, model], title: model.path %></td>
-        <td><%= number_to_percentage model.scale_factor, strip_insignificant_zeros: true %></td>
-        <td><%= render partial: 'tag', collection: model.collections.sort_by(&:name).sort_by(&:taggings_count), locals: {selected: nil, model_id: model.id } %></td>
-        <td><%= render partial: 'tag', collection: model.tags.sort_by(&:name).sort_by(&:taggings_count), locals: {selected: nil, model_id: model.id } %></td>
+        <td><%= link_to model.name, [model.library, model], title: model.path %></td>
+        <td><%= render partial: 'tag', collection: model.collections.sort_by(&:name).sort_by(&:taggings_count), locals: {model_id: model.id } %></td>
+        <td><%= render partial: 'tag', collection: model.tags.sort_by(&:name).sort_by(&:taggings_count), locals: {model_id: model.id } %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
         <td><code><%= model.formatted_path if model.formatted_path != model.path %></code></td>
       </tr>
@@ -31,13 +29,6 @@
   </table>
 
   <h3>Select changes to make:</h3>
-
-  <div class="row mb-3">
-    <%= form.label :scale_factor, class: "col-sm-2 col-form-label" %>
-    <div class="col-sm-10">
-      <%= form.number_field :scale_factor, class: "form-control col-auto" %>
-    </div>
-  </div>
 
   <div class="row mb-3">
     <%= form.label :creator_id, class: "col-sm-2 col-form-label" %>
@@ -52,12 +43,12 @@
   <div class="row mb-3">
     <%= form.label :new_library_id, class: "col-sm-2 col-form-label" %>
     <div class="col-sm-10">
-      <%= form.collection_select :new_library_id, Library.all, :id, :name, {selected: @library.id, include_blank: true}, {class: "form-control col-auto form-select"} %>
+      <%= form.collection_select :new_library_id, Library.all, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
     </div>
   </div>
 
-  <%= render 'tags_edit', :form => form, :name => :add_tags, :value => "", :label => "Add Tags", tags: @library.all_tags %>
-  <%= render 'tags_edit', :form => form, :name => :remove_tags, :value => "", :label => "Remove Tags", tags: [] %>
+  <%= render 'tags_edit', :form => form, :name => :add_tags, :value => "", :label => "Add Tags", tags:  @addtags || [] %>
+  <%= render 'tags_edit', :form => form, :name => :remove_tags, :value => "", :label => "Remove Tags", tags: @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name) %>
 
   <div class="row mb-3 input-group">
     <%= form.label :collections, class: "col-sm-2 col-form-label" %>
@@ -80,6 +71,10 @@
   </div>
 
   <%= form.hidden_field :tag, value: @tag if @tag %>
+  <%= form.hidden_field :q, value: params[:q] if params[:q] %>
+  <%= form.hidden_field :collection, value: params[:collection] if params[:collection] %>
+  <%= form.hidden_field :library, value: params[:library] if params[:library] %>
+  <%= form.hidden_field :creator, value: params[:creator] if params[:creator] %>
   <%= form.submit "Update Selected Models", class: "btn btn-primary" %>
 
 <% end %>

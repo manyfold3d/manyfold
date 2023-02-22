@@ -1,5 +1,10 @@
-<% if (tag == selected) %>
-  <%=link_to tag.name, @library, {class: "badge rounded-pill bg-success tag", data: {bulk_item_tags: "#{model_id}"} } %>
-<% else %>
-  <%=link_to tag.name, [@library, tag: tag.name], {class: "badge rounded-pill bg-secondary tag", data: {bulk_item_tags: "#{model_id}"}} %>
-<% end %>
+<%- filters = @filters || {} %>
+<%- filters[:tag] ||= [] %>
+<%=
+  link_to tag.name,
+    models_path(filters.merge(tag: filters[:tag] | [tag.name])),
+    {
+      class: "badge rounded-pill #{tag_class(state)} tag",
+      data: {bulk_item_tags: defined?(model_id) ? model_id&.to_s : nil}
+    }
+%>

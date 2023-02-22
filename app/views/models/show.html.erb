@@ -39,9 +39,6 @@
         <%= icon "folder", "Path" %>
         <code><%= @model.path %></code>
       </p>
-      <p>
-        Scale: <%= number_to_percentage @model.scale_factor, strip_insignificant_zeros: true %>
-      </p>
     <% end %>
 
     <%= card :secondary, "Actions" do %>
@@ -78,6 +75,10 @@
       <% end %>
     <% end %>
 
+    <%= card(:secondary, 'Notes') do %>
+      <p class="card-text"><%= sanitize @model.notes %></p>
+    <% end if @model.notes %>
+
     <%= card :secondary, "Sections" do %>
       <a href="#files">Files</a>
       <ul>
@@ -87,7 +88,7 @@
       </ul>
     <% end %>
 
-    <%= render 'tags_card', tags: @model.tags.sort_by(&:taggings_count), selected: nil %>
+    <%= render 'tags_card', tags: @model.tags.sort_by(&:taggings_count) %>
     <%= render 'links_card', links: @model.links %>
 
     <% if @model.contains_other_models? %>

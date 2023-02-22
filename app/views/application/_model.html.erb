@@ -2,8 +2,8 @@
   <div class="card model-card">
     <% if file = model.preview_file %>
       <% if file.is_image? %>
-        <%= image_tag library_model_model_file_path(model.library, model, file, format: file.file_format), class: "card-img-top image-preview ", alt: file.name %>
-      <% elsif renderable?(file.file_format) %>
+        <%= image_tag library_model_model_file_path(model.library, model, file, format: file.extension), class: "card-img-top image-preview ", alt: file.name %>
+      <% elsif renderable?(file.extension) %>
         <div class="card-img-top">
           <%= render partial: "object_preview", locals: { library: model.library, model: model, file: file } %>
         </div>
@@ -31,13 +31,16 @@
               <%= icon "person", "Creator" %>
               <%= link_to model.creator.name, model.creator %><br/>
             <% end %>
-            <% if @collection.nil? && model.collections.count > 0 %>
+            <% if model.collections.count > 0 %>
               <%= icon "collection", "Collection" %>
-              <%= model.collections.map{ |c| link_to c.name.titleize, collection_path(c) }.join(', ').html_safe %><br/>
+              <%= model.collections.map{ |c| link_to c.name.titleize, (@filters||{}).merge(controller: 'models', collection: c.id) }.join(', ').html_safe %><br/>
             <% end %>
             <% if @library.nil? && model.library %>
               <%= icon "box-seam", "Library" %>
               <%= link_to model.library.name, model.library %><br/>
+            <% end %>
+            <% if model.excerpt %>
+              <p class="card-text"><%= sanitize model.excerpt %></p>
             <% end %>
           </small>
         </div>

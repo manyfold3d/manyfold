@@ -11,5 +11,16 @@
     <%= form.check_box :y_up, class: 'form-check-input' %>
     <label class="form-check-label" for="y_up">Y Up</label>
   </div>
+
+  <div class="row mb-3 input-group">
+    <%= form.label :excerpt, class: "col-sm-2 col-form-label" %>
+    <%= form.text_area :excerpt, class: "form-control col-auto" %>
+  </div>
+
+  <div class="row mb-3 input-group">
+    <%= form.label :notes, class: "col-sm-2 col-form-label" %>
+    <%= form.text_area :notes, class: "form-control col-auto" %>
+  </div>
+  
   <%= form.submit "Update", class: 'btn btn-primary' %>
 <% end %>

@@ -6,7 +6,7 @@ ruby "~> 3.1.2"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 7.0.4"
 # Use Puma as the app server
-gem "puma", "~> 6.0"
+gem "puma", "~> 6.1"
 # Use SCSS for stylesheets
 gem "sass-rails", ">= 6"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
@@ -37,12 +37,12 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "sqlite3", "~> 1.6"
   gem "rspec-rails"
-  gem "standard", "~> 1.22.1"
+  gem "standard", "~> 1.24.3"
   gem "factory_bot"
   gem "faker", "~> 3.1"
   gem "guard", "~> 2.18"
   gem "guard-rspec", "~> 4.7"
-  gem "database_cleaner-active_record", "~> 2.0"
+  gem "database_cleaner-active_record", "~> 2.1"
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-i18n", require: false
@@ -74,9 +74,9 @@ gem "activerecord-nulldb-adapter", "~> 0.8.0"
 gem "memoist", "~> 0.16.2"
 gem "stopwords-filter", require: "stopwords"
 
-gem "devise", "~> 4.8"
+gem "devise", "~> 4.9"
 
-gem "data_migrate", "~> 8.5"
+gem "data_migrate", "~> 9.0"
 
 gem "rails-settings-cached", "~> 2.8"
 gem "activeadmin", "~> 2.13"
@@ -84,3 +84,5 @@ gem "activeadmin", "~> 2.13"
 gem "kaminari", "~> 1.2"
 
 gem "lograge", "~> 0.12.0"
+
+gem "simplecov", "~> 0.22.0", group: :test, require: false

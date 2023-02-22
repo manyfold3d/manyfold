@@ -24,4 +24,15 @@ module ApplicationHelper
       false
     end
   end
+
+  def tag_class(state)
+    case state
+    when :highlight
+      "bg-primary"
+    when :mute
+      "border border-muted text-muted pe-none"
+    else
+      "bg-secondary link-light"
+    end
+  end
 end

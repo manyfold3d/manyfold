@@ -21,7 +21,5 @@ module VanDam
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
-    config.formats = config_for(:formats)
   end
 end

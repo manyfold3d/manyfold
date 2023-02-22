@@ -6,12 +6,12 @@ class ModelFile < ApplicationRecord
 
   default_scope { order(:filename) }
 
-  def file_format
+  def extension
     File.extname(filename).delete(".").downcase
   end
 
   def is_image?
-    Rails.configuration.formats[:images].include? file_format
+    SupportedMimeTypes.image_extensions.include? extension
   end
 
   def name

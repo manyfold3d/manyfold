@@ -28,7 +28,11 @@ jobs:
     - name: Migrate database
       run: bundle exec rails db:migrate:with_data
     - name: Run tests
-      run: bundle exec rake
+      uses: paambaati/codeclimate-action@v3.2.0
+      with:
+        coverageCommand: bundle exec rake
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
   lint:
     runs-on: ubuntu-latest
     steps:
