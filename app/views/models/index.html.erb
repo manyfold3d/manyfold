@@ -56,7 +56,7 @@
           <% if @filters[:creator] %>
             <tr>
               <td>Creator</td>
-              <td><%= Creator.find(@filters[:creator]).name.titleize %></td>
+              <td><%= @creator ? @creator.name.titleize : "Unknown" %></td>
               <td><%= link_to '&times;'.html_safe, @filters.except(:creator), {class: "badge bg-danger rounded-circle"} %></td>
             </tr>
           <% end %>
