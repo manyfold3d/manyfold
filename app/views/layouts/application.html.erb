@@ -38,15 +38,12 @@
           </li>
         </ul>
         <ul class="navbar-nav">
-          <% if @library&.persisted? || @scan_in_progress %>
-            <li class="nav-item">
-              <%= link_to (@scan_in_progress ? "<span class=\"spinner-border spinner-border-sm\" aria-hidden=\"true\"></span> Scanning".html_safe : "Rescan"),
-                @library ? library_path(@library) : "",
-                method: :patch,
-                class: "btn btn-warning btn-sm mt-1 #{"btn-outline-warning disabled" if @scan_in_progress}"
-              %>
-            </li>
-          <% end %>
+          <li class="nav-item">
+            <%= link_to (@scan_in_progress ? "<span class=\"spinner-border spinner-border-sm\" aria-hidden=\"true\"></span> Scanning".html_safe : "Scan"),
+              scan_libraries_path, method: :post,
+              class: "btn btn-warning btn-sm mt-1 #{"btn-outline-warning disabled" if @scan_in_progress}"
+            %>
+          </li>
           <% if Problem.count > 0 %>
             <li class="nav-item">
               <%= link_to icon("exclamation-triangle-fill", "Problems"), problems_path, class: (current_page?(problems_path) ? "link-danger nav-link active" : "link-danger nav-link") %>
