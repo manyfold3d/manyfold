@@ -2,12 +2,19 @@
   <div class="card"%>
     <div class="card-body">
       <h5 class="card-title"><%= creator.name %></h5>
-      <p class="card-text"><%= pluralize creator.models.count, "model" %></p>
       <% if creator.excerpt %>
-        <p class="card-text"><%= sanitize creator.excerpt %></p>
+        <h6 class="card-subtitle mb-2 text-muted"><%= sanitize creator.excerpt %></h6>
       <% end %>
-      <%= link_to "Details", creator, {class: "btn btn-primary"} %>
-      <%= link_to "Models", models_path(creator: creator.id), {class: "btn btn-primary"} %>
+      <% if creator.notes %>
+        <p class="card-text"><%= sanitize creator.notes %></p>
+      <% end %>
+      <ul class='links'>
+        <% creator.links.each do |link| %>
+          <li><%= link_to t("sites.#{link.site}"), link.url %></li>
+        <% end %>
+      </ul>
+      <%= link_to "Show #{pluralize(creator.models.count, "model")}", models_path(creator: creator.id), {class: "btn btn-primary"} %>
+      <%= link_to "Edit", edit_creator_path(creator), {class: "btn btn-outline-secondary"} %>
     </div>
   </div>
 </div>

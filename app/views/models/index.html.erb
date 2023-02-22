@@ -34,7 +34,7 @@
             <tr>
               <td>Search</td>
               <td><%= @filters[:q] %></td>
-              <td><%= link_to '&times;'.html_safe, @filters.except(:q), {class: "badge bg-danger rounded-circle"} %></td>
+              <td><%= link_to icon("trash", "Remove filter"), @filters.except(:q), {class: "text-danger"} %></td>
             </tr>
           <% end %>
           <% if @filters[:collection] %>
@@ -43,28 +43,28 @@
               <td><%= [*ActsAsTaggableOn::Tag.for_context(:collections).find(@filters[:collection])]
                 .map{ |c| link_to c.name.titleize, models_path({collection: c.id}) }
                 .join("").html_safe %></td>
-              <td><%= link_to '&times;'.html_safe, @filters.except(:collection), {class: "badge bg-danger rounded-circle"} %></td>
+              <td><%= link_to icon("trash", "Remove filter"), @filters.except(:collection), {class: "text-danger"} %></td>
             </tr>
           <% end %>
           <% if @filters[:library] %>
             <tr>
               <td>Library</td>
               <td><%= [*@filters[:library]].map{ |l| Library.find(l).name }.join(", ") %></td>
-              <td><%= link_to '&times;'.html_safe, @filters.except(:library), {class: "badge bg-danger rounded-circle"} %></td>
+              <td><%= link_to icon("trash", "Remove filter"), @filters.except(:library), {class: "text-danger"} %></td>
             </tr>
           <% end %>
           <% if @filters[:creator] %>
             <tr>
               <td>Creator</td>
-              <td><%= Creator.find(@filters[:creator]).name.titleize %></td>
-              <td><%= link_to '&times;'.html_safe, @filters.except(:creator), {class: "badge bg-danger rounded-circle"} %></td>
+              <td><%= @creator ? @creator.name.titleize : "Unknown" %></td>
+              <td><%= link_to icon("trash", "Remove filter"), @filters.except(:creator), {class: "text-danger"} %></td>
             </tr>
           <% end %>
           <% if @filters[:tag] %>
             <tr>
               <td>Tags</td>
               <td><span class='pe-none'><%= render partial: 'tag', collection: @tag, locals: {state: :normal} %></span></td>
-              <td><%= link_to '&times;'.html_safe, @filters.except(:tag), {class: "badge bg-danger rounded-circle"} %></td>
+              <td><%= link_to icon("trash", "Remove filter"), @filters.except(:tag), {class: "text-danger"} %></td>
             </tr>
           <% end %>
         </table>

@@ -37,7 +37,15 @@ class ModelsController < ApplicationController
     end
 
     # Filter by creator
-    @models = @models.where(creator_id: @filters[:creator]) if @filters[:creator]
+    case @filters[:creator]
+    when nil
+      nil # No creator specified, nothing to do
+    when "nil"
+      @models = @models.where(creator_id: nil)
+    else
+      @creator = Creator.find(@filters[:creator])
+      @models = @models.where(creator: @creator)
+    end
 
     # keyword search filter
     if @filters[:q]

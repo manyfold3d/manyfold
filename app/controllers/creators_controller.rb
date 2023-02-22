@@ -13,11 +13,7 @@ class CreatorsController < ApplicationController
   end
 
   def show
-    @models = @creator ? @creator.models : Model.where(creator: nil)
-    if current_user.pagination_settings["models"]
-      page = params[:page] || 1
-      @models = @models.page(page).per(current_user.pagination_settings["per_page"])
-    end
+    redirect_to models_path(creator: params[:id])
   end
 
   def new
@@ -32,12 +28,12 @@ class CreatorsController < ApplicationController
 
   def create
     @creator = Creator.create(creator_params)
-    redirect_to @creator
+    redirect_to creators_path
   end
 
   def update
     @creator.update(creator_params)
-    redirect_to @creator
+    redirect_to creators_path
   end
 
   def destroy
