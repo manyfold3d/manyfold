@@ -124,7 +124,7 @@ class ModelsController < ApplicationController
         end
       end
     end
-    redirect_to edit_models_path(models_path, @filters)
+    redirect_to edit_models_path(@filters)
   end
 
   def destroy
