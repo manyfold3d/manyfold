@@ -1,7 +1,4 @@
 <h1>Bulk Edit Models</h1>
-<% if @tag %>
-  <p class="lead">Tagged with &quot;<%= @tag %>&quot;</p>
-<% end %>
 
 <%= form_with url: update_models_path, method: :patch do |form| %>
 
@@ -69,8 +66,9 @@
       </div>
     </div>
   </div>
-
-  <%= form.hidden_field :tag, value: @filters[:tag] if @filters[:tag] %>
+  <% @filters[:tag].each do |tag| %>
+    <%= form.hidden_field :tag, multiple: true, value: tag %>
+  <% end %>
   <%= form.hidden_field :q, value: @filters[:q] if @filters[:q] %>
   <%= form.hidden_field :collection, value: @filters[:collection] if @filters[:collection] %>
   <%= form.hidden_field :library, value: @filters[:library] if @filters[:library] %>

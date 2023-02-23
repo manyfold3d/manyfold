@@ -84,14 +84,14 @@ class ModelsController < ApplicationController
   def bulk_edit
     @creators = Creator.all
     @models = Model.all
-    if params[:library]
+    if @filters[:library]
       @models = @models.where(library: params[:library])
       @addtags = @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
     else
       @addtags = Model.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
     end
-    if (@tag = params[:tag])
-      @models = @models.tagged_with(@tag)
+    if params[:tag]
+      @models = @models.tagged_with(params[:tag])
     end
     if params[:collection]
       @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(params[:collection])
