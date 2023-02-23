@@ -29,15 +29,15 @@
           <small>
             <% if @creator.nil? && model.creator %>
               <%= icon "person", "Creator" %>
-              <%= link_to model.creator.name, model.creator %><br/>
+              <%= link_to model.creator.name, models_path((@filters||{}).merge(creator: model.creator)) %><br/>
             <% end %>
             <% if model.collections.count > 0 %>
               <%= icon "collection", "Collection" %>
-              <%= model.collections.map{ |c| link_to c.name.titleize, (@filters||{}).merge(controller: 'models', collection: c.id) }.join(', ').html_safe %><br/>
+              <%= model.collections.map{ |c| link_to c.name.titleize, models_path((@filters||{}).merge(collection: c)) }.join(', ').html_safe %><br/>
             <% end %>
             <% if @library.nil? && model.library %>
               <%= icon "boxes", "Library" %>
-              <%= link_to model.library.name, model.library %><br/>
+              <%= link_to model.library.name, models_path((@filters||{}).merge(library: model.library)) %><br/>
             <% end %>
             <% if model.caption %>
               <p class="card-text"><%= sanitize model.caption %></p>
