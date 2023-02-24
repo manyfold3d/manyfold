@@ -29,7 +29,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
     "@types/jquery": "^3.5.16",
-    "@types/node": "^18.14.0",
+    "@types/node": "^18.14.1",
     "@types/selectize": "^0.12.35",
     "@types/three": "^0.149.0",
     "@types/webpack-env": "^1.18.0",
