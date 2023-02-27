@@ -2594,10 +2594,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three@^0.150.0:
-  version "0.150.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.150.0.tgz#38a324c3976e07799671d06d99f01b02a2fe65c6"
-  integrity sha512-12oqqBZom9fb5HtX3rD8qPVnamojuiN5Os7r0x8s3HQ+WHRwnEyzl2XU3aEKocsDkG++rkE9+HWzx77O59NXtw==
+three@^0.150.1:
+  version "0.150.1"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.150.1.tgz#870d324a4d2daf1c7d55be97f3f73d83783e28be"
+  integrity sha512-5C1MqKUWaHYo13BX0Q64qcdwImgnnjSOFgBscOzAo8MYCzEtqfQqorEKMcajnA3FHy1yVlIe9AmaMQ0OQracNA==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
