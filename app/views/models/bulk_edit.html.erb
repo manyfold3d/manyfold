@@ -66,8 +66,10 @@
       </div>
     </div>
   </div>
-  <% @filters[:tag].each do |tag| %>
-    <%= form.hidden_field :tag, multiple: true, value: tag %>
+  <% if @filters[:tag] %>
+    <% @filters[:tag].each do |tag| %>
+      <%= form.hidden_field :tag, multiple: true, value: tag %>
+    <% end %>
   <% end %>
   <%= form.hidden_field :q, value: @filters[:q] if @filters[:q] %>
   <%= form.hidden_field :collection, value: @filters[:collection] if @filters[:collection] %>
