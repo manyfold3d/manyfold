@@ -20,19 +20,19 @@
       <% if @model.creator %>
         <p>
           <%= icon "person", "Creator" %>
-          <%= link_to @model.creator.name, creator_path(@model.creator) %>
+          <%= link_to @model.creator.name, models_path((@filters||{}).merge(creator: @model.creator)) %>
         </p>
       <% end %>
       <% if @model.collections.count > 0 %>
         <p>
           <%= icon "collection", "Collections" %>
-          <%= @model.collections.map{ |c| link_to c.name.titleize, collection_path(c) }.join(', ').html_safe %>
+          <%= @model.collections.map{ |c| link_to c.name.titleize, models_path((@filters||{}).merge(collection: c)) }.join(', ').html_safe %>
         </p>
       <% end %>
       <% if @model.library %>
         <p>
           <%= icon "boxes", "Library" %>
-          <%= link_to @model.library.name, @model.library %>
+          <%= link_to @model.library.name, models_path((@filters||{}).merge(library: @model.library)) %>
         </p>
       <% end %>
       <p>
