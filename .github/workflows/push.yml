@@ -32,7 +32,7 @@ jobs:
       with:
         coverageCommand: bundle exec rake
       env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        CC_TEST_REPORTER_ID: a2ff22eaab926117741bb1aeefe8b95662c954aaa01fd37a393763b197436584
   lint:
     runs-on: ubuntu-latest
     steps:
