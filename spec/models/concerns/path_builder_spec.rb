@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe PathTranslation do
+RSpec.describe PathBuilder do
   context "when creating path from model metadata" do
 
     let(:model) {

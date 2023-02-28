@@ -1,6 +1,6 @@
 class Model < ApplicationRecord
   extend Memoist
-  include PathTranslation
+  include PathBuilder
 
   belongs_to :library
   belongs_to :creator, optional: true
