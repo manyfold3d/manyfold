@@ -25,13 +25,23 @@ class ModelsController < ApplicationController
     @models = @models.where(library: @filters[:library]) if @filters[:library]
 
     # Filter by tag?
-    if @filters[:tag]
+    case @filters[:tag]
+    when nil
+      nil # No tags, move along
+    when [""]
+      @models = @models.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1")
+    else
       @tag = ActsAsTaggableOn::Tag.named_any(@filters[:tag])
       @models = @models.tagged_with(@filters[:tag])
     end
 
     # Filter by collection?
-    if @filters[:collection]
+    case @filters[:collection]
+    when nil
+      nil # No collection, move along
+    when ""
+      @models = @models.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='collections')<1")
+    else
       @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(@filters[:collection])
       @models = @models.tagged_with(@collection, context: :collection) if @collection
     end
@@ -40,7 +50,7 @@ class ModelsController < ApplicationController
     case @filters[:creator]
     when nil
       nil # No creator specified, nothing to do
-    when "nil"
+    when ""
       @models = @models.where(creator_id: nil)
     else
       @creator = Creator.find(@filters[:creator])

@@ -1,5 +1,6 @@
 <% unless tags.empty? %>
   <%= card :secondary, "Tags" do %>
+    <%= link_to "View unassigned", models_path(tag: [""]), class: "badge rounded-pill #{tag_class('')} tag" %>
     <% tags.each do |tag| %>
       <%= render partial: 'tag', locals: {tag: tag, state: (defined?(muted_tags) && muted_tags.include?(tag) ? :mute : :normal)} %>
     <% end %>
