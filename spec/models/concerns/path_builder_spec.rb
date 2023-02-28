@@ -2,14 +2,12 @@ require "rails_helper"
 
 RSpec.describe PathBuilder do
   context "when creating path from model metadata" do
-
     let(:model) {
       create(:model,
         name: "Batarang",
         creator: create(:creator, name: "Bruce Wayne"),
         tag_list: ["bat", "weapon"],
-        collection_list: ["gadgets"],
-      )
+        collection_list: ["gadgets"])
     }
 
     it "includes creator if set" do
@@ -36,11 +34,9 @@ RSpec.describe PathBuilder do
       SiteSettings.model_path_prefix_template = "bad"
       expect(model.formatted_path).to eq "/bad-formatted-path-element/batarang#1"
     end
-
   end
 
   context "when creating path from missing model metadata" do
-
     let(:model) { create(:model, name: "Batarang") }
 
     it "includes creator error if set" do
@@ -57,12 +53,10 @@ RSpec.describe PathBuilder do
       SiteSettings.model_path_prefix_template = "collection"
       expect(model.formatted_path).to eq "/unset-collection/batarang#1"
     end
-
   end
 
   context "when creating model directory name" do
-
-    let(:model) {create(:model, name: "Batarang")}
+    let(:model) { create(:model, name: "Batarang") }
 
     it "includes model ID if option is selected" do
       SiteSettings.model_path_prefix_template = ""
@@ -75,6 +69,5 @@ RSpec.describe PathBuilder do
       SiteSettings.model_path_suffix_model_id = false
       expect(model.formatted_path).to eq "/batarang"
     end
-
   end
 end

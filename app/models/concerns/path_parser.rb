@@ -64,5 +64,4 @@ module PathParser
       save!
     end
   end
-
 end

@@ -1,8 +1,6 @@
 require "rails_helper"
 
 RSpec.describe PathParser do
-
-
   context "tag generation" do
     context "without stop word filtering" do
       before do
@@ -78,5 +76,4 @@ RSpec.describe PathParser do
       end
     end
   end
-
 end
