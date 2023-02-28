@@ -1,6 +1,7 @@
 class Model < ApplicationRecord
   extend Memoist
   include PathBuilder
+  include PathParser
 
   belongs_to :library
   belongs_to :creator, optional: true
