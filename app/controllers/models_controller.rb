@@ -20,10 +20,10 @@ class ModelsController < ApplicationController
     end
 
     # libraries may (probably) have wildly varying sets of tags
-    if @filters[:library]
-      @tags = Model.includes(:tags).where(library: @filters[:library]).map(&:tags).flatten.uniq.sort_by(&:name).select { |x| x.taggings_count > 1 }
+    @tags = if @filters[:library]
+      Model.includes(:tags).where(library: @filters[:library]).map(&:tags).flatten.uniq.sort_by(&:name).select { |x| x.taggings_count > 1 }
     else
-      @tags = Model.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name).select { |x| x.taggings_count > 1 }
+      Model.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name).select { |x| x.taggings_count > 1 }
     end
 
     # filter by library?
