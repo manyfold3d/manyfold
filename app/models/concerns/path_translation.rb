@@ -1,4 +1,4 @@
-module PathFormatter
+module PathTranslation
   extend ActiveSupport::Concern
 
   def formatted_path
