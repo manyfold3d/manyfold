@@ -11,65 +11,16 @@ class ModelsController < ApplicationController
       @models = @models.page(page).per(current_user.pagination_settings["per_page"])
     end
 
-    # Ordering
-    @models = case session["order"]
-    when "recent"
-      @models.order(created_at: :desc)
-    else
-      @models.order(name: :asc)
-    end
-
-    # libraries may (probably) have wildly varying sets of tags
+    # libraries may (probably) have wildly varying sets of tags (passed on for use in tag cloud)
     @tags = if @filters[:library]
       Model.includes(:tags).where(library: @filters[:library]).map(&:tags).flatten.uniq.sort_by(&:name).select { |x| x.taggings_count > 1 }
     else
       Model.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name).select { |x| x.taggings_count > 1 }
     end
 
-    # filter by library?
-    @models = @models.where(library: @filters[:library]) if @filters[:library]
+    process_filters
 
-    # Filter by tag?
-    case @filters[:tag]
-    when nil
-      nil # No tags, move along
-    when [""]
-      @models = @models.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1")
-    else
-      @tag = ActsAsTaggableOn::Tag.named_any(@filters[:tag])
-      @models = @models.tagged_with(@filters[:tag])
-    end
-
-    # Filter by collection?
-    case @filters[:collection]
-    when nil
-      nil # No collection, move along
-    when ""
-      @models = @models.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='collections')<1")
-    else
-      @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(@filters[:collection])
-      @models = @models.tagged_with(@collection, context: :collection) if @collection
-    end
-
-    # Filter by creator
-    case @filters[:creator]
-    when nil
-      nil # No creator specified, nothing to do
-    when ""
-      @models = @models.where(creator_id: nil)
-    else
-      @creator = Creator.find(@filters[:creator])
-      @models = @models.where(creator: @creator)
-    end
-
-    # keyword search filter
-    if @filters[:q]
-      field = Model.arel_table[:name]
-      creatorsearch = Creator.where("name LIKE ?", "%#{@filters[:q]}%")
-      @models = @models.where("tags.name LIKE ?", "%#{@filters[:q]}%").or(@models.where(field.matches("%#{@filters[:q]}%"))).or(@models.where(creator_id: creatorsearch))
-        .joins("LEFT JOIN taggings ON taggings.taggable_id=models.id AND taggings.taggable_type = 'Model' LEFT JOIN tags ON tags.id = taggings.tag_id").distinct
-    end
-
+    # this is used for tag cloud for highlighting
     @commontags = ActsAsTaggableOn::Tag.joins(:taggings).where(taggings: {taggable: @models.except(:limit, :offset, :distinct)})
   end
 
@@ -99,25 +50,7 @@ class ModelsController < ApplicationController
   def bulk_edit
     @creators = Creator.all
     @models = Model.all
-    if @filters[:library]
-      @models = @models.where(library: params[:library])
-      @addtags = @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
-    else
-      @addtags = Model.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
-    end
-    if params[:tag]
-      @models = @models.tagged_with(params[:tag])
-    end
-    if params[:collection]
-      @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(params[:collection])
-      @models = @models.tagged_with(@collection, context: :collection) if @collection
-    end
-    @models = @models.where(creator_id: params[:creator]) if params[:creator]
-    if params[:q]
-      field = Model.arel_table[:name]
-      @models = @models.where("tags.name LIKE ?", "%#{params[:q]}%").or(@models.where(field.matches("%#{params[:q]}%")))
-        .joins("INNER JOIN taggings ON taggings.taggable_id=models.id AND taggings.taggable_type = 'Model' INNER JOIN tags ON tags.id = taggings.tag_id").distinct
-    end
+    process_filters
   end
 
   def bulk_update
@@ -192,5 +125,60 @@ class ModelsController < ApplicationController
   def get_filters
     # Get list filters from URL
     @filters = params.permit(:library, :collection, :q, :creator, tag: [])
+  end
+
+  def process_filters
+    # Ordering
+    @models = case session["order"]
+    when "recent"
+      @models.order(created_at: :desc)
+    else
+      @models.order(name: :asc)
+    end
+
+    # filter by library?
+    @models = @models.where(library: params[:library]) if @filters[:library]
+    @addtags = @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
+
+    # Filter by tag?
+    case @filters[:tag]
+    when nil
+      nil # No tags, move along
+    when [""]
+      @models = @models.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1")
+    else
+      @tag = ActsAsTaggableOn::Tag.named_any(@filters[:tag])
+      @models = @models.tagged_with(@filters[:tag])
+    end
+
+    # Filter by collection?
+    case @filters[:collection]
+    when nil
+      nil # No collection, move along
+    when ""
+      @models = @models.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='collections')<1")
+    else
+      @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(@filters[:collection])
+      @models = @models.tagged_with(@collection, context: :collection) if @collection
+    end
+
+    # Filter by creator
+    case @filters[:creator]
+    when nil
+      nil # No creator specified, nothing to do
+    when ""
+      @models = @models.where(creator_id: nil)
+    else
+      @creator = Creator.find(@filters[:creator])
+      @models = @models.where(creator: @creator)
+    end
+
+    # keyword search filter
+    if @filters[:q]
+      field = Model.arel_table[:name]
+      creatorsearch = Creator.where("name LIKE ?", "%#{@filters[:q]}%")
+      @models = @models.where("tags.name LIKE ?", "%#{@filters[:q]}%").or(@models.where(field.matches("%#{@filters[:q]}%"))).or(@models.where(creator_id: creatorsearch))
+        .joins("LEFT JOIN taggings ON taggings.taggable_id=models.id AND taggings.taggable_type = 'Model' LEFT JOIN tags ON tags.id = taggings.tag_id").distinct
+    end
   end
 end
