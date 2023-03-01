@@ -23,17 +23,17 @@ module PathParser
       creatornew = ""
       collectionnew = ""
       tags = []
-      while !templatechunks.empty? && !filepaths.empty? && !(templatechunks.length == 1 && templatechunks[0] == "tags")
-        if templatechunks[0] == "creator"
+      while !templatechunks.empty? && !filepaths.empty? && !(templatechunks.length == 1 && templatechunks[0] == "{tags}")
+        if templatechunks[0] == "{creator}"
           creatornew = filepaths.shift
           templatechunks.shift
-        elsif templatechunks[0] == "collection"
+        elsif templatechunks[0] == "{collection}"
           collectionnew = filepaths.shift
           templatechunks.shift
-        elsif templatechunks[-1] == "creator"
+        elsif templatechunks[-1] == "{creator}"
           creatornew = filepaths.pop
           templatechunks.pop
-        elsif templatechunks[-1] == "collection"
+        elsif templatechunks[-1] == "{collection}"
           collectionnew = filepaths.pop
           templatechunks.pop
         else
@@ -41,7 +41,7 @@ module PathParser
           templatechunks.shift
         end
       end
-      if templatechunks.length == 1 && templatechunks[0] == "tags"
+      if templatechunks.length == 1 && templatechunks[0] == "{tags}"
         tags = filepaths
       end
       unless tags.empty?
