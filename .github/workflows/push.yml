@@ -48,6 +48,6 @@ jobs:
     - name: Install yarn packages
       run: yarn install
     - name: Lint Ruby code
-      run: bundle exec rubocop
+      run: bundle exec standardrb
     - name: Lint Typescript code
       run: yarn run ts-standard

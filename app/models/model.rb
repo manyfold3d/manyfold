@@ -1,5 +1,7 @@
 class Model < ApplicationRecord
   extend Memoist
+  include PathBuilder
+  include PathParser
 
   belongs_to :library
   belongs_to :creator, optional: true
@@ -19,70 +21,6 @@ class Model < ApplicationRecord
   scope :recent, -> { order(created_at: :desc) }
 
   acts_as_taggable_on :tags, :collections
-
-  def autogenerate_tags_from_path!
-    tags = []
-
-    # Auto-tag based on model directory name:
-    if SiteSettings.model_tags_tag_model_directory_name
-      tags = File.split(path).last.split(/[\W_+-]/).filter { |x| x.length > 1 }
-    end
-
-    # (optional) stopwords to remove from auto tagging
-    if SiteSettings.model_tags_filter_stop_words
-      @filter ||= Stopwords::Snowball::Filter.new(SiteSettings.model_tags_stop_words_locale, SiteSettings.model_tags_custom_stop_words)
-      tags = @filter.filter(tags)
-    end
-
-    unless tags.empty?
-      tag_list.add(tags)
-      save!
-    end
-  end
-
-  def autogenerate_creator_from_prefix_template!
-    if SiteSettings.model_tags_tag_model_path_prefix
-      filepaths = File.dirname(path).split("/")
-      filepaths.shift
-      templatechunks = SiteSettings.model_path_prefix_template.split("/")
-      creatornew = ""
-      collectionnew = ""
-      tags = []
-      while !templatechunks.empty? && !filepaths.empty? && !(templatechunks.length == 1 && templatechunks[0] == "tags")
-        if templatechunks[0] == "creator"
-          creatornew = filepaths.shift
-          templatechunks.shift
-        elsif templatechunks[0] == "collection"
-          collectionnew = filepaths.shift
-          templatechunks.shift
-        elsif templatechunks[-1] == "creator"
-          creatornew = filepaths.pop
-          templatechunks.pop
-        elsif templatechunks[-1] == "collection"
-          collectionnew = filepaths.pop
-          templatechunks.pop
-        else
-          logger.error "Invalid model_path_prefix_template: #{SiteSettings.model_path_prefix_template} / #{templatechunks[0]}"
-          templatechunks.shift
-        end
-      end
-      if templatechunks.length == 1 && templatechunks[0] == "tags"
-        tags = filepaths
-      end
-      unless tags.empty?
-        tag_list.add(tags)
-      end
-      unless creatornew.empty?
-        creator = Creator.find_by(name: creatornew)
-        creator ||= Creator.create(name: creatornew)
-        self.creator_id = creator.id
-      end
-      unless collectionnew.empty? && !collection_list
-        collection_list.add(collectionnew)
-      end
-      save!
-    end
-  end
 
   def parents
     Pathname.new(path).parent.descend.map do |path|
@@ -105,23 +43,6 @@ class Model < ApplicationRecord
     end
     reload
     destroy
-  end
-
-  def formatted_path
-    formatted_path_out = []
-    SiteSettings.model_path_prefix_template.split("/").each { |p|
-      case p
-      when "tags"
-        formatted_path_out.push(tags.order(taggings_count: :desc).map(&:to_s).map(&:parameterize))
-      when "creator"
-        formatted_path_out.push(creator ? creator.name : "unset-creator")
-      when "collection"
-        formatted_path_out.push((collections.count > 0) ? collections.map { |c| c.name } : "unset-collection")
-      else
-        formatted_path_out.push("bad-formatted-path-element")
-      end
-    }
-    File.join("", formatted_path_out, name.parameterize) + (SiteSettings.model_path_suffix_model_id ? "##{id}" : "")
   end
 
   def contained_models
