@@ -85,25 +85,25 @@ RSpec.describe PathParser do
     end
 
     it "parses tags" do
-      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("tags")
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{tags}")
       model.autogenerate_creator_from_prefix_template!
       expect(model.tag_list).to eq ["library1", "stuff", "tags", "are", "greedy"]
     end
 
     it "parses creator" do
-      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("creator")
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{creator}")
       model.autogenerate_creator_from_prefix_template!
       expect(model.creator.name).to eq "library1"
     end
 
     it "parses collection" do
-      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("collection")
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{collection}")
       model.autogenerate_creator_from_prefix_template!
       expect(model.collection_list).to eq ["library1"]
     end
 
     it "parses everything at once" do
-      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("creator/collection/tags")
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{creator}/{collection}/{tags}")
       model.autogenerate_creator_from_prefix_template!
       expect(model.creator.name).to eq "library1"
       expect(model.collection_list).to eq ["stuff"]
@@ -111,7 +111,7 @@ RSpec.describe PathParser do
     end
 
     it "ignores extra path components" do
-      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("creator")
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{creator}")
       model.autogenerate_creator_from_prefix_template!
       expect(model.creator.name).to eq "library1"
       expect(model.collection_list).to eq []
@@ -130,7 +130,7 @@ RSpec.describe PathParser do
       allow(SiteSettings).to receive(:model_tags_stop_words_locale).and_return("en")
       allow(SiteSettings).to receive(:model_tags_filter_stop_words).and_return(true)
       allow(SiteSettings).to receive(:model_tags_custom_stop_words).and_return(["stuff"])
-      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("tags")
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{tags}")
       model.autogenerate_creator_from_prefix_template!
       expect(model.tag_list).to eq ["library1", "tags", "greedy"]
     end

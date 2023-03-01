@@ -5,11 +5,11 @@ module PathBuilder
     formatted_path_out = []
     SiteSettings.model_path_prefix_template.split("/").each { |p|
       case p
-      when "tags"
+      when "{tags}"
         formatted_path_out.push(tags.order(taggings_count: :desc).map(&:to_s).map(&:parameterize))
-      when "creator"
+      when "{creator}"
         formatted_path_out.push(creator ? creator.name : "unset-creator")
-      when "collection"
+      when "{collection}"
         formatted_path_out.push((collections.count > 0) ? collections.map { |c| c.name } : "unset-collection")
       else
         formatted_path_out.push("bad-formatted-path-element")
