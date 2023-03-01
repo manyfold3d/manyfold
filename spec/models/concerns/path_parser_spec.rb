@@ -76,4 +76,50 @@ RSpec.describe PathParser do
       end
     end
   end
+
+  context "when parsing with a prefix template" do
+    let(:model) { build(:model, path: "/library1/stuff/tags/are/greedy/model-name") }
+
+    it "parses tags" do
+      SiteSettings.model_path_prefix_template = "tags"
+      model.autogenerate_creator_from_prefix_template!
+      expect(model.tag_list).to eq ["library1", "stuff", "tags", "are", "greedy"]
+    end
+
+    it "parses creator" do
+      SiteSettings.model_path_prefix_template = "creator"
+      model.autogenerate_creator_from_prefix_template!
+      expect(model.creator.name).to eq "library1"
+    end
+
+    it "parses collection" do
+      SiteSettings.model_path_prefix_template = "collection"
+      model.autogenerate_creator_from_prefix_template!
+      expect(model.collection_list).to eq ["library1"]
+    end
+
+    it "parses everything at once" do
+      SiteSettings.model_path_prefix_template = "creator/collection/tags"
+      model.autogenerate_creator_from_prefix_template!
+      expect(model.creator.name).to eq "library1"
+      expect(model.collection_list).to eq ["stuff"]
+      expect(model.tag_list).to eq ["tags", "are", "greedy"]
+    end
+
+    it "ignores extra path components" do
+      SiteSettings.model_path_prefix_template = "creator"
+      model.autogenerate_creator_from_prefix_template!
+      expect(model.creator.name).to eq "library1"
+      expect(model.collection_list).to eq []
+      expect(model.tag_list).to eq []
+    end
+
+    it "handles a completely empty template" do
+      SiteSettings.model_path_prefix_template = ""
+      model.autogenerate_creator_from_prefix_template!
+      expect(model.creator).to be_nil
+      expect(model.collection_list).to eq []
+      expect(model.tag_list).to eq []
+    end
+  end
 end
