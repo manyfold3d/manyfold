@@ -81,25 +81,25 @@ RSpec.describe PathParser do
     let(:model) { build(:model, path: "/library1/stuff/tags/are/greedy/model-name") }
 
     it "parses tags" do
-      SiteSettings.model_path_prefix_template = "tags"
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("tags")
       model.autogenerate_creator_from_prefix_template!
       expect(model.tag_list).to eq ["library1", "stuff", "tags", "are", "greedy"]
     end
 
     it "parses creator" do
-      SiteSettings.model_path_prefix_template = "creator"
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("creator")
       model.autogenerate_creator_from_prefix_template!
       expect(model.creator.name).to eq "library1"
     end
 
     it "parses collection" do
-      SiteSettings.model_path_prefix_template = "collection"
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("collection")
       model.autogenerate_creator_from_prefix_template!
       expect(model.collection_list).to eq ["library1"]
     end
 
     it "parses everything at once" do
-      SiteSettings.model_path_prefix_template = "creator/collection/tags"
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("creator/collection/tags")
       model.autogenerate_creator_from_prefix_template!
       expect(model.creator.name).to eq "library1"
       expect(model.collection_list).to eq ["stuff"]
@@ -107,7 +107,7 @@ RSpec.describe PathParser do
     end
 
     it "ignores extra path components" do
-      SiteSettings.model_path_prefix_template = "creator"
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("creator")
       model.autogenerate_creator_from_prefix_template!
       expect(model.creator.name).to eq "library1"
       expect(model.collection_list).to eq []
@@ -115,7 +115,7 @@ RSpec.describe PathParser do
     end
 
     it "handles a completely empty template" do
-      SiteSettings.model_path_prefix_template = ""
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("")
       model.autogenerate_creator_from_prefix_template!
       expect(model.creator).to be_nil
       expect(model.collection_list).to eq []
