@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_22_155910) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_28_000000) do
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -123,6 +123,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_22_155910) do
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.integer "taggings_count", default: 0
+    t.text "notes"
+    t.text "excerpt"
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
