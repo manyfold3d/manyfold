@@ -80,6 +80,10 @@ RSpec.describe PathParser do
   context "when parsing with a prefix template" do
     let(:model) { build(:model, path: "/library1/stuff/tags/are/greedy/model-name") }
 
+    before do
+      allow(SiteSettings).to receive(:model_tags_filter_stop_words).and_return(false)
+    end
+
     it "parses tags" do
       allow(SiteSettings).to receive(:model_path_prefix_template).and_return("tags")
       model.autogenerate_creator_from_prefix_template!
@@ -120,6 +124,15 @@ RSpec.describe PathParser do
       expect(model.creator).to be_nil
       expect(model.collection_list).to eq []
       expect(model.tag_list).to eq []
+    end
+
+    it "removes stop words from tag lists" do
+      allow(SiteSettings).to receive(:model_tags_stop_words_locale).and_return("en")
+      allow(SiteSettings).to receive(:model_tags_filter_stop_words).and_return(true)
+      allow(SiteSettings).to receive(:model_tags_custom_stop_words).and_return(["stuff"])
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("tags")
+      model.autogenerate_creator_from_prefix_template!
+      expect(model.tag_list).to eq ["library1", "tags", "greedy"]
     end
   end
 end

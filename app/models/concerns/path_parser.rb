@@ -9,14 +9,8 @@ module PathParser
       tags = File.split(path).last.split(/[\W_+-]/).filter { |x| x.length > 1 }
     end
 
-    # (optional) stopwords to remove from auto tagging
-    if SiteSettings.model_tags_filter_stop_words
-      @filter ||= Stopwords::Snowball::Filter.new(SiteSettings.model_tags_stop_words_locale, SiteSettings.model_tags_custom_stop_words)
-      tags = @filter.filter(tags)
-    end
-
     unless tags.empty?
-      tag_list.add(tags)
+      tag_list.add(remove_stop_words(tags))
       save!
     end
   end
@@ -51,7 +45,7 @@ module PathParser
         tags = filepaths
       end
       unless tags.empty?
-        tag_list.add(tags)
+        tag_list.add(remove_stop_words(tags))
       end
       unless creatornew.empty?
         creator = Creator.find_by(name: creatornew)
@@ -64,4 +58,13 @@ module PathParser
       save!
     end
   end
+end
+
+def remove_stop_words(words)
+  return words if !SiteSettings.model_tags_filter_stop_words
+  stopword_filter = Stopwords::Snowball::Filter.new(
+    SiteSettings.model_tags_stop_words_locale,
+    SiteSettings.model_tags_custom_stop_words
+  )
+  stopword_filter.filter(words)
 end
