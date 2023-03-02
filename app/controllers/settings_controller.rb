@@ -12,6 +12,9 @@ class SettingsController < ApplicationController
       @user.pagination_settings["per_page"] = params[:pagination][:per_page].to_i
     end
     if current_user.admin? && params[:model_tags]
+      SiteSettings.model_tags_cloud_threshhold = params[:model_tags][:cloud_threshhold]
+      SiteSettings.model_tags_cloud_heatmap = params[:model_tags][:cloud_heatmap] == "1"
+      SiteSettings.model_tags_cloud_sorting = params[:model_tags][:cloud_sorting]
       SiteSettings.model_tags_filter_stop_words = params[:model_tags][:filter_stop_words] == "1"
       SiteSettings.model_tags_tag_model_directory_name = params[:model_tags][:tag_model_directory_name] == "1"
       SiteSettings.model_tags_stop_words_locale = params[:model_tags][:stop_words_locale]

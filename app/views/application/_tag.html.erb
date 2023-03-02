@@ -1,7 +1,7 @@
 <%- filters = @filters || {} %>
 <%- filters[:tag] ||= [] %>
 <%=
-  link_to tag.name,
+  link_to SiteSettings.model_tags_cloud_heatmap ? "#{tag.name} (#{Model.tagged_with(tag.name).count})" : tag.name,
     models_path(filters.merge(tag: filters[:tag] | [tag.name])),
     {
       class: "badge rounded-pill #{tag_class(state)} tag",
