@@ -20,9 +20,9 @@ class ModelsController < ApplicationController
     @tags = @tags.map(&:tags).flatten.uniq.select { |x| x.taggings_count >= SiteSettings.model_tags_cloud_threshhold }
     @tags = case SiteSettings.model_tags_cloud_sorting
     when "alphabetical"
-      @tags = @tags.sort_by(&:name)
+      @tags.sort_by(&:name)
     else
-      @tags = @tags.sort_by(&:taggings_count).reverse
+      @tags.sort_by(&:taggings_count).reverse
     end
 
     process_filters
