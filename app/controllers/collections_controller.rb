@@ -20,4 +20,18 @@ class CollectionsController < ApplicationController
       @models = @models.page(page).per(current_user.pagination_settings["per_page"])
     end
   end
+
+  def edit
+    @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(params[:id])
+  end
+
+  def update
+    @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(params[:collection_id])
+    @collection.update(collection_params)
+    redirect_to collections_path
+  end
+
+  def collection_params
+    params.require(:acts_as_taggable_on_tag).permit(:name, :caption, :notes)
+  end
 end

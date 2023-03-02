@@ -34,7 +34,9 @@ Rails.application.routes.draw do
     end
   end
   resources :creators
-  resources :collections, only: [:index, :show]
+  resources :collections do
+    patch "edit", to: "collections#update"
+  end
   resources :problems, only: [:index]
   resources :tags
 end

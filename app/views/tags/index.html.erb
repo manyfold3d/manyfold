@@ -1,0 +1,12 @@
+<h1>Tags</h1>
+<p class='lead'><%= pluralize @tags.count, "tag" %> found</p>
+
+<table class="table table-striped">
+	<% @tags.each do |tag| %>
+		<tr>
+			<td> <%= tag.name %> </td>
+			<td> <%= tag.caption %> </td>
+			<td> <%= tag.notes %> </td>
+		</tr>
+	<% end %>
+</table>

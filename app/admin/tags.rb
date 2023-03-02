@@ -5,5 +5,5 @@ ActiveAdmin.register ActsAsTaggableOn::Tag, as: "Tags" do
       end_of_association_chain.for_context(:tags)
     end
   end
-  permit_params [:name, :notes, :excerpt]
+  permit_params [:name, :notes, :caption]
 end
