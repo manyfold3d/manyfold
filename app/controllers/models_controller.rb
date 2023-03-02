@@ -131,7 +131,7 @@ class ModelsController < ApplicationController
 
   def get_filters
     # Get list filters from URL
-    @filters = params.permit(:library, :collection, :q, :creator, tag: [])
+    @filters = params.permit(:library, :collection, :q, :creator, :link, tag: [])
   end
 
   def process_filters
@@ -178,6 +178,16 @@ class ModelsController < ApplicationController
     else
       @creator = Creator.find(@filters[:creator])
       @models = @models.where(creator: @creator)
+    end
+
+    # Filter by url link (only coded "missing" url links UI for now)
+    case @filters[:link]
+    when nil
+      nil # no filter
+    when ""
+      @models = @models.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model')<1")
+    else
+      @models = @models.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model' and url like ?)>0", "%#{@filters[:link]}%")
     end
 
     # keyword search filter
