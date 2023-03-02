@@ -13,9 +13,16 @@ class ModelsController < ApplicationController
 
     # libraries may (probably) have wildly varying sets of tags (passed on for use in tag cloud)
     @tags = if @filters[:library]
-      Model.includes(:tags).where(library: @filters[:library]).map(&:tags).flatten.uniq.sort_by(&:name).select { |x| x.taggings_count > 1 }
+      Model.includes(:tags).where(library: @filters[:library])
     else
-      Model.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name).select { |x| x.taggings_count > 1 }
+      Model.includes(:tags)
+    end
+    @tags = @tags.map(&:tags).flatten.uniq.select { |x| x.taggings_count >= SiteSettings.model_tags_cloud_threshhold }
+    @tags = case SiteSettings.model_tags_cloud_sorting
+    when "alphabetical"
+      @tags.sort_by(&:name)
+    else
+      @tags.sort_by(&:taggings_count).reverse
     end
 
     process_filters

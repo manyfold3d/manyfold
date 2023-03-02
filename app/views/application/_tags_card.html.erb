@@ -1,6 +1,10 @@
 <% unless tags.empty? %>
   <%= card :secondary, "Tags" do %>
-    <%= link_to "View unassigned", models_path(tag: [""]), class: "badge rounded-pill #{tag_class('')} tag" %>
+    <% if defined?(muted_tags) %>
+      <%= link_to SiteSettings.model_tags_cloud_heatmap ? 
+        "Unassigned (#{Model.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1").count})"
+        : "Unassigned", models_path(tag: [""]), class: "badge rounded-pill #{tag_class('')} tag" %>
+    <% end %>
     <% tags.each do |tag| %>
       <%= render partial: 'tag', locals: {tag: tag, state: (defined?(muted_tags) && muted_tags.include?(tag) ? :mute : :normal)} %>
     <% end %>

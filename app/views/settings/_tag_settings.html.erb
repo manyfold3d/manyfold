@@ -19,7 +19,7 @@
     </div>
     <div class="row mb-2">
       <%= form.label "Model path prefix template", for: "model_tags[model_path_prefix_template]", class: "col-sm-4 col-form-label"%>
-      <div class="col-sm-8 form-check form-switch">
+      <div class="col-sm-8">
         <%= form.text_field "model_tags[model_path_prefix_template]", value: SiteSettings.model_path_prefix_template, class: "form-control" %>
       </div>
     </div>
@@ -51,6 +51,24 @@
       <%= form.label "Custom stop words", for: "model_tags[custom_stop_words]", class: "col-sm-4 col-form-label"%>
       <div class="col-sm-8">
         <%= form.text_field "model_tags[custom_stop_words]", value: SiteSettings.model_tags_custom_stop_words, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <%= form.label "Minimum count of tag for display in tag cloud", for: "model_tags[cloud_threshhold]", class: "col-sm-4 col-form-label"%>
+      <div class="col-sm-8">
+        <%= form.text_field "model_tags[cloud_threshhold]", value: SiteSettings.model_tags_cloud_threshhold, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <%= form.label "Display tag count for individual tags in tag cloud", for: "model_tags[cloud_heatmap]", class: "col-sm-4 col-form-label"%>
+      <div class="col-sm-8 form-check form-switch">
+        <%= form.check_box "model_tags[cloud_heatmap]", checked: SiteSettings.model_tags_cloud_heatmap, class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <%= form.label "Sorting for tag cloud", for: "model_tags[cloud_sorting]", class: "col-sm-4 col-form-label"%>
+      <div class="col-sm-8">
+        <%= form.select "model_tags[cloud_sorting]", ["frequency","alphabetical"], selected: SiteSettings.model_tags_cloud_sorting, class: "form-select" %>
       </div>
     </div>
   </div>
