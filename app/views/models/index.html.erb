@@ -25,6 +25,13 @@
 
     <%= card :secondary, "Actions" do %>
       <%= link_to "Bulk Edit", edit_models_path(@filters), class: 'btn btn-secondary mb-3 me-3' %>
+      <% if SiteSettings.model_tags_cloud_heatmap && Model.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1").count > 0 %>
+        <%= link_to "Untagged", models_path(tag: [""]), class: "btn btn-secondary mb-3 me-3" %>
+      <% end %>
+      <% if Model.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model')<1").count > 0 %>
+        <%= link_to "Missing URL", models_path(link: ""), class: "btn btn-secondary mb-3 me-3" %>
+      <% end %>
+
     <% end %>
 
     <% if !@filters.empty?() %>
