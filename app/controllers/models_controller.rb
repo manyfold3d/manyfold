@@ -187,7 +187,7 @@ class ModelsController < ApplicationController
     when ""
       @models = @models.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model')<1")
     else
-      @models = @models.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model' and url like ?)>0","%#{@filters[:link]}%")
+      @models = @models.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model' and url like ?)>0", "%#{@filters[:link]}%")
     end
 
     # keyword search filter
