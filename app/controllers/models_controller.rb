@@ -22,7 +22,7 @@ class ModelsController < ApplicationController
     when "alphabetical"
       @tags.sort_by(&:name)
     else
-      @tags.sort_by(&:taggings_count).reverse
+      @tags.sort_by(&:name).reverse.sort_by(&:taggings_count).reverse
     end
 
     process_filters
