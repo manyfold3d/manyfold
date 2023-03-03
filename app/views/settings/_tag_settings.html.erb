@@ -71,5 +71,11 @@
         <%= form.select "model_tags[cloud_sorting]", ["frequency","alphabetical"], selected: SiteSettings.model_tags_cloud_sorting, class: "form-select" %>
       </div>
     </div>
+    <div class="row mb-2">
+      <%= form.label "Use delimiter to represent keypairs tag cloud", for: "model_tags[cloud_keypair]", class: "col-sm-4 col-form-label"%>
+      <div class="col-sm-8 form-check form-switch">
+        <%= form.check_box "model_tags[cloud_keypair]", checked: SiteSettings.model_tags_cloud_keypair, class: "form-check-input" %>
+      </div>
+    </div>    
   </div>
 </div>
