@@ -17,7 +17,7 @@ $(document).ready(
       window.localStorage.setItem(`details-${id}`, isOpen)
     })
     for (let i = 0; i < localStorage.length; i++) {
-      setDetailOpenStatus(localStorage.key(i))
+      setDetailOpenStatus(localStorage.key(i) ?? '')
     }
   }
 )
