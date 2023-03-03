@@ -4,6 +4,7 @@ class SiteSettings < RailsSettings::Base
 
   field :model_tags_cloud_threshhold, type: :integer, default: 0
   field :model_tags_cloud_heatmap, type: :boolean, default: true
+  field :model_tags_cloud_keypair, type: :boolean, default: true
   field :model_tags_cloud_sorting, type: :string, default: "frequency"
   field :model_tags_filter_stop_words, type: :boolean, default: true
   field :model_tags_tag_model_directory_name, type: :boolean, default: true

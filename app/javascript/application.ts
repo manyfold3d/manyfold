@@ -13,5 +13,6 @@ import '@nathanvda/cocoon'
 import 'src/preview'
 import 'src/bulk_edit'
 import 'src/model_edit'
+import 'src/tag'
 
 Rails.start()
