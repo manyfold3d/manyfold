@@ -3,6 +3,21 @@
 <%= form_with model: @library do |form| %>
 
   <div class="row mb-3 input-group">
+    <%= form.label :name, class: "col-sm-2 col-form-label" %>
+    <%= form.text_field :name, class: "form-control col-auto" %>
+  </div>
+
+  <div class="row mb-3 input-group">
+    <%= form.label :caption, class: "col-sm-2 col-form-label" %>
+    <%= form.text_field :caption, class: "form-control col-auto" %>
+  </div>
+
+  <div class="row mb-3 input-group">
+    <%= form.label :notes, class: "col-sm-2 col-form-label" %>
+    <%= form.text_area :notes, class: "form-control col-auto" %>
+  </div>
+
+  <div class="row mb-3 input-group">
     <%= form.label :path, class: "col-sm-2 col-form-label" %>
     <div class='col-sm-10 ps-0'>
       <%= form.text_field :path, class: 'form-control', placeholder:"Filesystem path" %>

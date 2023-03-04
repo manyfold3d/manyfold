@@ -8,7 +8,7 @@ class Library < ApplicationRecord
   default_scope { order(:path) }
 
   def name
-    File.basename(path)
+    self[:name] || File.basename(path)
   end
 
   def all_tags
