@@ -18,6 +18,9 @@ class LibrariesController < ApplicationController
     @title = "New Library"
   end
 
+  def edit
+  end
+
   def create
     @library = Library.create(library_params)
     if @library.valid?
@@ -26,6 +29,11 @@ class LibrariesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def update
+    @library.update(library_params)
+    redirect_to models_path
   end
 
   def scan
@@ -48,7 +56,7 @@ class LibrariesController < ApplicationController
   private
 
   def library_params
-    params.require(:library).permit(:path)
+    params.require(:library).permit(:path, :name, :notes, :caption)
   end
 
   def get_library

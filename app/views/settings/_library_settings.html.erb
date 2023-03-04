@@ -1,0 +1,35 @@
+<div class="card">
+  <h3 class="card-header">Libaries</h3>
+  <div class="card-body">
+    <p class='lead'>
+      See library details and modify.
+    </p>
+    <ul class="list-unstyled">
+    <% Library.all.each do |library| %>
+        <li><details><summary><%= library.name %></summary>
+        <div class="card-body">
+          <div class="row">
+            <%= content_tag(:span,"Name", class: "col-sm") %>
+            <%= content_tag(:span,library.name, class: "col-sm-10") %>
+          </div>
+          <div class="row input-group">
+            <%= content_tag(:span,"Path", class: "col-sm") %>
+            <%= content_tag(:span,library.path, class: "col-sm-10") %>
+          </div>
+          <div class="row input-group">
+            <%= content_tag(:span,"Caption", class: "col-sm") %>
+            <%= content_tag(:span,library.caption, class: "col-sm-10") %>
+            <span id="libraryCaptionHelp" class="form-text">Hover over library in header to see caption.</span>
+          </div>
+          <div class="row input-group">
+            <%= content_tag(:span,"Notes", class: "col-sm") %>
+            <%= content_tag(:span,library.notes, class: "col-sm-10") %>
+            <span id="libraryNotesHelp" class="form-text">Notes are just on this page for now.</span>
+          </div>
+          <%= link_to "Edit", edit_library_path(library), {class: "btn btn-outline-secondary"} %>
+        </div></li>
+    <% end %>
+    </ul>
+
+  </div>
+</div>
