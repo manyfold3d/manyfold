@@ -9,11 +9,11 @@ class Library < ApplicationRecord
   default_scope { order(:path) }
 
   def name
-    self[:name] || (path ? File.basename(path) : '')
+    self[:name] || (path ? File.basename(path) : "")
   end
 
   def init
-    self.name = nil if self.name == ''
+    self.name = nil if name == ""
   end
 
   def all_tags
