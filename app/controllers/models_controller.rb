@@ -155,7 +155,7 @@ class ModelsController < ApplicationController
         qreg = ActiveRecord::Base.connection.quote(reg)
         tag_regex_build.push "(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name REGEXP #{qreg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1"
       end
-      @models = @models.where("("+tag_regex_build.join(" OR ")+")")
+      @models = @models.where("(" + tag_regex_build.join(" OR ") + ")")
       logger.debug(@models.name)
       logger.debug("xyzzy")
 

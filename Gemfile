@@ -87,4 +87,4 @@ gem "lograge", "~> 0.12.0"
 
 gem "simplecov", "~> 0.22.0", group: :test, require: false
 
-gem 'sqlite3_ar_regexp', '~> 2.2'
+gem "sqlite3_ar_regexp", "~> 2.2"
