@@ -17,13 +17,25 @@
   
       <div class="row mb-3 input-group">
         <%= form.label "Required Tags", class: "col-sm-2 col-form-label mb-0" %>
-        <div class="col-sm-10 p-0">
+        <div id="newinput" class="col-sm-10 p-0">
           <% @library.tag_regex.each do |reg| %>
-            <%= text_field_tag "library[tag_regex][]", reg, class: "form-control" %>
+            <div class="input-group">
+              <%= text_field_tag "library[tag_regex][]", reg, class: "form-control col-sm-11" %>
+              <%= link_to icon(:trash, "Delete"), '', onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
+            </div>
           <% end %>
-          <%= text_field_tag "library[tag_regex][]", nil, class: "form-control" %>
+          <div id="regexclone" style="display: none">
+            <div class="input-group">
+              <%= text_field_tag "library[tag_regex][]", '', class: "form-control col-sm-11" %>
+              <%= link_to icon(:trash, "Delete"), '', onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-2"></div><div class="col-sm-10 p-0">
+          <%= link_to icon("plus-square-dotted","Add Line"), '', onClick: "$('#newinput').append($('#regexclone').html()); return false;", class: "btn btn-primary" %>
           <span id="libraryRegexHelp" class="form-text">Check for models missing tags matching these regex.</span>
         </div>
+
       </div>
 
     <%= form.submit "Save", class: "btn btn-primary" %>

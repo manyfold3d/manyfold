@@ -28,9 +28,11 @@
           </div>
           <div class="row input-group">
             <%= content_tag(:span,"Required Tags", class: "col-sm") %>
-            <% library.tag_regex.each do |reg| %>
-              <%= content_tag(:span,reg, class: "col-sm-10") %><br />
-            <% end %>
+            <div class="col-sm-10">
+              <% library.tag_regex.each do |reg| %>
+                <%= content_tag(:span,reg, class: "col-sm-10") %><br />
+              <% end %>
+            </div>
             <span id="libraryRegexHelp" class="form-text">Check for models missing tags matching these regex.</span>
           </div>
           <%= if !library.tag_regex.empty? then link_to "Search Missing", models_path(library: library.id, missingtag: 1), {class: "btn btn-outline-secondary"} end %>
