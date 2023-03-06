@@ -15,6 +15,17 @@
         <%= form.text_area :notes, class: "form-control col-auto" %>
       </div>
   
+      <div class="row mb-3 input-group">
+        <%= form.label "Required Tags", class: "col-sm-2 col-form-label mb-0" %>
+        <div class="col-sm-10 p-0">
+          <% @library.tag_regex.each do |reg| %>
+            <%= text_field_tag "library[tag_regex][]", reg, class: "form-control" %>
+          <% end %>
+          <%= text_field_tag "library[tag_regex][]", nil, class: "form-control" %>
+          <span id="libraryRegexHelp" class="form-text">Check for models missing tags matching these regex.</span>
+        </div>
+      </div>
+
     <%= form.submit "Save", class: "btn btn-primary" %>
     </form>
   <% end %>

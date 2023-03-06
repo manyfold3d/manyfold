@@ -23,6 +23,7 @@ class LibrariesController < ApplicationController
 
   def create
     @library = Library.create(library_params)
+    @library.tag_regex = params[:tag_regex]
     if @library.valid?
       LibraryScanJob.perform_later(@library)
       redirect_to @library
@@ -33,6 +34,9 @@ class LibrariesController < ApplicationController
 
   def update
     @library.update(library_params)
+    uptags = library_params[:tag_regex].reject(&:empty?)
+    @library.tag_regex = uptags
+    @library.save
     redirect_to models_path
   end
 
@@ -56,7 +60,7 @@ class LibrariesController < ApplicationController
   private
 
   def library_params
-    params.require(:library).permit(:path, :name, :notes, :caption)
+    params.require(:library).permit(:path, :name, :notes, :caption, {:tag_regex => []} )
   end
 
   def get_library
