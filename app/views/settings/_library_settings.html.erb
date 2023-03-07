@@ -22,6 +22,11 @@
             <span id="libraryCaptionHelp" class="form-text">Hover over library in header to see caption.</span>
           </div>
           <div class="row input-group">
+            <%= content_tag(:span,"Icon", class: "col-sm") %>
+            <%= content_tag(:span,library.icon, class: "col-sm-10") %>
+            <span id="libraryIconHelp" class="form-text">Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a></span>
+          </div>
+          <div class="row input-group">
             <%= content_tag(:span,"Notes", class: "col-sm") %>
             <%= content_tag(:span,library.notes, class: "col-sm-10") %>
             <span id="libraryNotesHelp" class="form-text">Notes are just on this page for now.</span>
