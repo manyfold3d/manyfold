@@ -154,10 +154,18 @@ class ModelsController < ApplicationController
       regexes = ((@filters[:missingtag] != "") ? [@filters[:missingtag]] : @models[0].library.tag_regex)
       regexes.each do |reg|
         qreg = ActiveRecord::Base.connection.quote(reg)
-        tag_regex_build.push "(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name REGEXP #{qreg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1"
+        if Rails.env.development?
+          tag_regex_build.push "(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name REGEXP #{qreg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1"
+        else
+          tag_regex_build.push "(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name ~ #{qreg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1"
+        end
       end
       qreg = ActiveRecord::Base.connection.quote(@filters[:missingtag])
-      tag_regex_build.push "(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name REGEXP #{qreg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1"
+      if Rails.env.development?
+        tag_regex_build.push "(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name REGEXP #{qreg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1"
+      else
+        tag_regex_build.push "(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name ~ #{qreg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1"
+      end
       @models = @models.where("(" + tag_regex_build.join(" OR ") + ")")
 
     else
