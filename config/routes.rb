@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
+  resources :uploads do 
+    collection do
+      post :upload_zip
+    end
+  end
   resources :libraries do
     member do
       post "scan"
