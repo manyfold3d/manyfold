@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_05_180823) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_215826) do
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_05_180823) do
     t.string "caption"
     t.string "name"
     t.text "tag_regex"
+    t.text "icon"
   end
 
   create_table "links", force: :cascade do |t|

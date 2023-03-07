@@ -30,7 +30,7 @@
           <% end %>
           <% Library.all.each do |library| %>
             <li class="nav-item">
-              <%= link_to "#{icon('boxes', "#{library.caption || library.name}")} #{library.name}".html_safe, {controller: 'models', library: library.id}, class: ((current_page?(library) || (library.id.to_s == params[:library])) ? "nav-link active" : "nav-link") %>
+              <%= link_to "#{icon(library.icon || 'boxes', "#{library.caption || library.name}")} #{library.name}".html_safe, {controller: 'models', library: library.id}, class: ((current_page?(library) || (library.id.to_s == params[:library])) ? "nav-link active" : "nav-link") %>
             </li>
           <% end %>
           <li class="nav-item me-auto">
