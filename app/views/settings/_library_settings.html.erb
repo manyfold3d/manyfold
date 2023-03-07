@@ -36,7 +36,7 @@
             </div>
             <span id="libraryRegexHelp" class="form-text">Check for models missing tags matching these regex.</span>
           </div>
-          <%= if !library.tag_regex.empty? then link_to "Search Missing", models_path(library: library.id, missingtag: 1), {class: "btn btn-outline-secondary"} end %>
+          <%= if !library.tag_regex.empty? then link_to "Search Missing", models_path(library: library.id, missingtag: ""), {class: "btn btn-outline-secondary"} end %>
           <%= link_to "Edit", edit_library_path(library), {class: "btn btn-outline-secondary"} %>
         </div></li>
     <% end %>
