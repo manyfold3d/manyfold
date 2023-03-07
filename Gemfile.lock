@@ -392,6 +392,9 @@ GEM
       mini_portile2 (~> 2.8.0)
     sqlite3 (1.6.1-x86_64-darwin)
     sqlite3 (1.6.1-x86_64-linux)
+    sqlite3_ar_regexp (2.2.0)
+      activerecord (>= 3.2)
+      sqlite3
     standard (1.24.3)
       language_server-protocol (~> 3.17.0.2)
       rubocop (= 1.44.1)
@@ -461,6 +464,7 @@ DEPENDENCIES
   simplecov (~> 0.22.0)
   spring
   sqlite3 (~> 1.6)
+  sqlite3_ar_regexp (~> 2.2)
   standard (~> 1.24.3)
   stopwords-filter
   tzinfo-data
