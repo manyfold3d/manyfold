@@ -15,7 +15,7 @@ module PathParser
     end
   end
 
-  def autogenerate_creator_from_prefix_template!
+  def populate_metadata_from_path!
     if SiteSettings.model_path_template
       components = extract_path_components
       if components[:tags].present?

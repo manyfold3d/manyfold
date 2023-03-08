@@ -48,7 +48,7 @@ class ModelScanJob < ApplicationJob
       end
     end
     if !model.creator_id
-      model.autogenerate_creator_from_prefix_template!
+      model.populate_metadata_from_path!
     end
     # If this model has no files, flag a problem
     if model.model_files.reload.count == 0
