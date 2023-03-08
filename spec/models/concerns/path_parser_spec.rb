@@ -77,6 +77,59 @@ RSpec.describe PathParser do
     end
   end
 
+  context "when given a path template" do
+    let(:model) { build :model, path: "/top/middle/bottom/prefix - name#42" }
+
+    {
+      "{tags}" => %r{^/?.*?(?<tags>[[:print:]]*)$},
+      "{creator}" => %r{^/?.*?(?<creator>[[:print:]&&[^/]]*?)$},
+      "{collection}" => %r{^/?.*?(?<collection>[[:print:]&&[^/]]*?)$},
+      "{tags}/{creator}" => %r{^/?.*?(?<tags>[[:print:]]*)/(?<creator>[[:print:]&&[^/]]*?)$},
+      "{tags}/{creator}/{modelName}{modelId}" => %r{^/?.*?(?<tags>[[:print:]]*)/(?<creator>[[:print:]&&[^/]]*?)/(?<model_name>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
+      "@{creator}{modelId}" => %r{^/?.*?@(?<creator>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
+      "{creator}/{collection}/{tags}/{modelName}{modelId}" => %r{^/?.*?(?<creator>[[:print:]&&[^/]]*?)/(?<collection>[[:print:]&&[^/]]*?)/(?<tags>[[:print:]]*)/(?<model_name>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$}
+    }.each_pair do |tag, regexp|
+      it "correctly converts #{tag} into a regexp matcher" do
+        allow(SiteSettings).to receive(:model_path_prefix_template).and_return(tag)
+        expect(model.send(:path_parse_pattern)).to eql regexp
+      end
+    end
+
+    {
+      "{tags}/{modelName}{modelId}" => {
+        tags: ["top", "middle", "bottom"],
+        model_name: "prefix - name"
+      },
+      "{creator}/{modelName}{modelId}" => {
+        creator: "bottom",
+        model_name: "prefix - name"
+      },
+      "{collection}/{modelName}{modelId}" => {
+        collection: "bottom",
+        model_name: "prefix - name"
+      },
+      "{tags}/{creator}/{modelName}{modelId}" => {
+        creator: "bottom",
+        tags: ["top", "middle"],
+        model_name: "prefix - name"
+      },
+      "{creator}{modelId}" => {
+        creator: "prefix - name"
+      },
+      "{tags}/{creator}/{collection} - {modelName}{modelId}" => {
+        tags: ["top", "middle"],
+        creator: "bottom",
+        collection: "prefix",
+        model_name: "name"
+      }
+    }.each_pair do |tag, values|
+      it "correctly matches components of #{tag}" do
+        allow(SiteSettings).to receive(:model_path_prefix_template).and_return(tag)
+        expect(model.send(:extract_path_components)).to eql values
+      end
+    end
+  end
+
   context "when parsing with a prefix template" do
     let(:model) { build(:model, path: "/library1/stuff/tags/are/greedy/model-name") }
 
@@ -85,25 +138,25 @@ RSpec.describe PathParser do
     end
 
     it "parses tags" do
-      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{tags}")
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{tags}/{modelName}{modelId}")
       model.autogenerate_creator_from_prefix_template!
       expect(model.tag_list).to eq ["library1", "stuff", "tags", "are", "greedy"]
     end
 
     it "parses creator" do
-      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{creator}")
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{creator}/{modelName}{modelId}")
       model.autogenerate_creator_from_prefix_template!
-      expect(model.creator.name).to eq "library1"
+      expect(model.creator.name).to eq "greedy"
     end
 
     it "parses collection" do
-      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{collection}")
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{collection}/{modelName}{modelId}")
       model.autogenerate_creator_from_prefix_template!
-      expect(model.collection_list).to eq ["library1"]
+      expect(model.collection_list).to eq ["greedy"]
     end
 
     it "parses everything at once" do
-      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{creator}/{collection}/{tags}")
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{creator}/{collection}/{tags}/{modelName}{modelId}")
       model.autogenerate_creator_from_prefix_template!
       expect(model.creator.name).to eq "library1"
       expect(model.collection_list).to eq ["stuff"]
@@ -111,9 +164,9 @@ RSpec.describe PathParser do
     end
 
     it "ignores extra path components" do
-      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{creator}")
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{creator}/{modelName}{modelId}")
       model.autogenerate_creator_from_prefix_template!
-      expect(model.creator.name).to eq "library1"
+      expect(model.creator.name).to eq "greedy"
       expect(model.collection_list).to eq []
       expect(model.tag_list).to eq []
     end
@@ -130,7 +183,7 @@ RSpec.describe PathParser do
       allow(SiteSettings).to receive(:model_tags_stop_words_locale).and_return("en")
       allow(SiteSettings).to receive(:model_tags_filter_stop_words).and_return(true)
       allow(SiteSettings).to receive(:model_tags_custom_stop_words).and_return(["stuff"])
-      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{tags}")
+      allow(SiteSettings).to receive(:model_path_prefix_template).and_return("{tags}/{modelName}{modelId}")
       model.autogenerate_creator_from_prefix_template!
       expect(model.tag_list).to eq ["library1", "tags", "greedy"]
     end

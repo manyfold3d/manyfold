@@ -17,7 +17,7 @@ module PathBuilder
       when "{modelName}"
         name.parameterize
       when "{modelId}"
-        id.to_s
+        "##{id}"
       else
         token
       end

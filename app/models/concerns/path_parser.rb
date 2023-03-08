@@ -16,48 +16,45 @@ module PathParser
   end
 
   def autogenerate_creator_from_prefix_template!
-    if SiteSettings.model_tags_tag_model_path_prefix
-      filepaths = File.dirname(path).split("/")
-      filepaths.shift
-      templatechunks = SiteSettings.model_path_prefix_template.split("/")
-      creatornew = ""
-      collectionnew = ""
-      tags = []
-      while !templatechunks.empty? && !filepaths.empty? && !(templatechunks.length == 1 && templatechunks[0] == "{tags}")
-        if templatechunks[0] == "{creator}"
-          creatornew = filepaths.shift
-          templatechunks.shift
-        elsif templatechunks[0] == "{collection}"
-          collectionnew = filepaths.shift
-          templatechunks.shift
-        elsif templatechunks[-1] == "{creator}"
-          creatornew = filepaths.pop
-          templatechunks.pop
-        elsif templatechunks[-1] == "{collection}"
-          collectionnew = filepaths.pop
-          templatechunks.pop
-        else
-          logger.error "Invalid model_path_prefix_template: #{SiteSettings.model_path_prefix_template} / #{templatechunks[0]}"
-          templatechunks.shift
-        end
+    if SiteSettings.model_path_prefix_template
+      components = extract_path_components
+      if components[:tags] && !components[:tags].empty?
+        tag_list.add(remove_stop_words(components[:tags]))
       end
-      if templatechunks.length == 1 && templatechunks[0] == "{tags}"
-        tags = filepaths
-      end
-      unless tags.empty?
-        tag_list.add(remove_stop_words(tags))
-      end
-      unless creatornew.empty?
-        creator = Creator.find_by(name: creatornew)
-        creator ||= Creator.create(name: creatornew)
-        self.creator_id = creator.id
-      end
-      unless collectionnew.empty? && !collection_list
-        collection_list.add(collectionnew)
-      end
+      self.creator = Creator.find_or_create_by(name: components[:creator]) if components[:creator]
+      collection_list.add(components[:collection]) if components[:collection]
       save!
     end
   end
+end
+
+def path_parse_pattern
+  Regexp.new("^/?.*?" +
+    SiteSettings.model_path_prefix_template.gsub(/{.+?}/) { |token|
+      case token
+      when "{tags}"
+        "(?<tags>[[:print:]]*)"
+      when "{creator}"
+        "(?<creator>[[:print:]&&[^/]]*?)"
+      when "{collection}"
+        "(?<collection>[[:print:]&&[^/]]*?)"
+      when "{modelName}"
+        "(?<model_name>[[:print:]&&[^/]]*?)"
+      when "{modelId}"
+        "(?<model_id>#[[:digit:]]+)?"
+      else
+        "[[:print:]&&[^/]]*"
+      end
+    } + "$")
+end
+
+def extract_path_components
+  components = path.match(path_parse_pattern)&.named_captures&.symbolize_keys
+  return {} if components.nil?
+  components.merge({
+    tags: components[:tags]&.split("/")&.compact_blank,
+    model_id: nil # discard ID, never gonna use it in parsing
+  }).compact
 end
 
 def remove_stop_words(words)
