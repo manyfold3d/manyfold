@@ -18,7 +18,7 @@ module PathParser
   def autogenerate_creator_from_prefix_template!
     if SiteSettings.model_path_prefix_template
       components = extract_path_components
-      if components[:tags] && !components[:tags].empty?
+      if components[:tags].present?
         tag_list.add(remove_stop_words(components[:tags]))
       end
       self.creator = Creator.find_or_create_by(name: components[:creator]) if components[:creator]

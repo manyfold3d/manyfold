@@ -78,7 +78,7 @@ RSpec.describe PathParser do
   end
 
   context "when given a path template" do
-    let(:model) { build :model, path: "/top/middle/bottom/prefix - name#42" }
+    let(:model) { build(:model, path: "/top/middle/bottom/prefix - name#42") }
 
     {
       "{tags}" => %r{^/?.*?(?<tags>[[:print:]]*)$},
