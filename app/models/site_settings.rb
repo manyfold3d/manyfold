@@ -11,5 +11,5 @@ class SiteSettings < RailsSettings::Base
   field :model_tags_custom_stop_words, type: :array, default: (SupportedMimeTypes.image_extensions + SupportedMimeTypes.model_extensions)
   field :model_tags_auto_tag_new, type: :string, default: "!new"
   field :model_path_template, type: :string, default: "{tags}/{modelName}{modelId}"
-  field :model_parse_metadata_from_path, type: :boolean, default: true
+  field :parse_metadata_from_path, type: :boolean, default: true
 end

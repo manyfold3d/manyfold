@@ -20,8 +20,10 @@ class SettingsController < ApplicationController
       SiteSettings.model_tags_stop_words_locale = params[:model_tags][:stop_words_locale]
       SiteSettings.model_tags_custom_stop_words = params[:model_tags][:custom_stop_words].split
       SiteSettings.model_tags_auto_tag_new = params[:model_tags][:auto_tag_new]
-      SiteSettings.model_path_template = params[:model_tags][:model_path_template]
-      SiteSettings.model_parse_metadata_from_path = params[:model_tags][:model_parse_metadata_from_path]
+    end
+    if current_user.admin? && params[:folders]
+      SiteSettings.model_path_template = params[:folders][:model_path_template]
+      SiteSettings.parse_metadata_from_path = params[:folders][:parse_metadata_from_path]
     end
     if params[:renderer]
       @user.renderer_settings["grid_width"] = params[:renderer][:grid_width].to_i
