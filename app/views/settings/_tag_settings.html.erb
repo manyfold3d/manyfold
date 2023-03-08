@@ -12,21 +12,15 @@
       </div>
     </div>
     <div class="row mb-2">
-      <%= form.label "Tag keywords from model directory", for: "model_tags[tag_model_directory_name]", class: "col-sm-4 col-form-label"%>
+      <%= form.label "Model path template", for: "model_tags[model_path_template]", class: "col-sm-4 col-form-label"%>
       <div class="col-sm-8 form-check form-switch">
-        <%= form.check_box "model_tags[tag_model_directory_name]", checked: SiteSettings.model_tags_tag_model_directory_name, class: "form-check-input" %>
-      </div>
-    </div>
-    <div class="row mb-2">
-      <%= form.label "Model path prefix template", for: "model_tags[model_path_template]", class: "col-sm-4 col-form-label"%>
-      <div class="col-sm-8">
         <%= form.text_field "model_tags[model_path_template]", value: SiteSettings.model_path_template, class: "form-control" %>
       </div>
     </div>
     <div class="row mb-2">
-      <%= form.label "Use prefix template to populate creator/collection/tags", for: "model_tags[model_tags_tag_model_path_prefix]", class: "col-sm-4 col-form-label"%>
+      <%= form.label "Populate template metadata from path during scan", for: "model_tags[model_parse_metadata_from_path]", class: "col-sm-4 col-form-label"%>
       <div class="col-sm-8 form-check form-switch">
-        <%= form.check_box "model_tags[model_tags_tag_model_path_prefix]", checked: SiteSettings.model_tags_tag_model_path_prefix, class: "form-check-input" %>
+        <%= form.check_box "model_tags[model_parse_metadata_from_path]", checked: SiteSettings.model_parse_metadata_from_path, class: "form-check-input" %>
       </div>
     </div>
     <div class="row mb-2">

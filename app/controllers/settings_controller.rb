@@ -17,12 +17,11 @@ class SettingsController < ApplicationController
       SiteSettings.model_tags_cloud_keypair = params[:model_tags][:cloud_keypair] == "1"
       SiteSettings.model_tags_cloud_sorting = params[:model_tags][:cloud_sorting]
       SiteSettings.model_tags_filter_stop_words = params[:model_tags][:filter_stop_words] == "1"
-      SiteSettings.model_tags_tag_model_directory_name = params[:model_tags][:tag_model_directory_name] == "1"
       SiteSettings.model_tags_stop_words_locale = params[:model_tags][:stop_words_locale]
       SiteSettings.model_tags_custom_stop_words = params[:model_tags][:custom_stop_words].split
       SiteSettings.model_tags_auto_tag_new = params[:model_tags][:auto_tag_new]
       SiteSettings.model_path_template = params[:model_tags][:model_path_template]
-      SiteSettings.model_tags_tag_model_path_prefix = params[:model_tags][:model_tags_tag_model_path_prefix]
+      SiteSettings.model_parse_metadata_from_path = params[:model_tags][:model_parse_metadata_from_path]
     end
     if params[:renderer]
       @user.renderer_settings["grid_width"] = params[:renderer][:grid_width].to_i
