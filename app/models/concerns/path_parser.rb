@@ -16,7 +16,7 @@ module PathParser
   end
 
   def autogenerate_creator_from_prefix_template!
-    if SiteSettings.model_path_prefix_template
+    if SiteSettings.model_path_template
       components = extract_path_components
       if components[:tags].present?
         tag_list.add(remove_stop_words(components[:tags]))
@@ -30,7 +30,7 @@ end
 
 def path_parse_pattern
   Regexp.new("^/?.*?" +
-    SiteSettings.model_path_prefix_template.gsub(/{.+?}/) { |token|
+    SiteSettings.model_path_template.gsub(/{.+?}/) { |token|
       case token
       when "{tags}"
         "(?<tags>[[:print:]]*)"

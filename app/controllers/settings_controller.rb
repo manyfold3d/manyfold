@@ -21,7 +21,7 @@ class SettingsController < ApplicationController
       SiteSettings.model_tags_stop_words_locale = params[:model_tags][:stop_words_locale]
       SiteSettings.model_tags_custom_stop_words = params[:model_tags][:custom_stop_words].split
       SiteSettings.model_tags_auto_tag_new = params[:model_tags][:auto_tag_new]
-      SiteSettings.model_path_prefix_template = params[:model_tags][:model_path_prefix_template]
+      SiteSettings.model_path_template = params[:model_tags][:model_path_template]
       SiteSettings.model_tags_tag_model_path_prefix = params[:model_tags][:model_tags_tag_model_path_prefix]
     end
     if params[:renderer]

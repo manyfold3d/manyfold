@@ -2,7 +2,7 @@ module PathBuilder
   extend ActiveSupport::Concern
 
   def formatted_path
-    SiteSettings.model_path_prefix_template.gsub(/{.+?}/) do |token|
+    SiteSettings.model_path_template.gsub(/{.+?}/) do |token|
       case token
       when "{tags}"
         (tags.count > 0) ?
