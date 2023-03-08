@@ -139,25 +139,25 @@ RSpec.describe PathParser do
 
     it "parses tags" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}{modelId}")
-      model.populate_metadata_from_path!
+      model.parse_metadata_from_path!
       expect(model.tag_list).to eq ["library1", "stuff", "tags", "are", "greedy"]
     end
 
     it "parses creator" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}{modelId}")
-      model.populate_metadata_from_path!
+      model.parse_metadata_from_path!
       expect(model.creator.name).to eq "greedy"
     end
 
     it "parses collection" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{collection}/{modelName}{modelId}")
-      model.populate_metadata_from_path!
+      model.parse_metadata_from_path!
       expect(model.collection_list).to eq ["greedy"]
     end
 
     it "parses everything at once" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{collection}/{tags}/{modelName}{modelId}")
-      model.populate_metadata_from_path!
+      model.parse_metadata_from_path!
       expect(model.creator.name).to eq "library1"
       expect(model.collection_list).to eq ["stuff"]
       expect(model.tag_list).to eq ["tags", "are", "greedy"]
@@ -165,7 +165,7 @@ RSpec.describe PathParser do
 
     it "ignores extra path components" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}{modelId}")
-      model.populate_metadata_from_path!
+      model.parse_metadata_from_path!
       expect(model.creator.name).to eq "greedy"
       expect(model.collection_list).to eq []
       expect(model.tag_list).to eq []
@@ -173,7 +173,7 @@ RSpec.describe PathParser do
 
     it "handles a completely empty template" do
       allow(SiteSettings).to receive(:model_path_template).and_return("")
-      model.populate_metadata_from_path!
+      model.parse_metadata_from_path!
       expect(model.creator).to be_nil
       expect(model.collection_list).to eq []
       expect(model.tag_list).to eq []
@@ -184,7 +184,7 @@ RSpec.describe PathParser do
       allow(SiteSettings).to receive(:model_tags_filter_stop_words).and_return(true)
       allow(SiteSettings).to receive(:model_tags_custom_stop_words).and_return(["stuff"])
       allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}{modelId}")
-      model.populate_metadata_from_path!
+      model.parse_metadata_from_path!
       expect(model.tag_list).to eq ["library1", "tags", "greedy"]
     end
   end

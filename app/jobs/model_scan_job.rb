@@ -47,8 +47,8 @@ class ModelScanJob < ApplicationJob
         model.save!
       end
     end
-    if !model.creator_id
-      model.populate_metadata_from_path!
+    if !model.creator_id && SiteSettings.model_parse_metadata_from_path
+      model.parse_metadata_from_path!
     end
     # If this model has no files, flag a problem
     if model.model_files.reload.count == 0
