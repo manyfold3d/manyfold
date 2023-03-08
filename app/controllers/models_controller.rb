@@ -93,7 +93,7 @@ class ModelsController < ApplicationController
       :new_library_id,
       :organize,
       add_tags: [],
-      remove_tags: [],
+      remove_tags: []
     ).compact_blank
   end
 

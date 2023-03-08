@@ -9,7 +9,8 @@ class CollectionsController < ApplicationController
       else
         Collection.all
       end
-    @title = "Collections"  end
+    @title = "Collections"
+  end
 
   def show
     redirect_to models_path(collection: params[:id])
@@ -20,7 +21,7 @@ class CollectionsController < ApplicationController
     @collection.links.build if @collection.links.empty? # populate empty link
     @title = "New Collection"
   end
-  
+
   def edit
     @collection.links.build if @collection.links.empty? # populate empty link
   end
