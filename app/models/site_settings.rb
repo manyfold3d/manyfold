@@ -13,5 +13,4 @@ class SiteSettings < RailsSettings::Base
   field :model_tags_auto_tag_new, type: :string, default: "!new"
   field :model_path_prefix_template, type: :string, default: "{tags}/{modelName}{modelId}"
   field :model_tags_tag_model_path_prefix, type: :boolean, default: true
-  field :model_path_suffix_model_id, type: :boolean, default: true
 end

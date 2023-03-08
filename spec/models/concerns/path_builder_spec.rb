@@ -70,13 +70,11 @@ RSpec.describe PathBuilder do
 
     it "includes model ID if option is included" do
       SiteSettings.model_path_prefix_template = "{modelName}{modelId}"
-      SiteSettings.model_path_suffix_model_id = true
       expect(model.formatted_path).to eq "batarang#1"
     end
 
     it "does not include model ID if option is deselected" do
       SiteSettings.model_path_prefix_template = "{modelName}"
-      SiteSettings.model_path_suffix_model_id = false
       expect(model.formatted_path).to eq "batarang"
     end
   end
