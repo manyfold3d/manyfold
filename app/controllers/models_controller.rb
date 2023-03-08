@@ -66,7 +66,6 @@ class ModelsController < ApplicationController
 
     add_tags = Set.new(hash.delete(:add_tags))
     remove_tags = Set.new(hash.delete(:remove_tags))
-    collection_list = Set.new(hash.delete(:collection_list)).compact_blank
 
     params[:models].each_pair do |id, selected|
       if selected == "1"
@@ -74,7 +73,6 @@ class ModelsController < ApplicationController
         if model.update(hash)
           existing_tags = Set.new(model.tag_list)
           model.tag_list = existing_tags + add_tags - remove_tags
-          model.collection_list = collection_list unless collection_list.empty?
           model.save
         end
       end
@@ -96,7 +94,6 @@ class ModelsController < ApplicationController
       :organize,
       add_tags: [],
       remove_tags: [],
-      collection_list: []
     ).compact_blank
   end
 
@@ -115,7 +112,6 @@ class ModelsController < ApplicationController
       :tag,
       :organize,
       :missingtag,
-      collection_list: [],
       tag_list: [],
       links_attributes: [:id, :url, :_destroy]
     )
@@ -186,10 +182,10 @@ class ModelsController < ApplicationController
       when nil
         nil # No collection, move along
       when ""
-        @models = @models.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='collections')<1")
+        @models = @models.where(collection_id: nil)
       else
-        @collection = ActsAsTaggableOn::Tag.for_context(:collections).find(@filters[:collection])
-        @models = @models.tagged_with(@collection, context: :collection) if @collection
+        @collection = Collection.find(@filters[:collection])
+        @models = @models.where(collection: @collection)
       end
 
       # Filter by creator

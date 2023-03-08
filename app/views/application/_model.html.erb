@@ -31,9 +31,9 @@
               <%= icon "person", "Creator" %>
               <%= link_to model.creator.name, models_path((@filters||{}).merge(creator: model.creator)) %><br/>
             <% end %>
-            <% if model.collections.count > 0 %>
+            <% if model.collection %>
               <%= icon "collection", "Collection" %>
-              <%= model.collections.map{ |c| link_to c.name.titleize, models_path((@filters||{}).merge(collection: c)) }.join(', ').html_safe %><br/>
+              <%= [*model.collection].map{ |c| link_to c.name, models_path((@filters||{}).merge(collection: c.id)) }.join(', ').html_safe %><br/>
             <% end %>
             <% if @library.nil? && model.library %>
               <%= icon "boxes", "Library" %>

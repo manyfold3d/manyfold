@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_07_215826) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_08_005021) do
+  create_table "collections", force: :cascade do |t|
+    t.string "name"
+    t.text "notes"
+    t.text "excerpt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "creators", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -82,6 +90,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_215826) do
     t.integer "creator_id"
     t.text "notes"
     t.text "caption"
+    t.integer "collection_id"
+    t.index ["collection_id"], name: "index_models_on_collection_id"
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
     t.index ["preview_file_id"], name: "index_models_on_preview_file_id"
@@ -147,6 +157,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_215826) do
   end
 
   add_foreign_key "model_files", "models"
+  add_foreign_key "models", "collections"
   add_foreign_key "models", "creators"
   add_foreign_key "models", "libraries"
   add_foreign_key "taggings", "tags"

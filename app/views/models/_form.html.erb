@@ -28,13 +28,7 @@
 
     <div class="row mb-3 input-group">
       <%= form.label :collections, class: "col-sm-2 col-form-label" %>
-      <%= form.collection_select :collection_list, ActsAsTaggableOn::Tag.for_context(:collections),
-        :name, :name, {}, {
-          multiple: true,
-          class: "form-select",
-          data: {selectize: "true"}
-        }
-      %>
+      <%= form.collection_select :collection_id, Collection.all, :id, :name, {include_blank: true, multiple: true}, {class: "form-control col-auto form-select"} %>
     </div>
 
     <%= render 'links_form', :form => form %>

@@ -23,10 +23,10 @@
           <%= link_to @model.creator.name, models_path((@filters||{}).merge(creator: @model.creator)) %>
         </p>
       <% end %>
-      <% if @model.collections.count > 0 %>
+      <% if @model.collection %>
         <p>
           <%= icon "collection", "Collections" %>
-          <%= @model.collections.map{ |c| link_to c.name.titleize, models_path((@filters||{}).merge(collection: c)) }.join(', ').html_safe %>
+          <%= [*@model.collection].map{ |c| link_to c.name, models_path((@filters||{}).merge(collection: c.id)) }.join(', ').html_safe %>
         </p>
       <% end %>
       <% if @model.library %>

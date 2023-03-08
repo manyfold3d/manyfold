@@ -17,10 +17,7 @@
       <tr>
         <td><%= form.check_box "models[#{model.id}]", { data: { bulk_item:  "#{model.id}"}}%></td>
         <td><%= link_to model.name, [model.library, model], title: model.path %></td>
-        <td><%= render partial: 'tag', 
-          collection: (SiteSettings.model_tags_cloud_sorting=="alphabetical") ?
-            model.collections.sort_by(&:name) : model.collections.sort_by(&:name).reverse.sort_by(&:taggings_count).reverse,
-          locals: {state: :normal, model_id: model.id } %></td>
+        <td><span><%= model.collection && model.collection.name %></span></td>
         <td><%= render partial: 'tag', 
           collection: (SiteSettings.model_tags_cloud_sorting=="alphabetical") ?
             model.tags.sort_by(&:name) : model.tags.sort_by(&:name).reverse.sort_by(&:taggings_count).reverse,
@@ -55,13 +52,7 @@
 
   <div class="row mb-3 input-group">
     <%= form.label :collections, class: "col-sm-2 col-form-label" %>
-    <%= form.collection_select :collection_list, ActsAsTaggableOn::Tag.for_context(:collections),
-      :name, :name, {}, {
-        multiple: true,
-        class: "form-select",
-        data: {selectize: "true"}
-      }
-    %>
+    <%= form.collection_select :collection_id, Collection.all, :id, :name, {include_blank: true, multiple: true}, {class: "form-control col-auto form-select"} %>
   </div>
 
   <div class="row mb-3">

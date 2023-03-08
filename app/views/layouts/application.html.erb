@@ -23,7 +23,7 @@
           <li class="nav-item">
             <%= link_to "#{icon('people', 'Creators')} Creators".html_safe, creators_path, class: (current_page?(creators_path) ? "nav-link active" : "nav-link") %>
           </li>
-          <% unless ActsAsTaggableOn::Tag.for_context(:collections).empty? %>
+          <% unless Collection.all.empty? %>
             <li class="nav-item">
               <%= link_to "#{icon('collection', 'Collections')} Collections".html_safe, collections_path, class: (current_page?(collections_path) ? "nav-link active" : "nav-link") %>
             </li>
