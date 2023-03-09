@@ -9,11 +9,11 @@ module PathBuilder
           File.join(tags.order(taggings_count: :desc).map(&:to_s).map(&:parameterize)) :
           "@untagged"
       when "{creator}"
-        creator&.name || "unset-creator"
+        creator&.name || "@unattributed"
       when "{collection}"
         (collections.count > 0) ?
           collections.map(&:name).join(",") :
-          "unset-collection"
+          "@uncollected"
       when "{modelName}"
         name.parameterize
       when "{modelId}"

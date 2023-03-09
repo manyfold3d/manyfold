@@ -46,7 +46,7 @@ RSpec.describe PathBuilder do
 
     it "includes creator error if set" do
       SiteSettings.model_path_template = "{creator}/{modelName}{modelId}"
-      expect(model.formatted_path).to eq "unset-creator/batarang#1"
+      expect(model.formatted_path).to eq "@unattributed/batarang#1"
     end
 
     it "handles zero tags" do
@@ -56,12 +56,12 @@ RSpec.describe PathBuilder do
 
     it "includes collection error if set" do
       SiteSettings.model_path_template = "{collection}/{modelName}{modelId}"
-      expect(model.formatted_path).to eq "unset-collection/batarang#1"
+      expect(model.formatted_path).to eq "@uncollected/batarang#1"
     end
 
     it "includes non-token information as literal text" do
       SiteSettings.model_path_template = "{tags}/{creator} - {collection} - {modelName}{modelId}"
-      expect(model.formatted_path).to eq "@untagged/unset-creator - unset-collection - batarang#1"
+      expect(model.formatted_path).to eq "@untagged/@unattributed - @uncollected - batarang#1"
     end
   end
 
