@@ -73,6 +73,7 @@
         <%= button_tag "Organize Files", class: "btn btn-warning", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move" %>
         <%= link_to "Search Yeggi", "https://yeggi.com/q/#{ERB::Util.url_encode(@model.name)}/", class: 'btn btn-secondary' %>
       <% end %>
+      <%= link_to "Delete", library_model_path(@library, @model), {method: :delete, class: "btn btn-danger", data: {confirm: "This will delete files. Are you sure you want to continue?"}} %>
     <% end %>
 
     <%= card(:secondary, 'Notes') do %>
