@@ -1,4 +1,4 @@
-require 'fileutils'
+require "fileutils"
 
 class ModelsController < ApplicationController
   before_action :get_library, except: [:index, :bulk_edit, :bulk_update]
