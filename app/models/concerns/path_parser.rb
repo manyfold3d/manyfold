@@ -7,15 +7,14 @@ module PathParser
   end
 
   def parse_metadata_from_path!
-    if SiteSettings.model_path_template
-      components = extract_path_components
-      if components[:tags].present?
-        tag_list.add(remove_stop_words(components[:tags]))
-      end
-      self.creator = Creator.find_or_create_by(name: components[:creator]) if components[:creator]
-      collection_list.add(components[:collection]) if components[:collection]
-      save!
+    return unless SiteSettings.model_path_template
+    components = extract_path_components
+    if components[:tags].present?
+      tag_list.add(remove_stop_words(components[:tags]))
     end
+    self.creator = Creator.find_or_create_by(name: components[:creator]) if components[:creator]
+    collection_list.add(components[:collection]) if components[:collection]
+    save!
   end
 end
 
