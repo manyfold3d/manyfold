@@ -9,31 +9,31 @@ RSpec.describe PathParser do
 
       it "skips single letter tags" do
         model = build(:model, path: "/library1/stuff/a")
-        model.autogenerate_tags_from_path!
+        model.generate_tags_from_directory_name!
         expect(model.tag_list).to eq []
       end
 
       it "generates tag from whitespace delimited file names" do
         model = build(:model, path: "/library1/stuff/this is a fantasy model")
-        model.autogenerate_tags_from_path!
+        model.generate_tags_from_directory_name!
         expect(model.tag_list).to eq ["this", "is", "fantasy", "model"]
       end
 
       it "generates tag from underscore delimited file names" do
         model = build(:model, path: "/library1/stuff/this_is_a_fantasy_model")
-        model.autogenerate_tags_from_path!
+        model.generate_tags_from_directory_name!
         expect(model.tag_list).to eq ["this", "is", "fantasy", "model"]
       end
 
       it "generates tag from plus delimited file names" do
         model = build(:model, path: "/library1/stuff/this+is+a+fantasy+model")
-        model.autogenerate_tags_from_path!
+        model.generate_tags_from_directory_name!
         expect(model.tag_list).to eq ["this", "is", "fantasy", "model"]
       end
 
       it "generates tag from hyphen delimited file names" do
         model = build(:model, path: "/library1/stuff/this-is-a-fantasy-model")
-        model.autogenerate_tags_from_path!
+        model.generate_tags_from_directory_name!
         expect(model.tag_list).to eq ["this", "is", "fantasy", "model"]
       end
     end
@@ -47,31 +47,31 @@ RSpec.describe PathParser do
 
       it "generates tags from whitespace delimited file names" do
         model = build(:model, path: "/library1/stuff/this is a fantasy model")
-        model.autogenerate_tags_from_path!
+        model.generate_tags_from_directory_name!
         expect(model.tag_list).to eq ["fantasy", "model"]
       end
 
       it "generates tags from underscore delimited file names" do
         model = build(:model, path: "/library1/stuff/this_is_a_fantasy_model")
-        model.autogenerate_tags_from_path!
+        model.generate_tags_from_directory_name!
         expect(model.tag_list).to eq ["fantasy", "model"]
       end
 
       it "generates tags from plus delimited file names" do
         model = build(:model, path: "/library1/stuff/this+is+a+fantasy+model")
-        model.autogenerate_tags_from_path!
+        model.generate_tags_from_directory_name!
         expect(model.tag_list).to eq ["fantasy", "model"]
       end
 
       it "generates tags from hyphen delimited file names" do
         model = build(:model, path: "/library1/stuff/this-is-a-fantasy-model")
-        model.autogenerate_tags_from_path!
+        model.generate_tags_from_directory_name!
         expect(model.tag_list).to eq ["fantasy", "model"]
       end
 
       it "generates tags and filters custom stop words" do
         model = build(:model, path: "/library1/stuff/this-is-a-scifi-chicken-model")
-        model.autogenerate_tags_from_path!
+        model.generate_tags_from_directory_name!
         expect(model.tag_list).to eq ["scifi", "model"]
       end
     end
