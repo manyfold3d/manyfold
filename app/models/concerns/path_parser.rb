@@ -1,18 +1,9 @@
 module PathParser
   extend ActiveSupport::Concern
 
-  def autogenerate_tags_from_path!
-    tags = []
-
-    # Auto-tag based on model directory name:
-    if SiteSettings.model_tags_tag_model_directory_name
-      tags = File.split(path).last.split(/[\W_+-]/).filter { |x| x.length > 1 }
-    end
-
-    unless tags.empty?
-      tag_list.add(remove_stop_words(tags))
-      save!
-    end
+  def generate_tags_from_directory_name!
+    tags = File.split(path).last.split(/[\W_+-]/).filter { |x| x.length > 1 }
+    tag_list.add(remove_stop_words(tags))
   end
 
   def parse_metadata_from_path!
