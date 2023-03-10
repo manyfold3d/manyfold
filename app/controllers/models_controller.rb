@@ -1,3 +1,5 @@
+require "fileutils"
+
 class ModelsController < ApplicationController
   before_action :get_library, except: [:index, :bulk_edit, :bulk_update]
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index]
@@ -84,6 +86,11 @@ class ModelsController < ApplicationController
 
   def destroy
     @model.destroy
+
+    # Delete directory corresponding to model
+    pathname = File.join(@library.path, @model.path)
+    FileUtils.remove_dir(pathname) if File.exist?(pathname)
+
     redirect_to library_path(@library)
   end
 
