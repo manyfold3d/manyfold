@@ -11,8 +11,8 @@ RSpec.describe LibraryScanJob do
 
   it "can scan a library directory" do
     expect { described_class.perform_now(library) }.to change { library.models.count }.to(4)
-    expect(library.models.map(&:name)).to match_array ["Model One", "Model Two", "Nested Model", "Thingiverse Model"]
-    expect(library.models.map(&:path)).to match_array ["/model_one", "/subfolder/model_two", "/model_one/nested_model", "/thingiverse_model"]
+    expect(library.models.map(&:name)).to contain_exactly("Model One", "Model Two", "Nested Model", "Thingiverse Model")
+    expect(library.models.map(&:path)).to contain_exactly("/model_one", "/subfolder/model_two", "/model_one/nested_model", "/thingiverse_model")
   end
 
   it "queues up model scans" do

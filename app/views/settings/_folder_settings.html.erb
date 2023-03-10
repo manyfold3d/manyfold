@@ -1,0 +1,51 @@
+<div class="card">
+  <h3 class="card-header">Folder naming</h3>
+  <div class="card-body">
+    <p class='lead'>
+      Define the folder structure used by "organise files" and for auto-populating metadata during scan. Affects all users.
+    </p>
+    <p>
+      Folder structure follows a template that you define using tokens. You can also include other text in the
+      template (such as folder separators) and it will be included as-is.
+    </p>
+    <ul>
+      <li>
+        <code>{tags}</code>: a series of nested folders, one for each tag, arranged in order of tag popularity.
+        For example: <code>fantasy/human/wizard</code>
+      </li>
+      <li>
+        <code>{creator}</code>: The name of the creator, if set.
+      </li>
+      <li>
+        <code>{collection}</code>: The title of the collection the model is in, if set.
+      </li>
+      <li>
+        <code>{modelName}</code>: A filesystem-safe version of the model name.
+      </li>
+      <li>
+        <code>{modelId}</code>: A unique numerical identifier for the model. We strongly
+        recommend always including this at the end of your template to avoid name conflicts on disk.
+      </li>
+    </ul>
+    <div class="row mb-2">
+      <%= form.label "Model path template", for: "folders[model_path_template]", class: "col-sm-4 col-form-label"%>
+      <div class="col-sm-8 form-check form-switch">
+        <%= form.text_field "folders[model_path_template]", value: SiteSettings.model_path_template, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <%= form.label "Populate metadata from path and template during scan", for: "folders[parse_metadata_from_path]", class: "col-sm-4 col-form-label"%>
+      <div class="col-sm-8 form-check form-switch">
+        <%= form.check_box "folders[parse_metadata_from_path]", checked: SiteSettings.parse_metadata_from_path, class: "form-check-input" %>
+        <small>Sets creator, collection, and tags based on template</small>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <%= form.label "Use safe folder names", for: "folders[safe_folder_names]", class: "col-sm-4 col-form-label"%>
+      <div class="col-sm-8 form-check form-switch">
+        <%= form.check_box "folders[safe_folder_names]", checked: SiteSettings.safe_folder_names, class: "form-check-input" %>
+        <small>e.g. <code>spinal-tap</code> instead of <code>Spın̈al Tap</code></small>
+      </div>
+    </div>
+  </div>
+</div>
