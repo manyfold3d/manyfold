@@ -12,7 +12,7 @@ RSpec.describe PathBuilder do
 
     it "includes creator if set" do
       SiteSettings.model_path_template = "{creator}/{modelName}{modelId}"
-      expect(model.formatted_path).to eq "Bruce Wayne/batarang#1"
+      expect(model.formatted_path).to eq "bruce-wayne/batarang#1"
     end
 
     it "includes tags if set" do
@@ -27,12 +27,12 @@ RSpec.describe PathBuilder do
 
     it "includes multiple metadata types if set" do
       SiteSettings.model_path_template = "{collection}/{creator}/{tags}/{modelName}{modelId}"
-      expect(model.formatted_path).to eq "gadgets/Bruce Wayne/bat/weapon/batarang#1"
+      expect(model.formatted_path).to eq "gadgets/bruce-wayne/bat/weapon/batarang#1"
     end
 
     it "includes non-token information as literal text" do
       SiteSettings.model_path_template = "{tags}/{creator} - {collection} - {modelName}{modelId}"
-      expect(model.formatted_path).to eq "bat/weapon/Bruce Wayne - gadgets - batarang#1"
+      expect(model.formatted_path).to eq "bat/weapon/bruce-wayne - gadgets - batarang#1"
     end
 
     it "treats unknown tokens as literal text" do
