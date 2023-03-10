@@ -362,6 +362,7 @@ GEM
       rubocop-capybara (~> 2.17)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
+    rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -460,6 +461,7 @@ DEPENDENCIES
   rubocop-i18n
   rubocop-rails
   rubocop-rspec
+  rubyzip (~> 2.3)
   sass-rails (>= 6)
   simplecov (~> 0.22.0)
   spring

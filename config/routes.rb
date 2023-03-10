@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
+  resources :uploads, only: [:index, :create]
   resources :libraries do
     member do
       post "scan"
