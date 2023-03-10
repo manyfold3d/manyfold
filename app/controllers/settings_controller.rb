@@ -25,6 +25,7 @@ class SettingsController < ApplicationController
     if current_user.admin? && params[:folders]
       SiteSettings.model_path_template = params[:folders][:model_path_template].gsub(/^\//, "") # Remove leading slashes
       SiteSettings.parse_metadata_from_path = params[:folders][:parse_metadata_from_path]
+      SiteSettings.safe_folder_names = params[:folders][:safe_folder_names]
     end
     if params[:renderer]
       @user.renderer_settings["grid_width"] = params[:renderer][:grid_width].to_i

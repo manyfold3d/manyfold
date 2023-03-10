@@ -37,6 +37,14 @@
       <%= form.label "Populate metadata from path and template during scan", for: "folders[parse_metadata_from_path]", class: "col-sm-4 col-form-label"%>
       <div class="col-sm-8 form-check form-switch">
         <%= form.check_box "folders[parse_metadata_from_path]", checked: SiteSettings.parse_metadata_from_path, class: "form-check-input" %>
+        <small>Sets creator, collection, and tags based on template</small>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <%= form.label "Use safe folder names", for: "folders[safe_folder_names]", class: "col-sm-4 col-form-label"%>
+      <div class="col-sm-8 form-check form-switch">
+        <%= form.check_box "folders[safe_folder_names]", checked: SiteSettings.safe_folder_names, class: "form-check-input" %>
+        <small>e.g. <code>spinal-tap</code> instead of <code>Spın̈al Tap</code></small>
       </div>
     </div>
   </div>

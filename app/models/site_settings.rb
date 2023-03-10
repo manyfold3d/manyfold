@@ -13,4 +13,5 @@ class SiteSettings < RailsSettings::Base
   field :model_tags_auto_tag_new, type: :string, default: "!new"
   field :model_path_template, type: :string, default: "{tags}/{modelName}{modelId}"
   field :parse_metadata_from_path, type: :boolean, default: true
+  field :safe_folder_names, type: :boolean, default: true
 end

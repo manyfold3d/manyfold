@@ -78,4 +78,28 @@ RSpec.describe PathBuilder do
       expect(model.formatted_path).to eq "batarang"
     end
   end
+
+  context "when creating folders" do
+    let(:model) {
+      create(:model,
+        name: "Bat-a-rang",
+        creator: create(:creator, name: "Bruce Wayne"),
+        tag_list: ["bat", "weapon"],
+        collection_list: ["Wonderful Toys"])
+    }
+
+    before do
+      SiteSettings.model_path_template = "{creator}/{collection}/{tags}/{modelName}{modelId}"
+    end
+
+    it "uses safe names in path if safe_folder_names is set" do
+      SiteSettings.safe_folder_names = true
+      expect(model.formatted_path).to eq "bruce-wayne/wonderful-toys/bat/weapon/bat-a-rang#1"
+    end
+
+    it "uses unmodified names in path names if safe_folder_names is not set" do
+      SiteSettings.safe_folder_names = false
+      expect(model.formatted_path).to eq "Bruce Wayne/wonderful toys/bat/weapon/Bat-a-rang#1"
+    end
+  end
 end
