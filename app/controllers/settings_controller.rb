@@ -23,7 +23,7 @@ class SettingsController < ApplicationController
       SiteSettings.model_tags_auto_tag_new = params[:model_tags][:auto_tag_new]
     end
     if current_user.admin? && params[:folders]
-      SiteSettings.model_path_template = params[:folders][:model_path_template]
+      SiteSettings.model_path_template = params[:folders][:model_path_template].gsub(/^\//, "") # Remove leading slashes
       SiteSettings.parse_metadata_from_path = params[:folders][:parse_metadata_from_path]
     end
     if params[:renderer]
