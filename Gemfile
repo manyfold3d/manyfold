@@ -48,7 +48,9 @@ group :development, :test do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-i18n", require: false
+  gem "rubocop-performance", "~> 1.15", require: false
   gem "i18n-tasks", "~> 1.0"
+  gem "simplecov", "~> 0.22.0", require: false
 end
 
 group :development do
@@ -86,7 +88,5 @@ gem "activeadmin", "~> 2.13"
 gem "kaminari", "~> 1.2"
 
 gem "lograge", "~> 0.12.0"
-
-gem "simplecov", "~> 0.22.0", group: :test, require: false
 
 gem "sqlite3_ar_regexp", "~> 2.2"

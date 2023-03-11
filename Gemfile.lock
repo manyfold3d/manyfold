@@ -459,6 +459,7 @@ DEPENDENCIES
   redis (~> 5.0)
   rspec-rails
   rubocop-i18n
+  rubocop-performance (~> 1.15)
   rubocop-rails
   rubocop-rspec
   rubyzip (~> 2.3)
