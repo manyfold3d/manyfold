@@ -63,7 +63,7 @@ GEM
     activerecord (7.0.4.2)
       activemodel (= 7.0.4.2)
       activesupport (= 7.0.4.2)
-    activerecord-nulldb-adapter (0.8.0)
+    activerecord-nulldb-adapter (0.9.0)
       activerecord (>= 5.2.0, < 7.1)
     activestorage (7.0.4.2)
       actionpack (= 7.0.4.2)
@@ -221,7 +221,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.1)
-    minitest (5.17.0)
+    minitest (5.18.0)
     msgpack (1.6.0)
     nenv (0.3.0)
     net-imap (0.3.4)
@@ -428,7 +428,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (~> 2.13)
-  activerecord-nulldb-adapter (~> 0.8.0)
+  activerecord-nulldb-adapter (~> 0.9.0)
   acts-as-taggable-on (~> 9.0)
   bootsnap (>= 1.4.4)
   byebug
