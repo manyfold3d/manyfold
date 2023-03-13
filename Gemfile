@@ -73,7 +73,7 @@ gem "public_suffix", "~> 5.0"
 
 gem "delayed_job_active_record", "~> 4.1"
 
-gem "activerecord-nulldb-adapter", "~> 0.8.0"
+gem "activerecord-nulldb-adapter", "~> 0.9.0"
 
 gem "memoist", "~> 0.16.2"
 gem "stopwords-filter", require: "stopwords"
