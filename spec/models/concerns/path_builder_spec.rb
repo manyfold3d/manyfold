@@ -7,7 +7,7 @@ RSpec.describe PathBuilder do
         name: "Batarang",
         creator: create(:creator, name: "Bruce Wayne"),
         tag_list: ["bat", "weapon"],
-        collection_list: ["gadgets"])
+        collection: create(:collection, name: "gadgets"))
     }
 
     it "includes creator if set" do
@@ -85,7 +85,7 @@ RSpec.describe PathBuilder do
         name: "Bat-a-rang",
         creator: create(:creator, name: "Bruce Wayne"),
         tag_list: ["bat", "weapon"],
-        collection_list: ["Wonderful Toys"])
+        collection: create(:collection, name: "Wonderful Toys"))
     }
 
     before do
