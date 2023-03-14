@@ -152,14 +152,14 @@ RSpec.describe PathParser do
     it "parses collection" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{collection}/{modelName}{modelId}")
       model.parse_metadata_from_path!
-      expect(model.collection.name).to eq ["greedy"]
+      expect(model.collection.name).to eq "greedy"
     end
 
     it "parses everything at once" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{collection}/{tags}/{modelName}{modelId}")
       model.parse_metadata_from_path!
       expect(model.creator.name).to eq "library1"
-      expect(model.collection.name).to eq ["stuff"]
+      expect(model.collection.name).to eq "stuff"
       expect(model.tag_list).to eq ["tags", "are", "greedy"]
     end
 
