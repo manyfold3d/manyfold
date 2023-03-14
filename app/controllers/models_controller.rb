@@ -115,7 +115,7 @@ class ModelsController < ApplicationController
       :name,
       :caption,
       :notes,
-      :collection,
+      :collection_id,
       :q,
       :library,
       :creator,
