@@ -2,7 +2,7 @@
 <%- filters[:tag] ||= [] %>
 <%=
   name = SiteSettings.model_tags_cloud_keypair ? tag.name.gsub(/^.*:/,"") : tag.name
-  link_to SiteSettings.model_tags_cloud_heatmap ? "#{name} (#{Model.tagged_with(tag.name).count})" : name,
+  link_to SiteSettings.model_tags_cloud_heatmap ? "#{name} (#{tag.taggings_count})" : name,
     models_path(filters.merge(tag: filters[:tag] | [tag.name])),
     {
       class: "badge rounded-pill #{tag_class(state)} tag",
