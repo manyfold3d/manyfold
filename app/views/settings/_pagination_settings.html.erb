@@ -20,6 +20,12 @@
       </div>
     </div>
     <div class="row">
+      <%= form.label "Paginate collections", for: "pagination[collections]", class: "col col-form-label"%>
+      <div class="col form-check form-switch">
+        <%= form.check_box "pagination[collections]", checked: @user.pagination_settings["collections"], class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="row">
       <%= form.label "Items per page", for: "pagination[per_page]", class: "col col-form-label"%>
       <div class="col">
         <%= form.number_field "pagination[per_page]", value: @user.pagination_settings["per_page"], in: 1..100, class: 'form-control' %>

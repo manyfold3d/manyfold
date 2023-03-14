@@ -1,19 +1,18 @@
 require "rails_helper"
 
 RSpec.describe "Collections" do
-  describe "GET /show" do
-    it "returns http success" do
-      pending
-      get "/collections/show"
-      expect(response).to have_http_status(:success)
+  before :all do
+    create_list(:collection, 13) do |collection|
+      create_list(:link, 1, linkable: collection)
+      create_list(:model, 1, collection: collection)
     end
   end
 
-  describe "GET /index" do
-    it "returns http success" do
-      pending
-      get "/collections/index"
+  describe "GET /collections?page=2" do
+    it "returns paginated collections" do
+      get "/collections?page=2"
       expect(response).to have_http_status(:success)
+      expect(response.body).to match(/pagination/)
     end
   end
 end

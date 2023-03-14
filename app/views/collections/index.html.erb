@@ -14,6 +14,7 @@
 	      <%= render partial: 'collection', collection: @collections %>
     </div>
   </div>
-  <div class="col-3">
-  </div>
+  <% if current_user.pagination_settings["collections"] %>
+    <%= paginate @collections %>
+  <% end %>
 </div>

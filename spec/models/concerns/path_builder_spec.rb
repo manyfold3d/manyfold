@@ -99,7 +99,7 @@ RSpec.describe PathBuilder do
 
     it "uses unmodified names in path names if safe_folder_names is not set" do
       SiteSettings.safe_folder_names = false
-      expect(model.formatted_path).to eq "Bruce Wayne/wonderful toys/bat/weapon/Bat-a-rang#1"
+      expect(model.formatted_path).to eq "Bruce Wayne/Wonderful Toys/bat/weapon/Bat-a-rang#1"
     end
   end
 end

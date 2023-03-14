@@ -11,9 +11,7 @@ module PathBuilder
       when "{creator}"
         safe(creator&.name) || "@unattributed"
       when "{collection}"
-        (collections.count > 0) ?
-          collections.map(&:name).map { |s| safe(s) }.join(",") :
-          "@uncollected"
+        safe(collection&.name) || "@uncollected"
       when "{modelName}"
         safe(name)
       when "{modelId}"
