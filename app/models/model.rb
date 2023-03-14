@@ -72,7 +72,7 @@ class Model < ApplicationRecord
       old_path = File.join(Library.find(library_id_was).path, path)
       new_path = File.join(library.path, formatted_path)
       # This test added because move_files is somehow getting called twice on bulk_update
-      if(old_path != new_path)
+      if old_path != new_path
         create_folder_if_necessary(File.dirname(new_path))
         if !File.exist?(new_path)
           File.rename(old_path, new_path)
