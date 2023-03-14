@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_13_000000) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_13_000001) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -150,7 +150,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_000000) do
     t.datetime "updated_at", null: false
     t.string "username", null: false
     t.boolean "admin", default: false
-    t.json "pagination_settings", default: {"models"=>true, "creators"=>true, "per_page"=>12}
+    t.json "pagination_settings", default: {"models"=>true, "creators"=>true, "collections"=>true, "per_page"=>12}
     t.json "renderer_settings", default: {"grid_width"=>200, "grid_depth"=>200}
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

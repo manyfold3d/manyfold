@@ -39,6 +39,7 @@ class ModelsController < ApplicationController
 
   def edit
     @creators = Creator.all
+    @collections = Collection.all
     @model.links.build if @model.links.empty? # populate empty link
   end
 
@@ -58,6 +59,7 @@ class ModelsController < ApplicationController
 
   def bulk_edit
     @creators = Creator.all
+    @collections = Collection.all
     @models = Model.all
     process_filters
   end
@@ -97,6 +99,7 @@ class ModelsController < ApplicationController
   def bulk_update_params
     params.permit(
       :creator_id,
+      :collection_id,
       :new_library_id,
       :organize,
       add_tags: [],
