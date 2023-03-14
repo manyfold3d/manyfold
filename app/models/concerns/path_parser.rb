@@ -52,8 +52,10 @@ module PathParser
         creator ||= Creator.create(name: creatornew)
         self.creator_id = creator.id
       end
-      unless collectionnew.empty? && !collection_list
-        collection_list.add(collectionnew)
+      unless collectionnew.empty?
+        collection = Collection.find_by(name: collectionnew)
+        collection ||= Collection.create(name: collectionnew)
+        self.collection_id = collection.id
       end
       save!
     end
