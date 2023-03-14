@@ -50,6 +50,7 @@ You can run all the dependencies in one go using `docker-compose`:
 - Node.js 16.x
 - Yarn >= 1.22
 - Foreman or [another Procfile runner](https://github.com/ddollar/foreman#ports)
+- [libarchive](https://github.com/chef/ffi-libarchive#installation) (for upload support)
 
 ### Usage
 
