@@ -1,53 +1,53 @@
 name: Ruby
 
 on:
-- push
-- pull_request
+  - push
+  - pull_request
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.1.2
-        bundler-cache: true
-    - name: Set up Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18.12.1
-    - name: Install yarn packages
-      run: yarn install
-    - name: Check typescript
-      run: yarn typecheck
-    - name: Compile assets
-      run: bundle exec rails assets:precompile
-    - name: Set up database
-      run: bundle exec rails db:setup
-    - name: Migrate database
-      run: bundle exec rails db:migrate:with_data
-    - name: Run tests
-      uses: paambaati/codeclimate-action@v3.2.0
-      with:
-        coverageCommand: bundle exec rake
-      env:
-        CC_TEST_REPORTER_ID: a2ff22eaab926117741bb1aeefe8b95662c954aaa01fd37a393763b197436584
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2
+          bundler-cache: true
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: Install yarn packages
+        run: yarn install
+      - name: Check typescript
+        run: yarn typecheck
+      - name: Compile assets
+        run: bundle exec rails assets:precompile
+      - name: Set up database
+        run: bundle exec rails db:setup
+      - name: Migrate database
+        run: bundle exec rails db:migrate:with_data
+      - name: Run tests
+        uses: paambaati/codeclimate-action@v3.2.0
+        with:
+          coverageCommand: bundle exec rake
+        env:
+          CC_TEST_REPORTER_ID: a2ff22eaab926117741bb1aeefe8b95662c954aaa01fd37a393763b197436584
   lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.1.2
-        bundler-cache: true
-    - name: Set up Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18.12.1
-    - name: Install yarn packages
-      run: yarn install
-    - name: Lint Ruby code
-      run: bundle exec standardrb
-    - name: Lint Typescript code
-      run: yarn run ts-standard
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2
+          bundler-cache: true
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: Install yarn packages
+        run: yarn install
+      - name: Lint Ruby code
+        run: bundle exec rake rubocop
+      - name: Lint Typescript code
+        run: yarn run lint:ts

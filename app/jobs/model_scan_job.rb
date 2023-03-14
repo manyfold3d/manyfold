@@ -41,14 +41,14 @@ class ModelScanJob < ApplicationJob
     model.model_files.reload
     model.preview_file = model.model_files.min_by { |x| x.is_image? ? 0 : 1 } unless model.preview_file
     if model.tags.empty?
-      model.autogenerate_tags_from_path!
+      model.generate_tags_from_directory_name! if SiteSettings.model_tags_tag_model_directory_name
       if SiteSettings.model_tags_auto_tag_new.present?
         model.tag_list << SiteSettings.model_tags_auto_tag_new
         model.save!
       end
     end
-    if !model.creator_id
-      model.autogenerate_creator_from_prefix_template!
+    if !model.creator_id && SiteSettings.parse_metadata_from_path
+      model.parse_metadata_from_path!
     end
     # If this model has no files, flag a problem
     if model.model_files.reload.count == 0

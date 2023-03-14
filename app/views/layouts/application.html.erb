@@ -39,6 +39,7 @@
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
+            <%= link_to "Upload", "/uploads", method: :get, class: "btn btn-warning btn-sm mt-1" %>
             <%= link_to (@scan_in_progress ? "<span class=\"spinner-border spinner-border-sm\" aria-hidden=\"true\"></span> Scanning".html_safe : "Scan"),
               scan_libraries_path, method: :post,
               class: "btn btn-warning btn-sm mt-1 #{"btn-outline-warning disabled" if @scan_in_progress}"

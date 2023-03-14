@@ -25,6 +25,8 @@ gem "redis", "~> 5.0"
 gem "dotenv-rails", "~> 2.8"
 gem "acts-as-taggable-on", "~> 9.0"
 
+gem "rubyzip", "~> 2.3"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.4", require: false
 
@@ -46,7 +48,9 @@ group :development, :test do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-i18n", require: false
+  gem "rubocop-performance", "~> 1.15", require: false
   gem "i18n-tasks", "~> 1.0"
+  gem "simplecov", "~> 0.22.0", require: false
 end
 
 group :development do
@@ -69,7 +73,7 @@ gem "public_suffix", "~> 5.0"
 
 gem "delayed_job_active_record", "~> 4.1"
 
-gem "activerecord-nulldb-adapter", "~> 0.8.0"
+gem "activerecord-nulldb-adapter", "~> 0.9.0"
 
 gem "memoist", "~> 0.16.2"
 gem "stopwords-filter", require: "stopwords"
@@ -84,7 +88,5 @@ gem "activeadmin", "~> 2.13"
 gem "kaminari", "~> 1.2"
 
 gem "lograge", "~> 0.12.0"
-
-gem "simplecov", "~> 0.22.0", group: :test, require: false
 
 gem "sqlite3_ar_regexp", "~> 2.2"

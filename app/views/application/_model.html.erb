@@ -23,6 +23,7 @@
           <div class='mt-2'>
             <%= link_to "Open", [model.library, model], {class: "btn btn-primary btn-sm"} %>
             <%= link_to "Edit", edit_library_model_path(model.library, model), {class: "btn btn-outline-secondary btn-sm"} %>
+            <%= link_to "Delete", library_model_path(model.library, model), {method: :delete, class: "btn btn-outline-danger btn-sm", data: {confirm: "This will delete files. Are you sure you want to continue?"}} %>
           </div>
         </div>
         <div class="col-auto">

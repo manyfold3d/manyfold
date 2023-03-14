@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-bundle exec rubocop --autocorrect
+bundle exec rake rubocop:autocorrect
 yarn run lint:ts

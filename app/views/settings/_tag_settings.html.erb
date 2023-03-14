@@ -2,8 +2,7 @@
   <h3 class="card-header">Tagging</h3>
   <div class="card-body">
     <p class='lead'>
-      Configure how auto-tagging works, and filters out certain words ("stop words"). Affects all users.<br />
-      Prefix elements: creator/collection/tags
+      Add tags to all newly-scanned models, and filter out certain words ("stop words") during automatic tag creation. Affects all users.
     </p>
     <div class="row mb-2">
       <%= form.label "Automatically tag new models with", for: "model_tags[auto_tag_new]", class: "col-sm-4 col-form-label"%>
@@ -12,27 +11,10 @@
       </div>
     </div>
     <div class="row mb-2">
-      <%= form.label "Tag keywords from model directory", for: "model_tags[tag_model_directory_name]", class: "col-sm-4 col-form-label"%>
+      <%= form.label "Create tags from model directory name", for: "model_tags[tag_model_directory_name]", class: "col-sm-4 col-form-label"%>
       <div class="col-sm-8 form-check form-switch">
         <%= form.check_box "model_tags[tag_model_directory_name]", checked: SiteSettings.model_tags_tag_model_directory_name, class: "form-check-input" %>
-      </div>
-    </div>
-    <div class="row mb-2">
-      <%= form.label "Model path prefix template", for: "model_tags[model_path_prefix_template]", class: "col-sm-4 col-form-label"%>
-      <div class="col-sm-8">
-        <%= form.text_field "model_tags[model_path_prefix_template]", value: SiteSettings.model_path_prefix_template, class: "form-control" %>
-      </div>
-    </div>
-    <div class="row mb-2">
-      <%= form.label "Use prefix template to populate creator/collection/tags", for: "model_tags[model_tags_tag_model_path_prefix]", class: "col-sm-4 col-form-label"%>
-      <div class="col-sm-8 form-check form-switch">
-        <%= form.check_box "model_tags[model_tags_tag_model_path_prefix]", checked: SiteSettings.model_tags_tag_model_path_prefix, class: "form-check-input" %>
-      </div>
-    </div>
-    <div class="row mb-2">
-      <%= form.label "Add model id as suffix for model directory", for: "model_tags[model_path_suffix_model_id]", class: "col-sm-4 col-form-label"%>
-      <div class="col-sm-8 form-check form-switch">
-        <%= form.check_box "model_tags[model_path_suffix_model_id]", checked: SiteSettings.model_path_suffix_model_id, class: "form-check-input" %>
+        <small>Warning: Can produce a lot of tags!</small>
       </div>
     </div>
     <div class="row mb-2">
@@ -76,6 +58,6 @@
       <div class="col-sm-8 form-check form-switch">
         <%= form.check_box "model_tags[cloud_keypair]", checked: SiteSettings.model_tags_cloud_keypair, class: "form-check-input" %>
       </div>
-    </div>    
+    </div>
   </div>
 </div>
