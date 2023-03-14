@@ -32,6 +32,7 @@ class UploadsController < ApplicationController
       end
     end
   ensure
-    reader.close
+    reader&.close
+    raise
   end
 end
