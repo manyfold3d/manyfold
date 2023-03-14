@@ -25,7 +25,7 @@ gem "redis", "~> 5.0"
 gem "dotenv-rails", "~> 2.8"
 gem "acts-as-taggable-on", "~> 9.0"
 
-gem "rubyzip", "~> 2.3"
+gem "ffi-libarchive", "~> 1.1"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.4", require: false
