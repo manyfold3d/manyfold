@@ -13,7 +13,7 @@ module PathParser
       tag_list.add(remove_stop_words(components[:tags]))
     end
     self.creator = Creator.find_or_create_by(name: components[:creator]) if components[:creator]
-    collection_list.add(components[:collection]) if components[:collection]
+    self.collection = Collection.find_or_create_by(name: components[:collection]) if components[:collection]
     save!
   end
 end
