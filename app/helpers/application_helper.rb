@@ -31,6 +31,8 @@ module ApplicationHelper
       "bg-primary"
     when :mute
       "border border-muted text-muted pe-none"
+    when :hide
+      "d-none"
     else
       "bg-secondary link-light"
     end
