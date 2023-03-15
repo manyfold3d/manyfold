@@ -1,5 +1,3 @@
-require "zip"
-
 class UploadsController < ApplicationController
   def create
     library = Library.find(params[:post][:library_pick])
@@ -25,14 +23,15 @@ class UploadsController < ApplicationController
   end
 
   def unzip(dest_folder_name, datafile)
+    flags = Archive::EXTRACT_PERM
+    reader = Archive::Reader.open_filename(datafile.path)
     Dir.mkdir(dest_folder_name)
-
-    Zip::File.open(datafile) do |zipfile|
-      zipfile.each do |f|
-        f_path = File.join(dest_folder_name, f.name)
-        FileUtils.mkdir_p(File.dirname(f_path))
-        zipfile.extract(f, f_path) unless File.exist?(f_path)
+    Dir.chdir(dest_folder_name) do
+      reader.each_entry do |entry|
+        reader.extract(entry, flags.to_i)
       end
     end
+  ensure
+    reader&.close
   end
 end
