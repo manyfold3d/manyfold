@@ -38,6 +38,7 @@ class SettingsController < ApplicationController
       "heatmap" => settings[:heatmap] == "1",
       "keypair" => settings[:keypair] == "1",
       "sorting" => settings[:sorting],
+      "hide_unrelated" => settings[:hide_unrelated] == "1"
     }
   end
 
@@ -63,10 +64,6 @@ class SettingsController < ApplicationController
 
   def update_tagging_settings(settings)
     return unless settings
-    SiteSettings.model_tags_cloud_threshhold = settings[:cloud_threshhold]
-    SiteSettings.model_tags_cloud_heatmap = settings[:cloud_heatmap] == "1"
-    SiteSettings.model_tags_cloud_keypair = settings[:cloud_keypair] == "1"
-    SiteSettings.model_tags_cloud_sorting = settings[:cloud_sorting]
     SiteSettings.model_tags_filter_stop_words = settings[:filter_stop_words] == "1"
     SiteSettings.model_tags_tag_model_directory_name = settings[:tag_model_directory_name] == "1"
     SiteSettings.model_tags_stop_words_locale = settings[:stop_words_locale]

@@ -14,6 +14,12 @@
       </div>
     </div>
     <div class="row mb-2">
+      <%= form.label "Hide unrelated tags in filtered lists", for: "tag_cloud[hide_unrelated]", class: "col-sm-8 col-form-label"%>
+      <div class="col-sm-4 form-check form-switch">
+        <%= form.check_box "tag_cloud[hide_unrelated]", checked: @user.tag_cloud_settings["hide_unrelated"], class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="row mb-2">
       <%= form.label "Sorting for tag cloud", for: "tag_cloud[sorting]", class: "col-sm-8 col-form-label"%>
       <div class="col-sm-4">
         <%= form.select "tag_cloud[sorting]", ["frequency","alphabetical"], selected: @user.tag_cloud_settings["sorting"], class: "form-select" %>
