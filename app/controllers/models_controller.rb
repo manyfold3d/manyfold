@@ -19,8 +19,8 @@ class ModelsController < ApplicationController
     else
       Model.includes(:tags)
     end
-    @tags = @tags.map(&:tags).flatten.uniq.select { |x| x.taggings_count >= SiteSettings.model_tags_cloud_threshhold }
-    @tags = case SiteSettings.model_tags_cloud_sorting
+    @tags = @tags.map(&:tags).flatten.uniq.select { |x| x.taggings_count >= current_user.tag_cloud_settings["threshold"] }
+    @tags = case current_user.tag_cloud_settings["sorting"]
     when "alphabetical"
       @tags.sort_by(&:name)
     else

@@ -9,6 +9,7 @@ class SettingsController < ApplicationController
     # Save personal settings
     update_pagination_settings(params[:pagination])
     update_renderer_settings(params[:renderer])
+    update_tag_cloud_settings(params[:tag_cloud])
     @user.save!
     # Save site-wide settings if user is an admin
     if current_user.admin?
@@ -27,6 +28,16 @@ class SettingsController < ApplicationController
       "creators" => settings[:creators] == "1",
       "collections" => settings[:collections] == "1",
       "per_page" => settings[:per_page].to_i
+    }
+  end
+
+  def update_tag_cloud_settings(settings)
+    return unless settings
+    @user.tag_cloud_settings = {
+      "threshold" => settings[:threshold].to_i,
+      "heatmap" => settings[:heatmap] == "1",
+      "keypair" => settings[:keypair] == "1",
+      "sorting" => settings[:sorting],
     }
   end
 
