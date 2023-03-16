@@ -13,6 +13,7 @@ RSpec/BeforeAfterAll:
     - "spec/jobs/model_file_scan_job_spec.rb"
     - "spec/jobs/model_scan_job_spec.rb"
     - "spec/requests/creators_request_spec.rb"
+    - "spec/requests/collections_request_spec.rb"
     - "spec/requests/libraries_request_spec.rb"
     - "spec/requests/models_request_spec.rb"
 
@@ -76,6 +77,7 @@ Rails/OutputSafety:
 Rails/ReversibleMigration:
   Exclude:
     - "db/migrate/20220106220519_remove_images_table.rb"
+    - "db/migrate/20230313000001_change_pagination_settings_on_user.rb"
 
 # Offense count: 2
 # Configuration parameters: ForbiddenMethods, AllowedMethods.

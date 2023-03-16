@@ -1,0 +1,22 @@
+<%= form_with model: @collection do |form| %>
+    <form>
+      <div class="row mb-3 input-group">
+        <%= form.label :name, class: "col-sm-2 col-form-label" %>
+        <%= form.text_field :name, class: "form-control col-auto" %>
+      </div>
+
+      <%= render 'links_form', :form => form %>
+
+      <div class="row mb-3 input-group">
+        <%= form.label :caption, class: "col-sm-2 col-form-label" %>
+        <%= form.text_field :caption, class: "form-control col-auto" %>
+      </div>
+
+      <div class="row mb-3 input-group">
+        <%= form.label :notes, class: "col-sm-2 col-form-label" %>
+        <%= form.text_area :notes, class: "form-control col-auto" %>
+      </div>
+
+    <%= form.submit "Save", class: "btn btn-primary" %>
+    </form>
+  <% end %>

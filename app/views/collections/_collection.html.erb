@@ -1,8 +1,8 @@
-<% model = Model.tagged_with(collection, context: :collection).first %>
+<% model = collection.models.first %>
 <div class="col mb-4">
   <div class="card model-card">
 
-    <% if file = model.preview_file %>
+    <% if model && (file = model.preview_file) %>
       <% if file.is_image? %>
         <%= image_tag library_model_model_file_path(model.library, model, file, format: file.extension), class: "card-img-top image-preview ", alt: file.name %>
       <% elsif renderable?(file.extension) %>
@@ -15,9 +15,21 @@
     <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= collection.name.titleize %></h5>
-      <p class="card-text"><%= pluralize Model.tagged_with(collection, context: :collection).count, "model" %></p>
+      <% if collection.caption %>
+        <h6 class="card-subtitle mb-2 text-muted"><%= sanitize collection.caption %></h6>
+      <% end %>
+      <% if collection.notes && collection.notes != "" %>
+        <p class="card-text"><%= sanitize collection.notes %></p>
+      <% end %>
+      <ul class='links'>
+        <% collection.links.each do |link| %>
+          <li><%= link_to t("sites.#{link.site}"), link.url %></li>
+        <% end %>
+      </ul>
+      <p class="card-text"><%= pluralize collection.models.count, "model" %></p>
       <div>
         <%= link_to "Open", (@filters||{}).merge(controller: 'models', collection: collection.id), class: "btn btn-primary" %>
+        <%= link_to "Edit", edit_collection_path(collection), {class: "btn btn-outline-secondary"} %>
       </div>
     </div>
   </div>

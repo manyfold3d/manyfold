@@ -7,7 +7,7 @@ RSpec.describe PathBuilder do
         name: "Batarang",
         creator: create(:creator, name: "Bruce Wayne"),
         tag_list: ["bat", "weapon"],
-        collection_list: ["gadgets"])
+        collection: create(:collection, name: "gadgets"))
     }
 
     it "includes creator if set" do
@@ -85,7 +85,7 @@ RSpec.describe PathBuilder do
         name: "Bat-a-rang",
         creator: create(:creator, name: "Bruce Wayne"),
         tag_list: ["bat", "weapon"],
-        collection_list: ["Wonderful Toys"])
+        collection: create(:collection, name: "Wonderful Toys"))
     }
 
     before do
@@ -99,7 +99,7 @@ RSpec.describe PathBuilder do
 
     it "uses unmodified names in path names if safe_folder_names is not set" do
       SiteSettings.safe_folder_names = false
-      expect(model.formatted_path).to eq "Bruce Wayne/wonderful toys/bat/weapon/Bat-a-rang#1"
+      expect(model.formatted_path).to eq "Bruce Wayne/Wonderful Toys/bat/weapon/Bat-a-rang#1"
     end
   end
 end

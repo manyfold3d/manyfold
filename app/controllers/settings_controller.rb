@@ -25,6 +25,7 @@ class SettingsController < ApplicationController
     @user.pagination_settings = {
       "models" => settings[:models] == "1",
       "creators" => settings[:creators] == "1",
+      "collections" => settings[:collections] == "1",
       "per_page" => settings[:per_page].to_i
     }
   end

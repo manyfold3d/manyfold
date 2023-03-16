@@ -5,6 +5,7 @@ class Model < ApplicationRecord
 
   belongs_to :library
   belongs_to :creator, optional: true
+  belongs_to :collection, optional: true
   has_many :model_files, dependent: :destroy
   belongs_to :preview_file, class_name: "ModelFile", optional: true
   validates :name, presence: true
