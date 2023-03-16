@@ -4,7 +4,8 @@
 <%= form_with url: user_settings_path(user: @user), method: :patch do |form| %>
   <div class="row mb-4">
     <div class="col">
-      <%= render "pagination_settings", form: form %>
+    	<%= render "pagination_settings", form: form %>
+      <%= render "tag_cloud_settings", form: form %>
     </div>
     <div class="col">
       <%= render "renderer_settings", form: form %>

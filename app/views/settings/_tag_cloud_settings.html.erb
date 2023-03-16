@@ -1,0 +1,35 @@
+<div class="card">
+  <h3 class="card-header">Tag Cloud</h3>
+  <div class="card-body">
+    <div class="row mb-2">
+      <%= form.label "Minimum count of tag for display in tag cloud", for: "tag_cloud[threshold]", class: "col-sm-8 col-form-label"%>
+      <div class="col-sm-4">
+        <%= form.text_field "tag_cloud[threshold]", value: @user.tag_cloud_settings["threshold"], class: "form-control" %>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <%= form.label "Display tag count for individual tags in tag cloud", for: "tag_cloud[heatmap]", class: "col-sm-8 col-form-label"%>
+      <div class="col-sm-4 form-check form-switch">
+        <%= form.check_box "tag_cloud[heatmap]", checked: @user.tag_cloud_settings["heatmap"], class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <%= form.label "Hide unrelated tags in filtered lists", for: "tag_cloud[hide_unrelated]", class: "col-sm-8 col-form-label"%>
+      <div class="col-sm-4 form-check form-switch">
+        <%= form.check_box "tag_cloud[hide_unrelated]", checked: @user.tag_cloud_settings["hide_unrelated"], class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <%= form.label "Sorting for tag cloud", for: "tag_cloud[sorting]", class: "col-sm-8 col-form-label"%>
+      <div class="col-sm-4">
+        <%= form.select "tag_cloud[sorting]", ["frequency","alphabetical"], selected: @user.tag_cloud_settings["sorting"], class: "form-select" %>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <%= form.label "Use delimiter to represent keypairs tag cloud", for: "tag_cloud[keypair]", class: "col-sm-8 col-form-label"%>
+      <div class="col-sm-4 form-check form-switch">
+        <%= form.check_box "tag_cloud[keypair]", checked: @user.tag_cloud_settings["keypair"], class: "form-check-input" %>
+      </div>
+    </div>
+  </div>
+</div>
