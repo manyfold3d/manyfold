@@ -23,7 +23,7 @@
           <li class="nav-item">
             <%= link_to "#{icon('people', 'Creators')} Creators".html_safe, creators_path, class: (current_page?(creators_path) ? "nav-link active" : "nav-link") %>
           </li>
-          <% unless Collection.all.empty? %>
+          <% if Collection.count > 0 %>
             <li class="nav-item">
               <%= link_to "#{icon('collection', 'Collections')} Collections".html_safe, collections_path, class: (current_page?(collections_path) ? "nav-link active" : "nav-link") %>
             </li>
