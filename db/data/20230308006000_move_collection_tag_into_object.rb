@@ -5,10 +5,7 @@ class MoveCollectionTagIntoObject < ActiveRecord::Migration[7.0]
     Model.all.each do |model|
       if defined?(model.collections) && !model.collection
         model.collections.each do |collection|
-          newcol = Collection.find_by name: collection.name
-          if !newcol
-            newcol = Collection.create(name: collection.name)
-          end
+          newcol = Collection.find_or_create_by name: collection.name
           newcol.models << model
           newcol.save
         end
