@@ -34,7 +34,7 @@
             <% end %>
             <% if model.collection %>
               <%= icon "collection", "Collection" %>
-              <%= [*model.collection].map{ |c| link_to c.name, models_path((@filters||{}).merge(collection: c.id)) }.join(', ').html_safe %><br/>
+              <%= link_to model.collection.name, models_path((@filters||{}).merge(collection: model.collection.id)) %><br/>
             <% end %>
             <% if @library.nil? && model.library %>
               <%= icon "boxes", "Library" %>
