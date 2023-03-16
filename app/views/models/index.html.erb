@@ -47,7 +47,7 @@
           <% if @filters[:collection] %>
             <tr>
               <td><%= icon "collection", "Collection" %> Collection</td>
-              <td><%= @collection ? link_to @collection.name.titleize, models_path({collection: @collection.id}) : "Unknown" %></td>
+              <td><%= if @collection then link_to @collection.name, models_path({collection: @collection.id}) else "Unknown" end %></td>
               <td><%= link_to icon("trash", "Remove filter"), @filters.except(:collection), {class: "text-danger"} %></td>
             </tr>
           <% end %>
