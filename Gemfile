@@ -39,7 +39,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "sqlite3", "~> 1.6"
   gem "rspec-rails"
-  gem "standard", "~> 1.24.3"
+  gem "standard", "~> 1.25.0"
   gem "factory_bot"
   gem "faker", "~> 3.1"
   gem "guard", "~> 2.18"
