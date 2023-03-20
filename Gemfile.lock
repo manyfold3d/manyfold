@@ -397,7 +397,7 @@ GEM
     sqlite3_ar_regexp (2.2.0)
       activerecord (>= 3.2)
       sqlite3
-    standard (1.25.0)
+    standard (1.25.2)
       language_server-protocol (~> 3.17.0.2)
       rubocop (= 1.48.1)
       rubocop-performance (= 1.16.0)
@@ -469,7 +469,7 @@ DEPENDENCIES
   spring
   sqlite3 (~> 1.6)
   sqlite3_ar_regexp (~> 2.2)
-  standard (~> 1.25.0)
+  standard (~> 1.25.2)
   stopwords-filter
   tzinfo-data
   web-console (>= 4.1.0)
