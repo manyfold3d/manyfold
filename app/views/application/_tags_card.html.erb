@@ -17,7 +17,7 @@
               .map{|tag| render partial: 'tag', locals: {
                 tag: tag,
                 state: (defined?(muted_tags) && muted_tags.include?(tag)) ? (current_user.tag_cloud_settings["hide_unrelated"] ? :hide : :mute) : :normal
-              }}.join.html_safe,id: tier)) %>
+              }}.join.html_safe+(link_to "missing", models_path(@filters.merge(tag: "",missingtag: tier)), { class: "badge rounded-pill bg-primary tag" }),id: tier)).html_safe %>
         <% end %>
       </ul>
     <% end %>
