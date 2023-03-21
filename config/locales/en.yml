@@ -7,13 +7,13 @@ en:
       link:
         url: URL
       model:
-        name: Name
-        preview_file: Preview
+        caption: Caption
+        collection_id: Collection
         creator_id: Creator
         library_id: Library
-        collection_id: Collection
-        caption: Caption
+        name: Name
         notes: Notes
+        preview_file: Preview
   renderer:
     style:
       lambert: Realistically shaded
