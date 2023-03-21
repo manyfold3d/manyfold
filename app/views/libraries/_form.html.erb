@@ -1,49 +1,31 @@
 <%= form_with model: @library do |form| %>
-    <form>
-      <div class="row mb-3 input-group">
-        <%= form.label :name, class: "col-sm-2 col-form-label" %>
-        <%= form.text_field :name, class: "form-control col-auto" %>
-      </div>
-  
-      <div class="row mb-3 input-group">
-        <%= form.label :caption, class: "col-sm-2 col-form-label" %>
-        <%= form.text_field :caption, class: "form-control col-auto" %>
-      </div>
+  <%= text_input_row form, :name %>
+  <%= text_input_row form, :caption %>
+  <%= text_input_row form, :icon %>
+  <span id="libraryIconHelp" class="form-text">Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a></span>
+  <%= rich_text_input_row form, :notes %>
 
-      <div class="row mb-3 input-group">
-        <%= form.label :icon, class: "col-sm-2 col-form-label" %>
-        <%= form.text_field :icon, class: "form-control col-auto" %>
-      </div>
-      <span id="libraryIconHelp" class="form-text">Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a></span>
-  
-      <div class="row mb-3 input-group">
-        <%= form.label :notes, class: "col-sm-2 col-form-label" %>
-        <%= form.text_area :notes, class: "form-control col-auto" %>
-      </div>
-  
-      <div class="row mb-3 input-group">
-        <%= form.label "Required Tags", class: "col-sm-2 col-form-label mb-0" %>
-        <div id="newinput" class="col-sm-10 p-0">
-          <% @library.tag_regex.each do |reg| %>
-            <div class="input-group">
-              <%= text_field_tag "library[tag_regex][]", reg, class: "form-control col-sm-11" %>
-              <%= link_to icon(:trash, "Delete"), '', onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
-            </div>
-          <% end %>
-          <div id="regexclone" style="display: none">
-            <div class="input-group">
-              <%= text_field_tag "library[tag_regex][]", '', class: "form-control col-sm-11" %>
-              <%= link_to icon(:trash, "Delete"), '', onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
-            </div>
-          </div>
+  <div class="row mb-3 input-group">
+    <%= form.label "Required Tags", class: "col-sm-2 col-form-label mb-0" %>
+    <div id="newinput" class="col-sm-10 p-0">
+      <% @library.tag_regex.each do |reg| %>
+        <div class="input-group">
+          <%= text_field_tag "library[tag_regex][]", reg, class: "form-control col-sm-11" %>
+          <%= link_to icon(:trash, "Delete"), '', onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
         </div>
-        <div class="col-sm-2"></div><div class="col-sm-10 p-0">
-          <%= link_to icon("plus-square-dotted","Add Line"), '', onClick: "$('#newinput').append($('#regexclone').html()); return false;", class: "btn btn-primary" %>
-          <span id="libraryRegexHelp" class="form-text">Check for models missing tags matching these regex.</span>
+      <% end %>
+      <div id="regexclone" style="display: none">
+        <div class="input-group">
+          <%= text_field_tag "library[tag_regex][]", '', class: "form-control col-sm-11" %>
+          <%= link_to icon(:trash, "Delete"), '', onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
         </div>
       </div>
+    </div>
+    <div class="col-sm-2"></div><div class="col-sm-10 p-0">
+      <%= link_to icon("plus-square-dotted","Add Line"), '', onClick: "$('#newinput').append($('#regexclone').html()); return false;", class: "btn btn-primary" %>
+      <span id="libraryRegexHelp" class="form-text">Check for models missing tags matching these regex.</span>
+    </div>
+  </div>
 
-    <%= form.submit "Save", class: "btn btn-primary" %>
-    </form>
-  <% end %>
-  
+  <%= form.submit "Save", class: "btn btn-primary" %>
+<% end %>
