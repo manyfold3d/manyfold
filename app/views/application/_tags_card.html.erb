@@ -4,7 +4,10 @@
       <% plaintags = tags.select{|obj| !obj.name.include?(":") } %>
       <% tiertags = tags.select{|obj| obj.name.include?(":") } %>
       <% tiers = tiertags.map(&:name).map {|tag| tag.split(":").first}.uniq.sort %>
-      <% tierunset = tiers.map{|tier| reg=ActiveRecord::Base.connection.quote("^"+tier+":"); [tier, Model.where("(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name REGEXP #{reg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1").count]}.to_h %>
+      <% tierunset = tiers.map{|tier| 
+        reg=ActiveRecord::Base.connection.quote("^"+tier+":")
+        regact = Rails.env.development? ? "REGEXP" : "~"
+        [tier, Model.where("(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name #{regact} #{reg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1").count]}.to_h %>
       <% tags = plaintags %>
     <% end %>
     <% tags.each do |tag| %>
