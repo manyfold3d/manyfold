@@ -154,8 +154,8 @@ class ModelsController < ApplicationController
     @models = @models.where(library: params[:library]) if @filters[:library]
     @addtags = @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
 
-    # Missing tags (only valid if one library)
-    if @filters[:missingtag] && @filters[:library]
+    # Missing tags (If specific tag is not specified, require library to be set)
+    if @filters[:missingtag].presence || (@filters[:missingtag] && @filters[:library])
       tag_regex_build = []
       regexes = ((@filters[:missingtag] != "") ? [@filters[:missingtag]] : @models[0].library.tag_regex)
       regexes.each do |reg|
