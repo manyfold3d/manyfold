@@ -4,6 +4,7 @@
       <% plaintags = tags.select{|obj| !obj.name.include?(":") } %>
       <% tiertags = tags.select{|obj| obj.name.include?(":") } %>
       <% tiers = tiertags.map(&:name).map {|tag| tag.split(":").first}.uniq.sort %>
+      <% tierunset = tiers.map{|tier| reg=ActiveRecord::Base.connection.quote("^"+tier+":"); [tier, Model.where("(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name REGEXP #{reg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1").count]}.to_h %>
       <% tags = plaintags %>
     <% end %>
     <% tags.each do |tag| %>
@@ -17,7 +18,10 @@
               .map{|tag| render partial: 'tag', locals: {
                 tag: tag,
                 state: (defined?(muted_tags) && muted_tags.include?(tag)) ? (current_user.tag_cloud_settings["hide_unrelated"] ? :hide : :mute) : :normal
-              }}.join.html_safe+(link_to "missing", models_path((@filters||{}).merge(missingtag: tier)), { class: "badge rounded-pill border border-muted text-danger tag" }),id: tier)).html_safe %>
+              }}.join.html_safe+
+              (tierunset[tier]>0 ? (link_to "unset (#{tierunset[tier]})", 
+                models_path((@filters||{}).merge(missingtag: tier)), { class: "badge rounded-pill border border-muted text-danger tag" }) : ""),
+            id: tier)).html_safe %>
         <% end %>
       </ul>
     <% end %>
