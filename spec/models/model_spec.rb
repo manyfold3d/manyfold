@@ -49,8 +49,8 @@ RSpec.describe Model do
     end
 
     let(:library) { create(:library, path: "/library") }
-    let!(:parent) { create(:model, library: library, path: "model") }
-    let!(:child) { create(:model, library: library, path: "model/nested") }
+    let!(:parent) { create(:model, library: library, path: "model_one") }
+    let!(:child) { create(:model, library: library, path: "model_one/nested_model") }
 
     it "can check for contained models" do
       expect(parent.contains_other_models?).to be true
@@ -66,7 +66,7 @@ RSpec.describe Model do
         file = create(:model_file, model: child, filename: "part.stl")
         child.merge_into! parent
         file.reload
-        expect(file.filename).to eql "nested/part.stl"
+        expect(file.filename).to eql "nested_model/part.stl"
         expect(file.model).to eql parent
       end
 
