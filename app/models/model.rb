@@ -54,6 +54,10 @@ class Model < ApplicationRecord
     contained_models.exists?
   end
 
+  def needs_organizing?
+    formatted_path != path
+  end
+
   private
 
   def cannot_move_models_with_submodels
