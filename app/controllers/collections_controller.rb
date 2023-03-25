@@ -20,10 +20,12 @@ class CollectionsController < ApplicationController
     @collection = Collection.new
     @collection.links.build if @collection.links.empty? # populate empty link
     @title = "New Collection"
+    @collections = Collection.all
   end
 
   def edit
     @collection.links.build if @collection.links.empty? # populate empty link
+    @collections = Collection.all
   end
 
   def create
@@ -56,6 +58,7 @@ class CollectionsController < ApplicationController
   def collection_params
     params.require(:collection).permit([
       :name,
+      :collection_id,
       :caption,
       :notes,
       links_attributes: [:id, :url, :_destroy]

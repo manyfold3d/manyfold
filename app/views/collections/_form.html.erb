@@ -5,6 +5,12 @@
         <%= form.text_field :name, class: "form-control col-auto" %>
       </div>
 
+      <div class="row mb-3 input-group">
+        <%= form.label :collection_id, class: "col-sm-2 col-form-label" %>
+        <%= form.collection_select :collection_id, @collections, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
+        <%= link_to "New Collection", new_collection_path, class: "btn btn-outline-secondary col-auto" %>
+      </div>
+
       <%= render 'links_form', :form => form %>
 
       <div class="row mb-3 input-group">

@@ -15,18 +15,24 @@
     <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= collection.name.titleize %></h5>
-      <% if collection.caption %>
-        <h6 class="card-subtitle mb-2 text-muted"><%= sanitize collection.caption %></h6>
-      <% end %>
-      <% if collection.notes && collection.notes != "" %>
-        <p class="card-text"><%= sanitize collection.notes %></p>
-      <% end %>
-      <ul class='links'>
-        <% collection.links.each do |link| %>
-          <li><%= link_to t("sites.#{link.site}"), link.url %></li>
+      <div class="col-auto">
+        <% if collection.collection %>
+          <%= icon "collection", "Collection" %>
+          <%= link_to collection.collection.name, models_path((@filters||{}).merge(collection: collection.collection.id)) %><br/>
         <% end %>
-      </ul>
-      <p class="card-text"><%= pluralize collection.models.count, "model" %></p>
+        <% if collection.caption %>
+          <h6 class="card-subtitle mb-2 text-muted"><%= sanitize collection.caption %></h6>
+        <% end %>
+        <% if collection.notes && collection.notes != "" %>
+          <p class="card-text"><%= sanitize collection.notes %></p>
+        <% end %>
+        <ul class='links'>
+          <% collection.links.each do |link| %>
+            <li><%= link_to t("sites.#{link.site}"), link.url %></li>
+          <% end %>
+        </ul>
+        <p class="card-text"><%= pluralize collection.models.count, "model" %>, <%= pluralize collection.collections.count, "collection" %></p>
+      </div>
       <div>
         <%= link_to "Open", (@filters||{}).merge(controller: 'models', collection: collection.id), class: "btn btn-primary" %>
         <%= link_to "Edit", edit_collection_path(collection), {class: "btn btn-outline-secondary"} %>
