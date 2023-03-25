@@ -49,30 +49,30 @@ RSpec.describe Model do
     end
 
     let(:library) { create(:library, path: "/library") }
+    let!(:parent) { create(:model, library: library, path: "model") }
+    let!(:child) { create(:model, library: library, path: "model/nested") }
+
+    it "can check for contained models" do
+      expect(parent.contains_other_models?).to be true
+      expect(child.contains_other_models?).to be false
+    end
 
     it "identifies the parent" do
-      parent = create(:model, library: library, path: "model")
-      child = create(:model, library: library, path: "model/nested")
       expect(child.parents).to eql [parent]
     end
 
     context "merging into parent" do
-      before do
-        @parent = create(:model, library: library, path: "model")
-        @child = create(:model, library: library, path: "model/nested")
-      end
-
       it "moves files" do
-        file = create(:model_file, model: @child, filename: "part.stl")
-        @child.merge_into! @parent
+        file = create(:model_file, model: child, filename: "part.stl")
+        child.merge_into! parent
         file.reload
         expect(file.filename).to eql "nested/part.stl"
-        expect(file.model).to eql @parent
+        expect(file.model).to eql parent
       end
 
       it "deletes merged model" do
         expect {
-          @child.merge_into! @parent
+          child.merge_into! parent
         }.to change(described_class, :count).from(2).to(1)
       end
     end
