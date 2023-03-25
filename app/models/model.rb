@@ -21,7 +21,7 @@ class Model < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
 
-  acts_as_taggable_on :tags, :collections
+  acts_as_taggable_on :tags
 
   def parents
     Pathname.new(path).parent.descend.map do |path|
