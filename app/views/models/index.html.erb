@@ -72,6 +72,13 @@
               <td><%= link_to icon("trash", "Remove filter"), @filters.except(:tag), {class: "text-danger"} %></td>
             </tr>
           <% end %>
+          <% if @filters[:missingtag] %>
+            <tr>
+              <td><%= icon "tag", "Missing Tags" %> Missing Tags</td>
+              <td><span class='pe-none'><%= content_tag(:a, @filters[:missingtag].presence || "*", { class: "badge rounded-pill border border-muted text-danger tag" }) %></span></td>
+              <td><%= link_to icon("trash", "Remove filter"), @filters.except(:missingtag), {class: "text-danger"} %></td>
+            </tr>
+          <% end %>          
         </table>
       <% end %>
     <% end %>
