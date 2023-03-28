@@ -52,13 +52,17 @@ RSpec.describe Model do
     let!(:parent) { create(:model, library: library, path: "model_one") }
     let!(:child) { create(:model, library: library, path: "model_one/nested_model") }
 
-    it "can check for contained models" do
-      expect(parent.contains_other_models?).to be true
-      expect(child.contains_other_models?).to be false
+    it "lists contained models" do
+      expect(parent.contained_models.to_a).to eql [child]
     end
 
     it "identifies the parent" do
       expect(child.parents).to eql [parent]
+    end
+
+    it "has a bool check for contained models" do
+      expect(parent.contains_other_models?).to be true
+      expect(child.contains_other_models?).to be false
     end
 
     context "merging into parent" do
