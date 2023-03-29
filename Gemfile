@@ -6,7 +6,7 @@ ruby "~> 3.1.2"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 7.0.4"
 # Use Puma as the app server
-gem "puma", "~> 6.1"
+gem "puma", "~> 6.2"
 # Use SCSS for stylesheets
 gem "sass-rails", ">= 6"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
