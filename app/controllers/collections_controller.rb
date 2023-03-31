@@ -9,7 +9,7 @@ class CollectionsController < ApplicationController
     process_filters_tags_highlight
 
     # @collections = Collection.where(id: @models.map{|model| model.collection_id})
-    @collections = Collection.tree_both(@filters[:collection]||nil,@models.map{|model| model.collection_id}.compact)
+    @collections = Collection.tree_both(@filters[:collection] || nil, @models.map { |model| model.collection_id }.compact)
 
     # Ordering
     @collections = case session["order"]
