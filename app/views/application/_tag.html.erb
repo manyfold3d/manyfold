@@ -3,7 +3,7 @@
 <%=
   name = current_user.tag_cloud_settings["keypair"] ? tag.name.gsub(/^.*:/,"") : tag.name
   link_to current_user.tag_cloud_settings["heatmap"] ? "#{name} (#{tag.taggings_count})" : name,
-    models_path(filters.merge(tag: filters[:tag] | [tag.name])),
+    filters.merge(tag: filters[:tag] | [tag.name]),
     {
       class: "badge rounded-pill #{tag_class(state)} tag",
       data: {bulk_item_tags: defined?(model_id) ? model_id&.to_s : nil}

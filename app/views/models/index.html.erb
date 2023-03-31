@@ -1,17 +1,4 @@
-<div class="row row-cols-2">
-  <div class="col-9">
-    <div class="row row-cols-2 align-items-baseline">
-      <div class="col col-auto me-auto">
-        <h1><%= # @library.name
-        %></h1>
-      </div>
-      <div class="col col-auto ">
-        <a href="?order=name" class="btn <%= session["order"] == "name" ? "btn-primary" : "btn-light" %> btn-sm" title="sort by name"><i class="bi bi-book"></i></a>
-        <a href="?order=recent" class="btn <%= session["order"] == "recent" ? "btn-primary" : "btn-light" %> btn-sm" title="sort by time"><i class="bi bi-clock"></i></a>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render "application/content_header" %>
 <div class="row row-cols-2">
   <div class="col-9">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
@@ -22,7 +9,6 @@
     <% end %>
   </div>
   <div class="col-3">
-
     <%= card :secondary, "Actions" do %>
       <%= link_to "Bulk Edit", edit_models_path(@filters), class: 'btn btn-secondary mb-3 me-3' %>
       <% if current_user.tag_cloud_settings["heatmap"] && Model.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1").count > 0 %>
@@ -31,59 +17,8 @@
       <% if Model.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model')<1").count > 0 %>
         <%= link_to "Missing URL", models_path(link: ""), class: "btn btn-secondary mb-3 me-3" %>
       <% end %>
-
     <% end %>
-
-    <% if !@filters.empty?() %>
-      <%= card :secondary, "Filters" do %>
-        <table class='table table-sm'>
-          <% if @filters[:q] %>
-            <tr>
-              <td><%= icon "search", "Search" %> Search</td>
-              <td><%= @filters[:q] %></td>
-              <td><%= link_to icon("trash", "Remove filter"), @filters.except(:q), {class: "text-danger"} %></td>
-            </tr>
-          <% end %>
-          <% if @filters[:collection] %>
-            <tr>
-              <td><%= icon "collection", "Collection" %> Collection</td>
-              <td><%= @collection ? link_to(@collection.name, models_path({collection: @collection.id})) : "Unknown" %></td>
-              <td><%= link_to icon("trash", "Remove filter"), @filters.except(:collection), {class: "text-danger"} %></td>
-            </tr>
-          <% end %>
-          <% if @filters[:library] %>
-            <tr>
-              <td><%= icon "boxes", "Library" %> Library</td>
-              <td><%= [*@filters[:library]].map{ |l| Library.find(l).name }.join(", ") %></td>
-              <td><%= link_to icon("trash", "Remove filter"), @filters.except(:library), {class: "text-danger"} %></td>
-            </tr>
-          <% end %>
-          <% if @filters[:creator] %>
-            <tr>
-              <td><%= icon "person", "Creator" %> Creator</td>
-              <td><%= @creator ? @creator.name.titleize : "Unknown" %></td>
-              <td><%= link_to icon("trash", "Remove filter"), @filters.except(:creator), {class: "text-danger"} %></td>
-            </tr>
-          <% end %>
-          <% if @filters[:tag] %>
-            <tr>
-              <td><%= icon "tag", "Tags" %> Tags</td>
-              <td><span class='pe-none'><%= render partial: 'tag', collection: @tag, locals: {state: :normal} %></span></td>
-              <td><%= link_to icon("trash", "Remove filter"), @filters.except(:tag), {class: "text-danger"} %></td>
-            </tr>
-          <% end %>
-          <% if @filters[:missingtag] %>
-            <tr>
-              <td><%= icon "tag", "Missing Tags" %> Missing Tags</td>
-              <td><span class='pe-none'><%= content_tag(:a, @filters[:missingtag].presence || "*", { class: "badge rounded-pill border border-muted text-danger tag" }) %></span></td>
-              <td><%= link_to icon("trash", "Remove filter"), @filters.except(:missingtag), {class: "text-danger"} %></td>
-            </tr>
-          <% end %>          
-        </table>
-      <% end %>
-    <% end %>
-
+    <%= render 'filters_card' %>
     <%= render 'tags_card', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>
-
   </div>
 </div>

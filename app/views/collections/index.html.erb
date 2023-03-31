@@ -1,20 +1,21 @@
-<div class="row">
-  <div class="col">
-    <h1>Collections</h1>
-  </div>
-  <div class="col col-auto">
-    <%= link_to "View unassigned", models_path(collection: ""), class: "btn btn-outline-secondary" %>
-  </div>
-</div>
-
-
+<%= render "application/content_header" %>
 <div class="row row-cols-2">
   <div class="col-9">
-    <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3 mb-3">
-	      <%= render partial: 'collection', collection: @collections %>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+      <% if @filters[:collection] && @collection %>
+        <%= render @collection %>
+      <% end %>
+      <%= render @collections %>
     </div>
+    <% if current_user.pagination_settings["collections"] %>
+      <%= paginate @collections %>
+    <% end %>
   </div>
-  <% if current_user.pagination_settings["collections"] %>
-    <%= paginate @collections %>
-  <% end %>
+  <div class="col-3">
+    <%= card :secondary, "Actions" do %>
+      <%= link_to "View unassigned", models_path(collection: ""), class: "btn btn-outline-secondary" %>
+    <% end %>
+    <%= render 'filters_card' %>
+    <%= render 'tags_card', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>
+  </div>
 </div>

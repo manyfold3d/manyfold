@@ -25,7 +25,7 @@
                 state: (defined?(muted_tags) && muted_tags.include?(tag)) ? (current_user.tag_cloud_settings["hide_unrelated"] ? :hide : :mute) : :normal
               }}.join.html_safe+
               ((tierunset && tierunset[tier] > 0) ? (link_to "unset (#{tierunset[tier]})", 
-                models_path((@filters||{}).merge(missingtag: tier)), { class: "badge rounded-pill border border-muted text-danger tag" }) : ""),
+               (@filters||{}).merge(missingtag: tier), { class: "badge rounded-pill border border-muted text-danger tag" }) : ""),
             id: tier)).html_safe %>
         <% end %>
       </ul>

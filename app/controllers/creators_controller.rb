@@ -1,15 +1,27 @@
 class CreatorsController < ApplicationController
+  include ModelFilters
   before_action :get_creator, except: [:index, :new, :create]
 
   def index
-    @creators =
-      if current_user.pagination_settings["creators"]
-        page = params[:page] || 1
-        Creator.all.page(page).per(current_user.pagination_settings["per_page"])
-      else
-        Creator.all
-      end
-    @title = "Creators"
+    process_filters_init
+    process_filters_tags_fetchall
+    process_filters
+    process_filters_tags_highlight
+
+    @creators = Creator.where(id: @models.map { |model| model.creator_id })
+
+    # Ordering
+    @creators = case session["order"]
+    when "recent"
+      @creators.order(created_at: :desc)
+    else
+      @creators.order(name: :asc)
+    end
+
+    if current_user.pagination_settings["creators"]
+      page = params[:page] || 1
+      @creators = @creators.page(page).per(current_user.pagination_settings["per_page"])
+    end
   end
 
   def show
