@@ -8,6 +8,10 @@
         <%= image_tag library_model_model_file_path(@model.library, @model, @file, format: @file.extension), alt: @file.name, style: "width: 100%" %>
       <% elsif renderable?(@file.extension) %>
         <%= render partial: "object_preview", locals: { library: @library, model: @model, file: @file } %>
+      <% elsif @file.extension == 'txt' %>
+        <pre>
+          <%= render :file => File.join(@library.path, @model.path, @file.filename) %>
+        </pre>
       <% end %>
   </div>
 

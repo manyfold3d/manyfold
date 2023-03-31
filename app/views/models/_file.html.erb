@@ -6,6 +6,12 @@
       <div class="card-img-top">
         <%= render partial: "object_preview", locals: { library: @library, model: @model, file: file } %>
       </div>
+    <% elsif file.extension == 'txt' %>
+      <pre>
+        <%= render plain: File.read(File.join(@library.path, @model.path, file.filename),1024) %>
+        
+        [Fully rendered in Details]
+      </pre>
     <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= file.name %></h5>
