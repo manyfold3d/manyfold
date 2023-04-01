@@ -14,7 +14,7 @@
       </pre>
     <% end %>
     <div class="card-body">
-      <h5 class="card-title"><%= file.name %></h5>
+      <h5 class="card-title"><%= icon(SupportedMimeTypes.icon(file.extension),"#{file.extension} file") %><%= file.name %></h5>
       <%= form_with model: [@library, @model] do |form| %>
         <% if file.caption %>
           <p class="card-text"><%= sanitize file.caption %></p>
