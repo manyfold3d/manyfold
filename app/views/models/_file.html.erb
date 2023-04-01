@@ -9,9 +9,9 @@
     <% elsif file.extension == 'txt' %>
       <pre>
         <%= render plain: File.read(File.join(@library.path, @model.path, file.filename),1024) %>
-        
-        [Fully rendered in Details]
       </pre>
+    <% elsif SupportedMimeTypes.icon(file.extension) == "file-zip" %>
+      <pre><%= unzip_list(File.join(@library.path, @model.path, file.filename)).slice(0,20).join("\n") %></pre>
     <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= icon(SupportedMimeTypes.icon(file.extension),"#{file.extension} file") %><%= file.name %></h5>
