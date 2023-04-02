@@ -14,3 +14,7 @@
 .selectize-input {
 	border: none;
 }
+
+p.alert:empty, p.notice:empty {
+	display: none;
+}
