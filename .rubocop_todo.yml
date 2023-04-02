@@ -96,3 +96,7 @@ Rails/UniqueValidationWithoutIndex:
     - "app/models/model.rb"
     - "app/models/model_file.rb"
     - "app/models/problem.rb"
+
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - "app/controllers/concerns/model_filters.rb"

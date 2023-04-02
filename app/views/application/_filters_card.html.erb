@@ -1,0 +1,48 @@
+<% if !@filters.empty?() %>
+  <%= card :secondary, "Filters" do %>
+    <table class='table table-sm'>
+      <% if @filters[:q] %>
+        <tr>
+          <td><%= icon "search", "Search" %> Search</td>
+          <td><%= @filters[:q] %></td>
+          <td><%= link_to icon("trash", "Remove filter"), @filters.except(:q), {class: "text-danger"} %></td>
+        </tr>
+      <% end %>
+      <% if @filters[:collection] %>
+        <tr>
+          <td><%= icon "collection", "Collection" %> Collection</td>
+          <td><%= @collection ? link_to(@collection.name, {collection: @collection.id}) : "Unknown" %></td>
+          <td><%= link_to icon("trash", "Remove filter"), @filters.except(:collection), {class: "text-danger"} %></td>
+        </tr>
+      <% end %>
+      <% if @filters[:library] %>
+        <tr>
+          <td><%= icon "boxes", "Library" %> Library</td>
+          <td><%= [*@filters[:library]].map{ |l| Library.find(l).name }.join(", ") %></td>
+          <td><%= link_to icon("trash", "Remove filter"), @filters.except(:library), {class: "text-danger"} %></td>
+        </tr>
+      <% end %>
+      <% if @filters[:creator] %>
+        <tr>
+          <td><%= icon "person", "Creator" %> Creator</td>
+          <td><%= @creator ? @creator.name.titleize : "Unknown" %></td>
+          <td><%= link_to icon("trash", "Remove filter"), @filters.except(:creator), {class: "text-danger"} %></td>
+        </tr>
+      <% end %>
+      <% if @filters[:tag] %>
+        <tr>
+          <td><%= icon "tag", "Tags" %> Tags</td>
+          <td><span class='pe-none'><%= render partial: 'tag', collection: @tag, locals: {state: :normal} %></span></td>
+          <td><%= link_to icon("trash", "Remove filter"), @filters.except(:tag), {class: "text-danger"} %></td>
+        </tr>
+      <% end %>
+      <% if @filters[:missingtag] %>
+        <tr>
+          <td><%= icon "tag", "Missing Tags" %> Missing Tags</td>
+          <td><span class='pe-none'><%= content_tag(:a, @filters[:missingtag].presence || "*", { class: "badge rounded-pill border border-muted text-danger tag" }) %></span></td>
+          <td><%= link_to icon("trash", "Remove filter"), @filters.except(:missingtag), {class: "text-danger"} %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+<% end %>

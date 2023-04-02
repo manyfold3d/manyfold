@@ -1,0 +1,28 @@
+<div class="col-9">
+  <div class="row row-cols-2 align-items-baseline">
+    <div class="col col-auto me-auto">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <%= link_to "#{icon('house', 'Top')} Top".html_safe, @filters.merge(controller: 'home'), class: (current_page?(root_path) ? "nav-link active" : "nav-link") %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "#{icon('box', 'Models')} Models".html_safe, @filters.merge(controller: 'models'), class: (current_page?(models_path) ? "nav-link active" : "nav-link") %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "#{icon('people', 'Creators')} Creators".html_safe, @filters.merge(controller: 'creators'), class: (current_page?(creators_path) ? "nav-link active" : "nav-link") %>
+        </li>
+        <% if Collection.count > 0 %>
+          <li class="nav-item">
+            <%= link_to "#{icon('collection', 'Collections')} Collections".html_safe, @filters.merge(controller: 'collections'), class: (current_page?(collections_path) ? "nav-link active" : "nav-link") %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <% if !current_page?(root_path) %>
+      <div class="col col-auto ">
+        <%= link_to "#{icon('book','Sort by Name')}".html_safe,@filters.merge(order: "name"), class: "btn #{session["order"] == "name" ? "btn-primary" : "btn-light"} btn-sm"  %>
+        <%= link_to "#{icon('clock','Sort by Time')}".html_safe,@filters.merge(order: "recent"), class: "btn #{session["order"] == "recent" ? "btn-primary" : "btn-light"} btn-sm"  %>
+      </div>
+    <% end %>
+  </div>
+</div>

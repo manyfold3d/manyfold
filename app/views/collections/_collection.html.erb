@@ -18,7 +18,7 @@
       <div class="col-auto">
         <% if collection.collection %>
           <%= icon "collection", "Collection" %>
-          <%= link_to collection.collection.name, models_path((@filters||{}).merge(collection: collection.collection.id)) %><br/>
+          <%= link_to collection.collection.name, (@filters||{}).merge(collection: collection.collection.id) %><br/>
         <% end %>
         <% if collection.caption %>
           <h6 class="card-subtitle mb-2 text-muted"><%= sanitize collection.caption %></h6>
@@ -31,10 +31,11 @@
             <li><%= link_to t("sites.#{link.site}"), link.url %></li>
           <% end %>
         </ul>
-        <p class="card-text"><%= pluralize collection.models.count, "model" %>, <%= pluralize collection.collections.count, "collection" %></p>
       </div>
       <div>
-        <%= link_to "Open", (@filters||{}).merge(controller: 'models', collection: collection.id), class: "btn btn-primary" %>
+        <%= link_to pluralize(collection.models.count, "Model"), {controller: 'models', collection: collection.id}, class: "btn btn-primary" %>
+        <%= link_to pluralize(collection.collections.count, "Collection"), {controller: 'collections', collection: collection.id}, class: "btn btn-primary" %>
+        <%= link_to "Filter", (@filters||{}).merge(controller: 'collections', collection: collection.id), class: "btn btn-primary" %>
         <%= link_to "Edit", edit_collection_path(collection), {class: "btn btn-outline-secondary"} %>
       </div>
     </div>

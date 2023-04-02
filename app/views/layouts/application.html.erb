@@ -17,17 +17,7 @@
       <nav class="navbar navbar-expand-lg bg-light">
         <a class="navbar-brand ms-2" href="/">VanDAM</a>
         <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <%= link_to "#{icon('box', 'Models')} Models".html_safe, {controller: 'models'}, class: (current_page?(models_path) ? "nav-link active" : "nav-link") %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "#{icon('people', 'Creators')} Creators".html_safe, creators_path, class: (current_page?(creators_path) ? "nav-link active" : "nav-link") %>
-          </li>
-          <% if Collection.count > 0 %>
-            <li class="nav-item">
-              <%= link_to "#{icon('collection', 'Collections')} Collections".html_safe, collections_path, class: (current_page?(collections_path) ? "nav-link active" : "nav-link") %>
-            </li>
-          <% end %>
+    
           <% Library.all.each do |library| %>
             <li class="nav-item">
               <%= link_to "#{icon(library.icon || 'boxes', "#{library.caption || library.name}")} #{library.name}".html_safe, {controller: 'models', library: library.id}, class: ((current_page?(library) || (library.id.to_s == params[:library])) ? "nav-link active" : "nav-link") %>
