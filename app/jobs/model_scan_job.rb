@@ -35,7 +35,7 @@ class ModelScanJob < ApplicationJob
       ]).uniq.each do |filename|
         # Create the file
         file = model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
-        ModelFileScanJob.perform_later(file) if file.valid?
+        ModelFileScanJob.perform_later(file) if (file.valid? && !File.directory?(filename))
       end
     end
     # Set tags and default files
