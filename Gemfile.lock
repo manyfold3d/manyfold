@@ -251,7 +251,7 @@ GEM
       shellany (~> 0.0)
     orm_adapter (0.5.0)
     parallel (1.22.1)
-    parser (3.2.1.1)
+    parser (3.2.2.0)
       ast (~> 2.4.1)
     pg (1.4.6)
     pg (1.4.6-x64-mingw-ucrt)
@@ -350,7 +350,7 @@ GEM
       rubocop-ast (>= 1.26.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.27.0)
+    rubocop-ast (1.28.0)
       parser (>= 3.2.1.0)
     rubocop-capybara (2.17.1)
       rubocop (~> 1.41)
@@ -396,12 +396,13 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.6.2)
       mini_portile2 (~> 2.8.0)
+    sqlite3 (1.6.2-x64-mingw-ucrt)
     sqlite3 (1.6.2-x86_64-darwin)
     sqlite3 (1.6.2-x86_64-linux)
     sqlite3_ar_regexp (2.2.0)
       activerecord (>= 3.2)
       sqlite3
-    standard (1.25.3)
+    standard (1.26.0)
       language_server-protocol (~> 3.17.0.2)
       rubocop (~> 1.48.1)
       rubocop-performance (~> 1.16.0)
@@ -476,7 +477,7 @@ DEPENDENCIES
   spring
   sqlite3 (~> 1.6)
   sqlite3_ar_regexp (~> 2.2)
-  standard (~> 1.25.3)
+  standard (~> 1.26.0)
   stopwords-filter
   tzinfo-data
   web-console (>= 4.1.0)
