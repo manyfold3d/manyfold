@@ -17,7 +17,7 @@ RSpec.describe ModelScanJob do
     it "can scan a library directory" do
       # TODO maybe: nested models only worked because scan wasn't recursive - ugh
       expect { described_class.perform_now(model) }.to change { model.model_files.count }.to(3)
-      expect(model.model_files.map(&:filename)).to eq ["nested_model/part_one.stl","part_1.obj", "part_2.obj"]
+      expect(model.model_files.map(&:filename)).to eq ["nested_model/part_one.stl", "part_1.obj", "part_2.obj"]
     end
 
     it "can scan a thingiverse-structured model" do

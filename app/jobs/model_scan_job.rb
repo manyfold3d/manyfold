@@ -33,10 +33,10 @@ class ModelScanJob < ApplicationJob
         # File.join(dir.path, "files", ApplicationJob.file_pattern),
         # File.join(dir.path, "images", ApplicationJob.image_pattern)
         File.join(dir.path, "**/*")
-      ]).reject{|filename| File.directory?(filename)}.uniq.each do |filename|
+      ]).reject { |filename| File.directory?(filename) }.uniq.each do |filename|
         # Create the file
         file = model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
-        ModelFileScanJob.perform_later(file) if (file.valid? && !File.directory?(filename))
+        ModelFileScanJob.perform_later(file) if file.valid? && !File.directory?(filename)
       end
     end
     # Set tags and default files

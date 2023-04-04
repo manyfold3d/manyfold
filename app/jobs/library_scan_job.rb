@@ -4,7 +4,7 @@ class LibraryScanJob < ApplicationJob
   # Find all files in the library that we might need to look at
   def filenames_on_disk(library)
     # Dir.glob(File.join(library.path, "**", ApplicationJob.file_pattern))
-    Dir.glob(File.join(library.path, "**/*")).reject{|filename| File.directory?(filename)}
+    Dir.glob(File.join(library.path, "**/*")).reject { |filename| File.directory?(filename) }
     # TODO maybe: recursive glob, removing directories is best right?
   end
 
