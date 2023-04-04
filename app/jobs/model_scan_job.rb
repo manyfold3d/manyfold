@@ -27,12 +27,13 @@ class ModelScanJob < ApplicationJob
       model.problems.where(category: :missing).destroy_all
     end
     Dir.open(model_path) do |dir|
+      # TODO maybe: just do recursive scan of directory to get all filetypes
       Dir.glob([
         # File.join(dir.path, ApplicationJob.file_pattern),
         # File.join(dir.path, "files", ApplicationJob.file_pattern),
         # File.join(dir.path, "images", ApplicationJob.image_pattern)
-        File.join(dir.path, "*")
-      ]).uniq.each do |filename|
+        File.join(dir.path, "**/*")
+      ]).reject{|filename| File.directory?(filename)}.uniq.each do |filename|
         # Create the file
         file = model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
         ModelFileScanJob.perform_later(file) if (file.valid? && !File.directory?(filename))

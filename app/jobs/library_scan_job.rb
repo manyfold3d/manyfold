@@ -5,6 +5,7 @@ class LibraryScanJob < ApplicationJob
   def filenames_on_disk(library)
     # Dir.glob(File.join(library.path, "**", ApplicationJob.file_pattern))
     Dir.glob(File.join(library.path, "**/*")).reject{|filename| File.directory?(filename)}
+    # TODO maybe: recursive glob, removing directories is best right?
   end
 
   # Get a list of all the existing filenames
@@ -45,6 +46,7 @@ class LibraryScanJob < ApplicationJob
   end
 
   def filter_out_common_subfolders(folders)
+    # TODO maybe: with a recursive scan (and reject directories), these go away
     ignorable_leaf_folders = [
       "files", # Thingiverse download structure
       "images" # Thingiverse download structure
