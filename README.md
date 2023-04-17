@@ -33,7 +33,7 @@ You can run all the dependencies in one go using `docker-compose`:
    This might fail the first time it's run due to race conditions in setting up
    the database.
 
-3. Open Van DAM at http://localhost:3214
+3. Open Van DAM at <http://localhost:3214>
 
 4. Add a library
 
@@ -51,6 +51,7 @@ You can run all the dependencies in one go using `docker-compose`:
 - Yarn >= 1.22
 - Foreman or [another Procfile runner](https://github.com/ddollar/foreman#ports)
 - [libarchive](https://github.com/chef/ffi-libarchive#installation) (for upload support)
+- [glfw3](https://github.com/danini-the-panini/mittsu#installation) (for model analysis & manipulation)
 
 ### Usage
 
@@ -61,7 +62,7 @@ bundle exec rake db:migrate:with_data
 bin/dev
 ```
 
-The server will then be running at http://127.0.0.1:5000
+The server will then be running at <http://127.0.0.1:5000>
 
 ### How to run the test suite
 
@@ -71,4 +72,4 @@ The server will then be running at http://127.0.0.1:5000
 
 Built with [Rails 7](https://rubyonrails.org/),
 [Three.js](https://threejs.org/) and [Bootstrap 5](http://getbootstrap.com). Source code is open under the MIT license at
-https://github.com/floppy/van_dam.
+<https://github.com/floppy/van_dam>.

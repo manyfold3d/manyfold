@@ -1,6 +1,6 @@
 FROM ruby:3.1-alpine AS build
 
-RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn xz libarchive
+RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn xz libarchive glfw
 RUN gem install foreman
 
 ARG VAN_DAM_GIT_REF
