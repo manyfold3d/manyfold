@@ -31,7 +31,7 @@ gem "ffi-libarchive", "~> 1.1"
 gem "bootsnap", ">= 1.4.4", require: false
 
 group :production do
-  gem "pg", "~> 1.4"
+  gem "pg", "~> 1.5"
 end
 
 group :development, :test do
