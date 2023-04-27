@@ -15,7 +15,7 @@
     "@rails/ujs": "^7.0.4",
     "@selectize/selectize": "^0.15.2",
     "bootstrap": "^5.2.3",
-    "bootstrap-icons": "^1.10.4",
+    "bootstrap-icons": "^1.10.5",
     "esbuild": "^0.17.18",
     "jquery": "^3.6.4",
     "masonry-layout": "^4.2.2",
