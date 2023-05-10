@@ -9,7 +9,7 @@ module ApplicationHelper
         tag.div(title, class: "card-header text-white bg-#{style}"),
         tag.div(class: "card-body") do
           tag.div class: "card-text" do
-            content.call
+            yield
           end
         end
       ].join.html_safe
