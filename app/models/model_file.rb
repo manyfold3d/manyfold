@@ -1,4 +1,6 @@
 class ModelFile < ApplicationRecord
+  extend Memoist
+
   belongs_to :model
   has_many :problems, as: :problematic, dependent: :destroy
 
@@ -28,7 +30,27 @@ class ModelFile < ApplicationRecord
     nil
   end
 
+  def bounding_box
+    return nil unless mesh
+    bbox = Mittsu::Box3.new.set_from_object(mesh)
+    bbox.size.to_a
+  end
+
   def remove_file
     File.delete(pathname) if File.exist?(pathname)
+  end
+
+  private
+
+  def mesh
+    loader&.new&.load(pathname)
+  end
+  memoize :mesh
+
+  def loader
+    case extension
+    when "obj"
+      Mittsu::OBJLoader
+    end
   end
 end

@@ -26,4 +26,11 @@ RSpec.describe ModelFile do
     model2 = create(:model, library: library, path: "model2")
     expect(build(:model_file, model: model2, filename: "part.stl")).to be_valid
   end
+
+  it "calculates a bounding box for model" do
+    library = create(:library, path: Rails.root.join("spec/fixtures/library"))
+    model1 = create(:model, library: library, path: "model_one")
+    part = create(:model_file, model: model1, filename: "part_1.obj")
+    expect(part.bounding_box).to eq([10, 15, 20])
+  end
 end

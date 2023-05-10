@@ -5,9 +5,9 @@ mtllib obj.mtl
 o obj_0
 v -1 		-5 		20
 v 9 		-15 		0
-v 9 		5 		0
-v -11 		-15 		0
-v -11 		5 		0
+v 9 		0 		0
+v -1 		-15 		0
+v -1 		0 		0
 # 5 vertices
 
 g group_0_16768282
@@ -24,4 +24,3 @@ f 3 	5 	1
 # 6 faces
 
  #end of obj_0
-
