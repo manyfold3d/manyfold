@@ -13,6 +13,9 @@ class ModelFilesController < ApplicationController
       format.any(*SupportedMimeTypes.image_types) do
         send_file File.join(@library.path, @model.path, @file.filename)
       end
+      format.all do
+        send_file File.join(@library.path, @model.path, @file.filename)
+      end
     end
   end
 

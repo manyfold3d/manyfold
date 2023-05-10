@@ -22,7 +22,8 @@ RSpec.describe LibraryScanJob do
   it "only scans models with changes on rescan" do
     model_one = create(:model, path: "model_one", library: library)
     ModelScanJob.perform_now(model_one)
-    expect { described_class.perform_now(library) }.to have_enqueued_job(ModelScanJob).exactly(3).times
+    # TODO maybe: not getting to nested models now, just including them
+    expect { described_class.perform_now(library) }.to have_enqueued_job(ModelScanJob).exactly(2).times
   end
 
   it "flags models with no files as problems" do

@@ -6,9 +6,15 @@
       <div class="card-img-top">
         <%= render partial: "object_preview", locals: { library: @library, model: @model, file: file } %>
       </div>
+    <% elsif file.extension == 'txt' %>
+      <pre>
+        <%= render plain: File.read(File.join(@library.path, @model.path, file.filename),1024) %>
+      </pre>
+    <% elsif SupportedMimeTypes.icon(file.extension) == "file-zip" %>
+      <pre><%= unzip_list(File.join(@library.path, @model.path, file.filename)).slice(0,20).join("\n") %></pre>
     <% end %>
     <div class="card-body">
-      <h5 class="card-title"><%= file.name %></h5>
+      <h5 class="card-title"><%= icon(SupportedMimeTypes.icon(file.extension),"#{file.extension} file") %><%= file.name %></h5>
       <%= form_with model: [@library, @model] do |form| %>
         <% if file.caption %>
           <p class="card-text"><%= sanitize file.caption %></p>

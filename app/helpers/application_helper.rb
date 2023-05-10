@@ -37,4 +37,16 @@ module ApplicationHelper
       "bg-secondary link-light"
     end
   end
+
+  def unzip_list(path)
+    reader = Archive::Reader.open_filename(path)
+    flist = []
+    reader.each_entry do |entry|
+      flist.push(entry.pathname)
+      logger.debug(entry.pathname)
+    end
+    flist
+  ensure
+    reader&.close
+  end
 end
