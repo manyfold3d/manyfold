@@ -24,9 +24,9 @@ class Model < ApplicationRecord
   acts_as_taggable_on :tags
 
   def parents
-    Pathname.new(path).parent.descend.map do |path|
+    Pathname.new(path).parent.descend.filter_map do |path|
       library.models.find_by(path: path.to_s)
-    end.compact
+    end
   end
   memoize :parents
 
