@@ -37,4 +37,22 @@ module ApplicationHelper
       "bg-secondary link-light"
     end
   end
+
+  def text_input_row(form, name)
+    content_tag :div, class: "row mb-3 input-group" do
+      [
+        form.label(name, class: "col-sm-2 col-form-label"),
+        form.text_field(name, class: "form-control col-auto")
+      ].join.html_safe
+    end
+  end
+
+  def rich_text_input_row(form, name)
+    content_tag :div, class: "row mb-3 input-group" do
+      [
+        form.label(name, class: "col-sm-2 col-form-label"),
+        form.text_area(name, class: "form-control col-auto")
+      ].join.html_safe
+    end
+  end
 end

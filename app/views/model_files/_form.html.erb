@@ -12,15 +12,7 @@
     <label class="form-check-label" for="y_up">Y Up</label>
   </div>
 
-  <div class="row mb-3 input-group">
-    <%= form.label :caption, class: "col-sm-2 col-form-label" %>
-    <%= form.text_field :caption, class: "form-control col-auto" %>
-  </div>
-
-  <div class="row mb-3 input-group">
-    <%= form.label :notes, class: "col-sm-2 col-form-label" %>
-    <%= form.text_area :notes, class: "form-control col-auto" %>
-  </div>
-
+  <%= text_input_row form, :caption %>
+  <%= rich_text_input_row form, :notes %>
   <%= form.submit "Update", class: 'btn btn-primary' %>
 <% end %>
