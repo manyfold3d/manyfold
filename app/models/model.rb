@@ -47,11 +47,20 @@ class Model < ApplicationRecord
   end
 
   def contained_models
-    Library.find(library_id_was).models.where("path LIKE ?", Model.sanitize_sql_like(path) + "/%")
+    Library.find(library_id_was).models.where(
+      Model.arel_table[:path].matches(
+        Model.sanitize_sql_like(path) + "/%",
+        "\\"
+      )
+    )
   end
 
   def contains_other_models?
     contained_models.exists?
+  end
+
+  def needs_organizing?
+    formatted_path != path
   end
 
   private
