@@ -49,8 +49,8 @@ RSpec.describe Model do
     end
 
     let(:library) { create(:library, path: "/library") }
-    let!(:parent) { create(:model, library: library, path: "model_one") }
-    let!(:child) { create(:model, library: library, path: "model_one/nested_model") }
+    let!(:parent) { create(:model, library: library, path: "parent") }
+    let!(:child) { create(:model, library: library, path: "parent/child") }
 
     it "lists contained models" do
       expect(parent.contained_models.to_a).to eql [child]
@@ -70,7 +70,7 @@ RSpec.describe Model do
         file = create(:model_file, model: child, filename: "part.stl")
         child.merge_into! parent
         file.reload
-        expect(file.filename).to eql "nested_model/part.stl"
+        expect(file.filename).to eql "child/part.stl"
         expect(file.model).to eql parent
       end
 
@@ -79,6 +79,22 @@ RSpec.describe Model do
           child.merge_into! parent
         }.to change(described_class, :count).from(2).to(1)
       end
+    end
+  end
+
+  context "nested inside another with underscores in the name" do
+    before do
+      allow(File).to receive(:exist?).and_call_original
+      allow(File).to receive(:exist?).with("/library").and_return(true)
+    end
+
+    let(:library) { create(:library, path: "/library") }
+    let!(:parent) { create(:model, library: library, path: "model_one") }
+    let!(:child) { create(:model, library: library, path: "model_one/nested_model") }
+
+    it "correctly flags up contained models" do
+      expect(parent.contains_other_models?).to be true
+      expect(child.contains_other_models?).to be false
     end
   end
 end
