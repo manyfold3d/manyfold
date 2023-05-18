@@ -1,5 +1,5 @@
 <%= render partial: "breadcrumb" %>
-<h1>Bulk Edit Files</h1>
+<h1>Bulk Edit <%= ModelFile.model_name.human.pluralize %></h1>
 
 <%= form_with url: library_model_model_files_path(@library, @model), method: :patch do |form| %>
 

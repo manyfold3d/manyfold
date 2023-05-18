@@ -2,6 +2,21 @@
 en:
   active_admin:
     dashboard: Dashboard
+  activerecord:
+    attributes:
+      link:
+        url: URL
+      model:
+        caption: Caption
+        collection_id: Collection
+        creator_id: Creator
+        library_id: Library
+        name: Name
+        notes: Notes
+        preview_file: Preview
+    models:
+      model: Model
+      model_file: File
   renderer:
     style:
       lambert: Realistically shaded
