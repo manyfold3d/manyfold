@@ -14,6 +14,9 @@ en:
         name: Name
         notes: Notes
         preview_file: Preview
+    models:
+      model: Model
+      model_file: File
   renderer:
     style:
       lambert: Realistically shaded
