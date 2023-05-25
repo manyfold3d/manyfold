@@ -32,7 +32,7 @@
     "@types/node": "^18.16.3",
     "@types/selectize": "^0.12.35",
     "@types/three": "^0.152.0",
-    "@types/webpack-env": "^1.18.0",
+    "@types/webpack-env": "^1.18.1",
     "@typescript-eslint/parser": "^5.59.7",
     "eslint": "^8.41.0",
     "husky": "^8.0.3",
