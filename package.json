@@ -10,7 +10,7 @@
   "dependencies": {
     "@babel/preset-typescript": "^7.21.5",
     "@nathanvda/cocoon": "^1.2.14",
-    "@popperjs/core": "^2.11.7",
+    "@popperjs/core": "^2.11.8",
     "@rails/actioncable": "^7.0.5",
     "@rails/ujs": "^7.0.5",
     "@selectize/selectize": "^0.15.2",
