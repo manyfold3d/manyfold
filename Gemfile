@@ -76,7 +76,7 @@ gem "delayed_job_active_record", "~> 4.1"
 gem "activerecord-nulldb-adapter", "~> 0.9.0"
 
 gem "memoist", "~> 0.16.2"
-gem "stopwords-filter", require: "stopwords"
+gem "stopwords-filter2", require: "stopwords"
 
 gem "devise", "~> 4.9"
 
