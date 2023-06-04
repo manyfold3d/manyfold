@@ -430,7 +430,7 @@ GEM
     standard-performance (1.0.1)
       lint_roller (~> 1.0)
       rubocop-performance (~> 1.16.0)
-    stopwords-filter (0.7.0)
+    stopwords-filter2 (0.1.0)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
     thor (1.2.2)
@@ -503,12 +503,12 @@ DEPENDENCIES
   sqlite3 (~> 1.6)
   sqlite3_ar_regexp (~> 2.2)
   standard (~> 1.28.5)
-  stopwords-filter
+  stopwords-filter2
   tzinfo-data
   web-console (>= 4.1.0)
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.2.2p53
 
 BUNDLED WITH
-   2.3.18
+   2.4.13
