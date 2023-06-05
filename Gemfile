@@ -39,7 +39,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "sqlite3", "~> 1.6"
   gem "rspec-rails"
-  gem "standard", "~> 1.28.5"
+  gem "standard", "~> 1.29.0"
   gem "factory_bot"
   gem "faker", "~> 3.2"
   gem "guard", "~> 2.18"
@@ -48,7 +48,7 @@ group :development, :test do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-i18n", require: false
-  gem "rubocop-performance", "~> 1.15", require: false
+  gem "rubocop-performance", "~> 1.18", require: false
   gem "i18n-tasks", "~> 1.0"
   gem "simplecov", "~> 0.22.0", require: false
 end
