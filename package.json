@@ -20,7 +20,7 @@
     "jquery": "^3.7.0",
     "masonry-layout": "^4.2.2",
     "popper.js": "^1.16.1",
-    "sass": "^1.62.1",
+    "sass": "^1.63.2",
     "sifter": "^0.5.4",
     "three": "^0.153.0",
     "typescript": "^5.1.3"
