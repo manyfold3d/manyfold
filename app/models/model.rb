@@ -63,18 +63,22 @@ class Model < ApplicationRecord
     formatted_path != path
   end
 
-  private
-
-  def cannot_move_models_with_submodels
-    if (library_id_changed? || ActiveModel::Type::Boolean.new.cast(organize)) && contains_other_models?
-      errors.add(library_id_changed? ? :library : :organize, "can't move models containing other models")
-    end
+  def absolute_path
+    File.join(library.path, path)
   end
 
-  def create_folder_if_necessary(folder)
-    return if Dir.exist?(folder)
-    create_folder_if_necessary(File.dirname(folder))
-    Dir.mkdir(folder)
+  private
+
+  def previous_library
+    library_id_changed? ? Library.find(library_id_was) : library
+  end
+
+  def previous_path
+    path_changed? ? path_was : path
+  end
+
+  def previous_absolute_path
+    File.join(previous_library.path, previous_path)
   end
 
   def move_files
