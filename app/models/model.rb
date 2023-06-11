@@ -17,6 +17,7 @@ class Model < ApplicationRecord
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
   attr_accessor :organize
+  before_validation :autoupdate_path, if: :organize
 
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
@@ -83,6 +84,10 @@ class Model < ApplicationRecord
 
   def need_to_move_files?
     library_id_changed? || path_changed?
+  end
+
+  def autoupdate_path
+    self.path = formatted_path
   end
 
   end
