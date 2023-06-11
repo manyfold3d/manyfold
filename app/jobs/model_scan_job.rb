@@ -16,6 +16,8 @@ class ModelScanJob < ApplicationJob
   end
 
   def perform(model)
+    # Clean up old unused problems
+    model.problems.where(category: :destination_exists).destroy_all
     # Clean out missing files
     clean_up_missing_files(model)
     # For each file in the model, create a file object
