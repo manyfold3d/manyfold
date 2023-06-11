@@ -21,6 +21,7 @@ class Model < ApplicationRecord
 
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
+  validate :check_for_submodels, on: :update, if: :need_to_move_files?
 
   
 
@@ -88,6 +89,12 @@ class Model < ApplicationRecord
 
   def autoupdate_path
     self.path = formatted_path
+  end
+
+  def check_for_submodels
+    if contains_other_models?
+      errors.add(library_id_changed? ? :library : :path, "can't be changed, model contains other models")
+    end
   end
 
   end
