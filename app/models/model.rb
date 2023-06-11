@@ -47,9 +47,9 @@ class Model < ApplicationRecord
   end
 
   def contained_models
-    Library.find(library_id_was).models.where(
+    previous_library.models.where(
       Model.arel_table[:path].matches(
-        Model.sanitize_sql_like(path) + "/%",
+        Model.sanitize_sql_like(previous_path) + "/%",
         "\\"
       )
     )
