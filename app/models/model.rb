@@ -3,25 +3,25 @@ class Model < ApplicationRecord
   include PathBuilder
   include PathParser
 
+  scope :recent, -> { order(created_at: :desc) }
+
   belongs_to :library
   belongs_to :creator, optional: true
   belongs_to :collection, optional: true
-  has_many :model_files, dependent: :destroy
   belongs_to :preview_file, class_name: "ModelFile", optional: true
-  validates :name, presence: true
-  validates :path, presence: true, uniqueness: {scope: :library}
-  validate :cannot_move_models_with_submodels, on: :update
+  has_many :model_files, dependent: :destroy
   has_many :links, as: :linkable, dependent: :destroy
   has_many :problems, as: :problematic, dependent: :destroy
+  acts_as_taggable_on :tags
+
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
   attr_accessor :organize
 
-  before_update :move_files
+  validates :name, presence: true
+  validates :path, presence: true, uniqueness: {scope: :library}
 
-  scope :recent, -> { order(created_at: :desc) }
-
-  acts_as_taggable_on :tags
+  
 
   def parents
     Pathname.new(path).parent.descend.filter_map do |path|
