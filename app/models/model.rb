@@ -22,6 +22,7 @@ class Model < ApplicationRecord
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
   validate :check_for_submodels, on: :update, if: :need_to_move_files?
+  validate :destination_is_vacant, on: :update, if: :need_to_move_files?
 
   
 
@@ -97,5 +98,10 @@ class Model < ApplicationRecord
     end
   end
 
+  def destination_is_vacant
+    if Dir.exist?(absolute_path)
+      errors.add(:path, "already exists")
+    end
+  end
   end
 end
