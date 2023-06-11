@@ -24,7 +24,7 @@ class Model < ApplicationRecord
   validate :check_for_submodels, on: :update, if: :need_to_move_files?
   validate :destination_is_vacant, on: :update, if: :need_to_move_files?
 
-  
+  before_update :move_files, if: :need_to_move_files?
 
   def parents
     Pathname.new(path).parent.descend.filter_map do |path|
@@ -103,5 +103,9 @@ class Model < ApplicationRecord
       errors.add(:path, "already exists")
     end
   end
+
+  def move_files
+    FileUtils.mkdir_p(File.dirname(absolute_path))
+    File.rename(previous_absolute_path, absolute_path)
   end
 end
