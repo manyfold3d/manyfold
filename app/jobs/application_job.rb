@@ -10,9 +10,15 @@ class ApplicationJob < ActiveJob::Base
   end
 
   def self.case_insensitive_glob(extensions)
-    lower = extensions.map(&:downcase)
-    upper = extensions.map(&:upcase)
-    "*.{#{lower.zip(upper).flatten.join(",")}}"
+    [
+      "*.{",
+      extensions.map { |ext|
+        ext.chars.map { |char|
+          "[#{char.upcase}#{char.downcase}]"
+        }.join
+      }.join(","),
+      "}"
+    ].join
   end
 
   def self.image_pattern
