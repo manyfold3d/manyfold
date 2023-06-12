@@ -34,7 +34,7 @@ RSpec.describe LibraryScanJob do
     end
   end
 
-  context "with various case extensions" do
+  context "with a case sensitive filesystem", case_sensitive: true do
     around do |ex|
       MockDirectory.create([
         "model/file.obj",

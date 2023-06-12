@@ -75,6 +75,13 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  # Exclude case-sensitive filesystem tests if our local filesystem isn't
+  Dir.mktmpdir do |tmp|
+    if Sys::Filesystem.stat(tmp).case_insensitive?
+      config.filter_run_excluding case_sensitive: true
+    end
+  end
+
   config.include Devise::Test::IntegrationHelpers, type: :request
 
   # Create the default admin user before tests
