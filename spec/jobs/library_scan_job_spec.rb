@@ -55,7 +55,7 @@ RSpec.describe LibraryScanJob do
     end
 
     it "detects uppercase file extensions" do
-      expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "model/file.STL")
+      expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "model/file.OBJ")
     end
 
     it "detects mixed case file extensions" do
