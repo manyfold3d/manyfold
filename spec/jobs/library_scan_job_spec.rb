@@ -37,9 +37,9 @@ RSpec.describe LibraryScanJob do
   context "with various case extensions" do
     around do |ex|
       MockDirectory.create([
-        "model/file.stl",
-        "model/file.STL",
-        "model/file.Stl"
+        "model/file.obj",
+        "model/file.OBJ",
+        "model/file.Obj"
       ]) do |path|
         @library_path = path
         ex.run
@@ -51,7 +51,7 @@ RSpec.describe LibraryScanJob do
     # rubocop:enable RSpec/InstanceVariable
 
     it "detects lowercase file extensions" do
-      expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "model/file.stl")
+      expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "model/file.obj")
     end
 
     it "detects uppercase file extensions" do
@@ -59,7 +59,7 @@ RSpec.describe LibraryScanJob do
     end
 
     it "detects mixed case file extensions" do
-      expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "model/file.Stl")
+      expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "model/file.Obj")
     end
   end
 end
