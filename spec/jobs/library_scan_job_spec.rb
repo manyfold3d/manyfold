@@ -34,6 +34,29 @@ RSpec.describe LibraryScanJob do
     end
   end
 
+  context "with folders that look like filenames" do
+    around do |ex|
+      MockDirectory.create([
+        "wrong.stl/file.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    # rubocop:disable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) }
+    # rubocop:enable RSpec/InstanceVariable
+
+    it "does not include directories in file list" do
+      expect(described_class.new.filenames_on_disk(library)).not_to include File.join(library.path, "wrong.stl")
+    end
+
+    it "does include files within directories in file list" do
+      expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "wrong.stl/file.stl")
+    end
+  end
+
   context "with a case sensitive filesystem", case_sensitive: true do
     around do |ex|
       MockDirectory.create([
