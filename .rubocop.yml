@@ -6,6 +6,7 @@ require:
   - rubocop-rspec
   - rubocop-i18n
   - rubocop-performance
+  - rubocop-factory_bot
 
 inherit_gem:
   standard: config/base.yml
