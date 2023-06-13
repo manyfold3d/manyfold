@@ -75,7 +75,7 @@ class Model < ApplicationRecord
   private
 
   def strip_separators_from_path
-    self.path = path&.gsub(/(^#{File::SEPARATOR})|(#{File::SEPARATOR}$)/o, "")
+    self.path = path&.trim_path_separators
   end
 
   def previous_library
