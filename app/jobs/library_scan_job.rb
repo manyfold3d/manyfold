@@ -73,7 +73,7 @@ class LibraryScanJob < ApplicationJob
       new_model_properties = {
         name: File.basename(path).humanize.tr("+", " ").titleize
       }
-      model = library.models.create_with(new_model_properties).find_or_create_by(path: path)
+      model = library.models.create_with(new_model_properties).find_or_create_by(path: path.trim_path_separators)
       if model.valid?
         ModelScanJob.perform_later(model)
       else

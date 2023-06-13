@@ -16,6 +16,8 @@ class Model < ApplicationRecord
 
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
+  before_validation :strip_separators_from_path, if: :path_changed?
+
   attr_accessor :organize
   before_validation :autoupdate_path, if: :organize
 
@@ -71,6 +73,10 @@ class Model < ApplicationRecord
   end
 
   private
+
+  def strip_separators_from_path
+    self.path = path&.trim_path_separators
+  end
 
   def previous_library
     library_id_changed? ? Library.find(library_id_was) : library
