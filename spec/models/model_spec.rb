@@ -21,6 +21,11 @@ RSpec.describe Model do
     expect(build(:model).model_files).to eq []
   end
 
+  it "strips leading and trailing separators from paths" do
+    model = create(:model, path: "/models/car/")
+    expect(model.path).to eq "models/car"
+  end
+
   context "with a library on disk" do
     before do
       allow(File).to receive(:exist?).and_call_original
