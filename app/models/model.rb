@@ -111,6 +111,10 @@ class Model < ApplicationRecord
   end
 
   def move_files
+    # Sometimes, if we're trimming separators or normalising paths, we get here
+    # but the path hasn't actually changed on disk. In that case, we're done.
+    return if absolute_path == previous_absolute_path
+    # Move the folder
     FileUtils.mkdir_p(File.dirname(absolute_path))
     File.rename(previous_absolute_path, absolute_path)
   end
