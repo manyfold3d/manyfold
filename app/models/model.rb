@@ -91,7 +91,7 @@ class Model < ApplicationRecord
   end
 
   def need_to_move_files?
-    library_id_changed? || path_changed?
+    (library_id_changed? || path_changed?) && absolute_path != previous_absolute_path
   end
 
   def autoupdate_path

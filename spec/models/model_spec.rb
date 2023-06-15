@@ -1,4 +1,5 @@
 require "rails_helper"
+require "support/mock_directory"
 
 RSpec.describe Model do
   it "is not valid without a path" do
@@ -111,7 +112,9 @@ RSpec.describe Model do
       end
     end
 
+    # rubocop:disable RSpec/InstanceVariable
     let(:library) { create(:library, path: @library_path) }
+    # rubocop:enable RSpec/InstanceVariable
     let!(:model) {
       FileUtils.mkdir_p(File.join(library.path, "original"))
       create(:model, library: library, name: "test model", path: "original")
@@ -149,8 +152,10 @@ RSpec.describe Model do
       end
     end
 
+    # rubocop:disable RSpec/InstanceVariable
     let(:original_library) { create(:library, path: File.join(@library_path, "original_library")) }
     let(:new_library) { create(:library, path: File.join(@library_path, "new_library")) }
+    # rubocop:enable RSpec/InstanceVariable
     let!(:model) {
       FileUtils.mkdir_p(File.join(original_library.path, "model"))
       create(:model, library: original_library, name: "test model", path: "model")
@@ -176,6 +181,43 @@ RSpec.describe Model do
       expect(model.errors.full_messages).to include("Library can't be changed, model contains other models")
       expect(Dir.exist?(File.join(original_library.path, "model"))).to be true
       expect(Dir.exist?(File.join(new_library.path, "model"))).to be false
+    end
+  end
+
+  context "with filesystem conflicts" do
+    around do |ex|
+      MockDirectory.create([
+        "model/file.obj"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    # rubocop:disable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) }
+    # rubocop:enable RSpec/InstanceVariable
+
+    let(:model_without_leading_separator) {
+      create(:model, library: library, path: "model")
+    }
+    let(:model_with_leading_separator) {
+      model = create(:model, library: library, path: "model")
+      # rubocop:disable Rails/SkipsModelValidations
+      model.update_columns(path: "/model") # Set leading separator bypassing validators
+      # rubocop:enable Rails/SkipsModelValidations
+      model
+    }
+
+    it "allows removal of leading separators without having to move files" do
+      expect(model_with_leading_separator.path).to eql "/model"
+      expect { model_with_leading_separator.update!(path: "model") }.not_to raise_error
+    end
+
+    it "fails validation if removing a leading separator causes a conflict" do
+      expect(model_with_leading_separator.path).to eql "/model"
+      expect(model_without_leading_separator.path).to eql "model"
+      expect { model_with_leading_separator.update!(path: "model") }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 end
