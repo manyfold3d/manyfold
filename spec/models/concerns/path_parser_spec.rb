@@ -188,4 +188,62 @@ RSpec.describe PathParser do
       expect(model.tag_list).to eq ["library1", "tags", "greedy"]
     end
   end
+
+  context "when parsing creator out of a path" do
+    before do
+      allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}")
+    end
+
+    it "creates a new creator with a humanized name if there's no match" do
+      model = build(:model, path: "/bruce-wayne/model-name")
+      model.parse_metadata_from_path!
+      expect(model.creator.name).to eq "Bruce Wayne"
+      expect(model.creator.slug).to eq "bruce-wayne"
+    end
+
+    context "with an existing creator" do
+      let!(:creator) { create(:creator, name: "Bruce Wayne", slug: "bruce-wayne") }
+
+      it "matches safe path components" do
+        model = build(:model, path: "/bruce-wayne/model-name")
+        model.parse_metadata_from_path!
+        expect(model.creator).to eq creator
+      end
+
+      it "matches unsafe path components" do
+        model = build(:model, path: "/Bruce Wayne/model-name")
+        model.parse_metadata_from_path!
+        expect(model.creator).to eq creator
+      end
+    end
+  end
+
+  context "when parsing collection out of a path" do
+    before do
+      allow(SiteSettings).to receive(:model_path_template).and_return("{collection}/{modelName}")
+    end
+
+    it "creates a new collection with a humanized name if there's no match" do
+      model = build(:model, path: "/wonderful-toys/model-name")
+      model.parse_metadata_from_path!
+      expect(model.collection.name).to eq "Wonderful Toys"
+      expect(model.collection.slug).to eq "wonderful-toys"
+    end
+
+    context "with an existing collection" do
+      let!(:collection) { create(:collection, name: "Wonderful Toys", slug: "wonderful-toys") }
+
+      it "matches safe path components" do
+        model = build(:model, path: "/wonderful-toys/model-name")
+        model.parse_metadata_from_path!
+        expect(model.collection).to eq collection
+      end
+
+      it "matches unsafe path components" do
+        model = build(:model, path: "/Wonderful Toys/model-name")
+        model.parse_metadata_from_path!
+        expect(model.collection).to eq collection
+      end
+    end
+  end
 end
