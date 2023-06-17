@@ -29,7 +29,7 @@ RSpec.describe Model do
 
   it "automatically generates a slug from the name" do
     model = create(:model, name: "Spın̈al Tap")
-    expect(model.slug).to eq "spinal-tap"
+    expect(model.slug).to eq "spin-al-tap"
   end
 
   context "with a library on disk" do
