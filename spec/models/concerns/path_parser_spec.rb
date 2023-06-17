@@ -260,4 +260,12 @@ RSpec.describe PathParser do
       end
     end
   end
+
+  it "discards model ID and doesn't include it in model name" do
+    allow(SiteSettings).to receive(:model_path_template).and_return("{modelName}{modelId}")
+    model = build(:model, path: "model-name#1234")
+    model.parse_metadata_from_path!
+    expect(model.name).to eq "Model Name"
+    expect(model.slug).to eq "model-name"
+  end
 end

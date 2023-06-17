@@ -26,6 +26,9 @@ module PathParser
           name: components[:collection].humanize.titleize
         )
     end
+    if components[:model_name]
+      self.name = components[:model_name].humanize.titleize
+    end
     save!
   end
 end
