@@ -146,27 +146,27 @@ RSpec.describe PathParser do
     it "parses creator" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}{modelId}")
       model.parse_metadata_from_path!
-      expect(model.creator.name).to eq "greedy"
+      expect(model.creator.name).to eq "Greedy"
     end
 
     it "parses collection" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{collection}/{modelName}{modelId}")
       model.parse_metadata_from_path!
-      expect(model.collection.name).to eq "greedy"
+      expect(model.collection.name).to eq "Greedy"
     end
 
     it "parses everything at once" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{collection}/{tags}/{modelName}{modelId}")
       model.parse_metadata_from_path!
-      expect(model.creator.name).to eq "library1"
-      expect(model.collection.name).to eq "stuff"
+      expect(model.creator.name).to eq "Library1"
+      expect(model.collection.name).to eq "Stuff"
       expect(model.tag_list).to eq ["tags", "are", "greedy"]
     end
 
     it "ignores extra path components" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}{modelId}")
       model.parse_metadata_from_path!
-      expect(model.creator.name).to eq "greedy"
+      expect(model.creator.name).to eq "Greedy"
       expect(model.collection).to be_nil
       expect(model.tag_list).to eq []
     end
@@ -194,8 +194,15 @@ RSpec.describe PathParser do
       allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}")
     end
 
-    it "creates a new creator with a humanized name if there's no match" do
-      model = build(:model, path: "/bruce-wayne/model-name")
+    it "creates a new creator from a human name if there's no match" do
+      model = build(:model, path: "Bruce Wayne/model-name")
+      model.parse_metadata_from_path!
+      expect(model.creator.name).to eq "Bruce Wayne"
+      expect(model.creator.slug).to eq "bruce-wayne"
+    end
+
+    it "creates a new creator from a slug if there's no match" do
+      model = build(:model, path: "bruce-wayne/model-name")
       model.parse_metadata_from_path!
       expect(model.creator.name).to eq "Bruce Wayne"
       expect(model.creator.slug).to eq "bruce-wayne"
@@ -205,13 +212,13 @@ RSpec.describe PathParser do
       let!(:creator) { create(:creator, name: "Bruce Wayne", slug: "bruce-wayne") }
 
       it "matches safe path components" do
-        model = build(:model, path: "/bruce-wayne/model-name")
+        model = build(:model, path: "bruce-wayne/model-name")
         model.parse_metadata_from_path!
         expect(model.creator).to eq creator
       end
 
       it "matches unsafe path components" do
-        model = build(:model, path: "/Bruce Wayne/model-name")
+        model = build(:model, path: "Bruce Wayne/model-name")
         model.parse_metadata_from_path!
         expect(model.creator).to eq creator
       end
@@ -223,8 +230,15 @@ RSpec.describe PathParser do
       allow(SiteSettings).to receive(:model_path_template).and_return("{collection}/{modelName}")
     end
 
-    it "creates a new collection with a humanized name if there's no match" do
-      model = build(:model, path: "/wonderful-toys/model-name")
+    it "creates a new collection from a human name if there's no match" do
+      model = build(:model, path: "Wonderful Toys/model-name")
+      model.parse_metadata_from_path!
+      expect(model.collection.name).to eq "Wonderful Toys"
+      expect(model.collection.slug).to eq "wonderful-toys"
+    end
+
+    it "creates a new collection from a slug if there's no match" do
+      model = build(:model, path: "wonderful-toys/model-name")
       model.parse_metadata_from_path!
       expect(model.collection.name).to eq "Wonderful Toys"
       expect(model.collection.slug).to eq "wonderful-toys"
@@ -234,13 +248,13 @@ RSpec.describe PathParser do
       let!(:collection) { create(:collection, name: "Wonderful Toys", slug: "wonderful-toys") }
 
       it "matches safe path components" do
-        model = build(:model, path: "/wonderful-toys/model-name")
+        model = build(:model, path: "wonderful-toys/model-name")
         model.parse_metadata_from_path!
         expect(model.collection).to eq collection
       end
 
       it "matches unsafe path components" do
-        model = build(:model, path: "/Wonderful Toys/model-name")
+        model = build(:model, path: "Wonderful Toys/model-name")
         model.parse_metadata_from_path!
         expect(model.collection).to eq collection
       end

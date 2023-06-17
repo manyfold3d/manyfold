@@ -12,8 +12,20 @@ module PathParser
     if components[:tags].present?
       tag_list.add(remove_stop_words(components[:tags]))
     end
-    self.creator = Creator.find_or_create_by(name: components[:creator]) if components[:creator]
-    self.collection = Collection.find_or_create_by(name: components[:collection]) if components[:collection]
+    if components[:creator]
+      self.creator =
+        Creator.find_by(slug: components[:creator]) ||
+        Creator.create_with(slug: components[:creator].parameterize).find_or_create_by(
+          name: components[:creator].humanize.titleize
+        )
+    end
+    if components[:collection]
+      self.collection =
+        Collection.find_by(slug: components[:collection]) ||
+        Collection.create_with(slug: components[:collection].parameterize).find_or_create_by(
+          name: components[:collection].humanize.titleize
+        )
+    end
     save!
   end
 end
