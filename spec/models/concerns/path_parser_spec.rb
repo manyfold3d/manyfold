@@ -268,4 +268,13 @@ RSpec.describe PathParser do
     expect(model.name).to eq "Model Name"
     expect(model.slug).to eq "model-name"
   end
+
+  it "handles paths matching a complex templates" do
+    allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{creator} - {modelName}{modelId}")
+    model = build(:model, path: "human/wizard/bruce-wayne - model-name#1234")
+    model.parse_metadata_from_path!
+    expect(model.name).to eq "Model Name"
+    expect(model.creator.name).to eq "Bruce Wayne"
+    expect(model.tag_list).to eq ["human", "wizard"]
+  end
 end
