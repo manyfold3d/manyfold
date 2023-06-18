@@ -1,4 +1,5 @@
 require "rails_helper"
+require "support/mock_directory"
 
 RSpec.describe ModelScanJob do
   before :all do
@@ -32,6 +33,29 @@ RSpec.describe ModelScanJob do
 
     it "queues up individual file scans" do
       expect { described_class.perform_now(model) }.to have_enqueued_job(ModelFileScanJob).exactly(2).times
+    end
+  end
+
+  context "with directories that look like files" do
+    around do |ex|
+      MockDirectory.create([
+        "model/nope.stl/arm.stl",
+        "model/leg.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    # rubocop:disable RSpec/InstanceVariable
+    let(:mock_library) { create(:library, path: @library_path) }
+    # rubocop:enable RSpec/InstanceVariable
+
+    it "doesn't make ModelFile objects for folders" do
+      model = create(:model, path: "model", library: mock_library)
+      # arm.stl is in a contained model so there should be only one file in this model
+      expect { described_class.perform_now(model) }.to change { model.model_files.count }.to(1)
+      expect(model.model_files.map(&:filename)).not_to include ["nope.stl"]
     end
   end
 
