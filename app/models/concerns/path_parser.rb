@@ -12,22 +12,10 @@ module PathParser
     if components[:tags].present?
       tag_list.add(remove_stop_words(components[:tags]))
     end
-    if components[:creator]
-      self.creator =
-        Creator.find_by(slug: components[:creator]) ||
-        Creator.create_with(slug: components[:creator].parameterize).find_or_create_by(
-          name: components[:creator].humanize.titleize
-        )
-    end
-    if components[:collection]
-      self.collection =
-        Collection.find_by(slug: components[:collection]) ||
-        Collection.create_with(slug: components[:collection].parameterize).find_or_create_by(
-          name: components[:collection].humanize.titleize
-        )
-    end
+    self.creator = find_or_create_from_path_component(Creator, components[:creator]) if components[:creator]
+    self.collection = find_or_create_from_path_component(Collection, components[:collection]) if components[:collection]
     if components[:model_name]
-      self.name = components[:model_name].humanize.titleize
+      self.name = to_human_name(components[:model_name])
     end
     save!
   end
@@ -69,4 +57,15 @@ def remove_stop_words(words)
     SiteSettings.model_tags_custom_stop_words
   )
   stopword_filter.filter(words)
+end
+
+def find_or_create_from_path_component(klass, path_component)
+  klass.find_by(slug: path_component) ||
+    klass.create_with(slug: path_component.parameterize).find_or_create_by(
+      name: to_human_name(path_component)
+    )
+end
+
+def to_human_name(str)
+  str.humanize.tr("+", " ").titleize
 end
