@@ -71,6 +71,7 @@ class LibraryScanJob < ApplicationJob
     # For each folder in the library with a change, find or create a model, then scan it
     folders_with_changes.each do |path|
       new_model_properties = {
+        # Initial best guess at name, this might be overwritten later by path parser
         name: File.basename(path).humanize.tr("+", " ").titleize
       }
       model = library.models.create_with(new_model_properties).find_or_create_by(path: path.trim_path_separators)
