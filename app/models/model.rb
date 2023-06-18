@@ -17,6 +17,7 @@ class Model < ApplicationRecord
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
   before_validation :strip_separators_from_path, if: :path_changed?
+  before_validation :slugify_name, if: :name_changed?
 
   attr_accessor :organize
   before_validation :autoupdate_path, if: :organize
@@ -117,5 +118,9 @@ class Model < ApplicationRecord
     # Move the folder
     FileUtils.mkdir_p(File.dirname(absolute_path))
     File.rename(previous_absolute_path, absolute_path)
+  end
+
+  def slugify_name
+    self.slug = name.parameterize
   end
 end

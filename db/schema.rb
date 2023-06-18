@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_24_000000) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_15_135601) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -18,7 +18,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_000000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "collection_id"
+    t.string "slug"
     t.index ["collection_id"], name: "index_collections_on_collection_id"
+    t.index ["slug"], name: "index_collections_on_slug"
   end
 
   create_table "creators", force: :cascade do |t|
@@ -27,6 +29,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_000000) do
     t.datetime "updated_at", null: false
     t.text "notes"
     t.text "caption"
+    t.string "slug"
+    t.index ["slug"], name: "index_creators_on_slug"
   end
 
   create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
@@ -93,10 +97,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_24_000000) do
     t.text "notes"
     t.text "caption"
     t.integer "collection_id"
+    t.string "slug"
     t.index ["collection_id"], name: "index_models_on_collection_id"
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
     t.index ["preview_file_id"], name: "index_models_on_preview_file_id"
+    t.index ["slug"], name: "index_models_on_slug"
   end
 
   create_table "problems", force: :cascade do |t|

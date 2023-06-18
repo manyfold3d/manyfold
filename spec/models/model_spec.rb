@@ -27,6 +27,11 @@ RSpec.describe Model do
     expect(model.path).to eq "models/car"
   end
 
+  it "automatically generates a slug from the name" do
+    model = create(:model, name: "Spın̈al Tap")
+    expect(model.slug).to eq "spin-al-tap"
+  end
+
   context "with a library on disk" do
     before do
       allow(File).to receive(:exist?).and_call_original

@@ -9,11 +9,11 @@ module PathBuilder
           File.join(tags.order(taggings_count: :desc).map(&:to_s).map(&:parameterize)) :
           "@untagged"
       when "{creator}"
-        safe(creator&.name) || "@unattributed"
+        path_component(creator) || "@unattributed"
       when "{collection}"
-        safe(collection&.name) || "@uncollected"
+        path_component(collection) || "@uncollected"
       when "{modelName}"
-        safe(name)
+        path_component(self)
       when "{modelId}"
         "##{id}"
       else
@@ -24,7 +24,8 @@ module PathBuilder
 
   private
 
-  def safe(str)
-    SiteSettings.safe_folder_names ? str&.parameterize : str
+  def path_component(object)
+    return nil if object.nil?
+    SiteSettings.safe_folder_names ? object.slug : object.name
   end
 end

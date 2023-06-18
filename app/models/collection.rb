@@ -5,6 +5,8 @@ class Collection < ApplicationRecord
   belongs_to :collection, optional: true
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
+  before_validation :slugify_name, if: :name_changed?
+
   default_scope { order(:name) }
   # returns all collections at and below given ids
   #   this should be applied to @filters[:collection] to get models in sub-trees
@@ -58,4 +60,10 @@ class Collection < ApplicationRecord
   #         JOIN collections ON collections.collection_id = search_tree.id
   #         WHERE NOT collections.id IN (path)
   #     )  SELECT * FROM search_tree
+
+  private
+
+  def slugify_name
+    self.slug = name.parameterize
+  end
 end
