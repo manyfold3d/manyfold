@@ -35,7 +35,7 @@ module PathParser
 
   def parse_tags(component)
     return unless component
-    tag_list.add(remove_stop_words(component))
+    tag_list.add(remove_stop_words(component).map { |tag| tag.titleize.downcase })
   end
 
   def path_parse_pattern

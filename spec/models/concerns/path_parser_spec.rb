@@ -131,7 +131,7 @@ RSpec.describe PathParser do
   end
 
   context "when parsing with a path template" do
-    let(:model) { build(:model, path: "/library1/stuff/tags/are/greedy/model-name") }
+    let(:model) { build(:model, path: "/library-1/stuff/tags/are/greedy/model-name") }
 
     before do
       allow(SiteSettings).to receive(:model_tags_filter_stop_words).and_return(false)
@@ -140,7 +140,7 @@ RSpec.describe PathParser do
     it "parses tags" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}{modelId}")
       model.parse_metadata_from_path!
-      expect(model.tag_list).to eq ["library1", "stuff", "tags", "are", "greedy"]
+      expect(model.tag_list).to eq ["library 1", "stuff", "tags", "are", "greedy"]
     end
 
     it "parses creator" do
@@ -158,7 +158,7 @@ RSpec.describe PathParser do
     it "parses everything at once" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{collection}/{tags}/{modelName}{modelId}")
       model.parse_metadata_from_path!
-      expect(model.creator.name).to eq "Library1"
+      expect(model.creator.name).to eq "Library 1"
       expect(model.collection.name).to eq "Stuff"
       expect(model.tag_list).to eq ["tags", "are", "greedy"]
     end
@@ -185,7 +185,7 @@ RSpec.describe PathParser do
       allow(SiteSettings).to receive(:model_tags_custom_stop_words).and_return(["stuff"])
       allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}{modelId}")
       model.parse_metadata_from_path!
-      expect(model.tag_list).to eq ["library1", "tags", "greedy"]
+      expect(model.tag_list).to eq ["library 1", "tags", "greedy"]
     end
   end
 
