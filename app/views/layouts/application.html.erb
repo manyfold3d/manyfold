@@ -37,7 +37,7 @@
           </li>
           <% if Problem.count > 0 %>
             <li class="nav-item">
-              <%= link_to icon("exclamation-triangle-fill", "Problems"), problems_path, class: (current_page?(problems_path) ? "link-danger nav-link active" : "link-danger nav-link") %>
+              <%= link_to icon("exclamation-triangle-fill", "Problems"), problems_path, class: (current_page?(problems_path) ? "link-warning nav-link active" : "link-warning nav-link") %>
             </li>
           <% end %>
           <li class="nav-item">

@@ -8,7 +8,10 @@
       </div>
     <% end %>
     <div class="card-body">
-      <h5 class="card-title"><%= file.name %></h5>
+      <h5 class="card-title">
+        <%= file.name %>
+        <%= content_tag(:span, icon("exclamation-triangle-fill", "Problem"), class: "text-warning align-middle") unless file.problems.empty? %>
+      </h5>
       <%= form_with model: [@library, @model] do |form| %>
         <% if file.caption %>
           <p class="card-text"><%= sanitize file.caption %></p>
