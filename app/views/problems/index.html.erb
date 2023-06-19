@@ -6,7 +6,7 @@
 		<tr>
 			<td>
 				<%= icon("file-x", problem.category) %>
-				<%= problem.category %>
+				<%= problem.category.titleize %> <%= t "activerecord.models.#{problem.problematic_type.underscore}" %>
 			</td>
 			<%= render partial: "#{problem.category}_#{problem.problematic_type.underscore}", locals: {problem: problem} %>
 		</tr>
