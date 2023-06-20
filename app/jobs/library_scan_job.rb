@@ -82,5 +82,9 @@ class LibraryScanJob < ApplicationJob
         Rails.logger.error(model.errors.full_messages.inspect)
       end
     end
+    # Run integrity check on all models
+    library.models.each do |model|
+      Scan::CheckModelIntegrityJob.perform_later(model)
+    end
   end
 end

@@ -50,15 +50,5 @@ class ModelScanJob < ApplicationJob
     if !model.creator_id && SiteSettings.parse_metadata_from_path
       model.parse_metadata_from_path!
     end
-    # If this model has no files, flag a problem
-    if model.model_files.reload.count == 0
-      begin
-        model.problems.create(category: :empty)
-      rescue
-        nil
-      end
-    else
-      model.problems.where(category: :empty).destroy_all
-    end
   end
 end
