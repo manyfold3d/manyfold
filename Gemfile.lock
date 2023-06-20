@@ -112,7 +112,7 @@ GEM
     concurrent-ruby (1.2.2)
     connection_pool (2.3.0)
     crass (1.0.6)
-    cssbundling-rails (1.1.2)
+    cssbundling-rails (1.2.0)
       railties (>= 6.0.0)
     data_migrate (10.0.2)
       activerecord (>= 6.0)
@@ -469,7 +469,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   cocoon (~> 1.2)
-  cssbundling-rails (~> 1.1)
+  cssbundling-rails (~> 1.2)
   data_migrate (~> 10.0)
   database_cleaner-active_record (~> 2.1)
   delayed_job_active_record (~> 4.1)
