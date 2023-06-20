@@ -1,0 +1,4 @@
+<td><%= icon("files-alt", "Nested model") %></td>
+<td><%= link_to problem.problematic.name, [problem.problematic.library, problem.problematic] %></td>
+<td><%= t "problems.model.nesting" %></td>
+<td><%= link_to "Open", [problem.problematic.library, problem.problematic], class: "btn btn-primary" %></td>

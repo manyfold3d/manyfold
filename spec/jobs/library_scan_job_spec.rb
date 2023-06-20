@@ -26,12 +26,6 @@ RSpec.describe LibraryScanJob do
       ModelScanJob.perform_now(model_one)
       expect { described_class.perform_now(library) }.to have_enqueued_job(ModelScanJob).exactly(3).times
     end
-
-    it "flags models with no files as problems" do
-      lib = create(:library, path: File.join("/", "tmp"))
-      create(:model, library: lib, path: "missing")
-      expect { described_class.perform_now(lib) }.to change(Problem, :count).from(0).to(1)
-    end
   end
 
   context "with folders that look like filenames" do

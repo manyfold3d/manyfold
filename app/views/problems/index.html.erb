@@ -4,11 +4,7 @@
 <table class="table table-striped">
 	<% @problems.each do |problem| %>
 		<tr>
-			<td>
-				<%= icon("file-x", problem.category) %>
-				<%= problem.category.titleize %> <%= t "activerecord.models.#{problem.problematic_type.underscore}" %>
-			</td>
-			<%= render partial: "#{problem.category}_#{problem.problematic_type.underscore}", locals: {problem: problem} %>
+			<%= render partial: "#{problem.problematic_type.underscore}_#{problem.category}", locals: {problem: problem} %>
 		</tr>
 	<% end %>
 </table>
