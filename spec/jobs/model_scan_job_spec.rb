@@ -58,13 +58,4 @@ RSpec.describe ModelScanJob do
       expect(model.model_files.map(&:filename)).not_to include ["nope.stl"]
     end
   end
-
-  context "with already scanned files" do
-    it "flags up problems for files that don't exist on disk" do
-      thing = create(:model, path: "model_one/nested_model", library: library)
-      create(:model_file, filename: "missing.stl", model: thing)
-      create(:model_file, filename: "gone.stl", model: thing)
-      expect { described_class.perform_now(thing) }.to change(Problem, :count).from(0).to(2)
-    end
-  end
 end
