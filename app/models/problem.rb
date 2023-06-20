@@ -16,5 +16,6 @@ class Problem < ApplicationRecord
     else
       problematic.problems.where(category: cat).destroy_all
     end
+    present
   end
 end
