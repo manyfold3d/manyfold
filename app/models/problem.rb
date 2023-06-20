@@ -6,7 +6,8 @@ class Problem < ApplicationRecord
   enum :category, [
     :missing,
     :empty,
-    :destination_exists # No longer used, but kept for compatibility
+    :destination_exists, # No longer used, but kept for compatibility
+    :nesting
   ]
 
   def self.create_or_clear(problematic, cat, present)
