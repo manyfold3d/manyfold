@@ -84,7 +84,7 @@ gem "devise", "~> 4.9"
 gem "data_migrate", "~> 9.0"
 
 gem "rails-settings-cached", "~> 2.9"
-gem "activeadmin", "~> 2.13"
+gem "activeadmin", "~> 2.14"
 
 gem "kaminari", "~> 1.2"
 
