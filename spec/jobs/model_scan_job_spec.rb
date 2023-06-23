@@ -2,43 +2,32 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe ModelScanJob do
-  around do |ex|
-    MockDirectory.create([
-      "model_one/part_1.obj",
-      "model_one/part_2.obj",
-      "thingiverse_model/files/part_one.stl",
-      "thingiverse_model/images/card_preview_DISPLAY.png",
-      "thingiverse_model/images/ignore.stl",
-      "thingiverse_model/LICENSE.txt",
-      "thingiverse_model/README.txt"
-    ]) do |path|
-      @library_path = path
-      ex.run
-    end
-  end
-
   before :all do
     ActiveJob::Base.queue_adapter = :test
   end
 
-  # rubocop:disable RSpec/InstanceVariable
-  let(:library) { create(:library, path: @library_path) }
-  # rubocop:enable RSpec/InstanceVariable
-
-  let(:model) do
-    create(:model, path: "model_one", library: library)
-  end
-
-  context "but no scanned files" do
-    it "can scan a library directory" do
-      expect { described_class.perform_now(model) }.to change { model.model_files.count }.to(2)
-      expect(model.model_files.map(&:filename)).to eq ["part_1.obj", "part_2.obj"]
+  context "with a simple model folder" do
+    around do |ex|
+      MockDirectory.create([
+        "model_one/part_1.obj",
+        "model_one/part_2.obj"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
     end
 
-    it "can scan a thingiverse-structured model" do
-      thing = create(:model, path: "thingiverse_model", library: library)
-      expect { described_class.perform_now(thing) }.to change { thing.model_files.count }.to(2)
-      expect(thing.model_files.map(&:filename)).to eq ["files/part_one.stl", "images/card_preview_DISPLAY.png"]
+    # rubocop:disable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) }
+    # rubocop:enable RSpec/InstanceVariable
+
+    let(:model) do
+      create(:model, path: "model_one", library: library)
+    end
+
+    it "detects model files" do
+      expect { described_class.perform_now(model) }.to change { model.model_files.count }.to(2)
+      expect(model.model_files.map(&:filename)).to eq ["part_1.obj", "part_2.obj"]
     end
 
     it "sets the preview file to the first scanned file by default" do
@@ -48,6 +37,40 @@ RSpec.describe ModelScanJob do
 
     it "queues up individual file scans" do
       expect { described_class.perform_now(model) }.to have_enqueued_job(ModelFileScanJob).exactly(2).times
+    end
+  end
+
+  context "with a thingiverse-structured model" do
+    around do |ex|
+      MockDirectory.create([
+        "thingiverse_model/files/part_one.stl",
+        "thingiverse_model/images/card_preview_DISPLAY.png",
+        "thingiverse_model/images/ignore.stl",
+        "thingiverse_model/LICENSE.txt",
+        "thingiverse_model/README.txt"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    before :all do
+      ActiveJob::Base.queue_adapter = :test
+    end
+
+    # rubocop:disable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) }
+    # rubocop:enable RSpec/InstanceVariable
+    let(:thing) { create(:model, path: "thingiverse_model", library: library) }
+
+    it "scans files" do
+      expect { described_class.perform_now(thing) }.to change { thing.model_files.count }.to(2)
+      expect(thing.model_files.map(&:filename)).to eq ["files/part_one.stl", "images/card_preview_DISPLAY.png"]
+    end
+
+    it "ignores model-type files in image directory" do
+      expect { described_class.perform_now(thing) }.to change { thing.model_files.count }.to(2)
+      expect(thing.model_files.map(&:filename)).not_to include "images/ignore.stl"
     end
   end
 
