@@ -6,10 +6,27 @@ RSpec.describe LibraryScanJob do
     ActiveJob::Base.queue_adapter = :test
   end
 
-  context "with fixtures" do
-    let(:library) do
-      create(:library, path: Rails.root.join("spec/fixtures/library"))
+  context "with a variety of files" do
+    around do |ex|
+      MockDirectory.create([
+        "model_one/part_1.obj",
+        "model_one/part_2.obj",
+        "model_one/nested_model/part_one.stl",
+        "subfolder/model_two/part_one.stl",
+        "thingiverse_model/files/part_one.stl",
+        "thingiverse_model/images/card_preview_DISPLAY.png",
+        "thingiverse_model/images/ignore.stl",
+        "thingiverse_model/LICENSE.txt",
+        "thingiverse_model/README.txt"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
     end
+
+    # rubocop:disable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) }
+    # rubocop:enable RSpec/InstanceVariable
 
     it "can scan a library directory" do
       expect { described_class.perform_now(library) }.to change { library.models.count }.to(4)

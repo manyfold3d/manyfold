@@ -2,13 +2,28 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe ModelScanJob do
+  around do |ex|
+    MockDirectory.create([
+      "model_one/part_1.obj",
+      "model_one/part_2.obj",
+      "thingiverse_model/files/part_one.stl",
+      "thingiverse_model/images/card_preview_DISPLAY.png",
+      "thingiverse_model/images/ignore.stl",
+      "thingiverse_model/LICENSE.txt",
+      "thingiverse_model/README.txt"
+    ]) do |path|
+      @library_path = path
+      ex.run
+    end
+  end
+
   before :all do
     ActiveJob::Base.queue_adapter = :test
   end
 
-  let(:library) do
-    create(:library, path: Rails.root.join("spec/fixtures/library"))
-  end
+  # rubocop:disable RSpec/InstanceVariable
+  let(:library) { create(:library, path: @library_path) }
+  # rubocop:enable RSpec/InstanceVariable
 
   let(:model) do
     create(:model, path: "model_one", library: library)
