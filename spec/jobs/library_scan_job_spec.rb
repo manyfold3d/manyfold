@@ -85,6 +85,31 @@ RSpec.describe LibraryScanJob do
     end
   end
 
+  context "with model folders that contain some common subfolders with mixed case" do
+    around do |ex|
+      MockDirectory.create([
+        "model/Presupported/part_one.stl",
+        "model/UnSupported/part_one.stl",
+        "model/Supported/part_one.stl",
+        "model/Parts/part_one.stl",
+        "model/Files/part_one.stl",
+        "model/Images/part_one.png"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    # rubocop:disable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) }
+    # rubocop:enable RSpec/InstanceVariable
+
+    it "ignores case and filters out subfolders correctly" do
+      expect { described_class.perform_now(library) }.to change { library.models.count }.to(1)
+      expect(library.models.map(&:path)).to contain_exactly("model")
+    end
+  end
+
   context "with folders that look like filenames" do
     around do |ex|
       MockDirectory.create([

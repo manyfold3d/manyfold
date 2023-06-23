@@ -22,7 +22,7 @@ class LibraryScanJob < ApplicationJob
       "unsupported",
       "parts"
     ]
-    matcher = /\/(#{ignorable_leaf_folders.join('|')})$/
+    matcher = /\/(#{ignorable_leaf_folders.join('|')})$/i
     folders.map { |f| f.gsub(matcher, "") }.uniq
   end
 
