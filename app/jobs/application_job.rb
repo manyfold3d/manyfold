@@ -9,23 +9,36 @@ class ApplicationJob < ActiveJob::Base
     SiteSettings.clear_cache
   end
 
-  def self.case_insensitive_glob(extensions)
+  def self.extension_glob(extensions)
     [
       "*.{",
-      extensions.map { |ext|
-        ext.chars.map { |char|
-          "[#{char.upcase}#{char.downcase}]"
-        }.join
-      }.join(","),
+      extensions.map { |ext| case_insensitive_glob_string(ext) }.join(","),
       "}"
     ].join
   end
 
+  def self.case_insensitive_glob_string(str)
+    str.chars.map { |char|
+      "[#{char.upcase}#{char.downcase}]"
+    }.join
+  end
+
   def self.image_pattern
-    case_insensitive_glob(SupportedMimeTypes.image_extensions)
+    extension_glob(SupportedMimeTypes.image_extensions)
   end
 
   def self.file_pattern
-    case_insensitive_glob(SupportedMimeTypes.image_extensions + SupportedMimeTypes.model_extensions)
+    extension_glob(SupportedMimeTypes.image_extensions + SupportedMimeTypes.model_extensions)
+  end
+
+  def self.common_subfolders
+    {
+      "files" => file_pattern,
+      "images" => image_pattern,
+      "presupported" => file_pattern,
+      "supported" => file_pattern,
+      "unsupported" => file_pattern,
+      "parts" => file_pattern
+    }
   end
 end

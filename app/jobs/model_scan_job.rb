@@ -1,20 +1,31 @@
 class ModelScanJob < ApplicationJob
   queue_as :default
 
+  def file_list(model_path)
+    list = []
+    Dir.open(model_path) do |dir|
+      list = Dir.glob(
+        [File.join(dir.path, ApplicationJob.file_pattern)] +
+        ApplicationJob.common_subfolders.map do |name, pattern|
+          File.join(
+            dir.path,
+            ApplicationJob.case_insensitive_glob_string(name),
+            pattern
+          )
+        end
+      ).uniq.filter { |x| File.file?(x) }
+    end
+    list
+  end
+
   def perform(model)
-    # For each file in the model, create a file object
     model_path = File.join(model.library.path, model.path)
     return if Problem.create_or_clear(model, :missing, !File.exist?(model_path))
-    Dir.open(model_path) do |dir|
-      Dir.glob([
-        File.join(dir.path, ApplicationJob.file_pattern),
-        File.join(dir.path, "files", ApplicationJob.file_pattern),
-        File.join(dir.path, "images", ApplicationJob.image_pattern)
-      ]).uniq.filter { |x| File.file?(x) }.each do |filename|
-        # Create the file
-        file = model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
-        ModelFileScanJob.perform_later(file) if file.valid?
-      end
+    # For each file in the model, create a file object
+    file_list(model_path).each do |filename|
+      # Create the file
+      file = model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
+      ModelFileScanJob.perform_later(file) if file.valid?
     end
     # Set tags and default files
     model.model_files.reload
