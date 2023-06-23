@@ -74,6 +74,31 @@ RSpec.describe ModelScanJob do
     end
   end
 
+  context "with files in some common subfolders" do
+    around do |ex|
+      MockDirectory.create([
+        "model/presupported/part_one.stl",
+        "model/unsupported/part_one.stl",
+        "model/supported/part_one.stl",
+        "model/parts/part_one.stl",
+        "model/files/part_one.stl",
+        "model/images/part_one.png"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    # rubocop:disable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) }
+    # rubocop:enable RSpec/InstanceVariable
+    let(:model) { create(:model, path: "model", library: library) }
+
+    it "finds all the files in the subfolders" do
+      expect { described_class.perform_now(model) }.to change { model.model_files.count }.to(6)
+    end
+  end
+
   context "with directories that look like files" do
     around do |ex|
       MockDirectory.create([

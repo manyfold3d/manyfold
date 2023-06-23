@@ -9,7 +9,11 @@ class ModelScanJob < ApplicationJob
       Dir.glob([
         File.join(dir.path, ApplicationJob.file_pattern),
         File.join(dir.path, "files", ApplicationJob.file_pattern),
-        File.join(dir.path, "images", ApplicationJob.image_pattern)
+        File.join(dir.path, "images", ApplicationJob.image_pattern),
+        File.join(dir.path, "presupported", ApplicationJob.file_pattern),
+        File.join(dir.path, "unsupported", ApplicationJob.file_pattern),
+        File.join(dir.path, "parts", ApplicationJob.file_pattern),
+        File.join(dir.path, "supported", ApplicationJob.file_pattern)
       ]).uniq.filter { |x| File.file?(x) }.each do |filename|
         # Create the file
         file = model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
