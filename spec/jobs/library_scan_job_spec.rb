@@ -38,6 +38,27 @@ RSpec.describe LibraryScanJob do
     end
   end
 
+  context "with nested models" do
+    around do |ex|
+      MockDirectory.create([
+        "model_one/part_1.obj",
+        "model_one/nested/part_2.obj"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    # rubocop:disable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) }
+    # rubocop:enable RSpec/InstanceVariable
+
+    it "pulls out nested model as separate" do
+      expect { described_class.perform_now(library) }.to change { library.models.count }.to(2)
+      expect(library.models.map(&:path)).to contain_exactly("model_one", "model_one/nested")
+    end
+  end
+
   context "with a thingiverse-style model folder" do
     around do |ex|
       MockDirectory.create([
