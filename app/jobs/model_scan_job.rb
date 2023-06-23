@@ -6,15 +6,10 @@ class ModelScanJob < ApplicationJob
     model_path = File.join(model.library.path, model.path)
     return if Problem.create_or_clear(model, :missing, !File.exist?(model_path))
     Dir.open(model_path) do |dir|
-      Dir.glob([
-        File.join(dir.path, ApplicationJob.file_pattern),
-        File.join(dir.path, "files", ApplicationJob.file_pattern),
-        File.join(dir.path, "images", ApplicationJob.image_pattern),
-        File.join(dir.path, "presupported", ApplicationJob.file_pattern),
-        File.join(dir.path, "unsupported", ApplicationJob.file_pattern),
-        File.join(dir.path, "parts", ApplicationJob.file_pattern),
-        File.join(dir.path, "supported", ApplicationJob.file_pattern)
-      ]).uniq.filter { |x| File.file?(x) }.each do |filename|
+      Dir.glob(
+        [File.join(dir.path, ApplicationJob.file_pattern)] +
+        ApplicationJob.common_subfolders.map { |name, pattern| File.join(dir.path, name, pattern) }
+      ).uniq.filter { |x| File.file?(x) }.each do |filename|
         # Create the file
         file = model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
         ModelFileScanJob.perform_later(file) if file.valid?

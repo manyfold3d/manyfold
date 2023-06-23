@@ -14,15 +14,7 @@ class LibraryScanJob < ApplicationJob
   end
 
   def filter_out_common_subfolders(folders)
-    ignorable_leaf_folders = [
-      "files", # Thingiverse download structure
-      "images", # Thingiverse download structure
-      "presupported",
-      "supported",
-      "unsupported",
-      "parts"
-    ]
-    matcher = /\/(#{ignorable_leaf_folders.join('|')})$/i
+    matcher = /\/(#{ApplicationJob.common_subfolders.keys.join('|')})$/i
     folders.map { |f| f.gsub(matcher, "") }.uniq
   end
 

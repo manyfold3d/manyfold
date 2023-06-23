@@ -28,4 +28,15 @@ class ApplicationJob < ActiveJob::Base
   def self.file_pattern
     case_insensitive_glob(SupportedMimeTypes.image_extensions + SupportedMimeTypes.model_extensions)
   end
+
+  def self.common_subfolders
+    {
+      "files" => file_pattern,
+      "images" => image_pattern,
+      "presupported" => file_pattern,
+      "supported" => file_pattern,
+      "unsupported" => file_pattern,
+      "parts" => file_pattern
+    }
+  end
 end
