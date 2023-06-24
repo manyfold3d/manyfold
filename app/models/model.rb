@@ -19,7 +19,11 @@ class Model < ApplicationRecord
   before_validation :strip_separators_from_path, if: :path_changed?
   before_validation :slugify_name, if: :name_changed?
 
-  attr_accessor :organize
+  attr_reader :organize
+  def organize=(value)
+    @organize = ActiveRecord::Type::Boolean.new.cast(value)
+  end
+
   before_validation :autoupdate_path, if: :organize
 
   validates :name, presence: true
