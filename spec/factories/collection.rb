@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :collection do
-    name { Faker::FunnyName.name }
+    name { Faker::Name.name }
   end
 end
