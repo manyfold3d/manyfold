@@ -52,9 +52,6 @@ class Model < ApplicationRecord
         model: target
       )
     end
-    # Queue up integrity check on target
-    # to update any known problems
-    Scan::CheckModelIntegrityJob.perform_later(target)
     reload
     destroy
   end
