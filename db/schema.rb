@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_15_135601) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_28_195018) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -20,7 +20,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_135601) do
     t.integer "collection_id"
     t.string "slug"
     t.index ["collection_id"], name: "index_collections_on_collection_id"
-    t.index ["slug"], name: "index_collections_on_slug"
+    t.index ["name"], name: "index_collections_on_name", unique: true
+    t.index ["slug"], name: "index_collections_on_slug", unique: true
   end
 
   create_table "creators", force: :cascade do |t|
@@ -30,7 +31,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_135601) do
     t.text "notes"
     t.text "caption"
     t.string "slug"
-    t.index ["slug"], name: "index_creators_on_slug"
+    t.index ["name"], name: "index_creators_on_name", unique: true
+    t.index ["slug"], name: "index_creators_on_slug", unique: true
   end
 
   create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
