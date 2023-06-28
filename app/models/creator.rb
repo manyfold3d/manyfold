@@ -2,6 +2,7 @@ class Creator < ApplicationRecord
   has_many :models, dependent: :nullify
   has_many :links, as: :linkable, dependent: :destroy
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
+  validate :name, uniqueness: true
 
   default_scope { order(:name) }
 
