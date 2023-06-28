@@ -42,9 +42,16 @@ class ModelsController < ApplicationController
   end
 
   def merge
-    if (target = (@model.parents.find { |x| x.id == params[:target].to_i }))
+    if params[:target] && (target = (@model.parents.find { |x| x.id == params[:target].to_i }))
       @model.merge_into! target
+      Scan::CheckModelIntegrityJob.perform_later(target)
       redirect_to [@library, target]
+    elsif params[:all] && @model.contains_other_models?
+      @model.contained_models.each do |child|
+        child.merge_into! @model
+      end
+      Scan::CheckModelIntegrityJob.perform_later(@model)
+      redirect_to [@library, @model]
     else
       render status: :bad_request
     end
