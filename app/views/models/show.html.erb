@@ -42,6 +42,32 @@
       </p>
     <% end %>
 
+    <% unless @model.parents.empty? %>
+      <%= card :danger, "Merge" do %>
+        <p>
+          Merging moves all files from this model to the target, and removes this model. File metadata is preserved, but any model metadata will be lost!
+        </p>
+        <strong>Merge with:</strong>
+        <% @model.parents.each do |target| %>
+          <%= link_to target.name, merge_library_model_path(@library, @model, target: target.id), class: "btn btn-danger", method: :post %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+
+    <% if @model.contains_other_models? %>
+      <%= card :warning, "Contained Models" do %>
+        <p>
+          The model folder on disk contains other models. You may wish to merge them into this one, or move them out.
+        </p>
+        <ul>
+          <% @model.contained_models.each do |target| %>
+            <li><%= link_to target.name, library_model_path(@library, target)%></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+
     <%= card :secondary, "Actions" do %>
       <%= link_to "Edit Details", edit_library_model_path(@library, @model), class: "btn btn-primary" %>
       <%= link_to "Bulk Edit", edit_library_model_model_files_path(@library, @model), class: 'btn btn-secondary' %>
@@ -92,31 +118,6 @@
 
     <%= render 'tags_card', tags: @model.tags.sort_by(&:taggings_count) %>
     <%= render 'links_card', links: @model.links %>
-
-    <% if @model.contains_other_models? %>
-      <%= card :warning, "Contained Models" do %>
-        <p>
-          The model folder on disk contains other models. You may wish to merge them into this one, or move them out.
-        </p>
-        <ul>
-          <% @model.contained_models.each do |target| %>
-            <li><%= link_to target.name, library_model_path(@library, target)%></li>
-          <% end %>
-        </ul>
-      <% end %>
-    <% end %>
-
-    <% unless @model.parents.empty? %>
-      <%= card :danger, "Merge" do %>
-        <p>
-          Merging moves all files from this model to the target, and removes this model. File metadata is preserved, but any model metadata will be lost!
-        </p>
-        <strong>Merge with:</strong>
-        <% @model.parents.each do |target| %>
-          <%= link_to target.name, merge_library_model_path(@library, @model, target: target.id), class: "btn btn-danger", method: :post %>
-        <% end %>
-      <% end %>
-    <% end %>
 
   </div>
 
