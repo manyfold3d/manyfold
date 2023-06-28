@@ -3,13 +3,16 @@ class CollectionsController < ApplicationController
   before_action :get_collection, except: [:index, :new, :create]
 
   def index
-    process_filters_init
-    process_filters_tags_fetchall
-    process_filters
-    process_filters_tags_highlight
-
-    # @collections = Collection.where(id: @models.map{|model| model.collection_id})
-    @collections = Collection.tree_both(@filters[:collection] || nil, @models.filter_map { |model| model.collection_id })
+    if @filters.empty?
+      @collections = Collection.all
+      @commontags = @tags = ActsAsTaggableOn::Tag.all
+    else
+      process_filters_init
+      process_filters_tags_fetchall
+      process_filters
+      process_filters_tags_highlight
+      @collections = Collection.tree_both(@filters[:collection] || nil, @models.filter_map { |model| model.collection_id })
+    end
 
     # Ordering
     @collections = case session["order"]
