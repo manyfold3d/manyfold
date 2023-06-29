@@ -11,13 +11,13 @@
         </div>
       <% end %>
        <% else %>
-       <div class='preview-empty'> <p>no preview availiable</p></div>
+       <div class='preview-empty'> <p><%= t '.no_preview' %></p></div>
     <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= collection.name.titleize %></h5>
       <div class="col-auto">
         <% if collection.collection %>
-          <%= icon "collection", "Collection" %>
+          <%= icon "collection", t('activerecord.models.collection') %>
           <%= link_to collection.collection.name, (@filters||{}).merge(collection: collection.collection.id) %><br/>
         <% end %>
         <% if collection.caption %>
@@ -33,10 +33,10 @@
         </ul>
       </div>
       <div>
-        <%= link_to pluralize(collection.models.count, "Model"), {controller: 'models', collection: collection.id}, class: "btn btn-primary" %>
-        <%= link_to pluralize(collection.collections.count, "Collection"), {controller: 'collections', collection: collection.id}, class: "btn btn-primary" %>
-        <%= link_to "Filter", (@filters||{}).merge(controller: 'collections', collection: collection.id), class: "btn btn-primary" %>
-        <%= link_to "Edit", edit_collection_path(collection), {class: "btn btn-outline-secondary"} %>
+        <%= link_to pluralize(collection.models.count, t('activerecord.models.model')), {controller: 'models', collection: collection.id}, class: "btn btn-primary" %>
+        <%= link_to pluralize(collection.collections.count, t('activerecord.models.collection')), {controller: 'collections', collection: collection.id}, class: "btn btn-primary" %>
+        <%= link_to t('general.filter'), (@filters||{}).merge(controller: 'collections', collection: collection.id), class: "btn btn-primary" %>
+        <%= link_to t('general.edit'), edit_collection_path(collection), {class: "btn btn-outline-secondary"} %>
       </div>
     </div>
   </div>

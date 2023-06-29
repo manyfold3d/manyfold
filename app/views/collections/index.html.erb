@@ -13,7 +13,8 @@
   </div>
   <div class="col-3">
     <%= card :secondary, "Actions" do %>
-      <%= link_to "View unassigned", models_path(collection: ""), class: "btn btn-outline-secondary" %>
+      <%= link_to t('.view_unassigned_models'), models_path(collection: ""), class: "btn btn-outline-secondary mb-3 me-3" %>
+      <%= link_to t('collections.general.new'), new_collection_path, class: "btn btn-primary mb-3 me-3" %>
     <% end %>
     <%= render 'filters_card' %>
     <%= render 'tags_card', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>

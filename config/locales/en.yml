@@ -15,8 +15,21 @@ en:
         notes: Notes
         preview_file: Preview
     models:
+      collection: Collection
       model: Model
       model_file: File
+  collections:
+    collection:
+      no_preview: no preview availiable
+    general:
+      edit: Edit Collection
+      new: New Collection
+    index:
+      view_unassigned_models: View unassigned
+  general:
+    edit: Edit
+    filter: Filter
+    save: Save
   problems:
     library:
       missing: Library folder not found
