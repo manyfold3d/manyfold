@@ -12,7 +12,7 @@
     "@nathanvda/cocoon": "^1.2.14",
     "@popperjs/core": "^2.11.8",
     "@rails/actioncable": "^7.0.5",
-    "@rails/ujs": "^7.0.5",
+    "@rails/ujs": "^7.0.6",
     "@selectize/selectize": "^0.15.2",
     "bootstrap": "^5.3.0",
     "bootstrap-icons": "^1.10.5",
