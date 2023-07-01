@@ -81,7 +81,7 @@ gem "stopwords-filter2", require: "stopwords"
 
 gem "devise", "~> 4.9"
 
-gem "data_migrate", "~> 9.1"
+gem "data_migrate", github: "Floppy/data-migrate", ref: "db-prepare-withdata"
 
 gem "rails-settings-cached", "~> 2.9"
 gem "activeadmin", "~> 2.14"

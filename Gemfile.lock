@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/Floppy/data-migrate.git
+  revision: 4e9cd3fd30203d55dc01274db76ef94c683157fd
+  ref: db-prepare-withdata
+  specs:
+    data_migrate (9.1.0)
+      activerecord (>= 6.0)
+      railties (>= 6.0)
+
+GIT
   remote: https://github.com/danini-the-panini/mittsu.git
   revision: 7f44c468f9d6d8b5548ca933dea2d1a873ac496d
   ref: 7f44c46
@@ -114,9 +123,6 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.2.0)
       railties (>= 6.0.0)
-    data_migrate (9.1.0)
-      activerecord (>= 6.0)
-      railties (>= 6.0)
     database_cleaner-active_record (2.1.0)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
@@ -470,7 +476,7 @@ DEPENDENCIES
   byebug
   cocoon (~> 1.2)
   cssbundling-rails (~> 1.2)
-  data_migrate (~> 9.1)
+  data_migrate!
   database_cleaner-active_record (~> 2.1)
   delayed_job_active_record (~> 4.1)
   devise (~> 4.9)
