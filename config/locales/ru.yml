@@ -1,0 +1,60 @@
+---
+ru:
+  active_admin:
+    dashboard: Приборная панель
+  activerecord:
+    attributes:
+      link:
+        url: URL
+      model:
+        caption: Подпись
+        collection_id: Коллекция
+        creator_id: Создатель
+        library_id: Книгохранилище
+        name: Заголовок
+        notes: Примечания
+        preview_file: Предварительный просмотр
+    models:
+      collection: Коллекция
+      model: Модель
+      model_file: Файл
+  collections:
+    collection:
+      no_preview: Предварительный просмотр недоступен
+    general:
+      edit: Редактировать Коллекция
+      new: Новая Коллекция
+    index:
+      view_unassigned_models: Просмотр неназначенных
+  general:
+    delete: Удалить
+    edit: Редактировать
+    filter: Фильтр
+    save: Сохранять
+  problems:
+    library:
+      missing: Папка книгохранилище не найдена
+    model:
+      empty: Модель не имеет файлов
+      missing: Папка модели не найдена
+      nesting: Модель содержит другие модели
+    model_file:
+      missing: Файл не найден
+  renderer:
+    style:
+      lambert: Реалистично затененный
+      normals: Направление поверхности
+  sites:
+    cgtrader: CGTrader
+    comicsgamesandthings: Comics, Games, and Things
+    cults3d: Cults3D
+    myminifactory: MyMiniFactory
+    theminiindex: The Mini Index
+    thingiverse: Thingiverse
+  views:
+    pagination:
+      first: "« Первый"
+      last: Последний »
+      next: Следующий ›
+      previous: "‹ Предыдущий"
+      truncate: "…"
