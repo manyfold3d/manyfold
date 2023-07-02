@@ -106,3 +106,5 @@ gem "pundit", "~> 2.3"
 
 gem "spdx", "~> 4.1"
 gem "rack-contrib", "~> 2.3"
+
+gem "rails-i18n", "~> 7.0"
