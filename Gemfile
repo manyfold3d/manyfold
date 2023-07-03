@@ -93,3 +93,5 @@ gem "lograge", "~> 0.12.0"
 gem "sqlite3_ar_regexp", "~> 2.2"
 
 gem "mittsu", github: "danini-the-panini/mittsu", ref: "7f44c46"
+
+gem "view_component", "~> 3.3"
