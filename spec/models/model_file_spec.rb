@@ -33,4 +33,16 @@ RSpec.describe ModelFile do
     part = create(:model_file, model: model1, filename: "example.obj")
     expect(part.bounding_box).to eq([10, 15, 20])
   end
+
+  it "finds duplicate files using digest" do
+    library = create(:library, path: Rails.root.join("/tmp"))
+    model1 = create(:model, library: library, path: "model1")
+    part1 = create(:model_file, model: model1, filename: "file.obj", digest: "1234")
+    model2 = create(:model, library: library, path: "model2")
+    part2 = create(:model_file, model: model2, filename: "file.stl", digest: "1234")
+    model3 = create(:model, library: library, path: "model3")
+    create(:model_file, model: model3, filename: "file.stl", digest: "4321")
+    expect(part1.duplicate?).to be true
+    expect(part1.duplicates).to eq [part2]
+  end
 end
