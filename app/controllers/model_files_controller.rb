@@ -4,6 +4,7 @@ class ModelFilesController < ApplicationController
   before_action :get_file, except: [:bulk_edit, :bulk_update]
 
   def show
+    @duplicates = @file.duplicates
     respond_to do |format|
       format.html
       format.js

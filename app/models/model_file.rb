@@ -40,6 +40,14 @@ class ModelFile < ApplicationRecord
     File.delete(pathname) if File.exist?(pathname)
   end
 
+  def duplicates
+    ModelFile.where(digest: digest).where.not(id: id)
+  end
+
+  def duplicate?
+    duplicates.count > 0
+  end
+
   private
 
   def mesh
