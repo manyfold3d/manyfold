@@ -21,5 +21,16 @@ module VanDam
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.after_initialize do
+      # Create default admin user if there aren't any users yet
+      if ActiveRecord::Base.connection.table_exists?("users") && User.count == 0
+        User.create(
+          username: "admin",
+          email: "nobody@example.com",
+          admin: true
+        )
+      end
+    end
   end
 end
