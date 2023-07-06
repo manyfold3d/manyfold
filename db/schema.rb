@@ -148,8 +148,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_195018) do
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.integer "taggings_count", default: 0
-    t.text "notes"
-    t.text "caption"
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
