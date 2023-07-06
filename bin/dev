@@ -6,4 +6,6 @@ then
   gem install foreman
 fi
 
+bin/setup
+
 foreman start -f Procfile.dev "$@"
