@@ -5,17 +5,22 @@ RSpec.describe ModelFileScanJob do
     ActiveJob::Base.queue_adapter = :test
   end
 
+  let(:file) { create :model_file }
+  let(:supported_file) { create :model_file, filename: "file1_supported.stl" }
+
   it "detects if file is presupported" do
-    model_file = create(:model_file, filename: "file1_supported.stl")
-    described_class.perform_now(model_file)
-    model_file.reload
-    expect(model_file.presupported).to be true
+    described_class.perform_now(supported_file)
+    supported_file.reload
+    expect(supported_file.presupported).to be true
   end
 
   it "detects if file is unsupported" do
-    model_file = create(:model_file)
-    described_class.perform_now(model_file)
-    model_file.reload
-    expect(model_file.presupported).to be false
+    described_class.perform_now(file)
+    file.reload
+    expect(file.presupported).to be false
+  end
+
+  it "queues analysis job" do
+    expect { described_class.perform_now(file) }.to have_enqueued_job(Scan::AnalyseModelFileJob).once
   end
 end

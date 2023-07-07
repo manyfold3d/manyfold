@@ -9,10 +9,7 @@ class ModelFileScanJob < ApplicationJob
     ).empty?
       file.update!(presupported: true)
     end
-    # Store file stats
-    file.update!(
-      digest: file.calculate_digest,
-      size: File.size(file.pathname)
-    )
+    # Queue up deeper analysis job
+    Scan::AnalyseModelFileJob.perform_later(file)
   end
 end
