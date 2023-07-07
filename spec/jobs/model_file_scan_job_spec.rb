@@ -5,8 +5,8 @@ RSpec.describe ModelFileScanJob do
     ActiveJob::Base.queue_adapter = :test
   end
 
-  let(:file) { create :model_file }
-  let(:supported_file) { create :model_file, filename: "file1_supported.stl" }
+  let(:file) { create(:model_file) }
+  let(:supported_file) { create(:model_file, filename: "file1_supported.stl") }
 
   it "detects if file is presupported" do
     described_class.perform_now(supported_file)

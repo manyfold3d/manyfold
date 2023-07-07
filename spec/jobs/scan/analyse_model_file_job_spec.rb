@@ -2,7 +2,6 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe Scan::AnalyseModelFileJob do
-
   it "calculates file digest if not set" do
     file = create(:model_file, digest: nil, size: 10)
     allow(file).to receive(:calculate_digest).once.and_return("deadbeef")
