@@ -21,6 +21,11 @@
           Digest: <code><%= @file.digest.slice(0,16) %></code>
         </p>
       <% end %>
+      <% if @file.size %>
+        <p>
+          File size: <code><%= number_to_human_size @file.size, precision: 2 %></code>
+        </p>
+      <% end %>
       <%= render 'form' %>
     <% end %>
 

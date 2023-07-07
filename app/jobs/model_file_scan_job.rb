@@ -9,7 +9,10 @@ class ModelFileScanJob < ApplicationJob
     ).empty?
       file.update!(presupported: true)
     end
-    # Calculate digest
-    file.update!(digest: file.calculate_digest)
+    # Store file stats
+    file.update!(
+      digest: file.calculate_digest,
+      size: File.size(file.pathname)
+    )
   end
 end
