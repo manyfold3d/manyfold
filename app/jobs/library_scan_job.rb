@@ -45,5 +45,9 @@ class LibraryScanJob < ApplicationJob
     library.models.each do |model|
       Scan::CheckModelIntegrityJob.perform_later(model)
     end
+    # Run analysis job on ModelFiles that might be missing data
+    library.model_files.where(digest: nil).or(library.model_files.where(size: nil)).each do |file|
+      Scan::AnalyseModelFileJob.perform_later(file)
+    end
   end
 end

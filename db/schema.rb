@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_28_195018) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_07_082403) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -84,6 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_195018) do
     t.string "digest"
     t.text "notes"
     t.text "caption"
+    t.integer "size"
     t.index ["digest"], name: "index_model_files_on_digest"
     t.index ["model_id"], name: "index_model_files_on_model_id"
   end

@@ -9,7 +9,7 @@ class ModelFileScanJob < ApplicationJob
     ).empty?
       file.update!(presupported: true)
     end
-    # Calculate digest
-    file.update!(digest: file.calculate_digest)
+    # Queue up deeper analysis job
+    Scan::AnalyseModelFileJob.perform_later(file)
   end
 end
