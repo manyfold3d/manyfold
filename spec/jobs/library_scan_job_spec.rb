@@ -36,6 +36,7 @@ RSpec.describe LibraryScanJob do
       ModelScanJob.perform_now(model_one)
       expect { described_class.perform_now(library) }.to have_enqueued_job(ModelScanJob).exactly(1).times
     end
+
   end
 
   context "with nested models" do
