@@ -43,7 +43,7 @@ class ObjectPreview {
     this.showGrid = canvas.dataset.showGrid === 'true'
     this.autoLoad = canvas.dataset.autoLoad === 'true'
     this.progressIndicator.onclick = function () {
-      this.load(this.url, this.format)
+      this.load()
     }.bind(this)
     const observer = new window.IntersectionObserver(
       this.onIntersectionChanged.bind(this),
@@ -85,13 +85,13 @@ class ObjectPreview {
   onIntersectionChanged (entries, observer): void {
     this.cleanup()
     if (this.autoLoad && (entries[0].isIntersecting === true)) {
-      this.load(this.url, this.format)
+      this.load()
     }
   }
 
-  load (url: string, format: string): void {
+  load (): void {
     let loader: OBJLoader | STLLoader | ThreeMFLoader | PLYLoader | null = null
-    switch (format) {
+    switch (this.format) {
       case 'obj':
         loader = new OBJLoader()
         break
@@ -107,7 +107,7 @@ class ObjectPreview {
     }
     if (loader !== null) {
       loader.load(
-        url,
+        this.url,
         this.onLoad.bind(this),
         this.onProgress.bind(this),
         this.onLoadError.bind(this)
