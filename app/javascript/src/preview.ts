@@ -40,6 +40,9 @@ class ObjectPreview {
     this.renderStyle = canvas.dataset.renderStyle ?? 'normals'
     this.enablePanZoom = canvas.dataset.enablePanZoom === 'true'
     this.showGrid = canvas.dataset.showGrid === 'true'
+    this.progressIndicator.onclick = function () {
+      this.load(this.url, this.format)
+    }.bind(this)
     const observer = new window.IntersectionObserver(
       this.onIntersectionChanged.bind(this),
       {}
@@ -80,7 +83,7 @@ class ObjectPreview {
   onIntersectionChanged (entries, observer): void {
     this.cleanup()
     if (entries[0].isIntersecting === true) {
-      this.load(this.url, this.format)
+      // this.load(this.url, this.format)
     }
   }
 
@@ -113,9 +116,11 @@ class ObjectPreview {
   onProgress (xhr): void {
     const percentage =
       Math.floor((xhr.loaded / xhr.total) * 100).toString() + '%'
-    this.progressIndicator.style.width = percentage
-    this.progressIndicator.ariaValueNow = percentage
-    this.progressIndicator.textContent = percentage
+    const bar = (this.progressIndicator.getElementsByClassName('progress-bar')[0] as HTMLDivElement)
+    bar.style.width = percentage
+    bar.ariaValueNow = percentage
+    const label = (this.progressIndicator.getElementsByClassName('progress-label')[0] as HTMLSpanElement)
+    label.textContent = percentage
   }
 
   onLoad (model): void {
@@ -191,15 +196,19 @@ class ObjectPreview {
       )
       this.scene.add(this.gridHelper)
     }
+    // Hide the progress bar
+    this.progressIndicator.style.display = 'none'
     // Render first frame
     this.onAnimationFrame()
   }
 
   onLoadError (): void {
-    this.progressIndicator.classList.add('bg-danger')
-    this.progressIndicator.style.width = '100%'
-    this.progressIndicator.ariaValueNow = '100%'
-    this.progressIndicator.textContent = 'Load Error'
+    const bar = (this.progressIndicator.getElementsByClassName('progress-bar')[0] as HTMLDivElement)
+    bar.classList.add('bg-danger')
+    bar.style.width = '100%'
+    bar.ariaValueNow = '100%'
+    const label = (this.progressIndicator.getElementsByClassName('progress-label')[0] as HTMLSpanElement)
+    label.textContent = 'Load Error'
   }
 
   stopAnimation (): void {
@@ -234,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.height = canvas.width
     canvas.renderer = new ObjectPreview(
       canvas,
-      div.getElementsByClassName('progress-bar')[0] as HTMLDivElement
+      div.getElementsByClassName('progress')[0] as HTMLDivElement
     )
   })
 })
