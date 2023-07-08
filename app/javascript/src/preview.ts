@@ -17,6 +17,7 @@ class ObjectPreview {
   renderStyle: string
   enablePanZoom: boolean
   showGrid: boolean
+  autoLoad: boolean
   scene: THREE.Scene
   renderer: THREE.WebGLRenderer
   camera: THREE.PerspectiveCamera
@@ -40,6 +41,7 @@ class ObjectPreview {
     this.renderStyle = canvas.dataset.renderStyle ?? 'normals'
     this.enablePanZoom = canvas.dataset.enablePanZoom === 'true'
     this.showGrid = canvas.dataset.showGrid === 'true'
+    this.autoLoad = canvas.dataset.autoLoad === 'true'
     this.progressIndicator.onclick = function () {
       this.load(this.url, this.format)
     }.bind(this)
@@ -82,8 +84,8 @@ class ObjectPreview {
 
   onIntersectionChanged (entries, observer): void {
     this.cleanup()
-    if (entries[0].isIntersecting === true) {
-      // this.load(this.url, this.format)
+    if (this.autoLoad && (entries[0].isIntersecting === true)) {
+      this.load(this.url, this.format)
     }
   }
 

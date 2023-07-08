@@ -15,6 +15,7 @@
       data-background-colour="<%= current_user.renderer_settings["background_colour"] %>"
       data-object-colour="<%= current_user.renderer_settings["object_colour"] %>"
       data-render-style="<%= current_user.renderer_settings["render_style"] %>"
+      data-auto-load="<%= file.size < 10_000_000 ? true : false %>"
     >
     </canvas>
   </div>
