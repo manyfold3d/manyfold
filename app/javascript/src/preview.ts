@@ -7,41 +7,26 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 class ObjectPreview {
   canvas: HTMLCanvasElement
-  url: string
-  format: string
-  yUp: boolean
-  gridSizeX: number
-  gridSizeZ: number
-  backgroundColour: string
-  objectColour: string
-  renderStyle: string
-  enablePanZoom: boolean
-  showGrid: boolean
-  autoLoad: boolean
+  progressIndicator: HTMLDivElement
+  progressBar: HTMLDivElement
+  progressLabel: HTMLSpanElement
+  settings: DomStringMap
   scene: THREE.Scene
   renderer: THREE.WebGLRenderer
   camera: THREE.PerspectiveCamera
   controls: OrbitControls
   gridHelper: THREE.GridHelper
   frame: number
-  progressIndicator: HTMLDivElement
+
   constructor (
     canvas: HTMLCanvasElement,
     progressIndicator: HTMLDivElement
   ) {
     this.canvas = canvas
+    this.settings = canvas.dataset
     this.progressIndicator = progressIndicator
-    this.url = canvas.dataset.previewUrl ?? '/'
-    this.format = canvas.dataset.format ?? ''
-    this.yUp = canvas.dataset.yUp === 'true'
-    this.gridSizeX = parseInt(canvas.dataset.gridSizeX ?? '10', 10)
-    this.gridSizeZ = parseInt(canvas.dataset.gridSizeZ ?? '10', 10)
-    this.backgroundColour = canvas.dataset.backgroundColour ?? '#000000'
-    this.objectColour = canvas.dataset.objectColour ?? '#cccccc'
-    this.renderStyle = canvas.dataset.renderStyle ?? 'normals'
-    this.enablePanZoom = canvas.dataset.enablePanZoom === 'true'
-    this.showGrid = canvas.dataset.showGrid === 'true'
-    this.autoLoad = canvas.dataset.autoLoad === 'true'
+    this.progressBar = progressIndicator.getElementsByClassName('progress-bar')[0]
+    this.progressLabel = progressIndicator.getElementsByClassName('progress-label')[0]
     this.progressIndicator.onclick = function () {
       this.load()
     }.bind(this)
@@ -54,7 +39,7 @@ class ObjectPreview {
 
   setup (): void {
     this.scene = new THREE.Scene()
-    this.scene.background = new THREE.Color(this.backgroundColour)
+    this.scene.background = new THREE.Color(this.settings.backgroundColour ?? '#000000')
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
     this.camera = new THREE.PerspectiveCamera(
       45,
@@ -70,12 +55,11 @@ class ObjectPreview {
     )
     this.controls = new OrbitControls(this.camera, this.renderer.domElement)
     this.controls.enableDamping = true
-    this.controls.enablePan = this.enablePanZoom
-    this.controls.enableZoom = this.enablePanZoom
+    this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true')
     // Add lighting
     this.scene.add(new THREE.HemisphereLight(0xffffff, 0x404040))
     const light = new THREE.PointLight(0xffffff, 0.25)
-    light.position.set(this.gridSizeX, 50, this.gridSizeZ)
+    light.position.set(parseInt(this.settings.gridSizeX ?? '10', 10), 50, parseInt(this.settings.gridSizeZ ?? '10', 10))
     this.scene.add(light)
     const light2 = new THREE.PointLight(0xffffff, 0.25)
     light2.position.set(-this.gridSizeX, 50, this.gridSizeZ)
@@ -84,14 +68,14 @@ class ObjectPreview {
 
   onIntersectionChanged (entries, observer): void {
     this.cleanup()
-    if (this.autoLoad && (entries[0].isIntersecting === true)) {
+    if ((this.settings.autoLoad === 'true') && (entries[0].isIntersecting === true)) {
       this.load()
     }
   }
 
   load (): void {
     let loader: OBJLoader | STLLoader | ThreeMFLoader | PLYLoader | null = null
-    switch (this.format) {
+    switch (this.settings.format) {
       case 'obj':
         loader = new OBJLoader()
         break
@@ -107,7 +91,7 @@ class ObjectPreview {
     }
     if (loader !== null) {
       loader.load(
-        this.url,
+        this.settings.previewUrl,
         this.onLoad.bind(this),
         this.onProgress.bind(this),
         this.onLoadError.bind(this)
@@ -118,22 +102,19 @@ class ObjectPreview {
   onProgress (xhr): void {
     const percentage =
       Math.floor((xhr.loaded / xhr.total) * 100).toString() + '%'
-    const bar = (this.progressIndicator.getElementsByClassName('progress-bar')[0] as HTMLDivElement)
-    bar.style.width = percentage
-    bar.ariaValueNow = percentage
-    const label = (this.progressIndicator.getElementsByClassName('progress-label')[0] as HTMLSpanElement)
-    label.textContent = percentage
+    this.progressBar.style.width = this.progressBar.ariaValueNow =
+      this.progressLabel.textContent = percentage
   }
 
   onLoad (model): void {
     this.setup()
-    const material = this.renderStyle === 'normals'
+    const material = this.settings.renderStyle === 'normals'
       ? new THREE.MeshNormalMaterial({
         flatShading: true
       })
       : new THREE.MeshLambertMaterial({
         flatShading: true,
-        color: this.objectColour
+        color: (this.settings.objectColour ?? '#cccccc')
       })
     // find mesh and set material
     let object: THREE.Mesh | null = null
@@ -150,7 +131,7 @@ class ObjectPreview {
     if (object == null) return
 
     // Transform to screen coords from print
-    if (!this.yUp) {
+    if (this.settings.yUp !== 'true') {
       const coordSystemTransform = new THREE.Matrix4()
       coordSystemTransform.set(
         1,
@@ -188,7 +169,7 @@ class ObjectPreview {
     object.position.set(-centre.x, -bbox.min.y, -centre.z)
     this.scene.add(object)
     // Add the grid
-    if (this.showGrid) {
+    if (this.settings.showGrid === 'true') {
       // TODO: use grid size Z here, see #834
       this.gridHelper = new THREE.GridHelper(
         this.gridSizeX,
@@ -205,12 +186,9 @@ class ObjectPreview {
   }
 
   onLoadError (): void {
-    const bar = (this.progressIndicator.getElementsByClassName('progress-bar')[0] as HTMLDivElement)
-    bar.classList.add('bg-danger')
-    bar.style.width = '100%'
-    bar.ariaValueNow = '100%'
-    const label = (this.progressIndicator.getElementsByClassName('progress-label')[0] as HTMLSpanElement)
-    label.textContent = 'Load Error'
+    this.progressBar.classList.add('bg-danger')
+    this.progressBar.style.width = this.progressBar.ariaValueNow = '100%'
+    this.progressLabel.textContent = 'Load Error'
   }
 
   stopAnimation (): void {
