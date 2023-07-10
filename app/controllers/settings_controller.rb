@@ -51,7 +51,8 @@ class SettingsController < ApplicationController
       "enable_pan_zoom" => settings[:enable_pan_zoom] == "1",
       "background_colour" => settings[:background_colour],
       "object_colour" => settings[:object_colour],
-      "render_style" => settings[:render_style]
+      "render_style" => settings[:render_style],
+      "auto_load_max_size" => settings[:auto_load_max_size].to_i
     }
   end
 

@@ -1,9 +1,10 @@
 <% if renderable?(file.extension) %>
   <div id="preview-file-<%= file.id %>" class="object-preview position-relative" data-preview>
-    <div class="progress position-absolute top-50 start-50 translate-middle">
-      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+    <div class="load-progress progress position-absolute top-50 start-50 translate-middle" style="height: 3em; z-index: 2; cursor: pointer" role="presentation">
+      <div class="progress-bar bg-info progress-bar-animated progress-bar-striped" aria-label="Loading progress" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      <span class="progress-label position-absolute top-50 start-50 translate-middle" role="button">Load (<%= number_to_human_size file.size, precision: 2 %>)</span>
     </div>
-    <canvas class="position-relative"
+    <canvas class="position-relative" style="z-index: 1"
       data-preview-url="<%= library_model_model_file_path(library, model, file, file.extension.to_sym)%>"
       data-format="<%= file.extension %>"
       data-y-up="<%= file.y_up %>"
@@ -14,6 +15,7 @@
       data-background-colour="<%= current_user.renderer_settings["background_colour"] %>"
       data-object-colour="<%= current_user.renderer_settings["object_colour"] %>"
       data-render-style="<%= current_user.renderer_settings["render_style"] %>"
+      data-auto-load="<%= file.size < ((current_user.renderer_settings["auto_load_max_size"] || 9_999_999).megabytes) ? true : false %>"
     >
     </canvas>
   </div>
