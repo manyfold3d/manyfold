@@ -49,6 +49,22 @@ en:
     style:
       lambert: Realistically shaded
       normals: Surface direction
+  settings:
+    renderer_settings:
+      auto_load_max_size:
+        always: Always
+        label: Automatically load previews
+        never: Never
+        under_1024: Up to 1024 MB
+        under_128: Up to 128 MB
+        under_16: Up to 16 MB
+        under_2: Up to 2 MB
+        under_256: Up to 256 MB
+        under_32: Up to 32 MB
+        under_4: Up to 4 MB
+        under_512: Up to 512 MB
+        under_64: Up to 64 MB
+        under_8: Up to 8 MB
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
