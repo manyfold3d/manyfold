@@ -20,10 +20,11 @@ class ObjectPreview {
 
   constructor (
     canvas: HTMLCanvasElement,
+    settings: DOMStringMap,
     progressIndicator: HTMLDivElement
   ) {
     this.canvas = canvas
-    this.settings = canvas.dataset
+    this.settings = settings
     this.progressIndicator = progressIndicator
     this.progressBar = progressIndicator.getElementsByClassName('progress-bar')[0] as HTMLDivElement
     this.progressLabel = progressIndicator.getElementsByClassName('progress-label')[0] as HTMLSpanElement
@@ -226,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.height = canvas.width
     canvas.renderer = new ObjectPreview(
       canvas,
+      div.dataset,
       div.getElementsByClassName('progress')[0] as HTMLDivElement
     )
   })
