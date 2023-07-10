@@ -10,7 +10,7 @@ class ObjectPreview {
   progressIndicator: HTMLDivElement
   progressBar: HTMLDivElement
   progressLabel: HTMLSpanElement
-  settings: DomStringMap
+  settings: DOMStringMap
   scene: THREE.Scene
   renderer: THREE.WebGLRenderer
   camera: THREE.PerspectiveCamera
@@ -25,8 +25,8 @@ class ObjectPreview {
     this.canvas = canvas
     this.settings = canvas.dataset
     this.progressIndicator = progressIndicator
-    this.progressBar = progressIndicator.getElementsByClassName('progress-bar')[0]
-    this.progressLabel = progressIndicator.getElementsByClassName('progress-label')[0]
+    this.progressBar = progressIndicator.getElementsByClassName('progress-bar')[0] as HTMLDivElement
+    this.progressLabel = progressIndicator.getElementsByClassName('progress-label')[0] as HTMLSpanElement
     this.progressIndicator.onclick = function () {
       this.load()
     }.bind(this)
