@@ -62,7 +62,7 @@ class ObjectPreview {
     light.position.set(parseInt(this.settings.gridSizeX ?? '10', 10), 50, parseInt(this.settings.gridSizeZ ?? '10', 10))
     this.scene.add(light)
     const light2 = new THREE.PointLight(0xffffff, 0.25)
-    light2.position.set(-this.gridSizeX, 50, this.gridSizeZ)
+    light2.position.set(-this.settings.gridSizeX, 50, this.settings.gridSizeZ)
     this.scene.add(light2)
   }
 
@@ -172,8 +172,8 @@ class ObjectPreview {
     if (this.settings.showGrid === 'true') {
       // TODO: use grid size Z here, see #834
       this.gridHelper = new THREE.GridHelper(
-        this.gridSizeX,
-        this.gridSizeX / 10,
+        this.settings.gridSizeX,
+        this.settings.gridSizeX / 10,
         'magenta',
         'cyan'
       )
