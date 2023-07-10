@@ -57,12 +57,14 @@ class ObjectPreview {
     this.controls.enableDamping = true
     this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true')
     // Add lighting
+    const gridSizeX = parseInt(this.settings.gridSizeX ?? '10', 10)
+    const gridSizeZ = parseInt(this.settings.gridSizeZ ?? '10', 10)
     this.scene.add(new THREE.HemisphereLight(0xffffff, 0x404040))
     const light = new THREE.PointLight(0xffffff, 0.25)
-    light.position.set(parseInt(this.settings.gridSizeX ?? '10', 10), 50, parseInt(this.settings.gridSizeZ ?? '10', 10))
+    light.position.set(gridSizeX, 50, gridSizeZ)
     this.scene.add(light)
     const light2 = new THREE.PointLight(0xffffff, 0.25)
-    light2.position.set(-this.settings.gridSizeX, 50, this.settings.gridSizeZ)
+    light2.position.set(-gridSizeX, 50, gridSizeZ)
     this.scene.add(light2)
   }
 
@@ -91,7 +93,7 @@ class ObjectPreview {
     }
     if (loader !== null) {
       loader.load(
-        this.settings.previewUrl,
+        this.settings.previewUrl ?? '',
         this.onLoad.bind(this),
         this.onProgress.bind(this),
         this.onLoadError.bind(this)
@@ -170,10 +172,11 @@ class ObjectPreview {
     this.scene.add(object)
     // Add the grid
     if (this.settings.showGrid === 'true') {
+      const gridSizeX = parseInt(this.settings.gridSizeX ?? '10', 10)
       // TODO: use grid size Z here, see #834
       this.gridHelper = new THREE.GridHelper(
-        this.settings.gridSizeX,
-        this.settings.gridSizeX / 10,
+        gridSizeX,
+        gridSizeX / 10,
         'magenta',
         'cyan'
       )
