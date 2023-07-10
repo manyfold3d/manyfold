@@ -219,7 +219,7 @@ GEM
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
     language_server-protocol (3.17.0.3)
-    lint_roller (1.0.0)
+    lint_roller (1.1.0)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -427,16 +427,16 @@ GEM
     sqlite3_ar_regexp (2.2.0)
       activerecord (>= 3.2)
       sqlite3
-    standard (1.29.0)
+    standard (1.30.1)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.52.0)
       standard-custom (~> 1.0.0)
       standard-performance (~> 1.1.0)
-    standard-custom (1.0.0)
+    standard-custom (1.0.1)
       lint_roller (~> 1.0)
-    standard-performance (1.1.0)
-      lint_roller (~> 1.0)
+    standard-performance (1.1.1)
+      lint_roller (~> 1.1)
       rubocop-performance (~> 1.18.0)
     stopwords-filter2 (0.1.0)
     sys-filesystem (1.4.3)
@@ -516,7 +516,7 @@ DEPENDENCIES
   spring
   sqlite3 (~> 1.6)
   sqlite3_ar_regexp (~> 2.2)
-  standard (~> 1.29.0)
+  standard (~> 1.30.1)
   stopwords-filter2
   sys-filesystem (~> 1.4)
   tzinfo-data
