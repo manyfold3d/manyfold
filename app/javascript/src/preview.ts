@@ -223,8 +223,7 @@ class ObjectPreview {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-preview]').forEach((div) => {
-    const canvas = div.getElementsByTagName('canvas')[0]
-    canvas.height = canvas.width
+    const canvas = document.getElementById('webgl')
     canvas.renderer = new ObjectPreview(
       canvas,
       div.dataset,
