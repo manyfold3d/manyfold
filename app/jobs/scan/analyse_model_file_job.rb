@@ -7,13 +7,20 @@ class Scan::AnalyseModelFileJob < ApplicationJob
       digest: file.digest || file.calculate_digest,
       size: file.size || File.size(file.pathname)
     )
-    # Detect inefficient file format
+    # Detect inefficient file formats
+    message = inefficiency_problem(file)
     Problem.create_or_clear(
       file,
       :inefficient,
-      (file.extension === "stl") &&
-        (File.read(file.pathname, 6) === "solid "),
-      note: "ASCII STL"
+      !message.nil?,
+      note: message
     )
+  end
+
+  def inefficiency_problem(file)
+    return "ASCII STL" if (file.extension === "stl") && (File.read(file.pathname, 6) === "solid ")
+    return "Wavefront OBJ" if file.extension === "obj"
+    return "ASCII PLY" if (file.extension === "ply") && (File.read(file.pathname, 16) === "ply\rformat ascii")
+    nil
   end
 end
