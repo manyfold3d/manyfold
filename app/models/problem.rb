@@ -10,9 +10,9 @@ class Problem < ApplicationRecord
     :nesting
   ]
 
-  def self.create_or_clear(problematic, cat, present)
+  def self.create_or_clear(problematic, cat, present, options = {})
     if present
-      problematic.problems.create(category: cat)
+      problematic.problems.create(options.merge(category: cat))
     else
       problematic.problems.where(category: cat).destroy_all
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_10_102250) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_11_111009) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -114,6 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_102250) do
     t.integer "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "note"
     t.index ["problematic_type", "problematic_id"], name: "index_problems_on_problematic"
   end
 
