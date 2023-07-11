@@ -18,6 +18,13 @@ en:
       collection: Collection
       model: Model
       model_file: File
+  application:
+    navbar:
+      check_existing: Check existing models
+      scan: Scan
+      scan_changes: Scan for changes
+      scanning: Scanning
+      upload: Upload
   collections:
     collection:
       no_preview: no preview availiable
