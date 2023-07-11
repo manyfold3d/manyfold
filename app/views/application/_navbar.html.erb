@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg bg-light">
+	<a class="navbar-brand ms-2" href="<%= root_path %>">VanDAM</a>
+	<ul class="navbar-nav me-auto">
+
+		<% Library.all.each do |library| %>
+			<li class="nav-item">
+				<%= link_to "#{icon(library.icon || 'boxes', "#{library.caption || library.name}")} #{library.name}".html_safe, {controller: 'models', library: library.id}, class: ((current_page?(library) || (library.id.to_s == params[:library])) ? "nav-link active" : "nav-link") %>
+			</li>
+		<% end %>
+		<li class="nav-item me-auto">
+			<%= link_to icon("plus-circle", "New Library"), new_library_path, class: (current_page?(new_library_path) ? "nav-link active" : "nav-link") %>
+		</li>
+	</ul>
+	<ul class="navbar-nav">
+		<li class="nav-item">
+			<%= link_to t(".upload"), uploads_path, method: :get, class: "btn btn-warning btn-sm mt-1" %>
+			<div class="btn-group">
+				<button type="button" data-bs-toggle="dropdown" aria-expanded="false"
+					class="btn btn-warning btn-sm mt-1 dropdown-toggle <%= "btn-outline-warning disabled" if @scan_in_progress %>"
+				>
+					<% if @scan_in_progress %>
+						<span class="spinner-border spinner-border-sm" aria-hidden="true"></span> <%= t ".scanning" %>
+					<% else %>
+						<%= t ".scan" %>
+					<% end %>
+				</button>
+				<ul class="dropdown-menu">
+					<li><%= link_to t(".scan_changes"), scan_libraries_path, method: :post, class: 'dropdown-item' %></li>
+					<li><%= link_to t(".check_existing"), scan_libraries_path(type: :check), method: :post, class: 'dropdown-item' %>
+				</ul>
+			</div>
+		</li>
+		<% if Problem.count > 0 %>
+			<li class="nav-item">
+				<%= link_to icon("exclamation-triangle-fill", "Problems"), problems_path, class: (current_page?(problems_path) ? "link-warning nav-link active" : "link-warning nav-link") %>
+			</li>
+		<% end %>
+		<li class="nav-item">
+			<%= link_to icon('sliders', 'Settings'), user_settings_path(current_user), class: (current_page?(user_settings_path(current_user)) ? "nav-link active" : "nav-link") %>
+		</li>
+	</ul>
+	<%= form_with url: models_path, method: :get, class: "d-flex", role: "search" do |f| %>
+		<%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: "Search", aria_label: "Search", aria_describedby: "button-search", value: params[:q], autofocus: true %>
+	<% end %>
+</nav>

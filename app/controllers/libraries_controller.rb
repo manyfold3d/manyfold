@@ -46,8 +46,12 @@ class LibrariesController < ApplicationController
   end
 
   def scan_all
-    Library.all.each do |library|
-      LibraryScanJob.perform_later(library)
+    if params[:type] === "check"
+      Scan::CheckAllJob.perform_later
+    else
+      Library.all.each do |library|
+        LibraryScanJob.perform_later(library)
+      end
     end
     redirect_to models_path
   end
