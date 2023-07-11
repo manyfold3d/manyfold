@@ -2,7 +2,7 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe LibraryScanJob do
-  before :all do
+  before do
     ActiveJob::Base.queue_adapter = :test
   end
 

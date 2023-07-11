@@ -2,7 +2,7 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe ModelScanJob do
-  before :all do
+  before do
     ActiveJob::Base.queue_adapter = :test
   end
 
@@ -54,7 +54,7 @@ RSpec.describe ModelScanJob do
       end
     end
 
-    before :all do
+    before do
       ActiveJob::Base.queue_adapter = :test
     end
 

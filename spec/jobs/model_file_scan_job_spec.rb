@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe ModelFileScanJob do
-  before :all do
+  before do
     ActiveJob::Base.queue_adapter = :test
   end
 

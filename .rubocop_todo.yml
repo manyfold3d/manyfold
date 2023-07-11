@@ -6,12 +6,9 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 6
+# Offense count: 3
 RSpec/BeforeAfterAll:
   Exclude:
-    - "spec/jobs/library_scan_job_spec.rb"
-    - "spec/jobs/model_file_scan_job_spec.rb"
-    - "spec/jobs/model_scan_job_spec.rb"
     - "spec/requests/creators_request_spec.rb"
     - "spec/requests/collections_request_spec.rb"
     - "spec/requests/libraries_request_spec.rb"
