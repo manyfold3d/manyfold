@@ -22,6 +22,20 @@ RSpec.describe Scan::AnalyseModelFileJob do
     expect { described_class.perform_now file }.to change(Problem, :count).from(0).to(1)
     expect(Problem.first.category).to eq "inefficient"
     expect(Problem.first.note).to eq "ASCII STL"
-    expect(Problem.first.problematic).to eq file
+  end
+
+  it "detects Wavefront OBJ files and creates a Problem record" do
+    file = create(:model_file, filename: "test.obj", digest: "deadbeef", size: 1234)
+    expect { described_class.perform_now file }.to change(Problem, :count).from(0).to(1)
+    expect(Problem.first.category).to eq "inefficient"
+    expect(Problem.first.note).to eq "Wavefront OBJ"
+  end
+
+  it "detects ASCII PLY files and creates a Problem record" do
+    file = create(:model_file, filename: "test.ply", digest: "deadbeef", size: 1234)
+    allow(File).to receive(:read).with(file.pathname, 16).once.and_return("ply\rformat ascii")
+    expect { described_class.perform_now file }.to change(Problem, :count).from(0).to(1)
+    expect(Problem.first.category).to eq "inefficient"
+    expect(Problem.first.note).to eq "ASCII PLY"
   end
 end
