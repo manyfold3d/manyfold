@@ -7,7 +7,8 @@ class Problem < ApplicationRecord
     :missing,
     :empty,
     :destination_exists, # No longer used, but kept for compatibility
-    :nesting
+    :nesting,
+    :inefficient
   ]
 
   def self.create_or_clear(problematic, cat, present, options = {})
