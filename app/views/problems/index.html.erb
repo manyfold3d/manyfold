@@ -2,7 +2,7 @@
 
 <table class="table table-striped">
 	<% @problems.each do |problem| %>
-		<tr>
+		<tr class="table-<%= problem_severity(problem) %>">
 			<%= render partial: "#{problem.problematic_type.underscore}_#{problem.category}", locals: {problem: problem} %>
 		</tr>
 	<% end %>
