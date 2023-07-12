@@ -7,12 +7,12 @@
 
   .progress {
     width: 80%;
+    height: 3em;
+    z-index: 2;
+    cursor: pointer
   }
 
-  canvas {
-    width: 100%;
-  }
-
+  aspect-ratio: 1;
 }
 
 .image-preview {
