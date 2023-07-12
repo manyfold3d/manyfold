@@ -12,7 +12,6 @@ class ObjectPreview {
   progressLabel: HTMLSpanElement
   settings: DOMStringMap
   scene: THREE.Scene
-  renderer: THREE.WebGLRenderer
   camera: THREE.PerspectiveCamera
   controls: OrbitControls
   gridHelper: THREE.GridHelper
@@ -36,7 +35,6 @@ class ObjectPreview {
   setup (): void {
     this.scene = new THREE.Scene()
     this.scene.background = new THREE.Color(this.settings.backgroundColour ?? '#000000')
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
     this.camera = new THREE.PerspectiveCamera(
       45,
       this.canvas.clientWidth / this.canvas.clientHeight,
@@ -44,12 +42,7 @@ class ObjectPreview {
       1000
     )
     this.camera.position.z = 50
-    this.renderer.setSize(
-      this.canvas.clientWidth,
-      this.canvas.clientHeight,
-      false
-    )
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+    this.controls = new OrbitControls(this.camera, this.container)
     this.controls.enableDamping = true
     this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true')
     // Add lighting
@@ -189,7 +182,7 @@ class ObjectPreview {
 
   onAnimationFrame (): void {
     this.controls.update()
-    this.renderer.render(this.scene, this.camera)
+    VanDAM.renderer?.render(this.scene, this.camera)
     this.frame = window.requestAnimationFrame(this.onAnimationFrame.bind(this))
   }
 
@@ -203,13 +196,26 @@ class ObjectPreview {
         }
       })
     }
-    if (typeof this.renderer !== 'undefined' && this.renderer !== null) {
-      this.renderer.dispose()
-    }
   }
 }
 
+const VanDAM = {
+  canvas: null as HTMLCanvasElement | null,
+  renderer: null as THREE.WebGLRenderer | null,
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Set up global WebGL context and associated THREE.js renderer
+  VanDAM.canvas = document.getElementById('webgl') as HTMLCanvasElement
+  if (VanDAM.canvas === null) {
+    console.log('Could not find #webgl canvas!')
+    return
+  }
+  VanDAM.renderer = new THREE.WebGLRenderer({ canvas: VanDAM.canvas })
+  if (VanDAM.renderer === null) {
+    console.log('Could not create renderer!')
+    return
+  }
   document.querySelectorAll('[data-preview]').forEach((div) => {
     const canvas = document.getElementById('webgl')
     canvas.renderer = new ObjectPreview(
