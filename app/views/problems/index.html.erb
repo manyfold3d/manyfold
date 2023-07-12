@@ -1,5 +1,4 @@
 <h1>Problems</h1>
-<p class='lead'><%= pluralize @problems.count, "problem" %> found</p>
 
 <table class="table table-striped">
 	<% @problems.each do |problem| %>
@@ -8,3 +7,5 @@
 		</tr>
 	<% end %>
 </table>
+
+<%= paginate @problems %>
