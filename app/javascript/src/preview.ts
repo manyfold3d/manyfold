@@ -31,11 +31,6 @@ class ObjectPreview {
     this.progressIndicator.onclick = function () {
       this.load()
     }.bind(this)
-    const observer = new window.IntersectionObserver(
-      this.onIntersectionChanged.bind(this),
-      {}
-    )
-    observer.observe(canvas)
   }
 
   setup (): void {
@@ -67,13 +62,6 @@ class ObjectPreview {
     const light2 = new THREE.PointLight(0xffffff, 0.25)
     light2.position.set(-gridSizeX, 50, gridSizeZ)
     this.scene.add(light2)
-  }
-
-  onIntersectionChanged (entries, observer): void {
-    this.cleanup()
-    if ((this.settings.autoLoad === 'true') && (entries[0].isIntersecting === true)) {
-      this.load()
-    }
   }
 
   load (): void {
