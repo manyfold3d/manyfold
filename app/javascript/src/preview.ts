@@ -15,13 +15,14 @@ class ObjectPreview {
   camera: THREE.PerspectiveCamera
   controls: OrbitControls
   gridHelper: THREE.GridHelper
-  frame: number
+  ready: boolean
 
   constructor (
     container: HTMLDivElement,
     settings: DOMStringMap,
     progressIndicator: HTMLDivElement
   ) {
+    this.ready = false
     this.container = container
     this.settings = settings
     this.progressIndicator = progressIndicator
@@ -166,8 +167,8 @@ class ObjectPreview {
     }
     // Hide the progress bar
     this.progressIndicator.style.display = 'none'
-    // Render first frame
-    this.onAnimationFrame()
+    // Let's go!
+    this.ready = true
   }
 
   onLoadError (): void {
@@ -176,18 +177,7 @@ class ObjectPreview {
     this.progressLabel.textContent = 'Load Error'
   }
 
-  stopAnimation (): void {
-    window.cancelAnimationFrame(this.frame)
-  }
-
-  onAnimationFrame (): void {
-    this.controls.update()
-    VanDAM.renderer?.render(this.scene, this.camera)
-    this.frame = window.requestAnimationFrame(this.onAnimationFrame.bind(this))
-  }
-
   cleanup (): void {
-    this.stopAnimation()
     if (typeof this.scene !== 'undefined' && this.scene !== null) {
       this.scene.traverse(function (node) {
         if (node instanceof THREE.Mesh) {
@@ -202,7 +192,24 @@ class ObjectPreview {
 const VanDAM = {
   canvas: null as HTMLCanvasElement | null,
   renderer: null as THREE.WebGLRenderer | null,
-  objects: [] as ObjectPreview[]
+  previews: [] as ObjectPreview[],
+  frame: null as number | null
+}
+
+const stopAnimation = (): void => {
+  if (VanDAM.frame !== null) {
+    window.cancelAnimationFrame(VanDAM.frame)
+  }
+}
+
+const onAnimationFrame = (): void => {
+  VanDAM.previews.forEach((preview) => {
+    if (preview.ready) {
+      preview.controls.update()
+      VanDAM.renderer?.render(preview.scene, preview.camera)
+    }
+  })
+  VanDAM.frame = window.requestAnimationFrame(onAnimationFrame)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -219,12 +226,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // Configure previews for each object
   document.querySelectorAll('[data-preview]').forEach((div) => {
-    VanDAM.objects.push(new ObjectPreview(
+    VanDAM.previews.push(new ObjectPreview(
       div as HTMLDivElement,
       (div as HTMLDivElement).dataset,
       div.getElementsByClassName('progress')[0] as HTMLDivElement
     ))
   })
+  // Start animation
+  onAnimationFrame()
+})
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    onAnimationFrame()
+  } else {
+    stopAnimation()
+  }
 })
 
 export { ObjectPreview }
