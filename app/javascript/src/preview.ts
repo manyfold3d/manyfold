@@ -6,7 +6,7 @@ import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 class ObjectPreview {
-  canvas: HTMLCanvasElement
+  container: HTMLDivElement
   progressIndicator: HTMLDivElement
   progressBar: HTMLDivElement
   progressLabel: HTMLSpanElement
@@ -18,11 +18,11 @@ class ObjectPreview {
   frame: number
 
   constructor (
-    canvas: HTMLCanvasElement,
+    container: HTMLDivElement,
     settings: DOMStringMap,
     progressIndicator: HTMLDivElement
   ) {
-    this.canvas = canvas
+    this.container = container
     this.settings = settings
     this.progressIndicator = progressIndicator
     this.progressBar = progressIndicator.getElementsByClassName('progress-bar')[0] as HTMLDivElement
@@ -37,7 +37,7 @@ class ObjectPreview {
     this.scene.background = new THREE.Color(this.settings.backgroundColour ?? '#000000')
     this.camera = new THREE.PerspectiveCamera(
       45,
-      this.canvas.clientWidth / this.canvas.clientHeight,
+      this.container.clientWidth / this.container.clientHeight,
       0.1,
       1000
     )
@@ -202,6 +202,7 @@ class ObjectPreview {
 const VanDAM = {
   canvas: null as HTMLCanvasElement | null,
   renderer: null as THREE.WebGLRenderer | null,
+  objects: [] as ObjectPreview[]
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -216,13 +217,13 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Could not create renderer!')
     return
   }
+  // Configure previews for each object
   document.querySelectorAll('[data-preview]').forEach((div) => {
-    const canvas = document.getElementById('webgl')
-    canvas.renderer = new ObjectPreview(
-      canvas,
-      div.dataset,
+    VanDAM.objects.push(new ObjectPreview(
+      div as HTMLDivElement,
+      (div as HTMLDivElement).dataset,
       div.getElementsByClassName('progress')[0] as HTMLDivElement
-    )
+    ))
   })
 })
 
