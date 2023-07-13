@@ -28,9 +28,13 @@ class ObjectPreview {
     this.progressIndicator = progressIndicator
     this.progressBar = progressIndicator.getElementsByClassName('progress-bar')[0] as HTMLDivElement
     this.progressLabel = progressIndicator.getElementsByClassName('progress-label')[0] as HTMLSpanElement
-    this.progressIndicator.onclick = function () {
+    if (this.settings.autoLoad === 'true') {
       this.load()
-    }.bind(this)
+    } else {
+      this.progressIndicator.onclick = function () {
+        this.load()
+      }.bind(this)
+    }
   }
 
   setup (): void {
