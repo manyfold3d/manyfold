@@ -238,6 +238,10 @@ const onAnimationFrame = (): void => {
 }
 
 const renderAll = (): void => {
+  // Move canvas
+  const transform = `translateY(${window.scrollY}px)`
+  VanDAM.renderer.domElement.style.transform = transform
+  // Render all the models
   VanDAM.previews.forEach((preview) => preview.render())
 }
 
