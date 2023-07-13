@@ -177,6 +177,32 @@ class ObjectPreview {
     this.progressLabel.textContent = 'Load Error'
   }
 
+  render (): void {
+    if (!this.ready || VanDAM.canvas === null || VanDAM.renderer === null) {
+      return
+    }
+    this.controls.update()
+    // Set scissor regions
+    const { left, right, top, bottom, width, height } =
+      this.container.getBoundingClientRect()
+    const isOffscreen =
+      bottom < 0 ||
+      top > (VanDAM.canvas.clientHeight ?? 0) ||
+      right < 0 ||
+      left > (VanDAM.canvas.clientWidth ?? 0)
+    if (!isOffscreen) {
+      this.camera.aspect = this.container.clientWidth / this.container.clientHeight
+      this.camera.updateProjectionMatrix()
+      const positiveYUpBottom = (VanDAM.canvas.height ?? 0) - bottom
+      VanDAM.renderer.setScissorTest(true)
+      VanDAM.renderer.setScissor(left, positiveYUpBottom, width, height)
+      VanDAM.renderer.setViewport(left, positiveYUpBottom, width, height)
+      // Render
+      VanDAM.renderer.clear()
+      VanDAM.renderer.render(this.scene, this.camera)
+    }
+  }
+
   cleanup (): void {
     if (typeof this.scene !== 'undefined' && this.scene !== null) {
       this.scene.traverse(function (node) {
@@ -203,14 +229,27 @@ const stopAnimation = (): void => {
 }
 
 const onAnimationFrame = (): void => {
-  VanDAM.previews.forEach((preview) => {
-    if (preview.ready) {
-      preview.controls.update()
-      VanDAM.renderer?.render(preview.scene, preview.camera)
-    }
-  })
+  renderAll()
   VanDAM.frame = window.requestAnimationFrame(onAnimationFrame)
 }
+
+const renderAll = (): void => {
+  VanDAM.previews.forEach((preview) => preview.render())
+}
+
+const resizeRenderer = (): void => {
+  if (VanDAM.canvas === null || VanDAM.renderer === null) {
+    return
+  }
+  const width = VanDAM.canvas.clientWidth
+  const height = VanDAM.canvas.clientHeight
+  const needResize = VanDAM.canvas.width !== width || VanDAM.canvas.height !== height
+  if (needResize) {
+    VanDAM.renderer.setSize(width, height, false)
+  }
+  renderAll()
+}
+window.addEventListener('resize', resizeRenderer)
 
 document.addEventListener('DOMContentLoaded', () => {
   // Set up global WebGL context and associated THREE.js renderer
@@ -224,6 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Could not create renderer!')
     return
   }
+  resizeRenderer()
   // Configure previews for each object
   document.querySelectorAll('[data-preview]').forEach((div) => {
     VanDAM.previews.push(new ObjectPreview(
