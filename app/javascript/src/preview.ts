@@ -6,54 +6,44 @@ import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 class ObjectPreview {
-  canvas: HTMLCanvasElement
+  container: HTMLDivElement
   progressIndicator: HTMLDivElement
   progressBar: HTMLDivElement
   progressLabel: HTMLSpanElement
   settings: DOMStringMap
   scene: THREE.Scene
-  renderer: THREE.WebGLRenderer
   camera: THREE.PerspectiveCamera
   controls: OrbitControls
   gridHelper: THREE.GridHelper
-  frame: number
+  ready: boolean
 
   constructor (
-    canvas: HTMLCanvasElement,
+    container: HTMLDivElement,
+    settings: DOMStringMap,
     progressIndicator: HTMLDivElement
   ) {
-    this.canvas = canvas
-    this.settings = canvas.dataset
+    this.ready = false
+    this.container = container
+    this.settings = settings
     this.progressIndicator = progressIndicator
     this.progressBar = progressIndicator.getElementsByClassName('progress-bar')[0] as HTMLDivElement
     this.progressLabel = progressIndicator.getElementsByClassName('progress-label')[0] as HTMLSpanElement
     this.progressIndicator.onclick = function () {
       this.load()
     }.bind(this)
-    const observer = new window.IntersectionObserver(
-      this.onIntersectionChanged.bind(this),
-      {}
-    )
-    observer.observe(canvas)
   }
 
   setup (): void {
     this.scene = new THREE.Scene()
     this.scene.background = new THREE.Color(this.settings.backgroundColour ?? '#000000')
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
     this.camera = new THREE.PerspectiveCamera(
       45,
-      this.canvas.clientWidth / this.canvas.clientHeight,
+      this.container.clientWidth / this.container.clientHeight,
       0.1,
       1000
     )
     this.camera.position.z = 50
-    this.renderer.setSize(
-      this.canvas.clientWidth,
-      this.canvas.clientHeight,
-      false
-    )
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+    this.controls = new OrbitControls(this.camera, this.container)
     this.controls.enableDamping = true
     this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true')
     // Add lighting
@@ -66,13 +56,6 @@ class ObjectPreview {
     const light2 = new THREE.PointLight(0xffffff, 0.25)
     light2.position.set(-gridSizeX, 50, gridSizeZ)
     this.scene.add(light2)
-  }
-
-  onIntersectionChanged (entries, observer): void {
-    this.cleanup()
-    if ((this.settings.autoLoad === 'true') && (entries[0].isIntersecting === true)) {
-      this.load()
-    }
   }
 
   load (): void {
@@ -184,8 +167,8 @@ class ObjectPreview {
     }
     // Hide the progress bar
     this.progressIndicator.style.display = 'none'
-    // Render first frame
-    this.onAnimationFrame()
+    // Let's go!
+    this.ready = true
   }
 
   onLoadError (): void {
@@ -194,18 +177,33 @@ class ObjectPreview {
     this.progressLabel.textContent = 'Load Error'
   }
 
-  stopAnimation (): void {
-    window.cancelAnimationFrame(this.frame)
-  }
-
-  onAnimationFrame (): void {
+  render (): void {
+    if (!this.ready || VanDAM.canvas === null || VanDAM.renderer === null) {
+      return
+    }
     this.controls.update()
-    this.renderer.render(this.scene, this.camera)
-    this.frame = window.requestAnimationFrame(this.onAnimationFrame.bind(this))
+    // Set scissor regions
+    const { left, right, top, bottom, width, height } =
+      this.container.getBoundingClientRect()
+    const isOffscreen =
+      bottom < 0 ||
+      top > (VanDAM.canvas.clientHeight ?? 0) ||
+      right < 0 ||
+      left > (VanDAM.canvas.clientWidth ?? 0)
+    if (!isOffscreen) {
+      this.camera.aspect = this.container.clientWidth / this.container.clientHeight
+      this.camera.updateProjectionMatrix()
+      const positiveYUpBottom = (VanDAM.canvas.height ?? 0) - bottom
+      VanDAM.renderer.setScissorTest(true)
+      VanDAM.renderer.setScissor(left, positiveYUpBottom, width, height)
+      VanDAM.renderer.setViewport(left, positiveYUpBottom, width, height)
+      // Render
+      VanDAM.renderer.clear()
+      VanDAM.renderer.render(this.scene, this.camera)
+    }
   }
 
   cleanup (): void {
-    this.stopAnimation()
     if (typeof this.scene !== 'undefined' && this.scene !== null) {
       this.scene.traverse(function (node) {
         if (node instanceof THREE.Mesh) {
@@ -214,21 +212,76 @@ class ObjectPreview {
         }
       })
     }
-    if (typeof this.renderer !== 'undefined' && this.renderer !== null) {
-      this.renderer.dispose()
-    }
   }
 }
 
+const VanDAM = {
+  canvas: null as HTMLCanvasElement | null,
+  renderer: null as THREE.WebGLRenderer | null,
+  previews: [] as ObjectPreview[],
+  frame: null as number | null
+}
+
+const stopAnimation = (): void => {
+  if (VanDAM.frame !== null) {
+    window.cancelAnimationFrame(VanDAM.frame)
+  }
+}
+
+const onAnimationFrame = (): void => {
+  renderAll()
+  VanDAM.frame = window.requestAnimationFrame(onAnimationFrame)
+}
+
+const renderAll = (): void => {
+  VanDAM.previews.forEach((preview) => preview.render())
+}
+
+const resizeRenderer = (): void => {
+  if (VanDAM.canvas === null || VanDAM.renderer === null) {
+    return
+  }
+  const width = VanDAM.canvas.clientWidth
+  const height = VanDAM.canvas.clientHeight
+  const needResize = VanDAM.canvas.width !== width || VanDAM.canvas.height !== height
+  if (needResize) {
+    VanDAM.renderer.setSize(width, height, false)
+  }
+  renderAll()
+}
+window.addEventListener('resize', resizeRenderer)
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Set up global WebGL context and associated THREE.js renderer
+  VanDAM.canvas = document.getElementById('webgl') as HTMLCanvasElement
+  if (VanDAM.canvas === null) {
+    console.log('Could not find #webgl canvas!')
+    return
+  }
+  VanDAM.renderer = new THREE.WebGLRenderer({ canvas: VanDAM.canvas })
+  if (VanDAM.renderer === null) {
+    console.log('Could not create renderer!')
+    return
+  }
+  resizeRenderer()
+  // Configure previews for each object
   document.querySelectorAll('[data-preview]').forEach((div) => {
-    const canvas = div.getElementsByTagName('canvas')[0]
-    canvas.height = canvas.width
-    canvas.renderer = new ObjectPreview(
-      canvas,
+    VanDAM.previews.push(new ObjectPreview(
+      div as HTMLDivElement,
+      (div as HTMLDivElement).dataset,
       div.getElementsByClassName('progress')[0] as HTMLDivElement
-    )
+    ))
   })
+  // Start animation
+  onAnimationFrame()
+})
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    onAnimationFrame()
+  } else {
+    stopAnimation()
+  }
 })
 
 export { ObjectPreview }

@@ -1,5 +1,5 @@
 <div class="col mb-4">
-  <div class="card @model-card">
+  <div class="card preview-card">
     <% if file = @model.preview_file %>
       <% if file.is_image? %>
         <%= image_tag library_model_model_file_path(@model.library, @model, file, format: file.extension), class: "card-img-top image-preview ", alt: file.name %>
