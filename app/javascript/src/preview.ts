@@ -238,6 +238,9 @@ const onAnimationFrame = (): void => {
 }
 
 const renderAll = (): void => {
+  if (VanDAM.renderer === null) {
+    return
+  }
   // Move canvas
   const transform = `translateY(${window.scrollY}px)`
   VanDAM.renderer.domElement.style.transform = transform
