@@ -4,15 +4,17 @@ class ModelFilesController < ApplicationController
   before_action :get_file, except: [:bulk_edit, :bulk_update]
 
   def show
-    @duplicates = @file.duplicates
-    respond_to do |format|
-      format.html
-      format.js
-      format.any(*SupportedMimeTypes.model_types) do
-        send_file_content
-      end
-      format.any(*SupportedMimeTypes.image_types) do
-        send_file File.join(@library.path, @model.path, @file.filename)
+    if stale?(@file)
+      @duplicates = @file.duplicates
+      respond_to do |format|
+        format.html
+        format.js
+        format.any(*SupportedMimeTypes.model_types) do
+          send_file_content
+        end
+        format.any(*SupportedMimeTypes.image_types) do
+          send_file File.join(@library.path, @model.path, @file.filename)
+        end
       end
     end
   end

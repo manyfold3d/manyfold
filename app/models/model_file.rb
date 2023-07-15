@@ -48,6 +48,12 @@ class ModelFile < ApplicationRecord
     duplicates.count > 0
   end
 
+  # Used for ETag in conditional GETs
+  # See https://guides.rubyonrails.org/caching_with_rails.html#conditional-get-support
+  def cache_key_with_version
+    digest
+  end
+
   private
 
   def mesh
