@@ -15,6 +15,12 @@ class Scan::AnalyseModelFileJob < ApplicationJob
       !message.nil?,
       note: message
     )
+    # Detect duplicates
+    Problem.create_or_clear(
+      file,
+      :duplicate,
+      file.duplicate?
+    )
   end
 
   def inefficiency_problem(file)
