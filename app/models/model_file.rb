@@ -36,10 +36,6 @@ class ModelFile < ApplicationRecord
     bbox.size.to_a
   end
 
-  def remove_file
-    File.delete(pathname) if File.exist?(pathname)
-  end
-
   def duplicates
     ModelFile.where(digest: digest).where.not(id: id)
   end
@@ -52,6 +48,15 @@ class ModelFile < ApplicationRecord
   # See https://guides.rubyonrails.org/caching_with_rails.html#conditional-get-support
   def cache_key_with_version
     digest
+  end
+
+  def delete_from_disk_and_destroy
+    # Delete actual file
+    FileUtils.rm(pathname) if File.exist?(pathname)
+    # Rescan any duplicates
+    duplicates.each { |x| Scan::AnalyseModelFileJob.perform_later(x) }
+    # Remove the db record
+    destroy
   end
 
   private
