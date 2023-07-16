@@ -56,6 +56,15 @@ class Model < ApplicationRecord
     destroy
   end
 
+  def delete_from_disk_and_destroy
+    # Trigger deletion for each file separately, to make sure cleanup happens
+    model_files.each { |f| f.delete_from_disk_and_destroy }
+    # Delete directory corresponding to model
+    FileUtils.remove_dir(absolute_path) if File.exist?(absolute_path)
+    # Remove from DB
+    destroy
+  end
+
   def contained_models
     previous_library.models.where(
       Model.arel_table[:path].matches(

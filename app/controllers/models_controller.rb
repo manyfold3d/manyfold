@@ -85,12 +85,7 @@ class ModelsController < ApplicationController
   end
 
   def destroy
-    @model.destroy
-
-    # Delete directory corresponding to model
-    pathname = File.join(@library.path, @model.path)
-    FileUtils.remove_dir(pathname) if File.exist?(pathname)
-
+    @model.delete_from_disk_and_destroy
     redirect_to library_path(@library)
   end
 
