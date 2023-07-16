@@ -52,6 +52,8 @@ en:
       nesting: Model contains other models
     model_file:
       missing: File not found
+    model_file_duplicate:
+      description: Duplicated file
     model_file_inefficient:
       description: Inefficient file format
   renderer:

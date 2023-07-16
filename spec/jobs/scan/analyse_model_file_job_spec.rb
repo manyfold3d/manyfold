@@ -38,4 +38,12 @@ RSpec.describe Scan::AnalyseModelFileJob do
     expect(Problem.first.category).to eq "inefficient"
     expect(Problem.first.note).to eq "ASCII PLY"
   end
+
+  it "detects duplicate files and creates a Problem record" do
+    file = create(:model_file, filename: "test.stl", digest: "deadbeef", size: 1234)
+    allow(File).to receive(:read).and_return("whatever")
+    allow(file).to receive(:duplicate?).once.and_return(true)
+    expect { described_class.perform_now file }.to change(Problem, :count).from(0).to(1)
+    expect(Problem.first.category).to eq "duplicate"
+  end
 end
