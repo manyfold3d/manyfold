@@ -225,4 +225,45 @@ RSpec.describe Model do
       expect { model_with_leading_separator.update!(path: "model") }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
+
+  context "when removing files from disk" do
+    around do |ex|
+      MockDirectory.create([
+        "model_one/part_1.3mf"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    # rubocop:disable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) }
+    # rubocop:enable RSpec/InstanceVariable
+    let(:model) { create(:model, library: library, path: "model_one") }
+
+    it "removes original folder from disk" do
+      expect { model.delete_from_disk_and_destroy }.to(
+        change { File.exist?(model.absolute_path) }.from(true).to(false)
+      )
+    end
+
+    it "ignores missing files on deletion" do
+      model.update! path: "gone"
+      expect { model.delete_from_disk_and_destroy }.not_to raise_exception
+    end
+
+    it "calls standard destroy" do
+      allow(model).to receive(:destroy)
+      model.delete_from_disk_and_destroy
+      expect(model).to have_received(:destroy).once
+    end
+
+    it "calls delete_from_disk_and_destroy on files" do
+      file = create(:model_file, model: model, filename: "part_1.3mf", digest: "1234")
+      allow(file).to receive(:delete_from_disk_and_destroy)
+      allow(model).to receive(:model_files).and_return([file])
+      model.delete_from_disk_and_destroy
+      expect(file).to have_received(:delete_from_disk_and_destroy).once
+    end
+  end
 end
