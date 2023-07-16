@@ -42,7 +42,7 @@ class ModelFilesController < ApplicationController
   end
 
   def destroy
-    @file.destroy
+    @file.delete_from_disk_and_destroy
     redirect_to library_model_path(@library, @model)
   end
 
