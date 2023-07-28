@@ -88,7 +88,7 @@ gem "activeadmin", "~> 2.14"
 
 gem "kaminari", "~> 1.2"
 
-gem "lograge", "~> 0.12.0"
+gem "lograge", "~> 0.13.0"
 
 gem "sqlite3_ar_regexp", "~> 2.2"
 
