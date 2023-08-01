@@ -2,7 +2,7 @@
   <%= render "application/content_header" %>
 <% end %>
 
-<% content_for :cards do %>
+<% content_for :items do %>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
     <%= render @creators %>
   </div>
@@ -17,5 +17,9 @@
     <%= link_to "New Creator", new_creator_path, class: "btn btn-primary mb-3 me-3" %>
   <% end %>
   <%= render 'filters_card' %>
-  <%= render 'tags_card', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>
+  <% unless @tags.empty? %>
+    <%= card :secondary, "Tags" do %>
+      <%= render 'tag_list', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>
+    <% end %>
+  <% end %>
 <% end %>

@@ -2,7 +2,7 @@
   <h1><a data-field="model[name]" data-path="<%= library_model_path(@model.library, @model) %>" contenteditable=true><%= @model.name %></a></h1>
 <% end %>
 
-<% content_for :cards do %>
+<% content_for :items do %>
   <h2><a name="files">Files</a></h2>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
     <%= render partial: "file", collection: @groups.delete(nil) %>
@@ -119,7 +119,11 @@
     </ul>
   <% end %>
 
-  <%= render 'tags_card', tags: @model.tags.sort_by(&:taggings_count) %>
+  <% unless @model.tags.empty? %>
+    <%= card :secondary, "Tags" do %>
+      <%= render 'tag_list', tags: @model.tags.sort_by(&:taggings_count) %>
+    <% end %>
+  <% end %>
   <%= render 'links_card', links: @model.links %>
 
 <% end %>
