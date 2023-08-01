@@ -28,6 +28,7 @@ class ModelsController < ApplicationController
 
   def show
     @groups = helpers.group(@model.model_files)
+    render layout: "card_list_page"
   end
 
   def edit
