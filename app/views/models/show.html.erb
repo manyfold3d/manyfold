@@ -17,28 +17,34 @@
 
 <% content_for :sidebar do %>
   <%= card :secondary, "Details" do %>
-    <% if @model.creator %>
-      <p>
-        <%= icon "person", "Creator" %>
-        <%= link_to @model.creator.name, models_path((@filters||{}).merge(creator: @model.creator)) %>
-      </p>
-    <% end %>
-    <% if @model.collection %>
-      <p>
-        <%= icon "collection", "Collections" %>
-        <%= link_to @model.collection.name, models_path((@filters||{}).merge(collection: @model.collection.id))  %>
-      </p>
-    <% end %>
-    <% if @model.library %>
-      <p>
-        <%= icon "boxes", "Library" %>
-        <%= link_to @model.library.name, models_path((@filters||{}).merge(library: @model.library)) %>
-      </p>
-    <% end %>
-    <p>
-      <%= icon "folder", "Path" %>
-      <code><%= @model.path %></code>
-    </p>
+    <table class="table table-borderless table-sm">
+      <% if @model.creator %>
+        <tr>
+          <td><%= icon "person", "Creator" %></td>
+          <td><%= link_to @model.creator.name, models_path((@filters||{}).merge(creator: @model.creator)) %></td>
+        </tr>
+      <% end %>
+      <% if @model.collection %>
+        <tr>
+          <td><%= icon "collection", "Collections" %></td>
+          <td><%= link_to @model.collection.name, models_path((@filters||{}).merge(collection: @model.collection.id))  %></td>
+        </tr>
+      <% end %>
+      <% if @model.library %>
+        <tr>
+          <td><%= icon "boxes", "Library" %></td>
+          <td><%= link_to @model.library.name, models_path((@filters||{}).merge(library: @model.library)) %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td><%= icon "folder", "Path" %></td>
+        <td><code><%= @model.path %></code></td>
+      </tr>
+      <tr>
+        <td><%= icon "tag", "Tags" %></td>
+        <td><%= render 'tag_list', tags: @model.tags.sort_by(&:taggings_count) %></td>
+      </tr>
+    </table>
   <% end %>
 
   <% unless @model.parents.empty? %>
@@ -119,11 +125,6 @@
     </ul>
   <% end %>
 
-  <% unless @model.tags.empty? %>
-    <%= card :secondary, "Tags" do %>
-      <%= render 'tag_list', tags: @model.tags.sort_by(&:taggings_count) %>
-    <% end %>
-  <% end %>
   <%= render 'links_card', links: @model.links %>
 
 <% end %>
