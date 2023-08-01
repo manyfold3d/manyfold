@@ -1,24 +1,26 @@
-<%= render "application/content_header" %>
-<div class="row row-cols-2">
-  <div class="col-9">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-      <%= render ModelComponent.with_collection(@models) %>
-    </div>
-    <% if current_user.pagination_settings["models"] %>
-      <%= paginate @models %>
-    <% end %>
+<% content_for :page_header do %>
+  <%= render "application/content_header" %>
+<% end %>
+
+<% content_for :cards do %>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+    <%= render ModelComponent.with_collection(@models) %>
   </div>
-  <div class="col-3">
-    <%= card :secondary, "Actions" do %>
-      <%= link_to "Bulk Edit", edit_models_path(@filters), class: 'btn btn-secondary mb-3 me-3' %>
-      <% if current_user.tag_cloud_settings["heatmap"] && Model.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1").count > 0 %>
-        <%= link_to "Untagged", models_path(tag: [""]), class: "btn btn-secondary mb-3 me-3" %>
-      <% end %>
-      <% if Model.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model')<1").count > 0 %>
-        <%= link_to "Missing URL", models_path(link: ""), class: "btn btn-secondary mb-3 me-3" %>
-      <% end %>
+  <% if current_user.pagination_settings["models"] %>
+    <%= paginate @models %>
+  <% end %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <%= card :secondary, "Actions" do %>
+    <%= link_to "Bulk Edit", edit_models_path(@filters), class: 'btn btn-secondary mb-3 me-3' %>
+    <% if current_user.tag_cloud_settings["heatmap"] && Model.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1").count > 0 %>
+      <%= link_to "Untagged", models_path(tag: [""]), class: "btn btn-secondary mb-3 me-3" %>
     <% end %>
-    <%= render 'filters_card' %>
-    <%= render 'tags_card', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>
-  </div>
-</div>
+    <% if Model.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model')<1").count > 0 %>
+      <%= link_to "Missing URL", models_path(link: ""), class: "btn btn-secondary mb-3 me-3" %>
+    <% end %>
+  <% end %>
+  <%= render 'filters_card' %>
+  <%= render 'tags_card', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>
+<% end %>

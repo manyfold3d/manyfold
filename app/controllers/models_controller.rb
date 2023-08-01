@@ -24,6 +24,8 @@ class ModelsController < ApplicationController
     process_filters_tags_fetchall
     process_filters
     process_filters_tags_highlight
+
+    render layout: "card_list_page"
   end
 
   def show

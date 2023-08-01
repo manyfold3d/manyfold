@@ -1,5 +1,5 @@
-<% content_for :title do %>
-  <a data-field="model[name]" data-path="<%= library_model_path(@model.library, @model) %>" contenteditable=true><%= @model.name %></a>
+<% content_for :page_header do %>
+  <h1><a data-field="model[name]" data-path="<%= library_model_path(@model.library, @model) %>" contenteditable=true><%= @model.name %></a></h1>
 <% end %>
 
 <% content_for :cards do %>

@@ -1,19 +1,21 @@
-<%= render "application/content_header" %>
-<div class="row row-cols-2">
-  <div class="col-9">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-      <%= render @creators %>
-    </div>
-    <% if current_user.pagination_settings["creators"] %>
-      <%= paginate @creators %>
-    <% end %>
+<% content_for :page_header do %>
+  <%= render "application/content_header" %>
+<% end %>
+
+<% content_for :cards do %>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+    <%= render @creators %>
   </div>
-  <div class="col-3">
-    <%= card :secondary, "Actions" do %>
-      <%= link_to "View unassigned", models_path(creator: ""), class: "btn btn-outline-secondary mb-3 me-3" %>
-      <%= link_to "New Creator", new_creator_path, class: "btn btn-primary mb-3 me-3" %>
-    <% end %>
-    <%= render 'filters_card' %>
-    <%= render 'tags_card', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>
-  </div>
-</div>
+  <% if current_user.pagination_settings["creators"] %>
+    <%= paginate @creators %>
+  <% end %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <%= card :secondary, "Actions" do %>
+    <%= link_to "View unassigned", models_path(creator: ""), class: "btn btn-outline-secondary mb-3 me-3" %>
+    <%= link_to "New Creator", new_creator_path, class: "btn btn-primary mb-3 me-3" %>
+  <% end %>
+  <%= render 'filters_card' %>
+  <%= render 'tags_card', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>
+<% end %>
