@@ -24,7 +24,7 @@
 <% end %>
 
 <% content_for :sidebar do %>
-  <%= card :secondary, "Details" do %>
+  <%= card :secondary, "Model Details" do %>
     <table class="table table-borderless table-sm">
       <% if @model.creator %>
         <tr>
@@ -53,6 +53,8 @@
         <td><%= render 'tag_list', tags: @model.tags.sort_by(&:taggings_count) %></td>
       </tr>
     </table>
+    <%= link_to safe_join([icon("pencil", "Edit"), "Edit"], " "), edit_library_model_path(@library, @model), class: "btn btn-primary" %>
+    <%= link_to safe_join([icon("trash", "Delete"), "Delete"], " "), library_model_path(@library, @model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: "This will delete files. Are you sure you want to continue?"}} %>
   <% end %>
 
   <% unless @model.parents.empty? %>
@@ -86,7 +88,6 @@
   <% end %>
 
   <%= card :secondary, "Actions" do %>
-    <%= link_to "Edit Details", edit_library_model_path(@library, @model), class: "btn btn-primary" %>
     <%= link_to "Bulk Edit", edit_library_model_model_files_path(@library, @model), class: 'btn btn-secondary' %>
     <% unless @model.contains_other_models? %>
       <div class="modal fade" id="confirm-move" data-bs-backdrop='static' tabindex="-1" aria-labelledby="confirmMoveLabel" aria-hidden="true">
@@ -116,7 +117,6 @@
       </div>
       <%= button_tag("Organize Files", class: "btn btn-warning", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? %>
     <% end %>
-    <%= link_to "Delete", library_model_path(@library, @model), {method: :delete, class: "btn btn-danger", data: {confirm: "This will delete files. Are you sure you want to continue?"}} %>
   <% end %>
 
   <%= card(:secondary, 'Notes') do %>
