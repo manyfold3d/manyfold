@@ -46,7 +46,12 @@
       <% end %>
       <tr>
         <td><%= icon "folder", "Path" %></td>
-        <td><code><%= @model.path %></code></td>
+        <td>
+          <code><%= @model.path %></code>
+          <% unless @model.contains_other_models? %>
+            <%= button_tag("Organize Files", class: "btn btn-warning btn-sm float-end", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <td><%= icon "tag", "Tags" %></td>
@@ -69,7 +74,6 @@
     <% end %>
   <% end %>
 
-
   <% if @model.contains_other_models? %>
     <%= card :warning, "Contained Models" do %>
       <p>
@@ -87,51 +91,45 @@
     <% end %>
   <% end %>
 
-  <%= card :secondary, "Actions" do %>
-    <%= link_to "Bulk Edit", edit_library_model_model_files_path(@library, @model), class: 'btn btn-secondary' %>
-    <% unless @model.contains_other_models? %>
-      <div class="modal fade" id="confirm-move" data-bs-backdrop='static' tabindex="-1" aria-labelledby="confirmMoveLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="confirmMoveLabel">Organize files</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>
-                The folder and files that make up this model will be moved from:<br>
-                <code><%= @model.path %></code><br>
-                to<br>
-                <code><%= @model.formatted_path %></code>
-              </p>
-              <p>
-                Are you sure you want to do this?
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, cancel</button>
-              <%= button_to "Yes, move the files", library_model_path(@library, @model, "model[organize]": true), method: :patch, class: "btn btn-warning" %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <%= button_tag("Organize Files", class: "btn btn-warning", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? %>
-    <% end %>
-  <% end %>
-
   <%= card(:secondary, 'Notes') do %>
     <p class="card-text"><%= sanitize @model.notes %></p>
   <% end if @model.notes %>
 
-  <%= card :secondary, "Sections" do %>
-    <a href="#files">Files</a>
+  <%= card :secondary, "Files" do %>
+    <a href="#files">Top</a>
     <ul>
       <% @groups.each_pair do |group, files| %>
         <li><a href="#<%= group.parameterize %>"><%= group %></a></li>
       <% end %>
     </ul>
+    <%= link_to "Edit all files", edit_library_model_model_files_path(@library, @model), class: 'btn btn-secondary' %>
   <% end %>
 
   <%= render 'links_card', links: @model.links %>
 
+  <div class="modal fade" id="confirm-move" data-bs-backdrop='static' tabindex="-1" aria-labelledby="confirmMoveLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmMoveLabel">Organize files</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            The folder and files that make up this model will be moved from:<br>
+            <code><%= @model.path %></code><br>
+            to<br>
+            <code><%= @model.formatted_path %></code>
+          </p>
+          <p>
+            Are you sure you want to do this?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, cancel</button>
+          <%= button_to "Yes, move the files", library_model_path(@library, @model, "model[organize]": true), method: :patch, class: "btn btn-warning" %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
