@@ -40,9 +40,11 @@ RSpec.describe PathParser do
 
     context "with stop word filtering" do
       before do
-        allow(SiteSettings).to receive(:model_tags_stop_words_locale).and_return("en")
-        allow(SiteSettings).to receive(:model_tags_filter_stop_words).and_return(true)
-        allow(SiteSettings).to receive(:model_tags_custom_stop_words).and_return(["chicken"])
+        allow(SiteSettings).to receive_messages(
+          model_tags_stop_words_locale: "en",
+          model_tags_filter_stop_words: true,
+          model_tags_custom_stop_words: ["chicken"]
+        )
       end
 
       it "generates tags from whitespace delimited file names" do
@@ -180,10 +182,12 @@ RSpec.describe PathParser do
     end
 
     it "removes stop words from tag lists" do
-      allow(SiteSettings).to receive(:model_tags_stop_words_locale).and_return("en")
-      allow(SiteSettings).to receive(:model_tags_filter_stop_words).and_return(true)
-      allow(SiteSettings).to receive(:model_tags_custom_stop_words).and_return(["stuff"])
-      allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}{modelId}")
+      allow(SiteSettings).to receive_messages(
+        model_tags_stop_words_locale: "en",
+        model_tags_filter_stop_words: true,
+        model_tags_custom_stop_words: ["stuff"],
+        model_path_template: "{tags}/{modelName}{modelId}"
+      )
       model.parse_metadata_from_path!
       expect(model.tag_list).to eq ["library 1", "tags", "greedy"]
     end
