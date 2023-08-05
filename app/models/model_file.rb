@@ -61,6 +61,14 @@ class ModelFile < ApplicationRecord
     destroy
   end
 
+  def set_printed_by_user(user, printed)
+    if printed
+      user.favorite(self, scope: :printed)
+    else
+      user.unfavorite(self, scope: :printed)
+    end
+  end
+
   private
 
   def mesh
