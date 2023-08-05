@@ -5,7 +5,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse row" id="navbar">
-			<ul class="navbar-nav col-6 ps-4 ps-lg-0">
+			<ul class="navbar-nav col-6 ps-4 ps-lg-0 align-self-start">
 				<li class="nav-item">
 					<%= nav_link 'box', Model.model_name.human.pluralize, (@filters||{}).merge(controller: 'models') %>
 				</li>
@@ -25,11 +25,11 @@
 						)	%>
 					</li>
 				<% end %>
+			</ul>
+			<ul class="navbar-nav col-6 pe-4 align-self-start justify-content-end">
 				<li class="nav-item">
 					<%= nav_link 'plus-circle', t('libraries.general.new'), new_library_path, text_style: "d-lg-none" %>
 				</li>
-			</ul>
-			<ul class="navbar-nav col-6 pe-4 justify-content-end">
 				<li class="nav-item">
 					<%= nav_link 'upload', t('.upload'), uploads_path, style: "btn btn-warning btn-sm me-1 mt-lg-1" %>
 				</li>
