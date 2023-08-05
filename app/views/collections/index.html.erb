@@ -1,22 +1,28 @@
-<%= render "application/content_header" %>
-<div class="row row-cols-2">
-  <div class="col-9">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-      <% if @filters[:collection] && @collection %>
-        <%= render @collection %>
-      <% end %>
-      <%= render @collections %>
-    </div>
-    <% if current_user.pagination_settings["collections"] %>
-      <%= paginate @collections %>
+<% content_for :page_header do %>
+  <%= render "application/content_header" %>
+<% end %>
+
+<% content_for :items do %>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+    <% if @filters[:collection] && @collection %>
+      <%= render @collection %>
     <% end %>
+    <%= render @collections %>
   </div>
-  <div class="col-3">
-    <%= card :secondary, "Actions" do %>
-      <%= link_to t('.view_unassigned_models'), models_path(collection: ""), class: "btn btn-outline-secondary mb-3 me-3" %>
-      <%= link_to t('collections.general.new'), new_collection_path, class: "btn btn-primary mb-3 me-3" %>
+  <% if current_user.pagination_settings["collections"] %>
+    <%= paginate @collections %>
+  <% end %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <%= card :secondary, "Actions" do %>
+    <%= link_to t('.view_unassigned_models'), models_path(collection: ""), class: "btn btn-outline-secondary mb-3 me-3" %>
+    <%= link_to t('collections.general.new'), new_collection_path, class: "btn btn-primary mb-3 me-3" %>
+  <% end %>
+  <%= render 'filters_card' %>
+  <% unless @tags.empty? %>
+    <%= card :secondary, "Tags" do %>
+      <%= render 'tag_list', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>
     <% end %>
-    <%= render 'filters_card' %>
-    <%= render 'tags_card', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>
-  </div>
-</div>
+  <% end %>
+<% end %>

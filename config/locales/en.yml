@@ -38,6 +38,9 @@ en:
     edit: Edit
     filter: Filter
     save: Save
+  libraries:
+    general:
+      new: New Library
   model_files:
     show:
       duplicate_card:

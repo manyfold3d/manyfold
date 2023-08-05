@@ -26,6 +26,7 @@ class CreatorsController < ApplicationController
       page = params[:page] || 1
       @creators = @creators.page(page).per(current_user.pagination_settings["per_page"])
     end
+    render layout: "card_list_page"
   end
 
   def show

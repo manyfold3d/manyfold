@@ -1,128 +1,135 @@
-<%= render "application/content_header" %>
-<h1><a data-field="model[name]" data-path="<%= library_model_path(@model.library, @model) %>" contenteditable=true><%= @model.name %></a></h1>
-<div class="row row-cols-2">
+<% content_for :page_header do %>
+  <h1>
+    <a data-field="model[name]" data-path="<%= library_model_path(@model.library, @model) %>" contenteditable=true>
+      <%= @model.name %>
+    </a>
+    <%= link_to icon("search", "Search the Internet for models with this name"),
+      "https://yeggi.com/q/#{ERB::Util.url_encode(@model.name)}/",
+      class: 'btn btn-outline', target: "van_dam_search"
+     %>
+  </h1>
+<% end %>
 
-  <div class="col-9">
-    <h2><a name="files">Files</a></h2>
-    <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-      <%= render partial: "file", collection: @groups.delete(nil) %>
-    </div>
-    <% @groups.each_pair do |group, files| %>
-      <h3><a name="<%= group.parameterize %>"><%= group %></a></h3>
-      <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-        <%= render partial: "file", collection: files %>
-      </div>
-    <% end %>
+<% content_for :items do %>
+  <h2><a name="files">Files</a></h2>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+    <%= render partial: "file", collection: @groups.delete(nil) %>
   </div>
+  <% @groups.each_pair do |group, files| %>
+    <h3><a name="<%= group.parameterize %>"><%= group %></a></h3>
+    <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+      <%= render partial: "file", collection: files %>
+    </div>
+  <% end %>
+<% end %>
 
-  <div class="col-3">
-
-    <%= card :secondary, "Details" do %>
+<% content_for :sidebar do %>
+  <%= card :secondary, "Model Details" do %>
+    <table class="table table-borderless table-sm">
       <% if @model.creator %>
-        <p>
-          <%= icon "person", "Creator" %>
-          <%= link_to @model.creator.name, models_path((@filters||{}).merge(creator: @model.creator)) %>
-        </p>
+        <tr>
+          <td><%= icon "person", "Creator" %></td>
+          <td><%= link_to @model.creator.name, models_path((@filters||{}).merge(creator: @model.creator)) %></td>
+        </tr>
       <% end %>
       <% if @model.collection %>
-        <p>
-          <%= icon "collection", "Collections" %>
-          <%= link_to @model.collection.name, models_path((@filters||{}).merge(collection: @model.collection.id))  %>
-        </p>
+        <tr>
+          <td><%= icon "collection", "Collections" %></td>
+          <td><%= link_to @model.collection.name, models_path((@filters||{}).merge(collection: @model.collection.id))  %></td>
+        </tr>
       <% end %>
       <% if @model.library %>
-        <p>
-          <%= icon "boxes", "Library" %>
-          <%= link_to @model.library.name, models_path((@filters||{}).merge(library: @model.library)) %>
-        </p>
+        <tr>
+          <td><%= icon "boxes", "Library" %></td>
+          <td><%= link_to @model.library.name, models_path((@filters||{}).merge(library: @model.library)) %></td>
+        </tr>
       <% end %>
-      <p>
-        <%= icon "folder", "Path" %>
-        <code><%= @model.path %></code>
-      </p>
-    <% end %>
-
-    <% unless @model.parents.empty? %>
-      <%= card :danger, "Merge" do %>
-        <p>
-          Merging moves all files from this model to the target, and removes this model. File metadata is preserved, but any model metadata will be lost!
-        </p>
-        <strong>Merge with:</strong>
-        <% @model.parents.each do |target| %>
-          <%= link_to target.name, merge_library_model_path(@library, @model, target: target.id), class: "btn btn-danger", method: :post %>
-        <% end %>
-      <% end %>
-    <% end %>
-
-
-    <% if @model.contains_other_models? %>
-      <%= card :warning, "Contained Models" do %>
-        <p>
-          The model folder on disk contains other models. You may wish to merge them into this one, or move them out.
-        </p>
-        <ul>
-          <% @model.contained_models.each do |target| %>
-            <li><%= link_to target.name, library_model_path(@library, target)%></li>
+      <tr>
+        <td><%= icon "folder", "Path" %></td>
+        <td>
+          <code><%= @model.path %></code>
+          <% unless @model.contains_other_models? %>
+            <%= button_tag("Organize Files", class: "btn btn-warning btn-sm float-end", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? %>
           <% end %>
-        </ul>
-        <p>
-          Bulk merging moves all files from the models above into this one, and removes them. File metadata is preserved, but any model metadata will be lost!
-        </p>
-        <%= link_to "Merge all", merge_library_model_path(@library, @model, all: true), class: "btn btn-danger", method: :post %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= icon "tag", "Tags" %></td>
+        <td><%= render 'tag_list', tags: @model.tags.sort_by(&:taggings_count) %></td>
+      </tr>
+    </table>
+    <%= link_to safe_join([icon("pencil", "Edit"), "Edit"], " "), edit_library_model_path(@library, @model), class: "btn btn-primary" %>
+    <%= link_to safe_join([icon("trash", "Delete"), "Delete"], " "), library_model_path(@library, @model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: "This will delete files. Are you sure you want to continue?"}} %>
+  <% end %>
+
+  <% unless @model.parents.empty? %>
+    <%= card :danger, "Merge" do %>
+      <p>
+        Merging moves all files from this model to the target, and removes this model. File metadata is preserved, but any model metadata will be lost!
+      </p>
+      <strong>Merge with:</strong>
+      <% @model.parents.each do |target| %>
+        <%= link_to target.name, merge_library_model_path(@library, @model, target: target.id), class: "btn btn-danger", method: :post %>
       <% end %>
     <% end %>
+  <% end %>
 
-    <%= card :secondary, "Actions" do %>
-      <%= link_to "Edit Details", edit_library_model_path(@library, @model), class: "btn btn-primary" %>
-      <%= link_to "Bulk Edit", edit_library_model_model_files_path(@library, @model), class: 'btn btn-secondary' %>
-      <% unless @model.contains_other_models? %>
-        <div class="modal fade" id="confirm-move" data-bs-backdrop='static' tabindex="-1" aria-labelledby="confirmMoveLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="confirmMoveLabel">Organize files</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p>
-                  The folder and files that make up this model will be moved from:<br>
-                  <code><%= @model.path %></code><br>
-                  to<br>
-                  <code><%= @model.formatted_path %></code>
-                </p>
-                <p>
-                  Are you sure you want to do this?
-                </p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, cancel</button>
-                <%= button_to "Yes, move the files", library_model_path(@library, @model, "model[organize]": true), method: :patch, class: "btn btn-warning" %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <%= button_tag("Organize Files", class: "btn btn-warning", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? %>
-        <%= link_to "Search Yeggi", "https://yeggi.com/q/#{ERB::Util.url_encode(@model.name)}/", class: 'btn btn-secondary' %>
-      <% end %>
-      <%= link_to "Delete", library_model_path(@library, @model), {method: :delete, class: "btn btn-danger", data: {confirm: "This will delete files. Are you sure you want to continue?"}} %>
-    <% end %>
-
-    <%= card(:secondary, 'Notes') do %>
-      <p class="card-text"><%= sanitize @model.notes %></p>
-    <% end if @model.notes %>
-
-    <%= card :secondary, "Sections" do %>
-      <a href="#files">Files</a>
+  <% if @model.contains_other_models? %>
+    <%= card :warning, "Contained Models" do %>
+      <p>
+        The model folder on disk contains other models. You may wish to merge them into this one, or move them out.
+      </p>
       <ul>
-        <% @groups.each_pair do |group, files| %>
-          <li><a href="#<%= group.parameterize %>"><%= group %></a></li>
+        <% @model.contained_models.each do |target| %>
+          <li><%= link_to target.name, library_model_path(@library, target)%></li>
         <% end %>
       </ul>
+      <p>
+        Bulk merging moves all files from the models above into this one, and removes them. File metadata is preserved, but any model metadata will be lost!
+      </p>
+      <%= link_to "Merge all", merge_library_model_path(@library, @model, all: true), class: "btn btn-danger", method: :post %>
     <% end %>
+  <% end %>
 
-    <%= render 'tags_card', tags: @model.tags.sort_by(&:taggings_count) %>
-    <%= render 'links_card', links: @model.links %>
+  <%= card(:secondary, 'Notes') do %>
+    <p class="card-text"><%= sanitize @model.notes %></p>
+  <% end if @model.notes %>
 
+  <%= card :secondary, "Files" do %>
+    <a href="#files">Top</a>
+    <ul>
+      <% @groups.each_pair do |group, files| %>
+        <li><a href="#<%= group.parameterize %>"><%= group %></a></li>
+      <% end %>
+    </ul>
+    <%= link_to "Edit all files", edit_library_model_model_files_path(@library, @model), class: 'btn btn-secondary' %>
+  <% end %>
+
+  <%= render 'links_card', links: @model.links %>
+
+  <div class="modal fade" id="confirm-move" data-bs-backdrop='static' tabindex="-1" aria-labelledby="confirmMoveLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmMoveLabel">Organize files</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            The folder and files that make up this model will be moved from:<br>
+            <code><%= @model.path %></code><br>
+            to<br>
+            <code><%= @model.formatted_path %></code>
+          </p>
+          <p>
+            Are you sure you want to do this?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, cancel</button>
+          <%= button_to "Yes, move the files", library_model_path(@library, @model, "model[organize]": true), method: :patch, class: "btn btn-warning" %>
+        </div>
+      </div>
+    </div>
   </div>
-
-</div>
+<% end %>
