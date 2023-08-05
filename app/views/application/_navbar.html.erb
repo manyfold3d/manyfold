@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 	<div class='container-fluid'>
-		<a class="navbar-brand ms-2" href="<%= root_path %>"><%= image_tag "logo.png", alt: "VanDAM", title: "VanDAM", height: "40px" %></a>
+		<a class="navbar-brand ms-2" href="<%= root_path %>"><%= image_tag "logo.png", alt: "VanDAM", title: "VanDAM", height: "40px", class: "me-2" %> <span class="d-lg-none">VanDAM</span></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbar">
-			<ul class="navbar-nav me-auto">
+		<div class="collapse navbar-collapse row" id="navbar">
+			<ul class="navbar-nav col-6 ps-4 ps-lg-0">
 				<li class="nav-item">
 					<%= nav_link 'box', Model.model_name.human.pluralize, (@filters||{}).merge(controller: 'models') %>
 				</li>
@@ -28,8 +28,10 @@
 				<li class="nav-item">
 					<%= nav_link 'plus-circle', t('libraries.general.new'), new_library_path, text_style: "d-lg-none" %>
 				</li>
+			</ul>
+			<ul class="navbar-nav col-6 pe-4 justify-content-end">
 				<li class="nav-item">
-					<%= nav_link 'upload', t('.upload'), uploads_path, style: "btn btn-warning btn-sm mt-1" %>
+					<%= nav_link 'upload', t('.upload'), uploads_path, style: "btn btn-warning btn-sm me-1 mt-lg-1" %>
 				</li>
 				<li class="nav-item">
 					<% if @scan_in_progress %>
@@ -61,10 +63,12 @@
 				<li class="nav-item">
 					<%= nav_link 'sliders', "Settings", user_settings_path(current_user), text_style: "d-lg-none" %>
 				</li>
+				<li class="nav-item">
+					<%= form_with url: models_path, method: :get, role: "search" do |f| %>
+						<%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: "Search", aria_label: "Search", aria_describedby: "button-search", value: params[:q], autofocus: true %>
+					<% end %>
+				</li>
 			</ul>
-			<%= form_with url: models_path, method: :get, class: "d-flex", role: "search" do |f| %>
-				<%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: "Search", aria_label: "Search", aria_describedby: "button-search", value: params[:q], autofocus: true %>
-			<% end %>
 		</div>
 	</div>
 </nav>
