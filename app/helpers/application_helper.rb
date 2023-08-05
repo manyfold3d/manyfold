@@ -55,4 +55,18 @@ module ApplicationHelper
       ].join.html_safe
     end
   end
+
+  def nav_link(ico, text, path, options = {})
+    link_to(
+      safe_join(
+        [
+          content_tag(:span, icon(ico, options[:title] || text), class: options[:icon_style]),
+          content_tag(:span, text, class: options[:text_style])
+        ],
+        " "
+      ),
+      path,
+      class: options[:style] || safe_join(["nav-link", (current_page?(path) ? "active" : "")], " ")
+    )
+  end
 end
