@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_20_223340) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_11_111009) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_223340) do
     t.integer "favoritable_id", null: false
     t.string "favoritor_type", null: false
     t.integer "favoritor_id", null: false
-    t.string "scope", default: "favorite", null: false
+    t.string "scope", default: "printed", null: false
     t.boolean "blocked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -97,7 +97,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_223340) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "presupported", default: false
-    t.boolean "printed", default: false
     t.boolean "y_up", default: false, null: false
     t.string "digest"
     t.text "notes"
