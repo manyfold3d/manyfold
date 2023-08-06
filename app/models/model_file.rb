@@ -8,6 +8,8 @@ class ModelFile < ApplicationRecord
 
   default_scope { order(:filename) }
 
+  acts_as_favoritable
+
   def extension
     File.extname(filename).delete(".").downcase
   end
@@ -57,6 +59,14 @@ class ModelFile < ApplicationRecord
     duplicates.each { |x| Scan::AnalyseModelFileJob.perform_later(x) }
     # Remove the db record
     destroy
+  end
+
+  def set_printed_by_user(user, printed)
+    if printed
+      user.favorite(self, scope: :printed)
+    else
+      user.unfavorite(self, scope: :printed)
+    end
   end
 
   private

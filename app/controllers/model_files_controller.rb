@@ -21,6 +21,7 @@ class ModelFilesController < ApplicationController
 
   def update
     @file.update(file_params)
+    @file.set_printed_by_user(current_user, params[:model_file][:printed] === "1")
     redirect_to [@library, @model, @file]
   end
 
@@ -33,6 +34,7 @@ class ModelFilesController < ApplicationController
     params[:model_files].each_pair do |id, selected|
       if selected == "1"
         file = @model.model_files.find(id)
+        file.set_printed_by_user(current_user, params[:printed] === "1")
         if file.update(hash)
           file.save
         end
@@ -58,7 +60,6 @@ class ModelFilesController < ApplicationController
 
   def bulk_update_params
     params.permit(
-      :printed,
       :presupported,
       :y_up
     ).compact_blank
@@ -66,7 +67,6 @@ class ModelFilesController < ApplicationController
 
   def file_params
     params.require(:model_file).permit([
-      :printed,
       :presupported,
       :notes,
       :caption,
