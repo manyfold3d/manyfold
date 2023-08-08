@@ -9,6 +9,14 @@ class Creator < ApplicationRecord
 
   before_validation :slugify_name, if: :name_changed?
 
+  def self.ransackable_attributes(_auth_object = nil)
+    ["caption", "created_at", "id", "name", "notes", "slug", "updated_at"]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    ["links", "models"]
+  end
+
   private
 
   def slugify_name

@@ -20,4 +20,8 @@ class Problem < ApplicationRecord
     end
     present
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["category", "created_at", "id", "note", "problematic_id", "problematic_type", "updated_at"]
+  end
 end

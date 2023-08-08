@@ -69,6 +69,14 @@ class ModelFile < ApplicationRecord
     end
   end
 
+  def self.ransackable_attributes(_auth_object = nil)
+    ["caption", "created_at", "digest", "filename", "id", "notes", "presupported", "size", "updated_at", "y_up"]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    ["favorited", "model", "problems"]
+  end
+
   private
 
   def mesh
