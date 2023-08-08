@@ -2,6 +2,7 @@
   <div class="card preview-card">
     <% if file = @model.preview_file %>
       <% if file.is_image? %>
+        <%= content_tag :div, nil, class: "card-img-top card-img-top-background", style: "background-image: url(#{library_model_model_file_path(@model.library, @model, file, format: file.extension)})" %>
         <%= image_tag library_model_model_file_path(@model.library, @model, file, format: file.extension), class: "card-img-top image-preview ", alt: file.name %>
       <% elsif helpers.renderable?(file.extension) %>
         <div class="card-img-top">
