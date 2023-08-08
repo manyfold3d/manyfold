@@ -15,8 +15,20 @@
   aspect-ratio: 1;
 }
 
-.image-preview {
+.preview-card {
+  overflow: hidden;
+}
+
+.card-img-top-background {
   aspect-ratio: 1;
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px) brightness(0.95);
+}
+
+.image-preview {
+  position: absolute;
+  aspect-ratio: 1;
+  object-fit: contain;
   object-position: center;
 }
