@@ -86,6 +86,14 @@ class Model < ApplicationRecord
     File.join(library.path, path)
   end
 
+  def self.ransackable_attributes(_auth_object = nil)
+    ["caption", "created_at", "id", "name", "notes", "path", "slug", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["base_tags", "collection", "creator", "library", "links", "model_files", "preview_file", "problems", "tag_taggings", "taggings", "tags"]
+  end
+
   private
 
   def strip_separators_from_path

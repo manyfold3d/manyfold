@@ -8,4 +8,8 @@ class Link < ApplicationRecord
   def site
     PublicSuffix.parse(host).sld.to_sym
   end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    ["created_at", "id", "linkable_id", "linkable_type", "updated_at", "url"]
+  end
 end

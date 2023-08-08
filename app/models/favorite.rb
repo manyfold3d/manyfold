@@ -9,4 +9,8 @@ class Favorite < ApplicationRecord
   def block!
     update!(blocked: true)
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["blocked", "created_at", "favoritable_id", "favoritable_type", "favoritor_id", "favoritor_type", "id", "scope", "updated_at"]
+  end
 end
