@@ -1,7 +1,9 @@
 class ModelFileScanJob < ApplicationJob
   queue_as :default
 
-  def perform(file)
+  def perform(file_id)
+    file = ModelFile.find(file_id)
+    return if file.nil?
     # Try to guess if the file is presupported
     if !(
       file.pathname.split(/[[:punct:]]|[[:space:]]/).map(&:downcase) &
@@ -10,6 +12,6 @@ class ModelFileScanJob < ApplicationJob
       file.update!(presupported: true)
     end
     # Queue up deeper analysis job
-    Scan::AnalyseModelFileJob.perform_later(file)
+    Scan::AnalyseModelFileJob.perform_later(file.id)
   end
 end

@@ -18,7 +18,9 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
     folders.map { |f| f.gsub(matcher, "") }.uniq
   end
 
-  def perform(library)
+  def perform(library_id)
+    library = Library.find(library_id)
+    return if library.nil?
     return if Problem.create_or_clear(library, :missing, !File.exist?(library.path))
     # Make a list of changed filenames using set XOR
     changes = (known_filenames(library).to_set ^ filenames_on_disk(library)).to_a
@@ -35,7 +37,7 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
       }
       model = library.models.create_with(new_model_properties).find_or_create_by(path: path.trim_path_separators)
       if model.valid?
-        ModelScanJob.perform_later(model)
+        ModelScanJob.perform_later(model.id)
       else
         Rails.logger.error(model.inspect)
         Rails.logger.error(model.errors.full_messages.inspect)

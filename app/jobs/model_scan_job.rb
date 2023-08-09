@@ -18,14 +18,17 @@ class ModelScanJob < ApplicationJob
     list
   end
 
-  def perform(model)
+  def perform(model_id)
+    model = Model.find(model_id)
+    return if model.nil?
+
     model_path = File.join(model.library.path, model.path)
     return if Problem.create_or_clear(model, :missing, !File.exist?(model_path))
     # For each file in the model, create a file object
     file_list(model_path).each do |filename|
       # Create the file
       file = model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
-      ModelFileScanJob.perform_later(file) if file.valid?
+      ModelFileScanJob.perform_later(file.id) if file.valid?
     end
     # Set tags and default files
     model.model_files.reload
