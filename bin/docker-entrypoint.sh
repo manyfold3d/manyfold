@@ -7,5 +7,8 @@ fi
 echo "Preparing database..."
 bundle exec rails db:prepare:with_data
 
+echo "Clearing up old jobs..."
+bundle exec rake jobs:clear
+
 echo "Launching application..."
 exec "$@"
