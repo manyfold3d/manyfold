@@ -35,7 +35,7 @@
 				</li>
 				<li class="nav-item">
 					<% if @scan_in_progress %>
-						<span class="spinner-border spinner-border-sm nav-link" aria-hidden="true"></span> <%= t ".scanning" %>
+						<%= nav_link '', t('.scanning'), '/admin/tasks', style: "btn btn-outline-warning btn-sm me-1 mt-lg-1", icon_style: 'spinner-border spinner-border-sm' %>
 					<% else %>
 						<div class="btn-group">
 							<button type="button" data-bs-toggle="dropdown" aria-expanded="false"
