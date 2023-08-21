@@ -15,7 +15,6 @@
       </ul>
       <%= link_to "#{pluralize(creator.models.count, "Model")}", models_path(creator: creator.id), {class: "btn btn-primary"} %>
       <%= link_to "Edit", edit_creator_path(creator), {class: "btn btn-outline-secondary"} %>
-      <%= link_to "Filter", (@filters||{}).merge(controller: 'creators', creator: creator.id), class: "btn btn-primary" %>
     </div>
   </div>
 </div>
