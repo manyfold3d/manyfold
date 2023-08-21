@@ -14,7 +14,7 @@ class LibraryScanJob < ApplicationJob
   end
 
   def filter_out_common_subfolders(folders)
-    matcher = /\/(#{ApplicationJob.common_subfolders.keys.join('|')})$/i
+    matcher = /\/(#{ApplicationJob.common_subfolders.keys.join("|")})$/i
     folders.map { |f| f.gsub(matcher, "") }.uniq
   end
 
