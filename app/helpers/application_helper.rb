@@ -3,11 +3,27 @@ module ApplicationHelper
     tag.i class: "bi bi-#{id}", role: "img", "aria-label": label, title: label
   end
 
-  def card(style, title, &content)
+  def card(style, title, options = {}, &content)
+    id = "card-#{SecureRandom.hex(4)}"
     tag.div class: "card mb-4" do
       [
-        tag.div(title, class: "card-header text-white bg-#{style}"),
-        tag.div(class: "card-body") do
+        tag.div(class: "card-header text-white bg-#{style}") do
+          options[:collapse] ?
+            safe_join([
+              title,
+              tag.span(icon("arrows-expand", "Expand"), class: "float-end d-#{options[:collapse]}-none"),
+              tag.a(
+                nil,
+                class: "link-unstyled stretched-link d-#{options[:collapse]}-none",
+                "data-bs-toggle": "collapse",
+                "data-bs-target": "##{id}",
+                "aria-expanded": false,
+                "aria-controls": id
+              )
+            ]) :
+            title
+        end,
+        tag.div(class: "card-body #{"collapse d-#{options[:collapse]}-block" if options[:collapse]}", id: id) do
           tag.div class: "card-text" do
             yield
           end
