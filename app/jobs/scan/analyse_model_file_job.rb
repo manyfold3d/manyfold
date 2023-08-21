@@ -2,6 +2,9 @@ class Scan::AnalyseModelFileJob < ApplicationJob
   queue_as :scan
 
   def perform(file)
+    # Don't run analysis if the file is missing
+    # The Problem is raised elsewhere.
+    return if !File.exist?(file.pathname)
     # Update stored file metadata if not set
     file.update!(
       digest: file.digest || file.calculate_digest,
