@@ -13,6 +13,9 @@
 </div>
 <div class="row row-cols-2">
   <div class="col-9">
+    <% if current_user.pagination_settings["models"] %>
+      <%= paginate @models %>
+    <% end %>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
       <%= render partial: 'model', collection: @models %>
     </div>
