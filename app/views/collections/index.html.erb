@@ -3,6 +3,9 @@
 <% end %>
 
 <% content_for :items do %>
+  <% if current_user.pagination_settings["collections"] %>
+    <%= paginate @collections %>
+  <% end %>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
     <% if @filters[:collection] && @collection %>
       <%= render @collection %>

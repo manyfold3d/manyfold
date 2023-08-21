@@ -1,5 +1,7 @@
 <h1>Problems</h1>
 
+<%= paginate @problems %>
+
 <table class="table table-striped">
 	<% @problems.each do |problem| %>
 		<tr class="table-<%= problem_severity(problem) %>">
