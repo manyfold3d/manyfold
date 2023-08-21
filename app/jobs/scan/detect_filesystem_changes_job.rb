@@ -1,4 +1,4 @@
-class LibraryScanJob < ApplicationJob
+class Scan::DetectFilesystemChangesJob < ApplicationJob
   queue_as :default
 
   # Find all files in the library that we might need to look at
@@ -40,14 +40,6 @@ class LibraryScanJob < ApplicationJob
         Rails.logger.error(model.inspect)
         Rails.logger.error(model.errors.full_messages.inspect)
       end
-    end
-    # Run integrity check on all models
-    library.models.each do |model|
-      Scan::CheckModelIntegrityJob.perform_later(model)
-    end
-    # Run analysis job on ModelFiles that might be missing data
-    library.model_files.where(digest: nil).or(library.model_files.where(size: nil)).each do |file|
-      Scan::AnalyseModelFileJob.perform_later(file)
     end
   end
 end
