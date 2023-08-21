@@ -6,7 +6,7 @@ module PathBuilder
       case token
       when "{tags}"
         (tags.count > 0) ?
-          File.join(tags.order(taggings_count: :desc).map(&:to_s).map(&:parameterize)) :
+          File.join(tags.order(taggings_count: :desc).map { |x| x.to_s.parameterize }) :
           "@untagged"
       when "{creator}"
         path_component(creator) || "@unattributed"
