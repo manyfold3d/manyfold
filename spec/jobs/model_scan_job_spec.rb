@@ -121,7 +121,7 @@ RSpec.describe ModelScanJob do
     let(:model) { create(:model, path: "model", library: library) }
 
     it "finds all the files in the subfolders" do
-      expect { described_class.perform_now(model) }.to change { model.model_files.count }.to(6)
+      expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(6)
     end
   end
 
