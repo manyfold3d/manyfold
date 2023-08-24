@@ -4,7 +4,7 @@ class UploadsController < ApplicationController
     save_files(params[:upload], File.join(library.path, ""))
 
     if params[:post][:scan_after_upload] == "1"
-      Scan::DetectFilesystemChangesJob.perform_later(library)
+      Scan::DetectFilesystemChangesJob.perform_later(library.id)
     end
     redirect_to libraries_path
   end

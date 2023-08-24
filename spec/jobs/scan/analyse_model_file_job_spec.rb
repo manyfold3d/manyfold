@@ -6,7 +6,9 @@ RSpec.describe Scan::AnalyseModelFileJob do
     file = create(:model_file, filename: "test.obj", digest: nil, size: 10)
     allow(File).to receive(:exist?).with(file.pathname).and_return(true)
     allow(file).to receive(:calculate_digest).once.and_return("deadbeef")
-    described_class.perform_now file
+    allow(ModelFile).to receive(:find).with(file.id).and_return(file)
+    described_class.perform_now file.id
+    file.reload
     expect(file.digest).to eq "deadbeef"
   end
 
@@ -14,7 +16,8 @@ RSpec.describe Scan::AnalyseModelFileJob do
     file = create(:model_file, filename: "test.obj", digest: "deadbeef", size: nil)
     allow(File).to receive(:exist?).with(file.pathname).and_return(true)
     allow(File).to receive(:size).once.and_return(1234)
-    described_class.perform_now file
+    described_class.perform_now file.id
+    file.reload
     expect(file.size).to eq 1234
   end
 
@@ -22,7 +25,7 @@ RSpec.describe Scan::AnalyseModelFileJob do
     file = create(:model_file, filename: "test.stl", digest: "deadbeef", size: 1234)
     allow(File).to receive(:exist?).with(file.pathname).and_return(true)
     allow(File).to receive(:read).with(file.pathname, 6).once.and_return("solid ")
-    expect { described_class.perform_now file }.to change(Problem, :count).from(0).to(1)
+    expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
     expect(Problem.first.category).to eq "inefficient"
     expect(Problem.first.note).to eq "ASCII STL"
   end
@@ -30,7 +33,7 @@ RSpec.describe Scan::AnalyseModelFileJob do
   it "detects Wavefront OBJ files and creates a Problem record" do
     file = create(:model_file, filename: "test.obj", digest: "deadbeef", size: 1234)
     allow(File).to receive(:exist?).with(file.pathname).and_return(true)
-    expect { described_class.perform_now file }.to change(Problem, :count).from(0).to(1)
+    expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
     expect(Problem.first.category).to eq "inefficient"
     expect(Problem.first.note).to eq "Wavefront OBJ"
   end
@@ -39,17 +42,18 @@ RSpec.describe Scan::AnalyseModelFileJob do
     file = create(:model_file, filename: "test.ply", digest: "deadbeef", size: 1234)
     allow(File).to receive(:exist?).with(file.pathname).and_return(true)
     allow(File).to receive(:read).with(file.pathname, 16).once.and_return("ply\rformat ascii")
-    expect { described_class.perform_now file }.to change(Problem, :count).from(0).to(1)
+    expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
     expect(Problem.first.category).to eq "inefficient"
     expect(Problem.first.note).to eq "ASCII PLY"
   end
 
   it "detects duplicate files and creates a Problem record" do
     file = create(:model_file, filename: "test.stl", digest: "deadbeef", size: 1234)
+    allow(file).to receive(:duplicate?).once.and_return(true)
+    allow(ModelFile).to receive(:find).with(file.id).and_return(file)
     allow(File).to receive(:exist?).with(file.pathname).and_return(true)
     allow(File).to receive(:read).and_return("whatever")
-    allow(file).to receive(:duplicate?).once.and_return(true)
-    expect { described_class.perform_now file }.to change(Problem, :count).from(0).to(1)
+    expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
     expect(Problem.first.category).to eq "duplicate"
   end
 end

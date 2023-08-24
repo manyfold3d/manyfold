@@ -1,7 +1,9 @@
 class Scan::AnalyseModelFileJob < ApplicationJob
   queue_as :scan
 
-  def perform(file)
+  def perform(file_id)
+    file = ModelFile.find(file_id)
+    return if file.nil?
     # Don't run analysis if the file is missing
     # The Problem is raised elsewhere.
     return if !File.exist?(file.pathname)

@@ -101,7 +101,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_111009) do
     t.string "digest"
     t.text "notes"
     t.text "caption"
-    t.bigint "size"
+    t.integer "size"
     t.index ["digest"], name: "index_model_files_on_digest"
     t.index ["model_id"], name: "index_model_files_on_model_id"
   end

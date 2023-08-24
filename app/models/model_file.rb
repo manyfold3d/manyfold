@@ -56,7 +56,7 @@ class ModelFile < ApplicationRecord
     # Delete actual file
     FileUtils.rm(pathname) if File.exist?(pathname)
     # Rescan any duplicates
-    duplicates.each { |x| Scan::AnalyseModelFileJob.perform_later(x) }
+    duplicates.each { |x| Scan::AnalyseModelFileJob.perform_later(x.id) }
     # Remove the db record
     destroy
   end
