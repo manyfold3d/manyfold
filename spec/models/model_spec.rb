@@ -4,11 +4,28 @@ require "support/mock_directory"
 RSpec.describe Model do
   it "is not valid without a path" do
     expect(build(:model, path: nil)).not_to be_valid
-  end
+describe "#formatted_path" do
 
   it "is not valid without a name" do
     expect(build(:model, name: nil)).not_to be_valid
+  it "returns the correct formatted path" do
+    model = create(:model, path: "path/to/model")
+    expect(model.formatted_path).to eq "path/to/model"
+describe "#extract_path_components" do
+describe "#generate_tags_from_directory_name!" do
+  it "generates correct tags from directory name" do
+    model = create(:model, path: "path/to/model")
+    model.generate_tags_from_directory_name!
+    expect(model.tag_list).to include("path", "to", "model")
+  it "extracts correct path components" do
+    model = create(:model, path: "path/to/model")
+    components = model.send(:extract_path_components)
+    expect(components).to eq({tags: ["path", "to"], model_name: "model"})
   end
+end
+end
+end
+end
 
   it "is not valid without being part of a library" do
     expect(build(:model, library: nil)).not_to be_valid
