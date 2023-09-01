@@ -275,8 +275,8 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
-    pg (1.5.3)
-    pg (1.5.3-x64-mingw-ucrt)
+    pg (1.5.4)
+    pg (1.5.4-x64-mingw-ucrt)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
