@@ -1,6 +1,38 @@
 require "rails_helper"
 
 RSpec.describe PathBuilder do
+  context "when handling creator token" do
+    let(:model) {
+      create(:model,
+        name: "Batarang",
+        creator: create(:creator, name: "Bruce Wayne"))
+    }
+
+    it "returns creator's name if creator is present" do
+      expect(model.send(:handle_creator_token)).to eq "bruce-wayne"
+    end
+
+    it "returns '@unattributed' if no creator is present" do
+      model.creator = nil
+      expect(model.send(:handle_creator_token)).to eq "@unattributed"
+    end
+  end
+  context "when handling tags token" do
+    let(:model) {
+      create(:model,
+        name: "Batarang",
+        tag_list: ["bat", "weapon"])
+    }
+
+    it "returns joined tags if tags are present" do
+      expect(model.send(:handle_tags_token)).to eq "bat/weapon"
+    end
+
+    it "returns '@untagged' if no tags are present" do
+      model.tag_list = []
+      expect(model.send(:handle_tags_token)).to eq "@untagged"
+    end
+  end
   context "when creating path from model metadata" do
     let(:model) {
       create(:model,
