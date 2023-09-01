@@ -5,9 +5,7 @@ module PathBuilder
     SiteSettings.model_path_template.gsub(/{.+?}/) do |token|
       case token
       when "{creator}"
-        handle_tags_token
-      when "{creator}"
-        path_component(creator) || "@unattributed"
+        handle_creator_token
       when "{collection}"
         path_component(collection) || "@uncollected"
       when "{modelName}"
@@ -21,10 +19,6 @@ module PathBuilder
   end
   
   private
-  
-  def handle_creator_token
-    path_component(creator) || "@unattributed"
-  end
   
   def handle_tags_token
     (tags.count > 0) ?
