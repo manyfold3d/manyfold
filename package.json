@@ -8,7 +8,7 @@
     "typecheck": "tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@babel/preset-typescript": "^7.22.11",
+    "@babel/preset-typescript": "^7.22.15",
     "@nathanvda/cocoon": "^1.2.14",
     "@popperjs/core": "^2.11.8",
     "@rails/actioncable": "^7.0.7",
