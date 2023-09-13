@@ -442,7 +442,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop-performance (~> 1.19.0)
     stopwords-filter2 (0.1.0)
-    sys-filesystem (1.4.3)
+    sys-filesystem (1.4.4)
       ffi (~> 1.1)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
