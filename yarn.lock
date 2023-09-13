@@ -770,10 +770,10 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
-bootstrap-icons@^1.10.5:
-  version "1.10.5"
-  resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.10.5.tgz#5a1bbb1bb2212397d416587db1d422cc9501847c"
-  integrity sha512-oSX26F37V7QV7NCE53PPEL45d7EGXmBgHG3pDpZvcRaKVzWMqIRL9wcqJUyEha1esFtM3NJzvmxFXDxjJYD0jQ==
+bootstrap-icons@^1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.11.0.tgz#34902091e8ed6ac830f4e9fbc998b47d7a0fe8a6"
+  integrity sha512-bLTbtACfUqwZf6f/xUYUb7bTRZC68QaQwwy9h1b96NPKfnwqzSatHqDypW6R2CBW7zUE7lP+O93GdZuPY3RIHA==
 
 bootstrap@^5.3.1:
   version "5.3.1"
