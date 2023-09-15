@@ -14,7 +14,7 @@
     "@rails/actioncable": "^7.0.8",
     "@rails/ujs": "^7.0.8",
     "@selectize/selectize": "^0.15.2",
-    "bootstrap": "^5.3.1",
+    "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.0",
     "esbuild": "^0.19.3",
     "jquery": "^3.7.1",
