@@ -154,7 +154,7 @@ GEM
     faker (3.2.1)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
-    ffi-libarchive (1.1.3)
+    ffi-libarchive (1.1.13)
       ffi (~> 1.0)
     formatador (1.1.0)
     formtastic (4.0.0)
