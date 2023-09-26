@@ -492,10 +492,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.18.0.tgz#bd19d5133a6e5e2d0152ec079ac27c120e7f1763"
   integrity sha512-3xA4X31gHT1F1l38ATDIL9GpRLdwVhnEFC8Uikv5ZLlXATwrCYyPq7ZWHxzxc3J/30SUiwiYT+bQe0/XvKlWbw==
 
-"@types/selectize@^0.12.35":
-  version "0.12.35"
-  resolved "https://registry.yarnpkg.com/@types/selectize/-/selectize-0.12.35.tgz#61cc9353f21e09b267a5a8b133cf819706562d39"
-  integrity sha512-OtutSd9mfyl2qjxNABguUGhwRmHcJRYqRNQEUVBC6QIw0P0DKbhsAF5RUhid1L0GdYGNef8l73kSB1KVpazXqA==
+"@types/selectize@^0.12.36":
+  version "0.12.36"
+  resolved "https://registry.yarnpkg.com/@types/selectize/-/selectize-0.12.36.tgz#a28cf9d0cee1f54ba6b564e1338b5c3086a81ad4"
+  integrity sha512-aBZdvib9NC4VBMTS5JMAOTMZCl4jaqQJauQ/V1fWyoapWzvqLlSahtiAcng2K406IWNKUqYYB0e52mYtUJw8HA==
 
 "@types/semver@^7.3.12":
   version "7.3.13"
