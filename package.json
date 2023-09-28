@@ -28,7 +28,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",
-    "@types/jquery": "^3.5.19",
+    "@types/jquery": "^3.5.20",
     "@types/node": "^18.18.0",
     "@types/selectize": "^0.12.36",
     "@types/three": "^0.156.0",
