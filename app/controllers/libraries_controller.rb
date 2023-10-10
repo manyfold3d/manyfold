@@ -49,7 +49,7 @@ class LibrariesController < ApplicationController
     if params[:type] === "check"
       Scan::CheckAllJob.perform_later
     else
-      Library.all.each do |library|
+      Library.find_each do |library|
         Scan::DetectFilesystemChangesJob.perform_later(library.id)
       end
     end
