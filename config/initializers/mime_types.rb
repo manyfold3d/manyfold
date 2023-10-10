@@ -14,3 +14,5 @@ Mime::Type.register "model/step", :step, [], ["stp"]
 Mime::Type.register "model/x-lychee", :lychee, [], ["lys", "lyt"]
 Mime::Type.register "model/x-chitubox", :chitubox, [], ["ctb"]
 Mime::Type.register "image/webp", :webp
+Mime::Type.register "application/x-openscad", :scad
+Mime::Type.register "text/x-gcode", :gcode
