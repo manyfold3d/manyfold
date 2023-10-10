@@ -100,7 +100,7 @@ RSpec.describe ModelScanJob do
     end
   end
 
-  context "with files in common subfolders with mixed case", case_sensitive: true do
+  context "with files in common subfolders with mixed case", :case_sensitive do
     around do |ex|
       MockDirectory.create([
         "model/Presupported/part_one.stl",

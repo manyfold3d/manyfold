@@ -154,7 +154,7 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
     end
   end
 
-  context "with a case sensitive filesystem", case_sensitive: true do
+  context "with a case sensitive filesystem", :case_sensitive do
     around do |ex|
       MockDirectory.create([
         "model/file.obj",

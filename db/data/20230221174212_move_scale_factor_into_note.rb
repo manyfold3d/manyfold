@@ -2,7 +2,7 @@
 
 class MoveScaleFactorIntoNote < ActiveRecord::Migration[7.0]
   def up
-    Model.all.each do |model|
+    Model.find_each do |model|
       if defined?(model.scale_factor) && (model.scale_factor != 100)
         model.update!(notes: [
           model.notes,
