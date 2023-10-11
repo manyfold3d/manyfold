@@ -2,12 +2,12 @@ require "rails_helper"
 
 RSpec.describe SupportedMimeTypes do
   it "includes STL files in model list" do
-    expect(described_class.model_types).to include("model/stl")
+    expect(described_class.model_types.map(&:to_s)).to include("model/stl")
     expect(described_class.model_extensions).to include("stl")
   end
 
   it "includes PNG files in image list" do
-    expect(described_class.image_types).to include("image/png")
+    expect(described_class.image_types.map(&:to_s)).to include("image/png")
     expect(described_class.image_extensions).to include("png")
   end
 
