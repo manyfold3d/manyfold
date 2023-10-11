@@ -19,6 +19,15 @@ class Problem < ApplicationRecord
     :danger
   ]
 
+  DEFAULT_SEVERITIES = {
+    missing: :danger,
+    empty: :info,
+    destination_exists: :silent,
+    nesting: :warning,
+    inefficient: :info,
+    duplicate: :warning
+  }
+
   def self.create_or_clear(problematic, cat, present, options = {})
     if present
       problematic.problems.create(options.merge(category: cat))

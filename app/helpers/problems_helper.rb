@@ -1,12 +1,6 @@
 module ProblemsHelper
   def problem_severity(problem)
-    {
-      missing: :danger,
-      empty: :info,
-      nesting: :warning,
-      inefficient: :info,
-      duplicate: :warning
-    }[problem.category.to_sym] || :silent
+    Problem::DEFAULT_SEVERITIES[problem.category.to_sym] || :silent
   end
 
   def max_problem_severity
