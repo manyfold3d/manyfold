@@ -1,15 +1,24 @@
 require "rails_helper"
 
-# Specs in this file have access to a helper object that includes
-# the ProblemsHelper. For example:
-#
-# describe ProblemsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe ProblemsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:model) { create(:model) }
+
+  it "converts a problem to a severity level" do
+    expect(helper.problem_severity(
+      Problem.new(category: :duplicate, problematic: model)
+    )).to eq "warning"
+  end
+
+  it "works out the maximum severity from a set of problems (warning)" do
+    Problem.create(category: :duplicate, problematic: model)
+    Problem.create(category: :inefficient, problematic: model)
+    expect(helper.max_problem_severity).to eq "warning"
+  end
+
+  it "works out the maximum severity from a set of problems (danger)" do
+    Problem.create(category: :missing, problematic: model)
+    Problem.create(category: :duplicate, problematic: model)
+    Problem.create(category: :inefficient, problematic: model)
+    expect(helper.max_problem_severity).to eq "danger"
+  end
 end
