@@ -12,6 +12,13 @@ class Problem < ApplicationRecord
     :duplicate
   ]
 
+  SEVERITIES = [
+    :silent,
+    :info,
+    :warning,
+    :danger
+  ]
+
   def self.create_or_clear(problematic, cat, present, options = {})
     if present
       problematic.problems.create(options.merge(category: cat))
