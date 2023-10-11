@@ -1,6 +1,6 @@
 module SupportedMimeTypes
   def self.image_types
-    Mime::LOOKUP.filter { |k, v| is_image_mime_type?(v) }.values.map(&:to_s)
+    Mime::LOOKUP.filter { |k, v| is_image_mime_type?(v) }.values
   end
 
   def self.image_extensions
@@ -8,7 +8,7 @@ module SupportedMimeTypes
   end
 
   def self.model_types
-    Mime::LOOKUP.filter { |k, v| is_model_mime_type?(v) }.values.map(&:to_s)
+    Mime::LOOKUP.filter { |k, v| is_model_mime_type?(v) }.values
   end
 
   def self.model_extensions
