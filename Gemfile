@@ -88,7 +88,7 @@ gem "activeadmin", "~> 3.0"
 
 gem "kaminari", "~> 1.2"
 
-gem "lograge", "~> 0.13.0"
+gem "lograge", "~> 0.14.0"
 
 gem "acts_as_favoritor", "~> 6.0"
 
