@@ -512,10 +512,10 @@
   resolved "https://registry.yarnpkg.com/@types/stats.js/-/stats.js-0.17.0.tgz#0ed81d48e03b590c24da85540c1d952077a9fe20"
   integrity sha512-9w+a7bR8PeB0dCT/HBULU2fMqf6BAzvKbxFboYhmDtDkKPiyXYbjoe2auwsXlEFI7CFNMF1dCv3dFH5Poy9R1w==
 
-"@types/three@^0.157.0":
-  version "0.157.0"
-  resolved "https://registry.yarnpkg.com/@types/three/-/three-0.157.0.tgz#1efc78bfb12f87f15bcbbc48cdd4cdaad306a700"
-  integrity sha512-+BG+wqEyH506w23tKpwXnCTJb/MeyeQ/wcFlSFQ26Z9hS5Qde2vc7o+aqd+z98b38PVGuHa5GYxg/3CY7qrxFw==
+"@types/three@^0.157.2":
+  version "0.157.2"
+  resolved "https://registry.yarnpkg.com/@types/three/-/three-0.157.2.tgz#f22b9a4b6c9f2ed35de88f4346e57ee7296473cb"
+  integrity sha512-2kykrMgvO5LTAiahadM6ijoER+GcbEJ61pQVOyGxIJTCASoUnzwJvfhilsLxvEw4+glzhLYUDvvTvNjx+58Vzw==
   dependencies:
     "@types/stats.js" "*"
     "@types/webxr" "*"
