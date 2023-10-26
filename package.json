@@ -34,7 +34,7 @@
     "@types/three": "^0.157.2",
     "@types/webpack-env": "^1.18.3",
     "@typescript-eslint/parser": "^6.9.0",
-    "eslint": "^8.51.0",
+    "eslint": "^8.52.0",
     "husky": "^8.0.3",
     "ts-standard": "^12.0.2"
   }
