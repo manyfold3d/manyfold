@@ -96,8 +96,8 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    acts-as-taggable-on (9.0.1)
-      activerecord (>= 6.0, < 7.1)
+    acts-as-taggable-on (10.0.0)
+      activerecord (>= 6.1, < 7.2)
     acts_as_favoritor (6.0.1)
       activerecord (>= 5.0)
     arbre (1.7.0)
@@ -479,7 +479,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin (~> 3.1)
   activerecord-nulldb-adapter (~> 1.0.1)
-  acts-as-taggable-on (~> 9.0)
+  acts-as-taggable-on (~> 10.0)
   acts_as_favoritor (~> 6.0)
   bootsnap (>= 1.4.4)
   byebug
