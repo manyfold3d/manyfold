@@ -494,10 +494,10 @@
   dependencies:
     undici-types "~5.26.4"
 
-"@types/selectize@^0.12.37":
-  version "0.12.37"
-  resolved "https://registry.yarnpkg.com/@types/selectize/-/selectize-0.12.37.tgz#bda1249d5b8e3845827d83df9309924f433ea5c4"
-  integrity sha512-SVPvF3PIzlPaEeCh4HR61jnJp+RocBvOdP7J1z919Ade/odFij4G/UD4FzyktphzQ+Z309rXFiSpIMS9f9dsjw==
+"@types/selectize@^0.12.38":
+  version "0.12.38"
+  resolved "https://registry.yarnpkg.com/@types/selectize/-/selectize-0.12.38.tgz#7f9b321f2d1e67fe0da3e1acbeb1633a9774db00"
+  integrity sha512-A8EfDfEN15lO4OUVYWIu2nkTmNWGGeDGndntpuwlEXp7YBpcQ8LU8/nVOT2ub/nCBCZ1hynNzbnNgeElw1QruQ==
 
 "@types/semver@^7.3.12":
   version "7.3.13"
