@@ -23,7 +23,7 @@
     "sass": "^1.69.5",
     "sifter": "^0.5.4",
     "three": "^0.158.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2"
   },
   "version": "0.1.0",
   "devDependencies": {
