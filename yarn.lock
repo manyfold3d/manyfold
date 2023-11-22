@@ -470,10 +470,10 @@
   optionalDependencies:
     jquery-ui "^1.13.2"
 
-"@types/jquery@^3.5.28":
-  version "3.5.28"
-  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.5.28.tgz#ce70ef8360ece723e7a40b887d1c373cdc979530"
-  integrity sha512-2o/vlzaDXiGWFrHz/PhX88cy68UDc8NBBT9i1nU+EtRkKgRxMWLTlUkEJb+MRfhIw6wKK8RDmfoEXClH2PsIyA==
+"@types/jquery@^3.5.29":
+  version "3.5.29"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.5.29.tgz#3c06a1f519cd5fc3a7a108971436c00685b5dcea"
+  integrity sha512-oXQQC9X9MOPRrMhPHHOsXqeQDnWeCDT3PelUIg/Oy8FAbzSZtFHRjc7IpbfFVmpLtJ+UOoywpRsuO5Jxjybyeg==
   dependencies:
     "@types/sizzle" "*"
 
