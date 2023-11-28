@@ -70,7 +70,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       html = helper.nav_link('test', 'Test Text', '/')
       doc = Nokogiri::HTML(html)
       expect(doc.at('a')['class']).to include('nav-link')
-      expect(doc.at('span').text).to eq('Test Text')
+      expect(doc.css('span')[1].text).to eq('Test Text')
     end
   end
 end
