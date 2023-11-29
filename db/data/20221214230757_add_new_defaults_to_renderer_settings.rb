@@ -9,7 +9,7 @@ class AddNewDefaultsToRendererSettings < ActiveRecord::Migration[7.0]
       "object_colour" => "#cccccc",
       "render_style" => "normals"
     }
-    User.all.each do |user|
+    User.find_each do |user|
       user.update(
         renderer_settings: defaults.merge(user.renderer_settings)
       )

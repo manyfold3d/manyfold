@@ -4,14 +4,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "~> 3.2.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 7.0.7"
+gem "rails", "~> 7.0.8"
 # Use Puma as the app server
-gem "puma", "~> 6.3"
+gem "puma", "~> 6.4"
 # Use SCSS for stylesheets
 gem "sass-rails", ">= 6"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
-gem "cssbundling-rails", "~> 1.2"
+gem "cssbundling-rails", "~> 1.3"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.11"
 # Use Redis adapter to run Action Cable in production
@@ -23,7 +23,7 @@ gem "redis", "~> 5.0"
 # gem 'image_processing', '~> 1.2'
 
 gem "dotenv-rails", "~> 2.8"
-gem "acts-as-taggable-on", "~> 9.0"
+gem "acts-as-taggable-on", "~> 10.0"
 
 gem "ffi-libarchive", "~> 1.1"
 
@@ -39,7 +39,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "sqlite3", "~> 1.6"
   gem "rspec-rails"
-  gem "standard", "~> 1.31.0"
+  gem "standard", "~> 1.32.0"
   gem "factory_bot"
   gem "faker", "~> 3.2"
   gem "guard", "~> 2.18"
@@ -74,7 +74,7 @@ gem "public_suffix", "~> 5.0"
 
 gem "delayed_job_active_record", "~> 4.1"
 
-gem "activerecord-nulldb-adapter", "~> 0.9.0"
+gem "activerecord-nulldb-adapter", "~> 1.0.1"
 
 gem "memoist", "~> 0.16.2"
 gem "stopwords-filter2", require: "stopwords"
@@ -84,11 +84,11 @@ gem "devise", "~> 4.9"
 gem "data_migrate", github: "Floppy/data-migrate", ref: "db-prepare-withdata"
 
 gem "rails-settings-cached", "~> 2.9"
-gem "activeadmin", "~> 3.0"
+gem "activeadmin", "~> 3.1"
 
 gem "kaminari", "~> 1.2"
 
-gem "lograge", "~> 0.13.0"
+gem "lograge", "~> 0.14.0"
 
 gem "acts_as_favoritor", "~> 6.0"
 
@@ -96,4 +96,4 @@ gem "sqlite3_ar_regexp", "~> 2.2"
 
 gem "mittsu", github: "danini-the-panini/mittsu", ref: "7f44c46"
 
-gem "view_component", "~> 3.5"
+gem "view_component", "~> 3.8"
