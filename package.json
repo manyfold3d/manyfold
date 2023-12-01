@@ -22,7 +22,7 @@
     "popper.js": "^1.16.1",
     "sass": "^1.69.5",
     "sifter": "^0.5.4",
-    "three": "^0.158.0",
+    "three": "^0.159.0",
     "typescript": "^5.3.2"
   },
   "version": "0.1.0",
@@ -31,7 +31,7 @@
     "@types/jquery": "^3.5.29",
     "@types/node": "^18.19.0",
     "@types/selectize": "^0.12.39",
-    "@types/three": "^0.158.3",
+    "@types/three": "^0.159.0",
     "@types/webpack-env": "^1.18.4",
     "@typescript-eslint/parser": "^6.13.1",
     "eslint": "^8.54.0",
