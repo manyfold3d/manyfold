@@ -182,7 +182,7 @@ class ObjectPreview {
   }
 
   render (): void {
-    if (!this.ready || VanDAM.canvas === null || VanDAM.renderer === null) {
+    if (!this.ready || Manyfold.canvas === null || Manyfold.renderer === null) {
       return
     }
     this.controls.update()
@@ -191,19 +191,19 @@ class ObjectPreview {
       this.container.getBoundingClientRect()
     const isOffscreen =
       bottom < 0 ||
-      top > (VanDAM.canvas.clientHeight ?? 0) ||
+      top > (Manyfold.canvas.clientHeight ?? 0) ||
       right < 0 ||
-      left > (VanDAM.canvas.clientWidth ?? 0)
+      left > (Manyfold.canvas.clientWidth ?? 0)
     if (!isOffscreen) {
       this.camera.aspect = this.container.clientWidth / this.container.clientHeight
       this.camera.updateProjectionMatrix()
-      const positiveYUpBottom = (VanDAM.canvas.height ?? 0) - bottom
-      VanDAM.renderer.setScissorTest(true)
-      VanDAM.renderer.setScissor(left, positiveYUpBottom, width, height)
-      VanDAM.renderer.setViewport(left, positiveYUpBottom, width, height)
+      const positiveYUpBottom = (Manyfold.canvas.height ?? 0) - bottom
+      Manyfold.renderer.setScissorTest(true)
+      Manyfold.renderer.setScissor(left, positiveYUpBottom, width, height)
+      Manyfold.renderer.setViewport(left, positiveYUpBottom, width, height)
       // Render
-      VanDAM.renderer.clear()
-      VanDAM.renderer.render(this.scene, this.camera)
+      Manyfold.renderer.clear()
+      Manyfold.renderer.render(this.scene, this.camera)
     }
   }
 
@@ -219,7 +219,7 @@ class ObjectPreview {
   }
 }
 
-const VanDAM = {
+const Manyfold = {
   canvas: null as HTMLCanvasElement | null,
   renderer: null as THREE.WebGLRenderer | null,
   previews: [] as ObjectPreview[],
@@ -227,36 +227,36 @@ const VanDAM = {
 }
 
 const stopAnimation = (): void => {
-  if (VanDAM.frame !== null) {
-    window.cancelAnimationFrame(VanDAM.frame)
+  if (Manyfold.frame !== null) {
+    window.cancelAnimationFrame(Manyfold.frame)
   }
 }
 
 const onAnimationFrame = (): void => {
   renderAll()
-  VanDAM.frame = window.requestAnimationFrame(onAnimationFrame)
+  Manyfold.frame = window.requestAnimationFrame(onAnimationFrame)
 }
 
 const renderAll = (): void => {
-  if (VanDAM.renderer === null) {
+  if (Manyfold.renderer === null) {
     return
   }
   // Move canvas
   const transform = `translateY(${window.scrollY}px)`
-  VanDAM.renderer.domElement.style.transform = transform
+  Manyfold.renderer.domElement.style.transform = transform
   // Render all the models
-  VanDAM.previews.forEach((preview) => preview.render())
+  Manyfold.previews.forEach((preview) => preview.render())
 }
 
 const resizeRenderer = (): void => {
-  if (VanDAM.canvas === null || VanDAM.renderer === null) {
+  if (Manyfold.canvas === null || Manyfold.renderer === null) {
     return
   }
-  const width = VanDAM.canvas.clientWidth
-  const height = VanDAM.canvas.clientHeight
-  const needResize = VanDAM.canvas.width !== width || VanDAM.canvas.height !== height
+  const width = Manyfold.canvas.clientWidth
+  const height = Manyfold.canvas.clientHeight
+  const needResize = Manyfold.canvas.width !== width || Manyfold.canvas.height !== height
   if (needResize) {
-    VanDAM.renderer.setSize(width, height, false)
+    Manyfold.renderer.setSize(width, height, false)
   }
   renderAll()
 }
@@ -264,20 +264,20 @@ window.addEventListener('resize', resizeRenderer)
 
 document.addEventListener('DOMContentLoaded', () => {
   // Set up global WebGL context and associated THREE.js renderer
-  VanDAM.canvas = document.getElementById('webgl') as HTMLCanvasElement
-  if (VanDAM.canvas === null) {
+  Manyfold.canvas = document.getElementById('webgl') as HTMLCanvasElement
+  if (Manyfold.canvas === null) {
     console.log('Could not find #webgl canvas!')
     return
   }
-  VanDAM.renderer = new THREE.WebGLRenderer({ canvas: VanDAM.canvas })
-  if (VanDAM.renderer === null) {
+  Manyfold.renderer = new THREE.WebGLRenderer({ canvas: Manyfold.canvas })
+  if (Manyfold.renderer === null) {
     console.log('Could not create renderer!')
     return
   }
   resizeRenderer()
   // Configure previews for each object
   document.querySelectorAll('[data-preview]').forEach((div) => {
-    VanDAM.previews.push(new ObjectPreview(
+    Manyfold.previews.push(new ObjectPreview(
       div as HTMLDivElement,
       (div as HTMLDivElement).dataset,
       div.getElementsByClassName('progress')[0] as HTMLDivElement

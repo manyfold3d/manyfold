@@ -1,5 +1,5 @@
 {
-  "name": "van-dam",
+  "name": "manyfold",
   "private": true,
   "scripts": {
     "lint:ts": "ts-standard --fix",
