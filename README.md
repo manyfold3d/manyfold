@@ -1,6 +1,7 @@
-# VanDAM
+# Manyfold
 
-VanDAM is a Digital Asset Manager (DAM), specifically designed for 3D print
+Manyfold (pronounced "manifold", and previously known as VanDAM)
+is a digital asset manager, specifically designed for 3D print
 files. Create a library pointing at your files on disk, and it will scan for
 models and parts. It assumes that any folders containing STL or OBJ files are
 models, and the files within them are parts. You can then view the files easily
@@ -33,7 +34,7 @@ You can run all the dependencies in one go using `docker-compose`:
    This might fail the first time it's run due to race conditions in setting up
    the database.
 
-3. Open Van DAM at <http://localhost:3214>
+3. Open Manyfold at <http://localhost:3214>
 
 4. Add a library
 
