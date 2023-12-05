@@ -52,5 +52,5 @@ jobs:
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           build-args: |
-            VAN_DAM_GIT_REF=${{ env.CI_REF_NAME }}
-            VAN_DAM_GIT_SHA=${{ env.CI_SHA_SHORT }}
+            GIT_REF=${{ env.CI_REF_NAME }}
+            GIT_SHA=${{ env.CI_SHA_SHORT }}
