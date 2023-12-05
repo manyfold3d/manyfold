@@ -1,14 +1,14 @@
 development:
   adapter: redis
   url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: van_dam_development
+  channel_prefix: manyfold_development
 
 test:
   adapter: redis
   url: <%= Rails.application.credentials.redis_url %>
-  channel_prefix: van_dam_test
+  channel_prefix: manyfold_test
 
 production:
   adapter: redis
   url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: van_dam_production
+  channel_prefix: manyfold_production
