@@ -17,7 +17,7 @@ explains them pretty nicely though, then the specific details are below:
 ## Running in Docker
 
 You can run the latest release in docker by using the image
-`ghcr.io/floppy/van_dam:latest`. The app also needs a PostgreSQL and Redis
+`ghcr.io/manyfold3d/manyfold:latest`. The app also needs a PostgreSQL and Redis
 database to operate.
 
 The docker image supports `linux/amd64`, `linux/arm/v7` and `linux/arm64`

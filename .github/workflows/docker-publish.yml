@@ -6,7 +6,7 @@ on:
       - v*
 
 env:
-  IMAGE_NAME: van_dam
+  IMAGE_NAME: manyfold
 
 jobs:
 
