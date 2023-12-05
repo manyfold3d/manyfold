@@ -73,4 +73,4 @@ The server will then be running at <http://127.0.0.1:5000>
 
 Built with [Rails 7](https://rubyonrails.org/),
 [Three.js](https://threejs.org/) and [Bootstrap 5](http://getbootstrap.com). Source code is open under the MIT license at
-<https://github.com/floppy/van_dam>.
+<https://github.com/manyfold3d/manyfold>.
