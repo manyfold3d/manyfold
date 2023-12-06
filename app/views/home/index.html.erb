@@ -2,16 +2,6 @@
   <%= render "application/content_header" %>
   <h1 class="d-none d-lg-block"><%= t "application.title" %></h1>
   <p class='lead'><%= t "application.tagline" %></p>
-  <div class='col-8 offset-md-2 alert alert-warning'>
-    <p>
-      VanDAM has changed name to Manyfold!
-    </p>
-    <p>
-      You will need to change your Docker configuration to use the
-      new image <code>ghcr.io/manyfold3d/manyfold</code> in order to
-      continue getting updates.
-    </p>
-  </div>
   <div class="col-8 offset-md-2">
     <%= form_with url: models_path, method: :get, class: "mt-3" do |f| %>
       <div class="input-group mb-3">
