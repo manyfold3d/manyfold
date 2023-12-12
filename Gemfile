@@ -84,7 +84,7 @@ gem "devise", "~> 4.9"
 gem "data_migrate", github: "Floppy/data-migrate", ref: "db-prepare-withdata"
 
 gem "rails-settings-cached", "~> 2.9"
-gem "activeadmin", "~> 3.1"
+gem "activeadmin", "~> 3.2"
 
 gem "kaminari", "~> 1.2"
 

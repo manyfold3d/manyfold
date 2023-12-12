@@ -65,7 +65,7 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activeadmin (3.1.0)
+    activeadmin (3.2.0)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (>= 3.1)
       formtastic_i18n (>= 0.4)
@@ -322,7 +322,7 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.1.0)
-    ransack (4.1.0)
+    ransack (4.1.1)
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
@@ -476,7 +476,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activeadmin (~> 3.1)
+  activeadmin (~> 3.2)
   activerecord-nulldb-adapter (~> 1.0.1)
   acts-as-taggable-on (~> 10.0)
   acts_as_favoritor (~> 6.0)
