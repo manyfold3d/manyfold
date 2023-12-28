@@ -420,11 +420,11 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.6.9)
+    sqlite3 (1.7.0)
       mini_portile2 (~> 2.8.0)
-    sqlite3 (1.6.9-x64-mingw-ucrt)
-    sqlite3 (1.6.9-x86_64-darwin)
-    sqlite3 (1.6.9-x86_64-linux)
+    sqlite3 (1.7.0-x64-mingw-ucrt)
+    sqlite3 (1.7.0-x86_64-darwin)
+    sqlite3 (1.7.0-x86_64-linux)
     sqlite3_ar_regexp (2.2.0)
       activerecord (>= 3.2)
       sqlite3
@@ -516,7 +516,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   simplecov (~> 0.22.0)
   spring
-  sqlite3 (~> 1.6)
+  sqlite3 (~> 1.7)
   sqlite3_ar_regexp (~> 2.2)
   standard (~> 1.32.1)
   stopwords-filter2
