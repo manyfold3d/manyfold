@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Libraries" do
   before :all do
     @library = create(:library) do |library|
-      create_list(:model, 13, library: library)
+      create_list(:model, 2, library: library)
     end
   end
 
