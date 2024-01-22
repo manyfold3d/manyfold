@@ -48,6 +48,12 @@ en:
         message: This file is duplicated in other models. You may wish to remove some.
         title: Duplicated files
   problems:
+    categories:
+      duplicate: Duplicate files
+      empty: Model has no files
+      inefficient: Inefficient formats
+      missing: Missing files or folders
+      nesting: Model contains other models
     library:
       missing: Library folder not found
     model:
@@ -60,11 +66,19 @@ en:
       description: Duplicated file
     model_file_inefficient:
       description: Inefficient file format
+    severities:
+      danger: Danger
+      info: Info
+      silent: Ignored
+      warning: Warning
   renderer:
     style:
       lambert: Realistically shaded
       normals: Surface direction
   settings:
+    problem_settings:
+      description: Change the severity of detected problems, or ignore them completely.
+      title: Problem Detection
     renderer_settings:
       auto_load_max_size:
         always: Always

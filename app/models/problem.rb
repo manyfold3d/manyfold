@@ -3,7 +3,12 @@ class Problem < ApplicationRecord
 
   validates :category, uniqueness: {scope: :problematic}, presence: true
 
-  enum :category, [
+  scope :visible, ->(settings) {
+    enabled = settings.select { |cat, sev| sev.to_sym != :silent }
+    where(category: enabled.keys)
+  }
+
+  CATEGORIES = [
     :missing,
     :empty,
     :destination_exists, # No longer used, but kept for compatibility
@@ -11,6 +16,22 @@ class Problem < ApplicationRecord
     :inefficient,
     :duplicate
   ]
+  enum :category, CATEGORIES
+
+  SEVERITIES = [
+    :silent,
+    :info,
+    :warning,
+    :danger
+  ]
+
+  DEFAULT_SEVERITIES = {
+    missing: :danger,
+    empty: :info,
+    nesting: :warning,
+    inefficient: :info,
+    duplicate: :warning
+  }
 
   def self.create_or_clear(problematic, cat, present, options = {})
     if present

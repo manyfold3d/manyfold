@@ -50,7 +50,7 @@
 						</div>
 					<% end %>
 				</li>
-				<% if Problem.count > 0 %>
+				<% if Problem.visible(current_user.problem_settings).count > 0 %>
 					<li class="nav-item">
 						<%= nav_link 'exclamation-triangle-fill',
 							Problem.model_name.human.pluralize,
