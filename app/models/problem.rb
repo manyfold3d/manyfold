@@ -23,7 +23,6 @@ class Problem < ApplicationRecord
   DEFAULT_SEVERITIES = {
     missing: :danger,
     empty: :info,
-    destination_exists: :silent,
     nesting: :warning,
     inefficient: :info,
     duplicate: :warning
