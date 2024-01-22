@@ -48,6 +48,17 @@ en:
         message: This file is duplicated in other models. You may wish to remove some.
         title: Duplicated files
   problems:
+    categories:
+      missing: Missing files or folders
+      empty: Model has no files
+      nesting: Model contains other models
+      duplicate: Duplicate files
+      inefficient: Inefficient formats
+    severities:
+      silent: Ignored
+      info: Info
+      warning: Warning
+      danger: Danger
     library:
       missing: Library folder not found
     model:
@@ -65,6 +76,9 @@ en:
       lambert: Realistically shaded
       normals: Surface direction
   settings:
+    problem_settings:
+      title: Problem Detection
+      description: Change the severity of detected problems, or ignore them completely.
     renderer_settings:
       auto_load_max_size:
         always: Always

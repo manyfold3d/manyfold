@@ -10,6 +10,7 @@ class SettingsController < ApplicationController
     update_pagination_settings(params[:pagination])
     update_renderer_settings(params[:renderer])
     update_tag_cloud_settings(params[:tag_cloud])
+    update_problem_settings(params[:problems])
     @user.save!
     # Save site-wide settings if user is an admin
     if current_user.admin?
@@ -54,6 +55,11 @@ class SettingsController < ApplicationController
       "render_style" => settings[:render_style],
       "auto_load_max_size" => settings[:auto_load_max_size].to_i
     }
+  end
+
+  def update_problem_settings(settings)
+    return unless settings
+    @user.problem_settings = settings
   end
 
   def update_folder_settings(settings)
