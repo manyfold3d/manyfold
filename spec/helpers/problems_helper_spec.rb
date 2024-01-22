@@ -1,7 +1,12 @@
 require "rails_helper"
 
 RSpec.describe ProblemsHelper do
+  include Devise::Test::ControllerHelpers
   let(:model) { create(:model) }
+
+  before do
+    sign_in User.first
+  end
 
   it "converts a problem to a severity level" do
     expect(helper.problem_severity(

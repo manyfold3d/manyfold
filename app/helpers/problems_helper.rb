@@ -1,6 +1,6 @@
 module ProblemsHelper
   def problem_severity(problem)
-    current_user.problem_settings[problem.category] || :silent
+    current_user.problem_settings[problem.category]&.to_sym || :silent
   end
 
   def max_problem_severity
