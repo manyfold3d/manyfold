@@ -3,7 +3,7 @@ class Problem < ApplicationRecord
 
   validates :category, uniqueness: {scope: :problematic}, presence: true
 
-  enum :category, [
+  CATEGORIES = [
     :missing,
     :empty,
     :destination_exists, # No longer used, but kept for compatibility
@@ -11,6 +11,7 @@ class Problem < ApplicationRecord
     :inefficient,
     :duplicate
   ]
+  enum :category, CATEGORIES
 
   SEVERITIES = [
     :silent,
