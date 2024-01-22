@@ -49,16 +49,11 @@ en:
         title: Duplicated files
   problems:
     categories:
-      missing: Missing files or folders
-      empty: Model has no files
-      nesting: Model contains other models
       duplicate: Duplicate files
+      empty: Model has no files
       inefficient: Inefficient formats
-    severities:
-      silent: Ignored
-      info: Info
-      warning: Warning
-      danger: Danger
+      missing: Missing files or folders
+      nesting: Model contains other models
     library:
       missing: Library folder not found
     model:
@@ -71,14 +66,19 @@ en:
       description: Duplicated file
     model_file_inefficient:
       description: Inefficient file format
+    severities:
+      danger: Danger
+      info: Info
+      silent: Ignored
+      warning: Warning
   renderer:
     style:
       lambert: Realistically shaded
       normals: Surface direction
   settings:
     problem_settings:
-      title: Problem Detection
       description: Change the severity of detected problems, or ignore them completely.
+      title: Problem Detection
     renderer_settings:
       auto_load_max_size:
         always: Always
