@@ -3,6 +3,11 @@ name: Docker Nightly
 on:
   workflow_dispatch:
     inputs:
+      tag:
+        description: 'Docker tag for build results'
+        type: string
+        default: manual
+        required: true
   schedule:
     - cron: "0 0 * * *"
 
@@ -23,7 +28,7 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
-            type=raw,value=manual,event=workflow_dispatch
+            type=raw,value=${{ inputs.tag }},event=workflow_dispatch
             type=schedule,pattern=nightly
             type=semver,pattern={{version}}
 
