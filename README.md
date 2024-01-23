@@ -1,5 +1,7 @@
 # Manyfold
 
+[![Built with Depot](https://depot.dev/badges/built-with-depot.svg)](https://depot.dev?utm_source=manyfold)
+
 Manyfold (pronounced "manifold", and previously known as VanDAM)
 is a digital asset manager, specifically designed for 3D print
 files. Create a library pointing at your files on disk, and it will scan for
