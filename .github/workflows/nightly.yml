@@ -6,15 +6,10 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
-env:
-  IMAGE_NAME: manyfold
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: FranzDiebold/github-env-vars-action@v2
-
       - name: Check out code
         uses: actions/checkout@v4
 
@@ -24,6 +19,7 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
+            type=raw,value=manual,event=workflow_dispatch
             type=schedule,pattern=nightly
             type=semver,pattern={{version}}
 
@@ -50,5 +46,5 @@ jobs:
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           build-args: |
-            GIT_REF=nightly
-            GIT_SHA=${{ env.CI_SHA_SHORT }}
+            GIT_REF=${{ github.ref_name }}
+            GIT_SHA=${{ github.sha }}
