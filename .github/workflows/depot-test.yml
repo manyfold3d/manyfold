@@ -39,6 +39,8 @@ jobs:
         id: depot
         uses: depot/build-push-action@v1
         with:
+          project: bsbhgkfhgc
+          token: {{ secrets.DEPOT_PROJECT_TOKEN }}
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm/v7,linux/arm64
