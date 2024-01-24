@@ -1,4 +1,4 @@
-FROM ruby:3.3-alpine3.18 AS build
+FROM ruby:3.2-alpine3.18 AS build
 
 RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn xz libarchive mesa-gl glfw
 RUN gem install foreman
