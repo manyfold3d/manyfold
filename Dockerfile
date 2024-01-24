@@ -3,7 +3,7 @@ FROM ruby:3.2-alpine3.18 AS build
 RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn xz libarchive mesa-gl glfw
 RUN gem install foreman
 
-ARG GIT_REF
+ARG APP_VERSION
 ARG GIT_SHA
 
 ENV PORT=3214
@@ -11,7 +11,7 @@ ENV RACK_ENV=production
 ENV RAILS_ENV=production
 ENV NODE_ENV=production
 ENV RAILS_SERVE_STATIC_FILES=true
-ENV GIT_REF=${GIT_REF}
+ENV APP_VERSION=${APP_VERSION}
 ENV GIT_SHA=${GIT_SHA}
 
 WORKDIR /usr/src/app
