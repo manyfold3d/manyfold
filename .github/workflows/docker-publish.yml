@@ -4,16 +4,24 @@ on:
   push:
     tags:
       - v*
-
-env:
-  IMAGE_NAME: manyfold
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Docker tag for build results'
+        type: string
+        default: manual
+        required: true
+  schedule:
+    - cron: "0 0 * * *"
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read # for checkout
+      id-token: write # for OIDC token, used for Depot
+      packages: write # to upload build to GHCR
     steps:
-      - uses: FranzDiebold/github-env-vars-action@v2
-
       - name: Check out code
         uses: actions/checkout@v4
 
@@ -23,24 +31,31 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
-            type=edge,branch=main
+            type=raw,value=${{ inputs.tag }},event=workflow_dispatch
+            type=schedule,pattern=nightly
             type=semver,pattern={{version}}
 
       - name: Depot setup
         uses: depot/setup-action@v1
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push
         id: depot
         uses: depot/build-push-action@v1
         with:
           project: bsbhgkfhgc
-          token: ${{ secrets.DEPOT_PROJECT_TOKEN }}
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm/v7,linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           build-args: |
-            GIT_REF=${{ env.CI_REF_NAME }}
-            GIT_SHA=${{ env.CI_SHA_SHORT }}
+            GIT_REF=${{ github.ref_name }}
+            GIT_SHA=${{ github.sha }}
