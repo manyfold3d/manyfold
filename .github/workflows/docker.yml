@@ -57,5 +57,5 @@ jobs:
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           build-args: |
-            APP_VERSION=${{ steps.docker_meta.outputs.tags.first || github.ref_name }}
+            APP_VERSION=${{ steps.docker_meta.outputs.version }}
             GIT_SHA=${{ github.sha }}
