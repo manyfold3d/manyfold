@@ -1705,10 +1705,10 @@ humanize@^0.0.9:
   resolved "https://registry.yarnpkg.com/humanize/-/humanize-0.0.9.tgz#1994ffaecdfe9c441ed2bdac7452b7bb4c9e41a4"
   integrity sha1-GZT/rs3+nEQe0r2sdFK3u0yeQaQ=
 
-husky@^8.0.3:
-  version "8.0.3"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.3.tgz#4936d7212e46d1dea28fef29bb3a108872cd9184"
-  integrity sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==
+husky@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-9.0.1.tgz#710ed0d06b7fb2f5723ea8db436b632e7aecc284"
+  integrity sha512-rXCT8yF2v3awSG03AG6IgICDhJ+m8o3jL1ROwsT4nQZ6urEyKSj0IWFDIh5YC2zgZeAxWksNMbN6rYY4BE1Zrw==
 
 ignore@^5.1.1, ignore@^5.2.0:
   version "5.2.0"
