@@ -1,4 +1,6 @@
 class UploadsController < ApplicationController
+  before_action { authorize :upload }
+
   def create
     library = Library.find(params[:post][:library_pick])
     save_files(params[:upload], File.join(library.path, ""))
