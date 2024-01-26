@@ -31,7 +31,7 @@
 					<%= nav_link 'plus-circle', t('libraries.general.new'), new_library_path, text_style: "d-lg-none" %>
 				</li>
 				<li class="nav-item">
-					<%= nav_link 'upload', t('.upload'), uploads_path, style: "btn btn-warning btn-sm me-1 mt-lg-1" %>
+					<%= nav_link 'upload', t('.upload'), uploads_path, style: "btn btn-warning btn-sm me-1 mt-lg-1 #{policy(:upload).index? ? "" : "disabled"}" %>
 				</li>
 				<li class="nav-item">
 					<% if @scan_in_progress %>

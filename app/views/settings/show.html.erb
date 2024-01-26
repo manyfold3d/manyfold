@@ -37,7 +37,7 @@
     </div>
     <% if current_user.admin? %>
       <div class='col text-end'>
-        <%= link_to "#{icon('tools', 'Administration')} Advanced Administration".html_safe, '/admin', class: "btn btn-danger" %>
+        <%= link_to "#{icon('tools', 'Administration')} Advanced Administration".html_safe, '/admin', class: "btn btn-danger #{SiteSettings.demo_mode? ? "disabled" : ""}" %>
       </div>
     <% end %>
     </p>

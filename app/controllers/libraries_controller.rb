@@ -16,12 +16,15 @@ class LibrariesController < ApplicationController
   def new
     @library = Library.new
     @title = "New Library"
+    authorize @library
   end
 
   def edit
+    authorize @library
   end
 
   def create
+    authorize Library
     @library = Library.create(library_params)
     @library.tag_regex = params[:tag_regex]
     if @library.valid?
@@ -33,6 +36,7 @@ class LibrariesController < ApplicationController
   end
 
   def update
+    authorize @library
     @library.update(library_params)
     uptags = library_params[:tag_regex].reject(&:empty?)
     @library.tag_regex = uptags
@@ -57,6 +61,7 @@ class LibrariesController < ApplicationController
   end
 
   def destroy
+    authorize @library
     @library.destroy
     redirect_to libraries_path
   end
