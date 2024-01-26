@@ -42,7 +42,7 @@
             <span id="libraryRegexHelp" class="form-text">Check for models missing tags matching these regex.</span>
           </div>
           <%= if !library.tag_regex.empty? then link_to "Search Missing", models_path(library: library.id, missingtag: ""), {class: "btn btn-outline-secondary"} end %>
-          <%= link_to "Edit", edit_library_path(library), {class: "btn btn-outline-secondary"} %>
+          <%= link_to "Edit", edit_library_path(library), {class: "btn btn-outline-secondary, #{policy(:library).edit? ? "" : "disabled"}"} %>
         </div></li>
     <% end %>
     </ul>
