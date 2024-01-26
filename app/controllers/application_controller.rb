@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Pundit::Authorization
+
   before_action :auto_login_single_user
   before_action :authenticate_user!
   before_action :check_scan_status
