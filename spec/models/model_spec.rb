@@ -22,6 +22,28 @@ RSpec.describe Model do
     expect(build(:model).model_files).to eq []
   end
 
+  context "with license information" do
+    it "allows nil license" do
+      m = build(:model, license: nil)
+      expect(m).to be_valid
+    end
+
+    it "stores license info in SPDX" do
+      m = build(:model, license: "MIT")
+      expect(m).to be_valid
+    end
+
+    it "supports complex SPDX definitions" do
+      m = build(:model, license: "MIT OR AGPL-3.0+")
+      expect(m).to be_valid
+    end
+
+    it "checks for SPDX validity" do
+      m = build(:model, license: "Made up license")
+      expect(m).not_to be_valid
+    end
+  end
+
   it "strips leading and trailing separators from paths" do
     model = create(:model, path: "/models/car/")
     expect(model.path).to eq "models/car"
