@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_22_114207) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_27_143358) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -118,6 +118,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_114207) do
     t.text "caption"
     t.integer "collection_id"
     t.string "slug"
+    t.string "license"
     t.index ["collection_id"], name: "index_models_on_collection_id"
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
