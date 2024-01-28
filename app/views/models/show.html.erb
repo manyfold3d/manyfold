@@ -44,6 +44,14 @@
           <td><%= link_to @model.library.name, models_path((@filters||{}).merge(library: @model.library)) %></td>
         </tr>
       <% end %>
+      <% if @model.license %>
+        <tr>
+          <td><%= icon "card-heading", "License" %></td>
+          <td>
+            <%= link_to @model.license, Spdx.licenses[@model.license]["reference"] %>
+          </td>
+        </tr>
+      <% end %>
       <tr>
         <td><%= icon "folder", "Path" %></td>
         <td>
