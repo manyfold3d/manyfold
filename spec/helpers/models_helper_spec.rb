@@ -22,7 +22,11 @@ RSpec.describe ModelsHelper do
 
   describe "license options" do
     it "creates a suitable hash of options" do
-      expect(helper.license_select_options).to include?(["Creative Commons Zero v1.0 Universal", "CC0-1.0"])
+      expect(helper.license_select_options).to include('<option value="CC0-1.0">Creative Commons Zero v1.0 Universal (CC0-1.0)</option>')
+    end
+
+    it "sets selected option" do
+      expect(helper.license_select_options(selected: "CC0-1.0")).to include('<option selected="selected" value="CC0-1.0">Creative Commons Zero v1.0 Universal (CC0-1.0)</option>')
     end
   end
 end

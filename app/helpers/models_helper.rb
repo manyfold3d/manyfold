@@ -15,7 +15,7 @@ module ModelsHelper
     content_tag :span, safe_join(badges), class: "status-badges"
   end
 
-  def license_select_options
+  def license_select_options(selected: nil)
     # Generate a list of select options for select with a set of useful licenses
     options_for_select(
       %w[
@@ -30,10 +30,11 @@ module ModelsHelper
         MIT
       ].map { |id|
         [
-          Spdx.licenses[id]["name"],
+          Spdx.licenses[id]["name"] + " (#{id})",
           id
         ]
-      }
+      },
+      selected: selected
     )
   end
 end
