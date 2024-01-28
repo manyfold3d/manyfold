@@ -19,4 +19,10 @@ RSpec.describe ModelsHelper do
       expect(groups[nil].count).to eq(1)
     end
   end
+
+  describe "license options" do
+    it "creates a suitable hash of options" do
+      expect(helper.license_select_options).to include?(["Creative Commons Zero v1.0 Universal", "CC0-1.0"])
+    end
+  end
 end

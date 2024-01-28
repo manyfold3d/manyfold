@@ -14,4 +14,26 @@ module ModelsHelper
     badges << content_tag(:span, icon("exclamation-triangle-fill", "Problem"), class: "text-warning align-middle") unless model.problems.empty?
     content_tag :span, safe_join(badges), class: "status-badges"
   end
+
+  def license_select_options
+    # Generate a list of select options for select with a set of useful licenses
+    options_for_select(
+      %w[
+        CC-BY-4.0
+        CC-BY-NC-4.0
+        CC-BY-ND-4.0
+        CC-BY-NC-ND-4.0
+        CC-BY-NC-SA-4.0
+        CC-BY-SA-4.0
+        CC-PDDC
+        CC0-1.0
+        MIT
+      ].map { |id|
+        [
+          Spdx.licenses[id]["name"],
+          id
+        ]
+      }
+    )
+  end
 end
