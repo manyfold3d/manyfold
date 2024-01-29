@@ -13,7 +13,7 @@ class ModelFilesController < ApplicationController
           send_file_content
         end
         format.any(*SupportedMimeTypes.image_types.map(&:to_sym)) do
-          send_file File.join(@library.path, @model.path, @file.filename)
+          send_file_content
         end
       end
     end
@@ -51,10 +51,14 @@ class ModelFilesController < ApplicationController
 
   private
 
-  def send_file_content
+  def send_file_content(disposition: :attachment)
     filename = File.join(@library.path, @model.path, @file.filename)
     response.headers["Content-Length"] = File.size(filename).to_s
-    send_file filename, disposition: :inline, type: @file.extension.to_sym
+    response.headers["Content-Disposition"] = ActionDispatch::Http::ContentDisposition.format(disposition: disposition, filename: @file.filename)
+    response.headers["Content-Type"] = @file.extension.to_sym
+    IO.foreach(filename, 2**15) do |chunk|
+      response.stream.write(chunk)
+    end
   rescue Errno::ENOENT
     head :internal_server_error
   end
