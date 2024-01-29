@@ -1,4 +1,6 @@
 class ModelFilesController < ApplicationController
+  include ActionController::Live
+
   before_action :get_library
   before_action :get_model
   before_action :get_file, except: [:bulk_edit, :bulk_update]
@@ -61,6 +63,8 @@ class ModelFilesController < ApplicationController
     end
   rescue Errno::ENOENT
     head :internal_server_error
+  ensure
+    response.stream.close
   end
 
   def bulk_update_params
