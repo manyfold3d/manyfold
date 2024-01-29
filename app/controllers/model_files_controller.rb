@@ -55,7 +55,7 @@ class ModelFilesController < ApplicationController
     filename = File.join(@library.path, @model.path, @file.filename)
     response.headers["Content-Length"] = File.size(filename).to_s
     response.headers["Content-Disposition"] = ActionDispatch::Http::ContentDisposition.format(disposition: disposition, filename: @file.filename)
-    response.headers["Content-Type"] = @file.extension.to_sym
+    response.headers["Content-Type"] = @file.mime_type.to_s
     IO.foreach(filename, 2**15) do |chunk|
       response.stream.write(chunk)
     end
