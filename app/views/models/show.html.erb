@@ -48,7 +48,9 @@
         <tr>
           <td><%= icon "card-heading", "License" %></td>
           <td>
-            <%= link_to @model.license, Spdx.licenses[@model.license]["reference"] %>
+            <%= Spdx.licenses[@model.license]&.fetch("reference") ?
+              link_to(t_license(@model.license), Spdx.licenses[@model.license]["reference"]) :
+              t_license(@model.license) %>
           </td>
         </tr>
       <% end %>

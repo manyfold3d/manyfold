@@ -28,13 +28,18 @@ module ModelsHelper
         CC-PDDC
         CC0-1.0
         MIT
+        LicenseRef-Commercial
       ].map { |id|
         [
-          Spdx.licenses[id]["name"] + " (#{id})",
+          t_license(id),
           id
         ]
       },
       selected: selected
     )
+  end
+
+  def t_license(license)
+    t("licenses.%{id}" % {id: license.delete(".")}, default: license)
   end
 end

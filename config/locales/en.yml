@@ -43,6 +43,17 @@ en:
   libraries:
     general:
       new: New Library
+  licenses:
+    CC-BY-40: Creative Commons Attrbution
+    CC-BY-NC-40: Creative Commons Attribution NonCommercial
+    CC-BY-NC-ND-40: Creative Commons Attribution NonCommercial NoDerivatives
+    CC-BY-NC-SA-40: Creative Commons Attribution NonCommercial ShareAlike
+    CC-BY-ND-40: Creative Commons Attribution NoDerivatives
+    CC-BY-SA-40: Creative Commons Attribution ShareAlike
+    CC-PDDC: Creative Commons Public Domain Declaration
+    CC0-10: Creative Commons Zero
+    LicenseRef-Commercial: Commercial; private use only
+    MIT: MIT
   model_files:
     show:
       duplicate_card:

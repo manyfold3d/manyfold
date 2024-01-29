@@ -42,6 +42,12 @@ RSpec.describe Model do
       m = build(:model, license: "Made up license")
       expect(m).not_to be_valid
     end
+
+    it "allows LicenseRef-Commercial to represent private use only" do
+      # See https://scancode-licensedb.aboutcode.org/commercial-license.html
+      m = build(:model, license: "LicenseRef-Commercial")
+      expect(m).to be_valid
+    end
   end
 
   it "strips leading and trailing separators from paths" do
