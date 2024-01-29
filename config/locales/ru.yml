@@ -18,6 +18,16 @@ ru:
       collection: Коллекция
       model: Модель
       model_file: Файл
+  application:
+    demo_mode: This instance is in demo mode. You cannot add or remove models, but you can do everything else.
+    navbar:
+      check_existing: Check existing models
+      scan: Scan
+      scan_changes: Scan for changes
+      scanning: Scanning
+      upload: Upload
+    tagline: Helping you keep track of your 3d print files
+    title: Маныфолд
   collections:
     collection:
       no_preview: Предварительный просмотр недоступен
@@ -29,9 +39,33 @@ ru:
   general:
     delete: Удалить
     edit: Редактировать
-    filter: Фильтр
     save: Сохранять
+  libraries:
+    general:
+      new: New Library
+  licenses:
+    CC-BY-40: Creative Commons Attrbution
+    CC-BY-NC-40: Creative Commons Attribution NonCommercial
+    CC-BY-NC-ND-40: Creative Commons Attribution NonCommercial NoDerivatives
+    CC-BY-NC-SA-40: Creative Commons Attribution NonCommercial ShareAlike
+    CC-BY-ND-40: Creative Commons Attribution NoDerivatives
+    CC-BY-SA-40: Creative Commons Attribution ShareAlike
+    CC-PDDC: Creative Commons Public Domain Declaration
+    CC0-10: Creative Commons Zero
+    LicenseRef-Commercial: Commercial; private use only
+    MIT: MIT
+  model_files:
+    show:
+      duplicate_card:
+        message: This file is duplicated in other models. You may wish to remove some.
+        title: Duplicated files
   problems:
+    categories:
+      duplicate: Duplicate files
+      empty: Model has no files
+      inefficient: Inefficient formats
+      missing: Missing files or folders
+      nesting: Model contains other models
     library:
       missing: Папка книгохранилище не найдена
     model:
@@ -40,10 +74,38 @@ ru:
       nesting: Модель содержит другие модели
     model_file:
       missing: Файл не найден
+    model_file_duplicate:
+      description: Duplicated file
+    model_file_inefficient:
+      description: Inefficient file format
+    severities:
+      danger: Danger
+      info: Info
+      silent: Ignored
+      warning: Warning
   renderer:
     style:
       lambert: Реалистично затененный
       normals: Направление поверхности
+  settings:
+    problem_settings:
+      description: Change the severity of detected problems, or ignore them completely.
+      title: Problem Detection
+    renderer_settings:
+      auto_load_max_size:
+        always: Always
+        label: Automatically load previews
+        never: Never
+        under_1024: Up to 1024 MB
+        under_128: Up to 128 MB
+        under_16: Up to 16 MB
+        under_2: Up to 2 MB
+        under_256: Up to 256 MB
+        under_32: Up to 32 MB
+        under_4: Up to 4 MB
+        under_512: Up to 512 MB
+        under_64: Up to 64 MB
+        under_8: Up to 8 MB
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
