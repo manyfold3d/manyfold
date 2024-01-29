@@ -1,4 +1,6 @@
 class ModelFilesController < ApplicationController
+  include ActionController::Live
+
   before_action :get_library
   before_action :get_model
   before_action :get_file, except: [:bulk_edit, :bulk_update]
@@ -13,7 +15,7 @@ class ModelFilesController < ApplicationController
           send_file_content
         end
         format.any(*SupportedMimeTypes.image_types.map(&:to_sym)) do
-          send_file File.join(@library.path, @model.path, @file.filename)
+          send_file_content
         end
       end
     end
@@ -51,12 +53,18 @@ class ModelFilesController < ApplicationController
 
   private
 
-  def send_file_content
+  def send_file_content(disposition: :attachment)
     filename = File.join(@library.path, @model.path, @file.filename)
     response.headers["Content-Length"] = File.size(filename).to_s
-    send_file filename, disposition: :inline, type: @file.extension.to_sym
+    response.headers["Content-Disposition"] = ActionDispatch::Http::ContentDisposition.format(disposition: disposition, filename: @file.filename)
+    response.headers["Content-Type"] = @file.mime_type.to_s
+    IO.foreach(filename, 2**15) do |chunk|
+      response.stream.write(chunk)
+    end
   rescue Errno::ENOENT
     head :internal_server_error
+  ensure
+    response.stream.close
   end
 
   def bulk_update_params

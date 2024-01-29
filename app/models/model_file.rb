@@ -18,6 +18,10 @@ class ModelFile < ApplicationRecord
     SupportedMimeTypes.image_extensions.include? extension
   end
 
+  def mime_type
+    Mime::Type.lookup_by_extension(extension)
+  end
+
   def name
     File.basename(filename, ".*").humanize.titleize
   end
