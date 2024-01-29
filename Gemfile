@@ -101,3 +101,5 @@ gem "view_component", "~> 3.10"
 gem "rails-controller-testing", "~> 1.0", group: :test
 
 gem "pundit", "~> 2.3"
+
+gem "spdx", "~> 4.1"

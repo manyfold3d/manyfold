@@ -30,6 +30,7 @@ class Model < ApplicationRecord
   validates :path, presence: true, uniqueness: {scope: :library}
   validate :check_for_submodels, on: :update, if: :need_to_move_files?
   validate :destination_is_vacant, on: :update, if: :need_to_move_files?
+  validates :license, spdx: true, allow_nil: true
 
   before_update :move_files, if: :need_to_move_files?
 

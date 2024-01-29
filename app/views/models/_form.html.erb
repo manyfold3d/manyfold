@@ -31,5 +31,11 @@
   <%= render 'links_form', :form => form %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes %>
+
+  <div class="row mb-3 input-group">
+    <%= form.label :license, class: "col-sm-2 col-form-label" %>
+    <%= form.select :license, license_select_options(selected: @model.license), {include_blank: true}, class: "form-control col-auto form-select" %>
+  </div>
+
   <%= form.submit "Save", class: "btn btn-primary" %>
 <% end %>
