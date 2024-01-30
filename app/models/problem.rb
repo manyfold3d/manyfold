@@ -43,6 +43,10 @@ class Problem < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["category", "created_at", "id", "note", "problematic_id", "problematic_type", "updated_at"]
+    ["category", "created_at", "id", "note", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["problematic"]
   end
 end
