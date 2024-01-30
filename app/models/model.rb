@@ -95,6 +95,14 @@ class Model < ApplicationRecord
     ["base_tags", "collection", "creator", "library", "links", "model_files", "preview_file", "problems", "tag_taggings", "taggings", "tags"]
   end
 
+  def problems_including_files
+    Problem.where(problematic: model_files + [self])
+  end
+
+  def new?
+    tags.where(name: SiteSettings.model_tags_auto_tag_new).any?
+  end
+
   private
 
   def strip_separators_from_path

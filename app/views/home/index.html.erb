@@ -25,6 +25,8 @@
         <tr>
           <td>
             <%= link_to model.name, library_model_path(model.library, model) %>
+          </td>
+          <td>
             <%= status_badges(model) %>
           </td>
           <td><%= link_to model.library.name, model.library %></td>

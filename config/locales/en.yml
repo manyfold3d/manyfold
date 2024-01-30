@@ -39,6 +39,7 @@ en:
   general:
     delete: Delete
     edit: Edit
+    new: New
     save: Save
   libraries:
     general:
