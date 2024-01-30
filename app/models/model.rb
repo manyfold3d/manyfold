@@ -99,6 +99,10 @@ class Model < ApplicationRecord
     Problem.where(problematic: model_files + [self])
   end
 
+  def new?
+    tags.where(name: SiteSettings.model_tags_auto_tag_new).any?
+  end
+
   private
 
   def strip_separators_from_path
