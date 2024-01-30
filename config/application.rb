@@ -51,5 +51,6 @@ module Manyfold
       end
     end
     config.middleware.use Rack::Locale
+    config.i18n.fallbacks = true
   end
 end
