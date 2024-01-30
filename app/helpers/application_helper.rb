@@ -56,10 +56,15 @@ module ApplicationHelper
 
   def text_input_row(form, name)
     content_tag :div, class: "row mb-3 input-group" do
-      [
+      safe_join [
         form.label(name, class: "col-sm-2 col-form-label"),
-        form.text_field(name, class: "form-control col-auto")
-      ].join.html_safe
+        content_tag(:div, class: "col p-0") do
+          safe_join [
+            form.text_field(name, class: "form-control"),
+            errors_for(form.object, name)
+          ]
+        end
+      ]
     end
   end
 
@@ -84,5 +89,13 @@ module ApplicationHelper
       path,
       class: options[:style] || safe_join(["nav-link", (current_page?(path) ? "active" : "")], " ")
     )
+  end
+
+  def errors_for(record, attribute)
+    return if record.nil? || attribute.nil?
+    return unless record.errors.include? attribute
+    content_tag(:div,
+      record.errors.full_messages_for(attribute).join("; "),
+      class: "invalid-feedback d-block")
   end
 end

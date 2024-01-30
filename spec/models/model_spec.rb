@@ -48,6 +48,18 @@ RSpec.describe Model do
       m = build(:model, license: "LicenseRef-Commercial")
       expect(m).to be_valid
     end
+
+    it "can remove a license on save" do
+      m = create(:model, license: "MIT")
+      m.license = nil
+      expect(m).to be_valid
+    end
+
+    it "normalizes blank licenses to nil" do
+      m = build(:model, license: "")
+      m.validate
+      expect(m.license).to be_nil
+    end
   end
 
   it "strips leading and trailing separators from paths" do

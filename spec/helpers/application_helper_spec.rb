@@ -51,7 +51,7 @@ RSpec.describe ApplicationHelper do
       html = helper.text_input_row(form, :field)
       doc = Nokogiri::HTML(html)
       expect(doc.at("div.row")["class"]).to include("mb-3 input-group")
-      expect(doc.at("input")["class"]).to include("form-control col-auto")
+      expect(doc.at("input")["class"]).to include("form-control")
     end
   end
 

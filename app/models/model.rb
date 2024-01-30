@@ -19,6 +19,10 @@ class Model < ApplicationRecord
   before_validation :strip_separators_from_path, if: :path_changed?
   before_validation :slugify_name, if: :name_changed?
 
+  before_validation :normalize_license
+  # In Rails 7.1 we will be able to do this instead:
+  # normalizes :license, with: -> license { license.blank? ? nil : license }
+
   attr_reader :organize
   def organize=(value)
     @organize = ActiveRecord::Type::Boolean.new.cast(value)
@@ -104,6 +108,10 @@ class Model < ApplicationRecord
   end
 
   private
+
+  def normalize_license
+    self.license = nil if license.blank?
+  end
 
   def strip_separators_from_path
     self.path = path&.trim_path_separators
