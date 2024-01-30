@@ -94,9 +94,7 @@ module ApplicationHelper
   def errors_for(record, attribute)
     return unless record.errors.include? attribute
     content_tag(:div,
-      record.errors.full_messages_for(attribute).join('; '),
-      class: "invalid-feedback d-block"
-    )
+      record.errors.full_messages_for(attribute).join("; "),
+      class: "invalid-feedback d-block")
   end
-
 end

@@ -54,7 +54,6 @@ RSpec.describe Model do
       m.license = nil
       expect(m).to be_valid
     end
-
   end
 
   it "strips leading and trailing separators from paths" do
