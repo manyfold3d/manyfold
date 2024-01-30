@@ -92,6 +92,7 @@ module ApplicationHelper
   end
 
   def errors_for(record, attribute)
+    return if record.nil? || attribute.nil?
     return unless record.errors.include? attribute
     content_tag(:div,
       record.errors.full_messages_for(attribute).join("; "),
