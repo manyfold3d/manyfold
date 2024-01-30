@@ -29,6 +29,12 @@
       <%= render 'form' %>
     <% end %>
 
+    <% if @file.problems.any? %>
+      <%= card(:secondary, 'Problems') do %>
+        <% render partial: "problem", collection: @file.problems %>
+      <% end %>
+    <% end %>
+
     <% unless @duplicates.empty? %>
       <%= card :warning, t('.duplicate_card.title') do %>
         <p>
