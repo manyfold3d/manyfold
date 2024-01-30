@@ -11,7 +11,7 @@
     <div class="card-body">
       <h5 class="card-title">
         <%= file.name %>
-        <%= problem_icon(file.problems) %>
+        <span style="float: right"><%= problem_icon(file.problems) %></span>
       </h5>
       <%= form_with model: [@library, @model] do |form| %>
         <% if file.caption %>
