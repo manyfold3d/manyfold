@@ -37,6 +37,7 @@ en:
     index:
       view_unassigned_models: View unassigned
   general:
+    new: New
     delete: Delete
     edit: Edit
     save: Save
