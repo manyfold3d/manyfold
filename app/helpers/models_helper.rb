@@ -11,7 +11,7 @@ module ModelsHelper
   def status_badges(model)
     badges = []
     badges << content_tag(:span, "new", class: "badge rounded-pill bg-info") if model.tag_list.include? SiteSettings.model_tags_auto_tag_new
-    badges << content_tag(:span, icon("exclamation-triangle-fill", "Problem"), class: "text-warning align-middle") unless model.problems.empty?
+    badges << problem_icon(model.problems)
     content_tag :span, safe_join(badges), class: "status-badges"
   end
 
