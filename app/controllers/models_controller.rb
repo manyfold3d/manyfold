@@ -40,8 +40,12 @@ class ModelsController < ApplicationController
   end
 
   def update
-    @model.update(model_params)
-    redirect_to [@model.library, @model]
+    if @model.update(model_params)
+      redirect_to [@model.library, @model]
+    else
+      edit # Load creators and collections
+      render :edit
+    end
   end
 
   def merge

@@ -34,7 +34,10 @@
 
   <div class="row mb-3 input-group">
     <%= form.label :license, class: "col-sm-2 col-form-label" %>
-    <%= form.select :license, license_select_options(selected: @model.license), {include_blank: true}, class: "form-control col-auto form-select" %>
+    <div class="col p-0">
+      <%= form.select :license, license_select_options(selected: @model.license), {include_blank: true}, class: "form-control form-select" %>
+      <%= errors_for @model, :license %>
+    </div>
   </div>
 
   <%= form.submit "Save", class: "btn btn-primary" %>
