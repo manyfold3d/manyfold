@@ -95,6 +95,10 @@ class Model < ApplicationRecord
     ["base_tags", "collection", "creator", "library", "links", "model_files", "preview_file", "problems", "tag_taggings", "taggings", "tags"]
   end
 
+  def problems_including_files
+    Problem.where(problematic: model_files + [self])
+  end
+
   private
 
   def strip_separators_from_path
