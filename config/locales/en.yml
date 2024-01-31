@@ -55,11 +55,6 @@ en:
     CC0-10: Creative Commons Zero
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
-  model_files:
-    show:
-      duplicate_card:
-        message: This file is duplicated in other models. You may wish to remove some.
-        title: Duplicated files
   problems:
     categories:
       duplicate: Duplicate files
@@ -68,26 +63,27 @@ en:
       missing: Missing files or folders
       nesting: Model contains other models
     library_missing:
-      description: Library folder not found
+      description: Library folder not found on disk; better go look for it!
       title: Folder not found
     model_empty:
-      description: Model has no files
+      description: This model contains no files. Either delete it, or find where its files went!
       title: No files
     model_file_duplicate:
-      description: Duplicated file
+      description: This file is duplicated in other models. You may wish to remove some.
       title: Duplicated file
     model_file_inefficient:
-      description: Inefficient file format
-      title: Inefficient file format
+      description: This file is in %{note}, an inefficient file format. Consider converting it to a binary format such as 3MF to save disk space.
+      title: Inefficient format
     model_file_missing:
-      description: File not found
+      description: This file is missing on disk; either delete it, or find where it went!
       title: File not found
     model_missing:
-      description: Model folder not found
+      description: The folder for this model is missing on disk; either delete it, or find where it went!
       title: Folder not found
     model_nesting:
-      description: Model contains other models
+      description: The model folder on disk contains other models. You may wish to merge them into this one, or move them out.
       title: Contains other models
+      warning: Bulk merging moves all files from the models above into this one, and removes them. File metadata is preserved, but any model metadata will be lost!
     severities:
       danger: Danger
       info: Info
