@@ -63,7 +63,6 @@ en:
       missing: Missing files or folders
       nesting: Model contains other models
     library_missing:
-      description: Library folder not found on disk; better go look for it!
       title: Folder not found
     model_empty:
       description: This model contains no files. Either delete it, or find where its files went!
