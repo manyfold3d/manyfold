@@ -35,7 +35,7 @@ jobs:
         with:
           coverageCommand: bundle exec rake
         env:
-          CC_TEST_REPORTER_ID: a2ff22eaab926117741bb1aeefe8b95662c954aaa01fd37a393763b197436584
+          CC_TEST_REPORTER_ID: f570c8191542a0db2056d5994b06e9d0be35b25bc6897b5e913c1b783b920a0a
   lint:
     runs-on: ubuntu-latest
     steps:
