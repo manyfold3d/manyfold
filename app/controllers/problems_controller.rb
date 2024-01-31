@@ -9,8 +9,11 @@ class ProblemsController < ApplicationController
   def update
     @problem = Problem.unscoped.find(params[:id])
     @problem.update!(permitted_params)
-    flash[:notice] = t((@problem.ignored ? ".ignored" : ".unignored"), name: @problem.problematic.name,
-      message: t("problems.%{type}_%{category}.title" % {type: @problem.problematic_type.underscore, category: @problem.category}))
+    flash[:notice] = t(
+      (@problem.ignored ? ".ignored" : ".unignored"),
+      name: @problem.problematic.name,
+      message: t("problems.%{type}_%{category}.title" % {type: @problem.problematic_type.underscore, category: @problem.category})
+    )
     redirect_to problems_path
   end
 
