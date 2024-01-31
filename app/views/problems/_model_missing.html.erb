@@ -1,4 +1,4 @@
-<td><%= icon("folder-x", "Missing model") %></td>
+<td><%= icon("folder-x", t(".title")) %></td>
 <td><%= link_to problem.problematic.name, [problem.problematic.library, problem.problematic] %></td>
-<td><%= t "problems.model.missing" %></td>
+<td><%= t ".title" %></td>
 <td><%= link_to "Purge", [problem.problematic.library, problem.problematic], method: :delete, class: "btn btn-danger" %></td>

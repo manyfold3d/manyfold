@@ -1,0 +1,11 @@
+<%= card(problem_severity(problem), t("problems.model_file_#{problem.category}.title")) do %>
+	<%= t("problems.model_file_#{problem.category}.description", note: problem.note ) %>
+
+	<% unless @duplicates.empty? %>
+		<ul>
+			<% @duplicates.each do |file| %>
+				<li><%= link_to "#{file.model.name}/#{file.filename}", [file.model.library, file.model, file]%></li>
+			<% end %>
+		</ul>
+	<% end %>
+<% end %>

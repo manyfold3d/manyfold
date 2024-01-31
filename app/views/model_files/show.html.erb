@@ -29,18 +29,7 @@
       <%= render 'form' %>
     <% end %>
 
-    <% unless @duplicates.empty? %>
-      <%= card :warning, t('.duplicate_card.title') do %>
-        <p>
-          <%= t('.duplicate_card.message') %>
-        </p>
-        <ul>
-          <% @duplicates.each do |file| %>
-            <li><%= link_to "#{file.model.name}/#{file.filename}", [file.model.library, file.model, file]%></li>
-          <% end %>
-        </ul>
-      <% end %>
-    <% end %>
+    <%= render partial: "problem", collection: @file.problems %>
 
     <%= card :secondary, "Actions" do %>
       <%= link_to "#{icon('cloud-download', 'Download')} Download".html_safe, library_model_model_file_path(@library, @model, @file, @file.extension.to_sym), {class: "btn btn-secondary"} %>

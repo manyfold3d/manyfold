@@ -1,0 +1,16 @@
+<%= card(problem_severity(problem), t("problems.model_#{problem.category}.title")) do %>
+	<%= t("problems.model_#{problem.category}.description", note: problem.note ) %>
+
+  <% if @model.contains_other_models? %>
+    <ul>
+      <% @model.contained_models.each do |target| %>
+        <li><%= link_to target.name, library_model_path(@library, target)%></li>
+      <% end %>
+    </ul>
+    <p>
+      <%= t("problems.model_nesting.warning") %>
+    </p>
+    <%= link_to "Merge all", merge_library_model_path(@library, @model, all: true), class: "btn btn-danger", method: :post %>
+  <% end %>
+
+<% end %>

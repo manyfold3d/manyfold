@@ -84,22 +84,7 @@
     <% end %>
   <% end %>
 
-  <% if @model.contains_other_models? %>
-    <%= card :warning, "Contained Models" do %>
-      <p>
-        The model folder on disk contains other models. You may wish to merge them into this one, or move them out.
-      </p>
-      <ul>
-        <% @model.contained_models.each do |target| %>
-          <li><%= link_to target.name, library_model_path(@library, target)%></li>
-        <% end %>
-      </ul>
-      <p>
-        Bulk merging moves all files from the models above into this one, and removes them. File metadata is preserved, but any model metadata will be lost!
-      </p>
-      <%= link_to "Merge all", merge_library_model_path(@library, @model, all: true), class: "btn btn-danger", method: :post %>
-    <% end %>
-  <% end %>
+  <%= render partial: "problem", collection: @model.problems %>
 
   <%= card(:secondary, 'Notes') do %>
     <p class="card-text"><%= sanitize @model.notes %></p>
