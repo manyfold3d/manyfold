@@ -62,6 +62,8 @@ en:
       inefficient: Inefficient formats
       missing: Missing files or folders
       nesting: Model contains other models
+    index:
+      ignore: Ignore
     library_missing:
       title: Folder not found
     model_empty:
@@ -88,6 +90,8 @@ en:
       info: Info
       silent: Ignored
       warning: Warning
+    update:
+      ignored: "Problem ignored on '%{name}': %{message}"
   renderer:
     style:
       lambert: Realistically shaded
