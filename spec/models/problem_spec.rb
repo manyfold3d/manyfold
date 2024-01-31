@@ -26,4 +26,11 @@ RSpec.describe Problem do
       expect(described_class.visible(settings).map { |x| x.category.to_sym }).not_to include :missing
     end
   end
+
+  context "when being ignored" do
+    it "have an ignored flag" do
+      p = build(:problem)
+      expect(p).to respond_to(:ignored)
+    end
+  end
 end
