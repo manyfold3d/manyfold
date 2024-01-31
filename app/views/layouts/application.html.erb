@@ -17,8 +17,18 @@
     <%= render "application/navbar" %>
     <div class="container-fluid">
       <div>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <% if notice %>
+          <p class="alert alert-info">
+            <%= icon "info-circle-fill", t(".alert.info") %>
+            <%= notice %>
+          </p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger">
+            <%= icon "exclamation-triangle-fill", t(".alert.danger") %>
+            <%= alert %>
+          </p>
+        <% end %>
       </div>
       <%= yield %>
       <%= render "application/footer" %>
