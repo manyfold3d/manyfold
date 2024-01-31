@@ -36,13 +36,31 @@ RSpec.describe Problem do
     it "leaves out ignored problems by default" do
       create(:problem)
       create(:problem, ignored: true)
-      expect(described_class.count).to be(1)
+      expect(described_class.count).to eq(1)
     end
 
     it "includes ignored problems when specified" do
       create(:problem)
       create(:problem, ignored: true)
-      expect(described_class.unscoped.count).to be(2)
+      expect(described_class.unscoped.count).to eq(2)
+    end
+
+    it "can ignore an existing problem" do
+      p = create(:problem)
+      expect(p.ignored).to be(false)
+      expect(described_class.count).to eq(1)
+      p.update!(ignored: true)
+      expect(p.ignored).to be(true)
+      expect(described_class.count).to eq(0)
+    end
+
+    it "can unignore an existing problem" do
+      p = create(:problem, ignored: true)
+      expect(p.ignored).to be(true)
+      expect(described_class.count).to eq(0)
+      p.update!(ignored: false)
+      expect(p.ignored).to be(false)
+      expect(described_class.count).to eq(1)
     end
   end
 end
