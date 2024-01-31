@@ -92,7 +92,7 @@ class ModelsController < ApplicationController
   end
 
   def destroy
-    authorize @file
+    authorize @model
     @model.delete_from_disk_and_destroy
     redirect_to library_path(@library)
   end
