@@ -1,3 +1,10 @@
+<div class="float-end">
+	<% if @show_ignored %>
+		<%= link_to t(".hide_ignored"), problems_path(show_ignored: false) %>
+	<% else %>
+		<%= link_to t(".show_ignored"), problems_path(show_ignored: true) %>
+	<% end %>
+</div>
 <h1>Problems</h1>
 
 <%= paginate @problems %>

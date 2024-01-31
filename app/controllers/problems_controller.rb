@@ -1,7 +1,8 @@
 class ProblemsController < ApplicationController
   def index
+    @show_ignored = (params[:show_ignored] == "true")
     page = params[:page] || 1
-    query = params.has_key?(:show_ignored) ? Problem.unscoped : Problem
+    query = @show_ignored ? Problem.unscoped : Problem
     @problems = query.visible(current_user.problem_settings).page(page).per(50).order([:category, :problematic_type])
   end
 
