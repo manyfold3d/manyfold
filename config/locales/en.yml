@@ -63,7 +63,8 @@ en:
       missing: Missing files or folders
       nesting: Model contains other models
     index:
-      ignore: Ignore
+      ignore: Hide
+      unignore: Show
     library_missing:
       title: Folder not found
     model_empty:
@@ -91,7 +92,8 @@ en:
       silent: Ignored
       warning: Warning
     update:
-      ignored: "Problem ignored on '%{name}': %{message}"
+      ignored: "Problem hidden on '%{name}': %{message}"
+      unignored: "Problem restored on '%{name}': %{message}"
   renderer:
     style:
       lambert: Realistically shaded
