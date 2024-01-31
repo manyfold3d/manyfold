@@ -32,5 +32,17 @@ RSpec.describe Problem do
       p = build(:problem)
       expect(p).to respond_to(:ignored)
     end
+
+    it "leaves out ignored problems by default" do
+      create(:problem)
+      create(:problem, ignored: true)
+      expect(described_class.count).to be(1)
+    end
+
+    it "includes ignored problems when specified" do
+      create(:problem)
+      create(:problem, ignored: true)
+      expect(described_class.unscoped.count).to be(2)
+    end
   end
 end

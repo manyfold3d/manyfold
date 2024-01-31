@@ -3,6 +3,8 @@ class Problem < ApplicationRecord
 
   validates :category, uniqueness: {scope: :problematic}, presence: true
 
+  default_scope { where(ignored: false) }
+
   scope :visible, ->(settings) {
     enabled = settings.select { |cat, sev| sev.to_sym != :silent }
     where(category: enabled.keys)
