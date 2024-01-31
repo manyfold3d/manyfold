@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_27_143358) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_31_134832) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -33,9 +33,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_27_143358) do
     t.string "slug"
     t.index ["name"], name: "index_creators_on_name", unique: true
     t.index ["slug"], name: "index_creators_on_slug", unique: true
-  end
-
-  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -96,12 +93,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_27_143358) do
     t.integer "model_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "presupported", default: false
+    t.boolean "presupported", default: false, null: false
     t.boolean "y_up", default: false, null: false
     t.string "digest"
     t.text "notes"
     t.text "caption"
-    t.integer "size"
+    t.bigint "size"
     t.index ["digest"], name: "index_model_files_on_digest"
     t.index ["model_id"], name: "index_model_files_on_model_id"
   end
@@ -133,6 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_27_143358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "note"
+    t.boolean "ignored", default: false, null: false
     t.index ["problematic_type", "problematic_id"], name: "index_problems_on_problematic"
   end
 
@@ -177,7 +175,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_27_143358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username", null: false
-    t.boolean "admin", default: false
+    t.boolean "admin", default: false, null: false
     t.json "pagination_settings", default: {"models"=>true, "creators"=>true, "collections"=>true, "per_page"=>12}
     t.json "renderer_settings", default: {"grid_width"=>200, "grid_depth"=>200}
     t.json "tag_cloud_settings", default: {"threshold"=>0, "heatmap"=>true, "keypair"=>true, "sorting"=>"frequency", "hide_unrelated"=>true}

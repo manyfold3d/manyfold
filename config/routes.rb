@@ -36,5 +36,5 @@ Rails.application.routes.draw do
   end
   resources :creators
   resources :collections
-  resources :problems, only: [:index]
+  resources :problems, only: [:index, :update]
 end

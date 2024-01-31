@@ -41,6 +41,11 @@ en:
     edit: Edit
     new: New
     save: Save
+  layouts:
+    application:
+      alert:
+        danger: Danger
+        info: Info
   libraries:
     general:
       new: New Library
@@ -62,6 +67,11 @@ en:
       inefficient: Inefficient formats
       missing: Missing files or folders
       nesting: Model contains other models
+    index:
+      hide_ignored: Hide ignored problems
+      ignore: Hide
+      show_ignored: Show ignored problems
+      unignore: Show
     library_missing:
       title: Folder not found
     model_empty:
@@ -88,6 +98,9 @@ en:
       info: Info
       silent: Ignored
       warning: Warning
+    update:
+      ignored: 'Problem hidden on "%{name}": %{message}'
+      unignored: 'Problem restored on "%{name}": %{message}'
   renderer:
     style:
       lambert: Realistically shaded

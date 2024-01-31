@@ -1,11 +1,25 @@
+<div class="float-end">
+	<% if @show_ignored %>
+		<%= link_to t(".hide_ignored"), problems_path(show_ignored: false) %>
+	<% else %>
+		<%= link_to t(".show_ignored"), problems_path(show_ignored: true) %>
+	<% end %>
+</div>
 <h1>Problems</h1>
 
 <%= paginate @problems %>
 
 <table class="table table-striped">
 	<% @problems.each do |problem| %>
-		<tr class="table-<%= problem_severity(problem) %>">
+		<tr class="table-<%= problem_severity(problem) %> <%= problem.ignored && "opacity-50"%>">
 			<%= render partial: "#{problem.problematic_type.underscore}_#{problem.category}", locals: {problem: problem} %>
+			<td>
+				<% if problem.ignored %>
+					<%= link_to icon("eye-fill", t(".unignore")), problem_path(problem, problem: { ignored: false }), method: :patch, class: "btn btn-outline-secondary" %>
+				<% else %>
+					<%= link_to icon("eye-slash", t(".ignore")), problem_path(problem, problem: { ignored: true }), method: :patch, class: "btn btn-outline-secondary" %>
+				<% end %>
+			</td>
 		</tr>
 	<% end %>
 </table>

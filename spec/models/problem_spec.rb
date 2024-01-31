@@ -26,4 +26,41 @@ RSpec.describe Problem do
       expect(described_class.visible(settings).map { |x| x.category.to_sym }).not_to include :missing
     end
   end
+
+  context "when being ignored" do
+    it "have an ignored flag" do
+      p = build(:problem)
+      expect(p).to respond_to(:ignored)
+    end
+
+    it "leaves out ignored problems by default" do
+      create(:problem)
+      create(:problem, ignored: true)
+      expect(described_class.count).to eq(1)
+    end
+
+    it "includes ignored problems when specified" do
+      create(:problem)
+      create(:problem, ignored: true)
+      expect(described_class.unscoped.count).to eq(2)
+    end
+
+    it "can ignore an existing problem" do
+      p = create(:problem)
+      expect(p.ignored).to be(false)
+      expect(described_class.count).to eq(1)
+      p.update!(ignored: true)
+      expect(p.ignored).to be(true)
+      expect(described_class.count).to eq(0)
+    end
+
+    it "can unignore an existing problem" do
+      p = create(:problem, ignored: true)
+      expect(p.ignored).to be(true)
+      expect(described_class.count).to eq(0)
+      p.update!(ignored: false)
+      expect(p.ignored).to be(false)
+      expect(described_class.count).to eq(1)
+    end
+  end
 end
