@@ -112,7 +112,6 @@ en:
       nesting: Model contains other models
     index:
       category: Category
-      hide_ignored: Hide ignored problems
       ignore: Hide
       severity: Severity
       show_ignored: Show ignored problems
