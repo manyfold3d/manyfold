@@ -110,10 +110,17 @@ en:
       inefficient: Inefficient formats
       missing: Missing files or folders
       nesting: Model contains other models
+    filters:
+      apply_filters: Apply
+      category: Category
+      clear_filters: Clear
+      severity: Severity
+      show_ignored: Show hidden items
+      title: Filters
+      type: Object Type
     index:
-      hide_ignored: Hide ignored problems
       ignore: Hide
-      show_ignored: Show ignored problems
+      no_problems: No problems matched the current filters.
       unignore: Show
     library_missing:
       title: Folder not found
