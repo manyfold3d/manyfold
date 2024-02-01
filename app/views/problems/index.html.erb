@@ -1,13 +1,56 @@
-<div class="float-end">
-	<% if @show_ignored %>
-		<%= link_to t(".hide_ignored"), problems_path(show_ignored: false) %>
-	<% else %>
-		<%= link_to t(".show_ignored"), problems_path(show_ignored: true) %>
-	<% end %>
-</div>
 <h1>Problems</h1>
 
 <%= paginate @problems %>
+
+<div class="row">
+	Filter:
+	<form action="/problems" method="GET">
+		<div class="col">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" name="show_ignored" value="true"
+					<%= "checked" if params[:show_ignored] == "true" %>
+				>
+				<label class="form-check-label" for="show_ignored">
+					<%= t(".show_ignored") %>
+				</label>
+			</div>
+		</div>
+		<div class="col">
+			<label>Category</label>
+			<select name="category[]" class="form-select" multiple=true>
+				<% Problem::CATEGORIES.each do |cat| %>
+					<option
+						value="<%= cat %>"
+						<%= "selected" if params[:category]&.include?(cat.to_s) %>
+					><%= t("problems.categories.#{cat}") %></option>
+				<% end %>
+			</select>
+		</div>
+		<div class="col">
+			<label>Severity</label>
+			<select name="severity[]" class="form-select" multiple=true>
+				<% (Problem::SEVERITIES - [:silent]).each do |sev| %>
+					<option
+						value="<%= sev %>"
+						<%= "selected" if params[:severity]&.include?(sev.to_s) %>
+					><%= t("problems.severities.#{sev}") %></option>
+				<% end %>
+			</select>
+		</div>
+		<div class="col">
+			<label>Type</label>
+			<select name="type[]" class="form-select" multiple=true>
+				<option value="model"
+					<%= "selected" if params[:type]&.include?("model") %>
+				>Model</option>
+				<option value="model_file"
+					<%= "selected" if params[:type]&.include?("model_file") %>
+				>File</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary">Filter</button>
+	</form>
+</div>
 
 <table class="table table-striped">
 	<% @problems.each do |problem| %>
