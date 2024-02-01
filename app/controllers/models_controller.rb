@@ -41,9 +41,10 @@ class ModelsController < ApplicationController
 
   def update
     if @model.update(model_params)
-      redirect_to [@model.library, @model]
+      redirect_to [@model.library, @model], notice: t(".success")
     else
       edit # Load creators and collections
+      flash.now[:alert] = t(".failure")
       render :edit
     end
   end
@@ -52,13 +53,13 @@ class ModelsController < ApplicationController
     if params[:target] && (target = (@model.parents.find { |x| x.id == params[:target].to_i }))
       @model.merge_into! target
       Scan::CheckModelIntegrityJob.perform_later(target.id)
-      redirect_to [@library, target]
+      redirect_to [@library, target], notice: t(".success")
     elsif params[:all] && @model.contains_other_models?
       @model.contained_models.each do |child|
         child.merge_into! @model
       end
       Scan::CheckModelIntegrityJob.perform_later(@model.id)
-      redirect_to [@library, @model]
+      redirect_to [@library, @model], notice: t(".success")
     else
       render status: :bad_request
     end
@@ -88,13 +89,13 @@ class ModelsController < ApplicationController
         end
       end
     end
-    redirect_to edit_models_path(@filters)
+    redirect_back_or_to edit_models_path(@filters), notice: t(".success")
   end
 
   def destroy
     authorize @model
     @model.delete_from_disk_and_destroy
-    redirect_to library_path(@library)
+    redirect_back_or_to library_path(@library), notice: t(".success")
   end
 
   private

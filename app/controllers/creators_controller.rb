@@ -45,17 +45,17 @@ class CreatorsController < ApplicationController
 
   def create
     @creator = Creator.create(creator_params)
-    redirect_to creators_path
+    redirect_to creators_path, notice: t(".success")
   end
 
   def update
     @creator.update(creator_params)
-    redirect_to creators_path
+    redirect_to creators_path, notice: t(".success")
   end
 
   def destroy
     @creator.destroy
-    redirect_to creators_path
+    redirect_to creators_path, notice: t(".success")
   end
 
   private

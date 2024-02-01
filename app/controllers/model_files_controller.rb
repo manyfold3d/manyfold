@@ -22,9 +22,12 @@ class ModelFilesController < ApplicationController
   end
 
   def update
-    @file.update(file_params)
-    @file.set_printed_by_user(current_user, params[:model_file][:printed] === "1")
-    redirect_to [@library, @model, @file]
+    if @file.update(file_params)
+      @file.set_printed_by_user(current_user, params[:model_file][:printed] === "1")
+      redirect_back_or_to [@library, @model, @file], notice: t(".success")
+    else
+      redirect_back_or_to [@library, @model, @file], alert: t(".failure")
+    end
   end
 
   def bulk_edit
@@ -42,13 +45,13 @@ class ModelFilesController < ApplicationController
         end
       end
     end
-    redirect_to library_model_path(@library, @model)
+    redirect_back_or_to library_model_path(@library, @model), notice: t(".success")
   end
 
   def destroy
     authorize @file
     @file.delete_from_disk_and_destroy
-    redirect_to library_model_path(@library, @model)
+    redirect_back_or_to library_model_path(@library, @model), notice: t(".success")
   end
 
   private

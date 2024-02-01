@@ -47,17 +47,17 @@ class CollectionsController < ApplicationController
 
   def create
     @collection = Collection.create(collection_params)
-    redirect_to collections_path
+    redirect_to collections_path, notice: t(".success")
   end
 
   def update
     @collection.update(collection_params)
-    redirect_to collections_path
+    redirect_to collections_path, notice: t(".success")
   end
 
   def destroy
     @collection.destroy
-    redirect_to collections_path
+    redirect_to collections_path, notice: t(".success")
   end
 
   private

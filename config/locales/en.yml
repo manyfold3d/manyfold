@@ -31,11 +31,24 @@ en:
   collections:
     collection:
       no_preview: no preview availiable
+    create:
+      success: New collection details saved.
+    destroy:
+      success: Collection deleted!
     general:
       edit: Edit Collection
       new: New Collection
     index:
       view_unassigned_models: View unassigned
+    update:
+      success: Collection details saved.
+  creators:
+    create:
+      success: New creator details saved.
+    destroy:
+      success: Creator deleted!
+    update:
+      success: Creator details saved.
   general:
     delete: Delete
     edit: Edit
@@ -47,8 +60,20 @@ en:
         danger: Danger
         info: Info
   libraries:
+    create:
+      failure: An error occurred, and the library could not be saved.
+      success: New library created!
+    destroy:
+      success: Library deleted!
     general:
       new: New Library
+    scan:
+      success: Library scan started.
+    scan_all:
+      success: Scan started for all libraries.
+    update:
+      failure: An error occurred, and the library could not be saved.
+      success: Library details saved.
   licenses:
     CC-BY-40: Creative Commons Attribution
     CC-BY-NC-40: Creative Commons Attribution NonCommercial
@@ -60,6 +85,24 @@ en:
     CC0-10: Creative Commons Zero
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
+  model_files:
+    bulk_update:
+      success: Files updated successfully.
+    destroy:
+      success: File deleted!
+    update:
+      failure: An error occurred and file details could not be saved.
+      success: File details saved.
+  models:
+    bulk_update:
+      success: Models updated successfully.
+    destroy:
+      success: Model deleted!
+    merge:
+      success: Models merged successfully.
+    update:
+      failure: An error occurred and the model details could not be saved.
+      success: Model details saved.
   problems:
     categories:
       duplicate: Duplicate files
@@ -124,6 +167,8 @@ en:
         under_512: Up to 512 MB
         under_64: Up to 64 MB
         under_8: Up to 8 MB
+    update:
+      success: Settings saved.
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
@@ -131,6 +176,9 @@ en:
     myminifactory: MyMiniFactory
     theminiindex: The Mini Index
     thingiverse: Thingiverse
+  uploads:
+    create:
+      success: File(s) uploaded successfully.
   views:
     pagination:
       first: "« First"

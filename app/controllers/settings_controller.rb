@@ -17,7 +17,7 @@ class SettingsController < ApplicationController
       update_folder_settings(params[:folders])
       update_tagging_settings(params[:model_tags])
     end
-    redirect_to user_settings_path(@user)
+    redirect_to user_settings_path(@user), notice: t(".success")
   end
 
   private
