@@ -1,8 +1,8 @@
 <h1><%= Problem.model_name.human.pluralize %></h1>
 
-<%= paginate @problems %>
-
 <%= render "filters" %>
+
+<%= paginate @problems %>
 
 <table class="table table-striped">
 	<% @problems.each do |problem| %>
