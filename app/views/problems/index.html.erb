@@ -1,4 +1,4 @@
-<h1>Problems</h1>
+<h1><%= Problem.model_name.human.pluralize %></h1>
 
 <%= paginate @problems %>
 
@@ -16,7 +16,7 @@
 			</div>
 		</div>
 		<div class="col">
-			<label>Category</label>
+			<label><%= t(".category") %></label>
 			<select name="category[]" class="form-select" multiple=true>
 				<% Problem::CATEGORIES.each do |cat| %>
 					<option
@@ -27,7 +27,7 @@
 			</select>
 		</div>
 		<div class="col">
-			<label>Severity</label>
+			<label><%= t(".severity") %></label>
 			<select name="severity[]" class="form-select" multiple=true>
 				<% (Problem::SEVERITIES - [:silent]).each do |sev| %>
 					<option
@@ -38,14 +38,14 @@
 			</select>
 		</div>
 		<div class="col">
-			<label>Type</label>
+			<label><%= t(".type") %></label>
 			<select name="type[]" class="form-select" multiple=true>
-				<option value="model"
-					<%= "selected" if params[:type]&.include?("model") %>
-				>Model</option>
-				<option value="model_file"
-					<%= "selected" if params[:type]&.include?("model_file") %>
-				>File</option>
+				<option value="<%= Model.model_name.param_key %>"
+					<%= "selected" if params[:type]&.include?(Model.model_name.param_key) %>
+				><%= Model.model_name.human %></option>
+				<option value="<%= ModelFile.model_name.param_key%>"
+					<%= "selected" if params[:type]&.include?(ModelFile.model_name.param_key) %>
+				><%= ModelFile.model_name.human %></option>
 			</select>
 		</div>
 		<button type="submit" class="btn btn-primary">Filter</button>
