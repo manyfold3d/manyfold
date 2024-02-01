@@ -115,7 +115,7 @@ en:
       category: Category
       clear_filters: Clear
       severity: Severity
-      show_ignored: Show hidden problems
+      show_ignored: Show hidden items
       title: Filters
       type: Object Type
     index:
