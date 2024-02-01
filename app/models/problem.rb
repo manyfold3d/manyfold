@@ -16,7 +16,9 @@ class Problem < ApplicationRecord
     :destination_exists, # No longer used, but kept for compatibility
     :nesting,
     :inefficient,
-    :duplicate
+    :duplicate,
+    :no_image,
+    :no_3d_model
   ]
   enum :category, CATEGORIES
 
@@ -32,7 +34,9 @@ class Problem < ApplicationRecord
     empty: :info,
     nesting: :warning,
     inefficient: :info,
-    duplicate: :warning
+    duplicate: :warning,
+    no_image: :silent,
+    no_3d_model: :silent
   }
 
   def self.create_or_clear(problematic, cat, present, options = {})

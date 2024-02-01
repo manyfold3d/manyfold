@@ -110,6 +110,8 @@ en:
       inefficient: Inefficient formats
       missing: Missing files or folders
       nesting: Model contains other models
+      no_3d_model: Model has no 3D files
+      no_image: Model has no image files
     filters:
       apply_filters: Apply
       category: Category
@@ -143,6 +145,12 @@ en:
       description: The model folder on disk contains other models. You may wish to merge them into this one, or move them out.
       title: Contains other models
       warning: Bulk merging moves all files from the models above into this one, and removes them. File metadata is preserved, but any model metadata will be lost!
+    model_no_3d_model:
+      description: This model contains no 3D files. That is unlikely to be correct.
+      title: No 3D files in model
+    model_no_image:
+      description: This model contains no image files. Adding one might make it easier to browse.
+      title: No image files in model
     severities:
       danger: Danger
       info: Info
