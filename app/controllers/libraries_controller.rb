@@ -46,7 +46,7 @@ class LibrariesController < ApplicationController
 
   def scan
     Scan::DetectFilesystemChangesJob.perform_later(@library.id)
-    redirect_to @library
+    redirect_back_or_to @library
   end
 
   def scan_all

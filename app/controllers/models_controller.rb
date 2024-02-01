@@ -88,13 +88,13 @@ class ModelsController < ApplicationController
         end
       end
     end
-    redirect_to edit_models_path(@filters)
+    redirect_back_or_to edit_models_path(@filters)
   end
 
   def destroy
     authorize @model
     @model.delete_from_disk_and_destroy
-    redirect_to library_path(@library)
+    redirect_back_or_to library_path(@library)
   end
 
   private

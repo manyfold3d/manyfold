@@ -22,9 +22,12 @@ class ModelFilesController < ApplicationController
   end
 
   def update
-    @file.update(file_params)
+    if @file.update(file_params)
     @file.set_printed_by_user(current_user, params[:model_file][:printed] === "1")
-    redirect_to [@library, @model, @file]
+      redirect_back_or_to [@library, @model, @file]
+    else
+      redirect_back_or_to [@library, @model, @file]
+    end
   end
 
   def bulk_edit
