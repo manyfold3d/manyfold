@@ -31,7 +31,8 @@ class LibrariesController < ApplicationController
       Scan::DetectFilesystemChangesJob.perform_later(@library.id)
       redirect_to @library, notice: t(".success")
     else
-      render :new, alert: t(".failure")
+      flash.now[:alert] = t(".failure")
+      render :new
     end
   end
 
@@ -43,7 +44,8 @@ class LibrariesController < ApplicationController
     if @library.save
       redirect_to models_path, notice: t(".success")
     else
-      render :edit, alert: t(".failure")
+      flash.now[:alert] = t(".failure")
+      render :edit
     end
   end
 

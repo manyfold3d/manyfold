@@ -44,7 +44,8 @@ class ModelsController < ApplicationController
       redirect_to [@model.library, @model], notice: t(".success")
     else
       edit # Load creators and collections
-      render :edit, alert: t(".failure")
+      flash.now[:alert] = t(".failure")
+      render :edit
     end
   end
 
