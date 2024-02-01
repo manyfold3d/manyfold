@@ -114,7 +114,7 @@ en:
       category: Category
       ignore: Hide
       severity: Severity
-      show_ignored: Show ignored problems
+      show_ignored: Show hidden problems
       type: Object Type
       unignore: Show
     library_missing:
