@@ -111,9 +111,9 @@ en:
       missing: Missing files or folders
       nesting: Model contains other models
     filters:
-      apply_filters: Apply filters
+      apply_filters: Apply
       category: Category
-      clear_filters: Clear filters
+      clear_filters: Clear
       severity: Severity
       show_ignored: Show hidden problems
       title: Filters
