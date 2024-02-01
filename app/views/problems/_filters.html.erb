@@ -14,7 +14,9 @@
 						<div class="col col-sm-6 col-md-4">
 							<label><%= t(".category") %></label>
 							<select name="category[]" class="form-select" multiple=true>
-								<% Problem::CATEGORIES.each do |cat| %>
+								<% Problem::CATEGORIES.
+									select { |x| Problem::DEFAULT_SEVERITIES[x].present? }.
+									each do |cat| %>
 									<option
 										value="<%= cat %>"
 										<%= "selected" if params[:category]&.include?(cat.to_s) %>
