@@ -4,7 +4,7 @@ RSpec.describe "Problems" do
   describe "GET /index" do
     before do
       create_list(:problem, 2, category: :inefficient)
-      create_list(:problem, 3, category: :missing)
+      create_list(:problem_on_model, 3, category: :missing)
       sign_in User.first
     end
 
@@ -40,6 +40,18 @@ RSpec.describe "Problems" do
 
       it "can show more than one category" do
         get "/problems/index", params: {"category[]": ["missing", "inefficient"]}
+        expect(assigns(:problems).length).to eq 5
+      end
+    end
+
+    context "when filtering by object type" do
+      it "only shows selected types" do
+        get "/problems/index", params: {"type[]": "model"}
+        expect(assigns(:problems).length).to eq 3
+      end
+
+      it "can show more than one type" do
+        get "/problems/index", params: {"type[]": ["model", "model_file"]}
         expect(assigns(:problems).length).to eq 5
       end
     end

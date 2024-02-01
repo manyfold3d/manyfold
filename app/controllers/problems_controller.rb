@@ -9,6 +9,10 @@ class ProblemsController < ApplicationController
     if params[:category]
       query = query.where(category: params[:category].map(&:to_sym))
     end
+    # What object types are we showing?
+    if params[:type]
+      query = query.where(problematic_type: params[:type].map(&:classify))
+    end
     # Don't show types ignored in user settings
     query = query.visible(current_user.problem_settings)
     @problems = query.page(page).per(50).order([:category, :problematic_type])
