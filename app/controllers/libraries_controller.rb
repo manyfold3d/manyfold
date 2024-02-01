@@ -29,9 +29,9 @@ class LibrariesController < ApplicationController
     @library.tag_regex = params[:tag_regex]
     if @library.valid?
       Scan::DetectFilesystemChangesJob.perform_later(@library.id)
-      redirect_to @library
+      redirect_to @library, notice: t(".success")
     else
-      render :new
+      render :new, alert: t(".failure")
     end
   end
 
@@ -40,13 +40,16 @@ class LibrariesController < ApplicationController
     @library.update(library_params)
     uptags = library_params[:tag_regex].reject(&:empty?)
     @library.tag_regex = uptags
-    @library.save
-    redirect_to models_path
+    if @library.save
+      redirect_to models_path, notice: t(".success")
+    else
+      render :edit, alert: t(".failure")
+    end
   end
 
   def scan
     Scan::DetectFilesystemChangesJob.perform_later(@library.id)
-    redirect_back_or_to @library
+    redirect_back_or_to @library, notice: t(".success")
   end
 
   def scan_all
@@ -57,13 +60,13 @@ class LibrariesController < ApplicationController
         Scan::DetectFilesystemChangesJob.perform_later(library.id)
       end
     end
-    redirect_to models_path
+    redirect_back_or_to models_path, notice: t(".success")
   end
 
   def destroy
     authorize @library
     @library.destroy
-    redirect_to libraries_path
+    redirect_to libraries_path, notice: t(".success")
   end
 
   private

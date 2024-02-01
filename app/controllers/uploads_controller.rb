@@ -8,7 +8,7 @@ class UploadsController < ApplicationController
     if params[:post][:scan_after_upload] == "1"
       Scan::DetectFilesystemChangesJob.perform_later(library.id)
     end
-    redirect_to libraries_path
+    redirect_to libraries_path, notice: t(".success")
   end
 
   private
