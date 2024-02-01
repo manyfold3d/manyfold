@@ -120,6 +120,7 @@ en:
       type: Object Type
     index:
       ignore: Hide
+      no_problems: No problems matched the current filters.
       unignore: Show
     library_missing:
       title: Folder not found

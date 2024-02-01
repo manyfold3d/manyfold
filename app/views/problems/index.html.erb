@@ -4,6 +4,13 @@
 
 <%= paginate @problems %>
 
+
+<% if @problems.empty? %>
+	<div class="alert alert-info">
+		<%= t(".no_problems") %>
+	</div>
+<% end %>
+
 <table class="table table-striped">
 	<% @problems.each do |problem| %>
 		<tr class="table-<%= problem_severity(problem) %> <%= problem.ignored && "opacity-50"%>">
