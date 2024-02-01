@@ -1,9 +1,13 @@
 class ProblemsController < ApplicationController
   def index
+    # Are we showing ignored problems?
     @show_ignored = (params[:show_ignored] == "true")
-    page = params[:page] || 1
     query = @show_ignored ? Problem.unscoped : Problem
-    @problems = query.visible(current_user.problem_settings).page(page).per(50).order([:category, :problematic_type])
+    # Now, which page are we on?
+    page = params[:page] || 1
+    # Don't show types ignored in user settings
+    query = query.visible(current_user.problem_settings)
+    @problems = query.page(page).per(50).order([:category, :problematic_type])
   end
 
   def update
