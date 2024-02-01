@@ -1,5 +1,15 @@
 <form action="/problems" method="GET">
+
+	<div class="accordion mb-2">
+		<div class="accordion-item">
+			<h2 class="accordion-header">
+				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-controls="filters">
+					<%= icon("filter", t(".title"))%>
 	<%= t ".title" %>
+				</button>
+			</h2>
+			<div id="filters" class="accordion-collapse collapse">
+				<div class="accordion-body">
 	<div class="row">
 		<div class="col">
 			<label><%= t(".category") %></label>
@@ -49,6 +59,10 @@
 		<div class="col">
 			<button type="submit" class="btn btn-primary"><%= t ".apply_filters" %></button>
 			<a href='/problems' class="btn btn-secondary"><%= t ".clear_filters" %></a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </form>
