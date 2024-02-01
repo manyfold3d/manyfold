@@ -107,6 +107,14 @@ class Model < ApplicationRecord
     tags.where(name: SiteSettings.model_tags_auto_tag_new).any?
   end
 
+  def image_files
+    model_files.select(&:is_image?)
+  end
+
+  def three_d_files
+    model_files.select(&:is_3d_model?)
+  end
+
   private
 
   def normalize_license
