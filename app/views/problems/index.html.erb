@@ -2,19 +2,9 @@
 
 <%= paginate @problems %>
 
-<div class="row">
-	Filter:
-	<form action="/problems" method="GET">
-		<div class="col">
-			<div class="form-check">
-				<input class="form-check-input" type="checkbox" name="show_ignored" value="true"
-					<%= "checked" if params[:show_ignored] == "true" %>
-				>
-				<label class="form-check-label" for="show_ignored">
-					<%= t(".show_ignored") %>
-				</label>
-			</div>
-		</div>
+<form action="/problems" method="GET">
+	<%= t ".filters" %>
+	<div class="row">
 		<div class="col">
 			<label><%= t(".category") %></label>
 			<select name="category[]" class="form-select" multiple=true>
@@ -48,9 +38,24 @@
 				><%= ModelFile.model_name.human %></option>
 			</select>
 		</div>
-		<button type="submit" class="btn btn-primary">Filter</button>
-	</form>
-</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" name="show_ignored" value="true"
+					<%= "checked" if params[:show_ignored] == "true" %>
+				>
+				<label class="form-check-label" for="show_ignored">
+					<%= t(".show_ignored") %>
+				</label>
+			</div>
+		</div>
+		<div class="col">
+			<button type="submit" class="btn btn-primary"><%= t ".apply_filters" %></button>
+			<a href='/problems' class="btn btn-secondary"><%= t ".clear_filters" %></a>
+		</div>
+	</div>
+</form>
 
 <table class="table table-striped">
 	<% @problems.each do |problem| %>
