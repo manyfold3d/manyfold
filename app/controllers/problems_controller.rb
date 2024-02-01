@@ -5,6 +5,10 @@ class ProblemsController < ApplicationController
     query = @show_ignored ? Problem.unscoped : Problem
     # Now, which page are we on?
     page = params[:page] || 1
+    # What categories are we showing?
+    if params[:category]
+      query = query.where(category: params[:category].map(&:to_sym))
+    end
     # Don't show types ignored in user settings
     query = query.visible(current_user.problem_settings)
     @problems = query.page(page).per(50).order([:category, :problematic_type])

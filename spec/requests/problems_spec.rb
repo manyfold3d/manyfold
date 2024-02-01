@@ -31,5 +31,15 @@ RSpec.describe "Problems" do
         expect(assigns(:problems).length).to eq 2
       end
     end
+
+    it "only shows selected categories if specified" do
+      get "/problems/index", params: {"category[]": "missing"}
+      expect(assigns(:problems).length).to eq 3
+    end
+
+    it "can show more than one category" do
+      get "/problems/index", params: {"category[]": ["missing", "inefficient"]}
+      expect(assigns(:problems).length).to eq 5
+    end
   end
 end
