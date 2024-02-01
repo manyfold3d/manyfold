@@ -55,5 +55,24 @@ RSpec.describe "Problems" do
         expect(assigns(:problems).length).to eq 5
       end
     end
+
+    context "when filtering by severity" do
+      it "only shows selected severities" do
+        get "/problems/index", params: {"severity[]": "info"}
+        expect(assigns(:problems).length).to eq 2
+      end
+
+      it "can show more than one severity" do
+        get "/problems/index", params: {"severity[]": ["danger", "info"]}
+        expect(assigns(:problems).length).to eq 5
+      end
+    end
+
+    context "when filtering by severity AND category" do
+      it "only shows the intersection of both" do
+        get "/problems/index", params: {"category[]": ["missing"], "severity[]": ["danger", "info"]}
+        expect(assigns(:problems).length).to eq 3
+      end
+    end
   end
 end
