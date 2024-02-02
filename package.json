@@ -30,7 +30,7 @@
     "@types/jquery": "^3.5.29",
     "@types/node": "^18.19.13",
     "@types/selectize": "^0.12.39",
-    "@types/three": "^0.161.1",
+    "@types/three": "^0.161.2",
     "@types/webpack-env": "^1.18.4",
     "@typescript-eslint/parser": "^6.20.0",
     "eslint": "^8.56.0",
