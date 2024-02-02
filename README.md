@@ -1,78 +1,85 @@
 # Manyfold
 
+Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
+
+Visit [manyfold.app](https://manyfold.app/) for more details, installation instructions, and user and administration guides!
+
+## Help and Support
+
+There are a few routes to get help:
+
+* [GitHub issues](https://github.com/manyfold3d/manyfold/issues/new) is the best place to report bugs.
+* [Live chat](https://matrix.to/#/#manyfold:one.ems.host) to the "team" on Matrix (an open Discord/Slack-like chat system).
+* Get in touch with our [social media](https://3dp.chat/@manyfold) presence in the Fediverse (Mastodon, etc).
+
+And, if you want to contribute financially to development efforts, you can do so at [Open Collective](https://opencollective.com/manyfold).
+
+## Developer Documentation
+
+Manyfold is open source software, and we encourage contributions! If you want to get involved, read this document, which explains how to get up and running. Then take a look at our [good first issue](https://github.com/manyfold3d/manyfold/labels/good%20first%20issue) tag for tasks that might suit newcomers to the codebase, or take a look at our [development roadmap](https://github.com/orgs/manyfold3d/projects/1).
+
+### Application architecture
+
+The application is built in [Ruby on Rails](https://rubyonrails.org), and tries to follow the best practices of that framework wherever possible. If you're not familiar with Rails, their [Getting Started](https://guides.rubyonrails.org/getting_started.html) guide is a good first introduction.
+
+In general, Manyfold is a server-side app that uses plain old HTTP requests. We don't have any code using XHR, Websockets, or other more interactive comms yet (though could do in future).
+
+The application consists of the application server itself, plus a background job runner using [Delayed::Job](https://github.com/collectiveidea/delayed_job) for asynchronous tasks.
+
+There are a few other major components that we build with:
+
+* [Bootstrap 5](https://getbootstrap.com) provides the frontend CSS / JS
+* [THREE.js](https://threejs.org/) (via TypeScript) is used for the client-side 3D rendering
+* [Mittsu](https://github.com/danini-the-panini/mittsu), a Ruby port of THREE.js, is used for server-side 3D code
+* [ActiveAdmin](https://activeadmin.info/) is used for now to provide an advanced database admin interface
+* [PostgreSQL](https://www.postgresql.org/) is the production database, though sqlite3 is used in dev
+
+### Running locally
+
+To run the app yourself, you'll need the following installed:
+
+* Ruby 3.2
+* Bundler 2.x
+* Node.js 16.x
+* Yarn >= 1.22
+* Foreman or [another Procfile runner](https://github.com/ddollar/foreman#ports)
+* [libarchive](https://github.com/chef/ffi-libarchive#installation) (for upload support)
+* [glfw3](https://github.com/danini-the-panini/mittsu#installation) (for model analysis & manipulation)
+
+To run the application once you've cloned this repo, you should be able to just run `bin/dev`; that should set up the database, perform migrations, install dependencies, and then make the application available at <http://127.0.0.1:5000>.
+
+### Coding standards
+
+![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/manyfold3d/manyfold)
+![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/manyfold3d/manyfold)
+
+We use [Rubocop](https://rubocop.org/) to monitor adherence to coding standards. We use [StandardRB](https://github.com/standardrb/standard) rules along with some other rulesets for specific libraries and frameworks.
+
+You can run the linter with `bundle exec rubocop`.
+
+Code linting is automatically performed by our GitHub Actions test runners, but if you set up [Husky](https://typicode.github.io/husky/get-started.html), it will also execute as a pre-commit hook.
+
+### Testing
+
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/manyfold3d/manyfold/push.yml)
+![Code Climate coverage](https://img.shields.io/codeclimate/coverage/manyfold3d/manyfold)
+
+We want to produce well-tested code; it's not 100%, but we aim to increase test coverage with each new bit of code.
+
+You can run the test suite as a one off with the command `bundle exec rake`, or you can start a continuous test runner with `bundle exec guard` that will automatically run tests as you code.
+
+Tests are run automatically when pushed to our repository using GitHub Actions.
+
+### Internationalisation & Translation
+
+Manyfold uses [Rails' I18n framework](https://guides.rubyonrails.org/i18n.html) to handle text content, and wherever possible, strings should not be hardcoded (some still are, we're working on it).
+
+You can check the validity of locale files with `bundle exec i18n-tasks health`. This is also run as part of our test pipeline, so will be enforced on new code.
+
+### Building Docker images
+
 [![Built with Depot](https://depot.dev/badges/built-with-depot.svg)](https://depot.dev?utm_source=manyfold)
 
-Manyfold (pronounced "manifold", and previously known as VanDAM)
-is a digital asset manager, specifically designed for 3D print
-files. Create a library pointing at your files on disk, and it will scan for
-models and parts. It assumes that any folders containing STL or OBJ files are
-models, and the files within them are parts. You can then view the files easily
-through your browser!
+The application is distributed as a multi-platform docker image (built by [Depot](https://depot.dev/)); see our [Docker Compose instructions](https://manyfold.app/get-started/docker-compose.html) for full details.
 
-![preview](https://i.imgur.com/x5eYc15.jpg)
-
-As this is a very young project, there are a few rough edges! This video from DBTech
-explains them pretty nicely though, then the specific details are below:
-
-[![Manage 3D Printing Assets in Docker with VanDAM](http://img.youtube.com/vi/FWj7WNPjOCw/0.jpg)](http://www.youtube.com/watch?v=FWj7WNPjOCw "Manage 3D Printing Assets in Docker with VanDAM")
-
-## Running in Docker
-
-You can run the latest release in docker by using the image
-`ghcr.io/manyfold3d/manyfold:latest`. The app also needs a PostgreSQL and Redis
-database to operate.
-
-The docker image supports `linux/amd64`, `linux/arm/v7` and `linux/arm64`
-architectures, so you should be able to run it on a PC, a Raspberry Pi, or an M1
-Mac.
-
-You can run all the dependencies in one go using `docker-compose`:
-
-1. Copy `docker-compose.example.yml` to `docker-compose.yml` and edit the paths,
-   secret key, and database password
-
-2. Run `docker-compose up`
-
-   This might fail the first time it's run due to race conditions in setting up
-   the database.
-
-3. Open Manyfold at <http://localhost:3214>
-
-4. Add a library
-
-   Remember the path mappings in the Docker Compose file? In
-   `docker-compose.example.yml` the libraries at `/path/to/your/libraries` in
-   your file system would be available at `/libraries` in the app.
-
-## Development
-
-### Requirements
-
-- Ruby 3.x
-- Bundler 2.x
-- Node.js 16.x
-- Yarn >= 1.22
-- Foreman or [another Procfile runner](https://github.com/ddollar/foreman#ports)
-- [libarchive](https://github.com/chef/ffi-libarchive#installation) (for upload support)
-- [glfw3](https://github.com/danini-the-panini/mittsu#installation) (for model analysis & manipulation)
-
-### Usage
-
-```
-bundle install
-yarn install
-bundle exec rake db:migrate:with_data
-bin/dev
-```
-
-The server will then be running at <http://127.0.0.1:5000>
-
-### How to run the test suite
-
-`bundle exec rake`
-
-## Credits
-
-Built with [Rails 7](https://rubyonrails.org/),
-[Three.js](https://threejs.org/) and [Bootstrap 5](http://getbootstrap.com). Source code is open under the MIT license at
-<https://github.com/manyfold3d/manyfold>.
+If you want to build your own version of the Docker image, you can do so in the usual way by running `docker build .` in the root directory of this repository.
