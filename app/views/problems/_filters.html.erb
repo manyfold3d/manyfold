@@ -16,6 +16,7 @@
 							<select name="category[]" class="form-select" multiple=true>
 								<% Problem::CATEGORIES.
 									select { |x| Problem::DEFAULT_SEVERITIES[x].present? }.
+									select { |x| current_user.problem_settings[x.to_s] != "silent" }.
 									each do |cat| %>
 									<option
 										value="<%= cat %>"
@@ -49,7 +50,7 @@
 					</div>
 					<div class="row">
 						<div class="col">
-							<div class="form-check">
+							<div class="form-check form-switch">
 								<input class="form-check-input" type="checkbox" name="show_ignored" value="true"
 									<%= "checked" if params[:show_ignored] == "true" %>
 								>
