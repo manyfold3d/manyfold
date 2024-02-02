@@ -29,7 +29,7 @@
       <%= render 'form' %>
     <% end %>
 
-    <%= render partial: "problem", collection: @file.problems %>
+    <%= render partial: "problem", collection: @file.problems.visible(current_user.problem_settings) %>
 
     <%= card :secondary, "Actions" do %>
       <%= link_to "#{icon('cloud-download', 'Download')} Download".html_safe, library_model_model_file_path(@library, @model, @file, @file.extension.to_sym), {class: "btn btn-secondary"} %>

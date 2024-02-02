@@ -84,7 +84,7 @@
     <% end %>
   <% end %>
 
-  <%= render partial: "problem", collection: @model.problems %>
+  <%= render partial: "problem", collection: @model.problems.visible(current_user.problem_settings) %>
 
   <%= card(:secondary, 'Notes') do %>
     <p class="card-text"><%= sanitize @model.notes %></p>
