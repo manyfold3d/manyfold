@@ -30,7 +30,7 @@ linters:
   SpaceInHtmlTag:
     enabled: false
   TrailingWhitespace:
-    enabled: false
+    enabled: true
   DeprecatedClasses:
     enabled: false
   ErbSafety:
