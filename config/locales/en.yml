@@ -96,10 +96,14 @@ en:
   models:
     bulk_update:
       success: Models updated successfully.
+    confirm-deletion: This will delete files. Are you sure you want to continue?
+    delete: Delete
     destroy:
       success: Model deleted!
+    edit: Edit
     merge:
       success: Models merged successfully.
+    open: Open
     update:
       failure: An error occurred and the model details could not be saved.
       success: Model details saved.

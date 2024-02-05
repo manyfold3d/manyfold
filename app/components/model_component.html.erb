@@ -22,23 +22,23 @@
             <span style="float: right"><%= helpers.status_badges(@model) %></span>
           </h5>
           <div class='mt-2'>
-            <%= link_to "Open", [@model.library, @model], {class: "btn btn-primary btn-sm"} %>
-            <%= link_to "Edit", edit_library_model_path(@model.library, @model), {class: "btn btn-outline-secondary btn-sm"} %>
-            <%= link_to "Delete", library_model_path(@model.library, @model), {method: :delete, class: "btn btn-outline-danger btn-sm", data: {confirm: "This will delete files. Are you sure you want to continue?"}} %>
+            <%= link_to t("models.open"), [@model.library, @model], {class: "btn btn-primary btn-sm"} %>
+            <%= link_to t("models.edit"), edit_library_model_path(@model.library, @model), {class: "btn btn-outline-secondary btn-sm"} %>
+            <%= link_to t("models.delete"), library_model_path(@model.library, @model), {method: :delete, class: "btn btn-outline-danger btn-sm", data: {confirm: t("models.confirm-deletion")}} %>
           </div>
         </div>
         <div class="col-auto">
           <small>
             <% if @creator.nil? && @model.creator %>
-              <%= helpers.icon "person", "Creator" %>
+              <%= helpers.icon "person", Creator.model_name.human %>
               <%= link_to @model.creator.name, models_path((@filters || {}).merge(creator: @model.creator)) %><br>
             <% end %>
             <% if @model.collection %>
-              <%= helpers.icon "collection", "Collection" %>
+              <%= helpers.icon "collection", Collection.model_name.human %>
               <%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection.id)) %><br>
             <% end %>
             <% if @library.nil? && @model.library %>
-              <%= helpers.icon "boxes", "Library" %>
+              <%= helpers.icon "boxes", Library.model_name.human %>
               <%= link_to @model.library.name, models_path((@filters || {}).merge(library: @model.library)) %><br>
             <% end %>
             <% if @model.caption %>
