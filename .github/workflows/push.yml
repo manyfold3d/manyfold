@@ -30,6 +30,8 @@ jobs:
         run: rm db/data_schema.rb
       - name: Set up database with prepare command so we catch any migration explosions
         run: bundle exec rails db:prepare:with_data
+        env:
+          RAILS_ENV: test
       - name: Run tests
         uses: paambaati/codeclimate-action@v5.0.0
         with:
