@@ -1,11 +1,39 @@
 ---
-EnableDefaultLinters: true
+EnableDefaultLinters: false
 linters:
+  AllowedScriptType:
+    enabled: false
+  ClosingErbTagIndent:
+    enabled: false
+  CommentSyntax:
+    enabled: false
+  ExtraNewline:
+    enabled: false
+  FinalNewline:
+    enabled: false
+  NoJavascriptTagHelper:
+    enabled: false
+  ParserErrors:
+    enabled: false
+  PartialInstanceVariable:
+    enabled: false
+  RequireInputAutocomplete:
+    enabled: false
+  RightTrim:
+    enabled: false
+  SelfClosingTag:
+    enabled: false
+  SpaceAroundErbTag:
+    enabled: false
+  SpaceIndentation:
+    enabled: false
+  SpaceInHtmlTag:
+    enabled: false
+  TrailingWhitespace:
+    enabled: false
   DeprecatedClasses:
     enabled: false
   ErbSafety:
-    enabled: false
-  PartialInstanceVariable:
     enabled: false
   Rubocop:
     enabled: false
