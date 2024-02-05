@@ -22,7 +22,7 @@ linters:
   RightTrim:
     enabled: false
   SelfClosingTag:
-    enabled: false
+    enabled: true
   SpaceAroundErbTag:
     enabled: false
   SpaceIndentation:

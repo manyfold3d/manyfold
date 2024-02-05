@@ -19,7 +19,7 @@
       <div class="col-auto">
         <% if collection.collection %>
           <%= icon "collection", t('activerecord.models.collection') %>
-          <%= link_to collection.collection.name, (@filters||{}).merge(collection: collection.collection.id) %><br/>
+          <%= link_to collection.collection.name, (@filters||{}).merge(collection: collection.collection.id) %><br>
         <% end %>
         <% if collection.caption %>
           <h6 class="card-subtitle mb-2 text-muted"><%= sanitize collection.caption %></h6>
