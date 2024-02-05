@@ -16,7 +16,7 @@ And, if you want to contribute financially to development efforts, you can do so
 
 ## Developer Documentation
 
-Manyfold is open source software, and we encourage contributions! If you want to get involved, read this document, which explains how to get up and running. Then take a look at our [good first issue](https://github.com/manyfold3d/manyfold/labels/good%20first%20issue) tag for tasks that might suit newcomers to the codebase, or take a look at our [development roadmap](https://github.com/orgs/manyfold3d/projects/1).
+Manyfold is open source software, and we encourage contributions! If you want to get involved, follow the guidance below, which explains how to get up and running. Then take a look at our [good first issue](https://github.com/manyfold3d/manyfold/labels/good%20first%20issue) tag for tasks that might suit newcomers to the codebase, or take a look at our [development roadmap](https://github.com/orgs/manyfold3d/projects/1).
 
 ### Application architecture
 
