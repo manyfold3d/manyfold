@@ -6,11 +6,11 @@ linters:
   ClosingErbTagIndent:
     enabled: false
   CommentSyntax:
-    enabled: false
+    enabled: true
   ExtraNewline:
     enabled: false
   FinalNewline:
-    enabled: false
+    enabled: true
   NoJavascriptTagHelper:
     enabled: false
   ParserErrors:
