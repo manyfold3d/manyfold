@@ -36,7 +36,7 @@ class CreatorsController < ApplicationController
   def new
     @creator = Creator.new
     @creator.links.build if @creator.links.empty? # populate empty link
-    @title = "New Creator"
+    @title = t(".title")
   end
 
   def edit
@@ -63,7 +63,7 @@ class CreatorsController < ApplicationController
   def get_creator
     if params[:id] == "0"
       @creator = nil
-      @title = "Unknown"
+      @title = t(".unknown")
     else
       @creator = Creator.find(params[:id])
       @title = @creator.name

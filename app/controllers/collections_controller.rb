@@ -36,7 +36,7 @@ class CollectionsController < ApplicationController
   def new
     @collection = Collection.new
     @collection.links.build if @collection.links.empty? # populate empty link
-    @title = "New Collection"
+    @title = t(".title")
     @collections = Collection.all
   end
 
@@ -65,7 +65,7 @@ class CollectionsController < ApplicationController
   def get_collection
     if params[:id] == "0"
       @collection = nil
-      @title = "Unknown"
+      @title = t(".unknown")
     else
       @collection = Collection.find(params[:id])
       @title = @collection.name

@@ -38,8 +38,12 @@ en:
     general:
       edit: Edit Collection
       new: New Collection
+    get_collection:
+      unknown: Unknown
     index:
       view_unassigned_models: View unassigned
+    new:
+      title: New Collection
     update:
       success: Collection details saved.
   creators:
@@ -47,6 +51,10 @@ en:
       success: New creator details saved.
     destroy:
       success: Creator deleted!
+    get_creator:
+      unknown: Unknown
+    new:
+      title: New Creator
     update:
       success: Creator details saved.
   general:
@@ -67,6 +75,8 @@ en:
       success: Library deleted!
     general:
       new: New Library
+    new:
+      title: New Library
     scan:
       success: Library scan started.
     scan_all:
