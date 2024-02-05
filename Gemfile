@@ -108,3 +108,5 @@ gem "spdx", "~> 4.1"
 gem "rack-contrib", "~> 2.4"
 
 gem "rails-i18n", "~> 7.0"
+
+gem "erb_lint", "~> 0.5.0", group: :development, require: false

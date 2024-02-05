@@ -1,0 +1,16 @@
+---
+EnableDefaultLinters: true
+linters:
+  DeprecatedClasses:
+    enabled: false
+  ErbSafety:
+    enabled: false
+  PartialInstanceVariable:
+    enabled: false
+  Rubocop:
+    enabled: false
+    rubocop_config:
+      inherit_from:
+        - .rubocop.yml
+  RequireScriptNonce:
+    enabled: false
