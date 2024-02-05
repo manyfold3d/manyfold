@@ -22,6 +22,7 @@ quicker). We may suggest some changes, improvements, or alternatives.
 
 Some things that will increase the chance that your pull request is accepted:
 
+* Sign our simple [Contributor License Agreement](https://cla-assistant.io/manyfold3d/manyfold) agreeing to license your code as MIT
 * Write tests.
 * Check that your code passes our [linter](https://github.com/manyfold3d/manyfold?tab=readme-ov-file#coding-standards).
 * Write a [good commit message](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/).
