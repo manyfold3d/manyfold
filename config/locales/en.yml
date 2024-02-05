@@ -28,6 +28,9 @@ en:
       upload: Upload
     tagline: Helping you keep track of your 3d print files
     title: Manyfold
+  application_helper:
+    card:
+      expand: Expand
   collections:
     collection:
       no_preview: no preview availiable
