@@ -24,8 +24,6 @@ linters:
       Lint/UselessAssignment:
         Enabled: false
       # Temporarily disabled while we fix
-      Layout/IndentationConsistency:
-        Enabled: false
       I18n/RailsI18n/DecorateString:
         Enabled: false
       I18n/RailsI18n/DecorateStringFormattingUsingInterpolation:
