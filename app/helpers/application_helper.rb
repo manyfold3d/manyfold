@@ -6,7 +6,7 @@ module ApplicationHelper
   def card(style, title, options = {}, &content)
     id = "card-#{SecureRandom.hex(4)}"
     tag.div class: "card mb-4" do
-      [
+      safe_join [
         tag.div(class: "card-header text-white bg-#{style}") do
           options[:collapse] ?
             safe_join([
@@ -28,7 +28,7 @@ module ApplicationHelper
             yield
           end
         end
-      ].join.html_safe
+      ]
     end
   end
 
