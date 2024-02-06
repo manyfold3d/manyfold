@@ -11,7 +11,7 @@
   <% tags = plaintags %>
 <% end %>
 <% tags.each do |tag| %>
-  <%= render partial: "tag", locals: {tag: tag, state: (defined?(muted_tags) && muted_tags.include?(tag) ? (current_user.tag_cloud_settings["hide_unrelated"] ? :hide : :mute) : :normal)} %>
+  <%= render partial: "tag", locals: {tag: tag, state: ((defined?(muted_tags) && muted_tags.include?(tag)) ? (current_user.tag_cloud_settings["hide_unrelated"] ? :hide : :mute) : :normal)} %>
 <% end %>
 <% if current_user.tag_cloud_settings["keypair"] %>
   <ul class="list-unstyled">

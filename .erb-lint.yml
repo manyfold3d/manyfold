@@ -34,8 +34,6 @@ linters:
         Enabled: false
       Layout/DotPosition:
         Enabled: false
-      Style/TernaryParentheses:
-        Enabled: false
       Style/RedundantInterpolation:
         Enabled: false
       Layout/ArgumentAlignment:
