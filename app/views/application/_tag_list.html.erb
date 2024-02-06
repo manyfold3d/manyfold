@@ -2,7 +2,7 @@
   <% plaintags = tags.select{|obj| !obj.name.include?(":") } %>
   <% tiertags = tags.select{|obj| obj.name.include?(":") } %>
   <% tiers = tiertags.map(&:name).map {|tag| tag.split(":").first}.uniq.sort %>
-  <%  if @models
+  <% if @models
         tierunset = tiers.map{|tier|
         reg=ActiveRecord::Base.connection.quote("^"+tier+":")
         regact = Rails.env.development? ? "REGEXP" : "~"
@@ -28,6 +28,6 @@
     <% end %>
   </ul>
 <% end %>
-<% if defined?(muted_tags) && !muted_tags.empty? && current_user.tag_cloud_settings["hide_unrelated"]%>
+<% if defined?(muted_tags) && !muted_tags.empty? && current_user.tag_cloud_settings["hide_unrelated"] %>
   <p class="small"><%= pluralize(muted_tags.count, "unrelated tag") %> hidden</p>
 <% end %>

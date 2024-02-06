@@ -1,6 +1,6 @@
 <% if renderable?(file.extension) %>
   <div id="preview-file-<%= file.id %>" class="object-preview position-relative" data-preview
-    data-preview-url="<%= library_model_model_file_path(library, model, file, file.extension.to_sym)%>"
+    data-preview-url="<%= library_model_model_file_path(library, model, file, file.extension.to_sym) %>"
     data-format="<%= file.extension %>"
     data-y-up="<%= file.y_up %>"
     data-grid-size-x="<%= current_user.renderer_settings["grid_width"] %>"

@@ -4,7 +4,7 @@
 		<div class="accordion-item">
 			<h2 class="accordion-header">
 				<button class="accordion-button <%= "collapsed" unless @filters_applied %>" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-controls="filters">
-					<%= icon("filter", t(".title"))%>
+					<%= icon("filter", t(".title")) %>
 					<%= t ".title" %>
 				</button>
 			</h2>
@@ -42,7 +42,7 @@
 								<option value="<%= Model.model_name.param_key %>"
 									<%= "selected" if params[:type]&.include?(Model.model_name.param_key) %>
 								><%= Model.model_name.human %></option>
-								<option value="<%= ModelFile.model_name.param_key%>"
+								<option value="<%= ModelFile.model_name.param_key %>"
 									<%= "selected" if params[:type]&.include?(ModelFile.model_name.param_key) %>
 								><%= ModelFile.model_name.human %></option>
 							</select>

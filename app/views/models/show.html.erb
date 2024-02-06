@@ -34,7 +34,7 @@
       <% if @model.collection %>
         <tr>
           <td><%= icon "collection", "Collections" %></td>
-          <td><%= link_to @model.collection.name, models_path((@filters||{}).merge(collection: @model.collection.id))  %></td>
+          <td><%= link_to @model.collection.name, models_path((@filters||{}).merge(collection: @model.collection.id)) %></td>
         </tr>
       <% end %>
       <% if @model.library %>

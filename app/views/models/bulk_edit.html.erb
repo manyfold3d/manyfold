@@ -15,7 +15,7 @@
     </tr>
     <% @models.each do |model| %>
       <tr>
-        <td><%= form.check_box "models[#{model.id}]", { data: { bulk_item:  "#{model.id}"}}%></td>
+        <td><%= form.check_box "models[#{model.id}]", { data: { bulk_item:  "#{model.id}"}} %></td>
         <td><%= link_to model.name, [model.library, model], title: model.path %></td>
         <td><%= link_to model.collection.name, model.collection if model.collection %></td>
         <td><%= render partial: 'tag',
