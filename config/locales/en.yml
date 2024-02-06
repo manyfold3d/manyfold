@@ -79,6 +79,8 @@ en:
     save: Save
   home:
     index:
+      how_long_ago: "%{time} ago"
+      recent: Recently-added Models
       search:
         placeholder: What are you looking for?
   kaminari:
