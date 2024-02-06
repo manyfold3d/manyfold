@@ -7,22 +7,23 @@
     <div class="row">
       <%= form.label t(".auto_load_max_size.label"), for: "renderer[auto_load_max_size]", class: "col col-form-label" %>
       <div class="col">
-        <%= form.select "renderer[auto_load_max_size]", [
-            [t(".auto_load_max_size.never"), 0],
-            [t(".auto_load_max_size.under_2"), 2],
-            [t(".auto_load_max_size.under_4"), 4],
-            [t(".auto_load_max_size.under_8"), 8],
-            [t(".auto_load_max_size.under_16"), 16],
-            [t(".auto_load_max_size.under_32"), 32],
-            [t(".auto_load_max_size.under_64"), 64],
-            [t(".auto_load_max_size.under_128"), 128],
-            [t(".auto_load_max_size.under_256"), 256],
-            [t(".auto_load_max_size.under_512"), 512],
-            [t(".auto_load_max_size.under_1024"), 1024],
-            [t(".auto_load_max_size.always"), 9_999_999]
-          ],
-          {selected: @user.renderer_settings["auto_load_max_size"] || 9_999_999},
-          {class: "form-select"} %>
+        <%= form.select "renderer[auto_load_max_size]",
+              [
+                [t(".auto_load_max_size.never"), 0],
+                [t(".auto_load_max_size.under_2"), 2],
+                [t(".auto_load_max_size.under_4"), 4],
+                [t(".auto_load_max_size.under_8"), 8],
+                [t(".auto_load_max_size.under_16"), 16],
+                [t(".auto_load_max_size.under_32"), 32],
+                [t(".auto_load_max_size.under_64"), 64],
+                [t(".auto_load_max_size.under_128"), 128],
+                [t(".auto_load_max_size.under_256"), 256],
+                [t(".auto_load_max_size.under_512"), 512],
+                [t(".auto_load_max_size.under_1024"), 1024],
+                [t(".auto_load_max_size.always"), 9_999_999]
+            ],
+              {selected: @user.renderer_settings["auto_load_max_size"] || 9_999_999},
+              {class: "form-select"} %>
       </div>
     </div>
     <div class="row">

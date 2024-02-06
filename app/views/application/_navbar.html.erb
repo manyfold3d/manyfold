@@ -18,11 +18,11 @@
         <% Library.find_each do |library| %>
           <li class="nav-item">
             <%= nav_link(
-              library.icon || "boxes",
-              library.name,
-              (@filters || {}).merge({controller: "models", library: library.id}),
-              title: library.caption
-            )	%>
+                  library.icon || "boxes",
+                  library.name,
+                  (@filters || {}).merge({controller: "models", library: library.id}),
+                  title: library.caption
+                )	%>
           </li>
         <% end %>
       </ul>
@@ -52,10 +52,10 @@
         <% if Problem.visible(current_user.problem_settings).count > 0 %>
           <li class="nav-item">
             <%= nav_link "exclamation-triangle-fill",
-              Problem.model_name.human.pluralize,
-              problems_path,
-              icon_style: "link-#{max_problem_severity}",
-              text_style: "d-lg-none" %>
+                  Problem.model_name.human.pluralize,
+                  problems_path,
+                  icon_style: "link-#{max_problem_severity}",
+                  text_style: "d-lg-none" %>
           </li>
         <% end %>
         <li class="nav-item">

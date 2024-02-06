@@ -8,6 +8,6 @@
     remote:        data-remote -%>
 <li class="page-item <%= " active" if page.current? %>">
   <%= link_to_unless page.current?, page, url, {remote: remote, rel: page.rel, class: "page-link"} do |name|
-      content_tag(:span, name, class: "page-link")
-    end %>
+        content_tag(:span, name, class: "page-link")
+      end %>
 </li>

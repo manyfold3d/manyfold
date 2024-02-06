@@ -24,21 +24,11 @@ linters:
       Lint/UselessAssignment:
         Enabled: false
       # Temporarily disabled while we fix
-      Layout/ArgumentAlignment:
-        Enabled: false
-      Layout/ArrayAlignment:
-        Enabled: false
-      Layout/BlockAlignment:
-        Enabled: false
-      Layout/EndAlignment:
-        Enabled: false
       Layout/FirstArgumentIndentation:
         Enabled: false
       Layout/FirstArrayElementIndentation:
         Enabled: false
       Layout/FirstHashElementIndentation:
-        Enabled: false
-      Layout/HashAlignment:
         Enabled: false
       Layout/IndentationConsistency:
         Enabled: false
