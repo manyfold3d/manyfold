@@ -13,7 +13,7 @@
           <li><%= link_to t("sites.#{link.site}"), link.url %></li>
         <% end %>
       </ul>
-      <%= link_to "#{pluralize(creator.models.count, "Model")}", models_path(creator: creator.id), {class: "btn btn-primary"} %>
+      <%= link_to pluralize(creator.models.count, "Model").to_s, models_path(creator: creator.id), {class: "btn btn-primary"} %>
       <%= link_to "Edit", edit_creator_path(creator), {class: "btn btn-outline-secondary"} %>
     </div>
   </div>
