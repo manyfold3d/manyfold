@@ -60,8 +60,6 @@ linters:
         Enabled: false
       Rails/OutputSafety:
         Enabled: false
-      Rails/NegateInclude:
-        Enabled: false
       Style/NestedTernaryOperator:
         Enabled: false
   RequireScriptNonce:

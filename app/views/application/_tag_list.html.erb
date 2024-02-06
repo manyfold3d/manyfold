@@ -1,5 +1,5 @@
 <% if current_user.tag_cloud_settings["keypair"] %>
-  <% plaintags = tags.select { |obj| !obj.name.include?(":") } %>
+  <% plaintags = tags.select { |obj| obj.name.exclude?(":") } %>
   <% tiertags = tags.select { |obj| obj.name.include?(":") } %>
   <% tiers = tiertags.map(&:name).map { |tag| tag.split(":").first }.uniq.sort %>
   <% if @models
