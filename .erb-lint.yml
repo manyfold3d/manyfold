@@ -24,8 +24,6 @@ linters:
       Lint/UselessAssignment:
         Enabled: false
       # Temporarily disabled while we fix
-      Style/TrailingCommaInArrayLiteral:
-        Enabled: false
       Layout/FirstArrayElementIndentation:
         Enabled: false
       Layout/ArrayAlignment:
