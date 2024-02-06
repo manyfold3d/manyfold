@@ -28,8 +28,6 @@ linters:
         Enabled: false
       Layout/IndentationWidth:
         Enabled: false
-      Layout/MultilineBlockLayout:
-        Enabled: false
       Layout/MultilineMethodCallIndentation:
         Enabled: false
       I18n/RailsI18n/DecorateString:

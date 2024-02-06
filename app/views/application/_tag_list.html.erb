@@ -20,7 +20,8 @@
       <%= content_tag(:li, content_tag(:details,
             content_tag(:summary, tier) +
               tiertags.select { |obj| obj.name.match?("^#{tier}:") }
-                .map { |tag| render partial: "tag", locals: {
+                .map { |tag|
+                render partial: "tag", locals: {
                   tag: tag,
                   state: (defined?(muted_tags) && muted_tags.include?(tag)) ? (current_user.tag_cloud_settings["hide_unrelated"] ? :hide : :mute) : :normal
                 }
