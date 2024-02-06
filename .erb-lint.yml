@@ -68,8 +68,6 @@ linters:
         Enabled: false
       Style/RedundantConditional:
         Enabled: false
-      Style/IfWithBooleanLiteralBranches:
-        Enabled: false
   RequireScriptNonce:
     enabled: true
   NoUnusedDisable:
