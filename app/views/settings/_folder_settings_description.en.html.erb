@@ -1,0 +1,26 @@
+<p class='lead'>
+  Define the folder structure used by "organise files" and for auto-populating metadata during scan. Affects all users.
+</p>
+<p>
+  Folder structure follows a template that you define using tokens. You can also include other text in the
+  template (such as folder separators) and it will be included as-is.
+</p>
+<ul>
+  <li>
+    <code>{tags}</code>: a series of nested folders, one for each tag, arranged in order of tag popularity.
+    For example: <code>fantasy/human/wizard</code>
+  </li>
+  <li>
+    <code>{creator}</code>: The name of the creator, if set.
+  </li>
+  <li>
+    <code>{collection}</code>: The title of the collection the model is in, if set.
+  </li>
+  <li>
+    <code>{modelName}</code>: A filesystem-safe version of the model name.
+  </li>
+  <li>
+    <code>{modelId}</code>: A unique numerical identifier for the model. We strongly
+    recommend always including this at the end of your template to avoid name conflicts on disk.
+  </li>
+</ul>

@@ -189,6 +189,16 @@ en:
       lambert: Realistically shaded
       normals: Surface direction
   settings:
+    folder_settings:
+      model_path_template:
+        label: Model path template
+      parse_metadata_from_path:
+        help: Sets creator, collection, and tags based on template
+        label: Populate metadata from path and template during scan
+      safe_folder_names:
+        help_html: e.g. <code>spinal-tap</code> instead of <code>Spın̈al Tap</code>
+        label: Use safe folder names
+      title: Folder naming
     problem_settings:
       description: Change the severity of detected problems, or ignore them completely.
       title: Problem Detection
@@ -225,7 +235,7 @@ en:
       success: File(s) uploaded successfully.
     index:
       datafiles:
-        help: "Supported file types: %{types}"
+        help: 'Supported file types: %{types}'
         label: Select File
       library_pick:
         help: The library to upload to.
