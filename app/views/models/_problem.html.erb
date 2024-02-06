@@ -1,5 +1,5 @@
 <%= card(problem_severity(problem), t("problems.model_#{problem.category}.title")) do %>
-	<%= t("problems.model_#{problem.category}.description", note: problem.note ) %>
+  <%= t("problems.model_#{problem.category}.description", note: problem.note ) %>
 
   <% if @model.contains_other_models? %>
     <ul>

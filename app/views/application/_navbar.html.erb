@@ -1,72 +1,72 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-	<div class='container-fluid'>
-		<a class="navbar-brand ms-2" href="<%= root_path %>"><%= image_tag "logo.png", alt: t("application.title"), title: t("application.title"), height: "40px", class: "me-2" %> <span class="d-lg-none"><%= t "application.title" %></span></a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse row" id="navbar">
-			<ul class="navbar-nav col-6 ps-4 ps-lg-0 align-self-start">
-				<li class="nav-item">
-					<%= nav_link 'box', Model.model_name.human.pluralize, (@filters||{}).merge(controller: 'models') %>
-				</li>
-				<li class="nav-item">
-					<%= nav_link 'people', Creator.model_name.human.pluralize, (@filters||{}).merge(controller: 'creators') %>
-				</li>
-				<li class="nav-item">
-					<%= nav_link 'collection', Collection.model_name.human.pluralize, (@filters||{}).merge(controller: 'collections') %>
-				</li>
-				<% Library.all.each do |library| %>
-					<li class="nav-item">
-						<%= nav_link(
-							library.icon || 'boxes',
-							library.name,
-							(@filters||{}).merge({controller: 'models', library: library.id}),
-							title: library.caption
-						)	%>
-					</li>
-				<% end %>
-			</ul>
-			<ul class="navbar-nav col-6 pe-4 align-self-start justify-content-end">
-				<li class="nav-item">
-					<%= nav_link 'plus-circle', t('libraries.general.new'), new_library_path, text_style: "d-lg-none" %>
-				</li>
-				<li class="nav-item">
-					<%= nav_link 'upload', t('.upload'), uploads_path, style: "btn btn-warning btn-sm me-1 mt-lg-1 #{policy(:upload).index? ? "" : "disabled"}" %>
-				</li>
-				<li class="nav-item">
-					<% if @scan_in_progress %>
-						<%= nav_link '', t('.scanning'), '/admin/tasks', style: "btn btn-outline-warning btn-sm me-1 mt-lg-1", icon_style: 'spinner-border spinner-border-sm' %>
-					<% else %>
-						<div class="btn-group">
-							<button type="button" data-bs-toggle="dropdown" aria-expanded="false"
-								class="btn btn-warning btn-sm mt-1 dropdown-toggle">
-								<%= t ".scan" %>
-							</button>
-							<ul class="dropdown-menu">
-								<li><%= link_to t(".scan_changes"), scan_libraries_path, method: :post, class: 'dropdown-item' %></li>
-								<li><%= link_to t(".check_existing"), scan_libraries_path(type: :check), method: :post, class: 'dropdown-item' %>
-							</ul>
-						</div>
-					<% end %>
-				</li>
-				<% if Problem.visible(current_user.problem_settings).count > 0 %>
-					<li class="nav-item">
-						<%= nav_link 'exclamation-triangle-fill',
-							Problem.model_name.human.pluralize,
-							problems_path,
-							icon_style: "link-#{max_problem_severity}",
-							text_style: "d-lg-none" %>
-					</li>
-				<% end %>
-				<li class="nav-item">
-					<%= nav_link 'sliders', "Settings", user_settings_path(current_user), text_style: "d-lg-none" %>
-				</li>
-				<li class="nav-item">
-					<%= form_with url: models_path, method: :get, role: "search" do |f| %>
-						<%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: "Search", aria_label: "Search", aria_describedby: "button-search", value: params[:q], autofocus: true %>
-					<% end %>
-				</li>
-			</ul>
-		</div>
-	</div>
+  <div class='container-fluid'>
+    <a class="navbar-brand ms-2" href="<%= root_path %>"><%= image_tag "logo.png", alt: t("application.title"), title: t("application.title"), height: "40px", class: "me-2" %> <span class="d-lg-none"><%= t "application.title" %></span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse row" id="navbar">
+      <ul class="navbar-nav col-6 ps-4 ps-lg-0 align-self-start">
+        <li class="nav-item">
+          <%= nav_link 'box', Model.model_name.human.pluralize, (@filters||{}).merge(controller: 'models') %>
+        </li>
+        <li class="nav-item">
+          <%= nav_link 'people', Creator.model_name.human.pluralize, (@filters||{}).merge(controller: 'creators') %>
+        </li>
+        <li class="nav-item">
+          <%= nav_link 'collection', Collection.model_name.human.pluralize, (@filters||{}).merge(controller: 'collections') %>
+        </li>
+        <% Library.all.each do |library| %>
+          <li class="nav-item">
+            <%= nav_link(
+              library.icon || 'boxes',
+              library.name,
+              (@filters||{}).merge({controller: 'models', library: library.id}),
+              title: library.caption
+            )	%>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="navbar-nav col-6 pe-4 align-self-start justify-content-end">
+        <li class="nav-item">
+          <%= nav_link 'plus-circle', t('libraries.general.new'), new_library_path, text_style: "d-lg-none" %>
+        </li>
+        <li class="nav-item">
+          <%= nav_link 'upload', t('.upload'), uploads_path, style: "btn btn-warning btn-sm me-1 mt-lg-1 #{policy(:upload).index? ? "" : "disabled"}" %>
+        </li>
+        <li class="nav-item">
+          <% if @scan_in_progress %>
+            <%= nav_link '', t('.scanning'), '/admin/tasks', style: "btn btn-outline-warning btn-sm me-1 mt-lg-1", icon_style: 'spinner-border spinner-border-sm' %>
+          <% else %>
+            <div class="btn-group">
+              <button type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                class="btn btn-warning btn-sm mt-1 dropdown-toggle">
+                <%= t ".scan" %>
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to t(".scan_changes"), scan_libraries_path, method: :post, class: 'dropdown-item' %></li>
+                <li><%= link_to t(".check_existing"), scan_libraries_path(type: :check), method: :post, class: 'dropdown-item' %>
+              </ul>
+            </div>
+          <% end %>
+        </li>
+        <% if Problem.visible(current_user.problem_settings).count > 0 %>
+          <li class="nav-item">
+            <%= nav_link 'exclamation-triangle-fill',
+              Problem.model_name.human.pluralize,
+              problems_path,
+              icon_style: "link-#{max_problem_severity}",
+              text_style: "d-lg-none" %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <%= nav_link 'sliders', "Settings", user_settings_path(current_user), text_style: "d-lg-none" %>
+        </li>
+        <li class="nav-item">
+          <%= form_with url: models_path, method: :get, role: "search" do |f| %>
+            <%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: "Search", aria_label: "Search", aria_describedby: "button-search", value: params[:q], autofocus: true %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>

@@ -1,40 +1,40 @@
 <footer class="mt-5 py-2 border-top">
-	<div class="row">
-		<div class="col-lg-3 me-auto">
-			<span class="d-inline-flex align-items-center mb-2">
-				<%= image_tag 'logo.png', width: 48, height: 48, class: "me-2", alt: "Logo" %>
-				<span class="fs-5"><%= t "application.title" %></span>
-			</span>
-			<ul class="list-unstyled small text-muted">
-				<li class="mb-2">Designed and built by <a href="https://floppy.org.uk">James</a> with help from <a href="https://github.com/manyfold3d/manyfold/graphs/contributors">our contributors</a>.</li>
-				<li class="mb-2">Open Source under the <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license noopener">MIT license</a>.</li>
-				<li class="mb-2">Version: <%= link_to "#{ENV.fetch("APP_VERSION", "unknown").split(":")[-1]} (#{ENV.fetch("GIT_SHA", "main")[0,7]})",
-					"https://github.com/manyfold3d/manyfold/tree/#{ENV.fetch("GIT_SHA", "main")}" %>
-				</li>
-			</ul>
-		</div>
-		<div class="col-4 col-lg-2 mb-3">
-			<h5>Stats</h5>
-			<ul class="list-unstyled">
-				<li class="mb-2"><%= "#{Library.count} library".pluralize(Library.count) %></li>
-				<li class="mb-2"><%= "#{Model.count} model".pluralize(Model.count) %></li>
-				<li class="mb-2"><%= "#{ModelFile.count} file".pluralize(ModelFile.count) %></li>
-			</ul>
-		</div>
-		<div class="col-4 col-lg-2 mb-3">
-			<h5>Development</h5>
-			<ul class="list-unstyled">
-				<li class="mb-2"><a href="https://github.com/manyfold3d/manyfold">Code</a></li>
-				<li class="mb-2"><a href="https://github.com/manyfold3d/manyfold/issues">Issues</a></li>
-			</ul>
-		</div>
-		<div class="col-4 col-lg-2 mb-3">
-			<h5>Community</h5>
-			<ul class="list-unstyled">
-				<li class="mb-2"><a href="https://matrix.to/#/#manyfold:one.ems.host">Chat</a></li>
-				<li class="mb-2"><a href="https://3dp.chat/@manyfold">Social</a></li>
-				<li class="mb-2"><a href="https://opencollective.com/manyfold">Sponsor</a></li>
-			</ul>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-lg-3 me-auto">
+      <span class="d-inline-flex align-items-center mb-2">
+        <%= image_tag 'logo.png', width: 48, height: 48, class: "me-2", alt: "Logo" %>
+        <span class="fs-5"><%= t "application.title" %></span>
+      </span>
+      <ul class="list-unstyled small text-muted">
+        <li class="mb-2">Designed and built by <a href="https://floppy.org.uk">James</a> with help from <a href="https://github.com/manyfold3d/manyfold/graphs/contributors">our contributors</a>.</li>
+        <li class="mb-2">Open Source under the <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license noopener">MIT license</a>.</li>
+        <li class="mb-2">Version: <%= link_to "#{ENV.fetch("APP_VERSION", "unknown").split(":")[-1]} (#{ENV.fetch("GIT_SHA", "main")[0,7]})",
+          "https://github.com/manyfold3d/manyfold/tree/#{ENV.fetch("GIT_SHA", "main")}" %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-4 col-lg-2 mb-3">
+      <h5>Stats</h5>
+      <ul class="list-unstyled">
+        <li class="mb-2"><%= "#{Library.count} library".pluralize(Library.count) %></li>
+        <li class="mb-2"><%= "#{Model.count} model".pluralize(Model.count) %></li>
+        <li class="mb-2"><%= "#{ModelFile.count} file".pluralize(ModelFile.count) %></li>
+      </ul>
+    </div>
+    <div class="col-4 col-lg-2 mb-3">
+      <h5>Development</h5>
+      <ul class="list-unstyled">
+        <li class="mb-2"><a href="https://github.com/manyfold3d/manyfold">Code</a></li>
+        <li class="mb-2"><a href="https://github.com/manyfold3d/manyfold/issues">Issues</a></li>
+      </ul>
+    </div>
+    <div class="col-4 col-lg-2 mb-3">
+      <h5>Community</h5>
+      <ul class="list-unstyled">
+        <li class="mb-2"><a href="https://matrix.to/#/#manyfold:one.ems.host">Chat</a></li>
+        <li class="mb-2"><a href="https://3dp.chat/@manyfold">Social</a></li>
+        <li class="mb-2"><a href="https://opencollective.com/manyfold">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
 </footer>

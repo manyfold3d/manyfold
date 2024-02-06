@@ -28,7 +28,7 @@ linters:
   SpaceAroundErbTag:
     enabled: true
   SpaceIndentation:
-    enabled: false
+    enabled: true
   SpaceInHtmlTag:
     enabled: true
   TrailingWhitespace:
