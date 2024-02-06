@@ -40,8 +40,6 @@ linters:
         Enabled: false
       Layout/IndentationConsistency:
         Enabled: false
-      Layout/BlockEndNewline:
-        Enabled: false
       Layout/IndentationWidth:
         Enabled: false
       Layout/MultilineBlockLayout:
