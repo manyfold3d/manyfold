@@ -15,9 +15,9 @@
               <label><%= t(".category") %></label>
               <select name="category[]" class="form-select" multiple=true>
                 <% Problem::CATEGORIES
-                  .select { |x| Problem::DEFAULT_SEVERITIES[x].present? }
-                  .select { |x| current_user.problem_settings[x.to_s] != "silent" }
-                  .each do |cat| %>
+                     .select { |x| Problem::DEFAULT_SEVERITIES[x].present? }
+                     .select { |x| current_user.problem_settings[x.to_s] != "silent" }
+                     .each do |cat| %>
                   <option
                     value="<%= cat %>"
                     <%= "selected" if params[:category]&.include?(cat.to_s) %>><%= t("problems.categories.#{cat}") %></option>
