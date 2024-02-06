@@ -70,10 +70,10 @@ module ApplicationHelper
 
   def rich_text_input_row(form, name)
     content_tag :div, class: "row mb-3 input-group" do
-      [
+      safe_join [
         form.label(name, class: "col-sm-2 col-form-label"),
         form.text_area(name, class: "form-control col-auto")
-      ].join.html_safe
+      ]
     end
   end
 
