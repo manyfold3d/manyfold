@@ -30,7 +30,7 @@ linters:
   SpaceIndentation:
     enabled: false
   SpaceInHtmlTag:
-    enabled: false
+    enabled: true
   TrailingWhitespace:
     enabled: true
   # Non-default linters

@@ -20,8 +20,7 @@
 									each do |cat| %>
 									<option
 										value="<%= cat %>"
-										<%= "selected" if params[:category]&.include?(cat.to_s) %>
-									><%= t("problems.categories.#{cat}") %></option>
+										<%= "selected" if params[:category]&.include?(cat.to_s) %>><%= t("problems.categories.#{cat}") %></option>
 								<% end %>
 							</select>
 						</div>
@@ -31,8 +30,7 @@
 								<% (Problem::SEVERITIES - [:silent]).each do |sev| %>
 									<option
 										value="<%= sev %>"
-										<%= "selected" if params[:severity]&.include?(sev.to_s) %>
-									><%= t("problems.severities.#{sev}") %></option>
+										<%= "selected" if params[:severity]&.include?(sev.to_s) %>><%= t("problems.severities.#{sev}") %></option>
 								<% end %>
 							</select>
 						</div>
@@ -40,11 +38,9 @@
 							<label><%= t(".type") %></label>
 							<select name="type[]" class="form-select" multiple=true>
 								<option value="<%= Model.model_name.param_key %>"
-									<%= "selected" if params[:type]&.include?(Model.model_name.param_key) %>
-								><%= Model.model_name.human %></option>
+									<%= "selected" if params[:type]&.include?(Model.model_name.param_key) %>><%= Model.model_name.human %></option>
 								<option value="<%= ModelFile.model_name.param_key %>"
-									<%= "selected" if params[:type]&.include?(ModelFile.model_name.param_key) %>
-								><%= ModelFile.model_name.human %></option>
+									<%= "selected" if params[:type]&.include?(ModelFile.model_name.param_key) %>><%= ModelFile.model_name.human %></option>
 							</select>
 						</div>
 					</div>
@@ -52,8 +48,7 @@
 						<div class="col">
 							<div class="form-check form-switch">
 								<input class="form-check-input" type="checkbox" name="show_ignored" value="true"
-									<%= "checked" if params[:show_ignored] == "true" %>
-								>
+									<%= "checked" if params[:show_ignored] == "true" %>>
 								<label class="form-check-label" for="show_ignored">
 									<%= t(".show_ignored") %>
 								</label>
