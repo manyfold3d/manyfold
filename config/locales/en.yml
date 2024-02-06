@@ -24,6 +24,8 @@ en:
         name: Sort by Name
         time: Sort by Time
     demo_mode: This instance is in demo mode. You cannot add or remove models, but you can do everything else.
+    links_form:
+      add: add another link
     navbar:
       check_existing: Check existing models
       scan: Scan
