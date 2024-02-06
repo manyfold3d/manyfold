@@ -12,9 +12,9 @@
     <%= label :upload, "Select File", for: "upload", class: "col-sm-2 col-form-label" %>
     <div class='col-sm-10 ps-0'>
       <%= file_field "upload", "datafiles", {
-        multiple: true,
-        accept: "application/zip,application/x-rar-compressed,application/x-7z-compressed,application/x-bzip2,application/x-bzip,application/gzip"
-      } %>
+            multiple: true,
+            accept: "application/zip,application/x-rar-compressed,application/x-7z-compressed,application/x-bzip2,application/x-bzip,application/gzip"
+          } %>
       <div id="uploadHelp" class="form-text">Supported file types: zip, rar, 7z, bzip, gzip</div>
     </div>
   </div>

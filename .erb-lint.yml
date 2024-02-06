@@ -24,12 +24,6 @@ linters:
       Lint/UselessAssignment:
         Enabled: false
       # Temporarily disabled while we fix
-      Layout/FirstArgumentIndentation:
-        Enabled: false
-      Layout/FirstArrayElementIndentation:
-        Enabled: false
-      Layout/FirstHashElementIndentation:
-        Enabled: false
       Layout/IndentationConsistency:
         Enabled: false
       Layout/IndentationWidth:
