@@ -106,25 +106,22 @@ en:
     bulk_update:
       success: Files updated successfully.
     destroy:
+      confirm: Are you sure you want to remove this file from your filesystem?
       success: File deleted!
-    show:
-      confirm_delete: Are you sure you want to remove this file from your filesystem?
     update:
       failure: An error occurred and file details could not be saved.
       success: File details saved.
   models:
     bulk_update:
       success: Models updated successfully.
-    confirm-deletion: This will delete files. Are you sure you want to continue?
     delete: Delete
     destroy:
+      confirm: This will delete files. Are you sure you want to continue?
       success: Model deleted!
     edit: Edit
     merge:
       success: Models merged successfully.
     open: Open
-    show:
-      confirm_delete: This will delete files. Are you sure you want to continue?
     update:
       failure: An error occurred and the model details could not be saved.
       success: Model details saved.
