@@ -12,10 +12,96 @@ linters:
   ErbSafety:
     enabled: false
   Rubocop:
-    enabled: false
+    enabled: true
     rubocop_config:
       inherit_from:
         - .rubocop.yml
+      # Disable unhelpful rules for ERB templates
+      Layout/InitialIndentation:
+        Enabled: false
+      Layout/TrailingEmptyLines:
+        Enabled: false
+      Lint/UselessAssignment:
+        Enabled: false
+      # Temporarily disabled while we fix
+      Style/HashSyntax:
+        Enabled: false
+      Style/StringLiterals:
+        Enabled: false
+      Style/StringLiteralsInInterpolation:
+        Enabled: false
+      Style/TrailingCommaInArrayLiteral:
+        Enabled: false
+      Layout/FirstArrayElementIndentation:
+        Enabled: false
+      Layout/ArrayAlignment:
+        Enabled: false
+      Layout/DotPosition:
+        Enabled: false
+      Layout/SpaceInsideHashLiteralBraces:
+        Enabled: false
+      Style/TernaryParentheses:
+        Enabled: false
+      Style/RedundantInterpolation:
+        Enabled: false
+      Layout/SpaceAfterColon:
+        Enabled: false
+      Layout/ArgumentAlignment:
+        Enabled: false
+      Layout/SpaceAfterComma:
+        Enabled: false
+      Layout/SpaceBeforeBlockBraces:
+        Enabled: false
+      Layout/FirstHashElementIndentation:
+        Enabled: false
+      Layout/SpaceAroundOperators:
+        Enabled: false
+      Layout/ExtraSpacing:
+        Enabled: false
+      Layout/HashAlignment:
+        Enabled: false
+      I18n/RailsI18n/DecorateString:
+        Enabled: false
+      I18n/RailsI18n/DecorateStringFormattingUsingInterpolation:
+        Enabled: false
+      Rails/OutputSafety:
+        Enabled: false
+      Rails/FindEach:
+        Enabled: false
+      Layout/MultilineMethodCallIndentation:
+        Enabled: false
+      Style/QuotedSymbols:
+        Enabled: false
+      Layout/SpaceInsideParens:
+        Enabled: false
+      Layout/BlockAlignment:
+        Enabled: false
+      Style/NestedTernaryOperator:
+        Enabled: false
+      Layout/SpaceInsideBlockBraces:
+        Enabled: false
+      Layout/IndentationConsistency:
+        Enabled: false
+      Layout/BlockEndNewline:
+        Enabled: false
+      Layout/IndentationWidth:
+        Enabled: false
+      Layout/MultilineBlockLayout:
+        Enabled: false
+      Layout/EndAlignment:
+        Enabled: false
+      Rails/NegateInclude:
+        Enabled: false
+      Layout/TrailingWhitespace:
+        Enabled: false
+      Layout/LeadingEmptyLines:
+        Enabled: false
+      Style/RedundantConditional:
+        Enabled: false
+      Style/IfWithBooleanLiteralBranches:
+        Enabled: false
+      Layout/FirstArgumentIndentation:
+        Enabled: false
   RequireScriptNonce:
     enabled: true
   NoUnusedDisable:
