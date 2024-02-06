@@ -45,3 +45,5 @@ linters:
         - .rubocop.yml
   RequireScriptNonce:
     enabled: false
+  NoUnusedDisable:
+    enabled: true
