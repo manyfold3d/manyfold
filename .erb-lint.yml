@@ -22,7 +22,7 @@ linters:
   RequireInputAutocomplete:
     enabled: true
   RightTrim:
-    enabled: false
+    enabled: true
   SelfClosingTag:
     enabled: true
   SpaceAroundErbTag:
