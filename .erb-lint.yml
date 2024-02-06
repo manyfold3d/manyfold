@@ -4,6 +4,7 @@ exclude:
   - "**/vendor/**/*"
   - "**/node_modules/**/*"
 linters:
+  # Default linters
   AllowedScriptType:
     enabled: true
   ClosingErbTagIndent:
@@ -17,8 +18,6 @@ linters:
   NoJavascriptTagHelper:
     enabled: true
   ParserErrors:
-    enabled: false
-  PartialInstanceVariable:
     enabled: false
   RequireInputAutocomplete:
     enabled: false
@@ -34,6 +33,9 @@ linters:
     enabled: false
   TrailingWhitespace:
     enabled: true
+  # Non-default linters
+  PartialInstanceVariable:
+    enabled: false
   DeprecatedClasses:
     enabled: false
   ErbSafety:
