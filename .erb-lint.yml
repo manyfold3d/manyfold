@@ -18,12 +18,12 @@ linters:
         - .rubocop.yml
       # Disable unhelpful rules for ERB templates
       Layout/InitialIndentation:
-        Enabled: false
+        Enabled: false # ERB tags start at unusual indentations
       Layout/TrailingEmptyLines:
-        Enabled: false
+        Enabled: false # We don't need a newline inside every ERB tag!
+      # Temporarily disabled while we fix
       Lint/UselessAssignment:
         Enabled: false
-      # Temporarily disabled while we fix
       I18n/RailsI18n/DecorateString:
         Enabled: false
       I18n/RailsI18n/DecorateStringFormattingUsingInterpolation:
