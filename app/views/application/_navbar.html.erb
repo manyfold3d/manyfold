@@ -15,7 +15,7 @@
         <li class="nav-item">
           <%= nav_link "collection", Collection.model_name.human.pluralize, (@filters || {}).merge(controller: "collections") %>
         </li>
-        <% Library.all.each do |library| %>
+        <% Library.find_each do |library| %>
           <li class="nav-item">
             <%= nav_link(
               library.icon || "boxes",

@@ -42,8 +42,6 @@ linters:
         Enabled: false
       Rails/OutputSafety:
         Enabled: false
-      Rails/FindEach:
-        Enabled: false
       Layout/MultilineMethodCallIndentation:
         Enabled: false
       Style/QuotedSymbols:
