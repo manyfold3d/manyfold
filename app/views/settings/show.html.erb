@@ -32,11 +32,11 @@
 
   <div class="row mb-4">
     <div class='col'>
-      <button type="submit" class="btn btn-primary"><%= icon('save', 'Save') %> Save Settings</button>
+      <button type="submit" class="btn btn-primary"><%= icon("save", "Save") %> Save Settings</button>
     </div>
     <% if current_user.admin? %>
       <div class='col text-end'>
-        <%= link_to "#{icon('tools', 'Administration')} Advanced Administration".html_safe, '/admin', class: "btn btn-danger #{SiteSettings.demo_mode? ? "disabled" : ""}" %>
+        <%= link_to "#{icon('tools', 'Administration')} Advanced Administration".html_safe, "/admin", class: "btn btn-danger #{SiteSettings.demo_mode? ? "disabled" : ""}" %>
       </div>
     <% end %>
     </p>

@@ -11,7 +11,7 @@
     <%= form_with url: models_path, method: :get, class: "mt-3" do |f| %>
       <div class="input-group mb-3">
         <%= f.text_field :q, class: "form-control", placeholder: "What are you looking for?", aria_label: "Search", aria_describedby: "button-search", value: @query, autofocus: true %>
-        <%= f.submit 'Search', class: "btn btn-primary", name: nil %>
+        <%= f.submit "Search", class: "btn btn-primary", name: nil %>
       </div>
     <% end %>
   </div>

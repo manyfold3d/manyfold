@@ -24,8 +24,6 @@ linters:
       Lint/UselessAssignment:
         Enabled: false
       # Temporarily disabled while we fix
-      Style/StringLiterals:
-        Enabled: false
       Style/StringLiteralsInInterpolation:
         Enabled: false
       Style/TrailingCommaInArrayLiteral:

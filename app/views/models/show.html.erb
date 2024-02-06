@@ -5,7 +5,7 @@
     </a>
     <%= link_to icon("search", "Search the Internet for models with this name"),
       "https://yeggi.com/q/#{ERB::Util.url_encode(@model.name)}/",
-      class: 'btn btn-outline', target: "manyfold_search" %>
+      class: "btn btn-outline", target: "manyfold_search" %>
   </h1>
 <% end %>
 
@@ -64,7 +64,7 @@
       </tr>
       <tr>
         <td><%= icon "tag", "Tags" %></td>
-        <td><%= render 'tag_list', tags: @model.tags.sort_by(&:taggings_count) %></td>
+        <td><%= render "tag_list", tags: @model.tags.sort_by(&:taggings_count) %></td>
       </tr>
     </table>
     <%= link_to safe_join([icon("pencil", "Edit"), "Edit"], " "), edit_library_model_path(@library, @model), class: "btn btn-primary" %>
@@ -85,7 +85,7 @@
 
   <%= render partial: "problem", collection: @model.problems.visible(current_user.problem_settings) %>
 
-  <%= card(:secondary, 'Notes') do %>
+  <%= card(:secondary, "Notes") do %>
     <p class="card-text"><%= sanitize @model.notes %></p>
   <% end if @model.notes %>
 
@@ -96,10 +96,10 @@
         <li><a href="#<%= group.parameterize %>"><%= group %></a></li>
       <% end %>
     </ul>
-    <%= link_to "Edit all files", edit_library_model_model_files_path(@library, @model), class: 'btn btn-secondary' %>
+    <%= link_to "Edit all files", edit_library_model_model_files_path(@library, @model), class: "btn btn-secondary" %>
   <% end %>
 
-  <%= render 'links_card', links: @model.links %>
+  <%= render "links_card", links: @model.links %>
 
   <div class="modal fade" id="confirm-move" data-bs-backdrop='static' tabindex="-1" aria-labelledby="confirmMoveLabel" aria-hidden="true">
     <div class="modal-dialog">

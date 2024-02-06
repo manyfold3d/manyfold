@@ -32,7 +32,7 @@
       <% if @filters[:tag] %>
         <tr>
           <td><%= icon "tag", "Tags" %> Tags</td>
-          <td><span class='pe-none'><%= render partial: 'tag', collection: @tag, locals: {state: :normal} %></span></td>
+          <td><span class='pe-none'><%= render partial: "tag", collection: @tag, locals: {state: :normal} %></span></td>
           <td><%= link_to icon("trash", "Remove filter"), @filters.except(:tag), {class: "text-danger"} %></td>
         </tr>
       <% end %>
