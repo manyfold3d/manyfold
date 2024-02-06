@@ -3,7 +3,7 @@
   <div class="row mb-3 input-group">
     <%= label :library_pick, "Library:", class: "col-sm-2 col-form-label" %>
     <div class='col-sm-10 ps-0'>
-      <%= select "post", "library_pick", Library.all.map{ |lib| [lib.name, lib.id] }, {include_blank: false}, {class: "form-control form-select"} %>
+      <%= select "post", "library_pick", Library.all.map { |lib| [lib.name, lib.id] }, {include_blank: false}, {class: "form-control form-select"} %>
       <span id="libraryPick" class="form-text">The library to upload to.</span>
     </div>
   </div>

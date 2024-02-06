@@ -38,25 +38,13 @@ linters:
         Enabled: false
       Layout/DotPosition:
         Enabled: false
-      Layout/SpaceInsideHashLiteralBraces:
-        Enabled: false
       Style/TernaryParentheses:
         Enabled: false
       Style/RedundantInterpolation:
         Enabled: false
-      Layout/SpaceAfterColon:
-        Enabled: false
       Layout/ArgumentAlignment:
         Enabled: false
-      Layout/SpaceAfterComma:
-        Enabled: false
-      Layout/SpaceBeforeBlockBraces:
-        Enabled: false
       Layout/FirstHashElementIndentation:
-        Enabled: false
-      Layout/SpaceAroundOperators:
-        Enabled: false
-      Layout/ExtraSpacing:
         Enabled: false
       Layout/HashAlignment:
         Enabled: false
@@ -72,13 +60,9 @@ linters:
         Enabled: false
       Style/QuotedSymbols:
         Enabled: false
-      Layout/SpaceInsideParens:
-        Enabled: false
       Layout/BlockAlignment:
         Enabled: false
       Style/NestedTernaryOperator:
-        Enabled: false
-      Layout/SpaceInsideBlockBraces:
         Enabled: false
       Layout/IndentationConsistency:
         Enabled: false

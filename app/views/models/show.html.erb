@@ -28,19 +28,19 @@
       <% if @model.creator %>
         <tr>
           <td><%= icon "person", "Creator" %></td>
-          <td><%= link_to @model.creator.name, models_path((@filters||{}).merge(creator: @model.creator)) %></td>
+          <td><%= link_to @model.creator.name, models_path((@filters || {}).merge(creator: @model.creator)) %></td>
         </tr>
       <% end %>
       <% if @model.collection %>
         <tr>
           <td><%= icon "collection", "Collections" %></td>
-          <td><%= link_to @model.collection.name, models_path((@filters||{}).merge(collection: @model.collection.id)) %></td>
+          <td><%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection.id)) %></td>
         </tr>
       <% end %>
       <% if @model.library %>
         <tr>
           <td><%= icon "boxes", "Library" %></td>
-          <td><%= link_to @model.library.name, models_path((@filters||{}).merge(library: @model.library)) %></td>
+          <td><%= link_to @model.library.name, models_path((@filters || {}).merge(library: @model.library)) %></td>
         </tr>
       <% end %>
       <% if @model.license %>

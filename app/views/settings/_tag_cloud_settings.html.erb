@@ -22,7 +22,7 @@
     <div class="row">
       <%= form.label "Sorting", for: "tag_cloud[sorting]", class: "col col-form-label" %>
       <div class="col">
-        <%= form.select "tag_cloud[sorting]", ["frequency","alphabetical"],
+        <%= form.select "tag_cloud[sorting]", ["frequency", "alphabetical"],
           {selected: @user.tag_cloud_settings["sorting"]},
           class: "form-select" %>
       </div>

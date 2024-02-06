@@ -22,7 +22,7 @@
   <%= render 'filters_card' %>
   <% unless @tags.empty? %>
     <%= card :secondary, "Tags", collapse: "md" do %>
-      <%= render 'tag_list', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>
+      <%= render 'tag_list', tags: @tags - (@tag || []), muted_tags: @tags - @commontags %>
     <% end %>
   <% end %>
 <% end %>

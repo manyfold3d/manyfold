@@ -16,9 +16,9 @@
       <%= render partial: "#{problem.problematic_type.underscore}_#{problem.category}", locals: {problem: problem} %>
       <td>
         <% if problem.ignored %>
-          <%= link_to icon("eye-fill", t(".unignore")), problem_path(problem, problem: { ignored: false }), method: :patch, class: "btn btn-outline-secondary" %>
+          <%= link_to icon("eye-fill", t(".unignore")), problem_path(problem, problem: {ignored: false}), method: :patch, class: "btn btn-outline-secondary" %>
         <% else %>
-          <%= link_to icon("eye-slash", t(".ignore")), problem_path(problem, problem: { ignored: true }), method: :patch, class: "btn btn-outline-secondary" %>
+          <%= link_to icon("eye-slash", t(".ignore")), problem_path(problem, problem: {ignored: true}), method: :patch, class: "btn btn-outline-secondary" %>
         <% end %>
       </td>
     </tr>

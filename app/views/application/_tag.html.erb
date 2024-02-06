@@ -1,7 +1,7 @@
 <%- filters = @filters || {} %>
 <%- filters[:tag] ||= [] %>
 <%=
-  name = current_user.tag_cloud_settings["keypair"] ? tag.name.gsub(/^.*:/,"") : tag.name
+  name = current_user.tag_cloud_settings["keypair"] ? tag.name.gsub(/^.*:/, "") : tag.name
   link_to current_user.tag_cloud_settings["heatmap"] ? "#{name} (#{tag.taggings_count})" : name,
     filters.merge(tag: filters[:tag] | [tag.name]),
     {

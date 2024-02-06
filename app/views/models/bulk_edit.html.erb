@@ -15,13 +15,13 @@
     </tr>
     <% @models.each do |model| %>
       <tr>
-        <td><%= form.check_box "models[#{model.id}]", { data: { bulk_item:  "#{model.id}"}} %></td>
+        <td><%= form.check_box "models[#{model.id}]", {data: {bulk_item: "#{model.id}"}} %></td>
         <td><%= link_to model.name, [model.library, model], title: model.path %></td>
         <td><%= link_to model.collection.name, model.collection if model.collection %></td>
         <td><%= render partial: 'tag',
-          collection: (current_user.tag_cloud_settings["sorting"]=="alphabetical") ?
+          collection: (current_user.tag_cloud_settings["sorting"] == "alphabetical") ?
             model.tags.sort_by(&:name) : model.tags.sort_by(&:name).reverse.sort_by(&:taggings_count).reverse,
-            locals: {state: :normal, model_id: model.id } %></td>
+            locals: {state: :normal, model_id: model.id} %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
         <td><code><%= model.formatted_path if model.needs_organizing? %></code></td>
       </tr>
@@ -54,7 +54,7 @@
     </div>
   </div>
 
-  <%= render 'tags_edit', :form => form, :name => :add_tags, :value => "", :label => "Add Tags", tags:  @addtags || [] %>
+  <%= render 'tags_edit', :form => form, :name => :add_tags, :value => "", :label => "Add Tags", tags: @addtags || [] %>
   <%= render 'tags_edit', :form => form, :name => :remove_tags, :value => "", :label => "Remove Tags", tags: @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name) %>
 
   <div class="row mb-3">

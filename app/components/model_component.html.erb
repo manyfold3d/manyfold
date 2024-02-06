@@ -6,7 +6,7 @@
         <%= image_tag library_model_model_file_path(@model.library, @model, file, format: file.extension), class: "card-img-top image-preview ", alt: file.name %>
       <% elsif helpers.renderable?(file.extension) %>
         <div class="card-img-top">
-          <%= render partial: "object_preview", locals: { library: @model.library, model: @model, file: file } %>
+          <%= render partial: "object_preview", locals: {library: @model.library, model: @model, file: file} %>
         </div>
       <% end %>
        <% else %>
@@ -31,15 +31,15 @@
           <small>
             <% if @creator.nil? && @model.creator %>
               <%= helpers.icon "person", "Creator" %>
-              <%= link_to @model.creator.name, models_path((@filters||{}).merge(creator: @model.creator)) %><br>
+              <%= link_to @model.creator.name, models_path((@filters || {}).merge(creator: @model.creator)) %><br>
             <% end %>
             <% if @model.collection %>
               <%= helpers.icon "collection", "Collection" %>
-              <%= link_to @model.collection.name, models_path((@filters||{}).merge(collection: @model.collection.id)) %><br>
+              <%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection.id)) %><br>
             <% end %>
             <% if @library.nil? && @model.library %>
               <%= helpers.icon "boxes", "Library" %>
-              <%= link_to @model.library.name, models_path((@filters||{}).merge(library: @model.library)) %><br>
+              <%= link_to @model.library.name, models_path((@filters || {}).merge(library: @model.library)) %><br>
             <% end %>
             <% if @model.caption %>
               <p class="card-text"><%= sanitize @model.caption %></p>

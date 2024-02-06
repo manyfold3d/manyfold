@@ -5,7 +5,7 @@
       <%= image_tag library_model_model_file_path(@library, @model, file, format: file.extension), class: "card-img-top image-preview", alt: file.name %>
     <% elsif renderable?(file.extension) %>
       <div class="card-img-top">
-        <%= render partial: "object_preview", locals: { library: @library, model: @model, file: file } %>
+        <%= render partial: "object_preview", locals: {library: @library, model: @model, file: file} %>
       </div>
     <% end %>
     <div class="card-body">

@@ -17,7 +17,7 @@
     </tr>
     <% @model.model_files.each do |file| %>
       <tr>
-        <td><%= form.check_box "model_files[#{file.id}]", { data: { bulk_item:  "#{file.id}"}} %></td>
+        <td><%= form.check_box "model_files[#{file.id}]", {data: {bulk_item: "#{file.id}"}} %></td>
         <td><i class="bi bi-<%= file.is_image? ? 'image' : 'box' %>"></td>
         <td><%= link_to file.name, [@library, @model, file], title: file.filename %></td>
         <td><code><%= file.filename %></code></td>

@@ -7,7 +7,7 @@
       <% if @file.is_image? %>
         <%= image_tag library_model_model_file_path(@model.library, @model, @file, format: @file.extension), alt: @file.name, style: "width: 100%" %>
       <% elsif renderable?(@file.extension) %>
-        <%= render partial: "object_preview", locals: { library: @library, model: @model, file: @file } %>
+        <%= render partial: "object_preview", locals: {library: @library, model: @model, file: @file} %>
       <% end %>
   </div>
 
@@ -18,7 +18,7 @@
       </p>
       <% if @file.digest %>
         <p>
-          Digest: <code><%= @file.digest.slice(0,16) %></code>
+          Digest: <code><%= @file.digest.slice(0, 16) %></code>
         </p>
       <% end %>
       <% if @file.size %>

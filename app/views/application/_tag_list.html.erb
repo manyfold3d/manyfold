@@ -1,10 +1,10 @@
 <% if current_user.tag_cloud_settings["keypair"] %>
-  <% plaintags = tags.select{|obj| !obj.name.include?(":") } %>
-  <% tiertags = tags.select{|obj| obj.name.include?(":") } %>
-  <% tiers = tiertags.map(&:name).map {|tag| tag.split(":").first}.uniq.sort %>
+  <% plaintags = tags.select { |obj| !obj.name.include?(":") } %>
+  <% tiertags = tags.select { |obj| obj.name.include?(":") } %>
+  <% tiers = tiertags.map(&:name).map { |tag| tag.split(":").first }.uniq.sort %>
   <% if @models
-        tierunset = tiers.map{|tier|
-        reg=ActiveRecord::Base.connection.quote("^"+tier+":")
+        tierunset = tiers.map { |tier|
+        reg = ActiveRecord::Base.connection.quote("^" + tier + ":")
         regact = Rails.env.development? ? "REGEXP" : "~"
           [tier, @models.where("(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name #{regact} #{reg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1").count]}.to_h
       end %>
@@ -17,13 +17,13 @@
   <ul class="list-unstyled">
     <% tiers.each do |tier| %>
       <%= content_tag(:li, content_tag(:details,
-        content_tag(:summary,tier)+tiertags.select{|obj| obj.name.match?("^#{tier}:")}
-          .map{|tag| render partial: 'tag', locals: {
+        content_tag(:summary, tier) + tiertags.select { |obj| obj.name.match?("^#{tier}:") }
+          .map { |tag| render partial: 'tag', locals: {
             tag: tag,
             state: (defined?(muted_tags) && muted_tags.include?(tag)) ? (current_user.tag_cloud_settings["hide_unrelated"] ? :hide : :mute) : :normal
-          }}.join.html_safe+
+          }}.join.html_safe +
           ((tierunset && tierunset[tier] > 0) ? (link_to "unset (#{tierunset[tier]})",
-            (@filters||{}).merge(missingtag: tier), { class: "badge rounded-pill border border-muted text-danger tag" }) : ""),
+            (@filters || {}).merge(missingtag: tier), {class: "badge rounded-pill border border-muted text-danger tag"}) : ""),
         id: tier)).html_safe %>
     <% end %>
   </ul>
