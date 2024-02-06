@@ -17,6 +17,6 @@ linters:
       inherit_from:
         - .rubocop.yml
   RequireScriptNonce:
-    enabled: false
+    enabled: true
   NoUnusedDisable:
     enabled: true
