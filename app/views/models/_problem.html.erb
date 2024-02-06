@@ -1,5 +1,5 @@
-<%= card(problem_severity(problem), t("problems.model_%{cat}.title" % {cat: problem.category})) do %>
-  <%= t(("problems.model_%{cat}.description" % {cat: problem.category}), note: problem.note) %>
+<%= card(problem_severity(problem), t("problems.model.%{cat}.title" % {cat: problem.category})) do %>
+  <%= t(("problems.model.%{cat}.description" % {cat: problem.category}), note: problem.note) %>
 
   <% if @model.contains_other_models? %>
     <ul>
@@ -8,7 +8,7 @@
       <% end %>
     </ul>
     <p>
-      <%= t("problems.model_nesting.warning") %>
+      <%= t("problems.model.nesting.warning") %>
     </p>
     <%= link_to "Merge all", merge_library_model_path(@library, @model, all: true), class: "btn btn-danger", method: :post %>
   <% end %>

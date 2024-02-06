@@ -1,5 +1,5 @@
-<%= card(problem_severity(problem), t("problems.model_file_%{cat}.title" % {cat: problem.category})) do %>
-  <%= t(("problems.model_file_%{cat}.description" % {cat: problem.category}), note: problem.note) %>
+<%= card(problem_severity(problem), t("problems.model_file.%{cat}.title" % {cat: problem.category})) do %>
+  <%= t(("problems.model_file.%{cat}.description" % {cat: problem.category}), note: problem.note) %>
 
   <% unless @duplicates.empty? %>
     <ul>
