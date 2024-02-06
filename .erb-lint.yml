@@ -18,7 +18,7 @@ linters:
   NoJavascriptTagHelper:
     enabled: true
   ParserErrors:
-    enabled: false
+    enabled: true
   RequireInputAutocomplete:
     enabled: false
   RightTrim:
