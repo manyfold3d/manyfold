@@ -62,8 +62,6 @@ linters:
         Enabled: false
       Rails/NegateInclude:
         Enabled: false
-      Layout/TrailingWhitespace:
-        Enabled: false
       Layout/LeadingEmptyLines:
         Enabled: false
       Style/RedundantConditional:
