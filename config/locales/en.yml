@@ -65,6 +65,10 @@ en:
     edit: Edit
     new: New
     save: Save
+  home:
+    index:
+      search:
+        placeholder: What are you looking for?
   layouts:
     application:
       alert:
@@ -103,6 +107,8 @@ en:
       success: Files updated successfully.
     destroy:
       success: File deleted!
+    show:
+      confirm_delete: Are you sure you want to remove this file from your filesystem?
     update:
       failure: An error occurred and file details could not be saved.
       success: File details saved.
@@ -117,6 +123,8 @@ en:
     merge:
       success: Models merged successfully.
     open: Open
+    show:
+      confirm_delete: This will delete files. Are you sure you want to continue?
     update:
       failure: An error occurred and the model details could not be saved.
       success: Model details saved.

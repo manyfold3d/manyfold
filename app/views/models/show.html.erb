@@ -68,7 +68,7 @@
       </tr>
     </table>
     <%= link_to safe_join([icon("pencil", "Edit"), "Edit"], " "), edit_library_model_path(@library, @model), class: "btn btn-primary" %>
-    <%= link_to safe_join([icon("trash", "Delete"), "Delete"], " "), library_model_path(@library, @model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: "This will delete files. Are you sure you want to continue?"}} %>
+    <%= link_to safe_join([icon("trash", "Delete"), "Delete"], " "), library_model_path(@library, @model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: t(".confirm_delete")}} %>
   <% end %>
 
   <% unless @model.parents.empty? %>
