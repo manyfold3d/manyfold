@@ -36,19 +36,9 @@ linters:
         Enabled: false
       Layout/HashAlignment:
         Enabled: false
-      I18n/RailsI18n/DecorateString:
-        Enabled: false
-      I18n/RailsI18n/DecorateStringFormattingUsingInterpolation:
-        Enabled: false
-      Rails/OutputSafety:
-        Enabled: false
       Layout/MultilineMethodCallIndentation:
         Enabled: false
-      Style/QuotedSymbols:
-        Enabled: false
       Layout/BlockAlignment:
-        Enabled: false
-      Style/NestedTernaryOperator:
         Enabled: false
       Layout/IndentationConsistency:
         Enabled: false
@@ -60,15 +50,25 @@ linters:
         Enabled: false
       Layout/EndAlignment:
         Enabled: false
+      Layout/LeadingEmptyLines:
+        Enabled: false
+      Layout/FirstArgumentIndentation:
+        Enabled: false
+      I18n/RailsI18n/DecorateString:
+        Enabled: false
+      I18n/RailsI18n/DecorateStringFormattingUsingInterpolation:
+        Enabled: false
+      Rails/OutputSafety:
+        Enabled: false
       Rails/NegateInclude:
         Enabled: false
-      Layout/LeadingEmptyLines:
+      Style/QuotedSymbols:
+        Enabled: false
+      Style/NestedTernaryOperator:
         Enabled: false
       Style/RedundantConditional:
         Enabled: false
       Style/IfWithBooleanLiteralBranches:
-        Enabled: false
-      Layout/FirstArgumentIndentation:
         Enabled: false
   RequireScriptNonce:
     enabled: true
