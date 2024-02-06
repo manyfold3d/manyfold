@@ -6,11 +6,11 @@ exclude:
 linters:
   # Non-default linters
   PartialInstanceVariable:
-    enabled: false
+    enabled: false # TODO
   DeprecatedClasses:
     enabled: true
   ErbSafety:
-    enabled: false
+    enabled: false # TODO
   Rubocop:
     enabled: true
     rubocop_config:
@@ -23,15 +23,15 @@ linters:
         Enabled: false # We don't need a newline inside every ERB tag!
       # Temporarily disabled while we fix
       Lint/UselessAssignment:
-        Enabled: false
+        Enabled: false # TODO
       I18n/RailsI18n/DecorateString:
-        Enabled: false
+        Enabled: false # TODO
       I18n/RailsI18n/DecorateStringFormattingUsingInterpolation:
-        Enabled: false
+        Enabled: false # TODO
       Rails/OutputSafety:
-        Enabled: false
+        Enabled: false # TODO
       Style/NestedTernaryOperator:
-        Enabled: false
+        Enabled: false # TODO
   RequireScriptNonce:
     enabled: true
   NoUnusedDisable:
