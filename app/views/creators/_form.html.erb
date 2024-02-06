@@ -1,6 +1,6 @@
 <%= form_with model: @creator do |form| %>
   <%= text_input_row form, :name %>
-  <%= render 'links_form', :form => form %>
+  <%= render 'links_form', form: form %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes %>
   <div class="row mb-4">

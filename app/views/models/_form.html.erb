@@ -20,7 +20,7 @@
     <%= form.collection_select :library_id, Library.all, :id, :name, {include_blank: false}, {class: "form-control col-auto form-select", disabled: @model.contains_other_models?} %>
   </div>
 
-  <%= render 'tags_edit', :form => form, :name => "model[tag_list]", :value => (@model.tags.map { |tag| tag.name }).join(","), :label => "Tags", tags: @library.all_tags %>
+  <%= render 'tags_edit', form: form, name: "model[tag_list]", value: (@model.tags.map { |tag| tag.name }).join(","), label: "Tags", tags: @library.all_tags %>
 
   <div class="row mb-3 input-group">
     <%= form.label :collection_id, class: "col-sm-2 col-form-label" %>
@@ -28,7 +28,7 @@
     <%= link_to "New Collection", new_collection_path, class: "btn btn-outline-secondary col-auto" %>
   </div>
 
-  <%= render 'links_form', :form => form %>
+  <%= render 'links_form', form: form %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes %>
 

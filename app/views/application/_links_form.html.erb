@@ -1,6 +1,6 @@
 <fieldset id='links'>
   <%= form.fields_for :links do |f| %>
-    <%= render 'link_fields', :f => f %>
+    <%= render 'link_fields', f: f %>
   <% end %>
   <div class="row mb-3">
     <%= tag.div class: "col-auto offset-sm-2 ps-0" do %>
