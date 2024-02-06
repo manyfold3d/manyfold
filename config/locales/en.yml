@@ -207,6 +207,10 @@ en:
         under_512: Up to 512 MB
         under_64: Up to 64 MB
         under_8: Up to 8 MB
+    show:
+      advanced_admin: Advanced Administration
+      submit: Save Settings
+      title: Settings
     update:
       success: Settings saved.
   sites:
