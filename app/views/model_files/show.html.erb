@@ -32,8 +32,8 @@
     <%= render partial: "problem", collection: @file.problems.visible(current_user.problem_settings) %>
 
     <%= card :secondary, "Actions" do %>
-      <%= link_to "#{icon('cloud-download', 'Download')} Download".html_safe, library_model_model_file_path(@library, @model, @file, @file.extension.to_sym), {class: "btn btn-secondary"} %>
-      <%= link_to "#{icon('trash', 'Delete')} Delete".html_safe, library_model_model_file_path(@library, @model, @file, @file.extension.to_sym), {method: "delete", data: {confirm: "Are you sure you want to remove this file from your filesystem?"}, class: "btn btn-danger"} %>
+      <%= link_to "#{icon("cloud-download", "Download")} Download".html_safe, library_model_model_file_path(@library, @model, @file, @file.extension.to_sym), {class: "btn btn-secondary"} %>
+      <%= link_to "#{icon("trash", "Delete")} Delete".html_safe, library_model_model_file_path(@library, @model, @file, @file.extension.to_sym), {method: "delete", data: {confirm: "Are you sure you want to remove this file from your filesystem?"}, class: "btn btn-danger"} %>
     <% end %>
 
     <%= card(:secondary, "Notes") do %>
