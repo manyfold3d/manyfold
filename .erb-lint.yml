@@ -11,7 +11,7 @@ linters:
   CommentSyntax:
     enabled: true
   ExtraNewline:
-    enabled: false
+    enabled: true
   FinalNewline:
     enabled: true
   NoJavascriptTagHelper:
