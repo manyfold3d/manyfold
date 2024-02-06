@@ -1,38 +1,9 @@
 ---
-EnableDefaultLinters: false
+EnableDefaultLinters: true
 exclude:
   - "**/vendor/**/*"
   - "**/node_modules/**/*"
 linters:
-  # Default linters
-  AllowedScriptType:
-    enabled: true
-  ClosingErbTagIndent:
-    enabled: true
-  CommentSyntax:
-    enabled: true
-  ExtraNewline:
-    enabled: true
-  FinalNewline:
-    enabled: true
-  NoJavascriptTagHelper:
-    enabled: true
-  ParserErrors:
-    enabled: true
-  RequireInputAutocomplete:
-    enabled: true
-  RightTrim:
-    enabled: true
-  SelfClosingTag:
-    enabled: true
-  SpaceAroundErbTag:
-    enabled: true
-  SpaceIndentation:
-    enabled: true
-  SpaceInHtmlTag:
-    enabled: true
-  TrailingWhitespace:
-    enabled: true
   # Non-default linters
   PartialInstanceVariable:
     enabled: false
