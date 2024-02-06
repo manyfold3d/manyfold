@@ -46,8 +46,6 @@ linters:
         Enabled: false
       Layout/EndAlignment:
         Enabled: false
-      Layout/LeadingEmptyLines:
-        Enabled: false
       Layout/FirstArgumentIndentation:
         Enabled: false
       I18n/RailsI18n/DecorateString:
