@@ -15,7 +15,7 @@ linters:
   FinalNewline:
     enabled: true
   NoJavascriptTagHelper:
-    enabled: false
+    enabled: true
   ParserErrors:
     enabled: false
   PartialInstanceVariable:
