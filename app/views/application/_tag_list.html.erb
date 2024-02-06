@@ -17,18 +17,20 @@
 <% if current_user.tag_cloud_settings["keypair"] %>
   <ul class="list-unstyled">
     <% tiers.each do |tier| %>
-      <%= content_tag(:li, content_tag(:details,
-            content_tag(:summary, tier) +
-              tiertags.select { |obj| obj.name.match?("^#{tier}:") }
-                .map { |tag|
-                render partial: "tag", locals: {
+      <li>
+        <details id="<%= tier %>">
+          <summary><%= tier %></summary>
+          <%- tiertags.select { |obj| obj.name.match?("^#{tier}:") }.each do |tag| %>
+            <%= render partial: "tag", locals: {
                   tag: tag,
                   state: (defined?(muted_tags) && muted_tags.include?(tag)) ? (current_user.tag_cloud_settings["hide_unrelated"] ? :hide : :mute) : :normal
-                }
-              }.join.html_safe +
-              ((tierunset && tierunset[tier] > 0) ? (link_to "unset (#{tierunset[tier]})",
-                (@filters || {}).merge(missingtag: tier), {class: "badge rounded-pill border border-muted text-danger tag"}) : ""),
-            id: tier)).html_safe %>
+                } %>
+          <%- end %>
+          <%- if tierunset && tierunset[tier] > 0 %>
+            <%= link_to "unset (#{tierunset[tier]})", (@filters || {}).merge(missingtag: tier), {class: "badge rounded-pill border border-muted text-danger tag"} %>
+          <%- end %>
+        </details>
+      </li>
     <% end %>
   </ul>
 <% end %>
