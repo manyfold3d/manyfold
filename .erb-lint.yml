@@ -26,8 +26,6 @@ linters:
         Enabled: false # TODO
       I18n/RailsI18n/DecorateString:
         Enabled: false # TODO
-      I18n/RailsI18n/DecorateStringFormattingUsingInterpolation:
-        Enabled: false # TODO
       Style/NestedTernaryOperator:
         Enabled: false # TODO
   RequireScriptNonce:

@@ -29,7 +29,7 @@
         <% end %>
         <ul class='links'>
           <% collection.links.each do |link| %>
-            <li><%= link_to t("sites.#{link.site}"), link.url %></li>
+            <li><%= link_to t("sites.%{site}" % {site: link.site}), link.url %></li>
           <% end %>
         </ul>
       </div>

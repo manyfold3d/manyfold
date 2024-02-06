@@ -10,7 +10,7 @@
       <% end %>
       <ul class='links'>
         <% creator.links.each do |link| %>
-          <li><%= link_to t("sites.#{link.site}"), link.url %></li>
+          <li><%= link_to t("sites.%{site}" % {site: link.site}), link.url %></li>
         <% end %>
       </ul>
       <%= link_to pluralize(creator.models.count, "Model").to_s, models_path(creator: creator.id), {class: "btn btn-primary"} %>
