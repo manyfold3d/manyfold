@@ -28,8 +28,6 @@ linters:
         Enabled: false
       Layout/ArrayAlignment:
         Enabled: false
-      Layout/DotPosition:
-        Enabled: false
       Layout/ArgumentAlignment:
         Enabled: false
       Layout/FirstHashElementIndentation:
