@@ -8,7 +8,7 @@ linters:
   PartialInstanceVariable:
     enabled: false
   DeprecatedClasses:
-    enabled: false
+    enabled: true
   ErbSafety:
     enabled: false
   Rubocop:
