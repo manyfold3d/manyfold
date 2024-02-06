@@ -5,38 +5,38 @@
       See library details and modify.
     </p>
     <ul class="list-unstyled">
-    <% Library.all.each do |library| %>
+    <% Library.find_each do |library| %>
         <li><details><summary><%= library.name %></summary>
         <div class="card-body">
           <div class="row">
-            <%= content_tag(:span,"Name", class: "col-sm") %>
-            <%= content_tag(:span,library.name, class: "col-sm-10") %>
+            <%= content_tag(:span, "Name", class: "col-sm") %>
+            <%= content_tag(:span, library.name, class: "col-sm-10") %>
           </div>
           <div class="row input-group">
-            <%= content_tag(:span,"Path", class: "col-sm") %>
-            <%= content_tag(:span,library.path, class: "col-sm-10") %>
+            <%= content_tag(:span, "Path", class: "col-sm") %>
+            <%= content_tag(:span, library.path, class: "col-sm-10") %>
           </div>
           <div class="row input-group">
-            <%= content_tag(:span,"Caption", class: "col-sm") %>
-            <%= content_tag(:span,library.caption, class: "col-sm-10") %>
+            <%= content_tag(:span, "Caption", class: "col-sm") %>
+            <%= content_tag(:span, library.caption, class: "col-sm-10") %>
             <span id="libraryCaptionHelp" class="form-text">Hover over library in header to see caption.</span>
           </div>
           <div class="row input-group">
-            <%= content_tag(:span,"Icon", class: "col-sm") %>
-            <%= content_tag(:span,library.icon, class: "col-sm-10") %>
+            <%= content_tag(:span, "Icon", class: "col-sm") %>
+            <%= content_tag(:span, library.icon, class: "col-sm-10") %>
             <span id="libraryIconHelp" class="form-text">Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a></span>
           </div>
           <div class="row input-group">
-            <%= content_tag(:span,"Notes", class: "col-sm") %>
-            <%= content_tag(:span,library.notes, class: "col-sm-10") %>
+            <%= content_tag(:span, "Notes", class: "col-sm") %>
+            <%= content_tag(:span, library.notes, class: "col-sm-10") %>
             <span id="libraryNotesHelp" class="form-text">Notes are just on this page for now.</span>
           </div>
           <div class="row input-group">
-            <%= content_tag(:span,"Required Tags", class: "col-sm") %>
+            <%= content_tag(:span, "Required Tags", class: "col-sm") %>
             <div class="col-sm-10">
               <% library.tag_regex.each do |reg| %>
                 <%= link_to "Check", models_path(library: library.id, missingtag: reg), {class: "btn btn-outline-secondary"} %>
-                <%= content_tag(:span,reg, class: "col-sm-10") %><br />
+                <%= content_tag(:span, reg, class: "col-sm-10") %><br>
               <% end %>
             </div>
             <span id="libraryRegexHelp" class="form-text">Check for models missing tags matching these regex.</span>

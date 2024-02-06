@@ -17,13 +17,13 @@
     </tr>
     <% @model.model_files.each do |file| %>
       <tr>
-        <td><%= form.check_box "model_files[#{file.id}]", { data: { bulk_item:  "#{file.id}"}}%></td>
-        <td><i class="bi bi-<%= file.is_image? ? 'image' : 'box' %>"></td>
+        <td><%= form.check_box "model_files[#{file.id}]", {data: {bulk_item: file.id.to_s}} %></td>
+        <td><i class="bi bi-<%= file.is_image? ? "image" : "box" %>"></td>
         <td><%= link_to file.name, [@library, @model, file], title: file.filename %></td>
         <td><code><%= file.filename %></code></td>
-        <td><i class="bi bi-<%= current_user.printed?(file) ? 'check-circle-fill' : 'circle' %>"></td>
-        <td><i class="bi bi-<%= file.presupported ? 'check-circle-fill' : 'circle' %>"></td>
-        <td><i class="bi bi-<%= file.y_up ? 'check-circle-fill' : 'circle' %>"></td>
+        <td><i class="bi bi-<%= current_user.printed?(file) ? "check-circle-fill" : "circle" %>"></td>
+        <td><i class="bi bi-<%= file.presupported ? "check-circle-fill" : "circle" %>"></td>
+        <td><i class="bi bi-<%= file.y_up ? "check-circle-fill" : "circle" %>"></td>
       </tr>
     <% end %>
   </table>

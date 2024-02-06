@@ -1,0 +1,38 @@
+---
+EnableDefaultLinters: true
+exclude:
+  - "**/vendor/**/*"
+  - "**/node_modules/**/*"
+linters:
+  # Non-default linters
+  PartialInstanceVariable:
+    enabled: false # TODO
+  DeprecatedClasses:
+    enabled: true
+  ErbSafety:
+    enabled: false # TODO
+  Rubocop:
+    enabled: true
+    rubocop_config:
+      inherit_from:
+        - .rubocop.yml
+      # Disable unhelpful rules for ERB templates
+      Layout/InitialIndentation:
+        Enabled: false # ERB tags start at unusual indentations
+      Layout/TrailingEmptyLines:
+        Enabled: false # We don't need a newline inside every ERB tag!
+      # Temporarily disabled while we fix
+      Lint/UselessAssignment:
+        Enabled: false # TODO
+      I18n/RailsI18n/DecorateString:
+        Enabled: false # TODO
+      I18n/RailsI18n/DecorateStringFormattingUsingInterpolation:
+        Enabled: false # TODO
+      Rails/OutputSafety:
+        Enabled: false # TODO
+      Style/NestedTernaryOperator:
+        Enabled: false # TODO
+  RequireScriptNonce:
+    enabled: true
+  NoUnusedDisable:
+    enabled: true

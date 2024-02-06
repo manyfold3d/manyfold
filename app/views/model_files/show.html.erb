@@ -7,7 +7,7 @@
       <% if @file.is_image? %>
         <%= image_tag library_model_model_file_path(@model.library, @model, @file, format: @file.extension), alt: @file.name, style: "width: 100%" %>
       <% elsif renderable?(@file.extension) %>
-        <%= render partial: "object_preview", locals: { library: @library, model: @model, file: @file } %>
+        <%= render partial: "object_preview", locals: {library: @library, model: @model, file: @file} %>
       <% end %>
   </div>
 
@@ -18,7 +18,7 @@
       </p>
       <% if @file.digest %>
         <p>
-          Digest: <code><%= @file.digest.slice(0,16) %></code>
+          Digest: <code><%= @file.digest.slice(0, 16) %></code>
         </p>
       <% end %>
       <% if @file.size %>
@@ -26,17 +26,17 @@
           File size: <code><%= number_to_human_size @file.size, precision: 2 %></code>
         </p>
       <% end %>
-      <%= render 'form' %>
+      <%= render "form" %>
     <% end %>
 
     <%= render partial: "problem", collection: @file.problems.visible(current_user.problem_settings) %>
 
     <%= card :secondary, "Actions" do %>
-      <%= link_to "#{icon('cloud-download', 'Download')} Download".html_safe, library_model_model_file_path(@library, @model, @file, @file.extension.to_sym), {class: "btn btn-secondary"} %>
-      <%= link_to "#{icon('trash', 'Delete')} Delete".html_safe, library_model_model_file_path(@library, @model, @file, @file.extension.to_sym), {method: "delete", data: {confirm: "Are you sure you want to remove this file from your filesystem?"}, class: "btn btn-danger"} %>
+      <%= link_to "#{icon("cloud-download", "Download")} Download".html_safe, library_model_model_file_path(@library, @model, @file, @file.extension.to_sym), {class: "btn btn-secondary"} %>
+      <%= link_to "#{icon("trash", "Delete")} Delete".html_safe, library_model_model_file_path(@library, @model, @file, @file.extension.to_sym), {method: "delete", data: {confirm: "Are you sure you want to remove this file from your filesystem?"}, class: "btn btn-danger"} %>
     <% end %>
 
-    <%= card(:secondary, 'Notes') do %>
+    <%= card(:secondary, "Notes") do %>
       <p class="card-text"><%= sanitize @file.notes %></p>
     <% end if @file.notes %>
 

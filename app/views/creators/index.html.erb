@@ -19,10 +19,10 @@
     <%= link_to "View unassigned", models_path(creator: ""), class: "btn btn-outline-secondary mb-3 me-3" %>
     <%= link_to "New Creator", new_creator_path, class: "btn btn-primary mb-3 me-3" %>
   <% end %>
-  <%= render 'filters_card' %>
+  <%= render "filters_card" %>
   <% unless @tags.empty? %>
     <%= card :secondary, "Tags", collapse: "md" do %>
-      <%= render 'tag_list', tags: @tags - (@tag||[]), muted_tags: @tags - @commontags %>
+      <%= render "tag_list", tags: @tags - (@tag || []), muted_tags: @tags - @commontags %>
     <% end %>
   <% end %>
 <% end %>

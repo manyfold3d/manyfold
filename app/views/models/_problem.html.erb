@@ -1,10 +1,10 @@
 <%= card(problem_severity(problem), t("problems.model_#{problem.category}.title")) do %>
-	<%= t("problems.model_#{problem.category}.description", note: problem.note ) %>
+  <%= t("problems.model_#{problem.category}.description", note: problem.note) %>
 
   <% if @model.contains_other_models? %>
     <ul>
       <% @model.contained_models.each do |target| %>
-        <li><%= link_to target.name, library_model_path(@library, target)%></li>
+        <li><%= link_to target.name, library_model_path(@library, target) %></li>
       <% end %>
     </ul>
     <p>

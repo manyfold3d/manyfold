@@ -8,18 +8,18 @@
         <%= image_tag library_model_model_file_path(model.library, model, file, format: file.extension), class: "card-img-top image-preview ", alt: file.name %>
       <% elsif renderable?(file.extension) %>
         <div class="card-img-top">
-          <%= render partial: "object_preview", locals: { library: model.library, model: model, file: file } %>
+          <%= render partial: "object_preview", locals: {library: model.library, model: model, file: file} %>
         </div>
       <% end %>
        <% else %>
-       <div class='preview-empty'> <p><%= t '.no_preview' %></p></div>
+       <div class='preview-empty'> <p><%= t ".no_preview" %></p></div>
     <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= collection.name.titleize %></h5>
       <div class="col-auto">
         <% if collection.collection %>
-          <%= icon "collection", t('activerecord.models.collection') %>
-          <%= link_to collection.collection.name, (@filters||{}).merge(collection: collection.collection.id) %><br/>
+          <%= icon "collection", t("activerecord.models.collection") %>
+          <%= link_to collection.collection.name, (@filters || {}).merge(collection: collection.collection.id) %><br>
         <% end %>
         <% if collection.caption %>
           <h6 class="card-subtitle mb-2 text-muted"><%= sanitize collection.caption %></h6>
@@ -34,9 +34,9 @@
         </ul>
       </div>
       <div>
-        <%= link_to pluralize(collection.models.count, t('activerecord.models.model')), {controller: 'models', collection: collection.id}, class: "btn btn-primary" %>
-        <%= link_to(pluralize(collection.collections.count, t('activerecord.models.collection')), (@filters||{}).merge(controller: 'collections', collection: collection.id), class: "btn btn-primary") if collection.collections.count > 0%>
-        <%= link_to t('general.edit'), edit_collection_path(collection), {class: "btn btn-outline-secondary"} %>
+        <%= link_to pluralize(collection.models.count, t("activerecord.models.model")), {controller: "models", collection: collection.id}, class: "btn btn-primary" %>
+        <%= link_to(pluralize(collection.collections.count, t("activerecord.models.collection")), (@filters || {}).merge(controller: "collections", collection: collection.id), class: "btn btn-primary") if collection.collections.count > 0 %>
+        <%= link_to t("general.edit"), edit_collection_path(collection), {class: "btn btn-outline-secondary"} %>
       </div>
     </div>
   </div>

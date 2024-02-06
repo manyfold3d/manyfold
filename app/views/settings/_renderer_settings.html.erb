@@ -2,65 +2,65 @@
   <h3 class="card-header">Renderer</h3>
   <div class="card-body">
     <p class='lead'>
-			Customise settings for 3d rendered previews.
-		</p>
-		<div class="row">
-			<%= form.label t(".auto_load_max_size.label"), for: "renderer[auto_load_max_size]", class: "col col-form-label"%>
-    	<div class="col">
-				<%= form.select "renderer[auto_load_max_size]", [
-						[t(".auto_load_max_size.never"), 0],
-						[t(".auto_load_max_size.under_2"), 2],
-						[t(".auto_load_max_size.under_4"), 4],
-						[t(".auto_load_max_size.under_8"), 8],
-						[t(".auto_load_max_size.under_16"), 16],
-						[t(".auto_load_max_size.under_32"), 32],
-						[t(".auto_load_max_size.under_64"), 64],
-						[t(".auto_load_max_size.under_128"), 128],
-						[t(".auto_load_max_size.under_256"), 256],
-						[t(".auto_load_max_size.under_512"), 512],
-						[t(".auto_load_max_size.under_1024"), 1024],
-						[t(".auto_load_max_size.always"), 9_999_999],
-					],
-					{selected: @user.renderer_settings["auto_load_max_size"] || 9_999_999},
-					{class: "form-select"}
-				%>
-			</div>
-		</div>
-		<div class="row">
-			<%= form.label "Show ground plane", for: "renderer[show_grid]", class: "col col-form-label"%>
+      Customise settings for 3d rendered previews.
+    </p>
+    <div class="row">
+      <%= form.label t(".auto_load_max_size.label"), for: "renderer[auto_load_max_size]", class: "col col-form-label" %>
+      <div class="col">
+        <%= form.select "renderer[auto_load_max_size]",
+              [
+                [t(".auto_load_max_size.never"), 0],
+                [t(".auto_load_max_size.under_2"), 2],
+                [t(".auto_load_max_size.under_4"), 4],
+                [t(".auto_load_max_size.under_8"), 8],
+                [t(".auto_load_max_size.under_16"), 16],
+                [t(".auto_load_max_size.under_32"), 32],
+                [t(".auto_load_max_size.under_64"), 64],
+                [t(".auto_load_max_size.under_128"), 128],
+                [t(".auto_load_max_size.under_256"), 256],
+                [t(".auto_load_max_size.under_512"), 512],
+                [t(".auto_load_max_size.under_1024"), 1024],
+                [t(".auto_load_max_size.always"), 9_999_999]
+              ],
+              {selected: @user.renderer_settings["auto_load_max_size"] || 9_999_999},
+              {class: "form-select"} %>
+      </div>
+    </div>
+    <div class="row">
+      <%= form.label "Show ground plane", for: "renderer[show_grid]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
-				<%= form.check_box "renderer[show_grid]", checked: @user.renderer_settings["show_grid"], class: "form-check-input" %>
-			</div>
-		</div>
-		<div class="row">
-			<%= form.label "Ground plane size (mm)", for: "renderer[grid_width]", class: "col col-form-label"%>
-			<div class="col">
-				<%= form.number_field "renderer[grid_width]", value: @user.renderer_settings["grid_width"], class: "form-control" %>
-			</div>
-		</div>
-		<div class="row">
-			<%= form.label "Enable pan/zoom controls", for: "renderer[enable_pan_zoom]", class: "col col-form-label"%>
+        <%= form.check_box "renderer[show_grid]", checked: @user.renderer_settings["show_grid"], class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="row">
+      <%= form.label "Ground plane size (mm)", for: "renderer[grid_width]", class: "col col-form-label" %>
+      <div class="col">
+        <%= form.number_field "renderer[grid_width]", value: @user.renderer_settings["grid_width"], class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <%= form.label "Enable pan/zoom controls", for: "renderer[enable_pan_zoom]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
-				<%= form.check_box "renderer[enable_pan_zoom]", checked: @user.renderer_settings["enable_pan_zoom"], class: "form-check-input" %>
-			</div>
-		</div>
-		<div class="row">
-			<%= form.label "Background colour", for: "renderer[background_colour]", class: "col col-form-label"%>
-			<div class="col">
-				<%= form.color_field "renderer[background_colour]", value: @user.renderer_settings["background_colour"], class: "form-control" %>
-			</div>
-		</div>
-		<div class="row">
-			<%= form.label "Rendering style", for: "renderer[render_style]", class: "col col-form-label"%>
-    	<div class="col">
-				<%= form.select "renderer[render_style]", [[t("renderer.style.normals"), "normals"], [t("renderer.style.lambert"), "lambert"]], {selected: @user.renderer_settings["render_style"]}, {class: "form-select"} %>
-			</div>
-		</div>
-		<div class="row">
-			<%= form.label "Object colour", for: "renderer[object_colour]", class: "col col-form-label"%>
-	    <div class="col">
-				<%= form.color_field "renderer[object_colour]", value: @user.renderer_settings["object_colour"], class: "form-control" %>
-			</div>
-		</div>
-	</div>
+        <%= form.check_box "renderer[enable_pan_zoom]", checked: @user.renderer_settings["enable_pan_zoom"], class: "form-check-input" %>
+      </div>
+    </div>
+    <div class="row">
+      <%= form.label "Background colour", for: "renderer[background_colour]", class: "col col-form-label" %>
+      <div class="col">
+        <%= form.color_field "renderer[background_colour]", value: @user.renderer_settings["background_colour"], class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <%= form.label "Rendering style", for: "renderer[render_style]", class: "col col-form-label" %>
+      <div class="col">
+        <%= form.select "renderer[render_style]", [[t("renderer.style.normals"), "normals"], [t("renderer.style.lambert"), "lambert"]], {selected: @user.renderer_settings["render_style"]}, {class: "form-select"} %>
+      </div>
+    </div>
+    <div class="row">
+      <%= form.label "Object colour", for: "renderer[object_colour]", class: "col col-form-label" %>
+      <div class="col">
+        <%= form.color_field "renderer[object_colour]", value: @user.renderer_settings["object_colour"], class: "form-control" %>
+      </div>
+    </div>
+  </div>
 </div>

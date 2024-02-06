@@ -2,21 +2,19 @@
   <h3 class="card-header"><%= t(".title") %></h3>
   <div class="card-body">
     <p class='lead'>
-			<%= t(".description") %>
-		</p>
+      <%= t(".description") %>
+    </p>
     <% Problem::CATEGORIES.each do |category| %>
       <% next if Problem::DEFAULT_SEVERITIES[category].nil? # Skip deprecated categories; they don't appear in the defaults list %>
       <div class="row">
         <%= form.label t("problems.categories.#{category}"),
-          for: "problems[#{category}]",
-          class: "col col-form-label"
-        %>
+              for: "problems[#{category}]",
+              class: "col col-form-label" %>
         <div class="col">
           <%= form.select "problems[#{category}]",
-            Problem::SEVERITIES.map { |s| [t("problems.severities.#{s}"), s] },
-            {selected: @user.problem_settings[category.to_s]},
-            class: "form-select"
-          %>
+                Problem::SEVERITIES.map { |s| [t("problems.severities.#{s}"), s] },
+                {selected: @user.problem_settings[category.to_s]},
+                class: "form-select" %>
         </div>
       </div>
     <% end %>

@@ -57,5 +57,7 @@ jobs:
         run: yarn install
       - name: Lint Ruby code
         run: bundle exec rake rubocop
+      - name: Lint ERB templates
+        run: bundle exec erblint --lint-all
       - name: Lint Typescript code
         run: yarn run lint:ts

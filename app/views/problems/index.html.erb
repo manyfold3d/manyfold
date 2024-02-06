@@ -4,26 +4,25 @@
 
 <%= paginate @problems %>
 
-
 <% if @problems.empty? %>
-	<div class="alert alert-info">
-		<%= t(".no_problems") %>
-	</div>
+  <div class="alert alert-info">
+    <%= t(".no_problems") %>
+  </div>
 <% end %>
 
 <table class="table table-striped">
-	<% @problems.each do |problem| %>
-		<tr class="table-<%= problem_severity(problem) %> <%= problem.ignored && "opacity-50"%>">
-			<%= render partial: "#{problem.problematic_type.underscore}_#{problem.category}", locals: {problem: problem} %>
-			<td>
-				<% if problem.ignored %>
-					<%= link_to icon("eye-fill", t(".unignore")), problem_path(problem, problem: { ignored: false }), method: :patch, class: "btn btn-outline-secondary" %>
-				<% else %>
-					<%= link_to icon("eye-slash", t(".ignore")), problem_path(problem, problem: { ignored: true }), method: :patch, class: "btn btn-outline-secondary" %>
-				<% end %>
-			</td>
-		</tr>
-	<% end %>
+  <% @problems.each do |problem| %>
+    <tr class="table-<%= problem_severity(problem) %> <%= problem.ignored && "opacity-50" %>">
+      <%= render partial: "#{problem.problematic_type.underscore}_#{problem.category}", locals: {problem: problem} %>
+      <td>
+        <% if problem.ignored %>
+          <%= link_to icon("eye-fill", t(".unignore")), problem_path(problem, problem: {ignored: false}), method: :patch, class: "btn btn-outline-secondary" %>
+        <% else %>
+          <%= link_to icon("eye-slash", t(".ignore")), problem_path(problem, problem: {ignored: true}), method: :patch, class: "btn btn-outline-secondary" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
 </table>
 
 <%= paginate @problems %>

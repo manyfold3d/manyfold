@@ -53,9 +53,11 @@ To run the application once you've cloned this repo, you should be able to just 
 ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/manyfold3d/manyfold)
 ![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/manyfold3d/manyfold)
 
-We use [Rubocop](https://rubocop.org/) to monitor adherence to coding standards. We use [StandardRB](https://github.com/standardrb/standard) rules along with some other rulesets for specific libraries and frameworks.
+We use [Rubocop](https://rubocop.org/) to monitor adherence to coding standards in Ruby code. We use [StandardRB](https://github.com/standardrb/standard) rules along with some other rulesets for specific libraries and frameworks.
 
 You can run the linter with `bundle exec rubocop`.
+
+We also have linters for ERB and Typescript files. You can run these with: `bundle exec erblint --lint-all` and `yarn run lint:ts` respectively.
 
 Code linting is automatically performed by our GitHub Actions test runners, but if you set up [Husky](https://typicode.github.io/husky/get-started.html), it will also execute as a pre-commit hook.
 
