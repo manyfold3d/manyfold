@@ -20,7 +20,7 @@ linters:
   ParserErrors:
     enabled: true
   RequireInputAutocomplete:
-    enabled: false
+    enabled: true
   RightTrim:
     enabled: false
   SelfClosingTag:

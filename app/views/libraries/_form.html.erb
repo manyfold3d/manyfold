@@ -10,13 +10,13 @@
     <div id="newinput" class="col-sm-10 p-0">
       <% @library.tag_regex.each do |reg| %>
         <div class="input-group">
-          <%= text_field_tag "library[tag_regex][]", reg, class: "form-control col-sm-11" %>
+          <%= text_field_tag "library[tag_regex][]", reg, class: "form-control col-sm-11", autocomplete: "off" %>
           <%= link_to icon(:trash, "Delete"), '', onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
         </div>
       <% end %>
       <div id="regexclone" style="display: none">
         <div class="input-group">
-          <%= text_field_tag "library[tag_regex][]", '', class: "form-control col-sm-11" %>
+          <%= text_field_tag "library[tag_regex][]", '', class: "form-control col-sm-11", autocomplete: "off" %>
           <%= link_to icon(:trash, "Delete"), '', onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
         </div>
       </div>
