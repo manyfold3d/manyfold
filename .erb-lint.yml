@@ -7,7 +7,7 @@ linters:
   AllowedScriptType:
     enabled: true
   ClosingErbTagIndent:
-    enabled: false
+    enabled: true
   CommentSyntax:
     enabled: true
   ExtraNewline:
