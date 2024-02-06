@@ -24,19 +24,21 @@ linters:
       Lint/UselessAssignment:
         Enabled: false
       # Temporarily disabled while we fix
-      Layout/FirstArrayElementIndentation:
+      Layout/ArgumentAlignment:
         Enabled: false
       Layout/ArrayAlignment:
         Enabled: false
-      Layout/ArgumentAlignment:
+      Layout/BlockAlignment:
+        Enabled: false
+      Layout/EndAlignment:
+        Enabled: false
+      Layout/FirstArgumentIndentation:
+        Enabled: false
+      Layout/FirstArrayElementIndentation:
         Enabled: false
       Layout/FirstHashElementIndentation:
         Enabled: false
       Layout/HashAlignment:
-        Enabled: false
-      Layout/MultilineMethodCallIndentation:
-        Enabled: false
-      Layout/BlockAlignment:
         Enabled: false
       Layout/IndentationConsistency:
         Enabled: false
@@ -44,9 +46,7 @@ linters:
         Enabled: false
       Layout/MultilineBlockLayout:
         Enabled: false
-      Layout/EndAlignment:
-        Enabled: false
-      Layout/FirstArgumentIndentation:
+      Layout/MultilineMethodCallIndentation:
         Enabled: false
       I18n/RailsI18n/DecorateString:
         Enabled: false
