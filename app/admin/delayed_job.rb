@@ -41,10 +41,12 @@ ActiveAdmin.register Delayed::Job, as: "Task" do
   end
 
   action_item :run do
-    links = link_to("Run All Tasks", run_all_admin_tasks_url, method: :post)
-    links += (" " + link_to("Mark all for re-run", mark_all_for_re_run_admin_tasks_url, method: :post)).html_safe
-    links += (" " + link_to("Delete All Tasks", delete_all_admin_tasks_url, method: :post)).html_safe if Rails.env.development?
-    links
+    links = [
+      link_to("Run All Tasks", run_all_admin_tasks_url, method: :post),
+      link_to("Mark all for re-run", mark_all_for_re_run_admin_tasks_url, method: :post)
+    ]
+    links.push link_to("Delete All Tasks", delete_all_admin_tasks_url, method: :post) if Rails.env.development?
+    safe_join links, " "
   end
 
   index do

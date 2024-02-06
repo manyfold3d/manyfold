@@ -10,7 +10,7 @@ linters:
   DeprecatedClasses:
     enabled: true
   ErbSafety:
-    enabled: false # TODO
+    enabled: true
   Rubocop:
     enabled: true
     rubocop_config:
@@ -27,8 +27,6 @@ linters:
       I18n/RailsI18n/DecorateString:
         Enabled: false # TODO
       I18n/RailsI18n/DecorateStringFormattingUsingInterpolation:
-        Enabled: false # TODO
-      Rails/OutputSafety:
         Enabled: false # TODO
       Style/NestedTernaryOperator:
         Enabled: false # TODO

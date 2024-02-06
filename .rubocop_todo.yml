@@ -61,13 +61,6 @@ Rails/NotNullColumn:
   Exclude:
     - "db/migrate/20220614211256_add_username_to_users.rb"
 
-# Offense count: 4
-Rails/OutputSafety:
-  Exclude:
-    - "app/admin/delayed_job.rb"
-    - "app/helpers/application_helper.rb"
-    - "config/initializers/field_with_errors.rb"
-
 # Offense count: 1
 # Configuration parameters: Include.
 # Include: db/**/*.rb
