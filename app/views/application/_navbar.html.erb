@@ -59,11 +59,11 @@
           </li>
         <% end %>
         <li class="nav-item">
-          <%= nav_link "sliders", "Settings", user_settings_path(current_user), text_style: "d-lg-none" %>
+          <%= nav_link "sliders", t(".settings"), user_settings_path(current_user), text_style: "d-lg-none" %>
         </li>
         <li class="nav-item">
           <%= form_with url: models_path, method: :get, role: "search" do |f| %>
-            <%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: "Search", aria_label: "Search", aria_describedby: "button-search", value: params[:q], autofocus: true %>
+            <%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: t(".search"), aria_label: t(".search"), aria_describedby: "button-search", value: params[:q], autofocus: true %>
           <% end %>
         </li>
       </ul>
