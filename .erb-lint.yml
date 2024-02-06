@@ -62,8 +62,6 @@ linters:
         Enabled: false
       Rails/NegateInclude:
         Enabled: false
-      Style/QuotedSymbols:
-        Enabled: false
       Style/NestedTernaryOperator:
         Enabled: false
   RequireScriptNonce:
