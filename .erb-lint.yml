@@ -66,8 +66,6 @@ linters:
         Enabled: false
       Style/NestedTernaryOperator:
         Enabled: false
-      Style/RedundantConditional:
-        Enabled: false
   RequireScriptNonce:
     enabled: true
   NoUnusedDisable:
