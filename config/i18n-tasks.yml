@@ -128,6 +128,7 @@ ignore_unused:
 - 'problems.model.*'
 - 'problems.model_file.*'
 - 'problems.severities.*'
+- 'active_admin.exit' # Used in initializer, not detected automatically
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
