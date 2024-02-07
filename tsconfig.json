@@ -3,12 +3,18 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es6", "dom"],
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "module": "es6",
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "*": ["node_modules/*", "app/javascript/*"]
+      "*": [
+        "node_modules/*",
+        "app/javascript/*"
+      ]
     },
     "sourceMap": true,
     "strictNullChecks": true,
@@ -20,9 +26,17 @@
       "webpack-env",
       "three",
       "jquery",
-      "selectize"
-    ]
+      "selectize",
+      "i18n-js"
+    ],
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
-  "exclude": ["**/*.spec.ts", "node_modules", "vendor", "public"],
+  "exclude": [
+    "**/*.spec.ts",
+    "node_modules",
+    "vendor",
+    "public"
+  ],
   "compileOnSave": false
 }
