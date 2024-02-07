@@ -74,9 +74,13 @@ Tests are run automatically when pushed to our repository using GitHub Actions.
 
 ### Internationalisation & Translation
 
-Manyfold uses [Rails' I18n framework](https://guides.rubyonrails.org/i18n.html) to handle text content, and wherever possible, strings should not be hardcoded (some still are, we're working on it).
+Manyfold uses [Rails' I18n framework](https://guides.rubyonrails.org/i18n.html) to handle all text content.
 
 You can check the validity of locale files with `bundle exec i18n-tasks health`. This is also run as part of our test pipeline, so will be enforced on new code.
+
+Translations are also available in client-side Javascript; they are built from the Rails locale files as part of the asset pipeline, using [i18n-js](https://github.com/fnando/i18n-js). If you need to run an export manually, do `bundle exec i18n export -c config/i18n-js.yml`.
+
+We are using [Translation.io](https://translation.io/) to manage translations into other languages. If you want to help out on that, get in touch for details!
 
 ### Building Docker images
 
