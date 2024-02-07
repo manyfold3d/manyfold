@@ -1,9 +1,38 @@
 ---
 en:
   activerecord:
+    attributes:
+      link:
+        url: URL
+      model:
+        caption: Caption
+        collection_id: Collection
+        creator_id: Creator
+        library_id: Library
+        name: Name
+        notes: Notes
+        preview_file: Preview
+    errors:
+      models:
+        library:
+          attributes:
+            path:
+              not_found: could not be found on disk
+        model:
+          attributes:
+            library:
+              nested: can't be changed, model contains other models
+            license:
+              invalid_spdx: is not a valid license
+            path:
+              destination_exists: already exists
+              nested: can't be changed, model contains other models
     models:
       acts_as_taggable_on/tag: Tag
+      collection: Collection
       delayed/backend/active_record/job: Task
+      model: Model
+      model_file: File
   application:
     content_header:
       sort:
@@ -29,6 +58,10 @@ en:
       sponsor: Sponsor
       stats_heading: Stats
       version: Version
+    links_card:
+      link_card_heading: Links
+    links_form:
+      add: add another link
     navbar:
       check_existing: Check existing models
       navbar:
@@ -39,6 +72,7 @@ en:
       scanning: Scanning
       search: Search
       settings: Settings
+      upload: Upload
     tag_list:
       hidden: hidden
     tagline: Helping you keep track of your 3d print files
@@ -81,6 +115,13 @@ en:
       load: Load Error
       webglrenderer: Could not create renderer!
     load: Load
+  sites:
+    cgtrader: CGTrader
+    comicsgamesandthings: Comics, Games, and Things
+    cults3d: Cults3D
+    myminifactory: MyMiniFactory
+    theminiindex: The Mini Index
+    thingiverse: Thingiverse
   views:
     pagination:
       first: "« First"

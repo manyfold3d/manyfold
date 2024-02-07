@@ -1,8 +1,5 @@
 ---
 en:
-  activerecord:
-    models:
-      model_file: File
   model_files:
     bulk_update:
       success: Files updated successfully.

@@ -1,8 +1,5 @@
 ---
 en:
-  activerecord:
-    models:
-      collection: Collection
   collections:
     collection:
       no_preview: no preview availiable
