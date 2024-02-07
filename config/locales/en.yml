@@ -355,6 +355,22 @@ en:
         under_512: Up to 512 MB
         under_64: Up to 64 MB
         under_8: Up to 8 MB
+      background_colour:
+        label: Background colour
+      description: Customise settings for 3d rendered previews.
+      enable_pan_zoom:
+        label: Enable pan/zoom controls
+      grid_width:
+        label: Ground plane size (mm)
+      heading: Renderer
+      object_colour:
+        label: Object colour
+      render_style:
+        label: Rendering style
+        lambert: Realistically shaded
+        normals: Surface direction
+      show_grid:
+        label: Show ground plane
     show:
       advanced_admin: Advanced Administration
       submit: Save Settings
