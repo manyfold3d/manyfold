@@ -45,34 +45,16 @@ en:
     attributes:
       link:
         url: URL
-      model:
-        caption: Caption
-        collection_id: Collection
-        creator_id: Creator
-        library_id: Library
-        name: Name
-        notes: Notes
-        preview_file: Preview
     errors:
       models:
         library:
           attributes:
             path:
               not_found: could not be found on disk
-        model:
-          attributes:
-            library:
-              nested: can't be changed, model contains other models
-            license:
-              invalid_spdx: is not a valid license
-            path:
-              destination_exists: already exists
-              nested: can't be changed, model contains other models
     models:
       acts_as_taggable_on/tag: Tag
       collection: Collection
       delayed/backend/active_record/job: Task
-      model: Model
       model_file: File
   application:
     content_header:
@@ -235,58 +217,6 @@ en:
     update:
       failure: An error occurred and file details could not be saved.
       success: File details saved.
-  models:
-    bulk_update:
-      success: Models updated successfully.
-    delete: Delete
-    destroy:
-      confirm: This will delete files. Are you sure you want to continue?
-      success: Model deleted!
-    edit: Edit
-    file:
-      set_as_preview: Set as preview
-    form:
-      preview_file:
-        help: The file displayed as a model preview in library pages
-      tags: Tags
-    general:
-      edit: Edit Model
-    index:
-      actions_heading: Actions
-      bulk_edit: Bulk Edit
-      missing_url: Missing URL
-      tags_heading: Tags
-      untagged: Untagged
-    merge:
-      success: Models merged successfully.
-    open: Open
-    problem:
-      merge_all: Merge all
-    show:
-      files: Files
-      files_card:
-        bulk_edit: Edit all files
-        heading: Files
-      license: License
-      merge:
-        heading: Merge
-        warning: Merging moves all files from this model to the target, and removes this model. File metadata is preserved, but any model metadata will be lost!
-        with: Merge with
-      model_details: Model Details
-      notes_heading: Notes
-      organize:
-        button_text: Organize files
-        confirm:
-          are_you_sure: Are you sure you want to do this?
-          'no': No, cancel
-          summary_html: The folder and files that make up this model will be moved from:<br> <code>%{from}</code><br> to<br> <code>%{to}</code>
-          'yes': Yes, move the files
-      path: Path
-      search: Search the Internet for models with this name
-      tags: Tags
-    update:
-      failure: An error occurred and the model details could not be saved.
-      success: Model details saved.
   problems:
     categories:
       duplicate: Duplicate files
