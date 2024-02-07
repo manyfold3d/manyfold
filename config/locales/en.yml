@@ -43,16 +43,23 @@ en:
       sponsor: Sponsor
       stats_heading: Stats
       version: Version
+    links_card:
+      link_card_heading: Links
     links_form:
       add: add another link
     navbar:
       check_existing: Check existing models
+      navbar:
+        toggler:
+          label: Toggle navigation
       scan: Scan
       scan_changes: Scan for changes
       scanning: Scanning
       search: Search
       settings: Settings
       upload: Upload
+    tag_list:
+      hidden: hidden
     tagline: Helping you keep track of your 3d print files
     title: Manyfold
   collections:

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class='container-fluid'>
     <a class="navbar-brand ms-2" href="<%= root_path %>"><%= image_tag "logo.png", alt: t("application.title"), title: t("application.title"), height: "40px", class: "me-2" %> <span class="d-lg-none"><%= t "application.title" %></span></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="<%= t ".navbar.toggler.label" %>">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse row" id="navbar">
