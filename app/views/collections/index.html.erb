@@ -18,13 +18,13 @@
 <% end %>
 
 <% content_for :sidebar do %>
-  <%= card :secondary, "Actions" do %>
+  <%= card :secondary, t(".actions_heading") do %>
     <%= link_to t(".view_unassigned_models"), models_path(collection: ""), class: "btn btn-outline-secondary mb-3 me-3" %>
     <%= link_to t("collections.general.new"), new_collection_path, class: "btn btn-primary mb-3 me-3" %>
   <% end %>
   <%= render "filters_card" %>
   <% unless @tags.empty? %>
-    <%= card :secondary, "Tags", collapse: "md" do %>
+    <%= card :secondary, t(".tags_heading"), collapse: "md" do %>
       <%= render "tag_list", tags: @tags - (@tag || []), muted_tags: @tags - @commontags %>
     <% end %>
   <% end %>

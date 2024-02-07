@@ -75,6 +75,8 @@ en:
     get_collection:
       unknown: Unknown
     index:
+      actions_heading: Actions
+      tags_heading: Tags
       view_unassigned_models: View unassigned
     new:
       title: New Collection
@@ -272,7 +274,7 @@ en:
       success: File(s) uploaded successfully.
     index:
       datafiles:
-        help: 'Supported file types: %{types}'
+        help: "Supported file types: %{types}"
         label: Select File
       library_pick:
         help: The library to upload to.
