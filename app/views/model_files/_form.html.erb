@@ -1,18 +1,18 @@
 <%= form_with model: [@library, @model, @file] do |form| %>
   <div class="form-check form-switch mb-3">
     <%= form.check_box :printed, class: "form-check-input", checked: current_user.printed?(@file) %>
-    <label class="form-check-label" for="printed">Printed?</label>
+    <label class="form-check-label" for="printed"><%= t(".printed") %></label>
   </div>
   <div class="form-check form-switch mb-3">
     <%= form.check_box :presupported, class: "form-check-input" %>
-    <label class="form-check-label" for="presupported">Presupported?</label>
+    <label class="form-check-label" for="presupported"><%= t(".presupported") %></label>
   </div>
   <div class="form-check form-switch mb-3">
     <%= form.check_box :y_up, class: "form-check-input" %>
-    <label class="form-check-label" for="y_up">Y Up</label>
+    <label class="form-check-label" for="y_up"><%= t(".y_up") %></label>
   </div>
 
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes %>
-  <%= form.submit "Update", class: "btn btn-primary" %>
+  <%= form.submit t("general.save"), class: "btn btn-primary" %>
 <% end %>
