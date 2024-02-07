@@ -59,6 +59,10 @@ en:
           attributes:
             path:
               not_found: could not be found on disk
+        model:
+          attributes:
+            license:
+              invalid_spdx: is not a valid license
     models:
       acts_as_taggable_on/tag: Tag
       collection: Collection

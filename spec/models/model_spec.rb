@@ -41,6 +41,7 @@ RSpec.describe Model do
     it "checks for SPDX validity" do
       m = build(:model, license: "Made up license")
       expect(m).not_to be_valid
+      expect(m.errors[:license].first).to eq "is not a valid license"
     end
 
     it "allows LicenseRef-Commercial to represent private use only" do
