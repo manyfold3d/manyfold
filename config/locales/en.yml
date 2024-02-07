@@ -22,6 +22,7 @@ en:
     models:
       acts_as_taggable_on/tag: Tag
       collection: Collection
+      delayed/backend/active_record/job: Task
       model: Model
       model_file: File
   application:

@@ -1,4 +1,4 @@
-ActiveAdmin.register Delayed::Job, as: "Task" do
+ActiveAdmin.register Delayed::Job do
   actions :all, except: [:new]
 
   collection_action :run_all, method: :post do
@@ -12,20 +12,20 @@ ActiveAdmin.register Delayed::Job, as: "Task" do
     if failures == 0 && successes == 0
       flash[:notice] = "Yawn... no Tasks run"
     end
-    redirect_to admin_tasks_url
+    redirect_to admin_delayed_backend_active_record_jobs_url
     I18n.locale = :en # Running tasks can mess up the locale.
   end
 
   if Rails.env.development?
     collection_action :delete_all, method: :post do
       n = Delayed::Job.delete_all
-      redirect_to admin_tasks_url, notice: "#{n} tasks deleted."
+      redirect_to admin_delayed_backend_active_record_jobs_url, notice: "#{n} tasks deleted."
     end
   end
 
   collection_action :mark_all_for_re_run, method: :post do
     n = Delayed::Job.update_all("run_at = created_at")
-    redirect_to admin_tasks_url, notice: "Marked all tasks (#{n}) for re-running."
+    redirect_to admin_delayed_backend_active_record_jobs_url, notice: "Marked all tasks (#{n}) for re-running."
   end
 
   member_action :run, method: :post do
@@ -33,19 +33,19 @@ ActiveAdmin.register Delayed::Job, as: "Task" do
     begin
       task.invoke_job
       task.destroy
-      redirect_to admin_tasks_url, notice: "1 Task run, apparently successfully, but who knows!"
+      redirect_to admin_delayed_backend_active_record_jobs_url, notice: "1 Task run, apparently successfully, but who knows!"
     rescue => e
-      redirect_to admin_tasks_url, alert: "Failed to run a Task: #{e}"
+      redirect_to admin_delayed_backend_active_record_jobs_url, alert: "Failed to run a Task: #{e}"
     end
     I18n.locale = :en # Running Tasks can mess up the locale.
   end
 
   action_item :run do
     links = [
-      link_to("Run All Tasks", run_all_admin_tasks_url, method: :post),
-      link_to("Mark all for re-run", mark_all_for_re_run_admin_tasks_url, method: :post)
+      link_to("Run All Tasks", run_all_admin_delayed_backend_active_record_jobs_url, method: :post),
+      link_to("Mark all for re-run", mark_all_for_re_run_admin_delayed_backend_active_record_jobs_url, method: :post)
     ]
-    links.push link_to("Delete All Tasks", delete_all_admin_tasks_url, method: :post) if Rails.env.development?
+    links.push link_to("Delete All Tasks", delete_all_admin_delayed_backend_active_record_jobs_url, method: :post) if Rails.env.development?
     safe_join links, " "
   end
 
@@ -113,7 +113,7 @@ ActiveAdmin.register Delayed::Job, as: "Task" do
       @task = Delayed::Job.find(params[:id])
       @task.assign_attributes(params[:task], without_protection: true)
       if @task.save
-        redirect_to admin_tasks_url, notice: "Task #{@task} saved successfully"
+        redirect_to admin_delayed_backend_active_record_jobs_url, notice: "Task #{@task} saved successfully"
       else
         render :edit
       end
