@@ -10,7 +10,7 @@
     <p>
       <%= t("problems.model.nesting.warning") %>
     </p>
-    <%= link_to "Merge all", merge_library_model_path(@library, @model, all: true), class: "btn btn-danger", method: :post %>
+    <%= link_to t(".merge_all"), merge_library_model_path(@library, @model, all: true), class: "btn btn-danger", method: :post %>
   <% end %>
 
 <% end %>
