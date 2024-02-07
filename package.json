@@ -5,7 +5,7 @@
     "lint:ts": "ts-standard --fix",
     "build": "bundle exec i18n export --config=./config/i18n-js.yml && esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
-    "typecheck": "bundle exec i18n export --config=./config/i18n-js.yml && tsc --project tsconfig.json --noEmit"
+    "typecheck": "bundle exec i18n export --config=./config/i18n-js.yml && tsc --project tsconfig.json"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.23.3",
