@@ -29,8 +29,8 @@ ActiveAdmin.register_page I18n.t("active_admin.dashboard") do
               Delayed::Job.order(locked_at: :desc).limit(20).map do |job|
                 tr do
                   td { link_to(job.id, admin_delayed_backend_active_record_job_path(job)) }
-                  td { job.locked_at ? "running" : "queued" }
-                  td { job.last_error ? "error" : "" }
+                  td { job.locked_at ? I18n.t("active_admin.jobs.state.running") : I18n.t("active_admin.jobs.state.queued") }
+                  td { job.last_error ? I18n.t("active_admin.jobs.state.error") : "" }
                 end
               end
             end

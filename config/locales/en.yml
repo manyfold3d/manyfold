@@ -4,6 +4,11 @@ en:
     dashboard: Dashboard
     demo_mode: not available in demo mode
     exit: Exit admin interface
+    jobs:
+      state:
+        error: error
+        queued: queued
+        running: running
     queue_size: "%{count} jobs in queue"
     recent_models: Recent models
     task_queue: Task Queue
