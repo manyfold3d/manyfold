@@ -147,13 +147,13 @@ class Model < ApplicationRecord
 
   def check_for_submodels
     if contains_other_models?
-      errors.add(library_id_changed? ? :library : :path, "can't be changed, model contains other models")
+      errors.add(library_id_changed? ? :library : :path, :nested)
     end
   end
 
   def destination_is_vacant
     if Dir.exist?(absolute_path)
-      errors.add(:path, "already exists")
+      errors.add(:path, :destination_exists)
     end
   end
 

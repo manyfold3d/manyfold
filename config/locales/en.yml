@@ -61,8 +61,13 @@ en:
               not_found: could not be found on disk
         model:
           attributes:
+            library:
+              nested: can't be changed, model contains other models
             license:
               invalid_spdx: is not a valid license
+            path:
+              destination_exists: already exists
+              nested: can't be changed, model contains other models
     models:
       acts_as_taggable_on/tag: Tag
       collection: Collection
