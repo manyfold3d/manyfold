@@ -76,6 +76,10 @@ en:
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
   renderer:
+    errors:
+      canvas: 'Could not find #webgl canvas!'
+      load: Load Error
+      webglrenderer: Could not create renderer!
     load: Load
   views:
     pagination:
