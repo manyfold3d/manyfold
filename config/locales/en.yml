@@ -39,7 +39,6 @@ en:
       scanning: Scanning
       search: Search
       settings: Settings
-      upload: Upload
     tag_list:
       hidden: hidden
     tagline: Helping you keep track of your 3d print files
@@ -76,18 +75,6 @@ en:
     CC0-10: Creative Commons Zero
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
-  uploads:
-    create:
-      success: File(s) uploaded successfully.
-    index:
-      datafiles:
-        help: 'Supported file types: %{types}'
-        label: Select File
-      library_pick:
-        help: The library to upload to.
-      scan_after_upload:
-        label: Scan After Upload
-      submit: Upload
   views:
     pagination:
       first: "« First"
