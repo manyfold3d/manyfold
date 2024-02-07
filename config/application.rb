@@ -38,7 +38,7 @@ module Manyfold
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Load locale files in nested folders as well as locale root
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.i18n.load_path += Dir[Rails.root.join("config/locales/**/*.{rb,yml}")]
 
     # Don't generate system test files.
     config.generators.system_tests = nil
