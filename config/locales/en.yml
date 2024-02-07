@@ -1,9 +1,6 @@
 ---
 en:
   activerecord:
-    attributes:
-      link:
-        url: URL
     models:
       acts_as_taggable_on/tag: Tag
       collection: Collection
@@ -33,10 +30,6 @@ en:
       sponsor: Sponsor
       stats_heading: Stats
       version: Version
-    links_card:
-      link_card_heading: Links
-    links_form:
-      add: add another link
     navbar:
       check_existing: Check existing models
       navbar:
@@ -122,13 +115,6 @@ en:
     CC0-10: Creative Commons Zero
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
-  sites:
-    cgtrader: CGTrader
-    comicsgamesandthings: Comics, Games, and Things
-    cults3d: Cults3D
-    myminifactory: MyMiniFactory
-    theminiindex: The Mini Index
-    thingiverse: Thingiverse
   uploads:
     create:
       success: File(s) uploaded successfully.
