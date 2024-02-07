@@ -87,8 +87,15 @@ en:
       success: New creator details saved.
     destroy:
       success: Creator deleted!
+    general:
+      edit: Edit Creator
+      new: New Creator
     get_creator:
       unknown: Unknown
+    index:
+      actions_heading: Actions
+      tags_heading: Tags
+      view_unassigned: View unassigned
     new:
       title: New Creator
     update:
@@ -274,7 +281,7 @@ en:
       success: File(s) uploaded successfully.
     index:
       datafiles:
-        help: "Supported file types: %{types}"
+        help: 'Supported file types: %{types}'
         label: Select File
       library_pick:
         help: The library to upload to.
