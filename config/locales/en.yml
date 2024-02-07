@@ -5,10 +5,39 @@ en:
     demo_mode: not available in demo mode
     exit: Exit admin interface
     jobs:
+      delete_all:
+        button: Delete All Tasks
+        notice: "%{n} tasks deleted."
+      handler:
+        error: 'Couldn''t render handler: %{e}'
+        title: Handler
+      index:
+        attempts: A
+        error: Error
+        priority: P
+        running: Running
+      last_error:
+        error: 'Couldn''t render last error: %{e}'
+        title: Last error
+      mark_all_for_re_run:
+        button: Mark all for re-run
+        notice: Marked all tasks (%{n}) for re-running.
+      run:
+        alert: 'Failed to run a Task: %{e}'
+        notice: 1 Task run, apparently successfully, but who knows!
+      run_all:
+        button: Run All Tasks
+        failed: "%{failures} failed Tasks when running them."
+        none: Yawn... no Tasks run
+        success: "%{successes} Tasks run successfully"
+      show:
+        title: Task %{id}
       state:
         error: error
         queued: queued
         running: running
+      update:
+        notice: Task %{task} saved successfully
     queue_size: "%{count} jobs in queue"
     recent_models: Recent models
     task_queue: Task Queue
