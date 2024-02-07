@@ -53,3 +53,6 @@ docker-compose.yml
 
 # Generated on-the-fly
 /app/javascript/locales.json
+
+# Translation.io artefacts
+/config/locales/gettext
