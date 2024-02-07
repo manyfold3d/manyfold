@@ -44,24 +44,6 @@ en:
       hidden: hidden
     tagline: Helping you keep track of your 3d print files
     title: Manyfold
-  creators:
-    create:
-      success: New creator details saved.
-    destroy:
-      success: Creator deleted!
-    general:
-      edit: Edit Creator
-      new: New Creator
-    get_creator:
-      unknown: Unknown
-    index:
-      actions_heading: Actions
-      tags_heading: Tags
-      view_unassigned: View unassigned
-    new:
-      title: New Creator
-    update:
-      success: Creator details saved.
   general:
     delete: Delete
     download: Download
