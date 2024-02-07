@@ -383,6 +383,20 @@ en:
         label: Sorting
       threshold:
         label: Minimum count of tag for display
+    tag_settings:
+      auto_tag_new:
+        label: Automatically tag new models with
+      custom_stop_words:
+        label: Custom stop words
+      description: Add tags to all newly-scanned models, and filter out certain words ("stop words") during automatic tag creation. Affects all users.
+      filter_stop_words:
+        label: Filter out stop words
+      heading: Tagging
+      stop_words_locale:
+        label: Stop words locale
+      tag_model_directory_name:
+        help: 'Warning: Can produce a lot of tags!'
+        label: Create tags from model directory name
     update:
       success: Settings saved.
   sites:
