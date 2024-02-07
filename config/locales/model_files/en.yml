@@ -1,0 +1,25 @@
+---
+en:
+  activerecord:
+    models:
+      model_file: File
+  model_files:
+    bulk_update:
+      success: Files updated successfully.
+    destroy:
+      confirm: Are you sure you want to remove this file from your filesystem?
+      success: File deleted!
+    form:
+      presupported: Presupported?
+      printed: Printed?
+      y_up: Y Up
+    show:
+      actions_heading: Actions
+      details_heading: Details
+      digest: Digest
+      file_size: File size
+      filename: Filename
+      notes_heading: Notes
+    update:
+      failure: An error occurred and file details could not be saved.
+      success: File details saved.

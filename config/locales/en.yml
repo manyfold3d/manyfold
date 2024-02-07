@@ -1,79 +1,69 @@
 ---
 en:
-  active_admin:
-    dashboard: Dashboard
   activerecord:
-    attributes:
-      link:
-        url: URL
-      model:
-        caption: Caption
-        collection_id: Collection
-        creator_id: Creator
-        library_id: Library
-        name: Name
-        notes: Notes
-        preview_file: Preview
     models:
-      collection: Collection
-      model: Model
-      model_file: File
+      acts_as_taggable_on/tag: Tag
+      delayed/backend/active_record/job: Task
   application:
+    content_header:
+      sort:
+        name: Sort by Name
+        time: Sort by Time
     demo_mode: This instance is in demo mode. You cannot add or remove models, but you can do everything else.
+    filters_card:
+      missing_tags: Missing tags
+      remove_filter: Remove filter
+      search: Search
+      title: Filters
+      unknown: Unknown
+    footer:
+      by_html: Designed and built by <a href="https://floppy.org.uk">James</a> with help from <a href="https://github.com/manyfold3d/manyfold/graphs/contributors">our contributors</a>.
+      chat: Chat
+      code: Code
+      community_heading: Community
+      development_heading: Development
+      issues: Issues
+      logo: Logo
+      open_source_html: Open Source under the <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license noopener">MIT license</a>.
+      social: Social
+      sponsor: Sponsor
+      stats_heading: Stats
+      version: Version
     navbar:
       check_existing: Check existing models
+      navbar:
+        toggler:
+          label: Toggle navigation
       scan: Scan
       scan_changes: Scan for changes
       scanning: Scanning
-      upload: Upload
+      search: Search
+      settings: Settings
+    tag_list:
+      hidden: hidden
     tagline: Helping you keep track of your 3d print files
     title: Manyfold
-  collections:
-    collection:
-      no_preview: no preview availiable
-    create:
-      success: New collection details saved.
-    destroy:
-      success: Collection deleted!
-    general:
-      edit: Edit Collection
-      new: New Collection
-    index:
-      view_unassigned_models: View unassigned
-    update:
-      success: Collection details saved.
-  creators:
-    create:
-      success: New creator details saved.
-    destroy:
-      success: Creator deleted!
-    update:
-      success: Creator details saved.
   general:
     delete: Delete
+    download: Download
     edit: Edit
+    expand: Expand
     new: New
     save: Save
+  home:
+    index:
+      how_long_ago: "%{time} ago"
+      recent: Recently-added Models
+      search:
+        placeholder: What are you looking for?
+  kaminari:
+    paginator:
+      label: Page navigation
   layouts:
     application:
       alert:
         danger: Danger
         info: Info
-  libraries:
-    create:
-      failure: An error occurred, and the library could not be saved.
-      success: New library created!
-    destroy:
-      success: Library deleted!
-    general:
-      new: New Library
-    scan:
-      success: Library scan started.
-    scan_all:
-      success: Scan started for all libraries.
-    update:
-      failure: An error occurred, and the library could not be saved.
-      success: Library details saved.
   licenses:
     CC-BY-40: Creative Commons Attribution
     CC-BY-NC-40: Creative Commons Attribution NonCommercial
@@ -85,115 +75,12 @@ en:
     CC0-10: Creative Commons Zero
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
-  model_files:
-    bulk_update:
-      success: Files updated successfully.
-    destroy:
-      success: File deleted!
-    update:
-      failure: An error occurred and file details could not be saved.
-      success: File details saved.
-  models:
-    bulk_update:
-      success: Models updated successfully.
-    destroy:
-      success: Model deleted!
-    merge:
-      success: Models merged successfully.
-    update:
-      failure: An error occurred and the model details could not be saved.
-      success: Model details saved.
-  problems:
-    categories:
-      duplicate: Duplicate files
-      empty: Model has no files
-      inefficient: Inefficient formats
-      missing: Missing files or folders
-      nesting: Model contains other models
-      no_3d_model: Model has no 3D files
-      no_image: Model has no image files
-    filters:
-      apply_filters: Apply
-      category: Category
-      clear_filters: Clear
-      severity: Severity
-      show_ignored: Show hidden items
-      title: Filters
-      type: Object Type
-    index:
-      ignore: Hide
-      no_problems: No problems matched the current filters.
-      unignore: Show
-    library_missing:
-      title: Folder not found
-    model_empty:
-      description: This model contains no files. Either delete it, or find where its files went!
-      title: No files
-    model_file_duplicate:
-      description: This file is duplicated in other models. You may wish to remove some.
-      title: Duplicated file
-    model_file_inefficient:
-      description: This file is in %{note}, an inefficient file format. Consider converting it to a binary format such as 3MF to save disk space.
-      title: Inefficient format
-    model_file_missing:
-      description: This file is missing on disk; either delete it, or find where it went!
-      title: File not found
-    model_missing:
-      description: The folder for this model is missing on disk; either delete it, or find where it went!
-      title: Folder not found
-    model_nesting:
-      description: The model folder on disk contains other models. You may wish to merge them into this one, or move them out.
-      title: Contains other models
-      warning: Bulk merging moves all files from the models above into this one, and removes them. File metadata is preserved, but any model metadata will be lost!
-    model_no_3d_model:
-      description: This model contains no 3D files. That is unlikely to be correct.
-      title: No 3D files in model
-    model_no_image:
-      description: This model contains no image files. Adding one might make it easier to browse.
-      title: No image files in model
-    severities:
-      danger: Danger
-      info: Info
-      silent: Ignored
-      warning: Warning
-    update:
-      ignored: 'Problem hidden on "%{name}": %{message}'
-      unignored: 'Problem restored on "%{name}": %{message}'
   renderer:
-    style:
-      lambert: Realistically shaded
-      normals: Surface direction
-  settings:
-    problem_settings:
-      description: Change the severity of detected problems, or ignore them completely.
-      title: Problem Detection
-    renderer_settings:
-      auto_load_max_size:
-        always: Always
-        label: Automatically load previews
-        never: Never
-        under_1024: Up to 1024 MB
-        under_128: Up to 128 MB
-        under_16: Up to 16 MB
-        under_2: Up to 2 MB
-        under_256: Up to 256 MB
-        under_32: Up to 32 MB
-        under_4: Up to 4 MB
-        under_512: Up to 512 MB
-        under_64: Up to 64 MB
-        under_8: Up to 8 MB
-    update:
-      success: Settings saved.
-  sites:
-    cgtrader: CGTrader
-    comicsgamesandthings: Comics, Games, and Things
-    cults3d: Cults3D
-    myminifactory: MyMiniFactory
-    theminiindex: The Mini Index
-    thingiverse: Thingiverse
-  uploads:
-    create:
-      success: File(s) uploaded successfully.
+    errors:
+      canvas: 'Could not find #webgl canvas!'
+      load: Load Error
+      webglrenderer: Could not create renderer!
+    load: Load
   views:
     pagination:
       first: "« First"

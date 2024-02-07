@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe Library do
   before do
     allow(File).to receive(:exist?).with("/library1").and_return(true)
+    allow(File).to receive(:exist?).with("/nope").and_return(false)
   end
 
   it "is not valid without a path" do
@@ -11,6 +12,12 @@ RSpec.describe Library do
 
   it "is valid if a path is specified" do
     expect(build(:library, path: "/library1")).to be_valid
+  end
+
+  it "is invalid if a bad path is specified" do
+    l = build(:library, path: "/nope")
+    expect(l).not_to be_valid
+    expect(l.errors[:path].first).to eq "could not be found on disk"
   end
 
   it "has many models" do

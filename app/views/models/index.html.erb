@@ -15,18 +15,18 @@
 <% end %>
 
 <% content_for :sidebar do %>
-  <%= card :secondary, "Actions" do %>
-    <%= link_to "Bulk Edit", edit_models_path(@filters), class: "btn btn-secondary mb-3 me-3" %>
+  <%= card :secondary, t(".actions_heading") do %>
+    <%= link_to t(".bulk_edit"), edit_models_path(@filters), class: "btn btn-secondary mb-3 me-3" %>
     <% if current_user.tag_cloud_settings["heatmap"] && Model.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1").count > 0 %>
-      <%= link_to "Untagged", models_path(tag: [""]), class: "btn btn-secondary mb-3 me-3" %>
+      <%= link_to t(".untagged"), models_path(tag: [""]), class: "btn btn-secondary mb-3 me-3" %>
     <% end %>
     <% if Model.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model')<1").count > 0 %>
-      <%= link_to "Missing URL", models_path(link: ""), class: "btn btn-secondary mb-3 me-3" %>
+      <%= link_to t(".missing_url"), models_path(link: ""), class: "btn btn-secondary mb-3 me-3" %>
     <% end %>
   <% end %>
   <%= render "filters_card" %>
   <% unless @tags.empty? %>
-    <%= card :secondary, "Tags", collapse: "md" do %>
+    <%= card :secondary, t(".tags_heading"), collapse: "md" do %>
       <%= render "tag_list", tags: @tags - (@tag || []), muted_tags: @tags - @commontags %>
     <% end %>
   <% end %>

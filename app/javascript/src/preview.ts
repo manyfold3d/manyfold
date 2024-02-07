@@ -178,7 +178,7 @@ class ObjectPreview {
   onLoadError (): void {
     this.progressBar.classList.add('bg-danger')
     this.progressBar.style.width = this.progressBar.ariaValueNow = '100%'
-    this.progressLabel.textContent = 'Load Error'
+    this.progressLabel.textContent = window.i18n.t('renderer.errors.load')
   }
 
   render (): void {
@@ -266,12 +266,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set up global WebGL context and associated THREE.js renderer
   Manyfold.canvas = document.getElementById('webgl') as HTMLCanvasElement
   if (Manyfold.canvas === null) {
-    console.log('Could not find #webgl canvas!')
+    console.log(window.i18n.t('renderer.errors.canvas'))
     return
   }
   Manyfold.renderer = new THREE.WebGLRenderer({ canvas: Manyfold.canvas })
   if (Manyfold.renderer === null) {
-    console.log('Could not create renderer!')
+    console.log(window.i18n.t('renderer.errors.webglrenderer'))
     return
   }
   resizeRenderer()

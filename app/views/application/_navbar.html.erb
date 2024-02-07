@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class='container-fluid'>
     <a class="navbar-brand ms-2" href="<%= root_path %>"><%= image_tag "logo.png", alt: t("application.title"), title: t("application.title"), height: "40px", class: "me-2" %> <span class="d-lg-none"><%= t "application.title" %></span></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="<%= t ".navbar.toggler.label" %>">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse row" id="navbar">
@@ -35,7 +35,7 @@
         </li>
         <li class="nav-item">
           <% if @scan_in_progress %>
-            <%= nav_link "", t(".scanning"), "/admin/tasks", style: "btn btn-outline-warning btn-sm me-1 mt-lg-1", icon_style: "spinner-border spinner-border-sm" %>
+            <%= nav_link "", t(".scanning"), "/admin/delayed_backend_active_record_jobs", style: "btn btn-outline-warning btn-sm me-1 mt-lg-1", icon_style: "spinner-border spinner-border-sm" %>
           <% else %>
             <div class="btn-group">
               <button type="button" data-bs-toggle="dropdown" aria-expanded="false"
@@ -59,11 +59,11 @@
           </li>
         <% end %>
         <li class="nav-item">
-          <%= nav_link "sliders", "Settings", user_settings_path(current_user), text_style: "d-lg-none" %>
+          <%= nav_link "sliders", t(".settings"), user_settings_path(current_user), text_style: "d-lg-none" %>
         </li>
         <li class="nav-item">
           <%= form_with url: models_path, method: :get, role: "search" do |f| %>
-            <%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: "Search", aria_label: "Search", aria_describedby: "button-search", value: params[:q], autofocus: true %>
+            <%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: t(".search"), aria_label: t(".search"), aria_describedby: "button-search", value: params[:q], autofocus: true %>
           <% end %>
         </li>
       </ul>

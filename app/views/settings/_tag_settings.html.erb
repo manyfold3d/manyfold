@@ -1,36 +1,36 @@
 <div class="card">
-  <h3 class="card-header">Tagging</h3>
+  <h3 class="card-header"><%= t(".heading") %></h3>
   <div class="card-body">
     <p class='lead'>
-      Add tags to all newly-scanned models, and filter out certain words ("stop words") during automatic tag creation. Affects all users.
+      <%= t(".description") %>
     </p>
     <div class="row mb-2">
-      <%= form.label "Automatically tag new models with", for: "model_tags[auto_tag_new]", class: "col-sm-4 col-form-label" %>
+      <%= form.label t(".auto_tag_new.label"), for: "model_tags[auto_tag_new]", class: "col-sm-4 col-form-label" %>
       <div class="col-sm-8">
         <%= form.text_field "model_tags[auto_tag_new]", value: SiteSettings.model_tags_auto_tag_new, class: "form-control" %>
       </div>
     </div>
     <div class="row mb-2">
-      <%= form.label "Create tags from model directory name", for: "model_tags[tag_model_directory_name]", class: "col-sm-4 col-form-label" %>
+      <%= form.label t(".tag_model_directory_name.label"), for: "model_tags[tag_model_directory_name]", class: "col-sm-4 col-form-label" %>
       <div class="col-sm-8 form-check form-switch">
         <%= form.check_box "model_tags[tag_model_directory_name]", checked: SiteSettings.model_tags_tag_model_directory_name, class: "form-check-input" %>
-        <small>Warning: Can produce a lot of tags!</small>
+        <small><%= t(".tag_model_directory_name.help") %></small>
       </div>
     </div>
     <div class="row mb-2">
-      <%= form.label "Filter out stop words", for: "model_tags[filter_stop_words]", class: "col-sm-4 col-form-label" %>
+      <%= form.label t(".filter_stop_words.label"), for: "model_tags[filter_stop_words]", class: "col-sm-4 col-form-label" %>
       <div class="col-sm-8 form-check form-switch">
         <%= form.check_box "model_tags[filter_stop_words]", checked: SiteSettings.model_tags_filter_stop_words, class: "form-check-input" %>
       </div>
     </div>
     <div class="row mb-2">
-      <%= form.label "Stop words locale", for: "model_tags[stop_words_locale]", class: "col-sm-4 col-form-label" %>
+      <%= form.label t(".stop_words_locale.label"), for: "model_tags[stop_words_locale]", class: "col-sm-4 col-form-label" %>
       <div class="col-sm-8">
         <%= form.text_field "model_tags[stop_words_locale]", value: SiteSettings.model_tags_stop_words_locale, class: "form-control" %>
       </div>
     </div>
     <div class="row mb-2">
-      <%= form.label "Custom stop words", for: "model_tags[custom_stop_words]", class: "col-sm-4 col-form-label" %>
+      <%= form.label t(".custom_stop_words.label"), for: "model_tags[custom_stop_words]", class: "col-sm-4 col-form-label" %>
       <div class="col-sm-8">
         <%= form.text_field "model_tags[custom_stop_words]", value: SiteSettings.model_tags_custom_stop_words, class: "form-control" %>
       </div>

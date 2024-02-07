@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-ActiveAdmin.register_page "Dashboard" do
+ActiveAdmin.register_page I18n.t("active_admin.dashboard") do
   menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
 
   content title: proc { I18n.t("active_admin.dashboard") } do
     columns do
       column do
-        panel "Recent Models" do
+        panel I18n.t("active_admin.recent_models") do
           table do
             tbody do
               Model.recent.limit(20).map do |model|
@@ -20,17 +20,17 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column do
-        panel "Task Queue" do
+        panel I18n.t("active_admin.task_queue") do
           h2 do
-            "#{Delayed::Job.count} jobs in queue"
+            I18n.t("active_admin.queue_size", count: Delayed::Job.count)
           end
           table do
             tbody do
               Delayed::Job.order(locked_at: :desc).limit(20).map do |job|
                 tr do
-                  td { link_to(job.id, admin_task_path(job)) }
-                  td { job.locked_at ? "running" : "queued" }
-                  td { job.last_error ? "error" : "" }
+                  td { link_to(job.id, admin_delayed_backend_active_record_job_path(job)) }
+                  td { job.locked_at ? I18n.t("active_admin.jobs.state.running") : I18n.t("active_admin.jobs.state.queued") }
+                  td { job.last_error ? I18n.t("active_admin.jobs.state.error") : "" }
                 end
               end
             end

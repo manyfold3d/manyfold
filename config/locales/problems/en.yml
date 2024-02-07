@@ -1,0 +1,61 @@
+---
+en:
+  problems:
+    categories:
+      duplicate: Duplicate files
+      empty: Model has no files
+      inefficient: Inefficient formats
+      missing: Missing files or folders
+      nesting: Model contains other models
+      no_3d_model: Model has no 3D files
+      no_image: Model has no image files
+    filters:
+      apply_filters: Apply
+      category: Category
+      clear_filters: Clear
+      severity: Severity
+      show_ignored: Show hidden items
+      title: Filters
+      type: Object Type
+    index:
+      ignore: Hide
+      no_problems: No problems matched the current filters.
+      unignore: Show
+    library:
+      missing:
+        title: Folder not found
+    model:
+      empty:
+        description: This model contains no files. Either delete it, or find where its files went!
+        title: No files
+      missing:
+        description: The folder for this model is missing on disk; either delete it, or find where it went!
+        title: Folder not found
+      nesting:
+        description: The model folder on disk contains other models. You may wish to merge them into this one, or move them out.
+        title: Contains other models
+        warning: Bulk merging moves all files from the models above into this one, and removes them. File metadata is preserved, but any model metadata will be lost!
+      no_3d_model:
+        description: This model contains no 3D files. That is unlikely to be correct.
+        title: No 3D files in model
+      no_image:
+        description: This model contains no image files. Adding one might make it easier to browse.
+        title: No image files in model
+    model_file:
+      duplicate:
+        description: This file is duplicated in other models. You may wish to remove some.
+        title: Duplicated file
+      inefficient:
+        description: This file is in %{note}, an inefficient file format. Consider converting it to a binary format such as 3MF to save disk space.
+        title: Inefficient format
+      missing:
+        description: This file is missing on disk; either delete it, or find where it went!
+        title: File not found
+    severities:
+      danger: Danger
+      info: Info
+      silent: Ignored
+      warning: Warning
+    update:
+      ignored: 'Problem hidden on "%{name}": %{message}'
+      unignored: 'Problem restored on "%{name}": %{message}'

@@ -15,7 +15,7 @@ class LibrariesController < ApplicationController
 
   def new
     @library = Library.new
-    @title = "New Library"
+    @title = t(".title")
     authorize @library
   end
 

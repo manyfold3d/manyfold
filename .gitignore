@@ -50,3 +50,6 @@ docker-compose.yml
 !/app/assets/builds/.keep
 
 /coverage
+
+# Generated on-the-fly
+/app/javascript/locales.json

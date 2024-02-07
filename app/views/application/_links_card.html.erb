@@ -1,8 +1,8 @@
 <% unless links.empty? %>
-  <%= card :secondary, "Links" do %>
+  <%= card :secondary, t(".link_card_heading") do %>
     <ul class='links'>
       <% links.each do |link| %>
-        <li><%= link_to t("sites.#{link.site}"), link.url %></li>
+        <li><%= link_to t("sites.%{site}" % {site: link.site}), link.url %></li>
       <% end %>
     </ul>
   <% end %>

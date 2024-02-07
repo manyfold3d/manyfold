@@ -10,7 +10,7 @@
   <div class="col-8 offset-md-2">
     <%= form_with url: models_path, method: :get, class: "mt-3" do |f| %>
       <div class="input-group mb-3">
-        <%= f.text_field :q, class: "form-control", placeholder: "What are you looking for?", aria_label: "Search", aria_describedby: "button-search", value: @query, autofocus: true %>
+        <%= f.text_field :q, class: "form-control", placeholder: t(".search.placeholder"), aria_label: "Search", aria_describedby: "button-search", value: @query, autofocus: true %>
         <%= f.submit "Search", class: "btn btn-primary", name: nil %>
       </div>
     <% end %>
@@ -19,7 +19,7 @@
 <% if @recent %>
   <div class="row row-cols-2">
     <div class="col-8 offset-md-2">
-      <p class="lead">Recently-added Models</p>
+      <p class="lead"><%= t(".recent") %></p>
       <table class="table">
         <% @recent.each do |model| %>
         <tr>
@@ -30,7 +30,7 @@
             <%= status_badges(model) %>
           </td>
           <td><%= link_to model.library.name, model.library %></td>
-          <td><%= time_ago_in_words(model.created_at) %> ago</td>
+          <td><%= t(".how_long_ago", time: time_ago_in_words(model.created_at)) %></td>
         </tr>
         <% end %>
       </table>

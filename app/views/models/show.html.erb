@@ -3,14 +3,14 @@
     <a data-field="model[name]" data-path="<%= library_model_path(@model.library, @model) %>" contenteditable=true>
       <%= @model.name %>
     </a>
-    <%= link_to icon("search", "Search the Internet for models with this name"),
+    <%= link_to icon("search", t(".search")),
           "https://yeggi.com/q/#{ERB::Util.url_encode(@model.name)}/",
           class: "btn btn-outline", target: "manyfold_search" %>
   </h1>
 <% end %>
 
 <% content_for :items do %>
-  <h2><a name="files">Files</a></h2>
+  <h2><a name="files"><%= t(".files") %></a></h2>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
     <%= render partial: "file", collection: @groups.delete(nil) %>
   </div>
@@ -23,29 +23,29 @@
 <% end %>
 
 <% content_for :sidebar do %>
-  <%= card :secondary, "Model Details" do %>
+  <%= card :secondary, t(".model_details") do %>
     <table class="table table-borderless table-sm">
       <% if @model.creator %>
         <tr>
-          <td><%= icon "person", "Creator" %></td>
+          <td><%= icon "person", Creator.model_name.human %></td>
           <td><%= link_to @model.creator.name, models_path((@filters || {}).merge(creator: @model.creator)) %></td>
         </tr>
       <% end %>
       <% if @model.collection %>
         <tr>
-          <td><%= icon "collection", "Collections" %></td>
+          <td><%= icon "collection", Collection.model_name.human.pluralize %></td>
           <td><%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection.id)) %></td>
         </tr>
       <% end %>
       <% if @model.library %>
         <tr>
-          <td><%= icon "boxes", "Library" %></td>
+          <td><%= icon "boxes", Library.model_name.human %></td>
           <td><%= link_to @model.library.name, models_path((@filters || {}).merge(library: @model.library)) %></td>
         </tr>
       <% end %>
       <% if @model.license %>
         <tr>
-          <td><%= icon "card-heading", "License" %></td>
+          <td><%= icon "card-heading", t(".license") %></td>
           <td>
             <%= Spdx.licenses[@model.license]&.fetch("reference") ?
               link_to(t_license(@model.license), Spdx.licenses[@model.license]["reference"]) :
@@ -54,29 +54,29 @@
         </tr>
       <% end %>
       <tr>
-        <td><%= icon "folder", "Path" %></td>
+        <td><%= icon "folder", t(".path") %></td>
         <td>
           <code><%= @model.path %></code>
           <% unless @model.contains_other_models? %>
-            <%= button_tag("Organize Files", class: "btn btn-warning btn-sm float-end", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? %>
+            <%= button_tag(t(".organize.button_text"), class: "btn btn-warning btn-sm float-end", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? %>
           <% end %>
         </td>
       </tr>
       <tr>
-        <td><%= icon "tag", "Tags" %></td>
+        <td><%= icon "tag", t(".tags") %></td>
         <td><%= render "tag_list", tags: @model.tags.sort_by(&:taggings_count) %></td>
       </tr>
     </table>
-    <%= link_to safe_join([icon("pencil", "Edit"), "Edit"], " "), edit_library_model_path(@library, @model), class: "btn btn-primary" %>
-    <%= link_to safe_join([icon("trash", "Delete"), "Delete"], " "), library_model_path(@library, @model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: "This will delete files. Are you sure you want to continue?"}} %>
+    <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_library_model_path(@library, @model), class: "btn btn-primary" %>
+    <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), library_model_path(@library, @model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: t("models.destroy.confirm")}} %>
   <% end %>
 
   <% unless @model.parents.empty? %>
-    <%= card :danger, "Merge" do %>
+    <%= card :danger, t(".merge.heading") do %>
       <p>
-        Merging moves all files from this model to the target, and removes this model. File metadata is preserved, but any model metadata will be lost!
+        <%= t(".merge.warning") %>
       </p>
-      <strong>Merge with:</strong>
+      <strong><%= t(".merge.with") %>:</strong>
       <% @model.parents.each do |target| %>
         <%= link_to target.name, merge_library_model_path(@library, @model, target: target.id), class: "btn btn-danger", method: :post %>
       <% end %>
@@ -85,18 +85,18 @@
 
   <%= render partial: "problem", collection: @model.problems.visible(current_user.problem_settings) %>
 
-  <%= card(:secondary, "Notes") do %>
+  <%= card(:secondary, t(".notes_heading")) do %>
     <p class="card-text"><%= sanitize @model.notes %></p>
   <% end if @model.notes %>
 
-  <%= card :secondary, "Files" do %>
+  <%= card :secondary, t(".files_card.heading") do %>
     <a href="#files">Top</a>
     <ul>
       <% @groups.each_pair do |group, files| %>
         <li><a href="#<%= group.parameterize %>"><%= group %></a></li>
       <% end %>
     </ul>
-    <%= link_to "Edit all files", edit_library_model_model_files_path(@library, @model), class: "btn btn-secondary" %>
+    <%= link_to t(".files_card.bulk_edit"), edit_library_model_model_files_path(@library, @model), class: "btn btn-secondary" %>
   <% end %>
 
   <%= render "links_card", links: @model.links %>
@@ -105,23 +105,20 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="confirmMoveLabel">Organize files</h5>
+          <h5 class="modal-title" id="confirmMoveLabel"><%= t(".organize.button_text") %></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <p>
-            The folder and files that make up this model will be moved from:<br>
-            <code><%= @model.path %></code><br>
-            to<br>
-            <code><%= @model.formatted_path %></code>
+            <%= t(".organize.confirm.summary_html", from: @model.path, to: @model.formatted_path) %>
           </p>
           <p>
-            Are you sure you want to do this?
+            <%= t(".organize.confirm.are_you_sure") %>
           </p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, cancel</button>
-          <%= button_to "Yes, move the files", library_model_path(@library, @model, "model[organize]": true), method: :patch, class: "btn btn-warning" %>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t(".organize.confirm.no") %></button>
+          <%= button_to t(".organize.confirm.yes"), library_model_path(@library, @model, "model[organize]": true), method: :patch, class: "btn btn-warning" %>
         </div>
       </div>
     </div>

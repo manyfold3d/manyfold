@@ -15,4 +15,10 @@ import 'src/bulk_edit'
 import 'src/model_edit'
 import 'src/tag'
 
+// Load i18n definitions
+import { I18n } from 'i18n-js'
+import locales from './locales.json'
+
+window.i18n = new I18n(locales)
+
 Rails.start()

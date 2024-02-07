@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Manyfold"
+  config.site_title = proc { I18n.t("application.title") }
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -324,7 +324,7 @@ ActiveAdmin.setup do |config|
 
   config.namespace :admin do |admin|
     admin.build_menu :utility_navigation do |menu|
-      menu.add label: "Exit admin interface", url: "/"
+      menu.add label: I18n.t("active_admin.exit"), url: "/"
     end
   end
 end

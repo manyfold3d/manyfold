@@ -1,0 +1,58 @@
+---
+en:
+  activerecord:
+    errors:
+      models:
+        library:
+          attributes:
+            path:
+              not_found: could not be found on disk
+  libraries:
+    create:
+      failure: An error occurred, and the library could not be saved.
+      success: New library created!
+    destroy:
+      success: Library deleted!
+    form:
+      add_line: Add Line
+      icon:
+        help_html: Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a>
+      library_regex:
+        help: Check for models missing tags matching these regex.
+    general:
+      edit: Edit Library
+      new: New Library
+    new:
+      path:
+        help: The complete path to your library on disk.
+        placeholder: Filesystem path
+      title: New Library
+    scan:
+      success: Library scan started.
+    scan_all:
+      success: Scan started for all libraries.
+    update:
+      failure: An error occurred, and the library could not be saved.
+      success: Library details saved.
+  settings:
+    library_settings:
+      caption:
+        help: Hover over library in header to see caption.
+        label: Caption
+      description: See library details and modify.
+      heading: Libaries
+      icon:
+        help_html: Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a>
+        label: Icon
+      name:
+        label: Name
+      notes:
+        help: Notes are just on this page for now.
+        label: Notes
+      path:
+        label: Path
+      tag_regex:
+        check: Check
+        help: Check for models missing tags matching these regex.
+        label: Required Tags
+        search_missing: Search Missing

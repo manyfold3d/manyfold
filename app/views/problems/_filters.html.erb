@@ -20,7 +20,7 @@
                      .each do |cat| %>
                   <option
                     value="<%= cat %>"
-                    <%= "selected" if params[:category]&.include?(cat.to_s) %>><%= t("problems.categories.#{cat}") %></option>
+                    <%= "selected" if params[:category]&.include?(cat.to_s) %>><%= t("problems.categories.%{cat}" % {cat: cat}) %></option>
                 <% end %>
               </select>
             </div>
@@ -30,7 +30,7 @@
                 <% (Problem::SEVERITIES - [:silent]).each do |sev| %>
                   <option
                     value="<%= sev %>"
-                    <%= "selected" if params[:severity]&.include?(sev.to_s) %>><%= t("problems.severities.#{sev}") %></option>
+                    <%= "selected" if params[:severity]&.include?(sev.to_s) %>><%= t("problems.severities.%{sev}" % {sev: sev}) %></option>
                 <% end %>
               </select>
             </div>

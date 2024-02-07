@@ -16,9 +16,10 @@ data:
   # Locale files or `File.find` patterns where translations are read from:
   read:
     ## Default:
-    # - config/locales/%{locale}.yml
+    - config/locales/%{locale}.yml
     ## More files:
-    # - config/locales/**/*.%{locale}.yml
+    - config/locales/**/%{locale}.yml
+    - config/locales/**/*.%{locale}.yml
 
   # Locale files to write new keys to, based on a list of key pattern => file rules. Matched from top to bottom:
   # `i18n-tasks normalize -p` will force move the keys according to these rules
@@ -119,11 +120,18 @@ search:
 ## Consider these keys used:
 ignore_unused:
 - 'activerecord.attributes.*'
+- 'activerecord.errors.*'
 - 'activerecord.models.*'
 - 'problems.categories.*'
 - 'licenses.*'
+- 'sites.*'
 - 'problems.update.ignored'
 - 'problems.update.unignored'
+- 'problems.model.*'
+- 'problems.model_file.*'
+- 'problems.severities.*'
+- 'active_admin.exit' # Used in initializer, not detected automatically
+- 'renderer.errors.*' # Used client side via i18n-js
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'

@@ -3,9 +3,9 @@
   "private": true,
   "scripts": {
     "lint:ts": "ts-standard --fix",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
+    "build": "bundle exec i18n export --config=./config/i18n-js.yml && esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
-    "typecheck": "tsc --project tsconfig.json --noEmit"
+    "typecheck": "bundle exec i18n export --config=./config/i18n-js.yml && tsc --project tsconfig.json"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.23.3",
@@ -16,6 +16,7 @@
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.3",
     "esbuild": "^0.20.0",
+    "i18n-js": "^4.3.2",
     "jquery": "^3.7.1",
     "masonry-layout": "^4.2.2",
     "popper.js": "^1.16.1",
@@ -27,6 +28,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.10",
+    "@types/i18n-js": "^3.8.9",
     "@types/jquery": "^3.5.29",
     "@types/node": "^18.19.14",
     "@types/selectize": "^0.12.39",

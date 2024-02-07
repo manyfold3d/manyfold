@@ -1,4 +1,4 @@
-<h1>Settings</h1>
+<h1><%= t ".title" %></h1>
 
 <%= form_with url: user_settings_path(user: @user), method: :patch do |form| %>
   <div class="row mb-4">
@@ -32,11 +32,11 @@
 
   <div class="row mb-4">
     <div class='col'>
-      <button type="submit" class="btn btn-primary"><%= icon("save", "Save") %> Save Settings</button>
+      <button type="submit" class="btn btn-primary"><%= icon("save", t(".submit")) %> <%= t(".submit") %></button>
     </div>
     <% if current_user.admin? %>
       <div class='col text-end'>
-        <%= link_to safe_join([icon("tools", "Administration"), "Advanced Administration"], " "), "/admin", class: "btn btn-danger #{SiteSettings.demo_mode? ? "disabled" : ""}" %>
+        <%= link_to safe_join([icon("tools", t(".advanced_admin")), t(".advanced_admin")], " "), "/admin", class: "btn btn-danger #{SiteSettings.demo_mode? ? "disabled" : ""}" %>
       </div>
     <% end %>
     </p>

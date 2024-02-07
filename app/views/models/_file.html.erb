@@ -18,9 +18,9 @@
           <p class="card-text"><%= sanitize file.caption %></p>
         <% end %>
         <%= link_to "Details", library_model_model_file_path(@library, @model, file), {class: "btn btn-primary"} %>
-        <%= link_to icon("cloud-download", "Download"), library_model_model_file_path(@library, @model, file, file.extension.to_sym), {class: "btn btn-secondary"} %>
+        <%= link_to icon("cloud-download", t("general.download")), library_model_model_file_path(@library, @model, file, file.extension.to_sym), {class: "btn btn-secondary"} %>
         <%= form.hidden_field :preview_file_id, value: file.id %>
-        <%= form.button icon("bookmark-heart", "Set as preview"), class: "btn btn-secondary #{(file == @model.preview_file) ? "disabled" : ""}" %>
+        <%= form.button icon("bookmark-heart", t(".set_as_preview")), class: "btn btn-secondary #{(file == @model.preview_file) ? "disabled" : ""}" %>
       <% end %>
     </div>
   </div>

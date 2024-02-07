@@ -11,7 +11,7 @@ module ApplicationHelper
           options[:collapse] ?
             safe_join([
               title,
-              tag.span(icon("arrows-expand", "Expand"), class: "float-end d-#{options[:collapse]}-none"),
+              tag.span(icon("arrows-expand", t("general.expand")), class: "float-end d-#{options[:collapse]}-none"),
               tag.a(
                 nil,
                 class: "link-unstyled stretched-link d-#{options[:collapse]}-none",

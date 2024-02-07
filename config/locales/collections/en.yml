@@ -1,0 +1,25 @@
+---
+en:
+  activerecord:
+    models:
+      collection: Collection
+  collections:
+    collection:
+      no_preview: no preview availiable
+    create:
+      success: New collection details saved.
+    destroy:
+      success: Collection deleted!
+    general:
+      edit: Edit Collection
+      new: New Collection
+    get_collection:
+      unknown: Unknown
+    index:
+      actions_heading: Actions
+      tags_heading: Tags
+      view_unassigned_models: View unassigned
+    new:
+      title: New Collection
+    update:
+      success: Collection details saved.
