@@ -3,7 +3,6 @@ en:
   activerecord:
     models:
       acts_as_taggable_on/tag: Tag
-      collection: Collection
       delayed/backend/active_record/job: Task
   application:
     content_header:
@@ -45,26 +44,6 @@ en:
       hidden: hidden
     tagline: Helping you keep track of your 3d print files
     title: Manyfold
-  collections:
-    collection:
-      no_preview: no preview availiable
-    create:
-      success: New collection details saved.
-    destroy:
-      success: Collection deleted!
-    general:
-      edit: Edit Collection
-      new: New Collection
-    get_collection:
-      unknown: Unknown
-    index:
-      actions_heading: Actions
-      tags_heading: Tags
-      view_unassigned_models: View unassigned
-    new:
-      title: New Collection
-    update:
-      success: Collection details saved.
   creators:
     create:
       success: New creator details saved.
