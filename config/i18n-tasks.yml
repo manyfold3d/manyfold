@@ -119,6 +119,7 @@ search:
 ## Consider these keys used:
 ignore_unused:
 - 'activerecord.attributes.*'
+- 'activerecord.errors.*'
 - 'activerecord.models.*'
 - 'problems.categories.*'
 - 'licenses.*'
