@@ -375,6 +375,18 @@ en:
       advanced_admin: Advanced Administration
       submit: Save Settings
       title: Settings
+    tag_cloud_settings:
+      heading: Tag Cloud
+      heatmap:
+        label: Display tag count for individual tags
+      hide_unrelated:
+        label: Hide unrelated tags in filtered lists
+      keypair:
+        label: Use delimiter to represent keypairs
+      sorting:
+        label: Sorting
+      threshold:
+        label: Minimum count of tag for display
     update:
       success: Settings saved.
   sites:

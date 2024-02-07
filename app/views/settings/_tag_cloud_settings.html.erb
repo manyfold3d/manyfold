@@ -1,26 +1,26 @@
 <div class="card mb-2">
-  <h3 class="card-header">Tag Cloud</h3>
+  <h3 class="card-header"><%= t(".heading") %></h3>
   <div class="card-body">
     <div class="row">
-      <%= form.label "Minimum count of tag for display", for: "tag_cloud[threshold]", class: "col col-form-label" %>
+      <%= form.label t(".threshold.label"), for: "tag_cloud[threshold]", class: "col col-form-label" %>
       <div class="col">
         <%= form.text_field "tag_cloud[threshold]", value: @user.tag_cloud_settings["threshold"], class: "form-control" %>
       </div>
     </div>
     <div class="row">
-      <%= form.label "Display tag count for individual tags", for: "tag_cloud[heatmap]", class: "col col-form-label" %>
+      <%= form.label t(".heatmap.label"), for: "tag_cloud[heatmap]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
         <%= form.check_box "tag_cloud[heatmap]", checked: @user.tag_cloud_settings["heatmap"], class: "form-check-input" %>
       </div>
     </div>
     <div class="row">
-      <%= form.label "Hide unrelated tags in filtered lists", for: "tag_cloud[hide_unrelated]", class: "col col-form-label" %>
+      <%= form.label t(".hide_unrelated.label"), for: "tag_cloud[hide_unrelated]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
         <%= form.check_box "tag_cloud[hide_unrelated]", checked: @user.tag_cloud_settings["hide_unrelated"], class: "form-check-input" %>
       </div>
     </div>
     <div class="row">
-      <%= form.label "Sorting", for: "tag_cloud[sorting]", class: "col col-form-label" %>
+      <%= form.label t(".sorting.label"), for: "tag_cloud[sorting]", class: "col col-form-label" %>
       <div class="col">
         <%= form.select "tag_cloud[sorting]", ["frequency", "alphabetical"],
               {selected: @user.tag_cloud_settings["sorting"]},
@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="row mb-2">
-      <%= form.label "Use delimiter to represent keypairs", for: "tag_cloud[keypair]", class: "col col-form-label" %>
+      <%= form.label t(".keypair.label"), for: "tag_cloud[keypair]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
         <%= form.check_box "tag_cloud[keypair]", checked: @user.tag_cloud_settings["keypair"], class: "form-check-input" %>
       </div>
