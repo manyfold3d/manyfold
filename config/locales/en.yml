@@ -290,10 +290,6 @@ en:
     update:
       ignored: 'Problem hidden on "%{name}": %{message}'
       unignored: 'Problem restored on "%{name}": %{message}'
-  renderer:
-    style:
-      lambert: Realistically shaded
-      normals: Surface direction
   settings:
     folder_settings:
       model_path_template:
