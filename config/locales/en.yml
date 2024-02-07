@@ -75,6 +75,8 @@ en:
     CC0-10: Creative Commons Zero
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
+  renderer:
+    load: Load
   views:
     pagination:
       first: "« First"
