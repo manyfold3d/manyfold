@@ -53,6 +53,12 @@ en:
         name: Name
         notes: Notes
         preview_file: Preview
+    errors:
+      models:
+        library:
+          attributes:
+            path:
+              not_found: could not be found on disk
     models:
       acts_as_taggable_on/tag: Tag
       collection: Collection
