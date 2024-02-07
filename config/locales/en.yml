@@ -20,6 +20,7 @@ en:
         notes: Notes
         preview_file: Preview
     models:
+      acts_as_taggable_on/tag: Tag
       collection: Collection
       model: Model
       model_file: File
