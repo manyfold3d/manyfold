@@ -11,27 +11,6 @@ en:
         help_html: e.g. <code>spinal-tap</code> instead of <code>Spın̈al Tap</code>
         label: Use safe folder names
       title: Folder naming
-    library_settings:
-      caption:
-        help: Hover over library in header to see caption.
-        label: Caption
-      description: See library details and modify.
-      heading: Libaries
-      icon:
-        help_html: Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a>
-        label: Icon
-      name:
-        label: Name
-      notes:
-        help: Notes are just on this page for now.
-        label: Notes
-      path:
-        label: Path
-      tag_regex:
-        check: Check
-        help: Check for models missing tags matching these regex.
-        label: Required Tags
-        search_missing: Search Missing
     pagination_settings:
       collections:
         label: Paginate collections
