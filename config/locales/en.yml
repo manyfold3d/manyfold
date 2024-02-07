@@ -30,6 +30,19 @@ en:
       search: Search
       title: Filters
       unknown: Unknown
+    footer:
+      by_html: Designed and built by <a href="https://floppy.org.uk">James</a> with help from <a href="https://github.com/manyfold3d/manyfold/graphs/contributors">our contributors</a>.
+      chat: Chat
+      code: Code
+      community_heading: Community
+      development_heading: Development
+      issues: Issues
+      logo: Logo
+      open_source_html: Open Source under the <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license noopener">MIT license</a>.
+      social: Social
+      sponsor: Sponsor
+      stats_heading: Stats
+      version: Version
     links_form:
       add: add another link
     navbar:
