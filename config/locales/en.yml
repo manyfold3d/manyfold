@@ -3,6 +3,9 @@ en:
   active_admin:
     dashboard: Dashboard
     demo_mode: not available in demo mode
+    queue_size: "%{count} jobs in queue"
+    recent_models: Recent models
+    task_queue: Task Queue
   activerecord:
     attributes:
       link:
@@ -223,9 +226,9 @@ en:
         button_text: Organize files
         confirm:
           are_you_sure: Are you sure you want to do this?
-          "no": No, cancel
+          'no': No, cancel
           summary_html: The folder and files that make up this model will be moved from:<br> <code>%{from}</code><br> to<br> <code>%{to}</code>
-          "yes": Yes, move the files
+          'yes': Yes, move the files
       path: Path
       search: Search the Internet for models with this name
       tags: Tags
@@ -396,7 +399,7 @@ en:
       stop_words_locale:
         label: Stop words locale
       tag_model_directory_name:
-        help: "Warning: Can produce a lot of tags!"
+        help: 'Warning: Can produce a lot of tags!'
         label: Create tags from model directory name
     update:
       success: Settings saved.
@@ -412,7 +415,7 @@ en:
       success: File(s) uploaded successfully.
     index:
       datafiles:
-        help: "Supported file types: %{types}"
+        help: 'Supported file types: %{types}'
         label: Select File
       library_pick:
         help: The library to upload to.
