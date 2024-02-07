@@ -326,6 +326,17 @@ en:
         help: Check for models missing tags matching these regex.
         label: Required Tags
         search_missing: Search Missing
+    pagination_settings:
+      collections:
+        label: Paginate collections
+      creators:
+        label: Paginate creators
+      description: Show only a certain number of items at a time in list pages, rather than everything at once. This can make things quicker to load.
+      heading: Pagination
+      models:
+        label: Paginate models
+      per_page:
+        label: Items per page
     problem_settings:
       description: Change the severity of detected problems, or ignore them completely.
       title: Problem Detection
