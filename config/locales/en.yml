@@ -126,9 +126,19 @@ en:
       success: New library created!
     destroy:
       success: Library deleted!
+    form:
+      add_line: Add Line
+      icon:
+        help_html: Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a>
+      library_regex:
+        help: Check for models missing tags matching these regex.
     general:
+      edit: Edit Library
       new: New Library
     new:
+      path:
+        help: The complete path to your library on disk.
+        placeholder: Filesystem path
       title: New Library
     scan:
       success: Library scan started.
