@@ -2,6 +2,22 @@
 en:
   activerecord:
     attributes:
+      collection:
+        caption: Caption
+        collection_id: Collection
+        name: Name
+        notes: Notes
+      creator:
+        caption: Caption
+        name: Name
+        notes: Notes
+      library:
+        caption: Caption
+        icon: Icon
+        name: Name
+        notes: Notes
+        path: Path
+        tag_regex: Tag Regex
       link:
         url: URL
       model:
@@ -9,9 +25,24 @@ en:
         collection_id: Collection
         creator_id: Creator
         library_id: Library
+        license: License
         name: Name
         notes: Notes
+        path: Path
         preview_file: Preview
+      model_file:
+        caption: Caption
+        digest: Digest
+        filename: Filename
+        model_id: Model
+        notes: Notes
+        presupported: Presupported
+        size: File Size
+        y_up: Y Up
+      problem:
+        category: Category
+        ignored: Ignored
+        note: Note
     errors:
       models:
         library:
@@ -30,9 +61,13 @@ en:
     models:
       acts_as_taggable_on/tag: Tag
       collection: Collection
+      creator: Creator
       delayed/backend/active_record/job: Task
+      library: Library
+      link: Link
       model: Model
       model_file: File
+      problem: Problem
   application:
     content_header:
       sort:
