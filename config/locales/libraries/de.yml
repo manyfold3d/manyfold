@@ -1,0 +1,29 @@
+---
+de:
+  libraries:
+    create:
+      failure: Es ist ein Fehler aufgetreten, und die Sammlung konnte nicht gespeichert werden.
+      success: Neue Sammlung erstellt!
+    destroy:
+      success: Sammlung gelöscht!
+    form:
+      add_line: Zeile hinzufügen
+      icon:
+        help_html: Icons pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icon-Seite</a>
+      library_regex:
+        help:
+    general:
+      edit: Sammlung bearbeiten
+      new: Neue Sammlung
+    new:
+      path:
+        help: Der vollständige Pfad zu Ihrer Sammlung auf der Festplatte.
+        placeholder: Pfad des Ordners
+      title: Neue Sammlung
+    scan:
+      success: Sammlungs-Scan wurde gestartet.
+    scan_all:
+      success: Scan für alle Sammlungen gestartet.
+    update:
+      failure: Es ist ein Fehler aufgetreten, und die Sammlung konnte nicht gespeichert werden.
+      success: Sammlungsdetails gespeichert.

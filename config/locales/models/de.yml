@@ -1,0 +1,54 @@
+---
+de:
+  models:
+    bulk_update:
+      success: Modelle erfolgreich aktualisiert.
+    delete: Löschen
+    destroy:
+      confirm: Hiermit werden Dateien gelöscht. Sind Sie sicher, dass Sie fortfahren möchten?
+      success: Modell gelöscht!
+    edit: Bearbeiten
+    file:
+      set_as_preview: Als Vorschau setzen
+    form:
+      preview_file:
+        help: Die Datei wird als Modellvorschau auf den Sammlungsseiten angezeigt
+      tags: Tags
+    general:
+      edit: Modell bearbeiten
+    index:
+      actions_heading: Aktionen
+      bulk_edit: Multibearbeitung
+      missing_url: Fehlende URL
+      tags_heading: Tags
+      untagged: Ungetagged
+    merge:
+      success: Die Modelle wurden erfolgreich zusammengeführt.
+    open: Öffnen
+    problem:
+      merge_all: Alle zusammenführen
+    show:
+      files: Dateien
+      files_card:
+        bulk_edit: Alle Dateien bearbeiten
+        heading: Dateien
+      license: Lizenz
+      merge:
+        heading: Zusammenführen
+        warning: Bei der Zusammenführung werden alle Dateien dieses Modells auf das Ziel verschoben und das Modell wird entfernt. Die Metadaten der Dateien bleiben erhalten, aber alle Metadaten des Modells gehen verloren!
+        with: Zusammenführen mit
+      model_details: Modelldetails
+      notes_heading: Notizen
+      organize:
+        button_text: Dateien sortieren
+        confirm:
+          are_you_sure: Sind Sie sich sicher?
+          'no': Nein, abbrechen
+          summary_html: Der Ordner und die Dateien, aus denen dieses Modell besteht, werden verschoben von:<br> <code>%{from}</code><br> nach<br> <code>%{to}</code>
+          'yes': Ja, verschieben Sie die Dateien
+      path: Pfad
+      search: Suchen Sie im Internet nach Modellen mit diesem Namen
+      tags: Tags
+    update:
+      failure: Es ist ein Fehler aufgetreten und die Modelldetails konnten nicht gespeichert werden.
+      success:

@@ -1,0 +1,111 @@
+---
+de:
+  settings:
+    folder_settings:
+      model_path_template:
+        label:
+      parse_metadata_from_path:
+        help:
+        label:
+      safe_folder_names:
+        help_html:
+        label:
+      title:
+    library_settings:
+      caption:
+        help:
+        label:
+      description:
+      heading:
+      icon:
+        help_html:
+        label:
+      name:
+        label:
+      notes:
+        help:
+        label:
+      path:
+        label:
+      tag_regex:
+        check:
+        help:
+        label:
+        search_missing:
+    pagination_settings:
+      collections:
+        label:
+      creators:
+        label:
+      description:
+      heading:
+      models:
+        label:
+      per_page:
+        label:
+    problem_settings:
+      description:
+      title:
+    renderer_settings:
+      auto_load_max_size:
+        always:
+        label:
+        never:
+        under_1024:
+        under_128:
+        under_16:
+        under_2:
+        under_256:
+        under_32:
+        under_4:
+        under_512:
+        under_64:
+        under_8:
+      background_colour:
+        label:
+      description:
+      enable_pan_zoom:
+        label:
+      grid_width:
+        label:
+      heading:
+      object_colour:
+        label:
+      render_style:
+        label:
+        lambert:
+        normals:
+      show_grid:
+        label:
+    show:
+      advanced_admin:
+      submit:
+      title:
+    tag_cloud_settings:
+      heading:
+      heatmap:
+        label:
+      hide_unrelated:
+        label: Nicht verwandte Tags in gefilterten Listen ausblenden
+      keypair:
+        label: Begrenzungszeichen zur Darstellung von Schlüsselpaaren verwenden
+      sorting:
+        label: Sortierung
+      threshold:
+        label:
+    tag_settings:
+      auto_tag_new:
+        label: Automatisch neue Modelle mit Tag(s) markieren
+      custom_stop_words:
+        label: Benutzerdefinierte Stoppwörter
+      description: Hinzufügen von Tags zu allen neu gescannten Modellen und Herausfiltern bestimmter Wörter ("Stoppwörter") bei der automatischen Erstellung von Tags. Wirkt sich auf alle Benutzer aus.
+      filter_stop_words:
+        label: Stoppwörter herausfiltern
+      heading: Tagging
+      stop_words_locale:
+        label: Stoppwörter Sprache
+      tag_model_directory_name:
+        help: Achtung! Kann eine Menge Tags erzeugen!
+        label: Tags aus Modellverzeichnisnamen erstellen
+    update:
+      success: Einstellungen gespeichert.
