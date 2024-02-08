@@ -13,6 +13,8 @@ class ModelFile < ApplicationRecord
   validate :presupported_files_cannot_have_presupported_version
 
   default_scope { order(:filename) }
+  scope :unsupported, -> { where(presupported: false) }
+  scope :presupported, -> { where(presupported: true) }
 
   acts_as_favoritable
 
