@@ -9,6 +9,7 @@ class ModelFile < ApplicationRecord
     inverse_of: :presupported_version, dependent: :nullify
 
   validates :filename, presence: true, uniqueness: {scope: :model}
+  validate :presupported_version_is_presupported
 
   default_scope { order(:filename) }
 
@@ -90,6 +91,12 @@ class ModelFile < ApplicationRecord
   end
 
   private
+
+  def presupported_version_is_presupported
+    if presupported_version && !presupported_version.presupported
+      errors.add(:presupported_version, :not_supported)
+    end
+  end
 
   def mesh
     loader&.new&.load(pathname)
