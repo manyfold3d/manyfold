@@ -112,6 +112,11 @@ RSpec.describe ModelFile do
       expect(unsupported.errors[:presupported_version].first).to eq "is not a presupported file"
     end
 
-    it "should not allow a presupported_version to be set for supported files"
+    it "does not allow a presupported_version to be set for presupported files" do
+      another_presupported = create(:model_file, model: model, presupported: true)
+      presupported.presupported_version = another_presupported
+      expect(presupported).not_to be_valid
+      expect(presupported.errors[:presupported_version].first).to eq "cannot be set on a presupported file"
+    end
   end
 end

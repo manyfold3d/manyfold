@@ -10,6 +10,7 @@ class ModelFile < ApplicationRecord
 
   validates :filename, presence: true, uniqueness: {scope: :model}
   validate :presupported_version_is_presupported
+  validate :presupported_files_cannot_have_presupported_version
 
   default_scope { order(:filename) }
 
@@ -91,6 +92,12 @@ class ModelFile < ApplicationRecord
   end
 
   private
+
+  def presupported_files_cannot_have_presupported_version
+    if presupported_version && presupported
+      errors.add(:presupported_version, :already_presupported)
+    end
+  end
 
   def presupported_version_is_presupported
     if presupported_version && !presupported_version.presupported

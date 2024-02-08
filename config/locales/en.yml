@@ -65,6 +65,7 @@ en:
         model_file:
           attributes:
             presupported_version:
+              already_presupported: cannot be set on a presupported file
               not_supported: is not a presupported file
     models:
       acts_as_taggable_on/tag: Tag
@@ -152,7 +153,7 @@ en:
     MIT: MIT
   renderer:
     errors:
-      canvas: "Could not find #webgl canvas!"
+      canvas: 'Could not find #webgl canvas!'
       load: Load Error
       webglrenderer: Could not create renderer!
     load: Load
