@@ -1,12 +1,5 @@
 ---
 en:
-  activerecord:
-    errors:
-      models:
-        library:
-          attributes:
-            path:
-              not_found: could not be found on disk
   libraries:
     create:
       failure: An error occurred, and the library could not be saved.
@@ -34,25 +27,3 @@ en:
     update:
       failure: An error occurred, and the library could not be saved.
       success: Library details saved.
-  settings:
-    library_settings:
-      caption:
-        help: Hover over library in header to see caption.
-        label: Caption
-      description: See library details and modify.
-      heading: Libaries
-      icon:
-        help_html: Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a>
-        label: Icon
-      name:
-        label: Name
-      notes:
-        help: Notes are just on this page for now.
-        label: Notes
-      path:
-        label: Path
-      tag_regex:
-        check: Check
-        help: Check for models missing tags matching these regex.
-        label: Required Tags
-        search_missing: Search Missing

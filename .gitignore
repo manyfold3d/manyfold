@@ -53,3 +53,7 @@ docker-compose.yml
 
 # Generated on-the-fly
 /app/javascript/locales.json
+
+# Translation.io artefacts that we don't want for now
+/config/locales/.translation_io
+/config/locales/localization.*.yml

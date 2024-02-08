@@ -1,28 +1,5 @@
 ---
 en:
-  activerecord:
-    attributes:
-      model:
-        caption: Caption
-        collection_id: Collection
-        creator_id: Creator
-        library_id: Library
-        name: Name
-        notes: Notes
-        preview_file: Preview
-    errors:
-      models:
-        model:
-          attributes:
-            library:
-              nested: can't be changed, model contains other models
-            license:
-              invalid_spdx: is not a valid license
-            path:
-              destination_exists: already exists
-              nested: can't be changed, model contains other models
-    models:
-      model: Model
   models:
     bulk_update:
       success: Models updated successfully.

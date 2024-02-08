@@ -1,8 +1,5 @@
 ---
 en:
-  application:
-    navbar:
-      upload: Upload
   uploads:
     create:
       success: File(s) uploaded successfully.

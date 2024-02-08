@@ -112,3 +112,5 @@ gem "rails-i18n", "~> 7.0"
 gem "erb_lint", "~> 0.5.0", group: :development, require: false
 
 gem "i18n-js", "~> 4.2"
+
+gem "translation", "~> 1.38", group: :development
