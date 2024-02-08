@@ -39,6 +39,11 @@ module Manyfold
 
     # Load locale files in nested folders as well as locale root
     config.i18n.load_path += Dir[Rails.root.join("config/locales/**/*.{rb,yml}")]
+    config.i18n.fallbacks = true
+    config.i18n.default_locale = :en
+    config.i18n.available_locales = [
+      :en
+    ]
 
     # Don't generate system test files.
     config.generators.system_tests = nil
@@ -54,6 +59,5 @@ module Manyfold
       end
     end
     config.middleware.use Rack::Locale
-    config.i18n.fallbacks = true
   end
 end
