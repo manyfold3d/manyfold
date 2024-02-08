@@ -41,8 +41,10 @@ en:
         y_up: Y Up
       problem:
         category: Category
-        ignored: Ignored
+        ignored: Hidden
         note: Note
+        problematic_type: Object Type
+        severity: Severity
     errors:
       models:
         library:
