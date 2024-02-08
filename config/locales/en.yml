@@ -30,6 +30,7 @@ en:
         notes: Notes
         path: Path
         preview_file: Preview File
+        tags: Tags
       model_file:
         caption: Caption
         digest: Digest
