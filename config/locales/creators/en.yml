@@ -13,7 +13,5 @@ en:
     index:
       actions_heading: Actions
       view_unassigned: View unassigned
-    new:
-      title: New Creator
     update:
       success: Creator details saved.

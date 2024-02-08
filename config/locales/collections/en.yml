@@ -15,7 +15,5 @@ en:
     index:
       actions_heading: Actions
       view_unassigned_models: View unassigned
-    new:
-      title: New Collection
     update:
       success: Collection details saved.

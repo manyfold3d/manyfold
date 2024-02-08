@@ -36,7 +36,7 @@ class CreatorsController < ApplicationController
   def new
     @creator = Creator.new
     @creator.links.build if @creator.links.empty? # populate empty link
-    @title = t(".title")
+    @title = t("creators.general.new")
   end
 
   def edit
