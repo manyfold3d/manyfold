@@ -20,7 +20,6 @@ en:
       actions_heading: Actions
       bulk_edit: Bulk Edit
       missing_url: Missing URL
-      tags_heading: Tags
       untagged: Untagged
     merge:
       success: Models merged successfully.
@@ -43,9 +42,9 @@ en:
         button_text: Organize files
         confirm:
           are_you_sure: Are you sure you want to do this?
-          'no': No, cancel
+          "no": No, cancel
           summary_html: The folder and files that make up this model will be moved from:<br> <code>%{from}</code><br> to<br> <code>%{to}</code>
-          'yes': Yes, move the files
+          "yes": Yes, move the files
       path: Path
       search: Search the Internet for models with this name
       tags: Tags

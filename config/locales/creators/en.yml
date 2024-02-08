@@ -12,7 +12,6 @@ en:
       unknown: Unknown
     index:
       actions_heading: Actions
-      tags_heading: Tags
       view_unassigned: View unassigned
     new:
       title: New Creator
