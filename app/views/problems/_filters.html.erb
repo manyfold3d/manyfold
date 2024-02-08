@@ -12,7 +12,7 @@
         <div class="accordion-body">
           <div class="row mb-2">
             <div class="col col-sm-6 col-md-4">
-              <label><%= t(".category") %></label>
+              <label><%= Problem.human_attribute_name :category %></label>
               <select name="category[]" class="form-select" multiple=true>
                 <% Problem::CATEGORIES
                      .select { |x| Problem::DEFAULT_SEVERITIES[x].present? }
@@ -25,7 +25,7 @@
               </select>
             </div>
             <div class="col col-sm-auto col-md-4">
-              <label><%= t(".severity") %></label>
+              <label><%= Problem.human_attribute_name :severity %></label>
               <select name="severity[]" class="form-select" multiple=true>
                 <% (Problem::SEVERITIES - [:silent]).each do |sev| %>
                   <option
@@ -35,7 +35,7 @@
               </select>
             </div>
             <div class="col col-sm-auto col-md-4">
-              <label><%= t(".type") %></label>
+              <label><%= Problem.human_attribute_name :problematic_type %></label>
               <select name="type[]" class="form-select" multiple=true>
                 <option value="<%= Model.model_name.param_key %>"
                   <%= "selected" if params[:type]&.include?(Model.model_name.param_key) %>><%= Model.model_name.human %></option>

@@ -11,12 +11,9 @@ en:
       no_image: Model has no image files
     filters:
       apply_filters: Apply
-      category: Category
       clear_filters: Clear
-      severity: Severity
       show_ignored: Show hidden items
       title: Filters
-      type: Object Type
     index:
       ignore: Hide
       no_problems: No problems matched the current filters.

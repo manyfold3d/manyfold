@@ -19,7 +19,6 @@ en:
       path:
         help: The complete path to your library on disk.
         placeholder: Filesystem path
-      title: New Library
     scan:
       success: Library scan started.
     scan_all:

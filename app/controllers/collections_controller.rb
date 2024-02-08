@@ -36,7 +36,7 @@ class CollectionsController < ApplicationController
   def new
     @collection = Collection.new
     @collection.links.build if @collection.links.empty? # populate empty link
-    @title = t(".title")
+    @title = t("collections.general.new")
     @collections = Collection.all
   end
 

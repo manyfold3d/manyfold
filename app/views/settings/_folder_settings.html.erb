@@ -1,7 +1,29 @@
 <div class="card">
   <h3 class="card-header"><%= t(".title") %></h3>
   <div class="card-body">
-    <%= render "folder_settings_description" %>
+    <p class='lead'>
+      <%= t ".summary" %>
+    </p>
+    <p>
+      <%= t ".details" %>
+    </p>
+    <ul>
+      <li>
+        <code>{tags}</code>: <%= t ".tokens.tags_html" %>
+      </li>
+      <li>
+        <code>{creator}</code>: <%= t ".tokens.creator" %>
+      </li>
+      <li>
+        <code>{collection}</code>: <%= t ".tokens.collection" %>
+      </li>
+      <li>
+        <code>{modelName}</code>: <%= t ".tokens.model_name" %>
+      </li>
+      <li>
+        <code>{modelId}</code>: <%= t ".tokens.model_id" %>
+      </li>
+    </ul>
     <div class="row mb-2">
       <%= form.label t(".model_path_template.label"), for: "folders[model_path_template]", class: "col-sm-4 col-form-label" %>
       <div class="col-sm-8 form-check form-switch">

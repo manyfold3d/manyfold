@@ -14,9 +14,6 @@ en:
       unknown: Unknown
     index:
       actions_heading: Actions
-      tags_heading: Tags
       view_unassigned_models: View unassigned
-    new:
-      title: New Collection
     update:
       success: Collection details saved.

@@ -20,7 +20,6 @@ en:
       actions_heading: Actions
       bulk_edit: Bulk Edit
       missing_url: Missing URL
-      tags_heading: Tags
       untagged: Untagged
     merge:
       success: Models merged successfully.
