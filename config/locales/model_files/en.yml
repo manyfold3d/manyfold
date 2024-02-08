@@ -6,10 +6,6 @@ en:
     destroy:
       confirm: Are you sure you want to remove this file from your filesystem?
       success: File deleted!
-    form:
-      presupported: Presupported?
-      printed: Printed?
-      y_up: Y Up
     show:
       actions_heading: Actions
       details_heading: Details

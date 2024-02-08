@@ -37,6 +37,7 @@ en:
         model_id: Model
         notes: Notes
         presupported: Presupported
+        printed: Printed
         size: File Size
         y_up: Y Up
       problem:
