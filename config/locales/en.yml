@@ -19,7 +19,7 @@ en:
         path: Path
         tag_regex: Tag Regex
       link:
-        url: URL
+        url: Link
       model:
         caption: Caption
         collection_id: Collection
