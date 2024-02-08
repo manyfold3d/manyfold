@@ -91,4 +91,18 @@ RSpec.describe ModelFile do
       )
     end
   end
+
+  context "with different versions of the same file" do
+    let!(:model) { create(:model) }
+    let!(:presupported) { create(:model_file, model: model, presupported: true) }
+    let!(:unsupported) { create(:model_file, model: model, presupported: false, presupported_version: presupported) }
+
+    it "can access supported part from unsupported part" do
+      expect(unsupported.presupported_version).to eq presupported
+    end
+
+    it "can access unsupported part from presupported part" do
+      expect(presupported.unsupported_version).to eq unsupported
+    end
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_31_134832) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_08_143319) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -102,8 +102,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_31_134832) do
     t.text "notes"
     t.text "caption"
     t.bigint "size"
+    t.integer "presupported_version_id"
     t.index ["digest"], name: "index_model_files_on_digest"
     t.index ["model_id"], name: "index_model_files_on_model_id"
+    t.index ["presupported_version_id"], name: "index_model_files_on_presupported_version_id"
   end
 
   create_table "models", force: :cascade do |t|
@@ -188,6 +190,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_31_134832) do
   end
 
   add_foreign_key "collections", "collections"
+  add_foreign_key "model_files", "model_files", column: "presupported_version_id"
   add_foreign_key "model_files", "models"
   add_foreign_key "models", "collections"
   add_foreign_key "models", "creators"

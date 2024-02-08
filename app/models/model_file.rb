@@ -4,6 +4,10 @@ class ModelFile < ApplicationRecord
   belongs_to :model
   has_many :problems, as: :problematic, dependent: :destroy
 
+  belongs_to :presupported_version, class_name: "ModelFile", optional: true
+  has_one :unsupported_version, class_name: "ModelFile", foreign_key: "presupported_version_id",
+    inverse_of: :presupported_version, dependent: :nullify
+
   validates :filename, presence: true, uniqueness: {scope: :model}
 
   default_scope { order(:filename) }
