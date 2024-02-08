@@ -93,8 +93,6 @@ en:
       sponsor: Sponsor
       stats_heading: Stats
       version: Version
-    links_card:
-      link_card_heading: Links
     links_form:
       add: add another link
     navbar:
