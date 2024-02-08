@@ -6,6 +6,6 @@ if Rails.env.development?
       "errors" # built-in errors that get picked up
     ]
     config.source_locale = "en"
-    config.target_locales = ["de"]
+    config.target_locales = ["ru", "es", "fr", "de"]
   end
 end
