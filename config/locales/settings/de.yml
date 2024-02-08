@@ -2,6 +2,7 @@
 de:
   settings:
     folder_settings:
+      details:
       model_path_template:
         label:
       parse_metadata_from_path:
@@ -10,7 +11,14 @@ de:
       safe_folder_names:
         help_html:
         label:
+      summary:
       title:
+      tokens:
+        collection:
+        creator:
+        model_id:
+        model_name:
+        tags_html:
     library_settings:
       caption:
         help:

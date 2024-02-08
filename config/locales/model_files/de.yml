@@ -6,10 +6,6 @@ de:
     destroy:
       confirm: Sind Sie sicher, dass Sie diese Datei aus permanent löschen möchten?
       success: Datei gelöscht!
-    form:
-      presupported: Vorgestützt?
-      printed: Gedruckt?
-      y_up: Y Aufwärts
     show:
       actions_heading: Aktionen
       details_heading: Details

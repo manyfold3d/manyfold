@@ -19,7 +19,6 @@ de:
       path:
         help: Der vollständige Pfad zu Ihrer Sammlung auf der Festplatte.
         placeholder: Pfad des Ordners
-      title: Neue Sammlung
     scan:
       success: Sammlungs-Scan wurde gestartet.
     scan_all:

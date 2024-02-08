@@ -11,12 +11,9 @@ de:
       no_image:
     filters:
       apply_filters:
-      category:
       clear_filters:
-      severity:
       show_ignored:
       title:
-      type:
     index:
       ignore:
       no_problems:

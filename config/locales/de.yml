@@ -2,6 +2,22 @@
 de:
   activerecord:
     attributes:
+      collection:
+        caption: Beschreibung
+        collection_id: Kollektion
+        name: Name
+        notes: Notizen
+      creator:
+        caption: Beschreibung
+        name: Name
+        notes: Notizen
+      library:
+        caption: Beschreibung
+        icon:
+        name: Name
+        notes: Notizen
+        path: Pfad
+        tag_regex:
       link:
         url: URL
       model:
@@ -9,9 +25,28 @@ de:
         collection_id: Kollektion
         creator_id: Ersteller
         library_id: Sammlung
+        license: Lizenz
         name: Name
         notes: Notizen
+        path: Pfad
         preview_file: Vorschau
+        tags: Tags
+      model_file:
+        caption: Beschreibung
+        digest: Hash
+        filename: Dateiname
+        model_id: Modell
+        notes: Notizen
+        presupported: Vorgestützt
+        printed: Gedruckt
+        size:
+        y_up: Y Aufwärts
+      problem:
+        category:
+        ignored:
+        note:
+        problematic_type:
+        severity:
     errors:
       models:
         library:
@@ -30,9 +65,13 @@ de:
     models:
       acts_as_taggable_on/tag: Tag
       collection: Kollektion
+      creator: Ersteller
       delayed/backend/active_record/job: Aufgabe
+      library: Sammlung
+      link: URL
       model: Modell
       model_file: Datei
+      problem:
   application:
     content_header:
       sort:
@@ -58,8 +97,6 @@ de:
       sponsor: Förderer
       stats_heading: Statistiken
       version: Version
-    links_card:
-      link_card_heading: Links
     links_form:
       add: Füge einen Link hinzu
     navbar:
