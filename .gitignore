@@ -56,5 +56,6 @@ docker-compose.yml
 
 # Translation.io artefacts that we don't want for now
 /config/locales/.translation_io
+/config/locales/gettext
 /config/locales/localization.*.yml
 /config/locales/translation.*.yml
