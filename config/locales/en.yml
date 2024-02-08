@@ -29,7 +29,7 @@ en:
         name: Name
         notes: Notes
         path: Path
-        preview_file: Preview
+        preview_file: Preview File
       model_file:
         caption: Caption
         digest: Digest
