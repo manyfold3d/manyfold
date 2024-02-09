@@ -7,6 +7,24 @@
     <% if @file.is_image? %>
       <%= image_tag library_model_model_file_path(@model.library, @model, @file, format: @file.extension), alt: @file.name, style: "width: 100%" %>
     <% elsif renderable?(@file.extension) %>
+      <% if @file.presupported_version || @file.unsupported_version %>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <% if @file.unsupported_version %>
+              <%= link_to Model.human_attribute_name(:unsupported_version), [@library, @model, @file.unsupported_version], class: "nav-link" %>
+            <% else %>
+              <a class="nav-link active" aria-current="page" href="#"><%= Model.human_attribute_name :unsupported_version %></a>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <% if @file.presupported_version %>
+              <%= link_to Model.human_attribute_name(:presupported_version), [@library, @model, @file.presupported_version], class: "nav-link" %>
+            <% else %>
+              <a class="nav-link active" aria-current="page" href="#"><%= Model.human_attribute_name :presupported_version %></a>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
       <%= render partial: "object_preview", locals: {library: @library, model: @model, file: @file} %>
     <% end %>
     <% if @file.notes %>
@@ -35,6 +53,17 @@
         <p>
           <%= ModelFile.human_attribute_name :size %>
           <code><%= number_to_human_size @file.size, precision: 2 %></code>
+        </p>
+      <% end %>
+      <% if @file.presupported_version %>
+        <p>
+          <%= ModelFile.human_attribute_name :presupported_version %>:
+          <%= link_to @file.presupported_version.name, [@library, @model, @file.presupported_version] %>
+        </p>
+      <% elsif @file.unsupported_version %>
+        <p>
+          <%= ModelFile.human_attribute_name :unsupported_version %>:
+          <%= link_to @file.unsupported_version.name, [@library, @model, @file.unsupported_version] %>
         </p>
       <% end %>
       <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_library_model_model_file_path(@library, @model, @file), class: "btn btn-primary" %>
