@@ -14,16 +14,19 @@
   <div class="col-3">
     <%= card :secondary, t(".details_heading") do %>
       <p>
-        <%= t(".filename") %>: <code><%= @file.filename %></code>
+        <%= ModelFile.human_attribute_name :filename %>:
+        <code><%= @file.filename %></code>
       </p>
       <% if @file.digest %>
         <p>
-          <%= t(".digest") %>: <code><%= @file.digest.slice(0, 16) %></code>
+          <%= ModelFile.human_attribute_name :digest %>:
+          <code><%= @file.digest.slice(0, 16) %></code>
         </p>
       <% end %>
       <% if @file.size %>
         <p>
-          <%= t(".file_size") %>: <code><%= number_to_human_size @file.size, precision: 2 %></code>
+          <%= ModelFile.human_attribute_name :size %>
+          <code><%= number_to_human_size @file.size, precision: 2 %></code>
         </p>
       <% end %>
       <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_library_model_model_file_path(@library, @model, @file), class: "btn btn-primary" %>
