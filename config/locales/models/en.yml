@@ -9,8 +9,8 @@ en:
       success: Model deleted!
     edit: Edit
     file:
-      set_as_preview: Set as preview
       open: Open
+      set_as_preview: Set as preview
     form:
       preview_file:
         help: The file displayed as a model preview in library pages
@@ -43,9 +43,9 @@ en:
         button_text: Organize files
         confirm:
           are_you_sure: Are you sure you want to do this?
-          "no": No, cancel
+          'no': No, cancel
           summary_html: The folder and files that make up this model will be moved from:<br> <code>%{from}</code><br> to<br> <code>%{to}</code>
-          "yes": Yes, move the files
+          'yes': Yes, move the files
       path: Path
       search: Search the Internet for models with this name
       tags: Tags
