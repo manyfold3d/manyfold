@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Floppy/data-migrate.git
-  revision: 65a3b57c2c5a39ef361a584d17edcd5b18a56eac
+  revision: b2cbb40b5e13a6d9c08555cf184b75e11678da84
   ref: db-prepare-withdata
   specs:
     data_migrate (9.1.0)
@@ -264,7 +264,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    minitest (5.21.2)
+    minitest (5.22.2)
     msgpack (1.7.2)
     nenv (0.3.0)
     net-imap (0.3.7)
@@ -511,7 +511,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.12)
+    zeitwerk (2.6.13)
 
 PLATFORMS
   ruby
