@@ -38,8 +38,10 @@ en:
         model_id: Model
         notes: Notes
         presupported: Presupported
+        presupported_version: Presupported version
         printed: Printed
         size: File Size
+        unsupported_version: Unsupported version
         y_up: Y Up
       problem:
         category: Category
