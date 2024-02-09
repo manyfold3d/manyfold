@@ -1,21 +1,23 @@
 <%= form_with model: [@library, @model, @file] do |form| %>
-  <div class="form-check form-switch mb-3">
-    <%= form.check_box :printed, class: "form-check-input", checked: current_user.printed?(@file) %>
-    <%= form.label :printed, class: "form-check-label" %>
-  </div>
-  <div class="form-check form-switch mb-3">
-    <%= form.check_box :presupported, class: "form-check-input" %>
-    <%= form.label :presupported, class: "form-check-label" %>
-  </div>
-  <div class="form-check form-switch mb-3">
-    <%= form.check_box :y_up, class: "form-check-input" %>
-    <%= form.label :y_up, class: "form-check-label" %>
-  </div>
-  <% unless @file.presupported %>
-    <div class="row mb-3 input-group">
-      <%= form.label :presupported_version_id, class: "col-sm-2 col-form-label" %>
-      <%= form.collection_select :presupported_version_id, @model.model_files.presupported, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
+  <% if @file.is_3d_model? %>
+    <div class="form-check form-switch mb-3">
+      <%= form.check_box :printed, class: "form-check-input", checked: current_user.printed?(@file) %>
+      <%= form.label :printed, class: "form-check-label" %>
     </div>
+    <div class="form-check form-switch mb-3">
+      <%= form.check_box :presupported, class: "form-check-input" %>
+      <%= form.label :presupported, class: "form-check-label" %>
+    </div>
+    <div class="form-check form-switch mb-3">
+      <%= form.check_box :y_up, class: "form-check-input" %>
+      <%= form.label :y_up, class: "form-check-label" %>
+    </div>
+    <% unless @file.presupported %>
+      <div class="row mb-3 input-group">
+        <%= form.label :presupported_version_id, class: "col-sm-2 col-form-label" %>
+        <%= form.collection_select :presupported_version_id, @model.model_files.presupported, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
+      </div>
+    <% end %>
   <% end %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes %>
