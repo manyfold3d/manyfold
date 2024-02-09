@@ -11,7 +11,12 @@
     <div class="card-body">
       <h5 class="card-title">
         <%= file.name %>
-        <span style="float: right"><%= problem_icon(file.problems) %></span>
+        <span style="float: right">
+          <% if file.presupported || file.presupported_version %>
+            <%= icon "bar-chart-line-fill", ModelFile.human_attribute_name(:presupported) %>
+          <% end %>
+          <%= problem_icon(file.problems) %>
+        </span>
       </h5>
       <%= form_with model: [@library, @model] do |form| %>
         <% if file.caption %>
