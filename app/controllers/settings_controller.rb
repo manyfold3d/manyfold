@@ -11,6 +11,7 @@ class SettingsController < ApplicationController
     update_renderer_settings(params[:renderer])
     update_tag_cloud_settings(params[:tag_cloud])
     update_problem_settings(params[:problems])
+    update_file_list_settings(params[:file_list])
     @user.save!
     # Save site-wide settings if user is an admin
     if current_user.admin?
@@ -40,6 +41,13 @@ class SettingsController < ApplicationController
       "keypair" => settings[:keypair] == "1",
       "sorting" => settings[:sorting],
       "hide_unrelated" => settings[:hide_unrelated] == "1"
+    }
+  end
+
+  def update_file_list_settings(settings)
+    return unless settings
+    @user.file_list_settings = {
+      "hide_presupported_versions" => settings[:hide_presupported_versions] == "1"
     }
   end
 
