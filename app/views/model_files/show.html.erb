@@ -4,10 +4,18 @@
 <div class="row row-cols-2">
 
   <div class="col-9">
+      <% if @file.caption %>
+        <p class='lead'><%= @file.caption %></p>
+      <% end %>
       <% if @file.is_image? %>
         <%= image_tag library_model_model_file_path(@model.library, @model, @file, format: @file.extension), alt: @file.name, style: "width: 100%" %>
       <% elsif renderable?(@file.extension) %>
         <%= render partial: "object_preview", locals: {library: @library, model: @model, file: @file} %>
+      <% end %>
+      <% if @file.notes %>
+        <%= card(:secondary, t(".notes_heading")) do %>
+          <p class="card-text"><%= sanitize @file.notes %></p>
+        <% end %>
       <% end %>
   </div>
 
@@ -38,10 +46,6 @@
     <%= card :secondary, t(".actions_heading") do %>
       <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), library_model_model_file_path(@library, @model, @file, @file.extension.to_sym), {class: "btn btn-secondary"} %>
     <% end %>
-
-    <%= card(:secondary, t(".notes_heading")) do %>
-      <p class="card-text"><%= sanitize @file.notes %></p>
-    <% end if @file.notes %>
 
   </div>
 </div>
