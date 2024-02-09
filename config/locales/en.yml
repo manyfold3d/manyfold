@@ -38,8 +38,10 @@ en:
         model_id: Model
         notes: Notes
         presupported: Presupported
+        presupported_version: Presupported version
         printed: Printed
         size: File Size
+        unsupported_version: Unsupported version
         y_up: Y Up
       problem:
         category: Category
@@ -62,6 +64,11 @@ en:
             path:
               destination_exists: already exists
               nested: can't be changed, model contains other models
+        model_file:
+          attributes:
+            presupported_version:
+              already_presupported: cannot be set on a presupported file
+              not_supported: is not a presupported file
     models:
       acts_as_taggable_on/tag: Tag
       collection: Collection

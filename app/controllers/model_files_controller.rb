@@ -24,9 +24,9 @@ class ModelFilesController < ApplicationController
   def update
     if @file.update(file_params)
       @file.set_printed_by_user(current_user, params[:model_file][:printed] === "1")
-      redirect_back_or_to [@library, @model, @file], notice: t(".success")
+      redirect_to [@library, @model, @file], notice: t(".success")
     else
-      redirect_back_or_to [@library, @model, @file], alert: t(".failure")
+      render :edit, alert: t(".failure")
     end
   end
 
@@ -82,7 +82,8 @@ class ModelFilesController < ApplicationController
       :presupported,
       :notes,
       :caption,
-      :y_up
+      :y_up,
+      :presupported_version_id
     ])
   end
 

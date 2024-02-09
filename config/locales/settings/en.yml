@@ -1,6 +1,11 @@
 ---
 en:
   settings:
+    file_list_settings:
+      heading: File Lists
+      hide_presupported_versions:
+        label: Combine linked unsupported and presupported files
+      summary: Control how model file lists are displayed
     folder_settings:
       details: Folder structure follows a template that you define using tokens. You can also include other text in the template (such as folder separators) and it will be included as-is.
       model_path_template:

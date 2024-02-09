@@ -6,12 +6,11 @@ en:
     destroy:
       confirm: Are you sure you want to remove this file from your filesystem?
       success: File deleted!
+    general:
+      edit: Edit File Information
     show:
       actions_heading: Actions
       details_heading: Details
-      digest: Digest
-      file_size: File size
-      filename: Filename
       notes_heading: Notes
     update:
       failure: An error occurred and file details could not be saved.

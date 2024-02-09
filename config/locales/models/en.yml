@@ -9,6 +9,7 @@ en:
       success: Model deleted!
     edit: Edit
     file:
+      open: Open
       set_as_preview: Set as preview
     form:
       preview_file:

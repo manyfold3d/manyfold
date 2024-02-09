@@ -11,17 +11,26 @@
     <div class="card-body">
       <h5 class="card-title">
         <%= file.name %>
-        <span style="float: right"><%= problem_icon(file.problems) %></span>
       </h5>
-      <%= form_with model: [@library, @model] do |form| %>
-        <% if file.caption %>
-          <p class="card-text"><%= sanitize file.caption %></p>
-        <% end %>
-        <%= link_to "Details", library_model_model_file_path(@library, @model, file), {class: "btn btn-primary"} %>
-        <%= link_to icon("cloud-download", t("general.download")), library_model_model_file_path(@library, @model, file, file.extension.to_sym), {class: "btn btn-secondary"} %>
-        <%= form.hidden_field :preview_file_id, value: file.id %>
-        <%= form.button icon("bookmark-heart", t(".set_as_preview")), class: "btn btn-secondary #{(file == @model.preview_file) ? "disabled" : ""}" %>
+      <% if file.caption %>
+        <p class="card-text"><%= sanitize file.caption %></p>
       <% end %>
+      <div class="row">
+        <div class="col">
+          <%= link_to t(".open"), library_model_model_file_path(@library, @model, file), {class: "btn btn-primary"} %>
+          <%= link_to icon("cloud-download", t("general.download")), library_model_model_file_path(@library, @model, file, file.extension.to_sym), {class: "btn btn-secondary"} %>
+          <%= form_with model: [@library, @model], class: "d-inline" do |form| %>
+            <%= form.hidden_field :preview_file_id, value: file.id %>
+            <%= form.button icon("bookmark-heart", t(".set_as_preview")), class: "btn btn-secondary #{(file == @model.preview_file) ? "disabled" : ""}" %>
+          <% end %>
+        </div>
+        <div class="col col-auto">
+          <% if file.presupported || file.presupported_version %>
+            <%= icon "bar-chart-line-fill", ModelFile.human_attribute_name(:presupported) %>
+          <% end %>
+          <%= problem_icon(file.problems) %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

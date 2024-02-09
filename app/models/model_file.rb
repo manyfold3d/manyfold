@@ -4,9 +4,17 @@ class ModelFile < ApplicationRecord
   belongs_to :model
   has_many :problems, as: :problematic, dependent: :destroy
 
+  belongs_to :presupported_version, class_name: "ModelFile", optional: true
+  has_one :unsupported_version, class_name: "ModelFile", foreign_key: "presupported_version_id",
+    inverse_of: :presupported_version, dependent: :nullify
+
   validates :filename, presence: true, uniqueness: {scope: :model}
+  validate :presupported_version_is_presupported
+  validate :presupported_files_cannot_have_presupported_version
 
   default_scope { order(:filename) }
+  scope :unsupported, -> { where(presupported: false) }
+  scope :presupported, -> { where(presupported: true) }
 
   acts_as_favoritable
 
@@ -86,6 +94,18 @@ class ModelFile < ApplicationRecord
   end
 
   private
+
+  def presupported_files_cannot_have_presupported_version
+    if presupported_version && presupported
+      errors.add(:presupported_version, :already_presupported)
+    end
+  end
+
+  def presupported_version_is_presupported
+    if presupported_version && !presupported_version.presupported
+      errors.add(:presupported_version, :not_supported)
+    end
+  end
 
   def mesh
     loader&.new&.load(pathname)

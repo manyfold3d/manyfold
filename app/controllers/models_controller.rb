@@ -29,7 +29,12 @@ class ModelsController < ApplicationController
   end
 
   def show
-    @groups = helpers.group(@model.model_files)
+    files = @model.model_files
+    if current_user.file_list_settings["hide_presupported_versions"]
+      hidden_ids = files.select(:presupported_version_id).where.not(presupported_version_id: nil)
+      files = files.where.not(id: hidden_ids)
+    end
+    @groups = helpers.group(files)
     render layout: "card_list_page"
   end
 

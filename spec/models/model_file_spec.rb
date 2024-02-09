@@ -91,4 +91,32 @@ RSpec.describe ModelFile do
       )
     end
   end
+
+  context "with different versions of the same file" do
+    let!(:model) { create(:model) }
+    let!(:presupported) { create(:model_file, model: model, presupported: true) }
+    let!(:unsupported) { create(:model_file, model: model, presupported: false, presupported_version: presupported) }
+
+    it "can access supported part from unsupported part" do
+      expect(unsupported.presupported_version).to eq presupported
+    end
+
+    it "can access unsupported part from presupported part" do
+      expect(presupported.unsupported_version).to eq unsupported
+    end
+
+    it "only let presupported files be set as the presupported_version" do
+      another_unsupported = create(:model_file, model: model, presupported: false)
+      unsupported.presupported_version = another_unsupported
+      expect(unsupported).not_to be_valid
+      expect(unsupported.errors[:presupported_version].first).to eq "is not a presupported file"
+    end
+
+    it "does not allow a presupported_version to be set for presupported files" do
+      another_presupported = create(:model_file, model: model, presupported: true)
+      presupported.presupported_version = another_presupported
+      expect(presupported).not_to be_valid
+      expect(presupported.errors[:presupported_version].first).to eq "cannot be set on a presupported file"
+    end
+  end
 end
