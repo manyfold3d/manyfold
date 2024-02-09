@@ -4,9 +4,6 @@
 <div class="row row-cols-2">
 
   <div class="col-9">
-      <% if @file.caption %>
-        <p class='lead'><%= @file.caption %></p>
-      <% end %>
       <% if @file.is_image? %>
         <%= image_tag library_model_model_file_path(@model.library, @model, @file, format: @file.extension), alt: @file.name, style: "width: 100%" %>
       <% elsif renderable?(@file.extension) %>
@@ -21,6 +18,9 @@
 
   <div class="col-3">
     <%= card :secondary, t(".details_heading") do %>
+      <% if @file.caption %>
+        <p class='lead'><%= @file.caption %></p>
+      <% end %>
       <p>
         <%= ModelFile.human_attribute_name :filename %>:
         <code><%= @file.filename %></code>
