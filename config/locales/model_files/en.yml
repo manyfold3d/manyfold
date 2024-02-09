@@ -6,6 +6,8 @@ en:
     destroy:
       confirm: Are you sure you want to remove this file from your filesystem?
       success: File deleted!
+    general:
+      edit: Edit File Information
     show:
       actions_heading: Actions
       details_heading: Details
