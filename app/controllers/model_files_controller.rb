@@ -82,7 +82,8 @@ class ModelFilesController < ApplicationController
       :presupported,
       :notes,
       :caption,
-      :y_up
+      :y_up,
+      :presupported_version_id
     ])
   end
 
