@@ -6,14 +6,23 @@ if Rails.env.development?
       # No ActiveAdmin for now, too much cruft
       "active_admin",
       "activerecord.attributes.active_admin",
+      "activerecord.models.active_admin",
+      "activerecord.models.comment",
+      "activerecord.errors.messages.record_invalid",
+      "activerecord.errors.messages.restrict_dependent_destroy",
       "formtastic",
       "ransack",
+      "devise",
       # Other things we don't want to translate or don't know what they are
       "i18n_tasks",
       "number",
       "errors",
       "flash",
-      "helpers.page_entries_info"
+      "helpers.page_entries_info",
+      "datetime",
+      "date",
+      "time",
+      "helpers"
     ]
     config.source_locale = "en"
     config.target_locales = ["ru", "es", "fr", "de"]
