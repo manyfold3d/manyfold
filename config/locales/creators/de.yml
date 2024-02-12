@@ -2,7 +2,7 @@
 de:
   creators:
     create:
-      success:
+      success: Neue Erstellerdetails gespeichert.
     destroy:
       success:
     general:

@@ -17,7 +17,7 @@ de:
         name: Name
         notes: Notizen
         path: Pfad
-        tag_regex:
+        tag_regex: Tag Regex
       link:
         url: URL
       model:
@@ -40,15 +40,15 @@ de:
         presupported: Vorgestützt
         presupported_version:
         printed: Gedruckt
-        size:
-        unsupported_version:
+        size: Dateigröße
+        unsupported_version: Nicht unterstützte Version
         y_up: Y Aufwärts
       problem:
-        category:
-        ignored:
-        note:
-        problematic_type:
-        severity:
+        category: Kategorie
+        ignored: Versteckt
+        note: Notize
+        problematic_type: Objekt Typ
+        severity: Schweregrad
     errors:
       models:
         library:
@@ -67,7 +67,7 @@ de:
         model_file:
           attributes:
             presupported_version:
-              already_presupported:
+              already_presupported: kann nicht auf eine vorunterstützte Datei gesetzt werden
               not_supported:
     models:
       acts_as_taggable_on/tag: Tag
@@ -78,7 +78,7 @@ de:
       link: URL
       model: Modell
       model_file: Datei
-      problem:
+      problem: Problem
   application:
     content_header:
       sort:
