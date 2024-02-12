@@ -61,3 +61,13 @@ jobs:
         run: bundle exec erblint --lint-all
       - name: Lint Typescript code
         run: yarn run lint:ts
+  i18n:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.2
+          bundler-cache: true
+      - name: Check translations
+        run: bundle exec i18n-tasks health
