@@ -9,6 +9,7 @@ de:
       success: Modell gelöscht!
     edit: Bearbeiten
     file:
+      open:
       set_as_preview: Als Vorschau setzen
     form:
       preview_file:
@@ -42,9 +43,9 @@ de:
         button_text: Dateien sortieren
         confirm:
           are_you_sure: Sind Sie sich sicher?
-          'no': Nein, abbrechen
+          "no": Nein, abbrechen
           summary_html: Der Ordner und die Dateien, aus denen dieses Modell besteht, werden verschoben von:<br> <code>%{from}</code><br> nach<br> <code>%{to}</code>
-          'yes': Ja, verschieben Sie die Dateien
+          "yes": Ja, verschieben Sie die Dateien
       path: Pfad
       search: Suchen Sie im Internet nach Modellen mit diesem Namen
       tags: Tags

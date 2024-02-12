@@ -38,8 +38,10 @@ de:
         model_id: Modell
         notes: Notizen
         presupported: Vorgestützt
+        presupported_version:
         printed: Gedruckt
         size:
+        unsupported_version:
         y_up: Y Aufwärts
       problem:
         category:
@@ -62,6 +64,11 @@ de:
             path:
               destination_exists: existiert bereits
               nested: kann nicht geändert werden, Modell enthält andere Modelle
+        model_file:
+          attributes:
+            presupported_version:
+              already_presupported:
+              not_supported:
     models:
       acts_as_taggable_on/tag: Tag
       collection: Kollektion

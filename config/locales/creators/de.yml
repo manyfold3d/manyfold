@@ -1,0 +1,17 @@
+---
+de:
+  creators:
+    create:
+      success:
+    destroy:
+      success:
+    general:
+      edit:
+      new:
+    get_creator:
+      unknown: Unbekannt
+    index:
+      actions_heading: Aktionen
+      view_unassigned:
+    update:
+      success:

@@ -6,12 +6,11 @@ de:
     destroy:
       confirm: Sind Sie sicher, dass Sie diese Datei aus permanent löschen möchten?
       success: Datei gelöscht!
+    general:
+      edit:
     show:
       actions_heading: Aktionen
       details_heading: Details
-      digest: Hash
-      file_size: Dateigröße
-      filename: Dateiname
       notes_heading: Notizen
     update:
       failure: Es ist ein Fehler aufgetreten und die Dateidetails konnten nicht gespeichert werden.

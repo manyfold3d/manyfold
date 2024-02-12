@@ -1,0 +1,19 @@
+---
+de:
+  collections:
+    collection:
+      no_preview:
+    create:
+      success:
+    destroy:
+      success:
+    general:
+      edit:
+      new:
+    get_collection:
+      unknown: Unbekannt
+    index:
+      actions_heading: Aktionen
+      view_unassigned_models:
+    update:
+      success:

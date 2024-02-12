@@ -1,6 +1,11 @@
 ---
 de:
   settings:
+    file_list_settings:
+      heading:
+      hide_presupported_versions:
+        label:
+      summary:
     folder_settings:
       details:
       model_path_template:
