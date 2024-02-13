@@ -2,7 +2,7 @@
 de:
   problems:
     categories:
-      duplicate:
+      duplicate: Duplizierte Dateien
       empty:
       inefficient:
       missing:
