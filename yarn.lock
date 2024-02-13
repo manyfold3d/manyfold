@@ -1715,10 +1715,10 @@ husky@^9.0.10:
   resolved "https://registry.yarnpkg.com/husky/-/husky-9.0.10.tgz#ddca8908deb5f244e9286865ebc80b54387672c2"
   integrity sha512-TQGNknoiy6bURzIO77pPRu+XHi6zI7T93rX+QnJsoYFf3xdjKOur+IlfqzJGMHIK/wXrLg+GsvMs8Op7vI2jVA==
 
-i18n-js@^4.4.1:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/i18n-js/-/i18n-js-4.4.1.tgz#70083173dc2a6053a367a1fe2109c13f6fe109fb"
-  integrity sha512-ttZ6uH+ih6Xi5n6CKB+gKe/hPgfAQ6BN4BnRIGQllgZ6wLSf2CSMmsq8nQMb1QuKlHae7naOFHVc+xjAJZtOGw==
+i18n-js@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/i18n-js/-/i18n-js-4.4.2.tgz#c0ead97607e898b6de1dc5402af8897bfc59c860"
+  integrity sha512-EV9bSF3kuByY7Rv8zhbKPyK/pP2V5Nx3gpo1RwZKydzwOj8vLNygo3juO3C4hF5bPhBohdm8PAuCZCFsbhJC/A==
   dependencies:
     bignumber.js "*"
     lodash "*"
