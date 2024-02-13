@@ -61,19 +61,19 @@ de:
       title:
     renderer_settings:
       auto_load_max_size:
-        always:
+        always: Immer
         label:
-        never:
-        under_1024:
-        under_128:
-        under_16:
-        under_2:
-        under_256:
-        under_32:
-        under_4:
-        under_512:
-        under_64:
-        under_8:
+        never: Niemals
+        under_1024: Bis zu 1024 MB
+        under_128: Bis zu 128 MB
+        under_16: Bis zu 16 MB
+        under_2: Bis zu 2 MB
+        under_256: Bis zu 256 MB
+        under_32: Bis zu 32 MB
+        under_4: Bis zu 4 MB
+        under_512: Bis zu 512 MB
+        under_64: Bis zu 64 MB
+        under_8: Bis zu 8 MB
       background_colour:
         label:
       description:
