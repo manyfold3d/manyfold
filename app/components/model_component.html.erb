@@ -34,7 +34,7 @@
               <%= link_to @model.creator.name, models_path((@filters || {}).merge(creator: @model.creator)) %><br>
             <% end %>
             <% if @model.collection %>
-              <%= helpers.icon "collection", Collection.model_name.human %>
+              <%= helpers.icon "collection", @model.collection.model_name.human %>
               <%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection.id)) %><br>
             <% end %>
             <% if @library.nil? && @model.library %>
