@@ -22,7 +22,7 @@ gem "redis", "~> 5.1"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-gem "dotenv-rails", "~> 2.8"
+gem "dotenv-rails", "~> 3.0"
 gem "acts-as-taggable-on", "~> 10.0"
 
 gem "ffi-libarchive", "~> 1.1"
