@@ -8,3 +8,22 @@ unless ENV["RACK_ENV"] === "production"
   require "rubocop/rake_task"
   RuboCop::RakeTask.new
 end
+
+namespace :translation do
+  namespace :clobber_and_sync do
+    [
+      :de
+    ].each do |locale|
+      task locale => :environment do
+        puts "-- Clobbering #{locale}.yml files"
+        system "find config/locales -name #{locale}.yml | xargs rm -v"
+        puts "-- Downloading from translation.io"
+        system "rake translation:sync"
+        system "find config/locales -name translation.*.yml | grep -v #{locale} | xargs rm"
+        puts "-- Normalizing files"
+        system "i18n-tasks normalize -p"
+        puts "-- Done!"
+      end
+    end
+  end
+end
