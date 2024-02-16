@@ -45,10 +45,11 @@ class Scan::AnalyseModelFileJob < ApplicationJob
       # Remove stop words
       human = stopword_filter.filter(human.split)
       # Measure distance from this filename
-      [String::Similarity.levenshtein(normed.join(" "), human.join(" ")), s]
+      d = String::Similarity.cosine(normed.join(" "), human.join(" "))
+      [d, s]
     }.max_by { |x| x[0] }
-    # Measure distance from this file
-    if best_match&.at(0)&.> 0.9
+    # If it's a decent enough match, store it
+    if best_match&.at(0)&.> 0.95
       file.update(presupported_version: best_match[1])
     end
   end
