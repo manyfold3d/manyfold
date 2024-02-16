@@ -51,4 +51,4 @@ de:
       tags: Tags
     update:
       failure: Es ist ein Fehler aufgetreten und die Modelldetails konnten nicht gespeichert werden.
-      success:
+      success: Modelldetails gespeichert.

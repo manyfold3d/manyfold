@@ -2,9 +2,9 @@
 de:
   collections:
     collection:
-      no_preview:
+      no_preview: keine Vorschau verfügbar
     create:
-      success:
+      success: Neue Kollektionsdetails gespeichert.
     destroy:
       success: Sammlung gelöscht!
     general:

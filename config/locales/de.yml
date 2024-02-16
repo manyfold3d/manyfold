@@ -68,7 +68,7 @@ de:
           attributes:
             presupported_version:
               already_presupported: kann nicht auf eine vorunterstützte Datei gesetzt werden
-              not_supported:
+              not_supported: keine vordefinierte Datei
     models:
       acts_as_taggable_on/tag: Tag
       collection: Kollektion
@@ -155,9 +155,9 @@ de:
     MIT: MIT
   renderer:
     errors:
-      canvas:
-      load:
-      webglrenderer:
+      canvas: 'Konnte #webgl canvas nicht finden!'
+      load: Fehler beim Laden
+      webglrenderer: Renderer konnte nicht erstellt werden!
     load:
   sites:
     cgtrader: CGTrader

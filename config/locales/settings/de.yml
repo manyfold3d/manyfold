@@ -21,8 +21,8 @@ de:
       tokens:
         collection:
         creator:
-        model_id:
-        model_name:
+        model_id: Ein eindeutiger numerischer Bezeichner für das Modell. Wir empfehlen dringend, diese Kennung immer am Ende der Vorlage anzugeben, um Namenskonflikte auf der Festplatte zu vermeiden.
+        model_name: Eine dateisystemsichere Version des Modellnamens.
         tags_html:
     library_settings:
       caption:
@@ -37,13 +37,13 @@ de:
         label:
       notes:
         help:
-        label:
+        label: Anmerkungen
       path:
-        label:
+        label: Pfad
       tag_regex:
-        check:
-        help:
-        label:
+        check: Check
+        help: Suche nach Modellen, die diese Regex erfüllen.
+        label: Erforderliche Tags
         search_missing:
     pagination_settings:
       collections:

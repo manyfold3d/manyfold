@@ -11,7 +11,7 @@ de:
       icon:
         help_html: Icons pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icon-Seite</a>
       library_regex:
-        help:
+        help: Suchen Sie nach Modellen, die diese Regex erfüllen.
     general:
       edit: Sammlung bearbeiten
       new: Neue Sammlung

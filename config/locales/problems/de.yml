@@ -3,56 +3,56 @@ de:
   problems:
     categories:
       duplicate: Duplizierte Dateien
-      empty:
-      inefficient:
-      missing:
-      nesting:
-      no_3d_model:
-      no_image:
+      empty: Modell hat keine Dateien
+      inefficient: Unvollständige Formate
+      missing: Fehlende Dateien oder Ordner
+      nesting: Modell enthält andere Modelle
+      no_3d_model: Modell hat keine 3D-Dateien
+      no_image: Modell hat keine Bilddateien
     filters:
-      apply_filters:
-      clear_filters:
-      show_ignored:
-      title:
+      apply_filters: Anwenden
+      clear_filters: Löschen
+      show_ignored: Ausgeblendete Elemente anzeigen
+      title: Filter
     index:
-      ignore:
-      no_problems:
-      unignore:
+      ignore: Ausblenden
+      no_problems: Die aktuellen Filter wurden problemlos angepasst.
+      unignore: Anzeigen
     library:
       missing:
-        title:
+        title: Ordner nicht gefunden
     model:
       empty:
-        description:
-        title:
+        description: Dieses Modell enthält keine Dateien. Entweder löschen Sie es oder finden Sie heraus, wo die Dateien geblieben sind!
+        title: Keine Dateien
       missing:
         description:
-        title:
+        title: Ordner nicht gefunden
       nesting:
         description:
-        title:
-        warning:
+        title: Enthält andere Modelle
+        warning: Beim Zusammenfassen werden alle Dateien aus den oben genannten Modellen in dieses Modell verschoben und entfernt. Die Datei-Metadaten bleiben erhalten, aber alle Modell-Metadaten gehen verloren!
       no_3d_model:
-        description:
-        title:
+        description: Dieses Modell enthält keine 3D-Dateien. Es ist unwahrscheinlich, dass dies korrekt ist.
+        title: Keine 3D-Dateien im Modell
       no_image:
-        description:
-        title:
+        description: Dieses Modell enthält keine Bilddateien. Das Hinzufügen einer solchen Datei könnte die Suche erleichtern.
+        title: Keine Bilddateien im Modell
     model_file:
       duplicate:
         description:
-        title:
+        title: Duplizierte Datei
       inefficient:
         description:
-        title:
+        title: Unzureichendes Formate
       missing:
         description:
-        title:
+        title: Datei nicht gefunden
     severities:
-      danger:
-      info:
-      silent:
-      warning:
+      danger: Gefahr
+      info: Infos
+      silent: Unbeachtet
+      warning: Warnung
     update:
-      ignored:
+      ignored: 'Problem versteckt bei "%{name}": %{message}'
       unignored:

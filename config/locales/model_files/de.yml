@@ -7,7 +7,7 @@ de:
       confirm: Sind Sie sicher, dass Sie diese Datei aus permanent löschen möchten?
       success: Datei gelöscht!
     general:
-      edit:
+      edit: Dateiinformationen bearbeiten
     show:
       actions_heading: Aktionen
       details_heading: Details
