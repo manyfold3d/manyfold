@@ -480,6 +480,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop-performance (~> 1.20.2)
     stopwords-filter2 (0.1.0)
+    string-similarity (2.1.0)
     sys-filesystem (1.4.4)
       ffi (~> 1.1)
     terminal-table (3.0.2)
@@ -574,6 +575,7 @@ DEPENDENCIES
   stackprof
   standard (~> 1.34.0)
   stopwords-filter2
+  string-similarity (~> 2.1)
   sys-filesystem (~> 1.4)
   translation (~> 1.40)
   tzinfo-data
