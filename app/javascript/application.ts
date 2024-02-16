@@ -19,6 +19,6 @@ import 'src/tag'
 import { I18n } from 'i18n-js'
 import locales from './locales.json'
 
-window.i18n = new I18n(locales)
-
 Rails.start()
+
+window.i18n = new I18n(locales)
