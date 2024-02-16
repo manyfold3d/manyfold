@@ -18,6 +18,14 @@ class ModelFile < ApplicationRecord
 
   acts_as_favoritable
 
+  SUPPORT_KEYWORDS = %w[
+    presupported
+    supported
+    sup
+    wsupports
+    withsupports
+  ]
+
   def extension
     File.extname(filename).delete(".").downcase
   end
