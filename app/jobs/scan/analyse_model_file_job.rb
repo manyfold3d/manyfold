@@ -33,8 +33,8 @@ class Scan::AnalyseModelFileJob < ApplicationJob
   end
 
   def match_with_supported_file(file)
-    # If this is a supported file, don't do anything
-    return if file.presupported
+    # If this is a supported file or already matched, don't do anything
+    return if file.presupported || file.presupported_version
     # Otherwise, find presupported files in the same model
     # Build list of files with normalised names
     best_match = file.model.model_files.presupported.map { |s|
