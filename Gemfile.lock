@@ -143,9 +143,9 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
     docile (1.4.0)
-    dotenv (3.0.1)
-    dotenv-rails (3.0.1)
-      dotenv (= 3.0.1)
+    dotenv (3.0.2)
+    dotenv-rails (3.0.2)
+      dotenv (= 3.0.2)
       railties (>= 6.1)
     erb_lint (0.5.0)
       activesupport
