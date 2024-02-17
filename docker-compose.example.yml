@@ -14,7 +14,7 @@ services:
       MANYFOLD_DB_PASSWORD: password
       MANYFOLD_SECRET_KEY_BASE: supersecretkey
       PUID: 1000
-      GUID: 1000
+      PGID: 1000
       # RAILS_RELATIVE_URL_ROOT: /manyfold Sets the root of the app to /manyfold useful for reverse proxies with nginx
     depends_on:
       - db
