@@ -80,7 +80,6 @@ if [ -n "$isLikelyManyfold" ]; then
 			file_env 'MANYFOLD_DB_PASSWORD' ''
 			file_env 'MANYFOLD_DB_DATABASE' 'sqlite/manyfold.db'
 			file_env 'MANYFOLD_DB_ENCODING' 'utf8'
-
 			mkdir -p "$(dirname "$MANYFOLD_DB_DATABASE")"
 			if [ "$(id -u)" = '0' ]; then
 				find "$(dirname "$MANYFOLD_DB_DATABASE")" \! -user manyfold -exec chown manyfold '{}' +
@@ -90,7 +89,6 @@ if [ -n "$isLikelyManyfold" ]; then
 		MANYFOLD_DB_ADAPTER="$adapter"
 		MANYFOLD_DB_HOST="$host"
 		echo "$RAILS_ENV:" > config/database.yml
-		cat config/database.yml
 		for var in \
 			adapter \
 			host \
@@ -105,6 +103,7 @@ if [ -n "$isLikelyManyfold" ]; then
 			[ -n "$val" ] || continue
 			echo "  $var: \"$val\"" >> config/database.yml
 		done
+		echo "  pool: <%= ENV.fetch(\"RAILS_MAX_THREADS\", 16) %>" >> config/database.yml
 	fi
 
 	# install additional gems for Gemfile.local and plugins
