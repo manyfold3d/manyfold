@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -Eeo pipefail
 # TODO add "-u"
-echo "entrypoint start"
 
 # usage: file_env VAR [DEFAULT]
 #    ie: file_env 'XYZ_DB_PASSWORD' 'example'
@@ -57,7 +56,6 @@ if [ -n "$isLikelyManyfold" ]; then
 		file_env 'MANYFOLD_DB_POSTGRES'
 		if [ "$POSTGRES_PORT_5432_TCP" ] && [ -z "$MANYFOLD_DB_POSTGRES" ]; then
 			export MANYFOLD_DB_POSTGRES='postgres'
-			echo "setting postgres"
 		fi
 
 		if [ "$MANYFOLD_DB_POSTGRES" ]; then
@@ -136,5 +134,5 @@ if [ -n "$isLikelyManyfold" ]; then
 	# remove PID file to enable restarting the container
 	rm -f tmp/pids/server.pid
 fi
-echo "entrypoint end"
+
 exec "$@"
