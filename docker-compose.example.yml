@@ -6,11 +6,15 @@ services:
     ports:
       - 3214:3214
     volumes:
-      - /path/to/your/libraries:/libraries
+      - /path/to/library:/libraries
     environment:
-      DATABASE_URL: postgresql://manyfold:password@db/manyfold?pool=5
-      SECRET_KEY_BASE: a_nice_long_random_string
       REDIS_URL: redis://redis:6379/1
+      MANYFOLD_DB_POSTGRES: db
+      MANYFOLD_DB_USERNAME: manyfold
+      MANYFOLD_DB_PASSWORD: password
+      MANYFOLD_SECRET_KEY_BASE: supersecretkey
+      PUID: 1000
+      GUID: 1000
       # RAILS_RELATIVE_URL_ROOT: /manyfold Sets the root of the app to /manyfold useful for reverse proxies with nginx
     depends_on:
       - db
