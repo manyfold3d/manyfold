@@ -20,6 +20,7 @@ class ModelFile < ApplicationRecord
 
   SUPPORT_KEYWORDS = %w[
     presupported
+    presup
     supported
     sup
     wsupports

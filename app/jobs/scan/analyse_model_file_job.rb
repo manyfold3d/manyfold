@@ -37,7 +37,7 @@ class Scan::AnalyseModelFileJob < ApplicationJob
     return if file.presupported || file.presupported_version
     # Otherwise, find presupported files in the same model
     # Build list of files with normalised names
-    best_match = file.model.model_files.presupported.map { |s|
+    matches = file.model.model_files.presupported.map { |s|
       # Normalize filename
       human = s.name.humanize.downcase
       # Normalize name of this file
@@ -47,11 +47,21 @@ class Scan::AnalyseModelFileJob < ApplicationJob
       # Measure distance from this filename
       d = String::Similarity.cosine(normed.join(" "), human.join(" "))
       [d, s]
-    }.max_by { |x| x[0] }
-    # If it's a decent enough match, store it
-    if best_match&.at(0)&.> 0.95
-      file.update(presupported_version: best_match[1])
+    }.select { |x| x[0] > 0.95 }
+    best = case matches.length
+    when 0
+      nil
+    when 1
+      matches[0][1]
+    else
+      same_format = matches.select { |x| x[1].mime_type === file.mime_type }
+      if same_format.empty?
+        matches[0][1]
+      else
+        same_format[0][1]
+      end
     end
+    file.update(presupported_version: best)
   end
 
   def inefficiency_problem(file)
