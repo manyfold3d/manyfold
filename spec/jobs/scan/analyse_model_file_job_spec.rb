@@ -62,6 +62,7 @@ RSpec.describe Scan::AnalyseModelFileJob do
 
     [
       %w[model.stl model_supported.stl],
+      %w[model.stl model_supported.lys],
       %w[model.stl model_sup.stl],
       %w[model.stl SUPPORTED/model.stl],
       %w[unsupported/model.stl supported/model.stl],
