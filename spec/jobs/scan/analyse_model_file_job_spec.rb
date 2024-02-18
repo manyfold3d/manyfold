@@ -106,5 +106,13 @@ RSpec.describe Scan::AnalyseModelFileJob do
         expect(unsup.presupported_version).to eq sup
       end
     end
+
+    it "prefers to match same file format if possible even if the text match is a bit worse" do
+      unsup = create(:model_file, model: model, filename: "Beefy Arm R.stl")
+      sup = create(:model_file, model: model, filename: "Befy Arm R Supported.stl", presupported: true)
+      create(:model_file, model: model, filename: "Beefy Arm R Supported.lys", presupported: true)
+      described_class.new.match_with_supported_file unsup
+      expect(unsup.presupported_version).to eq sup
+    end
   end
 end
