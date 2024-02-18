@@ -1,4 +1,4 @@
-class ModelFilePolicy < ApplicationPolicy
+class ModelFilePolicy < ActiveAdminPolicy
   def destroy?
     !SiteSettings.demo_mode?
   end

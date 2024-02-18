@@ -1,4 +1,4 @@
-class UploadPolicy < ApplicationPolicy
+class UploadPolicy < ActiveAdminPolicy
   def index?
     !SiteSettings.demo_mode?
   end

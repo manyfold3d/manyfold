@@ -1,4 +1,4 @@
-class LibraryPolicy < ApplicationPolicy
+class LibraryPolicy < ActiveAdminPolicy
   def create?
     !SiteSettings.demo_mode?
   end
