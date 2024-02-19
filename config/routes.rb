@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   root to: "home#index"
-
+  get 'images/resize', to: 'images#resize', as: 'resized_image'
   resources :uploads, only: [:index, :create]
   resources :libraries do
     member do
