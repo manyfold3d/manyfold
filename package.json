@@ -15,7 +15,7 @@
     "@selectize/selectize": "^0.15.2",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.3",
-    "esbuild": "^0.20.0",
+    "esbuild": "^0.20.1",
     "i18n-js": "^4.4.3",
     "jquery": "^3.7.1",
     "masonry-layout": "^4.2.2",
