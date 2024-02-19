@@ -1,9 +1,9 @@
 require "rails_helper"
 
-RSpec.describe "Admin::Problems" do
+RSpec.describe "Admin::Models" do
   it "is inaccessible to normal user" do
     sign_in create(:user, admin: false)
-    get "/admin/problems"
+    get "/admin/models"
     expect(response).to have_http_status(:unauthorized)
   end
 
@@ -13,13 +13,13 @@ RSpec.describe "Admin::Problems" do
     end
 
     it "is accessible" do
-      get "/admin/problems"
+      get "/admin/models"
       expect(response).to have_http_status(:success)
     end
 
     it "is inaccessible in demo mode" do
       allow(SiteSettings).to receive(:demo_mode?).and_return(true)
-      expect { get("/admin/problems") }.to raise_error(Pundit::NotAuthorizedError)
+      expect { get("/admin/models") }.to raise_error(Pundit::NotAuthorizedError)
     end
   end
 end
