@@ -4,14 +4,14 @@ de:
     create:
       success: Neue Erstellerdetails gespeichert.
     destroy:
-      success: Creator gelöscht!
+      success: Ersteller gelöscht!
     general:
-      edit: Editiere den Creator
-      new: Neuer Creator
+      edit: Editiere den Ersteller
+      new: Neuer Ersteller
     get_creator:
       unknown: Unbekannt
     index:
       actions_heading: Aktionen
       view_unassigned: Ansicht nicht zugewiesen
     update:
-      success: Creator Infos gespeichert.
+      success: Ersteller Infos gespeichert.

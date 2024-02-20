@@ -13,7 +13,7 @@ de:
         notes: Notizen
       library:
         caption: Beschreibung
-        icon:
+        icon: Symbol
         name: Name
         notes: Notizen
         path: Pfad
@@ -38,7 +38,7 @@ de:
         model_id: Modell
         notes: Notizen
         presupported: Vorgestützt
-        presupported_version:
+        presupported_version: Vorgestützte Version
         printed: Gedruckt
         size: Dateigröße
         unsupported_version: Nicht unterstützte Version

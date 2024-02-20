@@ -2,7 +2,7 @@
 de:
   settings:
     file_list_settings:
-      heading:
+      heading: Datei-Listen
       hide_presupported_versions:
         label:
       summary:
@@ -27,12 +27,12 @@ de:
     library_settings:
       caption:
         help:
-        label:
+        label: Beschreibung
       description:
-      heading:
+      heading: Sammlungen
       icon:
-        help_html:
-        label:
+        help_html: Symbols pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icons</a>
+        label: Symbol
       name:
         label:
       notes:
@@ -47,13 +47,13 @@ de:
         search_missing:
     pagination_settings:
       collections:
-        label:
+        label: Kollektionen paginieren
       creators:
-        label:
+        label: Ersteller paginieren
       description:
-      heading:
+      heading: Paginierung
       models:
-        label:
+        label: Modelle paginieren
       per_page:
         label:
     problem_settings:
@@ -92,8 +92,8 @@ de:
         label:
     show:
       advanced_admin:
-      submit:
-      title:
+      submit: Einstellungen speichern
+      title: Einstellungen
     tag_cloud_settings:
       heading:
       heatmap:

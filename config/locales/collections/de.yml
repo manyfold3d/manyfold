@@ -6,14 +6,14 @@ de:
     create:
       success: Neue Kollektionsdetails gespeichert.
     destroy:
-      success: Sammlung gelöscht!
+      success: Kollektion gelöscht!
     general:
-      edit: Sammlung bearbeiten
-      new: Neue Sammlung
+      edit: Kollektion bearbeiten
+      new: Neue Kollektion
     get_collection:
       unknown: Unbekannt
     index:
       actions_heading: Aktionen
       view_unassigned_models: Ansicht nicht zugewiesen
     update:
-      success: Sammlungsdetails gespeichert.
+      success: Kollektionsdetails gespeichert.

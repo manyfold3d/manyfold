@@ -26,7 +26,7 @@ de:
         description: Dieses Modell enthält keine Dateien. Entweder löschen Sie es oder finden Sie heraus, wo die Dateien geblieben sind!
         title: Keine Dateien
       missing:
-        description:
+        description: Der Ordner für dieses Modell fehlt auf der Festplatte; löschen Sie ihn, oder finden Sie heraus, wo er geblieben ist!
         title: Ordner nicht gefunden
       nesting:
         description:
@@ -40,13 +40,13 @@ de:
         title: Keine Bilddateien im Modell
     model_file:
       duplicate:
-        description:
+        description: Diese Datei ist in anderen Modellen dupliziert. Vielleicht möchten Sie einige davon entfernen.
         title: Duplizierte Datei
       inefficient:
         description:
         title: Unzureichendes Formate
       missing:
-        description:
+        description: Diese Datei fehlt auf der Festplatte; löschen Sie sie, oder finden Sie heraus, wo sie geblieben ist!
         title: Datei nicht gefunden
     severities:
       danger: Gefahr
