@@ -1,0 +1,175 @@
+---
+de:
+  activerecord:
+    attributes:
+      collection:
+        caption: Beschreibung
+        collection_id: Kollektion
+        name: Name
+        notes: Notizen
+      creator:
+        caption: Beschreibung
+        name: Name
+        notes: Notizen
+      library:
+        caption: Beschreibung
+        icon: Symbol
+        name: Name
+        notes: Notizen
+        path: Pfad
+        tag_regex: Tag Regex
+      link:
+        url: URL
+      model:
+        caption: Beschreibung
+        collection_id: Kollektion
+        creator_id: Ersteller
+        library_id: Sammlung
+        license: Lizenz
+        name: Name
+        notes: Notizen
+        path: Pfad
+        preview_file: Vorschau
+        tags: Tags
+      model_file:
+        caption: Beschreibung
+        digest: Hash
+        filename: Dateiname
+        model_id: Modell
+        notes: Notizen
+        presupported: Vorgestützt
+        presupported_version: Vorgestützte Version
+        printed: Gedruckt
+        size: Dateigröße
+        unsupported_version: Nicht unterstützte Version
+        y_up: Y Aufwärts
+      problem:
+        category: Kategorie
+        ignored: Versteckt
+        note: Notize
+        problematic_type: Objekt Typ
+        severity: Schweregrad
+    errors:
+      models:
+        library:
+          attributes:
+            path:
+              not_found: konnte nicht auf der Festplatte gefunden werden
+        model:
+          attributes:
+            library:
+              nested: kann nicht geändert werden, Modell enthält andere Modelle
+            license:
+              invalid_spdx: ist keine gültige Lizenz
+            path:
+              destination_exists: existiert bereits
+              nested: kann nicht geändert werden, Modell enthält andere Modelle
+        model_file:
+          attributes:
+            presupported_version:
+              already_presupported: kann nicht auf eine vorunterstützte Datei gesetzt werden
+              not_supported: keine vordefinierte Datei
+    models:
+      acts_as_taggable_on/tag: Tag
+      collection: Kollektion
+      creator: Ersteller
+      delayed/backend/active_record/job: Aufgabe
+      library: Sammlung
+      link: URL
+      model: Modell
+      model_file: Datei
+      problem: Problem
+  application:
+    content_header:
+      sort:
+        name: Nach Name sortieren
+        time: Sortieren nach Zeit
+    demo_mode: Diese Instanz befindet sich im Demo-Modus. Sie können keine Modelle hinzufügen oder entfernen, aber alles andere ist möglich.
+    filters_card:
+      missing_tags: Fehlende Tags
+      remove_filter: Filter entfernen
+      search: Suche
+      title: Filter
+      unknown: Unbekannt
+    footer:
+      by_html: Entworfen und erstellt von <a href="https://floppy.org.uk">James</a> mit Hilfe <a href="https://github.com/manyfold3d/manyfold/graphs/contributors">unserer Contributor</a>.
+      chat: Chat
+      code: Code
+      community_heading: Gemeinschaft
+      development_heading: Entwicklung
+      issues: Ausgaben
+      logo: Logo
+      open_source_html: Open Source unter der <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license noopener">MIT-Lizenz</a>.
+      social: Social Media
+      sponsor: Förderer
+      stats_heading: Statistiken
+      version: Version
+    links_form:
+      add: Füge einen Link hinzu
+    navbar:
+      check_existing: Vorhandene Modelle prüfen
+      navbar:
+        toggler:
+          label: Navigation umschalten
+      scan: Scannen
+      scan_changes: Nach Änderungen suchen
+      scanning: Scannen
+      search: Suche
+      settings: Einstellungen
+      upload: Hochladen
+    tag_list:
+      hidden: versteckt
+    tagline: Hilft ihnen ihre 3D-Druck Dateien zu verwalten
+    title: Manyfold
+  general:
+    delete: Löschen
+    download: Herunterladen
+    edit: Bearbeiten
+    expand: Erweitern
+    new: Neue
+    save: Speichern
+  home:
+    index:
+      how_long_ago: vor %{time}
+      recent: Kürzlich hinzugefügte Modelle
+      search:
+        placeholder: Wonach suchen Sie?
+  kaminari:
+    paginator:
+      label: Seitennavigation
+  layouts:
+    application:
+      alert:
+        danger: Gefahr
+        info: Info
+  licenses:
+    CC-BY-40: Creative Commons Attribution
+    CC-BY-NC-40: Creative Commons Attribution NonCommercial
+    CC-BY-NC-ND-40: Creative Commons Attribution NonCommercial NoDerivatives
+    CC-BY-NC-SA-40: Creative Commons Attribution NonCommercial ShareAlike
+    CC-BY-ND-40: Creative Commons Attribution NoDerivatives
+    CC-BY-SA-40: Creative Commons Attribution ShareAlike
+    CC-PDDC: Creative Commons Public Domain Declaration
+    CC0-10: Creative Commons Zero
+    LicenseRef-Commercial: Commercial; private use only
+    MIT: MIT
+  renderer:
+    errors:
+      canvas: 'Konnte #webgl canvas nicht finden!'
+      load: Fehler beim Laden
+      webglrenderer: Renderer konnte nicht erstellt werden!
+    load:
+  sites:
+    cgtrader: CGTrader
+    comicsgamesandthings: Comics, Games, and Things
+    cults3d: Cults3D
+    myminifactory: MyMiniFactory
+    theminiindex: The Mini Index
+    thingiverse: Thingiverse
+  views:
+    pagination:
+      first: "« Start"
+      last: Ende »
+      next: Weiter &rsaquo;
+      previous: "&lsaquo; Zurück"
+      truncate: "&hellip;"

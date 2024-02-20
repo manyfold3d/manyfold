@@ -1,0 +1,17 @@
+---
+de:
+  creators:
+    create:
+      success: Neue Erstellerdetails gespeichert.
+    destroy:
+      success: Ersteller gelöscht!
+    general:
+      edit: Editiere den Ersteller
+      new: Neuer Ersteller
+    get_creator:
+      unknown: Unbekannt
+    index:
+      actions_heading: Aktionen
+      view_unassigned: Ansicht nicht zugewiesen
+    update:
+      success: Ersteller Infos gespeichert.

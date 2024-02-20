@@ -1,0 +1,17 @@
+---
+de:
+  model_files:
+    bulk_update:
+      success: Dateien erfolgreich aktualisiert.
+    destroy:
+      confirm: Sind Sie sicher, dass Sie diese Datei aus permanent löschen möchten?
+      success: Datei gelöscht!
+    general:
+      edit: Dateiinformationen bearbeiten
+    show:
+      actions_heading: Aktionen
+      details_heading: Details
+      notes_heading: Notizen
+    update:
+      failure: Es ist ein Fehler aufgetreten und die Dateidetails konnten nicht gespeichert werden.
+      success: Dateidetails gespeichert.

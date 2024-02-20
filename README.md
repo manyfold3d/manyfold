@@ -82,7 +82,7 @@ Translations are also available in client-side Javascript; they are built from t
 
 We are using [Translation.io](https://translation.io/) to manage translations into other languages. If you want to help out on that, sign up on the site and send us username on a GitHub issue for the language you're interested in.
 
-To synchronise with Translation.io, run `rake translation:sync`. Once you've updated the translations, you will have a new file called `translation.{locale}.yml`. Run `bundle exec i18n-tasks normalize -p` to automatically reorganise that into the appropriate files.
+To synchronise with Translation.io, run `rake translation:clobber_and_sync:{locale}` where `{locale}` is a supported code, such as `de`.
 
 ### Building Docker images
 

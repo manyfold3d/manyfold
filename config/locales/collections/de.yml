@@ -1,0 +1,19 @@
+---
+de:
+  collections:
+    collection:
+      no_preview: keine Vorschau verfügbar
+    create:
+      success: Neue Kollektionsdetails gespeichert.
+    destroy:
+      success: Kollektion gelöscht!
+    general:
+      edit: Kollektion bearbeiten
+      new: Neue Kollektion
+    get_collection:
+      unknown: Unbekannt
+    index:
+      actions_heading: Aktionen
+      view_unassigned_models: Ansicht nicht zugewiesen
+    update:
+      success: Kollektionsdetails gespeichert.
