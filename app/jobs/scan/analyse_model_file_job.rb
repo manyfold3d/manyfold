@@ -52,14 +52,11 @@ class Scan::AnalyseModelFileJob < ApplicationJob
     when 0
       nil
     when 1
-      matches[0][1]
+      matches.first[1]
     else
       same_format = matches.select { |x| x[1].mime_type === file.mime_type }
-      if same_format.empty?
-        matches[0][1]
-      else
-        same_format[0][1]
-      end
+      matches = same_format unless same_format.empty?
+      matches.max_by { |x| x[0] }[1]
     end
     file.update(presupported_version: best)
   end

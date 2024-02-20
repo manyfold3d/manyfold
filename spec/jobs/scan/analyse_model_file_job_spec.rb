@@ -96,12 +96,15 @@ RSpec.describe Scan::AnalyseModelFileJob do
     end
 
     [
-      ["Beefy Arm R.stl", "Beefy Arm R Supported.stl", "Beefy Arm L Supported.stl"]
+      ["Beefy Arm B.stl", "Beefy Arm B Supported.stl",
+        ["Beefy Arm A Supported.lys", "Beefy Arm A Supported.stl", "Beefy Arm B Supported.lys"]]
     ].each do |filename, correct, incorrect|
-      it "matches #{filename} with #{correct} rather than #{incorrect}" do
+      it "matches #{filename} with #{correct} rather than incorrect options" do
+        incorrect.each do |i|
+          create(:model_file, model: model, filename: i, presupported: true)
+        end
         unsup = create(:model_file, model: model, filename: filename)
         sup = create(:model_file, model: model, filename: correct, presupported: true)
-        create(:model_file, model: model, filename: incorrect, presupported: true)
         described_class.new.match_with_supported_file unsup
         expect(unsup.presupported_version).to eq sup
       end
