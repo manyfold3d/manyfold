@@ -12,7 +12,7 @@ class ModelFilesController < ApplicationController
         format.html
         format.js
         format.any(*SupportedMimeTypes.model_types.map(&:to_sym)) do
-          send_file_content
+          send_file_content disposition: :inline
         end
         format.any(*SupportedMimeTypes.image_types.map(&:to_sym)) do
           send_file_content
@@ -59,15 +59,9 @@ class ModelFilesController < ApplicationController
   def send_file_content(disposition: :attachment)
     filename = File.join(@library.path, @model.path, @file.filename)
     response.headers["Content-Length"] = File.size(filename).to_s
-    response.headers["Content-Disposition"] = ActionDispatch::Http::ContentDisposition.format(disposition: disposition, filename: @file.filename)
-    response.headers["Content-Type"] = @file.mime_type.to_s
-    IO.foreach(filename, 2**15) do |chunk|
-      response.stream.write(chunk)
-    end
+    send_file filename, disposition: disposition, type: @file.extension.to_sym
   rescue Errno::ENOENT
     head :internal_server_error
-  ensure
-    response.stream.close
   end
 
   def bulk_update_params
