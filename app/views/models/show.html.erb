@@ -68,6 +68,7 @@
       </tr>
     </table>
     <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_library_model_path(@library, @model), class: "btn btn-primary" %>
+    <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), download_files_library_model_path(@library, @model), {method: :post, class: "btn btn-secondary"} %>    
     <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), library_model_path(@library, @model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: t("models.destroy.confirm")}} %>
   <% end %>
 
