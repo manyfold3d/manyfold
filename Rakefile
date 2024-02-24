@@ -12,7 +12,8 @@ end
 namespace :translation do
   namespace :clobber_and_sync do
     [
-      :de
+      :de,
+      :pl
     ].each do |locale|
       task locale => :environment do
         puts "-- Clobbering #{locale}.yml files"

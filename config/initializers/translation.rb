@@ -25,6 +25,6 @@ if Rails.env.development?
       "helpers"
     ]
     config.source_locale = "en"
-    config.target_locales = ["ru", "es", "fr", "de"]
+    config.target_locales = ["ru", "es", "fr", "de", "pl"]
   end
 end
