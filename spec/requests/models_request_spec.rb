@@ -18,7 +18,7 @@ RSpec.describe "Models" do
 
   describe "GET /libraries/1/models/1" do
     it "returns http success" do
-      get "/libraries/1/models/1"
+      get "/libraries/#{library.id}/models/#{library.models.first.id}"
       expect(response).to have_http_status(:success)
     end
   end
