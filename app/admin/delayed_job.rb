@@ -24,7 +24,7 @@ ActiveAdmin.register Delayed::Job do
   end
 
   collection_action :mark_all_for_re_run, method: :post do
-    n = Delayed::Job.update_all("run_at = created_at")
+    n = Delayed::Job.update_all("run_at = created_at") # rubocop:disable Rails/SkipsModelValidations
     redirect_to admin_delayed_backend_active_record_jobs_url, notice: I18n.t("active_admin.jobs.mark_all_for_re_run.notice", n: n)
   end
 
