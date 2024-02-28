@@ -1,16 +1,18 @@
 require "rails_helper"
 
 RSpec.describe "Models" do
-  before do
-    @library = create(:library) do |library|
-      build_list(:model, 15, library: library) { |x| x.save! }
+  let(:library) do
+    create(:library) do |l|
+      before do
+        build_list(:model, 15, library: l) { |x| x.save! }
+      end
     end
-    @creator = create(:creator)
   end
+  let(:creator) { create(:creator) }
 
   describe "GET /models?library={id}&page=2" do
     it "returns paginated models" do
-      get "/models?library=#{@library.id}&page=2"
+      get "/models?library=#{library.id}&page=2"
       expect(response).to have_http_status(:success)
       expect(response.body).to match(/pagination/)
     end
@@ -25,9 +27,9 @@ RSpec.describe "Models" do
 
   describe "Model Update" do
     it "adds tags to a model" do
-      put "/libraries/#{@library.id}/models/#{@library.models.first.id}", params: {model: {tag_list: ["a", "b", "c"]}}
+      put "/libraries/#{library.id}/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b", "c"]}}
       expect(response).to have_http_status(:redirect)
-      tags = @library.models.first.tag_list
+      tags = library.models.first.tag_list
       expect(tags.length).to eq 3
       expect(tags[0]).to eq "a"
       expect(tags[1]).to eq "b"
@@ -35,26 +37,26 @@ RSpec.describe "Models" do
     end
 
     it "removes tags from a model" do
-      first = @library.models.first
+      first = library.models.first
       first.tag_list = "a, b, c"
       first.save
 
-      put "/libraries/#{@library.id}/models/#{@library.models.first.id}", params: {model: {tag_list: ["a", "b"]}}
+      put "/libraries/#{library.id}/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b"]}}
       expect(response).to have_http_status(:redirect)
-      tags = @library.models.first.tag_list
+      tags = library.models.first.tag_list
       expect(tags.length).to eq 2
       expect(tags[0]).to eq "a"
       expect(tags[1]).to eq "b"
     end
 
     it "both adds and removes tags from a model" do
-      first = @library.models.first
+      first = library.models.first
       first.tag_list = "a, b, c"
       first.save
 
-      put "/libraries/#{@library.id}/models/#{@library.models.first.id}", params: {model: {tag_list: ["a", "b", "d"]}}
+      put "/libraries/#{library.id}/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b", "d"]}}
       expect(response).to have_http_status(:redirect)
-      tags = @library.models.first.tag_list
+      tags = library.models.first.tag_list
       expect(tags.length).to eq 3
       expect(tags[0]).to eq "a"
       expect(tags[1]).to eq "b"
@@ -64,36 +66,36 @@ RSpec.describe "Models" do
 
   describe "Bulk Edit" do
     it "updates models creator" do
-      models = @library.models.take(2)
+      models = library.models.take(2)
       update = {}
       update[models[0].id] = 1
       update[models[1].id] = 1
 
-      patch "/models/update", params: {models: update, creator_id: @creator.id}
+      patch "/models/update", params: {models: update, creator_id: creator.id}
 
       expect(response).to have_http_status(:redirect)
       models.each { |model| model.reload }
-      expect(models[0].creator_id).to eq @creator.id
-      expect(models[1].creator_id).to eq @creator.id
+      expect(models[0].creator_id).to eq creator.id
+      expect(models[1].creator_id).to eq creator.id
     end
 
+    update = {}
     it "adds tags to models" do
-      update = {}
-      @library.models.take(2).each do |model|
+      library.models.take(2).each do |model|
         update[model.id] = 1
       end
 
       patch "/models/update", params: {models: update, add_tags: ["a", "b", "c"]}
 
       expect(response).to have_http_status(:redirect)
-      @library.models.take(2).each do |model|
+      library.models.take(2).each do |model|
         expect(model.tag_list).to eq ["a", "b", "c"]
       end
     end
 
     it "removes tags from models" do
       update = {}
-      @library.models.take(2).each do |model|
+      library.models.take(2).each do |model|
         model.tag_list = "a, b, c"
         model.save
         update[model.id] = 1
@@ -102,7 +104,7 @@ RSpec.describe "Models" do
       patch "/models/update", params: {models: update, remove_tags: ["a", "b"]}
 
       expect(response).to have_http_status(:redirect)
-      @library.models.take(2).each do |model|
+      library.models.take(2).each do |model|
         expect(model.tag_list).to eq ["c"]
       end
     end

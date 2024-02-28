@@ -11,12 +11,6 @@
 RSpec/ExampleLength:
   Max: 11
 
-# Offense count: 20
-# Configuration parameters: AssignmentOnly.
-RSpec/InstanceVariable:
-  Exclude:
-    - "spec/requests/models_request_spec.rb"
-
 # Offense count: 67
 RSpec/MultipleExpectations:
   Max: 5
