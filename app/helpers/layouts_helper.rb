@@ -2,9 +2,7 @@
 
 module LayoutsHelper
   def parent_layout(layout)
-    # rubocop:disable Rails/HelperInstanceVariable
-    @view_flow.set(:layout, output_buffer)
-    # rubocop:enable Rails/HelperInstanceVariable
+    @view_flow.set(:layout, output_buffer) # rubocop:todo Rails/HelperInstanceVariable
     output = render(template: "layouts/#{layout}")
     self.output_buffer = ActionView::OutputBuffer.new(output)
   end
