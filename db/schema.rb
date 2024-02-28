@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_09_125409) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_28_130246) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -80,6 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_09_125409) do
     t.string "name"
     t.text "tag_regex"
     t.text "icon"
+    t.index ["path"], name: "index_libraries_on_path", unique: true
   end
 
   create_table "links", force: :cascade do |t|
@@ -104,6 +105,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_09_125409) do
     t.bigint "size"
     t.integer "presupported_version_id"
     t.index ["digest"], name: "index_model_files_on_digest"
+    t.index ["filename", "model_id"], name: "index_model_files_on_filename_and_model_id", unique: true
     t.index ["model_id"], name: "index_model_files_on_model_id"
     t.index ["presupported_version_id"], name: "index_model_files_on_presupported_version_id"
   end
@@ -124,6 +126,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_09_125409) do
     t.index ["collection_id"], name: "index_models_on_collection_id"
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
+    t.index ["path", "library_id"], name: "index_models_on_path_and_library_id", unique: true
     t.index ["preview_file_id"], name: "index_models_on_preview_file_id"
     t.index ["slug"], name: "index_models_on_slug"
   end
@@ -136,6 +139,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_09_125409) do
     t.datetime "updated_at", null: false
     t.string "note"
     t.boolean "ignored", default: false, null: false
+    t.index ["category", "problematic_id", "problematic_type"], name: "index_problems_on_category_and_problematic_id_and_type", unique: true
     t.index ["problematic_type", "problematic_id"], name: "index_problems_on_problematic"
   end
 

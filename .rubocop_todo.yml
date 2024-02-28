@@ -66,13 +66,3 @@ Rails/SkipsModelValidations:
   Exclude:
     - "app/admin/delayed_job.rb"
     - "db/migrate/20220612220115_add_service_name_to_active_storage_blobs.active_storage.rb"
-
-# Offense count: 4
-# Configuration parameters: Include.
-# Include: app/models/**/*.rb
-Rails/UniqueValidationWithoutIndex:
-  Exclude:
-    - "app/models/library.rb"
-    - "app/models/model.rb"
-    - "app/models/model_file.rb"
-    - "app/models/problem.rb"
