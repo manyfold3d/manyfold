@@ -21,7 +21,6 @@
     "masonry-layout": "^4.2.2",
     "popper.js": "^1.16.1",
     "sass": "^1.71.1",
-    "sifter": "^0.5.4",
     "three": "^0.161.0",
     "typescript": "^5.3.3"
   },
