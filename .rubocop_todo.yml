@@ -4,10 +4,3 @@
 # The point is for the user to remove these configuration records
 # one by one as the offenses are removed from the code base.
 # Note that changes in the inspected code, or installation of new
-
-# Offense count: 1
-# Configuration parameters: Include.
-# Include: app/controllers/**/*.rb, app/mailers/**/*.rb
-Rails/LexicallyScopedActionFilter:
-  Exclude:
-    - "app/controllers/concerns/model_filters.rb"
