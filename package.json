@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@nathanvda/cocoon": "^1.2.14",
+    "@popperjs/core": "^2.11.8",
     "@rails/ujs": "^7.1.3",
     "@selectize/selectize": "^0.15.2",
     "bootstrap": "^5.3.3",
