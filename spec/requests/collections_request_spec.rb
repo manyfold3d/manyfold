@@ -10,7 +10,7 @@ RSpec.describe "Collections" do
   end
 
   describe "GET /collections?page=2" do
-    it "returns paginated collections" do
+    it "returns paginated collections" do # rubocop:todo RSpec/MultipleExpectations
       get "/collections?page=2"
       expect(response).to have_http_status(:success)
       expect(response.body).to match(/pagination/)

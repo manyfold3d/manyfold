@@ -4,16 +4,6 @@
 # The point is for the user to remove these configuration records
 # one by one as the offenses are removed from the code base.
 # Note that changes in the inspected code, or installation of new
-# versions of RuboCop, may require this file to be generated again.
-
-# Offense count: 18
-# Configuration parameters: CountAsOne.
-RSpec/ExampleLength:
-  Max: 11
-
-# Offense count: 67
-RSpec/MultipleExpectations:
-  Max: 5
 
 # Offense count: 1
 # Configuration parameters: Include.

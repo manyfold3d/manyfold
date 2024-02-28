@@ -12,7 +12,7 @@ RSpec.describe ModelsHelper do
       ].map { |x| build(:model_file, filename: "#{x}.stl") }
     end
 
-    it "groups strings together with similar prefixes" do
+    it "groups strings together with similar prefixes" do # rubocop:todo RSpec/MultipleExpectations
       groups = helper.group(files)
       expect(groups["foo"].count).to eq(2)
       expect(groups["bar"].count).to eq(2)

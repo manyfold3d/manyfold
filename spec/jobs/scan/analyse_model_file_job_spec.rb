@@ -2,7 +2,7 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe Scan::AnalyseModelFileJob do
-  it "calculates file digest if not set" do
+  it "calculates file digest if not set" do # rubocop:todo RSpec/ExampleLength
     file = create(:model_file, filename: "test.obj", digest: nil, size: 10)
     allow(File).to receive(:exist?).with(file.pathname).and_return(true)
     allow(file).to receive(:calculate_digest).once.and_return("deadbeef")
@@ -12,7 +12,7 @@ RSpec.describe Scan::AnalyseModelFileJob do
     expect(file.digest).to eq "deadbeef"
   end
 
-  it "calculates file size if not set" do
+  it "calculates file size if not set" do # rubocop:todo RSpec/ExampleLength
     file = create(:model_file, filename: "test.obj", digest: "deadbeef", size: nil)
     allow(File).to receive(:exist?).with(file.pathname).and_return(true)
     allow(File).to receive(:size).once.and_return(1234)
@@ -21,7 +21,7 @@ RSpec.describe Scan::AnalyseModelFileJob do
     expect(file.size).to eq 1234
   end
 
-  it "detects ASCII STL files and creates a Problem record" do
+  it "detects ASCII STL files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
     file = create(:model_file, filename: "test.stl", digest: "deadbeef", size: 1234)
     allow(File).to receive(:exist?).with(file.pathname).and_return(true)
     allow(File).to receive(:read).with(file.pathname, 6).once.and_return("solid ")
@@ -30,7 +30,7 @@ RSpec.describe Scan::AnalyseModelFileJob do
     expect(Problem.first.note).to eq "ASCII STL"
   end
 
-  it "detects Wavefront OBJ files and creates a Problem record" do
+  it "detects Wavefront OBJ files and creates a Problem record" do # rubocop:todo RSpec/MultipleExpectations
     file = create(:model_file, filename: "test.obj", digest: "deadbeef", size: 1234)
     allow(File).to receive(:exist?).with(file.pathname).and_return(true)
     expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
@@ -38,7 +38,7 @@ RSpec.describe Scan::AnalyseModelFileJob do
     expect(Problem.first.note).to eq "Wavefront OBJ"
   end
 
-  it "detects ASCII PLY files and creates a Problem record" do
+  it "detects ASCII PLY files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
     file = create(:model_file, filename: "test.ply", digest: "deadbeef", size: 1234)
     allow(File).to receive(:exist?).with(file.pathname).and_return(true)
     allow(File).to receive(:read).with(file.pathname, 16).once.and_return("ply\rformat ascii")
@@ -47,7 +47,7 @@ RSpec.describe Scan::AnalyseModelFileJob do
     expect(Problem.first.note).to eq "ASCII PLY"
   end
 
-  it "detects duplicate files and creates a Problem record" do
+  it "detects duplicate files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
     file = create(:model_file, filename: "test.stl", digest: "deadbeef", size: 1234)
     allow(file).to receive(:duplicate?).once.and_return(true)
     allow(ModelFile).to receive(:find).with(file.id).and_return(file)
@@ -99,7 +99,7 @@ RSpec.describe Scan::AnalyseModelFileJob do
       ["Beefy Arm B.stl", "Beefy Arm B Supported.stl",
         ["Beefy Arm A Supported.lys", "Beefy Arm A Supported.stl", "Beefy Arm B Supported.lys"]]
     ].each do |filename, correct, incorrect|
-      it "matches #{filename} with #{correct} rather than incorrect options" do
+      it "matches #{filename} with #{correct} rather than incorrect options" do # rubocop:todo RSpec/ExampleLength
         incorrect.each do |i|
           create(:model_file, model: model, filename: i, presupported: true)
         end

@@ -17,7 +17,7 @@ RSpec.describe Problem do
       create_list(:problem, 3, :inefficient)
     end
 
-    it "lists visible problems" do
+    it "lists visible problems" do # rubocop:todo RSpec/MultipleExpectations
       expect(described_class.visible(settings).length).to eq 3
       expect(described_class.visible(settings).map { |x| x.category.to_sym }).to include :inefficient
     end
@@ -45,7 +45,7 @@ RSpec.describe Problem do
       expect(described_class.unscoped.count).to eq(2)
     end
 
-    it "can ignore an existing problem" do
+    it "can ignore an existing problem" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       p = create(:problem)
       expect(p.ignored).to be(false)
       expect(described_class.count).to eq(1)
@@ -54,7 +54,7 @@ RSpec.describe Problem do
       expect(described_class.count).to eq(0)
     end
 
-    it "can unignore an existing problem" do
+    it "can unignore an existing problem" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       p = create(:problem, ignored: true)
       expect(p.ignored).to be(true)
       expect(described_class.count).to eq(0)

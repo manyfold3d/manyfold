@@ -35,7 +35,7 @@ RSpec.describe ModelFile do
     expect(part.bounding_box).to eq([10, 15, 20])
   end
 
-  it "finds duplicate files using digest" do
+  it "finds duplicate files using digest" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
     library = create(:library, path: Rails.root.join("/tmp"))
     model1 = create(:model, library: library, path: "model1")
     part1 = create(:model_file, model: model1, filename: "file.obj", digest: "1234")
@@ -103,14 +103,14 @@ RSpec.describe ModelFile do
       expect(presupported.unsupported_version).to eq unsupported
     end
 
-    it "only let presupported files be set as the presupported_version" do
+    it "only let presupported files be set as the presupported_version" do # rubocop:todo RSpec/MultipleExpectations
       another_unsupported = create(:model_file, model: model, presupported: false)
       unsupported.presupported_version = another_unsupported
       expect(unsupported).not_to be_valid
       expect(unsupported.errors[:presupported_version].first).to eq "is not a presupported file"
     end
 
-    it "does not allow a presupported_version to be set for presupported files" do
+    it "does not allow a presupported_version to be set for presupported files" do # rubocop:todo RSpec/MultipleExpectations
       another_presupported = create(:model_file, model: model, presupported: true)
       presupported.presupported_version = another_presupported
       expect(presupported).not_to be_valid

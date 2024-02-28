@@ -11,7 +11,7 @@ RSpec.describe "Models" do
   let(:creator) { create(:creator) }
 
   describe "GET /models?library={id}&page=2" do
-    it "returns paginated models" do
+    it "returns paginated models" do # rubocop:todo RSpec/MultipleExpectations
       get "/models?library=#{library.id}&page=2"
       expect(response).to have_http_status(:success)
       expect(response.body).to match(/pagination/)
@@ -26,7 +26,7 @@ RSpec.describe "Models" do
   end
 
   describe "Model Update" do
-    it "adds tags to a model" do
+    it "adds tags to a model" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       put "/libraries/#{library.id}/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b", "c"]}}
       expect(response).to have_http_status(:redirect)
       tags = library.models.first.tag_list
@@ -36,7 +36,7 @@ RSpec.describe "Models" do
       expect(tags[2]).to eq "c"
     end
 
-    it "removes tags from a model" do
+    it "removes tags from a model" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       first = library.models.first
       first.tag_list = "a, b, c"
       first.save
@@ -49,7 +49,7 @@ RSpec.describe "Models" do
       expect(tags[1]).to eq "b"
     end
 
-    it "both adds and removes tags from a model" do
+    it "both adds and removes tags from a model" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       first = library.models.first
       first.tag_list = "a, b, c"
       first.save
@@ -65,7 +65,7 @@ RSpec.describe "Models" do
   end
 
   describe "Bulk Edit" do
-    it "updates models creator" do
+    it "updates models creator" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       models = library.models.take(2)
       update = {}
       update[models[0].id] = 1
@@ -80,7 +80,7 @@ RSpec.describe "Models" do
     end
 
     update = {}
-    it "adds tags to models" do
+    it "adds tags to models" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       library.models.take(2).each do |model|
         update[model.id] = 1
       end
@@ -93,7 +93,7 @@ RSpec.describe "Models" do
       end
     end
 
-    it "removes tags from models" do
+    it "removes tags from models" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       update = {}
       library.models.take(2).each do |model|
         model.tag_list = "a, b, c"

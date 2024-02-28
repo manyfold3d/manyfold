@@ -20,7 +20,7 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
 
     let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
 
-    it "can scan a library directory" do
+    it "can scan a library directory" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(library.id) }.to change { library.models.count }.to(2)
       expect(library.models.map(&:path)).to contain_exactly("model_one", "subfolder/model_two")
     end
@@ -52,7 +52,7 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
 
-    it "pulls out nested model as separate" do
+    it "pulls out nested model as separate" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(library.id) }.to change { library.models.count }.to(2)
       expect(library.models.map(&:path)).to contain_exactly("model_one", "model_one/nested")
     end
@@ -75,7 +75,7 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
 
-    it "understands that it's a single model" do
+    it "understands that it's a single model" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(library.id) }.to change { library.models.count }.to(1)
       expect(library.models.map(&:path)).to contain_exactly("thingiverse_model")
     end
@@ -101,7 +101,7 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
 
-    it "understands that it's a single model" do
+    it "understands that it's a single model" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(library.id) }.to change { library.models.count }.to(1)
       expect(library.models.map(&:path)).to contain_exactly("model")
     end
@@ -127,7 +127,7 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
 
-    it "ignores case and filters out subfolders correctly" do
+    it "ignores case and filters out subfolders correctly" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(library.id) }.to change { library.models.count }.to(1)
       expect(library.models.map(&:path)).to contain_exactly("model")
     end

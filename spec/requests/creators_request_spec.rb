@@ -10,7 +10,7 @@ RSpec.describe "Creators" do
   end
 
   describe "GET /creators?page=2" do
-    it "returns paginated creators" do
+    it "returns paginated creators" do # rubocop:todo RSpec/MultipleExpectations
       get "/creators?page=2"
       expect(response).to have_http_status(:success)
       expect(response.body).to match(/pagination/)
