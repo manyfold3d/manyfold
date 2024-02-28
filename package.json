@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@nathanvda/cocoon": "^1.2.14",
-    "@popperjs/core": "^2.11.8",
     "@rails/ujs": "^7.1.3",
     "@selectize/selectize": "^0.15.2",
     "bootstrap": "^5.3.3",
@@ -17,7 +16,6 @@
     "i18n-js": "^4.4.3",
     "jquery": "^3.7.1",
     "masonry-layout": "^4.2.2",
-    "popper.js": "^1.16.1",
     "three": "^0.161.0"
   },
   "version": "0.1.0",
