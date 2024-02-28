@@ -2,11 +2,9 @@ require "rails_helper"
 
 RSpec.describe "Models" do
   let(:library) do
-    create(:library) do |l|
-      before do
-        build_list(:model, 15, library: l) { |x| x.save! }
-      end
-    end
+    l = create(:library)
+    build_list(:model, 15, library: l) { |x| x.save! }
+    l
   end
   let(:creator) { create(:creator) }
 
