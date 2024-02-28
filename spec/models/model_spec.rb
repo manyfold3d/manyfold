@@ -94,7 +94,7 @@ RSpec.describe Model do
     end
   end
 
-  context "nested inside another" do
+  context "when nested inside another" do
     before do
       allow(File).to receive(:exist?).and_call_original
       allow(File).to receive(:exist?).with("/library").and_return(true)
@@ -117,7 +117,7 @@ RSpec.describe Model do
       expect(child.contains_other_models?).to be false
     end
 
-    context "merging into parent" do
+    context "when merging into parent" do
       it "moves files" do
         file = create(:model_file, model: child, filename: "part.stl")
         child.merge_into! parent
@@ -134,7 +134,7 @@ RSpec.describe Model do
     end
   end
 
-  context "nested inside another with underscores in the name" do
+  context "when nested inside another with underscores in the name" do
     before do
       allow(File).to receive(:exist?).and_call_original
       allow(File).to receive(:exist?).with("/library").and_return(true)
@@ -150,7 +150,7 @@ RSpec.describe Model do
     end
   end
 
-  context "being organised" do
+  context "when organising" do
     around do |ex|
       Dir.mktmpdir do |library_path|
         @library_path = library_path
@@ -188,7 +188,7 @@ RSpec.describe Model do
     end
   end
 
-  context "changing library" do
+  context "when changing library" do
     around do |ex|
       Dir.mktmpdir do |library_path|
         Dir.mkdir File.join(library_path, "original_library")

@@ -6,21 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 4
-RSpec/BeforeAfterAll:
-  Exclude:
-    - "spec/requests/collections_request_spec.rb"
-    - "spec/requests/creators_request_spec.rb"
-    - "spec/requests/libraries_request_spec.rb"
-    - "spec/requests/models_request_spec.rb"
-
-# Offense count: 5
-# Configuration parameters: Prefixes, AllowedPatterns.
-# Prefixes: when, with, without
-RSpec/ContextWording:
-  Exclude:
-    - "spec/models/model_spec.rb"
-
 # Offense count: 18
 # Configuration parameters: CountAsOne.
 RSpec/ExampleLength:

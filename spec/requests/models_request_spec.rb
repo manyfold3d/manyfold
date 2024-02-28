@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Models" do
-  before :all do
+  before do
     @library = create(:library) do |library|
       build_list(:model, 15, library: library) { |x| x.save! }
     end
