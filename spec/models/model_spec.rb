@@ -248,9 +248,8 @@ RSpec.describe Model do
     }
     let(:model_with_leading_separator) {
       model = create(:model, library: library, path: "model")
-      # rubocop:disable Rails/SkipsModelValidations
-      model.update_columns(path: "/model") # Set leading separator bypassing validators
-      # rubocop:enable Rails/SkipsModelValidations
+      # Set leading separator bypassing validators
+      model.update_columns(path: "/model") # rubocop:disable Rails/SkipsModelValidations
       model
     }
 
