@@ -12,9 +12,7 @@ RSpec.describe "Model Files" do
     end
   end
 
-  # rubocop:disable RSpec/InstanceVariable
-  let(:library) { create(:library, path: @library_path) }
-  # rubocop:enable RSpec/InstanceVariable
+  let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
   let(:model) { create(:model, library: library, path: "model_one") }
   let(:stl_file) { create(:model_file, model: model, filename: "test.stl") }
   let(:jpg_file) { create(:model_file, model: model, filename: "test.jpg") }

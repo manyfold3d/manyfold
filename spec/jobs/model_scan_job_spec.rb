@@ -17,20 +17,18 @@ RSpec.describe ModelScanJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
 
     let(:model) do
       create(:model, path: "model_one", library: library)
     end
 
-    it "detects model files" do
+    it "detects model files" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(2)
       expect(model.model_files.map(&:filename)).to eq ["part_1.obj", "part_2.obj"]
     end
 
-    it "sets the preview file to the first scanned file by default" do
+    it "sets the preview file to the first scanned file by default" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(2)
       model.reload
       expect(model.preview_file.filename).to eq "part_1.obj"
@@ -59,17 +57,15 @@ RSpec.describe ModelScanJob do
       ActiveJob::Base.queue_adapter = :test
     end
 
-    # rubocop:disable RSpec/InstanceVariable
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
     let(:thing) { create(:model, path: "thingiverse_model", library: library) }
 
-    it "scans files" do
+    it "scans files" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(thing.id) }.to change { thing.model_files.count }.to(2)
       expect(thing.model_files.map(&:filename)).to eq ["files/part_one.stl", "images/card_preview_DISPLAY.png"]
     end
 
-    it "ignores model-type files in image directory" do
+    it "ignores model-type files in image directory" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(thing.id) }.to change { thing.model_files.count }.to(2)
       expect(thing.model_files.map(&:filename)).not_to include "images/ignore.stl"
     end
@@ -90,9 +86,7 @@ RSpec.describe ModelScanJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
     let(:model) { create(:model, path: "model", library: library) }
 
     it "finds all the files in the subfolders" do
@@ -115,7 +109,8 @@ RSpec.describe ModelScanJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
+    # rubocop:todo RSpec/InstanceVariable
+
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
     let(:model) { create(:model, path: "model", library: library) }
@@ -136,11 +131,12 @@ RSpec.describe ModelScanJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
+    # rubocop:todo RSpec/InstanceVariable
+
     let(:mock_library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
 
-    it "doesn't make ModelFile objects for folders" do
+    it "doesn't make ModelFile objects for folders" do # rubocop:todo RSpec/MultipleExpectations
       model = create(:model, path: "model", library: mock_library)
       # arm.stl is in a contained model so there should be only one file in this model
       expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(1)

@@ -157,7 +157,7 @@ RSpec.describe PathParser do
       expect(model.collection.name).to eq "Greedy"
     end
 
-    it "parses everything at once" do
+    it "parses everything at once" do # rubocop:todo RSpec/MultipleExpectations
       allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{collection}/{tags}/{modelName}{modelId}")
       model.parse_metadata_from_path!
       expect(model.creator.name).to eq "Library 1"
@@ -165,7 +165,7 @@ RSpec.describe PathParser do
       expect(model.tag_list).to eq ["tags", "are", "greedy"]
     end
 
-    it "ignores extra path components" do
+    it "ignores extra path components" do # rubocop:todo RSpec/MultipleExpectations
       allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}{modelId}")
       model.parse_metadata_from_path!
       expect(model.creator.name).to eq "Greedy"
@@ -173,7 +173,7 @@ RSpec.describe PathParser do
       expect(model.tag_list).to eq []
     end
 
-    it "handles a completely empty template" do
+    it "handles a completely empty template" do # rubocop:todo RSpec/MultipleExpectations
       allow(SiteSettings).to receive(:model_path_template).and_return("")
       model.parse_metadata_from_path!
       expect(model.creator).to be_nil
@@ -181,7 +181,7 @@ RSpec.describe PathParser do
       expect(model.tag_list).to eq []
     end
 
-    it "removes stop words from tag lists" do
+    it "removes stop words from tag lists" do # rubocop:todo RSpec/ExampleLength
       allow(SiteSettings).to receive_messages(
         model_tags_stop_words_locale: "en",
         model_tags_filter_stop_words: true,
@@ -198,14 +198,14 @@ RSpec.describe PathParser do
       allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}")
     end
 
-    it "creates a new creator from a human name if there's no match" do
+    it "creates a new creator from a human name if there's no match" do # rubocop:todo RSpec/MultipleExpectations
       model = build(:model, path: "Bruce Wayne/model-name")
       model.parse_metadata_from_path!
       expect(model.creator.name).to eq "Bruce Wayne"
       expect(model.creator.slug).to eq "bruce-wayne"
     end
 
-    it "creates a new creator from a slug if there's no match" do
+    it "creates a new creator from a slug if there's no match" do # rubocop:todo RSpec/MultipleExpectations
       model = build(:model, path: "bruce-wayne/model-name")
       model.parse_metadata_from_path!
       expect(model.creator.name).to eq "Bruce Wayne"
@@ -234,14 +234,14 @@ RSpec.describe PathParser do
       allow(SiteSettings).to receive(:model_path_template).and_return("{collection}/{modelName}")
     end
 
-    it "creates a new collection from a human name if there's no match" do
+    it "creates a new collection from a human name if there's no match" do # rubocop:todo RSpec/MultipleExpectations
       model = build(:model, path: "Wonderful Toys/model-name")
       model.parse_metadata_from_path!
       expect(model.collection.name).to eq "Wonderful Toys"
       expect(model.collection.slug).to eq "wonderful-toys"
     end
 
-    it "creates a new collection from a slug if there's no match" do
+    it "creates a new collection from a slug if there's no match" do # rubocop:todo RSpec/MultipleExpectations
       model = build(:model, path: "wonderful-toys/model-name")
       model.parse_metadata_from_path!
       expect(model.collection.name).to eq "Wonderful Toys"
@@ -265,7 +265,7 @@ RSpec.describe PathParser do
     end
   end
 
-  it "discards model ID and doesn't include it in model name" do
+  it "discards model ID and doesn't include it in model name" do # rubocop:todo RSpec/MultipleExpectations
     allow(SiteSettings).to receive(:model_path_template).and_return("{modelName}{modelId}")
     model = build(:model, path: "model-name#1234")
     model.parse_metadata_from_path!
@@ -273,7 +273,7 @@ RSpec.describe PathParser do
     expect(model.slug).to eq "model-name"
   end
 
-  it "handles paths matching a complex templates" do
+  it "handles paths matching a complex templates" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
     allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{creator} - {modelName}{modelId}")
     model = build(:model, path: "human/wizard/bruce-wayne - model-name#1234")
     model.parse_metadata_from_path!

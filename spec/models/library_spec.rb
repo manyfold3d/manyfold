@@ -14,7 +14,7 @@ RSpec.describe Library do
     expect(build(:library, path: "/library1")).to be_valid
   end
 
-  it "is invalid if a bad path is specified" do
+  it "is invalid if a bad path is specified" do # rubocop:todo RSpec/MultipleExpectations
     l = build(:library, path: "/nope")
     expect(l).not_to be_valid
     expect(l.errors[:path].first).to eq "could not be found on disk"
