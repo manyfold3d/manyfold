@@ -18,9 +18,7 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
 
     it "can scan a library directory" do
       expect { described_class.perform_now(library.id) }.to change { library.models.count }.to(2)
@@ -49,7 +47,8 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
+    # rubocop:todo RSpec/InstanceVariable
+
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
 
@@ -71,7 +70,8 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
+    # rubocop:todo RSpec/InstanceVariable
+
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
 
@@ -96,7 +96,8 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
+    # rubocop:todo RSpec/InstanceVariable
+
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
 
@@ -121,7 +122,8 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
+    # rubocop:todo RSpec/InstanceVariable
+
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
 
@@ -141,7 +143,8 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
+    # rubocop:todo RSpec/InstanceVariable
+
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
 
@@ -166,7 +169,8 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
+    # rubocop:todo RSpec/InstanceVariable
+
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
 

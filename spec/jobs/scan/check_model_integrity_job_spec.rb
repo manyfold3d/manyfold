@@ -12,9 +12,7 @@ RSpec.describe Scan::CheckModelIntegrityJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
 
     it "flags models with no folder as a problem" do
       model = create(:model, library: library, path: "missing")

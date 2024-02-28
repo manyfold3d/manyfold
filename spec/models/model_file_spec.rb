@@ -61,9 +61,7 @@ RSpec.describe ModelFile do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
     let(:model) { create(:model, library: library, path: "model_one") }
     let(:file) { create(:model_file, model: model, filename: "part_1.3mf", digest: "1234") }
 

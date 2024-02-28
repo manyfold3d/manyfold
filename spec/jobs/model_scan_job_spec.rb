@@ -17,9 +17,7 @@ RSpec.describe ModelScanJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
 
     let(:model) do
       create(:model, path: "model_one", library: library)
@@ -59,9 +57,7 @@ RSpec.describe ModelScanJob do
       ActiveJob::Base.queue_adapter = :test
     end
 
-    # rubocop:disable RSpec/InstanceVariable
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
     let(:thing) { create(:model, path: "thingiverse_model", library: library) }
 
     it "scans files" do
@@ -90,9 +86,7 @@ RSpec.describe ModelScanJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
     let(:model) { create(:model, path: "model", library: library) }
 
     it "finds all the files in the subfolders" do
@@ -115,7 +109,8 @@ RSpec.describe ModelScanJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
+    # rubocop:todo RSpec/InstanceVariable
+
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
     let(:model) { create(:model, path: "model", library: library) }
@@ -136,7 +131,8 @@ RSpec.describe ModelScanJob do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
+    # rubocop:todo RSpec/InstanceVariable
+
     let(:mock_library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
 

@@ -158,9 +158,7 @@ RSpec.describe Model do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
     let!(:model) {
       FileUtils.mkdir_p(File.join(library.path, "original"))
       create(:model, library: library, name: "test model", path: "original")
@@ -198,7 +196,8 @@ RSpec.describe Model do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
+    # rubocop:todo RSpec/InstanceVariable
+
     let(:original_library) { create(:library, path: File.join(@library_path, "original_library")) }
     let(:new_library) { create(:library, path: File.join(@library_path, "new_library")) }
     # rubocop:enable RSpec/InstanceVariable
@@ -240,7 +239,8 @@ RSpec.describe Model do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
+    # rubocop:todo RSpec/InstanceVariable
+
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
 
@@ -277,7 +277,8 @@ RSpec.describe Model do
       end
     end
 
-    # rubocop:disable RSpec/InstanceVariable
+    # rubocop:todo RSpec/InstanceVariable
+
     let(:library) { create(:library, path: @library_path) }
     # rubocop:enable RSpec/InstanceVariable
     let(:model) { create(:model, library: library, path: "model_one") }
