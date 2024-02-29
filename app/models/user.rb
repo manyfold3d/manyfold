@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  devise :database_authenticatable
+  devise :database_authenticatable, :registerable, :validatable
   acts_as_favoritor
 
   def to_param
