@@ -17,7 +17,7 @@
     "i18n-js": "^4.4.3",
     "jquery": "^3.7.1",
     "masonry-layout": "^4.2.2",
-    "three": "^0.161.0"
+    "three": "^0.162.0"
   },
   "version": "0.1.0",
   "devDependencies": {
