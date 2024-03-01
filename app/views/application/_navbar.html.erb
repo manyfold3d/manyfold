@@ -10,17 +10,17 @@
           <%= nav_link "box", Model.model_name.human.pluralize, models_path(@filters) %>
         </li>
         <li class="nav-item">
-          <%= nav_link "people", Creator.model_name.human.pluralize, creators_path(@filters.except(:creator)) %>
+          <%= nav_link "people", Creator.model_name.human.pluralize, creators_path(@filters&.except(:creator)) %>
         </li>
         <li class="nav-item">
-          <%= nav_link "collection", Collection.model_name.human.pluralize, collections_path(@filters.except(:collection)) %>
+          <%= nav_link "collection", Collection.model_name.human.pluralize, collections_path(@filters&.except(:collection)) %>
         </li>
         <% Library.find_each do |library| %>
           <li class="nav-item">
             <%= nav_link(
                   library.icon || "boxes",
                   library.name,
-                  models_path((@filters.except(:library) || {}).merge({library: library.id})),
+                  models_path((@filters&.except(:library) || {}).merge({library: library.id})),
                   title: library.caption
                 )	%>
           </li>
