@@ -63,7 +63,19 @@
         </li>
         <li class="nav-item">
           <%= form_with url: models_path, method: :get, role: "search" do |f| %>
-            <%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: t(".search"), aria_label: t(".search"), aria_describedby: "button-search", value: params[:q], autofocus: true %>
+            <%= f.search_field :q, class: "form-control ms-1 me-3", placeholder:  t(".search"), aria_label: t(".search"), aria_describedby: "button-search", value: params[:q], autofocus: true %>
+          <% end %>
+        </li>
+        <%- if current_user %>
+          <li class="nav-item">
+            <%= nav_link "person", current_user.username, user_settings_path(current_user), text_style: "d-none" %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <%- if current_user %>
+            <%= nav_link "box-arrow-right", t(".log_out"), destroy_user_session_path, method: :delete, title: t(".log_out"), text_style: "d-lg-none" %>
+          <% else %>
+            <%= nav_link "box-arrow-in-right", "", new_user_session_path, title: t(".log_in") %>
           <% end %>
         </li>
       </ul>

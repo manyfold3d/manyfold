@@ -108,6 +108,8 @@ en:
       add: add another link
     navbar:
       check_existing: Check existing models
+      log_in: Sign in
+      log_out: Sign out
       navbar:
         toggler:
           label: Toggle navigation
@@ -155,7 +157,7 @@ en:
     MIT: MIT
   renderer:
     errors:
-      canvas: 'Could not find #webgl canvas!'
+      canvas: "Could not find #webgl canvas!"
       load: Load Error
       webglrenderer: Could not create renderer!
     load: Load
