@@ -7,20 +7,20 @@
     <div class="collapse navbar-collapse row" id="navbar">
       <ul class="navbar-nav col-6 ps-4 ps-lg-0 align-self-start">
         <li class="nav-item">
-          <%= nav_link "box", Model.model_name.human.pluralize, (@filters || {}).merge(controller: "models") %>
+          <%= nav_link "box", Model.model_name.human.pluralize, models_path(@filters) %>
         </li>
         <li class="nav-item">
-          <%= nav_link "people", Creator.model_name.human.pluralize, (@filters || {}).merge(controller: "creators") %>
+          <%= nav_link "people", Creator.model_name.human.pluralize, creators_path(@filters.except(:creator)) %>
         </li>
         <li class="nav-item">
-          <%= nav_link "collection", Collection.model_name.human.pluralize, (@filters || {}).merge(controller: "collections") %>
+          <%= nav_link "collection", Collection.model_name.human.pluralize, collections_path(@filters.except(:collection)) %>
         </li>
         <% Library.find_each do |library| %>
           <li class="nav-item">
             <%= nav_link(
                   library.icon || "boxes",
                   library.name,
-                  (@filters || {}).merge({controller: "models", library: library.id}),
+                  models_path((@filters.except(:library) || {}).merge({library: library.id})),
                   title: library.caption
                 )	%>
           </li>
