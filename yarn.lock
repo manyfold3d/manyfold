@@ -647,6 +647,11 @@
   optionalDependencies:
     jquery-ui "^1.13.2"
 
+"@tweenjs/tween.js@~23.1.1":
+  version "23.1.1"
+  resolved "https://registry.yarnpkg.com/@tweenjs/tween.js/-/tween.js-23.1.1.tgz#0ae28ed9c635805557f78c2626464018d5f1b5e2"
+  integrity sha512-ZpboH7pCPPeyBWKf8c7TJswtCEQObFo3bOBYalm99NzZarATALYCo5OhbCa/n4RQyJyHfhkdx+hNrdL5ByFYDw==
+
 "@types/i18n-js@^3.8.9":
   version "3.8.9"
   resolved "https://registry.yarnpkg.com/@types/i18n-js/-/i18n-js-3.8.9.tgz#074d1389539d2db992e6afd7eb379aa02929ef93"
@@ -696,11 +701,12 @@
   resolved "https://registry.yarnpkg.com/@types/stats.js/-/stats.js-0.17.0.tgz#0ed81d48e03b590c24da85540c1d952077a9fe20"
   integrity sha512-9w+a7bR8PeB0dCT/HBULU2fMqf6BAzvKbxFboYhmDtDkKPiyXYbjoe2auwsXlEFI7CFNMF1dCv3dFH5Poy9R1w==
 
-"@types/three@^0.161.2":
-  version "0.161.2"
-  resolved "https://registry.yarnpkg.com/@types/three/-/three-0.161.2.tgz#3c7e3f40869ad52970f517583cc200472e8918bf"
-  integrity sha512-DazpZ+cIfBzbW/p0zm6G8CS03HBMd748A3R1ZOXHpqaXZLv2I5zNgQUrRG//UfJ6zYFp2cUoCQaOLaz8ubH07w==
+"@types/three@^0.162.0":
+  version "0.162.0"
+  resolved "https://registry.yarnpkg.com/@types/three/-/three-0.162.0.tgz#79d170c88f14b2eaee6b76af00fc4016a533e586"
+  integrity sha512-0j5yZcVukVIhrhSIC7+LmBPkkMoMuEJ1AfYBZfgNytdYqYREMuiyXWhYOMeZLBElTEAlJIZn7r2W3vqTIgjWlg==
   dependencies:
+    "@tweenjs/tween.js" "~23.1.1"
     "@types/stats.js" "*"
     "@types/webxr" "*"
     fflate "~0.6.10"
