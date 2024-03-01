@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :models, except: [:index] do
       member do
         post "merge"
-        post '/download', to: "downloads#write", as: 'download_files'
+        post "/download", to: "downloads#write", as: "download_files"
       end
       resources :model_files, except: [:index] do
         collection do

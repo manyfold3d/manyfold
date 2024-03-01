@@ -21,7 +21,7 @@ gem "redis", "~> 5.1"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-gem 'rubyzip'
+gem "rubyzip"
 gem "dotenv-rails", "~> 3.0"
 gem "acts-as-taggable-on", "~> 10.0"
 
