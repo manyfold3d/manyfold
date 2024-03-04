@@ -301,7 +301,6 @@ GEM
     prime (0.1.2)
       forwardable
       singleton
-    prism (0.24.0)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -408,9 +407,8 @@ GEM
       rubocop-ast (>= 1.30.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.31.0)
+    rubocop-ast (1.31.1)
       parser (>= 3.3.0.4)
-      prism (>= 0.24.0)
     rubocop-capybara (2.20.0)
       rubocop (~> 1.41)
     rubocop-factory_bot (2.25.1)
@@ -425,7 +423,7 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
       rubocop-ast (>= 1.30.0, < 2.0)
-    rubocop-rspec (2.27.0)
+    rubocop-rspec (2.27.1)
       rubocop (~> 1.40)
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
