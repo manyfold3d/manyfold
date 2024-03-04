@@ -19,11 +19,11 @@ WORKDIR /usr/src/app
 COPY package.json .
 COPY yarn.lock .
 RUN yarn config set network-timeout 600000 -g
-RUN yarn install --prod
+RUN yarn install
 
 RUN gem install bundler -v 2.4.13
 RUN bundle config set --local deployment 'true'
-RUN bundle config set --local without 'test'
+RUN bundle config set --local without 'development test'
 COPY Gemfile* ./
 RUN bundle install
 
