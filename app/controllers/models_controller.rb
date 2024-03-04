@@ -100,7 +100,12 @@ class ModelsController < ApplicationController
   def destroy
     authorize @model
     @model.delete_from_disk_and_destroy
-    redirect_back_or_to library_path(@library), notice: t(".success")
+    if URI.parse(request.referer).path == library_model_path(@library, @model)
+      # If we're coming from the model page itself, we can't go back there
+      redirect_to library_path(@library), notice: t(".success")
+    else
+      redirect_back_or_to library_path(@library), notice: t(".success")
+    end
   end
 
   private

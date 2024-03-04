@@ -51,7 +51,12 @@ class ModelFilesController < ApplicationController
   def destroy
     authorize @file
     @file.delete_from_disk_and_destroy
-    redirect_back_or_to library_model_path(@library, @model), notice: t(".success")
+    if URI.parse(request.referer).path == library_model_model_file_path(@library, @model, @file)
+      # If we're coming from the file page itself, we can't go back there
+      redirect_to library_model_path(@library, @model), notice: t(".success")
+    else
+      redirect_back_or_to library_model_path(@library, @model), notice: t(".success")
+    end
   end
 
   private
