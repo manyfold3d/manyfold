@@ -1,7 +1,10 @@
 name: Docker
 
 on:
+  pull_request:
+    branches: [ "main" ]
   push:
+    branches: [ "main" ]
     tags:
       - v*
   workflow_dispatch:
@@ -34,6 +37,7 @@ jobs:
             type=raw,value=${{ inputs.tag }},event=workflow_dispatch
             type=schedule,pattern=nightly
             type=semver,pattern={{version}}
+            type=ref,event=pr
 
       - name: Depot setup
         uses: depot/setup-action@v1
@@ -53,7 +57,7 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm/v7,linux/arm64
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           build-args: |
