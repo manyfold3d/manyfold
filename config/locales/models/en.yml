@@ -1,6 +1,9 @@
 ---
 en:
   models:
+    bulk_edit:
+      add_tags: Add tags
+      remove_tags: Remove tags
     bulk_update:
       success: Models updated successfully.
     delete: Delete
