@@ -1,12 +1,10 @@
-<h2><%= t(".sign_up") %></h2>
+<h1><%= t(".sign_up") %></h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
   <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
+  <%= text_input_row form, :username, autocomplete: "username" %>
   <%= password_input_row form, :password, autocomplete: "new-password" %>
   <%= password_input_row form, :password_confirmation, autocomplete: "new-password" %>
-
   <%= form.submit t(".sign_up"), class: "btn btn-primary" %>
 <% end %>
 
