@@ -1,4 +1,4 @@
-<h1><%= t('.sign_in') %></h1>
+<h1><%= t(".sign_in") %></h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
 
@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <%= form.submit t('.sign_in'), class: "btn btn-primary" %>
+  <%= form.submit t(".sign_in"), class: "btn btn-primary" %>
 <% end %>
 
 <%= render "devise/shared/links" %>
