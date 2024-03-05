@@ -3,7 +3,7 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
 
   <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
-  <%= text_input_row form, :password, autocomplete: "current-password" %>
+  <%= password_input_row form, :password, autocomplete: "current-password" %>
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
