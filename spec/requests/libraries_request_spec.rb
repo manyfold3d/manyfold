@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Libraries" do
   before do
+    sign_in create(:user)
     @library = create(:library) do |library|
       create_list(:model, 2, library: library)
     end

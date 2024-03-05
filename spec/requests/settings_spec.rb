@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Settings" do
+  before do
+    sign_in create(:user)
+  end
+
   let(:username) { User.first.username }
 
   describe "GET /" do
