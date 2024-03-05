@@ -38,6 +38,7 @@ jobs:
             type=schedule,pattern=nightly
             type=semver,pattern={{version}}
             type=ref,event=pr
+            type=edge
 
       - name: Depot setup
         uses: depot/setup-action@v1
