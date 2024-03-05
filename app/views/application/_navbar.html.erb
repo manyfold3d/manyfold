@@ -70,7 +70,7 @@
         </li>
         <%- if current_user %>
           <li class="nav-item">
-            <%= nav_link "person", current_user.username, user_settings_path(current_user), text_style: "d-none" %>
+            <%= nav_link "person", current_user.username, edit_user_registration_path, text_style: "d-none" %>
           </li>
         <% end %>
         <li class="nav-item">
