@@ -68,6 +68,20 @@ module ApplicationHelper
     end
   end
 
+  def password_input_row(form, name, options = {})
+    content_tag :div, class: "row mb-3 input-group" do
+      safe_join [
+        form.label(name, class: "col-sm-2 col-form-label"),
+        content_tag(:div, class: "col p-0") do
+          safe_join [
+            form.password_field(name, {class: "form-control"}.merge(options)),
+            errors_for(form.object, name)
+          ]
+        end
+      ]
+    end
+  end
+
   def rich_text_input_row(form, name)
     content_tag :div, class: "row mb-3 input-group" do
       safe_join [
