@@ -186,4 +186,21 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
       expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "model/file.Obj")
     end
   end
+
+  context "with unusual characters in model folder names" do
+    around do |ex|
+      MockDirectory.create([
+        "model [test]/file.obj"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    it "detects files inside models with square brackets" do
+      expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "model [test]/file.obj")
+    end
+  end
 end

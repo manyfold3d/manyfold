@@ -143,4 +143,32 @@ RSpec.describe ModelScanJob do
       expect(model.model_files.map(&:filename)).not_to include ["nope.stl"]
     end
   end
+
+  context "with special characters in model folder" do
+    around do |ex|
+      MockDirectory.create([
+        "model_one [test]/part_1.obj"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    let(:model) do
+      create(:model, path: "model_one [test]", library: library)
+    end
+
+    it "generates a correct file list" do
+      expect(described_class.new.file_list(
+        File.join(library.path, model.path)
+      )).to eq ["#{library.path}/#{model.path}/part_1.obj"]
+    end
+
+    it "detects model files" do # rubocop:todo RSpec/MultipleExpectations
+      expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(1)
+      expect(model.model_files.map(&:filename)).to eq ["part_1.obj"]
+    end
+  end
 end
