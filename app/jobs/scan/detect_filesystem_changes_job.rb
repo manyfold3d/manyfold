@@ -1,9 +1,11 @@
+require "shellwords"
+
 class Scan::DetectFilesystemChangesJob < ApplicationJob
   queue_as :default
 
   # Find all files in the library that we might need to look at
   def filenames_on_disk(library)
-    Dir.glob(File.join(library.path, "**", ApplicationJob.file_pattern)).filter { |x| File.file?(x) }
+    Dir.glob(File.join(Shellwords.escape(library.path), "**", ApplicationJob.file_pattern)).filter { |x| File.file?(x) }
   end
 
   # Get a list of all the existing filenames

@@ -1,3 +1,5 @@
+require "shellwords"
+
 class ModelScanJob < ApplicationJob
   queue_as :default
 
@@ -5,10 +7,10 @@ class ModelScanJob < ApplicationJob
     list = []
     Dir.open(model_path) do |dir|
       list = Dir.glob(
-        [File.join(dir.path, ApplicationJob.file_pattern)] +
+        [File.join(Shellwords.escape(dir.path), ApplicationJob.file_pattern)] +
         ApplicationJob.common_subfolders.map do |name, pattern|
           File.join(
-            dir.path,
+            Shellwords.escape(dir.path),
             ApplicationJob.case_insensitive_glob_string(name),
             pattern
           )
