@@ -1,6 +1,11 @@
 class User < ApplicationRecord
-  devise :database_authenticatable
+  devise :database_authenticatable, :registerable, :validatable
   acts_as_favoritor
+
+  validates :username,
+    presence: true,
+    uniqueness: {case_sensitive: false},
+    format: {with: /\A[[:alnum:]]{3,}\z/}
 
   def to_param
     username

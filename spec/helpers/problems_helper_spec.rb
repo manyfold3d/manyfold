@@ -5,7 +5,7 @@ RSpec.describe ProblemsHelper do
   let(:model) { create(:model) }
 
   before do
-    sign_in User.first
+    sign_in create(:user)
   end
 
   it "converts a problem to a severity level" do

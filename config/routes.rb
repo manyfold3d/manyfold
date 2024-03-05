@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   get "problems/index"
-  devise_for :users, ActiveAdmin::Devise.config
+  devise_for :users, controllers: {
+    registrations: "users/registrations"
+  }
+
   ActiveAdmin.routes(self)
+
   resources :users do
     resource :settings, only: [:show, :update]
   end

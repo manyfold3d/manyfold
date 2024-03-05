@@ -6,12 +6,14 @@ class ApplicationController < ActionController::Base
   before_action :check_scan_status
   before_action :remember_ordering
 
+  def single_user_mode?
+    User.count == 1 && User.first.encrypted_password == ""
+  end
+
   def auto_login_single_user
     # If there is a single user with no password set,
     # then log in automatically as that user.
-    if User.count == 1 && User.first.encrypted_password == ""
-      sign_in(:user, User.first)
-    end
+    sign_in(:user, User.first) if single_user_mode?
   end
 
   def authenticate_admin_user!

@@ -2,6 +2,10 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe "Model Files" do
+  before do
+    sign_in create(:user)
+  end
+
   around do |ex|
     MockDirectory.create([
       "model_one/test.stl",

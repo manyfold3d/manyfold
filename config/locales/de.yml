@@ -49,6 +49,30 @@ de:
         note: Notize
         problematic_type: Objekt Typ
         severity: Schweregrad
+      user:
+        confirmation_sent_at: Bestätigung gesendet am
+        confirmation_token: Bestätigungs-Token
+        confirmed_at: Bestätigt am
+        created_at: Erstellt am
+        current_password: Bisheriges Passwort
+        current_sign_in_at: Aktuelle Anmeldung am
+        current_sign_in_ip: IP der aktuellen Anmeldung
+        email: E-Mail
+        encrypted_password: Verschlüsseltes Passwort
+        failed_attempts: Fehlversuche
+        last_sign_in_at: Letzte Anmeldung am
+        last_sign_in_ip: IP der letzten Anmeldung
+        locked_at: Gesperrt am
+        password: Passwort
+        password_confirmation: Passwortbestätigung
+        remember_created_at: '"Angemeldet bleiben" erstellt am'
+        remember_me: Angemeldet bleiben
+        reset_password_sent_at: E-Mail zum Zurücksetzen des Passworts gesendet am
+        reset_password_token: Token zum Zurücksetzen des Passworts
+        sign_in_count: Anzahl der Anmeldungen
+        unconfirmed_email: Unbestätigte E-Mail-Adresse
+        unlock_token: Entsperrungs-Token
+        updated_at: Aktualisiert am
     errors:
       models:
         library:
@@ -79,6 +103,9 @@ de:
       model: Modell
       model_file: Datei
       problem: Problem
+      user:
+        one: Benutzer
+        other: Benutzer
   application:
     content_header:
       sort:
@@ -121,6 +148,11 @@ de:
       hidden: versteckt
     tagline: Hilft ihnen ihre 3D-Druck Dateien zu verwalten
     title: Manyfold
+  errors:
+    messages:
+      not_saved:
+        one: "%{resource} konnte wegen eines Fehlers nicht gespeichert werden:"
+        other: "%{count} Fehler verhinderten das Speichern von %{resource}:"
   general:
     delete: Löschen
     download: Herunterladen

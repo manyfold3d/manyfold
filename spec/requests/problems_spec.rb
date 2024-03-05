@@ -5,7 +5,7 @@ RSpec.describe "Problems" do
     before do
       create_list(:problem, 2, category: :inefficient)
       create_list(:problem_on_model, 3, category: :missing)
-      sign_in User.first
+      sign_in create(:user)
     end
 
     it "returns success" do

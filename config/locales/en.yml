@@ -49,6 +49,30 @@ en:
         note: Note
         problematic_type: Object Type
         severity: Severity
+      user:
+        confirmation_sent_at: Confirmation sent at
+        confirmation_token: Confirmation token
+        confirmed_at: Confirmed at
+        created_at: Created at
+        current_password: Current password
+        current_sign_in_at: Current sign in at
+        current_sign_in_ip: Current sign in IP
+        email: Email
+        encrypted_password: Encrypted password
+        failed_attempts: Failed attempts
+        last_sign_in_at: Last sign in at
+        last_sign_in_ip: Last sign in IP
+        locked_at: Locked at
+        password: Password
+        password_confirmation: Password confirmation
+        remember_created_at: Remember created at
+        remember_me: Remember me
+        reset_password_sent_at: Reset password sent at
+        reset_password_token: Reset password token
+        sign_in_count: Sign in count
+        unconfirmed_email: Unconfirmed email
+        unlock_token: Unlock token
+        updated_at: Updated at
     errors:
       models:
         library:
@@ -79,6 +103,9 @@ en:
       model: Model
       model_file: File
       problem: Problem
+      user:
+        one: User
+        other: Users
   application:
     content_header:
       sort:
@@ -108,6 +135,8 @@ en:
       add: add another link
     navbar:
       check_existing: Check existing models
+      log_in: Sign in
+      log_out: Sign out
       navbar:
         toggler:
           label: Toggle navigation
@@ -121,6 +150,11 @@ en:
       hidden: hidden
     tagline: Helping you keep track of your 3d print files
     title: Manyfold
+  errors:
+    messages:
+      not_saved:
+        one: '1 error prohibited this %{resource} from being saved:'
+        other: "%{count} errors prohibited this %{resource} from being saved:"
   general:
     delete: Delete
     download: Download

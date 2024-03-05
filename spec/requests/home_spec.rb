@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Home" do
+  before do
+    sign_in create(:user)
+  end
+
   describe "GET /" do
     it "redirects to library creation if there isn't one already" do
       get "/"
