@@ -1,0 +1,19 @@
+---
+pl:
+  collections:
+    collection:
+      no_preview: podgląd jest niedostępny
+    create:
+      success: Szczegóły nowej kolekcji zostały zapisane.
+    destroy:
+      success: Kolekcja usunięta!
+    general:
+      edit: Edytuj Kolekcję
+      new: Nowa Kolekcja
+    get_collection:
+      unknown: Nieznany
+    index:
+      actions_heading:
+      view_unassigned_models: Wyświetl nieprzypisane
+    update:
+      success: Szczegóły kolekcji zostały zapisane.

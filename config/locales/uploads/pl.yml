@@ -1,0 +1,14 @@
+---
+pl:
+  uploads:
+    create:
+      success: Plik(i) przesłany(e) pomyślnie.
+    index:
+      datafiles:
+        help: 'Obsługiwane typy plików: %{types}'
+        label: Wybierz Plik
+      library_pick:
+        help: Biblioteka, do której ma zostać przesłany plik.
+      scan_after_upload:
+        label: Zeskanuj po Przesłaniu
+      submit: Prześlij

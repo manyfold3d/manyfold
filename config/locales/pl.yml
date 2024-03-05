@@ -1,0 +1,175 @@
+---
+pl:
+  activerecord:
+    attributes:
+      collection:
+        caption: Napis
+        collection_id: Kolekcja
+        name: Nazwa
+        notes: Notatki
+      creator:
+        caption: Napis
+        name: Nazwa
+        notes: Notatki
+      library:
+        caption: Napis
+        icon: Ikona
+        name: Nazwa
+        notes: Notatki
+        path: Ścieżka
+        tag_regex: Regex Tagu
+      link:
+        url: Link
+      model:
+        caption: Napis
+        collection_id: Kolekcja
+        creator_id: Twórca
+        library_id: Biblioteka
+        license: Licencja
+        name: Nazwa
+        notes: Notatki
+        path: Ścieżka
+        preview_file: Podgląd pliku
+        tags: Tagi
+      model_file:
+        caption: Napis
+        digest:
+        filename: Nazwa pliku
+        model_id: Model
+        notes: Notatki
+        presupported:
+        presupported_version:
+        printed:
+        size: Rozmiar pliku
+        unsupported_version: Niewspierana wersja
+        y_up:
+      problem:
+        category: Kategoria
+        ignored: Ukryte
+        note: Notatka
+        problematic_type: Typ Obiektu
+        severity:
+    errors:
+      models:
+        library:
+          attributes:
+            path:
+              not_found: nie można znaleźć na dysku
+        model:
+          attributes:
+            library:
+              nested:
+            license:
+              invalid_spdx:
+            path:
+              destination_exists: już istnieje
+              nested:
+        model_file:
+          attributes:
+            presupported_version:
+              already_presupported:
+              not_supported:
+    models:
+      acts_as_taggable_on/tag: Tag
+      collection: Kolekcja
+      creator: Twórca
+      delayed/backend/active_record/job: Zadanie
+      library: Biblioteka
+      link: Link
+      model: Model
+      model_file: Plik
+      problem: Problem
+  application:
+    content_header:
+      sort:
+        name: Sortuj według nazwy
+        time: Sortuj według czasu
+    demo_mode:
+    filters_card:
+      missing_tags: Brakujące tagi
+      remove_filter:
+      search: Wyszukaj
+      title: Filtry
+      unknown: Nieznany
+    footer:
+      by_html: Zaprojektowany i stworzony przez <a href="https://floppy.org.uk">Jamesa</a> z pomocą od <a href="https://github.com/manyfold3d/manyfold/graphs/contributors">naszych współautorów</a>.
+      chat: Czat
+      code: Kod
+      community_heading: Społeczność
+      development_heading: Rozwój
+      issues: Problemy
+      logo: Logo
+      open_source_html: Projekt Open Source na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license noopener">licencji MIT</a>.
+      social: Sociale
+      sponsor: Sponsoruj
+      stats_heading: Statystyki
+      version: Wersja
+    links_form:
+      add: dodaj kolejny link
+    navbar:
+      check_existing: Sprawdź istniejące modele
+      navbar:
+        toggler:
+          label:
+      scan: Zeskanuj
+      scan_changes: Zeskanuj w poszukiwaniu zmian
+      scanning: Skanowanie
+      search: Wyszukaj
+      settings: Ustawienia
+      upload: Prześlij
+    tag_list:
+      hidden: ukryte
+    tagline:
+    title: Manyfold
+  general:
+    delete: Usuń
+    download: Pobierz
+    edit: Edytuj
+    expand: Rozwiń
+    new: Nowy
+    save: Zapisz
+  home:
+    index:
+      how_long_ago: "%{time} temu"
+      recent: Ostatnio Dodane Modele
+      search:
+        placeholder: Czego szukasz?
+  kaminari:
+    paginator:
+      label:
+  layouts:
+    application:
+      alert:
+        danger: Niebezpieczeństwo
+        info: Informacje
+  licenses:
+    CC-BY-40:
+    CC-BY-NC-40:
+    CC-BY-NC-ND-40:
+    CC-BY-NC-SA-40:
+    CC-BY-ND-40:
+    CC-BY-SA-40:
+    CC-PDDC:
+    CC0-10:
+    LicenseRef-Commercial:
+    MIT:
+  renderer:
+    errors:
+      canvas: 'Nie można znaleźć canvasu #webgl!'
+      load: Błąd wczytywania
+      webglrenderer: Nie można utworzyć renderera!
+    load: Wczytaj
+  sites:
+    cgtrader: CGTrader
+    comicsgamesandthings: Comics, Games, and Things
+    cults3d: Cults3D
+    myminifactory: MyMiniFactory
+    theminiindex: The Mini Index
+    thingiverse: Thingiverse
+  views:
+    pagination:
+      first: "« Pierwsza"
+      last: Ostatnia »
+      next: Następna ›
+      previous: "‹ Poprzednia"
+      truncate: "…"

@@ -1,0 +1,58 @@
+---
+pl:
+  problems:
+    categories:
+      duplicate: Zduplikowane pliki
+      empty: Model nie zawiera plików
+      inefficient: Nieefektywne formaty
+      missing: Brakujące pliki lub foldery
+      nesting: Model zawiera inne modele
+      no_3d_model: Model nie zawiera plików 3D
+      no_image: Model nie zawiera plików graficznych
+    filters:
+      apply_filters: Zastosuj
+      clear_filters: Wyczyść
+      show_ignored: Pokaż ukryte elementy
+      title: Filtry
+    index:
+      ignore: Ukryj
+      no_problems:
+      unignore: Pokaż
+    library:
+      missing:
+        title: Nie znaleziono folderu
+    model:
+      empty:
+        description: Ten model nie zawiera żadnych plików. Usuń go albo znajdź miejsce, w którym znalazły się jego pliki!
+        title: Brak plików
+      missing:
+        description: Na dysku brakuje folderu dla tego modelu. Usuń go albo znajdź miejsce, w którym się znalazł!
+        title: Nie znaleziono folderu
+      nesting:
+        description:
+        title: Zawiera inne modele
+        warning:
+      no_3d_model:
+        description:
+        title: Brak plików 3D w modelu
+      no_image:
+        description:
+        title: Brak plików graficznych w modelu
+    model_file:
+      duplicate:
+        description:
+        title: Zduplikowany plik
+      inefficient:
+        description:
+        title: Nieefektywny format
+      missing:
+        description:
+        title: Nie znaleziono pliku
+    severities:
+      danger: Niebezpieczeństwo
+      info: Informacje
+      silent: Zignorowany
+      warning: Uwaga
+    update:
+      ignored: 'Problem ukryty na "%{name}": %{message}'
+      unignored: 'Problem przywrócony na "%{name}": %{message}'
