@@ -1,5 +1,5 @@
 class ModelFilePolicy < ApplicationPolicy
   def destroy?
-    !SiteSettings.demo_mode?
+    !Flipper.enabled? :demo_mode
   end
 end
