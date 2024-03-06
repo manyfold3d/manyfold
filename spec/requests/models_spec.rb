@@ -29,22 +29,26 @@ RSpec.describe "Models" do
     end
     let(:creator) { create(:creator) }
 
-    describe "GET /models?library={id}&page=2" do
-      it "returns paginated models" do # rubocop:todo RSpec/MultipleExpectations
-        get "/models?library=#{library.id}&page=2"
-        expect(response).to have_http_status(:success)
-        expect(response.body).to match(/pagination/)
-      end
+    describe "POST /libraries/:library_id/models/" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
     end
 
-    describe "GET /libraries/1/models/1" do
+    describe "GET /libraries/:library_id/models/:id/new" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "GET /libraries/:library_id/models/:id" do
       it "returns http success" do
         get "/libraries/#{library.id}/models/#{library.models.first.id}"
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "Model Update" do
+    describe "GET /libraries/:library_id/models/:id/edit" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "PUT /libraries/:library_id/models/:id" do
       it "adds tags to a model" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
         put "/libraries/#{library.id}/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b", "c"]}}
         expect(response).to have_http_status(:redirect)
@@ -83,7 +87,15 @@ RSpec.describe "Models" do
       end
     end
 
-    describe "Bulk Edit" do
+    describe "DELETE /libraries/:library_id/models/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "GET /models/edit" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "PATCH /models/edit" do
       it "updates models creator" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
         models = library.models.take(2)
         update = {}
@@ -127,6 +139,18 @@ RSpec.describe "Models" do
           expect(model.tag_list).to eq ["c"]
         end
       end
+    end
+
+    describe "GET /models" do
+      it "returns paginated models" do # rubocop:todo RSpec/MultipleExpectations
+        get "/models?library=#{library.id}&page=2"
+        expect(response).to have_http_status(:success)
+        expect(response.body).to match(/pagination/)
+      end
+    end
+
+    describe "POST /libraries/:library_id/models/:id/merge" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
     end
   end
 end

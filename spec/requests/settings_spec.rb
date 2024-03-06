@@ -5,28 +5,45 @@ require "rails_helper"
 #                PUT    /users/:user_id/settings(.:format)                                      settings#update
 
 RSpec.describe "Settings" do
+  let(:user) { create(:user) }
+
   context "when signed out" do
-    it "needs testing"
+    describe "GET /users/:user_id/settings" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "is forbidden"
+    end
+
+    describe "PATCH /users/:user_id/settings" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "is forbidden"
+    end
+
+    describe "PUT /users/:user_id/settings" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "is forbidden"
+    end
   end
 
   context "when signed in" do
     before do
-      sign_in create(:user)
+      sign_in user
     end
 
-    let(:username) { User.first.username }
-
-    describe "GET /" do
+    describe "GET /users/:user_id/settings" do
       it "returns http success" do
-        get "/users/#{username}/settings"
+        get "/users/#{user.username}/settings"
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "PATCH /" do
-      it "returns http success" do
-        patch "/users/#{username}/settings"
-        expect(response).to have_http_status(:redirect)
+    describe "PATCH /users/:user_id/settings" do
+      it "redirects back to settings on success" do
+        patch "/users/#{user.username}/settings"
+        expect(response).to redirect_to("/users/#{user.username}/settings")
+      end
+    end
+
+    describe "PUT /users/:user_id/settings" do
+      it "redirects back to settings on success" do
+        put "/users/#{user.username}/settings"
+        expect(response).to redirect_to("/users/#{user.username}/settings")
       end
     end
   end

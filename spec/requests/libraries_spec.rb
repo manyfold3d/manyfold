@@ -24,6 +24,14 @@ RSpec.describe "Libraries" do
       end
     end
 
+    describe "POST /libraries/:id/scan" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "POST /libraries/scan" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
     describe "GET /libraries" do
       it "redirects to models index" do
         get "/libraries"
@@ -31,11 +39,31 @@ RSpec.describe "Libraries" do
       end
     end
 
-    describe "GET /libraries/1" do
+    describe "POST /libraries/" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "GET /libraries/new" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "GET /libraries/:id/edit" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "GET /libraries/:id" do
       it "redirects to models index with library filter" do
         get "/libraries/1"
         expect(response).to have_http_status(:redirect)
       end
+    end
+
+    describe "PATCH /libraries/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "DELETE /libraries/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
     end
   end
 end

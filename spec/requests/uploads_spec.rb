@@ -5,10 +5,22 @@ require "rails_helper"
 
 RSpec.describe "Uploads" do
   context "when signed out" do
-    it "needs testing"
+    describe "GET /uploads" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "should be forbidden"
+    end
+
+    describe "POST /uploads" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "should be forbidden"
+    end
   end
 
   context "when signed in" do
-    it "needs testing"
+    describe "GET /uploads" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "POST /uploads" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
   end
 end

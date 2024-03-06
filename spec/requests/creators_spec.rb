@@ -24,12 +24,36 @@ RSpec.describe "Creators" do
       end
     end
 
-    describe "GET /creators?page=2" do
+    describe "GET /creators" do
       it "returns paginated creators" do # rubocop:todo RSpec/MultipleExpectations
         get "/creators?page=2"
         expect(response).to have_http_status(:success)
         expect(response.body).to match(/pagination/)
       end
+    end
+
+    describe "POST /creators" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "GET /creators/new" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "GET /creators/:id/edit" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "GET /creators/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "PATCH /creators/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "DELETE /creators/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
     end
   end
 end

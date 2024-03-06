@@ -32,7 +32,4 @@ RSpec.describe "Collections" do
       end
     end
   end
-
-  context "when signed out" do
-  end
 end

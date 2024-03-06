@@ -21,6 +21,11 @@ RSpec.describe "Model Files" do
       sign_in create(:user)
     end
 
+    let(:jpg_file) { create(:model_file, model: model, filename: "test.jpg") }
+    let(:stl_file) { create(:model_file, model: model, filename: "test.stl") }
+    let(:model) { create(:model, library: library, path: "model_one") }
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
     around do |ex|
       MockDirectory.create([
         "model_one/test.stl",
@@ -31,37 +36,62 @@ RSpec.describe "Model Files" do
       end
     end
 
-    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
-    let(:model) { create(:model, library: library, path: "model_one") }
-    let(:stl_file) { create(:model_file, model: model, filename: "test.stl") }
-    let(:jpg_file) { create(:model_file, model: model, filename: "test.jpg") }
+    describe "GET /libraries/:library_id/models/:model_id/model_files/edit" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
 
-    describe "GET a model file in its original file format" do
-      before do
-        get library_model_model_file_path(library, model, stl_file, format: :stl)
+    describe "PATCH /libraries/:library_id/models/:model_id/model_files/update" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "POST /libraries/:library_id/models/:model_id/model_files" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "GET /libraries/:library_id/models/:model_id/model_files/new" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "GET /libraries/:library_id/models/:model_id/model_files/:id/edit" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
+
+    describe "GET /libraries/:library_id/models/:model_id/model_files/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      describe "GET a model file in its original file format" do
+        before do
+          get library_model_model_file_path(library, model, stl_file, format: :stl)
+        end
+
+        it "returns http success" do
+          expect(response).to have_http_status(:success)
+        end
+
+        it "has correct MIME type" do
+          expect(response.media_type).to eq("model/stl")
+        end
       end
 
-      it "returns http success" do
-        expect(response).to have_http_status(:success)
-      end
+      describe "GET an image file in its original file format" do
+        before do
+          get library_model_model_file_path(library, model, jpg_file, format: :jpg)
+        end
 
-      it "has correct MIME type" do
-        expect(response.media_type).to eq("model/stl")
+        it "returns http success" do
+          expect(response).to have_http_status(:success)
+        end
+
+        it "has correct MIME type" do
+          expect(response.media_type).to eq("image/jpeg")
+        end
       end
     end
 
-    describe "GET an image file in its original file format" do
-      before do
-        get library_model_model_file_path(library, model, jpg_file, format: :jpg)
-      end
+    describe "PATCH /libraries/:library_id/models/:model_id/model_files/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
+    end
 
-      it "returns http success" do
-        expect(response).to have_http_status(:success)
-      end
-
-      it "has correct MIME type" do
-        expect(response.media_type).to eq("image/jpeg")
-      end
+    describe "DELETE /libraries/:library_id/models/:model_id/model_files/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
     end
   end
 end

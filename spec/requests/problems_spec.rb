@@ -88,12 +88,12 @@ RSpec.describe "Problems" do
       end
     end
 
-    describe "PUT /problems/:id" do
-      it "returns http success"
+    describe "PUT /problems/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
     end
 
-    describe "PATCH /problems/:id" do
-      it "returns http success"
+    describe "PATCH /problems/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      it "needs testing"
     end
   end
 end
