@@ -9,4 +9,11 @@ require "rails_helper"
 #                          POST   /users(.:format)                                                        users/registrations#create
 
 RSpec.describe "Users::Registrations" do
+  context "when signed out" do
+    it "needs testing"
+  end
+
+  context "when signed in" do
+    it "needs testing"
+  end
 end

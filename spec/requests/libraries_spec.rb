@@ -12,24 +12,30 @@ require "rails_helper"
 #                DELETE /libraries/:id(.:format)                                                libraries#destroy
 
 RSpec.describe "Libraries" do
-  before do
-    sign_in create(:user)
-    @library = create(:library) do |library|
-      create_list(:model, 2, library: library)
-    end
+  context "when signed out" do
+    it "needs testing"
   end
 
-  describe "GET /libraries" do
-    it "redirects to models index" do
-      get "/libraries"
-      expect(response).to have_http_status(:redirect)
+  context "when signed in" do
+    before do
+      sign_in create(:user)
+      @library = create(:library) do |library|
+        create_list(:model, 2, library: library)
+      end
     end
-  end
 
-  describe "GET /libraries/1" do
-    it "redirects to models index with library filter" do
-      get "/libraries/1"
-      expect(response).to have_http_status(:redirect)
+    describe "GET /libraries" do
+      it "redirects to models index" do
+        get "/libraries"
+        expect(response).to have_http_status(:redirect)
+      end
+    end
+
+    describe "GET /libraries/1" do
+      it "redirects to models index with library filter" do
+        get "/libraries/1"
+        expect(response).to have_http_status(:redirect)
+      end
     end
   end
 end
