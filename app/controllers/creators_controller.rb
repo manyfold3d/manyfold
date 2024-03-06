@@ -3,15 +3,15 @@ class CreatorsController < ApplicationController
   before_action :get_creator, except: [:index, :new, :create]
 
   def index
+    @creators = policy_scope(Creator)
     if @filters.empty?
-      @creators = Creator.all
       @commontags = @tags = ActsAsTaggableOn::Tag.all
     else
       process_filters_init
       process_filters_tags_fetchall
       process_filters
       process_filters_tags_highlight
-      @creators = Creator.where(id: @models.map { |model| model.creator_id })
+      @creators = @creators.where(id: @models.map { |model| model.creator_id })
     end
 
     # Ordering
