@@ -1,9 +1,9 @@
 class UploadPolicy < ApplicationPolicy
   def index?
-    !SiteSettings.demo_mode?
+    !Flipper.enabled? :demo_mode
   end
 
   def create?
-    !SiteSettings.demo_mode?
+    !Flipper.enabled? :demo_mode
   end
 end

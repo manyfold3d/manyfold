@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :verify_feature_enabled
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -39,6 +40,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
+
+  def verify_feature_enabled
+    Flipper.enabled? :multiuser
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params

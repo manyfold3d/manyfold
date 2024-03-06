@@ -1,6 +1,6 @@
 class ActiveAdminPolicy < ApplicationPolicy
   def initialize(user, record)
-    raise Pundit::NotAuthorizedError, I18n.t("active_admin.demo_mode") if SiteSettings.demo_mode?
+    raise Pundit::NotAuthorizedError, I18n.t("active_admin.demo_mode") if Flipper.enabled? :demo_mode
     @user = user
     @record = record
   end

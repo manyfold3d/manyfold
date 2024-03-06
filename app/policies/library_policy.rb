@@ -1,13 +1,13 @@
 class LibraryPolicy < ApplicationPolicy
   def create?
-    !SiteSettings.demo_mode?
+    !Flipper.enabled? :demo_mode
   end
 
   def update?
-    !SiteSettings.demo_mode?
+    !Flipper.enabled? :demo_mode
   end
 
   def destroy?
-    !SiteSettings.demo_mode?
+    !Flipper.enabled? :demo_mode
   end
 end

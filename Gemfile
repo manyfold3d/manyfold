@@ -117,3 +117,6 @@ gem "i18n-js", "~> 4.2"
 gem "translation", "~> 1.40", group: :development
 
 gem "string-similarity", "~> 2.1"
+
+gem "flipper", "~> 1.2"
+gem "flipper-active_record", "~> 1.2"
