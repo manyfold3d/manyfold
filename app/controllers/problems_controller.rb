@@ -2,7 +2,7 @@ class ProblemsController < ApplicationController
   def index
     # Are we showing ignored problems?
     @show_ignored = (params[:show_ignored] == "true")
-    query = @show_ignored ? Problem.unscoped : Problem
+    query = @show_ignored ? policy_scope(Problem.unscoped) : policy_scope(Problem)
     # Now, which page are we on?
     page = params[:page] || 1
     # What categories are we showing?
@@ -28,6 +28,7 @@ class ProblemsController < ApplicationController
 
   def update
     @problem = Problem.unscoped.find(params[:id])
+    authorize @problem
     @problem.update!(permitted_params)
     notice = t(
       (@problem.ignored ? ".ignored" : ".unignored"),
