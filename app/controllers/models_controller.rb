@@ -4,6 +4,8 @@ class ModelsController < ApplicationController
   include ModelFilters
   before_action :get_library, except: [:index, :bulk_edit, :bulk_update]
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index]
+  skip_after_action :verify_authorized, only: [:bulk_edit, :bulk_update]
+  after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
   def index
     process_filters_init
@@ -71,9 +73,9 @@ class ModelsController < ApplicationController
   end
 
   def bulk_edit
-    @creators = Creator.all
-    @collections = Collection.all
-    @models = Model.all
+    @creators = policy_scope(Creator)
+    @collections = policy_scope(Collection)
+    @models = policy_scope(Model)
     process_filters
   end
 
@@ -86,8 +88,8 @@ class ModelsController < ApplicationController
 
     params[:models].each_pair do |id, selected|
       if selected == "1"
-        model = Model.find(id)
-        if model.update(hash)
+        model = policy_scope(Model).find(id)
+        if model&.update(hash)
           existing_tags = Set.new(model.tag_list)
           model.tag_list = existing_tags + add_tags - remove_tags
           model.save
@@ -98,7 +100,6 @@ class ModelsController < ApplicationController
   end
 
   def destroy
-    authorize @model
     @model.delete_from_disk_and_destroy
     if URI.parse(request.referer).path == library_model_path(@library, @model)
       # If we're coming from the model page itself, we can't go back there
@@ -145,10 +146,12 @@ class ModelsController < ApplicationController
 
   def get_library
     @library = Model.find(params[:id]).library
+    authorize @library
   end
 
   def get_model
     @model = Model.includes(:model_files, :creator).find(params[:id])
+    authorize @model
     @title = @model.name
   end
 end
