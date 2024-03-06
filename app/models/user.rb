@@ -1,5 +1,10 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable, :validatable
+  if Flipper.enabled? :multiuser
+    devise :database_authenticatable, :registerable, :validatable
+  else
+    devise :database_authenticatable
+  end
+
   acts_as_favoritor
 
   validates :username,
