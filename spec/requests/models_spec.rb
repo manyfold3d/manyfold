@@ -1,5 +1,17 @@
 require "rails_helper"
 
+#      library_models POST   /libraries/:library_id/models(.:format)                                 models#create
+#   new_library_model GET    /libraries/:library_id/models/new(.:format)                             models#new
+#  edit_library_model GET    /libraries/:library_id/models/:id/edit(.:format)                        models#edit
+#       library_model GET    /libraries/:library_id/models/:id(.:format)                             models#show
+#                     PATCH  /libraries/:library_id/models/:id(.:format)                             models#update
+#                     PUT    /libraries/:library_id/models/:id(.:format)                             models#update
+#                     DELETE /libraries/:library_id/models/:id(.:format)                             models#destroy
+#         edit_models GET    /models/edit(.:format)                                                  models#bulk_edit
+#       update_models PATCH  /models/update(.:format)                                                models#bulk_update
+#              models GET    /models(.:format)                                                       models#index
+# merge_library_model POST   /libraries/:library_id/models/:id/merge(.:format)                       models#merge
+
 RSpec.describe "Models" do
   before do
     sign_in create(:user)

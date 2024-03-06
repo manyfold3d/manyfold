@@ -1,5 +1,9 @@
 require "rails_helper"
 
+#  user_settings GET    /users/:user_id/settings(.:format)                                      settings#show
+#                PATCH  /users/:user_id/settings(.:format)                                      settings#update
+#                PUT    /users/:user_id/settings(.:format)                                      settings#update
+
 RSpec.describe "Settings" do
   before do
     sign_in create(:user)

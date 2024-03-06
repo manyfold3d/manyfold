@@ -1,6 +1,16 @@
 require "rails_helper"
 require "support/mock_directory"
 
+# edit_library_model_model_files GET    /libraries/:library_id/models/:model_id/model_files/edit(.:format)      model_files#bulk_edit
+#      library_model_model_files PATCH  /libraries/:library_id/models/:model_id/model_files/update(.:format)    model_files#bulk_update
+#                                POST   /libraries/:library_id/models/:model_id/model_files(.:format)           model_files#create
+#   new_library_model_model_file GET    /libraries/:library_id/models/:model_id/model_files/new(.:format)       model_files#new
+#  edit_library_model_model_file GET    /libraries/:library_id/models/:model_id/model_files/:id/edit(.:format)  model_files#edit
+#       library_model_model_file GET    /libraries/:library_id/models/:model_id/model_files/:id(.:format)       model_files#show
+#                                PATCH  /libraries/:library_id/models/:model_id/model_files/:id(.:format)       model_files#update
+#                                PUT    /libraries/:library_id/models/:model_id/model_files/:id(.:format)       model_files#update
+#                                DELETE /libraries/:library_id/models/:model_id/model_files/:id(.:format)       model_files#destroy
+
 RSpec.describe "Model Files" do
   before do
     sign_in create(:user)

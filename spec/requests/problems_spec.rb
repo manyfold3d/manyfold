@@ -1,7 +1,11 @@
 require "rails_helper"
 
+# problems GET    /problems(.:format)                                                     problems#index
+#  problem PATCH  /problems/:id(.:format)                                                 problems#update
+#          PUT    /problems/:id(.:format)                                                 problems#update
+
 RSpec.describe "Problems" do
-  describe "GET /index" do
+  describe "GET /problems" do
     before do
       create_list(:problem, 2, category: :inefficient)
       create_list(:problem_on_model, 3, category: :missing)
@@ -74,5 +78,13 @@ RSpec.describe "Problems" do
         expect(assigns(:problems).length).to eq 3
       end
     end
+  end
+
+  describe "PUT /problems/:id" do
+    it "returns http success"
+  end
+
+  describe "PATCH /problems/:id" do
+    it "returns http success"
   end
 end

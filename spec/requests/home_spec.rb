@@ -1,5 +1,7 @@
 require "rails_helper"
 
+# root GET    /                                                                       home#index
+
 RSpec.describe "Home" do
   before do
     sign_in create(:user)
