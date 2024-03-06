@@ -35,7 +35,7 @@ RSpec.describe "Libraries" do
     describe "GET /libraries" do
       it "redirects to models index" do
         get "/libraries"
-        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to("/models")
       end
     end
 
@@ -54,7 +54,7 @@ RSpec.describe "Libraries" do
     describe "GET /libraries/:id" do
       it "redirects to models index with library filter" do
         get "/libraries/1"
-        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to("/models?library=1")
       end
     end
 

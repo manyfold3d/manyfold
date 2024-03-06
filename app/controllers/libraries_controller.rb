@@ -1,7 +1,10 @@
 class LibrariesController < ApplicationController
   before_action :get_library, except: [:index, :new, :create, :scan_all]
+  after_action :verify_authorized, only: [:index]
+  skip_after_action :verify_policy_scoped, only: [:index]
 
   def index
+    authorize Library
     if Library.count === 0
       redirect_to new_library_path
     else
@@ -16,15 +19,12 @@ class LibrariesController < ApplicationController
   def new
     @library = Library.new
     @title = t("libraries.general.new")
-    authorize @library
   end
 
   def edit
-    authorize @library
   end
 
   def create
-    authorize Library
     @library = Library.create(library_params)
     @library.tag_regex = params[:tag_regex]
     if @library.valid?
@@ -37,7 +37,6 @@ class LibrariesController < ApplicationController
   end
 
   def update
-    authorize @library
     @library.update(library_params)
     uptags = library_params[:tag_regex].reject(&:empty?)
     @library.tag_regex = uptags
@@ -66,7 +65,6 @@ class LibrariesController < ApplicationController
   end
 
   def destroy
-    authorize @library
     @library.destroy
     redirect_to libraries_path, notice: t(".success")
   end
@@ -79,6 +77,7 @@ class LibrariesController < ApplicationController
 
   def get_library
     @library = Library.find(params[:id])
+    authorize @library
     @title = @library.name
   end
 end

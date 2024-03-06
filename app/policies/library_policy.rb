@@ -1,4 +1,12 @@
 class LibraryPolicy < ApplicationPolicy
+  def index?
+    true
+  end
+
+  def show?
+    true
+  end
+
   def create?
     !Flipper.enabled? :demo_mode
   end
