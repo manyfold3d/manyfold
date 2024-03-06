@@ -3,15 +3,15 @@ class CollectionsController < ApplicationController
   before_action :get_collection, except: [:index, :new, :create]
 
   def index
+    @collections = policy_scope(Collection)
     if @filters.empty?
-      @collections = Collection.all
       @commontags = @tags = ActsAsTaggableOn::Tag.all
     else
       process_filters_init
       process_filters_tags_fetchall
       process_filters
       process_filters_tags_highlight
-      @collections = Collection.tree_both(@filters[:collection] || nil, @models.filter_map { |model| model.collection_id })
+      @collections = @collections.tree_both(@filters[:collection] || nil, @models.filter_map { |model| model.collection_id })
     end
 
     # Ordering
