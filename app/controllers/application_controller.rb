@@ -1,10 +1,16 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
 
   before_action :auto_login_single_user
   before_action :authenticate_user!
   before_action :check_scan_status
   before_action :remember_ordering
+
+  def index
+    raise NotImplementedError
+  end
 
   def auto_login_single_user
     sign_in(:user, User.first) unless Flipper.enabled? :multiuser
