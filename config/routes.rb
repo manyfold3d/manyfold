@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  resources :users do
+  resources :users, only: [] do
     resource :settings, only: [:show, :update]
   end
 
