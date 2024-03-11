@@ -1,0 +1,17 @@
+---
+pl:
+  model_files:
+    bulk_update:
+      success: Pliki zaktualizowane pomyślnie.
+    destroy:
+      confirm: Czy na pewno chcesz usunąć ten plik z systemu plików?
+      success: Plik usunięty!
+    general:
+      edit: Edytuj informacje o pliku
+    show:
+      actions_heading:
+      details_heading: Szczegóły
+      notes_heading: Notatki
+    update:
+      failure: Wystąpił błąd i nie można było zapisać szczegółów pliku.
+      success: Szczegóły pliku zostały zapisane.

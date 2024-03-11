@@ -1,0 +1,54 @@
+---
+pl:
+  models:
+    bulk_update:
+      success: Modele zaktualizowane pomyślnie.
+    delete: Usuń
+    destroy:
+      confirm: Spowoduje to usunięcie plików. Czy na pewno chcesz kontynuować?
+      success: Model usunięty!
+    edit: Edytuj
+    file:
+      open: Otwórz
+      set_as_preview: Ustaw jako podgląd
+    form:
+      preview_file:
+        help:
+      tags: Tagi
+    general:
+      edit: Edytuj Model
+    index:
+      actions_heading:
+      bulk_edit: Edycja zbiorcza
+      missing_url: Brakujący URL
+      untagged:
+    merge:
+      success:
+    open: Otwórz
+    problem:
+      merge_all:
+    show:
+      files: Pliki
+      files_card:
+        bulk_edit: Edytuj wszystkie pliki
+        heading: Pliki
+      license: Licencja
+      merge:
+        heading:
+        warning:
+        with:
+      model_details:
+      notes_heading: Notatki
+      organize:
+        button_text:
+        confirm:
+          are_you_sure: Czy na pewno chcesz to zrobić?
+          'no': Nie, anuluj
+          summary_html:
+          'yes': Tak, przenieś pliki
+      path: Ścieżka
+      search:
+      tags: Tagi
+    update:
+      failure:
+      success:

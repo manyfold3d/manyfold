@@ -1,0 +1,28 @@
+---
+pl:
+  libraries:
+    create:
+      failure: Wystąpił błąd i nie można było zapisać biblioteki.
+      success: Utworzono nową bibliotekę!
+    destroy:
+      success: Biblioteka została usunięta!
+    form:
+      add_line: Dodaj linię
+      icon:
+        help_html:
+      library_regex:
+        help: Sprawdź brakujące tagi tych modeli korzystając z tego regexa.
+    general:
+      edit: Edytuj Bibliotekę
+      new: Nowa Biblioteka
+    new:
+      path:
+        help: Pełna ścieżka do twojej biblioteki na dysku.
+        placeholder: Ścieżka systemu plików
+    scan:
+      success: Rozpoczęto skanowanie biblioteki.
+    scan_all:
+      success: Rozpoczęto skanowanie wszystkich bibliotek.
+    update:
+      failure: Wystąpił błąd i nie można było zapisać biblioteki.
+      success: Zapisano szczegóły biblioteki.

@@ -1,0 +1,124 @@
+---
+pl:
+  settings:
+    file_list_settings:
+      heading:
+      hide_presupported_versions:
+        label:
+      summary:
+    folder_settings:
+      details:
+      model_path_template:
+        label:
+      parse_metadata_from_path:
+        help:
+        label:
+      safe_folder_names:
+        help_html:
+        label: Używaj bezpiecznych nazw folderów
+      summary:
+      title: Nazewnictwo folderów
+      tokens:
+        collection:
+        creator: Nazwa twórcy, jeśli ustawiona.
+        model_id:
+        model_name:
+        tags_html:
+    library_settings:
+      caption:
+        help:
+        label: Napis
+      description: Zobacz szczegóły biblioteki i ją zmodyfikuj.
+      heading: Biblioteki
+      icon:
+        help_html:
+        label: Ikona
+      name:
+        label: Nazwa
+      notes:
+        help:
+        label: Notatki
+      path:
+        label: Ścieżka
+      tag_regex:
+        check: Sprawdź
+        help:
+        label: Wymagane Tagi
+        search_missing: Wyszukaj Brakujące
+    pagination_settings:
+      collections:
+        label:
+      creators:
+        label:
+      description:
+      heading:
+      models:
+        label:
+      per_page:
+        label:
+    problem_settings:
+      description:
+      title:
+    renderer_settings:
+      auto_load_max_size:
+        always: Zawsze
+        label: Automatycznie ładuj podglądy
+        never: Nigdy
+        under_1024: Do 1024 MB
+        under_128: Do 128 MB
+        under_16: Do 16 MB
+        under_2: Do 2 MB
+        under_256: Do 256 MB
+        under_32: Do 32 MB
+        under_4: Do 4 MB
+        under_512: Do 512 MB
+        under_64: Do 64 MB
+        under_8: Do 8 MB
+      background_colour:
+        label: Kolor tła
+      description: Dostosuj ustawienia dla podglądów 3D.
+      enable_pan_zoom:
+        label: Włącz sterowanie obrotem/zbliżeniem
+      grid_width:
+        label:
+      heading: Renderer
+      object_colour:
+        label: Kolor obiektu
+      render_style:
+        label: Styl renderowania
+        lambert:
+        normals:
+      show_grid:
+        label:
+    show:
+      advanced_admin:
+      submit: Zapisz Ustawienia
+      title: Ustawienia
+    tag_cloud_settings:
+      heading:
+      heatmap:
+        label:
+      hide_unrelated:
+        label:
+      keypair:
+        label:
+      sorting:
+        label:
+      threshold:
+        label:
+    tag_settings:
+      auto_tag_new:
+        label:
+      custom_stop_words:
+        label:
+      description:
+      filter_stop_words:
+        label:
+      heading: Tagowanie
+      stop_words_locale:
+        label:
+      tag_model_directory_name:
+        help: 'Uwaga: Może generować wiele tagów!'
+        label:
+    update:
+      success: Ustawienia zapisane.

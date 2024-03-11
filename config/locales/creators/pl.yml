@@ -1,0 +1,17 @@
+---
+pl:
+  creators:
+    create:
+      success: Szczegóły nowego twórcy zostały zapisane.
+    destroy:
+      success: Twórca usunięty!
+    general:
+      edit: Edytuj Twórcę
+      new: Nowy Twórca
+    get_creator:
+      unknown: Nieznany
+    index:
+      actions_heading:
+      view_unassigned: Wyświetl nieprzypisane
+    update:
+      success: Szczegóły twórcy zostały zapisane.
