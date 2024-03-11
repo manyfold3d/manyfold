@@ -9,12 +9,15 @@ unless ENV["RACK_ENV"] === "production"
   RuboCop::RakeTask.new
 end
 
+locales = [
+  :de,
+  :pl
+]
+
 namespace :translation do
   namespace :clobber_and_sync do
-    [
-      :de,
-      :pl
-    ].each do |locale|
+    task all: locales
+    locales.each do |locale|
       task locale => :environment do
         puts "-- Clobbering #{locale}.yml files"
         system "find config/locales -name #{locale}.yml | xargs rm -v"

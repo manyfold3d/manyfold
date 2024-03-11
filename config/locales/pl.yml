@@ -49,6 +49,30 @@ pl:
         note: Notatka
         problematic_type: Typ Obiektu
         severity:
+      user:
+        confirmation_sent_at: Data wysłania potwierdzenia
+        confirmation_token: Token potwierdzający
+        confirmed_at: Data potwierdzenia
+        created_at: Data utworzenia
+        current_password: Aktualne hasło
+        current_sign_in_at: Data bieżącego logowania
+        current_sign_in_ip: Bieżący adres IP
+        email: Adres e-mail
+        encrypted_password: Zaszyfrowane hasło
+        failed_attempts: Nieudanych prób
+        last_sign_in_at: Data ostatniego logowania
+        last_sign_in_ip: Ostatni adres IP
+        locked_at: Data zablokowania
+        password: Hasło
+        password_confirmation: Potwierdzenie hasła
+        remember_created_at: Data utworzenia zapamiętania logowania
+        remember_me: Zapamiętaj mnie
+        reset_password_sent_at: Data wysłania żądania resetu hasła
+        reset_password_token: Token umożliwiający reset hasła
+        sign_in_count: Liczba logowań
+        unconfirmed_email: Niepotwierdzony adres e-mail
+        unlock_token: Token odblokowywujący
+        updated_at: Data uaktualnienia
     errors:
       models:
         library:
@@ -79,6 +103,9 @@ pl:
       model: Model
       model_file: Plik
       problem: Problem
+      user:
+        one: Użytkownik
+        other: Użytkowników
   application:
     content_header:
       sort:
@@ -108,6 +135,8 @@ pl:
       add: dodaj kolejny link
     navbar:
       check_existing: Sprawdź istniejące modele
+      log_in:
+      log_out:
       navbar:
         toggler:
           label:
