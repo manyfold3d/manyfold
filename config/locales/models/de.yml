@@ -1,6 +1,9 @@
 ---
 de:
   models:
+    bulk_edit:
+      add_tags:
+      remove_tags:
     bulk_update:
       success: Modelle erfolgreich aktualisiert.
     delete: Löschen
@@ -35,7 +38,7 @@ de:
       license: Lizenz
       merge:
         heading: Zusammenführen
-        warning: Bei der Zusammenführung werden alle Dateien dieses Modells auf das Ziel verschoben und das Modell wird entfernt. Die Metadaten der Dateien bleiben erhalten, aber alle Metadaten des Modells gehen verloren!
+        warning: Bei der Zusammenführung werden alle Dateien dieses Modells auf das Ziel verschoben und das Modell wird entfernt. Die Metadaten der Dateien bleiben erhalten, aber alle Metadaten des Modelle gehen verloren!
         with: Zusammenführen mit
       model_details: Modelldetails
       notes_heading: Notizen
