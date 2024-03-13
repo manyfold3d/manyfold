@@ -1,0 +1,28 @@
+---
+fr:
+  libraries:
+    create:
+      failure: Une erreur s'est produite et la bibliothèque n'a pas pu être sauvegardée.
+      success: Nouvelle bibliothèque créée !
+    destroy:
+      success: Bibliothèque supprimée !
+    form:
+      add_line: Ajouter une ligne
+      icon:
+        help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank"> bibliothèque Bootstrap </a>
+      library_regex:
+        help: Vérifier si les étiquettes des modèles manquant correspondent à cette expression régulière.
+    general:
+      edit: Editer la bibliothèque
+      new: Nouvelle bibliothèque
+    new:
+      path:
+        help: Le chemin complet vers votre bibliothèque.
+        placeholder: Chemin vers le système de fichiers
+    scan:
+      success: L'analyse de la bibliothèque a commencé.
+    scan_all:
+      success: L'analyse de toutes les bibliothèques a commencé.
+    update:
+      failure: Une erreur s'est produite et la bibliothèque n'a pas pu être sauvegardée.
+      success: Détails de la bibliothèque sauvegardés.

@@ -1,0 +1,19 @@
+---
+fr:
+  model_files:
+    bulk_update:
+      success: Les fichiers ont été mis à jour avec succès.
+    destroy:
+      confirm: Êtes-vous sûr de vouloir supprimer ce fichier de votre système de fichiers ?
+      success: Fichier supprimé !
+    general:
+      edit: 'Modifier les informations du fichier
+
+        '
+    show:
+      actions_heading: Actions
+      details_heading: Détails
+      notes_heading: Notes
+    update:
+      failure: Une erreur s'est produite et les détails du fichier n'ont pas pu être sauvegardés.
+      success: Détails du fichier sauvegardé.

@@ -1,0 +1,19 @@
+---
+fr:
+  collections:
+    collection:
+      no_preview: pas d'aperçu disponible
+    create:
+      success: Détails de la nouvelle collection enregistrés.
+    destroy:
+      success: Collection supprimée !
+    general:
+      edit: Modifier la collection
+      new: Nouvelle collection
+    get_collection:
+      unknown: Inconnu
+    index:
+      actions_heading: Actions
+      view_unassigned_models: Vue non attribuée
+    update:
+      success: Détails de la collection sauvegardés.
