@@ -1,0 +1,17 @@
+---
+fr:
+  creators:
+    create:
+      success: Détails du nouveau créateur sauvegardés.
+    destroy:
+      success: Créateur supprimé !
+    general:
+      edit: Modifier le créateur
+      new: Nouveau créateur
+    get_creator:
+      unknown: Inconnu
+    index:
+      actions_heading: Actions
+      view_unassigned: Vue non attribuée
+    update:
+      success: Détails du créateur sauvegardés.

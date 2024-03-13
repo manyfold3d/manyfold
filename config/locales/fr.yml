@@ -1,0 +1,208 @@
+---
+fr:
+  activerecord:
+    attributes:
+      collection:
+        caption: Légende
+        collection_id: Collection
+        name: Nom
+        notes: Notes
+      creator:
+        caption: Légende
+        name: Nom
+        notes: Notes
+      library:
+        caption: Légende
+        icon: Icône
+        name: Nom
+        notes: Notes
+        path: Chemin
+        tag_regex: Etiquette basée sur une Regex
+      link:
+        url: Lien
+      model:
+        caption: Légende
+        collection_id: Collection
+        creator_id: Créateur
+        library_id: Bibliothèque
+        license: Licence
+        name: Nom
+        notes: Notes
+        path: Chemin
+        preview_file: Prévisualisation
+        tags: Étiquettes
+      model_file:
+        caption: Légende
+        digest: Absorber
+        filename: Nom de fichier
+        model_id: Modèle
+        notes: Notes
+        presupported: Présupporté
+        presupported_version: Version présupporté
+        printed: Imprimé
+        size: Taille du fichier
+        unsupported_version: Version non supportée
+        y_up: Y Up
+      problem:
+        category: Catégorie
+        ignored: Caché
+        note: Note
+        problematic_type: Type d'objet
+        severity: Criticité
+      user:
+        confirmation_sent_at: Date d'envoi de la confirmation
+        confirmation_token: Clé de confirmation du mot de passe
+        confirmed_at: Confirmé à
+        created_at: Enregistré à
+        current_password: Mot de passe actuel
+        current_sign_in_at: Date de la connexion actuelle
+        current_sign_in_ip: IP de la connexion actuelle
+        email: Email
+        encrypted_password: Mot de passe chiffré
+        failed_attempts: Tentatives échouées
+        last_sign_in_at: Date de la dernière connexion
+        last_sign_in_ip: IP de la dernière connexion
+        locked_at: Verrouillé à
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
+        remember_created_at: Mémorisé à
+        remember_me: Se souvenir de moi ?
+        reset_password_sent_at: Clé de réinitialisation créée à
+        reset_password_token: Clé de réinitialisation du mot de passe
+        sign_in_count: Nombre des connexions
+        unconfirmed_email: Email non confirmé
+        unlock_token: Clé de déverrouillage
+        updated_at: Date de mise à jour
+    errors:
+      models:
+        library:
+          attributes:
+            path:
+              not_found: n'a pas pu être trouvé sur le disque
+        model:
+          attributes:
+            library:
+              nested: ne peut être modifié, le modèle contient d'autres modèles
+            license:
+              invalid_spdx: n'est pas une licence valide
+            path:
+              destination_exists: existe déjà
+              nested: ne peut être modifié, le modèle contient d'autres modèles
+        model_file:
+          attributes:
+            presupported_version:
+              already_presupported: ne peut pas être défini sur un fichier présupporté
+              not_supported: n'est pas un fichier présupporté
+    models:
+      acts_as_taggable_on/tag: Étiquette
+      collection: Collection
+      creator: Créateur
+      delayed/backend/active_record/job: Tâche
+      library: Bibliothèque
+      link: Lien
+      model: Modèle
+      model_file: Fichier
+      problem: Problème
+      user:
+        one: Utilisateur
+        other: Utilisateurs
+  application:
+    content_header:
+      sort:
+        name: Trier par nom
+        time: Trier par heure
+    demo_mode: Cette instance est en mode démo. Vous ne pouvez pas ajouter ou supprimer des modèles, mais vous pouvez faire tout le reste.
+    filters_card:
+      missing_tags: Etiquette manquante
+      remove_filter: Supprimer le filtre
+      search: Recherche
+      title: Filtres
+      unknown: Inconnu
+    footer:
+      by_html: Conçu et réalisé par <a href="https://floppy.org.uk">James</a> avec l'aide de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors">nos contributeurs</a>.
+      chat: Chat
+      code: Code
+      community_heading: Communauté
+      development_heading: Développement
+      issues: Problèmes
+      logo: Logo
+      open_source_html: Open Source sous <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license noopener">licence MIT.</a>
+      social: Social
+      sponsor: Sponsor
+      stats_heading: Statistiques
+      version: Version
+    links_form:
+      add: ajouter un autre lien
+    navbar:
+      check_existing: Vérifier les modèles existants
+      log_in: 'Se connecter
+
+        '
+      log_out: Se déconnecter
+      navbar:
+        toggler:
+          label: Basculer la navigation
+      scan: Scanner
+      scan_changes: Recherche de changements
+      scanning: Scan en cours
+      search: Recherche
+      settings: Paramètres
+      upload: Télécharger
+    tag_list:
+      hidden: caché
+    tagline: Vous aider à garder une trace de vos fichiers d'impression 3D
+    title: Manyfold
+  general:
+    delete: Supprimer
+    download: Télécharger
+    edit: Modifier
+    expand: Élargir
+    new: Nouveau
+    save: Sauvegarder
+  home:
+    index:
+      how_long_ago: depuis %{time}
+      recent: Modèles récemment ajoutés
+      search:
+        placeholder: Que recherchez-vous ?
+  kaminari:
+    paginator:
+      label: Navigation dans les pages
+  layouts:
+    application:
+      alert:
+        danger: Danger
+        info: Information
+  licenses:
+    CC-BY-40: Creative Commons Attribution
+    CC-BY-NC-40: Creative Commons Attribution NonCommercial
+    CC-BY-NC-ND-40: Creative Commons Attribution NonCommercial NoDerivatives
+    CC-BY-NC-SA-40: Creative Commons Attribution NonCommercial ShareAlike
+    CC-BY-ND-40: Creative Commons Attribution NoDerivatives
+    CC-BY-SA-40: Creative Commons Attribution ShareAlike
+    CC-PDDC: Creative Commons Public Domain Declaration
+    CC0-10: Creative Commons Zero
+    LicenseRef-Commercial: Commercial ; usage privé uniquement
+    MIT: MIT
+  renderer:
+    errors:
+      canvas: 'Impossible de trouver le canevas #webgl !'
+      load: Erreur de chargement
+      webglrenderer: Impossible de créer le rendu !
+    load: Chargement
+  sites:
+    cgtrader: CGTrader
+    comicsgamesandthings: Bandes dessinées, jeux et objets
+    cults3d: Cults3D
+    myminifactory: MyMiniFactory
+    theminiindex: 'The Mini Index
+
+      '
+    thingiverse: Thingiverse
+  views:
+    pagination:
+      first: "&laquo; Premier"
+      last: Dernier &raquo;
+      next: Suivant &rsaquo;
+      previous: "&lsaquo; Précédent"
+      truncate: "&hellip;"

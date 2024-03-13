@@ -1,0 +1,57 @@
+---
+fr:
+  models:
+    bulk_edit:
+      add_tags: Ajouter des étiquettes
+      remove_tags: Supprimer les étiquettes
+    bulk_update:
+      success: Les modèles ont été mis à jour avec succès.
+    delete: Supprimer
+    destroy:
+      confirm: Cette opération supprimera les fichiers. Êtes-vous sûr de vouloir continuer ?
+      success: Modèle supprimé !
+    edit: Modifier
+    file:
+      open: Ouvrir
+      set_as_preview: Définir comme aperçu
+    form:
+      preview_file:
+        help: Le fichier affiché en tant qu'aperçu du modèle dans les pages de la bibliothèque
+      tags: Étiquette
+    general:
+      edit: Modifier le modèle
+    index:
+      actions_heading: Actions
+      bulk_edit: Edition en bloc
+      missing_url: URL manquante
+      untagged: Sans étiquette
+    merge:
+      success: Les modèles ont été fusionnés avec succès.
+    open: Ouvrir
+    problem:
+      merge_all: Tous fusionner
+    show:
+      files: Fichiers
+      files_card:
+        bulk_edit: Modifier tous les fichiers
+        heading: Fichiers
+      license: Licence
+      merge:
+        heading: Fusionner
+        warning: La fusion déplace tous les fichiers de ce modèle vers la cible et supprime ce modèle. Les métadonnées des fichiers sont préservées, mais toutes les métadonnées du modèle sont perdues !
+        with: Fusionner avec
+      model_details: Détails du modèle
+      notes_heading: Notes
+      organize:
+        button_text: Organiser les fichiers
+        confirm:
+          are_you_sure: Êtes-vous sûr de vouloir faire cela ?
+          'no': Non, annuler
+          summary_html: Le dossier et les fichiers qui composent ce modèle seront déplacés de :<br> <code>%{from}</code><br> à<br> <code>%{to}</code>
+          'yes': Oui, déplacer les fichiers
+      path: Chemin
+      search: Recherchez sur Internet des modèles portant ce nom
+      tags: Étiquettes
+    update:
+      failure: Une erreur s'est produite et les détails du modèle n'ont pas pu être sauvegardés.
+      success: Détails du modèle sauvegardés.

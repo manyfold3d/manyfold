@@ -6,6 +6,7 @@ base_locale: en
 locales: [
   en,
   de,
+  fr,
   pl
 ]
 ## Reporting locale, default: en. Available: en, ru.

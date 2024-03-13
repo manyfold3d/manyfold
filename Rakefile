@@ -11,6 +11,7 @@ end
 
 locales = [
   :de,
+  :fr,
   :pl
 ]
 
