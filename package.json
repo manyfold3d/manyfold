@@ -19,7 +19,7 @@
     "masonry-layout": "^4.2.2",
     "three": "^0.162.0",
     "esbuild": "^0.20.1",
-    "sass": "^1.71.1"
+    "sass": "^1.72.0"
   },
   "version": "0.1.0",
   "devDependencies": {
