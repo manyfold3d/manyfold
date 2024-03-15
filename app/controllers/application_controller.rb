@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
-  after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
+  after_action :verify_authorized, except: :index, unless: :active_admin_controller?
+  after_action :verify_policy_scoped, only: :index, unless: :active_admin_controller?
 
   before_action :auto_login_single_user
   before_action :authenticate_user!
@@ -28,5 +28,9 @@ class ApplicationController < ActionController::Base
   def remember_ordering
     session["order"] ||= "name"
     session["order"] = params["order"] if params["order"]
+  end
+
+  def active_admin_controller?
+    is_a?(ActiveAdmin::BaseController)
   end
 end
