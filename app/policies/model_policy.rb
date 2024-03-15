@@ -14,6 +14,6 @@ class ModelPolicy < ApplicationPolicy
   end
 
   def destroy?
-    !Flipper.enabled? :demo_mode
+    !Flipper.enabled?(:demo_mode)
   end
 end
