@@ -13,7 +13,7 @@ require "support/mock_directory"
 
 RSpec.describe "Model Files" do
   context "when signed out" do
-    it "needs testing"
+    it "needs testing when multiuser is enabled"
   end
 
   context "when signed in" do

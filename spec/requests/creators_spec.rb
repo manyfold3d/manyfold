@@ -14,7 +14,7 @@ RSpec.describe "Creators" do
   let(:creator) { create(:creator) }
 
   context "when signed out" do
-    it "needs testing"
+    it "needs testing when multiuser is enabled"
   end
 
   context "when signed in" do

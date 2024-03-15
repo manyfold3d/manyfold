@@ -8,17 +8,7 @@ RSpec.describe "Settings" do
   let(:user) { create(:user) }
 
   context "when signed out" do
-    describe "GET /users/:user_id/settings" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "is forbidden"
-    end
-
-    describe "PATCH /users/:user_id/settings" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "is forbidden"
-    end
-
-    describe "PUT /users/:user_id/settings" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "is forbidden"
-    end
+    it "needs testing when multiuser is enabled"
   end
 
   context "when signed in" do
