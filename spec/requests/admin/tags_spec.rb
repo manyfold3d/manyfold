@@ -18,7 +18,7 @@ RSpec.describe "Admin::Tags" do
     end
 
     it "is inaccessible in demo mode" do
-      allow(SiteSettings).to receive(:demo_mode?).and_return(true)
+      Flipper.enable :demo_mode
       expect { get("/admin/acts_as_taggable_on_tags") }.to raise_error(Pundit::NotAuthorizedError)
     end
   end

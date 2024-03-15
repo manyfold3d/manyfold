@@ -18,7 +18,7 @@ RSpec.describe "Admin::Problems" do
     end
 
     it "is inaccessible in demo mode" do
-      allow(SiteSettings).to receive(:demo_mode?).and_return(true)
+      Flipper.enable :demo_mode
       expect { get("/admin/problems") }.to raise_error(Pundit::NotAuthorizedError)
     end
   end
