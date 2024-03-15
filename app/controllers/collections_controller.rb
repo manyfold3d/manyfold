@@ -34,6 +34,7 @@ class CollectionsController < ApplicationController
   end
 
   def new
+    authorize Collection
     @collection = Collection.new
     @collection.links.build if @collection.links.empty? # populate empty link
     @title = t("collections.general.new")
@@ -46,6 +47,7 @@ class CollectionsController < ApplicationController
   end
 
   def create
+    authorize Collection
     @collection = Collection.create(collection_params)
     redirect_to collections_path, notice: t(".success")
   end
@@ -65,9 +67,11 @@ class CollectionsController < ApplicationController
   def get_collection
     if params[:id] == "0"
       @collection = nil
+      authorize Collection
       @title = t(".unknown")
     else
       @collection = Collection.find(params[:id])
+      authorize @collection
       @title = @collection.name
     end
   end
