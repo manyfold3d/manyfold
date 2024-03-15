@@ -38,7 +38,7 @@ class LibrariesController < ApplicationController
 
   def update
     @library.update(library_params)
-    uptags = library_params[:tag_regex].reject(&:empty?)
+    uptags = library_params[:tag_regex]&.reject(&:empty?)
     @library.tag_regex = uptags
     if @library.save
       redirect_to models_path, notice: t(".success")

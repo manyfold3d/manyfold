@@ -19,6 +19,10 @@ class LibraryPolicy < ApplicationPolicy
     !Flipper.enabled?(:demo_mode) && user.admin?
   end
 
+  def scan?
+    true
+  end
+
   class Scope
     attr_reader :user, :scope
 

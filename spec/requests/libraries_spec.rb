@@ -12,24 +12,32 @@ require "rails_helper"
 #                DELETE /libraries/:id(.:format)                                                libraries#destroy
 
 RSpec.describe "Libraries" do
+  let(:admin) { create(:user, admin: true) }
+
   context "when signed out" do
     it "needs testing when multiuser is enabled"
   end
 
   context "when signed in" do
     before do
-      sign_in create(:user)
+      sign_in admin
       @library = create(:library) do |library|
         create_list(:model, 2, library: library)
       end
     end
 
-    describe "POST /libraries/:id/scan" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
+    describe "POST /libraries/:id/scan" do
+      it "scans a single library" do
+        expect { post "/libraries/#{@library.id}/scan" }.to have_enqueued_job(Scan::DetectFilesystemChangesJob).exactly(:once)
+        expect(response).to redirect_to("/libraries/#{@library.id}")
+      end
     end
 
-    describe "POST /libraries/scan" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
+    describe "POST /libraries/scan" do
+      it "scans all libraries" do
+        expect { post "/libraries/scan" }.to have_enqueued_job(Scan::DetectFilesystemChangesJob).exactly(:once)
+        expect(response).to redirect_to("/models")
+      end
     end
 
     describe "GET /libraries" do
@@ -39,16 +47,25 @@ RSpec.describe "Libraries" do
       end
     end
 
-    describe "POST /libraries/" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
+    describe "POST /libraries/" do
+      it "creates a new library" do
+        post "/libraries", params: {library: {name: "new"}}
+        expect(response).to have_http_status(:success)
+      end
     end
 
-    describe "GET /libraries/new" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
+    describe "GET /libraries/new" do
+      it "shows the new library form" do
+        get "/libraries/new"
+        expect(response).to have_http_status(:success)
+      end
     end
 
-    describe "GET /libraries/:id/edit" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
+    describe "GET /libraries/:id/edit" do
+      it "shows the edit library form" do
+        get "/libraries/#{@library.id}/edit"
+        expect(response).to have_http_status(:success)
+      end
     end
 
     describe "GET /libraries/:id" do
@@ -58,12 +75,18 @@ RSpec.describe "Libraries" do
       end
     end
 
-    describe "PATCH /libraries/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
+    describe "PATCH /libraries/:id" do
+      it "updates the library" do
+        patch "/libraries/#{@library.id}", params: {library: {name: "new"}}
+        expect(response).to redirect_to("/models")
+      end
     end
 
-    describe "DELETE /libraries/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
+    describe "DELETE /libraries/:id" do
+      it "removes the library" do
+        delete "/libraries/#{@library.id}"
+        expect(response).to redirect_to("/libraries")
+      end
     end
   end
 end
