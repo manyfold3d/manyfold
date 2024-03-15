@@ -59,7 +59,7 @@ ActiveAdmin.setup do |config|
   # == User Authorization
   #
   config.authorization_adapter = ActiveAdmin::PunditAdapter
-  config.pundit_default_policy = "ActiveAdminPolicy"
+  # config.pundit_default_policy = "ActiveAdminPolicy"
 
   # If you wish to maintain a separate set of Pundit policies for admin
   # resources, you may set a namespace here that Pundit will search
