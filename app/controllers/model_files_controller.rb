@@ -5,6 +5,9 @@ class ModelFilesController < ApplicationController
   before_action :get_model
   before_action :get_file, except: [:bulk_edit, :bulk_update]
 
+  skip_after_action :verify_authorized, only: [:bulk_edit, :bulk_update]
+  after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
+
   def show
     if stale?(@file)
       @duplicates = @file.duplicates
@@ -88,14 +91,17 @@ class ModelFilesController < ApplicationController
 
   def get_library
     @library = Library.find(params[:library_id])
+    authorize @library
   end
 
   def get_model
     @model = @library.models.find(params[:model_id])
+    authorize @model
   end
 
   def get_file
     @file = @model.model_files.find(params[:id])
+    authorize @file
     @title = @file.name
   end
 end
