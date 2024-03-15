@@ -95,7 +95,7 @@ class ModelFile < ApplicationRecord
   end
 
   def self.ransackable_attributes(_auth_object = nil)
-    ["caption", "created_at", "digest", "filename", "id", "notes", "presupported", "size", "updated_at", "y_up"]
+    ["caption", "created_at", "digest", "filename", "id", "notes", "presupported", "size", "updated_at", "y_up", "presupported_version_id", "unsupported_version_id"]
   end
 
   def self.ransackable_associations(_auth_object = nil)

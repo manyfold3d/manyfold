@@ -12,4 +12,8 @@ class Link < ApplicationRecord
   def self.ransackable_attributes(_auth_object = nil)
     ["created_at", "id", "linkable_id", "linkable_type", "updated_at", "url"]
   end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["linkable"]
+  end
 end
