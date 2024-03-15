@@ -8,14 +8,27 @@ class LibraryPolicy < ApplicationPolicy
   end
 
   def create?
-    !Flipper.enabled? :demo_mode
+    !Flipper.enabled?(:demo_mode) && user.admin?
   end
 
   def update?
-    !Flipper.enabled? :demo_mode
+    !Flipper.enabled?(:demo_mode) && user.admin?
   end
 
   def destroy?
-    !Flipper.enabled? :demo_mode
+    !Flipper.enabled?(:demo_mode) && user.admin?
+  end
+
+  class Scope
+    attr_reader :user, :scope
+
+    def initialize(user, scope)
+      @user = user
+      @scope = scope
+    end
+
+    def resolve
+      scope.all
+    end
   end
 end
