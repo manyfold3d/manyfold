@@ -146,7 +146,6 @@ class ModelsController < ApplicationController
 
   def get_library
     @library = Model.find(params[:id]).library
-    authorize @library
   end
 
   def get_model
