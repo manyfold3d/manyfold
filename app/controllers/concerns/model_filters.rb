@@ -10,7 +10,7 @@ module ModelFilters
   end
 
   def process_filters_init
-    @models = Model.includes(:tags, :preview_file, :creator, :collection)
+    @models = policy_scope(Model).includes(:tags, :preview_file, :creator, :collection)
   end
 
   def process_filters_tags_fetchall

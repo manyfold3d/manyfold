@@ -5,11 +5,11 @@ require "rails_helper"
 # destroy_user_session DELETE /users/sign_out(.:format)                                               devise/sessions#destroy
 
 RSpec.describe "Devise::Sessions" do
-  context "when signed out" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-    it "needs testing"
+  context "when signed out" do
+    it "needs testing when multiuser is enabled"
   end
 
-  context "when signed in" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-    it "needs testing"
+  context "when signed in" do
+    it "also needs testing when multiuser is enabled"
   end
 end

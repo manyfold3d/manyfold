@@ -5,6 +5,9 @@ class ModelFilesController < ApplicationController
   before_action :get_model
   before_action :get_file, except: [:bulk_edit, :bulk_update]
 
+  skip_after_action :verify_authorized, only: [:bulk_edit, :bulk_update]
+  after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
+
   def show
     if stale?(@file)
       @duplicates = @file.duplicates
@@ -51,7 +54,7 @@ class ModelFilesController < ApplicationController
   def destroy
     authorize @file
     @file.delete_from_disk_and_destroy
-    if URI.parse(request.referer).path == library_model_model_file_path(@library, @model, @file)
+    if request.referer && (URI.parse(request.referer).path == library_model_model_file_path(@library, @model, @file))
       # If we're coming from the file page itself, we can't go back there
       redirect_to library_model_path(@library, @model), notice: t(".success")
     else
@@ -96,6 +99,7 @@ class ModelFilesController < ApplicationController
 
   def get_file
     @file = @model.model_files.find(params[:id])
+    authorize @file
     @title = @file.name
   end
 end

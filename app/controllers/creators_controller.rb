@@ -3,15 +3,15 @@ class CreatorsController < ApplicationController
   before_action :get_creator, except: [:index, :new, :create]
 
   def index
+    @creators = policy_scope(Creator)
     if @filters.empty?
-      @creators = Creator.all
       @commontags = @tags = ActsAsTaggableOn::Tag.all
     else
       process_filters_init
       process_filters_tags_fetchall
       process_filters
       process_filters_tags_highlight
-      @creators = Creator.where(id: @models.map { |model| model.creator_id })
+      @creators = @creators.where(id: @models.map { |model| model.creator_id })
     end
 
     # Ordering
@@ -34,6 +34,7 @@ class CreatorsController < ApplicationController
   end
 
   def new
+    authorize Creator
     @creator = Creator.new
     @creator.links.build if @creator.links.empty? # populate empty link
     @title = t("creators.general.new")
@@ -44,13 +45,14 @@ class CreatorsController < ApplicationController
   end
 
   def create
+    authorize Creator
     @creator = Creator.create(creator_params)
     redirect_to creators_path, notice: t(".success")
   end
 
   def update
     @creator.update(creator_params)
-    redirect_to creators_path, notice: t(".success")
+    redirect_to @creator, notice: t(".success")
   end
 
   def destroy
@@ -63,9 +65,11 @@ class CreatorsController < ApplicationController
   def get_creator
     if params[:id] == "0"
       @creator = nil
+      authorize Creator
       @title = t(".unknown")
     else
       @creator = Creator.find(params[:id])
+      authorize @creator
       @title = @creator.name
     end
   end

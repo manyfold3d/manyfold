@@ -4,6 +4,8 @@ class ModelsController < ApplicationController
   include ModelFilters
   before_action :get_library, except: [:index, :bulk_edit, :bulk_update]
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index]
+  skip_after_action :verify_authorized, only: [:bulk_edit, :bulk_update]
+  after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
   def index
     process_filters_init
@@ -66,14 +68,14 @@ class ModelsController < ApplicationController
       Scan::CheckModelIntegrityJob.perform_later(@model.id)
       redirect_to [@library, @model], notice: t(".success")
     else
-      render status: :bad_request
+      head :bad_request
     end
   end
 
   def bulk_edit
-    @creators = Creator.all
-    @collections = Collection.all
-    @models = Model.all
+    @creators = policy_scope(Creator)
+    @collections = policy_scope(Collection)
+    @models = policy_scope(Model)
     process_filters
   end
 
@@ -86,8 +88,8 @@ class ModelsController < ApplicationController
 
     params[:models].each_pair do |id, selected|
       if selected == "1"
-        model = Model.find(id)
-        if model.update(hash)
+        model = policy_scope(Model).find(id)
+        if model&.update(hash)
           existing_tags = Set.new(model.tag_list)
           model.tag_list = existing_tags + add_tags - remove_tags
           model.save
@@ -98,9 +100,8 @@ class ModelsController < ApplicationController
   end
 
   def destroy
-    authorize @model
     @model.delete_from_disk_and_destroy
-    if URI.parse(request.referer).path == library_model_path(@library, @model)
+    if request.referer && (URI.parse(request.referer).path == library_model_path(@library, @model))
       # If we're coming from the model page itself, we can't go back there
       redirect_to library_path(@library), notice: t(".success")
     else
@@ -149,6 +150,7 @@ class ModelsController < ApplicationController
 
   def get_model
     @model = Model.includes(:model_files, :creator).find(params[:id])
+    authorize @model
     @title = @model.name
   end
 end

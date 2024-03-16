@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   before_action :check_for_first_use
 
   def index
-    @recent = Model.recent.limit(20)
+    @recent = policy_scope(Model).recent.limit(20)
   end
 
   private

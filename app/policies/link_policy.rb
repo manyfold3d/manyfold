@@ -1,10 +1,4 @@
-class ActiveAdminPolicy < ApplicationPolicy
-  def initialize(user, record)
-    raise Pundit::NotAuthorizedError, I18n.t("active_admin.demo_mode") if Flipper.enabled? :demo_mode
-    @user = user
-    @record = record
-  end
-
+class LinkPolicy < ApplicationPolicy
   def index?
     true
   end
@@ -25,10 +19,6 @@ class ActiveAdminPolicy < ApplicationPolicy
     true
   end
 
-  def destroy_all?
-    true
-  end
-
   class Scope
     attr_reader :user, :scope
 
@@ -38,7 +28,7 @@ class ActiveAdminPolicy < ApplicationPolicy
     end
 
     def resolve
-      scope
+      scope.all
     end
   end
 end

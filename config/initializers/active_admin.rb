@@ -59,7 +59,7 @@ ActiveAdmin.setup do |config|
   # == User Authorization
   #
   config.authorization_adapter = ActiveAdmin::PunditAdapter
-  config.pundit_default_policy = "ActiveAdminPolicy"
+  # config.pundit_default_policy = "ActiveAdminPolicy"
 
   # If you wish to maintain a separate set of Pundit policies for admin
   # resources, you may set a namespace here that Pundit will search
@@ -139,7 +139,9 @@ ActiveAdmin.setup do |config|
   # You can add before, after and around filters to all of your
   # Active Admin resources and pages from here.
   #
-  # config.before_action :do_something_awesome
+  config.before_action do
+    raise Pundit::NotAuthorizedError, I18n.t("active_admin.demo_mode") if Flipper.enabled? :demo_mode
+  end
 
   # == Attribute Filters
   #

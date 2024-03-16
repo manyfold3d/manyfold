@@ -1,7 +1,5 @@
 require "rails_helper"
 
-#      library_models POST   /libraries/:library_id/models(.:format)                                 models#create
-#   new_library_model GET    /libraries/:library_id/models/new(.:format)                             models#new
 #  edit_library_model GET    /libraries/:library_id/models/:id/edit(.:format)                        models#edit
 #       library_model GET    /libraries/:library_id/models/:id(.:format)                             models#show
 #                     PATCH  /libraries/:library_id/models/:id(.:format)                             models#update
@@ -13,13 +11,15 @@ require "rails_helper"
 # merge_library_model POST   /libraries/:library_id/models/:id/merge(.:format)                       models#merge
 
 RSpec.describe "Models" do
+  let(:admin) { create(:user, admin: true) }
+
   context "when signed out" do
-    it "needs testing"
+    it "needs testing when multiuser is enabled"
   end
 
   context "when signed in" do
     before do
-      sign_in create(:user)
+      sign_in admin
     end
 
     let(:library) do
@@ -29,14 +29,6 @@ RSpec.describe "Models" do
     end
     let(:creator) { create(:creator) }
 
-    describe "POST /libraries/:library_id/models/" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
-    end
-
-    describe "GET /libraries/:library_id/models/:id/new" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
-    end
-
     describe "GET /libraries/:library_id/models/:id" do
       it "returns http success" do
         get "/libraries/#{library.id}/models/#{library.models.first.id}"
@@ -44,8 +36,11 @@ RSpec.describe "Models" do
       end
     end
 
-    describe "GET /libraries/:library_id/models/:id/edit" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
+    describe "GET /libraries/:library_id/models/:id/edit" do
+      it "shows edit page for file" do
+        get "/libraries/#{library.id}/models/#{library.models.first.id}/edit"
+        expect(response).to have_http_status(:success)
+      end
     end
 
     describe "PUT /libraries/:library_id/models/:id" do
@@ -88,11 +83,17 @@ RSpec.describe "Models" do
     end
 
     describe "DELETE /libraries/:library_id/models/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
+      it "redirects to model list after deletion" do
+        delete "/libraries/#{library.id}/models/#{library.models.first.id}"
+        expect(response).to redirect_to("/libraries/#{library.id}")
+      end
     end
 
     describe "GET /models/edit" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
+      it "shows bulk edit page" do
+        get "/models/edit"
+        expect(response).to have_http_status(:success)
+      end
     end
 
     describe "PATCH /models/edit" do
@@ -149,8 +150,11 @@ RSpec.describe "Models" do
       end
     end
 
-    describe "POST /libraries/:library_id/models/:id/merge" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
+    describe "POST /libraries/:library_id/models/:id/merge" do
+      it "gives a bad request response if no merge parameter is provided" do
+        post "/libraries/#{library.id}/models/#{library.models.first.id}/merge"
+        expect(response).to have_http_status(:bad_request)
+      end
     end
   end
 end

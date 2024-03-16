@@ -1,4 +1,6 @@
-class LibraryPolicy < ApplicationPolicy
+# frozen_string_literal: true
+
+class Delayed::Backend::ActiveRecord::JobPolicy < ApplicationPolicy
   def index?
     true
   end
@@ -8,18 +10,14 @@ class LibraryPolicy < ApplicationPolicy
   end
 
   def create?
-    !Flipper.enabled?(:demo_mode) && user.admin?
+    true
   end
 
   def update?
-    !Flipper.enabled?(:demo_mode) && user.admin?
+    true
   end
 
   def destroy?
-    !Flipper.enabled?(:demo_mode) && user.admin?
-  end
-
-  def scan?
     true
   end
 

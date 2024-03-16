@@ -1,26 +1,22 @@
-class LibraryPolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
   def index?
-    true
+    !Flipper.enabled?(:demo_mode)
   end
 
   def show?
-    true
+    !Flipper.enabled?(:demo_mode)
   end
 
   def create?
-    !Flipper.enabled?(:demo_mode) && user.admin?
+    !Flipper.enabled?(:demo_mode)
   end
 
   def update?
-    !Flipper.enabled?(:demo_mode) && user.admin?
+    !Flipper.enabled?(:demo_mode)
   end
 
   def destroy?
-    !Flipper.enabled?(:demo_mode) && user.admin?
-  end
-
-  def scan?
-    true
+    !Flipper.enabled?(:demo_mode)
   end
 
   class Scope

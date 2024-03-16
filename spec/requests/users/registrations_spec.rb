@@ -10,10 +10,10 @@ require "rails_helper"
 
 RSpec.describe "Users::Registrations" do
   context "when signed out" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-    it "needs testing"
+    it "needs testing when multiuser is enabled"
   end
 
   context "when signed in" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-    it "needs testing"
+    it "needs testing when multiuser is enabled"
   end
 end
