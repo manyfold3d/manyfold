@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       member do
         post "merge"
       end
-      resources :model_files, except: [:index] do
+      resources :model_files, except: [:index, :new, :create] do
         collection do
           get "edit", action: "bulk_edit"
           patch "update", action: "bulk_update"
