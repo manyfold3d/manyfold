@@ -4,8 +4,8 @@ require "rails_helper"
 #          POST   /uploads(.:format)                                                      uploads#create
 
 RSpec.describe "Uploads" do
-  let(:admin) { create :user, admin: true}
-  let(:library) { create :library }
+  let(:admin) { create(:user, admin: true) }
+  let(:library) { create(:library) }
 
   context "when signed out" do
     it "needs testing when multiuser is enabled"
@@ -23,7 +23,7 @@ RSpec.describe "Uploads" do
 
     describe "POST /uploads" do # rubocop:todo RSpec/RepeatedExampleGroupBody
       it "redirect back to index after upload" do
-        post "/uploads", params: { post: { library_pick: library.id, scan_after_upload: "1" }, upload: { datafiles: []} }
+        post "/uploads", params: {post: {library_pick: library.id, scan_after_upload: "1"}, upload: {datafiles: []}}
         expect(response).to redirect_to("/libraries")
       end
     end

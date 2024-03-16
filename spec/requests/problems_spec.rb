@@ -4,7 +4,7 @@ require "rails_helper"
 #  problem PATCH  /problems/:id(.:format)                                                 problems#update
 
 RSpec.describe "Problems" do
-  let(:admin) { create :user, admin: true}
+  let(:admin) { create(:user, admin: true) }
 
   context "when signed out" do
     it "needs testing when multiuser is enabled"
@@ -88,10 +88,10 @@ RSpec.describe "Problems" do
     end
 
     describe "PATCH /problems/:id" do
-      let(:problem) { create :problem }
+      let(:problem) { create(:problem) }
 
       it "updates the problem and returns to list" do
-        patch "/problems/#{problem.id}", params: { problem: { ignored: true } }
+        patch "/problems/#{problem.id}", params: {problem: {ignored: true}}
         expect(response).to redirect_to("/problems")
       end
     end
