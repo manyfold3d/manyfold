@@ -1,6 +1,12 @@
 class UploadsController < ApplicationController
   before_action { authorize :upload }
 
+  after_action :verify_authorized
+  skip_after_action :verify_policy_scoped, only: :index
+
+  def index
+  end
+
   def create
     library = Library.find(params[:post][:library_pick])
     save_files(params[:upload], File.join(library.path, ""))
