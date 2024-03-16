@@ -10,6 +10,6 @@ RSpec.describe "Devise::Sessions" do
   end
 
   context "when signed in" do
-    it "needs testing when multiuser is enabled"
+    it "also needs testing when multiuser is enabled"
   end
 end
