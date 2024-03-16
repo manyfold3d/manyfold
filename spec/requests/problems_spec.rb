@@ -2,17 +2,16 @@ require "rails_helper"
 
 # problems GET    /problems(.:format)                                                     problems#index
 #  problem PATCH  /problems/:id(.:format)                                                 problems#update
-#          PUT    /problems/:id(.:format)                                                 problems#update
 
 RSpec.describe "Problems" do
+  let(:admin) { create :user, admin: true}
+
   context "when signed out" do
     it "needs testing when multiuser is enabled"
   end
 
   context "when signed in" do
-    before do
-      sign_in create(:user)
-    end
+    before { sign_in admin }
 
     describe "GET /problems" do
       before do
@@ -88,12 +87,13 @@ RSpec.describe "Problems" do
       end
     end
 
-    describe "PUT /problems/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
-    end
+    describe "PATCH /problems/:id" do
+      let(:problem) { create :problem }
 
-    describe "PATCH /problems/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "needs testing"
+      it "updates the problem and returns to list" do
+        patch "/problems/#{problem.id}", params: { problem: { ignored: true } }
+        expect(response).to redirect_to("/problems")
+      end
     end
   end
 end
