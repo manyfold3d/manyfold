@@ -68,7 +68,7 @@ class ModelsController < ApplicationController
       Scan::CheckModelIntegrityJob.perform_later(@model.id)
       redirect_to [@library, @model], notice: t(".success")
     else
-      render status: :bad_request
+      head :bad_request
     end
   end
 
@@ -101,7 +101,7 @@ class ModelsController < ApplicationController
 
   def destroy
     @model.delete_from_disk_and_destroy
-    if URI.parse(request.referer).path == library_model_path(@library, @model)
+    if request.referer && (URI.parse(request.referer).path == library_model_path(@library, @model))
       # If we're coming from the model page itself, we can't go back there
       redirect_to library_path(@library), notice: t(".success")
     else

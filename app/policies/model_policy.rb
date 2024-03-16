@@ -13,6 +13,10 @@ class ModelPolicy < ApplicationPolicy
     true
   end
 
+  def merge?
+    true
+  end
+
   def destroy?
     !Flipper.enabled?(:demo_mode)
   end

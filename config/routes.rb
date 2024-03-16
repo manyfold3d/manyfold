@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     collection do
       post "scan", action: :scan_all
     end
-    resources :models, except: [:index] do
+    resources :models, except: [:index, :new, :create] do
       member do
         post "merge"
       end
