@@ -1,13 +1,5 @@
 class User < ApplicationRecord
-  begin
-    if Flipper.enabled? :multiuser
-      devise :database_authenticatable, :registerable, :validatable
-    else
-      devise :database_authenticatable
-    end
-  rescue ActiveRecord::StatementInvalid
-    # If we've not migrated Flipper yet, we'll get an exception, which we can swallow
-  end
+  devise :database_authenticatable, :registerable, :validatable
 
   acts_as_favoritor
 
