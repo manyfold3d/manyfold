@@ -91,7 +91,7 @@ de:
       show_grid:
         label:
     show:
-      advanced_admin:
+      advanced_admin: Erweiterte Verwaltung
       submit: Einstellungen speichern
       title: Einstellungen
     tag_cloud_settings:

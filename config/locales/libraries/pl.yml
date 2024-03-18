@@ -9,7 +9,7 @@ pl:
     form:
       add_line: Dodaj linię
       icon:
-        help_html:
+        help_html: Ikony z biblioteki <a href="https://icons.getbootstrap.com/" target="_blank">strona ikon Boostrap</a>
       library_regex:
         help: Sprawdź brakujące tagi tych modeli korzystając z tego regexa.
     general:
