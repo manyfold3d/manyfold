@@ -2,47 +2,47 @@
 pl:
   settings:
     file_list_settings:
-      heading:
+      heading: Lista Plików
       hide_presupported_versions:
         label:
-      summary:
+      summary: Kontroluj sposób wyświetlania list plików modeli
     folder_settings:
-      details:
+      details: Struktura folderów jest zgodna z szablonem zdefiniowanym przy użyciu tokenów. Do szablonu możesz również dołączyć inny tekst (np. separatory folderów), który zostanie uwzględniony jak jest.
       model_path_template:
-        label:
+        label: Szablon ścieżki modelu
       parse_metadata_from_path:
-        help:
-        label:
+        help: Ustawia twórcę, kolekcję i tagi na podstawie szablonu
+        label: Wypełnij metadane ze ścieżki i szablonu podczas skanowania
       safe_folder_names:
-        help_html:
+        help_html: np. <code>spinal-tap</code> zamiast <code>Spın̈al Tap</code>
         label: Używaj bezpiecznych nazw folderów
-      summary:
+      summary: Określ strukturę folderów używaną przez "organizuj pliki" i do automatycznego uzupełniania metadanych podczas skanowania. Dotyczy wszystkich użytkowników.
       title: Nazewnictwo folderów
       tokens:
-        collection:
+        collection: Tytuł kolekcji, w której znajduje się model, jeśli jest ustawiony.
         creator: Nazwa twórcy, jeśli ustawiona.
-        model_id:
-        model_name:
-        tags_html:
+        model_id: Unikalny numeryczny identyfikator modelu. Zdecydowanie polecamy podawanie go zawsze na końcu szablonu, aby uniknąć konfliktów nazw na dysku.
+        model_name: Bezpieczna dla systemu plików wersja nazwy modelu.
+        tags_html: 'seria zagnieżdżonych folderów, po jednym dla każdego z tagów, ułożonych w kolejności popularności tagów. Na przykład: <code>fantasy/człowiek/czarodziej</code>'
     library_settings:
       caption:
-        help:
+        help: Najedź kursorem na bibliotekę w nagłówku, aby zobaczyć napis.
         label: Napis
       description: Zobacz szczegóły biblioteki i ją zmodyfikuj.
       heading: Biblioteki
       icon:
-        help_html:
+        help_html: Ikony z biblioteki <a href="https://icons.getbootstrap.com/" target="_blank">strona ikon Boostrap</a>
         label: Ikona
       name:
         label: Nazwa
       notes:
-        help:
+        help: Notatki są na razie tylko na tej stronie.
         label: Notatki
       path:
         label: Ścieżka
       tag_regex:
         check: Sprawdź
-        help:
+        help: Sprawdź modele pod kątem brakujących tagów pasujących do tego wyrażenia regularnego.
         label: Wymagane Tagi
         search_missing: Wyszukaj Brakujące
     pagination_settings:
@@ -50,15 +50,15 @@ pl:
         label:
       creators:
         label:
-      description:
+      description: Pokazuj jedynie określoną liczbę elementów na raz na stronie, a nie wszytko na raz. Może to przyspieszyć ładowanie stron.
       heading:
       models:
         label:
       per_page:
-        label:
+        label: Liczba elementów na stronę
     problem_settings:
-      description:
-      title:
+      description: Zmienić wagę wykrytych problemów lub całkowicie je zignoruj.
+      title: Wykrywanie Problemów
     renderer_settings:
       auto_load_max_size:
         always: Zawsze
@@ -91,7 +91,7 @@ pl:
       show_grid:
         label:
     show:
-      advanced_admin:
+      advanced_admin: Zaawansowana Administracja
       submit: Zapisz Ustawienia
       title: Ustawienia
     tag_cloud_settings:
@@ -103,12 +103,12 @@ pl:
       keypair:
         label:
       sorting:
-        label:
+        label: Sortowanie
       threshold:
-        label:
+        label: Minimalna liczba tagów do wyświetlenia
     tag_settings:
       auto_tag_new:
-        label:
+        label: Automatycznie taguj nowe modele za pomocą
       custom_stop_words:
         label:
       description:
@@ -119,6 +119,6 @@ pl:
         label:
       tag_model_directory_name:
         help: 'Uwaga: Może generować wiele tagów!'
-        label:
+        label: Twórz tagi na podstawie nazwy katalogu modelu
     update:
       success: Ustawienia zapisane.

@@ -48,7 +48,7 @@ pl:
         ignored: Ukryte
         note: Notatka
         problematic_type: Typ Obiektu
-        severity:
+        severity: Ważność
       user:
         confirmation_sent_at: Data wysłania potwierdzenia
         confirmation_token: Token potwierdzający
@@ -84,7 +84,7 @@ pl:
             library:
               nested:
             license:
-              invalid_spdx:
+              invalid_spdx: nie jest poprawną licencją
             path:
               destination_exists: już istnieje
               nested:
@@ -114,7 +114,7 @@ pl:
     demo_mode:
     filters_card:
       missing_tags: Brakujące tagi
-      remove_filter:
+      remove_filter: Usuń filtr
       search: Wyszukaj
       title: Filtry
       unknown: Nieznany
@@ -139,7 +139,7 @@ pl:
       log_out:
       navbar:
         toggler:
-          label:
+          label: Przełącz nawigację
       scan: Zeskanuj
       scan_changes: Zeskanuj w poszukiwaniu zmian
       scanning: Skanowanie
@@ -148,7 +148,7 @@ pl:
       upload: Prześlij
     tag_list:
       hidden: ukryte
-    tagline:
+    tagline: Pomagając w śledzeniu plików do druku 3D
     title: Manyfold
   general:
     delete: Usuń
@@ -165,23 +165,23 @@ pl:
         placeholder: Czego szukasz?
   kaminari:
     paginator:
-      label:
+      label: Nawigacja strony
   layouts:
     application:
       alert:
         danger: Niebezpieczeństwo
         info: Informacje
   licenses:
-    CC-BY-40:
-    CC-BY-NC-40:
-    CC-BY-NC-ND-40:
-    CC-BY-NC-SA-40:
-    CC-BY-ND-40:
-    CC-BY-SA-40:
-    CC-PDDC:
-    CC0-10:
-    LicenseRef-Commercial:
-    MIT:
+    CC-BY-40: Creative Commons Uznanie autorstwa
+    CC-BY-NC-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne
+    CC-BY-NC-ND-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne-Bez utworów zależnych
+    CC-BY-NC-SA-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne-Na tych samych warunkach
+    CC-BY-ND-40: Creative Commons Uznanie autorstwa-Bez utworów zależnych
+    CC-BY-SA-40: Creative Commons Uznanie autorstwa-Na tych samych warunkach
+    CC-PDDC: Creative Commons Deklaracja Domeny Publicznej
+    CC0-10: Creative Commons Zero
+    LicenseRef-Commercial: Komercyjne; tylko do użytku prywatnego
+    MIT: MIT
   renderer:
     errors:
       canvas: 'Nie można znaleźć canvasu #webgl!'
