@@ -2,7 +2,9 @@
 
 class Users::RegistrationsPolicy < ApplicationPolicy
   def create?
-    Flipper.enabled?(:multiuser) && user.nil?
+    Flipper.enabled?(:multiuser) &&
+      SiteSettings.registration_enabled &&
+      user.nil?
   end
 
   def update?
