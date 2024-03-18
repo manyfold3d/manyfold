@@ -4,7 +4,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    !Flipper.enabled?(:demo_mode)
+    user == record || !Flipper.enabled?(:demo_mode)
   end
 
   def create?
@@ -12,7 +12,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    !Flipper.enabled?(:demo_mode)
+    user == record || !Flipper.enabled?(:demo_mode)
   end
 
   def destroy?
