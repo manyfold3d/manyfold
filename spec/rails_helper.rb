@@ -17,8 +17,9 @@ Rails.application.load_tasks
 require "support/maintain_test_assets"
 MaintainTestAssets.maintain!
 
-require "support/factory_bot"
+require "support/devise"
 require "support/database_cleaner"
+require "support/factory_bot"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -81,6 +82,4 @@ RSpec.configure do |config|
       config.filter_run_excluding case_sensitive: true
     end
   end
-
-  config.include Devise::Test::IntegrationHelpers, type: :request
 end
