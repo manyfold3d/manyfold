@@ -20,7 +20,6 @@ begin
   else
     Flipper.disable :multiuser
   end
-
 rescue ActiveRecord::StatementInvalid
   # If we've not migrated Flipper yet, we'll get an exception, which we can swallow
 end

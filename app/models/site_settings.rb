@@ -14,5 +14,4 @@ class SiteSettings < RailsSettings::Base
   def self.registration_enabled
     ENV.fetch("REGISTRATION", false)
   end
-
 end
