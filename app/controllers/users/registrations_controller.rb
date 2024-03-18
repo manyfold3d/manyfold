@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :verify_multiuser_enabled, only: [:new, :create, :delete]
+  before_action :verify_multiuser_enabled, only: [:new, :create, :destroy]
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -11,14 +11,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  # POST /users
-  def create
+  # GET /resource/edit
+  def edit
     authorize :"users/registrations"
     super
   end
 
-  # GET /resource/edit
-  def edit
+  # POST /users
+  def create
     authorize :"users/registrations"
     super
   end
@@ -47,7 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def verify_multiuser_enabled
-    redirect_to '/' unless Flipper.enabled? :multiuser
+    redirect_back_or_to "/" unless Flipper.enabled? :multiuser
   end
 
   def configure_sign_up_params
