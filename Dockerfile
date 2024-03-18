@@ -24,6 +24,7 @@ RUN yarn install
 RUN gem install bundler -v 2.4.13
 RUN bundle config set --local deployment 'true'
 RUN bundle config set --local without 'development test'
+COPY .ruby-version .
 COPY Gemfile* ./
 RUN bundle install
 
