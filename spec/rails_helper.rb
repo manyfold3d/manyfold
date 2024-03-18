@@ -82,4 +82,10 @@ RSpec.configure do |config|
       config.filter_run_excluding case_sensitive: true
     end
   end
+
+  config.before(:each, :multiuser) do
+    allow(Flipper).to receive(:enabled?).and_call_original
+    allow(Flipper).to receive(:enabled?).with(:multiuser).and_return(true)
+  end
+
 end
