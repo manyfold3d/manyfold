@@ -7,31 +7,31 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    authorize :"users/registrations"
+    authorize User
     super
   end
 
   # GET /resource/edit
   def edit
-    authorize :"users/registrations"
+    authorize current_user
     super
   end
 
   # POST /users
   def create
-    authorize :"users/registrations"
+    authorize User
     super
   end
 
   # PUT /resource
   def update
-    authorize :"users/registrations"
+    authorize current_user
     super
   end
 
   # DELETE /resource
   def destroy
-    authorize :"users/registrations"
+    authorize current_user
     super
   end
 
