@@ -1,7 +1,7 @@
 class UserPolicy < ApplicationPolicy
   def index?
     all_of(
-      user.admin?,
+      user&.admin?,
       none_of(
         Flipper.enabled?(:demo_mode)
       )
@@ -12,7 +12,7 @@ class UserPolicy < ApplicationPolicy
     all_of(
       one_of(
         user == record,
-        user.admin?
+        user&.admin?
       ),
       none_of(
         Flipper.enabled?(:demo_mode)
@@ -36,7 +36,7 @@ class UserPolicy < ApplicationPolicy
   def update?
     one_of(
       user == record,
-      user.admin?
+      user&.admin?
     )
   end
 
