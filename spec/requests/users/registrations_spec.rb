@@ -9,11 +9,288 @@ require "rails_helper"
 #                          POST   /users(.:format)                                                        users/registrations#create
 
 RSpec.describe "Users::Registrations" do
-  context "when signed out" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-    it "needs testing when multiuser is enabled"
+  let!(:admin) { create(:user, admin: true, password: "password", password_confirmation: "password") }
+  let(:post_options) {
+    password = Faker::Internet.password
+    {
+      user: {
+        email: Faker::Internet.email,
+        username: Faker::Internet.username(specifier: 3, separators: []),
+        password:,
+        password_confirmation: password
+      }
+    }
+  }
+  let(:patch_options) {
+    password = "newpassword"
+    {
+      user: {
+        email: Faker::Internet.email,
+        password:,
+        password_confirmation: password,
+        current_password: "password"
+      }
+    }
+  }
+
+  context "when in single user mode" do
+    context "when signed out" do
+      describe "GET /users/sign_up" do
+        it "raises an error" do
+          expect { get "/users/sign_up" }.to raise_error(Pundit::NotAuthorizedError)
+        end
+      end
+
+      describe "POST /users" do
+        it "raises an error" do
+          expect { post "/users", params: post_options }.to raise_error(Pundit::NotAuthorizedError)
+        end
+      end
+
+      describe "GET /users/edit" do
+        it "redirects to sign in page" do
+          get "/users/edit"
+          expect(response).to redirect_to("/users/sign_in")
+        end
+      end
+
+      describe "PATCH /users/" do
+        it "redirects to sign in page" do
+          patch "/users", params: patch_options
+          expect(response).to redirect_to("/users/sign_in")
+        end
+      end
+
+      describe "DELETE /users" do
+        it "redirects to sign in page" do
+          delete "/users"
+          expect(response).to redirect_to("/users/sign_in")
+        end
+      end
+
+      describe "GET /users/cancel without a signup in progress" do
+        it "raises an error" do
+          expect { get "/users/cancel" }.to raise_error(Pundit::NotAuthorizedError)
+        end
+      end
+    end
+
+    context "when signed in" do
+      before { sign_in admin }
+
+      describe "GET /users/sign_up" do
+        before { get "/users/sign_up" }
+
+        it "redirects to root" do
+          expect(response).to redirect_to("/")
+        end
+      end
+
+      describe "POST /users" do
+        before { post "/users", params: post_options }
+
+        it "redirects to root" do
+          expect(response).to redirect_to("/")
+        end
+
+        it "does not create a user" do
+          expect(User.count).to eq 1
+        end
+      end
+
+      describe "GET /users/edit" do
+        before { get "/users/edit" }
+
+        it "shows edit page" do
+          expect(response).to have_http_status(:success)
+        end
+      end
+
+      describe "PATCH /users/" do
+        before { patch "/users", params: patch_options }
+
+        it "redirects to root" do
+          expect(response).to redirect_to("/")
+        end
+
+        it "updates password" do
+          expect(User.first.valid_password?("newpassword")).to be true
+        end
+      end
+
+      describe "DELETE /users" do
+        it "raises an error" do
+          expect { delete "/users" }.to raise_error(Pundit::NotAuthorizedError)
+        end
+      end
+
+      describe "GET /users/cancel without a signup in progress" do
+        before { get "/users/cancel" }
+
+        it "redirects to root" do
+          expect(response).to redirect_to("/")
+        end
+      end
+    end
   end
 
-  context "when signed in" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-    it "needs testing when multiuser is enabled"
+  context "when in multiuser mode with closed registrations", :multiuser do
+    before do
+      allow(SiteSettings).to receive(:registration_enabled).and_return(false)
+    end
+
+    context "when signed out" do
+      describe "GET /users/sign_up" do
+        it "raises an error" do
+          expect { get "/users/sign_up" }.to raise_error(Pundit::NotAuthorizedError)
+        end
+      end
+
+      describe "POST /users" do
+        it "raises an error" do
+          expect { post "/users", params: post_options }.to raise_error(Pundit::NotAuthorizedError)
+        end
+      end
+
+      describe "GET /users/edit" do
+        before { get "/users/edit" }
+
+        it "redirects to sign in page" do
+          expect(response).to redirect_to("/users/sign_in")
+        end
+      end
+
+      describe "PATCH /users/" do
+        before { patch "/users", params: patch_options }
+
+        it "redirects to sign in page" do
+          expect(response).to redirect_to("/users/sign_in")
+        end
+      end
+
+      describe "DELETE /users" do
+        before { delete "/users" }
+
+        it "redirects to sign in page" do
+          expect(response).to redirect_to("/users/sign_in")
+        end
+      end
+
+      describe "GET /users/cancel without a signup in progress" do
+        before { get "/users/cancel" }
+
+        it "redirects to sign up page" do
+          expect(response).to redirect_to("/users/sign_up")
+        end
+      end
+    end
+
+    context "when signed in" do
+      before { sign_in admin }
+
+      describe "GET /users/sign_up" do
+        before { get "/users/sign_up" }
+
+        it "redirects to root" do
+          expect(response).to redirect_to("/")
+        end
+      end
+
+      describe "POST /users" do
+        before { post "/users", params: post_options }
+
+        it "does not create a new user" do
+          expect(User.count).to eq 1
+        end
+
+        it "redirects to root" do
+          expect(response).to redirect_to("/")
+        end
+      end
+
+      describe "GET /users/edit" do
+        before { get "/users/edit" }
+
+        it "shows edit page" do
+          expect(response).to have_http_status(:success)
+        end
+      end
+
+      describe "PATCH /users/" do
+        before { patch "/users", params: patch_options }
+
+        it "redirects to root" do
+          expect(response).to redirect_to("/")
+        end
+
+        it "updates password" do
+          expect(User.first.valid_password?("newpassword")).to be true
+        end
+      end
+
+      describe "DELETE /users" do
+        before { delete "/users" }
+
+        it "removes the user" do
+          expect(User.count).to eq 0
+        end
+
+        it "redirects to root" do
+          expect(response).to redirect_to("/")
+        end
+
+        it "signs out the user" do
+          expect(controller.current_user).to be_nil
+        end
+      end
+
+      describe "GET /users/cancel without a signup in progress" do
+        before { get "/users/cancel" }
+
+        it "redirects to root" do
+          expect(response).to redirect_to("/")
+        end
+      end
+    end
+  end
+
+  context "when in multiuser mode with open registrations", :multiuser do
+    before do
+      allow(SiteSettings).to receive(:registration_enabled).and_return(true)
+    end
+
+    context "when signed out" do
+      describe "GET /users/sign_up" do
+        before { get "/users/sign_up" }
+
+        it "shows signup page" do
+          expect(response).to have_http_status(:success)
+        end
+      end
+
+      describe "POST /users" do
+        before { post "/users", params: post_options }
+
+        it "creates a new user" do
+          expect(User.count).to eq 2
+        end
+
+        it "redirects to root" do
+          expect(response).to redirect_to("/")
+        end
+
+        it "signs in the user" do
+          expect(controller.current_user&.username).to eq post_options[:user][:username]
+        end
+      end
+
+      describe "GET /users/cancel without a signup in progress" do
+        before { get "/users/cancel" }
+
+        it "redirects to sign up page" do
+          expect(response).to redirect_to("/users/sign_up")
+        end
+      end
+    end
   end
 end
