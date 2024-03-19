@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :verify_multiuser_enabled, only: [:new, :create, :destroy]
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -46,10 +45,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   protected
-
-  def verify_multiuser_enabled
-    redirect_back_or_to "/" unless Flipper.enabled? :multiuser
-  end
 
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
