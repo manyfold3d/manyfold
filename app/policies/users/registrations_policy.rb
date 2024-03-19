@@ -13,4 +13,8 @@ class Users::RegistrationsPolicy < ApplicationPolicy
   def destroy?
     Flipper.enabled?(:multiuser) && (user == record)
   end
+
+  def cancel?
+    Flipper.enabled?(:multiuser)
+  end
 end
