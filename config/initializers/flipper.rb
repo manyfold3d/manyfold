@@ -14,7 +14,12 @@ begin
     Flipper.disable :demo_mode
   end
 
-  Flipper.add :multiuser # Single or multiuser?
+  Flipper.add :multiuser
+  if ENV.fetch("MULTIUSER", nil) == "enabled"
+    Flipper.enable :multiuser
+  else
+    Flipper.disable :multiuser
+  end
 rescue ActiveRecord::StatementInvalid
   # If we've not migrated Flipper yet, we'll get an exception, which we can swallow
 end

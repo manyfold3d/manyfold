@@ -95,3 +95,5 @@ class MaintainTestAssets
     end
   end
 end
+
+MaintainTestAssets.maintain!

@@ -50,4 +50,18 @@ class ApplicationPolicy
 
     attr_reader :user, :scope
   end
+
+  private
+
+  def one_of(*args)
+    args.any?
+  end
+
+  def all_of(*args)
+    args.all?
+  end
+
+  def none_of(*args)
+    args.none?
+  end
 end

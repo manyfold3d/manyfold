@@ -62,5 +62,8 @@ module Manyfold
       end
     end
     config.middleware.use Rack::Locale
+
+    # Treat pundit failures as standard "forbidden"
+    config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
   end
 end

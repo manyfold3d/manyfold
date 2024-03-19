@@ -3,17 +3,12 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :active_admin_controller?
   after_action :verify_policy_scoped, only: :index, unless: :active_admin_controller?
 
-  before_action :auto_login_single_user
   before_action :authenticate_user!
   before_action :check_scan_status
   before_action :remember_ordering
 
   def index
     raise NotImplementedError
-  end
-
-  def auto_login_single_user
-    sign_in(:user, User.first) unless Flipper.enabled? :multiuser
   end
 
   def authenticate_admin_user!

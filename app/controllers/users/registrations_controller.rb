@@ -1,59 +1,54 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :verify_feature_enabled
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
-
-  # POST /users
-  def create
+  def new
+    authorize User
     super
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    authorize current_user
+    super
+  end
+
+  # POST /users
+  def create
+    authorize User
+    super
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    authorize current_user
+    super
+  end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    authorize current_user
+    super
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to
   # cancel oauth signing in/up in the middle of the process,
   # removing all OAuth session data.
-  # def cancel
-  #   super
-  # end
+  def cancel
+    authorize :"users/registrations"
+    super
+  end
 
   protected
 
-  def verify_feature_enabled
-    Flipper.enabled? :multiuser
-  end
-
-  # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
