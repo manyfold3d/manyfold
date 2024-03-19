@@ -18,9 +18,9 @@ RSpec.describe "Users::Sessions" do
     end
 
     context "when signed in" do
-      describe "GET /users/sign_in" do
-        before { sign_in admin }
+      before { sign_in admin }
 
+      describe "GET /users/sign_in" do
         it "redirects to root" do
           get "/users/sign_in"
           expect(response).to redirect_to("/")
@@ -40,9 +40,9 @@ RSpec.describe "Users::Sessions" do
     end
 
     context "when signed in" do
-      describe "GET /users/sign_in" do
-        before { sign_in admin }
+      before { sign_in admin }
 
+      describe "GET /users/sign_in" do
         it "redirects to root" do
           get "/users/sign_in"
           expect(response).to redirect_to("/")
