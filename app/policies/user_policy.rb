@@ -1,22 +1,48 @@
 class UserPolicy < ApplicationPolicy
   def index?
-    !Flipper.enabled?(:demo_mode)
+    [
+      user.admin?,
+      !Flipper.enabled?(:demo_mode)
+    ].all?
   end
 
   def show?
-    user == record || !Flipper.enabled?(:demo_mode)
+    [
+      [
+        user == record,
+        user.admin?
+      ].any?,
+      !Flipper.enabled?(:demo_mode)
+    ].all?
   end
 
   def create?
-    !Flipper.enabled?(:demo_mode)
+    [
+      [
+        SiteSettings.registration_enabled,
+        user&.admin?
+      ].any?,
+      Flipper.enabled?(:multiuser),
+      !Flipper.enabled?(:demo_mode)
+    ].all?
   end
 
   def update?
-    user == record || !Flipper.enabled?(:demo_mode)
+    [
+      user == record,
+      user.admin?
+    ].any?
   end
 
   def destroy?
-    !Flipper.enabled?(:demo_mode)
+    [
+      [
+        user == record,
+        user&.admin?
+      ].any?,
+      Flipper.enabled?(:multiuser),
+      !Flipper.enabled?(:demo_mode)
+    ].all?
   end
 
   class Scope
