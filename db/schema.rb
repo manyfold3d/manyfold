@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_19_155251) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_19_155903) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -211,7 +211,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_19_155251) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username", null: false
-    t.boolean "admin", default: false, null: false
     t.json "pagination_settings", default: {"models"=>true, "creators"=>true, "collections"=>true, "per_page"=>12}
     t.json "renderer_settings", default: {"grid_width"=>200, "grid_depth"=>200}
     t.json "tag_cloud_settings", default: {"threshold"=>0, "heatmap"=>true, "keypair"=>true, "sorting"=>"frequency", "hide_unrelated"=>true}
