@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_06_095646) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_19_155251) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -159,6 +159,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_095646) do
     t.index ["problematic_type", "problematic_id"], name: "index_problems_on_problematic"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_roles_on_name"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
+  end
+
   create_table "settings", force: :cascade do |t|
     t.string "var", null: false
     t.text "value"
@@ -208,6 +219,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_095646) do
     t.json "file_list_settings", default: {"hide_presupported_versions"=>true}
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
   add_foreign_key "collections", "collections"
