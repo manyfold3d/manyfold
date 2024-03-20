@@ -9,6 +9,8 @@ class User < ApplicationRecord
     uniqueness: {case_sensitive: false},
     format: {with: /\A[[:alnum:]]{3,}\z/}
 
+  after_create :assign_default_role
+
   def to_param
     username
   end
@@ -19,5 +21,11 @@ class User < ApplicationRecord
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "email", "id", "updated_at", "username"]
+  end
+
+  private
+
+  def assign_default_role
+    add_role(:viewer) if roles.blank?
   end
 end

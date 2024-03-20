@@ -33,4 +33,9 @@ RSpec.describe User do
     create(:user, username: "userName")
     expect(build(:user, username: "USERNAME")).not_to be_valid
   end
+
+  it "gets viewer role by default" do
+    u = create(:user)
+    expect(u).to have_role(:viewer)
+  end
 end
