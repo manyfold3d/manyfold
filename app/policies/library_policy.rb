@@ -8,15 +8,15 @@ class LibraryPolicy < ApplicationPolicy
   end
 
   def create?
-    !Flipper.enabled?(:demo_mode) && user.admin?
+    !Flipper.enabled?(:demo_mode) && user&.is_administrator?
   end
 
   def update?
-    !Flipper.enabled?(:demo_mode) && user.admin?
+    !Flipper.enabled?(:demo_mode) && user&.is_administrator?
   end
 
   def destroy?
-    !Flipper.enabled?(:demo_mode) && user.admin?
+    !Flipper.enabled?(:demo_mode) && user&.is_administrator?
   end
 
   def scan?

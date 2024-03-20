@@ -14,7 +14,7 @@ RSpec.describe "Users::Sessions" do
 
         it "gives default account admin permissions" do
           get "/users/sign_in"
-          expect(User.first.admin).to be true
+          expect(User.first.is_administrator?).to be true
         end
 
         it "doesn't auto log in" do
@@ -32,7 +32,7 @@ RSpec.describe "Users::Sessions" do
     context "when signed in" do
       before { sign_in admin }
 
-      let(:admin) { create(:user, admin: true) }
+      let(:admin) { create(:admin) }
 
       describe "GET /users/sign_in" do
         it "redirects to root" do
@@ -52,7 +52,7 @@ RSpec.describe "Users::Sessions" do
 
         it "gives default account admin permissions" do
           get "/users/sign_in"
-          expect(controller.current_user.admin).to be true
+          expect(controller.current_user.is_administrator?).to be true
         end
 
         it "auto logs in and redirects to root" do
@@ -70,7 +70,7 @@ RSpec.describe "Users::Sessions" do
     context "when signed in" do
       before { sign_in admin }
 
-      let(:admin) { create(:user, admin: true) }
+      let(:admin) { create(:admin) }
 
       describe "GET /users/sign_in" do
         it "redirects to root" do

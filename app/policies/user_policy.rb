@@ -1,7 +1,7 @@
 class UserPolicy < ApplicationPolicy
   def index?
     all_of(
-      user&.admin?,
+      user&.is_administrator?,
       none_of(
         Flipper.enabled?(:demo_mode)
       )
@@ -12,7 +12,7 @@ class UserPolicy < ApplicationPolicy
     all_of(
       one_of(
         user == record,
-        user&.admin?
+        user&.is_administrator?
       ),
       none_of(
         Flipper.enabled?(:demo_mode)
@@ -25,7 +25,7 @@ class UserPolicy < ApplicationPolicy
       Flipper.enabled?(:multiuser),
       one_of(
         SiteSettings.registration_enabled,
-        user&.admin?
+        user&.is_administrator?
       ),
       none_of(
         Flipper.enabled?(:demo_mode)
@@ -36,7 +36,7 @@ class UserPolicy < ApplicationPolicy
   def update?
     one_of(
       user == record,
-      user&.admin?
+      user&.is_administrator?
     )
   end
 
@@ -44,7 +44,7 @@ class UserPolicy < ApplicationPolicy
     all_of(
       one_of(
         user == record,
-        user&.admin?
+        user&.is_administrator?
       ),
       Flipper.enabled?(:multiuser),
       none_of(

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin_user!
     authenticate_user!
-    render plain: "401 Unauthorized", status: :unauthorized unless current_user.admin?
+    render plain: "401 Unauthorized", status: :unauthorized unless current_user.is_administrator?
   end
 
   def check_scan_status

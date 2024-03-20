@@ -12,7 +12,7 @@ ActiveAdmin.register ModelFile do
   #
   # permit_params do
   #   permitted = [:filename, :model_id, :presupported, :y_up]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
+  #   permitted << :other if params[:action] == 'create' && current_user.is_administrator?
   #   permitted
   # end
 end
