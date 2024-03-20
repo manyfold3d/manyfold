@@ -23,6 +23,10 @@ class User < ApplicationRecord
     ["created_at", "email", "id", "updated_at", "username"]
   end
 
+  def is_administrator?
+    has_role? :administrator
+  end
+
   private
 
   def assign_default_role

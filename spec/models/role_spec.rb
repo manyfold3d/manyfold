@@ -10,6 +10,6 @@ RSpec.describe Role do
 
   it "must be from the allowed list" do # rubocop:disable RSpec/MultipleExpectations
     expect { user.add_role :batman }.to raise_error(ActiveRecord::RecordInvalid)
-    expect(user.is_batman?).to be false
+    expect(user.has_role?(:batman)).to be false
   end
 end
