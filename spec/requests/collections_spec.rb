@@ -10,7 +10,7 @@ require "rails_helper"
 #                  DELETE /collections/:id(.:format)                                              collections#destroy
 
 RSpec.describe "Collections" do
-  let(:admin) { create(:user, admin: true) }
+  let(:admin) { create(:admin) }
   let(:collection) { create(:collection) }
 
   context "when signed out" do

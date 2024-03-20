@@ -10,7 +10,7 @@ require "support/mock_directory"
 #                                DELETE /libraries/:library_id/models/:model_id/model_files/:id(.:format)       model_files#destroy
 
 RSpec.describe "Model Files" do
-  let(:admin) { create(:user, admin: true) }
+  let(:admin) { create(:admin) }
 
   context "when signed out" do
     it "needs testing when multiuser is enabled"

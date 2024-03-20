@@ -12,7 +12,7 @@ require "rails_helper"
 #                DELETE /libraries/:id(.:format)                                                libraries#destroy
 
 RSpec.describe "Libraries" do
-  let(:admin) { create(:user, admin: true) }
+  let(:admin) { create(:admin) }
 
   context "when signed out" do
     it "needs testing when multiuser is enabled"
