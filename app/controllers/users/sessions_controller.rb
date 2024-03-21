@@ -2,14 +2,6 @@
 
 class Users::SessionsController < Devise::SessionsController
   before_action :auto_login_single_user
-
-  def auto_login_single_user
-    unless Flipper.enabled? :multiuser
-      sign_in(:user, User.first)
-      redirect_back_or_to root_url
-    end
-  end
-
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -30,10 +22,32 @@ class Users::SessionsController < Devise::SessionsController
     super
   end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def auto_login_single_user
+    # Autocreate an admin user if there isn't one
+    create_admin_user if User.where(admin: true).empty?
+    # If in single user mode, automatically log in with an admin account
+    unless Flipper.enabled?(:multiuser)
+      sign_in(:user, User.where(admin: true).first)
+      flash.discard
+      redirect_back_or_to root_path, alert: nil
+    end
+  end
+
+  def create_admin_user
+    password = SecureRandom.hex
+    User.create!(
+      username: SecureRandom.hex(4),
+      email: "root@localhost",
+      admin: true,
+      password:,
+      password_confirmation: password
+    )
+  end
 end
