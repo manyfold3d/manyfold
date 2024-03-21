@@ -14,7 +14,7 @@ class SettingsController < ApplicationController
     update_file_list_settings(params[:file_list])
     @user.save!
     # Save site-wide settings if user is an admin
-    if current_user.admin?
+    if current_user.is_administrator?
       update_folder_settings(params[:folders])
       update_tagging_settings(params[:model_tags])
     end
@@ -92,6 +92,6 @@ class SettingsController < ApplicationController
   end
 
   def check_owner_permission
-    render plain: "401 Unauthorized", status: :unauthorized unless @user == current_user || current_user.admin?
+    render plain: "401 Unauthorized", status: :unauthorized unless @user == current_user || current_user.is_administrator?
   end
 end

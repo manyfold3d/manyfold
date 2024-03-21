@@ -4,7 +4,7 @@ require "rails_helper"
 #  problem PATCH  /problems/:id(.:format)                                                 problems#update
 
 RSpec.describe "Problems" do
-  let(:admin) { create(:user, admin: true) }
+  let(:admin) { create(:admin) }
 
   context "when signed out" do
     it "needs testing when multiuser is enabled"

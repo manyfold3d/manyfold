@@ -9,15 +9,15 @@ class ApplicationPolicy
   end
 
   def index?
-    user&.admin?
+    user&.is_administrator?
   end
 
   def show?
-    user&.admin?
+    user&.is_administrator?
   end
 
   def create?
-    user&.admin?
+    user&.is_administrator?
   end
 
   def new?
@@ -25,7 +25,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user&.admin?
+    user&.is_administrator?
   end
 
   def edit?
@@ -33,7 +33,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    user&.admin?
+    user&.is_administrator?
   end
 
   class Scope

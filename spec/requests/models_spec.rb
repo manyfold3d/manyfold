@@ -11,7 +11,7 @@ require "rails_helper"
 # merge_library_model POST   /libraries/:library_id/models/:id/merge(.:format)                       models#merge
 
 RSpec.describe "Models" do
-  let(:admin) { create(:user, admin: true) }
+  let(:admin) { create(:admin) }
 
   context "when signed out" do
     it "needs testing when multiuser is enabled"

@@ -2,14 +2,14 @@ require "rails_helper"
 
 RSpec.describe "Admin::Delayed_Job" do
   it "is inaccessible to normal user" do
-    sign_in create(:user, admin: false)
+    sign_in create(:user)
     get "/admin/delayed_backend_active_record_jobs"
     expect(response).to have_http_status(:unauthorized)
   end
 
   context "with admin permission" do
     before do
-      sign_in create(:user, admin: true)
+      sign_in create(:admin)
     end
 
     it "is accessible" do

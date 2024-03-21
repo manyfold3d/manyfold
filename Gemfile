@@ -120,3 +120,5 @@ gem "string-similarity", "~> 2.1"
 
 gem "flipper", "~> 1.2"
 gem "flipper-active_record", "~> 1.2"
+
+gem "rolify", "~> 6.0"

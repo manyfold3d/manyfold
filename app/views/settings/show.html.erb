@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <% if current_user.admin? %>
+  <% if current_user.is_administrator? %>
 
     <div class="row mb-4">
       <div class="col">
@@ -35,7 +35,7 @@
     <div class='col'>
       <button type="submit" class="btn btn-primary"><%= icon("save", t(".submit")) %> <%= t(".submit") %></button>
     </div>
-    <% if current_user.admin? %>
+    <% if current_user.is_administrator? %>
       <div class='col text-end'>
         <%= link_to safe_join([icon("tools", t(".advanced_admin")), t(".advanced_admin")], " "),
               "/admin",

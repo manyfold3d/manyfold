@@ -10,7 +10,7 @@ require "rails_helper"
 #              DELETE /creators/:id(.:format)                                                 creators#destroy
 
 RSpec.describe "Creators" do
-  let(:admin) { create(:user, admin: true) }
+  let(:admin) { create(:admin) }
   let(:creator) { create(:creator) }
 
   context "when signed out" do

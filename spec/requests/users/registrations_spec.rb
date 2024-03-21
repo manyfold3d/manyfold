@@ -9,7 +9,7 @@ require "rails_helper"
 #                          POST   /users(.:format)                                                        users/registrations#create
 
 RSpec.describe "Users::Registrations" do
-  let!(:admin) { create(:user, admin: true, password: "password", password_confirmation: "password") }
+  let!(:admin) { create(:admin, password: "password", password_confirmation: "password") }
   let(:post_options) {
     password = Faker::Internet.password
     {

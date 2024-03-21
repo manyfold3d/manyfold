@@ -2,6 +2,6 @@
 
 class ActiveAdmin::PagePolicy < ApplicationPolicy
   def show?
-    user.admin?
+    user&.is_administrator?
   end
 end

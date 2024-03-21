@@ -4,7 +4,7 @@ require "rails_helper"
 #          POST   /uploads(.:format)                                                      uploads#create
 
 RSpec.describe "Uploads" do
-  let(:admin) { create(:user, admin: true) }
+  let(:admin) { create(:admin) }
   let(:library) { create(:library) }
 
   context "when signed out" do

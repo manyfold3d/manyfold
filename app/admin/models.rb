@@ -12,7 +12,7 @@ ActiveAdmin.register Model do
   #
   # permit_params do
   #   permitted = [:name, :path, :library_id, :preview_file_id, :creator_id, :thingiverse_id, :cgtrader_path, :cults3d_path, :mmf_slug, :tag_list]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
+  #   permitted << :other if params[:action] == 'create' && current_user.is_administrator?
   #   permitted
   # end
 end

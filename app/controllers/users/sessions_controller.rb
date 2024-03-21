@@ -31,10 +31,10 @@ class Users::SessionsController < Devise::SessionsController
 
   def auto_login_single_user
     # Autocreate an admin user if there isn't one
-    create_admin_user if User.where(admin: true).empty?
+    create_admin_user if User.with_role(:administrator).empty?
     # If in single user mode, automatically log in with an admin account
     unless Flipper.enabled?(:multiuser)
-      sign_in(:user, User.where(admin: true).first)
+      sign_in(:user, User.with_role(:administrator).first)
       flash.discard
       redirect_back_or_to root_path, alert: nil
     end
@@ -42,12 +42,13 @@ class Users::SessionsController < Devise::SessionsController
 
   def create_admin_user
     password = SecureRandom.hex
-    User.create!(
+    u = User.create!(
       username: SecureRandom.hex(4),
       email: "root@localhost",
-      admin: true,
       password:,
       password_confirmation: password
     )
+    u.add_role :administrator
+    u
   end
 end
