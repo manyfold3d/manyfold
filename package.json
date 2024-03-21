@@ -25,7 +25,7 @@
   "devDependencies": {
     "@babel/core": "^7",
     "@babel/eslint-parser": "^7.24.1",
-    "@babel/preset-typescript": "^7.23.3",
+    "@babel/preset-typescript": "^7.24.1",
     "@types/i18n-js": "^3.8.9",
     "@types/jquery": "^3.5.29",
     "@types/node": "^20.11.0",
