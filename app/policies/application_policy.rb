@@ -9,15 +9,15 @@ class ApplicationPolicy
   end
 
   def index?
-    user&.is_administrator?
+    user&.is_viewer?
   end
 
   def show?
-    user&.is_administrator?
+    user&.is_viewer?
   end
 
   def create?
-    user&.is_administrator?
+    user&.is_contributor?
   end
 
   def new?
@@ -25,7 +25,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user&.is_administrator?
+    user&.is_editor?
   end
 
   def edit?
@@ -33,7 +33,12 @@ class ApplicationPolicy
   end
 
   def destroy?
-    user&.is_administrator?
+    all_of(
+      user&.is_editor?,
+      none_of(
+        Flipper.enabled?(:demo_mode)
+      )
+    )
   end
 
   class Scope

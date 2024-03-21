@@ -1,17 +1,9 @@
 class ModelFilePolicy < ApplicationPolicy
-  def show?
-    true
-  end
-
-  def destroy?
-    !Flipper.enabled?(:demo_mode)
-  end
-
   def bulk_edit?
-    true
+    user&.is_editor?
   end
 
   def bulk_update?
-    true
+    user&.is_editor?
   end
 end

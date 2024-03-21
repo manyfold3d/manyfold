@@ -1,12 +1,4 @@
 class LibraryPolicy < ApplicationPolicy
-  def index?
-    true
-  end
-
-  def show?
-    true
-  end
-
   def create?
     !Flipper.enabled?(:demo_mode) && user&.is_administrator?
   end
@@ -20,7 +12,7 @@ class LibraryPolicy < ApplicationPolicy
   end
 
   def scan?
-    true
+    user&.is_contributor?
   end
 
   class Scope
