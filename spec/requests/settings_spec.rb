@@ -5,35 +5,29 @@ require "rails_helper"
 #                PUT    /users/:user_id/settings(.:format)                                      settings#update
 
 RSpec.describe "Settings" do
-  let(:user) { create(:user) }
-
   context "when signed out" do
     it "needs testing when multiuser is enabled"
   end
 
   context "when signed in" do
-    before do
-      sign_in user
-    end
-
-    describe "GET /users/:user_id/settings" do
+    describe "GET /users/:user_id/settings", :as_viewer do
       it "returns http success" do
-        get "/users/#{user.username}/settings"
+        get "/users/#{User.first.username}/settings"
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "PATCH /users/:user_id/settings" do
+    describe "PATCH /users/:user_id/settings", :as_viewer do
       it "redirects back to settings on success" do
-        patch "/users/#{user.username}/settings"
-        expect(response).to redirect_to("/users/#{user.username}/settings")
+        patch "/users/#{User.first.username}/settings"
+        expect(response).to redirect_to("/users/#{User.first.username}/settings")
       end
     end
 
-    describe "PUT /users/:user_id/settings" do
+    describe "PUT /users/:user_id/settings", :as_viewer do
       it "redirects back to settings on success" do
-        put "/users/#{user.username}/settings"
-        expect(response).to redirect_to("/users/#{user.username}/settings")
+        put "/users/#{User.first.username}/settings"
+        expect(response).to redirect_to("/users/#{User.first.username}/settings")
       end
     end
   end

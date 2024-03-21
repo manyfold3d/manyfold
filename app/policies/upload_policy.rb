@@ -1,9 +1,14 @@
 class UploadPolicy < ApplicationPolicy
   def index?
-    !Flipper.enabled?(:demo_mode)
+    create?
   end
 
   def create?
-    !Flipper.enabled?(:demo_mode)
+    all_of(
+      user&.is_contributor?,
+      none_of(
+        Flipper.enabled?(:demo_mode)
+      )
+    )
   end
 end

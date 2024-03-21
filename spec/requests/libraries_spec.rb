@@ -12,8 +12,6 @@ require "rails_helper"
 #                DELETE /libraries/:id(.:format)                                                libraries#destroy
 
 RSpec.describe "Libraries" do
-  let(:admin) { create(:admin) }
-
   context "when signed out" do
     it "needs testing when multiuser is enabled"
   end
@@ -25,25 +23,29 @@ RSpec.describe "Libraries" do
       end
     end
 
-    before do
-      sign_in admin
-    end
-
     describe "POST /libraries/:id/scan" do
-      it "scans a single library" do # rubocop:todo RSpec/MultipleExpectations
+      it "scans a single library", :as_contributor do # rubocop:todo RSpec/MultipleExpectations
         expect { post "/libraries/#{library.id}/scan" }.to have_enqueued_job(Scan::DetectFilesystemChangesJob).exactly(:once)
         expect(response).to redirect_to("/libraries/#{library.id}")
+      end
+
+      it "denies viewer permission", :as_viewer do
+        expect { post "/libraries/#{library.id}/scan" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "POST /libraries/scan" do
-      it "scans all libraries" do # rubocop:todo RSpec/MultipleExpectations
+      it "scans all libraries", :as_contributor do # rubocop:todo RSpec/MultipleExpectations
         expect { post "/libraries/scan" }.to have_enqueued_job(Scan::DetectFilesystemChangesJob).exactly(:once)
         expect(response).to redirect_to("/models")
       end
+
+      it "denies viewer permission", :as_viewer do
+        expect { post "/libraries/scan" }.to raise_error(Pundit::NotAuthorizedError)
+      end
     end
 
-    describe "GET /libraries" do
+    describe "GET /libraries", :as_viewer do
       it "redirects to models index" do
         get "/libraries"
         expect(response).to redirect_to("/models")
@@ -51,44 +53,64 @@ RSpec.describe "Libraries" do
     end
 
     describe "POST /libraries/" do
-      it "creates a new library" do
+      it "creates a new library", :as_administrator do
         post "/libraries", params: {library: {name: "new"}}
         expect(response).to have_http_status(:success)
+      end
+
+      it "is denied to non-admins", :as_editor do
+        expect { post "/libraries", params: {library: {name: "new"}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "GET /libraries/new" do
-      it "shows the new library form" do
+      it "shows the new library form", :as_administrator do
         get "/libraries/new"
         expect(response).to have_http_status(:success)
+      end
+
+      it "is denied to non-admins", :as_editor do
+        expect { get "/libraries/new" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "GET /libraries/:id/edit" do
-      it "shows the edit library form" do
+      it "shows the edit library form", :as_administrator do
         get "/libraries/#{library.id}/edit"
         expect(response).to have_http_status(:success)
+      end
+
+      it "is denied to non-administrators", :as_editor do
+        expect { get "/libraries/#{library.id}/edit" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "GET /libraries/:id" do
-      it "redirects to models index with library filter" do
+      it "redirects to models index with library filter", :as_viewer do
         get "/libraries/#{library.id}"
         expect(response).to redirect_to("/models?library=#{library.id}")
       end
     end
 
     describe "PATCH /libraries/:id" do
-      it "updates the library" do
+      it "updates the library", :as_administrator do
         patch "/libraries/#{library.id}", params: {library: {name: "new"}}
         expect(response).to redirect_to("/models")
+      end
+
+      it "is denied to non-administrators", :as_editor do
+        expect { patch "/libraries/#{library.id}", params: {library: {name: "new"}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "DELETE /libraries/:id" do
-      it "removes the library" do
+      it "removes the library", :as_administrator do
         delete "/libraries/#{library.id}"
         expect(response).to redirect_to("/libraries")
+      end
+
+      it "is denied to non-administrators", :as_editor do
+        expect { delete "/libraries/#{library.id}" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
   end

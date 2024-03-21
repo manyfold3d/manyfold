@@ -5,19 +5,20 @@ class ModelPolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    true
-  end
-
-  def update?
-    true
-  end
-
   def merge?
-    true
+    all_of(
+      user&.is_editor?,
+      none_of(
+        Flipper.enabled?(:demo_mode)
+      )
+    )
   end
 
-  def destroy?
-    !Flipper.enabled?(:demo_mode)
+  def bulk_edit?
+    user&.is_editor?
+  end
+
+  def bulk_update?
+    user&.is_editor?
   end
 end

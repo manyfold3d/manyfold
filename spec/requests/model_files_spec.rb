@@ -10,17 +10,11 @@ require "support/mock_directory"
 #                                DELETE /libraries/:library_id/models/:model_id/model_files/:id(.:format)       model_files#destroy
 
 RSpec.describe "Model Files" do
-  let(:admin) { create(:admin) }
-
   context "when signed out" do
     it "needs testing when multiuser is enabled"
   end
 
   context "when signed in" do
-    before do
-      sign_in admin
-    end
-
     let(:jpg_file) { create(:model_file, model: model, filename: "test.jpg") }
     let(:stl_file) { create(:model_file, model: model, filename: "test.stl") }
     let(:model) { create(:model, library: library, path: "model_one") }
@@ -36,28 +30,28 @@ RSpec.describe "Model Files" do
       end
     end
 
-    describe "GET /libraries/:library_id/models/:model_id/model_files/edit" do
+    describe "GET /libraries/:library_id/models/:model_id/model_files/edit", :as_editor do
       it "shows bulk update form" do
         get edit_library_model_model_files_path(library, model, stl_file)
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "PATCH /libraries/:library_id/models/:model_id/model_files/update" do
+    describe "PATCH /libraries/:library_id/models/:model_id/model_files/update", :as_editor do
       it "bulk updates the files" do
         patch library_model_model_file_path(library, model, stl_file), params: {model_file: {name: "name"}}
         expect(response).to redirect_to(library_model_model_file_path(library, model, stl_file))
       end
     end
 
-    describe "GET /libraries/:library_id/models/:model_id/model_files/:id/edit" do
+    describe "GET /libraries/:library_id/models/:model_id/model_files/:id/edit", :as_editor do
       it "shows edit page for file" do
         get edit_library_model_model_file_path(library, model, stl_file)
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "GET /libraries/:library_id/models/:model_id/model_files/:id" do
+    describe "GET /libraries/:library_id/models/:model_id/model_files/:id", :as_viewer do
       describe "GET a model file in its original file format" do
         before do
           get library_model_model_file_path(library, model, stl_file, format: :stl)
@@ -72,7 +66,7 @@ RSpec.describe "Model Files" do
         end
       end
 
-      describe "GET an image file in its original file format" do
+      describe "GET an image file in its original file format", :as_viewer do
         before do
           get library_model_model_file_path(library, model, jpg_file, format: :jpg)
         end
@@ -87,14 +81,14 @@ RSpec.describe "Model Files" do
       end
     end
 
-    describe "PATCH /libraries/:library_id/models/:model_id/model_files/:id" do
+    describe "PATCH /libraries/:library_id/models/:model_id/model_files/:id", :as_editor do
       it "updates the file" do
         patch library_model_model_file_path(library, model, stl_file), params: {model_file: {name: "name"}}
         expect(response).to redirect_to(library_model_model_file_path(library, model, stl_file))
       end
     end
 
-    describe "DELETE /libraries/:library_id/models/:model_id/model_files/:id" do
+    describe "DELETE /libraries/:library_id/models/:model_id/model_files/:id", :as_editor do
       it "removes the file" do
         delete library_model_model_file_path(library, model, stl_file)
         expect(response).to redirect_to(library_model_path(library, model))

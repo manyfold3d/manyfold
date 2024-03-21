@@ -4,16 +4,12 @@ require "rails_helper"
 #  problem PATCH  /problems/:id(.:format)                                                 problems#update
 
 RSpec.describe "Problems" do
-  let(:admin) { create(:admin) }
-
   context "when signed out" do
     it "needs testing when multiuser is enabled"
   end
 
   context "when signed in" do
-    before { sign_in admin }
-
-    describe "GET /problems" do
+    describe "GET /problems", :as_viewer do
       before do
         create_list(:problem, 2, category: :inefficient)
         create_list(:problem_on_model, 3, category: :missing)
@@ -90,9 +86,13 @@ RSpec.describe "Problems" do
     describe "PATCH /problems/:id" do
       let(:problem) { create(:problem) }
 
-      it "updates the problem and returns to list" do
+      it "updates the problem and returns to list", :as_editor do
         patch "/problems/#{problem.id}", params: {problem: {ignored: true}}
         expect(response).to redirect_to("/problems")
+      end
+
+      it "is denied to non-editors", :as_contributor do
+        expect { patch "/problems/#{problem.id}", params: {problem: {ignored: true}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
   end

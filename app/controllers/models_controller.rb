@@ -4,7 +4,6 @@ class ModelsController < ApplicationController
   include ModelFilters
   before_action :get_library, except: [:index, :bulk_edit, :bulk_update]
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index]
-  skip_after_action :verify_authorized, only: [:bulk_edit, :bulk_update]
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
   def index
@@ -73,6 +72,7 @@ class ModelsController < ApplicationController
   end
 
   def bulk_edit
+    authorize Model
     @creators = policy_scope(Creator)
     @collections = policy_scope(Collection)
     @models = policy_scope(Model)
@@ -80,6 +80,7 @@ class ModelsController < ApplicationController
   end
 
   def bulk_update
+    authorize Model
     hash = bulk_update_params
     hash[:library_id] = hash.delete(:new_library_id) if hash[:new_library_id]
 

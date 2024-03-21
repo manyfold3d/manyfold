@@ -2,23 +2,23 @@
 
 class Delayed::Backend::ActiveRecord::JobPolicy < ApplicationPolicy
   def index?
-    true
+    user&.is_administrator?
   end
 
   def show?
-    true
+    user&.is_administrator?
   end
 
   def create?
-    true
+    user&.is_administrator?
   end
 
   def update?
-    true
+    user&.is_administrator?
   end
 
   def destroy?
-    true
+    user&.is_administrator?
   end
 
   class Scope
