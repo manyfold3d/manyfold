@@ -83,12 +83,16 @@ RSpec.describe "Problems" do
       end
     end
 
-    describe "PATCH /problems/:id", :as_editor do
+    describe "PATCH /problems/:id" do
       let(:problem) { create(:problem) }
 
-      it "updates the problem and returns to list" do
+      it "updates the problem and returns to list", :as_editor do
         patch "/problems/#{problem.id}", params: {problem: {ignored: true}}
         expect(response).to redirect_to("/problems")
+      end
+
+      it "is denied to non-editors", :as_contributor do
+        expect { patch "/problems/#{problem.id}", params: {problem: {ignored: true}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
   end

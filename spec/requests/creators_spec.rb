@@ -38,19 +38,31 @@ RSpec.describe "Creators" do
         post "/creators", params: {creator: {name: "newname"}}
         expect(response).to redirect_to("/creators")
       end
-    end
 
-    describe "GET /creators/new", :as_contributor do
-      it "Shows the new creator form" do
-        get "/creators/new"
-        expect(response).to have_http_status(:success)
+      it "denies viewer permission", :as_viewer do
+        expect { post "/creators", params: {creator: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
-    describe "GET /creators/:id/edit", :as_editor do
-      it "Shows the new creator form" do
+    describe "GET /creators/new" do
+      it "Shows the new creator form", :as_contributor do
+        get "/creators/new"
+        expect(response).to have_http_status(:success)
+      end
+
+      it "denies viewer permission", :as_viewer do
+        expect { get "/creators/new" }.to raise_error(Pundit::NotAuthorizedError)
+      end
+    end
+
+    describe "GET /creators/:id/edit" do
+      it "Shows the new creator form", :as_editor do
         get "/creators/#{creator.id}/edit"
         expect(response).to have_http_status(:success)
+      end
+
+      it "is denied to non-editors", :as_contributor do
+        expect { get "/creators/#{creator.id}/edit" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
@@ -61,17 +73,25 @@ RSpec.describe "Creators" do
       end
     end
 
-    describe "PATCH /creators/:id", :as_editor do
-      it "saves details" do
+    describe "PATCH /creators/:id" do
+      it "saves details", :as_editor do
         patch "/creators/#{creator.id}", params: {creator: {name: "newname"}}
         expect(response).to redirect_to("/creators/#{creator.id}")
       end
+
+      it "is denied to non-editors", :as_contributor do
+        expect { patch "/creators/#{creator.id}", params: {creator: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
+      end
     end
 
-    describe "DELETE /creators/:id", :as_editor do
-      it "removes creator" do
+    describe "DELETE /creators/:id" do
+      it "removes creator", :as_editor do
         delete "/creators/#{creator.id}"
         expect(response).to redirect_to("/creators")
+      end
+
+      it "is denied to non-editors", :as_contributor do
+        expect { delete "/creators/#{creator.id}" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
   end

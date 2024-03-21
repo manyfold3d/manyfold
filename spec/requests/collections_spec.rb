@@ -38,19 +38,31 @@ RSpec.describe "Collections" do
         post "/collections", params: {collection: {name: "newname"}}
         expect(response).to redirect_to("/collections")
       end
-    end
 
-    describe "GET /collections/new", :as_contributor do
-      it "Shows the new collection form" do
-        get "/collections/new"
-        expect(response).to have_http_status(:success)
+      it "denies viewer permission", :as_viewer do
+        expect { post "/collections", params: {collection: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
-    describe "GET /collections/:id/edit", :as_editor do
-      it "Shows the new collection form" do
+    describe "GET /collections/new" do
+      it "Shows the new collection form", :as_contributor do
+        get "/collections/new"
+        expect(response).to have_http_status(:success)
+      end
+
+      it "denies viewer permission", :as_viewer do
+        expect { get "/collections/new" }.to raise_error(Pundit::NotAuthorizedError)
+      end
+    end
+
+    describe "GET /collections/:id/edit" do
+      it "Shows the new collection form", :as_editor do
         get "/collections/#{collection.id}/edit"
         expect(response).to have_http_status(:success)
+      end
+
+      it "is denied to non-editors", :as_contributor do
+        expect { get "/collections/#{collection.id}/edit" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
@@ -61,17 +73,25 @@ RSpec.describe "Collections" do
       end
     end
 
-    describe "PATCH /collections/:id", :as_editor do
-      it "saves details" do
+    describe "PATCH /collections/:id" do
+      it "saves details", :as_editor do
         patch "/collections/#{collection.id}", params: {collection: {name: "newname"}}
         expect(response).to redirect_to("/collections")
       end
+
+      it "is denied to non-editors", :as_contributor do
+        expect { patch "/collections/#{collection.id}", params: {collection: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
+      end
     end
 
-    describe "DELETE /collections/:id", :as_editor do
-      it "removes collection" do
+    describe "DELETE /collections/:id" do
+      it "removes collection", :as_editor do
         delete "/collections/#{collection.id}"
         expect(response).to redirect_to("/collections")
+      end
+
+      it "is denied to non-editors", :as_contributor do
+        expect { delete "/collections/#{collection.id}" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
   end
