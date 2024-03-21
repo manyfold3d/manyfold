@@ -7,5 +7,13 @@ FactoryBot.define do
     factory :admin do
       after(:create) { |a| a.add_role :administrator }
     end
+
+    factory :editor do
+      after(:create) { |a| a.add_role :editor }
+    end
+
+    factory :contributor do
+      after(:create) { |a| a.add_role :contributor }
+    end
   end
 end

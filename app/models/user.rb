@@ -24,10 +24,26 @@ class User < ApplicationRecord
   end
 
   def is_administrator?
-    has_role? :administrator
+    has_any_role_of? :administrator
+  end
+
+  def is_editor?
+    has_any_role_of? :administrator, :editor
+  end
+
+  def is_contributor?
+    has_any_role_of? :administrator, :editor, :contributor
+  end
+
+  def is_viewer?
+    has_any_role_of? :administrator, :editor, :contributor, :viewer
   end
 
   private
+
+  def has_any_role_of?(*args)
+    args.map { |x| has_role? x }.any?
+  end
 
   def assign_default_role
     add_role(:viewer) if roles.blank?
