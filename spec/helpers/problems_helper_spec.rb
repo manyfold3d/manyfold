@@ -1,12 +1,8 @@
 require "rails_helper"
 
-RSpec.describe ProblemsHelper do
+RSpec.describe ProblemsHelper, :as_viewer do
   include Devise::Test::ControllerHelpers
   let(:model) { create(:model) }
-
-  before do
-    sign_in create(:user)
-  end
 
   it "converts a problem to a severity level" do
     expect(helper.problem_severity(

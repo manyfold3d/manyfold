@@ -29,11 +29,7 @@ RSpec.describe "Users::Sessions" do
       end
     end
 
-    context "when signed in" do
-      before { sign_in admin }
-
-      let(:admin) { create(:admin) }
-
+    context "when signed in", :as_viewer do
       describe "GET /users/sign_in" do
         it "redirects to root" do
           get "/users/sign_in"
@@ -67,11 +63,7 @@ RSpec.describe "Users::Sessions" do
       end
     end
 
-    context "when signed in" do
-      before { sign_in admin }
-
-      let(:admin) { create(:admin) }
-
+    context "when signed in", :as_viewer do
       describe "GET /users/sign_in" do
         it "redirects to root" do
           get "/users/sign_in"

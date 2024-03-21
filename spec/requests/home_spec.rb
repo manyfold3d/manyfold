@@ -8,17 +8,13 @@ RSpec.describe "Home" do
   end
 
   context "when signed in" do
-    before do
-      sign_in create(:user)
-    end
-
     describe "GET /" do
-      it "redirects to library creation if there isn't one already" do
+      it "redirects to library creation if there isn't one already", :as_viewer do
         get "/"
         expect(response).to redirect_to("/libraries/new")
       end
 
-      it "shows the homepage if a library has been created" do
+      it "shows the homepage if a library has been created", :as_viewer do
         create(:library)
         get "/"
         expect(response).to have_http_status(:success)
