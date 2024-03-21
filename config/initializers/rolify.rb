@@ -10,4 +10,6 @@ Rails.application.config.after_initialize do
   Role::ROLES.each do |r|
     Role.find_or_create_by name: r
   end
+rescue ActiveRecord::StatementInvalid
+  # Not migrated yet
 end
