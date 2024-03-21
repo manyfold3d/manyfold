@@ -1,18 +1,27 @@
 class LibraryPolicy < ApplicationPolicy
   def create?
-    !Flipper.enabled?(:demo_mode) && user&.is_administrator?
+    all_of(
+      user&.is_administrator?,
+      none_of(
+        Flipper.enabled?(:demo_mode)
+      )
+    )
   end
 
   def update?
-    !Flipper.enabled?(:demo_mode) && user&.is_administrator?
+    create?
   end
 
   def destroy?
-    !Flipper.enabled?(:demo_mode) && user&.is_administrator?
+    create?
   end
 
   def scan?
     user&.is_contributor?
+  end
+
+  def scan_all?
+    scan?
   end
 
   class Scope

@@ -1,10 +1,8 @@
 class LibrariesController < ApplicationController
   before_action :get_library, except: [:index, :new, :create, :scan_all]
-  after_action :verify_authorized, only: [:index]
   skip_after_action :verify_policy_scoped, only: [:index]
 
   def index
-    authorize Library
     if Library.count === 0
       redirect_to new_library_path
     else
@@ -17,6 +15,7 @@ class LibrariesController < ApplicationController
   end
 
   def new
+    authorize Library
     @library = Library.new
     @title = t("libraries.general.new")
   end
@@ -25,6 +24,7 @@ class LibrariesController < ApplicationController
   end
 
   def create
+    authorize Library
     @library = Library.create(library_params)
     @library.tag_regex = params[:tag_regex]
     if @library.valid?
@@ -54,6 +54,7 @@ class LibrariesController < ApplicationController
   end
 
   def scan_all
+    authorize Library
     if params[:type] === "check"
       Scan::CheckAllJob.perform_later
     else
