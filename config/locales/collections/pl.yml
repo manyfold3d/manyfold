@@ -13,7 +13,7 @@ pl:
     get_collection:
       unknown: Nieznany
     index:
-      actions_heading:
+      actions_heading: Akcje
       view_unassigned_models: Wyświetl nieprzypisane
     update:
       success: Szczegóły kolekcji zostały zapisane.

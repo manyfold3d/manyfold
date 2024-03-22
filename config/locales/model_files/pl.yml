@@ -9,7 +9,7 @@ pl:
     general:
       edit: Edytuj informacje o pliku
     show:
-      actions_heading:
+      actions_heading: Akcje
       details_heading: Szczegóły
       notes_heading: Notatki
     update:
