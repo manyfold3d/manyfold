@@ -12,7 +12,6 @@ if Rails.env.development?
       "activerecord.errors.messages.restrict_dependent_destroy",
       "formtastic",
       "ransack",
-      "devise",
       # Other things we don't want to translate or don't know what they are
       "i18n_tasks",
       "number",
