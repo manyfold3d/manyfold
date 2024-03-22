@@ -2,7 +2,6 @@
 en:
   active_admin:
     dashboard: Dashboard
-    demo_mode: not available in demo mode
     exit: Exit admin interface
     jobs:
       delete_all:

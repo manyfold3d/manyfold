@@ -57,12 +57,13 @@ module ApplicationHelper
   def text_input_row(form, name, options = {})
     content_tag :div, class: "row mb-3 input-group" do
       safe_join [
-        form.label(name, class: "col-sm-2 col-form-label"),
+        form.label(name, class: "col-auto col-form-label"),
         content_tag(:div, class: "col p-0") do
           safe_join [
             form.text_field(name, {class: "form-control"}.merge(options)),
-            errors_for(form.object, name)
-          ]
+            errors_for(form.object, name),
+            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+          ].compact
         end
       ]
     end
@@ -71,12 +72,13 @@ module ApplicationHelper
   def password_input_row(form, name, options = {})
     content_tag :div, class: "row mb-3 input-group" do
       safe_join [
-        form.label(name, class: "col-sm-2 col-form-label"),
+        form.label(name, class: "col-auto col-form-label"),
         content_tag(:div, class: "col p-0") do
           safe_join [
             form.password_field(name, {class: "form-control"}.merge(options)),
-            errors_for(form.object, name)
-          ]
+            errors_for(form.object, name),
+            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+          ].compact
         end
       ]
     end
@@ -85,7 +87,7 @@ module ApplicationHelper
   def rich_text_input_row(form, name)
     content_tag :div, class: "row mb-3 input-group" do
       safe_join [
-        form.label(name, class: "col-sm-2 col-form-label"),
+        form.label(name, class: "col-auto col-form-label"),
         form.text_area(name, class: "form-control col-auto")
       ]
     end
