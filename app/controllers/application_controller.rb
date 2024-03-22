@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index, unless: :active_admin_controller?
 
   before_action :authenticate_user!
+  before_action :check_for_first_use
   before_action :check_scan_status
   before_action :remember_ordering
 
@@ -14,6 +15,10 @@ class ApplicationController < ActionController::Base
   def authenticate_admin_user!
     authenticate_user!
     render plain: "401 Unauthorized", status: :unauthorized unless current_user.is_administrator?
+  end
+
+  def check_for_first_use
+    redirect_to("/users/edit") if current_user&.reset_password_token == "first_use"
   end
 
   def check_scan_status
