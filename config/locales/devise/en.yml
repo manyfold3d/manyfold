@@ -39,9 +39,14 @@ en:
     registrations:
       edit:
         are_you_sure: Are you sure?
-        cancel_my_account: Cancel my account
-        currently_waiting_confirmation_for_email: 'Currently waiting confirmation for: %{email}'
-        title: Edit %{resource}
+        cancel_my_account: Delete my account
+        contact_info: Contact information
+        current_password_help: Current password required for security
+        currently_waiting_confirmation_for_email: 'Awaiting confirmation for: %{email}'
+        danger_zone: Danger zone!
+        security: Security
+        submit: Save changes
+        title: Account settings
       new:
         sign_up: Sign up
     sessions:
@@ -56,8 +61,8 @@ en:
         sign_in_with_provider: Sign in with %{provider}
         sign_up: Sign up
       minimum_password_length:
-        one: "(%{count} character minimum)"
-        other: "(%{count} characters minimum)"
+        one: At least %{count} character
+        other: At least %{count} characters
     unlocks:
       new:
         resend_unlock_instructions: Resend unlock instructions

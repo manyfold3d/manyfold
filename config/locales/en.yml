@@ -64,7 +64,7 @@ en:
         last_sign_in_ip: Last sign in IP
         locked_at: Locked at
         password: Password
-        password_confirmation: Password confirmation
+        password_confirmation: Confirm password
         remember_created_at: Remember created at
         remember_me: Remember me
         reset_password_sent_at: Reset password sent at

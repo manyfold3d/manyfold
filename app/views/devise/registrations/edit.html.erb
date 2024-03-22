@@ -18,7 +18,7 @@
     </div>
     <div class="col-12 col-sm">
       <div class="card mb-2">
-        <h4 class="card-header"><%= t(".contacts") %></h4>
+        <h4 class="card-header"><%= t(".contact_info") %></h4>
         <div class="card-body">
           <%= text_input_row f, :email, autofocus: true, autocomplete: "email",
             help: (devise_mapping.confirmable? && resource.pending_reconfirmation?) ?
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="card border-danger mt-3">
-        <h4 class="card-header text-bg-danger"><%= t ".danger-zone" %></h4>
+        <h4 class="card-header text-bg-danger"><%= t ".danger_zone" %></h4>
         <div class="card-body">
           <p class="card-text">
             <%= button_to t(".cancel_my_account"),
