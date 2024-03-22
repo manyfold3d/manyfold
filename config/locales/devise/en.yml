@@ -41,11 +41,7 @@ en:
         are_you_sure: Are you sure?
         cancel_my_account: Cancel my account
         currently_waiting_confirmation_for_email: 'Currently waiting confirmation for: %{email}'
-        leave_blank_if_you_don_t_want_to_change_it: leave blank if you don't want to change it
         title: Edit %{resource}
-        unhappy: Unhappy?
-        update: Update
-        we_need_your_current_password_to_confirm_your_changes: we need your current password to confirm your changes
       new:
         sign_up: Sign up
     sessions:
@@ -53,7 +49,6 @@ en:
         sign_in: Log in
     shared:
       links:
-        back: Back
         didn_t_receive_confirmation_instructions: Didn't receive confirmation instructions?
         didn_t_receive_unlock_instructions: Didn't receive unlock instructions?
         forgot_your_password: Forgot your password?
