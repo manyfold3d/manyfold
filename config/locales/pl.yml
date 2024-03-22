@@ -82,12 +82,12 @@ pl:
         model:
           attributes:
             library:
-              nested:
+              nested: nie można zmienić, model zawiera inne modele
             license:
               invalid_spdx: nie jest poprawną licencją
             path:
               destination_exists: już istnieje
-              nested:
+              nested: nie można zmienić, model zawiera inne modele
         model_file:
           attributes:
             presupported_version:
@@ -111,7 +111,7 @@ pl:
       sort:
         name: Sortuj według nazwy
         time: Sortuj według czasu
-    demo_mode:
+    demo_mode: Ta instancja jest w trybie demonstracyjnym. Nie możesz dodawać ani usuwać modeli, ale możesz robić wszystko inne.
     filters_card:
       missing_tags: Brakujące tagi
       remove_filter: Usuń filtr
@@ -135,8 +135,8 @@ pl:
       add: dodaj kolejny link
     navbar:
       check_existing: Sprawdź istniejące modele
-      log_in:
-      log_out:
+      log_in: Zaloguj się
+      log_out: Wyloguj się
       navbar:
         toggler:
           label: Przełącz nawigację

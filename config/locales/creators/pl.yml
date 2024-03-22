@@ -11,7 +11,7 @@ pl:
     get_creator:
       unknown: Nieznany
     index:
-      actions_heading:
+      actions_heading: Akcje
       view_unassigned: Wyświetl nieprzypisane
     update:
       success: Szczegóły twórcy zostały zapisane.
