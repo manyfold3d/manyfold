@@ -46,7 +46,8 @@ class Users::SessionsController < Devise::SessionsController
       username: SecureRandom.hex(4),
       email: "root@localhost",
       password:,
-      password_confirmation: password
+      password_confirmation: password,
+      reset_password_token: "first_use"
     )
     u.add_role :administrator
     u
