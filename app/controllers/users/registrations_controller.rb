@@ -2,6 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
+  before_action :detect_if_first_use, only: [:edit, :update]
   # before_action :configure_account_update_params, only: [:update]
   skip_before_action :check_for_first_use, only: [:edit, :update]
 
@@ -49,6 +50,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+  end
+
+  def detect_if_first_use
+    if current_user.reset_password_token == "first_use"
+      @first_use = true
+      devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+    end
   end
 
   # The path used after sign up.
