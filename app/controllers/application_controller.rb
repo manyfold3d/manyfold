@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_for_first_use
-    redirect_to("/users/edit") if current_user&.reset_password_token == "first_use"
+    redirect_to(edit_user_registration_path) if current_user&.reset_password_token == "first_use"
   end
 
   def check_scan_status
