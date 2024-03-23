@@ -47,8 +47,17 @@ en:
         security: Security
         submit: Save changes
         title: Account settings
+      first_use:
+        email_help: Never shown publicly; only used for login and account security emails.
+        guidance: On first use, you need to set a username, contact email and password for the main administrator user. If you're running single-user mode, you will not normally need to enter these details to log in, but in multiuser mode you will not be able to access Manyfold without them.
+        submit: Save
+        title: Setup
+        username_help: A unique username; use the pregenerated one, or choose your own.
+
       new:
         sign_up: Sign up
+      update:
+        setup_complete: Setup complete!
     sessions:
       new:
         sign_in: Log in

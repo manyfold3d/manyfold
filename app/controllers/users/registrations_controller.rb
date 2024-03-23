@@ -15,7 +15,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
     authorize current_user
-    super
+    if @first_use
+      render "first_use"
+    else
+      super
+    end
   end
 
   # POST /users
@@ -27,7 +31,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     authorize current_user
-    super
+    if @first_use
+      if current_user.update(account_update_params.merge(reset_password_token: nil))
+        sign_in(current_user, bypass: true)
+        redirect_to root_path, notice: t("devise.registrations.update.setup_complete")
+      else
+        render "first_use"
+      end
+    else
+      super
+    end
   end
 
   # DELETE /resource
