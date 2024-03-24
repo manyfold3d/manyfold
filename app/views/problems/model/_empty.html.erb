@@ -1,4 +1,4 @@
 <td><%= icon("folder-x", t(".title")) %></td>
 <td><%= link_to problem.problematic.name, [problem.problematic.library, problem.problematic] %></td>
 <td><%= t ".title" %></td>
-<td><%= link_to "Purge", [problem.problematic.library, problem.problematic], method: :delete, class: "btn btn-danger" %></td>
+<td><%= link_to "Purge", [problem.problematic.library, problem.problematic], method: :delete, class: "btn btn-danger" if policy(problem.problematic).destroy? %></td>

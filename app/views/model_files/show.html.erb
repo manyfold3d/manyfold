@@ -55,8 +55,8 @@
           <code><%= number_to_human_size @file.size, precision: 2 %></code>
         </p>
       <% end %>
-      <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_library_model_model_file_path(@library, @model, @file), class: "btn btn-primary" %>
-      <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), library_model_model_file_path(@library, @model, @file), {method: "delete", data: {confirm: t("model_files.destroy.confirm")}, class: "btn btn-outline-danger"} %>
+      <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_library_model_model_file_path(@library, @model, @file), class: "btn btn-primary" if policy(@file).edit? %>
+      <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), library_model_model_file_path(@library, @model, @file), {method: "delete", data: {confirm: t("model_files.destroy.confirm")}, class: "btn btn-outline-danger"} if policy(@file).destroy? %>
     <% end %>
 
     <%= render partial: "problem", collection: @file.problems.visible(current_user.problem_settings) %>

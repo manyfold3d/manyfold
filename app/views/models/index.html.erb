@@ -16,7 +16,7 @@
 
 <% content_for :sidebar do %>
   <%= card :secondary, t(".actions_heading") do %>
-    <%= link_to t(".bulk_edit"), edit_models_path(@filters), class: "btn btn-secondary mb-3 me-3" %>
+    <%= link_to t(".bulk_edit"), edit_models_path(@filters), class: "btn btn-secondary mb-3 me-3" if policy(:model).edit? %>
     <% if current_user.tag_cloud_settings["heatmap"] && Model.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1").count > 0 %>
       <%= link_to t(".untagged"), models_path(tag: [""]), class: "btn btn-secondary mb-3 me-3" %>
     <% end %>

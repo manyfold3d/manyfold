@@ -34,9 +34,9 @@
         </ul>
       </div>
       <div>
-        <%= link_to pluralize(collection.models.count, t("activerecord.models.model")), {controller: "models", collection: collection.id}, class: "btn btn-primary" %>
-        <%= link_to(pluralize(collection.collections.count, t("activerecord.models.collection")), (@filters || {}).merge(controller: "collections", collection: collection.id), class: "btn btn-primary") if collection.collections.count > 0 %>
-        <%= link_to t("general.edit"), edit_collection_path(collection), {class: "btn btn-outline-secondary"} %>
+        <%= link_to pluralize(collection.models.count, t("activerecord.models.model")), {controller: "models", collection: collection.id}, class: "btn btn-primary" if policy(collection).show? %>
+        <%= link_to(pluralize(collection.collections.count, t("activerecord.models.collection")), (@filters || {}).merge(controller: "collections", collection: collection.id), class: "btn btn-primary") if collection.collections.count > 0 && policy(collection).show? %>
+        <%= link_to t("general.edit"), edit_collection_path(collection), {class: "btn btn-outline-secondary"} if policy(collection).edit? %>
       </div>
     </div>
   </div>
