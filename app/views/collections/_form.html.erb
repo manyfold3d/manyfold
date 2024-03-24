@@ -3,7 +3,7 @@
   <div class="row mb-3 input-group">
     <%= form.label :collection_id, class: "col-sm-2 col-form-label" %>
     <%= form.collection_select :collection_id, @collections, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
-    <%= link_to t("collections.general.new"), new_collection_path, class: "btn btn-outline-secondary col-auto" %>
+    <%= link_to t("collections.general.new"), new_collection_path, class: "btn btn-outline-secondary col-auto" if policy(:collection).new? %>
   </div>
   <%= render "links_form", form: form %>
   <%= text_input_row form, :caption %>
@@ -14,7 +14,7 @@
     </div>
     <% if @collection.persisted? %>
       <div class='col text-end'>
-        <%= link_to t("general.delete"), collection_path(@collection), {method: :delete, class: "btn btn-outline-danger"} %>
+        <%= link_to t("general.delete"), collection_path(@collection), {method: :delete, class: "btn btn-outline-danger"} if policy(@collection).destroy? %>
       </div>
     <% end %>
   </div>

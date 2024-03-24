@@ -9,7 +9,7 @@
     </div>
     <% if @creator.persisted? %>
       <div class='col text-end'>
-        <%= link_to t("general.delete"), creator_path(@creator), {method: :delete, class: "btn btn-outline-danger"} %>
+        <%= link_to t("general.delete"), creator_path(@creator), {method: :delete, class: "btn btn-outline-danger"} if policy(@creator).destroy? %>
       </div>
     <% end %>
   </div>

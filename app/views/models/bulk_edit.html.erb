@@ -35,7 +35,7 @@
     <div class="col-sm-10">
       <div class="input-group">
         <%= form.collection_select :creator_id, @creators, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
-        <%= link_to "New Creator", new_creator_path, class: "btn btn-outline-secondary col-auto" %>
+        <%= link_to "New Creator", new_creator_path, class: "btn btn-outline-secondary col-auto" if policy(:creator).new? %>
       </div>
     </div>
   </div>
@@ -62,7 +62,7 @@
     <div class="col-sm-10">
       <div class="input-group">
         <%= form.collection_select :collection_id, @collections, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
-        <%= link_to "New Collection", new_collection_path, class: "btn btn-outline-secondary col-auto" %>
+        <%= link_to "New Collection", new_collection_path, class: "btn btn-outline-secondary col-auto" if policy(:collection).new? %>
       </div>
     </div>
   </div>
