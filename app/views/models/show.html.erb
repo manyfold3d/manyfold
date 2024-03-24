@@ -71,7 +71,7 @@
     <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), library_model_path(@library, @model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: t("models.destroy.confirm")}} if policy(@model).destroy? %>
   <% end %>
 
-  <% unless @model.parents.empty? %>
+  <% if !@model.parents.empty? && policy(@model).merge? %>
     <%= card :danger, t(".merge.heading") do %>
       <p>
         <%= t(".merge.warning") %>

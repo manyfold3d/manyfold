@@ -1,16 +1,18 @@
-<%= card(problem_severity(problem), t("problems.model.%{cat}.title" % {cat: problem.category})) do %>
-  <%= t(("problems.model.%{cat}.description" % {cat: problem.category}), note: problem.note) %>
+<% if policy(@model).merge? %>
+  <%= card(problem_severity(problem), t("problems.model.%{cat}.title" % {cat: problem.category})) do %>
+    <%= t(("problems.model.%{cat}.description" % {cat: problem.category}), note: problem.note) %>
 
-  <% if @model.contains_other_models? %>
-    <ul>
-      <% @model.contained_models.each do |target| %>
-        <li><%= link_to target.name, library_model_path(@library, target) %></li>
-      <% end %>
-    </ul>
-    <p>
-      <%= t("problems.model.nesting.warning") %>
-    </p>
-    <%= link_to t(".merge_all"), merge_library_model_path(@library, @model, all: true), class: "btn btn-danger", method: :post %>
+    <% if @model.contains_other_models? %>
+      <ul>
+        <% @model.contained_models.each do |target| %>
+          <li><%= link_to target.name, library_model_path(@library, target) %></li>
+        <% end %>
+      </ul>
+      <p>
+        <%= t("problems.model.nesting.warning") %>
+      </p>
+      <%= link_to t(".merge_all"), merge_library_model_path(@library, @model, all: true), class: "btn btn-danger", method: :post %>
+    <% end %>
+
   <% end %>
-
 <% end %>
