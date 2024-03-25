@@ -1,0 +1,16 @@
+<div class="card">
+  <h3 class="card-header"><%= t(".heading") %></h3>
+  <div class="card-body">
+    <p class='lead'>
+      <%= Flipper.enabled?(:multiuser) ? t(".multiuser_mode") : t(".single_user_mode") %>
+    </p>
+    <% if Flipper.enabled?(:multiuser) %>
+      <p>
+        <%= Flipper.enabled?(:multiuser) ? t(".registrations_open") : t(".registrations_closed") %>
+      </p>
+    <% end %>
+    <p>
+      <%= t(".details_html") %>
+    </p>
+  </div>
+</div>
