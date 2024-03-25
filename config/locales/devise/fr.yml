@@ -67,23 +67,31 @@ fr:
       edit:
         are_you_sure: Êtes-vous sûr ?
         cancel_my_account: Supprimer mon compte
-        contact_info:
-        current_password_help:
+        contact_info: Informations de contact
+        current_password_help: Mot de passe actuel requis pour la sécurité
         currently_waiting_confirmation_for_email: 'Confirmation en attente pour: %{email}'
-        danger_zone:
+        danger_zone: Zone de danger !
         leave_blank_if_you_don_t_want_to_change_it: laissez ce champ vide pour le laisser inchangé
-        security:
-        submit:
+        security: Sécurité
+        submit: Enregistrer les modifications
         title: Éditer %{resource}
         unhappy: Pas content ?
         update: Modifier
         we_need_your_current_password_to_confirm_your_changes: nous avons besoin de votre mot de passe actuel pour valider ces modifications
+      first_use:
+        email_help: Jamais affiché publiquement ; utilisé uniquement pour se connecter et les mails de sécurité du compte.
+        guidance: Lors de la première utilisation, vous devez définir un nom d'utilisateur, une adresse mail de contact et un mot de passe pour l'administrateur principal. Si vous travaillez en mode mono-utilisateur, vous n'aurez normalement pas besoin d'entrer ces informations pour vous connecter, mais en mode multi-utilisateur, vous ne pourrez pas accéder à Manyfold sans ces informations.
+        submit: Sauvegarder
+        title: Installation
+        username_help: Un nom d'utilisateur unique ; utilisez le nom prédéfini ou choisissez le vôtre.
       new:
         sign_up: Inscription
       signed_up: Bienvenue ! Vous vous êtes bien enregistré(e).
       signed_up_but_inactive: Vous vous êtes bien enregistré(e). Cependant, nous n’avons pas pu vous connecter car votre compte n’a pas encore été activé.
       signed_up_but_locked: Vous vous êtes bien enregistré(e). Cependant, nous n’avons pas pu vous connecter car votre compte est verrouillé.
       signed_up_but_unconfirmed: Un message avec un lien de confirmation vous a été envoyé par mail. Veuillez suivre ce lien pour activer votre compte.
+      update:
+        setup_complete: Installation terminée !
       update_needs_confirmation: Vous avez bien modifié votre compte, mais nous devons vérifier votre nouvelle adresse email. Veuillez consulter vos emails et cliquer sur le lien de confirmation pour confirmer votre nouvelle adresse.
       updated: Votre compte a bien été modifié.
       updated_but_not_signed_in: Votre compte a été mis à jour avec succès. Vous devez vous reconnecter car votre mot de passe a été modifié.
