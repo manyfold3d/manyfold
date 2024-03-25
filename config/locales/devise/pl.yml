@@ -43,7 +43,7 @@ pl:
         action: Odblokuj moje konto
         greeting: Cześć %{recipient}!
         instruction: 'Kliknij poniższy link, aby odblokować swoje konto:'
-        message: Twoje konto zostało zablokowane z powodu zbyt dużej liczby nieprawidłowych prób zalogowania się na nie.
+        message: Twoje konto zostało zablokowane z powodu zbyt dużej liczby nieudanych prób logowania.
         subject: Instrukcja odblokowania konta
     omniauth_callbacks:
       failure: Logowanie przez konto %{kind} zakończyło się błędem z powodu "%{reason}".
@@ -61,29 +61,37 @@ pl:
       send_instructions: Instrukcja zmiany hasła zostanie niezwłocznie wysłana na podany adres e-mail.
       send_paranoid_instructions: Jeśli Twój adres e-mail istnieje w naszej bazie, otrzymasz zaraz wiadomość z instrukcjami odzyskiwania hasła.
       updated: Hasło zmienione poprawnie. Zostałeś automatycznie zalogowany.
-      updated_not_active: Twoje hasło zmienione poprawnie.
+      updated_not_active: Hasło zostało pomyślnie zmienione.
     registrations:
       destroyed: Twoje konto zostało usunięte.
       edit:
         are_you_sure: Jesteś pewny?
-        cancel_my_account: Anuluj moje konto
-        contact_info:
-        current_password_help:
-        currently_waiting_confirmation_for_email: 'Aktualnie oczekujemy na potwierdzenie z: %{email}'
-        danger_zone:
+        cancel_my_account: Usuń moje konto
+        contact_info: Informacje kontaktowe
+        current_password_help: Aktualne hasło wymagane dla bezpieczeństwa
+        currently_waiting_confirmation_for_email: 'Oczekujemy na potwierdzenie dla: %{email}'
+        danger_zone: Strefa zagrożenia!
         leave_blank_if_you_don_t_want_to_change_it: pozostaw puste, jeśli nie chcesz wprowadzać zmian
-        security:
-        submit:
-        title: Edytuj %{resource}
-        unhappy: Niezadowolony
+        security: Bezpieczeństwo
+        submit: Zapisz zmiany
+        title: Ustawienia konta
+        unhappy: Niezadowolony?
         update: Aktualizuj
         we_need_your_current_password_to_confirm_your_changes: potrzebujemy Twojego bieżącego hasła, aby potwierdzić zmiany
+      first_use:
+        email_help: Nigdy nie pokazywany publicznie; używany tylko do logowania i wiadomości e-mail dotyczących bezpieczeństwa konta.
+        guidance: Przy pierwszym użyciu należy ustawić nazwę użytkownika, kontaktowy adres e-mail i hasło dla głównego użytkownika administratora. Jeśli korzystasz z trybu pojedynczego użytkownika, zwykle nie będziesz musiał wprowadzać tych danych, aby się zalogować, ale w trybie wielu użytkowników nie będziesz mógł uzyskać dostępu do Manyfold bez nich.
+        submit: Zapisz
+        title: Konfiguracja
+        username_help: Unikalna nazwa użytkownika; użyj wstępnie wygenerowanej lub wybierz własną.
       new:
         sign_up: Zarejestruj się
       signed_up: Witaj! Rejestracja zakończyła się pomyślnie.
       signed_up_but_inactive: Konto zostało utworzone pomyślnie. Zanim się jednak zalogujesz, musi ono zostać jeszcze aktywowane.
       signed_up_but_locked: Konto zostało utworzone pomyślnie. Nie możesz się jednak zalogować, ponieważ jest ono zablokowane.
       signed_up_but_unconfirmed: Wiadomość z linkiem aktywacyjnym została wysłana na podany adres e-mail. Otwórz link w celu aktywacji konta.
+      update:
+        setup_complete: Konfiguracja zakończona!
       update_needs_confirmation: Konto zostało zaktualizowane, musimy jednak potwierdzić nowy adres e-mail. Sprawdź swoją skrzynkę pocztową i otwórz link aktywacyjny, aby ukończyć zmianę adresu.
       updated: Konto zostało pomyślnie zaktualizowane.
       updated_but_not_signed_in: Twoje konto zostało pomyślnie zaktualizowane, ale ponieważ hasło zostało zmienione, musisz się ponownie zalogować
@@ -103,8 +111,8 @@ pl:
         sign_in_with_provider: Zaloguj się przez %{provider}
         sign_up: Zarejestruj się
       minimum_password_length:
-        one: "(minimum %{count} znak)"
-        other: "(minimum %{count} znaku)"
+        one: Co najmniej %{count} znak
+        other: Co najmniej %{count} znaków
     unlocks:
       new:
         resend_unlock_instructions: Wyślij instrukcje odblokowania konta

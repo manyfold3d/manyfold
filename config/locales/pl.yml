@@ -61,10 +61,10 @@ pl:
         encrypted_password: Zaszyfrowane hasło
         failed_attempts: Nieudanych prób
         last_sign_in_at: Data ostatniego logowania
-        last_sign_in_ip: Ostatni adres IP
+        last_sign_in_ip: Adres IP ostatniego logowania
         locked_at: Data zablokowania
         password: Hasło
-        password_confirmation: Potwierdzenie hasła
+        password_confirmation: Potwierdź hasło
         remember_created_at: Data utworzenia zapamiętania logowania
         remember_me: Zapamiętaj mnie
         reset_password_sent_at: Data wysłania żądania resetu hasła

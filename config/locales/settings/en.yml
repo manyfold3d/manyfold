@@ -49,7 +49,8 @@ en:
       details_html: To change these settings, edit the server's <a href='https://manyfold.app/sysadmin/configuration.html'>environment variables</a> and restart.
       heading: Multiuser
       multiuser_mode: Manyfold is running in multiuser mode.
-      registrations_open: User signup is disabled.
+      registrations_closed: User signup is disabled.
+      registrations_open: User signup is enabled.
       single_user_mode: Manyfold is running in single user mode.
     pagination_settings:
       collections:

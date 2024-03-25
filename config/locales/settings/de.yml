@@ -45,6 +45,13 @@ de:
         help: Suche nach Modellen, die diese Regex erfüllen.
         label: Erforderliche Tags
         search_missing:
+    multiuser_settings:
+      details_html:
+      heading:
+      multiuser_mode:
+      registrations_closed:
+      registrations_open:
+      single_user_mode:
     pagination_settings:
       collections:
         label: Kollektionen paginieren
