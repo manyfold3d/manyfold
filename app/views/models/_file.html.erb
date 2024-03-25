@@ -19,9 +19,11 @@
         <div class="col">
           <%= link_to t(".open"), library_model_model_file_path(@library, @model, file), {class: "btn btn-primary"} %>
           <%= link_to icon("cloud-download", t("general.download")), library_model_model_file_path(@library, @model, file, file.extension.to_sym), {class: "btn btn-secondary"} %>
-          <%= form_with model: [@library, @model], class: "d-inline" do |form| %>
-            <%= form.hidden_field :preview_file_id, value: file.id %>
-            <%= form.button icon("bookmark-heart", t(".set_as_preview")), class: "btn btn-secondary #{(file == @model.preview_file) ? "disabled" : ""}" %>
+          <% if policy(@model).edit? %>
+            <%= form_with model: [@library, @model], class: "d-inline" do |form| %>
+              <%= form.hidden_field :preview_file_id, value: file.id %>
+              <%= form.button icon("bookmark-heart", t(".set_as_preview")), class: "btn btn-secondary #{(file == @model.preview_file) ? "disabled" : ""}" %>
+            <% end %>
           <% end %>
         </div>
         <div class="col col-auto">
