@@ -53,7 +53,6 @@ en:
         submit: Save
         title: Setup
         username_help: A unique username; use the pregenerated one, or choose your own.
-
       new:
         sign_up: Sign up
       update:

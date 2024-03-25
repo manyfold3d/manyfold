@@ -45,6 +45,12 @@ en:
         help: Check for models missing tags matching these regex.
         label: Required Tags
         search_missing: Search Missing
+    multiuser_settings:
+      details_html: To change these settings, edit the server's <a href='https://manyfold.app/sysadmin/configuration.html'>environment variables</a> and restart.
+      heading: Multiuser
+      multiuser_mode: Manyfold is running in multiuser mode.
+      registrations_open: User signup is disabled.
+      single_user_mode: Manyfold is running in single user mode.
     pagination_settings:
       collections:
         label: Paginate collections
