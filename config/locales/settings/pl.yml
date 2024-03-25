@@ -45,6 +45,13 @@ pl:
         help: Sprawdź modele pod kątem brakujących tagów pasujących do tego wyrażenia regularnego.
         label: Wymagane Tagi
         search_missing: Wyszukaj Brakujące
+    multiuser_settings:
+      details_html:
+      heading:
+      multiuser_mode:
+      registrations_closed:
+      registrations_open:
+      single_user_mode:
     pagination_settings:
       collections:
         label:

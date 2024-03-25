@@ -45,6 +45,13 @@ fr:
         help: Vérifier si les étiquettes des modèles manquant correspondent à cette expression régulière.
         label: Étiquettes requises
         search_missing: Recherche manquante
+    multiuser_settings:
+      details_html:
+      heading:
+      multiuser_mode:
+      registrations_closed:
+      registrations_open:
+      single_user_mode:
     pagination_settings:
       collections:
         label: Paginer les collections
