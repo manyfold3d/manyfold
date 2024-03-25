@@ -22,7 +22,7 @@
           <% if policy(@model).edit? %>
             <%= form_with model: [@library, @model], class: "d-inline" do |form| %>
               <%= form.hidden_field :preview_file_id, value: file.id %>
-              <%= form.button icon("bookmark-heart", t(".set_as_preview")), class: "btn btn-secondary #{(file == @model.preview_file) ? "disabled" : ""}" %>
+              <%= form.button icon("image", t(".set_as_preview")), data_bs_toggle: "button", class: "btn #{(file == @model.preview_file) ? "btn-outline-success active disabled" : "btn-outline-secondary"}" %>
             <% end %>
           <% end %>
         </div>
