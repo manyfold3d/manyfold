@@ -9,14 +9,18 @@ de:
       send_paranoid_instructions: Falls Ihre E-Mail-Adresse in unserer Datenbank existiert, erhalten Sie in wenigen Minuten eine E-Mail, mit der Sie Ihre Registrierung bestätigen können.
     failure:
       already_authenticated: Sie sind bereits angemeldet.
+      expired: Ihr Konto ist aufgrund zu langer Inaktivität abgelaufen. Bitte kontaktieren Sie den Administrator.
       inactive: Ihr Konto ist noch nicht aktiv.
       invalid: "%{authentication_keys} oder Passwort ungültig."
       last_attempt: Sie haben noch einen Versuch, bis Ihr Konto gesperrt wird.
       locked: Ihr Konto ist gesperrt.
       not_found_in_database: "%{authentication_keys} oder Passwort ungültig."
+      session_limited: Ihre Anmeldedaten wurden in einem anderen Browser genutzt. Bitte melden Sie sich erneut an, um in diesem Browser fortzufahren.
       timeout: Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.
       unauthenticated: Sie müssen sich anmelden oder registrieren, bevor Sie fortfahren können.
       unconfirmed: Sie müssen Ihr Konto bestätigen, bevor Sie fortfahren können.
+    invalid_captcha: Die Captcha-Eingabe ist nicht gültig.
+    invalid_security_question: Die Antwort auf die Sicherheitsfrage war ungültig.
     mailer:
       confirmation_instructions:
         action: Mein Konto bestätigen
@@ -48,6 +52,23 @@ de:
     omniauth_callbacks:
       failure: Sie konnten nicht mit Ihrem %{kind}-Konto angemeldet werden, weil "%{reason}".
       success: Sie haben sich erfolgreich mit Ihrem %{kind}-Konto angemeldet.
+    paranoid_verification_code:
+      show:
+        submit: Bestätigen
+        submit_verification_code: Bestätigungscode eingeben
+        verification_code: Bestätigungscode
+      updated: Bestätigungscode akzeptiert
+    paranoid_verify:
+      code_required: Bitte geben Sie den Code ein, den unser Support-Team zur Verfügung gestellt hat.
+    password_expired:
+      change_required: Ihr Passwort ist abgelaufen. Bitte vergeben Sie ein neues Passwort.
+      show:
+        change_my_password: Passwort ändern
+        current_password: Aktuelles Passwort
+        new_password: Neues Passwort
+        new_password_confirmation: Passwort bestätigen
+        renew_your_password: Vergeben Sie ein neues Passwort
+      updated: Das neue Passwort wurde übernommen.
     passwords:
       edit:
         change_my_password: Ändere mein Passwort

@@ -4,6 +4,11 @@ en:
     confirmations:
       new:
         resend_confirmation_instructions: Resend confirmation instructions
+    failure:
+      expired: Your account has expired due to inactivity. Please contact the site administrator.
+      session_limited: Your login credentials were used in another browser. Please sign in again to continue in this browser.
+    invalid_captcha: The captcha input was invalid.
+    invalid_security_question: The security question answer was invalid.
     mailer:
       confirmation_instructions:
         action: Confirm my account
@@ -27,6 +32,23 @@ en:
         greeting: Hello %{recipient}!
         instruction: 'Click the link below to unlock your account:'
         message: Your account has been locked due to an excessive number of unsuccessful sign in attempts.
+    paranoid_verification_code:
+      show:
+        submit: Submit
+        submit_verification_code: Submit verification code
+        verification_code: Verification code
+      updated: Verification code accepted
+    paranoid_verify:
+      code_required: Please enter the code our support team provided
+    password_expired:
+      change_required: Your password is expired. Please renew your password.
+      show:
+        change_my_password: Change my password
+        current_password: Current password
+        new_password: New password
+        new_password_confirmation: Confirm new password
+        renew_your_password: Renew your password
+      updated: Your new password is saved.
     passwords:
       edit:
         change_my_password: Change my password
