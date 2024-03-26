@@ -30,7 +30,7 @@
           <p class="card-text">
             <%= button_to t(".cancel_my_account"),
                   registration_path(resource_name),
-                  data: {confirm: t(".are_you_sure"), turbo_confirm: t(".are_you_sure")},
+                  data: {confirm: t(".confirm_deletion"), turbo_confirm: t(".confirm_deletion")},
                   method: :delete,
                   class: "btn btn-danger" %>
           </p>

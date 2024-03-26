@@ -65,7 +65,7 @@ pl:
     registrations:
       destroyed: Twoje konto zostało usunięte.
       edit:
-        are_you_sure: Jesteś pewny?
+        confirm_deletion: Jesteś pewny?
         cancel_my_account: Usuń moje konto
         contact_info: Informacje kontaktowe
         current_password_help: Aktualne hasło wymagane dla bezpieczeństwa
