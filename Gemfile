@@ -122,3 +122,5 @@ gem "flipper", "~> 1.2"
 gem "flipper-active_record", "~> 1.2"
 
 gem "rolify", "~> 6.0"
+
+gem "devise-security", "~> 0.18.0"

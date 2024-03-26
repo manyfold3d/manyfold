@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   rolify
-  devise :database_authenticatable, :registerable, :validatable
+  devise :database_authenticatable, :registerable, :secure_validatable
 
   acts_as_favoritor
 
@@ -8,6 +8,10 @@ class User < ApplicationRecord
     presence: true,
     uniqueness: {case_sensitive: false},
     format: {with: /\A[[:alnum:]]{3,}\z/}
+
+  validates :email,
+    presence: true,
+    uniqueness: {case_sensitive: false}
 
   after_create :assign_default_role
 

@@ -9,26 +9,28 @@ require "rails_helper"
 #                          POST   /users(.:format)                                                        users/registrations#create
 
 RSpec.describe "Users::Registrations" do
-  let!(:admin) { create(:admin, password: "password", password_confirmation: "password") }
+  let(:old_password) { Faker::Internet.password min_length: 6, mix_case: true, special_characters: true }
+  let(:new_password) { Faker::Internet.password min_length: 6, mix_case: true, special_characters: true }
+  let!(:admin) {
+    create(:admin, password: old_password)
+  }
   let(:post_options) {
-    password = Faker::Internet.password
     {
       user: {
         email: Faker::Internet.email,
         username: Faker::Internet.username(specifier: 3, separators: []),
-        password:,
-        password_confirmation: password
+        password: old_password,
+        password_confirmation: old_password
       }
     }
   }
   let(:patch_options) {
-    password = "newpassword"
     {
       user: {
         email: Faker::Internet.email,
-        password:,
-        password_confirmation: password,
-        current_password: "password"
+        password: new_password,
+        password_confirmation: new_password,
+        current_password: old_password
       }
     }
   }
@@ -114,7 +116,7 @@ RSpec.describe "Users::Registrations" do
         end
 
         it "updates password" do
-          expect(User.first.valid_password?("newpassword")).to be true
+          expect(User.first.valid_password?(new_password)).to be true
         end
       end
 
@@ -224,7 +226,7 @@ RSpec.describe "Users::Registrations" do
         end
 
         it "updates password" do
-          expect(User.first.valid_password?("newpassword")).to be true
+          expect(User.first.valid_password?(new_password)).to be true
         end
       end
 

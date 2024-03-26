@@ -21,7 +21,7 @@ data:
   # Locale files or `File.find` patterns where translations are read from:
   read:
     - config/locales/**/%{locale}.yml
-    - config/locales/devise.views.%{locale}.yml
+    - config/locales/devise.*.%{locale}.yml
     ## Read in translation.io synced files
     - config/locales/translation.%{locale}.yml
 
