@@ -65,8 +65,8 @@ fr:
     registrations:
       destroyed: Au revoir ! Votre compte a bien été supprimé. Nous espérons vous revoir bientôt.
       edit:
-        confirm_deletion: Êtes-vous sûr ?
         cancel_my_account: Supprimer mon compte
+        confirm_deletion: Êtes-vous sûr ?
         contact_info: Informations de contact
         current_password_help: Mot de passe actuel requis pour la sécurité
         currently_waiting_confirmation_for_email: 'Confirmation en attente pour: %{email}'

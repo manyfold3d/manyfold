@@ -28,7 +28,7 @@
         <h4 class="card-header text-bg-danger"><%= t ".danger_zone" %></h4>
         <div class="card-body">
           <p class="card-text">
-            <%= button_to t(".cancel_my_account"),
+            <%= link_to t(".cancel_my_account"),
                   registration_path(resource_name),
                   data: {confirm: t(".confirm_deletion"), turbo_confirm: t(".confirm_deletion")},
                   method: :delete,
