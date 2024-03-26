@@ -38,8 +38,8 @@ en:
         send_me_reset_password_instructions: Send me reset password instructions
     registrations:
       edit:
-        are_you_sure: Are you sure?
         cancel_my_account: Delete my account
+        confirm_deletion: Are you sure you want to delete your account?
         contact_info: Contact information
         current_password_help: Current password required for security
         currently_waiting_confirmation_for_email: 'Awaiting confirmation for: %{email}'

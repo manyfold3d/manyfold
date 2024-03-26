@@ -65,8 +65,8 @@ de:
     registrations:
       destroyed: Ihr Konto wurde gelöscht. Wir hoffen, dass wir Sie bald wiedersehen.
       edit:
-        are_you_sure: Sind Sie sicher?
         cancel_my_account: Konto löschen
+        confirm_deletion: Sind Sie sicher?
         contact_info:
         current_password_help:
         currently_waiting_confirmation_for_email: Warte auf Bestätigung von %{email}.
