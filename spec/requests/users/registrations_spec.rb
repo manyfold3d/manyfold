@@ -25,7 +25,6 @@ RSpec.describe "Users::Registrations" do
     }
   }
   let(:patch_options) {
-    password = "newpassword"
     {
       user: {
         email: Faker::Internet.email,
@@ -117,7 +116,7 @@ RSpec.describe "Users::Registrations" do
         end
 
         it "updates password" do
-          expect(User.first.valid_password?("newpassword")).to be true
+          expect(User.first.valid_password?(new_password)).to be true
         end
       end
 
@@ -227,7 +226,7 @@ RSpec.describe "Users::Registrations" do
         end
 
         it "updates password" do
-          expect(User.first.valid_password?("newpassword")).to be true
+          expect(User.first.valid_password?(new_password)).to be true
         end
       end
 
