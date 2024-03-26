@@ -28,7 +28,7 @@ RSpec.describe "Users::Registrations" do
     {
       user: {
         email: Faker::Internet.email,
-        password:,
+        password: new_password,
         password_confirmation: new_password,
         current_password: old_password
       }
