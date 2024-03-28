@@ -1,9 +1,9 @@
 module Mittsu
-  class Geometry
+  class Object3D
     def manifold?
       edges = {}
       # For each face, record its edges in the edge hash
-      @faces.each do |face|
+      geometry.faces.each do |face|
         update_edge_hash face.a, face.b, edges
         update_edge_hash face.b, face.c, edges
         update_edge_hash face.c, face.a, edges
