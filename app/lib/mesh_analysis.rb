@@ -24,10 +24,4 @@ module Mittsu
       edges["#{v1}->#{v2}"] = true
     end
   end
-
-  class BufferGeometry
-    def manifold?
-      true
-    end
-  end
 end

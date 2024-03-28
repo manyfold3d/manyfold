@@ -12,11 +12,4 @@ RSpec.describe "MeshAnalysis" do
     geometry.merge_vertices
     expect(geometry.manifold?).to be false
   end
-
-  it "detects buffergeometry meshes that are non-manifold" do
-    geometry = Mittsu::PlaneBufferGeometry.new(1.0, 1.0)
-    geometry.merge_vertices
-    expect(geometry.manifold?).to be false
-  end
-
 end
