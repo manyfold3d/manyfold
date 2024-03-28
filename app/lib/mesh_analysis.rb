@@ -1,5 +1,20 @@
 module Mittsu
   class Object3D
+
+    def solid?
+      # Make sure material is double sided
+      prev_side = material.side
+      material.side = Mittsu::DoubleSide
+      # Make a raycaster from a vertex and the face normal
+      face = geometry.faces.first
+      r = Mittsu::Raycaster.new(geometry.vertices[face.b], face.normal, 1e-9)
+      intersections = r.intersect_object(self, true)
+      # Restore material
+      material.side = prev_side
+      # We want an even number of intersections
+      intersections.length % 2 == 0
+    end
+
     def manifold?
       edges = {}
       # For each face, record its edges in the edge hash

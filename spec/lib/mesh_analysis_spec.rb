@@ -22,5 +22,15 @@ RSpec.describe "MeshAnalysis" do
     mesh.geometry.faces.pop
     expect(mesh.manifold?).to be false
   end
+
+  it "verifies that meshes are solid when normals are pointing outwards" do
+    expect(mesh.solid?).to be true
+  end
+
+  it "detects that meshes where the normals point inwards are not solid" do
+    # Flip all the faces on our test object and recalculate normals
+    mesh.geometry.faces.each { |f| f.flip! }
+    mesh.geometry.compute_face_normals
+    expect(mesh.solid?).to be false
   end
 end
