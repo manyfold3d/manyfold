@@ -13,9 +13,6 @@ class UserPolicy < ApplicationPolicy
       one_of(
         user == record,
         user&.is_administrator?
-      ),
-      none_of(
-        Flipper.enabled?(:demo_mode)
       )
     )
   end
