@@ -24,4 +24,12 @@ module Mittsu
       edges["#{v1}->#{v2}"] = true
     end
   end
+
+  class Face3
+    def flip!
+      tmp = @a
+      @a = @c
+      @c = tmp
+    end
+  end
 end
