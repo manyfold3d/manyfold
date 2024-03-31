@@ -123,6 +123,8 @@ class ModelFile < ApplicationRecord
 
   def loader
     case extension
+    when "stl"
+      Mittsu::STLLoader
     when "obj"
       Mittsu::OBJLoader
     end
