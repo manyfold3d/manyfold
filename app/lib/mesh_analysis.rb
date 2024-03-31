@@ -1,6 +1,5 @@
 module Mittsu
   class Object3D
-
     def solid?
       # Make sure material is double sided
       prev_side = material.side
