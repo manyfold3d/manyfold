@@ -64,7 +64,6 @@ redis:
   master:
     persistence:
       enabled: true
-      storageClass: "local-path"
   replica:
     replicaCount: 0
     persistence:
