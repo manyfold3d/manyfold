@@ -1,0 +1,73 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}-manyfold
+spec:
+  selector:
+    matchLabels:
+      {{- include "manyfold.labels" . | nindent 8 }}
+      {{- with .Values.podLabels }}
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+  serviceName: "manyfold"
+  replicas: 1
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        {{- include "manyfold.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      terminationGracePeriodSeconds: 10
+      initContainers:
+        - name: "wait-for-dependencies"
+          image: busybox:1.28
+          command:
+            - 'sh'
+            -  '-c'
+            - 'echo waiting for Redis;'
+            - 'sleep'
+            - '30'
+        - name: "concat-database-uri"
+          image: alpine:latest
+          env:
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-postgresql
+                  key: postgres-password
+          command:
+            - "/bin/sh"
+          args:
+            - -c
+            - export DATABASE_URL="postgresql://{{ .Values.postgresql.auth.username }}:${DB_PASS}@{{ .Release.Name }}-postgresql/{{ .Values.postgresql.auth.database }}?pool=5"
+      containers:
+        - name: manyfold
+          image: "{{ .Values.manyfold.image.repository }}:{{ .Values.manyfold.image.tag }}"
+          ports:
+            - name: http
+              containerPort: 3214
+          env:
+            - name: SECRET_KEY_BASE
+              value: {{ .Values.manyfold.secret_key_base }}
+            - name: REDIS_URL
+              value: redis://{{ .Release.Name }}-redis-master:6379/1
+{{ if .Values.manyfold.persistence.enabled }}
+          volumeMounts:
+            - name: libraries
+              mountPath: /libraries
+  volumeClaimTemplates:
+    - metadata:
+        name: libraries
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        {{- if .Values.manyfold.persistence.storageClass }}
+        storageClassName: {{ .Values.manyfold.persistence.storageClass }}
+        {{- end }}
+        resources:
+          requests:
+            storage: {{ .Values.manyfold.persistence.size }}
+{{- end }} 

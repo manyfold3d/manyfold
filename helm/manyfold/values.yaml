@@ -1,0 +1,71 @@
+manyfold:
+  replicaCount: 1
+  image:
+    repository: ghcr.io/manyfold3d/manyfold
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  imagePullSecrets: []
+  nameOverride: ""
+  serviceAccount:
+    create: true
+    automount: true
+    annotations: {}
+    name: ""
+  podAnnotations: {}
+  podLabels: {}
+  podSecurityContext: {}
+  
+  securityContext: {}
+  service:
+    type: ClusterIP
+    port: 3214
+  ingress:
+    enabled: false
+    className: ""
+    annotations: {}
+    hosts:
+      - host: chart-example.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls: []
+  resources: {}
+  livenessProbe:
+    httpGet:
+      path: /
+      port: http
+  readinessProbe:
+    httpGet:
+      path: /
+      port: http
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  secret_key_base: changeme123456789!
+  persistence:
+    enabled: true
+    size: 10Gi
+
+# Documentation available in the Bitnami repos. 
+
+# https://github.com/bitnami/charts/tree/main/bitnami/postgresql
+postgresql:
+  enabled: true
+  auth:
+    username: manyfold
+    database: manyfold
+  primary:
+    persistence:
+      enabled: true
+
+# https://github.com/bitnami/charts/tree/main/bitnami/redis
+redis:
+  enabled: true
+  master:
+    persistence:
+      enabled: true
+      storageClass: "local-path"
+  replica:
+    replicaCount: 0
+    persistence:
+      enabled: true

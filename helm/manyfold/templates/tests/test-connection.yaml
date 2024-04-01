@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "manyfold.fullname" . }}-test-connection"
+  labels:
+    {{- include "manyfold.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "manyfold.fullname" . }}:{{ .Values.manyfold.service.port }}']
+  restartPolicy: Never

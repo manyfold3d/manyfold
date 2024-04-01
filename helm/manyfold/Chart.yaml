@@ -1,0 +1,19 @@
+apiVersion: v2
+name: manyfold
+description: A Helm chart for Manyfold
+
+type: application
+
+version: 0.1.0
+
+appVersion: "v0.59.1"
+
+dependencies:
+  - name: redis
+    condition: redis.enabled
+    version: 19.0.1
+    repository: https://charts.bitnami.com/bitnami 
+  - name: postgresql
+    condition: postgresql.enabled
+    version: 15.1.4
+    repository: https://charts.bitnami.com/bitnami 

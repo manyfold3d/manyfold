@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "manyfold.fullname" . }}
+  labels:
+    {{- include "manyfold.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.manyfold.service.type }}
+  ports:
+    - port: {{ .Values.manyfold.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "manyfold.selectorLabels" . | nindent 4 }}
