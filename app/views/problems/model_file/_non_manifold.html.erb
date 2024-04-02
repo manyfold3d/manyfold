@@ -1,0 +1,4 @@
+<td><%= icon("files", t(".title")) %></td>
+<td><%= link_to problem.problematic.name, [problem.problematic.model.library, problem.problematic.model, problem.problematic] %></td>
+<td><%= t ".title" %></td>
+<td><%= link_to "Open", [problem.problematic.model.library, problem.problematic.model, problem.problematic], class: "btn btn-primary" %></td>
