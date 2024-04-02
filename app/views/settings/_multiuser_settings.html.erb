@@ -6,7 +6,7 @@
     </p>
     <% if Flipper.enabled?(:multiuser) %>
       <p>
-        <%= Flipper.enabled?(:multiuser) ? t(".registrations_open") : t(".registrations_closed") %>
+        <%= SiteSettings.registration_enabled ? t(".registrations_open") : t(".registrations_closed") %>
       </p>
     <% end %>
     <p>
