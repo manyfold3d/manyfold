@@ -7,7 +7,7 @@ class ProblemsController < ApplicationController
     page = params[:page] || 1
     # What categories are we showing?
     # First, get the possible categories based on severity filter
-    severities = params[:severity] ? Problem::CATEGORIES.select { |cat| params[:severity]&.include?(current_user.problem_settings[cat.to_s]) } : nil
+    severities = params[:severity] ? Problem::CATEGORIES.select { |cat| params[:severity]&.include?(current_user.problem_severity(cat).to_s) } : nil
     # Then get the category filter
     categories = params[:category]&.map(&:to_sym)
     # Now query with the intersection of the two, or if we don't have both, then whichever we do have
