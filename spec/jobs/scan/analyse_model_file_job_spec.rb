@@ -2,59 +2,57 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe Scan::AnalyseModelFileJob do
-  it "calculates file digest if not set" do # rubocop:todo RSpec/ExampleLength
-    file = create(:model_file, filename: "test.obj", digest: nil, size: 10)
-    allow(File).to receive(:exist?).with(file.pathname).and_return(true)
-    allow(file).to receive(:calculate_digest).once.and_return("deadbeef")
-    allow(ModelFile).to receive(:find).with(file.id).and_return(file)
-    described_class.perform_now file.id
-    file.reload
-    expect(file.digest).to eq "deadbeef"
-  end
+  context "with an existing file" do
+    let(:file) { create(:model_file, filename: "test.3mf") }
 
-  it "calculates file size if not set" do # rubocop:todo RSpec/ExampleLength
-    file = create(:model_file, filename: "test.obj", digest: "deadbeef", size: nil)
-    allow(File).to receive(:exist?).with(file.pathname).and_return(true)
-    allow(File).to receive(:size).once.and_return(1234)
-    described_class.perform_now file.id
-    file.reload
-    expect(file.size).to eq 1234
-  end
+    before do
+      ActiveJob::Base.queue_adapter = :test
+      allow(ModelFile).to receive(:find).with(file.id).and_return(file)
+      allow(File).to receive(:exist?).and_return(true)
+      allow(file).to receive(:calculate_digest).once.and_return("deadbeef")
+      allow(File).to receive(:size).once.and_return(1234)
+    end
 
-  it "detects ASCII STL files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-    file = create(:model_file, filename: "test.stl", digest: "deadbeef", size: 1234)
-    allow(File).to receive(:exist?).with(file.pathname).and_return(true)
-    allow(File).to receive(:read).with(file.pathname, 6).once.and_return("solid ")
-    expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
-    expect(Problem.first.category).to eq "inefficient"
-    expect(Problem.first.note).to eq "ASCII STL"
-  end
+    it "calculates file digest if not set" do
+      expect { described_class.perform_now file.id }.to(
+        change(file, :digest).from(nil).to("deadbeef")
+      )
+    end
 
-  it "detects Wavefront OBJ files and creates a Problem record" do # rubocop:todo RSpec/MultipleExpectations
-    file = create(:model_file, filename: "test.obj", digest: "deadbeef", size: 1234)
-    allow(File).to receive(:exist?).with(file.pathname).and_return(true)
-    expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
-    expect(Problem.first.category).to eq "inefficient"
-    expect(Problem.first.note).to eq "Wavefront OBJ"
-  end
+    it "calculates file size if not set" do
+      expect { described_class.perform_now file.id }.to(
+        change(file, :size).from(nil).to(1234)
+      )
+    end
 
-  it "detects ASCII PLY files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-    file = create(:model_file, filename: "test.ply", digest: "deadbeef", size: 1234)
-    allow(File).to receive(:exist?).with(file.pathname).and_return(true)
-    allow(File).to receive(:read).with(file.pathname, 16).once.and_return("ply\rformat ascii")
-    expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
-    expect(Problem.first.category).to eq "inefficient"
-    expect(Problem.first.note).to eq "ASCII PLY"
-  end
+    it "detects ASCII STL files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      allow(file).to receive(:extension).and_return("stl")
+      allow(File).to receive(:read).with(file.pathname, 6).once.and_return("solid ")
+      expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
+      expect(Problem.first.category).to eq "inefficient"
+      expect(Problem.first.note).to eq "ASCII STL"
+    end
 
-  it "detects duplicate files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-    file = create(:model_file, filename: "test.stl", digest: "deadbeef", size: 1234)
-    allow(file).to receive(:duplicate?).once.and_return(true)
-    allow(ModelFile).to receive(:find).with(file.id).and_return(file)
-    allow(File).to receive(:exist?).with(file.pathname).and_return(true)
-    allow(File).to receive(:read).and_return("whatever")
-    expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
-    expect(Problem.first.category).to eq "duplicate"
+    it "detects Wavefront OBJ files and creates a Problem record" do # rubocop:todo RSpec/MultipleExpectations
+      allow(file).to receive(:extension).and_return("obj")
+      expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
+      expect(Problem.first.category).to eq "inefficient"
+      expect(Problem.first.note).to eq "Wavefront OBJ"
+    end
+
+    it "detects ASCII PLY files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      allow(file).to receive(:extension).and_return("ply")
+      allow(File).to receive(:read).with(file.pathname, 16).once.and_return("ply\rformat ascii")
+      expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
+      expect(Problem.first.category).to eq "inefficient"
+      expect(Problem.first.note).to eq "ASCII PLY"
+    end
+
+    it "detects duplicate files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      allow(file).to receive(:duplicate?).once.and_return(true)
+      expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
+      expect(Problem.first.category).to eq "duplicate"
+    end
   end
 
   context "when matching supported/unsupported files" do
