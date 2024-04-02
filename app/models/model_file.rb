@@ -102,6 +102,11 @@ class ModelFile < ApplicationRecord
     ["favorited", "model", "problems"]
   end
 
+  def mesh
+    loader&.new&.load(pathname)
+  end
+  memoize :mesh
+
   private
 
   def presupported_files_cannot_have_presupported_version
@@ -115,11 +120,6 @@ class ModelFile < ApplicationRecord
       errors.add(:presupported_version, :not_supported)
     end
   end
-
-  def mesh
-    loader&.new&.load(pathname)
-  end
-  memoize :mesh
 
   def loader
     case extension
