@@ -12,6 +12,6 @@ class SiteSettings < RailsSettings::Base
   field :safe_folder_names, type: :boolean, default: true
 
   def self.registration_enabled
-    ENV.fetch("REGISTRATION", false)
+    ENV.fetch("REGISTRATION", false) == "enabled"
   end
 end
