@@ -25,6 +25,19 @@ RSpec.describe Scan::AnalyseModelFileJob do
       )
     end
 
+    it "queues geometric analysis if file digest doesn't change" do
+      file.update!(digest: "deadbeef")
+      expect { described_class.perform_now file.id }.not_to(
+        have_enqueued_job(Scan::GeometricAnalysisJob)
+      )
+    end
+
+    it "queues geometric analysis if file digest changes" do
+      expect { described_class.perform_now file.id }.to(
+        have_enqueued_job(Scan::GeometricAnalysisJob).with(file.id).once
+      )
+    end
+
     it "detects ASCII STL files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       allow(file).to receive(:extension).and_return("stl")
       allow(File).to receive(:read).with(file.pathname, 6).once.and_return("solid ")
