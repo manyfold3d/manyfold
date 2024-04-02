@@ -43,6 +43,10 @@ class User < ApplicationRecord
     has_any_role_of? :administrator, :editor, :contributor, :viewer
   end
 
+  def problem_severity(category)
+    problem_settings[category.to_s]&.to_sym || Problem::DEFAULT_SEVERITIES[category.to_sym]
+  end
+
   private
 
   def has_any_role_of?(*args)

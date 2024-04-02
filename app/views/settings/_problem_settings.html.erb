@@ -13,7 +13,7 @@
         <div class="col">
           <%= form.select "problems[#{category}]",
                 Problem::SEVERITIES.map { |s| [t("problems.severities.%{s}" % {s: s}), s] },
-                {selected: @user.problem_settings[category.to_s]},
+                {selected: @user.problem_severity(category)},
                 class: "form-select" %>
         </div>
       </div>
