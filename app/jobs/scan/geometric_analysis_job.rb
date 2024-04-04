@@ -1,5 +1,5 @@
 class Scan::GeometricAnalysisJob < ApplicationJob
-  queue_as :scan
+  queue_as :analysis
 
   def perform(file_id)
     # Get model

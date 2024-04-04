@@ -1,7 +1,7 @@
 require "string/similarity"
 
 class Scan::AnalyseModelFileJob < ApplicationJob
-  queue_as :scan
+  queue_as :analysis
 
   def perform(file_id)
     file = ModelFile.find(file_id)
