@@ -9,18 +9,25 @@ class Scan::GeometricAnalysisJob < ApplicationJob
     mesh = file.mesh
     if mesh
       # Check for manifold mesh
-      manifold = mesh.manifold?
+      manifold = true
+      mesh.traverse do |object|
+        manifold &&= object.manifold?
+      end
       Problem.create_or_clear(
         file,
         :non_manifold,
         !manifold
       )
       # If the mesh is manifold, we can check if it's inside out
+      solid = true
+      mesh.traverse do |object|
+        solid &&= object.solid?
+      end
       if manifold
         Problem.create_or_clear(
           file,
           :inside_out,
-          !mesh.solid?
+          !solid
         )
       end
     end
