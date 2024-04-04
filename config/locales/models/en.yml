@@ -30,6 +30,8 @@ en:
     open: Open
     problem:
       merge_all: Merge all
+    scan:
+      success: Model scan started
     show:
       files: Files
       files_card:
@@ -50,6 +52,7 @@ en:
           summary_html: The folder and files that make up this model will be moved from:<br> <code>%{from}</code><br> to<br> <code>%{to}</code>
           'yes': Yes, move the files
       path: Path
+      rescan: Rescan files
       search: Search the Internet for models with this name
       tags: Tags
     update:
