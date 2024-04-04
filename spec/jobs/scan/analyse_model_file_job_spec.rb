@@ -3,7 +3,7 @@ require "support/mock_directory"
 
 RSpec.describe Scan::AnalyseModelFileJob do
   context "with an existing file" do
-    let(:file) { create(:model_file, filename: "test.3mf") }
+    let(:file) { create(:model_file, filename: "test.3mf", digest: "deadc0de", size: 1) }
 
     before do
       ActiveJob::Base.queue_adapter = :test
@@ -14,25 +14,27 @@ RSpec.describe Scan::AnalyseModelFileJob do
     end
 
     it "calculates file digest if not set" do
+      file.update!(digest: nil)
       expect { described_class.perform_now file.id }.to(
         change(file, :digest).from(nil).to("deadbeef")
       )
     end
 
     it "calculates file size if not set" do
+      file.update!(size: nil)
       expect { described_class.perform_now file.id }.to(
         change(file, :size).from(nil).to(1234)
       )
     end
 
     it "queues geometric analysis if file digest doesn't change" do
-      file.update!(digest: "deadbeef")
       expect { described_class.perform_now file.id }.not_to(
         have_enqueued_job(Scan::GeometricAnalysisJob)
       )
     end
 
     it "queues geometric analysis if file digest changes" do
+      file.update(digest: nil) # force analysis
       expect { described_class.perform_now file.id }.to(
         have_enqueued_job(Scan::GeometricAnalysisJob).with(file.id).once
       )
