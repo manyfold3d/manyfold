@@ -5,10 +5,12 @@ de:
       duplicate: Duplizierte Dateien
       empty: Modell hat keine Dateien
       inefficient: Unvollständige Formate
+      inside_out:
       missing: Fehlende Dateien oder Ordner
       nesting: Modell enthält andere Modelle
       no_3d_model: Modell hat keine 3D-Dateien
       no_image: Modell hat keine Bilddateien
+      non_manifold:
     filters:
       apply_filters: Anwenden
       clear_filters: Löschen
@@ -45,9 +47,15 @@ de:
       inefficient:
         description:
         title: Unzureichendes Formate
+      inside_out:
+        description:
+        title:
       missing:
         description: Diese Datei fehlt auf der Festplatte; löschen Sie sie, oder finden Sie heraus, wo sie geblieben ist!
         title: Datei nicht gefunden
+      non_manifold:
+        description:
+        title:
     severities:
       danger: Gefahr
       info: Infos
