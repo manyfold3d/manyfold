@@ -9,6 +9,7 @@ require "rails_helper"
 #       update_models PATCH  /models/update(.:format)                                                models#bulk_update
 #              models GET    /models(.:format)                                                       models#index
 # merge_library_model POST   /libraries/:library_id/models/:id/merge(.:format)                       models#merge
+# scan_library_model  POST   /libraries/:library_id/models/:id/scan(.:format)                        models#scan
 
 RSpec.describe "Models" do
   context "when signed out" do
@@ -173,6 +174,29 @@ RSpec.describe "Models" do
 
       it "is denied to non-editors", :as_contributor do
         expect { post "/libraries/#{library.id}/models/#{library.models.first.id}/merge" }.to raise_error(Pundit::NotAuthorizedError)
+      end
+    end
+
+    describe "POST /libraries/:library_id/models/:id/scan" do
+      it "schedules a scan job", :as_editor do
+        expect { post "/libraries/#{library.id}/models/#{library.models.first.id}/scan" }.to(
+          have_enqueued_job(ModelScanJob).with(library.models.first.id).once
+        )
+      end
+
+      it "schedules an integrity check job", :as_contributor do
+        expect { post "/libraries/#{library.id}/models/#{library.models.first.id}/scan" }.to(
+          have_enqueued_job(Scan::CheckModelIntegrityJob).with(library.models.first.id).once
+        )
+      end
+
+      it "redirects back to model page", :as_contributor do
+        post "/libraries/#{library.id}/models/#{library.models.first.id}/scan"
+        expect(response).to redirect_to("/libraries/#{library.id}/models/#{library.models.first.id}")
+      end
+
+      it "is denied to non-contributors", :as_viewer do
+        expect { post "/libraries/#{library.id}/models/#{library.models.first.id}/scan" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
   end

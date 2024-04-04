@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :models, except: [:index, :new, :create] do
       member do
         post "merge"
+        post "scan"
       end
       resources :model_files, except: [:index, :new, :create] do
         collection do

@@ -71,6 +71,12 @@ class ModelsController < ApplicationController
     end
   end
 
+  def scan
+    ModelScanJob.perform_later(@model.id)
+    Scan::CheckModelIntegrityJob.perform_later(@model.id)
+    redirect_to [@library, @model], notice: t(".success")
+  end
+
   def bulk_edit
     authorize Model
     @creators = policy_scope(Creator)
