@@ -48,6 +48,15 @@ pl:
     omniauth_callbacks:
       failure: Logowanie przez konto %{kind} zakończyło się błędem z powodu "%{reason}".
       success: Logowanie przez konto %{kind} zakończyło się pomyślnie.
+    password_expired:
+      change_required:
+      show:
+        change_my_password: Zmień moje hasło
+        current_password: Aktualne hasło
+        new_password: Nowe hasło
+        new_password_confirmation: Powtórz nowe hasło
+        renew_your_password:
+      updated:
     passwords:
       edit:
         change_my_password: Zmień moje hasło
@@ -65,8 +74,9 @@ pl:
     registrations:
       destroyed: Twoje konto zostało usunięte.
       edit:
+        are_you_sure: Jesteś pewny?
         cancel_my_account: Usuń moje konto
-        confirm_deletion: Jesteś pewny?
+        confirm_deletion:
         contact_info: Informacje kontaktowe
         current_password_help: Aktualne hasło wymagane dla bezpieczeństwa
         currently_waiting_confirmation_for_email: 'Oczekujemy na potwierdzenie dla: %{email}'
