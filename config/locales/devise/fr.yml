@@ -9,18 +9,18 @@ fr:
       send_paranoid_instructions: Si votre email existe sur notre base de données, vous recevrez sous quelques minutes un message avec des instructions pour confirmer votre compte.
     failure:
       already_authenticated: Vous êtes déjà connecté(e).
-      expired: Votre compte a expiré pour cause d'inactivité. Veuillez contacter l'administrateur du site
+      expired: Votre compte a expiré pour cause d'inactivité. Veuillez contacter l'administrateur du site.
       inactive: Votre compte n’est pas encore activé.
       invalid: "%{authentication_keys} ou mot de passe incorrect."
       last_attempt: Il vous reste une chance avant que votre compte soit bloqué.
       locked: Votre compte est verrouillé.
       not_found_in_database: "%{authentication_keys} ou mot de passe incorrect."
-      session_limited: Vos identifiants de connexion ont été utilisés dans un autre navigateur. Veuillez vous reconnecter pour continuer dans ce navigateur
+      session_limited: Vos identifiants de connexion ont été utilisés dans un autre navigateur. Veuillez vous reconnecter pour continuer dans ce navigateur.
       timeout: Votre session est expirée, veuillez vous reconnecter pour continuer.
       unauthenticated: Vous devez vous connecter ou vous enregistrer pour continuer.
       unconfirmed: Vous devez confirmer votre compte par email.
-    invalid_captcha: Le captcha n'est pas valide
-    invalid_security_question: La réponse à la question de sécurité est invalide
+    invalid_captcha: L'entrée captcha n'était pas valide.
+    invalid_security_question: La réponse à la question de sécurité n'est pas valide.
     mailer:
       confirmation_instructions:
         action: Confirmer mon email
@@ -66,7 +66,7 @@ fr:
         change_my_password: Changer mon mot de passe
         current_password: Mot de passe actuel
         new_password: Nouveau mot de passe
-        new_password_confirmation: Confirmer le nouveau mot de passe
+        new_password_confirmation: Confirmez votre nouveau mot de passe
         renew_your_password: Renouveler votre mot de passe
       updated: Votre nouveau mot de passe est enregistré
     passwords:
@@ -86,8 +86,9 @@ fr:
     registrations:
       destroyed: Au revoir ! Votre compte a bien été supprimé. Nous espérons vous revoir bientôt.
       edit:
+        are_you_sure: Êtes-vous sûr ?
         cancel_my_account: Supprimer mon compte
-        confirm_deletion: Êtes-vous sûr ?
+        confirm_deletion: Êtes-vous sûr de vouloir supprimer votre compte ?
         contact_info: Informations de contact
         current_password_help: Mot de passe actuel requis pour la sécurité
         currently_waiting_confirmation_for_email: 'Confirmation en attente pour: %{email}'

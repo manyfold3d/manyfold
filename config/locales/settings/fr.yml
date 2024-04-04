@@ -46,12 +46,12 @@ fr:
         label: Étiquettes requises
         search_missing: Recherche manquante
     multiuser_settings:
-      details_html:
-      heading:
-      multiuser_mode:
-      registrations_closed:
-      registrations_open:
-      single_user_mode:
+      details_html: Pour modifier ces paramètres, modifiez les <a href='https://manyfold.app/sysadmin/configuration.html'>variables d'environnement</a> du serveur et redémarrez-le.
+      heading: Multiutilisateur
+      multiuser_mode: Manyfold fonctionne en mode multi-utilisateurs.
+      registrations_closed: L'inscription des utilisateurs est désactivée.
+      registrations_open: L'inscription des utilisateurs est activée.
+      single_user_mode: Manyfold fonctionne en mode mono-utilisateur.
     pagination_settings:
       collections:
         label: Paginer les collections
