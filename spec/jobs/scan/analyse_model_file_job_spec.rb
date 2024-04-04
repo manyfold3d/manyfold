@@ -9,6 +9,7 @@ RSpec.describe Scan::AnalyseModelFileJob do
       ActiveJob::Base.queue_adapter = :test
       allow(ModelFile).to receive(:find).with(file.id).and_return(file)
       allow(File).to receive(:exist?).and_return(true)
+      allow(File).to receive(:mtime).once.and_return(1.day.ago)
       allow(file).to receive(:calculate_digest).once.and_return("deadbeef")
       allow(File).to receive(:size).once.and_return(1234)
     end
