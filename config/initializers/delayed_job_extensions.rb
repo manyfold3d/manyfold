@@ -5,7 +5,7 @@ class Delayed::Backend::ActiveRecord::Job
 end
 
 Delayed::Worker.queue_attributes = {
-  default: { priority: 0 },
-  scan: { priority: 0 },
-  analysis: { priority: 10 }
+  default: {priority: 0},
+  scan: {priority: 0},
+  analysis: {priority: 10}
 }
