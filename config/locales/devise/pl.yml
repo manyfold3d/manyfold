@@ -9,14 +9,18 @@ pl:
       send_paranoid_instructions: Jeśli Twój adres e-mail istnieje w naszej bazie, w ciągu najbliższych minut otrzymasz instrukcje jak aktywować konto.
     failure:
       already_authenticated: Jesteś już zalogowany.
+      expired:
       inactive: Twoje konto nie zostało jeszcze aktywowane.
       invalid: Błędny adres %{authentication_keys} lub hasło.
       last_attempt: Masz jeszcze jedną próbę nim Twoje konto zostanie zablokowane.
       locked: Twoje konto jest zablokowane.
       not_found_in_database: Błędny adres %{authentication_keys} lub hasło.
+      session_limited:
       timeout: Sesja wygasła, aby kontynuować zaloguj się ponownie.
       unauthenticated: Aby kontynuować zaloguj lub zarejestruj się.
       unconfirmed: Aby kontynuować aktywuj konto.
+    invalid_captcha:
+    invalid_security_question:
     mailer:
       confirmation_instructions:
         action: Potwierdź swoje konto
@@ -48,6 +52,14 @@ pl:
     omniauth_callbacks:
       failure: Logowanie przez konto %{kind} zakończyło się błędem z powodu "%{reason}".
       success: Logowanie przez konto %{kind} zakończyło się pomyślnie.
+    paranoid_verification_code:
+      show:
+        submit:
+        submit_verification_code:
+        verification_code:
+      updated:
+    paranoid_verify:
+      code_required:
     password_expired:
       change_required:
       show:
