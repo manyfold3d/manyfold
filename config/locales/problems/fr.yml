@@ -5,10 +5,12 @@ fr:
       duplicate: Fichiers en double
       empty: Le modèle n'a pas de fichiers
       inefficient: Formats inefficaces
+      inside_out:
       missing: Fichiers ou dossiers manquants
       nesting: Le modèle contient d'autres modèles
       no_3d_model: Le modèle ne contient pas de fichiers 3D
       no_image: Le modèle n'a pas de fichier image
+      non_manifold:
     filters:
       apply_filters: Appliquer
       clear_filters: Nettoyer
@@ -45,9 +47,15 @@ fr:
       inefficient:
         description: Ce fichier est au format %{note}, un format de fichier inefficace. Envisagez de le convertir dans un format binaire tel que 3MF pour économiser de l'espace disque.
         title: Format inefficace
+      inside_out:
+        description:
+        title:
       missing:
         description: Ce fichier est manquant sur le disque ; soit vous le supprimez, soit vous trouvez où il est passé !
         title: Fichier introuvable
+      non_manifold:
+        description:
+        title:
     severities:
       danger: Danger
       info: Information

@@ -30,6 +30,8 @@ de:
     open: Öffnen
     problem:
       merge_all: Alle zusammenführen
+    scan:
+      success:
     show:
       files: Dateien
       files_card:
@@ -50,6 +52,7 @@ de:
           summary_html: Der Ordner und die Dateien, aus denen dieses Modell besteht, werden verschoben von:<br> <code>%{from}</code><br> nach<br> <code>%{to}</code>
           'yes': Ja, verschieben Sie die Dateien
       path: Pfad
+      rescan:
       search: Suchen Sie im Internet nach Modellen mit diesem Namen
       tags: Tags
     update:

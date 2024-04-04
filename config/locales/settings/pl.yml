@@ -46,12 +46,12 @@ pl:
         label: Wymagane Tagi
         search_missing: Wyszukaj Brakujące
     multiuser_settings:
-      details_html:
-      heading:
-      multiuser_mode:
-      registrations_closed:
-      registrations_open:
-      single_user_mode:
+      details_html: Aby zmienić te ustawienia, edytuj <a href='https://manyfold.app/sysadmin/configuration.html'>zmienne środowiskowe</a> serwera i uruchom go ponownie.
+      heading: Tryb wielu użytkowników
+      multiuser_mode: Manyfold działa w trybie wielu użytkowników.
+      registrations_closed: Rejestracja użytkowników jest wyłączona.
+      registrations_open: Rejestracja użytkowników jest włączona.
+      single_user_mode: Manyfold działa w trybie pojedynczego użytkownika.
     pagination_settings:
       collections:
         label:

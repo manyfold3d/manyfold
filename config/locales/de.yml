@@ -54,7 +54,7 @@ de:
         confirmation_token: Bestätigungs-Token
         confirmed_at: Bestätigt am
         created_at: Erstellt am
-        current_password: Bisheriges Passwort
+        current_password: Aktuelles Passwort
         current_sign_in_at: Aktuelle Anmeldung vom
         current_sign_in_ip: IP der aktuellen Anmeldung
         email: E-Mail

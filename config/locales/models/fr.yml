@@ -30,6 +30,8 @@ fr:
     open: Ouvrir
     problem:
       merge_all: Tous fusionner
+    scan:
+      success:
     show:
       files: Fichiers
       files_card:
@@ -50,6 +52,7 @@ fr:
           summary_html: Le dossier et les fichiers qui composent ce modèle seront déplacés de :<br> <code>%{from}</code><br> à<br> <code>%{to}</code>
           'yes': Oui, déplacer les fichiers
       path: Chemin
+      rescan:
       search: Recherchez sur Internet des modèles portant ce nom
       tags: Étiquettes
     update:
