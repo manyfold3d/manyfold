@@ -97,6 +97,7 @@
       <% end %>
     </ul>
     <%= link_to t(".files_card.bulk_edit"), edit_library_model_model_files_path(@library, @model), class: "btn btn-secondary" if policy(@model).edit? %>
+    <%= link_to t(".rescan"), scan_library_model_path(@library, @model), class: "btn btn-warning", method: :post if policy(@model).scan? %>
   <% end %>
 
   <%= render "links_card", links: @model.links %>

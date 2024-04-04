@@ -14,6 +14,10 @@ class ModelPolicy < ApplicationPolicy
     )
   end
 
+  def scan?
+    user&.is_contributor?
+  end
+
   def bulk_edit?
     user&.is_editor?
   end

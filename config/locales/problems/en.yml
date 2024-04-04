@@ -5,12 +5,12 @@ en:
       duplicate: Duplicate files
       empty: Model has no files
       inefficient: Inefficient formats
+      inside_out: Mesh is inside-out
       missing: Missing files or folders
       nesting: Model contains other models
       no_3d_model: Model has no 3D files
       no_image: Model has no image files
       non_manifold: Mesh is non-manifold
-      inside_out: Mesh is inside-out
     filters:
       apply_filters: Apply
       clear_filters: Clear
@@ -47,15 +47,15 @@ en:
       inefficient:
         description: This file is in %{note}, an inefficient file format. Consider converting it to a binary format such as 3MF to save disk space.
         title: Inefficient format
+      inside_out:
+        description: This mesh looks like its faces might be pointed the wrong way, which could cause print errors. Repair it in a 3d modeling tool such as MeshLab or 3D Builder.
+        title: Inside-out mesh
       missing:
         description: This file is missing on disk; either delete it, or find where it went!
         title: File not found
       non_manifold:
         description: This mesh appears to be non-manifold, meaning it has holes or has some faces backwards, and may cause errors when printed. Repair it in a 3d modeling tool such as MeshLab or 3D Builder.
         title: Non-manifold mesh
-      inside_out:
-        description: This mesh looks like its faces might be pointed the wrong way, which could cause print errors. Repair it in a 3d modeling tool such as MeshLab or 3D Builder.
-        title: Inside-out mesh
     severities:
       danger: Danger
       info: Info
