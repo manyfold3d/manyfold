@@ -1,5 +1,7 @@
 module MeshAnalysis
   def solid?
+    # Shortcut if there is no geometry
+    return true if geometry.nil?
     # Make sure material is double sided
     prev_side = material.side
     material.side = Mittsu::DoubleSide
@@ -14,9 +16,11 @@ module MeshAnalysis
   end
 
   def manifold?
+    # Shortcut if there is no geometry
+    return true if geometry.nil?
     edges = {}
     # For each face, record its edges in the edge hash
-    geometry.faces.each do |face|
+    geometry&.faces&.each do |face|
       update_edge_hash face.a, face.b, edges
       update_edge_hash face.b, face.c, edges
       update_edge_hash face.c, face.a, edges
