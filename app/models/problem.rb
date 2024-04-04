@@ -18,7 +18,9 @@ class Problem < ApplicationRecord
     :inefficient,
     :duplicate,
     :no_image,
-    :no_3d_model
+    :no_3d_model,
+    :non_manifold,
+    :inside_out
   ]
   enum :category, CATEGORIES
 
@@ -36,7 +38,9 @@ class Problem < ApplicationRecord
     inefficient: :info,
     duplicate: :warning,
     no_image: :silent,
-    no_3d_model: :silent
+    no_3d_model: :silent,
+    non_manifold: :warning,
+    inside_out: :warning
   }
 
   def self.create_or_clear(problematic, cat, present, options = {})

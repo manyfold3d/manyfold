@@ -1,7 +1,7 @@
 require "string/similarity"
 
 class Scan::AnalyseModelFileJob < ApplicationJob
-  queue_as :scan
+  queue_as :analysis
 
   def perform(file_id)
     file = ModelFile.find(file_id)
@@ -9,11 +9,15 @@ class Scan::AnalyseModelFileJob < ApplicationJob
     # Don't run analysis if the file is missing
     # The Problem is raised elsewhere.
     return if !File.exist?(file.pathname)
-    # Update stored file metadata if not set
-    file.update!(
-      digest: file.digest || file.calculate_digest,
-      size: file.size || File.size(file.pathname)
-    )
+    # If the file is modified, or we're lacking metadata
+    if File.mtime(file.pathname) > file.updated_at || file.digest.nil? || file.size.nil?
+      file.digest = file.calculate_digest
+      file.size = File.size(file.pathname)
+      # If the digest has changed, queue up detailed geometric mesh analysis
+      Scan::GeometricAnalysisJob.perform_later(file_id) if file.digest_changed?
+      # Store updated file metadata
+      file.save!
+    end
     # Match supported files
     match_with_supported_file(file)
     # Detect inefficient file formats

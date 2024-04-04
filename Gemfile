@@ -97,7 +97,7 @@ gem "acts_as_favoritor", "~> 6.0"
 
 gem "sqlite3_ar_regexp", "~> 2.2"
 
-gem "mittsu", github: "danini-the-panini/mittsu", ref: "7f44c46"
+gem "mittsu", github: "manyfold3d/mittsu", ref: "manyfold"
 
 gem "view_component", "~> 3.11"
 
