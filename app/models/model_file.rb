@@ -64,6 +64,7 @@ class ModelFile < ApplicationRecord
   end
 
   def duplicates
+    return ModelFile.none if digest.nil?
     ModelFile.where(digest: digest).where.not(id: id)
   end
 

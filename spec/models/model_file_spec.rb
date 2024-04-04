@@ -47,6 +47,15 @@ RSpec.describe ModelFile do
     expect(part1.duplicates).to eq [part2]
   end
 
+  it "does not flag duplicates for nil digests" do # rubocop:todo RSpec/ExampleLength
+    library = create(:library, path: Rails.root.join("/tmp"))
+    model1 = create(:model, library: library, path: "model1")
+    part1 = create(:model_file, model: model1, filename: "file.obj", digest: nil)
+    model2 = create(:model, library: library, path: "model2")
+    create(:model_file, model: model2, filename: "file.stl", digest: nil)
+    expect(part1.duplicate?).to be false
+  end
+
   context "with actual files on disk" do
     before do
       ActiveJob::Base.queue_adapter = :test
