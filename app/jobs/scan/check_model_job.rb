@@ -10,7 +10,7 @@ class Scan::CheckModelJob < ApplicationJob
     Scan::CheckModelIntegrityJob.perform_later(model.id)
     # Run analysis job on individual files
     model.model_files.each do |file|
-      Scan::AnalyseModelFileJob.perform_later(file.id)
+      Analysis::AnalyseModelFileJob.perform_later(file.id)
     end
   end
 end

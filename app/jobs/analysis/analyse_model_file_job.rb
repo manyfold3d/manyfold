@@ -1,6 +1,6 @@
 require "string/similarity"
 
-class Scan::AnalyseModelFileJob < ApplicationJob
+class Analysis::AnalyseModelFileJob < ApplicationJob
   queue_as :analysis
 
   def perform(file_id)
@@ -14,7 +14,7 @@ class Scan::AnalyseModelFileJob < ApplicationJob
       file.digest = file.calculate_digest
       file.size = File.size(file.pathname)
       # If the digest has changed, queue up detailed geometric mesh analysis
-      Scan::GeometricAnalysisJob.perform_later(file_id) if file.digest_changed?
+      Analysis::GeometricAnalysisJob.perform_later(file_id) if file.digest_changed?
       # Store updated file metadata
       file.save!
     end

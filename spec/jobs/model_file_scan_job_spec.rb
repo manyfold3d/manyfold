@@ -21,6 +21,6 @@ RSpec.describe ModelFileScanJob do
   end
 
   it "queues analysis job" do
-    expect { described_class.perform_now(file.id) }.to have_enqueued_job(Scan::AnalyseModelFileJob).once
+    expect { described_class.perform_now(file.id) }.to have_enqueued_job(Analysis::AnalyseModelFileJob).once
   end
 end
