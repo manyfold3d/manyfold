@@ -15,14 +15,15 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
         :non_manifold,
         !manifold
       )
-      # If the mesh is manifold, we can check if it's inside out
-      if manifold
-        Problem.create_or_clear(
-          file,
-          :inside_out,
-          !mesh.solid?
-        )
-      end
+      # Temporarily disabled for release
+      # # If the mesh is manifold, we can check if it's inside out
+      # if manifold
+      #   Problem.create_or_clear(
+      #     file,
+      #     :inside_out,
+      #     !mesh.solid?
+      #   )
+      # end
     end
   end
 end
