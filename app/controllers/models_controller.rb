@@ -75,8 +75,7 @@ class ModelsController < ApplicationController
     # Clear digests for files so that we force a full geometry rescan
     @model.model_files.update_all(digest: nil) # rubocop:disable Rails/SkipsModelValidations
     # Start the scans
-    ModelScanJob.perform_later(@model.id)
-    Scan::CheckModelIntegrityJob.perform_later(@model.id)
+    Scan::CheckModelJob.perform_later(@model.id)
     # Back to the model page
     redirect_to [@library, @model], notice: t(".success")
   end
