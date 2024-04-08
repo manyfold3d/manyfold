@@ -8,28 +8,27 @@ RSpec.describe Scan::CheckModelJob do
     ActiveJob::Base.queue_adapter = :test
   end
 
-  it "should queue up model file scan job" do
+  it "queues up model file scan job" do
     expect { described_class.perform_now(thing.id) }.to(
       have_enqueued_job(ModelScanJob).with(thing.id).once
     )
   end
 
-  it "should not queue up model file scan job if scan parameter is false" do
+  it "does not queue up model file scan job if scan parameter is false" do
     expect { described_class.perform_now(thing.id, scan: false) }.not_to(
       have_enqueued_job(ModelScanJob)
     )
   end
 
-  it "should queue up model integrity check job" do
+  it "queues up model integrity check job" do
     expect { described_class.perform_now(thing.id) }.to(
       have_enqueued_job(Scan::CheckModelIntegrityJob).with(thing.id).once
     )
   end
 
-  it "should queue up analysis jobs for all model files" do
+  it "queues up analysis jobs for all model files" do
     expect { described_class.perform_now(thing.id) }.to(
       have_enqueued_job(Scan::AnalyseModelFileJob).with(file.id).once
     )
   end
-
 end

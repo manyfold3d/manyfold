@@ -180,13 +180,7 @@ RSpec.describe "Models" do
     describe "POST /libraries/:library_id/models/:id/scan" do
       it "schedules a scan job", :as_editor do
         expect { post "/libraries/#{library.id}/models/#{library.models.first.id}/scan" }.to(
-          have_enqueued_job(ModelScanJob).with(library.models.first.id).once
-        )
-      end
-
-      it "schedules an integrity check job", :as_contributor do
-        expect { post "/libraries/#{library.id}/models/#{library.models.first.id}/scan" }.to(
-          have_enqueued_job(Scan::CheckModelIntegrityJob).with(library.models.first.id).once
+          have_enqueued_job(Scan::CheckModelJob).with(library.models.first.id).once
         )
       end
 

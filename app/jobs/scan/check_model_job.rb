@@ -13,5 +13,4 @@ class Scan::CheckModelJob < ApplicationJob
       Scan::AnalyseModelFileJob.perform_later(file.id)
     end
   end
-
 end
