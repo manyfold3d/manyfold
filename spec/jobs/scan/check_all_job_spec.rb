@@ -2,6 +2,8 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe Scan::CheckAllJob do
+  let!(:thing) { create(:model, path: "model_one") } # rubocop:disable RSpec/LetSetup
+
   before do
     ActiveJob::Base.queue_adapter = :test
   end
