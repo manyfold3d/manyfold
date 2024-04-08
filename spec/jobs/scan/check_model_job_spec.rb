@@ -28,7 +28,7 @@ RSpec.describe Scan::CheckModelJob do
 
   it "queues up analysis jobs for all model files" do
     expect { described_class.perform_now(thing.id) }.to(
-      have_enqueued_job(Scan::AnalyseModelFileJob).with(file.id).once
+      have_enqueued_job(Analysis::AnalyseModelFileJob).with(file.id).once
     )
   end
 end

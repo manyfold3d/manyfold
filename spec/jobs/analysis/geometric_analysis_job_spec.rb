@@ -1,7 +1,7 @@
 require "rails_helper"
 require "support/mock_directory"
 
-RSpec.describe Scan::GeometricAnalysisJob do
+RSpec.describe Analysis::GeometricAnalysisJob do
   let(:file) { create(:model_file, filename: "test.stl") }
   let(:mesh) do
     m = Mittsu::Mesh.new(Mittsu::SphereGeometry.new(2.0, 32, 16))

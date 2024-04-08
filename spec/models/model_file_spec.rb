@@ -94,7 +94,7 @@ RSpec.describe ModelFile do
     it "queues up rescans for duplicates on destroy" do
       dupe = create(:model_file, model: model, filename: "duplicate.3mf", digest: "1234")
       expect { file.delete_from_disk_and_destroy }.to(
-        have_enqueued_job(Scan::AnalyseModelFileJob).with(dupe.id)
+        have_enqueued_job(Analysis::AnalyseModelFileJob).with(dupe.id)
       )
     end
   end

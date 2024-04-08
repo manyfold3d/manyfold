@@ -11,6 +11,6 @@ class ModelFileScanJob < ApplicationJob
       file.update!(presupported: true)
     end
     # Queue up deeper analysis job
-    Scan::AnalyseModelFileJob.perform_later(file.id)
+    Analysis::AnalyseModelFileJob.perform_later(file.id)
   end
 end

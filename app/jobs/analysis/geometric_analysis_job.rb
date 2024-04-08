@@ -1,4 +1,4 @@
-class Scan::GeometricAnalysisJob < ApplicationJob
+class Analysis::GeometricAnalysisJob < ApplicationJob
   queue_as :analysis
 
   def perform(file_id)
