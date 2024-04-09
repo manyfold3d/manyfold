@@ -20,8 +20,8 @@ RSpec.describe Scan::CheckModelJob do
     )
   end
 
-  it "queues up model integrity check job" do
-    expect { described_class.perform_now(thing.id) }.to(
+  it "queues up model integrity check job instead if scan is false" do
+    expect { described_class.perform_now(thing.id, scan: false) }.to(
       have_enqueued_job(Scan::CheckModelIntegrityJob).with(thing.id).once
     )
   end
@@ -30,5 +30,9 @@ RSpec.describe Scan::CheckModelJob do
     expect { described_class.perform_now(thing.id) }.to(
       have_enqueued_job(Analysis::AnalyseModelFileJob).with(file.id).once
     )
+  end
+
+  it "fails silently if model ID is not found" do
+    expect { described_class.perform_now(nil) }.not_to raise_error
   end
 end

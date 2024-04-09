@@ -21,9 +21,11 @@ class ModelScanJob < ApplicationJob
   end
 
   def perform(model_id)
-    model = Model.find(model_id)
-    return if model.nil?
-
+    begin
+      model = Model.find(model_id)
+    rescue ActiveRecord::RecordNotFound
+      return
+    end
     model_path = File.join(model.library.path, model.path)
     return if Problem.create_or_clear(model, :missing, !File.exist?(model_path))
     # For each file in the model, create a file object
@@ -45,5 +47,7 @@ class ModelScanJob < ApplicationJob
     if !model.creator_id && SiteSettings.parse_metadata_from_path
       model.parse_metadata_from_path!
     end
+    # Run integrity check once everything else is done
+    Scan::CheckModelIntegrityJob.perform_later(model_id)
   end
 end

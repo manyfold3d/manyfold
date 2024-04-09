@@ -132,4 +132,8 @@ RSpec.describe Analysis::AnalyseModelFileJob do
       expect(unsup.presupported_version).to eq sup
     end
   end
+
+  it "fails silently if file ID is not found" do
+    expect { described_class.perform_now(nil) }.not_to raise_error
+  end
 end

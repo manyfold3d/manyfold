@@ -37,6 +37,10 @@ RSpec.describe ModelScanJob do
     it "queues up individual file scans" do
       expect { described_class.perform_now(model.id) }.to have_enqueued_job(ModelFileScanJob).exactly(2).times
     end
+
+    it "queues up integrity check" do
+      expect { described_class.perform_now(model.id) }.to have_enqueued_job(Scan::CheckModelIntegrityJob).with(model.id).once
+    end
   end
 
   context "with a thingiverse-structured model" do
@@ -170,5 +174,9 @@ RSpec.describe ModelScanJob do
       expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(1)
       expect(model.model_files.map(&:filename)).to eq ["part_1.obj"]
     end
+  end
+
+  it "fails silently if model ID is not found" do
+    expect { described_class.perform_now(nil) }.not_to raise_error
   end
 end

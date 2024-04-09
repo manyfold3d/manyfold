@@ -23,4 +23,8 @@ RSpec.describe ModelFileScanJob do
   it "queues analysis job" do
     expect { described_class.perform_now(file.id) }.to have_enqueued_job(Analysis::AnalyseModelFileJob).once
   end
+
+  it "fails silently if file ID is not found" do
+    expect { described_class.perform_now(nil) }.not_to raise_error
+  end
 end

@@ -2,8 +2,11 @@ class ModelFileScanJob < ApplicationJob
   queue_as :default
 
   def perform(file_id)
-    file = ModelFile.find(file_id)
-    return if file.nil?
+    begin
+      file = ModelFile.find(file_id)
+    rescue ActiveRecord::RecordNotFound
+      return
+    end
     # Try to guess if the file is presupported
     if !(
       file.pathname.split(/[[:punct:]]|[[:space:]]/).map(&:downcase) & ModelFile::SUPPORT_KEYWORDS

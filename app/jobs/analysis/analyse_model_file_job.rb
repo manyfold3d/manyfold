@@ -4,8 +4,11 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
   queue_as :analysis
 
   def perform(file_id)
-    file = ModelFile.find(file_id)
-    return if file.nil?
+    begin
+      file = ModelFile.find(file_id)
+    rescue ActiveRecord::RecordNotFound
+      return
+    end
     # Don't run analysis if the file is missing
     # The Problem is raised elsewhere.
     return if !File.exist?(file.pathname)
