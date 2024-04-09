@@ -12,6 +12,7 @@ RSpec.describe Analysis::GeometricAnalysisJob do
   before do
     allow(file).to receive(:mesh).and_return(mesh)
     allow(ModelFile).to receive(:find).with(file.id).and_return(file)
+    allow(SiteSettings).to receive(:analyse_manifold).and_return(true)
   end
 
   it "does not create Problems for a good mesh" do

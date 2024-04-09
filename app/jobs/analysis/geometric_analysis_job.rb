@@ -14,7 +14,7 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
     rescue FloatDomainError
       nil
     end
-    if mesh
+    if mesh && SiteSettings.analyse_manifold
       # Check for manifold mesh
       manifold = mesh.manifold?
       Problem.create_or_clear(
