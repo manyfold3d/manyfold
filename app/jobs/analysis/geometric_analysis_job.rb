@@ -3,8 +3,11 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
 
   def perform(file_id)
     # Get model
-    file = ModelFile.find(file_id)
-    return if file.nil?
+    begin
+      file = ModelFile.find(file_id)
+    rescue ActiveRecord::RecordNotFound
+      return
+    end
     # Get mesh
     mesh = file.mesh
     if mesh

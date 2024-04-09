@@ -31,4 +31,9 @@ RSpec.describe Scan::CheckModelJob do
       have_enqueued_job(Analysis::AnalyseModelFileJob).with(file.id).once
     )
   end
+
+  it "fails silently if model ID is not found" do
+    expect { described_class.perform_now(nil) }.not_to raise_error
+  end
+
 end

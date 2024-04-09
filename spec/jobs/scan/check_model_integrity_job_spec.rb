@@ -45,4 +45,9 @@ RSpec.describe Scan::CheckModelIntegrityJob do
       expect(model.problems.map(&:category)).to include("no_3d_model")
     end
   end
+
+  it "fails silently if model ID is not found" do
+    expect { described_class.perform_now(nil) }.not_to raise_error
+  end
+
 end

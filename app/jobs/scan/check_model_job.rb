@@ -2,8 +2,11 @@ class Scan::CheckModelJob < ApplicationJob
   queue_as :scan
 
   def perform(model_id, scan: true)
-    model = Model.find(model_id)
-    return if model.nil?
+    begin
+      model = Model.find(model_id)
+    rescue ActiveRecord::RecordNotFound
+      return
+    end
     # Scan for new files
     ModelScanJob.perform_later(model.id) if scan
     # Run integrity check

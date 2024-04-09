@@ -46,4 +46,9 @@ RSpec.describe Analysis::GeometricAnalysisJob do
     create(:problem, problematic: file, category: :inside_out)
     expect { described_class.perform_now(file.id) }.to change(Problem, :count).from(1).to(0)
   end
+
+  it "fails silently if file ID is not found" do
+    allow(ModelFile).to receive(:find).with(nil).and_raise(ActiveRecord::RecordNotFound)
+    expect { described_class.perform_now(nil) }.not_to raise_error
+  end
 end

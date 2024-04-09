@@ -171,4 +171,9 @@ RSpec.describe ModelScanJob do
       expect(model.model_files.map(&:filename)).to eq ["part_1.obj"]
     end
   end
+
+  it "fails silently if model ID is not found" do
+    expect { described_class.perform_now(42) }.not_to raise_error
+  end
+
 end
