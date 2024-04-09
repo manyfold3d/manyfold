@@ -3,7 +3,10 @@
 class SetAdminPasswordResetToken < ActiveRecord::Migration[7.0]
   def up
     u = User.with_role(:administrator).first
-    u&.update!(reset_password_token: "first_use")
+    if u
+      u.reset_password_token = "first_use"
+      u.save validate: false
+    end
   end
 
   def down
