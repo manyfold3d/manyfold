@@ -179,5 +179,4 @@ RSpec.describe ModelScanJob do
   it "fails silently if model ID is not found" do
     expect { described_class.perform_now(nil) }.not_to raise_error
   end
-
 end

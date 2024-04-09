@@ -136,5 +136,4 @@ RSpec.describe Analysis::AnalyseModelFileJob do
   it "fails silently if file ID is not found" do
     expect { described_class.perform_now(nil) }.not_to raise_error
   end
-
 end
