@@ -47,5 +47,7 @@ class ModelScanJob < ApplicationJob
     if !model.creator_id && SiteSettings.parse_metadata_from_path
       model.parse_metadata_from_path!
     end
+    # Run integrity check once everything else is done
+    Scan::CheckModelIntegrityJob.perform_later(model_id)
   end
 end
