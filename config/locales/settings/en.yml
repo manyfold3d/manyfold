@@ -1,6 +1,12 @@
 ---
 en:
   settings:
+    analysis_settings:
+      description: Perform deep mesh analysis on models. These options will make your scans take significantly longer and use a lot more CPU and memory.
+      heading: Mesh Analysis
+      manifold:
+        help: Check for non-manifold meshes (i.e. they have holes or impossible surfaces)
+        label: Detect mesh errors
     file_list_settings:
       heading: File Lists
       hide_presupported_versions:

@@ -17,6 +17,7 @@ class SettingsController < ApplicationController
     if current_user.is_administrator?
       update_folder_settings(params[:folders])
       update_tagging_settings(params[:model_tags])
+      update_analysis_settings(params[:analysis])
     end
     redirect_to user_settings_path(@user), notice: t(".success")
   end
@@ -84,6 +85,11 @@ class SettingsController < ApplicationController
     SiteSettings.model_tags_stop_words_locale = settings[:stop_words_locale]
     SiteSettings.model_tags_custom_stop_words = settings[:custom_stop_words].split
     SiteSettings.model_tags_auto_tag_new = settings[:auto_tag_new]
+  end
+
+  def update_analysis_settings(settings)
+    return unless settings
+    SiteSettings.analyse_manifold = settings[:manifold] == "1"
   end
 
   def get_user

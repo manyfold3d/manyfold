@@ -1,6 +1,12 @@
 ---
 pl:
   settings:
+    analysis_settings:
+      description:
+      heading:
+      manifold:
+        help:
+        label:
     file_list_settings:
       heading: Lista Plików
       hide_presupported_versions:
