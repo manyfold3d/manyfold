@@ -6,7 +6,7 @@ class Problem < ApplicationRecord
   default_scope { where(ignored: false) }
 
   scope :visible, ->(settings) {
-    enabled = settings.select { |cat, sev| sev.to_sym != :silent }
+    enabled = DEFAULT_SEVERITIES.merge(settings.symbolize_keys).select { |cat, sev| sev.to_sym != :silent }
     where(category: enabled.keys)
   }
 
