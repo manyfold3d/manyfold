@@ -1,0 +1,15 @@
+<div class="card mb-2">
+  <h3 class="card-header"><%= t(".heading") %></h3>
+  <div class="card-body">
+    <p class='lead'>
+      <%= t(".description") %>
+    </p>
+    <div class="row mb-2">
+      <%= form.label t(".manifold.label"), for: "analysis[manifold]", class: "col-sm-4 col-form-label" %>
+      <div class="col-sm-8 form-check form-switch">
+        <%= form.check_box "analysis[manifold]", checked: SiteSettings.analyse_manifold, class: "form-check-input" %>
+        <small><%= t(".manifold.help") %></small>
+      </div>
+    </div>
+  </div>
+</div>
