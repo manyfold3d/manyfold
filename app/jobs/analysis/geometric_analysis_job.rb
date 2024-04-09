@@ -9,7 +9,11 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
       return
     end
     # Get mesh
-    mesh = file.mesh
+    mesh = begin
+      file.mesh
+    rescue FloatDomainError
+      nil
+    end
     if mesh
       # Check for manifold mesh
       manifold = mesh.manifold?
