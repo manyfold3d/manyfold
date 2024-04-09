@@ -7,10 +7,13 @@ class Scan::CheckModelJob < ApplicationJob
     rescue ActiveRecord::RecordNotFound
       return
     end
-    # Scan for new files
-    ModelScanJob.perform_later(model.id) if scan
-    # Run integrity check
-    Scan::CheckModelIntegrityJob.perform_later(model.id)
+    if scan
+      # Scan for new files (runs integrity check automatically)
+      ModelScanJob.perform_later(model.id)
+    else
+      # Run integrity check
+      Scan::CheckModelIntegrityJob.perform_later(model.id)
+    end
     # Run analysis job on individual files
     model.model_files.each do |file|
       Analysis::AnalyseModelFileJob.perform_later(file.id)

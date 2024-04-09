@@ -20,8 +20,8 @@ RSpec.describe Scan::CheckModelJob do
     )
   end
 
-  it "queues up model integrity check job" do
-    expect { described_class.perform_now(thing.id) }.to(
+  it "queues up model integrity check job instead if scan is false" do
+    expect { described_class.perform_now(thing.id, scan: false) }.to(
       have_enqueued_job(Scan::CheckModelIntegrityJob).with(thing.id).once
     )
   end
