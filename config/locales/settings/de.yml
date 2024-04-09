@@ -1,6 +1,12 @@
 ---
 de:
   settings:
+    analysis_settings:
+      description:
+      heading:
+      manifold:
+        help:
+        label:
     file_list_settings:
       heading: Datei-Listen
       hide_presupported_versions:
@@ -26,8 +32,8 @@ de:
         tags_html:
     library_settings:
       caption:
-        help:
-        label: Beschreibung
+        help: Bewegen Sie den Mauszeiger über die Bibliothek in der Kopfzeile, um die Bildunterschrift zu sehen.
+        label: Bildunterschrift
       description:
       heading: Sammlungen
       icon:
