@@ -8,29 +8,31 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
     rescue ActiveRecord::RecordNotFound
       return
     end
-    # Get mesh
-    mesh = begin
-      file.mesh
-    rescue FloatDomainError
-      nil
-    end
-    if mesh && SiteSettings.analyse_manifold
-      # Check for manifold mesh
-      manifold = mesh.manifold?
-      Problem.create_or_clear(
-        file,
-        :non_manifold,
-        !manifold
-      )
-      # Temporarily disabled for release
-      # # If the mesh is manifold, we can check if it's inside out
-      # if manifold
-      #   Problem.create_or_clear(
-      #     file,
-      #     :inside_out,
-      #     !mesh.solid?
-      #   )
-      # end
+    if SiteSettings.analyse_manifold
+      # Get mesh
+      mesh = begin
+        file.mesh
+      rescue FloatDomainError
+        nil
+      end
+      if mesh
+        # Check for manifold mesh
+        manifold = mesh.manifold?
+        Problem.create_or_clear(
+          file,
+          :non_manifold,
+          !manifold
+        )
+        # Temporarily disabled for release
+        # # If the mesh is manifold, we can check if it's inside out
+        # if manifold
+        #   Problem.create_or_clear(
+        #     file,
+        #     :inside_out,
+        #     !mesh.solid?
+        #   )
+        # end
+      end
     end
   end
 end
