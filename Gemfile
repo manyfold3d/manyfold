@@ -124,3 +124,5 @@ gem "flipper-active_record", "~> 1.2"
 gem "rolify", "~> 6.0"
 
 gem "devise-security", "~> 0.18.0"
+
+gem "letter_opener", "~> 1.10", group: :development
