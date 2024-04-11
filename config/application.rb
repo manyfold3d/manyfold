@@ -59,7 +59,7 @@ module Manyfold
     config.action_mailer.smtp_settings = {
       address: ENV.fetch("SMTP_SERVER", nil),
       user_name: ENV.fetch("SMTP_USERNAME", nil),
-      password: ENV.fetch("SMTP_PASSWORD", nil),
+      password: ENV.fetch("SMTP_PASSWORD", nil)
     }.compact
   end
 end

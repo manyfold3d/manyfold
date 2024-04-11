@@ -125,4 +125,4 @@ gem "rolify", "~> 6.0"
 
 gem "devise-security", "~> 0.18.0"
 
-gem "letter_opener", "~> 1.10", :group => :development
+gem "letter_opener", "~> 1.10", group: :development

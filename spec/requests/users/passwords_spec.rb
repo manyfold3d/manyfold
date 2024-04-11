@@ -45,7 +45,7 @@ RSpec.describe "Users::Passwords" do
       describe "GET /users/password/edit" do
         it "redirects to sign in page" do
           get "/users/password/edit"
-          expect(response).to redirect_to('/users/sign_in')
+          expect(response).to redirect_to("/users/sign_in")
         end
       end
 
@@ -103,11 +103,12 @@ RSpec.describe "Users::Passwords" do
           post "/users/password", params: post_options
           expect(response).to redirect_to("/users/sign_in")
         end
-        it "sends a password reset email" do
+
+        it "sends a password reset email" do # rubocop:disable RSpec/ExampleLength
           expect {
             post "/users/password", params: post_options
           }.to send_email(
-            from: 'notifications@localhost',
+            from: "notifications@localhost",
             to: admin.email,
             subject: "Reset password instructions"
           )
@@ -119,13 +120,14 @@ RSpec.describe "Users::Passwords" do
           get "/users/password/edit"
           expect(response).to redirect_to("/users/sign_in")
         end
+
         it "shows the change password page if reset token is provided" do
-          get "/users/password/edit", params: { reset_password_token: "abcdef" }
+          get "/users/password/edit", params: {reset_password_token: "abcdef"}
           expect(response).to have_http_status(:success)
         end
       end
 
-      describe "PATCH /users/password" do
+      describe "PATCH /users/password" do # rubocop:disable RSpec/MultipleMemoizedHelpers
         let(:reset_token) {
           admin.send_reset_password_instructions
         }
