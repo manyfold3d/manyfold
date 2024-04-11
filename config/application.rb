@@ -55,6 +55,12 @@ module Manyfold
 
     # Treat pundit failures as standard "forbidden"
     config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
+
+    config.action_mailer.smtp_settings = {
+      address: ENV.fetch("SMTP_SERVER", nil),
+      user_name: ENV.fetch("SMTP_USERNAME", nil),
+      password: ENV.fetch("SMTP_PASSWORD", nil),
+    }.compact
   end
 end
 
