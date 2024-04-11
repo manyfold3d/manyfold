@@ -15,4 +15,8 @@ class SiteSettings < RailsSettings::Base
   def self.registration_enabled
     ENV.fetch("REGISTRATION", false) == "enabled"
   end
+
+  def self.email_configured
+    !Rails.env.production? || ENV.fetch("SMTP_SERVER", false)
+  end
 end
