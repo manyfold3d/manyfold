@@ -67,5 +67,5 @@ end
 # Set default URL options from env vars
 Rails.application.default_url_options = {
   host: ENV.fetch("PUBLIC_HOSTNAME", "localhost"),
-  port: ENV.fetch("PUBLIC_PORT", ENV.fetch("PORT", 5000))
+  port: ENV.fetch("PUBLIC_PORT", nil)
 }.compact
