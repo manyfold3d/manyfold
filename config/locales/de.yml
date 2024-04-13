@@ -3,16 +3,16 @@ de:
   activerecord:
     attributes:
       collection:
-        caption: Beschreibung
+        caption: Bildunterschrift
         collection_id: Kollektion
         name: Name
         notes: Notizen
       creator:
-        caption: Beschreibung
+        caption: Bildunterschrift
         name: Name
         notes: Notizen
       library:
-        caption: Beschreibung
+        caption: Bildunterschrift
         icon: Symbol
         name: Name
         notes: Notizen
@@ -21,7 +21,7 @@ de:
       link:
         url: URL
       model:
-        caption: Beschreibung
+        caption: Bildunterschrift
         collection_id: Kollektion
         creator_id: Ersteller
         library_id: Sammlung
@@ -32,7 +32,7 @@ de:
         preview_file: Vorschau
         tags: Tags
       model_file:
-        caption: Beschreibung
+        caption: Bildunterschrift
         digest: Hash
         filename: Dateiname
         model_id: Modell
