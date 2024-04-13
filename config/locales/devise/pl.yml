@@ -9,18 +9,18 @@ pl:
       send_paranoid_instructions: Jeśli Twój adres e-mail istnieje w naszej bazie, w ciągu najbliższych minut otrzymasz instrukcje jak aktywować konto.
     failure:
       already_authenticated: Jesteś już zalogowany.
-      expired:
+      expired: Twoje konto wygasło z powodu braku aktywności. Proszę skontaktuj się z administratorem strony.
       inactive: Twoje konto nie zostało jeszcze aktywowane.
       invalid: Błędny adres %{authentication_keys} lub hasło.
       last_attempt: Masz jeszcze jedną próbę nim Twoje konto zostanie zablokowane.
       locked: Twoje konto jest zablokowane.
       not_found_in_database: Błędny adres %{authentication_keys} lub hasło.
-      session_limited:
+      session_limited: Twoje dane logowania zostały użyte w innej przeglądarce. Zaloguj się ponownie, aby kontynuować w tej przeglądarce.
       timeout: Sesja wygasła, aby kontynuować zaloguj się ponownie.
       unauthenticated: Aby kontynuować zaloguj lub zarejestruj się.
       unconfirmed: Aby kontynuować aktywuj konto.
-    invalid_captcha:
-    invalid_security_question:
+    invalid_captcha: Wprowadzona captcha była nieprawidłowa.
+    invalid_security_question: Odpowiedź na pytanie bezpieczeństwa była nieprawidłowa.
     mailer:
       confirmation_instructions:
         action: Potwierdź swoje konto
@@ -54,21 +54,21 @@ pl:
       success: Logowanie przez konto %{kind} zakończyło się pomyślnie.
     paranoid_verification_code:
       show:
-        submit:
-        submit_verification_code:
-        verification_code:
-      updated:
+        submit: Prześlij
+        submit_verification_code: Prześlij kod weryfikacyjny
+        verification_code: Kod weryfikacyjny
+      updated: Kod weryfikacyjny zaakceptowany
     paranoid_verify:
-      code_required:
+      code_required: Wprowadź kod dostarczony przez nasz zespół pomocy technicznej
     password_expired:
-      change_required:
+      change_required: Twoje hasło wygasło. Prosimy o odnowienie swojego hasła.
       show:
         change_my_password: Zmień moje hasło
         current_password: Aktualne hasło
         new_password: Nowe hasło
         new_password_confirmation: Powtórz nowe hasło
-        renew_your_password:
-      updated:
+        renew_your_password: Odnów swoje hasło
+      updated: Nowe hasło zostało zapisane.
     passwords:
       edit:
         change_my_password: Zmień moje hasło
@@ -88,7 +88,7 @@ pl:
       edit:
         are_you_sure: Jesteś pewny?
         cancel_my_account: Usuń moje konto
-        confirm_deletion:
+        confirm_deletion: Czy na pewno chcesz usunąć swoje konto?
         contact_info: Informacje kontaktowe
         current_password_help: Aktualne hasło wymagane dla bezpieczeństwa
         currently_waiting_confirmation_for_email: 'Oczekujemy na potwierdzenie dla: %{email}'

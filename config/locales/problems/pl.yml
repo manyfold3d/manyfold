@@ -5,12 +5,12 @@ pl:
       duplicate: Zduplikowane pliki
       empty: Model nie zawiera plików
       inefficient: Nieefektywne formaty
-      inside_out:
+      inside_out: Siatka jest skierowana środkiem na zewnątrz
       missing: Brakujące pliki lub foldery
       nesting: Model zawiera inne modele
       no_3d_model: Model nie zawiera plików 3D
       no_image: Model nie zawiera plików graficznych
-      non_manifold:
+      non_manifold: Siatka jest nierozmaita
     filters:
       apply_filters: Zastosuj
       clear_filters: Wyczyść
@@ -33,7 +33,7 @@ pl:
       nesting:
         description: Folder modeli na dysku zawiera inne modele. Można je połączyć z tym folderem lub przenieść je.
         title: Zawiera inne modele
-        warning:
+        warning: Scalanie zbiorcze przenosi wszystkie pliki z powyższych modeli do tego i usuwa je. Metadane plików zostaną zachowane, ale wszelkie metadane modeli zostaną utracone!
       no_3d_model:
         description: Ten model nie zawiera plików 3D. Jest mało prawdopodobne, by było to zamierzone.
         title: Brak plików 3D w modelu
@@ -49,13 +49,13 @@ pl:
         title: Nieefektywny format
       inside_out:
         description:
-        title:
+        title: Siatka skierowana środkiem na zewnątrz
       missing:
         description: Tego pliku brakuje na dysku; usuń go albo znajdź gdzie się znajduje!
         title: Nie znaleziono pliku
       non_manifold:
         description:
-        title:
+        title: Siatka nierozmaita
     severities:
       danger: Niebezpieczeństwo
       info: Informacje

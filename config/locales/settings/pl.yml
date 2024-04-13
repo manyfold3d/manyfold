@@ -3,10 +3,10 @@ pl:
   settings:
     analysis_settings:
       description:
-      heading:
+      heading: Analiza siatki
       manifold:
         help:
-        label:
+        label: Wykrywanie błędów siatki
     file_list_settings:
       heading: Lista Plików
       hide_presupported_versions:
