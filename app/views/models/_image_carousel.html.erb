@@ -17,7 +17,7 @@
             <div class="carousel-caption d-none d-md-block">
               <%= form_with model: [@library, @model], class: "d-inline" do |form| %>
                 <%= form.hidden_field :preview_file_id, value: image.id %>
-                <%= form.button t(".set_as_preview"), class: "btn btn-sm btn-outline-warning" %>
+                <%= form.button t("models.file.set_as_preview"), class: "btn btn-sm btn-outline-warning" %>
               <% end %>
             </div>
           <% end %>
