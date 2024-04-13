@@ -34,7 +34,7 @@ class ModelFilesController < ApplicationController
   end
 
   def bulk_edit
-    @files = @model.model_files
+    @files = @model.model_files.select(&:is_3d_model?)
   end
 
   def bulk_update

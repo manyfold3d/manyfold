@@ -15,7 +15,7 @@
       <th>Presupported</th>
       <th>Y Up</th>
     </tr>
-    <% @model.model_files.each do |file| %>
+    <% @files.each do |file| %>
       <tr>
         <td><%= form.check_box "model_files[#{file.id}]", {data: {bulk_item: file.id.to_s}} %></td>
         <td><i class="bi bi-<%= file.is_image? ? "image" : "box" %>"></td>
