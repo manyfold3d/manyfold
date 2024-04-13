@@ -1,0 +1,38 @@
+<% unless images.empty? %>
+  <div id="imageCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+    <% if images.count > 1 %>
+      <div class="carousel-indicators">
+        <% images.count.times do |index| %>
+          <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="<%= index %>"
+            <%= "class=active aria-current=true" if index == 0 %>
+            aria-label="<%= index + 1 %>"></button>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="carousel-inner">
+      <% images.each_with_index do |image, index| %>
+        <div class="carousel-item <%= "active" if index == 0 %>">
+          <%= image_tag library_model_model_file_path(@library, @model, image, format: image.extension), alt: image.name, class: "d-block w-100 carousel" %>
+          <% if @model.preview_file != image && policy(image).edit? %>
+            <div class="carousel-caption d-none d-md-block">
+              <%= form_with model: [@library, @model], class: "d-inline" do |form| %>
+                <%= form.hidden_field :preview_file_id, value: image.id %>
+                <%= form.button t(".set_as_preview"), class: "btn btn-sm btn-outline-warning" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <% if images.count > 1 %>
+      <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden"><%= t(".previous") %></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden"><%= t(".next") %></span>
+      </button>
+    <% end %>
+  </div>
+<% end %>
