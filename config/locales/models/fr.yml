@@ -20,6 +20,9 @@ fr:
       tags: Étiquette
     general:
       edit: Modifier le modèle
+    image_carousel:
+      next: Suivant
+      previous: Précédent
     index:
       actions_heading: Actions
       bulk_edit: Edition en bloc
@@ -31,7 +34,7 @@ fr:
     problem:
       merge_all: Tous fusionner
     scan:
-      success:
+      success: Début de l'analyse du modèle
     show:
       files: Fichiers
       files_card:
@@ -52,7 +55,7 @@ fr:
           summary_html: Le dossier et les fichiers qui composent ce modèle seront déplacés de :<br> <code>%{from}</code><br> à<br> <code>%{to}</code>
           'yes': Oui, déplacer les fichiers
       path: Chemin
-      rescan:
+      rescan: Rescanner les fichiers
       search: Recherchez sur Internet des modèles portant ce nom
       tags: Étiquettes
     update:

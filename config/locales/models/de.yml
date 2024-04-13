@@ -20,6 +20,9 @@ de:
       tags: Tags
     general:
       edit: Modell bearbeiten
+    image_carousel:
+      next: Weiter
+      previous: Zurück
     index:
       actions_heading: Aktionen
       bulk_edit: Multibearbeitung

@@ -20,6 +20,9 @@ en:
       tags: Tags
     general:
       edit: Edit Model
+    image_carousel:
+      next: Next
+      previous: Previous
     index:
       actions_heading: Actions
       bulk_edit: Bulk Edit

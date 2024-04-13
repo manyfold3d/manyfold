@@ -20,6 +20,9 @@ pl:
       tags: Tagi
     general:
       edit: Edytuj Model
+    image_carousel:
+      next: Następna
+      previous: Poprzednia
     index:
       actions_heading: Akcje
       bulk_edit: Edycja zbiorcza
@@ -31,7 +34,7 @@ pl:
     problem:
       merge_all: Połącz wszystko
     scan:
-      success:
+      success: Rozpoczęto skanowanie modelów
     show:
       files: Pliki
       files_card:
@@ -52,7 +55,7 @@ pl:
           summary_html: Folder i pliki tworzące ten model zostaną przeniesione z:<br> <code>%{from}</code><br> do<br> <code>%{to}</code>
           'yes': Tak, przenieś pliki
       path: Ścieżka
-      rescan:
+      rescan: Ponowne przeskanuj pliki
       search: Wyszukaj w Internecie modele o tej samej nazwie
       tags: Tagi
     update:
