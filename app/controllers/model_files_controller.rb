@@ -3,7 +3,7 @@ class ModelFilesController < ApplicationController
 
   before_action :get_library
   before_action :get_model
-  before_action :get_file, except: [:bulk_edit, :bulk_update]
+  before_action :get_file, except: [:create, :bulk_edit, :bulk_update]
 
   skip_after_action :verify_authorized, only: [:bulk_edit, :bulk_update]
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
@@ -21,6 +21,16 @@ class ModelFilesController < ApplicationController
           send_file_content
         end
       end
+    end
+  end
+
+  def create
+    if params[:convert]
+      file = ModelFile.find(params[:convert][:id].to_i)
+      Analysis::FileConversionJob.perform_later(file.id, params[:convert][:to].to_sym)
+      redirect_to [@library, @model, file], notice: t(".conversion_started")
+    else
+      head :unprocessable_entity
     end
   end
 
