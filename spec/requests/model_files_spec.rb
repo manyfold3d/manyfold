@@ -32,7 +32,7 @@ RSpec.describe "Model Files" do
 
     describe "GET /libraries/:library_id/models/:model_id/model_files/edit", :as_editor do
       it "shows bulk update form" do
-        get edit_library_model_model_files_path(library, model, stl_file)
+        get bulk_edit_library_model_model_files_path(library, model, stl_file)
         expect(response).to have_http_status(:success)
       end
     end

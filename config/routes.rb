@@ -29,8 +29,8 @@ Rails.application.routes.draw do
       end
       resources :model_files, except: [:index, :new, :create] do
         collection do
-          get "edit", action: "bulk_edit"
-          patch "update", action: "bulk_update"
+          get "bulk_edit"
+          patch "bulk_update"
         end
       end
     end
