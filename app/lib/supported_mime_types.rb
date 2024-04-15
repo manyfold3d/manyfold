@@ -15,6 +15,10 @@ module SupportedMimeTypes
     Mime::EXTENSION_LOOKUP.filter { |k, v| is_model_mime_type?(v) }.keys
   end
 
+  def self.can_export?(type)
+    [:threemf].include? type
+  end
+
   class << self
     private
 
