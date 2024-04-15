@@ -3,6 +3,8 @@ en:
   model_files:
     bulk_update:
       success: Files updated successfully.
+    create:
+      conversion_started: File conversion started. The converted file should be available shortly.
     destroy:
       confirm: Are you sure you want to remove this file from your filesystem?
       success: File deleted!
@@ -12,6 +14,7 @@ en:
       actions_heading: Actions
       details_heading: Details
       notes_heading: Notes
+      convert: Convert to 3MF
     update:
       failure: An error occurred and file details could not be saved.
       success: File details saved.

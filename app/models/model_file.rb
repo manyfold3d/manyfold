@@ -43,8 +43,12 @@ class ModelFile < ApplicationRecord
     Mime::Type.lookup_by_extension(extension)
   end
 
+  def basename
+    File.basename(filename, ".*")
+  end
+
   def name
-    File.basename(filename, ".*").humanize.titleize
+    basename.humanize.titleize
   end
 
   def pathname

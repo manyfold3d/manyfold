@@ -27,10 +27,10 @@ Rails.application.routes.draw do
         post "merge"
         post "scan"
       end
-      resources :model_files, except: [:index, :new, :create] do
+      resources :model_files, except: [:index, :new] do
         collection do
-          get "edit", action: "bulk_edit"
-          patch "update", action: "bulk_update"
+          get "bulk_edit"
+          patch "bulk_update"
         end
       end
     end

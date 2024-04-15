@@ -3,6 +3,7 @@ require "support/mock_directory"
 
 # edit_library_model_model_files GET    /libraries/:library_id/models/:model_id/model_files/edit(.:format)      model_files#bulk_edit
 #      library_model_model_files PATCH  /libraries/:library_id/models/:model_id/model_files/update(.:format)    model_files#bulk_update
+#                                POST   /libraries/:library_id/models/:model_id/model_files(.:format)           model_files#create
 #  edit_library_model_model_file GET    /libraries/:library_id/models/:model_id/model_files/:id/edit(.:format)  model_files#edit
 #       library_model_model_file GET    /libraries/:library_id/models/:model_id/model_files/:id(.:format)       model_files#show
 #                                PATCH  /libraries/:library_id/models/:model_id/model_files/:id(.:format)       model_files#update
@@ -32,7 +33,7 @@ RSpec.describe "Model Files" do
 
     describe "GET /libraries/:library_id/models/:model_id/model_files/edit", :as_editor do
       it "shows bulk update form" do
-        get edit_library_model_model_files_path(library, model, stl_file)
+        get bulk_edit_library_model_model_files_path(library, model, stl_file)
         expect(response).to have_http_status(:success)
       end
     end
@@ -78,6 +79,32 @@ RSpec.describe "Model Files" do
         it "has correct MIME type" do
           expect(response.media_type).to eq("image/jpeg")
         end
+      end
+    end
+
+    describe "POST /libraries/:library_id/models/:model_id/model_files", :as_editor do
+      context "when requesting a conversion" do
+        let(:params) { {convert: {id: stl_file.id, to: "threemf"}} }
+
+        it "queues a conversion job" do
+          expect { post library_model_model_files_path(library, model, params: params) }.to have_enqueued_job(Analysis::FileConversionJob).with(stl_file.id, :threemf)
+        end
+
+        it "redirects back to file list" do
+          post library_model_model_files_path(library, model, params: params)
+          expect(response).to redirect_to library_model_model_file_path(library, model, stl_file)
+        end
+
+        it "shows success message if conversion job was queued" do
+          post library_model_model_files_path(library, model, params: params)
+          follow_redirect!
+          expect(response.body).to include "alert-info"
+        end
+      end
+
+      it "shows an error with missing parameters" do
+        post library_model_model_files_path(library, model, params: {})
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
 
