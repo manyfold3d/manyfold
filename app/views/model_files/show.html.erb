@@ -63,6 +63,9 @@
 
     <%= card :secondary, t(".actions_heading") do %>
       <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), library_model_model_file_path(@library, @model, @file, @file.extension.to_sym), {class: "btn btn-secondary"} %>
+      <% if policy(:model_file).create? && ["stl", "obj"].include?(@file.extension) %>
+        <%= link_to safe_join([icon("arrow-left-right", t(".convert")), t(".convert")], " "), library_model_model_files_path(@library, @model, convert: {id: @file.id, to: "threemf"}), method: :post, class: "btn btn-warning" %>
+      <% end %>
     <% end %>
 
   </div>
