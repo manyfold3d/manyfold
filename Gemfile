@@ -131,3 +131,4 @@ gem "sidekiq-failures", "~> 1.0"
 gem "activejob-status", "~> 1.0"
 
 gem "brakeman", "~> 6.1"
+gem "thruster", "~> 0.1.3"
