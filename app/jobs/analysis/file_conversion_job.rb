@@ -5,20 +5,30 @@ class Analysis::FileConversionJob < ApplicationJob
 
   def perform(file_id, output_format)
     # Can we output this format?
-    return unless SupportedMimeTypes.can_export?(output_format)
+    unless SupportedMimeTypes.can_export?(output_format)
+      logger.warn "Analysis::FileConversionJob aborted, format #{output_format} is not supported"
+      return
+    end
     # Get model
     begin
       file = ModelFile.find(file_id)
     rescue ActiveRecord::RecordNotFound
+      logger.warn "Analysis::FileConversionJob aborted, invalid ModelFile ID #{file_id}"
       return
     end
     exporter = nil
     extension = nil
     case output_format
     when :threemf
-      return unless file.mesh.manifold?
-      extension = "3mf"
-      exporter = Mittsu::ThreeMFExporter.new
+      if file.mesh.manifold?
+        extension = "3mf"
+        exporter = Mittsu::ThreeMFExporter.new
+      else
+        logger.warn "Analysis::FileConversionJob aborted: can't save non-manifold mesh to 3MF for ModelFile ID #{file_id}"
+        return
+      end
+    else
+      logger.error "Analysis::FileConversionJob error: unhandled output format #{output_format}"
     end
     if exporter
       new_file = ModelFile.new(

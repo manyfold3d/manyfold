@@ -28,7 +28,7 @@ class ModelFilesController < ApplicationController
     if params[:convert]
       file = ModelFile.find(params[:convert][:id].to_i)
       Analysis::FileConversionJob.perform_later(file.id, params[:convert][:to].to_sym)
-      redirect_to [@library, @model, file], notice: t(".conversion_started")
+      redirect_back_or_to [@library, @model, file], notice: t(".conversion_started")
     else
       head :unprocessable_entity
     end

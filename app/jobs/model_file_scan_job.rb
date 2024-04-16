@@ -5,6 +5,7 @@ class ModelFileScanJob < ApplicationJob
     begin
       file = ModelFile.find(file_id)
     rescue ActiveRecord::RecordNotFound
+      logger.warn "ModelFileScanJob aborted, invalid ModelFile ID #{file_id}"
       return
     end
     # Try to guess if the file is presupported

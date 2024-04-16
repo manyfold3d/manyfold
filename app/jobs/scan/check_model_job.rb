@@ -5,6 +5,7 @@ class Scan::CheckModelJob < ApplicationJob
     begin
       model = Model.find(model_id)
     rescue ActiveRecord::RecordNotFound
+      logger.warn "Scan::CheckModelJob aborted, invalid Model ID #{model_id}"
       return
     end
     if scan
