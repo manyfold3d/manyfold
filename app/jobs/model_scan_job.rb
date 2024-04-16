@@ -24,6 +24,7 @@ class ModelScanJob < ApplicationJob
     begin
       model = Model.find(model_id)
     rescue ActiveRecord::RecordNotFound
+      logger.warn "ModelScanJob aborted, invalid Model ID #{model_id}"
       return
     end
     model_path = File.join(model.library.path, model.path)

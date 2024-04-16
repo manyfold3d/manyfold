@@ -6,6 +6,7 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
     begin
       file = ModelFile.find(file_id)
     rescue ActiveRecord::RecordNotFound
+      logger.warn "Analysis::GeometricAnalysisJob aborted: invalid ModelFile ID #{file_id}"
       return
     end
     if SiteSettings.analyse_manifold
@@ -13,6 +14,7 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
       mesh = begin
         file.mesh
       rescue FloatDomainError
+        logger.warn "Analysis::GeometricAnalysisJob aborted: FloatDomainError encountered processing ModelFile ID #{file_id}"
         nil
       end
       if mesh
@@ -32,6 +34,8 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
         #     !mesh.solid?
         #   )
         # end
+      else
+        logger.warn "Analysis::GeometricAnalysisJob: couldn't load mesh for ModelFile ID #{file_id}"
       end
     end
   end

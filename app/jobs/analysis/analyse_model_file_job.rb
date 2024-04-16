@@ -7,6 +7,7 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
     begin
       file = ModelFile.find(file_id)
     rescue ActiveRecord::RecordNotFound
+      logger.warn "Analysis::AnalyseModelFileJob aborted, invalid ModelFile ID #{file_id}"
       return
     end
     # Don't run analysis if the file is missing
