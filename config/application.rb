@@ -56,6 +56,9 @@ module Manyfold
     # Treat pundit failures as standard "forbidden"
     config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
 
+    # Enable X-Sendfile with Thruster in all environments
+    config.action_dispatch.x_sendfile_header = "X-Sendfile"
+
     config.action_mailer.smtp_settings = {
       address: ENV.fetch("SMTP_SERVER", nil),
       user_name: ENV.fetch("SMTP_USERNAME", nil),
