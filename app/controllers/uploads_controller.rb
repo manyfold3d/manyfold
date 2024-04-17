@@ -42,7 +42,7 @@ class UploadsController < ApplicationController
           file_name = pn.basename
           entry.pathname=(file_name.to_s)
           reader.extract(entry, flags.to_i)
-          end
+        end
       end
     end
   ensure
