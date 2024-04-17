@@ -32,7 +32,7 @@ class UploadsController < ApplicationController
 
   def unzip(dest_folder_name, datafile)
     pn = Pathname.new(dest_folder_name)
-    
+
     flags = Archive::EXTRACT_PERM
     reader = Archive::Reader.open_filename(datafile.path)
     Dir.mkdir(dest_folder_name)
