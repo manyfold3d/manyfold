@@ -36,7 +36,13 @@ class UploadsController < ApplicationController
     Dir.mkdir(dest_folder_name)
     Dir.chdir(dest_folder_name) do
       reader.each_entry do |entry|
-        reader.extract(entry, flags.to_i)
+        # For non-directory files, strips the path and extracts to current directory
+        if !entry.directory?
+          pn = Pathname.new(entry.pathname)
+          file_name = pn.basename
+          entry.pathname=(file_name.to_s)
+          reader.extract(entry, flags.to_i)
+          end
       end
     end
   ensure
