@@ -1,4 +1,4 @@
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Rails.application.routes.draw do
   get "problems/index"
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
   authenticate :user, lambda { |u| u.is_administrator? } do
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => "/sidekiq"
   end
 
   resources :users, only: [] do
