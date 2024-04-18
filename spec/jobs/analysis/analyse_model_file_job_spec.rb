@@ -6,7 +6,6 @@ RSpec.describe Analysis::AnalyseModelFileJob do
     let(:file) { create(:model_file, filename: "test.3mf", digest: "deadc0de", size: 1) }
 
     before do
-      ActiveJob::Base.queue_adapter = :test
       allow(ModelFile).to receive(:find).with(file.id).and_return(file)
       allow(File).to receive(:exist?).and_return(true)
       allow(File).to receive(:mtime).once.and_return(1.day.ago)

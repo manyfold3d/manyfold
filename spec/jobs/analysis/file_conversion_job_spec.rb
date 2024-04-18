@@ -21,7 +21,6 @@ RSpec.describe Analysis::FileConversionJob do
   end
 
   before do
-    ActiveJob::Base.queue_adapter = :test
     allow(file).to receive(:mesh).and_return(mesh)
     allow(ModelFile).to receive(:find).with(file.id).and_return(file)
   end

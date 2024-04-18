@@ -1,10 +1,6 @@
 require "rails_helper"
 
 RSpec.describe ModelFileScanJob do
-  before do
-    ActiveJob::Base.queue_adapter = :test
-  end
-
   let(:file) { create(:model_file) }
   let(:supported_file) { create(:model_file, filename: "file1_supported.stl") }
 

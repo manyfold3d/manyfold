@@ -2,10 +2,6 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe Scan::DetectFilesystemChangesJob do
-  before do
-    ActiveJob::Base.queue_adapter = :test
-  end
-
   context "with files in various folders" do
     around do |ex|
       MockDirectory.create([

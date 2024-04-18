@@ -4,10 +4,6 @@ RSpec.describe Scan::CheckModelJob do
   let!(:thing) { create(:model, path: "model_one") }
   let!(:file) { create(:model_file, model: thing) }
 
-  before do
-    ActiveJob::Base.queue_adapter = :test
-  end
-
   it "queues up model file scan job" do
     expect { described_class.perform_now(thing.id) }.to(
       have_enqueued_job(ModelScanJob).with(thing.id).once
