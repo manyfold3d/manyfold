@@ -97,7 +97,6 @@ pl:
       acts_as_taggable_on/tag: Tag
       collection: Kolekcja
       creator: Twórca
-      delayed/backend/active_record/job: Zadanie
       library: Biblioteka
       link: Link
       model: Model
