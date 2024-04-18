@@ -37,11 +37,14 @@
     <div class='col'>
       <button type="submit" class="btn btn-primary"><%= icon("save", t(".submit")) %> <%= t(".submit") %></button>
     </div>
-    <% if current_user.is_administrator? %>
+    <% if current_user.is_administrator? && !Flipper.enabled?(:demo_mode) %>
       <div class='col text-end'>
         <%= link_to safe_join([icon("tools", t(".advanced_admin")), t(".advanced_admin")], " "),
               "/admin",
-              class: "btn btn-danger #{Flipper.enabled?(:demo_mode) ? "disabled" : ""}" %>
+              class: "btn btn-danger" %>
+        <%= link_to safe_join([icon("activity", t(".sidekiq")), t(".sidekiq")], " "),
+              "/sidekiq",
+              class: "btn btn-danger", target: "_sidekiq" %>
       </div>
     <% end %>
     </p>

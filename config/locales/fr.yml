@@ -97,7 +97,6 @@ fr:
       acts_as_taggable_on/tag: Étiquette
       collection: Collection
       creator: Créateur
-      delayed/backend/active_record/job: Tâche
       library: Bibliothèque
       link: Lien
       model: Modèle

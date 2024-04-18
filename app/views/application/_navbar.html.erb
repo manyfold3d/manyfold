@@ -34,19 +34,21 @@
           <%= nav_link "upload", t(".upload"), uploads_path, style: "btn btn-warning btn-sm me-1 mt-lg-1" if policy(:upload).index? %>
         </li>
         <li class="nav-item">
-          <% if @scan_in_progress %>
-            <%= nav_link "", t(".scanning"), "/admin/delayed_backend_active_record_jobs", style: "btn btn-outline-warning btn-sm me-1 mt-lg-1", icon_style: "spinner-border spinner-border-sm" %>
-          <% elsif policy(:library).scan? %>
-            <div class="btn-group">
-              <button type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                class="btn btn-warning btn-sm mt-1 dropdown-toggle">
-                <%= t ".scan" %>
-              </button>
-              <ul class="dropdown-menu">
-                <li><%= link_to t(".scan_changes"), scan_libraries_path, method: :post, class: "dropdown-item" %></li>
-                <li><%= link_to t(".check_existing"), scan_libraries_path(type: :check), method: :post, class: "dropdown-item" %>
-              </ul>
-            </div>
+          <% if policy(:library).scan? %>
+            <% if @scan_in_progress %>
+              <%= nav_link "", t(".scanning"), "/sidekiq", style: "btn btn-outline-warning btn-sm me-1 mt-lg-1", icon_style: "spinner-border spinner-border-sm" %>
+            <% else %>
+              <div class="btn-group">
+                <button type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                  class="btn btn-warning btn-sm mt-1 dropdown-toggle">
+                  <%= t ".scan" %>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%= link_to t(".scan_changes"), scan_libraries_path, method: :post, class: "dropdown-item" %></li>
+                  <li><%= link_to t(".check_existing"), scan_libraries_path(type: :check), method: :post, class: "dropdown-item" %>
+                </ul>
+              </div>
+            <% end %>
           <% end %>
         </li>
         <%- if current_user %>

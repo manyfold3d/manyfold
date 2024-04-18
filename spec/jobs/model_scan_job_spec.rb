@@ -2,10 +2,6 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe ModelScanJob do
-  before do
-    ActiveJob::Base.queue_adapter = :test
-  end
-
   context "with a simple model folder" do
     around do |ex|
       MockDirectory.create([
@@ -55,10 +51,6 @@ RSpec.describe ModelScanJob do
         @library_path = path
         ex.run
       end
-    end
-
-    before do
-      ActiveJob::Base.queue_adapter = :test
     end
 
     let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable

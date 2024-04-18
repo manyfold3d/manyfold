@@ -135,11 +135,6 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     date (3.3.4)
-    delayed_job (4.1.11)
-      activesupport (>= 3.0, < 8.0)
-    delayed_job_active_record (4.1.8)
-      activerecord (>= 3.0, < 8.0)
-      delayed_job (>= 3.0, < 5)
     devise (4.9.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -464,6 +459,11 @@ GEM
       sprockets-rails
       tilt
     shellany (0.0.1)
+    sidekiq (7.2.2)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.19.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -555,7 +555,6 @@ DEPENDENCIES
   cssbundling-rails (~> 1.4)
   data_migrate!
   database_cleaner-active_record (~> 2.1)
-  delayed_job_active_record (~> 4.1)
   devise (~> 4.9)
   devise-i18n (~> 1.12)
   devise-security (~> 0.18.0)
@@ -597,6 +596,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sass-rails (>= 6)
+  sidekiq (~> 7.2)
   simplecov (~> 0.22.0)
   spdx (~> 4.1)
   spring

@@ -1,5 +1,5 @@
 class ModelFileScanJob < ApplicationJob
-  queue_as :default
+  queue_as :scan
 
   def perform(file_id)
     begin

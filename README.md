@@ -24,7 +24,7 @@ The application is built in [Ruby on Rails](https://rubyonrails.org), and tries 
 
 In general, Manyfold is a server-side app that uses plain old HTTP requests. We don't have any code using XHR, Websockets, or other more interactive comms yet (though could do in future).
 
-The application consists of the application server itself, plus a background job runner using [Delayed::Job](https://github.com/collectiveidea/delayed_job) for asynchronous tasks.
+The application consists of the application server itself, plus a background job runner using [Sidekiq](https://sidekiq.org/) for asynchronous tasks.
 
 There are a few other major components that we build with:
 

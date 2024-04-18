@@ -57,10 +57,6 @@ RSpec.describe ModelFile do
   end
 
   context "with actual files on disk" do
-    before do
-      ActiveJob::Base.queue_adapter = :test
-    end
-
     around do |ex|
       MockDirectory.create([
         "model_one/part_1.3mf"

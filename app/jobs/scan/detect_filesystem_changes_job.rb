@@ -1,7 +1,7 @@
 require "shellwords"
 
 class Scan::DetectFilesystemChangesJob < ApplicationJob
-  queue_as :default
+  queue_as :scan
 
   # Find all files in the library that we might need to look at
   def filenames_on_disk(library)

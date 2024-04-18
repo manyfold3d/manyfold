@@ -1,7 +1,7 @@
 require "shellwords"
 
 class ModelScanJob < ApplicationJob
-  queue_as :default
+  queue_as :scan
 
   def file_list(model_path)
     list = []

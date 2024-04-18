@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_scan_status
-    @scan_in_progress = Delayed::Job.count > 0
+    @scan_in_progress = Sidekiq::Queue.new("scan").size > 0
   end
 
   def remember_ordering

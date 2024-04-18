@@ -105,6 +105,7 @@ en:
         label: Show ground plane
     show:
       advanced_admin: Advanced Administration
+      sidekiq: Sidekiq
       submit: Save Settings
       title: Settings
     tag_cloud_settings:
