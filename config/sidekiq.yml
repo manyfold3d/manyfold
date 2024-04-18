@@ -1,0 +1,5 @@
+---
+:queues:
+  - scan
+  - default
+  - analysis
