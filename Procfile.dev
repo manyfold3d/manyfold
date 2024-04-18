@@ -1,5 +1,5 @@
 rails: bin/rails server -p $PORT
-worker: bin/rake jobs:work
+worker: bundle exec sidekiq
 js: yarn build --watch
 css: yarn build:css --watch
 typecheck: yarn typecheck --watch --preserveWatchOutput

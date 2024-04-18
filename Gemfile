@@ -74,8 +74,6 @@ gem "cocoon", "~> 1.2"
 
 gem "public_suffix", "~> 5.0"
 
-gem "delayed_job_active_record", "~> 4.1"
-
 gem "activerecord-nulldb-adapter", "~> 1.0.1"
 
 gem "memoist", "~> 0.16.2"
@@ -126,3 +124,5 @@ gem "rolify", "~> 6.0"
 gem "devise-security", "~> 0.18.0"
 
 gem "letter_opener", "~> 1.10", group: :development
+
+gem "sidekiq", "~> 7.2"
