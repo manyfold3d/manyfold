@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   get "problems/index"
   devise_for :users, controllers: {
@@ -7,6 +9,9 @@ Rails.application.routes.draw do
   }
 
   ActiveAdmin.routes(self)
+  authenticate :user, lambda { |u| u.is_administrator? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   resources :users, only: [] do
     resource :settings, only: [:show, :update]
