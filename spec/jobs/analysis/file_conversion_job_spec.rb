@@ -22,6 +22,7 @@ RSpec.describe Analysis::FileConversionJob do
 
   before do
     allow(file).to receive(:mesh).and_return(mesh)
+    allow(ModelFile).to receive(:find).and_call_original
     allow(ModelFile).to receive(:find).with(file.id).and_return(file)
   end
 
@@ -63,7 +64,7 @@ RSpec.describe Analysis::FileConversionJob do
 
     it "does not convert non-manifold meshes" do
       allow(mesh).to receive(:manifold?).and_return(false)
-      expect { described_class.perform_now(file.id, :threemf) }.not_to change(ModelFile, :count)
+      expect { described_class.perform_now(file.id, :threemf) }.to raise_error(NonManifoldError)
     end
 
     it "queues up analysis job for new file" do
@@ -71,12 +72,11 @@ RSpec.describe Analysis::FileConversionJob do
     end
   end
 
-  it "does nothing with an invalid file ID" do
-    allow(ModelFile).to receive(:find).with(nil).and_raise(ActiveRecord::RecordNotFound)
-    expect { described_class.perform_now(nil, :threemf) }.not_to raise_error
+  it "raises exception with an invalid file ID" do
+    expect { described_class.perform_now(nil, :threemf) }.to raise_error(ActiveRecord::RecordNotFound)
   end
 
   it "does nothing with an invalid output format" do
-    expect { described_class.perform_now(file.id, :ply) }.not_to raise_error
+    expect { described_class.perform_now(file.id, :ply) }.to raise_error(UnsupportedFormatError)
   end
 end

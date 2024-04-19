@@ -28,7 +28,7 @@ RSpec.describe Scan::CheckModelJob do
     )
   end
 
-  it "fails silently if model ID is not found" do
-    expect { described_class.perform_now(nil) }.not_to raise_error
+  it "raises exception if model ID is not found" do
+    expect { described_class.perform_now(nil) }.to raise_error(ActiveRecord::RecordNotFound)
   end
 end
