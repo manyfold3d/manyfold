@@ -38,6 +38,9 @@ class Library < ApplicationRecord
     # models will get the wrong paths. This method makes sure that the
     # case is stored in the canonical form that the OS will give us back
     # in globs
-    self.path = Dir.glob(path).first
+    if path
+      normalised = Dir.glob(path).first
+      self.path = normalised if normalised
+    end
   end
 end
