@@ -16,6 +16,8 @@ module ActivityHelper
     case status
     when :working
       "table-info"
+    when :completed
+      "table-success"
     when :failed
       "table-danger"
     end
