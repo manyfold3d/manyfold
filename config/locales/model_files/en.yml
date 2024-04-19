@@ -12,9 +12,9 @@ en:
       edit: Edit File Information
     show:
       actions_heading: Actions
+      convert: Convert to 3MF
       details_heading: Details
       notes_heading: Notes
-      convert: Convert to 3MF
     update:
       failure: An error occurred and file details could not be saved.
       success: File details saved.

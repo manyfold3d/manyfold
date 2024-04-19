@@ -105,6 +105,20 @@ en:
       user:
         one: User
         other: Users
+  activity:
+    index:
+      description: Entries are discard after %{retention_period}.
+      message: Message
+      name: Name
+      sidekiq: Sidekiq
+      time: When
+      title: Recent Activity
+  activity_helper:
+    status_icon:
+      completed: Complete
+      error: Errored
+      queued: Queued
+      working: Working
   application:
     content_header:
       sort:
@@ -133,6 +147,7 @@ en:
     links_form:
       add: add another link
     navbar:
+      activity: Activity
       check_existing: Check existing models
       log_in: Sign in
       log_out: Sign out

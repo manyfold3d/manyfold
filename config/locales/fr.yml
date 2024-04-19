@@ -105,6 +105,20 @@ fr:
       user:
         one: Utilisateur
         other: Utilisateurs
+  activity:
+    index:
+      description:
+      message:
+      name:
+      sidekiq: Sidekiq
+      time:
+      title:
+  activity_helper:
+    status_icon:
+      completed:
+      error:
+      queued:
+      working:
   application:
     content_header:
       sort:
@@ -133,6 +147,7 @@ fr:
     links_form:
       add: ajouter un autre lien
     navbar:
+      activity:
       check_existing: Vérifier les modèles existants
       log_in: 'Se connecter
 
