@@ -2,12 +2,7 @@ class Scan::CheckModelJob < ApplicationJob
   queue_as :scan
 
   def perform(model_id, scan: true)
-    begin
-      model = Model.find(model_id)
-    rescue ActiveRecord::RecordNotFound
-      logger.warn "Scan::CheckModelJob aborted, invalid Model ID #{model_id}"
-      return
-    end
+    model = Model.find(model_id)
     if scan
       # Scan for new files (runs integrity check automatically)
       ModelScanJob.perform_later(model.id)

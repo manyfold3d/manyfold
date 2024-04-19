@@ -21,12 +21,7 @@ class ModelScanJob < ApplicationJob
   end
 
   def perform(model_id)
-    begin
-      model = Model.find(model_id)
-    rescue ActiveRecord::RecordNotFound
-      logger.warn "ModelScanJob aborted, invalid Model ID #{model_id}"
-      return
-    end
+    model = Model.find(model_id)
     model_path = File.join(model.library.path, model.path)
     return if Problem.create_or_clear(model, :missing, !File.exist?(model_path))
     # For each file in the model, create a file object

@@ -11,6 +11,7 @@ RSpec.describe Analysis::GeometricAnalysisJob do
 
   before do
     allow(file).to receive(:mesh).and_return(mesh)
+    allow(ModelFile).to receive(:find).and_call_original
     allow(ModelFile).to receive(:find).with(file.id).and_return(file)
     allow(SiteSettings).to receive(:analyse_manifold).and_return(true)
   end
@@ -48,8 +49,7 @@ RSpec.describe Analysis::GeometricAnalysisJob do
     expect { described_class.perform_now(file.id) }.to change(Problem, :count).from(1).to(0)
   end
 
-  it "fails silently if file ID is not found" do
-    allow(ModelFile).to receive(:find).with(nil).and_raise(ActiveRecord::RecordNotFound)
-    expect { described_class.perform_now(nil) }.not_to raise_error
+  it "raises exception if file ID is not found" do
+    expect { described_class.perform_now(nil) }.to raise_error(ActiveRecord::RecordNotFound)
   end
 end

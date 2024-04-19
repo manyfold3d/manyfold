@@ -2,12 +2,7 @@ class Scan::CheckModelIntegrityJob < ApplicationJob
   queue_as :scan
 
   def perform(model_id)
-    begin
-      model = Model.find(model_id)
-    rescue ActiveRecord::RecordNotFound
-      logger.warn "Scan::CheckModelIntegrityJob aborted, invalid Model ID #{model_id}"
-      return
-    end
+    model = Model.find(model_id)
     Problem.create_or_clear(model, :missing, !File.exist?(File.join(model.library.path, model.path)))
     Problem.create_or_clear model, :empty, (model.model_files.count == 0)
     Problem.create_or_clear model, :nesting, model.contains_other_models?

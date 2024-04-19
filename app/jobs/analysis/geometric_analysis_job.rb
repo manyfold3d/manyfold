@@ -1,23 +1,18 @@
+class MeshLoadError < StandardError
+end
+
 class Analysis::GeometricAnalysisJob < ApplicationJob
   queue_as :analysis
 
   def perform(file_id)
     # Get model
-    begin
-      file = ModelFile.find(file_id)
-    rescue ActiveRecord::RecordNotFound
-      logger.warn "Analysis::GeometricAnalysisJob aborted: invalid ModelFile ID #{file_id}"
-      return
-    end
+    file = ModelFile.find(file_id)
     if SiteSettings.analyse_manifold
+      status[:step] = "jobs.analysis.geometric_analysis.loading_mesh"
       # Get mesh
-      mesh = begin
-        file.mesh
-      rescue FloatDomainError
-        logger.warn "Analysis::GeometricAnalysisJob aborted: FloatDomainError encountered processing ModelFile ID #{file_id}"
-        nil
-      end
+      mesh = file.mesh
       if mesh
+        status[:step] = "jobs.analysis.geometric_analysis.manifold_check"
         # Check for manifold mesh
         manifold = mesh.manifold?
         Problem.create_or_clear(
@@ -28,6 +23,7 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
         # Temporarily disabled for release
         # # If the mesh is manifold, we can check if it's inside out
         # if manifold
+        # status[:step] = "jobs.analysis.geometric_analysis.direction_check"
         #   Problem.create_or_clear(
         #     file,
         #     :inside_out,
@@ -35,7 +31,7 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
         #   )
         # end
       else
-        logger.warn "Analysis::GeometricAnalysisJob: couldn't load mesh for ModelFile ID #{file_id}"
+        raise MeshLoadError.new
       end
     end
   end
