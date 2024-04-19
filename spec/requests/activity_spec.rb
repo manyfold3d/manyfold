@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe "Activities", type: :request do
-  context "as admin", :as_administrator do
+RSpec.describe "Activities" do
+  context "when logged in as admin", :as_administrator do
     describe "GET /" do
       it "returns http success" do
         get "/activity"
@@ -10,7 +10,7 @@ RSpec.describe "Activities", type: :request do
     end
   end
 
-  context "as non-admin", :as_editor do
+  context "when logged in as non-admin", :as_editor do
     describe "GET /" do
       it "raises a routing error" do
         expect { get "/activity" }.to raise_error(ActionController::RoutingError)
