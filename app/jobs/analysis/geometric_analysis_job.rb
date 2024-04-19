@@ -1,3 +1,6 @@
+class MeshLoadError < StandardError
+end
+
 class Analysis::GeometricAnalysisJob < ApplicationJob
   queue_as :analysis
 
@@ -6,12 +9,7 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
     file = ModelFile.find(file_id)
     if SiteSettings.analyse_manifold
       # Get mesh
-      mesh = begin
-        file.mesh
-      rescue FloatDomainError
-        logger.warn "Analysis::GeometricAnalysisJob aborted: FloatDomainError encountered processing ModelFile ID #{file_id}"
-        nil
-      end
+      mesh = file.mesh
       if mesh
         # Check for manifold mesh
         manifold = mesh.manifold?
@@ -30,7 +28,7 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
         #   )
         # end
       else
-        logger.warn "Analysis::GeometricAnalysisJob: couldn't load mesh for ModelFile ID #{file_id}"
+        raise MeshLoadError.new
       end
     end
   end
