@@ -36,7 +36,7 @@
         <li class="nav-item">
           <% if policy(:library).scan? %>
             <% if @scan_in_progress %>
-              <%= nav_link "", t(".scanning"), "/sidekiq", style: "btn btn-outline-warning btn-sm me-1 mt-lg-1", icon_style: "spinner-border spinner-border-sm" %>
+              <%= nav_link "", t(".scanning"), "/activity", style: "btn btn-outline-warning btn-sm me-1 mt-lg-1", icon_style: "spinner-border spinner-border-sm" %>
             <% else %>
               <div class="btn-group">
                 <button type="button" data-bs-toggle="dropdown" aria-expanded="false"
@@ -59,6 +59,11 @@
                     problems_path,
                     icon_style: "link-#{max_problem_severity}",
                     text_style: "d-lg-none" %>
+            </li>
+          <% end %>
+          <% if policy(:activity).index? %>
+            <li class="nav-item">
+              <%= nav_link "activity", t(".activity"), "/activity", text_style: "d-lg-none" %>
             </li>
           <% end %>
           <li class="nav-item">
