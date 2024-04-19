@@ -6,5 +6,6 @@ class ActivityController < ApplicationController
 
   def index
     @jobs = ActiveJob::Status.all.sort_by { |x| x.last_activity }.reverse
+    @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(50)
   end
 end
