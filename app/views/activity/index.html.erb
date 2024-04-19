@@ -3,15 +3,18 @@
 Entries are kept for <%= distance_of_time_in_words ActiveJob::Status.options[:expires_in] %>.
 
 <table class="table table-striped">
+  <tr>
+    <th></th>
+    <th><%= t(".name") %></th>
+    <th><%= t(".time") %></th>
+    <th><%= t(".message") %></th>
+  </tr>
   <% @jobs.each do |status| %>
-    <tr>
-      <td><%= status[:name] %></td>
-      <td><%= t ".#{status[:status]}" %></td>
-      <td><%= time_ago_in_words status[:enqueued_at] if status[:enqueued_at] %></td>
-      <td><%= time_ago_in_words status[:started_at] if status[:started_at]%></td>
-      <td><%= time_ago_in_words status[:finished_at] if status[:finished_at] %></td>
-      <td><%= status[:queue] %></td>
-      <td><%= status[:exception]&.fetch(:message, nil) || t(status[:step]) %></td>
+    <tr class="<%= activity_row_style(status[:status]) %>">
+      <td><%= status_icon(status[:status]) %></td>
+      <td><%= status[:serialized_job]["job_class"] %></td>
+      <td><%= time_ago_in_words status.last_activity %></td>
+      <td><%= status[:exception]&.fetch(:message, nil) || t(status[:step] || status[:error]) %></td>
     </tr>
   <% end %>
 </table>
