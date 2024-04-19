@@ -1,0 +1,17 @@
+<h1>Recent Activity</h1>
+
+Entries are kept for <%= distance_of_time_in_words ActiveJob::Status.options[:expires_in] %>.
+
+<table class="table table-striped">
+  <% @jobs.each do |status| %>
+    <tr>
+      <td><%= status[:name] %></td>
+      <td><%= t ".#{status[:status]}" %></td>
+      <td><%= time_ago_in_words status[:enqueued_at] if status[:enqueued_at] %></td>
+      <td><%= time_ago_in_words status[:started_at] if status[:started_at]%></td>
+      <td><%= time_ago_in_words status[:finished_at] if status[:finished_at] %></td>
+      <td><%= status[:queue] %></td>
+      <td><%= status[:exception]&.fetch(:message, nil) || t(status[:step]) %></td>
+    </tr>
+  <% end %>
+</table>

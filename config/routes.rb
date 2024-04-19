@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   authenticate :user, lambda { |u| u.is_administrator? } do
     mount Sidekiq::Web => "/sidekiq"
+    resources :activity
   end
 
   resources :users, only: [] do
