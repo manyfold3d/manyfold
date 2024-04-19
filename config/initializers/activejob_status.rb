@@ -6,6 +6,12 @@ ActiveJob::Status.options = {
   expires_in: 24.hours.to_i
 }
 
+module ActiveJob::Status
+  def self.all
+    store.redis.keys("activejob:status:*").map { |x| ActiveJob::Status.get(x.split(":").last) }
+  end
+end
+
 class ActiveJob::Status::Status
   def last_activity
     [
