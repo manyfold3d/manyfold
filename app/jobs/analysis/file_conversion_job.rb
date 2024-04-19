@@ -10,12 +10,7 @@ class Analysis::FileConversionJob < ApplicationJob
       return
     end
     # Get model
-    begin
-      file = ModelFile.find(file_id)
-    rescue ActiveRecord::RecordNotFound
-      logger.warn "Analysis::FileConversionJob aborted, invalid ModelFile ID #{file_id}"
-      return
-    end
+    file = ModelFile.find(file_id)
     exporter = nil
     extension = nil
     case output_format

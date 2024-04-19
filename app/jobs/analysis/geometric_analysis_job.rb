@@ -3,12 +3,7 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
 
   def perform(file_id)
     # Get model
-    begin
-      file = ModelFile.find(file_id)
-    rescue ActiveRecord::RecordNotFound
-      logger.warn "Analysis::GeometricAnalysisJob aborted: invalid ModelFile ID #{file_id}"
-      return
-    end
+    file = ModelFile.find(file_id)
     if SiteSettings.analyse_manifold
       # Get mesh
       mesh = begin

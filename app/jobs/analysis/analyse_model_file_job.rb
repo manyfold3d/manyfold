@@ -4,12 +4,7 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
   queue_as :analysis
 
   def perform(file_id)
-    begin
-      file = ModelFile.find(file_id)
-    rescue ActiveRecord::RecordNotFound
-      logger.warn "Analysis::AnalyseModelFileJob aborted, invalid ModelFile ID #{file_id}"
-      return
-    end
+    file = ModelFile.find(file_id)
     # Don't run analysis if the file is missing
     # The Problem is raised elsewhere.
     return if !File.exist?(file.pathname)
