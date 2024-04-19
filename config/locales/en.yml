@@ -198,6 +198,27 @@ en:
       recent: Recently-added Models
       search:
         placeholder: What are you looking for?
+  jobs:
+    analysis:
+      analyse_model_file:
+        detect_duplicates: Detecting duplicate files
+        detect_ineffiency: Detecting inefficient formats
+        file_statistics: Calculating file statistics
+        matching: Matching supported files
+      file_conversion:
+        exporting: Exporting new file
+        loading_mesh: Loading mesh
+      geometric_analysis:
+        direction_check: Checking surface orientation
+        loading_mesh: Loading mesh
+        manifold_check: Checking that mesh is manifold
+    scan:
+      check_all:
+        queueing_model_checks: Queueing model checks
+      detect_filesystem_changes:
+        building_filename_list: Building file list
+        building_folder_list: Building changed folder list
+        creating_models: Creating models
   kaminari:
     paginator:
       label: Page navigation

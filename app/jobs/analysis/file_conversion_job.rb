@@ -16,6 +16,7 @@ class Analysis::FileConversionJob < ApplicationJob
     file = ModelFile.find(file_id)
     exporter = nil
     extension = nil
+    status[:step] = "jobs.analysis.file_conversion.loading_mesh"
     case output_format
     when :threemf
       raise NonManifoldError.new if !file.mesh.manifold?
@@ -23,6 +24,7 @@ class Analysis::FileConversionJob < ApplicationJob
       exporter = Mittsu::ThreeMFExporter.new
     end
     if exporter
+      status[:step] = "jobs.analysis.file_conversion.exporting"
       new_file = ModelFile.new(
         model: file.model,
         filename: file.filename.gsub(".#{file.extension}", ".#{extension}")
