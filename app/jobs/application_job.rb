@@ -9,7 +9,11 @@ class ApplicationJob < ActiveJob::Base
   # discard_on ActiveJob::DeserializationError
 
   before_perform do |job|
-    SiteSettings.clear_cache
+    begin
+      SiteSettings.clear_cache
+    rescue
+      nil
+    end
     job.status.update(started_at: DateTime.now)
   end
 
