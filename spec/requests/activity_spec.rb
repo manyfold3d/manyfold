@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Activities", type: :request do
   context "as admin", :as_administrator do
@@ -17,5 +17,4 @@ RSpec.describe "Activities", type: :request do
       end
     end
   end
-
 end

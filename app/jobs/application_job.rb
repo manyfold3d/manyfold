@@ -10,7 +10,7 @@ class ApplicationJob < ActiveJob::Base
 
   before_perform do |job|
     SiteSettings.clear_cache
-    job.status.update( started_at: DateTime.now )
+    job.status.update(started_at: DateTime.now)
   end
 
   after_perform do |job|
