@@ -7,8 +7,24 @@ class ApplicationJob < ActiveJob::Base
   # Most jobs are safe to ignore if the underlying records are no longer available
   # discard_on ActiveJob::DeserializationError
 
+  before_enqueue do |job|
+    job.status.update(
+      enqueued_at: DateTime.now,
+      name: job.class.name,
+      queue: job.queue_name
+    )
+  end
+
   before_perform do |job|
     SiteSettings.clear_cache
+    job.status.update( started_at: DateTime.now )
+  end
+
+  after_perform do |job|
+    job.status.update(
+      finished_at: DateTime.now,
+      step: nil
+    )
   end
 
   def self.extension_glob(extensions)
