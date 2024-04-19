@@ -1,8 +1,19 @@
-<h1>Recent Activity</h1>
+<h1><%= t ".title" %></h1>
 
-Entries are kept for <%= distance_of_time_in_words ActiveJob::Status.options[:expires_in] %>.
+<div class="row">
+  <div class='col col-auto'>
+    <%= t ".description", retention_period: distance_of_time_in_words(ActiveJob::Status.options[:expires_in]) %>
+  </div>
+  <% if !Flipper.enabled?(:demo_mode) %>
+    <div class='col text-end'>
+      <%= link_to safe_join([icon("activity", t(".sidekiq")), t(".sidekiq")], " "),
+            "/sidekiq",
+            class: "btn btn-danger", target: "_sidekiq" %>
+    </div>
+  <% end %>
+</div>
 
-<table class="table table-striped">
+<table class="table table-striped mt-3">
   <tr>
     <th></th>
     <th><%= t(".name") %></th>
