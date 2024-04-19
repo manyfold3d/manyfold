@@ -7,7 +7,7 @@ class ActivityController < ApplicationController
   def index
     @jobs = ActiveJob::Status.store.redis.keys("activejob:status:*").
               map{ |x| ActiveJob::Status.get(x.split(":").last) }.
-              sort_by{ |x| [x[:enqueued_at], x[:started_at], x[:finished_at], DateTime.new(0)].compact.max }.
+              sort_by{ |x| x.last_activity }.
               reverse
   end
 end
