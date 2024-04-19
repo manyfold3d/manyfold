@@ -4,6 +4,7 @@ class Library < ApplicationRecord
   has_many :problems, as: :problematic, dependent: :destroy
   serialize :tag_regex, Array
   after_initialize :init
+  before_validation :ensure_path_case_is_correct
 
   validates :path, presence: true, uniqueness: true, existing_path: true
 
@@ -27,5 +28,19 @@ class Library < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     ["model_files", "models", "problems"]
+  end
+
+  private
+
+  def ensure_path_case_is_correct
+    # On case-preserving-and-insensitive filesystems (i.e. macOS)
+    # if you get the case wrong, the library can be created, but then
+    # models will get the wrong paths. This method makes sure that the
+    # case is stored in the canonical form that the OS will give us back
+    # in globs
+    if path
+      normalised = Dir.glob(path).first
+      self.path = normalised if normalised
+    end
   end
 end

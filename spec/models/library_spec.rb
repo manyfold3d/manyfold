@@ -3,6 +3,8 @@ require "rails_helper"
 RSpec.describe Library do
   before do
     allow(File).to receive(:exist?).with("/library1").and_return(true)
+    allow(Dir).to receive(:glob).and_call_original
+    allow(Dir).to receive(:glob).with("/library1").and_return(["/library1"])
     allow(File).to receive(:exist?).with("/nope").and_return(false)
   end
 
