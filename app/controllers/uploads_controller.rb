@@ -31,6 +31,8 @@ class UploadsController < ApplicationController
   end
 
   def unzip(dest_folder_name, datafile)
+    pn = Pathname.new(dest_folder_name)
+
     flags = Archive::EXTRACT_PERM
     reader = Archive::Reader.open_filename(datafile.path)
     Dir.mkdir(dest_folder_name)
@@ -38,6 +40,19 @@ class UploadsController < ApplicationController
       reader.each_entry do |entry|
         reader.extract(entry, flags.to_i)
       end
+    end
+
+    # Checks the directory just created and if it contains only one directory,
+    # moves the contents of that directory up a level, then deletes the empty directory.
+    if pn.children.length == 1 && pn.children[0].directory?
+      dup_dir = Pathname.new(pn.children[0])
+
+      dup_dir.children.each do |child|
+        fixed_path = Pathname.new(pn.to_s + "/" + child.basename.to_s)
+        File.rename(child.to_s, fixed_path.to_s)
+      end
+
+      Dir.delete(dup_dir.to_s)
     end
   ensure
     reader&.close
