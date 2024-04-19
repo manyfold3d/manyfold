@@ -128,3 +128,4 @@ gem "letter_opener", "~> 1.10", group: :development
 gem "sidekiq", "~> 7.2"
 
 gem "sidekiq-failures", "~> 1.0"
+gem "activejob-status", "~> 1.0"

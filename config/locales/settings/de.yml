@@ -105,7 +105,6 @@ de:
         label:
     show:
       advanced_admin: Erweiterte Verwaltung
-      sidekiq: Sidekiq
       submit: Einstellungen speichern
       title: Einstellungen
     tag_cloud_settings:

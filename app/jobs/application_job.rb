@@ -1,4 +1,7 @@
 class ApplicationJob < ActiveJob::Base
+  include ActiveJob::Status
+  sidekiq_options retry: false
+
   # Automatically retry jobs that encountered a deadlock
   # retry_on ActiveRecord::Deadlocked
 
@@ -7,6 +10,14 @@ class ApplicationJob < ActiveJob::Base
 
   before_perform do |job|
     SiteSettings.clear_cache
+    job.status.update(started_at: DateTime.now)
+  end
+
+  after_perform do |job|
+    job.status.update(
+      finished_at: DateTime.now,
+      step: nil
+    )
   end
 
   def self.extension_glob(extensions)

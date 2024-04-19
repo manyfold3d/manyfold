@@ -105,7 +105,6 @@ fr:
         label: Afficher le plan de masse
     show:
       advanced_admin: Administration avancée
-      sidekiq: Sidekiq
       submit: Sauvegarder les paramètres
       title: Paramètres
     tag_cloud_settings:

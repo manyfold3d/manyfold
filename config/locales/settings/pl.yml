@@ -105,7 +105,6 @@ pl:
         label:
     show:
       advanced_admin: Zaawansowana Administracja
-      sidekiq: Sidekiq
       submit: Zapisz Ustawienia
       title: Ustawienia
     tag_cloud_settings:

@@ -1,0 +1,31 @@
+<h1><%= t ".title" %></h1>
+
+<div class="row">
+  <div class='col col-auto'>
+    <%= t ".description", retention_period: distance_of_time_in_words(ActiveJob::Status.options[:expires_in]) %>
+  </div>
+  <% if !Flipper.enabled?(:demo_mode) %>
+    <div class='col text-end'>
+      <%= link_to safe_join([icon("activity", t(".sidekiq")), t(".sidekiq")], " "),
+            "/sidekiq",
+            class: "btn btn-danger", target: "_sidekiq" %>
+    </div>
+  <% end %>
+</div>
+
+<table class="table table-striped mt-3">
+  <tr>
+    <th></th>
+    <th><%= t(".name") %></th>
+    <th><%= t(".time") %></th>
+    <th><%= t(".message") %></th>
+  </tr>
+  <% @jobs.each do |status| %>
+    <tr class="<%= activity_row_style(status[:status]) %>">
+      <td><%= status_icon(status[:status]) %></td>
+      <td><%= status[:serialized_job]["job_class"] %></td>
+      <td><%= time_ago_in_words status.last_activity %></td>
+      <td><%= status[:exception]&.fetch(:message, nil) || t(status[:step] || status[:error]) %></td>
+    </tr>
+  <% end %>
+</table>
