@@ -2,10 +2,10 @@
 pl:
   settings:
     analysis_settings:
-      description:
+      description: Przeprowadź głęboką analizę siatki na modelach. Opcje te sprawią, że skanowanie będzie trwało znacznie dłużej i zużyje znacznie więcej mocy procesora i pamięci.
       heading: Analiza siatki
       manifold:
-        help:
+        help: Sprawdź, czy siatki nie są siatkami nierozmaitymi (tj. mają dziury lub niemożliwe powierzchnie)
         label: Wykrywanie błędów siatki
     file_list_settings:
       heading: Lista Plików
@@ -60,13 +60,13 @@ pl:
       single_user_mode: Manyfold działa w trybie pojedynczego użytkownika.
     pagination_settings:
       collections:
-        label:
+        label: Paginuj kolekcję
       creators:
-        label:
+        label: Paginuj twórców
       description: Pokazuj jedynie określoną liczbę elementów na raz na stronie, a nie wszytko na raz. Może to przyspieszyć ładowanie stron.
-      heading:
+      heading: Paginacja
       models:
-        label:
+        label: Paginuj modele
       per_page:
         label: Liczba elementów na stronę
     problem_settings:
@@ -93,28 +93,28 @@ pl:
       enable_pan_zoom:
         label: Włącz sterowanie obrotem/zbliżeniem
       grid_width:
-        label:
+        label: Rozmiar płaszczyzny podłoża (mm)
       heading: Renderer
       object_colour:
         label: Kolor obiektu
       render_style:
         label: Styl renderowania
-        lambert:
-        normals:
+        lambert: Realistycznie cieniowany
+        normals: Kierunek powierzchni
       show_grid:
-        label:
+        label: Pokaż płaszczyznę podłoża
     show:
       advanced_admin: Zaawansowana Administracja
       submit: Zapisz Ustawienia
       title: Ustawienia
     tag_cloud_settings:
-      heading:
+      heading: Chmura tagów
       heatmap:
-        label:
+        label: Wyświetl liczbe tagów dla poszczególnych tagów
       hide_unrelated:
-        label:
+        label: Ukryj niepowiązane tagi na filtrowanych listach
       keypair:
-        label:
+        label: Użyj separatora do reprezentowania par kluczy
       sorting:
         label: Sortowanie
       threshold:
@@ -123,13 +123,13 @@ pl:
       auto_tag_new:
         label: Automatycznie taguj nowe modele za pomocą
       custom_stop_words:
-        label:
-      description:
+        label: Niestandardowe słowa stopu
+      description: Dodaje tagi do wszystkich nowo zeskanowanych modeli i odfiltrowuje określone słowa ("słowa stopu") podczas automatycznego tworzenia tagów. Dotyczy wszystkich użytkowników.
       filter_stop_words:
-        label:
+        label: Odfiltruj słowa stopu
       heading: Tagowanie
       stop_words_locale:
-        label:
+        label: Język słów stopu
       tag_model_directory_name:
         help: 'Uwaga: Może generować wiele tagów!'
         label: Twórz tagi na podstawie nazwy katalogu modelu

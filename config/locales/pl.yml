@@ -107,18 +107,18 @@ pl:
         other: Użytkowników
   activity:
     index:
-      description:
-      message:
-      name:
+      description: Wpisy są odrzucane po %{retention_period}.
+      message: Wiadomość
+      name: Nazwa
       sidekiq: Sidekiq
-      time:
-      title:
+      time: Kiedy
+      title: Ostatnia aktywność
   activity_helper:
     status_icon:
-      completed:
-      error:
-      queued:
-      working:
+      completed: Zakończone
+      error: Błąd
+      queued: W kolejce
+      working: Działa
   application:
     content_header:
       sort:
@@ -147,7 +147,7 @@ pl:
     links_form:
       add: dodaj kolejny link
     navbar:
-      activity:
+      activity: Aktywność
       check_existing: Sprawdź istniejące modele
       log_in: Zaloguj się
       log_out: Wyloguj się
@@ -177,6 +177,27 @@ pl:
       recent: Ostatnio Dodane Modele
       search:
         placeholder: Czego szukasz?
+  jobs:
+    analysis:
+      analyse_model_file:
+        detect_duplicates:
+        detect_ineffiency:
+        file_statistics:
+        matching:
+      file_conversion:
+        exporting:
+        loading_mesh:
+      geometric_analysis:
+        direction_check:
+        loading_mesh:
+        manifold_check:
+    scan:
+      check_all:
+        queueing_model_checks:
+      detect_filesystem_changes:
+        building_filename_list:
+        building_folder_list:
+        creating_models:
   kaminari:
     paginator:
       label: Nawigacja strony
@@ -184,7 +205,7 @@ pl:
     application:
       alert:
         danger: Niebezpieczeństwo
-        info: Informacje
+        info: Informacja
   licenses:
     CC-BY-40: Creative Commons Uznanie autorstwa
     CC-BY-NC-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne

@@ -3,6 +3,8 @@ pl:
   model_files:
     bulk_update:
       success: Pliki zaktualizowane pomyślnie.
+    create:
+      conversion_started: Konwersja pliku została rozpoczęta. Przekonwertowany plik powinien być wkrótce dostępny.
     destroy:
       confirm: Czy na pewno chcesz usunąć ten plik z systemu plików?
       success: Plik usunięty!
@@ -10,6 +12,7 @@ pl:
       edit: Edytuj informacje o pliku
     show:
       actions_heading: Akcje
+      convert: Konwertuj do 3MF
       details_heading: Szczegóły
       notes_heading: Notatki
     update:
