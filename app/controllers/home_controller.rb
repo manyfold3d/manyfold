@@ -4,6 +4,8 @@ class HomeController < ApplicationController
 
   def index
     @recent = policy_scope(Model).recent.limit(20)
+    # Eager load for performance
+    @recent = @recent.includes([:library, :model_files])
   end
 
   private

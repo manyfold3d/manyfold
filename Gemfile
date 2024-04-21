@@ -133,3 +133,4 @@ gem "activejob-status", "~> 1.0"
 gem "brakeman", "~> 6.1"
 
 gem "i18n_data", "~> 0.17.1"
+gem "bullet", "~> 7.1", group: :development
