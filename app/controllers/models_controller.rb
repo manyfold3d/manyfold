@@ -98,15 +98,12 @@ class ModelsController < ApplicationController
 
     add_tags = Set.new(hash.delete(:add_tags))
     remove_tags = Set.new(hash.delete(:remove_tags))
-
-    params[:models].each_pair do |id, selected|
-      if selected == "1"
-        model = policy_scope(Model).find(id)
-        if model&.update(hash)
-          existing_tags = Set.new(model.tag_list)
-          model.tag_list = existing_tags + add_tags - remove_tags
-          model.save
-        end
+    ids = params[:models].select { |k, v| v == "1" }.keys
+    policy_scope(Model).find(ids).each do |model|
+      if model&.update(hash)
+        existing_tags = Set.new(model.tag_list)
+        model.tag_list = existing_tags + add_tags - remove_tags
+        model.save
       end
     end
     redirect_back_or_to edit_models_path(@filters), notice: t(".success")

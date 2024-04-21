@@ -1,7 +1,7 @@
 <%= render partial: "breadcrumb" %>
 <h1>Bulk Edit <%= ModelFile.model_name.human.pluralize %></h1>
 
-<%= form_with url: library_model_model_files_path(@library, @model), method: :patch do |form| %>
+<%= form_with url: bulk_update_library_model_model_files_path(@library, @model), method: :patch do |form| %>
 
   <h3>Select files to change:</h3>
 
