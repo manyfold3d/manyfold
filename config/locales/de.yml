@@ -109,7 +109,7 @@ de:
     index:
       description:
       message:
-      name:
+      name: Name
       sidekiq: Sidekiq
       time:
       title:
@@ -195,6 +195,27 @@ de:
       recent: Kürzlich hinzugefügte Modelle
       search:
         placeholder: Wonach suchen Sie?
+  jobs:
+    analysis:
+      analyse_model_file:
+        detect_duplicates:
+        detect_ineffiency:
+        file_statistics:
+        matching:
+      file_conversion:
+        exporting:
+        loading_mesh:
+      geometric_analysis:
+        direction_check:
+        loading_mesh:
+        manifold_check:
+    scan:
+      check_all:
+        queueing_model_checks:
+      detect_filesystem_changes:
+        building_filename_list:
+        building_folder_list:
+        creating_models:
   kaminari:
     paginator:
       label: Seitennavigation
