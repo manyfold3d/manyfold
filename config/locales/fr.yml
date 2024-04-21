@@ -108,16 +108,16 @@ fr:
   activity:
     index:
       description:
-      message:
-      name:
-      sidekiq: Sidekiq
-      time:
-      title:
+      message: Message
+      name: Nom
+      sidekiq:
+      time: Quand
+      title: Activité récente
   activity_helper:
     status_icon:
-      completed:
-      error:
-      queued:
+      completed: Compléter
+      error: Erreur
+      queued: En attente
       working:
   application:
     content_header:
@@ -147,7 +147,7 @@ fr:
     links_form:
       add: ajouter un autre lien
     navbar:
-      activity:
+      activity: Activité
       check_existing: Vérifier les modèles existants
       log_in: 'Se connecter
 
@@ -197,6 +197,27 @@ fr:
       recent: Modèles récemment ajoutés
       search:
         placeholder: Que recherchez-vous ?
+  jobs:
+    analysis:
+      analyse_model_file:
+        detect_duplicates:
+        detect_ineffiency:
+        file_statistics:
+        matching:
+      file_conversion:
+        exporting:
+        loading_mesh:
+      geometric_analysis:
+        direction_check:
+        loading_mesh:
+        manifold_check:
+    scan:
+      check_all:
+        queueing_model_checks:
+      detect_filesystem_changes:
+        building_filename_list:
+        building_folder_list:
+        creating_models:
   kaminari:
     paginator:
       label: Navigation dans les pages

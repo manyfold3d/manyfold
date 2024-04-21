@@ -48,7 +48,7 @@ fr:
         description: Ce fichier est au format %{note}, un format de fichier inefficace. Envisagez de le convertir dans un format binaire tel que 3MF pour économiser de l'espace disque.
         title: Format inefficace
       inside_out:
-        description:
+        description: Ce maillage semble être orienté dans le mauvais sens, ce qui peut entraîner des erreurs d'impression. Réparez-le dans un outil de modélisation 3D tel que MeshLab ou 3D Builder.
         title:
       missing:
         description: Ce fichier est manquant sur le disque ; soit vous le supprimez, soit vous trouvez où il est passé !

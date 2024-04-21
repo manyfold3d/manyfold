@@ -2,11 +2,11 @@
 fr:
   settings:
     analysis_settings:
-      description:
-      heading:
+      description: Effectuer une analyse approfondie du maillage des modèles. Ces options allongeront considérablement la durée de vos analyses et utiliseront beaucoup plus de CPU et de mémoire.
+      heading: Analyse du maillage
       manifold:
-        help:
-        label:
+        help: Detection de maillages non-manifold (par exemple, si il y a des trous ou des surfaces impossibles)
+        label: Détecter les erreurs de maillage
     file_list_settings:
       heading: Listes de fichiers
       hide_presupported_versions:
