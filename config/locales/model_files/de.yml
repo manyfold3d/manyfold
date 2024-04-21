@@ -3,6 +3,8 @@ de:
   model_files:
     bulk_update:
       success: Dateien erfolgreich aktualisiert.
+    create:
+      conversion_started:
     destroy:
       confirm: Sind Sie sicher, dass Sie diese Datei aus permanent löschen möchten?
       success: Datei gelöscht!
@@ -10,6 +12,7 @@ de:
       edit: Dateiinformationen bearbeiten
     show:
       actions_heading: Aktionen
+      convert:
       details_heading: Details
       notes_heading: Notizen
     update:

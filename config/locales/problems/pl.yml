@@ -45,21 +45,21 @@ pl:
         description: Ten plik jest zduplikowany w innych modelach. Niektóre z nich można usunąć.
         title: Zduplikowany plik
       inefficient:
-        description:
+        description: Ten plik jest w %{note}, niewydajnym formacie pliku. Rozważ jego konwersję do formatu binarnego, takiego jak 3MF, aby zaoszczędzić miejsce na dysku.
         title: Nieefektywny format
       inside_out:
-        description:
+        description: Ta siatka wygląda, jakby jej ściany były skierowane w niewłaściwą stronę, co może powodować błędy drukowania. Napraw ją w narzędziu do modelowania 3D, takim jak MeshLab lub 3D Builder.
         title: Siatka skierowana środkiem na zewnątrz
       missing:
         description: Tego pliku brakuje na dysku; usuń go albo znajdź gdzie się znajduje!
         title: Nie znaleziono pliku
       non_manifold:
-        description:
+        description: Ta siatka wydaje się być nierozmaita, co oznacza, że ma dziury lub niektóre jej ściany są odwrócone i może powodować błędy podczas drukowania. Napraw ją w narzędziu do modelowania 3D, takim jak MeshLab lub 3D Builder.
         title: Siatka nierozmaita
     severities:
       danger: Niebezpieczeństwo
       info: Informacje
-      silent: Zignorowany
+      silent: Ignorowany
       warning: Uwaga
     update:
       ignored: 'Problem ukryty na "%{name}": %{message}'

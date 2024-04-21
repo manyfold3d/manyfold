@@ -3,6 +3,8 @@ fr:
   model_files:
     bulk_update:
       success: Les fichiers ont été mis à jour avec succès.
+    create:
+      conversion_started: La conversion du fichier a commencé. Le fichier converti devrait être disponible sous peu.
     destroy:
       confirm: Êtes-vous sûr de vouloir supprimer ce fichier de votre système de fichiers ?
       success: Fichier supprimé !
@@ -12,6 +14,7 @@ fr:
         '
     show:
       actions_heading: Actions
+      convert: Convertir en 3MF
       details_heading: Détails
       notes_heading: Notes
     update:
