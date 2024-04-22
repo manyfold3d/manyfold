@@ -1,5 +1,5 @@
 <% unless links.empty? %>
-  <%= card :secondary, Link.model_name.human.pluralize do %>
+  <%= card :secondary, Link.model_name.human(count: 100) do %>
     <ul class='links'>
       <% links.each do |link| %>
         <li><%= link_to t("sites.%{site}" % {site: link.site}), link.url %></li>

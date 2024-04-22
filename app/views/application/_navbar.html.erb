@@ -7,13 +7,13 @@
     <div class="collapse navbar-collapse row" id="navbar">
       <ul class="navbar-nav col-6 ps-4 ps-lg-0 align-self-start">
         <li class="nav-item">
-          <%= nav_link "box", Model.model_name.human.pluralize, models_path(@filters) %>
+          <%= nav_link "box", Model.model_name.human(count: 100), models_path(@filters) %>
         </li>
         <li class="nav-item">
-          <%= nav_link "people", Creator.model_name.human.pluralize, creators_path(@filters&.except(:creator)) %>
+          <%= nav_link "people", Creator.model_name.human(count: 100), creators_path(@filters&.except(:creator)) %>
         </li>
         <li class="nav-item">
-          <%= nav_link "collection", Collection.model_name.human.pluralize, collections_path(@filters&.except(:collection)) %>
+          <%= nav_link "collection", Collection.model_name.human(count: 100), collections_path(@filters&.except(:collection)) %>
         </li>
         <% policy_scope(Library).find_each do |library| %>
           <li class="nav-item">
@@ -55,7 +55,7 @@
           <% if Problem.visible(current_user.problem_settings).count > 0 %>
             <li class="nav-item">
               <%= nav_link "exclamation-triangle-fill",
-                    Problem.model_name.human.pluralize,
+                    Problem.model_name.human(count: 100),
                     problems_path,
                     icon_style: "link-#{max_problem_severity}",
                     text_style: "d-lg-none" %>
