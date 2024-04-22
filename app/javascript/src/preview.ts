@@ -90,9 +90,9 @@ class ObjectPreview {
 
   onProgress (xhr): void {
     const percentage =
-      Math.floor((xhr.loaded / xhr.total) * 100).toString() + '%'
-    this.progressBar.style.width = this.progressBar.ariaValueNow =
-      this.progressLabel.textContent = percentage
+      Math.floor((xhr.loaded / xhr.total) * 100).toString()
+    this.progressBar.style.width = this.progressLabel.textContent = percentage + '%'
+    this.progressBar.ariaValueNow = percentage
   }
 
   onLoad (model): void {

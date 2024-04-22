@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
     <title><%= t "application.title" %><%= " : #{@title}" if @title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -10,12 +10,12 @@
     <%= javascript_include_tag "application", nonce: true %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.6/js/standalone/selectize.min.js" integrity="sha512-pgmLgtHvorzxpKra2mmibwH/RDAVMlOuqU98ZjnyZrOZxgAR8hwL8A02hQFWEK25V40/9yPYb/Zc+kyWMplgaA==" crossorigin="anonymous" referrerpolicy="no-referrer" nonce="<%= request.content_security_policy_nonce %>"></script>
     <%= stylesheet_link_tag "application" %>
-</head>
+  </head>
 
   <body>
     <canvas id="webgl"></canvas>
     <%= render "application/navbar" %>
-    <div class="container-fluid">
+    <main class="container-fluid">
       <div>
         <% if notice %>
           <p class="alert alert-info">
@@ -31,7 +31,7 @@
         <% end %>
       </div>
       <%= yield %>
-      <%= render "application/footer" %>
-    </div>
+    </main>
+    <%= render "application/footer" %>
   </body>
 </html>

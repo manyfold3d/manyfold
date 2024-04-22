@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class='container-fluid'>
-    <a class="navbar-brand ms-2" href="<%= root_path %>"><%= image_tag "logo.png", alt: t("application.title"), title: t("application.title"), height: "40px", class: "me-2" %> <span class="d-lg-none"><%= t "application.title" %></span></a>
+    <a class="navbar-brand ms-2" href="<%= root_path %>"><%= image_tag "logo.png", alt: t("application.title"), height: "40px", class: "me-2" %> <span class="d-lg-none"><%= t "application.title" %></span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="<%= t ".navbar.toggler.label" %>">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,7 +18,7 @@
         <% policy_scope(Library).find_each do |library| %>
           <li class="nav-item">
             <%= nav_link(
-                  library.icon || "boxes",
+                  library.icon.presence || "boxes",
                   library.name,
                   models_path((@filters&.except(:library) || {}).merge({library: library.id})),
                   title: library.caption
