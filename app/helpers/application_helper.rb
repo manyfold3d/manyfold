@@ -50,7 +50,7 @@ module ApplicationHelper
     when :hide
       "d-none"
     else
-      "bg-secondary link-light"
+      "bg-secondary"
     end
   end
 
