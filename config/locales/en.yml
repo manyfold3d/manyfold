@@ -161,7 +161,9 @@ en:
       settings: Settings
       upload: Upload
     tag_list:
-      hidden: hidden
+      muted_tags:
+        one: "%{count} unrelated tag hidden"
+        other: "%{count} unrelated tags hidden"
     tagline: Helping you keep track of your 3d print files
     title: Manyfold
   errors:
