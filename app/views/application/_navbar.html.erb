@@ -18,7 +18,7 @@
         <% policy_scope(Library).find_each do |library| %>
           <li class="nav-item">
             <%= nav_link(
-                  library.icon.blank? ? "boxes" : library.icon,
+                  library.icon.presence || "boxes",
                   library.name,
                   models_path((@filters&.except(:library) || {}).merge({library: library.id})),
                   title: library.caption
