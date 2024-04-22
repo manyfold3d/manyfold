@@ -94,14 +94,37 @@ pl:
               already_presupported:
               not_supported:
     models:
-      acts_as_taggable_on/tag: Tag
-      collection: Kolekcja
-      creator: Twórca
-      library: Biblioteka
-      link: Link
-      model: Model
-      model_file: Plik
-      problem: Problem
+      acts_as_taggable_on/tag:
+        one: Tag
+        few:
+        other:
+      collection:
+        one: Kolekcja
+        few:
+        other:
+      creator:
+        one: Twórca
+        other: Twórców
+      library:
+        one: Biblioteka
+        few: Biblioteki
+        other: Bibliotek
+      link:
+        one: Link
+        few:
+        other:
+      model:
+        one: Model
+        few: Modele
+        other: Modeli
+      model_file:
+        one: Plik
+        few:
+        other:
+      problem:
+        one: Problem
+        few:
+        other:
       user:
         one: Użytkownik
         other: Użytkowników
