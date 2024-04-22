@@ -95,35 +95,35 @@ pl:
               not_supported:
     models:
       acts_as_taggable_on/tag:
-        one: Tag
         few:
+        one: Tag
         other:
       collection:
-        one: Kolekcja
         few:
+        one: Kolekcja
         other:
       creator:
         one: Twórca
         other: Twórców
       library:
-        one: Biblioteka
         few: Biblioteki
+        one: Biblioteka
         other: Bibliotek
       link:
-        one: Link
         few:
+        one: Link
         other:
       model:
-        one: Model
         few: Modele
+        one: Model
         other: Modeli
       model_file:
-        one: Plik
         few:
+        one: Plik
         other:
       problem:
-        one: Problem
         few:
+        one: Problem
         other:
       user:
         one: Użytkownik
