@@ -79,7 +79,7 @@ GEM
     activejob (7.0.8.1)
       activesupport (= 7.0.8.1)
       globalid (>= 0.3.6)
-    activejob-status (1.0.1)
+    activejob-status (1.0.2)
       activejob (>= 6.0)
       activesupport (>= 6.0)
     activemodel (7.0.8.1)
