@@ -41,7 +41,7 @@ RSpec.describe ApplicationHelper do
       expect(helper.tag_class(:highlight)).to eq("bg-primary")
       expect(helper.tag_class(:mute)).to eq("border border-muted text-muted pe-none")
       expect(helper.tag_class(:hide)).to eq("d-none")
-      expect(helper.tag_class(:other)).to eq("bg-secondary link-light")
+      expect(helper.tag_class(:other)).to eq("bg-secondary")
     end
   end
 
