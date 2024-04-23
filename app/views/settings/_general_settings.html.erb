@@ -1,0 +1,17 @@
+<div class="card mb-2">
+  <h3 class="card-header"><%= t(".heading") %></h3>
+  <div class="card-body">
+
+    <div class="row">
+      <%= form.label t(".interface_language.label"), for: "general[interface_language]", class: "col col-form-label" %>
+      <div class="col">
+        <%= form.select "general[interface_language]",
+              @languages,
+              {selected: @user.interface_language},
+              {class: "form-select"} %>
+        <small class="form-text"><%= t ".interface_language.help" %></small>
+      </div>
+    </div>
+
+  </div>
+</div>

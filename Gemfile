@@ -131,3 +131,5 @@ gem "sidekiq-failures", "~> 1.0"
 gem "activejob-status", "~> 1.0"
 
 gem "brakeman", "~> 6.1"
+
+gem "i18n_data", "~> 0.17.1"

@@ -1,12 +1,18 @@
+require 'i18n_data'
+
 class SettingsController < ApplicationController
   before_action :get_user
   before_action :check_owner_permission
 
   def show
+    @languages = [[t("settings.general_settings.interface_language.autodetect"), nil]].concat(
+        I18n.available_locales.map { |locale| [I18nData.languages(locale)[locale.upcase.to_s]&.capitalize, locale] }
+      )
   end
 
   def update
     # Save personal settings
+    update_general_settings(params[:general])
     update_pagination_settings(params[:pagination])
     update_renderer_settings(params[:renderer])
     update_tag_cloud_settings(params[:tag_cloud])
@@ -23,6 +29,11 @@ class SettingsController < ApplicationController
   end
 
   private
+
+  def update_general_settings(settings)
+    return unless settings
+    @user.interface_language = settings[:interface_language].presence
+  end
 
   def update_pagination_settings(settings)
     return unless settings

@@ -225,6 +225,8 @@ GEM
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
+    i18n_data (0.17.1)
+      simple_po_parser (~> 1.1)
     inherited_resources (1.14.0)
       actionpack (>= 6.0)
       has_scope (>= 0.6)
@@ -471,6 +473,7 @@ GEM
       redis-client (>= 0.19.0)
     sidekiq-failures (1.0.4)
       sidekiq (>= 4.0.0)
+    simple_po_parser (1.1.6)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -578,6 +581,7 @@ DEPENDENCIES
   guard-rspec (~> 4.7)
   i18n-js (~> 4.2)
   i18n-tasks (~> 1.0)
+  i18n_data (~> 0.17.1)
   jbuilder (~> 2.11)
   jsbundling-rails
   kaminari (~> 1.2)
