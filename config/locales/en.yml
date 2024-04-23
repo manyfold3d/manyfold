@@ -173,6 +173,7 @@ en:
       equal_to_current_password: must be different than the current password.
       equal_to_email: must be different than the email.
       expired: has expired, please request a new one
+      invalid: is invalid
       not_found: not found
       not_locked: was not locked
       not_saved:
