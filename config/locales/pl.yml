@@ -185,8 +185,8 @@ pl:
       upload: Prześlij
     tag_list:
       muted_tags:
-        one:
-        other:
+        one: "%{count} niepowiązany tag ukryty"
+        other: "%{count} niepowiązanych tagów ukrytych"
     tagline: Pomagając w śledzeniu plików do druku 3D
     title: Manyfold
   general:
