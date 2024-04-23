@@ -14,6 +14,8 @@ fr:
       unknown: Inconnu
     index:
       actions_heading: Actions
-      view_unassigned_models: Vue non attribuée
+    unassigned:
+      caption:
+      name: Non attribuée
     update:
       success: Détails de la collection sauvegardés.

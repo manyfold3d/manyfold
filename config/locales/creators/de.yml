@@ -12,6 +12,8 @@ de:
       unknown: Unbekannt
     index:
       actions_heading: Aktionen
-      view_unassigned: Ansicht nicht zugewiesen
+    unassigned:
+      caption:
+      name: Nicht zugewiesen
     update:
       success: Ersteller Infos gespeichert.

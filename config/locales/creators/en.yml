@@ -12,6 +12,8 @@ en:
       unknown: Unknown
     index:
       actions_heading: Actions
-      view_unassigned: View unassigned
+    unassigned:
+      caption: All the models without a known creator.
+      name: Unassigned
     update:
       success: Creator details saved.

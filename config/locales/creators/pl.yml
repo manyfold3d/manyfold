@@ -12,6 +12,8 @@ pl:
       unknown: Nieznany
     index:
       actions_heading: Akcje
-      view_unassigned: Wyświetl nieprzypisane
+    unassigned:
+      caption:
+      name: Nieprzypisane
     update:
       success: Szczegóły twórcy zostały zapisane.

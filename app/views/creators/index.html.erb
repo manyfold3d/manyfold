@@ -7,6 +7,7 @@
     <%= paginate @creators %>
   <% end %>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+    <%= render "unassigned" if @creators.first_page? %>
     <%= render @creators %>
   </div>
   <% if current_user.pagination_settings["creators"] %>
@@ -16,7 +17,6 @@
 
 <% content_for :sidebar do %>
   <%= card :secondary, t(".actions_heading") do %>
-    <%= link_to t(".view_unassigned"), models_path(creator: ""), class: "btn btn-outline-secondary mb-3 me-3" %>
     <%= link_to t("creators.general.new"), new_creator_path, class: "btn btn-primary mb-3 me-3" if policy(:creator).new? %>
   <% end %>
   <%= render "filters_card" %>
