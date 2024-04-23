@@ -86,20 +86,15 @@ pl:
     registrations:
       destroyed: Twoje konto zostało usunięte.
       edit:
-        are_you_sure: Jesteś pewny?
         cancel_my_account: Usuń moje konto
         confirm_deletion: Czy na pewno chcesz usunąć swoje konto?
         contact_info: Informacje kontaktowe
         current_password_help: Aktualne hasło wymagane dla bezpieczeństwa
         currently_waiting_confirmation_for_email: 'Oczekujemy na potwierdzenie dla: %{email}'
         danger_zone: Strefa zagrożenia!
-        leave_blank_if_you_don_t_want_to_change_it: pozostaw puste, jeśli nie chcesz wprowadzać zmian
         security: Bezpieczeństwo
         submit: Zapisz zmiany
         title: Ustawienia konta
-        unhappy: Niezadowolony?
-        update: Aktualizuj
-        we_need_your_current_password_to_confirm_your_changes: potrzebujemy Twojego bieżącego hasła, aby potwierdzić zmiany
       first_use:
         email_help: Nigdy nie pokazywany publicznie; używany tylko do logowania i wiadomości e-mail dotyczących bezpieczeństwa konta.
         guidance: Przy pierwszym użyciu należy ustawić nazwę użytkownika, kontaktowy adres e-mail i hasło dla głównego użytkownika administratora. Jeśli korzystasz z trybu pojedynczego użytkownika, zwykle nie będziesz musiał wprowadzać tych danych, aby się zalogować, ale w trybie wielu użytkowników nie będziesz mógł uzyskać dostępu do Manyfold bez nich.
@@ -125,7 +120,6 @@ pl:
       signed_out: Wylogowano pomyślnie.
     shared:
       links:
-        back: Powrót
         didn_t_receive_confirmation_instructions: Nie otrzymałeś instrukcji aktywacji konta?
         didn_t_receive_unlock_instructions: Nie otrzymałeś instrukcji odblokowania konta?
         forgot_your_password: Zapomniałeś hasła?

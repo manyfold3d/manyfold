@@ -86,20 +86,15 @@ de:
     registrations:
       destroyed: Ihr Konto wurde gelöscht. Wir hoffen, dass wir Sie bald wiedersehen.
       edit:
-        are_you_sure: Sind Sie sicher?
         cancel_my_account: Konto löschen
         confirm_deletion: Sind Sie sicher, dass Sie Ihr Konto löschen möchten?
         contact_info:
         current_password_help:
         currently_waiting_confirmation_for_email: Warte auf Bestätigung von %{email}.
         danger_zone:
-        leave_blank_if_you_don_t_want_to_change_it: freilassen, wenn Sie das nicht ändern wollen
         security:
         submit:
         title: "%{resource} bearbeiten"
-        unhappy: Unzufrieden?
-        update: Aktualisieren
-        we_need_your_current_password_to_confirm_your_changes: wir benötigen Ihr aktuelles Passwort, um die Änderung zu bestätigen
       first_use:
         email_help:
         guidance:
@@ -125,7 +120,6 @@ de:
       signed_out: Erfolgreich abgemeldet.
     shared:
       links:
-        back: Zurück
         didn_t_receive_confirmation_instructions: Keine Anleitung zur Bestätigung erhalten?
         didn_t_receive_unlock_instructions: Keine Anleitung zum Entsperren erhalten?
         forgot_your_password: Passwort vergessen?

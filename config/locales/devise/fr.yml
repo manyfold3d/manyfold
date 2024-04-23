@@ -86,20 +86,15 @@ fr:
     registrations:
       destroyed: Au revoir ! Votre compte a bien été supprimé. Nous espérons vous revoir bientôt.
       edit:
-        are_you_sure: Êtes-vous sûr ?
         cancel_my_account: Supprimer mon compte
         confirm_deletion: Êtes-vous sûr de vouloir supprimer votre compte ?
         contact_info: Informations de contact
         current_password_help: Mot de passe actuel requis pour la sécurité
         currently_waiting_confirmation_for_email: 'Confirmation en attente pour: %{email}'
         danger_zone: Zone de danger !
-        leave_blank_if_you_don_t_want_to_change_it: laissez ce champ vide pour le laisser inchangé
         security: Sécurité
         submit: Enregistrer les modifications
         title: Éditer %{resource}
-        unhappy: Pas content ?
-        update: Modifier
-        we_need_your_current_password_to_confirm_your_changes: nous avons besoin de votre mot de passe actuel pour valider ces modifications
       first_use:
         email_help: Jamais affiché publiquement ; utilisé uniquement pour se connecter et les mails de sécurité du compte.
         guidance: Lors de la première utilisation, vous devez définir un nom d'utilisateur, une adresse mail de contact et un mot de passe pour l'administrateur principal. Si vous travaillez en mode mono-utilisateur, vous n'aurez normalement pas besoin d'entrer ces informations pour vous connecter, mais en mode multi-utilisateur, vous ne pourrez pas accéder à Manyfold sans ces informations.
@@ -125,7 +120,6 @@ fr:
       signed_out: Déconnecté(e).
     shared:
       links:
-        back: Retour
         didn_t_receive_confirmation_instructions: Vous n'avez pas reçu l'email de confirmation ?
         didn_t_receive_unlock_instructions: Vous n'avez pas reçu l'email de déblocage ?
         forgot_your_password: Mot de passe oublié ?
