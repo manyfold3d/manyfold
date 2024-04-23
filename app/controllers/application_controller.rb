@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index, unless: :active_admin_controller?
 
   before_action :authenticate_user!
+  around_action :switch_locale
   before_action :check_for_first_use
   before_action :check_scan_status
   before_action :remember_ordering
@@ -33,4 +34,12 @@ class ApplicationController < ActionController::Base
   def active_admin_controller?
     is_a?(ActiveAdmin::BaseController)
   end
+
+  private
+
+  def switch_locale(&action)
+    locale = current_user&.interface_language || request.env['rack.locale']
+    I18n.with_locale(locale, &action)
+  end
+
 end
