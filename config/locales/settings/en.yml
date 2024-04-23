@@ -30,6 +30,12 @@ en:
         model_id: A unique numerical identifier for the model. We strongly recommend always including this at the end of your template to avoid name conflicts on disk.
         model_name: A filesystem-safe version of the model name.
         tags_html: 'a series of nested folders, one for each tag, arranged in order of tag popularity. For example: <code>fantasy/human/wizard</code>'
+    general_settings:
+      heading: General
+      interface_language:
+        autodetect: Use browser settings
+        help: 'Note: some untranslated text may still show in English.'
+        label: Interface language
     library_settings:
       caption:
         help: Hover over library in header to see caption.

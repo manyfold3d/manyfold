@@ -30,6 +30,12 @@ pl:
         model_id: Unikalny numeryczny identyfikator modelu. Zdecydowanie polecamy podawanie go zawsze na końcu szablonu, aby uniknąć konfliktów nazw na dysku.
         model_name: Bezpieczna dla systemu plików wersja nazwy modelu.
         tags_html: 'seria zagnieżdżonych folderów, po jednym dla każdego z tagów, ułożonych w kolejności popularności tagów. Na przykład: <code>fantasy/człowiek/czarodziej</code>'
+    general_settings:
+      heading:
+      interface_language:
+        autodetect:
+        help:
+        label:
     library_settings:
       caption:
         help: Najedź kursorem na bibliotekę w nagłówku, aby zobaczyć napis.

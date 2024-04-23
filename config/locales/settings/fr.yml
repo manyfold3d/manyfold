@@ -30,6 +30,12 @@ fr:
         model_id: Un identifiant numérique unique pour le modèle. Nous vous recommandons fortement de toujours l'inclure à la fin de votre modèle afin d'éviter les conflits de noms sur le disque.
         model_name: Une version sécurisée du nom du modèle pour le système de fichiers.
         tags_html: 'une série de dossiers imbriqués, un pour chaque étiquette, classés par ordre de popularité de l''étiquette. Par exemple : <code>fantasy/humain/sorcier</code>'
+    general_settings:
+      heading:
+      interface_language:
+        autodetect:
+        help:
+        label:
     library_settings:
       caption:
         help: Survolez la bibliothèque dans l'en-tête pour voir la légende.
