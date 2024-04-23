@@ -1,105 +1,47 @@
 ---
 pl:
   devise:
-    confirmations:
-      confirmed: Twój adres e-mail został potwierdzony.
-      new:
-        resend_confirmation_instructions: Wyślij ponownie instrukcje aktywacji
-      send_instructions: Instrukcja jak aktywować konto zostanie niezwłocznie wysłana na podany adres e-mail.
-      send_paranoid_instructions: Jeśli Twój adres e-mail istnieje w naszej bazie, w ciągu najbliższych minut otrzymasz instrukcje jak aktywować konto.
-    failure:
-      already_authenticated: Jesteś już zalogowany.
-      expired: Twoje konto wygasło z powodu braku aktywności. Proszę skontaktuj się z administratorem strony.
-      inactive: Twoje konto nie zostało jeszcze aktywowane.
-      invalid: Błędny adres %{authentication_keys} lub hasło.
-      last_attempt: Masz jeszcze jedną próbę nim Twoje konto zostanie zablokowane.
-      locked: Twoje konto jest zablokowane.
-      not_found_in_database: Błędny adres %{authentication_keys} lub hasło.
-      session_limited: Twoje dane logowania zostały użyte w innej przeglądarce. Zaloguj się ponownie, aby kontynuować w tej przeglądarce.
-      timeout: Sesja wygasła, aby kontynuować zaloguj się ponownie.
-      unauthenticated: Aby kontynuować zaloguj lub zarejestruj się.
-      unconfirmed: Aby kontynuować aktywuj konto.
-    invalid_captcha: Wprowadzona captcha była nieprawidłowa.
-    invalid_security_question: Odpowiedź na pytanie bezpieczeństwa była nieprawidłowa.
     mailer:
       confirmation_instructions:
         action: Potwierdź swoje konto
         greeting: Witaj %{recipient}!
         instruction: 'Możesz potwierdzić swoje konto przy pomocy poniższego linku:'
-        subject: Instrukcja aktywacji konta
       email_changed:
         greeting: Witaj %{recipient}!
         message: Kontaktujemy się z Tobą, aby Cię poinformować o zmianie Twojego adresu e-mail na %{email}.
         message_unconfirmed: Kontaktujemy się z Tobą, aby Cię poinformować cię, że twój adresu e-mail jest zmieniany na %{email}.
-        subject: E-mail zmieniony
       password_change:
         greeting: Witaj %{recipient}!
         message: Kontaktujemy się z Tobą w celu poinformowania cię, że twoje hasło zostało zmienione.
-        subject: Hasło zostało zmienione
       reset_password_instructions:
         action: Zmień moje hasło
         greeting: Witaj %{recipient}!
         instruction: Ktoś zażądał zmiany hasła do Twojego konta. Hasło możesz zmienić wchodząc na poniższy link.
         instruction_2: Jeśli to nie Ty zażądałeś zmiany hasła, proszę zignoruj tę wiadomość.
         instruction_3: Twoje hasło nie ulegnie zmianie dopóki nie wejdziesz na poniższy link i nie ustawisz nowego.
-        subject: Instrukcja ustawienia nowego hasła
       unlock_instructions:
         action: Odblokuj moje konto
         greeting: Cześć %{recipient}!
         instruction: 'Kliknij poniższy link, aby odblokować swoje konto:'
         message: Twoje konto zostało zablokowane z powodu zbyt dużej liczby nieudanych prób logowania.
-        subject: Instrukcja odblokowania konta
-    omniauth_callbacks:
-      failure: Logowanie przez konto %{kind} zakończyło się błędem z powodu "%{reason}".
-      success: Logowanie przez konto %{kind} zakończyło się pomyślnie.
-    paranoid_verification_code:
-      show:
-        submit: Prześlij
-        submit_verification_code: Prześlij kod weryfikacyjny
-        verification_code: Kod weryfikacyjny
-      updated: Kod weryfikacyjny zaakceptowany
-    paranoid_verify:
-      code_required: Wprowadź kod dostarczony przez nasz zespół pomocy technicznej
-    password_expired:
-      change_required: Twoje hasło wygasło. Prosimy o odnowienie swojego hasła.
-      show:
-        change_my_password: Zmień moje hasło
-        current_password: Aktualne hasło
-        new_password: Nowe hasło
-        new_password_confirmation: Powtórz nowe hasło
-        renew_your_password: Odnów swoje hasło
-      updated: Nowe hasło zostało zapisane.
     passwords:
       edit:
         change_my_password: Zmień moje hasło
         change_your_password: Zmień swoje hasło
-        confirm_new_password: Powtórz nowe hasło
-        new_password: Nowe hasło
       new:
         forgot_your_password: Zapomniałeś swojego hasła?
         send_me_reset_password_instructions: Wyślij instrukcje zmiany hasła
-      no_token: Do tej strony możesz dostać się tylko poprzez wiadomość e-mail resetującą hasło. Jeśli to z niej tu trafiłeś, upewnij się, że użyłeś pełnego adresu.
-      send_instructions: Instrukcja zmiany hasła zostanie niezwłocznie wysłana na podany adres e-mail.
-      send_paranoid_instructions: Jeśli Twój adres e-mail istnieje w naszej bazie, otrzymasz zaraz wiadomość z instrukcjami odzyskiwania hasła.
-      updated: Hasło zmienione poprawnie. Zostałeś automatycznie zalogowany.
-      updated_not_active: Hasło zostało pomyślnie zmienione.
     registrations:
-      destroyed: Twoje konto zostało usunięte.
       edit:
-        are_you_sure: Jesteś pewny?
         cancel_my_account: Usuń moje konto
         confirm_deletion: Czy na pewno chcesz usunąć swoje konto?
         contact_info: Informacje kontaktowe
         current_password_help: Aktualne hasło wymagane dla bezpieczeństwa
         currently_waiting_confirmation_for_email: 'Oczekujemy na potwierdzenie dla: %{email}'
         danger_zone: Strefa zagrożenia!
-        leave_blank_if_you_don_t_want_to_change_it: pozostaw puste, jeśli nie chcesz wprowadzać zmian
         security: Bezpieczeństwo
         submit: Zapisz zmiany
         title: Ustawienia konta
-        unhappy: Niezadowolony?
-        update: Aktualizuj
-        we_need_your_current_password_to_confirm_your_changes: potrzebujemy Twojego bieżącego hasła, aby potwierdzić zmiany
       first_use:
         email_help: Nigdy nie pokazywany publicznie; używany tylko do logowania i wiadomości e-mail dotyczących bezpieczeństwa konta.
         guidance: Przy pierwszym użyciu należy ustawić nazwę użytkownika, kontaktowy adres e-mail i hasło dla głównego użytkownika administratora. Jeśli korzystasz z trybu pojedynczego użytkownika, zwykle nie będziesz musiał wprowadzać tych danych, aby się zalogować, ale w trybie wielu użytkowników nie będziesz mógł uzyskać dostępu do Manyfold bez nich.
@@ -108,24 +50,13 @@ pl:
         username_help: Unikalna nazwa użytkownika; użyj wstępnie wygenerowanej lub wybierz własną.
       new:
         sign_up: Zarejestruj się
-      signed_up: Witaj! Rejestracja zakończyła się pomyślnie.
-      signed_up_but_inactive: Konto zostało utworzone pomyślnie. Zanim się jednak zalogujesz, musi ono zostać jeszcze aktywowane.
-      signed_up_but_locked: Konto zostało utworzone pomyślnie. Nie możesz się jednak zalogować, ponieważ jest ono zablokowane.
-      signed_up_but_unconfirmed: Wiadomość z linkiem aktywacyjnym została wysłana na podany adres e-mail. Otwórz link w celu aktywacji konta.
       update:
         setup_complete: Konfiguracja zakończona!
-      update_needs_confirmation: Konto zostało zaktualizowane, musimy jednak potwierdzić nowy adres e-mail. Sprawdź swoją skrzynkę pocztową i otwórz link aktywacyjny, aby ukończyć zmianę adresu.
-      updated: Konto zostało pomyślnie zaktualizowane.
-      updated_but_not_signed_in: Twoje konto zostało pomyślnie zaktualizowane, ale ponieważ hasło zostało zmienione, musisz się ponownie zalogować
     sessions:
-      already_signed_out: Wylogowano pomyślnie.
       new:
         sign_in: Zaloguj się
-      signed_in: Zalogowano pomyślnie.
-      signed_out: Wylogowano pomyślnie.
     shared:
       links:
-        back: Powrót
         didn_t_receive_confirmation_instructions: Nie otrzymałeś instrukcji aktywacji konta?
         didn_t_receive_unlock_instructions: Nie otrzymałeś instrukcji odblokowania konta?
         forgot_your_password: Zapomniałeś hasła?
@@ -138,6 +69,3 @@ pl:
     unlocks:
       new:
         resend_unlock_instructions: Wyślij instrukcje odblokowania konta
-      send_instructions: Wkrótce powinieneś otrzymać e-mail z instrukcjami jak odblokować swoje konto.
-      send_paranoid_instructions: Jeśli Twoje konto istnieje w naszej bazie, otrzymasz zaraz e-mail z instrukcjami jak odblokować swoje konto.
-      unlocked: Twoje konto zostało odblokowane. Zaloguj się, aby kontynuować.

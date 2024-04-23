@@ -184,7 +184,6 @@ pl:
       settings: Ustawienia
       upload: Prześlij
     tag_list:
-      hidden: ukryte
       muted_tags:
         one:
         other:

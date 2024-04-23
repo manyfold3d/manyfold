@@ -177,30 +177,11 @@ fr:
       settings: Paramètres
       upload: Télécharger
     tag_list:
-      hidden: caché
       muted_tags:
         one:
         other:
     tagline: Vous aider à garder une trace de vos fichiers d'impression 3D
     title: Manyfold
-  errors:
-    messages:
-      equal_to_current_password: doit être différent de l'actuel
-      equal_to_email: doit être différent de l'e-mail
-      password_complexity:
-        digit:
-          one: doit contenir au moins un chiffre
-          other: doit contenir au moins %{count} chiffres
-        lower:
-          one: doit contenir au moins une lettre minuscule
-          other: doit contenir au moins %{count} lettres minuscules
-        symbol:
-          one: doit contenir au moins un signe de ponctuation
-          other: doit contenir au moins %{count} signes de ponctuation
-        upper:
-          one: doit contenir au moins une lettre majuscule
-          other: doit contenir au moins %{count} lettres majuscules
-      taken_in_past: a été utilisé trop récemment. Veuillez en choisir un autre
   general:
     delete: Supprimer
     download: Télécharger

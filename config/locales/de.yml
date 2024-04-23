@@ -177,30 +177,11 @@ de:
       settings: Einstellungen
       upload: Hochladen
     tag_list:
-      hidden: versteckt
       muted_tags:
         one:
         other:
     tagline: Hilft ihnen ihre 3D-Druck Dateien zu verwalten
     title: Manyfold
-  errors:
-    messages:
-      equal_to_current_password: darf nicht dem aktuellen Passwort entsprechen.
-      equal_to_email: darf nicht dem E-mail entsprechen.
-      password_complexity:
-        digit:
-          one: muss mindestens eine Ziffer enthalten
-          other: muss mindestens %{count} Ziffern enthalten
-        lower:
-          one: muss mindestens einen Kleinbuchstaben enthalten
-          other: muss mindestens %{count} Kleinbuchstaben enthalten
-        symbol:
-          one: muss mindestens ein Sonderzeichen enthalten
-          other: muss mindestens %{count} Sonderzeichen enthalten
-        upper:
-          one: muss mindestens einen Großbuchstaben enthalten
-          other: muss mindestens %{count} Großbuchstaben enthalten
-      taken_in_past: wurde bereits in der Vergangenheit verwendet.
   general:
     delete: Löschen
     download: Herunterladen
