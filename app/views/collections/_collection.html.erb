@@ -35,7 +35,7 @@
       </div>
       <div>
         <%= link_to "#{collection.models.count} #{Model.model_name.human count: collection.models.count}", {controller: "models", collection: collection.id}, class: "btn btn-primary" if policy(collection).show? %>
-        <%= link_to("#{collection.collections.count} #{Collection.model_name.human count: collection.collections.count}"), (@filters || {}).merge(controller: "collections", collection: collection.id), class: "btn btn-primary") if collection.collections.count > 0 && policy(collection).show? %>
+        <%= link_to "#{collection.collections.count} #{Collection.model_name.human count: collection.collections.count}", (@filters || {}).merge(controller: "collections", collection: collection.id), class: "btn btn-primary" if collection.collections.count > 0 && policy(collection).show? %>
         <%= link_to t("general.edit"), edit_collection_path(collection), {class: "btn btn-outline-secondary"} if policy(collection).edit? %>
       </div>
     </div>
