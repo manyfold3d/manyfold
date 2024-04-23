@@ -31,11 +31,11 @@ pl:
         model_name: Bezpieczna dla systemu plików wersja nazwy modelu.
         tags_html: 'seria zagnieżdżonych folderów, po jednym dla każdego z tagów, ułożonych w kolejności popularności tagów. Na przykład: <code>fantasy/człowiek/czarodziej</code>'
     general_settings:
-      heading:
+      heading: Główne
       interface_language:
-        autodetect:
-        help:
-        label:
+        autodetect: Użyj ustawień przeglądarki
+        help: 'Uwaga: niektóre nieprzetłumaczone teksty mogą nadal wyświetlać się w języku angielskim.'
+        label: Język interfejsu
     library_settings:
       caption:
         help: Najedź kursorem na bibliotekę w nagłówku, aby zobaczyć napis.
