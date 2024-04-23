@@ -9,9 +9,7 @@ fr:
       confirm: Êtes-vous sûr de vouloir supprimer ce fichier de votre système de fichiers ?
       success: Fichier supprimé !
     general:
-      edit: 'Modifier les informations du fichier
-
-        '
+      edit: Modifier les informations du fichier
     show:
       actions_heading: Actions
       convert: Convertir en 3MF
