@@ -14,6 +14,8 @@ de:
       unknown: Unbekannt
     index:
       actions_heading: Aktionen
-      view_unassigned_models: Ansicht nicht zugewiesen
+    unassigned:
+      caption:
+      name: Nicht zugewiesen
     update:
       success: Kollektionsdetails gespeichert.

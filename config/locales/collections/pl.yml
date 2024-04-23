@@ -14,6 +14,8 @@ pl:
       unknown: Nieznany
     index:
       actions_heading: Akcje
-      view_unassigned_models: Wyświetl nieprzypisane
+    unassigned:
+      caption:
+      name: Nieprzypisane
     update:
       success: Szczegóły kolekcji zostały zapisane.

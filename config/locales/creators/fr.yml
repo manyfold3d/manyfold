@@ -12,6 +12,8 @@ fr:
       unknown: Inconnu
     index:
       actions_heading: Actions
-      view_unassigned: Vue non attribuée
+    unassigned:
+      caption:
+      name: Non attribuée
     update:
       success: Détails du créateur sauvegardés.
