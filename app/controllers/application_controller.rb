@@ -38,8 +38,7 @@ class ApplicationController < ActionController::Base
   private
 
   def switch_locale(&action)
-    locale = current_user&.interface_language || request.env['rack.locale']
+    locale = current_user&.interface_language || request.env["rack.locale"]
     I18n.with_locale(locale, &action)
   end
-
 end

@@ -33,9 +33,9 @@ en:
     general_settings:
       heading: General
       interface_language:
-        help: "Note: some untranslated text may still show in English."
-        label: Interface language
         autodetect: Use browser settings
+        help: 'Note: some untranslated text may still show in English.'
+        label: Interface language
     library_settings:
       caption:
         help: Hover over library in header to see caption.

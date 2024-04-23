@@ -1,4 +1,4 @@
-require 'i18n_data'
+require "i18n_data"
 
 class SettingsController < ApplicationController
   before_action :get_user
@@ -6,8 +6,8 @@ class SettingsController < ApplicationController
 
   def show
     @languages = [[t("settings.general_settings.interface_language.autodetect"), nil]].concat(
-        I18n.available_locales.map { |locale| [I18nData.languages(locale)[locale.upcase.to_s]&.capitalize, locale] }
-      )
+      I18n.available_locales.map { |locale| [I18nData.languages(locale)[locale.upcase.to_s]&.capitalize, locale] }
+    )
   end
 
   def update
