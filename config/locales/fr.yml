@@ -126,7 +126,7 @@ fr:
       description:
       message: Message
       name: Nom
-      sidekiq:
+      sidekiq: Sidekiq
       time: Quand
       title: Activité récente
   activity_helper:
@@ -165,9 +165,7 @@ fr:
     navbar:
       activity: Activité
       check_existing: Vérifier les modèles existants
-      log_in: 'Se connecter
-
-        '
+      log_in: Se connecter
       log_out: Se déconnecter
       navbar:
         toggler:
@@ -180,6 +178,9 @@ fr:
       upload: Télécharger
     tag_list:
       hidden: caché
+      muted_tags:
+        one:
+        other:
     tagline: Vous aider à garder une trace de vos fichiers d'impression 3D
     title: Manyfold
   errors:
@@ -264,9 +265,7 @@ fr:
     comicsgamesandthings: Bandes dessinées, jeux et objets
     cults3d: Cults3D
     myminifactory: MyMiniFactory
-    theminiindex: 'The Mini Index
-
-      '
+    theminiindex: The Mini Index
     thingiverse: Thingiverse
   views:
     pagination:
