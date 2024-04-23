@@ -9,7 +9,7 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
     # The Problem is raised elsewhere.
     return if !File.exist?(file.pathname)
     # If the file is modified, or we're lacking metadata
-    status[:step] = "jobs.analysis.analyse_model_file.file_statistics"
+    status[:step] = "jobs.analysis.analyse_model_file.file_statistics" # i18n-tasks-use t('jobs.analysis.analyse_model_file.file_statistics')
     if File.mtime(file.pathname) > file.updated_at || file.digest.nil? || file.size.nil?
       file.digest = file.calculate_digest
       file.size = File.size(file.pathname)
@@ -18,10 +18,11 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
       # Store updated file metadata
       file.save!
     end
-    status[:step] = "jobs.analysis.analyse_model_file.matching"
+
+    status[:step] = "jobs.analysis.analyse_model_file.matching" # i18n-tasks-use t('jobs.analysis.analyse_model_file.matching')
     # Match supported files
     match_with_supported_file(file)
-    status[:step] = "jobs.analysis.analyse_model_file.detect_ineffiency"
+    status[:step] = "jobs.analysis.analyse_model_file.detect_ineffiency" # i18n-tasks-use t('jobs.analysis.analyse_model_file.detect_ineffiency')
     # Detect inefficient file formats
     message = inefficiency_problem(file)
     Problem.create_or_clear(
@@ -30,7 +31,7 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
       !message.nil?,
       note: message
     )
-    status[:step] = "jobs.analysis.analyse_model_file.detect_duplicates"
+    status[:step] = "jobs.analysis.analyse_model_file.detect_duplicates" # i18n-tasks-use t('jobs.analysis.analyse_model_file.detect_duplicates')
     # Detect duplicates
     Problem.create_or_clear(
       file,
