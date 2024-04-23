@@ -177,7 +177,6 @@ de:
       settings: Einstellungen
       upload: Hochladen
     tag_list:
-      hidden: versteckt
       muted_tags:
         one:
         other:

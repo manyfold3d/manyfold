@@ -177,7 +177,6 @@ fr:
       settings: Paramètres
       upload: Télécharger
     tag_list:
-      hidden: caché
       muted_tags:
         one:
         other:
