@@ -1,0 +1,10 @@
+<div class="col mb-4">
+  <div class="card preview-card border-warning">
+    <div class='preview-empty'> <p><%= t "collections.collection.no_preview" %></p></div>
+    <div class="card-body">
+      <div class="card-title"><%= t(".name") %></div>
+      <h6 class="card-subtitle mb-2 text-muted"><%= t(".caption") %></h6>
+      <%= link_to "#{Model.where(collection: nil).count} #{Model.model_name.human count: Model.where(collection: nil).count}", models_path(collection: ""), {class: "btn btn-primary"} %>
+    </div>
+  </div>
+</div>

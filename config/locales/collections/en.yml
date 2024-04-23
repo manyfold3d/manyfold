@@ -14,6 +14,8 @@ en:
       unknown: Unknown
     index:
       actions_heading: Actions
-      view_unassigned_models: View unassigned
+    unassigned:
+      caption: All the models not in a collection.
+      name: Unassigned
     update:
       success: Collection details saved.
