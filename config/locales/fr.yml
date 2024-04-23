@@ -178,6 +178,9 @@ fr:
       upload: Télécharger
     tag_list:
       hidden: caché
+      muted_tags:
+        one:
+        other:
     tagline: Vous aider à garder une trace de vos fichiers d'impression 3D
     title: Manyfold
   errors:

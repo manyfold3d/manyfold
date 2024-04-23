@@ -178,6 +178,9 @@ de:
       upload: Hochladen
     tag_list:
       hidden: versteckt
+      muted_tags:
+        one:
+        other:
     tagline: Hilft ihnen ihre 3D-Druck Dateien zu verwalten
     title: Manyfold
   errors:
