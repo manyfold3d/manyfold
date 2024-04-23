@@ -11,6 +11,6 @@ module ProblemsHelper
   def problem_icon(problems = Problem.all)
     return "" if problems.empty?
     severity = max_problem_severity(problems)
-    content_tag(:span, icon("exclamation-triangle-fill", Problem.model_name.human.pluralize), class: "text-#{severity} align-middle")
+    content_tag(:span, icon("exclamation-triangle-fill", Problem.model_name.human(count: 100)), class: "text-#{severity} align-middle")
   end
 end

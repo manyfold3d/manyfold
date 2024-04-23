@@ -94,14 +94,30 @@ de:
               already_presupported: kann nicht auf eine vorunterstützte Datei gesetzt werden
               not_supported: keine vordefinierte Datei
     models:
-      acts_as_taggable_on/tag: Tag
-      collection: Kollektion
-      creator: Ersteller
-      library: Sammlung
-      link: URL
-      model: Modell
-      model_file: Datei
-      problem: Problem
+      acts_as_taggable_on/tag:
+        one: Bezeichnung
+        other: Bezeichnungen
+      collection:
+        one: Kollektion
+        other: Kollektionen
+      creator:
+        one: Ersteller
+        other: Ersteller
+      library:
+        one: Sammlung
+        other: Sammlungen
+      link:
+        one: URL
+        other: URLs
+      model:
+        one: Modell
+        other: Modelle
+      model_file:
+        one: Datei
+        other: Dateien
+      problem:
+        one: Problem
+        other: Probleme
       user:
         one: Benutzer
         other: Benutzer

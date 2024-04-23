@@ -35,5 +35,5 @@
   </ul>
 <% end %>
 <% if defined?(muted_tags) && !muted_tags.empty? && current_user.tag_cloud_settings["hide_unrelated"] %>
-  <p class="small"><%= pluralize(muted_tags.count, "unrelated tag") %> <%= t ".hidden" %> </p>
+  <p class="small"><%= t ".muted_tags", count: muted_tags.count %></p>
 <% end %>

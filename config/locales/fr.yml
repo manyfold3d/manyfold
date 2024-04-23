@@ -94,14 +94,30 @@ fr:
               already_presupported: ne peut pas être défini sur un fichier présupporté
               not_supported: n'est pas un fichier présupporté
     models:
-      acts_as_taggable_on/tag: Étiquette
-      collection: Collection
-      creator: Créateur
-      library: Bibliothèque
-      link: Lien
-      model: Modèle
-      model_file: Fichier
-      problem: Problème
+      acts_as_taggable_on/tag:
+        one: Étiquette
+        other:
+      collection:
+        one: Collection
+        other:
+      creator:
+        one: Créateur
+        other:
+      library:
+        one: Bibliothèque
+        other:
+      link:
+        one: Lien
+        other:
+      model:
+        one: Modèle
+        other:
+      model_file:
+        one: Fichier
+        other:
+      problem:
+        one: Problème
+        other:
       user:
         one: Utilisateur
         other: Utilisateurs
