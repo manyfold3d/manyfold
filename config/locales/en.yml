@@ -95,32 +95,68 @@ en:
               not_supported: is not a presupported file
     models:
       acts_as_taggable_on/tag:
+        few: Tags
+        many: Tags
         one: Tag
         other: Tags
+        two: Tags
+        zero: Tags
       collection:
+        few: Collections
+        many: Collections
         one: Collection
         other: Collections
+        two: Collections
+        zero: Collections
       creator:
+        few: Creators
+        many: Creators
         one: Creator
         other: Creators
+        two: Creators
+        zero: Creators
       library:
+        few: Libraries
+        many: Libraries
         one: Library
         other: Libraries
+        two: Libraries
+        zero: Libraries
       link:
+        few: Links
+        many: Links
         one: Link
         other: Links
+        two: Links
+        zero: Links
       model:
+        few: Models
+        many: Models
         one: Model
         other: Models
+        two: Models
+        zero: Models
       model_file:
+        few: Files
+        many: Files
         one: File
         other: Files
+        two: Files
+        zero: Files
       problem:
+        few: Problems
+        many: Problems
         one: Problem
         other: Problems
+        two: Problems
+        zero: Problems
       user:
+        few: Users
+        many: Users
         one: User
         other: Users
+        two: Users
+        zero: Users
   activity:
     index:
       description: Entries are discard after %{retention_period}.

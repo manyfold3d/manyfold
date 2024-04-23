@@ -14,6 +14,6 @@ fr:
       actions_heading: Actions
     unassigned:
       caption:
-      name: Non attribuée
+      name: Non attribué
     update:
       success: Détails du créateur sauvegardés.

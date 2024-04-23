@@ -122,9 +122,7 @@ fr:
       keypair:
         label: Utiliser un délimiteur pour représenter les paires de clés
       sorting:
-        label: 'Trier
-
-          '
+        label: Trier
       threshold:
         label: Nombre minimum d'étiquettes à afficher
     tag_settings:

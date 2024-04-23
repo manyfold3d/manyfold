@@ -16,6 +16,6 @@ pl:
       actions_heading: Akcje
     unassigned:
       caption:
-      name: Nieprzypisane
+      name:
     update:
       success: Szczegóły kolekcji zostały zapisane.

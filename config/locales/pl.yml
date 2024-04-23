@@ -96,38 +96,67 @@ pl:
     models:
       acts_as_taggable_on/tag:
         few:
+        many:
         one: Tag
         other:
+        two:
+        zero:
       collection:
         few:
+        many:
         one: Kolekcja
         other:
+        two:
+        zero:
       creator:
+        few:
+        many:
         one: Twórca
-        other: Twórców
+        other:
+        two:
+        zero:
       library:
-        few: Biblioteki
+        few:
+        many:
         one: Biblioteka
-        other: Bibliotek
+        other:
+        two:
+        zero:
       link:
         few:
+        many:
         one: Link
         other:
+        two:
+        zero:
       model:
-        few: Modele
+        few:
+        many:
         one: Model
-        other: Modeli
+        other:
+        two:
+        zero:
       model_file:
         few:
+        many:
         one: Plik
         other:
+        two:
+        zero:
       problem:
         few:
+        many:
         one: Problem
         other:
+        two:
+        zero:
       user:
+        few:
+        many:
         one: Użytkownik
-        other: Użytkowników
+        other:
+        two:
+        zero:
   activity:
     index:
       description: Wpisy są odrzucane po %{retention_period}.
@@ -185,8 +214,8 @@ pl:
       upload: Prześlij
     tag_list:
       muted_tags:
-        one:
-        other:
+        one: "%{count} niepowiązany tag ukryty"
+        other: "%{count} niepowiązanych tagów ukrytych"
     tagline: Pomagając w śledzeniu plików do druku 3D
     title: Manyfold
   general:

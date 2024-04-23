@@ -30,7 +30,7 @@ de:
         notes: Notizen
         path: Pfad
         preview_file: Vorschau
-        tags: Tags
+        tags: Bezeichnungen
       model_file:
         caption: Bildunterschrift
         digest: Hash
@@ -95,32 +95,68 @@ de:
               not_supported: keine vordefinierte Datei
     models:
       acts_as_taggable_on/tag:
+        few: Bezeichnungen
+        many: Bezeichnungen
         one: Bezeichnung
         other: Bezeichnungen
+        two: Bezeichnungen
+        zero: Bezeichnungen
       collection:
+        few: Kollektionen
+        many: Kollektionen
         one: Kollektion
         other: Kollektionen
+        two: Kollektionen
+        zero: Kollektionen
       creator:
+        few: Ersteller
+        many: Ersteller
         one: Ersteller
         other: Ersteller
+        two: Ersteller
+        zero: Ersteller
       library:
+        few: Sammlungen
+        many: Sammlungen
         one: Sammlung
         other: Sammlungen
+        two: Sammlungen
+        zero: Sammlungen
       link:
+        few: URLs
+        many: URLs
         one: URL
         other: URLs
+        two: URLs
+        zero: URLs
       model:
+        few: Modelle
+        many: Modelle
         one: Modell
         other: Modelle
+        two: Modelle
+        zero: Modelle
       model_file:
+        few: Dateien
+        many: Dateien
         one: Datei
         other: Dateien
+        two: Dateien
+        zero: Dateien
       problem:
+        few: Probleme
+        many: Probleme
         one: Problem
         other: Probleme
+        two: Probleme
+        zero: Probleme
       user:
+        few: Benutzer
+        many: Benutzer
         one: Benutzer
         other: Benutzer
+        two: Benutzer
+        zero: Benutzer
   activity:
     index:
       description:
