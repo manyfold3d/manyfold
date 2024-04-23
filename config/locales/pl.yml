@@ -206,24 +206,24 @@ pl:
   jobs:
     analysis:
       analyse_model_file:
-        detect_duplicates:
-        detect_ineffiency:
-        file_statistics:
-        matching:
+        detect_duplicates: Wykrywanie zduplikowanych plików
+        detect_ineffiency: Wykrywanie niewydajnych formatów
+        file_statistics: Obliczanie statystyk plików
+        matching: Dopasowywanie obsługiwanych plików
       file_conversion:
-        exporting:
-        loading_mesh:
+        exporting: Eksportowanie nowego pliku
+        loading_mesh: Ładowanie siatki
       geometric_analysis:
-        direction_check:
-        loading_mesh:
-        manifold_check:
+        direction_check: Sprawdzanie orientacji powierzchni
+        loading_mesh: Ładowanie siatki
+        manifold_check: Sprawdzanie, czy siatka jest rozmaita
     scan:
       check_all:
-        queueing_model_checks:
+        queueing_model_checks: Kolejkowanie sprawdzania modeli
       detect_filesystem_changes:
-        building_filename_list:
-        building_folder_list:
-        creating_models:
+        building_filename_list: Tworzenie listy plików
+        building_folder_list: Tworzenie listy zmienionych folderów
+        creating_models: Tworzenie modeli
   kaminari:
     paginator:
       label: Nawigacja strony
