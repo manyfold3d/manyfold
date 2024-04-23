@@ -126,7 +126,7 @@ fr:
       description:
       message: Message
       name: Nom
-      sidekiq:
+      sidekiq: Sidekiq
       time: Quand
       title: Activité récente
   activity_helper:
