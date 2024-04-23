@@ -3,3 +3,4 @@ en:
   active_admin:
     dashboard: Dashboard
     exit: Exit admin interface
+    recent_models: Recent models
