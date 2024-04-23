@@ -518,6 +518,9 @@ GEM
       unicode-display_width (>= 1.1.1, < 3)
     text (1.3.1)
     thor (1.3.1)
+    thruster (0.1.3)
+    thruster (0.1.3-x86_64-darwin)
+    thruster (0.1.3-x86_64-linux)
     tilt (2.0.10)
     timeout (0.4.1)
     translation (1.40)
@@ -617,6 +620,7 @@ DEPENDENCIES
   stopwords-filter2
   string-similarity (~> 2.1)
   sys-filesystem (~> 1.4)
+  thruster (~> 0.1.3)
   translation (~> 1.40)
   tzinfo-data
   view_component (~> 3.12)

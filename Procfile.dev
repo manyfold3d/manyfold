@@ -1,4 +1,4 @@
-rails: bin/rails server -p $PORT
+rails: HTTP_PORT=$PORT thrust bin/rails server
 worker: bundle exec sidekiq
 js: yarn build --watch
 css: yarn build:css --watch
