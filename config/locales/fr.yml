@@ -95,32 +95,68 @@ fr:
               not_supported: n'est pas un fichier présupporté
     models:
       acts_as_taggable_on/tag:
+        few: Étiquettes
+        many: Étiquettes
         one: Étiquette
-        other:
+        other: Étiquettes
+        two: Étiquettes
+        zero: Étiquettes
       collection:
+        few: Collections
+        many: Collections
         one: Collection
-        other:
+        other: Collections
+        two: Collections
+        zero: Collections
       creator:
+        few: Créateurs
+        many: Créateurs
         one: Créateur
-        other:
+        other: Créateurs
+        two: Créateurs
+        zero: Créateurs
       library:
+        few: Bibliothèques
+        many: Bibliothèques
         one: Bibliothèque
-        other:
+        other: Bibliothèques
+        two: Bibliothèques
+        zero: Bibliothèques
       link:
+        few: Liens
+        many: Liens
         one: Lien
-        other:
+        other: Liens
+        two: Liens
+        zero: Liens
       model:
+        few: Modèles
+        many: Modèles
         one: Modèle
-        other:
+        other: Modèles
+        two: Modèles
+        zero: Modèles
       model_file:
+        few: Fichiers
+        many: Fichiers
         one: Fichier
-        other:
+        other: Fichiers
+        two: Fichiers
+        zero: Fichiers
       problem:
+        few: Problèmes
+        many: Problèmes
         one: Problème
-        other:
+        other: Problèmes
+        two: Problèmes
+        zero: Problèmes
       user:
+        few: Utilisateurs
+        many: Utilisateurs
         one: Utilisateur
         other: Utilisateurs
+        two: Utilisateurs
+        zero: Utilisateurs
   activity:
     index:
       description:
