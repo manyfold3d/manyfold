@@ -57,4 +57,9 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+
+  # Enforce strict loading in test, but only log the error, not raise
+  config.active_record.strict_loading_by_default = true
+  config.active_record.action_on_strict_loading_violation = :log
 end
