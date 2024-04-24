@@ -69,8 +69,8 @@
         <td><%= render "tag_list", tags: @model.tags.sort_by(&:taggings_count) %></td>
       </tr>
     </table>
-    <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_library_model_path(@library, @model), class: "btn btn-primary" if policy(@model).edit? %>
-    <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), library_model_path(@library, @model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: t("models.destroy.confirm")}} if policy(@model).destroy? %>
+    <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_library_model_path(@model.library, @model), class: "btn btn-primary" if policy(@model).edit? %>
+    <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), library_model_path(@model.library, @model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: t("models.destroy.confirm")}} if policy(@model).destroy? %>
   <% end %>
 
   <% if !@model.parents.empty? && policy(@model).merge? %>
@@ -80,7 +80,7 @@
       </p>
       <strong><%= t(".merge.with") %>:</strong>
       <% @model.parents.each do |target| %>
-        <%= link_to target.name, merge_library_model_path(@library, @model, target: target.id), class: "btn btn-danger", method: :post %>
+        <%= link_to target.name, merge_library_model_path(@model.library, @model, target: target.id), class: "btn btn-danger", method: :post %>
       <% end %>
     <% end %>
   <% end %>
@@ -98,8 +98,8 @@
         <li><a href="#<%= group.parameterize %>"><%= group %></a></li>
       <% end %>
     </ul>
-    <%= link_to t(".files_card.bulk_edit"), bulk_edit_library_model_model_files_path(@library, @model), class: "btn btn-secondary" if policy(@model).edit? %>
-    <%= link_to t(".rescan"), scan_library_model_path(@library, @model), class: "btn btn-warning", method: :post if policy(@model).scan? %>
+    <%= link_to t(".files_card.bulk_edit"), bulk_edit_library_model_model_files_path(@model.library, @model), class: "btn btn-secondary" if policy(@model).edit? %>
+    <%= link_to t(".rescan"), scan_library_model_path(@model.library, @model), class: "btn btn-warning", method: :post if policy(@model).scan? %>
   <% end %>
 
   <%= render "links_card", links: @model.links %>
@@ -121,7 +121,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t(".organize.confirm.no") %></button>
-          <%= button_to t(".organize.confirm.yes"), library_model_path(@library, @model, "model[organize]": true), method: :patch, class: "btn btn-warning" %>
+          <%= button_to t(".organize.confirm.yes"), library_model_path(@model.library, @model, "model[organize]": true), method: :patch, class: "btn btn-warning" %>
         </div>
       </div>
     </div>

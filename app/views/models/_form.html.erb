@@ -1,4 +1,4 @@
-<%= form_with model: [@library, @model] do |form| %>
+<%= form_with model: [@model.library, @model] do |form| %>
   <%= text_input_row form, :name %>
 
   <div class="row mb-3 input-group">
@@ -20,7 +20,7 @@
     <%= form.collection_select :library_id, Library.all, :id, :name, {include_blank: false}, {class: "form-control col-auto form-select", disabled: @model.contains_other_models?} %>
   </div>
 
-  <%= render "tags_edit", form: form, name: "model[tag_list]", value: (@model.tags.map { |tag| tag.name }).join(","), label: t(".tags"), tags: @library.all_tags %>
+  <%= render "tags_edit", form: form, name: "model[tag_list]", value: (@model.tags.map { |tag| tag.name }).join(","), label: t(".tags"), tags: @model.library.all_tags %>
 
   <div class="row mb-3 input-group">
     <%= form.label :collection_id, class: "col-sm-2 col-form-label" %>
