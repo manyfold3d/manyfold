@@ -27,7 +27,7 @@ class CollectionsController < ApplicationController
       @collections = @collections.page(page).per(current_user.pagination_settings["per_page"])
     end
     # Eager load
-    @collections = @collections.includes :collections, :collection, :links, :models
+    @collections = @collections.includes :collections, :collection, :links, models: [:preview_file, :library]
     render layout: "card_list_page"
   end
 
