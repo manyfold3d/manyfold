@@ -158,7 +158,7 @@ class ModelsController < ApplicationController
   end
 
   def get_model
-    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links,).find(params[:id])
+    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links).find(params[:id])
     authorize @model
     @title = @model.name
   end
