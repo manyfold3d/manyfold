@@ -1,6 +1,6 @@
 class Creator < ApplicationRecord
-  has_many :models, dependent: :nullify
-  has_many :links, as: :linkable, dependent: :destroy
+  has_many :models, dependent: :nullify, strict_loading: true
+  has_many :links, as: :linkable, dependent: :destroy, strict_loading: true
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
   validates :name, uniqueness: {case_sensitive: false}
   validates :slug, uniqueness: true

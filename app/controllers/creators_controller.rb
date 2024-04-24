@@ -26,6 +26,8 @@ class CreatorsController < ApplicationController
       page = params[:page] || 1
       @creators = @creators.page(page).per(current_user.pagination_settings["per_page"])
     end
+    # Eager load data
+    @creators = @creators.includes(:links, :models)
     render layout: "card_list_page"
   end
 
@@ -68,7 +70,7 @@ class CreatorsController < ApplicationController
       authorize Creator
       @title = t(".unknown")
     else
-      @creator = Creator.find(params[:id])
+      @creator = Creator.includes(:links).find(params[:id])
       authorize @creator
       @title = @creator.name
     end
