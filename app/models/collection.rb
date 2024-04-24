@@ -1,7 +1,7 @@
 class Collection < ApplicationRecord
-  has_many :models, dependent: :nullify, strict_loading: true
-  has_many :collections, dependent: :nullify, strict_loading: true
-  has_many :links, as: :linkable, dependent: :destroy, strict_loading: true
+  has_many :models, dependent: :nullify
+  has_many :collections, dependent: :nullify
+  has_many :links, as: :linkable, dependent: :destroy
   belongs_to :collection, optional: true
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
   validates :name, uniqueness: {case_sensitive: false}

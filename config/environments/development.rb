@@ -56,6 +56,10 @@ Rails.application.configure do
 
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
+  # Enforce strict loading in dev so that we can debug N+1 issues
+  config.active_record.strict_loading_by_default = true
+  # Warn in log for large queries
+  config.active_record.warn_on_records_fetched_greater_than = 100
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
