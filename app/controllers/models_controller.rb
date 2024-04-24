@@ -39,6 +39,7 @@ class ModelsController < ApplicationController
       hidden_ids = files.select(:presupported_version_id).where.not(presupported_version_id: nil)
       files = files.where.not(id: hidden_ids)
     end
+    files = files.includes(:presupported_version, :problems)
     files = files.select(&:is_3d_model?)
     @groups = helpers.group(files)
     render layout: "card_list_page"
