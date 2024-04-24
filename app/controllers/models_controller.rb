@@ -26,6 +26,9 @@ class ModelsController < ApplicationController
     process_filters
     process_filters_tags_highlight
 
+    # Load extra data
+    @models = @models.includes [:library, :model_files]
+
     render layout: "card_list_page"
   end
 
