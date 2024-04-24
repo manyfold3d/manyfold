@@ -6,6 +6,11 @@ class ModelsController < ApplicationController
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
   def index
+    # Work out policies for showing buttons up front
+    @can_show = policy(Model).show?
+    @can_destroy = policy(Model).destroy?
+    @can_edit = policy(Model).edit?
+
     process_filters_init
 
     # Ordering
@@ -26,7 +31,7 @@ class ModelsController < ApplicationController
     process_filters_tags_highlight
 
     # Load extra data
-    @models = @models.includes [:library, :model_files]
+    @models = @models.includes [:library, :model_files, :preview_file, :creator, :collection]
 
     render layout: "card_list_page"
   end
