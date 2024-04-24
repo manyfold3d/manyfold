@@ -72,7 +72,7 @@ class CollectionsController < ApplicationController
       authorize Collection
       @title = t(".unknown")
     else
-      @collection = Collection.find(params[:id])
+      @collection = Collection.includes(:links).find(params[:id])
       authorize @collection
       @title = @collection.name
     end
