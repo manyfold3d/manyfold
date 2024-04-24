@@ -60,7 +60,8 @@ RSpec.describe "Models" do
 
         put "/libraries/#{library.id}/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b"]}}
         expect(response).to have_http_status(:redirect)
-        tags = library.models.first.tag_list
+        first.reload
+        tags = first.tag_list
         expect(tags.length).to eq 2
         expect(tags[0]).to eq "a"
         expect(tags[1]).to eq "b"
@@ -73,7 +74,8 @@ RSpec.describe "Models" do
 
         put "/libraries/#{library.id}/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b", "d"]}}
         expect(response).to have_http_status(:redirect)
-        tags = library.models.first.tag_list
+        first.reload
+        tags = first.tag_list
         expect(tags.length).to eq 3
         expect(tags[0]).to eq "a"
         expect(tags[1]).to eq "b"
@@ -148,6 +150,7 @@ RSpec.describe "Models" do
 
         expect(response).to have_http_status(:redirect)
         library.models.take(2).each do |model|
+          model.reload
           expect(model.tag_list).to eq ["c"]
         end
       end

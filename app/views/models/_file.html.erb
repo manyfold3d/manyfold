@@ -1,11 +1,11 @@
 <div class="col mb-4">
   <div class="card preview-card <%= (file === @model.preview_file) ? "border-primary" : "" %>">
     <% if file.is_image? %>
-      <%= content_tag :div, nil, class: "card-img-top card-img-top-background", style: "background-image: url(#{library_model_model_file_path(@library, @model, file, format: file.extension)})" %>
-      <%= image_tag library_model_model_file_path(@library, @model, file, format: file.extension), class: "card-img-top image-preview", alt: file.name %>
+      <%= content_tag :div, nil, class: "card-img-top card-img-top-background", style: "background-image: url(#{library_model_model_file_path(@model.library, @model, file, format: file.extension)})" %>
+      <%= image_tag library_model_model_file_path(@model.library, @model, file, format: file.extension), class: "card-img-top image-preview", alt: file.name %>
     <% elsif renderable?(file.extension) %>
       <div class="card-img-top">
-        <%= render partial: "object_preview", locals: {library: @library, model: @model, file: file} %>
+        <%= render partial: "object_preview", locals: {library: @model.library, model: @model, file: file} %>
       </div>
     <% end %>
     <div class="card-body">
@@ -17,10 +17,10 @@
       <% end %>
       <div class="row">
         <div class="col">
-          <%= link_to t(".open"), library_model_model_file_path(@library, @model, file), {class: "btn btn-primary"} %>
-          <%= link_to icon("cloud-download", t("general.download")), library_model_model_file_path(@library, @model, file, file.extension.to_sym), {class: "btn btn-secondary"} %>
+          <%= link_to t(".open"), library_model_model_file_path(@model.library, @model, file), {class: "btn btn-primary"} %>
+          <%= link_to icon("cloud-download", t("general.download")), library_model_model_file_path(@model.library, @model, file, file.extension.to_sym), {class: "btn btn-secondary"} %>
           <% if policy(@model).edit? %>
-            <%= form_with model: [@library, @model], class: "d-inline" do |form| %>
+            <%= form_with model: [@model.library, @model], class: "d-inline" do |form| %>
               <%= form.hidden_field :preview_file_id, value: file.id %>
               <%= form.button icon("image", t(".set_as_preview")), data_bs_toggle: "button", class: "btn #{(file == @model.preview_file) ? "btn-outline-success active disabled" : "btn-outline-secondary"}" %>
             <% end %>

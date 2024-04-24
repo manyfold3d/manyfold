@@ -108,7 +108,7 @@ class ModelFilesController < ApplicationController
   end
 
   def get_file
-    @file = @model.model_files.find(params[:id])
+    @file = @model.model_files.includes(:unsupported_version, :presupported_version).find(params[:id])
     authorize @file
     @title = @file.name
   end

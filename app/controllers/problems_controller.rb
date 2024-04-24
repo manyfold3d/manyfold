@@ -21,6 +21,7 @@ class ProblemsController < ApplicationController
     query = query.where(problematic_type: params[:type].map(&:classify)) if params[:type]
     # Don't show types ignored in user settings
     query = query.visible(current_user.problem_settings)
+    query = query.includes([:problematic])
     @problems = query.page(page).per(50).order([:category, :problematic_type])
     # Do we have any filters at all?
     @filters_applied = [:show_ignored, :severity, :category, :type].any? { |k| params.has_key?(k) }

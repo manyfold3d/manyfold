@@ -26,6 +26,8 @@ class CollectionsController < ApplicationController
       page = params[:page] || 1
       @collections = @collections.page(page).per(current_user.pagination_settings["per_page"])
     end
+    # Eager load
+    @collections = @collections.includes :collections, :collection, :links, models: [:preview_file, :library]
     render layout: "card_list_page"
   end
 
@@ -70,7 +72,7 @@ class CollectionsController < ApplicationController
       authorize Collection
       @title = t(".unknown")
     else
-      @collection = Collection.find(params[:id])
+      @collection = Collection.includes(:links).find(params[:id])
       authorize @collection
       @title = @collection.name
     end

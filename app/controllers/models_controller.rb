@@ -2,7 +2,6 @@ require "fileutils"
 
 class ModelsController < ApplicationController
   include ModelFilters
-  before_action :get_library, except: [:index, :bulk_edit, :bulk_update]
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index]
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
@@ -26,6 +25,9 @@ class ModelsController < ApplicationController
     process_filters
     process_filters_tags_highlight
 
+    # Load extra data
+    @models = @models.includes [:library, :model_files]
+
     render layout: "card_list_page"
   end
 
@@ -37,6 +39,7 @@ class ModelsController < ApplicationController
       hidden_ids = files.select(:presupported_version_id).where.not(presupported_version_id: nil)
       files = files.where.not(id: hidden_ids)
     end
+    files = files.includes(:presupported_version, :problems)
     files = files.select(&:is_3d_model?)
     @groups = helpers.group(files)
     render layout: "card_list_page"
@@ -62,13 +65,13 @@ class ModelsController < ApplicationController
     if params[:target] && (target = (@model.parents.find { |x| x.id == params[:target].to_i }))
       @model.merge_into! target
       Scan::CheckModelIntegrityJob.perform_later(target.id)
-      redirect_to [@library, target], notice: t(".success")
+      redirect_to [target.library, target], notice: t(".success")
     elsif params[:all] && @model.contains_other_models?
       @model.contained_models.each do |child|
         child.merge_into! @model
       end
       Scan::CheckModelIntegrityJob.perform_later(@model.id)
-      redirect_to [@library, @model], notice: t(".success")
+      redirect_to [@model.library, @model], notice: t(".success")
     else
       head :bad_request
     end
@@ -80,7 +83,7 @@ class ModelsController < ApplicationController
     # Start the scans
     Scan::CheckModelJob.perform_later(@model.id)
     # Back to the model page
-    redirect_to [@library, @model], notice: t(".success")
+    redirect_to [@model.library, @model], notice: t(".success")
   end
 
   def bulk_edit
@@ -111,11 +114,11 @@ class ModelsController < ApplicationController
 
   def destroy
     @model.delete_from_disk_and_destroy
-    if request.referer && (URI.parse(request.referer).path == library_model_path(@library, @model))
+    if request.referer && (URI.parse(request.referer).path == library_model_path(@model.library, @model))
       # If we're coming from the model page itself, we can't go back there
-      redirect_to library_path(@library), notice: t(".success")
+      redirect_to library_path(@model.library), notice: t(".success")
     else
-      redirect_back_or_to library_path(@library), notice: t(".success")
+      redirect_back_or_to library_path(@model.library), notice: t(".success")
     end
   end
 
@@ -154,12 +157,8 @@ class ModelsController < ApplicationController
     )
   end
 
-  def get_library
-    @library = Model.find(params[:id]).library
-  end
-
   def get_model
-    @model = Model.includes(:model_files, :creator).find(params[:id])
+    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links).find(params[:id])
     authorize @model
     @title = @model.name
   end
