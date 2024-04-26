@@ -387,7 +387,7 @@ GEM
       ffi (~> 1.0)
     redis (5.2.0)
       redis-client (>= 0.22.0)
-    redis-client (0.22.0)
+    redis-client (0.22.1)
       connection_pool
     regexp_parser (2.9.0)
     request_store (1.5.1)
@@ -468,7 +468,7 @@ GEM
     scout_apm (5.3.8)
       parser
     shellany (0.0.1)
-    sidekiq (7.2.2)
+    sidekiq (7.2.3)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
