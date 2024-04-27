@@ -19,7 +19,7 @@ if [ -z ${DATABASE_URL} ]; then
 		fi
 	done
 	echo "Required variables check passed"
-	DATABASE_URL="postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}?pool=5"
+	export DATABASE_URL="postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}?pool=5"
 fi
 
 echo "Preparing database..."
