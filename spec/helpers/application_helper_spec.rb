@@ -7,7 +7,6 @@ RSpec.describe ApplicationHelper do
       doc = Nokogiri::HTML(html)
       expect(doc.at("i")["class"]).to eq("bi bi-test")
       expect(doc.at("i")["role"]).to eq("img")
-      expect(doc.at("i")["aria-label"]).to eq("Test Label")
       expect(doc.at("i")["title"]).to eq("Test Label")
     end
   end

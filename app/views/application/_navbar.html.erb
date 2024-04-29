@@ -54,10 +54,12 @@
         <%- if current_user %>
           <% if Problem.visible(current_user.problem_settings).count > 0 %>
             <li class="nav-item">
-              <%= nav_link "exclamation-triangle-fill",
+              <% severity = max_problem_severity %>
+              <%= nav_link problem_icon(severity),
                     Problem.model_name.human(count: 100),
                     problems_path,
-                    icon_style: "link-#{max_problem_severity}",
+                    title: t("problems.severities.#{severity}"), # rubocop:todo I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
+                    icon_style: "link-#{severity}",
                     text_style: "d-lg-none" %>
             </li>
           <% end %>
