@@ -30,7 +30,7 @@
           <% if file.presupported || file.presupported_version %>
             <%= icon "bar-chart-line-fill", ModelFile.human_attribute_name(:presupported) %>
           <% end %>
-          <%= problem_icon(file.problems) %>
+          <%= problem_icon_tag(file.problems) %>
         </div>
       </div>
     </div>
