@@ -23,7 +23,7 @@ jobs:
       - name: Compile assets
         run: bundle exec rails assets:precompile
       - name: Run tests
-        uses: paambaati/codeclimate-action@v5.0.0
+        uses: paambaati/codeclimate-action@v6.0.0
         with:
           coverageCommand: bundle exec rake
         env:
