@@ -1,18 +1,18 @@
 <%= render partial: "breadcrumb" %>
-<h1>Bulk Edit <%= ModelFile.model_name.human(count: @files.count) %></h1>
+<h1><%= t(".title") %></h1>
+
+<p class="lead"><%= t(".description") %></p>
 
 <%= form_with url: bulk_update_library_model_model_files_path(@library, @model), method: :patch do |form| %>
-
-  <h3>Select files to change:</h3>
 
   <table class="table table-striped" data-bulk-edit>
     <tr>
       <th><input type="checkbox" aria-label="Select All" value="0" name="bulk-select-all"></th>
-      <th>Name</th>
-      <th>Filename</th>
-      <th>Printed</th>
-      <th>Presupported</th>
-      <th>Y Up</th>
+      <th><%= ModelFile.human_attribute_name(:name) %></th>
+      <th><%= ModelFile.human_attribute_name(:filename) %></th>
+      <th><%= ModelFile.human_attribute_name(:printed) %></th>
+      <th><%= ModelFile.human_attribute_name(:presupported) %></th>
+      <th><%= ModelFile.human_attribute_name(:y_up) %></th>
     </tr>
     <% @files.each do |file| %>
       <tr>
@@ -26,10 +26,10 @@
     <% end %>
   </table>
 
-  <h3>Select changes to make:</h3>
+  <h2><%= t(".form_subtitle") %></h2>
 
   <div class="row mb-3">
-    <%= form.label "Printed", class: "col-sm-2 col-form-label" %>
+    <%= form.label :printed, class: "col-sm-2 col-form-label" %>
     <div class="col-sm-10">
       <div class="form-switch">
         <%= form.check_box :printed, class: "form-check-input form-check-inline" %>
@@ -37,7 +37,7 @@
     </div>
   </div>
   <div class="row mb-3">
-    <%= form.label "Presupported", class: "col-sm-2 col-form-label" %>
+    <%= form.label :presupported, class: "col-sm-2 col-form-label" %>
     <div class="col-sm-10">
       <div class="form-switch">
         <%= form.check_box :presupported, class: "form-check-input form-check-inline" %>
@@ -45,13 +45,13 @@
     </div>
   </div>
   <div class="row mb-3">
-    <%= form.label "Y Up", class: "col-sm-2 col-form-label" %>
+    <%= form.label :y_up, class: "col-sm-2 col-form-label" %>
     <div class="col-sm-10">
       <div class="form-switch">
         <%= form.check_box :y_up, class: "form-check-input form-check-inline" %>
       </div>
     </div>
   </div>
-  <%= form.submit "Update Selected Files", class: "btn btn-primary" %>
+  <%= form.submit t(".submit"), class: "btn btn-primary" %>
 
 <% end %>

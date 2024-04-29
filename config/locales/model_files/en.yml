@@ -1,6 +1,11 @@
 ---
 en:
   model_files:
+    bulk_edit:
+      description: 'Select files to change:'
+      form_subtitle: 'Select changes to make:'
+      submit: Update Selected Files
+      title: Bulk Edit Files
     bulk_update:
       success: Files updated successfully.
     create:
