@@ -13,7 +13,7 @@ gem "sass-rails", ">= 6"
 gem "jsbundling-rails"
 gem "cssbundling-rails", "~> 1.4"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder", "~> 2.11"
+gem "jbuilder", "~> 2.12"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.2"
 # Use Active Model has_secure_password
