@@ -13,7 +13,7 @@ pl:
     index:
       actions_heading: Akcje
     unassigned:
-      caption:
-      name:
+      caption: Wszystkie modele bez znanego twórcy.
+      name: Nieprzypisany
     update:
       success: Szczegóły twórcy zostały zapisane.

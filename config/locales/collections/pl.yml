@@ -15,7 +15,7 @@ pl:
     index:
       actions_heading: Akcje
     unassigned:
-      caption:
-      name:
+      caption: Wszystkie modele spoza kolekcji.
+      name: Nieprzypisany
     update:
       success: Szczegóły kolekcji zostały zapisane.
