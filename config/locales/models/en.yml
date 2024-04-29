@@ -3,7 +3,14 @@ en:
   models:
     bulk_edit:
       add_tags: Add tags
+      description: 'Select models to change:'
+      form_subtitle: 'Select changes to make:'
+      needs_organizing: Needs organizing
       remove_tags: Remove tags
+      select: Select model '%{name}'
+      select_all: Select all models
+      submit: Update Selected Models
+      title: Bulk Edit Models
     bulk_update:
       success: Models updated successfully.
     delete: Delete

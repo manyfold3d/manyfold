@@ -1,21 +1,21 @@
-<h1>Bulk Edit <%= Model.model_name.human(count: @models.count) %></h1>
+<h1><%= t(".title") %></h1>
+
+<p class="lead"><%= t(".description") %></p>
 
 <%= form_with url: update_models_path, method: :patch do |form| %>
 
-  <h3>Select models to change:</h3>
-
   <table class="table table-striped" data-bulk-edit>
     <tr>
-      <th><input type="checkbox" aria-label="Select All" value="0" name="bulk-select-all"></th>
-      <th>Name</th>
-      <th>Collections</th>
-      <th>Tags</th>
-      <th>Creator</th>
-      <th>Organize files</th>
+      <th><input type="checkbox" aria-label="<%= t ".select_all" %>" value="0" name="bulk-select-all"></th>
+      <th><%= Model.human_attribute_name(:name) %></th>
+      <th><%= Model.human_attribute_name(:collection) %></th>
+      <th><%= Model.human_attribute_name(:tags) %></th>
+      <th><%= Model.human_attribute_name(:creator) %></th>
+      <th><%= t(".needs_organizing") %></th>
     </tr>
     <% @models.each do |model| %>
       <tr>
-        <td><%= form.check_box "models[#{model.id}]", {data: {bulk_item: model.id.to_s}} %></td>
+        <td><%= form.check_box "models[#{model.id}]", data: {bulk_item: model.id.to_s}, "aria-label": t(".select", name: model.name) %></td>
         <td><%= link_to model.name, [model.library, model], title: model.path %></td>
         <td><%= link_to model.collection.name, model.collection if model.collection %></td>
         <td><%= render partial: "tag",
@@ -23,19 +23,19 @@
                     model.tags.sort_by(&:name) : model.tags.sort_by(&:name).reverse.sort_by(&:taggings_count).reverse,
                   locals: {state: :normal, model_id: model.id} %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
-        <td><code><%= model.formatted_path if model.needs_organizing? %></code></td>
+        <td><%= icon("exclamation-triangle", t(".needs_organizing")) if model.needs_organizing? %></code></td>
       </tr>
     <% end %>
   </table>
 
-  <h3>Select changes to make:</h3>
+  <p class="lead"><%= t ".form_subtitle" %></p>
 
   <div class="row mb-3">
     <%= form.label :creator_id, class: "col-sm-2 col-form-label" %>
     <div class="col-sm-10">
       <div class="input-group">
         <%= form.collection_select :creator_id, @creators, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
-        <%= link_to "New Creator", new_creator_path, class: "btn btn-outline-secondary col-auto" if policy(:creator).new? %>
+        <%= link_to t("creators.general.new"), new_creator_path, class: "btn btn-outline-secondary col-auto" if policy(:creator).new? %>
       </div>
     </div>
   </div>
@@ -62,13 +62,13 @@
     <div class="col-sm-10">
       <div class="input-group">
         <%= form.collection_select :collection_id, @collections, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
-        <%= link_to "New Collection", new_collection_path, class: "btn btn-outline-secondary col-auto" if policy(:collection).new? %>
+        <%= link_to t("collections.general.new"), new_collection_path, class: "btn btn-outline-secondary col-auto" if policy(:collection).new? %>
       </div>
     </div>
   </div>
 
   <div class="row mb-3">
-    <%= form.label "Organize files", class: "col-sm-2 col-form-label" %>
+    <%= form.label :organize, class: "col-sm-2 col-form-label" %>
     <div class="col-sm-10">
       <div class="form-switch">
         <%= form.check_box :organize, class: "form-check-input form-check-inline" %>
@@ -84,6 +84,6 @@
   <%= form.hidden_field :collection, value: @filters[:collection] if @filters[:collection] %>
   <%= form.hidden_field :library, value: @filters[:library] if @filters[:library] %>
   <%= form.hidden_field :creator, value: @filters[:creator] if @filters[:creator] %>
-  <%= form.submit "Update Selected Models", class: "btn btn-primary" %>
+  <%= form.submit t(".submit"), class: "btn btn-primary" %>
 
 <% end %>
