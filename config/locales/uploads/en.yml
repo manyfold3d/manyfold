@@ -4,11 +4,12 @@ en:
     create:
       success: File(s) uploaded successfully.
     index:
-      datafiles:
+      files:
         help: 'Supported file types: %{types}'
         label: Select File
-      library_pick:
+      library:
         help: The library to upload to.
-      scan_after_upload:
+      scan:
         label: Scan After Upload
       submit: Upload
+      title: Upload

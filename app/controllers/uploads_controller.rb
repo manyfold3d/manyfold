@@ -8,10 +8,10 @@ class UploadsController < ApplicationController
   end
 
   def create
-    library = Library.find(params[:post][:library_pick])
-    save_files(params[:upload], File.join(library.path, ""))
+    library = Library.find(params[:library])
+    save_files(params[:files], File.join(library.path, ""))
 
-    if params[:post][:scan_after_upload] == "1"
+    if params[:scan] == "1"
       Scan::DetectFilesystemChangesJob.perform_later(library.id)
     end
     redirect_to libraries_path, notice: t(".success")
@@ -19,8 +19,8 @@ class UploadsController < ApplicationController
 
   private
 
-  def save_files(upload, library_path)
-    upload["datafiles"].select { |datafile| datafile != "" }.each { |datafile|
+  def save_files(files, library_path)
+    files.select { |datafile| datafile != "" }.each { |datafile|
       file_name_with_zip = datafile.original_filename
       file_name = File.basename(file_name_with_zip, File.extname(file_name_with_zip))
       dest_folder_name = library_path + file_name

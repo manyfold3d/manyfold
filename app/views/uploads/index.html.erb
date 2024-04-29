@@ -1,28 +1,30 @@
-<%= form_tag({action: "create"}, multipart: true) do %>
+<h1><%= t ".title" %></h1>
+
+<%= form_with url: uploads_path, multipart: true do |form| %>
 
   <div class="row mb-3 input-group">
-    <%= label :library_pick, Library.model_name.human, class: "col-sm-2 col-form-label" %>
+    <%= form.label :library, Library.model_name.human, class: "col-sm-2 col-form-label" %>
     <div class='col-sm-10 ps-0'>
-      <%= select "post", "library_pick", Library.all.map { |lib| [lib.name, lib.id] }, {include_blank: false}, {class: "form-control form-select"} %>
-      <span id="libraryPick" class="form-text"><%= t ".library_pick.help" %></span>
+      <%= form.select :library, Library.all.map { |lib| [lib.name, lib.id] }, {include_blank: false}, {class: "form-control form-select"} %>
+      <span class="form-text"><%= t ".library.help" %></span>
     </div>
   </div>
 
   <div class="row mb-3 input-group">
-    <%= label :upload, t(".datafiles.label"), for: "upload", class: "col-sm-2 col-form-label" %>
+    <%= form.label :files, t(".files.label"), class: "col-sm-2 col-form-label" %>
     <div class='col-sm-10 ps-0'>
-      <%= file_field "upload", "datafiles", {
+      <%= form.file_field :files, {
             multiple: true,
             accept: "application/zip,application/x-rar-compressed,application/x-7z-compressed,application/x-bzip2,application/x-bzip,application/gzip"
           } %>
-      <div id="uploadHelp" class="form-text"><%= t ".datafiles.help", types: safe_join(%w[zip rar 7z bzip gzip], ", ") %></div>
+      <span class="form-text"><%= t ".files.help", types: safe_join(%w[zip rar 7z bzip gzip], ", ") %></span>
     </div>
   </div>
 
   <div class="row mb-2">
-    <%= label :scan_after_upload, t(".scan_after_upload.label"), for: "scan_after_upload", class: "col-sm-4 col-form-label" %>
+    <%= form.label :scan, t(".scan.label"), class: "col-sm-4 col-form-label" %>
     <div class="col-sm-8 form-check form-switch">
-      <%= check_box "post", "scan_after_upload" %>
+      <%= form.check_box :scan, checked: true, class: "form-check-input" %>
     </div>
   </div>
 
