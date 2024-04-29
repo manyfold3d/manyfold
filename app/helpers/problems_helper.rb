@@ -10,7 +10,7 @@ module ProblemsHelper
   end
 
   def problem_icon(severity)
-    i = case severity
+    case severity
     when :info
       "info-circle-fill"
     when :warning
@@ -23,6 +23,6 @@ module ProblemsHelper
   def problem_icon_tag(problems = Problem.all)
     severity = max_problem_severity(problems)
     ico = problem_icon(severity)
-    content_tag(:span, icon(ico, t("problems.severities.#{severity}")), class: "text-#{severity} align-middle") if ico
+    content_tag(:span, icon(ico, t("problems.severities.#{severity}")), class: "text-#{severity} align-middle") if ico # rubocop:todo I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
   end
 end

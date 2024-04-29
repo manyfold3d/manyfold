@@ -58,7 +58,7 @@
               <%= nav_link problem_icon(severity),
                     Problem.model_name.human(count: 100),
                     problems_path,
-                    title: t("problems.severities.#{severity}"),
+                    title: t("problems.severities.#{severity}"), # rubocop:todo I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
                     icon_style: "link-#{severity}",
                     text_style: "d-lg-none" %>
             </li>
