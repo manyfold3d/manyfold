@@ -95,64 +95,64 @@ pl:
               not_supported:
     models:
       acts_as_taggable_on/tag:
-        few:
-        many:
+        few: Tagi
+        many: Tagów
         one: Tag
         other:
         two:
         zero:
       collection:
-        few:
-        many:
+        few: Kolekcje
+        many: Kolekcji
         one: Kolekcja
         other:
         two:
         zero:
       creator:
-        few:
-        many:
+        few: Twórców
+        many: Twórców
         one: Twórca
         other:
         two:
         zero:
       library:
-        few:
-        many:
+        few: Biblioteki
+        many: Bibliotek
         one: Biblioteka
         other:
         two:
         zero:
       link:
-        few:
-        many:
+        few: Linki
+        many: Linków
         one: Link
         other:
         two:
         zero:
       model:
-        few:
-        many:
+        few: Modele
+        many: Modeli
         one: Model
         other:
         two:
         zero:
       model_file:
-        few:
-        many:
+        few: Pliki
+        many: Plików
         one: Plik
         other:
         two:
         zero:
       problem:
-        few:
-        many:
+        few: Problemy
+        many: Problemów
         one: Problem
         other:
         two:
         zero:
       user:
-        few:
-        many:
+        few: Użytkowników
+        many: Użytkowników
         one: Użytkownik
         other:
         two:
