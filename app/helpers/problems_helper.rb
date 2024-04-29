@@ -17,8 +17,6 @@ module ProblemsHelper
       "exclamation-triangle-fill"
     when :danger
       "x-octagon-fill"
-    else
-      nil
     end
   end
 
