@@ -6,7 +6,7 @@
 
   <table class="table table-striped" data-bulk-edit>
     <tr>
-      <th><input type="checkbox" aria-label="Select All" value="0" name="bulk-select-all"></th>
+      <th><input type="checkbox" aria-label="<%= t ".select_all" %>" value="0" name="bulk-select-all"></th>
       <th><%= Model.human_attribute_name(:name) %></th>
       <th><%= Model.human_attribute_name(:collection) %></th>
       <th><%= Model.human_attribute_name(:tags) %></th>
@@ -15,7 +15,7 @@
     </tr>
     <% @models.each do |model| %>
       <tr>
-        <td><%= form.check_box "models[#{model.id}]", {data: {bulk_item: model.id.to_s}} %></td>
+        <td><%= form.check_box "models[#{model.id}]", data: {bulk_item: model.id.to_s}, "aria-label": t(".select", name: model.name) %></td>
         <td><%= link_to model.name, [model.library, model], title: model.path %></td>
         <td><%= link_to model.collection.name, model.collection if model.collection %></td>
         <td><%= render partial: "tag",
