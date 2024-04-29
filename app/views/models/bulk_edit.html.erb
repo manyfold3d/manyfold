@@ -23,7 +23,7 @@
                     model.tags.sort_by(&:name) : model.tags.sort_by(&:name).reverse.sort_by(&:taggings_count).reverse,
                   locals: {state: :normal, model_id: model.id} %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
-        <td><code><%= model.formatted_path if model.needs_organizing? %></code></td>
+        <td><%= icon("exclamation-triangle", t(".needs_organizing")) if model.needs_organizing? %></code></td>
       </tr>
     <% end %>
   </table>
