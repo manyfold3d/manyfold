@@ -4,11 +4,12 @@ de:
     create:
       success: Die Datei(en) wurde(n) erfolgreich hochgeladen.
     index:
-      datafiles:
+      files:
         help: 'Unterstützte Dateitypen: %{types}'
         label: Datei auswählen
-      library_pick:
+      library:
         help: Die Sammlung, in die hochgeladen werden soll.
-      scan_after_upload:
+      scan:
         label: Nach Upload scannen
       submit: Hochladen
+      title: Hochladen

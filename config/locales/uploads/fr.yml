@@ -4,11 +4,12 @@ fr:
     create:
       success: Fichier(s) téléchargé(s) avec succès.
     index:
-      datafiles:
+      files:
         help: 'Types de fichiers pris en charge : %{types}'
         label: Sélectionner un fichier
-      library_pick:
+      library:
         help: La bibliothèque vers laquelle télécharger.
-      scan_after_upload:
+      scan:
         label: Analyser après l'upload
       submit: Télécharger
+      title: Télécharger
