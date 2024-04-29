@@ -15,6 +15,7 @@
   <body>
     <canvas id="webgl"></canvas>
     <%= render "application/navbar" %>
+    <%= yield :breadcrumbs %>
     <main class="container-fluid">
       <div>
         <% if notice %>
