@@ -263,6 +263,7 @@ en:
       label: Page navigation
   layouts:
     application:
+      skip_to_content: Skip to main content
       alert:
         danger: Danger
         info: Info
