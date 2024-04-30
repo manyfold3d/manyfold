@@ -66,8 +66,7 @@ en:
         sign_in: Log in
         sign_in_with_provider: Sign in with %{provider}
         sign_up: Sign up
-      password_rules:
-        Must be at least 6 characters, and contain at least one uppercase letter, one lowercase letter, one number, and one symbol.
+      password_rules: Must be at least 6 characters, and contain at least one uppercase letter, one lowercase letter, one number, and one symbol.
     unlocks:
       new:
         resend_unlock_instructions: Resend unlock instructions
