@@ -6,8 +6,7 @@
       <div class="card mb-2">
         <h4 class="card-header"><%= t(".security") %></h4>
         <div class="card-body">
-          <%= password_input_row f, :password, autocomplete: "new-password",
-                help: t("devise.shared.minimum_password_length", count: @minimum_password_length) %>
+          <%= password_input_row f, :password, autocomplete: "new-password", help: t("devise.shared.password_rules") %>
           <%= password_input_row f, :password_confirmation, autocomplete: "new-password" %>
           <%= password_input_row f, :current_password, autocomplete: "current-password",
                 help: t(".current_password_help") %>
