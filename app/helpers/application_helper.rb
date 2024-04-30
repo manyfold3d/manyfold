@@ -5,8 +5,13 @@ module ApplicationHelper
 
   def card(style, title, options = {}, &content)
     id = "card-#{SecureRandom.hex(4)}"
-    tag.div class: "card mb-4" do
-      safe_join [
+    card_class = "card mb-4"
+    if options[:skip_link]
+      skiplink =  skip_link(options[:skip_link][:target], options[:skip_link][:text])
+      card_class += " skip-link-container"
+    end
+    tag.div class: card_class do
+      safe_join([
         tag.div(class: "card-header text-white bg-#{style}") do
           options[:collapse] ?
             safe_join([
@@ -23,12 +28,13 @@ module ApplicationHelper
             ]) :
             title
         end,
+        skiplink,
         tag.div(class: "card-body #{"collapse d-#{options[:collapse]}-block" if options[:collapse]}", id: id) do
           tag.div class: "card-text" do
             yield
           end
         end
-      ]
+      ].compact)
     end
   end
 
