@@ -12,8 +12,8 @@ en:
       unknown: Unknown
     index:
       actions_heading: Actions
-      skip_tags: Skip tag list
       skip_creators: Skip creator list
+      skip_tags: Skip tag list
     unassigned:
       caption: All the models without a known creator.
       name: Unassigned
