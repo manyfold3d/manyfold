@@ -259,8 +259,19 @@ en:
         building_folder_list: Building changed folder list
         creating_models: Creating models
   kaminari:
+    first_page:
+      label: Go to first page
+    last_page:
+      label: Go to last page
+    next_page:
+      label: Go to next page
+    page:
+      label: Go to page %{page}
+      current_page: Current page
     paginator:
       label: Page navigation
+    prev_page:
+      label: Go to previous page
   layouts:
     application:
       alert:
