@@ -14,9 +14,7 @@
 
   <body>
     <canvas id="webgl"></canvas>
-    <div class="container-fluid skip-link text-bg-success p-2">
-      <a href="#content" class="text-reset"><%= t ".skip_to_content" %></a>
-    </div>
+    <%= skip_link "content", t(".skip_to_content") %>
     <%= render "application/navbar" %>
     <%= yield :breadcrumbs %>
     <main class="container-fluid" id="content">

@@ -3,19 +3,22 @@
 <% end %>
 
 <% content_for :items do %>
-  <% if current_user.pagination_settings["collections"] %>
-    <%= paginate @collections %>
-  <% end %>
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-    <%= render "unassigned" if (!current_user.pagination_settings["collections"] || @collections.first_page?) && !@filters[:collection] %>
-    <% if @filters[:collection] && @collection %>
-      <%= render @collection %>
+  <div class="skip-link-container">
+    <%= skip_link "sidebar", t(".skip_collections") %>
+    <% if current_user.pagination_settings["collections"] %>
+      <%= paginate @collections %>
     <% end %>
-    <%= render @collections %>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+      <%= render "unassigned" if (!current_user.pagination_settings["collections"] || @collections.first_page?) && !@filters[:collection] %>
+      <% if @filters[:collection] && @collection %>
+        <%= render @collection %>
+      <% end %>
+      <%= render @collections %>
+    </div>
+    <% if current_user.pagination_settings["collections"] %>
+      <%= paginate @collections %>
+    <% end %>
   </div>
-  <% if current_user.pagination_settings["collections"] %>
-    <%= paginate @collections %>
-  <% end %>
 <% end %>
 
 <% content_for :sidebar do %>
@@ -24,7 +27,7 @@
   <% end %>
   <%= render "filters_card" %>
   <% unless @tags.empty? %>
-    <%= card :secondary, ActsAsTaggableOn::Tag.model_name.human(count: 100), collapse: "md" do %>
+    <%= card :secondary, ActsAsTaggableOn::Tag.model_name.human(count: 100), collapse: "md", skip_link: {target: "footer", text: t(".skip_tags")}  do %>
       <%= render "tag_list", tags: @tags - (@tag || []), muted_tags: @tags - @commontags %>
     <% end %>
   <% end %>

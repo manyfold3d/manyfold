@@ -263,10 +263,10 @@ en:
       label: Page navigation
   layouts:
     application:
-      skip_to_content: Skip to main content
       alert:
         danger: Danger
         info: Info
+      skip_to_content: Skip to main content
   licenses:
     CC-BY-40: Creative Commons Attribution
     CC-BY-NC-40: Creative Commons Attribution NonCommercial

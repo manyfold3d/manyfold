@@ -34,6 +34,8 @@ en:
       actions_heading: Actions
       bulk_edit: Bulk Edit
       missing_url: Missing URL
+      skip_models: Skip model list
+      skip_tags: Skip tag list
       untagged: Untagged
     merge:
       success: Models merged successfully.

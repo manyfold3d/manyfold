@@ -1,10 +1,10 @@
 <%= yield :page_header %>
 
 <div class="row row-cols-md-2">
-  <div class="col-md-3 row-cols-md-1">
+  <div class="col-md-3 row-cols-md-1" id="sidebar">
     <%= yield :sidebar %>
   </div>
-  <div class="col-md-9 order-md-first">
+  <div class="col-md-9 order-md-first" id="item_list">
     <%= yield :items %>
   </div>
 </div>
