@@ -7,7 +7,7 @@ module ApplicationHelper
     id = "card-#{SecureRandom.hex(4)}"
     card_class = "card mb-4"
     if options[:skip_link]
-      skiplink =  skip_link(options[:skip_link][:target], options[:skip_link][:text])
+      skiplink = skip_link(options[:skip_link][:target], options[:skip_link][:text])
       card_class += " skip-link-container"
     end
     tag.div class: card_class do
