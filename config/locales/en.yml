@@ -266,8 +266,8 @@ en:
     next_page:
       label: Go to next page
     page:
-      label: Go to page %{page}
       current_page: Current page
+      label: Go to page %{page}
     paginator:
       label: Page navigation
     prev_page:
