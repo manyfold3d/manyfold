@@ -36,7 +36,7 @@ en:
       missing_url: Missing URL
       untagged: Untagged
       skip_tags: Skip tag list
-      skip_models: Skip models
+      skip_models: Skip model list
     merge:
       success: Models merged successfully.
     open: Open

@@ -14,6 +14,8 @@ en:
       unknown: Unknown
     index:
       actions_heading: Actions
+      skip_tags: Skip tag list
+      skip_collections: Skip collection list
     unassigned:
       caption: All the models not in a collection.
       name: Unassigned
