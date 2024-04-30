@@ -115,4 +115,10 @@ module ApplicationHelper
       record.errors.full_messages_for(attribute).join("; "),
       class: "invalid-feedback d-block")
   end
+
+  def skip_link(target, text)
+    content_tag :div, class: "container-fluid skip-link text-bg-success p-2" do
+      link_to text, "##{target}", class: "text-reset"
+    end
+  end
 end
