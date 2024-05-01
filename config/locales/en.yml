@@ -199,6 +199,7 @@ en:
     links_form:
       add: add another link
     navbar:
+      account: Account
       activity: Activity
       check_existing: Check existing models
       home: Homepage
