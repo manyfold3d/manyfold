@@ -201,6 +201,7 @@ en:
     navbar:
       activity: Activity
       check_existing: Check existing models
+      home: Homepage
       log_in: Sign in
       log_out: Sign out
       navbar:
