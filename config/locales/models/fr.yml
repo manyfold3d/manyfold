@@ -17,7 +17,8 @@ fr:
       confirm: Cette opération supprimera les fichiers. Êtes-vous sûr de vouloir continuer ?
       success: Modèle supprimé !
     file:
-      open: Ouvrir
+      open_button:
+        text: Ouvrir
       set_as_preview: Définir comme aperçu
     form:
       preview_file:

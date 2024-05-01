@@ -17,7 +17,8 @@ pl:
       confirm: Spowoduje to usunięcie plików. Czy na pewno chcesz kontynuować?
       success: Model usunięty!
     file:
-      open: Otwórz
+      open_button:
+        text: Otwórz
       set_as_preview: Ustaw jako podgląd
     form:
       preview_file:

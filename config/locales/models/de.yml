@@ -17,7 +17,8 @@ de:
       confirm: Hiermit werden Dateien gelöscht. Sind Sie sicher, dass Sie fortfahren möchten?
       success: Modell gelöscht!
     file:
-      open: Öffnen
+      open_button:
+        text: Öffnen
       set_as_preview: Als Vorschau setzen
     form:
       preview_file:

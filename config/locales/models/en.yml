@@ -17,7 +17,9 @@ en:
       confirm: This will delete files. Are you sure you want to continue?
       success: Model deleted!
     file:
-      open: Open
+      open_button:
+        label: View details for %{name}
+        text: Open
       set_as_preview: Set as preview
     form:
       preview_file:
