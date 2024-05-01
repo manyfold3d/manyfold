@@ -179,7 +179,6 @@ pl:
     demo_mode: Ta instancja jest w trybie demonstracyjnym. Nie możesz dodawać ani usuwać modeli, ale możesz robić wszystko inne.
     filters_card:
       missing_tags: Brakujące tagi
-      remove_filter: Usuń filtr
       search: Wyszukaj
       title: Filtry
       unknown: Nieznany

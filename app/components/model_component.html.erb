@@ -29,18 +29,29 @@
         </div>
         <div class="col-auto">
           <small>
-            <% if @creator.nil? && @model.creator %>
-              <%= helpers.icon "person", Creator.model_name.human %>
-              <%= link_to @model.creator.name, models_path((@filters || {}).merge(creator: @model.creator)) %><br>
-            <% end %>
-            <% if @model.collection %>
-              <%= helpers.icon "collection", @model.collection.model_name.human %>
-              <%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection.id)) %><br>
-            <% end %>
-            <% if @library.nil? && @model.library %>
-              <%= helpers.icon "boxes", Library.model_name.human %>
-              <%= link_to @model.library.name, models_path((@filters || {}).merge(library: @model.library)) %><br>
-            <% end %>
+            <ul class="list-unstyled">
+              <% if @creator.nil? && @model.creator %>
+                <li>
+                  <%= helpers.icon "person", Creator.model_name.human %>
+                  <%= link_to @model.creator.name, models_path((@filters || {}).merge(creator: @model.creator)),
+                        "aria-label": [Creator.model_name.human, @model.creator.name].join(": ") %>
+                </li>
+              <% end %>
+              <% if @model.collection %>
+                <li>
+                  <%= helpers.icon "collection", @model.collection.model_name.human %>
+                  <%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection.id)),
+                        "aria-label": [@model.collection.model_name.human, @model.collection.name].join(": ") %>
+                </li>
+              <% end %>
+              <% if @library.nil? && @model.library %>
+                <li>
+                  <%= helpers.icon "boxes", Library.model_name.human %>
+                  <%= link_to @model.library.name, models_path((@filters || {}).merge(library: @model.library)),
+                        "aria-label": [Library.model_name.human, @model.library.name].join(": ") %>
+                </li>
+              <% end %>
+            </ul>
             <% if @model.caption %>
               <p class="card-text"><%= sanitize @model.caption %></p>
             <% end %>
