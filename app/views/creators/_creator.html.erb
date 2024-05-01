@@ -13,8 +13,8 @@
           <li><%= link_to t("sites.%{site}" % {site: link.site}), link.url %></li>
         <% end %>
       </ul>
-      <%= link_to "#{creator.models.count} #{Model.model_name.human count: creator.models.count}", models_path(creator: creator.id), {class: "btn btn-primary"} if policy(creator).show? %>
-      <%= link_to "Edit", edit_creator_path(creator), {class: "btn btn-outline-secondary"} if policy(creator).edit? %>
+      <%= link_to "#{creator.models.count} #{Model.model_name.human count: creator.models.count}", models_path(creator: creator.id), {class: "btn btn-primary", "aria-label": t(".models_button.label", name: creator.name)} if policy(creator).show? %>
+      <%= link_to icon("pencil-fill", t(".edit_button.text")), edit_creator_path(creator), {class: "btn btn-outline-secondary", "aria-label": t(".edit_button.label", name: creator.name)} if policy(creator).edit? %>
     </div>
   </div>
 </div>

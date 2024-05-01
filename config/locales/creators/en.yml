@@ -3,6 +3,12 @@ en:
   creators:
     create:
       success: New creator details saved.
+    creator:
+      edit_button:
+        label: Edit creator %{name}
+        text: Edit
+      models_button:
+        label: Show models by %{name}
     destroy:
       success: Creator deleted!
     general:
