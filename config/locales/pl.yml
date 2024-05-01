@@ -216,7 +216,7 @@ pl:
       muted_tags:
         one: "%{count} niepowiązany tag ukryty"
         other: "%{count} niepowiązanych tagów ukrytych"
-    tagline: Pomagając w śledzeniu plików do druku 3D
+    tagline: Pomaga w śledzeniu plików do druku 3D
     title: Manyfold
   general:
     delete: Usuń
@@ -253,13 +253,25 @@ pl:
         building_folder_list: Tworzenie listy zmienionych folderów
         creating_models: Tworzenie modeli
   kaminari:
+    first_page:
+      label: Przejdź do pierwszej strony
+    last_page:
+      label: Przejdź do ostatniej strony
+    next_page:
+      label: Przejdź do następnej strony
+    page:
+      current_page: Bieżąca strona
+      label: Przejdź do %{page} strony
     paginator:
       label: Nawigacja strony
+    prev_page:
+      label: Przejdź do poprzedniej strony
   layouts:
     application:
       alert:
         danger: Niebezpieczeństwo
         info: Informacja
+      skip_to_content: Przejdź do głównej treści
   licenses:
     CC-BY-40: Creative Commons Uznanie autorstwa
     CC-BY-NC-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne

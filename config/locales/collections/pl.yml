@@ -14,6 +14,8 @@ pl:
       unknown: Nieznany
     index:
       actions_heading: Akcje
+      skip_collections: Pomiń listę kolekcji
+      skip_tags: Pomiń listę tagów
     unassigned:
       caption: Wszystkie modele spoza kolekcji.
       name: Nieprzypisany
