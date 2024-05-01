@@ -179,7 +179,6 @@ de:
     demo_mode: Diese Instanz befindet sich im Demo-Modus. Sie können keine Modelle hinzufügen oder entfernen, aber alles andere ist möglich.
     filters_card:
       missing_tags: Fehlende Tags
-      remove_filter: Filter entfernen
       search: Suche
       title: Filter
       unknown: Unbekannt

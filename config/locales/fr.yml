@@ -179,7 +179,6 @@ fr:
     demo_mode: Cette instance est en mode démo. Vous ne pouvez pas ajouter ou supprimer des modèles, mais vous pouvez faire tout le reste.
     filters_card:
       missing_tags: Etiquette manquante
-      remove_filter: Supprimer le filtre
       search: Recherche
       title: Filtres
       unknown: Inconnu
