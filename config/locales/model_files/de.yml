@@ -1,6 +1,13 @@
 ---
 de:
   model_files:
+    bulk_edit:
+      description:
+      form_subtitle:
+      select:
+      select_all:
+      submit:
+      title:
     bulk_update:
       success: Dateien erfolgreich aktualisiert.
     create:

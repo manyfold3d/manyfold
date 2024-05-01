@@ -253,13 +253,25 @@ de:
         building_folder_list:
         creating_models:
   kaminari:
+    first_page:
+      label:
+    last_page:
+      label:
+    next_page:
+      label:
+    page:
+      current_page:
+      label:
     paginator:
       label: Seitennavigation
+    prev_page:
+      label:
   layouts:
     application:
       alert:
         danger: Gefahr
         info: Info
+      skip_to_content:
   licenses:
     CC-BY-40: Creative Commons Attribution
     CC-BY-NC-40: Creative Commons Attribution NonCommercial
