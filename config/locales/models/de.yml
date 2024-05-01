@@ -13,11 +13,9 @@ de:
       title:
     bulk_update:
       success: Modelle erfolgreich aktualisiert.
-    delete: Löschen
     destroy:
       confirm: Hiermit werden Dateien gelöscht. Sind Sie sicher, dass Sie fortfahren möchten?
       success: Modell gelöscht!
-    edit: Bearbeiten
     file:
       open: Öffnen
       set_as_preview: Als Vorschau setzen
@@ -39,7 +37,6 @@ de:
       untagged: Ungetagged
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
-    open: Öffnen
     problem:
       merge_all: Alle zusammenführen
     scan:

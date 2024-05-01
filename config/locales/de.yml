@@ -283,6 +283,13 @@ de:
     CC0-10: Creative Commons Zero
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
+  model_component:
+    delete_button:
+      text: Löschen
+    edit_button:
+      text: Bearbeiten
+    open_button:
+      text: Öffnen
   renderer:
     errors:
       canvas: 'Konnte #webgl canvas nicht finden!'

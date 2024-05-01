@@ -283,6 +283,13 @@ fr:
     CC0-10: Creative Commons Zero
     LicenseRef-Commercial: Commercial ; usage privé uniquement
     MIT: MIT
+  model_component:
+    delete_button:
+      text: Supprimer
+    edit_button:
+      text: Modifier
+    open_button:
+      text: Ouvrir
   renderer:
     errors:
       canvas: 'Impossible de trouver le canevas #webgl !'
