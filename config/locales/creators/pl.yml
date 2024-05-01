@@ -12,6 +12,8 @@ pl:
       unknown: Nieznany
     index:
       actions_heading: Akcje
+      skip_creators: Pomiń listę twórców
+      skip_tags: Pomiń listę tagów
     unassigned:
       caption: Wszystkie modele bez znanego twórcy.
       name: Nieprzypisany

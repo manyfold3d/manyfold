@@ -63,9 +63,6 @@ pl:
         sign_in: Zaloguj się
         sign_in_with_provider: Zaloguj się przez %{provider}
         sign_up: Zarejestruj się
-      minimum_password_length:
-        one: Co najmniej %{count} znak
-        other: Co najmniej %{count} znaków
     unlocks:
       new:
         resend_unlock_instructions: Wyślij instrukcje odblokowania konta

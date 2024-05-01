@@ -3,7 +3,14 @@ fr:
   models:
     bulk_edit:
       add_tags: Ajouter des étiquettes
+      description: 'Sélectionner les modèles à modifier :'
+      form_subtitle: 'Sélectionnez les modifications à apporter :'
+      needs_organizing: Besoin d'organisation
       remove_tags: Supprimer les étiquettes
+      select:
+      select_all: Sélectionner tous les modèles
+      submit: Mettre à jour les modèles sélectionnés
+      title:
     bulk_update:
       success: Les modèles ont été mis à jour avec succès.
     delete: Supprimer
@@ -27,6 +34,8 @@ fr:
       actions_heading: Actions
       bulk_edit: Edition en bloc
       missing_url: URL manquante
+      skip_models:
+      skip_tags:
       untagged: Sans étiquette
     merge:
       success: Les modèles ont été fusionnés avec succès.

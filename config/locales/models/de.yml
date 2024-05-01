@@ -3,7 +3,14 @@ de:
   models:
     bulk_edit:
       add_tags:
+      description:
+      form_subtitle:
+      needs_organizing:
       remove_tags:
+      select:
+      select_all:
+      submit:
+      title:
     bulk_update:
       success: Modelle erfolgreich aktualisiert.
     delete: Löschen
@@ -27,6 +34,8 @@ de:
       actions_heading: Aktionen
       bulk_edit: Multibearbeitung
       missing_url: Fehlende URL
+      skip_models:
+      skip_tags:
       untagged: Ungetagged
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.

@@ -1,6 +1,13 @@
 ---
 pl:
   model_files:
+    bulk_edit:
+      description: 'Wybierz pliki do zmiany:'
+      form_subtitle: 'Wybierz zmiany do wprowadzenia:'
+      select: Zaznacz plik '%{name}'
+      select_all: Zaznacz wszystkie pliki
+      submit: Aktualizuj zaznaczone pliki
+      title: Zbiorczo edytuj pliki
     bulk_update:
       success: Pliki zaktualizowane pomyślnie.
     create:

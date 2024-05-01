@@ -14,8 +14,10 @@ fr:
       unknown: Inconnu
     index:
       actions_heading: Actions
+      skip_collections:
+      skip_tags:
     unassigned:
-      caption:
+      caption: Tous les modèles ne faisant pas partie d'une collection.
       name: Non attribué
     update:
       success: Détails de la collection sauvegardés.

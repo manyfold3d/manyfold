@@ -12,8 +12,10 @@ fr:
       unknown: Inconnu
     index:
       actions_heading: Actions
+      skip_creators:
+      skip_tags:
     unassigned:
-      caption:
+      caption: Tous les modèles sans créateur connu.
       name: Non attribué
     update:
       success: Détails du créateur sauvegardés.

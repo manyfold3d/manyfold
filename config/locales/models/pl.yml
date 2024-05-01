@@ -3,7 +3,14 @@ pl:
   models:
     bulk_edit:
       add_tags: Dodaj tagi
+      description: 'Wybierz modele do zmiany:'
+      form_subtitle: 'Wybierz zmiany do wprowadzenia:'
+      needs_organizing: Wymaga uporządkowania
       remove_tags: Usuń tagi
+      select: Zaznacz model '%{name}'
+      select_all: Zaznacz wszystkie modele
+      submit: Aktualizuj zaznaczone modele
+      title: Edytuj zbiorczo modele
     bulk_update:
       success: Modele zaktualizowane pomyślnie.
     delete: Usuń
@@ -27,6 +34,8 @@ pl:
       actions_heading: Akcje
       bulk_edit: Edycja zbiorcza
       missing_url: Brakujący URL
+      skip_models: Pomiń listę modeli
+      skip_tags: Pomiń listę tagów
       untagged: Nieotagowany
     merge:
       success: Modele zostały pomyślnie połączone.
