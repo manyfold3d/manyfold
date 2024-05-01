@@ -13,13 +13,13 @@ en:
       title: Bulk Edit Models
     bulk_update:
       success: Models updated successfully.
-    delete: Delete
     destroy:
       confirm: This will delete files. Are you sure you want to continue?
       success: Model deleted!
-    edit: Edit
     file:
-      open: Open
+      open_button:
+        label: View details for %{name}
+        text: Open
       set_as_preview: Set as preview
     form:
       preview_file:
@@ -39,7 +39,6 @@ en:
       untagged: Untagged
     merge:
       success: Models merged successfully.
-    open: Open
     problem:
       merge_all: Merge all
     scan:

@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class='container-fluid'>
-    <a class="navbar-brand ms-2" href="<%= root_path %>"><%= image_tag "logo.png", alt: t("application.title"), height: "40px", class: "me-2" %> <span class="d-lg-none"><%= t "application.title" %></span></a>
+    <a class="navbar-brand ms-2" href="<%= root_path %>" aria-label="<%= t ".home" %>">
+      <%= image_tag "logo.png", alt: t("application.title"), height: "40px", class: "me-2" %>
+      <span class="d-lg-none"><%= t "application.title" %></span>
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="<%= t ".navbar.toggler.label" %>">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -60,7 +63,8 @@
                     problems_path,
                     title: t("problems.severities.#{severity}"), # rubocop:todo I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
                     icon_style: "link-#{severity}",
-                    text_style: "d-lg-none" %>
+                    text_style: "d-lg-none",
+                    aria_label: Problem.model_name.human(count: 100) %>
             </li>
           <% end %>
           <% if policy(:activity).index? %>
@@ -80,7 +84,7 @@
         <%- if Flipper.enabled? :multiuser %>
           <%- if current_user %>
             <li class="nav-item">
-              <%= nav_link "person", current_user.username, edit_user_registration_path, text_style: "d-none" %>
+              <%= nav_link "person", t(".account"), edit_user_registration_path, text_style: "d-lg-none" %>
             </li>
           <% end %>
           <li class="nav-item">

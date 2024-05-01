@@ -199,8 +199,10 @@ en:
     links_form:
       add: add another link
     navbar:
+      account: Account
       activity: Activity
       check_existing: Check existing models
+      home: Homepage
       log_in: Sign in
       log_out: Sign out
       navbar:
@@ -289,6 +291,16 @@ en:
     CC0-10: Creative Commons Zero
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
+  model_component:
+    delete_button:
+      label: Delete model %{name}
+      text: Delete
+    edit_button:
+      label: Edit model %{name}
+      text: Edit
+    open_button:
+      label: Open model %{name}
+      text: Open
   renderer:
     errors:
       canvas: 'Could not find #webgl canvas!'

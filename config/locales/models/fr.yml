@@ -13,13 +13,12 @@ fr:
       title:
     bulk_update:
       success: Les modèles ont été mis à jour avec succès.
-    delete: Supprimer
     destroy:
       confirm: Cette opération supprimera les fichiers. Êtes-vous sûr de vouloir continuer ?
       success: Modèle supprimé !
-    edit: Modifier
     file:
-      open: Ouvrir
+      open_button:
+        text: Ouvrir
       set_as_preview: Définir comme aperçu
     form:
       preview_file:
@@ -39,7 +38,6 @@ fr:
       untagged: Sans étiquette
     merge:
       success: Les modèles ont été fusionnés avec succès.
-    open: Ouvrir
     problem:
       merge_all: Tous fusionner
     scan:

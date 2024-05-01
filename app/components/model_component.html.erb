@@ -22,9 +22,9 @@
             <span style="float: right"><%= helpers.status_badges(@model) %></span>
           </div>
           <div class='mt-2'>
-            <%= link_to t("models.open"), [@model.library, @model], {class: "btn btn-primary btn-sm"} if @can_show %>
-            <%= link_to t("models.edit"), edit_library_model_path(@model.library, @model), {class: "btn btn-outline-secondary btn-sm"} if @can_edit %>
-            <%= link_to t("models.delete"), library_model_path(@model.library, @model), {method: :delete, class: "btn btn-outline-danger btn-sm", data: {confirm: t("models.destroy.confirm")}} if @can_destroy %>
+            <%= link_to t(".open_button.text"), [@model.library, @model], {class: "btn btn-primary btn-sm", "aria-label": t(".open_button.label", name: @model.name)} if @can_show %>
+            <%= link_to helpers.icon("pencil-fill", t(".edit_button.text")), edit_library_model_path(@model.library, @model), {class: "btn btn-outline-secondary btn-sm", "aria-label": t(".edit_button.label", name: @model.name)} if @can_edit %>
+            <%= link_to helpers.icon("trash", t(".delete_button.text")), library_model_path(@model.library, @model), {method: :delete, class: "btn btn-outline-danger btn-sm", "aria-label": t(".delete_button.label", name: @model.name), data: {confirm: t("models.destroy.confirm")}} if @can_destroy %>
           </div>
         </div>
         <div class="col-auto">

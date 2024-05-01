@@ -13,13 +13,12 @@ pl:
       title: Edytuj zbiorczo modele
     bulk_update:
       success: Modele zaktualizowane pomyślnie.
-    delete: Usuń
     destroy:
       confirm: Spowoduje to usunięcie plików. Czy na pewno chcesz kontynuować?
       success: Model usunięty!
-    edit: Edytuj
     file:
-      open: Otwórz
+      open_button:
+        text: Otwórz
       set_as_preview: Ustaw jako podgląd
     form:
       preview_file:
@@ -39,7 +38,6 @@ pl:
       untagged: Nieotagowany
     merge:
       success: Modele zostały pomyślnie połączone.
-    open: Otwórz
     problem:
       merge_all: Połącz wszystko
     scan:

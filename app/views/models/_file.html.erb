@@ -17,8 +17,8 @@
       <% end %>
       <div class="row">
         <div class="col">
-          <%= link_to t(".open"), library_model_model_file_path(@model.library, @model, file), {class: "btn btn-primary"} %>
-          <%= link_to icon("cloud-download", t("general.download")), library_model_model_file_path(@model.library, @model, file, file.extension.to_sym), {class: "btn btn-secondary"} %>
+          <%= link_to t(".open_button.text"), library_model_model_file_path(@model.library, @model, file), {class: "btn btn-primary", "aria-label": t(".open_button.label", name: file.name)} %>
+          <%= link_to icon("cloud-download", t("general.download")), library_model_model_file_path(@model.library, @model, file, file.extension.to_sym), {class: "btn btn-outline-secondary"} %>
           <% if policy(@model).edit? %>
             <%= form_with model: [@model.library, @model], class: "d-inline" do |form| %>
               <%= form.hidden_field :preview_file_id, value: file.id %>

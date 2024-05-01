@@ -62,12 +62,13 @@ search:
   #  - app/
 
   ## Root directories for relative keys resolution.
-  # relative_roots:
-  #   - app/controllers
-  #   - app/helpers
-  #   - app/mailers
-  #   - app/presenters
-  #   - app/views
+  relative_roots:
+    - app/controllers
+    - app/helpers
+    - app/mailers
+    - app/presenters
+    - app/views
+    - app/components
 
   ## Directories where method names which should not be part of a relative key resolution.
   # By default, if a relative translation is used inside a method, the name of the method will be considered part of the resolved key.
