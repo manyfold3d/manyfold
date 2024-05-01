@@ -31,11 +31,11 @@ fr:
         model_name: Une version sécurisée du nom du modèle pour le système de fichiers.
         tags_html: 'une série de dossiers imbriqués, un pour chaque étiquette, classés par ordre de popularité de l''étiquette. Par exemple : <code>fantasy/humain/sorcier</code>'
     general_settings:
-      heading:
+      heading: Général
       interface_language:
-        autodetect:
-        help:
-        label:
+        autodetect: Utiliser les paramètres du navigateur
+        help: 'Remarque : certains textes non traduits peuvent encore s''afficher en anglais.'
+        label: Langue de l'interface
     library_settings:
       caption:
         help: Survolez la bibliothèque dans l'en-tête pour voir la légende.

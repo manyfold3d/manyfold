@@ -1,6 +1,13 @@
 ---
 fr:
   model_files:
+    bulk_edit:
+      description: 'Sélectionnez les fichiers à modifier :'
+      form_subtitle: 'Sélectionnez les modifications à apporter :'
+      select: Sélectionner le fichier '%{name}'
+      select_all: Sélectionner tous les fichiers
+      submit: Mettre à jour les fichiers sélectionnés
+      title:
     bulk_update:
       success: Les fichiers ont été mis à jour avec succès.
     create:
