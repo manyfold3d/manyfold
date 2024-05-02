@@ -30,6 +30,8 @@ en:
     image_carousel:
       next: Next
       previous: Previous
+      select_slide: Choose image to display
+      slide_label: "%{name} (%{index} of %{count})"
     index:
       actions_heading: Actions
       bulk_edit: Bulk Edit
