@@ -14,18 +14,19 @@
     "@selectize/selectize": "^0.15.2",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "esbuild": "^0.20.2",
     "i18n-js": "^4.4.3",
     "jquery": "^3.7.1",
     "masonry-layout": "^4.2.2",
-    "three": "^0.164.1",
-    "esbuild": "^0.20.2",
-    "sass": "^1.76.0"
+    "sass": "^1.76.0",
+    "three": "^0.164.1"
   },
   "version": "0.1.0",
   "devDependencies": {
     "@babel/core": "^7",
     "@babel/eslint-parser": "^7.24.5",
     "@babel/preset-typescript": "^7.24.1",
+    "@types/bootstrap": "^5.2.10",
     "@types/i18n-js": "^3.8.9",
     "@types/jquery": "^3.5.29",
     "@types/node": "^20.11.0",

@@ -27,7 +27,8 @@
       "three",
       "jquery",
       "selectize",
-      "i18n-js"
+      "i18n-js",
+      "bootstrap"
     ],
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
