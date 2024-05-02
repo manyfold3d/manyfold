@@ -13,26 +13,31 @@ document.addEventListener('DOMContentLoaded', () => {
 		function togglePause () {
 			manual = true
 			paused = (paused) ? false : true;
-			onPause(paused)
+			onPause(paused, true)
 		}
 
-		function onPause (pause) {
+		function onPause (pause, updateIcon) {
 			if (pause) {
 				$('#imageCarousel').carousel("pause");
-				$('#rotationControlIcon').addClass("bi-play")
-				$('#rotationControlIcon').removeClass("bi-pause")
+				$('#imageCarouselInner').attr("aria-live", "polite")
+				if (updateIcon) {
+					$('#rotationControlIcon').addClass("bi-play")
+					$('#rotationControlIcon').removeClass("bi-pause")
+				}
 			}
 			else {
 				$('#imageCarousel').carousel("cycle");
-				$('#rotationControlIcon').addClass("bi-pause")
-				$('#rotationControlIcon').removeClass("bi-play")
+				$('#imageCarouselInner').attr("aria-live", "off")
+				if (updateIcon) {
+					$('#rotationControlIcon').addClass("bi-pause")
+					$('#rotationControlIcon').removeClass("bi-play")
+				}
 			}
-			$('#imageCarousel').toggleClass('fa-play fa-pause');
 		}
 
 		$('#rotationControl').click(togglePause);
-		$('#imageCarousel').mouseenter(function () { if (!manual) { $('#imageCarousel').carousel("pause") } });
-		$('#imageCarousel').mouseleave(function () { if (!manual) { $('#imageCarousel').carousel("cycle") } });
-		$('#imageCarousel').focus(function () { manual = true; onPause(true) });
+		$('#imageCarousel').mouseenter(function () { if (!manual) { onPause(true, false) } });
+		$('#imageCarousel').mouseleave(function () { if (!manual) { onPause(false, false) } });
+		$('#rotationControl').focus(function () { manual = true; onPause(true, true) });
 	}
 });
