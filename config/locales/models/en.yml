@@ -29,6 +29,7 @@ en:
       edit: Edit Model
     image_carousel:
       next: Next
+      play_pause: Play or pause images
       previous: Previous
       select_slide: Choose image to display
       slide_label: "%{name} (%{index} of %{count})"

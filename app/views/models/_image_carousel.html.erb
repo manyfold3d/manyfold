@@ -2,6 +2,9 @@
   <div id="imageCarousel" class="carousel slide mb-3" data-bs-ride="carousel" role="group" aria-roledescription="carousel">
     <% if images.count > 1 %>
       <div class="carousel-indicators" role="group" aria-label="<%= t ".select_slide" %>">
+        <button id="rotationControl">
+          <%= icon "pause", t(".play_pause"), id: "rotationControlIcon" %>
+        </button>
         <% images.each_with_index do |image, index| %>
           <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="<%= index %>"
             <%= "class=active aria-current=true" if index == 0 %>
