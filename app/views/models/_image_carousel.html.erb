@@ -1,17 +1,22 @@
 <% unless images.empty? %>
-  <div id="imageCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+  <div id="imageCarousel" class="carousel slide mb-3" data-bs-ride="carousel" role="group" aria-roledescription="carousel">
     <% if images.count > 1 %>
-      <div class="carousel-indicators">
-        <% images.count.times do |index| %>
+      <button id="rotationControl" class="carousel-control-play btn btn-secondary m-2">
+        <%= icon "pause", t(".play_pause"), id: "rotationControlIcon" %>
+      </button>
+      <div class="carousel-indicators" role="group" aria-label="<%= t ".select_slide" %>">
+        <% images.each_with_index do |image, index| %>
           <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="<%= index %>"
-            <%= "class=active aria-current=true" if index == 0 %>
-            aria-label="<%= index + 1 %>"></button>
+            <%= "class=active aria-current=true aria-disabled=true" if index == 0 %>
+            aria-label="<%= t ".slide_label", index: (index + 1), count: images.count, name: image.name %>">
+            <%= index %>
+          </button>
         <% end %>
       </div>
     <% end %>
-    <div class="carousel-inner">
+    <div id="imageCarouselInner" class="carousel-inner" aria-atomic="false" aria-live="off">
       <% images.each_with_index do |image, index| %>
-        <div class="carousel-item <%= "active" if index == 0 %>">
+        <div class="carousel-item <%= "active" if index == 0 %>" role="group" aria-roledescription="slide" aria-label="<%= t ".slide_label", index: (index + 1), count: images.count, name: image.name %>">
           <%= image_tag library_model_model_file_path(@model.library, @model, image, format: image.extension), alt: image.name, class: "d-block w-100 carousel" %>
           <% if @model.preview_file != image && policy(image).edit? %>
             <div class="carousel-caption d-none d-md-block">

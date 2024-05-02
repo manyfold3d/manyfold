@@ -1,5 +1,5 @@
-// Entry point for the build script in your package.json
 
+// Entry point for the build script in your package.json
 import Rails from '@rails/ujs'
 
 import 'bootstrap'
@@ -14,6 +14,7 @@ import 'src/preview'
 import 'src/bulk_edit'
 import 'src/model_edit'
 import 'src/tag'
+import 'src/carousel'
 
 // Load i18n definitions
 import { I18n } from 'i18n-js'
