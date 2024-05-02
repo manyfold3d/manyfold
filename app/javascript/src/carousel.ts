@@ -12,15 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		function togglePause () {
 			manual = true
-			paused = (paused) ? false : true;
-			onPause(paused, true)
+			onPause(!paused, true)
 		}
 
-		function onPause (pause, updateIcon) {
+		function onPause (pause, updateState) {
 			if (pause) {
 				$('#imageCarousel').carousel("pause");
 				$('#imageCarouselInner').attr("aria-live", "polite")
-				if (updateIcon) {
+				if (updateState) {
+					paused = true;
 					$('#rotationControlIcon').addClass("bi-play")
 					$('#rotationControlIcon').removeClass("bi-pause")
 				}
@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			else {
 				$('#imageCarousel').carousel("cycle");
 				$('#imageCarouselInner').attr("aria-live", "off")
-				if (updateIcon) {
+				if (updateState) {
+					paused = false;
 					$('#rotationControlIcon').addClass("bi-pause")
 					$('#rotationControlIcon').removeClass("bi-play")
 				}
@@ -38,6 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		$('#rotationControl').click(togglePause);
 		$('#imageCarousel').mouseenter(function () { if (!manual) { onPause(true, false) } });
 		$('#imageCarousel').mouseleave(function () { if (!manual) { onPause(false, false) } });
-		$('#rotationControl').focus(function () { manual = true; onPause(true, true) });
+		//$('#imageCarousel').focus(function () { manual = true; onPause(true, true) }});
 	}
 });
