@@ -1,9 +1,6 @@
 <% unless images.empty? %>
   <div id="imageCarousel" class="carousel slide mb-3" data-bs-ride="carousel" role="group" aria-roledescription="carousel">
     <% if images.count > 1 %>
-      <button id="rotationControl">
-        <%= icon "pause", t(".play_pause"), id: "rotationControlIcon" %>
-      </button>
       <div class="carousel-indicators" role="group" aria-label="<%= t ".select_slide" %>">
         <% images.each_with_index do |image, index| %>
           <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="<%= index %>"
@@ -30,6 +27,9 @@
       <% end %>
     </div>
     <% if images.count > 1 %>
+      <button id="rotationControl" class="carousel-control-play btn btn-secondary m-2">
+        <%= icon "pause", t(".play_pause"), id: "rotationControlIcon" %>
+      </button>
       <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden"><%= t(".previous") %></span>
