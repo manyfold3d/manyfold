@@ -21,14 +21,3 @@ $color-mode-type: media-query;
 p.alert:empty, p.notice:empty {
 	display: none;
 }
-
-#webgl {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  display: block;
-  z-index: -1;
-  pointer-events: none;
-}
