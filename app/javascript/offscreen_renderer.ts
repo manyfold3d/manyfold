@@ -49,8 +49,10 @@ class ObjectPreview {
   ) {
     this.ready = false
     this.canvas = canvas
-    this.canvasWidth = 256
-    this.canvasHeight = 256
+    this.canvasWidth = 512
+    this.canvasHeight = 512
+    this.canvas.width = this.canvasWidth
+    this.canvas.height = this.canvasHeight
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
     this.settings = settings
     if (this.settings.autoLoad === 'true') {
@@ -67,7 +69,7 @@ class ObjectPreview {
   		0.1,
   		1000
   	)
-    //resize();
+    this.resize();
   	// this.controls = new OrbitControls(this.camera, this.canvas)
   	// this.controls.enableDamping = true
     // this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true')
@@ -212,10 +214,12 @@ class ObjectPreview {
   }
 
   resize (): void {
-    this.camera.aspect = this.canvasWidth / this.canvasHeight
-    this.camera.updateProjectionMatrix()
+    // this.camera.aspect = this.canvasWidth / this.canvasHeight
+    // this.renderer.domElement.width = this.canvasWidth
+    // this.renderer.domElement.height = this.canvasHeight
+    // this.camera.updateProjectionMatrix()
     // next, set the renderer to the same size as our container element
-    this.renderer.setSize(this.canvasWidth, this.canvasHeight);
+    // this.renderer.setSize(this.canvasWidth, this.canvasHeight);
     // finally, set the pixel ratio so that our scene will look good on HiDPI displays
     // this.renderer.setPixelRatio(window.devicePixelRatio);
   }
