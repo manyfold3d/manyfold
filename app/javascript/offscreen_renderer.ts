@@ -92,9 +92,9 @@ class ObjectPreview {
       case 'stl':
         loader = new STLLoader()
         break
-      case '3mf':
-        loader = new ThreeMFLoader()
-        break
+      // case '3mf':
+      //   loader = new ThreeMFLoader()
+      //   break
       case 'ply':
         loader = new PLYLoader()
         break
@@ -114,8 +114,11 @@ class ObjectPreview {
     const percentage = Math.floor((xhr.loaded / xhr.total) * 100)
     postMessage({
       "type": "onLoadProgress",
-      "percentage": percentage
+      "payload": {
+        "percentage": percentage
+      }
     })
+
   }
 
   onLoad (model): void {
@@ -194,12 +197,12 @@ class ObjectPreview {
       this.scene.add(this.gridHelper)
     }
 
-    // Report load complete
-    postMessage({"type": "onLoad"})
-
     // Let's go!
     this.ready = true
     this.render()
+
+    // Report load complete
+    postMessage({ "type": "onLoad" })
   }
 
   onLoadError (e): void {

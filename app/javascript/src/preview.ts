@@ -78,20 +78,50 @@
 
 // export { ObjectPreview }
 
-const onWorkerMessage = (message) => {
-  console.log("Message from worker: " + message.data);
+var progressBar = null;
+var progressLabel = null;
+
+const onLoadProgress = (data) => {
+  if (data.percentage == 100) {
+    progressLabel.textContent = "Reticulating splines..."
+  }
+  else {
+    progressLabel.textContent = data.percentage + '%'
+  }
+  progressBar.style.width = data.percentage + '%'
+  progressBar.ariaValueNow = data.percentage
 }
 
-// 	this.progressBar.style.width = this.progressLabel.textContent = percentage + '%'
-// 	this.progressBar.ariaValueNow = percentage
+const onLoad = () => {
+  progressBar.parentElement.remove()
+  progressBar = null;
+  progressLabel = null;
+}
 
-// this.progressBar.classList.add('bg-danger')
-// this.progressBar.style.width = this.progressBar.ariaValueNow = '100%'
-// this.progressLabel.textContent = window.i18n.t('renderer.errors.load')
+const onLoadError = () => {
+  progressBar.classList.add('bg-danger')
+  progressBar.style.width = progressBar.ariaValueNow = '100%'
+  progressLabel.textContent = window.i18n.t('renderer.errors.load')
+}
 
+const handlers = {
+  onLoadProgress,
+  onLoad,
+  onLoadError
+}
+
+const onWorkerMessage = (message) => {
+  const fn = handlers[message.data.type];
+  if (typeof fn !== 'function') {
+    throw new Error('no handler for type: ' + message.data.type);
+  }
+  fn(message.data.payload);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-preview]').forEach((canvas) => {
+    progressBar = canvas.parentElement?.getElementsByClassName("progress-bar")[0];
+    progressLabel = canvas.parentElement?.getElementsByClassName("progress-label")[0];
     const worker = new Worker("/assets/offscreen_renderer.js", { type: 'module' });
     console.log(canvas);
     const offscreen = canvas.transferControlToOffscreen();
