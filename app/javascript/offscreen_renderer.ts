@@ -224,6 +224,10 @@ class ObjectPreview {
   }
 
   render (): void {
+    requestAnimationFrame(this.onAnimationFrame.bind(this))
+  }
+
+  onAnimationFrame (): void {
     if (!this.ready || this.canvas === null || this.renderer === null) {
       return
     }
