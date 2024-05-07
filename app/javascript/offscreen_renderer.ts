@@ -23,12 +23,12 @@ self.onmessage = function (message) {
 };
 
 function initialize (data) {
-  const {canvas, ...settings} = data
-  preview = new ObjectPreview(canvas, settings)
+  const {canvas, settings, state} = data
+  preview = new ObjectPreview(canvas, settings, state)
 }
 
 function resize (data) {
-  preview.resize()
+  preview.resize(data.width, data.height)
 }
 
 class ObjectPreview {
@@ -46,14 +46,14 @@ class ObjectPreview {
   constructor (
     canvas: HTMLCanvasElement,
     settings: DOMStringMap,
+    state: Map<string, any>,
   ) {
     this.ready = false
     this.canvas = canvas
-    this.canvasWidth = 512
-    this.canvasHeight = 512
-    this.canvas.width = this.canvasWidth
-    this.canvas.height = this.canvasHeight
+    this.canvasWidth = state.width
+    this.canvasHeight = state.height
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
+    this.renderer.setPixelRatio(state.pixelRatio);
     this.settings = settings
     if (this.settings.autoLoad === 'true') {
       this.load();
@@ -69,7 +69,7 @@ class ObjectPreview {
   		0.1,
   		1000
   	)
-    this.resize();
+    this.resize(this.canvasWidth, this.canvasHeight,);
   	// this.controls = new OrbitControls(this.camera, this.canvas)
   	// this.controls.enableDamping = true
     // this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true')
@@ -213,15 +213,16 @@ class ObjectPreview {
     this.onLoad(new THREE.BoxGeometry(2,3,4))
   }
 
-  resize (): void {
-    // this.camera.aspect = this.canvasWidth / this.canvasHeight
-    // this.renderer.domElement.width = this.canvasWidth
-    // this.renderer.domElement.height = this.canvasHeight
-    // this.camera.updateProjectionMatrix()
-    // next, set the renderer to the same size as our container element
-    // this.renderer.setSize(this.canvasWidth, this.canvasHeight);
-    // finally, set the pixel ratio so that our scene will look good on HiDPI displays
-    // this.renderer.setPixelRatio(window.devicePixelRatio);
+  resize (width, height): void {
+    // Set canvas resolution
+    this.canvas.width = width
+    this.canvas.height = height
+    this.renderer.setSize(width, height, false);
+    // Update camera
+    this.camera.aspect = width / height;
+    this.camera.updateProjectionMatrix()
+    // Render!
+    this.render();
   }
 
   render (): void {

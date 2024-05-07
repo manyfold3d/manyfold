@@ -130,8 +130,25 @@ document.addEventListener('DOMContentLoaded', () => {
       type: 'initialize',
       payload: {
         canvas: offscreen,
-        ... canvas.dataset
+        settings: {
+          ...canvas.dataset
+        },
+        state: {
+          width: canvas.clientWidth,
+          height: canvas.clientHeight,
+          pixelRatio: window.devicePixelRatio
+        }
       }
     }, [offscreen]);
+    // Handle resizing
+    window.addEventListener('resize', () => {
+      worker.postMessage({
+        type: 'resize',
+        payload: {
+          width: canvas.clientWidth,
+          height: canvas.clientHeight
+        }
+      });
+    })
   });
 });
