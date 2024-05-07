@@ -39,7 +39,7 @@ class ObjectPreview {
   camera: THREE.PerspectiveCamera
   controls: OrbitControls
   gridHelper: THREE.GridHelper
-  ready: boolean
+  ready: boolean = false
   canvasWidth: number
   canvasHeight: number
 
@@ -48,13 +48,13 @@ class ObjectPreview {
     settings: DOMStringMap,
     state: Map<string, any>,
   ) {
-    this.ready = false
     this.canvas = canvas
     this.canvasWidth = state.width
     this.canvasHeight = state.height
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
     this.renderer.setPixelRatio(state.pixelRatio);
     this.settings = settings
+    this.setup()
     if (this.settings.autoLoad === 'true') {
       this.load();
     }
@@ -94,9 +94,9 @@ class ObjectPreview {
       case 'stl':
         loader = new STLLoader()
         break
-      // case '3mf':
-      //   loader = new ThreeMFLoader()
-      //   break
+      case '3mf':
+        loader = new ThreeMFLoader()
+        break
       case 'ply':
         loader = new PLYLoader()
         break
@@ -124,8 +124,6 @@ class ObjectPreview {
   }
 
   onLoad (model): void {
-    this.setup()
-
     const material = this.settings.renderStyle === 'normals'
       ? new THREE.MeshNormalMaterial({
         flatShading: true
