@@ -273,6 +273,7 @@ GEM
       activesupport (>= 4)
       railties (>= 4)
       request_store (~> 1.0)
+    logstash-event (1.2.02)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -591,6 +592,7 @@ DEPENDENCIES
   letter_opener (~> 1.10)
   listen (~> 3.9)
   lograge (~> 0.14.0)
+  logstash-event (~> 1.2)
   memoist (~> 0.16.2)
   mittsu!
   pg (~> 1.5)
