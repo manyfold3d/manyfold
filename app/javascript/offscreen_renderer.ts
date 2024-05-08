@@ -205,7 +205,9 @@ class ObjectPreview {
   }
 
   render (): void {
-    requestAnimationFrame(this.onAnimationFrame.bind(this))
+    setTimeout(() => {
+      requestAnimationFrame(this.onAnimationFrame.bind(this));
+    }, 16); // ms per 60fps frame, near enough
   }
 
   onAnimationFrame (): void {
