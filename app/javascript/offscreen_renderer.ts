@@ -11,7 +11,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { DOMElementProxy } from 'src/dom_element_proxy'
 
 class ObjectPreview {
-  canvas: HTMLCanvasElement
+  canvas: DOMElementProxy = null
   renderer: THREE.WebGLRenderer
   settings: DOMStringMap
   scene: THREE.Scene
@@ -19,32 +19,27 @@ class ObjectPreview {
   controls: OrbitControls
   gridHelper: THREE.GridHelper
   ready: boolean = false
-  canvasWidth: number
-  canvasHeight: number
 
   cbLoadComplete: any = null
   cbLoadProgress: any = null
   cbLoadError: any = null
 
-  canvasProxy: any = null
 
   constructor (
     canvas: HTMLCanvasElement,
     settings: DOMStringMap,
     state: Map<string, any>,
   ) {
-    this.canvasProxy = new DOMElementProxy();
-    this.canvas = canvas
-    this.canvasWidth = state.width
-    this.canvasHeight = state.height
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas })
+    this.canvas = new DOMElementProxy(canvas);
+    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas.canvas })
     this.renderer.setPixelRatio(state.pixelRatio);
     this.settings = settings
     this.setup()
+    this.resize(state.width, state.height)
   }
 
   handleEvent (event): void {
-    this.canvasProxy.handleEvent(event)
+    this.canvas.handleEvent(event)
   }
 
   setup (): void {
@@ -52,11 +47,10 @@ class ObjectPreview {
     this.scene.background = new THREE.Color(this.settings.backgroundColour ?? '#000000')
   	this.camera = new THREE.PerspectiveCamera(
   		45,
-      this.canvasWidth / this.canvasHeight,
+      this.canvas.clientWidth / this.canvas.clientHeight,
   		0.1,
   		1000
-  	)
-    this.resize(this.canvasWidth, this.canvasHeight,);
+    )
   	// this.controls = new OrbitControls(this.camera, this.canvas)
   	// this.controls.enableDamping = true
     // this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true')
@@ -198,9 +192,7 @@ class ObjectPreview {
   }
 
   resize (width, height): void {
-    // Set canvas resolution
-    this.canvas.width = width
-    this.canvas.height = height
+    this.canvas.resize(width, height)
     this.renderer.setSize(width, height, false);
     // Update camera
     this.camera.aspect = width / height;
