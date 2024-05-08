@@ -8,10 +8,10 @@ import { ThreeMFLoader } from 'three/examples/jsm/loaders/3MFLoader.js'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
-import { DOMElementProxy } from 'src/dom_element_proxy'
+import { CanvasProxy } from 'src/canvas_proxy'
 
 class ObjectPreview {
-  canvas: DOMElementProxy = null
+  canvas: CanvasProxy = null
   renderer: THREE.WebGLRenderer
   settings: DOMStringMap
   scene: THREE.Scene
@@ -30,8 +30,8 @@ class ObjectPreview {
     settings: DOMStringMap,
     state: Map<string, any>,
   ) {
-    this.canvas = new DOMElementProxy(canvas);
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas.canvas })
+    this.canvas = new CanvasProxy(canvas);
+    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas.realCanvas })
     this.renderer.setPixelRatio(state.pixelRatio);
     this.settings = settings
     this.setup()
@@ -162,6 +162,7 @@ class ObjectPreview {
     this.camera.position.z = this.camera.position.x = -bsphere.radius * 1.63
     this.camera.position.y = bsphere.radius * 0.75
     const target = new THREE.Vector3(0, modelHeight / 2, 0)
+    //this.controls.target.set(target)
     this.camera.lookAt(target)
     this.scene.add(object)
     // Add the grid

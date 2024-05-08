@@ -1,20 +1,20 @@
 import { EventDispatcher } from 'three'
 
-export class DOMElementProxy extends EventDispatcher {
+export class CanvasProxy extends EventDispatcher {
 	style = { touchAction: '' }
 	clientWidth;
 	clientHeight;
-	canvas: HTMLCanvasElement = null
+	realCanvas: HTMLCanvasElement = null
 
 	constructor (canvas) {
 		super();
-		this.canvas = canvas
+		this.realCanvas = canvas
 	}
 	resize (width, height) {
 		this.clientWidth = width;
 		this.clientHeight = height;
-		this.canvas.width = width;
-		this.canvas.height = height;
+		this.realCanvas.width = width;
+		this.realCanvas.height = height;
 	}
 	handleEvent (event) {
 		this.dispatchEvent(event);
