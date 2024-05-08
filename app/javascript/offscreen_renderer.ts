@@ -8,30 +8,7 @@ import { ThreeMFLoader } from 'three/examples/jsm/loaders/3MFLoader.js'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
-// class CanvasProxy extends THREE.EventDispatcher {
-//   constructor () {
-//     super();
-//   }
-//   onInputEvent(payload) {
-//     console.log(payload.eventName)
-//     console.log(payload.event)
-//     dispatchEvent({
-//       type: payload.eventName,
-//       ...payload.event
-//     });
-//   }
-// }
-// const proxy = new InputProxy();
-
-class CanvasProxy extends THREE.EventDispatcher {
-  constructor () {
-    super();
-  }
-  handleEvent (event) {
-    console.log(event)
-    this.dispatchEvent(event);
-  }
-}
+import { DOMElementProxy } from 'src/dom_element_proxy'
 
 class ObjectPreview {
   canvas: HTMLCanvasElement
@@ -56,6 +33,7 @@ class ObjectPreview {
     settings: DOMStringMap,
     state: Map<string, any>,
   ) {
+    this.canvasProxy = new DOMElementProxy();
     this.canvas = canvas
     this.canvasWidth = state.width
     this.canvasHeight = state.height
@@ -63,8 +41,6 @@ class ObjectPreview {
     this.renderer.setPixelRatio(state.pixelRatio);
     this.settings = settings
     this.setup()
-
-    this.canvasProxy = new CanvasProxy();
   }
 
   handleEvent (event): void {
