@@ -20,7 +20,7 @@ const onLoadProgress = (percentage: number): void => {
     progressLabel.textContent = `${percentage}%`
   }
   progressBar.style.width = `${percentage}%`
-  progressBar.ariaValueNow = percentage
+  progressBar.ariaValueNow = percentage.toString()
 }
 
 const onLoad = (): void => {
@@ -36,8 +36,8 @@ const onLoadError = (): void => {
   progressLabel.textContent = window.i18n.t('renderer.errors.load')
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-preview]').forEach(async (canvas: HTMLCanvasElement) => {
+document.addEventListener('DOMContentLoaded', async () => {
+  document.querySelectorAll('[data-preview]').forEach((canvas: HTMLCanvasElement) => {
     progressBar = canvas.parentElement?.getElementsByClassName('progress-bar')[0] as HTMLDivElement
     progressLabel = canvas.parentElement?.getElementsByClassName('progress-label')[0] as HTMLSpanElement
     // Create offscreen renderer worker
