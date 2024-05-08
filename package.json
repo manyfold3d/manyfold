@@ -28,7 +28,7 @@
     "@babel/preset-typescript": "^7.24.1",
     "@types/bootstrap": "^5.2.10",
     "@types/i18n-js": "^3.8.9",
-    "@types/jquery": "^3.5.29",
+    "@types/jquery": "^3.5.30",
     "@types/node": "^20.11.0",
     "@types/selectize": "^0.12.39",
     "@types/three": "^0.164.0",
