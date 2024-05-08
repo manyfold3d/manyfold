@@ -51,9 +51,9 @@ class ObjectPreview {
   		0.1,
   		1000
     )
-  	// this.controls = new OrbitControls(this.camera, this.canvas)
-  	// this.controls.enableDamping = true
-    // this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true')
+    this.controls = new OrbitControls(this.camera, this.canvas);
+    this.controls.enableDamping = true;
+    this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true');
   	// Add lighting
   	const gridSizeX = parseInt(this.settings.gridSizeX ?? '10', 10)
   	const gridSizeZ = parseInt(this.settings.gridSizeZ ?? '10', 10)
@@ -181,6 +181,9 @@ class ObjectPreview {
     this.ready = true
     this.render()
 
+    // Listen for control updates and re-render
+    this.controls.addEventListener("change", this.render.bind(this))
+
     // Report load complete
     this.cbLoadComplete()
   }
@@ -209,6 +212,8 @@ class ObjectPreview {
     if (!this.ready || this.canvas === null || this.renderer === null) {
       return
     }
+    // Update controls to allow animation of damping
+    this.controls.update();
     // Render
     this.renderer.clear()
     this.renderer.render(this.scene, this.camera)
