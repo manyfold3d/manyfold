@@ -73,15 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => (preview.resize(canvas.clientWidth, canvas.clientHeight)))
     // Handle interaction events
     const eventHandlers = [
-      "mousedown",
-      "mousemove",
-      "mouseup",
       "pointerdown",
       "pointermove",
       "pointerup",
-      "touchstart",
-      "touchmove",
-      "touchend",
       "wheel",
       "keydown",
       "keyup"
