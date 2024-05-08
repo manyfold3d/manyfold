@@ -11,23 +11,23 @@ export class CanvasProxy extends EventDispatcher {
     this.realCanvas = canvas
   }
 
-  resize (width, height) {
+  resize (width, height): void {
     this.clientWidth = width
     this.clientHeight = height
     this.realCanvas.width = width
     this.realCanvas.height = height
   }
 
-  handleEvent (event) {
+  handleEvent (event): void {
     event.preventDefault = function () { }
     this.dispatchEvent(event)
   }
 
   // Pretend we can handle capture events
-  getRootNode () {
+  getRootNode (): CanvasProxy {
     return this
   }
 
-  setPointerCapture () {};
-  releasePointerCapture () { };
+  setPointerCapture (): void {}
+  releasePointerCapture (): void {}
 }

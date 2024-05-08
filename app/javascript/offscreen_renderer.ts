@@ -87,7 +87,6 @@ class OffscreenRenderer {
         break
     }
     if (loader !== null) {
-      console.log('Loading ' + this.settings.previewUrl)
       loader.load(
         this.settings.previewUrl ?? '',
         this.onLoad.bind(this),

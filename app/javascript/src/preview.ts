@@ -4,7 +4,7 @@ import 'src/comlink_event_handler'
 let progressBar: HTMLDivElement | null
 let progressLabel: HTMLSpanElement | null
 
-const load = async (preview) => {
+const load = async (preview): void => {
   await preview.load(
     Comlink.proxy(onLoad),
     Comlink.proxy(onLoadProgress),
@@ -12,42 +12,28 @@ const load = async (preview) => {
   )
 }
 
-const onLoadProgress = (percentage) => {
+const onLoadProgress = (percentage: number): void => {
   if ((progressBar == null) || (progressLabel == null)) { return }
-  if (percentage == 100) {
+  if (percentage === 100) {
     progressLabel.textContent = 'Reticulating splines...'
   } else {
-    progressLabel.textContent = percentage + '%'
+    progressLabel.textContent = `${percentage}%`
   }
-  progressBar.style.width = percentage + '%'
+  progressBar.style.width = `${percentage}%`
   progressBar.ariaValueNow = percentage
 }
 
-const onLoad = () => {
+const onLoad = (): void => {
   progressBar?.parentElement?.remove()
   progressBar = null
   progressLabel = null
 }
 
-const onLoadError = () => {
+const onLoadError = (): void => {
   if ((progressBar == null) || (progressLabel == null)) { return }
   progressBar?.classList.add('bg-danger')
   progressBar.style.width = progressBar.ariaValueNow = '100%'
   progressLabel.textContent = window.i18n.t('renderer.errors.load')
-}
-
-const handlers = {
-  onLoadProgress,
-  onLoad,
-  onLoadError
-}
-
-const onWorkerMessage = (message) => {
-  const fn = handlers[message.data.type]
-  if (typeof fn !== 'function') {
-    throw new Error('no handler for type: ' + message.data.type)
-  }
-  fn(message.data.payload)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
