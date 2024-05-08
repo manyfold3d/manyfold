@@ -4,9 +4,9 @@ export class CanvasProxy extends EventDispatcher {
 	style = { touchAction: '' }
 	clientWidth;
 	clientHeight;
-	realCanvas: HTMLCanvasElement = null
+	realCanvas: HTMLCanvasElement;
 
-	constructor (canvas) {
+	constructor (canvas: HTMLCanvasElement) {
 		super();
 		this.realCanvas = canvas
 	}
