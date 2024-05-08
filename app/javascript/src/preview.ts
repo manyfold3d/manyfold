@@ -1,8 +1,8 @@
 import * as Comlink from 'comlink';
 import 'src/comlink_event_handler'
 
-var progressBar: HTMLDivElement;
-var progressLabel: HTMLSpanElement;
+var progressBar: HTMLDivElement | null;
+var progressLabel: HTMLSpanElement | null;
 
 const load = async (preview) => {
   await preview.load(
@@ -13,6 +13,8 @@ const load = async (preview) => {
 }
 
 const onLoadProgress = (percentage) => {
+  if (!progressBar || !progressLabel)
+    return;
   if (percentage == 100) {
     progressLabel.textContent = "Reticulating splines..."
   }
@@ -24,13 +26,15 @@ const onLoadProgress = (percentage) => {
 }
 
 const onLoad = () => {
-  progressBar.parentElement.remove()
+  progressBar?.parentElement?.remove()
   progressBar = null;
   progressLabel = null;
 }
 
 const onLoadError = () => {
-  progressBar.classList.add('bg-danger')
+  if (!progressBar || !progressLabel)
+    return;
+  progressBar?.classList.add('bg-danger')
   progressBar.style.width = progressBar.ariaValueNow = '100%'
   progressLabel.textContent = window.i18n.t('renderer.errors.load')
 }
@@ -51,8 +55,8 @@ const onWorkerMessage = (message) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-preview]').forEach(async (canvas: HTMLCanvasElement) => {
-    progressBar = canvas.parentElement?.getElementsByClassName("progress-bar")[0];
-    progressLabel = canvas.parentElement?.getElementsByClassName("progress-label")[0];
+    progressBar = canvas.parentElement?.getElementsByClassName("progress-bar")[0] as HTMLDivElement;
+    progressLabel = canvas.parentElement?.getElementsByClassName("progress-label")[0] as HTMLSpanElement;
     // Create offscreen renderer worker
     const OffscreenRenderer = Comlink.wrap(
       new Worker("/assets/offscreen_renderer.js", { type: 'module' })
