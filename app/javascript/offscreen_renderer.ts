@@ -1,3 +1,4 @@
+import * as Comlink from 'comlink';
 import * as THREE from 'three'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
@@ -5,31 +6,20 @@ import { ThreeMFLoader } from 'three/examples/jsm/loaders/3MFLoader.js'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
-// Web worker message handlers
-const handlers = {
-  initialize,
-  resize,
-};
-
-var preview = null;
-
-// Web worker message router
-self.onmessage = function (message) {
-  const fn = handlers[message.data.type];
-  if (typeof fn !== 'function') {
-    throw new Error('no handler for type: ' + message.data.type);
-  }
-  fn(message.data.payload);
-};
-
-function initialize (data) {
-  const {canvas, settings, state} = data
-  preview = new ObjectPreview(canvas, settings, state)
-}
-
-function resize (data) {
-  preview.resize(data.width, data.height)
-}
+// class CanvasProxy extends THREE.EventDispatcher {
+//   constructor () {
+//     super();
+//   }
+//   onInputEvent(payload) {
+//     console.log(payload.eventName)
+//     console.log(payload.event)
+//     dispatchEvent({
+//       type: payload.eventName,
+//       ...payload.event
+//     });
+//   }
+// }
+// const proxy = new InputProxy();
 
 class ObjectPreview {
   canvas: HTMLCanvasElement
@@ -248,3 +238,5 @@ class ObjectPreview {
     }
   }
 }
+
+Comlink.expose(ObjectPreview)

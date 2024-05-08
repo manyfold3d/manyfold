@@ -14,6 +14,7 @@
     "@selectize/selectize": "^0.15.2",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "comlink": "^4.4.1",
     "esbuild": "^0.21.1",
     "i18n-js": "^4.4.3",
     "jquery": "^3.7.1",

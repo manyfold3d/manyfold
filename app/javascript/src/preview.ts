@@ -1,3 +1,5 @@
+import * as Comlink from 'comlink';
+
 var progressBar = null;
 var progressLabel = null;
 
@@ -39,36 +41,26 @@ const onWorkerMessage = (message) => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-preview]').forEach((canvas) => {
+  document.querySelectorAll('[data-preview]').forEach(async (canvas) => {
     progressBar = canvas.parentElement?.getElementsByClassName("progress-bar")[0];
     progressLabel = canvas.parentElement?.getElementsByClassName("progress-label")[0];
-    const worker = new Worker("/assets/offscreen_renderer.js", { type: 'module' });
-    console.log(canvas);
-    const offscreen = canvas.transferControlToOffscreen();
-    worker.onmessage = onWorkerMessage
-    worker.postMessage({
-      type: 'initialize',
-      payload: {
-        canvas: offscreen,
-        settings: {
-          ...canvas.dataset
-        },
-        state: {
-          width: canvas.clientWidth,
-          height: canvas.clientHeight,
-          pixelRatio: window.devicePixelRatio
-        }
+    // Create offscreen renderer worker
+    const ObjectPreview = Comlink.wrap(
+      new Worker("/assets/offscreen_renderer.js", { type: 'module' })
+    );
+    const offscreenCanvas = canvas.transferControlToOffscreen();
+    const preview = await new ObjectPreview(
+      Comlink.transfer(offscreenCanvas, [offscreenCanvas]),
+      {
+        ...canvas.dataset
+      },
+      {
+        width: canvas.clientWidth,
+        height: canvas.clientHeight,
+        pixelRatio: window.devicePixelRatio
       }
-    }, [offscreen]);
-    // Handle resizing
-    window.addEventListener('resize', () => {
-      worker.postMessage({
-        type: 'resize',
-        payload: {
-          width: canvas.clientWidth,
-          height: canvas.clientHeight
-        }
-      });
-    })
+    );
+    // Send resize events
+    window.addEventListener('resize', () => (preview.resize(canvas.clientWidth, canvas.clientHeight)))
   });
 });
