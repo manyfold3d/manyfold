@@ -1,4 +1,4 @@
-import * as Comlink from 'comlink';
+import * as Comlink from 'comlink'
 import 'src/comlink_event_handler'
 
 import * as THREE from 'three'
@@ -24,15 +24,14 @@ class OffscreenRenderer {
   cbLoadProgress: any = null
   cbLoadError: any = null
 
-
   constructor (
     canvas: HTMLCanvasElement,
     settings: DOMStringMap,
-    state: Map<string, any>,
+    state: Map<string, any>
   ) {
-    this.canvas = new CanvasProxy(canvas);
+    this.canvas = new CanvasProxy(canvas)
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas.realCanvas })
-    this.renderer.setPixelRatio(state.pixelRatio);
+    this.renderer.setPixelRatio(state.pixelRatio)
     this.settings = settings
     this.setup()
     this.resize(state.width, state.height)
@@ -51,9 +50,9 @@ class OffscreenRenderer {
   		0.1,
   		1000
     )
-    this.controls = new OrbitControls(this.camera, this.canvas as any);
-    this.controls.enableDamping = true;
-    this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true');
+    this.controls = new OrbitControls(this.camera, this.canvas as any)
+    this.controls.enableDamping = true
+    this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true')
   	// Add lighting
   	const gridSizeX = parseInt(this.settings.gridSizeX ?? '10', 10)
   	const gridSizeZ = parseInt(this.settings.gridSizeZ ?? '10', 10)
@@ -88,7 +87,7 @@ class OffscreenRenderer {
         break
     }
     if (loader !== null) {
-      console.log("Loading " + this.settings.previewUrl)
+      console.log('Loading ' + this.settings.previewUrl)
       loader.load(
         this.settings.previewUrl ?? '',
         this.onLoad.bind(this),
@@ -124,8 +123,7 @@ class OffscreenRenderer {
       })
       object = model
     }
-    if (!object)
-      return;
+    if (object == null) { return }
     // Transform to screen coords from print
     if (this.settings.yUp !== 'true') {
       const coordSystemTransform = new THREE.Matrix4()
@@ -163,7 +161,7 @@ class OffscreenRenderer {
     this.camera.position.z = this.camera.position.x = -bsphere.radius * 1.63
     this.camera.position.y = bsphere.radius * 0.75
     const target = new THREE.Vector3(0, modelHeight / 2, 0)
-    //this.controls.target.set(target)
+    // this.controls.target.set(target)
     this.camera.lookAt(target)
     this.scene.add(object)
     // Add the grid
@@ -184,7 +182,7 @@ class OffscreenRenderer {
     this.render()
 
     // Listen for control updates and re-render
-    this.controls.addEventListener("change", this.render.bind(this))
+    this.controls.addEventListener('change', this.render.bind(this))
 
     // Report load complete
     this.cbLoadComplete()
@@ -193,23 +191,23 @@ class OffscreenRenderer {
   onLoadError (e): void {
     console.log(e)
     this.cbLoadError()
-    this.onLoad(new THREE.BoxGeometry(2,3,4))
+    this.onLoad(new THREE.BoxGeometry(2, 3, 4))
   }
 
   resize (width, height): void {
     this.canvas.resize(width, height)
-    this.renderer.setSize(width, height, false);
+    this.renderer.setSize(width, height, false)
     // Update camera
-    this.camera.aspect = width / height;
+    this.camera.aspect = width / height
     this.camera.updateProjectionMatrix()
     // Render!
-    this.render();
+    this.render()
   }
 
   render (): void {
     setTimeout(() => {
-      requestAnimationFrame(this.onAnimationFrame.bind(this));
-    }, 16); // ms per 60fps frame, near enough
+      requestAnimationFrame(this.onAnimationFrame.bind(this))
+    }, 16) // ms per 60fps frame, near enough
   }
 
   onAnimationFrame (): void {
@@ -217,7 +215,7 @@ class OffscreenRenderer {
       return
     }
     // Update controls to allow animation of damping
-    this.controls.update();
+    this.controls.update()
     // Render
     this.renderer.clear()
     this.renderer.render(this.scene, this.camera)

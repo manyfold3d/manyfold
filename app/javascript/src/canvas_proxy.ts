@@ -1,30 +1,33 @@
 import { EventDispatcher } from 'three'
 
 export class CanvasProxy extends EventDispatcher {
-	style = { touchAction: '' }
-	clientWidth;
-	clientHeight;
-	realCanvas: HTMLCanvasElement;
+  style = { touchAction: '' }
+  clientWidth
+  clientHeight
+  realCanvas: HTMLCanvasElement
 
-	constructor (canvas: HTMLCanvasElement) {
-		super();
-		this.realCanvas = canvas
-	}
-	resize (width, height) {
-		this.clientWidth = width;
-		this.clientHeight = height;
-		this.realCanvas.width = width;
-		this.realCanvas.height = height;
-	}
-	handleEvent (event) {
-		event.preventDefault = function () { }
-		this.dispatchEvent(event);
-	}
+  constructor (canvas: HTMLCanvasElement) {
+    super()
+    this.realCanvas = canvas
+  }
 
-	// Pretend we can handle capture events
-	getRootNode () {
-		return this;
-	}
-	setPointerCapture () {};
-	releasePointerCapture () { };
+  resize (width, height) {
+    this.clientWidth = width
+    this.clientHeight = height
+    this.realCanvas.width = width
+    this.realCanvas.height = height
+  }
+
+  handleEvent (event) {
+    event.preventDefault = function () { }
+    this.dispatchEvent(event)
+  }
+
+  // Pretend we can handle capture events
+  getRootNode () {
+    return this
+  }
+
+  setPointerCapture () {};
+  releasePointerCapture () { };
 }

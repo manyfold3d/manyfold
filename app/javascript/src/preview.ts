@@ -1,24 +1,22 @@
-import * as Comlink from 'comlink';
+import * as Comlink from 'comlink'
 import 'src/comlink_event_handler'
 
-var progressBar: HTMLDivElement | null;
-var progressLabel: HTMLSpanElement | null;
+let progressBar: HTMLDivElement | null
+let progressLabel: HTMLSpanElement | null
 
 const load = async (preview) => {
   await preview.load(
     Comlink.proxy(onLoad),
     Comlink.proxy(onLoadProgress),
     Comlink.proxy(onLoadError)
-  );
+  )
 }
 
 const onLoadProgress = (percentage) => {
-  if (!progressBar || !progressLabel)
-    return;
+  if ((progressBar == null) || (progressLabel == null)) { return }
   if (percentage == 100) {
-    progressLabel.textContent = "Reticulating splines..."
-  }
-  else {
+    progressLabel.textContent = 'Reticulating splines...'
+  } else {
     progressLabel.textContent = percentage + '%'
   }
   progressBar.style.width = percentage + '%'
@@ -27,13 +25,12 @@ const onLoadProgress = (percentage) => {
 
 const onLoad = () => {
   progressBar?.parentElement?.remove()
-  progressBar = null;
-  progressLabel = null;
+  progressBar = null
+  progressLabel = null
 }
 
 const onLoadError = () => {
-  if (!progressBar || !progressLabel)
-    return;
+  if ((progressBar == null) || (progressLabel == null)) { return }
   progressBar?.classList.add('bg-danger')
   progressBar.style.width = progressBar.ariaValueNow = '100%'
   progressLabel.textContent = window.i18n.t('renderer.errors.load')
@@ -46,22 +43,22 @@ const handlers = {
 }
 
 const onWorkerMessage = (message) => {
-  const fn = handlers[message.data.type];
+  const fn = handlers[message.data.type]
   if (typeof fn !== 'function') {
-    throw new Error('no handler for type: ' + message.data.type);
+    throw new Error('no handler for type: ' + message.data.type)
   }
-  fn(message.data.payload);
+  fn(message.data.payload)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-preview]').forEach(async (canvas: HTMLCanvasElement) => {
-    progressBar = canvas.parentElement?.getElementsByClassName("progress-bar")[0] as HTMLDivElement;
-    progressLabel = canvas.parentElement?.getElementsByClassName("progress-label")[0] as HTMLSpanElement;
+    progressBar = canvas.parentElement?.getElementsByClassName('progress-bar')[0] as HTMLDivElement
+    progressLabel = canvas.parentElement?.getElementsByClassName('progress-label')[0] as HTMLSpanElement
     // Create offscreen renderer worker
     const OffscreenRenderer = Comlink.wrap(
-      new Worker("/assets/offscreen_renderer.js", { type: 'module' })
-    );
-    const offscreenCanvas = canvas.transferControlToOffscreen();
+      new Worker('/assets/offscreen_renderer.js', { type: 'module' })
+    )
+    const offscreenCanvas = canvas.transferControlToOffscreen()
     const preview = await new OffscreenRenderer(
       Comlink.transfer(offscreenCanvas, [offscreenCanvas]),
       {
@@ -72,24 +69,24 @@ document.addEventListener('DOMContentLoaded', () => {
         height: canvas.clientHeight,
         pixelRatio: window.devicePixelRatio
       }
-    );
+    )
     // Send resize events
     window.addEventListener('resize', () => (preview.resize(canvas.clientWidth, canvas.clientHeight)))
     // Handle interaction events
     const eventHandlers = [
-      "pointerdown",
-      "pointermove",
-      "pointerup",
-      "wheel",
-      "keydown",
-      "keyup"
-    ];
+      'pointerdown',
+      'pointermove',
+      'pointerup',
+      'wheel',
+      'keydown',
+      'keyup'
+    ]
     eventHandlers.forEach((eventName) => {
       canvas.addEventListener(eventName, preview.handleEvent.bind(preview))
-    });
+    })
     // Autoload
     if (canvas.dataset.autoLoad === 'true') {
       load(preview)
     }
-  });
-});
+  })
+})
