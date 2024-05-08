@@ -42,27 +42,27 @@ class OffscreenRenderer {
   }
 
   setup (): void {
-  	this.scene = new THREE.Scene()
+    this.scene = new THREE.Scene()
     this.scene.background = new THREE.Color(this.settings.backgroundColour ?? '#000000')
-  	this.camera = new THREE.PerspectiveCamera(
-  		45,
+    this.camera = new THREE.PerspectiveCamera(
+      45,
       this.canvas.clientWidth / this.canvas.clientHeight,
-  		0.1,
-  		1000
+      0.1,
+      1000
     )
     this.controls = new OrbitControls(this.camera, this.canvas as any)
     this.controls.enableDamping = true
     this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true')
-  	// Add lighting
-  	const gridSizeX = parseInt(this.settings.gridSizeX ?? '10', 10)
-  	const gridSizeZ = parseInt(this.settings.gridSizeZ ?? '10', 10)
-  	this.scene.add(new THREE.HemisphereLight(0xffffff, 0x404040))
-  	const light = new THREE.PointLight(0xffffff, 0.25)
-  	light.position.set(gridSizeX, 50, gridSizeZ)
-  	this.scene.add(light)
-  	const light2 = new THREE.PointLight(0xffffff, 0.25)
-  	light2.position.set(-gridSizeX, 50, gridSizeZ)
-  	this.scene.add(light2)
+    // Add lighting
+    const gridSizeX = parseInt(this.settings.gridSizeX ?? '10', 10)
+    const gridSizeZ = parseInt(this.settings.gridSizeZ ?? '10', 10)
+    this.scene.add(new THREE.HemisphereLight(0xffffff, 0x404040))
+    const light = new THREE.PointLight(0xffffff, 0.25)
+    light.position.set(gridSizeX, 50, gridSizeZ)
+    this.scene.add(light)
+    const light2 = new THREE.PointLight(0xffffff, 0.25)
+    light2.position.set(-gridSizeX, 50, gridSizeZ)
+    this.scene.add(light2)
   }
 
   load (cbLoadComplete, cbLoadProgress, cbLoadError): void {
