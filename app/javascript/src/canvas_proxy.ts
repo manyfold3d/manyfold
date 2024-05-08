@@ -17,6 +17,7 @@ export class CanvasProxy extends EventDispatcher {
 		this.realCanvas.height = height;
 	}
 	handleEvent (event) {
+		event.preventDefault = function () { }
 		this.dispatchEvent(event);
 	}
 
