@@ -1,4 +1,5 @@
 import * as Comlink from 'comlink';
+import 'src/comlink_event_handler'
 
 var progressBar = null;
 var progressLabel = null;
@@ -70,6 +71,24 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     // Send resize events
     window.addEventListener('resize', () => (preview.resize(canvas.clientWidth, canvas.clientHeight)))
+    // Handle interaction events
+    const eventHandlers = [
+      "mousedown",
+      "mousemove",
+      "mouseup",
+      "pointerdown",
+      "pointermove",
+      "pointerup",
+      "touchstart",
+      "touchmove",
+      "touchend",
+      "wheel",
+      "keydown",
+      "keyup"
+    ];
+    eventHandlers.forEach((eventName) => {
+      canvas.addEventListener(eventName, preview.handleEvent.bind(preview))
+    });
     // Autoload
     if (canvas.dataset.autoLoad === 'true') {
       load(preview)

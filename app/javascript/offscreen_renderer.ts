@@ -1,4 +1,6 @@
 import * as Comlink from 'comlink';
+import 'src/comlink_event_handler'
+
 import * as THREE from 'three'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
@@ -21,6 +23,16 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 // }
 // const proxy = new InputProxy();
 
+class CanvasProxy extends THREE.EventDispatcher {
+  constructor () {
+    super();
+  }
+  handleEvent (event) {
+    console.log(event)
+    this.dispatchEvent(event);
+  }
+}
+
 class ObjectPreview {
   canvas: HTMLCanvasElement
   renderer: THREE.WebGLRenderer
@@ -37,6 +49,8 @@ class ObjectPreview {
   cbLoadProgress: any = null
   cbLoadError: any = null
 
+  canvasProxy: any = null
+
   constructor (
     canvas: HTMLCanvasElement,
     settings: DOMStringMap,
@@ -49,6 +63,12 @@ class ObjectPreview {
     this.renderer.setPixelRatio(state.pixelRatio);
     this.settings = settings
     this.setup()
+
+    this.canvasProxy = new CanvasProxy();
+  }
+
+  handleEvent (event): void {
+    this.canvasProxy.handleEvent(event)
   }
 
   setup (): void {
@@ -222,7 +242,6 @@ class ObjectPreview {
       return
     }
     // Render
-    console.log("rendering")
     this.renderer.clear()
     this.renderer.render(this.scene, this.camera)
   }
