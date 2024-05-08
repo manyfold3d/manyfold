@@ -1,6 +1,6 @@
 import * as Comlink from 'comlink';
 
-export default Comlink.transferHandlers.set("EVENT", {
+Comlink.transferHandlers.set("EVENT", {
 	canHandle: (obj) => obj instanceof Event,
 	serialize: (ev) => {
 		return [
