@@ -11,7 +11,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { CanvasProxy } from 'src/canvas_proxy'
 
 class OffscreenRenderer {
-  canvas: CanvasProxy = null
+  canvas: CanvasProxy
   renderer: THREE.WebGLRenderer
   settings: DOMStringMap
   scene: THREE.Scene
@@ -51,7 +51,7 @@ class OffscreenRenderer {
   		0.1,
   		1000
     )
-    this.controls = new OrbitControls(this.camera, this.canvas);
+    this.controls = new OrbitControls(this.camera, this.canvas as any);
     this.controls.enableDamping = true;
     this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true');
   	// Add lighting
@@ -124,7 +124,8 @@ class OffscreenRenderer {
       })
       object = model
     }
-
+    if (!object)
+      return;
     // Transform to screen coords from print
     if (this.settings.yUp !== 'true') {
       const coordSystemTransform = new THREE.Matrix4()

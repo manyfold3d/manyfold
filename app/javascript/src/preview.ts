@@ -1,8 +1,8 @@
 import * as Comlink from 'comlink';
 import 'src/comlink_event_handler'
 
-var progressBar = null;
-var progressLabel = null;
+var progressBar: HTMLDivElement;
+var progressLabel: HTMLSpanElement;
 
 const load = async (preview) => {
   await preview.load(
@@ -50,7 +50,7 @@ const onWorkerMessage = (message) => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-preview]').forEach(async (canvas) => {
+  document.querySelectorAll('[data-preview]').forEach(async (canvas: HTMLCanvasElement) => {
     progressBar = canvas.parentElement?.getElementsByClassName("progress-bar")[0];
     progressLabel = canvas.parentElement?.getElementsByClassName("progress-label")[0];
     // Create offscreen renderer worker
