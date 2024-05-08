@@ -3,15 +3,23 @@ import * as Comlink from 'comlink';
 var progressBar = null;
 var progressLabel = null;
 
-const onLoadProgress = (data) => {
-  if (data.percentage == 100) {
+const load = async (preview) => {
+  await preview.load(
+    Comlink.proxy(onLoad),
+    Comlink.proxy(onLoadProgress),
+    Comlink.proxy(onLoadError)
+  );
+}
+
+const onLoadProgress = (percentage) => {
+  if (percentage == 100) {
     progressLabel.textContent = "Reticulating splines..."
   }
   else {
-    progressLabel.textContent = data.percentage + '%'
+    progressLabel.textContent = percentage + '%'
   }
-  progressBar.style.width = data.percentage + '%'
-  progressBar.ariaValueNow = data.percentage
+  progressBar.style.width = percentage + '%'
+  progressBar.ariaValueNow = percentage
 }
 
 const onLoad = () => {
@@ -62,5 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     // Send resize events
     window.addEventListener('resize', () => (preview.resize(canvas.clientWidth, canvas.clientHeight)))
+    // Autoload
+    if (canvas.dataset.autoLoad === 'true') {
+      load(preview)
+    }
   });
 });

@@ -33,6 +33,10 @@ class ObjectPreview {
   canvasWidth: number
   canvasHeight: number
 
+  cbLoadComplete: any = null
+  cbLoadProgress: any = null
+  cbLoadError: any = null
+
   constructor (
     canvas: HTMLCanvasElement,
     settings: DOMStringMap,
@@ -45,9 +49,6 @@ class ObjectPreview {
     this.renderer.setPixelRatio(state.pixelRatio);
     this.settings = settings
     this.setup()
-    if (this.settings.autoLoad === 'true') {
-      this.load();
-    }
   }
 
   setup (): void {
@@ -75,7 +76,12 @@ class ObjectPreview {
   	this.scene.add(light2)
   }
 
-  load (): void {
+  load (cbLoadComplete, cbLoadProgress, cbLoadError): void {
+    // Store callbacks
+    this.cbLoadComplete = cbLoadComplete
+    this.cbLoadProgress = cbLoadProgress
+    this.cbLoadError = cbLoadError
+    // Load
     let loader: OBJLoader | STLLoader | ThreeMFLoader | PLYLoader | null = null
     switch (this.settings.format) {
       case 'obj':
@@ -104,13 +110,7 @@ class ObjectPreview {
 
   onLoadProgress (xhr): void {
     const percentage = Math.floor((xhr.loaded / xhr.total) * 100)
-    postMessage({
-      "type": "onLoadProgress",
-      "payload": {
-        "percentage": percentage
-      }
-    })
-
+    this.cbLoadProgress(percentage)
   }
 
   onLoad (model): void {
@@ -192,12 +192,12 @@ class ObjectPreview {
     this.render()
 
     // Report load complete
-    postMessage({ "type": "onLoad" })
+    this.cbLoadComplete()
   }
 
   onLoadError (e): void {
     console.log(e)
-    postMessage({ "type": "onLoadError" })
+    this.cbLoadError()
     this.onLoad(new THREE.BoxGeometry(2,3,4))
   }
 
