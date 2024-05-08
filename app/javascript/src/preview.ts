@@ -54,11 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
     progressBar = canvas.parentElement?.getElementsByClassName("progress-bar")[0];
     progressLabel = canvas.parentElement?.getElementsByClassName("progress-label")[0];
     // Create offscreen renderer worker
-    const ObjectPreview = Comlink.wrap(
+    const OffscreenRenderer = Comlink.wrap(
       new Worker("/assets/offscreen_renderer.js", { type: 'module' })
     );
     const offscreenCanvas = canvas.transferControlToOffscreen();
-    const preview = await new ObjectPreview(
+    const preview = await new OffscreenRenderer(
       Comlink.transfer(offscreenCanvas, [offscreenCanvas]),
       {
         ...canvas.dataset

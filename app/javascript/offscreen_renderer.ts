@@ -10,7 +10,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 import { CanvasProxy } from 'src/canvas_proxy'
 
-class ObjectPreview {
+class OffscreenRenderer {
   canvas: CanvasProxy = null
   renderer: THREE.WebGLRenderer
   settings: DOMStringMap
@@ -234,4 +234,4 @@ class ObjectPreview {
   }
 }
 
-Comlink.expose(ObjectPreview)
+Comlink.expose(OffscreenRenderer)
