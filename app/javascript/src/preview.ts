@@ -6,6 +6,8 @@ class ObjectPreview {
   progressLabel: HTMLSpanElement | null
   canvas: HTMLCanvasElement
   renderer: any
+  observer: IntersectionObserver | null
+  loading: boolean = false
 
   constructor (canvas) {
     this.canvas = canvas
@@ -13,7 +15,7 @@ class ObjectPreview {
     this.progressLabel = this.canvas.parentElement?.getElementsByClassName('progress-label')[0] as HTMLSpanElement
   }
 
-  async run () {
+  async run (): void {
     // Create offscreen renderer worker
     const offscreenCanvas = this.canvas.transferControlToOffscreen()
     const OffscreenRenderer = await Comlink.wrap(
@@ -33,20 +35,27 @@ class ObjectPreview {
       'wheel',
       'keydown',
       'keyup',
-      'contextmenu',
+      'contextmenu'
     ]
     eventHandlers.forEach((eventName) => {
       this.canvas.addEventListener(eventName, this.onEvent.bind(this))
     })
-    // Autoload
-    if (this.canvas.dataset.autoLoad === 'true') {
+    // Monitor visibility
+    this.observer = new window.IntersectionObserver(
+      this.onIntersectionChanged.bind(this), {}
+    )
+    this.observer.observe(this.canvas)
+  }
+
+  onIntersectionChanged (entries, observer): void {
+    if ((this.canvas.dataset.autoLoad === 'true') && (entries[0].isIntersecting === true)) {
       this.load()
     }
   }
 
-  onEvent (event) {
+  onEvent (event): void {
     event.preventDefault()
-    if (event.type == "pointerdown") {
+    if (event.type === 'pointerdown') {
       this.canvas.setPointerCapture(event.pointerId)
     }
     this.renderer.handleEvent(event)
@@ -76,7 +85,7 @@ class ObjectPreview {
     this.progressLabel.textContent = window.i18n.t('renderer.errors.load')
   }
 
-  onResize () {
+  onResize (): void {
     this.renderer.onResize(
       this.canvas.left,
       this.canvas.top,
@@ -87,20 +96,21 @@ class ObjectPreview {
   }
 
   load (): void {
+    if (this.loading) { return }
+    this.loading = true
     this.renderer.load(
       Comlink.proxy(this.onLoad.bind(this)),
       Comlink.proxy(this.onLoadProgress.bind(this)),
       Comlink.proxy(this.onLoadError.bind(this))
     )
   }
-
 }
 
-const preview_windows = []
+const previewWindows = []
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-preview]').forEach(async (canvas: HTMLCanvasElement) => {
     const preview = new ObjectPreview(canvas)
-    preview_windows.push(preview)
-    preview.run()
+    previewWindows.push(preview)
+    await preview.run()
   })
 })
