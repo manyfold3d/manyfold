@@ -45,6 +45,9 @@ class ObjectPreview {
       this.onIntersectionChanged.bind(this), {}
     )
     this.observer.observe(this.canvas)
+    // Monitor load button click
+    const loadButton = this.canvas.parentElement?.getElementsByClassName('object-preview-progress')[0] as HTMLDivElement
+    loadButton.addEventListener("click", this.load.bind(this))
   }
 
   onIntersectionChanged (entries, observer): void {
