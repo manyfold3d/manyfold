@@ -156,9 +156,7 @@ class OffscreenRenderer {
     // Configure camera
     this.camera.position.z = this.camera.position.x = -bsphere.radius * 1.63
     this.camera.position.y = bsphere.radius * 0.75
-    const target = new THREE.Vector3(0, modelHeight / 2, 0)
-    // this.controls.target.set(target)
-    this.camera.lookAt(target)
+    this.controls.target.set(0, modelHeight / 2, 0)
     this.scene.add(object)
     // Add the grid
     if (this.settings.showGrid === 'true') {
