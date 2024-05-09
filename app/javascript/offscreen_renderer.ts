@@ -26,15 +26,12 @@ class OffscreenRenderer {
 
   constructor (
     canvas: HTMLCanvasElement,
-    settings: DOMStringMap,
-    state: Map<string, any>
+    settings: DOMStringMap
   ) {
     this.canvas = new CanvasProxy(canvas)
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas.realCanvas })
-    this.renderer.setPixelRatio(state.pixelRatio)
     this.settings = settings
     this.setup()
-    this.resize(state.width, state.height)
   }
 
   handleEvent (event): void {
@@ -193,12 +190,14 @@ class OffscreenRenderer {
     this.onLoad(new THREE.BoxGeometry(2, 3, 4))
   }
 
-  resize (width, height): void {
-    this.canvas.resize(width, height)
+  onResize (left, top, width, height, pixelRatio): void {
+    this.canvas.resize(left, top, width, height)
     this.renderer.setSize(width, height, false)
     // Update camera
     this.camera.aspect = width / height
     this.camera.updateProjectionMatrix()
+    // Update pixel ratio
+    this.renderer.setPixelRatio(pixelRatio)
     // Render!
     this.render()
   }

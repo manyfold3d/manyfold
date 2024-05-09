@@ -36,8 +36,8 @@ const onLoadError = (): void => {
   progressLabel.textContent = window.i18n.t('renderer.errors.load')
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-  document.querySelectorAll('[data-preview]').forEach((canvas: HTMLCanvasElement) => {
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-preview]').forEach(async (canvas: HTMLCanvasElement) => {
     progressBar = canvas.parentElement?.getElementsByClassName('progress-bar')[0] as HTMLDivElement
     progressLabel = canvas.parentElement?.getElementsByClassName('progress-label')[0] as HTMLSpanElement
     // Create offscreen renderer worker
@@ -46,18 +46,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     )
     const offscreenCanvas = canvas.transferControlToOffscreen()
     const preview = await new OffscreenRenderer(
-      Comlink.transfer(offscreenCanvas, [offscreenCanvas]),
-      {
-        ...canvas.dataset
-      },
-      {
-        width: canvas.clientWidth,
-        height: canvas.clientHeight,
-        pixelRatio: window.devicePixelRatio
-      }
+      Comlink.transfer(offscreenCanvas, [offscreenCanvas]), {...canvas.dataset }
     )
     // Send resize events
-    window.addEventListener('resize', () => (preview.resize(canvas.clientWidth, canvas.clientHeight)))
+    const onResize = () => {
+      preview.onResize(canvas.left, canvas.top, canvas.clientWidth, canvas.clientHeight, window.devicePixelRatio)
+    }
+    window.addEventListener('resize', onResize.bind(this))
+    onResize()
     // Handle interaction events
     const eventHandlers = [
       'pointerdown',
