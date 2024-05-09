@@ -1,67 +1,31 @@
 import * as Comlink from 'comlink'
 import 'src/comlink_event_handler'
 
-let progressBar: HTMLDivElement | null
-let progressLabel: HTMLSpanElement | null
+class ObjectPreview {
+  progressBar: HTMLDivElement | null
+  progressLabel: HTMLSpanElement | null
+  canvas: HTMLCanvasElement
+  renderer: any
 
-const load = async (preview): void => {
-  await preview.load(
-    Comlink.proxy(onLoad),
-    Comlink.proxy(onLoadProgress),
-    Comlink.proxy(onLoadError)
-  )
-}
-
-const onLoadProgress = (percentage: number): void => {
-  if ((progressBar == null) || (progressLabel == null)) { return }
-  if (percentage === 100) {
-    progressLabel.textContent = 'Reticulating splines...'
-  } else {
-    progressLabel.textContent = `${percentage}%`
+  constructor (canvas) {
+    this.canvas = canvas
+    this.progressBar = this.canvas.parentElement?.getElementsByClassName('progress-bar')[0] as HTMLDivElement
+    this.progressLabel = this.canvas.parentElement?.getElementsByClassName('progress-label')[0] as HTMLSpanElement
   }
-  progressBar.style.width = `${percentage}%`
-  progressBar.ariaValueNow = percentage.toString()
-}
 
-const onLoad = (): void => {
-  progressBar?.parentElement?.remove()
-  progressBar = null
-  progressLabel = null
-}
-
-const onLoadError = (): void => {
-  if ((progressBar == null) || (progressLabel == null)) { return }
-  progressBar?.classList.add('bg-danger')
-  progressBar.style.width = progressBar.ariaValueNow = '100%'
-  progressLabel.textContent = window.i18n.t('renderer.errors.load')
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-preview]').forEach(async (canvas: HTMLCanvasElement) => {
-    progressBar = canvas.parentElement?.getElementsByClassName('progress-bar')[0] as HTMLDivElement
-    progressLabel = canvas.parentElement?.getElementsByClassName('progress-label')[0] as HTMLSpanElement
+  async run () {
     // Create offscreen renderer worker
-    const OffscreenRenderer = Comlink.wrap(
+    const offscreenCanvas = this.canvas.transferControlToOffscreen()
+    const OffscreenRenderer = await Comlink.wrap(
       new Worker('/assets/offscreen_renderer.js', { type: 'module' })
     )
-    const offscreenCanvas = canvas.transferControlToOffscreen()
-    const preview = await new OffscreenRenderer(
-      Comlink.transfer(offscreenCanvas, [offscreenCanvas]), { ...canvas.dataset }
+    this.renderer = await new OffscreenRenderer(
+      Comlink.transfer(offscreenCanvas, [offscreenCanvas]), { ...this.canvas.dataset }
     )
-    // Send resize events
-    const onResize = () => {
-      preview.onResize(canvas.left, canvas.top, canvas.clientWidth, canvas.clientHeight, window.devicePixelRatio)
-    }
-    window.addEventListener('resize', onResize.bind(this))
-    onResize()
+    // Handle resize events
+    window.addEventListener('resize', this.onResize.bind(this))
+    this.onResize()
     // Handle interaction events
-    const onEvent = (event) => {
-      event.preventDefault()
-      if (event.type == "pointerdown") {
-        canvas.setPointerCapture(event.pointerId)
-      }
-      preview.handleEvent(event)
-    }
     const eventHandlers = [
       'pointerdown',
       'pointermove',
@@ -72,11 +36,71 @@ document.addEventListener('DOMContentLoaded', () => {
       'contextmenu',
     ]
     eventHandlers.forEach((eventName) => {
-      canvas.addEventListener(eventName, onEvent.bind(this))
+      this.canvas.addEventListener(eventName, this.onEvent.bind(this))
     })
     // Autoload
-    if (canvas.dataset.autoLoad === 'true') {
-      load(preview)
+    if (this.canvas.dataset.autoLoad === 'true') {
+      this.load()
     }
+  }
+
+  onEvent (event) {
+    event.preventDefault()
+    if (event.type == "pointerdown") {
+      this.canvas.setPointerCapture(event.pointerId)
+    }
+    this.renderer.handleEvent(event)
+  }
+
+  onLoadProgress (percentage: number): void {
+    if ((this.progressBar == null) || (this.progressLabel == null)) { return }
+    if (percentage === 100) {
+      this.progressLabel.textContent = 'Reticulating splines...'
+    } else {
+      this.progressLabel.textContent = `${percentage}%`
+    }
+    this.progressBar.style.width = `${percentage}%`
+    this.progressBar.ariaValueNow = percentage.toString()
+  }
+
+  onLoad (): void {
+    this.progressBar?.parentElement?.remove()
+    this.progressBar = null
+    this.progressLabel = null
+  }
+
+  onLoadError (): void {
+    if ((this.progressBar == null) || (this.progressLabel == null)) { return }
+    this.progressBar?.classList.add('bg-danger')
+    this.progressBar.style.width = this.progressBar.ariaValueNow = '100%'
+    this.progressLabel.textContent = window.i18n.t('renderer.errors.load')
+  }
+
+  onResize () {
+    this.renderer.onResize(
+      this.canvas.left,
+      this.canvas.top,
+      this.canvas.clientWidth,
+      this.canvas.clientHeight,
+      window.devicePixelRatio
+    )
+  }
+
+  load (): void {
+    this.renderer.load(
+      Comlink.proxy(this.onLoad.bind(this)),
+      Comlink.proxy(this.onLoadProgress.bind(this)),
+      Comlink.proxy(this.onLoadError.bind(this))
+    )
+  }
+
+}
+
+const preview_windows = []
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-preview]').forEach(async (canvas: HTMLCanvasElement) => {
+    const preview = new ObjectPreview(canvas)
+    preview_windows.push(preview)
+    preview.run()
   })
 })
