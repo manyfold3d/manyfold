@@ -16,6 +16,7 @@ interface UnifiedEvent {
   deltaX?: number
   deltaY?: number
   keyCode?: number
+  code?: number
 }
 
 Comlink.transferHandlers.set('EVENT', {
@@ -52,6 +53,7 @@ Comlink.transferHandlers.set('EVENT', {
         metaKey: ev.metaKey,
         shiftKey: ev.shiftKey,
         keyCode: ev.keyCode,
+        code: ev.code,
         ...serializedEvent
       }
     }
