@@ -12,7 +12,12 @@
   width: 80%;
   height: 3em;
   z-index: 2;
-  cursor: pointer
+  cursor: pointer;
+
+  .progress-label {
+    width: 100%
+  }
+
 }
 
 .preview-card {
