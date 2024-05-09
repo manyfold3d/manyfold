@@ -55,16 +55,24 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', onResize.bind(this))
     onResize()
     // Handle interaction events
+    const onEvent = (event) => {
+      event.preventDefault()
+      if (event.type == "pointerdown") {
+        canvas.setPointerCapture(event.pointerId)
+      }
+      preview.handleEvent(event)
+    }
     const eventHandlers = [
       'pointerdown',
       'pointermove',
       'pointerup',
       'wheel',
       'keydown',
-      'keyup'
+      'keyup',
+      'contextmenu',
     ]
     eventHandlers.forEach((eventName) => {
-      canvas.addEventListener(eventName, preview.handleEvent.bind(preview))
+      canvas.addEventListener(eventName, onEvent.bind(this))
     })
     // Autoload
     if (canvas.dataset.autoLoad === 'true') {
