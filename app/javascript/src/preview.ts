@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     )
     const offscreenCanvas = canvas.transferControlToOffscreen()
     const preview = await new OffscreenRenderer(
-      Comlink.transfer(offscreenCanvas, [offscreenCanvas]), {...canvas.dataset }
+      Comlink.transfer(offscreenCanvas, [offscreenCanvas]), { ...canvas.dataset }
     )
     // Send resize events
     const onResize = () => {

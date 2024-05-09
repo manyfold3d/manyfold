@@ -22,8 +22,8 @@ export class CanvasProxy extends EventDispatcher {
       width: this.clientWidth,
       height: this.clientHeight,
       right: this.left + this.clientWidth,
-      bottom: this.top + this.clientHeight,
-    };
+      bottom: this.top + this.clientHeight
+    }
   }
 
   resize (left, top, width, height): void {
