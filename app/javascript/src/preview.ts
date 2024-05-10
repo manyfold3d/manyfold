@@ -110,9 +110,11 @@ class ObjectPreview {
 
 const previewWindows: ObjectPreview[] = []
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-preview]').forEach(async (canvas: HTMLCanvasElement) => {
+  document.querySelectorAll('[data-preview]').forEach((canvas: HTMLCanvasElement) => {
     const preview = new ObjectPreview(canvas)
     previewWindows.push(preview)
-    await preview.run()
+    void (async () => {
+      await preview.run()
+    })() // Wrap up the promise, we don't want it
   })
 })
