@@ -16,7 +16,7 @@
     </tr>
     <% @files.each do |file| %>
       <tr>
-        <td><%= form.check_box "model_files[#{file.id}]", data: {bulk_item: file.id.to_s}, "aria-label": t(".select", name: file.name) %></td>
+        <td><%= form.check_box "model_files[#{file.id}]", data: {bulk_item: file.id.to_s}, "aria-label": t_nowrap(".select", name: file.name) %></td>
         <td><%= link_to file.name, [@library, @model, file], title: file.filename %></td>
         <td><code><%= file.filename %></code></td>
         <td><%= icon "check-circle-fill", ModelFile.human_attribute_name(:printed) if current_user.printed?(file) %></td>
