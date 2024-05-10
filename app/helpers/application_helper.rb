@@ -135,5 +135,6 @@ module ApplicationHelper
     end
   end
   alias :t :translate_with_locale_wrapper
+  alias :t_nowrap :translate
 
 end
