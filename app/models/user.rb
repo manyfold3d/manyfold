@@ -54,6 +54,8 @@ class User < ApplicationRecord
   end
 
   def assign_default_role
-    add_role(:viewer) if roles.blank?
+    unless User.exists?
+      add_role(:viewer) if roles.blank?
+    end
   end
 end
