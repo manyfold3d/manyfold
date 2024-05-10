@@ -17,7 +17,7 @@ class ObjectPreview {
   }
 
   async run (): Promise<void> {
-    if (this.canvas.dataset.workerUrl === null) {
+    if (this.canvas.dataset.workerUrl === undefined || this.canvas.dataset.workerUrl === null) {
       console.log('ERROR: Could not load worker!')
       return
     }
