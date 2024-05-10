@@ -295,6 +295,7 @@ de:
       load: Fehler beim Laden
       webglrenderer: Renderer konnte nicht erstellt werden!
     load:
+    processing:
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
