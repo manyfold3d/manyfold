@@ -155,7 +155,7 @@ class OffscreenRenderer {
     object.position.set(-centre.x, -bbox.min.y, -centre.z)
 
     // Configure camera
-    this.camera.position.z = this.camera.position.x = -bsphere.radius * 1.63
+    this.camera.position.z = this.camera.position.x = bsphere.radius * 1.63
     this.camera.position.y = bsphere.radius * 0.75
     this.controls.target.set(0, modelHeight / 2, 0)
     this.scene.add(object)
