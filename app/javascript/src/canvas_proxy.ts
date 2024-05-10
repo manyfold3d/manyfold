@@ -17,10 +17,13 @@ export class CanvasProxy extends EventDispatcher {
     return {
       left: 0,
       top: 0,
+      x: 0,
+      y: 0,
       width: this.clientWidth,
       height: this.clientHeight,
       right: this.clientWidth,
-      bottom: this.clientHeight
+      bottom: this.clientHeight,
+      toJSON: () => ('')
     }
   }
 
