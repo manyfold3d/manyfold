@@ -131,7 +131,7 @@ module ApplicationHelper
 
   def translate_with_locale_wrapper(key, **options)
     translate(key, **options) do |str, _key|
-      str.locale ? content_tag(:span, lang: str.locale) { sanitize str } : str
+      str&.locale ? content_tag(:span, lang: str.locale) { sanitize str } : str
     end
   end
   alias :t :translate_with_locale_wrapper
