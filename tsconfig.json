@@ -21,7 +21,7 @@
     "target": "es6",
     "noEmit": true,
     "types": [
-      "./app/javascript/src/globals",
+      "./app/javascript/src/window_extensions",
       "node",
       "webpack-env",
       "three",
