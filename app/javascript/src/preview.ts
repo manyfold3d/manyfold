@@ -90,8 +90,6 @@ class ObjectPreview {
 
   onResize (): void {
     this.renderer.onResize(
-      this.canvas.left,
-      this.canvas.top,
       this.canvas.clientWidth,
       this.canvas.clientHeight,
       window.devicePixelRatio

@@ -189,8 +189,8 @@ class OffscreenRenderer {
     this.onLoad(new THREE.BoxGeometry(2, 3, 4))
   }
 
-  onResize (left, top, width, height, pixelRatio): void {
-    this.canvas.resize(left, top, width, height)
+  onResize (width, height, pixelRatio): void {
+    this.canvas.resize(width, height)
     this.renderer.setSize(width, height, false)
     // Update camera
     this.camera.aspect = width / height
