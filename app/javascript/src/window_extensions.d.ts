@@ -1,4 +1,4 @@
-declare module "WindowExtensions" {
+declare module 'WindowExtensions' {
   global {
     interface Window {
       tagInputs: Array<JQuery<HTMLElement>>

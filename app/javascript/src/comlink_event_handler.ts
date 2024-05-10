@@ -62,4 +62,4 @@ const handler: Comlink.TransferHandler<Event, UnifiedEvent> = {
   deserialize: (obj) => obj as Event
 }
 
-Comlink.transferHandlers.set('EVENT',  handler)
+Comlink.transferHandlers.set('EVENT', handler)
