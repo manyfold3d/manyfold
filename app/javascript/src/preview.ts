@@ -107,7 +107,7 @@ class ObjectPreview {
   }
 }
 
-const previewWindows = []
+const previewWindows: ObjectPreview[] = []
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-preview]').forEach(async (canvas: HTMLCanvasElement) => {
     const preview = new ObjectPreview(canvas)
