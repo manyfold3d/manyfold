@@ -15,7 +15,7 @@ class ObjectPreview {
     this.progressLabel = this.canvas.parentElement?.getElementsByClassName('progress-label')[0] as HTMLSpanElement
   }
 
-  async run (): void {
+  async run (): Promise<void> {
     // Create offscreen renderer worker
     const offscreenCanvas = this.canvas.transferControlToOffscreen()
     const OffscreenRenderer = await Comlink.wrap(
