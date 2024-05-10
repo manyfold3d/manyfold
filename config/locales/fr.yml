@@ -295,6 +295,7 @@ fr:
       load: Erreur de chargement
       webglrenderer: Impossible de créer le rendu !
     load: Chargement
+    processing:
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Bandes dessinées, jeux et objets

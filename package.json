@@ -14,12 +14,14 @@
     "@selectize/selectize": "^0.15.2",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "comlink": "^4.4.1",
     "esbuild": "^0.21.1",
     "i18n-js": "^4.4.3",
     "jquery": "^3.7.1",
     "masonry-layout": "^4.2.2",
     "sass": "^1.77.0",
-    "three": "^0.164.1"
+    "three": "^0.164.1",
+    "threejs-webworker-3mf-loader": "https://github.com/manyfold3d/threejs-webworker-3mf-loader"
   },
   "version": "0.1.0",
   "devDependencies": {

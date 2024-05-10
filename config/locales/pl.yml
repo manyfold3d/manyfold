@@ -295,6 +295,7 @@ pl:
       load: Błąd wczytywania
       webglrenderer: Nie można utworzyć renderera!
     load: Wczytaj
+    processing:
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
