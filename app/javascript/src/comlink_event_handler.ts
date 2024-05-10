@@ -19,8 +19,8 @@ interface UnifiedEvent {
   code?: string
 }
 
-Comlink.transferHandlers.set('EVENT', {
-  canHandle: (obj): boolean => obj instanceof Event,
+const handler: Comlink.TransferHandler<Event, UnifiedEvent> = {
+  canHandle: (obj): obj is Event => (obj instanceof Event),
   serialize: (ev: Event) => {
     let serializedEvent: UnifiedEvent = { type: ev.type }
     if (ev instanceof PointerEvent) {
@@ -59,5 +59,7 @@ Comlink.transferHandlers.set('EVENT', {
     }
     return [serializedEvent, []]
   },
-  deserialize: (obj) => obj
-})
+  deserialize: (obj) => obj as Event
+}
+
+Comlink.transferHandlers.set('EVENT',  handler)

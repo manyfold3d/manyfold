@@ -1,5 +1,6 @@
 import * as Comlink from 'comlink'
 import 'src/comlink_event_handler'
+import type { OffscreenRenderer } from 'offscreen_renderer'
 
 class ObjectPreview {
   progressBar: HTMLDivElement | null
@@ -18,11 +19,11 @@ class ObjectPreview {
   async run (): Promise<void> {
     // Create offscreen renderer worker
     const offscreenCanvas = this.canvas.transferControlToOffscreen()
-    const OffscreenRenderer = await Comlink.wrap(
+    const RemoteOffscreenRenderer = await Comlink.wrap<typeof OffscreenRenderer>(
       new Worker('/assets/offscreen_renderer.js', { type: 'module' })
     )
-    this.renderer = await new OffscreenRenderer(
-      Comlink.transfer(offscreenCanvas, [offscreenCanvas]), { ...this.canvas.dataset }
+    this.renderer = await new RemoteOffscreenRenderer(
+      Comlink.transfer(offscreenCanvas as unknown as HTMLCanvasElement, [offscreenCanvas]), { ...this.canvas.dataset }
     )
     // Handle resize events
     window.addEventListener('resize', this.onResize.bind(this))

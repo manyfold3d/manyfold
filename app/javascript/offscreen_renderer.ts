@@ -10,7 +10,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 import { CanvasProxy } from 'src/canvas_proxy'
 
-class OffscreenRenderer {
+export class OffscreenRenderer {
   canvas: CanvasProxy
   renderer: THREE.WebGLRenderer
   settings: DOMStringMap
