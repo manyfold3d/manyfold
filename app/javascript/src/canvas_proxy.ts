@@ -13,7 +13,7 @@ export class CanvasProxy extends EventDispatcher {
     this.realCanvas = canvas
   }
 
-  getBoundingClientRect () {
+  getBoundingClientRect (): DOMRect {
     return {
       left: 0,
       top: 0,
