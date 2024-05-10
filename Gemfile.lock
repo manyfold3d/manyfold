@@ -67,8 +67,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activeadmin (3.2.0)
+    activeadmin (3.2.1)
       arbre (~> 1.2, >= 1.2.1)
+      csv
       formtastic (>= 3.1)
       formtastic_i18n (>= 0.4)
       inherited_resources (~> 1.7)
@@ -138,6 +139,7 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.0)
       railties (>= 6.0.0)
+    csv (3.3.0)
     database_cleaner-active_record (2.1.0)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
