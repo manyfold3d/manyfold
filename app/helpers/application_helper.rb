@@ -128,4 +128,12 @@ module ApplicationHelper
       link_to text, "##{target}", class: "text-reset"
     end
   end
+
+  def translate_with_locale_wrapper(key, **options)
+    translate(key, **options) do |str, _key|
+      str.locale ? content_tag(:span, lang: str.locale) { sanitize str } : str
+    end
+  end
+  alias :t :translate_with_locale_wrapper
+
 end
