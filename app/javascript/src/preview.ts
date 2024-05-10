@@ -17,10 +17,14 @@ class ObjectPreview {
   }
 
   async run (): Promise<void> {
+    if (this.canvas.dataset.workerUrl === null) {
+      console.log('ERROR: Could not load worker!')
+      return
+    }
     // Create offscreen renderer worker
     const offscreenCanvas = this.canvas.transferControlToOffscreen()
     const RemoteOffscreenRenderer = await Comlink.wrap<typeof OffscreenRenderer>(
-      new Worker('/assets/offscreen_renderer.js', { type: 'module' })
+      new Worker(this.canvas.dataset.workerUrl, { type: 'module' })
     )
     this.renderer = await new RemoteOffscreenRenderer(
       Comlink.transfer(offscreenCanvas as unknown as HTMLCanvasElement, [offscreenCanvas]), { ...this.canvas.dataset }
