@@ -4,11 +4,11 @@
       <button id="rotationControl" class="carousel-control-play btn btn-secondary m-2">
         <%= icon "pause", t(".play_pause"), id: "rotationControlIcon" %>
       </button>
-      <div class="carousel-indicators" role="group" aria-label="<%= t ".select_slide" %>">
+      <div class="carousel-indicators" role="group" aria-label="<%= translate ".select_slide" %>">
         <% images.each_with_index do |image, index| %>
           <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="<%= index %>"
             <%= "class=active aria-current=true aria-disabled=true" if index == 0 %>
-            aria-label="<%= t ".slide_label", index: (index + 1), count: images.count, name: image.name %>">
+            aria-label="<%= translate ".slide_label", index: (index + 1), count: images.count, name: image.name %>">
             <%= index %>
           </button>
         <% end %>
@@ -16,7 +16,7 @@
     <% end %>
     <div id="imageCarouselInner" class="carousel-inner" aria-atomic="false" aria-live="off">
       <% images.each_with_index do |image, index| %>
-        <div class="carousel-item <%= "active" if index == 0 %>" role="group" aria-roledescription="slide" aria-label="<%= t ".slide_label", index: (index + 1), count: images.count, name: image.name %>">
+        <div class="carousel-item <%= "active" if index == 0 %>" role="group" aria-roledescription="slide" aria-label="<%= translate ".slide_label", index: (index + 1), count: images.count, name: image.name %>">
           <%= image_tag library_model_model_file_path(@model.library, @model, image, format: image.extension), alt: image.name, class: "d-block w-100 carousel" %>
           <% if @model.preview_file != image && policy(image).edit? %>
             <div class="carousel-caption d-none d-md-block">

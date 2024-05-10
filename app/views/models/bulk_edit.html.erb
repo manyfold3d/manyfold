@@ -6,7 +6,7 @@
 
   <table class="table table-striped" data-bulk-edit>
     <tr>
-      <th><input type="checkbox" aria-label="<%= t ".select_all" %>" value="0" name="bulk-select-all"></th>
+      <th><input type="checkbox" aria-label="<%= translate ".select_all" %>" value="0" name="bulk-select-all"></th>
       <th><%= Model.human_attribute_name(:name) %></th>
       <th><%= Model.human_attribute_name(:collection) %></th>
       <th><%= Model.human_attribute_name(:tags) %></th>
@@ -15,7 +15,7 @@
     </tr>
     <% @models.each do |model| %>
       <tr>
-        <td><%= form.check_box "models[#{model.id}]", data: {bulk_item: model.id.to_s}, "aria-label": t(".select", name: model.name) %></td>
+        <td><%= form.check_box "models[#{model.id}]", data: {bulk_item: model.id.to_s}, "aria-label": translate(".select", name: model.name) %></td>
         <td><%= link_to model.name, [model.library, model], title: model.path %></td>
         <td><%= link_to model.collection.name, model.collection if model.collection %></td>
         <td><%= render partial: "tag",
@@ -54,8 +54,8 @@
     </div>
   </div>
 
-  <%= render "tags_edit", form: form, name: :add_tags, value: "", label: t(".add_tags"), tags: @addtags || [] %>
-  <%= render "tags_edit", form: form, name: :remove_tags, value: "", label: t(".remove_tags"), tags: @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name) %>
+  <%= render "tags_edit", form: form, name: :add_tags, value: "", label: translate(".add_tags"), tags: @addtags || [] %>
+  <%= render "tags_edit", form: form, name: :remove_tags, value: "", label: translate(".remove_tags"), tags: @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name) %>
 
   <div class="row mb-3">
     <%= form.label :collection_id, class: "col-sm-2 col-form-label" %>

@@ -34,7 +34,7 @@ class ProblemsController < ApplicationController
     notice = t(
       (@problem.ignored ? ".ignored" : ".unignored"),
       name: @problem.problematic.name,
-      message: t("problems.%{type}_%{category}.title" % {type: @problem.problematic_type.underscore, category: @problem.category})
+      message: translate("problems.%{type}_%{category}.title" % {type: @problem.problematic_type.underscore, category: @problem.category})
     )
     redirect_back_or_to problems_path, notice: notice
   end
