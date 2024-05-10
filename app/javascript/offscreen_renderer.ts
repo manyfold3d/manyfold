@@ -110,7 +110,7 @@ export class OffscreenRenderer {
       })
     // find mesh and set material
     let object: THREE.Mesh | null = null
-    if (model.type === 'BufferGeometry' || model.type === 'BoxGeometry') {
+    if (model.type === 'BufferGeometry') {
       object = new THREE.Mesh(model, material)
     } else {
       model.traverse(function (node) {
@@ -186,7 +186,6 @@ export class OffscreenRenderer {
   onLoadError (e): void {
     console.log(e)
     this.cbLoadError()
-    this.onLoad(new THREE.BoxGeometry(2, 3, 4))
   }
 
   onResize (width, height, pixelRatio): void {
