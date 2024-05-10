@@ -31,9 +31,9 @@ export class CanvasProxy extends EventDispatcher {
     this.realCanvas.height = height
   }
 
-  handleEvent (event): void {
+  handleEvent (event: Event): void {
     event.preventDefault = function () { }
-    this.dispatchEvent(event)
+    this.dispatchEvent(event as never)
   }
 
   // Pretend we can handle capture events
