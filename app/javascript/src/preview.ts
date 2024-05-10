@@ -68,7 +68,7 @@ class ObjectPreview {
   onLoadProgress (percentage: number): void {
     if ((this.progressBar == null) || (this.progressLabel == null)) { return }
     if (percentage === 100) {
-      this.progressLabel.textContent = 'Reticulating splines...'
+      this.progressLabel.textContent = window.i18n.t('renderer.processing')
     } else {
       this.progressLabel.textContent = `${percentage}%`
     }

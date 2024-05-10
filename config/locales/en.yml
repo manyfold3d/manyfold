@@ -312,6 +312,7 @@ en:
       load: Load Error
       webglrenderer: Could not create renderer!
     load: Load
+    processing: Reticulating splines...
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
