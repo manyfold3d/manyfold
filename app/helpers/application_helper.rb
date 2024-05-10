@@ -134,6 +134,5 @@ module ApplicationHelper
       str&.locale ? content_tag(:span, lang: str.locale) { sanitize str } : str
     end
   end
-  alias :t :translate_with_locale_wrapper
-
+  alias_method :t, :translate_with_locale_wrapper
 end
