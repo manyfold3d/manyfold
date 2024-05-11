@@ -33,16 +33,13 @@ class ObjectPreview {
     window.addEventListener('resize', this.onResize.bind(this))
     this.onResize()
     // Handle interaction events
-    const eventHandlers = [
-      'pointerdown',
-      'pointermove',
-      'pointerup',
-      'wheel',
-      'keydown',
-      'keyup',
-      'contextmenu'
-    ]
-    eventHandlers.forEach((eventName) => {
+    Array('pointerdown', 'pointermove', 'pointerup').forEach((eventName) => {
+      this.canvas.addEventListener(eventName, this.onPointerEvent.bind(this))
+    })
+    Array('keydown', 'keyup').forEach((eventName) => {
+      this.canvas.addEventListener(eventName, this.onKeyEvent.bind(this))
+    })
+    Array('wheel', 'contextmenu').forEach((eventName) => {
       this.canvas.addEventListener(eventName, this.onEvent.bind(this))
     })
     // Monitor visibility
@@ -61,11 +58,19 @@ class ObjectPreview {
     }
   }
 
-  onEvent (event): void {
-    event.preventDefault()
+  onPointerEvent (event): void {
     if (event.type === 'pointerdown') {
       this.canvas.setPointerCapture(event.pointerId)
     }
+    this.onEvent(event)
+  }
+
+  onKeyEvent (event): void {
+    this.onEvent(event)
+  }
+
+  onEvent (event): void {
+    event.preventDefault()
     this.renderer.handleEvent(event)
   }
 
