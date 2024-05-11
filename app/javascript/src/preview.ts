@@ -60,6 +60,7 @@ class ObjectPreview {
 
   onPointerEvent (event): void {
     if (event.type === 'pointerdown') {
+      this.canvas.focus()
       this.canvas.setPointerCapture(event.pointerId)
     }
     this.onEvent(event)
