@@ -33,13 +33,16 @@ class ObjectPreview {
     window.addEventListener('resize', this.onResize.bind(this))
     this.onResize()
     // Handle interaction events
-    Array('pointerdown', 'pointermove', 'pointerup').forEach((eventName) => {
+    const pointerEvents = ['pointerdown', 'pointermove', 'pointerup']
+    pointerEvents.forEach((eventName) => {
       this.canvas.addEventListener(eventName, this.onPointerEvent.bind(this))
     })
-    Array('keydown', 'keyup').forEach((eventName) => {
+    const keyEvents = ['keydown', 'keyup']
+    keyEvents.forEach((eventName) => {
       this.canvas.addEventListener(eventName, this.onKeyEvent.bind(this))
     })
-    Array('wheel', 'contextmenu').forEach((eventName) => {
+    const otherEvents = ['wheel', 'contextmenu']
+    otherEvents.forEach((eventName) => {
       this.canvas.addEventListener(eventName, this.onEvent.bind(this))
     })
     // Monitor visibility
@@ -67,7 +70,16 @@ class ObjectPreview {
   }
 
   onKeyEvent (event): void {
-    this.onEvent(event)
+    if ([
+      'ArrowUp',
+      'ArrowDown',
+      'ArrowLeft',
+      'ArrowRight',
+      'Minus',
+      'Equal'
+    ].includes(event.code)) {
+      this.onEvent(event)
+    }
   }
 
   onEvent (event): void {
