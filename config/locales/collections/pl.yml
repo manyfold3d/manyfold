@@ -2,6 +2,13 @@
 pl:
   collections:
     collection:
+      collections_button:
+        label: Pokaż podkolekcję w %{name}
+      edit_button:
+        label: Edytuj kolekcję %{name}
+        text: Edytuj
+      models_button:
+        label: Pokaż modele w %{name}
       no_preview: podgląd jest niedostępny
     create:
       success: Szczegóły nowej kolekcji zostały zapisane.
