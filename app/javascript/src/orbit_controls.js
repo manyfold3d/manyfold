@@ -82,7 +82,7 @@ class OrbitControls extends EventDispatcher {
     this.enablePan = true
     this.panSpeed = 1.0
     this.screenSpacePanning = true // if false, pan orthogonal to world-space direction camera.up
-    this.keyPanSpeed = 7.0	// pixels moved per arrow key push
+    this.keyPanSpeed = 7.0 // pixels moved per arrow key push
     this.zoomToCursor = false
 
     // Set to true to automatically rotate around the target
@@ -229,12 +229,12 @@ class OrbitControls extends EventDispatcher {
         let zoomChanged = false
         // adjust the camera position based on zoom only if we're not zooming to the cursor or if it's an ortho camera
         // we adjust zoom later in these cases
-        if (scope.zoomToCursor && performCursorZoom || scope.object.isOrthographicCamera) {
+        if ((scope.zoomToCursor && performCursorZoom) || scope.object.isOrthographicCamera) {
           spherical.radius = clampDistance(spherical.radius)
         } else {
           const prevRadius = spherical.radius
           spherical.radius = clampDistance(spherical.radius * scale)
-          zoomChanged = prevRadius != spherical.radius
+          zoomChanged = prevRadius !== spherical.radius
         }
 
         offset.setFromSpherical(spherical)
@@ -335,9 +335,9 @@ class OrbitControls extends EventDispatcher {
         // using small-angle approximation cos(x/2) = 1 - x^2 / 8
 
         if (zoomChanged ||
-					lastPosition.distanceToSquared(scope.object.position) > EPS ||
-					8 * (1 - lastQuaternion.dot(scope.object.quaternion)) > EPS ||
-					lastTargetPosition.distanceToSquared(scope.target) > EPS) {
+          lastPosition.distanceToSquared(scope.object.position) > EPS ||
+          8 * (1 - lastQuaternion.dot(scope.object.quaternion)) > EPS ||
+          lastTargetPosition.distanceToSquared(scope.target) > EPS) {
           scope.dispatchEvent(_changeEvent)
 
           lastPosition.copy(scope.object.position)
@@ -723,7 +723,7 @@ class OrbitControls extends EventDispatcher {
     }
 
     function handleTouchMoveRotate (event) {
-      if (pointers.length == 1) {
+      if (pointers.length === 1) {
         rotateEnd.set(event.pageX, event.pageY)
       } else {
         const position = getSecondPointerPosition(event)
@@ -840,6 +840,9 @@ class OrbitControls extends EventDispatcher {
     function onPointerUp (event) {
       removePointer(event)
 
+      let pointerId = null
+      let position = null
+
       switch (pointers.length) {
         case 0:
 
@@ -855,9 +858,8 @@ class OrbitControls extends EventDispatcher {
           break
 
         case 1:
-
-          const pointerId = pointers[0]
-          const position = pointerPositions[pointerId]
+          pointerId = pointers[0]
+          position = pointerPositions[pointerId]
 
           // minimal placeholder event - allows state correction on pointer-up
           onTouchStart({ pointerId, pageX: position.x, pageY: position.y })
@@ -1179,7 +1181,7 @@ class OrbitControls extends EventDispatcher {
       delete pointerPositions[event.pointerId]
 
       for (let i = 0; i < pointers.length; i++) {
-        if (pointers[i] == event.pointerId) {
+        if (pointers[i] === event.pointerId) {
           pointers.splice(i, 1)
           return
         }
@@ -1188,7 +1190,7 @@ class OrbitControls extends EventDispatcher {
 
     function isTrackingPointer (event) {
       for (let i = 0; i < pointers.length; i++) {
-        if (pointers[i] == event.pointerId) return true
+        if (pointers[i] === event.pointerId) return true
       }
 
       return false
