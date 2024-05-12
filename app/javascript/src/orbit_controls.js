@@ -73,6 +73,7 @@ class OrbitControls extends EventDispatcher {
     // Set to false to disable zooming
     this.enableZoom = true
     this.zoomSpeed = 1.0
+    this.keyZoomSpeed = 100.0
 
     // Set to false to disable rotating
     this.enableRotate = true
@@ -92,7 +93,7 @@ class OrbitControls extends EventDispatcher {
     this.autoRotateSpeed = 2.0 // 30 seconds per orbit when fps is 60
 
     // The four arrow keys
-    this.keys = { LEFT: 'ArrowLeft', UP: 'ArrowUp', RIGHT: 'ArrowRight', BOTTOM: 'ArrowDown' }
+    this.keys = { LEFT: 'ArrowLeft', UP: 'ArrowUp', RIGHT: 'ArrowRight', BOTTOM: 'ArrowDown', IN: 'Equal', OUT: 'Minus' }
 
     // Mouse buttons
     this.mouseButtons = { LEFT: MOUSE.ROTATE, MIDDLE: MOUSE.DOLLY, RIGHT: MOUSE.PAN }
@@ -663,6 +664,20 @@ class OrbitControls extends EventDispatcher {
           }
 
           needsUpdate = true
+          break
+
+        case scope.keys.IN:
+          if (scope.enableZoom) {
+            dollyIn(getZoomScale(scope.keyZoomSpeed))
+            needsUpdate = true
+          }
+          break
+
+        case scope.keys.OUT:
+          if (scope.enableZoom) {
+            dollyOut(getZoomScale(scope.keyZoomSpeed))
+            needsUpdate = true
+          }
           break
       }
 
