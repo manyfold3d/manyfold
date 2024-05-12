@@ -6,7 +6,7 @@ import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
 import { ThreeMFLoader } from 'threejs-webworker-3mf-loader'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { OrbitControls } from 'src/orbit_controls.js'
 
 import { CanvasProxy } from 'src/canvas_proxy'
 
