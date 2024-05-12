@@ -77,6 +77,7 @@ class OrbitControls extends EventDispatcher {
     // Set to false to disable rotating
     this.enableRotate = true
     this.rotateSpeed = 1.0
+    this.keyRotateFactor = 1.0
 
     // Set to false to disable panning
     this.enablePan = true
@@ -622,10 +623,10 @@ class OrbitControls extends EventDispatcher {
       switch (event.code) {
         case scope.keys.UP:
 
-          if (event.ctrlKey || event.metaKey || event.shiftKey) {
-            rotateUp(2 * Math.PI * scope.rotateSpeed / scope.domElement.clientHeight)
-          } else {
+          if (scope.enablePan && (event.ctrlKey || event.metaKey || event.shiftKey)) {
             pan(0, scope.keyPanSpeed)
+          } else {
+            rotateUp(-2 * Math.PI * scope.keyRotateFactor * scope.rotateSpeed / scope.domElement.clientHeight)
           }
 
           needsUpdate = true
@@ -633,10 +634,10 @@ class OrbitControls extends EventDispatcher {
 
         case scope.keys.BOTTOM:
 
-          if (event.ctrlKey || event.metaKey || event.shiftKey) {
-            rotateUp(-2 * Math.PI * scope.rotateSpeed / scope.domElement.clientHeight)
-          } else {
+          if (scope.enablePan && (event.ctrlKey || event.metaKey || event.shiftKey)) {
             pan(0, -scope.keyPanSpeed)
+          } else {
+            rotateUp(2 * Math.PI * scope.keyRotateFactor * scope.rotateSpeed / scope.domElement.clientHeight)
           }
 
           needsUpdate = true
@@ -644,10 +645,10 @@ class OrbitControls extends EventDispatcher {
 
         case scope.keys.LEFT:
 
-          if (event.ctrlKey || event.metaKey || event.shiftKey) {
-            rotateLeft(2 * Math.PI * scope.rotateSpeed / scope.domElement.clientHeight)
-          } else {
+          if (scope.enablePan && (event.ctrlKey || event.metaKey || event.shiftKey)) {
             pan(scope.keyPanSpeed, 0)
+          } else {
+            rotateLeft(-2 * Math.PI * scope.keyRotateFactor * scope.rotateSpeed / scope.domElement.clientHeight)
           }
 
           needsUpdate = true
@@ -655,10 +656,10 @@ class OrbitControls extends EventDispatcher {
 
         case scope.keys.RIGHT:
 
-          if (event.ctrlKey || event.metaKey || event.shiftKey) {
-            rotateLeft(-2 * Math.PI * scope.rotateSpeed / scope.domElement.clientHeight)
-          } else {
+          if (scope.enablePan && (event.ctrlKey || event.metaKey || event.shiftKey)) {
             pan(-scope.keyPanSpeed, 0)
+          } else {
+            rotateLeft(2 * Math.PI * scope.keyRotateFactor * scope.rotateSpeed / scope.domElement.clientHeight)
           }
 
           needsUpdate = true
@@ -1038,7 +1039,7 @@ class OrbitControls extends EventDispatcher {
     }
 
     function onKeyDown (event) {
-      if (scope.enabled === false || scope.enablePan === false) return
+      if (scope.enabled === false) return
 
       handleKeyDown(event)
     }
