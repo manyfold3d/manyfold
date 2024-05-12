@@ -50,8 +50,8 @@ export class OffscreenRenderer {
     this.controls = new OrbitControls(this.camera, this.canvas as any)
     this.controls.enableDamping = true
     this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true')
-    this.controls.keyPanSpeed = 35;
-    this.controls.keyRotateFactor = 10;
+    this.controls.keyPanSpeed = 35
+    this.controls.keyRotateFactor = 10
     this.controls.listenToKeyEvents(this.canvas as unknown as HTMLElement)
     // Add lighting
     const gridSizeX = parseInt(this.settings.gridSizeX ?? '10', 10)
