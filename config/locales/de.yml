@@ -179,6 +179,12 @@ de:
     demo_mode: Diese Instanz befindet sich im Demo-Modus. Sie können keine Modelle hinzufügen oder entfernen, aber alles andere ist möglich.
     filters_card:
       missing_tags: Fehlende Tags
+      remove_collection_filter:
+      remove_creator_filter:
+      remove_library_filter:
+      remove_missing_tag_filter:
+      remove_search_filter:
+      remove_tag_filter:
       search: Suche
       title: Filter
       unknown: Unbekannt
@@ -198,8 +204,10 @@ de:
     links_form:
       add: Füge einen Link hinzu
     navbar:
+      account:
       activity:
       check_existing: Vorhandene Modelle prüfen
+      home:
       log_in:
       log_out:
       navbar:
@@ -284,10 +292,13 @@ de:
     MIT: MIT
   model_component:
     delete_button:
+      label:
       text: Löschen
     edit_button:
+      label:
       text: Bearbeiten
     open_button:
+      label:
       text: Öffnen
   renderer:
     errors:
