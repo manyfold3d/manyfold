@@ -18,7 +18,7 @@
       <div class="card-title"><%= collection.name.titleize %></div>
       <div class="col-auto">
         <% if collection.collection %>
-          <%= icon "collection", t("activerecord.models.collection") %>
+          <%= icon "collection", collection.model_name.human %>
           <%= link_to collection.collection.name, (@filters || {}).merge(collection: collection.collection.id) %><br>
         <% end %>
         <% if collection.caption %>
