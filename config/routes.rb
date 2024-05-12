@@ -50,4 +50,5 @@ Rails.application.routes.draw do
   resources :creators
   resources :collections
   resources :problems, only: [:index, :update]
+  resources :health, only: [:index]
 end
