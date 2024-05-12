@@ -58,7 +58,7 @@ pl:
         title: Siatka nierozmaita
     severities:
       danger: Niebezpieczeństwo
-      info: Informacje
+      info: Informacja
       silent: Ignorowany
       warning: Uwaga
     update:

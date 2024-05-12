@@ -179,6 +179,12 @@ pl:
     demo_mode: Ta instancja jest w trybie demonstracyjnym. Nie możesz dodawać ani usuwać modeli, ale możesz robić wszystko inne.
     filters_card:
       missing_tags: Brakujące tagi
+      remove_collection_filter: Usuń filtr kolekcji
+      remove_creator_filter: Usuń filtr twórcy
+      remove_library_filter: Usuń filtr biblioteki
+      remove_missing_tag_filter:
+      remove_search_filter: Usuń filtr wyszukiwania
+      remove_tag_filter: Usuń filtr taga
       search: Wyszukaj
       title: Filtry
       unknown: Nieznany
@@ -198,8 +204,10 @@ pl:
     links_form:
       add: dodaj kolejny link
     navbar:
+      account: Konto
       activity: Aktywność
       check_existing: Sprawdź istniejące modele
+      home: Strona główna
       log_in: Zaloguj się
       log_out: Wyloguj się
       navbar:
@@ -284,18 +292,21 @@ pl:
     MIT: MIT
   model_component:
     delete_button:
+      label: Usuń model %{name}
       text: Usuń
     edit_button:
+      label: Edytuj model %{name}
       text: Edytuj
     open_button:
+      label: Otwórz model %{name}
       text: Otwórz
   renderer:
     errors:
       canvas: 'Nie można znaleźć canvasu #webgl!'
       load: Błąd wczytywania
       webglrenderer: Nie można utworzyć renderera!
-    load: Wczytaj
-    processing:
+    load: Wczytywanie
+    processing: Procesowanie siatki
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things

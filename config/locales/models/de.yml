@@ -18,6 +18,7 @@ de:
       success: Modell gelöscht!
     file:
       open_button:
+        label:
         text: Öffnen
       set_as_preview: Als Vorschau setzen
     form:
@@ -28,7 +29,10 @@ de:
       edit: Modell bearbeiten
     image_carousel:
       next: Weiter
+      play_pause:
       previous: Zurück
+      select_slide:
+      slide_label:
     index:
       actions_heading: Aktionen
       bulk_edit: Multibearbeitung

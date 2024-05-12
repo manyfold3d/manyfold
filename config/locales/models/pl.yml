@@ -18,6 +18,7 @@ pl:
       success: Model usunięty!
     file:
       open_button:
+        label: Wyświetl szczegóły %{name}
         text: Otwórz
       set_as_preview: Ustaw jako podgląd
     form:
@@ -28,7 +29,10 @@ pl:
       edit: Edytuj Model
     image_carousel:
       next: Następna
+      play_pause: Odtwórz lub wstrzymaj obrazy
       previous: Poprzednia
+      select_slide: Wybierz obraz do wyświetlenia
+      slide_label: "%{name} (%{index} z %{count})"
     index:
       actions_heading: Akcje
       bulk_edit: Edycja zbiorcza
@@ -62,7 +66,7 @@ pl:
           summary_html: Folder i pliki tworzące ten model zostaną przeniesione z:<br> <code>%{from}</code><br> do<br> <code>%{to}</code>
           'yes': Tak, przenieś pliki
       path: Ścieżka
-      rescan: Ponowne przeskanuj pliki
+      rescan: Ponownie przeskanuj pliki
       search: Wyszukaj w Internecie modele o tej samej nazwie
       tags: Tagi
     update:
