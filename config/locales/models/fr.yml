@@ -7,7 +7,7 @@ fr:
       form_subtitle: 'Sélectionnez les modifications à apporter :'
       needs_organizing: Besoin d'organisation
       remove_tags: Supprimer les étiquettes
-      select:
+      select: Sélectionner le modèle '%{name}'
       select_all: Sélectionner tous les modèles
       submit: Mettre à jour les modèles sélectionnés
       title:
@@ -18,6 +18,7 @@ fr:
       success: Modèle supprimé !
     file:
       open_button:
+        label:
         text: Ouvrir
       set_as_preview: Définir comme aperçu
     form:
@@ -28,7 +29,10 @@ fr:
       edit: Modifier le modèle
     image_carousel:
       next: Suivant
+      play_pause:
       previous: Précédent
+      select_slide:
+      slide_label:
     index:
       actions_heading: Actions
       bulk_edit: Edition en bloc
