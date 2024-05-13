@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/manyfold3d/mittsu.git
-  revision: 43463093085020dc81d9585919ee37b8fe87e5cf
+  revision: 050afee4cbd326826c08219afbe84c27437cd0f3
   ref: manyfold
   specs:
     mittsu (0.4.0)
@@ -174,7 +174,6 @@ GEM
     faker (3.3.1)
       i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
-    ffi (1.16.3-x64-mingw-ucrt)
     ffi-libarchive (1.1.14)
       ffi (~> 1.0)
     flipper (1.3.0)
