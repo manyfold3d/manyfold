@@ -1,6 +1,8 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  get ".well-known/change-password", to: redirect("/users/edit")
+
   get "problems/index"
   devise_for :users, controllers: {
     passwords: "users/passwords",
