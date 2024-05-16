@@ -3,3 +3,8 @@
   - scan
   - default
   - analysis
+:scheduler:
+  :schedule:
+    usage:
+      every: '1d'
+      class: UsageReportingJob

@@ -134,3 +134,5 @@ gem "bullet", "~> 7.1", group: :development
 gem "logstash-event", "~> 1.2"
 
 gem "climate_control", "~> 1.2", group: :test
+
+gem "sidekiq-scheduler", "~> 5.0"
