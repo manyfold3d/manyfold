@@ -1,5 +1,4 @@
 class UsageReportingJob < ApplicationJob
-
   def perform
     # If there's no ID, don't send
     return unless SiteSettings.anonymous_usage_id
@@ -11,10 +10,9 @@ class UsageReportingJob < ApplicationJob
     Rails.logger.info("Sending anonymous usage report to #{uri}: #{data}")
     # Send
     headers = {
-      'Content-Type': 'application/json',
-      'User-Agent': 'Manyfold::UsageReportingJob'
+      "Content-Type": "application/json",
+      "User-Agent": "Manyfold::UsageReportingJob"
     }
     Net::HTTP.post(uri, data, headers)
   end
-
 end
