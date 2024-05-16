@@ -132,6 +132,7 @@ GEM
     byebug (11.1.3)
     childprocess (5.0.0)
     chunky_png (1.4.0)
+    climate_control (1.2.0)
     cocoon (1.2.15)
     coderay (1.1.3)
     concurrent-ruby (1.2.3)
@@ -169,6 +170,8 @@ GEM
       rubocop
       smart_properties
     erubi (1.12.0)
+    et-orbi (1.2.11)
+      tzinfo
     factory_bot (6.4.6)
       activesupport (>= 5.0.0)
     faker (3.3.1)
@@ -186,6 +189,9 @@ GEM
       actionpack (>= 6.0.0)
     formtastic_i18n (0.7.0)
     forwardable (1.3.3)
+    fugit (1.11.0)
+      et-orbi (~> 1, >= 1.2.11)
+      raabro (~> 1.4)
     gettext (3.4.9)
       erubi
       locale (>= 2.0.5)
@@ -333,6 +339,7 @@ GEM
       nio4r (~> 2.0)
     pundit (2.3.2)
       activesupport (>= 3.0.0)
+    raabro (1.4.0)
     racc (1.7.3)
     rack (2.2.9)
     rack-contrib (2.4.0)
@@ -456,6 +463,8 @@ GEM
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    rufus-scheduler (3.9.1)
+      fugit (~> 1.1, >= 1.1.6)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -476,6 +485,10 @@ GEM
       redis-client (>= 0.19.0)
     sidekiq-failures (1.0.4)
       sidekiq (>= 4.0.0)
+    sidekiq-scheduler (5.0.3)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 6, < 8)
+      tilt (>= 1.4.0)
     simple_po_parser (1.1.6)
     simplecov (0.22.0)
       docile (~> 1.1)
@@ -567,6 +580,7 @@ DEPENDENCIES
   brakeman (~> 6.1)
   bullet (~> 7.1)
   byebug
+  climate_control (~> 1.2)
   cocoon (~> 1.2)
   cssbundling-rails (~> 1.4)
   data_migrate!
@@ -615,6 +629,7 @@ DEPENDENCIES
   scout_apm
   sidekiq (~> 7.2)
   sidekiq-failures (~> 1.0)
+  sidekiq-scheduler (~> 5.0)
   simplecov (~> 0.22.0)
   spdx (~> 4.1)
   spring
