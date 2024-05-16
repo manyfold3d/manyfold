@@ -24,6 +24,7 @@ class SettingsController < ApplicationController
       update_folder_settings(params[:folders])
       update_tagging_settings(params[:model_tags])
       update_analysis_settings(params[:analysis])
+      update_usage_settings(params[:usage])
     end
     redirect_to user_settings_path(@user), notice: t(".success")
   end
@@ -101,6 +102,15 @@ class SettingsController < ApplicationController
   def update_analysis_settings(settings)
     return unless settings
     SiteSettings.analyse_manifold = settings[:manifold] == "1"
+  end
+
+  def update_usage_settings(settings)
+    return unless settings
+    if settings[:report] == "1"
+      SiteSettings.anonymous_usage_id ||= SecureRandom.uuid
+    else
+      SiteSettings.anonymous_usage_id = nil
+    end
   end
 
   def get_user
