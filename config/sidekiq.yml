@@ -4,7 +4,5 @@
   - default
   - analysis
 :scheduler:
-  :schedule:
-    usage:
-      every: '1d'
-      class: UsageReportingJob
+  :dynamic: true
+  :dynamic_every: 15s

@@ -106,11 +106,7 @@ class SettingsController < ApplicationController
 
   def update_usage_settings(settings)
     return unless settings
-    if settings[:report] == "1"
-      SiteSettings.anonymous_usage_id ||= SecureRandom.uuid
-    else
-      SiteSettings.anonymous_usage_id = nil
-    end
+    (settings[:report] == "1") ? UsageReport.enable! : UsageReport.disable!
   end
 
   def get_user

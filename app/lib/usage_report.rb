@@ -12,4 +12,14 @@ module UsageReport
       end
     end
   end
+
+  def self.enable!
+    SiteSettings.anonymous_usage_id ||= SecureRandom.uuid
+    Sidekiq.set_schedule("usage", {every: "1d", class: "UsageReportingJob"})
+  end
+
+  def self.disable!
+    SiteSettings.anonymous_usage_id = nil
+    Sidekiq.remove_schedule("usage")
+  end
 end
