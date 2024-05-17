@@ -1,3 +1,5 @@
+require "net/http"
+
 class UsageReportingJob < ApplicationJob
   def perform
     # If there's no ID, don't send
