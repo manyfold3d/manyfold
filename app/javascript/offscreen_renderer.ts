@@ -6,7 +6,7 @@ import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
 import { ThreeMFLoader } from 'threejs-webworker-3mf-loader'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { OrbitControls } from 'src/orbit_controls.js'
 
 import { CanvasProxy } from 'src/canvas_proxy'
 
@@ -50,6 +50,8 @@ export class OffscreenRenderer {
     this.controls = new OrbitControls(this.camera, this.canvas as any)
     this.controls.enableDamping = true
     this.controls.enablePan = this.controls.enableZoom = (this.settings.enablePanZoom === 'true')
+    this.controls.keyPanSpeed = 35
+    this.controls.keyRotateFactor = 10
     this.controls.listenToKeyEvents(this.canvas as unknown as HTMLElement)
     // Add lighting
     const gridSizeX = parseInt(this.settings.gridSizeX ?? '10', 10)

@@ -3,6 +3,12 @@ de:
   creators:
     create:
       success: Neue Erstellerdetails gespeichert.
+    creator:
+      edit_button:
+        label:
+        text: Bearbeiten
+      models_button:
+        label:
     destroy:
       success: Ersteller gelöscht!
     general:

@@ -2,6 +2,13 @@
 de:
   collections:
     collection:
+      collections_button:
+        label:
+      edit_button:
+        label:
+        text: Bearbeiten
+      models_button:
+        label:
       no_preview: keine Vorschau verfügbar
     create:
       success: Neue Kollektionsdetails gespeichert.

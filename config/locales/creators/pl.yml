@@ -3,6 +3,12 @@ pl:
   creators:
     create:
       success: Szczegóły nowego twórcy zostały zapisane.
+    creator:
+      edit_button:
+        label: Edytuj twórcę %{name}
+        text: Edytuj
+      models_button:
+        label: Pokaż modele według %{name}
     destroy:
       success: Twórca usunięty!
     general:

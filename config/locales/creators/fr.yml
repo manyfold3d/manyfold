@@ -3,6 +3,12 @@ fr:
   creators:
     create:
       success: Détails du nouveau créateur sauvegardés.
+    creator:
+      edit_button:
+        label:
+        text: Modifier
+      models_button:
+        label:
     destroy:
       success: Créateur supprimé !
     general:
@@ -12,8 +18,8 @@ fr:
       unknown: Inconnu
     index:
       actions_heading: Actions
-      skip_creators:
-      skip_tags:
+      skip_creators: Sauter la liste des créateurs
+      skip_tags: Sauter la liste des balises
     unassigned:
       caption: Tous les modèles sans créateur connu.
       name: Non attribué
