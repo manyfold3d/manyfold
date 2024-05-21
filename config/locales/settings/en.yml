@@ -141,3 +141,11 @@ en:
         label: Create tags from model directory name
     update:
       success: Settings saved.
+    usage_settings:
+      description_html: If you enable usage tracking, the following information will be sent once a day to <code>%{endpoint}</code>. The <code>id</code> is randomly generated when you enable tracking.
+      heading: Anonymous Usage Tracking
+      report_usage:
+        label: Enable anonymous usage tracking
+      summary: Let the devs know you're running Manyfold.
+      use_of_data: No other information is sent or stored, and the devs will never use the information for any purpose other than measuring how many instances of Manyfold are running, and what version they are.
+      verification_html: If you want to verify what we send, you can change the <code>USAGE_REPORTING_URL</code> environment variable and send the data somewhere you can inspect it. You can also see exactly what is sent in the log.

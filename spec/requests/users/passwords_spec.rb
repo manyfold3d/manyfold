@@ -1,10 +1,11 @@
 require "rails_helper"
 
-#  new_user_password GET    /users/password/new(.:format)
-# edit_user_password GET    /users/password/edit(.:format)
-#      user_password PATCH  /users/password(.:format)
-#                    PUT    /users/password(.:format)
-#                    POST   /users/password(.:format)
+# .well-known/change-password GET    /.well-known/change-password
+#  new_user_password          GET    /users/password/new(.:format)
+# edit_user_password          GET    /users/password/edit(.:format)
+#      user_password          PATCH  /users/password(.:format)
+#                             PUT    /users/password(.:format)
+#                             POST   /users/password(.:format)
 
 RSpec.describe "Users::Passwords" do
   let(:new_password) { Faker::Internet.password min_length: 6, mix_case: true, special_characters: true }
@@ -27,6 +28,15 @@ RSpec.describe "Users::Passwords" do
       }
     }
   }
+
+  context "when signed out" do
+    describe "GET /.well-known/change-password" do
+      it "redirects to password change" do
+        get "/.well-known/change-password"
+        expect(response).to redirect_to("/users/edit")
+      end
+    end
+  end
 
   context "when in single user mode" do
     context "when signed out" do

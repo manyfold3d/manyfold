@@ -1,6 +1,9 @@
 require "sidekiq/web"
+require "sidekiq-scheduler/web"
 
 Rails.application.routes.draw do
+  get ".well-known/change-password", to: redirect("/users/edit")
+
   get "problems/index"
   devise_for :users, controllers: {
     passwords: "users/passwords",
@@ -50,4 +53,5 @@ Rails.application.routes.draw do
   resources :creators
   resources :collections
   resources :problems, only: [:index, :update]
+  resources :health, only: [:index]
 end
