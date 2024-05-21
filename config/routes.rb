@@ -1,4 +1,5 @@
 require "sidekiq/web"
+require "federails"
 
 Rails.application.routes.draw do
   get "problems/index"
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => "/sidekiq"
     resources :activity
   end
+
+  mount Federails::Engine => "/"
 
   resources :users, only: [] do
     resource :settings, only: [:show, :update]

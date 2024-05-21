@@ -132,3 +132,5 @@ gem "i18n_data", "~> 0.17.1"
 gem "bullet", "~> 7.1", group: :development
 
 gem "logstash-event", "~> 1.2"
+
+gem "federails", git: "https://gitlab.com/experimentslabs/federails.git"

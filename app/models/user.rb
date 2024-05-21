@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Federails::User
   rolify
   devise :database_authenticatable, :registerable, :secure_validatable, :rememberable, :recoverable
 
