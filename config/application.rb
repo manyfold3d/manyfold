@@ -61,6 +61,10 @@ module Manyfold
       user_name: ENV.fetch("SMTP_USERNAME", nil),
       password: ENV.fetch("SMTP_PASSWORD", nil)
     }.compact
+
+    config.upstream_repo = ENV.fetch("UPSTREAM_REPO", "https://github.com/manyfold3d/manyfold.git")
+    config.app_version = ENV.fetch("APP_VERSION", "unknown")
+    config.git_sha = ENV.fetch("GIT_SHA", "main")
   end
 end
 
