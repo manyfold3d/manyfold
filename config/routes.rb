@@ -1,5 +1,6 @@
 require "sidekiq/web"
 require "sidekiq-scheduler/web"
+require "federails"
 
 Rails.application.routes.draw do
   get ".well-known/change-password", to: redirect("/users/edit")
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => "/sidekiq"
     resources :activity
   end
+
+  mount Federails::Engine => "/"
 
   resources :users, only: [] do
     resource :settings, only: [:show, :update]

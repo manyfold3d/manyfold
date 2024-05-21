@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_03_160732) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_27_113217) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -56,6 +56,46 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_03_160732) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
+  create_table "federails_activities", force: :cascade do |t|
+    t.string "entity_type", null: false
+    t.integer "entity_id", null: false
+    t.string "action", null: false
+    t.integer "actor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actor_id"], name: "index_federails_activities_on_actor_id"
+    t.index ["entity_type", "entity_id"], name: "index_federails_activities_on_entity"
+  end
+
+  create_table "federails_actors", force: :cascade do |t|
+    t.string "name"
+    t.string "federated_url"
+    t.string "username"
+    t.string "server"
+    t.string "inbox_url"
+    t.string "outbox_url"
+    t.string "followers_url"
+    t.string "followings_url"
+    t.string "profile_url"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["federated_url"], name: "index_federails_actors_on_federated_url", unique: true
+    t.index ["user_id"], name: "index_federails_actors_on_user_id", unique: true
+  end
+
+  create_table "federails_followings", force: :cascade do |t|
+    t.integer "actor_id", null: false
+    t.integer "target_actor_id", null: false
+    t.integer "status", default: 0
+    t.string "federated_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actor_id", "target_actor_id"], name: "index_federails_followings_on_actor_id_and_target_actor_id", unique: true
+    t.index ["actor_id"], name: "index_federails_followings_on_actor_id"
+    t.index ["target_actor_id"], name: "index_federails_followings_on_target_actor_id"
+  end
+
   create_table "flipper_features", force: :cascade do |t|
     t.string "key", null: false
     t.datetime "created_at", null: false
@@ -99,7 +139,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_03_160732) do
   end
 
   create_table "model_files", force: :cascade do |t|
-    t.string "filename"
     t.integer "model_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -108,8 +147,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_03_160732) do
     t.string "digest"
     t.text "notes"
     t.text "caption"
-    t.bigint "size"
     t.integer "presupported_version_id"
+    t.string "filename"
+    t.integer "size"
     t.json "attachment_data"
     t.index ["digest"], name: "index_model_files_on_digest"
     t.index ["filename", "model_id"], name: "index_model_files_on_filename_and_model_id", unique: true
@@ -203,9 +243,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_03_160732) do
     t.datetime "updated_at", null: false
     t.string "username", null: false
     t.json "pagination_settings", default: {"models"=>true, "creators"=>true, "collections"=>true, "per_page"=>12}
-    t.json "renderer_settings", default: {"grid_width"=>200, "grid_depth"=>200, "show_grid"=>true, "enable_pan_zoom"=>false, "background_colour"=>"#000000", "object_colour"=>"#cccccc", "render_style"=>"normals"}
+    t.json "renderer_settings", default: {"grid_width"=>200, "grid_depth"=>200}
     t.json "tag_cloud_settings", default: {"threshold"=>0, "heatmap"=>true, "keypair"=>true, "sorting"=>"frequency", "hide_unrelated"=>true}
-    t.json "problem_settings", default: {"missing"=>"danger", "empty"=>"info", "nesting"=>"warning", "inefficient"=>"info", "duplicate"=>"warning", "no_image"=>"silent", "no_3d_model"=>"silent", "non_manifold"=>"warning", "inside_out"=>"warning"}
+    t.json "problem_settings", default: {"missing"=>"danger", "empty"=>"info", "nesting"=>"warning", "inefficient"=>"info", "duplicate"=>"warning", "no_image"=>"silent", "no_3d_model"=>"silent"}
     t.json "file_list_settings", default: {"hide_presupported_versions"=>true}
     t.string "reset_password_token"
     t.datetime "remember_created_at"
@@ -227,6 +267,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_03_160732) do
   end
 
   add_foreign_key "collections", "collections"
+  add_foreign_key "federails_activities", "federails_actors", column: "actor_id"
+  add_foreign_key "federails_actors", "users"
+  add_foreign_key "federails_followings", "federails_actors", column: "actor_id"
+  add_foreign_key "federails_followings", "federails_actors", column: "target_actor_id"
   add_foreign_key "model_files", "model_files", column: "presupported_version_id"
   add_foreign_key "model_files", "models"
   add_foreign_key "models", "collections"
