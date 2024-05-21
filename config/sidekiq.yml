@@ -3,3 +3,6 @@
   - scan
   - default
   - analysis
+:scheduler:
+  :dynamic: true
+  :dynamic_every: 15s

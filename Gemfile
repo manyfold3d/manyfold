@@ -39,7 +39,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "sqlite3", "~> 1.7"
   gem "rspec-rails"
-  gem "standard", "~> 1.35.1"
+  gem "standard", "~> 1.36.0"
   gem "factory_bot"
   gem "faker", "~> 3.3"
   gem "guard", "~> 2.18"
@@ -48,7 +48,7 @@ group :development, :test do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-i18n", require: false
-  gem "rubocop-performance", "~> 1.20", require: false
+  gem "rubocop-performance", "~> 1.21", require: false
   gem "i18n-tasks", "~> 1.0"
   gem "simplecov", "~> 0.22.0", require: false
   gem "sys-filesystem", "~> 1.4"
@@ -132,5 +132,10 @@ gem "i18n_data", "~> 0.17.1"
 gem "bullet", "~> 7.1", group: :development
 
 gem "logstash-event", "~> 1.2"
+
+
+gem "climate_control", "~> 1.2", group: :test
+
+gem "sidekiq-scheduler", github: "manyfold3d/sidekiq-scheduler", branch: "fix-dynamic-schedule-load-on-boot"
 
 gem "federails", git: "https://gitlab.com/experimentslabs/federails.git"
