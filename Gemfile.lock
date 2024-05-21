@@ -20,6 +20,16 @@ GIT
       rubyzip
 
 GIT
+  remote: https://github.com/manyfold3d/sidekiq-scheduler.git
+  revision: 8eb248143c89fae273d66a57b41b474b7006f2bd
+  branch: fix-dynamic-schedule-load-on-boot
+  specs:
+    sidekiq-scheduler (5.0.3)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 6, < 8)
+      tilt (>= 1.4.0, < 3)
+
+GIT
   remote: https://gitlab.com/experimentslabs/federails.git
   revision: 98d42ee045e943c6e3648325830e6c0e18f0cd24
   specs:
@@ -31,16 +41,6 @@ GIT
       kaminari (>= 1.2.0)
       pundit (>= 2.3.0)
       rails (>= 7.0.4)
-
-GIT
-  remote: https://github.com/manyfold3d/sidekiq-scheduler.git
-  revision: 8eb248143c89fae273d66a57b41b474b7006f2bd
-  branch: fix-dynamic-schedule-load-on-boot
-  specs:
-    sidekiq-scheduler (5.0.3)
-      rufus-scheduler (~> 3.2)
-      sidekiq (>= 6, < 8)
-      tilt (>= 1.4.0, < 3)
 
 GEM
   remote: https://rubygems.org/
