@@ -139,3 +139,4 @@ gem "climate_control", "~> 1.2", group: :test
 gem "sidekiq-scheduler", github: "manyfold3d/sidekiq-scheduler", branch: "fix-dynamic-schedule-load-on-boot"
 
 gem "sys-filesystem", "~> 1.5"
+gem "shrine", "~> 3.6"
