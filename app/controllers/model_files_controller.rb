@@ -75,9 +75,8 @@ class ModelFilesController < ApplicationController
   private
 
   def send_file_content(disposition: :attachment)
-    filename = File.join(@library.path, @model.path, @file.filename)
-    response.headers["Content-Length"] = File.size(filename).to_s
-    send_file filename, disposition: disposition, type: @file.extension.to_sym
+    response.headers["Content-Length"] = @file.size
+    send_file @file.pathname, disposition: disposition, type: @file.mime_type
   rescue Errno::ENOENT
     head :internal_server_error
   end
