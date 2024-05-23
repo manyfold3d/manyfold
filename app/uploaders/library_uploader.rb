@@ -1,7 +1,7 @@
 class LibraryUploader < Shrine
   plugin :dynamic_storage
 
-  storage /store_(\d)/ do |m|
+  storage(/store_(\d)/) do |m|
     Library.find(m[1]).storage
   end
 
@@ -15,5 +15,4 @@ class LibraryUploader < Shrine
     return super unless record
     File.join(record.model.path, record.filename)
   end
-
 end

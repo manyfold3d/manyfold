@@ -1,4 +1,6 @@
 class ModelFile < ApplicationRecord
+  include LibraryUploader::Attachment(:attachment)
+
   extend Memoist
 
   belongs_to :model
@@ -27,7 +29,15 @@ class ModelFile < ApplicationRecord
     withsupports
   ]
 
+  def size
+    attachment.size
+  rescue
+    attributes["size"]
+  end
+
   def extension
+    attachment.extension
+  rescue
     File.extname(filename).delete(".").downcase
   end
 
