@@ -8,6 +8,24 @@ default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS", 16) %>
   timeout: 5000
+  # Taken from https://fractaledmind.github.io/2023/09/07/enhancing-rails-sqlite-fine-tuning/
+  pragmas:
+    # level of database durability, 2 = "FULL" (sync on every write), other values include 1 = "NORMAL" (sync every 1000 written pages) and 0 = "NONE"
+    # https://www.sqlite.org/pragma.html#pragma_synchronous
+    synchronous: "NORMAL"
+    # Journal mode WAL allows for greater concurrency (many readers + one writer)
+    # https://www.sqlite.org/pragma.html#pragma_journal_mode
+    journal_mode: "WAL"
+    # impose a limit on the WAL file to prevent unlimited growth (with a negative impact on read performance as well)
+    # https://www.sqlite.org/pragma.html#pragma_journal_size_limit
+    journal_size_limit: <%= 64.megabytes %>
+    # set the global memory map so all processes can share data
+    # https://www.sqlite.org/pragma.html#pragma_mmap_size
+    # https://www.sqlite.org/mmap.html
+    mmap_size: <%= 128.megabytes %>
+    # increase the local connection cache to 2000 pages
+    # https://www.sqlite.org/pragma.html#pragma_cache_size
+    cache_size: 2000
 
 development:
   <<: *default
