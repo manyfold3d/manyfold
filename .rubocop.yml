@@ -2,6 +2,7 @@ require:
   - standard
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-rspec_rails
   - rubocop-i18n
   - rubocop-performance
   - rubocop-factory_bot
