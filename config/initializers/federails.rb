@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Federails.configure do |conf|
-  conf.app_name = proc { I18n.t("application.title") }
+  conf.app_name = "Manyfold"
 
   conf.app_version = Rails.application.config.app_version
 
