@@ -1,3 +1,5 @@
+require "shrine/storage/memory"
+
 class Library < ApplicationRecord
   has_many :models, dependent: :destroy
   has_many :model_files, through: :models
@@ -5,6 +7,7 @@ class Library < ApplicationRecord
   serialize :tag_regex, type: Array
   after_initialize :init
   before_validation :ensure_path_case_is_correct
+  after_save :register_storage
 
   validates :path, presence: true, uniqueness: true, existing_path: true
 
@@ -33,6 +36,19 @@ class Library < ApplicationRecord
   def free_space
     stat = Sys::Filesystem.stat(path)
     stat.bytes_available
+  end
+
+  def storage_key
+    "library_#{id}"
+  end
+
+  def storage
+    return Shrine::Storage::Memory.new if Rails.env.test?
+    Shrine::Storage::FileSystem.new(path)
+  end
+
+  def register_storage
+    Shrine.storages[storage_key] = storage
   end
 
   private
