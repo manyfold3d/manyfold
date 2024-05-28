@@ -7,8 +7,8 @@ module UsageReport
     Jbuilder.encode do |report|
       report.id SiteSettings.anonymous_usage_id
       report.version do |version|
-        version.app ENV.fetch("APP_VERSION", Rails.application.config.app_version)
-        version.sha ENV.fetch("GIT_SHA", Rails.application.config.git_sha)
+        version.app Rails.application.config.app_version
+        version.sha Rails.application.config.git_sha
       end
     end
   end
