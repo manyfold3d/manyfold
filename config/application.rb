@@ -63,7 +63,7 @@ module Manyfold
     }.compact
 
     config.upstream_repo = ENV.fetch("UPSTREAM_REPO", "https://github.com/manyfold3d/manyfold")
-    config.app_version = ENV.fetch("APP_VERSION", "unknown")
+    config.app_version = ENV.fetch("APP_VERSION", "unknown").split(":")[-1]
     config.git_sha = ENV.fetch("GIT_SHA", "main")
   end
 end
