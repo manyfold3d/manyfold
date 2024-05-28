@@ -10,7 +10,7 @@
         <li class="mb-2"><%= t ".open_source_html" %></li>
         <li class="mb-2"><%= t ".version" %>:
           <%= link_to "#{ENV.fetch("APP_VERSION", "unknown").split(":")[-1]} (#{ENV.fetch("GIT_SHA", "main")[0, 7]})",
-                "https://github.com/manyfold3d/manyfold/tree/#{ENV.fetch("GIT_SHA", "main")}", target: "_blank" %>
+                "https://github.com/manyfold3d/manyfold/tree/#{ENV.fetch("GIT_SHA", "main")}", target: "_blank", rel: "noopener" %>
         </li>
       </ul>
     </div>
