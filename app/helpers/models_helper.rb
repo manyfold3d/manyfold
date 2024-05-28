@@ -1,11 +1,22 @@
 module ModelsHelper
   def group(files)
-    groups = files.group_by { |i| i.filename.split(/[\ _\-:.]/)[0] }
-    ungrouped = []
-    groups.each_pair do |group, p|
-      ungrouped << groups.delete(group)[0] if p.count == 1
+    sections = {}
+    min_section_size = 2
+    min_prefix_length = 3
+    names = files.map(&:basename)
+    slice = names.map(&:length).max
+    while slice > min_prefix_length
+      slice -= 1
+      candidates = names.map { |x| x.slice(0, slice) }
+      groups = candidates.group_by { |x| x }
+      ready = groups.select { |k, v| v.count >= min_section_size }.map(&:first)
+      ready.each do |r|
+        names.reject! { |x| x.starts_with? r }
+        sections[r], files = files.partition { |x| x.basename.starts_with? r }
+      end
     end
-    groups.merge(nil => ungrouped)
+    # Sort and include empty set
+    { nil => files }.merge sections.sort_by {|k, v| k }.to_h
   end
 
   def status_badges(model)
