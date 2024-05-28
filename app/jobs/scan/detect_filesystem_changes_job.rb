@@ -23,7 +23,7 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
   def perform(library_id)
     library = Library.find(library_id)
     return if library.nil?
-    return if Problem.create_or_clear(library, :missing, !File.exist?(library.path))
+    return if Problem.create_or_clear(library, :missing, !library.exist?)
     # Make a list of changed filenames using set XOR
     status[:step] = "jobs.scan.detect_filesystem_changes.building_filename_list" # i18n-tasks-use t('jobs.scan.detect_filesystem_changes.building_filename_list')
     changes = (known_filenames(library).to_set ^ filenames_on_disk(library)).to_a

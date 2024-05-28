@@ -42,7 +42,7 @@ RSpec.describe Analysis::AnalyseModelFileJob do
 
     it "detects ASCII STL files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       allow(file).to receive(:extension).and_return("stl")
-      allow(File).to receive(:read).with(file.pathname, 6).once.and_return("solid ")
+      allow(File).to receive(:read).with(file.absolute_path, 6).once.and_return("solid ")
       expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
       expect(Problem.first.category).to eq "inefficient"
       expect(Problem.first.note).to eq "ASCII STL"
@@ -57,7 +57,7 @@ RSpec.describe Analysis::AnalyseModelFileJob do
 
     it "detects ASCII PLY files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       allow(file).to receive(:extension).and_return("ply")
-      allow(File).to receive(:read).with(file.pathname, 16).once.and_return("ply\rformat ascii")
+      allow(File).to receive(:read).with(file.absolute_path, 16).once.and_return("ply\rformat ascii")
       expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
       expect(Problem.first.category).to eq "inefficient"
       expect(Problem.first.note).to eq "ASCII PLY"

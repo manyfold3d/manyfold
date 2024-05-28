@@ -42,17 +42,17 @@ RSpec.describe Analysis::FileConversionJob do
     end
 
     it "avoids filenames that already exist" do
-      allow(File).to receive(:exist?).with(file.pathname.gsub(".stl", ".3mf")).and_return(true).once
-      allow(File).to receive(:exist?).with(file.pathname.gsub(".stl", "-1.3mf")).and_return(true).once
-      allow(File).to receive(:exist?).with(file.pathname.gsub(".stl", "-2.3mf")).and_return(false).once
+      allow(File).to receive(:exist?).with(file.absolute_path.gsub(".stl", ".3mf")).and_return(true).once
+      allow(File).to receive(:exist?).with(file.absolute_path.gsub(".stl", "-1.3mf")).and_return(true).once
+      allow(File).to receive(:exist?).with(file.absolute_path.gsub(".stl", "-2.3mf")).and_return(false).once
       described_class.perform_now(file.id, :threemf)
       expect(ModelFile.where.not(id: file.id).first.filename).to eq "files/awesome-2.3mf"
     end
 
     it "creates an actual 3MF file on disk" do
       described_class.perform_now(file.id, :threemf)
-      pathname = ModelFile.where.not(id: file.id).first.pathname
-      expect(File.exist?(pathname)).to be true
+      absolute_path = ModelFile.where.not(id: file.id).first.absolute_path
+      expect(File.exist?(absolute_path)).to be true
     end
 
     it "does not remove the original file" do

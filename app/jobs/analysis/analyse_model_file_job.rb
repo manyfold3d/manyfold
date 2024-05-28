@@ -7,7 +7,7 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
     file = ModelFile.find(file_id)
     # Don't run analysis if the file is missing
     # The Problem is raised elsewhere.
-    return if !File.exist?(file.absolute_path)
+    return if !file.exist?
     # If the file is modified, or we're lacking metadata
     status[:step] = "jobs.analysis.analyse_model_file.file_statistics" # i18n-tasks-use t('jobs.analysis.analyse_model_file.file_statistics')
     if File.mtime(file.absolute_path) > file.updated_at || file.digest.nil? || file.size.nil?

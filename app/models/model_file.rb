@@ -65,6 +65,10 @@ class ModelFile < ApplicationRecord
     File.join(model.absolute_path, filename)
   end
 
+  def exist?
+    File.exist?(absolute_path)
+  end
+
   def calculate_digest
     Digest::SHA512.new.file(absolute_path).hexdigest
   rescue Errno::ENOENT
@@ -94,7 +98,7 @@ class ModelFile < ApplicationRecord
 
   def delete_from_disk_and_destroy
     # Delete actual file
-    FileUtils.rm(absolute_path) if File.exist?(absolute_path)
+    FileUtils.rm(absolute_path) if exist?
     # Rescan any duplicates
     duplicates.each { |x| Analysis::AnalyseModelFileJob.perform_later(x.id) }
     # Remove the db record

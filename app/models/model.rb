@@ -115,6 +115,10 @@ class Model < ApplicationRecord
     model_files.select(&:is_3d_model?)
   end
 
+  def exist?
+    Dir.exist?(absolute_path)
+  end
+
   private
 
   def normalize_license
