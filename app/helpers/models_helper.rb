@@ -1,5 +1,6 @@
 module ModelsHelper
   def group(files)
+    return {} if files.empty?
     sections = {}
     min_section_size = 2
     min_prefix_length = 3
@@ -16,7 +17,7 @@ module ModelsHelper
       end
     end
     # Sort and include empty set
-    { nil => files }.merge sections.sort_by {|k, v| k }.to_h
+    {nil => files}.merge sections.sort_by { |k, v| k }.to_h
   end
 
   def status_badges(model)
