@@ -10,9 +10,7 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
 
   # Get a list of all the existing filenames
   def known_filenames(library)
-    library.model_files.reload.map do |x|
-      File.join(library.path, x.model.path, x.filename)
-    end
+    library.model_files.reload.map(&:absolute_path)
   end
 
   def filter_out_common_subfolders(folders)

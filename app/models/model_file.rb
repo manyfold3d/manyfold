@@ -69,6 +69,10 @@ class ModelFile < ApplicationRecord
     File.exist?(absolute_path)
   end
 
+  def mtime
+    File.mtime(absolute_path)
+  end
+
   def calculate_digest
     Digest::SHA512.new.file(absolute_path).hexdigest
   rescue Errno::ENOENT

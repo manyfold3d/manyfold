@@ -65,7 +65,7 @@ class Model < ApplicationRecord
     # Trigger deletion for each file separately, to make sure cleanup happens
     model_files.each { |f| f.delete_from_disk_and_destroy }
     # Delete directory corresponding to model
-    FileUtils.remove_dir(absolute_path) if File.exist?(absolute_path)
+    FileUtils.remove_dir(absolute_path) if exist?
     # Remove from DB
     destroy
   end
