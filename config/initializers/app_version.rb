@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+Rails.application.config.upstream_repo = ENV.fetch("UPSTREAM_REPO", "https://github.com/manyfold3d/manyfold")
+Rails.application.config.app_version = ENV.fetch("APP_VERSION", "unknown").split(":")[-1]
+Rails.application.config.git_sha = ENV.fetch("GIT_SHA", "main")
+
 if Rails.env.development?
   if File.directory? File.expand_path(".git")
     system("git fetch #{Rails.application.config.upstream_repo}")

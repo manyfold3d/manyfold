@@ -1,19 +1,11 @@
 require "rails_helper"
 
 RSpec.describe UsageReport do
-  around do |example|
-    vars = {
-      APP_VERSION: "test",
-      GIT_SHA: "deadbeef"
-    }
-    ClimateControl.modify vars do
-      example.run
-    end
-  end
-
   context "when generating a usage report" do
     before do
       allow(SiteSettings).to receive(:anonymous_usage_id).and_return("guid-goes-here")
+      allow(Rails.application.config).to receive(:app_version).and_return("test")
+      allow(Rails.application.config).to receive(:git_sha).and_return("deadbeef")
     end
 
     let(:report) { described_class.generate }
