@@ -76,7 +76,7 @@ class ModelFilesController < ApplicationController
 
   def send_file_content(disposition: :attachment)
     response.headers["Content-Length"] = @file.size
-    send_file @file.pathname, disposition: disposition, type: @file.mime_type
+    send_file @file.absolute_path, disposition: disposition, type: @file.mime_type
   rescue Errno::ENOENT
     head :internal_server_error
   end

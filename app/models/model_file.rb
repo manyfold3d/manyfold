@@ -61,12 +61,12 @@ class ModelFile < ApplicationRecord
     basename.humanize.titleize
   end
 
-  def pathname
-    File.join(model.library.path, model.path, filename)
+  def absolute_path
+    File.join(model.absolute_path, filename)
   end
 
   def calculate_digest
-    Digest::SHA512.new.file(pathname).hexdigest
+    Digest::SHA512.new.file(absolute_path).hexdigest
   rescue Errno::ENOENT
     nil
   end
@@ -94,7 +94,7 @@ class ModelFile < ApplicationRecord
 
   def delete_from_disk_and_destroy
     # Delete actual file
-    FileUtils.rm(pathname) if File.exist?(pathname)
+    FileUtils.rm(absolute_path) if File.exist?(absolute_path)
     # Rescan any duplicates
     duplicates.each { |x| Analysis::AnalyseModelFileJob.perform_later(x.id) }
     # Remove the db record
@@ -118,7 +118,7 @@ class ModelFile < ApplicationRecord
   end
 
   def mesh
-    loader&.new&.load(pathname)
+    loader&.new&.load(absolute_path)
   end
   memoize :mesh
 
