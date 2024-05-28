@@ -4,18 +4,18 @@ RSpec.describe ModelsHelper do
   describe "string concat" do
     let(:files) do
       %w[
-        foo
-        bar
-        foobar
-        foo_bar
-        bar_foo
+        armleft
+        arm_right
+        head_1
+        leg_l
+        leg_r
       ].map { |x| build(:model_file, filename: "#{x}.stl") }
     end
 
     it "groups strings together with similar prefixes" do # rubocop:todo RSpec/MultipleExpectations
       groups = helper.group(files)
-      expect(groups["foo"].count).to eq(2)
-      expect(groups["bar"].count).to eq(2)
+      expect(groups["leg_"].count).to eq(2)
+      expect(groups["arm"].count).to eq(2)
       expect(groups[nil].count).to eq(1)
     end
   end
