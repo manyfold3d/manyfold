@@ -162,7 +162,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.12.0)
+    devise-i18n (1.12.1)
       devise (>= 4.9.0)
     devise-security (0.18.0)
       devise (>= 4.3.0)
@@ -304,7 +304,7 @@ GEM
     method_source (1.1.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.6)
-    minitest (5.23.0)
+    minitest (5.23.1)
     msgpack (1.7.2)
     nenv (0.3.0)
     net-imap (0.4.10)
@@ -350,7 +350,7 @@ GEM
     pundit (2.3.2)
       activesupport (>= 3.0.0)
     raabro (1.4.0)
-    racc (1.7.3)
+    racc (1.8.0)
     rack (2.2.9)
     rack-contrib (2.4.0)
       rack (< 4)
@@ -570,7 +570,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.13)
+    zeitwerk (2.6.15)
 
 PLATFORMS
   ruby
