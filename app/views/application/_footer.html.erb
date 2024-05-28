@@ -10,7 +10,7 @@
         <li class="mb-2"><%= t ".open_source_html" %></li>
         <li class="mb-2"><%= t ".version" %>:
           <%= link_to "#{ENV.fetch("APP_VERSION", "unknown").split(":")[-1]} (#{ENV.fetch("GIT_SHA", "main")[0, 7]})",
-                "https://github.com/manyfold3d/manyfold/tree/#{ENV.fetch("GIT_SHA", "main")}" %>
+                "https://github.com/manyfold3d/manyfold/tree/#{ENV.fetch("GIT_SHA", "main")}", target: "_blank", rel: "noopener" %>
         </li>
       </ul>
     </div>
@@ -25,16 +25,16 @@
     <div class="col-4 col-lg-2 mb-3">
       <h5><%= t ".development_heading" %></h5>
       <ul class="list-unstyled">
-        <li class="mb-2"><a href="https://github.com/manyfold3d/manyfold"><%= t ".code" %></a></li>
-        <li class="mb-2"><a href="https://github.com/manyfold3d/manyfold/issues"><%= t ".issues" %></a></li>
+        <li class="mb-2"><a href="https://github.com/manyfold3d/manyfold" target="_blank"><%= t ".code" %></a></li>
+        <li class="mb-2"><a href="https://github.com/manyfold3d/manyfold/issues" target="_blank"><%= t ".issues" %></a></li>
       </ul>
     </div>
     <div class="col-4 col-lg-2 mb-3">
       <h5><%= t ".community_heading" %></h5>
       <ul class="list-unstyled">
-        <li class="mb-2"><a href="https://matrix.to/#/#manyfold:one.ems.host"><%= t ".chat" %></a></li>
-        <li class="mb-2"><a href="https://3dp.chat/@manyfold"><%= t ".social" %></a></li>
-        <li class="mb-2"><a href="https://opencollective.com/manyfold"><%= t ".sponsor" %></a></li>
+        <li class="mb-2"><a href="https://matrix.to/#/#manyfold:one.ems.host" target="_blank"><%= t ".chat" %></a></li>
+        <li class="mb-2"><a href="https://3dp.chat/@manyfold" target="_blank"><%= t ".social" %></a></li>
+        <li class="mb-2"><a href="https://opencollective.com/manyfold" target="_blank"><%= t ".sponsor" %></a></li>
       </ul>
     </div>
   </div>
