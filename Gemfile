@@ -100,7 +100,7 @@ gem "rails-controller-testing", "~> 1.0", group: :test
 gem "pundit", "~> 2.3"
 
 gem "spdx", "~> 4.1"
-gem "rack-contrib", "~> 2.4"
+gem "rack-contrib", "~> 2.5"
 
 gem "rails-i18n", "~> 7.0"
 
