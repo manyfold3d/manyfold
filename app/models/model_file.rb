@@ -69,6 +69,16 @@ class ModelFile < ApplicationRecord
     File.join(model.path, filename)
   end
 
+  def attach_existing_file!
+    attachment_attacher.set Shrine.uploaded_file(
+      storage: model.library.storage_key,
+      id: path_within_library,
+      metadata: {filename: basename(include_extension: true)}
+    )
+    attachment_attacher.refresh_metadata!
+    save!
+  end
+
   def exist?
     File.exist?(absolute_path)
   end
