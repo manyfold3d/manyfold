@@ -13,6 +13,6 @@ class LibraryUploader < Shrine
 
   def generate_location(io, record: nil, derivative: nil, metadata: {}, **)
     return super unless record
-    File.join(record.model.path, record.filename)
+    record.path_within_library
   end
 end
