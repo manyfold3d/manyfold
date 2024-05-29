@@ -53,8 +53,8 @@ class ModelFile < ApplicationRecord
     Mime::Type.lookup_by_extension(extension)
   end
 
-  def basename
-    File.basename(filename, ".*")
+  def basename(include_extension: false)
+    File.basename(filename, include_extension ? "" : ".*")
   end
 
   def name
@@ -63,6 +63,10 @@ class ModelFile < ApplicationRecord
 
   def absolute_path
     File.join(model.absolute_path, filename)
+  end
+
+  def path_within_library
+    File.join(model.path, filename)
   end
 
   def exist?
