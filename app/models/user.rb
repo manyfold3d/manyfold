@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   rolify
-  devise :database_authenticatable, :registerable, :secure_validatable, :rememberable, :recoverable
+  devise :database_authenticatable,
+    :registerable, :secure_validatable,
+    :rememberable, :recoverable,
+    :lockable
 
   acts_as_favoritor
 
