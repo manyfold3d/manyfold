@@ -51,7 +51,7 @@ group :development, :test do
   gem "rubocop-performance", "~> 1.21", require: false
   gem "i18n-tasks", "~> 1.0"
   gem "simplecov", "~> 0.22.0", require: false
-  gem "sys-filesystem", "~> 1.4"
+  gem "sys-filesystem", "~> 1.5"
 end
 
 group :development do
