@@ -4,6 +4,9 @@ de:
     confirmations:
       new:
         resend_confirmation_instructions: Anleitung zur Bestätigung noch mal schicken
+    failure:
+      last_attempt: Sie haben noch einen Versuch, bis Ihr Konto gesperrt wird.
+      locked: Ihr Konto ist gesperrt.
     mailer:
       confirmation_instructions:
         action: Mein Konto bestätigen

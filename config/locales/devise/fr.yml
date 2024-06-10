@@ -4,6 +4,9 @@ fr:
     confirmations:
       new:
         resend_confirmation_instructions: Renvoyer les instructions de confirmation
+    failure:
+      last_attempt: Il vous reste une chance avant que votre compte soit bloqué.
+      locked: Votre compte est verrouillé.
     mailer:
       confirmation_instructions:
         action: Confirmer mon email

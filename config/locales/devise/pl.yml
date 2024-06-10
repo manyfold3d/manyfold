@@ -1,6 +1,9 @@
 ---
 pl:
   devise:
+    failure:
+      last_attempt: Masz jeszcze jedną próbę nim Twoje konto zostanie zablokowane.
+      locked: Twoje konto jest zablokowane.
     mailer:
       confirmation_instructions:
         action: Potwierdź swoje konto
