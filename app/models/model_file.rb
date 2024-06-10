@@ -6,6 +6,8 @@ class ModelFile < ApplicationRecord
   belongs_to :model
   has_many :problems, as: :problematic, dependent: :destroy
 
+  after_create :attach_existing_file!
+
   belongs_to :presupported_version, class_name: "ModelFile", optional: true
   has_one :unsupported_version, class_name: "ModelFile", foreign_key: "presupported_version_id",
     inverse_of: :presupported_version, dependent: :nullify
@@ -70,6 +72,7 @@ class ModelFile < ApplicationRecord
   end
 
   def attach_existing_file!
+    return if attachment.present?
     attachment_attacher.set Shrine.uploaded_file(
       storage: model.library.storage_key,
       id: path_within_library,
