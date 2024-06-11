@@ -108,7 +108,7 @@ gem "erb_lint", "~> 0.5.0", group: :development, require: false
 
 gem "i18n-js", "~> 4.2"
 
-gem "translation", "~> 1.40", group: :development
+gem "translation", "~> 1.41", group: :development
 
 gem "string-similarity", "~> 2.1"
 
