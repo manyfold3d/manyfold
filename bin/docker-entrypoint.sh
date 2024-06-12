@@ -22,6 +22,9 @@ if [ -z ${DATABASE_URL} ]; then
 	export DATABASE_URL="postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}?pool=5"
 fi
 
+echo "Setting temporary directory permissions..."
+chown -R $PUID:$PGID tmp log
+
 echo "Preparing database..."
 bundle exec rails db:prepare:with_data
 
