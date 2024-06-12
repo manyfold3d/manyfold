@@ -26,4 +26,4 @@ echo "Preparing database..."
 bundle exec rails db:prepare:with_data
 
 echo "Launching application..."
-exec "$@"
+exec s6-setuidgid $PUID:$PGID $@
