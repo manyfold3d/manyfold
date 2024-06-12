@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   around_action :switch_locale
   before_action :check_for_first_use
+  before_action :show_security_alerts
   before_action :check_scan_status
   before_action :remember_ordering
 
@@ -40,5 +41,10 @@ class ApplicationController < ActionController::Base
   def switch_locale(&action)
     locale = current_user&.interface_language || request.env["rack.locale"]
     I18n.with_locale(locale, &action)
+  end
+
+  def show_security_alerts
+    return unless current_user&.is_administrator?
+    flash.now[:alert] = t("security.running_as_root_html") if Process.uid == 0
   end
 end
