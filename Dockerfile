@@ -1,6 +1,17 @@
 FROM ruby:3.3.0-alpine3.18 AS build
 
-RUN apk add --no-cache tzdata alpine-sdk postgresql-dev nodejs yarn xz libarchive mesa-gl glfw
+RUN apk add --no-cache \
+  tzdata \
+  s6-overlay \
+  alpine-sdk \
+  postgresql-dev \
+  nodejs \
+  yarn \
+  xz \
+  libarchive \
+  mesa-gl \
+  glfw
+
 RUN gem install foreman
 
 ARG APP_VERSION
