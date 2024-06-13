@@ -1,5 +1,6 @@
 class ProblemsController < ApplicationController
   def index
+    authorize Problem
     # Are we showing ignored problems?
     @show_ignored = (params[:show_ignored] == "true")
     query = @show_ignored ? policy_scope(Problem.unscoped) : policy_scope(Problem)

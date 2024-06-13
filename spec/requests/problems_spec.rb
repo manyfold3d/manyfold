@@ -9,7 +9,14 @@ RSpec.describe "Problems" do
   end
 
   context "when signed in" do
+
     describe "GET /problems", :as_viewer do
+      it "is denied to viewers" do
+        expect { get "/problems/index" }.to raise_error(Pundit::NotAuthorizedError)
+      end
+    end
+
+    describe "GET /problems", :as_contributor do
       before do
         create_list(:problem, 2, category: :inefficient)
         create_list(:problem_on_model, 3, category: :missing)
