@@ -5,8 +5,8 @@ en:
       new:
         resend_confirmation_instructions: Resend confirmation instructions
     failure:
-      last_attempt: You have one more attempt before your account is locked.
-      locked: Your account is locked.
+      last_attempt: You have one more attempt before your account is temporarily locked.
+      locked: Your account is locked for an hour; try again later.
     mailer:
       confirmation_instructions:
         action: Confirm my account
