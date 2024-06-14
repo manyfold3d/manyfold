@@ -41,6 +41,8 @@ en:
         help: Hover over library in header to see caption.
         label: Caption
       description: See library details and modify.
+      free_space:
+        label: Free Space
       heading: Libaries
       icon:
         help_html: Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a>
