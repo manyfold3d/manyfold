@@ -5,7 +5,7 @@ en:
       success: File(s) uploaded successfully.
     index:
       files:
-        help: 'Supported file types: %{types}'
+        help: 'Supported file types: %{types}. Maximum file size: %{max_size}.'
         label: Select File
       free_space: "(%{available} free)"
       library:
