@@ -16,3 +16,7 @@ Mime::Type.register "model/x-chitubox", :chitubox, [], ["ctb"]
 Mime::Type.register "image/webp", :webp
 Mime::Type.register "application/x-openscad", :scad
 Mime::Type.register "text/x-gcode", :gcode
+
+Mime::Type.register "application/x-rar-compressed", :rar
+Mime::Type.register "application/x-7z-compressed", :sevenz, [], ["7z"]
+Mime::Type.register "application/x-bzip2", :bz2
