@@ -5,8 +5,8 @@ import Rails from '@rails/ujs'
 import 'bootstrap'
 import 'masonry-layout'
 
-// JQuery is imported in the main layout just for these
-import '@nathanvda/cocoon'
+import Cocooned from '@notus.sh/cocooned/src/cocooned/cocooned.js' // Leave out the plugins
+
 // I can't make this work, so it's included in the layout for now
 // import '@selectize/selectize/dist/js/standalone/selectize.js'
 
@@ -22,5 +22,6 @@ import { I18n } from 'i18n-js'
 import locales from './locales.json'
 
 Rails.start()
+Cocooned.start()
 
 window.i18n = new I18n(locales)
