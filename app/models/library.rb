@@ -30,6 +30,11 @@ class Library < ApplicationRecord
     ["model_files", "models", "problems"]
   end
 
+  def free_space
+    stat = Sys::Filesystem.stat(path)
+    stat.bytes_available
+  end
+
   private
 
   def ensure_path_case_is_correct
