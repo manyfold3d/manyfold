@@ -3,6 +3,7 @@ en:
   uploads:
     create:
       success: File(s) uploaded successfully.
+    exceeds_max_size: 'Selected file exceeds maximum size: %{max_size} MiB.'
     index:
       files:
         help: 'Supported file types: %{types}. Maximum file size: %{max_size}.'

@@ -139,6 +139,8 @@ ignore_unused:
 - 'devise.failure.*' # Devise failure messages are used deep down
 - 'renderer.errors.*' # Used client side via i18n-js
 - 'renderer.processing' # Used client side via i18n-js
+- 'uploads.exceeds_max_size' # Used client side via i18n-js
+
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'
