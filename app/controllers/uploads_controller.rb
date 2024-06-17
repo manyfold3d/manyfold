@@ -23,6 +23,8 @@ class UploadsController < ApplicationController
     files.select { |datafile| datafile != "" }.each { |datafile|
       # Check file is below the max allowed size
       next if datafile.size > SiteSettings.max_file_upload_size
+      # Check file extension as proxy for MIME type - to be improved in other work soon
+      next unless helpers.uploadable_file_extensions.include? File.extname(datafile.original_filename).delete(".").downcase
       # Then open it up
       file_name_with_zip = datafile.original_filename
       file_name = File.basename(file_name_with_zip, File.extname(file_name_with_zip))
