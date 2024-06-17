@@ -21,8 +21,7 @@
       <span class="form-text">
         <%= t ".files.help",
               types: safe_join(uploadable_file_extensions, ", "),
-              max_size: number_to_human_size(SiteSettings.max_file_upload_size, precision: 3)
-        %>
+              max_size: number_to_human_size(SiteSettings.max_file_upload_size, precision: 3) %>
       </span>
     </div>
   </div>
