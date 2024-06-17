@@ -28,10 +28,12 @@ class UploadsController < ApplicationController
       # Then open it up
       file_name_with_zip = datafile.original_filename
       file_name = File.basename(file_name_with_zip, File.extname(file_name_with_zip))
-      dest_folder_name = library_path + file_name
+      dest_folder_name = library_path + SecureRandom.uuid
       if !Dir.exist?(dest_folder_name)
         unzip(dest_folder_name, datafile)
       end
+      # Rename destination folder atomically
+      File.rename(dest_folder_name, library_path + file_name)
     }
   end
 
