@@ -51,7 +51,6 @@ group :development, :test do
   gem "rubocop-performance", "~> 1.21", require: false
   gem "i18n-tasks", "~> 1.0"
   gem "simplecov", "~> 0.22.0", require: false
-  gem "sys-filesystem", "~> 1.5"
 end
 
 group :development do
@@ -136,3 +135,5 @@ gem "logstash-event", "~> 1.2"
 gem "climate_control", "~> 1.2", group: :test
 
 gem "sidekiq-scheduler", github: "manyfold3d/sidekiq-scheduler", branch: "fix-dynamic-schedule-load-on-boot"
+
+gem "sys-filesystem", "~> 1.5"

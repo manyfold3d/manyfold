@@ -1,5 +1,3 @@
-require "sys/filesystem"
-
 class Library < ApplicationRecord
   has_many :models, dependent: :destroy
   has_many :model_files, through: :models
