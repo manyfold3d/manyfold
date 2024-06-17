@@ -15,6 +15,7 @@ import 'src/bulk_edit'
 import 'src/model_edit'
 import 'src/tag'
 import 'src/carousel'
+import 'src/file_size_validation'
 
 // Load i18n definitions
 import { I18n } from 'i18n-js'

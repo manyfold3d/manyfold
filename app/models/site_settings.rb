@@ -20,4 +20,8 @@ class SiteSettings < RailsSettings::Base
   def self.email_configured
     !Rails.env.production? || ENV.fetch("SMTP_SERVER", false)
   end
+
+  def self.max_file_upload_size
+    ENV.fetch("MAX_FILE_UPLOAD_SIZE", 268_435_456)
+  end
 end

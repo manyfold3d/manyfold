@@ -21,6 +21,9 @@ class UploadsController < ApplicationController
 
   def save_files(files, library_path)
     files.select { |datafile| datafile != "" }.each { |datafile|
+      # Check file is below the max allowed size
+      next if datafile.size > SiteSettings.max_file_upload_size
+      # Then open it up
       file_name_with_zip = datafile.original_filename
       file_name = File.basename(file_name_with_zip, File.extname(file_name_with_zip))
       dest_folder_name = library_path + file_name

@@ -5,3 +5,4 @@ translations:
   - file: app/javascript/locales.json
     patterns:
       - "*.renderer.*"
+      - "*.uploads.exceeds_max_size"
