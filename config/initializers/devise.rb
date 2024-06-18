@@ -174,7 +174,10 @@ Devise.setup do |config|
 
   # Options to be passed to the created cookie. For instance, you can set
   # secure: true in order to force SSL only cookies.
-  config.rememberable_options = {secure: Rails.application.config.force_ssl}
+  config.rememberable_options = {
+    same_site: :strict,
+    secure: Rails.application.config.force_ssl
+  }
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
