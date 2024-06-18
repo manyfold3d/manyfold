@@ -67,7 +67,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "cocoon", "~> 1.2"
 
-gem "public_suffix", "~> 5.1"
+gem "public_suffix", "~> 6.0"
 
 gem "activerecord-nulldb-adapter", "~> 1.0.1"
 
