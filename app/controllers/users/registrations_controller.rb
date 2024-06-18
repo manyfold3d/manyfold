@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :random_delay, only: [:create, :cancel]
   before_action :configure_sign_up_params, only: [:create]
   before_action :detect_if_first_use, only: [:edit, :update]
   # before_action :configure_account_update_params, only: [:update]
