@@ -3,7 +3,7 @@ class User < ApplicationRecord
   devise :database_authenticatable,
     :registerable, :secure_validatable,
     :rememberable, :recoverable,
-    :lockable
+    :lockable, :timeoutable
 
   acts_as_favoritor
 
