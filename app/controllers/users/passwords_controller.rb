@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
+  before_action :random_delay, only: [:create, :update]
+
   # GET /resource/password/new
   def new
     authorize :"users/passwords"

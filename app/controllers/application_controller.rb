@@ -47,4 +47,10 @@ class ApplicationController < ActionController::Base
     return unless current_user&.is_administrator?
     flash.now[:alert] = t("security.running_as_root_html") if Process.uid == 0
   end
+
+  def random_delay
+    # Not sure how secure this is; it's used to help with timing attacks on login ID lookups
+    # by adding a random 0-2 second delay into the response. There is probably a better way.
+    sleep Random.new.rand(2.0)
+  end
 end
