@@ -44,6 +44,7 @@ class UploadsController < ApplicationController
     Dir.mkdir(dest_folder_name)
     Dir.chdir(dest_folder_name) do
       reader.each_entry do |entry|
+        next if entry.size > SiteSettings.max_file_extract_size
         reader.extract(entry, Archive::EXTRACT_SECURE)
       end
     end
