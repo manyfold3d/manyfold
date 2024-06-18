@@ -20,6 +20,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     authorize :"users/sessions"
     super
+    reset_session # Completely reset the session
   end
 
   protected
