@@ -18,7 +18,11 @@ class Users::PasswordsController < Devise::PasswordsController
   # POST /resource/password
   def create
     authorize :"users/passwords"
-    super
+    self.resource = resource_class.send_reset_password_instructions(resource_params)
+    yield resource if block_given?
+    # This operation should always look like it succeeded
+    set_flash_message! :notice, :send_instructions
+    respond_with({}, location: after_sending_reset_password_instructions_path_for(resource_name))
   end
 
   # PUT /resource/password
