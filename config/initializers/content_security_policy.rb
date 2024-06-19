@@ -16,7 +16,7 @@ Rails.application.configure do
     policy.default_src :self
     policy.frame_ancestors :self
     policy.frame_src :none
-    policy.img_src *([:self, :unsafe_inline] + scout_csp)
+    policy.img_src *([:self, :data] + scout_csp)
     policy.object_src :none
     policy.script_src *([:self] + scout_csp)
     policy.style_src *([:self] + scout_csp)
