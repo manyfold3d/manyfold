@@ -1,14 +1,12 @@
 
 // Entry point for the build script in your package.json
 import Rails from '@rails/ujs'
+import $ from 'jquery'
+window.$ = $ // Just needed for selectize
 
-import 'bootstrap'
 import 'masonry-layout'
 
 import Cocooned from '@notus.sh/cocooned'
-
-// I can't make this work, so it's included in the layout for now
-// import '@selectize/selectize/dist/js/standalone/selectize.js'
 
 import 'src/preview'
 import 'src/bulk_edit'
@@ -19,7 +17,7 @@ import 'src/file_size_validation'
 
 // Load i18n definitions
 import { I18n } from 'i18n-js'
-import locales from './locales.json'
+import locales from 'src/locales.json'
 
 Rails.start()
 
