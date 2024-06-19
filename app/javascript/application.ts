@@ -22,6 +22,7 @@ import { I18n } from 'i18n-js'
 import locales from './locales.json'
 
 Rails.start()
-Cocooned.start()
+
+document.addEventListener('DOMContentLoaded', () => Cocooned.start())
 
 window.i18n = new I18n(locales)
