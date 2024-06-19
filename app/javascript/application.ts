@@ -5,7 +5,7 @@ import Rails from '@rails/ujs'
 import 'bootstrap'
 import 'masonry-layout'
 
-import Cocooned from '@notus.sh/cocooned/src/cocooned/cocooned.js' // Leave out the plugins
+import Cocooned from '@notus.sh/cocooned'
 
 // I can't make this work, so it's included in the layout for now
 // import '@selectize/selectize/dist/js/standalone/selectize.js'
