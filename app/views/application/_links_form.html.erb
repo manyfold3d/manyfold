@@ -1,10 +1,12 @@
-<%= cocooned_container do %>
+<%= cocooned_container id: "cocooned-links" do %>
   <%= form.fields_for :links do |f| %>
     <%= render "link_fields", f: f %>
   <% end %>
 <% end %>
 <div class="row mb-3">
   <%= tag.div class: "col-auto offset-sm-2 ps-0" do %>
-    <%= cocooned_add_item_button t(".add"), form, :links, class: "btn btn-secondary" %>
+    <%= cocooned_add_item_button t(".add"), form, :links,
+          class: "btn btn-secondary",
+          insertion_node: "#cocooned-links" %>
   <% end %>
 </div>
