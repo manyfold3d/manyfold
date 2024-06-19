@@ -20,7 +20,7 @@ import 'src/file_size_validation'
 
 // Load i18n definitions
 import { I18n } from 'i18n-js'
-import locales from './locales.json'
+import locales from 'src/locales.json'
 
 Rails.start()
 
