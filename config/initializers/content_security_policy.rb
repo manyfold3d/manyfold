@@ -14,7 +14,7 @@ Rails.application.configure do
     policy.frame_src :none
     policy.img_src *([:self, :unsafe_inline] + scout_options)
     policy.object_src :none
-    policy.script_src *([:self, "https://cdnjs.cloudflare.com"] + scout_options)
+    policy.script_src *([:self] + scout_options)
     policy.style_src *([:self] + scout_options)
   end
 
