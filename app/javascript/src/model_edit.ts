@@ -1,3 +1,5 @@
+import '@selectize/selectize'
+
 document.addEventListener('DOMContentLoaded', () => {
   window.tagInputs = []
   $('select[data-selectize]').each(

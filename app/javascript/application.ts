@@ -2,13 +2,11 @@
 // Entry point for the build script in your package.json
 import Rails from '@rails/ujs'
 import $ from 'jquery'
+window.$ = $ // Just needed for selectize
 
 import 'masonry-layout'
 
 import Cocooned from '@notus.sh/cocooned'
-
-window.$ = $ // Just needed for selectize
-import '@selectize/selectize'
 
 import 'src/preview'
 import 'src/bulk_edit'
