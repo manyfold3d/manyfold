@@ -8,7 +8,7 @@
     "typecheck": "bundle exec i18n export --config=./config/i18n-js.yml && tsc --project tsconfig.json"
   },
   "dependencies": {
-    "@nathanvda/cocoon": "^1.2.14",
+    "@notus.sh/cocooned": "^2.2.1",
     "@popperjs/core": "^2.11.8",
     "@rails/ujs": "^7.1.3",
     "@selectize/selectize": "^0.15.2",
