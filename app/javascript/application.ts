@@ -8,8 +8,8 @@ import 'masonry-layout'
 
 import Cocooned from '@notus.sh/cocooned'
 
-// I can't make this work, so it's included in the layout for now
-// import '@selectize/selectize/dist/js/standalone/selectize.js'
+window.$ = $ // Just needed for selectize
+import '@selectize/selectize'
 
 import 'src/preview'
 import 'src/bulk_edit'

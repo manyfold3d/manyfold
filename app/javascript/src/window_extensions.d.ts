@@ -3,6 +3,7 @@ declare module 'WindowExtensions' {
     interface Window {
       tagInputs: Array<JQuery<HTMLElement>>
       i18n
+      $
     }
   }
 }
