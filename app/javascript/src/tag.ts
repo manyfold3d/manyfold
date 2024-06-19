@@ -8,16 +8,14 @@ function setDetailOpenStatus (item: string): void {
   }
 }
 
-$(document).ready(
-  function () {
-    $('details').on('toggle', function (event): void {
-      const id = $(this).attr('id') ?? ''
-      const isOpen = $(this).attr('open') ?? ''
-      console.log(id, isOpen)
-      window.localStorage.setItem(`details-${id}`, isOpen)
-    })
-    for (let i = 0; i < localStorage.length; i++) {
-      setDetailOpenStatus(localStorage.key(i) ?? '')
-    }
+document.addEventListener('DOMContentLoaded', () => {
+  $('details').on('toggle', function (event): void {
+    const id = $(this).attr('id') ?? ''
+    const isOpen = $(this).attr('open') ?? ''
+    console.log(id, isOpen)
+    window.localStorage.setItem(`details-${id}`, isOpen)
+  })
+  for (let i = 0; i < localStorage.length; i++) {
+    setDetailOpenStatus(localStorage.key(i) ?? '')
   }
-)
+})
