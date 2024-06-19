@@ -16,14 +16,13 @@ Rails.application.configure do
     policy.default_src :self
     policy.frame_ancestors :self
     policy.frame_src :none
-    policy.img_src *([:self, :data] + scout_csp)
+    policy.img_src(*([:self, :data] + scout_csp))
     policy.object_src :none
-    policy.script_src *([:self] + scout_csp)
-    policy.style_src *([:self] + scout_csp)
+    policy.script_src(*([:self] + scout_csp))
+    policy.style_src(*([:self] + scout_csp))
   end
 
   unless using_scout
-    config.content_security_policy_nonce_generator = -> request { request.session.id.to_s }
+    config.content_security_policy_nonce_generator = ->(request) { request.session.id.to_s }
   end
-
 end
