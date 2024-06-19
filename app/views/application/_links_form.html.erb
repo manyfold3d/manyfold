@@ -7,6 +7,7 @@
   <%= tag.div class: "col-auto offset-sm-2 ps-0" do %>
     <%= cocooned_add_item_button t(".add"), form, :links,
           class: "btn btn-secondary",
-          insertion_node: "#cocooned-links" %>
+          insertion_node: "#cocooned-links",
+          insertion_method: "append" %>
   <% end %>
 </div>
