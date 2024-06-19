@@ -1,11 +1,11 @@
-import * as bootstrap from 'bootstrap'
+import { Carousel } from 'bootstrap'
 
 document.addEventListener('DOMContentLoaded', () => {
   let paused = false
   let manual = false
   const carouselElement = document.querySelector('#imageCarousel')
   if (carouselElement != null) {
-    new bootstrap.Carousel(carouselElement, { /* eslint no-new: 0 */
+    new Carousel(carouselElement, { /* eslint no-new: 0 */
       interval: 5000,
       pause: false
     })
