@@ -47,6 +47,8 @@ group :development, :test do
   gem "database_cleaner-active_record", "~> 2.1"
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
+  gem "rubocop-rspec_rails", require: false
+  gem "rubocop-factory_bot", require: false
   gem "rubocop-i18n", require: false
   gem "rubocop-performance", "~> 1.21", require: false
   gem "i18n-tasks", "~> 1.0"
