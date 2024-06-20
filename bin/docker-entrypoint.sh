@@ -19,7 +19,7 @@ if [ -z ${DATABASE_URL} ]; then
 		fi
 	done
 	echo "Required variables check passed"
-	export DATABASE_URL="postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}?pool=5"
+	export DATABASE_URL="postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}?pool=${DATABASE_CONNECTION_POOL:-5}" # DATABASE_CONNECTION_POOL is optional, hence it's absence from the required elements array. Defaults to 5
 fi
 
 echo "Setting temporary directory permissions..."
