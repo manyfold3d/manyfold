@@ -79,7 +79,7 @@ gem "stopwords-filter2", require: "stopwords"
 gem "devise", "~> 4.9"
 gem "devise-i18n", "~> 1.12"
 
-gem "data_migrate", github: "Floppy/data-migrate", ref: "db-prepare-withdata"
+gem "data_migrate", github: "manyfold3d/data-migrate", ref: "db-prepare-withdata"
 
 gem "rails-settings-cached", "~> 2.9"
 gem "activeadmin", "~> 3.2"

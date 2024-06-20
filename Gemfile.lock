@@ -1,11 +1,11 @@
 GIT
-  remote: https://github.com/Floppy/data-migrate.git
-  revision: b2cbb40b5e13a6d9c08555cf184b75e11678da84
+  remote: https://github.com/manyfold3d/data-migrate.git
+  revision: 9f3e76af01394fbc2a9ae621db7ce14950e48a57
   ref: db-prepare-withdata
   specs:
-    data_migrate (9.1.0)
-      activerecord (>= 6.0)
-      railties (>= 6.0)
+    data_migrate (9.4.0)
+      activerecord (>= 6.1)
+      railties (>= 6.1)
 
 GIT
   remote: https://github.com/manyfold3d/mittsu.git
