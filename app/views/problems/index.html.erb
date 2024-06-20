@@ -12,6 +12,7 @@
 
 <table class="table table-striped">
   <% @problems.each do |problem| %>
+    <% next unless problem.problematic %>
     <tr class="table-<%= problem_severity(problem) %> <%= problem.ignored && "opacity-50" %>">
       <%= render partial: "problems/#{problem.problematic_type.underscore}/#{problem.category}", locals: {problem: problem} %>
       <td>
