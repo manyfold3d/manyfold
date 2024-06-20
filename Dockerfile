@@ -1,4 +1,4 @@
-FROM ruby:3.3.0-alpine3.18 AS build
+FROM ruby:3.3.1-alpine3.18 AS build
 
 RUN apk add --no-cache \
   tzdata \
