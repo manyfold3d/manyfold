@@ -2,7 +2,7 @@ class Library < ApplicationRecord
   has_many :models, dependent: :destroy
   has_many :model_files, through: :models
   has_many :problems, as: :problematic, dependent: :destroy
-  serialize :tag_regex, Array
+  serialize :tag_regex, type: Array
   after_initialize :init
   before_validation :ensure_path_case_is_correct
 
