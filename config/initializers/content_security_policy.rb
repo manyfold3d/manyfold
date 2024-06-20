@@ -20,6 +20,7 @@ Rails.application.configure do
     policy.object_src :none
     policy.script_src(*([:self] + scout_csp))
     policy.style_src(*([:self] + scout_csp))
+    policy.style_src_attr :unsafe_inline
   end
 
   unless using_scout
