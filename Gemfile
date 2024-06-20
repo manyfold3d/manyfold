@@ -90,7 +90,7 @@ gem "lograge", "~> 0.14.0"
 
 gem "acts_as_favoritor", "~> 6.0"
 
-gem "sqlite3_ar_regexp", "~> 2.2"
+gem "sqlite3_ar_regexp", github: "manyfold3d/sqlite3_ar_regexp", ref: "rails-7.1-support"
 
 gem "mittsu", github: "manyfold3d/mittsu", ref: "manyfold"
 

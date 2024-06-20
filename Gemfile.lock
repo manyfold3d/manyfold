@@ -29,6 +29,15 @@ GIT
       sidekiq (>= 6, < 8)
       tilt (>= 1.4.0, < 3)
 
+GIT
+  remote: https://github.com/manyfold3d/sqlite3_ar_regexp.git
+  revision: 2fa15db50770e86b7b4872486c2ee8ff282a3e2c
+  ref: rails-7.1-support
+  specs:
+    sqlite3_ar_regexp (2.2.0)
+      activerecord (>= 3.2)
+      sqlite3
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -517,9 +526,6 @@ GEM
     sqlite3 (1.7.3-x64-mingw-ucrt)
     sqlite3 (1.7.3-x86_64-darwin)
     sqlite3 (1.7.3-x86_64-linux)
-    sqlite3_ar_regexp (2.2.0)
-      activerecord (>= 3.2)
-      sqlite3
     standard (1.37.0)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
@@ -641,7 +647,7 @@ DEPENDENCIES
   spdx (~> 4.1)
   spring
   sqlite3 (~> 1.7)
-  sqlite3_ar_regexp (~> 2.2)
+  sqlite3_ar_regexp!
   standard (~> 1.37.0)
   stopwords-filter2
   string-similarity (~> 2.1)
