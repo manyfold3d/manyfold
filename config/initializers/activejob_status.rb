@@ -8,7 +8,9 @@ ActiveJob::Status.options = {
 
 module ActiveJob::Status
   def self.all
-    store.redis.keys("activejob:status:*").map { |x| ActiveJob::Status.get(x.split(":").last) }
+    store.redis.with do |conn|
+      conn.keys("activejob:status:*").map { |x| ActiveJob::Status.get(x.split(":").last) }
+    end
   end
 end
 
