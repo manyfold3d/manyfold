@@ -1,7 +1,7 @@
 class LibraryUploader < Shrine
   plugin :dynamic_storage
 
-  storage(/store_(\d)/) do |m|
+  storage(/library_(\d)/) do |m|
     Library.find(m[1]).storage
   end
 
