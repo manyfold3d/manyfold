@@ -12,7 +12,7 @@ class LibraryUploader < Shrine
   end
 
   def generate_location(io, record: nil, derivative: nil, metadata: {}, **)
-    return super unless record
+    return super unless record&.valid?
     record.path_within_library
   end
 end
