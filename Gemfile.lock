@@ -555,7 +555,7 @@ GEM
     sqlite3 (1.7.3-x64-mingw-ucrt)
     sqlite3 (1.7.3-x86_64-darwin)
     sqlite3 (1.7.3-x86_64-linux)
-    standard (1.37.0)
+    standard (1.39.0)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.64.0)
@@ -679,7 +679,7 @@ DEPENDENCIES
   spring
   sqlite3 (~> 1.7)
   sqlite3_ar_regexp!
-  standard (~> 1.37.0)
+  standard (~> 1.39.0)
   stopwords-filter2
   string-similarity (~> 2.1)
   sys-filesystem (~> 1.5)
