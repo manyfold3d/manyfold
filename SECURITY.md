@@ -8,6 +8,7 @@ We do apply security patches whenever they become available, so make sure to tra
 
 ## Reporting a Vulnerability
 
-If you find a security vulnerability in Manyfold, please email [security@manyfold.app](mailto:security@manyfold.app)
-to let us know confidentially, so that we can decide when to disclose the vulnerability, at which point it will be 
-logged in our GitHub issue tracker.
+If you find a security vulnerability in Manyfold, please fill in the [vulnerability reporting form](https://github.com/manyfold3d/manyfold/security/advisories/new), or email [security@manyfold.app](mailto:security@manyfold.app)
+to let us know confidentially.
+
+We will publicise and credit all security advisories and issues when safe to do so.
