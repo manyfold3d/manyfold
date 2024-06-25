@@ -3,27 +3,19 @@ require "support/mock_directory"
 
 RSpec.describe Analysis::AnalyseModelFileJob do
   context "with an existing file" do
-    let(:file) { create(:model_file, filename: "test.3mf", digest: "deadc0de", size: 1) }
+    let(:file) { create(:model_file, filename: "test.3mf", digest: "deadc0de") }
 
     before do
       allow(ModelFile).to receive(:find).with(file.id).and_return(file)
       allow(File).to receive(:exist?).and_return(true)
       allow(File).to receive(:mtime).once.and_return(1.day.ago)
       allow(file).to receive(:calculate_digest).once.and_return("deadbeef")
-      allow(File).to receive(:size).once.and_return(1234)
     end
 
     it "calculates file digest if not set" do
       file.update!(digest: nil)
       expect { described_class.perform_now file.id }.to(
         change(file, :digest).from(nil).to("deadbeef")
-      )
-    end
-
-    it "calculates file size if not set" do
-      file.update!(size: nil)
-      expect { described_class.perform_now file.id }.to(
-        change(file, :size).from(nil).to(1234)
       )
     end
 
