@@ -37,6 +37,10 @@ class ModelFile < ApplicationRecord
     attributes["size"]
   end
 
+  def size=(value)
+    ActiveSupport::Deprecation.warn("size is now set by Shrine")
+  end
+
   def extension
     attachment.extension
   rescue
