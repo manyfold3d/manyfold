@@ -10,9 +10,8 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
     return if !file.exist?
     # If the file is modified, or we're lacking metadata
     status[:step] = "jobs.analysis.analyse_model_file.file_statistics" # i18n-tasks-use t('jobs.analysis.analyse_model_file.file_statistics')
-    if file.mtime > file.updated_at || file.digest.nil? || file.size.nil?
+    if file.mtime > file.updated_at || file.digest.nil?
       file.digest = file.calculate_digest
-      file.size = File.size(file.absolute_path)
       # If the digest has changed, queue up detailed geometric mesh analysis
       Analysis::GeometricAnalysisJob.perform_later(file_id) if file.digest_changed?
       # Store updated file metadata
