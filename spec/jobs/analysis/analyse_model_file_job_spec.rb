@@ -27,7 +27,7 @@ RSpec.describe Analysis::AnalyseModelFileJob do
       )
     end
 
-    it "queues geometric analysis if file digest doesn't change" do
+    it "doesn't queue geometric analysis if file digest doesn't change" do
       expect { described_class.perform_now file.id }.not_to(
         have_enqueued_job(Analysis::GeometricAnalysisJob)
       )
