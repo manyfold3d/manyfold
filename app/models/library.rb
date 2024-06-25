@@ -47,7 +47,6 @@ class Library < ApplicationRecord
   end
 
   def storage
-    return Shrine::Storage::Memory.new if Rails.env.test?
     Shrine::Storage::FileSystem.new(path)
   end
 
