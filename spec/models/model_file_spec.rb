@@ -31,8 +31,16 @@ RSpec.describe ModelFile do
   it "calculates a bounding box for model" do
     library = create(:library, path: Rails.root.join("spec/fixtures"))
     model1 = create(:model, library: library, path: "model_file_spec")
-    part = create(:model_file, model: model1, filename: "example.obj")
+    part = create(:model_file, model: model1, filename: "example.obj", attachment: nil)
     expect(part.bounding_box).to eq([10, 15, 20])
+  end
+
+  it "calculates file size when attached" do
+    allow(File).to receive(:size).once.and_return(1234)
+    library = create(:library, path: Rails.root.join("spec/fixtures"))
+    model1 = create(:model, library: library, path: "model_file_spec")
+    part = create(:model_file, model: model1, filename: "example.obj", attachment: nil)
+    expect(part.size).to eq(284)
   end
 
   it "finds duplicate files using digest" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
@@ -72,7 +80,7 @@ RSpec.describe ModelFile do
 
     it "removes original file from disk" do
       expect { file.delete_from_disk_and_destroy }.to(
-        change { File.exist?(file.pathname) }.from(true).to(false)
+        change { File.exist?(file.absolute_path) }.from(true).to(false)
       )
     end
 

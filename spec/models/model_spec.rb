@@ -74,33 +74,42 @@ RSpec.describe Model do
   end
 
   context "with a library on disk" do
-    before do
-      allow(File).to receive(:exist?).and_call_original
-      allow(File).to receive(:exist?).with("/original_library").and_return(true)
-      allow(File).to receive(:exist?).with("/new_library").and_return(true)
+    around do |ex|
+      MockDirectory.create([
+        "original_library/model/part.stl",
+        "new_library/model/part.stl"
+      ]) do |path|
+        @libraries_path = path
+        ex.run
+      end
     end
 
     it "must have a unique path within its library" do
-      library = create(:library, path: "/original_library")
+      library = create(:library, path: "#{@libraries_path}/original_library") # rubocop:todo RSpec/InstanceVariable
       create(:model, library: library, path: "model")
       expect(build(:model, library: library, path: "model")).not_to be_valid
     end
 
     it "can have the same path as a model in a different library" do
-      original_library = create(:library, path: "/original_library")
+      original_library = create(:library, path: "#{@libraries_path}/original_library") # rubocop:todo RSpec/InstanceVariable
       create(:model, library: original_library, path: "model")
-      new_library = create(:library, path: "/new_library")
+      new_library = create(:library, path: "#{@libraries_path}/new_library") # rubocop:todo RSpec/InstanceVariable
       expect(build(:model, library: new_library, path: "model")).to be_valid
     end
   end
 
   context "when nested inside another" do
-    before do
-      allow(File).to receive(:exist?).and_call_original
-      allow(File).to receive(:exist?).with("/library").and_return(true)
+    around do |ex|
+      MockDirectory.create([
+        "parent/part.stl",
+        "parent/child/part.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
     end
 
-    let(:library) { create(:library, path: "/library") }
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
     let!(:parent) { create(:model, library: library, path: "parent") }
     let!(:child) { create(:model, library: library, path: "parent/child") }
 
@@ -135,12 +144,17 @@ RSpec.describe Model do
   end
 
   context "when nested inside another with underscores in the name" do
-    before do
-      allow(File).to receive(:exist?).and_call_original
-      allow(File).to receive(:exist?).with("/library").and_return(true)
+    around do |ex|
+      MockDirectory.create([
+        "model_one/part.stl",
+        "model_one/nested_model/part.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
     end
 
-    let(:library) { create(:library, path: "/library") }
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
     let!(:parent) { create(:model, library: library, path: "model_one") }
     let!(:child) { create(:model, library: library, path: "model_one/nested_model") }
 

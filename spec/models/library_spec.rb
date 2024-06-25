@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.describe Library do
-  before do
-    allow(File).to receive(:exist?).with("/library1").and_return(true)
-    allow(Dir).to receive(:glob).and_call_original
-    allow(Dir).to receive(:glob).with("/library1").and_return(["/library1"])
-    allow(File).to receive(:exist?).with("/nope").and_return(false)
+  around do |ex|
+    MockDirectory.create([]) do |path|
+      @library_path = path
+      ex.run
+    end
   end
 
   it "is not valid without a path" do
@@ -13,7 +13,7 @@ RSpec.describe Library do
   end
 
   it "is valid if a path is specified" do
-    expect(build(:library, path: "/library1")).to be_valid
+    expect(build(:library, path: @library_path)).to be_valid # rubocop:todo RSpec/InstanceVariable
   end
 
   it "is invalid if a bad path is specified" do # rubocop:todo RSpec/MultipleExpectations
@@ -27,7 +27,7 @@ RSpec.describe Library do
   end
 
   it "must have a unique path" do
-    create(:library, path: "/library1")
-    expect(build(:library, path: "/library1")).not_to be_valid
+    create(:library, path: @library_path) # rubocop:todo RSpec/InstanceVariable
+    expect(build(:library, path: @library_path)).not_to be_valid # rubocop:todo RSpec/InstanceVariable
   end
 end

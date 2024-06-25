@@ -3,14 +3,13 @@ require "support/mock_directory"
 
 RSpec.describe Analysis::AnalyseModelFileJob do
   context "with an existing file" do
-    let(:file) { create(:model_file, filename: "test.3mf", digest: "deadc0de", size: 1) }
+    let(:file) { create(:model_file, filename: "test.3mf", digest: "deadc0de") }
 
     before do
       allow(ModelFile).to receive(:find).with(file.id).and_return(file)
       allow(File).to receive(:exist?).and_return(true)
       allow(File).to receive(:mtime).once.and_return(1.day.ago)
       allow(file).to receive(:calculate_digest).once.and_return("deadbeef")
-      allow(File).to receive(:size).once.and_return(1234)
     end
 
     it "calculates file digest if not set" do
@@ -20,14 +19,7 @@ RSpec.describe Analysis::AnalyseModelFileJob do
       )
     end
 
-    it "calculates file size if not set" do
-      file.update!(size: nil)
-      expect { described_class.perform_now file.id }.to(
-        change(file, :size).from(nil).to(1234)
-      )
-    end
-
-    it "queues geometric analysis if file digest doesn't change" do
+    it "doesn't queue geometric analysis if file digest doesn't change" do
       expect { described_class.perform_now file.id }.not_to(
         have_enqueued_job(Analysis::GeometricAnalysisJob)
       )
@@ -42,7 +34,7 @@ RSpec.describe Analysis::AnalyseModelFileJob do
 
     it "detects ASCII STL files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       allow(file).to receive(:extension).and_return("stl")
-      allow(File).to receive(:read).with(file.pathname, 6).once.and_return("solid ")
+      allow(File).to receive(:read).with(file.absolute_path, 6).once.and_return("solid ")
       expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
       expect(Problem.first.category).to eq "inefficient"
       expect(Problem.first.note).to eq "ASCII STL"
@@ -57,7 +49,7 @@ RSpec.describe Analysis::AnalyseModelFileJob do
 
     it "detects ASCII PLY files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       allow(file).to receive(:extension).and_return("ply")
-      allow(File).to receive(:read).with(file.pathname, 16).once.and_return("ply\rformat ascii")
+      allow(File).to receive(:read).with(file.absolute_path, 16).once.and_return("ply\rformat ascii")
       expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
       expect(Problem.first.category).to eq "inefficient"
       expect(Problem.first.note).to eq "ASCII PLY"

@@ -1,8 +1,12 @@
 class ModelFile < ApplicationRecord
+  include LibraryUploader::Attachment(:attachment)
+
   extend Memoist
 
   belongs_to :model
   has_many :problems, as: :problematic, dependent: :destroy
+
+  after_create :attach_existing_file!
 
   belongs_to :presupported_version, class_name: "ModelFile", optional: true
   has_one :unsupported_version, class_name: "ModelFile", foreign_key: "presupported_version_id",
@@ -27,7 +31,19 @@ class ModelFile < ApplicationRecord
     withsupports
   ]
 
+  def size
+    attachment.size
+  rescue
+    attributes["size"]
+  end
+
+  def size=(value)
+    ActiveSupport::Deprecation.warn("size is now set by Shrine")
+  end
+
   def extension
+    attachment.extension
+  rescue
     File.extname(filename).delete(".").downcase
   end
 
@@ -43,20 +59,43 @@ class ModelFile < ApplicationRecord
     Mime::Type.lookup_by_extension(extension)
   end
 
-  def basename
-    File.basename(filename, ".*")
+  def basename(include_extension: false)
+    File.basename(filename, include_extension ? "" : ".*")
   end
 
   def name
     basename.humanize.titleize
   end
 
-  def pathname
-    File.join(model.library.path, model.path, filename)
+  def absolute_path
+    File.join(model.absolute_path, filename)
+  end
+
+  def path_within_library
+    File.join(model.path, filename)
+  end
+
+  def attach_existing_file!
+    return if attachment.present?
+    attachment_attacher.set Shrine.uploaded_file(
+      storage: model.library.storage_key,
+      id: path_within_library,
+      metadata: {filename: basename(include_extension: true)}
+    )
+    attachment_attacher.refresh_metadata!
+    save!
+  end
+
+  def exist?
+    File.exist?(absolute_path)
+  end
+
+  def mtime
+    File.mtime(absolute_path)
   end
 
   def calculate_digest
-    Digest::SHA512.new.file(pathname).hexdigest
+    Digest::SHA512.new.file(absolute_path).hexdigest
   rescue Errno::ENOENT
     nil
   end
@@ -83,8 +122,6 @@ class ModelFile < ApplicationRecord
   end
 
   def delete_from_disk_and_destroy
-    # Delete actual file
-    FileUtils.rm(pathname) if File.exist?(pathname)
     # Rescan any duplicates
     duplicates.each { |x| Analysis::AnalyseModelFileJob.perform_later(x.id) }
     # Remove the db record
@@ -108,9 +145,14 @@ class ModelFile < ApplicationRecord
   end
 
   def mesh
-    loader&.new&.load(pathname)
+    loader&.new&.load(absolute_path)
   end
   memoize :mesh
+
+  def reattach!
+    attachment_attacher.assign attachment
+    save!
+  end
 
   private
 

@@ -10,9 +10,7 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
 
   # Get a list of all the existing filenames
   def known_filenames(library)
-    library.model_files.reload.map do |x|
-      File.join(library.path, x.model.path, x.filename)
-    end
+    library.model_files.reload.map(&:absolute_path)
   end
 
   def filter_out_common_subfolders(folders)
@@ -23,7 +21,7 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
   def perform(library_id)
     library = Library.find(library_id)
     return if library.nil?
-    return if Problem.create_or_clear(library, :missing, !File.exist?(library.path))
+    return if Problem.create_or_clear(library, :missing, !library.exist?)
     # Make a list of changed filenames using set XOR
     status[:step] = "jobs.scan.detect_filesystem_changes.building_filename_list" # i18n-tasks-use t('jobs.scan.detect_filesystem_changes.building_filename_list')
     changes = (known_filenames(library).to_set ^ filenames_on_disk(library)).to_a

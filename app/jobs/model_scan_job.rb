@@ -22,12 +22,11 @@ class ModelScanJob < ApplicationJob
 
   def perform(model_id)
     model = Model.find(model_id)
-    model_path = File.join(model.library.path, model.path)
-    return if Problem.create_or_clear(model, :missing, !File.exist?(model_path))
+    return if Problem.create_or_clear(model, :missing, !model.exist?)
     # For each file in the model, create a file object
-    file_list(model_path).each do |filename|
+    file_list(model.absolute_path).each do |filename|
       # Create the file
-      file = model.model_files.find_or_create_by(filename: filename.gsub(model_path + "/", ""))
+      file = model.model_files.find_or_create_by(filename: filename.gsub(model.absolute_path + "/", ""))
       ModelFileScanJob.perform_later(file.id) if file.valid?
     end
     # Set tags and default files

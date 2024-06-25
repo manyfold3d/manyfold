@@ -5,7 +5,7 @@ class ModelFileScanJob < ApplicationJob
     file = ModelFile.find(file_id)
     # Try to guess if the file is presupported
     if !(
-      file.pathname.split(/[[:punct:]]|[[:space:]]/).map(&:downcase) & ModelFile::SUPPORT_KEYWORDS
+      file.absolute_path.split(/[[:punct:]]|[[:space:]]/).map(&:downcase) & ModelFile::SUPPORT_KEYWORDS
     ).empty?
       file.update!(presupported: true)
     end
