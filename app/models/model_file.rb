@@ -122,8 +122,6 @@ class ModelFile < ApplicationRecord
   end
 
   def delete_from_disk_and_destroy
-    # Delete actual file
-    FileUtils.rm(absolute_path) if exist?
     # Rescan any duplicates
     duplicates.each { |x| Analysis::AnalyseModelFileJob.perform_later(x.id) }
     # Remove the db record
