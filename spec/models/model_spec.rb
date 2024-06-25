@@ -144,12 +144,17 @@ RSpec.describe Model do
   end
 
   context "when nested inside another with underscores in the name" do
-    before do
-      allow(File).to receive(:exist?).and_call_original
-      allow(File).to receive(:exist?).with("/library").and_return(true)
+    around do |ex|
+      MockDirectory.create([
+        "model_one/part.stl",
+        "model_one/nested_model/part.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
     end
 
-    let(:library) { create(:library, path: "/library") }
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
     let!(:parent) { create(:model, library: library, path: "model_one") }
     let!(:child) { create(:model, library: library, path: "model_one/nested_model") }
 
