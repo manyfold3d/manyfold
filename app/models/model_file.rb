@@ -149,6 +149,11 @@ class ModelFile < ApplicationRecord
   end
   memoize :mesh
 
+  def reattach!
+    attachment_attacher.assign attachment
+    save!
+  end
+
   private
 
   def presupported_files_cannot_have_presupported_version

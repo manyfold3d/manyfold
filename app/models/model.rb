@@ -165,9 +165,15 @@ class Model < ApplicationRecord
     # Sometimes, if we're trimming separators or normalising paths, we get here
     # but the path hasn't actually changed on disk. In that case, we're done.
     return if absolute_path == previous_absolute_path
-    # Move the folder
-    FileUtils.mkdir_p(File.dirname(absolute_path))
-    File.rename(previous_absolute_path, absolute_path)
+    # Move all the files
+    model_files.each(&:reattach!)
+    if model_files.empty?
+      # Move the empty folder by hand
+      FileUtils.mkdir_p(File.dirname(absolute_path))
+      File.rename(previous_absolute_path, absolute_path)
+    end
+    # Remove the old folder if it's still there and empty
+    Dir.rmdir(previous_absolute_path) if Dir.exist?(previous_absolute_path) && Dir.empty?(previous_absolute_path)
   end
 
   def slugify_name
