@@ -1,8 +1,8 @@
 ---
 :queues:
   - scan
-  - default
   - analysis
+  - default
 :scheduler:
   :dynamic: true
   :dynamic_every: 15s

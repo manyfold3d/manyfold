@@ -1,0 +1,4 @@
+---
+:concurrency: 1
+:queues:
+  - performance

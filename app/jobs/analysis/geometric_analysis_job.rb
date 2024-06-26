@@ -2,7 +2,7 @@ class MeshLoadError < StandardError
 end
 
 class Analysis::GeometricAnalysisJob < ApplicationJob
-  queue_as :analysis
+  queue_as :performance
 
   def perform(file_id)
     # Get model
