@@ -13,6 +13,8 @@ fr:
       title:
     bulk_update:
       success: Les modèles ont été mis à jour avec succès.
+    create:
+      success: Fichier(s) téléchargé(s) avec succès.
     destroy:
       confirm: Cette opération supprimera les fichiers. Êtes-vous sûr de vouloir continuer ?
       success: Modèle supprimé !
@@ -42,6 +44,16 @@ fr:
       untagged: Sans étiquette
     merge:
       success: Les modèles ont été fusionnés avec succès.
+    new:
+      files:
+        help: 'Types de fichiers pris en charge : %{types}'
+        label: Sélectionner un fichier
+      library:
+        help: La bibliothèque vers laquelle télécharger.
+      scan:
+        label: Analyser après l'upload
+      submit: Télécharger
+      title: Télécharger
     problem:
       merge_all: Tous fusionner
     scan:

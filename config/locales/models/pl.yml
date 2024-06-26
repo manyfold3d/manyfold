@@ -13,6 +13,8 @@ pl:
       title: Edytuj zbiorczo modele
     bulk_update:
       success: Modele zaktualizowane pomyślnie.
+    create:
+      success: Plik(i) przesłany(e) pomyślnie.
     destroy:
       confirm: Spowoduje to usunięcie plików. Czy na pewno chcesz kontynuować?
       success: Model usunięty!
@@ -42,6 +44,16 @@ pl:
       untagged: Nieotagowany
     merge:
       success: Modele zostały pomyślnie połączone.
+    new:
+      files:
+        help: 'Obsługiwane typy plików: %{types}'
+        label: Wybierz Plik
+      library:
+        help: Biblioteka, do której ma zostać przesłany plik.
+      scan:
+        label: Zeskanuj po Przesłaniu
+      submit: Prześlij
+      title: Prześlij
     problem:
       merge_all: Połącz wszystko
     scan:

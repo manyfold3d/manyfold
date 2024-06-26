@@ -13,9 +13,12 @@ en:
       title: Bulk Edit Models
     bulk_update:
       success: Models updated successfully.
+    create:
+      success: File(s) uploaded successfully.
     destroy:
       confirm: This will delete files. Are you sure you want to continue?
       success: Model deleted!
+    exceeds_max_size: 'Selected file exceeds maximum size: %{max_size} MiB.'
     file:
       open_button:
         label: View details for %{name}
@@ -42,6 +45,17 @@ en:
       untagged: Untagged
     merge:
       success: Models merged successfully.
+    new:
+      files:
+        help: 'Supported file types: %{types}. Maximum file size: %{max_size}.'
+        label: Select File
+      free_space: "(%{available} free)"
+      library:
+        help: The library to upload to.
+      scan:
+        label: Scan After Upload
+      submit: Upload
+      title: Upload
     problem:
       merge_all: Merge all
     scan:

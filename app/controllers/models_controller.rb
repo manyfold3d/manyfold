@@ -2,7 +2,7 @@ require "fileutils"
 
 class ModelsController < ApplicationController
   include ModelFilters
-  before_action :get_model, except: [:bulk_edit, :bulk_update, :index]
+  before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
   def index
@@ -50,10 +50,25 @@ class ModelsController < ApplicationController
     render layout: "card_list_page"
   end
 
+  def new
+    authorize :model
+  end
+
   def edit
     @creators = Creator.all
     @collections = Collection.all
     @model.links.build if @model.links.empty? # populate empty link
+  end
+
+  def create
+    authorize :model
+    library = Library.find(params[:library])
+    save_files(params[:files], File.join(library.path, ""))
+
+    if params[:scan] == "1"
+      Scan::DetectFilesystemChangesJob.perform_later(library.id)
+    end
+    redirect_to libraries_path, notice: t(".success")
   end
 
   def update
@@ -166,5 +181,51 @@ class ModelsController < ApplicationController
     @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links).find(params[:id])
     authorize @model
     @title = @model.name
+  end
+
+  def save_files(files, library_path)
+    files.select { |datafile| datafile != "" }.each { |datafile|
+      # Check file is below the max allowed size
+      next if datafile.size > SiteSettings.max_file_upload_size
+      # Check file extension as proxy for MIME type - to be improved in other work soon
+      next unless helpers.uploadable_file_extensions.include? File.extname(datafile.original_filename).delete(".").downcase
+      # Then open it up
+      file_name_with_zip = datafile.original_filename
+      file_name = File.basename(file_name_with_zip, File.extname(file_name_with_zip))
+      dest_folder_name = library_path + SecureRandom.uuid
+      if !Dir.exist?(dest_folder_name)
+        unzip(dest_folder_name, datafile)
+      end
+      # Rename destination folder atomically
+      File.rename(dest_folder_name, library_path + file_name)
+    }
+  end
+
+  def unzip(dest_folder_name, datafile)
+    pn = Pathname.new(dest_folder_name)
+
+    reader = Archive::Reader.open_filename(datafile.path)
+    Dir.mkdir(dest_folder_name)
+    Dir.chdir(dest_folder_name) do
+      reader.each_entry do |entry|
+        next if entry.size > SiteSettings.max_file_extract_size
+        reader.extract(entry, Archive::EXTRACT_SECURE)
+      end
+    end
+
+    # Checks the directory just created and if it contains only one directory,
+    # moves the contents of that directory up a level, then deletes the empty directory.
+    if pn.children.length == 1 && pn.children[0].directory?
+      dup_dir = Pathname.new(pn.children[0])
+
+      dup_dir.children.each do |child|
+        fixed_path = Pathname.new(pn.to_s + "/" + child.basename.to_s)
+        File.rename(child.to_s, fixed_path.to_s)
+      end
+
+      Dir.delete(dup_dir.to_s)
+    end
+  ensure
+    reader&.close
   end
 end

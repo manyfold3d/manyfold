@@ -1,6 +1,6 @@
 <h1><%= t ".title" %></h1>
 
-<%= form_with url: uploads_path, multipart: true do |form| %>
+<%= form_with url: models_path, multipart: true do |form| %>
 
   <div class="row mb-3 input-group">
     <%= form.label :library, Library.model_name.human, class: "col-sm-2 col-form-label" %>

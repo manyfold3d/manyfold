@@ -23,7 +23,6 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resources :uploads, only: [:index, :create]
   resources :libraries do
     member do
       post "scan"
@@ -44,7 +43,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :models, only: [:index] do
+  resources :models, only: [:index, :new, :create] do
     collection do
       get "edit", action: "bulk_edit"
       patch "/update", action: "bulk_update"
