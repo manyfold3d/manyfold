@@ -8,6 +8,8 @@ require "rails_helper"
 #         edit_models GET    /models/edit(.:format)                                                  models#bulk_edit
 #       update_models PATCH  /models/update(.:format)                                                models#bulk_update
 #              models GET    /models(.:format)                                                       models#index
+#           new_model GET    /models/new(.:format)                                                      uploads#index
+#                     POST   /models(.:format)                                                      uploads#create
 # merge_library_model POST   /libraries/:library_id/models/:id/merge(.:format)                       models#merge
 # scan_library_model  POST   /libraries/:library_id/models/:id/scan(.:format)                        models#scan
 
@@ -194,6 +196,28 @@ RSpec.describe "Models" do
 
       it "is denied to non-contributors", :as_viewer do
         expect { post "/libraries/#{library.id}/models/#{library.models.first.id}/scan" }.to raise_error(Pundit::NotAuthorizedError)
+      end
+    end
+
+    describe "GET /models/new" do
+      it "shows upload form", :as_contributor do
+        get "/models/new"
+        expect(response).to have_http_status(:success)
+      end
+
+      it "denies viewer permission", :as_viewer do
+        expect { get "/models/new" }.to raise_error(Pundit::NotAuthorizedError)
+      end
+    end
+
+    describe "POST /models" do
+      it "redirect back to index after upload", :as_contributor do
+        post "/models", params: {library: library.id, scan: "1", files: []}
+        expect(response).to redirect_to("/libraries")
+      end
+
+      it "denies viewer permission", :as_viewer do
+        expect { post "/models", params: {post: {library_pick: library.id, scan_after_upload: "1"}, upload: {datafiles: []}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
   end

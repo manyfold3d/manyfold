@@ -13,6 +13,8 @@ de:
       title:
     bulk_update:
       success: Modelle erfolgreich aktualisiert.
+    create:
+      success: Die Datei(en) wurde(n) erfolgreich hochgeladen.
     destroy:
       confirm: Hiermit werden Dateien gelöscht. Sind Sie sicher, dass Sie fortfahren möchten?
       success: Modell gelöscht!
@@ -42,6 +44,16 @@ de:
       untagged: Ungetagged
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
+    new:
+      files:
+        help: 'Unterstützte Dateitypen: %{types}'
+        label: Datei auswählen
+      library:
+        help: Die Sammlung, in die hochgeladen werden soll.
+      scan:
+        label: Nach Upload scannen
+      submit: Hochladen
+      title: Hochladen
     problem:
       merge_all: Alle zusammenführen
     scan:

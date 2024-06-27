@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('input[data-max-size]').forEach((input: HTMLInputElement) => {
     input.addEventListener('change', () => {
       if ((input.files != null) && (input.dataset.maxSize != null) && !validateFileSizes(input.files, parseInt(input.dataset.maxSize))) {
-        input.setCustomValidity(window.i18n.t('uploads.exceeds_max_size', { max_size: (parseInt(input.dataset.maxSize) / 1024 / 1024).toPrecision(3) }))
+        input.setCustomValidity(window.i18n.t('models.exceeds_max_size', { max_size: (parseInt(input.dataset.maxSize) / 1024 / 1024).toPrecision(3) }))
       }
     })
   })
