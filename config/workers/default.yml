@@ -1,4 +1,5 @@
 ---
+:concurrency: <%= ENV.fetch("DEFAULT_WORKER_CONCURRENCY", 4) %>
 :queues:
   - scan
   - analysis
