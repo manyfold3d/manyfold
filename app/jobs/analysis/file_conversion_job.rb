@@ -8,9 +8,7 @@ end
 
 class Analysis::FileConversionJob < ApplicationJob
   queue_as :performance
-
-  discard_on UnsupportedFormatError
-  discard_on NonManifoldError
+  sidekiq_options retry: false
 
   def perform(file_id, output_format)
     # Can we output this format?
