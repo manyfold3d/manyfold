@@ -28,10 +28,11 @@ window.$ = $
 document.addEventListener('DOMContentLoaded', () => {
   Rails.start()
   new Uppy()
-    .use(Dashboard, {
-      inline: true,
-      target: '#uppy-dashboard'
-    })
+		.use(Dashboard, {
+			inline: true,
+			target: '#uppy-dashboard',
+			theme: 'auto'
+		})
     .use(XHR, { endpoint: '/upload' })
   Cocooned.start()
 })
