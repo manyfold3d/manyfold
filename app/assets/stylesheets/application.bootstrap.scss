@@ -12,6 +12,9 @@ $table-bg-scale: -90%;
 
 @import '@selectize/selectize/dist/css/selectize.bootstrap5';
 
+@import '@uppy/core/dist/style.min.css';
+@import '@uppy/dashboard/dist/style.min.css';
+
 .selectize-control {
 	padding: 1px;
 }

@@ -7,6 +7,9 @@ import 'masonry-layout'
 
 import Cocooned from '@notus.sh/cocooned'
 
+import Uppy from '@uppy/core'
+import Dashboard from '@uppy/dashboard'
+
 import 'src/preview'
 import 'src/bulk_edit'
 import 'src/model_edit'
@@ -17,10 +20,13 @@ import 'src/file_size_validation'
 // Load i18n definitions
 import { I18n } from 'i18n-js'
 import locales from 'src/locales.json'
+window.i18n = new I18n(locales)
+
 window.$ = $
 
-Rails.start()
 
-document.addEventListener('DOMContentLoaded', () => Cocooned.start())
-
-window.i18n = new I18n(locales)
+document.addEventListener('DOMContentLoaded', () => {
+	Rails.start()
+	new Uppy().use(Dashboard, { inline: true, target: '#uppy-dashboard' });
+	Cocooned.start()
+})
