@@ -47,7 +47,7 @@ en:
       success: Models merged successfully.
     new:
       files:
-        label: Select File
+        label: Select Files
       free_space: "(%{available} free)"
       library:
         help: The library to upload to.
