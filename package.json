@@ -14,6 +14,7 @@
     "@selectize/selectize": "^0.15.2",
     "@uppy/core": "^3.13.0",
     "@uppy/dashboard": "^3.9.0",
+    "@uppy/xhr-upload": "^3.6.7",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "comlink": "^4.4.1",

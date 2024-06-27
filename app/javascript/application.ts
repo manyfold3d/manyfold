@@ -9,6 +9,7 @@ import Cocooned from '@notus.sh/cocooned'
 
 import Uppy from '@uppy/core'
 import Dashboard from '@uppy/dashboard'
+import XHR from '@uppy/xhr-upload'
 
 import 'src/preview'
 import 'src/bulk_edit'
@@ -27,6 +28,8 @@ window.$ = $
 
 document.addEventListener('DOMContentLoaded', () => {
 	Rails.start()
-	new Uppy().use(Dashboard, { inline: true, target: '#uppy-dashboard' });
+	new Uppy()
+		.use(Dashboard, { inline: true, target: '#uppy-dashboard' })
+		.use(XHR, { endpoint: "/upload" })
 	Cocooned.start()
 })
