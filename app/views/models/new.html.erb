@@ -1,3 +1,7 @@
 <h1><%= t ".title" %></h1>
 
-<div id="uppy-dashboard"></div>
+<%= content_tag :div, nil,
+  id: "uppy-dashboard",
+  "data-max-file-size": SiteSettings.max_file_upload_size,
+  "data-allowed-file-types": input_accept_string
+%>

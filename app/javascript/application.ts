@@ -26,8 +26,14 @@ window.i18n = new I18n(locales)
 window.$ = $
 
 document.addEventListener('DOMContentLoaded', () => {
-  Rails.start()
-  new Uppy()
+	Rails.start()
+	const uppySettings = document.getElementById('uppy-dashboard')?.dataset
+	new Uppy({
+		restrictions: {
+			allowedFileTypes: uppySettings.allowedFileTypes?.split(","),
+			maxFileSize: +uppySettings.maxFileSize
+		}
+	})
 		.use(Dashboard, {
 			inline: true,
 			target: '#uppy-dashboard',
