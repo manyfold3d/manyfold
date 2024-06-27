@@ -7,7 +7,10 @@ class NonManifoldError < StandardError
 end
 
 class Analysis::FileConversionJob < ApplicationJob
-  queue_as :analysis
+  queue_as :performance
+
+  discard_on UnsupportedFormatError
+  discard_on NonManifoldError
 
   def perform(file_id, output_format)
     # Can we output this format?
