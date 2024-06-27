@@ -53,4 +53,7 @@ Rails.application.routes.draw do
   resources :collections
   resources :problems, only: [:index, :update]
   resources :health, only: [:index]
+
+  mount LibraryUploader.upload_endpoint(:cache) => "/upload"
+
 end
