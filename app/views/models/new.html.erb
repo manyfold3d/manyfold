@@ -10,6 +10,17 @@
     </div>
   </div>
 
+  <div class="row mb-3 input-group">
+    <%= form.label :files, t(".files.label"), class: "col-sm-2 col-form-label" %>
+    <div class='col-sm-10 ps-0'>
+      <%= content_tag :div, nil,
+        id: "uppy",
+        "data-max-file-size": SiteSettings.max_file_upload_size,
+        "data-allowed-file-types": input_accept_string
+      %>
+    </div>
+  </div>
+
   <div class="row mb-2">
     <%= form.label :scan, t(".scan.label"), class: "col-sm-4 col-form-label" %>
     <div class="col-sm-8 form-check form-switch">
@@ -19,9 +30,3 @@
 
   <%= submit_tag t(".submit"), class: "btn btn-primary" %>
 <% end %>
-
-<%= content_tag :div, nil,
-  id: "uppy-dashboard",
-  "data-max-file-size": SiteSettings.max_file_upload_size,
-  "data-allowed-file-types": input_accept_string
-%>

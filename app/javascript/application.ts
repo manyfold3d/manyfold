@@ -28,7 +28,7 @@ window.$ = $
 
 document.addEventListener('DOMContentLoaded', () => {
 	Rails.start()
-	const uppySettings = document.getElementById('uppy-dashboard')?.dataset
+	const uppySettings = document.getElementById('uppy')?.dataset
 	new Uppy({
 		restrictions: {
 			allowedFileTypes: uppySettings.allowedFileTypes?.split(","),
@@ -37,8 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 		.use(Dashboard, {
 			inline: true,
-			target: '#uppy-dashboard',
-			theme: 'auto'
+			target: '#uppy',
+			theme: 'auto',
+			width: '100%',
+			height: '25rem',
 		})
 		.use(Form, { target: '#upload-form'} )
     .use(XHR, { endpoint: '/upload' })

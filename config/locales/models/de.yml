@@ -45,6 +45,8 @@ de:
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
     new:
+      files:
+        label: Datei auswählen
       library:
         help: Die Sammlung, in die hochgeladen werden soll.
       scan:

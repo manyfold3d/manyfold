@@ -45,6 +45,8 @@ fr:
     merge:
       success: Les modèles ont été fusionnés avec succès.
     new:
+      files:
+        label: Sélectionner un fichier
       library:
         help: La bibliothèque vers laquelle télécharger.
       scan:
