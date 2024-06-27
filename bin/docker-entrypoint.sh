@@ -22,11 +22,11 @@ if [ -z ${DATABASE_URL} ]; then
 	export DATABASE_URL="postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}?pool=${DATABASE_CONNECTION_POOL:-5}" # DATABASE_CONNECTION_POOL is optional, hence it's absence from the required elements array. Defaults to 5
 fi
 
-echo "Setting temporary directory permissions..."
-chown -R $PUID:$PGID tmp log
-
 echo "Preparing database..."
 bundle exec rails db:prepare:with_data
+
+echo "Setting temporary directory permissions..."
+chown -R $PUID:$PGID tmp log
 
 echo "Launching application..."
 exec s6-setuidgid $PUID:$PGID $@
