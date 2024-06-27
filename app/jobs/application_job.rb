@@ -1,6 +1,6 @@
 class ApplicationJob < ActiveJob::Base
   include ActiveJob::Status
-  sidekiq_options retry: 5
+  sidekiq_options retry: 10
 
   # Most jobs are safe to ignore if the underlying records are no longer available
   discard_on ActiveJob::DeserializationError
