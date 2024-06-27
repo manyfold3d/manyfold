@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	Rails.start()
 	const uppySettings = document.getElementById('uppy')?.dataset
 	new Uppy({
+		autoProceed: true,
 		restrictions: {
 			allowedFileTypes: uppySettings.allowedFileTypes?.split(","),
 			maxFileSize: +uppySettings.maxFileSize
