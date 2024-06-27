@@ -9,6 +9,7 @@ import Cocooned from '@notus.sh/cocooned'
 
 import Uppy from '@uppy/core'
 import Dashboard from '@uppy/dashboard'
+import Form from '@uppy/form'
 import XHR from '@uppy/xhr-upload'
 
 import 'src/preview'
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			target: '#uppy-dashboard',
 			theme: 'auto'
 		})
+		.use(Form, { target: '#upload-form'} )
     .use(XHR, { endpoint: '/upload' })
   Cocooned.start()
 })
