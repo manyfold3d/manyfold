@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			width: '100%',
 			height: '25rem',
 			showRemoveButtonAfterComplete: true,
+			hideProgressAfterFinish: true
 		})
 		.use(Form, { target: '#upload-form'} )
     .use(XHR, { endpoint: '/upload' })
