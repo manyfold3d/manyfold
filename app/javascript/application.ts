@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			theme: 'auto',
 			width: '100%',
 			height: '25rem',
+			showRemoveButtonAfterComplete: true,
 		})
 		.use(Form, { target: '#upload-form'} )
     .use(XHR, { endpoint: '/upload' })
