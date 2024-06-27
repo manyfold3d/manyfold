@@ -7,7 +7,8 @@ class NonManifoldError < StandardError
 end
 
 class Analysis::FileConversionJob < ApplicationJob
-  queue_as :analysis
+  queue_as :performance
+  sidekiq_options retry: false
 
   def perform(file_id, output_format)
     # Can we output this format?

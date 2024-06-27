@@ -1,12 +1,9 @@
 class ApplicationJob < ActiveJob::Base
   include ActiveJob::Status
-  sidekiq_options retry: false
-
-  # Automatically retry jobs that encountered a deadlock
-  # retry_on ActiveRecord::Deadlocked
+  sidekiq_options retry: 10
 
   # Most jobs are safe to ignore if the underlying records are no longer available
-  # discard_on ActiveJob::DeserializationError
+  discard_on ActiveJob::DeserializationError
 
   before_perform do |job|
     begin

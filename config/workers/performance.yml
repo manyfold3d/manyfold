@@ -1,0 +1,4 @@
+---
+:concurrency: <%= ENV.fetch("PERFORMANCE_WORKER_CONCURRENCY", 1) %>
+:queues:
+  - performance
