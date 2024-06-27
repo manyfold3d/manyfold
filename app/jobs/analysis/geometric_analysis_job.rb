@@ -3,6 +3,7 @@ end
 
 class Analysis::GeometricAnalysisJob < ApplicationJob
   queue_as :performance
+  discard_on MeshLoadError
 
   def perform(file_id)
     # Get model
