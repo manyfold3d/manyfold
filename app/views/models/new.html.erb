@@ -1,5 +1,25 @@
 <h1><%= t ".title" %></h1>
 
+<%= form_with url: models_path, multipart: true do |form| %>
+
+  <div class="row mb-3 input-group">
+    <%= form.label :library, Library.model_name.human, class: "col-sm-2 col-form-label" %>
+    <div class='col-sm-10 ps-0'>
+      <%= form.select :library, Library.all.map { |lib| [library_select_title(lib), lib.id] }, {include_blank: false}, {class: "form-control form-select"} %>
+      <span class="form-text"><%= t ".library.help" %></span>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <%= form.label :scan, t(".scan.label"), class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8 form-check form-switch">
+      <%= form.check_box :scan, checked: true, class: "form-check-input" %>
+    </div>
+  </div>
+
+  <%= submit_tag t(".submit"), class: "btn btn-primary" %>
+<% end %>
+
 <%= content_tag :div, nil,
   id: "uppy-dashboard",
   "data-max-file-size": SiteSettings.max_file_upload_size,
