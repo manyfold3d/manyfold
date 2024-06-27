@@ -25,11 +25,13 @@ window.i18n = new I18n(locales)
 
 window.$ = $
 
-
 document.addEventListener('DOMContentLoaded', () => {
-	Rails.start()
-	new Uppy()
-		.use(Dashboard, { inline: true, target: '#uppy-dashboard' })
-		.use(XHR, { endpoint: "/upload" })
-	Cocooned.start()
+  Rails.start()
+  new Uppy()
+    .use(Dashboard, {
+      inline: true,
+      target: '#uppy-dashboard'
+    })
+    .use(XHR, { endpoint: '/upload' })
+  Cocooned.start()
 })
