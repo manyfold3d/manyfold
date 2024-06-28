@@ -191,8 +191,6 @@ class ModelsController < ApplicationController
       attacher = Shrine::Attacher.new
       attacher.attach_cached(x)
       datafile = attacher.file
-      # Check file is below the max allowed size
-      next if datafile.size > SiteSettings.max_file_upload_size
       # Check file extension as proxy for MIME type - to be improved in other work soon
       next unless helpers.uploadable_file_extensions.include? File.extname(datafile.original_filename).delete(".").downcase
       # Then open it up
