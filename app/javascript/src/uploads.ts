@@ -13,7 +13,7 @@ const uppyLocales = { en, de, fr, pl }
 document.addEventListener('ManyfoldReady', () => {
   document.querySelectorAll('#uppy').forEach((element: HTMLDivElement) => {
     const settings = element.dataset
-    new Uppy({
+    const uppy = new Uppy({
       autoProceed: true,
       locale: uppyLocales[window.i18n.locale],
       restrictions: {
@@ -36,5 +36,14 @@ document.addEventListener('ManyfoldReady', () => {
         resultName: 'uploads'
       })
       .use(XHR, { endpoint: '/upload' })
+    const submitButton = element?.closest('form')?.querySelector("input[type='submit']")
+    uppy.on('upload', () => {
+      submitButton?.setAttribute('disabled', 'disabled')
+    })
+    uppy.on('complete', (result) => {
+      if (result.successful.length > 0) {
+        submitButton?.removeAttribute('disabled')
+      }
+    })
   })
 })
