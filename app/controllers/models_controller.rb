@@ -63,10 +63,10 @@ class ModelsController < ApplicationController
   def create
     authorize :model
     library = Library.find(params[:library])
-    json = JSON.parse(params[:uploads])
+    uploads = JSON.parse(params[:uploads])[0]["successful"] rescue []
 
     save_files(library,
-      json[0]["successful"].map { |x| x["response"]["body"] })
+      uploads.map { |x| x["response"]["body"] })
 
     if params[:scan] == "1"
       Scan::DetectFilesystemChangesJob.perform_later(library.id)
