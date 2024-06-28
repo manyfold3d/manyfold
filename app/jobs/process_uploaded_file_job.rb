@@ -13,7 +13,7 @@ class ProcessUploadedFileJob < ApplicationJob
     dest_folder_name = File.join(library.path, SecureRandom.uuid)
     # Handle different file types
     case File.extname(datafile.original_filename).delete(".").downcase
-    when "zip", "rar", "7z", "bz2", "gz"
+    when *SupportedMimeTypes.archive_extensions
       unzip(dest_folder_name, datafile)
     when *(SupportedMimeTypes.model_extensions + SupportedMimeTypes.image_extensions)
       copy(dest_folder_name, datafile)
