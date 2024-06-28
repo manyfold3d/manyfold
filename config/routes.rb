@@ -54,5 +54,7 @@ Rails.application.routes.draw do
   resources :problems, only: [:index, :update]
   resources :health, only: [:index]
 
-  mount LibraryUploader.upload_endpoint(:cache) => "/upload"
+  authenticate :user, lambda { |u| u.is_contributor? } do
+    mount LibraryUploader.upload_endpoint(:cache) => "/upload"
+  end
 end
