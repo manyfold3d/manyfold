@@ -64,6 +64,8 @@ class Model < ApplicationRecord
   def delete_from_disk_and_destroy
     # Trigger deletion for each file separately, to make sure cleanup happens
     model_files.each { |f| f.delete_from_disk_and_destroy }
+    # Remove tags first - sometimes this causes problems if we don't do it beforehand
+    update!(tags: [])
     # Delete directory corresponding to model
     FileUtils.remove_dir(absolute_path) if exist?
     # Remove from DB
