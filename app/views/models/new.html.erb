@@ -1,6 +1,6 @@
 <h1><%= t ".title" %></h1>
 
-<%= form_with url: models_path, multipart: true do |form| %>
+<%= form_with url: models_path, id: "upload-form" do |form| %>
 
   <div class="row mb-3 input-group">
     <%= form.label :library, Library.model_name.human, class: "col-sm-2 col-form-label" %>
@@ -13,16 +13,10 @@
   <div class="row mb-3 input-group">
     <%= form.label :files, t(".files.label"), class: "col-sm-2 col-form-label" %>
     <div class='col-sm-10 ps-0'>
-      <%= form.file_field :files, {
-            multiple: true,
-            accept: input_accept_string,
-            "data-max-size": SiteSettings.max_file_upload_size
-          } %>
-      <span class="form-text">
-        <%= t ".files.help",
-              types: safe_join(uploadable_file_extensions, ", "),
-              max_size: number_to_human_size(SiteSettings.max_file_upload_size, precision: 3) %>
-      </span>
+      <%= content_tag :div, nil,
+            id: "uppy",
+            "data-max-file-size": SiteSettings.max_file_upload_size,
+            "data-allowed-file-types": input_accept_string %>
     </div>
   </div>
 
@@ -34,5 +28,4 @@
   </div>
 
   <%= submit_tag t(".submit"), class: "btn btn-primary" %>
-
 <% end %>

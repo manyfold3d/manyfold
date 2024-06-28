@@ -212,7 +212,7 @@ RSpec.describe "Models" do
 
     describe "POST /models" do
       it "redirect back to index after upload", :as_contributor do
-        post "/models", params: {library: library.id, scan: "1", files: []}
+        post "/models", params: {library: library.id, scan: "1", uploads: "{}"}
         expect(response).to redirect_to("/libraries")
       end
 

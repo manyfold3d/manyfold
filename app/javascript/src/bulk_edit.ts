@@ -53,7 +53,7 @@ function handleCheckboxChange (event): void {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('ManyfoldReady', () => {
   const bulkEditTable = document.querySelector(
     '[data-bulk-edit]'
   )

@@ -46,7 +46,6 @@ de:
       success: Die Modelle wurden erfolgreich zusammengeführt.
     new:
       files:
-        help: 'Unterstützte Dateitypen: %{types}'
         label: Datei auswählen
       library:
         help: Die Sammlung, in die hochgeladen werden soll.

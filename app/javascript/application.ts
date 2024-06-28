@@ -13,14 +13,20 @@ import 'src/model_edit'
 import 'src/tag'
 import 'src/carousel'
 import 'src/file_size_validation'
+import 'src/uploads'
 
 // Load i18n definitions
 import { I18n } from 'i18n-js'
 import locales from 'src/locales.json'
+window.i18n = new I18n(locales)
+
 window.$ = $
 
-Rails.start()
+const manyfoldReady = new Event('ManyfoldReady')
 
-document.addEventListener('DOMContentLoaded', () => Cocooned.start())
-
-window.i18n = new I18n(locales)
+document.addEventListener('DOMContentLoaded', () => {
+  window.i18n.locale = document.querySelector('html')?.lang ?? 'en'
+  Rails.start()
+  Cocooned.start()
+  document.dispatchEvent(manyfoldReady)
+})

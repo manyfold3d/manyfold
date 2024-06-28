@@ -8,7 +8,7 @@ function setDetailOpenStatus (item: string): void {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('ManyfoldReady', () => {
   $('details').on('toggle', function (event): void {
     const id = $(this).attr('id') ?? ''
     const isOpen = $(this).attr('open') ?? ''
