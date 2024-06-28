@@ -45,12 +45,11 @@ fr:
     merge:
       success: Les modèles ont été fusionnés avec succès.
     new:
+      description:
       files:
         label: Sélectionner un fichier
       library:
         help: La bibliothèque vers laquelle télécharger.
-      scan:
-        label: Analyser après l'upload
       submit: Télécharger
       title: Télécharger
     problem:

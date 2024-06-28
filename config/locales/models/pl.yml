@@ -45,12 +45,11 @@ pl:
     merge:
       success: Modele zostały pomyślnie połączone.
     new:
+      description:
       files:
         label: Wybierz Plik
       library:
         help: Biblioteka, do której ma zostać przesłany plik.
-      scan:
-        label: Zeskanuj po Przesłaniu
       submit: Prześlij
       title: Prześlij
     problem:

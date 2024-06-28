@@ -168,6 +168,37 @@ RSpec.describe ModelScanJob do
     end
   end
 
+  context "with subfolder inside model folder" do
+    around do |ex|
+      MockDirectory.create([
+        "model_one/part_1.obj",
+        "model_one/subfolder/part_2.obj"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    let(:model) do
+      create(:model, path: "model_one", library: library)
+    end
+
+    it "ignores subfolders if not told to include them" do
+      expect(described_class.new.file_list(
+        File.join(library.path, model.path)
+      )).to eq ["#{library.path}/#{model.path}/part_1.obj"]
+    end
+
+    it "generates a complete file list if including all subfolders" do
+      expect(described_class.new.file_list(
+        File.join(library.path, model.path),
+        include_all_subfolders: true
+      )).to eq ["#{library.path}/#{model.path}/part_1.obj", "#{library.path}/#{model.path}/subfolder/part_2.obj"]
+    end
+  end
+
   it "raises exception if model ID is not found" do
     expect { described_class.perform_now(nil) }.to raise_error(ActiveRecord::RecordNotFound)
   end

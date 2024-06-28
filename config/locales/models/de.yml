@@ -45,12 +45,11 @@ de:
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
     new:
+      description:
       files:
         label: Datei auswählen
       library:
         help: Die Sammlung, in die hochgeladen werden soll.
-      scan:
-        label: Nach Upload scannen
       submit: Hochladen
       title: Hochladen
     problem:
