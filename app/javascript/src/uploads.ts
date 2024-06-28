@@ -11,30 +11,30 @@ import pl from '@uppy/locales/lib/pl_PL'
 const uppyLocales = { en, de, fr, pl }
 
 document.addEventListener('ManyfoldReady', () => {
-	document.querySelectorAll('#uppy').forEach((element: HTMLDivElement) => {
-		const settings = element.dataset
-		new Uppy({
-			autoProceed: true,
-			locale: uppyLocales[window.i18n.locale],
-			restrictions: {
-				allowedFileTypes: settings.allowedFileTypes?.split(","),
-				maxFileSize: +(settings?.maxFileSize || -1)
-			}
-		})
-			.use(Dashboard, {
-				inline: true,
-				target: `#${element.id}`,
-				theme: 'auto',
-				width: '100%',
-				height: '25rem',
-				showRemoveButtonAfterComplete: true,
-				hideProgressAfterFinish: true
-			})
-			.use(Form, {
-				target: element.closest('form') || undefined,
-				getMetaFromForm: false,
-				resultName: "uploads"
-			})
-			.use(XHR, { endpoint: '/upload' })
-	})
+  document.querySelectorAll('#uppy').forEach((element: HTMLDivElement) => {
+    const settings = element.dataset
+    new Uppy({
+      autoProceed: true,
+      locale: uppyLocales[window.i18n.locale],
+      restrictions: {
+        allowedFileTypes: settings.allowedFileTypes?.split(','),
+        maxFileSize: +(settings?.maxFileSize ?? -1)
+      }
+    })
+      .use(Dashboard, {
+        inline: true,
+        target: `#${element.id}`,
+        theme: 'auto',
+        width: '100%',
+        height: '25rem',
+        showRemoveButtonAfterComplete: true,
+        hideProgressAfterFinish: true
+      })
+      .use(Form, {
+        target: element.closest('form') ?? undefined,
+        getMetaFromForm: false,
+        resultName: 'uploads'
+      })
+      .use(XHR, { endpoint: '/upload' })
+  })
 })
