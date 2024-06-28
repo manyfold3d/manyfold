@@ -22,7 +22,11 @@ window.i18n = new I18n(locales)
 
 window.$ = $
 
+const manyfoldReady = new Event("ManyfoldReady")
+
 document.addEventListener('DOMContentLoaded', () => {
+	window.i18n.locale = document.querySelector("html")?.lang || "en"
 	Rails.start()
-  Cocooned.start()
+	Cocooned.start()
+	document.dispatchEvent(manyfoldReady)
 })

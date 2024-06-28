@@ -3,11 +3,19 @@ import Dashboard from '@uppy/dashboard'
 import Form from '@uppy/form'
 import XHR from '@uppy/xhr-upload'
 
-document.addEventListener('DOMContentLoaded', () => {
+import en from '@uppy/locales/lib/en_US'
+import fr from '@uppy/locales/lib/fr_FR'
+import de from '@uppy/locales/lib/de_DE'
+import pl from '@uppy/locales/lib/pl_PL'
+
+const uppyLocales = { en, de, fr, pl }
+
+document.addEventListener('ManyfoldReady', () => {
 	document.querySelectorAll('#uppy').forEach((element: HTMLDivElement) => {
 		const settings = element.dataset
 		new Uppy({
 			autoProceed: true,
+			locale: uppyLocales[window.i18n.locale],
 			restrictions: {
 				allowedFileTypes: settings.allowedFileTypes?.split(","),
 				maxFileSize: +(settings?.maxFileSize || -1)

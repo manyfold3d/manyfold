@@ -15,6 +15,7 @@
     "@uppy/core": "^3.13.0",
     "@uppy/dashboard": "^3.9.0",
     "@uppy/form": "^3.2.1",
+    "@uppy/locales": "^3.5.4",
     "@uppy/xhr-upload": "^3.6.7",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",

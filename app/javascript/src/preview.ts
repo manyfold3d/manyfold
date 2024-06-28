@@ -131,7 +131,7 @@ class ObjectPreview {
 }
 
 const previewWindows: ObjectPreview[] = []
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('ManyfoldReady', () => {
   document.querySelectorAll('[data-preview]').forEach((canvas: HTMLCanvasElement) => {
     const preview = new ObjectPreview(canvas)
     previewWindows.push(preview)

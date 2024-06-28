@@ -1,6 +1,6 @@
 import { Carousel } from 'bootstrap'
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('ManyfoldReady', () => {
   let paused = false
   let manual = false
   const carouselElement = document.querySelector('#imageCarousel')

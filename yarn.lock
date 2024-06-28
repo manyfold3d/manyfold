@@ -902,6 +902,13 @@
     "@uppy/utils" "^5.7.4"
     preact "^10.5.13"
 
+"@uppy/locales@^3.5.4":
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/@uppy/locales/-/locales-3.5.4.tgz#c95efdf47982c0c08771d421337ffdeaa8c5eeeb"
+  integrity sha512-i0x8qtP2ZghlpLN3QCwRiqvbutkvaLryMXvSWF8nvfAiY7XX1zMcRme7+W2ovSMEeiNK+gjjuLCMmbQhmZFx+Q==
+  dependencies:
+    "@uppy/utils" "^5.9.0"
+
 "@uppy/provider-views@^3.13.0":
   version "3.13.0"
   resolved "https://registry.yarnpkg.com/@uppy/provider-views/-/provider-views-3.13.0.tgz#9fa98b35e0827ef24c264de1729241f85e29bfa2"

@@ -7,7 +7,7 @@ const validateFileSizes = (fileList: FileList, maxSize: number): boolean => {
   return true
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('ManyfoldReady', () => {
   document.querySelectorAll('input[data-max-size]').forEach((input: HTMLInputElement) => {
     input.addEventListener('change', () => {
       if ((input.files != null) && (input.dataset.maxSize != null) && !validateFileSizes(input.files, parseInt(input.dataset.maxSize))) {
