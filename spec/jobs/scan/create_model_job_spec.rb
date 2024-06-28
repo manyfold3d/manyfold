@@ -27,5 +27,4 @@ RSpec.describe Scan::CreateModelJob do
     described_class.perform_now(library.id, "/model", include_all_subfolders: true)
     expect(ModelScanJob).to have_been_enqueued.with(Model.first.id, include_all_subfolders: true).once
   end
-
 end
