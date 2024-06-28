@@ -49,8 +49,6 @@ fr:
         label: Sélectionner un fichier
       library:
         help: La bibliothèque vers laquelle télécharger.
-      scan:
-        label: Analyser après l'upload
       submit: Télécharger
       title: Télécharger
     problem:

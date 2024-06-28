@@ -51,8 +51,6 @@ en:
       free_space: "(%{available} free)"
       library:
         help: The library to upload to.
-      scan:
-        label: Scan After Upload
       submit: Upload
       title: Upload
     problem:

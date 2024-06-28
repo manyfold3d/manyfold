@@ -20,12 +20,5 @@
     </div>
   </div>
 
-  <div class="row mb-2">
-    <%= form.label :scan, t(".scan.label"), class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8 form-check form-switch">
-      <%= form.check_box :scan, checked: true, class: "form-check-input" %>
-    </div>
-  </div>
-
   <%= submit_tag t(".submit"), class: "btn btn-primary" %>
 <% end %>

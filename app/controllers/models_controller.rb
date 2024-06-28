@@ -72,9 +72,6 @@ class ModelsController < ApplicationController
     save_files(library,
       uploads.map { |x| x["response"]["body"] })
 
-    if params[:scan] == "1"
-      Scan::DetectFilesystemChangesJob.perform_later(library.id)
-    end
     redirect_to libraries_path, notice: t(".success")
   end
 
@@ -206,6 +203,8 @@ class ModelsController < ApplicationController
       end
       # Rename destination folder atomically
       File.rename(dest_folder_name, File.join(library.path, file_name))
+      # Queue up model creation for new folder
+      Scan::CreateModelJob.perform_later(library.id, file_name)
       # Discard cached file
       attacher.destroy
     end

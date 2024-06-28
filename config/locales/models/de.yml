@@ -49,8 +49,6 @@ de:
         label: Datei auswählen
       library:
         help: Die Sammlung, in die hochgeladen werden soll.
-      scan:
-        label: Nach Upload scannen
       submit: Hochladen
       title: Hochladen
     problem:
