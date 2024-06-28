@@ -63,7 +63,10 @@ class ModelsController < ApplicationController
   def create
     authorize :model
     library = Library.find(params[:library])
-    save_files(params[:files], File.join(library.path, ""))
+    json = JSON.parse(params[:uppyResult])
+
+    save_files(library,
+      json[0]["successful"].map { |x| x["response"]["body"] })
 
     if params[:scan] == "1"
       Scan::DetectFilesystemChangesJob.perform_later(library.id)
@@ -183,8 +186,11 @@ class ModelsController < ApplicationController
     @title = @model.name
   end
 
-  def save_files(files, library_path)
-    files.select { |datafile| datafile != "" }.each { |datafile|
+  def save_files(library, files)
+    files.each do |x|
+      attacher = Shrine::Attacher.new
+      attacher.attach_cached(x)
+      datafile = attacher.file
       # Check file is below the max allowed size
       next if datafile.size > SiteSettings.max_file_upload_size
       # Check file extension as proxy for MIME type - to be improved in other work soon
@@ -192,29 +198,33 @@ class ModelsController < ApplicationController
       # Then open it up
       file_name_with_zip = datafile.original_filename
       file_name = File.basename(file_name_with_zip, File.extname(file_name_with_zip))
-      dest_folder_name = library_path + SecureRandom.uuid
+      dest_folder_name = File.join(library.path, SecureRandom.uuid)
       if !Dir.exist?(dest_folder_name)
         unzip(dest_folder_name, datafile)
       end
       # Rename destination folder atomically
-      File.rename(dest_folder_name, library_path + file_name)
-    }
+      File.rename(dest_folder_name, File.join(library.path, file_name))
+      # Discard cached file
+      attacher.destroy
+    end
   end
 
   def unzip(dest_folder_name, datafile)
-    pn = Pathname.new(dest_folder_name)
-
-    reader = Archive::Reader.open_filename(datafile.path)
-    Dir.mkdir(dest_folder_name)
-    Dir.chdir(dest_folder_name) do
-      reader.each_entry do |entry|
-        next if entry.size > SiteSettings.max_file_extract_size
-        reader.extract(entry, Archive::EXTRACT_SECURE)
+    datafile.open do |file|
+      Archive::Reader.open_fd(file.fileno) do |reader|
+        Dir.mkdir(dest_folder_name)
+        Dir.chdir(dest_folder_name) do
+          reader.each_entry do |entry|
+            next if entry.size > SiteSettings.max_file_extract_size
+            reader.extract(entry, Archive::EXTRACT_SECURE)
+          end
+        end
       end
     end
 
     # Checks the directory just created and if it contains only one directory,
     # moves the contents of that directory up a level, then deletes the empty directory.
+    pn = Pathname.new(dest_folder_name)
     if pn.children.length == 1 && pn.children[0].directory?
       dup_dir = Pathname.new(pn.children[0])
 
@@ -225,7 +235,5 @@ class ModelsController < ApplicationController
 
       Dir.delete(dup_dir.to_s)
     end
-  ensure
-    reader&.close
   end
 end
