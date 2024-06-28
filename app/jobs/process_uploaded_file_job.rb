@@ -2,24 +2,29 @@ class ProcessUploadedFileJob < ApplicationJob
   queue_as :default
 
   def perform(library_id, uploaded_file)
+    # Find library
     library = Library.find(library_id)
     return if library.nil?
+    # Attach cached upload file
     attacher = Shrine::Attacher.new
     attacher.attach_cached(uploaded_file)
     datafile = attacher.file
-    # Check file extension as proxy for MIME type - to be improved in other work soon
-    return unless %w[zip rar 7z bz2 gz].include? File.extname(datafile.original_filename).delete(".").downcase
-    # Then open it up
-    file_name_with_zip = datafile.original_filename
-    file_name = File.basename(file_name_with_zip, File.extname(file_name_with_zip))
+    # Create name for temporary destination folder
     dest_folder_name = File.join(library.path, SecureRandom.uuid)
-    if !Dir.exist?(dest_folder_name)
+    # Handle different file types
+    case File.extname(datafile.original_filename).delete(".").downcase
+    when "zip", "rar", "7z", "bz2", "gz"
       unzip(dest_folder_name, datafile)
+    else
     end
-    # Rename destination folder atomically
-    File.rename(dest_folder_name, File.join(library.path, file_name))
-    # Queue up model creation for new folder
-    Scan::CreateModelJob.perform_later(library.id, file_name, include_all_subfolders: true)
+    # If a folder was created...
+    if Dir.exist?(dest_folder_name)
+      # Rename destination folder atomically
+      file_name = File.basename(datafile.original_filename, File.extname(datafile.original_filename))
+      File.rename(dest_folder_name, File.join(library.path, file_name))
+      # Queue up model creation for new folder
+      Scan::CreateModelJob.perform_later(library.id, file_name, include_all_subfolders: true)
+    end
     # Discard cached file
     attacher.destroy
   end
