@@ -15,18 +15,28 @@ class ProcessUploadedFileJob < ApplicationJob
     case File.extname(datafile.original_filename).delete(".").downcase
     when "zip", "rar", "7z", "bz2", "gz"
       unzip(dest_folder_name, datafile)
+    when *(SupportedMimeTypes.model_extensions + SupportedMimeTypes.image_extensions)
+      copy(dest_folder_name, datafile)
     else
+      Rails.logger.warn("Ignoring #{datafile.inspect}")
     end
     # If a folder was created...
     if Dir.exist?(dest_folder_name)
       # Rename destination folder atomically
-      file_name = File.basename(datafile.original_filename, File.extname(datafile.original_filename))
+      file_name = File.basename(datafile.original_filename, ".*")
       File.rename(dest_folder_name, File.join(library.path, file_name))
       # Queue up model creation for new folder
       Scan::CreateModelJob.perform_later(library.id, file_name, include_all_subfolders: true)
     end
     # Discard cached file
     attacher.destroy
+  end
+
+  def copy(dest_folder_name, datafile)
+    Dir.mkdir(dest_folder_name)
+    Dir.chdir(dest_folder_name) do
+      FileUtils.copy(datafile.open, datafile.original_filename)
+    end
   end
 
   def unzip(dest_folder_name, datafile)

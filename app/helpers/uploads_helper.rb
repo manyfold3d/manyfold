@@ -10,7 +10,7 @@ module UploadsHelper
   end
 
   def uploadable_file_extensions
-    %w[zip rar 7z bz2 gz]
+    %w[zip rar 7z bz2 gz] + SupportedMimeTypes.model_extensions + SupportedMimeTypes.image_extensions
   end
 
   def input_accept_string
