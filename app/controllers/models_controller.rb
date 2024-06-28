@@ -69,8 +69,9 @@ class ModelsController < ApplicationController
       []
     end
 
-    save_files(library,
-      uploads.map { |x| x["response"]["body"] })
+    uploads.each do |upload|
+      ProcessUploadedFileJob.perform_later(library.id, upload["response"]["body"])
+    end
 
     redirect_to libraries_path, notice: t(".success")
   end
@@ -185,56 +186,5 @@ class ModelsController < ApplicationController
     @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links).find(params[:id])
     authorize @model
     @title = @model.name
-  end
-
-  def save_files(library, files)
-    files.each do |x|
-      attacher = Shrine::Attacher.new
-      attacher.attach_cached(x)
-      datafile = attacher.file
-      # Check file extension as proxy for MIME type - to be improved in other work soon
-      next unless helpers.uploadable_file_extensions.include? File.extname(datafile.original_filename).delete(".").downcase
-      # Then open it up
-      file_name_with_zip = datafile.original_filename
-      file_name = File.basename(file_name_with_zip, File.extname(file_name_with_zip))
-      dest_folder_name = File.join(library.path, SecureRandom.uuid)
-      if !Dir.exist?(dest_folder_name)
-        unzip(dest_folder_name, datafile)
-      end
-      # Rename destination folder atomically
-      File.rename(dest_folder_name, File.join(library.path, file_name))
-      # Queue up model creation for new folder
-      Scan::CreateModelJob.perform_later(library.id, file_name, include_all_subfolders: true)
-      # Discard cached file
-      attacher.destroy
-    end
-  end
-
-  def unzip(dest_folder_name, datafile)
-    datafile.open do |file|
-      Archive::Reader.open_fd(file.fileno) do |reader|
-        Dir.mkdir(dest_folder_name)
-        Dir.chdir(dest_folder_name) do
-          reader.each_entry do |entry|
-            next if entry.size > SiteSettings.max_file_extract_size
-            reader.extract(entry, Archive::EXTRACT_SECURE)
-          end
-        end
-      end
-    end
-
-    # Checks the directory just created and if it contains only one directory,
-    # moves the contents of that directory up a level, then deletes the empty directory.
-    pn = Pathname.new(dest_folder_name)
-    if pn.children.length == 1 && pn.children[0].directory?
-      dup_dir = Pathname.new(pn.children[0])
-
-      dup_dir.children.each do |child|
-        fixed_path = Pathname.new(pn.to_s + "/" + child.basename.to_s)
-        File.rename(child.to_s, fixed_path.to_s)
-      end
-
-      Dir.delete(dup_dir.to_s)
-    end
   end
 end
