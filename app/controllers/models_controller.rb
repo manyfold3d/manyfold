@@ -63,7 +63,7 @@ class ModelsController < ApplicationController
   def create
     authorize :model
     library = Library.find(params[:library])
-    json = JSON.parse(params[:uppyResult])
+    json = JSON.parse(params[:uploads])
 
     save_files(library,
       json[0]["successful"].map { |x| x["response"]["body"] })

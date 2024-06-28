@@ -22,7 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
 				showRemoveButtonAfterComplete: true,
 				hideProgressAfterFinish: true
 			})
-			.use(Form, { target: element.closest('form') || undefined })
+			.use(Form, {
+				target: element.closest('form') || undefined,
+				getMetaFromForm: false,
+				resultName: "uploads"
+			})
 			.use(XHR, { endpoint: '/upload' })
 	})
 })
