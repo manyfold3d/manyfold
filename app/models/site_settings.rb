@@ -22,7 +22,7 @@ class SiteSettings < RailsSettings::Base
   end
 
   def self.max_file_upload_size
-    ENV.fetch("MAX_FILE_UPLOAD_SIZE", 268_435_456).to_i
+    ENV.fetch("MAX_FILE_UPLOAD_SIZE", 1_073_741_824).to_i
   end
 
   def self.max_file_extract_size
