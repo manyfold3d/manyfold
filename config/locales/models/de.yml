@@ -45,6 +45,7 @@ de:
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
     new:
+      description:
       files:
         label: Datei auswählen
       library:

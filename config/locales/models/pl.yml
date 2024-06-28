@@ -45,6 +45,7 @@ pl:
     merge:
       success: Modele zostały pomyślnie połączone.
     new:
+      description:
       files:
         label: Wybierz Plik
       library:
