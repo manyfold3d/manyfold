@@ -33,18 +33,6 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
     folders_with_changes.compact_blank!
     # For each folder in the library with a change, find or create a model, then scan it
     status[:step] = "jobs.scan.detect_filesystem_changes.creating_models" # i18n-tasks-use t('jobs.scan.detect_filesystem_changes.creating_models')
-    folders_with_changes.each do |path|
-      new_model_properties = {
-        # Initial best guess at name, this might be overwritten later by path parser
-        name: File.basename(path).humanize.tr("+", " ").titleize
-      }
-      model = library.models.create_with(new_model_properties).find_or_create_by(path: path.trim_path_separators)
-      if model.valid?
-        ModelScanJob.perform_later(model.id)
-      else
-        Rails.logger.error(model.inspect)
-        Rails.logger.error(model.errors.full_messages.inspect)
-      end
-    end
+    folders_with_changes.each { |path| Scan::CreateModelJob.perform_later(library.id, path) }
   end
 end
