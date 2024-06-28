@@ -20,6 +20,12 @@ RSpec.describe Scan::CreateModelJob do
 
   it "queues model up for a full scan" do
     described_class.perform_now(library.id, "/model")
-    expect(ModelScanJob).to have_been_enqueued.with(Model.first.id).once
+    expect(ModelScanJob).to have_been_enqueued.with(Model.first.id, include_all_subfolders: false).once
   end
+
+  it "queues model up for a full scan including subfolders" do
+    described_class.perform_now(library.id, "/model", include_all_subfolders: true)
+    expect(ModelScanJob).to have_been_enqueued.with(Model.first.id, include_all_subfolders: true).once
+  end
+
 end

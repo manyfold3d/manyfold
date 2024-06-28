@@ -3,28 +3,29 @@ require "shellwords"
 class ModelScanJob < ApplicationJob
   queue_as :scan
 
-  def file_list(model_path)
+  def file_list(model_path, include_all_subfolders: false)
     list = []
     Dir.open(model_path) do |dir|
-      list = Dir.glob(
+      glob = include_all_subfolders ?
+        [File.join(Shellwords.escape(dir.path), "**", ApplicationJob.file_pattern)] :
         [File.join(Shellwords.escape(dir.path), ApplicationJob.file_pattern)] +
-        ApplicationJob.common_subfolders.map do |name, pattern|
-          File.join(
-            Shellwords.escape(dir.path),
-            ApplicationJob.case_insensitive_glob_string(name),
-            pattern
-          )
-        end
-      ).uniq.filter { |x| File.file?(x) }
+          ApplicationJob.common_subfolders.map do |name, pattern|
+            File.join(
+              Shellwords.escape(dir.path),
+              ApplicationJob.case_insensitive_glob_string(name),
+              pattern
+            )
+          end
+      list = Dir.glob(glob).uniq.filter { |x| File.file?(x) }
     end
     list
   end
 
-  def perform(model_id)
+  def perform(model_id, include_all_subfolders: false)
     model = Model.find(model_id)
     return if Problem.create_or_clear(model, :missing, !model.exist?)
     # For each file in the model, create a file object
-    file_list(model.absolute_path).each do |filename|
+    file_list(model.absolute_path, include_all_subfolders: include_all_subfolders).each do |filename|
       # Create the file
       file = model.model_files.find_or_create_by(filename: filename.gsub(model.absolute_path + "/", ""))
       ModelFileScanJob.perform_later(file.id) if file.valid?

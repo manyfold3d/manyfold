@@ -204,7 +204,7 @@ class ModelsController < ApplicationController
       # Rename destination folder atomically
       File.rename(dest_folder_name, File.join(library.path, file_name))
       # Queue up model creation for new folder
-      Scan::CreateModelJob.perform_later(library.id, file_name)
+      Scan::CreateModelJob.perform_later(library.id, file_name, include_all_subfolders: true)
       # Discard cached file
       attacher.destroy
     end
