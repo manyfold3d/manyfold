@@ -80,7 +80,11 @@ class ModelFile < ApplicationRecord
     attachment_attacher.set Shrine.uploaded_file(
       storage: model.library.storage_key,
       id: path_within_library,
-      metadata: {filename: basename(include_extension: true), size: attributes["size"]}
+      metadata: {
+        filename: basename(include_extension: true),
+        size: attributes["size"],
+        mime_type: Mime::Type.lookup_by_extension(File.extname(filename).delete(".").downcase).to_s
+      }
     )
     attachment_attacher.refresh_metadata! if refresh
     save!
