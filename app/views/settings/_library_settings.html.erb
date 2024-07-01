@@ -17,7 +17,7 @@
             <%= content_tag(:span, number_to_human_size(library.free_space, precision: 2), class: "col-sm-10") %>
           </div>
           <div class="row input-group">
-            <%= content_tag(:span, t("activerecord.models.library.storage_service"), class: "col-sm") %>
+            <%= content_tag(:span, t("activerecord.attributes.library.storage_service"), class: "col-sm") %>
             <%= content_tag(:span, t("libraries.storage_services.%{service}" % {service: library.storage_service}), class: "col-sm-10") %>
           </div>
           <div class="row input-group">
