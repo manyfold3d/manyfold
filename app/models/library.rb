@@ -70,7 +70,7 @@ class Library < ApplicationRecord
     nil # migrations probably haven't run yet to create library table
   end
 
-  def glob(pattern, flags = 0)
+  def list_files(pattern, flags = 0)
     case storage_service
     when "filesystem"
       Dir.glob(pattern, flags, base: Shellwords.escape(path)).filter { |x| File.file?(File.join(path, x)) }

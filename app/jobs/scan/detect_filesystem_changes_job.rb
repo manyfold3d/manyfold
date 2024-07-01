@@ -3,7 +3,7 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
 
   # Find all files in the library that we might need to look at
   def filenames_on_disk(library)
-    library.glob(File.join("**", ApplicationJob.file_pattern))
+    library.list_files(File.join("**", ApplicationJob.file_pattern))
   end
 
   # Get a list of all the existing filenames
