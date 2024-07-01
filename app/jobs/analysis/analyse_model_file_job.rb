@@ -13,7 +13,7 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
     if file.mtime > file.updated_at || file.digest.nil?
       file.digest = file.calculate_digest
       # If the digest has changed, queue up detailed geometric mesh analysis
-      Analysis::GeometricAnalysisJob.perform_later(file_id) if file.digest_changed?
+      Analysis::GeometricAnalysisJob.perform_later(file_id) if file.is_3d_model? && file.digest_changed?
       # Store updated file metadata
       file.save!
     end
