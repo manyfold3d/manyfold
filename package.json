@@ -25,7 +25,7 @@
     "jquery": "^3.7.1",
     "masonry-layout": "^4.2.2",
     "sass": "^1.77.6",
-    "three": "^0.165.0",
+    "three": "^0.166.0",
     "threejs-webworker-3mf-loader": "https://github.com/manyfold3d/threejs-webworker-3mf-loader"
   },
   "version": "0.1.0",
@@ -38,7 +38,7 @@
     "@types/jquery": "^3.5.30",
     "@types/node": "^20.11.0",
     "@types/selectize": "^0.12.39",
-    "@types/three": "^0.165.0",
+    "@types/three": "^0.166.0",
     "@types/webpack-env": "^1.18.5",
     "@typescript-eslint/parser": "^7.14.1",
     "eslint": "^8.57.0",
