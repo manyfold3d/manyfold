@@ -16,7 +16,7 @@
     "@uppy/dashboard": "^3.9.1",
     "@uppy/form": "^3.2.1",
     "@uppy/locales": "^3.5.4",
-    "@uppy/xhr-upload": "^3.6.7",
+    "@uppy/xhr-upload": "^3.6.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "comlink": "^4.4.1",
