@@ -1,5 +1,4 @@
 class Library < ApplicationRecord
-
   STORAGE_SERVICES = [
     "filesystem"
   ]
