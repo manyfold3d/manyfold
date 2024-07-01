@@ -154,7 +154,7 @@ class ModelFile < ApplicationRecord
   memoize :mesh
 
   def reattach!
-    attachment_attacher.assign attachment
+    attachment_attacher.attach attachment, storage: model.library.storage_key
     save!
   end
 
