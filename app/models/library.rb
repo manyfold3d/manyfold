@@ -1,3 +1,5 @@
+require "shellwords"
+
 class Library < ApplicationRecord
   STORAGE_SERVICES = [
     "filesystem"
@@ -66,6 +68,15 @@ class Library < ApplicationRecord
     find_each(&:register_storage)
   rescue ActiveRecord::StatementInvalid
     nil # migrations probably haven't run yet to create library table
+  end
+
+  def glob(pattern, flags = 0)
+    case storage_service
+    when "filesystem"
+      Dir.glob(File.join(Shellwords.escape(path), pattern), flags)
+    else
+      raise "Invalid storage service: #{storage_service}"
+    end
   end
 
   private
