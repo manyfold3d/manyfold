@@ -73,7 +73,7 @@ class Library < ApplicationRecord
   def glob(pattern, flags = 0)
     case storage_service
     when "filesystem"
-      Dir.glob(File.join(Shellwords.escape(path), pattern), flags)
+      Dir.glob(pattern, flags, base: Shellwords.escape(path)).filter { |x| File.file?(File.join(path, x)) }
     else
       raise "Invalid storage service: #{storage_service}"
     end

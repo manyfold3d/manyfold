@@ -3,12 +3,12 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
 
   # Find all files in the library that we might need to look at
   def filenames_on_disk(library)
-    library.glob(File.join("**", ApplicationJob.file_pattern)).filter { |x| File.file?(x) }
+    library.glob(File.join("**", ApplicationJob.file_pattern))
   end
 
   # Get a list of all the existing filenames
   def known_filenames(library)
-    library.model_files.reload.map(&:absolute_path)
+    library.model_files.reload.map(&:path_within_library)
   end
 
   def filter_out_common_subfolders(folders)
@@ -25,7 +25,7 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
     changes = (known_filenames(library).to_set ^ filenames_on_disk(library)).to_a
     # Make a list of library-relative folders with changed files
     status[:step] = "jobs.scan.detect_filesystem_changes.building_folder_list" # i18n-tasks-use t('jobs.scan.detect_filesystem_changes.building_folder_list')
-    folders_with_changes = changes.map { |f| File.dirname(f.gsub(library.path, "")) }.uniq
+    folders_with_changes = changes.map { |f| File.dirname(f) }.uniq
     folders_with_changes = filter_out_common_subfolders(folders_with_changes)
     folders_with_changes.delete("/")
     folders_with_changes.compact_blank!
