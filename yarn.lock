@@ -873,10 +873,10 @@
     nanoid "^4.0.0"
     preact "^10.5.13"
 
-"@uppy/dashboard@^3.9.0":
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/@uppy/dashboard/-/dashboard-3.9.0.tgz#56439053492a30148376b38b989f74ff89a2434d"
-  integrity sha512-Z4mlMpckj8R3V3WSRDFAJAdzmb0RGSJCGeQyW8Da5d11elqg0YbBd9rPyrWaHewEha4wnClTtl2BwfFKFY7t3g==
+"@uppy/dashboard@^3.9.1":
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/@uppy/dashboard/-/dashboard-3.9.1.tgz#257c8b920ccd7883129c22cc956c176f939a2a79"
+  integrity sha512-zZp+5Dwqu1jUdAZEu0Os2kC/8bF3cdrkve8CYEwqP/12yjNe8PF+XUQKF1RCYITjDE4hPSXcTh0MWw6t2LONuw==
   dependencies:
     "@transloadit/prettier-bytes" "^0.3.4"
     "@uppy/informer" "^3.1.0"
