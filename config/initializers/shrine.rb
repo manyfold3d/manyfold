@@ -11,7 +11,5 @@ Shrine.storages = {
 }
 
 Rails.application.config.after_initialize do
-  Library.find_each(&:register_storage)
-rescue ActiveRecord::StatementInvalid
-  nil # migrations probably haven't run yet to create library table
+  Library.register_all_storage
 end

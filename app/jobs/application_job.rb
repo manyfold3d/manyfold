@@ -8,6 +8,7 @@ class ApplicationJob < ActiveJob::Base
   before_perform do |job|
     begin
       SiteSettings.clear_cache
+      Library.register_all_storage
     rescue
       nil
     end
