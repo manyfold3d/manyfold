@@ -54,6 +54,12 @@ class Library < ApplicationRecord
     Shrine.storages[storage_key] = storage
   end
 
+  def self.register_all_storage
+    self.find_each(&:register_storage)
+  rescue ActiveRecord::StatementInvalid
+    nil # migrations probably haven't run yet to create library table
+  end
+
   private
 
   def ensure_path_case_is_correct
