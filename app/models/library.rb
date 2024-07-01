@@ -51,7 +51,12 @@ class Library < ApplicationRecord
   end
 
   def storage
-    Shrine::Storage::FileSystem.new(path)
+    case storage_service
+    when "filesystem"
+      Shrine::Storage::FileSystem.new(path)
+    else
+      raise "Invalid storage service: #{storage_service}"
+    end
   end
 
   def register_storage
