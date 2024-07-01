@@ -1,6 +1,9 @@
-require "shrine/storage/memory"
-
 class Library < ApplicationRecord
+
+  STORAGE_SERVICES = [
+    "filesystem"
+  ]
+
   has_many :models, dependent: :destroy
   has_many :model_files, through: :models
   has_many :problems, as: :problematic, dependent: :destroy
@@ -10,6 +13,7 @@ class Library < ApplicationRecord
   after_save :register_storage
 
   validates :path, presence: true, uniqueness: true, existing_path: true
+  validates :storage_service, presence: true, inclusion: STORAGE_SERVICES
 
   default_scope { order(:path) }
 
