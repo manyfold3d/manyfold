@@ -18,6 +18,8 @@ class Library < ApplicationRecord
 
   default_scope { order(:path) }
 
+  delegate :exists?, to: :storage
+
   def name
     self[:name] || (path ? File.basename(path) : "")
   end

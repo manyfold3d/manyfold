@@ -76,7 +76,7 @@ class ModelFile < ApplicationRecord
   end
 
   def attach_existing_file!(refresh: true)
-    return if attachment.present? || !File.exist?(absolute_path)
+    return if attachment.present? || !exists?
     attachment_attacher.set Shrine.uploaded_file(
       storage: model.library.storage_key,
       id: path_within_library,
@@ -90,8 +90,8 @@ class ModelFile < ApplicationRecord
     save!
   end
 
-  def exist?
-    File.exist?(absolute_path)
+  def exists?
+    model.library.exists?(path_within_library)
   end
 
   def mtime

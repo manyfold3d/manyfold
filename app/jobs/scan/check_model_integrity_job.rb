@@ -9,7 +9,7 @@ class Scan::CheckModelIntegrityJob < ApplicationJob
     Problem.create_or_clear model, :no_image, model.image_files.empty?
     Problem.create_or_clear model, :no_3d_model, model.three_d_files.empty?
     model.model_files.each do |f|
-      Problem.create_or_clear(f, :missing, !f.exist?)
+      Problem.create_or_clear(f, :missing, !f.exists?)
     end
   end
 end
