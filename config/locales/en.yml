@@ -17,6 +17,7 @@ en:
         name: Name
         notes: Notes
         path: Path
+        storage_service: Storage Service
         tag_regex: Tag Regex
       link:
         url: Link
