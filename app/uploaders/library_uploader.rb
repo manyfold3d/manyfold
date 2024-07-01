@@ -2,7 +2,7 @@ class LibraryUploader < Shrine
   plugin :dynamic_storage
   plugin :upload_endpoint, max_size: SiteSettings.max_file_upload_size
 
-  storage(/library_(\d)/) do |m|
+  storage(/library_(\d+)/) do |m|
     Library.find(m[1]).storage
   end
 
