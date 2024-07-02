@@ -128,6 +128,7 @@ ignore_unused:
 - 'activerecord.errors.*'
 - 'activerecord.models.*'
 - 'problems.categories.*'
+- 'libraries.storage_services.*' # Names for storage services
 - 'licenses.*'
 - 'sites.*'
 - 'problems.update.ignored'

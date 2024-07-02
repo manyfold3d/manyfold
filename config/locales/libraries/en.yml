@@ -23,6 +23,8 @@ en:
       success: Library scan started.
     scan_all:
       success: Scan started for all libraries.
+    storage_services:
+      filesystem: Local filesystem
     update:
       failure: An error occurred, and the library could not be saved.
       success: Library details saved.

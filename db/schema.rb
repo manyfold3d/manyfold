@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_14_085913) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_01_142651) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -81,6 +81,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_14_085913) do
     t.string "name"
     t.text "tag_regex"
     t.text "icon"
+    t.string "storage_service", default: "filesystem", null: false
     t.index ["path"], name: "index_libraries_on_path", unique: true
   end
 
@@ -94,7 +95,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_14_085913) do
   end
 
   create_table "model_files", force: :cascade do |t|
-    t.string "filename"
     t.integer "model_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -103,8 +103,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_14_085913) do
     t.string "digest"
     t.text "notes"
     t.text "caption"
-    t.bigint "size"
     t.integer "presupported_version_id"
+    t.string "filename"
+    t.integer "size"
     t.json "attachment_data"
     t.index ["digest"], name: "index_model_files_on_digest"
     t.index ["filename", "model_id"], name: "index_model_files_on_filename_and_model_id", unique: true

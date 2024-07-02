@@ -73,7 +73,7 @@ class LibrariesController < ApplicationController
   private
 
   def library_params
-    params.require(:library).permit(:path, :name, :notes, :caption, :icon, {tag_regex: []})
+    params.require(:library).permit(:path, :name, :notes, :caption, :icon, {tag_regex: []}, :storage_service)
   end
 
   def get_library
