@@ -175,7 +175,9 @@ RSpec.describe Model do
     let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
     let!(:model) {
       FileUtils.mkdir_p(File.join(library.path, "original"))
-      create(:model, library: library, name: "test model", path: "original")
+      m = create(:model, library: library, name: "test model", path: "original")
+      create(:model_file, model: m)
+      m
     }
 
     it "moves model folder" do # rubocop:todo RSpec/MultipleExpectations
@@ -216,7 +218,9 @@ RSpec.describe Model do
     # rubocop:enable RSpec/InstanceVariable
     let!(:model) {
       FileUtils.mkdir_p(File.join(original_library.path, "model"))
-      create(:model, library: original_library, name: "test model", path: "model")
+      m = create(:model, library: original_library, name: "test model", path: "model")
+      create(:model_file, model: m)
+      m
     }
     let(:submodel) { create(:model, library: original_library, name: "sub model", path: "model/submodel") }
 
@@ -297,7 +301,7 @@ RSpec.describe Model do
 
     it "removes original folder from disk" do
       expect { model.delete_from_disk_and_destroy }.to(
-        change { File.exist?(model.absolute_path) }.from(true).to(false)
+        change { File.exist?(File.join(library.path, model.path)) }.from(true).to(false)
       )
     end
 

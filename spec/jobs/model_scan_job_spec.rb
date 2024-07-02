@@ -158,8 +158,9 @@ RSpec.describe ModelScanJob do
 
     it "generates a correct file list" do
       expect(described_class.new.file_list(
-        File.join(library.path, model.path)
-      )).to eq ["#{library.path}/#{model.path}/part_1.obj"]
+        model.path,
+        library
+      )).to eq ["#{model.path}/part_1.obj"]
     end
 
     it "detects model files" do # rubocop:todo RSpec/MultipleExpectations
@@ -187,15 +188,17 @@ RSpec.describe ModelScanJob do
 
     it "ignores subfolders if not told to include them" do
       expect(described_class.new.file_list(
-        File.join(library.path, model.path)
-      )).to eq ["#{library.path}/#{model.path}/part_1.obj"]
+        model.path,
+        library
+      )).to eq ["#{model.path}/part_1.obj"]
     end
 
     it "generates a complete file list if including all subfolders" do
       expect(described_class.new.file_list(
-        File.join(library.path, model.path),
+        model.path,
+        library,
         include_all_subfolders: true
-      )).to eq ["#{library.path}/#{model.path}/part_1.obj", "#{library.path}/#{model.path}/subfolder/part_2.obj"]
+      )).to eq ["#{model.path}/part_1.obj", "#{model.path}/subfolder/part_2.obj"]
     end
   end
 

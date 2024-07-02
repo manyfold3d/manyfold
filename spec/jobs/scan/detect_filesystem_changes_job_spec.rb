@@ -18,14 +18,14 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
 
     it "can scan a library directory" do # rubocop:todo RSpec/MultipleExpectations
       described_class.perform_now(library.id)
-      expect(Scan::CreateModelJob).to have_been_enqueued.with(library.id, "/model_one")
-      expect(Scan::CreateModelJob).to have_been_enqueued.with(library.id, "/subfolder/model_two")
+      expect(Scan::CreateModelJob).to have_been_enqueued.with(library.id, "model_one")
+      expect(Scan::CreateModelJob).to have_been_enqueued.with(library.id, "subfolder/model_two")
     end
 
     it "only scans models with changes on rescan" do
       model_one = create(:model, path: "model_one", library: library)
       ModelScanJob.perform_now(model_one.id)
-      expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::CreateModelJob).with(library.id, "/subfolder/model_two").exactly(1).times
+      expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::CreateModelJob).with(library.id, "subfolder/model_two").exactly(1).times
     end
   end
 
@@ -47,8 +47,8 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
 
     it "pulls out nested model as separate" do # rubocop:todo RSpec/MultipleExpectations
       described_class.perform_now(library.id)
-      expect(Scan::CreateModelJob).to have_been_enqueued.with(library.id, "/model_one")
-      expect(Scan::CreateModelJob).to have_been_enqueued.with(library.id, "/model_one/nested")
+      expect(Scan::CreateModelJob).to have_been_enqueued.with(library.id, "model_one")
+      expect(Scan::CreateModelJob).to have_been_enqueued.with(library.id, "model_one/nested")
     end
   end
 
@@ -70,7 +70,7 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
     # rubocop:enable RSpec/InstanceVariable
 
     it "understands that it's a single model" do
-      expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::CreateModelJob).with(library.id, "/thingiverse_model").exactly(1).times
+      expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::CreateModelJob).with(library.id, "thingiverse_model").exactly(1).times
     end
   end
 
@@ -95,7 +95,7 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
     # rubocop:enable RSpec/InstanceVariable
 
     it "understands that it's a single model" do
-      expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::CreateModelJob).with(library.id, "/model").exactly(1).times
+      expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::CreateModelJob).with(library.id, "model").exactly(1).times
     end
   end
 
@@ -120,7 +120,7 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
     # rubocop:enable RSpec/InstanceVariable
 
     it "ignores case and filters out subfolders correctly" do
-      expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::CreateModelJob).with(library.id, "/model").exactly(1).times
+      expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::CreateModelJob).with(library.id, "model").exactly(1).times
     end
   end
 
@@ -140,11 +140,11 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
     # rubocop:enable RSpec/InstanceVariable
 
     it "does not include directories in file list" do
-      expect(described_class.new.filenames_on_disk(library)).not_to include File.join(library.path, "wrong.stl")
+      expect(described_class.new.filenames_on_disk(library)).not_to include "wrong.stl"
     end
 
     it "does include files within directories in file list" do
-      expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "wrong.stl/file.stl")
+      expect(described_class.new.filenames_on_disk(library)).to include "wrong.stl/file.stl"
     end
   end
 
@@ -166,15 +166,15 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
     # rubocop:enable RSpec/InstanceVariable
 
     it "detects lowercase file extensions" do
-      expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "model/file.obj")
+      expect(described_class.new.filenames_on_disk(library)).to include "model/file.obj"
     end
 
     it "detects uppercase file extensions" do
-      expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "model/file.OBJ")
+      expect(described_class.new.filenames_on_disk(library)).to include "model/file.OBJ"
     end
 
     it "detects mixed case file extensions" do
-      expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "model/file.Obj")
+      expect(described_class.new.filenames_on_disk(library)).to include "model/file.Obj"
     end
   end
 
@@ -191,7 +191,7 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
     let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
 
     it "detects files inside models with square brackets" do
-      expect(described_class.new.filenames_on_disk(library)).to include File.join(library.path, "model [test]/file.obj")
+      expect(described_class.new.filenames_on_disk(library)).to include "model [test]/file.obj"
     end
   end
 end

@@ -7,10 +7,10 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
     file = ModelFile.find(file_id)
     # Don't run analysis if the file is missing
     # The Problem is raised elsewhere.
-    return if !file.exist?
+    return if !file.exists_on_storage?
     # If the file is modified, or we're lacking metadata
     status[:step] = "jobs.analysis.analyse_model_file.file_statistics" # i18n-tasks-use t('jobs.analysis.analyse_model_file.file_statistics')
-    if file.mtime > file.updated_at || file.digest.nil?
+    if file.file_last_modified > file.updated_at || file.digest.nil?
       file.digest = file.calculate_digest
       # If the digest has changed, queue up detailed geometric mesh analysis
       Analysis::GeometricAnalysisJob.perform_later(file_id) if file.is_3d_model? && file.digest_changed?
@@ -69,9 +69,9 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
   end
 
   def inefficiency_problem(file)
-    return "ASCII STL" if (file.extension === "stl") && (File.read(file.absolute_path, 6) === "solid ")
+    return "ASCII STL" if (file.extension === "stl") && (file.head(6) === "solid ")
     return "Wavefront OBJ" if file.extension === "obj"
-    return "ASCII PLY" if (file.extension === "ply") && (File.read(file.absolute_path, 16) === "ply\rformat ascii")
+    return "ASCII PLY" if (file.extension === "ply") && (file.head(16) === "ply\rformat ascii")
     nil
   end
 

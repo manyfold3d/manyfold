@@ -21,11 +21,11 @@ RSpec.describe Scan::CheckModelIntegrityJob do
     end
 
     it "flags up problems for files that don't exist on disk" do
-      thing = create(:model, path: "model_one", library: library)
-      model = create(:model_file, filename: "missing.stl", model: thing)
-      File.delete(model.absolute_path)
-      described_class.perform_now(thing.id)
-      expect(thing.model_files.first.problems.map(&:category)).to include("missing")
+      model = create(:model, path: "model_one", library: library)
+      file = create(:model_file, filename: "missing.stl", model: model)
+      File.delete(File.join(library.path, file.path_within_library))
+      described_class.perform_now(model.id)
+      expect(model.model_files.first.problems.map(&:category)).to include("missing")
     end
   end
 

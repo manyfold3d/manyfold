@@ -1,3 +1,5 @@
+require "shellwords"
+
 class Library < ApplicationRecord
   STORAGE_SERVICES = [
     "filesystem"
@@ -24,8 +26,13 @@ class Library < ApplicationRecord
     self.name = nil if name == ""
   end
 
-  def exist?
-    Dir.exist?(path)
+  def storage_exists?
+    case storage_service
+    when "filesystem"
+      Dir.exist?(path)
+    else
+      raise "Invalid storage service: #{storage_service}"
+    end
   end
 
   def all_tags
@@ -68,6 +75,32 @@ class Library < ApplicationRecord
     nil # migrations probably haven't run yet to create library table
   end
 
+  def list_files(pattern, flags = 0)
+    case storage_service
+    when "filesystem"
+      Dir.glob(pattern, flags, base: Shellwords.escape(path)).filter { |x| File.file?(File.join(path, x)) }
+    else
+      raise "Invalid storage service: #{storage_service}"
+    end
+  end
+
+  def has_file?(path)
+    storage.exists?(path)
+  end
+
+  def has_folder?(path)
+    storage.exists?(path)
+  end
+
+  def file_last_modified(file)
+    case storage_service
+    when "filesystem"
+      File.mtime(File.join(path, file))
+    else
+      raise "Invalid storage service: #{storage_service}"
+    end
+  end
+
   private
 
   def ensure_path_case_is_correct
@@ -76,7 +109,7 @@ class Library < ApplicationRecord
     # models will get the wrong paths. This method makes sure that the
     # case is stored in the canonical form that the OS will give us back
     # in globs
-    if path
+    if storage_service == "filesystem" && path
       normalised = Dir.glob(path).first
       self.path = normalised if normalised
     end

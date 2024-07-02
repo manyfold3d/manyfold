@@ -31,12 +31,15 @@ class Analysis::FileConversionJob < ApplicationJob
         filename: file.filename.gsub(".#{file.extension}", ".#{extension}")
       )
       dedup = 0
-      while new_file.exist?
+      while new_file.exists_on_storage?
         dedup += 1
         new_file.filename = file.filename.gsub(".#{file.extension}", "-#{dedup}.#{extension}")
       end
       # Save the actual file in new format
-      exporter.export(file.mesh, new_file.absolute_path)
+      Tempfile.create do |outfile|
+        exporter.export(file.mesh, outfile.path)
+        new_file.attachment = outfile
+      end
       # Store record in database
       new_file.save
       # Queue up file scan
