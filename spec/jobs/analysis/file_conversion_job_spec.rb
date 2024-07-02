@@ -49,10 +49,11 @@ RSpec.describe Analysis::FileConversionJob do
       expect(ModelFile.where.not(id: file.id).first.filename).to eq "files/awesome-2.3mf"
     end
 
-    it "creates an actual 3MF file on disk" do
+    it "creates an actual 3MF file on disk" do # rubocop:todo RSpec/MultipleExpectations
       described_class.perform_now(file.id, :threemf)
-      absolute_path = ModelFile.where.not(id: file.id).first.absolute_path
-      expect(File.exist?(absolute_path)).to be true
+      path = File.join(library.path, ModelFile.where.not(id: file.id).first.path_within_library)
+      expect(File.exist?(path)).to be true
+      expect(File.size(path)).to be > 10000
     end
 
     it "does not remove the original file" do
