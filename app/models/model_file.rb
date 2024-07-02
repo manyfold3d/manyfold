@@ -67,10 +67,6 @@ class ModelFile < ApplicationRecord
     basename.humanize.titleize
   end
 
-  def absolute_path
-    File.join(model.absolute_path, filename)
-  end
-
   def path_within_library
     File.join(model.path, filename)
   end
