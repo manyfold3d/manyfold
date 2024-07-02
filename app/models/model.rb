@@ -89,10 +89,6 @@ class Model < ApplicationRecord
     formatted_path != path
   end
 
-  def absolute_path
-    File.join(library.path, path)
-  end
-
   def self.ransackable_attributes(_auth_object = nil)
     ["caption", "created_at", "id", "name", "notes", "path", "slug", "updated_at", "license_cont", "license"]
   end
@@ -139,12 +135,11 @@ class Model < ApplicationRecord
     path_changed? ? path_was : path
   end
 
-  def previous_absolute_path
-    File.join(previous_library.path, previous_path)
-  end
-
   def need_to_move_files?
-    (library_id_changed? || path_changed?) && absolute_path != previous_absolute_path
+    library_id_changed? ||
+      (path_changed? &&
+        (previous_path.trim_path_separators != path.trim_path_separators)
+      )
   end
 
   def autoupdate_path
@@ -158,24 +153,16 @@ class Model < ApplicationRecord
   end
 
   def destination_is_vacant
-    if exists_on_storage?
+    if exists_on_storage? && need_to_move_files?
       errors.add(:path, :destination_exists)
     end
   end
 
   def move_files
-    # Sometimes, if we're trimming separators or normalising paths, we get here
-    # but the path hasn't actually changed on disk. In that case, we're done.
-    return if absolute_path == previous_absolute_path
     # Move all the files
     model_files.each(&:reattach!)
-    if model_files.empty?
-      # Move the empty folder by hand
-      FileUtils.mkdir_p(File.dirname(absolute_path))
-      File.rename(previous_absolute_path, absolute_path)
-    end
-    # Remove the old folder if it's still there and empty
-    Dir.rmdir(previous_absolute_path) if Dir.exist?(previous_absolute_path) && Dir.empty?(previous_absolute_path)
+    # Remove the old folder if it's still there
+    library.storage.delete_prefixed(previous_path)
   end
 
   def slugify_name
