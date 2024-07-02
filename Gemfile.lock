@@ -314,6 +314,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     locale (2.1.4)
+    logger (1.6.0)
     lograge (0.14.0)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -445,7 +446,7 @@ GEM
       psych (>= 4.0.0)
     redis (5.2.0)
       redis-client (>= 0.22.0)
-    redis-client (0.22.1)
+    redis-client (0.22.2)
       connection_pool
     regexp_parser (2.9.2)
     reline (0.5.9)
@@ -530,11 +531,12 @@ GEM
     shrine (3.6.0)
       content_disposition (~> 1.0)
       down (~> 5.1)
-    sidekiq (7.2.4)
+    sidekiq (7.3.0)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
+      logger
       rack (>= 2.2.4)
-      redis-client (>= 0.19.0)
+      redis-client (>= 0.22.2)
     sidekiq-failures (1.0.4)
       sidekiq (>= 4.0.0)
     simple_po_parser (1.1.6)
@@ -678,7 +680,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   scout_apm
   shrine (~> 3.6)
-  sidekiq (~> 7.2)
+  sidekiq (~> 7.3)
   sidekiq-failures (~> 1.0)
   sidekiq-scheduler!
   simplecov (~> 0.22.0)
