@@ -18,8 +18,6 @@ class Library < ApplicationRecord
 
   default_scope { order(:path) }
 
-  delegate :exists?, to: :storage
-
   def name
     self[:name] || (path ? File.basename(path) : "")
   end
@@ -28,8 +26,13 @@ class Library < ApplicationRecord
     self.name = nil if name == ""
   end
 
-  def exist?
-    Dir.exist?(path)
+  def storage_exists?
+    case storage_service
+    when "filesystem"
+      Dir.exist?(path)
+    else
+      raise "Invalid storage service: #{storage_service}"
+    end
   end
 
   def all_tags
@@ -79,6 +82,14 @@ class Library < ApplicationRecord
     else
       raise "Invalid storage service: #{storage_service}"
     end
+  end
+
+  def has_file?(path)
+    storage.exists?(path)
+  end
+
+  def has_folder?(path)
+    storage.exists?(path)
   end
 
   private

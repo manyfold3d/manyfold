@@ -31,7 +31,7 @@ class Analysis::FileConversionJob < ApplicationJob
         filename: file.filename.gsub(".#{file.extension}", ".#{extension}")
       )
       dedup = 0
-      while new_file.exists?
+      while new_file.exists_on_storage?
         dedup += 1
         new_file.filename = file.filename.gsub(".#{file.extension}", "-#{dedup}.#{extension}")
       end

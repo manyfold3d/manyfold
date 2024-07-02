@@ -42,9 +42,9 @@ RSpec.describe Analysis::FileConversionJob do
     end
 
     it "avoids filenames that already exist" do
-      allow(library).to receive(:exists?).with(file.path_within_library.gsub(".stl", ".3mf")).and_return(true).once
-      allow(library).to receive(:exists?).with(file.path_within_library.gsub(".stl", "-1.3mf")).and_return(true).once
-      allow(library).to receive(:exists?).with(file.path_within_library.gsub(".stl", "-2.3mf")).and_return(false)
+      allow(library).to receive(:has_file?).with(file.path_within_library.gsub(".stl", ".3mf")).and_return(true).once
+      allow(library).to receive(:has_file?).with(file.path_within_library.gsub(".stl", "-1.3mf")).and_return(true).once
+      allow(library).to receive(:has_file?).with(file.path_within_library.gsub(".stl", "-2.3mf")).and_return(false)
       described_class.perform_now(file.id, :threemf)
       expect(ModelFile.where.not(id: file.id).first.filename).to eq "files/awesome-2.3mf"
     end

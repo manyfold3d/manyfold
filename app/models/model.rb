@@ -118,7 +118,7 @@ class Model < ApplicationRecord
   end
 
   def exists_on_storage?
-    library.storage.exists?(path)
+    library.has_folder?(path)
   end
 
   private
