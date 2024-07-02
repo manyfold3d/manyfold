@@ -92,6 +92,15 @@ class Library < ApplicationRecord
     storage.exists?(path)
   end
 
+  def file_last_modified(file)
+    case storage_service
+    when "filesystem"
+      File.mtime(File.join(path, file))
+    else
+      raise "Invalid storage service: #{storage_service}"
+    end
+  end
+
   private
 
   def ensure_path_case_is_correct

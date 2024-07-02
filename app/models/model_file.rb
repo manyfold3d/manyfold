@@ -91,11 +91,11 @@ class ModelFile < ApplicationRecord
   end
 
   def exists_on_storage?
-    model.library.has_file?(path_within_library)
+    model.library.has_file? path_within_library
   end
 
-  def mtime
-    File.mtime(absolute_path)
+  def file_last_modified
+    model.library.file_last_modified path_within_library
   end
 
   def head(bytes)
