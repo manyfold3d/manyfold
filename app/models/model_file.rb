@@ -98,6 +98,13 @@ class ModelFile < ApplicationRecord
     File.mtime(absolute_path)
   end
 
+  def head(bytes)
+    io = attachment.open
+    result = io.read(bytes)
+    io.close
+    result
+  end
+
   def calculate_digest
     Digest::SHA512.new.file(absolute_path).hexdigest
   rescue Errno::ENOENT
