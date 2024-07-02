@@ -297,7 +297,7 @@ RSpec.describe Model do
 
     it "removes original folder from disk" do
       expect { model.delete_from_disk_and_destroy }.to(
-        change { File.exist?(model.absolute_path) }.from(true).to(false)
+        change { File.exist?(File.join(library.path, model.path)) }.from(true).to(false)
       )
     end
 
