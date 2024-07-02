@@ -162,7 +162,7 @@ class Model < ApplicationRecord
     # Move all the files
     model_files.each(&:reattach!)
     # Remove the old folder if it's still there
-    library.storage.delete_prefixed(previous_path)
+    previous_library.storage.delete_prefixed(previous_path)
   end
 
   def slugify_name
