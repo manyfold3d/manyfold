@@ -3,7 +3,7 @@ class Scan::CheckModelIntegrityJob < ApplicationJob
 
   def perform(model_id)
     model = Model.find(model_id)
-    Problem.create_or_clear(model, :missing, !model.exist?)
+    Problem.create_or_clear(model, :missing, !model.exists_on_storage?)
     Problem.create_or_clear model, :empty, (model.model_files.count == 0)
     Problem.create_or_clear model, :nesting, model.contains_other_models?
     Problem.create_or_clear model, :no_image, model.image_files.empty?

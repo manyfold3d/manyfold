@@ -67,7 +67,7 @@ class Model < ApplicationRecord
     # Remove tags first - sometimes this causes problems if we don't do it beforehand
     update!(tags: [])
     # Delete directory corresponding to model
-    FileUtils.remove_dir(absolute_path) if exist?
+    FileUtils.remove_dir(absolute_path) if exists_on_storage?
     # Remove from DB
     destroy
   end
@@ -117,8 +117,8 @@ class Model < ApplicationRecord
     model_files.select(&:is_3d_model?)
   end
 
-  def exist?
-    Dir.exist?(absolute_path)
+  def exists_on_storage?
+    library.storage.exists?(path)
   end
 
   private
@@ -158,7 +158,7 @@ class Model < ApplicationRecord
   end
 
   def destination_is_vacant
-    if Dir.exist?(absolute_path)
+    if exists_on_storage?
       errors.add(:path, :destination_exists)
     end
   end
