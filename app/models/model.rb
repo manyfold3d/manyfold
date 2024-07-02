@@ -67,7 +67,7 @@ class Model < ApplicationRecord
     # Remove tags first - sometimes this causes problems if we don't do it beforehand
     update!(tags: [])
     # Delete directory corresponding to model
-    FileUtils.remove_dir(absolute_path) if exists_on_storage?
+    library.storage.delete_prefixed(path)
     # Remove from DB
     destroy
   end
