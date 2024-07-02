@@ -80,7 +80,7 @@ RSpec.describe ModelFile do
 
     it "removes original file from disk" do
       expect { file.delete_from_disk_and_destroy }.to(
-        change { File.exist?(file.absolute_path) }.from(true).to(false)
+        change { File.exist?(File.join(library.path, file.path_within_library)) }.from(true).to(false)
       )
     end
 
