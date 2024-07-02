@@ -156,7 +156,8 @@ class ModelFile < ApplicationRecord
   end
 
   def mesh
-    loader&.new&.load(absolute_path)
+    # TODO: This can be better, but needs changes upstream in Mittsu to allow loaders to parse from an IO object
+    loader&.new&.parse(attachment.read)
   end
   memoize :mesh
 
