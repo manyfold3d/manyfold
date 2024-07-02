@@ -36,11 +36,17 @@ RSpec.describe ModelFile do
   end
 
   it "calculates file size when attached" do
-    allow(File).to receive(:size).once.and_return(1234)
     library = create(:library, path: Rails.root.join("spec/fixtures"))
     model1 = create(:model, library: library, path: "model_file_spec")
     part = create(:model_file, model: model1, filename: "example.obj", attachment: nil)
     expect(part.size).to eq(284)
+  end
+
+  it "calculates digest for a file" do
+    library = create(:library, path: Rails.root.join("spec/fixtures"))
+    model1 = create(:model, library: library, path: "model_file_spec")
+    part = create(:model_file, model: model1, filename: "example.obj", attachment: nil)
+    expect(part.calculate_digest.first(16)).to eq("8a0f188378204b67")
   end
 
   it "finds duplicate files using digest" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations

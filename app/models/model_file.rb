@@ -105,8 +105,9 @@ class ModelFile < ApplicationRecord
     result
   end
 
+  # TODO: this should move to Shrine metadata processing to be more efficient
   def calculate_digest
-    Digest::SHA512.new.file(absolute_path).hexdigest
+    Digest::SHA512.new.update(attachment.read).hexdigest
   rescue Errno::ENOENT
     nil
   end
