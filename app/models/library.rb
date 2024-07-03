@@ -71,6 +71,14 @@ class Library < ApplicationRecord
     case storage_service
     when "filesystem"
       Shrine::Storage::FileSystem.new(path)
+    when "s3"
+      Shrine::Storage::S3.new(
+        endpoint: s3_endpoint,
+        bucket: s3_bucket,
+        region: s3_region,
+        access_key_id: s3_access_key_id,
+        secret_access_key: s3_secret_access_key,
+      )
     else
       raise "Invalid storage service: #{storage_service}"
     end
