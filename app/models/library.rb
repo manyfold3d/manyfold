@@ -120,6 +120,8 @@ class Library < ApplicationRecord
     case storage_service
     when "filesystem"
       File.mtime(File.join(path, file))
+    when "s3"
+      storage.bucket.object(file).last_modified
     else
       raise "Invalid storage service: #{storage_service}"
     end
