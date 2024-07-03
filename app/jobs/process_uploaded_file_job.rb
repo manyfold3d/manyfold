@@ -8,62 +8,70 @@ class ProcessUploadedFileJob < ApplicationJob
     # Attach cached upload file
     attacher = Shrine::Attacher.new
     attacher.attach_cached(uploaded_file)
-    datafile = attacher.file
-    # Create name for temporary destination folder
-    dest_folder_name = File.join(library.path, SecureRandom.uuid)
+    file = attacher.file
+    # Generate model name
+    model_path = File.basename(file.original_filename, ".*")
+    model_name = model_path.humanize.tr("+", " ").titleize
+    # Create model
+    model = library.models.create(name: model_name, path: "#{model_path}##{SecureRandom.hex(4)}")
+    model.update! path: "#{model_path}##{model.id}" # Set to proper ID after saving
     # Handle different file types
-    case File.extname(datafile.original_filename).delete(".").downcase
+    case File.extname(file.original_filename).delete(".").downcase
     when *SupportedMimeTypes.archive_extensions
-      unzip(dest_folder_name, datafile)
+      unzip(model, file)
     when *(SupportedMimeTypes.model_extensions + SupportedMimeTypes.image_extensions)
-      copy(dest_folder_name, datafile)
+      model.model_files.create(filename: file.original_filename, attachment: file)
     else
-      Rails.logger.warn("Ignoring #{datafile.inspect}")
-    end
-    # If a folder was created...
-    if Dir.exist?(dest_folder_name)
-      # Rename destination folder atomically
-      file_name = File.basename(datafile.original_filename, ".*")
-      File.rename(dest_folder_name, File.join(library.path, file_name))
-      # Queue up model creation for new folder
-      Scan::CreateModelJob.perform_later(library.id, file_name, include_all_subfolders: true)
+      Rails.logger.warn("Ignoring #{file.inspect}")
     end
     # Discard cached file
     attacher.destroy
+    # Queue full model scan to fill in data
+    ModelScanJob.perform_later(model.id, include_all_subfolders: true)
   end
 
-  def copy(dest_folder_name, datafile)
-    Dir.mkdir(dest_folder_name)
-    Dir.chdir(dest_folder_name) do
-      FileUtils.copy(datafile.open, datafile.original_filename)
-    end
-  end
+  private
 
-  def unzip(dest_folder_name, datafile)
-    datafile.open do |file|
-      Archive::Reader.open_fd(file.fileno) do |reader|
-        Dir.mkdir(dest_folder_name)
-        Dir.chdir(dest_folder_name) do
+  def unzip(model, uploaded_file)
+    Shrine.with_file(uploaded_file) do |archive|
+      Dir.mktmpdir do |tmpdir|
+        strip = count_common_path_components(archive)
+        Archive::Reader.open_filename(archive.path, strip_components: strip) do |reader|
           reader.each_entry do |entry|
-            next if entry.size > SiteSettings.max_file_extract_size
-            reader.extract(entry, Archive::EXTRACT_SECURE)
+            next if !entry.file? || entry.size > SiteSettings.max_file_extract_size
+            Dir.chdir(tmpdir) do
+              reader.extract(entry, Archive::EXTRACT_SECURE)
+              model.model_files.create(filename: entry.pathname, attachment: File.open(entry.pathname))
+            end
           end
         end
       end
     end
+  end
 
-    # Checks the directory just created and if it contains only one directory,
-    # moves the contents of that directory up a level, then deletes the empty directory.
-    pn = Pathname.new(dest_folder_name)
-    if pn.children.length == 1 && pn.children[0].directory?
-      dup_dir = Pathname.new(pn.children[0])
-
-      dup_dir.children.each do |child|
-        fixed_path = Pathname.new(pn.to_s + "/" + child.basename.to_s)
-        File.rename(child.to_s, fixed_path.to_s)
+  def count_common_path_components(archive)
+    # Generate full list of directories in the archive
+    paths = []
+    Archive::Reader.open_filename(archive.path) do |reader|
+      reader.each_entry do |entry|
+        paths << entry.pathname if entry.directory?
       end
-
-      Dir.delete(dup_dir.to_s)
     end
+    paths = paths.map { |path| path.split(File::SEPARATOR) }
+    # Count the commont elements in the paths
+    count_common_elements(paths)
+  end
+
+  def count_common_elements(arrays)
+    common = []
+    loop do
+      elements = arrays.filter_map(&:shift).uniq
+      if elements.count == 1
+        common << elements[0]
+      else
+        break
+      end
+    end
+    common.count
   end
 end
