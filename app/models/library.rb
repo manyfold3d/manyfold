@@ -36,6 +36,8 @@ class Library < ApplicationRecord
     case storage_service
     when "filesystem"
       Dir.exist?(path)
+    when "s3"
+      storage.bucket.exists?
     else
       raise "Invalid storage service: #{storage_service}"
     end
