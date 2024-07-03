@@ -29,6 +29,7 @@ en:
       success: Scan started for all libraries.
     storage_services:
       filesystem: Local filesystem
+      s3: S3-compatible cloud storage
     update:
       failure: An error occurred, and the library could not be saved.
       success: Library details saved.

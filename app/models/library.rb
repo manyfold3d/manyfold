@@ -2,7 +2,8 @@ require "shellwords"
 
 class Library < ApplicationRecord
   STORAGE_SERVICES = [
-    "filesystem"
+    "filesystem",
+    "s3"
   ]
 
   has_many :models, dependent: :destroy
