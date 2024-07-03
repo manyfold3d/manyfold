@@ -14,8 +14,8 @@ class Library < ApplicationRecord
   before_validation :ensure_path_case_is_correct
   after_save :register_storage
 
-  validates :path, presence: true, uniqueness: true, existing_path: true
   validates :storage_service, presence: true, inclusion: STORAGE_SERVICES
+  validates :path, presence: true, uniqueness: true, existing_path: true, if: -> { storage_service == "filesystem" }
 
   default_scope { order(:path) }
 
