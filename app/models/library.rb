@@ -17,6 +17,11 @@ class Library < ApplicationRecord
   validates :storage_service, presence: true, inclusion: STORAGE_SERVICES
   validates :path, presence: true, uniqueness: true, existing_path: true, if: -> { storage_service == "filesystem" }
 
+  validates :s3_bucket, presence: true, if: -> { storage_service == "s3" }
+  validates :s3_region, presence: true, if: -> { storage_service == "s3" }
+  validates :s3_access_key_id, presence: true, if: -> { storage_service == "s3" }
+  validates :s3_secret_access_key, presence: true, if: -> { storage_service == "s3" }
+
   default_scope { order(:path) }
 
   def name
