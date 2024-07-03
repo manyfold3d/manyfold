@@ -82,6 +82,7 @@ class Library < ApplicationRecord
         region: s3_region,
         access_key_id: s3_access_key_id,
         secret_access_key: s3_secret_access_key,
+        force_path_style: s3_endpoint.present?
       )
     else
       raise "Invalid storage service: #{storage_service}"
