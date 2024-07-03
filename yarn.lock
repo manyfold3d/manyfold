@@ -859,10 +859,10 @@
     namespace-emitter "^2.0.1"
     p-retry "^6.1.0"
 
-"@uppy/core@^3.13.0":
-  version "3.13.0"
-  resolved "https://registry.yarnpkg.com/@uppy/core/-/core-3.13.0.tgz#c0ad5f5d0f51dd264e47d5e75b36615880e8d116"
-  integrity sha512-qyht4dJ72AGWriwyy14h0wesrizgMEAU8Y6U3GKZYj6vfPOeEN0VbrbrkqlLxsczB5uyuUbhrPkPRU7srGDvtg==
+"@uppy/core@^3.13.1":
+  version "3.13.1"
+  resolved "https://registry.yarnpkg.com/@uppy/core/-/core-3.13.1.tgz#01b42684b5c08186033bb8c86bbfb5a1d8b5ae94"
+  integrity sha512-iQGAUO4ziQRpfv7kix6tO6JOWqjI0K4vt8AynvHWzDPZxYSba3zd6RojGNPsYWSR7Xv+dRXYx+GU8oTiK1FRUA==
   dependencies:
     "@transloadit/prettier-bytes" "^0.3.4"
     "@uppy/store-default" "^3.2.2"
