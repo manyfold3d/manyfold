@@ -113,7 +113,12 @@ class Library < ApplicationRecord
   end
 
   def has_folder?(path)
-    storage.exists?(path)
+    case storage_service
+    when "s3"
+      storage.bucket.objects(prefix: path).count > 0
+    else
+      storage.exists?(path)
+    end
   end
 
   def file_last_modified(file)
