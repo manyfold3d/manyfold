@@ -49,8 +49,13 @@ class Library < ApplicationRecord
   end
 
   def free_space
-    stat = Sys::Filesystem.stat(path)
-    stat.bytes_available
+    case storage_service
+    when "filesystem"
+      stat = Sys::Filesystem.stat(path)
+      stat.bytes_available
+    else
+      raise "Invalid storage service: #{storage_service}"
+    end
   end
 
   def storage_key
