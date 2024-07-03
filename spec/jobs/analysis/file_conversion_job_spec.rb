@@ -42,17 +42,18 @@ RSpec.describe Analysis::FileConversionJob do
     end
 
     it "avoids filenames that already exist" do
-      allow(File).to receive(:exist?).with(file.absolute_path.gsub(".stl", ".3mf")).and_return(true).once
-      allow(File).to receive(:exist?).with(file.absolute_path.gsub(".stl", "-1.3mf")).and_return(true).once
-      allow(File).to receive(:exist?).with(file.absolute_path.gsub(".stl", "-2.3mf")).and_return(false)
+      allow(library).to receive(:has_file?).with(file.path_within_library.gsub(".stl", ".3mf")).and_return(true).once
+      allow(library).to receive(:has_file?).with(file.path_within_library.gsub(".stl", "-1.3mf")).and_return(true).once
+      allow(library).to receive(:has_file?).with(file.path_within_library.gsub(".stl", "-2.3mf")).and_return(false)
       described_class.perform_now(file.id, :threemf)
       expect(ModelFile.where.not(id: file.id).first.filename).to eq "files/awesome-2.3mf"
     end
 
-    it "creates an actual 3MF file on disk" do
+    it "creates an actual 3MF file on disk" do # rubocop:todo RSpec/MultipleExpectations
       described_class.perform_now(file.id, :threemf)
-      absolute_path = ModelFile.where.not(id: file.id).first.absolute_path
-      expect(File.exist?(absolute_path)).to be true
+      path = File.join(library.path, ModelFile.where.not(id: file.id).first.path_within_library)
+      expect(File.exist?(path)).to be true
+      expect(File.size(path)).to be > 10000
     end
 
     it "does not remove the original file" do

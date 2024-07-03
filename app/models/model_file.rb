@@ -67,16 +67,12 @@ class ModelFile < ApplicationRecord
     basename.humanize.titleize
   end
 
-  def absolute_path
-    File.join(model.absolute_path, filename)
-  end
-
   def path_within_library
     File.join(model.path, filename)
   end
 
   def attach_existing_file!(refresh: true)
-    return if attachment.present? || !File.exist?(absolute_path)
+    return if attachment.present? || !exists_on_storage?
     attachment_attacher.set Shrine.uploaded_file(
       storage: model.library.storage_key,
       id: path_within_library,
@@ -90,16 +86,24 @@ class ModelFile < ApplicationRecord
     save!
   end
 
-  def exist?
-    File.exist?(absolute_path)
+  def exists_on_storage?
+    model.library.has_file? path_within_library
   end
 
-  def mtime
-    File.mtime(absolute_path)
+  def file_last_modified
+    model.library.file_last_modified path_within_library
   end
 
+  def head(bytes)
+    io = attachment.open
+    result = io.read(bytes)
+    io.close
+    result
+  end
+
+  # TODO: this should move to Shrine metadata processing to be more efficient
   def calculate_digest
-    Digest::SHA512.new.file(absolute_path).hexdigest
+    Digest::SHA512.new.update(attachment.read).hexdigest
   rescue Errno::ENOENT
     nil
   end
@@ -149,7 +153,8 @@ class ModelFile < ApplicationRecord
   end
 
   def mesh
-    loader&.new&.load(absolute_path)
+    # TODO: This can be better, but needs changes upstream in Mittsu to allow loaders to parse from an IO object
+    loader&.new&.parse(attachment.read)
   end
   memoize :mesh
 
