@@ -316,10 +316,14 @@ RSpec.describe Model do
       expect(model).to have_received(:destroy).once
     end
 
-    it "calls delete_from_disk_and_destroy on files" do
+    it "calls delete_from_disk_and_destroy on files" do # rubocop:todo RSpec/ExampleLength
       file = create(:model_file, model: model, filename: "part_1.3mf", digest: "1234")
       allow(file).to receive(:delete_from_disk_and_destroy)
-      allow(model).to receive(:model_files).and_return([file])
+      mock = [file]
+      without_partial_double_verification do
+        allow(mock).to receive(:update_all).and_return(true)
+      end
+      allow(model).to receive(:model_files).and_return(mock)
       model.delete_from_disk_and_destroy
       expect(file).to have_received(:delete_from_disk_and_destroy).once
     end
