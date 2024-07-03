@@ -17,7 +17,7 @@
     <%= text_input_row form, :s3_bucket %>
     <%= text_input_row form, :s3_region %>
     <%= text_input_row form, :s3_access_key_id %>
-    <%= text_input_row form, :s3_secret_access_key %>
+    <%= password_input_row form, :s3_secret_access_key %>
   <% end %>
   <%= text_input_row form, :caption, help: t(".caption.help") %>
   <%= text_input_row form, :icon, help: t(".icon.help_html"), placeholder: translate(".icon.placeholder") %>
