@@ -58,6 +58,8 @@ class Library < ApplicationRecord
     when "filesystem"
       stat = Sys::Filesystem.stat(path)
       stat.bytes_available
+    when "s3"
+      nil
     else
       raise "Invalid storage service: #{storage_service}"
     end
