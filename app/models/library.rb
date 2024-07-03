@@ -104,8 +104,12 @@ class Library < ApplicationRecord
     when "filesystem"
       Dir.glob(pattern, flags, base: Shellwords.escape(path)).filter { |x| File.file?(File.join(path, x)) }
     when "s3"
-      keys = storage.bucket.objects.map(&:key)
-      keys.filter { |key| [pattern].flatten.any? { |p| File.fnmatch?(p, key) } }
+      keys = []
+      pattern_array = [pattern].flatten
+      storage.bucket.objects.each do |object|
+        keys << object.key if pattern_array.any? { |p| File.fnmatch?(p, object.key) }
+      end
+      keys
     else
       raise "Invalid storage service: #{storage_service}"
     end
