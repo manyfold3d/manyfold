@@ -8,14 +8,6 @@ fr:
       success: Bibliothèque supprimée !
     form:
       add_line: Ajouter une ligne
-      icon:
-        help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank"> bibliothèque Bootstrap </a>
-      tag_regex:
-        help: Vérifier si les étiquettes des modèles manquant correspondent à cette expression régulière.
-    general:
-      edit: Editer la bibliothèque
-      new: Nouvelle bibliothèque
-    new:
       caption:
         help: Survolez la bibliothèque dans l'en-tête pour voir la légende.
       icon:
@@ -24,6 +16,11 @@ fr:
         help:
       path:
         placeholder: "/libraries/models"
+      tag_regex:
+        help: Vérifier si les étiquettes des modèles manquant correspondent à cette expression régulière.
+    general:
+      edit: Editer la bibliothèque
+      new: Nouvelle bibliothèque
     scan:
       success: L'analyse de la bibliothèque a commencé.
     scan_all:

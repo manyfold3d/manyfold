@@ -8,14 +8,6 @@ de:
       success: Sammlung gelöscht!
     form:
       add_line: Zeile hinzufügen
-      icon:
-        help_html: Icons pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icon-Seite</a>
-      tag_regex:
-        help: Suchen Sie nach Modellen, die diese Regex erfüllen.
-    general:
-      edit: Sammlung bearbeiten
-      new: Neue Sammlung
-    new:
       caption:
         help: Bewegen Sie den Mauszeiger über die Bibliothek in der Kopfzeile, um die Bildunterschrift zu sehen.
       icon:
@@ -24,6 +16,11 @@ de:
         help:
       path:
         placeholder: "/libraries/models"
+      tag_regex:
+        help: Suchen Sie nach Modellen, die diese Regex erfüllen.
+    general:
+      edit: Sammlung bearbeiten
+      new: Neue Sammlung
     scan:
       success: Sammlungs-Scan wurde gestartet.
     scan_all:

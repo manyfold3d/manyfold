@@ -8,14 +8,6 @@ pl:
       success: Biblioteka została usunięta!
     form:
       add_line: Dodaj linię
-      icon:
-        help_html: Ikony z biblioteki <a href="https://icons.getbootstrap.com/" target="_blank">strona ikon Boostrap</a>
-      tag_regex:
-        help: Sprawdź brakujące tagi tych modeli korzystając z tego regexa.
-    general:
-      edit: Edytuj Bibliotekę
-      new: Nowa Biblioteka
-    new:
       caption:
         help: Najedź kursorem na bibliotekę w nagłówku, aby zobaczyć napis.
       icon:
@@ -24,6 +16,11 @@ pl:
         help:
       path:
         placeholder: "/libraries/models"
+      tag_regex:
+        help: Sprawdź brakujące tagi tych modeli korzystając z tego regexa.
+    general:
+      edit: Edytuj Bibliotekę
+      new: Nowa Biblioteka
     scan:
       success: Rozpoczęto skanowanie biblioteki.
     scan_all:
