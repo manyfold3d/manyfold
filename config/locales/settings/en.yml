@@ -41,8 +41,6 @@ en:
       free_space:
         label: Free Space
       heading: Libaries
-      name:
-        label: Name
       tag_regex:
         check: Check
         help: Check for models missing tags matching these regex.

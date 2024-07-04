@@ -39,8 +39,6 @@ fr:
     library_settings:
       description: Voir les détails de la bibliothèque et modifier.
       heading: Bibliothèques
-      name:
-        label: Nom
       tag_regex:
         check: Vérifier
         help: Vérifier si les étiquettes des modèles manquant correspondent à cette expression régulière.

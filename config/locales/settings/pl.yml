@@ -39,8 +39,6 @@ pl:
     library_settings:
       description: Zobacz szczegóły biblioteki i ją zmodyfikuj.
       heading: Biblioteki
-      name:
-        label: Nazwa
       tag_regex:
         check: Sprawdź
         help: Sprawdź modele pod kątem brakujących tagów pasujących do tego wyrażenia regularnego.

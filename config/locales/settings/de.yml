@@ -39,8 +39,6 @@ de:
     library_settings:
       description:
       heading: Sammlungen
-      name:
-        label:
       tag_regex:
         check: Check
         help: Suche nach Modellen, die diese Regex erfüllen.
