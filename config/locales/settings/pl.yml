@@ -37,25 +37,12 @@ pl:
         help: 'Uwaga: niektóre nieprzetłumaczone teksty mogą nadal wyświetlać się w języku angielskim.'
         label: Język interfejsu
     library_settings:
-      caption:
-        help: Najedź kursorem na bibliotekę w nagłówku, aby zobaczyć napis.
-        label: Napis
       description: Zobacz szczegóły biblioteki i ją zmodyfikuj.
+      free_space:
+        label:
       heading: Biblioteki
-      icon:
-        help_html: Ikony z biblioteki <a href="https://icons.getbootstrap.com/" target="_blank">strona ikon Boostrap</a>
-        label: Ikona
-      name:
-        label: Nazwa
-      notes:
-        help: Notatki są na razie tylko na tej stronie.
-        label: Notatki
-      path:
-        label: Ścieżka
       tag_regex:
         check: Sprawdź
-        help: Sprawdź modele pod kątem brakujących tagów pasujących do tego wyrażenia regularnego.
-        label: Wymagane Tagi
         search_missing: Wyszukaj Brakujące
     multiuser_settings:
       details_html: Aby zmienić te ustawienia, edytuj <a href='https://manyfold.app/sysadmin/configuration.html'>zmienne środowiskowe</a> serwera i uruchom go ponownie.
@@ -141,3 +128,11 @@ pl:
         label: Twórz tagi na podstawie nazwy katalogu modelu
     update:
       success: Ustawienia zapisane.
+    usage_settings:
+      description_html: Jeśli włączysz śledzenie użytkowania, poniższe informacje będą wysyłane raz dziennie do <code>%{endpoint}</code>. <code>Identyfikator</code> jest generowany losowo po włączeniu śledzenia.
+      heading: Anonimowe Śledzenie Użytkowania
+      report_usage:
+        label: Włącz anonimowe śledzenie użytkowania
+      summary: Poinformuj deweloperów, że korzystasz z Manyfold.
+      use_of_data: Żadne inne informacje nie są wysyłane ani przechowywane, a deweloperzy nigdy nie wykorzystają tych informacji do celów innych niż pomiar liczby uruchomionych instancji Manyfold i ich wersji.
+      verification_html: Jeśli chcesz zweryfikować to, co wysyłamy, możesz zmienić zmienną środowiskową <code>USAGE_REPORTING_URL</code> i wysłać dane w miejsce, w którym możesz je sprawdzić. Możesz również zobaczyć dokładnie, co jest wysyłane w logach.

@@ -18,6 +18,7 @@ fr:
     destroy:
       confirm: Cette opération supprimera les fichiers. Êtes-vous sûr de vouloir continuer ?
       success: Modèle supprimé !
+    exceeds_max_size:
     file:
       open_button:
         label:
@@ -48,6 +49,7 @@ fr:
       description:
       files:
         label: Sélectionner un fichier
+      free_space:
       library:
         help: La bibliothèque vers laquelle télécharger.
       submit: Télécharger

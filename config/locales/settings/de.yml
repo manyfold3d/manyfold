@@ -37,25 +37,12 @@ de:
         help:
         label:
     library_settings:
-      caption:
-        help: Bewegen Sie den Mauszeiger über die Bibliothek in der Kopfzeile, um die Bildunterschrift zu sehen.
-        label: Bildunterschrift
       description:
-      heading: Sammlungen
-      icon:
-        help_html: Symbols pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icons</a>
-        label: Symbol
-      name:
+      free_space:
         label:
-      notes:
-        help:
-        label: Anmerkungen
-      path:
-        label: Pfad
+      heading: Sammlungen
       tag_regex:
         check: Check
-        help: Suche nach Modellen, die diese Regex erfüllen.
-        label: Erforderliche Tags
         search_missing:
     multiuser_settings:
       details_html:
@@ -141,3 +128,11 @@ de:
         label: Tags aus Modellverzeichnisnamen erstellen
     update:
       success: Einstellungen gespeichert.
+    usage_settings:
+      description_html:
+      heading:
+      report_usage:
+        label:
+      summary:
+      use_of_data:
+      verification_html:

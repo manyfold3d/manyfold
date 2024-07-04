@@ -18,6 +18,7 @@ pl:
     destroy:
       confirm: Spowoduje to usunięcie plików. Czy na pewno chcesz kontynuować?
       success: Model usunięty!
+    exceeds_max_size:
     file:
       open_button:
         label: Wyświetl szczegóły %{name}
@@ -48,6 +49,7 @@ pl:
       description:
       files:
         label: Wybierz Plik
+      free_space:
       library:
         help: Biblioteka, do której ma zostać przesłany plik.
       submit: Prześlij

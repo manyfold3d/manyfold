@@ -37,27 +37,12 @@ en:
         help: 'Note: some untranslated text may still show in English.'
         label: Interface language
     library_settings:
-      caption:
-        help: Hover over library in header to see caption.
-        label: Caption
       description: See library details and modify.
       free_space:
         label: Free Space
       heading: Libaries
-      icon:
-        help_html: Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a>
-        label: Icon
-      name:
-        label: Name
-      notes:
-        help: Notes are just on this page for now.
-        label: Notes
-      path:
-        label: Path
       tag_regex:
         check: Check
-        help: Check for models missing tags matching these regex.
-        label: Required Tags
         search_missing: Search Missing
     multiuser_settings:
       details_html: To change these settings, edit the server's <a href='https://manyfold.app/sysadmin/configuration.html'>environment variables</a> and restart.

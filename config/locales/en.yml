@@ -18,7 +18,7 @@ en:
         notes: Notes
         path: Path
         storage_service: Storage Service
-        tag_regex: Tag Regex
+        tag_regex: Required Tags
       link:
         url: Link
       model:

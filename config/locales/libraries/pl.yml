@@ -8,21 +8,27 @@ pl:
       success: Biblioteka została usunięta!
     form:
       add_line: Dodaj linię
+      caption:
+        help: Najedź kursorem na bibliotekę w nagłówku, aby zobaczyć napis.
+      filesystem_description_html:
       icon:
         help_html: Ikony z biblioteki <a href="https://icons.getbootstrap.com/" target="_blank">strona ikon Boostrap</a>
-      library_regex:
+        placeholder: boxes
+      notes:
+        help:
+      path:
+        placeholder: "/libraries/models"
+      tag_regex:
         help: Sprawdź brakujące tagi tych modeli korzystając z tego regexa.
     general:
       edit: Edytuj Bibliotekę
       new: Nowa Biblioteka
-    new:
-      path:
-        help: Pełna ścieżka do twojej biblioteki na dysku.
-        placeholder: Ścieżka systemu plików
     scan:
       success: Rozpoczęto skanowanie biblioteki.
     scan_all:
       success: Rozpoczęto skanowanie wszystkich bibliotek.
+    storage_services:
+      filesystem:
     update:
       failure: Wystąpił błąd i nie można było zapisać biblioteki.
       success: Zapisano szczegóły biblioteki.

@@ -17,7 +17,8 @@ de:
         name: Name
         notes: Notizen
         path: Pfad
-        tag_regex: Tag Regex
+        storage_service:
+        tag_regex: Erforderliche Tags
       link:
         url: URL
       model:
@@ -307,6 +308,8 @@ de:
       webglrenderer: Renderer konnte nicht erstellt werden!
     load:
     processing:
+  security:
+    running_as_root_html:
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things

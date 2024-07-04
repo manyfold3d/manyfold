@@ -8,21 +8,27 @@ de:
       success: Sammlung gelöscht!
     form:
       add_line: Zeile hinzufügen
+      caption:
+        help: Bewegen Sie den Mauszeiger über die Bibliothek in der Kopfzeile, um die Bildunterschrift zu sehen.
+      filesystem_description_html:
       icon:
-        help_html: Icons pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icon-Seite</a>
-      library_regex:
+        help_html: Symbols pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icons</a>
+        placeholder: boxes
+      notes:
+        help:
+      path:
+        placeholder: "/libraries/models"
+      tag_regex:
         help: Suchen Sie nach Modellen, die diese Regex erfüllen.
     general:
       edit: Sammlung bearbeiten
       new: Neue Sammlung
-    new:
-      path:
-        help: Der vollständige Pfad zu Ihrer Sammlung auf der Festplatte.
-        placeholder: Pfad des Ordners
     scan:
       success: Sammlungs-Scan wurde gestartet.
     scan_all:
       success: Scan für alle Sammlungen gestartet.
+    storage_services:
+      filesystem:
     update:
       failure: Es ist ein Fehler aufgetreten, und die Sammlung konnte nicht gespeichert werden.
       success: Sammlungsdetails gespeichert.

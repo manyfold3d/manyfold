@@ -8,21 +8,27 @@ fr:
       success: Bibliothèque supprimée !
     form:
       add_line: Ajouter une ligne
+      caption:
+        help: Survolez la bibliothèque dans l'en-tête pour voir la légende.
+      filesystem_description_html:
       icon:
         help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank"> bibliothèque Bootstrap </a>
-      library_regex:
+        placeholder: boxes
+      notes:
+        help:
+      path:
+        placeholder: "/libraries/models"
+      tag_regex:
         help: Vérifier si les étiquettes des modèles manquant correspondent à cette expression régulière.
     general:
       edit: Editer la bibliothèque
       new: Nouvelle bibliothèque
-    new:
-      path:
-        help: Le chemin complet vers votre bibliothèque.
-        placeholder: Chemin vers le système de fichiers
     scan:
       success: L'analyse de la bibliothèque a commencé.
     scan_all:
       success: L'analyse de toutes les bibliothèques a commencé.
+    storage_services:
+      filesystem:
     update:
       failure: Une erreur s'est produite et la bibliothèque n'a pas pu être sauvegardée.
       success: Détails de la bibliothèque sauvegardés.

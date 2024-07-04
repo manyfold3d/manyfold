@@ -37,25 +37,12 @@ fr:
         help: 'Remarque : certains textes non traduits peuvent encore s''afficher en anglais.'
         label: Langue de l'interface
     library_settings:
-      caption:
-        help: Survolez la bibliothèque dans l'en-tête pour voir la légende.
-        label: Légende
       description: Voir les détails de la bibliothèque et modifier.
+      free_space:
+        label:
       heading: Bibliothèques
-      icon:
-        help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank"> bibliothèque Bootstrap </a>
-        label: Icône
-      name:
-        label: Nom
-      notes:
-        help: Les notes ne figurent que sur cette page pour l'instant.
-        label: Notes
-      path:
-        label: Chemin
       tag_regex:
         check: Vérifier
-        help: Vérifier si les étiquettes des modèles manquant correspondent à cette expression régulière.
-        label: Étiquettes requises
         search_missing: Recherche manquante
     multiuser_settings:
       details_html: Pour modifier ces paramètres, modifiez les <a href='https://manyfold.app/sysadmin/configuration.html'>variables d'environnement</a> du serveur et redémarrez-le.
@@ -141,3 +128,11 @@ fr:
         label: Créer des tags à partir du nom du répertoire du modèle
     update:
       success: Paramètres sauvegardés.
+    usage_settings:
+      description_html:
+      heading:
+      report_usage:
+        label:
+      summary:
+      use_of_data:
+      verification_html:
