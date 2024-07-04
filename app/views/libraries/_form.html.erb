@@ -13,8 +13,8 @@
       </div>
       <%= text_input_row form, :path, placeholder: translate(".path.placeholder") %>
     </div>
-    <%= text_input_row form, :s3_endpoint %>
-    <%= text_input_row form, :s3_bucket %>
+    <%= text_input_row form, :s3_endpoint, help: t(".s3_endpoint.help") %>
+    <%= text_input_row form, :s3_bucket, help: t(".s3_bucket.help") %>
     <%= text_input_row form, :s3_region %>
     <%= text_input_row form, :s3_access_key_id %>
     <%= password_input_row form, :s3_secret_access_key %>
