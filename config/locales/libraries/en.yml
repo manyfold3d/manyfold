@@ -23,7 +23,7 @@ en:
         placeholder: boxes
         help_html: Optional; any icon from <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a>.
       notes:
-        help: Shown only to administrators on the settings page.
+        help: Optional; shown only to administrators on the settings page.
       path:
         placeholder: "/libraries/models"
     scan:
