@@ -17,11 +17,11 @@
       <div class="row">
         <p><%= t ".s3_description_html" %></p>
       </div>
-      <%= text_input_row form, :s3_endpoint, help: t(".s3_endpoint.help") %>
-      <%= text_input_row form, :s3_bucket, help: t(".s3_bucket.help") %>
-      <%= text_input_row form, :s3_region %>
-      <%= text_input_row form, :s3_access_key_id %>
-      <%= password_input_row form, :s3_secret_access_key %>
+      <%= text_input_row form, :s3_endpoint, help: t(".s3_endpoint.help"), autocomplete: false %>
+      <%= text_input_row form, :s3_bucket, help: t(".s3_bucket.help"), autocomplete: false %>
+      <%= text_input_row form, :s3_region, autocomplete: false %>
+      <%= text_input_row form, :s3_access_key_id, autocomplete: false %>
+      <%= password_input_row form, :s3_secret_access_key, autocomplete: false %>
     </div>
   <% end %>
   <%= text_input_row form, :caption, help: t(".caption.help") %>
