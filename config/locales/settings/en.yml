@@ -40,7 +40,7 @@ en:
       description: See library details and modify.
       free_space:
         label: Free Space
-      heading: Libaries
+      heading: Libraries
       tag_regex:
         check: Check
         search_missing: Search Missing
