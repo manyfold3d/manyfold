@@ -71,7 +71,7 @@ class Library < ApplicationRecord
 
   def self.register_all_storage
     find_each(&:register_storage)
-  rescue ActiveRecord::StatementInvalid
+  rescue ActiveRecord::StatementInvalid, NameError
     nil # migrations probably haven't run yet to create library table
   end
 
