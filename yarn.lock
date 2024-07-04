@@ -891,10 +891,10 @@
     nanoid "^4.0.0"
     preact "^10.5.13"
 
-"@uppy/form@^3.2.1":
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/@uppy/form/-/form-3.2.1.tgz#00bb0f4b5886c8d9e2281779160c96ee5e9d289f"
-  integrity sha512-V+o/Is4B294qBBww0s4uEV21yUU72u1RR3g9CP7GNeMd6r9yN/iBsAZnGmCbA2hVg+NHKTiH/WbOsSMu1cr99A==
+"@uppy/form@^3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@uppy/form/-/form-3.2.2.tgz#02ed966ba26fbbfa0d849b9f297cc14e95d67d60"
+  integrity sha512-dS54AtSicF7pA0wupt09t/xrz0kH/HS0dIaGnQaxhnk3a5TMUaF5/HVXvzdHli7udfiT8jzWfpOOlvgL7+YbQQ==
   dependencies:
     "@uppy/utils" "^5.9.0"
     get-form-data "^3.0.0"
