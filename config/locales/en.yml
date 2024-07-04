@@ -17,6 +17,11 @@ en:
         name: Name
         notes: Notes
         path: Path
+        s3_access_key_id: Access Key ID
+        s3_bucket: Bucket Name
+        s3_endpoint: Endpoint URL
+        s3_region: Region
+        s3_secret_access_key: Secret Access Key
         storage_service: Storage Service
         tag_regex: Required Tags
       link:
