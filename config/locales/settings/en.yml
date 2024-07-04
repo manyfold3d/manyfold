@@ -37,16 +37,10 @@ en:
         help: 'Note: some untranslated text may still show in English.'
         label: Interface language
     library_settings:
-      caption:
-        help: Hover over library in header to see caption.
-        label: Caption
       description: See library details and modify.
       free_space:
         label: Free Space
       heading: Libaries
-      icon:
-        help_html: Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a>
-        label: Icon
       name:
         label: Name
       notes:

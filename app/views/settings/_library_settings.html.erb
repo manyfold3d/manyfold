@@ -25,14 +25,12 @@
             <%= content_tag(:span, library.path, class: "col-sm-10") %>
           </div>
           <div class="row input-group">
-            <%= content_tag(:span, t(".caption.label"), class: "col-sm") %>
+            <%= content_tag(:span, t("activerecord.attributes.library.caption"), class: "col-sm") %>
             <%= content_tag(:span, library.caption, class: "col-sm-10") %>
-            <span id="libraryCaptionHelp" class="form-text"><%= t(".caption.help") %></span>
           </div>
           <div class="row input-group">
-            <%= content_tag(:span, t(".icon.label"), class: "col-sm") %>
+            <%= content_tag(:span, t("activerecord.attributes.library.icon"), class: "col-sm") %>
             <%= content_tag(:span, library.icon, class: "col-sm-10") %>
-            <span id="libraryIconHelp" class="form-text"><%= t(".icon.help_html") %></span>
           </div>
           <div class="row input-group">
             <%= content_tag(:span, t(".notes.label"), class: "col-sm") %>

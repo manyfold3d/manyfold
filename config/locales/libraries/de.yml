@@ -16,6 +16,10 @@ de:
       edit: Sammlung bearbeiten
       new: Neue Sammlung
     new:
+      caption:
+        help: Bewegen Sie den Mauszeiger über die Bibliothek in der Kopfzeile, um die Bildunterschrift zu sehen.
+      icon:
+        help_html: Symbols pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icons</a>
       path:
         help: Der vollständige Pfad zu Ihrer Sammlung auf der Festplatte.
         placeholder: Pfad des Ordners

@@ -37,14 +37,8 @@ pl:
         help: 'Uwaga: niektóre nieprzetłumaczone teksty mogą nadal wyświetlać się w języku angielskim.'
         label: Język interfejsu
     library_settings:
-      caption:
-        help: Najedź kursorem na bibliotekę w nagłówku, aby zobaczyć napis.
-        label: Napis
       description: Zobacz szczegóły biblioteki i ją zmodyfikuj.
       heading: Biblioteki
-      icon:
-        help_html: Ikony z biblioteki <a href="https://icons.getbootstrap.com/" target="_blank">strona ikon Boostrap</a>
-        label: Ikona
       name:
         label: Nazwa
       notes:

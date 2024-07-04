@@ -16,6 +16,10 @@ pl:
       edit: Edytuj Bibliotekę
       new: Nowa Biblioteka
     new:
+      caption:
+        help: Najedź kursorem na bibliotekę w nagłówku, aby zobaczyć napis.
+      icon:
+        help_html: Ikony z biblioteki <a href="https://icons.getbootstrap.com/" target="_blank">strona ikon Boostrap</a>
       path:
         help: Pełna ścieżka do twojej biblioteki na dysku.
         placeholder: Ścieżka systemu plików

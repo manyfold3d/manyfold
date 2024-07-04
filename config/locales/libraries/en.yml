@@ -16,6 +16,10 @@ en:
       edit: Edit Library
       new: New Library
     new:
+      caption:
+        help: Hover over library in header to see caption.
+      icon:
+        help_html: Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a>
       path:
         help: The complete path to your library on disk.
         placeholder: Filesystem path

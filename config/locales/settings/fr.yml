@@ -37,14 +37,8 @@ fr:
         help: 'Remarque : certains textes non traduits peuvent encore s''afficher en anglais.'
         label: Langue de l'interface
     library_settings:
-      caption:
-        help: Survolez la bibliothèque dans l'en-tête pour voir la légende.
-        label: Légende
       description: Voir les détails de la bibliothèque et modifier.
       heading: Bibliothèques
-      icon:
-        help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank"> bibliothèque Bootstrap </a>
-        label: Icône
       name:
         label: Nom
       notes:
