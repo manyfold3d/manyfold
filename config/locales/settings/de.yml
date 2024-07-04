@@ -42,7 +42,6 @@ de:
       tag_regex:
         check: Check
         help: Suche nach Modellen, die diese Regex erfüllen.
-        label: Erforderliche Tags
         search_missing:
     multiuser_settings:
       details_html:

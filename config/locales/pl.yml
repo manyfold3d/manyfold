@@ -17,7 +17,7 @@ pl:
         name: Nazwa
         notes: Notatki
         path: Ścieżka
-        tag_regex: Regex Tagu
+        tag_regex: Wymagane Tagi
       link:
         url: Link
       model:

@@ -17,7 +17,7 @@ fr:
         name: Nom
         notes: Notes
         path: Chemin
-        tag_regex: Etiquette basée sur une Regex
+        tag_regex: Étiquettes requises
       link:
         url: Lien
       model:
