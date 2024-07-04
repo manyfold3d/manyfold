@@ -20,10 +20,12 @@
             <%= content_tag(:span, t("activerecord.attributes.library.storage_service"), class: "col-sm") %>
             <%= content_tag(:span, t("libraries.storage_services.%{service}" % {service: library.storage_service}), class: "col-sm-10") %>
           </div>
-          <div class="row input-group">
-            <%= content_tag(:span, t(".path.label"), class: "col-sm") %>
-            <%= content_tag(:span, library.path, class: "col-sm-10") %>
-          </div>
+          <% if library.storage_service == "filesystem" %>
+            <div class="row input-group">
+              <%= content_tag(:span, t("activerecord.attributes.library.path"), class: "col-sm") %>
+              <%= content_tag(:span, library.path, class: "col-sm-10") %>
+            </div>
+          <% end %>
           <div class="row input-group">
             <%= content_tag(:span, t("activerecord.attributes.library.caption"), class: "col-sm") %>
             <%= content_tag(:span, library.caption, class: "col-sm-10") %>

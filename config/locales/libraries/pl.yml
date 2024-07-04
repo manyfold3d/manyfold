@@ -21,8 +21,7 @@ pl:
       icon:
         help_html: Ikony z biblioteki <a href="https://icons.getbootstrap.com/" target="_blank">strona ikon Boostrap</a>
       path:
-        help: Pełna ścieżka do twojej biblioteki na dysku.
-        placeholder: Ścieżka systemu plików
+        placeholder: "/libraries/models"
     scan:
       success: Rozpoczęto skanowanie biblioteki.
     scan_all:

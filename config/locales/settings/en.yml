@@ -46,8 +46,6 @@ en:
       notes:
         help: Notes are just on this page for now.
         label: Notes
-      path:
-        label: Path
       tag_regex:
         check: Check
         help: Check for models missing tags matching these regex.

@@ -21,8 +21,7 @@ fr:
       icon:
         help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank"> bibliothèque Bootstrap </a>
       path:
-        help: Le chemin complet vers votre bibliothèque.
-        placeholder: Chemin vers le système de fichiers
+        placeholder: "/libraries/models"
     scan:
       success: L'analyse de la bibliothèque a commencé.
     scan_all:

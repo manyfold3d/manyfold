@@ -44,8 +44,6 @@ de:
       notes:
         help:
         label: Anmerkungen
-      path:
-        label: Pfad
       tag_regex:
         check: Check
         help: Suche nach Modellen, die diese Regex erfüllen.

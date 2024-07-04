@@ -21,8 +21,7 @@ de:
       icon:
         help_html: Symbols pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icons</a>
       path:
-        help: Der vollständige Pfad zu Ihrer Sammlung auf der Festplatte.
-        placeholder: Pfad des Ordners
+        placeholder: "/libraries/models"
     scan:
       success: Sammlungs-Scan wurde gestartet.
     scan_all:

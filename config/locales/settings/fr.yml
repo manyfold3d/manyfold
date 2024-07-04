@@ -44,8 +44,6 @@ fr:
       notes:
         help: Les notes ne figurent que sur cette page pour l'instant.
         label: Notes
-      path:
-        label: Chemin
       tag_regex:
         check: Vérifier
         help: Vérifier si les étiquettes des modèles manquant correspondent à cette expression régulière.

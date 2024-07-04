@@ -44,8 +44,6 @@ pl:
       notes:
         help: Notatki są na razie tylko na tej stronie.
         label: Notatki
-      path:
-        label: Ścieżka
       tag_regex:
         check: Sprawdź
         help: Sprawdź modele pod kątem brakujących tagów pasujących do tego wyrażenia regularnego.
