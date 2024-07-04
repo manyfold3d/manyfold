@@ -13,11 +13,16 @@
       </div>
       <%= text_input_row form, :path, placeholder: translate(".path.placeholder") %>
     </div>
-    <%= text_input_row form, :s3_endpoint, help: t(".s3_endpoint.help") %>
-    <%= text_input_row form, :s3_bucket, help: t(".s3_bucket.help") %>
-    <%= text_input_row form, :s3_region %>
-    <%= text_input_row form, :s3_access_key_id %>
-    <%= password_input_row form, :s3_secret_access_key %>
+    <div id="options-s3" class="card p-3 mb-3">
+      <div class="row">
+        <p><%= t ".s3_description_html" %></p>
+      </div>
+      <%= text_input_row form, :s3_endpoint, help: t(".s3_endpoint.help") %>
+      <%= text_input_row form, :s3_bucket, help: t(".s3_bucket.help") %>
+      <%= text_input_row form, :s3_region %>
+      <%= text_input_row form, :s3_access_key_id %>
+      <%= password_input_row form, :s3_secret_access_key %>
+    </div>
   <% end %>
   <%= text_input_row form, :caption, help: t(".caption.help") %>
   <%= text_input_row form, :icon, help: t(".icon.help_html"), placeholder: translate(".icon.placeholder") %>
