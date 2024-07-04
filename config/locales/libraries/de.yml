@@ -20,6 +20,8 @@ de:
         help: Bewegen Sie den Mauszeiger über die Bibliothek in der Kopfzeile, um die Bildunterschrift zu sehen.
       icon:
         help_html: Symbols pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icons</a>
+      notes:
+        help:
       path:
         placeholder: "/libraries/models"
     scan:

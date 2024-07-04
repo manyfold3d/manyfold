@@ -41,9 +41,6 @@ fr:
       heading: Bibliothèques
       name:
         label: Nom
-      notes:
-        help: Les notes ne figurent que sur cette page pour l'instant.
-        label: Notes
       tag_regex:
         check: Vérifier
         help: Vérifier si les étiquettes des modèles manquant correspondent à cette expression régulière.

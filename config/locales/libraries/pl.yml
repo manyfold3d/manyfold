@@ -20,6 +20,8 @@ pl:
         help: Najedź kursorem na bibliotekę w nagłówku, aby zobaczyć napis.
       icon:
         help_html: Ikony z biblioteki <a href="https://icons.getbootstrap.com/" target="_blank">strona ikon Boostrap</a>
+      notes:
+        help:
       path:
         placeholder: "/libraries/models"
     scan:

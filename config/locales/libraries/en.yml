@@ -21,6 +21,8 @@ en:
       filesystem_description_html: To use storage on your local filesystem, firstly make sure it is mounted as a <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> or other volume inside your Docker container, then enter the Docker path; not the path on your host server! For instance, if you have a folder full of files at <code>/mnt/media/3d/models</code> on your host, and have bound <code>/mnt/media/3d</code> to <code>/libraries</code> in your Docker configuration, the required path would be <code>/libraries/models</code>.
       icon:
         help_html: Icons per library <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icon page</a>
+      notes:
+        help: Shown only to administrators on the settings page.
       path:
         placeholder: "/libraries/models"
     scan:

@@ -41,9 +41,6 @@ de:
       heading: Sammlungen
       name:
         label:
-      notes:
-        help:
-        label: Anmerkungen
       tag_regex:
         check: Check
         help: Suche nach Modellen, die diese Regex erfüllen.

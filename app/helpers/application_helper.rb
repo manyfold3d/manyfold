@@ -90,11 +90,17 @@ module ApplicationHelper
     end
   end
 
-  def rich_text_input_row(form, name)
+  def rich_text_input_row(form, name, options = {})
     content_tag :div, class: "row mb-3 input-group" do
       safe_join [
         form.label(name, class: "col-auto col-form-label"),
-        form.text_area(name, class: "form-control col-auto")
+        content_tag(:div, class: "col p-0") do
+          safe_join [
+            form.text_area(name, class: "form-control col-auto"),
+            errors_for(form.object, name),
+            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+          ].compact
+        end
       ]
     end
   end

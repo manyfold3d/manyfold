@@ -43,9 +43,6 @@ en:
       heading: Libaries
       name:
         label: Name
-      notes:
-        help: Notes are just on this page for now.
-        label: Notes
       tag_regex:
         check: Check
         help: Check for models missing tags matching these regex.

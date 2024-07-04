@@ -41,9 +41,6 @@ pl:
       heading: Biblioteki
       name:
         label: Nazwa
-      notes:
-        help: Notatki są na razie tylko na tej stronie.
-        label: Notatki
       tag_regex:
         check: Sprawdź
         help: Sprawdź modele pod kątem brakujących tagów pasujących do tego wyrażenia regularnego.

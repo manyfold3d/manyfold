@@ -35,9 +35,8 @@
             <%= content_tag(:span, library.icon, class: "col-sm-10") %>
           </div>
           <div class="row input-group">
-            <%= content_tag(:span, t(".notes.label"), class: "col-sm") %>
+            <%= content_tag(:span, t("activerecord.attributes.library.notes"), class: "col-sm") %>
             <%= content_tag(:span, library.notes, class: "col-sm-10") %>
-            <span id="libraryNotesHelp" class="form-text"><%= t(".notes.help") %></span>
           </div>
           <div class="row input-group">
             <%= content_tag(:span, t(".tag_regex.label"), class: "col-sm") %>

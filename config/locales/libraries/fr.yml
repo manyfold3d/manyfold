@@ -20,6 +20,8 @@ fr:
         help: Survolez la bibliothèque dans l'en-tête pour voir la légende.
       icon:
         help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank"> bibliothèque Bootstrap </a>
+      notes:
+        help:
       path:
         placeholder: "/libraries/models"
     scan:
