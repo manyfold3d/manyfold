@@ -10,8 +10,10 @@ fr:
       add_line: Ajouter une ligne
       caption:
         help: Survolez la bibliothèque dans l'en-tête pour voir la légende.
+      filesystem_description_html:
       icon:
         help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank"> bibliothèque Bootstrap </a>
+        placeholder: boxes
       notes:
         help:
       path:
@@ -25,6 +27,8 @@ fr:
       success: L'analyse de la bibliothèque a commencé.
     scan_all:
       success: L'analyse de toutes les bibliothèques a commencé.
+    storage_services:
+      filesystem:
     update:
       failure: Une erreur s'est produite et la bibliothèque n'a pas pu être sauvegardée.
       success: Détails de la bibliothèque sauvegardés.

@@ -10,8 +10,10 @@ de:
       add_line: Zeile hinzufügen
       caption:
         help: Bewegen Sie den Mauszeiger über die Bibliothek in der Kopfzeile, um die Bildunterschrift zu sehen.
+      filesystem_description_html:
       icon:
         help_html: Symbols pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icons</a>
+        placeholder: boxes
       notes:
         help:
       path:
@@ -25,6 +27,8 @@ de:
       success: Sammlungs-Scan wurde gestartet.
     scan_all:
       success: Scan für alle Sammlungen gestartet.
+    storage_services:
+      filesystem:
     update:
       failure: Es ist ein Fehler aufgetreten, und die Sammlung konnte nicht gespeichert werden.
       success: Sammlungsdetails gespeichert.

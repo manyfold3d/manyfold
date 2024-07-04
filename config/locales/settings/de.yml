@@ -38,6 +38,8 @@ de:
         label:
     library_settings:
       description:
+      free_space:
+        label:
       heading: Sammlungen
       tag_regex:
         check: Check
@@ -126,3 +128,11 @@ de:
         label: Tags aus Modellverzeichnisnamen erstellen
     update:
       success: Einstellungen gespeichert.
+    usage_settings:
+      description_html:
+      heading:
+      report_usage:
+        label:
+      summary:
+      use_of_data:
+      verification_html:

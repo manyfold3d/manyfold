@@ -18,6 +18,7 @@ de:
     destroy:
       confirm: Hiermit werden Dateien gelöscht. Sind Sie sicher, dass Sie fortfahren möchten?
       success: Modell gelöscht!
+    exceeds_max_size:
     file:
       open_button:
         label:
@@ -48,6 +49,7 @@ de:
       description:
       files:
         label: Datei auswählen
+      free_space:
       library:
         help: Die Sammlung, in die hochgeladen werden soll.
       submit: Hochladen

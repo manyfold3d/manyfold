@@ -38,6 +38,8 @@ fr:
         label: Langue de l'interface
     library_settings:
       description: Voir les détails de la bibliothèque et modifier.
+      free_space:
+        label:
       heading: Bibliothèques
       tag_regex:
         check: Vérifier
@@ -126,3 +128,11 @@ fr:
         label: Créer des tags à partir du nom du répertoire du modèle
     update:
       success: Paramètres sauvegardés.
+    usage_settings:
+      description_html:
+      heading:
+      report_usage:
+        label:
+      summary:
+      use_of_data:
+      verification_html:

@@ -17,6 +17,7 @@ pl:
         name: Nazwa
         notes: Notatki
         path: Ścieżka
+        storage_service:
         tag_regex: Wymagane Tagi
       link:
         url: Link
@@ -189,14 +190,14 @@ pl:
       title: Filtry
       unknown: Nieznany
     footer:
-      by_html: Zaprojektowany i stworzony przez <a href="https://floppy.org.uk">Jamesa</a> z pomocą od <a href="https://github.com/manyfold3d/manyfold/graphs/contributors">naszych współautorów</a>.
+      by_html: Zaprojektowany i stworzony przez <a href="https://floppy.org.uk" target="_blank">Jamesa</a> z pomocą od <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">naszych współautorów</a>.
       chat: Czat
       code: Kod
       community_heading: Społeczność
       development_heading: Rozwój
       issues: Problemy
       logo: Logo
-      open_source_html: Projekt Open Source na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license noopener">licencji MIT</a>.
+      open_source_html: Projekt Open Source na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencji MIT</a>.
       social: Sociale
       sponsor: Sponsoruj
       stats_heading: Statystyki
@@ -307,6 +308,8 @@ pl:
       webglrenderer: Nie można utworzyć renderera!
     load: Wczytywanie
     processing: Procesowanie siatki
+  security:
+    running_as_root_html:
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things

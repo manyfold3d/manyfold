@@ -17,6 +17,7 @@ fr:
         name: Nom
         notes: Notes
         path: Chemin
+        storage_service:
         tag_regex: Étiquettes requises
       link:
         url: Lien
@@ -170,7 +171,7 @@ fr:
       completed: Compléter
       error: Erreur
       queued: En attente
-      working:
+      working: En cours d'exécution
   application:
     content_header:
       sort:
@@ -179,8 +180,8 @@ fr:
     demo_mode: Cette instance est en mode démo. Vous ne pouvez pas ajouter ou supprimer des modèles, mais vous pouvez faire tout le reste.
     filters_card:
       missing_tags: Etiquette manquante
-      remove_collection_filter:
-      remove_creator_filter:
+      remove_collection_filter: Supprimer la collection de filtres
+      remove_creator_filter: Supprimer le filtre créateur
       remove_library_filter:
       remove_missing_tag_filter:
       remove_search_filter:
@@ -207,7 +208,7 @@ fr:
       account:
       activity: Activité
       check_existing: Vérifier les modèles existants
-      home:
+      home: Page d'accueil
       log_in: Se connecter
       log_out: Se déconnecter
       navbar:
@@ -307,6 +308,8 @@ fr:
       webglrenderer: Impossible de créer le rendu !
     load: Chargement
     processing:
+  security:
+    running_as_root_html:
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Bandes dessinées, jeux et objets
