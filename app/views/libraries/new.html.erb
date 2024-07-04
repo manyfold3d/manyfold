@@ -2,18 +2,20 @@
 
 <%= form_with model: @library do |form| %>
   <%= text_input_row form, :name %>
-  <div class="row mb-3 input-group">
-    <%= form.label :storage_service, class: "col-sm-2 col-form-label" %>
-    <div class='col-sm-10 ps-0'>
-      <%= form.select :storage_service, Library::STORAGE_SERVICES.map { |x| [translate("libraries.storage_services.%{service}" % {service: x}), x] }, {}, {class: "form-control col-auto form-select"} %>
+  <% unless @library.persisted? %>
+    <div class="row mb-3 input-group">
+      <%= form.label :storage_service, class: "col-sm-2 col-form-label" %>
+      <div class='col-sm-10 ps-0'>
+        <%= form.select :storage_service, Library::STORAGE_SERVICES.map { |x| [translate("libraries.storage_services.%{service}" % {service: x}), x] }, {}, {class: "form-control col-auto form-select"} %>
+      </div>
     </div>
-  </div>
-  <div id="options-filesystem" class="card p-3 mb-3">
-    <div class="row">
-      <p><%= t ".filesystem_description_html" %></p>
+    <div id="options-filesystem" class="card p-3 mb-3">
+      <div class="row">
+        <p><%= t ".filesystem_description_html" %></p>
+      </div>
+      <%= text_input_row form, :path, placeholder: t(".path.placeholder") %>
     </div>
-    <%= text_input_row form, :path, placeholder: t(".path.placeholder") %>
-  </div>
+  <% end %>
   <%= text_input_row form, :caption, help: t(".caption.help") %>
   <%= text_input_row form, :icon, help: t(".icon.help_html"), placeholder: t(".icon.placeholder") %>
   <%= rich_text_input_row form, :notes, help: t(".notes.help") %>
