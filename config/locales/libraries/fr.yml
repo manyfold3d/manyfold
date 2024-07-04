@@ -10,7 +10,7 @@ fr:
       add_line: Ajouter une ligne
       icon:
         help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank"> bibliothèque Bootstrap </a>
-      library_regex:
+      tag_regex:
         help: Vérifier si les étiquettes des modèles manquant correspondent à cette expression régulière.
     general:
       edit: Editer la bibliothèque

@@ -43,7 +43,6 @@ en:
       heading: Libaries
       tag_regex:
         check: Check
-        help: Check for models missing tags matching these regex.
         search_missing: Search Missing
     multiuser_settings:
       details_html: To change these settings, edit the server's <a href='https://manyfold.app/sysadmin/configuration.html'>environment variables</a> and restart.
