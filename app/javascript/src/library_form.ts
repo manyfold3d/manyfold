@@ -4,7 +4,7 @@ document.addEventListener('ManyfoldReady', () => {
   const updateSections = (active: string) => {
     const selected = 'options-' + active
     document.querySelectorAll('.storage-collapse').forEach((section: HTMLDivElement) => {
-      const control = Collapse.getOrCreateInstance(section)
+      const control = Collapse.getOrCreateInstance(section, { toggle: false })
       if (section.id === selected) {
         control.show()
       } else {
