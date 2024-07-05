@@ -1,6 +1,7 @@
 require "shellwords"
 
 class Library < ApplicationRecord
+  extend Memoist
   STORAGE_SERVICES = [
     "filesystem",
     "s3"
@@ -88,6 +89,7 @@ class Library < ApplicationRecord
       raise "Invalid storage service: #{storage_service}"
     end
   end
+  memoize :storage
 
   def register_storage
     Shrine.storages[storage_key] = storage
