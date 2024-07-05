@@ -4,14 +4,14 @@
     <div class="row mb-3 input-group">
       <%= form.label :storage_service, class: "col-sm-2 col-form-label" %>
       <div class='col-sm-10 ps-0'>
-        <%= form.select :storage_service, Library::STORAGE_SERVICES.map { |x| [translate("libraries.storage_services.%{service}" % {service: x}), x] }, {}, {class: "form-control col-auto form-select"} %>
-        <div id="options-filesystem" class="card p-3">
+        <%= form.select :storage_service, Library::STORAGE_SERVICES.map { |x| [translate("libraries.storage_services.%{service}" % {service: x}), x] }, {}, {class: "form-control col-auto form-select", "data-bs-collapse": "collapse"} %>
+        <div id="options-filesystem" class="card p-3 collapse storage-collapse" data-bs-parent="#library_storage_service">
           <div class="row">
             <p><%= t ".filesystem_description_html" %></p>
           </div>
           <%= text_input_row form, :path, placeholder: translate(".path.placeholder") %>
         </div>
-        <div id="options-s3" class="card p-3">
+        <div id="options-s3" class="card p-3 collapse storage-collapse" data-bs-parent="#library_storage_service">
           <div class="row">
             <p><%= t ".s3_description_html" %></p>
           </div>
