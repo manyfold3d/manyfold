@@ -1,7 +1,7 @@
 import { Collapse } from 'bootstrap'
 
 document.addEventListener('ManyfoldReady', () => {
-  const updateSections = (active: string) => {
+  const updateSections = (active: string): void => {
     const selected = 'options-' + active
     document.querySelectorAll('.storage-collapse').forEach((section: HTMLDivElement) => {
       const control = Collapse.getOrCreateInstance(section, { toggle: false })
