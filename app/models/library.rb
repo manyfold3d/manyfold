@@ -72,6 +72,14 @@ class Library < ApplicationRecord
     "library_#{id}"
   end
 
+  def storage_origin
+    case storage_service
+    when "s3"
+      URI.parse(storage.presign(nil)[:url]).origin
+    end
+  end
+  memoize :storage_origin
+
   def storage
     case storage_service
     when "filesystem"
