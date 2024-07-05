@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
+  include BetterContentSecurityPolicy::HasContentSecurityPolicy
   after_action :verify_authorized, except: :index, unless: :active_admin_controller?
   after_action :verify_policy_scoped, only: :index, unless: :active_admin_controller?
+  after_action :set_content_security_policy_header, if: -> { request.format.html? }
 
   before_action :authenticate_user!
   around_action :switch_locale
@@ -37,6 +39,33 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def configure_content_security_policy
+    # Standard security policy
+    content_security_policy.default_src :self
+    content_security_policy.connect_src :self
+    content_security_policy.frame_ancestors :self
+    content_security_policy.frame_src :none
+    content_security_policy.img_src :self, :data
+    content_security_policy.object_src :none
+    content_security_policy.script_src :self
+    content_security_policy.style_src :self
+    content_security_policy.style_src_attr :unsafe_inline
+    # Add libary origins
+    origins = Library.all.filter_map(&:storage_origin)
+    content_security_policy.img_src(*origins)
+    content_security_policy.connect_src(*origins)
+    # If we're using Scout DevTrace in local development, we need to allow a load
+    # of inline stuff, so we need to add that and NOT add the nonce
+    if Rails.env.development? && ENV.fetch("SCOUT_DEV_TRACE", false) === "true"
+      scout_csp = [:unsafe_inline, "https://apm.scoutapp.com", "https://scoutapm.com"]
+      content_security_policy.img_src(*scout_csp)
+      content_security_policy.script_src(*scout_csp)
+      content_security_policy.style_src(*scout_csp)
+    else
+      content_security_policy.script_src "nonce-#{content_security_policy_nonce}"
+    end
+  end
 
   def switch_locale(&action)
     locale = current_user&.interface_language || request.env["rack.locale"]

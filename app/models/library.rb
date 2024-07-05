@@ -1,8 +1,10 @@
 require "shellwords"
 
 class Library < ApplicationRecord
+  extend Memoist
   STORAGE_SERVICES = [
-    "filesystem"
+    "filesystem",
+    "s3"
   ]
 
   has_many :models, dependent: :destroy
@@ -13,8 +15,13 @@ class Library < ApplicationRecord
   before_validation :ensure_path_case_is_correct
   after_save :register_storage
 
-  validates :path, presence: true, uniqueness: true, existing_path: true
   validates :storage_service, presence: true, inclusion: STORAGE_SERVICES
+  validates :path, presence: true, uniqueness: true, existing_path: true, if: -> { storage_service == "filesystem" }
+
+  validates :s3_bucket, presence: true, if: -> { storage_service == "s3" }
+  validates :s3_region, presence: true, if: -> { storage_service == "s3" }
+  validates :s3_access_key_id, presence: true, if: -> { storage_service == "s3" }
+  validates :s3_secret_access_key, presence: true, if: -> { storage_service == "s3" }
 
   default_scope { order(:path) }
 
@@ -30,6 +37,8 @@ class Library < ApplicationRecord
     case storage_service
     when "filesystem"
       Dir.exist?(path)
+    when "s3"
+      storage.bucket.exists?
     else
       raise "Invalid storage service: #{storage_service}"
     end
@@ -48,22 +57,48 @@ class Library < ApplicationRecord
   end
 
   def free_space
-    stat = Sys::Filesystem.stat(path)
-    stat.bytes_available
+    case storage_service
+    when "filesystem"
+      stat = Sys::Filesystem.stat(path)
+      stat.bytes_available
+    when "s3"
+      nil
+    else
+      raise "Invalid storage service: #{storage_service}"
+    end
   end
 
   def storage_key
     "library_#{id}"
   end
 
+  def storage_origin
+    case storage_service
+    when "s3"
+      URI.parse(storage.presign(nil)[:url]).origin
+    end
+  end
+  memoize :storage_origin
+
   def storage
     case storage_service
     when "filesystem"
       Shrine::Storage::FileSystem.new(path)
+    when "s3"
+      Shrine::Storage::S3.new(
+        endpoint: s3_endpoint,
+        bucket: s3_bucket,
+        region: s3_region,
+        access_key_id: s3_access_key_id,
+        secret_access_key: s3_secret_access_key,
+        force_path_style: s3_endpoint.present?,
+        use_accelerate_endpoint: s3_endpoint.blank?
+      )
     else
       raise "Invalid storage service: #{storage_service}"
     end
   end
+  memoize :storage
 
   def register_storage
     Shrine.storages[storage_key] = storage
@@ -79,6 +114,13 @@ class Library < ApplicationRecord
     case storage_service
     when "filesystem"
       Dir.glob(pattern, flags, base: Shellwords.escape(path)).filter { |x| File.file?(File.join(path, x)) }
+    when "s3"
+      keys = []
+      pattern_array = [pattern].flatten
+      storage.bucket.objects.each do |object|
+        keys << object.key if pattern_array.any? { |p| File.fnmatch?(p, object.key) }
+      end
+      keys
     else
       raise "Invalid storage service: #{storage_service}"
     end
@@ -89,13 +131,20 @@ class Library < ApplicationRecord
   end
 
   def has_folder?(path)
-    storage.exists?(path)
+    case storage_service
+    when "s3"
+      storage.bucket.objects(prefix: path).count > 0
+    else
+      storage.exists?(path)
+    end
   end
 
   def file_last_modified(file)
     case storage_service
     when "filesystem"
       File.mtime(File.join(path, file))
+    when "s3"
+      storage.bucket.object(file).last_modified
     else
       raise "Invalid storage service: #{storage_service}"
     end

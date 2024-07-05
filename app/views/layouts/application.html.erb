@@ -4,7 +4,7 @@
     <title><%= t "application.title" %><%= " : #{@title}" if @title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%= tag.meta name: "csp-nonce", content: content_security_policy_nonce if content_security_policy_nonce %>
     <%= favicon_link_tag "logo.png" %>
     <%= javascript_include_tag "application", nonce: true %>
     <%= stylesheet_link_tag "application", nonce: true %>

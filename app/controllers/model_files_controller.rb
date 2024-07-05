@@ -75,6 +75,9 @@ class ModelFilesController < ApplicationController
   private
 
   def send_file_content(disposition: :attachment)
+    # Check if we can send a direct URL
+    redirect_to(@file.attachment.url, allow_other_host: true) if /https?:\/\//.match?(@file.attachment.url)
+    # Otherwise provide a direct download
     status, headers, body = @file.attachment.to_rack_response(disposition: disposition)
     self.status = status
     self.headers.merge!(headers)

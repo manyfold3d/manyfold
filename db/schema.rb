@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_01_142651) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_03_160732) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -82,7 +82,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_142651) do
     t.text "tag_regex"
     t.text "icon"
     t.string "storage_service", default: "filesystem", null: false
-    t.index ["path"], name: "index_libraries_on_path", unique: true
+    t.string "s3_endpoint"
+    t.string "s3_region"
+    t.string "s3_bucket"
+    t.string "s3_access_key_id"
+    t.string "s3_secret_access_key"
   end
 
   create_table "links", force: :cascade do |t|
