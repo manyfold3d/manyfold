@@ -1,6 +1,10 @@
 ActiveAdmin.register Library do
   actions :all, except: [:new]
-  permit_params :path, :name, :notes, :caption, :icon, tag_regex: []
+  permit_params :path, :name, :notes, :caption, :icon, :storage_service,
+    :s3_endpoint, :s3_bucket, :s3_access_key_id, :s3_secret_access_key, :s3_region, tag_regex: []
+
+  Library.ransackable_symbols.each { |x| filter x }
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
