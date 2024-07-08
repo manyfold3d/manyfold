@@ -44,8 +44,8 @@ module ModelFilters
     if @filters[:missingtag].presence || (@filters[:missingtag] && @filters[:library])
       tag_regex_build = []
       regexes = ((@filters[:missingtag] != "") ? [@filters[:missingtag]] : @models[0].library.tag_regex)
-      # work out regexp match syntax
-      regact = ApplicationRecord.connection.is_a?(ActiveRecord::ConnectionAdapters::SQLite3Adapter) ? "REGEXP" : "~"
+      # Regexp match syntax - postgres is different from MySQL and SQLite
+      regact = ApplicationRecord.connection.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) ? "~" : "REGEXP"
       regexes.each do |reg|
         qreg = ActiveRecord::Base.connection.quote(reg)
         tag_regex_build.push "(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name #{regact} #{qreg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1"
