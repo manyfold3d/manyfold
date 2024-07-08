@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation, :username, role_ids: []
+  User.ransackable_symbols.each { |x| filter x }
 
   controller do
     defaults finder: :find_by_username
