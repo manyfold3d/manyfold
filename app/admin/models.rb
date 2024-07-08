@@ -1,5 +1,6 @@
 ActiveAdmin.register Model do
   actions :all, except: [:new]
+  Model.ransackable_symbols.each { |x| filter x }
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

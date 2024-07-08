@@ -93,7 +93,7 @@ class Model < ApplicationRecord
   end
 
   def self.ransackable_attributes(_auth_object = nil)
-    ["caption", "created_at", "id", "name", "notes", "path", "slug", "updated_at", "license_cont", "license"]
+    ["caption", "created_at", "id", "library_id", "name", "notes", "path", "slug", "updated_at", "license_cont", "license"]
   end
 
   def self.ransackable_associations(auth_object = nil)
