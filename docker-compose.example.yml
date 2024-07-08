@@ -12,12 +12,16 @@ services:
       PGID: 1000 # The ID of the group the app will run as
       SECRET_KEY_BASE: a_nice_long_random_string
       REDIS_URL: redis://redis:6379/1
+
+      # Database connection string
       DATABASE_URL: postgresql://manyfold:password@db/manyfold?pool=5
-#		or
-#      DATABASE_HOST: db
-#      DATABASE_USER: manyfold
-#      DATABASE_PASSWORD: password
-#      DATABASE_NAME: manyfold
+
+      # You can also use SQLite if you don't want to run a separate database server.
+      # Make sure the specified path is on a persistent volume!
+      # DATABASE_URL: sqlite3:/config/manyfold.sqlite3?pool=5
+
+      # Alternatively, you can set database connection parameters (host, username, etc)
+      # in separate variables; see https://manyfold.app/sysadmin/configuration.html.
 
       # For details of other optional environment variables, including features such
       # as multiuser mode, visit https://manyfold.app/sysadmin/configuration.html
