@@ -5,7 +5,7 @@ if [ -f tmp/pids/server.pid ]; then
 fi
 
 # List of required variables to be set for modular database string generation
-MODULAR_STRING_COMPONENTS="DATABASE_HOST DATABASE_USER DATABASE_PASSWORD DATABASE_NAME"
+MODULAR_STRING_COMPONENTS="DATABASE_ADAPTER DATABASE_HOST DATABASE_USER DATABASE_PASSWORD DATABASE_NAME"
 
 # Check if the required vars are set, if they are, generate the URL string, else exit with error code 1
 echo "Executing database url substitution hack"
@@ -19,7 +19,7 @@ if [ -z ${DATABASE_URL} ]; then
 		fi
 	done
 	echo "Required variables check passed"
-	export DATABASE_URL="postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}?pool=${DATABASE_CONNECTION_POOL:-5}" # DATABASE_CONNECTION_POOL is optional, hence it's absence from the required elements array. Defaults to 5
+	export DATABASE_URL="${DATABASE_ADAPTER}://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}/${DATABASE_NAME}?pool=${DATABASE_CONNECTION_POOL:-5}" # DATABASE_CONNECTION_POOL is optional, hence it's absence from the required elements array. Defaults to 5
 fi
 
 echo "Preparing database..."
