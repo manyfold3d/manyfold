@@ -13,9 +13,10 @@ services:
       SECRET_KEY_BASE: a_nice_long_random_string
       REDIS_URL: redis://redis:6379/1
 
-      # Database connection string
-      DATABASE_URL: postgresql://manyfold:password@db/manyfold?pool=5
-
+      # Database connection string; PostgreSQL is our recommended default
+      DATABASE_URL: postgresql://manyfold:password@postgres/manyfold?pool=5
+      # MySQL / MariaDB also works:
+      # DATABASE_URL: mysql2://manyfold:password@mysql/manyfold?pool=5
       # You can also use SQLite if you don't want to run a separate database server.
       # Make sure the specified path is on a persistent volume!
       # DATABASE_URL: sqlite3:/config/manyfold.sqlite3?pool=5
@@ -26,15 +27,15 @@ services:
       # For details of other optional environment variables, including features such
       # as multiuser mode, visit https://manyfold.app/sysadmin/configuration.html
     depends_on:
-      - db
+      - postgres
       - redis
     networks:
       - manyfold
     links:
-      - db
+      - postgres
       - redis
 
-  db:
+  postgres:
     image: postgres:15
     volumes:
       - db_data:/var/lib/postgresql/data

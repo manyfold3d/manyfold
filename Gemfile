@@ -33,6 +33,7 @@ gem "bootsnap", ">= 1.4.4", require: false
 # Database adapters
 gem "sqlite3", "~> 1.7"
 group :production do
+  gem "mysql2", "~> 0.5.6"
   gem "pg", "~> 1.5"
 end
 

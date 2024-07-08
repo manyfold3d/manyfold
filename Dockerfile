@@ -5,6 +5,7 @@ RUN apk add --no-cache \
   s6-overlay \
   alpine-sdk \
   postgresql-dev \
+  mariadb-dev \
   nodejs \
   yarn \
   xz \

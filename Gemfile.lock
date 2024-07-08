@@ -357,6 +357,7 @@ GEM
     minitest (5.24.1)
     msgpack (1.7.2)
     mutex_m (0.2.0)
+    mysql2 (0.5.6)
     nenv (0.3.0)
     net-imap (0.4.13)
       date
@@ -680,6 +681,7 @@ DEPENDENCIES
   logstash-event (~> 1.2)
   memoist (~> 0.16.2)
   mittsu!
+  mysql2 (~> 0.5.6)
   pg (~> 1.5)
   public_suffix (~> 6.0)
   puma (~> 6.4)
