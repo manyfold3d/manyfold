@@ -30,6 +30,7 @@ RUN yarn install
 RUN gem install bundler -v 2.4.13
 RUN bundle config set --local deployment 'true'
 RUN bundle config set --local without 'development test'
+RUN bundle config set --local path 'vendor/bundle'
 COPY .ruby-version .
 COPY Gemfile* ./
 RUN bundle install
@@ -50,6 +51,7 @@ RUN apk add --no-cache \
   s6-overlay
 
 COPY . .
+COPY --from=build /usr/src/app/vendor/bundle vendor/bundle
 ENV APP_VERSION=$APP_VERSION
 ENV GIT_SHA=$GIT_SHA
 
@@ -65,6 +67,9 @@ ENV RAILS_SERVE_STATIC_FILES=true
 # else at runtime, and this default will be removed in future.
 ENV PUID=0
 ENV PGID=0
+
+RUN gem install bundler -v 2.4.13
+RUN bundle config set --local path 'vendor/bundle'
 RUN gem install foreman
 
 EXPOSE 3214
