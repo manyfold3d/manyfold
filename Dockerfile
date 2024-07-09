@@ -44,9 +44,9 @@ RUN \
   RACK_ENV="production" \
   bundle exec rake assets:precompile
 
-## RELEASE STAGE ##########################################
+## RUNTIME STAGE ##########################################
 
-FROM $BASE AS release
+FROM $BASE
 WORKDIR /usr/src/app
 
 RUN apk add --no-cache \
