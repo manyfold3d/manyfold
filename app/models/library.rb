@@ -33,6 +33,11 @@ class Library < ApplicationRecord
     self.name = nil if name == ""
   end
 
+  # Backwards compatibility for use during migrations
+  def storage_service
+    attributes["storage_service"] || "filesystem"
+  end
+
   def storage_exists?
     case storage_service
     when "filesystem"
