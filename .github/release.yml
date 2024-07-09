@@ -3,6 +3,9 @@ changelog:
     - title: ✨ New Features ✨
       labels:
         - feature
+    - title: 🔒 Security 🔒
+      labels:
+        - security
     - title: 🐛 Bug Fixes 🐛
       labels:
         - bug
@@ -14,3 +17,4 @@ changelog:
           - dependencies
           - feature
           - bug
+          - security
