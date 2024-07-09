@@ -45,6 +45,10 @@ RUN \
   RACK_ENV="production" \
   bundle exec rake assets:precompile
 
+## RELEASE STAGE ##########################################
+
+FROM $BASE AS release
+WORKDIR /usr/src/app
 
 ENV APP_VERSION=${APP_VERSION}
 ENV GIT_SHA=${GIT_SHA}
