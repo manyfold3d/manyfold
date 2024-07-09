@@ -1,4 +1,13 @@
-FROM ruby:3.3.1-alpine3.18 AS build
+ARG BASE=ruby:3.3.1-alpine3.18
+ARG WORKDIR=/usr/src/app
+
+# Build-time constants
+ARG APP_VERSION
+ARG GIT_SHA
+
+## BUILD STAGE ##########################################
+
+FROM ${BASE} AS build
 
 RUN apk add --no-cache \
   tzdata \
@@ -14,24 +23,6 @@ RUN apk add --no-cache \
   glfw
 
 RUN gem install foreman
-
-ARG APP_VERSION
-ARG GIT_SHA
-
-ENV PORT=3214
-ENV RACK_ENV=production
-ENV RAILS_ENV=production
-ENV NODE_ENV=production
-ENV RAILS_SERVE_STATIC_FILES=true
-ENV APP_VERSION=${APP_VERSION}
-ENV GIT_SHA=${GIT_SHA}
-
-# PUID and PGID env vars - these control what user the app is run as inside
-# the entrypoint script. Default to root for backwards compatibility with existing
-# installations, but the admin will be warned if these aren't overridden with something
-# else at runtime, and this default will be removed in future.
-ENV PUID=0
-ENV PGID=0
 
 WORKDIR /usr/src/app
 
@@ -51,7 +42,25 @@ COPY . .
 RUN \
   DATABASE_URL="nulldb://user:pass@localhost/db" \
   SECRET_KEY_BASE="placeholder" \
+  RACK_ENV="production" \
   bundle exec rake assets:precompile
+
+
+ENV APP_VERSION=${APP_VERSION}
+ENV GIT_SHA=${GIT_SHA}
+
+# Runtime environment variables
+ENV PORT=3214
+ENV RACK_ENV=production
+ENV RAILS_ENV=production
+ENV NODE_ENV=production
+ENV RAILS_SERVE_STATIC_FILES=true
+# PUID and PGID env vars - these control what user the app is run as inside
+# the entrypoint script. Default to root for backwards compatibility with existing
+# installations, but the admin will be warned if these aren't overridden with something
+# else at runtime, and this default will be removed in future.
+ENV PUID=0
+ENV PGID=0
 
 EXPOSE 3214
 ENTRYPOINT ["bin/docker-entrypoint.sh"]
