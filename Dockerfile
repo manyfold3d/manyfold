@@ -1,5 +1,4 @@
 ARG BASE=ruby:3.3.1-alpine3.18
-ARG WORKDIR=/usr/src/app
 
 # Build-time constants
 ARG APP_VERSION
