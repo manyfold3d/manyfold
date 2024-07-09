@@ -49,6 +49,7 @@ WORKDIR /usr/src/app
 RUN apk add --no-cache \
   s6-overlay
 
+COPY . .
 ENV APP_VERSION=$APP_VERSION
 ENV GIT_SHA=$GIT_SHA
 
