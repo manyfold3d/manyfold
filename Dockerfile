@@ -52,6 +52,8 @@ RUN apk add --no-cache \
 
 COPY . .
 COPY --from=build /usr/src/app/vendor/bundle vendor/bundle
+COPY --from=build /usr/src/app/public/assets public/assets
+
 ENV APP_VERSION=$APP_VERSION
 ENV GIT_SHA=$GIT_SHA
 
