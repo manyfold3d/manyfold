@@ -49,6 +49,8 @@ WORKDIR /usr/src/app
 RUN apk add --no-cache \
   s6-overlay
 
+ENV APP_VERSION=$APP_VERSION
+ENV GIT_SHA=$GIT_SHA
 
 # Runtime environment variables
 ENV PORT=3214
