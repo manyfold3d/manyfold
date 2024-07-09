@@ -11,7 +11,6 @@ FROM ${BASE} AS build
 
 RUN apk add --no-cache \
   tzdata \
-  s6-overlay \
   alpine-sdk \
   postgresql-dev \
   mariadb-dev \
@@ -50,8 +49,9 @@ RUN \
 FROM $BASE AS release
 WORKDIR /usr/src/app
 
-ENV APP_VERSION=${APP_VERSION}
-ENV GIT_SHA=${GIT_SHA}
+RUN apk add --no-cache \
+  s6-overlay
+
 
 # Runtime environment variables
 ENV PORT=3214
