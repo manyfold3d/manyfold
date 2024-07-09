@@ -21,8 +21,6 @@ RUN apk add --no-cache \
   mesa-gl \
   glfw
 
-RUN gem install foreman
-
 WORKDIR /usr/src/app
 
 COPY package.json .
@@ -65,6 +63,7 @@ ENV RAILS_SERVE_STATIC_FILES=true
 # else at runtime, and this default will be removed in future.
 ENV PUID=0
 ENV PGID=0
+RUN gem install foreman
 
 EXPOSE 3214
 ENTRYPOINT ["bin/docker-entrypoint.sh"]
