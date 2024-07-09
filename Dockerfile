@@ -6,7 +6,7 @@ ARG GIT_SHA
 
 ## BUILD STAGE ##########################################
 
-FROM ${BASE} AS build
+FROM $BASE AS build
 
 RUN apk add --no-cache \
   tzdata \
