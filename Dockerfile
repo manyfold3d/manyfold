@@ -1,7 +1,3 @@
-# Build-time constants
-ARG APP_VERSION
-ARG GIT_SHA
-
 ## COMMON BASE ##########################################
 
 FROM ruby:3.3.1-alpine3.18 AS base
@@ -93,6 +89,8 @@ COPY --from=build \
   /usr/lib/libglfw.so.* \
   /usr/lib
 
+ARG APP_VERSION
+ARG GIT_SHA
 ENV APP_VERSION=$APP_VERSION
 ENV GIT_SHA=$GIT_SHA
 
