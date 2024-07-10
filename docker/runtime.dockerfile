@@ -67,4 +67,9 @@ ENV PGID=0
 
 RUN gem install foreman
 
+# Run the app itself as an s6 service
+COPY ./docker/s6-rc.d/manyfold/manyfold /etc/s6-overlay/s6-rc.d/manyfold
+COPY ./docker/s6-rc.d/manyfold/user/contents.d/manyfold /etc/s6-overlay/s6-rc.d/user/contents.d/manyfold
+
 EXPOSE 3214
+ENTRYPOINT ["/init"]

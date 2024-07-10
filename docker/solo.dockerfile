@@ -16,9 +16,3 @@ COPY ./docker/s6-rc.d/redis/user/contents.d/redis /etc/s6-overlay/s6-rc.d/user/c
 # Set parameters for solo mode connections
 ENV DATABASE_URL=sqlite3:/config/manyfold.sqlite3
 ENV REDIS_URL=redis://localhost:6379
-
-# Run the app itself as an s6 service
-COPY ./docker/s6-rc.d/manyfold/manyfold /etc/s6-overlay/s6-rc.d/manyfold
-COPY ./docker/s6-rc.d/manyfold/user/contents.d/manyfold /etc/s6-overlay/s6-rc.d/user/contents.d/manyfold
-
-ENTRYPOINT ["/init"]
