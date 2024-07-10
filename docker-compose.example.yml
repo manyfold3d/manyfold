@@ -25,9 +25,9 @@ services:
       # single DATABASE_URL variable if you prefer:
       # DATABASE_URL: {adapter}://{user}:{password}@{host}/{name}
 
-      # You can also use SQLite if you don't want to run a separate database server;
-      # If you do, specify a path to your database file in DATABASE_NAME, and make
-      # sure it's on a persistent volume!
+      # You can also use the "sqlite3" adapter if you don't want to run a separate
+      # database server. If you do, specify a path to your database file in DATABASE_NAME,
+      # and make sure it's on a persistent volume! Host, user and password aren't required.
       # DATABASE_URL: sqlite3:/config/manyfold.sqlite3
 
       # For details of other optional environment variables, including features such
