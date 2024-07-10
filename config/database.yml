@@ -1,16 +1,21 @@
-local: &local
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 16) %>
-  timeout: 5000
+env: &env
+  adapter: <%= ENV.fetch("DATABASE_ADAPTER", "postgresql") %>
+  host: <%= ENV.fetch("DATABASE_HOST", nil) %>
+  database: <%= ENV.fetch("DATABASE_NAME", "manyfold") %>
+  username: <%= ENV.fetch("DATABASE_USER", nil) %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", nil) %>
+  pool: <%= ENV.fetch("DATABASE_CONNECTION_POOL", ENV.fetch("RAILS_MAX_THREADS", 16)) %>
+  timeout: <%= ENV.fetch("DATABASE_TIMEOUT", 5000) %>
 
 development:
-  <<: *local
+  <<: *env
+  adapter: sqlite3
   database: db/development.sqlite3
 
 test:
-  <<: *local
+  <<: *env
+  adapter: sqlite3
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  <<: *env
