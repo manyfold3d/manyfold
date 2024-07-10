@@ -56,7 +56,7 @@ jobs:
         with:
           project: bsbhgkfhgc
           context: .
-          file: ./Dockerfile
+          file: ./docker/default.dockerfile
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
