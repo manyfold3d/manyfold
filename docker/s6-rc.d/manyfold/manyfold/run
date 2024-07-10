@@ -1,0 +1,3 @@
+#!/command/with-contenv sh
+cd /usr/src/app
+bin/docker-entrypoint.sh foreman start

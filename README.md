@@ -92,7 +92,7 @@ To synchronise with Translation.io, run `rake translation:clobber_and_sync:{loca
 
 The application is distributed as a multi-platform docker image (built by [Depot](https://depot.dev/)); see our [Docker Compose instructions](https://manyfold.app/get-started/docker-compose.html) for full details.
 
-If you want to build your own version of the Docker image, you can do so in the usual way by running `docker build .` in the root directory of this repository.
+If you want to build your own version of the Docker image, you can do so by running ` docker build -f docker/default.dockerfile .` in the root directory of this repository.
 
 ## Funding
 

@@ -1,4 +1,4 @@
-/Dockerfile
+/docker/*.dockerfile
 /docker-compose.*
 /.dockerignore
 /.bundle

@@ -1,45 +1,3 @@
-## COMMON BASE ##########################################
-
-FROM ruby:3.3.1-alpine3.18 AS base
-WORKDIR /usr/src/app
-
-RUN apk add --no-cache \
-  tzdata
-
-RUN gem install bundler -v 2.4.13
-RUN bundle config set --local deployment 'true'
-RUN bundle config set --local without 'development test'
-
-## BUILD STAGE ##########################################
-
-FROM base AS build
-
-RUN apk add --no-cache \
-  alpine-sdk \
-  nodejs \
-  postgresql-dev \
-  mariadb-dev \
-  libarchive \
-  mesa-gl \
-  glfw \
-  yarn
-
-COPY package.json .
-COPY yarn.lock .
-RUN yarn config set network-timeout 600000 -g
-RUN yarn install
-
-COPY .ruby-version .
-COPY Gemfile* ./
-RUN bundle install
-
-COPY . .
-RUN \
-  DATABASE_URL="nulldb://user:pass@localhost/db" \
-  SECRET_KEY_BASE="placeholder" \
-  RACK_ENV="production" \
-  bundle exec rake assets:precompile
-
 ## RUNTIME STAGE ##########################################
 
 FROM base as runtime
@@ -110,5 +68,3 @@ ENV PGID=0
 RUN gem install foreman
 
 EXPOSE 3214
-ENTRYPOINT ["bin/docker-entrypoint.sh"]
-CMD ["foreman", "start"]
