@@ -68,5 +68,3 @@ ENV PGID=0
 RUN gem install foreman
 
 EXPOSE 3214
-ENTRYPOINT ["bin/docker-entrypoint.sh"]
-CMD ["foreman", "start"]
