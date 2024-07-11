@@ -67,6 +67,9 @@ ENV PGID=0
 
 RUN gem install foreman
 
+# Tell s6 we're in a read-only root filesystem
+ENV S6_READ_ONLY_ROOT=1
+
 # Run the app itself as an s6 service
 COPY ./docker/s6-rc.d/manyfold/manyfold /etc/s6-overlay/s6-rc.d/manyfold
 COPY ./docker/s6-rc.d/manyfold/user/contents.d/manyfold /etc/s6-overlay/s6-rc.d/user/contents.d/manyfold
