@@ -46,7 +46,7 @@ group :development, :test do
   gem "faker", "~> 3.4"
   gem "guard", "~> 2.18"
   gem "guard-rspec", "~> 4.7"
-  gem "database_cleaner-active_record", "~> 2.1"
+  gem "database_cleaner-active_record", "~> 2.2"
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-rspec_rails", require: false
