@@ -190,7 +190,7 @@ GEM
     cssbundling-rails (1.4.0)
       railties (>= 6.0.0)
     csv (3.3.0)
-    database_cleaner-active_record (2.1.0)
+    database_cleaner-active_record (2.2.0)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
@@ -656,7 +656,7 @@ DEPENDENCIES
   cocooned (~> 2.2)
   cssbundling-rails (~> 1.4)
   data_migrate!
-  database_cleaner-active_record (~> 2.1)
+  database_cleaner-active_record (~> 2.2)
   devise (~> 4.9)
   devise-i18n (~> 1.12)
   devise-security (~> 0.18.0)
