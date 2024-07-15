@@ -17,3 +17,4 @@ COPY ./docker/s6-rc.d/redis/manyfold/dependencies.d/redis /etc/s6-overlay/s6-rc.
 # Set parameters for solo mode connections
 ENV DATABASE_URL=sqlite3:/config/manyfold.sqlite3
 ENV REDIS_URL=redis://localhost:6379
+ENV DEFAULT_WORKER_CONCURRENCY=1
