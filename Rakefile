@@ -36,10 +36,11 @@ end
 namespace :db do
   task chown: :environment do
     # Only do this for SQLite
-    return unless ActiveRecord::Base.connection.is_a? ActiveRecord::ConnectionAdapters::SQLite3Adapter
-    # Find all the database files
-    files = Dir.glob(ActiveRecord::Base.connection.instance_variable_get(:@config)[:database] + "*")
-    # Change ownership - this will fail safe if the env vars aren't set
-    FileUtils.chown(ENV.fetch("PUID", nil), ENV.fetch("PGID", nil), files, verbose: true)
+    if ActiveRecord::Base.connection.is_a? ActiveRecord::ConnectionAdapters::SQLite3Adapter
+      # Find all the database files
+      files = Dir.glob(ActiveRecord::Base.connection.instance_variable_get(:@config)[:database] + "*")
+      # Change ownership - this will fail safe if the env vars aren't set
+      FileUtils.chown(ENV.fetch("PUID", nil), ENV.fetch("PGID", nil), files, verbose: true)
+    end
   end
 end
