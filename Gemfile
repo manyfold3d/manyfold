@@ -96,7 +96,7 @@ gem "sqlite3_ar_regexp", github: "manyfold3d/sqlite3_ar_regexp", ref: "rails-7.1
 
 gem "mittsu", github: "manyfold3d/mittsu", ref: "manyfold"
 
-gem "view_component", "~> 3.12"
+gem "view_component", "~> 3.13"
 
 gem "rails-controller-testing", "~> 1.0", group: :test
 
