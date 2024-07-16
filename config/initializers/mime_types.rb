@@ -1,8 +1,6 @@
-# Be sure to restart your server when you modify this file.
+# Extra MIME types that Rails doesn't already know about
 
-# Add new mime types for use in respond_to blocks:
-# Mime::Type.register "text/richtext", :rtf
-
+# 3D Models
 Mime::Type.register "model/stl", :stl
 Mime::Type.register "model/obj", :obj
 Mime::Type.register "model/3mf", :threemf, [], ["3mf"]
@@ -11,12 +9,18 @@ Mime::Type.register "model/x-blender", :blend
 Mime::Type.register "model/x-meshmixer", :mix
 Mime::Type.register "model/x-alembic", :abc
 Mime::Type.register "model/step", :step, [], ["stp"]
+Mime::Type.register "application/x-openscad", :scad
+Mime::Type.register "model/gltf", :gltf, ["model/gltf+json", "model/gltf+binary"], ["glb"]
+
+# Slicer formats
+Mime::Type.register "text/x-gcode", :gcode
 Mime::Type.register "model/x-lychee", :lychee, [], ["lys", "lyt"]
 Mime::Type.register "model/x-chitubox", :chitubox, [], ["ctb"]
-Mime::Type.register "image/webp", :webp
-Mime::Type.register "application/x-openscad", :scad
-Mime::Type.register "text/x-gcode", :gcode
 
+# Images
+Mime::Type.register "image/webp", :webp
+
+# Archive formats
 Mime::Type.register "application/vnd.rar", :rar
 Mime::Type.register "application/x-7z-compressed", :sevenz, [], ["7z"]
 Mime::Type.register "application/x-bzip2", :bz2

@@ -4,6 +4,7 @@ import 'src/comlink_event_handler'
 import * as THREE from 'three'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { ThreeMFLoader } from 'threejs-webworker-3mf-loader'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'src/orbit_controls.js'
@@ -71,7 +72,7 @@ export class OffscreenRenderer {
     this.cbLoadProgress = cbLoadProgress
     this.cbLoadError = cbLoadError
     // Load
-    let loader: OBJLoader | STLLoader | ThreeMFLoader | PLYLoader | null = null
+    let loader: OBJLoader | STLLoader | ThreeMFLoader | PLYLoader | GLTFLoader | null = null
     switch (this.settings.format) {
       case 'obj':
         loader = new OBJLoader()
@@ -84,6 +85,10 @@ export class OffscreenRenderer {
         break
       case 'ply':
         loader = new PLYLoader()
+        break
+      case 'gltf':
+      case 'glb':
+        loader = new GLTFLoader()
         break
     }
     if (loader !== null) {
@@ -110,19 +115,22 @@ export class OffscreenRenderer {
         flatShading: true,
         color: (this.settings.objectColour ?? '#cccccc')
       })
-    // find mesh and set material
-    let object: THREE.Mesh | null = null
+    // find mesh
+    let object: THREE.Mesh | THREE.Group | null = null
     if (model.type === 'BufferGeometry') {
       object = new THREE.Mesh(model, material)
+    } else if ('scene' in model) {
+      object = model.scene
     } else {
-      model.traverse(function (node) {
-        if (node instanceof THREE.Mesh) {
-          node.material = material
-        }
-      })
       object = model
     }
+    // Set material
     if (object == null) { return }
+    object.traverse(function (node: THREE.Mesh) {
+      if (node.isMesh) {
+        node.material = material
+      }
+    })
     // Transform to screen coords from print
     if (this.settings.yUp !== 'true') {
       const coordSystemTransform = new THREE.Matrix4()
