@@ -46,7 +46,7 @@ module SupportedMimeTypes
       [
         "application/zip",
         "application/gzip",
-        "application/x-rar-compressed",
+        "application/vnd.rar",
         "application/x-7z-compressed",
         "application/x-bzip2"
       ].include?(type.to_s)
