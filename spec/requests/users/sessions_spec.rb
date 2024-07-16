@@ -6,7 +6,7 @@ require "rails_helper"
 
 RSpec.describe "Users::Sessions" do
   context "when in multiuser mode", :multiuser do
-    context "when signed out" do
+    context "when signed out on first use" do
       describe "GET /users/sign_in" do
         it "creates a default account" do
           expect { get "/users/sign_in" }.to change(User, :count).from(0).to(1)
@@ -15,6 +15,21 @@ RSpec.describe "Users::Sessions" do
         it "gives default account admin permissions" do
           get "/users/sign_in"
           expect(User.first.is_administrator?).to be true
+        end
+
+        it "automatically logs in on first use" do
+          get "/users/sign_in"
+          expect(controller.current_user).to be_present
+        end
+      end
+    end
+
+    context "when signed out after first use" do
+      describe "GET /users/sign_in" do
+        let(:admin) { create(:admin) }
+
+        before do
+          admin.update(reset_password_token: nil)
         end
 
         it "doesn't auto log in" do
