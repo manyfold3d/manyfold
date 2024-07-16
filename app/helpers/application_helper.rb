@@ -1,6 +1,11 @@
 module ApplicationHelper
   def icon(icon, label, id: nil)
-    tag.i class: "bi bi-#{icon}", role: "img", title: label, id: id
+    prefix = "bi"
+    if icon.starts_with? "ra-"
+      prefix = "ra"
+      icon = icon.gsub("ra-", "")
+    end
+    tag.i class: "#{prefix} #{prefix}-#{icon}", role: "img", title: label, id: id
   end
 
   def card(style, title, options = {}, &content)
