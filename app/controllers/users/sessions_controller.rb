@@ -34,8 +34,9 @@ class Users::SessionsController < Devise::SessionsController
   def auto_login_single_user
     # Autocreate an admin user if there isn't one
     create_admin_user if User.with_role(:administrator).empty?
-    # If in single user mode, automatically log in with an admin account
-    unless Flipper.enabled?(:multiuser)
+    # If in single user mode, or on first run,
+    # automatically log in with an admin account
+    if !Flipper.enabled?(:multiuser) || User.with_role(:administrator).first.reset_password_token == "first_use"
       sign_in(:user, User.with_role(:administrator).first)
       flash.discard
       redirect_back_or_to root_path, alert: nil
