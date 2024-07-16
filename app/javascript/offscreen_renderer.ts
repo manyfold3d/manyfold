@@ -126,8 +126,8 @@ export class OffscreenRenderer {
     }
     // Set material
     if (object == null) { return }
-    object.traverse(function (node) {
-      if (node instanceof THREE.Mesh) {
+    object.traverse(function (node: THREE.Mesh) {
+      if (node.isMesh) {
         node.material = material
       }
     })
