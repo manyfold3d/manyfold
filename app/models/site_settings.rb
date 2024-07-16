@@ -28,4 +28,34 @@ class SiteSettings < RailsSettings::Base
   def self.max_file_extract_size
     ENV.fetch("MAX_FILE_EXTRACT_SIZE", 1_073_741_824).to_i
   end
+
+  module UserDefaults
+    RENDERER = {
+      grid_width: 200,
+      grid_depth: 200,
+      show_grid: true,
+      enable_pan_zoom: false,
+      background_colour: "#000000",
+      object_colour: "#cccccc",
+      render_style: "normals"
+    }
+
+    PAGINATION = {
+      models: true,
+      creators: true,
+      per_page: 12
+    }
+
+    TAG_CLOUD = {
+      threshold: 0,
+      heatmap: true,
+      keypair: true,
+      sorting: "frequency",
+      hide_unrelated: true
+    }
+
+    FILE_LIST = {
+      hide_presupported_versions: true
+    }
+  end
 end
