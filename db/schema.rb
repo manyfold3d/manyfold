@@ -99,6 +99,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_03_160732) do
   end
 
   create_table "model_files", force: :cascade do |t|
+    t.string "filename"
     t.integer "model_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -107,9 +108,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_03_160732) do
     t.string "digest"
     t.text "notes"
     t.text "caption"
+    t.bigint "size"
     t.integer "presupported_version_id"
-    t.string "filename"
-    t.integer "size"
     t.json "attachment_data"
     t.index ["digest"], name: "index_model_files_on_digest"
     t.index ["filename", "model_id"], name: "index_model_files_on_filename_and_model_id", unique: true
@@ -203,9 +203,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_03_160732) do
     t.datetime "updated_at", null: false
     t.string "username", null: false
     t.json "pagination_settings", default: {"models"=>true, "creators"=>true, "collections"=>true, "per_page"=>12}
-    t.json "renderer_settings", default: {"grid_width"=>200, "grid_depth"=>200}
+    t.json "renderer_settings", default: {"grid_width"=>200, "grid_depth"=>200, "show_grid"=>true, "enable_pan_zoom"=>false, "background_colour"=>"#000000", "object_colour"=>"#cccccc", "render_style"=>"normals"}
     t.json "tag_cloud_settings", default: {"threshold"=>0, "heatmap"=>true, "keypair"=>true, "sorting"=>"frequency", "hide_unrelated"=>true}
-    t.json "problem_settings", default: {"missing"=>"danger", "empty"=>"info", "nesting"=>"warning", "inefficient"=>"info", "duplicate"=>"warning", "no_image"=>"silent", "no_3d_model"=>"silent"}
+    t.json "problem_settings", default: {"missing"=>"danger", "empty"=>"info", "nesting"=>"warning", "inefficient"=>"info", "duplicate"=>"warning", "no_image"=>"silent", "no_3d_model"=>"silent", "non_manifold"=>"warning", "inside_out"=>"warning"}
     t.json "file_list_settings", default: {"hide_presupported_versions"=>true}
     t.string "reset_password_token"
     t.datetime "remember_created_at"
