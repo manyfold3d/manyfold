@@ -40,7 +40,7 @@ module ApplicationHelper
 
   def renderable?(format)
     case format
-    when "stl", "obj", "3mf", "ply"
+    when "stl", "obj", "3mf", "ply", "gltf", "glb"
       true
     else
       false
