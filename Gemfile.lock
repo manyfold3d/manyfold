@@ -476,7 +476,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.1)
+    rexml (3.3.2)
       strscan
     rolify (6.0.1)
     rspec (3.13.0)
@@ -583,7 +583,7 @@ GEM
     sqlite3 (1.7.3-x64-mingw-ucrt)
     sqlite3 (1.7.3-x86_64-darwin)
     sqlite3 (1.7.3-x86_64-linux)
-    standard (1.39.1)
+    standard (1.39.2)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.64.0)
@@ -711,7 +711,7 @@ DEPENDENCIES
   spring
   sqlite3 (~> 1.7)
   sqlite3_ar_regexp!
-  standard (~> 1.39.1)
+  standard (~> 1.39.2)
   stopwords-filter2
   string-similarity (~> 2.1)
   sys-filesystem (~> 1.5)
