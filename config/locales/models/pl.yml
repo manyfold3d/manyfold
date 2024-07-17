@@ -18,7 +18,7 @@ pl:
     destroy:
       confirm: Spowoduje to usunięcie plików. Czy na pewno chcesz kontynuować?
       success: Model usunięty!
-    exceeds_max_size:
+    exceeds_max_size: 'Wybrany plik przekracza maksymalny rozmiar: %{max_size} MiB.'
     file:
       open_button:
         label: Wyświetl szczegóły %{name}
@@ -46,13 +46,13 @@ pl:
     merge:
       success: Modele zostały pomyślnie połączone.
     new:
-      description:
+      description: Prześlij nowe modele jako skompresowane pliki. Każde przesłane archiwum zostanie wyodrębnione i stanie się pojedynczym modelem zawierającym wszystkie pliki. Upewnij się, że klikniesz przycisk "Stwórz modele" po zakończeniu przesyłania, aby je zapisać!
       files:
-        label: Wybierz Plik
-      free_space:
+        label: Wybierz Pliki
+      free_space: "(%{available} wolne)"
       library:
         help: Biblioteka, do której ma zostać przesłany plik.
-      submit: Prześlij
+      submit: Stwórz modele
       title: Prześlij
     problem:
       merge_all: Połącz wszystko

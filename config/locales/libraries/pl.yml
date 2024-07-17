@@ -9,13 +9,13 @@ pl:
     form:
       add_line: Dodaj linię
       caption:
-        help: Najedź kursorem na bibliotekę w nagłówku, aby zobaczyć napis.
-      filesystem_description_html:
+        help: Opcjonalne; wyświetlane jako tooltip na linkach do biblioteki.
+      filesystem_description_html: Aby użyć przestrzeni w lokalnym systemie plików, najpierw upewnij się, że jest on zamontowany jako <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> lub inny wolumin wewnątrz twojego kontenera Dockera, a następnie wprowadź ścieżkę Dockera, a nie ścieżkę na serwerze hosta! Na przykład, jeśli masz folder pełen plików w <code>/mnt/media/3d/models</code> na hoście i powiązałeś <code>/mnt/media/3d</code> z <code>/libraries</code> w konfiguracji Dockera, wymaganą ścieżką będzie <code>/libraries/models</code>.
       icon:
-        help_html: Ikony z biblioteki <a href="https://icons.getbootstrap.com/" target="_blank">strona ikon Boostrap</a>
+        help_html: Opcjonalne; wszystkie ikony z <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a>
         placeholder: boxes
       notes:
-        help:
+        help: Opcjonalne; wyświetlane tylko administratorom na stronie ustawień.
       path:
         placeholder: "/libraries/models"
       s3_bucket:
@@ -24,7 +24,7 @@ pl:
       s3_endpoint:
         help:
       tag_regex:
-        help: Sprawdź brakujące tagi tych modeli korzystając z tego regexa.
+        help: Sprawdź modele pod kątem brakujących tagów pasujących do tego regexa.
     general:
       edit: Edytuj Bibliotekę
       new: Nowa Biblioteka
@@ -33,6 +33,7 @@ pl:
     scan_all:
       success: Rozpoczęto skanowanie wszystkich bibliotek.
     storage_services:
+      filesystem: Lokalny system plików
       s3:
     update:
       failure: Wystąpił błąd i nie można było zapisać biblioteki.
