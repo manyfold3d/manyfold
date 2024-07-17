@@ -8,7 +8,7 @@ require "rails_helper"
 #                             POST   /users/password(.:format)
 
 RSpec.describe "Users::Passwords" do
-  let(:new_password) { Faker::Internet.password min_length: 6, mix_case: true, special_characters: true }
+  let(:new_password) { Faker::Internet.password max_length: 32, min_length: 32, mix_case: true, special_characters: true }
   let(:reset_password_token) { SecureRandom.hex }
   let!(:admin) {
     create(:admin)
