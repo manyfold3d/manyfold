@@ -4,7 +4,7 @@ require 'uri'
 class User < ApplicationRecord
   rolify
   devise :database_authenticatable,
-    :registerable, :validatable, :zxcvbnable,
+    :registerable, :zxcvbnable,
     :rememberable, :recoverable,
     :lockable, :timeoutable
 
@@ -19,6 +19,11 @@ class User < ApplicationRecord
     presence: true,
     uniqueness: {case_sensitive: false},
     format: {with: URI::MailTo::EMAIL_REGEXP}
+
+  validates :password,
+    presence: true,
+    confirmation: true,
+    if: :password_required?
 
   after_create :assign_default_role
 
@@ -66,5 +71,9 @@ class User < ApplicationRecord
 
   def assign_default_role
     add_role(:viewer) if roles.blank?
+  end
+
+  def password_required?
+    !persisted? || !password.nil? || !password_confirmation.nil?
   end
 end
