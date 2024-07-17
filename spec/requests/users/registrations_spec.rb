@@ -9,8 +9,8 @@ require "rails_helper"
 #                          POST   /users(.:format)                                                        users/registrations#create
 
 RSpec.describe "Users::Registrations" do
-  let(:old_password) { Faker::Internet.password min_length: 6, mix_case: true, special_characters: true }
-  let(:new_password) { Faker::Internet.password min_length: 6, mix_case: true, special_characters: true }
+  let(:old_password) { Faker::Internet.password max_length: 32, min_length: 32, mix_case: true, special_characters: true }
+  let(:new_password) { Faker::Internet.password max_length: 32, min_length: 32, mix_case: true, special_characters: true }
   let!(:admin) {
     create(:admin, password: old_password)
   }

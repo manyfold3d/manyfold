@@ -233,10 +233,10 @@ en:
     title: Manyfold
   errors:
     messages:
-      invalid: is invalid
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
+      weak_password: not strong enough. Consider adding a number, symbols or more letters to make it stronger.
   general:
     delete: Delete
     download: Download
