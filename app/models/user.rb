@@ -76,4 +76,9 @@ class User < ApplicationRecord
   def password_required?
     !persisted? || !password.nil? || !password_confirmation.nil?
   end
+
+  def weak_words
+    ['manyfold', self.username]
+  end
+
 end
