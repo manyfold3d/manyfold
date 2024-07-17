@@ -1,3 +1,6 @@
+
+require 'uri'
+
 class User < ApplicationRecord
   rolify
   devise :database_authenticatable,
@@ -14,7 +17,8 @@ class User < ApplicationRecord
 
   validates :email,
     presence: true,
-    uniqueness: {case_sensitive: false}
+    uniqueness: {case_sensitive: false},
+    format: {with: URI::MailTo::EMAIL_REGEXP}
 
   after_create :assign_default_role
 

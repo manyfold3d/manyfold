@@ -203,8 +203,6 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.12.1)
       devise (>= 4.9.0)
-    devise-security (0.18.0)
-      devise (>= 4.3.0)
     devise_zxcvbn (6.0.0)
       devise
       zxcvbn (~> 0.1.7)
@@ -663,7 +661,6 @@ DEPENDENCIES
   database_cleaner-active_record (~> 2.2)
   devise (~> 4.9)
   devise-i18n (~> 1.12)
-  devise-security (~> 0.18.0)
   devise_zxcvbn (~> 6.0)
   dotenv-rails (~> 3.1)
   erb_lint (~> 0.5.0)
