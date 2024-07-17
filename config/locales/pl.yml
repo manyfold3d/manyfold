@@ -17,7 +17,12 @@ pl:
         name: Nazwa
         notes: Notatki
         path: Ścieżka
-        storage_service:
+        s3_access_key_id:
+        s3_bucket:
+        s3_endpoint:
+        s3_region:
+        s3_secret_access_key:
+        storage_service: Usługa przechowywania plików
         tag_regex: Wymagane Tagi
       link:
         url: Link
@@ -309,7 +314,7 @@ pl:
     load: Wczytywanie
     processing: Procesowanie siatki
   security:
-    running_as_root_html:
+    running_as_root_html: Manyfold działa jako root, co stanowi zagrożenie dla bezpieczeństwa. Uruchom jako inny użytkownik systemu przez ustawienie zmiennych środowiskowych <code>PUID</code> i <code>PGID</code>. Szczegółowe informacje możesz znaleźć w <a href='https://manyfold.app/sysadmin/configuration.html#required'>dokumentacji konfiguracji</a>.
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things

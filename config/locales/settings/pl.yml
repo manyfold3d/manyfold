@@ -39,7 +39,7 @@ pl:
     library_settings:
       description: Zobacz szczegóły biblioteki i ją zmodyfikuj.
       free_space:
-        label:
+        label: Wolna przestrzeń
       heading: Biblioteki
       tag_regex:
         check: Sprawdź
