@@ -19,6 +19,10 @@ pl:
       path:
         placeholder: "/libraries/models"
       s3_bucket:
+        help:
+      s3_description_html:
+      s3_endpoint:
+        help:
       tag_regex:
         help: Sprawdź brakujące tagi tych modeli korzystając z tego regexa.
     general:
