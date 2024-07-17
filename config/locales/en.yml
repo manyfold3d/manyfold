@@ -80,6 +80,8 @@ en:
         unlock_token: Unlock token
         updated_at: Updated at
     errors:
+      messages:
+        weak_password: "not strong enough. Consider adding a number, symbols or more letters to make it stronger."
       models:
         library:
           attributes:
