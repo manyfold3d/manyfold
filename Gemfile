@@ -120,7 +120,6 @@ gem "flipper-active_record", "~> 1.3"
 
 gem "rolify", "~> 6.0"
 
-
 gem "letter_opener", "~> 1.10", group: :development
 
 gem "sidekiq", "~> 7.3"

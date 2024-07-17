@@ -1,5 +1,4 @@
-
-require 'uri'
+require "uri"
 
 class User < ApplicationRecord
   rolify
@@ -78,7 +77,6 @@ class User < ApplicationRecord
   end
 
   def weak_words
-    ['manyfold', self.username]
+    ["manyfold", username]
   end
-
 end
