@@ -18,6 +18,11 @@ de:
         help:
       path:
         placeholder: "/libraries/models"
+      s3_bucket:
+        help:
+      s3_description_html:
+      s3_endpoint:
+        help:
       tag_regex:
         help: Suchen Sie nach Modellen, die diese Regex erfüllen.
     general:
@@ -29,6 +34,7 @@ de:
       success: Scan für alle Sammlungen gestartet.
     storage_services:
       filesystem:
+      s3:
     update:
       failure: Es ist ein Fehler aufgetreten, und die Sammlung konnte nicht gespeichert werden.
       success: Sammlungsdetails gespeichert.

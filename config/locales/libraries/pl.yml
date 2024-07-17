@@ -18,6 +18,7 @@ pl:
         help:
       path:
         placeholder: "/libraries/models"
+      s3_bucket:
       tag_regex:
         help: Sprawdź brakujące tagi tych modeli korzystając z tego regexa.
     general:
@@ -28,7 +29,7 @@ pl:
     scan_all:
       success: Rozpoczęto skanowanie wszystkich bibliotek.
     storage_services:
-      filesystem:
+      s3:
     update:
       failure: Wystąpił błąd i nie można było zapisać biblioteki.
       success: Zapisano szczegóły biblioteki.

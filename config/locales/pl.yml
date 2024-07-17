@@ -17,7 +17,11 @@ pl:
         name: Nazwa
         notes: Notatki
         path: Ścieżka
-        storage_service:
+        s3_access_key_id:
+        s3_bucket:
+        s3_endpoint:
+        s3_region:
+        s3_secret_access_key:
         tag_regex: Wymagane Tagi
       link:
         url: Link
