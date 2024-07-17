@@ -52,7 +52,7 @@ de:
       free_space:
       library:
         help: Die Sammlung, in die hochgeladen werden soll.
-      submit: Hochladen
+      submit:
       title: Hochladen
     problem:
       merge_all: Alle zusammenführen

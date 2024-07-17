@@ -12,7 +12,7 @@ de:
         help:
       filesystem_description_html:
       icon:
-        help_html: Symbols pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icons</a>
+        help_html: Icons pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icon-Seite</a>
         placeholder: boxes
       notes:
         help:

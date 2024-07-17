@@ -34,7 +34,7 @@ fr:
       next: Suivant
       play_pause:
       previous: Précédent
-      select_slide:
+      select_slide: Choisir l'image à afficher
       slide_label:
     index:
       actions_heading: Actions
@@ -52,7 +52,7 @@ fr:
       free_space:
       library:
         help: La bibliothèque vers laquelle télécharger.
-      submit: Télécharger
+      submit:
       title: Télécharger
     problem:
       merge_all: Tous fusionner
