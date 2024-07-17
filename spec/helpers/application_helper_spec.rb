@@ -15,7 +15,6 @@ RSpec.describe ApplicationHelper do
       doc = Nokogiri::HTML(html)
       expect(doc.at("i")["class"]).to eq("ra ra-test")
     end
-
   end
 
   describe "#card" do
