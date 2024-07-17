@@ -9,7 +9,7 @@ fr:
     form:
       add_line: Ajouter une ligne
       caption:
-        help: Survolez la bibliothèque dans l'en-tête pour voir la légende.
+        help:
       filesystem_description_html:
       icon:
         help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank"> bibliothèque Bootstrap </a>

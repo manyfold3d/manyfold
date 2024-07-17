@@ -9,7 +9,7 @@ de:
     form:
       add_line: Zeile hinzufügen
       caption:
-        help: Bewegen Sie den Mauszeiger über die Bibliothek in der Kopfzeile, um die Bildunterschrift zu sehen.
+        help:
       filesystem_description_html:
       icon:
         help_html: Symbols pro Sammlung <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap Icons</a>
