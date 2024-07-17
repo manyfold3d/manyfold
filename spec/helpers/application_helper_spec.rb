@@ -9,6 +9,12 @@ RSpec.describe ApplicationHelper do
       expect(doc.at("i")["role"]).to eq("img")
       expect(doc.at("i")["title"]).to eq("Test Label")
     end
+
+    it "supports RPG-awesome icons" do
+      html = helper.icon("ra-test", "Test Label")
+      doc = Nokogiri::HTML(html)
+      expect(doc.at("i")["class"]).to eq("ra ra-test")
+    end
   end
 
   describe "#card" do

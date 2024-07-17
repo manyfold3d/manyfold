@@ -2872,6 +2872,11 @@ rimraf@^3.0.2:
   dependencies:
     glob "^7.1.3"
 
+rpg-awesome@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/rpg-awesome/-/rpg-awesome-0.2.0.tgz#33ef2f14660943c71bf3916bb157f86665417267"
+  integrity sha512-+jTuYWHOs8iZV5+XKvI/7Ojr0k4pLX/dRpa2LHXReGMQI6h0cGvNxIh/AQY1zhAC7LPcNXnPTliD1/ugB/DbRA==
+
 run-parallel@^1.1.9:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/run-parallel/-/run-parallel-1.2.0.tgz#66d1368da7bdf921eb9d95bd1a9229e7f21a43ee"
