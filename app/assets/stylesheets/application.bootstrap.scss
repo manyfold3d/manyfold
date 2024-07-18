@@ -3,10 +3,10 @@ $table-bg-scale: -90%;
 
 @import 'bootstrap/scss/bootstrap';
 
-$bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
+$bootstrap-icons-font-dir: "./bootstrap-icons/font/fonts";
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-$ra-font-path: "rpg-awesome/fonts";
+$ra-font-path: "./rpg-awesome/fonts";
 @import 'rpg-awesome/scss/rpg-awesome';
 
 @import 'layout';
