@@ -5,7 +5,7 @@ class CreatorsController < ApplicationController
   def index
     @creators = policy_scope(Creator)
     unless @filters.empty?
-      process_filters_init
+      @models = model_query_bases
       process_filters
       @creators = @creators.where(id: @models.map { |model| model.creator_id })
     end

@@ -9,8 +9,8 @@ module ModelFilters
     @filters = params.permit(:library, :collection, :q, :creator, :link, :missingtag, :order, tag: [])
   end
 
-  def process_filters_init
-    @models = policy_scope(Model).includes(:tags, :preview_file, :creator, :collection)
+  def model_query_base
+    policy_scope(Model).includes(:tags, :preview_file, :creator, :collection)
   end
 
   def generate_tag_list(models = nil, filter_tags = nil)

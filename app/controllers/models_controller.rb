@@ -11,7 +11,7 @@ class ModelsController < ApplicationController
     @can_destroy = policy(Model).destroy?
     @can_edit = policy(Model).edit?
 
-    process_filters_init
+    @models = model_query_base
 
     # Ordering
     @models = case session["order"]
