@@ -26,9 +26,8 @@ class ModelsController < ApplicationController
       @models = @models.page(page).per(current_user.pagination_settings["per_page"])
     end
 
-    process_filters_tags_fetchall
     process_filters
-    process_filters_tags_highlight
+    @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
 
     # Load extra data
     @models = @models.includes [:library, :model_files, :preview_file, :creator, :collection]

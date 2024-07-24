@@ -50,8 +50,7 @@ class SiteSettings < RailsSettings::Base
       threshold: 2,
       heatmap: true,
       keypair: true,
-      sorting: "frequency",
-      hide_unrelated: true
+      sorting: "frequency"
     }
 
     FILE_LIST = {

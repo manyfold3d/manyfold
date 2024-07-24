@@ -28,7 +28,7 @@
   <%= render "filters_card" %>
   <% unless @tags.empty? %>
     <%= card :secondary, ActsAsTaggableOn::Tag.model_name.human(count: 100), collapse: "md", skip_link: {target: "footer", text: t(".skip_tags")}  do %>
-      <%= render "tag_list", tags: @tags - (@tag || []), muted_tags: @tags - @commontags %>
+      <%= render "tag_list", tags: @tags, unrelated_tag_count: @unrelated_tag_count %>
     <% end %>
   <% end %>
 <% end %>

@@ -52,19 +52,6 @@ module ApplicationHelper
     end
   end
 
-  def tag_class(state)
-    case state
-    when :highlight
-      "bg-primary"
-    when :mute
-      "border border-muted text-muted pe-none"
-    when :hide
-      "d-none"
-    else
-      "bg-secondary"
-    end
-  end
-
   def text_input_row(form, name, options = {})
     content_tag :div, class: "row mb-3 input-group" do
       safe_join [

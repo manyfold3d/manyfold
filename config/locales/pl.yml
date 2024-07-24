@@ -226,7 +226,7 @@ pl:
       settings: Ustawienia
       upload: Prześlij
     tag_list:
-      muted_tags:
+      unrelated_tag_count:
         one: "%{count} niepowiązany tag ukryty"
         other: "%{count} niepowiązanych tagów ukrytych"
     tagline: Pomaga w śledzeniu plików do druku 3D

@@ -13,26 +13,24 @@ module ModelFilters
     @models = policy_scope(Model).includes(:tags, :preview_file, :creator, :collection)
   end
 
-  def process_filters_tags_fetchall
-    # libraries may (probably) have wildly varying sets of tags (passed on for use in tag cloud)
-    # grab these before applying filters to get "all" applicable tags (if library filter is set trim to library)
-    @tags = if @filters[:library]
-      Model.includes(:tags).where(library: @filters[:library])
-    else
-      Model.includes(:tags)
-    end
-    @tags = @tags.map(&:tags).flatten.uniq.select { |x| x.taggings_count >= current_user.tag_cloud_settings["threshold"] }
-    @tags = case current_user.tag_cloud_settings["sorting"]
+  def generate_tag_list(models = nil, filter_tags = nil)
+    # All tags bigger than threshold
+    tags = all_tags = ActsAsTaggableOn::Tag.where(taggings_count: current_user.tag_cloud_settings["threshold"]..)
+    # Ignore any tags that have been applied as filters
+    tags = all_tags = tags.where.not(id: filter_tags) if filter_tags
+    # Generate a list of tags shared by the list of models
+    tags = tags.includes(:taggings).where("taggings.taggable": models) if models
+    # Apply tag sorting
+    tags = case current_user.tag_cloud_settings["sorting"]
     when "alphabetical"
-      @tags.sort_by(&:name)
+      tags.order(name: :asc)
     else
-      @tags.sort_by(&:name).reverse.sort_by(&:taggings_count).reverse
+      tags.order(taggings_count: :desc, name: :asc)
     end
-  end
-
-  def process_filters_tags_highlight
-    # this is used for tag cloud for highlighting.  fetch after processing
-    @commontags = ActsAsTaggableOn::Tag.joins(:taggings).where(taggings: {taggable: @models.except(:limit, :offset, :distinct)})
+    # Work out how many tags were unrelated and will be hidden
+    unrelated_tag_count = models ? (all_tags.count - tags.count) : 0
+    # Done!
+    [tags, unrelated_tag_count]
   end
 
   def process_filters
@@ -61,7 +59,7 @@ module ModelFilters
     when [""]
       @models = @models.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1")
     else
-      @tag = ActsAsTaggableOn::Tag.named_any(@filters[:tag])
+      @filter_tags = ActsAsTaggableOn::Tag.named_any(@filters[:tag])
       @models = @models.tagged_with(@filters[:tag])
     end
 

@@ -4,15 +4,13 @@ class CreatorsController < ApplicationController
 
   def index
     @creators = policy_scope(Creator)
-    if @filters.empty?
-      @commontags = @tags = ActsAsTaggableOn::Tag.all
-    else
+    unless @filters.empty?
       process_filters_init
-      process_filters_tags_fetchall
       process_filters
-      process_filters_tags_highlight
       @creators = @creators.where(id: @models.map { |model| model.creator_id })
     end
+
+    @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
 
     # Ordering
     @creators = case session["order"]

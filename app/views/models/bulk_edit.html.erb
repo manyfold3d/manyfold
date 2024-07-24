@@ -21,7 +21,7 @@
         <td><%= render partial: "tag",
                   collection: (current_user.tag_cloud_settings["sorting"] == "alphabetical") ?
                     model.tags.sort_by(&:name) : model.tags.sort_by(&:name).reverse.sort_by(&:taggings_count).reverse,
-                  locals: {state: :normal, model_id: model.id} %></td>
+                  locals: {model_id: model.id} %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
         <td><%= icon("exclamation-triangle", t(".needs_organizing")) if model.needs_organizing? %></code></td>
       </tr>
