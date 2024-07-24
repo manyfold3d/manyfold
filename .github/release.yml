@@ -1,5 +1,8 @@
 changelog:
   categories:
+    - title: 💥 Breaking Changes 💥
+      labels:
+        - breaking change
     - title: ✨ New Features ✨
       labels:
         - feature
@@ -9,12 +12,13 @@ changelog:
     - title: 🐛 Bug Fixes 🐛
       labels:
         - bug
+    - title: 🧑 Accessibility 🧑
+      labels:
+        - accessibility
+    - title: 🌍 Sustainability 🌍
+      labels:
+        - sustainability
+        - performance
     - title: 🛠️ Other Improvements 🛠️
       labels:
         - "*"
-      exclude:
-        labels:
-          - dependencies
-          - feature
-          - bug
-          - security
