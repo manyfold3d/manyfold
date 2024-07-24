@@ -47,7 +47,7 @@ class SiteSettings < RailsSettings::Base
     }
 
     TAG_CLOUD = {
-      threshold: 0,
+      threshold: 2,
       heatmap: true,
       keypair: true,
       sorting: "frequency",
