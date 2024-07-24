@@ -28,6 +28,7 @@ class ModelsController < ApplicationController
 
     process_filters_tags_fetchall
     process_filters
+    @tags = generate_tag_list(@models)
 
     # Load extra data
     @models = @models.includes [:library, :model_files, :preview_file, :creator, :collection]

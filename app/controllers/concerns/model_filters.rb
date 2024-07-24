@@ -30,6 +30,11 @@ module ModelFilters
     end
   end
 
+  # Generate a list of tags shared by a list of models, and a count of the how many were unrelated
+  def generate_tag_list(models)
+    ActsAsTaggableOn::Tag.includes(:taggings).where("taggings.taggable": models)
+  end
+
   def process_filters
     # filter by library?
     @models = @models.where(library: params[:library]) if @filters[:library]
