@@ -38,7 +38,6 @@ module ModelFilters
   def process_filters
     # filter by library?
     @models = @models.where(library: params[:library]) if @filters[:library]
-    @addtags = @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
 
     # Missing tags (If specific tag is not specified, require library to be set)
     if @filters[:missingtag].presence || (@filters[:missingtag] && @filters[:library])

@@ -117,6 +117,7 @@ class ModelsController < ApplicationController
     @collections = policy_scope(Collection)
     @models = policy_scope(Model)
     process_filters
+    @addtags = @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
   end
 
   def bulk_update
