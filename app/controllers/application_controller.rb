@@ -63,6 +63,8 @@ class ApplicationController < ActionController::Base
       content_security_policy.img_src(*scout_csp)
       content_security_policy.script_src(*scout_csp)
       content_security_policy.style_src(*scout_csp)
+      content_security_policy.connect_src(*scout_csp)
+      content_security_policy.frame_src(*scout_csp)
     else
       content_security_policy.script_src "nonce-#{content_security_policy_nonce}"
     end
