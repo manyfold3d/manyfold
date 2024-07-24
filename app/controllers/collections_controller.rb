@@ -10,7 +10,7 @@ class CollectionsController < ApplicationController
       @collections = @collections.tree_both(@filters[:collection] || nil, @models.filter_map { |model| model.collection_id })
     end
 
-    @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models)
+    @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
 
     # Ordering
     @collections = case session["order"]

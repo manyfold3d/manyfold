@@ -7,11 +7,10 @@ class CreatorsController < ApplicationController
     unless @filters.empty?
       process_filters_init
       process_filters
-      @tags, @unrelated_tag_count = generate_tag_list(@models)
       @creators = @creators.where(id: @models.map { |model| model.creator_id })
     end
 
-    @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models)
+    @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
 
     # Ordering
     @creators = case session["order"]

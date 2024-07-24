@@ -13,9 +13,11 @@ module ModelFilters
     @models = policy_scope(Model).includes(:tags, :preview_file, :creator, :collection)
   end
 
-  def generate_tag_list(models = nil)
+  def generate_tag_list(models = nil, filter_tags = nil)
     # All tags bigger than threshold
     tags = all_tags = ActsAsTaggableOn::Tag.where(taggings_count: current_user.tag_cloud_settings["threshold"]..)
+    # Ignore any tags that have been applied as filters
+    tags = all_tags = tags.where.not(id: filter_tags) if filter_tags
     # Generate a list of tags shared by the list of models
     tags = tags.includes(:taggings).where("taggings.taggable": models) if models
     # Apply tag sorting
@@ -57,7 +59,7 @@ module ModelFilters
     when [""]
       @models = @models.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1")
     else
-      @tag = ActsAsTaggableOn::Tag.named_any(@filters[:tag])
+      @filter_tags = ActsAsTaggableOn::Tag.named_any(@filters[:tag])
       @models = @models.tagged_with(@filters[:tag])
     end
 

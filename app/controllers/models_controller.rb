@@ -27,7 +27,7 @@ class ModelsController < ApplicationController
     end
 
     process_filters
-    @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models)
+    @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
 
     # Load extra data
     @models = @models.includes [:library, :model_files, :preview_file, :creator, :collection]
