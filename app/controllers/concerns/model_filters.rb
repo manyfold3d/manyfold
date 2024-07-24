@@ -31,76 +31,103 @@ module ModelFilters
 
   def filtered_models(filters)
     models = policy_scope(Model).includes(:tags, :preview_file, :creator, :collection)
+    models = filter_by_library(models, filters[:library])
+    models = filter_by_missing_tag(models, filters[:missingtag], filters[:library])
+    models = filter_by_tag(models, filters[:tag])
+    models = filter_by_collection(models, filters[:collection])
+    models = filter_by_creator(models, filters[:creator])
+    models = filter_by_url(models, filters[:link])
+    filter_by_search(models, filters[:q])
+  end
 
-    # filter by library?
-    models = models.where(library: params[:library]) if @filters[:library]
+  private
 
+  # Filter by library
+  def filter_by_library(models, library)
+    library ? models.where(library_id: library) : models
+  end
+
+  # Filter by collection
+  def filter_by_collection(models, collection)
+    case collection
+    when nil
+      models # No collection, move along
+    when ""
+      models.where(collection_id: nil)
+    else
+      @collection = Collection.find(collection)
+      models.where(collection: Collection.tree_down(collection))
+    end
+  end
+
+  # Filter by creator
+  def filter_by_creator(models, creator)
+    case creator
+    when nil
+      models # No creator specified, nothing to do
+    when ""
+      models.where(creator_id: nil)
+    else
+      @creator = Creator.find(creator)
+      models.where(creator: @creator)
+    end
+  end
+
+  # Filter by tag
+  def filter_by_tag(models, tags)
+    case tags
+    when nil
+      models # No tags, move along
+    when [""]
+      models.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1")
+    else
+      @filter_tags = ActsAsTaggableOn::Tag.named_any(tags)
+      models.tagged_with(tags)
+    end
+  end
+
+  # Filter by url
+  def filter_by_url(models, url)
+    case url
+    when nil
+      models # no filter
+    when ""
+      models.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model')<1")
+    else
+      models.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model' and url like ?)>0", "%#{url}%")
+    end
+  end
+
+  # Filter by search query
+  # This should be replaced with proper ransack search
+  def filter_by_search(models, query)
+    # todo: haven't added collection here yet
+    if query
+      field = Model.arel_table[:name]
+      creatorsearch = Creator.where("name LIKE ?", "%#{query}%")
+      models.where("tags.name LIKE ?", "%#{query}%").or(models.where(field.matches("%#{query}%"))).or(models.where(creator_id: creatorsearch))
+        .joins("LEFT JOIN taggings ON taggings.taggable_id=models.id AND taggings.taggable_type = 'Model' LEFT JOIN tags ON tags.id = taggings.tag_id").distinct
+    else
+      models
+    end
+  end
+
+  def filter_by_missing_tag(models, missingtag, library)
     # Missing tags (If specific tag is not specified, require library to be set)
-    if @filters[:missingtag].presence || (@filters[:missingtag] && @filters[:library])
+    if missingtag.presence || (missingtag && library)
       tag_regex_build = []
-      regexes = ((@filters[:missingtag] != "") ? [@filters[:missingtag]] : models[0].library.tag_regex)
+      regexes = ((missingtag != "") ? [missingtag] : Library.find(library).tag_regex)
       # Regexp match syntax - postgres is different from MySQL and SQLite
       regact = ApplicationRecord.connection.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) ? "~" : "REGEXP"
       regexes.each do |reg|
         qreg = ActiveRecord::Base.connection.quote(reg)
         tag_regex_build.push "(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name #{regact} #{qreg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1"
       end
-      qreg = ActiveRecord::Base.connection.quote(@filters[:missingtag])
+      qreg = ActiveRecord::Base.connection.quote(missingtag)
       tag_regex_build.push "(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name #{regact} #{qreg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1"
-      models = models.where("(" + tag_regex_build.join(" OR ") + ")")
-    end
-
-    # Filter by tag?
-    case @filters[:tag]
-    when nil
-      nil # No tags, move along
-    when [""]
-      models = models.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1")
+      models.where("(" + tag_regex_build.join(" OR ") + ")")
     else
-      @filter_tags = ActsAsTaggableOn::Tag.named_any(@filters[:tag])
-      models = models.tagged_with(@filters[:tag])
+      models
     end
-
-    # Filter by collection?
-    case @filters[:collection]
-    when nil
-      nil # No collection, move along
-    when ""
-      models = models.where(collection_id: nil)
-    else
-      @collection = Collection.find(@filters[:collection])
-      models = models.where(collection: Collection.tree_down(@filters[:collection]))
-    end
-
-    # Filter by creator
-    case @filters[:creator]
-    when nil
-      nil # No creator specified, nothing to do
-    when ""
-      models = models.where(creator_id: nil)
-    else
-      @creator = Creator.find(@filters[:creator])
-      models = models.where(creator: @creator)
-    end
-
-    # Filter by url link (only coded "missing" url links UI for now)
-    case @filters[:link]
-    when nil
-      nil # no filter
-    when ""
-      models = models.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model')<1")
-    else
-      models = models.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model' and url like ?)>0", "%#{@filters[:link]}%")
-    end
-
-    # keyword search filter
-    # todo: haven't added collection here yet
-    if @filters[:q]
-      field = Model.arel_table[:name]
-      creatorsearch = Creator.where("name LIKE ?", "%#{@filters[:q]}%")
-      models = models.where("tags.name LIKE ?", "%#{@filters[:q]}%").or(models.where(field.matches("%#{@filters[:q]}%"))).or(models.where(creator_id: creatorsearch))
-        .joins("LEFT JOIN taggings ON taggings.taggable_id=models.id AND taggings.taggable_type = 'Model' LEFT JOIN tags ON tags.id = taggings.tag_id").distinct
-    end
-    models
   end
 end
