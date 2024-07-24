@@ -22,3 +22,6 @@ changelog:
     - title: 🛠️ Other Improvements 🛠️
       labels:
         - "*"
+      exclude:
+        labels:
+          - dependencies
