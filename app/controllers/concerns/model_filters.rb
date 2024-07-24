@@ -21,16 +21,16 @@ module ModelFilters
     # Generate a list of tags shared by the list of models
     tags = tags.includes(:taggings).where("taggings.taggable": models) if models
     # Apply tag sorting
-    case current_user.tag_cloud_settings["sorting"]
+    tags = case current_user.tag_cloud_settings["sorting"]
     when "alphabetical"
-      tags = tags.order(name: :asc)
+      tags.order(name: :asc)
     else
-      tags = tags.order(taggings_count: :desc, name: :asc)
+      tags.order(taggings_count: :desc, name: :asc)
     end
     # Work out how many tags were unrelated and will be hidden
     unrelated_tag_count = models ? (all_tags.count - tags.count) : 0
     # Done!
-    return tags, unrelated_tag_count
+    [tags, unrelated_tag_count]
   end
 
   def process_filters
