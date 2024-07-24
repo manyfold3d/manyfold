@@ -5,8 +5,7 @@ class CollectionsController < ApplicationController
   def index
     @collections = policy_scope(Collection)
     unless @filters.empty?
-      @models = model_query_base
-      process_filters
+      @models = filtered_models @filters
       @collections = @collections.tree_both(@filters[:collection] || nil, @models.filter_map { |model| model.collection_id })
     end
 

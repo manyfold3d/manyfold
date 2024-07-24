@@ -11,7 +11,7 @@ class ModelsController < ApplicationController
     @can_destroy = policy(Model).destroy?
     @can_edit = policy(Model).edit?
 
-    @models = model_query_base
+    @models = filtered_models @filters
 
     # Ordering
     @models = case session["order"]
@@ -26,7 +26,6 @@ class ModelsController < ApplicationController
       @models = @models.page(page).per(current_user.pagination_settings["per_page"])
     end
 
-    process_filters
     @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
 
     # Load extra data
@@ -114,8 +113,7 @@ class ModelsController < ApplicationController
     authorize Model
     @creators = policy_scope(Creator)
     @collections = policy_scope(Collection)
-    @models = policy_scope(Model)
-    process_filters
+    @models = filtered_models @filters
     @addtags = @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
   end
 

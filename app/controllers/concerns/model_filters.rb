@@ -9,10 +9,6 @@ module ModelFilters
     @filters = params.permit(:library, :collection, :q, :creator, :link, :missingtag, :order, tag: [])
   end
 
-  def model_query_base
-    policy_scope(Model).includes(:tags, :preview_file, :creator, :collection)
-  end
-
   def generate_tag_list(models = nil, filter_tags = nil)
     # All tags bigger than threshold
     tags = all_tags = ActsAsTaggableOn::Tag.where(taggings_count: current_user.tag_cloud_settings["threshold"]..)
@@ -33,7 +29,9 @@ module ModelFilters
     [tags, unrelated_tag_count]
   end
 
-  def process_filters
+  def filtered_models(filters)
+    @models = policy_scope(Model).includes(:tags, :preview_file, :creator, :collection)
+
     # filter by library?
     @models = @models.where(library: params[:library]) if @filters[:library]
 
@@ -103,5 +101,6 @@ module ModelFilters
       @models = @models.where("tags.name LIKE ?", "%#{@filters[:q]}%").or(@models.where(field.matches("%#{@filters[:q]}%"))).or(@models.where(creator_id: creatorsearch))
         .joins("LEFT JOIN taggings ON taggings.taggable_id=models.id AND taggings.taggable_type = 'Model' LEFT JOIN tags ON tags.id = taggings.tag_id").distinct
     end
+    @models
   end
 end
