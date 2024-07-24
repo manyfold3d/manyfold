@@ -41,15 +41,6 @@ RSpec.describe ApplicationHelper do
     end
   end
 
-  describe "#tag_class" do
-    it "returns the correct class for each state" do # rubocop:todo RSpec/MultipleExpectations
-      expect(helper.tag_class(:highlight)).to eq("bg-primary")
-      expect(helper.tag_class(:mute)).to eq("border border-muted text-muted pe-none")
-      expect(helper.tag_class(:hide)).to eq("d-none")
-      expect(helper.tag_class(:other)).to eq("bg-secondary")
-    end
-  end
-
   describe "#text_input_row" do
     it "returns the correct HTML for the text input row" do # rubocop:todo RSpec/MultipleExpectations
       form = ActionView::Helpers::FormBuilder.new(:test, nil, helper, {})
