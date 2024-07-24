@@ -32,7 +32,7 @@
     <% if @filters[:tag] %>
       <div class="row">
         <div class="col-auto"><%= icon "tag", ActsAsTaggableOn::Tag.model_name.human(count: 100) %></div>
-        <div class="col" aria-label="<%= ActsAsTaggableOn::Tag.model_name.human(count: 100) %>"><span class='pe-none'><%= render partial: "tag", collection: @filter_tags, locals: {state: :normal} %></span></div>
+        <div class="col" aria-label="<%= ActsAsTaggableOn::Tag.model_name.human(count: 100) %>"><span class='pe-none'><%= render partial: "tag", collection: @filter_tags %></span></div>
         <div class="col-auto"><%= link_to icon("trash", t(".remove_tag_filter")), @filters.except(:tag), {class: "text-danger"} %></div>
       </div>
     <% end %>
