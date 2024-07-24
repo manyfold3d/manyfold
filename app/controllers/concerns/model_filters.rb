@@ -30,11 +30,6 @@ module ModelFilters
     end
   end
 
-  def process_filters_tags_highlight
-    # this is used for tag cloud for highlighting.  fetch after processing
-    @commontags = ActsAsTaggableOn::Tag.joins(:taggings).where(taggings: {taggable: @models.except(:limit, :offset, :distinct)})
-  end
-
   def process_filters
     # filter by library?
     @models = @models.where(library: params[:library]) if @filters[:library]

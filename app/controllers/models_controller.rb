@@ -28,7 +28,6 @@ class ModelsController < ApplicationController
 
     process_filters_tags_fetchall
     process_filters
-    process_filters_tags_highlight
 
     # Load extra data
     @models = @models.includes [:library, :model_files, :preview_file, :creator, :collection]
