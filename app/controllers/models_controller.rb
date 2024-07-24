@@ -26,7 +26,6 @@ class ModelsController < ApplicationController
       @models = @models.page(page).per(current_user.pagination_settings["per_page"])
     end
 
-    process_filters_tags_fetchall
     process_filters
     @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models)
 

@@ -13,17 +13,6 @@ module ModelFilters
     @models = policy_scope(Model).includes(:tags, :preview_file, :creator, :collection)
   end
 
-  def process_filters_tags_fetchall
-    # libraries may (probably) have wildly varying sets of tags (passed on for use in tag cloud)
-    # grab these before applying filters to get "all" applicable tags (if library filter is set trim to library)
-    @tags = if @filters[:library]
-      Model.includes(:tags).where(library: @filters[:library])
-    else
-      Model.includes(:tags)
-    end
-  end
-
-
   def generate_tag_list(models = nil)
     # All tags bigger than threshold
     tags = all_tags = ActsAsTaggableOn::Tag.where(taggings_count: current_user.tag_cloud_settings["threshold"]..)
