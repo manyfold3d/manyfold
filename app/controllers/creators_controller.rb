@@ -10,7 +10,7 @@ class CreatorsController < ApplicationController
       process_filters_init
       process_filters_tags_fetchall
       process_filters
-      @tags = generate_tag_list(@models)
+      @tags, @unrelated_tag_count = generate_tag_list(@models)
       @creators = @creators.where(id: @models.map { |model| model.creator_id })
     end
 

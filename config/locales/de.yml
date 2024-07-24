@@ -226,7 +226,7 @@ de:
       settings: Einstellungen
       upload: Hochladen
     tag_list:
-      muted_tags:
+      unrelated_tag_count:
         one:
         other:
     tagline: Hilft ihnen ihre 3D-Druck Dateien zu verwalten

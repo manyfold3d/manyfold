@@ -226,7 +226,7 @@ en:
       settings: Settings
       upload: Upload
     tag_list:
-      muted_tags:
+      unrelated_tag_count:
         one: "%{count} unrelated tag hidden"
         other: "%{count} unrelated tags hidden"
     tagline: Helping you keep track of your 3d print files

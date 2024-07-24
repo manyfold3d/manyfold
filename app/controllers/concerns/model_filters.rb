@@ -32,7 +32,9 @@ module ModelFilters
 
   # Generate a list of tags shared by a list of models, and a count of the how many were unrelated
   def generate_tag_list(models)
-    ActsAsTaggableOn::Tag.includes(:taggings).where("taggings.taggable": models)
+    tags = ActsAsTaggableOn::Tag.includes(:taggings).where("taggings.taggable": models)
+    unrelated_tag_count = ActsAsTaggableOn::Tag.count - @tags.count
+    return tags, unrelated_tag_count
   end
 
   def process_filters

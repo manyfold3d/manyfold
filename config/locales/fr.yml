@@ -226,7 +226,7 @@ fr:
       settings: Paramètres
       upload: Télécharger
     tag_list:
-      muted_tags:
+      unrelated_tag_count:
         one:
         other:
     tagline: Vous aider à garder une trace de vos fichiers d'impression 3D

@@ -27,6 +27,6 @@
     <% end %>
   </ul>
 <% end %>
-<% if defined?(muted_tags) && !muted_tags.empty? %>
-  <p class="small"><%= t ".muted_tags", count: muted_tags.count %></p>
+<% if defined?(unrelated_tag_count) && unrelated_tag_count > 0 %>
+  <p class="small"><%= t ".unrelated_tag_count", count: unrelated_tag_count %></p>
 <% end %>

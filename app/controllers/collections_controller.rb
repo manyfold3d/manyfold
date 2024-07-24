@@ -10,7 +10,7 @@ class CollectionsController < ApplicationController
       process_filters_init
       process_filters_tags_fetchall
       process_filters
-      @tags = generate_tag_list(@models)
+      @tags, @unrelated_tag_count = generate_tag_list(@models)
       @collections = @collections.tree_both(@filters[:collection] || nil, @models.filter_map { |model| model.collection_id })
     end
 
