@@ -21,19 +21,24 @@ module ModelFilters
     else
       Model.includes(:tags)
     end
-    @tags = @tags.map(&:tags).flatten.uniq.select { |x| x.taggings_count >= current_user.tag_cloud_settings["threshold"] }
-    @tags = case current_user.tag_cloud_settings["sorting"]
-    when "alphabetical"
-      @tags.sort_by(&:name)
-    else
-      @tags.sort_by(&:name).reverse.sort_by(&:taggings_count).reverse
-    end
   end
 
-  # Generate a list of tags shared by a list of models, and a count of the how many were unrelated
-  def generate_tag_list(models)
-    tags = ActsAsTaggableOn::Tag.includes(:taggings).where("taggings.taggable": models)
-    unrelated_tag_count = ActsAsTaggableOn::Tag.count - @tags.count
+
+  def generate_tag_list(models = nil)
+    # All tags bigger than threshold
+    tags = all_tags = ActsAsTaggableOn::Tag.where(taggings_count: current_user.tag_cloud_settings["threshold"]..)
+    # Generate a list of tags shared by the list of models
+    tags = tags.includes(:taggings).where("taggings.taggable": models) if models
+    # Apply tag sorting
+    case current_user.tag_cloud_settings["sorting"]
+    when "alphabetical"
+      tags = tags.order(name: :asc)
+    else
+      tags = tags.order(taggings_count: :desc, name: :asc)
+    end
+    # Work out how many tags were unrelated and will be hidden
+    unrelated_tag_count = models ? (all_tags.count - tags.count) : 0
+    # Done!
     return tags, unrelated_tag_count
   end
 
