@@ -104,8 +104,6 @@ pl:
       heading: Chmura tagów
       heatmap:
         label: Wyświetl liczbe tagów dla poszczególnych tagów
-      hide_unrelated:
-        label: Ukryj niepowiązane tagi na filtrowanych listach
       keypair:
         label: Użyj separatora do reprezentowania par kluczy
       sorting:

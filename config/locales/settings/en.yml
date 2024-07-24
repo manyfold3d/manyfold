@@ -104,8 +104,6 @@ en:
       heading: Tag Cloud
       heatmap:
         label: Display tag count for individual tags
-      hide_unrelated:
-        label: Hide unrelated tags in filtered lists
       keypair:
         label: Use delimiter to represent keypairs
       sorting:

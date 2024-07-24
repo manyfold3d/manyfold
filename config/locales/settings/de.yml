@@ -104,8 +104,6 @@ de:
       heading:
       heatmap:
         label:
-      hide_unrelated:
-        label: Nicht verwandte Tags in gefilterten Listen ausblenden
       keypair:
         label: Begrenzungszeichen zur Darstellung von Schlüsselpaaren verwenden
       sorting:

@@ -52,8 +52,7 @@ class SettingsController < ApplicationController
       "threshold" => settings[:threshold].to_i,
       "heatmap" => settings[:heatmap] == "1",
       "keypair" => settings[:keypair] == "1",
-      "sorting" => settings[:sorting],
-      "hide_unrelated" => settings[:hide_unrelated] == "1"
+      "sorting" => settings[:sorting]
     }
   end
 

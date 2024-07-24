@@ -104,8 +104,6 @@ fr:
       heading: Nuages de mots-clés
       heatmap:
         label: Afficher le nombre d'étiquette pour chaque étiquette
-      hide_unrelated:
-        label: Masquer les tags sans rapport avec le sujet dans les listes filtrées
       keypair:
         label: Utiliser un délimiteur pour représenter les paires de clés
       sorting:
