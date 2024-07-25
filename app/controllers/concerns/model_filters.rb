@@ -105,8 +105,7 @@ module ModelFilters
         name_cont: query,
         tags_name_in: query,
         creator_name_cont: query,
-        collection_name_cont: query
-      )
+        collection_name_cont: query)
       r.result(distinct: true)
     else
       models
