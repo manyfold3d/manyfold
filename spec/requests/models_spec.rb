@@ -19,12 +19,16 @@ RSpec.describe "Models" do
   end
 
   context "when signed in" do
-    let(:library) do
+    let!(:creator) { create(:creator) }
+    let!(:collection) { create(:collection) }
+    let!(:library) do
       l = create(:library)
-      build_list(:model, 15, library: l) { |x| x.save! }
+      build_list(:model, 5, library: l) { |x| x.save! }
+      build_list(:model, 5, library: l, creator: creator) { |x| x.save! }
+      build_list(:model, 5, library: l, collection: collection) { |x| x.save! }
+      build_list(:model, 5, library: l, creator: creator, collection: collection) { |x| x.save! }
       l
     end
-    let(:creator) { create(:creator) }
 
     describe "GET /libraries/:library_id/models/:id", :as_viewer do
       it "returns http success" do
@@ -164,6 +168,24 @@ RSpec.describe "Models" do
     end
 
     describe "GET /models", :as_viewer do
+      it "allows search queries" do
+        get "/models?q=#{library.models.first.name}"
+        expect(response).to have_http_status(:success)
+      end
+
+      it "allows tag filters" do
+        m = library.models.first
+        m.tag_list << "test"
+        m.save
+        get "/models?tag[]=test"
+        expect(response).to have_http_status(:success)
+      end
+
+      it "allows link filters" do
+        get "/models?link="
+        expect(response).to have_http_status(:success)
+      end
+
       it "returns paginated models" do # rubocop:todo RSpec/MultipleExpectations
         get "/models?library=#{library.id}&page=2"
         expect(response).to have_http_status(:success)

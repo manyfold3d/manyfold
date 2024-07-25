@@ -99,14 +99,14 @@ module ModelFilters
   end
 
   # Filter by search query
-  # This should be replaced with proper ransack search
   def filter_by_search(models, query)
-    # todo: haven't added collection here yet
     if query
-      field = Model.arel_table[:name]
-      creatorsearch = Creator.where("name LIKE ?", "%#{query}%")
-      models.where("tags.name LIKE ?", "%#{query}%").or(models.where(field.matches("%#{query}%"))).or(models.where(creator_id: creatorsearch))
-        .joins("LEFT JOIN taggings ON taggings.taggable_id=models.id AND taggings.taggable_type = 'Model' LEFT JOIN tags ON tags.id = taggings.tag_id").distinct
+      r = models.ransack(m: "or",
+        name_cont: query,
+        tags_name_in: query,
+        creator_name_cont: query,
+        collection_name_cont: query)
+      r.result(distinct: true)
     else
       models
     end
