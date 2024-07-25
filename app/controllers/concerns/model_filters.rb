@@ -15,7 +15,7 @@ module ModelFilters
     # Ignore any tags that have been applied as filters
     tags = all_tags = tags.where.not(id: filter_tags) if filter_tags
     # Generate a list of tags shared by the list of models
-    tags = tags.includes(:taggings).where("taggings.taggable": models) if models
+    tags = tags.includes(:taggings).where("taggings.taggable": models.map(&:id)) if models
     # Apply tag sorting
     tags = case current_user.tag_cloud_settings["sorting"]
     when "alphabetical"
