@@ -8,8 +8,8 @@
       "dom",
       "dom.iterable"
     ],
-    "module": "es6",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "baseUrl": ".",
     "paths": {
       "*": [
