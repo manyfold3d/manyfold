@@ -147,4 +147,4 @@ gem "better_content_security_policy", "~> 0.1.4"
 
 gem "devise_zxcvbn", "~> 6.0"
 
-gem "ransack", "~> 4.1"
+gem "ransack", "~> 4.2"
