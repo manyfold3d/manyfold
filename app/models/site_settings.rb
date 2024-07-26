@@ -43,6 +43,7 @@ class SiteSettings < RailsSettings::Base
     PAGINATION = {
       models: true,
       creators: true,
+      collections: true,
       per_page: 12
     }
 
