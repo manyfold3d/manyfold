@@ -20,6 +20,9 @@ class ModelFile < ApplicationRecord
   scope :unsupported, -> { where(presupported: false) }
   scope :presupported, -> { where(presupported: true) }
 
+  # Explicitly explain serialization for MariaDB
+  attribute :attachment_data, :json
+
   acts_as_favoritable
 
   SUPPORT_KEYWORDS = %w[
