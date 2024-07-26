@@ -36,7 +36,7 @@ export class CanvasProxy extends EventDispatcher {
 
   handleEvent (event: Event): void {
     event.preventDefault = function () { }
-    this.dispatchEvent(event as never)
+    super.dispatchEvent(event)
   }
 
   // Pretend we can handle capture events
