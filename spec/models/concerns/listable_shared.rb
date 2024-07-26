@@ -1,8 +1,16 @@
 shared_examples "Listable" do
-  it "can be added to lists" do
-    thing = create(described_class.to_s.underscore.to_sym)
-    user = create(:user)
+  let(:thing) { create(described_class.to_s.underscore.to_sym) }
+  let(:user) { create(:user) }
+
+  before do
     user.list(thing, :printed)
+  end
+
+  it "shows as listed" do
     expect(user.listed?(thing, :printed)).to be true
+  end
+
+  it "can access listers" do
+    expect(thing.listers(:printed)).to eq [user]
   end
 end
