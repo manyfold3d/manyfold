@@ -26,6 +26,13 @@ class User < ApplicationRecord
 
   after_create :assign_default_role
 
+  # Explicitly explain serialization for MariaDB
+  serialize :pagination_settings, coder: JSON
+  serialize :renderer_settings, coder: JSON
+  serialize :tag_cloud_settings, coder: JSON
+  serialize :problem_settings, coder: JSON
+  serialize :file_list_settings, coder: JSON
+
   def to_param
     username
   end
