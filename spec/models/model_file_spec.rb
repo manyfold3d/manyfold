@@ -2,6 +2,8 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe ModelFile do
+  it_behaves_like "Listable"
+
   it "is not valid without a filename" do
     expect(build(:model_file, filename: nil)).not_to be_valid
   end
@@ -68,13 +70,6 @@ RSpec.describe ModelFile do
     model2 = create(:model, library: library, path: "model2")
     create(:model_file, model: model2, filename: "file.stl", digest: nil)
     expect(part1.duplicate?).to be false
-  end
-
-  it "can be added to lists" do
-    file = create(:model_file)
-    user = create(:user)
-    user.list(file, :printed)
-    expect(user.listed? file, :printed).to be true
   end
 
   context "with actual files on disk" do
