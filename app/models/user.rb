@@ -1,13 +1,13 @@
 require "uri"
 
 class User < ApplicationRecord
+  include Lister
+
   rolify
   devise :database_authenticatable,
     :registerable, :zxcvbnable,
     :rememberable, :recoverable,
     :lockable, :timeoutable
-
-  acts_as_favoritor
 
   validates :username,
     presence: true,
@@ -38,7 +38,7 @@ class User < ApplicationRecord
   end
 
   def printed?(file)
-    favorited?(file, scope: :printed)
+    listed?(file, scope: :printed)
   end
 
   def self.ransackable_attributes(auth_object = nil)

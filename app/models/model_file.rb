@@ -1,5 +1,6 @@
 class ModelFile < ApplicationRecord
   include LibraryUploader::Attachment(:attachment)
+  include Listable
 
   extend Memoist
 
@@ -22,8 +23,6 @@ class ModelFile < ApplicationRecord
 
   # Explicitly explain serialization for MariaDB
   attribute :attachment_data, :json
-
-  acts_as_favoritable
 
   SUPPORT_KEYWORDS = %w[
     presupported
@@ -137,14 +136,6 @@ class ModelFile < ApplicationRecord
     duplicates.each { |x| Analysis::AnalyseModelFileJob.perform_later(x.id) }
     # Remove the db record
     destroy
-  end
-
-  def set_printed_by_user(user, printed)
-    if printed
-      user.favorite(self, scope: :printed)
-    else
-      user.unfavorite(self, scope: :printed)
-    end
   end
 
   def self.ransackable_attributes(_auth_object = nil)

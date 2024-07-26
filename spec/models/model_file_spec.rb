@@ -70,6 +70,13 @@ RSpec.describe ModelFile do
     expect(part1.duplicate?).to be false
   end
 
+  it "can be added to lists" do
+    file = create(:model_file)
+    user = create(:user)
+    user.list(file, :printed)
+    expect(user.listed? file, :printed).to be true
+  end
+
   context "with actual files on disk" do
     around do |ex|
       MockDirectory.create([

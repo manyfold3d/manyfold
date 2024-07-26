@@ -36,7 +36,7 @@ class ModelFilesController < ApplicationController
 
   def update
     if @file.update(file_params)
-      @file.set_printed_by_user(current_user, params[:model_file][:printed] === "1")
+      current_user.set_list_state(@file, :printed, params[:model_file][:printed] === "1")
       redirect_to [@library, @model, @file], notice: t(".success")
     else
       render :edit, alert: t(".failure")
@@ -52,7 +52,7 @@ class ModelFilesController < ApplicationController
     params[:model_files].each_pair do |id, selected|
       if selected == "1"
         file = @model.model_files.find(id)
-        file.set_printed_by_user(current_user, params[:printed] === "1")
+        current_user.set_list_state(file, :printed, params[:printed] === "1")
         if file.update(hash)
           file.save
         end
