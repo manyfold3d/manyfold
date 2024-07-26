@@ -21,7 +21,7 @@ class ModelFile < ApplicationRecord
   scope :presupported, -> { where(presupported: true) }
 
   # Explicitly explain serialization for MariaDB
-  serialize :attachment_data, coder: JSON
+  attribute :attachment_data, :json
 
   acts_as_favoritable
 
