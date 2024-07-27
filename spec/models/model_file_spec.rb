@@ -2,6 +2,8 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe ModelFile do
+  it_behaves_like "Listable"
+
   it "is not valid without a filename" do
     expect(build(:model_file, filename: nil)).not_to be_valid
   end
