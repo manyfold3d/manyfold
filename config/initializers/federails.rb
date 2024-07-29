@@ -14,7 +14,7 @@ Federails.configure do |conf|
   conf.user_class = "::User"
 
   conf.server_routes_path = "federation"
-  conf.client_routes_path = "app"
+  conf.client_routes_path = "client"
 
   conf.user_profile_url_method = "~"
 
