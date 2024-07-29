@@ -16,9 +16,7 @@ Federails.configure do |conf|
   conf.server_routes_path = "federation"
   conf.client_routes_path = "client"
 
-  conf.user_profile_url_method = "~"
-
-  conf.user_name_field = "~"
-
-  conf.user_username_field = "id"
+  conf.user_profile_url_method = nil
+  conf.user_name_field = "name"
+  conf.user_username_field = "username"
 end
