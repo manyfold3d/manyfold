@@ -8,6 +8,7 @@ Federails.configure do |conf|
   conf.site_host = Rails.application.default_url_options["host"]
 
   conf.site_port = Rails.application.default_url_options["port"]
+  conf.force_ssl = Rails.application.config.force_ssl
 
   conf.enable_discovery = Flipper.enabled? :federation
 
