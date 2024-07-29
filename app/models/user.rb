@@ -2,7 +2,8 @@ require "uri"
 
 class User < ApplicationRecord
   include Lister
-  include Federails::User
+  include Follower
+  include Followable
 
   rolify
   devise :database_authenticatable,
