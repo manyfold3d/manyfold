@@ -9,9 +9,7 @@ Federails.configure do |conf|
 
   conf.site_port = Rails.application.default_url_options["port"]
 
-  conf.force_ssl = false
-
-  conf.enable_discovery = true
+  conf.enable_discovery = Flipper.enabled? :federation
 
   conf.app_layout = "layouts/application"
 
