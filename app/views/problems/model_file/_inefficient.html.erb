@@ -1,8 +1,8 @@
 <td><%= icon("fire", t(".title")) %></td>
-<td><%= link_to problem.problematic.name, [problem.problematic.model.library, problem.problematic.model, problem.problematic], class: "link-body-emphasis" %></td>
+<td><%= link_to problem.problematic.name, [problem.problematic.model, problem.problematic], class: "link-body-emphasis" %></td>
 <td><%= t ".title" %>: <%= problem.note %></td>
 <td>
   <% if policy(problem.problematic).show? && policy(:model_file).create? && ["stl", "obj"].include?(problem.problematic.extension) %>
-    <%= link_to t("model_files.show.convert"), library_model_model_files_path(problem.problematic.model.library, problem.problematic.model, convert: {id: problem.problematic.id, to: "threemf"}), method: :post, class: "btn btn-warning" %>
+    <%= link_to t("model_files.show.convert"), model_model_files_path(problem.problematic.model, convert: {id: problem.problematic.id, to: "threemf"}), method: :post, class: "btn btn-warning" %>
   <% end %>
 </td>

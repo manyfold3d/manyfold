@@ -4,11 +4,11 @@
 
     <% if model && (file = model.preview_file) %>
       <% if file.is_image? %>
-        <%= content_tag :div, nil, class: "card-img-top card-img-top-background", style: "background-image: url(#{library_model_model_file_path(model.library, model, file, format: file.extension)})" %>
-        <%= image_tag library_model_model_file_path(model.library, model, file, format: file.extension), class: "card-img-top image-preview ", alt: file.name %>
+        <%= content_tag :div, nil, class: "card-img-top card-img-top-background", style: "background-image: url(#{model_model_file_path(model, file, format: file.extension)})" %>
+        <%= image_tag model_model_file_path(model, file, format: file.extension), class: "card-img-top image-preview ", alt: file.name %>
       <% elsif renderable?(file.extension) %>
         <div class="card-img-top">
-          <%= render partial: "object_preview", locals: {library: model.library, model: model, file: file} %>
+          <%= render partial: "object_preview", locals: {model: model, file: file} %>
         </div>
       <% end %>
        <% else %>

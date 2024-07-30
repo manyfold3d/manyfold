@@ -1,14 +1,14 @@
 require "rails_helper"
 require "support/mock_directory"
 
-# edit_library_model_model_files GET    /libraries/:library_id/models/:model_id/model_files/edit(.:format)      model_files#bulk_edit
-#      library_model_model_files PATCH  /libraries/:library_id/models/:model_id/model_files/update(.:format)    model_files#bulk_update
-#                                POST   /libraries/:library_id/models/:model_id/model_files(.:format)           model_files#create
-#  edit_library_model_model_file GET    /libraries/:library_id/models/:model_id/model_files/:id/edit(.:format)  model_files#edit
-#       library_model_model_file GET    /libraries/:library_id/models/:model_id/model_files/:id(.:format)       model_files#show
-#                                PATCH  /libraries/:library_id/models/:model_id/model_files/:id(.:format)       model_files#update
-#                                PUT    /libraries/:library_id/models/:model_id/model_files/:id(.:format)       model_files#update
-#                                DELETE /libraries/:library_id/models/:model_id/model_files/:id(.:format)       model_files#destroy
+# edit_model_model_files GET    /models/:model_id/model_files/edit(.:format)      model_files#bulk_edit
+#      model_model_files PATCH  /models/:model_id/model_files/update(.:format)    model_files#bulk_update
+#                        POST   /models/:model_id/model_files(.:format)           model_files#create
+#  edit_model_model_file GET    /models/:model_id/model_files/:id/edit(.:format)  model_files#edit
+#       model_model_file GET    /models/:model_id/model_files/:id(.:format)       model_files#show
+#                        PATCH  /models/:model_id/model_files/:id(.:format)       model_files#update
+#                        PUT    /models/:model_id/model_files/:id(.:format)       model_files#update
+#                        DELETE /models/:model_id/model_files/:id(.:format)       model_files#destroy
 
 RSpec.describe "Model Files" do
   context "when signed out" do
@@ -31,31 +31,31 @@ RSpec.describe "Model Files" do
       end
     end
 
-    describe "GET /libraries/:library_id/models/:model_id/model_files/edit", :as_editor do
+    describe "GET /models/:model_id/model_files/edit", :as_editor do
       it "shows bulk update form" do
-        get bulk_edit_library_model_model_files_path(library, model, stl_file)
+        get bulk_edit_model_model_files_path(model, stl_file)
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "PATCH /libraries/:library_id/models/:model_id/model_files/update", :as_editor do
+    describe "PATCH /models/:model_id/model_files/update", :as_editor do
       it "bulk updates the files" do
-        patch library_model_model_file_path(library, model, stl_file), params: {model_file: {name: "name"}}
-        expect(response).to redirect_to(library_model_model_file_path(library, model, stl_file))
+        patch model_model_file_path(model, stl_file), params: {model_file: {name: "name"}}
+        expect(response).to redirect_to(model_model_file_path(model, stl_file))
       end
     end
 
-    describe "GET /libraries/:library_id/models/:model_id/model_files/:id/edit", :as_editor do
+    describe "GET /models/:model_id/model_files/:id/edit", :as_editor do
       it "shows edit page for file" do
-        get edit_library_model_model_file_path(library, model, stl_file)
+        get edit_model_model_file_path(model, stl_file)
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "GET /libraries/:library_id/models/:model_id/model_files/:id", :as_viewer do
+    describe "GET /models/:model_id/model_files/:id", :as_viewer do
       describe "GET a model file in its original file format" do
         before do
-          get library_model_model_file_path(library, model, stl_file, format: :stl)
+          get model_model_file_path(model, stl_file, format: :stl)
         end
 
         it "returns http success" do
@@ -69,7 +69,7 @@ RSpec.describe "Model Files" do
 
       describe "GET an image file in its original file format", :as_viewer do
         before do
-          get library_model_model_file_path(library, model, jpg_file, format: :jpg)
+          get model_model_file_path(model, jpg_file, format: :jpg)
         end
 
         it "returns http success" do
@@ -82,43 +82,43 @@ RSpec.describe "Model Files" do
       end
     end
 
-    describe "POST /libraries/:library_id/models/:model_id/model_files", :as_editor do
+    describe "POST /models/:model_id/model_files", :as_editor do
       context "when requesting a conversion" do
         let(:params) { {convert: {id: stl_file.id, to: "threemf"}} }
 
         it "queues a conversion job" do
-          expect { post library_model_model_files_path(library, model, params: params) }.to have_enqueued_job(Analysis::FileConversionJob).with(stl_file.id, :threemf)
+          expect { post model_model_files_path(model, params: params) }.to have_enqueued_job(Analysis::FileConversionJob).with(stl_file.id, :threemf)
         end
 
         it "redirects back to file list" do
-          post library_model_model_files_path(library, model, params: params)
-          expect(response).to redirect_to library_model_model_file_path(library, model, stl_file)
+          post model_model_files_path(model, params: params)
+          expect(response).to redirect_to model_model_file_path(model, stl_file)
         end
 
         it "shows success message if conversion job was queued" do
-          post library_model_model_files_path(library, model, params: params)
+          post model_model_files_path(model, params: params)
           follow_redirect!
           expect(response.body).to include "alert-info"
         end
       end
 
       it "shows an error with missing parameters" do
-        post library_model_model_files_path(library, model, params: {})
+        post model_model_files_path(model, params: {})
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
 
-    describe "PATCH /libraries/:library_id/models/:model_id/model_files/:id", :as_editor do
+    describe "PATCH /models/:model_id/model_files/:id", :as_editor do
       it "updates the file" do
-        patch library_model_model_file_path(library, model, stl_file), params: {model_file: {name: "name"}}
-        expect(response).to redirect_to(library_model_model_file_path(library, model, stl_file))
+        patch model_model_file_path(model, stl_file), params: {model_file: {name: "name"}}
+        expect(response).to redirect_to(model_model_file_path(model, stl_file))
       end
     end
 
-    describe "DELETE /libraries/:library_id/models/:model_id/model_files/:id", :as_editor do
+    describe "DELETE /models/:model_id/model_files/:id", :as_editor do
       it "removes the file" do
-        delete library_model_model_file_path(library, model, stl_file)
-        expect(response).to redirect_to(library_model_path(library, model))
+        delete model_model_file_path(model, stl_file)
+        expect(response).to redirect_to(model_path(model))
       end
     end
   end

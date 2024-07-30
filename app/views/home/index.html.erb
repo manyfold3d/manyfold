@@ -24,7 +24,7 @@
         <% @recent.each do |model| %>
         <tr>
           <td>
-            <%= link_to model.name, library_model_path(model.library, model) %>
+            <%= link_to model.name, model_path(model) %>
           </td>
           <td>
             <%= status_badges(model) %>
