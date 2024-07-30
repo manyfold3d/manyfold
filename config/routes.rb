@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :activity
   end
 
-  mount Federails::Engine => "/"
+  mount Federails::Engine => "/" if Flipper.enabled?(:multiuser)
 
   resources :users, only: [] do
     resource :settings, only: [:show, :update]
