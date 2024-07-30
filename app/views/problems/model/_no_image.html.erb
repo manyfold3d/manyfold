@@ -1,4 +1,4 @@
 <td><%= icon("question-square", t(".title")) %></td>
-<td><%= link_to problem.problematic.name, [problem.problematic.library, problem.problematic], class: "link-body-emphasis" %></td>
+<td><%= link_to problem.problematic.name, problem.problematic, class: "link-body-emphasis" %></td>
 <td><%= t ".title" %></td>
-<td><%= link_to "Open", [problem.problematic.library, problem.problematic], class: "btn btn-primary" %></td>
+<td><%= link_to "Open", problem.problematic, class: "btn btn-primary" %></td>

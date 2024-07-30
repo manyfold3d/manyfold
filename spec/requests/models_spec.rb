@@ -1,17 +1,17 @@
 require "rails_helper"
 
-#  edit_library_model GET    /libraries/:library_id/models/:id/edit(.:format)                        models#edit
-#       library_model GET    /libraries/:library_id/models/:id(.:format)                             models#show
-#                     PATCH  /libraries/:library_id/models/:id(.:format)                             models#update
-#                     PUT    /libraries/:library_id/models/:id(.:format)                             models#update
-#                     DELETE /libraries/:library_id/models/:id(.:format)                             models#destroy
-#         edit_models GET    /models/edit(.:format)                                                  models#bulk_edit
-#       update_models PATCH  /models/update(.:format)                                                models#bulk_update
-#              models GET    /models(.:format)                                                       models#index
-#           new_model GET    /models/new(.:format)                                                      uploads#index
-#                     POST   /models(.:format)                                                      uploads#create
-# merge_library_model POST   /libraries/:library_id/models/:id/merge(.:format)                       models#merge
-# scan_library_model  POST   /libraries/:library_id/models/:id/scan(.:format)                        models#scan
+#    edit_model GET    /models/:id/edit(.:format)                        models#edit
+#         model GET    /models/:id(.:format)                             models#show
+#               PATCH  /models/:id(.:format)                             models#update
+#               PUT    /models/:id(.:format)                             models#update
+#               DELETE /models/:id(.:format)                             models#destroy
+#   edit_models GET    /models/edit(.:format)                                                  models#bulk_edit
+# update_models PATCH  /models/update(.:format)                                                models#bulk_update
+#        models GET    /models(.:format)                                                       models#index
+#     new_model GET    /models/new(.:format)                                                      uploads#index
+#               POST   /models(.:format)                                                      uploads#create
+#   merge_model POST   /models/:id/merge(.:format)                       models#merge
+#   scan_model  POST   /models/:id/scan(.:format)                        models#scan
 
 RSpec.describe "Models" do
   context "when signed out" do
@@ -30,27 +30,27 @@ RSpec.describe "Models" do
       l
     end
 
-    describe "GET /libraries/:library_id/models/:id", :as_viewer do
+    describe "GET /models/:id", :as_viewer do
       it "returns http success" do
-        get "/libraries/#{library.id}/models/#{library.models.first.id}"
+        get "/models/#{library.models.first.id}"
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "GET /libraries/:library_id/models/:id/edit" do
+    describe "GET /models/:id/edit" do
       it "shows edit page for file", :as_editor do
-        get "/libraries/#{library.id}/models/#{library.models.first.id}/edit"
+        get "/models/#{library.models.first.id}/edit"
         expect(response).to have_http_status(:success)
       end
 
       it "is denied to non-editors", :as_contributor do
-        expect { get "/libraries/#{library.id}/models/#{library.models.first.id}/edit" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { get "/models/#{library.models.first.id}/edit" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
-    describe "PUT /libraries/:library_id/models/:id" do
+    describe "PUT /models/:id" do
       it "adds tags to a model", :as_editor do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-        put "/libraries/#{library.id}/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b", "c"]}}
+        put "/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b", "c"]}}
         expect(response).to have_http_status(:redirect)
         tags = library.models.first.tag_list
         expect(tags.length).to eq 3
@@ -64,7 +64,7 @@ RSpec.describe "Models" do
         first.tag_list = "a, b, c"
         first.save
 
-        put "/libraries/#{library.id}/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b"]}}
+        put "/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b"]}}
         expect(response).to have_http_status(:redirect)
         first.reload
         tags = first.tag_list
@@ -78,7 +78,7 @@ RSpec.describe "Models" do
         first.tag_list = "a, b, c"
         first.save
 
-        put "/libraries/#{library.id}/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b", "d"]}}
+        put "/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b", "d"]}}
         expect(response).to have_http_status(:redirect)
         first.reload
         tags = first.tag_list
@@ -89,18 +89,18 @@ RSpec.describe "Models" do
       end
 
       it "is denied to non-editors", :as_contributor do
-        expect { put "/libraries/#{library.id}/models/#{library.models.first.id}" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { put "/models/#{library.models.first.id}" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
-    describe "DELETE /libraries/:library_id/models/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+    describe "DELETE /models/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
       it "redirects to model list after deletion", :as_editor do
-        delete "/libraries/#{library.id}/models/#{library.models.first.id}"
-        expect(response).to redirect_to("/libraries/#{library.id}")
+        delete "/models/#{library.models.first.id}"
+        expect(response).to redirect_to("/")
       end
 
       it "is denied to non-editors", :as_contributor do
-        expect { delete "/libraries/#{library.id}/models/#{library.models.first.id}" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { delete "/models/#{library.models.first.id}" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
@@ -193,31 +193,31 @@ RSpec.describe "Models" do
       end
     end
 
-    describe "POST /libraries/:library_id/models/:id/merge" do
+    describe "POST /models/:id/merge" do
       it "gives a bad request response if no merge parameter is provided", :as_editor do
-        post "/libraries/#{library.id}/models/#{library.models.first.id}/merge"
+        post "/models/#{library.models.first.id}/merge"
         expect(response).to have_http_status(:bad_request)
       end
 
       it "is denied to non-editors", :as_contributor do
-        expect { post "/libraries/#{library.id}/models/#{library.models.first.id}/merge" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { post "/models/#{library.models.first.id}/merge" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
-    describe "POST /libraries/:library_id/models/:id/scan" do
+    describe "POST /models/:id/scan" do
       it "schedules a scan job", :as_editor do
-        expect { post "/libraries/#{library.id}/models/#{library.models.first.id}/scan" }.to(
+        expect { post "/models/#{library.models.first.id}/scan" }.to(
           have_enqueued_job(Scan::CheckModelJob).with(library.models.first.id).once
         )
       end
 
       it "redirects back to model page", :as_contributor do
-        post "/libraries/#{library.id}/models/#{library.models.first.id}/scan"
-        expect(response).to redirect_to("/libraries/#{library.id}/models/#{library.models.first.id}")
+        post "/models/#{library.models.first.id}/scan"
+        expect(response).to redirect_to("/models/#{library.models.first.id}")
       end
 
       it "is denied to non-contributors", :as_viewer do
-        expect { post "/libraries/#{library.id}/models/#{library.models.first.id}/scan" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { post "/models/#{library.models.first.id}/scan" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 

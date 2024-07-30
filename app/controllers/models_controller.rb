@@ -76,7 +76,7 @@ class ModelsController < ApplicationController
 
   def update
     if @model.update(model_params)
-      redirect_to [@model.library, @model], notice: t(".success")
+      redirect_to @model, notice: t(".success")
     else
       edit # Load creators and collections
       flash.now[:alert] = t(".failure")
@@ -88,13 +88,13 @@ class ModelsController < ApplicationController
     if params[:target] && (target = (@model.parents.find { |x| x.id == params[:target].to_i }))
       @model.merge_into! target
       Scan::CheckModelIntegrityJob.perform_later(target.id)
-      redirect_to [target.library, target], notice: t(".success")
+      redirect_to target, notice: t(".success")
     elsif params[:all] && @model.contains_other_models?
       @model.contained_models.each do |child|
         child.merge_into! @model
       end
       Scan::CheckModelIntegrityJob.perform_later(@model.id)
-      redirect_to [@model.library, @model], notice: t(".success")
+      redirect_to @model, notice: t(".success")
     else
       head :bad_request
     end
@@ -106,7 +106,7 @@ class ModelsController < ApplicationController
     # Start the scans
     Scan::CheckModelJob.perform_later(@model.id)
     # Back to the model page
-    redirect_to [@model.library, @model], notice: t(".success")
+    redirect_to @model, notice: t(".success")
   end
 
   def bulk_edit
@@ -137,11 +137,11 @@ class ModelsController < ApplicationController
 
   def destroy
     @model.delete_from_disk_and_destroy
-    if request.referer && (URI.parse(request.referer).path == library_model_path(@model.library, @model))
+    if request.referer && (URI.parse(request.referer).path == model_path(@model))
       # If we're coming from the model page itself, we can't go back there
-      redirect_to library_path(@model.library), notice: t(".success")
+      redirect_to root_path, notice: t(".success")
     else
-      redirect_back_or_to library_path(@model.library), notice: t(".success")
+      redirect_back_or_to root_path, notice: t(".success")
     end
   end
 

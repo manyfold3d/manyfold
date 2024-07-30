@@ -5,27 +5,27 @@
 
   <div class="col-9">
     <% if @file.is_image? %>
-      <%= image_tag library_model_model_file_path(@model.library, @model, @file, format: @file.extension), alt: @file.name, style: "width: 100%" %>
+      <%= image_tag model_model_file_path(@model, @file, format: @file.extension), alt: @file.name, style: "width: 100%" %>
     <% elsif renderable?(@file.extension) %>
       <% if @file.presupported_version || @file.unsupported_version %>
         <ul class="nav nav-tabs">
           <li class="nav-item">
             <% if @file.unsupported_version %>
-              <%= link_to Model.human_attribute_name(:unsupported_version), [@library, @model, @file.unsupported_version], class: "nav-link" %>
+              <%= link_to Model.human_attribute_name(:unsupported_version), [@model, @file.unsupported_version], class: "nav-link" %>
             <% else %>
               <a class="nav-link active" aria-current="page" href="#"><%= Model.human_attribute_name :unsupported_version %></a>
             <% end %>
           </li>
           <li class="nav-item">
             <% if @file.presupported_version %>
-              <%= link_to Model.human_attribute_name(:presupported_version), [@library, @model, @file.presupported_version], class: "nav-link" %>
+              <%= link_to Model.human_attribute_name(:presupported_version), [@model, @file.presupported_version], class: "nav-link" %>
             <% else %>
               <a class="nav-link active" aria-current="page" href="#"><%= Model.human_attribute_name :presupported_version %></a>
             <% end %>
           </li>
         </ul>
       <% end %>
-      <%= render partial: "object_preview", locals: {library: @library, model: @model, file: @file} %>
+      <%= render partial: "object_preview", locals: {model: @model, file: @file} %>
     <% end %>
     <% if @file.notes %>
       <%= card(:secondary, t(".notes_heading")) do %>
@@ -55,16 +55,16 @@
           <code><%= number_to_human_size @file.size, precision: 2 %></code>
         </p>
       <% end %>
-      <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_library_model_model_file_path(@library, @model, @file), class: "btn btn-primary" if policy(@file).edit? %>
-      <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), library_model_model_file_path(@library, @model, @file), {method: "delete", data: {confirm: translate("model_files.destroy.confirm")}, class: "btn btn-outline-danger"} if policy(@file).destroy? %>
+      <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_model_model_file_path(@model, @file), class: "btn btn-primary" if policy(@file).edit? %>
+      <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), model_model_file_path(@model, @file), {method: "delete", data: {confirm: translate("model_files.destroy.confirm")}, class: "btn btn-outline-danger"} if policy(@file).destroy? %>
     <% end %>
 
     <%= render partial: "problem", collection: @file.problems.visible(current_user.problem_settings) %>
 
     <%= card :secondary, t(".actions_heading") do %>
-      <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), library_model_model_file_path(@library, @model, @file, @file.extension.to_sym), {class: "btn btn-secondary"} %>
+      <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), model_model_file_path(@model, @file, @file.extension.to_sym), {class: "btn btn-secondary"} %>
       <% if policy(:model_file).create? && ["stl", "obj"].include?(@file.extension) %>
-        <%= link_to safe_join([icon("arrow-left-right", t(".convert")), t(".convert")], " "), library_model_model_files_path(@library, @model, convert: {id: @file.id, to: "threemf"}), method: :post, class: "btn btn-warning" %>
+        <%= link_to safe_join([icon("arrow-left-right", t(".convert")), t(".convert")], " "), model_model_files_path(@model, convert: {id: @file.id, to: "threemf"}), method: :post, class: "btn btn-warning" %>
       <% end %>
     <% end %>
 

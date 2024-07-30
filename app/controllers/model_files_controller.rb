@@ -1,7 +1,6 @@
 class ModelFilesController < ApplicationController
   include ActionController::Live
 
-  before_action :get_library
   before_action :get_model
   before_action :get_file, except: [:create, :bulk_edit, :bulk_update]
 
@@ -28,7 +27,7 @@ class ModelFilesController < ApplicationController
     if params[:convert]
       file = ModelFile.find(params[:convert][:id].to_i)
       Analysis::FileConversionJob.perform_later(file.id, params[:convert][:to].to_sym)
-      redirect_back_or_to [@library, @model, file], notice: t(".conversion_started")
+      redirect_back_or_to [@model, file], notice: t(".conversion_started")
     else
       head :unprocessable_entity
     end
@@ -37,7 +36,7 @@ class ModelFilesController < ApplicationController
   def update
     if @file.update(file_params)
       current_user.set_list_state(@file, :printed, params[:model_file][:printed] === "1")
-      redirect_to [@library, @model, @file], notice: t(".success")
+      redirect_to [@model, @file], notice: t(".success")
     else
       render :edit, alert: t(".failure")
     end
@@ -58,17 +57,17 @@ class ModelFilesController < ApplicationController
         end
       end
     end
-    redirect_back_or_to library_model_path(@library, @model), notice: t(".success")
+    redirect_back_or_to model_path(@model), notice: t(".success")
   end
 
   def destroy
     authorize @file
     @file.delete_from_disk_and_destroy
-    if request.referer && (URI.parse(request.referer).path == library_model_model_file_path(@library, @model, @file))
+    if request.referer && (URI.parse(request.referer).path == model_model_file_path(@model, @file))
       # If we're coming from the file page itself, we can't go back there
-      redirect_to library_model_path(@library, @model), notice: t(".success")
+      redirect_to model_path(@model), notice: t(".success")
     else
-      redirect_back_or_to library_model_path(@library, @model), notice: t(".success")
+      redirect_back_or_to model_path(@model), notice: t(".success")
     end
   end
 
@@ -103,12 +102,8 @@ class ModelFilesController < ApplicationController
     ])
   end
 
-  def get_library
-    @library = Library.find(params[:library_id])
-  end
-
   def get_model
-    @model = @library.models.find(params[:model_id])
+    @model = Model.find(params[:model_id])
   end
 
   def get_file
