@@ -2,8 +2,17 @@ module Follower
   extend ActiveSupport::Concern
   include Federails::User
 
+  included do
+    delegate :activities, to: :actor
+    delegate :following_follows, to: :actor
+  end
+
+  def follows
+    actor.follows.map(&:user)
+  end
+
   def follow(target)
-    actor.following_follows.create(target_actor: target.actor)
+    following_follows.create(target_actor: target.actor)
   end
 
   def unfollow(target)

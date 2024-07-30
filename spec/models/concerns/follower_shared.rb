@@ -14,4 +14,10 @@ shared_examples "Follower" do
     follower.unfollow(target)
     expect(follower.following?(target)).to be false
   end
+
+  it "creates a following activity" do # rubocop:todo RSpec/MultipleExpectations
+    activity = follower.activities.first
+    expect(activity.action).to eq "Create"
+    expect(activity.entity).to eq follower.following_follows.first
+  end
 end
