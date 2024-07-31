@@ -47,6 +47,8 @@ Rails.application.routes.draw do
         end
       end
     end
+  rescue ActiveRecord::StatementInvalid
+    nil
   end
 
   resources :models, followable_class: "Model", concerns: :followable do
