@@ -11,4 +11,8 @@ class FollowButton < ViewComponent::Base
     @method = @following ? :delete : :post
     @i18n_key = @following ? ".unfollow" : ".follow"
   end
+
+  def render?
+    Flipper.enabled? :multiuser
+  end
 end
