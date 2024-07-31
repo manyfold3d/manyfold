@@ -49,7 +49,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :models, concerns: :followable do
+  resources :models, followable_class: "Model", concerns: :followable do
     member do
       post "merge"
       post "scan"
@@ -65,8 +65,8 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :creators, concerns: :followable
-  resources :collections, concerns: :followable
+  resources :creators, followable_class: "Creator", concerns: :followable
+  resources :collections, followable_class: "Collection", concerns: :followable
   resources :problems, only: [:index, :update]
   resources :health, only: [:index]
 
