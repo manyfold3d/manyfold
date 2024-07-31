@@ -1,6 +1,6 @@
 module Follower
   extend ActiveSupport::Concern
-  include Federails::User
+  include Federails::Entity
 
   included do
     delegate :activities, to: :actor

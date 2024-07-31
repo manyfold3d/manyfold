@@ -148,4 +148,4 @@ gem "better_content_security_policy", "~> 0.1.4"
 gem "devise_zxcvbn", "~> 6.0"
 
 gem "ransack", "~> 4.2"
-gem "federails", git: "https://gitlab.com/experimentslabs/federails.git"
+gem "federails", git: "https://gitlab.com/manyfold3d/federails.git", branch: "polymorphic_actor_relationship"

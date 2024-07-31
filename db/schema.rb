@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_27_113217) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_31_165646) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -77,11 +77,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_27_113217) do
     t.string "followers_url"
     t.string "followings_url"
     t.string "profile_url"
-    t.integer "user_id"
+    t.integer "entity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "entity_type", default: "User"
+    t.index ["entity_type", "entity_id"], name: "index_federails_actors_on_entity", unique: true
     t.index ["federated_url"], name: "index_federails_actors_on_federated_url", unique: true
-    t.index ["user_id"], name: "index_federails_actors_on_user_id", unique: true
   end
 
   create_table "federails_followings", force: :cascade do |t|
@@ -268,7 +269,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_27_113217) do
 
   add_foreign_key "collections", "collections"
   add_foreign_key "federails_activities", "federails_actors", column: "actor_id"
-  add_foreign_key "federails_actors", "users"
   add_foreign_key "federails_followings", "federails_actors", column: "actor_id"
   add_foreign_key "federails_followings", "federails_actors", column: "target_actor_id"
   add_foreign_key "model_files", "model_files", column: "presupported_version_id"
