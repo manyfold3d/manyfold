@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+federation_enabled = begin
+  Flipper.enabled?(:federation)
+rescue ActiveRecord::StatementInvalid
+  false
+end
+
 Federails.configure do |conf|
   conf.app_name = "Manyfold"
   conf.app_version = Rails.application.config.app_version
@@ -8,7 +14,7 @@ Federails.configure do |conf|
   conf.site_port = Rails.application.default_url_options["port"]
   conf.force_ssl = Rails.application.config.force_ssl
 
-  conf.enable_discovery = Flipper.enabled? :federation
+  conf.enable_discovery = federation_enabled
   conf.server_routes_path = "federation"
   conf.client_routes_path = "client"
 
