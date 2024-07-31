@@ -1,5 +1,6 @@
 require "sidekiq/web"
 require "sidekiq-scheduler/web"
+require "federails"
 
 Rails.application.routes.draw do
   get ".well-known/change-password", to: redirect("/users/edit")
@@ -15,6 +16,12 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.is_administrator? } do
     mount Sidekiq::Web => "/sidekiq"
     resources :activity
+  end
+
+  begin
+    mount Federails::Engine => "/" if Flipper.enabled?(:multiuser)
+  rescue ActiveRecord::StatementInvalid
+    nil
   end
 
   resources :users, only: [] do

@@ -20,6 +20,13 @@ begin
   else
     Flipper.disable :multiuser
   end
+
+  Flipper.add :federation
+  if ENV.fetch("FEDERATION", nil) == "enabled"
+    Flipper.enable :federation
+  else
+    Flipper.disable :federation
+  end
 rescue ActiveRecord::StatementInvalid
   # If we've not migrated Flipper yet, we'll get an exception, which we can swallow
 end
