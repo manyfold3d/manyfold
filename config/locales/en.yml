@@ -250,7 +250,7 @@ en:
   home:
     index:
       how_long_ago: "%{time} ago"
-      recent: Recently-added Models
+      recent_activity: Recent Activity
       search:
         placeholder: What are you looking for?
   jobs:
