@@ -1,0 +1,16 @@
+<%- follow = activity.entity %>
+
+<div class="card mb-2">
+  <div class="card-body">
+    <p>
+      <% if follow.actor.entity == current_user %>
+        You
+      <% else %>
+        <%= follow.actor.name %>
+      <% end %>
+      followed
+      <%= link_to follow.target_actor.name, follow.target_actor.entity %>
+    </p>
+    <small><%= t("home.index.how_long_ago", time: time_ago_in_words(follow.created_at)) %></small>
+  </div>
+</div>

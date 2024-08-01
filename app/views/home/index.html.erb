@@ -18,7 +18,13 @@
 </div>
 <% if @recent %>
   <div class="row row-cols-2">
-    <div class="col-8 offset-md-2">
+    <div class="col-4">
+      <p class="lead"><%= t(".feed") %></p>
+      <% @feed.each do |activity| %>
+        <%= render partial: "activities/#{activity.action.parameterize}_#{activity.entity_type.demodulize.parameterize}", locals: {activity: activity} %>
+      <% end %>
+    </div>
+    <div class="col-8">
       <p class="lead"><%= t(".recent") %></p>
       <table class="table">
         <% @recent.each do |model| %>
