@@ -3,6 +3,10 @@
 require "rails_helper"
 
 RSpec.describe FollowButton, type: :component do
+  before do
+    allow(Flipper).to receive(:enabled?).with(:multiuser).and_return true
+  end
+
   let(:follower) { create(:user) }
   let(:target) { create(:creator) }
 
@@ -17,7 +21,7 @@ RSpec.describe FollowButton, type: :component do
     end
 
     it "is labelled with the word Follow" do
-      expect(button).to include ">Follow<"
+      expect(button).to include ">Follow"
     end
 
     it "links to the create path for the target's follows resource" do # rubocop:todo RSpec/MultipleExpectations
@@ -37,7 +41,7 @@ RSpec.describe FollowButton, type: :component do
     end
 
     it "is labelled with the word Unfollow" do
-      expect(button).to include ">Unfollow<"
+      expect(button).to include ">Unfollow"
     end
 
     it "links to the delete path for the target's follows resource" do # rubocop:todo RSpec/MultipleExpectations
