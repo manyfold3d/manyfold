@@ -12,6 +12,7 @@ module Follower
   end
 
   def follow(target)
+    target.send(:create_actor) if target.actor.nil?
     following_follows.create(target_actor: target.actor)
   end
 
