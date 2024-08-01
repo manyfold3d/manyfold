@@ -175,8 +175,10 @@ class Model < ApplicationRecord
   end
 
   def post_creation_activity
+    default_user = User.first
+    return if default_user.nil?
     Federails::Activity.create!(
-      actor: User.first.actor,
+      actor: default_user.actor,
       action: "Create",
       entity: actor
     )
