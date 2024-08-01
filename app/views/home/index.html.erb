@@ -16,30 +16,13 @@
     <% end %>
   </div>
 </div>
-<% if @recent %>
+<% if !@feed.empty? %>
   <div class="row row-cols-2">
-    <div class="col-4">
-      <p class="lead"><%= t(".feed") %></p>
+    <div class="col-8 offset-md-2">
+      <p class="lead"><%= t(".recent_activity") %></p>
       <% @feed.each do |activity| %>
         <%= render partial: "activities/#{activity.action.parameterize}_#{activity.entity_type.demodulize.parameterize}", locals: {activity: activity} %>
       <% end %>
-    </div>
-    <div class="col-8">
-      <p class="lead"><%= t(".recent") %></p>
-      <table class="table">
-        <% @recent.each do |model| %>
-        <tr>
-          <td>
-            <%= link_to model.name, model_path(model) %>
-          </td>
-          <td>
-            <%= status_badges(model) %>
-          </td>
-          <td><%= link_to model.library.name, model.library %></td>
-          <td><%= t(".how_long_ago", time: time_ago_in_words(model.created_at)) %></td>
-        </tr>
-        <% end %>
-      </table>
     </div>
   </div>
 <% end %>

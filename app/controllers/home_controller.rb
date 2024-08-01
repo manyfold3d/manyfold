@@ -1,12 +1,9 @@
 class HomeController < ApplicationController
   include ModelFilters
   before_action :check_library_exists
+  skip_after_action :verify_policy_scoped
 
   def index
-    @recent = policy_scope(Model).recent.limit(20)
-    # Eager load for performance
-    @recent = @recent.includes([:library, :model_files])
-    # Load activity feed
     @feed = current_user.actor.activities.order(created_at: :desc).limit(20)
   end
 
