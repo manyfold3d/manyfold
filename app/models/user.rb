@@ -34,6 +34,10 @@ class User < ApplicationRecord
   attribute :problem_settings, :json
   attribute :file_list_settings, :json
 
+  def federails_name
+    username
+  end
+
   def to_param
     username
   end
