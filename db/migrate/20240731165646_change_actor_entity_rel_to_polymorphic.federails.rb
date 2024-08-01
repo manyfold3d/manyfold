@@ -6,7 +6,7 @@ class ChangeActorEntityRelToPolymorphic < ActiveRecord::Migration[7.0]
     change_table :federails_actors do |t|
       t.rename :user_id, :entity_id
       t.string :entity_type, null: true, default: Federails::Configuration.user_class&.demodulize
-      t.index [:entity_type, :entity_id], name: 'index_federails_actors_on_entity', unique: true
+      t.index [:entity_type, :entity_id], name: "index_federails_actors_on_entity", unique: true
     end
   end
 end
