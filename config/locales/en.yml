@@ -238,8 +238,8 @@ en:
         other: "%{count} errors prohibited this %{resource} from being saved:"
       weak_password: not strong enough. Consider adding a number, symbols or more letters to make it stronger.
   follow_button:
-    follow: Follow
-    unfollow: Unfollow
+    follow: Follow %{name}
+    unfollow: Unfollow %{name}
   general:
     delete: Delete
     download: Download
