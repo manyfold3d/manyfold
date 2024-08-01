@@ -1,0 +1,28 @@
+<%- subject = activity&.actor %>
+<%- object = activity&.entity %>
+<%- thing = object&.entity %>
+<% if thing %>
+  <div class="card mb-2">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <%= link_to object.name, thing %>
+        </div>
+        <% if thing.is_a? Model %>
+          <div class="col col-auto">
+            <%= status_badges(thing) %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <small>
+          added
+          <% if subject.entity != current_user %>
+            by <%= subject.name %>
+          <% end %>
+          <%= t("home.index.how_long_ago", time: time_ago_in_words(thing.created_at)) %>
+        </small>
+      </div>
+    </div>
+  </div>
+<% end %>
