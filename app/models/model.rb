@@ -37,8 +37,8 @@ class Model < ApplicationRecord
   validate :destination_is_vacant, on: :update, if: :need_to_move_files?
   validates :license, spdx: true, allow_nil: true
 
-  before_update :move_files, if: :need_to_move_files?
   after_create :post_creation_activity
+  before_update :move_files, if: :need_to_move_files?
 
   def parents
     Pathname.new(path).parent.descend.filter_map do |path|
@@ -177,9 +177,8 @@ class Model < ApplicationRecord
   def post_creation_activity
     Federails::Activity.create!(
       actor: User.first.actor,
-      action: 'Create',
-      entity: self.actor
+      action: "Create",
+      entity: actor
     )
   end
-
 end
