@@ -39,9 +39,9 @@ Rails.application.routes.draw do
     end
   end
 
-  concern :followable do
+  concern :followable do |options|
     if Flipper.enabled?(:multiuser)
-      resources :follows, only: [:create] do
+      resources :follows, {only: [:create]}.merge(options) do
         collection do
           delete "/", action: "destroy"
         end
@@ -51,7 +51,8 @@ Rails.application.routes.draw do
     nil
   end
 
-  resources :models, followable_class: "Model", concerns: :followable do
+  resources :models do
+    concerns :followable, followable_class: "Model"
     member do
       post "merge"
       post "scan"
@@ -67,8 +68,12 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :creators, followable_class: "Creator", concerns: :followable
-  resources :collections, followable_class: "Collection", concerns: :followable
+  resources :creators do
+    concerns :followable, followable_class: "Creator"
+  end
+  resources :collections do
+    concerns :followable, followable_class: "Collection"
+  end
   resources :problems, only: [:index, :update]
   resources :health, only: [:index]
 
