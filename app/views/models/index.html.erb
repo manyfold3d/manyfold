@@ -29,6 +29,9 @@
     <% if @creator %>
       <%= render FollowButton.new(follower: current_user, target: @creator, name: @creator.name) %>
     <% end %>
+    <% if @collection %>
+      <%= render FollowButton.new(follower: current_user, target: @collection, name: @collection.name) %>
+    <% end %>
   <% end %>
   <%= render "filters_card" %>
   <% unless @tags.empty? %>
