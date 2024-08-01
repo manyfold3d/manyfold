@@ -3,7 +3,6 @@ require "uri"
 class User < ApplicationRecord
   include Lister
   include Follower
-  include Followable
 
   rolify
   devise :database_authenticatable,
@@ -34,6 +33,10 @@ class User < ApplicationRecord
   attribute :tag_cloud_settings, :json
   attribute :problem_settings, :json
   attribute :file_list_settings, :json
+
+  def federails_name
+    username
+  end
 
   def to_param
     username

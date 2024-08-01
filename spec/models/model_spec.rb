@@ -2,6 +2,8 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe Model do
+  it_behaves_like "Followable"
+
   it "is not valid without a path" do
     expect(build(:model, path: nil)).not_to be_valid
   end

@@ -1,6 +1,6 @@
 shared_examples "Follower" do
   let(:follower) { create(described_class.to_s.underscore.to_sym) }
-  let(:target) { create(:user) } # We follow another user for now, pending polymorphic stuff in Federails
+  let(:target) { create(:model) }
 
   before do
     follower.follow(target)

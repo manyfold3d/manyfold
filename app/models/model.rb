@@ -2,6 +2,7 @@ class Model < ApplicationRecord
   extend Memoist
   include PathBuilder
   include PathParser
+  include Followable
 
   scope :recent, -> { order(created_at: :desc) }
 

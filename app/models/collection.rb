@@ -1,4 +1,6 @@
 class Collection < ApplicationRecord
+  include Followable
+
   has_many :models, dependent: :nullify
   has_many :collections, dependent: :nullify
   has_many :links, as: :linkable, dependent: :destroy

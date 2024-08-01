@@ -1,13 +1,13 @@
 module Followable
   extend ActiveSupport::Concern
-  include Federails::User
+  include Federails::Entity
 
   included do
     delegate :following_followers, to: :actor
   end
 
   def followers
-    actor.followers.map(&:user)
+    actor.followers.map(&:entity)
   end
 
   def followed_by?(follower)

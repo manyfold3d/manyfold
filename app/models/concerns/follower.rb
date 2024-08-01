@@ -1,6 +1,6 @@
 module Follower
   extend ActiveSupport::Concern
-  include Federails::User
+  include Federails::Entity
 
   included do
     delegate :activities, to: :actor
@@ -12,6 +12,10 @@ module Follower
   end
 
   def follow(target)
+    if target.actor.nil?
+      target.send(:create_actor)
+      target.reload
+    end
     following_follows.create(target_actor: target.actor)
   end
 
