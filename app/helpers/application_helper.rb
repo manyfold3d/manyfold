@@ -8,6 +8,21 @@ module ApplicationHelper
     tag.i class: "#{prefix} #{prefix}-#{icon}", role: "img", title: label, id: id
   end
 
+  def icon_for(klass)
+    case klass.name
+    when "Creator"
+      "person"
+    when "Collection"
+      "collection"
+    when "Library"
+      "boxes"
+    when "Model"
+      "box"
+    when "ModelFile"
+      "file"
+    end
+  end
+
   def card(style, title, options = {}, &content)
     id = "card-#{SecureRandom.hex(4)}"
     card_class = "card mb-4"
