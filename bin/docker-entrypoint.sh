@@ -17,4 +17,5 @@ echo "Setting temporary directory permissions..."
 chown -R $PUID:$PGID tmp log
 
 echo "Launching application..."
+export RAILS_PORT=$PORT
 exec s6-setuidgid $PUID:$PGID $@
