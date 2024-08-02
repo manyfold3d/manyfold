@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   skip_after_action :verify_policy_scoped
 
   def index
-    @feed = current_user.actor.activities.order(created_at: :desc).limit(20)
+    @feed = Federails::Activity.order(created_at: :desc).limit(20)
   end
 
   private
