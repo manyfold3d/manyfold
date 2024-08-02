@@ -241,7 +241,6 @@ fr:
   home:
     index:
       how_long_ago: depuis %{time}
-      recent: Modèles récemment ajoutés
       search:
         placeholder: Que recherchez-vous ?
   jobs:

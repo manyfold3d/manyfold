@@ -241,7 +241,6 @@ pl:
   home:
     index:
       how_long_ago: "%{time} temu"
-      recent: Ostatnio Dodane Modele
       search:
         placeholder: Czego szukasz?
   jobs:

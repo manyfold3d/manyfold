@@ -37,6 +37,7 @@ class Model < ApplicationRecord
   validate :destination_is_vacant, on: :update, if: :need_to_move_files?
   validates :license, spdx: true, allow_nil: true
 
+  after_create :post_creation_activity
   before_update :move_files, if: :need_to_move_files?
 
   def parents
@@ -171,5 +172,15 @@ class Model < ApplicationRecord
 
   def slugify_name
     self.slug = name.parameterize
+  end
+
+  def post_creation_activity
+    default_user = User.first
+    return if default_user.nil?
+    Federails::Activity.create!(
+      actor: default_user.actor,
+      action: "Create",
+      entity: actor
+    )
   end
 end

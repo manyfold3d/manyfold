@@ -241,7 +241,6 @@ de:
   home:
     index:
       how_long_ago: vor %{time}
-      recent: Kürzlich hinzugefügte Modelle
       search:
         placeholder: Wonach suchen Sie?
   jobs:
