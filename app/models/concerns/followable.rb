@@ -1,6 +1,6 @@
 module Followable
   extend ActiveSupport::Concern
-  include Federails::Entity
+  include FederailsCommon
 
   included do
     delegate :following_followers, to: :actor
