@@ -230,12 +230,12 @@ GEM
     down (5.4.2)
       addressable (~> 2.8)
     drb (2.2.1)
-    erb_lint (0.5.0)
+    erb_lint (0.6.0)
       activesupport
       better_html (>= 2.0.1)
       parser (>= 2.7.1.4)
       rainbow
-      rubocop
+      rubocop (>= 1)
       smart_properties
     erubi (1.13.0)
     et-orbi (1.2.11)
@@ -521,7 +521,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.3)
+    rexml (3.3.4)
       strscan
     rolify (6.0.1)
     rspec (3.13.0)
@@ -708,7 +708,7 @@ DEPENDENCIES
   devise-i18n (~> 1.12)
   devise_zxcvbn (~> 6.0)
   dotenv-rails (~> 3.1)
-  erb_lint (~> 0.5.0)
+  erb_lint (~> 0.6.0)
   factory_bot
   faker (~> 3.4)
   federails!
