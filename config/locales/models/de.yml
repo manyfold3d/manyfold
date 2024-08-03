@@ -41,7 +41,6 @@ de:
       bulk_edit: Multibearbeitung
       missing_url: Fehlende URL
       skip_models:
-      skip_tags:
       untagged: Ungetagged
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.

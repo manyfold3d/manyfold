@@ -41,7 +41,6 @@ pl:
       bulk_edit: Edycja zbiorcza
       missing_url: Brakujący URL
       skip_models: Pomiń listę modeli
-      skip_tags: Pomiń listę tagów
       untagged: Nieotagowany
     merge:
       success: Modele zostały pomyślnie połączone.

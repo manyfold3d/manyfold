@@ -230,6 +230,8 @@ en:
         one: "%{count} unrelated tag hidden"
         other: "%{count} unrelated tags hidden"
     tagline: Helping you keep track of your 3d print files
+    tags_card:
+      skip_tags: Skip tag list
     title: Manyfold
   errors:
     messages:

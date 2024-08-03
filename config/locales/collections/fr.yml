@@ -22,7 +22,6 @@ fr:
     index:
       actions_heading: Actions
       skip_collections: Sauter la liste de collections
-      skip_tags: Sauter la liste des balises
     unassigned:
       caption: Tous les modèles ne faisant pas partie d'une collection.
       name: Non attribué

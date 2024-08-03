@@ -19,7 +19,6 @@ de:
     index:
       actions_heading: Aktionen
       skip_creators:
-      skip_tags:
     unassigned:
       caption:
       name: Nicht zugewiesen

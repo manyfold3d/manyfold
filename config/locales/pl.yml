@@ -230,6 +230,8 @@ pl:
         one: "%{count} niepowiązany tag ukryty"
         other: "%{count} niepowiązanych tagów ukrytych"
     tagline: Pomaga w śledzeniu plików do druku 3D
+    tags_card:
+      skip_tags: Pomiń listę tagów
     title: Manyfold
   general:
     delete: Usuń

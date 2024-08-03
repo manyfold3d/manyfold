@@ -22,7 +22,6 @@ de:
     index:
       actions_heading: Aktionen
       skip_collections:
-      skip_tags:
     unassigned:
       caption:
       name: Nicht zugewiesen
