@@ -1,5 +1,5 @@
 class CollectionsController < ApplicationController
-  include ModelFilters
+  include Filterable
   before_action :get_collection, except: [:index, :new, :create]
 
   def index

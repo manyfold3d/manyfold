@@ -1,5 +1,6 @@
 class CreatorsController < ApplicationController
-  include ModelFilters
+  include Filterable
+
   before_action :get_creator, except: [:index, :new, :create]
 
   def index
