@@ -10,6 +10,7 @@ class CreatorsController < ApplicationController
     end
 
     @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
+    @tags = @tags.select(:name, :taggings_count)
 
     # Ordering
     @creators = case session["order"]

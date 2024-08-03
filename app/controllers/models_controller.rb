@@ -27,6 +27,7 @@ class ModelsController < ApplicationController
     end
 
     @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
+    @tags = @tags.select(:name, :taggings_count)
 
     # Load extra data
     @models = @models.includes [:library, :model_files, :preview_file, :creator, :collection]
