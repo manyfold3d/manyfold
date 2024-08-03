@@ -15,6 +15,8 @@ module TagListable
     end
     # Work out how many tags were unrelated and will be hidden
     unrelated_tag_count = models ? (all_tags.count - tags.count) : 0
+    # Only get what we need for rendering
+    tags = tags.select(:name, :taggings_count)
     # Done!
     [tags, unrelated_tag_count]
   end
