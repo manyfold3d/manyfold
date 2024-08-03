@@ -2,6 +2,7 @@ require "fileutils"
 
 class ModelsController < ApplicationController
   include Filterable
+  include TagListable
 
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]

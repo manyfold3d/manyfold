@@ -1,5 +1,6 @@
 class CollectionsController < ApplicationController
   include Filterable
+  include TagListable
   before_action :get_collection, except: [:index, :new, :create]
 
   def index
