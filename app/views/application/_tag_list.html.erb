@@ -22,7 +22,7 @@
       <li>
         <details id="<%= tier %>">
           <summary><%= tier %></summary>
-          <%= render partial: "tag", collection: kv_tags.select { |obj| obj.name.match?("^#{tier}:") } %>
+          <%= render "tag_list", tags: kv_tags.select { |obj| obj.name.match?("^#{tier}:") } %>
           <%- if tierunset && tierunset[tier] > 0 %>
             <%= link_to "unset (#{tierunset[tier]})", (@filters || {}).merge(missingtag: tier), {class: "badge rounded-pill border border-muted text-danger tag"} %>
           <%- end %>
