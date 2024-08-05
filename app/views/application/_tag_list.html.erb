@@ -8,7 +8,14 @@
        }.to_h
      end %>
 <% end %>
-<%= render partial: "tag", collection: tags %>
+<%- filters = @filters || {} %>
+<%- filters[:tag] ||= [] %>
+<%- tag_html_opts = {
+          class: "badge rounded-pill bg-secondary tag",
+          data: {bulk_item_tags: defined?(model_id) ? model_id&.to_s : nil}
+        } %>
+<%- heatmap = current_user.tag_cloud_settings["heatmap"] %>
+<%= safe_join(tags.map { |tag| link_to (heatmap ? "#{tag.name} (#{tag.taggings_count})" : tag.name), filters.merge(tag: filters[:tag] | [tag.name]), tag_html_opts }, " ") %>
 <% if defined?(kv_tags) && kv_tags %>
   <ul class="list-unstyled">
     <% tiers.each do |tier| %>
