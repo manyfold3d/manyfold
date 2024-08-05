@@ -24,7 +24,8 @@ module Followable
     Federails::Activity.create!(
       actor: default_user.actor,
       action: "Create",
-      entity: actor
+      entity: actor,
+      created_at: created_at
     )
   end
 end
