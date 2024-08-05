@@ -8,7 +8,7 @@ module I18n::Backend::Fallbacks
     fallback_options = options.merge(fallback_in_progress: true, fallback_original_locale: locale)
     I18n.fallbacks[locale].each do |fallback|
       catch(:exception) do
-        result = super(fallback, key, fallback_options)
+        result = super(fallback, key, fallback_options).dup
         result.locale = fallback if locale.to_s != fallback.to_s
         unless result.nil?
           on_fallback(locale, fallback, key, options) if locale.to_s != fallback.to_s
