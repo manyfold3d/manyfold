@@ -39,6 +39,7 @@ class ProcessUploadedFileJob < ApplicationJob
         Archive::Reader.open_filename(archive.path, strip_components: strip) do |reader|
           reader.each_entry do |entry|
             next if !entry.file? || entry.size > SiteSettings.max_file_extract_size
+            next if hidden?(entry.pathname)
             Dir.chdir(tmpdir) do
               reader.extract(entry, Archive::EXTRACT_SECURE)
               model.model_files.create(filename: entry.pathname, attachment: File.open(entry.pathname))
@@ -47,6 +48,10 @@ class ProcessUploadedFileJob < ApplicationJob
         end
       end
     end
+  end
+
+  def hidden?(pathname)
+    (File.split(pathname) - ["."]).any? { |x| x.starts_with? "." }
   end
 
   def count_common_path_components(archive)
