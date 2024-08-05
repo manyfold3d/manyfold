@@ -124,6 +124,32 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
     end
   end
 
+  context "with hidden files and folders" do
+    around do |ex|
+      MockDirectory.create([
+        "model/file.stl",
+        "model/.hidden.stl",
+        "model/.git/file.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    # rubocop:todo RSpec/InstanceVariable
+
+    let(:library) { create(:library, path: @library_path) }
+    # rubocop:enable RSpec/InstanceVariable
+
+    it "does not include hidden files in file list" do
+      expect(described_class.new.filenames_on_disk(library)).not_to include "model/.hidden.stl"
+    end
+
+    it "does not include hidden folder contents in file list" do
+      expect(described_class.new.filenames_on_disk(library)).not_to include "model/.git/file.stl"
+    end
+  end
+
   context "with folders that look like filenames" do
     around do |ex|
       MockDirectory.create([
