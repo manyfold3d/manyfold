@@ -27,10 +27,10 @@
       <%= link_to t(".missing_url"), models_path(link: ""), class: "btn btn-secondary mb-3 me-3" %>
     <% end %>
     <% if @creator %>
-      <%= render FollowButton.new(follower: current_user, target: @creator, name: @creator.name) %>
+      <%= render FollowButtonComponent.new(follower: current_user, target: @creator, name: @creator.name) %>
     <% end %>
     <% if @collection %>
-      <%= render FollowButton.new(follower: current_user, target: @collection, name: @collection.name) %>
+      <%= render FollowButtonComponent.new(follower: current_user, target: @collection, name: @collection.name) %>
     <% end %>
   <% end %>
   <%= render "filters_card" %>

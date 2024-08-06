@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe FollowButton, type: :component do
+RSpec.describe FollowButtonComponent, type: :component do
   before do
     allow(Flipper).to receive(:enabled?).with(:multiuser).and_return true
   end
