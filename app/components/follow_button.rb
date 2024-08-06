@@ -16,4 +16,8 @@ class FollowButton < ViewComponent::Base
   def render?
     Flipper.enabled? :multiuser
   end
+
+  erb_template <<-ERB
+    <%= button_to translate(@i18n_key, name: @name), @path, method: @method, class: "btn btn-primary" %>
+  ERB
 end

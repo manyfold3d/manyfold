@@ -1,4 +1,0 @@
-<%= link_to @filters.merge(tag: @filters[:tag] | [@tag.name]), @html_options do %>
-  <%= @tag.name %>
-  <%= "(#{@tag.taggings_count})" if @show_count %>
-<% end %>

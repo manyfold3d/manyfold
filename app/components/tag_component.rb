@@ -11,4 +11,13 @@ class TagComponent < ViewComponent::Base
     @filters[:tag] ||= []
     @html_options = html_options.merge({class: CLASSES})
   end
+
+  erb_template <<-ERB
+    <%= link_to @filters.merge(tag: @filters[:tag] | [@tag.name]), @html_options do %>
+      <%= @tag.name %>
+      <%- if @show_count %>
+        (<%= @tag.taggings_count %>)
+      <% end %>
+    <% end %>
+  ERB
 end
