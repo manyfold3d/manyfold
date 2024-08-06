@@ -117,7 +117,8 @@ class ModelsController < ApplicationController
     @creators = policy_scope(Creator)
     @collections = policy_scope(Collection)
     @models = filtered_models @filters
-    @addtags = @models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
+    @remove_tags, _unused = generate_tag_list(@models)
+    @add_tags = ActsAsTaggableOn::Tag.where.not(id: @remove_tags.pluck(:id))
   end
 
   def bulk_update
