@@ -24,8 +24,8 @@ module TagListable
   def split_key_value_tags(tags)
     # Split into plain tags and key-value tags
     if current_user.tag_cloud_settings["keypair"]
-      plain_tags = tags.where.not("name LIKE \"%:%\"")
-      kv_tags = tags.where("name LIKE \"%:%\"")
+      plain_tags = tags.where.not("name LIKE '%:%'")
+      kv_tags = tags.where("name LIKE '%:%'")
     else
       plain_tags = tags
       kv_tags = nil
