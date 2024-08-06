@@ -1,5 +1,7 @@
 class CreatorsController < ApplicationController
-  include ModelFilters
+  include Filterable
+  include TagListable
+
   before_action :get_creator, except: [:index, :new, :create]
 
   def index
@@ -10,6 +12,7 @@ class CreatorsController < ApplicationController
     end
 
     @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
+    @tags, @kv_tags = split_key_value_tags(@tags)
 
     # Ordering
     @creators = case session["order"]

@@ -1,7 +1,5 @@
-<% if current_user.tag_cloud_settings["keypair"] %>
-  <% plaintags = tags.select { |obj| obj.name.exclude?(":") } %>
-  <% tiertags = tags.select { |obj| obj.name.include?(":") } %>
-  <% tiers = tiertags.map(&:name).map { |tag| tag.split(":").first }.uniq.sort %>
+<% if defined?(kv_tags) && kv_tags %>
+  <% tiers = kv_tags.map(&:name).map { |tag| tag.split(":").first }.uniq.sort %>
   <% if @models
        tierunset = tiers.map { |tier|
          reg = ActiveRecord::Base.connection.quote("^" + tier + ":")
@@ -9,16 +7,22 @@
          [tier, @models.where("(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name #{regact} #{reg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1").count]
        }.to_h
      end %>
-  <% tags = plaintags %>
 <% end %>
-<%= render partial: "tag", collection: tags %>
-<% if current_user.tag_cloud_settings["keypair"] %>
+<%- filters = @filters || {} %>
+<%- filters[:tag] ||= [] %>
+<%- tag_html_opts = {
+      class: "badge rounded-pill bg-secondary tag",
+      data: {bulk_item_tags: defined?(model_id) ? model_id&.to_s : nil}
+    } %>
+<%- heatmap = current_user.tag_cloud_settings["heatmap"] %>
+<%= safe_join(tags.map { |tag| link_to (heatmap ? "#{tag.name} (#{tag.taggings_count})" : tag.name), filters.merge(tag: filters[:tag] | [tag.name]), tag_html_opts }, " ") %>
+<% if defined?(kv_tags) && kv_tags %>
   <ul class="list-unstyled">
     <% tiers.each do |tier| %>
       <li>
         <details id="<%= tier %>">
           <summary><%= tier %></summary>
-          <%= render partial: "tag", collection: tiertags.select { |obj| obj.name.match?("^#{tier}:") } %>
+          <%= render "tag_list", tags: kv_tags.select { |obj| obj.name.match?("^#{tier}:") } %>
           <%- if tierunset && tierunset[tier] > 0 %>
             <%= link_to "unset (#{tierunset[tier]})", (@filters || {}).merge(missingtag: tier), {class: "badge rounded-pill border border-muted text-danger tag"} %>
           <%- end %>

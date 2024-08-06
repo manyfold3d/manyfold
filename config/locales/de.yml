@@ -230,6 +230,8 @@ de:
         one:
         other:
     tagline: Hilft ihnen ihre 3D-Druck Dateien zu verwalten
+    tags_card:
+      skip_tags:
     title: Manyfold
   general:
     delete: Löschen

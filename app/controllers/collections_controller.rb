@@ -1,5 +1,6 @@
 class CollectionsController < ApplicationController
-  include ModelFilters
+  include Filterable
+  include TagListable
   before_action :get_collection, except: [:index, :new, :create]
 
   def index
@@ -10,6 +11,7 @@ class CollectionsController < ApplicationController
     end
 
     @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
+    @tags, @kv_tags = split_key_value_tags(@tags)
 
     # Ordering
     @collections = case session["order"]

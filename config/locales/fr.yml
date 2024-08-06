@@ -230,6 +230,8 @@ fr:
         one:
         other:
     tagline: Vous aider à garder une trace de vos fichiers d'impression 3D
+    tags_card:
+      skip_tags: Sauter la liste des balises
     title: Manyfold
   general:
     delete: Supprimer

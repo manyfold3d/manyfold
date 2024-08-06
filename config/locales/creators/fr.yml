@@ -19,7 +19,6 @@ fr:
     index:
       actions_heading: Actions
       skip_creators: Sauter la liste des créateurs
-      skip_tags: Sauter la liste des balises
     unassigned:
       caption: Tous les modèles sans créateur connu.
       name: Non attribué

@@ -1,7 +1,9 @@
 require "fileutils"
 
 class ModelsController < ApplicationController
-  include ModelFilters
+  include Filterable
+  include TagListable
+
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
@@ -27,6 +29,7 @@ class ModelsController < ApplicationController
     end
 
     @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
+    @tags, @kv_tags = split_key_value_tags(@tags)
 
     # Load extra data
     @models = @models.includes [:library, :model_files, :preview_file, :creator, :collection]
