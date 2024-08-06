@@ -18,7 +18,7 @@
         <td><%= form.check_box "models[#{model.id}]", data: {bulk_item: model.id.to_s}, "aria-label": translate(".select", name: model.name) %></td>
         <td><%= link_to model.name, model, title: model.path %></td>
         <td><%= link_to model.collection.name, model.collection if model.collection %></td>
-        <td><%= render "tag_list", tags: model.tags, model_id: model.id %></td>
+        <td><%= render "tag_list", tags: model.tags, model_id: model.id, show_count: false %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
         <td><%= icon("exclamation-triangle", t(".needs_organizing")) if model.needs_organizing? %></code></td>
       </tr>
