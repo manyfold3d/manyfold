@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FollowButton < ViewComponent::Base
+class FollowButtonComponent < ViewComponent::Base
   def initialize(follower:, target:, name: nil)
     @target = target
     @following = follower.following? target
