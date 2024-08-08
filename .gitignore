@@ -63,3 +63,6 @@ docker-compose.yml
 # ignore asdf config files
 /.tool-versions
 dump.rdb
+
+# IDE workspace files
+*.code-workspace
