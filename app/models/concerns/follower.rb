@@ -3,6 +3,7 @@ module Follower
   include FederailsCommon
 
   included do
+    acts_as_federails_actor username_field: :username, name_field: :name
     delegate :activities, to: :actor
     delegate :following_follows, to: :actor
   end

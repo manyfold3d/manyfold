@@ -11,9 +11,4 @@ Federails.configure do |conf|
   conf.enable_discovery = Rails.application.config.manyfold_features[:federation]
   conf.server_routes_path = "federation"
   conf.client_routes_path = "client"
-
-  conf.user_class = "::User"
-  conf.user_profile_url_method = nil
-  conf.user_name_field = "name"
-  conf.user_username_field = "username"
 end

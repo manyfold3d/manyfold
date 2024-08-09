@@ -3,8 +3,8 @@ module Followable
   include FederailsCommon
 
   included do
+    acts_as_federails_actor username_field: :id, name_field: :name, profile_url_method: :url_for
     delegate :following_followers, to: :actor
-
     after_create :post_creation_activity
   end
 
