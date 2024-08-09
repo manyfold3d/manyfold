@@ -13,11 +13,11 @@ class SiteSettings < RailsSettings::Base
   field :analyse_manifold, type: :boolean, default: false
   field :anonymous_usage_id, type: :string, default: nil
 
-  def self.registration_enabled
+  def self.registration_enabled?
     ENV.fetch("REGISTRATION", false) == "enabled"
   end
 
-  def self.email_configured
+  def self.email_configured?
     !Rails.env.production? || ENV.fetch("SMTP_SERVER", false)
   end
 
@@ -27,6 +27,18 @@ class SiteSettings < RailsSettings::Base
 
   def self.max_file_extract_size
     ENV.fetch("MAX_FILE_EXTRACT_SIZE", 1_073_741_824).to_i
+  end
+
+  def self.demo_mode_enabled?
+    Rails.application.config.manyfold_features[:demo_mode]
+  end
+
+  def self.multiuser_enabled?
+    Rails.application.config.manyfold_features[:multiuser]
+  end
+
+  def self.federation_enabled?
+    Rails.application.config.manyfold_features[:federation]
   end
 
   module UserDefaults

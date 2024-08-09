@@ -61,6 +61,13 @@ module Manyfold
       user_name: ENV.fetch("SMTP_USERNAME", nil),
       password: ENV.fetch("SMTP_PASSWORD", nil)
     }.compact
+
+    # Load some feature settings from ENV
+    config.manyfold_features = {
+      multiuser: (ENV.fetch("MULTIUSER", nil) == "enabled"),
+      federation: (ENV.fetch("FEDERATION", nil) == "enabled"),
+      demo_mode: (ENV.fetch("DEMO_MODE", nil) == "enabled")
+    }
   end
 end
 
