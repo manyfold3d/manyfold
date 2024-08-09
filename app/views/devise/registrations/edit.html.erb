@@ -23,7 +23,7 @@
                   nil %>
         </div>
       </div>
-      <%- if Flipper.enabled? :multiuser %>
+      <%- if SiteSettings.multiuser_enabled? %>
         <div class="card border-danger mt-3">
           <h4 class="card-header text-bg-danger"><%= t ".danger_zone" %></h4>
           <div class="card-body">

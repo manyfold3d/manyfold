@@ -22,7 +22,7 @@ gem "redis", "~> 5.2"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-gem "dotenv-rails", "~> 3.1"
+gem "dotenv-rails", "~> 3.1", group: :development
 gem "acts-as-taggable-on", "~> 10.0"
 
 gem "ffi-libarchive", "~> 1.1"
@@ -114,9 +114,6 @@ gem "i18n-js", "~> 4.2"
 gem "translation", "~> 1.41", group: :development
 
 gem "string-similarity", "~> 2.1"
-
-gem "flipper", "~> 1.3"
-gem "flipper-active_record", "~> 1.3"
 
 gem "rolify", "~> 6.0"
 

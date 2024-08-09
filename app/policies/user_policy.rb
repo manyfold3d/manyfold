@@ -3,7 +3,7 @@ class UserPolicy < ApplicationPolicy
     all_of(
       user&.is_administrator?,
       none_of(
-        Flipper.enabled?(:demo_mode)
+        SiteSettings.demo_mode_enabled?
       )
     )
   end
@@ -19,13 +19,13 @@ class UserPolicy < ApplicationPolicy
 
   def create?
     all_of(
-      Flipper.enabled?(:multiuser),
+      SiteSettings.multiuser_enabled?,
       one_of(
-        SiteSettings.registration_enabled,
+        SiteSettings.registration_enabled?,
         user&.is_administrator?
       ),
       none_of(
-        Flipper.enabled?(:demo_mode)
+        SiteSettings.demo_mode_enabled?
       )
     )
   end
@@ -43,9 +43,9 @@ class UserPolicy < ApplicationPolicy
         user == record,
         user&.is_administrator?
       ),
-      Flipper.enabled?(:multiuser),
+      SiteSettings.multiuser_enabled?,
       none_of(
-        Flipper.enabled?(:demo_mode)
+        SiteSettings.demo_mode_enabled?
       )
     )
   end

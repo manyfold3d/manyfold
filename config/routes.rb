@@ -18,11 +18,7 @@ Rails.application.routes.draw do
     resources :activity
   end
 
-  begin
-    mount Federails::Engine => "/" if Flipper.enabled?(:multiuser)
-  rescue ActiveRecord::StatementInvalid
-    nil
-  end
+  mount Federails::Engine => "/" if Rails.application.config.manyfold_features[:multiuser]
 
   resources :users, only: [] do
     resource :settings, only: [:show, :update]
@@ -40,15 +36,13 @@ Rails.application.routes.draw do
   end
 
   concern :followable do |options|
-    if Flipper.enabled?(:multiuser)
+    if Rails.application.config.manyfold_features[:multiuser]
       resources :follows, {only: [:create]}.merge(options) do
         collection do
           delete "/", action: "destroy"
         end
       end
     end
-  rescue ActiveRecord::StatementInvalid
-    nil
   end
 
   resources :models do

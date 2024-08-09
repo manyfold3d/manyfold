@@ -36,7 +36,7 @@ class ApplicationPolicy
     all_of(
       user&.is_editor?,
       none_of(
-        Flipper.enabled?(:demo_mode)
+        SiteSettings.demo_mode_enabled?
       )
     )
   end

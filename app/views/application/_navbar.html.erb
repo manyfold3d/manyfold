@@ -81,7 +81,7 @@
             <%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: translate(".search"), aria_label: translate(".search"), aria_describedby: "button-search", value: params[:q] %>
           <% end %>
         </li>
-        <%- if Flipper.enabled? :multiuser %>
+        <%- if SiteSettings.multiuser_enabled? %>
           <%- if current_user %>
             <li class="nav-item">
               <%= nav_link "person", t(".account"), edit_user_registration_path, text_style: "d-lg-none" %>

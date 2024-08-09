@@ -1,13 +1,13 @@
 class Federails::FollowingPolicy < ApplicationPolicy
   def create?
     all_of(
-      Flipper.enabled?(:multiuser)
+      SiteSettings.multiuser_enabled?
     )
   end
 
   def destroy?
     all_of(
-      Flipper.enabled?(:multiuser)
+      SiteSettings.multiuser_enabled?
     )
   end
 

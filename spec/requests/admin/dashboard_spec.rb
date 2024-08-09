@@ -12,8 +12,7 @@ RSpec.describe "Admin::Dashboard" do
       expect(response).to have_http_status(:success)
     end
 
-    it "is inaccessible in demo mode" do
-      Flipper.enable :demo_mode
+    it "is inaccessible in demo mode", :demo_mode do
       expect { get("/admin") }.to raise_error(Pundit::NotAuthorizedError)
     end
   end

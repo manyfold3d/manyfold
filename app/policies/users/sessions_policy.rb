@@ -6,10 +6,10 @@ class Users::SessionsPolicy < ApplicationPolicy
   end
 
   def create?
-    Flipper.enabled?(:multiuser)
+    SiteSettings.multiuser_enabled?
   end
 
   def destroy?
-    Flipper.enabled?(:multiuser)
+    SiteSettings.multiuser_enabled?
   end
 end

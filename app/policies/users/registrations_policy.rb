@@ -2,6 +2,6 @@
 
 class Users::RegistrationsPolicy < ApplicationPolicy
   def cancel?
-    Flipper.enabled?(:multiuser)
+    SiteSettings.multiuser_enabled?
   end
 end

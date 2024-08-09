@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe FollowButtonComponent, type: :component do
   before do
-    allow(Flipper).to receive(:enabled?).with(:multiuser).and_return true
+    allow(SiteSettings).to receive(:multiuser_enabled?).and_return(true)
   end
 
   let(:follower) { create(:user) }

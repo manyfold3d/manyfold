@@ -7,7 +7,7 @@ class UploadPolicy < ApplicationPolicy
     all_of(
       user&.is_contributor?,
       none_of(
-        Flipper.enabled?(:demo_mode)
+        SiteSettings.demo_mode_enabled?
       )
     )
   end

@@ -3,7 +3,7 @@ class LibraryPolicy < ApplicationPolicy
     all_of(
       user&.is_administrator?,
       none_of(
-        Flipper.enabled?(:demo_mode)
+        SiteSettings.demo_mode_enabled?
       )
     )
   end
