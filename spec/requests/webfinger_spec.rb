@@ -43,36 +43,25 @@ RSpec.describe "Webfinger", :multiuser do
     it "returns a not found response"
   end
 
-  context "when looking up a model" do
-    let(:model) { create(:model) }
+  [
+    :collection,
+    :creator,
+    :model
+  ].each do |followable|
+    context "when looking up a #{followable}" do
+      let(:object) { create(followable) }
 
-    before do
-      get("/.well-known/webfinger?resource=#{model.actor.federated_url}")
+      before do
+        get("/.well-known/webfinger?resource=#{object.actor.federated_url}")
+      end
+
+      it "returns a successful response" do
+        expect(response).to have_http_status :success
+      end
+
+      it "responds with data on the correct #{followable}" do
+        expect(response.parsed_body["links"][0]["href"]).to eq object.actor.federated_url
+      end
     end
-
-    it "returns a successful response"
-    it "responds with data on the correct model"
-  end
-
-  context "when looking up a creator" do
-    let(:creator) { create(:creator) }
-
-    before do
-      get("/.well-known/webfinger?resource=#{creator.actor.federated_url}")
-    end
-
-    it "returns a successful response"
-    it "responds with data on the correct creator"
-  end
-
-  context "when looking up a collection" do
-    let(:collection) { create(:collection) }
-
-    before do
-      get("/.well-known/webfinger?resource=#{collection.actor.federated_url}")
-    end
-
-    it "returns a successful response"
-    it "responds with data on the correct collection"
   end
 end
