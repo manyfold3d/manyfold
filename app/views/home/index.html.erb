@@ -2,7 +2,7 @@
   <%= render "application/content_header" %>
   <h1 class="d-none d-lg-block"><%= t "application.title" %></h1>
   <p class='lead'><%= t "application.tagline" %></p>
-  <% if Flipper.enabled? :demo_mode %>
+  <% if SiteSettings.demo_mode_enabled? %>
     <div class="alert alert-info">
       <%= t "application.demo_mode" %>
     </div>

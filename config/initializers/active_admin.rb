@@ -140,7 +140,7 @@ ActiveAdmin.setup do |config|
   # Active Admin resources and pages from here.
   #
   config.before_action do
-    raise Pundit::NotAuthorizedError, I18n.t("active_admin.demo_mode") if Flipper.enabled? :demo_mode
+    raise Pundit::NotAuthorizedError, I18n.t("active_admin.demo_mode") if SiteSettings.demo_mode_enabled?
   end
 
   # == Attribute Filters

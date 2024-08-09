@@ -2,10 +2,10 @@
 
 class Users::PasswordsPolicy < ApplicationPolicy
   def create?
-    Flipper.enabled?(:multiuser) && SiteSettings.email_configured
+    SiteSettings.multiuser_enabled? && SiteSettings.email_configured?
   end
 
   def update?
-    Flipper.enabled?(:multiuser) && SiteSettings.email_configured
+    SiteSettings.multiuser_enabled? && SiteSettings.email_configured?
   end
 end

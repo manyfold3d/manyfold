@@ -39,7 +39,7 @@
     <div class='col'>
       <button type="submit" class="btn btn-primary"><%= icon("save", t(".submit")) %> <%= t(".submit") %></button>
     </div>
-    <% if current_user.is_administrator? && !Flipper.enabled?(:demo_mode) %>
+    <% if current_user.is_administrator? && !SiteSettings.demo_mode_enabled? %>
       <div class='col text-end'>
         <%= link_to safe_join([icon("tools", t(".advanced_admin")), t(".advanced_admin")], " "),
               "/admin",

@@ -2,11 +2,11 @@
   <h3 class="card-header"><%= t(".heading") %></h3>
   <div class="card-body">
     <p class='lead'>
-      <%= Flipper.enabled?(:multiuser) ? t(".multiuser_mode") : t(".single_user_mode") %>
+      <%= SiteSettings.multiuser_enabled? ? t(".multiuser_mode") : t(".single_user_mode") %>
     </p>
-    <% if Flipper.enabled?(:multiuser) %>
+    <% if SiteSettings.multiuser_enabled? %>
       <p>
-        <%= SiteSettings.registration_enabled ? t(".registrations_open") : t(".registrations_closed") %>
+        <%= SiteSettings.registration_enabled? ? t(".registrations_open") : t(".registrations_closed") %>
       </p>
     <% end %>
     <p>

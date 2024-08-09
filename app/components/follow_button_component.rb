@@ -14,7 +14,7 @@ class FollowButtonComponent < ViewComponent::Base
   end
 
   def render?
-    Flipper.enabled? :multiuser
+    SiteSettings.multiuser_enabled?
   end
 
   erb_template <<-ERB

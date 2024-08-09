@@ -138,7 +138,7 @@ RSpec.describe "Users::Registrations" do
 
   context "when in multiuser mode with closed registrations", :multiuser do
     before do
-      allow(SiteSettings).to receive(:registration_enabled).and_return(false)
+      allow(SiteSettings).to receive(:registration_enabled?).and_return(false)
     end
 
     context "when signed out" do
@@ -258,7 +258,7 @@ RSpec.describe "Users::Registrations" do
 
   context "when in multiuser mode with open registrations", :multiuser do
     before do
-      allow(SiteSettings).to receive(:registration_enabled).and_return(true)
+      allow(SiteSettings).to receive(:registration_enabled?).and_return(true)
     end
 
     context "when signed out" do
