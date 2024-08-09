@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :activity
   end
 
-  mount Federails::Engine => "/" if Rails.application.config.manyfold_features[:multiuser]
+  mount Federails::Engine => "/" if SiteSettings.multiuser_enabled? || Rails.env.test?
 
   resources :users, only: [] do
     resource :settings, only: [:show, :update]
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   end
 
   concern :followable do |options|
-    if Rails.application.config.manyfold_features[:multiuser]
+    if SiteSettings.multiuser_enabled?
       resources :follows, {only: [:create]}.merge(options) do
         collection do
           delete "/", action: "destroy"
