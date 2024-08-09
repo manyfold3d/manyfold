@@ -115,9 +115,6 @@ gem "translation", "~> 1.41", group: :development
 
 gem "string-similarity", "~> 2.1"
 
-gem "flipper", "~> 1.3"
-gem "flipper-active_record", "~> 1.3"
-
 gem "rolify", "~> 6.0"
 
 gem "letter_opener", "~> 1.10", group: :development
