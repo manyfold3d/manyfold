@@ -63,6 +63,7 @@ module Manyfold
     }.compact
 
     # Load some feature settings from ENV
+    # Some are automatically enabled in test mode because they impact initialization
     config.manyfold_features = {
       multiuser: (ENV.fetch("MULTIUSER", nil) == "enabled"),
       federation: (ENV.fetch("FEDERATION", nil) == "enabled"),
