@@ -4,6 +4,8 @@ class Model < ApplicationRecord
   include PathParser
   include Followable
 
+  acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for, actor_type: "Document"
+
   scope :recent, -> { order(created_at: :desc) }
 
   belongs_to :library

@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/manyfold3d/federails.git
-  revision: 59e9bc0b0a417cce714e7f99392f010582242103
+  revision: 7cbaf792fd1cdc4cca589f69e7edbf9ee800d199
   branch: polymorphic_actor_relationship
   specs:
     federails (0.0.1)
