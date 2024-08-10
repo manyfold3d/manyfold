@@ -20,6 +20,8 @@ module ApplicationHelper
       "box"
     when "ModelFile"
       "file"
+    when "User"
+      "person"
     end
   end
 
