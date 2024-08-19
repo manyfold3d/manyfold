@@ -9,7 +9,7 @@
           <%= icon icon_for(thing.class), thing.class.model_name.human %>
         </div>
         <div class="col">
-          <%= (object.profile_url ? link_to(object.name, object.profile_url) : object.name) %>
+          <%= ((object.profile_url && !thing.is_a?(User)) ? link_to(object.name, object.profile_url) : object.name) %>
         </div>
         <% if thing.is_a? Model %>
           <div class="col col-auto">
