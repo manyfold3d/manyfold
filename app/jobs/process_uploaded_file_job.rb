@@ -16,18 +16,22 @@ class ProcessUploadedFileJob < ApplicationJob
     model = library.models.create(name: model_name, path: "#{model_path}##{SecureRandom.hex(4)}")
     model.update! path: "#{model_path}##{model.id}" # Set to proper ID after saving
     # Handle different file types
-    case File.extname(file.original_filename).delete(".").downcase
-    when *SupportedMimeTypes.archive_extensions
-      unzip(model, file)
-    when *(SupportedMimeTypes.model_extensions + SupportedMimeTypes.image_extensions)
-      model.model_files.create(filename: file.original_filename, attachment: file)
-    else
-      Rails.logger.warn("Ignoring #{file.inspect}")
+    begin
+      case File.extname(file.original_filename).delete(".").downcase
+      when *SupportedMimeTypes.archive_extensions
+        unzip(model, file)
+      when *(SupportedMimeTypes.model_extensions + SupportedMimeTypes.image_extensions)
+        model.model_files.create(filename: file.original_filename, attachment: file)
+      else
+        Rails.logger.warn("Ignoring #{file.inspect}")
+      end
+      # Discard cached file
+      attacher.destroy
+      # Queue full model scan to fill in data
+      ModelScanJob.perform_later(model.id, include_all_subfolders: true)
+    rescue
+      model.destroy
     end
-    # Discard cached file
-    attacher.destroy
-    # Queue full model scan to fill in data
-    ModelScanJob.perform_later(model.id, include_all_subfolders: true)
   end
 
   private
