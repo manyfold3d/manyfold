@@ -51,4 +51,23 @@ RSpec.describe ProcessUploadedFileJob do
       ])).to eq 0
     end
   end
+
+  context "when errors occur during processing" do
+    let(:library) { create(:library) }
+    let(:file) { Rack::Test::UploadedFile.new(StringIO.new, original_filename: "test.zip") }
+
+    it "removes the created model" do # rubocop:todo RSpec/ExampleLength
+      job = described_class.new
+      allow(job).to receive(:unzip).and_raise(StandardError)
+      expect {
+        begin
+          job.perform(library.id, file)
+        rescue
+          nil
+        end
+      }.not_to change(Model, :count)
+    end
+
+    it "leaves the uploaded file in place"
+  end
 end
