@@ -251,12 +251,12 @@ en:
     save: Save
   home:
     index:
-      create_actor: "added by %{name} %{time} ago"
+      create_actor: added by %{name} %{time} ago
       how_long_ago: "%{time} ago"
       recent_activity: Recent Activity
       search:
         placeholder: What are you looking for?
-      update_actor: "updated by %{name} %{time} ago"
+      update_actor: updated by %{name} %{time} ago
   jobs:
     analysis:
       analyse_model_file:
