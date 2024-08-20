@@ -2,8 +2,8 @@
 pl:
   devise:
     failure:
-      last_attempt: Masz jeszcze jedną próbę nim Twoje konto zostanie zablokowane.
-      locked: Twoje konto jest zablokowane.
+      last_attempt: Masz jeszcze jedną próbę nim Twoje konto zostanie tymczasowo zablokowane.
+      locked: Twoje konto zostało zablokowane na godzinę; spróbuj ponownie później.
     mailer:
       confirmation_instructions:
         action: Potwierdź swoje konto
