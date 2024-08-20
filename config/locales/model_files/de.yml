@@ -2,26 +2,26 @@
 de:
   model_files:
     bulk_edit:
-      description:
-      form_subtitle:
-      select:
-      select_all:
-      submit:
-      title:
+      description: 'Wähle die zu ändernden Dateien aus:'
+      form_subtitle: 'Wähle die Änderungen aus, die du vornehmen möchtest:'
+      select: Datei '%{name}' auswählen
+      select_all: Alle Dateien auswählen
+      submit: Ausgewählte Dateien aktualisieren
+      title: Dateien massenweise bearbeiten
     bulk_update:
       success: Dateien erfolgreich aktualisiert.
     create:
-      conversion_started:
+      conversion_started: Die Dateikonvertierung hat begonnen. Die konvertierte Datei sollte in Kürze verfügbar sein.
     destroy:
-      confirm: Sind Sie sicher, dass Sie diese Datei aus permanent löschen möchten?
+      confirm: Bist du sicher, dass du diese Datei aus Ihrem Dateisystem entfernen möchtest?
       success: Datei gelöscht!
     general:
       edit: Dateiinformationen bearbeiten
     show:
       actions_heading: Aktionen
-      convert:
+      convert: zu 3MF konvertieren
       details_heading: Details
       notes_heading: Notizen
     update:
       failure: Es ist ein Fehler aufgetreten und die Dateidetails konnten nicht gespeichert werden.
-      success: Dateidetails gespeichert.
+      success: Datei-eigenschaften gespeichert.

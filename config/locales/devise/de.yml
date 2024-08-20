@@ -3,61 +3,61 @@ de:
   devise:
     confirmations:
       new:
-        resend_confirmation_instructions: Anleitung zur Bestätigung noch mal schicken
+        resend_confirmation_instructions: Anleitung zur Bestätigung noch einmal senden
     failure:
-      last_attempt: Sie haben noch einen Versuch, bis Ihr Konto gesperrt wird.
-      locked: Ihr Konto ist gesperrt.
+      last_attempt: Du hast einen weiteren Versuch, bevor dein Konto vorübergehend gesperrt wird.
+      locked: Dein Konto ist für eine Stunde gesperrt; versuche es später noch einmal.
     mailer:
       confirmation_instructions:
         action: Mein Konto bestätigen
         greeting: Willkommen %{recipient}!
-        instruction: 'Folgen Sie dem untenstehenden Link, um Ihr Konto zu bestätigen:'
+        instruction: 'Folge dem untenstehenden Link, um dein Konto zu bestätigen:'
       email_changed:
         greeting: Hallo %{recipient}!
-        message: Wir schreiben Ihnen, um Sie darüber zu informieren, dass Ihre E-Mail-Adresse zu %{email} geändert wurde.
-        message_unconfirmed:
+        message: Wir kontaktieren dich, um dich darüber zu informieren, dass deine E-Mail-Adresse zu %{email} geändert wurde.
+        message_unconfirmed: Wir kontaktieren dich, um dich darüber zu informieren, dass deine Email Adresse zu %{email} geändert wurde.
       password_change:
         greeting: Hallo %{recipient}!
-        message: Wir schreiben Ihnen, um Sie darüber zu informieren, dass Ihr Passwort geändert wurde.
+        message: Wir kontaktieren dich, um dich darüber zu informieren, dass dein Passwort geändert wurde.
       reset_password_instructions:
-        action: Passwort ändern
+        action: Mein Passwort ändern
         greeting: Hallo %{recipient}!
-        instruction: Jemand hat einen Link angefordert, um Ihr Passwort zu ändern. Klicken Sie auf den unten aufgeführten Link um das Passwort zu ändern.
-        instruction_2: Bitte ignorieren Sie diese E-Mail, wenn Sie kein neues Passwort angefordert haben.
-        instruction_3: Das Passwort wird nicht geändert bis Sie den obenstehenden Link abrufen und ein neues Passwort bestimmen.
+        instruction: Jemand hat einen Link angefordert, um dein Passwort zu ändern. Klicke auf den unten aufgeführten Link um dein Passwort zu ändern.
+        instruction_2: Bitte ignoriere diese E-Mail, wenn du kein neues Passwort angefordert haben.
+        instruction_3: Das Passwort wird nicht geändert, bis du den obenstehenden Link aufgerufen hast, und ein neues Passwort festgelegt hast.
       unlock_instructions:
         action: Mein Konto entsperren
         greeting: Hallo %{recipient}!
-        instruction: 'Folgen Sie dem untenstehenden Link, um Ihr Konto zu entsperren:'
-        message: Ihr Konto wurde aufgrund einer großen Anzahl von fehlgeschlagenen Anmeldeversuchen gesperrt.
+        instruction: 'Folge dem untenstehenden Link, um dein Konto zu entsperren:'
+        message: Dein Konto wurde aufgrund einer großen Anzahl von fehlgeschlagenen Anmeldeversuchen gesperrt.
     passwords:
       edit:
         change_my_password: Ändere mein Passwort
-        change_your_password: Passwort ändern
+        change_your_password: Ändere dein passwort
       new:
-        forgot_your_password: Haben Sie Ihr Passwort vergessen?
-        send_me_reset_password_instructions: Schicken Sie mir die Anleitung, mein Passwort zurückzusetzen
+        forgot_your_password: Passwort vergessen?
+        send_me_reset_password_instructions: Schicke mir die Anleitung, um mein Passwort zurückzusetzen
     registrations:
       edit:
-        cancel_my_account: Konto löschen
-        confirm_deletion: Sind Sie sicher, dass Sie Ihr Konto löschen möchten?
-        contact_info:
-        current_password_help:
+        cancel_my_account: Mein Konto löschen
+        confirm_deletion: Bist du sicher, dass du dein Konto löschen möchtest?
+        contact_info: Kontaktinformationen
+        current_password_help: Aktuelles Passwort aus Sicherheitsgründen erforderlich
         currently_waiting_confirmation_for_email: Warte auf Bestätigung von %{email}.
-        danger_zone:
-        security:
-        submit:
-        title: "%{resource} bearbeiten"
+        danger_zone: Gefahr!
+        security: Sicherheit
+        submit: Änderungen speichern
+        title: Kontoeinstellungen
       first_use:
-        email_help:
-        guidance:
+        email_help: Wird nie öffentlich angezeigt; wird nur für Anmelde- und Kontosicherheits-E-Mails verwendet.
+        guidance: Bei der ersten Verwendung musst du einen Benutzernamen, eine Kontakt-E-Mail und ein Passwort für den Administrator festlegen. Im Einzelbenutzermodus musst du diese Angaben normalerweise nicht machen, um dich anzumelden, aber im Mehrbenutzermodus kannst du ohne diese Angaben nicht auf Manyfold zugreifen.
         submit: Speichern
-        title:
-        username_help:
+        title: Einrichtung
+        username_help: Einen eindeutigen Benutzernamen; verwende den vordefinierten oder wähle einen eigenen.
       new:
         sign_up: Registrieren
       update:
-        setup_complete:
+        setup_complete: Einrichtung abgeschlossen!
     sessions:
       new:
         sign_in: Anmelden

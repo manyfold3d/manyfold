@@ -2,73 +2,73 @@
 de:
   settings:
     analysis_settings:
-      description:
-      heading:
+      description: Führt genauere mesh-analysen an Modellen durch. Diese Aktion führt dazu, dass deine Scans erheblich länger dauern und viel mehr CPU und Speicher verbrauchen.
+      heading: Mesh Analyse
       manifold:
-        help:
-        label:
+        help: Prüfung auf nicht Manyfold-natives (d.h. sie haben Löcher oder unmögliche Oberflächen)
+        label: Erkennung von Fehlern im Mesh
     file_list_settings:
       heading: Datei-Listen
       hide_presupported_versions:
-        label:
-      summary:
+        label: Kombiniere verknüpfte, nicht unterstützte und vorunterstützte Dateien
+      summary: Steuere, wie Modelle und Datei Listen angezeigt werden
     folder_settings:
-      details:
+      details: Die Ordnerstruktur folgt einer Vorlage, die du mit Token definierst. Du kannst auch anderen Text in die Vorlage einfügen (z. B. Ordnertrennzeichen) und dieser wird unverändert übernommen.
       model_path_template:
-        label:
+        label: Modellpfad-Vorlage
       parse_metadata_from_path:
-        help:
-        label:
+        help: Legt Ersteller, Sammlung und Tags basierend auf der Vorlage fest
+        label: Metadaten aus Pfad und Vorlage während des Scannens auffüllen
       safe_folder_names:
-        help_html:
-        label:
-      summary:
-      title:
+        help_html: z.B. <code>Spinal-Tap</code> statt <code>Spın̈al Tap</code>
+        label: Sichere Ordnernamen verwenden
+      summary: Definiere die Ordnerstruktur, die von "Dateien organisieren" und für das automatische Ausfüllen von Metadaten beim Scannen verwendet wird. Wirkt sich auf alle Benutzer aus.
+      title: Ordner Benennung
       tokens:
-        collection:
-        creator:
-        model_id: Ein eindeutiger numerischer Bezeichner für das Modell. Wir empfehlen dringend, diese Kennung immer am Ende der Vorlage anzugeben, um Namenskonflikte auf der Festplatte zu vermeiden.
+        collection: Der Titel der Sammlung, in der sich das Modell befindet, falls festgelegt.
+        creator: Der Name des Erstellers, falls festgelegt.
+        model_id: Ein eindeutiger numerischer Bezeichner für das Modell. Wir empfehlen dringend, diese Kennung immer am Ende der Vorlage anzugeben, um Namenskonflikte zu vermeiden.
         model_name: Eine dateisystemsichere Version des Modellnamens.
-        tags_html:
+        tags_html: 'eine Reihe von verschachtelten Ordnern, einen für jedes Tag, geordnet nach der Beliebtheit der Tags. Zum Beispiel: <code>fantasy/human/wizard</code>'
     general_settings:
-      heading:
+      heading: Allgemein
       interface_language:
-        autodetect:
-        help:
-        label:
+        autodetect: Browsereinstellungen verwenden
+        help: 'Hinweis: Einige nicht übersetzte Texte werden möglicherweise noch auf Englisch angezeigt.'
+        label: Sprache der Oberfläche
     library_settings:
-      description:
+      description: Siehe Details der Bibliothek und ändere sie.
       free_space:
-        label:
+        label: Freier Speicherplatz
       heading: Sammlungen
       tag_regex:
         check: Check
-        search_missing:
+        search_missing: Suche Fehlende
     multiuser_settings:
-      details_html:
-      heading:
-      multiuser_mode:
-      registrations_closed:
-      registrations_open:
-      single_user_mode:
+      details_html: Um diese Einstellungen zu ändern, bearbeite die <a href='https://manyfold.app/sysadmin/configuration.html'>Umgebungsvariablen</a> des Servers und starten Sie ihn neu.
+      heading: Multiuser
+      multiuser_mode: Manyfold läuft im Multiuser-modus.
+      registrations_closed: Die Benutzerregistrierung ist deaktiviert.
+      registrations_open: Die Benutzerregistrierung ist aktiviert.
+      single_user_mode: Manyfold läuft im Single user modus.
     pagination_settings:
       collections:
-        label: Kollektionen paginieren
+        label: Kollektionen auf Seiten verteilen
       creators:
-        label: Ersteller paginieren
-      description:
+        label: Ersteller auf Seiten verteilen
+      description: Zeige auf der Listenseiten immer nur eine bestimmte Anzahl von Elementen an, anstatt alles auf einmal. Dies kann das Laden der Seiten beschleunigen.
       heading: Paginierung
       models:
-        label: Modelle paginieren
+        label: Modelle auf Seiten verteilen
       per_page:
-        label:
+        label: Elemente Pro seite
     problem_settings:
-      description:
-      title:
+      description: Ändere den Schweregrad der erkannten Probleme oder ignoriere sie ganz.
+      title: Problem-Erkennung
     renderer_settings:
       auto_load_max_size:
         always: Immer
-        label:
+        label: Automatisches Laden von Vorschaubildern
         never: Niemals
         under_1024: Bis zu 1024 MB
         under_128: Bis zu 128 MB
@@ -81,35 +81,35 @@ de:
         under_64: Bis zu 64 MB
         under_8: Bis zu 8 MB
       background_colour:
-        label:
-      description:
+        label: Hintergrundfarbe
+      description: Passe die Einstellungen für die 3D-Vorschau an.
       enable_pan_zoom:
-        label:
+        label: Pan/Zoom-Steuerung aktivieren
       grid_width:
-        label:
-      heading:
+        label: Größe der Grundplatte (mm)
+      heading: Renderer
       object_colour:
-        label:
+        label: Objekt Farbe
       render_style:
-        label:
-        lambert:
-        normals:
+        label: Rendering-Stil
+        lambert: Realistisch schattiert
+        normals: Richtung der Oberfläche
       show_grid:
-        label:
+        label: Grundplatte anzeigen
     show:
-      advanced_admin: Erweiterte Verwaltung
+      advanced_admin: Erweiterte Administration
       submit: Einstellungen speichern
       title: Einstellungen
     tag_cloud_settings:
-      heading:
+      heading: Tag Wolke
       heatmap:
-        label:
+        label: Tag-Anzahl für einzelne Tags anzeigen
       keypair:
         label: Begrenzungszeichen zur Darstellung von Schlüsselpaaren verwenden
       sorting:
-        label: Sortierung
+        label: Sortieren
       threshold:
-        label:
+        label: Mindestanzahl der Tags, um Angezeigt zu werden
     tag_settings:
       auto_tag_new:
         label: Automatisch neue Modelle mit Tag(s) markieren
@@ -127,10 +127,10 @@ de:
     update:
       success: Einstellungen gespeichert.
     usage_settings:
-      description_html:
-      heading:
+      description_html: Wenn du die Nutzungsverfolgung aktivieren, werden die folgenden Informationen einmal täglich an <code>%{endpoint}</code> gesendet. Die <code>id</code> wird zufällig generiert, wenn die Verfolgung aktiviert wird.
+      heading: 'Anonyme nutzungs-analyse '
       report_usage:
-        label:
-      summary:
-      use_of_data:
-      verification_html:
+        label: 'Aktiviere Anonyme nutzungs-analyse '
+      summary: Lasse die Entwickler wissen, dass du Manyfold benutzt
+      use_of_data: Es werden keine weiteren Informationen gesendet oder gespeichert, und die Entwickler werden die Informationen niemals zu einem anderen Zweck verwenden, als zu messen, wie viele Instanzen von Manyfold laufen und welche Version sie haben.
+      verification_html: Wenn du überprüfen willst, was wir senden, kannst du die Umgebungsvariable <code>USAGE_REPORTING_URL</code> ändern und die Daten an einen Ort senden, an dem du sie überprüfen kannst. Du kannst auch im Protokoll genau sehen, was gesendet wird.
