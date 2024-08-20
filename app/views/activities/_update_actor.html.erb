@@ -24,11 +24,7 @@
         <% end %>
         <div class="col col-auto">
           <small>
-            updated
-            <% if subject.entity != current_user %>
-              by <%= subject.name %>
-            <% end %>
-            <%= t("home.index.how_long_ago", time: time_ago_in_words(thing.updated_at)) %>
+            <%= t("home.index.update_actor", time: time_ago_in_words(thing.updated_at), name: subject.name) %>
           </small>
         </div>
       </div>
