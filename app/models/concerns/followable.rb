@@ -2,6 +2,8 @@ module Followable
   extend ActiveSupport::Concern
   include FederailsCommon
 
+  TIMEOUT = 5
+
   included do
     delegate :following_followers, to: :actor
     after_create :post_creation_activity
@@ -30,6 +32,7 @@ module Followable
   end
 
   def post_update_activity
+    return if actor.activities_as_entity.where(created_at: TIMEOUT.minutes.ago..).count > 0
     default_user = User.with_role(:administrator).first
     return if default_user.nil?
     Federails::Activity.create!(
