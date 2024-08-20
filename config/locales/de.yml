@@ -17,15 +17,17 @@ de:
         name: Name
         notes: Notizen
         path: Pfad
-        s3_access_key_id:
-        s3_bucket:
-        s3_endpoint:
-        s3_region:
-        s3_secret_access_key:
-        storage_service:
+        s3_access_key_id: 'Zugangs Schlüssel ID
+
+          '
+        s3_bucket: Name des Eimers
+        s3_endpoint: Endpunkt URL
+        s3_region: Region
+        s3_secret_access_key: Geheimer Zugangs Schlüssel
+        storage_service: Speicherdienst
         tag_regex: Erforderliche Tags
       link:
-        url: URL
+        url: Link
       model:
         caption: Bildunterschrift
         collection_id: Kollektion
@@ -35,7 +37,7 @@ de:
         name: Name
         notes: Notizen
         path: Pfad
-        preview_file: Vorschau
+        preview_file: Vorschau Datei
         tags: Bezeichnungen
       model_file:
         caption: Bildunterschrift
@@ -52,7 +54,7 @@ de:
       problem:
         category: Kategorie
         ignored: Versteckt
-        note: Notize
+        note: Notiz
         problematic_type: Objekt Typ
         severity: Schweregrad
       user:
@@ -61,7 +63,7 @@ de:
         confirmed_at: Bestätigt am
         created_at: Erstellt am
         current_password: Aktuelles Passwort
-        current_sign_in_at: Aktuelle Anmeldung vom
+        current_sign_in_at: Aktuelle Anmeldung von
         current_sign_in_ip: IP der aktuellen Anmeldung
         email: E-Mail
         encrypted_password: Verschlüsseltes Passwort
@@ -70,11 +72,11 @@ de:
         last_sign_in_ip: IP der letzten Anmeldung
         locked_at: Gesperrt am
         password: Passwort
-        password_confirmation: Passwortbestätigung
+        password_confirmation: Bestätige das Passwort
         remember_created_at: Angemeldet bleiben vom
         remember_me: Angemeldet bleiben
         reset_password_sent_at: Passwort-Zurücksetzen-E-Mail gesendet am
-        reset_password_token: Passwort-Zurücksetzen-Token
+        reset_password_token: Passwort-reset-Token
         sign_in_count: Anzahl Anmeldungen
         unconfirmed_email: Unbestätigte E-Mail-Adresse
         unlock_token: Entsperrungs-Token
@@ -165,57 +167,57 @@ de:
         zero: Benutzer
   activity:
     index:
-      description:
-      message:
+      description: Einträge nach %{retention_period} werden verworfen.
+      message: Nachricht
       name: Name
       sidekiq: Sidekiq
-      time:
-      title:
+      time: Wenn
+      title: Neuste Aktivität
   activity_helper:
     status_icon:
-      completed:
-      error:
-      queued:
-      working:
+      completed: Vollständig
+      error: Fehlerhaft
+      queued: in der Warteschlange
+      working: Verarbeitung
   application:
     content_header:
       sort:
-        name: Nach Name sortieren
+        name: Nach Namen sortieren
         time: Sortieren nach Zeit
-    demo_mode: Diese Instanz befindet sich im Demo-Modus. Sie können keine Modelle hinzufügen oder entfernen, aber alles andere ist möglich.
+    demo_mode: Diese Instanz befindet sich im Demo-Modus. Du kannst keine Modelle hinzufügen oder entfernen, aber alles andere ist möglich.
     filters_card:
       missing_tags: Fehlende Tags
-      remove_collection_filter:
-      remove_creator_filter:
-      remove_library_filter:
-      remove_missing_tag_filter:
-      remove_search_filter:
-      remove_tag_filter:
+      remove_collection_filter: Sammlungs-Filter entfernen
+      remove_creator_filter: Ersteller-Filter entfernen
+      remove_library_filter: Bibliotheks-Filter entfernen
+      remove_missing_tag_filter: Filter für fehlende Tags entfernen
+      remove_search_filter: Suchfilter entfernen
+      remove_tag_filter: Tag-Filter entfernen
       search: Suche
       title: Filter
       unknown: Unbekannt
     footer:
-      by_html: Entworfen und erstellt von <a href="https://floppy.org.uk">James</a> mit Hilfe <a href="https://github.com/manyfold3d/manyfold/graphs/contributors">unserer Contributor</a>.
+      by_html: Entworfen und erstellt von <a href="https://floppy.org.uk" target="_blank">James</a> mit Hilfe von  <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">our contributors</a>.
       chat: Chat
       code: Code
       community_heading: Gemeinschaft
       development_heading: Entwicklung
       issues: Ausgaben
       logo: Logo
-      open_source_html: Open Source unter der <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license noopener">MIT-Lizenz</a>.
+      open_source_html: 'Open Source unter dieser Lizenz: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT license</a>'
       social: Social Media
-      sponsor: Förderer
+      sponsor: Sponsoren
       stats_heading: Statistiken
       version: Version
     links_form:
       add: Füge einen Link hinzu
     navbar:
-      account:
-      activity:
+      account: Account
+      activity: Aktivität
       check_existing: Vorhandene Modelle prüfen
-      home:
-      log_in:
-      log_out:
+      home: Homepage
+      log_in: Einloggen
+      log_out: Abmelden
       navbar:
         toggler:
           label: Navigation umschalten
@@ -227,12 +229,15 @@ de:
       upload: Hochladen
     tag_list:
       unrelated_tag_count:
-        one:
-        other:
-    tagline: Hilft ihnen ihre 3D-Druck Dateien zu verwalten
+        one: "%{count} unabhängige Tags versteckt"
+        other: "%{count} unabhängige Tags versteckt"
+    tagline: Hilft dir dabei, deine 3D-Druck Dateien zu verwalten
     tags_card:
-      skip_tags:
+      skip_tags: Tag-Liste überspringen
     title: Manyfold
+  follow_button:
+    follow: Folge %{name}
+    unfollow: "%{name} nicht mehr Folgen"
   general:
     delete: Löschen
     download: Herunterladen
@@ -243,49 +248,50 @@ de:
   home:
     index:
       how_long_ago: vor %{time}
+      recent_activity: Neuste Aktivität
       search:
         placeholder: Wonach suchen Sie?
   jobs:
     analysis:
       analyse_model_file:
-        detect_duplicates:
-        detect_ineffiency:
-        file_statistics:
-        matching:
+        detect_duplicates: Doppelte Datei erkannt
+        detect_ineffiency: Erkennung ineffizienter Formate
+        file_statistics: Berechnung von Dateistatistiken
+        matching: Unterstützte Dateien abgleichen
       file_conversion:
-        exporting:
-        loading_mesh:
+        exporting: Neue Datei exportieren
+        loading_mesh: Lade mesh
       geometric_analysis:
-        direction_check:
-        loading_mesh:
-        manifold_check:
+        direction_check: Kontrolliere Oberflächenausrichtung
+        loading_mesh: Lade meshs
+        manifold_check: Prüfe Mesh, ob es Manyfold-nativ ist
     scan:
       check_all:
-        queueing_model_checks:
+        queueing_model_checks: Modell Überprüfungen in der Warteschlange
       detect_filesystem_changes:
-        building_filename_list:
-        building_folder_list:
-        creating_models:
+        building_filename_list: Dateiliste erstellen
+        building_folder_list: Erstellen einer Liste geänderter Ordner
+        creating_models: Modelle erstellen
   kaminari:
     first_page:
-      label:
+      label: Zur ersten Seite gehen
     last_page:
-      label:
+      label: Zur letzten Seite gehen
     next_page:
-      label:
+      label: Weiter zur nächsten Seite
     page:
-      current_page:
-      label:
+      current_page: Aktuelle Seite
+      label: Gehe zur Seite %{page}
     paginator:
       label: Seitennavigation
     prev_page:
-      label:
+      label: Zur vorherigen Seite gehen
   layouts:
     application:
       alert:
         danger: Gefahr
         info: Info
-      skip_to_content:
+      skip_to_content: Zum Hauptinhalt springen
   licenses:
     CC-BY-40: Creative Commons Attribution
     CC-BY-NC-40: Creative Commons Attribution NonCommercial
@@ -299,23 +305,23 @@ de:
     MIT: MIT
   model_component:
     delete_button:
-      label:
+      label: Lösche modell %{name}
       text: Löschen
     edit_button:
-      label:
+      label: Bearbeite Modell %{name}
       text: Bearbeiten
     open_button:
-      label:
+      label: Öffne Modell %{name}
       text: Öffnen
   renderer:
     errors:
       canvas: 'Konnte #webgl canvas nicht finden!'
       load: Fehler beim Laden
       webglrenderer: Renderer konnte nicht erstellt werden!
-    load:
-    processing:
+    load: Laden
+    processing: verarbeite mesh
   security:
-    running_as_root_html:
+    running_as_root_html: Manyfold wird als root ausgeführt, was ein Sicherheitsrisiko darstellt. Führe Manyfold als einen anderen Systembenutzer aus, indem du die Umgebungsvariablen <code>PUID</code> und <code>PGID</code> setzt. Einzelheiten findest du in <a href='https://manyfold.app/sysadmin/configuration.html#required'>der Konfigurationsdokumentation</a>.
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
@@ -325,8 +331,8 @@ de:
     thingiverse: Thingiverse
   views:
     pagination:
-      first: "« Start"
+      first: "« Anfang"
       last: Ende »
-      next: Weiter &rsaquo;
-      previous: "&lsaquo; Zurück"
-      truncate: "&hellip;"
+      next: Weiter ›
+      previous: "‹ Zurück"
+      truncate: "…"

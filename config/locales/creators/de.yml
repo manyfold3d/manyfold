@@ -5,22 +5,22 @@ de:
       success: Neue Erstellerdetails gespeichert.
     creator:
       edit_button:
-        label:
+        label: Bearbeite ersteller %{name}
         text: Bearbeiten
       models_button:
-        label:
+        label: Modelle von %{name} anzeigen
     destroy:
       success: Ersteller gelöscht!
     general:
-      edit: Editiere den Ersteller
+      edit: Bearbeite den Ersteller
       new: Neuer Ersteller
     get_creator:
       unknown: Unbekannt
     index:
       actions_heading: Aktionen
-      skip_creators:
+      skip_creators: Erstellerliste überspringen
     unassigned:
-      caption:
+      caption: Alle Modelle ohne bekannten Ersteller.
       name: Nicht zugewiesen
     update:
-      success: Ersteller Infos gespeichert.
+      success: Ersteller details gespeichert.

@@ -5,12 +5,12 @@ de:
       duplicate: Duplizierte Dateien
       empty: Modell hat keine Dateien
       inefficient: Unvollständige Formate
-      inside_out:
+      inside_out: Mesh ist "verdreht"
       missing: Fehlende Dateien oder Ordner
       nesting: Modell enthält andere Modelle
       no_3d_model: Modell hat keine 3D-Dateien
       no_image: Modell hat keine Bilddateien
-      non_manifold:
+      non_manifold: Mesh ist nicht Manyfold-nativ
     filters:
       apply_filters: Anwenden
       clear_filters: Löschen
@@ -25,13 +25,13 @@ de:
         title: Ordner nicht gefunden
     model:
       empty:
-        description: Dieses Modell enthält keine Dateien. Entweder löschen Sie es oder finden Sie heraus, wo die Dateien geblieben sind!
+        description: Dieses Modell enthält keine Dateien. Entweder löschen Sie es oder finde heraus, wo sie sind!
         title: Keine Dateien
       missing:
-        description: Der Ordner für dieses Modell fehlt auf der Festplatte; löschen Sie ihn, oder finden Sie heraus, wo er geblieben ist!
+        description: Der Ordner für dieses Modell fehlt auf der Festplatte; lösche ihn, oder finde heraus, wo er ist!
         title: Ordner nicht gefunden
       nesting:
-        description:
+        description: Der Modellordner auf der Festplatte enthält weitere Modelle. Du kannst sie mit diesem Ordner zusammenführen oder auslagern.
         title: Enthält andere Modelle
         warning: Beim Zusammenfassen werden alle Dateien aus den oben genannten Modellen in dieses Modell verschoben und entfernt. Die Datei-Metadaten bleiben erhalten, aber alle Modell-Metadaten gehen verloren!
       no_3d_model:
@@ -43,24 +43,24 @@ de:
     model_file:
       duplicate:
         description: Diese Datei ist in anderen Modellen dupliziert. Vielleicht möchten Sie einige davon entfernen.
-        title: Duplizierte Datei
+        title: Doppelte Datei
       inefficient:
-        description:
-        title: Unzureichendes Formate
+        description: Diese Datei ist in %{note}, einem ineffizienten Dateiformat. Erwäge, sie in ein Binärformat wie 3MF zu konvertieren, um Speicherplatz zu sparen.
+        title: Ineffizientes Format
       inside_out:
-        description:
-        title:
+        description: Dieses Mesh sieht aus, als ob seine Flächen in die falsche Richtung zeigen, was zu Druckfehlern führen kann. Repariere es in einem 3D-Modellierungstool wie MeshLab oder 3D Builder.
+        title: Mesh ist "verdreht"
       missing:
-        description: Diese Datei fehlt auf der Festplatte; löschen Sie sie, oder finden Sie heraus, wo sie geblieben ist!
+        description: Diese Datei fehlt auf der Festplatte; lösche sie, oder finden heraus, wo sie ist!
         title: Datei nicht gefunden
       non_manifold:
-        description:
-        title:
+        description: Dieses Mesh sieht aus, als ob es nicht Manyfold-nativ ist, es hat Löcher und manche Flächen zeigen in die Falsche Richtung, was zu Druckfehlern führen kann. Repariere es in einem 3D-Modellierungstool wie MeshLab oder 3D Builder.
+        title: nicht Manyfold-natives Mesh
     severities:
       danger: Gefahr
-      info: Infos
-      silent: Unbeachtet
+      info: Info
+      silent: Ignoriert
       warning: Warnung
     update:
       ignored: 'Problem versteckt bei "%{name}": %{message}'
-      unignored:
+      unignored: 'Problem gelöst bei "%{name}": %{message}'

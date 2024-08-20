@@ -3,12 +3,12 @@ de:
   collections:
     collection:
       collections_button:
-        label:
+        label: Untersammlungen in %{name} anzeigen
       edit_button:
-        label:
+        label: Sammlung bearbeiten %{name}
         text: Bearbeiten
       models_button:
-        label:
+        label: Modelle in %{name} anzeigen
       no_preview: keine Vorschau verfügbar
     create:
       success: Neue Kollektionsdetails gespeichert.
@@ -21,9 +21,9 @@ de:
       unknown: Unbekannt
     index:
       actions_heading: Aktionen
-      skip_collections:
+      skip_collections: Sammlungsliste überspringen
     unassigned:
-      caption:
+      caption: Alle Modelle, die sich nicht in einer Sammlung befinden.
       name: Nicht zugewiesen
     update:
       success: Kollektionsdetails gespeichert.

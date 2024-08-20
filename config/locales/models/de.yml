@@ -2,26 +2,26 @@
 de:
   models:
     bulk_edit:
-      add_tags:
-      description:
-      form_subtitle:
-      needs_organizing:
-      remove_tags:
-      select:
-      select_all:
-      submit:
-      title:
+      add_tags: Tags hinzufügen
+      description: 'Wähle die zu ändernden Modelle aus:'
+      form_subtitle: 'Wähle die Änderungen aus, die du vornehmen möchtest:'
+      needs_organizing: Muss organisiert werden
+      remove_tags: Tags entfernen
+      select: Modell '%{name}' auswählen
+      select_all: Alle Modelle auswählen
+      submit: Ausgewählte Modelle aktualisieren
+      title: Modelle massenweise bearbeiten
     bulk_update:
       success: Modelle erfolgreich aktualisiert.
     create:
       success: Die Datei(en) wurde(n) erfolgreich hochgeladen.
     destroy:
-      confirm: Hiermit werden Dateien gelöscht. Sind Sie sicher, dass Sie fortfahren möchten?
+      confirm: Hiermit werden Dateien gelöscht. bist du sicher, dass du fortfahren möchtest?
       success: Modell gelöscht!
-    exceeds_max_size:
+    exceeds_max_size: 'Ausgewählte Datei überschreitet maximale Größe: %{max_size} MiB.'
     file:
       open_button:
-        label:
+        label: Details für %{name} anzeigen
         text: Öffnen
       set_as_preview: Als Vorschau setzen
     form:
@@ -32,31 +32,31 @@ de:
       edit: Modell bearbeiten
     image_carousel:
       next: Weiter
-      play_pause:
+      play_pause: Bilder abspielen oder pausieren
       previous: Zurück
-      select_slide:
-      slide_label:
+      select_slide: Bild zum Anzeigen auswählen
+      slide_label: "%{name} (%{index} von %{count})"
     index:
       actions_heading: Aktionen
       bulk_edit: Multibearbeitung
       missing_url: Fehlende URL
-      skip_models:
+      skip_models: Modellliste überspringen
       untagged: Ungetagged
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
     new:
-      description:
+      description: Lade neue Modelle als komprimierte Dateien hoch. Jedes hochgeladene Archiv wird extrahiert und zu einem einzigen Modell, das alle Dateien enthält. Stelle sicher, dass du auf die Schaltfläche "Modelle erstellen" klicken, um zu speichern, sobald deine Uploads abgeschlossen sind!
       files:
-        label: Datei auswählen
-      free_space:
+        label: Dateien auswählen
+      free_space: "(%{available} frei)"
       library:
         help: Die Sammlung, in die hochgeladen werden soll.
-      submit:
+      submit: Modelle erstellen
       title: Hochladen
     problem:
       merge_all: Alle zusammenführen
     scan:
-      success:
+      success: Modell-Scan gestartet
     show:
       files: Dateien
       files_card:
@@ -72,13 +72,13 @@ de:
       organize:
         button_text: Dateien sortieren
         confirm:
-          are_you_sure: Sind Sie sich sicher?
+          are_you_sure: Bist du sicher?
           'no': Nein, abbrechen
           summary_html: Der Ordner und die Dateien, aus denen dieses Modell besteht, werden verschoben von:<br> <code>%{from}</code><br> nach<br> <code>%{to}</code>
-          'yes': Ja, verschieben Sie die Dateien
+          'yes': Ja, verschiebe die Dateien
       path: Pfad
-      rescan:
-      search: Suchen Sie im Internet nach Modellen mit diesem Namen
+      rescan: Dateien neu scannen
+      search: Suche im Internet nach Modellen mit diesem Namen
       tags: Tags
     update:
       failure: Es ist ein Fehler aufgetreten und die Modelldetails konnten nicht gespeichert werden.
