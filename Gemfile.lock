@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/manyfold3d/federails.git
-  revision: 7cbaf792fd1cdc4cca589f69e7edbf9ee800d199
+  revision: df6de7ed21eb6efae1ff0a68d997d51ec5019fcd
   branch: polymorphic_actor_relationship
   specs:
     federails (0.0.1)
@@ -386,7 +386,7 @@ GEM
     method_source (1.1.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.7)
-    minitest (5.25.0)
+    minitest (5.25.1)
     msgpack (1.7.2)
     multi_json (1.15.0)
     mutex_m (0.2.0)
