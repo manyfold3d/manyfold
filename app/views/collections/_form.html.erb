@@ -10,7 +10,7 @@
   <%= rich_text_input_row form, :notes %>
   <div class="row mb-4">
     <div class='col'>
-      <%= form.submit t("general.save"), class: "btn btn-primary" %>
+      <%= form.submit translate("general.save"), class: "btn btn-primary" %>
     </div>
     <% if @collection.persisted? %>
       <div class='col text-end'>

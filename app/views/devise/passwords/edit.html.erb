@@ -4,7 +4,7 @@
   <%= f.hidden_field :reset_password_token %>
   <%= password_input_row f, :password, autocomplete: "new-password", autofocus: true %>
   <%= password_input_row f, :password_confirmation, autocomplete: "new-password" %>
-  <%= f.submit t(".change_my_password"), class: "btn btn-primary" %>
+  <%= f.submit translate(".change_my_password"), class: "btn btn-primary" %>
 <% end %>
 
 <%= render "devise/shared/links" %>
