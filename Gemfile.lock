@@ -504,7 +504,7 @@ GEM
       link_header (~> 0.0, >= 0.0.8)
     rdoc (6.7.0)
       psych (>= 4.0.0)
-    redis (5.2.0)
+    redis (5.3.0)
       redis-client (>= 0.22.0)
     redis-client (0.22.2)
       connection_pool
@@ -733,7 +733,7 @@ DEPENDENCIES
   rails-i18n (~> 7.0)
   rails-settings-cached (~> 2.9)
   ransack (~> 4.2)
-  redis (~> 5.2)
+  redis (~> 5.3)
   rolify (~> 6.0)
   rspec-rails
   rubocop-factory_bot
