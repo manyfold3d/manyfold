@@ -14,7 +14,7 @@ class ModelScanJob < ApplicationJob
             pattern
           )
         end
-    library.list_files(glob).uniq
+    library.list_files(glob)
   end
 
   def perform(model_id, include_all_subfolders: false)

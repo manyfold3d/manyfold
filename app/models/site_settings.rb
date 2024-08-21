@@ -41,6 +41,17 @@ class SiteSettings < RailsSettings::Base
     Rails.application.config.manyfold_features[:federation]
   end
 
+  def self.ignored_file?(pathname)
+    @@patterns ||= [
+      /^\.[^\.]+/, # Hidden files starting with .
+      /.*\/@eaDir\/.*/, # Synology temp files
+      /__MACOSX/ # MACOS resource forks
+    ]
+    (File.split(pathname) - ["."]).any? do |path_component|
+      @@patterns.any? { |pattern| path_component =~ pattern }
+    end
+  end
+
   module UserDefaults
     RENDERER = {
       grid_width: 200,

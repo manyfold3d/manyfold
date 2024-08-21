@@ -116,7 +116,7 @@ class Library < ApplicationRecord
   end
 
   def list_files(pattern, flags = 0)
-    case storage_service
+    files = case storage_service
     when "filesystem"
       Dir.glob(pattern, flags, base: Shellwords.escape(path)).filter { |x| File.file?(File.join(path, x)) }
     when "s3"
@@ -129,6 +129,8 @@ class Library < ApplicationRecord
     else
       raise "Invalid storage service: #{storage_service}"
     end
+    # Filter out files that should be ignored
+    files.uniq.reject { |str| SiteSettings.ignored_file?(str) }
   end
 
   def has_file?(path)
