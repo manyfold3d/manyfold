@@ -3,6 +3,8 @@ require "rails_helper"
 RSpec.describe SiteSettings do
   context "when detecting ignored files" do
     %w[
+      ./test.stl
+      /test.stl
       test.stl
       test/test.stl
     ].each do |pathname|
