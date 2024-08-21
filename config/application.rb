@@ -73,7 +73,8 @@ module Manyfold
 end
 
 # Set default URL options from env vars
+port = ENV.fetch("PUBLIC_PORT", ENV.fetch("RAILS_PORT", "3214"))
 Rails.application.default_url_options = {
   host: ENV.fetch("PUBLIC_HOSTNAME", "localhost"),
-  port: ENV.fetch("PUBLIC_PORT", ENV.fetch("RAILS_PORT", "3214"))
+  port: ["80", "443"].include?(port) ? nil : port
 }.compact
