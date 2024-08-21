@@ -17,7 +17,11 @@ class CreateFederailsActors < ActiveRecord::Migration[7.0]
       t.timestamps
       t.index :federated_url, unique: true
     end
+    if foreign_key_exists?(:federails_actors, :users)
+      remove_foreign_key :federails_actors, :users
+    end
     remove_index :federails_actors, :user_id
     add_index :federails_actors, :user_id, unique: true
+    add_foreign_key :federails_actors, :users
   end
 end
