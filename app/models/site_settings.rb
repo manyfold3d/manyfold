@@ -41,6 +41,10 @@ class SiteSettings < RailsSettings::Base
     Rails.application.config.manyfold_features[:federation]
   end
 
+  def self.ignored_file?(pathname)
+    (File.split(pathname) - ["."]).any? { |x| x.starts_with? "." }
+  end
+
   module UserDefaults
     RENDERER = {
       grid_width: 200,
