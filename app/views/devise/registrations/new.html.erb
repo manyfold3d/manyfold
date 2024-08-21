@@ -5,7 +5,7 @@
   <%= text_input_row form, :username, autocomplete: "username" %>
   <%= password_input_row form, :password, autocomplete: "new-password" %>
   <%= password_input_row form, :password_confirmation, autocomplete: "new-password" %>
-  <%= form.submit t(".sign_up"), class: "btn btn-primary" %>
+  <%= form.submit translate(".sign_up"), class: "btn btn-primary" %>
 <% end %>
 
 <%= render "devise/shared/links" %>
