@@ -42,7 +42,12 @@ class SiteSettings < RailsSettings::Base
   end
 
   def self.ignored_file?(pathname)
-    (File.split(pathname) - ["."]).any? { |x| x.starts_with? "." }
+    @@patterns ||= [
+      /^\.[^\.]+/ # Hidden files starting with .
+    ]
+    (File.split(pathname) - ["."]).any? do |path_component|
+      @@patterns.any? { |pattern| path_component =~ pattern }
+    end
   end
 
   module UserDefaults
