@@ -27,7 +27,10 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
     status[:step] = "jobs.scan.detect_filesystem_changes.building_folder_list" # i18n-tasks-use t('jobs.scan.detect_filesystem_changes.building_folder_list')
     folders_with_changes = changes.map { |f| File.dirname(f) }.uniq
     folders_with_changes = filter_out_common_subfolders(folders_with_changes)
+    # Ignore root folder, however specified
     folders_with_changes.delete("/")
+    folders_with_changes.delete(".")
+    folders_with_changes.delete("./")
     folders_with_changes.compact_blank!
     # For each folder in the library with a change, find or create a model, then scan it
     status[:step] = "jobs.scan.detect_filesystem_changes.creating_models" # i18n-tasks-use t('jobs.scan.detect_filesystem_changes.creating_models')
