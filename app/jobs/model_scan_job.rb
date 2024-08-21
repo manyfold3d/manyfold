@@ -14,7 +14,7 @@ class ModelScanJob < ApplicationJob
             pattern
           )
         end
-    library.list_files(glob).uniq.reject { |str| SiteSettings.ignored_file?(str) }
+    library.list_files(glob)
   end
 
   def perform(model_id, include_all_subfolders: false)
