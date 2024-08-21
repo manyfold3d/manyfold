@@ -44,7 +44,8 @@ class SiteSettings < RailsSettings::Base
   def self.ignored_file?(pathname)
     @@patterns ||= [
       /^\.[^\.]+/, # Hidden files starting with .
-      /.*\/@eaDir\/.*/ # Synology temp files
+      /.*\/@eaDir\/.*/, # Synology temp files
+      /__MACOSX/ # MACOS resource forks
     ]
     (File.split(pathname) - ["."]).any? do |path_component|
       @@patterns.any? { |pattern| path_component =~ pattern }
