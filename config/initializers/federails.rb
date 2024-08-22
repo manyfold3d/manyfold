@@ -4,7 +4,8 @@ Federails.configure do |conf|
   conf.app_name = "Manyfold"
   conf.app_version = Rails.application.config.app_version
 
-  conf.site_host = Rails.application.default_url_options[:host]
+  scheme = Rails.application.config.force_ssl ? "https" : "http"
+  conf.site_host = "#{scheme}://#{Rails.application.default_url_options[:host]}"
   conf.site_port = Rails.application.default_url_options[:port]
   conf.force_ssl = Rails.application.config.force_ssl
 
