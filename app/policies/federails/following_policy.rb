@@ -1,13 +1,15 @@
 class Federails::FollowingPolicy < ApplicationPolicy
   def create?
-    all_of(
-      SiteSettings.multiuser_enabled?
+    any_of(
+      SiteSettings.multiuser_enabled?,
+      SiteSettings.federation_enabled?
     )
   end
 
   def destroy?
-    all_of(
-      SiteSettings.multiuser_enabled?
+    any_of(
+      SiteSettings.multiuser_enabled?,
+      SiteSettings.federation_enabled?
     )
   end
 
