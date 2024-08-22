@@ -516,7 +516,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.5)
+    rexml (3.3.6)
       strscan
     rolify (6.0.1)
     rspec (3.13.0)
