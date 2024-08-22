@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :activity
   end
 
-  mount Federails::Engine => "/" if SiteSettings.multiuser_enabled? || Rails.env.test?
+  mount Federails::Engine => "/" if SiteSettings.multiuser_enabled? || SiteSettings.federation_enabled? || Rails.env.test?
 
   resources :users, only: [] do
     resource :settings, only: [:show, :update]
