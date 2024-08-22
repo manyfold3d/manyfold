@@ -23,6 +23,7 @@ module Followable
   def post_creation_activity
     default_user = User.with_role(:administrator).first
     return if default_user.nil?
+    default_user.create_actor_if_missing
     Federails::Activity.create!(
       actor: default_user.actor,
       action: "Create",
