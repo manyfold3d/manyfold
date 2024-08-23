@@ -10,7 +10,7 @@
   "dependencies": {
     "@notus.sh/cocooned": "^2.2.1",
     "@popperjs/core": "^2.11.8",
-    "@rails/ujs": "^7.1.3",
+    "@rails/ujs": "^7.1.400",
     "@selectize/selectize": "^0.15.2",
     "@uppy/core": "^3.13.1",
     "@uppy/dashboard": "^3.9.1",
