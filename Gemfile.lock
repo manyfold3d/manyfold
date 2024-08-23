@@ -186,7 +186,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
-    brakeman (6.1.2)
+    brakeman (6.2.1)
       racc
     builder (3.3.0)
     bullet (7.2.0)
@@ -691,7 +691,7 @@ DEPENDENCIES
   aws-sdk-s3 (~> 1.159)
   better_content_security_policy (~> 0.1.4)
   bootsnap (>= 1.4.4)
-  brakeman (~> 6.1)
+  brakeman (~> 6.2)
   bullet (~> 7.2)
   byebug
   climate_control (~> 1.2)
