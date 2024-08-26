@@ -23,7 +23,7 @@ gem "redis", "~> 5.3"
 # gem 'image_processing', '~> 1.2'
 
 gem "dotenv-rails", "~> 3.1", group: :development
-gem "acts-as-taggable-on", "~> 10.0"
+gem "acts-as-taggable-on", "~> 11.0"
 
 gem "ffi-libarchive", "~> 1.1"
 
