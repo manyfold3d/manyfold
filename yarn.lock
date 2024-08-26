@@ -562,10 +562,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@notus.sh/cocooned@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@notus.sh/cocooned/-/cocooned-2.2.1.tgz#3dc60778c98fccaf595e205acdbbf41d87810d93"
-  integrity sha512-IUOqg6LiC/X6sAPUD7BxH8lOt1Xd4b7OqWM2KsgInsXq++dFN2S4Ra4IrQykAzXIeUI8AxRjB3b1Gv251YE58w==
+"@notus.sh/cocooned@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@notus.sh/cocooned/-/cocooned-2.3.0.tgz#4ea4ade27982a73b196ee10257b8c9292b42c0be"
+  integrity sha512-kJLamFwwaWs3DlbobXpjICoH9B6r0ZG6vlfJXVU/b+StWa+rA0NHB+n5yY4HlbJlkACcw/S6XqBEAZLSPBGfEQ==
 
 "@popperjs/core@^2.11.8", "@popperjs/core@^2.9.2":
   version "2.11.8"
