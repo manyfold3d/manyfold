@@ -31,7 +31,7 @@ gem "ffi-libarchive", "~> 1.1"
 gem "bootsnap", ">= 1.4.4", require: false
 
 # Database adapters
-gem "sqlite3", "~> 1.7"
+gem "sqlite3", "~> 2.0"
 group :production do
   gem "mysql2", "~> 0.5.6"
   gem "pg", "~> 1.5"
