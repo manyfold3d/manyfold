@@ -658,7 +658,7 @@ GEM
     unicode-display_width (2.5.0)
     uniform_notifier (1.16.0)
     uri (0.13.0)
-    view_component (3.13.0)
+    view_component (3.14.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -759,7 +759,7 @@ DEPENDENCIES
   sys-filesystem (~> 1.5)
   translation (~> 1.41)
   tzinfo-data
-  view_component (~> 3.13)
+  view_component (~> 3.14)
   web-console (>= 4.1.0)
 
 RUBY VERSION
