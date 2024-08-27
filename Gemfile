@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby file: ".ruby-version"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 7.1.3"
+gem "rails", "~> 7.1.4"
 # Use Puma as the app server
 gem "puma", "~> 6.4"
 # Use SCSS for stylesheets
@@ -81,7 +81,7 @@ gem "stopwords-filter2", require: "stopwords"
 gem "devise", "~> 4.9"
 gem "devise-i18n", "~> 1.12"
 
-gem "data_migrate", github: "manyfold3d/data-migrate", ref: "db-prepare-withdata"
+gem "data_migrate", "11.0.0.rc3"
 
 gem "rails-settings-cached", "~> 2.9"
 gem "activeadmin", "~> 3.2"
