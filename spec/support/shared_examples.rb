@@ -1,1 +1,1 @@
-Dir[Rails.root.join("spec/**/*_shared.rb")].each { |f| require f }
+Rails.root.glob("spec/**/*_shared.rb").each { |f| require f }
