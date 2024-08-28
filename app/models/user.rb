@@ -3,6 +3,7 @@ require "uri"
 class User < ApplicationRecord
   include Lister
   include Follower
+  include Caber::Subject
 
   acts_as_federails_actor username_field: :username, name_field: :username
 
