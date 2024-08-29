@@ -3,6 +3,7 @@ require "support/mock_directory"
 
 RSpec.describe Model do
   it_behaves_like "Followable"
+  it_behaves_like "Caber::Object"
 
   it "is not valid without a path" do
     expect(build(:model, path: nil)).not_to be_valid
