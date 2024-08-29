@@ -1,6 +1,7 @@
 class Creator < ApplicationRecord
   include Followable
   include Caber::Object
+  include DefaultViewPermissions
 
   acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for, include_in_user_count: false
 

@@ -9,11 +9,11 @@ class ApplicationPolicy
   end
 
   def index?
-    user&.is_viewer?
+    show?
   end
 
   def show?
-    user&.is_viewer?
+    check_permissions(record, ["viewer", "editor", "owner"], user, role_fallback: :viewer)
   end
 
   def create?
@@ -25,7 +25,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user&.is_editor?
+    check_permissions(record, ["editor", "owner"], user, role_fallback: :editor)
   end
 
   def edit?
@@ -34,7 +34,7 @@ class ApplicationPolicy
 
   def destroy?
     all_of(
-      user&.is_editor?,
+      check_permissions(record, ["editor", "owner"], user, role_fallback: :editor),
       none_of(
         SiteSettings.demo_mode_enabled?
       )
@@ -48,7 +48,11 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope.all
+      return scope.all if user.is_editor? || !scope.respond_to?(:granted_to)
+
+      scope.granted_to(["viewer", "editor", "owner"], user).or(
+        scope.granted_to(["viewer", "editor", "owner"], user.roles)
+      )
     end
 
     private
@@ -57,6 +61,12 @@ class ApplicationPolicy
   end
 
   private
+
+  def check_permissions(record, permissions, user, role_fallback: nil)
+    record.grants_permission_to?(permissions, [user, user&.roles])
+  rescue NoMethodError
+    user&.has_role?(role_fallback)
+  end
 
   def one_of(*args)
     args.any?
