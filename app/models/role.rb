@@ -1,4 +1,6 @@
 class Role < ApplicationRecord
+  include Caber::Subject
+
   ROLES = [
     :administrator,   # Can do everything
     :editor,          # Can edit any models

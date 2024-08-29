@@ -2,6 +2,8 @@ require "rails_helper"
 RSpec.describe Role do
   let(:user) { create(:user) }
 
+  it_behaves_like "Caber::Subject"
+
   it "can be given to a user" do
     user.add_role :administrator
     expect(user.has_role?(:administrator)).to be true
