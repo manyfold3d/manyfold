@@ -60,11 +60,11 @@ describe ApplicationPolicy do
   end
 
   permissions :edit?, :update?, :destroy? do
-    let(:editor) { create(:editor) }
+    let(:moderator) { create(:moderator) }
     let(:contributor) { create(:contributor) }
 
-    it "allows all users with editor role" do
-      expect(policy).to permit(editor, model)
+    it "allows all users with moderator role" do
+      expect(policy).to permit(moderator, model)
     end
 
     it "denies users with contributor role" do

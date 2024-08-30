@@ -58,7 +58,7 @@ RSpec.describe "Libraries" do
         expect(response).to have_http_status(:success)
       end
 
-      it "is denied to non-admins", :as_editor do
+      it "is denied to non-admins", :as_moderator do
         expect { post "/libraries", params: {library: {name: "new"}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
@@ -69,7 +69,7 @@ RSpec.describe "Libraries" do
         expect(response).to have_http_status(:success)
       end
 
-      it "is denied to non-admins", :as_editor do
+      it "is denied to non-admins", :as_moderator do
         expect { get "/libraries/new" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
@@ -80,7 +80,7 @@ RSpec.describe "Libraries" do
         expect(response).to have_http_status(:success)
       end
 
-      it "is denied to non-administrators", :as_editor do
+      it "is denied to non-administrators", :as_moderator do
         expect { get "/libraries/#{library.id}/edit" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
@@ -98,7 +98,7 @@ RSpec.describe "Libraries" do
         expect(response).to redirect_to("/models")
       end
 
-      it "is denied to non-administrators", :as_editor do
+      it "is denied to non-administrators", :as_moderator do
         expect { patch "/libraries/#{library.id}", params: {library: {name: "new"}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
@@ -109,7 +109,7 @@ RSpec.describe "Libraries" do
         expect(response).to redirect_to("/libraries")
       end
 
-      it "is denied to non-administrators", :as_editor do
+      it "is denied to non-administrators", :as_moderator do
         expect { delete "/libraries/#{library.id}" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end

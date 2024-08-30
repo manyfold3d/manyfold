@@ -56,12 +56,12 @@ RSpec.describe "Collections" do
     end
 
     describe "GET /collections/:id/edit" do
-      it "Shows the new collection form", :as_editor do
+      it "Shows the new collection form", :as_moderator do
         get "/collections/#{collection.id}/edit"
         expect(response).to have_http_status(:success)
       end
 
-      it "is denied to non-editors", :as_contributor do
+      it "is denied to non-moderators", :as_contributor do
         expect { get "/collections/#{collection.id}/edit" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
@@ -74,23 +74,23 @@ RSpec.describe "Collections" do
     end
 
     describe "PATCH /collections/:id" do
-      it "saves details", :as_editor do
+      it "saves details", :as_moderator do
         patch "/collections/#{collection.id}", params: {collection: {name: "newname"}}
         expect(response).to redirect_to("/collections")
       end
 
-      it "is denied to non-editors", :as_contributor do
+      it "is denied to non-moderators", :as_contributor do
         expect { patch "/collections/#{collection.id}", params: {collection: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "DELETE /collections/:id" do
-      it "removes collection", :as_editor do
+      it "removes collection", :as_moderator do
         delete "/collections/#{collection.id}"
         expect(response).to redirect_to("/collections")
       end
 
-      it "is denied to non-editors", :as_contributor do
+      it "is denied to non-moderators", :as_contributor do
         expect { delete "/collections/#{collection.id}" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end

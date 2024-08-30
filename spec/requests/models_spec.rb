@@ -38,18 +38,18 @@ RSpec.describe "Models" do
     end
 
     describe "GET /models/:id/edit" do
-      it "shows edit page for file", :as_editor do
+      it "shows edit page for file", :as_moderator do
         get "/models/#{library.models.first.id}/edit"
         expect(response).to have_http_status(:success)
       end
 
-      it "is denied to non-editors", :as_contributor do
+      it "is denied to non-moderators", :as_contributor do
         expect { get "/models/#{library.models.first.id}/edit" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "PUT /models/:id" do
-      it "adds tags to a model", :as_editor do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      it "adds tags to a model", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
         put "/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b", "c"]}}
         expect(response).to have_http_status(:redirect)
         tags = library.models.first.tag_list
@@ -59,7 +59,7 @@ RSpec.describe "Models" do
         expect(tags[2]).to eq "c"
       end
 
-      it "removes tags from a model", :as_editor do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      it "removes tags from a model", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
         first = library.models.first
         first.tag_list = "a, b, c"
         first.save
@@ -73,7 +73,7 @@ RSpec.describe "Models" do
         expect(tags[1]).to eq "b"
       end
 
-      it "both adds and removes tags from a model", :as_editor do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      it "both adds and removes tags from a model", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
         first = library.models.first
         first.tag_list = "a, b, c"
         first.save
@@ -88,35 +88,35 @@ RSpec.describe "Models" do
         expect(tags[2]).to eq "d"
       end
 
-      it "is denied to non-editors", :as_contributor do
+      it "is denied to non-moderators", :as_contributor do
         expect { put "/models/#{library.models.first.id}" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "DELETE /models/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "redirects to model list after deletion", :as_editor do
+      it "redirects to model list after deletion", :as_moderator do
         delete "/models/#{library.models.first.id}"
         expect(response).to redirect_to("/")
       end
 
-      it "is denied to non-editors", :as_contributor do
+      it "is denied to non-moderators", :as_contributor do
         expect { delete "/models/#{library.models.first.id}" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "GET /models/edit" do # rubocop:todo RSpec/RepeatedExampleGroupBody
-      it "shows bulk edit page", :as_editor do
+      it "shows bulk edit page", :as_moderator do
         get "/models/edit"
         expect(response).to have_http_status(:success)
       end
 
-      it "is denied to non-editors", :as_contributor do
+      it "is denied to non-moderators", :as_contributor do
         expect { get "/models/edit" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "PATCH /models/edit" do
-      it "updates models creator", :as_editor do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      it "updates models creator", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
         models = library.models.take(2)
         update = {}
         update[models[0].id] = 1
@@ -130,7 +130,7 @@ RSpec.describe "Models" do
         expect(models[1].creator_id).to eq creator.id
       end
 
-      it "adds tags to models", :as_editor do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      it "adds tags to models", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
         update = {}
         library.models.take(2).each do |model|
           update[model.id] = 1
@@ -144,7 +144,7 @@ RSpec.describe "Models" do
         end
       end
 
-      it "removes tags from models", :as_editor do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      it "removes tags from models", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
         update = {}
         library.models.take(2).each do |model|
           model.tag_list = "a, b, c"
@@ -161,7 +161,7 @@ RSpec.describe "Models" do
         end
       end
 
-      it "is denied to non-editors", :as_contributor do
+      it "is denied to non-moderators", :as_contributor do
         update = {}
         expect { patch "/models/update", params: {models: update, remove_tags: ["a", "b"]} }.to raise_error(Pundit::NotAuthorizedError)
       end
@@ -194,18 +194,18 @@ RSpec.describe "Models" do
     end
 
     describe "POST /models/:id/merge" do
-      it "gives a bad request response if no merge parameter is provided", :as_editor do
+      it "gives a bad request response if no merge parameter is provided", :as_moderator do
         post "/models/#{library.models.first.id}/merge"
         expect(response).to have_http_status(:bad_request)
       end
 
-      it "is denied to non-editors", :as_contributor do
+      it "is denied to non-moderators", :as_contributor do
         expect { post "/models/#{library.models.first.id}/merge" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "POST /models/:id/scan" do
-      it "schedules a scan job", :as_editor do
+      it "schedules a scan job", :as_moderator do
         expect { post "/models/#{library.models.first.id}/scan" }.to(
           have_enqueued_job(Scan::CheckModelJob).with(library.models.first.id).once
         )

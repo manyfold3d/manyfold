@@ -8,8 +8,8 @@ FactoryBot.define do
       after(:create) { |a| a.add_role :administrator }
     end
 
-    factory :editor do
-      after(:create) { |a| a.add_role :editor }
+    factory :moderator do
+      after(:create) { |a| a.add_role :moderator }
     end
 
     factory :contributor do

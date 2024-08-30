@@ -2,7 +2,7 @@ class ModelPolicy < ApplicationPolicy
   def merge?
     all_of(
       one_of(
-        user&.is_editor?,
+        user&.is_moderator?,
         check_permissions(record, ["editor", "owner"], user)
       ),
       none_of(
@@ -16,10 +16,10 @@ class ModelPolicy < ApplicationPolicy
   end
 
   def bulk_edit?
-    user&.is_editor?
+    user&.is_moderator?
   end
 
   def bulk_update?
-    user&.is_editor?
+    user&.is_moderator?
   end
 end

@@ -65,16 +65,16 @@ class User < ApplicationRecord
     has_any_role_of? :administrator
   end
 
-  def is_editor?
-    has_any_role_of? :administrator, :editor
+  def is_moderator?
+    has_any_role_of? :administrator, :moderator
   end
 
   def is_contributor?
-    has_any_role_of? :administrator, :editor, :contributor
+    has_any_role_of? :administrator, :moderator, :contributor
   end
 
   def is_viewer?
-    has_any_role_of? :administrator, :editor, :contributor, :viewer
+    has_any_role_of? :administrator, :moderator, :contributor, :viewer
   end
 
   def problem_severity(category)
