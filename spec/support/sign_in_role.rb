@@ -11,7 +11,7 @@ RSpec.configure do |config|
     sign_in create(:contributor)
   end
 
-  config.before(:each, :as_viewer) do
+  config.before(:each, :as_member) do
     sign_in create(:user)
   end
 end

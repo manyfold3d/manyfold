@@ -29,8 +29,8 @@ RSpec.describe Role do
       expect(admin.is_contributor?).to be true
     end
 
-    it "inherits viewer permission" do
-      expect(admin.is_viewer?).to be true
+    it "inherits member permission" do
+      expect(admin.is_member?).to be true
     end
   end
 
@@ -49,8 +49,8 @@ RSpec.describe Role do
       expect(moderator.is_contributor?).to be true
     end
 
-    it "inherits viewer permission" do
-      expect(moderator.is_viewer?).to be true
+    it "inherits member permission" do
+      expect(moderator.is_member?).to be true
     end
   end
 
@@ -69,28 +69,28 @@ RSpec.describe Role do
       expect(contributor.is_contributor?).to be true
     end
 
-    it "inherits viewer permission" do
-      expect(contributor.is_viewer?).to be true
+    it "inherits member permission" do
+      expect(contributor.is_member?).to be true
     end
   end
 
-  context "when viewer" do
-    let(:viewer) { create(:user) }
+  context "when member" do
+    let(:member) { create(:user) }
 
     it "does not have administrator permission" do
-      expect(viewer.is_administrator?).to be false
+      expect(member.is_administrator?).to be false
     end
 
     it "does not have moderator permission" do
-      expect(viewer.is_moderator?).to be false
+      expect(member.is_moderator?).to be false
     end
 
     it "does not have contributor permission" do
-      expect(viewer.is_contributor?).to be false
+      expect(member.is_contributor?).to be false
     end
 
-    it "has viewer permission" do
-      expect(viewer.is_viewer?).to be true
+    it "has member permission" do
+      expect(member.is_member?).to be true
     end
   end
 end

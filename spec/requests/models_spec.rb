@@ -30,7 +30,7 @@ RSpec.describe "Models" do
       l
     end
 
-    describe "GET /models/:id", :as_viewer do
+    describe "GET /models/:id", :as_member do
       it "returns http success" do
         get "/models/#{library.models.first.id}"
         expect(response).to have_http_status(:success)
@@ -167,7 +167,7 @@ RSpec.describe "Models" do
       end
     end
 
-    describe "GET /models", :as_viewer do
+    describe "GET /models", :as_member do
       it "allows search queries" do
         get "/models?q=#{library.models.first.name}"
         expect(response).to have_http_status(:success)
@@ -216,7 +216,7 @@ RSpec.describe "Models" do
         expect(response).to redirect_to("/models/#{library.models.first.id}")
       end
 
-      it "is denied to non-contributors", :as_viewer do
+      it "is denied to non-contributors", :as_member do
         expect { post "/models/#{library.models.first.id}/scan" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
@@ -227,7 +227,7 @@ RSpec.describe "Models" do
         expect(response).to have_http_status(:success)
       end
 
-      it "denies viewer permission", :as_viewer do
+      it "denies member permission", :as_member do
         expect { get "/models/new" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
@@ -238,7 +238,7 @@ RSpec.describe "Models" do
         expect(response).to redirect_to("/libraries")
       end
 
-      it "denies viewer permission", :as_viewer do
+      it "denies member permission", :as_member do
         expect { post "/models", params: {post: {library_pick: library.id, scan_after_upload: "1"}, upload: {datafiles: []}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end

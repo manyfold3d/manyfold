@@ -29,7 +29,7 @@ RSpec.describe "Libraries" do
         expect(response).to redirect_to("/libraries/#{library.id}")
       end
 
-      it "denies viewer permission", :as_viewer do
+      it "denies member permission", :as_member do
         expect { post "/libraries/#{library.id}/scan" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
@@ -40,12 +40,12 @@ RSpec.describe "Libraries" do
         expect(response).to redirect_to("/models")
       end
 
-      it "denies viewer permission", :as_viewer do
+      it "denies member permission", :as_member do
         expect { post "/libraries/scan" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
-    describe "GET /libraries", :as_viewer do
+    describe "GET /libraries", :as_member do
       it "redirects to models index" do
         get "/libraries"
         expect(response).to redirect_to("/models")
@@ -86,7 +86,7 @@ RSpec.describe "Libraries" do
     end
 
     describe "GET /libraries/:id" do
-      it "redirects to models index with library filter", :as_viewer do
+      it "redirects to models index with library filter", :as_member do
         get "/libraries/#{library.id}"
         expect(response).to redirect_to("/models?library=#{library.id}")
       end

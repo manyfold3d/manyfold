@@ -15,7 +15,7 @@ class ApplicationPolicy
   def show?
     one_of(
       user&.is_moderator?,
-      check_permissions(record, ["view", "edit", "own"], user, role_fallback: :viewer)
+      check_permissions(record, ["view", "edit", "own"], user, role_fallback: :member)
     )
   end
 

@@ -9,8 +9,8 @@ RSpec.describe "Problems" do
   end
 
   context "when signed in" do
-    describe "GET /problems", :as_viewer do
-      it "is denied to viewers" do
+    describe "GET /problems", :as_member do
+      it "is denied to members" do
         expect { get "/problems/index" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end

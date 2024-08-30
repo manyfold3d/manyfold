@@ -26,7 +26,7 @@ RSpec.describe "Creators" do
     end
 
     describe "GET /creators" do
-      it "returns paginated creators", :as_viewer do # rubocop:todo RSpec/MultipleExpectations
+      it "returns paginated creators", :as_member do # rubocop:todo RSpec/MultipleExpectations
         get "/creators?page=2"
         expect(response).to have_http_status(:success)
         expect(response.body).to match(/pagination/)
@@ -39,7 +39,7 @@ RSpec.describe "Creators" do
         expect(response).to redirect_to("/creators")
       end
 
-      it "denies viewer permission", :as_viewer do
+      it "denies member permission", :as_member do
         expect { post "/creators", params: {creator: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
@@ -50,7 +50,7 @@ RSpec.describe "Creators" do
         expect(response).to have_http_status(:success)
       end
 
-      it "denies viewer permission", :as_viewer do
+      it "denies member permission", :as_member do
         expect { get "/creators/new" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
@@ -66,7 +66,7 @@ RSpec.describe "Creators" do
       end
     end
 
-    describe "GET /creators/:id", :as_viewer do
+    describe "GET /creators/:id", :as_member do
       it "Redirects to a list of models with that creator" do
         get "/creators/#{creator.id}"
         expect(response).to redirect_to("/models?creator=#{creator.id}")

@@ -26,7 +26,7 @@ RSpec.describe "Collections" do
     end
 
     describe "GET /collections" do
-      it "returns paginated collections", :as_viewer do # rubocop:todo RSpec/MultipleExpectations
+      it "returns paginated collections", :as_member do # rubocop:todo RSpec/MultipleExpectations
         get "/collections?page=2"
         expect(response).to have_http_status(:success)
         expect(response.body).to match(/pagination/)
@@ -39,7 +39,7 @@ RSpec.describe "Collections" do
         expect(response).to redirect_to("/collections")
       end
 
-      it "denies viewer permission", :as_viewer do
+      it "denies member permission", :as_member do
         expect { post "/collections", params: {collection: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
@@ -50,7 +50,7 @@ RSpec.describe "Collections" do
         expect(response).to have_http_status(:success)
       end
 
-      it "denies viewer permission", :as_viewer do
+      it "denies member permission", :as_member do
         expect { get "/collections/new" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
@@ -66,7 +66,7 @@ RSpec.describe "Collections" do
       end
     end
 
-    describe "GET /collections/:id", :as_viewer do
+    describe "GET /collections/:id", :as_member do
       it "Redirects to a list of models with that collection" do
         get "/collections/#{collection.id}"
         expect(response).to redirect_to("/models?collection=#{collection.id}")

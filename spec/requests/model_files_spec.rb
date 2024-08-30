@@ -52,7 +52,7 @@ RSpec.describe "Model Files" do
       end
     end
 
-    describe "GET /models/:model_id/model_files/:id", :as_viewer do
+    describe "GET /models/:model_id/model_files/:id", :as_member do
       describe "GET a model file in its original file format" do
         before do
           get model_model_file_path(model, stl_file, format: :stl)
@@ -67,7 +67,7 @@ RSpec.describe "Model Files" do
         end
       end
 
-      describe "GET an image file in its original file format", :as_viewer do
+      describe "GET an image file in its original file format", :as_member do
         before do
           get model_model_file_path(model, jpg_file, format: :jpg)
         end

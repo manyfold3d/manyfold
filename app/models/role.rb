@@ -9,7 +9,7 @@ class Role < ApplicationRecord
     :administrator,   # Can do everything
     :moderator,       # Can edit any models
     :contributor,     # Can upload models and edit their own
-    :viewer           # Can view models; read only access
+    :member           # Can view models; read only access
   ]
 
   has_many :users, through: :users_roles
