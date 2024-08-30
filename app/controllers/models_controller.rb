@@ -71,7 +71,7 @@ class ModelsController < ApplicationController
     end
 
     uploads.each do |upload|
-      ProcessUploadedFileJob.perform_later(library.id, upload["response"]["body"])
+      ProcessUploadedFileJob.perform_later(library.id, upload["response"]["body"], owner: current_user)
     end
 
     redirect_to libraries_path, notice: t(".success")
