@@ -21,11 +21,11 @@ module Followable
   private
 
   def post_creation_activity
-    default_user = User.with_role(:administrator).first
-    return if default_user.nil?
-    default_user.create_actor_if_missing
+    user = permitted_users.with_permission("owner").first || SiteSettings.default_user
+    return if user.nil?
+    user.create_actor_if_missing
     Federails::Activity.create!(
-      actor: default_user.actor,
+      actor: user.actor,
       action: "Create",
       entity: actor,
       created_at: created_at
@@ -34,10 +34,10 @@ module Followable
 
   def post_update_activity
     return if actor.activities_as_entity.where(created_at: TIMEOUT.minutes.ago..).count > 0
-    default_user = User.with_role(:administrator).first
-    return if default_user.nil?
+    user = permitted_users.with_permission("owner").first || SiteSettings.default_user
+    return if user.nil?
     Federails::Activity.create!(
-      actor: default_user.actor,
+      actor: user.actor,
       action: "Update",
       entity: actor,
       created_at: updated_at
