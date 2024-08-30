@@ -31,28 +31,28 @@ RSpec.describe "Model Files" do
       end
     end
 
-    describe "GET /models/:model_id/model_files/edit", :as_editor do
+    describe "GET /models/:model_id/model_files/edit", :as_moderator do
       it "shows bulk update form" do
         get bulk_edit_model_model_files_path(model, stl_file)
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "PATCH /models/:model_id/model_files/update", :as_editor do
+    describe "PATCH /models/:model_id/model_files/update", :as_moderator do
       it "bulk updates the files" do
         patch model_model_file_path(model, stl_file), params: {model_file: {name: "name"}}
         expect(response).to redirect_to(model_model_file_path(model, stl_file))
       end
     end
 
-    describe "GET /models/:model_id/model_files/:id/edit", :as_editor do
+    describe "GET /models/:model_id/model_files/:id/edit", :as_moderator do
       it "shows edit page for file" do
         get edit_model_model_file_path(model, stl_file)
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "GET /models/:model_id/model_files/:id", :as_viewer do
+    describe "GET /models/:model_id/model_files/:id", :as_member do
       describe "GET a model file in its original file format" do
         before do
           get model_model_file_path(model, stl_file, format: :stl)
@@ -67,7 +67,7 @@ RSpec.describe "Model Files" do
         end
       end
 
-      describe "GET an image file in its original file format", :as_viewer do
+      describe "GET an image file in its original file format", :as_member do
         before do
           get model_model_file_path(model, jpg_file, format: :jpg)
         end
@@ -82,7 +82,7 @@ RSpec.describe "Model Files" do
       end
     end
 
-    describe "POST /models/:model_id/model_files", :as_editor do
+    describe "POST /models/:model_id/model_files", :as_moderator do
       context "when requesting a conversion" do
         let(:params) { {convert: {id: stl_file.id, to: "threemf"}} }
 
@@ -108,14 +108,14 @@ RSpec.describe "Model Files" do
       end
     end
 
-    describe "PATCH /models/:model_id/model_files/:id", :as_editor do
+    describe "PATCH /models/:model_id/model_files/:id", :as_moderator do
       it "updates the file" do
         patch model_model_file_path(model, stl_file), params: {model_file: {name: "name"}}
         expect(response).to redirect_to(model_model_file_path(model, stl_file))
       end
     end
 
-    describe "DELETE /models/:model_id/model_files/:id", :as_editor do
+    describe "DELETE /models/:model_id/model_files/:id", :as_moderator do
       it "removes the file" do
         delete model_model_file_path(model, stl_file)
         expect(response).to redirect_to(model_path(model))

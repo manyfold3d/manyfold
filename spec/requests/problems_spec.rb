@@ -9,8 +9,8 @@ RSpec.describe "Problems" do
   end
 
   context "when signed in" do
-    describe "GET /problems", :as_viewer do
-      it "is denied to viewers" do
+    describe "GET /problems", :as_member do
+      it "is denied to members" do
         expect { get "/problems/index" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
@@ -92,12 +92,12 @@ RSpec.describe "Problems" do
     describe "PATCH /problems/:id" do
       let(:problem) { create(:problem) }
 
-      it "updates the problem and returns to list", :as_editor do
+      it "updates the problem and returns to list", :as_moderator do
         patch "/problems/#{problem.id}", params: {problem: {ignored: true}}
         expect(response).to redirect_to("/problems")
       end
 
-      it "is denied to non-editors", :as_contributor do
+      it "is denied to non-moderators", :as_contributor do
         expect { patch "/problems/#{problem.id}", params: {problem: {ignored: true}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end

@@ -21,36 +21,36 @@ RSpec.describe Role do
       expect(admin.is_administrator?).to be true
     end
 
-    it "inherits editor permission" do
-      expect(admin.is_editor?).to be true
+    it "inherits moderator permission" do
+      expect(admin.is_moderator?).to be true
     end
 
     it "inherits contributor permission" do
       expect(admin.is_contributor?).to be true
     end
 
-    it "inherits viewer permission" do
-      expect(admin.is_viewer?).to be true
+    it "inherits member permission" do
+      expect(admin.is_member?).to be true
     end
   end
 
-  context "when editor" do
-    let(:editor) { create(:editor) }
+  context "when moderator" do
+    let(:moderator) { create(:moderator) }
 
     it "does not have administrator permission" do
-      expect(editor.is_administrator?).to be false
+      expect(moderator.is_administrator?).to be false
     end
 
-    it "has editor permission" do
-      expect(editor.is_editor?).to be true
+    it "has moderator permission" do
+      expect(moderator.is_moderator?).to be true
     end
 
     it "inherits contributor permission" do
-      expect(editor.is_contributor?).to be true
+      expect(moderator.is_contributor?).to be true
     end
 
-    it "inherits viewer permission" do
-      expect(editor.is_viewer?).to be true
+    it "inherits member permission" do
+      expect(moderator.is_member?).to be true
     end
   end
 
@@ -61,36 +61,36 @@ RSpec.describe Role do
       expect(contributor.is_administrator?).to be false
     end
 
-    it "does not have editor permission" do
-      expect(contributor.is_editor?).to be false
+    it "does not have moderator permission" do
+      expect(contributor.is_moderator?).to be false
     end
 
     it "has contributor permission" do
       expect(contributor.is_contributor?).to be true
     end
 
-    it "inherits viewer permission" do
-      expect(contributor.is_viewer?).to be true
+    it "inherits member permission" do
+      expect(contributor.is_member?).to be true
     end
   end
 
-  context "when viewer" do
-    let(:viewer) { create(:user) }
+  context "when member" do
+    let(:member) { create(:user) }
 
     it "does not have administrator permission" do
-      expect(viewer.is_administrator?).to be false
+      expect(member.is_administrator?).to be false
     end
 
-    it "does not have editor permission" do
-      expect(viewer.is_editor?).to be false
+    it "does not have moderator permission" do
+      expect(member.is_moderator?).to be false
     end
 
     it "does not have contributor permission" do
-      expect(viewer.is_contributor?).to be false
+      expect(member.is_contributor?).to be false
     end
 
-    it "has viewer permission" do
-      expect(viewer.is_viewer?).to be true
+    it "has member permission" do
+      expect(member.is_member?).to be true
     end
   end
 end

@@ -3,15 +3,15 @@ RSpec.configure do |config|
     sign_in create(:admin)
   end
 
-  config.before(:each, :as_editor) do
-    sign_in create(:editor)
+  config.before(:each, :as_moderator) do
+    sign_in create(:moderator)
   end
 
   config.before(:each, :as_contributor) do
     sign_in create(:contributor)
   end
 
-  config.before(:each, :as_viewer) do
+  config.before(:each, :as_member) do
     sign_in create(:user)
   end
 end

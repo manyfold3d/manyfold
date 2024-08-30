@@ -3,31 +3,31 @@ require "rails_helper"
 describe ApplicationPolicy do
   subject(:policy) { described_class }
 
-  let(:viewer) { create(:user) }
+  let(:member) { create(:user) }
   let(:model) { create(:model) }
 
   permissions :index?, :show? do
-    it "allows users with viewer role by default" do
-      expect(policy).to permit(viewer, model)
+    it "allows users with member role by default" do
+      expect(policy).to permit(member, model)
     end
 
-    it "falls back to viewer role if ReBAC isn't available on the record" do
+    it "falls back to member role if ReBAC isn't available on the record" do
       problem = create(:problem)
-      expect(policy).to permit(viewer, problem)
+      expect(policy).to permit(member, problem)
     end
 
-    context "when default viewer role access is removed" do
+    context "when default member role access is removed" do
       before do
-        model.revoke_permission("viewer", Role.find_by(name: :viewer))
+        model.revoke_permission("view", Role.find_by(name: :member))
       end
 
-      it "denies users without individual viewer permission" do
-        expect(policy).not_to permit(viewer, model)
+      it "denies users without individual view permission" do
+        expect(policy).not_to permit(member, model)
       end
 
-      it "allows users with individual viewer permission" do
-        model.grant_permission_to "viewer", viewer
-        expect(policy).to permit(viewer, model)
+      it "allows users with individual view permission" do
+        model.grant_permission_to "view", member
+        expect(policy).to permit(member, model)
       end
     end
 
@@ -37,7 +37,7 @@ describe ApplicationPolicy do
       end
 
       it "allows access if public view permission is set" do
-        model.grant_permission_to "viewer", nil
+        model.grant_permission_to "view", nil
         expect(policy).to permit(nil, model)
       end
     end
@@ -50,8 +50,8 @@ describe ApplicationPolicy do
       expect(policy).to permit(contributor)
     end
 
-    it "denies users with viewer role by default" do
-      expect(policy).not_to permit(viewer)
+    it "denies users with member role by default" do
+      expect(policy).not_to permit(member)
     end
 
     it "denies unknown users" do
@@ -60,11 +60,11 @@ describe ApplicationPolicy do
   end
 
   permissions :edit?, :update?, :destroy? do
-    let(:editor) { create(:editor) }
+    let(:moderator) { create(:moderator) }
     let(:contributor) { create(:contributor) }
 
-    it "allows all users with editor role" do
-      expect(policy).to permit(editor, model)
+    it "allows all users with moderator role" do
+      expect(policy).to permit(moderator, model)
     end
 
     it "denies users with contributor role" do
@@ -72,17 +72,17 @@ describe ApplicationPolicy do
     end
 
     it "allows users with granted edit permission" do
-      model.grant_permission_to "editor", viewer
-      expect(policy).to permit(viewer, model)
+      model.grant_permission_to "edit", member
+      expect(policy).to permit(member, model)
     end
 
     it "allows users with granted owner permission" do
-      model.grant_permission_to "owner", viewer
-      expect(policy).to permit(viewer, model)
+      model.grant_permission_to "own", member
+      expect(policy).to permit(member, model)
     end
 
     it "denies unknown users on public models" do
-      model.grant_permission_to "viewer", nil
+      model.grant_permission_to "view", nil
       expect(policy).not_to permit(nil, model)
     end
   end

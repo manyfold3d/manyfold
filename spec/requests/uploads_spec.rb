@@ -11,7 +11,7 @@ RSpec.describe "Uploads" do
 
   context "when signed in" do
     describe "POST /uploads" do
-      it "is denied to non-contributors", :as_viewer do
+      it "is denied to non-contributors", :as_member do
         expect { post "/uploads" }.to raise_error(ActionController::RoutingError)
       end
 

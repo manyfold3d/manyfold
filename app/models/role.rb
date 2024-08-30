@@ -7,9 +7,9 @@ class Role < ApplicationRecord
 
   ROLES = [
     :administrator,   # Can do everything
-    :editor,          # Can edit any models
+    :moderator,       # Can edit any models
     :contributor,     # Can upload models and edit their own
-    :viewer           # Can view models; read only access
+    :member           # Can view models; read only access
   ]
 
   has_many :users, through: :users_roles

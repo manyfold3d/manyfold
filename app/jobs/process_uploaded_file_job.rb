@@ -14,7 +14,7 @@ class ProcessUploadedFileJob < ApplicationJob
     model_name = model_path.humanize.tr("+", " ").titleize
     # Create model
     model = library.models.create(name: model_name, path: "#{model_path}##{SecureRandom.hex(4)}")
-    model.grant_permission_to "owner", owner
+    model.grant_permission_to "own", owner
     model.update! path: "#{model_path}##{model.id}" # Set to proper ID after saving
     # Handle different file types
     begin

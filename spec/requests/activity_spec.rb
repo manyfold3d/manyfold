@@ -11,7 +11,7 @@ RSpec.describe "Activities" do
     end
   end
 
-  context "when logged in as non-admin", :as_editor do
+  context "when logged in as non-admin", :as_moderator do
     describe "GET /" do
       it "raises a routing error" do
         expect { get "/activity" }.to raise_error(ActionController::RoutingError)

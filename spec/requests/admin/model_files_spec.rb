@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Admin::Model_Files" do
-  it "is inaccessible to anything less than admin", :as_editor do
+  it "is inaccessible to anything less than admin", :as_moderator do
     get "/admin/model_files"
     expect(response).to have_http_status(:unauthorized)
   end

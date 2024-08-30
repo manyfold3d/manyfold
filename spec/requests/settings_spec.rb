@@ -10,21 +10,21 @@ RSpec.describe "Settings" do
   end
 
   context "when signed in" do
-    describe "GET /users/:user_id/settings", :as_viewer do
+    describe "GET /users/:user_id/settings", :as_member do
       it "returns http success" do
         get "/users/#{User.first.username}/settings"
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "PATCH /users/:user_id/settings", :as_viewer do
+    describe "PATCH /users/:user_id/settings", :as_member do
       it "redirects back to settings on success" do
         patch "/users/#{User.first.username}/settings"
         expect(response).to redirect_to("/users/#{User.first.username}/settings")
       end
     end
 
-    describe "PUT /users/:user_id/settings", :as_viewer do
+    describe "PUT /users/:user_id/settings", :as_member do
       it "redirects back to settings on success" do
         put "/users/#{User.first.username}/settings"
         expect(response).to redirect_to("/users/#{User.first.username}/settings")

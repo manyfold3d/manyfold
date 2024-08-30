@@ -65,16 +65,16 @@ class User < ApplicationRecord
     has_any_role_of? :administrator
   end
 
-  def is_editor?
-    has_any_role_of? :administrator, :editor
+  def is_moderator?
+    has_any_role_of? :administrator, :moderator
   end
 
   def is_contributor?
-    has_any_role_of? :administrator, :editor, :contributor
+    has_any_role_of? :administrator, :moderator, :contributor
   end
 
-  def is_viewer?
-    has_any_role_of? :administrator, :editor, :contributor, :viewer
+  def is_member?
+    has_any_role_of? :administrator, :moderator, :contributor, :member
   end
 
   def problem_severity(category)
@@ -88,7 +88,7 @@ class User < ApplicationRecord
   end
 
   def assign_default_role
-    add_role(:viewer) if roles.blank?
+    add_role(:member) if roles.blank?
   end
 
   def password_required?
