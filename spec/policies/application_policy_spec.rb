@@ -47,11 +47,15 @@ describe ApplicationPolicy do
     let(:contributor) { create(:contributor) }
 
     it "allows users with contributor role by default" do
-      expect(policy).to permit(contributor, model)
+      expect(policy).to permit(contributor)
     end
 
     it "denies users with viewer role by default" do
-      expect(policy).not_to permit(viewer, model)
+      expect(policy).not_to permit(viewer)
+    end
+
+    it "denies unknown users" do
+      expect(policy).not_to permit(nil)
     end
   end
 
@@ -75,6 +79,11 @@ describe ApplicationPolicy do
     it "allows users with granted owner permission" do
       model.grant_permission_to "owner", viewer
       expect(policy).to permit(viewer, model)
+    end
+
+    it "denies unknown users on public models" do
+      model.grant_permission_to "viewer", nil
+      expect(policy).not_to permit(nil, model)
     end
   end
 end
