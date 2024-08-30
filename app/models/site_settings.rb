@@ -41,6 +41,10 @@ class SiteSettings < RailsSettings::Base
     Rails.application.config.manyfold_features[:federation]
   end
 
+  def self.default_user
+    User.with_role(:administrator).first
+  end
+
   def self.ignored_file?(pathname)
     @@patterns ||= [
       /^\.[^\.]+/, # Hidden files starting with .
