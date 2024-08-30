@@ -1,7 +1,7 @@
 class ProcessUploadedFileJob < ApplicationJob
   queue_as :default
 
-  def perform(library_id, uploaded_file)
+  def perform(library_id, uploaded_file, owner: nil)
     # Find library
     library = Library.find(library_id)
     return if library.nil?
@@ -14,6 +14,7 @@ class ProcessUploadedFileJob < ApplicationJob
     model_name = model_path.humanize.tr("+", " ").titleize
     # Create model
     model = library.models.create(name: model_name, path: "#{model_path}##{SecureRandom.hex(4)}")
+    model.grant_permission_to "owner", owner
     model.update! path: "#{model_path}##{model.id}" # Set to proper ID after saving
     # Handle different file types
     begin
