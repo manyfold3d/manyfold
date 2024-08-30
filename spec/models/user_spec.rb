@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe User do
   it_behaves_like "Follower"
+  it_behaves_like "Caber::Subject"
 
   it "requires a username" do
     expect(build(:user, username: nil)).not_to be_valid

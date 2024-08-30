@@ -3,6 +3,11 @@ class Model < ApplicationRecord
   include PathBuilder
   include PathParser
   include Followable
+  include Caber::Object
+  include DefaultViewPermissions
+
+  can_grant_permissions_to User
+  can_grant_permissions_to Role
 
   acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for, actor_type: "Document", include_in_user_count: false
 

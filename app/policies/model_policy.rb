@@ -1,13 +1,10 @@
 class ModelPolicy < ApplicationPolicy
-  class Scope < ApplicationPolicy::Scope
-    def resolve
-      scope.all
-    end
-  end
-
   def merge?
     all_of(
-      user&.is_editor?,
+      one_of(
+        user&.is_editor?,
+        check_permissions(record, ["editor", "owner"], user)
+      ),
       none_of(
         SiteSettings.demo_mode_enabled?
       )

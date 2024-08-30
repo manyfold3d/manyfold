@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe Collection do
   it_behaves_like "Followable"
+  it_behaves_like "Caber::Object"
 
   it "automatically generates a slug from the name" do
     collection = create(:collection, name: "Spın̈al Tap")
