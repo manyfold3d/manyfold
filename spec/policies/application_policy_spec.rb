@@ -32,5 +32,16 @@ describe ApplicationPolicy do
         expect(policy).to permit(viewer, model)
       end
     end
+
+    context "with an unknown user" do
+      it "denies access if public view permission isn't set" do
+        expect(policy).not_to permit(nil, model)
+      end
+
+      it "allows access if public view permission is set" do
+        model.grant_permission_to "viewer", nil
+        expect(policy).to permit(nil, model)
+      end
+    end
   end
 end

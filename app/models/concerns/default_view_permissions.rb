@@ -6,6 +6,6 @@ module DefaultViewPermissions
   end
 
   def assign_default_view_permissions
-    grant_permission_to("viewer", Role.find_by(name: :viewer))
+    grant_permission_to("viewer", Role.find_or_create_by(name: :viewer))
   end
 end

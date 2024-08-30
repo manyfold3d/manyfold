@@ -50,9 +50,9 @@ class ApplicationPolicy
     def resolve
       return scope.all if user.is_editor? || !scope.respond_to?(:granted_to)
 
-      scope.granted_to(["viewer", "editor", "owner"], user).or(
-        scope.granted_to(["viewer", "editor", "owner"], user.roles)
-      )
+      result = scope.granted_to(["viewer", "editor", "owner"], [user, nil])
+      result = result.or(scope.granted_to(["viewer", "editor", "owner"], user.roles)) if user
+      result
     end
 
     private
