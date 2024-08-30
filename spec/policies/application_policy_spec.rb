@@ -18,7 +18,7 @@ describe ApplicationPolicy do
 
     context "when default viewer role access is removed" do
       before do
-        model.revoke_permission("viewer", Role.find_by(name: :viewer))
+        model.revoke_permission("view", Role.find_by(name: :viewer))
       end
 
       it "denies users without individual viewer permission" do
@@ -26,7 +26,7 @@ describe ApplicationPolicy do
       end
 
       it "allows users with individual viewer permission" do
-        model.grant_permission_to "viewer", viewer
+        model.grant_permission_to "view", viewer
         expect(policy).to permit(viewer, model)
       end
     end
@@ -37,7 +37,7 @@ describe ApplicationPolicy do
       end
 
       it "allows access if public view permission is set" do
-        model.grant_permission_to "viewer", nil
+        model.grant_permission_to "view", nil
         expect(policy).to permit(nil, model)
       end
     end
@@ -72,17 +72,17 @@ describe ApplicationPolicy do
     end
 
     it "allows users with granted edit permission" do
-      model.grant_permission_to "editor", viewer
+      model.grant_permission_to "edit", viewer
       expect(policy).to permit(viewer, model)
     end
 
     it "allows users with granted owner permission" do
-      model.grant_permission_to "owner", viewer
+      model.grant_permission_to "own", viewer
       expect(policy).to permit(viewer, model)
     end
 
     it "denies unknown users on public models" do
-      model.grant_permission_to "viewer", nil
+      model.grant_permission_to "view", nil
       expect(policy).not_to permit(nil, model)
     end
   end

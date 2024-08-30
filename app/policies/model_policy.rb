@@ -3,7 +3,7 @@ class ModelPolicy < ApplicationPolicy
     all_of(
       one_of(
         user&.is_moderator?,
-        check_permissions(record, ["editor", "owner"], user)
+        check_permissions(record, ["edit", "own"], user)
       ),
       none_of(
         SiteSettings.demo_mode_enabled?

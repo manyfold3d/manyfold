@@ -15,7 +15,7 @@ class ApplicationPolicy
   def show?
     one_of(
       user&.is_moderator?,
-      check_permissions(record, ["viewer", "editor", "owner"], user, role_fallback: :viewer)
+      check_permissions(record, ["view", "edit", "own"], user, role_fallback: :viewer)
     )
   end
 
@@ -30,7 +30,7 @@ class ApplicationPolicy
   def update?
     one_of(
       user&.is_moderator?,
-      check_permissions(record, ["editor", "owner"], user, role_fallback: :moderator)
+      check_permissions(record, ["edit", "own"], user, role_fallback: :moderator)
     )
   end
 
@@ -42,7 +42,7 @@ class ApplicationPolicy
     all_of(
       one_of(
         user&.is_moderator?,
-        check_permissions(record, ["editor", "owner"], user, role_fallback: :moderator)
+        check_permissions(record, ["edit", "own"], user, role_fallback: :moderator)
       ),
       none_of(
         SiteSettings.demo_mode_enabled?
@@ -59,8 +59,8 @@ class ApplicationPolicy
     def resolve
       return scope.all if user.is_moderator? || !scope.respond_to?(:granted_to)
 
-      result = scope.granted_to(["viewer", "editor", "owner"], [user, nil])
-      result = result.or(scope.granted_to(["viewer", "editor", "owner"], user.roles)) if user
+      result = scope.granted_to(["view", "edit", "own"], [user, nil])
+      result = result.or(scope.granted_to(["view", "edit", "own"], user.roles)) if user
       result
     end
 
