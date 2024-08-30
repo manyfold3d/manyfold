@@ -5,6 +5,10 @@ class User < ApplicationRecord
   include Follower
   include Caber::Subject
 
+  can_have_permissions_on Creator
+  can_have_permissions_on Collection
+  can_have_permissions_on Model
+
   acts_as_federails_actor username_field: :username, name_field: :username
 
   rolify

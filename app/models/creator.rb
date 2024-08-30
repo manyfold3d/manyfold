@@ -3,6 +3,9 @@ class Creator < ApplicationRecord
   include Caber::Object
   include DefaultViewPermissions
 
+  can_grant_permissions_to User
+  can_grant_permissions_to Role
+
   acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for, include_in_user_count: false
 
   has_many :models, dependent: :nullify
