@@ -3,11 +3,8 @@ require "rails_helper"
 describe ApplicationPolicy do
   subject(:policy) { described_class }
 
-  let(:admin) { create(:admin) }
-  let(:editor) { create(:editor) }
   let(:viewer) { create(:user) }
   let(:model) { create(:model) }
-  let(:problem) { create(:problem) }
 
   permissions :index?, :show? do
     it "allows users with viewer role by default" do
@@ -15,6 +12,7 @@ describe ApplicationPolicy do
     end
 
     it "falls back to viewer role if ReBAC isn't available on the record" do
+      problem = create(:problem)
       expect(policy).to permit(viewer, problem)
     end
 
@@ -42,6 +40,41 @@ describe ApplicationPolicy do
         model.grant_permission_to "viewer", nil
         expect(policy).to permit(nil, model)
       end
+    end
+  end
+
+  permissions :create?, :new? do
+    let(:contributor) { create(:contributor) }
+
+    it "allows users with contributor role by default" do
+      expect(policy).to permit(contributor, model)
+    end
+
+    it "denies users with viewer role by default" do
+      expect(policy).not_to permit(viewer, model)
+    end
+  end
+
+  permissions :edit?, :update?, :destroy? do
+    let(:editor) { create(:editor) }
+    let(:contributor) { create(:contributor) }
+
+    it "allows all users with editor role" do
+      expect(policy).to permit(editor, model)
+    end
+
+    it "denies users with contributor role" do
+      expect(policy).not_to permit(contributor, model)
+    end
+
+    it "allows users with granted edit permission" do
+      model.grant_permission_to "editor", viewer
+      expect(policy).to permit(viewer, model)
+    end
+
+    it "allows users with granted owner permission" do
+      model.grant_permission_to "owner", viewer
+      expect(policy).to permit(viewer, model)
     end
   end
 end

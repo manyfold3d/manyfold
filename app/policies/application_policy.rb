@@ -25,7 +25,10 @@ class ApplicationPolicy
   end
 
   def update?
-    check_permissions(record, ["editor", "owner"], user, role_fallback: :editor)
+    one_of(
+      user&.is_editor?,
+      check_permissions(record, ["editor", "owner"], user, role_fallback: :editor)
+    )
   end
 
   def edit?
@@ -34,7 +37,10 @@ class ApplicationPolicy
 
   def destroy?
     all_of(
-      check_permissions(record, ["editor", "owner"], user, role_fallback: :editor),
+      one_of(
+        user&.is_editor?,
+        check_permissions(record, ["editor", "owner"], user, role_fallback: :editor)
+      ),
       none_of(
         SiteSettings.demo_mode_enabled?
       )
