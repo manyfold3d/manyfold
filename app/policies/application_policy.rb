@@ -13,7 +13,10 @@ class ApplicationPolicy
   end
 
   def show?
-    check_permissions(record, ["viewer", "editor", "owner"], user, role_fallback: :viewer)
+    one_of(
+      user&.is_editor?,
+      check_permissions(record, ["viewer", "editor", "owner"], user, role_fallback: :viewer)
+    )
   end
 
   def create?
