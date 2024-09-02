@@ -45,6 +45,10 @@ class SiteSettings < RailsSettings::Base
     User.with_role(:administrator).first
   end
 
+  def self.default_viewer_role
+    :member
+  end
+
   def self.ignored_file?(pathname)
     @@patterns ||= [
       /^\.[^\.]+/, # Hidden files starting with .

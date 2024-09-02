@@ -7,7 +7,8 @@ module DefaultViewPermissions
 
   def assign_default_permissions
     # Grant local view access by default
-    grant_permission_to("view", Role.find_or_create_by(name: :member))
+    role = SiteSettings.default_viewer_role
+    grant_permission_to("view", Role.find_or_create_by(name: role)) if role
     # Set default owner
     owner = SiteSettings.default_user
     grant_permission_to("own", owner) if owner
