@@ -12,6 +12,7 @@ class SiteSettings < RailsSettings::Base
   field :safe_folder_names, type: :boolean, default: true
   field :analyse_manifold, type: :boolean, default: false
   field :anonymous_usage_id, type: :string, default: nil
+  field :default_viewer_role, type: :string, default: nil
 
   def self.registration_enabled?
     ENV.fetch("REGISTRATION", false) == "enabled"
@@ -43,10 +44,6 @@ class SiteSettings < RailsSettings::Base
 
   def self.default_user
     User.with_role(:administrator).first
-  end
-
-  def self.default_viewer_role
-    :member
   end
 
   def self.ignored_file?(pathname)
