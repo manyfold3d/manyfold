@@ -45,6 +45,12 @@ fr:
         check: Vérifier
         search_missing: Recherche manquante
     multiuser_settings:
+      default_viewer_role:
+        help:
+        label:
+        options:
+          member:
+          none:
       details_html: Pour modifier ces paramètres, modifiez les <a href='https://manyfold.app/sysadmin/configuration.html'>variables d'environnement</a> du serveur et redémarrez-le.
       heading: Multiutilisateur
       multiuser_mode: Manyfold fonctionne en mode multi-utilisateurs.
