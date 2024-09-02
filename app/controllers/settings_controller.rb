@@ -23,7 +23,7 @@ class SettingsController < ApplicationController
     if current_user.is_administrator?
       update_folder_settings(params[:folders])
       update_tagging_settings(params[:model_tags])
-      update_analysis_settings(params[:analysis])
+      update_multiuser_settings(params[:multiuser])
       update_usage_settings(params[:usage])
     end
     redirect_to user_settings_path(@user), notice: t(".success")
@@ -101,6 +101,11 @@ class SettingsController < ApplicationController
   def update_analysis_settings(settings)
     return unless settings
     SiteSettings.analyse_manifold = settings[:manifold] == "1"
+  end
+
+  def update_multiuser_settings(settings)
+    return unless settings
+    SiteSettings.default_viewer_role = (settings[:default_viewer_role].presence)
   end
 
   def update_usage_settings(settings)
