@@ -1,9 +1,5 @@
 class Role < ApplicationRecord
-  include Caber::Subject
-
-  can_have_permissions_on Creator
-  can_have_permissions_on Collection
-  can_have_permissions_on Model
+  include CaberSubject
 
   ROLES = [
     :administrator,   # Can do everything
