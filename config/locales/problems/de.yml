@@ -10,7 +10,7 @@ de:
       nesting: Modell enthält andere Modelle
       no_3d_model: Modell hat keine 3D-Dateien
       no_image: Modell hat keine Bilddateien
-      non_manifold: Mesh ist nicht Manyfold-nativ
+      non_manifold: unbekanntes Mesh
     filters:
       apply_filters: Anwenden
       clear_filters: Löschen
@@ -18,7 +18,7 @@ de:
       title: Filter
     index:
       ignore: Ausblenden
-      no_problems: Die aktuellen Filter wurden problemlos angepasst.
+      no_problems: Es wurden keine Fehler mit diesen Filtereinstellungen gefunden
       unignore: Anzeigen
     library:
       missing:
@@ -54,8 +54,8 @@ de:
         description: Diese Datei fehlt auf der Festplatte; lösche sie, oder finden heraus, wo sie ist!
         title: Datei nicht gefunden
       non_manifold:
-        description: Dieses Mesh sieht aus, als ob es nicht Manyfold-nativ ist, es hat Löcher und manche Flächen zeigen in die Falsche Richtung, was zu Druckfehlern führen kann. Repariere es in einem 3D-Modellierungstool wie MeshLab oder 3D Builder.
-        title: nicht Manyfold-natives Mesh
+        description: Dieses Mesh ist unbekannt, es hat Löcher und manche Flächen zeigen in die Falsche Richtung, was zu Druckfehlern führen kann. Repariere es in einem 3D-Modellierungstool wie MeshLab oder 3D Builder.
+        title: Unbekanntes Mesh
     severities:
       danger: Gefahr
       info: Info

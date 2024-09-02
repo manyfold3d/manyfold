@@ -3,16 +3,16 @@ de:
   activerecord:
     attributes:
       collection:
-        caption: Bildunterschrift
+        caption: Beschreibung
         collection_id: Kollektion
         name: Name
         notes: Notizen
       creator:
-        caption: Bildunterschrift
+        caption: Beschreibung
         name: Name
         notes: Notizen
       library:
-        caption: Bildunterschrift
+        caption: Beschreibung
         icon: Symbol
         name: Name
         notes: Notizen
@@ -20,7 +20,7 @@ de:
         s3_access_key_id: 'Zugangs Schlüssel ID
 
           '
-        s3_bucket: Name des Eimers
+        s3_bucket: Bucket Name
         s3_endpoint: Endpunkt URL
         s3_region: Region
         s3_secret_access_key: Geheimer Zugangs Schlüssel
@@ -29,7 +29,7 @@ de:
       link:
         url: Link
       model:
-        caption: Bildunterschrift
+        caption: Beschreibung
         collection_id: Kollektion
         creator_id: Ersteller
         library_id: Sammlung
@@ -38,15 +38,15 @@ de:
         notes: Notizen
         path: Pfad
         preview_file: Vorschau Datei
-        tags: Bezeichnungen
+        tags: Tags
       model_file:
-        caption: Bildunterschrift
+        caption: Beschreibung
         digest: Hash
         filename: Dateiname
         model_id: Modell
         notes: Notizen
-        presupported: Vorgestützt
-        presupported_version: Vorgestützte Version
+        presupported: Support Struktur schon vorhanden
+        presupported_version: Version mit Support struktur
         printed: Gedruckt
         size: Dateigröße
         unsupported_version: Nicht unterstützte Version
@@ -72,7 +72,7 @@ de:
         last_sign_in_ip: IP der letzten Anmeldung
         locked_at: Gesperrt am
         password: Passwort
-        password_confirmation: Bestätige das Passwort
+        password_confirmation: Bestätige Passwort
         remember_created_at: Angemeldet bleiben vom
         remember_me: Angemeldet bleiben
         reset_password_sent_at: Passwort-Zurücksetzen-E-Mail gesendet am
@@ -99,16 +99,16 @@ de:
         model_file:
           attributes:
             presupported_version:
-              already_presupported: kann nicht auf eine vorunterstützte Datei gesetzt werden
-              not_supported: keine vordefinierte Datei
+              already_presupported: kann nicht auf eine Datei gesetzt werden mit Support Struktur
+              not_supported: Ist keine Datei mit Support struktur
     models:
       acts_as_taggable_on/tag:
-        few: Bezeichnungen
-        many: Bezeichnungen
-        one: Bezeichnung
-        other: Bezeichnungen
-        two: Bezeichnungen
-        zero: Bezeichnungen
+        few: Tags
+        many: Tags
+        one: Tag
+        other: Tags
+        two: Tags
+        zero: Tags
       collection:
         few: Kollektionen
         many: Kollektionen
@@ -200,9 +200,9 @@ de:
       by_html: Entworfen und erstellt von <a href="https://floppy.org.uk" target="_blank">James</a> mit Hilfe von  <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">our contributors</a>.
       chat: Chat
       code: Code
-      community_heading: Gemeinschaft
+      community_heading: Community
       development_heading: Entwicklung
-      issues: Ausgaben
+      issues: Bugs
       logo: Logo
       open_source_html: 'Open Source unter dieser Lizenz: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT license</a>'
       social: Social Media
@@ -247,10 +247,12 @@ de:
     save: Speichern
   home:
     index:
+      create_actor:
       how_long_ago: vor %{time}
       recent_activity: Neuste Aktivität
       search:
         placeholder: Wonach suchen Sie?
+      update_actor:
   jobs:
     analysis:
       analyse_model_file:
@@ -264,7 +266,7 @@ de:
       geometric_analysis:
         direction_check: Kontrolliere Oberflächenausrichtung
         loading_mesh: Lade meshs
-        manifold_check: Prüfe Mesh, ob es Manyfold-nativ ist
+        manifold_check: Prüfe Mesh, auf bekanntheit
     scan:
       check_all:
         queueing_model_checks: Modell Überprüfungen in der Warteschlange

@@ -19,7 +19,7 @@ de:
       path:
         placeholder: "/samlungen/modelle"
       s3_bucket:
-        help: Nur den Eimernamen, nicht die vollständige URL
+        help: Nur den bucket, nicht die vollständige URL
       s3_description_html: Manyfold kann jeden S3-kompatiblen Objektspeicher für Ihre Bibliothek verwenden; dies kann einer der zahlreichen <a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">Open-Source-</a> oder <a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">kommerziellen</a> Dienste sein.
       s3_endpoint:
         help: Optional; nur für S3-kompatible Dienste erforderlich, nicht für AWS.

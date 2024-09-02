@@ -32,7 +32,7 @@ de:
       edit: Modell bearbeiten
     image_carousel:
       next: Weiter
-      play_pause: Bilder abspielen oder pausieren
+      play_pause: Pausiere oder Starte das Laden von Beispiel Bildern.
       previous: Zurück
       select_slide: Bild zum Anzeigen auswählen
       slide_label: "%{name} (%{index} von %{count})"

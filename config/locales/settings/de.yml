@@ -5,12 +5,12 @@ de:
       description: Führt genauere mesh-analysen an Modellen durch. Diese Aktion führt dazu, dass deine Scans erheblich länger dauern und viel mehr CPU und Speicher verbrauchen.
       heading: Mesh Analyse
       manifold:
-        help: Prüfung auf nicht Manyfold-natives (d.h. sie haben Löcher oder unmögliche Oberflächen)
+        help: Prüfe auf bekanntheit (d.h. sie haben Löcher oder unmögliche Oberflächen)
         label: Erkennung von Fehlern im Mesh
     file_list_settings:
       heading: Datei-Listen
       hide_presupported_versions:
-        label: Kombiniere verknüpfte, nicht unterstützte und vorunterstützte Dateien
+        label: Kombiniere verknüpfte Dateien mit und ohne Support struktur.
       summary: Steuere, wie Modelle und Datei Listen angezeigt werden
     folder_settings:
       details: Die Ordnerstruktur folgt einer Vorlage, die du mit Token definierst. Du kannst auch anderen Text in die Vorlage einfügen (z. B. Ordnertrennzeichen) und dieser wird unverändert übernommen.
@@ -21,7 +21,7 @@ de:
         label: Metadaten aus Pfad und Vorlage während des Scannens auffüllen
       safe_folder_names:
         help_html: z.B. <code>Spinal-Tap</code> statt <code>Spın̈al Tap</code>
-        label: Sichere Ordnernamen verwenden
+        label: Dateisystem sichere Ordnernamen verwenden
       summary: Definiere die Ordnerstruktur, die von "Dateien organisieren" und für das automatische Ausfüllen von Metadaten beim Scannen verwendet wird. Wirkt sich auf alle Benutzer aus.
       title: Ordner Benennung
       tokens:
@@ -45,6 +45,12 @@ de:
         check: Check
         search_missing: Suche Fehlende
     multiuser_settings:
+      default_viewer_role:
+        help:
+        label:
+        options:
+          member:
+          none:
       details_html: Um diese Einstellungen zu ändern, bearbeite die <a href='https://manyfold.app/sysadmin/configuration.html'>Umgebungsvariablen</a> des Servers und starten Sie ihn neu.
       heading: Multiuser
       multiuser_mode: Manyfold läuft im Multiuser-modus.
@@ -57,7 +63,7 @@ de:
       creators:
         label: Ersteller auf Seiten verteilen
       description: Zeige auf der Listenseiten immer nur eine bestimmte Anzahl von Elementen an, anstatt alles auf einmal. Dies kann das Laden der Seiten beschleunigen.
-      heading: Paginierung
+      heading: Seitenaufteilung
       models:
         label: Modelle auf Seiten verteilen
       per_page:
@@ -101,7 +107,7 @@ de:
       submit: Einstellungen speichern
       title: Einstellungen
     tag_cloud_settings:
-      heading: Tag Wolke
+      heading: Tag Liste
       heatmap:
         label: Tag-Anzahl für einzelne Tags anzeigen
       keypair:
@@ -114,13 +120,13 @@ de:
       auto_tag_new:
         label: Automatisch neue Modelle mit Tag(s) markieren
       custom_stop_words:
-        label: Benutzerdefinierte Stoppwörter
-      description: Hinzufügen von Tags zu allen neu gescannten Modellen und Herausfiltern bestimmter Wörter ("Stoppwörter") bei der automatischen Erstellung von Tags. Wirkt sich auf alle Benutzer aus.
+        label: Ignorierte Wörter
+      description: Hinzufügen von Tags zu allen neu gescannten Modellen und Herausfiltern bestimmter Wörter (Ignorieren bestimmter Wörter) bei der automatischen Erstellung von Tags. Wirkt sich auf alle Benutzer aus.
       filter_stop_words:
-        label: Stoppwörter herausfiltern
+        label: Ignorierte Wörter
       heading: Tagging
       stop_words_locale:
-        label: Stoppwörter Sprache
+        label: Sprache der Ignorierten wörter
       tag_model_directory_name:
         help: Achtung! Kann eine Menge Tags erzeugen!
         label: Tags aus Modellverzeichnisnamen erstellen
@@ -130,7 +136,7 @@ de:
       description_html: Wenn du die Nutzungsverfolgung aktivieren, werden die folgenden Informationen einmal täglich an <code>%{endpoint}</code> gesendet. Die <code>id</code> wird zufällig generiert, wenn die Verfolgung aktiviert wird.
       heading: 'Anonyme nutzungs-analyse '
       report_usage:
-        label: 'Aktiviere Anonyme nutzungs-analyse '
+        label: 'Anonyme nutzungs-analyse '
       summary: Lasse die Entwickler wissen, dass du Manyfold benutzt
       use_of_data: Es werden keine weiteren Informationen gesendet oder gespeichert, und die Entwickler werden die Informationen niemals zu einem anderen Zweck verwenden, als zu messen, wie viele Instanzen von Manyfold laufen und welche Version sie haben.
       verification_html: Wenn du überprüfen willst, was wir senden, kannst du die Umgebungsvariable <code>USAGE_REPORTING_URL</code> ändern und die Daten an einen Ort senden, an dem du sie überprüfen kannst. Du kannst auch im Protokoll genau sehen, was gesendet wird.

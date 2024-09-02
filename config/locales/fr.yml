@@ -233,6 +233,9 @@ fr:
     tags_card:
       skip_tags: Sauter la liste des balises
     title: Manyfold
+  follow_button:
+    follow:
+    unfollow:
   general:
     delete: Supprimer
     download: Télécharger
@@ -242,9 +245,12 @@ fr:
     save: Sauvegarder
   home:
     index:
+      create_actor:
       how_long_ago: depuis %{time}
+      recent_activity: Activité récente
       search:
         placeholder: Que recherchez-vous ?
+      update_actor:
   jobs:
     analysis:
       analyse_model_file:

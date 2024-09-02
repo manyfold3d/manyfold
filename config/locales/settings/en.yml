@@ -46,11 +46,11 @@ en:
         search_missing: Search Missing
     multiuser_settings:
       default_viewer_role:
-        label: Default visibility
         help: Who can view new models / creators / collections by default?
+        label: Default visibility
         options:
-          none: Private
           member: Logged-in local users
+          none: Private
       details_html: To change these settings, edit the server's <a href='https://manyfold.app/sysadmin/configuration.html'>environment variables</a> and restart.
       heading: Multiuser
       multiuser_mode: Manyfold is running in multiuser mode.
