@@ -150,4 +150,8 @@ module ApplicationHelper
     end
   end
   alias_method :t, :translate_with_locale_wrapper
+
+  def pagination_settings
+    current_user&.pagination_settings || SiteSettings::UserDefaults::PAGINATION
+  end
 end

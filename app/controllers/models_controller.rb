@@ -24,9 +24,9 @@ class ModelsController < ApplicationController
       @models.order(name: :asc)
     end
 
-    if current_user.pagination_settings["models"]
+    if helpers.pagination_settings["models"]
       page = params[:page] || 1
-      @models = @models.page(page).per(current_user.pagination_settings["per_page"])
+      @models = @models.page(page).per(helpers.pagination_settings["per_page"])
     end
 
     @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)

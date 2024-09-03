@@ -23,9 +23,9 @@ class CreatorsController < ApplicationController
       @creators.order(name: :asc)
     end
 
-    if current_user.pagination_settings["creators"]
+    if helpers.pagination_settings["creators"]
       page = params[:page] || 1
-      @creators = @creators.page(page).per(current_user.pagination_settings["per_page"])
+      @creators = @creators.page(page).per(helpers.pagination_settings["per_page"])
     end
     # Eager load data
     @creators = @creators.includes(:links, :models)
