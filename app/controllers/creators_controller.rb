@@ -1,6 +1,7 @@
 class CreatorsController < ApplicationController
   include Filterable
   include TagListable
+  include Permittable
 
   before_action :get_creator, except: [:index, :new, :create]
 
@@ -79,11 +80,11 @@ class CreatorsController < ApplicationController
   end
 
   def creator_params
-    params.require(:creator).permit([
+    params.require(:creator).permit(
       :name,
       :caption,
       :notes,
       links_attributes: [:id, :url, :_destroy]
-    ])
+    ).deep_merge(caber_relations_params(type: :creator))
   end
 end

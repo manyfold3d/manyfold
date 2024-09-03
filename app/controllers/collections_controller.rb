@@ -1,6 +1,8 @@
 class CollectionsController < ApplicationController
   include Filterable
   include TagListable
+  include Permittable
+
   before_action :get_collection, except: [:index, :new, :create]
 
   def index
@@ -80,12 +82,12 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.require(:collection).permit([
+    params.require(:collection).permit(
       :name,
       :collection_id,
       :caption,
       :notes,
       links_attributes: [:id, :url, :_destroy]
-    ])
+    ).deep_merge(caber_relations_params(type: :collection))
   end
 end
