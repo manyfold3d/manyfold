@@ -185,7 +185,7 @@ en:
         own: Owner (can view, edit, delete, and share)
         view: View only
       subject:
-        placeholder: Email address or username
+        placeholder: Email address, username, or role
         role:
           member: Any logged-in local user
           public: Everyone (without login)
