@@ -158,4 +158,8 @@ module ApplicationHelper
   def tag_cloud_settings
     current_user&.tag_cloud_settings || SiteSettings::UserDefaults::TAG_CLOUD
   end
+
+  def renderer_settings
+    current_user&.renderer_settings || SiteSettings::UserDefaults::RENDERER
+  end
 end
