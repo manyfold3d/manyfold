@@ -166,4 +166,8 @@ module ApplicationHelper
   def file_list_settings
     current_user&.file_list_settings || SiteSettings::UserDefaults::FILE_LIST
   end
+
+  def problem_settings
+    current_user&.problem_settings || Problem::DEFAULT_SEVERITIES
+  end
 end
