@@ -156,7 +156,7 @@ module ApplicationHelper
   end
 
   def tag_cloud_settings
-    current_user&.tag_cloud_settings || SiteSettings::UserDefaults::TAG_CLOUD
+    current_user&.tag_cloud_settings || SiteSettings::UserDefaults::TAG_CLOUD.merge(heatmap: false)
   end
 
   def renderer_settings
