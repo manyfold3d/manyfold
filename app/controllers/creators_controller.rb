@@ -85,6 +85,6 @@ class CreatorsController < ApplicationController
       :caption,
       :notes,
       links_attributes: [:id, :url, :_destroy]
-    ).deep_merge(caber_relations_params type: :creator)
+    ).deep_merge(caber_relations_params(type: :creator))
   end
 end

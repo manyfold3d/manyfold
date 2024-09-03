@@ -183,7 +183,7 @@ class ModelsController < ApplicationController
       :missingtag,
       tag_list: [],
       links_attributes: [:id, :url, :_destroy]
-    ).deep_merge(caber_relations_params type: :model)
+    ).deep_merge(caber_relations_params(type: :model))
   end
 
   def get_model
