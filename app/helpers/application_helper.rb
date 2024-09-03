@@ -162,4 +162,8 @@ module ApplicationHelper
   def renderer_settings
     current_user&.renderer_settings || SiteSettings::UserDefaults::RENDERER
   end
+
+  def file_list_settings
+    current_user&.file_list_settings || SiteSettings::UserDefaults::FILE_LIST
+  end
 end

@@ -42,7 +42,7 @@ class ModelsController < ApplicationController
     files = @model.model_files
     @images = files.select(&:is_image?)
     @images.unshift(@model.preview_file) if @images.delete(@model.preview_file)
-    if current_user.file_list_settings["hide_presupported_versions"]
+    if helpers.file_list_settings["hide_presupported_versions"]
       hidden_ids = files.select(:presupported_version_id).where.not(presupported_version_id: nil)
       files = files.where.not(id: hidden_ids)
     end
