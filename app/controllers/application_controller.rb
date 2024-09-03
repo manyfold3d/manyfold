@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index, unless: :active_admin_controller?
   after_action :set_content_security_policy_header, if: -> { request.format.html? }
 
-  before_action :authenticate_user!
   around_action :switch_locale
   before_action :check_for_first_use
   before_action :show_security_alerts
