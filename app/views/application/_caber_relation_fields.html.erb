@@ -7,9 +7,10 @@
         <%= f.object.subject.username %>
         <%= t(".subject.you") if f.object.subject == current_user %>
       <%- when "Role" %>
-        <%= icon "people", f.object.subject.class.model_name.human %>
+        <%= icon "people", "" %>
         <%= t(".subject.role.%{name}" % {name: f.object.subject&.name}) %>
       <%- when "NilClass" %>
+        <%= icon "globe", "" %>
         <%= t(".subject.role.public") %>
       <%- else %>
         what
