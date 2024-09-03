@@ -1,5 +1,4 @@
 class ModelFilePolicy < ApplicationPolicy
-
   def show?
     ModelPolicy.new(@user, @record.model).show?
   end
