@@ -58,7 +58,7 @@ class SiteSettings < RailsSettings::Base
   end
 
   module UserDefaults
-    RENDERER = {
+    RENDERER = ActiveSupport::HashWithIndifferentAccess.new(
       grid_width: 200,
       grid_depth: 200,
       show_grid: true,
@@ -66,24 +66,24 @@ class SiteSettings < RailsSettings::Base
       background_colour: "#000000",
       object_colour: "#cccccc",
       render_style: "normals"
-    }
+    )
 
-    PAGINATION = {
+    PAGINATION = ActiveSupport::HashWithIndifferentAccess.new(
       models: true,
       creators: true,
       collections: true,
       per_page: 12
-    }
+    )
 
-    TAG_CLOUD = {
+    TAG_CLOUD = ActiveSupport::HashWithIndifferentAccess.new(
       threshold: 2,
       heatmap: true,
       keypair: true,
       sorting: "frequency"
-    }
+    )
 
-    FILE_LIST = {
+    FILE_LIST = ActiveSupport::HashWithIndifferentAccess.new(
       hide_presupported_versions: true
-    }
+    )
   end
 end
