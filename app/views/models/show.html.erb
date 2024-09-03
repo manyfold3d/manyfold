@@ -60,7 +60,7 @@
         <td>
           <code><%= @model.path %></code>
           <% unless @model.contains_other_models? %>
-            <%= button_tag(t(".organize.button_text"), class: "btn btn-warning btn-sm float-end", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? %>
+            <%= button_tag(t(".organize.button_text"), class: "btn btn-warning btn-sm float-end", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? && policy(@model).edit? %>
           <% end %>
         </td>
       </tr>
@@ -71,7 +71,7 @@
     </table>
     <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_model_path(@model), class: "btn btn-primary" if policy(@model).edit? %>
     <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), model_path(@model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: translate("models.destroy.confirm")}} if policy(@model).destroy? %>
-    <%= render FollowButtonComponent.new(follower: current_user, target: @model) %>
+    <%= render FollowButtonComponent.new(follower: current_user, target: @model) if policy(Federails::Following).create? %>
   <% end %>
 
   <% if !@model.parents.empty? && policy(@model).merge? %>
