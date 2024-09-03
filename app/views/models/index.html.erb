@@ -20,11 +20,13 @@
 <% content_for :sidebar do %>
   <%= card :secondary, t(".actions_heading") do %>
     <%= link_to t(".bulk_edit"), edit_models_path(@filters), class: "btn btn-secondary mb-3 me-3" if policy(:model).edit? %>
-    <% if tag_cloud_settings["heatmap"] && Model.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1").count > 0 %>
-      <%= link_to t(".untagged"), models_path(tag: [""]), class: "btn btn-secondary mb-3 me-3" %>
-    <% end %>
-    <% if Model.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model')<1").count > 0 %>
-      <%= link_to t(".missing_url"), models_path(link: ""), class: "btn btn-secondary mb-3 me-3" %>
+    <% if current_user %>
+      <% if tag_cloud_settings["heatmap"] && Model.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1").count > 0 %>
+        <%= link_to t(".untagged"), models_path(tag: [""]), class: "btn btn-secondary mb-3 me-3" %>
+      <% end %>
+      <% if Model.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model')<1").count > 0 %>
+        <%= link_to t(".missing_url"), models_path(link: ""), class: "btn btn-secondary mb-3 me-3" %>
+      <% end %>
     <% end %>
     <% if @creator %>
       <%= render FollowButtonComponent.new(follower: current_user, target: @creator, name: @creator.name) %>
