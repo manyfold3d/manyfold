@@ -3,28 +3,37 @@
 <% end %>
 
 <% content_for :items do %>
-  <div class="skip-link-container">
-    <%= skip_link "sidebar", t(".skip_models") %>
-    <% if current_user.pagination_settings["models"] %>
-      <%= paginate @models %>
-    <% end %>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-      <%= render ModelComponent.with_collection(@models, can_show: @can_show, can_edit: @can_edit, can_destroy: @can_destroy) %>
+  <% if @models.empty? %>
+    <div class="alert alert-info">
+      <%= icon "person-arms-up", "" %>
+      <%= t(".no_results_html") %>
     </div>
-    <% if current_user.pagination_settings["models"] %>
-      <%= paginate @models %>
-    <% end %>
-  </div>
+  <% else %>
+    <div class="skip-link-container">
+      <%= skip_link "sidebar", t(".skip_models") %>
+      <% if pagination_settings["models"] %>
+        <%= paginate @models %>
+      <% end %>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+        <%= render ModelComponent.with_collection(@models, can_edit: @can_edit, can_destroy: @can_destroy) %>
+      </div>
+      <% if pagination_settings["models"] %>
+        <%= paginate @models %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
 
 <% content_for :sidebar do %>
   <%= card :secondary, t(".actions_heading") do %>
     <%= link_to t(".bulk_edit"), edit_models_path(@filters), class: "btn btn-secondary mb-3 me-3" if policy(:model).edit? %>
-    <% if current_user.tag_cloud_settings["heatmap"] && Model.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1").count > 0 %>
-      <%= link_to t(".untagged"), models_path(tag: [""]), class: "btn btn-secondary mb-3 me-3" %>
-    <% end %>
-    <% if Model.where("(select count(*) from links where linkable_id=models.id and linkable_type='Model')<1").count > 0 %>
-      <%= link_to t(".missing_url"), models_path(link: ""), class: "btn btn-secondary mb-3 me-3" %>
+    <% if current_user %>
+      <% if tag_cloud_settings["heatmap"] && policy_scope(Model).where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1").count > 0 %>
+        <%= link_to t(".untagged"), models_path(tag: [""]), class: "btn btn-secondary mb-3 me-3" %>
+      <% end %>
+      <% if policy_scope(Model).where("(select count(*) from links where linkable_id=models.id and linkable_type='Model')<1").count > 0 %>
+        <%= link_to t(".missing_url"), models_path(link: ""), class: "btn btn-secondary mb-3 me-3" %>
+      <% end %>
     <% end %>
     <% if @creator %>
       <%= render FollowButtonComponent.new(follower: current_user, target: @creator, name: @creator.name) %>

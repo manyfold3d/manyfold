@@ -10,7 +10,6 @@ class ModelsController < ApplicationController
 
   def index
     # Work out policies for showing buttons up front
-    @can_show = policy(Model).show?
     @can_destroy = policy(Model).destroy?
     @can_edit = policy(Model).edit?
 
@@ -24,9 +23,9 @@ class ModelsController < ApplicationController
       @models.order(name: :asc)
     end
 
-    if current_user.pagination_settings["models"]
+    if helpers.pagination_settings["models"]
       page = params[:page] || 1
-      @models = @models.page(page).per(current_user.pagination_settings["per_page"])
+      @models = @models.page(page).per(helpers.pagination_settings["per_page"])
     end
 
     @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
@@ -42,7 +41,7 @@ class ModelsController < ApplicationController
     files = @model.model_files
     @images = files.select(&:is_image?)
     @images.unshift(@model.preview_file) if @images.delete(@model.preview_file)
-    if current_user.file_list_settings["hide_presupported_versions"]
+    if helpers.file_list_settings["hide_presupported_versions"]
       hidden_ids = files.select(:presupported_version_id).where.not(presupported_version_id: nil)
       files = files.where.not(id: hidden_ids)
     end

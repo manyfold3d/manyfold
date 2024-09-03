@@ -31,7 +31,7 @@ class Problem < ApplicationRecord
     :danger
   ]
 
-  DEFAULT_SEVERITIES = {
+  DEFAULT_SEVERITIES = ActiveSupport::HashWithIndifferentAccess.new(
     missing: :danger,
     empty: :info,
     nesting: :warning,
@@ -41,7 +41,7 @@ class Problem < ApplicationRecord
     no_3d_model: :silent,
     non_manifold: :warning,
     inside_out: :warning
-  }
+  )
 
   def self.create_or_clear(problematic, cat, present, options = {})
     if present

@@ -21,7 +21,7 @@ class ProblemsController < ApplicationController
     # What object types are we showing?
     query = query.where(problematic_type: params[:type].map(&:classify)) if params[:type]
     # Don't show types ignored in user settings
-    query = query.visible(current_user.problem_settings)
+    query = query.visible(helpers.problem_settings)
     query = query.includes([:problematic])
     @problems = query.page(page).per(50).order([:category, :problematic_type])
     # Do we have any filters at all?

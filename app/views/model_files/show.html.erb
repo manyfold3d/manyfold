@@ -59,11 +59,11 @@
       <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), model_model_file_path(@model, @file), {method: "delete", data: {confirm: translate("model_files.destroy.confirm")}, class: "btn btn-outline-danger"} if policy(@file).destroy? %>
     <% end %>
 
-    <%= render partial: "problem", collection: @file.problems.visible(current_user.problem_settings) %>
+    <%= render partial: "problem", collection: @file.problems.visible(problem_settings) %>
 
     <%= card :secondary, t(".actions_heading") do %>
       <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), model_model_file_path(@model, @file, @file.extension.to_sym), {class: "btn btn-secondary"} %>
-      <% if policy(:model_file).create? && ["stl", "obj"].include?(@file.extension) %>
+      <% if policy(@file).edit? && ["stl", "obj"].include?(@file.extension) %>
         <%= link_to safe_join([icon("arrow-left-right", t(".convert")), t(".convert")], " "), model_model_files_path(@model, convert: {id: @file.id, to: "threemf"}), method: :post, class: "btn btn-warning" %>
       <% end %>
     <% end %>

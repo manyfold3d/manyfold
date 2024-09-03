@@ -3,7 +3,7 @@
 class FollowButtonComponent < ViewComponent::Base
   def initialize(follower:, target:, name: nil)
     @target = target
-    @following = follower.following? target
+    @following = follower&.following? target
     @name = name
   end
 
@@ -14,7 +14,7 @@ class FollowButtonComponent < ViewComponent::Base
   end
 
   def render?
-    SiteSettings.multiuser_enabled? || SiteSettings.federation_enabled?
+    (SiteSettings.multiuser_enabled? || SiteSettings.federation_enabled?) && helpers.policy(Federails::Following).create?
   end
 
   erb_template <<-ERB

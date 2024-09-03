@@ -150,4 +150,24 @@ module ApplicationHelper
     end
   end
   alias_method :t, :translate_with_locale_wrapper
+
+  def pagination_settings
+    current_user&.pagination_settings || SiteSettings::UserDefaults::PAGINATION
+  end
+
+  def tag_cloud_settings
+    current_user&.tag_cloud_settings || SiteSettings::UserDefaults::TAG_CLOUD.merge(heatmap: false)
+  end
+
+  def renderer_settings
+    current_user&.renderer_settings || SiteSettings::UserDefaults::RENDERER
+  end
+
+  def file_list_settings
+    current_user&.file_list_settings || SiteSettings::UserDefaults::FILE_LIST
+  end
+
+  def problem_settings
+    current_user&.problem_settings || Problem::DEFAULT_SEVERITIES
+  end
 end

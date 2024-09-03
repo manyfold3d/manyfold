@@ -60,7 +60,7 @@
         <td>
           <code><%= @model.path %></code>
           <% unless @model.contains_other_models? %>
-            <%= button_tag(t(".organize.button_text"), class: "btn btn-warning btn-sm float-end", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? %>
+            <%= button_tag(t(".organize.button_text"), class: "btn btn-warning btn-sm float-end", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? && policy(@model).edit? %>
           <% end %>
         </td>
       </tr>
@@ -86,7 +86,7 @@
     <% end %>
   <% end %>
 
-  <%= render partial: "problem", collection: @model.problems.visible(current_user.problem_settings) %>
+  <%= render partial: "problem", collection: @model.problems.visible(problem_settings) %>
 
   <%= card(:secondary, t(".notes_heading")) do %>
     <p class="card-text"><%= sanitize @model.notes %></p>

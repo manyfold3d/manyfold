@@ -23,9 +23,9 @@ class CollectionsController < ApplicationController
       @collections.order(name: :asc)
     end
 
-    if current_user.pagination_settings["collections"]
+    if helpers.pagination_settings["collections"]
       page = params[:page] || 1
-      @collections = @collections.page(page).per(current_user.pagination_settings["per_page"])
+      @collections = @collections.page(page).per(helpers.pagination_settings["per_page"])
     end
     # Eager load
     @collections = @collections.includes :collections, :collection, :links, models: [:preview_file, :library]
