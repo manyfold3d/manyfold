@@ -19,5 +19,4 @@ module CaberObject
     owner = SiteSettings.default_user
     grant_permission_to("own", owner) if owner
   end
-
 end

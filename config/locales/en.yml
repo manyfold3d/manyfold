@@ -178,6 +178,21 @@ en:
       queued: Queued
       working: Working
   application:
+    caber_relation_fields:
+      delete: Delete
+      permissions:
+        edit: Can edit
+        own: Owner (can view, edit, delete, and share)
+        view: View only
+      subject:
+        placeholder: Email address or username
+        role:
+          member: Any logged-in local user
+          public: Everyone (without login)
+        you: "(you)"
+    caber_relations_form:
+      add: add another permission
+      permissions: Sharing
     content_header:
       sort:
         name: Sort by Name

@@ -59,6 +59,7 @@ class ModelsController < ApplicationController
     @creators = Creator.all
     @collections = Collection.all
     @model.links.build if @model.links.empty? # populate empty link
+    @model.caber_relations.build if @model.caber_relations.empty?
   end
 
   def create
@@ -185,7 +186,7 @@ class ModelsController < ApplicationController
   end
 
   def get_model
-    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links).find(params[:id])
+    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find(params[:id])
     authorize @model
     @title = @model.name
   end
