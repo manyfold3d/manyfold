@@ -13,7 +13,7 @@ module Permittable
 
   def find_caber_subjects
     params.values.each do |param|
-      if param.is_a? ActionController::Parameters
+      if param.is_a?(ActionController::Parameters) && param.has_key?("caber_relations_attributes")
         param["caber_relations_attributes"].transform_values! do |value|
           if value.has_key? "subject"
             subject = case value["subject"]
