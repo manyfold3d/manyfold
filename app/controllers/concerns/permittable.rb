@@ -2,7 +2,7 @@ module Permittable
   extend ActiveSupport::Concern
 
   included do
-    before_action :find_caber_subjects, only: [:create, :update]
+    before_action :find_caber_subjects, only: [:create, :update] # rubocop:todo Rails/LexicallyScopedActionFilter
   end
 
   def caber_relations_params(type: nil)
