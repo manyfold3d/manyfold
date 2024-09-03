@@ -3,11 +3,7 @@ require "uri"
 class User < ApplicationRecord
   include Lister
   include Follower
-  include Caber::Subject
-
-  can_have_permissions_on Creator
-  can_have_permissions_on Collection
-  can_have_permissions_on Model
+  include CaberSubject
 
   acts_as_federails_actor username_field: :username, name_field: :username
 

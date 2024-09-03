@@ -39,11 +39,13 @@ class CreatorsController < ApplicationController
     authorize Creator
     @creator = Creator.new
     @creator.links.build if @creator.links.empty? # populate empty link
+    @creator.caber_relations.build if @creator.caber_relations.empty?
     @title = t("creators.general.new")
   end
 
   def edit
     @creator.links.build if @creator.links.empty? # populate empty link
+    @creator.caber_relations.build if @creator.caber_relations.empty?
   end
 
   def create
@@ -70,7 +72,7 @@ class CreatorsController < ApplicationController
       authorize Creator
       @title = t(".unknown")
     else
-      @creator = Creator.includes(:links).find(params[:id])
+      @creator = Creator.includes(:links, :caber_relations).find(params[:id])
       authorize @creator
       @title = @creator.name
     end

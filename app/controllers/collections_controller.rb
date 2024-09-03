@@ -38,12 +38,14 @@ class CollectionsController < ApplicationController
     authorize Collection
     @collection = Collection.new
     @collection.links.build if @collection.links.empty? # populate empty link
+    @collection.caber_relations.build if @collection.caber_relations.empty?
     @title = t("collections.general.new")
     @collections = Collection.all
   end
 
   def edit
     @collection.links.build if @collection.links.empty? # populate empty link
+    @collection.caber_relations.build if @collection.caber_relations.empty?
     @collections = Collection.all
   end
 
@@ -71,7 +73,7 @@ class CollectionsController < ApplicationController
       authorize Collection
       @title = t(".unknown")
     else
-      @collection = Collection.includes(:links).find(params[:id])
+      @collection = Collection.includes(:links, :caber_relations).find(params[:id])
       authorize @collection
       @title = @collection.name
     end
