@@ -3,7 +3,7 @@
 class FollowButtonComponent < ViewComponent::Base
   def initialize(follower:, target:, name: nil)
     @target = target
-    @following = follower.following? target
+    @following = follower&.following? target
     @name = name
   end
 
