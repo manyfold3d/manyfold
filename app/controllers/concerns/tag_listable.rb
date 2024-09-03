@@ -1,13 +1,13 @@
 module TagListable
   def generate_tag_list(models = nil, filter_tags = nil)
     # All tags bigger than threshold
-    tags = all_tags = ActsAsTaggableOn::Tag.where(taggings_count: current_user.tag_cloud_settings["threshold"]..)
+    tags = all_tags = ActsAsTaggableOn::Tag.where(taggings_count: helpers.tag_cloud_settings["threshold"]..)
     # Ignore any tags that have been applied as filters
     tags = all_tags = tags.where.not(id: filter_tags) if filter_tags
     # Generate a list of tags shared by the list of models
     tags = tags.includes(:taggings).where("taggings.taggable": models.map(&:id)) if models
     # Apply tag sorting
-    tags = case current_user.tag_cloud_settings["sorting"]
+    tags = case helpers.tag_cloud_settings["sorting"]
     when "alphabetical"
       tags.order(name: :asc)
     else
@@ -23,7 +23,7 @@ module TagListable
 
   def split_key_value_tags(tags)
     # Split into plain tags and key-value tags
-    if current_user.tag_cloud_settings["keypair"]
+    if helpers.tag_cloud_settings["keypair"]
       plain_tags = tags.where.not("name LIKE '%:%'")
       kv_tags = tags.where("name LIKE '%:%'")
     else

@@ -154,4 +154,8 @@ module ApplicationHelper
   def pagination_settings
     current_user&.pagination_settings || SiteSettings::UserDefaults::PAGINATION
   end
+
+  def tag_cloud_settings
+    current_user&.tag_cloud_settings || SiteSettings::UserDefaults::TAG_CLOUD
+  end
 end
