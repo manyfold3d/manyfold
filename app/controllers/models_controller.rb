@@ -10,7 +10,6 @@ class ModelsController < ApplicationController
 
   def index
     # Work out policies for showing buttons up front
-    @can_show = policy(Model).show?
     @can_destroy = policy(Model).destroy?
     @can_edit = policy(Model).edit?
 
