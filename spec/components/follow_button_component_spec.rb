@@ -3,7 +3,10 @@
 require "rails_helper"
 
 RSpec.describe FollowButtonComponent, type: :component do
+  let(:user) { create :user }
+
   before do
+    sign_in(user)
     allow(SiteSettings).to receive(:multiuser_enabled?).and_return(true)
   end
 
