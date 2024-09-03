@@ -3,15 +3,13 @@
 require "rails_helper"
 
 RSpec.describe FollowButtonComponent, type: :component do
-  let(:user) { create :user }
-
-  before do
-    sign_in(user)
-    allow(SiteSettings).to receive(:multiuser_enabled?).and_return(true)
-  end
-
   let(:follower) { create(:user) }
   let(:target) { create(:creator) }
+
+  before do
+    sign_in(follower)
+    allow(SiteSettings).to receive(:multiuser_enabled?).and_return(true)
+  end
 
   context "when the follower is not following the target" do
     let(:button) {
