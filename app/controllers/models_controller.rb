@@ -3,6 +3,7 @@ require "fileutils"
 class ModelsController < ApplicationController
   include Filterable
   include TagListable
+  include Permittable
 
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
@@ -182,7 +183,7 @@ class ModelsController < ApplicationController
       :missingtag,
       tag_list: [],
       links_attributes: [:id, :url, :_destroy]
-    )
+    ).deep_merge(caber_relations_params type: :model)
   end
 
   def get_model
