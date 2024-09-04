@@ -57,41 +57,41 @@ RSpec.describe "Creators" do
 
     describe "GET /creators/:id/edit" do
       it "Shows the new creator form", :as_moderator do
-        get "/creators/#{creator.id}/edit"
+        get "/creators/#{creator.to_param}/edit"
         expect(response).to have_http_status(:success)
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { get "/creators/#{creator.id}/edit" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { get "/creators/#{creator.to_param}/edit" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "GET /creators/:id", :as_member do
       it "Redirects to a list of models with that creator" do
-        get "/creators/#{creator.id}"
+        get "/creators/#{creator.to_param}"
         expect(response).to redirect_to("/models?creator=#{creator.id}")
       end
     end
 
     describe "PATCH /creators/:id" do
       it "saves details", :as_moderator do
-        patch "/creators/#{creator.id}", params: {creator: {name: "newname"}}
+        patch "/creators/#{creator.to_param}", params: {creator: {name: "newname"}}
         expect(response).to redirect_to("/creators/#{creator.id}")
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { patch "/creators/#{creator.id}", params: {creator: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
+        expect { patch "/creators/#{creator.public_id}", params: {creator: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "DELETE /creators/:id" do
       it "removes creator", :as_moderator do
-        delete "/creators/#{creator.id}"
+        delete "/creators/#{creator.to_param}"
         expect(response).to redirect_to("/creators")
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { delete "/creators/#{creator.id}" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { delete "/creators/#{creator.to_param}" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
   end

@@ -32,25 +32,25 @@ RSpec.describe "Models" do
 
     describe "GET /models/:id", :as_member do
       it "returns http success" do
-        get "/models/#{library.models.first.id}"
+        get "/models/#{library.models.first.to_param}"
         expect(response).to have_http_status(:success)
       end
     end
 
     describe "GET /models/:id/edit" do
       it "shows edit page for file", :as_moderator do
-        get "/models/#{library.models.first.id}/edit"
+        get "/models/#{library.models.first.to_param}/edit"
         expect(response).to have_http_status(:success)
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { get "/models/#{library.models.first.id}/edit" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { get "/models/#{library.models.first.to_param}/edit" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "PUT /models/:id" do
       it "adds tags to a model", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-        put "/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b", "c"]}}
+        put "/models/#{library.models.first.to_param}", params: {model: {tag_list: ["a", "b", "c"]}}
         expect(response).to have_http_status(:redirect)
         tags = library.models.first.tag_list
         expect(tags.length).to eq 3
@@ -64,7 +64,7 @@ RSpec.describe "Models" do
         first.tag_list = "a, b, c"
         first.save
 
-        put "/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b"]}}
+        put "/models/#{library.models.first.to_param}", params: {model: {tag_list: ["a", "b"]}}
         expect(response).to have_http_status(:redirect)
         first.reload
         tags = first.tag_list
@@ -78,7 +78,7 @@ RSpec.describe "Models" do
         first.tag_list = "a, b, c"
         first.save
 
-        put "/models/#{library.models.first.id}", params: {model: {tag_list: ["a", "b", "d"]}}
+        put "/models/#{library.models.first.to_param}", params: {model: {tag_list: ["a", "b", "d"]}}
         expect(response).to have_http_status(:redirect)
         first.reload
         tags = first.tag_list
@@ -89,18 +89,18 @@ RSpec.describe "Models" do
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { put "/models/#{library.models.first.id}" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { put "/models/#{library.models.first.to_param}" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "DELETE /models/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
       it "redirects to model list after deletion", :as_moderator do
-        delete "/models/#{library.models.first.id}"
+        delete "/models/#{library.models.first.to_param}"
         expect(response).to redirect_to("/")
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { delete "/models/#{library.models.first.id}" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { delete "/models/#{library.models.first.to_param}" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
@@ -122,7 +122,7 @@ RSpec.describe "Models" do
         update[models[0].id] = 1
         update[models[1].id] = 1
 
-        patch "/models/update", params: {models: update, creator_id: creator.id}
+        patch "/models/update", params: {models: update, creator_id: creator.to_param}
 
         expect(response).to have_http_status(:redirect)
         models.each { |model| model.reload }
@@ -187,7 +187,7 @@ RSpec.describe "Models" do
       end
 
       it "returns paginated models" do # rubocop:todo RSpec/MultipleExpectations
-        get "/models?library=#{library.id}&page=2"
+        get "/models?library=#{library.to_param}&page=2"
         expect(response).to have_http_status(:success)
         expect(response.body).to match(/pagination/)
       end
@@ -195,29 +195,29 @@ RSpec.describe "Models" do
 
     describe "POST /models/:id/merge" do
       it "gives a bad request response if no merge parameter is provided", :as_moderator do
-        post "/models/#{library.models.first.id}/merge"
+        post "/models/#{library.models.first.to_param}/merge"
         expect(response).to have_http_status(:bad_request)
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { post "/models/#{library.models.first.id}/merge" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { post "/models/#{library.models.first.to_param}/merge" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
     describe "POST /models/:id/scan" do
       it "schedules a scan job", :as_moderator do
-        expect { post "/models/#{library.models.first.id}/scan" }.to(
+        expect { post "/models/#{library.models.first.to_param}/scan" }.to(
           have_enqueued_job(Scan::CheckModelJob).with(library.models.first.id).once
         )
       end
 
       it "redirects back to model page", :as_contributor do
-        post "/models/#{library.models.first.id}/scan"
+        post "/models/#{library.models.first.to_param}/scan"
         expect(response).to redirect_to("/models/#{library.models.first.id}")
       end
 
       it "is denied to non-contributors", :as_member do
-        expect { post "/models/#{library.models.first.id}/scan" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { post "/models/#{library.models.first.to_param}/scan" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
