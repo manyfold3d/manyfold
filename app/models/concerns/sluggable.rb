@@ -2,7 +2,6 @@ module Sluggable
   extend ActiveSupport::Concern
 
   included do
-    validates :slug, uniqueness: true
     before_validation :slugify_name, if: :name_changed?
   end
 
