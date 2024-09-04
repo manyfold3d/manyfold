@@ -1,22 +1,23 @@
-<%= form_with model: @collection do |form| %>
+<%= form_with model: @collection, class: "grid grid-2-auto" do |form| %>
   <%= text_input_row form, :name %>
-  <div class="grid mb-3 input-group">
-    <%= form.label :collection_id, class: "g-col-sm-2 col-form-label" %>
+
+  <%= form.label :collection_id, class: "col-form-label" %>
+  <div class="input-group">
     <%= form.collection_select :collection_id, @collections, :id, :name, {include_blank: true}, {class: "form-control g-col-auto form-select"} %>
     <%= link_to t("collections.general.new"), new_collection_path, class: "btn btn-outline-secondary g-col-auto" if policy(:collection).new? %>
   </div>
+
   <%= render "links_form", form: form %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes %>
   <%= render "caber_relations_form", form: form %>
-  <div class="grid mb-4">
-    <div class='col'>
-      <%= form.submit translate("general.save"), class: "btn btn-primary" %>
-    </div>
+
+  <div class='g-start-2'>
+    <%= form.submit translate("general.save"), class: "btn btn-primary" %>
     <% if @collection.persisted? %>
-      <div class='col text-end'>
+      <span class='text-end'>
         <%= link_to t("general.delete"), collection_path(@collection), {method: :delete, class: "btn btn-outline-danger"} if policy(@collection).destroy? %>
-      </div>
+      </span>
     <% end %>
   </div>
 <% end %>

@@ -1,17 +1,15 @@
-<%= form_with model: @creator do |form| %>
+<%= form_with model: @creator, class: "grid grid-2-auto" do |form| %>
   <%= text_input_row form, :name %>
   <%= render "links_form", form: form %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes %>
   <%= render "caber_relations_form", form: form %>
-  <div class="grid mb-4">
-    <div class='col'>
-      <%= form.submit translate("general.save"), class: "btn btn-primary" %>
-    </div>
+  <div class='g-start-2'>
+    <%= form.submit translate("general.save"), class: "btn btn-primary" %>
     <% if @creator.persisted? %>
-      <div class='col text-end'>
+      <span class='text-end'>
         <%= link_to t("general.delete"), creator_path(@creator), {method: :delete, class: "btn btn-outline-danger"} if policy(@creator).destroy? %>
-      </div>
+      </span>
     <% end %>
   </div>
 <% end %>
