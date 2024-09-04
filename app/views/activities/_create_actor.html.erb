@@ -2,32 +2,28 @@
 <%- object = activity&.entity %>
 <%- thing = object&.entity %>
 <% if thing && !thing.is_a?(User) && (thing.grants_permission_to?(["view", "edit", "own"], current_user) || thing.grants_permission_to?(["view", "edit", "own"], current_user&.roles)) %>
-  <div class="card border-0 border-bottom">
-    <div class="card-body py-2">
-      <div class="grid">
-        <div class="col g-col-auto">
-          <%= icon icon_for(thing.class), thing.class.model_name.human %>
-        </div>
-        <div class="col">
-          <%- if object.local? %>
-            <%= link_to thing.name, thing %>
-          <%- elsif object.profile_url %>
-            <%= link_to object.name, object.profile_url %>
-          <%- else %>
-            <%= object.name %>
-          <%- end %>
-        </div>
-        <% if thing.is_a? Model %>
-          <div class="col g-col-auto">
-            <%= status_badges(thing) %>
-          </div>
-        <% end %>
-        <div class="col g-col-auto">
-          <small>
-            <%= t("home.index.create_actor", time: time_ago_in_words(thing.created_at), name: subject.name) %>
-          </small>
-        </div>
-      </div>
-    </div>
-  </div>
+  <tr>
+    <td>
+      <%= icon icon_for(thing.class), thing.class.model_name.human %>
+    </td>
+    <td>
+      <%- if object.local? %>
+        <%= link_to thing.name, thing %>
+      <%- elsif object.profile_url %>
+        <%= link_to object.name, object.profile_url %>
+      <%- else %>
+        <%= object.name %>
+      <%- end %>
+    </td>
+    <td>
+      <% if thing.is_a? Model %>
+        <%= status_badges(thing) %>
+      <% end %>
+    </td>
+    <td>
+      <small>
+        <%= t("home.index.create_actor", time: time_ago_in_words(thing.created_at), name: subject.name) %>
+      </small>
+    </td>
+  </tr>
 <% end %>

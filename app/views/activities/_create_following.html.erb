@@ -1,20 +1,18 @@
 <%- follow = activity.entity %>
 
-<div class="card border-0 border-bottom">
-  <div class="card-body py-2">
-    <div class="grid">
-      <div class="col">
-        <% if follow.actor.entity == current_user %>
-          You
-        <% else %>
-          <%= follow.actor.name %>
-        <% end %>
-        followed
-        <%= link_to follow.target_actor.name, follow.target_actor.entity %>
-      </div>
-      <div class="col g-col-auto">
-        <small><%= t("home.index.how_long_ago", time: time_ago_in_words(follow.created_at)) %></small>
-      </div>
-    </div>
-  </div>
-</div>
+<tr>
+  <td></td>
+  <td>
+    <% if follow.actor.entity == current_user %>
+      You
+    <% else %>
+      <%= follow.actor.name %>
+    <% end %>
+    followed
+    <%= link_to follow.target_actor.name, follow.target_actor.entity %>
+  </td>
+  <td></td>
+  <td>
+    <small><%= t("home.index.how_long_ago", time: time_ago_in_words(follow.created_at)) %></small>
+  </td>
+</tr>
