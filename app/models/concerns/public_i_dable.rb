@@ -12,7 +12,7 @@ module PublicIDable
 
   private
 
-  ALPHABET = "bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ"
+  ALPHABET = "bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ0123456789"
 
   def generate_public_id
     self.public_id ||= Nanoid.generate(size: 8, alphabet: ALPHABET)
