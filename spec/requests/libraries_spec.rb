@@ -26,7 +26,7 @@ RSpec.describe "Libraries" do
     describe "POST /libraries/:id/scan" do
       it "scans a single library", :as_contributor do # rubocop:todo RSpec/MultipleExpectations
         expect { post "/libraries/#{library.to_param}/scan" }.to have_enqueued_job(Scan::DetectFilesystemChangesJob).exactly(:once)
-        expect(response).to redirect_to("/libraries/#{library.id}")
+        expect(response).to redirect_to("/libraries/#{library.public_id}")
       end
 
       it "denies member permission", :as_member do
@@ -88,7 +88,7 @@ RSpec.describe "Libraries" do
     describe "GET /libraries/:id" do
       it "redirects to models index with library filter", :as_member do
         get "/libraries/#{library.to_param}"
-        expect(response).to redirect_to("/models?library=#{library.id}")
+        expect(response).to redirect_to("/models?library=#{library.public_id}")
       end
     end
 

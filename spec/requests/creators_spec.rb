@@ -69,14 +69,14 @@ RSpec.describe "Creators" do
     describe "GET /creators/:id", :as_member do
       it "Redirects to a list of models with that creator" do
         get "/creators/#{creator.to_param}"
-        expect(response).to redirect_to("/models?creator=#{creator.id}")
+        expect(response).to redirect_to("/models?creator=#{creator.public_id}")
       end
     end
 
     describe "PATCH /creators/:id" do
       it "saves details", :as_moderator do
         patch "/creators/#{creator.to_param}", params: {creator: {name: "newname"}}
-        expect(response).to redirect_to("/creators/#{creator.id}")
+        expect(response).to redirect_to("/creators/#{creator.public_id}")
       end
 
       it "is denied to non-moderators", :as_contributor do

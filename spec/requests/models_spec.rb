@@ -213,7 +213,7 @@ RSpec.describe "Models" do
 
       it "redirects back to model page", :as_contributor do
         post "/models/#{library.models.first.to_param}/scan"
-        expect(response).to redirect_to("/models/#{library.models.first.id}")
+        expect(response).to redirect_to("/models/#{library.models.first.public_id}")
       end
 
       it "is denied to non-contributors", :as_member do
