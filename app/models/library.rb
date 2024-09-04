@@ -2,12 +2,7 @@ require "shellwords"
 
 class Library < ApplicationRecord
   extend Memoist
-  include CoolId::Model
-
-  cool_id prefix: "l", id_field: :public_id
-  def to_param
-    public_id
-  end
+  include PublicIDable
 
   STORAGE_SERVICES = [
     "filesystem",

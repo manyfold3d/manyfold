@@ -6,12 +6,7 @@ class Model < ApplicationRecord
   include CaberObject
   include Linkable
   include Sluggable
-  include CoolId::Model
-
-  cool_id prefix: "m", id_field: :public_id
-  def to_param
-    public_id
-  end
+  include PublicIDable
 
   acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for, actor_type: "Document", include_in_user_count: false
 
@@ -139,7 +134,7 @@ class Model < ApplicationRecord
   end
 
   def previous_library
-    library_id_changed? ? Library.find(library_id_was) : library
+    library_id_changed? ? Library.find_by(public_id: library_id_was) : library
   end
 
   def previous_path
