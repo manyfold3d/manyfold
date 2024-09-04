@@ -11,7 +11,7 @@ class LibrariesController < ApplicationController
   end
 
   def show
-    redirect_to models_path(library: @library.id)
+    redirect_to models_path(library: @library)
   end
 
   def new

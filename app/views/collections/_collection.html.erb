@@ -19,7 +19,7 @@
       <div class="col-auto">
         <% if collection.collection %>
           <%= icon "collection", collection.model_name.human %>
-          <%= link_to collection.collection.name, (@filters || {}).merge(collection: collection.collection.id) %><br>
+          <%= link_to collection.collection.name, (@filters || {}).merge(collection: collection.collection) %><br>
         <% end %>
         <% if collection.caption %>
           <h6 class="card-subtitle mb-2 text-muted"><%= sanitize collection.caption %></h6>
@@ -34,8 +34,8 @@
         </ul>
       </div>
       <div>
-        <%= link_to "#{policy_scope(Model).where(collection: collection).count} #{Model.model_name.human count: policy_scope(Model).where(collection: collection).count}", {controller: "models", collection: collection.id}, class: "btn btn-primary", "aria-label": translate(".models_button.label", name: collection.name) if policy(collection).show? %>
-        <%= link_to "#{collection.collections.count} #{Collection.model_name.human count: collection.collections.count}", (@filters || {}).merge(controller: "collections", collection: collection.id), class: "btn btn-primary", "aria-label": translate(".collections_button.label", name: collection.name) if collection.collections.count > 0 && policy(collection).show? %>
+        <%= link_to "#{policy_scope(Model).where(collection: collection).count} #{Model.model_name.human count: policy_scope(Model).where(collection: collection).count}", {controller: "models", collection: collection}, class: "btn btn-primary", "aria-label": translate(".models_button.label", name: collection.name) if policy(collection).show? %>
+        <%= link_to "#{collection.collections.count} #{Collection.model_name.human count: collection.collections.count}", (@filters || {}).merge(controller: "collections", collection: collection), class: "btn btn-primary", "aria-label": translate(".collections_button.label", name: collection.name) if collection.collections.count > 0 && policy(collection).show? %>
         <%= link_to icon("pencil-fill", t(".edit_button.text")), edit_collection_path(collection), {class: "btn btn-outline-secondary", "aria-label": translate(".edit_button.label", name: collection.name)} if policy(collection).edit? %>
       </div>
     </div>
