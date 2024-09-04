@@ -134,7 +134,7 @@ class Model < ApplicationRecord
   end
 
   def previous_library
-    library_id_changed? ? Library.find_by(public_id: library_id_was) : library
+    library_id_changed? ? Library.find_by(id: library_id_was) : library
   end
 
   def previous_path
