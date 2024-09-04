@@ -37,7 +37,7 @@
     "@types/bootstrap": "^5.2.10",
     "@types/i18n-js": "^3.8.9",
     "@types/jquery": "^3.5.30",
-    "@types/node": "^20.16.3",
+    "@types/node": "^20.16.4",
     "@types/selectize": "^0.12.39",
     "@types/three": "^0.167.1",
     "@types/webpack-env": "^1.18.5",
