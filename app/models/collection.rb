@@ -72,7 +72,7 @@ class Collection < ApplicationRecord
   #     )  SELECT * FROM search_tree
 
   def self.ransackable_attributes(_auth_object = nil)
-    ["caption", "created_at", "id", "name", "notes", "slug", "updated_at"]
+    ["caption", "created_at", "id", "public_id", "name", "notes", "slug", "updated_at"]
   end
 
   def self.ransackable_associations(_auth_object = nil)
