@@ -35,7 +35,7 @@ module Filterable
     when ""
       models.where(collection_id: nil)
     else
-      @collection = Collection.find(collection)
+      @collection = Collection.find_by(public_id: collection)
       models.where(collection: Collection.tree_down(collection))
     end
   end
@@ -48,7 +48,7 @@ module Filterable
     when ""
       models.where(creator_id: nil)
     else
-      @creator = Creator.find(creator)
+      @creator = Creator.find_by(public_id: creator)
       models.where(creator: @creator)
     end
   end
@@ -96,7 +96,7 @@ module Filterable
     # Missing tags (If specific tag is not specified, require library to be set)
     if missingtag.presence || (missingtag && library)
       tag_regex_build = []
-      regexes = ((missingtag != "") ? [missingtag] : Library.find(library).tag_regex)
+      regexes = ((missingtag != "") ? [missingtag] : Library.find_by(public_id: library).tag_regex)
       # Regexp match syntax - postgres is different from MySQL and SQLite
       regact = ApplicationRecord.connection.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) ? "~" : "REGEXP"
       regexes.each do |reg|
