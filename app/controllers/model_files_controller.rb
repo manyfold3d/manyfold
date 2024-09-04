@@ -50,7 +50,7 @@ class ModelFilesController < ApplicationController
     hash = bulk_update_params
     params[:model_files].each_pair do |id, selected|
       if selected == "1"
-        file = @model.model_files.find(id)
+        file = @model.model_files.find_by(public_id: id)
         current_user.set_list_state(file, :printed, params[:printed] === "1")
         if file.update(hash)
           file.save
