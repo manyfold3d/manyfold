@@ -4,7 +4,8 @@ class GeneratePublicIDsForModels < ActiveRecord::Migration[7.1]
   def up
     [Model, ModelFile, Problem, Creator, Collection, Library].each do |model|
       model.find_each do |obj|
-        obj.update_attribute(:public_id, model.generate_cool_id) # rubocop:disable Rails/SkipsModelValidations
+        obj.send :generate_public_id
+        obj.save! validate: false
       end
     end
   end
