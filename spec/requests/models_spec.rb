@@ -234,12 +234,12 @@ RSpec.describe "Models" do
 
     describe "POST /models" do
       it "redirect back to index after upload", :as_contributor do
-        post "/models", params: {library: library.id, scan: "1", uploads: "{}"}
+        post "/models", params: {library: library.to_param, scan: "1", uploads: "{}"}
         expect(response).to redirect_to("/libraries")
       end
 
       it "denies member permission", :as_member do
-        expect { post "/models", params: {post: {library_pick: library.id, scan_after_upload: "1"}, upload: {datafiles: []}} }.to raise_error(Pundit::NotAuthorizedError)
+        expect { post "/models", params: {post: {library_pick: library.to_param, scan_after_upload: "1"}, upload: {datafiles: []}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
   end

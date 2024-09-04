@@ -84,7 +84,7 @@ RSpec.describe "Model Files" do
 
     describe "POST /models/:model_id/model_files", :as_moderator do
       context "when requesting a conversion" do
-        let(:params) { {convert: {id: stl_file.id, to: "threemf"}} }
+        let(:params) { {convert: {id: stl_file.to_param, to: "threemf"}} }
 
         it "queues a conversion job" do
           expect { post model_model_files_path(model, params: params) }.to have_enqueued_job(Analysis::FileConversionJob).with(stl_file.id, :threemf)
