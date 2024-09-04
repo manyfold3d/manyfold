@@ -4,6 +4,7 @@ require "support/mock_directory"
 RSpec.describe Model do
   it_behaves_like "Followable"
   it_behaves_like "Caber::Object"
+  it_behaves_like "Sluggable"
 
   it "is not valid without a path" do
     expect(build(:model, path: nil)).not_to be_valid
@@ -69,11 +70,6 @@ RSpec.describe Model do
   it "strips leading and trailing separators from paths" do
     model = create(:model, path: "/models/car/")
     expect(model.path).to eq "models/car"
-  end
-
-  it "automatically generates a slug from the name" do
-    model = create(:model, name: "Spın̈al Tap")
-    expect(model.slug).to eq "spin-al-tap"
   end
 
   context "with a library on disk" do
