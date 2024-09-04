@@ -89,7 +89,7 @@ class ModelsController < ApplicationController
   end
 
   def merge
-    if params[:target] && (target = (@model.parents.find { |x| x.id == params[:target].to_i }))
+    if params[:target] && (target = (@model.parents.find { |x| x.public_id == params[:target] }))
       @model.merge_into! target
       Scan::CheckModelIntegrityJob.perform_later(target.id)
       redirect_to target, notice: t(".success")
