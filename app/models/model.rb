@@ -4,6 +4,7 @@ class Model < ApplicationRecord
   include PathParser
   include Followable
   include CaberObject
+  include Linkable
 
   acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for, actor_type: "Document", include_in_user_count: false
 
@@ -14,11 +15,8 @@ class Model < ApplicationRecord
   belongs_to :collection, optional: true
   belongs_to :preview_file, class_name: "ModelFile", optional: true
   has_many :model_files, dependent: :destroy
-  has_many :links, as: :linkable, dependent: :destroy
   has_many :problems, as: :problematic, dependent: :destroy
   acts_as_taggable_on :tags
-
-  accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
 
   before_validation :strip_separators_from_path, if: :path_changed?
   before_validation :slugify_name, if: :name_changed?
