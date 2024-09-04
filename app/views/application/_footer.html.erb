@@ -1,6 +1,6 @@
 <footer class="container-fluid mt-5 py-2 border-top" id="footer">
-  <div class="grid">
-    <div class="g-col-lg-3 me-auto">
+  <div class="grid grid-4-auto">
+    <div>
       <span class="d-inline-flex align-items-center mb-2">
         <%= image_tag "roundel.svg", width: 48, height: 48, class: "me-2", alt: translate(".logo") %>
         <span class="fs-5"><%= t "application.title" %></span>
@@ -15,7 +15,7 @@
         </li>
       </ul>
     </div>
-    <div class="g-col-4 g-col-lg-2 mb-3">
+    <div>
       <h5><%= t ".stats_heading" %></h5>
       <ul class="list-unstyled">
         <li class="mb-2"><%= Library.count %> <%= Library.model_name.human(count: Library.count) %></li>
@@ -23,14 +23,14 @@
         <li class="mb-2"><%= ModelFile.count %> <%= ModelFile.model_name.human(count: ModelFile.count) %></li>
       </ul>
     </div>
-    <div class="g-col-4 g-col-lg-2 mb-3">
+    <div>
       <h5><%= t ".development_heading" %></h5>
       <ul class="list-unstyled">
         <li class="mb-2"><a href="https://github.com/manyfold3d/manyfold" target="_blank"><%= t ".code" %></a></li>
         <li class="mb-2"><a href="https://github.com/manyfold3d/manyfold/issues" target="_blank"><%= t ".issues" %></a></li>
       </ul>
     </div>
-    <div class="g-col-4 g-col-lg-2 mb-3">
+    <div>
       <h5><%= t ".community_heading" %></h5>
       <ul class="list-unstyled">
         <li class="mb-2"><a href="https://matrix.to/#/#manyfold:one.ems.host" target="_blank"><%= t ".chat" %></a></li>
