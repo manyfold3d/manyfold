@@ -14,3 +14,7 @@
 	overflow-y: hidden;
 	position: relative;
 }
+
+.grid-2-auto {
+	grid-template-columns: auto auto;
+}

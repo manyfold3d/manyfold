@@ -1,12 +1,10 @@
-<div class="grid mb-3 input-group">
-  <%= form.label label, class: "g-col-sm-2 col-form-label" %>
-  <div class="form-control g-col-auto tag-container">
-    <%= form.collection_select :tag_list, tags,
-          :name, :name, {}, {
-            multiple: true,
-            class: "form-select",
-            name: name ? "#{name}[]" : nil,
-            data: {selectize: "true"}
-          } %>
-  </div>
+<%= form.label label, class: "col-form-label " %>
+<div class="form-control tag-container">
+  <%= form.collection_select :tag_list, tags,
+        :name, :name, {}, {
+          multiple: true,
+          class: "form-select",
+          name: name ? "#{name}[]" : nil,
+          data: {selectize: "true"}
+        } %>
 </div>

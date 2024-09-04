@@ -1,20 +1,18 @@
-<div class="grid mb-3">
-  <div class="col g-col-sm-2 col-form-label">
-    <%= t(".links") %>
-  </div>
-  <div class="col g-col-sm-10 border p-3">
-    <%= cocooned_container id: "cocooned-links" do %>
-      <%= form.fields_for :links do |f| %>
-        <%= render "link_fields", f: f %>
-      <% end %>
+<div class="col-form-label ">
+  <%= t(".links") %>
+</div>
+<div class="border p-3">
+  <%= cocooned_container id: "cocooned-links" do %>
+    <%= form.fields_for :links do |f| %>
+      <%= render "link_fields", f: f %>
     <% end %>
-    <div class="grid mb-3">
-      <%= tag.div class: "g-col-auto offset-sm-2 ps-0" do %>
-        <%= cocooned_add_item_button t(".add"), form, :links,
-              class: "btn btn-secondary",
-              insertion_node: "#cocooned-links",
-              insertion_method: "append" %>
-      <% end %>
-    </div>
+  <% end %>
+  <div class="grid mb-3">
+    <%= tag.div class: "g-start-2 ps-0" do %>
+      <%= cocooned_add_item_button t(".add"), form, :links,
+            class: "btn btn-secondary",
+            insertion_node: "#cocooned-links",
+            insertion_method: "append" %>
+    <% end %>
   </div>
 </div>
