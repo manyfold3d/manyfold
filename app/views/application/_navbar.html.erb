@@ -8,7 +8,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse row" id="navbar">
-      <ul class="navbar-nav col-6 ps-4 ps-lg-0 align-self-start">
+      <ul class="navbar-nav g-col-6 ps-4 ps-lg-0 align-self-start">
         <li class="nav-item">
           <%= nav_link "box", Model.model_name.human(count: 100), models_path(@filters) %>
         </li>
@@ -29,7 +29,7 @@
           </li>
         <% end %>
       </ul>
-      <ul class="navbar-nav col-6 pe-4 align-self-start justify-content-end">
+      <ul class="navbar-nav g-col-6 pe-4 align-self-start justify-content-end">
         <li class="nav-item">
           <%= nav_link "plus-circle", t("libraries.general.new"), new_library_path, text_style: "d-lg-none" if policy(:library).new? %>
         </li>

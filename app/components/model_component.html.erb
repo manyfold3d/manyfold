@@ -13,7 +13,7 @@
        <div class='preview-empty'> <p>no preview availiable</p></div>
     <% end %>
     <div class="card-body">
-      <div class="row ">
+      <div class="grid ">
         <div class="col">
           <div class="card-title">
             <a data-field="model[name]" data-path="<%= model_path @model %>" contenteditable=true>
@@ -27,7 +27,7 @@
             <%= link_to helpers.icon("trash", t(".delete_button.text")), model_path(@model), {method: :delete, class: "btn btn-outline-danger btn-sm", "aria-label": translate(".delete_button.label", name: @model.name), data: {confirm: translate("models.destroy.confirm")}} if @can_destroy %>
           </div>
         </div>
-        <div class="col-auto">
+        <div class="g-col-auto">
           <small>
             <ul class="list-unstyled">
               <% if @creator.nil? && @model.creator %>

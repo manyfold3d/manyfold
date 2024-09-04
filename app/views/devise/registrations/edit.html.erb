@@ -1,8 +1,8 @@
 <h2><%= t(".title") %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
-  <div class="row mb-4">
-    <div class="col-12 col-sm">
+  <div class="grid mb-4">
+    <div class="g-col-12 g-col-sm">
       <div class="card mb-2">
         <h4 class="card-header"><%= t(".security") %></h4>
         <div class="card-body">
@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-    <div class="col-12 col-sm">
+    <div class="g-col-12 g-col-sm">
       <div class="card mb-2">
         <h4 class="card-header"><%= t(".contact_info") %></h4>
         <div class="card-body">
@@ -40,7 +40,7 @@
     </div>
   </div>
 
-  <div class="row mb-4">
+  <div class="grid mb-4">
     <div class='col'>
       <button type="submit" class="btn btn-primary"><%= icon("save", t(".submit")) %> <%= t(".submit") %></button>
     </div>

@@ -8,7 +8,7 @@
     <% if pagination_settings["creators"] %>
       <%= paginate @creators %>
     <% end %>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+    <div class="grid row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
       <%= render "unassigned" if !pagination_settings["creators"] || @creators.first_page? %>
       <%= render @creators %>
     </div>

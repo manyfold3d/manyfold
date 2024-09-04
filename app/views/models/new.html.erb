@@ -4,17 +4,17 @@
 
 <%= form_with url: models_path, id: "upload-form" do |form| %>
 
-  <div class="row mb-3 input-group">
-    <%= form.label :library, Library.model_name.human, class: "col-sm-2 col-form-label" %>
-    <div class='col-sm-10 ps-0'>
+  <div class="grid mb-3 input-group">
+    <%= form.label :library, Library.model_name.human, class: "g-col-sm-2 col-form-label" %>
+    <div class='g-col-sm-10 ps-0'>
       <%= form.select :library, Library.all.map { |lib| [library_select_title(lib), lib.to_param] }, {include_blank: false}, {class: "form-control form-select"} %>
       <span class="form-text"><%= t ".library.help" %></span>
     </div>
   </div>
 
-  <div class="row mb-3 input-group">
-    <%= form.label :files, t(".files.label"), class: "col-sm-2 col-form-label" %>
-    <div class='col-sm-10 ps-0'>
+  <div class="grid mb-3 input-group">
+    <%= form.label :files, t(".files.label"), class: "g-col-sm-2 col-form-label" %>
+    <div class='g-col-sm-10 ps-0'>
       <%= content_tag :div, nil,
             id: "uppy",
             "data-max-file-size": SiteSettings.max_file_upload_size,
@@ -24,8 +24,8 @@
 
   <%= render "bulk_fields", form: form %>
 
-  <div class="row mb-3 input-group">
-    <div class='offset-sm-2 col-sm-10 ps-0'>
+  <div class="grid mb-3 input-group">
+    <div class='offset-sm-2 g-col-sm-10 ps-0'>
       <%= submit_tag translate(".submit"), class: "btn btn-primary", disabled: true %>
     </div>
   </div>

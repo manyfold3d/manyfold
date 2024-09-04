@@ -4,8 +4,8 @@
 <% if thing && !thing.is_a?(User) && (thing.grants_permission_to?(["view", "edit", "own"], current_user) || thing.grants_permission_to?(["view", "edit", "own"], current_user&.roles)) %>
   <div class="card border-0 border-bottom">
     <div class="card-body py-2">
-      <div class="row">
-        <div class="col col-auto">
+      <div class="grid">
+        <div class="col g-col-auto">
           <%= icon icon_for(thing.class), thing.class.model_name.human %>
         </div>
         <div class="col">
@@ -18,11 +18,11 @@
           <%- end %>
         </div>
         <% if thing.is_a? Model %>
-          <div class="col col-auto">
+          <div class="col g-col-auto">
             <%= status_badges(thing) %>
           </div>
         <% end %>
-        <div class="col col-auto">
+        <div class="col g-col-auto">
           <small>
             <%= t("home.index.create_actor", time: time_ago_in_words(thing.created_at), name: subject.name) %>
           </small>

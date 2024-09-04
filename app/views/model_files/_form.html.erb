@@ -13,9 +13,9 @@
       <%= form.label :y_up, class: "form-check-label" %>
     </div>
     <% unless @file.presupported %>
-      <div class="row mb-3 input-group">
-        <%= form.label :presupported_version_id, class: "col-sm-2 col-form-label" %>
-        <%= form.collection_select :presupported_version_id, @model.model_files.presupported, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
+      <div class="grid mb-3 input-group">
+        <%= form.label :presupported_version_id, class: "g-col-sm-2 col-form-label" %>
+        <%= form.collection_select :presupported_version_id, @model.model_files.presupported, :id, :name, {include_blank: true}, {class: "form-control g-col-auto form-select"} %>
       </div>
     <% end %>
   <% end %>

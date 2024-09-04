@@ -1,7 +1,7 @@
 <h1><%= t ".title" %></h1>
 
-<div class="row">
-  <div class='col col-auto'>
+<div class="grid">
+  <div class='col g-col-auto'>
     <%= t ".description", retention_period: distance_of_time_in_words(ActiveJob::Status.options[:expires_in]) %>
   </div>
   <% if !SiteSettings.demo_mode_enabled? %>

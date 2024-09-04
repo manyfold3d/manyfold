@@ -1,18 +1,18 @@
 <%= form_with model: @library do |form| %>
   <%= text_input_row form, :name %>
   <% unless @library.persisted? %>
-    <div class="row mb-3 input-group">
-      <%= form.label :storage_service, class: "col-sm-2 col-form-label" %>
-      <div class='col-sm-10 ps-0'>
-        <%= form.select :storage_service, Library::STORAGE_SERVICES.map { |x| [translate("libraries.storage_services.%{service}" % {service: x}), x] }, {}, {class: "form-control col-auto form-select", "data-bs-collapse": "collapse"} %>
+    <div class="grid mb-3 input-group">
+      <%= form.label :storage_service, class: "g-col-sm-2 col-form-label" %>
+      <div class='g-col-sm-10 ps-0'>
+        <%= form.select :storage_service, Library::STORAGE_SERVICES.map { |x| [translate("libraries.storage_services.%{service}" % {service: x}), x] }, {}, {class: "form-control g-col-auto form-select", "data-bs-collapse": "collapse"} %>
         <div id="options-filesystem" class="card p-3 collapse show storage-collapse" data-bs-parent="#library_storage_service">
-          <div class="row">
+          <div class="grid">
             <p><%= t ".filesystem_description_html" %></p>
           </div>
           <%= text_input_row form, :path, placeholder: translate(".path.placeholder") %>
         </div>
         <div id="options-s3" class="card p-3 collapse show storage-collapse" data-bs-parent="#library_storage_service">
-          <div class="row">
+          <div class="grid">
             <p><%= t ".s3_description_html" %></p>
           </div>
           <%= text_input_row form, :s3_endpoint, help: t(".s3_endpoint.help"), autocomplete: false %>
@@ -29,23 +29,23 @@
   <%= rich_text_input_row form, :notes, help: t(".notes.help") %>
 
   <% if @library.persisted? %>
-    <div class="row mb-3 input-group">
-      <%= form.label :tag_regex, class: "col-sm-2 col-form-label mb-0" %>
-      <div id="newinput" class="col-sm-10 p-0">
+    <div class="grid mb-3 input-group">
+      <%= form.label :tag_regex, class: "g-col-sm-2 col-form-label mb-0" %>
+      <div id="newinput" class="g-col-sm-10 p-0">
         <% @library.tag_regex.each do |reg| %>
           <div class="input-group">
-            <%= text_field_tag "library[tag_regex][]", reg, class: "form-control col-sm-11", autocomplete: "off" %>
-            <%= link_to icon(:trash, "Delete"), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
+            <%= text_field_tag "library[tag_regex][]", reg, class: "form-control g-col-sm-11", autocomplete: "off" %>
+            <%= link_to icon(:trash, "Delete"), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger g-col-auto" %>
           </div>
         <% end %>
         <div id="regexclone" style="display: none">
           <div class="input-group">
-            <%= text_field_tag "library[tag_regex][]", "", class: "form-control col-sm-11", autocomplete: "off" %>
-            <%= link_to icon(:trash, "Delete"), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
+            <%= text_field_tag "library[tag_regex][]", "", class: "form-control g-col-sm-11", autocomplete: "off" %>
+            <%= link_to icon(:trash, "Delete"), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger g-col-auto" %>
           </div>
         </div>
       </div>
-      <div class="col-sm-2"></div><div class="col-sm-10 p-0">
+      <div class="g-col-sm-2"></div><div class="g-col-sm-10 p-0">
         <%= link_to icon("plus-square-dotted", t(".add_line")), "", onClick: "$('#newinput').append($('#regexclone').html()); return false;", class: "btn btn-primary" %>
         <span id="libraryRegexHelp" class="form-text"><%= t(".tag_regex.help") %></span>
       </div>

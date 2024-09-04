@@ -1,46 +1,46 @@
 <% if !@filters.empty?() %>
   <%= card :secondary, t(".title") do %>
     <% if @filters[:q] %>
-      <div class="row">
-        <div class="col-auto"><%= icon "search", t(".search") %></div>
-        <div class="col-auto"><%= t(".search") %></div>
+      <div class="grid">
+        <div class="g-col-auto"><%= icon "search", t(".search") %></div>
+        <div class="g-col-auto"><%= t(".search") %></div>
         <div class="col"><%= @filters[:q] %></div>
-        <div class="col-auto"><%= link_to icon("trash", t(".remove_search_filter")), @filters.except(:q), {class: "text-danger"} %></div>
+        <div class="g-col-auto"><%= link_to icon("trash", t(".remove_search_filter")), @filters.except(:q), {class: "text-danger"} %></div>
       </div>
     <% end %>
     <% if @filters[:collection] %>
-      <div class="row">
-        <div class="col-auto"><%= icon "collection", Collection.model_name.human %></div>
-        <div class="col" aria-label="<%= Collection.model_name.human %>"><%= @collection ? link_to(@collection.name, {collection: @collection}) : "Unknown" %></div>
-        <div class="col-auto"><%= link_to icon("trash", t(".remove_collection_filter")), @filters.except(:collection), {class: "text-danger"} %></div>
+      <div class="grid">
+        <div class="g-col-auto"><%= icon "collection", Collection.model_name.human %></div>
+        <div class="col" aria-label="<%= Collection.model_name.human %>"><%= @collection ? link_to(@collection.name, {collection: @collection.id}) : "Unknown" %></div>
+        <div class="g-col-auto"><%= link_to icon("trash", t(".remove_collection_filter")), @filters.except(:collection), {class: "text-danger"} %></div>
       </div>
     <% end %>
     <% if @filters[:library] %>
-      <div class="row">
-        <div class="col-auto"><%= icon "boxes", Library.model_name.human %></div>
+      <div class="grid">
+        <div class="g-col-auto"><%= icon "boxes", Library.model_name.human %></div>
         <div class="col" aria-label="<%= Library.model_name.human %>"><%= [*@filters[:library]].map { |l| Library.find_by(public_id: l).name }.join(", ") %></div>
-        <div class="col-auto"><%= link_to icon("trash", t(".remove_library_filter")), @filters.except(:library), {class: "text-danger"} %></div>
+        <div class="g-col-auto"><%= link_to icon("trash", t(".remove_library_filter")), @filters.except(:library), {class: "text-danger"} %></div>
       </div>
     <% end %>
     <% if @filters[:creator] %>
-      <div class="row">
-        <div class="col-auto"><%= icon "person", Creator.model_name.human %></div>
+      <div class="grid">
+        <div class="g-col-auto"><%= icon "person", Creator.model_name.human %></div>
         <div class="col" aria-label="<%= Creator.model_name.human %>"><%= @creator ? @creator.name.titleize : t(".unknown") %></div>
-        <div class="col-auto"><%= link_to icon("trash", t(".remove_creator_filter")), @filters.except(:creator), {class: "text-danger"} %></div>
+        <div class="g-col-auto"><%= link_to icon("trash", t(".remove_creator_filter")), @filters.except(:creator), {class: "text-danger"} %></div>
       </div>
     <% end %>
     <% if @filters[:tag] %>
-      <div class="row">
-        <div class="col-auto"><%= icon "tag", ActsAsTaggableOn::Tag.model_name.human(count: 100) %></div>
+      <div class="grid">
+        <div class="g-col-auto"><%= icon "tag", ActsAsTaggableOn::Tag.model_name.human(count: 100) %></div>
         <div class="col" aria-label="<%= ActsAsTaggableOn::Tag.model_name.human(count: 100) %>"><span class='pe-none'><%= render "tag_list", tags: @filter_tags %></span></div>
-        <div class="col-auto"><%= link_to icon("trash", t(".remove_tag_filter")), @filters.except(:tag), {class: "text-danger"} %></div>
+        <div class="g-col-auto"><%= link_to icon("trash", t(".remove_tag_filter")), @filters.except(:tag), {class: "text-danger"} %></div>
       </div>
     <% end %>
     <% if @filters[:missingtag] %>
-      <div class="row">
-        <div class="col-auto"><%= icon "tag", t(".missing_tags") %></div>
+      <div class="grid">
+        <div class="g-col-auto"><%= icon "tag", t(".missing_tags") %></div>
         <div class="col" aria-label="<%= t(".missing_tags") %>"><span class='pe-none'><%= content_tag(:a, @filters[:missingtag].presence || "*", {class: "badge rounded-pill border border-muted text-danger tag"}) %></span></div>
-        <div class="col-auto"><%= link_to icon("trash", t(".remove_missing_tag_filter")), @filters.except(:missingtag), {class: "text-danger"} %></div>
+        <div class="g-col-auto"><%= link_to icon("trash", t(".remove_missing_tag_filter")), @filters.except(:missingtag), {class: "text-danger"} %></div>
       </div>
     <% end %>
   <% end %>

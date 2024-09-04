@@ -1,19 +1,19 @@
 <div class="card mb-2">
   <h3 class="card-header"><%= t(".heading") %></h3>
   <div class="card-body">
-    <div class="row">
+    <div class="grid">
       <%= form.label nil, t(".threshold.label"), for: "tag_cloud[threshold]", class: "col col-form-label" %>
       <div class="col">
         <%= form.text_field "tag_cloud[threshold]", value: @user.tag_cloud_settings["threshold"], class: "form-control" %>
       </div>
     </div>
-    <div class="row">
+    <div class="grid">
       <%= form.label nil, t(".heatmap.label"), for: "tag_cloud[heatmap]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
         <%= form.check_box "tag_cloud[heatmap]", checked: @user.tag_cloud_settings["heatmap"], class: "form-check-input" %>
       </div>
     </div>
-    <div class="row">
+    <div class="grid">
       <%= form.label nil, t(".sorting.label"), for: "tag_cloud[sorting]", class: "col col-form-label" %>
       <div class="col">
         <%= form.select "tag_cloud[sorting]", ["frequency", "alphabetical"],
@@ -21,7 +21,7 @@
               class: "form-select" %>
       </div>
     </div>
-    <div class="row mb-2">
+    <div class="grid mb-2">
       <%= form.label nil, t(".keypair.label"), for: "tag_cloud[keypair]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
         <%= form.check_box "tag_cloud[keypair]", checked: @user.tag_cloud_settings["keypair"], class: "form-check-input" %>

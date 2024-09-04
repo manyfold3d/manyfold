@@ -2,7 +2,7 @@
 
 <div class="card border-0 border-bottom">
   <div class="card-body py-2">
-    <div class="row">
+    <div class="grid">
       <div class="col">
         <% if follow.actor.entity == current_user %>
           You
@@ -12,7 +12,7 @@
         followed
         <%= link_to follow.target_actor.name, follow.target_actor.entity %>
       </div>
-      <div class="col col-auto">
+      <div class="col g-col-auto">
         <small><%= t("home.index.how_long_ago", time: time_ago_in_words(follow.created_at)) %></small>
       </div>
     </div>

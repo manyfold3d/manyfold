@@ -4,34 +4,34 @@
     <p class='lead'>
       <%= t(".description") %>
     </p>
-    <div class="row mb-2">
-      <%= form.label nil, t(".auto_tag_new.label"), for: "model_tags[auto_tag_new]", class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8">
+    <div class="grid mb-2">
+      <%= form.label nil, t(".auto_tag_new.label"), for: "model_tags[auto_tag_new]", class: "g-col-sm-4 col-form-label" %>
+      <div class="g-col-sm-8">
         <%= form.text_field "model_tags[auto_tag_new]", value: SiteSettings.model_tags_auto_tag_new, class: "form-control" %>
       </div>
     </div>
-    <div class="row mb-2">
-      <%= form.label nil, t(".tag_model_directory_name.label"), for: "model_tags[tag_model_directory_name]", class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8 form-check form-switch">
+    <div class="grid mb-2">
+      <%= form.label nil, t(".tag_model_directory_name.label"), for: "model_tags[tag_model_directory_name]", class: "g-col-sm-4 col-form-label" %>
+      <div class="g-col-sm-8 form-check form-switch">
         <%= form.check_box "model_tags[tag_model_directory_name]", checked: SiteSettings.model_tags_tag_model_directory_name, class: "form-check-input" %>
         <small><%= t(".tag_model_directory_name.help") %></small>
       </div>
     </div>
-    <div class="row mb-2">
-      <%= form.label nil, t(".filter_stop_words.label"), for: "model_tags[filter_stop_words]", class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8 form-check form-switch">
+    <div class="grid mb-2">
+      <%= form.label nil, t(".filter_stop_words.label"), for: "model_tags[filter_stop_words]", class: "g-col-sm-4 col-form-label" %>
+      <div class="g-col-sm-8 form-check form-switch">
         <%= form.check_box "model_tags[filter_stop_words]", checked: SiteSettings.model_tags_filter_stop_words, class: "form-check-input" %>
       </div>
     </div>
-    <div class="row mb-2">
-      <%= form.label nil, t(".stop_words_locale.label"), for: "model_tags[stop_words_locale]", class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8">
+    <div class="grid mb-2">
+      <%= form.label nil, t(".stop_words_locale.label"), for: "model_tags[stop_words_locale]", class: "g-col-sm-4 col-form-label" %>
+      <div class="g-col-sm-8">
         <%= form.text_field "model_tags[stop_words_locale]", value: SiteSettings.model_tags_stop_words_locale, class: "form-control" %>
       </div>
     </div>
-    <div class="row mb-2">
-      <%= form.label nil, t(".custom_stop_words.label"), for: "model_tags[custom_stop_words]", class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8">
+    <div class="grid mb-2">
+      <%= form.label nil, t(".custom_stop_words.label"), for: "model_tags[custom_stop_words]", class: "g-col-sm-4 col-form-label" %>
+      <div class="g-col-sm-8">
         <%= form.text_field "model_tags[custom_stop_words]", value: SiteSettings.model_tags_custom_stop_words, class: "form-control" %>
       </div>
     </div>

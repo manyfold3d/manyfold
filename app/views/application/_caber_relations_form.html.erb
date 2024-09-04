@@ -1,7 +1,22 @@
 <%- if SiteSettings.multiuser_enabled? %>
-  <div class="row mb-3">
-    <div class="col col-auto">
+  <div class="grid mb-3">
+    <div class="col g-col-auto">
       <%= t(".permissions") %>
+    </div>
+    <div class="col border p-3">
+      <%= cocooned_container id: "cocooned-caber-relations" do %>
+        <%= form.fields_for :caber_relations do |f| %>
+          <%= render "caber_relation_fields", f: f %>
+        <% end %>
+      <% end %>
+      <div class="grid">
+        <%= tag.div class: "g-col-auto offset-sm-2 ps-0" do %>
+          <%= cocooned_add_item_button t(".add"), form, :caber_relations,
+                class: "btn btn-secondary",
+                insertion_node: "#cocooned-caber-relations",
+                insertion_method: "append" %>
+        <% end %>
+      </div>
     </div>
     <div class="col border p-3">
       <%= cocooned_container id: "cocooned-caber-relations" do %>

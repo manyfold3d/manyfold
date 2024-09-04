@@ -1,7 +1,7 @@
 <h1><%= t ".title" %></h1>
 
 <%= form_with url: user_settings_path(user: @user), method: :patch do |form| %>
-  <div class="row mb-4">
+  <div class="grid mb-4">
     <div class="col">
       <%= render "general_settings", form: form %>
       <%= render "pagination_settings", form: form %>
@@ -16,7 +16,7 @@
 
   <% if current_user.is_administrator? %>
 
-    <div class="row mb-4">
+    <div class="grid mb-4">
       <div class="col">
         <%= render "usage_settings", form: form %>
         <%= render "multiuser_settings", form: form %>
@@ -28,14 +28,14 @@
       </div>
     </div>
 
-    <div class="row mb-4">
+    <div class="grid mb-4">
       <div class="col">
         <%= render "library_settings", form: form %>
       </div>
     </div>
   <% end %>
 
-  <div class="row mb-4">
+  <div class="grid mb-4">
     <div class='col'>
       <button type="submit" class="btn btn-primary"><%= icon("save", t(".submit")) %> <%= t(".submit") %></button>
     </div>

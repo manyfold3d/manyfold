@@ -2,7 +2,7 @@
   <h3 class="card-header"><%= t(".heading") %></h3>
   <div class="card-body">
     <p class="lead"><%= t(".summary") %></p>
-    <div class="row">
+    <div class="grid">
       <%= form.label nil, t(".hide_presupported_versions.label"), for: "file_list[hide_presupported_versions]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
         <%= form.check_box "file_list[hide_presupported_versions]", checked: @user.file_list_settings["hide_presupported_versions"], class: "form-check-input" %>

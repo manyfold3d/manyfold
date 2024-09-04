@@ -31,10 +31,10 @@
 
   <%= render "tags_edit", form: form, name: :remove_tags, value: "", label: translate(".remove_tags"), tags: @remove_tags || [] %>
 
-  <div class="row mb-3">
-    <%= form.label :new_library_id, class: "col-sm-2 col-form-label" %>
-    <div class="col-sm-10">
-      <%= form.collection_select :new_library_id, Library.all, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
+  <div class="grid mb-3">
+    <%= form.label :new_library_id, class: "g-col-sm-2 col-form-label" %>
+    <div class="g-col-sm-10">
+      <%= form.collection_select :new_library_id, Library.all, :id, :name, {include_blank: true}, {class: "form-control g-col-auto form-select"} %>
     </div>
   </div>
 

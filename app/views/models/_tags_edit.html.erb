@@ -1,6 +1,6 @@
-<div class="row mb-3 input-group">
-  <%= form.label label, class: "col-sm-2 col-form-label" %>
-  <div class="form-control col-auto tag-container">
+<div class="grid mb-3 input-group">
+  <%= form.label label, class: "g-col-sm-2 col-form-label" %>
+  <div class="form-control g-col-auto tag-container">
     <%= form.collection_select :tag_list, tags,
           :name, :name, {}, {
             multiple: true,

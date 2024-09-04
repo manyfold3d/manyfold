@@ -1,39 +1,39 @@
 <%= form_with model: @model do |form| %>
   <%= text_input_row form, :name %>
 
-  <div class="row mb-3 input-group">
-    <%= form.label :preview_file_id, class: "col-sm-2 col-form-label" %>
-    <div class='col-sm-10 ps-0'>
+  <div class="grid mb-3 input-group">
+    <%= form.label :preview_file_id, class: "g-col-sm-2 col-form-label" %>
+    <div class='g-col-sm-10 ps-0'>
       <%= form.collection_select :preview_file_id, @model.model_files, :id, :name, {}, {class: "form-control form-select"} %>
       <span id="previewFileHelp" class="form-text"><%= t(".preview_file.help") %></span>
     </div>
   </div>
 
-  <div class="row mb-3 input-group">
-    <%= form.label :creator_id, class: "col-sm-2 col-form-label" %>
-    <%= form.collection_select :creator_id, @creators, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
-    <%= link_to t("creators.general.new"), new_creator_path, class: "btn btn-outline-secondary col-auto" if policy(:creator).new? %>
+  <div class="grid mb-3 input-group">
+    <%= form.label :creator_id, class: "g-col-sm-2 col-form-label" %>
+    <%= form.collection_select :creator_id, @creators, :id, :name, {include_blank: true}, {class: "form-control g-col-auto form-select"} %>
+    <%= link_to t("creators.general.new"), new_creator_path, class: "btn btn-outline-secondary g-col-auto" if policy(:creator).new? %>
   </div>
 
-  <div class="row mb-3 input-group">
-    <%= form.label :library_id, class: "col-sm-2 col-form-label" %>
-    <%= form.collection_select :library_id, Library.all, :id, :name, {include_blank: false}, {class: "form-control col-auto form-select", disabled: @model.contains_other_models?} %>
+  <div class="grid mb-3 input-group">
+    <%= form.label :library_id, class: "g-col-sm-2 col-form-label" %>
+    <%= form.collection_select :library_id, Library.all, :id, :name, {include_blank: false}, {class: "form-control g-col-auto form-select", disabled: @model.contains_other_models?} %>
   </div>
 
   <%= render "tags_edit", form: form, name: "model[tag_list]", value: (@model.tags.map { |tag| tag.name }).join(","), label: translate(".tags"), tags: @model.library.all_tags %>
 
-  <div class="row mb-3 input-group">
-    <%= form.label :collection_id, class: "col-sm-2 col-form-label" %>
-    <%= form.collection_select :collection_id, @collections, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
-    <%= link_to t("collections.general.new"), new_collection_path, class: "btn btn-outline-secondary col-auto" if policy(:collection).new? %>
+  <div class="grid mb-3 input-group">
+    <%= form.label :collection_id, class: "g-col-sm-2 col-form-label" %>
+    <%= form.collection_select :collection_id, @collections, :id, :name, {include_blank: true}, {class: "form-control g-col-auto form-select"} %>
+    <%= link_to t("collections.general.new"), new_collection_path, class: "btn btn-outline-secondary g-col-auto" if policy(:collection).new? %>
   </div>
 
   <%= render "links_form", form: form %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes %>
 
-  <div class="row mb-3 input-group">
-    <%= form.label :license, class: "col-sm-2 col-form-label" %>
+  <div class="grid mb-3 input-group">
+    <%= form.label :license, class: "g-col-sm-2 col-form-label" %>
     <div class="col p-0">
       <%= form.select :license, license_select_options(selected: @model.license), {include_blank: true}, class: "form-control form-select" %>
       <%= errors_for @model, :license %>

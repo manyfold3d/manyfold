@@ -1,6 +1,6 @@
-<%= cocooned_item class: "row mb-2 input-group" do %>
+<%= cocooned_item class: "grid mb-2 input-group" do %>
   <%- if f.object.persisted? %>
-    <span class="col col-auto">
+    <span class="col g-col-auto">
       <%- case f.object.subject.class.name %>
       <%- when "User" %>
         <%= icon "person", f.object.subject.class.model_name.human %>
@@ -17,8 +17,8 @@
       <%- end %>
     </span>
   <%- else %>
-    <%= f.text_field :subject, class: "col col-auto form-control", placeholder: translate(".subject.placeholder"), list: "caber-relations-role-list" %>
+    <%= f.text_field :subject, class: "col g-col-auto form-control", placeholder: translate(".subject.placeholder"), list: "caber-relations-role-list" %>
   <%- end %>
-  <%= f.select :permission, Caber.configuration.permissions.map { |p| [translate(".permissions.%{perm}" % {perm: p}), p] }, {}, {class: "form-control col-auto", disabled: (f.object.subject == current_user)} %>
-  <%= cocooned_remove_item_button icon(:trash, translate(".delete")), f, class: "btn btn-outline-danger col-auto" unless f.object.subject == current_user %>
+  <%= f.select :permission, Caber.configuration.permissions.map { |p| [translate(".permissions.%{perm}" % {perm: p}), p] }, {}, {class: "form-control g-col-auto", disabled: (f.object.subject == current_user)} %>
+  <%= cocooned_remove_item_button icon(:trash, translate(".delete")), f, class: "btn btn-outline-danger g-col-auto" unless f.object.subject == current_user %>
 <% end %>

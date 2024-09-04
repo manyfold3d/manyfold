@@ -6,25 +6,25 @@
       <%= t(".description") %>
     </p>
 
-    <div class="row">
+    <div class="grid">
       <%= form.label nil, t(".models.label"), for: "pagination[models]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
         <%= form.check_box "pagination[models]", checked: @user.pagination_settings["models"], class: "form-check-input" %>
       </div>
     </div>
-    <div class="row">
+    <div class="grid">
       <%= form.label nil, t(".creators.label"), for: "pagination[creators]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
         <%= form.check_box "pagination[creators]", checked: @user.pagination_settings["creators"], class: "form-check-input" %>
       </div>
     </div>
-    <div class="row">
+    <div class="grid">
       <%= form.label nil, t(".collections.label"), for: "pagination[collections]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
         <%= form.check_box "pagination[collections]", checked: @user.pagination_settings["collections"], class: "form-check-input" %>
       </div>
     </div>
-    <div class="row">
+    <div class="grid">
       <%= form.label nil, t(".per_page.label"), for: "pagination[per_page]", class: "col col-form-label" %>
       <div class="col">
         <%= form.number_field "pagination[per_page]", value: @user.pagination_settings["per_page"], in: 1..100, class: "form-control" %>

@@ -1,4 +1,4 @@
-<div class="row bg-body-tertiary pt-3 mb-3 text-center">
+<div class="grid bg-body-tertiary pt-3 mb-3 text-center">
   <%= render "application/content_header" %>
   <h1 class="d-none d-lg-block"><%= t "application.title" %></h1>
   <p class='lead'><%= t "application.tagline" %></p>
@@ -7,7 +7,7 @@
       <%= t "application.demo_mode" %>
     </div>
   <% end %>
-  <div class="col-8 offset-md-2">
+  <div class="g-col-8 offset-md-2">
     <%= form_with url: models_path, method: :get, class: "mt-3" do |f| %>
       <div class="input-group mb-3">
         <%= f.text_field :q, class: "form-control", placeholder: translate(".search.placeholder"), aria_label: "Search", aria_describedby: "button-search", value: @query %>
@@ -17,8 +17,8 @@
   </div>
 </div>
 <% if !@feed.empty? %>
-  <div class="row row-cols-2">
-    <div class="col-8 offset-md-2">
+  <div class="grid row-cols-2">
+    <div class="g-col-8 offset-md-2">
       <p class="lead"><%= t(".recent_activity") %></p>
       <% @feed.each do |activity| %>
         <%= render partial: "activities/#{activity.action.parameterize}_#{activity.entity_type.demodulize.parameterize}", locals: {activity: activity} %>
