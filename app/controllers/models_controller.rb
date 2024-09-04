@@ -64,7 +64,7 @@ class ModelsController < ApplicationController
 
   def create
     authorize :model
-    library = Library.find(params[:library])
+    library = Library.find_by(public_id: params[:library])
     uploads = begin
       JSON.parse(params[:uploads])[0]["successful"]
     rescue
@@ -186,7 +186,7 @@ class ModelsController < ApplicationController
   end
 
   def get_model
-    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find(params[:id])
+    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find_by(public_id: params[:id])
     authorize @model
     @title = @model.name
   end
