@@ -1,6 +1,12 @@
 class ModelFile < ApplicationRecord
   include LibraryUploader::Attachment(:attachment)
   include Listable
+  include CoolId::Model
+
+  cool_id prefix: "f", id_field: :public_id
+  def to_param
+    public_id
+  end
 
   extend Memoist
 

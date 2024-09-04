@@ -6,6 +6,12 @@ class Model < ApplicationRecord
   include CaberObject
   include Linkable
   include Sluggable
+  include CoolId::Model
+
+  cool_id prefix: "m", id_field: :public_id
+  def to_param
+    public_id
+  end
 
   acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for, actor_type: "Document", include_in_user_count: false
 

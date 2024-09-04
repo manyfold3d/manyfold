@@ -1,4 +1,11 @@
 class Problem < ApplicationRecord
+  include CoolId::Model
+
+  cool_id prefix: "p", id_field: :public_id
+  def to_param
+    public_id
+  end
+
   belongs_to :problematic, polymorphic: true
 
   validates :category, uniqueness: {scope: :problematic}, presence: true
