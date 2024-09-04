@@ -25,7 +25,7 @@ en:
         storage_service: Storage Service
         tag_regex: Required Tags
       link:
-        url: Link
+        url: URL
       model:
         caption: Caption
         collection_id: Collection
@@ -224,6 +224,7 @@ en:
       version: Version
     links_form:
       add: add another link
+      links: Web Links
     navbar:
       account: Account
       activity: Activity

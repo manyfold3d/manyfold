@@ -1,5 +1,5 @@
 <%= cocooned_item class: "row mb-3 input-group" do %>
-  <%= f.label :url, class: "col-sm-2 col-form-label" %>
+  <%= f.label :url, class: "col col-auto col-form-label" %>
   <%= f.url_field :url, class: "form-control col-auto", placeholder: "Any related web page" %>
   <%= cocooned_remove_item_button icon(:trash, "Delete"), f, class: "btn btn-outline-danger col-auto" %>
 <% end %>
