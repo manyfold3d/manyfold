@@ -1,18 +1,15 @@
 class Collection < ApplicationRecord
   include Followable
   include CaberObject
+  include Linkable
+  include Sluggable
 
   acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for, actor_type: "Collection", include_in_user_count: false
 
   has_many :models, dependent: :nullify
   has_many :collections, dependent: :nullify
-  has_many :links, as: :linkable, dependent: :destroy
   belongs_to :collection, optional: true
-  accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
   validates :name, uniqueness: {case_sensitive: false}
-  validates :slug, uniqueness: true
-
-  before_validation :slugify_name, if: :name_changed?
 
   default_scope { order(:name) }
   # returns all collections at and below given ids
@@ -74,11 +71,5 @@ class Collection < ApplicationRecord
 
   def self.ransackable_associations(_auth_object = nil)
     ["collection", "collections", "links", "models"]
-  end
-
-  private
-
-  def slugify_name
-    self.slug = name.parameterize
   end
 end
