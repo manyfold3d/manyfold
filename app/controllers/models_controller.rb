@@ -130,7 +130,7 @@ class ModelsController < ApplicationController
     add_tags = Set.new(hash.delete(:add_tags))
     remove_tags = Set.new(hash.delete(:remove_tags))
     ids = params[:models].select { |k, v| v == "1" }.keys
-    policy_scope(Model).find(ids).each do |model|
+    policy_scope(Model).where(public_id: ids).find_each do |model|
       if model&.update(hash)
         existing_tags = Set.new(model.tag_list)
         model.tag_list = existing_tags + add_tags - remove_tags
