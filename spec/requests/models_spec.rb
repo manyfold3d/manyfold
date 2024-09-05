@@ -119,10 +119,10 @@ RSpec.describe "Models" do
       it "updates models creator", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
         models = library.models.take(2)
         update = {}
-        update[models[0].id] = 1
-        update[models[1].id] = 1
+        update[models[0].to_param] = 1
+        update[models[1].to_param] = 1
 
-        patch "/models/update", params: {models: update, creator_id: creator.to_param}
+        patch "/models/update", params: {models: update, creator_id: creator.id}
 
         expect(response).to have_http_status(:redirect)
         models.each { |model| model.reload }
@@ -133,7 +133,7 @@ RSpec.describe "Models" do
       it "adds tags to models", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
         update = {}
         library.models.take(2).each do |model|
-          update[model.id] = 1
+          update[model.to_param] = 1
         end
 
         patch "/models/update", params: {models: update, add_tags: ["a", "b", "c"]}
@@ -149,7 +149,7 @@ RSpec.describe "Models" do
         library.models.take(2).each do |model|
           model.tag_list = "a, b, c"
           model.save
-          update[model.id] = 1
+          update[model.to_param] = 1
         end
 
         patch "/models/update", params: {models: update, remove_tags: ["a", "b"]}
