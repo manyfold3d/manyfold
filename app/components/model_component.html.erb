@@ -40,7 +40,7 @@
               <% if @model.collection %>
                 <li>
                   <%= helpers.icon "collection", @model.collection.model_name.human %>
-                  <%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection.id)),
+                  <%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection)),
                         "aria-label": [@model.collection.model_name.human, @model.collection.name].join(": ") %>
                 </li>
               <% end %>

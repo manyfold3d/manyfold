@@ -93,12 +93,12 @@ RSpec.describe "Problems" do
       let(:problem) { create(:problem) }
 
       it "updates the problem and returns to list", :as_moderator do
-        patch "/problems/#{problem.id}", params: {problem: {ignored: true}}
+        patch "/problems/#{problem.to_param}", params: {problem: {ignored: true}}
         expect(response).to redirect_to("/problems")
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { patch "/problems/#{problem.id}", params: {problem: {ignored: true}} }.to raise_error(Pundit::NotAuthorizedError)
+        expect { patch "/problems/#{problem.to_param}", params: {problem: {ignored: true}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
   end

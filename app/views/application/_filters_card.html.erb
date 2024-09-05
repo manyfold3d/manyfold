@@ -11,14 +11,14 @@
     <% if @filters[:collection] %>
       <div class="row">
         <div class="col-auto"><%= icon "collection", Collection.model_name.human %></div>
-        <div class="col" aria-label="<%= Collection.model_name.human %>"><%= @collection ? link_to(@collection.name, {collection: @collection.id}) : "Unknown" %></div>
+        <div class="col" aria-label="<%= Collection.model_name.human %>"><%= @collection ? link_to(@collection.name, {collection: @collection}) : "Unknown" %></div>
         <div class="col-auto"><%= link_to icon("trash", t(".remove_collection_filter")), @filters.except(:collection), {class: "text-danger"} %></div>
       </div>
     <% end %>
     <% if @filters[:library] %>
       <div class="row">
         <div class="col-auto"><%= icon "boxes", Library.model_name.human %></div>
-        <div class="col" aria-label="<%= Library.model_name.human %>"><%= [*@filters[:library]].map { |l| Library.find(l).name }.join(", ") %></div>
+        <div class="col" aria-label="<%= Library.model_name.human %>"><%= [*@filters[:library]].map { |l| Library.find_by(public_id: l).name }.join(", ") %></div>
         <div class="col-auto"><%= link_to icon("trash", t(".remove_library_filter")), @filters.except(:library), {class: "text-danger"} %></div>
       </div>
     <% end %>

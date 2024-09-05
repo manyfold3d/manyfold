@@ -11,7 +11,7 @@ class LibrariesController < ApplicationController
   end
 
   def show
-    redirect_to models_path(library: @library.id)
+    redirect_to models_path(library: @library)
   end
 
   def new
@@ -80,7 +80,7 @@ class LibrariesController < ApplicationController
   end
 
   def get_library
-    @library = Library.find(params[:id])
+    @library = Library.find_by(public_id: params[:id])
     authorize @library
     @title = @library.name
   end

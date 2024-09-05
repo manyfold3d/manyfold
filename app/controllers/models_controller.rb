@@ -64,7 +64,7 @@ class ModelsController < ApplicationController
 
   def create
     authorize :model
-    library = Library.find(params[:library])
+    library = Library.find_by(public_id: params[:library])
     uploads = begin
       JSON.parse(params[:uploads])[0]["successful"]
     rescue
@@ -89,7 +89,7 @@ class ModelsController < ApplicationController
   end
 
   def merge
-    if params[:target] && (target = (@model.parents.find { |x| x.id == params[:target].to_i }))
+    if params[:target] && (target = (@model.parents.find { |x| x.public_id == params[:target] }))
       @model.merge_into! target
       Scan::CheckModelIntegrityJob.perform_later(target.id)
       redirect_to target, notice: t(".success")
@@ -130,7 +130,7 @@ class ModelsController < ApplicationController
     add_tags = Set.new(hash.delete(:add_tags))
     remove_tags = Set.new(hash.delete(:remove_tags))
     ids = params[:models].select { |k, v| v == "1" }.keys
-    policy_scope(Model).find(ids).each do |model|
+    policy_scope(Model).where(public_id: ids).find_each do |model|
       if model&.update(hash)
         existing_tags = Set.new(model.tag_list)
         model.tag_list = existing_tags + add_tags - remove_tags
@@ -186,7 +186,7 @@ class ModelsController < ApplicationController
   end
 
   def get_model
-    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find(params[:id])
+    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find_by(public_id: params[:id])
     authorize @model
     @title = @model.name
   end

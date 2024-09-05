@@ -1,4 +1,6 @@
 class Problem < ApplicationRecord
+  include PublicIDable
+
   belongs_to :problematic, polymorphic: true
 
   validates :category, uniqueness: {scope: :problematic}, presence: true
@@ -53,7 +55,7 @@ class Problem < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["category", "created_at", "id", "note", "problematic_id", "problematic_type", "updated_at", "ignored"]
+    ["category", "created_at", "id", "public_id", "note", "problematic_id", "problematic_type", "updated_at", "ignored"]
   end
 
   def self.ransackable_associations(auth_object = nil)

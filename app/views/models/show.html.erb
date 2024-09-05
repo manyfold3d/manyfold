@@ -36,7 +36,7 @@
       <% if @model.collection %>
         <tr>
           <td><%= icon "collection", Collection.model_name.human(count: 100) %></td>
-          <td><%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection.id)) %></td>
+          <td><%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection)) %></td>
         </tr>
       <% end %>
       <% if @model.library %>
@@ -81,7 +81,7 @@
       </p>
       <strong><%= t(".merge.with") %>:</strong>
       <% @model.parents.each do |target| %>
-        <%= link_to target.name, merge_model_path(@model, target: target.id), class: "btn btn-danger", method: :post %>
+        <%= link_to target.name, merge_model_path(@model, target: target), class: "btn btn-danger", method: :post %>
       <% end %>
     <% end %>
   <% end %>

@@ -6,6 +6,7 @@ class Model < ApplicationRecord
   include CaberObject
   include Linkable
   include Sluggable
+  include PublicIDable
 
   acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for, actor_type: "Document", include_in_user_count: false
 
@@ -95,7 +96,7 @@ class Model < ApplicationRecord
   end
 
   def self.ransackable_attributes(_auth_object = nil)
-    ["caption", "created_at", "id", "library_id", "name", "notes", "path", "slug", "updated_at", "license_cont", "license"]
+    ["caption", "created_at", "id", "public_id", "library_id", "name", "notes", "path", "slug", "updated_at", "license_cont", "license"]
   end
 
   def self.ransackable_associations(auth_object = nil)
@@ -133,7 +134,7 @@ class Model < ApplicationRecord
   end
 
   def previous_library
-    library_id_changed? ? Library.find(library_id_was) : library
+    library_id_changed? ? Library.find_by(id: library_id_was) : library
   end
 
   def previous_path

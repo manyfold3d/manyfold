@@ -29,7 +29,7 @@ class ProblemsController < ApplicationController
   end
 
   def update
-    @problem = Problem.unscoped.find(params[:id])
+    @problem = Problem.unscoped.find_by(public_id: params[:id])
     authorize @problem
     @problem.update!(permitted_params)
     notice = t(
