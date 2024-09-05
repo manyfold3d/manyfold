@@ -24,7 +24,8 @@ module Filterable
 
   # Filter by library
   def filter_by_library(models, library)
-    library ? models.where(library_id: library) : models
+    l = Library.find_by(public_id: library)
+    l ? models.where(library: l) : models
   end
 
   # Filter by collection
