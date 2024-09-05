@@ -36,7 +36,7 @@ module Filterable
       models.where(collection_id: nil)
     else
       @collection = Collection.find_by(public_id: collection)
-      models.where(collection: Collection.tree_down(collection))
+      models.where(collection: Collection.tree_down(@collection.id))
     end
   end
 
