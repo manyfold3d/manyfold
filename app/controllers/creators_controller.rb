@@ -6,13 +6,11 @@ class CreatorsController < ApplicationController
   before_action :get_creator, except: [:index, :new, :create]
 
   def index
+    @models = filtered_models @filters
     @creators = policy_scope(Creator)
-    unless @filters.empty?
-      @models = filtered_models @filters
-      @creators = @creators.where(id: @models.map { |model| model.creator_id })
-    end
+    @creators = @creators.where(id: @models.pluck(:creator_id).distinct) unless @filters.empty?
 
-    @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
+    @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
 
     # Ordering

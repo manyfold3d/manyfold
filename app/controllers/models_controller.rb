@@ -28,7 +28,7 @@ class ModelsController < ApplicationController
       @models = @models.page(page).per(helpers.pagination_settings["per_page"])
     end
 
-    @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
+    @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
 
     # Load extra data

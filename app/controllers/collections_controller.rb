@@ -6,13 +6,11 @@ class CollectionsController < ApplicationController
   before_action :get_collection, except: [:index, :new, :create]
 
   def index
+    @models = filtered_models @filters
     @collections = policy_scope(Collection)
-    unless @filters.empty?
-      @models = filtered_models @filters
-      @collections = @collections.tree_both(@filters[:collection] || nil, @models.filter_map { |model| model.collection_id })
-    end
+    @collections = @collections.tree_both(@filters[:collection] || nil, @models.pluck(:collection_id).distinct) unless @filters.empty?
 
-    @tags, @unrelated_tag_count = generate_tag_list(@filters.empty? ? nil : @models, @filter_tags)
+    @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
 
     # Ordering
