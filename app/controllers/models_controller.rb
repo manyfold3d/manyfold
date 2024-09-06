@@ -7,6 +7,7 @@ class ModelsController < ApplicationController
 
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
   before_action :get_creators_and_collections, only: [:new, :edit, :bulk_edit]
+  before_action :get_available_tags, only: [:new, :edit, :bulk_edit]
 
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
@@ -124,8 +125,6 @@ class ModelsController < ApplicationController
   def bulk_edit
     authorize Model
     @models = filtered_models @filters
-    @remove_tags, _unused = generate_tag_list(@models)
-    @add_tags = ActsAsTaggableOn::Tag.where.not(id: @remove_tags.pluck(:id))
   end
 
   def bulk_update
@@ -201,5 +200,9 @@ class ModelsController < ApplicationController
   def get_creators_and_collections
     @creators = policy_scope(Creator)
     @collections = policy_scope(Collection)
+  end
+
+  def get_available_tags
+    @tags = ActsAsTaggableOn::Tag.includes(:taggings).where("taggings.taggable": policy_scope(Model).pluck(:id)).order(:name)
   end
 end
