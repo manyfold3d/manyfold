@@ -55,6 +55,7 @@ class ModelsController < ApplicationController
 
   def new
     authorize :model
+    @add_tags = ActsAsTaggableOn::Tag.includes(:taggings).where("taggings.taggable": policy_scope(Model).pluck(:id)).order(:name)
   end
 
   def edit
