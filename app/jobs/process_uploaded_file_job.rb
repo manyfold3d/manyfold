@@ -9,13 +9,19 @@ class ProcessUploadedFileJob < ApplicationJob
     attacher = Shrine::Attacher.new
     attacher.attach_cached(uploaded_file)
     file = attacher.file
-    # Generate model name
-    model_path = File.basename(file.original_filename, ".*")
-    model_name = model_path.humanize.tr("+", " ").titleize
+    temp_path = File.basename(file.original_filename, ".*")
+    data = {
+      name: temp_path.humanize.tr("+", " ").titleize,
+      path: temp_path,
+      creator_id: creator_id,
+      collection_id: collection_id,
+      tag_list: tags,
+      license: license
+    }.compact
     # Create model
-    model = library.models.create(name: model_name, path: "#{model_path}##{SecureRandom.hex(4)}")
+    model = library.models.create!(data)
     model.grant_permission_to "own", owner
-    model.update! path: "#{model_path}##{model.id}" # Set to proper ID after saving
+    model.update! organize: true
     # Handle different file types
     begin
       case File.extname(file.original_filename).delete(".").downcase

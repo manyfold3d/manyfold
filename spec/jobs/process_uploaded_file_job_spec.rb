@@ -51,6 +51,33 @@ RSpec.describe ProcessUploadedFileJob do
       job.perform(library.id, file, owner: uploader)
       expect(Model.last.permitted_users.with_permission(:own)).to include uploader
     end
+
+    it "Stores creator if provided" do
+      creator = create(:creator)
+      job.perform(library.id, file, creator_id: creator.id)
+      expect(Model.last.creator).to eq creator
+    end
+
+    it "Stores collection if provided" do
+      collection = create(:collection)
+      job.perform(library.id, file, collection_id: collection.id)
+      expect(Model.last.collection).to eq collection
+    end
+
+    it "Stores license if provided" do
+      job.perform(library.id, file, license: "CC-BY-NC-SA-4.0")
+      expect(Model.last.license).to eq "CC-BY-NC-SA-4.0"
+    end
+
+    it "Stores tags if provided" do
+      job.perform(library.id, file, tags: "tag1, tag2, tag3")
+      expect(Model.last.tag_list).to eq ["tag1", "tag2", "tag3"]
+    end
+
+    it "sets path using auto-organize" do
+      job.perform(library.id, file, tags: "tag1")
+      expect(Model.last.path).to eq "tag1/test#1"
+    end
   end
 
   context "when errors occur during processing" do
