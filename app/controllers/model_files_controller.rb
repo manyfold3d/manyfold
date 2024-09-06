@@ -14,10 +14,10 @@ class ModelFilesController < ApplicationController
         format.html
         format.js
         format.any(*SupportedMimeTypes.model_types.map(&:to_sym)) do
-          send_file_content disposition: :inline
+          send_file_content disposition: (params[:download] == "true") ? :attachment : :inline
         end
         format.any(*SupportedMimeTypes.image_types.map(&:to_sym)) do
-          send_file_content
+          send_file_content disposition: (params[:download] == "true") ? :attachment : :inline
         end
       end
     end
