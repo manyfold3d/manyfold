@@ -2,7 +2,6 @@
 fr:
   models:
     bulk_edit:
-      add_tags: Ajouter des étiquettes
       description: 'Sélectionner les modèles à modifier :'
       form_subtitle: 'Sélectionnez les modifications à apporter :'
       needs_organizing: Besoin d'organisation
@@ -11,6 +10,8 @@ fr:
       select_all: Sélectionner tous les modèles
       submit: Mettre à jour les modèles sélectionnés
       title:
+    bulk_fields:
+      add_tags: Ajouter des étiquettes
     bulk_update:
       success: Les modèles ont été mis à jour avec succès.
     create:

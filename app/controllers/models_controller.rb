@@ -6,6 +6,8 @@ class ModelsController < ApplicationController
   include Permittable
 
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
+  before_action :get_creators_and_collections, only: [:new, :edit, :bulk_edit]
+
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
   def index
@@ -56,8 +58,6 @@ class ModelsController < ApplicationController
   end
 
   def edit
-    @creators = Creator.all
-    @collections = Collection.all
     @model.links.build if @model.links.empty? # populate empty link
     @model.caber_relations.build if @model.caber_relations.empty?
   end
@@ -72,7 +72,15 @@ class ModelsController < ApplicationController
     end
 
     uploads.each do |upload|
-      ProcessUploadedFileJob.perform_later(library.id, upload["response"]["body"], owner: current_user)
+      ProcessUploadedFileJob.perform_later(
+        library.id,
+        upload["response"]["body"],
+        owner: current_user,
+        creator_id: params[:creator_id],
+        collection_id: params[:collection_id],
+        license: params[:license],
+        tags: params[:add_tags]
+      )
     end
 
     redirect_to libraries_path, notice: t(".success")
@@ -115,8 +123,6 @@ class ModelsController < ApplicationController
 
   def bulk_edit
     authorize Model
-    @creators = policy_scope(Creator)
-    @collections = policy_scope(Collection)
     @models = filtered_models @filters
     @remove_tags, _unused = generate_tag_list(@models)
     @add_tags = ActsAsTaggableOn::Tag.where.not(id: @remove_tags.pluck(:id))
@@ -189,5 +195,10 @@ class ModelsController < ApplicationController
     @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find_by(public_id: params[:id])
     authorize @model
     @title = @model.name
+  end
+
+  def get_creators_and_collections
+    @creators = policy_scope(Creator)
+    @collections = policy_scope(Collection)
   end
 end

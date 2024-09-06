@@ -2,7 +2,6 @@
 pl:
   models:
     bulk_edit:
-      add_tags: Dodaj tagi
       description: 'Wybierz modele do zmiany:'
       form_subtitle: 'Wybierz zmiany do wprowadzenia:'
       needs_organizing: Wymaga uporządkowania
@@ -11,6 +10,8 @@ pl:
       select_all: Zaznacz wszystkie modele
       submit: Aktualizuj zaznaczone modele
       title: Edytuj zbiorczo modele
+    bulk_fields:
+      add_tags: Dodaj tagi
     bulk_update:
       success: Modele zaktualizowane pomyślnie.
     create:
