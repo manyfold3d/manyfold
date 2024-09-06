@@ -125,8 +125,9 @@ class ModelsController < ApplicationController
   def bulk_edit
     authorize Model
     @models = filtered_models @filters
-    @remove_tags, _unused = generate_tag_list(@models)
-    @add_tags = ActsAsTaggableOn::Tag.where.not(id: @remove_tags.pluck(:id))
+    all_tags = ActsAsTaggableOn::Tag.includes(:taggings).where("taggings.taggable": policy_scope(Model).pluck(:id)).distinct.order(:name)
+    @remove_tags = all_tags.where("taggings.taggable": @models.pluck(:id))
+    @add_tags = all_tags.where.not(id: @remove_tags.pluck(:id))
   end
 
   def bulk_update
