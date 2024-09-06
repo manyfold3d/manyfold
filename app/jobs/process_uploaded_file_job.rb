@@ -1,7 +1,7 @@
 class ProcessUploadedFileJob < ApplicationJob
   queue_as :default
 
-  def perform(library_id, uploaded_file, owner: nil)
+  def perform(library_id, uploaded_file, owner: nil, creator_id: nil, collection_id: nil, tags: nil, license: nil)
     # Find library
     library = Library.find(library_id)
     return if library.nil?
