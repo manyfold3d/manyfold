@@ -23,13 +23,13 @@ class ModelsController < ApplicationController
       @models.order(name: :asc)
     end
 
+    @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
+    @tags, @kv_tags = split_key_value_tags(@tags)
+
     if helpers.pagination_settings["models"]
       page = params[:page] || 1
       @models = @models.page(page).per(helpers.pagination_settings["per_page"])
     end
-
-    @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
-    @tags, @kv_tags = split_key_value_tags(@tags)
 
     # Load extra data
     @models = @models.includes [:library, :model_files, :preview_file, :creator, :collection]
