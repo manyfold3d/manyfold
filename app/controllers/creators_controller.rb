@@ -8,7 +8,7 @@ class CreatorsController < ApplicationController
   def index
     @models = filtered_models @filters
     @creators = policy_scope(Creator)
-    @creators = @creators.where(id: @models.pluck(:creator_id).distinct) unless @filters.empty?
+    @creators = @creators.where(id: @models.pluck(:creator_id).uniq) unless @filters.empty?
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)

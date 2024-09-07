@@ -8,7 +8,7 @@ class CollectionsController < ApplicationController
   def index
     @models = filtered_models @filters
     @collections = policy_scope(Collection)
-    @collections = @collections.tree_both(@filters[:collection] || nil, @models.pluck(:collection_id).distinct) unless @filters.empty?
+    @collections = @collections.tree_both(@filters[:collection] || nil, @models.pluck(:collection_id).uniq) unless @filters.empty?
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
