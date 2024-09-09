@@ -420,8 +420,8 @@ GEM
     parser (3.3.4.2)
       ast (~> 2.4.1)
       racc
-    pg (1.5.7)
-    pg (1.5.7-x64-mingw-ucrt)
+    pg (1.5.8)
+    pg (1.5.8-x64-mingw-ucrt)
     polyglot (0.3.5)
     prime (0.1.2)
       forwardable
