@@ -7,7 +7,7 @@ class ModelsController < ApplicationController
 
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
   before_action :get_creators_and_collections, only: [:new, :edit, :bulk_edit]
-  before_action :get_available_tags, only: [:new, :edit, :bulk_edit]
+  before_action :get_available_tags, only: [:edit, :bulk_edit]
 
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
@@ -56,6 +56,7 @@ class ModelsController < ApplicationController
 
   def new
     authorize :model
+    @tags = ActsAsTaggableOn::Tag.includes(:taggings).where("taggings.taggable": policy_scope(Model))
   end
 
   def edit
