@@ -203,6 +203,6 @@ class ModelsController < ApplicationController
   end
 
   def get_available_tags
-    @tags = ActsAsTaggableOn::Tag.includes(:taggings).where("taggings.taggable": policy_scope(Model).map(&:id)).order(:name)
+    @tags = ActsAsTaggableOn::Tag.includes(:taggings).where("taggings.taggable": policy_scope(Model)).order(:name)
   end
 end
