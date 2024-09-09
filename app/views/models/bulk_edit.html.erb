@@ -29,7 +29,7 @@
 
   <%= render "bulk_fields", form: form %>
 
-  <%= render "tags_edit", form: form, name: :remove_tags, value: "", label: translate(".remove_tags"), tags: @remove_tags || [] %>
+  <%= render "tags_edit", form: form, name: :remove_tags, value: "", label: translate(".remove_tags"), tags: [] %>
 
   <div class="row mb-3">
     <%= form.label :new_library_id, class: "col-sm-2 col-form-label" %>
