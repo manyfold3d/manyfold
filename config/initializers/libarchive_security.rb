@@ -4,8 +4,6 @@ module Archive
   EXTRACT_SECURE = [
     Archive::EXTRACT_NO_OVERWRITE,
     Archive::EXTRACT_NO_OVERWRITE_NEWER,
-    Archive::EXTRACT_SECURE_SYMLINKS,
-    Archive::EXTRACT_SECURE_NODOTDOT,
-    Archive::EXTRACT_SECURE_NOABSOLUTEPATHS
+    Archive::EXTRACT_SECURE_NODOTDOT
   ].reduce(:|).to_i
 end

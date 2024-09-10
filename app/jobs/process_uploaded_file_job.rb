@@ -9,10 +9,9 @@ class ProcessUploadedFileJob < ApplicationJob
     attacher = Shrine::Attacher.new
     attacher.attach_cached(uploaded_file)
     file = attacher.file
-    temp_path = File.basename(file.original_filename, ".*")
     data = {
-      name: temp_path.humanize.tr("+", " ").titleize,
-      path: temp_path,
+      name: File.basename(file.original_filename, ".*").humanize.tr("+", " ").titleize,
+      path: SecureRandom.uuid,
       creator_id: creator_id,
       collection_id: collection_id,
       tag_list: tags,
@@ -52,10 +51,8 @@ class ProcessUploadedFileJob < ApplicationJob
           reader.each_entry do |entry|
             next if !entry.file? || entry.size > SiteSettings.max_file_extract_size
             next if SiteSettings.ignored_file?(entry.pathname)
-            Dir.chdir(tmpdir) do
-              reader.extract(entry, Archive::EXTRACT_SECURE)
-              model.model_files.create(filename: entry.pathname, attachment: File.open(entry.pathname))
-            end
+            reader.extract(entry, Archive::EXTRACT_SECURE, destination: tmpdir)
+            model.model_files.create(filename: entry.pathname, attachment: File.open(entry.pathname))
           end
         end
       end
