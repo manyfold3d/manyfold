@@ -13,6 +13,5 @@ Shrine.storages = {
 
 Rails.application.config.after_initialize do
   Library.register_all_storage
+  Sidekiq.set_schedule("sweep", {every: "1h", class: "CacheSweepJob"})
 end
-
-Sidekiq.set_schedule("sweep", {every: "1h", class: "CacheSweepJob"})
