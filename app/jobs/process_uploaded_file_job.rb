@@ -38,6 +38,7 @@ class ProcessUploadedFileJob < ApplicationJob
       ModelScanJob.perform_later(model.id, include_all_subfolders: true)
     rescue
       model.destroy
+      raise
     end
   end
 
