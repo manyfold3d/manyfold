@@ -137,5 +137,10 @@ RSpec.describe ModelFile do
       expect(presupported).not_to be_valid
       expect(presupported.errors[:presupported_version].first).to eq "cannot be set on a presupported file"
     end
+
+    it "clears presupported version if presupported file is set to unsupported" do
+      presupported.update!(presupported: false)
+      expect(unsupported.reload.presupported_version).to be_nil
+    end
   end
 end
