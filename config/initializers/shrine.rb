@@ -13,4 +13,8 @@ Shrine.storages = {
 
 Rails.application.config.after_initialize do
   Library.register_all_storage
+  begin
+    Sidekiq.set_schedule("sweep", {every: "1h", class: "CacheSweepJob"})
+  rescue RedisClient::CannotConnectError
+  end
 end
