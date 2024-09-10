@@ -18,6 +18,8 @@ class ModelFile < ApplicationRecord
   validate :presupported_version_is_presupported
   validate :presupported_files_cannot_have_presupported_version
 
+  after_update :clear_presupported_relation, if: :presupported_previously_changed?
+
   default_scope { order(:filename) }
   scope :unsupported, -> { where(presupported: false) }
   scope :presupported, -> { where(presupported: true) }
@@ -179,5 +181,9 @@ class ModelFile < ApplicationRecord
     when "obj"
       Mittsu::OBJLoader
     end
+  end
+
+  def clear_presupported_relation
+    unsupported_version&.update presupported_version: nil
   end
 end
