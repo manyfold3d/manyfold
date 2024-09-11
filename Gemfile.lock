@@ -582,7 +582,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    scout_apm (5.3.8)
+    scout_apm (5.4.0)
       parser
     shellany (0.0.1)
     shrine (3.6.0)
