@@ -51,8 +51,9 @@ class ProcessUploadedFileJob < ApplicationJob
           reader.each_entry do |entry|
             next if !entry.file? || entry.size > SiteSettings.max_file_extract_size
             next if SiteSettings.ignored_file?(entry.pathname)
+            filename = entry.pathname # Stored because pathname gets mutated by the extract and we want the original
             reader.extract(entry, Archive::EXTRACT_SECURE, destination: tmpdir)
-            model.model_files.create(filename: entry.pathname, attachment: File.open(entry.pathname))
+            model.model_files.create(filename: filename, attachment: File.open(entry.pathname))
           end
         end
       end
