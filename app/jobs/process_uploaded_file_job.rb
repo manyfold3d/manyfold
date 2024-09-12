@@ -45,18 +45,22 @@ class ProcessUploadedFileJob < ApplicationJob
 
   def unzip(model, uploaded_file)
     Shrine.with_file(uploaded_file) do |archive|
-      Dir.mktmpdir do |tmpdir|
-        strip = count_common_path_components(archive)
-        Archive::Reader.open_filename(archive.path, strip_components: strip) do |reader|
-          reader.each_entry do |entry|
-            next if !entry.file? || entry.size > SiteSettings.max_file_extract_size
-            next if SiteSettings.ignored_file?(entry.pathname)
-            filename = entry.pathname # Stored because pathname gets mutated by the extract and we want the original
-            reader.extract(entry, Archive::EXTRACT_SECURE, destination: tmpdir)
-            model.model_files.create(filename: filename, attachment: File.open(entry.pathname))
-          end
+      tmpdir = Shrine.find_storage(:cache).directory.join(SecureRandom.uuid)
+      tmpdir.mkdir
+      strip = count_common_path_components(archive)
+      Archive::Reader.open_filename(archive.path, strip_components: strip) do |reader|
+        reader.each_entry do |entry|
+          next if !entry.file? || entry.size > SiteSettings.max_file_extract_size
+          next if SiteSettings.ignored_file?(entry.pathname)
+          filename = entry.pathname # Stored because pathname gets mutated by the extract and we want the original
+          reader.extract(entry, Archive::EXTRACT_SECURE, destination: tmpdir.to_s)
+          model.model_files.create(filename: filename, attachment: File.open(entry.pathname))
+          # Clean up file
+          File.delete(entry.pathname) if File.exist?(entry.pathname)
         end
       end
+      # Clean up temp folder
+      Dir.rmdir(tmpdir) if Dir.empty?(tmpdir)
     end
   end
 
