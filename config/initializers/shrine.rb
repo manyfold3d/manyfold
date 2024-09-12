@@ -8,7 +8,7 @@ Shrine.plugin :determine_mime_type
 Shrine.plugin :rack_response
 
 Shrine.storages = {
-  cache: Shrine::Storage::FileSystem.new("tmp/cache")
+  cache: Shrine::Storage::FileSystem.new("tmp/shrine")
 }
 
 Rails.application.config.after_initialize do
