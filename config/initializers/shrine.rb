@@ -14,11 +14,15 @@ Shrine.storages = {
 Rails.application.config.after_initialize do
   Library.register_all_storage
 
-  upload_options = {cache: {move: true}}
-  Library.all.map do |l|
-    upload_options[l.storage_key.to_sym] = {move: true} if l.storage_service == "filesystem"
+  begin
+    upload_options = {cache: {move: true}}
+    Library.all.map do |l|
+      upload_options[l.storage_key.to_sym] = {move: true} if l.storage_service == "filesystem"
+    end
+    Shrine.plugin :upload_options, **upload_options unless Rails.env.test?
+  rescue ActiveRecord::StatementInvalid, NameError
+    nil # migrations probably haven't run yet to create library table
   end
-  Shrine.plugin :upload_options, **upload_options unless Rails.env.test?
 
   begin
     Sidekiq.set_schedule("sweep", {every: "1h", class: "CacheSweepJob"})
