@@ -18,7 +18,7 @@ Rails.application.config.after_initialize do
   Library.all.map do |l|
     upload_options[l.storage_key.to_sym] = {move: true} if l.storage_service == "filesystem"
   end
-  Shrine.plugin :upload_options, **upload_options
+  Shrine.plugin :upload_options, **upload_options unless Rails.env.test?
 
   begin
     Sidekiq.set_schedule("sweep", {every: "1h", class: "CacheSweepJob"})
