@@ -13,6 +13,13 @@ Shrine.storages = {
 
 Rails.application.config.after_initialize do
   Library.register_all_storage
+
+  upload_options = {cache: {move: true}}
+  Library.all.map do |l|
+    upload_options[l.storage_key.to_sym] = {move: true} if l.storage_service == "filesystem"
+  end
+  Shrine.plugin :upload_options, **upload_options
+
   begin
     Sidekiq.set_schedule("sweep", {every: "1h", class: "CacheSweepJob"})
   rescue RedisClient::CannotConnectError
