@@ -1,5 +1,5 @@
 <td><%= icon("fire", t(".title")) %></td>
-<td><%= link_to problem.problematic.name, [problem.problematic.model, problem.problematic], class: "link-body-emphasis" %></td>
+<td><%= link_to problem.problematic.name, [problem.problematic.model, problem.problematic], class: "link-dark" %></td>
 <td><%= t ".title" %>: <%= problem.note %></td>
 <td>
   <% if policy(problem.problematic).show? && policy(problem.problematic).create? && ["stl", "obj"].include?(problem.problematic.extension) %>
