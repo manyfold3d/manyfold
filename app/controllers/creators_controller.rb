@@ -52,7 +52,12 @@ class CreatorsController < ApplicationController
   def create
     authorize Creator
     @creator = Creator.create(creator_params)
-    redirect_to creators_path, notice: t(".success")
+    if session[:return_after_new_creator]
+      redirect_to session[:return_after_new_creator] + "?new_creator=#{@creator.to_param}", notice: t(".success")
+      session[:return_after_new_creator] = nil
+    else
+      redirect_to creators_path, notice: t(".success")
+    end
   end
 
   def update

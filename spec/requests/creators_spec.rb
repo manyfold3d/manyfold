@@ -34,9 +34,16 @@ RSpec.describe "Creators" do
     end
 
     describe "POST /creators" do
-      it "creates a new creator", :as_contributor do
+      it "creates a new creator and redirects to list", :as_contributor do
         post "/creators", params: {creator: {name: "newname"}}
         expect(response).to redirect_to("/creators")
+      end
+
+      it "creates a new creator and redirects to return location if set", :as_contributor do
+        model = Model.first
+        allow_any_instance_of(CreatorsController).to receive(:session).and_return({return_after_new_creator: edit_model_path(model)}) # rubocop:disable RSpec/AnyInstance
+        post "/creators", params: {creator: {name: "newname"}}
+        expect(response).to redirect_to("/models/#{model.to_param}/edit?new_creator=#{Creator.last.to_param}")
       end
 
       it "denies member permission", :as_member do

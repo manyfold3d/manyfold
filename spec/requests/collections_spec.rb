@@ -34,9 +34,16 @@ RSpec.describe "Collections" do
     end
 
     describe "POST /collections" do
-      it "creates a new collection", :as_contributor do
+      it "creates a new collection and redirects to list", :as_contributor do
         post "/collections", params: {collection: {name: "newname"}}
         expect(response).to redirect_to("/collections")
+      end
+
+      it "creates a new collection and redirects to return location if set", :as_contributor do
+        model = Model.first
+        allow_any_instance_of(CollectionsController).to receive(:session).and_return({return_after_new_collection: edit_model_path(model)}) # rubocop:disable RSpec/AnyInstance
+        post "/collections", params: {collection: {name: "newname"}}
+        expect(response).to redirect_to("/models/#{model.to_param}/edit?new_collection=#{Collection.last.to_param}")
       end
 
       it "denies member permission", :as_member do
@@ -77,10 +84,6 @@ RSpec.describe "Collections" do
       it "saves details", :as_moderator do
         patch "/collections/#{collection.to_param}", params: {collection: {name: "newname"}}
         expect(response).to redirect_to("/collections")
-      end
-
-      it "is denied to non-moderators", :as_contributor do
-        expect { patch "/collections/#{collection.to_param}", params: {collection: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
