@@ -208,7 +208,13 @@ class ModelsController < ApplicationController
   end
 
   def set_returnable
-    session[:return_after_new] = request.fullpath
+    session[:return_after_new] = request.fullpath.split("?")[0]
+    @new_collection = Collection.find_by(public_id: params[:new_collection]) if params[:new_collection]
+    @new_creator = Creator.find_by(public_id: params[:new_creator]) if params[:new_creator]
+    if @model
+      @model.collection = @new_collection if @new_collection
+      @model.collection = @new_creator if @new_creator
+    end
   end
 
   def clear_returnable
