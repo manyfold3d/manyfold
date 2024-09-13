@@ -27,6 +27,8 @@ class CollectionsController < ApplicationController
     end
     # Eager load
     @collections = @collections.includes :collections, :collection, :links, models: [:preview_file, :library]
+    # Apply tag filters in-place
+    @filter_in_place = true
     render layout: "card_list_page"
   end
 
