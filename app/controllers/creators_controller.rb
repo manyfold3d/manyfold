@@ -27,6 +27,8 @@ class CreatorsController < ApplicationController
     end
     # Eager load data
     @creators = @creators.includes(:links, :models)
+    # Apply tag filters in-place
+    @filter_in_place = true
     render layout: "card_list_page"
   end
 

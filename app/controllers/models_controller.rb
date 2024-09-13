@@ -126,6 +126,8 @@ class ModelsController < ApplicationController
     @models = filtered_models @filters
     @remove_tags, _unused = generate_tag_list(@models)
     @add_tags = ActsAsTaggableOn::Tag.where.not(id: @remove_tags.pluck(:id))
+    # Apply tag filters in-place
+    @filter_in_place = true
   end
 
   def bulk_update
