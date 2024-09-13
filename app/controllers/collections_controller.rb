@@ -54,7 +54,12 @@ class CollectionsController < ApplicationController
   def create
     authorize Collection
     @collection = Collection.create(collection_params)
-    redirect_to collections_path, notice: t(".success")
+    if session[:return_after_new]
+      redirect_to session[:return_after_new] + "?new_collection=#{@collection.to_param}", notice: t(".success")
+      session[:return_after_new] = nil
+    else
+      redirect_to collections_path, notice: t(".success")
+    end
   end
 
   def update
