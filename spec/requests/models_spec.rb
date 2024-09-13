@@ -131,6 +131,14 @@ RSpec.describe "Models" do
     end
 
     describe "PATCH /models/update" do
+      let(:model_params) {
+        model_params = {}
+        library.models.each do |model|
+          model_params[model.to_param] = 1
+        end
+        model_params
+      }
+
       it "updates models creator", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
         models = library.models.take(2)
         update = {}
@@ -146,12 +154,7 @@ RSpec.describe "Models" do
       end
 
       it "adds tags to models", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-        update = {}
-        library.models.take(2).each do |model|
-          update[model.to_param] = 1
-        end
-
-        patch "/models/update", params: {models: update, add_tags: ["a", "b", "c"]}
+        patch "/models/update", params: {models: model_params, add_tags: ["a", "b", "c"]}
 
         expect(response).to have_http_status(:redirect)
         library.models.take(2).each do |model|
@@ -160,14 +163,12 @@ RSpec.describe "Models" do
       end
 
       it "removes tags from models", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-        update = {}
         library.models.take(2).each do |model|
           model.tag_list = "a, b, c"
           model.save
-          update[model.to_param] = 1
         end
 
-        patch "/models/update", params: {models: update, remove_tags: ["a", "b"]}
+        patch "/models/update", params: {models: model_params, remove_tags: ["a", "b"]}
 
         expect(response).to have_http_status(:redirect)
         library.models.take(2).each do |model|
@@ -177,17 +178,16 @@ RSpec.describe "Models" do
       end
 
       it "clears returnable session param", :as_moderator do
-        update = {}
-        library.models.take(2).each do |model|
-          update[model.to_param] = 1
-        end
-        patch "/models/update", params: {models: update, remove_tags: ["a", "b"]}
+        patch "/models/update", params: {models: model_params, remove_tags: ["a", "b"]}
         expect(session[:return_after_new]).to be_nil
       end
 
       it "is denied to non-moderators", :as_contributor do
         update = {}
-        expect { patch "/models/update", params: {models: update, remove_tags: ["a", "b"]} }.to raise_error(Pundit::NotAuthorizedError)
+        library.models.take(2).each do |model|
+          update[model.to_param] = 1
+        end
+        expect { patch "/models/update", params: {models: model_params, remove_tags: ["a", "b"]} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
