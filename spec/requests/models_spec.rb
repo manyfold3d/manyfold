@@ -43,6 +43,11 @@ RSpec.describe "Models" do
         expect(response).to have_http_status(:success)
       end
 
+      it "sets returnable session param", :as_moderator do
+        get "/models/#{library.models.first.to_param}/edit"
+        expect(session[:return_after_new]).to eq "/models/#{library.models.first.to_param}/edit"
+      end
+
       it "is denied to non-moderators", :as_contributor do
         expect { get "/models/#{library.models.first.to_param}/edit" }.to raise_error(Pundit::NotAuthorizedError)
       end
@@ -57,6 +62,11 @@ RSpec.describe "Models" do
         expect(tags[0]).to eq "a"
         expect(tags[1]).to eq "b"
         expect(tags[2]).to eq "c"
+      end
+
+      it "clears returnable session param", :as_moderator do
+        put "/models/#{library.models.first.to_param}", params: {model: {tag_list: ["a", "b", "c"]}}
+        expect(session[:return_after_new]).to be_nil
       end
 
       it "removes tags from a model", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
@@ -110,12 +120,17 @@ RSpec.describe "Models" do
         expect(response).to have_http_status(:success)
       end
 
+      it "sets returnable session param", :as_moderator do
+        get "/models/edit"
+        expect(session[:return_after_new]).to eq "/models/edit"
+      end
+
       it "is denied to non-moderators", :as_contributor do
         expect { get "/models/edit" }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 
-    describe "PATCH /models/edit" do
+    describe "PATCH /models/update" do
       it "updates models creator", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
         models = library.models.take(2)
         update = {}
@@ -159,6 +174,15 @@ RSpec.describe "Models" do
           model.reload
           expect(model.tag_list).to eq ["c"]
         end
+      end
+
+      it "clears returnable session param", :as_moderator do
+        update = {}
+        library.models.take(2).each do |model|
+          update[model.to_param] = 1
+        end
+        patch "/models/update", params: {models: update, remove_tags: ["a", "b"]}
+        expect(session[:return_after_new]).to be_nil
       end
 
       it "is denied to non-moderators", :as_contributor do
@@ -227,6 +251,11 @@ RSpec.describe "Models" do
         expect(response).to have_http_status(:success)
       end
 
+      it "sets returnable session param", :as_contributor do
+        get "/models/new"
+        expect(session[:return_after_new]).to eq "/models/new"
+      end
+
       it "denies member permission", :as_member do
         expect { get "/models/new" }.to raise_error(Pundit::NotAuthorizedError)
       end
@@ -236,6 +265,11 @@ RSpec.describe "Models" do
       it "redirect back to index after upload", :as_contributor do
         post "/models", params: {library: library.to_param, scan: "1", uploads: "{}"}
         expect(response).to redirect_to("/libraries")
+      end
+
+      it "clears returnable session param", :as_contributor do
+        post "/models", params: {library: library.to_param, scan: "1", uploads: "{}"}
+        expect(session[:return_after_new]).to be_nil
       end
 
       it "denies member permission", :as_member do

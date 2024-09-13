@@ -7,6 +7,8 @@ class ModelsController < ApplicationController
 
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
   before_action :get_creators_and_collections, only: [:new, :edit, :bulk_edit]
+  before_action :set_returnable, only: [:bulk_edit, :edit, :new]
+  before_action :clear_returnable, only: [:bulk_update, :update, :create]
 
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
@@ -203,5 +205,13 @@ class ModelsController < ApplicationController
   def get_creators_and_collections
     @creators = policy_scope(Creator)
     @collections = policy_scope(Collection)
+  end
+
+  def set_returnable
+    session[:return_after_new] = request.fullpath
+  end
+
+  def clear_returnable
+    session[:return_after_new] = nil
   end
 end
