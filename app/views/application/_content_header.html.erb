@@ -1,7 +1,7 @@
-<div class="col-9">
-  <div class="row row-cols-2 align-items-baseline">
+<div class="g-col-9">
+  <div class="grid row-cols-2 align-items-baseline">
     <% if !current_page?(root_path) %>
-      <div class="ms-auto col col-auto mt-2 mb-2">
+      <div class="ms-auto col g-col-auto mt-2 mb-2">
         <%= link_to icon("book", t(".sort.name")), @filters.merge(order: "name"), class: "btn #{(session["order"] == "name") ? "btn-secondary" : "btn-outline-secondary"} btn-sm" %>
         <%= link_to icon("clock", t(".sort.time")), @filters.merge(order: "recent"), class: "btn #{(session["order"] == "recent") ? "btn-secondary" : "btn-outline-secondary"} btn-sm" %>
       </div>

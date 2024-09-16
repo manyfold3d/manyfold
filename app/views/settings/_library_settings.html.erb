@@ -8,58 +8,58 @@
     <% Library.find_each do |library| %>
         <li><details><summary><%= library.name %></summary>
         <div class="card-body">
-          <div class="row">
-            <%= content_tag(:span, t("activerecord.attributes.library.name"), class: "col-sm") %>
-            <%= content_tag(:span, library.name, class: "col-sm-10") %>
+          <div class="grid">
+            <%= content_tag(:span, t("activerecord.attributes.library.name"), class: "g-col-sm") %>
+            <%= content_tag(:span, library.name, class: "g-col-sm-10") %>
           </div>
           <% if library.free_space %>
-            <div class="row">
-              <%= content_tag(:span, t(".free_space.label"), class: "col-sm") %>
-              <%= content_tag(:span, number_to_human_size(library.free_space, precision: 2), class: "col-sm-10") %>
+            <div class="grid">
+              <%= content_tag(:span, t(".free_space.label"), class: "g-col-sm") %>
+              <%= content_tag(:span, number_to_human_size(library.free_space, precision: 2), class: "g-col-sm-10") %>
             </div>
           <% end %>
-          <div class="row input-group">
-            <%= content_tag(:span, t("activerecord.attributes.library.storage_service"), class: "col-sm") %>
-            <%= content_tag(:span, t("libraries.storage_services.%{service}" % {service: library.storage_service}), class: "col-sm-10") %>
+          <div class="grid input-group">
+            <%= content_tag(:span, t("activerecord.attributes.library.storage_service"), class: "g-col-sm") %>
+            <%= content_tag(:span, t("libraries.storage_services.%{service}" % {service: library.storage_service}), class: "g-col-sm-10") %>
           </div>
           <% if library.storage_service == "filesystem" %>
-            <div class="row input-group">
-              <%= content_tag(:span, t("activerecord.attributes.library.path"), class: "col-sm") %>
-              <%= content_tag(:span, library.path, class: "col-sm-10") %>
+            <div class="grid input-group">
+              <%= content_tag(:span, t("activerecord.attributes.library.path"), class: "g-col-sm") %>
+              <%= content_tag(:span, library.path, class: "g-col-sm-10") %>
             </div>
           <% end %>
           <% if library.storage_service == "s3" %>
-            <div class="row input-group">
-              <%= content_tag(:span, t("activerecord.attributes.library.s3_endpoint"), class: "col-sm") %>
-              <%= content_tag(:span, library.s3_endpoint, class: "col-sm-10") %>
+            <div class="grid input-group">
+              <%= content_tag(:span, t("activerecord.attributes.library.s3_endpoint"), class: "g-col-sm") %>
+              <%= content_tag(:span, library.s3_endpoint, class: "g-col-sm-10") %>
             </div>
-            <div class="row input-group">
-              <%= content_tag(:span, t("activerecord.attributes.library.s3_bucket"), class: "col-sm") %>
-              <%= content_tag(:span, library.s3_bucket, class: "col-sm-10") %>
+            <div class="grid input-group">
+              <%= content_tag(:span, t("activerecord.attributes.library.s3_bucket"), class: "g-col-sm") %>
+              <%= content_tag(:span, library.s3_bucket, class: "g-col-sm-10") %>
             </div>
-            <div class="row input-group">
-              <%= content_tag(:span, t("activerecord.attributes.library.s3_region"), class: "col-sm") %>
-              <%= content_tag(:span, library.s3_region, class: "col-sm-10") %>
+            <div class="grid input-group">
+              <%= content_tag(:span, t("activerecord.attributes.library.s3_region"), class: "g-col-sm") %>
+              <%= content_tag(:span, library.s3_region, class: "g-col-sm-10") %>
             </div>
           <% end %>
-          <div class="row input-group">
-            <%= content_tag(:span, t("activerecord.attributes.library.caption"), class: "col-sm") %>
-            <%= content_tag(:span, library.caption, class: "col-sm-10") %>
+          <div class="grid input-group">
+            <%= content_tag(:span, t("activerecord.attributes.library.caption"), class: "g-col-sm") %>
+            <%= content_tag(:span, library.caption, class: "g-col-sm-10") %>
           </div>
-          <div class="row input-group">
-            <%= content_tag(:span, t("activerecord.attributes.library.icon"), class: "col-sm") %>
-            <%= content_tag(:span, library.icon, class: "col-sm-10") %>
+          <div class="grid input-group">
+            <%= content_tag(:span, t("activerecord.attributes.library.icon"), class: "g-col-sm") %>
+            <%= content_tag(:span, library.icon, class: "g-col-sm-10") %>
           </div>
-          <div class="row input-group">
-            <%= content_tag(:span, t("activerecord.attributes.library.notes"), class: "col-sm") %>
-            <%= content_tag(:span, library.notes, class: "col-sm-10") %>
+          <div class="grid input-group">
+            <%= content_tag(:span, t("activerecord.attributes.library.notes"), class: "g-col-sm") %>
+            <%= content_tag(:span, library.notes, class: "g-col-sm-10") %>
           </div>
-          <div class="row input-group">
-            <%= content_tag(:span, t("activerecord.attributes.library.tag_regex"), class: "col-sm") %>
-            <div class="col-sm-10">
+          <div class="grid input-group">
+            <%= content_tag(:span, t("activerecord.attributes.library.tag_regex"), class: "g-col-sm") %>
+            <div class="g-col-sm-10">
               <% library.tag_regex.each do |reg| %>
                 <%= link_to t(".tag_regex.check"), models_path(library: library, missingtag: reg), {class: "btn btn-outline-secondary"} %>
-                <%= content_tag(:span, reg, class: "col-sm-10") %><br>
+                <%= content_tag(:span, reg, class: "g-col-sm-10") %><br>
               <% end %>
             </div>
           </div>

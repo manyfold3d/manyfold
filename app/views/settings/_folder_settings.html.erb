@@ -24,22 +24,22 @@
         <code>{modelId}</code>: <%= t ".tokens.model_id" %>
       </li>
     </ul>
-    <div class="row mb-2">
-      <%= form.label nil, t(".model_path_template.label"), for: "folders[model_path_template]", class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8 form-check form-switch">
+    <div class="grid mb-2">
+      <%= form.label nil, t(".model_path_template.label"), for: "folders[model_path_template]", class: "g-col-sm-4 col-form-label" %>
+      <div class="g-col-sm-8 form-check form-switch">
         <%= form.text_field "folders[model_path_template]", value: SiteSettings.model_path_template, class: "form-control" %>
       </div>
     </div>
-    <div class="row mb-2">
-      <%= form.label nil, t(".parse_metadata_from_path.label"), for: "folders[parse_metadata_from_path]", class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8 form-check form-switch">
+    <div class="grid mb-2">
+      <%= form.label nil, t(".parse_metadata_from_path.label"), for: "folders[parse_metadata_from_path]", class: "g-col-sm-4 col-form-label" %>
+      <div class="g-col-sm-8 form-check form-switch">
         <%= form.check_box "folders[parse_metadata_from_path]", checked: SiteSettings.parse_metadata_from_path, class: "form-check-input" %>
         <small><%= t ".parse_metadata_from_path.help" %></small>
       </div>
     </div>
-    <div class="row mb-2">
-      <%= form.label nil, t(".safe_folder_names.label"), for: "folders[safe_folder_names]", class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8 form-check form-switch">
+    <div class="grid mb-2">
+      <%= form.label nil, t(".safe_folder_names.label"), for: "folders[safe_folder_names]", class: "g-col-sm-4 col-form-label" %>
+      <div class="g-col-sm-8 form-check form-switch">
         <%= form.check_box "folders[safe_folder_names]", checked: SiteSettings.safe_folder_names, class: "form-check-input" %>
         <small><%= t(".safe_folder_names.help_html") %></small>
       </div>

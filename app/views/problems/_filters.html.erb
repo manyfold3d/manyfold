@@ -10,8 +10,8 @@
       </h2>
       <div id="filters" class="accordion-collapse collapse <%= "show" if @filters_applied %>">
         <div class="accordion-body">
-          <div class="row mb-2">
-            <div class="col col-sm-6 col-md-4">
+          <div class="grid mb-2">
+            <div class="col g-col-sm-6 g-col-md-4">
               <label><%= Problem.human_attribute_name :category %></label>
               <select name="category[]" class="form-select" multiple=true>
                 <% Problem::CATEGORIES
@@ -24,7 +24,7 @@
                 <% end %>
               </select>
             </div>
-            <div class="col col-sm-auto col-md-4">
+            <div class="col g-col-sm-auto g-col-md-4">
               <label><%= Problem.human_attribute_name :severity %></label>
               <select name="severity[]" class="form-select" multiple=true>
                 <% (Problem::SEVERITIES - [:silent]).each do |sev| %>
@@ -34,7 +34,7 @@
                 <% end %>
               </select>
             </div>
-            <div class="col col-sm-auto col-md-4">
+            <div class="col g-col-sm-auto g-col-md-4">
               <label><%= Problem.human_attribute_name :problematic_type %></label>
               <select name="type[]" class="form-select" multiple=true>
                 <option value="<%= Model.model_name.param_key %>"
@@ -44,7 +44,7 @@
               </select>
             </div>
           </div>
-          <div class="row">
+          <div class="grid">
             <div class="col">
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" name="show_ignored" value="true"

@@ -8,7 +8,7 @@
     <% if pagination_settings["collections"] %>
       <%= paginate @collections %>
     <% end %>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+    <div class="grid row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
       <%= render "unassigned" if (!pagination_settings["collections"] || @collections.first_page?) && !@filters[:collection] %>
       <% if @filters[:collection] && @collection %>
         <%= render @collection %>

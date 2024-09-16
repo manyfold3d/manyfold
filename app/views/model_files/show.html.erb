@@ -1,9 +1,9 @@
 <%= render partial: "breadcrumb" %>
 <h1><%= @file.name %></h1>
 
-<div class="row row-cols-2">
+<div class="grid row-cols-2">
 
-  <div class="col-9">
+  <div class="g-col-9">
     <% if @file.is_image? %>
       <%= image_tag model_model_file_path(@model, @file, format: @file.extension), alt: @file.name, style: "width: 100%" %>
     <% elsif renderable?(@file.extension) %>
@@ -34,7 +34,7 @@
     <% end %>
   </div>
 
-  <div class="col-3">
+  <div class="g-col-3">
     <%= card :secondary, t(".details_heading") do %>
       <% if @file.caption %>
         <p class='lead'><%= @file.caption %></p>

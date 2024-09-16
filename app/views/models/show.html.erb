@@ -13,12 +13,12 @@
   <%= render "image_carousel", images: @images %>
 
   <h2><a name="files"><%= t(".files") %></a></h2>
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+  <div class="grid row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
     <%= render partial: "file", collection: @groups.delete(nil) %>
   </div>
   <% @groups.each_pair do |group, files| %>
     <h3><a name="<%= group.parameterize %>"><%= group.titleize %></a></h3>
-    <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+    <div class="grid  row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
       <%= render partial: "file", collection: files %>
     </div>
   <% end %>

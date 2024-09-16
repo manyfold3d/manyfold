@@ -16,7 +16,7 @@
     <% end %>
     <div class="card-body">
       <div class="card-title"><%= collection.name.titleize %></div>
-      <div class="col-auto">
+      <div class="g-col-auto">
         <% if collection.collection %>
           <%= icon "collection", collection.model_name.human %>
           <%= link_to collection.collection.name, (@filters || {}).merge(collection: collection.collection) %><br>

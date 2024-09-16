@@ -6,7 +6,7 @@
     </p>
     <% Problem::CATEGORIES.each do |category| %>
       <% next if Problem::DEFAULT_SEVERITIES[category].nil? # Skip deprecated categories; they don't appear in the defaults list %>
-      <div class="row">
+      <div class="grid">
         <%= form.label nil, t("problems.categories.%{c}" % {c: category}),
               for: "problems[#{category}]",
               class: "col col-form-label" %>

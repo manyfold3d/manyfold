@@ -13,9 +13,9 @@
       <%= t(".details_html") %>
     </p>
     <hr>
-    <div class="row mb-2">
-      <%= form.label nil, t(".default_viewer_role.label"), for: "multiuser[default_viewer_role]", class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8 form-check form-switch">
+    <div class="grid mb-2">
+      <%= form.label nil, t(".default_viewer_role.label"), for: "multiuser[default_viewer_role]", class: "g-col-sm-4 col-form-label" %>
+      <div class="g-col-sm-8 form-check form-switch">
         <%= form.select "multiuser[default_viewer_role]",
               [[translate(".default_viewer_role.options.none"), nil],
                 [translate(".default_viewer_role.options.member"), "member"]],

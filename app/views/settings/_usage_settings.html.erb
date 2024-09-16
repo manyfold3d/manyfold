@@ -8,7 +8,7 @@
     </div>
     <p><%= t(".use_of_data") %></p>
     <p><%= t(".verification_html") %></p>
-    <div class="row">
+    <div class="grid">
       <%= form.label nil, t(".report_usage.label"), for: "usage[report]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
         <%= form.check_box "usage[report]", checked: SiteSettings.anonymous_usage_id.present?, class: "form-check-input" %>

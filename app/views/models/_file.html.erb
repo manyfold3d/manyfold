@@ -15,7 +15,7 @@
       <% if file.caption %>
         <p class="card-text"><%= sanitize file.caption %></p>
       <% end %>
-      <div class="row">
+      <div class="grid">
         <div class="col">
           <%= link_to t(".open_button.text"), model_model_file_path(@model, file), {class: "btn btn-primary", "aria-label": translate(".open_button.label", name: file.name)} %>
           <%= link_to icon("cloud-download", t("general.download")), model_model_file_path(@model, file, file.extension.to_sym, download: "true"), {class: "btn btn-outline-secondary"} %>
@@ -26,7 +26,7 @@
             <% end %>
           <% end %>
         </div>
-        <div class="col col-auto">
+        <div class="col g-col-auto">
           <% if file.presupported || file.presupported_version %>
             <%= icon "bar-chart-line-fill", ModelFile.human_attribute_name(:presupported) %>
           <% end %>
