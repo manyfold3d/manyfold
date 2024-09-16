@@ -1,7 +1,7 @@
 class ProcessUploadedFileJob < ApplicationJob
   queue_as :default
 
-  def perform(library_id, uploaded_file, owner: nil, creator_id: nil, collection_id: nil, tags: nil, license: nil)
+  def perform(library_id, uploaded_file, owner: nil, creator_id: nil, collection_id: nil, tags: nil, license: nil, model: nil)
     # Find library
     library = Library.find(library_id)
     return if library.nil?
@@ -18,23 +18,31 @@ class ProcessUploadedFileJob < ApplicationJob
       license: license
     }.compact
     # Create model
-    model = library.models.create!(data)
-    model.grant_permission_to "own", owner
-    model.update! organize: true
+    new_model = false
+    if model.nil?
+      model = library.models.create!(data)
+      model.grant_permission_to "own", owner
+      model.update! organize: true
+      new_model = true
+    end
     # Handle different file types
     begin
       case File.extname(file.original_filename).delete(".").downcase
       when *SupportedMimeTypes.archive_extensions
         unzip(model, file)
       when *(SupportedMimeTypes.model_extensions + SupportedMimeTypes.image_extensions)
-        model.model_files.create(filename: file.original_filename, attachment: file)
+        new_file = model.model_files.create(filename: file.original_filename, attachment: file)
       else
         Rails.logger.warn("Ignoring #{file.inspect}")
       end
       # Discard cached file
       attacher.destroy
-      # Queue full model scan to fill in data
-      ModelScanJob.perform_later(model.id, include_all_subfolders: true)
+      if new_model
+        # Queue full model scan to fill in data
+        ModelScanJob.perform_later(model.id, include_all_subfolders: true)
+      else
+        ModelFileScanJob.perform_later(new_file.id)
+      end
     rescue
       model.destroy
       raise
