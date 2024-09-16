@@ -7,6 +7,29 @@
       <div class="card-img-top">
         <%= render partial: "object_preview", locals: {model: @model, file: file} %>
       </div>
+    <% else %>
+      <%= content_tag :div, nil, class: "card-img-top", style: "aspect-ratio: 1" do %>
+        <svg height="100%" width="100%" viewBox="0 0 100 100">
+          <path stroke="black" stroke-linecap="round" stroke-width="0.5" fill="white" d="
+            M60,15
+            h-30
+            q-5,0 -5,5
+            v65
+            q0,5 5,5
+            h40
+            q5,0 5,-5
+            v-55
+            L60,15
+          " />
+          <path stroke="black" stroke-linecap="round" stroke-width="0.5" fill="transparent" d="
+            M60,15
+            v10
+            q0,5 5,5
+            h10
+          " />
+          <text x="50%" y="80%" fill="black" dominant-baseline="middle" text-anchor="middle" style="font-size: 8px"><%= file.extension.upcase %></text>
+        </svg>
+      <% end %>
     <% end %>
     <div class="card-body">
       <div class="card-title">
