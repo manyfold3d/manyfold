@@ -12,6 +12,7 @@ en:
       success: Files updated successfully.
     create:
       conversion_started: File conversion started. The converted file should be available shortly.
+      success: File(s) uploaded successfully!
     destroy:
       confirm: Are you sure you want to remove this file from your filesystem?
       success: File deleted!

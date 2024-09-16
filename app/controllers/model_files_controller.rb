@@ -24,10 +24,25 @@ class ModelFilesController < ApplicationController
   end
 
   def create
+    authorize @model
     if params[:convert]
       file = ModelFile.find_by(public_id: params[:convert][:id])
       Analysis::FileConversionJob.perform_later(file.id, params[:convert][:to].to_sym)
       redirect_back_or_to [@model, file], notice: t(".conversion_started")
+    elsif params[:uploads]
+      uploads = begin
+        JSON.parse(params[:uploads])[0]["successful"]
+      rescue
+        []
+      end
+      uploads.each do |upload|
+        ProcessUploadedFileJob.perform_later(
+          @model.library.id,
+          upload["response"]["body"],
+          model: @model
+        )
+      end
+      redirect_to @model, notice: t(".success")
     else
       head :unprocessable_entity
     end
