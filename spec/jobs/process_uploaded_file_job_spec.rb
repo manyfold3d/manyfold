@@ -78,6 +78,29 @@ RSpec.describe ProcessUploadedFileJob do
       job.perform(library.id, file, tags: "tag1")
       expect(Model.last.path).to eq "tag1/test#1"
     end
+
+    it "queues up model scan" do
+      expect { job.perform(library.id, file) }.to have_enqueued_job(ModelScanJob).once
+    end
+  end
+
+  context "when uploading a file to an existing model" do
+    let(:uploader) { create(:contributor) }
+    let(:library) { create(:library) }
+    let!(:model) { create(:model, library: library) }
+    let(:file) { Rack::Test::UploadedFile.new(StringIO.new("solid\n"), original_filename: "test.stl") }
+
+    it "doesn't create a new model" do
+      expect { job.perform(library.id, file, model: model) }.not_to change(Model, :count)
+    end
+
+    it "adds the file to the model" do
+      expect { job.perform(library.id, file, model: model) }.to change(model.model_files, :count).by(1)
+    end
+
+    it "queues up file scan" do
+      expect { job.perform(library.id, file, model: model) }.to have_enqueued_job(ModelFileScanJob).once
+    end
   end
 
   context "when errors occur during processing" do

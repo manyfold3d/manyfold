@@ -81,7 +81,10 @@ en:
       path: Path
       rescan: Rescan files
       search: Search the Internet for models with this name
+      submit: Upload Files
       tags: Tags
+      upload_card:
+        heading: Upload
     update:
       failure: An error occurred and the model details could not be saved.
       success: Model details saved.
