@@ -66,7 +66,7 @@ class ModelsController < ApplicationController
 
   def create
     authorize :model
-    library = Library.find_by(public_id: params[:library])
+    library = Library.find_by!(public_id: params[:library])
     uploads = begin
       JSON.parse(params[:uploads])[0]["successful"]
     rescue
@@ -197,7 +197,7 @@ class ModelsController < ApplicationController
   end
 
   def get_model
-    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find_by(public_id: params[:id])
+    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find_by!(public_id: params[:id])
     authorize @model
     @title = @model.name
   end
@@ -209,8 +209,8 @@ class ModelsController < ApplicationController
 
   def set_returnable
     session[:return_after_new] = request.fullpath.split("?")[0]
-    @new_collection = Collection.find_by(public_id: params[:new_collection]) if params[:new_collection]
-    @new_creator = Creator.find_by(public_id: params[:new_creator]) if params[:new_creator]
+    @new_collection = Collection.find_by!(public_id: params[:new_collection]) if params[:new_collection]
+    @new_creator = Creator.find_by!(public_id: params[:new_creator]) if params[:new_creator]
     if @model
       @model.collection = @new_collection if @new_collection
       @model.collection = @new_creator if @new_creator
