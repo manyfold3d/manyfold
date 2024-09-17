@@ -8,9 +8,7 @@
         <% images.each_with_index do |image, index| %>
           <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="<%= index %>"
             <%= "class=active aria-current=true aria-disabled=true" if index == 0 %>
-            aria-label="<%= translate ".slide_label", index: (index + 1), count: images.count, name: image.name %>">
-            <%= index %>
-          </button>
+            aria-label="<%= translate ".slide_label", index: (index + 1), count: images.count, name: image.name %>"></button>
         <% end %>
       </div>
     <% end %>
