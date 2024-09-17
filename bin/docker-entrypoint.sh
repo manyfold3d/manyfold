@@ -18,4 +18,5 @@ chown -R $PUID:$PGID tmp log
 
 echo "Launching application..."
 export RAILS_PORT=$PORT
+export RAILS_LOG_TO_STDOUT=true
 exec s6-setuidgid $PUID:$PGID $@
