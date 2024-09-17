@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
   before_action :check_scan_status
   before_action :remember_ordering
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   def index
     raise NotImplementedError
   end
@@ -85,5 +87,15 @@ class ApplicationController < ActionController::Base
     # Not sure how secure this is; it's used to help with timing attacks on login ID lookups
     # by adding a random 0-2 second delay into the response. There is probably a better way.
     sleep Random.new.rand(2.0)
+  end
+
+  private
+
+  def user_not_authorized
+    if current_user
+      raise ActiveRecord::RecordNotFound
+    else
+      redirect_to new_session_path(:user)
+    end
   end
 end
