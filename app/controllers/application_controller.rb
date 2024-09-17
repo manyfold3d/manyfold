@@ -12,7 +12,9 @@ class ApplicationController < ActionController::Base
   before_action :check_scan_status
   before_action :remember_ordering
 
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  unless Rails.env.test?
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  end
 
   def index
     raise NotImplementedError
