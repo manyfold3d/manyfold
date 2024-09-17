@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe PathBuilder do
   context "when creating path from model metadata" do
-    let(:model) {
+    let!(:model) {
       create(:model,
         name: "Batarang",
         creator: create(:creator, name: "Bruce Wayne"),
@@ -18,6 +18,20 @@ RSpec.describe PathBuilder do
     it "includes tags if set" do
       SiteSettings.model_path_template = "{tags}/{modelName}{modelId}"
       expect(model.formatted_path).to eq "bat/weapon/batarang#1"
+    end
+
+    it "is invariant to tag ordering" do
+      SiteSettings.model_path_template = "{tags}/{modelName}{modelId}"
+      model.tag_list.remove "bat" and model.save
+      model.tag_list.add "bat" and model.save
+      expect(model.formatted_path).to eq "bat/weapon/batarang#1"
+    end
+
+    it "orders tags by tagging_count" do
+      SiteSettings.model_path_template = "{tags}/{modelName}{modelId}"
+      ActsAsTaggableOn::Tag.find_by(name: "weapon").update_column(:taggings_count, 10)
+      ActsAsTaggableOn::Tag.find_by(name: "bat").update_column(:taggings_count, 5)
+      expect(model.reload.formatted_path).to eq "weapon/bat/batarang#1"
     end
 
     it "includes collection if set" do
