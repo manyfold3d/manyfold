@@ -66,7 +66,7 @@
       </tr>
       <tr>
         <td><%= icon "tag", t(".tags") %></td>
-        <td><%= render "tag_list", tags: @model.tags.sort_by(&:taggings_count) %></td>
+        <td><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc) %></td>
       </tr>
     </table>
     <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_model_path(@model), class: "btn btn-primary" if policy(@model).edit? %>
