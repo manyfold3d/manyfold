@@ -1,4 +1,6 @@
 ActiveAdmin.register User do
+  config.batch_actions = false
+
   permit_params :email, :password, :password_confirmation, :username, role_ids: []
   User.ransackable_symbols.each { |x| filter x }
 

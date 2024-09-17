@@ -1,4 +1,6 @@
 ActiveAdmin.register Library do
+  config.batch_actions = false
+
   actions :all, except: [:new]
   permit_params :path, :name, :notes, :caption, :icon, :storage_service,
     :s3_endpoint, :s3_bucket, :s3_access_key_id, :s3_secret_access_key, :s3_region, tag_regex: []
