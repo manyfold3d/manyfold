@@ -17,7 +17,7 @@ Rails.application.config.after_initialize do
   begin
     upload_options = {cache: {move: true}}
     Library.all.map do |l|
-      upload_options[l.storage_key.to_sym] = {move: true} if l.storage_service == "filesystem"
+      upload_options[l.storage_key] = {move: true} if l.storage_service == "filesystem"
     end
     Shrine.plugin :upload_options, **upload_options unless Rails.env.test?
   rescue ActiveRecord::StatementInvalid, NameError

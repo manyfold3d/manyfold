@@ -76,7 +76,7 @@ class Library < ApplicationRecord
   end
 
   def storage_key
-    "library_#{id}"
+    :"library_#{id}"
   end
 
   def storage_origin
