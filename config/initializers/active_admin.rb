@@ -2,21 +2,28 @@ ActiveAdmin.setup do |config|
   # == Site Title
   #
   # Set the title that is displayed on the main layout
-  # for each of the active admin pages.
+  # for each of the active admin pages. Can also be customized
+  # by extracting the _site_header partial into your project
+  # to use your own logo, styles, etc.
   #
   config.site_title = proc { I18n.t("application.title") }
 
-  # Set the link url for the title. For example, to take
-  # users to your main site. Defaults to no link.
+  # == Load Paths
   #
-  # config.site_title_link = "/"
-
-  # Set an optional image to be displayed for the header
-  # instead of a string (overrides :site_title)
+  # By default Active Admin files go inside app/admin/.
+  # You can change this directory.
   #
-  # Note: Aim for an image that's 21px high so it fits in the header.
+  # eg:
+  #   config.load_paths = [File.join(Rails.root, 'app', 'ui')]
   #
-  # config.site_title_image = "logo.png"
+  # Or, you can also load more directories.
+  # Useful when setting namespaces with users that are not your main AdminUser entity.
+  #
+  # eg:
+  #   config.load_paths = [
+  #     File.join(Rails.root, 'app', 'admin'),
+  #     File.join(Rails.root, 'app', 'cashier')
+  #   ]
 
   # == Default Namespace
   #
@@ -58,13 +65,26 @@ ActiveAdmin.setup do |config|
 
   # == User Authorization
   #
+  # Active Admin will automatically call an authorization
+  # method in a before filter of all controller actions to
+  # ensure that there is a user with proper rights. You can use
+  # CanCanAdapter, PunditAdapter, or make your own. Please
+  # refer to the documentation.
+  # config.authorization_adapter = ActiveAdmin::CanCanAdapter
   config.authorization_adapter = ActiveAdmin::PunditAdapter
-  # config.pundit_default_policy = "ActiveAdminPolicy"
+
+  # In case you prefer Pundit over other solutions you can here pass
+  # the name of default policy class. This policy will be used in every
+  # case when Pundit is unable to find suitable policy.
+  # config.pundit_default_policy = "MyDefaultPunditPolicy"
 
   # If you wish to maintain a separate set of Pundit policies for admin
   # resources, you may set a namespace here that Pundit will search
   # within when looking for a resource's policy.
   # config.pundit_policy_namespace = :admin
+
+  # You can customize your CanCan Ability class name here.
+  # config.cancan_ability_class = "Ability"
 
   # You can specify a method to be called on unauthorized access.
   # This is necessary in order to prevent a redirect loop which happens
@@ -88,17 +108,11 @@ ActiveAdmin.setup do |config|
   # settings configure the location and method used for the link.
   #
   # This setting changes the path where the link points to. If it's
-  # a string, the strings is used as the path. If it's a Symbol, we
+  # a string, the string is used as the path. If it's a Symbol, we
   # will call the method to return the path.
   #
   # Default:
   config.logout_link_path = :destroy_user_session_path
-
-  # This setting changes the http method used when rendering the
-  # link. For example :get, :delete, :put, etc..
-  #
-  # Default:
-  # config.logout_link_method = :get
 
   # == Root
   #
@@ -161,23 +175,6 @@ ActiveAdmin.setup do |config|
   #
   config.localize_format = :long
 
-  # == Setting a Favicon
-  #
-  # config.favicon = 'favicon.ico'
-
-  # == Meta Tags
-  #
-  # Add additional meta tags to the head element of active admin pages.
-  #
-  # Add tags to all pages logged in users see:
-  #   config.meta_tags = { author: 'My Company' }
-
-  # By default, sign up/sign in/recover password pages are excluded
-  # from showing up in search engine results by adding a robots meta
-  # tag. You can reset the hash of meta tags included in logged out
-  # pages:
-  #   config.meta_tags_for_logged_out_pages = {}
-
   # == Removing Breadcrumbs
   #
   # Breadcrumbs are enabled by default. You can customize them for individual
@@ -192,21 +189,6 @@ ActiveAdmin.setup do |config|
   #
   # config.create_another = true
 
-  # == Register Stylesheets & Javascripts
-  #
-  # We recommend using the built in Active Admin layout and loading
-  # up your own stylesheets / javascripts to customize the look
-  # and feel.
-  #
-  # To load a stylesheet:
-  #   config.register_stylesheet 'my_stylesheet.css'
-  #
-  # You can provide an options hash for more control, which is passed along to stylesheet_link_tag():
-  #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
-  #
-  # To load a javascript file:
-  #   config.register_javascript 'my_javascript.js'
-
   # == CSV options
   #
   # Set the CSV builder separator
@@ -219,20 +201,11 @@ ActiveAdmin.setup do |config|
   #
   # You can add a navigation menu to be used in your application, or configure a provided menu
   #
-  # To change the default utility navigation to show a link to your website & a logout btn
-  #
-  #   config.namespace :admin do |admin|
-  #     admin.build_menu :utility_navigation do |menu|
-  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
-  #       admin.add_logout_button_to_menu menu
-  #     end
-  #   end
-  #
   # If you wanted to add a static menu item to the default menu provided:
   #
   #   config.namespace :admin do |admin|
   #     admin.build_menu :default do |menu|
-  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+  #       menu.add label: "My Great Website", url: "https://mygreatwebsite.example.com", html_options: { target: "_blank" }
   #     end
   #   end
 
@@ -248,11 +221,10 @@ ActiveAdmin.setup do |config|
   #     # Disable the links entirely
   #     admin.download_links = false
   #
-  #     # Only show XML & PDF options
+  #     # Only show XML & PDF options. You must register the format mime type with `Mime::Type.register`.
   #     admin.download_links = [:xml, :pdf]
   #
-  #     # Enable/disable the links based on block
-  #     #   (for example, with cancan)
+  #     # Enable/disable the links based on block (for example, with cancan)
   #     admin.download_links = proc { can?(:view_download_links) }
   #
   #   end
@@ -294,21 +266,7 @@ ActiveAdmin.setup do |config|
   #    :title,
   #    :email,
   #  ]
-  # config.filter_method_for_large_association = '_starts_with'
-
-  # == Head
-  #
-  # You can add your own content to the site head like analytics. Make sure
-  # you only pass content you trust.
-  #
-  # config.head = ''.html_safe
-
-  # == Footer
-  #
-  # By default, the footer shows the current Active Admin version. You can
-  # override the content of the footer here.
-  #
-  # config.footer = 'my custom footer text'
+  # config.filter_method_for_large_association = '_start'
 
   # == Sorting
   #
@@ -316,13 +274,6 @@ ActiveAdmin.setup do |config|
   # You can inherit it with own class and inject it for all resources
   #
   # config.order_clause = MyOrderClause
-
-  # == Webpacker
-  #
-  # By default, Active Admin uses Sprocket's asset pipeline.
-  # You can switch to using Webpacker here.
-  #
-  # config.use_webpacker = true
 
   config.namespace :admin do |admin|
     admin.build_menu :utility_navigation do |menu|
