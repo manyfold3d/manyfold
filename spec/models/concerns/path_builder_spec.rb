@@ -29,8 +29,11 @@ RSpec.describe PathBuilder do
 
     it "orders tags by tagging_count" do
       SiteSettings.model_path_template = "{tags}/{modelName}{modelId}"
+      # rubocop:disable Rails/SkipsModelValidations
+      # We *intentionally* don't want the callbacks to run, they'll recalculate the count again
       ActsAsTaggableOn::Tag.find_by(name: "weapon").update_column(:taggings_count, 10)
       ActsAsTaggableOn::Tag.find_by(name: "bat").update_column(:taggings_count, 5)
+      # rubocop:enable Rails/SkipsModelValidations
       expect(model.reload.formatted_path).to eq "weapon/bat/batarang#1"
     end
 
