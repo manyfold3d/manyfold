@@ -50,6 +50,10 @@ class ApplicationPolicy
     )
   end
 
+  def destroy_all?
+    user&.is_administrator?
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user
