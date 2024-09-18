@@ -78,7 +78,7 @@ class ModelFile < ApplicationRecord
 
   def attach_existing_file!(refresh: true)
     return if attachment.present? || !exists_on_storage?
-    attachment_attacher.set Shrine.uploaded_file(
+    attachment_attacher.set LibraryUploader.uploaded_file(
       storage: model.library.storage_key,
       id: path_within_library,
       metadata: {

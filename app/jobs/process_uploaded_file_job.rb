@@ -6,7 +6,7 @@ class ProcessUploadedFileJob < ApplicationJob
     library = Library.find(library_id)
     return if library.nil?
     # Attach cached upload file
-    attacher = Shrine::Attacher.new
+    attacher = LibraryUploader::Attacher.new
     attacher.attach_cached(uploaded_file)
     file = attacher.file
     data = {
@@ -52,8 +52,8 @@ class ProcessUploadedFileJob < ApplicationJob
   private
 
   def unzip(model, uploaded_file)
-    Shrine.with_file(uploaded_file) do |archive|
-      tmpdir = Shrine.find_storage(:cache).directory.join(SecureRandom.uuid)
+    LibraryUploader.with_file(uploaded_file) do |archive|
+      tmpdir = LibraryUploader.find_storage(:cache).directory.join(SecureRandom.uuid)
       tmpdir.mkdir
       strip = count_common_path_components(archive)
       Archive::Reader.open_filename(archive.path, strip_components: strip) do |reader|
