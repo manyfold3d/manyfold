@@ -149,3 +149,5 @@ gem "federails", git: "https://gitlab.com/manyfold3d/federails.git", branch: "po
 gem "caber"
 
 gem "nanoid", "~> 2.0"
+
+gem "kramdown", "~> 2.4"
