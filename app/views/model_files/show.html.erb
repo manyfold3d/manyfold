@@ -29,7 +29,7 @@
     <% end %>
     <% if @file.notes %>
       <%= card(:secondary, t(".notes_heading")) do %>
-        <p class="card-text"><%= sanitize @file.notes %></p>
+        <p class="card-text"><%= markdownify @file.notes %></p>
       <% end %>
     <% end %>
   </div>

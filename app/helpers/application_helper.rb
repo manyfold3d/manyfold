@@ -25,6 +25,13 @@ module ApplicationHelper
     end
   end
 
+  def markdownify(text)
+    Kramdown::Document.new(
+      sanitize(text),
+      header_offset: 2
+    ).to_html.html_safe # rubocop:disable Rails/OutputSafety
+  end
+
   def card(style, title, options = {}, &content)
     id = "card-#{SecureRandom.hex(4)}"
     card_class = "card mb-4"
