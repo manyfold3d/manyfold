@@ -12,6 +12,10 @@
 <% content_for :items do %>
   <%= render "image_carousel", images: @images %>
 
+  <%= card(:secondary) do %>
+    <p class="card-text"><%= markdownify @model.notes %></p>
+  <% end if @model.notes %>
+
   <h2><a name="files"><%= t(".files") %></a></h2>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
     <%= render partial: "file", collection: @groups.delete(nil) %>
@@ -87,10 +91,6 @@
   <% end %>
 
   <%= render partial: "problem", collection: @model.problems.visible(problem_settings) %>
-
-  <%= card(:secondary, t(".notes_heading")) do %>
-    <p class="card-text"><%= markdownify @model.notes %></p>
-  <% end if @model.notes %>
 
   <%= card :secondary, t(".files_card.heading") do %>
     <a href="#files">Top</a>
