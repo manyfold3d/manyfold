@@ -26,7 +26,7 @@
   <% end %>
   <%= text_input_row form, :caption, help: t(".caption.help") %>
   <%= text_input_row form, :icon, help: t(".icon.help_html"), placeholder: translate(".icon.placeholder") %>
-  <%= rich_text_input_row form, :notes, help: t(".notes.help") %>
+  <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
 
   <% if @library.persisted? %>
     <div class="row mb-3 input-group">

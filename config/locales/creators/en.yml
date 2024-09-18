@@ -11,6 +11,9 @@ en:
         label: Show models by %{name}
     destroy:
       success: Creator deleted!
+    form:
+      notes:
+        help_html: You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit: Edit Creator
       new: New Creator
