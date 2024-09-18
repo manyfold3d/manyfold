@@ -19,14 +19,15 @@ class ProcessUploadedFileJob < ApplicationJob
     }.compact
     # Create model
     new_model = false
-    if model.nil?
-      model = library.models.create!(data)
-      model.grant_permission_to "own", owner
-      model.update! organize: true
-      new_model = true
-    end
-    # Handle different file types
-    begin
+    new_file = nil
+    ActiveRecord::Base.transaction do
+      if model.nil?
+        model = library.models.create!(data)
+        model.grant_permission_to "own", owner
+        model.update! organize: true
+        new_model = true
+      end
+      # Handle different file types
       case File.extname(file.original_filename).delete(".").downcase
       when *SupportedMimeTypes.archive_extensions
         unzip(model, file)
@@ -35,18 +36,12 @@ class ProcessUploadedFileJob < ApplicationJob
       else
         Rails.logger.warn("Ignoring #{file.inspect}")
       end
-      # Discard cached file
-      attacher.destroy
-      if new_model
-        # Queue full model scan to fill in data
-        ModelScanJob.perform_later(model.id, include_all_subfolders: true)
-      else
-        ModelFileScanJob.perform_later(new_file.id)
-      end
-    rescue
-      model.destroy
-      raise
     end
+    # Discard cached file
+    attacher.destroy
+    # Queue scans to fill in data
+    ModelScanJob.perform_later(model.id, include_all_subfolders: true) if new_model
+    ModelFileScanJob.perform_later(new_file.id) if new_file
   end
 
   private
