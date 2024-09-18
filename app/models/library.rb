@@ -108,7 +108,7 @@ class Library < ApplicationRecord
   memoize :storage
 
   def register_storage
-    Shrine.storages[storage_key] = storage
+    LibraryUploader.storages[storage_key] = storage
   end
 
   def self.register_all_storage
