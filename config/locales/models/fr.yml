@@ -69,7 +69,6 @@ fr:
         warning: La fusion déplace tous les fichiers de ce modèle vers la cible et supprime ce modèle. Les métadonnées des fichiers sont préservées, mais toutes les métadonnées du modèle sont perdues !
         with: Fusionner avec
       model_details: Détails du modèle
-      notes_heading: Notes
       organize:
         button_text: Organiser les fichiers
         confirm:

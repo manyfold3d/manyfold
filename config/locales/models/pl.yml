@@ -69,7 +69,6 @@ pl:
         warning: Scalanie przenosi wszystkie pliki z tego modelu do docelowego i usuwa ten model. Metadane plików zostaną zachowane, ale wszelkie metadane modelu zostaną utracone!
         with: Połącz z
       model_details: Szczegóły Modelu
-      notes_heading: Notatki
       organize:
         button_text: Zorganizuj pliki
         confirm:

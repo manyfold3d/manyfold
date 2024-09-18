@@ -72,7 +72,6 @@ en:
         warning: Merging moves all files from this model to the target, and removes this model. File metadata is preserved, but any model metadata will be lost!
         with: Merge with
       model_details: Model Details
-      notes_heading: Notes
       organize:
         button_text: Organize files
         confirm:
