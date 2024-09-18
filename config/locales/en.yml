@@ -33,7 +33,7 @@ en:
         library_id: Library
         license: License
         name: Name
-        notes: Notes
+        notes: Description
         path: Path
         preview_file: Preview File
         tags: Tags

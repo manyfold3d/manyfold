@@ -33,7 +33,7 @@ fr:
         library_id: Bibliothèque
         license: Licence
         name: Nom
-        notes: Notes
+        notes: Description
         path: Chemin
         preview_file: Prévisualisation
         tags: Étiquettes

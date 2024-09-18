@@ -32,7 +32,7 @@ module ApplicationHelper
     ).to_html.html_safe # rubocop:disable Rails/OutputSafety
   end
 
-  def card(style, title, options = {}, &content)
+  def card(style, title = nil, options = {}, &content)
     id = "card-#{SecureRandom.hex(4)}"
     card_class = "card mb-4"
     if options[:skip_link]
@@ -41,21 +41,23 @@ module ApplicationHelper
     end
     tag.div class: card_class do
       safe_join([
-        tag.div(class: "card-header text-white bg-#{style}") do
-          options[:collapse] ?
-            safe_join([
-              title,
-              tag.span(icon("arrows-expand", t("general.expand")), class: "float-end d-#{options[:collapse]}-none"),
-              tag.a(
-                nil,
-                class: "link-unstyled stretched-link d-#{options[:collapse]}-none",
-                "data-bs-toggle": "collapse",
-                "data-bs-target": "##{id}",
-                "aria-expanded": false,
-                "aria-controls": id
-              )
-            ]) :
-            title
+        if title
+          tag.div(class: "card-header text-white bg-#{style}") do
+            options[:collapse] ?
+              safe_join([
+                title,
+                tag.span(icon("arrows-expand", t("general.expand")), class: "float-end d-#{options[:collapse]}-none"),
+                tag.a(
+                  nil,
+                  class: "link-unstyled stretched-link d-#{options[:collapse]}-none",
+                  "data-bs-toggle": "collapse",
+                  "data-bs-target": "##{id}",
+                  "aria-expanded": false,
+                  "aria-controls": id
+                )
+              ]) :
+              title
+          end
         end,
         skiplink,
         tag.div(class: "card-body #{"collapse d-#{options[:collapse]}-block" if options[:collapse]}", id: id) do
