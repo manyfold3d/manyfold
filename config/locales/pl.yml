@@ -33,7 +33,7 @@ pl:
         library_id: Biblioteka
         license: Licencja
         name: Nazwa
-        notes: Notatki
+        notes: Opis
         path: Ścieżka
         preview_file: Podgląd pliku
         tags: Tagi
