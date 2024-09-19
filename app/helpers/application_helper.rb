@@ -41,7 +41,7 @@ module ApplicationHelper
     end
     tag.div class: card_class do
       safe_join([
-        if title
+        if title.present?
           tag.div(class: "card-header text-white bg-#{style}") do
             options[:collapse] ?
               safe_join([
