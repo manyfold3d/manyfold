@@ -41,7 +41,7 @@ document.addEventListener('ManyfoldReady', () => {
       submitButton?.setAttribute('disabled', 'disabled')
     })
     uppy.on('complete', (result) => {
-      if (result.successful.length > 0) {
+      if (result.successful?.length) {
         submitButton?.removeAttribute('disabled')
       }
     })
