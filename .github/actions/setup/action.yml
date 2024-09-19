@@ -10,6 +10,9 @@ runs:
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
+    - name: Enable Corepack
+      run: corepack enable
+      shell: bash
     - name: Set up Node
       uses: actions/setup-node@v4
       with:

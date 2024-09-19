@@ -14,6 +14,7 @@ FileUtils.chdir APP_ROOT do
   # Add necessary setup steps to this file.
 
   puts "== Installing dependencies =="
+  system! "corepack enable"
   system! "gem install bundler --conservative"
   system("bundle check") || system!("bundle install")
 
