@@ -7,6 +7,7 @@
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "typecheck": "bundle exec i18n export --config=./config/i18n-js.yml && tsc --project tsconfig.json"
   },
+  "packageManager": "yarn@4.5.0",
   "dependencies": {
     "@notus.sh/cocooned": "^2.3.0",
     "@popperjs/core": "^2.11.8",
