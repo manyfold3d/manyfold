@@ -11,6 +11,10 @@ class ModelPolicy < ApplicationPolicy
     )
   end
 
+  def destroy?
+    super && !record.contains_other_models?
+  end
+
   def scan?
     user&.is_contributor?
   end
