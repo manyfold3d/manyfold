@@ -16,10 +16,7 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
     folders.map { |f| f.gsub(matcher, "") }.uniq
   end
 
-  def perform(library_id)
-    library = Library.find(library_id)
-    return if library.nil?
-    return if Problem.create_or_clear(library, :missing, !library.storage_exists?)
+  def folders_with_changes(library)
     # Make a list of changed filenames using set XOR
     status[:step] = "jobs.scan.detect_filesystem_changes.building_filename_list" # i18n-tasks-use t('jobs.scan.detect_filesystem_changes.building_filename_list')
     changes = (known_filenames(library).to_set ^ filenames_on_disk(library)).to_a
@@ -31,9 +28,16 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
     folders_with_changes.delete("/")
     folders_with_changes.delete(".")
     folders_with_changes.delete("./")
-    folders_with_changes.compact_blank!
+    # Trim out anything left blank and we're done
+    folders_with_changes.compact_blank
+  end
+
+  def perform(library_id)
+    library = Library.find(library_id)
+    return if library.nil?
+    return if Problem.create_or_clear(library, :missing, !library.storage_exists?)
     # For each folder in the library with a change, find or create a model, then scan it
     status[:step] = "jobs.scan.detect_filesystem_changes.creating_models" # i18n-tasks-use t('jobs.scan.detect_filesystem_changes.creating_models')
-    folders_with_changes.each { |path| Scan::CreateModelJob.perform_later(library.id, path) }
+    folders_with_changes(library).each { |path| Scan::CreateModelJob.perform_later(library.id, path) }
   end
 end
