@@ -16,6 +16,6 @@ class SafePathValidator < ActiveModel::EachValidator
   ]
 
   def validate_each(record, attribute, value)
-    record.errors.add attribute, :unsafe if UNSAFE.any? { |x| value&.starts_with?(x) }
+    record.errors.add attribute, :unsafe if value === "/" || UNSAFE.any? { |x| value&.starts_with?(x) }
   end
 end

@@ -55,5 +55,11 @@ RSpec.describe Library do
         expect(library.errors[:path]).to include "cannot be a privileged system path"
       end
     end
+
+    it "disallows root folder" do
+      library = build(:library, path: "/")
+      library.valid?
+      expect(library.errors[:path]).to include "cannot be a privileged system path"
+    end
   end
 end
