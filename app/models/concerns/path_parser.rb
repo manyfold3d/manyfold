@@ -84,6 +84,6 @@ module PathParser
   end
 
   def to_human_name(str)
-    str.humanize.tr("+", " ").titleize
+    str.humanize.tr("+", " ").careful_titleize
   end
 end
