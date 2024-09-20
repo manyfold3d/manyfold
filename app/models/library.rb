@@ -23,6 +23,7 @@ class Library < ApplicationRecord
     uniqueness: true,
     existing_path: true,
     safe_path: true,
+    writable: true,
     if: -> { storage_service == "filesystem" }
 
   validates :s3_bucket, presence: true, if: -> { storage_service == "s3" }
