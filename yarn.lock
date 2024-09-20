@@ -955,10 +955,10 @@
     lodash "^4.17.21"
     preact "^10.5.13"
 
-"@uppy/xhr-upload@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@uppy/xhr-upload/-/xhr-upload-4.1.0.tgz#df469be285c43d82ecd72e7a68e308ffe46f6f18"
-  integrity sha512-Q7ljGvAUCKaAUJaxo2Uqfe+Cdwol5PYgG4lESFHVPo+CE7FWavvEXoGefhJCyxqy+7ygp7lK6+tXHOGiYZXlJg==
+"@uppy/xhr-upload@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@uppy/xhr-upload/-/xhr-upload-4.2.0.tgz#1bcd632ef90568aa1b79874dd3fcffdd0a140bd2"
+  integrity sha512-MhpazjMEjFgEyB9Ewiz+ba4U3uZ6yBDrylBeMI0XSxJD5ZwygYBzqpacB6eoVZqHqyb9He90fdZnod5dD9Cc0g==
   dependencies:
     "@uppy/companion-client" "^4.1.0"
     "@uppy/utils" "^6.0.2"
