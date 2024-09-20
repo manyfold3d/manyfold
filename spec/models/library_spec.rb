@@ -69,5 +69,11 @@ RSpec.describe Library do
       library.valid?
       expect(library.errors[:path]).to include "must be writable"
     end
+
+    it "normalizes paths" do
+      path = Rails.root + "tmp/../app"
+      library = build(:library, path: path)
+      expect(library.path).to eq (Rails.root + "app").to_s
+    end
   end
 end

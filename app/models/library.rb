@@ -17,6 +17,12 @@ class Library < ApplicationRecord
   before_validation :ensure_path_case_is_correct
   after_save :register_storage
 
+  normalizes :path, with: ->(path) do
+    Pathname.new(path).realpath.to_s
+  rescue Errno::ENOENT # carry on, we check existence later
+    path
+  end
+
   validates :storage_service, presence: true, inclusion: STORAGE_SERVICES
   validates :path,
     presence: true,
