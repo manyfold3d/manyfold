@@ -18,7 +18,12 @@ class Library < ApplicationRecord
   after_save :register_storage
 
   validates :storage_service, presence: true, inclusion: STORAGE_SERVICES
-  validates :path, presence: true, uniqueness: true, existing_path: true, if: -> { storage_service == "filesystem" }
+  validates :path,
+    presence: true,
+    uniqueness: true,
+    existing_path: true,
+    safe_path: true,
+    if: -> { storage_service == "filesystem" }
 
   validates :s3_bucket, presence: true, if: -> { storage_service == "s3" }
   validates :s3_region, presence: true, if: -> { storage_service == "s3" }

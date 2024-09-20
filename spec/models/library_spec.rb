@@ -30,4 +30,30 @@ RSpec.describe Library do
     create(:library, path: @library_path) # rubocop:todo RSpec/InstanceVariable
     expect(build(:library, path: @library_path)).not_to be_valid # rubocop:todo RSpec/InstanceVariable
   end
+
+  context "when setting a path" do
+    [
+      "/bin",
+      "/boot",
+      "/dev",
+      "/etc",
+      "/lib",
+      "/lost",
+      "/proc",
+      "/root",
+      "/run",
+      "/sbin",
+      "/selinux",
+      "/srv",
+      "/usr"
+    ].each do |prefix|
+      it "disallows paths under #{prefix}" do
+        path = File.join(prefix, "library")
+        allow(File).to receive(:exist?).with(path).and_return(true)
+        library = build(:library, path: path)
+        library.valid?
+        expect(library.errors[:path]).to include "cannot be a privileged system path"
+      end
+    end
+  end
 end

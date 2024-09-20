@@ -85,6 +85,7 @@ en:
           attributes:
             path:
               not_found: could not be found on disk
+              unsafe: cannot be a privileged system path
         model:
           attributes:
             library:
