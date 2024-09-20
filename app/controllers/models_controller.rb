@@ -92,9 +92,7 @@ class ModelsController < ApplicationController
     if @model.update(model_params)
       redirect_to @model, notice: t(".success")
     else
-      edit # Load creators and collections
-      flash.now[:alert] = t(".failure")
-      render :edit
+      redirect_back_or_to edit_model_path(@model), alert: t(".failure")
     end
   end
 
