@@ -25,7 +25,7 @@
     "jquery": "^3.7.1",
     "masonry-layout": "^4.2.2",
     "rpg-awesome": "^0.2.0",
-    "sass": "^1.79.1",
+    "sass": "^1.79.2",
     "three": "^0.168.0",
     "threejs-webworker-3mf-loader": "https://github.com/manyfold3d/threejs-webworker-3mf-loader"
   },
