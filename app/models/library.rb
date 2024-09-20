@@ -19,7 +19,7 @@ class Library < ApplicationRecord
 
   normalizes :path, with: ->(path) do
     Pathname.new(path).realpath.to_s
-  rescue Errno::ENOENT # carry on, we check existence later
+  rescue Errno::ENOENT, Errno::EACCES # carry on, we validate these later
     path
   end
 
