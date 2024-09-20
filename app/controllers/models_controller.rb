@@ -92,8 +92,7 @@ class ModelsController < ApplicationController
     if @model.update(model_params)
       redirect_to @model, notice: t(".success")
     else
-      flash[:alert] = t(".failure")
-      redirect_back_or_to edit_model_path(@model)
+      redirect_back_or_to edit_model_path(@model), alert: t(".failure")
     end
   end
 
