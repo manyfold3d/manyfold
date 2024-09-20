@@ -22,9 +22,9 @@ end
 class ActiveJob::Status::Status
   def last_activity
     [
-      self[:serialized_job]["enqueued_at"],
-      self[:started_at],
-      self[:finished_at]
+      read.dig(:serialized_job, "enqueued_at"),
+      read[:started_at],
+      read[:finished_at]
     ].compact.max
   end
 end
