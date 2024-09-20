@@ -10,7 +10,7 @@ class ProcessUploadedFileJob < ApplicationJob
     attacher.attach_cached(uploaded_file)
     file = attacher.file
     data = {
-      name: File.basename(file.original_filename, ".*").humanize.tr("+", " ").titleize,
+      name: File.basename(file.original_filename, ".*").humanize.tr("+", " ").careful_titleize,
       path: SecureRandom.uuid,
       creator_id: creator_id,
       collection_id: collection_id,

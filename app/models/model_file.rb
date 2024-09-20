@@ -69,7 +69,7 @@ class ModelFile < ApplicationRecord
   end
 
   def name
-    basename.humanize.titleize
+    basename.humanize.careful_titleize
   end
 
   def path_within_library
