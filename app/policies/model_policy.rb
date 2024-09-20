@@ -12,7 +12,7 @@ class ModelPolicy < ApplicationPolicy
   end
 
   def destroy?
-    super && !record.contains_other_models?
+    super && (record.is_a?(Model) ? !record.contains_other_models? : true)
   end
 
   def scan?
