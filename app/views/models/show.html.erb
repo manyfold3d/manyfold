@@ -14,7 +14,7 @@
 
   <%= card(:secondary) do %>
     <p class="card-text"><%= markdownify @model.notes %></p>
-  <% end if @model.notes %>
+  <% end if @model.notes.present? %>
 
   <h2><a name="files"><%= t(".files") %></a></h2>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
