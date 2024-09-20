@@ -70,6 +70,7 @@ Rails.application.routes.draw do
   end
   resources :problems, only: [:index, :update]
   resources :health, only: [:index]
+  resources :benchmark, only: [:index, :create, :destroy] if Rails.env.development?
 
   authenticate :user, lambda { |u| u.is_contributor? } do
     mount LibraryUploader.upload_endpoint(:cache) => "/upload"
