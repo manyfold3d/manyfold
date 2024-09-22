@@ -4,7 +4,7 @@ FROM base AS build
 
 RUN apk add --no-cache \
   alpine-sdk \
-  nodejs \
+  nodejs=~20.15 \
   postgresql-dev \
   mariadb-dev \
   libarchive \
