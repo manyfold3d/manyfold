@@ -80,7 +80,7 @@ class CollectionsController < ApplicationController
       authorize Collection
       @title = t(".unknown")
     else
-      @collection = Collection.includes(:links, :caber_relations).find_by!(public_id: params[:id])
+      @collection = Collection.includes(:links, :caber_relations).find_param(params[:id])
       authorize @collection
       @title = @collection.name
     end
