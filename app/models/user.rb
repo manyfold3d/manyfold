@@ -45,6 +45,10 @@ class User < ApplicationRecord
     username
   end
 
+  def self.from_param(param)
+    find_by!(username: param)
+  end
+
   def printed?(file)
     listed?(file, scope: :printed)
   end

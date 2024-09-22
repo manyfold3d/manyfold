@@ -10,6 +10,10 @@ module PublicIDable
     public_id
   end
 
+  def self.from_param(param)
+    find_by!(public_id: param)
+  end
+
   private
 
   ALPHABET = "bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ0123456789"
