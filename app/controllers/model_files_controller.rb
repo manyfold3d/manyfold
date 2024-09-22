@@ -26,7 +26,7 @@ class ModelFilesController < ApplicationController
   def create
     authorize @model
     if params[:convert]
-      file = ModelFile.find_by!(public_id: params[:convert][:id])
+      file = ModelFile.from_param(params[:convert][:id])
       Analysis::FileConversionJob.perform_later(file.id, params[:convert][:to].to_sym)
       redirect_back_or_to [@model, file], notice: t(".conversion_started")
     elsif params[:uploads]
@@ -65,7 +65,7 @@ class ModelFilesController < ApplicationController
     hash = bulk_update_params
     params[:model_files].each_pair do |id, selected|
       if selected == "1"
-        file = @model.model_files.find_by!(public_id: id)
+        file = @model.model_files.from_param(id)
         current_user.set_list_state(file, :printed, params[:printed] === "1")
         if file.update(hash)
           file.save
@@ -118,11 +118,11 @@ class ModelFilesController < ApplicationController
   end
 
   def get_model
-    @model = Model.find_by!(public_id: params[:model_id])
+    @model = Model.from_param(params[:model_id])
   end
 
   def get_file
-    @file = @model.model_files.includes(:unsupported_version, :presupported_version).find_by!(public_id: params[:id])
+    @file = @model.model_files.includes(:unsupported_version, :presupported_version).from_param(params[:id])
     authorize @file
     @title = @file.name
   end
