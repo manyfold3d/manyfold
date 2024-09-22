@@ -45,7 +45,7 @@ class User < ApplicationRecord
     username
   end
 
-  def self.from_param(param)
+  def self.find_param(param)
     find_by!(username: param)
   end
 

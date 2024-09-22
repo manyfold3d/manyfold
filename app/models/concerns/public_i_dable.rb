@@ -5,7 +5,7 @@ module PublicIDable
     before_validation :generate_public_id
     validates :public_id, presence: true, uniqueness: true
 
-    def self.from_param(param)
+    def self.find_param(param)
       find_by!(public_id: param)
     end
   end
