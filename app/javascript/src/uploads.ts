@@ -13,7 +13,7 @@ const uppyLocales = { en, de, fr, pl }
 document.addEventListener('ManyfoldReady', () => {
   document.querySelectorAll('#uppy').forEach((element: HTMLDivElement) => {
     const settings = element.dataset
-    const uppy = new Uppy({
+    new Uppy({
       locale: uppyLocales[window.i18n.locale],
       restrictions: {
         allowedFileTypes: settings.allowedFileTypes?.split(','),
