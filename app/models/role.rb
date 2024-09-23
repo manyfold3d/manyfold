@@ -18,8 +18,9 @@ class Role < ApplicationRecord
     inclusion: {in: Rolify.resource_types},
     allow_nil: true
 
-  validates :name,
-    inclusion: {in: ROLES.map(&:to_s)}
+  validates :name,   # rubocop:todo Rails/UniqueValidationWithoutIndex
+    inclusion: {in: ROLES.map(&:to_s)},
+    uniqueness: true
 
   scopify
 end
