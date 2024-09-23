@@ -6,14 +6,13 @@ module PathParser
     tag_list.add(remove_stop_words(tags))
   end
 
-  def parse_metadata_from_path!
+  def parse_metadata_from_path
     return unless SiteSettings.model_path_template
     components = extract_path_components
     parse_tags(components[:tags])
     parse_creator(components[:creator])
     parse_collection(components[:collection])
     parse_name(components[:model_name])
-    save!
   end
 
   private

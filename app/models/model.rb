@@ -26,20 +26,20 @@ class Model < ApplicationRecord
   # In Rails 7.1 we will be able to do this instead:
   # normalizes :license, with: -> license { license.blank? ? nil : license }
 
+  before_validation :autoupdate_path, if: :organize
+  before_update :move_files, if: :need_to_move_files?
+  after_update :check_integrity
+
   attr_reader :organize
   def organize=(value)
     @organize = ActiveRecord::Type::Boolean.new.cast(value)
   end
-
-  before_validation :autoupdate_path, if: :organize
 
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
   validate :check_for_submodels, on: :update, if: :need_to_move_files?
   validate :destination_is_vacant, on: :update, if: :need_to_move_files?
   validates :license, spdx: true, allow_nil: true
-
-  before_update :move_files, if: :need_to_move_files?
 
   def parents
     Pathname.new(path).parent.descend.filter_map do |path|
@@ -60,6 +60,7 @@ class Model < ApplicationRecord
         model: target
       )
     end
+    Scan::CheckModelIntegrityJob.perform_later(target.id)
     reload
     destroy
   end
@@ -169,5 +170,9 @@ class Model < ApplicationRecord
     model_files.each(&:reattach!)
     # Remove the old folder if it's still there
     previous_library.storage.delete_prefixed(previous_path)
+  end
+
+  def check_integrity
+    Scan::CheckModelIntegrityJob.perform_later(id)
   end
 end
