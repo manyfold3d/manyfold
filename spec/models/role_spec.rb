@@ -114,7 +114,7 @@ RSpec.describe Role do
     end
 
     it "combines duplicated roles" do
-      expect { described_class.merge_duplicates! }.to change(Role, :count).from(3).to(2)
+      expect { described_class.merge_duplicates! }.to change(described_class, :count).from(3).to(2)
     end
 
     it "preserves user's mod role" do
