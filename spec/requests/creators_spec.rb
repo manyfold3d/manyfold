@@ -43,7 +43,7 @@ RSpec.describe "Creators" do
         model = Model.first
         allow_any_instance_of(CreatorsController).to receive(:session).and_return({return_after_new: edit_model_path(model)}) # rubocop:disable RSpec/AnyInstance
         post "/creators", params: {creator: {name: "newname"}}
-        expect(response).to redirect_to("/models/#{model.to_param}/edit?new_creator=#{Creator.last.to_param}")
+        expect(response).to redirect_to("/models/#{model.to_param}/edit?new_creator=#{Creator.find_by(name: "newname").to_param}")
       end
 
       it "denies member permission", :as_member do

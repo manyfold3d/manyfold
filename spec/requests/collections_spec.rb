@@ -43,7 +43,7 @@ RSpec.describe "Collections" do
         model = Model.first
         allow_any_instance_of(CollectionsController).to receive(:session).and_return({return_after_new: edit_model_path(model)}) # rubocop:disable RSpec/AnyInstance
         post "/collections", params: {collection: {name: "newname"}}
-        expect(response).to redirect_to("/models/#{model.to_param}/edit?new_collection=#{Collection.last.to_param}")
+        expect(response).to redirect_to("/models/#{model.to_param}/edit?new_collection=#{Collection.find_by(name: "newname").to_param}")
       end
 
       it "denies member permission", :as_member do
