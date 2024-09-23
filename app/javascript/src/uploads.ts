@@ -14,7 +14,6 @@ document.addEventListener('ManyfoldReady', () => {
   document.querySelectorAll('#uppy').forEach((element: HTMLDivElement) => {
     const settings = element.dataset
     const uppy = new Uppy({
-      autoProceed: true,
       locale: uppyLocales[window.i18n.locale],
       restrictions: {
         allowedFileTypes: settings.allowedFileTypes?.split(','),
@@ -27,23 +26,15 @@ document.addEventListener('ManyfoldReady', () => {
         theme: 'auto',
         width: '100%',
         height: '25rem',
-        showRemoveButtonAfterComplete: true,
-        hideProgressAfterFinish: true
+        hideUploadButton: true
       })
       .use(Form, {
         target: element.closest('form') ?? undefined,
         getMetaFromForm: false,
-        resultName: 'uploads'
+        resultName: 'uploads',
+        triggerUploadOnSubmit: true,
+        submitOnSuccess: true
       })
       .use(XHR, { endpoint: '/upload' })
-    const submitButton = element?.closest('form')?.querySelector("input[type='submit']")
-    uppy.on('upload', () => {
-      submitButton?.setAttribute('disabled', 'disabled')
-    })
-    uppy.on('complete', (result) => {
-      if (result.successful?.length != null && result.successful.length > 0) {
-        submitButton?.removeAttribute('disabled')
-      }
-    })
   })
 })
