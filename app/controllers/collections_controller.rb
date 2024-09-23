@@ -18,7 +18,7 @@ class CollectionsController < ApplicationController
     when "recent"
       @collections.order(created_at: :desc)
     else
-      @collections.order(name: :asc)
+      @collections
     end
 
     if helpers.pagination_settings["collections"]
