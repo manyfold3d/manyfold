@@ -9,7 +9,11 @@ de:
       missing: Fehlende Dateien oder Ordner
       nesting: Modell enthält andere Modelle
       no_3d_model: Modell hat keine 3D-Dateien
+      no_creator:
       no_image: Modell hat keine Bilddateien
+      no_license:
+      no_links:
+      no_tags:
       non_manifold: unbekanntes Mesh
     filters:
       apply_filters: Anwenden
@@ -37,9 +41,21 @@ de:
       no_3d_model:
         description: Dieses Modell enthält keine 3D-Dateien. Es ist unwahrscheinlich, dass dies korrekt ist.
         title: Keine 3D-Dateien im Modell
+      no_creator:
+        description:
+        title:
       no_image:
         description: Dieses Modell enthält keine Bilddateien. Das Hinzufügen einer solchen Datei könnte die Suche erleichtern.
         title: Keine Bilddateien im Modell
+      no_license:
+        description:
+        title:
+      no_links:
+        description:
+        title:
+      no_tags:
+        description:
+        title:
     model_file:
       duplicate:
         description: Diese Datei ist in anderen Modellen dupliziert. Vielleicht möchten Sie einige davon entfernen.

@@ -9,7 +9,11 @@ pl:
       missing: Brakujące pliki lub foldery
       nesting: Model zawiera inne modele
       no_3d_model: Model nie zawiera plików 3D
+      no_creator:
       no_image: Model nie zawiera plików graficznych
+      no_license:
+      no_links:
+      no_tags:
       non_manifold: Siatka jest nierozmaita
     filters:
       apply_filters: Zastosuj
@@ -37,9 +41,21 @@ pl:
       no_3d_model:
         description: Ten model nie zawiera plików 3D. Jest mało prawdopodobne, by było to zamierzone.
         title: Brak plików 3D w modelu
+      no_creator:
+        description:
+        title:
       no_image:
         description: Ten model nie zawiera plików graficznych. Dodanie jednego może ułatwić przeglądanie.
         title: Brak plików graficznych w modelu
+      no_license:
+        description:
+        title:
+      no_links:
+        description:
+        title:
+      no_tags:
+        description:
+        title:
     model_file:
       duplicate:
         description: Ten plik jest zduplikowany w innych modelach. Niektóre z nich można usunąć.
