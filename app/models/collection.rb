@@ -12,7 +12,6 @@ class Collection < ApplicationRecord
   belongs_to :collection, optional: true
   validates :name, uniqueness: {case_sensitive: false}
 
-  default_scope { order("LOWER(collections.name) ASC") }
   # returns all collections at and below given ids
   #   this should be applied to @filters[:collection] to get models in sub-trees
   scope :tree_down, ->(id) {

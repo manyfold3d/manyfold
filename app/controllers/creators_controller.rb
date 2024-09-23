@@ -18,7 +18,7 @@ class CreatorsController < ApplicationController
     when "recent"
       @creators.order(created_at: :desc)
     else
-      @creators
+      @creators.order("LOWER(creators.name) ASC")
     end
 
     if helpers.pagination_settings["creators"]
