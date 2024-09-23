@@ -3226,7 +3226,7 @@ __metadata:
     jquery: ^3.7.1
     masonry-layout: ^4.2.2
     rpg-awesome: ^0.2.0
-    sass: ^1.79.2
+    sass: ^1.79.3
     three: ^0.168.0
     threejs-webworker-3mf-loader: "https://github.com/manyfold3d/threejs-webworker-3mf-loader"
     ts-standard: ^12.0.2
@@ -3911,16 +3911,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.79.2":
-  version: 1.79.2
-  resolution: "sass@npm:1.79.2"
+"sass@npm:^1.79.3":
+  version: 1.79.3
+  resolution: "sass@npm:1.79.3"
   dependencies:
-    chokidar: "npm:^4.0.0"
-    immutable: "npm:^4.0.0"
-    source-map-js: "npm:>=0.6.2 <2.0.0"
+    chokidar: ^4.0.0
+    immutable: ^4.0.0
+    source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 7877859d64278650ef4106efb2110266e0fc0b482036df523d0927d43c9da43b800d159ab7d9c1e8c7e6352dc5f7b4d5ac881a8fc6f5ebfb8dbdcdf6038a2c5d
+  checksum: ad7cc538dcca26e4547a2b234c50b1708d932d9af36bfc1a992463eefbe51e01143497019e5ebfc3787f2e8f65dbdce5a094e224192ebf9b22a54b8d1ffed729
   languageName: node
   linkType: hard
 
