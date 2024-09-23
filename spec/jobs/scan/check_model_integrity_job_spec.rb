@@ -47,6 +47,64 @@ RSpec.describe Scan::CheckModelIntegrityJob do
     end
   end
 
+  context "when checking for missing license" do
+    it "flags models without license as a problem" do
+      model = create(:model, license: nil)
+      described_class.perform_now(model.id)
+      expect(model.problems.map(&:category)).to include("no_license")
+    end
+
+    it "doesn't raise a problem for models with license" do
+      model = create(:model, license: "CC-BY-4.0")
+      described_class.perform_now(model.id)
+      expect(model.problems.map(&:category)).not_to include("no_license")
+    end
+  end
+
+  context "when checking for missing creator" do
+    it "flags models without creator as a problem" do
+      model = create(:model)
+      described_class.perform_now(model.id)
+      expect(model.problems.map(&:category)).to include("no_creator")
+    end
+
+    it "doesn't raise a problem for models with creator" do
+      creator = create(:creator)
+      model = create(:model, creator: creator)
+      described_class.perform_now(model.id)
+      expect(model.problems.map(&:category)).not_to include("no_creator")
+    end
+  end
+
+  context "when checking for missing links" do
+    it "flags models without link as a problem" do
+      model = create(:model)
+      described_class.perform_now(model.id)
+      expect(model.problems.map(&:category)).to include("no_links")
+    end
+
+    it "doesn't raise a problem for models with a link" do
+      link = Link.new url: "https://example.com"
+      model = create(:model, links: [link])
+      described_class.perform_now(model.id)
+      expect(model.problems.map(&:category)).not_to include("no_links")
+    end
+  end
+
+  context "when checking for missing tags" do
+    it "flags models without tags as a problem" do
+      model = create(:model)
+      described_class.perform_now(model.id)
+      expect(model.problems.map(&:category)).to include("no_tags")
+    end
+
+    it "doesn't raise a problem for models with tags" do
+      model = create(:model, tag_list: "tag")
+      described_class.perform_now(model.id)
+      expect(model.problems.map(&:category)).not_to include("no_tags")
+    end
+  end
+
   it "raises exception if model ID is not found" do
     expect { described_class.perform_now(nil) }.to raise_error(ActiveRecord::RecordNotFound)
   end

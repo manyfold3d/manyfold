@@ -33,13 +33,12 @@ class ModelScanJob < ApplicationJob
       model.generate_tags_from_directory_name! if SiteSettings.model_tags_tag_model_directory_name
       if SiteSettings.model_tags_auto_tag_new.present?
         model.tag_list << SiteSettings.model_tags_auto_tag_new
-        model.save!
       end
     end
     if !model.creator_id && SiteSettings.parse_metadata_from_path
-      model.parse_metadata_from_path!
+      model.parse_metadata_from_path
     end
-    # Run integrity check once everything else is done
-    Scan::CheckModelIntegrityJob.perform_later(model_id)
+    model.save!
+    # Integrity check will run automatically after save
   end
 end

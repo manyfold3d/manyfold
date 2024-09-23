@@ -99,13 +99,11 @@ class ModelsController < ApplicationController
   def merge
     if params[:target] && (target = (@model.parents.find { |x| x.public_id == params[:target] }))
       @model.merge_into! target
-      Scan::CheckModelIntegrityJob.perform_later(target.id)
       redirect_to target, notice: t(".success")
     elsif params[:all] && @model.contains_other_models?
       @model.contained_models.each do |child|
         child.merge_into! @model
       end
-      Scan::CheckModelIntegrityJob.perform_later(@model.id)
       redirect_to @model, notice: t(".success")
     else
       head :bad_request

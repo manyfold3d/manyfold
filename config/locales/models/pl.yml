@@ -40,9 +40,7 @@ pl:
     index:
       actions_heading: Akcje
       bulk_edit: Edycja zbiorcza
-      missing_url: Brakujący URL
       skip_models: Pomiń listę modeli
-      untagged: Nieotagowany
     merge:
       success: Modele zostały pomyślnie połączone.
     new:
