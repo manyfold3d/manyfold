@@ -209,7 +209,7 @@ class ModelsController < ApplicationController
     @new_creator = Creator.find_param(params[:new_creator]) if params[:new_creator]
     if @model
       @model.collection = @new_collection if @new_collection
-      @model.collection = @new_creator if @new_creator
+      @model.creator = @new_creator if @new_creator
     end
   end
 
