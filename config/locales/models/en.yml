@@ -47,7 +47,7 @@ en:
     merge:
       success: Models merged successfully.
     new:
-      description: Upload new models as compressed files. Each uploaded archive will be extracted, and become a single model containing all the files. Make sure to hit the "create models" button to save once your uploads are complete!
+      description: Add new models by uploading files! If you upload a compressed archive, it will be extracted and become a single model containing all the files. If you upload individual files, they will each become a separate model.
       files:
         label: Select Files
       free_space: "(%{available} free)"
