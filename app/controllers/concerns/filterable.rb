@@ -6,7 +6,7 @@ module Filterable
 
   def get_filters
     # Get list filters from URL
-    @filters = params.permit(:library, :collection, :q, :creator, :link, :missingtag, :order, tag: [])
+    @filters = params.permit(:library, :collection, :q, :creator, :link, :missingtag, tag: [])
   end
 
   def filtered_models(filters)
