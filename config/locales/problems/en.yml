@@ -12,8 +12,8 @@ en:
       no_creator: Model is not attributed to a creator
       no_image: Model has no image files
       no_license: Model has no license information
-      no_tag: Model does not have any tags
       no_links: Model has no source links
+      no_tag: Model does not have any tags
       non_manifold: Mesh is non-manifold
     filters:
       apply_filters: Apply
@@ -50,12 +50,12 @@ en:
       no_license:
         description: This model doesn't have a specified license. Adding one will make it clearer if and how it can be shared.
         title: Model has no license information
-      no_tag:
-        description: This model has not been tagged, which makes it harder to find. Add some tags to help!
-        title: Model does not have any tags
       no_links:
         description: This model has no links to other sources. If it's also available elsewhere, you might want to add a link to it.
         title: Model has no source links
+      no_tag:
+        description: This model has not been tagged, which makes it harder to find. Add some tags to help!
+        title: Model does not have any tags
     model_file:
       duplicate:
         description: This file is duplicated in other models. You may wish to remove some.

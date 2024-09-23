@@ -42,10 +42,8 @@ en:
     index:
       actions_heading: Actions
       bulk_edit: Bulk Edit
-      missing_url: Missing URL
       no_results_html: Sorry, we couldn't find anything to show you! Try changing your filters or search terms, or uploading some models.
       skip_models: Skip model list
-      untagged: Untagged
     merge:
       success: Models merged successfully.
     new:

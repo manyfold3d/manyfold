@@ -40,9 +40,7 @@ fr:
     index:
       actions_heading: Actions
       bulk_edit: Edition en bloc
-      missing_url: URL manquante
       skip_models:
-      untagged: Sans étiquette
     merge:
       success: Les modèles ont été fusionnés avec succès.
     new:

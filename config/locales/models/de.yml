@@ -40,9 +40,7 @@ de:
     index:
       actions_heading: Aktionen
       bulk_edit: Multibearbeitung
-      missing_url: Fehlende URL
       skip_models: Modellliste überspringen
-      untagged: Ungetagged
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
     new:
