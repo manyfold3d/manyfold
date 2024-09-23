@@ -90,6 +90,7 @@ class ModelsController < ApplicationController
 
   def update
     if @model.update(model_params)
+      Scan::CheckModelIntegrityJob.perform_later(@model.id)
       redirect_to @model, notice: t(".success")
     else
       redirect_back_or_to edit_model_path(@model), alert: t(".failure")

@@ -22,7 +22,11 @@ class Problem < ApplicationRecord
     :no_image,
     :no_3d_model,
     :non_manifold,
-    :inside_out
+    :inside_out,
+    :no_license,
+    :no_links,
+    :no_creator,
+    :no_tags
   ]
   enum :category, CATEGORIES
 
@@ -42,7 +46,11 @@ class Problem < ApplicationRecord
     no_image: :silent,
     no_3d_model: :silent,
     non_manifold: :warning,
-    inside_out: :warning
+    inside_out: :warning,
+    no_license: :silent,
+    no_links: :silent,
+    no_creator: :silent,
+    no_tag: :silent
   )
 
   def self.create_or_clear(problematic, cat, present, options = {})
