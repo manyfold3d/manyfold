@@ -10,7 +10,7 @@ class Creator < ApplicationRecord
   has_many :models, dependent: :nullify
   validates :name, uniqueness: {case_sensitive: false}
 
-  default_scope { order(:name) }
+  default_scope { order("LOWER(creators.name) ASC") }
 
   def self.ransackable_attributes(_auth_object = nil)
     ["caption", "created_at", "id", "public_id", "name", "notes", "slug", "updated_at"]
