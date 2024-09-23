@@ -50,7 +50,7 @@ class Problem < ApplicationRecord
     no_license: :silent,
     no_links: :silent,
     no_creator: :silent,
-    no_tag: :silent
+    no_tags: :silent
   )
 
   def self.create_or_clear(problematic, cat, present, options = {})

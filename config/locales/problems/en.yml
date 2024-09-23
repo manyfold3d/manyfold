@@ -13,7 +13,7 @@ en:
       no_image: Model has no image files
       no_license: Model has no license information
       no_links: Model has no source links
-      no_tag: Model does not have any tags
+      no_tags: Model does not have any tags
       non_manifold: Mesh is non-manifold
     filters:
       apply_filters: Apply
