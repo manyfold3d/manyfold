@@ -86,7 +86,9 @@ de:
         library:
           attributes:
             path:
+              non_writable:
               not_found: konnte nicht auf der Festplatte gefunden werden
+              unsafe:
         model:
           attributes:
             library:
@@ -180,6 +182,21 @@ de:
       queued: in der Warteschlange
       working: Verarbeitung
   application:
+    caber_relation_fields:
+      delete: Löschen
+      permissions:
+        edit:
+        own:
+        view:
+      subject:
+        placeholder:
+        role:
+          member:
+          public:
+        you:
+    caber_relations_form:
+      add:
+      permissions:
     content_header:
       sort:
         name: Nach Namen sortieren

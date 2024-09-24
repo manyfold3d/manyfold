@@ -26,6 +26,8 @@ fr:
         text: Ouvrir
       set_as_preview: Définir comme aperçu
     form:
+      notes:
+        help_html:
       preview_file:
         help: Le fichier affiché en tant qu'aperçu du modèle dans les pages de la bibliothèque
       tags: Étiquette
@@ -40,6 +42,7 @@ fr:
     index:
       actions_heading: Actions
       bulk_edit: Edition en bloc
+      no_results_html:
       skip_models:
     merge:
       success: Les modèles ont été fusionnés avec succès.
@@ -77,7 +80,10 @@ fr:
       path: Chemin
       rescan: Rescanner les fichiers
       search: Recherchez sur Internet des modèles portant ce nom
+      submit:
       tags: Étiquettes
+      upload_card:
+        heading: Télécharger
     update:
       failure: Une erreur s'est produite et les détails du modèle n'ont pas pu être sauvegardés.
       success: Détails du modèle sauvegardés.

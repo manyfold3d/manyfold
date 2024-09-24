@@ -84,7 +84,9 @@ pl:
         library:
           attributes:
             path:
+              non_writable:
               not_found: nie można znaleźć na dysku
+              unsafe:
         model:
           attributes:
             library:
@@ -178,6 +180,21 @@ pl:
       queued: W kolejce
       working: Działa
   application:
+    caber_relation_fields:
+      delete: Usuń
+      permissions:
+        edit:
+        own:
+        view:
+      subject:
+        placeholder:
+        role:
+          member:
+          public:
+        you:
+    caber_relations_form:
+      add:
+      permissions:
     content_header:
       sort:
         name: Sortuj według nazwy

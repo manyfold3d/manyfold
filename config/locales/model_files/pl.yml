@@ -12,9 +12,13 @@ pl:
       success: Pliki zaktualizowane pomyślnie.
     create:
       conversion_started: Konwersja pliku została rozpoczęta. Przekonwertowany plik powinien być wkrótce dostępny.
+      success:
     destroy:
       confirm: Czy na pewno chcesz usunąć ten plik z systemu plików?
       success: Plik usunięty!
+    form:
+      notes:
+        help_html:
     general:
       edit: Edytuj informacje o pliku
     show:

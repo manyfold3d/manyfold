@@ -26,6 +26,8 @@ de:
         text: Öffnen
       set_as_preview: Als Vorschau setzen
     form:
+      notes:
+        help_html:
       preview_file:
         help: Die Datei wird als Modellvorschau auf den Sammlungsseiten angezeigt
       tags: Tags
@@ -39,7 +41,8 @@ de:
       slide_label: "%{name} (%{index} von %{count})"
     index:
       actions_heading: Aktionen
-      bulk_edit: Multibearbeitung
+      bulk_edit: Massenbearbeitung
+      no_results_html:
       skip_models: Modellliste überspringen
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
@@ -77,7 +80,10 @@ de:
       path: Pfad
       rescan: Dateien neu scannen
       search: Suche im Internet nach Modellen mit diesem Namen
+      submit:
       tags: Tags
+      upload_card:
+        heading: Hochladen
     update:
       failure: Es ist ein Fehler aufgetreten und die Modelldetails konnten nicht gespeichert werden.
       success: Modelldetails gespeichert.

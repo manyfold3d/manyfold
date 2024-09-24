@@ -11,6 +11,9 @@ pl:
         label: Pokaż modele według %{name}
     destroy:
       success: Twórca usunięty!
+    form:
+      notes:
+        help_html:
     general:
       edit: Edytuj Twórcę
       new: Nowy Twórca
