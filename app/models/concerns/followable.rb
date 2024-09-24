@@ -33,7 +33,7 @@ module Followable
   end
 
   def post_update_activity
-    return if actor.activities_as_entity.where(created_at: TIMEOUT.minutes.ago..).count > 0
+    return if actor&.activities_as_entity&.where(created_at: TIMEOUT.minutes.ago..)&.count&.> 0
     user = permitted_users.with_permission("own").first || SiteSettings.default_user
     return if user.nil?
     Federails::Activity.create!(
