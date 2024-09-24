@@ -24,7 +24,7 @@ class ModelsController < ApplicationController
     when "recent"
       @models.order(created_at: :desc)
     else
-      @models.order("LOWER(models.name) ASC")
+      @models.order(name_lower: :asc)
     end
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
