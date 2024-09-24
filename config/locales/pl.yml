@@ -33,7 +33,7 @@ pl:
         library_id: Biblioteka
         license: Licencja
         name: Nazwa
-        notes: Opis
+        notes: Notatki
         path: Ścieżka
         preview_file: Podgląd pliku
         tags: Tagi
@@ -262,12 +262,12 @@ pl:
     save: Zapisz
   home:
     index:
-      create_actor:
+      create_actor: dodany przez %{name} %{time} temu
       how_long_ago: "%{time} temu"
       recent_activity: Ostatnia Aktywność
       search:
         placeholder: Czego szukasz?
-      update_actor:
+      update_actor: zaktualizowany przez %{name} %{time} temu
   jobs:
     analysis:
       analyse_model_file:

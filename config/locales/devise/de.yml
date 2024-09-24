@@ -44,7 +44,7 @@ de:
         contact_info: Kontaktinformationen
         current_password_help: Aktuelles Passwort aus Sicherheitsgründen erforderlich
         currently_waiting_confirmation_for_email: Warte auf Bestätigung von %{email}.
-        danger_zone: Gefahr!
+        danger_zone: Achtung!
         security: Sicherheit
         submit: Änderungen speichern
         title: Kontoeinstellungen

@@ -46,11 +46,11 @@ de:
         search_missing: Suche Fehlende
     multiuser_settings:
       default_viewer_role:
-        help:
-        label:
+        help: Wer kann neue Modelle/Ersteller/Sammlungen standardmäßig anzeigen?
+        label: Standard-Sichtbarkeit
         options:
-          member:
-          none:
+          member: Eingeloggte lokale Benutzer
+          none: Privat
       details_html: Um diese Einstellungen zu ändern, bearbeite die <a href='https://manyfold.app/sysadmin/configuration.html'>Umgebungsvariablen</a> des Servers und starten Sie ihn neu.
       heading: Multiuser
       multiuser_mode: Manyfold läuft im Multiuser-modus.

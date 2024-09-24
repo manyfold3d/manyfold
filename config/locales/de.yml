@@ -264,12 +264,12 @@ de:
     save: Speichern
   home:
     index:
-      create_actor:
+      create_actor: 'hinzugefügt von %{name} vor %{time} '
       how_long_ago: vor %{time}
       recent_activity: Neuste Aktivität
       search:
         placeholder: Wonach suchen Sie?
-      update_actor:
+      update_actor: aktualisiert von %{name} vor %{time}
   jobs:
     analysis:
       analyse_model_file:
