@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_04_151944) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_24_122004) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -33,8 +33,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_151944) do
     t.integer "collection_id"
     t.string "slug"
     t.string "public_id"
+    t.virtual "name_lower", type: :string, as: "LOWER(name)", stored: true
     t.index ["collection_id"], name: "index_collections_on_collection_id"
     t.index ["name"], name: "index_collections_on_name", unique: true
+    t.index ["name_lower"], name: "index_collections_on_name_lower"
     t.index ["public_id"], name: "index_collections_on_public_id"
     t.index ["slug"], name: "index_collections_on_slug", unique: true
   end
@@ -47,7 +49,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_151944) do
     t.text "caption"
     t.string "slug"
     t.string "public_id"
+    t.virtual "name_lower", type: :string, as: "LOWER(name)", stored: true
     t.index ["name"], name: "index_creators_on_name", unique: true
+    t.index ["name_lower"], name: "index_creators_on_name_lower"
     t.index ["public_id"], name: "index_creators_on_public_id"
     t.index ["slug"], name: "index_creators_on_slug", unique: true
   end
@@ -193,9 +197,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_151944) do
     t.string "slug"
     t.string "license"
     t.string "public_id"
+    t.virtual "name_lower", type: :string, as: "LOWER(name)", stored: true
     t.index ["collection_id"], name: "index_models_on_collection_id"
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
+    t.index ["name_lower"], name: "index_models_on_name_lower"
     t.index ["path", "library_id"], name: "index_models_on_path_and_library_id", unique: true
     t.index ["preview_file_id"], name: "index_models_on_preview_file_id"
     t.index ["public_id"], name: "index_models_on_public_id"
