@@ -1012,6 +1012,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/webxr@npm:^0.5.20":
+  version: 0.5.20
+  resolution: "@types/webxr@npm:0.5.20"
+  checksum: 8085c291ca8a8adfe03245725384234e62d61cc0f5f7b9985c2a0ba2b2a794cac538861c4904d8fcd28e3e381f0a4ecc5d4514d143dbf3fc0cf3193dc1cc7a54
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/eslint-plugin@npm:^5.0.0":
   version: 5.42.1
   resolution: "@typescript-eslint/eslint-plugin@npm:5.42.1"
@@ -3451,6 +3458,7 @@ __metadata:
     "@types/selectize": ^0.12.39
     "@types/three": ^0.168.0
     "@types/webpack-env": ^1.18.5
+    "@types/webxr": ^0.5.20
     "@typescript-eslint/parser": ^7.18.0
     "@uppy/core": ^4.2.0
     "@uppy/dashboard": ^4.1.0
