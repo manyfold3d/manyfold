@@ -17,9 +17,7 @@ de:
         name: Name
         notes: Notizen
         path: Pfad
-        s3_access_key_id: 'Zugangs Schlüssel ID
-
-          '
+        s3_access_key_id: Zugangs Schlüssel ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpunkt URL
         s3_region: Region
