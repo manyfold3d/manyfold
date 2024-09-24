@@ -1,0 +1,31 @@
+---
+es:
+  model_files:
+    bulk_edit:
+      description: 'Seleccione los archivos que desea modificar:'
+      form_subtitle: 'Seleccione los cambios a realizar:'
+      select: Seleccionar fichero '%{name}'
+      select_all: Seleccionar todos los archivos
+      submit: Actualizar archivos seleccionados
+      title: Edición masiva de archivos
+    bulk_update:
+      success: Archivos actualizados correctamente.
+    create:
+      conversion_started: Se ha iniciado la conversión del archivo. El archivo convertido debería estar disponible en breve.
+      success: Archivo(s) cargado(s) correctamente.
+    destroy:
+      confirm: "¿Estás seguro de que quieres eliminar este archivo del sistema?"
+      success: "¡Fichero borrado!"
+    form:
+      notes:
+        help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+    general:
+      edit: Editar la información del archivo
+    show:
+      actions_heading:
+      convert: Convertir a 3MF
+      details_heading: Detalles
+      notes_heading: Notas
+    update:
+      failure:
+      success:

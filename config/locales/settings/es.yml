@@ -1,0 +1,142 @@
+---
+es:
+  settings:
+    analysis_settings:
+      description: Realizar análisis profundos de malla en los modelos. Estas opciones harán que tus escaneos tarden bastante más y utilicen mucha más CPU y memoria.
+      heading: Análisis de mallas
+      manifold:
+        help: Comprobación de non-manifold (es decir, con agujeros o superficies imposibles)
+        label: Detectar errores de malla
+    file_list_settings:
+      heading: Listas de archivos
+      hide_presupported_versions:
+        label:
+      summary: Controla cómo se muestra la lista de ficheros de un modelo
+    folder_settings:
+      details: La estructura de carpetas sigue una plantilla que usted define utilizando tokens. También puede incluir otro texto en la plantilla (como separadores de carpeta) y se incluirá tal cual.
+      model_path_template:
+        label:
+      parse_metadata_from_path:
+        help: Establece el creador, la colección y las etiquetas en función de la plantilla
+        label: Rellenar metadatos a partir de la ruta y la plantilla durante el escaneo
+      safe_folder_names:
+        help_html: por ejemplo, <code>spinal-tap</code> en lugar de <code>Spın̈al Tap</code>
+        label: Utilice nombres de carpeta seguros
+      summary:
+      title: Nombres de las carpetas
+      tokens:
+        collection: El título de la colección en la que se encuentra el modelo, si está establecido.
+        creator: El nombre del creador, si se ha establecido.
+        model_id:
+        model_name:
+        tags_html:
+    general_settings:
+      heading: General
+      interface_language:
+        autodetect: Utilizar la configuración del navegador
+        help: 'Nota: es posible que algunos textos no traducidos sigan apareciendo en inglés.'
+        label:
+    library_settings:
+      description:
+      free_space:
+        label: Espacio libre
+      heading: Bibliotecas
+      tag_regex:
+        check:
+        search_missing:
+    multiuser_settings:
+      default_viewer_role:
+        help: "¿Quién puede ver por defecto los nuevos modelos / creadores / colecciones?"
+        label: Visibilidad por defecto
+        options:
+          member:
+          none: Privado
+      details_html: Para cambiar esta configuración, edite las <a href='https://manyfold.app/sysadmin/configuration.html'>variables de entorno</a> del servidor y reinicie.
+      heading: Multiusuario
+      multiuser_mode: Manyfold se está ejecutando en modo multiusuario.
+      registrations_closed: El registro de usuarios está desactivado.
+      registrations_open: El registro de usuarios está activado.
+      single_user_mode: Manyfold se está ejecutando en modo usuario único.
+    pagination_settings:
+      collections:
+        label:
+      creators:
+        label:
+      description: Mostrar sólo un cierto número de elementos a la vez en las páginas de lista, en lugar de todo a la vez. Esto puede acelerar la carga.
+      heading: Paginación
+      models:
+        label:
+      per_page:
+        label: Artículos por página
+    problem_settings:
+      description: Cambie la gravedad de los problemas detectados o ignórelos por completo.
+      title: Detección de problemas
+    renderer_settings:
+      auto_load_max_size:
+        always: Siempre
+        label: Carga automáticamente la vista previa
+        never: Nunca
+        under_1024: Hasta 1024 MB
+        under_128: Hasta 128 MB
+        under_16: Hasta 16 MB
+        under_2: Hasta 2 MB
+        under_256: Hasta 256 MB
+        under_32: Hasta 32 MB
+        under_4: Hasta 4 MB
+        under_512: Hasta 512 MB
+        under_64: Hasta 64 MB
+        under_8: Hasta 8 MB
+      background_colour:
+        label: Color de fondo
+      description: Personaliza la configuración de las vistas previas renderizadas en 3D.
+      enable_pan_zoom:
+        label: Activar Panorámica/Zoom
+      grid_width:
+        label: Tamaño del plano de tierra (mm)
+      heading: Renderizado
+      object_colour:
+        label: Color del objeto
+      render_style:
+        label: Estilo de renderizado
+        lambert: Sombreado realista
+        normals: Dirección de la superficie
+      show_grid:
+        label: Mostrar plano de tierra
+    show:
+      advanced_admin: Administración avanzada
+      submit: Guardar ajustes
+      title: Ajustes
+    tag_cloud_settings:
+      heading:
+      heatmap:
+        label:
+      keypair:
+        label: Utilizar delimitadores para representar pares de claves
+      sorting:
+        label: Ordenar
+      threshold:
+        label: Número mínimo de etiquetas para la visualización
+    tag_settings:
+      auto_tag_new:
+        label: Etiquetar automáticamente los nuevos modelos con
+      custom_stop_words:
+        label: Palabras reservadas personalizadas
+      description: Añada etiquetas a todos los modelos recién escaneados y filtre determinadas palabras ("stop words") durante la creación automática de etiquetas. Afecta a todos los usuarios.
+      filter_stop_words:
+        label:
+      heading:
+      stop_words_locale:
+        label:
+      tag_model_directory_name:
+        help: 'Advertencia: ¡Puede producir muchísimas de etiquetas!'
+        label: Crear etiquetas a partir del nombre del directorio del modelo
+    update:
+      success: Ajustes guardados.
+    usage_settings:
+      description_html: Si activa el seguimiento de uso, la siguiente información se enviará una vez al día a <code>%{endpoint}</code>. El <code>identificador</code> se genera aleatoriamente al activar el seguimiento.
+      heading: Seguimiento de uso Anónimo
+      report_usage:
+        label: 'Habilitar el seguimiento de uso anónimo '
+      summary:
+      use_of_data: No se envía ni almacena ninguna otra información, y los desarrolladores nunca utilizarán la información para ningún otro propósito que no sea medir cuántas instancias de Manyfold se están ejecutando y qué versión tienen.
+      verification_html: Si desea verificar lo que enviamos, puede cambiar la variable de entorno <code>USAGE_REPORTING_URL</code> y enviar los datos a algún lugar donde pueda inspeccionarlos. También puede ver exactamente lo que se envía en el registro.

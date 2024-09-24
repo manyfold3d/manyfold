@@ -1,0 +1,82 @@
+---
+es:
+  problems:
+    categories:
+      duplicate: Archivos duplicados
+      empty: El modelo no tiene archivos
+      inefficient:
+      inside_out:
+      missing: Faltan archivos o carpetas
+      nesting: El modelo contiene otros modelos
+      no_3d_model: El modelo no tiene archivos 3D
+      no_creator: El modelo no tiene asignado un creador
+      no_image: El modelo no tiene archivos de imagen
+      no_license: El modelo no tiene información de licencia
+      no_links: El modelo no tiene enlaces
+      no_tags: El modelo no tiene ninguna etiqueta
+      non_manifold:
+    filters:
+      apply_filters: Aplicar
+      clear_filters: Limpiar
+      show_ignored: Mostrar elementos ocultos
+      title: Filtros
+    index:
+      ignore: Ocultar
+      no_problems: No hay problemas con los filtros actuales.
+      unignore: Mostrar
+    library:
+      missing:
+        title: Carpeta no encontrada
+    model:
+      empty:
+        description: Este modelo no contiene archivos. Bórralo o encuentra dónde están sus archivos
+        title: No hay archivos
+      missing:
+        description: La carpeta de este modelo no está en el disco; bórrala o averigua dónde está
+        title: Carpeta no encontrada
+      nesting:
+        description: La carpeta de modelos del disco contiene otros modelos. Si lo desea, puede combinarlos con ésta o eliminarlos.
+        title: Contiene otros modelos
+        warning: La fusión masiva mueve todos los archivos de los modelos anteriores a éste, y los elimina. Se conservan los metadatos de los archivos, pero se perderán los metadatos de los modelos
+      no_3d_model:
+        description:
+        title: No hay archivos 3D en el modelo
+      no_creator:
+        description: No sabemos quién hizo este modelo; ¡añade un creador para ayudar con la catalogación!
+        title: El modelo no tiene asignado un creador
+      no_image:
+        description:
+        title: No hay archivos de imagen en el modelo
+      no_license:
+        description: Este modelo no tiene una licencia especificada. Si se añade una, quedará más claro si se puede compartir y cómo.
+        title: El modelo no tiene información de licencia
+      no_links:
+        description:
+        title: El modelo no tiene enlaces
+      no_tags:
+        description: Este modelo no ha sido etiquetado, lo que dificulta su búsqueda. ¡Añade algunas etiquetas para ayudar!
+        title: El modelo no tiene ninguna etiqueta
+    model_file:
+      duplicate:
+        description: Este archivo está duplicado en otros modelos. Es posible que desee eliminar algunos.
+        title: Archivo duplicado
+      inefficient:
+        description: Este archivo está en %{note}, un formato de archivo ineficiente. Considera la posibilidad de convertirlo a un formato binario como 3MF para ahorrar espacio en disco.
+        title: Formato ineficaz
+      inside_out:
+        description: Las caras de esta malla podrían estar apuntando en la dirección equivocada, lo que podría causar errores de impresión. Repárela en una herramienta de modelado 3D como MeshLab o 3D Builder.
+        title:
+      missing:
+        description: Este archivo no está en el disco; bórrelo o averigüe dónde está
+        title: Archivo no encontrado
+      non_manifold:
+        description: Esta malla parece ser non-manifold, lo que significa que tiene agujeros o tiene algunas caras al revés, lo que puede causar errores cuando se imprima. Repárela en una herramienta de modelado 3D como MeshLab o 3D Builder.
+        title: Malla Non-Manifold
+    severities:
+      danger: Peligro
+      info: Información
+      silent: Ignorado
+      warning: Advertencia
+    update:
+      ignored:
+      unignored:
