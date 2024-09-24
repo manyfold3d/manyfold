@@ -84,7 +84,9 @@ fr:
         library:
           attributes:
             path:
+              non_writable:
               not_found: n'a pas pu être trouvé sur le disque
+              unsafe:
         model:
           attributes:
             library:
@@ -178,6 +180,21 @@ fr:
       queued: En attente
       working: En cours d'exécution
   application:
+    caber_relation_fields:
+      delete: Supprimer
+      permissions:
+        edit:
+        own:
+        view:
+      subject:
+        placeholder:
+        role:
+          member:
+          public:
+        you:
+    caber_relations_form:
+      add:
+      permissions:
     content_header:
       sort:
         name: Trier par nom

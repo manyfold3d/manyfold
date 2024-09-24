@@ -15,7 +15,7 @@ pl:
         help_html: Opcjonalne; wszystkie ikony z <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a> lub <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
         placeholder: boxes
       notes:
-        help_html: Opcjonalne; wyświetlane tylko administratorom na stronie ustawień.
+        help_html:
       path:
         placeholder: "/libraries/models"
       s3_bucket:

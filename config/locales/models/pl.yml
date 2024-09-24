@@ -26,6 +26,8 @@ pl:
         text: Otwórz
       set_as_preview: Ustaw jako podgląd
     form:
+      notes:
+        help_html:
       preview_file:
         help: Plik wyświetlany jako podgląd modelu na stronach biblioteki
       tags: Tagi
@@ -40,6 +42,7 @@ pl:
     index:
       actions_heading: Akcje
       bulk_edit: Edycja zbiorcza
+      no_results_html:
       skip_models: Pomiń listę modeli
     merge:
       success: Modele zostały pomyślnie połączone.
@@ -77,7 +80,10 @@ pl:
       path: Ścieżka
       rescan: Ponownie przeskanuj pliki
       search: Wyszukaj w Internecie modele o tej samej nazwie
+      submit:
       tags: Tagi
+      upload_card:
+        heading: Prześlij
     update:
       failure: Wystąpił błąd i nie można było zapisać szczegółów modelu.
       success: Szczegóły modelu zapisane.

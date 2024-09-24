@@ -128,6 +128,11 @@ ignore_unused:
 - 'activerecord.errors.*'
 - 'activerecord.models.*'
 - 'errors.messages.weak_password'
+- 'errors.messages.already_confirmed'
+- 'errors.messages.confirmation_period_expired'
+- 'errors.messages.expired'
+- 'errors.messages.not_found'
+- 'errors.messages.not_locked'
 - 'problems.categories.*'
 - 'libraries.storage_services.*' # Names for storage services
 - 'licenses.*'
@@ -140,7 +145,7 @@ ignore_unused:
 - 'application.caber_relation_fields.permissions.*'
 - 'follow_button.*' # Used in follow button component
 - 'active_admin.exit' # Used in initializer, not detected automatically
-- 'devise.failure.*' # Devise failure messages are used deep down
+- 'devise.*' # Used deep down
 - 'renderer.errors.*' # Used client side via i18n-js
 - 'renderer.processing' # Used client side via i18n-js
 - 'models.exceeds_max_size' # Used client side via i18n-js

@@ -11,6 +11,9 @@ de:
         label: Modelle von %{name} anzeigen
     destroy:
       success: Ersteller gelöscht!
+    form:
+      notes:
+        help_html:
     general:
       edit: Bearbeite den Ersteller
       new: Neuer Ersteller

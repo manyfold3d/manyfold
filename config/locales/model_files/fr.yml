@@ -12,9 +12,13 @@ fr:
       success: Les fichiers ont été mis à jour avec succès.
     create:
       conversion_started: La conversion du fichier a commencé. Le fichier converti devrait être disponible sous peu.
+      success:
     destroy:
       confirm: Êtes-vous sûr de vouloir supprimer ce fichier de votre système de fichiers ?
       success: Fichier supprimé !
+    form:
+      notes:
+        help_html:
     general:
       edit: Modifier les informations du fichier
     show:
