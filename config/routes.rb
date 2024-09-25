@@ -4,7 +4,7 @@ require "federails"
 
 Rails.application.routes.draw do
   get ".well-known/change-password", to: redirect("/users/edit")
-
+  get "health" => "rails/health#show", :as => :rails_health_check
   get "problems/index"
   devise_for :users, controllers: {
     passwords: "users/passwords",
@@ -69,7 +69,6 @@ Rails.application.routes.draw do
     concerns :followable, followable_class: "Collection"
   end
   resources :problems, only: [:index, :update]
-  resources :health, only: [:index]
   resources :benchmark, only: [:index, :create, :destroy] if Rails.env.development?
 
   authenticate :user, lambda { |u| u.is_contributor? } do
