@@ -56,6 +56,12 @@ RSpec.describe Library do
       end
     end
 
+    it "allows paths that *begin* with a filtered path" do
+      library = build(:library, path: "/libraries")
+      library.valid?
+      expect(library.errors[:path]).not_to include "cannot be a privileged system path"
+    end
+
     it "disallows root folder" do
       library = build(:library, path: "/")
       library.valid?
