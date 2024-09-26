@@ -5,6 +5,7 @@ base_locale: en
 ## All available locales are inferred from the data by default. Alternatively, specify them explicitly:
 locales: [
   en,
+  es,
   de,
   fr,
   pl
