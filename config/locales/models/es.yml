@@ -2,7 +2,7 @@
 es:
   models:
     bulk_edit:
-      description: 'Seleccione los modelos que desea cambiar:'
+      description: 'Seleccione los modelos que desea modificar:'
       form_subtitle: 'Seleccione los cambios a realizar:'
       needs_organizing: Necesita organización
       remove_tags: Eliminar etiquetas
@@ -18,7 +18,7 @@ es:
       success: Archivo(s) cargado(s) correctamente.
     destroy:
       confirm: Esto borrará los archivos. ¿Estás seguro de que quieres continuar?
-      success: "¡Modelo borrado!"
+      success: "¡Modelo eliminado!"
     exceeds_max_size: 'El archivo seleccionado supera el tamaño máximo: %{max_size} MiB.'
     file:
       open_button:
@@ -29,30 +29,30 @@ es:
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
-        help:
+        help: El archivo que se mostrará como vista previa del modelo en las páginas de la biblioteca
       tags: Etiquetas
     general:
       edit: Editar modelo
     image_carousel:
-      next: Siguiente &rsaquo;
+      next: Siguiente
       play_pause: Reproducir o pausar imágenes
       previous: Anterior
       select_slide: Elija la imagen que desea mostrar
       slide_label: "%{name} (%{index} de %{count})"
     index:
-      actions_heading:
+      actions_heading: Acciones
       bulk_edit: Edición masiva
       no_results_html: Lo sentimos, ¡no hemos encontrado nada que mostrarte! Prueba a cambiar los filtros o los términos de búsqueda, o a subir algunos modelos.
-      skip_models:
+      skip_models: Omitir lista de modelos
     merge:
       success: Modelos fusionados correctamente.
     new:
       description: Añade nuevos modelos subiendo archivos. Si subes un archivo comprimido, se extraerá y se convertirá en un único modelo que contendrá todos los archivos. Si subes archivos individuales, cada uno de ellos se convertirá en un modelo independiente.
       files:
         label: Seleccionar archivos
-      free_space: "(%{available} libre)"
+      free_space: "(%{available} disponible)"
       library:
-        help:
+        help: Biblioteca donde se cargará el archivo.
       submit: Crear modelos
       title: Cargar
     problem:
@@ -69,7 +69,7 @@ es:
         heading: Fusionar
         warning: La fusión mueve todos los archivos de este modelo al destino y elimina este modelo. Los metadatos de los archivos se conservan, pero los metadatos del modelo se pierden
         with: Fusionar con
-      model_details: Detalles del modelo
+      model_details: Información del modelo
       organize:
         button_text: Organizar archivos
         confirm:
@@ -85,5 +85,5 @@ es:
       upload_card:
         heading: Cargar
     update:
-      failure:
-      success:
+      failure: Se ha producido un error y no se ha podido guardar la información del modelo.
+      success: Información del modelo guardada.
