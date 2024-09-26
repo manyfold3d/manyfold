@@ -16,7 +16,7 @@ de:
       success: Kollektion gelöscht!
     form:
       notes:
-        help_html:
+        help_html: Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden.
     general:
       edit: Kollektion bearbeiten
       new: Neue Kollektion

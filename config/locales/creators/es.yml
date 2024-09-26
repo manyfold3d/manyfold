@@ -2,13 +2,13 @@
 es:
   creators:
     create:
-      success:
+      success: Nuevos detalles del creador guardados.
     creator:
       edit_button:
         label: Editar creador %{name}
         text: Editar
       models_button:
-        label: Mostrar modelos por %{name}
+        label: Mostrar modelos de %{name}
     destroy:
       success: "¡Creador eliminado!"
     form:
@@ -20,10 +20,10 @@ es:
     get_creator:
       unknown: Desconocido
     index:
-      actions_heading:
-      skip_creators:
+      actions_heading: Acciones
+      skip_creators: Omitir lista de creadores
     unassigned:
-      caption: Todos los modelos sin creador conocido.
+      caption: Todos los modelos sin creador asignado.
       name: Sin asignar
     update:
-      success:
+      success: Detalles del creador guardados.

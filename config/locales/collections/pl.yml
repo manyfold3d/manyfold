@@ -16,7 +16,7 @@ pl:
       success: Kolekcja usunięta!
     form:
       notes:
-        help_html:
+        help_html: Możesz używać <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit: Edytuj Kolekcję
       new: Nowa Kolekcja

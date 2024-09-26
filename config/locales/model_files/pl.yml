@@ -12,13 +12,13 @@ pl:
       success: Pliki zaktualizowane pomyślnie.
     create:
       conversion_started: Konwersja pliku została rozpoczęta. Przekonwertowany plik powinien być wkrótce dostępny.
-      success:
+      success: Plik(i) przesłany(e) pomyślnie.
     destroy:
       confirm: Czy na pewno chcesz usunąć ten plik z systemu plików?
       success: Plik usunięty!
     form:
       notes:
-        help_html:
+        help_html: Możesz używać <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit: Edytuj informacje o pliku
     show:

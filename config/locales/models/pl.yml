@@ -27,7 +27,7 @@ pl:
       set_as_preview: Ustaw jako podgląd
     form:
       notes:
-        help_html:
+        help_html: Możesz używać <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
         help: Plik wyświetlany jako podgląd modelu na stronach biblioteki
       tags: Tagi
@@ -42,7 +42,7 @@ pl:
     index:
       actions_heading: Akcje
       bulk_edit: Edycja zbiorcza
-      no_results_html:
+      no_results_html: Przepraszamy, nie mogliśmy znaleźć niczego do pokazania! Spróbuj zmienić filtry lub wyszukiwane hasła albo przesłać kilka modeli.
       skip_models: Pomiń listę modeli
     merge:
       success: Modele zostały pomyślnie połączone.
@@ -80,7 +80,7 @@ pl:
       path: Ścieżka
       rescan: Ponownie przeskanuj pliki
       search: Wyszukaj w Internecie modele o tej samej nazwie
-      submit:
+      submit: Prześlij pliki
       tags: Tagi
       upload_card:
         heading: Prześlij

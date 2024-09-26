@@ -9,11 +9,11 @@ pl:
       missing: Brakujące pliki lub foldery
       nesting: Model zawiera inne modele
       no_3d_model: Model nie zawiera plików 3D
-      no_creator:
+      no_creator: Model nie jest przypisany do twórcy
       no_image: Model nie zawiera plików graficznych
-      no_license:
-      no_links:
-      no_tags:
+      no_license: Model nie ma informacji o licencji
+      no_links: Model nie ma linków źródłowych
+      no_tags: Model nie posiada żadnych tagów
       non_manifold: Siatka jest nierozmaita
     filters:
       apply_filters: Zastosuj
@@ -42,20 +42,20 @@ pl:
         description: Ten model nie zawiera plików 3D. Jest mało prawdopodobne, by było to zamierzone.
         title: Brak plików 3D w modelu
       no_creator:
-        description:
-        title:
+        description: Nie wiemy, kto stworzył ten model; dodaj twórcę, by pomóc w katalogowaniu!
+        title: Model nie jest przypisany do twórcy
       no_image:
         description: Ten model nie zawiera plików graficznych. Dodanie jednego może ułatwić przeglądanie.
         title: Brak plików graficznych w modelu
       no_license:
-        description:
-        title:
+        description: Ten model nie ma określonej licencji. Dodanie jej wyjaśni, czy i w jaki sposób można go udostępniać.
+        title: Model nie ma informacji o licencji
       no_links:
-        description:
-        title:
+        description: Ten model nie ma linków do innych źródeł. Jeśli jest on również dostępny w innych miejscach, możesz chcieć dodać do nich link.
+        title: Model nie ma linków źródłowych
       no_tags:
-        description:
-        title:
+        description: Ten model nie został otagowany, co utrudnia jego znalezienie. Dodaj tagi, aby to zmienić!
+        title: Model nie posiada żadnych tagów
     model_file:
       duplicate:
         description: Ten plik jest zduplikowany w innych modelach. Niektóre z nich można usunąć.

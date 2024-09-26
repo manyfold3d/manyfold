@@ -9,11 +9,11 @@ de:
       missing: Fehlende Dateien oder Ordner
       nesting: Modell enthält andere Modelle
       no_3d_model: Modell hat keine 3D-Dateien
-      no_creator:
+      no_creator: Modell ist keinem Ersteller zugeordnet
       no_image: Modell hat keine Bilddateien
-      no_license:
-      no_links:
-      no_tags:
+      no_license: Modell hat keine Lizenzinformationen
+      no_links: Modell hat keinen Link zur Quelle
+      no_tags: Modell hat keine Tags
       non_manifold: unbekanntes Mesh
     filters:
       apply_filters: Anwenden
@@ -42,20 +42,20 @@ de:
         description: Dieses Modell enthält keine 3D-Dateien. Es ist unwahrscheinlich, dass dies korrekt ist.
         title: Keine 3D-Dateien im Modell
       no_creator:
-        description:
-        title:
+        description: Wir wissen nicht, wer dieses Modell hergestellt hat; füge einen Ersteller hinzu, um bei der Katalogisierung zu helfen!
+        title: Modell ist keinem Ersteller zugeordnet
       no_image:
         description: Dieses Modell enthält keine Bilddateien. Das Hinzufügen einer solchen Datei könnte die Suche erleichtern.
         title: Keine Bilddateien im Modell
       no_license:
-        description:
-        title:
+        description: Für dieses Modell gibt es keine spezielle Lizenz. Wenn du eine hinzufügst, wird es klarer, ob und wie es genutzt werden kann.
+        title: Modell hat keine Lizenzinformationen
       no_links:
-        description:
-        title:
+        description: Dieses Modell hat keine Links zu anderen Quellen. Wenn es auch anderswo erhältlich ist, solltest du einen Link hinzu fügen.
+        title: Modell hat keinen Link zur Quelle
       no_tags:
-        description:
-        title:
+        description: Dieses Modell wurde nicht getaggt, was die Suche erschwert. Füge Tags hinzu, um die suche zu unterstützen!
+        title: Modell hat keine Tags
     model_file:
       duplicate:
         description: Diese Datei ist in anderen Modellen dupliziert. Vielleicht möchten Sie einige davon entfernen.

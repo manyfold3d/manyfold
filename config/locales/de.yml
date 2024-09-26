@@ -84,9 +84,9 @@ de:
         library:
           attributes:
             path:
-              non_writable:
+              non_writable: muss beschreibbar sein
               not_found: konnte nicht auf der Festplatte gefunden werden
-              unsafe:
+              unsafe: kann kein privilegierter Systempfad sein
         model:
           attributes:
             library:
@@ -183,18 +183,18 @@ de:
     caber_relation_fields:
       delete: Löschen
       permissions:
-        edit:
-        own:
-        view:
+        edit: Bearbeitbar
+        own: Eigentümer (kann anzeigen, bearbeiten, löschen und freigeben)
+        view: Nur Anzeigbar
       subject:
-        placeholder:
+        placeholder: E-Mail-Adresse, Nutzername oder Rolle
         role:
-          member:
-          public:
-        you:
+          member: Jeder angemeldete lokale Benutzer
+          public: Jeder (ohne Login)
+        you: "(Du)"
     caber_relations_form:
-      add:
-      permissions:
+      add: Füge eine weitere Berechtigungen hinzu.
+      permissions: Teilend
     content_header:
       sort:
         name: Nach Namen sortieren

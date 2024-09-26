@@ -11,21 +11,21 @@ es:
     bulk_update:
       success: Archivos actualizados correctamente.
     create:
-      conversion_started: Se ha iniciado la conversión del archivo. El archivo convertido debería estar disponible en breve.
+      conversion_started: Se ha iniciado la conversión del archivo. El archivo convertido debería estar disponible en poco tiempo.
       success: Archivo(s) cargado(s) correctamente.
     destroy:
       confirm: "¿Estás seguro de que quieres eliminar este archivo del sistema?"
-      success: "¡Fichero borrado!"
+      success: "¡Fichero eliminado!"
     form:
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit: Editar la información del archivo
     show:
-      actions_heading:
+      actions_heading: Acciones
       convert: Convertir a 3MF
       details_heading: Detalles
       notes_heading: Notas
     update:
-      failure:
-      success:
+      failure: Se ha producido un error y no se ha podido guardar la información del fichero.
+      success: Información del fichero guardada.

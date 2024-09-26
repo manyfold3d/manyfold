@@ -11,7 +11,7 @@ es:
         label: Mostrar modelos en %{name}
       no_preview: vista previa no disponible
     create:
-      success:
+      success: Detalles de la nueva colección guardados.
     destroy:
       success: "¡Colección eliminada!"
     form:
@@ -23,10 +23,10 @@ es:
     get_collection:
       unknown: Desconocido
     index:
-      actions_heading:
-      skip_collections:
+      actions_heading: Acciones
+      skip_collections: Saltar lista de colección
     unassigned:
-      caption:
+      caption: Todos los modelos sin una colección asignada.
       name: Sin asignar
     update:
-      success:
+      success: Detalles de la colección guardados.
