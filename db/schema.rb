@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_24_122004) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_26_162407) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -102,6 +102,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_24_122004) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "entity_type", default: "User"
+    t.text "public_key"
+    t.text "private_key"
     t.index ["entity_type", "entity_id"], name: "index_federails_actors_on_entity", unique: true
     t.index ["federated_url"], name: "index_federails_actors_on_federated_url", unique: true
   end
