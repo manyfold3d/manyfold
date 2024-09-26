@@ -903,12 +903,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jquery@npm:^3.5.30":
-  version: 3.5.30
-  resolution: "@types/jquery@npm:3.5.30"
+"@types/jquery@npm:^3.5.31":
+  version: 3.5.31
+  resolution: "@types/jquery@npm:3.5.31"
   dependencies:
-    "@types/sizzle": "npm:*"
-  checksum: 4594d10fa9b347062883d254a23c9259ae814ef5989ce1985f093dcc7ad4475e324ac3343aef10599c478ea4951726f0e7f79d8ed471ab04de394b7e724d6d13
+    "@types/sizzle": "*"
+  checksum: 14a682a6a00e5b0bfe7afbb359ea2ada51b6fdbd962f8ba2b6077989935bd41f395b920581538d218d3ac81e6e3929acb86db9ccb8aa55a67066da9ed55db775
   languageName: node
   linkType: hard
 
@@ -3465,7 +3465,7 @@ __metadata:
     "@selectize/selectize": ^0.15.2
     "@types/bootstrap": ^5.2.10
     "@types/i18n-js": ^3.8.9
-    "@types/jquery": ^3.5.30
+    "@types/jquery": ^3.5.31
     "@types/lodash": ^4.17.9
     "@types/node": ^20.16.7
     "@types/selectize": ^0.12.39
