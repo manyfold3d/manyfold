@@ -31,10 +31,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/manyfold3d/federails.git
-  revision: 168de5edffdbb30905395868cb892db886806cc6
-  branch: polymorphic_actor_relationship
+  revision: 47c698e6a6cf93a5268a435ba9a1f53725de444d
+  branch: main
   specs:
-    federails (0.0.1)
+    federails (0.1.0)
       faraday
       faraday-follow_redirects
       json-ld (>= 3.2.0)
@@ -244,12 +244,13 @@ GEM
       activesupport (>= 5.0.0)
     faker (3.4.2)
       i18n (>= 1.8.11, < 2)
-    faraday (2.10.1)
-      faraday-net_http (>= 2.0, < 3.2)
+    faraday (2.12.0)
+      faraday-net_http (>= 2.0, < 3.4)
+      json
       logger
     faraday-follow_redirects (0.3.0)
       faraday (>= 1, < 3)
-    faraday-net_http (3.1.1)
+    faraday-net_http (3.3.0)
       net-http
     ffi (1.17.0)
     ffi (1.17.0-x64-mingw-ucrt)
@@ -397,7 +398,7 @@ GEM
     nenv (0.3.0)
     net-http (0.4.1)
       uri
-    net-imap (0.4.15)
+    net-imap (0.4.16)
       date
       net-protocol
     net-pop (0.1.2)
@@ -658,7 +659,7 @@ GEM
       tzinfo (>= 1.0.0)
     unicode-display_width (2.6.0)
     uniform_notifier (1.16.0)
-    uri (0.13.0)
+    uri (0.13.1)
     view_component (3.14.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
