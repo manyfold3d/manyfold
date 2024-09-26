@@ -15,7 +15,7 @@ de:
         help_html: Optional; ein beliebiges Symbol von <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a> or <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
         placeholder: boxes
       notes:
-        help_html:
+        help_html: Optional, Wird nur Administratoren in den Einstellungen angezeigt. Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> benutzten.
       path:
         placeholder: "/samlungen/modelle"
       s3_bucket:

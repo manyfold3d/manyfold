@@ -27,7 +27,7 @@ de:
       set_as_preview: Als Vorschau setzen
     form:
       notes:
-        help_html:
+        help_html: 'Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden. '
       preview_file:
         help: Die Datei wird als Modellvorschau auf den Sammlungsseiten angezeigt
       tags: Tags
@@ -42,12 +42,12 @@ de:
     index:
       actions_heading: Aktionen
       bulk_edit: Massenbearbeitung
-      no_results_html:
+      no_results_html: Wir konnten leider nichts finden, was wir dir zeigen könnten! Versuche, deine Filter oder Suchbegriffe zu ändern, oder lade ein einige Modelle hoch.
       skip_models: Modellliste überspringen
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
     new:
-      description: Lade neue Modelle als komprimierte Dateien hoch. Jedes hochgeladene Archiv wird extrahiert und zu einem einzigen Modell, das alle Dateien enthält. Stelle sicher, dass du auf die Schaltfläche "Modelle erstellen" klicken, um zu speichern, sobald deine Uploads abgeschlossen sind!
+      description: Lade neue Modelle hoch. Jedes hochgeladene Archiv wird extrahiert und zu einem einzigen Modell, das alle Dateien enthält. Wenn du einzelne Dateien Hochlädst, werden sie zu einzelnen Modellen.
       files:
         label: Dateien auswählen
       free_space: "(%{available} frei)"
@@ -80,7 +80,7 @@ de:
       path: Pfad
       rescan: Dateien neu scannen
       search: Suche im Internet nach Modellen mit diesem Namen
-      submit:
+      submit: Dateien hochladen
       tags: Tags
       upload_card:
         heading: Hochladen
