@@ -20,7 +20,7 @@ pl:
         s3_access_key_id:
         s3_bucket:
         s3_endpoint:
-        s3_region:
+        s3_region: Region
         s3_secret_access_key:
         storage_service: Usługa przechowywania plików
         tag_regex: Wymagane Tagi
@@ -33,7 +33,7 @@ pl:
         library_id: Biblioteka
         license: Licencja
         name: Nazwa
-        notes: Notatki
+        notes: Opis
         path: Ścieżka
         preview_file: Podgląd pliku
         tags: Tagi
@@ -106,63 +106,63 @@ pl:
         few: Tagi
         many: Tagów
         one: Tag
-        other:
+        other: Tagi
         two:
         zero:
       collection:
         few: Kolekcje
         many: Kolekcji
         one: Kolekcja
-        other:
+        other: Kolekcje
         two:
         zero:
       creator:
         few: Twórców
         many: Twórców
         one: Twórca
-        other:
+        other: Twórcy
         two:
         zero:
       library:
         few: Biblioteki
         many: Bibliotek
         one: Biblioteka
-        other:
+        other: Biblioteki
         two:
         zero:
       link:
         few: Linki
         many: Linków
         one: Link
-        other:
+        other: Linki
         two:
         zero:
       model:
         few: Modele
         many: Modeli
         one: Model
-        other:
+        other: Modele
         two:
         zero:
       model_file:
         few: Pliki
         many: Plików
         one: Plik
-        other:
+        other: Pliki
         two:
         zero:
       problem:
         few: Problemy
         many: Problemów
         one: Problem
-        other:
+        other: Problemy
         two:
         zero:
       user:
         few: Użytkowników
         many: Użytkowników
         one: Użytkownik
-        other:
+        other: Użytkownicy
         two:
         zero:
   activity:
@@ -183,18 +183,18 @@ pl:
     caber_relation_fields:
       delete: Usuń
       permissions:
-        edit:
-        own:
+        edit: Może edytować
+        own: Właściciel (może wyświetlać, edytować, usuwać i udostępniać)
         view:
       subject:
-        placeholder:
+        placeholder: Adres e-mail, nazwa użytkownika albo rola
         role:
-          member:
-          public:
-        you:
+          member: Dowolny zalogowany lokalny użytkownik
+          public: Wszyscy (bez logowania)
+        you: "(ty)"
     caber_relations_form:
-      add:
-      permissions:
+      add: dodaj kolejne uprawnienie
+      permissions: Udostępnianie
     content_header:
       sort:
         name: Sortuj według nazwy
