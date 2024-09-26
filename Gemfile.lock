@@ -31,8 +31,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/manyfold3d/federails.git
-  revision: 47c698e6a6cf93a5268a435ba9a1f53725de444d
-  branch: main
+  revision: 5a89ad4c28326de486a5f0863e7b7a7d5669e7f3
+  branch: encryption-keys
   specs:
     federails (0.1.0)
       faraday
