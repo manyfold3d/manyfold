@@ -18,7 +18,7 @@ class ModelFile < ApplicationRecord
   validate :presupported_version_is_presupported
   validate :presupported_files_cannot_have_presupported_version
 
-  after_commit :clear_presupported_relation, if: :presupported_previously_changed?
+  after_commit :clear_presupported_relation, on: :update, if: :presupported_previously_changed?
 
   default_scope { order(:filename) }
   scope :unsupported, -> { where(presupported: false) }
