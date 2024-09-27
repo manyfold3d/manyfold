@@ -5,5 +5,4 @@ class OrganizeModelJob < ApplicationJob
     model = Model.find(model_id)
     model&.organize!
   end
-
 end
