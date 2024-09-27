@@ -68,4 +68,36 @@ RSpec.describe Problem do
       expect(described_class.count).to eq(1)
     end
   end
+
+  context "when updating problem state" do
+    let(:model) { create(:model, license: nil) }
+
+    it "creates a problem that should exist but doesn't" do
+      expect {
+        described_class.create_or_clear model, :no_license, model.license.blank?
+      }.to change(described_class, :count).from(0).to(1)
+    end
+
+    it "removes a problem that shouldn't exist but does" do
+      described_class.create_or_clear model, :no_license, model.license.blank?
+      model.update!(license: "CC-BY-4.0")
+      expect {
+        described_class.create_or_clear model, :no_license, model.license.blank?
+      }.to change(described_class, :count).from(1).to(0)
+    end
+
+    it "does nothing with a problem that shouldn't exist and doesn't" do
+      model.update!(license: "CC-BY-4.0")
+      expect {
+        described_class.create_or_clear model, :no_license, model.license.blank?
+      }.not_to change(described_class, :count)
+    end
+
+    it "does nothing with a problem that should exist and does" do
+      described_class.create_or_clear model, :no_license, model.license.blank?
+      expect {
+        described_class.create_or_clear model, :no_license, model.license.blank?
+      }.not_to change(described_class, :count)
+    end
+  end
 end
