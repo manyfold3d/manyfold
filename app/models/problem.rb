@@ -53,13 +53,13 @@ class Problem < ApplicationRecord
     no_tags: :silent
   )
 
-  def self.create_or_clear(problematic, cat, present, options = {})
-    if present
-      problematic.problems.create(options.merge(category: cat))
+  def self.create_or_clear(problematic, category, should_exist, options = {})
+    if should_exist
+      problematic.problems.find_or_create_by(options.merge(category: category))
     else
-      problematic.problems.where(category: cat).destroy_all
+      problematic.problems.where(category: category).destroy_all
     end
-    present
+    should_exist
   end
 
   def self.ransackable_attributes(auth_object = nil)
