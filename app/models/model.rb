@@ -28,7 +28,7 @@ class Model < ApplicationRecord
 
   before_validation :autoupdate_path, if: :organize
   before_update :move_files, if: :need_to_move_files?
-  after_update :check_integrity
+  after_commit :check_integrity, on: :update
 
   attr_reader :organize
   def organize=(value)
@@ -60,7 +60,7 @@ class Model < ApplicationRecord
         model: target
       )
     end
-    Scan::CheckModelIntegrityJob.perform_later(target.id)
+    Scan::CheckModelIntegrityJob.set(wait: 5.seconds).perform_later(target.id)
     reload
     destroy
   end
@@ -173,6 +173,6 @@ class Model < ApplicationRecord
   end
 
   def check_integrity
-    Scan::CheckModelIntegrityJob.perform_later(id)
+    Scan::CheckModelIntegrityJob.set(wait: 5.seconds).perform_later(id)
   end
 end

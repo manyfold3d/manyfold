@@ -15,7 +15,7 @@ class Library < ApplicationRecord
   serialize :tag_regex, type: Array
   after_initialize :init
   before_validation :ensure_path_case_is_correct
-  after_save :register_storage
+  after_commit :register_storage, on: :create
 
   normalizes :path, with: ->(path) do
     Pathname.new(path).realpath.to_s

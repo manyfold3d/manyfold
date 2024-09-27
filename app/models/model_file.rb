@@ -18,7 +18,7 @@ class ModelFile < ApplicationRecord
   validate :presupported_version_is_presupported
   validate :presupported_files_cannot_have_presupported_version
 
-  after_update :clear_presupported_relation, if: :presupported_previously_changed?
+  after_commit :clear_presupported_relation, on: :update, if: :presupported_previously_changed?
 
   default_scope { order(:filename) }
   scope :unsupported, -> { where(presupported: false) }
@@ -136,7 +136,7 @@ class ModelFile < ApplicationRecord
 
   def delete_from_disk_and_destroy
     # Rescan any duplicates
-    duplicates.each { |x| Analysis::AnalyseModelFileJob.perform_later(x.id) }
+    duplicates.each { |x| Analysis::AnalyseModelFileJob.set(wait: 5.seconds).perform_later(x.id) }
     # Remove the db record
     destroy
   end

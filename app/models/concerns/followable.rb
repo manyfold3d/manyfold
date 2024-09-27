@@ -6,8 +6,8 @@ module Followable
 
   included do
     delegate :following_followers, to: :actor
-    after_create :post_creation_activity
-    after_update :post_update_activity
+    after_commit :post_creation_activity, on: :create
+    after_commit :post_update_activity, on: :update
   end
 
   def followers
