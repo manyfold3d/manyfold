@@ -9,7 +9,6 @@ RSpec.describe "Webfinger", :multiuser do
     end
 
     it "returns a successful response" do
-      puts creator.actor.at_address
       expect(response).to have_http_status :success
     end
 
