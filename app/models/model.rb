@@ -26,14 +26,8 @@ class Model < ApplicationRecord
   # In Rails 7.1 we will be able to do this instead:
   # normalizes :license, with: -> license { license.blank? ? nil : license }
 
-  before_validation :autoupdate_path, if: :organize
   before_update :move_files, if: :need_to_move_files?
   after_commit :check_integrity, on: :update
-
-  attr_reader :organize
-  def organize=(value)
-    @organize = ActiveRecord::Type::Boolean.new.cast(value)
-  end
 
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
@@ -122,6 +116,11 @@ class Model < ApplicationRecord
 
   def exists_on_storage?
     library.has_folder?(path)
+  end
+
+  def organize!
+    autoupdate_path
+    save!
   end
 
   private

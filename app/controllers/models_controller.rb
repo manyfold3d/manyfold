@@ -142,7 +142,7 @@ class ModelsController < ApplicationController
         model.tag_list = existing_tags + add_tags - remove_tags
         model.save
       end
-      model.update! organize: true if organize
+      model.organize! if organize
     end
     redirect_back_or_to edit_models_path(@filters), notice: t(".success")
   end

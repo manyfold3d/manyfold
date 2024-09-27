@@ -180,21 +180,21 @@ RSpec.describe Model do
     }
 
     it "moves model folder" do # rubocop:todo RSpec/MultipleExpectations
-      expect { model.update! organize: true }.not_to raise_error
+      expect { model.organize! }.not_to raise_error
       expect(Dir.exist?(File.join(library.path, "original"))).to be false
       expect(Dir.exist?(File.join(library.path, "@untagged", "test-model#1"))).to be true
     end
 
     it "has a validation error if the destination path already exists, and does not move anything" do # rubocop:todo RSpec/MultipleExpectations
       FileUtils.mkdir_p(File.join(library.path, "@untagged/test-model#1"))
-      expect { model.update! organize: true }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { model.organize! }.to raise_error(ActiveRecord::RecordInvalid)
       expect(model.errors.full_messages).to include("Path already exists")
       expect(Dir.exist?(File.join(library.path, "original"))).to be true
     end
 
-    it "has a validation error if the model has submodels, and does not move anything" do # rubocop:todo RSpec/MultipleExpectations
+    it "throws an error if the model has submodels, and does not move anything" do # rubocop:todo RSpec/MultipleExpectations
       create(:model, library: library, name: "sub model", path: "original/submodel")
-      expect { model.update! organize: true }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { model.organize! }.to raise_error(ActiveRecord::RecordInvalid)
       expect(model.errors.full_messages).to include("Path can't be changed, model contains other models")
       expect(Dir.exist?(File.join(library.path, "original"))).to be true
       expect(Dir.exist?(File.join(library.path, "@untagged", "test-model#1"))).to be false

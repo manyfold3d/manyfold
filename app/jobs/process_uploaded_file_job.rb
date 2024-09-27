@@ -24,7 +24,7 @@ class ProcessUploadedFileJob < ApplicationJob
       if model.nil?
         model = library.models.create!(data)
         model.grant_permission_to "own", owner
-        model.update! organize: true
+        model.organize!
         new_model = true
       end
       # Handle different file types
