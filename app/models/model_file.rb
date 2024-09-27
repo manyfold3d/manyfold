@@ -136,7 +136,7 @@ class ModelFile < ApplicationRecord
 
   def delete_from_disk_and_destroy
     # Rescan any duplicates
-    duplicates.each { |x| Analysis::AnalyseModelFileJob.perform_later(x.id) }
+    duplicates.each { |x| Analysis::AnalyseModelFileJob.set(wait: 5.seconds).perform_later(x.id) }
     # Remove the db record
     destroy
   end
