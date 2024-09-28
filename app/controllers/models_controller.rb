@@ -90,9 +90,9 @@ class ModelsController < ApplicationController
 
   def update
     hash = model_params
-    organize = hash.delete(:organize) == "1"
+    organize = hash.delete(:organize) == "true"
     if @model.update(hash)
-      ModelOrganizeJob.perform_later(@model.id) if organize
+      OrganizeModelJob.perform_later(@model.id) if organize
       redirect_to @model, notice: t(".success")
     else
       redirect_back_or_to edit_model_path(@model), alert: t(".failure")
@@ -145,7 +145,7 @@ class ModelsController < ApplicationController
         model.tag_list = existing_tags + add_tags - remove_tags
         model.save
       end
-      ModelOrganizeJob.perform_later(model.id) if organize
+      OrganizeModelJob.perform_later(model.id) if organize
     end
     redirect_back_or_to edit_models_path(@filters), notice: t(".success")
   end
