@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/manyfold3d/federails.git
-  revision: 224fd6b4aeee1ee73458e65e960854ac4b9e08cc
+  revision: 12673594b4a0f9aedf68f9bc97257897a0031bac
   branch: manyfold
   specs:
     federails (0.1.0)
