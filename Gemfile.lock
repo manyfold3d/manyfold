@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/manyfold3d/federails.git
-  revision: 5cbe4552cef2e8f8d1f71bd9d1608880e77bb83b
+  revision: 94d3e8605c999236c7c73d7112c95a2d48f2b200
   branch: encryption-keys
   specs:
     federails (0.1.0)
@@ -520,7 +520,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.7)
+    rexml (3.3.8)
     rolify (6.0.1)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
