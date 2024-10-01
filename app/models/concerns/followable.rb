@@ -8,6 +8,8 @@ module Followable
     delegate :following_followers, to: :actor
     after_commit :post_creation_activity, on: :create
     after_commit :post_update_activity, on: :update
+
+    after_followed :auto_accept
   end
 
   def followers
@@ -42,5 +44,9 @@ module Followable
       entity: actor,
       created_at: updated_at
     )
+  end
+
+  def auto_accept
+    actor.following_followers.where(status: "pending").find_each { |x| x.accept! }
   end
 end
