@@ -10,7 +10,7 @@ module Filterable
   end
 
   def filtered_models(filters)
-    models = policy_scope(Model).includes(:tags, :preview_file, :creator, :collection)
+    models = policy_scope(Model).includes(:tags, :creator, :collection)
     models = filter_by_library(models, filters[:library])
     models = filter_by_missing_tag(models, filters[:missingtag], filters[:library])
     models = filter_by_tag(models, filters[:tag])
