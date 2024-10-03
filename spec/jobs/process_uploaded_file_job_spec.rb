@@ -162,5 +162,19 @@ RSpec.describe ProcessUploadedFileJob do
         expect(model.model_files.first.filename).to eq "test.stl"
       end
     end
+
+    it "handles files in root and single subfolder" do # rubocop:todo RSpec/ExampleLength,RSpec/MultipleExpectations
+      Tempfile.create(%w[test .zip]) do |file|
+        Zip::File.open(file, create: true) do |zipfile|
+          zipfile.mkdir("subfolder")
+          zipfile.get_output_stream("test.stl") { |f| f.puts "solid" }
+          zipfile.get_output_stream("subfolder/more.stl") { |f| f.puts "solid" }
+        end
+        described_class.new.send(:unzip, model, Rack::Test::UploadedFile.new(file))
+        expect(model.model_files.count).to eq 2
+        expect(model.model_files.first.filename).to eq "test.stl"
+        expect(model.model_files.last.filename).to eq "subfolder/more.stl"
+      end
+    end
   end
 end
