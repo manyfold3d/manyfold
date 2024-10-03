@@ -764,6 +764,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   rubocop-rspec_rails
+  rubyzip (~> 2.3)
   sass-rails (>= 6)
   scout_apm
   shrine (~> 3.6)

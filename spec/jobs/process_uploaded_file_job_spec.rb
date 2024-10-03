@@ -121,4 +121,46 @@ RSpec.describe ProcessUploadedFileJob do
 
     it "leaves the uploaded file in place"
   end
+
+  context "when extracting a zip file" do
+    let(:model) { create(:model) }
+
+    it "extracts files" do # rubocop:todo RSpec/ExampleLength
+      Tempfile.create(%w[test .zip]) do |file|
+        Zip::File.open(file, create: true) do |zipfile|
+          zipfile.get_output_stream("test.stl") { |f| f.puts "solid" }
+        end
+        upload = Rack::Test::UploadedFile.new(file)
+        expect { described_class.new.send(:unzip, model, upload) }.to change(ModelFile, :count).by(1)
+      end
+    end
+
+    it "extracts subfolders" do # rubocop:todo RSpec/ExampleLength,RSpec/MultipleExpectations
+      Tempfile.create(%w[test .zip]) do |file|
+        Zip::File.open(file, create: true) do |zipfile|
+          zipfile.mkdir("one")
+          zipfile.mkdir("two")
+          zipfile.get_output_stream("one/test.stl") { |f| f.puts "solid" }
+          zipfile.get_output_stream("two/more.stl") { |f| f.puts "solid" }
+        end
+        described_class.new.send(:unzip, model, Rack::Test::UploadedFile.new(file))
+        expect(model.model_files.count).to be 2
+        expect(model.model_files.first.filename).to eq "one/test.stl"
+        expect(model.model_files.last.filename).to eq "two/more.stl"
+      end
+    end
+
+    it "flattens common subfolders" do # rubocop:todo RSpec/ExampleLength,RSpec/MultipleExpectations
+      Tempfile.create(%w[test .zip]) do |file|
+        Zip::File.open(file, create: true) do |zipfile|
+          zipfile.mkdir("sub")
+          zipfile.mkdir("sub/folder")
+          zipfile.get_output_stream("sub/folder/test.stl") { |f| f.puts "solid" }
+        end
+        described_class.new.send(:unzip, model, Rack::Test::UploadedFile.new(file))
+        expect(model.model_files.count).to eq 1
+        expect(model.model_files.first.filename).to eq "test.stl"
+      end
+    end
+  end
 end
