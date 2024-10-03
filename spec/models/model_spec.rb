@@ -245,6 +245,45 @@ RSpec.describe Model do
     end
   end
 
+  context "when splitting" do
+    subject!(:model) {
+      m = create(:model)
+      create(:model_file, model: m)
+      create(:model_file, model: m)
+      m
+    }
+
+    it "creates a new model" do
+      expect { model.split! }.to change(described_class, :count).by(1)
+    end
+
+    it "copies old model metadata" do # rubocop:todo RSpec/MultipleExpectations
+      new_model = model.split!
+      expect(new_model.name).to eq "Copy of #{model.name}"
+      [:notes, :caption, :collection, :creator, :license].each do |field|
+        expect(new_model.send(field)).to eq model.send(field)
+      end
+    end
+
+    it "creates an empty model if no files are specified" do
+      new_model = model.split!
+      expect(new_model.model_files).to be_empty
+    end
+
+    it "does not add or remove files" do
+      expect { model.split! }.not_to change(ModelFile, :count)
+    end
+
+    it "adds selected files to new model" do
+      new_model = model.split! files: [model.model_files.first]
+      expect(new_model.model_files.count).to eq 1
+    end
+
+    it "removes selected files from old model" do
+      expect { model.split! files: [model.model_files.first] }.to change { model.model_files.count }.by(-1)
+    end
+  end
+
   context "with filesystem conflicts" do
     around do |ex|
       MockDirectory.create([
