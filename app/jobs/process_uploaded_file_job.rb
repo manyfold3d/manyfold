@@ -78,7 +78,7 @@ class ProcessUploadedFileJob < ApplicationJob
     Archive::Reader.open_filename(archive.path) do |reader|
       reader.each_entry do |entry|
         paths << entry.pathname if entry.directory?
-        files_in_root = true if entry.file? && !entry.pathname.include?(File::SEPARATOR)
+        files_in_root = true if entry.file? && entry.pathname.exclude?(File::SEPARATOR)
       end
     end
     return 0 if files_in_root
