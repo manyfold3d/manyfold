@@ -786,10 +786,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@notus.sh/cocooned@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "@notus.sh/cocooned@npm:2.3.0"
-  checksum: c8d87829a9892e0b23538fa0125ee3788794ca4dd4752e9585faeaf0ad94f04d74287490890bbf210cc10bf93a6e5a1f1be8968c93137c6ba88c75dd0ffb04ba
+"@notus.sh/cocooned@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "@notus.sh/cocooned@npm:2.4.0"
+  checksum: 477f59d8f116e2d126733a8b7609a2c15ade83672458c815d09200b41c7e65aacb30478e5e5a86d30c5ce6d2d16e6fdfb358951d6443d0381e157fbbfb43bfcc
   languageName: node
   linkType: hard
 
@@ -3414,7 +3414,7 @@ __metadata:
     "@babel/core": ^7
     "@babel/eslint-parser": ^7.25.7
     "@babel/preset-typescript": ^7.25.7
-    "@notus.sh/cocooned": ^2.3.0
+    "@notus.sh/cocooned": ^2.4.0
     "@popperjs/core": ^2.11.8
     "@rails/ujs": ^7.1.400
     "@selectize/selectize": ^0.15.2
