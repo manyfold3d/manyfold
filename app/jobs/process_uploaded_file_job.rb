@@ -88,15 +88,9 @@ class ProcessUploadedFileJob < ApplicationJob
   end
 
   def count_common_elements(arrays)
-    common = []
-    loop do
-      elements = arrays.filter_map(&:shift).uniq
-      if elements.count == 1
-        common << elements[0]
-      else
-        break
-      end
-    end
-    common.count
+    return 0 if arrays.empty?
+    first = arrays.shift
+    zip = first.zip(*arrays)
+    zip.count { |x| x.uniq.count == 1 }
   end
 end

@@ -23,6 +23,20 @@ RSpec.describe ProcessUploadedFileJob do
       ])).to eq 2
     end
 
+    it "returns correct count where all prefixes are the same" do
+      expect(job.send(:count_common_elements, [
+        ["root", "sub", "folder"],
+        ["root", "sub", "folder"]
+      ])).to eq 3
+    end
+
+    it "returns correct count where a common folder has a subfolder" do
+      expect(job.send(:count_common_elements, [
+        ["root", "sub"],
+        ["root", "sub", "folder2"]
+      ])).to eq 2
+    end
+
     it "returns zero for *some* common prefixes but not on everything" do
       expect(job.send(:count_common_elements, [
         ["folder1", "sub1"],
@@ -154,12 +168,12 @@ RSpec.describe ProcessUploadedFileJob do
         Zip::File.open(file, create: true) do |zipfile|
           zipfile.mkdir("sub")
           zipfile.mkdir("sub/folder")
-          zipfile.get_output_stream("sub/folder/test.stl") { |f| f.puts "solid" }
+          zipfile.get_output_stream("sub/test.stl") { |f| f.puts "solid" }
           zipfile.get_output_stream("sub/folder/test2.stl") { |f| f.puts "solid" }
         end
         described_class.new.send(:unzip, model, Rack::Test::UploadedFile.new(file))
         expect(model.model_files.count).to eq 2
-        expect(model.model_files.map(&:filename).sort).to eq ["test.stl", "test2.stl"]
+        expect(model.model_files.map(&:filename).sort).to eq ["folder/test2.stl", "test.stl"]
       end
     end
 
