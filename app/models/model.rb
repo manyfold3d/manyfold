@@ -123,6 +123,26 @@ class Model < ApplicationRecord
     save!
   end
 
+  def split!(files: [])
+    new_model = dup
+    new_model.name = "Copy of #{name}"
+    new_model.public_id = nil
+    new_model.organize!
+    # Move files
+    files.each do |file|
+      file.update!(model: new_model)
+      file.reattach!
+    end
+    # Clear preview file appropriately
+    if files.include?(preview_file)
+      update!(preview_file: nil)
+    else
+      new_model.update!(preview_file: nil)
+    end
+    # Done!
+    new_model
+  end
+
   private
 
   def normalize_license

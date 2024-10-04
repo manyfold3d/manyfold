@@ -245,6 +245,57 @@ RSpec.describe Model do
     end
   end
 
+  context "when splitting" do
+    subject!(:model) {
+      m = create(:model)
+      create(:model_file, model: m)
+      create(:model_file, model: m)
+      m
+    }
+
+    it "creates a new model" do
+      expect { model.split! }.to change(described_class, :count).by(1)
+    end
+
+    it "copies old model metadata" do # rubocop:todo RSpec/MultipleExpectations
+      new_model = model.split!
+      expect(new_model.name).to eq "Copy of #{model.name}"
+      [:notes, :caption, :collection, :creator, :license].each do |field|
+        expect(new_model.send(field)).to eq model.send(field)
+      end
+    end
+
+    it "creates an empty model if no files are specified" do
+      new_model = model.split!
+      expect(new_model.model_files).to be_empty
+    end
+
+    it "does not add or remove files" do
+      expect { model.split! }.not_to change(ModelFile, :count)
+    end
+
+    it "adds selected files to new model" do
+      new_model = model.split! files: [model.model_files.first]
+      expect(new_model.model_files.count).to eq 1
+    end
+
+    it "retains existing preview file for new model if selected for split" do # rubocop:todo RSpec/MultipleExpectations
+      file_to_split = model.model_files.first
+      model.update!(preview_file: file_to_split)
+      new_model = model.split! files: [file_to_split]
+      expect(new_model.preview_file).to eq file_to_split
+      expect(model.reload.preview_file).to be_nil
+    end
+
+    it "new model gets no preview file if not selected" do # rubocop:todo RSpec/MultipleExpectations
+      preview_file = model.model_files.first
+      model.update!(preview_file: preview_file)
+      new_model = model.split! files: [model.model_files.last]
+      expect(new_model.reload.preview_file).to be_nil
+      expect(model.preview_file).to eq preview_file
+    end
+  end
+
   context "with filesystem conflicts" do
     around do |ex|
       MockDirectory.create([

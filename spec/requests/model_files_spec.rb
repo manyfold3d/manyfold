@@ -16,9 +16,9 @@ RSpec.describe "Model Files" do
   end
 
   context "when signed in" do
-    let(:jpg_file) { create(:model_file, model: model, filename: "test.jpg") }
-    let(:stl_file) { create(:model_file, model: model, filename: "test.stl") }
-    let(:model) { create(:model, library: library, path: "model_one") }
+    let!(:jpg_file) { create(:model_file, model: model, filename: "test.jpg") }
+    let!(:stl_file) { create(:model_file, model: model, filename: "test.stl") }
+    let!(:model) { create(:model, library: library, path: "model_one") }
     let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
 
     around do |ex|
@@ -33,15 +33,45 @@ RSpec.describe "Model Files" do
 
     describe "GET /models/:model_id/model_files/edit", :as_moderator do
       it "shows bulk update form" do
-        get bulk_edit_model_model_files_path(model, stl_file)
+        get bulk_edit_model_model_files_path(model)
         expect(response).to have_http_status(:success)
       end
     end
 
     describe "PATCH /models/:model_id/model_files/update", :as_moderator do
-      it "bulk updates the files" do
-        patch model_model_file_path(model, stl_file), params: {model_file: {name: "name"}}
-        expect(response).to redirect_to(model_model_file_path(model, stl_file))
+      let(:params) do
+        {
+          model_files: {stl_file.public_id => "1", jpg_file.public_id => "0"},
+          y_up: "1",
+          printed: "1",
+          presupported: "1"
+        }
+      end
+
+      it "bulk updates Y Up on the selected files" do
+        patch bulk_update_model_model_files_path(model, params: params)
+        expect(stl_file.reload.y_up).to be_truthy
+      end
+
+      it "bulk updates presupported flag on the selected files" do
+        patch bulk_update_model_model_files_path(model, params: params)
+        expect(stl_file.reload.presupported).to be_truthy
+      end
+
+      it "bulk updates printed flag on the selected files" do
+        patch bulk_update_model_model_files_path(model, params: params)
+        expect(stl_file.listers(:printed)).to include controller.current_user
+      end
+
+      it "does not modify non-selected files" do
+        patch bulk_update_model_model_files_path(model, params: params)
+        expect(jpg_file.reload.y_up).to be_falsy
+      end
+
+      it "splits model" do
+        expect {
+          patch bulk_update_model_model_files_path(model, params: params.merge(split: "split"))
+        }.to change(Model, :count).by(1)
       end
     end
 

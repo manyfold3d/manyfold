@@ -58,21 +58,25 @@ class ModelFilesController < ApplicationController
   end
 
   def bulk_edit
-    @files = @model.model_files.select(&:is_3d_model?)
+    @files = policy_scope(ModelFile).where(model: @model).select(&:is_3d_model?)
   end
 
   def bulk_update
     hash = bulk_update_params
-    params[:model_files].each_pair do |id, selected|
-      if selected == "1"
-        file = @model.model_files.find_param(id)
+    ids_to_update = params[:model_files].keep_if { |key, value| value == "1" }.keys
+    files = policy_scope(ModelFile).where(model: @model, public_id: ids_to_update)
+    files.each do |file|
+      ActiveRecord::Base.transaction do
         current_user.set_list_state(file, :printed, params[:printed] === "1")
-        if file.update(hash)
-          file.save
-        end
+        file.update(hash)
       end
     end
-    redirect_back_or_to model_path(@model), notice: t(".success")
+    if params[:split]
+      new_model = @model.split! files: files
+      redirect_to model_path(new_model), notice: t(".success")
+    else
+      redirect_back_or_to model_path(@model), notice: t(".success")
+    end
   end
 
   def destroy
