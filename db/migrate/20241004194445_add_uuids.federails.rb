@@ -4,10 +4,10 @@ class AddUuids < ActiveRecord::Migration[7.0]
     [
       :federails_actors,
       :federails_activities,
-      :federails_followings,
+      :federails_followings
     ].each do |table|
       change_table table do |t|
-        t.string :uuid, default: nil, index: { unique: true }
+        t.string :uuid, default: nil, index: {unique: true}
       end
     end
   end
