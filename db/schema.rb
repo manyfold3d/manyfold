@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_26_162407) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_04_194445) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -84,8 +84,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_26_162407) do
     t.integer "actor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uuid"
     t.index ["actor_id"], name: "index_federails_activities_on_actor_id"
     t.index ["entity_type", "entity_id"], name: "index_federails_activities_on_entity"
+    t.index ["uuid"], name: "index_federails_activities_on_uuid", unique: true
   end
 
   create_table "federails_actors", force: :cascade do |t|
@@ -104,8 +106,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_26_162407) do
     t.string "entity_type", default: "User"
     t.text "public_key"
     t.text "private_key"
+    t.string "uuid"
     t.index ["entity_type", "entity_id"], name: "index_federails_actors_on_entity", unique: true
     t.index ["federated_url"], name: "index_federails_actors_on_federated_url", unique: true
+    t.index ["uuid"], name: "index_federails_actors_on_uuid", unique: true
   end
 
   create_table "federails_followings", force: :cascade do |t|
@@ -115,9 +119,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_26_162407) do
     t.string "federated_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uuid"
     t.index ["actor_id", "target_actor_id"], name: "index_federails_followings_on_actor_id_and_target_actor_id", unique: true
     t.index ["actor_id"], name: "index_federails_followings_on_actor_id"
     t.index ["target_actor_id"], name: "index_federails_followings_on_target_actor_id"
+    t.index ["uuid"], name: "index_federails_followings_on_uuid", unique: true
   end
 
   create_table "flipper_features", force: :cascade do |t|

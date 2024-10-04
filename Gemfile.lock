@@ -30,9 +30,9 @@ GIT
       sqlite3
 
 GIT
-  remote: https://gitlab.com/manyfold3d/federails.git
-  revision: fd33eafdb0f05b41d1acb4679d0027438a883f48
-  branch: encryption-keys
+  remote: https://gitlab.com/experimentslabs/federails.git
+  revision: 4d569ef269277403c011b5cb46ecf8efc41fec97
+  branch: main
   specs:
     federails (0.1.0)
       faraday
