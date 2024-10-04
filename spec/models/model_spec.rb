@@ -279,8 +279,20 @@ RSpec.describe Model do
       expect(new_model.model_files.count).to eq 1
     end
 
-    it "removes selected files from old model" do
-      expect { model.split! files: [model.model_files.first] }.to change { model.model_files.count }.by(-1)
+    it "retains existing preview file for new model if selected for split" do # rubocop:todo RSpec/MultipleExpectations
+      file_to_split = model.model_files.first
+      model.update!(preview_file: file_to_split)
+      new_model = model.split! files: [file_to_split]
+      expect(new_model.preview_file).to eq file_to_split
+      expect(model.reload.preview_file).to be_nil
+    end
+
+    it "new model gets no preview file if not selected" do # rubocop:todo RSpec/MultipleExpectations
+      preview_file = model.model_files.first
+      model.update!(preview_file: preview_file)
+      new_model = model.split! files: [model.model_files.last]
+      expect(new_model.reload.preview_file).to be_nil
+      expect(model.preview_file).to eq preview_file
     end
   end
 

@@ -133,6 +133,12 @@ class Model < ApplicationRecord
       file.update!(model: new_model)
       file.reattach!
     end
+    # Clear preview file appropriately
+    if files.include?(preview_file)
+      update!(preview_file: nil)
+    else
+      new_model.update!(preview_file: nil)
+    end
     # Done!
     new_model
   end
