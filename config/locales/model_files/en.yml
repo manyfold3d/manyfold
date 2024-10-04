@@ -5,8 +5,8 @@ en:
       description: 'Select files to change:'
       form_subtitle: 'Select changes to make:'
       select: Select file '%{name}'
-      split: Split selected files into new model
       select_all: Select all files
+      split: Split selected files into new model
       submit: Update selected files
       title: Bulk Edit Files
     bulk_update:
