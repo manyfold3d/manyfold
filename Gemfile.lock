@@ -258,8 +258,6 @@ GEM
     ffi (1.17.0-x86_64-linux-gnu)
     ffi-libarchive (1.1.14)
       ffi (~> 1.0)
-    ffi-win32-extensions (1.0.4)
-      ffi
     formatador (1.1.0)
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
@@ -392,9 +390,6 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.7)
     minitest (5.25.1)
-    mkmf-lite (0.7.1)
-      memoist (~> 0.16.2)
-      ptools (~> 1.4)
     msgpack (1.7.2)
     multi_json (1.15.0)
     mutex_m (0.2.0)
@@ -442,9 +437,6 @@ GEM
       method_source (~> 1.0)
     psych (5.1.2)
       stringio
-    ptools (1.5.0)
-    ptools (1.5.0-universal-mingw32)
-      win32-file
     public_suffix (6.0.1)
     puma (6.4.3)
       nio4r (~> 2.0)
@@ -649,9 +641,8 @@ GEM
     stopwords-filter2 (0.1.0)
     string-similarity (2.1.0)
     stringio (3.1.1)
-    sys-filesystem (1.5.2)
+    sys-filesystem (1.5.3)
       ffi (~> 1.1)
-      mkmf-lite (~> 0.7)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
     text (1.3.1)
@@ -684,13 +675,6 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    win32-file (0.8.2)
-      ffi
-      ffi-win32-extensions
-      win32-file-stat (>= 1.4.0)
-    win32-file-stat (1.5.5)
-      ffi
-      ffi-win32-extensions
     zeitwerk (2.6.18)
     zxcvbn (0.1.10)
 
