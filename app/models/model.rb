@@ -127,6 +127,7 @@ class Model < ApplicationRecord
     new_model = dup
     new_model.name = "Copy of #{name}"
     new_model.public_id = nil
+    new_model.tags = tags
     new_model.organize!
     # Move files
     files.each do |file|

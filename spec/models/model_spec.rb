@@ -247,7 +247,9 @@ RSpec.describe Model do
 
   context "when splitting" do
     subject!(:model) {
-      m = create(:model)
+      m = create(:model, creator: create(:creator), collection: create(:collection), license: "CC-BY-4.0", caption: "test", notes: "note")
+      m.tag_list << "tag1"
+      m.tag_list << "tag2"
       create(:model_file, model: m)
       create(:model_file, model: m)
       m
@@ -257,10 +259,14 @@ RSpec.describe Model do
       expect { model.split! }.to change(described_class, :count).by(1)
     end
 
-    it "copies old model metadata" do # rubocop:todo RSpec/MultipleExpectations
+    it "prepends 'Copy of' to name" do
       new_model = model.split!
       expect(new_model.name).to eq "Copy of #{model.name}"
-      [:notes, :caption, :collection, :creator, :license].each do |field|
+    end
+
+    [:notes, :caption, :collection, :creator, :license, :tags].each do |field|
+      it "copies old model #{field}" do
+        new_model = model.split!
         expect(new_model.send(field)).to eq model.send(field)
       end
     end
