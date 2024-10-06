@@ -1,3 +1,8 @@
+<% content_for :head do %>
+  <%= tag.meta name: "image", content: model_model_file_path(@model, file, format: file.extension), alt: file.name if @model.preview_file&.is_image?%>
+  <%= tag.meta name: "description", content: @model.notes if @model.notes.present? %>
+<% end %>
+
 <% content_for :page_header do %>
   <h1>
     <a data-field="model[name]" data-path="<%= model_path(@model) %>" contenteditable=true>
