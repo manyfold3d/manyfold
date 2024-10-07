@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/authorize_interaction"=> "follows#new", :as => :new_follow
+  get "/authorize_interaction" => "follows#new", :as => :new_follow
 
   concern :followable do |options|
     if SiteSettings.multiuser_enabled?
