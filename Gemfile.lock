@@ -31,8 +31,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails.git
-  revision: dbb05512e6cedf178507d4118e642b77294d6c90
-  branch: fix-uuid-saving
+  revision: 6164a632938b97f3e9d9aa4992c746cb3f0b4344
+  branch: fix-application-routing
   specs:
     federails (0.1.0)
       faraday

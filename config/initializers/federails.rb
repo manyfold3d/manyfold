@@ -12,4 +12,6 @@ Federails.configure do |conf|
   conf.enable_discovery = Rails.application.config.manyfold_features[:federation] || Rails.env.test?
   conf.server_routes_path = "federation"
   conf.client_routes_path = "client"
+
+  conf.remote_follow_url_method = :new_follow_url
 end

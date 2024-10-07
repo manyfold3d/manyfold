@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :follows, {only: [:new]}
+
   concern :followable do |options|
     if SiteSettings.multiuser_enabled?
       resources :follows, {only: [:create]}.merge(options) do
