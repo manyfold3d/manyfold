@@ -32,7 +32,7 @@ GIT
 GIT
   remote: https://gitlab.com/experimentslabs/federails.git
   revision: 6164a632938b97f3e9d9aa4992c746cb3f0b4344
-  branch: fix-application-routing
+  branch: main
   specs:
     federails (0.1.0)
       faraday
