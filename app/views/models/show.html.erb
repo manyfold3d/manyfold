@@ -1,6 +1,6 @@
 <% content_for :head do %>
   <%= tag.meta name: "image", content: model_model_file_path(@model, @model.preview_file, format: @model.preview_file.extension), alt: @model.preview_file.name if @model.preview_file&.is_image? %>
-  <%= tag.meta name: "description", content: truncate(sanitize(@model.notes), 80) if @model.notes.present? %>
+  <%= tag.meta name: "description", content: truncate(sanitize(@model.notes), length: 80) if @model.notes.present? %>
 <% end %>
 
 <% content_for :page_header do %>
