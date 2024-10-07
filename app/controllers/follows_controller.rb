@@ -1,5 +1,5 @@
 class FollowsController < ApplicationController
-  before_action :get_target
+  before_action :get_target, except: [:new]
 
   # Remote follow
   def new
