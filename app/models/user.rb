@@ -5,7 +5,7 @@ class User < ApplicationRecord
   include Follower
   include CaberSubject
 
-  acts_as_federails_actor username_field: :username, name_field: :username
+  acts_as_federails_actor username_field: :public_id, name_field: :username
 
   rolify
   devise :database_authenticatable,
