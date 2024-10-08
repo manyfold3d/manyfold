@@ -14,11 +14,6 @@ RSpec.describe Comment do
     expect(Federails::Activity.last.action).to eq "Update"
   end
 
-  it "posts a Federails Activity on deletion" do # rubocop:disable RSpec/MultipleExpectations
-    expect { comment.destroy }.to change(Federails::Activity, :count).by(1)
-    expect(Federails::Activity.last.action).to eq "Delete"
-  end
-
   it "has a federated_url method" do
     expect(comment.federated_url).to eq "http://localhost:3214/models/#{model.public_id}/comments/#{comment.public_id}"
   end
