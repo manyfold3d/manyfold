@@ -31,7 +31,7 @@ class ProcessUploadedFileJob < ApplicationJob
       case File.extname(file.original_filename).delete(".").downcase
       when *SupportedMimeTypes.archive_extensions
         unzip(model, file)
-      when *(SupportedMimeTypes.model_extensions + SupportedMimeTypes.image_extensions)
+      when *SupportedMimeTypes.indexable_extensions
         new_file = model.model_files.create(filename: file.original_filename, attachment: file)
       else
         Rails.logger.warn("Ignoring #{file.inspect}")
