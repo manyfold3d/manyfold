@@ -43,6 +43,14 @@ RSpec.describe "Comments" do
         it "includes model ID in context" do
           expect(response.parsed_body["context"]).to eq url_for([model, only_path: false])
         end
+
+        it "includes publication time" do
+          expect(response.parsed_body["published"]).to be_present
+        end
+
+        it "includes attribution" do
+          expect(response.parsed_body["attributedTo"]).to eq user.actor.federated_url
+        end
       end
     end
   end
