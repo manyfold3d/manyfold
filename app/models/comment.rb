@@ -22,10 +22,6 @@ class Comment < ApplicationRecord
     post_activity "Update"
   end
 
-  def post_destroy_activity
-    post_activity "Delete"
-  end
-
   def post_activity(action)
     Federails::Activity.create!(
       actor: commenter.actor,
