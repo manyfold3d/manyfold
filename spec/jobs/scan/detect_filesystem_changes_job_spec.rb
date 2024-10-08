@@ -78,8 +78,7 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
     around do |ex|
       MockDirectory.create([
         "thingiverse_model/files/part_one.stl",
-        "thingiverse_model/images/preview.stl",
-        "thingiverse_model/README.txt"
+        "thingiverse_model/images/preview.stl"
       ]) do |path|
         @library_path = path
         ex.run
