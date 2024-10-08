@@ -4,6 +4,7 @@ class Collection < ApplicationRecord
   include Linkable
   include Sluggable
   include PublicIDable
+  include Commentable
 
   acts_as_federails_actor username_field: :public_id, name_field: :name, profile_url_method: :url_for, actor_type: "Group", include_in_user_count: false
 
