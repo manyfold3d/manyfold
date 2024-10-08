@@ -41,7 +41,7 @@ class ApplicationJob < ActiveJob::Base
   end
 
   def self.file_pattern
-    extension_glob(SupportedMimeTypes.image_extensions + SupportedMimeTypes.model_extensions)
+    extension_glob(SupportedMimeTypes.indexable_extensions)
   end
 
   def self.common_subfolders
