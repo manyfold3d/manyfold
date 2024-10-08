@@ -65,6 +65,7 @@ module SupportedMimeTypes
     def is_document_mime_type?(type)
       [
         "application/pdf",
+        "text/markdown",
         "text/plain"
       ].include?(type.to_s)
     end
