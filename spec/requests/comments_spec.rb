@@ -33,7 +33,7 @@ RSpec.describe "Comments" do
         end
 
         it "includes id" do
-          expect(response.parsed_body["id"]).to eq request.url
+          expect(response.parsed_body["id"]).to eq comment.federated_url
         end
 
         it "includes JSON-LD context" do
