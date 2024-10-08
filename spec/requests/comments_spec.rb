@@ -51,6 +51,14 @@ RSpec.describe "Comments" do
         it "includes attribution" do
           expect(response.parsed_body["attributedTo"]).to eq user.actor.federated_url
         end
+
+        it "includes to field" do
+          expect(response.parsed_body["to"]).to include "https://www.w3.org/ns/activitystreams#Public"
+        end
+
+        it "includes cc field" do
+          expect(response.parsed_body["cc"]).to include user.actor.followers_url
+        end
       end
     end
   end
