@@ -56,6 +56,14 @@ class ModelFile < ApplicationRecord
     SupportedMimeTypes.image_extensions.include? extension
   end
 
+  def is_video?
+    SupportedMimeTypes.video_extensions.include? extension
+  end
+
+  def is_document?
+    SupportedMimeTypes.document_extensions.include? extension
+  end
+
   def is_3d_model?
     SupportedMimeTypes.model_extensions.include? extension
   end

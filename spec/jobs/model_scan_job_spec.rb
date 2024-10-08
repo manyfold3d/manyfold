@@ -57,12 +57,12 @@ RSpec.describe ModelScanJob do
     let(:thing) { create(:model, path: "thingiverse_model", library: library) }
 
     it "scans files" do # rubocop:todo RSpec/MultipleExpectations
-      expect { described_class.perform_now(thing.id) }.to change { thing.model_files.count }.to(2)
-      expect(thing.model_files.map(&:filename)).to eq ["files/part_one.stl", "images/card_preview_DISPLAY.png"]
+      expect { described_class.perform_now(thing.id) }.to change { thing.model_files.count }.to(4)
+      expect(thing.model_files.map(&:filename)).to eq ["LICENSE.txt", "README.txt", "files/part_one.stl", "images/card_preview_DISPLAY.png"]
     end
 
     it "ignores model-type files in image directory" do # rubocop:todo RSpec/MultipleExpectations
-      expect { described_class.perform_now(thing.id) }.to change { thing.model_files.count }.to(2)
+      expect { described_class.perform_now(thing.id) }.to change { thing.model_files.count }.to(4)
       expect(thing.model_files.map(&:filename)).not_to include "images/ignore.stl"
     end
   end
