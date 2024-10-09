@@ -93,4 +93,43 @@ RSpec.describe Role do
       expect(member.is_member?).to be true
     end
   end
+
+  context "when duplicate roles exist" do
+    let!(:user) { create(:user) }
+    let!(:moderator) { create(:moderator) } # rubocop:disable RSpec/LetSetup
+
+    before do
+      # Rename moderator role to member without validations so we get a duplicate
+      described_class.where(name: "member").update_all(name: "moderator") # rubocop:disable Rails/SkipsModelValidations
+      user.reload
+      user.add_role :member
+    end
+
+    it "sets up two roles called moderator" do
+      expect(described_class.where(name: "moderator").count).to eq 2
+    end
+
+    it "shows that user has one of the moderator roles" do
+      expect(user.roles.map(&:name)).to include "moderator"
+    end
+
+    it "combines duplicated roles" do
+      expect { described_class.merge_duplicates! }.to change(described_class, :count).from(3).to(2)
+    end
+
+    it "preserves user's mod role" do
+      described_class.merge_duplicates!
+      expect(user.is_moderator?).to be true
+    end
+
+    it "leaves user with two valid roles" do
+      described_class.merge_duplicates!
+      expect(user.roles.map(&:name)).to eq ["moderator", "member"]
+    end
+
+    it "preserves moderator's mod role" do
+      described_class.merge_duplicates!
+      expect(moderator.is_moderator?).to be true
+    end
+  end
 end

@@ -18,7 +18,7 @@ class ModelFile < ApplicationRecord
   validate :presupported_version_is_presupported
   validate :presupported_files_cannot_have_presupported_version
 
-  after_update :clear_presupported_relation, if: :presupported_previously_changed?
+  after_commit :clear_presupported_relation, on: :update, if: :presupported_previously_changed?
 
   default_scope { order(:filename) }
   scope :unsupported, -> { where(presupported: false) }
@@ -56,6 +56,14 @@ class ModelFile < ApplicationRecord
     SupportedMimeTypes.image_extensions.include? extension
   end
 
+  def is_video?
+    SupportedMimeTypes.video_extensions.include? extension
+  end
+
+  def is_document?
+    SupportedMimeTypes.document_extensions.include? extension
+  end
+
   def is_3d_model?
     SupportedMimeTypes.model_extensions.include? extension
   end
@@ -69,7 +77,7 @@ class ModelFile < ApplicationRecord
   end
 
   def name
-    basename.humanize.titleize
+    basename.humanize.careful_titleize
   end
 
   def path_within_library
@@ -78,7 +86,7 @@ class ModelFile < ApplicationRecord
 
   def attach_existing_file!(refresh: true)
     return if attachment.present? || !exists_on_storage?
-    attachment_attacher.set Shrine.uploaded_file(
+    attachment_attacher.set LibraryUploader.uploaded_file(
       storage: model.library.storage_key,
       id: path_within_library,
       metadata: {
@@ -136,7 +144,7 @@ class ModelFile < ApplicationRecord
 
   def delete_from_disk_and_destroy
     # Rescan any duplicates
-    duplicates.each { |x| Analysis::AnalyseModelFileJob.perform_later(x.id) }
+    duplicates.each { |x| Analysis::AnalyseModelFileJob.set(wait: 5.seconds).perform_later(x.id) }
     # Remove the db record
     destroy
   end

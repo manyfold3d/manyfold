@@ -26,6 +26,8 @@ fr:
         text: Ouvrir
       set_as_preview: Définir comme aperçu
     form:
+      notes:
+        help_html:
       preview_file:
         help: Le fichier affiché en tant qu'aperçu du modèle dans les pages de la bibliothèque
       tags: Étiquette
@@ -40,9 +42,8 @@ fr:
     index:
       actions_heading: Actions
       bulk_edit: Edition en bloc
-      missing_url: URL manquante
+      no_results_html:
       skip_models:
-      untagged: Sans étiquette
     merge:
       success: Les modèles ont été fusionnés avec succès.
     new:
@@ -69,7 +70,6 @@ fr:
         warning: La fusion déplace tous les fichiers de ce modèle vers la cible et supprime ce modèle. Les métadonnées des fichiers sont préservées, mais toutes les métadonnées du modèle sont perdues !
         with: Fusionner avec
       model_details: Détails du modèle
-      notes_heading: Notes
       organize:
         button_text: Organiser les fichiers
         confirm:
@@ -80,7 +80,10 @@ fr:
       path: Chemin
       rescan: Rescanner les fichiers
       search: Recherchez sur Internet des modèles portant ce nom
+      submit:
       tags: Étiquettes
+      upload_card:
+        heading: Télécharger
     update:
       failure: Une erreur s'est produite et les détails du modèle n'ont pas pu être sauvegardés.
       success: Détails du modèle sauvegardés.

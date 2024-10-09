@@ -6,6 +6,10 @@ env: &env
   password: <%= ENV.fetch("DATABASE_PASSWORD", nil) %>
   pool: <%= ENV.fetch("DATABASE_CONNECTION_POOL", ENV.fetch("RAILS_MAX_THREADS", 16)) %>
   timeout: <%= ENV.fetch("DATABASE_TIMEOUT", 5000) %>
+  # SQLite production config
+  # This is default in Rails 7.2, so once we upgrade, we can remove it
+  default_transaction_mode: IMMEDIATE
+
 
 development:
   <<: *env

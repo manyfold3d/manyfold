@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_04_151944) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_07_182824) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -33,10 +33,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_151944) do
     t.integer "collection_id"
     t.string "slug"
     t.string "public_id"
+    t.virtual "name_lower", type: :string, as: "LOWER(name)", stored: true
     t.index ["collection_id"], name: "index_collections_on_collection_id"
     t.index ["name"], name: "index_collections_on_name", unique: true
+    t.index ["name_lower"], name: "index_collections_on_name_lower"
     t.index ["public_id"], name: "index_collections_on_public_id"
     t.index ["slug"], name: "index_collections_on_slug", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "public_id", null: false
+    t.string "commenter_type", null: false
+    t.integer "commenter_id", null: false
+    t.string "commentable_type", null: false
+    t.integer "commentable_id", null: false
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["commenter_type", "commenter_id"], name: "index_comments_on_commenter"
+    t.index ["public_id"], name: "index_comments_on_public_id", unique: true
   end
 
   create_table "creators", force: :cascade do |t|
@@ -47,7 +63,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_151944) do
     t.text "caption"
     t.string "slug"
     t.string "public_id"
+    t.virtual "name_lower", type: :string, as: "LOWER(name)", stored: true
     t.index ["name"], name: "index_creators_on_name", unique: true
+    t.index ["name_lower"], name: "index_creators_on_name_lower"
     t.index ["public_id"], name: "index_creators_on_public_id"
     t.index ["slug"], name: "index_creators_on_slug", unique: true
   end
@@ -80,8 +98,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_151944) do
     t.integer "actor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uuid"
     t.index ["actor_id"], name: "index_federails_activities_on_actor_id"
     t.index ["entity_type", "entity_id"], name: "index_federails_activities_on_entity"
+    t.index ["uuid"], name: "index_federails_activities_on_uuid", unique: true
   end
 
   create_table "federails_actors", force: :cascade do |t|
@@ -98,8 +118,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_151944) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "entity_type", default: "User"
+    t.text "public_key"
+    t.text "private_key"
+    t.string "uuid"
     t.index ["entity_type", "entity_id"], name: "index_federails_actors_on_entity", unique: true
     t.index ["federated_url"], name: "index_federails_actors_on_federated_url", unique: true
+    t.index ["uuid"], name: "index_federails_actors_on_uuid", unique: true
   end
 
   create_table "federails_followings", force: :cascade do |t|
@@ -109,9 +133,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_151944) do
     t.string "federated_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uuid"
     t.index ["actor_id", "target_actor_id"], name: "index_federails_followings_on_actor_id_and_target_actor_id", unique: true
     t.index ["actor_id"], name: "index_federails_followings_on_actor_id"
     t.index ["target_actor_id"], name: "index_federails_followings_on_target_actor_id"
+    t.index ["uuid"], name: "index_federails_followings_on_uuid", unique: true
   end
 
   create_table "flipper_features", force: :cascade do |t|
@@ -193,9 +219,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_04_151944) do
     t.string "slug"
     t.string "license"
     t.string "public_id"
+    t.virtual "name_lower", type: :string, as: "LOWER(name)", stored: true
     t.index ["collection_id"], name: "index_models_on_collection_id"
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
+    t.index ["name_lower"], name: "index_models_on_name_lower"
     t.index ["path", "library_id"], name: "index_models_on_path_and_library_id", unique: true
     t.index ["preview_file_id"], name: "index_models_on_preview_file_id"
     t.index ["public_id"], name: "index_models_on_public_id"

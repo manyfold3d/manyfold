@@ -13,10 +13,7 @@ class ModelFilesController < ApplicationController
       respond_to do |format|
         format.html
         format.js
-        format.any(*SupportedMimeTypes.model_types.map(&:to_sym)) do
-          send_file_content disposition: (params[:download] == "true") ? :attachment : :inline
-        end
-        format.any(*SupportedMimeTypes.image_types.map(&:to_sym)) do
+        format.any(*SupportedMimeTypes.indexable_types.map(&:to_sym)) do
           send_file_content disposition: (params[:download] == "true") ? :attachment : :inline
         end
       end
@@ -26,7 +23,7 @@ class ModelFilesController < ApplicationController
   def create
     authorize @model
     if params[:convert]
-      file = ModelFile.find_by!(public_id: params[:convert][:id])
+      file = ModelFile.find_param(params[:convert][:id])
       Analysis::FileConversionJob.perform_later(file.id, params[:convert][:to].to_sym)
       redirect_back_or_to [@model, file], notice: t(".conversion_started")
     elsif params[:uploads]
@@ -58,21 +55,25 @@ class ModelFilesController < ApplicationController
   end
 
   def bulk_edit
-    @files = @model.model_files.select(&:is_3d_model?)
+    @files = policy_scope(ModelFile).where(model: @model).select(&:is_3d_model?)
   end
 
   def bulk_update
     hash = bulk_update_params
-    params[:model_files].each_pair do |id, selected|
-      if selected == "1"
-        file = @model.model_files.find_by!(public_id: id)
+    ids_to_update = params[:model_files].keep_if { |key, value| value == "1" }.keys
+    files = policy_scope(ModelFile).where(model: @model, public_id: ids_to_update)
+    files.each do |file|
+      ActiveRecord::Base.transaction do
         current_user.set_list_state(file, :printed, params[:printed] === "1")
-        if file.update(hash)
-          file.save
-        end
+        file.update(hash)
       end
     end
-    redirect_back_or_to model_path(@model), notice: t(".success")
+    if params[:split]
+      new_model = @model.split! files: files
+      redirect_to model_path(new_model), notice: t(".success")
+    else
+      redirect_back_or_to model_path(@model), notice: t(".success")
+    end
   end
 
   def destroy
@@ -118,11 +119,11 @@ class ModelFilesController < ApplicationController
   end
 
   def get_model
-    @model = Model.find_by!(public_id: params[:model_id])
+    @model = Model.find_param(params[:model_id])
   end
 
   def get_file
-    @file = @model.model_files.includes(:unsupported_version, :presupported_version).find_by!(public_id: params[:id])
+    @file = @model.model_files.includes(:unsupported_version, :presupported_version).find_param(params[:id])
     authorize @file
     @title = @file.name
   end

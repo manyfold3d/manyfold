@@ -11,6 +11,9 @@ de:
         label: Modelle von %{name} anzeigen
     destroy:
       success: Ersteller gelöscht!
+    form:
+      notes:
+        help_html: Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden.
     general:
       edit: Bearbeite den Ersteller
       new: Neuer Ersteller

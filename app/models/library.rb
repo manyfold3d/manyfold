@@ -15,10 +15,22 @@ class Library < ApplicationRecord
   serialize :tag_regex, type: Array
   after_initialize :init
   before_validation :ensure_path_case_is_correct
-  after_save :register_storage
+  after_commit :register_storage, on: :create
+
+  normalizes :path, with: ->(path) do
+    Pathname.new(path).realpath.to_s
+  rescue Errno::ENOENT, Errno::EACCES # carry on, we validate these later
+    path
+  end
 
   validates :storage_service, presence: true, inclusion: STORAGE_SERVICES
-  validates :path, presence: true, uniqueness: true, existing_path: true, if: -> { storage_service == "filesystem" }
+  validates :path,
+    presence: true,
+    uniqueness: true,
+    existing_path: true,
+    safe_path: true,
+    writable: true,
+    if: -> { storage_service == "filesystem" }
 
   validates :s3_bucket, presence: true, if: -> { storage_service == "s3" }
   validates :s3_region, presence: true, if: -> { storage_service == "s3" }
@@ -108,7 +120,7 @@ class Library < ApplicationRecord
   memoize :storage
 
   def register_storage
-    Shrine.storages[storage_key] = storage
+    LibraryUploader.storages[storage_key] = storage
   end
 
   def self.register_all_storage

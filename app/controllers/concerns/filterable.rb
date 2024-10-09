@@ -6,11 +6,11 @@ module Filterable
 
   def get_filters
     # Get list filters from URL
-    @filters = params.permit(:library, :collection, :q, :creator, :link, :missingtag, :order, tag: [])
+    @filters = params.permit(:library, :collection, :q, :creator, :link, :missingtag, tag: [])
   end
 
   def filtered_models(filters)
-    models = policy_scope(Model).includes(:tags, :preview_file, :creator, :collection)
+    models = policy_scope(Model).includes(:tags, :creator, :collection)
     models = filter_by_library(models, filters[:library])
     models = filter_by_missing_tag(models, filters[:missingtag], filters[:library])
     models = filter_by_tag(models, filters[:tag])
@@ -24,7 +24,7 @@ module Filterable
 
   # Filter by library
   def filter_by_library(models, library)
-    library ? models.where(library: Library.find_by!(public_id: library)) : models
+    library ? models.where(library: Library.find_param(library)) : models
   end
 
   # Filter by collection
@@ -35,7 +35,7 @@ module Filterable
     when ""
       models.where(collection_id: nil)
     else
-      @collection = Collection.find_by!(public_id: collection)
+      @collection = Collection.find_param(collection)
       models.where(collection: Collection.tree_down(@collection.id))
     end
   end
@@ -48,7 +48,7 @@ module Filterable
     when ""
       models.where(creator_id: nil)
     else
-      @creator = Creator.find_by!(public_id: creator)
+      @creator = Creator.find_param(creator)
       models.where(creator: @creator)
     end
   end
@@ -96,7 +96,7 @@ module Filterable
     # Missing tags (If specific tag is not specified, require library to be set)
     if missingtag.presence || (missingtag && library)
       tag_regex_build = []
-      regexes = ((missingtag != "") ? [missingtag] : Library.find_by!(public_id: library).tag_regex)
+      regexes = ((missingtag != "") ? [missingtag] : Library.find_param(library).tag_regex)
       # Regexp match syntax - postgres is different from MySQL and SQLite
       regact = ApplicationRecord.connection.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) ? "~" : "REGEXP"
       regexes.each do |reg|

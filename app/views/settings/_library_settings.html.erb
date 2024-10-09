@@ -52,7 +52,7 @@
           </div>
           <div class="row input-group">
             <%= content_tag(:span, t("activerecord.attributes.library.notes"), class: "col-sm") %>
-            <%= content_tag(:span, library.notes, class: "col-sm-10") %>
+            <%= content_tag(:div, markdownify(library.notes), class: "col-sm-10") %>
           </div>
           <div class="row input-group">
             <%= content_tag(:span, t("activerecord.attributes.library.tag_regex"), class: "col-sm") %>

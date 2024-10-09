@@ -8,7 +8,7 @@ class CollectionsController < ApplicationController
   def index
     @models = filtered_models @filters
     @collections = policy_scope(Collection)
-    @collections = @collections.tree_both(@filters[:collection] || nil, @models.pluck(:collection_id).uniq) unless @filters.empty?
+    @collections = @collections.tree_both(Collection.find_param(@filters[:collection]).id || nil, @models.pluck(:collection_id).uniq) unless @filters[:collection].nil?
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
@@ -18,7 +18,7 @@ class CollectionsController < ApplicationController
     when "recent"
       @collections.order(created_at: :desc)
     else
-      @collections.order(name: :asc)
+      @collections.order(name_lower: :asc)
     end
 
     if helpers.pagination_settings["collections"]
@@ -80,7 +80,7 @@ class CollectionsController < ApplicationController
       authorize Collection
       @title = t(".unknown")
     else
-      @collection = Collection.includes(:links, :caber_relations).find_by!(public_id: params[:id])
+      @collection = Collection.includes(:links, :caber_relations).find_param(params[:id])
       authorize @collection
       @title = @collection.name
     end

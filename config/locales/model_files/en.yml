@@ -6,7 +6,8 @@ en:
       form_subtitle: 'Select changes to make:'
       select: Select file '%{name}'
       select_all: Select all files
-      submit: Update Selected Files
+      split: Split selected files into new model
+      submit: Update selected files
       title: Bulk Edit Files
     bulk_update:
       success: Files updated successfully.
@@ -16,6 +17,9 @@ en:
     destroy:
       confirm: Are you sure you want to remove this file from your filesystem?
       success: File deleted!
+    form:
+      notes:
+        help_html: You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit: Edit File Information
     show:

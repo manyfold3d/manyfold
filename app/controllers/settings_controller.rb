@@ -114,7 +114,7 @@ class SettingsController < ApplicationController
   end
 
   def get_user
-    @user = User.find_by(username: params[:user_id])
+    @user = User.find_param(params[:user_id])
     authorize @user
   end
 

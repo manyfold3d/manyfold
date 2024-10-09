@@ -26,6 +26,8 @@ pl:
         text: Otwórz
       set_as_preview: Ustaw jako podgląd
     form:
+      notes:
+        help_html: Możesz używać <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
         help: Plik wyświetlany jako podgląd modelu na stronach biblioteki
       tags: Tagi
@@ -40,9 +42,8 @@ pl:
     index:
       actions_heading: Akcje
       bulk_edit: Edycja zbiorcza
-      missing_url: Brakujący URL
+      no_results_html: Przepraszamy, nie mogliśmy znaleźć niczego do pokazania! Spróbuj zmienić filtry lub wyszukiwane hasła albo przesłać kilka modeli.
       skip_models: Pomiń listę modeli
-      untagged: Nieotagowany
     merge:
       success: Modele zostały pomyślnie połączone.
     new:
@@ -69,7 +70,6 @@ pl:
         warning: Scalanie przenosi wszystkie pliki z tego modelu do docelowego i usuwa ten model. Metadane plików zostaną zachowane, ale wszelkie metadane modelu zostaną utracone!
         with: Połącz z
       model_details: Szczegóły Modelu
-      notes_heading: Notatki
       organize:
         button_text: Zorganizuj pliki
         confirm:
@@ -80,7 +80,10 @@ pl:
       path: Ścieżka
       rescan: Ponownie przeskanuj pliki
       search: Wyszukaj w Internecie modele o tej samej nazwie
+      submit: Prześlij pliki
       tags: Tagi
+      upload_card:
+        heading: Prześlij
     update:
       failure: Wystąpił błąd i nie można było zapisać szczegółów modelu.
       success: Szczegóły modelu zapisane.

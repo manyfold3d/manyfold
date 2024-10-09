@@ -16,4 +16,10 @@ ActiveAdmin.register ModelFile do
   #   permitted << :other if params[:action] == 'create' && current_user.is_administrator?
   #   permitted
   # end
+
+  controller do
+    def find_resource
+      scoped_collection.find_param(params[:id])
+    end
+  end
 end

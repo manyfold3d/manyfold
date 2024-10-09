@@ -17,9 +17,7 @@ de:
         name: Name
         notes: Notizen
         path: Pfad
-        s3_access_key_id: 'Zugangs Schlüssel ID
-
-          '
+        s3_access_key_id: Zugangs Schlüssel ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpunkt URL
         s3_region: Region
@@ -35,7 +33,7 @@ de:
         library_id: Sammlung
         license: Lizenz
         name: Name
-        notes: Notizen
+        notes: Beschreibung
         path: Pfad
         preview_file: Vorschau Datei
         tags: Tags
@@ -86,7 +84,9 @@ de:
         library:
           attributes:
             path:
+              non_writable: muss beschreibbar sein
               not_found: konnte nicht auf der Festplatte gefunden werden
+              unsafe: kann kein privilegierter Systempfad sein
         model:
           attributes:
             library:
@@ -180,6 +180,21 @@ de:
       queued: in der Warteschlange
       working: Verarbeitung
   application:
+    caber_relation_fields:
+      delete: Löschen
+      permissions:
+        edit: Bearbeitbar
+        own: Eigentümer (kann anzeigen, bearbeiten, löschen und freigeben)
+        view: Nur Anzeigbar
+      subject:
+        placeholder: E-Mail-Adresse, Nutzername oder Rolle
+        role:
+          member: Jeder angemeldete lokale Benutzer
+          public: Jeder (ohne Login)
+        you: "(Du)"
+    caber_relations_form:
+      add: Füge eine weitere Berechtigungen hinzu.
+      permissions: Teilend
     content_header:
       sort:
         name: Nach Namen sortieren
@@ -247,12 +262,12 @@ de:
     save: Speichern
   home:
     index:
-      create_actor:
+      create_actor: 'hinzugefügt von %{name} vor %{time} '
       how_long_ago: vor %{time}
       recent_activity: Neuste Aktivität
       search:
         placeholder: Wonach suchen Sie?
-      update_actor:
+      update_actor: aktualisiert von %{name} vor %{time}
   jobs:
     analysis:
       analyse_model_file:

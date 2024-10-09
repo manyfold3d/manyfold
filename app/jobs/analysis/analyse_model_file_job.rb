@@ -12,10 +12,10 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
     status[:step] = "jobs.analysis.analyse_model_file.file_statistics" # i18n-tasks-use t('jobs.analysis.analyse_model_file.file_statistics')
     if file.file_last_modified > file.updated_at || file.digest.nil?
       file.digest = file.calculate_digest
-      # If the digest has changed, queue up detailed geometric mesh analysis
-      Analysis::GeometricAnalysisJob.perform_later(file_id) if file.is_3d_model? && file.digest_changed?
       # Store updated file metadata
       file.save!
+      # If the digest has changed, queue up detailed geometric mesh analysis
+      Analysis::GeometricAnalysisJob.perform_later(file_id) if file.is_3d_model? && file.digest_previously_changed?
     end
 
     status[:step] = "jobs.analysis.analyse_model_file.matching" # i18n-tasks-use t('jobs.analysis.analyse_model_file.matching')

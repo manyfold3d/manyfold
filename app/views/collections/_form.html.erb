@@ -7,7 +7,7 @@
   </div>
   <%= render "links_form", form: form %>
   <%= text_input_row form, :caption %>
-  <%= rich_text_input_row form, :notes %>
+  <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
   <%= render "caber_relations_form", form: form %>
   <div class="row mb-4">
     <div class='col'>

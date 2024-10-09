@@ -18,14 +18,14 @@
     <% if @filters[:library] %>
       <div class="row">
         <div class="col-auto"><%= icon "boxes", Library.model_name.human %></div>
-        <div class="col" aria-label="<%= Library.model_name.human %>"><%= [*@filters[:library]].map { |l| Library.find_by!(public_id: l).name }.join(", ") %></div>
+        <div class="col" aria-label="<%= Library.model_name.human %>"><%= [*@filters[:library]].map { |l| Library.find_param(l).name }.join(", ") %></div>
         <div class="col-auto"><%= link_to icon("trash", t(".remove_library_filter")), @filters.except(:library), {class: "text-danger"} %></div>
       </div>
     <% end %>
     <% if @filters[:creator] %>
       <div class="row">
         <div class="col-auto"><%= icon "person", Creator.model_name.human %></div>
-        <div class="col" aria-label="<%= Creator.model_name.human %>"><%= @creator ? @creator.name.titleize : t(".unknown") %></div>
+        <div class="col" aria-label="<%= Creator.model_name.human %>"><%= @creator ? @creator.name.careful_titleize : t(".unknown") %></div>
         <div class="col-auto"><%= link_to icon("trash", t(".remove_creator_filter")), @filters.except(:creator), {class: "text-danger"} %></div>
       </div>
     <% end %>

@@ -63,3 +63,9 @@ RSpec.configure do |config|
     end
   end
 end
+
+# Copy parsers into integration tests - this doesn't happen automatically for some reason
+[:xrd, :jrd, :activitypub, :nodeinfo].each do |mime_type|
+  ActionDispatch::IntegrationTest.register_encoder mime_type,
+    response_parser: ActionDispatch::Request.parameter_parsers[mime_type]
+end

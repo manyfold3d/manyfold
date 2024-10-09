@@ -26,6 +26,8 @@ en:
         text: Open
       set_as_preview: Set as preview
     form:
+      notes:
+        help_html: You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
         help: The file displayed as a model preview in library pages
       tags: Tags
@@ -40,14 +42,12 @@ en:
     index:
       actions_heading: Actions
       bulk_edit: Bulk Edit
-      missing_url: Missing URL
       no_results_html: Sorry, we couldn't find anything to show you! Try changing your filters or search terms, or uploading some models.
       skip_models: Skip model list
-      untagged: Untagged
     merge:
       success: Models merged successfully.
     new:
-      description: Upload new models as compressed files. Each uploaded archive will be extracted, and become a single model containing all the files. Make sure to hit the "create models" button to save once your uploads are complete!
+      description: Add new models by uploading files! If you upload a compressed archive, it will be extracted and become a single model containing all the files. If you upload individual files, they will each become a separate model.
       files:
         label: Select Files
       free_space: "(%{available} free)"
@@ -70,7 +70,6 @@ en:
         warning: Merging moves all files from this model to the target, and removes this model. File metadata is preserved, but any model metadata will be lost!
         with: Merge with
       model_details: Model Details
-      notes_heading: Notes
       organize:
         button_text: Organize files
         confirm:

@@ -44,6 +44,7 @@ module Manyfold
     config.i18n.available_locales = [
       :en,
       :de,
+      :es,
       :fr,
       :pl
     ]

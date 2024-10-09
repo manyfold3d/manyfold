@@ -1,0 +1,29 @@
+---
+es:
+  creators:
+    create:
+      success: Nuevos detalles del creador guardados.
+    creator:
+      edit_button:
+        label: Editar creador %{name}
+        text: Editar
+      models_button:
+        label: Mostrar modelos de %{name}
+    destroy:
+      success: "¡Creador eliminado!"
+    form:
+      notes:
+        help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+    general:
+      edit: Editar Creador
+      new: Nuevo creador
+    get_creator:
+      unknown: Desconocido
+    index:
+      actions_heading: Acciones
+      skip_creators: Omitir lista de creadores
+    unassigned:
+      caption: Todos los modelos sin creador asignado.
+      name: Sin asignar
+    update:
+      success: Detalles del creador guardados.

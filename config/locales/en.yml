@@ -33,7 +33,7 @@ en:
         library_id: Library
         license: License
         name: Name
-        notes: Notes
+        notes: Description
         path: Path
         preview_file: Preview File
         tags: Tags
@@ -84,7 +84,9 @@ en:
         library:
           attributes:
             path:
+              non_writable: must be writable
               not_found: could not be found on disk
+              unsafe: cannot be a privileged system path
         model:
           attributes:
             library:
@@ -250,6 +252,11 @@ en:
     title: Manyfold
   errors:
     messages:
+      already_confirmed: was already confirmed, please try signing in
+      confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
+      expired: has expired, please request a new one
+      not_found: not found
+      not_locked: was not locked
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"

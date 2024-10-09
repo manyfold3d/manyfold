@@ -80,7 +80,7 @@ class LibrariesController < ApplicationController
   end
 
   def get_library
-    @library = Library.find_by!(public_id: params[:id])
+    @library = Library.find_param(params[:id])
     authorize @library
     @title = @library.name
   end

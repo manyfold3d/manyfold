@@ -1,0 +1,32 @@
+---
+es:
+  collections:
+    collection:
+      collections_button:
+        label: Mostrar subcolecciones en %{name}
+      edit_button:
+        label: Editar colección %{name}
+        text: Editar
+      models_button:
+        label: Mostrar modelos en %{name}
+      no_preview: vista previa no disponible
+    create:
+      success: Detalles de la nueva colección guardados.
+    destroy:
+      success: "¡Colección eliminada!"
+    form:
+      notes:
+        help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+    general:
+      edit: Editar colección
+      new: Nueva colección
+    get_collection:
+      unknown: Desconocido
+    index:
+      actions_heading: Acciones
+      skip_collections: Saltar lista de colección
+    unassigned:
+      caption: Todos los modelos sin una colección asignada.
+      name: Sin asignar
+    update:
+      success: Detalles de la colección guardados.

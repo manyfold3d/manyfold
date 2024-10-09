@@ -7,8 +7,9 @@ class Model < ApplicationRecord
   include Linkable
   include Sluggable
   include PublicIDable
+  include Commentable
 
-  acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for, actor_type: "Document", include_in_user_count: false
+  acts_as_federails_actor username_field: :public_id, name_field: :name, profile_url_method: :url_for, actor_type: "Service", include_in_user_count: false
 
   scope :recent, -> { order(created_at: :desc) }
 
@@ -26,20 +27,14 @@ class Model < ApplicationRecord
   # In Rails 7.1 we will be able to do this instead:
   # normalizes :license, with: -> license { license.blank? ? nil : license }
 
-  attr_reader :organize
-  def organize=(value)
-    @organize = ActiveRecord::Type::Boolean.new.cast(value)
-  end
-
-  before_validation :autoupdate_path, if: :organize
+  before_update :move_files, if: :need_to_move_files?
+  after_commit :check_integrity, on: :update
 
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
   validate :check_for_submodels, on: :update, if: :need_to_move_files?
   validate :destination_is_vacant, on: :update, if: :need_to_move_files?
   validates :license, spdx: true, allow_nil: true
-
-  before_update :move_files, if: :need_to_move_files?
 
   def parents
     Pathname.new(path).parent.descend.filter_map do |path|
@@ -60,6 +55,7 @@ class Model < ApplicationRecord
         model: target
       )
     end
+    Scan::CheckModelIntegrityJob.set(wait: 5.seconds).perform_later(target.id)
     reload
     destroy
   end
@@ -123,6 +119,32 @@ class Model < ApplicationRecord
     library.has_folder?(path)
   end
 
+  def organize!
+    autoupdate_path
+    save!
+  end
+
+  def split!(files: [])
+    new_model = dup
+    new_model.name = "Copy of #{name}"
+    new_model.public_id = nil
+    new_model.tags = tags
+    new_model.organize!
+    # Move files
+    files.each do |file|
+      file.update!(model: new_model)
+      file.reattach!
+    end
+    # Clear preview file appropriately
+    if files.include?(preview_file)
+      update!(preview_file: nil)
+    else
+      new_model.update!(preview_file: nil)
+    end
+    # Done!
+    new_model
+  end
+
   private
 
   def normalize_license
@@ -169,5 +191,9 @@ class Model < ApplicationRecord
     model_files.each(&:reattach!)
     # Remove the old folder if it's still there
     previous_library.storage.delete_prefixed(previous_path)
+  end
+
+  def check_integrity
+    Scan::CheckModelIntegrityJob.set(wait: 5.seconds).perform_later(id)
   end
 end

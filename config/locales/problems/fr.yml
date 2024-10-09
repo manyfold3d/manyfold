@@ -9,7 +9,11 @@ fr:
       missing: Fichiers ou dossiers manquants
       nesting: Le modèle contient d'autres modèles
       no_3d_model: Le modèle ne contient pas de fichiers 3D
+      no_creator:
       no_image: Le modèle n'a pas de fichier image
+      no_license:
+      no_links:
+      no_tags:
       non_manifold:
     filters:
       apply_filters: Appliquer
@@ -37,9 +41,21 @@ fr:
       no_3d_model:
         description: Ce modèle ne contient pas de fichiers 3D. Il est peu probable que cela soit correct.
         title: Le modèle ne contient pas de fichiers 3D
+      no_creator:
+        description:
+        title:
       no_image:
         description: Ce modèle ne contient pas de fichier image. L'ajout d'un fichier image facilite la navigation.
         title: Le modèle n'a pas de fichier image
+      no_license:
+        description:
+        title:
+      no_links:
+        description:
+        title:
+      no_tags:
+        description:
+        title:
     model_file:
       duplicate:
         description: Ce fichier est dupliqué dans d'autres modèles. Vous devriez les supprimer.

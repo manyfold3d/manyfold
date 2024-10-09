@@ -4,15 +4,15 @@ class Collection < ApplicationRecord
   include Linkable
   include Sluggable
   include PublicIDable
+  include Commentable
 
-  acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for, actor_type: "Collection", include_in_user_count: false
+  acts_as_federails_actor username_field: :public_id, name_field: :name, profile_url_method: :url_for, actor_type: "Group", include_in_user_count: false
 
   has_many :models, dependent: :nullify
   has_many :collections, dependent: :nullify
   belongs_to :collection, optional: true
   validates :name, uniqueness: {case_sensitive: false}
 
-  default_scope { order(:name) }
   # returns all collections at and below given ids
   #   this should be applied to @filters[:collection] to get models in sub-trees
   scope :tree_down, ->(id) {

@@ -15,7 +15,7 @@ fr:
         help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank"> bibliothèque Bootstrap </a>
         placeholder: boxes
       notes:
-        help:
+        help_html:
       path:
         placeholder: "/libraries/models"
       s3_bucket:

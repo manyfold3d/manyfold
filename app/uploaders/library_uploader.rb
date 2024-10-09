@@ -1,6 +1,17 @@
+require "shrine/storage/file_system"
+require "shrine/storage/s3"
+
 class LibraryUploader < Shrine
+  plugin :activerecord
+  plugin :refresh_metadata
+  plugin :determine_mime_type
+  plugin :rack_response
   plugin :dynamic_storage
   plugin :upload_endpoint, max_size: SiteSettings.max_file_upload_size
+
+  self.storages = {
+    cache: Shrine::Storage::FileSystem.new("tmp/shrine")
+  }
 
   storage(/library_(\d+)/) do |m|
     Library.find(m[1]).storage

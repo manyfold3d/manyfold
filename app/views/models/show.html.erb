@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <%= tag.meta property: "og:type", content: "website" %>
+  <%= tag.meta property: "og:image", content: model_model_file_url(@model, @model.preview_file, format: @model.preview_file.extension) if @model.preview_file&.is_image? %>
+  <%= tag.meta name: "description", content: truncate(sanitize(@model.notes), length: 80) if @model.notes.present? %>
+<% end %>
+
 <% content_for :page_header do %>
   <h1>
     <a data-field="model[name]" data-path="<%= model_path(@model) %>" contenteditable=true>
@@ -12,12 +18,16 @@
 <% content_for :items do %>
   <%= render "image_carousel", images: @images %>
 
+  <%= card(:secondary) do %>
+    <p class="card-text"><%= markdownify @model.notes %></p>
+  <% end if @model.notes.present? %>
+
   <h2><a name="files"><%= t(".files") %></a></h2>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
     <%= render partial: "file", collection: @groups.delete(nil) %>
   </div>
   <% @groups.each_pair do |group, files| %>
-    <h3><a name="<%= group.parameterize %>"><%= group.titleize %></a></h3>
+    <h3><a name="<%= group.parameterize %>"><%= group.careful_titleize %></a></h3>
     <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
       <%= render partial: "file", collection: files %>
     </div>
@@ -88,15 +98,11 @@
 
   <%= render partial: "problem", collection: @model.problems.visible(problem_settings) %>
 
-  <%= card(:secondary, t(".notes_heading")) do %>
-    <p class="card-text"><%= sanitize @model.notes %></p>
-  <% end if @model.notes %>
-
   <%= card :secondary, t(".files_card.heading") do %>
     <a href="#files">Top</a>
     <ul>
       <% @groups.each_pair do |group, files| %>
-        <li><a href="#<%= group.parameterize %>"><%= group.titleize %></a></li>
+        <li><a href="#<%= group.parameterize %>"><%= group.careful_titleize %></a></li>
       <% end %>
     </ul>
     <%= link_to t(".files_card.bulk_edit"), bulk_edit_model_model_files_path(@model), class: "btn btn-secondary" if policy(@model).edit? %>
@@ -138,7 +144,7 @@
               "data-max-file-size": SiteSettings.max_file_upload_size,
               "data-allowed-file-types": input_accept_string %>
 
-        <%= submit_tag translate(".submit"), class: "btn btn-primary d-block", disabled: true %>
+        <%= submit_tag translate(".submit"), class: "btn btn-primary d-block" %>
       <% end %>
     <% end %>
   <% end %>

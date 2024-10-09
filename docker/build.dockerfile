@@ -4,17 +4,18 @@ FROM base AS build
 
 RUN apk add --no-cache \
   alpine-sdk \
-  nodejs \
+  nodejs=~20.15 \
+  npm \
   postgresql-dev \
   mariadb-dev \
   libarchive \
   mesa-gl \
-  glfw \
-  yarn
+  glfw
 
 COPY package.json .
 COPY yarn.lock .
-RUN yarn config set network-timeout 600000 -g
+RUN npm install --global corepack
+RUN corepack enable yarn
 RUN yarn install
 
 COPY .ruby-version .

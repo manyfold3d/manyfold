@@ -12,9 +12,13 @@ de:
       success: Dateien erfolgreich aktualisiert.
     create:
       conversion_started: Die Dateikonvertierung hat begonnen. Die konvertierte Datei sollte in Kürze verfügbar sein.
+      success: Die Datei(en) wurde(n) erfolgreich hochgeladen.
     destroy:
       confirm: Bist du sicher, dass du diese Datei aus Ihrem Dateisystem entfernen möchtest?
       success: Datei gelöscht!
+    form:
+      notes:
+        help_html: 'Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden. '
     general:
       edit: Dateiinformationen bearbeiten
     show:

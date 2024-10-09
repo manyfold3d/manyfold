@@ -24,7 +24,7 @@ class ModelsController < ApplicationController
     when "recent"
       @models.order(created_at: :desc)
     else
-      @models.order(name: :asc)
+      @models.order(name_lower: :asc)
     end
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
@@ -50,7 +50,7 @@ class ModelsController < ApplicationController
       files = files.where.not(id: hidden_ids)
     end
     files = files.includes(:presupported_version, :problems)
-    files = files.select(&:is_3d_model?)
+    files = files.reject(&:is_image?)
     @groups = helpers.group(files)
     render layout: "card_list_page"
   end
@@ -66,7 +66,7 @@ class ModelsController < ApplicationController
 
   def create
     authorize :model
-    library = Library.find_by!(public_id: params[:library])
+    library = Library.find_param(params[:library])
     uploads = begin
       JSON.parse(params[:uploads])[0]["successful"]
     rescue
@@ -89,25 +89,24 @@ class ModelsController < ApplicationController
   end
 
   def update
-    if @model.update(model_params)
+    hash = model_params
+    organize = hash.delete(:organize) == "true"
+    if @model.update(hash)
+      OrganizeModelJob.perform_later(@model.id) if organize
       redirect_to @model, notice: t(".success")
     else
-      edit # Load creators and collections
-      flash.now[:alert] = t(".failure")
-      render :edit
+      redirect_back_or_to edit_model_path(@model), alert: t(".failure")
     end
   end
 
   def merge
     if params[:target] && (target = (@model.parents.find { |x| x.public_id == params[:target] }))
       @model.merge_into! target
-      Scan::CheckModelIntegrityJob.perform_later(target.id)
       redirect_to target, notice: t(".success")
     elsif params[:all] && @model.contains_other_models?
       @model.contained_models.each do |child|
         child.merge_into! @model
       end
-      Scan::CheckModelIntegrityJob.perform_later(@model.id)
       redirect_to @model, notice: t(".success")
     else
       head :bad_request
@@ -146,7 +145,7 @@ class ModelsController < ApplicationController
         model.tag_list = existing_tags + add_tags - remove_tags
         model.save
       end
-      model.update! organize: true if organize
+      OrganizeModelJob.perform_later(model.id) if organize
     end
     redirect_back_or_to edit_models_path(@filters), notice: t(".success")
   end
@@ -197,23 +196,23 @@ class ModelsController < ApplicationController
   end
 
   def get_model
-    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find_by!(public_id: params[:id])
+    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find_param(params[:id])
     authorize @model
     @title = @model.name
   end
 
   def get_creators_and_collections
-    @creators = policy_scope(Creator)
-    @collections = policy_scope(Collection)
+    @creators = policy_scope(Creator).order("LOWER(name) ASC")
+    @collections = policy_scope(Collection).order("LOWER(name) ASC")
   end
 
   def set_returnable
     session[:return_after_new] = request.fullpath.split("?")[0]
-    @new_collection = Collection.find_by!(public_id: params[:new_collection]) if params[:new_collection]
-    @new_creator = Creator.find_by!(public_id: params[:new_creator]) if params[:new_creator]
+    @new_collection = Collection.find_param(params[:new_collection]) if params[:new_collection]
+    @new_creator = Creator.find_param(params[:new_creator]) if params[:new_creator]
     if @model
       @model.collection = @new_collection if @new_collection
-      @model.collection = @new_creator if @new_creator
+      @model.creator = @new_creator if @new_creator
     end
   end
 

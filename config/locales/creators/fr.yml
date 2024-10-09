@@ -11,6 +11,9 @@ fr:
         label:
     destroy:
       success: Créateur supprimé !
+    form:
+      notes:
+        help_html:
     general:
       edit: Modifier le créateur
       new: Nouveau créateur

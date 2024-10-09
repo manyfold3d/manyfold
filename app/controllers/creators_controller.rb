@@ -18,7 +18,7 @@ class CreatorsController < ApplicationController
     when "recent"
       @creators.order(created_at: :desc)
     else
-      @creators.order(name: :asc)
+      @creators.order(name_lower: :asc)
     end
 
     if helpers.pagination_settings["creators"]
@@ -78,7 +78,7 @@ class CreatorsController < ApplicationController
       authorize Creator
       @title = t(".unknown")
     else
-      @creator = Creator.includes(:links, :caber_relations).find_by!(public_id: params[:id])
+      @creator = Creator.includes(:links, :caber_relations).find_param(params[:id])
       authorize @creator
       @title = @creator.name
     end
