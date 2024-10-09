@@ -285,7 +285,7 @@ en:
         comment: |
           I've just added a new model: ["%{model_name}"](%{url})
 
-          %{tags}
+          \%{tags}
     analysis:
       analyse_model_file:
         detect_duplicates: Detecting duplicate files
