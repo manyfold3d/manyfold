@@ -391,5 +391,12 @@ RSpec.describe Model do
       model = create(:model, creator: create(:creator))
       expect(Activity::CreatorAddedModelJob).to have_been_enqueued.with(model.id)
     end
+
+    it "queues creator-specific model creation job when model is updated if a creator has changed" do
+      model = create(:model)
+      ActiveJob::Base.queue_adapter.enqueued_jobs.clear
+      model.update(creator: create(:creator))
+      expect(Activity::CreatorAddedModelJob).to have_been_enqueued.with(model.id)
+    end
   end
 end
