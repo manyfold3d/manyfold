@@ -13,7 +13,7 @@ RSpec.describe "Comments" do
     describe "GET #show" do
       context "when requesting ActivityPub JSON" do
         before do
-          get "/models/#{model.public_id}/comments/#{comment.public_id}", headers: {accept: "application/ld+json"}
+          get "/models/#{model.public_id}/comments/#{comment.public_id}", headers: {accept: "application/activity+json"}
         end
 
         it "returns http success" do
@@ -41,7 +41,7 @@ RSpec.describe "Comments" do
         end
 
         it "includes model ID in context" do
-          expect(response.parsed_body["context"]).to eq url_for([model, only_path: false])
+          expect(response.parsed_body["context"]).to eq "http://localhost:3214/models/#{model.public_id}"
         end
 
         it "includes publication time" do
