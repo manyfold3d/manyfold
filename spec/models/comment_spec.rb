@@ -1,24 +1,71 @@
 require "rails_helper"
 
 RSpec.describe Comment do
-  let!(:model) { create(:model) }
-  let!(:comment) { create(:comment, commenter: model, commentable: model) }
+  context "with public commenter and commentable" do
+    let(:commenter) do
+      c = create(:creator)
+      c.grant_permission_to "view", nil
+      c
+    end
+    let(:commentable) do
+      m = create(:model, creator: commenter, tag_list: "tag1, tag2")
+      m.grant_permission_to "view", nil
+      m
+    end
+    let!(:comment) { create(:comment, commenter: commenter, commentable: commentable) }
 
-  it "posts a Federails Activity on creation" do # rubocop:disable RSpec/MultipleExpectations
-    expect { create(:comment, commenter: model, commentable: model) }.to change(Federails::Activity, :count).by(1)
-    expect(Federails::Activity.last.action).to eq "Create"
+    it "posts a Federails Activity on creation" do # rubocop:disable RSpec/MultipleExpectations
+      expect { create(:comment, commenter: commenter, commentable: commentable) }.to change(Federails::Activity, :count).by(1)
+      expect(Federails::Activity.last.action).to eq "Create"
+    end
+
+    it "posts a Federails Activity on update" do # rubocop:disable RSpec/MultipleExpectations
+      expect { comment.update(comment: "test") }.to change(Federails::Activity, :count).by(1)
+      expect(Federails::Activity.last.action).to eq "Update"
+    end
+
+    it "has a federated_url method" do
+      expect(comment.federated_url).to eq "http://localhost:3214/models/#{commentable.public_id}/comments/#{comment.public_id}"
+    end
+
+    it "can turn itself into an ActivityPub Note" do
+      expect(comment.to_activitypub_object).to be_a(Hash)
+    end
   end
 
-  it "posts a Federails Activity on update" do # rubocop:disable RSpec/MultipleExpectations
-    expect { comment.update(comment: "test") }.to change(Federails::Activity, :count).by(1)
-    expect(Federails::Activity.last.action).to eq "Update"
+  context "with non-public commenter" do
+    let(:commenter) { create(:creator) }
+    let(:commentable) do
+      m = create(:model, creator: commenter, tag_list: "tag1, tag2")
+      m.grant_permission_to "view", nil
+      m
+    end
+
+    it "Does not post a Federails Activity on creation" do
+      expect { create(:comment, commenter: commenter, commentable: commentable) }.not_to change(Federails::Activity, :count)
+    end
+
+    it "does not have a federated_url" do
+      comment = create(:comment, commenter: commenter, commentable: commentable)
+      expect(comment.federated_url).to be_nil
+    end
   end
 
-  it "has a federated_url method" do
-    expect(comment.federated_url).to eq "http://localhost:3214/models/#{model.public_id}/comments/#{comment.public_id}"
-  end
+  context "with non-public commentable" do
+    let(:commenter) do
+      c = create(:creator)
+      c.grant_permission_to "view", nil
+      c
+    end
+    let(:commentable) { create(:model, creator: commenter) }
 
-  it "can turn itself into an ActivityPub Note" do
-    expect(comment.to_activitypub_object).to be_a(Hash)
+    it "Does not post a Federails Activity on creation" do
+      expect { create(:comment, commenter: commenter, commentable: commentable) }.not_to change(Federails::Activity, :count)
+    end
+
+    it "does not have a federated_url" do
+      comment = create(:comment, commenter: commenter, commentable: commentable)
+      expect(comment.federated_url).to be_nil
+    end
   end
 end

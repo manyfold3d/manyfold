@@ -8,10 +8,6 @@ RSpec.describe Activity::CreatorAddedModelJob do
     expect { described_class.new.perform(model.id) }.to change(Comment, :count).by(1)
   end
 
-  it "ends up queueing an ActivityPub publish job" do
-    expect { described_class.new.perform(model.id) }.to have_enqueued_job Federails::NotifyInboxJob
-  end
-
   context "with a comment" do
     subject(:comment) { model.comments.first }
 
