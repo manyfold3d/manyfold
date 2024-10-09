@@ -280,6 +280,12 @@ en:
         placeholder: What are you looking for?
       update_actor: updated by %{name} %{time} ago
   jobs:
+    activity:
+      creator_added_model:
+        comment: |
+          I've just added a new model: ["%{model_name}"](%{url})
+
+          %{tags}
     analysis:
       analyse_model_file:
         detect_duplicates: Detecting duplicate files
@@ -293,12 +299,6 @@ en:
         direction_check: Checking surface orientation
         loading_mesh: Loading mesh
         manifold_check: Checking that mesh is manifold
-    activity:
-      creator_added_model:
-        comment: |
-          I've just added a new model: ["%{model_name}"](%{url})
-
-          %{tags}
     scan:
       check_all:
         queueing_model_checks: Queueing model checks
