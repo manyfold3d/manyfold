@@ -560,7 +560,7 @@ GEM
       rubocop (~> 1.61)
     rubocop-i18n (3.0.0)
       rubocop (~> 1.0)
-    rubocop-performance (1.21.1)
+    rubocop-performance (1.22.1)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
     rubocop-rails (2.26.2)
@@ -635,9 +635,9 @@ GEM
     standard-custom (1.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.50)
-    standard-performance (1.4.0)
+    standard-performance (1.5.0)
       lint_roller (~> 1.1)
-      rubocop-performance (~> 1.21.0)
+      rubocop-performance (~> 1.22.0)
     stopwords-filter2 (0.1.0)
     string-similarity (2.1.0)
     stringio (3.1.1)
@@ -744,7 +744,7 @@ DEPENDENCIES
   rspec-rails
   rubocop-factory_bot
   rubocop-i18n
-  rubocop-performance (~> 1.21)
+  rubocop-performance (~> 1.22)
   rubocop-rails
   rubocop-rspec
   rubocop-rspec_rails
