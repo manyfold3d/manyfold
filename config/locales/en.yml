@@ -283,9 +283,7 @@ en:
     activity:
       creator_added_model:
         comment: |
-          I've just added a new model: "%{model_name}".
-
-          Find it at %{url}
+          I've just added a new model: ["%{model_name}"](%{url})
 
           %{tags}
     analysis:
