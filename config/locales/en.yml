@@ -280,6 +280,14 @@ en:
         placeholder: What are you looking for?
       update_actor: updated by %{name} %{time} ago
   jobs:
+    activity:
+      creator_added_model:
+        comment: |
+          I've just added a new model: "%{model_name}".
+
+          Find it at %{url}
+
+          %{tags}
     analysis:
       analyse_model_file:
         detect_duplicates: Detecting duplicate files
