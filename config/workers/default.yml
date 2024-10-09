@@ -4,6 +4,7 @@
   - scan
   - analysis
   - default
+  - activity
 :scheduler:
   :dynamic: true
   :dynamic_every: 15s
