@@ -9,6 +9,7 @@ class Comment < ApplicationRecord
   after_destroy :post_destroy_activity
 
   def federated_url
+    return nil unless public?
     Rails.application.routes.url_helpers.url_for([commentable, self, {only_path: false}])
   end
 
@@ -28,6 +29,11 @@ class Comment < ApplicationRecord
     end
   end
 
+  def public?
+    Pundit::PolicyFinder.new(commenter.class).policy.new(nil, commenter).show? &&
+      Pundit::PolicyFinder.new(commentable.class).policy.new(nil, commentable).show?
+  end
+
   private
 
   def post_create_activity
@@ -39,10 +45,12 @@ class Comment < ApplicationRecord
   end
 
   def post_activity(action)
-    Federails::Activity.create!(
-      actor: commenter.actor,
-      action: action,
-      entity: self
-    )
+    if public?
+      Federails::Activity.create!(
+        actor: commenter.actor,
+        action: action,
+        entity: self
+      )
+    end
   end
 end
