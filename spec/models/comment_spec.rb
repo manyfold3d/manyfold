@@ -17,4 +17,8 @@ RSpec.describe Comment do
   it "has a federated_url method" do
     expect(comment.federated_url).to eq "http://localhost:3214/models/#{model.public_id}/comments/#{comment.public_id}"
   end
+
+  it "can turn itself into an ActivityPub Note" do
+    expect(comment.to_activitypub_object).to be_a(Hash)
+  end
 end
