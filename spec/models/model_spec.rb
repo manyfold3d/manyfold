@@ -385,4 +385,11 @@ RSpec.describe Model do
       expect(file).to have_received(:delete_from_disk_and_destroy).once
     end
   end
+
+  context "when making changes" do
+    it "queues creator-specific model creation job when model is created if a creator is set" do
+      model = create(:model, creator: create(:creator))
+      expect(Activity::CreatorAddedModelJob).to have_been_enqueued.with(model.id)
+    end
+  end
 end

@@ -27,6 +27,7 @@ class Model < ApplicationRecord
   # In Rails 7.1 we will be able to do this instead:
   # normalizes :license, with: -> license { license.blank? ? nil : license }
 
+  after_create :post_creation_activity
   before_update :move_files, if: :need_to_move_files?
   after_commit :check_integrity, on: :update
 
@@ -195,5 +196,11 @@ class Model < ApplicationRecord
 
   def check_integrity
     Scan::CheckModelIntegrityJob.set(wait: 5.seconds).perform_later(id)
+  end
+
+  def post_creation_activity
+    if creator.present?
+      Activity::CreatorAddedModelJob.set(wait: 5.seconds).perform_later(id)
+    end
   end
 end
