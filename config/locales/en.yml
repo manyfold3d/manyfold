@@ -278,6 +278,7 @@ en:
       recent_activity: Recent Activity
       search:
         placeholder: What are you looking for?
+        submit: Search
       update_actor: updated by %{name} %{time} ago
   jobs:
     activity:
