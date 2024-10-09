@@ -12,10 +12,9 @@ class Comment < ApplicationRecord
     Rails.application.routes.url_helpers.url_for([commentable, self, {only_path: false}])
   end
 
-  def to_activitypub_object(include_context: false)
+  def to_activitypub_object
     # Comments become Notes in ActvityPub world
-    Jbuilder.encode do |json|
-      json.set! "@context", "https://www.w3.org/ns/activitystreams" if include_context
+    Jbuilder.new do |json|
       json.id federated_url
       json.type "Note"
       json.content Kramdown::Document.new(comment).to_html

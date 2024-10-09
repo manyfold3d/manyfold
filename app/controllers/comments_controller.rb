@@ -3,9 +3,6 @@ class CommentsController < ApplicationController
   before_action :get_comment
 
   def show
-    respond_to do |format|
-      format.activitypub { render json: @comment.to_activitypub_object(include_context: true) }
-    end
   end
 
   private
