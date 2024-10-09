@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_07_182824) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_09_122540) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_07_182824) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "system", default: false, null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["commenter_type", "commenter_id"], name: "index_comments_on_commenter"
     t.index ["public_id"], name: "index_comments_on_public_id", unique: true
