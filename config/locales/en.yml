@@ -224,6 +224,10 @@ en:
       sponsor: Sponsor
       stats_heading: Stats
       version: Version
+    link_fields:
+      url:
+        delete: Delete
+        placeholder: Any related web page
     links_form:
       add: add another link
     navbar:
