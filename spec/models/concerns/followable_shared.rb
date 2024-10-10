@@ -22,7 +22,8 @@ shared_examples "Followable" do
     end
 
     it "posts an activity" do
-      expect { create(described_class.to_s.underscore.to_sym) }.to change(Federails::Activity, :count).by(1)
+      entity = create(described_class.to_s.underscore.to_sym)
+      expect(Federails::Activity.where(entity: entity, action: "Create").count).to eq 1
     end
   end
 
@@ -34,12 +35,14 @@ shared_examples "Followable" do
     end
 
     it "posts an activity after update" do
-      expect { entity.update caption: "test" }.to change(Federails::Activity, :count).by(1)
+      entity.update caption: "test"
+      expect(Federails::Activity.where(entity: entity, action: "Update").count).to eq 1
     end
 
-    it "doesn't posts an activity after update if there's already been one recently" do
+    it "doesn't post an activity after update if there's already been one recently" do
       entity.update caption: "change"
-      expect { entity.update caption: "test" }.not_to change(Federails::Activity, :count)
+      entity.update caption: "change again"
+      expect(Federails::Activity.where(entity: entity, action: "Update").count).to eq 1
     end
   end
 end
