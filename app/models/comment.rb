@@ -15,18 +15,16 @@ class Comment < ApplicationRecord
 
   def to_activitypub_object
     # Comments become Notes in ActvityPub world
-    Jbuilder.new do |json|
-      json.id federated_url
-      json.type "Note"
-      json.content Kramdown::Document.new(comment).to_html
-      json.context Rails.application.routes.url_helpers.url_for([commentable, only_path: false])
-      json.published created_at&.iso8601
-      if commenter&.actor&.respond_to? :federated_url
-        json.attributedTo commenter.actor.federated_url
-      end
-      json.to ["https://www.w3.org/ns/activitystreams#Public"]
-      json.cc [commenter.actor.followers_url]
-    end
+    {
+      id: federated_url,
+      type: "Note",
+      content: Kramdown::Document.new(comment).to_html,
+      context: Rails.application.routes.url_helpers.url_for([commentable, only_path: false]),
+      published: created_at&.iso8601,
+      attributedTo: (commenter&.actor&.respond_to?(:federated_url) ? commenter.actor.federated_url : nil),
+      to: ["https://www.w3.org/ns/activitystreams#Public"],
+      cc: [commenter.actor.followers_url]
+    }.compact
   end
 
   def public?
