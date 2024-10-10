@@ -224,6 +224,10 @@ pl:
       sponsor: Sponsoruj
       stats_heading: Statystyki
       version: Wersja
+    link_fields:
+      url:
+        delete: Usuń
+        placeholder:
     links_form:
       add: dodaj kolejny link
     navbar:
@@ -267,8 +271,12 @@ pl:
       recent_activity: Ostatnia Aktywność
       search:
         placeholder: Czego szukasz?
+        submit: Wyszukaj
       update_actor: zaktualizowany przez %{name} %{time} temu
   jobs:
+    activity:
+      creator_added_model:
+        comment:
     analysis:
       analyse_model_file:
         detect_duplicates: Wykrywanie zduplikowanych plików

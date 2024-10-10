@@ -3,16 +3,16 @@ es:
   activerecord:
     attributes:
       collection:
-        caption: Subtitulo
+        caption: Subtítulo
         collection_id: Colección
         name: Nombre
         notes: Notas
       creator:
-        caption: Subtitulo
+        caption: Subtítulo
         name: Nombre
         notes: Notas
       library:
-        caption: Subtitulo
+        caption: Subtítulo
         icon: Icono
         name: Nombre
         notes: Notas
@@ -29,7 +29,7 @@ es:
       link:
         url: Enlace
       model:
-        caption: Subtitulo
+        caption: Subtítulo
         collection_id: Colección
         creator_id: Creador
         library_id: Biblioteca
@@ -40,13 +40,13 @@ es:
         preview_file: Vista previa
         tags: Etiquetas
       model_file:
-        caption: Subtitulo
+        caption: Subtítulo
         digest: Digest
         filename: Archivo
         model_id: Modelo
         notes: Notas
         presupported: Soporte predefinido
-        presupported_version: Versión soporte predefinido
+        presupported_version: Versión de soporte predefinido
         printed: Impreso
         size: Tamaño del archivo
         unsupported_version: Versión sin soporte
@@ -228,6 +228,10 @@ es:
       sponsor: Colaborar
       stats_heading: Estadísticas
       version: Versión
+    link_fields:
+      url:
+        delete: Borrar
+        placeholder:
     links_form:
       add: añadir otro enlace
     navbar:
@@ -271,8 +275,12 @@ es:
       recent_activity: Actividad reciente
       search:
         placeholder: "¿Qué busca?"
+        submit: Buscar
       update_actor: actualizado por %{name} hace %{time}
   jobs:
+    activity:
+      creator_added_model:
+        comment:
     analysis:
       analyse_model_file:
         detect_duplicates: Buscando ficheros duplicados

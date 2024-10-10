@@ -224,6 +224,10 @@ fr:
       sponsor: Sponsor
       stats_heading: Statistiques
       version: Version
+    link_fields:
+      url:
+        delete: Supprimer
+        placeholder:
     links_form:
       add: ajouter un autre lien
     navbar:
@@ -267,8 +271,12 @@ fr:
       recent_activity: Activité récente
       search:
         placeholder: Que recherchez-vous ?
+        submit: Recherche
       update_actor:
   jobs:
+    activity:
+      creator_added_model:
+        comment:
     analysis:
       analyse_model_file:
         detect_duplicates: Détection des fichiers en double
