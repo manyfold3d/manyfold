@@ -18,12 +18,12 @@ class Comment < ApplicationRecord
       commentable.tags.pluck(:name).map do |tag|
         {
           type: "Hashtag",
-          name: "##{tag}",
+          name: "##{tag.tr(" ", "_").camelize}",
           href: Rails.application.routes.url_helpers.url_for([commentable.class, tag: tag])
         }
       end
     : nil
-    tag_html = tags&.pluck(:name)&.join(" ")
+    tag_html = tags&.map { |t| %(<a href="#{t[:href]}" class="mention hashtag" rel="tag">#{t[:name]}</a>) }&.join(" ")
     # Comments become Notes in ActvityPub world
     {
       id: federated_url,
