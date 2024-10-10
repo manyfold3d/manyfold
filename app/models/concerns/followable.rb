@@ -6,8 +6,8 @@ module Followable
 
   included do
     delegate :following_followers, to: :actor
-    after_commit :post_creation_activity, on: :create
-    after_commit :post_update_activity, on: :update
+    after_commit :followable_post_creation_activity, on: :create
+    after_commit :followable_post_update_activity, on: :update
 
     after_followed :auto_accept
   end
@@ -22,16 +22,15 @@ module Followable
 
   private
 
-  def post_creation_activity
-    post_activity("Create")
+  def followable_post_creation_activity
+    followable_post_activity("Create")
   end
 
-  def post_update_activity
-    return if actor&.activities_as_entity&.where(created_at: TIMEOUT.minutes.ago..)&.count&.> 0
-    post_activity("Update")
+  def followable_post_update_activity
+    followable_post_activity("Update") unless Federails::Activity.exists?(entity: self, created_at: TIMEOUT.minutes.ago..)
   end
 
-  def post_activity(action)
+  def followable_post_activity(action)
     user = permitted_users.with_permission("own").first || SiteSettings.default_user
     return if user.nil?
     Federails::Activity.create!(
