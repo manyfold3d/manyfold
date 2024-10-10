@@ -23,25 +23,21 @@ module Followable
   private
 
   def post_creation_activity
-    user = permitted_users.with_permission("own").first || SiteSettings.default_user
-    return if user.nil?
-    user.create_actor_if_missing
-    Federails::Activity.create!(
-      actor: user.actor,
-      action: "Create",
-      entity: actor,
-      created_at: created_at
-    )
+    post_activity("Create")
   end
 
   def post_update_activity
     return if actor&.activities_as_entity&.where(created_at: TIMEOUT.minutes.ago..)&.count&.> 0
+    post_activity("Update")
+  end
+
+  def post_activity(action)
     user = permitted_users.with_permission("own").first || SiteSettings.default_user
     return if user.nil?
     Federails::Activity.create!(
       actor: user.actor,
-      action: "Update",
-      entity: actor,
+      action: action,
+      entity: self,
       created_at: updated_at
     )
   end
