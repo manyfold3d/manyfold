@@ -8,7 +8,7 @@ RSpec.describe Comment do
       c
     end
     let(:commentable) do
-      m = create(:model, creator: commenter, tag_list: "tag1, tag2")
+      m = create(:model, creator: commenter, tag_list: "tag one, tag2")
       m.grant_permission_to "view", nil
       m
     end
@@ -64,17 +64,17 @@ RSpec.describe Comment do
       end
 
       it "includes tags appended to content" do
-        ["tag1", "tag2"].each do |tag|
-          expect(ap_object[:content]).to include "##{tag}"
+        {"tag+one": "#TagOne", tag2: "#Tag2"}.each_pair do |link, hashtag|
+          expect(ap_object[:content]).to include %(<a href="http://localhost:3214/models?tag=#{link}" class="mention hashtag" rel="tag">#{hashtag}</a>)
         end
       end
 
       it "includes tags as mentions" do # rubocop:disable RSpec/ExampleLength
-        ["tag1", "tag2"].each do |tag|
+        {"tag+one": "#TagOne", tag2: "#Tag2"}.each_pair do |link, hashtag|
           expect(ap_object[:tags]).to include(
             type: "Hashtag",
-            href: "http://localhost:3214/models?tag=#{tag}",
-            name: "##{tag}"
+            href: "http://localhost:3214/models?tag=#{link}",
+            name: hashtag
           )
         end
       end
