@@ -6,6 +6,7 @@ pl:
       form_subtitle: 'Wybierz zmiany do wprowadzenia:'
       select: Zaznacz plik '%{name}'
       select_all: Zaznacz wszystkie pliki
+      split:
       submit: Aktualizuj zaznaczone pliki
       title: Zbiorczo edytuj pliki
     bulk_update:
