@@ -2,9 +2,12 @@ module FederailsCommon
   extend ActiveSupport::Concern
   include Federails::Entity
 
-  def create_actor_if_missing
-    return if actor.present?
-    create_actor
-    reload
+  def actor
+    act = Federails::Actor.find_by(entity: self)
+    if act.nil?
+      act = create_actor
+      reload
+    end
+    act
   end
 end

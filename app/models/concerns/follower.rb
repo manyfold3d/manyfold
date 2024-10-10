@@ -12,7 +12,6 @@ module Follower
   end
 
   def follow(target)
-    target.create_actor_if_missing
     following_follows.create(target_actor: target.actor)
   end
 
