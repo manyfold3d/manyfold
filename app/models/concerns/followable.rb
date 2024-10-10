@@ -2,7 +2,7 @@ module Followable
   extend ActiveSupport::Concern
   include FederailsCommon
 
-  TIMEOUT = 5
+  TIMEOUT = 15
 
   included do
     delegate :following_followers, to: :actor
