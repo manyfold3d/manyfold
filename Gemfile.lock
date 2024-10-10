@@ -31,8 +31,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails.git
-  revision: 612d986831201e7cd682eb106978afcab89cc4bd
-  branch: more-flexible-recipients
+  revision: 3c77b61774a7d9c21dd3704d6d1a28b7f228fadb
+  branch: main
   specs:
     federails (0.1.0)
       faraday
