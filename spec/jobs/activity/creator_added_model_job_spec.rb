@@ -31,12 +31,6 @@ RSpec.describe Activity::CreatorAddedModelJob do
       expect(comment.comment).to include model.name
     end
 
-    it "includes tags in text as hashtags" do
-      model.tag_list.each do |tag|
-        expect(comment.comment).to include "##{tag}"
-      end
-    end
-
     it "includes URL in text" do
       expect(comment.comment).to include "http://localhost:3214/models/#{model.public_id}"
     end

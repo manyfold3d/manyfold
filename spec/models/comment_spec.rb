@@ -28,15 +28,63 @@ RSpec.describe Comment do
       expect(comment.federated_url).to eq "http://localhost:3214/models/#{commentable.public_id}/comments/#{comment.public_id}"
     end
 
-    it "can turn itself into an ActivityPub Note" do
-      expect(comment.to_activitypub_object).to be_a(Hash)
+    context "when serializing to an ActivityPub Note" do
+      let(:ap_object) { comment.to_activitypub_object }
+
+      it "creates a Note" do
+        expect(ap_object[:type]).to eq "Note"
+      end
+
+      it "includes content" do
+        expect(ap_object[:content]).to be_present
+      end
+
+      it "includes id" do
+        expect(ap_object[:id]).to eq comment.federated_url
+      end
+
+      it "includes commentable ID in context" do
+        expect(ap_object[:context]).to eq "http://localhost:3214/models/#{commentable.public_id}"
+      end
+
+      it "includes publication time" do
+        expect(ap_object[:published]).to be_present
+      end
+
+      it "includes attribution" do
+        expect(ap_object[:attributedTo]).to eq commenter.actor.federated_url
+      end
+
+      it "includes to field" do
+        expect(ap_object[:to]).to include "https://www.w3.org/ns/activitystreams#Public"
+      end
+
+      it "includes cc field" do
+        expect(ap_object[:cc]).to include commenter.actor.followers_url
+      end
+
+      it "includes tags appended to content" do
+        ["tag1", "tag2"].each do |tag|
+          expect(ap_object[:content]).to include "##{tag}"
+        end
+      end
+
+      it "includes tags as mentions" do # rubocop:disable RSpec/ExampleLength
+        ["tag1", "tag2"].each do |tag|
+          expect(ap_object[:tags]).to include(
+            type: "Hashtag",
+            href: "http://localhost:3214/models?tag=#{tag}",
+            name: "##{tag}"
+          )
+        end
+      end
     end
   end
 
   context "with non-public commenter" do
     let(:commenter) { create(:creator) }
     let(:commentable) do
-      m = create(:model, creator: commenter, tag_list: "tag1, tag2")
+      m = create(:model, creator: commenter)
       m.grant_permission_to "view", nil
       m
     end

@@ -28,36 +28,8 @@ RSpec.describe "Comments" do
           expect(response.parsed_body["type"]).to eq "Note"
         end
 
-        it "includes content" do
-          expect(response.parsed_body["content"]).to be_present
-        end
-
-        it "includes id" do
-          expect(response.parsed_body["id"]).to eq comment.federated_url
-        end
-
         it "includes JSON-LD context" do
           expect(response.parsed_body["@context"]).to eq "https://www.w3.org/ns/activitystreams"
-        end
-
-        it "includes model ID in context" do
-          expect(response.parsed_body["context"]).to eq "http://localhost:3214/models/#{model.public_id}"
-        end
-
-        it "includes publication time" do
-          expect(response.parsed_body["published"]).to be_present
-        end
-
-        it "includes attribution" do
-          expect(response.parsed_body["attributedTo"]).to eq user.actor.federated_url
-        end
-
-        it "includes to field" do
-          expect(response.parsed_body["to"]).to include "https://www.w3.org/ns/activitystreams#Public"
-        end
-
-        it "includes cc field" do
-          expect(response.parsed_body["cc"]).to include user.actor.followers_url
         end
       end
     end

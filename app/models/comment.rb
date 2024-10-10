@@ -14,19 +14,32 @@ class Comment < ApplicationRecord
   end
 
   def to_activitypub_object
-    # Comments become Notes in ActvityPub world
-    Jbuilder.new do |json|
-      json.id federated_url
-      json.type "Note"
-      json.content Kramdown::Document.new(comment).to_html
-      json.context Rails.application.routes.url_helpers.url_for([commentable, only_path: false])
-      json.published created_at&.iso8601
-      if commenter&.actor&.respond_to? :federated_url
-        json.attributedTo commenter.actor.federated_url
+    # Build tag structure
+    tags = commentable.respond_to?(:tags) ?
+      commentable.tags.pluck(:name).map do |tag|
+        {
+          type: "Hashtag",
+          name: "##{tag}",
+          href: Rails.application.routes.url_helpers.url_for([commentable.class, tag: tag])
+        }
       end
-      json.to ["https://www.w3.org/ns/activitystreams#Public"]
-      json.cc [commenter.actor.followers_url]
-    end
+    : nil
+    tag_html = tags&.pluck(:name)&.join(" ")
+    # Comments become Notes in ActvityPub world
+    {
+      id: federated_url,
+      type: "Note",
+      content: [
+        Kramdown::Document.new(comment).to_html,
+        tag_html
+      ].compact.join("\n\n"),
+      context: Rails.application.routes.url_helpers.url_for([commentable, only_path: false]),
+      published: created_at&.iso8601,
+      attributedTo: (commenter&.actor&.respond_to?(:federated_url) ? commenter.actor.federated_url : nil),
+      to: ["https://www.w3.org/ns/activitystreams#Public"],
+      cc: [commenter.actor.followers_url],
+      tags: tags
+    }.compact
   end
 
   def public?
