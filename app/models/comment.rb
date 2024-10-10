@@ -6,7 +6,6 @@ class Comment < ApplicationRecord
 
   after_create :post_create_activity
   after_update :post_update_activity
-  after_destroy :post_destroy_activity
 
   def federated_url
     return nil unless public?
