@@ -9,6 +9,10 @@ module CaberObject
     accepts_nested_attributes_for :caber_relations, reject_if: :all_blank, allow_destroy: true
 
     after_create :assign_default_permissions
+
+    def self.caber_owner(subject)
+      {caber_relations_attributes: [{permission: "own", subject: subject}]}
+    end
   end
 
   def assign_default_permissions
