@@ -76,7 +76,7 @@ class ApplicationPolicy
   private
 
   def check_permissions(record, permissions, user, role_fallback: nil)
-    record.grants_permission_to?(permissions, [user, user&.roles])
+    record.grants_permission_to?(permissions, [user, user&.roles].flatten)
   rescue NoMethodError
     user&.has_role?(role_fallback)
   end
