@@ -15,5 +15,6 @@ shared_examples "Caber::Object" do
   it "can be given an explicit owner at creation" do # rubocop:disable RSpec/MultipleExpectations, RSpec/ExampleLength
     object = create(described_class.to_s.underscore.to_sym, described_class.caber_owner(contributor))
     expect(object.grants_permission_to?("own", contributor)).to be true
+    expect(object.grants_permission_to?("own", admin)).to be false
   end
 end
