@@ -9,9 +9,14 @@ class FollowButtonComponent < ViewComponent::Base
   end
 
   def before_render
-    @path = url_for(@target) + "/follows"
-    @method = @following ? :delete : :post
     @i18n_key = @following ? ".unfollow" : ".follow"
+    if @signed_out
+      @path = remote_follow_path uri: @target.actor.federated_url
+      @method = :post
+    else
+      @path = url_for(@target) + "/follows"
+      @method = @following ? :delete : :post
+    end
   end
 
   def render?
