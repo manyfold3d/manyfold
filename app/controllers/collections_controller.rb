@@ -53,7 +53,7 @@ class CollectionsController < ApplicationController
 
   def create
     authorize Collection
-    @collection = Collection.create(collection_params)
+    @collection = Collection.create(collection_params.merge(Collection.caber_owner(current_user)))
     if session[:return_after_new]
       redirect_to session[:return_after_new] + "?new_collection=#{@collection.to_param}", notice: t(".success")
       session[:return_after_new] = nil

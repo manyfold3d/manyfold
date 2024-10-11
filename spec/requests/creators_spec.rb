@@ -39,6 +39,12 @@ RSpec.describe "Creators" do
         expect(response).to redirect_to("/creators")
       end
 
+      it "creates a new creator owned by the current user", :as_contributor do # rubocop:disable RSpec/MultipleExpectations
+        post "/creators", params: {creator: {name: "newname"}}
+        object = Creator.find_by(name: "newname")
+        expect(object.grants_permission_to?("own", controller.current_user)).to be true
+      end
+
       it "creates a new creator and redirects to return location if set", :as_contributor do
         model = Model.first
         allow_any_instance_of(CreatorsController).to receive(:session).and_return({return_after_new: edit_model_path(model)}) # rubocop:disable RSpec/AnyInstance
