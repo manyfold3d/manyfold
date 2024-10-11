@@ -52,10 +52,15 @@ class Model < ApplicationRecord
     relative_path = Pathname.new(path).relative_path_from(Pathname.new(target.path))
     # Move files
     model_files.each do |f|
-      f.update(
-        filename: File.join(relative_path, f.filename),
-        model: target
-      )
+      new_filename = File.join(relative_path, f.filename)
+      if target.model_files.exists?(filename: new_filename)
+        f.delete # Don't run callbacks, just remove the database record
+      else
+        f.update(
+          filename: new_filename,
+          model: target
+        )
+      end
     end
     Scan::CheckModelIntegrityJob.set(wait: 5.seconds).perform_later(target.id)
     reload
