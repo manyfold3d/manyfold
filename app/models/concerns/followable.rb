@@ -27,7 +27,7 @@ module Followable
   end
 
   def followable_post_update_activity
-    followable_post_activity("Update") unless Federails::Activity.exists?(entity: self, created_at: TIMEOUT.minutes.ago..)
+    followable_post_activity("Update") unless Federails::Activity.exists?(entity: actor, created_at: TIMEOUT.minutes.ago..)
   end
 
   def followable_post_activity(action)
@@ -36,7 +36,7 @@ module Followable
     Federails::Activity.create!(
       actor: user.actor,
       action: action,
-      entity: self,
+      entity: actor,
       created_at: updated_at
     )
   end
