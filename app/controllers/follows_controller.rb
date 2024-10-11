@@ -1,7 +1,7 @@
 class FollowsController < ApplicationController
-  before_action :get_target, except: [:new]
+  before_action :get_target, except: [:new, :remote, :redirect_remote]
 
-  # Remote follow
+  # Incoming remote follow
   def new
     actor = Federails::Actor.find_by_federation_url(params[:uri]) # rubocop:disable Rails/DynamicFindBy
     if actor&.entity
@@ -9,6 +9,14 @@ class FollowsController < ApplicationController
     else
       raise ActiveRecord::RecordNotFound
     end
+  end
+
+  # Outgoing remote follow - ask for target account
+  def remote
+  end
+
+  # Outgoing remote follow - perform webfinger, then redirect
+  def redirect_remote
   end
 
   def create

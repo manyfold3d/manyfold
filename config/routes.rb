@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   end
 
   get "/authorize_interaction" => "follows#new", :as => :new_follow
+  post "/remote_interaction" => "follows#remote", :as => :remote_follow
+  post "/remote_interaction" => "follows#redirect_remote", :as => :perform_remote_follow
 
   concern :followable do |options|
     if SiteSettings.multiuser_enabled?
