@@ -144,7 +144,7 @@ ignore_unused:
 - 'problems.model_file.*'
 - 'problems.severities.*'
 - 'application.caber_relation_fields.permissions.*'
-- 'follow_button.*' # Used in follow button component
+- 'follow_button_component.*' # Used in follow button component
 - 'active_admin.exit' # Used in initializer, not detected automatically
 - 'devise.*' # Used deep down
 - 'renderer.errors.*' # Used client side via i18n-js
