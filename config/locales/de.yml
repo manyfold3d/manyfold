@@ -254,7 +254,7 @@ de:
     tags_card:
       skip_tags: Tag-Liste überspringen
     title: Manyfold
-  follow_button:
+  follow_button_component:
     follow: Folge %{name}
     unfollow: "%{name} nicht mehr Folgen"
   general:

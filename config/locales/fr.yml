@@ -254,7 +254,7 @@ fr:
     tags_card:
       skip_tags: Sauter la liste des balises
     title: Manyfold
-  follow_button:
+  follow_button_component:
     follow:
     unfollow:
   general:

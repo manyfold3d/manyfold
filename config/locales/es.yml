@@ -258,7 +258,7 @@ es:
     tags_card:
       skip_tags: Saltar lista de etiquetas
     title: Manyfold
-  follow_button:
+  follow_button_component:
     follow: Seguir a %{name}
     unfollow: Dejar de seguir a %{name}
   general:

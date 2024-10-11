@@ -254,7 +254,7 @@ pl:
     tags_card:
       skip_tags: Pomiń listę tagów
     title: Manyfold
-  follow_button:
+  follow_button_component:
     follow: Obserwuj %{name}
     unfollow: Przestań obserwować %{name}
   general:
