@@ -1,0 +1,23 @@
+<h2><%= t(".title", name: @name) %></h2>
+<p>
+  <%= t(".help", name: @name) %>
+</p>
+
+<% if @remote_account %>
+  <div class="alert alert-info">
+    <%= icon "person-arms-up", "" %>
+    <%= t(".no_results_html", query: @remote_account) %>
+  </div>
+<% end %>
+
+<div class="col-8">
+  <%= form_with url: perform_remote_follow_path, class: "mt-3" do |f| %>
+    <div class="input-group mb-3">
+      <%= f.hidden_field :uri, value: @uri %>
+      <%= f.hidden_field :name, value: @name %>
+      <%= f.text_field :remote_account, class: "form-control", placeholder: translate(".placeholder"),
+            aria_label: translate(".submit"), aria_describedby: "button-search", value: @remote_account %>
+      <%= f.submit translate(".submit"), class: "btn btn-primary", name: nil %>
+    </div>
+  <% end %>
+</div>
