@@ -22,8 +22,8 @@ class ProcessUploadedFileJob < ApplicationJob
     new_file = nil
     ActiveRecord::Base.transaction do
       if model.nil?
+        data.merge!(Model.caber_owner(owner)) if owner
         model = library.models.create!(data)
-        model.grant_permission_to "own", owner
         model.organize!
         new_model = true
       end
