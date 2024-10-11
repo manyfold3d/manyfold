@@ -101,8 +101,9 @@ RSpec.describe Model do
   context "when nested inside another" do
     around do |ex|
       MockDirectory.create([
-        "parent/part.stl",
-        "parent/child/part.stl"
+        "parent/parent_part.stl",
+        "parent/child/child_part.stl",
+        "parent/child/duplicate.stl"
       ]) do |path|
         @library_path = path
         ex.run
@@ -128,10 +129,10 @@ RSpec.describe Model do
 
     context "when merging into parent" do
       it "moves files" do # rubocop:todo RSpec/MultipleExpectations
-        file = create(:model_file, model: child, filename: "part.stl")
+        file = create(:model_file, model: child, filename: "child_part.stl")
         child.merge_into! parent
         file.reload
-        expect(file.filename).to eql "child/part.stl"
+        expect(file.filename).to eql "child/child_part.stl"
         expect(file.model).to eql parent
       end
 
@@ -139,6 +140,33 @@ RSpec.describe Model do
         expect {
           child.merge_into! parent
         }.to change(described_class, :count).from(2).to(1)
+      end
+    end
+
+    context "when merging models that have duplicated files" do
+      before do
+        create(:model_file, model: parent, filename: "parent_part.stl")
+        create(:model_file, model: parent, filename: "child/duplicate.stl")
+        create(:model_file, model: child, filename: "duplicate.stl")
+        create(:model_file, model: child, filename: "child_part.stl")
+      end
+
+      it "removes duplicated file" do
+        expect {
+          child.merge_into! parent
+        }.to change(ModelFile, :count).by(-1)
+      end
+
+      it "rehomes distinct file" do
+        child.merge_into! parent
+        expect(parent.model_files.exists?(filename: "child/child_part.stl")).to be true
+      end
+
+      it "keeps all real files intact" do
+        child.merge_into! parent
+        parent.model_files.each do |file|
+          expect(file.exists_on_storage?).to be true
+        end
       end
     end
   end
