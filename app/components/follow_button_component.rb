@@ -2,6 +2,7 @@
 
 class FollowButtonComponent < ViewComponent::Base
   def initialize(follower:, target:, name: nil)
+    @signed_out = follower.nil?
     @target = target
     @following = follower&.following? target
     @name = name
@@ -14,10 +15,20 @@ class FollowButtonComponent < ViewComponent::Base
   end
 
   def render?
-    (SiteSettings.multiuser_enabled? || SiteSettings.federation_enabled?) && helpers.policy(Federails::Following).create?
+    social_enabled? && (helpers.policy(Federails::Following).create? || remote_follow_allowed?)
   end
 
   erb_template <<-ERB
     <%= button_to translate(@i18n_key, name: @name), @path, method: @method, class: "btn btn-primary" %>
   ERB
+
+  private
+
+  def social_enabled?
+    SiteSettings.multiuser_enabled? || SiteSettings.federation_enabled?
+  end
+
+  def remote_follow_allowed?
+    SiteSettings.federation_enabled? && @signed_out
+  end
 end
