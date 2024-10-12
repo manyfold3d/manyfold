@@ -1,0 +1,30 @@
+<h2><%= t(".title") %></h2>
+<p>
+  <%= t(".help") %>
+</p>
+
+<div class="col-8">
+  <%= form_with url: new_follow_path, method: :get, class: "mt-3" do |f| %>
+    <div class="input-group mb-3">
+      <%= f.text_field :uri, class: "form-control", placeholder: translate(".search.placeholder"), aria_label: translate(".search.submit"), aria_describedby: "button-search", value: @query %>
+      <%= f.submit translate(".search.submit"), class: "btn btn-primary", name: nil %>
+    </div>
+  <% end %>
+</div>
+
+<% if @query %>
+
+  <h3><%= t(".results") %></h3>
+  <% if @actor %>
+    <div class="row">
+      <div class="col"><%= @actor.name %></div>
+      <div class="col"><%= @actor.at_address %></div>
+      <div class="col"><%= render FollowButtonComponent.new(follower: current_user, target: @actor) %></div>
+    </div>
+  <% else %>
+    <div class="alert alert-info">
+      <%= icon "person-arms-up", "" %>
+      <%= t(".no_results", query: @query) %>
+    </div>
+  <% end %>
+<% end %>

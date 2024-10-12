@@ -1,15 +1,27 @@
 class FollowsController < ApplicationController
-  before_action :get_target, except: [:new, :remote_follow, :perform_remote_follow]
-  skip_after_action :verify_authorized, only: [:remote_follow, :perform_remote_follow]
+  before_action :get_target, except: [:index, :new, :remote_follow, :perform_remote_follow, :follow_remote_actor]
+  skip_after_action :verify_policy_scoped, only: :index
+  skip_after_action :verify_authorized, only: [:new, :remote_follow, :perform_remote_follow]
+
+  def index
+    authorize Federails::Following
+    render :new
+  end
 
   # Incoming remote follow
   def new
-    actor = Federails::Actor.find_by_federation_url(params[:uri]) # rubocop:disable Rails/DynamicFindBy
-    if actor&.entity
-      redirect_to actor.entity
+    @query = params[:uri].gsub(/\A@/, "")
+    @actor = if @query.starts_with?(%r{https?://})
+      Federails::Actor.find_by_federation_url @query # rubocop:disable RSpec/DynamicFindBy
     else
-      raise ActiveRecord::RecordNotFound
+      Federails::Actor.find_by_account @query # rubocop:disable RSpec/DynamicFindBy
     end
+    @actor = Federails::Actor.find_or_create_by_federation_url @actor.federated_url
+    # If local, go to the real thing
+    # This will happen if anyone comes here from a remote follow
+    redirect_to url_for(@actor.entity) if @actor&.local?
+    # If not local, we show a follow button and some details of the account
+  rescue ActiveRecord::RecordNotFound
   end
 
   # Outgoing remote follow - ask for target account
@@ -28,6 +40,13 @@ class FollowsController < ApplicationController
     @uri = params[:uri]
     @remote_account = params[:remote_account]
     render :remote_follow
+  end
+
+  def follow_remote_actor
+    authorize Federails::Following, :create?
+    @actor = Federails::Actor.find_param(params[:id])
+    current_user.follow(@actor)
+    redirect_to root_url, notice: t(".followed", actor: @actor.at_address)
   end
 
   def create
