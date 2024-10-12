@@ -31,9 +31,6 @@
       </ul>
       <ul class="navbar-nav col-6 pe-4 align-self-start justify-content-end">
         <li class="nav-item">
-          <%= nav_link "plus-circle", t("libraries.general.new"), new_library_path, text_style: "d-lg-none" if policy(:library).new? %>
-        </li>
-        <li class="nav-item">
           <%= nav_link "upload", t(".upload"), new_model_path, style: "btn btn-warning btn-sm me-1 mt-lg-1" if policy(:upload).index? %>
         </li>
         <li class="nav-item">

@@ -1,73 +1,73 @@
 <div class="card mb-2">
   <h3 class="card-header"><%= t(".heading") %></h3>
   <div class="card-body">
+    <%= link_to t("libraries.general.new"), new_library_path, class: "btn btn-secondary float-end" if policy(:library).new? %>
     <p class='lead'>
       <%= t(".description") %>
     </p>
-    <ul class="list-unstyled">
-    <% Library.find_each do |library| %>
-        <li><details><summary><%= library.name %></summary>
-        <div class="card-body">
-          <div class="row">
-            <%= content_tag(:span, t("activerecord.attributes.library.name"), class: "col-sm") %>
-            <%= content_tag(:span, library.name, class: "col-sm-10") %>
+    <div class="row">
+      <% Library.find_each do |library| %>
+       <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <%= icon library.icon, library.icon %>
+            <%= library.name %>
           </div>
-          <% if library.free_space %>
-            <div class="row">
-              <%= content_tag(:span, t(".free_space.label"), class: "col-sm") %>
-              <%= content_tag(:span, number_to_human_size(library.free_space, precision: 2), class: "col-sm-10") %>
-            </div>
-          <% end %>
-          <div class="row input-group">
-            <%= content_tag(:span, t("activerecord.attributes.library.storage_service"), class: "col-sm") %>
-            <%= content_tag(:span, t("libraries.storage_services.%{service}" % {service: library.storage_service}), class: "col-sm-10") %>
-          </div>
-          <% if library.storage_service == "filesystem" %>
-            <div class="row input-group">
-              <%= content_tag(:span, t("activerecord.attributes.library.path"), class: "col-sm") %>
-              <%= content_tag(:span, library.path, class: "col-sm-10") %>
-            </div>
-          <% end %>
-          <% if library.storage_service == "s3" %>
-            <div class="row input-group">
-              <%= content_tag(:span, t("activerecord.attributes.library.s3_endpoint"), class: "col-sm") %>
-              <%= content_tag(:span, library.s3_endpoint, class: "col-sm-10") %>
-            </div>
-            <div class="row input-group">
-              <%= content_tag(:span, t("activerecord.attributes.library.s3_bucket"), class: "col-sm") %>
-              <%= content_tag(:span, library.s3_bucket, class: "col-sm-10") %>
-            </div>
-            <div class="row input-group">
-              <%= content_tag(:span, t("activerecord.attributes.library.s3_region"), class: "col-sm") %>
-              <%= content_tag(:span, library.s3_region, class: "col-sm-10") %>
-            </div>
-          <% end %>
-          <div class="row input-group">
-            <%= content_tag(:span, t("activerecord.attributes.library.caption"), class: "col-sm") %>
-            <%= content_tag(:span, library.caption, class: "col-sm-10") %>
-          </div>
-          <div class="row input-group">
-            <%= content_tag(:span, t("activerecord.attributes.library.icon"), class: "col-sm") %>
-            <%= content_tag(:span, library.icon, class: "col-sm-10") %>
-          </div>
-          <div class="row input-group">
-            <%= content_tag(:span, t("activerecord.attributes.library.notes"), class: "col-sm") %>
-            <%= content_tag(:div, markdownify(library.notes), class: "col-sm-10") %>
-          </div>
-          <div class="row input-group">
-            <%= content_tag(:span, t("activerecord.attributes.library.tag_regex"), class: "col-sm") %>
-            <div class="col-sm-10">
-              <% library.tag_regex.each do |reg| %>
-                <%= link_to t(".tag_regex.check"), models_path(library: library, missingtag: reg), {class: "btn btn-outline-secondary"} %>
-                <%= content_tag(:span, reg, class: "col-sm-10") %><br>
+          <div class="card-body">
+            <%= link_to t("general.edit"), edit_library_path(library), {class: "btn btn-secondary float-end #{policy(:library).edit? ? "" : "disabled"}"} %>
+            <p>
+              <%= markdownify(library.notes) %>
+            </p>
+            <table class="table">
+              <tr>
+                <td><%= t("activerecord.attributes.library.storage_service") %></td>
+                <td><%= t("libraries.storage_services.%{service}" % {service: library.storage_service}) %></td>
+              </tr>
+              <% if library.storage_service == "filesystem" %>
+                <tr>
+                  <td><%= t("activerecord.attributes.library.path") %></td>
+                  <td><code style="word-break: break-all"><%= library.path %></code></td>
+                </tr>
               <% end %>
-            </div>
+              <% if library.storage_service == "s3" %>
+                <tr>
+                  <td><%= t("activerecord.attributes.library.s3_endpoint") %></td>
+                  <td><%= library.s3_endpoint %></td>
+                </tr>
+                <tr>
+                  <td><%= t("activerecord.attributes.library.s3_bucket") %></td>
+                  <td><%= library.s3_bucket %></td>
+                </tr>
+                <tr>
+                  <td><%= t("activerecord.attributes.library.s3_region") %></td>
+                  <td><%= library.s3_region %></td>
+                </tr>
+              <% end %>
+              <% if library.free_space %>
+                <tr>
+                  <td><%= t(".free_space.label") %></td>
+                  <td><%= number_to_human_size(library.free_space, precision: 2) %></td>
+                </tr>
+              <% end %>
+              <tr>
+                <td><%= t("activerecord.attributes.library.caption") %></td>
+                <td><%= library.caption %></td>
+              </tr>
+              <tr>
+                <td><%= t("activerecord.attributes.library.tag_regex") %></td>
+                <td>
+                  <% library.tag_regex.each do |reg| %>
+                    <%= link_to t(".tag_regex.check"), models_path(library: library, missingtag: reg), {class: "btn btn-outline-secondary"} %>
+                    <code><%= reg %></code><br>
+                  <% end %>
+                  <%= if !library.tag_regex.empty? then link_to t(".tag_regex.search_missing"), models_path(library: library, missingtag: ""), {class: "btn btn-outline-secondary"} end %>
+                </td>
+              </tr>
+            </table>
           </div>
-          <%= if !library.tag_regex.empty? then link_to t(".tag_regex.search_missing"), models_path(library: library, missingtag: ""), {class: "btn btn-outline-secondary"} end %>
-          <%= link_to t("general.edit"), edit_library_path(library), {class: "btn btn-outline-secondary, #{policy(:library).edit? ? "" : "disabled"}"} %>
-        </div></li>
-    <% end %>
-    </ul>
-
+        </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
