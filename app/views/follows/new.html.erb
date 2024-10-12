@@ -13,9 +13,14 @@
 </div>
 
 <% if @query %>
+
+	<h3><%= t(".results") %></h3>
 	<% if @actor %>
-		<%= @actor.inspect %>
-		<%= render FollowButtonComponent.new(follower: current_user, target: @actor, name: @actor.name) %>
+		<div class="row">
+			<div class="col"><%= @actor.name %></div>
+			<div class="col"><%= @actor.at_address %></div>
+			<div class="col"><%= render FollowButtonComponent.new(follower: current_user, target: @actor) %></div>
+		</div>
 	<% else %>
     <div class="alert alert-info">
       <%= icon "person-arms-up", "" %>

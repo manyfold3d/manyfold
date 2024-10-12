@@ -269,19 +269,20 @@ en:
     follow: Follow %{name}
     unfollow: Unfollow %{name}
   follows:
+    new:
+      help: You can follow public creators, collections or models on another Manyfold server, in fact any public account in the Fediverse! Just enter the account name in the search box!
+      no_results: Sorry, couldn't find anything for "%{query}". Is it a valid ActivityPub account or URL?
+      results: Search Results
+      search:
+        placeholder: Enter a Fediverse account or URL, e.g. admin@try.manyfold.app
+        submit: Search
+      title: Follow the Fediverse
     remote_follow:
       help: You don't need an account on this server to follow %{name}; enter your own account name here, and we'll send you home to complete the process.
       no_results_html: We couldn't find your home account; did you enter it correctly?
       placeholder: Your Fediverse username, e.g. manyfold@3dp.chat
       submit: Take me home
       title: Follow %{name}
-    new:
-      help: You can follow public creators, collections or models on another Manyfold server, in fact any public account in the Fediverse! Just enter the account name in the search box!
-      no_results: Sorry, couldn't find anything for "%{query}". Is it a valid ActivityPub account or URL?
-      search:
-        placeholder: Enter a Fediverse account or URL, e.g. admin@try.manyfold.app
-        submit: Search
-      title: Follow the Fediverse
   general:
     delete: Delete
     download: Download
