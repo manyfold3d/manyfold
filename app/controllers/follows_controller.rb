@@ -1,7 +1,7 @@
 class FollowsController < ApplicationController
-  before_action :get_target, except: [:index, :new, :remote_follow, :perform_remote_follow]
+  before_action :get_target, except: [:index, :new, :remote_follow, :perform_remote_follow, :follow_remote_actor]
   skip_after_action :verify_policy_scoped, only: :index
-  skip_after_action :verify_authorized, only: [:new, :remote_follow, :perform_remote_follow]
+  skip_after_action :verify_authorized, only: [:new, :remote_follow, :perform_remote_follow, :follow_remote_actor]
 
   def index
     render :new
@@ -39,6 +39,12 @@ class FollowsController < ApplicationController
     @uri = params[:uri]
     @remote_account = params[:remote_account]
     render :remote_follow
+  end
+
+  def follow_remote_actor
+    @actor = Federails::Actor.find_param(params[:id])
+    current_user.follow(@actor)
+    redirect_to root_url, notice: t(".followed", actor: @actor.at_address)
   end
 
   def create
