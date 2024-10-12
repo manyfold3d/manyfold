@@ -1,6 +1,7 @@
 <div class="card mb-2">
   <h3 class="card-header"><%= t(".heading") %></h3>
   <div class="card-body">
+    <%= link_to t("libraries.general.new"), new_library_path, class: "btn btn-secondary float-end" if policy(:library).new? %>
     <p class='lead'>
       <%= t(".description") %>
     </p>
