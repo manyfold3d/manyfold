@@ -70,6 +70,9 @@
             </li>
           <% end %>
           <li class="nav-item">
+            <%= nav_link "search-heart", t("follows.new.title"), follow_path, text_style: "d-lg-none" if SiteSettings.federation_enabled? && policy(Federails::Following).new? %>
+          </li>
+          <li class="nav-item">
             <%= nav_link "sliders", t(".settings"), user_settings_path(current_user), text_style: "d-lg-none" %>
           </li>
         <% end %>
