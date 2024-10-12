@@ -23,6 +23,7 @@ module Follower
   def following?(target)
     # follows? gives us the relationship or false if it doesn't exist,
     # so we turn that into a normal boolean
-    actor&.follows?(target.actor)&.is_a?(Federails::Following)
+    tgt = target.is_a?(Federails::Actor) ? target : target.actor
+    actor&.follows?(tgt)&.is_a?(Federails::Following)
   end
 end
