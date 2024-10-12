@@ -227,7 +227,7 @@ pl:
     link_fields:
       url:
         delete: Usuń
-        placeholder:
+        placeholder: Dowolna powiązana strona internetowa
     links_form:
       add: dodaj kolejny link
     navbar:
@@ -257,6 +257,23 @@ pl:
   follow_button_component:
     follow: Obserwuj %{name}
     unfollow: Przestań obserwować %{name}
+  follows:
+    follow_remote_actor:
+      followed:
+    new:
+      help:
+      no_results:
+      results:
+      search:
+        placeholder:
+        submit: Wyszukaj
+      title:
+    remote_follow:
+      help:
+      no_results_html:
+      placeholder:
+      submit:
+      title: Obserwuj %{name}
   general:
     delete: Usuń
     download: Pobierz
@@ -276,7 +293,7 @@ pl:
   jobs:
     activity:
       creator_added_model:
-        comment:
+        comment: 'Właśnie dodałem(-am) nowy model: ["%{model_name}"](%{url})'
     analysis:
       analyse_model_file:
         detect_duplicates: Wykrywanie zduplikowanych plików
