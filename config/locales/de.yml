@@ -227,7 +227,7 @@ de:
     link_fields:
       url:
         delete: Löschen
-        placeholder:
+        placeholder: Jede verwandte Webseite
     links_form:
       add: Füge einen Link hinzu
     navbar:
@@ -257,6 +257,23 @@ de:
   follow_button_component:
     follow: Folge %{name}
     unfollow: "%{name} nicht mehr Folgen"
+  follows:
+    follow_remote_actor:
+      followed:
+    new:
+      help:
+      no_results:
+      results:
+      search:
+        placeholder:
+        submit: Suche
+      title:
+    remote_follow:
+      help:
+      no_results_html:
+      placeholder:
+      submit:
+      title: Folge %{name}
   general:
     delete: Löschen
     download: Herunterladen
@@ -276,7 +293,7 @@ de:
   jobs:
     activity:
       creator_added_model:
-        comment:
+        comment: 'Ich habe gerade ein neues Modell hinzugefügt: ["%{model_name}"](%{url})'
     analysis:
       analyse_model_file:
         detect_duplicates: Doppelte Datei erkannt

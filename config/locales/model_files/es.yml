@@ -6,7 +6,7 @@ es:
       form_subtitle: 'Seleccione los cambios a realizar:'
       select: Seleccionar fichero '%{name}'
       select_all: Seleccionar todos los archivos
-      split:
+      split: Dividir los archivos seleccionados en un nuevo modelo
       submit: Actualizar archivos seleccionados
       title: Edición masiva de archivos
     bulk_update:

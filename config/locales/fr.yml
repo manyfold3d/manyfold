@@ -257,6 +257,23 @@ fr:
   follow_button_component:
     follow:
     unfollow:
+  follows:
+    follow_remote_actor:
+      followed:
+    new:
+      help:
+      no_results:
+      results:
+      search:
+        placeholder:
+        submit: Recherche
+      title:
+    remote_follow:
+      help:
+      no_results_html:
+      placeholder:
+      submit:
+      title:
   general:
     delete: Supprimer
     download: Télécharger
