@@ -43,7 +43,7 @@ class FollowsController < ApplicationController
   end
 
   def follow_remote_actor
-    authorize Federails::Following
+    authorize Federails::Following, :create?
     @actor = Federails::Actor.find_param(params[:id])
     current_user.follow(@actor)
     redirect_to root_url, notice: t(".followed", actor: @actor.at_address)
