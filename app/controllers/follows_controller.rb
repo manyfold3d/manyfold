@@ -10,6 +10,16 @@ class FollowsController < ApplicationController
   # Incoming remote follow
   def new
     @query = params[:uri].gsub(/\A@/, "")
+    response = if @query.starts_with?(%r{https?://})
+      Federails::Actor.find_by_federation_url @query # rubocop:disable Rails/DynamicFindBy
+    end
+    if response
+      @actor = Federails::Actor.find_or_create_by_federation_url(response.federated_url)
+    end
+    # If local, go to the real thing
+    # This will happen if anyone comes here from a remote follow
+    redirect_to url_for(@actor.entity) if @actor&.local?
+    # If not local, we show a follow button and some details of the account
   end
 
   # Outgoing remote follow - ask for target account
