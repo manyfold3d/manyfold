@@ -12,7 +12,7 @@ module Follower
   end
 
   def follow(target)
-    following_follows.create(target_actor: target.actor)
+    following_follows.create(target_actor: target.is_a?(Federails::Actor) ? target : target.actor)
   end
 
   def unfollow(target)
