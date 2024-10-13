@@ -259,20 +259,20 @@ pl:
     unfollow: Przestań obserwować %{name}
   follows:
     follow_remote_actor:
-      followed:
+      followed: Pomyślnie zaczęto obserwować %{actor}
     new:
-      help:
-      no_results:
-      results:
+      help: Możesz obserwować publicznych twórców, kolekcje lub modele na innym serwerze Manyfold, a nawet każde publiczne konto w Fediverse! Wystarczy, że wpiszesz nazwę konta w polu wyszukiwania!
+      no_results: Przepraszamy, nie mogliśmy znaleźć niczego dla "%{query}". Czy jest to prawidłowe konto ActivityPub lub adres URL?
+      results: Wyniki wyszukiwania
       search:
-        placeholder:
+        placeholder: Wprowadź konto Fediverse lub adres URL, np. admin@try.manyfold.app
         submit: Wyszukaj
-      title:
+      title: Śledź Fediverse
     remote_follow:
-      help:
-      no_results_html:
-      placeholder:
-      submit:
+      help: Nie potrzebujesz konta na tym serwerze, aby obserwować %{name}; wprowadź tutaj nazwę swojego konta, a my odeślemy Cię do domu, aby zakończyć proces.
+      no_results_html: Nie mogliśmy znaleźć Twojego konta domowego; czy wprowadziłeś je poprawnie?
+      placeholder: Twoja nazwa użytkownika Fediverse, np. manyfold@3dp.chat
+      submit: Zabierz mnie do domu
       title: Obserwuj %{name}
   general:
     delete: Usuń

@@ -29,7 +29,7 @@ de:
       model:
         caption: Beschreibung
         collection_id: Kollektion
-        creator_id: Ersteller
+        creator_id: Autor
         library_id: Sammlung
         license: Lizenz
         name: Name
@@ -117,12 +117,12 @@ de:
         two: Kollektionen
         zero: Kollektionen
       creator:
-        few: Ersteller
-        many: Ersteller
-        one: Ersteller
-        other: Ersteller
-        two: Ersteller
-        zero: Ersteller
+        few: Autoren
+        many: Autor
+        one: Autor
+        other: Autoren
+        two: Autoren
+        zero: Autoren
       library:
         few: Sammlungen
         many: Sammlungen
@@ -259,20 +259,20 @@ de:
     unfollow: "%{name} nicht mehr Folgen"
   follows:
     follow_remote_actor:
-      followed:
+      followed: Erfolgreich %{actor} gefolgt
     new:
-      help:
-      no_results:
-      results:
+      help: Du kannst öffentlichen Authoren, Sammlungen oder Modellen auf einem anderen Manyfold-Server folgen, und zwar jedem öffentlichen Konto im Fediverse! Gib einfach den Namen des Accounts in das Suchfeld ein!
+      no_results: Ich konnte leider nichts zu "%{query}" finden. Handelt es sich um ein gültiges ActivityPub-Konto oder eine URL?
+      results: Suchergebnisse
       search:
-        placeholder:
+        placeholder: Gib ein Fediverse-Konto oder eine URL ein, z. B. admin@try.manyfold.app
         submit: Suche
-      title:
+      title: Folge dem Fediverse
     remote_follow:
-      help:
-      no_results_html:
-      placeholder:
-      submit:
+      help: Du brauchst kein Konto auf diesem Server, um %{name} zu folgen; gib hier deinen eigenen Kontonamen ein, und wir schicken Sie nach Hause, um den Vorgang abzuschließen.
+      no_results_html: Wir konnten dein Privatkonto nicht finden; hast du es richtig angegeben?
+      placeholder: dein Fediverse-Benutzername, z. B. manyfold@3dp.chat
+      submit: Bring mich nach Hause
       title: Folge %{name}
   general:
     delete: Löschen
