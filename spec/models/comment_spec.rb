@@ -71,7 +71,7 @@ RSpec.describe Comment do
 
       it "includes tags as mentions" do # rubocop:disable RSpec/ExampleLength
         {"tag+one": "#TagOne", tag2: "#Tag2"}.each_pair do |link, hashtag|
-          expect(ap_object[:tags]).to include(
+          expect(ap_object[:tag]).to include(
             type: "Hashtag",
             href: "http://localhost:3214/models?tag=#{link}",
             name: hashtag
