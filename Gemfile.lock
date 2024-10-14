@@ -31,10 +31,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails.git
-  revision: 3c77b61774a7d9c21dd3704d6d1a28b7f228fadb
+  revision: bfe2192c1c64d619e8dd2e1e5d8d7dee8c4db12f
   branch: main
   specs:
-    federails (0.1.0)
+    federails (0.2.0)
       faraday
       faraday-follow_redirects
       json-ld (>= 3.2.0)
@@ -398,7 +398,7 @@ GEM
     nenv (0.3.0)
     net-http (0.4.1)
       uri
-    net-imap (0.4.16)
+    net-imap (0.4.17)
       date
       net-protocol
     net-pop (0.1.2)
@@ -444,7 +444,7 @@ GEM
       activesupport (>= 3.0.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (2.2.9)
+    rack (2.2.10)
     rack-contrib (2.5.0)
       rack (< 4)
     rack-session (1.0.2)
@@ -674,7 +674,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.18)
+    zeitwerk (2.7.0)
     zxcvbn (0.1.10)
 
 PLATFORMS
