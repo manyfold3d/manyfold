@@ -87,9 +87,10 @@ RSpec.describe PathParser do
       "{creator}" => %r{^/?.*?(?<creator>[[:print:]&&[^/]]*?)$},
       "{collection}" => %r{^/?.*?(?<collection>[[:print:]&&[^/]]*?)$},
       "{tags}/{creator}" => %r{^/?.*?(?<tags>[[:print:]]*)/(?<creator>[[:print:]&&[^/]]*?)$},
-      "{tags}/{creator}/{modelName}{modelId}" => %r{^/?.*?(?<tags>[[:print:]]*)/(?<creator>[[:print:]&&[^/]]*?)/(?<model_name>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
-      "@{creator}{modelId}" => %r{^/?.*?@(?<creator>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
-      "{creator}/{collection}/{tags}/{modelName}{modelId}" => %r{^/?.*?(?<creator>[[:print:]&&[^/]]*?)/(?<collection>[[:print:]&&[^/]]*?)/(?<tags>[[:print:]]*)/(?<model_name>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$}
+      "{tags}/{creator}/{modelName}{modelId}" => %r{^/?.*?(?<tags>[[:print:]]*)/(?<creator>[[:print:]&&[^/]]*?)/(?<model_name>[[:print:]&&[^/]]*?)?$},
+      "{tags}/{creator}/{modelName}/{modelId}" => %r{^/?.*?(?<tags>[[:print:]]*)/(?<creator>[[:print:]&&[^/]]*?)/(?<model_name>[[:print:]&&[^/]]*?)?$},
+      "@{creator}{modelId}" => %r{^/?.*?@(?<creator>[[:print:]&&[^/]]*?)(?<model_name>[[:print:]&&[^/]]*?)?$},
+      "{creator}/{collection}/{tags}/{modelName}{modelId}" => %r{^/?.*?(?<creator>[[:print:]&&[^/]]*?)/(?<collection>[[:print:]&&[^/]]*?)/(?<tags>[[:print:]]*)/(?<model_name>[[:print:]&&[^/]]*?)?$}
     }.each_pair do |tag, regexp|
       it "correctly converts #{tag} into a regexp matcher" do
         allow(SiteSettings).to receive(:model_path_template).and_return(tag)
@@ -113,6 +114,11 @@ RSpec.describe PathParser do
       "{tags}/{creator}/{modelName}{modelId}" => {
         creator: "bottom",
         tags: ["top", "middle"],
+        model_name: "prefix - name"
+      },
+      "{collection}/{creator}/{modelName}/{modelId}" => {
+        collection: "middle",
+        creator: "bottom",
         model_name: "prefix - name"
       },
       "{creator}{modelId}" => {
@@ -143,6 +149,13 @@ RSpec.describe PathParser do
       allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}{modelId}")
       model.parse_metadata_from_path
       expect(model.tag_list).to eq ["library 1", "stuff", "tags", "are", "greedy"]
+    end
+
+    it "parses with path seperator between model name and ID" do
+      allow(SiteSettings).to receive(:model_path_template).and_return("{collection}/{creator}/{modelName}/{modelId}")
+      model.parse_metadata_from_path
+      expect(model.creator.name).to eq "Greedy"
+      expect(model.collection.name).to eq "Are"
     end
 
     it "parses creator" do
