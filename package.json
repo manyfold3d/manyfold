@@ -13,7 +13,7 @@
     "@rails/ujs": "^7.1.400",
     "@selectize/selectize": "^0.15.2",
     "@uppy/core": "^4.2.1",
-    "@uppy/dashboard": "^4.1.0",
+    "@uppy/dashboard": "^4.1.1",
     "@uppy/form": "^4.0.0",
     "@uppy/locales": "^4.1.0",
     "@uppy/xhr-upload": "^4.2.1",
