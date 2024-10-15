@@ -266,8 +266,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
 
-  scheme = Rails.application.config.force_ssl ? "https" : "http"
   if Rails.application.config.manyfold_features[:oidc]
+    scheme = Rails.application.config.force_ssl ? "https" : "http"
     issuer_uri = URI.parse(ENV.fetch("OIDC_ISSUER"))
     config.omniauth :openid_connect, {
       name: :openid_connect,
