@@ -272,7 +272,7 @@ Devise.setup do |config|
     config.omniauth :openid_connect, {
       name: :openid_connect,
       issuer: ENV.fetch("OIDC_ISSUER"),
-      scope: [:openid, :email, :preferred_username, :nickname],
+      scope: [:openid, :email, :profile],
       response_type: :code,
       discovery: true,
       client_options: {
