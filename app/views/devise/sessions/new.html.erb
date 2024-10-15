@@ -1,18 +1,28 @@
 <h1><%= t(".sign_in") %></h1>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
+<% if ENV.fetch("FORCE_OIDC", nil) == "enabled" %>
 
-  <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
-  <%= password_input_row form, :password, autocomplete: "current-password" %>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= form.check_box :remember_me %>
-      <%= form.label :remember_me %>
-    </div>
+  <%- if devise_mapping.omniauthable? %>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= button_to t("devise.shared.links.sign_in_with_provider", provider: ENV.fetch("OIDC_NAME", OmniAuth::Utils.camelize(provider))), omniauth_authorize_path(resource_name, provider), method: :post, class: "btn btn-primary", data: {turbo: false} %>
+    <% end %>
   <% end %>
 
-  <%= form.submit translate(".sign_in"), class: "btn btn-primary" %>
-<% end %>
+<% else %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
 
-<%= render "devise/shared/links" %>
+    <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
+    <%= password_input_row form, :password, autocomplete: "current-password" %>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= form.check_box :remember_me %>
+        <%= form.label :remember_me %>
+      </div>
+    <% end %>
+
+    <%= form.submit translate(".sign_in"), class: "btn btn-primary" %>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+<% end %>

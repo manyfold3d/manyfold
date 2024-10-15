@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_09_122540) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_15_090803) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -308,6 +308,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_09_122540) do
     t.string "interface_language"
     t.integer "failed_attempts", default: 0, null: false
     t.datetime "locked_at"
+    t.string "auth_provider"
+    t.string "auth_uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

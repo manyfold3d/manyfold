@@ -13,6 +13,8 @@ class User < ApplicationRecord
     :rememberable, :recoverable,
     :lockable, :timeoutable
 
+  devise :omniauthable, omniauth_providers: %i[openid_connect] if SiteSettings.oidc_enabled?
+
   validates :username,
     presence: true,
     uniqueness: {case_sensitive: false},
@@ -81,6 +83,13 @@ class User < ApplicationRecord
     problem_settings[category.to_s]&.to_sym || Problem::DEFAULT_SEVERITIES[category.to_sym]
   end
 
+  def self.from_omniauth(auth)
+    find_or_create_by(auth_provider: auth.provider, auth_uid: auth.uid) do |user|
+      user.email = auth.info.email
+      user.username = auth.info.preferred_username || auth.info.nickname&.parameterize || auth.info.email.split("@")[0]
+    end
+  end
+
   private
 
   def has_any_role_of?(*args)
@@ -92,6 +101,7 @@ class User < ApplicationRecord
   end
 
   def password_required?
+    return false if auth_provider && auth_uid
     !persisted? || !password.nil? || !password_confirmation.nil?
   end
 

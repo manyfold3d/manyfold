@@ -265,7 +265,26 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+
+  if Rails.application.config.manyfold_features[:oidc]
+    scheme = Rails.application.config.force_ssl ? "https" : "http"
+    issuer_uri = URI.parse(ENV.fetch("OIDC_ISSUER"))
+    config.omniauth :openid_connect, {
+      name: :openid_connect,
+      issuer: ENV.fetch("OIDC_ISSUER"),
+      scope: [:openid, :email, :profile],
+      response_type: :code,
+      discovery: true,
+      client_options: {
+        scheme: issuer_uri.scheme,
+        port: issuer_uri.port,
+        host: issuer_uri.host,
+        identifier: ENV.fetch("OIDC_CLIENT_ID"),
+        secret: ENV.fetch("OIDC_CLIENT_SECRET"),
+        redirect_uri: "#{scheme}://#{[Rails.application.default_url_options[:host], Rails.application.default_url_options[:port]].compact.join(":")}/users/auth/openid_connect/callback"
+      }
+    }
+  end
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

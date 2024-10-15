@@ -21,7 +21,7 @@
 
   <%- if devise_mapping.omniauthable? %>
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= button_to t(".sign_in_with_provider", provider: OmniAuth::Utils.camelize(provider)), omniauth_authorize_path(resource_name, provider), data: {turbo: false} %><br>
+      <%= button_to t(".sign_in_with_provider", provider: ENV.fetch("OIDC_NAME", OmniAuth::Utils.camelize(provider))), omniauth_authorize_path(resource_name, provider), method: :post, class: "btn btn-primary", data: {turbo: false} %>
     <% end %>
   <% end %>
 </div>
