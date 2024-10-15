@@ -1331,12 +1331,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/locales@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "@uppy/locales@npm:4.1.0"
+"@uppy/locales@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "@uppy/locales@npm:4.2.0"
   dependencies:
-    "@uppy/utils": "npm:^6.0.2"
-  checksum: 38fbb1b8e1a3be9b31e7b85df38e28caf51550941c4d38c03cafacbb3b6f2b0793a0af3b3d048850ae0ee27b7c52c2a4807d5512d852be756720d382051f8f8f
+    "@uppy/utils": ^6.0.3
+  checksum: cb6f2b460552252017aedfb5433c7f78e1b67307a00ee2c57f3f2b0d59dbe59536c40f53a5fcd9c753c70176b5896eff2137b370b4626fa7e311cfdf656d7f39
   languageName: node
   linkType: hard
 
@@ -3503,7 +3503,7 @@ __metadata:
     "@uppy/core": ^4.2.1
     "@uppy/dashboard": ^4.1.1
     "@uppy/form": ^4.0.0
-    "@uppy/locales": ^4.1.0
+    "@uppy/locales": ^4.2.0
     "@uppy/xhr-upload": ^4.2.1
     bootstrap: ^5.3.3
     bootstrap-icons: ^1.11.3
