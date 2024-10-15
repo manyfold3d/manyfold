@@ -268,16 +268,19 @@ Devise.setup do |config|
 
   scheme = Rails.application.config.force_ssl ? "https" : "http"
   if Rails.application.config.manyfold_features[:oidc]
+    issuer_uri = URI.parse(ENV.fetch("OIDC_ISSUER"))
     config.omniauth :openid_connect, {
       name: :openid_connect,
-      issuer: "https://#{ENV["OIDC_PROVIDER_HOST"]}/",
+      issuer: ENV.fetch("OIDC_ISSUER"),
       scope: [:openid, :email, :preferred_username, :nickname],
       response_type: :code,
       discovery: true,
       client_options: {
-        host: ENV["OIDC_PROVIDER_HOST"],
-        identifier: ENV["OIDC_CLIENT_ID"],
-        secret: ENV["OIDC_CLIENT_SECRET"],
+        scheme: issuer_uri.scheme,
+        port: issuer_uri.port,
+        host: issuer_uri.host,
+        identifier: ENV.fetch("OIDC_CLIENT_ID"),
+        secret: ENV.fetch("OIDC_CLIENT_SECRET"),
         redirect_uri: "#{scheme}://#{[Rails.application.default_url_options[:host], Rails.application.default_url_options[:port]].compact.join(":")}/users/auth/openid_connect/callback"
       }
     }
