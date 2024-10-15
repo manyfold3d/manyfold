@@ -42,6 +42,10 @@ class SiteSettings < RailsSettings::Base
     Rails.application.config.manyfold_features[:federation]
   end
 
+  def self.oidc_enabled?
+    Rails.application.config.manyfold_features[:oidc]
+  end
+
   def self.default_user
     User.with_role(:administrator).first
   end
