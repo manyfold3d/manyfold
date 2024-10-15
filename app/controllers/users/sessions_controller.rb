@@ -32,6 +32,7 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   def auto_login_single_user
+    return if ENV.fetch("FORCE_OIDC", nil) == "enabled"
     # Autocreate an admin user if there isn't one
     create_admin_user if User.with_role(:administrator).empty?
     # If in single user mode, or on first run,
