@@ -1,6 +1,6 @@
 <h1><%= t(".sign_in") %></h1>
 
-<% if ENV.fetch("FORCE_OIDC") == "enabled" %>
+<% if ENV.fetch("FORCE_OIDC", nil) == "enabled" %>
 
   <%- if devise_mapping.omniauthable? %>
     <%- resource_class.omniauth_providers.each do |provider| %>
