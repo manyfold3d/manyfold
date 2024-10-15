@@ -1398,15 +1398,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/xhr-upload@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "@uppy/xhr-upload@npm:4.2.0"
+"@uppy/utils@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "@uppy/utils@npm:6.0.3"
   dependencies:
-    "@uppy/companion-client": "npm:^4.1.0"
-    "@uppy/utils": "npm:^6.0.2"
+    lodash: ^4.17.21
+    preact: ^10.5.13
+  checksum: a1566a350d6f9db48e084d42e5f392f62d3551c992c7167194cf8e5982bc8476c0fede881412c4a0ee43d12f36dfba01493b3a1037626a26e6a89e1026131dcd
+  languageName: node
+  linkType: hard
+
+"@uppy/xhr-upload@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "@uppy/xhr-upload@npm:4.2.1"
+  dependencies:
+    "@uppy/companion-client": ^4.1.0
+    "@uppy/utils": ^6.0.3
   peerDependencies:
-    "@uppy/core": ^4.2.0
-  checksum: 9e0050d376341a9f4cb6ec3f81fbd099ecaeb967a0a3c17cab3361fd0fbd38aeea7ba61825d7952e70bab6361569811781885e900778a95630c581b971043892
+    "@uppy/core": ^4.2.2
+  checksum: f75ffe2ead668f8cf6a7bdfa92b015af7a9ed1af8eaecb12f32911afbd4da784b39d789fbbe767d7a7106dde6db04bbe2cbf651f09d802b31d6dac1da437587f
   languageName: node
   linkType: hard
 
@@ -3494,7 +3504,7 @@ __metadata:
     "@uppy/dashboard": ^4.1.0
     "@uppy/form": ^4.0.0
     "@uppy/locales": ^4.1.0
-    "@uppy/xhr-upload": ^4.2.0
+    "@uppy/xhr-upload": ^4.2.1
     bootstrap: ^5.3.3
     bootstrap-icons: ^1.11.3
     comlink: ^4.4.1
