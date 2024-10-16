@@ -1,4 +1,16 @@
 module ApplicationHelper
+  def site_name
+    ENV.fetch("SITE_NAME", translate("application.title"))
+  end
+
+  def site_tagline
+    ENV.fetch("SITE_TAGLINE", t("application.tagline"))
+  end
+
+  def site_icon
+    ENV.fetch("SITE_ICON", "roundel.svg")
+  end
+
   def icon(icon, label, id: nil)
     prefix = "bi"
     if icon.starts_with? "ra-"

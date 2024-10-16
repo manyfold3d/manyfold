@@ -45,6 +45,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def img_src
+    url = ENV.fetch "SITE_ICON", nil
+    url ? URI.parse(url).host : nil
+    [:self, :data, url].compact
+  end
+
   def configure_content_security_policy
     # Standard security policy
     content_security_policy.default_src :self
@@ -52,7 +58,7 @@ class ApplicationController < ActionController::Base
     content_security_policy.frame_ancestors :self
     content_security_policy.frame_src :self
     content_security_policy.font_src :self, "https://cdn.jsdelivr.net"
-    content_security_policy.img_src :self, :data
+    content_security_policy.img_src(*img_src)
     content_security_policy.object_src :none
     content_security_policy.script_src :self
     content_security_policy.style_src :self

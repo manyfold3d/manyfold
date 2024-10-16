@@ -1,7 +1,7 @@
 <div class="row bg-body-tertiary pt-3 mb-3 text-center">
   <%= render "application/content_header" %>
-  <h1 class="d-none d-lg-block"><%= t "application.title" %></h1>
-  <p class='lead'><%= t "application.tagline" %></p>
+  <h1 class="d-none d-lg-block"><%= site_name %></h1>
+  <p class='lead'><%= site_tagline %></p>
   <% if SiteSettings.demo_mode_enabled? %>
     <div class="alert alert-info">
       <%= t "application.demo_mode" %>
