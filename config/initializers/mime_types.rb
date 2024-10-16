@@ -10,7 +10,7 @@ Mime::Type.register "model/x-meshmixer", :mix
 Mime::Type.register "model/x-alembic", :abc
 Mime::Type.register "model/step", :step, [], ["stp"]
 Mime::Type.register "application/x-openscad", :scad
-Mime::Type.register "model/gltf", :gltf, ["model/gltf+json", "model/gltf+binary"], ["glb"]
+Mime::Type.register "model/x-freecad", :fcstd
 
 # Slicer formats
 Mime::Type.register "text/x-gcode", :gcode
