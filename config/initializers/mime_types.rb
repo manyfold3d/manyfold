@@ -3,6 +3,7 @@
 # 3D Models
 Mime::Type.register "model/stl", :stl
 Mime::Type.register "model/obj", :obj
+Mime::Type.register "model/mtl", :mtl
 Mime::Type.register "model/3mf", :threemf, [], ["3mf"]
 Mime::Type.register "model/x-ply", :ply
 Mime::Type.register "model/x-blender", :blend
@@ -26,3 +27,6 @@ Mime::Type.register "image/webp", :webp
 Mime::Type.register "application/vnd.rar", :rar
 Mime::Type.register "application/x-7z-compressed", :sevenz, [], ["7z"]
 Mime::Type.register "application/x-bzip2", :bz2
+
+# Document formats
+Mime::Type.register "text/markdown", :md
