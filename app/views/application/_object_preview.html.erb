@@ -1,7 +1,7 @@
 <% if renderable?(file.extension) %>
   <div class="position-relative">
     <canvas id="preview-file-<%= file.to_param %>" class="object-preview position-relative" tabindex="0" data-preview
-      data-preview-url="<%= model_model_file_path(model, file, file.extension.to_sym) %>"
+      data-preview-url="<%= model_model_file_path(model, file, file.extension&.to_sym) %>"
       data-worker-url="<%= javascript_path "offscreen_renderer.js" %>"
       data-format="<%= file.extension %>"
       data-y-up="<%= file.y_up %>"
