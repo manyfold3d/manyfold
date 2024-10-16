@@ -8,7 +8,7 @@ Mime::Type.register "model/x-ply", :ply
 Mime::Type.register "model/x-blender", :blend
 Mime::Type.register "model/x-meshmixer", :mix
 Mime::Type.register "model/x-alembic", :abc
-Mime::Type.register "model/step", :step, [], ["stp"]
+Mime::Type.register "model/step", :step, ["model/step+xml", "model/step+zip", "model/step-xml+zip"], ["stp"]
 Mime::Type.register "application/x-openscad", :scad
 Mime::Type.register "model/x-freecad", :fcstd
 
