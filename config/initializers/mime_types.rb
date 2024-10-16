@@ -12,6 +12,7 @@ Mime::Type.register "model/step", :step, ["model/step+xml", "model/step+zip", "m
 Mime::Type.register "application/x-openscad", :scad
 Mime::Type.register "model/gltf", :gltf, ["model/gltf+json", "model/gltf+binary", "model/gltf-binary"], ["glb"]
 Mime::Type.register "model/x-freecad", :fcstd
+Mime::Type.register "model/x-brep", :brep
 
 # Slicer formats
 Mime::Type.register "text/x-gcode", :gcode
