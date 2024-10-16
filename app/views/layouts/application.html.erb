@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>">
   <head>
-    <title><%= @title || translate("application.title") %></title>
+    <title><%= @title || site_name %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= tag.meta name: "csp-nonce", content: content_security_policy_nonce if content_security_policy_nonce %>
     <%= favicon_link_tag "roundel.svg" %>
     <%= tag.link rel: "apple-touch-icon", href: asset_path("square-180.png") %>
-    <%= tag.meta name: "apple-mobile-web-app-title", content: translate("application.title") %>
+    <%= tag.meta name: "apple-mobile-web-app-title", content: site_name %>
     <%= javascript_include_tag "application", nonce: true %>
     <%= stylesheet_link_tag "application", nonce: true %>
     <%= yield :head %>
