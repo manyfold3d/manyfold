@@ -9,7 +9,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: "OIDC") if is_navigational_format?
     else
       redirect_to new_user_session_url
-      set_flash_message(:notice, :error, kind: "OIDC") if is_navigational_format?
+      set_flash_message(:alert, :failure, kind: "OIDC", reason: @user.errors.full_messages.join("; ")) if is_navigational_format?
     end
   end
 end
