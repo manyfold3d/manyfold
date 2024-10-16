@@ -2965,14 +2965,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18n-js@npm:^4.4.3":
-  version: 4.4.3
-  resolution: "i18n-js@npm:4.4.3"
+"i18n-js@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "i18n-js@npm:4.5.0"
   dependencies:
-    bignumber.js: "npm:*"
-    lodash: "npm:*"
-    make-plural: "npm:*"
-  checksum: cef24bfa5d2d52e5e4dc6ae26314ef2978170e453adf5a53030787d3e1fc4c2381440f24b8cdc9d633256bb4639e7762eec0eb2fdfc5272ad7b7458f85531127
+    bignumber.js: "*"
+    lodash: "*"
+    make-plural: "*"
+  checksum: 8c45c11c0f01e0e645d212d2fb803b3f42fb37e7f7bf5aa87b6dcab2df66e4446444b5ba63b14f6f86e983cc7ba30bf7eccb49015f1df98914c897d39a324744
   languageName: node
   linkType: hard
 
@@ -3511,7 +3511,7 @@ __metadata:
     esbuild: ^0.24.0
     eslint: ^9.12.0
     husky: ^9.1.6
-    i18n-js: ^4.4.3
+    i18n-js: ^4.5.0
     jquery: ^3.7.1
     masonry-layout: ^4.2.2
     rpg-awesome: ^0.2.0
