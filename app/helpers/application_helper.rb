@@ -193,6 +193,6 @@ module ApplicationHelper
   end
 
   def needs_hiding?(thing)
-    thing.sensitive
+    thing.sensitive && (current_user.nil? || current_user.sensitive_content_handling.present?)
   end
 end
