@@ -36,6 +36,7 @@ en:
         notes: Description
         path: Path
         preview_file: Preview File
+        sensitive: Sensitive Content
         tags: Tags
       model_file:
         caption: Caption
