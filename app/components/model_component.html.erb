@@ -3,9 +3,9 @@
     <% if file = @model.preview_file %>
       <% if file.is_image? %>
         <%= content_tag :div, nil, class: "card-img-top card-img-top-background", style: "background-image: url(#{model_model_file_path(@model, file, format: file.extension)})" %>
-        <%= image_tag model_model_file_path(@model, file, format: file.extension), class: "card-img-top image-preview ", alt: file.name %>
+        <%= image_tag model_model_file_path(@model, file, format: file.extension), class: "card-img-top image-preview #{"sensitive" if helpers.needs_hiding?(@model)}", alt: file.name %>
       <% elsif helpers.renderable?(file.extension) %>
-        <div class="card-img-top">
+        <div class="card-img-top <%= "sensitive" if helpers.needs_hiding?(@model) %>">
           <%= render partial: "object_preview", locals: {model: @model, file: file} %>
         </div>
       <% end %>
@@ -19,6 +19,7 @@
             <a data-field="model[name]" data-path="<%= model_path @model %>" contenteditable=true>
               <%= @model.name %>
             </a>
+            <%= helpers.icon("explicit", Model.human_attribute_name(:sensitive)) if @model.sensitive %>
             <span style="float: right"><%= helpers.status_badges(@model) %></span>
           </div>
           <div class='mt-2'>

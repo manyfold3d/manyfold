@@ -34,6 +34,7 @@ class SettingsController < ApplicationController
   def update_general_settings(settings)
     return unless settings
     @user.interface_language = settings[:interface_language].presence
+    @user.sensitive_content_handling = settings[:sensitive_content].presence
   end
 
   def update_pagination_settings(settings)

@@ -1,6 +1,6 @@
 <% content_for :head do %>
   <%= tag.meta property: "og:type", content: "website" %>
-  <%= tag.meta property: "og:image", content: model_model_file_url(@model, @model.preview_file, format: @model.preview_file.extension) if @model.preview_file&.is_image? %>
+  <%= tag.meta property: "og:image", content: model_model_file_url(@model, @model.preview_file, format: @model.preview_file.extension) if @model.preview_file&.is_image? && !@model.sensitive %>
   <%= tag.meta name: "description", content: truncate(sanitize(@model.notes), length: 80) if @model.notes.present? %>
 <% end %>
 
@@ -62,6 +62,14 @@
             <%= Spdx.licenses[@model.license]&.fetch("reference") ?
               link_to(t_license(@model.license), Spdx.licenses[@model.license]["reference"]) :
               t_license(@model.license) %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @model.sensitive %>
+        <tr>
+          <td><%= icon("explicit", Model.human_attribute_name(:sensitive)) %></td>
+          <td>
+            <%= Model.human_attribute_name(:sensitive) %>
           </td>
         </tr>
       <% end %>

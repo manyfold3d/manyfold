@@ -10,7 +10,8 @@ class Activity::CreatorAddedModelJob < ApplicationJob
       comment: I18n.t("jobs.activity.creator_added_model.comment", # rubocop:disable I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
         model_name: model.name,
         url: model.actor.profile_url,
-        tags: model.tag_list.map { |t| "##{t}" }.join(" "))
+        tags: model.tag_list.map { |t| "##{t}" }.join(" ")),
+      sensitive: model.sensitive
     )
   end
 end

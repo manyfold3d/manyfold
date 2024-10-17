@@ -11,6 +11,7 @@
       <th><%= Model.human_attribute_name(:collection) %></th>
       <th><%= Model.human_attribute_name(:tags) %></th>
       <th><%= Model.human_attribute_name(:creator) %></th>
+      <th><%= Model.human_attribute_name(:sensitive) %></th>
       <th><%= t(".needs_organizing") %></th>
     </tr>
     <% @models.each do |model| %>
@@ -20,7 +21,8 @@
         <td><%= link_to model.collection.name, model.collection if model.collection %></td>
         <td><%= render "tag_list", tags: model.tags.order(taggings_count: :desc, name: :asc), model_id: model.to_param, show_count: false %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
-        <td><%= icon("exclamation-triangle", t(".needs_organizing")) if model.needs_organizing? %></code></td>
+        <td><%= icon("explicit", Model.human_attribute_name(:sensitive)) if model.sensitive %></td>
+        <td><%= icon("exclamation-triangle", t(".needs_organizing")) if model.needs_organizing? %></td>
       </tr>
     <% end %>
   </table>
