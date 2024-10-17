@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Activity::CreatorAddedModelJob do
   let(:creator) { create(:creator) }
-  let(:model) { create(:model, creator: creator, tag_list: "tag1, tag2") }
+  let(:model) { create(:model, creator: creator, tag_list: "tag1, tag2", sensitive: true) }
 
   it "adds a comment" do
     expect { described_class.new.perform(model.id) }.to change(Comment, :count).by(1)
@@ -33,6 +33,10 @@ RSpec.describe Activity::CreatorAddedModelJob do
 
     it "includes URL in text" do
       expect(comment.comment).to include "http://localhost:3214/models/#{model.public_id}"
+    end
+
+    it "sets sensitive flag from model" do
+      expect(comment.sensitive).to be true
     end
   end
 end
