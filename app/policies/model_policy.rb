@@ -1,4 +1,8 @@
 class ModelPolicy < ApplicationPolicy
+  def show?
+    super && !(user&.sensitive_content_handling == "hide" && record.sensitive)
+  end
+
   def merge?
     all_of(
       one_of(
@@ -25,5 +29,15 @@ class ModelPolicy < ApplicationPolicy
 
   def bulk_update?
     user&.is_moderator?
+  end
+
+  class Scope < ApplicationPolicy::Scope
+    def resolve
+      if user&.sensitive_content_handling == "hide"
+        super.where(sensitive: false)
+      else
+        super
+      end
+    end
   end
 end
