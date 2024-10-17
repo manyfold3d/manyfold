@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_17_093301) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_17_113112) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -315,6 +315,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_17_093301) do
     t.string "uid"
     t.string "auth_provider"
     t.string "auth_uid"
+    t.string "sensitive_content_handling"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["public_id"], name: "index_users_on_public_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
