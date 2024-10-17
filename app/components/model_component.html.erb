@@ -19,6 +19,7 @@
             <a data-field="model[name]" data-path="<%= model_path @model %>" contenteditable=true>
               <%= @model.name %>
             </a>
+            <%= helpers.icon("explicit", Model.human_attribute_name(:sensitive)) if @model.sensitive %>
             <span style="float: right"><%= helpers.status_badges(@model) %></span>
           </div>
           <div class='mt-2'>

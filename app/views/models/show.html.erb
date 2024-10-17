@@ -65,6 +65,14 @@
           </td>
         </tr>
       <% end %>
+      <% if @model.sensitive %>
+        <tr>
+          <td><%= icon("explicit", Model.human_attribute_name(:sensitive)) %></td>
+          <td>
+            <%= Model.human_attribute_name(:sensitive) %>
+          </td>
+        </tr>
+      <% end %>
       <tr>
         <td><%= icon "folder", t(".path") %></td>
         <td>

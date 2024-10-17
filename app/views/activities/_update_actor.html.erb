@@ -16,6 +16,7 @@
           <%- else %>
             <%= object.name %>
           <%- end %>
+          <%= icon("explicit", Model.human_attribute_name(:sensitive)) if thing.respond_to?(:sensitive) && thing.sensitive %>
         </div>
         <% if thing.is_a? Model %>
           <div class="col col-auto">
