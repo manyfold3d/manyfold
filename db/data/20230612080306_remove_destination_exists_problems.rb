@@ -3,8 +3,7 @@
 class RemoveDestinationExistsProblems < ActiveRecord::Migration[7.0]
   def up
     # Clean up deprecated problems
-    Problem.where(category: :destination_exists).destroy_all
-  rescue # To avoid crashes when the ignored field in Problem's default scope isn't available yet
+    Problem.unscoped.where(category: :destination_exists).destroy_all
   end
 
   def down
