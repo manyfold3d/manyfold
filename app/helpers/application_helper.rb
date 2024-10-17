@@ -191,4 +191,8 @@ module ApplicationHelper
   def problem_settings
     current_user&.problem_settings || Problem::DEFAULT_SEVERITIES
   end
+
+  def needs_hiding?(thing)
+    thing.sensitive
+  end
 end

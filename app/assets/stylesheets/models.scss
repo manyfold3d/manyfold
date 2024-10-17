@@ -80,6 +80,10 @@ div.form-control.tag-container {
     text-transform: capitalize;
     font-size: 0.8rem;
   }
+
+  .sensitive {
+    filter: blur(1rem);
+  }
 }
 
 .carousel-inner {
