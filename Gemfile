@@ -108,7 +108,7 @@ gem "rack-contrib", "~> 2.5"
 
 gem "rails-i18n", "~> 7.0"
 
-gem "erb_lint", "~> 0.6.0", group: :development, require: false
+gem "erb_lint", "~> 0.7.0", group: :development, require: false
 
 gem "i18n-js", "~> 4.2"
 

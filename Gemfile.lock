@@ -235,7 +235,7 @@ GEM
     drb (2.2.1)
     email_validator (2.2.4)
       activemodel
-    erb_lint (0.6.0)
+    erb_lint (0.7.0)
       activesupport
       better_html (>= 2.0.1)
       parser (>= 2.7.1.4)
@@ -764,7 +764,7 @@ DEPENDENCIES
   devise-i18n (~> 1.12)
   devise_zxcvbn (~> 6.0)
   dotenv-rails (~> 3.1)
-  erb_lint (~> 0.6.0)
+  erb_lint (~> 0.7.0)
   factory_bot
   faker (~> 3.4)
   federails!
