@@ -35,6 +35,7 @@ class Comment < ApplicationRecord
       context: Rails.application.routes.url_helpers.url_for([commentable, only_path: false]),
       published: created_at&.iso8601,
       attributedTo: (commenter&.actor&.respond_to?(:federated_url) ? commenter.actor.federated_url : nil),
+      sensitive: sensitive,
       to: ["https://www.w3.org/ns/activitystreams#Public"],
       cc: [commenter.actor.followers_url],
       tag: tags

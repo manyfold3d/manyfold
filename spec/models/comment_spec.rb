@@ -12,7 +12,7 @@ RSpec.describe Comment do
       m.grant_permission_to "view", nil
       m
     end
-    let!(:comment) { create(:comment, commenter: commenter, commentable: commentable) }
+    let!(:comment) { create(:comment, commenter: commenter, commentable: commentable, sensitive: true) }
 
     it "posts a Federails Activity on creation" do # rubocop:disable RSpec/MultipleExpectations
       expect { create(:comment, commenter: commenter, commentable: commentable) }.to change(Federails::Activity, :count).by(1)
@@ -49,6 +49,10 @@ RSpec.describe Comment do
 
       it "includes publication time" do
         expect(ap_object[:published]).to be_present
+      end
+
+      it "includes sensitive flag" do
+        expect(ap_object[:sensitive]).to be true
       end
 
       it "includes attribution" do
