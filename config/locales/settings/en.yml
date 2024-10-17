@@ -36,6 +36,12 @@ en:
         autodetect: Use browser settings
         help: 'Note: some untranslated text may still show in English.'
         label: Interface language
+      sensitive_content:
+        help: Affects how content marked as "sensitive" will be displayed
+        hide: Hide completely
+        label: Sensitive Content
+        mask: Blur in lists
+        show: Show as normal
     library_settings:
       description: See library details and modify.
       free_space:

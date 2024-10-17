@@ -2,7 +2,7 @@
   <h3 class="card-header"><%= t(".heading") %></h3>
   <div class="card-body">
 
-    <div class="row">
+    <div class="row mb-2">
       <%= form.label nil, t(".interface_language.label"), for: "general[interface_language]", class: "col col-form-label" %>
       <div class="col">
         <%= form.select "general[interface_language]",
@@ -10,6 +10,21 @@
               {selected: @user.interface_language},
               {class: "form-select"} %>
         <small class="form-text"><%= t ".interface_language.help" %></small>
+      </div>
+    </div>
+
+    <div class="row">
+      <%= form.label nil, t(".sensitive_content.label"), for: "general[sensitive_content]", class: "col col-form-label" %>
+      <div class="col">
+        <%= form.select "general[sensitive_content]",
+              [
+                [t(".sensitive_content.show"), nil],
+                [t(".sensitive_content.mask"), "mask"],
+                [t(".sensitive_content.hide"), "hide"]
+              ],
+              {selected: @user.sensitive_content_handling},
+              {class: "form-select"} %>
+        <small class="form-text"><%= t ".sensitive_content.help" %></small>
       </div>
     </div>
 
