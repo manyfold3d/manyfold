@@ -169,6 +169,7 @@ class ModelsController < ApplicationController
       :new_library_id,
       :organize,
       :license,
+      :sensitive,
       add_tags: [],
       remove_tags: []
     ).compact_blank
@@ -183,6 +184,7 @@ class ModelsController < ApplicationController
       :caption,
       :notes,
       :license,
+      :sensitive,
       :collection_id,
       :q,
       :library,
