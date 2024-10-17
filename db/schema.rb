@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_15_090803) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_17_093301) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_15_090803) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "system", default: false, null: false
+    t.boolean "sensitive", default: false, null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["commenter_type", "commenter_id"], name: "index_comments_on_commenter"
     t.index ["public_id"], name: "index_comments_on_public_id", unique: true
@@ -221,6 +222,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_15_090803) do
     t.string "license"
     t.string "public_id"
     t.virtual "name_lower", type: :string, as: "LOWER(name)", stored: true
+    t.boolean "sensitive", default: false, null: false
     t.index ["collection_id"], name: "index_models_on_collection_id"
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
@@ -308,9 +310,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_15_090803) do
     t.string "interface_language"
     t.integer "failed_attempts", default: 0, null: false
     t.datetime "locked_at"
+    t.string "public_id"
+    t.string "provider"
+    t.string "uid"
     t.string "auth_provider"
     t.string "auth_uid"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["public_id"], name: "index_users_on_public_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
