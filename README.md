@@ -12,7 +12,9 @@ There are a few routes to get help:
 * [Live chat](https://matrix.to/#/#manyfold:one.ems.host) to the "team" on Matrix (an open Discord/Slack-like chat system).
 * Get in touch with our [social media](https://3dp.chat/@manyfold) presence in the Fediverse (Mastodon, etc).
 
-And, if you want to contribute financially to development efforts, you can do so at [Open Collective](https://opencollective.com/manyfold).
+And, if you want to contribute financially to development efforts...
+
+[<img src="https://opencollective.com/manyfold/donate/button@2x.png?color=blue" alt="Donate with OpenCollective" width="20%" />](https://opencollective.com/manyfold/donate)
 
 ## Developer Documentation
 
@@ -100,6 +102,10 @@ This project is funded through [NGI0 Entrust](https://nlnet.nl/entrust), a fund 
 
 [<img src="https://nlnet.nl/logo/banner.png" alt="NLnet foundation logo" width="20%" />](https://nlnet.nl)
 [<img src="https://nlnet.nl/image/logos/NGI0_tag.svg" alt="NGI Zero Logo" width="20%" />](https://nlnet.nl/entrust)
+
+This project is also funded by you! Make a donation to support long-term development at OpenCollective:
+
+[<img src="https://opencollective.com/manyfold/donate/button@2x.png?color=blue" alt="Donate with OpenCollective" width="20%" />](https://opencollective.com/manyfold/donate)
 
 ## Popularity
 
