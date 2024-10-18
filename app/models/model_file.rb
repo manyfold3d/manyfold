@@ -84,7 +84,7 @@ class ModelFile < ApplicationRecord
     File.join(model.path, filename)
   end
 
-  def attach_existing_file!(refresh: true)
+  def attach_existing_file!(refresh: true, skip_validations: false)
     return if attachment.present? || !exists_on_storage?
     attachment_attacher.set LibraryUploader.uploaded_file(
       storage: model.library.storage_key,
@@ -96,7 +96,7 @@ class ModelFile < ApplicationRecord
       }
     )
     attachment_attacher.refresh_metadata! if refresh
-    save!
+    save!(validate: !skip_validations)
   end
 
   def exists_on_storage?
