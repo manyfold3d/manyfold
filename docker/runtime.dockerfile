@@ -4,7 +4,8 @@ FROM base as runtime
 
 RUN apk add --no-cache \
   file \
-  s6-overlay
+  s6-overlay \
+  jemalloc
 
 COPY . .
 COPY --from=build /usr/src/app/vendor/bundle vendor/bundle
@@ -46,6 +47,11 @@ COPY --from=build \
   /usr/lib/libmd.so.* \
   /usr/lib/libglfw.so.* \
   /usr/lib
+
+# Set up jemalloc and YJIT for performance
+ENV LD_PRELOAD="libjemalloc.so.2"
+ENV MALLOC_CONF="dirty_decay_ms:1000,narenas:2,background_thread:true,stats_print:true"
+ENV RUBY_YJIT_ENABLE="1"
 
 ARG APP_VERSION
 ARG GIT_SHA
