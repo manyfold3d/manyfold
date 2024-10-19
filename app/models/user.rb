@@ -84,10 +84,28 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    find_or_create_by(auth_provider: auth.provider, auth_uid: auth.uid) do |user|
-      user.email = auth.info.email
-      user.username = auth.info.preferred_username || auth.info.nickname&.parameterize || auth.info.email.split("@")[0]
+    # Match existing users by email first
+    user = find_by(auth_provider: nil, auth_uid: nil, email: auth.info.email)
+    if user
+      user.update!(
+        auth_provider: auth.provider,
+        auth_uid: auth.uid
+      )
+    else
+      # Email isn't present, so let's match by ID
+      user = find_or_create_by(auth_provider: auth.provider, auth_uid: auth.uid) do |user|
+        user.email = auth.info.email
+        # Find an unused username - get the first of a few options
+        user.username = [
+          auth.info.preferred_username,
+          auth.info.nickname&.parameterize,
+          auth.info.email&.split("@")&.[](0),
+          # Fallback to any of the above with some random numbers on the end
+          (auth.info.preferred_username || auth.info.nickname&.parameterize || auth.info.email&.split("@")&.[](0) || "") + SecureRandom.hex(2)
+        ].compact.find { |u| !User.exists?(username: u) }
+      end
     end
+    user
   end
 
   private
