@@ -5,7 +5,7 @@ class User < ApplicationRecord
   include Follower
   include CaberSubject
 
-  acts_as_federails_actor username_field: :username, name_field: :username
+  acts_as_federails_actor username_field: :username, name_field: :username, user_count_method: :user_count
 
   rolify
   devise :database_authenticatable,
@@ -106,6 +106,14 @@ class User < ApplicationRecord
       end
     end
     user
+  end
+
+  def self.user_count(range)
+    return User.count if range.nil?
+
+    # Updated date isn't a great proxy for activity, but it'll do for now
+    # We can improve this by using devise trackable to track logins at some point
+    User.where(updated_at: range).count
   end
 
   private

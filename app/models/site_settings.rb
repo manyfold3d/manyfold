@@ -15,7 +15,7 @@ class SiteSettings < RailsSettings::Base
   field :default_viewer_role, type: :string, default: "member"
 
   def self.registration_enabled?
-    ENV.fetch("REGISTRATION", false) == "enabled"
+    Rails.application.config.manyfold_features[:registration]
   end
 
   def self.email_configured?

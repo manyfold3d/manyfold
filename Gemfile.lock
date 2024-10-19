@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails.git
-  revision: bfe2192c1c64d619e8dd2e1e5d8d7dee8c4db12f
+  revision: ce5064916a23fdf4a2bb1991b6610439a33bd37a
   branch: main
   specs:
     federails (0.2.0)
@@ -732,7 +732,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.7.0)
+    zeitwerk (2.7.1)
     zxcvbn (0.1.10)
 
 PLATFORMS
