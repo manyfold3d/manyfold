@@ -6,7 +6,7 @@ class Creator < ApplicationRecord
   include PublicIDable
   include Commentable
 
-  acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for, include_in_user_count: false
+  acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for
 
   has_many :models, dependent: :nullify
   validates :name, uniqueness: {case_sensitive: false}
