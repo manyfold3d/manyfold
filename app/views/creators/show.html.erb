@@ -1,1 +1,20 @@
+<%= content_for :items do %>
+  <div class="card mb-3">
+    <div class="card-body row">
+      <div class="col col-md-3">
+        <%= content_tag(:div, class: "text-center") do %>
+          <%= content_tag(:h2) { @creator.name } %>
+          <p><small>@<%= @creator.actor.at_address if SiteSettings.federation_enabled? %></small></p>
+          <%= render FollowButtonComponent.new(follower: current_user, target: @creator) %>
+        <% end %>
+      </div>
+      <div class="col col-md-9">
+        <%= content_tag(:p, class: "lead") { @creator.caption } if @creator.caption %>
+        <%= content_tag(:p, class: "card-text") { markdownify @creator.notes } if @creator.notes %>
+        <%= "#{policy_scope(Model).where(creator: @creator).count} #{Model.model_name.human count: policy_scope(Model).where(creator: @creator).count}" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <%= render "models/list" %>
