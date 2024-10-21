@@ -4,8 +4,9 @@ class User < ApplicationRecord
   include Lister
   include Follower
   include CaberSubject
+  include PublicIDable
 
-  acts_as_federails_actor username_field: :username, name_field: :username, user_count_method: :user_count
+  acts_as_federails_actor username_field: :public_id, name_field: :username, user_count_method: :user_count
 
   rolify
   devise :database_authenticatable,
