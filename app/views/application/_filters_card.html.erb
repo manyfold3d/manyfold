@@ -25,7 +25,7 @@
     <% if @filters[:creator] %>
       <div class="row">
         <div class="col-auto"><%= icon "person", Creator.model_name.human %></div>
-        <div class="col" aria-label="<%= Creator.model_name.human %>"><%= @creator ? @creator.name.careful_titleize : t(".unknown") %></div>
+        <div class="col" aria-label="<%= Creator.model_name.human %>"><%= @creator ? link_to(@creator.name.careful_titleize, @creator) : t(".unknown") %></div>
         <div class="col-auto"><%= link_to icon("trash", t(".remove_creator_filter")), @filters.except(:creator), {class: "text-danger"} %></div>
       </div>
     <% end %>
