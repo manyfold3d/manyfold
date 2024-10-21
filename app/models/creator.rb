@@ -18,4 +18,12 @@ class Creator < ApplicationRecord
   def self.ransackable_associations(_auth_object = nil)
     ["links", "models"]
   end
+
+  def to_param
+    slug
+  end
+
+  def self.find_param(param)
+    find_by!(slug: param)
+  end
 end

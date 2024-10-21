@@ -67,6 +67,6 @@ class FollowsController < ApplicationController
     followable = params[:followable_class].constantize
     followable_param = params[:followable_class].parameterize + "_id"
     id = params[followable_param]
-    @target = policy_scope(followable).find(id)
+    @target = policy_scope(followable).find_param(id)
   end
 end

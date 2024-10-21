@@ -23,7 +23,6 @@ fr:
     get_collection:
       unknown: Inconnu
     index:
-      actions_heading: Actions
       skip_collections: Sauter la liste de collections
     unassigned:
       caption: Tous les modèles ne faisant pas partie d'une collection.

@@ -23,7 +23,6 @@ en:
     get_collection:
       unknown: Unknown
     index:
-      actions_heading: Actions
       skip_collections: Skip collection list
     unassigned:
       caption: All the models not in a collection.

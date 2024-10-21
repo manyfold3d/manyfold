@@ -1,8 +1,7 @@
 require "fileutils"
 
 class ModelsController < ApplicationController
-  include Filterable
-  include TagListable
+  include ModelListable
   include Permittable
 
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
@@ -13,31 +12,8 @@ class ModelsController < ApplicationController
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
   def index
-    # Work out policies for showing buttons up front
-    @can_destroy = policy(Model).destroy?
-    @can_edit = policy(Model).edit?
-
     @models = filtered_models @filters
-
-    # Ordering
-    @models = case session["order"]
-    when "recent"
-      @models.order(created_at: :desc)
-    else
-      @models.order(name_lower: :asc)
-    end
-
-    @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
-    @tags, @kv_tags = split_key_value_tags(@tags)
-
-    if helpers.pagination_settings["models"]
-      page = params[:page] || 1
-      @models = @models.page(page).per(helpers.pagination_settings["per_page"])
-    end
-
-    # Load extra data
-    @models = @models.includes [:library, :model_files, :preview_file, :creator, :collection]
-
+    prepare_model_list
     render layout: "card_list_page"
   end
 

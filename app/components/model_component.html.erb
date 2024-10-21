@@ -31,10 +31,10 @@
         <div class="col-auto">
           <small>
             <ul class="list-unstyled">
-              <% if @creator.nil? && @model.creator %>
+              <% if @model.creator %>
                 <li>
                   <%= helpers.icon "person", Creator.model_name.human %>
-                  <%= link_to @model.creator.name, models_path((@filters || {}).merge(creator: @model.creator)),
+                  <%= link_to @model.creator.name, @model.creator,
                         "aria-label": [Creator.model_name.human, @model.creator.name].join(": ") %>
                 </li>
               <% end %>

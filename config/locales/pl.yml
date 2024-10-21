@@ -333,6 +333,8 @@ pl:
         danger: Niebezpieczeństwo
         info: Informacja
       skip_to_content: Przejdź do głównej treści
+    card_list_page:
+      actions_heading: Akcje
   licenses:
     CC-BY-40: Creative Commons Uznanie autorstwa
     CC-BY-NC-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne

@@ -23,7 +23,6 @@ pl:
     get_collection:
       unknown: Nieznany
     index:
-      actions_heading: Akcje
       skip_collections: Pomiń listę kolekcji
     unassigned:
       caption: Wszystkie modele spoza kolekcji.

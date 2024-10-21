@@ -40,7 +40,7 @@
       <% if @model.creator %>
         <tr>
           <td><%= icon "person", Creator.model_name.human %></td>
-          <td><%= link_to @model.creator.name, models_path((@filters || {}).merge(creator: @model.creator)) %></td>
+          <td><%= link_to @model.creator.name, @model.creator %></td>
         </tr>
       <% end %>
       <% if @model.collection %>

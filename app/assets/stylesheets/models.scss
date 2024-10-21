@@ -13,6 +13,13 @@ div.form-control.tag-container {
   padding: 0;
 }
 
+.action-card .card-text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  align-items: start;
+}
+
 .preview-card {
   min-height: 100%;
   background: none;

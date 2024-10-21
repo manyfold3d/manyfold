@@ -1,0 +1,36 @@
+<% content_for :items do %>
+  <% if @models.empty? %>
+    <div class="alert alert-info">
+      <%= icon "person-arms-up", "" %>
+      <%= t(".no_results_html") %>
+    </div>
+  <% else %>
+    <div class="skip-link-container">
+      <div class="clearfix">
+        <%= skip_link "sidebar", t(".skip_models") %>
+        <%= render "order_buttons" %>
+        <% if pagination_settings["models"] %>
+          <%= paginate @models %>
+        <% end %>
+      </div>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+        <%= render ModelComponent.with_collection(@models, can_edit: @can_edit, can_destroy: @can_destroy) %>
+      </div>
+      <% if pagination_settings["models"] %>
+        <%= paginate @models %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<% content_for :actions do %>
+  <%= link_to t(".bulk_edit"), edit_models_path(@filters.merge(@additional_filters)), class: "btn btn-secondary" if policy(:model).edit? %>
+  <% if @collection %>
+    <%= render FollowButtonComponent.new(follower: current_user, target: @collection, name: @collection.name) %>
+  <% end %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <%= render "filters_card" %>
+  <%= render "tags_card" %>
+<% end %>

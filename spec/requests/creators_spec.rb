@@ -82,18 +82,18 @@ RSpec.describe "Creators" do
     describe "GET /creators/:id", :as_member do
       it "Redirects to a list of models with that creator" do
         get "/creators/#{creator.to_param}"
-        expect(response).to redirect_to("/models?creator=#{creator.public_id}")
+        expect(response).to have_http_status(:success)
       end
     end
 
     describe "PATCH /creators/:id" do
       it "saves details", :as_moderator do
         patch "/creators/#{creator.to_param}", params: {creator: {name: "newname"}}
-        expect(response).to redirect_to("/creators/#{creator.public_id}")
+        expect(response).to redirect_to("/creators/newname")
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { patch "/creators/#{creator.public_id}", params: {creator: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
+        expect { patch "/creators/#{creator.to_param}", params: {creator: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
       end
     end
 

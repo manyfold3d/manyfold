@@ -10,7 +10,7 @@
 <% end %>
 <%- tag_html_opts = {data: {bulk_item_tags: defined?(model_id) ? model_id&.to_s : nil}} %>
 <%- heatmap = defined?(show_count) ? heatmap : tag_cloud_settings["heatmap"] %>
-<%= safe_join(tags.map { |tag| render TagComponent.new(tag: tag, filters: @filters, html_options: tag_html_opts, show_count: heatmap, filter_in_place: @filter_in_place) }, " ") if tags %>
+<%= safe_join(tags.map { |tag| render TagComponent.new(tag: tag, filters: @filters.merge(@additional_filters), html_options: tag_html_opts, show_count: heatmap, filter_in_place: @filter_in_place) }, " ") if tags %>
 <% if defined?(kv_tags) && kv_tags %>
   <ul class="list-unstyled">
     <% tiers.each do |tier| %>

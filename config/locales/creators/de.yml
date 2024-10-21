@@ -20,7 +20,6 @@ de:
     get_creator:
       unknown: Unbekannt
     index:
-      actions_heading: Aktionen
       skip_creators: Erstellerliste überspringen
     unassigned:
       caption: Alle Modelle ohne bekannten Ersteller.
