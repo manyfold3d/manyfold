@@ -5,6 +5,8 @@
     <%= yield :items %>
   </div>
   <div class="col-md-3" id="sidebar">
+    <% action_content = yield :actions %>
+    <%= card(:secondary, t(".actions_heading")) { action_content } if action_content.present? %>
     <%= yield :sidebar %>
   </div>
 </div>

@@ -18,10 +18,11 @@
   </div>
 <% end %>
 
+<% content_for :actions do %>
+  <%= link_to t("creators.general.new"), new_creator_path, class: "btn btn-primary mb-3 me-3" if policy(:creator).new? %>
+<% end %>
+
 <% content_for :sidebar do %>
-  <%= card :secondary, t(".actions_heading") do %>
-    <%= link_to t("creators.general.new"), new_creator_path, class: "btn btn-primary mb-3 me-3" if policy(:creator).new? %>
-  <% end %>
   <%= render "filters_card" %>
   <%= render "tags_card" %>
 <% end %>

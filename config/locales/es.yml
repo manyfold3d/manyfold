@@ -337,6 +337,8 @@ es:
         danger: Peligro
         info: Información
       skip_to_content: Ir al contenido principal
+    card_list_page:
+      actions_heading: Acciones
   licenses:
     CC-BY-40: Creative Commons - Reconocimiento
     CC-BY-NC-40: Creative Commons - Reconocimiento - No Comercial

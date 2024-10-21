@@ -24,13 +24,14 @@
   <% end %>
 <% end %>
 
-<% content_for :sidebar do %>
-  <%= card :secondary, t(".actions_heading") do %>
-    <%= link_to t(".bulk_edit"), edit_models_path(@filters), class: "btn btn-secondary mb-3 me-3" if policy(:model).edit? %>
-    <% if @collection %>
-      <%= render FollowButtonComponent.new(follower: current_user, target: @collection, name: @collection.name) %>
-    <% end %>
+<% content_for :actions do %>
+  <%= link_to t(".bulk_edit"), edit_models_path(@filters), class: "btn btn-secondary mb-3 me-3" if policy(:model).edit? %>
+  <% if @collection %>
+    <%= render FollowButtonComponent.new(follower: current_user, target: @collection, name: @collection.name) %>
   <% end %>
+<% end %>
+
+<% content_for :sidebar do %>
   <%= render "filters_card" %>
   <%= render "tags_card" %>
 <% end %>
