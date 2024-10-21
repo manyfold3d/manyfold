@@ -247,7 +247,7 @@ GEM
       tzinfo
     factory_bot (6.5.0)
       activesupport (>= 5.0.0)
-    faker (3.4.2)
+    faker (3.5.1)
       i18n (>= 1.8.11, < 2)
     faraday (2.12.0)
       faraday-net_http (>= 2.0, < 3.4)
@@ -766,7 +766,7 @@ DEPENDENCIES
   dotenv-rails (~> 3.1)
   erb_lint (~> 0.7.0)
   factory_bot
-  faker (~> 3.4)
+  faker (~> 3.5)
   federails!
   ffi-libarchive (~> 1.1)
   guard (~> 2.18)
