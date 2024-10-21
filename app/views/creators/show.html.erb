@@ -1,3 +1,8 @@
+<% content_for :head do %>
+  <%= tag.meta property: "og:type", content: "profile" %>
+  <%= tag.meta name: "description", content: truncate(sanitize(@creator.caption), length: 80) if @creator.caption.present? %>
+<% end %>
+
 <%= content_for :items do %>
   <div class="card mb-3">
     <div class="card-body row">
