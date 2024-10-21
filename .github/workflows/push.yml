@@ -36,7 +36,7 @@ jobs:
       - name: Lint Ruby code
         run: bundle exec rake rubocop
       - name: Lint ERB templates
-        run: bundle exec erblint --lint-all
+        run: bundle exec erb_lint --lint-all
       - name: Lint Typescript code
         run: yarn run lint:ts
   i18n:

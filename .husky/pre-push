@@ -2,5 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 bundle exec rake rubocop:autocorrect
-bundle exec erblint --lint-all
+bundle exec erb_lint --lint-all
 yarn run lint:ts

@@ -61,7 +61,7 @@ We use [Rubocop](https://rubocop.org/) to monitor adherence to coding standards 
 
 You can run the linter with `bundle exec rubocop`.
 
-We also have linters for ERB and Typescript files. You can run these with: `bundle exec erblint --lint-all` and `yarn run lint:ts` respectively.
+We also have linters for ERB and Typescript files. You can run these with: `bundle exec erb_lint --lint-all` and `yarn run lint:ts` respectively.
 
 Code linting is automatically performed by our GitHub Actions test runners, but if you set up [Husky](https://typicode.github.io/husky/get-started.html), it will also execute as a pre-commit hook.
 
