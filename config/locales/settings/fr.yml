@@ -36,6 +36,12 @@ fr:
         autodetect: Utiliser les paramètres du navigateur
         help: 'Remarque : certains textes non traduits peuvent encore s''afficher en anglais.'
         label: Langue de l'interface
+      sensitive_content:
+        help:
+        hide:
+        label:
+        mask:
+        show:
     library_settings:
       description: Voir les détails de la bibliothèque et modifier.
       free_space:

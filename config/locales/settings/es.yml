@@ -36,6 +36,12 @@ es:
         autodetect: Utilizar la configuración del navegador
         help: 'Nota: es posible que algunos textos no traducidos sigan apareciendo en inglés.'
         label: Idioma de la aplicación
+      sensitive_content:
+        help:
+        hide:
+        label:
+        mask:
+        show:
     library_settings:
       description: Ver detalles de la biblioteca y modificar.
       free_space:

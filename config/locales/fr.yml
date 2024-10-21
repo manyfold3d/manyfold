@@ -36,6 +36,7 @@ fr:
         notes: Description
         path: Chemin
         preview_file: Prévisualisation
+        sensitive:
         tags: Étiquettes
       model_file:
         caption: Légende

@@ -21,6 +21,8 @@ pl:
       unknown: Nieznany
     index:
       skip_creators: Pomiń listę twórców
+    show:
+      edit:
     unassigned:
       caption: Wszystkie modele bez znanego twórcy.
       name: Nieprzypisany

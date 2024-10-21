@@ -21,6 +21,8 @@ de:
       unknown: Unbekannt
     index:
       skip_creators: Erstellerliste überspringen
+    show:
+      edit:
     unassigned:
       caption: Alle Modelle ohne bekannten Ersteller.
       name: Nicht zugewiesen

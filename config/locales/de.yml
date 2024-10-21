@@ -36,6 +36,7 @@ de:
         notes: Beschreibung
         path: Pfad
         preview_file: Vorschau Datei
+        sensitive:
         tags: Tags
       model_file:
         caption: Beschreibung

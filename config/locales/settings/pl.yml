@@ -36,6 +36,12 @@ pl:
         autodetect: Użyj ustawień przeglądarki
         help: 'Uwaga: niektóre nieprzetłumaczone teksty mogą nadal wyświetlać się w języku angielskim.'
         label: Język interfejsu
+      sensitive_content:
+        help:
+        hide:
+        label:
+        mask:
+        show:
     library_settings:
       description: Zobacz szczegóły biblioteki i ją zmodyfikuj.
       free_space:

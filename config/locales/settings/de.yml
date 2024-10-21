@@ -36,6 +36,12 @@ de:
         autodetect: Browsereinstellungen verwenden
         help: 'Hinweis: Einige nicht übersetzte Texte werden möglicherweise noch auf Englisch angezeigt.'
         label: Sprache der Oberfläche
+      sensitive_content:
+        help:
+        hide:
+        label:
+        mask:
+        show:
     library_settings:
       description: Siehe Details der Bibliothek und ändere sie.
       free_space:
