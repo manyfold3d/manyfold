@@ -10,6 +10,7 @@ class FollowButtonComponent < ViewComponent::Base
 
   def before_render
     @i18n_key = @following ? ".unfollow" : ".follow"
+    @icon = @following ? "person-x-fill" : "person-plus-fill"
     if @signed_out
       @path = @target.is_a?(Federails::Actor) ?
         follow_remote_actor_path(@target) :
@@ -28,7 +29,7 @@ class FollowButtonComponent < ViewComponent::Base
   end
 
   erb_template <<-ERB
-    <%= button_to translate(@i18n_key, name: @name), @path, method: @method, class: "btn btn-primary" %>
+    <%= button_to safe_join([helpers.icon(@icon, ""), translate(@i18n_key, name: @name)], " "), @path, method: @method, class: "btn btn-primary" %>
   ERB
 
   private
