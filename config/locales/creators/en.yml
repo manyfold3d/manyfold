@@ -20,7 +20,6 @@ en:
     get_creator:
       unknown: Unknown
     index:
-      actions_heading: Actions
       skip_creators: Skip creator list
     unassigned:
       caption: All the models without a known creator.

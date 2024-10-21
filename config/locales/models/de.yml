@@ -2,7 +2,6 @@
 de:
   models:
     list:
-      actions_heading: Aktionen
       bulk_edit: Massenbearbeitung
       no_results_html: Wir konnten leider nichts finden, was wir dir zeigen könnten! Versuche, deine Filter oder Suchbegriffe zu ändern, oder lade ein einige Modelle hoch.
       skip_models: Modellliste überspringen

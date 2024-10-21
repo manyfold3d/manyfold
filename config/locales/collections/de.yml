@@ -23,7 +23,6 @@ de:
     get_collection:
       unknown: Unbekannt
     index:
-      actions_heading: Aktionen
       skip_collections: Sammlungsliste überspringen
     unassigned:
       caption: Alle Modelle, die sich nicht in einer Sammlung befinden.

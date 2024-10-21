@@ -2,7 +2,6 @@
 es:
   models:
     list:
-      actions_heading: Acciones
       bulk_edit: Edición masiva
       no_results_html: Lo sentimos, ¡no hemos encontrado nada que mostrarte! Prueba a cambiar los filtros o los términos de búsqueda, o a subir algunos modelos.
       skip_models: Omitir lista de modelos

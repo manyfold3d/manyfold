@@ -2,7 +2,6 @@
 pl:
   models:
     list:
-      actions_heading: Akcje
       bulk_edit: Edycja zbiorcza
       no_results_html: Przepraszamy, nie mogliśmy znaleźć niczego do pokazania! Spróbuj zmienić filtry lub wyszukiwane hasła albo przesłać kilka modeli.
       skip_models: Pomiń listę modeli

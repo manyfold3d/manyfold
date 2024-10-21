@@ -2,7 +2,6 @@
 fr:
   models:
     list:
-      actions_heading: Actions
       bulk_edit: Edition en bloc
       no_results_html:
       skip_models:

@@ -23,7 +23,6 @@ pl:
     general:
       edit: Edytuj informacje o pliku
     show:
-      actions_heading: Akcje
       convert: Konwertuj do 3MF
       details_heading: Szczegóły
       notes_heading: Notatki
