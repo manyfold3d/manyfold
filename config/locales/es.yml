@@ -259,8 +259,8 @@ es:
       skip_tags: Saltar lista de etiquetas
     title: Manyfold
   follow_button_component:
-    follow: Seguir a %{name}
-    unfollow: Dejar de seguir a %{name}
+    follow: Seguir %{name}
+    unfollow: Dejar de seguir %{name}
   follows:
     follow_remote_actor:
       followed: Siguiendo a %{actor} correctamente.
@@ -277,7 +277,7 @@ es:
       no_results_html: No se pudo encontrar tu cuenta de inicio; ¿la escribiste correctamente?
       placeholder: Tu nombre de usuario de Fediverse, por ejemplo manyfold@3dp.chat
       submit: Llévame a casa
-      title: Seguir a %{name}
+      title: Seguir %{name}
   general:
     delete: Borrar
     download: Descargar
@@ -329,7 +329,7 @@ es:
       current_page: Página actual
       label: Ir a la página %{page}
     paginator:
-      label:
+      label: Navegación por la página
     prev_page:
       label: Ir a la página anterior
   layouts:
