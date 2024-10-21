@@ -39,7 +39,7 @@ en:
       previous: Previous
       select_slide: Choose image to display
       slide_label: "%{name} (%{index} of %{count})"
-    index:
+    list:
       actions_heading: Actions
       bulk_edit: Bulk Edit
       no_results_html: Sorry, we couldn't find anything to show you! Try changing your filters or search terms, or uploading some models.
