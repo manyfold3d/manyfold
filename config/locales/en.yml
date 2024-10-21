@@ -8,9 +8,9 @@ en:
         name: Name
         notes: Notes
       creator:
-        caption: Caption
+        caption: Tagline
         name: Name
-        notes: Notes
+        notes: Description
       library:
         caption: Caption
         icon: Icon
