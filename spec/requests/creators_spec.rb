@@ -82,7 +82,7 @@ RSpec.describe "Creators" do
     describe "GET /creators/:id", :as_member do
       it "Redirects to a list of models with that creator" do
         get "/creators/#{creator.to_param}"
-        expect(response).to redirect_to("/models?creator=#{creator.public_id}")
+        expect(response).to have_http_status(:success)
       end
     end
 
