@@ -713,7 +713,7 @@ GEM
     validate_url (1.0.15)
       activemodel (>= 3.0.0)
       public_suffix
-    view_component (3.17.0)
+    view_component (3.18.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -825,7 +825,7 @@ DEPENDENCIES
   sys-filesystem (~> 1.5)
   translation (~> 1.41)
   tzinfo-data
-  view_component (~> 3.17)
+  view_component (~> 3.18)
   web-console (>= 4.1.0)
 
 RUBY VERSION
