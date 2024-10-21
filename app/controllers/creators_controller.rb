@@ -34,6 +34,7 @@ class CreatorsController < ApplicationController
   def show
     @models = policy_scope(Model).where(creator: @creator)
     prepare_model_list
+    @additional_filters = {creator: @creator}
     render layout: "card_list_page"
   end
 
