@@ -45,8 +45,8 @@ module ApplicationHelper
   end
 
   def card(style, title = nil, options = {}, &content)
-    id = "card-#{SecureRandom.hex(4)}"
-    card_class = "card mb-4"
+    id = options[:id] || "card-#{SecureRandom.hex(4)}"
+    card_class = ["card", "mb-4", options[:class]].join(" ")
     if options[:skip_link]
       skiplink = skip_link(options[:skip_link][:target], options[:skip_link][:text])
       card_class += " skip-link-container"
