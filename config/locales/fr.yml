@@ -195,10 +195,6 @@ fr:
     caber_relations_form:
       add:
       permissions:
-    content_header:
-      sort:
-        name: Trier par nom
-        time: Trier par heure
     demo_mode: Cette instance est en mode démo. Vous ne pouvez pas ajouter ou supprimer des modèles, mais vous pouvez faire tout le reste.
     filters_card:
       missing_tags: Etiquette manquante
@@ -245,6 +241,10 @@ fr:
       search: Recherche
       settings: Paramètres
       upload: Télécharger
+    order_buttons:
+      sort:
+        name: Trier par nom
+        time: Trier par heure
     tag_list:
       unrelated_tag_count:
         one:

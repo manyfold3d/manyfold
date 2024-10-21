@@ -195,10 +195,6 @@ de:
     caber_relations_form:
       add: Füge eine weitere Berechtigungen hinzu.
       permissions: Teilend
-    content_header:
-      sort:
-        name: Nach Namen sortieren
-        time: Sortieren nach Zeit
     demo_mode: Diese Instanz befindet sich im Demo-Modus. Du kannst keine Modelle hinzufügen oder entfernen, aber alles andere ist möglich.
     filters_card:
       missing_tags: Fehlende Tags
@@ -245,6 +241,10 @@ de:
       search: Suche
       settings: Einstellungen
       upload: Hochladen
+    order_buttons:
+      sort:
+        name: Nach Namen sortieren
+        time: Sortieren nach Zeit
     tag_list:
       unrelated_tag_count:
         one: "%{count} unabhängige Tags versteckt"

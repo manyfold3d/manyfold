@@ -196,10 +196,6 @@ en:
     caber_relations_form:
       add: add another permission
       permissions: Sharing
-    content_header:
-      sort:
-        name: Sort by Name
-        time: Sort by Time
     demo_mode: This instance is in demo mode. You cannot add or remove models, but you can do everything else.
     filters_card:
       missing_tags: Missing tags
@@ -246,6 +242,10 @@ en:
       search: Search
       settings: Settings
       upload: Upload
+    order_buttons:
+      sort:
+        name: Sort by Name
+        time: Sort by Time
     tag_list:
       unrelated_tag_count:
         one: "%{count} unrelated tag hidden"

@@ -199,10 +199,6 @@ es:
       permissions: 'Compartiendo
 
         '
-    content_header:
-      sort:
-        name: Ordenar por nombre
-        time: Ordenar por tiempo
     demo_mode: Esta instancia es una demo. No puedes añadir ni eliminar modelos, pero puedes hacer todo lo demás.
     filters_card:
       missing_tags: Etiquetas vacías
@@ -249,6 +245,10 @@ es:
       search: Buscar
       settings: Ajustes
       upload: Cargar
+    order_buttons:
+      sort:
+        name: Ordenar por nombre
+        time: Ordenar por tiempo
     tag_list:
       unrelated_tag_count:
         one: "%{count} etiqueta no relacionada oculta"
