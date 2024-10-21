@@ -1,7 +1,3 @@
-<% content_for :page_header do %>
-  <%= render "application/content_header" %>
-<% end %>
-
 <% content_for :items do %>
   <% if @models.empty? %>
     <div class="alert alert-info">
@@ -10,10 +6,13 @@
     </div>
   <% else %>
     <div class="skip-link-container">
-      <%= skip_link "sidebar", t(".skip_models") %>
-      <% if pagination_settings["models"] %>
-        <%= paginate @models %>
-      <% end %>
+      <div class="clearfix">
+        <%= skip_link "sidebar", t(".skip_models") %>
+        <%= render "order_buttons" %>
+        <% if pagination_settings["models"] %>
+          <%= paginate @models %>
+        <% end %>
+      </div>
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
         <%= render ModelComponent.with_collection(@models, can_edit: @can_edit, can_destroy: @can_destroy) %>
       </div>

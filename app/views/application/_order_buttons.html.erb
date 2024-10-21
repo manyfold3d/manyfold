@@ -1,0 +1,4 @@
+<div class="float-end mb-3">
+  <%= link_to icon("book", t(".sort.name")), @filters.merge(order: "name"), class: "btn #{(session["order"] == "name") ? "btn-secondary" : "btn-outline-secondary"} btn-sm" %>
+  <%= link_to icon("clock", t(".sort.time")), @filters.merge(order: "recent"), class: "btn #{(session["order"] == "recent") ? "btn-secondary" : "btn-outline-secondary"} btn-sm" %>
+</div>
