@@ -21,6 +21,8 @@ es:
       unknown: Desconocido
     index:
       skip_creators: Omitir lista de creadores
+    show:
+      edit:
     unassigned:
       caption: Todos los modelos sin creador asignado.
       name: Sin asignar

@@ -36,6 +36,7 @@ pl:
         notes: Opis
         path: Ścieżka
         preview_file: Podgląd pliku
+        sensitive:
         tags: Tagi
       model_file:
         caption: Napis
