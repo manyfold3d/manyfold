@@ -50,7 +50,7 @@ COPY --from=build \
 
 # Set up jemalloc and YJIT for performance
 ENV LD_PRELOAD="libjemalloc.so.2"
-ENV MALLOC_CONF="dirty_decay_ms:1000,narenas:2,background_thread:true,stats_print:true"
+ENV MALLOC_CONF="dirty_decay_ms:1000,narenas:2,background_thread:true"
 ENV RUBY_YJIT_ENABLE="1"
 
 ARG APP_VERSION
