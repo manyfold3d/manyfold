@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_17_113112) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_21_124608) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -302,7 +302,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_17_113112) do
     t.json "pagination_settings", default: {"models"=>true, "creators"=>true, "collections"=>true, "per_page"=>12}
     t.json "renderer_settings", default: {"grid_width"=>200, "grid_depth"=>200, "show_grid"=>true, "enable_pan_zoom"=>false, "background_colour"=>"#000000", "object_colour"=>"#cccccc", "render_style"=>"normals"}
     t.json "tag_cloud_settings", default: {"threshold"=>2, "heatmap"=>true, "keypair"=>true, "sorting"=>"frequency"}
-    t.json "problem_settings", default: {"missing"=>"danger", "empty"=>"info", "nesting"=>"warning", "inefficient"=>"info", "duplicate"=>"warning", "no_image"=>"silent", "no_3d_model"=>"silent", "non_manifold"=>"warning", "inside_out"=>"warning"}
+    t.json "problem_settings", default: {"missing"=>"danger", "empty"=>"info", "nesting"=>"warning", "inefficient"=>"info", "duplicate"=>"warning", "no_image"=>"silent", "no_3d_model"=>"silent", "non_manifold"=>"warning", "inside_out"=>"warning", "no_license"=>"silent", "no_links"=>"silent", "no_creator"=>"silent", "no_tags"=>"silent"}
     t.json "file_list_settings", default: {"hide_presupported_versions"=>true}
     t.string "reset_password_token"
     t.datetime "remember_created_at"
@@ -310,12 +310,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_17_113112) do
     t.string "interface_language"
     t.integer "failed_attempts", default: 0, null: false
     t.datetime "locked_at"
-    t.string "public_id"
-    t.string "provider"
-    t.string "uid"
     t.string "auth_provider"
     t.string "auth_uid"
     t.string "sensitive_content_handling"
+    t.string "public_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["public_id"], name: "index_users_on_public_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
