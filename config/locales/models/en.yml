@@ -40,7 +40,7 @@ en:
       select_slide: Choose image to display
       slide_label: "%{name} (%{index} of %{count})"
     list:
-      bulk_edit: Bulk Edit
+      bulk_edit: Edit All Models
       no_results_html: Sorry, we couldn't find anything to show you! Try changing your filters or search terms, or uploading some models.
       skip_models: Skip model list
     merge:
