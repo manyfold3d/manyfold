@@ -59,6 +59,12 @@ fr:
     scan:
       success: Début de l'analyse du modèle
     show:
+      download:
+        file_type:
+        label:
+        menu_header:
+        supported:
+        unsupported:
       files: Fichiers
       files_card:
         bulk_edit: Modifier tous les fichiers
