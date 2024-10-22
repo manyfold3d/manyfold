@@ -91,7 +91,7 @@
     <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), model_path(@model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: translate("models.destroy.confirm")}} if policy(@model).destroy? %>
   <% end %>
 
-  <div class="mb-3 w-100 center">
+  <div class="mb-3 w-100 text-center">
     <div class="btn-group ml-auto mr-auto">
       <%= link_to safe_join([icon("cloud-download", ""), t(".download.label")], " "), model_path(@model, format: @download_format), class: "btn btn-lg btn-primary" %>
       <button type="button" class="btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
