@@ -38,7 +38,7 @@ es:
         notes: Descripción
         path: Ruta
         preview_file: Vista previa
-        sensitive:
+        sensitive: Contenido Sensible
         tags: Etiquetas
       model_file:
         caption: Subtítulo

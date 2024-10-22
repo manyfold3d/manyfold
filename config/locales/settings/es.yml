@@ -37,11 +37,11 @@ es:
         help: 'Nota: es posible que algunos textos no traducidos sigan apareciendo en inglés.'
         label: Idioma de la aplicación
       sensitive_content:
-        help:
-        hide:
-        label:
-        mask:
-        show:
+        help: Afecta al modo en que se mostrará el contenido marcado como "sensible"
+        hide: Ocultar completamente
+        label: Contenido Sensible
+        mask: Desenfocar en las listas
+        show: Mostrar como normal
     library_settings:
       description: Ver detalles de la biblioteca y modificar.
       free_space:
