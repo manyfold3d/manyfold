@@ -152,6 +152,14 @@ class Model < ApplicationRecord
     new_model
   end
 
+  def has_supported_and_unsupported?
+    model_files.where(presupported: true).count && model_files.where(presupported: false).count
+  end
+
+  def file_extensions
+    model_files.map(&:extension).uniq
+  end
+
   private
 
   def normalize_license

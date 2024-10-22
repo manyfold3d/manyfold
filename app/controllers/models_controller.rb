@@ -18,17 +18,24 @@ class ModelsController < ApplicationController
   end
 
   def show
-    files = @model.model_files
-    @images = files.select(&:is_image?)
-    @images.unshift(@model.preview_file) if @images.delete(@model.preview_file)
-    if helpers.file_list_settings["hide_presupported_versions"]
-      hidden_ids = files.select(:presupported_version_id).where.not(presupported_version_id: nil)
-      files = files.where.not(id: hidden_ids)
+    respond_to do |format|
+      format.html do
+        files = @model.model_files
+        @images = files.select(&:is_image?)
+        @images.unshift(@model.preview_file) if @images.delete(@model.preview_file)
+        if helpers.file_list_settings["hide_presupported_versions"]
+          hidden_ids = files.select(:presupported_version_id).where.not(presupported_version_id: nil)
+          files = files.where.not(id: hidden_ids)
+        end
+        files = files.includes(:presupported_version, :problems)
+        files = files.reject(&:is_image?)
+        @groups = helpers.group(files)
+        @extensions = @model.file_extensions
+        @has_supported_and_unsupported = @model.has_supported_and_unsupported?
+        @download_format = :sevenz
+        render layout: "card_list_page"
+      end
     end
-    files = files.includes(:presupported_version, :problems)
-    files = files.reject(&:is_image?)
-    @groups = helpers.group(files)
-    render layout: "card_list_page"
   end
 
   def new

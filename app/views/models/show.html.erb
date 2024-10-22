@@ -91,6 +91,26 @@
     <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), model_path(@model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: translate("models.destroy.confirm")}} if policy(@model).destroy? %>
   <% end %>
 
+  <div class="mb-3 w-100 center">
+    <div class="btn-group ml-auto mr-auto">
+      <%= link_to safe_join([icon("cloud-download", ""), t(".download.label")], " "), model_path(@model, format: @download_format), class: "btn btn-lg btn-primary" %>
+      <button type="button" class="btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="visually-hidden">Download options</span>
+      </button>
+      <ul class="dropdown-menu">
+        <li class="dropdown-header"><%= t(".download.menu_header") %></li>
+        <% if @has_supported_and_unsupported %>
+          <%= content_tag(:li) { link_to t(".download.supported"), model_path(@model, format: @download_format, selection: "supported"), class: "dropdown-item" } %>
+          <%= content_tag(:li) { link_to t(".download.unsupported"), model_path(@model, format: @download_format, selection: "unsupported"), class: "dropdown-item" } %>
+          <li><hr class="dropdown-divider"></li>
+        <% end %>
+        <% @extensions&.each do |type| %>
+          <%= content_tag(:li) { link_to t(".download.file_type", type: type.upcase), model_path(@model, format: @download_format, selection: type), class: "dropdown-item" } %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
   <% if !@model.parents.empty? && policy(@model).merge? %>
     <%= card :danger, t(".merge.heading") do %>
       <p>
