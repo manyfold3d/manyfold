@@ -37,7 +37,10 @@ class Comment < ApplicationRecord
       attributedTo: (commenter&.actor&.respond_to?(:federated_url) ? commenter.actor.federated_url : nil),
       sensitive: sensitive,
       to: ["https://www.w3.org/ns/activitystreams#Public"],
-      cc: [commenter.actor.followers_url],
+      cc: [
+        commenter.actor&.followers_url,
+        commentable.actor&.followers_url
+      ],
       tag: tags
     }.compact
   end

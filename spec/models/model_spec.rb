@@ -427,4 +427,47 @@ RSpec.describe Model do
       expect(Activity::CreatorAddedModelJob).to have_been_enqueued.with(model.id).at_least(:once)
     end
   end
+
+  context "when serializing to an ActivityPub Note" do
+    let(:creator) { create(:creator) }
+    let(:collection) { create(:collection) }
+    let(:model) { create(:model, sensitive: true, creator: creator, collection: collection) }
+    let(:ap_object) { model.to_activitypub_object }
+
+    it "creates a 3DModel" do
+      expect(ap_object[:type]).to eq "3DModel"
+    end
+
+    it "includes id" do
+      expect(ap_object[:id]).to eq model.federated_url
+    end
+
+    it "includes publication time" do
+      expect(ap_object[:published]).to be_present
+    end
+
+    it "includes sensitive flag" do
+      expect(ap_object[:sensitive]).to be true
+    end
+
+    it "includes attribution" do
+      expect(ap_object[:attributedTo]).to eq creator.actor.federated_url
+    end
+
+    it "includes to field" do
+      expect(ap_object[:to]).to include "https://www.w3.org/ns/activitystreams#Public"
+    end
+
+    it "includes model followers in cc field" do
+      expect(ap_object[:cc]).to include model.actor.followers_url
+    end
+
+    it "includes creator followers in cc field" do
+      expect(ap_object[:cc]).to include model.creator.actor.followers_url
+    end
+
+    it "includes collection followers in cc field" do
+      expect(ap_object[:cc]).to include model.collection.actor.followers_url
+    end
+  end
 end

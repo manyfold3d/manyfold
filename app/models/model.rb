@@ -152,6 +152,33 @@ class Model < ApplicationRecord
     new_model
   end
 
+  def federated_url
+    return nil unless public?
+    Rails.application.routes.url_helpers.url_for(self, {only_path: false})
+  end
+
+  def to_activitypub_object
+    # We define a 3DModel object type, following the naming of https://schema.org/3DModel
+    # This is described in our ActivityPub docs at https://manyfold.app/technology/activitypub.html
+    {
+      id: federated_url,
+      type: "3DModel",
+      published: created_at&.iso8601,
+      attributedTo: (creator&.actor&.respond_to?(:federated_url) ? creator.actor.federated_url : nil),
+      sensitive: sensitive,
+      to: ["https://www.w3.org/ns/activitystreams#Public"],
+      cc: [
+        creator&.actor&.followers_url,
+        collection&.actor&.followers_url,
+        actor&.followers_url
+      ].compact
+    }.compact
+  end
+
+  def public?
+    Pundit::PolicyFinder.new(Model).policy.new(nil, self).show?
+  end
+
   private
 
   def normalize_license
