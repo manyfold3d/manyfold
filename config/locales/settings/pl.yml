@@ -37,11 +37,11 @@ pl:
         help: 'Uwaga: niektóre nieprzetłumaczone teksty mogą nadal wyświetlać się w języku angielskim.'
         label: Język interfejsu
       sensitive_content:
-        help:
-        hide:
-        label:
-        mask:
-        show:
+        help: Wpływa na sposób wyświetlania treści oznaczonych jako "wrażliwych"
+        hide: Ukryj całkowicie
+        label: Wrażliwa Treść
+        mask: Rozmyj w liście
+        show: Pokaż jak zwykle
     library_settings:
       description: Zobacz szczegóły biblioteki i ją zmodyfikuj.
       free_space:

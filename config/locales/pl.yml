@@ -10,7 +10,7 @@ pl:
       creator:
         caption: Napis
         name: Nazwa
-        notes: Notatki
+        notes: Opis
       library:
         caption: Napis
         icon: Ikona
@@ -36,7 +36,7 @@ pl:
         notes: Opis
         path: Ścieżka
         preview_file: Podgląd pliku
-        sensitive:
+        sensitive: Wrażliwa Treść
         tags: Tagi
       model_file:
         caption: Napis

@@ -22,7 +22,7 @@ es:
     index:
       skip_creators: Omitir lista de creadores
     show:
-      edit:
+      edit: Editar Perfil de Creador
     unassigned:
       caption: Todos los modelos sin creador asignado.
       name: Sin asignar

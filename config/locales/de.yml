@@ -10,7 +10,7 @@ de:
       creator:
         caption: Beschreibung
         name: Name
-        notes: Notizen
+        notes: Beschreibung
       library:
         caption: Beschreibung
         icon: Symbol
@@ -36,7 +36,7 @@ de:
         notes: Beschreibung
         path: Pfad
         preview_file: Vorschau Datei
-        sensitive:
+        sensitive: Möglicherweise verstörender Inhalt
         tags: Tags
       model_file:
         caption: Beschreibung

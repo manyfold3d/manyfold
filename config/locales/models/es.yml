@@ -40,7 +40,7 @@ es:
       select_slide: Elija la imagen que desea mostrar
       slide_label: "%{name} (%{index} de %{count})"
     list:
-      bulk_edit:
+      bulk_edit: Editar todos los modelos
       no_results_html: Lo sentimos, ¡no hemos encontrado nada que mostrarte! Prueba a cambiar los filtros o los términos de búsqueda, o a subir algunos modelos.
       skip_models: Omitir lista de modelos
     merge:
@@ -59,6 +59,12 @@ es:
     scan:
       success: Escaneo de modelos iniciado
     show:
+      download:
+        file_type:
+        label:
+        menu_header:
+        supported:
+        unsupported:
       files: Archivos
       files_card:
         bulk_edit: Editar todos los archivos
