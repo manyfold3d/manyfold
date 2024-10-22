@@ -22,7 +22,7 @@ de:
     index:
       skip_creators: Erstellerliste überspringen
     show:
-      edit:
+      edit: Erstellerprofil bearbeiten
     unassigned:
       caption: Alle Modelle ohne bekannten Ersteller.
       name: Nicht zugewiesen
