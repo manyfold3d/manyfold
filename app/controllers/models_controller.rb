@@ -18,17 +18,38 @@ class ModelsController < ApplicationController
   end
 
   def show
-    files = @model.model_files
-    @images = files.select(&:is_image?)
-    @images.unshift(@model.preview_file) if @images.delete(@model.preview_file)
-    if helpers.file_list_settings["hide_presupported_versions"]
-      hidden_ids = files.select(:presupported_version_id).where.not(presupported_version_id: nil)
-      files = files.where.not(id: hidden_ids)
+    respond_to do |format|
+      format.html do
+        files = @model.model_files
+        @images = files.select(&:is_image?)
+        @images.unshift(@model.preview_file) if @images.delete(@model.preview_file)
+        if helpers.file_list_settings["hide_presupported_versions"]
+          hidden_ids = files.select(:presupported_version_id).where.not(presupported_version_id: nil)
+          files = files.where.not(id: hidden_ids)
+        end
+        files = files.includes(:presupported_version, :problems)
+        files = files.reject(&:is_image?)
+        @groups = helpers.group(files)
+        @extensions = @model.file_extensions
+        @has_supported_and_unsupported = @model.has_supported_and_unsupported?
+        @download_format = :zip
+        render layout: "card_list_page"
+      end
+      format.zip do
+        tmpdir = LibraryUploader.find_storage(:cache).directory
+        filename = [
+          @model.slug,
+          params[:selection]
+        ].compact.join("-") + ".zip"
+        tmpfile = File.join(tmpdir, "#{@model.updated_at.to_time.to_i}-" + filename)
+        unless File.exist?(tmpfile)
+          files = file_list(@model, params[:selection])
+          write_archive(tmpfile, files)
+        end
+        send_file(tmpfile, filename: filename, type: :zip, disposition: :attachment)
+        # We will rely on Shrine to clean up the temp file
+      end
     end
-    files = files.includes(:presupported_version, :problems)
-    files = files.reject(&:is_image?)
-    @groups = helpers.group(files)
-    render layout: "card_list_page"
   end
 
   def new
@@ -196,5 +217,32 @@ class ModelsController < ApplicationController
 
   def clear_returnable
     session[:return_after_new] = nil
+  end
+
+  def file_list(model, selection)
+    case selection
+    when nil
+      model.model_files
+    when "supported"
+      model.model_files.where(presupported: true)
+    when "unsupported"
+      model.model_files.where(presupported: false)
+    else
+      model.model_files.select { |f| f.extension == selection }
+    end
+  end
+
+  def write_archive(filename, files)
+    Archive.write_open_filename(filename, Archive::COMPRESSION_COMPRESS, Archive::FORMAT_ZIP) do |archive|
+      files.each do |file|
+        archive.new_entry do |entry|
+          entry.pathname = file.filename
+          entry.size = file.size
+          entry.filetype = Archive::Entry::FILE
+          archive.write_header entry
+          archive.write_data file.attachment.read
+        end
+      end
+    end
   end
 end

@@ -59,6 +59,12 @@ en:
     scan:
       success: Model scan started
     show:
+      download:
+        file_type: "%{type} Files Only"
+        label: Download Model
+        menu_header: Download Options
+        supported: Supported Files Only
+        unsupported: Unsupported Files Only
       files: Files
       files_card:
         bulk_edit: Edit all files
