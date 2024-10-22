@@ -32,8 +32,22 @@ class ModelsController < ApplicationController
         @groups = helpers.group(files)
         @extensions = @model.file_extensions
         @has_supported_and_unsupported = @model.has_supported_and_unsupported?
-        @download_format = :sevenz
+        @download_format = :zip
         render layout: "card_list_page"
+      end
+      format.zip do
+        tmpdir = LibraryUploader.find_storage(:cache).directory
+        filename = [
+          @model.slug,
+          params[:selection]
+        ].compact.join("-") + ".zip"
+        tmpfile = File.join(tmpdir, "#{@model.updated_at.to_time.to_i}-" + filename)
+        unless File.exist?(tmpfile)
+          files = file_list(@model, params[:selection])
+          write_archive(tmpfile, files)
+        end
+        send_file(tmpfile, filename: filename, type: :zip, disposition: :attachment)
+        # We will rely on Shrine to clean up the temp file
       end
     end
   end
@@ -203,5 +217,32 @@ class ModelsController < ApplicationController
 
   def clear_returnable
     session[:return_after_new] = nil
+  end
+
+  def file_list(model, selection)
+    case selection
+    when nil
+      model.model_files
+    when "supported"
+      model.model_files.where(presupported: true)
+    when "unsupported"
+      model.model_files.where(presupported: false)
+    else
+      model.model_files.select { |f| f.extension == selection }
+    end
+  end
+
+  def write_archive(filename, files)
+    Archive.write_open_filename(filename, Archive::COMPRESSION_COMPRESS, Archive::FORMAT_ZIP) do |archive|
+      files.each do |file|
+        archive.new_entry do |entry|
+          entry.pathname = file.filename
+          entry.size = file.size
+          entry.filetype = Archive::Entry::FILE
+          archive.write_header entry
+          archive.write_data file.attachment.read
+        end
+      end
+    end
   end
 end
