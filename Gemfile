@@ -134,8 +134,6 @@ gem "logstash-event", "~> 1.2"
 
 gem "climate_control", "~> 1.2", group: :test
 
-gem "sidekiq-scheduler", github: "manyfold3d/sidekiq-scheduler", branch: "fix-dynamic-schedule-load-on-boot"
-
 gem "sys-filesystem", "~> 1.5"
 gem "shrine", "~> 3.6"
 
@@ -156,3 +154,5 @@ gem "kramdown", "~> 2.4"
 gem "omniauth", "~> 2.1"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "omniauth_openid_connect", "~> 0.8.0"
+
+gem "sidekiq-cron", "~> 1.12"

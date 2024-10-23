@@ -13,13 +13,27 @@ module UsageReport
     end
   end
 
+  def self.set_schedule!
+    SiteSettings.clear_cache
+    jobname = "usage"
+    if SiteSettings.anonymous_usage_id.present?
+      Sidekiq::Cron::Job.create(
+        name: jobname,
+        cron: "0 0 * * * *",
+        class: "UsageReportingJob"
+      )
+    else
+      Sidekiq::Cron::Job.destroy(jobname)
+    end
+  end
+
   def self.enable!
     SiteSettings.anonymous_usage_id ||= SecureRandom.uuid
-    Sidekiq.set_schedule("usage", {every: "1d", class: "UsageReportingJob"})
+    set_schedule!
   end
 
   def self.disable!
     SiteSettings.anonymous_usage_id = nil
-    Sidekiq.remove_schedule("usage")
+    set_schedule!
   end
 end
