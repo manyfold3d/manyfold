@@ -14,7 +14,7 @@ Rails.application.config.after_initialize do
   begin
     Sidekiq::Cron::Job.create(
       name: "clear-shrine-cache",
-      cron: "0 * * * * *",
+      cron: "every hour",
       class: "CacheSweepJob"
     )
   rescue RedisClient::CannotConnectError
