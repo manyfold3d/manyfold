@@ -11,16 +11,6 @@ GIT
       rubyzip
 
 GIT
-  remote: https://github.com/manyfold3d/sidekiq-scheduler.git
-  revision: 8eb248143c89fae273d66a57b41b474b7006f2bd
-  branch: fix-dynamic-schedule-load-on-boot
-  specs:
-    sidekiq-scheduler (5.0.3)
-      rufus-scheduler (~> 3.2)
-      sidekiq (>= 6, < 8)
-      tilt (>= 1.4.0, < 3)
-
-GIT
   remote: https://github.com/manyfold3d/sqlite3_ar_regexp.git
   revision: 2fa15db50770e86b7b4872486c2ee8ff282a3e2c
   ref: rails-7.1-support
@@ -621,8 +611,6 @@ GEM
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    rufus-scheduler (3.9.1)
-      fugit (~> 1.1, >= 1.1.6)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -645,6 +633,10 @@ GEM
       logger
       rack (>= 2.2.4)
       redis-client (>= 0.22.2)
+    sidekiq-cron (1.12.0)
+      fugit (~> 1.8)
+      globalid (>= 1.0.1)
+      sidekiq (>= 6)
     sidekiq-failures (1.0.4)
       sidekiq (>= 4.0.0)
     simple_po_parser (1.1.6)
@@ -813,8 +805,8 @@ DEPENDENCIES
   scout_apm
   shrine (~> 3.6)
   sidekiq (~> 7.3)
+  sidekiq-cron (~> 1.12)
   sidekiq-failures (~> 1.0)
-  sidekiq-scheduler!
   simplecov (~> 0.22.0)
   spdx (~> 4.1)
   spring
