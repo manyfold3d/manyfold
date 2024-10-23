@@ -427,4 +427,31 @@ RSpec.describe Model do
       expect(Activity::CreatorAddedModelJob).to have_been_enqueued.with(model.id).at_least(:once)
     end
   end
+
+  it "detects if a model has both supported and unsupported files" do
+    model = create(:model)
+    create(:model_file, model: model, presupported: true)
+    create(:model_file, model: model, presupported: false)
+    expect(model.has_supported_and_unsupported?).to be true
+  end
+
+  it "detects if a model has only supported files" do
+    model = create(:model)
+    create(:model_file, model: model, presupported: true)
+    expect(model.has_supported_and_unsupported?).to be false
+  end
+
+  it "detects if a model has only unsupported files" do
+    model = create(:model)
+    create(:model_file, model: model, presupported: false)
+    expect(model.has_supported_and_unsupported?).to be false
+  end
+
+  it "generates list of file extensions" do
+    model = create(:model)
+    create(:model_file, model: model, filename: "test.stl")
+    create(:model_file, model: model, filename: "test2.stl")
+    create(:model_file, model: model, filename: "test.obj")
+    expect(model.file_extensions.sort).to eq ["obj", "stl"]
+  end
 end
