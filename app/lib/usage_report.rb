@@ -19,7 +19,7 @@ module UsageReport
     if SiteSettings.anonymous_usage_id.present?
       Sidekiq::Cron::Job.create(
         name: jobname,
-        cron: "0 0 * * * *",
+        cron: "every day",
         class: "UsageReportingJob"
       )
     else
