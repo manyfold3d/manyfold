@@ -41,7 +41,7 @@
       <div class="row">
         <div class="col">
           <%= link_to t(".open_button.text"), model_model_file_path(@model, file), {class: "btn btn-primary", "aria-label": translate(".open_button.label", name: file.name)} %>
-          <%= link_to icon("cloud-download", t("general.download")), model_model_file_path(@model, file, file.extension&.to_sym, download: "true"), {class: "btn btn-outline-secondary"} %>
+          <%= link_to icon("cloud-download", t("general.download")), model_model_file_path(@model, file, file.extension&.to_sym, download: "true"), {class: "btn btn-outline-secondary", download: "download"} %>
           <% if policy(@model).edit? %>
             <%= form_with model: @model, class: "d-inline" do |form| %>
               <%= form.hidden_field :preview_file_id, value: file.id %>

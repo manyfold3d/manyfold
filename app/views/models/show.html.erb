@@ -93,19 +93,19 @@
 
   <div class="mb-3 w-100 text-center">
     <div class="btn-group ml-auto mr-auto">
-      <%= link_to safe_join([icon("cloud-download", ""), t(".download.label")], " "), model_path(@model, format: @download_format), class: "btn btn-lg btn-primary" %>
+      <%= link_to safe_join([icon("cloud-download", ""), t(".download.label")], " "), model_path(@model, format: @download_format), class: "btn btn-lg btn-primary", download: "download" %>
       <button type="button" class="btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
         <span class="visually-hidden">Download options</span>
       </button>
       <ul class="dropdown-menu">
         <li class="dropdown-header"><%= t(".download.menu_header") %></li>
         <% if @has_supported_and_unsupported %>
-          <%= content_tag(:li) { link_to t(".download.supported"), model_path(@model, format: @download_format, selection: "supported"), class: "dropdown-item" } %>
-          <%= content_tag(:li) { link_to t(".download.unsupported"), model_path(@model, format: @download_format, selection: "unsupported"), class: "dropdown-item" } %>
+          <%= content_tag(:li) { link_to t(".download.supported"), model_path(@model, format: @download_format, selection: "supported"), class: "dropdown-item", download: "download" } %>
+          <%= content_tag(:li) { link_to t(".download.unsupported"), model_path(@model, format: @download_format, selection: "unsupported"), class: "dropdown-item", download: "download" } %>
           <li><hr class="dropdown-divider"></li>
         <% end %>
         <% @extensions&.each do |type| %>
-          <%= content_tag(:li) { link_to t(".download.file_type", type: type.upcase), model_path(@model, format: @download_format, selection: type), class: "dropdown-item" } %>
+          <%= content_tag(:li) { link_to t(".download.file_type", type: type.upcase), model_path(@model, format: @download_format, selection: type), class: "dropdown-item", download: "download" } %>
         <% end %>
       </ul>
     </div>
