@@ -1,0 +1,19 @@
+<div class="card mb-2">
+  <h3 class="card-header"><%= t(".heading") %></h3>
+  <div class="card-body">
+    <%= link_to safe_join([icon("tools", t(".activeadmin")), t(".activeadmin")], " "),
+          "/admin",
+          class: "btn btn-danger mb-3" %>
+    <%= link_to safe_join([icon("activity", t(".sidekiq")), t(".sidekiq")], " "),
+          "/admin/sidekiq",
+          class: "btn btn-danger mb-3" %>
+    <%= link_to safe_join([icon("graph-up", t(".performance")), t(".performance")], " "),
+          "/admin/performance",
+          class: "btn btn-danger mb-3" %>
+    <%= if defined?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) && ApplicationRecord.connection.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter)
+          link_to safe_join([icon("database", t(".pghero")), t(".pghero")], " "),
+            "/admin/pghero",
+            class: "btn btn-danger mb-3"
+        end %>
+  </div>
+</div>

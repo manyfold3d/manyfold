@@ -1,6 +1,12 @@
 ---
 en:
   settings:
+    admin_tools:
+      activeadmin: Advanced Administration
+      heading: Administration Tools
+      performance: Performance Dashboard
+      pghero: PgHero
+      sidekiq: Sidekiq
     analysis_settings:
       description: Perform deep mesh analysis on models. These options will make your scans take significantly longer and use a lot more CPU and memory.
       heading: Mesh Analysis
@@ -58,10 +64,13 @@ en:
           member: Logged-in local users
           none: Private
       details_html: To change these settings, edit the server's <a href='https://manyfold.app/sysadmin/configuration.html'>environment variables</a> and restart.
+      email: Email delivery configured?
+      federation: Federation enabled?
       heading: Multiuser
+      multiuser: Multiuser mode?
       multiuser_mode: Manyfold is running in multiuser mode.
-      registrations_closed: User signup is disabled.
-      registrations_open: User signup is enabled.
+      oidc: OpenID Connect configured?
+      registration: Account registration open?
       single_user_mode: Manyfold is running in single user mode.
     pagination_settings:
       collections:
@@ -109,7 +118,6 @@ en:
       show_grid:
         label: Show ground plane
     show:
-      advanced_admin: Advanced Administration
       submit: Save Settings
       title: Settings
     tag_cloud_settings:

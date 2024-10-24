@@ -1,6 +1,9 @@
 ---
 pl:
   settings:
+    admin_tools:
+      activeadmin: Zaawansowana Administracja
+      sidekiq: Sidekiq
     analysis_settings:
       description: Przeprowadź głęboką analizę siatki na modelach. Opcje te sprawią, że skanowanie będzie trwało znacznie dłużej i zużyje znacznie więcej mocy procesora i pamięci.
       heading: Analiza siatki
@@ -60,8 +63,6 @@ pl:
       details_html: Aby zmienić te ustawienia, edytuj <a href='https://manyfold.app/sysadmin/configuration.html'>zmienne środowiskowe</a> serwera i uruchom go ponownie.
       heading: Tryb wielu użytkowników
       multiuser_mode: Manyfold działa w trybie wielu użytkowników.
-      registrations_closed: Rejestracja użytkowników jest wyłączona.
-      registrations_open: Rejestracja użytkowników jest włączona.
       single_user_mode: Manyfold działa w trybie pojedynczego użytkownika.
     pagination_settings:
       collections:
@@ -109,7 +110,6 @@ pl:
       show_grid:
         label: Pokaż płaszczyznę podłoża
     show:
-      advanced_admin: Zaawansowana Administracja
       submit: Zapisz Ustawienia
       title: Ustawienia
     tag_cloud_settings:

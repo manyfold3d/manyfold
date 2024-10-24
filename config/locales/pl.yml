@@ -171,7 +171,6 @@ pl:
       description: Wpisy są odrzucane po %{retention_period}.
       message: Wiadomość
       name: Nazwa
-      sidekiq: Sidekiq
       time: Kiedy
       title: Ostatnia aktywność
   activity_helper:

@@ -171,7 +171,6 @@ fr:
       description: Les entrées sont rejetées après %{retention_period}.
       message: Message
       name: Nom
-      sidekiq: Sidekiq
       time: Quand
       title: Activité récente
   activity_helper:
