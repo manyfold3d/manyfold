@@ -156,3 +156,5 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "omniauth_openid_connect", "~> 0.8.0"
 
 gem "sidekiq-cron", "~> 1.12"
+
+gem "rails_performance", "~> 1.2"
