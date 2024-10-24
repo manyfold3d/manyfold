@@ -158,3 +158,6 @@ gem "omniauth_openid_connect", "~> 0.8.0"
 gem "sidekiq-cron", "~> 1.12"
 
 gem "rails_performance", "~> 1.2"
+
+gem "pghero", "~> 3.6"
+gem "pg_query", "~> 5.1"

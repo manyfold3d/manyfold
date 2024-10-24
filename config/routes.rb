@@ -17,8 +17,9 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
   authenticate :user, lambda { |u| u.is_administrator? } do
-    mount Sidekiq::Web => "/sidekiq"
-    mount RailsPerformance::Engine => "/performance"
+    mount Sidekiq::Web => "/admin/sidekiq"
+    mount RailsPerformance::Engine => "/admin/performance"
+    mount PgHero::Engine => "/admin/pghero"
     resources :activity
   end
 

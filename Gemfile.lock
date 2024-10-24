@@ -271,6 +271,18 @@ GEM
     glob (0.4.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    google-protobuf (4.28.3)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.28.3-x64-mingw-ucrt)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.28.3-x86_64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.28.3-x86_64-linux)
+      bigdecimal
+      rake (>= 13)
     guard (2.18.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -455,6 +467,10 @@ GEM
       racc
     pg (1.5.8)
     pg (1.5.8-x64-mingw-ucrt)
+    pg_query (5.1.0)
+      google-protobuf (>= 3.22.3)
+    pghero (3.6.1)
+      activerecord (>= 6.1)
     polyglot (0.3.5)
     prime (0.1.2)
       forwardable
@@ -789,6 +805,8 @@ DEPENDENCIES
   omniauth-rails_csrf_protection (~> 1.0)
   omniauth_openid_connect (~> 0.8.0)
   pg (~> 1.5)
+  pg_query (~> 5.1)
+  pghero (~> 3.6)
   public_suffix (~> 6.0)
   puma (~> 6.4)
   pundit (~> 2.4)
