@@ -64,10 +64,13 @@ en:
           member: Logged-in local users
           none: Private
       details_html: To change these settings, edit the server's <a href='https://manyfold.app/sysadmin/configuration.html'>environment variables</a> and restart.
+      email: Email delivery configured?
+      federation: Federation enabled?
       heading: Multiuser
+      multiuser: Multiuser mode?
       multiuser_mode: Manyfold is running in multiuser mode.
-      registrations_closed: User signup is disabled.
-      registrations_open: User signup is enabled.
+      oidc: OpenID Connect configured?
+      registration: Account registration open?
       single_user_mode: Manyfold is running in single user mode.
     pagination_settings:
       collections:

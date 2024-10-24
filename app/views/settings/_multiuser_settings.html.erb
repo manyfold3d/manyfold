@@ -4,11 +4,28 @@
     <p class='lead'>
       <%= SiteSettings.multiuser_enabled? ? t(".multiuser_mode") : t(".single_user_mode") %>
     </p>
-    <% if SiteSettings.multiuser_enabled? %>
-      <p>
-        <%= SiteSettings.registration_enabled? ? t(".registrations_open") : t(".registrations_closed") %>
-      </p>
-    <% end %>
+    <table class='table table-striped'>
+      <tr>
+        <td><%= t(".multiuser") %></td>
+        <td><%= SiteSettings.multiuser_enabled? ? "✅" : "❌" %></td>
+      </tr>
+      <tr>
+        <td><%= t(".registration") %></td>
+        <td><%= SiteSettings.registration_enabled? ? "✅" : "❌" %></td>
+      </tr>
+      <tr>
+        <td><%= t(".federation") %></td>
+        <td><%= SiteSettings.federation_enabled? ? "✅" : "❌" %></td>
+      </tr>
+      <tr>
+        <td><%= t(".email") %></td>
+        <td><%= SiteSettings.email_configured? ? "✅" : "❌" %></td>
+      </tr>
+      <tr>
+        <td><%= t(".oidc") %></td>
+        <td><%= SiteSettings.oidc_enabled? ? "✅" : "❌" %></td>
+      </tr>
+    </table>
     <p>
       <%= t(".details_html") %>
     </p>

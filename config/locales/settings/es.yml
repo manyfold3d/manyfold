@@ -63,8 +63,6 @@ es:
       details_html: Para cambiar esta configuración, edite las <a href='https://manyfold.app/sysadmin/configuration.html'>variables de entorno</a> del servidor y reinicie.
       heading: Multiusuario
       multiuser_mode: Manyfold se está ejecutando en modo multiusuario.
-      registrations_closed: El registro de usuarios está desactivado.
-      registrations_open: El registro de usuarios está activado.
       single_user_mode: Manyfold se está ejecutando en modo usuario único.
     pagination_settings:
       collections:
