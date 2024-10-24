@@ -1,6 +1,12 @@
 ---
 en:
   settings:
+    admin_tools:
+      activeadmin: Advanced Administration
+      heading: Administration Tools
+      performance: Performance Dashboard
+      pghero: PgHero
+      sidekiq: Sidekiq
     analysis_settings:
       description: Perform deep mesh analysis on models. These options will make your scans take significantly longer and use a lot more CPU and memory.
       heading: Mesh Analysis
@@ -109,7 +115,6 @@ en:
       show_grid:
         label: Show ground plane
     show:
-      advanced_admin: Advanced Administration
       submit: Save Settings
       title: Settings
     tag_cloud_settings:

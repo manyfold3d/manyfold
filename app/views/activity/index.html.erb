@@ -4,13 +4,6 @@
   <div class='col col-auto'>
     <%= t ".description", retention_period: distance_of_time_in_words(ActiveJob::Status.options[:expires_in]) %>
   </div>
-  <% if !SiteSettings.demo_mode_enabled? %>
-    <div class='col text-end'>
-      <%= link_to safe_join([icon("activity", t(".sidekiq")), t(".sidekiq")], " "),
-            "/sidekiq",
-            class: "btn btn-danger", target: "_sidekiq" %>
-    </div>
-  <% end %>
 </div>
 
 <%= paginate @jobs %>

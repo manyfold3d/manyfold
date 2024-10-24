@@ -1,6 +1,9 @@
 ---
 de:
   settings:
+    admin_tools:
+      activeadmin: Erweiterte Administration
+      sidekiq: Sidekiq
     analysis_settings:
       description: Führt genauere mesh-analysen an Modellen durch. Diese Aktion führt dazu, dass deine Scans erheblich länger dauern und viel mehr CPU und Speicher verbrauchen.
       heading: Mesh Analyse
@@ -109,7 +112,6 @@ de:
       show_grid:
         label: Grundplatte anzeigen
     show:
-      advanced_admin: Erweiterte Administration
       submit: Einstellungen speichern
       title: Einstellungen
     tag_cloud_settings:

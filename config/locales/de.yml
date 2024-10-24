@@ -171,7 +171,6 @@ de:
       description: Einträge nach %{retention_period} werden verworfen.
       message: Nachricht
       name: Name
-      sidekiq: Sidekiq
       time: Wenn
       title: Neuste Aktivität
   activity_helper:

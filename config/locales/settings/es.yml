@@ -1,6 +1,9 @@
 ---
 es:
   settings:
+    admin_tools:
+      activeadmin: Administración avanzada
+      sidekiq: Sidekiq
     analysis_settings:
       description: Realiza un análisis profundo de la malla en los modelos. Estas opciones harán que tus escaneos tarden mucho más y utilicen considerablemente más CPU y memoria.
       heading: Análisis de mallas
@@ -109,7 +112,6 @@ es:
       show_grid:
         label: Mostrar plano de tierra
     show:
-      advanced_admin: Administración avanzada
       submit: Guardar ajustes
       title: Ajustes
     tag_cloud_settings:

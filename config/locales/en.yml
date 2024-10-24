@@ -171,7 +171,6 @@ en:
       description: Entries are discard after %{retention_period}.
       message: Message
       name: Name
-      sidekiq: Sidekiq
       time: When
       title: Recent Activity
   activity_helper:

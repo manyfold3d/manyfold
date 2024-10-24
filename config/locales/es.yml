@@ -173,7 +173,6 @@ es:
       description: Las entradas se borran después de %{retention_period}.
       message: Mensaje
       name: Nombre
-      sidekiq: Sidekiq
       time: Cuando
       title: Actividad reciente
   activity_helper:

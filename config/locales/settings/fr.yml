@@ -1,6 +1,9 @@
 ---
 fr:
   settings:
+    admin_tools:
+      activeadmin: Administration avancée
+      sidekiq: Sidekiq
     analysis_settings:
       description: Effectuer une analyse approfondie du maillage des modèles. Ces options allongeront considérablement la durée de vos analyses et utiliseront beaucoup plus de CPU et de mémoire.
       heading: Analyse du maillage
@@ -109,7 +112,6 @@ fr:
       show_grid:
         label: Afficher le plan de masse
     show:
-      advanced_admin: Administration avancée
       submit: Sauvegarder les paramètres
       title: Paramètres
     tag_cloud_settings:
