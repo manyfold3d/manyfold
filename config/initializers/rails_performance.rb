@@ -1,4 +1,4 @@
-if defined?(RailsPerformance)
+if defined?(RailsPerformance) && !Rails.env.test?
   RailsPerformance.setup do |config|
     config.redis = Redis::Namespace.new("#{Rails.env}-rails-performance", redis: Redis.new)
     config.duration = 4.hours
