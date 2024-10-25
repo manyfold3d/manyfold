@@ -2,11 +2,11 @@ class ModelFile < ApplicationRecord
   include LibraryUploader::Attachment(:attachment)
   include Listable
   include PublicIDable
+  include Problematic
 
   extend Memoist
 
   belongs_to :model
-  has_many :problems, as: :problematic, dependent: :destroy
 
   after_create :attach_existing_file!
 
