@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_21_124608) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_25_110218) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -87,7 +87,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_21_124608) do
     t.index ["blocked"], name: "index_favorites_on_blocked"
     t.index ["favoritable_id", "favoritable_type"], name: "fk_favoritables"
     t.index ["favoritable_type", "favoritable_id", "favoritor_type", "favoritor_id", "scope"], name: "uniq_favorites__and_favoritables", unique: true
-    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable"
     t.index ["favoritor_id", "favoritor_type"], name: "fk_favorites"
     t.index ["favoritor_type", "favoritor_id"], name: "index_favorites_on_favoritor"
     t.index ["scope"], name: "index_favorites_on_scope"
@@ -137,7 +136,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_21_124608) do
     t.datetime "updated_at", null: false
     t.string "uuid"
     t.index ["actor_id", "target_actor_id"], name: "index_federails_followings_on_actor_id_and_target_actor_id", unique: true
-    t.index ["actor_id"], name: "index_federails_followings_on_actor_id"
     t.index ["target_actor_id"], name: "index_federails_followings_on_target_actor_id"
     t.index ["uuid"], name: "index_federails_followings_on_uuid", unique: true
   end
@@ -254,7 +252,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_21_124608) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
-    t.index ["name"], name: "index_roles_on_name"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
 
@@ -276,13 +273,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_21_124608) do
     t.datetime "created_at", precision: nil
     t.index ["context"], name: "index_taggings_on_context"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
     t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
     t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
-    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
     t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
     t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
-    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -325,7 +319,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_21_124608) do
     t.integer "role_id"
     t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
-    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
   add_foreign_key "collections", "collections"
