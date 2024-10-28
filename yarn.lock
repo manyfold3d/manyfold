@@ -362,9 +362,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-typescript@npm:^7.25.9":
-  version: 7.25.9
-  resolution: "@babel/preset-typescript@npm:7.25.9"
+"@babel/preset-typescript@npm:^7.26.0":
+  version: 7.26.0
+  resolution: "@babel/preset-typescript@npm:7.26.0"
   dependencies:
     "@babel/helper-plugin-utils": ^7.25.9
     "@babel/helper-validator-option": ^7.25.9
@@ -373,7 +373,7 @@ __metadata:
     "@babel/plugin-transform-typescript": ^7.25.9
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: bb951cfc91e6d6704a0d5be3c1150f53bb70aadb91b0b294642c5e73b5dd85f88aa3fa0e71983842655e3b7e08b952a5031620c6a2577b373b15eae919f2ca0b
+  checksum: 6d8641fa6efd0e10eec5e8f92cd164b916a06d57131cfa5216c281404289c87d2b4995140a1c1d9c3bad171ff6ef2226be5f0585e09577ffff349706e991ec71
   languageName: node
   linkType: hard
 
@@ -3532,7 +3532,7 @@ __metadata:
   dependencies:
     "@babel/core": ^7
     "@babel/eslint-parser": ^7.25.9
-    "@babel/preset-typescript": ^7.25.9
+    "@babel/preset-typescript": ^7.26.0
     "@notus.sh/cocooned": ^2.4.0
     "@popperjs/core": ^2.11.8
     "@rails/ujs": ^7.1.402
