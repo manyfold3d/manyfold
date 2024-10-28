@@ -391,7 +391,7 @@ GEM
       railties (>= 4)
       request_store (~> 1.0)
     logstash-event (1.2.02)
-    loofah (2.22.0)
+    loofah (2.23.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     lumberjack (1.2.9)
@@ -538,7 +538,7 @@ GEM
     rails-settings-cached (2.9.5)
       activerecord (>= 5.0.0)
       railties (>= 5.0.0)
-    rails_performance (1.2.2)
+    rails_performance (1.2.3)
       browser
       railties
       redis
