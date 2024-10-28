@@ -580,7 +580,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.8)
+    rexml (3.3.9)
     rolify (6.0.1)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
