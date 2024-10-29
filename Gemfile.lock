@@ -283,7 +283,7 @@ GEM
     google-protobuf (4.28.3-x86_64-linux)
       bigdecimal
       rake (>= 13)
-    guard (2.18.1)
+    guard (2.19.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
       lumberjack (>= 1.0.12, < 2.0)
@@ -394,7 +394,7 @@ GEM
     loofah (2.23.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    lumberjack (1.2.9)
+    lumberjack (1.2.10)
     mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
@@ -558,7 +558,7 @@ GEM
       activesupport (>= 6.1.5)
       i18n
     rb-fsevent (0.11.2)
-    rb-inotify (0.10.1)
+    rb-inotify (0.11.1)
       ffi (~> 1.0)
     rdf (3.3.2)
       bcp47_spec (~> 0.2)
@@ -784,7 +784,7 @@ DEPENDENCIES
   faker (~> 3.5)
   federails!
   ffi-libarchive (~> 1.1)
-  guard (~> 2.18)
+  guard (~> 2.19)
   guard-rspec (~> 4.7)
   i18n-js (~> 4.2)
   i18n-tasks (~> 1.0)
