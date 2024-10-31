@@ -5,6 +5,8 @@ if defined?(RailsPerformance) && !Rails.env.test?
 
     config.enabled = true
 
+    config.ignored_paths = ["/admin", "/health"]
+
     # configure Recent tab (time window and limit of requests)
     # config.recent_requests_time_window = 60.minutes
     # config.recent_requests_limit = nil # or 1000
