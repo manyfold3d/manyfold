@@ -888,10 +888,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:^7.1.402":
-  version: 7.1.402
-  resolution: "@rails/ujs@npm:7.1.402"
-  checksum: 96f4327d0ab442541bf2e0000946e2710e3e3971404c1f7c2ea6b2e786694d2f2ab188cfb6e86b13afef5b495bc73d74a9f01cbd9300b247158cb8faa08bd042
+"@rails/ujs@npm:^7.1.500":
+  version: 7.1.500
+  resolution: "@rails/ujs@npm:7.1.500"
+  checksum: 975ef4e2c41ef4955893ff908d437eb1dc26e3b1e076de51ce601786f2b7c654d5e6addc5d9fbba7cd3640bf642eec10cb67f9afc4efec704b45a9ba8daf7a6b
   languageName: node
   linkType: hard
 
@@ -3535,7 +3535,7 @@ __metadata:
     "@babel/preset-typescript": ^7.26.0
     "@notus.sh/cocooned": ^2.4.0
     "@popperjs/core": ^2.11.8
-    "@rails/ujs": ^7.1.402
+    "@rails/ujs": ^7.1.500
     "@selectize/selectize": ^0.15.2
     "@types/bootstrap": ^5.2.10
     "@types/i18n-js": ^3.8.9
