@@ -1430,16 +1430,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/utils@npm:^6.0.3":
-  version: 6.0.3
-  resolution: "@uppy/utils@npm:6.0.3"
-  dependencies:
-    lodash: ^4.17.21
-    preact: ^10.5.13
-  checksum: a1566a350d6f9db48e084d42e5f392f62d3551c992c7167194cf8e5982bc8476c0fede881412c4a0ee43d12f36dfba01493b3a1037626a26e6a89e1026131dcd
-  languageName: node
-  linkType: hard
-
 "@uppy/utils@npm:^6.0.4":
   version: 6.0.4
   resolution: "@uppy/utils@npm:6.0.4"

@@ -1,12 +1,11 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-if ! foreman version &> /dev/null
-then
+if gem list --no-installed --exact --silent foreman; then
   echo "Installing foreman..."
   gem install foreman
 fi
 
 bin/setup
-export PORT=5000
+export PORT="${PORT:-5000}"
 export RAILS_PORT=$PORT
-foreman start -f Procfile.dev "$@"
+exec foreman start -f Procfile.dev --env /dev/null "$@"
