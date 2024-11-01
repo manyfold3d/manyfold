@@ -1311,19 +1311,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/core@npm:^4.2.2":
-  version: 4.2.2
-  resolution: "@uppy/core@npm:4.2.2"
+"@uppy/core@npm:^4.2.3":
+  version: 4.2.3
+  resolution: "@uppy/core@npm:4.2.3"
   dependencies:
     "@transloadit/prettier-bytes": ^0.3.4
-    "@uppy/store-default": ^4.1.0
-    "@uppy/utils": ^6.0.3
+    "@uppy/store-default": ^4.1.1
+    "@uppy/utils": ^6.0.4
     lodash: ^4.17.21
     mime-match: ^1.0.2
     namespace-emitter: ^2.0.1
     nanoid: ^5.0.0
     preact: ^10.5.13
-  checksum: b3c489e2a5821f8e86c53b929f318f2205e1f3391605d8ff0c7a4f55b099f6954dc5e6689d39d07ef3ca7789e59a375a2659ac3fa82aa927fa8729fed6d09ff8
+  checksum: de0ca03a3c80c909f8fc52d32034d678aaeeb8dbaa5c82cd7fb33f13b22d28c1795fadc12fa79a29455379c8673a6483f0be2cf5d4d1b43c7f7cf881cbb7be2a
   languageName: node
   linkType: hard
 
@@ -1411,10 +1411,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/store-default@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "@uppy/store-default@npm:4.1.0"
-  checksum: 84a25407e52e7001307f7d6bb4f6e2e6aeeb681692d224e9c8e5054541bf08487ba0744c6968abce62918de193bb8ce2d5d0e0520397a58ea5410cda9b595190
+"@uppy/store-default@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "@uppy/store-default@npm:4.1.1"
+  checksum: 813a1372f32a29e774174e17ae0a0e21e1f40bb2e0e141e337814c80ee82485b9fd861ab0df2179cece450366ea2545c014da44e836d49523ada9a4ba178ed8a
   languageName: node
   linkType: hard
 
@@ -1447,6 +1447,16 @@ __metadata:
     lodash: ^4.17.21
     preact: ^10.5.13
   checksum: a1566a350d6f9db48e084d42e5f392f62d3551c992c7167194cf8e5982bc8476c0fede881412c4a0ee43d12f36dfba01493b3a1037626a26e6a89e1026131dcd
+  languageName: node
+  linkType: hard
+
+"@uppy/utils@npm:^6.0.4":
+  version: 6.0.4
+  resolution: "@uppy/utils@npm:6.0.4"
+  dependencies:
+    lodash: ^4.17.21
+    preact: ^10.5.13
+  checksum: 501c2b5e434f21e1720373f7174552f067992ec4396106fdb7a8651ed3a6598b5c13fe3125d104d18e711656f9fa49b53eff531b02110d11cfbc44fe80ad2e01
   languageName: node
   linkType: hard
 
@@ -3547,7 +3557,7 @@ __metadata:
     "@types/webpack-env": ^1.18.5
     "@types/webxr": ^0.5.20
     "@typescript-eslint/parser": ^8.12.2
-    "@uppy/core": ^4.2.2
+    "@uppy/core": ^4.2.3
     "@uppy/dashboard": ^4.1.1
     "@uppy/form": ^4.0.0
     "@uppy/locales": ^4.2.0
