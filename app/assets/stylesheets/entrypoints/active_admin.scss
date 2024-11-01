@@ -8,8 +8,8 @@
 // $sidebar-width: 242px;
 
 // Active Admin's got SASS!
-@import "active_admin/mixins";
-@import "active_admin/base";
+@import '@activeadmin/activeadmin/src/scss/mixins';
+@import '@activeadmin/activeadmin/src/scss/base';
 
 // Overriding any non-variable Sass must be done after the fact.
 // For example, to change the default status-tag color:
