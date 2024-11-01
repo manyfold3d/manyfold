@@ -8,11 +8,11 @@ if defined?(RailsPerformance) && !Rails.env.test?
     config.ignored_paths = ["/admin", "/health"]
 
     # configure Recent tab (time window and limit of requests)
-    # config.recent_requests_time_window = 60.minutes
+    config.recent_requests_time_window = 60.minutes
     # config.recent_requests_limit = nil # or 1000
 
     # configure Slow Requests tab (time window, limit of requests and threshold)
-    # config.slow_requests_time_window = 4.hours # time window for slow requests
+    config.slow_requests_time_window = 60.minutes
     # config.slow_requests_limit = 500 # number of max rows
     # config.slow_requests_threshold = 500 # number of ms
 
