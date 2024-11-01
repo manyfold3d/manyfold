@@ -266,6 +266,9 @@ GEM
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
+    get_process_mem (1.0.0)
+      bigdecimal (>= 2.0)
+      ffi (~> 1.0)
     gettext (3.4.9)
       erubi
       locale (>= 2.0.5)
@@ -776,6 +779,7 @@ DEPENDENCIES
   faker (~> 3.5)
   federails!
   ffi-libarchive (~> 1.1)
+  get_process_mem (~> 1.0)
   guard (~> 2.19)
   guard-rspec (~> 4.7)
   i18n-js (~> 4.2)
