@@ -4,10 +4,14 @@
   "scripts": {
     "lint:ts": "ts-standard --fix",
     "build": "bundle exec i18n export --config=./config/i18n-js.yml && esbuild app/javascript/*.* --minify=true --tree-shaking=true --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
-    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "build:css": "yarn build:css:compile && yarn build:css:prefix",
+    "build:css:compile": "sass ./app/assets/stylesheets/entrypoints:./app/assets/builds --no-source-map --load-path=node_modules",
+    "build:css:prefix": "postcss ./app/assets/builds/application.css --use=autoprefixer --output=./app/assets/builds/application.css",
+    "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext scss --exec \"yarn build:css\"",
     "typecheck": "bundle exec i18n export --config=./config/i18n-js.yml && tsc --project tsconfig.json"
   },
   "dependencies": {
+    "@activeadmin/activeadmin": "^3.2.5",
     "@notus.sh/cocooned": "^2.4.0",
     "@popperjs/core": "^2.11.8",
     "@rails/ujs": "^7.1.500",
@@ -17,6 +21,7 @@
     "@uppy/form": "^4.0.1",
     "@uppy/locales": "^4.2.1",
     "@uppy/xhr-upload": "^4.2.2",
+    "autoprefixer": "^10.4.20",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "comlink": "^4.4.1",
@@ -24,6 +29,9 @@
     "i18n-js": "^4.5.0",
     "jquery": "^3.7.1",
     "masonry-layout": "^4.2.2",
+    "nodemon": "^3.1.7",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0",
     "rpg-awesome": "^0.2.0",
     "sass-embedded": "^1.80.5",
     "three": "^0.170.0",
@@ -49,5 +57,8 @@
     "ts-standard": "^12.0.2",
     "typescript": "^5.6.3"
   },
-  "packageManager": "yarn@3.8.5"
+  "packageManager": "yarn@3.8.5",
+  "browserslist": [
+    "defaults"
+  ]
 }

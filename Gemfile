@@ -7,8 +7,8 @@ ruby file: ".ruby-version"
 gem "rails", "~> 7.1.5"
 # Use Puma as the app server
 gem "puma", "~> 6.4"
-# Use SCSS for stylesheets
-gem "sass-rails", ">= 6"
+# Deliver assets with Propshaft
+gem "propshaft", "~> 1.1"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
 gem "cssbundling-rails", "~> 1.4"

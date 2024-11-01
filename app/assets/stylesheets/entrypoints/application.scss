@@ -9,11 +9,11 @@ $bootstrap-icons-font-dir: "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/
 $ra-font-path: "https://cdn.jsdelivr.net/npm/rpg-awesome@0.2.0/fonts";
 @import 'rpg-awesome/scss/rpg-awesome';
 
-@import 'layout';
-@import 'libraries';
-@import 'links';
-@import 'models';
-@import 'model_files';
+@import '../src/layout';
+@import '../src/libraries';
+@import '../src/links';
+@import '../src/models';
+@import '../src/model_files';
 
 @import '@selectize/selectize/dist/css/selectize.bootstrap5';
 
