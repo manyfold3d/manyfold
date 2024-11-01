@@ -1349,15 +1349,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/form@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@uppy/form@npm:4.0.0"
+"@uppy/form@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@uppy/form@npm:4.0.1"
   dependencies:
-    "@uppy/utils": "npm:^6.0.0"
-    get-form-data: "npm:^3.0.0"
+    "@uppy/utils": ^6.0.4
+    get-form-data: ^3.0.0
   peerDependencies:
-    "@uppy/core": ^4.0.0
-  checksum: 52ee18133446099d1007b051257be3050d3193e7f888ebad2a6972a0c7cfc8ddbe2878012fb738d60294a0df27b371860fc10fc9f7b350314a07f764f527aedd
+    "@uppy/core": ^4.2.3
+  checksum: 43b6c3ec37fa03a358b2d63c247725849baf6c9939985ac93be9ba64fb83610696895681dbdfe50896fd360a730cd234878818c852710fc7f7bed7b8ec286d73
   languageName: node
   linkType: hard
 
@@ -3559,7 +3559,7 @@ __metadata:
     "@typescript-eslint/parser": ^8.12.2
     "@uppy/core": ^4.2.3
     "@uppy/dashboard": ^4.1.1
-    "@uppy/form": ^4.0.0
+    "@uppy/form": ^4.0.1
     "@uppy/locales": ^4.2.0
     "@uppy/xhr-upload": ^4.2.2
     bootstrap: ^5.3.3
