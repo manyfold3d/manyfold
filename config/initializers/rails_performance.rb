@@ -8,22 +8,21 @@ if defined?(RailsPerformance) && !Rails.env.test?
     config.ignored_paths = ["/admin", "/health"]
 
     # configure Recent tab (time window and limit of requests)
-    # config.recent_requests_time_window = 60.minutes
+    config.recent_requests_time_window = 60.minutes
     # config.recent_requests_limit = nil # or 1000
 
     # configure Slow Requests tab (time window, limit of requests and threshold)
-    # config.slow_requests_time_window = 4.hours # time window for slow requests
+    config.slow_requests_time_window = 60.minutes
     # config.slow_requests_limit = 500 # number of max rows
     # config.slow_requests_threshold = 500 # number of ms
 
     # store custom data for the request
-    # config.custom_data_proc = proc do |env|
-    #   request = Rack::Request.new(env)
-    #   {
-    #     email: request.env['warden'].user&.email, # if you are using Devise for example
-    #     user_agent: request.env['HTTP_USER_AGENT']
-    #   }
-    # end
+    config.custom_data_proc = proc do |env|
+      {
+        pid: Process.pid,
+        memory_usage: GetProcessMem.new.bytes
+      }
+    end
 
     # config home button link
     config.home_link = "/"

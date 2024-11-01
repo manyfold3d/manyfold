@@ -161,3 +161,5 @@ gem "rails_performance", "~> 1.2", group: [:development, :production]
 
 gem "pghero", "~> 3.6"
 gem "pg_query", "~> 5.1"
+
+gem "get_process_mem", "~> 1.0"
