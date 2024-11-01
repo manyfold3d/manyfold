@@ -14,7 +14,7 @@
     "@selectize/selectize": "^0.15.2",
     "@uppy/core": "^4.2.3",
     "@uppy/dashboard": "^4.1.1",
-    "@uppy/form": "^4.0.0",
+    "@uppy/form": "^4.0.1",
     "@uppy/locales": "^4.2.0",
     "@uppy/xhr-upload": "^4.2.2",
     "bootstrap": "^5.3.3",
