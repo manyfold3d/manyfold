@@ -8,7 +8,7 @@
     <%= favicon_link_tag "roundel.svg" %>
     <%= tag.link rel: "apple-touch-icon", href: asset_path("square-180.png") %>
     <%= tag.meta name: "apple-mobile-web-app-title", content: site_name %>
-    <%= javascript_include_tag "application", nonce: true %>
+    <%= javascript_include_tag "application", nonce: true, defer: true %>
     <%= stylesheet_link_tag "application", nonce: true %>
     <%= yield :head %>
   </head>
