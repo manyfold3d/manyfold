@@ -17,13 +17,12 @@ if defined?(RailsPerformance) && !Rails.env.test?
     # config.slow_requests_threshold = 500 # number of ms
 
     # store custom data for the request
-    # config.custom_data_proc = proc do |env|
-    #   request = Rack::Request.new(env)
-    #   {
-    #     email: request.env['warden'].user&.email, # if you are using Devise for example
-    #     user_agent: request.env['HTTP_USER_AGENT']
-    #   }
-    # end
+    config.custom_data_proc = proc do |env|
+      {
+        pid: Process.pid,
+        memory_usage: GetProcessMem.new.bytes
+      }
+    end
 
     # config home button link
     config.home_link = "/"
