@@ -53,22 +53,29 @@ RSpec.describe ModelFile do
 
   it "finds duplicate files using digest" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
     library = create(:library, path: Rails.root.join("/tmp"))
-    model1 = create(:model, library: library, path: "model1")
-    part1 = create(:model_file, model: model1, filename: "file.obj", digest: "1234")
-    model2 = create(:model, library: library, path: "model2")
-    part2 = create(:model_file, model: model2, filename: "file.stl", digest: "1234")
-    model3 = create(:model, library: library, path: "model3")
-    create(:model_file, model: model3, filename: "file.stl", digest: "4321")
+    model = create(:model, library: library, path: "model")
+    part1 = create(:model_file, model: model, filename: "same.obj", digest: "1234")
+    part2 = create(:model_file, model: model, filename: "same.stl", digest: "1234")
+    create(:model_file, model: model, filename: "different.stl", digest: "4321")
+    allow(part1).to receive(:size).and_return(123)
     expect(part1.duplicate?).to be true
     expect(part1.duplicates).to eq [part2]
   end
 
   it "does not flag duplicates for nil digests" do # rubocop:todo RSpec/ExampleLength
     library = create(:library, path: Rails.root.join("/tmp"))
-    model1 = create(:model, library: library, path: "model1")
-    part1 = create(:model_file, model: model1, filename: "file.obj", digest: nil)
-    model2 = create(:model, library: library, path: "model2")
-    create(:model_file, model: model2, filename: "file.stl", digest: nil)
+    model = create(:model, library: library, path: "model1")
+    part1 = create(:model_file, model: model, filename: "nil.obj", digest: nil)
+    create(:model_file, model: model, filename: "nil.stl", digest: nil)
+    expect(part1.duplicate?).to be false
+  end
+
+  it "does not flag duplicates for zero-length files" do # rubocop:todo RSpec/ExampleLength
+    library = create(:library, path: Rails.root.join("/tmp"))
+    model = create(:model, library: library, path: "model1")
+    part1 = create(:model_file, model: model, filename: "same.obj", digest: "1234")
+    create(:model_file, model: model, filename: "same.stl", digest: "1234")
+    allow(part1).to receive(:size).and_return(0)
     expect(part1.duplicate?).to be false
   end
 

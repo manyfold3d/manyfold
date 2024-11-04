@@ -133,7 +133,7 @@ class ModelFile < ApplicationRecord
   end
 
   def duplicate?
-    duplicates.count > 0
+    size > 0 && duplicates.count > 0
   end
 
   # Used for ETag in conditional GETs
