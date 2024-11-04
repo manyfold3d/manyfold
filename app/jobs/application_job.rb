@@ -4,6 +4,10 @@ class ApplicationJob < ActiveJob::Base
 
   # Most jobs are safe to ignore if the underlying records are no longer available
   discard_on ActiveJob::DeserializationError
+  discard_on ActiveRecord::RecordNotFound unless Rails.env.test?
+  after_discard do |_job, exception|
+    Rails.logger.debug exception.to_s
+  end
 
   before_perform do |job|
     begin
