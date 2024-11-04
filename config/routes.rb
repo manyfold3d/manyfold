@@ -86,7 +86,11 @@ Rails.application.routes.draw do
     concerns :followable, followable_class: "Collection"
     concerns :commentable, commentable_class: "Collection"
   end
-  resources :problems, only: [:index, :update]
+  resources :problems, only: [:index, :update] do
+    member do
+      post "resolve"
+    end
+  end
   resources :benchmark, only: [:index, :create, :destroy] if Rails.env.development?
 
   authenticate :user, lambda { |u| u.is_contributor? } do

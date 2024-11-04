@@ -40,7 +40,95 @@ class ProblemsController < ApplicationController
     redirect_back_or_to problems_path, notice: notice
   end
 
+  def resolve
+    # Get the problem in question
+    @problem = Problem.unscoped.find_param(params[:id])
+    authorize @problem
+    # Get strategy
+    case @problem.resolution_strategy
+    when :show
+      resolve_by_showing(@problem)
+    when :edit
+      resolve_by_editing(@problem)
+    when :destroy
+      resolve_by_destroying(@problem)
+    when :merge
+      resolve_by_merging(@problem)
+    when :upload
+      resolve_by_uploading(@problem)
+    when :convert
+      resolve_by_converting(@problem)
+    else
+      raise NotImplementedError
+    end
+  end
+
   private
+
+  def resolve_by_showing(problem)
+    case problem.problematic_type
+    when "Model"
+      redirect_to problem.problematic
+    when "ModelFile"
+      redirect_to [problem.problematic.model, problem.problematic]
+    else
+      raise NotImplementedError
+    end
+  end
+
+  def resolve_by_editing(problem)
+    case problem.problematic_type
+    when "Library"
+      redirect_to edit_library_path(problem.problematic)
+    when "Model"
+      redirect_to edit_model_path(problem.problematic)
+    when "ModelFile"
+      redirect_to edit_model_model_file_path([problem.problematic.model, problem.problematic])
+    else
+      raise NotImplementedError
+    end
+  end
+
+  def resolve_by_destroying(problem)
+    case problem.problematic_type
+    when "Model"
+      problem.problematic.delete_from_disk_and_destroy
+    when "ModelFile"
+      problem.problematic.delete_from_disk_and_destroy
+    else
+      raise NotImplementedError
+    end
+    redirect_back_or_to problems_path
+  end
+
+  def resolve_by_merging(problem)
+    case problem.problematic_type
+    when "Model"
+      problem.problematic.merge_all_children!
+    else
+      raise NotImplementedError
+    end
+    redirect_back_or_to problems_path
+  end
+
+  def resolve_by_uploading(problem)
+    case problem.problematic_type
+    when "Model"
+      redirect_to model_path(problem.problematic, anchor: "upload-form")
+    else
+      raise NotImplementedError
+    end
+  end
+
+  def resolve_by_converting(problem)
+    case problem.problematic_type
+    when "ModelFile"
+      problem.problematic.convert_to! :threemf
+    else
+      raise NotImplementedError
+    end
+    redirect_back_or_to problems_path
+  end
 
   def permitted_params
     params.require(:problem).permit([
