@@ -1,1 +1,9 @@
-<%= link_to "Open", [problem.problematic.model, problem.problematic], class: "btn btn-primary" %>
+<%= if policy(problem.problematic).destroy?
+      link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "),
+        model_model_file_path(problem.problematic.model, problem.problematic),
+        {
+          method: "delete",
+          data: {confirm: translate("model_files.destroy.confirm")},
+          class: "btn btn-danger"
+        }
+    end %>
