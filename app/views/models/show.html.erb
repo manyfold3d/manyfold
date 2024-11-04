@@ -162,7 +162,7 @@
     </div>
   </div>
 
-  <% if policy(@model).edit? && policy(:upload).create? %>
+  <% if policy(@model).upload? %>
     <%= card :warning, t(".upload_card.heading") do %>
       <%= form_with url: model_model_files_path(@model), id: "upload-form", class: "d-grid" do |form| %>
 
