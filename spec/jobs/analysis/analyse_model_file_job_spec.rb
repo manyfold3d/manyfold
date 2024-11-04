@@ -33,7 +33,7 @@ RSpec.describe Analysis::AnalyseModelFileJob do
     end
 
     it "detects ASCII STL files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-      allow(file).to receive(:extension).and_return("stl")
+      allow(file).to receive_messages(extension: "stl", size: 1234)
       allow(file).to receive(:head).with(6).once.and_return("solid ")
       expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
       expect(Problem.first.category).to eq "inefficient"
@@ -41,14 +41,14 @@ RSpec.describe Analysis::AnalyseModelFileJob do
     end
 
     it "detects Wavefront OBJ files and creates a Problem record" do # rubocop:todo RSpec/MultipleExpectations
-      allow(file).to receive(:extension).and_return("obj")
+      allow(file).to receive_messages(extension: "obj", size: 1234)
       expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
       expect(Problem.first.category).to eq "inefficient"
       expect(Problem.first.note).to eq "Wavefront OBJ"
     end
 
     it "detects ASCII PLY files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-      allow(file).to receive(:extension).and_return("ply")
+      allow(file).to receive_messages(extension: "ply", size: 1234)
       allow(file).to receive(:head).with(16).once.and_return("ply\rformat ascii")
       expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
       expect(Problem.first.category).to eq "inefficient"
@@ -56,9 +56,16 @@ RSpec.describe Analysis::AnalyseModelFileJob do
     end
 
     it "detects duplicate files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      allow(file).to receive_messages(size: 1234)
       allow(file).to receive(:duplicate?).once.and_return(true)
       expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
       expect(Problem.first.category).to eq "duplicate"
+    end
+
+    it "detects zero-length files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+      allow(file).to receive_messages(size: 0)
+      expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
+      expect(Problem.first.category).to eq "empty"
     end
   end
 
