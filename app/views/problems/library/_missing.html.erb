@@ -1,0 +1,1 @@
+<%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_library_path(problem.problematic), class: "btn btn-primary" if policy(problem.problematic).edit? %>
