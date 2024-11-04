@@ -15,7 +15,7 @@ class ResolveButtonComponent < ViewComponent::Base
   end
 
   def render?
-    Pundit::PolicyFinder.new(@problematic).policy.new(@user, @problematic).send(:"#{@strategy}?")
+    ProblemPolicy.new(@user, @problem).resolve?
   end
 
   def call
