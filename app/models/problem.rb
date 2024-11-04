@@ -89,15 +89,15 @@ class Problem < ApplicationRecord
   end
 
   RESOLUTIONS = {
-    missing: :delete,
-    empty: :delete,
+    missing: :destroy,
+    empty: :destroy,
     nesting: :merge,
     inefficient: :convert,
-    duplicate: :delete,
+    duplicate: :destroy,
     no_image: :upload,
     no_3d_model: :upload,
-    non_manifold: :open,
-    inside_out: :open,
+    non_manifold: :show,
+    inside_out: :show,
     no_license: :edit,
     no_links: :edit,
     no_creator: :edit,
