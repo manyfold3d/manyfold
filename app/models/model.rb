@@ -161,6 +161,12 @@ class Model < ApplicationRecord
     model_files.map(&:extension).uniq
   end
 
+  def merge_all_children!
+    contained_models.each do |child|
+      child.merge_into! self
+    end
+  end
+
   private
 
   def normalize_license
