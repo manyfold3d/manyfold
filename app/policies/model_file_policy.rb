@@ -7,6 +7,10 @@ class ModelFilePolicy < ApplicationPolicy
     ModelPolicy.new(@user, @record.model).edit?
   end
 
+  def convert?
+    create? && ["stl", "obj"].include?(@record.extension)
+  end
+
   def update?
     create?
   end
