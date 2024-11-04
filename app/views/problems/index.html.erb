@@ -29,7 +29,7 @@
         <% end %>
       </td>
       <td>
-        <%= render partial: "problems/#{problem.problematic_type.underscore}/#{problem.category}", locals: {problem: problem} %>
+        <%= render partial: "problems/#{problem.problematic_type.underscore}/#{problem.resolution_strategy}", locals: {problem: problem} %>
       </td>
       <td>
         <% if problem.ignored %>

@@ -88,10 +88,23 @@ class Problem < ApplicationRecord
     ICONS[category] || "fire"
   end
 
-  def self.add_resolution(problematic_type, category, title, url)
-  end
+  RESOLUTIONS = {
+    missing: :delete,
+    empty: :delete,
+    nesting: :merge,
+    inefficient: :convert,
+    duplicate: :delete,
+    no_image: :upload,
+    no_3d_model: :upload,
+    non_manifold: :open,
+    inside_out: :open,
+    no_license: :edit,
+    no_links: :edit,
+    no_creator: :edit,
+    no_tags: :edit
+  }
 
-  def resolutions
-    []
+  def resolution_strategy
+    RESOLUTIONS[category.to_sym] or raise NotImplementedError.new(category)
   end
 end

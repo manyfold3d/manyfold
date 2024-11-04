@@ -1,2 +1,0 @@
-<% model = problem.problematic %>
-<%= link_to safe_join([icon("upload", t("general.upload")), t("general.upload")], " "), edit_model_path(model, anchor: "upload-form"), class: "btn btn-primary" if policy(model).edit? %>
