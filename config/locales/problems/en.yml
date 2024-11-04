@@ -57,6 +57,9 @@ en:
       duplicate:
         description: This file is duplicated in other models. You may wish to remove some.
         title: Duplicated file
+      empty:
+        description: This file is zero-length! This is most likely incorrect; either remove the file or rescan the model to recheck.
+        title: Empty file
       inefficient:
         description: This file is in %{note}, an inefficient file format. Consider converting it to a binary format such as 3MF to save disk space.
         title: Inefficient format
