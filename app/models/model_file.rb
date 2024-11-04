@@ -168,6 +168,10 @@ class ModelFile < ApplicationRecord
     save!
   end
 
+  def convert_to!(format)
+    Analysis::FileConversionJob.perform_later(id, format.to_sym)
+  end
+
   private
 
   def presupported_files_cannot_have_presupported_version

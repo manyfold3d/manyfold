@@ -24,7 +24,7 @@ class ModelFilesController < ApplicationController
     authorize @model
     if params[:convert]
       file = ModelFile.find_param(params[:convert][:id])
-      Analysis::FileConversionJob.perform_later(file.id, params[:convert][:to].to_sym)
+      file.convert_to! params[:convert][:to]
       redirect_back_or_to [@model, file], notice: t(".conversion_started")
     elsif params[:uploads]
       uploads = begin
