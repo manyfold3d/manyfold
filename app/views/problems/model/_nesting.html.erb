@@ -1,1 +1,1 @@
-<%= link_to "Open", problem.problematic, class: "btn btn-primary" %>
+<%= link_to safe_join([icon("box-arrow-in-up-left", t("models.problem.merge_all")), t("models.problem.merge_all")], " "), merge_model_path(problem.problematic, all: true), class: "btn btn-danger", method: :post if policy(problem.problematic).edit? %>
