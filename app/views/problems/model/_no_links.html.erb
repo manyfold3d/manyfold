@@ -1,1 +1,2 @@
-<%= link_to "Open", problem.problematic, class: "btn btn-primary" %>
+<% model = problem.problematic %>
+<%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_model_path(model), class: "btn btn-primary" if policy(model).edit? %>
