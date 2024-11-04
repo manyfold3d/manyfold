@@ -1,1 +1,9 @@
-<%= link_to "Purge", problem.problematic, method: :delete, class: "btn btn-danger" if policy(problem.problematic).destroy? %>
+<%= if policy(problem.problematic).destroy?
+      link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "),
+        problem.problematic,
+        {
+          method: "delete",
+          data: {confirm: translate("models.destroy.confirm")},
+          class: "btn btn-danger"
+        }
+    end %>
