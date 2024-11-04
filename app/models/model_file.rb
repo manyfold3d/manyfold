@@ -37,9 +37,12 @@ class ModelFile < ApplicationRecord
   ]
 
   def size
-    attachment.size
-  rescue
-    attributes["size"]
+    if has_attribute? :attachment_data
+      attachment_data.dig("metadata", "size") || 0
+    else
+      # DEPRECATED: for Pre-shrine migration
+      attributes["size"]
+    end
   end
 
   def size=(value)
@@ -47,9 +50,12 @@ class ModelFile < ApplicationRecord
   end
 
   def extension
-    attachment.extension
-  rescue
-    File.extname(filename).delete(".").downcase
+    if has_attribute? :attachment_data
+      attachment.extension
+    else
+      # DEPRECATED: for Pre-shrine migration
+      File.extname(filename).delete(".").downcase
+    end
   end
 
   def is_image?
