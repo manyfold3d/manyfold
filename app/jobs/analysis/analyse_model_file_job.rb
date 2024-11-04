@@ -17,7 +17,8 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
       # If the digest has changed, queue up detailed geometric mesh analysis
       Analysis::GeometricAnalysisJob.perform_later(file_id) if file.is_3d_model? && file.digest_previously_changed?
     end
-
+    # Raise problems for empty files
+    Problem.create_or_clear file, :empty, (file.size == 0)
     status[:step] = "jobs.analysis.analyse_model_file.matching" # i18n-tasks-use t('jobs.analysis.analyse_model_file.matching')
     # Match supported files
     match_with_supported_file(file)
