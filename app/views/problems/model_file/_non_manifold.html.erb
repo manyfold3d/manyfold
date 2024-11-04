@@ -1,1 +1,1 @@
-<%= link_to "Open", [problem.problematic.model, problem.problematic], class: "btn btn-primary" %>
+<%= link_to safe_join([icon("box", t("models.file.open_button.text")), t("models.file.open_button.text")], " "), [problem.problematic.model, problem.problematic], class: "btn btn-primary" %>
