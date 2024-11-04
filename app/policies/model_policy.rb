@@ -15,6 +15,10 @@ class ModelPolicy < ApplicationPolicy
     )
   end
 
+  def upload?
+    edit? && UploadPolicy.new(user, record).create?
+  end
+
   def destroy?
     super && (record.is_a?(Model) ? !record.contains_other_models? : true)
   end

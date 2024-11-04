@@ -24,9 +24,6 @@ fr:
       ignore: Cacher
       no_problems: Les filtres actuels ne posent aucun problème.
       unignore: Afficher
-    library:
-      missing:
-        title: Dossier introuvable
     model:
       empty:
         description: Ce modèle ne contient aucun fichier. Soit vous le supprimez, soit vous trouvez où sont passés ses fichiers !

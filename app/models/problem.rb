@@ -53,6 +53,16 @@ class Problem < ApplicationRecord
     no_tags: :silent
   )
 
+  ICONS = ActiveSupport::HashWithIndifferentAccess.new(
+    missing: "question-mark-circle",
+    nesting: "files-alt",
+    duplicate: "files",
+    inefficient: "file-earmark-zip",
+    no_image: "file-earmark-image",
+    no_creator: "person-x",
+    no_tags: "label"
+  )
+
   def self.create_or_clear(problematic, category, should_exist, options = {})
     if should_exist
       problematic.problems.find_or_create_by(options.merge(category: category))
@@ -68,5 +78,33 @@ class Problem < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     ["problematic"]
+  end
+
+  def parent
+    problematic.model if problematic_type == "ModelFile"
+  end
+
+  def icon
+    ICONS[category] || "fire"
+  end
+
+  RESOLUTIONS = {
+    missing: :destroy,
+    empty: :destroy,
+    nesting: :merge,
+    inefficient: :convert,
+    duplicate: :destroy,
+    no_image: :upload,
+    no_3d_model: :upload,
+    non_manifold: :show,
+    inside_out: :show,
+    no_license: :edit,
+    no_links: :edit,
+    no_creator: :edit,
+    no_tags: :edit
+  }
+
+  def resolution_strategy
+    RESOLUTIONS[category.to_sym] or raise NotImplementedError.new(category)
   end
 end

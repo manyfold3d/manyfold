@@ -3,6 +3,7 @@ require "shellwords"
 class Library < ApplicationRecord
   extend Memoist
   include PublicIDable
+  include Problematic
 
   STORAGE_SERVICES = [
     "filesystem",
@@ -11,7 +12,6 @@ class Library < ApplicationRecord
 
   has_many :models, dependent: :destroy
   has_many :model_files, through: :models
-  has_many :problems, as: :problematic, dependent: :destroy
   serialize :tag_regex, type: Array
   after_initialize :init
   before_validation :ensure_path_case_is_correct

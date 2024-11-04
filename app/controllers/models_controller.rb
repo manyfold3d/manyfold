@@ -101,9 +101,7 @@ class ModelsController < ApplicationController
       @model.merge_into! target
       redirect_to target, notice: t(".success")
     elsif params[:all] && @model.contains_other_models?
-      @model.contained_models.each do |child|
-        child.merge_into! @model
-      end
+      @model.merge_all_children!
       redirect_to @model, notice: t(".success")
     else
       head :bad_request

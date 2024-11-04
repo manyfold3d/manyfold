@@ -24,9 +24,6 @@ es:
       ignore: Ocultar
       no_problems: No se han encontrado problemas con los filtros actuales.
       unignore: Mostrar
-    library:
-      missing:
-        title: Carpeta no encontrada
     model:
       empty:
         description: Este modelo no contiene archivos. Elimínelo o encuentre dónde están sus archivos

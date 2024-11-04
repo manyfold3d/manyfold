@@ -14,7 +14,21 @@
   <% @problems.each do |problem| %>
     <% next unless problem.problematic %>
     <tr class="table-<%= problem_severity(problem) %> <%= problem.ignored && "opacity-50" %>">
-      <%= render partial: "problems/#{problem.problematic_type.underscore}/#{problem.category}", locals: {problem: problem} %>
+      <td><%= icon(problem.icon, "") %></td>
+      <% if problem.parent %>
+        <td><%= link_to problem.parent.name, problem.parent, class: "link-dark" %></td>
+        <td><%= link_to problem.problematic.name, [problem.parent, problem.problematic], class: "link-dark" %></td>
+      <% else %>
+        <td colspan=2><%= link_to problem.problematic.name, problem.problematic, class: "link-dark" %></td>
+      <% end %>
+      <td>
+        <%= t "problems.%{type}.%{category}.title" % {type: problem.problematic_type.underscore, category: problem.category} %>
+        <% if problem.note %>
+          <br>
+          <small><%= problem.note %></small>
+        <% end %>
+      </td>
+      <td><%= render ResolveButtonComponent.new(problem: problem, user: current_user) %></td>
       <td>
         <% if problem.ignored %>
           <%= link_to icon("eye-fill", t(".unignore")), problem_path(problem, problem: {ignored: false}), method: :patch, class: "btn btn-outline-secondary" %>

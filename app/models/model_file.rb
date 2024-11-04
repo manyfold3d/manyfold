@@ -2,11 +2,11 @@ class ModelFile < ApplicationRecord
   include LibraryUploader::Attachment(:attachment)
   include Listable
   include PublicIDable
+  include Problematic
 
   extend Memoist
 
   belongs_to :model
-  has_many :problems, as: :problematic, dependent: :destroy
 
   after_create :attach_existing_file!
 
@@ -166,6 +166,10 @@ class ModelFile < ApplicationRecord
   def reattach!
     attachment_attacher.attach attachment, storage: model.library.storage_key
     save!
+  end
+
+  def convert_to!(format)
+    Analysis::FileConversionJob.perform_later(id, format.to_sym)
   end
 
   private

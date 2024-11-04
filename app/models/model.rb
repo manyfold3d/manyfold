@@ -8,6 +8,7 @@ class Model < ApplicationRecord
   include Sluggable
   include PublicIDable
   include Commentable
+  include Problematic
 
   acts_as_federails_actor username_field: :public_id, name_field: :name, profile_url_method: :url_for, actor_type: "Service"
 
@@ -18,7 +19,6 @@ class Model < ApplicationRecord
   belongs_to :collection, optional: true
   belongs_to :preview_file, class_name: "ModelFile", optional: true
   has_many :model_files, dependent: :destroy
-  has_many :problems, as: :problematic, dependent: :destroy
   acts_as_taggable_on :tags
 
   before_validation :strip_separators_from_path, if: :path_changed?
@@ -159,6 +159,12 @@ class Model < ApplicationRecord
 
   def file_extensions
     model_files.map(&:extension).uniq
+  end
+
+  def merge_all_children!
+    contained_models.each do |child|
+      child.merge_into! self
+    end
   end
 
   private
