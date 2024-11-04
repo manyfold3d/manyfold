@@ -24,9 +24,6 @@ en:
       ignore: Hide
       no_problems: No problems matched the current filters.
       unignore: Show
-    library:
-      missing:
-        title: Folder not found
     model:
       empty:
         description: This model contains no files. Either delete it, or find where its files went!

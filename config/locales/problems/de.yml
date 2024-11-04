@@ -24,9 +24,6 @@ de:
       ignore: Ausblenden
       no_problems: Es wurden keine Fehler mit diesen Filtereinstellungen gefunden
       unignore: Anzeigen
-    library:
-      missing:
-        title: Ordner nicht gefunden
     model:
       empty:
         description: Dieses Modell enthält keine Dateien. Entweder löschen Sie es oder finde heraus, wo sie sind!

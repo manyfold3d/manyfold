@@ -24,9 +24,6 @@ pl:
       ignore: Ukryj
       no_problems: Brak problemów pasujących do obecnych filtrów.
       unignore: Pokaż
-    library:
-      missing:
-        title: Nie znaleziono folderu
     model:
       empty:
         description: Ten model nie zawiera żadnych plików. Usuń go albo znajdź miejsce, w którym znalazły się jego pliki!
