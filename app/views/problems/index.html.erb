@@ -28,9 +28,7 @@
           <small><%= problem.note %></small>
         <% end %>
       </td>
-      <td>
-        <%= render partial: "problems/#{problem.problematic_type.underscore}/#{problem.resolution_strategy}", locals: {problem: problem} %>
-      </td>
+      <td><%= render ResolveButtonComponent.new(problem: problem, user: current_user) %></td>
       <td>
         <% if problem.ignored %>
           <%= link_to icon("eye-fill", t(".unignore")), problem_path(problem, problem: {ignored: false}), method: :patch, class: "btn btn-outline-secondary" %>

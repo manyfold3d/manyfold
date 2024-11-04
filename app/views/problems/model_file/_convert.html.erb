@@ -1,3 +1,0 @@
-<% if policy(problem.problematic).convert? %>
-  <%= link_to safe_join([icon("arrow-left-right", t("model_files.show.convert")), t("model_files.show.convert")], " "), model_model_files_path(problem.problematic.model, convert: {id: problem.problematic.to_param, to: "threemf"}), method: :post, class: "btn btn-warning" %>
-<% end %>
