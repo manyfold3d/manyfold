@@ -3,7 +3,7 @@ en:
   problems:
     categories:
       duplicate: Duplicate files
-      empty: Model has no files
+      empty: Model or file is empty
       inefficient: Inefficient formats
       inside_out: Mesh is inside-out
       missing: Missing files or folders
