@@ -1,4 +1,7 @@
 class ProblemsController < ApplicationController
+  skip_after_action :verify_authorized, only: :resolve
+  after_action :verify_policy_scoped, only: :resolve
+
   def index
     authorize Problem
     # Are we showing ignored problems?
@@ -41,26 +44,30 @@ class ProblemsController < ApplicationController
   end
 
   def resolve
-    # Get the problem in question
-    @problem = Problem.unscoped.find_param(params[:id])
-    authorize @problem
-    # Get strategy
-    case @problem.resolution_strategy
-    when :show
-      resolve_by_showing(@problem)
-    when :edit
-      resolve_by_editing(@problem)
-    when :destroy
-      resolve_by_destroying(@problem)
-    when :merge
-      resolve_by_merging(@problem)
-    when :upload
-      resolve_by_uploading(@problem)
-    when :convert
-      resolve_by_converting(@problem)
-    else
-      raise NotImplementedError
+    ids = params[:id] ? [params[:id]] : params["problems"].select { |k, v| v == "1" }.keys
+    @problems = policy_scope(Problem).where(public_id: ids)
+    # Resolve each problem individually
+    # Some can't be done in bulk mode, so check that
+    bulk = @problems.count > 1
+    @problems.each do |problem|
+      case problem.resolution_strategy
+      when :show
+        resolve_by_showing(problem) unless bulk
+      when :edit
+        resolve_by_editing(problem) unless bulk
+      when :destroy
+        resolve_by_destroying(problem)
+      when :merge
+        resolve_by_merging(problem)
+      when :upload
+        resolve_by_uploading(problem) unless bulk
+      when :convert
+        resolve_by_converting(problem)
+      else
+        raise NotImplementedError
+      end
     end
+    redirect_back_or_to problems_path unless performed?
   end
 
   private
@@ -98,7 +105,6 @@ class ProblemsController < ApplicationController
     else
       raise NotImplementedError
     end
-    redirect_back_or_to problems_path
   end
 
   def resolve_by_merging(problem)
@@ -108,7 +114,6 @@ class ProblemsController < ApplicationController
     else
       raise NotImplementedError
     end
-    redirect_back_or_to problems_path
   end
 
   def resolve_by_uploading(problem)
@@ -127,7 +132,6 @@ class ProblemsController < ApplicationController
     else
       raise NotImplementedError
     end
-    redirect_back_or_to problems_path
   end
 
   def permitted_params
