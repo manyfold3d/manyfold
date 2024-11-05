@@ -120,7 +120,7 @@ class ModelsController < ApplicationController
   def bulk_edit
     authorize Model
     @models = filtered_models @filters
-    @add_tags = ActsAsTaggableOn::Tag.where.not(id: @remove_tags.pluck(:id))
+    generate_available_tag_list
     if helpers.pagination_settings["models"]
       page = params[:page] || 1
       # Double the normal page size for bulk editing
@@ -160,6 +160,14 @@ class ModelsController < ApplicationController
   end
 
   private
+
+  def generate_available_tag_list
+    @available_tags = ActsAsTaggableOn::Tag.where(
+      id: ActsAsTaggableOn::Tagging.where(
+        taggable_type: "Model", taggable_id: policy_scope(Model).select(:id)
+      ).select(:tag_id)
+    )
+  end
 
   def bulk_update_params
     params.permit(
