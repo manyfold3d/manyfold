@@ -63,10 +63,6 @@ class Library < ApplicationRecord
     end
   end
 
-  def all_tags
-    models.includes(:tags).map(&:tags).flatten.uniq.sort_by(&:name)
-  end
-
   def self.ransackable_attributes(auth_object = nil)
     ["public_id", "caption", "created_at", "icon", "name", "notes", "tag_regex", "updated_at"]
   end
