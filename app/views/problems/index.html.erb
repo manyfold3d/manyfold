@@ -14,7 +14,6 @@
   <table class="table table-striped" data-bulk-edit>
     <tr>
       <th><input type="checkbox" aria-label="<%= translate ".select_all" %>" value="0" name="bulk-select-all"></th>
-      <th></th>
       <th colspan=2><%= t(".item") %></th>
       <th><%= t(".description") %></th>
       <th><span id="resolve-heading"><%= t(".resolve") %></span></th>
@@ -24,7 +23,6 @@
       <% next unless problem.problematic %>
       <tr class="table-<%= problem_severity(problem) %> <%= problem.ignored && "opacity-50" %>">
         <td><%= form.check_box "problems[#{problem.to_param}]", data: {resolution_strategy: problem.resolution_strategy, bulk_item: problem.to_param}, "aria-label": translate(".select") %></td>
-        <td><%= icon(problem.icon, "") %></td>
         <% if problem.parent %>
           <td><%= link_to problem.parent.name, problem.parent, class: "link-dark" %></td>
           <td><%= link_to problem.problematic.name, [problem.parent, problem.problematic], class: "link-dark" %></td>
