@@ -168,7 +168,7 @@ class ModelsController < ApplicationController
       id: ActsAsTaggableOn::Tagging.where(
         taggable_type: "Model", taggable_id: policy_scope(Model).select(:id)
       ).select(:tag_id)
-    )
+    ).order(:name)
   end
 
   def bulk_update_params
