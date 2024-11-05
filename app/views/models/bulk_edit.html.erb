@@ -2,6 +2,10 @@
 
 <p class="lead"><%= t(".description") %></p>
 
+<% if pagination_settings["models"] %>
+  <%= paginate @models %>
+<% end %>
+
 <%= form_with url: update_models_path, method: :patch do |form| %>
 
   <table class="table table-striped" data-bulk-edit>
