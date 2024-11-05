@@ -2,6 +2,10 @@
 
 <p class="lead"><%= t(".description") %></p>
 
+<% if pagination_settings["models"] %>
+  <%= paginate @models %>
+<% end %>
+
 <%= form_with url: update_models_path, method: :patch do |form| %>
 
   <table class="table table-striped" data-bulk-edit>
@@ -29,34 +33,44 @@
 
   <p class="lead"><%= t ".form_subtitle" %></p>
 
-  <%= render "bulk_fields", form: form %>
+  <div class="row">
+    <div class="col">
+      <%= render "bulk_fields", form: form %>
 
-  <%= render "tags_edit", form: form, name: :remove_tags, value: "", label: translate(".remove_tags"), tags: @remove_tags || [] %>
+      <%= render "tags_edit", form: form, name: :remove_tags, value: "", label: translate(".remove_tags"), tags: @remove_tags || [] %>
 
-  <div class="row mb-3">
-    <%= form.label :new_library_id, class: "col-sm-2 col-form-label" %>
-    <div class="col-sm-10">
-      <%= form.collection_select :new_library_id, Library.all, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <%= form.label :organize, class: "col-sm-2 col-form-label" %>
-    <div class="col-sm-10">
-      <div class="form-switch">
-        <%= form.check_box :organize, class: "form-check-input form-check-inline" %>
+      <div class="row mb-3">
+        <%= form.label :new_library_id, class: "col-sm-2 col-form-label" %>
+        <div class="col-sm-10">
+          <%= form.collection_select :new_library_id, Library.all, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
+        </div>
       </div>
+
+      <div class="row mb-3">
+        <%= form.label :organize, class: "col-sm-2 col-form-label" %>
+        <div class="col-sm-10">
+          <div class="form-switch">
+            <%= form.check_box :organize, class: "form-check-input form-check-inline" %>
+          </div>
+        </div>
+      </div>
+      <% if @filters[:tag] %>
+        <% @filters[:tag].each do |tag| %>
+          <%= form.hidden_field :tag, multiple: true, value: tag %>
+        <% end %>
+      <% end %>
+      <%= form.hidden_field :q, value: @filters[:q] if @filters[:q] %>
+      <%= form.hidden_field :collection, value: @filters[:collection] if @filters[:collection] %>
+      <%= form.hidden_field :library, value: @filters[:library] if @filters[:library] %>
+      <%= form.hidden_field :creator, value: @filters[:creator] if @filters[:creator] %>
+      <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+
     </div>
-  </div>
-  <% if @filters[:tag] %>
-    <% @filters[:tag].each do |tag| %>
-      <%= form.hidden_field :tag, multiple: true, value: tag %>
+    <% if !@filters.empty? %>
+      <div class="col col-md-3">
+        <%= render "filters_card" %>
+      </div>
     <% end %>
-  <% end %>
-  <%= form.hidden_field :q, value: @filters[:q] if @filters[:q] %>
-  <%= form.hidden_field :collection, value: @filters[:collection] if @filters[:collection] %>
-  <%= form.hidden_field :library, value: @filters[:library] if @filters[:library] %>
-  <%= form.hidden_field :creator, value: @filters[:creator] if @filters[:creator] %>
-  <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+  </div>
 
 <% end %>
