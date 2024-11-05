@@ -10,34 +10,45 @@
   </div>
 <% end %>
 
-<table class="table table-striped">
-  <% @problems.each do |problem| %>
-    <% next unless problem.problematic %>
-    <tr class="table-<%= problem_severity(problem) %> <%= problem.ignored && "opacity-50" %>">
-      <td><%= icon(problem.icon, "") %></td>
-      <% if problem.parent %>
-        <td><%= link_to problem.parent.name, problem.parent, class: "link-dark" %></td>
-        <td><%= link_to problem.problematic.name, [problem.parent, problem.problematic], class: "link-dark" %></td>
-      <% else %>
-        <td colspan=2><%= link_to problem.problematic.name, problem.problematic, class: "link-dark" %></td>
-      <% end %>
-      <td>
-        <%= t "problems.%{type}.%{category}.title" % {type: problem.problematic_type.underscore, category: problem.category} %>
-        <% if problem.note %>
-          <br>
-          <small><%= problem.note %></small>
-        <% end %>
-      </td>
-      <td><%= render ResolveButtonComponent.new(problem: problem, user: current_user) %></td>
-      <td>
-        <% if problem.ignored %>
-          <%= link_to icon("eye-fill", t(".unignore")), problem_path(problem, problem: {ignored: false}), method: :patch, class: "btn btn-outline-secondary" %>
-        <% else %>
-          <%= link_to icon("eye-slash", t(".ignore")), problem_path(problem, problem: {ignored: true}), method: :patch, class: "btn btn-outline-secondary" %>
-        <% end %>
-      </td>
+<%= form_with url: resolve_problems_path, method: :post, class: "mb-3", data: {confirm: translate(".bulk_confirm")} do |form| %>
+  <table class="table table-striped" data-bulk-edit>
+    <tr>
+      <th><input type="checkbox" aria-label="<%= translate ".select_all" %>" value="0" name="bulk-select-all"></th>
+      <th colspan=2><%= t(".item") %></th>
+      <th><%= t(".description") %></th>
+      <th><span id="resolve-heading"><%= t(".resolve") %></span></th>
+      <th><%= t(".ignore") %></th>
     </tr>
-  <% end %>
-</table>
+    <% @problems.each do |problem| %>
+      <% next unless problem.problematic %>
+      <tr class="table-<%= problem_severity(problem) %> <%= problem.ignored && "opacity-50" %>">
+        <td><%= form.check_box "problems[#{problem.to_param}]", data: {resolution_strategy: problem.resolution_strategy, bulk_item: problem.to_param}, "aria-label": translate(".select") %></td>
+        <% if problem.parent %>
+          <td><%= link_to problem.parent.name, problem.parent, class: "link-dark" %></td>
+          <td><%= link_to problem.problematic.name, [problem.parent, problem.problematic], class: "link-dark" %></td>
+        <% else %>
+          <td colspan=2><%= link_to problem.problematic.name, problem.problematic, class: "link-dark" %></td>
+        <% end %>
+        <td>
+          <%= t "problems.%{type}.%{category}.title" % {type: problem.problematic_type.underscore, category: problem.category} %>
+          <% if problem.note %>
+            <br>
+            <small><%= problem.note %></small>
+          <% end %>
+        </td>
+        <td><%= render ResolveButtonComponent.new(problem: problem, user: current_user) %></td>
+        <td>
+          <% if problem.ignored %>
+            <%= link_to icon("eye-fill", t(".unignore")), problem_path(problem, problem: {ignored: false}), method: :patch, class: "btn btn-outline-secondary" %>
+          <% else %>
+            <%= link_to icon("eye-slash", t(".ignore")), problem_path(problem, problem: {ignored: true}), method: :patch, class: "btn btn-outline-secondary" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= form.submit translate(".bulk_resolve"), class: "btn btn-danger" %>
+<% end %>
 
 <%= paginate @problems %>

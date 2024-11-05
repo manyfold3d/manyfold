@@ -50,16 +50,30 @@ class ResolveButtonComponent < ViewComponent::Base
 
   def call
     text = t @options[:i18n_key]
-    link_to(
-      safe_join([helpers.icon(@options[:icon], text), text], " "),
-      resolve_problem_path(@problem),
-      class: "btn btn-#{@options[:button_type]}",
-      data: {
-        confirm: @options[:confirm] ?
-          translate(@options[:confirm] % {type: @problem.problematic_type.underscore}) :
-          nil
-      },
-      method: :post
-    )
+    if @problem.in_progress
+      link_to(
+        safe_join(
+          [
+            content_tag(:span, helpers.icon("", ""), class: "spinner-border spinner-border-sm"),
+            content_tag(:span, text)
+          ],
+          " "
+        ),
+        "#",
+        class: "btn btn-#{@options[:button_type]} disabled"
+      )
+    else
+      link_to(
+        safe_join([helpers.icon(@options[:icon], text), text], " "),
+        resolve_problem_path(@problem),
+        class: "btn btn-#{@options[:button_type]}",
+        data: {
+          confirm: @options[:confirm] ?
+            translate(@options[:confirm] % {type: @problem.problematic_type.underscore}) :
+            nil
+        },
+        method: :post
+      )
+    end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_25_110218) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_05_121830) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -240,6 +240,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_25_110218) do
     t.string "note"
     t.boolean "ignored", default: false, null: false
     t.string "public_id"
+    t.boolean "in_progress", default: false, null: false
     t.index ["category", "problematic_id", "problematic_type"], name: "index_problems_on_category_and_problematic_id_and_type", unique: true
     t.index ["problematic_type", "problematic_id"], name: "index_problems_on_problematic"
     t.index ["public_id"], name: "index_problems_on_public_id"
