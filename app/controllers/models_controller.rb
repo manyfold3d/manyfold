@@ -60,6 +60,7 @@ class ModelsController < ApplicationController
   def edit
     @model.links.build if @model.links.empty? # populate empty link
     @model.caber_relations.build if @model.caber_relations.empty?
+    generate_available_tag_list
   end
 
   def create
