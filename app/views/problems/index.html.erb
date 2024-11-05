@@ -17,9 +17,7 @@
       <th></th>
       <th colspan=2><%= t(".item") %></th>
       <th><%= t(".description") %></th>
-      <th>
-        <%= form.submit translate(".bulk_resolve"), class: "btn btn-danger" %>
-      </th>
+      <th><span id="resolve-heading"><%= t(".resolve") %></span></th>
       <th><%= t(".ignore") %></th>
     </tr>
     <% @problems.each do |problem| %>
@@ -51,6 +49,8 @@
       </tr>
     <% end %>
   </table>
+
+  <%= form.submit translate(".bulk_resolve"), class: "btn btn-danger" %>
 <% end %>
 
 <%= paginate @problems %>
