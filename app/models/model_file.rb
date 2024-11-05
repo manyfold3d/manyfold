@@ -14,6 +14,12 @@ class ModelFile < ApplicationRecord
   has_one :unsupported_version, class_name: "ModelFile", foreign_key: "presupported_version_id",
     inverse_of: :presupported_version, dependent: :nullify
 
+  # This is here to handle cleanup of duplicate presupported version links
+  # There should only ever be one relation (above), but there's a bug.
+  # Hopefully one day we can remove this when we build proper file relationships.
+  has_many :duplicate_unsupported_versions, class_name: "ModelFile", foreign_key: "presupported_version_id",
+    inverse_of: :presupported_version, dependent: :nullify
+
   validates :filename, presence: true, uniqueness: {scope: :model}
   validate :presupported_version_is_presupported
   validate :presupported_files_cannot_have_presupported_version
@@ -156,7 +162,7 @@ class ModelFile < ApplicationRecord
   end
 
   def self.ransackable_attributes(_auth_object = nil)
-    ["caption", "created_at", "digest", "filename", "id", "public_id", "notes", "presupported", "size", "updated_at", "y_up", "presupported_version_id", "unsupported_version_id"]
+    ["caption", "created_at", "digest", "filename", "id", "public_id", "notes", "presupported", "size", "updated_at", "y_up", "presupported_version_id"]
   end
 
   def self.ransackable_associations(_auth_object = nil)
