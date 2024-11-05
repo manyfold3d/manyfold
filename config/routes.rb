@@ -87,6 +87,9 @@ Rails.application.routes.draw do
     concerns :commentable, commentable_class: "Collection"
   end
   resources :problems, only: [:index, :update] do
+    collection do
+      post "resolve", action: "resolve"
+    end
     member do
       post "resolve"
     end
