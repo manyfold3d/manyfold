@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<%= form_with url: resolve_problems_path, method: :post, class: "mb-3" do |form| %>
+<%= form_with url: resolve_problems_path, method: :post, class: "mb-3", data: {confirm: translate(".bulk_confirm")} do |form| %>
   <table class="table table-striped" data-bulk-edit>
     <tr>
       <th><input type="checkbox" aria-label="<%= translate ".select_all" %>" value="0" name="bulk-select-all"></th>

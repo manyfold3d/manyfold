@@ -21,6 +21,7 @@ en:
       show_ignored: Show hidden items
       title: Filters
     index:
+      bulk_confirm: Are you sure you want to automatically resolve all the selected problems? This may remove files and data.
       bulk_resolve: Resolve selected
       description: Description
       ignore: Hide
