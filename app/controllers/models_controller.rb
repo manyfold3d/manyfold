@@ -120,7 +120,6 @@ class ModelsController < ApplicationController
   def bulk_edit
     authorize Model
     @models = filtered_models @filters
-    @remove_tags, _unused = generate_tag_list(@models)
     @add_tags = ActsAsTaggableOn::Tag.where.not(id: @remove_tags.pluck(:id))
     if helpers.pagination_settings["models"]
       page = params[:page] || 1
