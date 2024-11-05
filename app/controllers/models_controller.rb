@@ -54,6 +54,7 @@ class ModelsController < ApplicationController
 
   def new
     authorize :model
+    generate_available_tag_list
   end
 
   def edit
