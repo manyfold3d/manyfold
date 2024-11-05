@@ -110,6 +110,7 @@ class ProblemsController < ApplicationController
   def resolve_by_merging(problem)
     case problem.problematic_type
     when "Model"
+      problem.update(in_progress: true)
       problem.problematic.merge_all_children!
     else
       raise NotImplementedError
@@ -128,6 +129,7 @@ class ProblemsController < ApplicationController
   def resolve_by_converting(problem)
     case problem.problematic_type
     when "ModelFile"
+      problem.update(in_progress: true)
       problem.problematic.convert_to! :threemf
     else
       raise NotImplementedError
