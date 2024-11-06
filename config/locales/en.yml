@@ -320,6 +320,7 @@ en:
     scan:
       check_all:
         queueing_model_checks: Queueing model checks
+        removing_orphaned_problems: Removing orphaned problems
       detect_filesystem_changes:
         building_filename_list: Building file list
         building_folder_list: Building changed folder list
