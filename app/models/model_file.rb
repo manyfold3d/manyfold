@@ -10,6 +10,8 @@ class ModelFile < ApplicationRecord
 
   after_create :attach_existing_file!
 
+  before_destroy :rescan_duplicates
+
   belongs_to :presupported_version, class_name: "ModelFile", optional: true
   has_one :unsupported_version, class_name: "ModelFile", foreign_key: "presupported_version_id",
     inverse_of: :presupported_version, dependent: :nullify
@@ -154,13 +156,6 @@ class ModelFile < ApplicationRecord
     digest
   end
 
-  def delete_from_disk_and_destroy
-    # Rescan any duplicates
-    duplicates.each { |x| Analysis::AnalyseModelFileJob.set(wait: 5.seconds).perform_later(x.id) }
-    # Remove the db record
-    destroy
-  end
-
   def self.ransackable_attributes(_auth_object = nil)
     ["caption", "created_at", "digest", "filename", "id", "public_id", "notes", "presupported", "size", "updated_at", "y_up", "presupported_version_id"]
   end
@@ -185,6 +180,10 @@ class ModelFile < ApplicationRecord
   end
 
   private
+
+  def rescan_duplicates
+    duplicates.each { |x| Analysis::AnalyseModelFileJob.set(wait: 5.seconds).perform_later(x.id) }
+  end
 
   def presupported_files_cannot_have_presupported_version
     if presupported_version && presupported

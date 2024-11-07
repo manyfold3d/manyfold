@@ -94,25 +94,25 @@ RSpec.describe ModelFile do
     let(:file) { create(:model_file, model: model, filename: "part_1.3mf", digest: "1234") }
 
     it "removes original file from disk" do
-      expect { file.delete_from_disk_and_destroy }.to(
+      expect { file.destroy }.to(
         change { File.exist?(File.join(library.path, file.path_within_library)) }.from(true).to(false)
+      )
+    end
+
+    it "does not remove original file from disk when deleted, not destroyed" do
+      expect { file.delete }.not_to(
+        change { File.exist?(File.join(library.path, file.path_within_library)) }
       )
     end
 
     it "ignores missing files on deletion" do
       file.update! filename: "gone.3mf"
-      expect { file.delete_from_disk_and_destroy }.not_to raise_exception
-    end
-
-    it "calls standard destroy" do
-      allow(file).to receive(:destroy)
-      file.delete_from_disk_and_destroy
-      expect(file).to have_received(:destroy).once
+      expect { file.destroy }.not_to raise_exception
     end
 
     it "queues up rescans for duplicates on destroy" do
       dupe = create(:model_file, model: model, filename: "duplicate.3mf", digest: "1234")
-      expect { file.delete_from_disk_and_destroy }.to(
+      expect { file.destroy }.to(
         have_enqueued_job(Analysis::AnalyseModelFileJob).with(dupe.id)
       )
     end
