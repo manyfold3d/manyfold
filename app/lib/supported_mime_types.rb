@@ -55,7 +55,10 @@ module SupportedMimeTypes
     private
 
     def is_image_mime_type?(type)
-      type.to_s.start_with?("image/")
+      exclusions = [
+        "image/vnd.dxf"
+      ]
+      type.to_s.start_with?("image/") && exclusions.exclude?(type.to_s)
     end
 
     def is_video_mime_type?(type)
@@ -73,7 +76,8 @@ module SupportedMimeTypes
     def is_model_mime_type?(type)
       extras = [
         "text/x-gcode",
-        "application/x-openscad"
+        "application/x-openscad",
+        "image/vnd.dxf"
       ]
       type.to_s.start_with?("model/") || extras.include?(type.to_s)
     end
