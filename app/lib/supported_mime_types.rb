@@ -56,7 +56,8 @@ module SupportedMimeTypes
 
     def is_image_mime_type?(type)
       exclusions = [
-        "image/vnd.dxf"
+        "image/vnd.dxf",
+        "image/vnd.dwg"
       ]
       type.to_s.start_with?("image/") && exclusions.exclude?(type.to_s)
     end
@@ -77,7 +78,10 @@ module SupportedMimeTypes
       extras = [
         "text/x-gcode",
         "application/x-openscad",
-        "image/vnd.dxf"
+        "image/vnd.dxf",
+        "image/vnd.dwg",
+        "application/x-3ds",
+        "application/x-amf"
       ]
       type.to_s.start_with?("model/") || extras.include?(type.to_s)
     end
