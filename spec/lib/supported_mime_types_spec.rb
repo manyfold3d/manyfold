@@ -11,6 +11,11 @@ RSpec.describe SupportedMimeTypes do
     expect(described_class.image_extensions).to include("png")
   end
 
+  it "does not include DXF in image list" do # rubocop:todo RSpec/MultipleExpectations
+    expect(described_class.image_types.map(&:to_s)).not_to include("image/vnd.dxf")
+    expect(described_class.image_extensions).not_to include("dxf")
+  end
+
   it "includes alternative extensions for same type" do # rubocop:todo RSpec/MultipleExpectations
     expect(described_class.model_extensions).to include("lys")
     expect(described_class.model_extensions).to include("lyt")
@@ -40,6 +45,11 @@ RSpec.describe SupportedMimeTypes do
     it "includes GCode" do # rubocop:todo RSpec/MultipleExpectations
       expect(described_class.model_types).to include("text/x-gcode")
       expect(described_class.model_extensions).to include("gcode")
+    end
+
+    it "includes DXF" do # rubocop:todo RSpec/MultipleExpectations
+      expect(described_class.model_types).to include("image/vnd.dxf")
+      expect(described_class.model_extensions).to include("dxf")
     end
   end
 end
