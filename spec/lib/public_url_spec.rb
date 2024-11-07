@@ -38,8 +38,14 @@ RSpec.describe PublicUrl do
       expect(described_class.hostname).to eq "manyfold.example.com"
     end
 
-    it "sticks to default port" do
-      expect(described_class.port).to eq "3214"
+    it "assumes the standard port 80" do
+      expect(described_class.port).to eq "80"
+    end
+
+    it "assumes standard port 443 if HTTPS_ONLY is set" do
+      ClimateControl.modify HTTPS_ONLY: "enabled" do
+        expect(described_class.port).to eq "443"
+      end
     end
   end
 
@@ -52,6 +58,18 @@ RSpec.describe PublicUrl do
 
     it "provides specified port" do
       expect(described_class.port).to eq "80"
+    end
+  end
+
+  context "with PUBLIC_HOSTNAME and PUBLIC_PORT set" do
+    around do |example|
+      ClimateControl.modify PUBLIC_PORT: "1234", PUBLIC_HOSTNAME: "example.com" do
+        example.run
+      end
+    end
+
+    it "provides specified port" do
+      expect(described_class.port).to eq "1234"
     end
   end
 
