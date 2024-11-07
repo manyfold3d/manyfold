@@ -54,6 +54,7 @@ class Model < ApplicationRecord
     model_files.each do |f|
       new_filename = File.join(relative_path, f.filename)
       if target.model_files.exists?(filename: new_filename)
+        f.problems.destroy_all # Remove associated problems for this file manually
         f.delete # Don't run callbacks, just remove the database record
       else
         f.update(
