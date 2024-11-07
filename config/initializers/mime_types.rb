@@ -15,6 +15,20 @@ Mime::Type.register "model/gltf", :gltf, ["model/gltf+json", "model/gltf+binary"
 Mime::Type.register "model/x-freecad", :fcstd
 Mime::Type.register "model/x-brep", :brep
 Mime::Type.register "image/vnd.dxf", :dxf
+Mime::Type.register "image/vnd.dwg", :dwg
+Mime::Type.register "model/iges", :iges, [], ["igs"]
+Mime::Type.register "model/vrml", :vrml, [], ["wrl"]
+Mime::Type.register "model/x3d", :x3d, ["model/x3d+xml", "model/x3d-vrml", "model/x3d+fastinfoset"]
+Mime::Type.register "application/x-amf", :amf
+Mime::Type.register "model/x-fbx", :fbx
+Mime::Type.register "model/vnd.collada+xml", :collada, [], ["dae"]
+Mime::Type.register "application/x-3ds", :threeds, ["image/x-3ds"], ["3ds"]
+Mime::Type.register "application/x-3dsmax", :max
+Mime::Type.register "model/x-sketchup", :sketchup, [], ["skp"]
+Mime::Type.register "model/x-speedtree", :speedtree, [], ["spm"]
+Mime::Type.register "model/x-modo", :modo, [], ["lxo"]
+Mime::Type.register "model/x-cheetah3d", :cheetah3d, [], ["jas"]
+Mime::Type.register "model/x-maya", :maya, [], ["ma", "mb"]
 
 # Slicer formats
 Mime::Type.register "text/x-gcode", :gcode
