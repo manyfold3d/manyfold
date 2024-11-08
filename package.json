@@ -24,7 +24,7 @@
     "autoprefixer": "^10.4.20",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "comlink": "^4.4.1",
+    "comlink": "^4.4.2",
     "esbuild": "^0.24.0",
     "i18n-js": "^4.5.0",
     "jquery": "^3.7.1",
