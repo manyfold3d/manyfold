@@ -182,7 +182,7 @@ GEM
       racc
     browser (6.0.0)
     builder (3.3.0)
-    bullet (7.2.0)
+    bullet (8.0.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (11.1.3)
@@ -762,7 +762,7 @@ DEPENDENCIES
   better_content_security_policy (~> 0.1.4)
   bootsnap (>= 1.4.4)
   brakeman (~> 6.2)
-  bullet (~> 7.2)
+  bullet (~> 8.0)
   byebug
   caber
   climate_control (~> 1.2)

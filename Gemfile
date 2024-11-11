@@ -128,7 +128,7 @@ gem "activejob-status", "~> 1.0"
 gem "brakeman", "~> 6.2"
 
 gem "i18n_data", "~> 1.1.0"
-gem "bullet", "~> 7.2", group: :development
+gem "bullet", "~> 8.0", group: :development
 
 gem "logstash-event", "~> 1.2"
 
