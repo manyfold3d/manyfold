@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/manyfold3d/mittsu-mesh_analysis.git
+  revision: 7c4df4eca27b32fb1850a19612fa64be5892eebe
+  specs:
+    mittsu-mesh_analysis (0.1.0)
+      mittsu (~> 0.4)
+
+GIT
   remote: https://github.com/manyfold3d/mittsu.git
   revision: 050afee4cbd326826c08219afbe84c27437cd0f3
   ref: manyfold
@@ -800,6 +807,7 @@ DEPENDENCIES
   logstash-event (~> 1.2)
   memoist (~> 0.16.2)
   mittsu!
+  mittsu-mesh_analysis!
   mysql2 (~> 0.5.6)
   nanoid (~> 2.0)
   omniauth (~> 2.1)
