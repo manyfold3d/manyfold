@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/manyfold3d/mittsu-mesh_analysis.git
-  revision: 7c4df4eca27b32fb1850a19612fa64be5892eebe
+  revision: 311a6d10d0e3336918b4fd6ba68f68d8b385882d
   specs:
     mittsu-mesh_analysis (0.1.0)
       mittsu (~> 0.4)
