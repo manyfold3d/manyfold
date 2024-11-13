@@ -7,14 +7,14 @@ GIT
 
 GIT
   remote: https://github.com/manyfold3d/mittsu.git
-  revision: 050afee4cbd326826c08219afbe84c27437cd0f3
+  revision: 9a737f2f73323d076dfedcf41a7f47368b51baa3
   ref: manyfold
   specs:
     mittsu (0.4.0)
       builder
       chunky_png
       ffi
-      opengl-bindings
+      opengl-bindings2
       rubyzip
 
 GIT
@@ -463,7 +463,7 @@ GEM
     omniauth_openid_connect (0.8.0)
       omniauth (>= 1.9, < 3)
       openid_connect (~> 2.2)
-    opengl-bindings (1.6.14)
+    opengl-bindings2 (2.0.2)
     openid_connect (2.3.0)
       activemodel
       attr_required (>= 1.0.0)
