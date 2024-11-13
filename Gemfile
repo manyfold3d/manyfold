@@ -95,8 +95,9 @@ gem "acts_as_favoritor", "~> 6.0"
 
 gem "sqlite3_ar_regexp", github: "manyfold3d/sqlite3_ar_regexp", ref: "rails-7.1-support"
 
-gem "mittsu", github: "manyfold3d/mittsu", ref: "manyfold"
-gem "mittsu-mesh_analysis", github: "manyfold3d/mittsu-mesh_analysis"
+gem "mittsu", github: "danini-the-panini/mittsu"
+gem "mittsu-mesh_analysis"
+gem "mittsu-3mf"
 
 gem "view_component", "~> 3.20"
 

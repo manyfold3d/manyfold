@@ -1,21 +1,11 @@
 GIT
-  remote: https://github.com/manyfold3d/mittsu-mesh_analysis.git
-  revision: 7c4df4eca27b32fb1850a19612fa64be5892eebe
-  specs:
-    mittsu-mesh_analysis (0.1.0)
-      mittsu (~> 0.4)
-
-GIT
-  remote: https://github.com/manyfold3d/mittsu.git
-  revision: 050afee4cbd326826c08219afbe84c27437cd0f3
-  ref: manyfold
+  remote: https://github.com/danini-the-panini/mittsu.git
+  revision: ba8cf4802277c02bbc264f0d7423a2d38c37b5ee
   specs:
     mittsu (0.4.0)
-      builder
       chunky_png
       ffi
-      opengl-bindings
-      rubyzip
+      opengl-bindings2
 
 GIT
   remote: https://github.com/manyfold3d/sqlite3_ar_regexp.git
@@ -423,6 +413,12 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.7)
     minitest (5.25.1)
+    mittsu-3mf (0.1.0)
+      builder (~> 3.3)
+      mittsu (~> 0.4)
+      rubyzip (~> 2.3)
+    mittsu-mesh_analysis (0.1.0)
+      mittsu (~> 0.4)
     msgpack (1.7.2)
     multi_json (1.15.0)
     mutex_m (0.2.0)
@@ -463,7 +459,7 @@ GEM
     omniauth_openid_connect (0.8.0)
       omniauth (>= 1.9, < 3)
       openid_connect (~> 2.2)
-    opengl-bindings (1.6.14)
+    opengl-bindings2 (2.0.2)
     openid_connect (2.3.0)
       activemodel
       attr_required (>= 1.0.0)
@@ -807,7 +803,8 @@ DEPENDENCIES
   logstash-event (~> 1.2)
   memoist (~> 0.16.2)
   mittsu!
-  mittsu-mesh_analysis!
+  mittsu-3mf
+  mittsu-mesh_analysis
   mysql2 (~> 0.5.6)
   nanoid (~> 2.0)
   omniauth (~> 2.1)
