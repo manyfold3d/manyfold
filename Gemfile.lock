@@ -3,11 +3,9 @@ GIT
   revision: ba8cf4802277c02bbc264f0d7423a2d38c37b5ee
   specs:
     mittsu (0.4.0)
-      builder
       chunky_png
       ffi
-      opengl-bindings
-      rubyzip
+      opengl-bindings2
 
 GIT
   remote: https://github.com/manyfold3d/sqlite3_ar_regexp.git
@@ -461,7 +459,7 @@ GEM
     omniauth_openid_connect (0.8.0)
       omniauth (>= 1.9, < 3)
       openid_connect (~> 2.2)
-    opengl-bindings (1.6.14)
+    opengl-bindings2 (2.0.2)
     openid_connect (2.3.0)
       activemodel
       attr_required (>= 1.0.0)
