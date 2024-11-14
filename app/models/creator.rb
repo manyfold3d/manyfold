@@ -26,4 +26,19 @@ class Creator < ApplicationRecord
   def self.find_param(param)
     find_by!(slug: param)
   end
+
+  def to_activitypub_object
+    {
+      "@context": {
+        toot: "http://joinmastodon.org/ns#",
+        attributionDomains: {
+          "@id": "toot:attributionDomains",
+          "@type": "@id"
+        }
+      },
+      attributionDomains: [
+        "manyfold.app"
+      ]
+    }
+  end
 end
