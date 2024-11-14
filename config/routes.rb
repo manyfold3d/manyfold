@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
   authenticate :user, lambda { |u| u.is_administrator? } do
+    resource :settings, only: [:show, :update]
     mount Sidekiq::Web => "/admin/sidekiq"
     mount RailsPerformance::Engine => "/admin/performance" unless Rails.env.test?
     mount PgHero::Engine => "/admin/pghero"
@@ -24,10 +25,6 @@ Rails.application.routes.draw do
   end
 
   mount Federails::Engine => "/" if SiteSettings.multiuser_enabled? || SiteSettings.federation_enabled? || Rails.env.test?
-
-  resources :users, only: [] do
-    resource :settings, only: [:show, :update]
-  end
 
   root to: "home#index"
 

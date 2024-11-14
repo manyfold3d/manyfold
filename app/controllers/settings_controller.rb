@@ -1,18 +1,14 @@
-require "i18n_data"
-
 class SettingsController < ApplicationController
-  before_action :get_user
   before_action :check_owner_permission
 
   def update
     # Save site-wide settings if user is an admin
-    if current_user.is_administrator?
-      update_folder_settings(params[:folders])
-      update_tagging_settings(params[:model_tags])
-      update_multiuser_settings(params[:multiuser])
-      update_usage_settings(params[:usage])
-    end
-    redirect_to user_settings_path(@user), notice: t(".success")
+    update_folder_settings(params[:folders])
+    update_tagging_settings(params[:model_tags])
+    update_multiuser_settings(params[:multiuser])
+    update_analysis_settings(params[:analysis])
+    update_usage_settings(params[:usage])
+    redirect_to settings_path(@user), notice: t(".success")
   end
 
   private
@@ -48,12 +44,8 @@ class SettingsController < ApplicationController
     (settings[:report] == "1") ? UsageReport.enable! : UsageReport.disable!
   end
 
-  def get_user
-    @user = User.find_param(params[:user_id])
-    authorize @user
-  end
-
   def check_owner_permission
-    render plain: "401 Unauthorized", status: :unauthorized unless @user == current_user || current_user.is_administrator?
+    render plain: "401 Unauthorized", status: :unauthorized unless current_user.is_administrator?
+    authorize current_user
   end
 end
