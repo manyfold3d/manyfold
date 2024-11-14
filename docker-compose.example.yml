@@ -17,6 +17,7 @@ services:
       # server for best performance
       DATABASE_ADAPTER: postgresql
       DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
       DATABASE_USER: manyfold
       DATABASE_PASSWORD: password
       DATABASE_NAME: manyfold

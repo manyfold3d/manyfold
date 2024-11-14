@@ -1,6 +1,7 @@
 env: &env
   adapter: <%= ENV.fetch("DATABASE_ADAPTER", "postgresql") %>
   host: <%= ENV.fetch("DATABASE_HOST", nil) %>
+  port: <%= ENV.fetch("DATABASE_PORT", nil) %>
   database: <%= ENV.fetch("DATABASE_NAME", "manyfold") %>
   username: <%= ENV.fetch("DATABASE_USER", nil) %>
   password: <%= ENV.fetch("DATABASE_PASSWORD", nil) %>
