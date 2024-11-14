@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/danini-the-panini/mittsu.git
-  revision: ba8cf4802277c02bbc264f0d7423a2d38c37b5ee
+  revision: 78efada8153bd7b9949716004b499e32df0c137d
   specs:
     mittsu (0.4.0)
       chunky_png
