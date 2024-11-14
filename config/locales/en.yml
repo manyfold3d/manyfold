@@ -226,7 +226,7 @@ en:
     links_form:
       add: add another link
     navbar:
-      account: Account
+      account: My Settings
       activity: Activity
       check_existing: Check existing models
       home: Homepage
@@ -239,7 +239,7 @@ en:
       scan_changes: Scan for changes
       scanning: Scanning
       search: Search
-      settings: Settings
+      settings: Site Settings
       upload: Upload
     order_buttons:
       sort:

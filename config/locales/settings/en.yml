@@ -57,7 +57,7 @@ en:
       single_user_mode: Manyfold is running in single user mode.
     show:
       submit: Save Settings
-      title: Settings
+      title: Site Settings
     tag_settings:
       auto_tag_new:
         label: Automatically tag new models with
