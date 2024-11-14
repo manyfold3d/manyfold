@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails.git
-  revision: b61fe50f4e0da7f9f2429cc510ecced13b4cf8e6
-  branch: main
+  revision: 1c5dc0d225a0c17dad71aef4cca718a3a17001c7
+  branch: custom-actor-content
   specs:
     federails (0.2.0)
       faraday
