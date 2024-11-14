@@ -37,7 +37,7 @@ class Creator < ApplicationRecord
         }
       },
       attributionDomains: [
-        "manyfold.app"
+        [Rails.application.default_url_options[:host], Rails.application.default_url_options[:port]].compact.join(":")
       ]
     }
   end
