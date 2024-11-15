@@ -42,11 +42,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     else
       # Save personal settings
-      update_general_settings(current_user, params[:general])
       update_pagination_settings(current_user,params[:pagination])
       update_renderer_settings(current_user, params[:renderer])
       update_tag_cloud_settings(current_user, params[:tag_cloud])
-      update_problem_settings(current_user, params[:problems])
       update_file_list_settings(current_user, params[:file_list])
       super
     end
@@ -130,12 +128,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def update_general_settings(user, settings)
-    return unless settings
-    user.interface_language = settings[:interface_language].presence
-    user.sensitive_content_handling = settings[:sensitive_content].presence
-  end
-
   def update_pagination_settings(user, settings)
     return unless settings
     user.pagination_settings = {
@@ -175,11 +167,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       "render_style" => settings[:render_style],
       "auto_load_max_size" => settings[:auto_load_max_size].to_i
     }
-  end
-
-  def update_problem_settings(user, settings)
-    return unless settings
-    user.problem_settings = settings
   end
 
   def load_languages
