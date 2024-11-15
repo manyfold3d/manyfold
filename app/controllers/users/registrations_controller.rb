@@ -5,7 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :detect_if_first_use, only: [:edit, :update]
   before_action :load_languages, only: [:edit, :update]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
   skip_before_action :check_for_first_use, only: [:edit, :update]
 
   # GET /resource/sign_up
@@ -72,6 +72,45 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+  end
+
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update) do |user|
+      user.permit(
+        :email,
+        :password,
+        :password_confirmation,
+        :current_password,
+        :interface_language,
+        :sensitive_content_handling,
+        pagination_settings: [
+          :models,
+          :creators,
+          :collections,
+          :per_page
+        ],
+        tag_cloud_settings: [
+          :threshold,
+          :heatmap,
+          :keypair,
+          :sorting
+        ],
+        file_list_settings: [
+          :hide_presupported_versions
+        ],
+        renderer_settings: [
+          :grid_width,
+          :grid_depth,
+          :show_grid,
+          :enable_pan_zoom,
+          :background_colour,
+          :object_colour,
+          :render_style,
+          :auto_load_max_size
+        ],
+        problem_settings: Problem::CATEGORIES
+      )
+    end
   end
 
   def detect_if_first_use
