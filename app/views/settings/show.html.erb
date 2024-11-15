@@ -1,40 +1,24 @@
 <h1><%= t ".title" %></h1>
 
-<%= form_with url: user_settings_path(user: @user), method: :patch do |form| %>
+<%= form_with url: settings_path, method: :patch do |form| %>
   <div class="row mb-4">
     <div class="col">
-      <%= render "general_settings", form: form %>
-      <%= render "pagination_settings", form: form %>
-      <%= render "tag_cloud_settings", form: form %>
-      <%= render "file_list_settings", form: form %>
+      <%= render "usage_settings", form: form %>
+      <%= render "multiuser_settings", form: form %>
+      <%= render "analysis_settings", form: form %>
     </div>
     <div class="col">
-      <%= render "renderer_settings", form: form %>
-      <%= render "problem_settings", form: form %>
+      <%= render "admin_tools" unless SiteSettings.demo_mode_enabled? %>
+      <%= render "folder_settings", form: form %>
+      <%= render "tag_settings", form: form %>
     </div>
   </div>
 
-  <% if current_user.is_administrator? %>
-
-    <div class="row mb-4">
-      <div class="col">
-        <%= render "usage_settings", form: form %>
-        <%= render "multiuser_settings", form: form %>
-        <%= render "analysis_settings", form: form %>
-        <%= render "admin_tools" unless SiteSettings.demo_mode_enabled? %>
-      </div>
-      <div class="col">
-        <%= render "folder_settings", form: form %>
-        <%= render "tag_settings", form: form %>
-      </div>
+  <div class="row mb-4">
+    <div class="col">
+      <%= render "library_settings", form: form %>
     </div>
-
-    <div class="row mb-4">
-      <div class="col">
-        <%= render "library_settings", form: form %>
-      </div>
-    </div>
-  <% end %>
+  </div>
 
   <div class="row mb-4">
     <div class='col'>

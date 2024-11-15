@@ -9,25 +9,25 @@ RSpec.describe "Settings" do
     it "needs testing when multiuser is enabled"
   end
 
-  context "when signed in" do
-    describe "GET /users/:user_id/settings", :as_member do
+  context "when signed in", :as_administrator do
+    describe "GET /settings" do
       it "returns http success" do
-        get "/users/#{User.first.username}/settings"
+        get "/settings"
         expect(response).to have_http_status(:success)
       end
     end
 
-    describe "PATCH /users/:user_id/settings", :as_member do
+    describe "PATCH /settings" do
       it "redirects back to settings on success" do
-        patch "/users/#{User.first.username}/settings"
-        expect(response).to redirect_to("/users/#{User.first.username}/settings")
+        patch "/settings"
+        expect(response).to redirect_to("/settings")
       end
     end
 
-    describe "PUT /users/:user_id/settings", :as_member do
+    describe "PUT /settings" do
       it "redirects back to settings on success" do
-        put "/users/#{User.first.username}/settings"
-        expect(response).to redirect_to("/users/#{User.first.username}/settings")
+        put "/settings"
+        expect(response).to redirect_to("/settings")
       end
     end
   end

@@ -10,11 +10,6 @@ fr:
       manifold:
         help: Detection de maillages non-manifold (par exemple, si il y a des trous ou des surfaces impossibles)
         label: Détecter les erreurs de maillage
-    file_list_settings:
-      heading: Listes de fichiers
-      hide_presupported_versions:
-        label: Combiner les fichiers non supportés et supportés
-      summary: Contrôle de l'affichage des listes de fichiers de modèles
     folder_settings:
       details: La structure des dossiers suit un modèle que vous définissez à l'aide de jetons. Vous pouvez également inclure d'autres textes dans le modèle (comme des séparateurs de dossiers) et ils seront inclus tels quels.
       model_path_template:
@@ -33,18 +28,6 @@ fr:
         model_id: Un identifiant numérique unique pour le modèle. Nous vous recommandons fortement de toujours l'inclure à la fin de votre modèle afin d'éviter les conflits de noms sur le disque.
         model_name: Une version sécurisée du nom du modèle pour le système de fichiers.
         tags_html: 'une série de dossiers imbriqués, un pour chaque étiquette, classés par ordre de popularité de l''étiquette. Par exemple : <code>fantasy/humain/sorcier</code>'
-    general_settings:
-      heading: Général
-      interface_language:
-        autodetect: Utiliser les paramètres du navigateur
-        help: 'Remarque : certains textes non traduits peuvent encore s''afficher en anglais.'
-        label: Langue de l'interface
-      sensitive_content:
-        help:
-        hide:
-        label:
-        mask:
-        show:
     library_settings:
       description: Voir les détails de la bibliothèque et modifier.
       free_space:
@@ -64,64 +47,9 @@ fr:
       heading: Multiutilisateur
       multiuser_mode: Manyfold fonctionne en mode multi-utilisateurs.
       single_user_mode: Manyfold fonctionne en mode mono-utilisateur.
-    pagination_settings:
-      collections:
-        label: Paginer les collections
-      creators:
-        label: Paginer les créateurs
-      description: N'affichez qu'un certain nombre d'éléments à la fois dans les pages de liste, plutôt que tout en même temps. Cela peut accélérer le chargement.
-      heading: Pagination
-      models:
-        label: Paginer les modèles
-      per_page:
-        label: Articles par page
-    problem_settings:
-      description: Modifier la gravité des problèmes détectés ou les ignorer complètement.
-      title: Détection des problèmes
-    renderer_settings:
-      auto_load_max_size:
-        always: Toujours
-        label: Chargement automatique des aperçus
-        never: Jamais
-        under_1024: Jusqu'à 1024 Mo
-        under_128: Jusqu'à 128 Mo
-        under_16: Jusqu'à 16 Mo
-        under_2: Jusqu'à 2 Mo
-        under_256: Jusqu'à 256 Mo
-        under_32: Jusqu'à 32 Mo
-        under_4: Jusqu'à 4 Mo
-        under_512: Jusqu'à 512 Mo
-        under_64: Jusqu'à 64 Mo
-        under_8: Jusqu'à 8 Mo
-      background_colour:
-        label: Couleur de fond
-      description: Personnalisation des paramètres pour les aperçus 3D.
-      enable_pan_zoom:
-        label: Activer les commandes de panoramique/zoom
-      grid_width:
-        label: Taille du plan de masse (mm)
-      heading: Rendu
-      object_colour:
-        label: Couleur de l'objet
-      render_style:
-        label: Style de rendu
-        lambert: Ombres réalistes
-        normals: Direction de la surface
-      show_grid:
-        label: Afficher le plan de masse
     show:
       submit: Sauvegarder les paramètres
       title: Paramètres
-    tag_cloud_settings:
-      heading: Nuages de mots-clés
-      heatmap:
-        label: Afficher le nombre d'étiquette pour chaque étiquette
-      keypair:
-        label: Utiliser un délimiteur pour représenter les paires de clés
-      sorting:
-        label: Trier
-      threshold:
-        label: Nombre minimum d'étiquettes à afficher
     tag_settings:
       auto_tag_new:
         label: Etiqueter automatiquement les nouveaux modèles

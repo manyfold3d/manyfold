@@ -70,7 +70,7 @@
             </li>
           <% end %>
           <li class="nav-item">
-            <%= nav_link "sliders", t(".settings"), user_settings_path(current_user), text_style: "d-lg-none" %>
+            <%= nav_link "gear", t(".settings"), settings_path, text_style: "d-lg-none" %>
           </li>
         <% end %>
         <li class="nav-item">
@@ -81,7 +81,7 @@
         <%- if SiteSettings.multiuser_enabled? %>
           <%- if current_user %>
             <li class="nav-item">
-              <%= nav_link "person", t(".account"), edit_user_registration_path, text_style: "d-lg-none" %>
+              <%= nav_link "sliders", t(".account"), edit_user_registration_path, text_style: "d-lg-none" %>
             </li>
           <% end %>
           <li class="nav-item">

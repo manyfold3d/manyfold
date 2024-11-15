@@ -13,11 +13,6 @@ en:
       manifold:
         help: Check for non-manifold meshes (i.e. they have holes or impossible surfaces)
         label: Detect mesh errors
-    file_list_settings:
-      heading: File Lists
-      hide_presupported_versions:
-        label: Combine linked unsupported and presupported files
-      summary: Control how model file lists are displayed
     folder_settings:
       details: Folder structure follows a template that you define using tokens. You can also include other text in the template (such as folder separators) and it will be included as-is.
       model_path_template:
@@ -36,18 +31,6 @@ en:
         model_id: A unique numerical identifier for the model. We strongly recommend always including this at the end of your template to avoid name conflicts on disk.
         model_name: A filesystem-safe version of the model name.
         tags_html: 'a series of nested folders, one for each tag, arranged in order of tag popularity. For example: <code>fantasy/human/wizard</code>'
-    general_settings:
-      heading: General
-      interface_language:
-        autodetect: Use browser settings
-        help: 'Note: some untranslated text may still show in English.'
-        label: Interface language
-      sensitive_content:
-        help: Affects how content marked as "sensitive" will be displayed
-        hide: Hide completely
-        label: Sensitive Content
-        mask: Blur in lists
-        show: Show as normal
     library_settings:
       description: See library details and modify.
       free_space:
@@ -72,64 +55,9 @@ en:
       oidc: OpenID Connect configured?
       registration: Account registration open?
       single_user_mode: Manyfold is running in single user mode.
-    pagination_settings:
-      collections:
-        label: Paginate collections
-      creators:
-        label: Paginate creators
-      description: Show only a certain number of items at a time in list pages, rather than everything at once. This can make things quicker to load.
-      heading: Pagination
-      models:
-        label: Paginate models
-      per_page:
-        label: Items per page
-    problem_settings:
-      description: Change the severity of detected problems, or ignore them completely.
-      title: Problem Detection
-    renderer_settings:
-      auto_load_max_size:
-        always: Always
-        label: Automatically load previews
-        never: Never
-        under_1024: Up to 1024 MB
-        under_128: Up to 128 MB
-        under_16: Up to 16 MB
-        under_2: Up to 2 MB
-        under_256: Up to 256 MB
-        under_32: Up to 32 MB
-        under_4: Up to 4 MB
-        under_512: Up to 512 MB
-        under_64: Up to 64 MB
-        under_8: Up to 8 MB
-      background_colour:
-        label: Background colour
-      description: Customise settings for 3d rendered previews.
-      enable_pan_zoom:
-        label: Enable pan/zoom controls
-      grid_width:
-        label: Ground plane size (mm)
-      heading: Renderer
-      object_colour:
-        label: Object colour
-      render_style:
-        label: Rendering style
-        lambert: Realistically shaded
-        normals: Surface direction
-      show_grid:
-        label: Show ground plane
     show:
       submit: Save Settings
-      title: Settings
-    tag_cloud_settings:
-      heading: Tag Cloud
-      heatmap:
-        label: Display tag count for individual tags
-      keypair:
-        label: Use delimiter to represent keypairs
-      sorting:
-        label: Sorting
-      threshold:
-        label: Minimum count of tag for display
+      title: Site Settings
     tag_settings:
       auto_tag_new:
         label: Automatically tag new models with
