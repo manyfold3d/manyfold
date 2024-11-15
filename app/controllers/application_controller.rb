@@ -83,7 +83,7 @@ class ApplicationController < ActionController::Base
 
   def switch_locale(&action)
     locale = current_user&.interface_language || request.env["rack.locale"]
-    I18n.with_locale(locale, &action)
+    I18n.with_locale(locale.presence, &action)
   end
 
   def show_security_alerts
