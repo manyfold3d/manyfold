@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => "/admin/sidekiq"
     mount RailsPerformance::Engine => "/admin/performance" unless Rails.env.test?
     mount PgHero::Engine => "/admin/pghero"
-    resources :activity
+    get "activity/index", as: :activity
   end
 
   mount Federails::Engine => "/" if SiteSettings.multiuser_enabled? || SiteSettings.federation_enabled? || Rails.env.test?
