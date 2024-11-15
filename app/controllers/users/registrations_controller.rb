@@ -41,11 +41,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
         render "first_use"
       end
     else
-      # Save personal settings
-      update_pagination_settings(current_user,params[:pagination])
-      update_renderer_settings(current_user, params[:renderer])
-      update_tag_cloud_settings(current_user, params[:tag_cloud])
-      update_file_list_settings(current_user, params[:file_list])
       super
     end
   end
@@ -128,9 +123,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def update_pagination_settings(user, settings)
-    return unless settings
-    user.pagination_settings = {
+  def pagination_json(settings)
+    return nil unless settings
+    {
       "models" => settings[:models] == "1",
       "creators" => settings[:creators] == "1",
       "collections" => settings[:collections] == "1",
@@ -138,26 +133,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
     }
   end
 
-  def update_tag_cloud_settings(user, settings)
-    return unless settings
-    user.tag_cloud_settings = {
+  def tag_cloud_json(settings)
+    return nil unless settings
+    {
       "threshold" => settings[:threshold].to_i,
       "heatmap" => settings[:heatmap] == "1",
-      "keypair" => settings[:keypair] == "1",
-      "sorting" => settings[:sorting]
+      "keypair" => settings[:keypair] == "1"
     }
   end
 
-  def update_file_list_settings(user, settings)
-    return unless settings
-    user.file_list_settings = {
+  def file_list_json(settings)
+    return nil unless settings
+    {
       "hide_presupported_versions" => settings[:hide_presupported_versions] == "1"
     }
   end
 
-  def update_renderer_settings(user, settings)
-    return unless settings
-    user.renderer_settings = {
+  def renderer_json(settings)
+    return nil unless settings
+    {
       "grid_width" => settings[:grid_width].to_i,
       "grid_depth" => settings[:grid_width].to_i, # Store width in both for now. See #834
       "show_grid" => settings[:show_grid] == "1",
