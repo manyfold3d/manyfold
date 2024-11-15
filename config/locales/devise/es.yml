@@ -65,6 +65,78 @@ es:
       updated: Su contraseña ha sido modificada correctamente. Ahora has iniciado sesión.
       updated_not_active: Tu contraseña ha sido modificada correctamente.
     registrations:
+      file_list_settings:
+        heading: Listas de archivos
+        hide_presupported_versions:
+          label: Combina archivos vinculados sin soporte y con soporte predefinido.
+        summary: Controla cómo se muestra la lista de ficheros de un modelo
+      general_settings:
+        heading: General
+        interface_language:
+          autodetect: Utilizar la configuración del navegador
+          help: 'Nota: es posible que algunos textos no traducidos sigan apareciendo en inglés.'
+          label: Idioma de la aplicación
+        sensitive_content:
+          help: Afecta al modo en que se mostrará el contenido marcado como "sensible"
+          hide: Ocultar completamente
+          label: Contenido Sensible
+          mask: Desenfocar en las listas
+          show: Mostrar como normal
+      pagination_settings:
+        collections:
+          label: Paginar colecciones
+        creators:
+          label: Paginar creadores
+        description: Mostrar sólo un cierto número de elementos a la vez en las páginas de lista, en lugar de todo a la vez. Esto puede acelerar la carga.
+        heading: Paginación
+        models:
+          label: Paginar modelos
+        per_page:
+          label: Artículos por página
+      problem_settings:
+        description: Cambie la gravedad de los problemas detectados o ignórelos por completo.
+        title: Detección de problemas
+      renderer_settings:
+        auto_load_max_size:
+          always: Siempre
+          label: Carga automáticamente la vista previa
+          never: Nunca
+          under_1024: Hasta 1024 MB
+          under_128: Hasta 128 MB
+          under_16: Hasta 16 MB
+          under_2: Hasta 2 MB
+          under_256: Hasta 256 MB
+          under_32: Hasta 32 MB
+          under_4: Hasta 4 MB
+          under_512: Hasta 512 MB
+          under_64: Hasta 64 MB
+          under_8: Hasta 8 MB
+        background_colour:
+          label: Color de fondo
+        description: Personaliza la configuración para las vistas previas renderizadas en 3D.
+        enable_pan_zoom:
+          label: Activar Panorámica/Zoom
+        grid_width:
+          label: Tamaño del plano de tierra (mm)
+        heading: Renderizado
+        object_colour:
+          label: Color del objeto
+        render_style:
+          label: Estilo de renderizado
+          lambert: Sombreado realista
+          normals: Dirección de la superficie
+        show_grid:
+          label: Mostrar plano de tierra
+      tag_cloud_settings:
+        heading: Panel de etiquetas
+        heatmap:
+          label: Mostrar el número de etiquetas individuales
+        keypair:
+          label: Utilizar delimitadores para representar pares de claves
+        sorting:
+          label: Ordenar
+        threshold:
+          label: Número mínimo de etiquetas para la visualización
       destroyed: "¡Adiós! Tu cuenta ha sido cancelada correctamente. Esperamos verte pronto."
       edit:
         are_you_sure: "¿Está usted seguro?"

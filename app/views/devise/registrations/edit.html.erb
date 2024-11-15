@@ -4,17 +4,6 @@
   <div class="row mb-4">
     <div class="col-12 col-sm">
       <div class="card mb-2">
-        <h4 class="card-header"><%= t(".security") %></h4>
-        <div class="card-body">
-          <%= password_input_row f, :password, autocomplete: "new-password" %>
-          <%= password_input_row f, :password_confirmation, autocomplete: "new-password" %>
-          <%= password_input_row f, :current_password, autocomplete: "current-password",
-                help: t(".current_password_help") %>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-sm">
-      <div class="card mb-2">
         <h4 class="card-header"><%= t(".contact_info") %></h4>
         <div class="card-body">
           <%= text_input_row f, :email, autofocus: true, autocomplete: "email",
@@ -23,6 +12,23 @@
                   nil %>
         </div>
       </div>
+      <div class="card mb-2">
+        <h4 class="card-header"><%= t(".security") %></h4>
+        <div class="card-body">
+          <%= password_input_row f, :password, autocomplete: "new-password" %>
+          <%= password_input_row f, :password_confirmation, autocomplete: "new-password" %>
+          <%= password_input_row f, :current_password, autocomplete: "current-password",
+                help: t(".current_password_help") %>
+        </div>
+      </div>
+      <%= render "tag_cloud_settings", form: f %>
+      <%= render "problem_settings", form: f %>
+    </div>
+    <div class="col-12 col-sm">
+      <%= render "general_settings", form: f %>
+      <%= render "pagination_settings", form: f %>
+      <%= render "file_list_settings", form: f %>
+      <%= render "renderer_settings", form: f %>
       <%- if SiteSettings.multiuser_enabled? %>
         <div class="card border-danger mt-3">
           <h4 class="card-header text-bg-danger"><%= t ".danger_zone" %></h4>

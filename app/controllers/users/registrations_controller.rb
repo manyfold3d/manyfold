@@ -4,6 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :random_delay, only: [:create, :cancel]
   before_action :configure_sign_up_params, only: [:create]
   before_action :detect_if_first_use, only: [:edit, :update]
+  before_action :load_languages, only: [:edit, :update]
   # before_action :configure_account_update_params, only: [:update]
   skip_before_action :check_for_first_use, only: [:edit, :update]
 
@@ -40,6 +41,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
         render "first_use"
       end
     else
+      # Save personal settings
+      update_general_settings(current_user, params[:general])
+      update_pagination_settings(current_user,params[:pagination])
+      update_renderer_settings(current_user, params[:renderer])
+      update_tag_cloud_settings(current_user, params[:tag_cloud])
+      update_problem_settings(current_user, params[:problems])
+      update_file_list_settings(current_user, params[:file_list])
       super
     end
   end
@@ -82,4 +90,62 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def update_general_settings(user, settings)
+    return unless settings
+    user.interface_language = settings[:interface_language].presence
+    user.sensitive_content_handling = settings[:sensitive_content].presence
+  end
+
+  def update_pagination_settings(user, settings)
+    return unless settings
+    user.pagination_settings = {
+      "models" => settings[:models] == "1",
+      "creators" => settings[:creators] == "1",
+      "collections" => settings[:collections] == "1",
+      "per_page" => settings[:per_page].to_i
+    }
+  end
+
+  def update_tag_cloud_settings(user, settings)
+    return unless settings
+    user.tag_cloud_settings = {
+      "threshold" => settings[:threshold].to_i,
+      "heatmap" => settings[:heatmap] == "1",
+      "keypair" => settings[:keypair] == "1",
+      "sorting" => settings[:sorting]
+    }
+  end
+
+  def update_file_list_settings(user, settings)
+    return unless settings
+    user.file_list_settings = {
+      "hide_presupported_versions" => settings[:hide_presupported_versions] == "1"
+    }
+  end
+
+  def update_renderer_settings(user, settings)
+    return unless settings
+    user.renderer_settings = {
+      "grid_width" => settings[:grid_width].to_i,
+      "grid_depth" => settings[:grid_width].to_i, # Store width in both for now. See #834
+      "show_grid" => settings[:show_grid] == "1",
+      "enable_pan_zoom" => settings[:enable_pan_zoom] == "1",
+      "background_colour" => settings[:background_colour],
+      "object_colour" => settings[:object_colour],
+      "render_style" => settings[:render_style],
+      "auto_load_max_size" => settings[:auto_load_max_size].to_i
+    }
+  end
+
+  def update_problem_settings(user, settings)
+    return unless settings
+    user.problem_settings = settings
+  end
+
+  def load_languages
+    @languages = [[t("devise.registrations.general_settings.interface_language.autodetect"), nil]].concat(
+      I18n.available_locales.map { |locale| [I18nData.languages(locale)[locale.upcase.to_s]&.capitalize, locale] }
+    )
+  end
 end

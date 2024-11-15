@@ -4,21 +4,7 @@ class SettingsController < ApplicationController
   before_action :get_user
   before_action :check_owner_permission
 
-  def show
-    @languages = [[t("settings.general_settings.interface_language.autodetect"), nil]].concat(
-      I18n.available_locales.map { |locale| [I18nData.languages(locale)[locale.upcase.to_s]&.capitalize, locale] }
-    )
-  end
-
   def update
-    # Save personal settings
-    update_general_settings(params[:general])
-    update_pagination_settings(params[:pagination])
-    update_renderer_settings(params[:renderer])
-    update_tag_cloud_settings(params[:tag_cloud])
-    update_problem_settings(params[:problems])
-    update_file_list_settings(params[:file_list])
-    @user.save!
     # Save site-wide settings if user is an admin
     if current_user.is_administrator?
       update_folder_settings(params[:folders])
@@ -30,58 +16,6 @@ class SettingsController < ApplicationController
   end
 
   private
-
-  def update_general_settings(settings)
-    return unless settings
-    @user.interface_language = settings[:interface_language].presence
-    @user.sensitive_content_handling = settings[:sensitive_content].presence
-  end
-
-  def update_pagination_settings(settings)
-    return unless settings
-    @user.pagination_settings = {
-      "models" => settings[:models] == "1",
-      "creators" => settings[:creators] == "1",
-      "collections" => settings[:collections] == "1",
-      "per_page" => settings[:per_page].to_i
-    }
-  end
-
-  def update_tag_cloud_settings(settings)
-    return unless settings
-    @user.tag_cloud_settings = {
-      "threshold" => settings[:threshold].to_i,
-      "heatmap" => settings[:heatmap] == "1",
-      "keypair" => settings[:keypair] == "1",
-      "sorting" => settings[:sorting]
-    }
-  end
-
-  def update_file_list_settings(settings)
-    return unless settings
-    @user.file_list_settings = {
-      "hide_presupported_versions" => settings[:hide_presupported_versions] == "1"
-    }
-  end
-
-  def update_renderer_settings(settings)
-    return unless settings
-    @user.renderer_settings = {
-      "grid_width" => settings[:grid_width].to_i,
-      "grid_depth" => settings[:grid_width].to_i, # Store width in both for now. See #834
-      "show_grid" => settings[:show_grid] == "1",
-      "enable_pan_zoom" => settings[:enable_pan_zoom] == "1",
-      "background_colour" => settings[:background_colour],
-      "object_colour" => settings[:object_colour],
-      "render_style" => settings[:render_style],
-      "auto_load_max_size" => settings[:auto_load_max_size].to_i
-    }
-  end
-
-  def update_problem_settings(settings)
-    return unless settings
-    @user.problem_settings = settings
-  end
 
   def update_folder_settings(settings)
     return unless settings
