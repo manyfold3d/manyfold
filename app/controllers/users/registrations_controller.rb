@@ -170,6 +170,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update_resource(resource, data)
+    # Transform form data to crrect types
+    data[:pagination_settings] = pagination_json(data[:pagination_settings])
+    data[:renderer_settings] = renderer_json(data[:renderer_settings])
+    data[:tag_cloud_settings] = tag_cloud_json(data[:tag_cloud_settings])
+    data[:file_list_settings] = file_list_json(data[:file_list_settings])
     # Require password if important details have changed
     if data[:email] != resource.email || data[:password].present?
       resource.update_with_password(data)
