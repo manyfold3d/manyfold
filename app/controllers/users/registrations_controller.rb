@@ -148,4 +148,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
       I18n.available_locales.map { |locale| [I18nData.languages(locale)[locale.upcase.to_s]&.capitalize, locale] }
     )
   end
+
+  def update_resource(resource, data)
+    # Require password if important details have changed
+    if data[:email] != resource.email || data[:password].present?
+      resource.update_with_password(data)
+    else
+      resource.update_without_password(data.except(:email, :password, :password_confirmation, :current_password))
+    end
+  end
 end
