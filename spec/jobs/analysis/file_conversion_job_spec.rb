@@ -63,9 +63,9 @@ RSpec.describe Analysis::FileConversionJob do
 
     it "should create a file equivalence with the original file"
 
-    it "does not convert non-manifold meshes" do
+    it "logs an error for non-manifold meshes" do
       allow(mesh).to receive(:manifold?).and_return(false)
-      expect { described_class.perform_now(file.id, :threemf) }.to raise_error(NonManifoldError)
+      expect { described_class.perform_now(file.id, :threemf) }.to change { Problem.where(category: :non_manifold).count }.by(1)
     end
 
     it "queues up analysis job for new file" do
