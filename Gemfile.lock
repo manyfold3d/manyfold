@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/danini-the-panini/mittsu.git
-  revision: 78efada8153bd7b9949716004b499e32df0c137d
-  specs:
-    mittsu (0.4.0)
-      chunky_png
-      ffi
-      opengl-bindings2
-
-GIT
   remote: https://github.com/manyfold3d/sqlite3_ar_regexp.git
   revision: 2fa15db50770e86b7b4872486c2ee8ff282a3e2c
   ref: rails-7.1-support
@@ -413,6 +404,8 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
     minitest (5.25.1)
+    mittsu (0.5.0)
+      chunky_png
     mittsu-3mf (0.1.0)
       builder (~> 3.3)
       mittsu (~> 0.4)
@@ -459,7 +452,6 @@ GEM
     omniauth_openid_connect (0.8.0)
       omniauth (>= 1.9, < 3)
       openid_connect (~> 2.2)
-    opengl-bindings2 (2.0.2)
     openid_connect (2.3.0)
       activemodel
       attr_required (>= 1.0.0)
@@ -802,7 +794,7 @@ DEPENDENCIES
   lograge (~> 0.14.0)
   logstash-event (~> 1.2)
   memoist (~> 0.16.2)
-  mittsu!
+  mittsu (~> 0.5)
   mittsu-3mf
   mittsu-mesh_analysis
   mysql2 (~> 0.5.6)
