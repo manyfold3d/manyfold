@@ -54,6 +54,8 @@ fr:
         help: La bibliothèque vers laquelle télécharger.
       submit:
       title: Télécharger
+    problem:
+      merge_all: Tous fusionner
     scan:
       success: Début de l'analyse du modèle
     show:
