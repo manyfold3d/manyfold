@@ -179,6 +179,10 @@ class ModelFile < ApplicationRecord
     Analysis::FileConversionJob.perform_later(id, format.to_sym)
   end
 
+  def loadable?
+    loader.present?
+  end
+
   private
 
   def rescan_duplicates
