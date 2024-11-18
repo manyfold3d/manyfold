@@ -2,13 +2,13 @@ module ActivityHelper
   def status_icon(status)
     case status
     when :queued
-      icon "hourglass", t(".queued")
+      icon "hourglass", translate("activity_helper.status_icon.queued")
     when :working
-      icon "gear", t(".working")
+      icon "gear", translate("activity_helper.status_icon.working")
     when :completed
-      icon "check2-circle", t(".completed")
+      icon "check2-circle", translate("activity_helper.status_icon.completed")
     when :failed
-      icon "exclamation-diamond", t(".error")
+      icon "exclamation-diamond", translate("activity_helper.status_icon.error")
     end
   end
 
