@@ -54,8 +54,6 @@ pl:
         help: Biblioteka, do której ma zostać przesłany plik.
       submit: Stwórz modele
       title: Prześlij
-    problem:
-      merge_all: Połącz wszystko
     scan:
       success: Rozpoczęto skanowanie modelów
     show:

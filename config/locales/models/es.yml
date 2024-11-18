@@ -54,8 +54,6 @@ es:
         help: Biblioteca donde se cargará el archivo.
       submit: Crear modelos
       title: Cargar
-    problem:
-      merge_all: Fusionar todo
     scan:
       success: Escaneo de modelos iniciado
     show:
