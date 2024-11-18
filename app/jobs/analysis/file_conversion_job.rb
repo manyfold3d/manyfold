@@ -11,10 +11,10 @@ class Analysis::FileConversionJob < ApplicationJob
   sidekiq_options retry: false
 
   def perform(file_id, output_format)
-    # Can we output this format?
-    raise UnsupportedFormatError unless SupportedMimeTypes.can_export?(output_format)
     # Get model
     file = ModelFile.find(file_id)
+    # Can we output this format?
+    raise UnsupportedFormatError unless SupportedMimeTypes.can_export?(output_format) || !file.loadable?
     exporter = nil
     extension = nil
     status[:step] = "jobs.analysis.file_conversion.loading_mesh" # i18n-tasks-use t('jobs.analysis.file_conversion.loading_mesh')

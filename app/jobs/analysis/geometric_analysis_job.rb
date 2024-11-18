@@ -8,6 +8,7 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
   def perform(file_id)
     # Get model
     file = ModelFile.find(file_id)
+    return unless file.loadable?
     if SiteSettings.analyse_manifold
       status[:step] = "jobs.analysis.geometric_analysis.loading_mesh" # i18n-tasks-use t('jobs.analysis.geometric_analysis.loading_mesh')
       # Get mesh
