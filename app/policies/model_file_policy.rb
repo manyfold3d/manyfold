@@ -8,7 +8,7 @@ class ModelFilePolicy < ApplicationPolicy
   end
 
   def convert?
-    create? && ["stl", "obj"].include?(@record.extension)
+    create? && @record.loadable? && !@record.problems.exists?(category: :non_manifold)
   end
 
   def update?
