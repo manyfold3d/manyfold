@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_05_121830) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_05_121830) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
