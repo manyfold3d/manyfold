@@ -54,6 +54,8 @@ en:
         help: The library to upload to.
       submit: Create models
       title: Upload
+    problem:
+      merge_all: Merge all
     scan:
       success: Model scan started
     show:
