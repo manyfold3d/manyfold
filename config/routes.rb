@@ -94,6 +94,6 @@ Rails.application.routes.draw do
   resources :benchmark, only: [:index, :create, :destroy] if Rails.env.development?
 
   authenticate :user, lambda { |u| u.is_contributor? } do
-    mount LibraryUploader.upload_endpoint(:cache) => "/upload"
+    mount LibraryUploader.upload_endpoint(:cache) => "/upload", :as => :upload
   end
 end
