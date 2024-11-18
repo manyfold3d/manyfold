@@ -572,6 +572,8 @@ GEM
       redis-client (>= 0.22.0)
     redis-client (0.22.2)
       connection_pool
+    redis-namespace (1.11.0)
+      redis (>= 4)
     regexp_parser (2.9.2)
     reline (0.5.11)
       io-console (~> 0.5)
@@ -808,6 +810,7 @@ DEPENDENCIES
   rails_performance (~> 1.3)
   ransack (~> 4.2)
   redis (~> 5.3)
+  redis-namespace
   rolify (~> 6.0)
   rspec-rails
   rubocop-factory_bot
