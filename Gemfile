@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby file: ".ruby-version"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 7.1.5"
+gem "rails", "~> 7.2.2"
 # Use Puma as the app server
 gem "puma", "~> 6.4"
 # Deliver assets with Propshaft
