@@ -159,7 +159,10 @@ gem "omniauth_openid_connect", "~> 0.8.0"
 
 gem "sidekiq-cron", "~> 2.0"
 
-gem "rails_performance", "~> 1.3", group: [:development, :production]
+group :development, :production do
+  gem "rails_performance", "~> 1.3"
+  gem "redis-namespace"
+end
 
 gem "pghero", "~> 3.6"
 gem "pg_query", "~> 5.1"
