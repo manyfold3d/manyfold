@@ -72,9 +72,6 @@
 
     <%= card :secondary, t("layouts.card_list_page.actions_heading") do %>
       <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), model_model_file_path(@model, @file, @file.extension&.to_sym, download: "true"), {class: "btn btn-secondary", download: "download"} %>
-      <% if policy(@file).convert? %>
-        <%= link_to safe_join([icon("arrow-left-right", t(".convert")), t(".convert")], " "), model_model_files_path(@model, convert: {id: @file.to_param, to: "threemf"}), method: :post, class: "btn btn-warning" %>
-      <% end %>
     <% end %>
 
   </div>
