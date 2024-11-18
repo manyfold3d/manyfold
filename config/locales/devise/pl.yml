@@ -63,11 +63,33 @@ pl:
       updated: Hasło zmienione poprawnie. Zostałeś automatycznie zalogowany.
       updated_not_active: Hasło zostało pomyślnie zmienione.
     registrations:
+      destroyed: Twoje konto zostało usunięte.
+      edit:
+        are_you_sure: Jesteś pewny?
+        cancel_my_account: Usuń moje konto
+        confirm_deletion: Czy na pewno chcesz usunąć swoje konto?
+        contact_info: Informacje kontaktowe
+        current_password_help: Aktualne hasło wymagane dla bezpieczeństwa
+        currently_waiting_confirmation_for_email: 'Oczekujemy na potwierdzenie dla: %{email}'
+        danger_zone: Strefa zagrożenia!
+        leave_blank_if_you_don_t_want_to_change_it: pozostaw puste, jeśli nie chcesz wprowadzać zmian
+        security: Bezpieczeństwo
+        submit: Zapisz zmiany
+        title: Ustawienia konta
+        unhappy: Niezadowolony?
+        update: Aktualizuj
+        we_need_your_current_password_to_confirm_your_changes: potrzebujemy Twojego bieżącego hasła, aby potwierdzić zmiany
       file_list_settings:
         heading: Lista Plików
         hide_presupported_versions:
           label:
         summary: Kontroluj sposób wyświetlania list plików modeli
+      first_use:
+        email_help: Nigdy nie pokazywany publicznie; używany tylko do logowania i wiadomości e-mail dotyczących bezpieczeństwa konta.
+        guidance: Przy pierwszym użyciu należy ustawić nazwę użytkownika, kontaktowy adres e-mail i hasło dla głównego użytkownika administratora. Jeśli korzystasz z trybu pojedynczego użytkownika, zwykle nie będziesz musiał wprowadzać tych danych, aby się zalogować, ale w trybie wielu użytkowników nie będziesz mógł uzyskać dostępu do Manyfold bez nich.
+        submit: Zapisz
+        title: Konfiguracja
+        username_help: Unikalna nazwa użytkownika; użyj wstępnie wygenerowanej lub wybierz własną.
       general_settings:
         heading: Główne
         interface_language:
@@ -80,6 +102,8 @@ pl:
           label: Wrażliwa Treść
           mask: Rozmyj w liście
           show: Pokaż jak zwykle
+      new:
+        sign_up: Zarejestruj się
       pagination_settings:
         collections:
           label: Paginuj kolekcję
@@ -125,6 +149,10 @@ pl:
           normals: Kierunek powierzchni
         show_grid:
           label: Pokaż płaszczyznę podłoża
+      signed_up: Witaj! Rejestracja zakończyła się pomyślnie.
+      signed_up_but_inactive: Konto zostało utworzone pomyślnie. Zanim się jednak zalogujesz, musi ono zostać jeszcze aktywowane.
+      signed_up_but_locked: Konto zostało utworzone pomyślnie. Nie możesz się jednak zalogować, ponieważ jest ono zablokowane.
+      signed_up_but_unconfirmed: Wiadomość z linkiem aktywacyjnym została wysłana na podany adres e-mail. Otwórz link w celu aktywacji konta.
       tag_cloud_settings:
         heading: Chmura tagów
         heatmap:
@@ -135,34 +163,6 @@ pl:
           label: Sortowanie
         threshold:
           label: Minimalna liczba tagów do wyświetlenia
-      destroyed: Twoje konto zostało usunięte.
-      edit:
-        are_you_sure: Jesteś pewny?
-        cancel_my_account: Usuń moje konto
-        confirm_deletion: Czy na pewno chcesz usunąć swoje konto?
-        contact_info: Informacje kontaktowe
-        current_password_help: Aktualne hasło wymagane dla bezpieczeństwa
-        currently_waiting_confirmation_for_email: 'Oczekujemy na potwierdzenie dla: %{email}'
-        danger_zone: Strefa zagrożenia!
-        leave_blank_if_you_don_t_want_to_change_it: pozostaw puste, jeśli nie chcesz wprowadzać zmian
-        security: Bezpieczeństwo
-        submit: Zapisz zmiany
-        title: Ustawienia konta
-        unhappy: Niezadowolony?
-        update: Aktualizuj
-        we_need_your_current_password_to_confirm_your_changes: potrzebujemy Twojego bieżącego hasła, aby potwierdzić zmiany
-      first_use:
-        email_help: Nigdy nie pokazywany publicznie; używany tylko do logowania i wiadomości e-mail dotyczących bezpieczeństwa konta.
-        guidance: Przy pierwszym użyciu należy ustawić nazwę użytkownika, kontaktowy adres e-mail i hasło dla głównego użytkownika administratora. Jeśli korzystasz z trybu pojedynczego użytkownika, zwykle nie będziesz musiał wprowadzać tych danych, aby się zalogować, ale w trybie wielu użytkowników nie będziesz mógł uzyskać dostępu do Manyfold bez nich.
-        submit: Zapisz
-        title: Konfiguracja
-        username_help: Unikalna nazwa użytkownika; użyj wstępnie wygenerowanej lub wybierz własną.
-      new:
-        sign_up: Zarejestruj się
-      signed_up: Witaj! Rejestracja zakończyła się pomyślnie.
-      signed_up_but_inactive: Konto zostało utworzone pomyślnie. Zanim się jednak zalogujesz, musi ono zostać jeszcze aktywowane.
-      signed_up_but_locked: Konto zostało utworzone pomyślnie. Nie możesz się jednak zalogować, ponieważ jest ono zablokowane.
-      signed_up_but_unconfirmed: Wiadomość z linkiem aktywacyjnym została wysłana na podany adres e-mail. Otwórz link w celu aktywacji konta.
       update:
         setup_complete: Konfiguracja zakończona!
       update_needs_confirmation: Konto zostało zaktualizowane, musimy jednak potwierdzić nowy adres e-mail. Sprawdź swoją skrzynkę pocztową i otwórz link aktywacyjny, aby ukończyć zmianę adresu.

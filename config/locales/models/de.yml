@@ -54,8 +54,6 @@ de:
         help: Die Sammlung, in die hochgeladen werden soll.
       submit: Modelle erstellen
       title: Hochladen
-    problem:
-      merge_all: Alle zusammenführen
     scan:
       success: Modell-Scan gestartet
     show:

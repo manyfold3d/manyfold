@@ -23,7 +23,6 @@ es:
     general:
       edit: Editar la información del archivo
     show:
-      convert: Convertir a 3MF
       details_heading: Detalles
       notes_heading: Notas
     update:

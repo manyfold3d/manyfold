@@ -65,11 +65,33 @@ es:
       updated: Su contraseña ha sido modificada correctamente. Ahora has iniciado sesión.
       updated_not_active: Tu contraseña ha sido modificada correctamente.
     registrations:
+      destroyed: "¡Adiós! Tu cuenta ha sido cancelada correctamente. Esperamos verte pronto."
+      edit:
+        are_you_sure: "¿Está usted seguro?"
+        cancel_my_account: Eliminar mi cuenta
+        confirm_deletion: "¿Seguro que quieres eliminar tu cuenta?"
+        contact_info: Información de contacto
+        current_password_help: Se requiere la contraseña actual por razones de seguridad
+        currently_waiting_confirmation_for_email: 'Esperando confirmación para: %{email} '
+        danger_zone: "¡Zona peligrosa!"
+        leave_blank_if_you_don_t_want_to_change_it: dejar en blanco si no desea modificarlo
+        security: Seguridad
+        submit: Guardar cambios
+        title: Configuración de la cuenta
+        unhappy: "¿Descontento?"
+        update: Actualizar
+        we_need_your_current_password_to_confirm_your_changes: necesitamos su contraseña actual para confirmar los cambios
       file_list_settings:
         heading: Listas de archivos
         hide_presupported_versions:
           label: Combina archivos vinculados sin soporte y con soporte predefinido.
         summary: Controla cómo se muestra la lista de ficheros de un modelo
+      first_use:
+        email_help: Nunca se muestra públicamente; sólo se utiliza para los correos electrónicos de inicio de sesión y seguridad de su cuenta.
+        guidance: En el primer uso, necesitas establecer un nombre de usuario, un correo electrónico de contacto y una contraseña para el usuario administrador. Si estás ejecutando el modo usuario único, normalmente no necesitarás ingresar estos datos para iniciar sesión, pero en modo multiusuario no podrás acceder a Manyfold sin ellos
+        submit: Guardar
+        title: Instalación
+        username_help: Un nombre de usuario único; utilice el preestablecido o cree el suyo propio.
       general_settings:
         heading: General
         interface_language:
@@ -82,6 +104,8 @@ es:
           label: Contenido Sensible
           mask: Desenfocar en las listas
           show: Mostrar como normal
+      new:
+        sign_up: Registrarse
       pagination_settings:
         collections:
           label: Paginar colecciones
@@ -127,6 +151,10 @@ es:
           normals: Dirección de la superficie
         show_grid:
           label: Mostrar plano de tierra
+      signed_up: Bienvenido. Su cuenta ha sido creada correctamente.
+      signed_up_but_inactive: Su cuenta ha sido creada correctamente. Sin embargo, no hemos podido iniciar la sesión porque su cuenta aún no está activada.
+      signed_up_but_locked: Su cuenta ha sido creada correctamente. Sin embargo, no hemos podido iniciar la sesión porque su cuenta está bloqueada.
+      signed_up_but_unconfirmed: Se ha enviado un mensaje con un enlace de confirmación a su correo electrónico. Abra el enlace para activar su cuenta.
       tag_cloud_settings:
         heading: Panel de etiquetas
         heatmap:
@@ -137,34 +165,6 @@ es:
           label: Ordenar
         threshold:
           label: Número mínimo de etiquetas para la visualización
-      destroyed: "¡Adiós! Tu cuenta ha sido cancelada correctamente. Esperamos verte pronto."
-      edit:
-        are_you_sure: "¿Está usted seguro?"
-        cancel_my_account: Eliminar mi cuenta
-        confirm_deletion: "¿Seguro que quieres eliminar tu cuenta?"
-        contact_info: Información de contacto
-        current_password_help: Se requiere la contraseña actual por razones de seguridad
-        currently_waiting_confirmation_for_email: 'Esperando confirmación para: %{email} '
-        danger_zone: "¡Zona peligrosa!"
-        leave_blank_if_you_don_t_want_to_change_it: dejar en blanco si no desea modificarlo
-        security: Seguridad
-        submit: Guardar cambios
-        title: Configuración de la cuenta
-        unhappy: "¿Descontento?"
-        update: Actualizar
-        we_need_your_current_password_to_confirm_your_changes: necesitamos su contraseña actual para confirmar los cambios
-      first_use:
-        email_help: Nunca se muestra públicamente; sólo se utiliza para los correos electrónicos de inicio de sesión y seguridad de su cuenta.
-        guidance: En el primer uso, necesitas establecer un nombre de usuario, un correo electrónico de contacto y una contraseña para el usuario administrador. Si estás ejecutando el modo usuario único, normalmente no necesitarás ingresar estos datos para iniciar sesión, pero en modo multiusuario no podrás acceder a Manyfold sin ellos
-        submit: Guardar
-        title: Instalación
-        username_help: Un nombre de usuario único; utilice el preestablecido o cree el suyo propio.
-      new:
-        sign_up: Registrarse
-      signed_up: Bienvenido. Su cuenta ha sido creada correctamente.
-      signed_up_but_inactive: Su cuenta ha sido creada correctamente. Sin embargo, no hemos podido iniciar la sesión porque su cuenta aún no está activada.
-      signed_up_but_locked: Su cuenta ha sido creada correctamente. Sin embargo, no hemos podido iniciar la sesión porque su cuenta está bloqueada.
-      signed_up_but_unconfirmed: Se ha enviado un mensaje con un enlace de confirmación a su correo electrónico. Abra el enlace para activar su cuenta.
       update:
         setup_complete: "¡Instalación completada!"
       update_needs_confirmation: Su cuenta ha sido actualizada correctamente, pero es necesario verificar su nueva dirección de correo. Por favor, revise su correo y sigue el enlace de confirmación para finalizar la comprobación.
