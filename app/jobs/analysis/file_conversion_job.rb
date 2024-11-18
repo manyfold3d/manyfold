@@ -45,5 +45,13 @@ class Analysis::FileConversionJob < ApplicationJob
       # Queue up file scan
       Analysis::AnalyseModelFileJob.perform_later(new_file.id)
     end
+  rescue NonManifoldError
+    # Make sure non-manifold error is logged
+    Problem.create_or_clear(
+      file,
+      :non_manifold,
+      true
+    )
+    raise
   end
 end
