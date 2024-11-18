@@ -18,7 +18,8 @@
       <%= content_tag :div, nil,
             id: "uppy",
             "data-max-file-size": SiteSettings.max_file_upload_size,
-            "data-allowed-file-types": input_accept_string %>
+            "data-allowed-file-types": input_accept_string,
+            "data-upload-endpoint": upload_path %>
     </div>
   </div>
 

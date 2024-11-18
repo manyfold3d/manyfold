@@ -170,7 +170,8 @@
               id: "uppy",
               class: "mb-3",
               "data-max-file-size": SiteSettings.max_file_upload_size,
-              "data-allowed-file-types": input_accept_string %>
+              "data-allowed-file-types": input_accept_string,
+              "data-upload-endpoint": upload_path %>
 
         <%= submit_tag translate(".submit"), class: "btn btn-primary d-block" %>
       <% end %>

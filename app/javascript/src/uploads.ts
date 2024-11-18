@@ -35,6 +35,6 @@ document.addEventListener('ManyfoldReady', () => {
         triggerUploadOnSubmit: true,
         submitOnSuccess: true
       })
-      .use(XHR, { endpoint: '/upload' })
+      .use(XHR, { endpoint: settings.uploadEndpoint ?? "/upload" })
   })
 })
