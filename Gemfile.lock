@@ -363,8 +363,8 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    kramdown (2.4.0)
-      rexml
+    kramdown (2.5.0)
+      rexml (>= 3.3.6)
     language_server-protocol (3.17.0.3)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -782,7 +782,7 @@ DEPENDENCIES
   jbuilder (~> 2.13)
   jsbundling-rails
   kaminari (~> 1.2)
-  kramdown (~> 2.4)
+  kramdown (~> 2.5)
   letter_opener (~> 1.10)
   listen (~> 3.9)
   lograge (~> 0.14.0)
