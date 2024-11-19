@@ -1,0 +1,47 @@
+<h1><%= t ".title" %></h1>
+<div class="row mt-2">
+  <div class="col col-auto border-end" id="sidebar">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <%= link_to t(".organisation"), settings_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t(".libraries"), settings_libraries_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t(".analysis"), analysis_settings_path(anchor: "analysis"), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t(".multiuser"), multiuser_settings_path(anchor: "multiuser"), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t(".reporting"), reporting_settings_path(anchor: "reporting"), class: "nav-link" %>
+      </li>
+    </ul>
+    <% unless SiteSettings.demo_mode_enabled? %>
+      <hr>
+      <h5><%= t(".tools_heading") %></h5>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <%= link_to t(".activeadmin"), admin_root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t(".performance"), rails_performance_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t(".sidekiq"), sidekiq_web_path, class: "nav-link" %>
+        </li>
+      <%= if defined?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) && ApplicationRecord.connection.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter)
+            link_to safe_join([icon("database", t(".pghero")), t(".pghero")], " "),
+              pg_hero_path,
+              class: "btn btn-danger mb-3"
+          end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class="col" id="content">
+    <%= yield %>
+  </div>
+</div>
+
+<% parent_layout "application" %>

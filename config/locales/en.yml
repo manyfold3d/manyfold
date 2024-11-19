@@ -347,6 +347,18 @@ en:
       skip_to_content: Skip to main content
     card_list_page:
       actions_heading: Actions
+    settings:
+      activeadmin: Advanced Administration
+      analysis: Model Analysis
+      libraries: Libraries
+      multiuser: Multiuser
+      organisation: Folder Organisation
+      performance: Performance Dashboard
+      pghero: PgHero
+      reporting: Reporting
+      sidekiq: Sidekiq
+      title: Site Settings
+      tools_heading: Advanced Tools
   licenses:
     CC-BY-40: Creative Commons Attribution
     CC-BY-NC-40: Creative Commons Attribution NonCommercial

@@ -1,13 +1,7 @@
 ---
 en:
   settings:
-    admin_tools:
-      activeadmin: Advanced Administration
-      heading: Administration Tools
-      performance: Performance Dashboard
-      pghero: PgHero
-      sidekiq: Sidekiq
-    analysis_settings:
+    analysis:
       description: Perform deep mesh analysis on models. These options will make your scans take significantly longer and use a lot more CPU and memory.
       heading: Mesh Analysis
       manifold:
@@ -31,15 +25,9 @@ en:
         model_id: A unique numerical identifier for the model. We strongly recommend always including this at the end of your template to avoid name conflicts on disk.
         model_name: A filesystem-safe version of the model name.
         tags_html: 'a series of nested folders, one for each tag, arranged in order of tag popularity. For example: <code>fantasy/human/wizard</code>'
-    library_settings:
-      description: See library details and modify.
-      free_space:
-        label: Free Space
-      heading: Libraries
-      tag_regex:
-        check: Check
-        search_missing: Search Missing
-    multiuser_settings:
+    general:
+      submit: Save Settings
+    multiuser:
       default_viewer_role:
         help: Who can view new models / creators / collections by default?
         label: Default visibility
@@ -55,9 +43,14 @@ en:
       oidc: OpenID Connect configured?
       registration: Account registration open?
       single_user_mode: Manyfold is running in single user mode.
-    show:
-      submit: Save Settings
-      title: Site Settings
+    reporting:
+      description_html: If you enable usage tracking, the following information will be sent once a day to <code>%{endpoint}</code>. The <code>id</code> is randomly generated when you enable tracking.
+      heading: Anonymous Usage Tracking
+      report_usage:
+        label: Enable anonymous usage tracking
+      summary: Let the devs know you're running Manyfold.
+      use_of_data: No other information is sent or stored, and the devs will never use the information for any purpose other than measuring how many instances of Manyfold are running, and what version they are.
+      verification_html: If you want to verify what we send, you can change the <code>USAGE_REPORTING_URL</code> environment variable and send the data somewhere you can inspect it. You can also see exactly what is sent in the log.
     tag_settings:
       auto_tag_new:
         label: Automatically tag new models with
@@ -74,11 +67,3 @@ en:
         label: Create tags from model directory name
     update:
       success: Settings saved.
-    usage_settings:
-      description_html: If you enable usage tracking, the following information will be sent once a day to <code>%{endpoint}</code>. The <code>id</code> is randomly generated when you enable tracking.
-      heading: Anonymous Usage Tracking
-      report_usage:
-        label: Enable anonymous usage tracking
-      summary: Let the devs know you're running Manyfold.
-      use_of_data: No other information is sent or stored, and the devs will never use the information for any purpose other than measuring how many instances of Manyfold are running, and what version they are.
-      verification_html: If you want to verify what we send, you can change the <code>USAGE_REPORTING_URL</code> environment variable and send the data somewhere you can inspect it. You can also see exactly what is sent in the log.

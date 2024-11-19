@@ -8,7 +8,7 @@ class SettingsController < ApplicationController
     update_multiuser_settings(params[:multiuser])
     update_analysis_settings(params[:analysis])
     update_usage_settings(params[:usage])
-    redirect_to settings_path(@user), notice: t(".success")
+    redirect_back_or_to settings_path, notice: t(".success")
   end
 
   private
@@ -45,7 +45,6 @@ class SettingsController < ApplicationController
   end
 
   def check_owner_permission
-    render plain: "401 Unauthorized", status: :unauthorized unless current_user.is_administrator?
-    authorize current_user
+    authorize :settings
   end
 end
