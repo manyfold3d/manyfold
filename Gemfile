@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby file: ".ruby-version"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 7.2.2"
+gem "rails", "~> 8.0.0"
 # Use Puma as the app server
 gem "puma", "~> 6.4"
 # Deliver assets with Propshaft
@@ -108,7 +108,7 @@ gem "pundit", "~> 2.4"
 gem "spdx", "~> 4.1"
 gem "rack-contrib", "~> 2.5"
 
-gem "rails-i18n", "~> 7.0"
+gem "rails-i18n", "~> 8.0"
 
 gem "erb_lint", "~> 0.7.0", group: :development, require: false
 
