@@ -12,7 +12,7 @@ class CreateFederailsActors < ActiveRecord::Migration[7.0]
       t.string :followings_url
       t.string :profile_url
 
-      t.references :user, null: true, foreign_key: {to_table: Federails.configuration.user_table}
+      t.references :user, null: true, foreign_key: {to_table: "users"}
 
       t.timestamps
       t.index :federated_url, unique: true
