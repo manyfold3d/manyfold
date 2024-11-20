@@ -70,4 +70,10 @@ en:
       success: Settings saved.
     users:
       index:
+        description: View and edit registered user accounts.
         title: Manage Users
+        fediverse_address: Fediverse address
+        local: Local
+        view: View
+      show:
+        title: "User details: %{username}"
