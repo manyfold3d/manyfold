@@ -1,7 +1,7 @@
 class UserPolicy < ApplicationPolicy
   def index?
     all_of(
-      user&.is_administrator?,
+      user&.is_moderator?,
       none_of(
         SiteSettings.demo_mode_enabled?
       )
@@ -12,7 +12,7 @@ class UserPolicy < ApplicationPolicy
     all_of(
       one_of(
         user == record,
-        user&.is_administrator?
+        user&.is_moderator?
       )
     )
   end
@@ -22,7 +22,7 @@ class UserPolicy < ApplicationPolicy
       SiteSettings.multiuser_enabled?,
       one_of(
         SiteSettings.registration_enabled?,
-        user&.is_administrator?
+        user&.is_moderator?
       ),
       none_of(
         SiteSettings.demo_mode_enabled?
@@ -41,7 +41,7 @@ class UserPolicy < ApplicationPolicy
     all_of(
       one_of(
         user == record,
-        user&.is_administrator?
+        user&.is_moderator?
       ),
       SiteSettings.multiuser_enabled?,
       none_of(
