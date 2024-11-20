@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resources :libraries do
+  resources :libraries, except: [:index] do
     member do
       post "scan"
     end

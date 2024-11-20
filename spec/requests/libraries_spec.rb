@@ -45,13 +45,13 @@ RSpec.describe "Libraries" do
       end
     end
 
-    describe "GET /libraries" do
+    describe "GET /settings/libraries" do
       it "denies permission", :as_member do
-        expect { get "/libraries" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { get "/settings/libraries" }.to raise_error(ActionController::RoutingError)
       end
 
       it "shows list", :as_administrator do
-        get "/libraries"
+        get "/settings/libraries"
         expect(response).to have_http_status(:success)
       end
     end
