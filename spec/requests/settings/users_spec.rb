@@ -1,7 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "/settings/users", type: :request do
-
+RSpec.describe "/settings/users" do
   describe "GET /index", :as_moderator do
     it "renders a successful response" do
       create(:user)
@@ -9,3 +8,4 @@ RSpec.describe "/settings/users", type: :request do
       expect(response).to be_successful
     end
   end
+end
