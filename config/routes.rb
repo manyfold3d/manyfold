@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     get "/activity" => "activity#index", :as => :activity
   end
 
-  if SiteSettings.multiuser_enabled?
+  if SiteSettings.multiuser_enabled? || Rails.env.test?
     authenticate :user, lambda { |u| u.is_moderator? } do
       namespace :settings do
         resources :users

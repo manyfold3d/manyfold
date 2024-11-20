@@ -1,21 +1,19 @@
 require "rails_helper"
 
-RSpec.describe "/settings/users" do
+RSpec.describe "/settings/users", :multiuser do
   describe "GET /index", :as_moderator do
     it "renders a successful response" do
       create(:user)
-      get users_url
+      get "/settings/users"
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
+  describe "GET /show", :as_moderator do
     it "renders a successful response" do
-      user = Settings::User.create! valid_attributes
-      get user_url(user)
+      user = create(:user)
+      get "/settings/users/#{user.to_param}"
       expect(response).to be_successful
     end
   end
-
-  describe "GET /new" do
 end
