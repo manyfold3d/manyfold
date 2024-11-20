@@ -1,25 +1,14 @@
 <%= form_with url: settings_path, method: :patch do |form| %>
-  <div class="row mb-4">
-    <div class="card mb-2">
-      <h3 class="card-header"><%= t(".heading") %></h3>
-      <div class="card-body">
-        <p class='lead'>
-          <%= t(".description") %>
-        </p>
-        <div class="row mb-2">
-          <%= form.label nil, t(".manifold.label"), for: "analysis[manifold]", class: "col-sm-4 col-form-label" %>
-          <div class="col-sm-8 form-check form-switch">
-            <%= form.check_box "analysis[manifold]", checked: SiteSettings.analyse_manifold, class: "form-check-input" %>
-            <small><%= t(".manifold.help") %></small>
-          </div>
-        </div>
-      </div>
+  <h3><%= t(".heading") %></h3>
+  <p class='lead'>
+    <%= t(".description") %>
+  </p>
+  <div class="row mb-2">
+    <%= form.label nil, t(".manifold.label"), for: "analysis[manifold]", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8 form-check form-switch">
+      <%= form.check_box "analysis[manifold]", checked: SiteSettings.analyse_manifold, class: "form-check-input" %>
+      <small><%= t(".manifold.help") %></small>
     </div>
   </div>
-
-  <div class="row mb-4">
-    <div class='col'>
-      <button type="submit" class="btn btn-primary"><%= icon("save", t("settings.general.submit")) %> <%= t("settings.general.submit") %></button>
-    </div>
-  </div>
+  <%= render "submit", form: form %>
 <% end %>

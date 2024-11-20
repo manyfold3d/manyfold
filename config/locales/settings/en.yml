@@ -41,11 +41,12 @@ en:
       multiuser: Multiuser mode?
       multiuser_mode: Manyfold is running in multiuser mode.
       oidc: OpenID Connect configured?
+      permissions: Permissions
       registration: Account registration open?
       single_user_mode: Manyfold is running in single user mode.
     reporting:
       description_html: If you enable usage tracking, the following information will be sent once a day to <code>%{endpoint}</code>. The <code>id</code> is randomly generated when you enable tracking.
-      heading: Anonymous Usage Tracking
+      heading: Usage Tracking
       report_usage:
         label: Enable anonymous usage tracking
       summary: Let the devs know you're running Manyfold.

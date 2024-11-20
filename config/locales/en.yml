@@ -349,13 +349,10 @@ en:
       actions_heading: Actions
     settings:
       activeadmin: Advanced Administration
-      analysis: Model Analysis
       libraries: Libraries
-      multiuser: Multiuser
       organization: Organization
       performance: Performance Dashboard
       pghero: PgHero
-      reporting: Reporting
       sidekiq: Sidekiq
       title: Site Settings
       tools_heading: Advanced Tools

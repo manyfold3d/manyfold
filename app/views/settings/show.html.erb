@@ -1,12 +1,7 @@
 <%= form_with url: settings_path, method: :patch do |form| %>
-  <div class="row mb-4">
-    <%= render "folder_settings", form: form %>
-    <%= render "tag_settings", form: form %>
-  </div>
+  <%= render "folder_settings", form: form %>
+  <hr>
+  <%= render "tag_settings", form: form %>
 
-  <div class="row mb-4">
-    <div class='col'>
-      <button type="submit" class="btn btn-primary"><%= icon("save", t("settings.general.submit")) %> <%= t("settings.general.submit") %></button>
-    </div>
-  </div>
+  <%= render "submit", form: form %>
 <% end %>
