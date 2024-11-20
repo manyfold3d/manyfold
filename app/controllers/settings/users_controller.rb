@@ -2,7 +2,7 @@ class Settings::UsersController < ApplicationController
   before_action :get_user, except: [:index]
 
   def index
-    @users = policy_scope(Federails::Actor).where(entity_type: "User")
+    @users = policy_scope(Federails::Actor).where(entity_type: "User").where.not(entity_id: nil)
     render layout: "settings"
   end
 
