@@ -34,11 +34,11 @@
         <li class="nav-item">
           <%= link_to t(".sidekiq"), sidekiq_web_path, class: "nav-link" %>
         </li>
-      <%= if defined?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) && ApplicationRecord.connection.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter)
-            link_to safe_join([icon("database", t(".pghero")), t(".pghero")], " "),
-              pg_hero_path,
-              class: "btn btn-danger mb-3"
-          end %>
+        <% if defined?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) && ApplicationRecord.connection.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) %>
+          <li class="nav-item">
+            <%= link_to t(".pghero"), pg_hero_path, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
     <% end %>
   </div>
