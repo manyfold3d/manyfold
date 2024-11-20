@@ -31,7 +31,20 @@ Rails.application.routes.draw do
     get "/activity" => "activity#index", :as => :activity
   end
 
-  mount Federails::Engine => "/" if SiteSettings.multiuser_enabled? || SiteSettings.federation_enabled? || Rails.env.test?
+  if SiteSettings.multiuser_enabled? || Rails.env.test?
+    authenticate :user, lambda { |u| u.is_moderator? } do
+      namespace :settings do
+        resources :users
+      end
+    end
+    mount Federails::Engine => "/" if SiteSettings.federation_enabled? || Rails.env.test?
+
+    get "/follow" => "follows#index", :as => :follow
+    get "/authorize_interaction" => "follows#new", :as => :new_follow
+    post "/remote_follow" => "follows#remote_follow", :as => :remote_follow
+    post "/perform_remote_follow" => "follows#perform_remote_follow", :as => :perform_remote_follow
+    post "/follow_remote_actor/:id" => "follows#follow_remote_actor", :as => :follow_remote_actor
+  end
 
   root to: "home#index"
 
@@ -43,12 +56,6 @@ Rails.application.routes.draw do
       post "scan", action: :scan_all
     end
   end
-
-  get "/follow" => "follows#index", :as => :follow
-  get "/authorize_interaction" => "follows#new", :as => :new_follow
-  post "/remote_follow" => "follows#remote_follow", :as => :remote_follow
-  post "/perform_remote_follow" => "follows#perform_remote_follow", :as => :perform_remote_follow
-  post "/follow_remote_actor/:id" => "follows#follow_remote_actor", :as => :follow_remote_actor
 
   concern :followable do |options|
     if SiteSettings.multiuser_enabled?

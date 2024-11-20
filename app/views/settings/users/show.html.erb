@@ -1,0 +1,44 @@
+<h3><%= t(".title", username: @user.username) %></h3>
+<table class="table table-striped">
+  <tr>
+    <th><%= User.human_attribute_name(:username) %></th>
+    <td><%= @user.username %></td>
+  </tr>
+  <tr>
+    <th><%= User.human_attribute_name(:email) %></th>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <th><%= User.human_attribute_name(:created_at) %></th>
+    <td><%= @user.created_at.to_fs(:long) %></td>
+  </tr>
+  <tr>
+    <th><%= User.human_attribute_name(:updated_at) %></th>
+    <td><%= @user.updated_at.to_fs(:long) %></td>
+  </tr>
+  <tr>
+    <th><%= User.human_attribute_name(:interface_language) %></th>
+    <td><%= @user.interface_language.present? ? I18nData.languages(@user.interface_language)[@user.interface_language.to_s]&.capitalize : t("devise.registrations.general_settings.interface_language.autodetect") %></td>
+  </tr>
+  <% if SiteSettings.oidc_enabled? %>
+    <tr>
+      <th><%= User.human_attribute_name(:auth_uid) %></th>
+      <td><%= (user.auth_uid ? "✅" : "❌") %></td>
+    </tr>
+  <% end %>
+  <% if SiteSettings.federation_enabled? %>
+    <tr>
+      <th><%= t("settings.users.index.fediverse_address") %></th>
+      <td><%= @user.actor.at_address %></td>
+    </tr>
+  <% else %>
+    <tr>
+      <th><%= User.human_attribute_name(:public_id) %></th>
+      <td><%= @user.public_id %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <th><%= User.human_attribute_name(:roles) %></th>
+    <td><%= @user.roles.map(&:name).join(", ") %></td>
+  </tr>
+</table>
