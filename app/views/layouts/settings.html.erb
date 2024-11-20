@@ -26,7 +26,7 @@
           <%= link_to t(".activeadmin"), admin_root_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to t(".performance"), rails_performance_path, class: "nav-link" %>
+          <%= link_to t(".performance"), rails_performance_path, class: "nav-link" unless Rails.env.test? %>
         </li>
         <li class="nav-item">
           <%= link_to t(".sidekiq"), sidekiq_web_path, class: "nav-link" %>

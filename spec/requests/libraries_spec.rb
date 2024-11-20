@@ -45,10 +45,14 @@ RSpec.describe "Libraries" do
       end
     end
 
-    describe "GET /libraries", :as_member do
-      it "redirects to models index" do
+    describe "GET /libraries" do
+      it "denies permission", :as_member do
+        expect { get "/libraries" }.to raise_error(Pundit::NotAuthorizedError)
+      end
+
+      it "shows list", :as_administrator do
         get "/libraries"
-        expect(response).to redirect_to("/models")
+        expect(response).to have_http_status(:success)
       end
     end
 
