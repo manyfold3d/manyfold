@@ -5,5 +5,5 @@ RSpec.describe OrganizeModelJob do
 
   let(:model) { create(:model) }
 
-  it "should call organise"
+  it "should call organize"
 end
