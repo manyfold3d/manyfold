@@ -14,7 +14,7 @@
         <div class="card-body">
           <%= link_to t("general.edit"), edit_library_path(library), {class: "btn btn-secondary float-end #{policy(:library).edit? ? "" : "disabled"}"} %>
           <p>
-            <%= markdownify(library.notes) %>
+            <%= markdownify(library.notes) if library.notes %>
           </p>
           <table class="table">
             <tr>
