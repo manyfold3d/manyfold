@@ -3,11 +3,8 @@ class LibrariesController < ApplicationController
   skip_after_action :verify_policy_scoped, only: [:index]
 
   def index
-    if Library.count === 0
-      redirect_to new_library_path
-    else
-      redirect_to models_path
-    end
+    redirect_to new_library_path and return if Library.count === 0
+    render layout: "settings"
   end
 
   def show
@@ -67,7 +64,7 @@ class LibrariesController < ApplicationController
 
   def destroy
     @library.destroy
-    redirect_to libraries_path, notice: t(".success")
+    redirect_to settings_libraries_path, notice: t(".success")
   end
 
   private

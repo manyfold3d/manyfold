@@ -1,0 +1,14 @@
+<%= form_with url: settings_path, method: :patch do |form| %>
+  <h3><%= t(".heading") %></h3>
+  <p class='lead'>
+    <%= t(".description") %>
+  </p>
+  <div class="row mb-2">
+    <%= form.label nil, t(".manifold.label"), for: "analysis[manifold]", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8 form-check form-switch">
+      <%= form.check_box "analysis[manifold]", checked: SiteSettings.analyse_manifold, class: "form-check-input" %>
+      <small><%= t(".manifold.help") %></small>
+    </div>
+  </div>
+  <%= render "submit", form: form %>
+<% end %>

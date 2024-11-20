@@ -1,42 +1,15 @@
 ---
 fr:
   settings:
-    admin_tools:
-      activeadmin: Administration avancée
-      sidekiq: Sidekiq
-    analysis_settings:
+    analysis:
       description: Effectuer une analyse approfondie du maillage des modèles. Ces options allongeront considérablement la durée de vos analyses et utiliseront beaucoup plus de CPU et de mémoire.
       heading: Analyse du maillage
       manifold:
         help: Detection de maillages non-manifold (par exemple, si il y a des trous ou des surfaces impossibles)
         label: Détecter les erreurs de maillage
-    folder_settings:
-      details: La structure des dossiers suit un modèle que vous définissez à l'aide de jetons. Vous pouvez également inclure d'autres textes dans le modèle (comme des séparateurs de dossiers) et ils seront inclus tels quels.
-      model_path_template:
-        label: Modèle de parcours
-      parse_metadata_from_path:
-        help: Définir le créateur, la collection et les étiquettes en fonction du modèle
-        label: Remplir les métadonnées à partir du chemin d'accès et du modèle pendant le scan
-      safe_folder_names:
-        help_html: par exemple, <code>spinal-tap</code> au lieu de <code>Spın̈al Tap</code>
-        label: Utiliser des noms de dossiers sûrs
-      summary: Définir la structure des dossiers utilisée par "organiser les fichiers" et pour le remplissage automatique des métadonnées lors de l'analyse. Concerne tous les utilisateurs.
-      title: Nom du dossier
-      tokens:
-        collection: Le titre de la collection dans laquelle se trouve le modèle, s'il est défini.
-        creator: Le nom du créateur, s'il est défini.
-        model_id: Un identifiant numérique unique pour le modèle. Nous vous recommandons fortement de toujours l'inclure à la fin de votre modèle afin d'éviter les conflits de noms sur le disque.
-        model_name: Une version sécurisée du nom du modèle pour le système de fichiers.
-        tags_html: 'une série de dossiers imbriqués, un pour chaque étiquette, classés par ordre de popularité de l''étiquette. Par exemple : <code>fantasy/humain/sorcier</code>'
-    library_settings:
-      description: Voir les détails de la bibliothèque et modifier.
-      free_space:
-        label:
-      heading: Bibliothèques
-      tag_regex:
-        check: Vérifier
-        search_missing: Recherche manquante
-    multiuser_settings:
+    general:
+      submit: Sauvegarder les paramètres
+    multiuser:
       default_viewer_role:
         help:
         label:
@@ -44,29 +17,15 @@ fr:
           member:
           none:
       details_html: Pour modifier ces paramètres, modifiez les <a href='https://manyfold.app/sysadmin/configuration.html'>variables d'environnement</a> du serveur et redémarrez-le.
+      email:
+      federation:
       heading: Multiutilisateur
+      multiuser:
       multiuser_mode: Manyfold fonctionne en mode multi-utilisateurs.
+      oidc:
+      registration:
       single_user_mode: Manyfold fonctionne en mode mono-utilisateur.
-    show:
-      submit: Sauvegarder les paramètres
-      title: Paramètres
-    tag_settings:
-      auto_tag_new:
-        label: Etiqueter automatiquement les nouveaux modèles
-      custom_stop_words:
-        label: Personnaliser les stop words
-      description: Ajouter des étiquettes à tous les modèles nouvellement numérisés et filtrer certains mots ("stop words") lors de la création automatique d'étiquette. Concerne tous les utilisateurs.
-      filter_stop_words:
-        label: Eliminer les mots vides
-      heading: Etiqueter
-      stop_words_locale:
-        label: Stop words locale
-      tag_model_directory_name:
-        help: 'Attention : Peut produire un grand nombre de tags !'
-        label: Créer des tags à partir du nom du répertoire du modèle
-    update:
-      success: Paramètres sauvegardés.
-    usage_settings:
+    reporting:
       description_html:
       heading:
       report_usage:

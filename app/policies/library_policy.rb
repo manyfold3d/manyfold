@@ -1,4 +1,10 @@
 class LibraryPolicy < ApplicationPolicy
+  def index?
+    all_of(
+      user&.is_administrator?
+    )
+  end
+
   def create?
     all_of(
       user&.is_administrator?,

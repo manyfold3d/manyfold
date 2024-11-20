@@ -17,7 +17,14 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
   authenticate :user, lambda { |u| u.is_administrator? } do
-    resource :settings, only: [:show, :update]
+    resource :settings, only: [:show, :update] do
+      collection do
+        get :analysis
+        get :multiuser
+        get :reporting
+      end
+      resources :libraries, only: [:index]
+    end
     mount Sidekiq::Web => "/admin/sidekiq"
     mount RailsPerformance::Engine => "/admin/performance" unless Rails.env.test?
     mount PgHero::Engine => "/admin/pghero"
@@ -28,7 +35,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resources :libraries do
+  resources :libraries, except: [:index] do
     member do
       post "scan"
     end

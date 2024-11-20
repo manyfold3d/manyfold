@@ -1,0 +1,17 @@
+<%= form_with url: settings_path, method: :patch do |form| %>
+  <h3><%= t(".heading") %></h3>
+  <p class="lead"><%= t(".summary") %></p>
+  <p><%= t(".description_html", endpoint: UsageReport.endpoint) %></p>
+  <div class='alert alert-info'>
+    <code><%= UsageReport.generate %></code>
+  </div>
+  <p><%= t(".use_of_data") %></p>
+  <p><%= t(".verification_html") %></p>
+  <div class="row">
+    <%= form.label nil, t(".report_usage.label"), for: "usage[report]", class: "col col-form-label" %>
+    <div class="col form-check form-switch">
+      <%= form.check_box "usage[report]", checked: SiteSettings.anonymous_usage_id.present?, class: "form-check-input" %>
+    </div>
+  </div>
+  <%= render "submit", form: form %>
+<% end %>

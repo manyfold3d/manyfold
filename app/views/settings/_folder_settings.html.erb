@@ -1,48 +1,44 @@
-<div class="card mb-2">
-  <h3 class="card-header"><%= t(".title") %></h3>
-  <div class="card-body">
-    <p class='lead'>
-      <%= t ".summary" %>
-    </p>
-    <p>
-      <%= t ".details" %>
-    </p>
-    <ul>
-      <li>
-        <code>{tags}</code>: <%= t ".tokens.tags_html" %>
-      </li>
-      <li>
-        <code>{creator}</code>: <%= t ".tokens.creator" %>
-      </li>
-      <li>
-        <code>{collection}</code>: <%= t ".tokens.collection" %>
-      </li>
-      <li>
-        <code>{modelName}</code>: <%= t ".tokens.model_name" %>
-      </li>
-      <li>
-        <code>{modelId}</code>: <%= t ".tokens.model_id" %>
-      </li>
-    </ul>
-    <div class="row mb-2">
-      <%= form.label nil, t(".model_path_template.label"), for: "folders[model_path_template]", class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8 form-check form-switch">
-        <%= form.text_field "folders[model_path_template]", value: SiteSettings.model_path_template, class: "form-control" %>
-      </div>
-    </div>
-    <div class="row mb-2">
-      <%= form.label nil, t(".parse_metadata_from_path.label"), for: "folders[parse_metadata_from_path]", class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8 form-check form-switch">
-        <%= form.check_box "folders[parse_metadata_from_path]", checked: SiteSettings.parse_metadata_from_path, class: "form-check-input" %>
-        <small><%= t ".parse_metadata_from_path.help" %></small>
-      </div>
-    </div>
-    <div class="row mb-2">
-      <%= form.label nil, t(".safe_folder_names.label"), for: "folders[safe_folder_names]", class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8 form-check form-switch">
-        <%= form.check_box "folders[safe_folder_names]", checked: SiteSettings.safe_folder_names, class: "form-check-input" %>
-        <small><%= t(".safe_folder_names.help_html") %></small>
-      </div>
-    </div>
+<h3><%= t(".title") %></h3>
+<p class='lead'>
+  <%= t ".summary" %>
+</p>
+<p>
+  <%= t ".details" %>
+</p>
+<ul>
+  <li>
+    <code>{tags}</code>: <%= t ".tokens.tags_html" %>
+  </li>
+  <li>
+    <code>{creator}</code>: <%= t ".tokens.creator" %>
+  </li>
+  <li>
+    <code>{collection}</code>: <%= t ".tokens.collection" %>
+  </li>
+  <li>
+    <code>{modelName}</code>: <%= t ".tokens.model_name" %>
+  </li>
+  <li>
+    <code>{modelId}</code>: <%= t ".tokens.model_id" %>
+  </li>
+</ul>
+<div class="row mb-2">
+  <%= form.label nil, t(".model_path_template.label"), for: "folders[model_path_template]", class: "col-sm-4 col-form-label" %>
+  <div class="col-sm-8 form-check form-switch">
+    <%= form.text_field "folders[model_path_template]", value: SiteSettings.model_path_template, class: "form-control" %>
+  </div>
+</div>
+<div class="row mb-2">
+  <%= form.label nil, t(".parse_metadata_from_path.label"), for: "folders[parse_metadata_from_path]", class: "col-sm-4 col-form-label" %>
+  <div class="col-sm-8 form-check form-switch">
+    <%= form.check_box "folders[parse_metadata_from_path]", checked: SiteSettings.parse_metadata_from_path, class: "form-check-input" %>
+    <small><%= t ".parse_metadata_from_path.help" %></small>
+  </div>
+</div>
+<div class="row mb-2">
+  <%= form.label nil, t(".safe_folder_names.label"), for: "folders[safe_folder_names]", class: "col-sm-4 col-form-label" %>
+  <div class="col-sm-8 form-check form-switch">
+    <%= form.check_box "folders[safe_folder_names]", checked: SiteSettings.safe_folder_names, class: "form-check-input" %>
+    <small><%= t(".safe_folder_names.help_html") %></small>
   </div>
 </div>

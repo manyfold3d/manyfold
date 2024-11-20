@@ -84,7 +84,7 @@ class ModelsController < ApplicationController
       )
     end
 
-    redirect_to libraries_path, notice: t(".success")
+    redirect_to models_path, notice: t(".success")
   end
 
   def update

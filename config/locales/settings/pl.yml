@@ -1,42 +1,15 @@
 ---
 pl:
   settings:
-    admin_tools:
-      activeadmin: Zaawansowana Administracja
-      sidekiq: Sidekiq
-    analysis_settings:
+    analysis:
       description: Przeprowadź głęboką analizę siatki na modelach. Opcje te sprawią, że skanowanie będzie trwało znacznie dłużej i zużyje znacznie więcej mocy procesora i pamięci.
       heading: Analiza siatki
       manifold:
         help: Sprawdź, czy siatki nie są siatkami nierozmaitymi (tj. mają dziury lub niemożliwe powierzchnie)
         label: Wykrywanie błędów siatki
-    folder_settings:
-      details: Struktura folderów jest zgodna z szablonem zdefiniowanym przy użyciu tokenów. Do szablonu możesz również dołączyć inny tekst (np. separatory folderów), który zostanie uwzględniony jak jest.
-      model_path_template:
-        label: Szablon ścieżki modelu
-      parse_metadata_from_path:
-        help: Ustawia twórcę, kolekcję i tagi na podstawie szablonu
-        label: Wypełnij metadane ze ścieżki i szablonu podczas skanowania
-      safe_folder_names:
-        help_html: np. <code>spinal-tap</code> zamiast <code>Spın̈al Tap</code>
-        label: Używaj bezpiecznych nazw folderów
-      summary: Określ strukturę folderów używaną przez "organizuj pliki" i do automatycznego uzupełniania metadanych podczas skanowania. Dotyczy wszystkich użytkowników.
-      title: Nazewnictwo folderów
-      tokens:
-        collection: Tytuł kolekcji, w której znajduje się model, jeśli jest ustawiony.
-        creator: Nazwa twórcy, jeśli ustawiona.
-        model_id: Unikalny numeryczny identyfikator modelu. Zdecydowanie polecamy podawanie go zawsze na końcu szablonu, aby uniknąć konfliktów nazw na dysku.
-        model_name: Bezpieczna dla systemu plików wersja nazwy modelu.
-        tags_html: 'seria zagnieżdżonych folderów, po jednym dla każdego z tagów, ułożonych w kolejności popularności tagów. Na przykład: <code>fantasy/człowiek/czarodziej</code>'
-    library_settings:
-      description: Zobacz szczegóły biblioteki i ją zmodyfikuj.
-      free_space:
-        label: Wolna przestrzeń
-      heading: Biblioteki
-      tag_regex:
-        check: Sprawdź
-        search_missing: Wyszukaj Brakujące
-    multiuser_settings:
+    general:
+      submit: Zapisz Ustawienia
+    multiuser:
       default_viewer_role:
         help: Kto może domyślnie wyświetlać nowe modele / twórców / kolekcje?
         label: Domyślna widoczność
@@ -44,29 +17,15 @@ pl:
           member: Zalogowani lokalni użytkownicy
           none: Prywatne
       details_html: Aby zmienić te ustawienia, edytuj <a href='https://manyfold.app/sysadmin/configuration.html'>zmienne środowiskowe</a> serwera i uruchom go ponownie.
+      email: Dostarczanie wiadomości e-mail skonfigurowane?
+      federation: Federacja włączona?
       heading: Tryb wielu użytkowników
+      multiuser: Tryb wielu użytkowników?
       multiuser_mode: Manyfold działa w trybie wielu użytkowników.
+      oidc: OpenID Connect skonfigurowany?
+      registration: Rejestracja kont otwarta?
       single_user_mode: Manyfold działa w trybie pojedynczego użytkownika.
-    show:
-      submit: Zapisz Ustawienia
-      title: Ustawienia
-    tag_settings:
-      auto_tag_new:
-        label: Automatycznie taguj nowe modele za pomocą
-      custom_stop_words:
-        label: Niestandardowe słowa stopu
-      description: Dodaje tagi do wszystkich nowo zeskanowanych modeli i odfiltrowuje określone słowa ("słowa stopu") podczas automatycznego tworzenia tagów. Dotyczy wszystkich użytkowników.
-      filter_stop_words:
-        label: Odfiltruj słowa stopu
-      heading: Tagowanie
-      stop_words_locale:
-        label: Język słów stopu
-      tag_model_directory_name:
-        help: 'Uwaga: Może generować wiele tagów!'
-        label: Twórz tagi na podstawie nazwy katalogu modelu
-    update:
-      success: Ustawienia zapisane.
-    usage_settings:
+    reporting:
       description_html: Jeśli włączysz śledzenie użytkowania, poniższe informacje będą wysyłane raz dziennie do <code>%{endpoint}</code>. <code>Identyfikator</code> jest generowany losowo po włączeniu śledzenia.
       heading: Anonimowe Śledzenie Użytkowania
       report_usage:

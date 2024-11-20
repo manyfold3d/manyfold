@@ -1,42 +1,15 @@
 ---
 es:
   settings:
-    admin_tools:
-      activeadmin: Administración avanzada
-      sidekiq: Sidekiq
-    analysis_settings:
+    analysis:
       description: Realiza un análisis profundo de la malla en los modelos. Estas opciones harán que tus escaneos tarden mucho más y utilicen considerablemente más CPU y memoria.
       heading: Análisis de mallas
       manifold:
         help: Comprueba si la malla no es válida (es decir, tienen agujeros o superficies imposibles)
         label: Detectar errores de malla
-    folder_settings:
-      details: La estructura de carpetas sigue una plantilla que usted define utilizando tokens. También puede incluir otro texto en la plantilla (como separadores de carpeta) y se incluirá tal cual.
-      model_path_template:
-        label: Plantilla de ruta del modelo
-      parse_metadata_from_path:
-        help: Establece el creador, la colección y las etiquetas en función de la plantilla
-        label: Rellenar metadatos a partir de la ruta y la plantilla durante el escaneo
-      safe_folder_names:
-        help_html: por ejemplo, <code>spinal-tap</code> en lugar de <code>Spın̈al Tap</code>
-        label: Utilice nombres de carpeta seguros
-      summary: Establece la estructura de carpetas que usa el "organizador de archivos" y que se utiliza para completar automáticamente los metadatos durante el escaneo. Afecta a todos los usuarios.
-      title: Nombres de las carpetas
-      tokens:
-        collection: El título de la colección en la que se encuentra el modelo, si está establecido.
-        creator: El nombre del creador, si se ha establecido.
-        model_id: Un identificador numérico único para el modelo. Recomendamos encarecidamente incluirlo siempre al final del modelo para evitar conflictos de nombres en el disco.
-        model_name: Una versión segura para el sistema de ficheros del nombre del modelo.
-        tags_html: 'una serie de carpetas anidadas, una para cada etiqueta, ordenadas según su popularidad. Por ejemplo: <code>fantasía/humano/mago</code>'
-    library_settings:
-      description: Ver detalles de la biblioteca y modificar.
-      free_space:
-        label: Espacio libre
-      heading: Bibliotecas
-      tag_regex:
-        check: Revisar
-        search_missing: Buscar Desaparecidos
-    multiuser_settings:
+    general:
+      submit: Guardar ajustes
+    multiuser:
       default_viewer_role:
         help: "¿Quién puede ver por defecto los nuevos modelos / creadores / colecciones?"
         label: Visibilidad por defecto
@@ -44,29 +17,15 @@ es:
           member: Usuarios locales conectados
           none: Privado
       details_html: Para cambiar esta configuración, edite las <a href='https://manyfold.app/sysadmin/configuration.html'>variables de entorno</a> del servidor y reinicie.
+      email: "¿Está configurada la entrega de emails?"
+      federation: "¿Federación habilitada?"
       heading: Multiusuario
+      multiuser: "¿Modo multiusuario?"
       multiuser_mode: Manyfold se está ejecutando en modo multiusuario.
+      oidc: "¿Está configurado OpenID Connect?"
+      registration: "¿Está abierto el registro de cuentas?"
       single_user_mode: Manyfold se está ejecutando en modo usuario único.
-    show:
-      submit: Guardar ajustes
-      title: Ajustes
-    tag_settings:
-      auto_tag_new:
-        label: Etiquetar automáticamente los nuevos modelos con
-      custom_stop_words:
-        label: Palabras reservadas personalizadas
-      description: Añada etiquetas a todos los modelos recién escaneados y filtre determinadas palabras ("palabras reservadas") durante la creación automática de etiquetas. Afecta a todos los usuarios.
-      filter_stop_words:
-        label: Filtrar palabras reservadas
-      heading: Etiquetado
-      stop_words_locale:
-        label: Idioma de las palabras reservadas
-      tag_model_directory_name:
-        help: 'Advertencia: ¡Puede producir muchísimas etiquetas!'
-        label: Crear etiquetas a partir del nombre del directorio del modelo
-    update:
-      success: Ajustes guardados.
-    usage_settings:
+    reporting:
       description_html: Si activa el seguimiento de uso, la siguiente información se enviará una vez al día a <code>%{endpoint}</code>. El <code>identificador</code> se genera aleatoriamente al activar el seguimiento.
       heading: Seguimiento Anónimo de uso
       report_usage:

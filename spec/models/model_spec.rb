@@ -192,7 +192,7 @@ RSpec.describe Model do
     end
   end
 
-  context "when organising" do
+  context "when organizing" do
     around do |ex|
       Dir.mktmpdir do |library_path|
         @library_path = library_path

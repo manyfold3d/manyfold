@@ -45,10 +45,14 @@ RSpec.describe "Libraries" do
       end
     end
 
-    describe "GET /libraries", :as_member do
-      it "redirects to models index" do
-        get "/libraries"
-        expect(response).to redirect_to("/models")
+    describe "GET /settings/libraries" do
+      it "denies permission", :as_member do
+        expect { get "/settings/libraries" }.to raise_error(ActionController::RoutingError)
+      end
+
+      it "shows list", :as_administrator do
+        get "/settings/libraries"
+        expect(response).to have_http_status(:success)
       end
     end
 
@@ -106,7 +110,7 @@ RSpec.describe "Libraries" do
     describe "DELETE /libraries/:id" do
       it "removes the library", :as_administrator do
         delete "/libraries/#{library.to_param}"
-        expect(response).to redirect_to("/libraries")
+        expect(response).to redirect_to("/settings/libraries")
       end
 
       it "is denied to non-administrators", :as_moderator do

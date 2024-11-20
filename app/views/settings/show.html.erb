@@ -1,28 +1,7 @@
-<h1><%= t ".title" %></h1>
-
 <%= form_with url: settings_path, method: :patch do |form| %>
-  <div class="row mb-4">
-    <div class="col">
-      <%= render "usage_settings", form: form %>
-      <%= render "multiuser_settings", form: form %>
-      <%= render "analysis_settings", form: form %>
-    </div>
-    <div class="col">
-      <%= render "admin_tools" unless SiteSettings.demo_mode_enabled? %>
-      <%= render "folder_settings", form: form %>
-      <%= render "tag_settings", form: form %>
-    </div>
-  </div>
+  <%= render "folder_settings", form: form %>
+  <hr>
+  <%= render "tag_settings", form: form %>
 
-  <div class="row mb-4">
-    <div class="col">
-      <%= render "library_settings", form: form %>
-    </div>
-  </div>
-
-  <div class="row mb-4">
-    <div class='col'>
-      <button type="submit" class="btn btn-primary"><%= icon("save", t(".submit")) %> <%= t(".submit") %></button>
-    </div>
-  </div>
+  <%= render "submit", form: form %>
 <% end %>
