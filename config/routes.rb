@@ -31,6 +31,12 @@ Rails.application.routes.draw do
     get "/activity" => "activity#index", :as => :activity
   end
 
+  authenticate :user, lambda { |u| u.is_moderator? } do
+    namespace :settings do
+      resources :users
+    end
+  end
+
   mount Federails::Engine => "/" if SiteSettings.multiuser_enabled? || SiteSettings.federation_enabled? || Rails.env.test?
 
   root to: "home#index"

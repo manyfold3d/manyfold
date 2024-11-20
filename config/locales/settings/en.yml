@@ -68,3 +68,6 @@ en:
         label: Create tags from model directory name
     update:
       success: Settings saved.
+    users:
+      index:
+        title: Manage Users

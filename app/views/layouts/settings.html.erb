@@ -9,13 +9,16 @@
         <%= link_to t(".libraries"), settings_libraries_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to t("settings.analysis.heading"), analysis_settings_path(anchor: "analysis"), class: "nav-link" %>
+        <%= link_to t("settings.analysis.heading"), analysis_settings_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to t("settings.multiuser.heading"), multiuser_settings_path(anchor: "multiuser"), class: "nav-link" %>
+        <%= link_to t("settings.multiuser.heading"), multiuser_settings_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to t("settings.reporting.heading"), reporting_settings_path(anchor: "reporting"), class: "nav-link" %>
+        <%= link_to t("settings.users.index.title"), settings_users_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t("settings.reporting.heading"), reporting_settings_path, class: "nav-link" %>
       </li>
     </ul>
     <% unless SiteSettings.demo_mode_enabled? %>
