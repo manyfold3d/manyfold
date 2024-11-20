@@ -64,7 +64,7 @@ class LibrariesController < ApplicationController
 
   def destroy
     @library.destroy
-    redirect_to libraries_path, notice: t(".success")
+    redirect_to settings_libraries_path, notice: t(".success")
   end
 
   private

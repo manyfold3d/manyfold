@@ -264,7 +264,7 @@ RSpec.describe "Models" do
     describe "POST /models" do
       it "redirect back to index after upload", :as_contributor do
         post "/models", params: {library: library.to_param, scan: "1", uploads: "{}"}
-        expect(response).to redirect_to("/libraries")
+        expect(response).to redirect_to("/models")
       end
 
       it "clears returnable session param", :as_contributor do

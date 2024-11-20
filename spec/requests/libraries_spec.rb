@@ -110,7 +110,7 @@ RSpec.describe "Libraries" do
     describe "DELETE /libraries/:id" do
       it "removes the library", :as_administrator do
         delete "/libraries/#{library.to_param}"
-        expect(response).to redirect_to("/libraries")
+        expect(response).to redirect_to("/settings/libraries")
       end
 
       it "is denied to non-administrators", :as_moderator do
