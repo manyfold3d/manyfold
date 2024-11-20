@@ -71,9 +71,9 @@ en:
     users:
       index:
         description: View and edit registered user accounts.
-        title: Manage Users
         fediverse_address: Fediverse address
         local: Local
+        title: Manage Users
         view: View
       show:
-        title: "User details: %{username}"
+        title: 'User details: %{username}'
