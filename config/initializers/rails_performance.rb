@@ -17,12 +17,8 @@ if defined?(RailsPerformance) && !Rails.env.test?
     # config.slow_requests_threshold = 500 # number of ms
 
     # store custom data for the request
-    config.custom_data_proc = proc do |env|
-      {
-        pid: Process.pid,
-        memory_usage: GetProcessMem.new.bytes
-      }
-    end
+    # config.custom_data_proc = proc do |env|
+    # end
 
     # config home button link
     config.home_link = "/"
