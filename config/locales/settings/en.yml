@@ -69,16 +69,22 @@ en:
     update:
       success: Settings saved.
     users:
+      create:
+        success: User created successfully.
       edit:
         title: 'Edit user: %{username}'
       form:
+        password_reset_help: A link will be sent automatically to the user for them to set their own password.
         submit: Save
       index:
         description: View and edit registered user accounts.
         fediverse_address: Fediverse address
         local: Local
+        new: New user
         title: Manage Users
         view: View
+      new:
+        title: Create user
       show:
         title: 'User details: %{username}'
       update:

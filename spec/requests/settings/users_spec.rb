@@ -19,12 +19,49 @@ RSpec.describe "/settings/users", :multiuser do
     end
   end
 
+  describe "GET /new", :as_moderator do
+    it "renders a successful response" do
+      get new_settings_user_url
+      expect(response).to be_successful
+    end
+  end
+
   describe "GET /edit", :as_moderator do
     let(:user) { create(:user) }
 
     it "renders a successful response" do
       get "/settings/users/#{user.to_param}/edit"
       expect(response).to be_successful
+    end
+  end
+
+  describe "POST /create", :as_moderator do
+    context "with valid parameters" do
+      it "creates a new Settings::User" do
+        expect {
+          post "/settings/users", params: {user: attributes_for(:user)}
+        }.to change(User, :count).by(1)
+      end
+
+      it "redirects to the created user" do
+        post "/settings/users", params: {user: attributes_for(:user)}
+        expect(response).to redirect_to(settings_user_url(User.last))
+      end
+    end
+
+    context "with invalid parameters" do
+      let(:invalid_attributes) { {email: "invalid"} }
+
+      it "does not create a new Settings::User" do
+        expect {
+          post "/settings/users", params: {user: invalid_attributes}
+        }.not_to change(User, :count)
+      end
+
+      it "renders a response with 422 status (i.e. to display the 'new' template)" do
+        post "/settings/users", params: {user: invalid_attributes}
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
     end
   end
 
