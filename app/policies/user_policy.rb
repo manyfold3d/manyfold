@@ -33,7 +33,7 @@ class UserPolicy < ApplicationPolicy
   def update?
     one_of(
       user == record,
-      user&.is_administrator?
+      user&.is_moderator?
     )
   end
 
