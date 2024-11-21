@@ -3,6 +3,19 @@
   <%= text_input_row form, :username %>
   <%= text_input_row form, :email %>
 
+  <% if !user.persisted? %>
+    <% if SiteSettings.email_configured? %>
+      <div class="row mb-3 input-group">
+        <div class="alert alert-info">
+          <%= t(".password_reset_help") %>
+        </div>
+      </div>
+    <% else %>
+      <%= text_input_row form, :password %>
+      <%= text_input_row form, :password_confirmation %>
+    <% end %>
+  <% end %>
+
   <div class="row mb-3 input-group">
     <%= form.label :roles, class: "col-auto col-form-label" %>
     <div class="form-control col-auto">

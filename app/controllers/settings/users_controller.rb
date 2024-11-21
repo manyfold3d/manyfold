@@ -1,5 +1,5 @@
 class Settings::UsersController < ApplicationController
-  before_action :get_user, except: [:index]
+  before_action :get_user, except: [:index, :new, :create]
   respond_to :html
 
   def index
@@ -11,8 +11,31 @@ class Settings::UsersController < ApplicationController
     render layout: "settings"
   end
 
+  def new
+    authorize(User)
+    @user = User.new
+    @user.send :assign_default_role
+    render layout: "settings"
+  end
+
   def edit
     render layout: "settings"
+  end
+
+  def create
+    authorize(User)
+    password = helpers.random_password
+    # Create user with a random password if one isn't provided
+    @user = User.create({
+      password: password,
+      password_confirmation: password
+    }.merge(user_params))
+    if @user.valid?
+      @user.send_reset_password_instructions if SiteSettings.email_configured?
+      redirect_to [:settings, @user], notice: t(".success")
+    else
+      render "new", layout: "settings", status: :unprocessable_entity
+    end
   end
 
   def update
