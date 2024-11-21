@@ -64,6 +64,7 @@ jobs:
           build-args: |
             APP_VERSION=${{ steps.docker_meta.outputs.version }}
             GIT_SHA=${{ github.sha }}
+            DOCKER_TAG=${{ steps.docker_meta.outputs.tags }}
 
   solo:
     runs-on: ubuntu-latest
