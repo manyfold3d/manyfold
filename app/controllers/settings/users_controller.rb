@@ -17,7 +17,7 @@ class Settings::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      respond_with :settings, @user
+      redirect_to [:settings, @user], notice: t(".success")
     else
       render "edit", layout: "settings", status: :unprocessable_entity
     end

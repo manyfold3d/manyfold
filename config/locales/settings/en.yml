@@ -81,3 +81,5 @@ en:
         view: View
       show:
         title: 'User details: %{username}'
+      update:
+        success: User updated successfully.
