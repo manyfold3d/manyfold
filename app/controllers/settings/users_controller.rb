@@ -46,6 +46,11 @@ class Settings::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    redirect_to settings_users_path, notice: t(".success")
+  end
+
   private
 
   def get_user
