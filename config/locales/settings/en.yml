@@ -69,6 +69,10 @@ en:
     update:
       success: Settings saved.
     users:
+      edit:
+        title: 'Edit user: %{username}'
+      form:
+        submit: Save
       index:
         description: View and edit registered user accounts.
         fediverse_address: Fediverse address
@@ -77,3 +81,5 @@ en:
         view: View
       show:
         title: 'User details: %{username}'
+      update:
+        success: User updated successfully.

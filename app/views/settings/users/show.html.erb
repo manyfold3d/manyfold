@@ -42,3 +42,5 @@
     <td><%= @user.roles.map(&:name).join(", ") %></td>
   </tr>
 </table>
+
+<%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_settings_user_path(@user), class: "btn btn-primary" if policy(@user).edit? %>
