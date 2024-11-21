@@ -45,7 +45,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def create_admin_user
-    password = (SecureRandom.base64(32) + "!0aB").chars.shuffle.join
+    password = helpers.random_password
     u = User.create!(
       username: SecureRandom.hex(4),
       email: "root@localhost",
