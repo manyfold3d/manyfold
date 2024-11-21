@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   if SiteSettings.multiuser_enabled? || Rails.env.test?
     authenticate :user, lambda { |u| u.is_moderator? } do
       namespace :settings do
-        resources :users
+        resources :users, except: [:destroy]
       end
     end
     mount Federails::Engine => "/" if SiteSettings.federation_enabled? || Rails.env.test?
