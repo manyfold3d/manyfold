@@ -71,6 +71,8 @@ en:
     users:
       edit:
         title: 'Edit user: %{username}'
+      form:
+        submit: Save
       index:
         description: View and edit registered user accounts.
         fediverse_address: Fediverse address

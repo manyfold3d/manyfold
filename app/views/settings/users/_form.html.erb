@@ -1,2 +1,8 @@
 <%= form_with model: [:settings, user] do |form| %>
+
+  <%= text_input_row form, :username %>
+  <%= text_input_row form, :email %>
+
+  <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+
 <% end %>
