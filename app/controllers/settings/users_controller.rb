@@ -33,7 +33,8 @@ class Settings::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(
       :email,
-      :username
+      :username,
+      role_ids: []
     )
   end
 end

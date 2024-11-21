@@ -27,6 +27,7 @@ RSpec.describe "/settings/users", :multiuser do
       expect(response).to be_successful
     end
   end
+
   describe "PATCH /update", :as_moderator do
     let(:user) { create(:user) }
 
@@ -53,5 +54,4 @@ RSpec.describe "/settings/users", :multiuser do
       end
     end
   end
-
 end
