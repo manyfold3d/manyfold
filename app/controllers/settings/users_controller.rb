@@ -10,6 +10,11 @@ class Settings::UsersController < ApplicationController
     render layout: "settings"
   end
 
+  def edit
+    render layout: "settings"
+  end
+
+
   private
 
   def get_user
