@@ -3,6 +3,18 @@
   <%= text_input_row form, :username %>
   <%= text_input_row form, :email %>
 
+  <div class="row mb-3 input-group">
+    <%= form.label :roles, class: "col-auto col-form-label" %>
+    <div class="form-control col-auto">
+      <%= form.collection_check_boxes :role_ids, Role.all, :id, :name do |b|
+            content_tag :div, class: "form-check" do
+              b.check_box(class: "form-check-input") +
+                b.label(class: "form-check-label")
+            end
+          end %>
+    </div>
+  </div>
+
   <%= form.submit translate(".submit"), class: "btn btn-primary" %>
 
 <% end %>
