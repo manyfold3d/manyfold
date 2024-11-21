@@ -69,6 +69,8 @@ en:
     update:
       success: Settings saved.
     users:
+      edit:
+        title: 'Edit user: %{username}'
       index:
         description: View and edit registered user accounts.
         fediverse_address: Fediverse address

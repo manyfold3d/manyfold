@@ -1,5 +1,6 @@
 class Settings::UsersController < ApplicationController
   before_action :get_user, except: [:index]
+  respond_to :html
 
   def index
     @users = policy_scope(Federails::Actor).where(entity_type: "User").where.not(entity_id: nil)
@@ -14,6 +15,13 @@ class Settings::UsersController < ApplicationController
     render layout: "settings"
   end
 
+  def update
+    if @user.update(user_params)
+      respond_with :settings, @user
+    else
+      render "edit", layout: "settings", status: :unprocessable_entity
+    end
+  end
 
   private
 
@@ -23,6 +31,9 @@ class Settings::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit
+    params.require(:user).permit(
+      :email,
+      :username
+    )
   end
 end
