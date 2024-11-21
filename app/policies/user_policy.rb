@@ -41,7 +41,7 @@ class UserPolicy < ApplicationPolicy
     all_of(
       one_of(
         user == record,
-        user&.is_moderator?
+        user&.is_administrator?
       ),
       SiteSettings.multiuser_enabled?,
       none_of(

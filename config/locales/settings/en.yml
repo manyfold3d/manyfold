@@ -71,6 +71,8 @@ en:
     users:
       create:
         success: User created successfully.
+      destroy:
+        success: User removed!
       edit:
         title: 'Edit user: %{username}'
       form:
@@ -86,6 +88,7 @@ en:
       new:
         title: Create user
       show:
+        confirm_destroy: Are you sure you want to remove this user account immediately? This cannot be undone!
         title: 'User details: %{username}'
       update:
         success: User updated successfully.
