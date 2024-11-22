@@ -88,9 +88,11 @@ en:
       new:
         title: Create user
       show:
+        approve: Approve user
         confirm_destroy: Are you sure you want to remove this user account immediately? This cannot be undone!
         reset_password: Reset password
         title: 'User details: %{username}'
       update:
+        approved: User was approved successfully.
         reset_link_sent: A link has been sent to the user for them to set a new password.
         success: User updated successfully.

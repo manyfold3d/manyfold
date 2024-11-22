@@ -57,6 +57,7 @@ en:
         problematic_type: Object Type
         severity: Severity
       user:
+        approved: Account pending
         confirmation_sent_at: Confirmation sent at
         confirmation_token: Confirmation token
         confirmed_at: Confirmed at
