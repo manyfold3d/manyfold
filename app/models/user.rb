@@ -117,6 +117,27 @@ class User < ApplicationRecord
     User.where(updated_at: range).count
   end
 
+  # Devise approval checks
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
+    approved? ? super : :not_approved
+  end
+
+  def self.send_reset_password_instructions(attributes = {})
+    recoverable = find_or_initialize_with_errors(reset_password_keys, attributes, :not_found)
+    if recoverable.persisted?
+      if recoverable.approved?
+        recoverable.send_reset_password_instructions
+      else
+        recoverable.errors.add(:base, :not_approved)
+      end
+    end
+    recoverable
+  end
+
   private
 
   def has_any_role_of?(*args)

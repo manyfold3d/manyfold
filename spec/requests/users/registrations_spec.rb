@@ -270,11 +270,15 @@ RSpec.describe "Users::Registrations" do
         end
       end
 
-      describe "POST /users" do
+      describe "POST /users with approval disabled" do
         before { post "/users", params: post_options }
 
         it "creates a new user" do
           expect(User.count).to eq 2
+        end
+
+        it "creates user in approved state" do
+          expect(User.last).to be_approved
         end
 
         it "redirects to root" do
@@ -283,6 +287,29 @@ RSpec.describe "Users::Registrations" do
 
         it "signs in the user" do
           expect(controller.current_user&.username).to eq post_options[:user][:username]
+        end
+      end
+
+      describe "POST /users with approval enabled" do
+        before {
+          allow(SiteSettings).to receive(:approve_signups).and_return(true)
+          post "/users", params: post_options
+        }
+
+        it "creates a new user" do
+          expect(User.count).to eq 2
+        end
+
+        it "creates user in pending state" do
+          expect(User.last).not_to be_approved
+        end
+
+        it "redirects to root" do
+          expect(response).to redirect_to("/")
+        end
+
+        it "does not sign in the user" do
+          expect(controller.current_user).to be_nil
         end
       end
 

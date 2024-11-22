@@ -57,6 +57,7 @@ en:
         problematic_type: Object Type
         severity: Severity
       user:
+        approved: Account pending
         confirmation_sent_at: Confirmation sent at
         confirmation_token: Confirmation token
         confirmed_at: Confirmed at
@@ -393,6 +394,11 @@ en:
     myminifactory: MyMiniFactory
     theminiindex: The Mini Index
     thingiverse: Thingiverse
+  user_mailer:
+    account_approved:
+      subject: Account approved
+      greeting: Hi!
+      message: Your account has been approved; you may now sign in at %{link}.
   views:
     pagination:
       first: "« First"

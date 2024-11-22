@@ -8,6 +8,14 @@
     <th><%= User.human_attribute_name(:email) %></th>
     <td><%= @user.email %></td>
   </tr>
+  <% unless @user.approved? %>
+    <tr>
+      <th><%= User.human_attribute_name(:approved) %></th>
+      <td>
+        <%= link_to safe_join([icon("person-check", t(".approve")), t(".approve")], " "), settings_user_path(@user, approve: true), method: :patch, class: "btn btn-primary btn-sm" if policy(@user).edit? %>
+      </td>
+    </tr>
+  <% end %>
   <tr>
     <th><%= User.human_attribute_name(:created_at) %></th>
     <td><%= @user.created_at.to_fs(:long) %></td>

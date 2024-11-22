@@ -28,6 +28,9 @@ en:
     general:
       submit: Save Settings
     multiuser:
+      approve_signups:
+        help: All new accounts must be approved by a moderator before they can log in.
+        label: Approve accounts
       default_viewer_role:
         help: Who can view new models / creators / collections by default?
         label: Default visibility
@@ -42,7 +45,8 @@ en:
       multiuser_mode: Manyfold is running in multiuser mode.
       oidc: OpenID Connect configured?
       permissions: Permissions
-      registration: Account registration open?
+      registration: Account registration
+      registration_open: Account registration open?
       single_user_mode: Manyfold is running in single user mode.
     reporting:
       description_html: If you enable usage tracking, the following information will be sent once a day to <code>%{endpoint}</code>. The <code>id</code> is randomly generated when you enable tracking.
@@ -88,9 +92,11 @@ en:
       new:
         title: Create user
       show:
+        approve: Approve user
         confirm_destroy: Are you sure you want to remove this user account immediately? This cannot be undone!
         reset_password: Reset password
         title: 'User details: %{username}'
       update:
+        approved: User was approved successfully.
         reset_link_sent: A link has been sent to the user for them to set a new password.
         success: User updated successfully.

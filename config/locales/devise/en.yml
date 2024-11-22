@@ -13,6 +13,7 @@ en:
       invalid: Invalid %{authentication_keys} or password.
       last_attempt: You have one more attempt before your account is temporarily locked.
       locked: Your account is locked for an hour; try again later.
+      not_approved: Your account has not yet been approved by a moderator.
       not_found_in_database: Invalid %{authentication_keys} or password.
       timeout: Your session expired. Please sign in again to continue.
       unauthenticated: You need to sign in or sign up before continuing.
@@ -103,6 +104,7 @@ en:
           mask: Blur in lists
           show: Show as normal
       new:
+        approval_help: After creating your account, it will be manually reviewed by our moderators. We'll let you know when approval is complete and you can sign in.
         sign_up: Sign up
       pagination_settings:
         collections:
@@ -168,6 +170,8 @@ en:
       update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address.
       updated: Your account has been updated successfully.
       updated_but_not_signed_in: Your account has been updated successfully, but since your password was changed, you need to sign in again.
+      user:
+        signed_up_but_not_approved: You have signed up successfully. A moderator will review your account soon, after which you will be able to sign in.
     sessions:
       already_signed_out: Signed out successfully.
       new:

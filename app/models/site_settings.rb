@@ -13,6 +13,7 @@ class SiteSettings < RailsSettings::Base
   field :analyse_manifold, type: :boolean, default: false
   field :anonymous_usage_id, type: :string, default: nil
   field :default_viewer_role, type: :string, default: "member"
+  field :approve_signups, type: :boolean, default: false
 
   def self.registration_enabled?
     Rails.application.config.manyfold_features[:registration]
