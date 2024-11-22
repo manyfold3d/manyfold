@@ -27,7 +27,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /users
   def create
     authorize User
-    super
+    super do |user|
+      user.update(approved: false) if SiteSettings.approve_signups
+    end
   end
 
   # PUT /resource
