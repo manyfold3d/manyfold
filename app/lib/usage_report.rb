@@ -10,8 +10,8 @@ module UsageReport
         version.app Rails.application.config.app_version
         version.sha Rails.application.config.git_sha
         version.image ENV.fetch("DOCKER_TAG", nil)&.split(":")&.first
+        version.arch RUBY_PLATFORM
       end
-      report.arch RUBY_PLATFORM
     end
   end
 

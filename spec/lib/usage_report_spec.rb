@@ -23,7 +23,7 @@ RSpec.describe UsageReport do
 
     it "includes architecture" do
       stub_const("RUBY_PLATFORM", "test-arch")
-      expect(parsed["arch"]).to eq "test-arch"
+      expect(parsed["version"]["arch"]).to eq "test-arch"
     end
 
     it "includes application version" do
