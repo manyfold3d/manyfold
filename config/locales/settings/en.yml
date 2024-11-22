@@ -89,6 +89,8 @@ en:
         title: Create user
       show:
         confirm_destroy: Are you sure you want to remove this user account immediately? This cannot be undone!
+        reset_password: Reset password
         title: 'User details: %{username}'
       update:
+        reset_link_sent: A link has been sent to the user for them to set a new password.
         success: User updated successfully.

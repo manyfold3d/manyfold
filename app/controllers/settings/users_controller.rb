@@ -39,7 +39,10 @@ class Settings::UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    if params[:reset]
+      @user.send_reset_password_instructions
+      redirect_to [:settings, @user], notice: t(".reset_link_sent")
+    elsif @user.update(user_params)
       redirect_to [:settings, @user], notice: t(".success")
     else
       render "edit", layout: "settings", status: :unprocessable_entity

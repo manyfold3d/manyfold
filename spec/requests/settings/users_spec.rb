@@ -69,8 +69,9 @@ RSpec.describe "/settings/users", :multiuser do
     let(:user) { create(:user) }
 
     context "with valid parameters" do
+      let(:attributes) { attributes_for(:user) }
+
       it "updates the requested user" do # rubocop:todo RSpec/MultipleExpectations
-        attributes = attributes_for(:user)
         patch "/settings/users/#{user.to_param}", params: {user: attributes}
         user.reload
         expect(user.email).to eq attributes[:email]
@@ -78,16 +79,31 @@ RSpec.describe "/settings/users", :multiuser do
       end
 
       it "redirects to the user" do
-        patch "/settings/users/#{user.to_param}", params: {user: attributes_for(:user)}
+        patch "/settings/users/#{user.to_param}", params: {user: attributes}
         user.reload
         expect(response).to redirect_to("/settings/users/#{user.to_param}")
       end
     end
 
     context "with invalid parameters" do
+      let(:attributes) { {email: "invalid"} }
+
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        patch "/settings/users/#{user.to_param}", params: {user: {email: "invalid"}}
+        patch "/settings/users/#{user.to_param}", params: {user: attributes}
         expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+
+    context "with password reset parameter" do
+      it "sets a reset token" do
+        patch "/settings/users/#{user.to_param}", params: {reset: true}
+        user.reload
+        expect(user.reset_password_token).to be_present
+      end
+
+      it "returns to user page" do
+        patch "/settings/users/#{user.to_param}", params: {reset: true}
+        expect(response).to redirect_to("/settings/users/#{user.to_param}")
       end
     end
   end
