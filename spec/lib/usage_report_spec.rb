@@ -5,7 +5,7 @@ RSpec.describe UsageReport do
     before do
       allow(SiteSettings).to receive(:anonymous_usage_id).and_return("guid-goes-here")
       allow(Rails.application.config).to receive_messages(
-        app_version: "test",
+        app_version: "v0.89.0",
         git_sha: "deadbeef"
       )
     end
@@ -27,7 +27,7 @@ RSpec.describe UsageReport do
     end
 
     it "includes application version" do
-      expect(parsed["version"]["app"]).to eq "test"
+      expect(parsed["version"]["app"]).to eq "0.89.0"
     end
 
     it "includes image type" do
