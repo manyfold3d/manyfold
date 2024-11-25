@@ -396,9 +396,9 @@ en:
     thingiverse: Thingiverse
   user_mailer:
     account_approved:
-      subject: Account approved
       greeting: Hi!
       message: Your account has been approved; you may now sign in at %{link}.
+      subject: Account approved
   views:
     pagination:
       first: "« First"
