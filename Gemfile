@@ -6,7 +6,7 @@ ruby file: ".ruby-version"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 7.2.2"
 # Use Puma as the app server
-gem "puma", "~> 6.4"
+gem "puma", "~> 6.5"
 # Deliver assets with Propshaft
 gem "propshaft", "~> 1.1"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
