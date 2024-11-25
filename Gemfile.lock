@@ -9,9 +9,9 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails.git
-  revision: 25034bfcc216f605bcff2c8c6b5777c4b90e45fb
+  revision: 304665b2fc5ad7b24dbc9d665d1fc1c0dae2848c
   specs:
-    federails (0.2.0)
+    federails (0.3.0)
       faraday
       faraday-follow_redirects
       json-ld (>= 3.2.0)
@@ -396,7 +396,7 @@ GEM
     method_source (1.1.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
-    minitest (5.25.1)
+    minitest (5.25.2)
     mittsu (0.5.0)
       chunky_png
     mittsu-3mf (0.1.0)
