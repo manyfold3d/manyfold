@@ -7,7 +7,7 @@ module UsageReport
     Jbuilder.encode do |report|
       report.id SiteSettings.anonymous_usage_id
       report.version do |version|
-        version.app Rails.application.config.app_version
+        version.app Rails.application.config.app_version.gsub(/^v/, "")
         version.sha Rails.application.config.git_sha
         version.image ENV.fetch("DOCKER_TAG", nil)&.split(":")&.first
         version.arch RUBY_PLATFORM
