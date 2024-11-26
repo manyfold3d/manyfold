@@ -168,8 +168,8 @@ en:
       update:
         setup_complete: Setup complete!
       update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address.
-      updated: Your account has been updated successfully.
-      updated_but_not_signed_in: Your account has been updated successfully, but since your password was changed, you need to sign in again.
+      updated: Your settings have been updated successfully.
+      updated_but_not_signed_in: Your settings have been updated successfully, but since your password was changed, you need to sign in again.
       user:
         signed_up_but_not_approved: You have signed up successfully. A moderator will review your account soon, after which you will be able to sign in.
     sessions:
