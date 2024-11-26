@@ -111,8 +111,8 @@ RSpec.describe "Users::Registrations" do
       describe "PATCH /users/" do
         before { patch "/users", params: patch_options }
 
-        it "redirects to root" do
-          expect(response).to redirect_to("/")
+        it "remains on settings page" do
+          expect(response).to redirect_to("/users/edit")
         end
 
         it "updates password" do
@@ -221,8 +221,8 @@ RSpec.describe "Users::Registrations" do
       describe "PATCH /users/" do
         before { patch "/users", params: patch_options }
 
-        it "redirects to root" do
-          expect(response).to redirect_to("/")
+        it "remains on settings page" do
+          expect(response).to redirect_to("/users/edit")
         end
 
         it "updates password" do

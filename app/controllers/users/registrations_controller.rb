@@ -125,6 +125,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+  # The path used after edit/update
+  def after_update_path_for(resource)
+    edit_user_registration_path
+  end
+
   def pagination_json(settings)
     return nil unless settings
     {
@@ -178,7 +183,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     data[:tag_cloud_settings] = tag_cloud_json(data[:tag_cloud_settings])
     data[:file_list_settings] = file_list_json(data[:file_list_settings])
     # Require password if important details have changed
-    if data[:email] != resource.email || data[:password].present?
+    if (data[:email] && (data[:email] != resource.email)) || data[:password].present?
       resource.update_with_password(data)
     else
       resource.update_without_password(data.except(:email, :password, :password_confirmation, :current_password))
