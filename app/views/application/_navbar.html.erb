@@ -78,12 +78,12 @@
             <%= f.search_field :q, class: "form-control ms-1 me-3", placeholder: translate(".search"), aria_label: translate(".search"), aria_describedby: "button-search", value: params[:q] %>
           <% end %>
         </li>
+        <%- if current_user %>
+          <li class="nav-item">
+            <%= nav_link "sliders", t(".account"), edit_user_registration_path, text_style: "d-lg-none" %>
+          </li>
+        <% end %>
         <%- if SiteSettings.multiuser_enabled? %>
-          <%- if current_user %>
-            <li class="nav-item">
-              <%= nav_link "sliders", t(".account"), edit_user_registration_path, text_style: "d-lg-none" %>
-            </li>
-          <% end %>
           <li class="nav-item">
             <%- if current_user %>
               <%= nav_link "box-arrow-right", t(".log_out"), destroy_user_session_path, method: :delete, title: translate(".log_out"), text_style: "d-lg-none" %>
