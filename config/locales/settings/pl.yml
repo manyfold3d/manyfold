@@ -6,10 +6,31 @@ pl:
       heading: Analiza siatki
       manifold:
         help: Sprawdź, czy siatki nie są siatkami nierozmaitymi (tj. mają dziury lub niemożliwe powierzchnie)
-        label: Wykrywanie błędów siatki
+        label: Wykryj błędy siatki
+    folder_settings:
+      details: Struktura folderów jest zgodna z szablonem zdefiniowanym przy użyciu tokenów. Do szablonu możesz również dołączyć inny tekst (np. separatory folderów), który zostanie uwzględniony jak jest.
+      model_path_template:
+        label: Szablon ścieżki modelu
+      parse_metadata_from_path:
+        help: Ustawia twórcę, kolekcję i tagi na podstawie szablonu
+        label: Wypełnij metadane ze ścieżki i szablonu podczas skanowania
+      safe_folder_names:
+        help_html: np. <code>spinal-tap</code> zamiast <code>Spın̈al Tap</code>
+        label: Używaj bezpiecznych nazw folderów
+      summary: Określ strukturę folderów używaną przez "organizuj pliki" i do automatycznego uzupełniania metadanych podczas skanowania. Dotyczy wszystkich użytkowników.
+      title: Nazewnictwo folderów
+      tokens:
+        collection: Tytuł kolekcji, w której znajduje się model, jeśli jest ustawiony.
+        creator: Nazwa twórcy, jeśli ustawiona.
+        model_id: Unikalny numeryczny identyfikator modelu. Zdecydowanie polecamy podawanie go zawsze na końcu szablonu, aby uniknąć konfliktów nazw na dysku.
+        model_name: Bezpieczna dla systemu plików wersja nazwy modelu.
+        tags_html: 'seria zagnieżdżonych folderów, po jednym dla każdego z tagów, ułożonych w kolejności popularności tagów. Na przykład: <code>fantasy/człowiek/czarodziej</code>'
     general:
       submit: Zapisz Ustawienia
     multiuser:
+      approve_signups:
+        help:
+        label: Zatwierdź konta
       default_viewer_role:
         help: Kto może domyślnie wyświetlać nowe modele / twórców / kolekcje?
         label: Domyślna widoczność
@@ -23,13 +44,59 @@ pl:
       multiuser: Tryb wielu użytkowników?
       multiuser_mode: Manyfold działa w trybie wielu użytkowników.
       oidc: OpenID Connect skonfigurowany?
-      registration: Rejestracja kont otwarta?
+      permissions: Uprawnienia
+      registration: Rejestracja konta
+      registration_open: Rejestracja kont otwarta?
       single_user_mode: Manyfold działa w trybie pojedynczego użytkownika.
     reporting:
       description_html: Jeśli włączysz śledzenie użytkowania, poniższe informacje będą wysyłane raz dziennie do <code>%{endpoint}</code>. <code>Identyfikator</code> jest generowany losowo po włączeniu śledzenia.
-      heading: Anonimowe Śledzenie Użytkowania
+      heading: Śledzenie Użytkowania
       report_usage:
         label: Włącz anonimowe śledzenie użytkowania
       summary: Poinformuj deweloperów, że korzystasz z Manyfold.
       use_of_data: Żadne inne informacje nie są wysyłane ani przechowywane, a deweloperzy nigdy nie wykorzystają tych informacji do celów innych niż pomiar liczby uruchomionych instancji Manyfold i ich wersji.
       verification_html: Jeśli chcesz zweryfikować to, co wysyłamy, możesz zmienić zmienną środowiskową <code>USAGE_REPORTING_URL</code> i wysłać dane w miejsce, w którym możesz je sprawdzić. Możesz również zobaczyć dokładnie, co jest wysyłane w logach.
+    tag_settings:
+      auto_tag_new:
+        label: Automatycznie taguj nowe modele za pomocą
+      custom_stop_words:
+        label: Niestandardowe słowa stopu
+      description: Dodaje tagi do wszystkich nowo zeskanowanych modeli i odfiltrowuje określone słowa ("słowa stopu") podczas automatycznego tworzenia tagów. Dotyczy wszystkich użytkowników.
+      filter_stop_words:
+        label: Odfiltruj słowa stopu
+      heading: Tagowanie
+      stop_words_locale:
+        label: Język słów stopu
+      tag_model_directory_name:
+        help: 'Uwaga: Może generować wiele tagów!'
+        label: Twórz tagi na podstawie nazwy katalogu modelu
+    update:
+      success: Ustawienia zapisane.
+    users:
+      create:
+        success: Użytkownik pomyślnie utworzony.
+      destroy:
+        success: Użytkownik usunięty!
+      edit:
+        title: 'Edytuj użytkownika: %{username}'
+      form:
+        password_reset_help: Link zostanie automatycznie wysłany do użytkownika w celu ustawienia przez niego własnego hasła.
+        submit: Zapisz
+      index:
+        description: Wyświetl i edytuj konta zarejestrowanych użytkowników.
+        fediverse_address: Adres Fediverse
+        local: Lokalny
+        new: Nowy użytkownik
+        title: Zarządzaj użytkownikami
+        view: Widok
+      new:
+        title: Stwórz użytkownika
+      show:
+        approve: Zatwierdź użytkownika
+        confirm_destroy: Czy na pewno chcesz natychmiast usunąć to konto użytkownika? Nie można tego cofnąć!
+        reset_password: Zresetuj hasło
+        title: 'Dane użytkownika: %{username}'
+      update:
+        approved: Użytkownik pomyślnie zatwierdzony.
+        reset_link_sent: Do użytkownika został wysłany link umożliwiający ustawienie przez niego nowego hasła.
+        success: Użytkownik pomyślnie zaktualizowany.

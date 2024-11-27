@@ -13,6 +13,7 @@ fr:
       invalid: "%{authentication_keys} ou mot de passe incorrect."
       last_attempt: Il vous reste une chance avant que votre compte soit bloqué.
       locked: Votre compte est verrouillé.
+      not_approved:
       not_found_in_database: "%{authentication_keys} ou mot de passe incorrect."
       timeout: Votre session est expirée, veuillez vous reconnecter pour continuer.
       unauthenticated: Vous devez vous connecter ou vous enregistrer pour continuer.
@@ -103,6 +104,7 @@ fr:
           mask:
           show:
       new:
+        approval_help:
         sign_up: Inscription
       pagination_settings:
         collections:
@@ -168,6 +170,8 @@ fr:
       update_needs_confirmation: Vous avez bien modifié votre compte, mais nous devons vérifier votre nouvelle adresse email. Veuillez consulter vos emails et cliquer sur le lien de confirmation pour confirmer votre nouvelle adresse.
       updated: Votre compte a bien été modifié.
       updated_but_not_signed_in: Votre compte a été mis à jour avec succès. Vous devez vous reconnecter car votre mot de passe a été modifié.
+      user:
+        signed_up_but_not_approved:
     sessions:
       already_signed_out: Déconnecté(e).
       new:

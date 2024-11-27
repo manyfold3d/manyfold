@@ -1,6 +1,33 @@
 ---
 fr:
   libraries:
+    create:
+      failure: Une erreur s'est produite et la bibliothèque n'a pas pu être sauvegardée.
+      success: Nouvelle bibliothèque créée !
+    destroy:
+      success: Bibliothèque supprimée !
+    form:
+      add_line: Ajouter une ligne
+      caption:
+        help:
+      filesystem_description_html:
+      icon:
+        help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank"> bibliothèque Bootstrap </a>
+        placeholder: boxes
+      notes:
+        help_html:
+      path:
+        placeholder: "/libraries/models"
+      s3_bucket:
+        help:
+      s3_description_html:
+      s3_endpoint:
+        help:
+      tag_regex:
+        help: Vérifier si les étiquettes des modèles manquant correspondent à cette expression régulière.
+    general:
+      edit: Editer la bibliothèque
+      new: Nouvelle bibliothèque
     index:
       description: Voir les détails de la bibliothèque et modifier.
       free_space:
@@ -9,3 +36,13 @@ fr:
       tag_regex:
         check: Vérifier
         search_missing: Recherche manquante
+    scan:
+      success: L'analyse de la bibliothèque a commencé.
+    scan_all:
+      success: L'analyse de toutes les bibliothèques a commencé.
+    storage_services:
+      filesystem:
+      s3:
+    update:
+      failure: Une erreur s'est produite et la bibliothèque n'a pas pu être sauvegardée.
+      success: Détails de la bibliothèque sauvegardés.

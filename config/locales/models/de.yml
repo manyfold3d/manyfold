@@ -17,7 +17,7 @@ de:
     create:
       success: Die Datei(en) wurde(n) erfolgreich hochgeladen.
     destroy:
-      confirm: Hiermit werden Dateien gelöscht. bist du sicher, dass du fortfahren möchtest?
+      confirm: Hiermit werden alle Dateien gelöscht, welche mit dieser in Relation stehen. bist du sicher, dass du fortfahren möchtest?
       success: Modell gelöscht!
     exceeds_max_size: 'Ausgewählte Datei überschreitet maximale Größe: %{max_size} MiB.'
     file:
@@ -60,11 +60,11 @@ de:
       success: Modell-Scan gestartet
     show:
       download:
-        file_type:
-        label:
-        menu_header:
-        supported:
-        unsupported:
+        file_type: "%{type} Nur Dateien"
+        label: Alle herunterladen
+        menu_header: Download optionen
+        supported: Nur Dateien mit Support Struktur
+        unsupported: Nur Dateien ohne Support Struktur
       files: Dateien
       files_card:
         bulk_edit: Alle Dateien bearbeiten

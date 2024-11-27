@@ -7,9 +7,30 @@ es:
       manifold:
         help: Comprueba si la malla no es válida (es decir, tienen agujeros o superficies imposibles)
         label: Detectar errores de malla
+    folder_settings:
+      details: La estructura de carpetas sigue una plantilla que usted define utilizando tokens. También puede incluir otro texto en la plantilla (como separadores de carpeta) y se incluirá tal cual.
+      model_path_template:
+        label: Plantilla de ruta del modelo
+      parse_metadata_from_path:
+        help: Establece el creador, la colección y las etiquetas en función de la plantilla
+        label: Rellenar metadatos a partir de la ruta y la plantilla durante el escaneo
+      safe_folder_names:
+        help_html: por ejemplo, <code>spinal-tap</code> en lugar de <code>Spın̈al Tap</code>
+        label: Utilice nombres de carpeta seguros
+      summary: Establece la estructura de carpetas que usa el "organizador de archivos" y que se utiliza para completar automáticamente los metadatos durante el escaneo. Afecta a todos los usuarios.
+      title: Nombres de las carpetas
+      tokens:
+        collection: El título de la colección en la que se encuentra el modelo, si está establecido.
+        creator: El nombre del creador, si se ha establecido.
+        model_id: Un identificador numérico único para el modelo. Recomendamos encarecidamente incluirlo siempre al final del modelo para evitar conflictos de nombres en el disco.
+        model_name: Una versión segura para el sistema de ficheros del nombre del modelo.
+        tags_html: 'una serie de carpetas anidadas, una para cada etiqueta, ordenadas según su popularidad. Por ejemplo: <code>fantasía/humano/mago</code>'
     general:
       submit: Guardar ajustes
     multiuser:
+      approve_signups:
+        help: Todas las cuentas nuevas deben ser aprobadas por un moderador antes de poder iniciar sesión.
+        label: Aprobar cuentas
       default_viewer_role:
         help: "¿Quién puede ver por defecto los nuevos modelos / creadores / colecciones?"
         label: Visibilidad por defecto
@@ -23,13 +44,59 @@ es:
       multiuser: "¿Modo multiusuario?"
       multiuser_mode: Manyfold se está ejecutando en modo multiusuario.
       oidc: "¿Está configurado OpenID Connect?"
+      permissions: Permisos
       registration: "¿Está abierto el registro de cuentas?"
+      registration_open: "¿Está abierto el registro de cuentas?"
       single_user_mode: Manyfold se está ejecutando en modo usuario único.
     reporting:
       description_html: Si activa el seguimiento de uso, la siguiente información se enviará una vez al día a <code>%{endpoint}</code>. El <code>identificador</code> se genera aleatoriamente al activar el seguimiento.
-      heading: Seguimiento Anónimo de uso
+      heading: Seguimiento de uso
       report_usage:
         label: Activar el seguimiento anónimo de uso
       summary: Haz saber a los desarrolladores que estás usando Manyfold.
       use_of_data: No se envía ni almacena ninguna otra información y los desarrolladores, nunca utilizarán la información para ningún otro propósito que no sea medir cuántas instancias de Manyfold se están ejecutando y qué versión tienen.
       verification_html: Si desea verificar lo que enviamos, puede cambiar la variable de entorno <code>USAGE_REPORTING_URL</code> y enviar los datos a algún lugar donde pueda inspeccionarlos. También puede ver exactamente lo que se envía en el registro.
+    tag_settings:
+      auto_tag_new:
+        label: Etiquetar automáticamente los nuevos modelos con
+      custom_stop_words:
+        label: Palabras reservadas personalizadas
+      description: Añada etiquetas a todos los modelos recién escaneados y filtre determinadas palabras ("palabras reservadas") durante la creación automática de etiquetas. Afecta a todos los usuarios.
+      filter_stop_words:
+        label: Filtrar palabras reservadas
+      heading: Etiquetado
+      stop_words_locale:
+        label: Idioma de las palabras reservadas
+      tag_model_directory_name:
+        help: 'Advertencia: ¡Puede producir muchísimas etiquetas!'
+        label: Crear etiquetas a partir del nombre del directorio del modelo
+    update:
+      success: Ajustes guardados.
+    users:
+      create:
+        success: Usuario creado correctamente.
+      destroy:
+        success: Usuario eliminado
+      edit:
+        title: 'Editar usuario: %{username}'
+      form:
+        password_reset_help: Se enviará automáticamente un enlace al usuario para que establezca su propia contraseña.
+        submit: Guardar
+      index:
+        description: Ver y editar cuentas de usuarios registrados.
+        fediverse_address: Dirección de Fediverse
+        local: Local
+        new: Nuevo usuario
+        title: Administrar Usuarios
+        view: Ver
+      new:
+        title: Crear usuario
+      show:
+        approve: Aprobar usuario
+        confirm_destroy: "¿Está seguro de que desea eliminar esta cuenta de usuario inmediatamente? Esto no se puede deshacer"
+        reset_password: Restablecer contraseña
+        title: 'Detalles del usuario: %{username}'
+      update:
+        approved: El usuario ha sido aprobado correctamente.
+        reset_link_sent: Se ha enviado un enlace al usuario para que establezca una nueva contraseña.
+        success: Usuario actualizado correctamente.

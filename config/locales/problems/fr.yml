@@ -21,8 +21,15 @@ fr:
       show_ignored: Afficher les éléments cachés
       title: Filtres
     index:
+      bulk_confirm:
+      bulk_resolve:
+      description: Description
       ignore: Cacher
+      item:
       no_problems: Les filtres actuels ne posent aucun problème.
+      resolve:
+      select:
+      select_all:
       unignore: Afficher
     model:
       empty:
@@ -57,6 +64,9 @@ fr:
       duplicate:
         description: Ce fichier est dupliqué dans d'autres modèles. Vous devriez les supprimer.
         title: Fichier dupliqué
+      empty:
+        description:
+        title:
       inefficient:
         description: Ce fichier est au format %{note}, un format de fichier inefficace. Envisagez de le convertir dans un format binaire tel que 3MF pour économiser de l'espace disque.
         title: Format inefficace
