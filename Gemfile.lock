@@ -148,7 +148,6 @@ GEM
       msgpack (~> 1.2)
     brakeman (6.2.2)
       racc
-    browser (6.1.0)
     builder (3.3.0)
     bullet (8.0.0)
       activesupport (>= 3.0.0)
@@ -535,10 +534,6 @@ GEM
     rails-settings-cached (2.9.5)
       activerecord (>= 5.0.0)
       railties (>= 5.0.0)
-    rails_performance (1.4.0)
-      browser
-      railties
-      redis
     railties (7.2.2)
       actionpack (= 7.2.2)
       activesupport (= 7.2.2)
@@ -566,8 +561,6 @@ GEM
       redis-client (>= 0.22.0)
     redis-client (0.22.2)
       connection_pool
-    redis-namespace (1.11.0)
-      redis (>= 4)
     regexp_parser (2.9.2)
     reline (0.5.11)
       io-console (~> 0.5)
@@ -687,6 +680,8 @@ GEM
       attr_required (>= 0.0.5)
       faraday (~> 2.0)
       faraday-follow_redirects
+    sys-cpu (1.1.0)
+      ffi (~> 1.1)
     sys-filesystem (1.5.3)
       ffi (~> 1.1)
     terminal-table (3.0.2)
@@ -801,10 +796,8 @@ DEPENDENCIES
   rails-controller-testing (~> 1.0)
   rails-i18n (~> 7.0)
   rails-settings-cached (~> 2.9)
-  rails_performance (~> 1.4)
   ransack (~> 4.2)
   redis (~> 5.3)
-  redis-namespace
   rolify (~> 6.0)
   rspec-rails
   rubocop-factory_bot
@@ -826,6 +819,7 @@ DEPENDENCIES
   standard (~> 1.42.1)
   stopwords-filter2
   string-similarity (~> 2.1)
+  sys-cpu (~> 1.1)
   sys-filesystem (~> 1.5)
   translation (~> 1.41)
   tzinfo-data
