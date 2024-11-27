@@ -1,6 +1,33 @@
 ---
 es:
   libraries:
+    create:
+      failure: Se ha producido un error y no se ha podido guardar la biblioteca.
+      success: "¡Nueva biblioteca creada!"
+    destroy:
+      success: "¡Biblioteca eliminada!"
+    form:
+      add_line: Añadir línea
+      caption:
+        help: Opcional - Se muestra como un mensaje emergente en los enlaces de la biblioteca.
+      filesystem_description_html: Para utilizar el almacenamiento de tu sistema local, en primer lugar asegúrate de que está montado como un <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> u otro volumen dentro de tu contenedor Docker, luego introduce la ruta Docker; ¡no la ruta del servidor host! Por ejemplo, si tienes una carpeta llena de archivos en <code>/mnt/media/3d/models</code> en tu host, y has enlazado <code>/mnt/media/3d</code> a <code>/libraries</code> en tu configuración Docker, la ruta requerida sería <code>/libraries/models</code>.
+      icon:
+        help_html: Opcional - Cualquier icono de <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a> o <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
+        placeholder: boxes
+      notes:
+        help_html: Opcional - sólo se muestra a los administradores en la página de configuración. Puede utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      path:
+        placeholder: "/libraries/models"
+      s3_bucket:
+        help: Sólo el nombre del bucket, no la URL completa
+      s3_description_html: Manyfold puede utilizar cualquier almacenamiento de objetos compatible con S3 para su biblioteca, incluyendo una amplia gama de servicios <a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">open source</a> o <a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">comerciales</a>.
+      s3_endpoint:
+        help: Opcional - Sólo necesario para servicios compatibles con S3, no con AWS.
+      tag_regex:
+        help: Compruebe si faltan etiquetas en los modelos que coincidan con estas expresiones regulares (regex).
+    general:
+      edit: Editar biblioteca
+      new: Nueva biblioteca
     index:
       description: Ver detalles de la biblioteca y modificar.
       free_space:
@@ -9,3 +36,13 @@ es:
       tag_regex:
         check: Revisar
         search_missing: Buscar Desaparecidos
+    scan:
+      success: Se ha iniciado el escaneo de la biblioteca.
+    scan_all:
+      success: Escaneado iniciado para todas las bibliotecas.
+    storage_services:
+      filesystem: Sistema de archivos local
+      s3: Almacenamiento en la nube compatible con S3
+    update:
+      failure: Se ha producido un error y no se ha podido guardar la biblioteca.
+      success: Información de la biblioteca guardados.

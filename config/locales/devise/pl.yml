@@ -13,6 +13,7 @@ pl:
       invalid: Błędny adres %{authentication_keys} lub hasło.
       last_attempt: Masz jeszcze jedną próbę nim Twoje konto zostanie tymczasowo zablokowane.
       locked: Twoje konto zostało zablokowane na godzinę; spróbuj ponownie później.
+      not_approved:
       not_found_in_database: Błędny adres %{authentication_keys} lub hasło.
       timeout: Sesja wygasła, aby kontynuować zaloguj się ponownie.
       unauthenticated: Aby kontynuować zaloguj lub zarejestruj się.
@@ -75,7 +76,7 @@ pl:
         leave_blank_if_you_don_t_want_to_change_it: pozostaw puste, jeśli nie chcesz wprowadzać zmian
         security: Bezpieczeństwo
         submit: Zapisz zmiany
-        title: Ustawienia konta
+        title: Moje Ustawienia
         unhappy: Niezadowolony?
         update: Aktualizuj
         we_need_your_current_password_to_confirm_your_changes: potrzebujemy Twojego bieżącego hasła, aby potwierdzić zmiany
@@ -103,6 +104,7 @@ pl:
           mask: Rozmyj w liście
           show: Pokaż jak zwykle
       new:
+        approval_help: Po utworzeniu konta zostanie ono ręcznie sprawdzone przez naszych moderatorów. Powiadomimy Cię, gdy zostanie ono zatwierdzenie i będziesz mógł się zalogować.
         sign_up: Zarejestruj się
       pagination_settings:
         collections:
@@ -168,6 +170,8 @@ pl:
       update_needs_confirmation: Konto zostało zaktualizowane, musimy jednak potwierdzić nowy adres e-mail. Sprawdź swoją skrzynkę pocztową i otwórz link aktywacyjny, aby ukończyć zmianę adresu.
       updated: Konto zostało pomyślnie zaktualizowane.
       updated_but_not_signed_in: Twoje konto zostało pomyślnie zaktualizowane, ale ponieważ hasło zostało zmienione, musisz się ponownie zalogować
+      user:
+        signed_up_but_not_approved: Rejestracja przebiegła pomyślnie. Wkrótce moderator sprawdzi Twoje konto, po czym będziesz mógł się zalogować.
     sessions:
       already_signed_out: Wylogowano pomyślnie.
       new:

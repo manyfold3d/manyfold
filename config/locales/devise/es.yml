@@ -15,6 +15,7 @@ es:
       invalid: "%{authentication_keys} o contraseña incorrectos."
       last_attempt: Tienes un intento más antes de que tu cuenta quede bloqueada.
       locked: Su cuenta ha sido bloqueada durante una hora. Inténtelo más tarde.
+      not_approved: Tu cuenta aún no ha sido aprobada por un moderador.
       not_found_in_database: "%{authentication_keys} o contraseña incorrectos."
       timeout: Tu sesión expiró. Por favor, inicia sesión nuevamente para continuar.
       unauthenticated: Tienes que iniciar sesión o registrarte para poder continuar.
@@ -105,6 +106,7 @@ es:
           mask: Desenfocar en las listas
           show: Mostrar como normal
       new:
+        approval_help: Después de crear tu cuenta, será revisada manualmente por nuestros moderadores. Te avisaremos cuando se haya aprobado y puedas iniciar sesión.
         sign_up: Registrarse
       pagination_settings:
         collections:
@@ -170,6 +172,8 @@ es:
       update_needs_confirmation: Su cuenta ha sido actualizada correctamente, pero es necesario verificar su nueva dirección de correo. Por favor, revise su correo y sigue el enlace de confirmación para finalizar la comprobación.
       updated: Su cuenta se ha actualizado correctamente.
       updated_but_not_signed_in: Su cuenta ha sido actualizada correctamente, pero como cambió su contraseña, debe iniciar sesión nuevamente.
+      user:
+        signed_up_but_not_approved: Se ha registrado correctamente. Un moderador revisará su cuenta en breve, tras lo cual podrá iniciar sesión.
     sessions:
       already_signed_out: Sesión finalizada correctamente.
       new:

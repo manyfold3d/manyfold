@@ -5,11 +5,32 @@ de:
       description: Führt genauere mesh-analysen an Modellen durch. Diese Aktion führt dazu, dass deine Scans erheblich länger dauern und viel mehr CPU und Speicher verbrauchen.
       heading: Mesh Analyse
       manifold:
-        help: Prüfe auf bekanntheit (d.h. sie haben Löcher oder unmögliche Oberflächen)
+        help: Prüfung auf nicht-verzweigte Maschen (d.h. sie haben Löcher oder unmögliche Oberflächen)
         label: Erkennung von Fehlern im Mesh
+    folder_settings:
+      details: Die Ordnerstruktur folgt einer Vorlage, die du mit Token definierst. Du kannst auch anderen Text in die Vorlage einfügen (z. B. Ordnertrennzeichen) und dieser wird unverändert übernommen.
+      model_path_template:
+        label: Modellpfad-Vorlage
+      parse_metadata_from_path:
+        help: Legt Ersteller, Sammlung und Tags basierend auf der Vorlage fest
+        label: Metadaten aus Pfad und Vorlage während des Scannens auffüllen
+      safe_folder_names:
+        help_html: z.B. <code>Spinal-Tap</code> statt <code>Spın̈al Tap</code>
+        label: Dateisystem sichere Ordnernamen verwenden
+      summary: Definiere die Ordnerstruktur, die von "Dateien organisieren" und für das automatische Ausfüllen von Metadaten beim Scannen verwendet wird. Wirkt sich auf alle Benutzer aus.
+      title: Ordner Benennung
+      tokens:
+        collection: Der Titel der Sammlung, in der sich das Modell befindet, falls festgelegt.
+        creator: Der Name des Erstellers, falls festgelegt.
+        model_id: Ein eindeutiger numerischer Bezeichner für das Modell. Wir empfehlen dringend, diese Kennung immer am Ende der Vorlage anzugeben, um Namenskonflikte zu vermeiden.
+        model_name: Eine dateisystemsichere Version des Modellnamens.
+        tags_html: 'eine Reihe von verschachtelten Ordnern, einen für jedes Tag, geordnet nach der Beliebtheit der Tags. Zum Beispiel: <code>fantasy/human/wizard</code>'
     general:
       submit: Einstellungen speichern
     multiuser:
+      approve_signups:
+        help: Alle neuen Konten müssen von einem Moderator genehmigt werden, bevor man sich anmelden kann.
+        label: Konten genehmigen
       default_viewer_role:
         help: Wer kann neue Modelle/Ersteller/Sammlungen standardmäßig anzeigen?
         label: Standard-Sichtbarkeit
@@ -23,13 +44,59 @@ de:
       multiuser: Mehrbenutzer-Modus?
       multiuser_mode: Manyfold läuft im Multiuser-modus.
       oidc: OpenID Connect konfiguriert?
-      registration: Kontoregistrierung offen?
+      permissions: Berechtigungen
+      registration: Kontoregistrierung
+      registration_open: Kontoregistrierung offen?
       single_user_mode: Manyfold läuft im Single user modus.
     reporting:
       description_html: Wenn du die Nutzungsverfolgung aktivieren, werden die folgenden Informationen einmal täglich an <code>%{endpoint}</code> gesendet. Die <code>id</code> wird zufällig generiert, wenn die Verfolgung aktiviert wird.
-      heading: 'Anonyme nutzungs-analyse '
+      heading: Nutzungs Analyse
       report_usage:
-        label: 'Anonyme nutzungs-analyse '
+        label: Anonyme nutzungs-analyse
       summary: Lasse die Entwickler wissen, dass du Manyfold benutzt
       use_of_data: Es werden keine weiteren Informationen gesendet oder gespeichert, und die Entwickler werden die Informationen niemals zu einem anderen Zweck verwenden, als zu messen, wie viele Instanzen von Manyfold laufen und welche Version sie haben.
       verification_html: Wenn du überprüfen willst, was wir senden, kannst du die Umgebungsvariable <code>USAGE_REPORTING_URL</code> ändern und die Daten an einen Ort senden, an dem du sie überprüfen kannst. Du kannst auch im Protokoll genau sehen, was gesendet wird.
+    tag_settings:
+      auto_tag_new:
+        label: Automatisch neue Modelle mit Tag(s) markieren
+      custom_stop_words:
+        label: Ignorierte Wörter
+      description: Hinzufügen von Tags zu allen neu gescannten Modellen und Herausfiltern bestimmter Wörter (Ignorieren bestimmter Wörter) bei der automatischen Erstellung von Tags. Wirkt sich auf alle Benutzer aus.
+      filter_stop_words:
+        label: Ignorierte Wörter
+      heading: Tagging
+      stop_words_locale:
+        label: Sprache der Ignorierten wörter
+      tag_model_directory_name:
+        help: Achtung! Kann eine Menge Tags erzeugen!
+        label: Tags aus Modellverzeichnisnamen erstellen
+    update:
+      success: Einstellungen gespeichert.
+    users:
+      create:
+        success: Benutzer erfolgreich angelegt.
+      destroy:
+        success: Benutzer entfernt!
+      edit:
+        title: 'Benutzer bearbeiten: %{username}'
+      form:
+        password_reset_help: Ein Link wird automatisch zum Nutzer gesendet, damit er sein eigenes Passwort setzten kann.
+        submit: Speichern
+      index:
+        description: Anzeigen und Bearbeiten von registrierten Benutzerkonten.
+        fediverse_address: Fediverse-Adresse
+        local: Lokal
+        new: Neuer Benutzer
+        title: Verwalte Benutzer
+        view: Siehe
+      new:
+        title: Benutzer erstellen
+      show:
+        approve: Benutzer genehmigen
+        confirm_destroy: Bist du sicher, dass du dieses Benutzerkonto sofort entfernen möchtest? Dies kann nicht rückgängig gemacht werden!
+        reset_password: Passwort zurücksetzen
+        title: 'Angaben zum Benutzer: %{username}'
+      update:
+        approved: Der Benutzer wurde erfolgreich zugelassen.
+        reset_link_sent: Dem Benutzer wurde ein Link zugesandt, über den er ein neues Passwort festlegen kann.
+        success: Benutzer erfolgreich aktualisiert.

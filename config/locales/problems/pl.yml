@@ -3,7 +3,7 @@ pl:
   problems:
     categories:
       duplicate: Zduplikowane pliki
-      empty: Model nie zawiera plików
+      empty: Model lub plik jest pusty
       inefficient: Nieefektywne formaty
       inside_out: Siatka jest skierowana środkiem na zewnątrz
       missing: Brakujące pliki lub foldery
@@ -21,8 +21,15 @@ pl:
       show_ignored: Pokaż ukryte elementy
       title: Filtry
     index:
+      bulk_confirm: Czy na pewno chcesz automatycznie rozwiązać wszystkie wybrane problemy? Może to spowodować usunięciem plików i danych.
+      bulk_resolve: Rozwiąż wybrane
+      description: Opis
       ignore: Ukryj
+      item: Pozycja
       no_problems: Brak problemów pasujących do obecnych filtrów.
+      resolve: Rozwiąż
+      select: Wybierz
+      select_all: Wybierz wszystko
       unignore: Pokaż
     model:
       empty:
@@ -57,6 +64,9 @@ pl:
       duplicate:
         description: Ten plik jest zduplikowany w innych modelach. Niektóre z nich można usunąć.
         title: Zduplikowany plik
+      empty:
+        description: Ten plik ma zerową długość! Jest to najprawdopodobniej nieprawidłowe; usuń plik albo ponownie zeskanuj model, aby sprawdzić ponownie.
+        title: Pusty plik
       inefficient:
         description: Ten plik jest w %{note}, niewydajnym formacie pliku. Rozważ jego konwersję do formatu binarnego, takiego jak 3MF, aby zaoszczędzić miejsce na dysku.
         title: Nieefektywny format

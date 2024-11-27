@@ -7,9 +7,30 @@ fr:
       manifold:
         help: Detection de maillages non-manifold (par exemple, si il y a des trous ou des surfaces impossibles)
         label: Détecter les erreurs de maillage
+    folder_settings:
+      details: La structure des dossiers suit un modèle que vous définissez à l'aide de jetons. Vous pouvez également inclure d'autres textes dans le modèle (comme des séparateurs de dossiers) et ils seront inclus tels quels.
+      model_path_template:
+        label: Modèle de parcours
+      parse_metadata_from_path:
+        help: Définir le créateur, la collection et les étiquettes en fonction du modèle
+        label: Remplir les métadonnées à partir du chemin d'accès et du modèle pendant le scan
+      safe_folder_names:
+        help_html: par exemple, <code>spinal-tap</code> au lieu de <code>Spın̈al Tap</code>
+        label: Utiliser des noms de dossiers sûrs
+      summary: Définir la structure des dossiers utilisée par "organiser les fichiers" et pour le remplissage automatique des métadonnées lors de l'analyse. Concerne tous les utilisateurs.
+      title: Nom du dossier
+      tokens:
+        collection: Le titre de la collection dans laquelle se trouve le modèle, s'il est défini.
+        creator: Le nom du créateur, s'il est défini.
+        model_id: Un identifiant numérique unique pour le modèle. Nous vous recommandons fortement de toujours l'inclure à la fin de votre modèle afin d'éviter les conflits de noms sur le disque.
+        model_name: Une version sécurisée du nom du modèle pour le système de fichiers.
+        tags_html: 'une série de dossiers imbriqués, un pour chaque étiquette, classés par ordre de popularité de l''étiquette. Par exemple : <code>fantasy/humain/sorcier</code>'
     general:
       submit: Sauvegarder les paramètres
     multiuser:
+      approve_signups:
+        help:
+        label:
       default_viewer_role:
         help:
         label:
@@ -23,7 +44,9 @@ fr:
       multiuser:
       multiuser_mode: Manyfold fonctionne en mode multi-utilisateurs.
       oidc:
+      permissions:
       registration:
+      registration_open:
       single_user_mode: Manyfold fonctionne en mode mono-utilisateur.
     reporting:
       description_html:
@@ -33,3 +56,47 @@ fr:
       summary:
       use_of_data:
       verification_html:
+    tag_settings:
+      auto_tag_new:
+        label: Etiqueter automatiquement les nouveaux modèles
+      custom_stop_words:
+        label: Personnaliser les stop words
+      description: Ajouter des étiquettes à tous les modèles nouvellement numérisés et filtrer certains mots ("stop words") lors de la création automatique d'étiquette. Concerne tous les utilisateurs.
+      filter_stop_words:
+        label: Eliminer les mots vides
+      heading: Etiqueter
+      stop_words_locale:
+        label: Stop words locale
+      tag_model_directory_name:
+        help: 'Attention : Peut produire un grand nombre de tags !'
+        label: Créer des tags à partir du nom du répertoire du modèle
+    update:
+      success: Paramètres sauvegardés.
+    users:
+      create:
+        success:
+      destroy:
+        success:
+      edit:
+        title:
+      form:
+        password_reset_help:
+        submit: Sauvegarder
+      index:
+        description:
+        fediverse_address:
+        local:
+        new:
+        title:
+        view:
+      new:
+        title:
+      show:
+        approve:
+        confirm_destroy:
+        reset_password:
+        title:
+      update:
+        approved:
+        reset_link_sent:
+        success:

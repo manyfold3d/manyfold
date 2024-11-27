@@ -17,7 +17,7 @@ pl:
     create:
       success: Plik(i) przesłany(e) pomyślnie.
     destroy:
-      confirm: Spowoduje to usunięcie plików. Czy na pewno chcesz kontynuować?
+      confirm: Spowoduje to usunięciem powiązanych plików, jeśli istnieją na dysku. Czy na pewno chcesz kontynuować?
       success: Model usunięty!
     exceeds_max_size: 'Wybrany plik przekracza maksymalny rozmiar: %{max_size} MiB.'
     file:
@@ -46,7 +46,7 @@ pl:
     merge:
       success: Modele zostały pomyślnie połączone.
     new:
-      description: Prześlij nowe modele jako skompresowane pliki. Każde przesłane archiwum zostanie wyodrębnione i stanie się pojedynczym modelem zawierającym wszystkie pliki. Upewnij się, że klikniesz przycisk "Stwórz modele" po zakończeniu przesyłania, aby je zapisać!
+      description: Dodawaj nowe modele poprzez przesyłanie plików! Jeśli prześlesz skompresowane archiwum, zostanie ono wyodrębnione i stanie się pojedynczym modelem zawierającym wszystkie pliki. Jeśli prześlesz pojedyncze pliki, każdy z nich stanie się osobnym modelem.
       files:
         label: Wybierz Pliki
       free_space: "(%{available} wolne)"
@@ -60,11 +60,11 @@ pl:
       success: Rozpoczęto skanowanie modelów
     show:
       download:
-        file_type:
-        label:
-        menu_header:
-        supported:
-        unsupported:
+        file_type: Tylko Pliki %{type}
+        label: Pobierz Wszystko
+        menu_header: Opcje Pobierania
+        supported: Tylko Obsługiwane Pliki
+        unsupported: Tylko Nieobsługiwane Pliki
       files: Pliki
       files_card:
         bulk_edit: Edytuj wszystkie pliki

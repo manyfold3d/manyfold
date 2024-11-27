@@ -21,8 +21,15 @@ es:
       show_ignored: Mostrar elementos ocultos
       title: Filtros
     index:
+      bulk_confirm: "¿Estás seguro de que quieres resolver automáticamente todos los problemas seleccionados? Esto podría borrar archivos y datos."
+      bulk_resolve: Resolver seleccionados
+      description: Descripción
       ignore: Ocultar
+      item: Item
       no_problems: No se han encontrado problemas con los filtros actuales.
+      resolve: Resolver
+      select: Seleccionar
+      select_all: Seleccionar todo
       unignore: Mostrar
     model:
       empty:
@@ -57,6 +64,9 @@ es:
       duplicate:
         description: Este archivo está duplicado en otros modelos. Es posible que desee eliminar algunos.
         title: Archivo duplicado
+      empty:
+        description: "¡El archivo no contiene datos! Esto probablemente sea un error. Elimina el archivo o realiza un nuevo escaneo del modelo para verificar."
+        title: Archivo vacío
       inefficient:
         description: Este archivo está en %{note}, un formato de archivo no recomendado. Considera la posibilidad de convertirlo a un formato binario como 3MF para ahorrar espacio en disco.
         title: Formato no recomendado

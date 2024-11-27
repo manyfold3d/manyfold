@@ -1,9 +1,401 @@
 ---
 es:
+  activerecord:
+    attributes:
+      collection:
+        caption: Subtítulo
+        collection_id: Colección
+        name: Nombre
+        notes: Notas
+      creator:
+        caption: Subtítulo
+        name: Nombre
+        notes: Notas
+      library:
+        caption: Subtítulo
+        icon: Icono
+        name: Nombre
+        notes: Notas
+        path: Ruta
+        s3_access_key_id: Clave de acceso ID
+        s3_bucket: Nombre del Bucket
+        s3_endpoint: 'Endpoint URL
+
+          '
+        s3_region: Región
+        s3_secret_access_key: Clave de acceso secreta
+        storage_service: Servicio de almacenamiento
+        tag_regex: Etiquetas obligatorias
+      link:
+        url: Enlace
+      model:
+        caption: Subtítulo
+        collection_id: Colección
+        creator_id: Creador
+        library_id: Biblioteca
+        license: Licencia
+        name: Nombre
+        notes: Descripción
+        path: Ruta
+        preview_file: Vista previa
+        sensitive: Contenido Sensible
+        tags: Etiquetas
+      model_file:
+        caption: Subtítulo
+        digest: Digest
+        filename: Archivo
+        model_id: Modelo
+        notes: Notas
+        presupported: Soporte predefinido
+        presupported_version: Versión de soporte predefinido
+        printed: Impreso
+        size: Tamaño del archivo
+        unsupported_version: Versión sin soporte
+        y_up: Eje Y Arriba
+      problem:
+        category: Categoría
+        ignored: Oculto
+        note: Nota
+        problematic_type: Tipo de objeto
+        severity: Gravedad
+      user:
+        approved: Cuenta pendiente
+        confirmation_sent_at: Confirmación enviada a
+        confirmation_token: Código de confirmación
+        confirmed_at: Confirmado el
+        created_at: Creado el
+        current_password: Contraseña actual
+        current_sign_in_at: Inicio de sesión actual el
+        current_sign_in_ip: IP de inicio de sesión actual
+        email: Email
+        encrypted_password: Contraseña cifrada
+        failed_attempts: Intentos fallidos
+        last_sign_in_at: Último inicio de sesión el
+        last_sign_in_ip: IP último inicio de sesión
+        locked_at: Bloqueado el
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
+        remember_created_at: Guardar fecha de creación
+        remember_me: Recordarme
+        reset_password_sent_at: Restablecimiento de contraseña enviado a
+        reset_password_token: Restablecer contraseña
+        sign_in_count: Número inicios de sesión
+        unconfirmed_email: Email no confirmado
+        unlock_token: Código de desbloqueo
+        updated_at: Actualizado el
+    errors:
+      models:
+        library:
+          attributes:
+            path:
+              non_writable: se debe poder escribir
+              not_found: no se ha encontrado en el disco
+              unsafe: no puede ser una ruta privilegiada del sistema
+        model:
+          attributes:
+            library:
+              nested: no puede ser modificado, el modelo contiene otros modelos
+            license:
+              invalid_spdx: no es una licencia válida
+            path:
+              destination_exists: ya existe
+              nested: no puede ser modificado, el modelo contiene otros modelos
+        model_file:
+          attributes:
+            presupported_version:
+              already_presupported: no se puede establecer en un archivo con soporte predefinido
+              not_supported: no es un archivo con soporte predefinido.
+    models:
+      acts_as_taggable_on/tag:
+        few: Etiquetas
+        many: Etiquetas
+        one: Etiqueta
+        other: Etiquetas
+        two: Etiquetas
+        zero: Etiquetas
+      collection:
+        few: Colecciones
+        many: Colecciones
+        one: Colección
+        other: Colecciones
+        two: Colecciones
+        zero: Colecciones
+      creator:
+        few: Creadores
+        many: Creadores
+        one: Creador
+        other: Creadores
+        two: Creadores
+        zero: Creadores
+      library:
+        few: Bibliotecas
+        many: Bibliotecas
+        one: Biblioteca
+        other: Bibliotecas
+        two: Bibliotecas
+        zero: Bibliotecas
+      link:
+        few: Enlaces
+        many: Enlaces
+        one: Enlace
+        other: Enlaces
+        two: Enlaces
+        zero: Enlaces
+      model:
+        few: Modelos
+        many: Modelos
+        one: Modelo
+        other: Modelos
+        two: Modelos
+        zero: Modelos
+      model_file:
+        few: Archivos
+        many: Archivos
+        one: Archivo
+        other: Archivos
+        two: Archivos
+        zero: Archivos
+      problem:
+        few: Problemas
+        many: Problemas
+        one: Problema
+        other: Problemas
+        two: Problemas
+        zero: Problemas
+      user:
+        few: Usuarios
+        many: Usuarios
+        one: Usuario
+        other: Usuarios
+        two: Usuarios
+        zero: Usuarios
+  activity:
+    index:
+      description: Las entradas se borran después de %{retention_period}.
+      message: Mensaje
+      name: Nombre
+      time: Cuando
+      title: Actividad reciente
+  activity_helper:
+    status_icon:
+      completed: Completado
+      error: Fallidos
+      queued: En cola
+      working: En curso
+  application:
+    caber_relation_fields:
+      delete: Borrar
+      permissions:
+        edit: Puede editar
+        own: Propietario (puede ver, editar, eliminar y compartir)
+        view: Ver sólo
+      subject:
+        placeholder: Dirección de correo electrónico, nombre de usuario o rol
+        role:
+          member: Cualquier usuario local conectado
+          public: Todos (sin inicio de sesión)
+        you: "(tú)"
+    caber_relations_form:
+      add: añadir otro permiso
+      permissions: 'Compartiendo
+
+        '
+    demo_mode: Esta instancia es una demo. No puedes añadir ni eliminar modelos, pero puedes hacer todo lo demás.
+    filters_card:
+      missing_tags: Etiquetas vacías
+      remove_collection_filter: Eliminar filtro de colección
+      remove_creator_filter: Eliminar filtro de creador
+      remove_library_filter: Eliminar filtro de biblioteca
+      remove_missing_tag_filter: Eliminar filtro de etiquetas vacias
+      remove_search_filter: Eliminar filtro de búsqueda
+      remove_tag_filter: Eliminar el filtro de etiqueta
+      search: Buscar
+      title: Filtros
+      unknown: Desconocido
+    footer:
+      by_html: Diseñado y construido por <a href="https://floppy.org.uk" target="_blank">James</a> con la ayuda de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">nuestros colaboradores</a>.
+      chat: Chat
+      code: Código
+      community_heading: Comunidad
+      development_heading: Desarrollo
+      issues: Problemas
+      open_source_html: Open Source bajo <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencia MIT</a>.
+      social: Social
+      sponsor: Colaborar
+      stats_heading: Estadísticas
+      version: Versión
+    link_fields:
+      url:
+        delete: Borrar
+        placeholder: Cualquier web relacionada
+    links_form:
+      add: añadir otro enlace
+    navbar:
+      account: Cuenta
+      activity: Actividad
+      check_existing: Comprobar modelos existentes
+      home: Inicio
+      log_in: Iniciar sesión
+      log_out: Cerrar sesión
+      navbar:
+        toggler:
+          label: Mostrar/ocultar panel
+      scan: Escanear
+      scan_changes: Buscar cambios
+      scanning: Escaneando
+      search: Buscar
+      settings: Ajustes
+      upload: Cargar
+    order_buttons:
+      sort:
+        name: Ordenar por nombre
+        time: Ordenar por tiempo
+    tag_list:
+      unrelated_tag_count:
+        one: "%{count} etiqueta no relacionada oculta"
+        other: "%{count} etiquetas no relacionadas ocultas"
+    tagline: Ayudándole a mantener un registro de sus archivos de impresión 3D
+    tags_card:
+      skip_tags: Saltar lista de etiquetas
+    title: Manyfold
+  follow_button_component:
+    follow: Seguir %{name}
+    unfollow: Dejar de seguir %{name}
+  follows:
+    follow_remote_actor:
+      followed: Siguiendo a %{actor} correctamente.
+    new:
+      help: Puedes seguir creadores, colecciones o modelos públicos en otro servidor de Manyfold; ¡de hecho, cualquier cuenta pública en el Fediverse! Solo ingresa el nombre de la cuenta en el cuadro de búsqueda.
+      no_results: Lo siento, no encontré nada para "%{query}". ¿Es una cuenta o URL de ActivityPub válida?
+      results: Resultados de la búsqueda
+      search:
+        placeholder: Introduzca una cuenta Fediverse o URL, por ejemplo admin@try.manyfold.app
+        submit: Buscar
+      title: Sigue el Fediverse
+    remote_follow:
+      help: No es necesario tener una cuenta en este servidor para seguir a %{name}. Escribe tu nombre de usuario aquí y te llevaremos de vuelta para completar el proceso
+      no_results_html: No se pudo encontrar tu cuenta de inicio; ¿la escribiste correctamente?
+      placeholder: Tu nombre de usuario de Fediverse, por ejemplo manyfold@3dp.chat
+      submit: Llévame a casa
+      title: Seguir %{name}
+  general:
+    delete: Borrar
+    download: Descargar
+    edit: Editar
+    expand: Expandir
+    new: Nuevo
+    save: Guardar
+  home:
+    index:
+      create_actor: subido por %{name} hace %{time}
+      how_long_ago: hace %{time}
+      recent_activity: Actividad reciente
+      search:
+        placeholder: "¿Qué busca?"
+        submit: Buscar
+      update_actor: actualizado por %{name} hace %{time}
+  jobs:
+    activity:
+      creator_added_model:
+        comment: 'Acabo de añadir un nuevo modelo: ["%{model_name}"](%{url})'
+    analysis:
+      analyse_model_file:
+        detect_duplicates: Buscando ficheros duplicados
+        detect_ineffiency: Buscando formatos ineficientes
+        file_statistics: Calculando estadísticas de archivos
+        matching: Buscando archivos compatibles
+      file_conversion:
+        exporting: Exportando nuevo fichero
+        loading_mesh: Cargando malla
+      geometric_analysis:
+        direction_check: Comprobando la orientación de la superficie
+        loading_mesh: Cargando malla
+        manifold_check: Verificando que la malla sea válida
+    scan:
+      check_all:
+        queueing_model_checks: Encolando verificaciones de modelos
+        removing_orphaned_problems: Eliminar problemas huérfanos
+      detect_filesystem_changes:
+        building_filename_list: Construyendo lista de archivos
+        building_folder_list: Construyendo lista de carpetas modificadas
+        creating_models: Creando modelos
+  kaminari:
+    first_page:
+      label: Ir a la primera página
+    last_page:
+      label: Ir a la última página
+    next_page:
+      label: Ir a la siguiente página
+    page:
+      current_page: Página actual
+      label: Ir a la página %{page}
+    paginator:
+      label: Navegación por la página
+    prev_page:
+      label: Ir a la página anterior
   layouts:
+    application:
+      alert:
+        danger: Peligro
+        info: Información
+      skip_to_content: Ir al contenido principal
+    card_list_page:
+      actions_heading: Acciones
     settings:
       activeadmin: Administración avanzada
+      libraries: Bibliotecas
+      organization: Organización
       performance: Panel de rendimiento
       pghero: PgHero
       sidekiq: Sidekiq
       title: Ajustes
+      tools_heading: Herramientas avanzadas
+  licenses:
+    CC-BY-40: Creative Commons - Reconocimiento
+    CC-BY-NC-40: Creative Commons - Reconocimiento - No Comercial
+    CC-BY-NC-ND-40: Creative Commons - Reconocimiento - No Comercial - Sin Obra Derivada
+    CC-BY-NC-SA-40: Creative Commons - Reconocimiento - No Comercial - Compartir Igual
+    CC-BY-ND-40: Creative Commons - Reconocimiento - Sin Obra Derivada
+    CC-BY-SA-40: Creative Commons - Reconocimiento - Compartir Igual
+    CC-PDDC: Creative Commons - Declaración de Dominio Público
+    CC0-10: Creative Commons - Sin Derechos de Autor Reservados
+    LicenseRef-Commercial: Comercial - Solo para uso privado
+    MIT: MIT
+  model_component:
+    delete_button:
+      label: Borrar modelo %{name}
+      text: Borrar
+    edit_button:
+      label: Editar modelo %{name}
+      text: Editar
+    open_button:
+      label: Abrir modelo %{name}
+      text: Abrir
+  renderer:
+    errors:
+      canvas: "¡No se encontró el canvas #webgl!"
+      load: Error de carga
+      webglrenderer: No se ha podido crear el renderizado
+    load: Carga
+    processing: Generando splines...
+  security:
+    running_as_root_html: Manyfold se está ejecutando como root, lo que supone un riesgo para la seguridad. Ejecútelo como un usuario de sistema diferente configurando las variables de entorno <code>PUID</code> y <code>PGID</code>. Consulte <a href='https://manyfold.app/sysadmin/configuration.html#required'>la documentación de configuración</a> para más detalles.
+  sites:
+    cgtrader: CGTrader
+    comicsgamesandthings: Comics, Games, and Things
+    cults3d: Cults3D
+    myminifactory: MyMiniFactory
+    theminiindex: The Mini Index
+    thingiverse: Thingiverse
+  user_mailer:
+    account_approved:
+      greeting: "¡Hola!"
+      message: Su cuenta ha sido aprobada; ya puede iniciar sesión en %{link}.
+      subject: Cuenta aprobada
+  views:
+    pagination:
+      first: "« Primera"
+      last: Última »
+      next: Siguiente >
+      previous: "‹ Anterior"
+      truncate: "…"

@@ -1,9 +1,397 @@
 ---
 pl:
+  activerecord:
+    attributes:
+      collection:
+        caption: Napis
+        collection_id: Kolekcja
+        name: Nazwa
+        notes: Notatki
+      creator:
+        caption: Napis
+        name: Nazwa
+        notes: Opis
+      library:
+        caption: Napis
+        icon: Ikona
+        name: Nazwa
+        notes: Notatki
+        path: Ścieżka
+        s3_access_key_id:
+        s3_bucket:
+        s3_endpoint:
+        s3_region: Region
+        s3_secret_access_key:
+        storage_service: Usługa przechowywania plików
+        tag_regex: Wymagane Tagi
+      link:
+        url: Link
+      model:
+        caption: Napis
+        collection_id: Kolekcja
+        creator_id: Twórca
+        library_id: Biblioteka
+        license: Licencja
+        name: Nazwa
+        notes: Opis
+        path: Ścieżka
+        preview_file: Podgląd pliku
+        sensitive: Wrażliwa Treść
+        tags: Tagi
+      model_file:
+        caption: Napis
+        digest:
+        filename: Nazwa pliku
+        model_id: Model
+        notes: Notatki
+        presupported:
+        presupported_version:
+        printed: Wydrukowane
+        size: Rozmiar pliku
+        unsupported_version: Niewspierana wersja
+        y_up:
+      problem:
+        category: Kategoria
+        ignored: Ukryte
+        note: Notatka
+        problematic_type: Typ Obiektu
+        severity: Ważność
+      user:
+        approved:
+        confirmation_sent_at: Data wysłania potwierdzenia
+        confirmation_token: Token potwierdzający
+        confirmed_at: Data potwierdzenia
+        created_at: Data utworzenia
+        current_password: Aktualne hasło
+        current_sign_in_at: Data bieżącego logowania
+        current_sign_in_ip: Bieżący adres IP
+        email: Adres e-mail
+        encrypted_password: Zaszyfrowane hasło
+        failed_attempts: Nieudanych prób
+        last_sign_in_at: Data ostatniego logowania
+        last_sign_in_ip: Adres IP ostatniego logowania
+        locked_at: Data zablokowania
+        password: Hasło
+        password_confirmation: Potwierdź hasło
+        remember_created_at: Data utworzenia zapamiętania logowania
+        remember_me: Zapamiętaj mnie
+        reset_password_sent_at: Data wysłania żądania resetu hasła
+        reset_password_token: Token umożliwiający reset hasła
+        sign_in_count: Liczba logowań
+        unconfirmed_email: Niepotwierdzony adres e-mail
+        unlock_token: Token odblokowywujący
+        updated_at: Data uaktualnienia
+    errors:
+      models:
+        library:
+          attributes:
+            path:
+              non_writable:
+              not_found: nie można znaleźć na dysku
+              unsafe:
+        model:
+          attributes:
+            library:
+              nested: nie można zmienić, model zawiera inne modele
+            license:
+              invalid_spdx: nie jest poprawną licencją
+            path:
+              destination_exists: już istnieje
+              nested: nie można zmienić, model zawiera inne modele
+        model_file:
+          attributes:
+            presupported_version:
+              already_presupported:
+              not_supported:
+    models:
+      acts_as_taggable_on/tag:
+        few: Tagi
+        many: Tagów
+        one: Tag
+        other: Tagi
+        two:
+        zero:
+      collection:
+        few: Kolekcje
+        many: Kolekcji
+        one: Kolekcja
+        other: Kolekcje
+        two:
+        zero:
+      creator:
+        few: Twórców
+        many: Twórców
+        one: Twórca
+        other: Twórcy
+        two:
+        zero:
+      library:
+        few: Biblioteki
+        many: Bibliotek
+        one: Biblioteka
+        other: Biblioteki
+        two:
+        zero:
+      link:
+        few: Linki
+        many: Linków
+        one: Link
+        other: Linki
+        two:
+        zero:
+      model:
+        few: Modele
+        many: Modeli
+        one: Model
+        other: Modele
+        two:
+        zero:
+      model_file:
+        few: Pliki
+        many: Plików
+        one: Plik
+        other: Pliki
+        two:
+        zero:
+      problem:
+        few: Problemy
+        many: Problemów
+        one: Problem
+        other: Problemy
+        two:
+        zero:
+      user:
+        few: Użytkowników
+        many: Użytkowników
+        one: Użytkownik
+        other: Użytkownicy
+        two:
+        zero:
+  activity:
+    index:
+      description: Wpisy są odrzucane po %{retention_period}.
+      message: Wiadomość
+      name: Nazwa
+      time: Kiedy
+      title: Ostatnia aktywność
+  activity_helper:
+    status_icon:
+      completed: Zakończone
+      error: Błąd
+      queued: W kolejce
+      working: Działa
+  application:
+    caber_relation_fields:
+      delete: Usuń
+      permissions:
+        edit: Może edytować
+        own: Właściciel (może wyświetlać, edytować, usuwać i udostępniać)
+        view: Wyświetlaj tylko
+      subject:
+        placeholder: Adres e-mail, nazwa użytkownika albo rola
+        role:
+          member: Dowolny zalogowany lokalny użytkownik
+          public: Wszyscy (bez logowania)
+        you: "(ty)"
+    caber_relations_form:
+      add: dodaj kolejne uprawnienie
+      permissions: Udostępnianie
+    demo_mode: Ta instancja jest w trybie demonstracyjnym. Nie możesz dodawać ani usuwać modeli, ale możesz robić wszystko inne.
+    filters_card:
+      missing_tags: Brakujące tagi
+      remove_collection_filter: Usuń filtr kolekcji
+      remove_creator_filter: Usuń filtr twórcy
+      remove_library_filter: Usuń filtr biblioteki
+      remove_missing_tag_filter:
+      remove_search_filter: Usuń filtr wyszukiwania
+      remove_tag_filter: Usuń filtr taga
+      search: Wyszukaj
+      title: Filtry
+      unknown: Nieznany
+    footer:
+      by_html: Zaprojektowany i stworzony przez <a href="https://floppy.org.uk" target="_blank">Jamesa</a> z pomocą od <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">naszych współautorów</a>.
+      chat: Czat
+      code: Kod
+      community_heading: Społeczność
+      development_heading: Rozwój
+      issues: Problemy
+      open_source_html: Projekt Open Source na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencji MIT</a>.
+      social: Sociale
+      sponsor: Sponsoruj
+      stats_heading: Statystyki
+      version: Wersja
+    link_fields:
+      url:
+        delete: Usuń
+        placeholder: Dowolna powiązana strona internetowa
+    links_form:
+      add: dodaj kolejny link
+    navbar:
+      account: Moje Ustawienia
+      activity: Aktywność
+      check_existing: Sprawdź istniejące modele
+      home: Strona główna
+      log_in: Zaloguj się
+      log_out: Wyloguj się
+      navbar:
+        toggler:
+          label: Przełącz nawigację
+      scan: Zeskanuj
+      scan_changes: Zeskanuj w poszukiwaniu zmian
+      scanning: Skanowanie
+      search: Wyszukaj
+      settings: Ustawienia Strony
+      upload: Prześlij
+    order_buttons:
+      sort:
+        name: Sortuj według nazwy
+        time: Sortuj według czasu
+    tag_list:
+      unrelated_tag_count:
+        one: "%{count} niepowiązany tag ukryty"
+        other: "%{count} niepowiązanych tagów ukrytych"
+    tagline: Pomaga w śledzeniu plików do druku 3D
+    tags_card:
+      skip_tags: Pomiń listę tagów
+    title: Manyfold
+  follow_button_component:
+    follow: Obserwuj %{name}
+    unfollow: Przestań obserwować %{name}
+  follows:
+    follow_remote_actor:
+      followed: Pomyślnie zaczęto obserwować %{actor}
+    new:
+      help: Możesz obserwować publicznych twórców, kolekcje lub modele na innym serwerze Manyfold, a nawet każde publiczne konto w Fediverse! Wystarczy, że wpiszesz nazwę konta w polu wyszukiwania!
+      no_results: Przepraszamy, nie mogliśmy znaleźć niczego dla "%{query}". Czy jest to prawidłowe konto ActivityPub lub adres URL?
+      results: Wyniki wyszukiwania
+      search:
+        placeholder: Wprowadź konto Fediverse lub adres URL, np. admin@try.manyfold.app
+        submit: Wyszukaj
+      title: Śledź Fediverse
+    remote_follow:
+      help: Nie potrzebujesz konta na tym serwerze, aby obserwować %{name}; wprowadź tutaj nazwę swojego konta, a my odeślemy Cię do domu, aby zakończyć proces.
+      no_results_html: Nie mogliśmy znaleźć Twojego konta domowego; czy wprowadziłeś je poprawnie?
+      placeholder: Twoja nazwa użytkownika Fediverse, np. manyfold@3dp.chat
+      submit: Zabierz mnie do domu
+      title: Obserwuj %{name}
+  general:
+    delete: Usuń
+    download: Pobierz
+    edit: Edytuj
+    expand: Rozwiń
+    new: Nowy
+    save: Zapisz
+  home:
+    index:
+      create_actor: dodany przez %{name} %{time} temu
+      how_long_ago: "%{time} temu"
+      recent_activity: Ostatnia Aktywność
+      search:
+        placeholder: Czego szukasz?
+        submit: Wyszukaj
+      update_actor: zaktualizowany przez %{name} %{time} temu
+  jobs:
+    activity:
+      creator_added_model:
+        comment: 'Właśnie dodałem(-am) nowy model: ["%{model_name}"](%{url})'
+    analysis:
+      analyse_model_file:
+        detect_duplicates: Wykrywanie zduplikowanych plików
+        detect_ineffiency: Wykrywanie niewydajnych formatów
+        file_statistics: Obliczanie statystyk plików
+        matching: Dopasowywanie obsługiwanych plików
+      file_conversion:
+        exporting: Eksportowanie nowego pliku
+        loading_mesh: Ładowanie siatki
+      geometric_analysis:
+        direction_check: Sprawdzanie orientacji powierzchni
+        loading_mesh: Ładowanie siatki
+        manifold_check: Sprawdzanie, czy siatka jest rozmaita
+    scan:
+      check_all:
+        queueing_model_checks: Kolejkowanie sprawdzania modeli
+        removing_orphaned_problems: Usuwanie osieroconych problemów
+      detect_filesystem_changes:
+        building_filename_list: Tworzenie listy plików
+        building_folder_list: Tworzenie listy zmienionych folderów
+        creating_models: Tworzenie modeli
+  kaminari:
+    first_page:
+      label: Przejdź do pierwszej strony
+    last_page:
+      label: Przejdź do ostatniej strony
+    next_page:
+      label: Przejdź do następnej strony
+    page:
+      current_page: Bieżąca strona
+      label: Przejdź do %{page} strony
+    paginator:
+      label: Nawigacja strony
+    prev_page:
+      label: Przejdź do poprzedniej strony
   layouts:
+    application:
+      alert:
+        danger: Niebezpieczeństwo
+        info: Informacja
+      skip_to_content: Przejdź do głównej treści
+    card_list_page:
+      actions_heading: Akcje
     settings:
       activeadmin: Zaawansowana Administracja
+      libraries: Biblioteki
+      organization: Organizacja
       performance: Pulpit Wydajności
       pghero: PgHero
       sidekiq: Sidekiq
       title: Ustawienia Strony
+      tools_heading: Zaawansowane Narzędzia
+  licenses:
+    CC-BY-40: Creative Commons Uznanie autorstwa
+    CC-BY-NC-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne
+    CC-BY-NC-ND-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne-Bez utworów zależnych
+    CC-BY-NC-SA-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne-Na tych samych warunkach
+    CC-BY-ND-40: Creative Commons Uznanie autorstwa-Bez utworów zależnych
+    CC-BY-SA-40: Creative Commons Uznanie autorstwa-Na tych samych warunkach
+    CC-PDDC: Creative Commons Deklaracja Domeny Publicznej
+    CC0-10: Creative Commons Zero
+    LicenseRef-Commercial: Komercyjne; tylko do użytku prywatnego
+    MIT: MIT
+  model_component:
+    delete_button:
+      label: Usuń model %{name}
+      text: Usuń
+    edit_button:
+      label: Edytuj model %{name}
+      text: Edytuj
+    open_button:
+      label: Otwórz model %{name}
+      text: Otwórz
+  renderer:
+    errors:
+      canvas: 'Nie można znaleźć canvasu #webgl!'
+      load: Błąd wczytywania
+      webglrenderer: Nie można utworzyć renderera!
+    load: Wczytywanie
+    processing: Procesowanie siatki
+  security:
+    running_as_root_html: Manyfold działa jako root, co stanowi zagrożenie dla bezpieczeństwa. Uruchom jako inny użytkownik systemu przez ustawienie zmiennych środowiskowych <code>PUID</code> i <code>PGID</code>. Szczegółowe informacje możesz znaleźć w <a href='https://manyfold.app/sysadmin/configuration.html#required'>dokumentacji konfiguracji</a>.
+  sites:
+    cgtrader: CGTrader
+    comicsgamesandthings: Comics, Games, and Things
+    cults3d: Cults3D
+    myminifactory: MyMiniFactory
+    theminiindex: The Mini Index
+    thingiverse: Thingiverse
+  user_mailer:
+    account_approved:
+      greeting: Cześć!
+      message: Twoje konto zostało zatwierdzone; możesz teraz zalogować się pod adresem %{link}.
+      subject: Konto zatwierdzone
+  views:
+    pagination:
+      first: "« Pierwsza"
+      last: Ostatnia »
+      next: Następna ›
+      previous: "‹ Poprzednia"
+      truncate: "…"

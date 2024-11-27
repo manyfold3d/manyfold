@@ -13,6 +13,7 @@ de:
       invalid: "%{authentication_keys} oder Passwort ungültig."
       last_attempt: Du hast einen weiteren Versuch, bevor dein Konto vorübergehend gesperrt wird.
       locked: Dein Konto ist für eine Stunde gesperrt; versuche es später noch einmal.
+      not_approved: Dein Konto ist noch nicht von einem Moderator genehmigt worden.
       not_found_in_database: "%{authentication_keys} oder Passwort ungültig."
       timeout: Deine Sitzung ist abgelaufen. Bitte melden dich erneut an.
       unauthenticated: Du musst dich anmelden oder registrieren, bevor du fortfahren kannst.
@@ -75,7 +76,7 @@ de:
         leave_blank_if_you_don_t_want_to_change_it: freilassen, wenn du das nicht ändern willst
         security: Sicherheit
         submit: Änderungen speichern
-        title: Kontoeinstellungen
+        title: Meine Einstellungen
         unhappy: Unzufrieden?
         update: Aktualisieren
         we_need_your_current_password_to_confirm_your_changes: wir benötigen dein aktuelles Passwort, um die Änderung zu bestätigen
@@ -101,8 +102,9 @@ de:
           hide: Vollständig ausblenden
           label: Möglicherweise verstörender Inhalt
           mask: In der Übersicht Zensieren
-          show: Wie gewohnt anzeigen
+          show: Ganz normal anzeigen
       new:
+        approval_help: Nachdem du dein Konto erstellt hast, wird es manuell von unseren Moderatoren überprüft. Wir werden dich benachrichtigen, wenn die Prüfung abgeschlossen ist und dich anmelden kannst.
         sign_up: Registrieren
       pagination_settings:
         collections:
@@ -168,6 +170,8 @@ de:
       update_needs_confirmation: Deine Account-Daten wurden erfolgreich aktualisiert, aber du musst deine neue E-Mail-Adresse bestätigen. Du erhältst in wenigen Minuten eine E-Mail, mit der du die Änderungen bestätigen kannst.
       updated: Deine Account-Daten wurden erfolgreich aktualisiert.
       updated_but_not_signed_in: Deine Account-Daten wurden erfolgreich aktualisiert, aber da sich dein Passwort geändert hat, musst du dich erneut anmelden
+      user:
+        signed_up_but_not_approved: Du hast dich erfolgreich angemeldet. Ein Moderator wird dein Konto in Kürze überprüfen. Danach kannst du dich anmelden.
     sessions:
       already_signed_out: Erfolgreich abgemeldet.
       new:

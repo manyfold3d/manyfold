@@ -3,7 +3,7 @@ de:
   problems:
     categories:
       duplicate: Duplizierte Dateien
-      empty: Modell hat keine Dateien
+      empty: Modell oder Datei ist Leer
       inefficient: Unvollständige Formate
       inside_out: Mesh ist "verdreht"
       missing: Fehlende Dateien oder Ordner
@@ -21,8 +21,15 @@ de:
       show_ignored: Ausgeblendete Elemente anzeigen
       title: Filter
     index:
+      bulk_confirm: Bist du sicher, dass du alle ausgewählten Probleme automatisch beheben möchtest? Dadurch könnten Dateien und Daten gelöscht werden.
+      bulk_resolve: Ausgewähltes auflösen
+      description: Beschreibung
       ignore: Ausblenden
+      item: Gegenstand
       no_problems: Es wurden keine Fehler mit diesen Filtereinstellungen gefunden
+      resolve: Auflösen
+      select: Auswählen
+      select_all: Alle auswählen
       unignore: Anzeigen
     model:
       empty:
@@ -57,6 +64,9 @@ de:
       duplicate:
         description: Diese Datei ist in anderen Modellen dupliziert. Vielleicht möchten Sie einige davon entfernen.
         title: Doppelte Datei
+      empty:
+        description: Diese Datei hat eine Länge von Null! Dies ist höchstwahrscheinlich falsch; entferne entweder die Datei oder scanne das Modell erneut, um es zu überprüfen.
+        title: Leere Datei
       inefficient:
         description: Diese Datei ist in %{note}, einem ineffizienten Dateiformat. Erwäge, sie in ein Binärformat wie 3MF zu konvertieren, um Speicherplatz zu sparen.
         title: Ineffizientes Format
