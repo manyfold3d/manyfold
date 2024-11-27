@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@activeadmin/activeadmin": "^3.2.5",
-    "@notus.sh/cocooned": "^2.4.0",
+    "@notus.sh/cocooned": "^2.4.1",
     "@popperjs/core": "^2.11.8",
     "@rails/ujs": "^7.1.500",
     "@selectize/selectize": "^0.15.2",
