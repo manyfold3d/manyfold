@@ -147,6 +147,7 @@ gem "devise_zxcvbn", "~> 6.0"
 
 gem "ransack", "~> 4.2"
 gem "federails", "~> 0.3"
+gem "federails-moderation", github: "manyfold3d/federails-moderation"
 gem "caber"
 
 gem "nanoid", "~> 2.0"
