@@ -1,0 +1,20 @@
+<h3><%= t(".title") %></h3>
+
+<p class="lead"><%= t(".description") %></p>
+
+<table class="table table-striped">
+  <tr>
+    <th><%= Federails::Moderation::DomainBlock.human_attribute_name(:domain) %></th>
+    <th><%= Federails::Moderation::DomainBlock.human_attribute_name(:created_at) %></th>
+    <th></th>
+  </tr>
+  <% @blocks.each do |block| %>
+    <tr>
+      <td><%= block.domain %></td>
+      <td><%= block.created_at %></td>
+      <td><%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), settings_domain_block_path(block), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: translate(".confirm_destroy")}} if policy(block).destroy? %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to t(".new"), new_settings_domain_block_path, class: "btn btn-primary" if policy(Federails::Moderation::DomainBlock).new? %>

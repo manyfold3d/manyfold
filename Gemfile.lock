@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/manyfold3d/federails-moderation.git
+  revision: ab92e0f05c87dbd477cf16765ed49d8ae4356583
+  specs:
+    federails-moderation (0.0.1)
+      federails (~> 0.3)
+      public_suffix (~> 6.0)
+      rails (>= 7.2.2)
+
+GIT
   remote: https://github.com/manyfold3d/sqlite3_ar_regexp.git
   revision: 2fa15db50770e86b7b4872486c2ee8ff282a3e2c
   ref: rails-7.1-support
@@ -765,6 +774,7 @@ DEPENDENCIES
   factory_bot
   faker (~> 3.5)
   federails (~> 0.3)
+  federails-moderation!
   ffi-libarchive (~> 1.1)
   get_process_mem (~> 1.0)
   guard (~> 2.19)

@@ -7,6 +7,19 @@ en:
       manifold:
         help: Check for non-manifold meshes (i.e. they have holes or impossible surfaces)
         label: Detect mesh errors
+    domain_blocks:
+      create:
+        success: Domain block created successfully.
+      destroy:
+        success: Domain block removed.
+      index:
+        confirm_destroy: Are you sure you want to remove this domain block and re-enable federation?
+        description: Domain blocks prevent federation with ActivityPub servers on the specified domains, including any subdomains.
+        new: New domain block
+        title: Domain Blocks
+      new:
+        submit: Block domain
+        title: New Domain Block
     folder_settings:
       details: Folder structure follows a template that you define using tokens. You can also include other text in the template (such as folder separators) and it will be included as-is.
       model_path_template:

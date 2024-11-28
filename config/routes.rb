@@ -46,6 +46,14 @@ Rails.application.routes.draw do
     post "/follow_remote_actor/:id" => "follows#follow_remote_actor", :as => :follow_remote_actor
   end
 
+  if SiteSettings.federation_enabled? || Rails.env.test?
+    authenticate :user, lambda { |u| u.is_moderator? } do
+      namespace :settings do
+        resources :domain_blocks if SiteSettings.federation_enabled?
+      end
+    end
+  end
+
   root to: "home#index"
 
   resources :libraries, except: [:index] do
