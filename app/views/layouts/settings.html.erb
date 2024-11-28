@@ -19,6 +19,11 @@
           <%= link_to t("settings.users.index.title"), settings_users_path, class: "nav-link" %>
         </li>
       <% end %>
+      <% if SiteSettings.federation_enabled? %>
+        <li class="nav-item">
+          <%= link_to t("settings.domain_blocks.index.title"), settings_domain_blocks_path, class: "nav-link" %>
+        </li>
+      <% end %>
       <li class="nav-item">
         <%= link_to t("settings.reporting.heading"), reporting_settings_path, class: "nav-link" %>
       </li>
