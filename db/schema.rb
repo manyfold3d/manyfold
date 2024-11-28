@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_22_121621) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_28_162214) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -138,6 +138,27 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_22_121621) do
     t.index ["actor_id", "target_actor_id"], name: "index_federails_followings_on_actor_id_and_target_actor_id", unique: true
     t.index ["target_actor_id"], name: "index_federails_followings_on_target_actor_id"
     t.index ["uuid"], name: "index_federails_followings_on_uuid", unique: true
+  end
+
+  create_table "federails_moderation_domain_blocks", force: :cascade do |t|
+    t.string "domain", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["domain"], name: "index_federails_moderation_domain_blocks_on_domain", unique: true
+  end
+
+  create_table "federails_moderation_reports", force: :cascade do |t|
+    t.string "federated_url"
+    t.integer "federails_actor_id"
+    t.string "content"
+    t.string "object_type"
+    t.integer "object_id"
+    t.datetime "resolved_at"
+    t.string "resolution"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["federails_actor_id"], name: "index_federails_moderation_reports_on_federails_actor_id"
+    t.index ["object_type", "object_id"], name: "index_federails_moderation_reports_on_object"
   end
 
   create_table "flipper_features", force: :cascade do |t|
@@ -328,6 +349,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_22_121621) do
   add_foreign_key "federails_activities", "federails_actors", column: "actor_id"
   add_foreign_key "federails_followings", "federails_actors", column: "actor_id"
   add_foreign_key "federails_followings", "federails_actors", column: "target_actor_id"
+  add_foreign_key "federails_moderation_reports", "federails_actors"
   add_foreign_key "model_files", "model_files", column: "presupported_version_id"
   add_foreign_key "model_files", "models"
   add_foreign_key "models", "collections"
