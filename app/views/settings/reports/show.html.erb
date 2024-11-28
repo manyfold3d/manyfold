@@ -1,0 +1,10 @@
+<h3><%= t(".title") %></h3>
+
+<p>
+  <%= Federails::Moderation::Report.human_attribute_name(:federails_actor) %>:
+  <%= @report.federails_actor.at_address %>
+</p>
+
+<blockquote>
+  <%= @report.content %>
+</blockquote>
