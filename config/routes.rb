@@ -3,6 +3,10 @@ require "sidekiq/cron/web"
 require "federails"
 
 Rails.application.routes.draw do
+  namespace :settings do
+    get "reports/index"
+    get "reports/show"
+  end
   get ".well-known/change-password", to: redirect("/users/edit")
   get "health" => "rails/health#show", :as => :rails_health_check
   get "problems/index"
@@ -35,6 +39,7 @@ Rails.application.routes.draw do
     authenticate :user, lambda { |u| u.is_moderator? } do
       namespace :settings do
         resources :users
+        resources :reports
       end
     end
     mount Federails::Engine => "/" if SiteSettings.federation_enabled? || Rails.env.test?

@@ -11,6 +11,13 @@ en:
         caption: Tagline
         name: Name
         notes: Description
+      federails/moderation/domain_block:
+        created_at: Created at
+        domain: Domain
+      federails/moderation/report:
+        created_at: Reported at
+        federails_actor: Reported by
+        object: Object
       library:
         caption: Caption
         icon: Icon
@@ -292,6 +299,7 @@ en:
     expand: Expand
     new: New
     save: Save
+    view: View
   home:
     index:
       create_actor: added by %{name} %{time} ago
