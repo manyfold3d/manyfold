@@ -12,7 +12,7 @@
   <% @reports.each do |report| %>
     <tr>
       <td>coming soon...</td>
-      <td><%= report.federails_actor&.at_address %></td>
+      <td><%= report.reporter_address %></td>
       <td><%= report.created_at %></td>
       <td><%= link_to safe_join([icon("search", t("general.view")), t("general.view")], " "), settings_report_path(report), {class: "float-end btn btn-primary"} %></td>
     </tr>
