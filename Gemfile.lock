@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/manyfold3d/federails-moderation.git
-  revision: b9c0aad44a2019819559eec23b918f12805920ba
+  revision: fa2ec856a0cf965bc51d984b694074e02f52c2f5
   specs:
     federails-moderation (0.0.1)
       federails (~> 0.3)
