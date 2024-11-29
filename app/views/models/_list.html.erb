@@ -25,6 +25,7 @@
 
 <% content_for :actions do %>
   <%= link_to t(".bulk_edit"), edit_models_path(@filters.merge(@additional_filters)), class: "btn btn-secondary" if policy(:model).edit? %>
+  <%= link_to safe_join([icon("flag", t("general.report", type: Collection.model_name.human)), t("general.report", type: Collection.model_name.human)], " "), new_collection_report_path(@collection), class: "btn btn-outline-warning" if SiteSettings.multiuser_enabled? && @collection %>
 <% end %>
 
 <% content_for :sidebar do %>

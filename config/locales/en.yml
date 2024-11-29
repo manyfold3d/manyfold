@@ -313,6 +313,7 @@ en:
     edit: Edit
     expand: Expand
     new: New
+    report: Report %{type}
     save: Save
     view: View
   home:
@@ -414,7 +415,7 @@ en:
     new:
       description: If this item violates any laws or server policies, you can report it to our moderators. Add a comment to let us know why!
       submit: Send report
-      title: Report %{name}
+      title: 'Report %{type}: "%{name}"'
   security:
     running_as_root_html: Manyfold is running as root, which is a security risk. Run as a different system user by setting the <code>PUID</code> and <code>PGID</code> environment variables. See <a href='https://manyfold.app/sysadmin/configuration.html#required'>the configuration documentation</a> for details.
   sites:
