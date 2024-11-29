@@ -1,0 +1,11 @@
+<h3><%= t(".title", type: @reportable.model_name.human, name: @reportable.name) %></h3>
+
+<p class="lead"><%= t ".description" %></p>
+
+<%= form_with model: [@reportable, @report] do |form| %>
+
+  <%= text_input_row form, :content %>
+
+  <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+
+<% end %>

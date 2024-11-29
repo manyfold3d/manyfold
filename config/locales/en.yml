@@ -312,7 +312,9 @@ en:
     download: Download
     edit: Edit
     expand: Expand
+    menu: Menu
     new: New
+    report: Report %{type}
     save: Save
     view: View
   home:
@@ -398,6 +400,7 @@ en:
     edit_button:
       label: Edit model %{name}
       text: Edit
+    no_preview: No preview available
     open_button:
       label: Open model %{name}
       text: Open
@@ -408,6 +411,13 @@ en:
       webglrenderer: Could not create renderer!
     load: Load
     processing: Reticulating splines...
+  reports:
+    create:
+      success: Report submitted. Thank you!
+    new:
+      description: If this item violates any laws or server policies, you can report it to our moderators. Add a comment to let us know why!
+      submit: Send report
+      title: 'Report %{type}: "%{name}"'
   security:
     running_as_root_html: Manyfold is running as root, which is a security risk. Run as a different system user by setting the <code>PUID</code> and <code>PGID</code> environment variables. See <a href='https://manyfold.app/sysadmin/configuration.html#required'>the configuration documentation</a> for details.
   sites:

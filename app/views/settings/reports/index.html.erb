@@ -4,14 +4,18 @@
 
 <table class="table table-striped">
   <tr>
-    <th><%= Federails::Moderation::Report.human_attribute_name(:object) %></th>
-    <th><%= Federails::Moderation::Report.human_attribute_name(:federails_actor) %></th>
+    <th colspan="2"><%= Federails::Moderation::Report.human_attribute_name(:object) %></th>
+    <th colspan="2"><%= Federails::Moderation::Report.human_attribute_name(:federails_actor) %></th>
     <th><%= Federails::Moderation::Report.human_attribute_name(:created_at) %></th>
     <th></th>
   </tr>
   <% @reports.each do |report| %>
     <tr>
+      <td><%= icon icon_for(report.object.entity.class), "" %></td>
       <td><%= link_to report.object.entity.name, report.object.entity if report.object&.entity %></td>
+      <td>
+        <%= icon (report.local? ? "house" : "globe"), "" %>
+      </td>
       <td><%= report.reporter_address %></td>
       <td><%= report.created_at %></td>
       <td><%= link_to safe_join([icon("search", t("general.view")), t("general.view")], " "), settings_report_path(report), {class: "float-end btn btn-primary"} %></td>

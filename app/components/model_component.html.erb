@@ -9,8 +9,8 @@
           <%= render partial: "object_preview", locals: {model: @model, file: file} %>
         </div>
       <% end %>
-       <% else %>
-       <div class='preview-empty'> <p>no preview availiable</p></div>
+    <% else %>
+      <div class='preview-empty'> <p><%= t(".no_preview") %></p></div>
     <% end %>
     <div class="card-body">
       <div class="row ">
@@ -20,12 +20,6 @@
               <%= @model.name %>
             </a>
             <%= helpers.icon("explicit", Model.human_attribute_name(:sensitive)) if @model.sensitive %>
-            <span style="float: right"><%= helpers.status_badges(@model) %></span>
-          </div>
-          <div class='mt-2'>
-            <%= link_to t(".open_button.text"), @model, {class: "btn btn-primary btn-sm", "aria-label": translate(".open_button.label", name: @model.name)} %>
-            <%= link_to helpers.icon("pencil-fill", t(".edit_button.text")), edit_model_path(@model), {class: "btn btn-outline-secondary btn-sm", "aria-label": translate(".edit_button.label", name: @model.name)} if @can_edit %>
-            <%= link_to helpers.icon("trash", t(".delete_button.text")), model_path(@model), {method: :delete, class: "btn btn-outline-danger btn-sm", "aria-label": translate(".delete_button.label", name: @model.name), data: {confirm: translate("models.destroy.confirm")}} if @can_destroy %>
           </div>
         </div>
         <div class="col-auto">
@@ -45,18 +39,29 @@
                         "aria-label": [@model.collection.model_name.human, @model.collection.name].join(": ") %>
                 </li>
               <% end %>
-              <% if @library.nil? && @model.library %>
-                <li>
-                  <%= helpers.icon "boxes", Library.model_name.human %>
-                  <%= link_to @model.library.name, models_path((@filters || {}).merge(library: @model.library)),
-                        "aria-label": [Library.model_name.human, @model.library.name].join(": ") %>
-                </li>
-              <% end %>
             </ul>
             <% if @model.caption %>
               <p class="card-text"><%= sanitize @model.caption %></p>
             <% end %>
           </small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= link_to t(".open_button.text"), @model, {class: "btn btn-primary btn-sm", "aria-label": translate(".open_button.label", name: @model.name)} %>
+          <%= helpers.status_badges(@model) %>
+          <div class="float-end">
+            <div class="btn-group">
+              <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= helpers.icon "three-dots-vertical", t("general.menu") %>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><%= link_to safe_join([helpers.icon("pencil-fill", t(".edit_button.text")), t(".edit_button.text")], " "), edit_model_path(@model), {class: "dropdown-item", "aria-label": translate(".edit_button.label", name: @model.name)} if @can_edit %></li>
+                <li><%= link_to safe_join([helpers.icon("trash", t(".delete_button.label")), t(".delete_button.text")], " "), model_path(@model), {method: :delete, class: "dropdown-item", data: {confirm: translate("models.destroy.confirm")}} if @can_destroy %></li>
+                <li><%= link_to safe_join([helpers.icon("flag", t("general.report", type: "")), t("general.report", type: "")], " "), new_model_report_path(@model), class: "dropdown-item" if SiteSettings.multiuser_enabled? %></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

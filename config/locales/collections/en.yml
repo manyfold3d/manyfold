@@ -9,7 +9,7 @@ en:
         text: Edit
       models_button:
         label: Show models in %{name}
-      no_preview: no preview availiable
+      no_preview: No preview availiable
     create:
       success: New collection details saved.
     destroy:
