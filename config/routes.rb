@@ -83,10 +83,14 @@ Rails.application.routes.draw do
   concern :commentable do |options|
     resources :comments, {only: [:show]}.merge(options)
   end
+  concern :reportable do |options|
+    resources :reports, {only: [:new, :create]}.merge(options) if SiteSettings.multiuser_enabled?
+  end
 
   resources :models do
     concerns :followable, followable_class: "Model"
     concerns :commentable, commentable_class: "Model"
+    concerns :reportable, reportable_class: "Model"
     member do
       post "merge"
       post "scan"
@@ -105,10 +109,12 @@ Rails.application.routes.draw do
   resources :creators do
     concerns :followable, followable_class: "Creator"
     concerns :commentable, commentable_class: "Creator"
+    concerns :reportable, reportable_class: "Creator"
   end
   resources :collections do
     concerns :followable, followable_class: "Collection"
     concerns :commentable, commentable_class: "Collection"
+    concerns :reportable, reportable_class: "Collection"
   end
   resources :problems, only: [:index, :update] do
     collection do
