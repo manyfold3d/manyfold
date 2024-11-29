@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/manyfold3d/federails-moderation.git
-  revision: ab92e0f05c87dbd477cf16765ed49d8ae4356583
+  revision: fd232c71a8425e2a6dc177e609e4adc3390da9b5
   specs:
     federails-moderation (0.0.1)
       federails (~> 0.3)
@@ -578,7 +578,7 @@ GEM
     redis-namespace (1.11.0)
       redis (>= 4)
     regexp_parser (2.9.2)
-    reline (0.5.11)
+    reline (0.5.12)
       io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
