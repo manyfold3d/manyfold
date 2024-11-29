@@ -1,10 +1,24 @@
-<h3><%= t(".title") %></h3>
+<h3><%= Federails::Moderation::Report.model_name.human %> #<%= @report.id %></h3>
 
-<p>
-  <%= Federails::Moderation::Report.human_attribute_name(:federails_actor) %>:
-  <%= @report.reporter_address %>
-</p>
+<ul>
+  <li>
+    <%= Federails::Moderation::Report.human_attribute_name(:created_at) %>:
+    <%= @report.created_at %>
+  </li>
+  <li>
+    <%= Federails::Moderation::Report.human_attribute_name(:federails_actor) %>:
+    <%= @report.reporter_address %>
+  </li>
+</ul>
 
-<blockquote>
-  <%= @report.content %>
-</blockquote>
+<% if @report.content.present? %>
+  <h4><%= Federails::Moderation::Report.human_attribute_name(:content) %>:</h4>
+  <div class="alert alert-warning">
+    <%= @report.content %>
+  </div>
+<% end %>
+
+<div class="mt-3">
+  <%= link_to t(".resolve"), settings_report_path(@report, resolve: true), method: :patch, class: "btn btn-primary" %>
+  <%= link_to t(".ignore"), settings_report_path(@report, ignore: true), method: :patch, class: "btn btn-danger" %>
+</div>
