@@ -57,7 +57,7 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li><%= link_to safe_join([helpers.icon("pencil-fill", t(".edit_button.text")), t(".edit_button.text")], " "), edit_model_path(@model), {class: "dropdown-item", "aria-label": translate(".edit_button.label", name: @model.name)} if @can_edit %></li>
-                <li><%= link_to safe_join([helpers.icon("trash", t(".delete_button.text")), t(".delete_button.text")], " "), model_path(@model), {method: :delete, class: "dropdown-item", data: {confirm: translate("models.destroy.confirm")}} if @can_destroy %></li>
+                <li><%= link_to safe_join([helpers.icon("trash", t(".delete_button.label")), t(".delete_button.text")], " "), model_path(@model), {method: :delete, class: "dropdown-item", data: {confirm: translate("models.destroy.confirm")}} if @can_destroy %></li>
                 <li><%= link_to safe_join([helpers.icon("flag", t("general.report", type: "")), t("general.report", type: "")], " "), new_model_report_path(@model), class: "dropdown-item" if SiteSettings.multiuser_enabled? %></li>
               </ul>
             </div>
