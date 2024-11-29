@@ -9,8 +9,8 @@
           <%= render partial: "object_preview", locals: {model: @model, file: file} %>
         </div>
       <% end %>
-       <% else %>
-       <div class='preview-empty'> <p>no preview availiable</p></div>
+    <% else %>
+      <div class='preview-empty'> <p><%= t(".no_preview") %></p></div>
     <% end %>
     <div class="card-body">
       <div class="row ">

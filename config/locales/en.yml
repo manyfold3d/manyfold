@@ -399,6 +399,7 @@ en:
     edit_button:
       label: Edit model %{name}
       text: Edit
+    no_preview: No preview available
     open_button:
       label: Open model %{name}
       text: Open
