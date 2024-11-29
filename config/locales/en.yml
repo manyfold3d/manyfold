@@ -312,6 +312,7 @@ en:
     download: Download
     edit: Edit
     expand: Expand
+    menu: Menu
     new: New
     report: Report %{type}
     save: Save
