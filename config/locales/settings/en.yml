@@ -74,7 +74,11 @@ en:
         description: Content reported by local or Fediverse users shows up here for moderation.
         title: Reports
       show:
-        title: View report
+        ignore: Ignore
+        resolve: Mark as resolved
+      update:
+        ignored: The report has been ignored.
+        resolved: The report has been marked as resolved.
     tag_settings:
       auto_tag_new:
         label: Automatically tag new models with

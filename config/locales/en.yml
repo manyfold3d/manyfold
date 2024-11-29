@@ -15,7 +15,8 @@ en:
         created_at: Created at
         domain: Domain
       federails/moderation/report:
-        created_at: Reported at
+        content: Comment
+        created_at: Received at
         federails_actor: Reported by
         object: Object
       library:
@@ -132,6 +133,20 @@ en:
         other: Creators
         two: Creators
         zero: Creators
+      federails/moderation/domain_block:
+        few: Domain Blocks
+        many: Domain Blocks
+        one: Domain Block
+        other: Domain Blocks
+        two: Domain Blocks
+        zero: Domain Blocks
+      federails/moderation/report:
+        few: Reports
+        many: Reports
+        one: Report
+        other: Reports
+        two: Reports
+        zero: Reports
       library:
         few: Libraries
         many: Libraries

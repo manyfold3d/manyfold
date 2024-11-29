@@ -12,11 +12,15 @@ class Settings::ReportsController < ApplicationController
   end
 
   def update
-    # if @domain_block.valid?
-    #   redirect_to settings_domain_blocks_path, notice: t(".success")
-    # else
-    #   render "new", layout: "settings", status: :unprocessable_entity
-    # end
+    if params[:resolve]
+      @report.resolve!
+      redirect_to settings_reports_path, notice: t(".resolved")
+    elsif params[:ignore]
+      @report.ignore!
+      redirect_to settings_reports_path, notice: t(".ignored")
+    else
+      redirect_to settings_report_path(@report)
+    end
   end
 
   private
