@@ -139,7 +139,7 @@ gem "climate_control", "~> 1.2", group: :test
 gem "sys-filesystem", "~> 1.5"
 gem "shrine", "~> 3.6"
 
-gem "aws-sdk-s3", "~> 1.174"
+gem "aws-sdk-s3", "~> 1.175"
 
 gem "better_content_security_policy", "~> 0.1.4"
 
