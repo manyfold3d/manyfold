@@ -166,6 +166,6 @@ group :development, :production do
 end
 
 gem "pghero", "~> 3.6"
-gem "pg_query", "~> 5.1"
+gem "pg_query", "~> 6.0"
 
 gem "get_process_mem", "~> 1.0"
