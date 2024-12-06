@@ -16,7 +16,7 @@
     "@popperjs/core": "^2.11.8",
     "@rails/ujs": "^7.1.500",
     "@selectize/selectize": "^0.15.2",
-    "@uppy/core": "^4.2.3",
+    "@uppy/core": "^4.3.0",
     "@uppy/dashboard": "^4.1.2",
     "@uppy/form": "^4.0.1",
     "@uppy/locales": "^4.3.0",
