@@ -1359,16 +1359,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/companion-client@npm:^4.1.1":
-  version: 4.1.1
-  resolution: "@uppy/companion-client@npm:4.1.1"
+"@uppy/companion-client@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "@uppy/companion-client@npm:4.2.0"
   dependencies:
-    "@uppy/utils": ^6.0.4
+    "@uppy/utils": ^6.0.5
     namespace-emitter: ^2.0.1
     p-retry: ^6.1.0
   peerDependencies:
-    "@uppy/core": ^4.2.3
-  checksum: 1de981c22ed3bdd81661cd6726465e59bb0ffac74511e7866e4d50963373c190c66aefc7eaf0bff014d51c8f3731b4fc8b67bec96878d81065ef1e8e2dc556e8
+    "@uppy/core": ^4.3.0
+  checksum: 11c2ab251a3b648183baf33caec88b5ecd672a674e43620204051e84383d210b735b7b59e1b26ad78f1e03075ad593ff4fb88c68b814507266204601e287af13
   languageName: node
   linkType: hard
 
@@ -1501,15 +1501,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/xhr-upload@npm:^4.2.2":
-  version: 4.2.2
-  resolution: "@uppy/xhr-upload@npm:4.2.2"
+"@uppy/utils@npm:^6.0.5":
+  version: 6.0.5
+  resolution: "@uppy/utils@npm:6.0.5"
   dependencies:
-    "@uppy/companion-client": ^4.1.1
-    "@uppy/utils": ^6.0.4
+    lodash: ^4.17.21
+    preact: ^10.5.13
+  checksum: a1d4ed3edcb82a1100fe433dc2c1f609354c4b6a01444e38b786832237e084a4eb2d983c87f87894220187e4a51067a6bd283346d34244f2528115c1d6bb05f1
+  languageName: node
+  linkType: hard
+
+"@uppy/xhr-upload@npm:^4.2.3":
+  version: 4.2.3
+  resolution: "@uppy/xhr-upload@npm:4.2.3"
+  dependencies:
+    "@uppy/companion-client": ^4.2.0
+    "@uppy/utils": ^6.0.5
   peerDependencies:
-    "@uppy/core": ^4.2.3
-  checksum: e647b9153abbed4fe00a34ebe6e47e4a2386603d48c83ac9a034949c5a58ab5e9a60fa86d6668c4d50db0215a3a36b2f9a6948f48e2783e8d9641e8f149566ea
+    "@uppy/core": ^4.3.0
+  checksum: f79b964844e33dbc177675308a659b0d5eaecb7f3241c0e6bd5a465028955bc20530d25b788f2d1ba6576401dfc71509abae2058de1429a2f3eb38ef6e6f794e
   languageName: node
   linkType: hard
 
@@ -4153,7 +4163,7 @@ __metadata:
     "@uppy/dashboard": ^4.1.2
     "@uppy/form": ^4.0.1
     "@uppy/locales": ^4.3.0
-    "@uppy/xhr-upload": ^4.2.2
+    "@uppy/xhr-upload": ^4.2.3
     autoprefixer: ^10.4.20
     bootstrap: ^5.3.3
     bootstrap-icons: ^1.11.3

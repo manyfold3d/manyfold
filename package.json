@@ -20,7 +20,7 @@
     "@uppy/dashboard": "^4.1.2",
     "@uppy/form": "^4.0.1",
     "@uppy/locales": "^4.3.0",
-    "@uppy/xhr-upload": "^4.2.2",
+    "@uppy/xhr-upload": "^4.2.3",
     "autoprefixer": "^10.4.20",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
