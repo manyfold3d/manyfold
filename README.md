@@ -42,7 +42,7 @@ To run the app yourself, you'll need the following installed:
 
 * Ruby 3.2
 * Bundler 2.x
-* Node.js 20.x
+* Node.js 22.x
 * Yarn >= 1.22
 * Foreman or [another Procfile runner](https://github.com/ddollar/foreman#ports)
 * [libarchive](https://github.com/chef/ffi-libarchive#installation) (for upload support)
