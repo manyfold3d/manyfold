@@ -34,10 +34,10 @@ class Comment < ApplicationRecord
       ].compact.join("\n\n"),
       context: Rails.application.routes.url_helpers.url_for([commentable, only_path: false]),
       published: created_at&.iso8601,
-      attributedTo: (commenter&.actor&.respond_to?(:federated_url) ? commenter.actor.federated_url : nil),
+      attributedTo: (commenter&.federails_actor&.respond_to?(:federated_url) ? commenter.federails_actor.federated_url : nil),
       sensitive: sensitive,
       to: ["https://www.w3.org/ns/activitystreams#Public"],
-      cc: [commenter.actor.followers_url],
+      cc: [commenter.federails_actor.followers_url],
       tag: tags
     }.compact
   end
@@ -60,7 +60,7 @@ class Comment < ApplicationRecord
   def post_activity(action)
     if public?
       Federails::Activity.create!(
-        actor: commenter.actor,
+        actor: commenter.federails_actor,
         action: action,
         entity: self
       )

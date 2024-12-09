@@ -17,7 +17,7 @@ module Followable
   end
 
   def followed_by?(follower)
-    actor.followers.include? follower.actor
+    actor.followers.include? follower.federails_actor
   end
 
   private
@@ -34,7 +34,7 @@ module Followable
     user = permitted_users.with_permission("own").first || SiteSettings.default_user
     return if user.nil?
     Federails::Activity.create!(
-      actor: user.actor,
+      actor: user.federails_actor,
       action: action,
       entity: actor,
       created_at: updated_at

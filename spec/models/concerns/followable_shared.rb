@@ -23,7 +23,7 @@ shared_examples "Followable" do
 
     it "posts an activity" do
       entity = create(described_class.to_s.underscore.to_sym)
-      expect(Federails::Activity.where(entity: entity.actor, action: "Create").count).to eq 1
+      expect(Federails::Activity.where(entity: entity.federails_actor, action: "Create").count).to eq 1
     end
   end
 
@@ -36,13 +36,13 @@ shared_examples "Followable" do
 
     it "posts an activity after update" do
       entity.update caption: "test"
-      expect(Federails::Activity.where(entity: entity.actor, action: "Update").count).to eq 1
+      expect(Federails::Activity.where(entity: entity.federails_actor, action: "Update").count).to eq 1
     end
 
     it "doesn't post an activity after update if there's already been one recently" do
       entity.update caption: "change"
       entity.update caption: "change again"
-      expect(Federails::Activity.where(entity: entity.actor, action: "Update").count).to eq 1
+      expect(Federails::Activity.where(entity: entity.federails_actor, action: "Update").count).to eq 1
     end
   end
 end

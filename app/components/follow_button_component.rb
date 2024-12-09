@@ -14,7 +14,7 @@ class FollowButtonComponent < ViewComponent::Base
     if @signed_out
       @path = @target.is_a?(Federails::Actor) ?
         follow_remote_actor_path(@target) :
-        remote_follow_path(uri: @target.actor.federated_url, name: @target.name)
+        remote_follow_path(uri: @target.federails_actor.federated_url, name: @target.name)
       @method = :post
     else
       @path = @target.is_a?(Federails::Actor) ?

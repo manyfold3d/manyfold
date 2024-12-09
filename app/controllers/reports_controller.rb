@@ -7,8 +7,8 @@ class ReportsController < ApplicationController
 
   def create
     @report = Federails::Moderation::Report.create report_params.merge({
-      federails_actor: current_user.actor,
-      object: @reportable.actor
+      federails_actor: current_user.federails_actor,
+      object: @reportable.federails_actor
     })
     redirect_to(@reportable, notice: t(".success"))
   end

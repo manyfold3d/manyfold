@@ -1,4 +1,4 @@
-<%- subject = activity&.actor %>
+<%- subject = activity&.federails_actor %>
 <%- object = activity&.entity %>
 <%- thing = object&.entity %>
 <% if thing && !thing.is_a?(User) && (thing.grants_permission_to?(["view", "edit", "own"], current_user) || thing.grants_permission_to?(["view", "edit", "own"], current_user&.roles)) %>
