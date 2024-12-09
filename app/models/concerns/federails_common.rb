@@ -1,6 +1,6 @@
 module FederailsCommon
   extend ActiveSupport::Concern
-  include Federails::Entity
+  include Federails::ActorEntity
 
   def actor
     act = Federails::Actor.find_by(entity: self)
