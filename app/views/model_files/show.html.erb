@@ -1,6 +1,6 @@
 <% content_for :head do %>
   <%= tag.meta property: "og:type", content: "website" %>
-  <%= tag.meta name: "fediverse:creator", content: @file.model.creator.actor.at_address if @file.model.creator %>
+  <%= tag.meta name: "fediverse:creator", content: @file.model.creator.federails_actor.at_address if @file.model.creator %>
 <% end %>
 
 <%= render partial: "breadcrumb" %>

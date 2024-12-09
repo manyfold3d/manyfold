@@ -9,7 +9,7 @@
       <div class="col col-auto">
         <%= content_tag(:div, class: "text-center") do %>
           <%= content_tag(:h2) { @creator.name } %>
-          <p><small class="text-secondary">@<%= @creator.actor.at_address if SiteSettings.federation_enabled? %></small></p>
+          <p><small class="text-secondary">@<%= @creator.federails_actor.at_address if SiteSettings.federation_enabled? %></small></p>
           <%= render FollowButtonComponent.new(follower: current_user, target: @creator) %>
         <% end %>
       </div>

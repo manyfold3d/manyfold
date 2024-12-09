@@ -56,7 +56,7 @@ RSpec.describe Comment do
       end
 
       it "includes attribution" do
-        expect(ap_object[:attributedTo]).to eq commenter.actor.federated_url
+        expect(ap_object[:attributedTo]).to eq commenter.federails_actor.federated_url
       end
 
       it "includes to field" do
@@ -64,7 +64,7 @@ RSpec.describe Comment do
       end
 
       it "includes cc field" do
-        expect(ap_object[:cc]).to include commenter.actor.followers_url
+        expect(ap_object[:cc]).to include commenter.federails_actor.followers_url
       end
 
       it "includes tags appended to content" do
