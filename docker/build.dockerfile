@@ -8,6 +8,7 @@ RUN apk add --no-cache \
   npm \
   postgresql-dev \
   mariadb-dev \
+  acl-libs \
   libarchive \
   mesa-gl \
   glfw
