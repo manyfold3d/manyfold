@@ -9,9 +9,7 @@ RUN apk add --no-cache \
   postgresql-dev \
   mariadb-dev \
   acl-libs \
-  libarchive \
-  mesa-gl \
-  glfw
+  libarchive
 
 COPY package.json .
 COPY yarn.lock .
