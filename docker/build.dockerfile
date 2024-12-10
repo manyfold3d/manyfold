@@ -8,7 +8,6 @@ RUN apk add --no-cache \
   npm \
   postgresql-dev \
   mariadb-dev \
-  acl-libs \
   libarchive
 
 COPY package.json .
