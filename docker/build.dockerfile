@@ -8,9 +8,7 @@ RUN apk add --no-cache \
   npm \
   postgresql-dev \
   mariadb-dev \
-  libarchive \
-  mesa-gl \
-  glfw
+  libarchive
 
 COPY package.json .
 COPY yarn.lock .
