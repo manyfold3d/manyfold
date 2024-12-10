@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/manyfold3d/federails-moderation.git
-  revision: fa2ec856a0cf965bc51d984b694074e02f52c2f5
-  specs:
-    federails-moderation (0.0.1)
-      federails (~> 0.3)
-      public_suffix (~> 6.0)
-      rails (>= 7.2.2)
-
-GIT
   remote: https://github.com/manyfold3d/sqlite3_ar_regexp.git
   revision: 2fa15db50770e86b7b4872486c2ee8ff282a3e2c
   ref: rails-7.1-support
@@ -240,6 +231,10 @@ GEM
       kaminari (>= 1.2.0)
       pundit (>= 2.3.0)
       rails (>= 7.0.4)
+    federails-moderation (0.2.0)
+      federails (~> 0.4)
+      public_suffix (~> 6.0)
+      rails (>= 7.2.2)
     ffi (1.17.0)
     ffi (1.17.0-x64-mingw-ucrt)
     ffi (1.17.0-x86_64-darwin)
@@ -775,7 +770,7 @@ DEPENDENCIES
   factory_bot
   faker (~> 3.5)
   federails (~> 0.4)
-  federails-moderation!
+  federails-moderation (~> 0.2)
   ffi-libarchive (~> 1.1)
   get_process_mem (~> 1.0)
   guard (~> 2.19)
