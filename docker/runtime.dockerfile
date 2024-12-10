@@ -16,7 +16,7 @@ COPY --from=build /usr/src/app/public/assets public/assets
 COPY --from=build \
   /usr/lib/libmariadb.so.* \
   /usr/lib/libarchive.so.* \
-  /lib/libacl.so.*\
+  /usr/lib/libacl.so.*\
   /usr/lib/libexpat.so.* \
   /usr/lib/liblzma.so.* \
   /usr/lib/libzstd.so.* \
