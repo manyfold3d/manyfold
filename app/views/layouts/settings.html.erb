@@ -44,7 +44,7 @@
         <li class="nav-item">
           <%= link_to t(".sidekiq"), sidekiq_web_path, class: "nav-link" %>
         </li>
-        <% if defined?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) && ApplicationRecord.connection.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) %>
+        <% if ApplicationRecord.connection.adapter_name == "PostgreSQL" %>
           <li class="nav-item">
             <%= link_to t(".pghero"), pg_hero_path, class: "nav-link" %>
           </li>
