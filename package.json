@@ -14,7 +14,7 @@
     "@activeadmin/activeadmin": "^3.2.5",
     "@notus.sh/cocooned": "^2.4.1",
     "@popperjs/core": "^2.11.8",
-    "@rails/ujs": "^7.1.500",
+    "@rails/ujs": "^7.1.501",
     "@selectize/selectize": "^0.15.2",
     "@uppy/core": "^4.3.0",
     "@uppy/dashboard": "^4.1.3",
