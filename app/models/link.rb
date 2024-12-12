@@ -6,7 +6,9 @@ class Link < ApplicationRecord
   end
 
   def site
-    PublicSuffix.parse(host).sld.to_sym
+    PublicSuffix.parse(host).sld
+  rescue PublicSuffix::DomainInvalid
+    host
   end
 
   def self.ransackable_attributes(_auth_object = nil)
