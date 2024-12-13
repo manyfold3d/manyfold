@@ -33,7 +33,7 @@
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
     "rpg-awesome": "^0.2.0",
-    "sass-embedded": "^1.82.0",
+    "sass-embedded": "^1.83.0",
     "three": "^0.171.0",
     "threejs-webworker-3mf-loader": "https://github.com/manyfold3d/threejs-webworker-3mf-loader"
   },
