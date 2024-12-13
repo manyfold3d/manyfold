@@ -2,7 +2,9 @@ class Link < ApplicationRecord
   belongs_to :linkable, polymorphic: true
 
   def host
-    URI.parse(url).host
+    URI.parse(url).host || url
+  rescue URI::InvalidURIError, URI::InvalidComponentError
+    url
   end
 
   def site
