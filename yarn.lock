@@ -3455,14 +3455,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18n-js@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "i18n-js@npm:4.5.0"
+"i18n-js@npm:^4.5.1":
+  version: 4.5.1
+  resolution: "i18n-js@npm:4.5.1"
   dependencies:
     bignumber.js: "*"
     lodash: "*"
     make-plural: "*"
-  checksum: 8c45c11c0f01e0e645d212d2fb803b3f42fb37e7f7bf5aa87b6dcab2df66e4446444b5ba63b14f6f86e983cc7ba30bf7eccb49015f1df98914c897d39a324744
+  checksum: 1cac75ffe65e116414784251daf306f6a60cd75a68c0b9c9b746a1dd76b31a2a027f0af2c93056611c9845659bcee7ebf6eea601a250009d934bdb7adb65be5e
   languageName: node
   linkType: hard
 
@@ -4158,7 +4158,7 @@ __metadata:
     esbuild: ^0.24.0
     eslint: ^9.16.0
     husky: ^9.1.7
-    i18n-js: ^4.5.0
+    i18n-js: ^4.5.1
     jquery: ^3.7.1
     masonry-layout: ^4.2.2
     nodemon: ^3.1.7
