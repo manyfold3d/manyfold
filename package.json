@@ -48,7 +48,7 @@
     "@types/lodash": "^4.17.13",
     "@types/node": "^20.17.10",
     "@types/selectize": "^0.12.39",
-    "@types/three": "^0.170.0",
+    "@types/three": "^0.171.0",
     "@types/webpack-env": "^1.18.5",
     "@types/webxr": "^0.5.20",
     "@typescript-eslint/parser": "^8.18.0",
