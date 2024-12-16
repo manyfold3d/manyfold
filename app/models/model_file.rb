@@ -46,7 +46,9 @@ class ModelFile < ApplicationRecord
 
   def size
     if has_attribute? :attachment_data
-      attachment&.size || 0
+      # Note: using attachment.size causes an IOError. Not sure why.
+      # https://github.com/manyfold3d/manyfold/issues/3314
+      attachment&.metadata&.[]("size") || 0
     else
       # DEPRECATED: for Pre-shrine migration
       attributes["size"]
