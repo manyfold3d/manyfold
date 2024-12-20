@@ -148,7 +148,6 @@ GEM
       msgpack (~> 1.2)
     brakeman (6.2.2)
       racc
-    browser (6.1.0)
     builder (3.3.0)
     bullet (8.0.0)
       activesupport (>= 3.0.0)
@@ -692,6 +691,8 @@ GEM
       attr_required (>= 0.0.5)
       faraday (~> 2.0)
       faraday-follow_redirects
+    sys-cpu (1.1.0)
+      ffi (~> 1.1)
     sys-filesystem (1.5.3)
       ffi (~> 1.1)
     terminal-table (3.0.2)
@@ -807,10 +808,8 @@ DEPENDENCIES
   rails-controller-testing (~> 1.0)
   rails-i18n (~> 7.0)
   rails-settings-cached (~> 2.9)
-  rails_performance (~> 1.4)
   ransack (~> 4.2)
   redis (~> 5.3)
-  redis-namespace
   rolify (~> 6.0)
   rspec-rails
   rubocop-factory_bot
@@ -832,6 +831,7 @@ DEPENDENCIES
   standard (~> 1.43.0)
   stopwords-filter2
   string-similarity (~> 2.1)
+  sys-cpu (~> 1.1)
   sys-filesystem (~> 1.5)
   translation (~> 1.41)
   tzinfo-data
