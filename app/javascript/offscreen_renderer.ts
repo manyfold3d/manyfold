@@ -8,7 +8,9 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { ThreeMFLoader } from 'threejs-webworker-3mf-loader'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'src/orbit_controls.js'
-
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js'
 import { CanvasProxy } from 'src/canvas_proxy'
 
 export class OffscreenRenderer {
@@ -16,6 +18,7 @@ export class OffscreenRenderer {
   renderer: THREE.WebGLRenderer
   settings: DOMStringMap
   scene: THREE.Scene
+  composer: THREE.EffectComposer
   camera: THREE.PerspectiveCamera
   controls: OrbitControls
   gridHelper: THREE.GridHelper
@@ -64,6 +67,10 @@ export class OffscreenRenderer {
     const light2 = new THREE.PointLight(0xffffff, 0.25)
     light2.position.set(-gridSizeX, 50, gridSizeZ)
     this.scene.add(light2)
+    // Set up render passes
+    this.composer = new EffectComposer(this.renderer)
+    this.composer.addPass(new RenderPass(this.scene, this.camera))
+    this.composer.addPass(new OutputPass())
   }
 
   load (cbLoadComplete, cbLoadProgress, cbLoadError): void {
@@ -201,11 +208,13 @@ export class OffscreenRenderer {
   onResize (width, height, pixelRatio): void {
     this.canvas.resize(width, height)
     this.renderer.setSize(width, height, false)
+    this.composer.setSize(width, height, false)
     // Update camera
     this.camera.aspect = width / height
     this.camera.updateProjectionMatrix()
     // Update pixel ratio
     this.renderer.setPixelRatio(pixelRatio)
+    this.composer.setPixelRatio(pixelRatio)
     // Render!
     this.render()
   }
@@ -223,8 +232,7 @@ export class OffscreenRenderer {
     // Update controls to allow animation of damping
     this.controls.update()
     // Render
-    this.renderer.clear()
-    this.renderer.render(this.scene, this.camera)
+    this.composer.render()
   }
 
   cleanup (): void {
