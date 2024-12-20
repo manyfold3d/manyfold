@@ -10,6 +10,7 @@
       data-show-grid="<%= renderer_settings["show_grid"] %>"
       data-enable-pan-zoom="<%= renderer_settings["enable_pan_zoom"] %>"
       data-background-colour="<%= renderer_settings["background_colour"] %>"
+      data-ambient-occlusion="<%= true %>"
       data-object-colour="<%= renderer_settings["object_colour"] %>"
       data-render-style="<%= renderer_settings["render_style"] %>"
       data-auto-load="<%= ((file.size || 9_999_999.megabytes) < ((renderer_settings["auto_load_max_size"] || 9_999_999).megabytes)) ? "true" : "false" %>">

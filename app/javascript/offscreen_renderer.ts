@@ -9,6 +9,7 @@ import { ThreeMFLoader } from 'threejs-webworker-3mf-loader'
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import { OrbitControls } from 'src/orbit_controls.js'
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
+import { SSAOPass } from 'three/addons/postprocessing/SSAOPass.js'
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js'
 import { CanvasProxy } from 'src/canvas_proxy'
@@ -70,6 +71,8 @@ export class OffscreenRenderer {
     // Set up render passes
     this.composer = new EffectComposer(this.renderer)
     this.composer.addPass(new RenderPass(this.scene, this.camera))
+    if (this.settings.ambientOcclusion === 'true')
+      this.composer.addPass(new SSAOPass(this.scene, this.camera))
     this.composer.addPass(new OutputPass())
   }
 
