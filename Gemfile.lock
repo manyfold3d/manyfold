@@ -576,7 +576,7 @@ GEM
       connection_pool
     redis-namespace (1.11.0)
       redis (>= 4)
-    regexp_parser (2.9.3)
+    regexp_parser (2.10.0)
     reline (0.6.0)
       io-console (~> 0.5)
     request_store (1.5.1)
@@ -623,7 +623,7 @@ GEM
       rubocop (~> 1.61)
     rubocop-i18n (3.0.0)
       rubocop (~> 1.0)
-    rubocop-performance (1.23.0)
+    rubocop-performance (1.23.1)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
     rubocop-rails (2.28.0)
@@ -818,7 +818,7 @@ DEPENDENCIES
   rspec-rails
   rubocop-factory_bot
   rubocop-i18n
-  rubocop-performance (~> 1.21)
+  rubocop-performance (~> 1.23)
   rubocop-rails
   rubocop-rspec
   rubocop-rspec_rails
