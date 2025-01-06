@@ -61,11 +61,11 @@ export class OffscreenRenderer {
     // Add lighting
     const gridSizeX = parseInt(this.settings.gridSizeX ?? '10', 10)
     const gridSizeZ = parseInt(this.settings.gridSizeZ ?? '10', 10)
-    this.scene.add(new THREE.HemisphereLight(0xffffff, 0x404040))
-    const light = new THREE.PointLight(0xffffff, 0.25)
+    this.scene.add(new THREE.HemisphereLight(0xffffff, 0xcccccc))
+    const light = new THREE.DirectionalLight()
     light.position.set(gridSizeX, 50, gridSizeZ)
     this.scene.add(light)
-    const light2 = new THREE.PointLight(0xffffff, 0.25)
+    const light2 = new THREE.DirectionalLight()
     light2.position.set(-gridSizeX, 50, gridSizeZ)
     this.scene.add(light2)
     // Set up render passes
