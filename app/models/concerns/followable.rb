@@ -5,7 +5,7 @@ module Followable
   TIMEOUT = 15
 
   included do
-    delegate :following_followers, to: :actor
+    delegate :following_followers, to: :federails_actor
     after_commit :followable_post_creation_activity, on: :create
     after_commit :followable_post_update_activity, on: :update
 
@@ -13,11 +13,11 @@ module Followable
   end
 
   def followers
-    actor.followers.map(&:entity)
+    federails_actor.followers.map(&:entity)
   end
 
   def followed_by?(follower)
-    actor.followers.include? follower.federails_actor
+    federails_actor.followers.include? follower.federails_actor
   end
 
   private
@@ -27,7 +27,7 @@ module Followable
   end
 
   def followable_post_update_activity
-    followable_post_activity("Update") unless Federails::Activity.exists?(entity: actor, created_at: TIMEOUT.minutes.ago..)
+    followable_post_activity("Update") unless Federails::Activity.exists?(entity: federails_actor, created_at: TIMEOUT.minutes.ago..)
   end
 
   def followable_post_activity(action)
@@ -36,12 +36,12 @@ module Followable
     Federails::Activity.create!(
       actor: user.federails_actor,
       action: action,
-      entity: actor,
+      entity: federails_actor,
       created_at: updated_at
     )
   end
 
   def auto_accept
-    actor.following_followers.where(status: "pending").find_each { |x| x.accept! }
+    federails_actor.following_followers.where(status: "pending").find_each { |x| x.accept! }
   end
 end

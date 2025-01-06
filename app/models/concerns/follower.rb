@@ -3,12 +3,12 @@ module Follower
   include FederailsCommon
 
   included do
-    delegate :activities, to: :actor
-    delegate :following_follows, to: :actor
+    delegate :activities, to: :federails_actor
+    delegate :following_follows, to: :federails_actor
   end
 
   def follows
-    actor.follows.map(&:user)
+    federails_actor.follows.map(&:user)
   end
 
   def follow(target)
@@ -16,7 +16,7 @@ module Follower
   end
 
   def unfollow(target)
-    f = actor.follows?(target.federails_actor)
+    f = federails_actor.follows?(target.federails_actor)
     f&.destroy unless f == false
   end
 
@@ -24,6 +24,6 @@ module Follower
     # follows? gives us the relationship or false if it doesn't exist,
     # so we turn that into a normal boolean
     tgt = target.is_a?(Federails::Actor) ? target : target.federails_actor
-    actor&.follows?(tgt)&.is_a?(Federails::Following)
+    federails_actor&.follows?(tgt)&.is_a?(Federails::Following)
   end
 end
