@@ -149,6 +149,7 @@ de:
           label: Rendering-Stil
           lambert: Realistisch schattiert
           normals: Richtung der Oberfläche
+          shadowed:
         show_grid:
           label: Grundplatte anzeigen
       signed_up: Du hast dich erfolgreich registriert.

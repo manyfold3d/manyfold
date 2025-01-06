@@ -149,6 +149,7 @@ fr:
           label: Style de rendu
           lambert: Ombres réalistes
           normals: Direction de la surface
+          shadowed:
         show_grid:
           label: Afficher le plan de masse
       signed_up: Bienvenue ! Vous vous êtes bien enregistré(e).

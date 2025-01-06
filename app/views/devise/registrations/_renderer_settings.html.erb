@@ -53,7 +53,7 @@
     <div class="row">
       <%= form.label nil, t(".render_style.label"), for: "renderer_settings[render_style]", class: "col col-form-label" %>
       <div class="col">
-        <%= form.select "renderer_settings[render_style]", [[t(".render_style.normals"), "normals"], [t(".render_style.lambert"), "lambert"]], {selected: @user.renderer_settings["render_style"]}, {class: "form-select"} %>
+        <%= form.select "renderer_settings[render_style]", [[t(".render_style.normals"), "normals"], [t(".render_style.lambert"), "lambert"], [t(".render_style.shadowed"), "shadowed"]], {selected: @user.renderer_settings["render_style"]}, {class: "form-select"} %>
       </div>
     </div>
     <div class="row">
