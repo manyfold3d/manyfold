@@ -1376,9 +1376,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/core@npm:^4.3.1":
-  version: 4.3.1
-  resolution: "@uppy/core@npm:4.3.1"
+"@uppy/core@npm:^4.3.2":
+  version: 4.3.2
+  resolution: "@uppy/core@npm:4.3.2"
   dependencies:
     "@transloadit/prettier-bytes": ^0.3.4
     "@uppy/store-default": ^4.1.2
@@ -1386,9 +1386,9 @@ __metadata:
     lodash: ^4.17.21
     mime-match: ^1.0.2
     namespace-emitter: ^2.0.1
-    nanoid: ^5.0.0
+    nanoid: ^5.0.9
     preact: ^10.5.13
-  checksum: 0166f4b5e3154ec6a77a7eceb6dfad8efa6c421670db61b6bfafdfacb0c5c7dd38240e1f547f0313077d6a216d639b85d01b044d33398612ac8e1a9fbb22f176
+  checksum: 8cac2711003461dedfdcad1a5b934d02aecb5b962593283f95188ca000217bdf56f40d78d462393c026d15c13024ff2a5f627e8deb093602239d8fb25d1ca29f
   languageName: node
   linkType: hard
 
@@ -4177,7 +4177,7 @@ __metadata:
     "@types/webpack-env": ^1.18.5
     "@types/webxr": ^0.5.20
     "@typescript-eslint/parser": ^8.18.1
-    "@uppy/core": ^4.3.1
+    "@uppy/core": ^4.3.2
     "@uppy/dashboard": ^4.2.0
     "@uppy/form": ^4.0.2
     "@uppy/locales": ^4.4.0
@@ -4406,15 +4406,6 @@ __metadata:
   bin:
     nanoid: bin/nanoid.cjs
   checksum: dfe0adbc0c77e9655b550c333075f51bb28cfc7568afbf3237249904f9c86c9aaaed1f113f0fddddba75673ee31c758c30c43d4414f014a52a7a626efc5958c9
-  languageName: node
-  linkType: hard
-
-"nanoid@npm:^5.0.0":
-  version: 5.0.7
-  resolution: "nanoid@npm:5.0.7"
-  bin:
-    nanoid: bin/nanoid.js
-  checksum: 25ab0b0cf9082ae6747f0f55cec930e6c1cc5975103aa3a5fda44be5720eff57d9b25a8a9850274bfdde8def964b49bf03def71c6aa7ad1cba32787819b79f60
   languageName: node
   linkType: hard
 
