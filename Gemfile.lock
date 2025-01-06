@@ -638,7 +638,7 @@ GEM
       rubocop-rspec (~> 3, >= 3.0.1)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
-    rubyzip (2.3.2)
+    rubyzip (2.4.1)
     scout_apm (5.5.0)
       parser
     securerandom (0.4.1)
@@ -822,7 +822,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   rubocop-rspec_rails
-  rubyzip (~> 2.3)
+  rubyzip (~> 2.4)
   scout_apm
   shrine (~> 3.6)
   sidekiq (~> 7.3)
