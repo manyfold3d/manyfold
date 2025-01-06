@@ -244,4 +244,25 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
       expect(described_class.new.filenames_on_disk(library)).to include "model [test]/file.obj"
     end
   end
+
+  context "with a space in the library folder name" do
+    around do |ex|
+      MockDirectory.create([
+        "3d models/model_one/part_1.obj",
+        "3d models/model_one/part_2.obj",
+        "3d models/subfolder/model_two/part_one.stl"
+      ]) do |path|
+        @library_path = path + "/3d models"
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    it "can scan a library directory" do # rubocop:todo RSpec/MultipleExpectations
+      described_class.perform_now(library.id)
+      expect(Scan::CreateModelJob).to have_been_enqueued.with(library.id, "model_one")
+      expect(Scan::CreateModelJob).to have_been_enqueued.with(library.id, "subfolder/model_two")
+    end
+  end
 end
