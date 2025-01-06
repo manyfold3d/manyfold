@@ -71,7 +71,7 @@ export class OffscreenRenderer {
     // Set up render passes
     this.composer = new EffectComposer(this.renderer)
     this.composer.addPass(new RenderPass(this.scene, this.camera))
-    if (this.settings.ambientOcclusion === 'true') {
+    if (this.settings.renderStyle === 'shadowed') {
       const ssaoPass = new SSAOPass(this.scene, this.camera)
       ssaoPass.output = SSAOPass.OUTPUT.Default
       ssaoPass.minDistance = 0

@@ -147,8 +147,9 @@ en:
           label: Object colour
         render_style:
           label: Rendering style
-          lambert: Realistically shaded
+          lambert: Smooth shading
           normals: Surface direction
+          shadowed: Realistic with shadows
         show_grid:
           label: Show ground plane
       signed_up: Welcome! You have signed up successfully.
