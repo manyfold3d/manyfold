@@ -143,9 +143,9 @@ RSpec.describe ModelScanJob do
   context "with special characters in model folder" do
     around do |ex|
       MockDirectory.create([
-        "model_one [test]/part_1.obj"
+        "3d models/model_one [test]/part_1.obj"
       ]) do |path|
-        @library_path = path
+        @library_path = path + "/3d models"
         ex.run
       end
     end

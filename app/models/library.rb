@@ -1,5 +1,3 @@
-require "shellwords"
-
 class Library < ApplicationRecord
   extend Memoist
   include PublicIDable
@@ -128,7 +126,7 @@ class Library < ApplicationRecord
   def list_files(pattern, flags = 0)
     files = case storage_service
     when "filesystem"
-      Dir.glob(pattern, flags, base: Shellwords.escape(path)).filter { |x| File.file?(File.join(path, x)) }
+      Dir.glob(pattern, flags, base: path).filter { |x| File.file?(File.join(path, x)) }
     when "s3"
       keys = []
       pattern_array = [pattern].flatten
