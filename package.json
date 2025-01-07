@@ -18,7 +18,7 @@
     "@selectize/selectize": "^0.15.2",
     "@uppy/core": "^4.4.0",
     "@uppy/dashboard": "^4.3.0",
-    "@uppy/form": "^4.0.2",
+    "@uppy/form": "^4.1.0",
     "@uppy/locales": "^4.5.0",
     "@uppy/xhr-upload": "^4.3.0",
     "autoprefixer": "^10.4.20",
