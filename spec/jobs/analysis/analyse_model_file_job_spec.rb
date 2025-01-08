@@ -112,8 +112,8 @@ RSpec.describe Analysis::AnalyseModelFileJob do
         ["Beefy Arm A Supported.lys", "Beefy Arm A Supported.stl", "Beefy Arm B Supported.lys"]]
     ].each do |filename, correct, incorrect|
       it "matches #{filename} with #{correct} rather than incorrect options" do # rubocop:todo RSpec/ExampleLength
-        incorrect.each do |i|
-          create(:model_file, model: model, filename: i, presupported: true)
+        incorrect.each do
+          create(:model_file, model: model, filename: it, presupported: true)
         end
         unsup = create(:model_file, model: model, filename: filename)
         sup = create(:model_file, model: model, filename: correct, presupported: true)
