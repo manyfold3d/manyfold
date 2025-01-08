@@ -261,16 +261,7 @@ GEM
     glob (0.4.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-protobuf (4.29.0)
-      bigdecimal
-      rake (>= 13)
-    google-protobuf (4.29.0-x64-mingw-ucrt)
-      bigdecimal
-      rake (>= 13)
-    google-protobuf (4.29.0-x86_64-darwin)
-      bigdecimal
-      rake (>= 13)
-    google-protobuf (4.29.0-x86_64-linux)
+    google-protobuf (4.29.2)
       bigdecimal
       rake (>= 13)
     guard (2.19.1)
@@ -670,11 +661,11 @@ GEM
     spdx (4.1.4)
       treetop (~> 1.6)
     spring (4.2.1)
-    sqlite3 (2.0.4)
+    sqlite3 (2.5.0)
       mini_portile2 (~> 2.8.0)
-    sqlite3 (2.0.4-x64-mingw-ucrt)
-    sqlite3 (2.0.4-x86_64-darwin)
-    sqlite3 (2.0.4-x86_64-linux-gnu)
+    sqlite3 (2.5.0-x64-mingw-ucrt)
+    sqlite3 (2.5.0-x86_64-darwin)
+    sqlite3 (2.5.0-x86_64-linux-gnu)
     standard (1.43.0)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
@@ -842,7 +833,7 @@ DEPENDENCIES
   web-console (>= 4.1.0)
 
 RUBY VERSION
-   ruby 3.3.6p108
+   ruby 3.4.1p0
 
 BUNDLED WITH
    2.5.23
