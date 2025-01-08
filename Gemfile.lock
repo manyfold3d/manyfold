@@ -162,7 +162,7 @@ GEM
       rails (>= 7.0, < 8.1)
     coderay (1.1.3)
     concurrent-ruby (1.3.4)
-    connection_pool (2.4.1)
+    connection_pool (2.5.0)
     content_disposition (1.0.0)
     crass (1.0.6)
     cronex (0.15.0)
@@ -201,14 +201,14 @@ GEM
     drb (2.2.1)
     email_validator (2.2.4)
       activemodel
-    erb_lint (0.7.0)
+    erb_lint (0.8.0)
       activesupport
       better_html (>= 2.0.1)
       parser (>= 2.7.1.4)
       rainbow
       rubocop (>= 1)
       smart_properties
-    erubi (1.13.0)
+    erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
     factory_bot (6.5.0)
@@ -383,7 +383,7 @@ GEM
       railties (>= 4)
       request_store (~> 1.0)
     logstash-event (1.2.02)
-    loofah (2.23.1)
+    loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     lumberjack (1.2.10)
@@ -423,14 +423,14 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.17.2)
+    nokogiri (1.18.1)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.17.2-x64-mingw-ucrt)
+    nokogiri (1.18.1-x64-mingw-ucrt)
       racc (~> 1.4)
-    nokogiri (1.17.2-x86_64-darwin)
+    nokogiri (1.18.1-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.17.2-x86_64-linux)
+    nokogiri (1.18.1-x86_64-linux-gnu)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -769,7 +769,7 @@ DEPENDENCIES
   devise-i18n (~> 1.12)
   devise_zxcvbn (~> 6.0)
   dotenv-rails (~> 3.1)
-  erb_lint (~> 0.7.0)
+  erb_lint (~> 0.8.0)
   factory_bot
   faker (~> 3.5)
   federails (~> 0.4)
