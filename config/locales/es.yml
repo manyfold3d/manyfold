@@ -11,6 +11,14 @@ es:
         caption: Subtítulo
         name: Nombre
         notes: Notas
+      federails/moderation/domain_block:
+        created_at: Creado el
+        domain: Dominio
+      federails/moderation/report:
+        content: Comentario
+        created_at: Recibido el
+        federails_actor: Reportado por
+        object: Objeto
       library:
         caption: Subtítulo
         icon: Icono
@@ -127,6 +135,20 @@ es:
         other: Creadores
         two: Creadores
         zero: Creadores
+      federails/moderation/domain_block:
+        few: Bloqueo de dominios
+        many: Bloqueo de dominios
+        one: Dominio Bloqueado
+        other: Bloqueo de dominios
+        two: Bloqueo de dominios
+        zero: Bloqueo de dominios
+      federails/moderation/report:
+        few: Informes
+        many: Informes
+        one: Informe
+        other: Informes
+        two: Informes
+        zero: Informes
       library:
         few: Bibliotecas
         many: Bibliotecas
@@ -283,12 +305,16 @@ es:
     download: Descargar
     edit: Editar
     expand: Expandir
+    menu: Menú
     new: Nuevo
+    report: Informe %{type}
     save: Guardar
+    view: Ver
   home:
     index:
       create_actor: subido por %{name} hace %{time}
       how_long_ago: hace %{time}
+      no_activities:
       recent_activity: Actividad reciente
       search:
         placeholder: "¿Qué busca?"
@@ -368,6 +394,7 @@ es:
     edit_button:
       label: Editar modelo %{name}
       text: Editar
+    no_preview: Vista previa no disponible
     open_button:
       label: Abrir modelo %{name}
       text: Abrir
@@ -378,6 +405,13 @@ es:
       webglrenderer: No se ha podido crear el renderizado
     load: Carga
     processing: Generando splines...
+  reports:
+    create:
+      success: Informe enviado. Gracias!
+    new:
+      description: Si este elemento infringe alguna ley o política del servidor, puedes informarlo a nuestros moderadores. ¡Añade un comentario para explicar el motivo!
+      submit: Enviar informe
+      title: 'Informe %{type}: "%{name}"'
   security:
     running_as_root_html: Manyfold se está ejecutando como root, lo que supone un riesgo para la seguridad. Ejecútelo como un usuario de sistema diferente configurando las variables de entorno <code>PUID</code> y <code>PGID</code>. Consulte <a href='https://manyfold.app/sysadmin/configuration.html#required'>la documentación de configuración</a> para más detalles.
   sites:
