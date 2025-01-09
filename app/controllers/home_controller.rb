@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   skip_after_action :verify_policy_scoped
 
   def index
-    @feed = Timeline.local
+    @feed = Timeline.local for_user: current_user
   end
 
   private
