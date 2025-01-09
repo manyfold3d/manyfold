@@ -60,5 +60,8 @@
   "packageManager": "yarn@3.8.5",
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "volta": {
+    "node": "22.13.0"
+  }
 }
