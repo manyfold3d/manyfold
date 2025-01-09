@@ -169,8 +169,8 @@ de:
       update:
         setup_complete: Einrichtung abgeschlossen!
       update_needs_confirmation: Deine Account-Daten wurden erfolgreich aktualisiert, aber du musst deine neue E-Mail-Adresse bestätigen. Du erhältst in wenigen Minuten eine E-Mail, mit der du die Änderungen bestätigen kannst.
-      updated: Deine Account-Daten wurden erfolgreich aktualisiert.
-      updated_but_not_signed_in: Deine Account-Daten wurden erfolgreich aktualisiert, aber da sich dein Passwort geändert hat, musst du dich erneut anmelden
+      updated: Deine Einstellungen wurden erfolgreich aktualisiert.
+      updated_but_not_signed_in: Deine Einstellungen wurden erfolgreich aktualisiert, aber da sich dein Passwort geändert hat, musst du dich erneut anmelden
       user:
         signed_up_but_not_approved: Du hast dich erfolgreich angemeldet. Ein Moderator wird dein Konto in Kürze überprüfen. Danach kannst du dich anmelden.
     sessions:

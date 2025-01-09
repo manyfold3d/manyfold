@@ -7,6 +7,19 @@ es:
       manifold:
         help: Comprueba si la malla no es válida (es decir, tienen agujeros o superficies imposibles)
         label: Detectar errores de malla
+    domain_blocks:
+      create:
+        success: Bloqueo de dominio creado con éxito.
+      destroy:
+        success: Bloqueo de dominio eliminado.
+      index:
+        confirm_destroy: "¿Está seguro de que desea eliminar este bloqueo de dominio y volver a activar la federación?"
+        description: Los bloqueos de dominio impiden la federación con servidores ActivityPub en los dominios especificados, incluyendo cualquier subdominio.
+        new: Nuevo dominio bloqueado
+        title: Bloqueo de dominios
+      new:
+        submit: Bloqueo de dominio
+        title: Nuevo dominio bloqueado
     folder_settings:
       details: La estructura de carpetas sigue una plantilla que usted define utilizando tokens. También puede incluir otro texto en la plantilla (como separadores de carpeta) y se incluirá tal cual.
       model_path_template:
@@ -56,6 +69,16 @@ es:
       summary: Haz saber a los desarrolladores que estás usando Manyfold.
       use_of_data: No se envía ni almacena ninguna otra información y los desarrolladores, nunca utilizarán la información para ningún otro propósito que no sea medir cuántas instancias de Manyfold se están ejecutando y qué versión tienen.
       verification_html: Si desea verificar lo que enviamos, puede cambiar la variable de entorno <code>USAGE_REPORTING_URL</code> y enviar los datos a algún lugar donde pueda inspeccionarlos. También puede ver exactamente lo que se envía en el registro.
+    reports:
+      index:
+        description: Los contenidos denunciados por usuarios locales o de Fediverse aparecen aquí para su moderación.
+        title: Informes
+      show:
+        ignore: Ignorar
+        resolve: Marcar como resuelto
+      update:
+        ignored: El informe ha sido ignorado.
+        resolved: El informe se ha marcado como resuelto.
     tag_settings:
       auto_tag_new:
         label: Etiquetar automáticamente los nuevos modelos con

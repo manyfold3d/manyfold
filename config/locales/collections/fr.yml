@@ -3,12 +3,12 @@ fr:
   collections:
     collection:
       collections_button:
-        label:
+        label: Montrer les sous-collections dans %{name}
       edit_button:
-        label:
+        label: Modifier la collection %{name}
         text: Modifier
       models_button:
-        label:
+        label: Voir les modèles dans %{name}
       no_preview: pas d'aperçu disponible
     create:
       success: Détails de la nouvelle collection enregistrés.
@@ -16,7 +16,7 @@ fr:
       success: Collection supprimée !
     form:
       notes:
-        help_html:
+        help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit: Modifier la collection
       new: Nouvelle collection

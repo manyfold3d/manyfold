@@ -5,15 +5,15 @@ fr:
       success: Détails du nouveau créateur sauvegardés.
     creator:
       edit_button:
-        label:
+        label: Modifier le créateur %{name}
         text: Modifier
       models_button:
-        label:
+        label: Afficher les modèles par %{name}
     destroy:
       success: Créateur supprimé !
     form:
       notes:
-        help_html:
+        help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit: Modifier le créateur
       new: Nouveau créateur
@@ -22,7 +22,7 @@ fr:
     index:
       skip_creators: Sauter la liste des créateurs
     show:
-      edit:
+      edit: Modifier le profil du créateur
     unassigned:
       caption: Tous les modèles sans créateur connu.
       name: Non attribué
