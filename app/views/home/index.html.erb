@@ -15,13 +15,17 @@
     <% end %>
   </div>
 </div>
-<% if !@feed.empty? %>
-  <div class="row row-cols-2">
-    <div class="col-8 offset-md-2">
+<div class="row row-cols-2">
+  <div class="col-8 offset-md-2">
+    <% if !@feed.empty? %>
       <p class="lead"><%= t(".recent_activity") %></p>
       <% @feed.each do |activity| %>
         <%= render partial: "activities/#{activity.action.parameterize}_#{activity.entity_type.demodulize.parameterize}", locals: {activity: activity} %>
       <% end %>
-    </div>
+    <% else %>
+      <div class="alert alert-info">
+        <%= t(".no_activities") %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

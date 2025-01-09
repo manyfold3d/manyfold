@@ -321,6 +321,7 @@ en:
     index:
       create_actor: added by %{name} %{time} ago
       how_long_ago: "%{time} ago"
+      no_activities: There are no activities to display for now.
       recent_activity: Recent Activity
       search:
         placeholder: What are you looking for?
