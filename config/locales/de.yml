@@ -11,6 +11,14 @@ de:
         caption: Beschreibung
         name: Name
         notes: Beschreibung
+      federails/moderation/domain_block:
+        created_at: Erstellt am
+        domain: Domain
+      federails/moderation/report:
+        content: Kommentar
+        created_at: Empfangen am
+        federails_actor: Gemeldet von
+        object: Objekt
       library:
         caption: Beschreibung
         icon: Symbol
@@ -86,7 +94,7 @@ de:
         library:
           attributes:
             path:
-              non_writable: muss beschreibbar sein
+              non_writable: User muss schreib rechte haben
               not_found: konnte nicht auf der Festplatte gefunden werden
               unsafe: kann kein privilegierter Systempfad sein
         model:
@@ -125,6 +133,20 @@ de:
         other: Autoren
         two: Autoren
         zero: Autoren
+      federails/moderation/domain_block:
+        few: Blockierte Domains
+        many: Blockierte Domains
+        one: Blockierte Domain
+        other: Blockierte Domains
+        two: Blockierte Domains
+        zero: Blockierte Domains
+      federails/moderation/report:
+        few: Meldungen
+        many: Meldungen
+        one: Melden
+        other: Meldungen
+        two: Meldungen
+        zero: Meldungen
       library:
         few: Sammlungen
         many: Sammlungen
@@ -279,12 +301,16 @@ de:
     download: Herunterladen
     edit: Bearbeiten
     expand: Erweitern
+    menu: Menü
     new: Neue
+    report: Melde %{type}
     save: Speichern
+    view: Siehe
   home:
     index:
       create_actor: 'hinzugefügt von %{name} vor %{time} '
       how_long_ago: vor %{time}
+      no_activities:
       recent_activity: Neuste Aktivität
       search:
         placeholder: Wonach suchen Sie?
@@ -364,6 +390,7 @@ de:
     edit_button:
       label: Bearbeite Modell %{name}
       text: Bearbeiten
+    no_preview: Keine Vorschau verfügbar
     open_button:
       label: Öffne Modell %{name}
       text: Öffnen
@@ -374,6 +401,13 @@ de:
       webglrenderer: Renderer konnte nicht erstellt werden!
     load: Lädt
     processing: verarbeite mesh
+  reports:
+    create:
+      success: Bericht eingereicht. Danke!
+    new:
+      description: Wenn dieses Modell gegen ein Gesetz oder die Serverrichtlinien verstößt, kannst du es unseren Moderatoren melden. Füge einen Kommentar hinzu, um uns den Grund mitzuteilen!
+      submit: Meldung einreichen
+      title: 'Melde %{type}: "%{name}"'
   security:
     running_as_root_html: Manyfold wird als root ausgeführt, was ein Sicherheitsrisiko darstellt. Führe Manyfold als einen anderen Systembenutzer aus, indem du die Umgebungsvariablen <code>PUID</code> und <code>PGID</code> setzt. Einzelheiten findest du in <a href='https://manyfold.app/sysadmin/configuration.html#required'>der Konfigurationsdokumentation</a>.
   sites:

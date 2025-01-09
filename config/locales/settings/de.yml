@@ -7,6 +7,19 @@ de:
       manifold:
         help: Prüfung auf nicht-verzweigte Maschen (d.h. sie haben Löcher oder unmögliche Oberflächen)
         label: Erkennung von Fehlern im Mesh
+    domain_blocks:
+      create:
+        success: Domänenblock erfolgreich erstellt.
+      destroy:
+        success: Domänensperre entfernt.
+      index:
+        confirm_destroy: Bist du sicher, dass du diese Domänensperre aufheben willst, und federation wieder aktivierst?
+        description: Domänensperren verhindern die Verbindung mit ActivityPub-Servern mit den angegebenen Domänen, einschließlich aller Subdomains.
+        new: Neuer Domänenblock
+        title: Blockierte Domains
+      new:
+        submit: Domain Blockieren
+        title: Neuer Domain-block
     folder_settings:
       details: Die Ordnerstruktur folgt einer Vorlage, die du mit Token definierst. Du kannst auch anderen Text in die Vorlage einfügen (z. B. Ordnertrennzeichen) und dieser wird unverändert übernommen.
       model_path_template:
@@ -56,6 +69,16 @@ de:
       summary: Lasse die Entwickler wissen, dass du Manyfold benutzt
       use_of_data: Es werden keine weiteren Informationen gesendet oder gespeichert, und die Entwickler werden die Informationen niemals zu einem anderen Zweck verwenden, als zu messen, wie viele Instanzen von Manyfold laufen und welche Version sie haben.
       verification_html: Wenn du überprüfen willst, was wir senden, kannst du die Umgebungsvariable <code>USAGE_REPORTING_URL</code> ändern und die Daten an einen Ort senden, an dem du sie überprüfen kannst. Du kannst auch im Protokoll genau sehen, was gesendet wird.
+    reports:
+      index:
+        description: Von lokalen oder Fediverse-Benutzern gemeldete Inhalte werden hier zur Moderation angezeigt.
+        title: Meldungen
+      show:
+        ignore: Ignorieren
+        resolve: Als gelöst markieren
+      update:
+        ignored: Die Meldung wurde ignoriert
+        resolved: Die Meldung wurde als Gelöst Markiert
     tag_settings:
       auto_tag_new:
         label: Automatisch neue Modelle mit Tag(s) markieren
@@ -87,7 +110,7 @@ de:
         fediverse_address: Fediverse-Adresse
         local: Lokal
         new: Neuer Benutzer
-        title: Verwalte Benutzer
+        title: Benutzer verwaltung
         view: Siehe
       new:
         title: Benutzer erstellen
