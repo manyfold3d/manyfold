@@ -31,7 +31,7 @@
   <% if SiteSettings.oidc_enabled? %>
     <tr>
       <th><%= User.human_attribute_name(:auth_uid) %></th>
-      <td><%= (user.auth_uid ? "✅" : "❌") %></td>
+      <td><%= (@user.auth_uid ? "✅" : "❌") %></td>
     </tr>
   <% end %>
   <% if SiteSettings.federation_enabled? %>
