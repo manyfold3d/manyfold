@@ -9,7 +9,7 @@ fr:
       select: Sélectionner le modèle '%{name}'
       select_all: Sélectionner tous les modèles
       submit: Mettre à jour les modèles sélectionnés
-      title:
+      title: Modifier les modèles en lot
     bulk_fields:
       add_tags: Ajouter des étiquettes
     bulk_update:
@@ -19,15 +19,15 @@ fr:
     destroy:
       confirm: Cette opération supprimera les fichiers. Êtes-vous sûr de vouloir continuer ?
       success: Modèle supprimé !
-    exceeds_max_size:
+    exceeds_max_size: 'Le fichier sélectionné dépasse la taille maximale : %{max_size} MiB.'
     file:
       open_button:
-        label:
+        label: Voir les détails pour %{name}
         text: Ouvrir
       set_as_preview: Définir comme aperçu
     form:
       notes:
-        help_html:
+        help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
         help: Le fichier affiché en tant qu'aperçu du modèle dans les pages de la bibliothèque
       tags: Étiquette
@@ -35,24 +35,24 @@ fr:
       edit: Modifier le modèle
     image_carousel:
       next: Suivant
-      play_pause:
+      play_pause: Lire/mettre en pause les images
       previous: Précédent
       select_slide: Choisir l'image à afficher
-      slide_label:
+      slide_label: "%{name} (%{index} sur %{count})"
     list:
-      bulk_edit:
-      no_results_html:
-      skip_models:
+      bulk_edit: Modifier tous les modèles
+      no_results_html: Désolé, nous n'avons rien à vous montrer ! Essayez de modifier les filtres ou les termes de recherche, ou de télécharger des modèles.
+      skip_models: Sauter la liste des modèles
     merge:
       success: Les modèles ont été fusionnés avec succès.
     new:
-      description:
+      description: Ajoutez de nouveaux modèles en téléversant des fichiers ! Si vous téléversez une archive compressée, elle sera extraite et deviendra un modèle unique contenant tous les fichiers. Si vous téléversez des fichiers individuels, ils deviendront chacun un modèle distinct.
       files:
         label: Sélectionner un fichier
-      free_space:
+      free_space: "(%{available} libre)"
       library:
         help: La bibliothèque vers laquelle télécharger.
-      submit:
+      submit: Créer des modèles
       title: Télécharger
     problem:
       merge_all: Tous fusionner
@@ -60,11 +60,11 @@ fr:
       success: Début de l'analyse du modèle
     show:
       download:
-        file_type:
-        label:
-        menu_header:
-        supported:
-        unsupported:
+        file_type: Fichiers %{type} uniquement
+        label: Télécharger tout
+        menu_header: Options de téléchargement
+        supported: Fichiers pris en charge uniquement
+        unsupported: Fichiers non pris en charge uniquement
       files: Fichiers
       files_card:
         bulk_edit: Modifier tous les fichiers
@@ -85,7 +85,7 @@ fr:
       path: Chemin
       rescan: Rescanner les fichiers
       search: Recherchez sur Internet des modèles portant ce nom
-      submit:
+      submit: Téléverser les fichiers
       tags: Étiquettes
       upload_card:
         heading: Télécharger

@@ -9,11 +9,11 @@ fr:
       missing: Fichiers ou dossiers manquants
       nesting: Le modèle contient d'autres modèles
       no_3d_model: Le modèle ne contient pas de fichiers 3D
-      no_creator:
+      no_creator: Le modèle n'est attribué à aucun créateur
       no_image: Le modèle n'a pas de fichier image
-      no_license:
-      no_links:
-      no_tags:
+      no_license: Le modèle n'a pas d'information de license
+      no_links: Le modèle n'a pas de lien de vers sa source
+      no_tags: Le modèle n'a pas d'étiquettes
       non_manifold:
     filters:
       apply_filters: Appliquer
@@ -21,15 +21,15 @@ fr:
       show_ignored: Afficher les éléments cachés
       title: Filtres
     index:
-      bulk_confirm:
-      bulk_resolve:
+      bulk_confirm: Êtes-vous sûr de vouloir résoudre automatiquement tous les problèmes sélectionnés ? Cette opération peut supprimer des fichiers et des données.
+      bulk_resolve: Résoudre les problèmes sélectionnés
       description: Description
       ignore: Cacher
-      item:
+      item: Objet
       no_problems: Les filtres actuels ne posent aucun problème.
-      resolve:
-      select:
-      select_all:
+      resolve: Résoudre
+      select: Sélectionner
+      select_all: Tout sélectionner
       unignore: Afficher
     model:
       empty:
@@ -46,27 +46,27 @@ fr:
         description: Ce modèle ne contient pas de fichiers 3D. Il est peu probable que cela soit correct.
         title: Le modèle ne contient pas de fichiers 3D
       no_creator:
-        description:
-        title:
+        description: Nous ne savons pas qui a créé ce modèle ; ajoutez un créateur pour aider au catalogage !
+        title: Le modèle n'est pas attribué à un créateur
       no_image:
         description: Ce modèle ne contient pas de fichier image. L'ajout d'un fichier image facilite la navigation.
         title: Le modèle n'a pas de fichier image
       no_license:
-        description:
-        title:
+        description: Ce modèle n'a pas de licence spécifiée. L'ajout d'une licence permettra de savoir plus clairement si et comment il peut être partagé.
+        title: Le modèle n'a pas d'information de license
       no_links:
-        description:
-        title:
+        description: Ce modèle n'a pas de liens vers d'autres sources. S'il est également disponible ailleurs, vous pouvez ajouter un lien vers ses autres sources.
+        title: Le modèle n'a pas de lien de vers sa source
       no_tags:
-        description:
-        title:
+        description: Ce modèle n'a pas été étiqueté, ce qui le rend plus difficile à trouver. Ajoutez des étiquettes pour aider !
+        title: Le modèle n'a pas d'étiquettes
     model_file:
       duplicate:
         description: Ce fichier est dupliqué dans d'autres modèles. Vous devriez les supprimer.
         title: Fichier dupliqué
       empty:
-        description:
-        title:
+        description: Ce fichier est de longueur nulle ! Il s'agit très probablement d'une erreur ; supprimez le fichier ou effectuez un nouveau balayage du modèle pour le vérifier à nouveau.
+        title: Fichier vide
       inefficient:
         description: Ce fichier est au format %{note}, un format de fichier inefficace. Envisagez de le convertir dans un format binaire tel que 3MF pour économiser de l'espace disque.
         title: Format inefficace
@@ -77,7 +77,7 @@ fr:
         description: Ce fichier est manquant sur le disque ; soit vous le supprimez, soit vous trouvez où il est passé !
         title: Fichier introuvable
       non_manifold:
-        description:
+        description: Ce maillage semble être orienté dans le mauvais sens, ce qui peut entraîner des erreurs d'impression. Réparez-le dans un outil de modélisation 3D tel que MeshLab ou 3D Builder.
         title:
     severities:
       danger: Danger

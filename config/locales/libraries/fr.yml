@@ -9,20 +9,20 @@ fr:
     form:
       add_line: Ajouter une ligne
       caption:
-        help:
-      filesystem_description_html:
+        help: Facultatif ; s'affiche sous forme d'info-bulle sur les liens de la bibliothèque.
+      filesystem_description_html: Pour utiliser le stockage sur votre système de fichiers local, assurez-vous tout d'abord qu'il est monté en tant que <a href="https://docs.docker.com/storage/bind-mounts/">"bind mount"</a> ou autre volume dans votre conteneur Docker, puis entrez le chemin d'accès Docker ; pas le chemin d'accès sur votre serveur hôte ! Par exemple, si vous avez un répertoire plein de fichiers dans <code>/mnt/media/3d/models</code> sur votre hôte, et que vous avez lié <code>/mnt/media/3d</code> à <code>/libraries</code> dans votre configuration Docker, le chemin requis serait <code>/libraries/models</code>.
       icon:
-        help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank"> bibliothèque Bootstrap </a>
+        help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank">bibliothèque Bootstrap </a> ou <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
         placeholder: boxes
       notes:
-        help_html:
+        help_html: Facultatif ; affiché uniquement par les administrateurs sur la page des paramètres. Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       path:
         placeholder: "/libraries/models"
       s3_bucket:
-        help:
-      s3_description_html:
+        help: Juste le nom du bucket, pas l'URL complète
+      s3_description_html: Manyfold peut utiliser n'importe quel stockage d'objets compatible avec S3 pour votre bibliothèque ; il peut s'agir d'un grand nombre de services <a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">open source</a> ou <a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">commerciaux</a>.
       s3_endpoint:
-        help:
+        help: Facultatif ; nécessaire uniquement pour les services compatibles S3, pas pour AWS.
       tag_regex:
         help: Vérifier si les étiquettes des modèles manquant correspondent à cette expression régulière.
     general:
@@ -31,7 +31,7 @@ fr:
     index:
       description: Voir les détails de la bibliothèque et modifier.
       free_space:
-        label:
+        label: Espace libre
       heading: Bibliothèques
       tag_regex:
         check: Vérifier
@@ -41,8 +41,8 @@ fr:
     scan_all:
       success: L'analyse de toutes les bibliothèques a commencé.
     storage_services:
-      filesystem:
-      s3:
+      filesystem: Système de fichiers local
+      s3: Stockage en cloud compatible S3
     update:
       failure: Une erreur s'est produite et la bibliothèque n'a pas pu être sauvegardée.
       success: Détails de la bibliothèque sauvegardés.

@@ -6,20 +6,20 @@ fr:
       form_subtitle: 'Sélectionnez les modifications à apporter :'
       select: Sélectionner le fichier '%{name}'
       select_all: Sélectionner tous les fichiers
-      split:
+      split: Éclater les fichiers sélectionnés en un nouveau modèle
       submit: Mettre à jour les fichiers sélectionnés
-      title:
+      title: Modifier les fichiers en lot
     bulk_update:
       success: Les fichiers ont été mis à jour avec succès.
     create:
       conversion_started: La conversion du fichier a commencé. Le fichier converti devrait être disponible sous peu.
-      success:
+      success: Fichier(s) téléversé(s) avec succès !
     destroy:
       confirm: Êtes-vous sûr de vouloir supprimer ce fichier de votre système de fichiers ?
       success: Fichier supprimé !
     form:
       notes:
-        help_html:
+        help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit: Modifier les informations du fichier
     show:

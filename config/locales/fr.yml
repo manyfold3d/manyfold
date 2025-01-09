@@ -11,18 +11,26 @@ fr:
         caption: Légende
         name: Nom
         notes: Notes
+      federails/moderation/domain_block:
+        created_at: Enregistré à
+        domain: Domaine
+      federails/moderation/report:
+        content: Commentaire
+        created_at: Reçu le
+        federails_actor: Rapporté par
+        object: Objet
       library:
         caption: Légende
         icon: Icône
         name: Nom
         notes: Notes
         path: Chemin
-        s3_access_key_id:
-        s3_bucket:
-        s3_endpoint:
-        s3_region:
-        s3_secret_access_key:
-        storage_service:
+        s3_access_key_id: ID de la clé d'accès
+        s3_bucket: Nom du bucket
+        s3_endpoint: URL du endpoint
+        s3_region: Région
+        s3_secret_access_key: Clé d'accès secrète
+        storage_service: Service de stockage
         tag_regex: Étiquettes requises
       link:
         url: Lien
@@ -36,7 +44,7 @@ fr:
         notes: Description
         path: Chemin
         preview_file: Prévisualisation
-        sensitive:
+        sensitive: Contenu sensible
         tags: Étiquettes
       model_file:
         caption: Légende
@@ -57,7 +65,7 @@ fr:
         problematic_type: Type d'objet
         severity: Criticité
       user:
-        approved:
+        approved: Compte en suspens
         confirmation_sent_at: Date d'envoi de la confirmation
         confirmation_token: Clé de confirmation du mot de passe
         confirmed_at: Confirmé à
@@ -86,9 +94,9 @@ fr:
         library:
           attributes:
             path:
-              non_writable:
+              non_writable: doit être accessible en écriture
               not_found: n'a pas pu être trouvé sur le disque
-              unsafe:
+              unsafe: 'ne peut pas être un chemin privilégié du système '
         model:
           attributes:
             library:
@@ -125,6 +133,20 @@ fr:
         other: Créateurs
         two: Créateurs
         zero: Créateurs
+      federails/moderation/domain_block:
+        few: Blocages de domaines
+        many: Blocages de domaines
+        one: Blocage de domaines
+        other: Blocages de domaines
+        two: Blocages de domaines
+        zero: Blocages de domaines
+      federails/moderation/report:
+        few: Rapports
+        many: Rapports
+        one: Rapport
+        other: Rapports
+        two: Rapports
+        zero: Rapports
       library:
         few: Bibliothèques
         many: Bibliothèques
@@ -184,38 +206,38 @@ fr:
     caber_relation_fields:
       delete: Supprimer
       permissions:
-        edit:
-        own:
-        view:
+        edit: Peut éditer
+        own: Propriétaire (peut consulter, modifier, supprimer et partager)
+        view: Consulter seulement
       subject:
-        placeholder:
+        placeholder: Adresse électronique, nom d'utilisateur ou rôle
         role:
-          member:
-          public:
-        you:
+          member: Tout utilisateur local connecté
+          public: Tout le monde (sans login)
+        you: "(vous)"
     caber_relations_form:
-      add:
-      permissions:
+      add: ajouter une autre autorisation
+      permissions: Partage
     demo_mode: Cette instance est en mode démo. Vous ne pouvez pas ajouter ou supprimer des modèles, mais vous pouvez faire tout le reste.
     filters_card:
       missing_tags: Etiquette manquante
       remove_collection_filter: Supprimer la collection de filtres
       remove_creator_filter: Supprimer le filtre créateur
-      remove_library_filter:
-      remove_missing_tag_filter:
-      remove_search_filter:
-      remove_tag_filter:
+      remove_library_filter: Supprimer le filtre de bibliothèque
+      remove_missing_tag_filter: Supprimer le filtre "étiquette manquante"
+      remove_search_filter: Supprimer le filtre de recherche
+      remove_tag_filter: Supprimer le filtre d'étiquette
       search: Recherche
       title: Filtres
       unknown: Inconnu
     footer:
-      by_html: Conçu et réalisé par <a href="https://floppy.org.uk">James</a> avec l'aide de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors">nos contributeurs</a>.
+      by_html: Conçu et réalisé par <a href="https://floppy.org.uk" target="_blank">James</a> avec l'aide de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">nos contributeurs</a>.
       chat: Chat
       code: Code
       community_heading: Communauté
       development_heading: Développement
       issues: Problèmes
-      open_source_html: Open Source sous <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license noopener">licence MIT.</a>
+      open_source_html: Open Source sous <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licence MIT.</a>
       social: Social
       sponsor: Sponsor
       stats_heading: Statistiques
@@ -223,11 +245,11 @@ fr:
     link_fields:
       url:
         delete: Supprimer
-        placeholder:
+        placeholder: Toute page web connexe
     links_form:
       add: ajouter un autre lien
     navbar:
-      account:
+      account: Mes paramètres
       activity: Activité
       check_existing: Vérifier les modèles existants
       home: Page d'accueil
@@ -248,53 +270,56 @@ fr:
         time: Trier par heure
     tag_list:
       unrelated_tag_count:
-        one:
-        other:
+        one: "%{count} étiquette non liée cachée"
+        other: "%{count} étiquettes non liées cachées"
     tagline: Vous aider à garder une trace de vos fichiers d'impression 3D
     tags_card:
       skip_tags: Sauter la liste des balises
     title: Manyfold
   follow_button_component:
-    follow:
-    unfollow:
+    follow: Suivre %{name}
+    unfollow: ne plus suivre %{name}
   follows:
     follow_remote_actor:
-      followed:
+      followed: Suivi de %{actor} avec succès
     new:
-      help:
-      no_results:
-      results:
+      help: Vous pouvez suivre des créateurs publics, des collections ou des modèles sur un autre serveur Manyfold, en fait n'importe quel compte public dans Fediverse ! Il suffit d'entrer le nom du compte dans la boîte de recherche !
+      no_results: Désolé, rien n'a été trouvé pour "%{query}". S'agit-il d'un compte ou d'une URL ActivityPub valide ?
+      results: Résultats de la recherche
       search:
-        placeholder:
+        placeholder: 'Entrez un compte Fediverse ou une URL, ex. : admin@try.manyfold.app'
         submit: Recherche
-      title:
+      title: Suivre le Fediverse
     remote_follow:
-      help:
-      no_results_html:
-      placeholder:
+      help: Vous n'avez pas besoin d'un compte sur ce serveur pour suivre %{name} ; entrez votre propre nom de compte ici, et nous vous renverrons chez vous pour terminer la procédure.
+      no_results_html: Nous n'avons pas trouvé votre compte personnel ; l'avez-vous saisi correctement ?
+      placeholder: 'Votre nom d''utilisateur Fediverse, ex. : manyfold@3dp.chat'
       submit:
-      title:
+      title: Suivre %{name}
   general:
     delete: Supprimer
     download: Télécharger
     edit: Modifier
     expand: Élargir
+    menu: Menu
     new: Nouveau
+    report: Rapporter %{type}
     save: Sauvegarder
+    view: Afficher
   home:
     index:
-      create_actor:
+      create_actor: ajouté par %{name} il y a %{time}
       how_long_ago: depuis %{time}
-      no_activities: Il n'y a aucune activité à afficher pour le moment.
+      no_activities:
       recent_activity: Activité récente
       search:
         placeholder: Que recherchez-vous ?
         submit: Recherche
-      update_actor:
+      update_actor: mis à jour par %{name} il y a %{time}
   jobs:
     activity:
       creator_added_model:
-        comment:
+        comment: 'Je viens d''ajouter un nouveau modèle : ["%{model_name}"](%{url})'
     analysis:
       analyse_model_file:
         detect_duplicates: Détection des fichiers en double
@@ -311,10 +336,10 @@ fr:
     scan:
       check_all:
         queueing_model_checks:
-        removing_orphaned_problems:
+        removing_orphaned_problems: Suppression des problèmes orphelins
       detect_filesystem_changes:
         building_filename_list: Création d'une liste de fichiers
-        building_folder_list:
+        building_folder_list: Création d'une liste de répertoires modifiés
         creating_models: Création de modèles
   kaminari:
     first_page:
@@ -335,18 +360,18 @@ fr:
       alert:
         danger: Danger
         info: Information
-      skip_to_content:
+      skip_to_content: Passer et aller au contenu principal
     card_list_page:
       actions_heading: Actions
     settings:
       activeadmin: Administration avancée
       libraries: Bibliothèques
-      organization:
-      performance:
-      pghero:
+      organization: Organisation
+      performance: Tableau de bord des performances
+      pghero: PgHero
       sidekiq: Sidekiq
       title: Paramètres
-      tools_heading:
+      tools_heading: Outils avancés
   licenses:
     CC-BY-40: Creative Commons Attribution
     CC-BY-NC-40: Creative Commons Attribution NonCommercial
@@ -360,13 +385,14 @@ fr:
     MIT: MIT
   model_component:
     delete_button:
-      label:
+      label: Supprimer le modèle %{name}
       text: Supprimer
     edit_button:
-      label:
+      label: Modifier le modèle %{name}
       text: Modifier
+    no_preview: Pas d'aperçu disponible
     open_button:
-      label:
+      label: Ouvrir le modèle %{name}
       text: Ouvrir
   renderer:
     errors:
@@ -375,8 +401,15 @@ fr:
       webglrenderer: Impossible de créer le rendu !
     load: Chargement
     processing:
+  reports:
+    create:
+      success: Rapport soumis. Merci !
+    new:
+      description: Si cet article enfreint une loi ou une politique du serveur, vous pouvez le signaler à nos modérateurs. Ajoutez un commentaire pour nous nous expliquer pourquoi !
+      submit: Envoyer le rapport
+      title: 'Rapporter %{type} : %{name}'
   security:
-    running_as_root_html:
+    running_as_root_html: Manyfold s'exécute en tant que root, ce qui constitue un risque pour la sécurité. Exécute-le en tant qu'utilisateur différent en définissant les variables d'environnement <code>PUID</code> et <code>PGID</code>. Voir <a href='https://manyfold.app/sysadmin/configuration.html#required'>la documentation de configuration</a> pour plus de détails.
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Bandes dessinées, jeux et objets
@@ -386,9 +419,9 @@ fr:
     thingiverse: Thingiverse
   user_mailer:
     account_approved:
-      greeting:
-      message:
-      subject:
+      greeting: Bonjour !
+      message: Votre compte a été approuvé ; vous pouvez maintenant vous connecter à %{link}.
+      subject: Compte approuvé
   views:
     pagination:
       first: "« Premier"
