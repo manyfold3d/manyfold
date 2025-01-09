@@ -11,6 +11,14 @@ pl:
         caption: Napis
         name: Nazwa
         notes: Opis
+      federails/moderation/domain_block:
+        created_at: Data utworzenia
+        domain: Domena
+      federails/moderation/report:
+        content: Komentarz
+        created_at:
+        federails_actor: Zgłoszone przez
+        object: Obiekt
       library:
         caption: Napis
         icon: Ikona
@@ -123,6 +131,20 @@ pl:
         many: Twórców
         one: Twórca
         other: Twórcy
+        two:
+        zero:
+      federails/moderation/domain_block:
+        few: Bloki domen
+        many: Bloków domen
+        one: Blok domeny
+        other: Bloki domen
+        two:
+        zero:
+      federails/moderation/report:
+        few: Zgłoszenia
+        many: Zgłoszeń
+        one: Zgloszenie
+        other: Zgłoszenia
         two:
         zero:
       library:
@@ -279,12 +301,16 @@ pl:
     download: Pobierz
     edit: Edytuj
     expand: Rozwiń
+    menu: Menu
     new: Nowy
+    report: Zgłoś %{type}
     save: Zapisz
+    view: Widok
   home:
     index:
       create_actor: dodany przez %{name} %{time} temu
       how_long_ago: "%{time} temu"
+      no_activities:
       recent_activity: Ostatnia Aktywność
       search:
         placeholder: Czego szukasz?
@@ -364,6 +390,7 @@ pl:
     edit_button:
       label: Edytuj model %{name}
       text: Edytuj
+    no_preview: Podgląd jest niedostępny
     open_button:
       label: Otwórz model %{name}
       text: Otwórz
@@ -374,6 +401,13 @@ pl:
       webglrenderer: Nie można utworzyć renderera!
     load: Wczytywanie
     processing: Procesowanie siatki
+  reports:
+    create:
+      success: Zgłoszenie przesłane. Dziękujemy!
+    new:
+      description: Jeśli ten element narusza jakiekolwiek prawa lub zasady serwera, możesz zgłosić go naszym moderatorom. Dodaj komentarz, aby poinformować nas dlaczego!
+      submit: Wyślij zgłoszenie
+      title: 'Zgłoś %{type}: "%{name}"'
   security:
     running_as_root_html: Manyfold działa jako root, co stanowi zagrożenie dla bezpieczeństwa. Uruchom jako inny użytkownik systemu przez ustawienie zmiennych środowiskowych <code>PUID</code> i <code>PGID</code>. Szczegółowe informacje możesz znaleźć w <a href='https://manyfold.app/sysadmin/configuration.html#required'>dokumentacji konfiguracji</a>.
   sites:
