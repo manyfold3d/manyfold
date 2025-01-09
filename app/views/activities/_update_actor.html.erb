@@ -1,7 +1,6 @@
 <%- subject = activity&.actor %>
 <%- object = activity&.entity %>
 <%- thing = object&.entity %>
-<% if thing && !thing.is_a?(User) && (thing.grants_permission_to?(["view", "edit", "own"], current_user) || thing.grants_permission_to?(["view", "edit", "own"], current_user&.roles)) %>
   <div class="card border-0 border-bottom">
     <div class="card-body py-2">
       <div class="row">
@@ -31,4 +30,3 @@
       </div>
     </div>
   </div>
-<% end %>

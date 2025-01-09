@@ -285,6 +285,7 @@ fr:
     index:
       create_actor:
       how_long_ago: depuis %{time}
+      no_activities: Il n'y a aucune activité à afficher pour le moment.
       recent_activity: Activité récente
       search:
         placeholder: Que recherchez-vous ?
