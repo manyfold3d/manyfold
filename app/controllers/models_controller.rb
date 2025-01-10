@@ -67,7 +67,7 @@ class ModelsController < ApplicationController
     authorize :model
     library = Library.find_param(params[:library])
     uploads = begin
-      JSON.parse(params[:uploads])[0]["successful"]
+      JSON.parse(params[:uploads])
     rescue
       []
     end
@@ -75,7 +75,7 @@ class ModelsController < ApplicationController
     uploads.each do |upload|
       ProcessUploadedFileJob.perform_later(
         library.id,
-        upload["response"]["body"],
+        upload,
         owner: current_user,
         creator_id: params[:creator_id],
         collection_id: params[:collection_id],

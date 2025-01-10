@@ -28,14 +28,14 @@ class ModelFilesController < ApplicationController
       redirect_back_or_to [@model, file], notice: t(".conversion_started")
     elsif params[:uploads]
       uploads = begin
-        JSON.parse(params[:uploads])[0]["successful"]
+        JSON.parse(params[:uploads])
       rescue
         []
       end
       uploads.each do |upload|
         ProcessUploadedFileJob.perform_later(
           @model.library.id,
-          upload["response"]["body"],
+          upload,
           model: @model
         )
       end

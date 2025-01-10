@@ -1,5 +1,10 @@
+require "tus/server"
+require "tus/storage/filesystem"
+
 Rails.application.config.after_initialize do
   Library.register_all_storage
+
+  Tus::Server.opts[:storage] = Tus::Storage::Filesystem.new("tmp/shrine")
 
   begin
     upload_options = {cache: {move: true}}
