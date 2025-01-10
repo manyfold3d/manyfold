@@ -1,7 +1,6 @@
 import Uppy from '@uppy/core'
 import Dashboard from '@uppy/dashboard'
-import Form from '@uppy/form'
-import Tus from '@uppy/tus';
+import Tus from '@uppy/tus'
 
 import en from '@uppy/locales/lib/en_US'
 import fr from '@uppy/locales/lib/fr_FR'
@@ -31,7 +30,7 @@ document.addEventListener('ManyfoldReady', () => {
         hideProgressAfterFinish: true
       })
       .use(Tus, {
-        endpoint: settings.uploadEndpoint ?? "/upload",
+        endpoint: settings.uploadEndpoint ?? '/upload',
         chunkSize: 5 * 1024 * 1024
       })
     const submitButton = element?.closest('form')?.querySelector("input[type='submit']")
@@ -43,20 +42,19 @@ document.addEventListener('ManyfoldReady', () => {
         submitButton?.removeAttribute('disabled')
       }
     })
-    element.closest('form')?.addEventListener("formdata", (event) => {
+    element.closest('form')?.addEventListener('formdata', (event) => {
       const uploads = uppy.getFiles().map((f) => {
         return {
           id: f.tus?.uploadUrl,
-          storage: "cache",
+          storage: 'cache',
           metadata: {
             filename: f.name,
             size: f.size,
-            mime_type: f.type,
+            mime_type: f.type
           }
         }
       })
-      event.formData.set("uploads", JSON.stringify(uploads));
-    });
-
+      event.formData.set('uploads', JSON.stringify(uploads))
+    })
   })
 })
