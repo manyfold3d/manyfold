@@ -8,7 +8,6 @@ class LibraryUploader < Shrine
   plugin :determine_mime_type
   plugin :rack_response
   plugin :dynamic_storage
-  plugin :upload_endpoint, max_size: SiteSettings.max_file_upload_size
   plugin :tus
 
   self.storages = {
