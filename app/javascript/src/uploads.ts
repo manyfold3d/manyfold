@@ -1,7 +1,6 @@
 import Uppy from '@uppy/core'
 import Dashboard from '@uppy/dashboard'
-import Form from '@uppy/form'
-import XHR from '@uppy/xhr-upload'
+import Tus from '@uppy/tus'
 
 import en from '@uppy/locales/lib/en_US'
 import fr from '@uppy/locales/lib/fr_FR'
@@ -13,7 +12,8 @@ const uppyLocales = { en, de, fr, pl }
 document.addEventListener('ManyfoldReady', () => {
   document.querySelectorAll('#uppy').forEach((element: HTMLDivElement) => {
     const settings = element.dataset
-    new Uppy({
+    const uppy = new Uppy({
+      autoProceed: true,
       locale: uppyLocales[window.i18n.locale],
       restrictions: {
         allowedFileTypes: settings.allowedFileTypes?.split(','),
@@ -26,15 +26,35 @@ document.addEventListener('ManyfoldReady', () => {
         theme: 'auto',
         width: '100%',
         height: '25rem',
-        hideUploadButton: true
+        showRemoveButtonAfterComplete: true,
+        hideProgressAfterFinish: true
       })
-      .use(Form, {
-        target: element.closest('form') ?? undefined,
-        getMetaFromForm: false,
-        resultName: 'uploads',
-        triggerUploadOnSubmit: true,
-        submitOnSuccess: true
+      .use(Tus, {
+        endpoint: settings.uploadEndpoint ?? '/upload',
+        chunkSize: 5 * 1024 * 1024
       })
-      .use(XHR, { endpoint: settings.uploadEndpoint ?? "/upload" })
+    const submitButton = element?.closest('form')?.querySelector("input[type='submit']")
+    uppy.on('upload', () => {
+      submitButton?.setAttribute('disabled', 'disabled')
+    })
+    uppy.on('complete', (result) => {
+      if (result.successful?.length != null && result.successful.length > 0) {
+        submitButton?.removeAttribute('disabled')
+      }
+    })
+    element.closest('form')?.addEventListener('formdata', (event) => {
+      const uploads = uppy.getFiles().map((f) => {
+        return {
+          id: f.tus?.uploadUrl,
+          storage: 'cache',
+          metadata: {
+            filename: f.name,
+            size: f.size,
+            mime_type: f.type
+          }
+        }
+      })
+      event.formData.set('uploads', JSON.stringify(uploads))
+    })
   })
 })

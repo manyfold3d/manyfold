@@ -1,5 +1,6 @@
 require "shrine/storage/file_system"
 require "shrine/storage/s3"
+require "shrine/storage/tus"
 
 class LibraryUploader < Shrine
   plugin :activerecord
@@ -7,7 +8,7 @@ class LibraryUploader < Shrine
   plugin :determine_mime_type
   plugin :rack_response
   plugin :dynamic_storage
-  plugin :upload_endpoint, max_size: SiteSettings.max_file_upload_size
+  plugin :tus
 
   self.storages = {
     cache: Shrine::Storage::FileSystem.new("tmp/shrine")
