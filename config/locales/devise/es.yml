@@ -151,7 +151,7 @@ es:
           label: Estilo de renderizado
           lambert: Sombreado realista
           normals: Dirección de la superficie
-          shadowed:
+          shadowed: Realista con sombras
         show_grid:
           label: Mostrar plano de tierra
       signed_up: Bienvenido. Su cuenta ha sido creada correctamente.

@@ -147,9 +147,9 @@ de:
           label: Objekt Farbe
         render_style:
           label: Rendering-Stil
-          lambert: Realistisch schattiert
+          lambert: Glatt schattiert
           normals: Richtung der Oberfläche
-          shadowed:
+          shadowed: Realistisch mit Schatten
         show_grid:
           label: Grundplatte anzeigen
       signed_up: Du hast dich erfolgreich registriert.
