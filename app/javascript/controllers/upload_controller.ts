@@ -3,6 +3,7 @@ import { Controller } from '@hotwired/stimulus'
 import Uppy from '@uppy/core'
 import Dashboard from '@uppy/dashboard'
 import Tus from '@uppy/tus'
+import Url from '@uppy/url'
 
 import cs from '@uppy/locales/lib/cs_CZ'
 import de from '@uppy/locales/lib/de_DE'
@@ -39,6 +40,7 @@ export default class extends Controller {
         showRemoveButtonAfterComplete: true,
         hideProgressAfterFinish: true
       })
+      .use(Url, { companionUrl: '/' })
       .use(Tus, {
         endpoint: settings.uploadEndpoint ?? '/upload',
         chunkSize: 1 * 1024 * 1024
