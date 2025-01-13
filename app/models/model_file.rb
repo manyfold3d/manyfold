@@ -84,6 +84,10 @@ class ModelFile < ApplicationRecord
     SupportedMimeTypes.model_extensions.include? extension
   end
 
+  def is_renderable?
+    ["stl", "obj", "3mf", "ply", "gltf", "glb"].include? extension
+  end
+
   def mime_type
     Mime::Type.lookup_by_extension(extension)
   end

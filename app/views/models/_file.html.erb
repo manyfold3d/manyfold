@@ -3,7 +3,7 @@
     <% if file.is_image? %>
       <%= content_tag :div, nil, class: "card-img-top card-img-top-background", style: "background-image: url(#{model_model_file_path(@model, file, format: file.extension)})" %>
       <%= image_tag model_model_file_path(@model, file, format: file.extension), class: "card-img-top image-preview", alt: file.name %>
-    <% elsif renderable?(file.extension) %>
+    <% elsif file.is_renderable? %>
       <div class="card-img-top">
         <%= render partial: "object_preview", locals: {model: @model, file: file} %>
       </div>
