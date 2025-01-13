@@ -40,7 +40,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/core": "^7",
-    "@babel/eslint-parser": "^7.25.9",
+    "@babel/eslint-parser": "^7.26.5",
     "@babel/preset-typescript": "^7.26.0",
     "@types/bootstrap": "^5.2.10",
     "@types/i18n-js": "^3.8.9",
