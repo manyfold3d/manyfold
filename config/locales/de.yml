@@ -310,7 +310,7 @@ de:
     index:
       create_actor: 'hinzugefügt von %{name} vor %{time} '
       how_long_ago: vor %{time}
-      no_activities:
+      no_activities: Im Moment gibt es keine Aktivitäten zu sehen.
       recent_activity: Neuste Aktivität
       search:
         placeholder: Wonach suchen Sie?

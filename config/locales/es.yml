@@ -314,7 +314,7 @@ es:
     index:
       create_actor: subido por %{name} hace %{time}
       how_long_ago: hace %{time}
-      no_activities:
+      no_activities: Por ahora no hay actividades que mostrar.
       recent_activity: Actividad reciente
       search:
         placeholder: "¿Qué busca?"
