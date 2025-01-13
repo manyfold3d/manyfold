@@ -150,4 +150,16 @@ RSpec.describe ModelFile do
       expect(unsupported.reload.presupported_version).to be_nil
     end
   end
+
+  {
+    stl: true,
+    png: false,
+    pdf: false,
+    lys: false
+  }.each_pair do |extension, result|
+    it "shows that #{extension} files are#{"n't" if result == false} renderable" do
+      file = create(:model_file, filename: "test.#{extension}")
+      expect(file.is_renderable?).to be result
+    end
+  end
 end

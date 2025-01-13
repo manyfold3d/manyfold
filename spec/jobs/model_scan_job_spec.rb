@@ -5,7 +5,7 @@ RSpec.describe ModelScanJob do
   context "with a simple model folder" do
     around do |ex|
       MockDirectory.create([
-        "model_one/part_1.obj",
+        "model_one/part_1.lys",
         "model_one/part_2.obj"
       ]) do |path|
         @library_path = path
@@ -21,13 +21,13 @@ RSpec.describe ModelScanJob do
 
     it "detects model files" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(2)
-      expect(model.model_files.map(&:filename)).to eq ["part_1.obj", "part_2.obj"]
+      expect(model.model_files.map(&:filename)).to eq ["part_1.lys", "part_2.obj"]
     end
 
-    it "sets the preview file to the first scanned file by default" do # rubocop:todo RSpec/MultipleExpectations
+    it "sets the preview file to the first renderable scanned file by default" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(2)
       model.reload
-      expect(model.preview_file.filename).to eq "part_1.obj"
+      expect(model.preview_file.filename).to eq "part_2.obj"
     end
 
     it "queues up individual file scans" do

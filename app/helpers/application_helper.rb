@@ -81,15 +81,6 @@ module ApplicationHelper
     end
   end
 
-  def renderable?(format)
-    case format
-    when "stl", "obj", "3mf", "ply", "gltf", "glb"
-      true
-    else
-      false
-    end
-  end
-
   def text_input_row(form, name, options = {})
     content_tag :div, class: "row mb-3 input-group" do
       safe_join [
