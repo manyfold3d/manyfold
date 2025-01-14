@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_28_162214) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_14_105808) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -43,8 +43,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_28_162214) do
 
   create_table "comments", force: :cascade do |t|
     t.string "public_id", null: false
-    t.string "commenter_type", null: false
-    t.integer "commenter_id", null: false
+    t.string "commenter_type"
+    t.integer "commenter_id"
     t.string "commentable_type", null: false
     t.integer "commentable_id", null: false
     t.text "comment"
@@ -52,8 +52,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_28_162214) do
     t.datetime "updated_at", null: false
     t.boolean "system", default: false, null: false
     t.boolean "sensitive", default: false, null: false
+    t.string "federated_url"
+    t.integer "federails_actor_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["commenter_type", "commenter_id"], name: "index_comments_on_commenter"
+    t.index ["federails_actor_id"], name: "index_comments_on_federails_actor_id"
     t.index ["public_id"], name: "index_comments_on_public_id", unique: true
   end
 
@@ -346,6 +349,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_28_162214) do
   end
 
   add_foreign_key "collections", "collections"
+  add_foreign_key "comments", "federails_actors"
   add_foreign_key "federails_activities", "federails_actors", column: "actor_id"
   add_foreign_key "federails_followings", "federails_actors", column: "actor_id"
   add_foreign_key "federails_followings", "federails_actors", column: "target_actor_id"
