@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
   belongs_to :commentable, polymorphic: true
 
   include Federails::DataEntity
-  acts_as_federails_data handles: "Note", actor_entity_method: :commenter
+  acts_as_federails_data handles: "Note", actor_entity_method: :commenter, url_param: :public_id
 
   def to_activitypub_object
     # Comments become Notes in ActvityPub
