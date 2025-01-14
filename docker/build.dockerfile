@@ -4,6 +4,7 @@ FROM base AS build
 
 RUN apk add --no-cache \
   alpine-sdk \
+  linux-headers \
   nodejs=~22.11 \
   npm \
   postgresql-dev \
