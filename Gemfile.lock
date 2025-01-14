@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: ee1a65d0a67a39615ecce01a4a7be62b960793ca
+  revision: e366dc4ff8aa34f7884547180bc94998d320423a
   branch: 22-data-binding-for-incoming-outgoing-objects
   specs:
     federails (0.4.0)

@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
   belongs_to :commentable, polymorphic: true
 
   include Federails::DataEntity
-  acts_as_federails_data handles: "Note", actor_entity_method: :commenter, url_param: :public_id
+  acts_as_federails_data handles: "Note", actor_entity_method: :commenter, url_param: :public_id, should_federate_method: :public?
 
   def to_activitypub_object
     # Comments become Notes in ActvityPub
@@ -19,12 +19,12 @@ class Comment < ApplicationRecord
       }.merge(address_options)
   end
 
-  private
-
   def public?
     Pundit::PolicyFinder.new(commenter.class).policy.new(nil, commenter).show? &&
       Pundit::PolicyFinder.new(commentable.class).policy.new(nil, commentable).show?
   end
+
+  private
 
   def activitypub_tags
     return nil unless commentable.respond_to?(:tags)
