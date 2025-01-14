@@ -25,57 +25,57 @@ RSpec.describe Comment do
     end
 
     it "has a federated_url method" do
-      expect(comment.federated_url).to eq "http://localhost:3214/models/#{commentable.public_id}/comments/#{comment.public_id}"
+      expect(comment.federated_url).to eq "http://localhost:3214/federation/objects/comments/#{comment.public_id}"
     end
 
     context "when serializing to an ActivityPub Note" do
       let(:ap_object) { comment.to_activitypub_object }
 
       it "creates a Note" do
-        expect(ap_object[:type]).to eq "Note"
+        expect(ap_object["type"]).to eq "Note"
       end
 
       it "includes content" do
-        expect(ap_object[:content]).to be_present
+        expect(ap_object["content"]).to be_present
       end
 
       it "includes id" do
-        expect(ap_object[:id]).to eq comment.federated_url
+        expect(ap_object["id"]).to eq comment.federated_url
       end
 
       it "includes commentable ID in context" do
-        expect(ap_object[:context]).to eq "http://localhost:3214/models/#{commentable.public_id}"
+        expect(ap_object["context"]).to eq "http://localhost:3214/models/#{commentable.public_id}"
       end
 
       it "includes publication time" do
-        expect(ap_object[:published]).to be_present
+        expect(ap_object["published"]).to be_present
       end
 
       it "includes sensitive flag" do
-        expect(ap_object[:sensitive]).to be true
+        expect(ap_object["sensitive"]).to be true
       end
 
       it "includes attribution" do
-        expect(ap_object[:attributedTo]).to eq commenter.federails_actor.federated_url
+        expect(ap_object["attributedTo"]).to eq commenter.federails_actor.federated_url
       end
 
       it "includes to field" do
-        expect(ap_object[:to]).to include "https://www.w3.org/ns/activitystreams#Public"
+        expect(ap_object["to"]).to include "https://www.w3.org/ns/activitystreams#Public"
       end
 
       it "includes cc field" do
-        expect(ap_object[:cc]).to include commenter.federails_actor.followers_url
+        expect(ap_object["cc"]).to include commenter.federails_actor.followers_url
       end
 
       it "includes tags appended to content" do
         {"tag+one": "#TagOne", tag2: "#Tag2"}.each_pair do |link, hashtag|
-          expect(ap_object[:content]).to include %(<a href="http://localhost:3214/models?tag=#{link}" class="mention hashtag" rel="tag">#{hashtag}</a>)
+          expect(ap_object["content"]).to include %(<a href="http://localhost:3214/models?tag=#{link}" class="mention hashtag" rel="tag">#{hashtag}</a>)
         end
       end
 
       it "includes tags as mentions" do # rubocop:disable RSpec/ExampleLength
         {"tag+one": "#TagOne", tag2: "#Tag2"}.each_pair do |link, hashtag|
-          expect(ap_object[:tag]).to include(
+          expect(ap_object["tag"]).to include(
             type: "Hashtag",
             href: "http://localhost:3214/models?tag=#{link}",
             name: hashtag
