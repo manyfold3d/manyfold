@@ -124,5 +124,7 @@ Rails.application.routes.draw do
 
   authenticate :user, lambda { |u| u.is_contributor? } do
     mount Tus::Server => "/upload", :as => :upload
+    post "/url/meta" => "uppy_companion#url_meta"
+    post "/url/get" => "uppy_companion#url_get"
   end
 end

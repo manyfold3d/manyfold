@@ -19,11 +19,13 @@ $ra-font-path: "https://cdn.jsdelivr.net/npm/rpg-awesome@0.2.0/fonts";
 
 @import '@uppy/core/dist/style.min';
 @import '@uppy/dashboard/dist/style.min';
+@import '@uppy/url/dist/style.min';
 
 .selectize-control {
 	padding: 1px;
 }
 
-p.alert:empty, p.notice:empty {
+p.alert:empty,
+p.notice:empty {
 	display: none;
 }

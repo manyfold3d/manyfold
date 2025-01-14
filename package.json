@@ -21,6 +21,7 @@
     "@uppy/form": "^4.1.1",
     "@uppy/locales": "^4.5.0",
     "@uppy/tus": "^4.2.1",
+    "@uppy/url": "^4.2.1",
     "autoprefixer": "^10.4.20",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",

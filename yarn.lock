@@ -1511,6 +1511,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@uppy/url@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "@uppy/url@npm:4.2.1"
+  dependencies:
+    "@uppy/companion-client": ^4.4.1
+    "@uppy/utils": ^6.1.1
+    nanoid: ^5.0.9
+    preact: ^10.5.13
+  peerDependencies:
+    "@uppy/core": ^4.4.1
+  checksum: 2415fe731e3f89d87fe36a8b858308edf3e10bbfc41386371257b0c0fe13a3610cb859a2bb83eecf554b2a455d3010934c18921f2eec297765ac162c6e560d2c
+  languageName: node
+  linkType: hard
+
 "@uppy/utils@npm:^6.1.0":
   version: 6.1.0
   resolution: "@uppy/utils@npm:6.1.0"
@@ -4290,6 +4304,7 @@ __metadata:
     "@uppy/form": ^4.1.1
     "@uppy/locales": ^4.5.0
     "@uppy/tus": ^4.2.1
+    "@uppy/url": ^4.2.1
     autoprefixer: ^10.4.20
     bootstrap: ^5.3.3
     bootstrap-icons: ^1.11.3
