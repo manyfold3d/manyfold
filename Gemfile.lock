@@ -7,6 +7,20 @@ GIT
       activerecord (>= 3.2)
       sqlite3
 
+GIT
+  remote: https://gitlab.com/experimentslabs/federails
+  revision: ee1a65d0a67a39615ecce01a4a7be62b960793ca
+  branch: 22-data-binding-for-incoming-outgoing-objects
+  specs:
+    federails (0.4.0)
+      faraday
+      faraday-follow_redirects
+      json-ld (>= 3.2.0)
+      json-ld-preloaded (>= 3.2.0)
+      kaminari (>= 1.2.0)
+      pundit (>= 2.3.0)
+      rails (>= 7.0.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -224,14 +238,6 @@ GEM
       faraday (>= 1, < 3)
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
-    federails (0.4.0)
-      faraday
-      faraday-follow_redirects
-      json-ld (>= 3.2.0)
-      json-ld-preloaded (>= 3.2.0)
-      kaminari (>= 1.2.0)
-      pundit (>= 2.3.0)
-      rails (>= 7.0.4)
     federails-moderation (0.2.0)
       federails (~> 0.4)
       public_suffix (~> 6.0)
@@ -792,7 +798,7 @@ DEPENDENCIES
   erb_lint (~> 0.8.0)
   factory_bot
   faker (~> 3.5)
-  federails (~> 0.4)
+  federails!
   federails-moderation (~> 0.2)
   ffi-libarchive (~> 1.1)
   get_process_mem (~> 1.0)
