@@ -60,7 +60,9 @@ module Manyfold
     config.action_mailer.smtp_settings = {
       address: ENV.fetch("SMTP_SERVER", nil),
       user_name: ENV.fetch("SMTP_USERNAME", nil),
-      password: ENV.fetch("SMTP_PASSWORD", nil)
+      password: ENV.fetch("SMTP_PASSWORD", nil),
+      port: ENV.fetch("SMTP_PORT", nil),
+      openssl_verify_mode: (ENV.fetch("SMTP_VERIFY_SSL_MODE", nil) == "none") ? :none : nil
     }.compact
 
     # Load some feature settings from ENV
