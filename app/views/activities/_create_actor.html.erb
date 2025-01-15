@@ -5,6 +5,7 @@
     <div class="card-body py-2">
       <div class="row">
         <div class="col col-auto">
+          <%= icon icon_for(thing.class), thing.class.model_name.human %>
         </div>
         <div class="col">
           <%- if object.local? %>
