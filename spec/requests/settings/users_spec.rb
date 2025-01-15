@@ -38,13 +38,17 @@ RSpec.describe "/settings/users", :multiuser do
   describe "POST /create", :as_moderator do
     context "with valid parameters" do
       it "creates a new Settings::User" do
+        attributes = attributes_for(:user)
+        attributes[:password_confirmation] = attributes[:password]
         expect {
-          post "/settings/users", params: {user: attributes_for(:user)}
+          post "/settings/users", params: {user: attributes}
         }.to change(User, :count).by(1)
       end
 
       it "redirects to the created user" do
-        post "/settings/users", params: {user: attributes_for(:user)}
+        attributes = attributes_for(:user)
+        attributes[:password_confirmation] = attributes[:password]
+        post "/settings/users", params: {user: attributes}
         expect(response).to redirect_to(settings_user_url(User.last))
       end
     end
