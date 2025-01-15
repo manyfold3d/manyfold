@@ -622,7 +622,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.1)
-    rubocop (1.69.2)
+    rubocop (1.70.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -698,10 +698,10 @@ GEM
     sqlite3 (2.5.0-x64-mingw-ucrt)
     sqlite3 (2.5.0-x86_64-darwin)
     sqlite3 (2.5.0-x86_64-linux-gnu)
-    standard (1.43.0)
+    standard (1.44.0)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
-      rubocop (~> 1.69.1)
+      rubocop (~> 1.70.0)
       standard-custom (~> 1.0.0)
       standard-performance (~> 1.6)
     standard-custom (1.0.2)
@@ -859,7 +859,7 @@ DEPENDENCIES
   spdx (~> 4.1)
   spring
   sqlite3_ar_regexp!
-  standard (~> 1.43.0)
+  standard (~> 1.44.0)
   stopwords-filter2
   string-similarity (~> 2.1)
   sys-filesystem (~> 1.5)
