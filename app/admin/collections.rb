@@ -2,7 +2,7 @@ ActiveAdmin.register Collection do
   actions :all, except: [:new]
   permit_params :name, :notes, :caption
 
-  Collection.ransackable_symbols.each { |x| filter x }
+  Collection.ransackable_symbols.each { |it| filter it }
 
   controller do
     def find_resource

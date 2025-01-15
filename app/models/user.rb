@@ -141,7 +141,7 @@ class User < ApplicationRecord
   private
 
   def has_any_role_of?(*args)
-    args.map { |x| has_role? x }.any?
+    args.map { |it| has_role? it }.any?
   end
 
   def assign_default_role

@@ -192,7 +192,7 @@ class ModelFile < ApplicationRecord
   private
 
   def rescan_duplicates
-    duplicates.each { |x| Analysis::AnalyseModelFileJob.set(wait: 5.seconds).perform_later(x.id) }
+    duplicates.each { |it| Analysis::AnalyseModelFileJob.set(wait: 5.seconds).perform_later(it.id) }
   end
 
   def presupported_files_cannot_have_presupported_version

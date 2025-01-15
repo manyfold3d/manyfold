@@ -2,7 +2,7 @@ ActiveAdmin.register User do
   config.batch_actions = false
 
   permit_params :email, :password, :password_confirmation, :username, role_ids: []
-  User.ransackable_symbols.each { |x| filter x }
+  User.ransackable_symbols.each { |it| filter it }
 
   controller do
     defaults finder: :find_by_username

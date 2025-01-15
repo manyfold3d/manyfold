@@ -14,7 +14,7 @@ ActiveJob::Status.options = {
 module ActiveJob::Status
   def self.all
     store.redis.with do |conn|
-      conn.keys("activejob:status:*").map { |x| ActiveJob::Status.get(x.split(":").last) }
+      conn.keys("activejob:status:*").map { |it| ActiveJob::Status.get(it.split(":").last) }
     end
   end
 end
