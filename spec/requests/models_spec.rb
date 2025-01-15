@@ -23,10 +23,10 @@ RSpec.describe "Models" do
     let!(:collection) { create(:collection) }
     let!(:library) do
       l = create(:library)
-      build_list(:model, 5, library: l) { it.save! }
-      build_list(:model, 5, library: l, creator: creator) { it.save! }
-      build_list(:model, 5, library: l, collection: collection) { it.save! }
-      build_list(:model, 5, library: l, creator: creator, collection: collection) { it.save! }
+      build_list(:model, 5, library: l) { |it| it.save! }
+      build_list(:model, 5, library: l, creator: creator) { |it| it.save! }
+      build_list(:model, 5, library: l, collection: collection) { |it| it.save! }
+      build_list(:model, 5, library: l, creator: creator, collection: collection) { |it| it.save! }
       l
     end
 

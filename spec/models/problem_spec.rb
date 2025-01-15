@@ -19,16 +19,16 @@ RSpec.describe Problem do
 
     it "lists visible problems" do # rubocop:todo RSpec/MultipleExpectations
       expect(described_class.visible(settings).length).to eq 3
-      expect(described_class.visible(settings).map { it.category.to_sym }).to include :inefficient
+      expect(described_class.visible(settings).map { |it| it.category.to_sym }).to include :inefficient
     end
 
     it "does not include silenced problems" do
-      expect(described_class.visible(settings).map { it.category.to_sym }).not_to include :missing
+      expect(described_class.visible(settings).map { |it| it.category.to_sym }).not_to include :missing
     end
 
     it "falls back to default visibility settings" do # rubocop:todo RSpec/MultipleExpectations
       expect(described_class.visible({missing: :silent}).length).to eq 3
-      expect(described_class.visible({missing: :silent}).map { it.category.to_sym }).to include :inefficient
+      expect(described_class.visible({missing: :silent}).map { |it| it.category.to_sym }).to include :inefficient
     end
   end
 

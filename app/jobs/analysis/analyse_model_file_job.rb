@@ -55,16 +55,16 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
       # Measure distance from this filename
       d = String::Similarity.cosine(normed.join(" "), human.join(" "))
       [d, s]
-    }.select { it[0] > 0.95 }
+    }.select { |it| it[0] > 0.95 }
     best = case matches.length
     when 0
       nil
     when 1
       matches.first[1]
     else
-      same_format = matches.select { it[1].mime_type === file.mime_type }
+      same_format = matches.select { |it| it[1].mime_type === file.mime_type }
       matches = same_format unless same_format.empty?
-      matches.max_by { it[0] }[1]
+      matches.max_by { |it| it[0] }[1]
     end
     file.update(presupported_version: best)
   end

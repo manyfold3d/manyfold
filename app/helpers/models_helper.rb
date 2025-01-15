@@ -8,12 +8,12 @@ module ModelsHelper
     slice = names.map(&:length).max
     while slice > min_prefix_length
       slice -= 1
-      candidates = names.map { it.slice(0, slice) }
-      groups = candidates.group_by { it }
+      candidates = names.map { |it| it.slice(0, slice) }
+      groups = candidates.group_by { |it| it }
       ready = groups.select { |k, v| v.count >= min_section_size }.map(&:first)
       ready.each do |r|
-        names.reject! { it.starts_with? r }
-        sections[r], files = files.partition { it.basename.starts_with? r }
+        names.reject! { |it| it.starts_with? r }
+        sections[r], files = files.partition { |it| it.basename.starts_with? r }
       end
     end
     # Sort and include empty set
