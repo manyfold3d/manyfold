@@ -2,7 +2,7 @@
 
 class MoveFileDataIntoShrine < ActiveRecord::Migration[7.0]
   def up
-    ModelFile.find_each { it.attach_existing_file!(refresh: false, skip_validations: true) }
+    ModelFile.find_each { |it| it.attach_existing_file!(refresh: false, skip_validations: true) }
   end
 
   def down
