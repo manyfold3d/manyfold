@@ -27,8 +27,8 @@ class Settings::UsersController < ApplicationController
     password = helpers.random_password
     # Create user with a random password if one isn't provided
     @user = User.create({
-      password: password,
-      password_confirmation: password
+      "password" => password,
+      "password_confirmation" => password
     }.merge(user_params))
     if @user.valid?
       @user.send_reset_password_instructions if SiteSettings.email_configured?
@@ -69,6 +69,8 @@ class Settings::UsersController < ApplicationController
     params.require(:user).permit(
       :email,
       :username,
+      :password,
+      :password_confirmation,
       role_ids: []
     )
   end
