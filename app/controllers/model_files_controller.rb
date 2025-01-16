@@ -110,6 +110,7 @@ class ModelFilesController < ApplicationController
 
   def file_params
     params.require(:model_file).permit([
+      :filename,
       :presupported,
       :notes,
       :caption,
