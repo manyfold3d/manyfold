@@ -23,7 +23,7 @@ class ModelFile < ApplicationRecord
   has_many :duplicate_unsupported_versions, class_name: "ModelFile", foreign_key: "presupported_version_id",
     inverse_of: :presupported_version, dependent: :nullify
 
-  validates :filename, presence: true, uniqueness: {scope: :model}
+  validates :filename, presence: true, uniqueness: {scope: :model}, stable_mime_type: true
   validate :presupported_version_is_presupported
   validate :presupported_files_cannot_have_presupported_version
 
