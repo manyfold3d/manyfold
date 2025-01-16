@@ -1,4 +1,5 @@
 <%= form_with model: [@model, @file] do |form| %>
+  <%= text_input_row form, :filename %>
   <% if @file.is_3d_model? %>
     <div class="form-check form-switch mb-3">
       <%= form.check_box :printed, class: "form-check-input", checked: current_user.printed?(@file) %>

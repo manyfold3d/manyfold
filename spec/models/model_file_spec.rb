@@ -93,6 +93,12 @@ RSpec.describe ModelFile do
     let(:model) { create(:model, library: library, path: "model_one") }
     let(:file) { create(:model_file, model: model, filename: "part_1.3mf", digest: "1234") }
 
+    it "renames file on disk" do # rubocop:disable RSpec/MultipleExpectations
+      file.update!(filename: "newname.3mf")
+      expect(File.exist?(File.join(library.path, "model_one/part_1.3mf"))).to be false
+      expect(File.exist?(File.join(library.path, "model_one/newname.3mf"))).to be true
+    end
+
     it "removes original file from disk" do
       expect { file.destroy }.to(
         change { File.exist?(File.join(library.path, file.path_within_library)) }.from(true).to(false)
@@ -106,7 +112,7 @@ RSpec.describe ModelFile do
     end
 
     it "ignores missing files on deletion" do
-      file.update! filename: "gone.3mf"
+      file.update_attribute :filename, "gone.3mf" # rubocop:disable Rails/SkipsModelValidations
       expect { file.destroy }.not_to raise_exception
     end
 

@@ -11,6 +11,7 @@ class ModelFile < ApplicationRecord
   after_create :attach_existing_file!
 
   before_destroy :rescan_duplicates
+  after_commit :reattach!, on: :update, if: :filename_previously_changed?
 
   belongs_to :presupported_version, class_name: "ModelFile", optional: true
   has_one :unsupported_version, class_name: "ModelFile", foreign_key: "presupported_version_id",
