@@ -64,7 +64,7 @@ module Manyfold
       user_name: ENV.fetch("SMTP_USERNAME", nil),
       password: ENV.fetch("SMTP_PASSWORD", nil),
       authentication: ENV.fetch("SMTP_AUTHENTICATION", nil)&.to_sym,
-      openssl_verify_mode: ENV.fetch("SMTP_OPENSSL_VERIFY_MODE", nil)&.to_sym,
+      openssl_verify_mode: ENV.fetch("SMTP_OPENSSL_VERIFY_MODE", nil),
       open_timeout: ENV.fetch("SMTP_OPEN_TIMEOUT", nil)&.to_i,
       read_timeout: ENV.fetch("SMTP_READ_TIMEOUT", nil)&.to_i
     }.compact
