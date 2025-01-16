@@ -4,7 +4,7 @@ module ModelsHelper
     sections = {}
     min_section_size = 2
     min_prefix_length = 3
-    names = files.map(&:basename)
+    names = files.map { |it| it.filename.downcase }
     slice = names.map(&:length).max
     while slice > min_prefix_length
       slice -= 1
@@ -13,7 +13,7 @@ module ModelsHelper
       ready = groups.select { |k, v| v.count >= min_section_size }.map(&:first)
       ready.each do |r|
         names.reject! { |it| it.starts_with? r }
-        sections[r], files = files.partition { |it| it.basename.starts_with? r }
+        sections[r], files = files.partition { |it| it.filename.downcase.starts_with? r }
       end
     end
     # Sort and include empty set
