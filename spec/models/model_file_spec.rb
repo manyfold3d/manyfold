@@ -105,6 +105,12 @@ RSpec.describe ModelFile do
       expect(file.errors[:filename].first).to eq "is not the same file type"
     end
 
+    it "rejects case-only filename change" do # rubocop:disable RSpec/MultipleExpectations
+      file.update(filename: "part_1.3MF")
+      expect(file).not_to be_valid
+      expect(file.errors[:filename].first).to eq "cannot be a case-only change"
+    end
+
     it "removes original file from disk" do
       expect { file.destroy }.to(
         change { File.exist?(File.join(library.path, file.path_within_library)) }.from(true).to(false)

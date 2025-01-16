@@ -110,6 +110,7 @@ en:
           attributes:
             filename:
               cannot_change_type: is not the same file type
+              case_change_only: cannot be a case-only change
             presupported_version:
               already_presupported: cannot be set on a presupported file
               not_supported: is not a presupported file
