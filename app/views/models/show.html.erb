@@ -28,7 +28,7 @@
     <%= render partial: "file", collection: @groups.delete(nil) %>
   </div>
   <% @groups.each_pair do |group, files| %>
-    <h3><a name="<%= group.parameterize %>"><%= group.careful_titleize %></a></h3>
+    <h3><a name="<%= group.parameterize %>"><%= group.strip.careful_titleize %>*</a></h3>
     <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
       <%= render partial: "file", collection: files %>
     </div>
@@ -134,7 +134,7 @@
     <a href="#files">Top</a>
     <ul>
       <% @groups.each_pair do |group, files| %>
-        <li><a href="#<%= group.parameterize %>"><%= group.careful_titleize %></a></li>
+        <li><a href="#<%= group.parameterize %>"><%= group.strip.careful_titleize %>*</a></li>
       <% end %>
     </ul>
     <%= link_to t(".files_card.bulk_edit"), bulk_edit_model_model_files_path(@model), class: "btn btn-secondary" if policy(@model).edit? %>
