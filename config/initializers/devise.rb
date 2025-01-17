@@ -224,6 +224,13 @@ Devise.setup do |config|
   # reset. Defaults to true, so a user is signed in automatically after a reset.
   # config.sign_in_after_reset_password = true
 
+  # ==> Configuration for :zxcvbnable
+  # Change the minimum zxcvbn score for passwords. This determines the strength of
+  # the password that is required. The default is 4, which is the recommended
+  # minimum for a secure password.
+  # Must be a number between 0 and 5.
+  config.min_password_score = ENV.fetch("MIN_PASSWORD_SCORE", "4")&.to_i
+
   # ==> Configuration for :encryptable
   # Allow you to use another hashing or encryption algorithm besides bcrypt (default).
   # You can use :sha1, :sha512 or algorithms from others authentication tools as
