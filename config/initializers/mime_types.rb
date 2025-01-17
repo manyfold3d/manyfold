@@ -31,7 +31,7 @@ Mime::Type.register "model/x-speedtree", :speedtree, [], ["spm"]
 Mime::Type.register "model/x3d", :x3d, ["model/x3d+xml", "model/x3d-vrml", "model/x3d+fastinfoset"]
 
 # Slicer formats
-Mime::Type.register "text/x-gcode", :gcode
+Mime::Type.register "text/x-gcode", :gcode, [], ["bgcode"]
 Mime::Type.register "model/x-lychee", :lychee, [], ["lys", "lyt"]
 Mime::Type.register "model/x-chitubox", :chitubox, [], ["ctb"]
 
