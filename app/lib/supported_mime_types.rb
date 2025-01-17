@@ -71,6 +71,7 @@ module SupportedMimeTypes
         "application/pdf",
         "text/markdown",
         "text/plain",
+        "text/html",
         "application/msword",
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       ].include?(type.to_s)
