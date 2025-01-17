@@ -40,14 +40,7 @@
     </div>
   </div>
 
-  <div class="row mb-3 input-group">
-    <%= form.label :sensitive, class: "col-sm-2 col-form-label" %>
-    <div class="col p-0">
-      <div class="form-switch">
-        <%= form.check_box :sensitive, class: "form-check-input form-check-inline" %>
-      </div>
-    </div>
-  </div>
+  <%= checkbox_input_row form, :sensitive %>
 
   <%= render "caber_relations_form", form: form %>
 
