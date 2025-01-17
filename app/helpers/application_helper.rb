@@ -126,6 +126,19 @@ module ApplicationHelper
     end
   end
 
+  def checkbox_input_row(form, name, options = {})
+    content_tag :div, class: "row mb-3 input-group" do
+      safe_join [
+        form.label(name, class: "col-sm-2 col-form-label"),
+        content_tag(:div, class: "col-sm-10") do
+          content_tag(:div, class: "form-switch") do
+            form.check_box name, class: "form-check-input form-check-inline"
+          end
+        end
+      ]
+    end
+  end
+
   def nav_link(ico, text, path, options = {})
     link_to(
       safe_join(
