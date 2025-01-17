@@ -28,6 +28,9 @@
 
   <p class="lead"><%= t ".form_subtitle" %></p>
 
+  <%= text_input_row form, :pattern %>
+  <%= text_input_row form, :replacement %>
+
   <div class="row mb-3">
     <%= form.label :printed, class: "col-sm-2 col-form-label" %>
     <div class="col-sm-10">

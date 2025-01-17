@@ -65,7 +65,13 @@ class ModelFilesController < ApplicationController
     files.each do |file|
       ActiveRecord::Base.transaction do
         current_user.set_list_state(file, :printed, params[:printed] === "1")
-        file.update(hash)
+        options = {}
+        if params[:pattern].present?
+          options[:filename] =
+            file.filename.split(file.extension).first.gsub(params[:pattern], params[:replacement]) +
+            file.extension
+        end
+        file.update(hash.merge(options))
       end
     end
     if params[:split]
