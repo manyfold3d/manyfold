@@ -45,3 +45,5 @@ Mime::Type.register "application/x-bzip2", :bz2
 
 # Document formats
 Mime::Type.register "text/markdown", :md
+Mime::Type.register "application/msword", :doc
+Mime::Type.register "application/vnd.openxmlformats-officedocument.wordprocessingml.document", :docx
