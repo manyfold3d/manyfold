@@ -60,6 +60,12 @@ RSpec.describe "Model Files" do
         }.to change { stl_file.listers(:printed).include? controller.current_user }.from(false).to(true)
       end
 
+      it "renames selected files" do
+        expect {
+          patch bulk_update_model_model_files_path(model, params: params.merge(pattern: "s", replacement: "n"))
+        }.to change { stl_file.reload.filename }.from("test.stl").to("tent.stl")
+      end
+
       it "does not modify non-selected files" do
         expect {
           patch bulk_update_model_model_files_path(model, params: params.merge(y_up: "1"))
