@@ -2,7 +2,7 @@ module ModelsHelper
   def group(files)
     return {} if files.empty?
     sections = {}
-    min_section_size = 2
+    min_section_size = (files.count * 0.05).round
     min_prefix_length = 3
     names = files.map { |it| it.filename.downcase }
     slice = names.map(&:length).max
