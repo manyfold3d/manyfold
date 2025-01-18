@@ -13,7 +13,8 @@ locales = [
   :de,
   :es,
   :fr,
-  :pl
+  :pl,
+  :ru
 ]
 
 namespace :translation do
