@@ -1,17 +1,10 @@
 <%= form_with model: [@model, @file] do |form| %>
+  <%= text_input_row form, :filename %>
   <% if @file.is_3d_model? %>
-    <div class="form-check form-switch mb-3">
-      <%= form.check_box :printed, class: "form-check-input", checked: current_user.printed?(@file) %>
-      <%= form.label :printed, class: "form-check-label" %>
-    </div>
-    <div class="form-check form-switch mb-3">
-      <%= form.check_box :presupported, class: "form-check-input" %>
-      <%= form.label :presupported, class: "form-check-label" %>
-    </div>
-    <div class="form-check form-switch mb-3">
-      <%= form.check_box :y_up, class: "form-check-input" %>
-      <%= form.label :y_up, class: "form-check-label" %>
-    </div>
+    <%= checkbox_input_row form, :printed, checked: current_user.printed?(@file) %>
+    <%= checkbox_input_row form, :presupported %>
+    <%= checkbox_input_row form, :y_up %>
+
     <% unless @file.presupported %>
       <div class="row mb-3 input-group">
         <%= form.label :presupported_version_id, class: "col-sm-2 col-form-label" %>

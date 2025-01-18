@@ -44,11 +44,11 @@ module SupportedMimeTypes
   end
 
   def self.indexable_types
-    image_types + model_types + video_types + document_types
+    image_types + model_types + video_types + document_types + archive_types
   end
 
   def self.indexable_extensions
-    image_extensions + model_extensions + video_extensions + document_extensions
+    image_extensions + model_extensions + video_extensions + document_extensions + archive_extensions
   end
 
   class << self
@@ -70,7 +70,10 @@ module SupportedMimeTypes
       [
         "application/pdf",
         "text/markdown",
-        "text/plain"
+        "text/plain",
+        "text/html",
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       ].include?(type.to_s)
     end
 

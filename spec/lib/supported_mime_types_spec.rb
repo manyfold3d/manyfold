@@ -31,6 +31,18 @@ RSpec.describe SupportedMimeTypes do
     expect(described_class.document_extensions).to include("txt")
   end
 
+  it "includes HTML files in document list" do # rubocop:todo RSpec/MultipleExpectations
+    expect(described_class.document_types.map(&:to_s)).to include("text/html")
+    expect(described_class.document_extensions).to include("html")
+  end
+
+  it "includes Word docs in document list" do # rubocop:todo RSpec/MultipleExpectations
+    expect(described_class.document_types.map(&:to_s)).to include("application/msword")
+    expect(described_class.document_extensions).to include("doc")
+    expect(described_class.document_types.map(&:to_s)).to include("application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+    expect(described_class.document_extensions).to include("docx")
+  end
+
   it "includes video files in video list" do # rubocop:todo RSpec/MultipleExpectations
     expect(described_class.video_types.map(&:to_s)).to include("video/mp4")
     expect(described_class.video_extensions).to include("mp4")

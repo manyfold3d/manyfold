@@ -28,30 +28,13 @@
 
   <p class="lead"><%= t ".form_subtitle" %></p>
 
-  <div class="row mb-3">
-    <%= form.label :printed, class: "col-sm-2 col-form-label" %>
-    <div class="col-sm-10">
-      <div class="form-switch">
-        <%= form.check_box :printed, class: "form-check-input form-check-inline" %>
-      </div>
-    </div>
-  </div>
-  <div class="row mb-3">
-    <%= form.label :presupported, class: "col-sm-2 col-form-label" %>
-    <div class="col-sm-10">
-      <div class="form-switch">
-        <%= form.check_box :presupported, class: "form-check-input form-check-inline" %>
-      </div>
-    </div>
-  </div>
-  <div class="row mb-3">
-    <%= form.label :y_up, class: "col-sm-2 col-form-label" %>
-    <div class="col-sm-10">
-      <div class="form-switch">
-        <%= form.check_box :y_up, class: "form-check-input form-check-inline" %>
-      </div>
-    </div>
-  </div>
+  <%= text_input_row form, :pattern %>
+  <%= text_input_row form, :replacement %>
+
+  <%= checkbox_input_row form, :printed %>
+  <%= checkbox_input_row form, :presupported %>
+  <%= checkbox_input_row form, :y_up %>
+
   <%= form.submit translate(".submit"), class: "btn btn-primary" %>
   <%= form.submit translate(".split"), name: "split", class: "btn btn-warning" %>
 

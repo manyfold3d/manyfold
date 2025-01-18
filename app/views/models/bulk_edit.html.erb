@@ -46,14 +46,8 @@
         </div>
       </div>
 
-      <div class="row mb-3">
-        <%= form.label :organize, class: "col-sm-2 col-form-label" %>
-        <div class="col-sm-10">
-          <div class="form-switch">
-            <%= form.check_box :organize, class: "form-check-input form-check-inline" %>
-          </div>
-        </div>
-      </div>
+      <%= checkbox_input_row form, :organize %>
+
       <% if @filters[:tag] %>
         <% @filters[:tag].each do |tag| %>
           <%= form.hidden_field :tag, multiple: true, value: tag %>

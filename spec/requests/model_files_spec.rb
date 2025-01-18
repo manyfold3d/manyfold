@@ -39,33 +39,37 @@ RSpec.describe "Model Files" do
     end
 
     describe "PATCH /models/:model_id/model_files/update", :as_moderator do
-      let(:params) do
-        {
-          model_files: {stl_file.public_id => "1", jpg_file.public_id => "0"},
-          y_up: "1",
-          printed: "1",
-          presupported: "1"
-        }
-      end
+      let(:params) { {model_files: {stl_file.public_id => "1", jpg_file.public_id => "0"}} }
 
       it "bulk updates Y Up on the selected files" do
-        patch bulk_update_model_model_files_path(model, params: params)
-        expect(stl_file.reload.y_up).to be_truthy
+        expect {
+          patch bulk_update_model_model_files_path(model, params: params.merge(y_up: "1"))
+        }.to change { stl_file.reload.y_up }.from(false).to(true)
       end
 
       it "bulk updates presupported flag on the selected files" do
-        patch bulk_update_model_model_files_path(model, params: params)
-        expect(stl_file.reload.presupported).to be_truthy
+        expect {
+          patch bulk_update_model_model_files_path(model, params: params.merge(presupported: "1"))
+        }.to change { stl_file.reload.presupported }.from(false).to(true)
       end
 
       it "bulk updates printed flag on the selected files" do
-        patch bulk_update_model_model_files_path(model, params: params)
-        expect(stl_file.listers(:printed)).to include controller.current_user
+        get bulk_edit_model_model_files_path(model) # Do a get so we have controller reference available
+        expect {
+          patch bulk_update_model_model_files_path(model, params: params.merge(printed: "1"))
+        }.to change { stl_file.listers(:printed).include? controller.current_user }.from(false).to(true)
+      end
+
+      it "renames selected files" do
+        expect {
+          patch bulk_update_model_model_files_path(model, params: params.merge(pattern: "s", replacement: "n"))
+        }.to change { stl_file.reload.filename }.from("test.stl").to("tent.stl")
       end
 
       it "does not modify non-selected files" do
-        patch bulk_update_model_model_files_path(model, params: params)
-        expect(jpg_file.reload.y_up).to be_falsy
+        expect {
+          patch bulk_update_model_model_files_path(model, params: params.merge(y_up: "1"))
+        }.not_to change { jpg_file.reload.y_up }
       end
 
       it "splits model" do

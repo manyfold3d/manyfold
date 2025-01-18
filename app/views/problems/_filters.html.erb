@@ -15,8 +15,8 @@
               <label><%= Problem.human_attribute_name :category %></label>
               <select name="category[]" class="form-select" multiple=true>
                 <% Problem::CATEGORIES
-                     .select { |x| Problem::DEFAULT_SEVERITIES[x].present? }
-                     .select { |x| current_user.problem_severity(x) != :silent }
+                     .select { |it| Problem::DEFAULT_SEVERITIES[it].present? }
+                     .select { |it| current_user.problem_severity(it) != :silent }
                      .each do |cat| %>
                   <option
                     value="<%= cat %>"

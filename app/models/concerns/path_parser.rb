@@ -2,7 +2,7 @@ module PathParser
   extend ActiveSupport::Concern
 
   def generate_tags_from_directory_name!
-    tags = File.split(path).last.split(/[\W_+-]/).filter { it.length > 1 }
+    tags = File.split(path).last.split(/[\W_+-]/).filter { |it| it.length > 1 }
     tag_list.add(remove_stop_words(tags))
   end
 

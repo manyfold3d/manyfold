@@ -81,15 +81,6 @@ module ApplicationHelper
     end
   end
 
-  def renderable?(format)
-    case format
-    when "stl", "obj", "3mf", "ply", "gltf", "glb"
-      true
-    else
-      false
-    end
-  end
-
   def text_input_row(form, name, options = {})
     content_tag :div, class: "row mb-3 input-group" do
       safe_join [
@@ -130,6 +121,19 @@ module ApplicationHelper
             errors_for(form.object, name),
             (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
           ].compact
+        end
+      ]
+    end
+  end
+
+  def checkbox_input_row(form, name, options = {})
+    content_tag :div, class: "row mb-3 input-group" do
+      safe_join [
+        form.label(name, class: "col-sm-2 col-form-label"),
+        content_tag(:div, class: "col-sm-10") do
+          content_tag(:div, class: "form-switch") do
+            form.check_box name, class: "form-check-input form-check-inline"
+          end
         end
       ]
     end

@@ -28,14 +28,14 @@ class ModelFilesController < ApplicationController
       redirect_back_or_to [@model, file], notice: t(".conversion_started")
     elsif params[:uploads]
       uploads = begin
-        JSON.parse(params[:uploads])[0]["successful"]
+        JSON.parse(params[:uploads])
       rescue
         []
       end
       uploads.each do |upload|
         ProcessUploadedFileJob.perform_later(
           @model.library.id,
-          upload["response"]["body"],
+          upload,
           model: @model
         )
       end
@@ -65,7 +65,13 @@ class ModelFilesController < ApplicationController
     files.each do |file|
       ActiveRecord::Base.transaction do
         current_user.set_list_state(file, :printed, params[:printed] === "1")
-        file.update(hash)
+        options = {}
+        if params[:pattern].present?
+          options[:filename] =
+            file.filename.split(file.extension).first.gsub(params[:pattern], params[:replacement]) +
+            file.extension
+        end
+        file.update(hash.merge(options))
       end
     end
     if params[:split]
@@ -110,6 +116,7 @@ class ModelFilesController < ApplicationController
 
   def file_params
     params.require(:model_file).permit([
+      :filename,
       :presupported,
       :notes,
       :caption,

@@ -41,7 +41,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails"
-  gem "standard", "~> 1.43.0"
+  gem "standard", "~> 1.44.0"
   gem "factory_bot"
   gem "faker", "~> 3.5"
   gem "guard", "~> 2.19"
@@ -138,15 +138,17 @@ gem "climate_control", "~> 1.2", group: :test
 
 gem "sys-filesystem", "~> 1.5"
 gem "shrine", "~> 3.6"
+gem "tus-server", "~> 2.3"
+gem "shrine-tus", "~> 2.1"
 
-gem "aws-sdk-s3", "~> 1.177"
+gem "aws-sdk-s3", "~> 1.178"
 
 gem "better_content_security_policy", "~> 0.1.4"
 
 gem "devise_zxcvbn", "~> 6.0"
 
 gem "ransack", "~> 4.2"
-gem "federails", "~> 0.4"
+gem "federails", git: "https://gitlab.com/experimentslabs/federails", branch: "22-data-binding-for-incoming-outgoing-objects"
 gem "federails-moderation", "~> 0.2"
 gem "caber"
 

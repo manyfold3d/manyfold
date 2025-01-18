@@ -10,13 +10,13 @@ module UploadsHelper
   end
 
   def uploadable_file_extensions
-    SupportedMimeTypes.archive_extensions + SupportedMimeTypes.indexable_extensions
+    SupportedMimeTypes.indexable_extensions
   end
 
   def input_accept_string
     safe_join [
-      uploadable_file_extensions.map { |x| Mime::EXTENSION_LOOKUP[x].to_s },
-      uploadable_file_extensions.map { |x| ".#{x}" }
+      uploadable_file_extensions.map { |it| Mime::EXTENSION_LOOKUP[it].to_s },
+      uploadable_file_extensions.map { |it| ".#{it}" }
     ].uniq.flatten, ","
   end
 end

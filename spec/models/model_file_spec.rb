@@ -93,6 +93,24 @@ RSpec.describe ModelFile do
     let(:model) { create(:model, library: library, path: "model_one") }
     let(:file) { create(:model_file, model: model, filename: "part_1.3mf", digest: "1234") }
 
+    it "renames file on disk" do # rubocop:disable RSpec/MultipleExpectations
+      file.update!(filename: "newname.3mf")
+      expect(File.exist?(File.join(library.path, "model_one/part_1.3mf"))).to be false
+      expect(File.exist?(File.join(library.path, "model_one/newname.3mf"))).to be true
+    end
+
+    it "rejects filename change if MIME type would change" do # rubocop:disable RSpec/MultipleExpectations
+      file.update(filename: "part_1.stl")
+      expect(file).not_to be_valid
+      expect(file.errors[:filename].first).to eq "is not the same file type"
+    end
+
+    it "rejects case-only filename change" do # rubocop:disable RSpec/MultipleExpectations
+      file.update(filename: "part_1.3MF")
+      expect(file).not_to be_valid
+      expect(file.errors[:filename].first).to eq "cannot be a case-only change"
+    end
+
     it "removes original file from disk" do
       expect { file.destroy }.to(
         change { File.exist?(File.join(library.path, file.path_within_library)) }.from(true).to(false)
@@ -106,7 +124,7 @@ RSpec.describe ModelFile do
     end
 
     it "ignores missing files on deletion" do
-      file.update! filename: "gone.3mf"
+      file.update_attribute :filename, "gone.3mf" # rubocop:disable Rails/SkipsModelValidations
       expect { file.destroy }.not_to raise_exception
     end
 
@@ -148,6 +166,18 @@ RSpec.describe ModelFile do
     it "clears presupported version if presupported file is set to unsupported" do
       presupported.update!(presupported: false)
       expect(unsupported.reload.presupported_version).to be_nil
+    end
+  end
+
+  {
+    stl: true,
+    png: false,
+    pdf: false,
+    lys: false
+  }.each_pair do |extension, result|
+    it "shows that #{extension} files are#{"n't" if result == false} renderable" do
+      file = create(:model_file, filename: "test.#{extension}")
+      expect(file.is_renderable?).to be result
     end
   end
 end

@@ -310,7 +310,7 @@ pl:
     index:
       create_actor: dodany przez %{name} %{time} temu
       how_long_ago: "%{time} temu"
-      no_activities:
+      no_activities: Na razie nie ma żadnych aktywności do wyświetlenia.
       recent_activity: Ostatnia Aktywność
       search:
         placeholder: Czego szukasz?

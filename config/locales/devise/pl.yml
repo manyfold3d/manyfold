@@ -147,9 +147,9 @@ pl:
           label: Kolor obiektu
         render_style:
           label: Styl renderowania
-          lambert: Realistycznie cieniowany
+          lambert: Płynnie cieniowany
           normals: Kierunek powierzchni
-          shadowed:
+          shadowed: Realistyczne z cieniami
         show_grid:
           label: Pokaż płaszczyznę podłoża
       signed_up: Witaj! Rejestracja zakończyła się pomyślnie.

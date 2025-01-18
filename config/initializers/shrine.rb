@@ -1,5 +1,11 @@
+require "tus/server"
+require "tus/storage/filesystem"
+
 Rails.application.config.after_initialize do
   Library.register_all_storage
+
+  Tus::Server.opts[:storage] = Tus::Storage::Filesystem.new("tmp/shrine")
+  Tus::Server.opts[:max_size] = SiteSettings.max_file_upload_size
 
   begin
     upload_options = {cache: {move: true}}

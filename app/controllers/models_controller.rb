@@ -67,7 +67,7 @@ class ModelsController < ApplicationController
     authorize :model
     library = Library.find_param(params[:library])
     uploads = begin
-      JSON.parse(params[:uploads])[0]["successful"]
+      JSON.parse(params[:uploads])
     rescue
       []
     end
@@ -75,7 +75,7 @@ class ModelsController < ApplicationController
     uploads.each do |upload|
       ProcessUploadedFileJob.perform_later(
         library.id,
-        upload["response"]["body"],
+        upload,
         owner: current_user,
         creator_id: params[:creator_id],
         collection_id: params[:collection_id],
@@ -99,7 +99,7 @@ class ModelsController < ApplicationController
   end
 
   def merge
-    if params[:target] && (target = (@model.parents.find { it.public_id == params[:target] }))
+    if params[:target] && (target = (@model.parents.find { |it| it.public_id == params[:target] }))
       @model.merge_into! target
       redirect_to target, notice: t(".success")
     elsif params[:all] && @model.contains_other_models?
