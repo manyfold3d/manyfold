@@ -437,8 +437,8 @@ en:
       message: Your account has been approved; you may now sign in at %{link}.
       subject: Account approved
     test_email:
-      test_email_message: Test email
       subject: Test email
+      test_email_message: Test email
   views:
     pagination:
       first: "« First"
