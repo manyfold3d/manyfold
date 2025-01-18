@@ -9,6 +9,7 @@ en:
       select: Select model '%{name}'
       select_all: Select all models
       submit: Update Selected Models
+      update_all: Update All Models
       title: Bulk Edit Models
     bulk_fields:
       add_tags: Add tags

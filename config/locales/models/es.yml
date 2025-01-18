@@ -9,6 +9,7 @@ es:
       select: Seleccione el modelo '%{name}'
       select_all: Seleccione todos los modelos
       submit: Actualizar modelos seleccionados
+      update_all: Actualizar todos los modelos
       title: Edición masiva de modelos
     bulk_fields:
       add_tags: Añadir etiquetas
