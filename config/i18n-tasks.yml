@@ -8,7 +8,8 @@ locales: [
   es,
   de,
   fr,
-  pl
+  pl,
+  nl
 ]
 ## Reporting locale, default: en. Available: en, ru.
 # internal_locale: en

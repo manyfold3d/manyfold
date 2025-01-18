@@ -1,0 +1,199 @@
+---
+nl:
+  devise:
+    confirmations:
+      confirmed: Je e-mailadres is succesvol bevestigd.
+      new:
+        resend_confirmation_instructions: Verstuur bevestigingsinstructies opnieuw
+      send_instructions: Je ontvangt binnen enkele minuten een e-mail met instructies om je e-mailadres te bevestigen.
+      send_paranoid_instructions: Als je e-mailadres in onze database bestaat, ontvang je binnen enkele minuten een e-mail met instructies om je e-mailadres te bevestigen.
+    failure:
+      already_authenticated: Je bent al ingelogd.
+      inactive: Je account is nog niet geactiveerd.
+      invalid: Ongeldig %{authentication_keys} of wachtwoord.
+      last_attempt: Je hebt nog één poging voordat je account tijdelijk wordt vergrendeld.
+      locked: Je account is voor een uur vergrendeld; probeer het later opnieuw.
+      not_approved: Je account is nog niet goedgekeurd door een moderator.
+      not_found_in_database: Ongeldig %{authentication_keys} of wachtwoord.
+      timeout: Je sessie is verlopen. Log opnieuw in om door te gaan.
+      unauthenticated: Je moet inloggen of registreren om door te gaan.
+      unconfirmed: Je moet je e-mailadres bevestigen voordat je door kunt gaan.
+    mailer:
+      confirmation_instructions:
+        action: Bevestig mijn account
+        greeting: Welkom %{recipient}!
+        instruction: 'Je kunt je account bevestigen via onderstaande link:'
+        subject: Bevestigingsinstructies
+      email_changed:
+        greeting: Hallo %{recipient}!
+        message: We nemen contact op om je te laten weten dat je e-mailadres is gewijzigd naar %{email}.
+        message_unconfirmed: We nemen contact op om je te laten weten dat je e-mailadres wordt gewijzigd naar %{email}.
+        subject: E-mail Gewijzigd
+      password_change:
+        greeting: Hallo %{recipient}!
+        message: We nemen contact op om je te laten weten dat je wachtwoord is gewijzigd.
+        subject: Wachtwoord Gewijzigd
+      reset_password_instructions:
+        action: Wijzig mijn wachtwoord
+        greeting: Hallo %{recipient}!
+        instruction: Iemand heeft een link aangevraagd om je wachtwoord te wijzigen. Dit kun je doen via onderstaande link.
+        instruction_2: Als je dit niet hebt aangevraagd, negeer dan deze e-mail.
+        instruction_3: Je wachtwoord wordt niet gewijzigd totdat je de bovenstaande link opent en een nieuw wachtwoord aanmaakt.
+        subject: Instructies voor het opnieuw instellen van je wachtwoord
+      unlock_instructions:
+        action: Ontgrendel mijn account
+        greeting: Hallo %{recipient}!
+        instruction: 'Klik op onderstaande link om je account te ontgrendelen:'
+        message: Je account is vergrendeld vanwege te veel mislukte inlogpogingen.
+        subject: Ontgrendelingsinstructies
+    omniauth_callbacks:
+      failure: We konden je niet authenticeren via %{kind} omdat "%{reason}".
+      success: Succesvol geauthenticeerd via %{kind} account.
+    passwords:
+      edit:
+        change_my_password: Wijzig mijn wachtwoord
+        change_your_password: Wijzig je wachtwoord
+        confirm_new_password: Bevestig nieuw wachtwoord
+        new_password: Nieuw wachtwoord
+      new:
+        forgot_your_password: Wachtwoord vergeten?
+        send_me_reset_password_instructions: Stuur me instructies voor het opnieuw instellen van mijn wachtwoord
+      no_token: Je kunt deze pagina niet bezoeken zonder te komen van een wachtwoord reset e-mail. Als je wel van een wachtwoord reset e-mail komt, zorg er dan voor dat je de volledige URL gebruikt.
+      send_instructions: Je ontvangt binnen enkele minuten een e-mail met instructies om je wachtwoord opnieuw in te stellen.
+      send_paranoid_instructions: Als je e-mailadres in onze database bestaat, ontvang je binnen enkele minuten een link om je wachtwoord te herstellen in je e-mail.
+      updated: Je wachtwoord is succesvol gewijzigd. Je bent nu ingelogd.
+      updated_not_active: Je wachtwoord is succesvol gewijzigd.
+    registrations:
+      destroyed: Tot ziens! Je account is succesvol verwijderd. We hopen je snel weer te zien.
+      edit:
+        are_you_sure: Weet je het zeker?
+        cancel_my_account: Verwijder mijn account
+        confirm_deletion: Weet je zeker dat je je account wilt verwijderen?
+        contact_info: Contactinformatie
+        current_password_help: Huidig wachtwoord vereist voor beveiliging
+        currently_waiting_confirmation_for_email: 'Wacht op bevestiging voor: %{email}'
+        danger_zone: Gevarenzone!
+        leave_blank_if_you_don_t_want_to_change_it: laat leeg als je het niet wilt wijzigen
+        security: Beveiliging
+        submit: Wijzigingen opslaan
+        title: Mijn Instellingen
+        unhappy: Ontevreden?
+        update: Bijwerken
+        we_need_your_current_password_to_confirm_your_changes: we hebben je huidige wachtwoord nodig om je wijzigingen te bevestigen
+      file_list_settings:
+        heading: Bestandslijsten
+        hide_presupported_versions:
+          label: Combineer gekoppelde niet-ondersteunde en voorondersteunde bestanden
+        summary: Bepaal hoe modelbestandslijsten worden weergegeven
+      first_use:
+        email_help: Nooit publiekelijk zichtbaar; alleen gebruikt voor inloggen en account beveiligingsmails.
+        guidance: Bij eerste gebruik moet je een gebruikersnaam, contact e-mail en wachtwoord instellen voor de hoofdbeheerder. Als je in enkele-gebruiker modus draait, hoef je deze gegevens normaal gesproken niet in te voeren om in te loggen, maar in multi-gebruiker modus kun je Manyfold niet gebruiken zonder deze gegevens.
+        submit: Opslaan
+        title: Setup
+        username_help: Een unieke gebruikersnaam; gebruik de vooraf gegenereerde of kies je eigen.
+      general_settings:
+        heading: Algemeen
+        interface_language:
+          autodetect: Gebruik browserinstellingen
+          help: 'Let op: sommige onvertaalde teksten kunnen nog steeds in het Engels verschijnen.'
+          label: Interfacetaal
+        sensitive_content:
+          help: Beïnvloedt hoe inhoud gemarkeerd als "gevoelig" wordt weergegeven
+          hide: Volledig verbergen
+          label: Gevoelige Inhoud
+          mask: Vervagen in lijsten
+          show: Normaal weergeven
+      new:
+        approval_help: Na het aanmaken van je account wordt het handmatig beoordeeld door onze moderators. We laten je weten wanneer de goedkeuring voltooid is en je kunt inloggen.
+        sign_up: Registreren
+      pagination_settings:
+        collections:
+          label: Pagineer collecties
+        creators:
+          label: Pagineer makers
+        description: Toon slechts een bepaald aantal items tegelijk in lijstpagina's, in plaats van alles in één keer. Dit kan het laden versnellen.
+        heading: Paginering
+        models:
+          label: Pagineer modellen
+        per_page:
+          label: Items per pagina
+      problem_settings:
+        description: Wijzig de ernst van gedetecteerde problemen of negeer ze volledig.
+        title: Probleemdetectie
+      renderer_settings:
+        auto_load_max_size:
+          always: Altijd
+          label: Automatisch voorbeelden laden
+          never: Nooit
+          under_1024: Tot 1024 MB
+          under_128: Tot 128 MB
+          under_16: Tot 16 MB
+          under_2: Tot 2 MB
+          under_256: Tot 256 MB
+          under_32: Tot 32 MB
+          under_4: Tot 4 MB
+          under_512: Tot 512 MB
+          under_64: Tot 64 MB
+          under_8: Tot 8 MB
+        background_colour:
+          label: Achtergrondkleur
+        description: Pas instellingen aan voor 3D-gerenderde voorbeelden.
+        enable_pan_zoom:
+          label: Pan/zoom-besturing inschakelen
+        grid_width:
+          label: Grondvlak grootte (mm)
+        heading: Renderer
+        object_colour:
+          label: Objectkleur
+        render_style:
+          label: Renderingstijl
+          lambert: Vloeiende schaduw
+          normals: Oppervlakterichting
+          shadowed: Realistisch met schaduwen
+        show_grid:
+          label: Toon grondvlak
+      signed_up: Welkom! Je hebt je succesvol geregistreerd.
+      signed_up_but_inactive: Je hebt je succesvol geregistreerd. We konden je echter niet inloggen omdat je account nog niet is geactiveerd.
+      signed_up_but_locked: Je hebt je succesvol geregistreerd. We konden je echter niet inloggen omdat je account is vergrendeld.
+      signed_up_but_unconfirmed: Een bericht met een bevestigingslink is verzonden naar je e-mailadres. Volg de link om je account te activeren.
+      tag_cloud_settings:
+        heading: Tag Cloud
+        heatmap:
+          label: Toon tagaantal voor individuele tags
+        keypair:
+          label: Gebruik scheidingsteken voor sleutel-waarde paren
+        sorting:
+          label: Sortering
+        threshold:
+          label: Minimaal aantal van tag voor weergave
+      update:
+        setup_complete: Setup voltooid!
+      update_needs_confirmation: Je hebt je account succesvol bijgewerkt, maar we moeten je nieuwe e-mailadres verifiëren. Controleer je e-mail en volg de bevestigingslink om je nieuwe e-mailadres te bevestigen.
+      updated: Je instellingen zijn succesvol bijgewerkt.
+      updated_but_not_signed_in: Je instellingen zijn succesvol bijgewerkt, maar omdat je wachtwoord is gewijzigd, moet je opnieuw inloggen.
+      user:
+        signed_up_but_not_approved: Je hebt je succesvol geregistreerd. Een moderator zal je account binnenkort beoordelen, waarna je kunt inloggen.
+    sessions:
+      already_signed_out: Je bent al uitgelogd.
+      new:
+        sign_in: Inloggen
+      signed_in: Je bent succesvol ingelogd.
+      signed_out: Je bent succesvol uitgelogd.
+    shared:
+      links:
+        back: Terug
+        didn_t_receive_confirmation_instructions: Geen bevestigingsinstructies ontvangen?
+        didn_t_receive_unlock_instructions: Geen ontgrendelingsinstructies ontvangen?
+        forgot_your_password: Wachtwoord vergeten?
+        sign_in: Inloggen
+        sign_in_with_provider: Inloggen met %{provider}
+        sign_up: Registreren
+      minimum_password_length:
+        one: "(minimaal %{count} teken)"
+        other: "(minimaal %{count} tekens)"
+    unlocks:
+      new:
+        resend_unlock_instructions: Verstuur ontgrendelingsinstructies opnieuw
+      send_instructions: Je ontvangt binnen enkele minuten een e-mail met instructies om je account te ontgrendelen.
+      send_paranoid_instructions: Als je account bestaat, ontvang je binnen enkele minuten een e-mail met instructies om het te ontgrendelen.
+      unlocked: Je account is succesvol ontgrendeld. Log in om door te gaan.

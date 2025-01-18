@@ -1,0 +1,89 @@
+---
+nl:
+  problems:
+    categories:
+      duplicate: Dubbele bestanden
+      empty: Model of bestand is leeg
+      inefficient: Inefficiënte formaten
+      inside_out: Mesh is binnenstebuiten
+      missing: Ontbrekende bestanden of mappen
+      nesting: Model bevat andere modellen
+      no_3d_model: Model heeft geen 3D-bestanden
+      no_creator: Model is niet toegewezen aan een maker
+      no_image: Model heeft geen afbeeldingsbestanden
+      no_license: Model heeft geen licentie-informatie
+      no_links: Model heeft geen bronlinks
+      no_tags: Model heeft geen tags
+      non_manifold: Mesh is niet-manifold
+    filters:
+      apply_filters: Toepassen
+      clear_filters: Wissen
+      show_ignored: Toon verborgen items
+      title: Filters
+    index:
+      bulk_confirm: Weet je zeker dat je alle geselecteerde problemen automatisch wilt oplossen? Dit kan bestanden en gegevens verwijderen.
+      bulk_resolve: Geselecteerde problemen oplossen
+      description: Beschrijving
+      ignore: Verbergen
+      item: Item
+      no_problems: Geen problemen gevonden met de huidige filters.
+      resolve: Oplossen
+      select: Selecteren
+      select_all: Alles selecteren
+      unignore: Tonen
+    model:
+      empty:
+        description: Dit model bevat geen bestanden. Verwijder het of zoek uit waar de bestanden zijn gebleven!
+        title: Geen bestanden
+      missing:
+        description: De map voor dit model ontbreekt op schijf; verwijder het of zoek uit waar het is gebleven!
+        title: Map niet gevonden
+      nesting:
+        description: De modelmap op schijf bevat andere modellen. Je kunt ze samenvoegen in dit model of ze verplaatsen.
+        title: Bevat andere modellen
+        warning: Bulksgewijs samenvoegen verplaatst alle bestanden van bovenstaande modellen naar dit model en verwijdert ze. Bestandsmetadata blijft behouden, maar modelmetadata gaat verloren!
+      no_3d_model:
+        description: Dit model bevat geen 3D-bestanden. Dat is waarschijnlijk niet correct.
+        title: Geen 3D-bestanden in model
+      no_creator:
+        description: We weten niet wie dit model heeft gemaakt; voeg een maker toe om te helpen bij het catalogiseren!
+        title: Model is niet toegewezen aan een maker
+      no_image:
+        description: Dit model bevat geen afbeeldingsbestanden. Het toevoegen van een afbeelding kan het bladeren makkelijker maken.
+        title: Geen afbeeldingsbestanden in model
+      no_license:
+        description: Dit model heeft geen gespecificeerde licentie. Het toevoegen van een licentie maakt duidelijker of en hoe het kan worden gedeeld.
+        title: Model heeft geen licentie-informatie
+      no_links:
+        description: Dit model heeft geen links naar andere bronnen. Als het ook elders beschikbaar is, kun je een link toevoegen.
+        title: Model heeft geen bronlinks
+      no_tags:
+        description: Dit model heeft geen tags, wat het moeilijker maakt om te vinden. Voeg wat tags toe om te helpen!
+        title: Model heeft geen tags
+    model_file:
+      duplicate:
+        description: Dit bestand is gedupliceerd in andere modellen. Je kunt er eventueel enkele verwijderen.
+        title: Gedupliceerd bestand
+      empty:
+        description: Dit bestand heeft een grootte van nul! Dit is waarschijnlijk niet correct; verwijder het bestand of scan het model opnieuw om te controleren.
+        title: Leeg bestand
+      inefficient:
+        description: Dit bestand is in %{note}, een inefficiënt bestandsformaat. Overweeg het te converteren naar een binair formaat zoals 3MF om schijfruimte te besparen.
+        title: Inefficiënt formaat
+      inside_out:
+        description: Deze mesh lijkt vlakken te hebben die de verkeerde kant op wijzen, wat printfouten kan veroorzaken. Repareer het in een 3D-modelleertool zoals MeshLab of 3D Builder.
+        title: Binnenstebuiten mesh
+      missing:
+        description: Dit bestand ontbreekt op schijf; verwijder het of zoek uit waar het is gebleven!
+        title: Bestand niet gevonden
+      non_manifold:
+        description: Deze mesh lijkt niet-manifold te zijn, wat betekent dat er gaten zijn of sommige vlakken achterstevoren zitten, en dit kan fouten veroorzaken bij het printen. Repareer het in een 3D-modelleertool zoals MeshLab of 3D Builder.
+        title: Niet-manifold mesh
+    severities:
+      danger: Gevaar
+      info: Info
+      silent: Genegeerd
+      warning: Waarschuwing
+    update:
+      ignored: 'Probleem verborgen op "%{name}": %{message}'
+      unignored: 'Probleem hersteld op "%{name}": %{message}'
