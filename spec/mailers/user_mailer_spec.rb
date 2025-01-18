@@ -20,7 +20,7 @@ RSpec.describe UserMailer do
 
   describe "test_email" do
     let(:user) { create(:user) }
-    let(:mail) { described_class.with(user: user).test_email}
+    let(:mail) { described_class.with(user: user).test_email }
 
     it "sets correct subject" do
       expect(mail.subject).to eq("Test email")
