@@ -1,0 +1,48 @@
+---
+nl:
+  libraries:
+    create:
+      failure: Er is een fout opgetreden en de bibliotheek kon niet worden opgeslagen.
+      success: Nieuwe bibliotheek aangemaakt!
+    destroy:
+      success: Bibliotheek verwijderd!
+    form:
+      add_line: Regel toevoegen
+      caption:
+        help: Optioneel; wordt weergegeven als tooltip op bibliotheeklinks.
+      filesystem_description_html: Om opslag op je lokale bestandssysteem te gebruiken, zorg er eerst voor dat het is gekoppeld als een <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> of ander volume in je Docker container, en voer dan het Docker-pad in; niet het pad op je hostserver! Bijvoorbeeld, als je een map met bestanden hebt op <code>/mnt/media/3d/models</code> op je host, en <code>/mnt/media/3d</code> hebt gekoppeld aan <code>/libraries</code> in je Docker-configuratie, dan zou het vereiste pad <code>/libraries/models</code> zijn.
+      icon:
+        help_html: Optioneel; elk pictogram van <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a> of <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
+        placeholder: boxes
+      notes:
+        help_html: Optioneel; alleen zichtbaar voor beheerders op de instellingenpagina. Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
+      path:
+        placeholder: "/libraries/models"
+      s3_bucket:
+        help: Alleen de bucket-naam, niet de volledige URL
+      s3_description_html: Manyfold kan elke S3-compatibele objectopslag gebruiken voor je bibliotheek; dit kan van een groot aantal <a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">open source</a> of <a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">commerciële</a> diensten zijn.
+      s3_endpoint:
+        help: Optioneel; alleen nodig voor S3-compatibele diensten, niet voor AWS.
+      tag_regex:
+        help: Controleer op modellen die tags missen die overeenkomen met deze regex.
+    general:
+      edit: Bibliotheek Bewerken
+      new: Nieuwe Bibliotheek
+    index:
+      description: Bekijk bibliotheekdetails en wijzig.
+      free_space:
+        label: Vrije Ruimte
+      heading: Bibliotheken
+      tag_regex:
+        check: Controleren
+        search_missing: Zoek Ontbrekende
+    scan:
+      success: Bibliotheekscan gestart.
+    scan_all:
+      success: Scan gestart voor alle bibliotheken.
+    storage_services:
+      filesystem: Lokaal bestandssysteem
+      s3: S3-compatibele cloudopslag
+    update:
+      failure: Er is een fout opgetreden en de bibliotheek kon niet worden opgeslagen.
+      success: Bibliotheekdetails opgeslagen.

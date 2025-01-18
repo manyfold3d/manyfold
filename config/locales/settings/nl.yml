@@ -1,0 +1,125 @@
+---
+nl:
+  settings:
+    analysis:
+      description: Voer diepe mesh-analyse uit op modellen. Deze opties maken je scans aanzienlijk langer en gebruiken veel meer CPU en geheugen.
+      heading: Mesh-analyse
+      manifold:
+        help: Controleer op niet-manifold meshes (d.w.z. ze hebben gaten of onmogelijke oppervlakken)
+        label: Detecteer mesh-fouten
+    domain_blocks:
+      create:
+        success: Domeinblokkering succesvol aangemaakt.
+      destroy:
+        success: Domeinblokkering verwijderd.
+      index:
+        confirm_destroy: Weet je zeker dat je deze domeinblokkering wilt verwijderen en federatie weer wilt inschakelen?
+        description: Domeinblokkeringen voorkomen federatie met ActivityPub-servers op de opgegeven domeinen, inclusief alle subdomeinen.
+        new: Nieuwe domeinblokkering
+        title: Domeinblokkeringen
+      new:
+        submit: Domein blokkeren
+        title: Nieuwe Domeinblokkering
+    folder_settings:
+      details: Mapstructuur volgt een sjabloon dat je definieert met tokens. Je kunt ook andere tekst in het sjabloon opnemen (zoals mapscheidingstekens) en deze wordt ongewijzigd opgenomen.
+      model_path_template:
+        label: Model pad sjabloon
+      parse_metadata_from_path:
+        help: Stelt maker, collectie en tags in op basis van sjabloon
+        label: Vul metadata in vanuit pad en sjabloon tijdens scan
+      safe_folder_names:
+        help_html: bijv. <code>spinal-tap</code> in plaats van <code>Spın̈al Tap</code>
+        label: Gebruik veilige mapnamen
+      summary: Definieer de mapstructuur die wordt gebruikt door "bestanden organiseren" en voor het automatisch invullen van metadata tijdens het scannen. Beïnvloedt alle gebruikers.
+      title: Mapnaamgeving
+      tokens:
+        collection: De titel van de collectie waarin het model zich bevindt, indien ingesteld.
+        creator: De naam van de maker, indien ingesteld.
+        model_id: Een unieke numerieke identificatie voor het model. We raden sterk aan om dit altijd aan het einde van je sjabloon op te nemen om naamconflicten op schijf te voorkomen.
+        model_name: Een bestandssysteem-veilige versie van de modelnaam.
+        tags_html: 'een reeks geneste mappen, één voor elke tag, gerangschikt op volgorde van tagpopulariteit. Bijvoorbeeld: <code>fantasy/human/wizard</code>'
+    general:
+      submit: Instellingen Opslaan
+    multiuser:
+      approve_signups:
+        help: Alle nieuwe accounts moeten worden goedgekeurd door een moderator voordat ze kunnen inloggen.
+        label: Accounts goedkeuren
+      default_viewer_role:
+        help: Wie kan standaard nieuwe modellen / makers / collecties bekijken?
+        label: Standaard zichtbaarheid
+        options:
+          member: Ingelogde lokale gebruikers
+          none: Privé
+      details_html: Om deze instellingen te wijzigen, bewerk de <a href='https://manyfold.app/sysadmin/configuration.html'>omgevingsvariabelen</a> van de server en herstart.
+      email: E-mailbezorging geconfigureerd?
+      federation: Federatie ingeschakeld?
+      heading: Multi-gebruiker
+      multiuser: Multi-gebruiker modus?
+      multiuser_mode: Manyfold draait in multi-gebruiker modus.
+      oidc: OpenID Connect geconfigureerd?
+      permissions: Machtigingen
+      registration: Accountregistratie
+      registration_open: Accountregistratie open?
+      single_user_mode: Manyfold draait in enkele-gebruiker modus.
+    reporting:
+      description_html: Als je gebruiksregistratie inschakelt, wordt de volgende informatie eenmaal per dag verzonden naar <code>%{endpoint}</code>. De <code>id</code> wordt willekeurig gegenereerd wanneer je registratie inschakelt.
+      heading: Gebruiksregistratie
+      report_usage:
+        label: Schakel anonieme gebruiksregistratie in
+      summary: Laat de ontwikkelaars weten dat je Manyfold gebruikt.
+      use_of_data: Er wordt geen andere informatie verzonden of opgeslagen, en de ontwikkelaars zullen de informatie nooit voor een ander doel gebruiken dan het meten van hoeveel instanties van Manyfold er draaien en welke versie ze hebben.
+      verification_html: Als je wilt verifiëren wat we verzenden, kun je de <code>USAGE_REPORTING_URL</code> omgevingsvariabele wijzigen en de gegevens ergens naartoe sturen waar je ze kunt inspecteren. Je kunt ook precies zien wat er wordt verzonden in het logboek.
+    reports:
+      index:
+        description: Inhoud die is gerapporteerd door lokale of Fediverse-gebruikers verschijnt hier voor moderatie.
+        title: Meldingen
+      show:
+        ignore: Negeren
+        resolve: Markeren als opgelost
+      update:
+        ignored: De melding is genegeerd.
+        resolved: De melding is gemarkeerd als opgelost.
+    tag_settings:
+      auto_tag_new:
+        label: Tag nieuwe modellen automatisch met
+      custom_stop_words:
+        label: Aangepaste stopwoorden
+      description: Voeg tags toe aan alle nieuw gescande modellen en filter bepaalde woorden ("stopwoorden") uit tijdens automatische tagcreatie. Beïnvloedt alle gebruikers.
+      filter_stop_words:
+        label: Filter stopwoorden uit
+      heading: Taggen
+      stop_words_locale:
+        label: Stopwoorden taal
+      tag_model_directory_name:
+        help: 'Waarschuwing: Kan veel tags produceren!'
+        label: Maak tags van modelmapnaam
+    update:
+      success: Instellingen opgeslagen.
+    users:
+      create:
+        success: Gebruiker succesvol aangemaakt.
+      destroy:
+        success: Gebruiker verwijderd!
+      edit:
+        title: 'Bewerk gebruiker: %{username}'
+      form:
+        password_reset_help: Er wordt automatisch een link naar de gebruiker gestuurd zodat ze hun eigen wachtwoord kunnen instellen.
+        submit: Opslaan
+      index:
+        description: Bekijk en bewerk geregistreerde gebruikersaccounts.
+        fediverse_address: Fediverse-adres
+        local: Lokaal
+        new: Nieuwe gebruiker
+        title: Beheer Gebruikers
+        view: Bekijken
+      new:
+        title: Gebruiker aanmaken
+      show:
+        approve: Gebruiker goedkeuren
+        confirm_destroy: Weet je zeker dat je dit gebruikersaccount direct wilt verwijderen? Dit kan niet ongedaan worden gemaakt!
+        reset_password: Wachtwoord resetten
+        title: 'Gebruikersdetails: %{username}'
+      update:
+        approved: Gebruiker is succesvol goedgekeurd.
+        reset_link_sent: Er is een link naar de gebruiker gestuurd om een nieuw wachtwoord in te stellen.
+        success: Gebruiker succesvol bijgewerkt.

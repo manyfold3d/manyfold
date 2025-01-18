@@ -1,0 +1,30 @@
+---
+nl:
+  creators:
+    create:
+      success: Nieuwe makerdetails opgeslagen.
+    creator:
+      edit_button:
+        label: Bewerk maker %{name}
+        text: Bewerken
+      models_button:
+        label: Toon modellen van %{name}
+    destroy:
+      success: Maker verwijderd!
+    form:
+      notes:
+        help_html: Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
+    general:
+      edit: Maker Bewerken
+      new: Nieuwe Maker
+    get_creator:
+      unknown: Onbekend
+    index:
+      skip_creators: Makerslijst overslaan
+    show:
+      edit: Makerprofiel Bewerken
+    unassigned:
+      caption: Alle modellen zonder bekende maker.
+      name: Niet toegewezen
+    update:
+      success: Makerdetails opgeslagen.

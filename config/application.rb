@@ -46,7 +46,8 @@ module Manyfold
       :de,
       :es,
       :fr,
-      :pl
+      :pl,
+      :nl
     ]
 
     # Don't generate system test files.

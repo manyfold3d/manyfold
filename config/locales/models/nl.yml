@@ -1,0 +1,94 @@
+---
+nl:
+  models:
+    bulk_edit:
+      description: 'Selecteer modellen om te wijzigen:'
+      form_subtitle: 'Selecteer aan te brengen wijzigingen:'
+      needs_organizing: Moet worden georganiseerd
+      remove_tags: Tags verwijderen
+      select: Selecteer model '%{name}'
+      select_all: Selecteer alle modellen
+      submit: Geselecteerde Modellen Bijwerken
+      title: Modellen Bulksgewijs Bewerken
+    bulk_fields:
+      add_tags: Tags toevoegen
+    bulk_update:
+      success: Modellen succesvol bijgewerkt.
+    create:
+      success: Bestand(en) succesvol geüpload.
+    destroy:
+      confirm: Dit zal bijbehorende bestanden verwijderen als ze op schijf bestaan. Weet je zeker dat je wilt doorgaan?
+      success: Model verwijderd!
+    exceeds_max_size: 'Geselecteerd bestand overschrijdt maximale grootte: %{max_size} MiB.'
+    file:
+      open_button:
+        label: Bekijk details voor %{name}
+        text: Openen
+      set_as_preview: Als voorbeeld instellen
+    form:
+      notes:
+        help_html: Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
+      preview_file:
+        help: Het bestand dat wordt weergegeven als modelvoorbeeld op bibliotheekpagina's
+      tags: Tags
+    general:
+      edit: Model Bewerken
+    image_carousel:
+      next: Volgende
+      play_pause: Afbeeldingen afspelen of pauzeren
+      previous: Vorige
+      select_slide: Kies weer te geven afbeelding
+      slide_label: "%{name} (%{index} van %{count})"
+    list:
+      bulk_edit: Alle Modellen Bewerken
+      no_results_html: Sorry, we konden niets vinden om te tonen! Probeer je filters of zoektermen aan te passen, of upload wat modellen.
+      skip_models: Modellijst overslaan
+    merge:
+      success: Modellen succesvol samengevoegd.
+    new:
+      description: Voeg nieuwe modellen toe door bestanden te uploaden! Als je een gecomprimeerd archief uploadt, wordt het uitgepakt en wordt het één model met alle bestanden. Als je losse bestanden uploadt, wordt elk bestand een apart model.
+      files:
+        label: Selecteer Bestanden
+      free_space: "(%{available} vrij)"
+      library:
+        help: De bibliotheek om naar te uploaden.
+      submit: Modellen aanmaken
+      title: Uploaden
+    problem:
+      merge_all: Alles samenvoegen
+    scan:
+      success: Modelscan gestart
+    show:
+      download:
+        file_type: Alleen %{type} Bestanden
+        label: Alles Downloaden
+        menu_header: Download Opties
+        supported: Alleen Ondersteunde Bestanden
+        unsupported: Alleen Niet-ondersteunde Bestanden
+      files: Bestanden
+      files_card:
+        bulk_edit: Alle bestanden bewerken
+        heading: Bestanden
+      license: Licentie
+      merge:
+        heading: Samenvoegen
+        warning: Samenvoegen verplaatst alle bestanden van dit model naar het doelmodel en verwijdert dit model. Bestandsmetadata blijft behouden, maar modelmetadata gaat verloren!
+        with: Samenvoegen met
+      model_details: Modeldetails
+      organize:
+        button_text: Bestanden organiseren
+        confirm:
+          are_you_sure: Weet je zeker dat je dit wilt doen?
+          'no': Nee, annuleren
+          summary_html: De map en bestanden die dit model vormen worden verplaatst van:<br> <code>%{from}</code><br> naar<br> <code>%{to}</code>
+          'yes': Ja, verplaats de bestanden
+      path: Pad
+      rescan: Bestanden opnieuw scannen
+      search: Zoek op internet naar modellen met deze naam
+      submit: Bestanden Uploaden
+      tags: Tags
+      upload_card:
+        heading: Uploaden
+    update:
+      failure: Er is een fout opgetreden en de modeldetails konden niet worden opgeslagen.
+      success: Modeldetails opgeslagen.

@@ -1,0 +1,31 @@
+---
+nl:
+  model_files:
+    bulk_edit:
+      description: 'Selecteer bestanden om te wijzigen:'
+      form_subtitle: 'Selecteer aan te brengen wijzigingen:'
+      select: Selecteer bestand '%{name}'
+      select_all: Selecteer alle bestanden
+      split: Splits geselecteerde bestanden in nieuw model
+      submit: Geselecteerde bestanden bijwerken
+      title: Bestanden Bulksgewijs Bewerken
+    bulk_update:
+      success: Bestanden succesvol bijgewerkt.
+    create:
+      conversion_started: Bestandsconversie gestart. Het geconverteerde bestand zou binnenkort beschikbaar moeten zijn.
+      success: Bestand(en) succesvol geüpload!
+    destroy:
+      confirm: Weet je zeker dat je dit bestand wilt verwijderen van je bestandssysteem?
+      success: Bestand verwijderd!
+    form:
+      notes:
+        help_html: Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
+    general:
+      edit: Bestandsinformatie Bewerken
+    show:
+      convert: Converteren naar 3MF
+      details_heading: Details
+      notes_heading: Notities
+    update:
+      failure: Er is een fout opgetreden en de bestandsdetails konden niet worden opgeslagen.
+      success: Bestandsdetails opgeslagen.
