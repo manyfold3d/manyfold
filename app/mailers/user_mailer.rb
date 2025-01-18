@@ -4,4 +4,10 @@ class UserMailer < ApplicationMailer
     @user = params[:user]
     mail to: @user.email
   end
+
+  def test_email
+    # i18n-tasks-use t('user_mailer.test_email.subject')
+    @user = params[:user]
+    mail to: @user.email
+  end
 end

@@ -17,4 +17,21 @@ RSpec.describe UserMailer do
       expect(mail.body.encoded).to match("Hi")
     end
   end
+
+  describe "test_email" do
+    let(:user) { create(:user) }
+    let(:mail) { described_class.with(user: user).test_email}
+
+    it "sets correct subject" do
+      expect(mail.subject).to eq("Test email")
+    end
+
+    it "sends to user" do
+      expect(mail.to).to eq([user.email])
+    end
+
+    it "renders the body" do
+      expect(mail.body.encoded).to match("Test email")
+    end
+  end
 end
