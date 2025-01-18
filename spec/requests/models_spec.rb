@@ -116,17 +116,35 @@ RSpec.describe "Models" do
 
     describe "GET /models/edit" do # rubocop:todo RSpec/RepeatedExampleGroupBody
       it "shows bulk edit page", :as_moderator do
-        get "/models/edit"
+        get edit_models_path
         expect(response).to have_http_status(:success)
       end
 
       it "sets returnable session param", :as_moderator do
-        get "/models/edit"
+        get edit_models_path
         expect(session[:return_after_new]).to eq "/models/edit"
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { get "/models/edit" }.to raise_error(Pundit::NotAuthorizedError)
+        expect { get edit_models_path }.to raise_error(Pundit::NotAuthorizedError)
+      end
+
+      context "with filters", :as_moderator do
+        let(:tag) { create(:tag) }
+        let!(:tagged_model) { create(:model, library: library, tag_list: [tag.name]) }
+
+        it "shows filtered models" do
+          get edit_models_path(tag: [tag.name])
+          expect(response.body).to include(tagged_model.name)
+        end
+
+        it "doesn't show other models" do
+          get edit_models_path(tag: [tag.name])
+          library.models.each do |model|
+            next if model == tagged_model
+            expect(response.body).not_to include(model.name)
+          end
+        end
       end
     end
 
@@ -145,7 +163,7 @@ RSpec.describe "Models" do
         update[models[0].to_param] = 1
         update[models[1].to_param] = 1
 
-        patch "/models/update", params: {models: update, creator_id: creator.id}
+        patch update_models_path, params: {models: update, creator_id: creator.id}
 
         expect(response).to have_http_status(:redirect)
         models.each { |model| model.reload }
@@ -154,7 +172,7 @@ RSpec.describe "Models" do
       end
 
       it "adds tags to models", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-        patch "/models/update", params: {models: model_params, add_tags: ["a", "b", "c"]}
+        patch update_models_path, params: {models: model_params, add_tags: ["a", "b", "c"]}
 
         expect(response).to have_http_status(:redirect)
         library.models.take(2).each do |model|
@@ -168,7 +186,7 @@ RSpec.describe "Models" do
           model.save
         end
 
-        patch "/models/update", params: {models: model_params, remove_tags: ["a", "b"]}
+        patch update_models_path, params: {models: model_params, remove_tags: ["a", "b"]}
 
         expect(response).to have_http_status(:redirect)
         library.models.take(2).each do |model|
@@ -178,7 +196,7 @@ RSpec.describe "Models" do
       end
 
       it "clears returnable session param", :as_moderator do
-        patch "/models/update", params: {models: model_params, remove_tags: ["a", "b"]}
+        patch update_models_path, params: {models: model_params, remove_tags: ["a", "b"]}
         expect(session[:return_after_new]).to be_nil
       end
 
@@ -187,7 +205,45 @@ RSpec.describe "Models" do
         library.models.take(2).each do |model|
           update[model.to_param] = 1
         end
-        expect { patch "/models/update", params: {models: model_params, remove_tags: ["a", "b"]} }.to raise_error(Pundit::NotAuthorizedError)
+        expect { patch update_models_path, params: {models: model_params, remove_tags: ["a", "b"]} }.to raise_error(Pundit::NotAuthorizedError)
+      end
+
+      context "when updating all filtered models", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
+        let(:tag) { create(:tag) }
+        let!(:tagged_model) { create(:model, library: library, tag_list: [tag.name]) }
+        let(:new_library) { create(:library) }
+
+        let(:params) do
+          {
+            commit: I18n.t("models.bulk_edit.update_all"),
+            new_library_id: new_library.id,
+            tag: [tag.name]
+          }
+        end
+
+        it "updates all models matching the filter" do
+          patch update_models_path, params: params
+
+          library.models.each do |model|
+            next if model == tagged_model
+            expect(model.reload.library_id).to eq(library.id)
+          end
+        end
+      end
+
+      context "with organization", :as_moderator do
+        let(:params) do
+          {
+            models: library.models.take(2).map { |m| [m.to_param, "1"] }.to_h,
+            organize: "1"
+          }
+        end
+
+        it "enqueues organize jobs for selected models" do
+          expect {
+            patch update_models_path, params: params
+          }.to have_enqueued_job(OrganizeModelJob).exactly(2).times
+        end
       end
     end
 
