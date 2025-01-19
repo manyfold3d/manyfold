@@ -8,6 +8,11 @@ class SiteSettings < RailsSettings::Base
   field :model_tags_custom_stop_words, type: :array, default: SupportedMimeTypes.indexable_extensions
   field :model_tags_auto_tag_new, type: :string, default: "!new"
   field :model_path_template, type: :string, default: "{tags}/{modelName}{modelId}"
+  field :model_ignored_files, type: :array, default: [
+    /^\.[^\.]+/, # Hidden files starting with .
+    /.*\/@eaDir\/.*/, # Synology temp files
+    /__MACOSX/ # MACOS resource forks
+  ]
   field :parse_metadata_from_path, type: :boolean, default: true
   field :safe_folder_names, type: :boolean, default: true
   field :analyse_manifold, type: :boolean, default: false
@@ -52,11 +57,7 @@ class SiteSettings < RailsSettings::Base
   end
 
   def self.ignored_file?(pathname)
-    @@patterns ||= [
-      /^\.[^\.]+/, # Hidden files starting with .
-      /.*\/@eaDir\/.*/, # Synology temp files
-      /__MACOSX/ # MACOS resource forks
-    ]
+    @@patterns ||= model_ignored_files
     (File.split(pathname) - ["."]).any? do |path_component|
       @@patterns.any? { |pattern| path_component =~ pattern }
     end

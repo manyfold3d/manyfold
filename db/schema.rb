@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_14_105808) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_19_042234) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -75,9 +75,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_14_105808) do
     t.index ["slug"], name: "index_creators_on_slug", unique: true
   end
 
-  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
-  end
-
   create_table "favorites", force: :cascade do |t|
     t.string "favoritable_type", null: false
     t.integer "favoritable_id", null: false
@@ -121,7 +118,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_14_105808) do
     t.integer "entity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "entity_type", default: "User"
+    t.string "entity_type"
     t.text "public_key"
     t.text "private_key"
     t.string "uuid"
@@ -288,6 +285,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_14_105808) do
     t.index ["var"], name: "index_settings_on_var", unique: true
   end
 
+  create_table "slicers", force: :cascade do |t|
+    t.string "name"
+    t.string "uri"
+    t.boolean "enabled", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -318,11 +323,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_14_105808) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username", null: false
-    t.json "pagination_settings", default: {"models"=>true, "creators"=>true, "collections"=>true, "per_page"=>12}
-    t.json "renderer_settings", default: {"grid_width"=>200, "grid_depth"=>200, "show_grid"=>true, "enable_pan_zoom"=>false, "background_colour"=>"#000000", "object_colour"=>"#cccccc", "render_style"=>"normals"}
-    t.json "tag_cloud_settings", default: {"threshold"=>2, "heatmap"=>true, "keypair"=>true, "sorting"=>"frequency"}
-    t.json "problem_settings", default: {"missing"=>"danger", "empty"=>"info", "nesting"=>"warning", "inefficient"=>"info", "duplicate"=>"warning", "no_image"=>"silent", "no_3d_model"=>"silent", "non_manifold"=>"warning", "inside_out"=>"warning", "no_license"=>"silent", "no_links"=>"silent", "no_creator"=>"silent", "no_tags"=>"silent"}
-    t.json "file_list_settings", default: {"hide_presupported_versions"=>true}
+    t.json "pagination_settings", default: {"models" => true, "creators" => true, "collections" => true, "per_page" => 12}
+    t.json "renderer_settings", default: {"grid_width" => 200, "grid_depth" => 200, "show_grid" => true, "enable_pan_zoom" => false, "background_colour" => "#000000", "object_colour" => "#cccccc", "render_style" => "normals"}
+    t.json "tag_cloud_settings", default: {"threshold" => 2, "heatmap" => true, "keypair" => true, "sorting" => "frequency"}
+    t.json "problem_settings", default: {"missing" => "danger", "empty" => "info", "nesting" => "warning", "inefficient" => "info", "duplicate" => "warning", "no_image" => "silent", "no_3d_model" => "silent", "non_manifold" => "warning", "inside_out" => "warning", "no_license" => "silent", "no_links" => "silent", "no_creator" => "silent", "no_tags" => "silent"}
+    t.json "file_list_settings", default: {"hide_presupported_versions" => true}
     t.string "reset_password_token"
     t.datetime "remember_created_at"
     t.datetime "reset_password_sent_at"

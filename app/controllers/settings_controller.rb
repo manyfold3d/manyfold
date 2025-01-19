@@ -4,6 +4,7 @@ class SettingsController < ApplicationController
   def update
     # Save site-wide settings if user is an admin
     update_folder_settings(params[:folders])
+    update_file_settings(params[:files])
     update_tagging_settings(params[:model_tags])
     update_multiuser_settings(params[:multiuser])
     update_analysis_settings(params[:analysis])
@@ -18,6 +19,11 @@ class SettingsController < ApplicationController
     SiteSettings.model_path_template = settings[:model_path_template].gsub(/^\//, "") # Remove leading slashes
     SiteSettings.parse_metadata_from_path = settings[:parse_metadata_from_path]
     SiteSettings.safe_folder_names = settings[:safe_folder_names]
+  end
+
+  def update_file_settings(settings)
+    return unless settings
+    SiteSettings.model_ignored_files = settings[:model_ignored_files]
   end
 
   def update_tagging_settings(settings)

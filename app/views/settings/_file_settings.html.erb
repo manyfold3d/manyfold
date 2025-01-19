@@ -1,0 +1,13 @@
+<h3><%= t(".title") %></h3>
+<p class='lead'>
+  <%= t ".summary" %>
+</p>
+<div class="row mb-2">
+  <p>
+    <%= t ".custom_ignore_filters.details" %>
+  </p>
+  <%= form.label nil, t(".custom_ignore_filters.label"), for: "files[model_ignored_files]", class: "col-sm-4 col-form-label" %>
+  <div class="col-sm-8 form-check form-switch">
+    <%= form.text_area "files[model_ignored_files]", value: SiteSettings.model_ignored_files.join("\n").gsub(/^\[|\]$/, ""), class: "form-control" %>
+  </div>
+</div>
