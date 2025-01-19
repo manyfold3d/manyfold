@@ -132,7 +132,10 @@ module ApplicationHelper
         form.label(name, class: "col-sm-2 col-form-label"),
         content_tag(:div, class: "col-sm-10") do
           content_tag(:div, class: "form-switch") do
-            form.check_box name, class: "form-check-input form-check-inline"
+            safe_join [
+              form.check_box(name, options.merge(class: "form-check-input form-check-inline")),
+              errors_for(form.object, name)
+            ].compact
           end
         end
       ]
