@@ -28,8 +28,15 @@
 
   <p class="lead"><%= t ".form_subtitle" %></p>
 
-  <%= text_input_row form, :pattern, label: t(".pattern") %>
-  <%= text_input_row form, :replacement, label: t(".replacement") %>
+  <div class="row mb-3">
+    <div class="col col-auto mt-2">
+      <%= t(".rename") %>
+    </div>
+    <div class="col border p-3">
+      <%= text_input_row form, :pattern, label: t(".pattern") %>
+      <%= text_input_row form, :replacement, label: t(".replacement") %>
+    </div>
+  </div>
 
   <%= checkbox_input_row form, :printed, label: ModelFile.human_attribute_name(:printed) %>
   <%= checkbox_input_row form, :presupported, label: ModelFile.human_attribute_name(:presupported) %>
