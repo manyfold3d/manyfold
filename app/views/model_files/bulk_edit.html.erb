@@ -28,12 +28,12 @@
 
   <p class="lead"><%= t ".form_subtitle" %></p>
 
-  <%= text_input_row form, :pattern %>
-  <%= text_input_row form, :replacement %>
+  <%= text_input_row form, :pattern, label: t(".pattern") %>
+  <%= text_input_row form, :replacement, label: t(".replacement") %>
 
-  <%= checkbox_input_row form, :printed %>
-  <%= checkbox_input_row form, :presupported %>
-  <%= checkbox_input_row form, :y_up %>
+  <%= checkbox_input_row form, :printed, label: ModelFile.human_attribute_name(:printed) %>
+  <%= checkbox_input_row form, :presupported, label: ModelFile.human_attribute_name(:presupported) %>
+  <%= checkbox_input_row form, :y_up, label: ModelFile.human_attribute_name(:y_up) %>
 
   <%= form.submit translate(".submit"), class: "btn btn-primary" %>
   <%= form.submit translate(".split"), name: "split", class: "btn btn-warning" %>
