@@ -53,7 +53,7 @@ class User < ApplicationRecord
   end
 
   def printed?(file)
-    listed?(file, scope: :printed)
+    listed?(file, :printed)
   end
 
   def self.ransackable_attributes(auth_object = nil)
