@@ -69,9 +69,11 @@
               <%= nav_link "activity", t(".activity"), activity_path, text_style: "d-lg-none" %>
             </li>
           <% end %>
-          <li class="nav-item">
-            <%= nav_link "gear", t(".settings"), settings_path, text_style: "d-lg-none" %>
-          </li>
+          <% if policy(:settings).index? %>
+            <li class="nav-item">
+              <%= nav_link "gear", t(".settings"), settings_path, text_style: "d-lg-none" %>
+            </li>
+          <% end %>
         <% end %>
         <li class="nav-item">
           <%= form_with url: models_path, method: :get, role: "search" do |f| %>
