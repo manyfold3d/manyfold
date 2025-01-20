@@ -215,7 +215,7 @@ RSpec.describe "Models" do
 
         let(:params) do
           {
-            commit: I18n.t("models.bulk_edit.update_all"),
+            update_all: I18n.t("models.bulk_edit.update_all"),
             new_library_id: new_library.id,
             tag: [tag.name]
           }
