@@ -84,7 +84,7 @@ module ApplicationHelper
   def text_input_row(form, name, options = {})
     content_tag :div, class: "row mb-3 input-group" do
       safe_join [
-        form.label(name, class: "col-auto col-form-label"),
+        form.label(name, options[:label], class: "col-auto col-form-label"),
         content_tag(:div, class: "col p-0") do
           safe_join [
             form.text_field(name, {class: "form-control"}.merge(options)),
@@ -99,7 +99,7 @@ module ApplicationHelper
   def password_input_row(form, name, options = {})
     content_tag :div, class: "row mb-3 input-group" do
       safe_join [
-        form.label(name, class: "col-auto col-form-label"),
+        form.label(name, options[:label], class: "col-auto col-form-label"),
         content_tag(:div, class: "col p-0") do
           safe_join [
             form.password_field(name, {class: "form-control"}.merge(options)),
@@ -114,7 +114,7 @@ module ApplicationHelper
   def rich_text_input_row(form, name, options = {})
     content_tag :div, class: "row mb-3 input-group" do
       safe_join [
-        form.label(name, class: "col-auto col-form-label"),
+        form.label(name, options[:label], class: "col-auto col-form-label"),
         content_tag(:div, class: "col p-0") do
           safe_join [
             form.text_area(name, class: "form-control col-auto"),
@@ -129,7 +129,7 @@ module ApplicationHelper
   def checkbox_input_row(form, name, options = {})
     content_tag :div, class: "row mb-3 input-group" do
       safe_join [
-        form.label(name, class: "col-sm-2 col-form-label"),
+        form.label(name, options[:label], class: "col-sm-2 col-form-label"),
         content_tag(:div, class: "col-sm-10") do
           content_tag(:div, class: "form-switch") do
             safe_join [

@@ -4,6 +4,9 @@ en:
     bulk_edit:
       description: 'Select files to change:'
       form_subtitle: 'Select changes to make:'
+      pattern: Find
+      rename: Rename files
+      replacement: Replace with
       select: Select file '%{name}'
       select_all: Select all files
       split: Split selected files into new model

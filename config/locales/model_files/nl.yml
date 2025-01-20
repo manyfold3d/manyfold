@@ -4,6 +4,9 @@ nl:
     bulk_edit:
       description: 'Selecteer bestanden om te wijzigen:'
       form_subtitle: 'Selecteer aan te brengen wijzigingen:'
+      pattern:
+      rename:
+      replacement:
       select: Selecteer bestand '%{name}'
       select_all: Selecteer alle bestanden
       split: Splits geselecteerde bestanden in nieuw model
