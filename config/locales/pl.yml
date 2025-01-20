@@ -108,6 +108,9 @@ pl:
               nested: nie można zmienić, model zawiera inne modele
         model_file:
           attributes:
+            filename:
+              cannot_change_type: nie jest plikiem tego samego typu
+              case_change_only: nie może być zmianą wyłącznie wielkości liter
             presupported_version:
               already_presupported:
               not_supported:
@@ -422,6 +425,9 @@ pl:
       greeting: Cześć!
       message: Twoje konto zostało zatwierdzone; możesz teraz zalogować się pod adresem %{link}.
       subject: Konto zatwierdzone
+    test_email:
+      subject: Testowy email
+      test_email_message: Testowy email
   views:
     pagination:
       first: "« Pierwsza"
