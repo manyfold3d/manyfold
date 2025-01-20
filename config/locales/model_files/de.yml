@@ -4,9 +4,9 @@ de:
     bulk_edit:
       description: 'Wähle die zu ändernden Dateien aus:'
       form_subtitle: 'Wähle die Änderungen aus, die du vornehmen möchtest:'
-      pattern:
-      rename:
-      replacement:
+      pattern: Finden
+      rename: Dateien umbenennen
+      replacement: Ersetzen durch
       select: Datei '%{name}' auswählen
       select_all: Alle Dateien auswählen
       split: Ausgewählte Dateien in ein neues Modell aufteilen

@@ -108,6 +108,9 @@ de:
               nested: kann nicht geändert werden, Modell enthält andere Modelle
         model_file:
           attributes:
+            filename:
+              cannot_change_type: ist nicht der gleiche Dateityp
+              case_change_only: kann nicht eine reine Falländerung sein
             presupported_version:
               already_presupported: kann nicht auf eine Datei gesetzt werden mit Support Struktur
               not_supported: Ist keine Datei mit Support struktur
@@ -422,6 +425,9 @@ de:
       greeting: Hallo!
       message: Dein Konto wurde genehmigt; Du kannst dich jetzt unter %{link} anmelden.
       subject: Konto genehmigt
+    test_email:
+      subject: Test-E-Mail
+      test_email_message: Test-E-Mail
   views:
     pagination:
       first: "« Anfang"
