@@ -178,8 +178,10 @@ class ModelFile < ApplicationRecord
   memoize :mesh
 
   def reattach!
-    attachment_attacher.attach attachment, storage: model.library.storage_key
-    save!
+    if attachment.id != path_within_library || attachment.storage_key != model.library.storage_key
+      attachment_attacher.attach attachment, storage: model.library.storage_key
+      save!
+    end
   end
 
   def convert_to!(format)
