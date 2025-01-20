@@ -58,7 +58,7 @@
       <%= form.hidden_field :library, value: @filters[:library] if @filters[:library] %>
       <%= form.hidden_field :creator, value: @filters[:creator] if @filters[:creator] %>
       <%= form.submit translate(".submit"), class: "btn btn-primary" %>
-      <%= form.submit translate(".update_all", count: @models.total_count), class: "btn btn-secondary" %>
+      <%= form.submit translate(".update_all", count: @models.total_count), class: "btn btn-secondary", name: "update_all" %>
 
     </div>
     <% if !@filters.empty? %>

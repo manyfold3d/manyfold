@@ -140,7 +140,7 @@ class ModelsController < ApplicationController
     add_tags = Set.new(hash.delete(:add_tags))
     remove_tags = Set.new(hash.delete(:remove_tags))
 
-    models_to_update = if params[:commit] == t("models.bulk_edit.update_all")
+    models_to_update = if params.key?(:update_all)
       # If "Update All Models" was clicked, update all models in the filtered set
       filtered_models(@filters)
     else
