@@ -110,6 +110,9 @@ es:
               nested: no puede ser modificado, el modelo contiene otros modelos
         model_file:
           attributes:
+            filename:
+              cannot_change_type: no es el mismo tipo de archivo
+              case_change_only: El cambio no puede limitarse solo a las mayúsculas y minúsculas
             presupported_version:
               already_presupported: no se puede establecer en un archivo con soporte predefinido
               not_supported: no es un archivo con soporte predefinido.
@@ -426,6 +429,9 @@ es:
       greeting: "¡Hola!"
       message: Su cuenta ha sido aprobada; ya puede iniciar sesión en %{link}.
       subject: Cuenta aprobada
+    test_email:
+      subject: Probar email
+      test_email_message: Probar email
   views:
     pagination:
       first: "« Primera"
