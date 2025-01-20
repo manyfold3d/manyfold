@@ -6,6 +6,17 @@ class Federails::Moderation::ReportPolicy < ApplicationPolicy
     )
   end
 
+  def new?
+    all_of(
+      SiteSettings.multiuser_enabled?,
+      @user.is_member?
+    )
+  end
+
+  def create?
+    new?
+  end
+
   def show?
     index?
   end

@@ -24,6 +24,6 @@ class ReportsController < ApplicationController
     reportable_param = params[:reportable_class].parameterize + "_id"
     id = params[reportable_param]
     @reportable = policy_scope(reportable).find_param(id)
-    authorize @reportable
+    authorize :"federails/moderation/report"
   end
 end
