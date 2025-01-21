@@ -104,7 +104,7 @@ class Library < ApplicationRecord
         region: s3_region,
         access_key_id: s3_access_key_id,
         secret_access_key: s3_secret_access_key,
-        force_path_style: s3_endpoint.present?,
+        force_path_style: s3_endpoint.present? && s3_path_style,
         use_accelerate_endpoint: s3_endpoint.blank?
       )
     else

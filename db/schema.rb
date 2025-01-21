@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_14_105808) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_21_105010) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -196,6 +196,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_14_105808) do
     t.string "s3_access_key_id"
     t.string "s3_secret_access_key"
     t.string "public_id"
+    t.boolean "s3_path_style", default: true, null: false
     t.index ["public_id"], name: "index_libraries_on_public_id"
   end
 
