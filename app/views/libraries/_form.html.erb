@@ -20,6 +20,7 @@
           <%= text_input_row form, :s3_region, autocomplete: false %>
           <%= text_input_row form, :s3_access_key_id, autocomplete: false %>
           <%= password_input_row form, :s3_secret_access_key, autocomplete: false %>
+          <%= checkbox_input_row form, :s3_path_style, help: t(".s3_path_style.help") %>
         </div>
       </div>
     </div>
