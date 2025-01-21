@@ -669,7 +669,8 @@ GEM
       down (~> 5.0)
       http (>= 3.2, < 6)
       shrine (>= 3.0.0.rc, < 4)
-    sidekiq (7.3.7)
+    sidekiq (7.3.8)
+      base64
       connection_pool (>= 2.3.0)
       logger
       rack (>= 2.2.4)
