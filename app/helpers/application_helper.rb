@@ -134,7 +134,8 @@ module ApplicationHelper
           content_tag(:div, class: "form-switch") do
             safe_join [
               form.check_box(name, options.merge(class: "form-check-input form-check-inline")),
-              errors_for(form.object, name)
+              errors_for(form.object, name),
+              (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
             ].compact
           end
         end
