@@ -16,12 +16,12 @@ module PublicIDable
 
   private
 
-  ALPHABET = "bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ0123456789"
+  ALPHABET = "bcdfghjklmnpqrstvwxz0123456789"
 
   def generate_public_id
     return if public_id
     self.public_id = begin
-      Nanoid.generate(size: 8, alphabet: ALPHABET)
+      Nanoid.generate(size: 12, alphabet: ALPHABET)
     end while public_id.nil? || self.class.exists?(public_id: public_id)
   end
 end
