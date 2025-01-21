@@ -30,15 +30,21 @@ class Creator < ApplicationRecord
   def to_activitypub_object
     {
       "@context": {
+        manyfold: "http://manyfold.app/ns#",
         toot: "http://joinmastodon.org/ns#",
         attributionDomains: {
           "@id": "toot:attributionDomains",
           "@type": "@id"
+        },
+        concreteType: {
+          "@id": "manyfold:concreteType",
+          "@type": "@string"
         }
       },
       attributionDomains: [
         [Rails.application.default_url_options[:host], Rails.application.default_url_options[:port]].compact.join(":")
-      ]
+      ],
+      concreteType: "Creator"
     }
   end
 end
