@@ -17,6 +17,10 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
 
+  # Configure SSL and hostname in dev mode for use with ngrok tunnels
+  config.assume_ssl = config.force_ssl = (ENV.fetch("HTTPS_ONLY", nil) === "enabled")
+  config.hosts << ENV["PUBLIC_HOSTNAME"] if ENV.key?("PUBLIC_HOSTNAME")
+
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?
