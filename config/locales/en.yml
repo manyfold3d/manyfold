@@ -311,6 +311,8 @@ en:
       placeholder: Your Fediverse username, e.g. manyfold@3dp.chat
       submit: Take me home
       title: Follow %{name}
+    unfollow_remote_actor:
+      unfollowed: Unfollowed %{actor}
   general:
     delete: Delete
     download: Download

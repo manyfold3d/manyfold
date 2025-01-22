@@ -16,7 +16,7 @@ module Follower
   end
 
   def unfollow(target)
-    f = federails_actor.follows?(target.federails_actor)
+    f = federails_actor.follows?(target.is_a?(Federails::Actor) ? target : target.federails_actor)
     f&.destroy unless f == false
   end
 
