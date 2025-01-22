@@ -138,6 +138,19 @@ class User < ApplicationRecord
     recoverable
   end
 
+  def to_activitypub_object
+    {
+      "@context": {
+        manyfold: "http://manyfold.app/ns#",
+        concreteType: {
+          "@id": "manyfold:concreteType",
+          "@type": "@string"
+        }
+      },
+      concreteType: "User"
+    }
+  end
+
   private
 
   def has_any_role_of?(*args)
