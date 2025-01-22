@@ -15,6 +15,9 @@ changelog:
     - title: 🧑 Accessibility 🧑
       labels:
         - accessibility
+    - title: ⛑️ Trust & Safety ⛑️
+      labels:
+        - trust+safety
     - title: 🌍 Sustainability & Performance 🌍
       labels:
         - sustainability
