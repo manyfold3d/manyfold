@@ -148,7 +148,7 @@ gem "better_content_security_policy", "~> 0.1.4"
 gem "devise_zxcvbn", "~> 6.0"
 
 gem "ransack", "~> 4.2"
-gem "federails", git: "https://gitlab.com/experimentslabs/federails", branch: "22-data-binding-for-incoming-outgoing-objects"
+gem "federails", "~> 0.5"
 gem "federails-moderation", "~> 0.2"
 gem "caber"
 
