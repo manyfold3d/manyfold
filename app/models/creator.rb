@@ -27,6 +27,11 @@ class Creator < ApplicationRecord
     find_by!(slug: param)
   end
 
+  def summary_html
+    return unless caption || notes
+    "<section>#{"<header>#{caption}</header>" if caption}#{Kramdown::Document.new(notes).to_html.rstrip if notes}</section>"
+  end
+
   def to_activitypub_object
     {
       "@context": {
@@ -41,6 +46,7 @@ class Creator < ApplicationRecord
           "@type": "@string"
         }
       },
+      summary: summary_html,
       attributionDomains: [
         [Rails.application.default_url_options[:host], Rails.application.default_url_options[:port]].compact.join(":")
       ],
