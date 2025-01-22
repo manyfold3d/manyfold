@@ -46,6 +46,8 @@ class FollowsController < ApplicationController
     authorize Federails::Following, :create?
     @actor = Federails::Actor.find_param(params[:id])
     current_user.follow(@actor)
+    # If the remote actor has a known Manyfold type, we can create a real object for it
+    find_or_create_entity(@actor)
     redirect_to root_url, notice: t(".followed", actor: @actor.at_address)
   end
 
@@ -75,5 +77,12 @@ class FollowsController < ApplicationController
     followable_param = params[:followable_class].parameterize + "_id"
     id = params[followable_param]
     @target = policy_scope(followable).find_param(id)
+  end
+
+  def find_or_create_entity(actor)
+    case actor.extensions&.dig("concreteType")
+    when "Creator"
+      Creator.create name: actor.name, links_attributes: [{url: actor.profile_url}], federails_actor: actor
+    end
   end
 end
