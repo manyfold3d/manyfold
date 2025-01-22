@@ -1,6 +1,7 @@
 import Uppy from '@uppy/core'
 import Dashboard from '@uppy/dashboard'
 import Tus from '@uppy/tus'
+import Url from '@uppy/url'
 
 import en from '@uppy/locales/lib/en_US'
 import fr from '@uppy/locales/lib/fr_FR'
@@ -29,6 +30,7 @@ document.addEventListener('ManyfoldReady', () => {
         showRemoveButtonAfterComplete: true,
         hideProgressAfterFinish: true
       })
+      .use(Url, { companionUrl: '/' })
       .use(Tus, {
         endpoint: settings.uploadEndpoint ?? '/upload',
         chunkSize: 5 * 1024 * 1024
