@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: 41c312bfea0b92a37d5eb82138bd1ab4feda1288
+  revision: 6698571f51f886a5fd5ba6fb57221c55d4d4d3b4
   branch: main
   specs:
     federails (0.5.0)
@@ -230,7 +230,7 @@ GEM
       activesupport (>= 5.0.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
-    faraday (2.12.1)
+    faraday (2.12.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -328,7 +328,8 @@ GEM
       railties (>= 6.0)
       responders (>= 2)
     io-console (0.8.0)
-    irb (1.14.2)
+    irb (1.15.1)
+      pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jbuilder (2.13.0)
@@ -426,7 +427,7 @@ GEM
     nenv (0.3.0)
     net-http (0.6.0)
       uri
-    net-imap (0.5.1)
+    net-imap (0.5.5)
       date
       net-protocol
     net-pop (0.1.2)
@@ -484,6 +485,9 @@ GEM
     pghero (3.6.1)
       activerecord (>= 6.1)
     polyglot (0.3.5)
+    pp (0.6.2)
+      prettyprint
+    prettyprint (0.2.0)
     prime (0.1.2)
       forwardable
       singleton
@@ -495,7 +499,7 @@ GEM
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    psych (5.2.2)
+    psych (5.2.3)
       date
       stringio
     public_suffix (6.0.1)
@@ -520,7 +524,7 @@ GEM
       rack (~> 2.2, >= 2.2.4)
     rack-session (1.0.2)
       rack (< 3)
-    rack-test (2.1.0)
+    rack-test (2.2.0)
       rack (>= 1.3)
     rackup (1.0.1)
       rack (< 3)
@@ -581,7 +585,7 @@ GEM
       bcp47_spec (~> 0.2)
       bigdecimal (~> 3.1, >= 3.1.5)
       link_header (~> 0.0, >= 0.0.8)
-    rdoc (6.9.1)
+    rdoc (6.11.0)
       psych (>= 4.0.0)
     redis (5.3.0)
       redis-client (>= 0.22.0)
@@ -597,7 +601,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.9)
+    rexml (3.4.0)
     roda (3.87.0)
       rack
     rolify (6.0.1)
@@ -725,7 +729,7 @@ GEM
       unicode-display_width (>= 1.1.1, < 3)
     text (1.3.1)
     thor (1.3.2)
-    timeout (0.4.2)
+    timeout (0.4.3)
     translation (1.41)
       gettext (~> 3.2, >= 3.2.5, <= 3.4.9)
     treetop (1.6.12)
@@ -761,7 +765,8 @@ GEM
       faraday (~> 2.0)
       faraday-follow_redirects
     webrick (1.9.1)
-    websocket-driver (0.7.6)
+    websocket-driver (0.7.7)
+      base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     zeitwerk (2.7.1)
