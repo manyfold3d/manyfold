@@ -10,7 +10,7 @@ en:
         text: Edit
       models_button:
         label: Show models by %{name}
-      remote_view: View on %{server}
+      remote_view: Visit
     destroy:
       success: Creator deleted!
     form:
