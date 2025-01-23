@@ -36,7 +36,7 @@ class Creator < ApplicationRecord
     create(
       name: actor.name,
       slug: actor.username,
-      links_attributes: [],
+      links_attributes: actor.extensions["attachment"]&.select { |it| it["type"] == "Link" }&.map { |it| {url: it["href"]} },
       federails_actor: actor
     )
   end
