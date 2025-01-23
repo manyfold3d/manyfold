@@ -82,12 +82,7 @@ class FollowsController < ApplicationController
   def find_or_create_entity(actor)
     case actor.extensions&.dig("concreteType")
     when "Creator"
-      Creator.create(
-        name: actor.name,
-        slug: actor.username,
-        links_attributes: [],
-        federails_actor: actor
-      )
+      Creator.create_from_activitypub_object(actor)
     end
   end
 end
