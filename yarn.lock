@@ -1498,16 +1498,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/tus@npm:^4.2.1":
-  version: 4.2.1
-  resolution: "@uppy/tus@npm:4.2.1"
+"@uppy/tus@npm:^4.2.2":
+  version: 4.2.2
+  resolution: "@uppy/tus@npm:4.2.2"
   dependencies:
     "@uppy/companion-client": ^4.4.1
     "@uppy/utils": ^6.1.1
     tus-js-client: ^4.2.3
   peerDependencies:
     "@uppy/core": ^4.4.1
-  checksum: 670332ab4f72fd91c812704b8f46783478ef7e3e937c5bdf8dccba90d1b714306b7a0f43a9a614d0bfd4a37acf65047cf9773549987f241d8a6e61a508980e22
+  checksum: 4d7e5141afef60ffc138a657b2b45791b7bd6dcf7945632a142d745caf1827b8dc591256024e88134fc2bbd70d27ebf1f227ded8f8324a206f62450342dc67fa
   languageName: node
   linkType: hard
 
@@ -4289,7 +4289,7 @@ __metadata:
     "@uppy/dashboard": ^4.3.1
     "@uppy/form": ^4.1.1
     "@uppy/locales": ^4.5.0
-    "@uppy/tus": ^4.2.1
+    "@uppy/tus": ^4.2.2
     autoprefixer: ^10.4.20
     bootstrap: ^5.3.3
     bootstrap-icons: ^1.11.3
