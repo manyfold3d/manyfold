@@ -10,7 +10,10 @@ en:
         text: Edit
       models_button:
         label: Show models by %{name}
-      remote_view: Visit
+        remote_label: Show local models by %{name}
+      visit_button:
+        label: Visit
+        text: Visit original profile
     destroy:
       success: Creator deleted!
     form:
@@ -24,6 +27,7 @@ en:
     index:
       skip_creators: Skip creator list
     show:
+      distant: Remote creator
       edit: Edit Creator Profile
     unassigned:
       caption: All the models without a known creator.

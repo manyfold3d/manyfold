@@ -8,8 +8,17 @@
     <div class="card-body row">
       <div class="col col-auto">
         <%= content_tag(:div, class: "text-center") do %>
-          <%= content_tag(:h2) { @creator.name } %>
-          <p><small class="text-secondary">@<%= @creator.federails_actor.at_address if SiteSettings.federation_enabled? %></small></p>
+          <h2>
+            <%= icon "globe2", t(".distant") if @creator.remote? %>
+            <%= @creator.name %>
+          </h2>
+          <p>
+            <% if @creator.remote? %>
+              <small class="text-secondary"><%= link_to "@" + @creator.federails_actor.at_address, @creator.federails_actor.profile_url, target: "new" %></small>
+            <% else %>
+              <small class="text-secondary">@<%= @creator.federails_actor.at_address if SiteSettings.federation_enabled? %></small>
+            <% end %>
+          </p>
           <%= render FollowButtonComponent.new(follower: current_user, target: @creator) %>
         <% end %>
       </div>
