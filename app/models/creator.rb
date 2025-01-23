@@ -50,7 +50,8 @@ class Creator < ApplicationRecord
       attributionDomains: [
         [Rails.application.default_url_options[:host], Rails.application.default_url_options[:port]].compact.join(":")
       ],
-      concreteType: "Creator"
+      concreteType: "Creator",
+      attachment: links.map { |it| {type: "Link", href: it.url} }
     }
   end
 end

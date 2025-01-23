@@ -26,5 +26,9 @@ RSpec.describe Creator do
     it "includes notes in summary" do
       expect(ap[:summary]).to include creator.notes
     end
+
+    it "includes links as attachments" do
+      expect(ap[:attachment]).to include({type: "Link", href: "http://example.com"})
+    end
   end
 end
