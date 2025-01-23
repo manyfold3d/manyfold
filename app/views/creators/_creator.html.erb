@@ -1,7 +1,10 @@
 <div class="col mb-4">
   <div class="card">
     <div class="card-body">
-      <div class="card-title"><%= creator.name %></div>
+      <div class="card-title">
+        <%= icon "globe2", t(".distant") if creator.remote? %>
+        <%= creator.name %>
+      </div>
       <% if creator.caption %>
         <small class="card-subtitle mb-2 text-muted"><%= sanitize creator.caption %></small>
       <% end %>
@@ -10,8 +13,13 @@
           <li><%= link_to t("sites.%{site}" % {site: link.site}), link.url %></li>
         <% end %>
       </ul>
-      <%= link_to "#{policy_scope(Model).where(creator: creator).count} #{Model.model_name.human count: policy_scope(Model).where(creator: creator).count}", creator, {class: "btn btn-primary", "aria-label": translate(".models_button.label", name: creator.name)} if policy(creator).show? %>
-      <%= link_to icon("pencil-fill", t(".edit_button.text")), edit_creator_path(creator), {class: "btn btn-outline-secondary", "aria-label": translate(".edit_button.label", name: creator.name)} if policy(creator).edit? %>
+      <% if creator.remote? %>
+        <%= link_to "#{policy_scope(Model).where(creator: creator).count} #{Model.model_name.human count: policy_scope(Model).where(creator: creator).count}", creator, {class: "btn btn-primary", "aria-label": translate(".models_button.remote_label", name: creator.name)} if policy(creator).show? %>
+        <%= link_to icon("globe2", t(".visit_button.text")), creator.federails_actor.profile_url, {class: "btn btn-outline-secondary", "aria-label": translate(".visit_button.label", name: creator.name, target: "new")} %>
+      <% else %>
+        <%= link_to "#{policy_scope(Model).where(creator: creator).count} #{Model.model_name.human count: policy_scope(Model).where(creator: creator).count}", creator, {class: "btn btn-primary", "aria-label": translate(".models_button.label", name: creator.name)} if policy(creator).show? %>
+        <%= link_to icon("pencil-fill", t(".edit_button.text")), edit_creator_path(creator), {class: "btn btn-outline-secondary", "aria-label": translate(".edit_button.label", name: creator.name)} if policy(creator).edit? %>
+      <% end %>
     </div>
   </div>
 </div>

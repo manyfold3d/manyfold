@@ -10,4 +10,8 @@ module FederailsCommon
     end
     act
   end
+
+  def remote?
+    !federails_actor&.local?
+  end
 end
