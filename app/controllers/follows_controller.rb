@@ -1,5 +1,5 @@
 class FollowsController < ApplicationController
-  before_action :get_target, except: [:index, :new, :remote_follow, :perform_remote_follow, :follow_remote_actor]
+  before_action :get_target, except: [:index, :new, :remote_follow, :perform_remote_follow, :follow_remote_actor, :unfollow_remote_actor]
   skip_after_action :verify_policy_scoped, only: :index
   skip_after_action :verify_authorized, only: [:new, :remote_follow, :perform_remote_follow]
 
@@ -46,7 +46,16 @@ class FollowsController < ApplicationController
     authorize Federails::Following, :create?
     @actor = Federails::Actor.find_param(params[:id])
     current_user.follow(@actor)
+    # If the remote actor has a known Manyfold type, we can create a real object for it
+    find_or_create_entity(@actor)
     redirect_to root_url, notice: t(".followed", actor: @actor.at_address)
+  end
+
+  def unfollow_remote_actor
+    authorize Federails::Following, :destroy?
+    @actor = Federails::Actor.find_param(params[:id])
+    current_user.unfollow(@actor)
+    redirect_to root_url, notice: t(".unfollowed", actor: @actor.at_address)
   end
 
   def create
@@ -68,5 +77,13 @@ class FollowsController < ApplicationController
     followable_param = params[:followable_class].parameterize + "_id"
     id = params[followable_param]
     @target = policy_scope(followable).find_param(id)
+  end
+
+  def find_or_create_entity(actor)
+    return entity if actor.entity
+    case actor.extensions&.dig("concreteType")
+    when "Creator"
+      Creator.create_from_activitypub_object(actor)
+    end
   end
 end

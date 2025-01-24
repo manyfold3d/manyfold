@@ -35,7 +35,7 @@ class Library < ApplicationRecord
   validates :s3_access_key_id, presence: true, if: -> { storage_service == "s3" }
   validates :s3_secret_access_key, presence: true, if: -> { storage_service == "s3" }
 
-  default_scope { order(:path) }
+  default_scope { order(:name) }
 
   def name
     self[:name] || (path ? File.basename(path) : "")
@@ -104,7 +104,7 @@ class Library < ApplicationRecord
         region: s3_region,
         access_key_id: s3_access_key_id,
         secret_access_key: s3_secret_access_key,
-        force_path_style: s3_endpoint.present?,
+        force_path_style: s3_endpoint.present? && s3_path_style,
         use_accelerate_endpoint: s3_endpoint.blank?
       )
     else

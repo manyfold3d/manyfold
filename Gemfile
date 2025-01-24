@@ -110,7 +110,7 @@ gem "rack-contrib", "~> 2.5"
 
 gem "rails-i18n", "~> 7.0"
 
-gem "erb_lint", "~> 0.8.0", group: :development, require: false
+gem "erb_lint", "~> 0.9.0", group: :development, require: false
 
 gem "i18n-js", "~> 4.2"
 
@@ -148,7 +148,7 @@ gem "better_content_security_policy", "~> 0.1.4"
 gem "devise_zxcvbn", "~> 6.0"
 
 gem "ransack", "~> 4.2"
-gem "federails", git: "https://gitlab.com/experimentslabs/federails", branch: "22-data-binding-for-incoming-outgoing-objects"
+gem "federails", git: "https://gitlab.com/experimentslabs/federails", branch: "avoid-double-create"
 gem "federails-moderation", "~> 0.2"
 gem "caber"
 
@@ -160,7 +160,7 @@ gem "omniauth", "~> 2.1"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "omniauth_openid_connect", "~> 0.8.0"
 
-gem "sidekiq-cron", "~> 2.0"
+gem "sidekiq-cron", "~> 2.1"
 
 group :development, :production do
   gem "rails_performance", "~> 1.4"

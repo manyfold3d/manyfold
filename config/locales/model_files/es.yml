@@ -4,6 +4,9 @@ es:
     bulk_edit:
       description: 'Seleccione los archivos que desea modificar:'
       form_subtitle: 'Seleccione los cambios a realizar:'
+      pattern: Encontrar
+      rename: Renombrar archivos
+      replacement: Sustituir por
       select: Seleccionar fichero '%{name}'
       select_all: Seleccionar todos los archivos
       split: Dividir los archivos seleccionados en un nuevo modelo

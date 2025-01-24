@@ -10,6 +10,7 @@ pl:
       select_all: Zaznacz wszystkie modele
       submit: Aktualizuj zaznaczone modele
       title: Edytuj zbiorczo modele
+      update_all: Aktualizuj wszystkie modele
     bulk_fields:
       add_tags: Dodaj tagi
     bulk_update:

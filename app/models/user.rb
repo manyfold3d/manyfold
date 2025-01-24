@@ -53,7 +53,7 @@ class User < ApplicationRecord
   end
 
   def printed?(file)
-    listed?(file, scope: :printed)
+    listed?(file, :printed)
   end
 
   def self.ransackable_attributes(auth_object = nil)
@@ -136,6 +136,19 @@ class User < ApplicationRecord
       end
     end
     recoverable
+  end
+
+  def to_activitypub_object
+    {
+      "@context": {
+        manyfold: "http://manyfold.app/ns#",
+        concreteType: {
+          "@id": "manyfold:concreteType",
+          "@type": "@string"
+        }
+      },
+      concreteType: "User"
+    }
   end
 
   private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_19_042234) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_22_171731) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -122,6 +122,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_19_042234) do
     t.text "public_key"
     t.text "private_key"
     t.string "uuid"
+    t.json "extensions"
     t.index ["entity_type", "entity_id"], name: "index_federails_actors_on_entity", unique: true
     t.index ["federated_url"], name: "index_federails_actors_on_federated_url", unique: true
     t.index ["uuid"], name: "index_federails_actors_on_uuid", unique: true
@@ -193,6 +194,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_19_042234) do
     t.string "s3_access_key_id"
     t.string "s3_secret_access_key"
     t.string "public_id"
+    t.boolean "s3_path_style", default: true, null: false
     t.index ["public_id"], name: "index_libraries_on_public_id"
   end
 

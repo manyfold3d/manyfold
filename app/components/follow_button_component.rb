@@ -18,7 +18,7 @@ class FollowButtonComponent < ViewComponent::Base
       @method = :post
     else
       @path = @target.is_a?(Federails::Actor) ?
-        follow_remote_actor_path(@target) :
+        unfollow_remote_actor_path(@target) :
         url_for(@target) + "/follows"
       @method = @following ? :delete : :post
     end

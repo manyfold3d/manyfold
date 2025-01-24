@@ -9,10 +9,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: e366dc4ff8aa34f7884547180bc94998d320423a
-  branch: 22-data-binding-for-incoming-outgoing-objects
+  revision: 6ee94ba7ca869e543b55b0d568d412c5f90a788f
+  branch: avoid-double-create
   specs:
-    federails (0.4.0)
+    federails (0.5.0)
       faraday
       faraday-follow_redirects
       json-ld (>= 3.2.0)
@@ -175,7 +175,7 @@ GEM
     cocooned (2.4.1)
       rails (>= 7.0, < 8.1)
     coderay (1.1.3)
-    concurrent-ruby (1.3.4)
+    concurrent-ruby (1.3.5)
     connection_pool (2.5.0)
     content_disposition (1.0.0)
     crass (1.0.6)
@@ -216,7 +216,7 @@ GEM
     drb (2.2.1)
     email_validator (2.2.4)
       activemodel
-    erb_lint (0.8.0)
+    erb_lint (0.9.0)
       activesupport
       better_html (>= 2.0.1)
       parser (>= 2.7.1.4)
@@ -230,7 +230,7 @@ GEM
       activesupport (>= 5.0.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
-    faraday (2.12.1)
+    faraday (2.12.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -305,7 +305,7 @@ GEM
     http-cookie (1.0.8)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    i18n (1.14.6)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     i18n-js (4.2.3)
       glob (>= 0.4.0)
@@ -328,7 +328,8 @@ GEM
       railties (>= 6.0)
       responders (>= 2)
     io-console (0.8.0)
-    irb (1.14.2)
+    irb (1.15.1)
+      pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jbuilder (2.13.0)
@@ -389,7 +390,7 @@ GEM
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     locale (2.1.4)
-    logger (1.6.4)
+    logger (1.6.5)
     lograge (0.14.0)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -426,7 +427,7 @@ GEM
     nenv (0.3.0)
     net-http (0.6.0)
       uri
-    net-imap (0.5.1)
+    net-imap (0.5.5)
       date
       net-protocol
     net-pop (0.1.2)
@@ -436,14 +437,14 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.1)
+    nokogiri (1.18.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.1-x64-mingw-ucrt)
+    nokogiri (1.18.2-x64-mingw-ucrt)
       racc (~> 1.4)
-    nokogiri (1.18.1-x86_64-darwin)
+    nokogiri (1.18.2-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.1-x86_64-linux-gnu)
+    nokogiri (1.18.2-x86_64-linux-gnu)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -484,6 +485,9 @@ GEM
     pghero (3.6.1)
       activerecord (>= 6.1)
     polyglot (0.3.5)
+    pp (0.6.2)
+      prettyprint
+    prettyprint (0.2.0)
     prime (0.1.2)
       forwardable
       singleton
@@ -495,7 +499,7 @@ GEM
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    psych (5.2.2)
+    psych (5.2.3)
       date
       stringio
     public_suffix (6.0.1)
@@ -520,7 +524,7 @@ GEM
       rack (~> 2.2, >= 2.2.4)
     rack-session (1.0.2)
       rack (< 3)
-    rack-test (2.1.0)
+    rack-test (2.2.0)
       rack (>= 1.3)
     rackup (1.0.1)
       rack (< 3)
@@ -581,11 +585,11 @@ GEM
       bcp47_spec (~> 0.2)
       bigdecimal (~> 3.1, >= 3.1.5)
       link_header (~> 0.0, >= 0.0.8)
-    rdoc (6.9.1)
+    rdoc (6.11.0)
       psych (>= 4.0.0)
     redis (5.3.0)
       redis-client (>= 0.22.0)
-    redis-client (0.23.0)
+    redis-client (0.23.2)
       connection_pool
     redis-namespace (1.11.0)
       redis (>= 4)
@@ -597,7 +601,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.9)
+    rexml (3.4.0)
     roda (3.87.0)
       rack
     rolify (6.0.1)
@@ -636,17 +640,17 @@ GEM
       parser (>= 3.3.1.0)
     rubocop-factory_bot (2.26.1)
       rubocop (~> 1.61)
-    rubocop-i18n (3.0.0)
+    rubocop-i18n (3.1.0)
       rubocop (~> 1.0)
     rubocop-performance (1.23.1)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rails (2.28.0)
+    rubocop-rails (2.29.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.52.0, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rspec (3.3.0)
+    rubocop-rspec (3.4.0)
       rubocop (~> 1.61)
     rubocop-rspec_rails (2.30.0)
       rubocop (~> 1.61)
@@ -669,12 +673,13 @@ GEM
       down (~> 5.0)
       http (>= 3.2, < 6)
       shrine (>= 3.0.0.rc, < 4)
-    sidekiq (7.3.7)
+    sidekiq (7.3.8)
+      base64
       connection_pool (>= 2.3.0)
       logger
       rack (>= 2.2.4)
       redis-client (>= 0.22.2)
-    sidekiq-cron (2.0.1)
+    sidekiq-cron (2.1.0)
       cronex (>= 0.13.0)
       fugit (~> 1.8, >= 1.11.1)
       globalid (>= 1.0.1)
@@ -724,7 +729,7 @@ GEM
       unicode-display_width (>= 1.1.1, < 3)
     text (1.3.1)
     thor (1.3.2)
-    timeout (0.4.2)
+    timeout (0.4.3)
     translation (1.41)
       gettext (~> 3.2, >= 3.2.5, <= 3.4.9)
     treetop (1.6.12)
@@ -760,7 +765,8 @@ GEM
       faraday (~> 2.0)
       faraday-follow_redirects
     webrick (1.9.1)
-    websocket-driver (0.7.6)
+    websocket-driver (0.7.7)
+      base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     zeitwerk (2.7.1)
@@ -795,7 +801,7 @@ DEPENDENCIES
   devise-i18n (~> 1.12)
   devise_zxcvbn (~> 6.0)
   dotenv-rails (~> 3.1)
-  erb_lint (~> 0.8.0)
+  erb_lint (~> 0.9.0)
   factory_bot
   faker (~> 3.5)
   federails!
@@ -853,7 +859,7 @@ DEPENDENCIES
   shrine (~> 3.6)
   shrine-tus (~> 2.1)
   sidekiq (~> 7.3)
-  sidekiq-cron (~> 2.0)
+  sidekiq-cron (~> 2.1)
   sidekiq-failures (~> 1.0)
   simplecov (~> 0.22.0)
   spdx (~> 4.1)

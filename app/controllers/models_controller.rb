@@ -139,8 +139,17 @@ class ModelsController < ApplicationController
     organize = hash.delete(:organize) == "1"
     add_tags = Set.new(hash.delete(:add_tags))
     remove_tags = Set.new(hash.delete(:remove_tags))
-    ids = params[:models].select { |k, v| v == "1" }.keys
-    policy_scope(Model).where(public_id: ids).find_each do |model|
+
+    models_to_update = if params.key?(:update_all)
+      # If "Update All Models" was clicked, update all models in the filtered set
+      filtered_models(@filters)
+    else
+      # If "Update Selected Models" was clicked, only update checked models
+      ids = params[:models].select { |k, v| v == "1" }.keys
+      policy_scope(Model).where(public_id: ids)
+    end
+
+    models_to_update.find_each do |model|
       if model&.update(hash)
         existing_tags = Set.new(model.tag_list)
         model.tag_list = existing_tags + add_tags - remove_tags

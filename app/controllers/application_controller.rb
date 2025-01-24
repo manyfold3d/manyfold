@@ -88,6 +88,7 @@ class ApplicationController < ActionController::Base
 
   def show_security_alerts
     return unless current_user&.is_administrator?
+    return if ENV.fetch("SUDO_RUN_UNSAFELY", nil) === "enabled"
     flash.now[:alert] = t("security.running_as_root_html") if Process.uid == 0
   end
 

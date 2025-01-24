@@ -22,6 +22,9 @@ Mime::Type.register "model/x-brep", :brep
 Mime::Type.register "model/x-cheetah3d", :cheetah3d, [], ["jas"]
 Mime::Type.register "model/x-fbx", :fbx
 Mime::Type.register "model/x-freecad", :fcstd
+Mime::Type.register "model/x-fusion", :f3d, [], ["f3z"]
+Mime::Type.register "model/x-inventor-part", :ipt
+Mime::Type.register "model/x-inventor-assembly", :iam
 Mime::Type.register "model/x-maya", :maya, [], ["ma", "mb"]
 Mime::Type.register "model/x-meshmixer", :mix
 Mime::Type.register "model/x-modo", :modo, [], ["lxo"]

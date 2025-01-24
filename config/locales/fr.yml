@@ -108,6 +108,9 @@ fr:
               nested: ne peut être modifié, le modèle contient d'autres modèles
         model_file:
           attributes:
+            filename:
+              cannot_change_type:
+              case_change_only:
             presupported_version:
               already_presupported: ne peut pas être défini sur un fichier présupporté
               not_supported: n'est pas un fichier présupporté
@@ -422,6 +425,9 @@ fr:
       greeting: Bonjour !
       message: Votre compte a été approuvé ; vous pouvez maintenant vous connecter à %{link}.
       subject: Compte approuvé
+    test_email:
+      subject:
+      test_email_message:
   views:
     pagination:
       first: "« Premier"

@@ -25,7 +25,7 @@ RSpec.describe Comment do
     end
 
     it "has a federated_url method" do
-      expect(comment.federated_url).to eq "http://localhost:3214/federation/objects/comments/#{comment.public_id}"
+      expect(comment.federated_url).to eq "http://localhost:3214/federation/published/comments/#{comment.public_id}"
     end
 
     context "when serializing to an ActivityPub Note" do
