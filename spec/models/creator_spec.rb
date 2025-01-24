@@ -12,7 +12,7 @@ RSpec.describe Creator do
     let(:ap) { creator.to_activitypub_object }
 
     it "includes concrete type" do
-      expect(ap[:concreteType]).to eq "Creator"
+      expect(ap[:"f3di:concreteType"]).to eq "Creator"
     end
 
     it "includes attributionDomain" do

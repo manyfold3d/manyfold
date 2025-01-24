@@ -81,7 +81,7 @@ class FollowsController < ApplicationController
 
   def find_or_create_entity(actor)
     return entity if actor.entity
-    case actor.extensions&.dig("concreteType")
+    case actor.extensions&.dig("f3di:concreteType")
     when "Creator"
       Creator.create_from_activitypub_object(actor)
     end
