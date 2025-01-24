@@ -4,19 +4,18 @@
 <% end %>
 
 <%= content_for :items do %>
-  <div class="card mb-3">
+  <div class="card mb-3 <%= "remote-actor" if @creator.remote? %>">
     <div class="card-body row">
       <div class="col col-auto">
         <%= content_tag(:div, class: "text-center") do %>
           <h2>
-            <%= icon "globe2", t(".distant") if @creator.remote? %>
             <%= @creator.name %>
           </h2>
           <p>
             <% if @creator.remote? %>
               <small class="text-secondary"><%= link_to "@" + @creator.federails_actor.at_address, @creator.federails_actor.profile_url, target: "new" %></small>
             <% else %>
-              <small class="text-secondary">@<%= @creator.federails_actor.at_address if SiteSettings.federation_enabled? %></small>
+              <small class="text-secondary">@<%= @creator.federails_actor.username if SiteSettings.federation_enabled? %></small>
             <% end %>
           </p>
           <%= render FollowButtonComponent.new(follower: current_user, target: @creator) %>
