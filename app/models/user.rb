@@ -141,13 +141,9 @@ class User < ApplicationRecord
   def to_activitypub_object
     {
       "@context": {
-        manyfold: "http://manyfold.app/ns#",
-        concreteType: {
-          "@id": "manyfold:concreteType",
-          "@type": "@string"
-        }
+        f3di: "http://purl.org/f3di/ns#"
       },
-      concreteType: "User"
+      "f3di:concreteType": "User"
     }
   end
 
