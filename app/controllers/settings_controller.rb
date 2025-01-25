@@ -26,7 +26,6 @@ class SettingsController < ApplicationController
     unless settings[:model_ignored_files].split("\n").any? { |p| p.to_regexp.nil? }
       SiteSettings.model_ignored_files = settings[:model_ignored_files]
     end
-
   end
 
   def update_tagging_settings(settings)
