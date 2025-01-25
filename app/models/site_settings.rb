@@ -20,6 +20,8 @@ class SiteSettings < RailsSettings::Base
   field :default_viewer_role, type: :string, default: "member"
   field :approve_signups, type: :boolean, default: false
 
+  validates :model_ignored_files, regex_array: {strict: true}
+
   def self.registration_enabled?
     Rails.application.config.manyfold_features[:registration]
   end
@@ -57,9 +59,9 @@ class SiteSettings < RailsSettings::Base
   end
 
   def self.ignored_file?(pathname)
-    @@patterns ||= model_ignored_files
+    patterns ||= model_ignored_files
     (File.split(pathname) - ["."]).any? do |path_component|
-      @@patterns.any? { |pattern| path_component =~ pattern }
+      patterns.any? { |pattern| path_component =~ pattern.to_regexp }
     end
   end
 
