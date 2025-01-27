@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: a7cb37c0d24745f56ed7ccc13a7037fe6652d301
-  branch: fix-webfinger-type-match
+  revision: e1f219e4892c3b856b654b3a798607835fec8d2c
+  branch: interim-object-addressing
   specs:
     federails (0.5.0)
       faraday
