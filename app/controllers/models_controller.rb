@@ -4,6 +4,7 @@ class ModelsController < ApplicationController
   include ModelListable
   include Permittable
 
+  before_action :redirect_search, only: [:index], if: -> { params.key?(:q) }
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
   before_action :get_creators_and_collections, only: [:new, :edit, :bulk_edit]
   before_action :set_returnable, only: [:bulk_edit, :edit, :new]
@@ -171,6 +172,10 @@ class ModelsController < ApplicationController
   end
 
   private
+
+  def redirect_search
+    redirect_to new_follow_path(uri: params[:q]) if params[:q]&.match?(/(@|acct:)?([a-z0-9\-_.]+)@(.*)/)
+  end
 
   def generate_available_tag_list
     @available_tags = ActsAsTaggableOn::Tag.where(
