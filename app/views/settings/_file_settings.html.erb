@@ -8,6 +8,6 @@
   </p>
   <%= form.label nil, t(".custom_ignore_filters.label"), for: "files[model_ignored_files]", class: "col-sm-4 col-form-label" %>
   <div class="col-sm-8 form-check form-switch">
-    <%= form.text_area "files[model_ignored_files]", value: SiteSettings.model_ignored_files.join("\n").gsub(/^\[|\]$/, ""), class: "form-control" %>
+    <%= form.text_area "files[model_ignored_files]", value: SiteSettings.model_ignored_files.map(&:inspect).join("\n").gsub(/^\[|\]$/, ""), class: "form-control" %>
   </div>
 </div>
