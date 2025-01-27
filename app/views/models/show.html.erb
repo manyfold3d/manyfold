@@ -2,7 +2,7 @@
   <%= tag.meta property: "og:type", content: "website" %>
   <%= tag.meta property: "og:image", content: model_model_file_url(@model, @model.preview_file, format: @model.preview_file.extension) if @model.preview_file&.is_image? && !@model.sensitive %>
   <%= tag.meta name: "description", content: truncate(sanitize(@model.notes), length: 80) if @model.notes.present? %>
-  <%= tag.meta name: "fediverse:creator", content: "@#{@model.creator.federails_actor.at_address}" if @model.creator %>
+  <%= tag.meta name: "fediverse:creator", content: @model.creator.federails_actor.at_address if @model.creator %>
 <% end %>
 
 <% content_for :page_header do %>
