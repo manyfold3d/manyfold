@@ -10,7 +10,7 @@ class FollowsController < ApplicationController
 
   # Incoming remote follow
   def new
-    @query = params[:uri].gsub(/\A@/, "")
+    @query = params[:uri]
     @actor = if @query.starts_with?(%r{https?://})
       Federails::Actor.find_by_federation_url @query # rubocop:disable Rails/DynamicFindBy
     else
@@ -80,10 +80,10 @@ class FollowsController < ApplicationController
   end
 
   def find_or_create_entity(actor)
-    return entity if actor.entity
-    case actor.extensions&.dig("f3di:concreteType")
-    when "Creator"
-      Creator.create_from_activitypub_object(actor)
-    end
+    actor.entity ||
+      case actor.extensions&.dig("f3di:concreteType")
+      when "Creator"
+        Creator.create_from_activitypub_object(actor)
+      end
   end
 end
