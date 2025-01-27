@@ -20,6 +20,12 @@ en:
       new:
         submit: Block domain
         title: New Domain Block
+    file_settings:
+      custom_ignore_filters:
+        details: Filters are in regex format separated by a new line.
+        label: Ignored files regex filters.
+      summary: Change file settings such as ignored files.
+      title: File settings
     folder_settings:
       details: Folder structure follows a template that you define using tokens. You can also include other text in the template (such as folder separators) and it will be included as-is.
       model_path_template:

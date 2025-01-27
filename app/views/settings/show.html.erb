@@ -1,6 +1,8 @@
 <%= form_with url: settings_path, method: :patch do |form| %>
   <%= render "folder_settings", form: form %>
   <hr>
+  <%= render "file_settings", form: form %>
+  <hr>
   <%= render "tag_settings", form: form %>
 
   <%= render "submit", form: form %>
