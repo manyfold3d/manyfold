@@ -20,21 +20,29 @@ module Followable
     federails_actor.followers.include? follower.federails_actor
   end
 
+  def owning_actor
+    user = permitted_users.with_permission("own").first || SiteSettings.default_user
+    user&.federails_actor
+  end
+
   private
+
+  def recently_posted?
+    Federails::Activity.exists?(entity: federails_actor, created_at: TIMEOUT.minutes.ago..)
+  end
 
   def followable_post_creation_activity
     followable_post_activity("Create")
   end
 
   def followable_post_update_activity
-    followable_post_activity("Update") unless Federails::Activity.exists?(entity: federails_actor, created_at: TIMEOUT.minutes.ago..)
+    followable_post_activity("Update") unless recently_posted?
   end
 
   def followable_post_activity(action)
-    user = permitted_users.with_permission("own").first || SiteSettings.default_user
-    return if user.nil?
+    return unless owning_actor
     Federails::Activity.create!(
-      actor: user.federails_actor,
+      actor: owning_actor,
       action: action,
       entity: federails_actor,
       created_at: updated_at
