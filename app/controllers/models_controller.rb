@@ -174,7 +174,7 @@ class ModelsController < ApplicationController
   private
 
   def redirect_search
-    redirect_to new_follow_path(uri: params[:q]) if params[:q]&.match?(/(@|acct:)?(?<username>[a-z0-9\-_.]+)(?:@(?<domain>.*))/)
+    redirect_to new_follow_path(uri: params[:q]) if params[:q]&.match?(/(@|acct:)?([a-z0-9\-_.]+)@(.*)/)
   end
 
   def generate_available_tag_list
