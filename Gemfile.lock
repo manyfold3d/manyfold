@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: 6ee94ba7ca869e543b55b0d568d412c5f90a788f
-  branch: avoid-double-create
+  revision: a7cb37c0d24745f56ed7ccc13a7037fe6652d301
+  branch: fix-webfinger-type-match
   specs:
     federails (0.5.0)
       faraday
