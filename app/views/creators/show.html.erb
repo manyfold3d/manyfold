@@ -13,7 +13,7 @@
           </h2>
           <p>
             <% if @creator.remote? %>
-              <small class="text-secondary"><%= link_to "@" + @creator.federails_actor.at_address, @creator.federails_actor.profile_url, target: "new" %></small>
+              <small class="text-secondary"><%= link_to @creator.federails_actor.at_address, @creator.federails_actor.profile_url, target: "new" %></small>
             <% else %>
               <small class="text-secondary">@<%= @creator.federails_actor.username if SiteSettings.federation_enabled? %></small>
             <% end %>

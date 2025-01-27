@@ -5,7 +5,7 @@
         <%= creator.name %>
         <% if creator.remote? %>
           <br>
-          <small class="text-secondary">@<%= creator.federails_actor&.at_address %></small>
+          <small class="text-secondary"><%= creator.federails_actor&.at_address %></small>
           <% end %>
       </div>
       <% if creator.caption %>

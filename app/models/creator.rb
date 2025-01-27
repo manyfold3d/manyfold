@@ -38,8 +38,8 @@ class Creator < ApplicationRecord
       name: actor.name,
       slug: actor.username,
       links_attributes: actor.extensions["attachment"]&.select { |it| it["type"] == "Link" }&.map { |it| {url: it["href"]} },
-      caption: matches[1],
-      notes: matches[2],
+      caption: matches ? matches[1] : nil,
+      notes: matches ? matches[2] : nil,
       federails_actor: actor
     )
   end
