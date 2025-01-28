@@ -2,7 +2,7 @@ module ActivityPub
   class CreatorDeserializer < ApplicationDeserializer
     def deserialize
       raise ArgumentError unless @object.is_a?(Federails::Actor)
-      create(
+      Creator.create(
         name: @object.name,
         slug: @object.username,
         links_attributes: @object.extensions["attachment"]&.select { |it| it["type"] == "Link" }&.map { |it| {url: it["href"]} },
