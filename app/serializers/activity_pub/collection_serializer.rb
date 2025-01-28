@@ -6,7 +6,8 @@ module ActivityPub
         "@context": {
           f3di: "http://purl.org/f3di/ns#"
         },
-        summary: summary_html,
+        summary: @object.caption,
+        content: @object.notes,
         "f3di:concreteType": "Collection",
         attachment: @object.links.map { |it| {type: "Link", href: it.url} }
       }.merge(address_fields)

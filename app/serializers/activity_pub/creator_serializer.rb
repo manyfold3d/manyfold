@@ -11,7 +11,8 @@ module ActivityPub
             "@type": "@id"
           }
         },
-        summary: summary_html,
+        summary: @object.caption,
+        content: @object.notes,
         attributionDomains: [
           [Rails.application.default_url_options[:host], Rails.application.default_url_options[:port]].compact.join(":")
         ],

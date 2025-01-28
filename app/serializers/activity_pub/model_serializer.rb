@@ -7,7 +7,8 @@ module ActivityPub
           f3di: "http://purl.org/f3di/ns#",
           Hashtag: "as:Hashtag"
         },
-        summary: summary_html,
+        summary: @object.caption,
+        content: @object.notes,
         "f3di:concreteType": "Model",
         attachment: @object.links.map { |it| {type: "Link", href: it.url} },
         sensitive: @object.sensitive,
