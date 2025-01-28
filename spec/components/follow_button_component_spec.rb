@@ -33,7 +33,7 @@ RSpec.describe FollowButtonComponent, type: :component do
 
   context "when the follower is already following the target" do
     let(:button) {
-      allow(follower).to receive(:following?).with(target).and_return true
+      allow(follower).to receive(:following?).with(target).and_return :accepted
       render_inline(described_class.new(follower: follower, target: target)).to_html
     }
 
