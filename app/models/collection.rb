@@ -73,4 +73,8 @@ class Collection < ApplicationRecord
   def self.ransackable_associations(_auth_object = nil)
     ["collection", "collections", "links", "models"]
   end
+
+  def to_activitypub_object
+    ActivityPub::CollectionSerializer.new(self).serialize
+  end
 end
