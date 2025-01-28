@@ -15,7 +15,7 @@ class Model < ApplicationRecord
     name_field: :name,
     profile_url_method: :url_for,
     # We use the Service actor type purely so Mastodon doesn't ignore the actor.
-    # Actual type is differentiated with f3di:concreteType.
+    # Actual type is differentiated with f3di:concreteType == "3DModel".
     # Ideally this would be a Document: https://www.w3.org/TR/activitystreams-vocabulary/#dfn-document
     # Hopefully at some point this can change, if Mastodon starts allowing other actor types
     # See https://github.com/mastodon/mastodon/issues/22322
