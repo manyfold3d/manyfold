@@ -1127,10 +1127,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/webpack-env@npm:^1.18.5":
-  version: 1.18.5
-  resolution: "@types/webpack-env@npm:1.18.5"
-  checksum: 4ca8eb4c44e1e1807c3e245442fce7aaf2816a163056de9436bbac44cc47c8bc5b1c9a330dc05748d6616431b1fb5bd5379733fb1da0b78d03c59f4ec824c184
+"@types/webpack-env@npm:^1.18.7":
+  version: 1.18.7
+  resolution: "@types/webpack-env@npm:1.18.7"
+  checksum: 445777e87efd8e14ed3ba2731cdc3197c56796e30e88435fc754d38cecbf51bd0405fa48e6407a4317719459eb9a8ab880b8c3a23e38b5d2d5be4978d0aefc3e
   languageName: node
   linkType: hard
 
@@ -4297,7 +4297,7 @@ __metadata:
     "@types/node": ^20.17.13
     "@types/selectize": ^0.12.39
     "@types/three": ^0.172.0
-    "@types/webpack-env": ^1.18.5
+    "@types/webpack-env": ^1.18.7
     "@types/webxr": ^0.5.21
     "@typescript-eslint/parser": ^8.22.0
     "@uppy/core": ^4.4.1
