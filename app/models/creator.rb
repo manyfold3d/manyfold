@@ -27,11 +27,6 @@ class Creator < ApplicationRecord
     find_by!(slug: param)
   end
 
-  def summary_html
-    return unless caption || notes
-    "<section>#{"<header>#{caption}</header>" if caption}#{Kramdown::Document.new(notes).to_html.rstrip if notes}</section>"
-  end
-
   def self.create_from_activitypub_object(actor)
     matches = actor.extensions["summary"].match(/<section><header>(.+)<\/header><p>(.+)<\/p><\/section>/)
     create(
@@ -45,21 +40,6 @@ class Creator < ApplicationRecord
   end
 
   def to_activitypub_object
-    {
-      "@context": {
-        f3di: "http://purl.org/f3di/ns#",
-        toot: "http://joinmastodon.org/ns#",
-        attributionDomains: {
-          "@id": "toot:attributionDomains",
-          "@type": "@id"
-        }
-      },
-      summary: summary_html,
-      attributionDomains: [
-        [Rails.application.default_url_options[:host], Rails.application.default_url_options[:port]].compact.join(":")
-      ],
-      "f3di:concreteType": "Creator",
-      attachment: links.map { |it| {type: "Link", href: it.url} }
-    }
+    ActivityPub::CreatorPresenter.new(self).present!
   end
 end
