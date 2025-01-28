@@ -7,7 +7,8 @@ module ActivityPub
         },
         summary: summary_html,
         "f3di:concreteType": "Model",
-        attachment: @object.links.map { |it| {type: "Link", href: it.url} }
+        attachment: @object.links.map { |it| {type: "Link", href: it.url} },
+        sensitive: @object.sensitive
       }.merge(address_fields)
     end
 
