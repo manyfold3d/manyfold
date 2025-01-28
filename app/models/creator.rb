@@ -27,10 +27,6 @@ class Creator < ApplicationRecord
     find_by!(slug: param)
   end
 
-  def self.create_from_activitypub_object(actor)
-    ActivityPub::CreatorDeserializer.new(actor).deserialize
-  end
-
   def to_activitypub_object
     ActivityPub::CreatorSerializer.new(self).serialize
   end

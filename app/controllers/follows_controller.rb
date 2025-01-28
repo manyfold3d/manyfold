@@ -83,7 +83,7 @@ class FollowsController < ApplicationController
     actor.entity ||
       case actor.extensions&.dig("f3di:concreteType")
       when "Creator"
-        Creator.create_from_activitypub_object(actor)
+        ActivityPub::CreatorDeserializer.new(actor).deserialize
       end
   end
 end
