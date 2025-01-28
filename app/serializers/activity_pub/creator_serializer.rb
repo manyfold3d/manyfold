@@ -1,6 +1,6 @@
 module ActivityPub
-  class CreatorPresenter < BasePresenter
-    def present!
+  class CreatorSerializer < BaseSerializer
+    def serialize
       {
         "@context": {
           f3di: "http://purl.org/f3di/ns#",

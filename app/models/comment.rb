@@ -10,11 +10,11 @@ class Comment < ApplicationRecord
   acts_as_federails_data handles: "Note", actor_entity_method: :commenter, url_param: :public_id, should_federate_method: :federate?
 
   def to_activitypub_object
-    ActivityPub::CommentPresenter.new(self).present!
+    ActivityPub::CommentSerializer.new(self).serialize
   end
 
   def federate?
-    ActivityPub::CommentPresenter.new(self).federate?
+    ActivityPub::CommentSerializer.new(self).federate?
   end
 
   def public?
