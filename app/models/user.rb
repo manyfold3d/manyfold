@@ -142,6 +142,10 @@ class User < ApplicationRecord
     ActivityPub::UserSerializer.new(self).serialize
   end
 
+  def public?
+    true
+  end
+
   private
 
   def has_any_role_of?(*args)

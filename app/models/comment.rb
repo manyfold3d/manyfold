@@ -18,7 +18,6 @@ class Comment < ApplicationRecord
   end
 
   def public?
-    Pundit::PolicyFinder.new(commenter.class).policy.new(nil, commenter).show? &&
-      Pundit::PolicyFinder.new(commentable.class).policy.new(nil, commentable).show?
+    commenter.public? && commentable.public?
   end
 end

@@ -168,6 +168,10 @@ class Model < ApplicationRecord
     end
   end
 
+  def to_activitypub_object
+    ActivityPub::ModelSerializer.new(self).serialize
+  end
+
   private
 
   def normalize_license

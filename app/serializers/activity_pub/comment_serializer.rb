@@ -1,5 +1,5 @@
 module ActivityPub
-  class CommentSerializer < BaseSerializer
+  class CommentSerializer < ApplicationSerializer
     def serialize
       Federails::DataTransformer::Note.to_federation(
         @object,
@@ -10,14 +10,6 @@ module ActivityPub
           "tag" => hashtags
         }.merge(address_fields)
       )
-    end
-
-    def federate?
-      @object.public?
-    end
-
-    def to
-      PUBLIC_COLLECTION if @object.public?
     end
 
     def cc

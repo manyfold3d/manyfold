@@ -1,6 +1,7 @@
 module ActivityPub
-  class CreatorSerializer < BaseSerializer
+  class CreatorSerializer < ApplicationSerializer
     def serialize
+      raise ActiveRecord::RecordNotFound unless federate? # Temporary guard against publishing non-public Federails::ActorEntity objects
       {
         "@context": {
           f3di: "http://purl.org/f3di/ns#",
@@ -19,28 +20,8 @@ module ActivityPub
       }.merge(address_fields)
     end
 
-    def federate?
-      # Currently unused
-      public?
-    end
-
-    def to
-      PUBLIC_COLLECTION if public?
-    end
-
     def cc
       @object.federails_actor.followers_url
-    end
-
-    private
-
-    def public?
-      CreatorPolicy.new(nil, @object).show?
-    end
-
-    def summary_html
-      return unless @object.caption || @object.notes
-      "<section>#{"<header>#{@object.caption}</header>" if @object.caption}#{Kramdown::Document.new(@object.notes).to_html.rstrip if @object.notes}</section>"
     end
   end
 end

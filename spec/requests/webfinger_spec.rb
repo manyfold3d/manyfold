@@ -2,7 +2,11 @@ require "rails_helper"
 
 RSpec.describe "Webfinger", :multiuser do
   context "when looking up a creator by at_address" do
-    let(:creator) { create(:creator) }
+    let(:creator) {
+      c = create(:creator)
+      c.grant_permission_to "view", nil
+      c
+    }
 
     before do
       get("/.well-known/webfinger?resource=#{creator.federails_actor.at_address.gsub(/\A@/, "acct:")}")

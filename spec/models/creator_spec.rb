@@ -7,7 +7,11 @@ RSpec.describe Creator do
   it_behaves_like "Sluggable"
 
   context "when generating an ActivityStreams representation" do
-    subject(:creator) { create(:creator) }
+    subject(:creator) {
+      c = create(:creator)
+      c.grant_permission_to "view", nil
+      c
+    }
 
     let(:ap) { creator.to_activitypub_object }
 
