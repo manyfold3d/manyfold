@@ -40,6 +40,6 @@ class Creator < ApplicationRecord
   end
 
   def to_activitypub_object
-    ActivityPub::CreatorPresenter.new(self).present!
+    ActivityPub::CreatorSerializer.new(self).serialize
   end
 end

@@ -1,12 +1,12 @@
 module ActivityPub
-  class BasePresenter
+  class BaseSerializer
     PUBLIC_COLLECTION = "https://www.w3.org/ns/activitystreams#Public"
 
     def initialize(object)
       @object = object
     end
 
-    def present!
+    def serialize
       raise NotImplementedError
     end
 

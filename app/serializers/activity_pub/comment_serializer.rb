@@ -1,6 +1,6 @@
 module ActivityPub
-  class CommentPresenter < BasePresenter
-    def present!
+  class CommentSerializer < BaseSerializer
+    def serialize
       Federails::DataTransformer::Note.to_federation(
         @object,
         content: to_html,
