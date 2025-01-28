@@ -1,5 +1,5 @@
 module ActivityPub
-  class CommentSerializer < BaseSerializer
+  class CommentSerializer < ApplicationSerializer
     def serialize
       Federails::DataTransformer::Note.to_federation(
         @object,

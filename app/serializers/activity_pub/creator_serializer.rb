@@ -1,5 +1,5 @@
 module ActivityPub
-  class CreatorSerializer < BaseSerializer
+  class CreatorSerializer < ApplicationSerializer
     def serialize
       {
         "@context": {
@@ -36,11 +36,6 @@ module ActivityPub
 
     def public?
       CreatorPolicy.new(nil, @object).show?
-    end
-
-    def summary_html
-      return unless @object.caption || @object.notes
-      "<section>#{"<header>#{@object.caption}</header>" if @object.caption}#{Kramdown::Document.new(@object.notes).to_html.rstrip if @object.notes}</section>"
     end
   end
 end

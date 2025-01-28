@@ -1,5 +1,5 @@
 module ActivityPub
-  class UserSerializer < BaseSerializer
+  class UserSerializer < ApplicationSerializer
     def serialize
       {
         "@context": {
