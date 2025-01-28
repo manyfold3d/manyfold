@@ -293,6 +293,7 @@ en:
       weak_password: not strong enough. Consider adding a number, symbols or more letters to make it stronger.
   follow_button_component:
     follow: Follow %{name}
+    pending: Requested
     unfollow: Unfollow %{name}
   follows:
     follow_remote_actor:

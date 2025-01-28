@@ -7,7 +7,7 @@ shared_examples "Follower" do
   end
 
   it "shows as following" do
-    expect(follower.following?(target)).to be true
+    expect(follower.following?(target)).to be :accepted
   end
 
   it "can unfollow the target" do

@@ -22,8 +22,9 @@ module Follower
 
   def following?(target)
     # follows? gives us the relationship or false if it doesn't exist,
-    # so we turn that into a normal boolean
+    # we turn that into the pendingstatus (or false if not)
     tgt = target.is_a?(Federails::Actor) ? target : target.federails_actor
-    federails_actor&.follows?(tgt)&.is_a?(Federails::Following)
+    f = federails_actor&.follows?(tgt)
+    f&.is_a?(Federails::Following) ? f.status.to_sym : false
   end
 end
