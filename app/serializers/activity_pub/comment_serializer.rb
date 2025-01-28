@@ -12,14 +12,6 @@ module ActivityPub
       )
     end
 
-    def federate?
-      @object.public?
-    end
-
-    def to
-      PUBLIC_COLLECTION if @object.public?
-    end
-
     def cc
       @object.commenter.federails_actor.followers_url
     end

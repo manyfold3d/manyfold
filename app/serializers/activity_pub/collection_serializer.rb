@@ -11,15 +11,6 @@ module ActivityPub
       }.merge(address_fields)
     end
 
-    def federate?
-      # Currently unused
-      public?
-    end
-
-    def to
-      PUBLIC_COLLECTION if public?
-    end
-
     def cc
       [
         @object.federails_actor.followers_url,
