@@ -12,7 +12,9 @@ module ActivityPub
         "f3di:concreteType": "3DModel",
         attachment: @object.links.map { |it| {type: "Link", href: it.url} },
         sensitive: @object.sensitive,
-        tag: hashtags
+        tag: hashtags,
+        attributedTo: @object.creator&.federails_actor&.federated_url,
+        context: @object.collection&.federails_actor&.federated_url
       }.compact.merge(address_fields)
     end
 
