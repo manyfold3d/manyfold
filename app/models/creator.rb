@@ -28,15 +28,7 @@ class Creator < ApplicationRecord
   end
 
   def self.create_from_activitypub_object(actor)
-    matches = actor.extensions["summary"].match(/<section><header>(.+)<\/header><p>(.+)<\/p><\/section>/)
-    create(
-      name: actor.name,
-      slug: actor.username,
-      links_attributes: actor.extensions["attachment"]&.select { |it| it["type"] == "Link" }&.map { |it| {url: it["href"]} },
-      caption: matches ? matches[1] : nil,
-      notes: matches ? matches[2] : nil,
-      federails_actor: actor
-    )
+    ActivityPub::CreatorDeserializer.new(actor).deserialize
   end
 
   def to_activitypub_object
