@@ -8,6 +8,9 @@ module ActivityPub
         links_attributes: @object.extensions["attachment"]&.select { |it| it["type"] == "Link" }&.map { |it| {url: it["href"]} },
         caption: @object.extensions["summary"],
         notes: @object.extensions["content"],
+        # tags: parse from @object.extensions["attachment"]
+        # creator: parse from @object.extensions["attributedTo"]
+        # collection: parse from @object.extensions["context"]
         federails_actor: @object
         # TODO: tags
       )
