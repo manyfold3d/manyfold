@@ -139,12 +139,7 @@ class User < ApplicationRecord
   end
 
   def to_activitypub_object
-    {
-      "@context": {
-        f3di: "http://purl.org/f3di/ns#"
-      },
-      "f3di:concreteType": "User"
-    }
+    ActivityPub::UserSerializer.new(self).serialize
   end
 
   private
