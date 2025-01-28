@@ -31,11 +31,5 @@ module ActivityPub
     def cc
       @object.federails_actor.followers_url
     end
-
-    private
-
-    def public?
-      CreatorPolicy.new(nil, @object).show?
-    end
   end
 end

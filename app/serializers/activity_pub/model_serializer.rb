@@ -28,11 +28,5 @@ module ActivityPub
         @object.collection&.federails_actor&.followers_url
       ].compact
     end
-
-    private
-
-    def public?
-      ModelPolicy.new(nil, @object).show?
-    end
   end
 end
