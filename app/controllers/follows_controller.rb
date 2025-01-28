@@ -84,6 +84,10 @@ class FollowsController < ApplicationController
       case actor.extensions&.dig("f3di:concreteType")
       when "Creator"
         ActivityPub::CreatorDeserializer.new(actor).deserialize
+      when "3DModel"
+        ActivityPub::ModelDeserializer.new(actor).deserialize
+      when "Collection"
+        ActivityPub::CollectionDeserializer.new(actor).deserialize
       end
   end
 end
