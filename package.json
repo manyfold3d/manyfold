@@ -49,7 +49,7 @@
     "@types/node": "^20.17.13",
     "@types/selectize": "^0.12.39",
     "@types/three": "^0.172.0",
-    "@types/webpack-env": "^1.18.5",
+    "@types/webpack-env": "^1.18.8",
     "@types/webxr": "^0.5.21",
     "@typescript-eslint/parser": "^8.22.0",
     "eslint": "^9.19.0",
