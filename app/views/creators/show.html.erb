@@ -5,6 +5,7 @@
 
 <%= content_for :items do %>
   <div class="card mb-3 <%= "remote-actor" if @creator.remote? %>">
+    <div class="card-header"><%= @creator.model_name.human %></div>
     <div class="card-body row">
       <div class="col col-auto">
         <%= content_tag(:div, class: "text-center") do %>
