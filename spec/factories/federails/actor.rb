@@ -18,6 +18,10 @@ FactoryBot.define do
           {
             "type" => "Link",
             "href" => "https://example.org"
+          },
+          {
+            "type" => "Ignored",
+            "href" => "https://example.org"
           }
         ]
       }
@@ -35,6 +39,10 @@ FactoryBot.define do
           attachment: [
             {
               "type" => "Link",
+              "href" => "https://example.org"
+            },
+            {
+              "type" => "Ignored",
               "href" => "https://example.org"
             }
           ]

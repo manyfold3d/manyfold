@@ -11,6 +11,10 @@ shared_examples "GenericDeserializer" do
     expect(output.links&.first&.url).to eql "https://example.org"
   end
 
+  it "ignores non-link attachments" do
+    expect(output.links.length).to be 1
+  end
+
   it "sets caption from summary" do
     expect(output.caption).to eq actor.extensions["summary"]
   end
