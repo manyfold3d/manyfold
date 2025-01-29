@@ -5,7 +5,7 @@ module ActivityPub
       Model.create(
         name: @object.name,
         slug: @object.username,
-        links_attributes: @object.extensions&.dig("attachment")&.select { |it| it["type"] == "Link" }&.map { |it| {url: it["href"]} } || [],
+        links_attributes: parse_link_attributes(@object),
         caption: @object.extensions&.dig("summary"),
         notes: @object.extensions&.dig("content"),
         # tags: parse from @object.extensions["attachment"]

@@ -13,7 +13,13 @@ FactoryBot.define do
     extensions {
       {
         summary: Faker::Lorem.sentence,
-        content: Faker::Lorem.paragraph
+        content: Faker::Lorem.paragraph,
+        attachment: [
+          {
+            "type" => "Link",
+            "href" => "https://example.org"
+          }
+        ]
       }
     }
 
@@ -25,7 +31,13 @@ FactoryBot.define do
           "f3di:concreteType": "3DModel",
           "spdx:license": {
             "spdx:licenseId": "MIT"
-          }
+          },
+          attachment: [
+            {
+              "type" => "Link",
+              "href" => "https://example.org"
+            }
+          ]
         }
       }
     end

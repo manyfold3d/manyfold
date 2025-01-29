@@ -8,7 +8,7 @@ shared_examples "GenericDeserializer" do
   end
 
   it "sets links from attachments" do
-    expect(output.links).not_to be_empty
+    expect(output.links&.first&.url).to eql "https://example.org"
   end
 
   it "sets caption from summary" do
