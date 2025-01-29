@@ -3,10 +3,10 @@
     <div class="card-body <%= "remote-actor" if creator.remote? %>">
       <div class="card-title">
         <%= creator.name %>
-        <% if creator.remote? %>
+        <% if SiteSettings.federation_enabled? && creator.remote? %>
           <br>
           <small class="text-secondary"><%= creator.federails_actor&.at_address %></small>
-          <% end %>
+        <% end %>
       </div>
       <% if creator.caption %>
         <small class="card-subtitle mb-2 text-muted"><%= sanitize creator.caption %></small>
