@@ -5,6 +5,9 @@ FactoryBot.define do
     sequence(:public_id) { |n| "model_#{n}" }
     path { Faker::File.dir }
     license { "MIT" }
+    caption { Faker::Lorem.sentence }
+    notes { Faker::Lorem.paragraph }
+    links_attributes { [{url: "http://example.com"}] }
 
     trait :with_tags do
       transient do
