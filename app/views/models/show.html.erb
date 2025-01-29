@@ -38,6 +38,12 @@
 <% content_for :sidebar do %>
   <%= card :secondary, t(".model_details") do %>
     <table class="table table-borderless table-sm">
+      <% if SiteSettings.federation_enabled? %>
+        <tr>
+          <td><%= icon "globe2", t(".fediverse_address") %></td>
+          <td><small><%= @model.federails_actor&.at_address %></small></td>
+        </tr>
+      <% end %>
       <% if @model.creator %>
         <tr>
           <td><%= icon "person", Creator.model_name.human %></td>

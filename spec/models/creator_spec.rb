@@ -27,8 +27,8 @@ RSpec.describe Creator do
       expect(ap[:summary]).to include creator.caption
     end
 
-    it "includes notes in summary" do
-      expect(ap[:summary]).to include creator.notes
+    it "includes notes in content" do
+      expect(ap[:content]).to include creator.notes
     end
 
     it "includes links as attachments" do

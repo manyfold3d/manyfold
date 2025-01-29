@@ -4,13 +4,18 @@ module ActivityPub
       raise ActiveRecord::RecordNotFound unless federate? # Temporary guard against publishing non-public Federails::ActorEntity objects
       {
         "@context": {
-          f3di: "http://purl.org/f3di/ns#"
+          f3di: "http://purl.org/f3di/ns#",
+          Hashtag: "as:Hashtag"
         },
-        summary: summary_html,
-        "f3di:concreteType": "Model",
+        summary: @object.caption,
+        content: @object.notes,
+        "f3di:concreteType": "3DModel",
         attachment: @object.links.map { |it| {type: "Link", href: it.url} },
-        sensitive: @object.sensitive
-      }.merge(address_fields)
+        sensitive: @object.sensitive,
+        tag: hashtags,
+        attributedTo: @object.creator&.federails_actor&.federated_url,
+        context: @object.collection&.federails_actor&.federated_url
+      }.compact.merge(address_fields)
     end
 
     def cc
@@ -19,6 +24,18 @@ module ActivityPub
         @object.creator&.federails_actor&.followers_url,
         @object.collection&.federails_actor&.followers_url
       ].compact
+    end
+
+    private
+
+    def hashtags
+      @object.tags.pluck(:name).map do |tag|
+        {
+          type: "Hashtag",
+          name: "##{tag.tr(" ", "_").camelize}",
+          href: Rails.application.routes.url_helpers.models_url(tag: tag)
+        }
+      end
     end
   end
 end
