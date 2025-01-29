@@ -416,6 +416,7 @@ en:
     no_preview: No preview available
     open_button:
       label: Open model %{name}
+      remote: Remote
       text: Open
   renderer:
     errors:
