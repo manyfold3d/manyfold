@@ -5,9 +5,9 @@ module ActivityPub
       Collection.create(
         name: @object.name,
         slug: @object.username,
-        links_attributes: @object.extensions["attachment"]&.select { |it| it["type"] == "Link" }&.map { |it| {url: it["href"]} },
-        caption: @object.extensions["summary"],
-        notes: @object.extensions["content"],
+        links_attributes: parse_link_attributes(@object),
+        caption: @object.extensions&.dig("summary"),
+        notes: @object.extensions&.dig("content"),
         # collection: parse from @object.extensions["context"]
         federails_actor: @object
       )
