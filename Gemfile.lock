@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: e1f219e4892c3b856b654b3a798607835fec8d2c
-  branch: interim-object-addressing
+  revision: 7ed230154f3e71be985f57ef9c79912626f15f96
+  branch: prepend-at-symbol
   specs:
     federails (0.5.0)
       faraday
