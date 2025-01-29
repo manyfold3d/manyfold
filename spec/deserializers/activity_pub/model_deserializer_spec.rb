@@ -8,5 +8,9 @@ RSpec.describe ActivityPub::ModelDeserializer do
     let(:output) { deserializer.deserialize }
 
     it_behaves_like "GenericDeserializer"
+
+    it "sets license from licenseId" do
+      expect(output.license).to eq "MIT"
+    end
   end
 end
