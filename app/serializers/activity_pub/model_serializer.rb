@@ -16,10 +16,7 @@ module ActivityPub
         tag: hashtags,
         attributedTo: @object.creator&.federails_actor&.federated_url,
         context: @object.collection&.federails_actor&.federated_url,
-        "spdx:license": (@object.license && @object.license != "LicenseRef-Commercial") ? {
-          "@id": "http://spdx.org/licenses/#{@object.license}",
-          "spdx:licenseId": @object.license
-        } : nil
+        "spdx:license": license
       }.compact.merge(address_fields)
     end
 
@@ -32,6 +29,16 @@ module ActivityPub
     end
 
     private
+
+    def license
+      return if @object.license.blank?
+      {
+        "@id": @object.license.starts_with?("LicenseRef-") ?
+          nil :
+          "http://spdx.org/licenses/#{@object.license}",
+        "spdx:licenseId": @object.license
+      }.compact
+    end
 
     def hashtags
       @object.tags.pluck(:name).map do |tag|
