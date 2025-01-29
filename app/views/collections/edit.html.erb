@@ -1,3 +1,6 @@
 <h1><%= t "collections.general.edit" %></h1>
+<% if SiteSettings.federation_enabled? %>
+	<p><small><%= @collection.federails_actor&.at_address %></small></p>
+<% end %>
 
 <%= render "form" %>
