@@ -4,6 +4,7 @@ module ActivityPub
       raise ActiveRecord::RecordNotFound unless federate? # Temporary guard against publishing non-public Federails::ActorEntity objects
       {
         "@context": {
+          spdx: "http://spdx.org/rdf/terms#",
           f3di: "http://purl.org/f3di/ns#",
           Hashtag: "as:Hashtag"
         },
@@ -14,7 +15,11 @@ module ActivityPub
         sensitive: @object.sensitive,
         tag: hashtags,
         attributedTo: @object.creator&.federails_actor&.federated_url,
-        context: @object.collection&.federails_actor&.federated_url
+        context: @object.collection&.federails_actor&.federated_url,
+        "spdx:license": @object.license ? {
+          "@id": "http://spdx.org/licenses/#{@object.license}",
+          "spdx:licenseId": @object.license
+        } : nil
       }.compact.merge(address_fields)
     end
 
