@@ -1,28 +1,38 @@
-<div class="row row-cols-2">
-  <div class="col-9">
-    <div class="row row-cols-2 align-items-baseline">
-      <div class="col col-auto me-auto">
-        <h1><%= @collection.name.careful_titleize %></h1>
+<% content_for :head do %>
+  <%= tag.meta property: "og:type", content: "website" %>
+  <%= tag.meta name: "description", content: truncate(sanitize(@collection.caption), length: 80) if @collection.caption.present? %>
+<% end %>
+
+<%= content_for :items do %>
+  <div class="card mb-3 <%= "remote-actor" if @collection.remote? %>">
+    <div class="card-body row">
+      <div class="col col-auto">
+        <%= content_tag(:div, class: "text-center") do %>
+          <h2>
+            <%= @collection.name %>
+          </h2>
+          <p>
+            <% if @collection.remote? %>
+              <small class="text-secondary"><%= link_to @collection.federails_actor.at_address, @collection.federails_actor.profile_url, target: "new" %></small>
+            <% else %>
+              <small class="text-secondary"><%= @collection.federails_actor.short_at_address if SiteSettings.federation_enabled? %></small>
+            <% end %>
+          </p>
+          <%= render FollowButtonComponent.new(follower: current_user, target: @collection) %>
+        <% end %>
       </div>
-      <div class="col col-auto ">
-        <a href="?order=name" class="btn <%= (session["order"] == "name") ? "btn-secondary" : "btn-outline-secondary" %> btn-sm" title="sort by name"><i class="bi bi-book"></i></a>
-        <a href="?order=recent" class="btn <%= (session["order"] == "recent") ? "btn-secondary" : "btn-outline-secondary" %> btn-sm" title="sort by time"><i class="bi bi-clock"></i></a>
+      <div class="col">
+        <%= content_tag(:p, class: "lead") { @collection.caption } if @collection.caption %>
+        <%= content_tag(:p, class: "card-text") { markdownify @collection.notes } if @collection.notes %>
+        <%= "#{policy_scope(Model).where(collection: @collection).count} #{Model.model_name.human count: policy_scope(Model).where(collection: @collection).count}" %>
       </div>
     </div>
   </div>
-</div>
-<div class="row row-cols-2">
-  <div class="col-9">
-    <% if pagination_settings["models"] %>
-      <%= paginate @models %>
-    <% end %>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-      <%= render partial: "model", collection: @models %>
-    </div>
-    <% if pagination_settings["models"] %>
-      <%= paginate @models %>
-    <% end %>
-  </div>
-  <div class="col-3">
-  </div>
-</div>
+<% end %>
+
+<% content_for :actions do %>
+  <%= link_to safe_join([icon("pencil", t(".edit")), t(".edit")], " "), edit_collection_path(@collection), class: "btn btn-primary" if policy(@collection).edit? %>
+  <%= link_to safe_join([icon("flag", t("general.report", type: collection.model_name.human)), t("general.report", type: collection.model_name.human)], " "), new_collection_report_path(@collection), class: "btn btn-outline-warning" if SiteSettings.multiuser_enabled? %>
+<% end %>
+
+<%= render "models/list" %>
