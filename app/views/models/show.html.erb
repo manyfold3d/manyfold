@@ -41,7 +41,11 @@
       <% if SiteSettings.federation_enabled? %>
         <tr>
           <td><%= icon "globe2", t(".fediverse_address") %></td>
-          <td><small><%= @model.federails_actor&.at_address %></small></td>
+          <td><% if @model.remote? %>
+            <small><%= link_to @model.federails_actor.at_address, @model.federails_actor.profile_url, target: "new" %></small>
+          <% else %>
+            <small><%= @model.federails_actor.short_at_address %></small>
+          <% end %></td>
         </tr>
       <% end %>
       <% if @model.creator %>
@@ -94,6 +98,7 @@
         <td><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc) %></td>
       </tr>
     </table>
+    <%= render FollowButtonComponent.new(follower: current_user, target: @model) unless @model.remote? %>
     <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_model_path(@model), class: "btn btn-primary" if policy(@model).edit? %>
     <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), model_path(@model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: translate("models.destroy.confirm")}} if policy(@model).destroy? %>
   <% end %>

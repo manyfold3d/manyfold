@@ -26,6 +26,8 @@ en:
       unknown: Unknown
     index:
       skip_collections: Skip collection list
+    show:
+      edit: Edit Collection
     unassigned:
       caption: All the models not in a collection.
       name: Unassigned
