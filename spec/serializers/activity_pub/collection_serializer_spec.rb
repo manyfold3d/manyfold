@@ -11,22 +11,10 @@ RSpec.describe ActivityPub::CollectionSerializer do
       c
     }
 
-    let(:ap) { serializer.serialize }
+    it_behaves_like "GenericSerializer"
 
     it "includes concrete type" do
       expect(ap[:"f3di:concreteType"]).to eq "Collection"
-    end
-
-    it "includes caption in summary" do
-      expect(ap[:summary]).to include collection.caption
-    end
-
-    it "includes notes in content" do
-      expect(ap[:content]).to include collection.notes
-    end
-
-    it "includes links as attachments" do
-      expect(ap[:attachment]).to include({type: "Link", href: "http://example.com"})
     end
   end
 end
