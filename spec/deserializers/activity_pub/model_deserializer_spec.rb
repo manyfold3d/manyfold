@@ -12,5 +12,9 @@ RSpec.describe ActivityPub::ModelDeserializer do
     it "sets license from licenseId" do
       expect(output.license).to eq "MIT"
     end
+
+    it "sets correct tags" do
+      expect(output.tag_list).to eq ["hash tag", "wizard"]
+    end
   end
 end

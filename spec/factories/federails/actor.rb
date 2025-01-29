@@ -30,6 +30,18 @@ FactoryBot.define do
     factory :model_actor do
       extensions {
         {
+          tag: [
+            {
+              type: "Hashtag",
+              name: "#HashTag",
+              href: "http://localhost:3214/models?tag=hash%20tag"
+            },
+            {
+              type: "Hashtag",
+              name: "#Wizard",
+              href: "http://localhost:3214/models?tag=wizard"
+            }
+          ],
           summary: Faker::Lorem.sentence,
           content: Faker::Lorem.paragraph,
           "f3di:concreteType": "3DModel",
