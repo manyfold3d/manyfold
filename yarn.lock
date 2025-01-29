@@ -1025,10 +1025,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/i18n-js@npm:^3.8.9":
-  version: 3.8.9
-  resolution: "@types/i18n-js@npm:3.8.9"
-  checksum: 1f22fcd110b67b98145bcf35f384756b9b85dedccf6dd98467987a70b71f767ae989e9624f03236990d998308caa4d22f9f34a75a6cc8676e4bbed304e49608f
+"@types/i18n-js@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@types/i18n-js@npm:4.0.1"
+  dependencies:
+    i18n-js: "*"
+  checksum: 82256a4a1da040b29e51da784bc3d7ad9f7aa2b71b5ab2aade62766d031a2c1ee905f3697a59fab7c3e0d6dcbf019970aa5f5b1076460a0e21c231bc3497fac7
   languageName: node
   linkType: hard
 
@@ -3529,7 +3531,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18n-js@npm:^4.5.1":
+"i18n-js@npm:*, i18n-js@npm:^4.5.1":
   version: 4.5.1
   resolution: "i18n-js@npm:4.5.1"
   dependencies:
@@ -4291,7 +4293,7 @@ __metadata:
     "@rails/ujs": ^7.1.501
     "@selectize/selectize": ^0.15.2
     "@types/bootstrap": ^5.2.10
-    "@types/i18n-js": ^3.8.9
+    "@types/i18n-js": ^4.0.1
     "@types/jquery": ^3.5.32
     "@types/lodash": ^4.17.15
     "@types/node": ^20.17.16
