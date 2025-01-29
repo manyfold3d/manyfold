@@ -11,8 +11,8 @@ module ActivityPub
         # tags: parse from @object.extensions["attachment"]
         # creator: parse from @object.extensions["attributedTo"]
         # collection: parse from @object.extensions["context"]
+        license: @object.extensions&.dig("spdx:license", "spdx:licenseId"),
         federails_actor: @object
-        # TODO: tags
       )
     end
   end
