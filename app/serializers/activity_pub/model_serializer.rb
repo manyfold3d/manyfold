@@ -16,7 +16,7 @@ module ActivityPub
         tag: hashtags,
         attributedTo: @object.creator&.federails_actor&.federated_url,
         context: @object.collection&.federails_actor&.federated_url,
-        "spdx:license": @object.license ? {
+        "spdx:license": (@object.license && @object.license != "LicenseRef-Commercial") ? {
           "@id": "http://spdx.org/licenses/#{@object.license}",
           "spdx:licenseId": @object.license
         } : nil
