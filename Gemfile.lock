@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: a7cb37c0d24745f56ed7ccc13a7037fe6652d301
-  branch: fix-webfinger-type-match
+  revision: 47f1e5157e218e7b60bc66ed8a2fcff2b1142095
+  branch: prepend-at-symbol
   specs:
     federails (0.5.0)
       faraday
@@ -503,7 +503,7 @@ GEM
       date
       stringio
     public_suffix (6.0.1)
-    puma (6.5.0)
+    puma (6.6.0)
       nio4r (~> 2.0)
     pundit (2.4.0)
       activesupport (>= 3.0.0)
@@ -836,7 +836,7 @@ DEPENDENCIES
   pghero (~> 3.6)
   propshaft (~> 1.1)
   public_suffix (~> 6.0)
-  puma (~> 6.5)
+  puma (~> 6.6)
   pundit (~> 2.4)
   rack-contrib (~> 2.5)
   rails (~> 7.2.2)

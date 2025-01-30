@@ -9,8 +9,17 @@ class FollowButtonComponent < ViewComponent::Base
   end
 
   def before_render
-    @i18n_key = @following ? ".unfollow" : ".follow"
-    @icon = @following ? "person-x-fill" : "person-plus-fill"
+    case @following
+    when :pending
+      @i18n_key = ".pending"
+      @icon = "hourglass-split"
+    when :accepted
+      @i18n_key = ".unfollow"
+      @icon = "person-x-fill"
+    else
+      @i18n_key = ".follow"
+      @icon = "person-plus-fill"
+    end
     if @signed_out
       @path = @target.is_a?(Federails::Actor) ?
         follow_remote_actor_path(@target) :
@@ -28,9 +37,17 @@ class FollowButtonComponent < ViewComponent::Base
     social_enabled? && (helpers.policy(Federails::Following).create? || remote_follow_allowed?)
   end
 
-  erb_template <<-ERB
-    <%= button_to safe_join([helpers.icon(@icon, ""), translate(@i18n_key, name: @name)], " "), @path, method: @method, class: "btn btn-primary" %>
-  ERB
+  def call
+    button_to(
+      safe_join([
+        helpers.icon(@icon, ""),
+        translate(@i18n_key, name: @name)
+      ], " "),
+      @path,
+      method: @method,
+      class: "btn #{(@following == :pending) ? "btn-outline-primary " : "btn-primary"}"
+    )
+  end
 
   private
 

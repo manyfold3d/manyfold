@@ -11,6 +11,12 @@
                   help: (devise_mapping.confirmable? && resource.pending_reconfirmation?) ?
                     t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) :
                     nil %>
+            <% if SiteSettings.federation_enabled? %>
+              <div class="row mb-3">
+                <div class="col-auto col-form-label"><%= t("settings.users.index.fediverse_address") %></div>
+                <div class="col col-form-label"><code><%= resource.federails_actor.at_address %></code></div>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="card mb-2">

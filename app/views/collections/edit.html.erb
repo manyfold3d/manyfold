@@ -1,3 +1,6 @@
 <h1><%= t "collections.general.edit" %></h1>
+<% if SiteSettings.federation_enabled? %>
+  <p><small><%= icon "globe2", t(".fediverse_address") %> <%= @collection.federails_actor&.at_address %></small></p>
+<% end %>
 
 <%= render "form" %>

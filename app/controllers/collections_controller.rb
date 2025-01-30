@@ -2,6 +2,7 @@ class CollectionsController < ApplicationController
   include Filterable
   include TagListable
   include Permittable
+  include ModelListable
 
   before_action :get_collection, except: [:index, :new, :create]
 
@@ -33,7 +34,10 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    redirect_to models_path(collection: params[:id])
+    @models = policy_scope(Model).where(collection: @collection)
+    prepare_model_list
+    @additional_filters = {collection: @collection}
+    render layout: "card_list_page"
   end
 
   def new

@@ -78,7 +78,7 @@ RSpec.describe Scan::CheckModelIntegrityJob do
 
   context "when checking for missing links" do
     it "flags models without link as a problem" do
-      model = create(:model)
+      model = create(:model, links_attributes: [])
       described_class.perform_now(model.id)
       expect(model.problems.map(&:category)).to include("no_links")
     end

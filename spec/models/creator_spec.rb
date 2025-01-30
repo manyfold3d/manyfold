@@ -7,7 +7,11 @@ RSpec.describe Creator do
   it_behaves_like "Sluggable"
 
   context "when generating an ActivityStreams representation" do
-    subject(:creator) { create(:creator) }
+    subject(:creator) {
+      c = create(:creator)
+      c.grant_permission_to "view", nil
+      c
+    }
 
     let(:ap) { creator.to_activitypub_object }
 
@@ -23,8 +27,8 @@ RSpec.describe Creator do
       expect(ap[:summary]).to include creator.caption
     end
 
-    it "includes notes in summary" do
-      expect(ap[:summary]).to include creator.notes
+    it "includes notes in content" do
+      expect(ap[:content]).to include creator.notes
     end
 
     it "includes links as attachments" do

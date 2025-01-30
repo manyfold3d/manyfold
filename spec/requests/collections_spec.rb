@@ -80,9 +80,9 @@ RSpec.describe "Collections" do
     end
 
     describe "GET /collections/:id", :as_member do
-      it "Redirects to a list of models with that collection" do
+      it "Shows that collection" do
         get "/collections/#{collection.to_param}"
-        expect(response).to redirect_to("/models?collection=#{collection.public_id}")
+        expect(response).to have_http_status(:success)
       end
     end
 

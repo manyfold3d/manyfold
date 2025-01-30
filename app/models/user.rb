@@ -6,7 +6,11 @@ class User < ApplicationRecord
   include CaberSubject
   include PublicIDable
 
-  acts_as_federails_actor username_field: :public_id, name_field: :username, user_count_method: :user_count
+  acts_as_federails_actor(
+    username_field: :public_id,
+    name_field: :username,
+    user_count_method: :user_count
+  )
 
   rolify
   devise :database_authenticatable,
@@ -139,12 +143,11 @@ class User < ApplicationRecord
   end
 
   def to_activitypub_object
-    {
-      "@context": {
-        f3di: "http://purl.org/f3di/ns#"
-      },
-      "f3di:concreteType": "User"
-    }
+    ActivityPub::UserSerializer.new(self).serialize
+  end
+
+  def public?
+    true
   end
 
   private

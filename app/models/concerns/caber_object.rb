@@ -15,6 +15,10 @@ module CaberObject
     end
   end
 
+  def public?
+    Pundit::PolicyFinder.new(self.class).policy.new(nil, self).show?
+  end
+
   def assign_default_permissions
     # Grant local view access by default
     role = SiteSettings.default_viewer_role
