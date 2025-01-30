@@ -7,7 +7,8 @@ module ActivityPub
         custom: {
           "context" => Rails.application.routes.url_helpers.url_for([@object.commentable, {only_path: false}]),
           "sensitive" => @object.sensitive,
-          "tag" => hashtags
+          "tag" => hashtags,
+          "f3di:compatibilityNote" => @object.system
         }.merge(address_fields)
       )
     end
