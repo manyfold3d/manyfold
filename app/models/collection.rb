@@ -10,12 +10,12 @@ class Collection < ApplicationRecord
     username_field: :public_id,
     name_field: :name,
     profile_url_method: :url_for,
-    # We use the Service actor type purely so Mastodon doesn't ignore the actor.
+    # We use the Group actor type purely so Mastodon doesn't ignore the actor.
     # Actual type is differentiated with f3di:concreteType == "Collection".
     # Ideally this would be a Collection: https://www.w3.org/TR/activitystreams-vocabulary/#dfn-collection
     # Hopefully at some point this can change, if Mastodon starts allowing other actor types
     # See https://github.com/mastodon/mastodon/issues/22322
-    actor_type: "Service"
+    actor_type: "Group"
   )
 
   has_many :models, dependent: :nullify
