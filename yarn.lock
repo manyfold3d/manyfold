@@ -1396,19 +1396,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/core@npm:^4.4.1":
-  version: 4.4.1
-  resolution: "@uppy/core@npm:4.4.1"
+"@uppy/core@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "@uppy/core@npm:4.4.2"
   dependencies:
     "@transloadit/prettier-bytes": ^0.3.4
     "@uppy/store-default": ^4.2.0
-    "@uppy/utils": ^6.1.1
+    "@uppy/utils": ^6.1.2
     lodash: ^4.17.21
     mime-match: ^1.0.2
     namespace-emitter: ^2.0.1
     nanoid: ^5.0.9
     preact: ^10.5.13
-  checksum: 427db5fa59af4707eaf4b7955d1762a2113b10288c38d441af3c792db5282bff99a5d3d711199c3f6f0f3c8bd37171b54a8d5b2d32cecf05d11d72836ab12045
+  checksum: 12f4c57045c77d2f8758ca6122afdf47eb59c91492c92b382a8ea250e06b32df0983a1d56dab3204165e785fbbdb721fb8c21aa0c322bb94fcbb45d7a2c03b4d
   languageName: node
   linkType: hard
 
@@ -1545,6 +1545,16 @@ __metadata:
     lodash: ^4.17.21
     preact: ^10.5.13
   checksum: 452f1b02e2875650c831bba9e67283a9261447587f9ab1f5020bdfc8e218a9749c49397fdc6db9b014ecc748064dbc2d01cd6e64b151dbcf4a4344fb4f7390c2
+  languageName: node
+  linkType: hard
+
+"@uppy/utils@npm:^6.1.2":
+  version: 6.1.2
+  resolution: "@uppy/utils@npm:6.1.2"
+  dependencies:
+    lodash: ^4.17.21
+    preact: ^10.5.13
+  checksum: 51bd81c1fd6e74bc0f23ce108bd59e29de1d563f9c68eb16fd682b0dd46334e6be122d872c688ee1b27b900ec4141b9812898822fcd4d146e994852b658f303e
   languageName: node
   linkType: hard
 
@@ -4302,7 +4312,7 @@ __metadata:
     "@types/webpack-env": ^1.18.8
     "@types/webxr": ^0.5.21
     "@typescript-eslint/parser": ^8.22.0
-    "@uppy/core": ^4.4.1
+    "@uppy/core": ^4.4.2
     "@uppy/dashboard": ^4.3.1
     "@uppy/form": ^4.1.1
     "@uppy/locales": ^4.5.0
