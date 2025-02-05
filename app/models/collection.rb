@@ -23,6 +23,10 @@ class Collection < ApplicationRecord
   belongs_to :collection, optional: true
   validates :name, uniqueness: {case_sensitive: false}
 
+  def name_with_domain
+    remote? ? name + " (#{federails_actor.server})" : name
+  end
+
   # returns all collections at and below given ids
   #   this should be applied to @filters[:collection] to get models in sub-trees
   scope :tree_down, ->(id) {

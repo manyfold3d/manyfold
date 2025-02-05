@@ -11,6 +11,10 @@ class Creator < ApplicationRecord
   has_many :models, dependent: :nullify
   validates :name, uniqueness: {case_sensitive: false}
 
+  def name_with_domain
+    remote? ? name + " (#{federails_actor.server})" : name
+  end
+
   def self.ransackable_attributes(_auth_object = nil)
     ["caption", "created_at", "id", "public_id", "name", "notes", "slug", "updated_at"]
   end
