@@ -10,6 +10,7 @@ en:
       models_button:
         label: Show models by %{name}
         remote_label: Show local models by %{name}
+      remote: Remote
       visit_button:
         label: Visit
         text: Visit original profile
