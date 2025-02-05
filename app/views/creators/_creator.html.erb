@@ -5,7 +5,10 @@
         <%= creator.name %>
         <% if SiteSettings.federation_enabled? && creator.remote? %>
           <br>
-          <small class="text-secondary"><%= creator.federails_actor&.at_address %></small>
+          <small class="text-secondary">
+            <%= icon "globe2", t(".remote") %>
+            <%= creator.federails_actor&.server %>
+          </small>
         <% end %>
       </div>
       <% if creator.caption %>
