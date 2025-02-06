@@ -418,6 +418,7 @@ en:
       label: Open model %{name}
       remote: Remote
       text: Open
+    remote: Remote
   renderer:
     errors:
       canvas: 'Could not find #webgl canvas!'
