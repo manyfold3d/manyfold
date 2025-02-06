@@ -1,4 +1,4 @@
-<%- if SiteSettings.multiuser_enabled? %>
+<%- if SiteSettings.multiuser_enabled? && !form.object.try(:remote?) %>
   <div class="row mb-3">
     <div class="col col-auto">
       <%= t(".permissions") %>
