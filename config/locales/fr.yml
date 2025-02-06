@@ -290,13 +290,13 @@ fr:
       no_results: Désolé, rien n'a été trouvé pour "%{query}". S'agit-il d'un compte ou d'une URL ActivityPub valide ?
       results: Résultats de la recherche
       search:
-        placeholder: 'Entrez un compte Fediverse ou une URL, ex. : admin@try.manyfold.app'
+        placeholder: 'Entrez un compte Fediverse ou une URL, ex. : @admin@try.manyfold.app'
         submit: Recherche
       title: Suivre le Fediverse
     remote_follow:
       help: Vous n'avez pas besoin d'un compte sur ce serveur pour suivre %{name} ; entrez votre propre nom de compte ici, et nous vous renverrons chez vous pour terminer la procédure.
       no_results_html: Nous n'avons pas trouvé votre compte personnel ; l'avez-vous saisi correctement ?
-      placeholder: 'Votre nom d''utilisateur Fediverse, ex. : manyfold@3dp.chat'
+      placeholder: 'Votre nom d''utilisateur Fediverse, ex. : @manyfold@3dp.chat'
       submit:
       title: Suivre %{name}
   general:

@@ -301,13 +301,13 @@ nl:
       no_results: Sorry, kon niets vinden voor "%{query}". Is het een geldig ActivityPub-account of URL?
       results: Zoekresultaten
       search:
-        placeholder: Voer een Fediverse-account of URL in, bijv. admin@try.manyfold.app
+        placeholder: Voer een Fediverse-account of URL in, bijv. @admin@try.manyfold.app
         submit: Zoeken
       title: Volg het Fediverse
     remote_follow:
       help: Je hebt geen account nodig op deze server om %{name} te volgen; voer hier je eigen accountnaam in, en we sturen je terug naar je eigen server om het proces te voltooien.
       no_results_html: We konden je thuisaccount niet vinden; heb je het correct ingevoerd?
-      placeholder: Je Fediverse-gebruikersnaam, bijv. manyfold@3dp.chat
+      placeholder: Je Fediverse-gebruikersnaam, bijv. @manyfold@3dp.chat
       submit: Breng me naar huis
       title: Volg %{name}
   general:
