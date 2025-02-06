@@ -416,7 +416,9 @@ en:
     no_preview: No preview available
     open_button:
       label: Open model %{name}
+      remote: Remote
       text: Open
+    remote: Remote
   renderer:
     errors:
       canvas: 'Could not find #webgl canvas!'

@@ -12,13 +12,15 @@
           <h2>
             <%= @creator.name %>
           </h2>
-          <p>
-            <% if @creator.remote? %>
-              <small class="text-secondary"><%= link_to @creator.federails_actor.at_address, @creator.federails_actor.profile_url, target: "new" %></small>
-            <% else %>
-              <small class="text-secondary">@<%= @creator.federails_actor.username if SiteSettings.federation_enabled? %></small>
-            <% end %>
-          </p>
+          <% if SiteSettings.federation_enabled? %>
+            <p>
+              <% if @creator.remote? %>
+                <small class="text-secondary"><%= link_to @creator.federails_actor.at_address, @creator.federails_actor.profile_url, target: "new" %></small>
+              <% else %>
+                <small class="text-secondary"><%= @creator.federails_actor.short_at_address if SiteSettings.federation_enabled? %></small>
+              <% end %>
+            </p>
+          <% end %>
           <%= render FollowButtonComponent.new(follower: current_user, target: @creator) %>
         <% end %>
       </div>

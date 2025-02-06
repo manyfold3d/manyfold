@@ -35,11 +35,11 @@ div.form-control.tag-container {
     justify-content: center;
     align-items: center;
     aspect-ratio: 1;
-    border-bottom:solid 2px #fbfbfb;
+    border-bottom: solid 2px #fbfbfb;
     text-transform: capitalize;
     font-size: .75rem;
 
-    p{
+    p {
       position: absolute;
       padding: 0;
       margin-block-end: 0;
@@ -48,7 +48,8 @@ div.form-control.tag-container {
       font-weight: 500;
     }
 
-    &::before,&::after {
+    &::before,
+    &::after {
       content: '';
       position: absolute;
       top: -20%;
@@ -60,9 +61,10 @@ div.form-control.tag-container {
       border-radius: 1px;
       opacity: .08;
     }
-&::after {
-  transform: rotate(-45deg);
-}
+
+    &::after {
+      transform: rotate(-45deg);
+    }
 
   }
 
@@ -81,11 +83,6 @@ div.form-control.tag-container {
   .card-body .btn {
     width: fit-content;
     height: fit-content;
-  }
-
-  small {
-    text-transform: capitalize;
-    font-size: 0.8rem;
   }
 
   .sensitive {
