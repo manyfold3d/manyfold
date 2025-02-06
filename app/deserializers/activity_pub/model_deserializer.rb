@@ -2,7 +2,9 @@ module ActivityPub
   class ModelDeserializer < ApplicationDeserializer
     def deserialize
       raise ArgumentError unless @object.is_a?(Federails::Actor)
-      Model.create(
+      Model.create!(
+        library: Library.first, # TODO: This is not ideal
+        path: SecureRandom.uuid,
         name: @object.name,
         slug: @object.username,
         links_attributes: parse_link_attributes(@object),
