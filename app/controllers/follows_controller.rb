@@ -5,7 +5,7 @@ class FollowsController < ApplicationController
 
   def index
     authorize Federails::Following
-    render :new
+    @followings = policy_scope(Federails::Following).all
   end
 
   # Incoming remote follow
@@ -48,14 +48,14 @@ class FollowsController < ApplicationController
     current_user.follow(@actor)
     # If the remote actor has a known Manyfold type, we can create a real object for it
     find_or_create_entity(@actor)
-    redirect_to root_url, notice: t(".followed", actor: @actor.at_address)
+    redirect_back_or_to root_url, notice: t(".followed", actor: @actor.at_address)
   end
 
   def unfollow_remote_actor
     authorize Federails::Following, :destroy?
     @actor = Federails::Actor.find_param(params[:id])
     current_user.unfollow(@actor)
-    redirect_to root_url, notice: t(".unfollowed", actor: @actor.at_address)
+    redirect_back_or_to root_url, notice: t(".unfollowed", actor: @actor.at_address)
   end
 
   def create
