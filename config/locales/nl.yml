@@ -294,6 +294,12 @@ nl:
     follow: Volg %{name}
     unfollow: Ontvolg %{name}
   follows:
+    actor_table:
+      actions: Acties
+      address:
+      info: Info
+      name: Naam
+      non_manyfold_account:
     follow_remote_actor:
       followed: "%{actor} succesvol gevolgd"
     new:

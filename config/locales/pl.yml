@@ -283,6 +283,12 @@ pl:
     follow: Obserwuj %{name}
     unfollow: Przestań obserwować %{name}
   follows:
+    actor_table:
+      actions: Akcje
+      address: Adres Fediverse
+      info: Informacja
+      name: Nazwa
+      non_manyfold_account: To nie jest konto Manyfold; możesz je zaobserwować, ale prawdopodobnie nic ciekawego się nie stanie, przynajmniej na razie.
     follow_remote_actor:
       followed: Pomyślnie zaczęto obserwować %{actor}
     new:
