@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: 47f1e5157e218e7b60bc66ed8a2fcff2b1142095
+  revision: 224e8eac484ecda32734c73b81dbb0d4edd69be9
   branch: prepend-at-symbol
   specs:
     federails (0.5.0)
@@ -434,7 +434,7 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.5.0)
+    net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
     nokogiri (1.18.2)
