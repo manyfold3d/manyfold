@@ -295,9 +295,6 @@ fr:
       help: Vous pouvez suivre des créateurs publics, des collections ou des modèles sur un autre serveur Manyfold, en fait n'importe quel compte public dans Fediverse ! Il suffit d'entrer le nom du compte dans la boîte de recherche !
       no_results: Désolé, rien n'a été trouvé pour "%{query}". S'agit-il d'un compte ou d'une URL ActivityPub valide ?
       results: Résultats de la recherche
-      search:
-        placeholder: 'Entrez un compte Fediverse ou une URL, ex. : @admin@try.manyfold.app'
-        submit: Recherche
       title: Suivre le Fediverse
     remote_follow:
       help: Vous n'avez pas besoin d'un compte sur ce serveur pour suivre %{name} ; entrez votre propre nom de compte ici, et nous vous renverrons chez vous pour terminer la procédure.
@@ -305,6 +302,9 @@ fr:
       placeholder: 'Votre nom d''utilisateur Fediverse, ex. : @manyfold@3dp.chat'
       submit:
       title: Suivre %{name}
+    search_form:
+      placeholder: 'Entrez un compte Fediverse ou une URL, ex. : @admin@try.manyfold.app'
+      submit: Recherche
   general:
     delete: Supprimer
     download: Télécharger

@@ -306,9 +306,6 @@ nl:
       help: Je kunt openbare makers, collecties of modellen op een andere Manyfold-server volgen, eigenlijk elk openbaar account in het Fediverse! Voer gewoon de accountnaam in het zoekvak in!
       no_results: Sorry, kon niets vinden voor "%{query}". Is het een geldig ActivityPub-account of URL?
       results: Zoekresultaten
-      search:
-        placeholder: Voer een Fediverse-account of URL in, bijv. @admin@try.manyfold.app
-        submit: Zoeken
       title: Volg het Fediverse
     remote_follow:
       help: Je hebt geen account nodig op deze server om %{name} te volgen; voer hier je eigen accountnaam in, en we sturen je terug naar je eigen server om het proces te voltooien.
@@ -316,6 +313,9 @@ nl:
       placeholder: Je Fediverse-gebruikersnaam, bijv. @manyfold@3dp.chat
       submit: Breng me naar huis
       title: Volg %{name}
+    search_form:
+      placeholder: Voer een Fediverse-account of URL in, bijv. @admin@try.manyfold.app
+      submit: Zoeken
   general:
     delete: Verwijderen
     download: Downloaden

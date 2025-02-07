@@ -295,9 +295,6 @@ pl:
       help: Możesz obserwować publicznych twórców, kolekcje lub modele na innym serwerze Manyfold, a nawet każde publiczne konto w Fediverse! Wystarczy, że wpiszesz nazwę konta w polu wyszukiwania!
       no_results: Przepraszamy, nie mogliśmy znaleźć niczego dla "%{query}". Czy jest to prawidłowe konto ActivityPub lub adres URL?
       results: Wyniki wyszukiwania
-      search:
-        placeholder: Wprowadź konto Fediverse lub adres URL, np. @admin@try.manyfold.app
-        submit: Wyszukaj
       title: Śledź Fediverse
     remote_follow:
       help: Nie potrzebujesz konta na tym serwerze, aby obserwować %{name}; wprowadź tutaj nazwę swojego konta, a my odeślemy Cię do domu, aby zakończyć proces.
@@ -305,6 +302,9 @@ pl:
       placeholder: Twoja nazwa użytkownika Fediverse, np. @manyfold@3dp.chat
       submit: Zabierz mnie do domu
       title: Obserwuj %{name}
+    search_form:
+      placeholder: Wprowadź konto Fediverse lub adres URL, np. @admin@try.manyfold.app
+      submit: Wyszukaj
   general:
     delete: Usuń
     download: Pobierz

@@ -295,9 +295,6 @@ de:
       help: Du kannst öffentlichen Authoren, Sammlungen oder Modellen auf einem anderen Manyfold-Server folgen, und zwar jedem öffentlichen Konto im Fediverse! Gib einfach den Namen des Accounts in das Suchfeld ein!
       no_results: Ich konnte leider nichts zu "%{query}" finden. Handelt es sich um ein gültiges ActivityPub-Konto oder eine URL?
       results: Suchergebnisse
-      search:
-        placeholder: Gib ein Fediverse-Konto oder eine URL ein, z. B. @admin@try.manyfold.app
-        submit: Suche
       title: Folge dem Fediverse
     remote_follow:
       help: Du brauchst kein Konto auf diesem Server, um %{name} zu folgen; gib hier deinen eigenen Kontonamen ein, und wir schicken Sie nach Hause, um den Vorgang abzuschließen.
@@ -305,6 +302,9 @@ de:
       placeholder: dein Fediverse-Benutzername, z. B. @manyfold@3dp.chat
       submit: Bring mich nach Hause
       title: Folge %{name}
+    search_form:
+      placeholder: Gib ein Fediverse-Konto oder eine URL ein, z. B. @admin@try.manyfold.app
+      submit: Suche
   general:
     delete: Löschen
     download: Herunterladen
