@@ -287,22 +287,28 @@ es:
     follow: Seguir %{name}
     unfollow: Dejar de seguir %{name}
   follows:
+    actor_table:
+      actions: Acciones
+      address: Dirección Fediverse
+      info: Información
+      name: Nombre
+      non_manyfold_account: Esta no es una cuenta Manyfold. Puedes seguirla, pero probablemente no ocurra nada interesante, al menos por ahora.
     follow_remote_actor:
       followed: Siguiendo a %{actor} correctamente.
     new:
       help: Puedes seguir creadores, colecciones o modelos públicos en otro servidor de Manyfold; ¡de hecho, cualquier cuenta pública en el Fediverse! Solo ingresa el nombre de la cuenta en el cuadro de búsqueda.
       no_results: Lo siento, no encontré nada para "%{query}". ¿Es una cuenta o URL de ActivityPub válida?
       results: Resultados de la búsqueda
-      search:
-        placeholder: Introduzca una cuenta Fediverse o URL, por ejemplo admin@try.manyfold.app
-        submit: Buscar
       title: Sigue el Fediverse
     remote_follow:
       help: No es necesario tener una cuenta en este servidor para seguir a %{name}. Escribe tu nombre de usuario aquí y te llevaremos de vuelta para completar el proceso
       no_results_html: No se pudo encontrar tu cuenta de inicio; ¿la escribiste correctamente?
-      placeholder: Tu nombre de usuario de Fediverse, por ejemplo manyfold@3dp.chat
+      placeholder: Tu nombre de usuario de Fediverse, por ejemplo @manyfold@3dp.chat
       submit: Llévame a casa
       title: Seguir %{name}
+    search_form:
+      placeholder: Introduzca una cuenta Fediverse o URL, por ejemplo @admin@try.manyfold.app
+      submit: Buscar
   general:
     delete: Borrar
     download: Descargar

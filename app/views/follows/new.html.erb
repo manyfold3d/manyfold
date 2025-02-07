@@ -3,33 +3,13 @@
   <%= t(".help") %>
 </p>
 
-<div class="col-8">
-  <%= form_with url: new_follow_path, method: :get, class: "mt-3" do |f| %>
-    <div class="input-group mb-3">
-      <%= f.text_field :uri, class: "form-control", placeholder: translate(".search.placeholder"), aria_label: translate(".search.submit"), aria_describedby: "button-search", value: @query %>
-      <%= f.submit translate(".search.submit"), class: "btn btn-primary", name: nil %>
-    </div>
-  <% end %>
-</div>
+<%= render "search_form", query: @query %>
 
 <% if @query %>
 
   <h3><%= t(".results") %></h3>
   <% if @actor %>
-    <table class="table table-striped">
-      <tr>
-        <th><%= t(".name") %></th>
-        <th><%= t(".address") %></th>
-        <th><%= t(".info") %></th>
-        <th><%= t(".actions") %></th>
-      </tr>
-      <tr class="align-middle">
-        <td><%= @actor.name %></td>
-        <td><%= @actor.at_address %></td>
-        <td class="text-warning"><%= icon("exclamation-triangle-fill", translate(".non_manyfold_account")) if @actor.extensions["f3di:concreteType"].nil? %></td>
-        <td><%= render FollowButtonComponent.new(follower: current_user, target: @actor) %></td>
-      </tr>
-    </table>
+    <%= render "actor_table", actors: [@actor] %>
   <% else %>
     <div class="alert alert-info">
       <%= icon "person-arms-up", "" %>

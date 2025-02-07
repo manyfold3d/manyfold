@@ -296,27 +296,30 @@ en:
     pending: Requested
     unfollow: Unfollow %{name}
   follows:
-    follow_remote_actor:
-      followed: Followed %{actor} successfully
-    new:
+    actor_table:
       actions: Actions
       address: Fediverse Address
-      help: You can follow public creators, collections or models on another Manyfold server, in fact any public account in the Fediverse! Just enter the account name in the search box!
       info: Info
       name: Name
-      no_results: Sorry, couldn't find anything for "%{query}". Is it a valid ActivityPub account or URL?
       non_manyfold_account: This is not a Manyfold account; you can follow it, but probably nothing interesting will happen, at least for now.
+    follow_remote_actor:
+      followed: Followed %{actor} successfully
+    index:
+      title: Following
+    new:
+      help: You can follow public creators, collections or models on another Manyfold server, in fact any public account in the Fediverse! Just enter the account name in the search box!
+      no_results: Sorry, couldn't find anything for "%{query}". Is it a valid ActivityPub account or URL?
       results: Search Results
-      search:
-        placeholder: Enter a Fediverse account or URL, e.g. admin@try.manyfold.app
-        submit: Search
       title: Follow the Fediverse
     remote_follow:
       help: You don't need an account on this server to follow %{name}; enter your own account name here, and we'll send you home to complete the process.
       no_results_html: We couldn't find your home account; did you enter it correctly?
-      placeholder: Your Fediverse username, e.g. manyfold@3dp.chat
+      placeholder: Your Fediverse username, e.g. @manyfold@3dp.chat
       submit: Take me home
       title: Follow %{name}
+    search_form:
+      placeholder: Enter a Fediverse account or URL, e.g. @admin@try.manyfold.app
+      submit: Search
     unfollow_remote_actor:
       unfollowed: Unfollowed %{actor}
   general:
