@@ -17,10 +17,10 @@ RSpec.describe Library do
       expect(build(:library, path: @library_path)).to be_valid # rubocop:todo RSpec/InstanceVariable
     end
 
-    it "is invalid if a bad path is specified" do # rubocop:todo RSpec/MultipleExpectations
-      l = build(:library, path: "/nope")
-      expect(l).not_to be_valid
-      expect(l.errors[:path].first).to eq "could not be found on disk"
+    it "is valid if path can be created" do # rubocop:todo RSpec/MultipleExpectations
+      library = build(:library, path: "/libraries/subdirectory")
+      expect(library).to be_valid
+      expect(Dir).to exist(library.path)
     end
 
     it "has many models" do
@@ -72,8 +72,7 @@ RSpec.describe Library do
       path = "/readonly/library"
       allow(FileTest).to receive(:exist?).with(path).and_return(true)
       library = build(:library, path: path)
-      library.valid?
-      expect(library.errors[:path]).to include "must be writable"
+      expect { library.valid? }.to raise_error(Errno::EROFS, /Read-only file system/)
     end
 
     it "normalizes paths" do

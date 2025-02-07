@@ -8,6 +8,8 @@ class Library < ApplicationRecord
     "s3"
   ]
 
+  DISALLOWED_PATH_PREFIXES = %w[/bin /boot /dev /etc /lib /lost /proc /root /run /sbin /selinux /srv /usr]
+
   has_many :models, dependent: :destroy
   has_many :model_files, through: :models
   serialize :tag_regex, type: Array
@@ -180,7 +182,7 @@ class Library < ApplicationRecord
   end
 
   def create_path_if_not_exists
-    if storage_service == "filesystem" && path && SiteSettings.create_path_if_not_on_disk
+    if storage_service == "filesystem" && path && SiteSettings.create_path_if_not_on_disk && !path.starts_with?(*DISALLOWED_PATH_PREFIXES)
       FileUtils.makedirs(path)
     end
   end
