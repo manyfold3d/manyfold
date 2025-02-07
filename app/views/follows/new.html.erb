@@ -9,7 +9,7 @@
 
   <h3><%= t(".results") %></h3>
   <% if @actor %>
-    <%= render 'actor_table', actors: [@actor] %>
+    <%= render "actor_table", actors: [@actor] %>
   <% else %>
     <div class="alert alert-info">
       <%= icon "person-arms-up", "" %>
