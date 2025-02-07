@@ -13,6 +13,7 @@ class Library < ApplicationRecord
   serialize :tag_regex, type: Array
   after_initialize :init
   before_validation :ensure_path_case_is_correct
+  before_validation :create_path_if_not_exists, on: :create
   after_commit :register_storage, on: :create
 
   normalizes :path, with: ->(path) do
@@ -25,7 +26,6 @@ class Library < ApplicationRecord
   validates :path,
     presence: true,
     uniqueness: true,
-    existing_path: true,
     safe_path: true,
     writable: true,
     if: -> { storage_service == "filesystem" }
@@ -176,6 +176,12 @@ class Library < ApplicationRecord
     if storage_service == "filesystem" && path
       normalised = Dir.glob(path).first
       self.path = normalised if normalised
+    end
+  end
+
+  def create_path_if_not_exists
+    if storage_service == "filesystem" && path && SiteSettings.create_path_if_not_on_disk
+      FileUtils.makedirs(path)
     end
   end
 end

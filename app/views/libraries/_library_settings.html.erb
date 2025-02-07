@@ -1,0 +1,16 @@
+<%= form_with url: settings_path, method: :patch do |form| %>
+  <h3><%= t(".title") %></h3>
+  <p class='lead'>
+    <%= t ".summary" %>
+  </p>
+  <div class="row mb-2">
+    <%= form.label nil, t(".create_path_if_not_on_disk.label"), for: "libraries[create_path_if_not_on_disk]", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8 form-check form-switch">
+      <%= form.check_box "libraries[create_path_if_not_on_disk]", checked: SiteSettings.create_path_if_not_on_disk, class: "form-check-input" %>
+      <small><%= t(".create_path_if_not_on_disk.help_html") %></small>
+    </div>
+  </div>
+  <div class='mt-3'>
+    <button type="submit" class="btn btn-primary"><%= icon("save", t("settings.general.submit")) %> <%= t("settings.general.submit") %></button>
+  </div>
+<% end %>

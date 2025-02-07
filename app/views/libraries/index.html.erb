@@ -1,3 +1,7 @@
+<div>
+  <%= render "library_settings" %>
+  <hr>
+</div>
 <h3><%= t(".heading") %></h3>
 <%= link_to t("libraries.general.new"), new_library_path, class: "btn btn-secondary float-end" if policy(:library).new? %>
 <p class='lead'>
