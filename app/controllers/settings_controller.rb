@@ -17,7 +17,7 @@ class SettingsController < ApplicationController
 
   def update_folder_settings(settings)
     return unless settings
-    SiteSettings.model_path_template = settings[:model_path_template].gsub(/^\//, "") == "" # Remove leading slashes
+    SiteSettings.model_path_template = settings[:model_path_template].gsub(/^\//, "") # Remove leading slashes
     SiteSettings.parse_metadata_from_path = settings[:parse_metadata_from_path]
     SiteSettings.safe_folder_names = settings[:safe_folder_names]
   end
