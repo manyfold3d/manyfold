@@ -186,9 +186,9 @@ class Library < ApplicationRecord
       begin
         FileUtils.makedirs(path)
       rescue Errno::EROFS
-        self.errors.add(:path, "must be writable")
+        errors.add(:path, "must be writable")
       rescue Errno::EACCES
-        self.errors.add(:path, "must be writable")
+        errors.add(:path, "must be writable")
       end
     end
   end

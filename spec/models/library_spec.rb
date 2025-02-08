@@ -63,7 +63,7 @@ RSpec.describe Library do
     end
 
     it "disallows read-only folders" do
-      path = "/accessdenied"
+      path = "/readonly/library"
       allow(FileTest).to receive(:exist?).with(path).and_return(true)
       library = build(:library, path: path)
       library.valid?

@@ -10,8 +10,6 @@ module MockDirectory
         end
         FileUtils.touch(File.join(temp_path, f))
       end
-      # Create read-only directory
-      FileUtils.makedirs(File.join(temp_path, "readonly"), mode: 0o0500)
       yield temp_path
     end
   end
