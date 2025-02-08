@@ -17,12 +17,6 @@ RSpec.describe Library do
       expect(build(:library, path: @library_path)).to be_valid # rubocop:todo RSpec/InstanceVariable
     end
 
-    it "is valid if path can be created" do # rubocop:todo RSpec/MultipleExpectations
-      library = build(:library, path: "/libraries/subdirectory")
-      expect(library).to be_valid
-      expect(Dir).to exist(library.path)
-    end
-
     it "has many models" do
       expect(build(:library).models).to eq []
     end
@@ -69,9 +63,9 @@ RSpec.describe Library do
     end
 
     it "disallows read-only folders" do
-      path = "/readonly/library"
-      allow(FileTest).to receive(:exist?).with(path).and_return(true)
+      path = "/readonly"
       library = build(:library, path: path)
+      allow(FileTest).to receive(:exist?).with(path).and_return(true)
       expect { library.valid? }.to raise_error(Errno::EROFS, /Read-only file system/)
     end
 
@@ -114,5 +108,11 @@ RSpec.describe Library do
     it "lists files" do
       expect(library.list_files("**/*")).not_to be_empty
     end
+  end
+
+  it "is valid if path can be created" do # rubocop:todo RSpec/MultipleExpectations
+    library = build(:library, path: "/tmp/libraries/subdirectory")
+    expect(library).to be_valid
+    expect(Dir).to exist(library.path)
   end
 end
