@@ -183,7 +183,13 @@ class Library < ApplicationRecord
 
   def create_path_if_not_exists
     if storage_service == "filesystem" && path && SiteSettings.create_path_if_not_on_disk && !path.starts_with?(*DISALLOWED_PATH_PREFIXES)
-      FileUtils.makedirs(path)
+      begin
+        FileUtils.makedirs(path)
+      rescue Errno::EROFS
+        self.errors.add(:path, "must be writable")
+      rescue Errno::EACCES
+        self.errors.add(:path, "must be writable")
+      end
     end
   end
 end

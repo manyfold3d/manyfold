@@ -63,10 +63,11 @@ RSpec.describe Library do
     end
 
     it "disallows read-only folders" do
-      path = "/readonly"
-      library = build(:library, path: path)
+      path = "/accessdenied"
       allow(FileTest).to receive(:exist?).with(path).and_return(true)
-      expect { library.valid? }.to raise_error(Errno::EROFS, /Read-only file system/)
+      library = build(:library, path: path)
+      library.valid?
+      expect(library.errors[:path]).to include "must be writable"
     end
 
     it "normalizes paths" do
