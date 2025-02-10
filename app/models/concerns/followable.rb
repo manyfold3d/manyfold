@@ -49,8 +49,8 @@ module Followable
     )
   end
 
-  def auto_accept
+  def auto_accept(follow)
     return unless federails_actor.local?
-    federails_actor.following_followers.where(status: "pending").find_each { |it| it.accept! }
+    follow.accept!
   end
 end
