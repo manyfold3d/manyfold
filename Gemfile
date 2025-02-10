@@ -147,7 +147,7 @@ gem "better_content_security_policy", "~> 0.1.4"
 
 gem "devise_zxcvbn", "~> 6.0"
 
-gem "ransack", "~> 4.2"
+gem "ransack", "~> 4.3"
 gem "federails", git: "https://gitlab.com/experimentslabs/federails", branch: "prepend-at-symbol"
 gem "federails-moderation", "~> 0.2"
 gem "caber"
