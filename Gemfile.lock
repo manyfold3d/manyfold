@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: 4f46255e6f67d8daded5341b0b682ac843386d04
+  revision: 036524a9354be6a0b81ad71d7abeda134d3f669e
   branch: main
   specs:
     federails (0.5.0)
@@ -342,7 +342,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jsbundling-rails (1.3.1)
       railties (>= 6.0.0)
-    json (2.9.1)
+    json (2.10.0)
     json-canonicalization (1.0.0)
     json-jwt (1.16.6)
       activesupport (>= 4.2)
