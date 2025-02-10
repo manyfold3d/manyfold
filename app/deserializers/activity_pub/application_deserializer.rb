@@ -1,5 +1,9 @@
 module ActivityPub
   class ApplicationDeserializer < BaseDeserializer
+    def update!
+      @object.entity.update!(deserialize)
+    end
+
     private
 
     def parse_link_attributes(object)
