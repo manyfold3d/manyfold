@@ -84,9 +84,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/eslint-parser@npm:^7.26.5":
-  version: 7.26.5
-  resolution: "@babel/eslint-parser@npm:7.26.5"
+"@babel/eslint-parser@npm:^7.26.8":
+  version: 7.26.8
+  resolution: "@babel/eslint-parser@npm:7.26.8"
   dependencies:
     "@nicolo-ribaudo/eslint-scope-5-internals": 5.1.1-v1
     eslint-visitor-keys: ^2.1.0
@@ -94,7 +94,7 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.11.0
     eslint: ^7.5.0 || ^8.0.0 || ^9.0.0
-  checksum: 3ed969eabc940aa29a2e5bef525674b47ebccb8dfe686737e84fed2b09fbf4bd23c2503936ed340bde2a870fc1917668ec7ab357b97bab504aceb84e9608d213
+  checksum: a434da9e3099e5f77911baa4eaa21f2ec64768703be1fde2858e8ffdb8be6cb78ff67c611c8c17fe1ece54d925b65487a7455cca93103b017443a51b76320751
   languageName: node
   linkType: hard
 
@@ -4286,7 +4286,7 @@ __metadata:
   dependencies:
     "@activeadmin/activeadmin": ^3.2.5
     "@babel/core": ^7
-    "@babel/eslint-parser": ^7.26.5
+    "@babel/eslint-parser": ^7.26.8
     "@babel/preset-typescript": ^7.26.0
     "@notus.sh/cocooned": ^2.4.1
     "@popperjs/core": ^2.11.8
