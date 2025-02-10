@@ -9,7 +9,7 @@ RSpec.describe ActivityPub::ModelDeserializer do
     end
 
     let(:actor) { create(:model_actor) }
-    let(:output) { deserializer.deserialize }
+    let(:output) { deserializer.create! }
 
     it_behaves_like "GenericDeserializer"
 

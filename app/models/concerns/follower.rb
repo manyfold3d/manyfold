@@ -40,11 +40,11 @@ module Follower
     actor.entity ||
       case actor.extensions&.dig("f3di:concreteType")
       when "Creator"
-        ActivityPub::CreatorDeserializer.new(actor).deserialize
+        ActivityPub::CreatorDeserializer.new(actor).create!
       when "3DModel"
-        ActivityPub::ModelDeserializer.new(actor).deserialize
+        ActivityPub::ModelDeserializer.new(actor).create!
       when "Collection"
-        ActivityPub::CollectionDeserializer.new(actor).deserialize
+        ActivityPub::CollectionDeserializer.new(actor).create!
       end
   end
 end
