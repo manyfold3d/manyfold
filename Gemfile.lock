@@ -574,7 +574,7 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.2.1)
-    ransack (4.2.1)
+    ransack (4.3.0)
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
@@ -844,7 +844,7 @@ DEPENDENCIES
   rails-i18n (~> 7.0)
   rails-settings-cached (~> 2.9)
   rails_performance (~> 1.4)
-  ransack (~> 4.2)
+  ransack (~> 4.3)
   redis (~> 5.3)
   redis-namespace
   rolify (~> 6.0)
