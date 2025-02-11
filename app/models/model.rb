@@ -179,7 +179,7 @@ class Model < ApplicationRecord
   end
 
   def size_on_disk
-    model_files.pluck(:size).sum
+    model_files.pluck(:size).compact.sum
   end
 
   def to_activitypub_object
