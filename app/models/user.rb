@@ -44,6 +44,8 @@ class User < ApplicationRecord
   attribute :problem_settings, :json
   attribute :file_list_settings, :json
 
+  attribute :quota_use_site_default, :boolean, default: true
+
   def federails_name
     username
   end
@@ -148,6 +150,18 @@ class User < ApplicationRecord
 
   def public?
     true
+  end
+
+  def quota
+    quota_use_site_default ? SiteSettings.default_user_quota : read_attribute(:quota)
+  end
+
+  def has_quota?
+    true unless quota == 0
+  end
+
+  def current_space_used
+    permitted_models.with_permission("own").map { |m| m.size_on_disk }.sum
   end
 
   private

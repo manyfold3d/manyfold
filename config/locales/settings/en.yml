@@ -125,6 +125,11 @@ en:
         confirm_destroy: Are you sure you want to remove this user account immediately? This cannot be undone!
         reset_password: Reset password
         title: 'User details: %{username}'
+      quota:
+        title: File storage limit (quota)
+        unlimited_quota: Unlimited
+        using_site_default: Using site default file storage limit?
+        current_space_used: Currently used file storage
       update:
         approved: User was approved successfully.
         reset_link_sent: A link has been sent to the user for them to set a new password.

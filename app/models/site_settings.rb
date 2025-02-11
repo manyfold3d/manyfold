@@ -20,6 +20,8 @@ class SiteSettings < RailsSettings::Base
   field :default_viewer_role, type: :string, default: "member"
   field :approve_signups, type: :boolean, default: false
 
+  field :default_user_quota, type: :integer, default: 0
+
   validates :model_ignored_files, regex_array: {strict: true}
 
   def self.registration_enabled?
