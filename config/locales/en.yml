@@ -280,6 +280,9 @@ en:
     tags_card:
       skip_tags: Skip tag list
     title: Manyfold
+  application_helper:
+    server_indicator:
+      remote: Remote
   errors:
     messages:
       already_confirmed: was already confirmed, please try signing in
@@ -421,7 +424,6 @@ en:
       label: Open model %{name}
       remote: Remote
       text: Open
-    remote: Remote
   renderer:
     errors:
       canvas: 'Could not find #webgl canvas!'
