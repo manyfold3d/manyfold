@@ -1,5 +1,16 @@
 module ActivityPub
   class ApplicationDeserializer < BaseDeserializer
+    def self.deserializer_for(object)
+      case object.extensions&.dig("f3di:concreteType")
+      when "Creator"
+        ActivityPub::CreatorDeserializer.new(object)
+      when "3DModel"
+        ActivityPub::ModelDeserializer.new(object)
+      when "Collection"
+        ActivityPub::CollectionDeserializer.new(object)
+      end
+    end
+
     def update!
       @object.entity.update!(deserialize)
     end
