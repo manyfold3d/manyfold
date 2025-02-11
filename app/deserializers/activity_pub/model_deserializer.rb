@@ -16,6 +16,7 @@ module ActivityPub
       {
         name: @object.name,
         slug: @object.username,
+        links: [], # Overwrite existing links
         links_attributes: parse_link_attributes(@object),
         caption: @object.extensions&.dig("summary"),
         notes: @object.extensions&.dig("content"),
