@@ -37,14 +37,6 @@ module Follower
   end
 
   def find_or_create_followed_entity(actor)
-    actor.entity ||
-      case actor.extensions&.dig("f3di:concreteType")
-      when "Creator"
-        ActivityPub::CreatorDeserializer.new(actor).deserialize
-      when "3DModel"
-        ActivityPub::ModelDeserializer.new(actor).deserialize
-      when "Collection"
-        ActivityPub::CollectionDeserializer.new(actor).deserialize
-      end
+    actor.entity || ApplicationDeserializer.deserializer_for(actor)&.create!
   end
 end
