@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "fediverse/inbox"
+
 Federails.configure do |conf|
   conf.app_name = "Manyfold"
   conf.app_version = Rails.application.config.app_version
@@ -15,4 +17,9 @@ Federails.configure do |conf|
   conf.client_routes_path = "client"
 
   conf.remote_follow_url_method = :new_follow_url
+end
+
+Rails.application.config.after_initialize do
+  Fediverse::Inbox.register_handler("Create", "*", ActivityPub::ActorActivityHandler, :handle_create_activity)
+  Fediverse::Inbox.register_handler("Update", "*", ActivityPub::ActorActivityHandler, :handle_update_activity)
 end
