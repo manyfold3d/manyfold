@@ -20,13 +20,7 @@
               <%= @model.name %>
             </a>
             <%= helpers.icon("explicit", Model.human_attribute_name(:sensitive)) if @model.sensitive %>
-            <% if SiteSettings.federation_enabled? && @model.remote? %>
-              <br>
-              <small class="text-secondary">
-                <%= helpers.icon "globe2", t(".remote") %>
-                <%= @model.federails_actor&.server %>
-              </small>
-            <% end %>
+            <br><%= helpers.server_indicator @model %>
           </div>
         </div>
         <div class="col-auto">
