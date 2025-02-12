@@ -207,4 +207,15 @@ module ApplicationHelper
   def random_password
     (SecureRandom.base64(32) + "!0aB").chars.shuffle.join
   end
+
+  def server_indicator(object)
+    actor = object.respond_to?(:federails_actor) ? object.federails_actor : object
+    return if !SiteSettings.federation_enabled? || actor.local?
+    content_tag :small, class: "text-secondary" do
+      safe_join([
+        icon("globe2", t(".remote")),
+        actor.server
+      ], " ")
+    end
+  end
 end

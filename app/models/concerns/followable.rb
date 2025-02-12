@@ -2,7 +2,7 @@ module Followable
   extend ActiveSupport::Concern
   include FederailsCommon
 
-  TIMEOUT = 15
+  TIMEOUT = Rails.env.development? ? 1 : 15
 
   included do
     delegate :following_followers, to: :federails_actor
@@ -28,7 +28,7 @@ module Followable
   private
 
   def recently_posted?
-    Federails::Activity.exists?(entity: federails_actor, created_at: TIMEOUT.minutes.ago..)
+    Federails::Activity.exists?(action: ["Create", "Update"], entity: federails_actor, created_at: TIMEOUT.minutes.ago..)
   end
 
   def followable_post_creation_activity
@@ -49,8 +49,8 @@ module Followable
     )
   end
 
-  def auto_accept
+  def auto_accept(follow)
     return unless federails_actor.local?
-    federails_actor.following_followers.where(status: "pending").find_each { |it| it.accept! }
+    follow.accept!
   end
 end

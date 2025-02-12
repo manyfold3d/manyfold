@@ -15,6 +15,7 @@
           <%- else %>
             <%= object.name %>
           <%- end %>
+          <%= server_indicator object %>
           <%= icon("explicit", Model.human_attribute_name(:sensitive)) if thing.respond_to?(:sensitive) && thing.sensitive %>
         </div>
         <% if thing.is_a? Model %>

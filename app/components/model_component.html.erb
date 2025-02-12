@@ -9,6 +9,8 @@
           <%= render partial: "object_preview", locals: {model: @model, file: file} %>
         </div>
       <% end %>
+    <% elsif @model.remote? %>
+      <div class='preview-empty'> <p><%= t(".no_remote_preview") %></p></div>
     <% else %>
       <div class='preview-empty'> <p><%= t(".no_preview") %></p></div>
     <% end %>
@@ -20,13 +22,7 @@
               <%= @model.name %>
             </a>
             <%= helpers.icon("explicit", Model.human_attribute_name(:sensitive)) if @model.sensitive %>
-            <% if SiteSettings.federation_enabled? && @model.remote? %>
-              <br>
-              <small class="text-secondary">
-                <%= helpers.icon "globe2", t(".remote") %>
-                <%= @model.federails_actor&.server %>
-              </small>
-            <% end %>
+            <br><%= helpers.server_indicator @model %>
           </div>
         </div>
         <div class="col-auto">

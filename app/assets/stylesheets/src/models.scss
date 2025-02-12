@@ -36,12 +36,11 @@ div.form-control.tag-container {
     align-items: center;
     aspect-ratio: 1;
     border-bottom: solid 2px #fbfbfb;
-    text-transform: capitalize;
     font-size: .75rem;
 
     p {
       position: absolute;
-      padding: 0;
+      margin: 1em;
       margin-block-end: 0;
       text-align: center;
       z-index: 50;

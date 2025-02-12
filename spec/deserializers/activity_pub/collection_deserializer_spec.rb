@@ -5,7 +5,7 @@ RSpec.describe ActivityPub::CollectionDeserializer do
     subject(:deserializer) { described_class.new(actor) }
 
     let(:actor) { create(:actor) }
-    let(:output) { deserializer.deserialize }
+    let(:output) { deserializer.create! }
 
     it_behaves_like "GenericDeserializer"
   end
