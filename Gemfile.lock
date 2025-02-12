@@ -509,7 +509,7 @@ GEM
       activesupport (>= 3.0.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (2.2.10)
+    rack (2.2.11)
     rack-contrib (2.5.0)
       rack (< 4)
     rack-oauth2 (2.2.1)
