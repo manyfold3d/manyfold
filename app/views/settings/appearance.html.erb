@@ -1,0 +1,42 @@
+<%= form_with url: settings_path, method: :patch do |form| %>
+  <h3><%= t(".heading") %></h3>
+  <p class="lead"><%= t(".summary") %></p>
+  <div class="row">
+    <%= form.label nil, t(".theme.label"), for: "appearance[theme]", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8">
+      <%= form.select "appearance[theme]",
+            [
+              "cerulean",
+              "cosmo",
+              "cyborg",
+              "darkly",
+              "default",
+              "flatly",
+              "journal",
+              "litera",
+              "lumen",
+              "lux",
+              "materia",
+              "minty",
+              "morph",
+              "pulse",
+              "quartz",
+              "sandstone",
+              "simplex",
+              "sketchy",
+              "slate",
+              "solar",
+              "spacelab",
+              "superhero",
+              "united",
+              "vapor",
+              "yeti",
+              "zephyr"
+            ].map { |it| [it.titleize, it] },
+            {selected: SiteSettings.theme},
+            {class: "form-select"} %>
+      <small><%= t(".default_viewer_role.help") %></small>
+    </div>
+  </div>
+  <%= render "submit", form: form %>
+<% end %>
