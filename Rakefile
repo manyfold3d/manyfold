@@ -45,3 +45,19 @@ namespace :db do
     end
   end
 end
+
+namespace :themes do
+  task generate: :environment do
+    raw = Net::HTTP.get(URI.parse("https://bootswatch.com/api/5.json"))
+    json = JSON.parse(raw)
+    json["themes"].each do |theme|
+      name = theme["name"].downcase
+      contents = <<~EOF
+        @import "bootswatch/dist/#{name}/variables";
+        @import '../../application';
+        @import "bootswatch/dist/#{name}/bootswatch";
+      EOF
+      Rails.root.join("app/assets/stylesheets/entrypoints/themes/#{name}.scss").write(contents)
+    end
+  end
+end
