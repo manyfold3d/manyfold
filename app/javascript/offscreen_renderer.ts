@@ -50,7 +50,7 @@ export class OffscreenRenderer {
       45,
       this.canvas.clientWidth / this.canvas.clientHeight,
       0.1,
-      1000
+      100000
     )
     this.controls = new OrbitControls(this.camera, this.canvas as any)
     this.controls.enableDamping = true
