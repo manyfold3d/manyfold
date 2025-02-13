@@ -1854,6 +1854,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bootswatch@npm:^5.3.3":
+  version: 5.3.3
+  resolution: "bootswatch@npm:5.3.3"
+  checksum: 38279eb9a514bf48b192cd1adc1722b60c19ad0230e19f5dfd721a5bfd36601a7c188b788bb0c4cbf5a75f081fcd7493401901da3e32cfad40fa5ee999ff79ec
+  languageName: node
+  linkType: hard
+
 "brace-expansion@npm:^1.1.7":
   version: 1.1.11
   resolution: "brace-expansion@npm:1.1.11"
@@ -4348,6 +4355,7 @@ __metadata:
     autoprefixer: ^10.4.20
     bootstrap: ^5.3.3
     bootstrap-icons: ^1.11.3
+    bootswatch: ^5.3.3
     comlink: ^4.4.2
     esbuild: ^0.25.0
     eslint: ^9.20.0
