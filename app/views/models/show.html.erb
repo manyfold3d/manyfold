@@ -116,7 +116,7 @@
           <%= content_tag(:li) { link_to t(".download.unsupported"), model_path(@model, format: @download_format, selection: "unsupported"), class: "dropdown-item", download: "download" } %>
           <li><hr class="dropdown-divider"></li>
         <% end %>
-        <% @extensions&.compact.each do |type| %>
+        <% @extensions&.compact&.each do |type| %>
           <%= content_tag(:li) { link_to t(".download.file_type", type: type.upcase), model_path(@model, format: @download_format, selection: type), class: "dropdown-item", download: "download" } %>
         <% end %>
       </ul>
