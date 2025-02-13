@@ -394,6 +394,7 @@ en:
       actions_heading: Actions
     settings:
       activeadmin: Advanced Administration
+      appearance: Appearance
       libraries: Libraries
       organization: Organization
       performance: Performance Dashboard
