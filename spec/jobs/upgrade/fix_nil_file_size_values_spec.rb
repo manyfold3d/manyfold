@@ -4,13 +4,14 @@ require "rails_helper"
 require "support/mock_directory"
 
 RSpec.describe Upgrade::FixNilFileSizeValues do
-  it 'updates file with nil size' do
-    library = create(:library, path: Rails.root.join("spec/fixtures"))
-    model1 = create(:model, library: library, path: "fix_nil_file_size_values_spec")
-    part = create(:model_file, model: model1, filename: "example.obj", size: 284)
+  let(:library) { create(:library, path: Rails.root.join("spec/fixtures")) }
+  let(:model1) { create(:model, library: library, path: "fix_nil_file_size_values_spec") }
+  let(:part) { create(:model_file, model: model1, filename: "example.obj", size: 284) }
+
+  it "updates file with nil size" do
     part.update(size: nil)
     described_class.perform_now
     part.reload
-    expect(part.size).to_not eq(nil)
+    expect(part.size).not_to be_nil
   end
 end
