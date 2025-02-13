@@ -37,6 +37,6 @@ module Follower
   end
 
   def find_or_create_followed_entity(actor)
-    actor.entity || ApplicationDeserializer.deserializer_for(actor)&.create!
+    actor.entity || ActivityPub::ApplicationDeserializer.deserializer_for(actor)&.create!
   end
 end
