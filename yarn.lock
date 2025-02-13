@@ -6053,12 +6053,12 @@ __metadata:
 
 "threejs-webworker-3mf-loader@https://github.com/manyfold3d/threejs-webworker-3mf-loader":
   version: 1.0.0
-  resolution: "threejs-webworker-3mf-loader@https://github.com/manyfold3d/threejs-webworker-3mf-loader.git#commit=025aebc40664e812868320fc8e52b3c19bac22ff"
+  resolution: "threejs-webworker-3mf-loader@https://github.com/manyfold3d/threejs-webworker-3mf-loader.git#commit=dda5a03bbeed41b632c576c6114c34356ddecb2a"
   dependencies:
-    "@xmldom/xmldom": "npm:^0.8.1"
-    query-selector: "npm:^2.0.0"
-    three: "npm:^0.164.1"
-  checksum: 3d964649edf0066dfa613e495805ad216d429ba26a2c0384376694c6eff710c8361cc98c250624bdf0bcc1f918b6399a3a02d041513f6859de6ccf5021c0dabb
+    "@xmldom/xmldom": ^0.8.1
+    query-selector: ^2.0.0
+    three: ^0.164.1
+  checksum: 3778d49e3dd6f10fbb4de3eba287ce79f644e244e40f0db4ffe19629750821a3ee95f3dd0d1a2fc99b049249fc306f67cb9c67692c6dc9f59954258b8d71189b
   languageName: node
   linkType: hard
 
