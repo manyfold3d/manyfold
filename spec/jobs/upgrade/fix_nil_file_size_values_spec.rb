@@ -10,7 +10,7 @@ RSpec.describe Upgrade::FixNilFileSizeValues do
 
   it "updates file with nil size" do
     part.update(size: nil)
-    described_class.perform_now
+    described_class.perform_sync
     part.reload
     expect(part.size).not_to be_nil
   end

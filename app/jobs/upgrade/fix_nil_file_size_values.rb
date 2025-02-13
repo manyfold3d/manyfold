@@ -1,16 +1,21 @@
 # frozen_string_literal: true
 
-class Upgrade::FixNilFileSizeValues < ApplicationJob
-  queue_as :upgrade
+class Upgrade::FixNilFileSizeValues
+  include Sidekiq::IterableJob
 
-  def perform
-    batch_size = 100
+  def on_start
+    logger.info { "Job started: #{self.class.name} (Job id: #{jid})" }
+  end
 
-    # Update all Model Files where size is nil
-    if ModelFile.where(size: nil).count > 0
-      ModelFile.where(size: nil).find_each(batch_size: batch_size) do |modelfile|
-        modelfile.update(size: modelfile.attachment_data["metadata"]["size"]) if modelfile.attachment_data?
-      end
-    end
+  def build_enumerator(*args, cursor:)
+    active_record_records_enumerator(ModelFile.where(size: nil), cursor: cursor)
+  end
+
+  def each_iteration(modelfile, *args)
+    modelfile.update(size: modelfile.attachment_data["metadata"]["size"]) if modelfile.attachment_data?
+  end
+
+  def on_complete
+    logger.info { "Job completed: #{self.class.name} (Job id: #{jid})" }
   end
 end
