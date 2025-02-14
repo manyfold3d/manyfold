@@ -1109,12 +1109,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.17.18":
-  version: 20.17.18
-  resolution: "@types/node@npm:20.17.18"
+"@types/node@npm:^20.17.19":
+  version: 20.17.19
+  resolution: "@types/node@npm:20.17.19"
   dependencies:
     undici-types: ~6.19.2
-  checksum: 81718fe43b55b15e010930c79881277829dd6dfd2fe42fcd3c18abb63b52b476fcc2791c6439cf74ad418d8e9c0cb11666ff506db9f9ac4626b06f1d48103cb2
+  checksum: 4eb29628e293d47494c1fe8eaacbaf9f1317cc2ada176a74753d0ea6e3ff6cb5f3e97ba3baa1435d9934950f0fec5693272f2805387f2e70c119038ee7608c20
   languageName: node
   linkType: hard
 
@@ -4341,7 +4341,7 @@ __metadata:
     "@types/i18n-js": ^4.0.1
     "@types/jquery": ^3.5.32
     "@types/lodash": ^4.17.15
-    "@types/node": ^20.17.18
+    "@types/node": ^20.17.19
     "@types/selectize": ^0.12.39
     "@types/three": ^0.173.0
     "@types/webpack-env": ^1.18.8
