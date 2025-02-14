@@ -44,7 +44,7 @@ module ActivityPub
       @object.tags.pluck(:name).map do |tag|
         {
           type: "Hashtag",
-          name: "##{tag.tr(" ", "_").camelize}",
+          name: tag,
           href: Rails.application.routes.url_helpers.models_url(tag: tag)
         }
       end
