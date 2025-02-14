@@ -24,8 +24,8 @@ RSpec.describe ActivityPub::ModelSerializer do
     it "has valid tag structure" do
       expect(ap[:tag].first).to eq({
         type: "Hashtag",
-        name: "#Tag0",
-        href: "http://localhost:3214/models?tag=tag_0"
+        name: "Tag #0",
+        href: "http://localhost:3214/models?tag=Tag+%230"
       })
     end
   end
