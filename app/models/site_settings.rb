@@ -15,7 +15,6 @@ class SiteSettings < RailsSettings::Base
   ]
   field :parse_metadata_from_path, type: :boolean, default: true
   field :safe_folder_names, type: :boolean, default: true
-  field :create_path_if_not_on_disk, type: :boolean, default: true
   field :analyse_manifold, type: :boolean, default: false
   field :anonymous_usage_id, type: :string, default: nil
   field :default_viewer_role, type: :string, default: "member"
