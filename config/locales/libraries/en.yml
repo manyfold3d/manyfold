@@ -17,6 +17,7 @@ en:
       notes:
         help_html: Optional; shown only to administrators on the settings page. You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       path:
+        create_if_not_exists: Create folder if it does not exist on disk?
         placeholder: "/libraries/models"
       s3_bucket:
         help: Just the bucket name, not the full URL
