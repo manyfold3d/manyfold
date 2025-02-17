@@ -19,6 +19,7 @@ class ModelScanJob < ApplicationJob
 
   def perform(model_id, include_all_subfolders: false)
     model = Model.find(model_id)
+    return if model.remote?
     return if Problem.create_or_clear(model, :missing, !model.exists_on_storage?)
     # For each file in the model, create a file object
     file_list(model.path, model.library, include_all_subfolders: include_all_subfolders).each do |filename|

@@ -7,6 +7,12 @@ en:
       manifold:
         help: Check for non-manifold meshes (i.e. they have holes or impossible surfaces)
         label: Detect mesh errors
+    appearance:
+      heading: Appearance
+      summary: Customise the visual style of your instance.
+      theme:
+        help_html: Affects all users. Visit <a href="https://bootswatch.com">Bootswatch</a> to see previews.
+        label: Theme
     domain_blocks:
       create:
         success: Domain block created successfully.

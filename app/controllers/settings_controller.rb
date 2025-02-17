@@ -5,6 +5,7 @@ class SettingsController < ApplicationController
     # Save site-wide settings if user is an admin
     update_folder_settings(params[:folders])
     update_library_settings(params[:libraries])
+    update_appearance_settings(params[:appearance])
     update_file_settings(params[:files])
     update_tagging_settings(params[:model_tags])
     update_multiuser_settings(params[:multiuser])
@@ -32,6 +33,11 @@ class SettingsController < ApplicationController
     unless settings[:model_ignored_files].split("\n").any? { |p| p.to_regexp.nil? }
       SiteSettings.model_ignored_files = settings[:model_ignored_files]
     end
+  end
+
+  def update_appearance_settings(settings)
+    return unless settings
+    SiteSettings.theme = settings[:theme]
   end
 
   def update_tagging_settings(settings)

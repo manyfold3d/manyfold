@@ -5,6 +5,8 @@ module Follower
   included do
     delegate :activities, to: :federails_actor
     delegate :following_follows, to: :federails_actor
+
+    after_follow_accepted :after_accept
   end
 
   def follows
@@ -26,5 +28,15 @@ module Follower
     tgt = target.is_a?(Federails::Actor) ? target : target.federails_actor
     f = federails_actor&.follows?(tgt)
     f&.is_a?(Federails::Following) ? f.status.to_sym : false
+  end
+
+  private
+
+  def after_accept(follow)
+    find_or_create_followed_entity(follow.target_actor)
+  end
+
+  def find_or_create_followed_entity(actor)
+    actor.entity || ActivityPub::ApplicationDeserializer.deserializer_for(actor)&.create!
   end
 end

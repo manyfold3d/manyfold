@@ -9,7 +9,7 @@ RSpec.describe "Webfinger", :multiuser do
     }
 
     before do
-      get("/.well-known/webfinger?resource=#{creator.federails_actor.at_address.gsub(/\A@/, "acct:")}")
+      get("/.well-known/webfinger?resource=#{creator.federails_actor.acct_uri}")
     end
 
     it "returns a successful response" do

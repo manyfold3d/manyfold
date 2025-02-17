@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         get :analysis
         get :multiuser
         get :reporting
+        get :appearance
       end
       resources :libraries, only: [:index]
     end

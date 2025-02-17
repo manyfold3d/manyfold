@@ -10,7 +10,6 @@ en:
       models_button:
         label: Show models in %{name}
       no_preview: No preview availiable
-      remote: Remote
     create:
       success: New collection details saved.
     destroy:

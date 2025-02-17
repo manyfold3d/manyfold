@@ -1,15 +1,24 @@
 module ActivityPub
   class CreatorDeserializer < ApplicationDeserializer
-    def deserialize
-      raise ArgumentError unless @object.is_a?(Federails::Actor)
-      Creator.create(
-        name: @object.name,
-        slug: @object.username,
-        links_attributes: parse_link_attributes(@object),
-        caption: @object.extensions&.dig("summary"),
-        notes: @object.extensions&.dig("content"),
+    def create!
+      options = deserialize.merge(
         federails_actor: @object
       )
+      Creator.create!(options)
+    end
+
+    private
+
+    def deserialize
+      raise ArgumentError unless @object.is_a?(Federails::Actor)
+      {
+        name: @object.name,
+        slug: @object.username,
+        links: [], # Overwrite existing links
+        links_attributes: parse_link_attributes(@object),
+        caption: @object.extensions&.dig("summary"),
+        notes: @object.extensions&.dig("content")
+      }
     end
   end
 end
