@@ -39,12 +39,6 @@ en:
       tag_regex:
         check: Check
         search_missing: Search Missing
-    library_settings:
-      create_path_if_not_on_disk:
-        help_html: This will create the full directory path. e.g. <code>/folder/top_level/sub/sub1/sub2</code>
-        label: Create path if it does not exist on file system
-      summary: Settings that configure how libraries are configured
-      title: Library Settings
     scan:
       success: Library scan started.
     scan_all:
