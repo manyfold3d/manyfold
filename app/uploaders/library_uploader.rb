@@ -5,6 +5,7 @@ require "shrine/storage/tus"
 class LibraryUploader < Shrine
   plugin :activerecord
   plugin :refresh_metadata
+  plugin :metadata_attributes, size: "size"
   plugin :determine_mime_type
   plugin :rack_response
   plugin :dynamic_storage

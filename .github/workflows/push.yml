@@ -28,6 +28,16 @@ jobs:
           coverageCommand: bundle exec rake
         env:
           CC_TEST_REPORTER_ID: f570c8191542a0db2056d5994b06e9d0be35b25bc6897b5e913c1b783b920a0a
+    services:
+      redis:
+        image: redis
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
   lint:
     runs-on: ubuntu-latest
     steps:

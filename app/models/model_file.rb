@@ -45,21 +45,6 @@ class ModelFile < ApplicationRecord
     withsupports
   ]
 
-  def size
-    if has_attribute? :attachment_data
-      # Note: using attachment.size causes an IOError. Not sure why.
-      # https://github.com/manyfold3d/manyfold/issues/3314
-      attachment&.metadata&.[]("size") || 0
-    else
-      # DEPRECATED: for Pre-shrine migration
-      attributes["size"]
-    end
-  end
-
-  def size=(value)
-    ActiveSupport::Deprecation.warn("size is now set by Shrine")
-  end
-
   def extension
     if has_attribute? :attachment_data
       attachment&.extension
