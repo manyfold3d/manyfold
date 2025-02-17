@@ -17,6 +17,12 @@ RSpec.describe Library do
       expect(build(:library, path: @library_path)).to be_valid # rubocop:todo RSpec/InstanceVariable
     end
 
+    it "is invalid if a bad path is specified" do # rubocop:todo RSpec/MultipleExpectations
+      l = build(:library, path: "/nope", create_path_if_not_on_disk: "1")
+      expect(l).not_to be_valid
+      expect(l.errors[:path].first).to eq "must be writable"
+    end
+
     it "has many models" do
       expect(build(:library).models).to eq []
     end
@@ -112,7 +118,7 @@ RSpec.describe Library do
   end
 
   it "is valid if path can be created" do # rubocop:todo RSpec/MultipleExpectations
-    library = build(:library, path: "/tmp/libraries/subdirectory")
+    library = build(:library, path: "/tmp/libraries/subdirectory", create_path_if_not_on_disk: "1")
     expect(library).to be_valid
     expect(Dir).to exist(library.path)
   end
