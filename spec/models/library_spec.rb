@@ -18,7 +18,7 @@ RSpec.describe Library do
     end
 
     it "is invalid if a bad path is specified" do # rubocop:todo RSpec/MultipleExpectations
-      l = build(:library, path: "/nope", create_path_if_not_on_disk: "1")
+      l = build(:library, path: "/nope", create_path_if_not_on_disk: "0")
       expect(l).not_to be_valid
       expect(l.errors[:path].first).to eq "must be writable"
     end
