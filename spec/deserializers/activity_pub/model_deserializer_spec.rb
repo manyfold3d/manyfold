@@ -18,7 +18,7 @@ RSpec.describe ActivityPub::ModelDeserializer do
     end
 
     it "sets correct tags" do
-      expect(output.tag_list).to eq ["hash tag", "wizard"]
+      expect(output.tag_list).to eq ["Hash Tag", "Wizard"]
     end
   end
 end

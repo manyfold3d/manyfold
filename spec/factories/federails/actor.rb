@@ -33,13 +33,13 @@ FactoryBot.define do
           tag: [
             {
               type: "Hashtag",
-              name: "#HashTag",
-              href: "http://localhost:3214/models?tag=hash%20tag"
+              name: "Hash Tag",
+              href: "http://localhost:3214/models?tag=Hash%20Tag"
             },
             {
               type: "Hashtag",
               name: "#Wizard",
-              href: "http://localhost:3214/models?tag=wizard"
+              href: "http://localhost:3214/models?tag=Wizard"
             }
           ],
           summary: Faker::Lorem.sentence,
