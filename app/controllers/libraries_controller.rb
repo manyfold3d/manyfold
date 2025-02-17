@@ -71,7 +71,7 @@ class LibrariesController < ApplicationController
 
   def library_params
     params.require(:library).permit(
-      :path, :name, :notes, :caption, :icon, {tag_regex: []}, :storage_service,
+      :path, :create_path_if_not_on_disk, :name, :notes, :caption, :icon, {tag_regex: []}, :storage_service,
       :s3_endpoint, :s3_bucket, :s3_region, :s3_access_key_id, :s3_secret_access_key, :s3_path_style
     )
   end
