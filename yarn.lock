@@ -828,6 +828,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@infinizhen/rpg-awesome-continued@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "@infinizhen/rpg-awesome-continued@npm:1.0.6"
+  checksum: cc21cd10f3e9951f442f54051d439739c97fb5932106921f9c2ff2dfed8a91b8ac8aead739181986fc8cc53eed52152e3ef05599fb2aa49dfe0f06f55a1ea1b4
+  languageName: node
+  linkType: hard
+
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
   resolution: "@isaacs/cliui@npm:8.0.2"
@@ -4333,6 +4340,7 @@ __metadata:
     "@babel/core": ^7
     "@babel/eslint-parser": ^7.26.8
     "@babel/preset-typescript": ^7.26.0
+    "@infinizhen/rpg-awesome-continued": ^1.0.6
     "@notus.sh/cocooned": ^2.4.1
     "@popperjs/core": ^2.11.8
     "@rails/ujs": ^7.1.501
@@ -4366,7 +4374,6 @@ __metadata:
     nodemon: ^3.1.9
     postcss: ^8.5.2
     postcss-cli: ^11.0.0
-    rpg-awesome: ^0.2.0
     sass-embedded: ^1.85.0
     three: ^0.173.0
     threejs-webworker-3mf-loader: "https://github.com/manyfold3d/threejs-webworker-3mf-loader"
@@ -5399,13 +5406,6 @@ __metadata:
   bin:
     rimraf: bin.js
   checksum: 87f4164e396f0171b0a3386cc1877a817f572148ee13a7e113b238e48e8a9f2f31d009a92ec38a591ff1567d9662c6b67fd8818a2dbbaed74bc26a87a2a4a9a0
-  languageName: node
-  linkType: hard
-
-"rpg-awesome@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "rpg-awesome@npm:0.2.0"
-  checksum: 3310a6f55a4caba345ce038c166942dcc6cd515267f53cc95167e336c1b1f1d0c8f233b0832e61e8e17e0b752efd9928af3e8584afba9ba608c716b65ad428fd
   languageName: node
   linkType: hard
 
