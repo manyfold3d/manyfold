@@ -10,6 +10,8 @@ en:
       add_line: Add Line
       caption:
         help: Optional; shown as a tooltip on library links.
+      create_path_if_not_on_disk:
+        help: Creates the library folder specified above if it doesn't already exist on disk.
       filesystem_description_html: To use storage on your local filesystem, firstly make sure it is mounted as a <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> or other volume inside your Docker container, then enter the Docker path; not the path on your host server! For instance, if you have a folder full of files at <code>/mnt/media/3d/models</code> on your host, and have bound <code>/mnt/media/3d</code> to <code>/libraries</code> in your Docker configuration, the required path would be <code>/libraries/models</code>.
       icon:
         help_html: Optional; any icon from <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a> or <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
@@ -17,7 +19,6 @@ en:
       notes:
         help_html: Optional; shown only to administrators on the settings page. You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       path:
-        create_if_not_exists: Create folder if it does not exist on disk?
         placeholder: "/libraries/models"
       s3_bucket:
         help: Just the bucket name, not the full URL
