@@ -62,7 +62,8 @@ module Filterable
       models.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1")
     else
       @filter_tags = ActsAsTaggableOn::Tag.named_any(tags)
-      models.tagged_with(tags)
+      # Build query directly rather than using tagged_with, which parses the tag list again using default separators
+      ::ActsAsTaggableOn::Taggable::TaggedWithQuery.build(models, ActsAsTaggableOn::Tag, ActsAsTaggableOn::Tagging, @filter_tags.map(&:name), {})
     end
   end
 
