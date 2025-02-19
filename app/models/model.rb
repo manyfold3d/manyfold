@@ -178,6 +178,10 @@ class Model < ApplicationRecord
     end
   end
 
+  def size_on_disk
+    model_files.pluck(:size).compact.sum
+  end
+
   def to_activitypub_object
     ActivityPub::ModelSerializer.new(self).serialize
   end
