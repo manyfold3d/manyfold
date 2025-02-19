@@ -21,6 +21,7 @@ fr:
         object: Objet
       library:
         caption: Légende
+        create_path_if_not_on_disk:
         icon: Icône
         name: Nom
         notes: Notes
@@ -28,6 +29,7 @@ fr:
         s3_access_key_id: ID de la clé d'accès
         s3_bucket: Nom du bucket
         s3_endpoint: URL du endpoint
+        s3_path_style: Utiliser des URL de type "chemin d'accès"
         s3_region: Région
         s3_secret_access_key: Clé d'accès secrète
         storage_service: Service de stockage
@@ -109,8 +111,8 @@ fr:
         model_file:
           attributes:
             filename:
-              cannot_change_type:
-              case_change_only:
+              cannot_change_type: n'est pas le même type de fichier
+              case_change_only: ne peut pas être juste un changement de casse
             presupported_version:
               already_presupported: ne peut pas être défini sur un fichier présupporté
               not_supported: n'est pas un fichier présupporté
@@ -281,6 +283,7 @@ fr:
     title: Manyfold
   follow_button_component:
     follow: Suivre %{name}
+    pending: Demandé
     unfollow: ne plus suivre %{name}
   follows:
     actor_table:
@@ -291,6 +294,8 @@ fr:
       non_manyfold_account: Il ne s'agit pas d'un compte Manyfold ; vous pouvez le suivre, mais il ne se passera probablement rien d'intéressant, du moins pour l'instant.
     follow_remote_actor:
       followed: Suivi de %{actor} avec succès
+    index:
+      title:
     new:
       help: Vous pouvez suivre des créateurs publics, des collections ou des modèles sur un autre serveur Manyfold, en fait n'importe quel compte public dans Fediverse ! Il suffit d'entrer le nom du compte dans la boîte de recherche !
       no_results: Désolé, rien n'a été trouvé pour "%{query}". S'agit-il d'un compte ou d'une URL ActivityPub valide ?
@@ -299,12 +304,14 @@ fr:
     remote_follow:
       help: Vous n'avez pas besoin d'un compte sur ce serveur pour suivre %{name} ; entrez votre propre nom de compte ici, et nous vous renverrons chez vous pour terminer la procédure.
       no_results_html: Nous n'avons pas trouvé votre compte personnel ; l'avez-vous saisi correctement ?
-      placeholder: 'Votre nom d''utilisateur Fediverse, ex. : @manyfold@3dp.chat'
-      submit:
+      placeholder: 'Votre nom d''utilisateur Fediverse, ex. : manyfold@3dp.chat'
+      submit: Retourner à l'accueil
       title: Suivre %{name}
     search_form:
-      placeholder: 'Entrez un compte Fediverse ou une URL, ex. : @admin@try.manyfold.app'
+      placeholder:
       submit: Recherche
+    unfollow_remote_actor:
+      unfollowed: Vous ne suivez plus %{actor}
   general:
     delete: Supprimer
     download: Télécharger
@@ -319,7 +326,7 @@ fr:
     index:
       create_actor: ajouté par %{name} il y a %{time}
       how_long_ago: depuis %{time}
-      no_activities:
+      no_activities: Il n'y a pas d'activités à afficher pour l'instant.
       recent_activity: Activité récente
       search:
         placeholder: Que recherchez-vous ?
@@ -334,17 +341,17 @@ fr:
         detect_duplicates: Détection des fichiers en double
         detect_ineffiency: Détection des formats inefficaces
         file_statistics: Calcul des statistiques sur les fichiers
-        matching:
+        matching: Correspondance entre les fichiers pris en charge
       file_conversion:
         exporting: Export de nouveau fichier
         loading_mesh: Chargement du maillage
       geometric_analysis:
         direction_check: Vérification de l'orientation de la surface
         loading_mesh: Chargement du maillage
-        manifold_check:
+        manifold_check: Vérification de la continuité du maillage
     scan:
       check_all:
-        queueing_model_checks:
+        queueing_model_checks: Mise en file d'attente des vérifications
         removing_orphaned_problems: Suppression des problèmes orphelins
       detect_filesystem_changes:
         building_filename_list: Création d'une liste de fichiers
@@ -374,6 +381,7 @@ fr:
       actions_heading: Actions
     settings:
       activeadmin: Administration avancée
+      appearance:
       libraries: Bibliothèques
       organization: Organisation
       performance: Tableau de bord des performances
@@ -400,6 +408,7 @@ fr:
       label: Modifier le modèle %{name}
       text: Modifier
     no_preview: Pas d'aperçu disponible
+    no_remote_preview:
     open_button:
       label: Ouvrir le modèle %{name}
       text: Ouvrir
@@ -409,7 +418,7 @@ fr:
       load: Erreur de chargement
       webglrenderer: Impossible de créer le rendu !
     load: Chargement
-    processing:
+    processing: Réticulation des splines...
   reports:
     create:
       success: Rapport soumis. Merci !
@@ -432,8 +441,8 @@ fr:
       message: Votre compte a été approuvé ; vous pouvez maintenant vous connecter à %{link}.
       subject: Compte approuvé
     test_email:
-      subject:
-      test_email_message:
+      subject: Email de test
+      test_email_message: Email de test
   views:
     pagination:
       first: "« Premier"

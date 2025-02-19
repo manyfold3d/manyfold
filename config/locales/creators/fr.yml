@@ -9,6 +9,9 @@ fr:
         text: Modifier
       models_button:
         label: Afficher les modèles par %{name}
+        remote_label: Afficher les modèles locaux de %{name}
+      visit_button:
+        label: Visiter
     destroy:
       success: Créateur supprimé !
     form:
