@@ -228,7 +228,7 @@ module ApplicationHelper
     return if !SiteSettings.federation_enabled? || actor.local?
     content_tag :small, class: "text-secondary" do
       safe_join([
-        icon("globe2", t(".remote")),
+        "⁂",
         actor.server
       ], " ")
     end

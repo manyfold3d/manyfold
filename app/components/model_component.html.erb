@@ -52,7 +52,7 @@
       <div class="row">
         <div class="col">
           <% if @model.remote? %>
-            <%= link_to safe_join([helpers.icon("globe2", t(".open_button.remote")), t(".open_button.text")], " "), @model.federails_actor.profile_url, {class: "btn btn-primary btn-sm", "aria-label": translate(".open_button.label", name: @model.name)} %>
+            <%= link_to safe_join(["⁂", t(".open_button.text")], " "), @model.federails_actor.profile_url, {class: "btn btn-primary btn-sm", "aria-label": translate(".open_button.label", name: @model.name)} %>
           <% else %>
             <%= link_to t(".open_button.text"), @model, {class: "btn btn-primary btn-sm", "aria-label": translate(".open_button.label", name: @model.name)} %>
           <% end %>
