@@ -10,6 +10,7 @@
             <p><%= t ".filesystem_description_html" %></p>
           </div>
           <%= text_input_row form, :path, placeholder: translate(".path.placeholder") %>
+          <%= checkbox_input_row form, :create_path_if_not_on_disk, help: t(".create_path_if_not_on_disk.help") %>
         </div>
         <div id="options-s3" class="card p-3 collapse show storage-collapse" data-bs-parent="#library_storage_service">
           <div class="row">

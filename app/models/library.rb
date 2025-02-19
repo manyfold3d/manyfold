@@ -25,7 +25,6 @@ class Library < ApplicationRecord
   validates :path,
     presence: true,
     uniqueness: true,
-    existing_path: true,
     safe_path: true,
     writable: true,
     if: -> { storage_service == "filesystem" }
@@ -162,6 +161,16 @@ class Library < ApplicationRecord
       storage.bucket.object(file).last_modified
     else
       raise "Invalid storage service: #{storage_service}"
+    end
+  end
+
+  def create_path_if_not_on_disk=(val)
+    if val == "1" && storage_service == "filesystem"
+      begin
+        FileUtils.makedirs(path)
+      rescue Errno::EROFS, Errno::EACCES
+        errors.add(:path, :non_writable)
+      end
     end
   end
 

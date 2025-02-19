@@ -21,6 +21,7 @@ en:
         object: Object
       library:
         caption: Caption
+        create_path_if_not_on_disk: Auto-create folder
         icon: Icon
         name: Name
         notes: Notes
