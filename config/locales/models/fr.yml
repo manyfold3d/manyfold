@@ -10,7 +10,7 @@ fr:
       select_all: Sélectionner tous les modèles
       submit: Mettre à jour les modèles sélectionnés
       title: Modifier les modèles en lot
-      update_all: Mettre à jour tous les modèles
+      update_all: Mettre à jour les %{count} modèles
     bulk_fields:
       add_tags: Ajouter des étiquettes
     bulk_update:

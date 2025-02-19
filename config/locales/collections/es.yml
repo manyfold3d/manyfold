@@ -24,6 +24,8 @@ es:
       unknown: Desconocido
     index:
       skip_collections: Saltar lista de colección
+    show:
+      edit: Editar colección
     unassigned:
       caption: Todos los modelos sin una colección asignada.
       name: Sin asignar

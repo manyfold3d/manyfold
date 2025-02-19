@@ -5,7 +5,7 @@ fr:
       duplicate: Fichiers en double
       empty: Le modèle n'a pas de fichiers
       inefficient: Formats inefficaces
-      inside_out:
+      inside_out: Le maillage est à l'envers
       missing: Fichiers ou dossiers manquants
       nesting: Le modèle contient d'autres modèles
       no_3d_model: Le modèle ne contient pas de fichiers 3D
@@ -14,7 +14,7 @@ fr:
       no_license: Le modèle n'a pas d'information de license
       no_links: Le modèle n'a pas de lien de vers sa source
       no_tags: Le modèle n'a pas d'étiquettes
-      non_manifold:
+      non_manifold: Le maillage n'est pas continu
     filters:
       apply_filters: Appliquer
       clear_filters: Nettoyer
@@ -72,13 +72,13 @@ fr:
         title: Format inefficace
       inside_out:
         description: Ce maillage semble être orienté dans le mauvais sens, ce qui peut entraîner des erreurs d'impression. Réparez-le dans un outil de modélisation 3D tel que MeshLab ou 3D Builder.
-        title:
+        title: Maillage inversé
       missing:
         description: Ce fichier est manquant sur le disque ; soit vous le supprimez, soit vous trouvez où il est passé !
         title: Fichier introuvable
       non_manifold:
         description: Ce maillage semble être orienté dans le mauvais sens, ce qui peut entraîner des erreurs d'impression. Réparez-le dans un outil de modélisation 3D tel que MeshLab ou 3D Builder.
-        title:
+        title: Maillage non continu
     severities:
       danger: Danger
       info: Information

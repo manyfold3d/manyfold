@@ -10,6 +10,8 @@ pl:
       add_line: Dodaj linię
       caption:
         help: Opcjonalne; wyświetlane jako tooltip na linkach do biblioteki.
+      create_path_if_not_on_disk:
+        help:
       filesystem_description_html: Aby użyć przestrzeni w lokalnym systemie plików, najpierw upewnij się, że jest on zamontowany jako <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> lub inny wolumin wewnątrz twojego kontenera Dockera, a następnie wprowadź ścieżkę Dockera, a nie ścieżkę na serwerze hosta! Na przykład, jeśli masz folder pełen plików w <code>/mnt/media/3d/models</code> na hoście i powiązałeś <code>/mnt/media/3d</code> z <code>/libraries</code> w konfiguracji Dockera, wymaganą ścieżką będzie <code>/libraries/models</code>.
       icon:
         help_html: Opcjonalne; wszystkie ikony z <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a> lub <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
@@ -22,6 +24,8 @@ pl:
         help:
       s3_description_html:
       s3_endpoint:
+        help:
+      s3_path_style:
         help:
       tag_regex:
         help: Sprawdź modele pod kątem brakujących tagów pasujących do tego regexa.

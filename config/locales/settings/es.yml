@@ -7,6 +7,12 @@ es:
       manifold:
         help: Comprueba si la malla no es válida (es decir, tienen agujeros o superficies imposibles)
         label: Detectar errores de malla
+    appearance:
+      heading:
+      summary:
+      theme:
+        help_html:
+        label:
     domain_blocks:
       create:
         success: Bloqueo de dominio creado con éxito.
@@ -20,6 +26,12 @@ es:
       new:
         submit: Bloqueo de dominio
         title: Nuevo dominio bloqueado
+    file_settings:
+      custom_ignore_filters:
+        details: Los filtros están en formato regex separados por un salto de línea.
+        label: Filtros regex para archivos ignorados.
+      summary: Cambiar la configuración de archivos como los archivos ignorados.
+      title: Configuración de archivos
     folder_settings:
       details: La estructura de carpetas sigue una plantilla que usted define utilizando tokens. También puede incluir otro texto en la plantilla (como separadores de carpeta) y se incluirá tal cual.
       model_path_template:

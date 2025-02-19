@@ -24,6 +24,8 @@ fr:
       unknown: Inconnu
     index:
       skip_collections: Sauter la liste de collections
+    show:
+      edit: Modifier la collection
     unassigned:
       caption: Tous les modèles ne faisant pas partie d'une collection.
       name: Non attribué

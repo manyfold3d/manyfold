@@ -21,6 +21,7 @@ de:
         object: Objekt
       library:
         caption: Beschreibung
+        create_path_if_not_on_disk:
         icon: Symbol
         name: Name
         notes: Notizen
@@ -28,6 +29,7 @@ de:
         s3_access_key_id: Zugangs Schlüssel ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpunkt URL
+        s3_path_style: Verwende pfad-ähnliche URLs
         s3_region: Region
         s3_secret_access_key: Geheimer Zugangs Schlüssel
         storage_service: Speicherdienst
@@ -281,6 +283,7 @@ de:
     title: Manyfold
   follow_button_component:
     follow: Folge %{name}
+    pending: Angefordert
     unfollow: "%{name} nicht mehr Folgen"
   follows:
     actor_table:
@@ -291,6 +294,8 @@ de:
       non_manyfold_account: Dies ist kein Manyfold-Konto; Du kannst ihm folgen, aber wahrscheinlich wird nichts Interessantes passieren, zumindest im Moment.
     follow_remote_actor:
       followed: Erfolgreich %{actor} gefolgt
+    index:
+      title: Follgende
     new:
       help: Du kannst öffentlichen Authoren, Sammlungen oder Modellen auf einem anderen Manyfold-Server folgen, und zwar jedem öffentlichen Konto im Fediverse! Gib einfach den Namen des Accounts in das Suchfeld ein!
       no_results: Ich konnte leider nichts zu "%{query}" finden. Handelt es sich um ein gültiges ActivityPub-Konto oder eine URL?
@@ -299,12 +304,14 @@ de:
     remote_follow:
       help: Du brauchst kein Konto auf diesem Server, um %{name} zu folgen; gib hier deinen eigenen Kontonamen ein, und wir schicken Sie nach Hause, um den Vorgang abzuschließen.
       no_results_html: Wir konnten dein Privatkonto nicht finden; hast du es richtig angegeben?
-      placeholder: dein Fediverse-Benutzername, z. B. @manyfold@3dp.chat
+      placeholder: dein Fediverse-Benutzername, z. B. manyfold@3dp.chat
       submit: Bring mich nach Hause
       title: Folge %{name}
     search_form:
       placeholder: Gib ein Fediverse-Konto oder eine URL ein, z. B. @admin@try.manyfold.app
       submit: Suche
+    unfollow_remote_actor:
+      unfollowed: "%{actor} nicht mehr Folgen"
   general:
     delete: Löschen
     download: Herunterladen
@@ -374,6 +381,7 @@ de:
       actions_heading: Aktionen
     settings:
       activeadmin: Erweiterte Administration
+      appearance:
       libraries: Sammlungen
       organization: Organisation
       performance: Leistungs-Dashboard
@@ -400,6 +408,7 @@ de:
       label: Bearbeite Modell %{name}
       text: Bearbeiten
     no_preview: Keine Vorschau verfügbar
+    no_remote_preview: Vorschauen für Modelle auf anderen Instanzen sind leider noch nicht verfügbar, werden aber bald folgen!
     open_button:
       label: Öffne Modell %{name}
       text: Öffnen

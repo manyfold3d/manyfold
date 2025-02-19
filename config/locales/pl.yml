@@ -21,6 +21,7 @@ pl:
         object: Obiekt
       library:
         caption: Napis
+        create_path_if_not_on_disk:
         icon: Ikona
         name: Nazwa
         notes: Notatki
@@ -28,6 +29,7 @@ pl:
         s3_access_key_id:
         s3_bucket:
         s3_endpoint:
+        s3_path_style:
         s3_region: Region
         s3_secret_access_key:
         storage_service: Usługa przechowywania plików
@@ -281,6 +283,7 @@ pl:
     title: Manyfold
   follow_button_component:
     follow: Obserwuj %{name}
+    pending: Żądane
     unfollow: Przestań obserwować %{name}
   follows:
     actor_table:
@@ -291,8 +294,10 @@ pl:
       non_manyfold_account: To nie jest konto Manyfold; możesz je zaobserwować, ale prawdopodobnie nic ciekawego się nie stanie, przynajmniej na razie.
     follow_remote_actor:
       followed: Pomyślnie zaczęto obserwować %{actor}
+    index:
+      title: Obserwowane
     new:
-      help: Możesz obserwować publicznych twórców, kolekcje lub modele na innym serwerze Manyfold, a nawet każde publiczne konto w Fediverse! Wystarczy, że wpiszesz nazwę konta w polu wyszukiwania!
+      help: Możesz obserwować publicznych twórców, kolekcje lub modele na innym serwerze Manyfold, a nawet każde publiczne konto w Fediversie! Wystarczy, że wpiszesz nazwę konta w polu wyszukiwania!
       no_results: Przepraszamy, nie mogliśmy znaleźć niczego dla "%{query}". Czy jest to prawidłowe konto ActivityPub lub adres URL?
       results: Wyniki wyszukiwania
       title: Śledź Fediverse
@@ -305,6 +310,8 @@ pl:
     search_form:
       placeholder: Wprowadź konto Fediverse lub adres URL, np. @admin@try.manyfold.app
       submit: Wyszukaj
+    unfollow_remote_actor:
+      unfollowed: Przestano obserwować %{actor}
   general:
     delete: Usuń
     download: Pobierz
@@ -374,6 +381,7 @@ pl:
       actions_heading: Akcje
     settings:
       activeadmin: Zaawansowana Administracja
+      appearance:
       libraries: Biblioteki
       organization: Organizacja
       performance: Pulpit Wydajności
@@ -400,6 +408,7 @@ pl:
       label: Edytuj model %{name}
       text: Edytuj
     no_preview: Podgląd jest niedostępny
+    no_remote_preview: Przepraszamy, podgląd modeli na innych instancjach nie jest jeszcze dostępny, ale pojawi się wkrótce!
     open_button:
       label: Otwórz model %{name}
       text: Otwórz

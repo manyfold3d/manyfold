@@ -24,6 +24,8 @@ de:
       unknown: Unbekannt
     index:
       skip_collections: Sammlungsliste überspringen
+    show:
+      edit: Kollektion bearbeiten
     unassigned:
       caption: Alle Modelle, die sich nicht in einer Sammlung befinden.
       name: Nicht zugewiesen
