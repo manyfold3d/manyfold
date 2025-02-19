@@ -7,6 +7,12 @@ de:
       manifold:
         help: Prüfung auf nicht-verzweigte Maschen (d.h. sie haben Löcher oder unmögliche Oberflächen)
         label: Erkennung von Fehlern im Mesh
+    appearance:
+      heading:
+      summary:
+      theme:
+        help_html:
+        label:
     domain_blocks:
       create:
         success: Domänenblock erfolgreich erstellt.
@@ -15,11 +21,17 @@ de:
       index:
         confirm_destroy: Bist du sicher, dass du diese Domänensperre aufheben willst, und federation wieder aktivierst?
         description: Domänensperren verhindern die Verbindung mit ActivityPub-Servern mit den angegebenen Domänen, einschließlich aller Subdomains.
-        new: Neuer Domänenblock
+        new: Neuer Block
         title: Blockierte Domains
       new:
         submit: Domain Blockieren
         title: Neuer Domain-block
+    file_settings:
+      custom_ignore_filters:
+        details: Die Filter sind im Regex-Format und durch eine neue Zeile getrennt.
+        label: Ignorierte Dateien Regex-Filter.
+      summary: Ändere Dateieinstellungen wie z. B. ignorierte Dateien.
+      title: Datei-Einstellungen
     folder_settings:
       details: Die Ordnerstruktur folgt einer Vorlage, die du mit Token definierst. Du kannst auch anderen Text in die Vorlage einfügen (z. B. Ordnertrennzeichen) und dieser wird unverändert übernommen.
       model_path_template:

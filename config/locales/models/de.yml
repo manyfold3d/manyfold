@@ -10,7 +10,7 @@ de:
       select_all: Alle Modelle auswählen
       submit: Ausgewählte Modelle aktualisieren
       title: Modelle massenweise bearbeiten
-      update_all: Alle Modelle aktualisieren
+      update_all: Alle %{count}-Modelle aktualisieren
     bulk_fields:
       add_tags: Tags hinzufügen
     bulk_update:
