@@ -10,6 +10,7 @@ nl:
       select_all: Selecteer alle modellen
       submit: Geselecteerde Modellen Bijwerken
       title: Modellen Bulksgewijs Bewerken
+      update_all:
     bulk_fields:
       add_tags: Tags toevoegen
     bulk_update:

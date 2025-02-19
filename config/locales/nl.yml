@@ -21,6 +21,7 @@ nl:
         object: Object
       library:
         caption: Onderschrift
+        create_path_if_not_on_disk:
         icon: Icoon
         name: Naam
         notes: Notities
@@ -28,6 +29,7 @@ nl:
         s3_access_key_id: Toegangssleutel ID
         s3_bucket: Bucket Naam
         s3_endpoint: Endpoint URL
+        s3_path_style:
         s3_region: Regio
         s3_secret_access_key: Geheime Toegangssleutel
         storage_service: Opslagservice
@@ -292,6 +294,7 @@ nl:
       weak_password: niet sterk genoeg. Overweeg een cijfer, symbolen of meer letters toe te voegen om het sterker te maken.
   follow_button_component:
     follow: Volg %{name}
+    pending:
     unfollow: Ontvolg %{name}
   follows:
     actor_table:
@@ -302,6 +305,8 @@ nl:
       non_manyfold_account:
     follow_remote_actor:
       followed: "%{actor} succesvol gevolgd"
+    index:
+      title:
     new:
       help: Je kunt openbare makers, collecties of modellen op een andere Manyfold-server volgen, eigenlijk elk openbaar account in het Fediverse! Voer gewoon de accountnaam in het zoekvak in!
       no_results: Sorry, kon niets vinden voor "%{query}". Is het een geldig ActivityPub-account of URL?
@@ -310,12 +315,14 @@ nl:
     remote_follow:
       help: Je hebt geen account nodig op deze server om %{name} te volgen; voer hier je eigen accountnaam in, en we sturen je terug naar je eigen server om het proces te voltooien.
       no_results_html: We konden je thuisaccount niet vinden; heb je het correct ingevoerd?
-      placeholder: Je Fediverse-gebruikersnaam, bijv. @manyfold@3dp.chat
+      placeholder: Je Fediverse-gebruikersnaam, bijv. manyfold@3dp.chat
       submit: Breng me naar huis
       title: Volg %{name}
     search_form:
-      placeholder: Voer een Fediverse-account of URL in, bijv. @admin@try.manyfold.app
+      placeholder:
       submit: Zoeken
+    unfollow_remote_actor:
+      unfollowed:
   general:
     delete: Verwijderen
     download: Downloaden
@@ -385,6 +392,7 @@ nl:
       actions_heading: Acties
     settings:
       activeadmin: Geavanceerd Beheer
+      appearance:
       libraries: Bibliotheken
       organization: Organisatie
       performance: Prestatie Dashboard
@@ -411,6 +419,7 @@ nl:
       label: Bewerk model %{name}
       text: Bewerken
     no_preview: Geen voorbeeld beschikbaar
+    no_remote_preview:
     open_button:
       label: Open model %{name}
       text: Openen
