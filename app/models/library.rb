@@ -168,10 +168,8 @@ class Library < ApplicationRecord
     if val == "1" && storage_service == "filesystem"
       begin
         FileUtils.makedirs(path)
-      rescue Errno::EROFS
-        errors.add(:path, "must be writable")
-      rescue Errno::EACCES
-        errors.add(:path, "must be writable")
+      rescue Errno::EROFS, Errno::EACCES
+        errors.add(:path, :non_writable)
       end
     end
   end
