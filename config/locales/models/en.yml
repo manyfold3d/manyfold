@@ -66,7 +66,6 @@ en:
         menu_header: Download Options
         supported: Supported Files Only
         unsupported: Unsupported Files Only
-      fediverse_address: Fediverse Address
       files: Files
       files_card:
         bulk_edit: Edit all files

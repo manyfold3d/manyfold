@@ -12,7 +12,6 @@ en:
         remote_label: Show local models by %{name}
       visit_button:
         label: Visit
-        text: Visit original profile
     destroy:
       success: Creator deleted!
     form:

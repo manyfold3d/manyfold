@@ -281,9 +281,6 @@ en:
     tags_card:
       skip_tags: Skip tag list
     title: Manyfold
-  application_helper:
-    server_indicator:
-      remote: Remote
   errors:
     messages:
       already_confirmed: was already confirmed, please try signing in
@@ -425,7 +422,6 @@ en:
     no_remote_preview: Sorry, previews for models on other instances are not available yet, but will be coming soon!
     open_button:
       label: Open model %{name}
-      remote: Remote
       text: Open
   renderer:
     errors:
