@@ -16,7 +16,7 @@ function getTags (modelId: string): string[] {
   )
   return Array.prototype.slice
     .call(tagLinks)
-    .map((tag: HTMLAnchorElement) => tag.innerHTML)
+    .map((tag: HTMLAnchorElement) => tag.textContent)
 }
 
 function updateTagList (modelId: string, add: boolean): void {
