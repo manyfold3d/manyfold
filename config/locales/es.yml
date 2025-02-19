@@ -21,15 +21,15 @@ es:
         object: Objeto
       library:
         caption: Subtítulo
+        create_path_if_not_on_disk:
         icon: Icono
         name: Nombre
         notes: Notas
         path: Ruta
         s3_access_key_id: Clave de acceso ID
         s3_bucket: Nombre del Bucket
-        s3_endpoint: 'Endpoint URL
-
-          '
+        s3_endpoint: Endpoint URL
+        s3_path_style: Usar URLs path-style
         s3_region: Región
         s3_secret_access_key: Clave de acceso secreta
         storage_service: Servicio de almacenamiento
@@ -285,6 +285,7 @@ es:
     title: Manyfold
   follow_button_component:
     follow: Seguir %{name}
+    pending: Requerido
     unfollow: Dejar de seguir %{name}
   follows:
     actor_table:
@@ -295,6 +296,8 @@ es:
       non_manyfold_account: Esta no es una cuenta Manyfold. Puedes seguirla, pero probablemente no ocurra nada interesante, al menos por ahora.
     follow_remote_actor:
       followed: Siguiendo a %{actor} correctamente.
+    index:
+      title: Siguiendo
     new:
       help: Puedes seguir creadores, colecciones o modelos públicos en otro servidor de Manyfold; ¡de hecho, cualquier cuenta pública en el Fediverse! Solo ingresa el nombre de la cuenta en el cuadro de búsqueda.
       no_results: Lo siento, no encontré nada para "%{query}". ¿Es una cuenta o URL de ActivityPub válida?
@@ -303,12 +306,14 @@ es:
     remote_follow:
       help: No es necesario tener una cuenta en este servidor para seguir a %{name}. Escribe tu nombre de usuario aquí y te llevaremos de vuelta para completar el proceso
       no_results_html: No se pudo encontrar tu cuenta de inicio; ¿la escribiste correctamente?
-      placeholder: Tu nombre de usuario de Fediverse, por ejemplo @manyfold@3dp.chat
+      placeholder: Tu nombre de usuario de Fediverse, por ejemplo manyfold@3dp.chat
       submit: Llévame a casa
       title: Seguir %{name}
     search_form:
       placeholder: Introduzca una cuenta Fediverse o URL, por ejemplo @admin@try.manyfold.app
       submit: Buscar
+    unfollow_remote_actor:
+      unfollowed: Dejar de seguir a %{actor}
   general:
     delete: Borrar
     download: Descargar
@@ -378,6 +383,7 @@ es:
       actions_heading: Acciones
     settings:
       activeadmin: Administración avanzada
+      appearance:
       libraries: Bibliotecas
       organization: Organización
       performance: Panel de rendimiento
@@ -404,6 +410,7 @@ es:
       label: Editar modelo %{name}
       text: Editar
     no_preview: Vista previa no disponible
+    no_remote_preview: Lo sentimos, las vistas previas de los modelos de otras instancias aún no están disponibles, pero lo estarán pronto
     open_button:
       label: Abrir modelo %{name}
       text: Abrir
