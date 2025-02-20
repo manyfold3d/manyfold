@@ -106,7 +106,7 @@ jobs:
           context: .
           file: ./docker/solo.dockerfile
           platforms: linux/amd64,linux/arm/v7,linux/arm64
-          build-platform: linux/amd64
+          build-platform: linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
