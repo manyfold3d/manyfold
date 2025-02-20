@@ -55,4 +55,6 @@
   <% end %>
 
   <%= form.submit translate("general.save"), class: "btn btn-primary" %>
+  <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), library_path("#{@library.public_id}"), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: translate(".confirm_destroy")}} if policy(@library).destroy? %>
+
 <% end %>

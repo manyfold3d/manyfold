@@ -29,6 +29,8 @@ en:
         help: Disable to use vhost-style bucket URLs. Only used for S3-compatible services, not AWS.
       tag_regex:
         help: Check for models missing tags matching these regex.
+      confirm_destroy:
+        help: Delete library?
     general:
       edit: Edit Library
       new: New Library
