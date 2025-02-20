@@ -32,7 +32,7 @@
     "jquery": "^3.7.1",
     "masonry-layout": "^4.2.2",
     "nodemon": "^3.1.9",
-    "postcss": "^8.5.2",
+    "postcss": "^8.5.3",
     "postcss-cli": "^11.0.0",
     "sass-embedded": "^1.85.0",
     "three": "^0.173.0",
