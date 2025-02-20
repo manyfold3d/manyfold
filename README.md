@@ -51,6 +51,32 @@ To run the application once you've cloned this repo, you should be able to just 
 
 If you want to configure optional features, set the appropriate [environment variables](https://manyfold.app/sysadmin/configuration.html) in a file called `.env`. See `env.example` for a template file. Note that the required environment variables in the documentation are not needed in development mode, due to the use of SQLite instead of PostgreSQL.
 
+### Using the Devcontainer
+
+To simplify the development environment setup, Manyfold includes a devcontainer configuration. This allows you to use Visual Studio Code's Remote - Containers extension to develop inside a container.
+
+#### Prerequisites
+
+- Docker installed on your machine
+- Visual Studio Code with the Remote - Containers extension
+
+#### Steps
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/manyfold3d/manyfold.git
+    cd manyfold
+    ```
+
+2. Open the repository in Visual Studio Code:
+    ```sh
+    code .
+    ```
+
+3. When prompted by Visual Studio Code, click on "Reopen in Container". This will build the devcontainer and open the project inside it.
+
+4. Once the container is running, you can use the integrated terminal in Visual Studio Code to run commands as usual.
+
 ### Coding standards
 
 ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/manyfold3d/manyfold)
