@@ -57,6 +57,6 @@
   <%= form.submit translate("general.save"), class: "btn btn-primary" %>
 
   <% if @library.persisted? %>
-    <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), library_path("#{@library.public_id}"), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: translate(".confirm_destroy.help")}} if policy(@library).destroy? %>
+    <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), library_path(@library.public_id), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: translate(".confirm_destroy.help")}} if policy(@library).destroy? %>
   <% end %>
 <% end %>
