@@ -21,7 +21,7 @@ es:
         object: Objeto
       library:
         caption: Subtítulo
-        create_path_if_not_on_disk:
+        create_path_if_not_on_disk: Auto-crear carpeta
         icon: Icono
         name: Nombre
         notes: Notas
@@ -383,7 +383,7 @@ es:
       actions_heading: Acciones
     settings:
       activeadmin: Administración avanzada
-      appearance:
+      appearance: Apariencia
       libraries: Bibliotecas
       organization: Organización
       performance: Panel de rendimiento

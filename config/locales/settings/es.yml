@@ -8,11 +8,11 @@ es:
         help: Comprueba si la malla no es válida (es decir, tienen agujeros o superficies imposibles)
         label: Detectar errores de malla
     appearance:
-      heading:
-      summary:
+      heading: Apariencia
+      summary: Personalice el estilo visual de su instancia.
       theme:
-        help_html:
-        label:
+        help_html: Afecta a todos los usuarios. Visita <a href="https://bootswatch.com">Bootswatch</a> para ver vistas previas.
+        label: Tema
     domain_blocks:
       create:
         success: Bloqueo de dominio creado con éxito.

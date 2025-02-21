@@ -11,7 +11,7 @@ es:
       caption:
         help: Opcional - Se muestra como un mensaje emergente en los enlaces de la biblioteca.
       create_path_if_not_on_disk:
-        help:
+        help: Crea la carpeta de la biblioteca especificada anteriormente si aún no existe en el disco.
       filesystem_description_html: Para utilizar el almacenamiento de tu sistema local, en primer lugar asegúrate de que está montado como un <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> u otro volumen dentro de tu contenedor Docker, luego introduce la ruta Docker; ¡no la ruta del servidor host! Por ejemplo, si tienes una carpeta llena de archivos en <code>/mnt/media/3d/models</code> en tu host, y has enlazado <code>/mnt/media/3d</code> a <code>/libraries</code> en tu configuración Docker, la ruta requerida sería <code>/libraries/models</code>.
       icon:
         help_html: Opcional - Cualquier icono de <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a> o <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
