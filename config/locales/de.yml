@@ -21,7 +21,7 @@ de:
         object: Objekt
       library:
         caption: Beschreibung
-        create_path_if_not_on_disk:
+        create_path_if_not_on_disk: Ordner automatisch erstellen
         icon: Symbol
         name: Name
         notes: Notizen
@@ -37,7 +37,7 @@ de:
       link:
         url: Link
       model:
-        caption: Beschreibung
+        caption: Bildunterschrift
         collection_id: Kollektion
         creator_id: Autor
         library_id: Sammlung
@@ -381,7 +381,7 @@ de:
       actions_heading: Aktionen
     settings:
       activeadmin: Erweiterte Administration
-      appearance:
+      appearance: Erscheinungsbild
       libraries: Sammlungen
       organization: Organisation
       performance: Leistungs-Dashboard

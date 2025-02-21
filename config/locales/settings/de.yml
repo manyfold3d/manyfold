@@ -8,11 +8,11 @@ de:
         help: Prüfung auf nicht-verzweigte Maschen (d.h. sie haben Löcher oder unmögliche Oberflächen)
         label: Erkennung von Fehlern im Mesh
     appearance:
-      heading:
-      summary:
+      heading: Erscheinungsbild
+      summary: Passe den visuellen Stil deiner Instanz an.
       theme:
-        help_html:
-        label:
+        help_html: Betrifft alle Benutzer. Besuche <a href="https://bootswatch.com">Bootswatch</a>, um eine Vorschau zu sehen.
+        label: Stil
     domain_blocks:
       create:
         success: Domänenblock erfolgreich erstellt.
