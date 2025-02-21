@@ -8,11 +8,11 @@ pl:
         help: Sprawdź, czy siatki nie są siatkami nierozmaitymi (tj. mają dziury lub niemożliwe powierzchnie)
         label: Wykryj błędy siatki
     appearance:
-      heading:
-      summary:
+      heading: Wygląd
+      summary: Dostosuj styl wizualny swojej instancji.
       theme:
-        help_html:
-        label:
+        help_html: Dotyczy wszystkich użytkowników. Odwiedź <a href="https://bootswatch.com">Bootswatch</a>, aby zobaczyć podgląd.
+        label: Motyw
     domain_blocks:
       create:
         success: Blok domeny został pomyślnie utworzony.

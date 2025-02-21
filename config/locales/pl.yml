@@ -21,7 +21,7 @@ pl:
         object: Obiekt
       library:
         caption: Napis
-        create_path_if_not_on_disk:
+        create_path_if_not_on_disk: Automatycznie twórz folder
         icon: Ikona
         name: Nazwa
         notes: Notatki
@@ -381,7 +381,7 @@ pl:
       actions_heading: Akcje
     settings:
       activeadmin: Zaawansowana Administracja
-      appearance:
+      appearance: Wygląd
       libraries: Biblioteki
       organization: Organizacja
       performance: Pulpit Wydajności
