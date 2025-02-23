@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_22_171731) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_22_000000) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -34,7 +34,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_22_171731) do
     t.string "slug"
     t.string "public_id"
     t.virtual "name_lower", type: :string, as: "LOWER(name)", stored: true
+    t.integer "creator_id"
     t.index ["collection_id"], name: "index_collections_on_collection_id"
+    t.index ["creator_id"], name: "index_collections_on_creator_id"
     t.index ["name"], name: "index_collections_on_name", unique: true
     t.index ["name_lower"], name: "index_collections_on_name_lower"
     t.index ["public_id"], name: "index_collections_on_public_id"
@@ -121,7 +123,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_22_171731) do
     t.integer "entity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "entity_type", default: "User"
+    t.string "entity_type"
     t.text "public_key"
     t.text "private_key"
     t.string "uuid"
@@ -320,11 +322,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_22_171731) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username", null: false
-    t.json "pagination_settings", default: {"models"=>true, "creators"=>true, "collections"=>true, "per_page"=>12}
-    t.json "renderer_settings", default: {"grid_width"=>200, "grid_depth"=>200, "show_grid"=>true, "enable_pan_zoom"=>false, "background_colour"=>"#000000", "object_colour"=>"#cccccc", "render_style"=>"normals"}
-    t.json "tag_cloud_settings", default: {"threshold"=>2, "heatmap"=>true, "keypair"=>true, "sorting"=>"frequency"}
-    t.json "problem_settings", default: {"missing"=>"danger", "empty"=>"info", "nesting"=>"warning", "inefficient"=>"info", "duplicate"=>"warning", "no_image"=>"silent", "no_3d_model"=>"silent", "non_manifold"=>"warning", "inside_out"=>"warning", "no_license"=>"silent", "no_links"=>"silent", "no_creator"=>"silent", "no_tags"=>"silent"}
-    t.json "file_list_settings", default: {"hide_presupported_versions"=>true}
+    t.json "pagination_settings", default: {"models" => true, "creators" => true, "collections" => true, "per_page" => 12}
+    t.json "renderer_settings", default: {"grid_width" => 200, "grid_depth" => 200, "show_grid" => true, "enable_pan_zoom" => false, "background_colour" => "#000000", "object_colour" => "#cccccc", "render_style" => "normals"}
+    t.json "tag_cloud_settings", default: {"threshold" => 2, "heatmap" => true, "keypair" => true, "sorting" => "frequency"}
+    t.json "problem_settings", default: {"missing" => "danger", "empty" => "info", "nesting" => "warning", "inefficient" => "info", "duplicate" => "warning", "no_image" => "silent", "no_3d_model" => "silent", "non_manifold" => "warning", "inside_out" => "warning", "no_license" => "silent", "no_links" => "silent", "no_creator" => "silent", "no_tags" => "silent"}
+    t.json "file_list_settings", default: {"hide_presupported_versions" => true}
     t.string "reset_password_token"
     t.datetime "remember_created_at"
     t.datetime "reset_password_sent_at"
@@ -351,6 +353,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_22_171731) do
   end
 
   add_foreign_key "collections", "collections"
+  add_foreign_key "collections", "creators"
   add_foreign_key "comments", "federails_actors"
   add_foreign_key "federails_activities", "federails_actors", column: "actor_id"
   add_foreign_key "federails_followings", "federails_actors", column: "actor_id"
