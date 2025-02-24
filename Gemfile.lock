@@ -659,7 +659,7 @@ GEM
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.4.1)
-    scout_apm (5.6.0)
+    scout_apm (5.6.1)
       parser
     securerandom (0.4.1)
     shellany (0.0.1)
