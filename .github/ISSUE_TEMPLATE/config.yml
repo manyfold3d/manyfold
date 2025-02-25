@@ -4,7 +4,7 @@ contact_links:
     url: https://github.com/manyfold3d/manyfold/discussions/new?category=support
     about: Having trouble, but can't pin it down to a specific bug? Ask the community for help!
   - name: Matrix Chat
-    url: https://matrix.to/#/#manyfold:one.ems.host
+    url: https://matrix.to/#/#manyfold:matrix.org
     about: Come and talk to us live with problems, ideas, questions, anything!
   - name: Social Media
     url: https://3dp.chat/@manyfold
