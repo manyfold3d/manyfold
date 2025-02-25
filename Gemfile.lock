@@ -183,7 +183,7 @@ GEM
     cronex (0.15.0)
       tzinfo
       unicode (>= 0.4.4.5)
-    cssbundling-rails (1.4.1)
+    cssbundling-rails (1.4.2)
       railties (>= 6.0.0)
     csv (3.3.0)
     data_migrate (11.2.0)
@@ -718,7 +718,7 @@ GEM
       rubocop-performance (~> 1.23.0)
     stopwords-filter2 (0.1.0)
     string-similarity (2.1.0)
-    stringio (3.1.2)
+    stringio (3.1.5)
     swd (2.0.3)
       activesupport (>= 3)
       attr_required (>= 0.0.5)
@@ -771,7 +771,7 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.7.1)
+    zeitwerk (2.7.2)
     zxcvbn (0.1.10)
 
 PLATFORMS
