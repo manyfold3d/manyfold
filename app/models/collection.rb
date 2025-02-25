@@ -21,6 +21,7 @@ class Collection < ApplicationRecord
   has_many :models, dependent: :nullify
   has_many :collections, dependent: :nullify
   belongs_to :collection, optional: true
+  belongs_to :creator, optional: true
   validates :name, uniqueness: {case_sensitive: false}
 
   def name_with_domain
@@ -85,7 +86,7 @@ class Collection < ApplicationRecord
   end
 
   def self.ransackable_associations(_auth_object = nil)
-    ["collection", "collections", "links", "models"]
+    ["collection", "collections", "creator", "links", "models"]
   end
 
   def to_activitypub_object

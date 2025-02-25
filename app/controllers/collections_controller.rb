@@ -5,11 +5,13 @@ class CollectionsController < ApplicationController
   include ModelListable
 
   before_action :get_collection, except: [:index, :new, :create]
+  before_action :get_creators, except: [:index, :new, :create]
 
   def index
     @models = filtered_models @filters
     @collections = policy_scope(Collection)
-    @collections = @collections.tree_both(Collection.find_param(@filters[:collection]).id || nil, @models.pluck(:collection_id).uniq) unless @filters[:collection].nil?
+    @collections = filtered_collections @filters
+    # @collections = @collections.tree_both(Collection.find_param(@filters[:collection]).id || nil, @models.pluck(:collection_id).uniq) unless @filters[:collection].nil?
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
@@ -47,6 +49,7 @@ class CollectionsController < ApplicationController
     @collection.caber_relations.build if @collection.caber_relations.empty?
     @title = t("collections.general.new")
     @collections = Collection.all
+    @creators = Creator.all
   end
 
   def edit
@@ -90,9 +93,14 @@ class CollectionsController < ApplicationController
     end
   end
 
+  def get_creators
+    @creators = policy_scope(Creator).order("LOWER(name) ASC")
+  end
+
   def collection_params
     params.require(:collection).permit(
       :name,
+      :creator_id,
       :collection_id,
       :caption,
       :notes,
