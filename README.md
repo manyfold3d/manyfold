@@ -9,7 +9,7 @@ Visit [manyfold.app](https://manyfold.app/) for more details, installation instr
 There are a few routes to get help:
 
 * [GitHub issues](https://github.com/manyfold3d/manyfold/issues/new) is the best place to report bugs.
-* [Live chat](https://matrix.to/#/#manyfold:one.ems.host) to the "team" on Matrix (an open Discord/Slack-like chat system).
+* [Live chat](https://matrix.to/#/#manyfold:matrix.org) to the "team" on Matrix (an open Discord/Slack-like chat system).
 * Get in touch with our [social media](https://3dp.chat/@manyfold) presence in the Fediverse (Mastodon, etc).
 
 And, if you want to contribute financially to development efforts...
