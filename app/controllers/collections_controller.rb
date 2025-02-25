@@ -47,14 +47,14 @@ class CollectionsController < ApplicationController
     @collection.links.build if @collection.links.empty? # populate empty link
     @collection.caber_relations.build if @collection.caber_relations.empty?
     @title = t("collections.general.new")
-    @collections = Collection.all
+    @collections = policy_scope(Collection).all
     @creators = Creator.all
   end
 
   def edit
     @collection.links.build if @collection.links.empty? # populate empty link
     @collection.caber_relations.build if @collection.caber_relations.empty?
-    @collections = Collection.all
+    @collections = policy_scope(Collection).all
   end
 
   def create
