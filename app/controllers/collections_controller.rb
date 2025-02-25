@@ -5,7 +5,7 @@ class CollectionsController < ApplicationController
   include ModelListable
 
   before_action :get_collection, except: [:index, :new, :create]
-  before_action :get_creators, except: [:index, :new, :create]
+  before_action :get_creators, except: [:index, :create]
 
   def index
     @models = filtered_models @filters
@@ -48,7 +48,6 @@ class CollectionsController < ApplicationController
     @collection.caber_relations.build if @collection.caber_relations.empty?
     @title = t("collections.general.new")
     @collections = policy_scope(Collection).all
-    @creators = Creator.all
   end
 
   def edit
