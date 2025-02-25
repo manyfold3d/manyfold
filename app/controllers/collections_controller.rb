@@ -11,7 +11,6 @@ class CollectionsController < ApplicationController
     @models = filtered_models @filters
     @collections = policy_scope(Collection)
     @collections = filtered_collections @filters
-    # @collections = @collections.tree_both(Collection.find_param(@filters[:collection]).id || nil, @models.pluck(:collection_id).uniq) unless @filters[:collection].nil?
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
