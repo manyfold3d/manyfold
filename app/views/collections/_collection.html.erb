@@ -22,7 +22,7 @@
       <div class="col-auto">
         <% if collection.creator %>
           <%= icon "person", collection.creator.model_name.human %>
-          <%= link_to collection.creator.name, "collections?creator=" + collection.creator.name, @filters || {} %><br>
+          <%= link_to collection.creator.name, "collections?creator=" + collection.creator.to_param, @filters || {} %><br>
         <% end %>
         <% if collection.collection %>
           <%= icon "collection", collection.model_name.human %>
