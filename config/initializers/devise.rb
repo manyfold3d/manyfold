@@ -288,7 +288,11 @@ Devise.setup do |config|
         host: issuer_uri.host,
         identifier: ENV.fetch("OIDC_CLIENT_ID"),
         secret: ENV.fetch("OIDC_CLIENT_SECRET"),
-        redirect_uri: "#{scheme}://#{[Rails.application.default_url_options[:host], Rails.application.default_url_options[:port]].compact.join(":")}/users/auth/openid_connect/callback"
+        redirect_uri: [
+          "#{scheme}://#{[Rails.application.default_url_options[:host], Rails.application.default_url_options[:port]].compact.join(":")}",
+          Rails.application.config.relative_url_root&.delete_prefix("/")&.delete_suffix("/"),
+          "users/auth/openid_connect/callback"
+        ].compact.join("/") # This code is horrible, there must be a better way??
       }
     }
   end
