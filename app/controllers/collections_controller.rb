@@ -5,13 +5,12 @@ class CollectionsController < ApplicationController
   include ModelListable
 
   before_action :get_collection, except: [:index, :new, :create]
-  before_action :get_creators, except: [:index, :new, :create]
+  before_action :get_creators, except: [:index, :create]
 
   def index
     @models = filtered_models @filters
     @collections = policy_scope(Collection)
     @collections = filtered_collections @filters
-    # @collections = @collections.tree_both(Collection.find_param(@filters[:collection]).id || nil, @models.pluck(:collection_id).uniq) unless @filters[:collection].nil?
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
@@ -48,14 +47,13 @@ class CollectionsController < ApplicationController
     @collection.links.build if @collection.links.empty? # populate empty link
     @collection.caber_relations.build if @collection.caber_relations.empty?
     @title = t("collections.general.new")
-    @collections = Collection.all
-    @creators = Creator.all
+    @collections = policy_scope(Collection).all
   end
 
   def edit
     @collection.links.build if @collection.links.empty? # populate empty link
     @collection.caber_relations.build if @collection.caber_relations.empty?
-    @collections = Collection.all
+    @collections = policy_scope(Collection).all
   end
 
   def create
