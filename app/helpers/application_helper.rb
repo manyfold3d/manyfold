@@ -102,7 +102,12 @@ module ApplicationHelper
         form.label(name, options[:label], class: "col-auto col-form-label"),
         content_tag(:div, class: "col p-0") do
           safe_join [
-            form.password_field(name, {class: "form-control"}.merge(options)),
+            form.password_field(name, {class: "form-control", "data-zxcvbn": options[:strength_meter]}.merge(options)),
+            (if options[:strength_meter]
+               content_tag(:div, class: "progress") do
+                 content_tag(:div, nil, class: "progress-bar w-0 zxcvbn-meter", "data-zxcvbn-min-score": Devise.min_password_score)
+               end
+             end),
             errors_for(form.object, name),
             (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
           ].compact
