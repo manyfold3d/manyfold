@@ -246,15 +246,16 @@ class ModelsController < ApplicationController
   end
 
   def file_list(model, selection)
+    scope = model.model_files.including_special
     case selection
     when nil
-      model.model_files
+      scope
     when "supported"
-      model.model_files.where(presupported: true)
+      scope.where(presupported: true)
     when "unsupported"
-      model.model_files.where(presupported: false)
+      scope.where(presupported: false)
     else
-      model.model_files.select { |f| f.extension == selection }
+      scope.select { |f| f.extension == selection }
     end
   end
 
