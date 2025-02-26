@@ -1430,16 +1430,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/dashboard@npm:^4.3.1":
-  version: 4.3.1
-  resolution: "@uppy/dashboard@npm:4.3.1"
+"@uppy/dashboard@npm:^4.3.2":
+  version: 4.3.2
+  resolution: "@uppy/dashboard@npm:4.3.2"
   dependencies:
     "@transloadit/prettier-bytes": ^0.3.4
     "@uppy/informer": ^4.2.1
-    "@uppy/provider-views": ^4.4.1
-    "@uppy/status-bar": ^4.1.1
+    "@uppy/provider-views": ^4.4.2
+    "@uppy/status-bar": ^4.1.2
     "@uppy/thumbnail-generator": ^4.1.1
-    "@uppy/utils": ^6.1.1
+    "@uppy/utils": ^6.1.2
     classnames: ^2.2.6
     lodash: ^4.17.21
     memoize-one: ^6.0.0
@@ -1447,8 +1447,8 @@ __metadata:
     preact: ^10.5.13
     shallow-equal: ^3.0.0
   peerDependencies:
-    "@uppy/core": ^4.4.1
-  checksum: c1eb247d0648ab36929a500b6150e4578ebb17030b18923e6028315f62379bfe02ad6e77bd54607bc50f09d9b163250245f7095d29f663afbbf3ed81e769395c
+    "@uppy/core": ^4.4.2
+  checksum: e18c2c770390251d93b018d747676170911cdcacc6b7e983d0f2341fb54422eeaa20f1b6c2305e748e273fb2e910928462d2cc7d863701243019c5a1a067ec7e
   languageName: node
   linkType: hard
 
@@ -1485,32 +1485,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/provider-views@npm:^4.4.1":
-  version: 4.4.1
-  resolution: "@uppy/provider-views@npm:4.4.1"
+"@uppy/provider-views@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "@uppy/provider-views@npm:4.4.2"
   dependencies:
-    "@uppy/utils": ^6.1.1
+    "@uppy/utils": ^6.1.2
     classnames: ^2.2.6
     nanoid: ^5.0.9
     p-queue: ^8.0.0
     preact: ^10.5.13
   peerDependencies:
-    "@uppy/core": ^4.4.1
-  checksum: bcd8ad5bd53a806101ac8b5105b076f6cc8e9b32716740a3e48059603761230fc4e0bdbb9d1e230a023011efebe9cf4c1c8a98824058a767cff2bccb081ef98c
+    "@uppy/core": ^4.4.2
+  checksum: 0ae6eb8784edeec03d1a42002dd81a35f150169c4e3a601927c1ef59d012c977e29e4b139b2887b709b6836f75c8ab7753e87b38ced90535d0f4aca57c18d96b
   languageName: node
   linkType: hard
 
-"@uppy/status-bar@npm:^4.1.1":
-  version: 4.1.1
-  resolution: "@uppy/status-bar@npm:4.1.1"
+"@uppy/status-bar@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "@uppy/status-bar@npm:4.1.2"
   dependencies:
     "@transloadit/prettier-bytes": ^0.3.4
-    "@uppy/utils": ^6.1.1
+    "@uppy/utils": ^6.1.2
     classnames: ^2.2.6
     preact: ^10.5.13
   peerDependencies:
-    "@uppy/core": ^4.4.1
-  checksum: 7b2b5ca0e4cb78dca72ccd0272039fd50dbc782af132eaab93eed1ccbc7523e07aadd383386821e0151a599723b9eaf96a477f38c81f9b57f7a125c4eb33e1f0
+    "@uppy/core": ^4.4.2
+  checksum: 3010b437ff76d9c3dd916957597168fbcb2eb51d6b8fe6ae8db6f963222378927df038b773cea8c896d2da43dd5714ee57af50b8abcf0577276781f6134abed3
   languageName: node
   linkType: hard
 
@@ -4359,7 +4359,7 @@ __metadata:
     "@types/webxr": ^0.5.21
     "@typescript-eslint/parser": ^8.25.0
     "@uppy/core": ^4.4.2
-    "@uppy/dashboard": ^4.3.1
+    "@uppy/dashboard": ^4.3.2
     "@uppy/form": ^4.1.1
     "@uppy/locales": ^4.5.1
     "@uppy/tus": ^4.2.2
