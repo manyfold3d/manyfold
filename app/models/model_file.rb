@@ -6,6 +6,10 @@ class ModelFile < ApplicationRecord
 
   extend Memoist
 
+  SPECIAL_FILES = [
+    "datapackage.json"
+  ]
+
   belongs_to :model
 
   after_create :attach_existing_file!
@@ -29,7 +33,9 @@ class ModelFile < ApplicationRecord
 
   after_commit :clear_presupported_relation, on: :update, if: :presupported_previously_changed?
 
-  default_scope { order(:filename) }
+  default_scope { excluding_special.order(:filename) }
+  scope :excluding_special, -> { where.not(filename: SPECIAL_FILES) }
+  scope :including_special, -> { unscope(where: :filename) }
   scope :unsupported, -> { where(presupported: false) }
   scope :presupported, -> { where(presupported: true) }
 
