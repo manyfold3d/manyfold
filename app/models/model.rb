@@ -40,6 +40,7 @@ class Model < ApplicationRecord
   after_create :post_creation_activity
   before_update :move_files, if: :need_to_move_files?
   after_update :post_update_activity
+  after_save :queue_datapackage_update
   after_commit :check_integrity, on: :update
 
   validates :name, presence: true
@@ -248,5 +249,9 @@ class Model < ApplicationRecord
     if creator_previously_changed?
       Activity::CreatorAddedModelJob.set(wait: 5.seconds).perform_later(id)
     end
+  end
+
+  def queue_datapackage_update
+    UpdateDatapackageJob.set(wait: 1.second).perform_later(id)
   end
 end
