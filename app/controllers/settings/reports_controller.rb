@@ -26,7 +26,7 @@ class Settings::ReportsController < ApplicationController
   private
 
   def get_report
-    @report = Federails::Moderation::Report.find(params[:id])
+    @report = policy_scope(Federails::Moderation::Report).find(params[:id])
     authorize @report
   end
 end

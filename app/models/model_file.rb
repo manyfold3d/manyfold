@@ -140,8 +140,8 @@ class ModelFile < ApplicationRecord
   end
 
   def duplicates
-    return ModelFile.none if digest.nil?
-    ModelFile.where(digest: digest).where.not(id: id)
+    return ModelFile.none if digest.nil? # rubocop:todo Pundit/UsePolicyScope
+    ModelFile.where(digest: digest).where.not(id: id) # rubocop:todo Pundit/UsePolicyScope
   end
 
   def duplicate?

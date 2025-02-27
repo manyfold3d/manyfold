@@ -6,12 +6,12 @@ class ProblemsController < ApplicationController
     authorize Problem
     # Are we showing ignored problems?
     @show_ignored = (params[:show_ignored] == "true")
-    query = @show_ignored ? policy_scope(Problem.unscoped) : policy_scope(Problem)
+    query = @show_ignored ? policy_scope(Problem.including_ignored) : policy_scope(Problem)
     # Now, which page are we on?
     page = params[:page] || 1
     # What categories are we showing?
     # First, get the possible categories based on severity filter
-    severities = params[:severity] ? Problem::CATEGORIES.select { |cat| params[:severity]&.include?(current_user.problem_severity(cat).to_s) } : nil
+    severities = params[:severity] ? Problem::CATEGORIES.select { |cat| params[:severity]&.include?(current_user.problem_severity(cat).to_s) } : nil # rubocop:disable Pundit/UsePolicyScope
     # Then get the category filter
     categories = params[:category]&.map(&:to_sym)
     # Now query with the intersection of the two, or if we don't have both, then whichever we do have
@@ -32,7 +32,7 @@ class ProblemsController < ApplicationController
   end
 
   def update
-    @problem = Problem.unscoped.find_param(params[:id])
+    @problem = Problem.including_ignored.find_param(params[:id])
     authorize @problem
     @problem.update!(permitted_params)
     notice = t(

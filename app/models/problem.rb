@@ -6,6 +6,7 @@ class Problem < ApplicationRecord
   validates :category, uniqueness: {scope: :problematic}, presence: true
 
   default_scope { where(ignored: false) }
+  scope :including_ignored, -> { unscope(where: :ignored) }
 
   scope :visible, ->(settings) {
     enabled = DEFAULT_SEVERITIES.merge(settings.symbolize_keys).select { |cat, sev| sev.to_sym != :silent }

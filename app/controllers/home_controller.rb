@@ -9,6 +9,6 @@ class HomeController < ApplicationController
   private
 
   def check_library_exists
-    redirect_to new_library_path if Library.count === 0
+    redirect_to new_library_path if Library.count === 0 # rubocop:disable Pundit/UsePolicyScope
   end
 end

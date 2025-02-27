@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/manyfold3d/rubocop-pundit.git
+  revision: ce16b69972336283217f3ea1fb90cd04e45fd61f
+  specs:
+    rubocop-pundit (0.1.0)
+      rubocop
+
+GIT
   remote: https://github.com/manyfold3d/sqlite3_ar_regexp.git
   revision: 2fa15db50770e86b7b4872486c2ee8ff282a3e2c
   ref: rails-7.1-support
@@ -637,7 +644,7 @@ GEM
       rubocop-ast (>= 1.38.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.38.0)
+    rubocop-ast (1.38.1)
       parser (>= 3.3.1.0)
     rubocop-factory_bot (2.26.1)
       rubocop (~> 1.61)
@@ -853,6 +860,7 @@ DEPENDENCIES
   rubocop-factory_bot
   rubocop-i18n
   rubocop-performance (~> 1.23)
+  rubocop-pundit!
   rubocop-rails
   rubocop-rspec
   rubocop-rspec_rails

@@ -178,8 +178,8 @@ class ModelsController < ApplicationController
   end
 
   def generate_available_tag_list
-    @available_tags = ActsAsTaggableOn::Tag.where(
-      id: ActsAsTaggableOn::Tagging.where(
+    @available_tags = policy_scope(ActsAsTaggableOn::Tag).where(
+      id: policy_scope(ActsAsTaggableOn::Tagging).where(
         taggable_type: "Model", taggable_id: policy_scope(Model).select(:id)
       ).select(:tag_id)
     ).order(:name)
@@ -221,7 +221,7 @@ class ModelsController < ApplicationController
   end
 
   def get_model
-    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find_param(params[:id])
+    @model = policy_scope(Model).includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find_param(params[:id])
     authorize @model
     @title = @model.name
   end

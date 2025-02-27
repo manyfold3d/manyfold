@@ -6,6 +6,7 @@ require:
   - rubocop-i18n
   - rubocop-performance
   - rubocop-factory_bot
+  - rubocop-pundit
 
 inherit_gem:
   standard: config/base.yml

@@ -16,7 +16,7 @@ class LibraryUploader < Shrine
   }
 
   storage(/library_(\d+)/) do |m|
-    Library.find(m[1]).storage
+    Library.find(m[1]).storage # rubocop:disable Pundit/UsePolicyScope
   end
 
   class Attacher

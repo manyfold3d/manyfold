@@ -1,4 +1,6 @@
-class LinkPolicy < ApplicationPolicy
+# frozen_string_literal: true
+
+class ActsAsTaggableOn::TaggingPolicy < ApplicationPolicy
   class Scope
     attr_reader :user, :scope
 

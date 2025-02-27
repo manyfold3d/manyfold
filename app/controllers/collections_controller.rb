@@ -85,7 +85,7 @@ class CollectionsController < ApplicationController
       authorize Collection
       @title = t(".unknown")
     else
-      @collection = Collection.includes(:links, :caber_relations).find_param(params[:id])
+      @collection = policy_scope(Collection).includes(:links, :caber_relations).find_param(params[:id])
       authorize @collection
       @title = @collection.name
     end
