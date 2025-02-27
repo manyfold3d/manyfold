@@ -23,7 +23,7 @@ class Settings::DomainBlocksController < ApplicationController
   end
 
   def destroy
-    @domain_block = Federails::Moderation::DomainBlock.find(params[:id])
+    @domain_block = policy_scope(Federails::Moderation::DomainBlock).find(params[:id])
     authorize @domain_block
     @domain_block.destroy
     redirect_to settings_domain_blocks_path, notice: t(".success")

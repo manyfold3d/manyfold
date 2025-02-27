@@ -1,7 +1,7 @@
 module TagListable
   def generate_tag_list(models = nil, filter_tags = nil)
     # All tags bigger than threshold
-    tags = all_tags = ActsAsTaggableOn::Tag.where(taggings_count: helpers.tag_cloud_settings["threshold"]..)
+    tags = all_tags = policy_scope(ActsAsTaggableOn::Tag).where(taggings_count: helpers.tag_cloud_settings["threshold"]..)
     # Ignore any tags that have been applied as filters
     tags = all_tags = tags.where.not(id: filter_tags) if filter_tags
     # Generate a list of tags shared by the list of models

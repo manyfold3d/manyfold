@@ -80,7 +80,7 @@ class CreatorsController < ApplicationController
       authorize Creator
       @title = t(".unknown")
     else
-      @creator = Creator.includes(:links, :caber_relations).find_param(params[:id])
+      @creator = policy_scope(Creator).includes(:links, :caber_relations).find_param(params[:id])
       authorize @creator
       @title = @creator.name
     end
