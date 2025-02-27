@@ -2,6 +2,7 @@ require "string/similarity"
 
 class Analysis::AnalyseModelFileJob < ApplicationJob
   queue_as :analysis
+  unique :until_executed
 
   def perform(file_id)
     file = ModelFile.find(file_id)
