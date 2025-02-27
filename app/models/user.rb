@@ -118,7 +118,7 @@ class User < ApplicationRecord
 
     # Updated date isn't a great proxy for activity, but it'll do for now
     # We can improve this by using devise trackable to track logins at some point
-    User.where(updated_at: range).count
+    User.where(updated_at: range).count # rubocop:disable Pundit/UsePolicyScope
   end
 
   # Devise approval checks
