@@ -14,7 +14,7 @@
             <div class="col col-sm-6 col-md-4">
               <label><%= Problem.human_attribute_name :category %></label>
               <select name="category[]" class="form-select" multiple=true>
-                <% Problem::CATEGORIES
+                <% Problem::CATEGORIES # rubocop:disable Pundit/UsePolicyScope
                      .select { |it| Problem::DEFAULT_SEVERITIES[it].present? }
                      .select { |it| current_user.problem_severity(it) != :silent }
                      .each do |cat| %>
