@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/manyfold3d/rubocop-pundit.git
-  revision: ce16b69972336283217f3ea1fb90cd04e45fd61f
+  revision: 10ac81bbec63a9abd3d58be84dc47d9c490b29c6
   specs:
     rubocop-pundit (0.1.0)
       rubocop
