@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_for_first_use
-    authenticate_user! if User.count == 0
+    authenticate_user! if User.count == 0 # rubocop:disable Pundit/UsePolicyScope
     redirect_to(edit_user_registration_path) if current_user&.reset_password_token == "first_use"
   end
 

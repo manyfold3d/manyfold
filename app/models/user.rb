@@ -114,7 +114,7 @@ class User < ApplicationRecord
   end
 
   def self.user_count(range)
-    return User.count if range.nil?
+    return User.count if range.nil? # rubocop:disable Pundit/UsePolicyScope
 
     # Updated date isn't a great proxy for activity, but it'll do for now
     # We can improve this by using devise trackable to track logins at some point
