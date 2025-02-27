@@ -1,5 +1,6 @@
 class Scan::CheckModelJob < ApplicationJob
   queue_as :scan
+  unique :until_executed
 
   def perform(model_id, scan: true)
     model = Model.find(model_id)

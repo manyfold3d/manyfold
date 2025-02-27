@@ -4,6 +4,7 @@ end
 class Analysis::GeometricAnalysisJob < ApplicationJob
   queue_as :performance
   sidekiq_options retry: false
+  unique :until_executed
 
   def perform(file_id)
     # Get model

@@ -1,5 +1,6 @@
 class Scan::CheckAllJob < ApplicationJob
   queue_as :scan
+  unique :until_executed
 
   def perform
     # Remove orphan problems

@@ -2,6 +2,7 @@
 
 class Upgrade::BackfillDataPackages < ApplicationJob
   queue_as :upgrade
+  unique :until_executed
 
   def perform
     # Find models that don't have a datapackage and enqueue their generation

@@ -9,6 +9,7 @@ end
 class Analysis::FileConversionJob < ApplicationJob
   queue_as :performance
   sidekiq_options retry: false
+  unique :until_executed
 
   def perform(file_id, output_format)
     # Get model

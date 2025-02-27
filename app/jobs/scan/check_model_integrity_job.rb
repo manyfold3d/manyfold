@@ -1,5 +1,6 @@
 class Scan::CheckModelIntegrityJob < ApplicationJob
   queue_as :scan
+  unique :until_executed
 
   def perform(model_id)
     model = Model.find(model_id)
