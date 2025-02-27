@@ -2,6 +2,7 @@ require "shellwords"
 
 class ModelScanJob < ApplicationJob
   queue_as :scan
+  unique :until_executed
 
   def file_list(model_path, library, include_all_subfolders: false)
     glob = include_all_subfolders ?

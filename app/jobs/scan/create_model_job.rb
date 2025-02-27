@@ -1,5 +1,6 @@
 class Scan::CreateModelJob < ApplicationJob
   queue_as :scan
+  unique :until_executed
 
   def perform(library_id, path, include_all_subfolders: false)
     library = Library.find(library_id)

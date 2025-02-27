@@ -1,5 +1,6 @@
 class ModelFileScanJob < ApplicationJob
   queue_as :scan
+  unique :until_executed
 
   def perform(file_id)
     file = ModelFile.find(file_id)
