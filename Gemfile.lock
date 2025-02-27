@@ -91,6 +91,9 @@ GEM
     activejob-status (1.0.2)
       activejob (>= 6.0)
       activesupport (>= 6.0)
+    activejob-uniqueness (0.4.0)
+      activejob (>= 4.2, < 8.1)
+      redlock (>= 2.0, < 3)
     activemodel (7.2.2.1)
       activesupport (= 7.2.2.1)
     activerecord (7.2.2.1)
@@ -601,6 +604,8 @@ GEM
       connection_pool
     redis-namespace (1.11.0)
       redis (>= 4)
+    redlock (2.0.6)
+      redis-client (>= 0.14.1, < 1.0.0)
     regexp_parser (2.10.0)
     reline (0.6.0)
       io-console (~> 0.5)
@@ -790,6 +795,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin (~> 3.2)
   activejob-status (~> 1.0)
+  activejob-uniqueness (~> 0.4.0)
   activerecord-enhancedsqlite3-adapter (~> 0.8.0)
   activerecord-nulldb-adapter (~> 1.1.1)
   acts-as-taggable-on (~> 12.0)

@@ -174,3 +174,5 @@ gem "pg_query", "~> 6.0"
 gem "get_process_mem", "~> 1.0"
 
 gem "to_regexp", "~> 0.2.1"
+
+gem "activejob-uniqueness", "~> 0.4.0", require: "active_job/uniqueness/sidekiq_patch"
