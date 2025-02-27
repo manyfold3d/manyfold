@@ -3,7 +3,7 @@ module ProblemsHelper
     current_user.problem_severity(problem.category) || :silent
   end
 
-  def max_problem_severity(problems = policy_scope(Problem).all)
+  def max_problem_severity(problems)
     return nil if problems.empty?
     severities = problems.select(:category).distinct.map { |p| problem_severity(p) }
     severities.max_by { |p| Problem::SEVERITIES.find_index(p) }
@@ -20,7 +20,7 @@ module ProblemsHelper
     end
   end
 
-  def problem_icon_tag(problems = policy_scope(Problem).all)
+  def problem_icon_tag(problems)
     severity = max_problem_severity(problems)
     ico = problem_icon(severity)
     content_tag(:span, icon(ico, t("problems.severities.#{severity}")), class: "text-#{severity} align-middle") if ico # rubocop:todo I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
