@@ -183,6 +183,15 @@ class Model < ApplicationRecord
     ActivityPub::ModelSerializer.new(self).serialize
   end
 
+  def federated_url
+    return nil unless public?
+    Rails.application.routes.url_helpers.url_for(self, {only_path: false})
+  end
+
+  def public?
+    Pundit::PolicyFinder.new(Model).policy.new(nil, self).show?
+  end
+
   private
 
   def normalize_license
