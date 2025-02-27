@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
     content_security_policy.style_src_attr :unsafe_inline
     content_security_policy.style_src_elem :self, "https://fonts.googleapis.com"
     # Add libary origins
-    origins = Library.all.filter_map(&:storage_origin)
+    origins = Library.all.filter_map(&:storage_origin) # rubocop:disable Pundit/UsePolicyScope
     content_security_policy.img_src(*origins)
     content_security_policy.connect_src(*origins)
     # If we're using Scout DevTrace in local development, we need to allow a load
