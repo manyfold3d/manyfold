@@ -238,4 +238,16 @@ module ApplicationHelper
       ], " ")
     end
   end
+
+  def library_count
+    policy_scope(Library).count
+  end
+
+  def model_count
+    policy_scope(Model).count
+  end
+
+  def model_file_count
+    policy_scope(ModelFile).count
+  end
 end
