@@ -1,4 +1,6 @@
 class UpdateDatapackageJob < ApplicationJob
+  queue_as :default
+
   def perform(model_id)
     model = Model.find(model_id)
     file = model.model_files.including_special.find_or_initialize_by(filename: "datapackage.json")
