@@ -6,7 +6,12 @@ services:
     ports:
       - 3214:3214
     volumes:
-      - /path/to/your/libraries:/libraries
+      # Uncomment to add a filesystem volume for your model library (or multiple if
+      # you want multiple libraries), in the form <local_path>:<container_path>.
+      # The local path could be a folder that already contains models, in which case Manyfold
+      # will scan and import them, or it could be empty.
+      # The container path can be anything; you will need to enter it in the "new library" form.
+      # - /local/path/to/your/models:/models
     environment:
       PUID: 1000 # The ID of the user the app will run as
       PGID: 1000 # The ID of the group the app will run as
