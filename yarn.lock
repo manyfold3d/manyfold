@@ -4381,7 +4381,7 @@ __metadata:
     postcss: ^8.5.3
     postcss-cli: ^11.0.0
     sass-embedded: ^1.85.1
-    three: ^0.173.0
+    three: ^0.174.0
     threejs-webworker-3mf-loader: "https://github.com/manyfold3d/threejs-webworker-3mf-loader"
     ts-standard: ^12.0.2
     typescript: ^5.7.3
@@ -6050,10 +6050,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three@npm:^0.173.0":
-  version: 0.173.0
-  resolution: "three@npm:0.173.0"
-  checksum: 37ad57d44430f8af0096ef085c232a3917f7a4ffdbc4e0cebfdf642f2a5162741d6f668651936cf361a1c52a6301b2737b36d6add4bab3d53e76fe97340aabbb
+"three@npm:^0.174.0":
+  version: 0.174.0
+  resolution: "three@npm:0.174.0"
+  checksum: 7e2d59b7c525c5ef62ea40a6a70d2ce71e7b7a272c8f6c4800eb1a8b3d748d0b1474a68a1fe6bcf5653580790227fc1abc1970bffa42f5509c00efbe38d154ff
   languageName: node
   linkType: hard
 
