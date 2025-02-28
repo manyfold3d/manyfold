@@ -57,6 +57,7 @@ group :development, :test do
   gem "rubyzip", "~> 2.4"
   gem "i18n-tasks", "~> 1.0"
   gem "simplecov", "~> 0.22.0", require: false
+  gem "rswag", "~> 2.16"
 end
 
 group :development do
