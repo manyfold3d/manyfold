@@ -14,7 +14,7 @@ module DataPackage
             path: Spdx.licenses.dig(@object.license, "reference")
           }.compact
         ] : nil),
-        resources: @object.model_files.map { |it| ModelFileSerializer.new(it).serialize },
+        resources: @object.model_files.filter_map { |it| ModelFileSerializer.new(it).serialize },
         contributors: @object.creator ? [CreatorSerializer.new(@object.creator).serialize] : nil
       }.compact
     end

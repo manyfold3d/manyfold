@@ -2,26 +2,42 @@ require "rails_helper"
 
 RSpec.describe UpdateDatapackageJob do
   let(:model) { create(:model) }
+  let(:datapackage_json) { JSON.parse(model.model_files.including_special.find_by(filename: "datapackage.json").attachment.read) }
 
   it "raises exception if model ID is not found" do
     expect { described_class.perform_now(nil) }.to raise_error(ActiveRecord::RecordNotFound)
   end
 
-  it "creates datapackage file if there isn't one already" do
-    expect { described_class.perform_now(model.id) }.to change { ModelFile.including_special.count }.from(0).to(1)
+  context "when creating first datapackage" do
+    it "creates file if there isn't one already" do
+      expect { described_class.perform_now(model.id) }.to change { ModelFile.including_special.count }.from(0).to(1)
+    end
+
+    it "doesn't include datapackage in resources" do
+      described_class.perform_now(model.id)
+      expect(datapackage_json["resources"].map { |it| it["path"] }).not_to include("datapackage.json")
+    end
   end
 
-  it "uses existing datapackage file one already exists" do
-    described_class.perform_now(model.id)
-    expect { described_class.perform_now(model.id) }.not_to change { ModelFile.including_special.count }
+  context "when updating a model with a datapackage" do
+    before do
+      # Make initial datapackage
+      described_class.perform_now(model.id)
+    end
+
+    it "uses existing file if one already exists" do
+      expect { described_class.perform_now(model.id) }.not_to change { ModelFile.including_special.count }
+    end
+
+    it "doesn't include datapackage in resources" do
+      expect(datapackage_json["resources"].map { |it| it["path"] }).not_to include("datapackage.json")
+    end
   end
 
   it "updates datapackage file when model changes" do
     described_class.perform_now(model.id)
     model.update! name: "Changed"
     described_class.perform_now(model.id)
-    # Load JSON file
-    json = JSON.parse(model.model_files.including_special.find_by(filename: "datapackage.json").attachment.read)
-    expect(json["title"]).to eq "Changed"
+    expect(datapackage_json["title"]).to eq "Changed"
   end
 end
