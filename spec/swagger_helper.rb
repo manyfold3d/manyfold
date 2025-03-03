@@ -19,7 +19,16 @@ RSpec.configure do |config|
       openapi: "3.0.1",
       info: {
         title: "Manyfold API",
-        version: "0"
+        version: "0",
+        description: <<~EOF
+          This document describes the REST API for this [Manyfold](https://manyfold.app) instance.
+
+          Warning! This API...
+
+          * ... is not complete! Functionality is limited for now, but future releases will add more capabilities.
+          * ... is not yet at v1! It's subject to breaking changes at any time.
+          * ... is only valid for this host! Other Manyfold instances running different software versions may expose a different set of API functionality.
+        EOF
       },
       paths: {},
       servers: [
