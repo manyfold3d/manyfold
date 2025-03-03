@@ -41,5 +41,5 @@ RSpec.configure do |config|
   # Defaults to json. Accepts ':json' and ':yaml'.
   config.openapi_format = :json
 
-  # config.openapi_strict_schema_validation = true # default false
+  config.openapi_strict_schema_validation = true
 end
