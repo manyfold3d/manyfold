@@ -236,6 +236,7 @@ en:
       title: Filters
       unknown: Unknown
     footer:
+      api: API
       by_html: Designed and built by <a href="https://floppy.org.uk" target="_blank">James</a> with help from <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">our contributors</a>.
       chat: Chat
       code: Code

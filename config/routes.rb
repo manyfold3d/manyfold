@@ -128,6 +128,6 @@ Rails.application.routes.draw do
     mount Tus::Server => "/upload", :as => :upload
   end
 
-  mount Rswag::Ui::Engine => "/api"
+  mount Rswag::Ui::Engine => "/api", :as => :api
   mount Rswag::Api::Engine => "/api"
 end
