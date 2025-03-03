@@ -2,7 +2,8 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Manyfold API",
-    "version": "0"
+    "version": "0",
+    "description": "This document describes the REST API for this [Manyfold](https://manyfold.app) instance.\n\nWarning! This API...\n\n* ... is not complete! Functionality is limited for now, but future releases will add more capabilities.\n* ... is not yet at v1! It's subject to breaking changes at any time.\n* ... is only valid for this host! Other Manyfold instances running different software versions may expose a different set of API functionality.\n"
   },
   "paths": {
     "/.well-known/nodeinfo": {
@@ -15,7 +16,7 @@
           "200": {
             "description": "Success",
             "content": {
-              "application/json": {
+              "application/json; profile=\"http://nodeinfo.diaspora.software/ns/schema/2.0#\"": {
                 "schema": {
                   "type": "object",
                   "properties": {
@@ -25,12 +26,12 @@
                         "type": "object",
                         "properties": {
                           "rel": {
-                            "type": "url",
+                            "type": "string",
                             "example": "https://nodeinfo.diaspora.software/ns/schema/2.0"
                           },
                           "href": {
-                            "type": "url",
-                            "example": "https://{defaultHost}/nodeinfo/2.0",
+                            "type": "string",
+                            "example": "/nodeinfo/2.0",
                             "description": "The URL to the full NodeInfo document"
                           }
                         }
@@ -146,7 +147,7 @@
   },
   "servers": [
     {
-      "url": "{protocol}://{host}"
+      "url": "https://try.manyfold.app"
     }
   ]
 }
