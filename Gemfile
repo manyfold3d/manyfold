@@ -178,5 +178,5 @@ gem "to_regexp", "~> 0.2.1"
 gem "activejob-uniqueness", "~> 0.4.0", require: "active_job/uniqueness/sidekiq_patch"
 
 gem "job-iteration", "~> 1.9"
-
+gem "rswag", "~> 2.16"
 gem "warning", "~> 1.5"

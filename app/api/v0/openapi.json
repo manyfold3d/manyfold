@@ -1,0 +1,153 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Manyfold API",
+    "version": "0",
+    "description": "This document describes the REST API for this [Manyfold](https://manyfold.app) instance.\n\nWarning! This API...\n\n* ... is not complete! Functionality is limited for now, but future releases will add more capabilities.\n* ... is not yet at v1! It's subject to breaking changes at any time.\n* ... is only valid for this host! Other Manyfold instances running different software versions may expose a different set of API functionality.\n"
+  },
+  "paths": {
+    "/.well-known/nodeinfo": {
+      "get": {
+        "summary": "Discovery URL for NodeInfo protocol",
+        "tags": [
+          "NodeInfo"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json; profile=\"http://nodeinfo.diaspora.software/ns/schema/2.0#\"": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "links": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "rel": {
+                            "type": "string",
+                            "example": "https://nodeinfo.diaspora.software/ns/schema/2.0"
+                          },
+                          "href": {
+                            "type": "string",
+                            "example": "/nodeinfo/2.0",
+                            "description": "The URL to the full NodeInfo document"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "links"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nodeinfo/2.0": {
+      "get": {
+        "summary": "Get server metadata in NodeInfo 2.0 format",
+        "tags": [
+          "NodeInfo"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json; profile=\"http://nodeinfo.diaspora.software/ns/schema/2.0#\"": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "version": {
+                      "type": "string",
+                      "example": "2.0"
+                    },
+                    "software": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "Manyfold"
+                        },
+                        "version": {
+                          "type": "string",
+                          "example": "v0.103.0"
+                        }
+                      }
+                    },
+                    "protocols": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "activitypub"
+                      }
+                    },
+                    "services": {
+                      "type": "object",
+                      "properties": {
+                        "inbound": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": []
+                        },
+                        "outbound": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": []
+                        }
+                      }
+                    },
+                    "openRegistrations": {
+                      "type": "boolean"
+                    },
+                    "usage": {
+                      "type": "object",
+                      "properties": {
+                        "users": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "integer"
+                            },
+                            "activeMonth": {
+                              "type": "integer"
+                            },
+                            "activeHalfyear": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "version",
+                    "software",
+                    "protocols",
+                    "openRegistrations"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://try.manyfold.app"
+    }
+  ]
+}

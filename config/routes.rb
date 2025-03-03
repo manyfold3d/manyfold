@@ -127,4 +127,7 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.is_contributor? } do
     mount Tus::Server => "/upload", :as => :upload
   end
+
+  mount Rswag::Ui::Engine => "/api", :as => :api
+  mount Rswag::Api::Engine => "/api"
 end
