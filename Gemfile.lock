@@ -771,6 +771,7 @@ GEM
       method_source (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
+    warning (1.5.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -893,6 +894,7 @@ DEPENDENCIES
   tus-server (~> 2.3)
   tzinfo-data
   view_component (~> 3.21)
+  warning (~> 1.5)
   web-console (>= 4.1.0)
 
 RUBY VERSION
