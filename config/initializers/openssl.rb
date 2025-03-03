@@ -3,7 +3,6 @@
 # but it seems the quickest and most global solution without rewriting a bunch of lower-level code.
 # It'll do for now.
 if defined?(OpenSSL::SSL::OP_IGNORE_UNEXPECTED_EOF)
-  OpenSSL::SSL::SSLContext::DEFAULT_PARAMS = OpenSSL::SSL::SSLContext::DEFAULT_PARAMS.merge(
-    options: OpenSSL::SSL::SSLContext::DEFAULT_PARAMS[:options] + OpenSSL::SSL::OP_IGNORE_UNEXPECTED_EOF
-  ).freeze
+  OpenSSL::SSL::SSLContext::DEFAULT_PARAMS[:options] =
+    OpenSSL::SSL::SSLContext::DEFAULT_PARAMS[:options] + OpenSSL::SSL::OP_IGNORE_UNEXPECTED_EOF
 end
