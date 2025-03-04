@@ -404,7 +404,7 @@ RSpec.describe Model do
     it "calls destroy on files" do # rubocop:todo RSpec/ExampleLength
       file = create(:model_file, model: model, filename: "part_1.3mf", digest: "1234")
       allow(file).to receive(:destroy)
-      mock = [file]
+      mock = double(including_special: [file]) # rubocop:disable RSpec/VerifiedDoubles
       without_partial_double_verification do
         allow(mock).to receive(:update_all).and_return(true)
       end
