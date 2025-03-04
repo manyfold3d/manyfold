@@ -84,7 +84,7 @@ class Model < ApplicationRecord
     # This will go away later when we do proper file relationships rather than linking the tables directly
     model_files.update_all(presupported_version_id: nil) # rubocop:disable Rails/SkipsModelValidations
     # Trigger deletion for each file separately, to make sure cleanup happens
-    model_files.each { |f| f.destroy }
+    model_files.including_special.each { |f| f.destroy }
     # Remove tags first - sometimes this causes problems if we don't do it beforehand
     update!(tags: [])
     # Delete directory corresponding to model
