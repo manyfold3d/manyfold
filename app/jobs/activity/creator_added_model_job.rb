@@ -3,6 +3,20 @@ class Activity::CreatorAddedModelJob < ApplicationJob
 
   def perform(model_id)
     model = Model.find(model_id)
+    if model.public?
+      Federails::Activity.create!(
+        actor: model.creator&.actor || model.actor,
+        action: "Create",
+        entity: model
+      )
+    end
+    # Post a comment as well, for notes
+    post_comment(model)
+  end
+
+  private
+
+  def post_comment(model)
     Comment.create!(
       system: true,
       commentable: model,
