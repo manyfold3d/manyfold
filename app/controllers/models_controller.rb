@@ -122,7 +122,7 @@ class ModelsController < ApplicationController
 
   def bulk_edit
     authorize Model
-    @models = filtered_models @filters
+    @models = filtered_models(@filters).includes(:collection, :creator)
     generate_available_tag_list
     if helpers.pagination_settings["models"]
       page = params[:page] || 1
@@ -221,7 +221,7 @@ class ModelsController < ApplicationController
   end
 
   def get_model
-    @model = policy_scope(Model).includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find_param(params[:id])
+    @model = policy_scope(Model).includes(:model_files, :creator, :preview_file, :library, :links).find_param(params[:id])
     authorize @model
     @title = @model.name
   end

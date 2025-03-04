@@ -28,7 +28,7 @@ class CollectionsController < ApplicationController
       @collections = @collections.page(page).per(helpers.pagination_settings["per_page"])
     end
     # Eager load
-    @collections = @collections.includes :collections, :collection, :links, models: [:preview_file, :library]
+    @collections = @collections.includes :collections, :collection, :links
     # Apply tag filters in-place
     @filter_in_place = true
     render layout: "card_list_page"
@@ -85,7 +85,7 @@ class CollectionsController < ApplicationController
       authorize Collection
       @title = t(".unknown")
     else
-      @collection = policy_scope(Collection).includes(:links, :caber_relations).find_param(params[:id])
+      @collection = policy_scope(Collection).find_param(params[:id])
       authorize @collection
       @title = @collection.name
     end

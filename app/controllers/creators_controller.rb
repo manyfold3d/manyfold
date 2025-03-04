@@ -25,7 +25,7 @@ class CreatorsController < ApplicationController
       @creators = @creators.page(page).per(helpers.pagination_settings["per_page"])
     end
     # Eager load data
-    @creators = @creators.includes(:links, :models)
+    @creators = @creators.includes(:links, :collections)
     # Apply tag filters in-place
     @filter_in_place = true
     render layout: "card_list_page"
@@ -80,7 +80,7 @@ class CreatorsController < ApplicationController
       authorize Creator
       @title = t(".unknown")
     else
-      @creator = policy_scope(Creator).includes(:links, :caber_relations).find_param(params[:id])
+      @creator = policy_scope(Creator).find_param(params[:id])
       authorize @creator
       @title = @creator.name
     end
