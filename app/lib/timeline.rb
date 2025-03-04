@@ -2,7 +2,7 @@ module Timeline
   ACCESS_PERMISSIONS = ["view", "edit", "own"]
 
   def self.local(actions = ["Create", "Update"], entity_types = ["Federails::Actor"], limit = 20, for_user: nil)
-    Federails::Activity.where(action: actions, entity_type: entity_types).order(created_at: :desc).limit(limit).select do |activity| # rubocop:todo Pundit/UsePolicyScope
+    Federails::Activity.where(action: actions, entity_type: entity_types).includes(:actor, entity: {entity: :model_files}).order(created_at: :desc).limit(limit).select do |activity| # rubocop:todo Pundit/UsePolicyScope
       if activity.entity_type == "Federails::Actor"
         entity = activity.entity&.entity
 
