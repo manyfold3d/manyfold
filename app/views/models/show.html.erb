@@ -87,9 +87,9 @@
       <tr>
         <td><%= icon "folder", t(".path") %></td>
         <td>
-          <code><%= @model.path %></code>
+          <%= content_tag(:code, class: "path") { safe_join @model.path.split("/"), safe_join([tag.wbr, "/"]) } %>
           <% unless @model.contains_other_models? %>
-            <%= button_tag(t(".organize.button_text"), class: "btn btn-warning btn-sm float-end", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? && policy(@model).edit? %>
+          <div><%= button_tag(t(".organize.button_text"), class: "btn btn-warning btn-sm", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? && policy(@model).edit? %></div>
           <% end %>
         </td>
       </tr>
