@@ -75,6 +75,9 @@ class Model < ApplicationRecord
       end
     end
     Scan::CheckModelIntegrityJob.set(wait: 5.seconds).perform_later(target.id)
+    # Remove datapackage
+    model_files.including_special.find_by(filename: "datapackage.json")&.destroy
+    # Destroy this model
     reload
     destroy
   end
