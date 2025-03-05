@@ -193,7 +193,7 @@ GEM
     cronex (0.15.0)
       tzinfo
       unicode (>= 0.4.4.5)
-    cssbundling-rails (1.4.2)
+    cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
     csv (3.3.0)
     data_migrate (11.2.0)
