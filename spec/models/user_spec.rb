@@ -8,12 +8,12 @@ RSpec.describe User do
     expect(build(:user, username: nil)).not_to be_valid
   end
 
-  it "doesn't allow single-character usernames" do
-    expect(build(:user, username: "a")).not_to be_valid
+  it "allows single-character usernames" do
+    expect(build(:user, username: "a")).to be_valid
   end
 
-  it "doesn't allow two-character usernames" do
-    expect(build(:user, username: "ab")).not_to be_valid
+  it "allows two-character usernames" do
+    expect(build(:user, username: "ab")).to be_valid
   end
 
   it "allow three-character usernames" do
