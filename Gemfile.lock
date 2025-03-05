@@ -16,8 +16,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: 2d0f48121c1afb71b3e3cbd210f31d66bfd09ae4
-  branch: open-registrations-proc
+  revision: 5fa576b66562cf8cb8cb0e37d870f1b209f2daa0
+  branch: main
   specs:
     federails (0.5.0)
       faraday
