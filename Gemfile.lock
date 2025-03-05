@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: 036524a9354be6a0b81ad71d7abeda134d3f669e
+  revision: 5fa576b66562cf8cb8cb0e37d870f1b209f2daa0
   branch: main
   specs:
     federails (0.5.0)
@@ -619,7 +619,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.4.0)
+    rexml (3.4.1)
     roda (3.87.0)
       rack
     rolify (6.0.1)
