@@ -221,7 +221,7 @@ class ModelsController < ApplicationController
   end
 
   def get_model
-    @model = policy_scope(Model).includes(:model_files, :creator, :preview_file, :library, :links).find_param(params[:id])
+    @model = policy_scope(Model).find_param(params[:id])
     authorize @model
     @title = @model.name
   end
