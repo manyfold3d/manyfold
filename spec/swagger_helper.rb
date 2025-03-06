@@ -35,7 +35,76 @@ RSpec.configure do |config|
         {
           url: "https://try.manyfold.app"
         }
-      ]
+      ],
+      components: {
+        schemas: {
+          oembed_link: {
+            type: :object,
+            properties: {
+              version: {type: :string, example: "1.0"},
+              type: {type: :string, example: "link"},
+              title: {type: :string, example: "Model Title"},
+              author_name: {type: :string, example: "Creator Name"},
+              author_url: {type: :string, example: "https://example.com/creators/bob"},
+              provider_name: {type: :string, example: "Manyfold"},
+              provider_url: {type: :string, example: "https://example.com"},
+              cache_age: {type: :integer, example: 86400}
+            },
+            required: [:version, :type]
+          },
+          oembed_photo: {
+            type: :object,
+            properties: {
+              version: {type: :string, example: "1.0"},
+              type: {type: :string, example: "photo"},
+              url: {type: :string, example: "https://example.com/models/123/model_files/456.png"},
+              width: {type: :integer, example: "256"},
+              height: {type: :integer, example: "256"},
+              title: {type: :string, example: "Model Title"},
+              author_name: {type: :string, example: "Creator Name"},
+              author_url: {type: :string, example: "https://example.com/creators/bob"},
+              provider_name: {type: :string, example: "Manyfold"},
+              provider_url: {type: :string, example: "https://example.com"},
+              cache_age: {type: :integer, example: 86400}
+            },
+            required: [:version, :type, :url, :width, :height]
+          },
+          oembed_video: {
+            type: :object,
+            properties: {
+              version: {type: :string, example: "1.0"},
+              type: {type: :string, example: "video"},
+              html: {type: :string, example: "<iframe>...</iframe>"},
+              width: {type: :integer, example: "256"},
+              height: {type: :integer, example: "256"},
+              title: {type: :string, example: "Model Title"},
+              author_name: {type: :string, example: "Creator Name"},
+              author_url: {type: :string, example: "https://example.com/creators/bob"},
+              provider_name: {type: :string, example: "Manyfold"},
+              provider_url: {type: :string, example: "https://example.com"},
+              cache_age: {type: :integer, example: 86400}
+            },
+            required: [:version, :type, :html, :width, :height]
+          },
+          oembed_rich: {
+            type: :object,
+            properties: {
+              version: {type: :string, example: "1.0"},
+              type: {type: :string, example: "rich"},
+              html: {type: :string, example: "<iframe>...</iframe>"},
+              width: {type: :integer, example: "256"},
+              height: {type: :integer, example: "256"},
+              title: {type: :string, example: "Model Title"},
+              author_name: {type: :string, example: "Creator Name"},
+              author_url: {type: :string, example: "https://example.com/creators/bob"},
+              provider_name: {type: :string, example: "Manyfold"},
+              provider_url: {type: :string, example: "https://example.com"},
+              cache_age: {type: :integer, example: 86400}
+            },
+            required: [:version, :type, :html, :width, :height]
+          }
+        }
+      }
     }
   }
 
