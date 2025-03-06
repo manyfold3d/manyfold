@@ -50,3 +50,6 @@ Mime::Type.register "application/x-bzip2", :bz2
 Mime::Type.register "text/markdown", :md
 Mime::Type.register "application/msword", :doc
 Mime::Type.register "application/vnd.openxmlformats-officedocument.wordprocessingml.document", :docx
+
+# oEmbed
+Mime::Type.register "application/json+oembed", :oembed
