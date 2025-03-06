@@ -50,6 +50,11 @@ class ModelsController < ApplicationController
         send_file(tmpfile, filename: filename, type: :zip, disposition: :attachment)
         # We will rely on Shrine to clean up the temp file
       end
+      format.oembed do
+        render json: {
+          version: "1.0"
+        }
+      end
     end
   end
 
