@@ -1,9 +1,9 @@
 module OEmbed
   class ApplicationSerializer
-    def initialize(object, maxwidth: nil, maxheight: nil)
+    def initialize(object, options = {})
       @object = object
-      @maxwidth = maxwidth
-      @maxheight = maxheight
+      @maxwidth = options[:maxwidth]
+      @maxheight = options[:maxheight]
     end
 
     def generic_properties

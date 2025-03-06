@@ -50,7 +50,7 @@ class ModelsController < ApplicationController
         send_file(tmpfile, filename: filename, type: :zip, disposition: :attachment)
         # We will rely on Shrine to clean up the temp file
       end
-      format.oembed { render json: OEmbed::ModelSerializer.new(@model).serialize }
+      format.oembed { render json: OEmbed::ModelSerializer.new(@model, helpers.oembed_params).serialize }
     end
   end
 
