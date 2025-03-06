@@ -2,16 +2,8 @@ require "rails_helper"
 
 RSpec.describe Comment do
   context "with public commenter and commentable" do
-    let(:commenter) do
-      c = create(:creator)
-      c.grant_permission_to "view", nil
-      c
-    end
-    let(:commentable) do
-      m = create(:model, creator: commenter, tag_list: "tag one, tag2")
-      m.grant_permission_to "view", nil
-      m
-    end
+    let(:commenter) { create(:creator, :public) }
+    let(:commentable) { create(:model, :public, creator: commenter, tag_list: "tag one, tag2") }
     let!(:comment) { create(:comment, commenter: commenter, commentable: commentable, sensitive: true) }
 
     it "posts a Federails Activity on creation" do # rubocop:disable RSpec/MultipleExpectations
@@ -87,11 +79,7 @@ RSpec.describe Comment do
 
   context "with non-public commenter" do
     let(:commenter) { create(:creator) }
-    let(:commentable) do
-      m = create(:model, creator: commenter)
-      m.grant_permission_to "view", nil
-      m
-    end
+    let(:commentable) { create(:model, :public, creator: commenter) }
 
     it "Does not post a Federails Activity on creation" do
       expect { create(:comment, commenter: commenter, commentable: commentable) }.not_to change(Federails::Activity, :count)
@@ -104,11 +92,7 @@ RSpec.describe Comment do
   end
 
   context "with non-public commentable" do
-    let(:commenter) do
-      c = create(:creator)
-      c.grant_permission_to "view", nil
-      c
-    end
+    let(:commenter) { create(:creator, :public) }
     let(:commentable) { create(:model, creator: commenter) }
 
     it "Does not post a Federails Activity on creation" do

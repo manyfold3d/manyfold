@@ -5,11 +5,7 @@ RSpec.describe ActivityPub::ModelSerializer do
     subject(:serializer) { described_class.new(object) }
 
     let(:ap) { serializer.serialize }
-    let(:object) {
-      c = create(:model, :with_tags)
-      c.grant_permission_to "view", nil
-      c
-    }
+    let(:object) { create(:model, :with_tags, :public) }
 
     it_behaves_like "GenericSerializer"
 
