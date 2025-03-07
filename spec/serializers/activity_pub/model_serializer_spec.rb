@@ -7,7 +7,7 @@ RSpec.describe ActivityPub::ModelSerializer do
     let(:ap) { serializer.serialize }
     let(:object) { create(:model, :with_tags, :public) }
 
-    it_behaves_like "GenericSerializer"
+    it_behaves_like "GenericActivityPubSerializer"
 
     it "includes concrete type" do
       expect(ap[:"f3di:concreteType"]).to eq "3DModel"
