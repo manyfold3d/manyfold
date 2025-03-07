@@ -31,7 +31,7 @@ RSpec.describe OEmbed::ModelSerializer do
 
     context "when showing a model with an image preview" do
       let(:model) {
-        m = create(:model, :public, :with_tags)
+        m = create(:model, :public)
         m.preview_file = create(:model_file, filename: "image.png", model: m)
         m
       }
@@ -47,7 +47,7 @@ RSpec.describe OEmbed::ModelSerializer do
 
     context "when showing a model with an video preview" do
       let(:model) {
-        m = create(:model, :public, :with_tags)
+        m = create(:model, :public)
         m.preview_file = create(:model_file, filename: "video.mp4", model: m)
         m
       }
@@ -63,7 +63,7 @@ RSpec.describe OEmbed::ModelSerializer do
 
     context "when showing a model with a 3d preview" do
       let(:model) {
-        m = create(:model, :public, :with_tags)
+        m = create(:model, :public)
         m.preview_file = create(:model_file, filename: "model.stl", model: m)
         m
       }
@@ -79,10 +79,18 @@ RSpec.describe OEmbed::ModelSerializer do
 
     context "when showing a model with a PDF preview" do
       let(:model) {
-        m = create(:model, :public, :with_tags)
+        m = create(:model, :public)
         m.preview_file = create(:model_file, filename: "instructions.pdf", model: m)
         m
       }
+
+      it "has link type" do
+        expect(result[:type]).to eq "link"
+      end
+    end
+
+    context "when showing a model with no preview" do
+      let(:model) { create(:model, :public) }
 
       it "has link type" do
         expect(result[:type]).to eq "link"
