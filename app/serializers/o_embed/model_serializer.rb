@@ -68,7 +68,7 @@ module OEmbed
       width = @maxwidth || 512
       height = @maxheight || 512
       html = <<~EOF
-        <iframe>
+        <iframe src="#{Rails.application.routes.url_helpers.model_model_file_url(@object, @object.preview_file, embed: true)}">
         </iframe>
       EOF
       {

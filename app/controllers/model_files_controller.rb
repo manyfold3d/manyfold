@@ -7,8 +7,17 @@ class ModelFilesController < ApplicationController
   skip_after_action :verify_authorized, only: [:bulk_edit, :bulk_update]
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
+  def configure_content_security_policy
+    # If embed mode, allow any frame ancestor
+    content_security_policy.frame_ancestors = "*" if embedded?
+  end
+
   def show
-    if stale?(@file)
+    if embedded?
+      respond_to do |format|
+        format.html { render "embedded", layout: "embed" }
+      end
+    elsif stale?(@file)
       @duplicates = @file.duplicates
       respond_to do |format|
         format.html
@@ -133,5 +142,9 @@ class ModelFilesController < ApplicationController
     @file = @model.model_files.find_param(params[:id])
     authorize @file
     @title = @file.name
+  end
+
+  def embedded?
+    params[:embed] == "true"
   end
 end
