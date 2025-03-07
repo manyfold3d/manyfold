@@ -17,11 +17,11 @@ module OEmbed
     end
 
     def type_properties
-      if @object.preview_file.is_image?
+      if @object.preview_file&.is_image?
         photo_properties
-      elsif @object.preview_file.is_renderable?
+      elsif @object.preview_file&.is_renderable?
         renderable_properties
-      elsif @object.preview_file.is_video?
+      elsif @object.preview_file&.is_video?
         video_properties
       else
         link_properties
@@ -47,7 +47,7 @@ module OEmbed
 
     def video_properties
       width = @maxwidth || 512
-      height = Math.min(@maxheight, width * 0.75) # TODO proper aspect ratio calculation
+      height = [@maxheight, width * 0.75].compact.min # TODO proper aspect ratio calculation
       html = <<~EOF
         <video controls width="#{width}" height="#{height}">
           <source
