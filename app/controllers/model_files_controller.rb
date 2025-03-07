@@ -9,7 +9,7 @@ class ModelFilesController < ApplicationController
 
   def configure_content_security_policy
     # If embed mode, allow any frame ancestor
-    content_security_policy.frame_ancestors = "*" if embedded?
+    content_security_policy.frame_ancestors [:https, :http] if embedded?
   end
 
   def show
