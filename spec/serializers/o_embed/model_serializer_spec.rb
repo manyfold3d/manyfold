@@ -4,15 +4,15 @@ RSpec.describe OEmbed::ModelSerializer do
   context "when generating oEmbed representation" do
     subject(:serializer) { described_class.new(model) }
 
-    let(:output) { serializer.serialize }
+    let(:result) { serializer.serialize }
 
     context "when serializing the basics" do
       let(:model) { create(:model, :public) }
 
-      it_behaves_like "GenericSerializer"
+      it_behaves_like "GenericOEmbedSerializer"
 
       it "includes model name" do
-        expect(output[:title]).to eq model.name
+        expect(result[:title]).to eq model.name
       end
     end
 
@@ -21,11 +21,11 @@ RSpec.describe OEmbed::ModelSerializer do
       let(:model) { create(:model, :public, creator: creator) }
 
       it "includes creator name" do
-        expect(output[:author_name]).to eq creator.name
+        expect(result[:author_name]).to eq creator.name
       end
 
       it "includes creator link" do
-        expect(output[:author_url]).to eq "http://localhost:3214/creators/#{creator.to_param}"
+        expect(result[:author_url]).to eq "http://localhost:3214/creators/#{creator.to_param}"
       end
     end
 
@@ -37,11 +37,11 @@ RSpec.describe OEmbed::ModelSerializer do
       }
 
       it "has photo type" do
-        expect(output[:type]).to eq "photo"
+        expect(result[:type]).to eq "photo"
       end
 
       it "includes image url" do
-        expect(output[:url]).to eq "http://localhost:3214/models/#{model.to_param}/model_files/#{model.preview_file.to_param}.png"
+        expect(result[:url]).to eq "http://localhost:3214/models/#{model.to_param}/model_files/#{model.preview_file.to_param}.png"
       end
     end
 
@@ -53,11 +53,11 @@ RSpec.describe OEmbed::ModelSerializer do
       }
 
       it "has video type" do
-        expect(output[:type]).to eq "video"
+        expect(result[:type]).to eq "video"
       end
 
       it "generates HTML video tag" do
-        expect(output[:html]).to start_with "<video"
+        expect(result[:html]).to start_with "<video"
       end
     end
 
@@ -69,11 +69,11 @@ RSpec.describe OEmbed::ModelSerializer do
       }
 
       it "has rich type" do
-        expect(output[:type]).to eq "rich"
+        expect(result[:type]).to eq "rich"
       end
 
       it "generates HTML iframe tag" do
-        expect(output[:html]).to start_with "<iframe"
+        expect(result[:html]).to start_with "<iframe"
       end
     end
 
@@ -85,7 +85,7 @@ RSpec.describe OEmbed::ModelSerializer do
       }
 
       it "has link type" do
-        expect(output[:type]).to eq "link"
+        expect(result[:type]).to eq "link"
       end
     end
   end
