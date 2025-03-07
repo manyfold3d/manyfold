@@ -250,4 +250,8 @@ module ApplicationHelper
   def model_file_count
     policy_scope(ModelFile).count
   end
+
+  def oembed_params
+    params.permit(:maxwidth, :maxheight)
+  end
 end

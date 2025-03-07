@@ -39,5 +39,9 @@ FactoryBot.define do
     trait :with_collection do
       collection
     end
+
+    trait :public do
+      after(:create) { |it| it.grant_permission_to "view", nil }
+    end
   end
 end

@@ -1,4 +1,4 @@
-shared_examples "GenericSerializer" do
+shared_examples "GenericActivityPubSerializer" do
   it "includes caption in summary" do
     expect(ap[:summary]).to include object.caption
   end

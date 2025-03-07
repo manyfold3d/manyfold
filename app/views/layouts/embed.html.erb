@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <title><%= @title || site_name %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= tag.meta name: "csp-nonce", content: content_security_policy_nonce if content_security_policy_nonce %>
+    <%= javascript_include_tag "application", nonce: true, defer: true %>
+    <%= stylesheet_link_tag "themes/#{SiteSettings.theme}", nonce: true %>
+    <%= yield :head %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
