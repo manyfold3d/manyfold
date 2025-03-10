@@ -1,7 +1,7 @@
 # spec/requests/blogs_spec.rb
 require "swagger_helper"
 
-describe "oEmbed" do # rubocop:disable RSpec/EmptyExampleGroup, RSpec/DescribeClass
+describe "oEmbed", :api do # rubocop:disable RSpec/EmptyExampleGroup, RSpec/DescribeClass
   path "/oembed" do
     get "generic oEmbed API endpoint" do
       tags "oEmbed"
