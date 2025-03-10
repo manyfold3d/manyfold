@@ -14,8 +14,34 @@ require "rails_helper"
 #   scan_model  POST   /models/:id/scan(.:format)                        models#scan
 
 RSpec.describe "Models" do
-  context "when signed out" do
-    it "needs testing when multiuser is enabled"
+  context "when signed out in multiuser mode", :multiuser do
+    before { create(:admin) }
+
+    context "with public model" do
+      let!(:model) { create(:model, :public) }
+
+      describe "GET /models/:id" do
+        it "returns http success" do
+          get "/models/#{model.to_param}"
+          expect(response).to have_http_status(:success)
+        end
+      end
+    end
+
+    context "with non-public model" do
+      let!(:model) { create(:model) }
+
+      describe "GET /models/:id" do
+        it "returns not found" do
+          get "/models/#{model.to_param}"
+          expect(response).to be_not_found
+        end
+      end
+    end
+  end
+
+  context "when signed in in multiuser mode", :multiuser do
+    it "needs testing"
   end
 
   context "when signed in" do
