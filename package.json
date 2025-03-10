@@ -11,7 +11,7 @@
     "typecheck": "bundle exec i18n export --config=./config/i18n-js.yml && tsc --project tsconfig.json"
   },
   "dependencies": {
-    "@activeadmin/activeadmin": "^3.2.5",
+    "@activeadmin/activeadmin": "^3.3.0",
     "@infinizhen/rpg-awesome-continued": "^1.0.6",
     "@notus.sh/cocooned": "^2.4.1",
     "@popperjs/core": "^2.11.8",
