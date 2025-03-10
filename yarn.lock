@@ -12,14 +12,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@activeadmin/activeadmin@npm:^3.2.5":
-  version: 3.2.5
-  resolution: "@activeadmin/activeadmin@npm:3.2.5"
+"@activeadmin/activeadmin@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "@activeadmin/activeadmin@npm:3.3.0"
   dependencies:
     jquery: ^3.4.1
     jquery-ui: ^1.13.3
     jquery-ujs: ^1.2.2
-  checksum: 823582a77743a593ec1be863d81752cabfcd4324eeb2799ab8270dd3b89929225b65bb4f48f9f47a1ffbb1ebe2eee2037552dc28161446efdef0ac030147b85e
+  checksum: 8ba45d4f04ae73e29e8e23cf8f5cc708003862a0df62d2e14e06a12e9c84d44e948523d4d6dbba6b5a4f505934edd77215386ccb25ab35e6fedec8006b14a324
   languageName: node
   linkType: hard
 
@@ -4339,7 +4339,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "manyfold@workspace:."
   dependencies:
-    "@activeadmin/activeadmin": ^3.2.5
+    "@activeadmin/activeadmin": ^3.3.0
     "@babel/core": ^7
     "@babel/eslint-parser": ^7.26.8
     "@babel/preset-typescript": ^7.26.0
