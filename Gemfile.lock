@@ -75,7 +75,7 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    activeadmin (3.2.5)
+    activeadmin (3.3.0)
       arbre (~> 1.2, >= 1.2.1)
       csv
       formtastic (>= 3.1)
@@ -195,7 +195,7 @@ GEM
       unicode (>= 0.4.4.5)
     cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
-    csv (3.3.0)
+    csv (3.3.2)
     data_migrate (11.2.0)
       activerecord (>= 6.1)
       railties (>= 6.1)
@@ -815,7 +815,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activeadmin (~> 3.2)
+  activeadmin (~> 3.3)
   activejob-status (~> 1.0)
   activejob-uniqueness (~> 0.4.0)
   activerecord-enhancedsqlite3-adapter (~> 0.8.0)
