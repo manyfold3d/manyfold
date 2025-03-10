@@ -64,7 +64,7 @@ class ModelFilesController < ApplicationController
   end
 
   def bulk_edit
-    @files = policy_scope(ModelFile).where(model: @model).select(&:is_3d_model?)
+    @files = policy_scope(ModelFile).where(model: @model)
   end
 
   def bulk_update

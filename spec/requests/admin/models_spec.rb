@@ -13,7 +13,8 @@ RSpec.describe "Admin::Models" do
     end
 
     it "is inaccessible in demo mode", :demo_mode do
-      expect { get("/admin/models") }.to raise_error(Pundit::NotAuthorizedError)
+      get("/admin/models")
+      expect(response).to have_http_status(:forbidden)
     end
   end
 end

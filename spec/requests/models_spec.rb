@@ -64,18 +64,18 @@ RSpec.describe "Models" do
     end
 
     describe "GET /models/:id/edit" do
+      before { get "/models/#{library.models.first.to_param}/edit" }
+
       it "shows edit page for file", :as_moderator do
-        get "/models/#{library.models.first.to_param}/edit"
         expect(response).to have_http_status(:success)
       end
 
       it "sets returnable session param", :as_moderator do
-        get "/models/#{library.models.first.to_param}/edit"
         expect(session[:return_after_new]).to eq "/models/#{library.models.first.to_param}/edit"
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { get "/models/#{library.models.first.to_param}/edit" }.to raise_error(Pundit::NotAuthorizedError)
+        expect(response).to have_http_status(:forbidden)
       end
     end
 
@@ -125,34 +125,36 @@ RSpec.describe "Models" do
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { put "/models/#{library.models.first.to_param}" }.to raise_error(Pundit::NotAuthorizedError)
+        put "/models/#{library.models.first.to_param}"
+        expect(response).to have_http_status(:forbidden)
       end
     end
 
     describe "DELETE /models/:id" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      before { delete "/models/#{library.models.first.to_param}" }
+
       it "redirects to model list after deletion", :as_moderator do
-        delete "/models/#{library.models.first.to_param}"
         expect(response).to redirect_to("/")
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { delete "/models/#{library.models.first.to_param}" }.to raise_error(Pundit::NotAuthorizedError)
+        expect(response).to have_http_status(:forbidden)
       end
     end
 
     describe "GET /models/edit" do # rubocop:todo RSpec/RepeatedExampleGroupBody
+      before { get edit_models_path }
+
       it "shows bulk edit page", :as_moderator do
-        get edit_models_path
         expect(response).to have_http_status(:success)
       end
 
       it "sets returnable session param", :as_moderator do
-        get edit_models_path
         expect(session[:return_after_new]).to eq "/models/edit"
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { get edit_models_path }.to raise_error(Pundit::NotAuthorizedError)
+        expect(response).to have_http_status(:forbidden)
       end
 
       context "with filters", :as_moderator do
@@ -228,10 +230,9 @@ RSpec.describe "Models" do
 
       it "is denied to non-moderators", :as_contributor do
         update = {}
-        library.models.take(2).each do |model|
-          update[model.to_param] = 1
-        end
-        expect { patch update_models_path, params: {models: model_params, remove_tags: ["a", "b"]} }.to raise_error(Pundit::NotAuthorizedError)
+        library.models.take(2).each { |it| update[it.to_param] = 1 }
+        patch update_models_path, params: {models: model_params, remove_tags: ["a", "b"]}
+        expect(response).to have_http_status(:forbidden)
       end
 
       context "when updating all filtered models", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
@@ -300,13 +301,14 @@ RSpec.describe "Models" do
     end
 
     describe "POST /models/:id/merge" do
+      before { post "/models/#{library.models.first.to_param}/merge" }
+
       it "gives a bad request response if no merge parameter is provided", :as_moderator do
-        post "/models/#{library.models.first.to_param}/merge"
         expect(response).to have_http_status(:bad_request)
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { post "/models/#{library.models.first.to_param}/merge" }.to raise_error(Pundit::NotAuthorizedError)
+        expect(response).to have_http_status(:forbidden)
       end
     end
 
@@ -323,39 +325,40 @@ RSpec.describe "Models" do
       end
 
       it "is denied to non-contributors", :as_member do
-        expect { post "/models/#{library.models.first.to_param}/scan" }.to raise_error(Pundit::NotAuthorizedError)
+        post "/models/#{library.models.first.to_param}/scan"
+        expect(response).to have_http_status(:forbidden)
       end
     end
 
     describe "GET /models/new" do
+      before { get "/models/new" }
+
       it "shows upload form", :as_contributor do
-        get "/models/new"
         expect(response).to have_http_status(:success)
       end
 
       it "sets returnable session param", :as_contributor do
-        get "/models/new"
         expect(session[:return_after_new]).to eq "/models/new"
       end
 
       it "denies member permission", :as_member do
-        expect { get "/models/new" }.to raise_error(Pundit::NotAuthorizedError)
+        expect(response).to have_http_status(:forbidden)
       end
     end
 
     describe "POST /models" do
+      before { post "/models", params: {library: library.to_param, scan: "1", uploads: "{}"} }
+
       it "redirect back to index after upload", :as_contributor do
-        post "/models", params: {library: library.to_param, scan: "1", uploads: "{}"}
         expect(response).to redirect_to("/models")
       end
 
       it "clears returnable session param", :as_contributor do
-        post "/models", params: {library: library.to_param, scan: "1", uploads: "{}"}
         expect(session[:return_after_new]).to be_nil
       end
 
       it "denies member permission", :as_member do
-        expect { post "/models", params: {post: {library_pick: library.to_param, scan_after_upload: "1"}, upload: {datafiles: []}} }.to raise_error(Pundit::NotAuthorizedError)
+        expect(response).to have_http_status(:forbidden)
       end
     end
   end

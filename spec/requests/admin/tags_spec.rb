@@ -13,7 +13,8 @@ RSpec.describe "Admin::Tags" do
     end
 
     it "is inaccessible in demo mode", :demo_mode do
-      expect { get("/admin/acts_as_taggable_on_tags") }.to raise_error(Pundit::NotAuthorizedError)
+      get("/admin/acts_as_taggable_on_tags")
+      expect(response).to have_http_status(:forbidden)
     end
   end
 end

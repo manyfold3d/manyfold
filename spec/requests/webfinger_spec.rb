@@ -39,7 +39,8 @@ RSpec.describe "Webfinger", :multiuser do
       end
 
       it "returns a not found response if item doesn't exist" do
-        expect { get("/.well-known/webfinger?resource=#{object.federails_actor.federated_url}9999") }.to raise_error(ActiveRecord::RecordNotFound)
+        get("/.well-known/webfinger?resource=#{object.federails_actor.federated_url}9999")
+        expect(response).to have_http_status :not_found
       end
     end
   end
