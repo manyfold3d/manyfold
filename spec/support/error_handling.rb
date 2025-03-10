@@ -1,5 +1,5 @@
 RSpec.configure do |config|
-  config.around(:each, :api) do |example|
+  config.around(:each, type: :request) do |example|
     # Make Rails respond to errors like it would in production
     env_config = Rails.application.env_config
     original_show_exceptions = env_config["action_dispatch.show_exceptions"]
