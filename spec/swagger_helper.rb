@@ -114,6 +114,5 @@ RSpec.configure do |config|
   # Defaults to json. Accepts ':json' and ':yaml'.
   config.openapi_format = :json
 
-  config.openapi_all_properties_required = true
   config.openapi_no_additional_properties = true
 end
