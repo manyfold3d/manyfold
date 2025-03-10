@@ -1,6 +1,7 @@
 <% content_for :head do %>
   <%= tag.meta property: "og:type", content: "profile" %>
   <%= tag.meta name: "description", content: truncate(sanitize(@creator.caption), length: 80) if @creator.caption.present? %>
+  <%= tag.link rel: "alternate", type: Mime[:oembed], href: creator_url(@creator, format: :oembed), title: @creator.name %>
 <% end %>
 
 <%= content_for :items do %>
