@@ -42,13 +42,15 @@ RSpec.describe "Users::Passwords" do
     context "when signed out" do
       describe "GET /users/password/new" do
         it "raises an error" do
-          expect { get "/users/password/new" }.to raise_error(Pundit::NotAuthorizedError)
+          get "/users/password/new"
+          expect(response).to have_http_status(:forbidden)
         end
       end
 
       describe "POST /users/password" do
         it "raises an error" do
-          expect { post "/users/password", params: post_options }.to raise_error(Pundit::NotAuthorizedError)
+          post "/users/password", params: post_options
+          expect(response).to have_http_status(:forbidden)
         end
       end
 
@@ -61,7 +63,8 @@ RSpec.describe "Users::Passwords" do
 
       describe "PATCH /users/password" do
         it "redirects to sign in page" do
-          expect { patch "/users/password", params: patch_options }.to raise_error(Pundit::NotAuthorizedError)
+          patch "/users/password", params: patch_options
+          expect(response).to have_http_status(:forbidden)
         end
       end
     end
