@@ -1,7 +1,7 @@
 # spec/requests/blogs_spec.rb
 require "swagger_helper"
 
-describe "Collections", :api, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
+describe "Collections", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   before { create(:admin) }
 
   path "/collections/{id}.oembed" do
