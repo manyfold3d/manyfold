@@ -1,6 +1,7 @@
 <% content_for :head do %>
   <%= tag.meta property: "og:type", content: "website" %>
   <%= tag.meta name: "description", content: truncate(sanitize(@collection.caption), length: 80) if @collection.caption.present? %>
+  <%= tag.link rel: "alternate", type: Mime[:oembed], href: collection_url(@collection, format: :oembed), title: @collection.name %>
 <% end %>
 
 <%= content_for :items do %>
