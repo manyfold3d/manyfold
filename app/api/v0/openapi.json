@@ -182,6 +182,197 @@
           }
         }
       }
+    },
+    "/collections/{id}.oembed": {
+      "get": {
+        "summary": "oEmbed response for Collections",
+        "tags": [
+          "oEmbed"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxwidth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxheight",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json+oembed": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/oembed_rich"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_photo"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_video"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_link"
+                    }
+                  ],
+                  "discriminator": {
+                    "propertyName": "type",
+                    "mapping": {
+                      "rich": "#/components/schemas/oembed_rich",
+                      "photo": "#/components/schemas/oembed_photo",
+                      "video": "#/components/schemas/oembed_video",
+                      "link": "#/components/schemas/oembed_link"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/creators/{id}.oembed": {
+      "get": {
+        "summary": "oEmbed response for Creators",
+        "tags": [
+          "oEmbed"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxwidth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxheight",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json+oembed": {
+                "schema": {
+                  "$ref": "#/components/schemas/oembed_link"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/models/{id}.oembed": {
+      "get": {
+        "summary": "oEmbed response for Models",
+        "tags": [
+          "oEmbed"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxwidth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxheight",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json+oembed": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/oembed_rich"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_photo"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_video"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_link"
+                    }
+                  ],
+                  "discriminator": {
+                    "propertyName": "type",
+                    "mapping": {
+                      "rich": "#/components/schemas/oembed_rich",
+                      "photo": "#/components/schemas/oembed_photo",
+                      "video": "#/components/schemas/oembed_video",
+                      "link": "#/components/schemas/oembed_link"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
     }
   },
   "servers": [
