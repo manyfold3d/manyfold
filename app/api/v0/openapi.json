@@ -143,11 +143,454 @@
           }
         }
       }
+    },
+    "/oembed": {
+      "get": {
+        "summary": "generic oEmbed API endpoint",
+        "tags": [
+          "oEmbed"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxwidth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxheight",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "303": {
+            "description": "Redirect to oembed version of the provided URL"
+          }
+        }
+      }
+    },
+    "/collections/{id}.oembed": {
+      "get": {
+        "summary": "oEmbed response for Collections",
+        "tags": [
+          "oEmbed"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxwidth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxheight",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json+oembed": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/oembed_rich"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_photo"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_video"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_link"
+                    }
+                  ],
+                  "discriminator": {
+                    "propertyName": "type",
+                    "mapping": {
+                      "rich": "#/components/schemas/oembed_rich",
+                      "photo": "#/components/schemas/oembed_photo",
+                      "video": "#/components/schemas/oembed_video",
+                      "link": "#/components/schemas/oembed_link"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/creators/{id}.oembed": {
+      "get": {
+        "summary": "oEmbed response for Creators",
+        "tags": [
+          "oEmbed"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxwidth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxheight",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json+oembed": {
+                "schema": {
+                  "$ref": "#/components/schemas/oembed_link"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/models/{id}.oembed": {
+      "get": {
+        "summary": "oEmbed response for Models",
+        "tags": [
+          "oEmbed"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxwidth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxheight",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json+oembed": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/oembed_rich"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_photo"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_video"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_link"
+                    }
+                  ],
+                  "discriminator": {
+                    "propertyName": "type",
+                    "mapping": {
+                      "rich": "#/components/schemas/oembed_rich",
+                      "photo": "#/components/schemas/oembed_photo",
+                      "video": "#/components/schemas/oembed_video",
+                      "link": "#/components/schemas/oembed_link"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
     }
   },
   "servers": [
     {
       "url": "https://try.manyfold.app"
     }
-  ]
+  ],
+  "components": {
+    "schemas": {
+      "oembed_link": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "1.0"
+          },
+          "type": {
+            "type": "string",
+            "example": "link"
+          },
+          "title": {
+            "type": "string",
+            "example": "Model Title"
+          },
+          "author_name": {
+            "type": "string",
+            "example": "Creator Name"
+          },
+          "author_url": {
+            "type": "string",
+            "example": "https://example.com/creators/bob"
+          },
+          "provider_name": {
+            "type": "string",
+            "example": "Manyfold"
+          },
+          "provider_url": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "cache_age": {
+            "type": "integer",
+            "example": 86400
+          }
+        },
+        "required": [
+          "version",
+          "type"
+        ]
+      },
+      "oembed_photo": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "1.0"
+          },
+          "type": {
+            "type": "string",
+            "example": "photo"
+          },
+          "url": {
+            "type": "string",
+            "example": "https://example.com/models/123/model_files/456.png"
+          },
+          "width": {
+            "type": "integer",
+            "example": "256"
+          },
+          "height": {
+            "type": "integer",
+            "example": "256"
+          },
+          "title": {
+            "type": "string",
+            "example": "Model Title"
+          },
+          "author_name": {
+            "type": "string",
+            "example": "Creator Name"
+          },
+          "author_url": {
+            "type": "string",
+            "example": "https://example.com/creators/bob"
+          },
+          "provider_name": {
+            "type": "string",
+            "example": "Manyfold"
+          },
+          "provider_url": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "cache_age": {
+            "type": "integer",
+            "example": 86400
+          }
+        },
+        "required": [
+          "version",
+          "type",
+          "url",
+          "width",
+          "height"
+        ]
+      },
+      "oembed_video": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "1.0"
+          },
+          "type": {
+            "type": "string",
+            "example": "video"
+          },
+          "html": {
+            "type": "string",
+            "example": "<iframe>...</iframe>"
+          },
+          "width": {
+            "type": "integer",
+            "example": "256"
+          },
+          "height": {
+            "type": "integer",
+            "example": "256"
+          },
+          "title": {
+            "type": "string",
+            "example": "Model Title"
+          },
+          "author_name": {
+            "type": "string",
+            "example": "Creator Name"
+          },
+          "author_url": {
+            "type": "string",
+            "example": "https://example.com/creators/bob"
+          },
+          "provider_name": {
+            "type": "string",
+            "example": "Manyfold"
+          },
+          "provider_url": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "cache_age": {
+            "type": "integer",
+            "example": 86400
+          }
+        },
+        "required": [
+          "version",
+          "type",
+          "html",
+          "width",
+          "height"
+        ]
+      },
+      "oembed_rich": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "1.0"
+          },
+          "type": {
+            "type": "string",
+            "example": "rich"
+          },
+          "html": {
+            "type": "string",
+            "example": "<iframe>...</iframe>"
+          },
+          "width": {
+            "type": "integer",
+            "example": "256"
+          },
+          "height": {
+            "type": "integer",
+            "example": "256"
+          },
+          "title": {
+            "type": "string",
+            "example": "Model Title"
+          },
+          "author_name": {
+            "type": "string",
+            "example": "Creator Name"
+          },
+          "author_url": {
+            "type": "string",
+            "example": "https://example.com/creators/bob"
+          },
+          "provider_name": {
+            "type": "string",
+            "example": "Manyfold"
+          },
+          "provider_url": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "cache_age": {
+            "type": "integer",
+            "example": 86400
+          }
+        },
+        "required": [
+          "version",
+          "type",
+          "html",
+          "width",
+          "height"
+        ]
+      }
+    }
+  }
 }

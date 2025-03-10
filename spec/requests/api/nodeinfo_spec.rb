@@ -1,7 +1,7 @@
 # spec/requests/blogs_spec.rb
 require "swagger_helper"
 
-describe "NodeInfo" do # rubocop:disable RSpec/EmptyExampleGroup
+describe "NodeInfo", :api do # rubocop:disable RSpec/EmptyExampleGroup
   path "/.well-known/nodeinfo" do
     get "Discovery URL for NodeInfo protocol" do
       tags "NodeInfo"
