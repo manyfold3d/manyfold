@@ -35,10 +35,15 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @models = policy_scope(Model).where(collection: @collection)
-    prepare_model_list
-    @additional_filters = {collection: @collection}
-    render layout: "card_list_page"
+    respond_to do |format|
+      format.html do
+        @models = policy_scope(Model).where(collection: @collection)
+        prepare_model_list
+        @additional_filters = {collection: @collection}
+        render layout: "card_list_page"
+      end
+      format.oembed { render json: OEmbed::CollectionSerializer.new(@collection, helpers.oembed_params).serialize }
+    end
   end
 
   def new

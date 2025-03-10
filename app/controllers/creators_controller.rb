@@ -32,10 +32,15 @@ class CreatorsController < ApplicationController
   end
 
   def show
-    @models = policy_scope(Model).where(creator: @creator)
-    prepare_model_list
-    @additional_filters = {creator: @creator}
-    render layout: "card_list_page"
+    respond_to do |format|
+      format.html do
+        @models = policy_scope(Model).where(creator: @creator)
+        prepare_model_list
+        @additional_filters = {creator: @creator}
+        render layout: "card_list_page"
+      end
+      format.oembed { render json: OEmbed::CreatorSerializer.new(@creator, helpers.oembed_params).serialize }
+    end
   end
 
   def new
