@@ -71,7 +71,22 @@
     <%= render partial: "problem", collection: @file.problems.visible(problem_settings) %>
 
     <%= card :secondary, t("layouts.card_list_page.actions_heading") do %>
-      <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), model_model_file_path(@model, @file, @file.extension&.to_sym, download: "true"), {class: "btn btn-secondary", download: "download"} %>
+
+
+      <div class="btn-group ml-auto mr-auto">
+        <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), model_model_file_path(@model, @file, @file.extension&.to_sym, download: "true"), {class: "btn btn-secondary", download: "download"} %>
+        <button type="button" class="btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="visually-hidden">Download options</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header"><%= t(".download.menu_header") %></li>
+          <%= content_tag(:li) { link_to t(".download.bambu"), slicer_url(:bambu, @file), class: "dropdown-item", download: "download" } %>
+          <%= content_tag(:li) { link_to t(".download.cura"), slicer_url(:cura, @file), class: "dropdown-item", download: "download" } %>
+          <%= content_tag(:li) { link_to t(".download.orca"), slicer_url(:orca, @file), class: "dropdown-item", download: "download" } %>
+          <%= content_tag(:li) { link_to t(".download.prusa"), slicer_url(:prusa, @file), class: "dropdown-item", download: "download" } %>
+        </ul>
+      </div>
+
     <% end %>
 
   </div>
