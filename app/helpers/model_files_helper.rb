@@ -15,7 +15,8 @@ module ModelFilesHelper
   private
 
   def slic3r_family_open_url(scheme, file)
-    url = model_url(file.model) + "/model_files/#{file.signed_id}.#{file.extension}"
+    signed_id = file.signed_id expires_in: 1.hour, purpose: "download"
+    url = model_url(file.model) + "/model_files/#{signed_id}.#{file.extension}"
     URI::Generic.new(
       scheme, nil,
       "open", nil, nil, nil, nil,
