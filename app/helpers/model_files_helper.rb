@@ -1,26 +1,26 @@
 module ModelFilesHelper
   def slicer_url(slicer, file)
+    signed_id = file.signed_id expires_in: 1.hour, purpose: "download"
+    signed_url = model_url(file.model) + "/model_files/#{signed_id}.#{file.extension}"
     case slicer
     when :orca
-      slic3r_family_open_url "orcaslicer", file
+      slic3r_family_open_url "orcaslicer", signed_url
     when :prusa
-      slic3r_family_open_url "prusaslicer", file
+      slic3r_family_open_url "prusaslicer", signed_url
     when :bambu
-      slic3r_family_open_url "bambustudio", file
+      slic3r_family_open_url "bambustudio", signed_url
     when :cura
-      slic3r_family_open_url "cura", file
+      slic3r_family_open_url "cura", signed_url
     end
   end
 
   private
 
-  def slic3r_family_open_url(scheme, file)
-    signed_id = file.signed_id expires_in: 1.hour, purpose: "download"
-    url = model_url(file.model) + "/model_files/#{signed_id}.#{file.extension}"
+  def slic3r_family_open_url(scheme, signed_url)
     URI::Generic.new(
       scheme, nil,
       "open", nil, nil, nil, nil,
-      {file: url}.to_query, nil
+      {file: signed_url}.to_query, nil
     ).to_s
   end
 end
