@@ -79,10 +79,11 @@
         </button>
         <ul class="dropdown-menu">
           <li class="dropdown-header"><%= t(".download.menu_header") %></li>
-          <%= content_tag(:li) { link_to t(".download.bambu"), slicer_url(:bambu, @file), class: "dropdown-item", download: "download" } %>
-          <%= content_tag(:li) { link_to t(".download.cura"), slicer_url(:cura, @file), class: "dropdown-item", download: "download" } %>
-          <%= content_tag(:li) { link_to t(".download.orca"), slicer_url(:orca, @file), class: "dropdown-item", download: "download" } %>
-          <%= content_tag(:li) { link_to t(".download.prusa"), slicer_url(:prusa, @file), class: "dropdown-item", download: "download" } %>
+          <% [
+            :bambu, :cura, :orca, :prusa
+          ].each do |slicer| %>
+            <%= content_tag(:li) { link_to t(".download.#{slicer}"), slicer_url(slicer, @file), class: "dropdown-item", download: "download" } %>
+          <% end %>
         </ul>
       </div>
 
