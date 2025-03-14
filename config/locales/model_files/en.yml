@@ -20,6 +20,11 @@ en:
     destroy:
       confirm: Are you sure you want to remove this file from your filesystem?
       success: File deleted!
+    download:
+      bambu: Open in Bambu Studio
+      cura: Open in Ultimaker Cura
+      orca: Open in OrcaSlicer
+      prusa: Open in PrusaSlicer
     form:
       notes:
         help_html: You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
@@ -28,6 +33,8 @@ en:
     show:
       convert: Convert to 3MF
       details_heading: Details
+      download:
+        menu_header: Download options
       notes_heading: Notes
     update:
       failure: An error occurred and file details could not be saved.
