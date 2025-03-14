@@ -72,7 +72,6 @@
 
     <%= card :secondary, t("layouts.card_list_page.actions_heading") do %>
 
-
       <div class="btn-group ml-auto mr-auto">
         <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), model_model_file_path(@model, @file, @file.extension&.to_sym, download: "true"), {class: "btn btn-secondary", download: "download"} %>
         <button type="button" class="btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
