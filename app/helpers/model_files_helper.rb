@@ -1,4 +1,16 @@
 module ModelFilesHelper
+  def slicer_links(file)
+    # i18n-tasks-use t('model_files.download.cura')
+    # i18n-tasks-use t('model_files.download.orca')
+    # i18n-tasks-use t('model_files.download.prusa')
+    # i18n-tasks-use t('model_files.download.bambu')
+    safe_join(
+      [:cura, :orca].map do |slicer|
+        content_tag(:li) { link_to t("model_files.download.%{slicer}" % {slicer: slicer}), slicer_url(slicer, file), class: "dropdown-item", download: "download" }
+      end
+    )
+  end
+
   def slicer_url(slicer, file)
     signed_id = file.signed_id expires_in: 1.hour, purpose: "download"
     signed_url = model_url(file.model) + "/model_files/#{signed_id}.#{file.extension}"
