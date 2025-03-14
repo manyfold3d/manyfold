@@ -139,9 +139,17 @@ class ModelFilesController < ApplicationController
   end
 
   def get_file
-    @file = @model.model_files.find_param(params[:id])
-    authorize @file
+    # Check for signed download URLs
+    if params[:id].length > 20
+      @file = @model.model_files.find_signed!(params[:id], purpose: "download")
+      skip_authorization
+    else
+      @file = @model.model_files.find_param(params[:id])
+      authorize @file
+    end
     @title = @file.name
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    raise ActiveRecord::RecordNotFound
   end
 
   def embedded?
