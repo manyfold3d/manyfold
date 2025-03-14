@@ -8,7 +8,7 @@ module ModelFilesHelper
     when :prusa
       slic3r_family_open_url "prusaslicer", signed_url
     when :bambu
-      slic3r_family_open_url "bambustudio", signed_url
+      slic3r_family_open_url "bambustudioopen", signed_url
     when :cura
       slic3r_family_open_url "cura", signed_url
     end
