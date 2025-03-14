@@ -28,6 +28,12 @@ en:
     show:
       convert: Convert to 3MF
       details_heading: Details
+      download:
+        bambu: Open in Bambu Studio
+        cura: Open in Ultimaker Cura
+        menu_header: Open in slicers
+        orca: Open in OrcaSlicer
+        prusa: Open in PrusaSlicer
       notes_heading: Notes
     update:
       failure: An error occurred and file details could not be saved.
