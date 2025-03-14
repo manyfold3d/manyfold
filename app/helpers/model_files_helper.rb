@@ -6,8 +6,10 @@ module ModelFilesHelper
     when :orca
       slic3r_family_open_url "orcaslicer", signed_url
     when :prusa
+      # Prusa will only open files from printables.com
       slic3r_family_open_url "prusaslicer", signed_url
     when :bambu
+      # Bambu will only open from Makerworld and a few others
       slic3r_family_open_url "bambustudioopen", signed_url
     when :cura
       slic3r_family_open_url "cura", signed_url
