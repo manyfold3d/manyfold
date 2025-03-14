@@ -14,9 +14,10 @@ module PublicIDable
     public_id
   end
 
-  private
-
   ALPHABET = "bcdfghjklmnpqrstvwxz0123456789"
+  private_constant :ALPHABET
+
+  private
 
   def generate_public_id
     return if public_id

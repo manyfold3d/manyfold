@@ -4,9 +4,11 @@ require:
   - rubocop-rspec
   - rubocop-rspec_rails
   - rubocop-i18n
-  - rubocop-performance
   - rubocop-factory_bot
   - rubocop-pundit
+
+plugins:
+  - rubocop-performance
 
 inherit_gem:
   standard: config/base.yml
