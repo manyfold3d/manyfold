@@ -170,7 +170,12 @@ class ModelFile < ApplicationRecord
 
   def reattach!
     if attachment.id != path_within_library || attachment.storage_key != model.library.storage_key
+      old_path = attachment.id
+      old_storage = attachment.storage
+      # Reattach
       attachment_attacher.attach attachment, storage: model.library.storage_key
+      # Remove previous file
+      old_storage.delete old_path
       save!
     end
   end
@@ -181,6 +186,11 @@ class ModelFile < ApplicationRecord
 
   def loadable?
     loader.present?
+  end
+
+  def delete_from_disk_and_destroy
+    model.library.storage.delete path_within_library
+    destroy
   end
 
   private
