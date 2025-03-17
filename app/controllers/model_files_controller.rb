@@ -93,7 +93,7 @@ class ModelFilesController < ApplicationController
 
   def destroy
     authorize @file
-    @file.destroy
+    @file.delete_from_disk_and_destroy
     if request.referer && (URI.parse(request.referer).path == model_model_file_path(@model, @file))
       # If we're coming from the file page itself, we can't go back there
       redirect_to model_path(@model), notice: t(".success")

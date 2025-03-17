@@ -111,14 +111,14 @@ RSpec.describe ModelFile do
       expect(file.errors[:filename].first).to eq "cannot be a case-only change"
     end
 
-    it "removes original file from disk" do
-      expect { file.destroy }.to(
+    it "removes original file from disk when explicitly told to" do
+      expect { file.delete_from_disk_and_destroy }.to(
         change { File.exist?(File.join(library.path, file.path_within_library)) }.from(true).to(false)
       )
     end
 
-    it "does not remove original file from disk when deleted, not destroyed" do
-      expect { file.delete }.not_to(
+    it "does not remove original file from disk when destroyed" do
+      expect { file.destroy }.not_to(
         change { File.exist?(File.join(library.path, file.path_within_library)) }
       )
     end

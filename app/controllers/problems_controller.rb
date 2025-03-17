@@ -101,7 +101,7 @@ class ProblemsController < ApplicationController
     when "Model"
       problem.problematic.delete_from_disk_and_destroy
     when "ModelFile"
-      problem.problematic.destroy
+      problem.problematic.delete_from_disk_and_destroy
     else
       raise NotImplementedError
     end
