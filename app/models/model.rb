@@ -229,7 +229,7 @@ class Model < ApplicationRecord
 
   def move_files
     # Move all the files
-    model_files.each(&:reattach!)
+    model_files.including_special.each(&:reattach!)
     # Remove the old folder if it's still there
     previous_library.storage.delete_prefixed(previous_path)
   end
