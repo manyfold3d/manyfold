@@ -6,6 +6,7 @@ class LibraryUploader < Shrine
   plugin :activerecord
   plugin :refresh_metadata
   plugin :metadata_attributes, size: "size"
+  plugin :keep_files
   plugin :determine_mime_type
   plugin :rack_response
   plugin :dynamic_storage
