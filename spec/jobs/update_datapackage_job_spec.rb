@@ -10,7 +10,7 @@ RSpec.describe UpdateDatapackageJob do
 
   context "when creating first datapackage" do
     it "creates file if there isn't one already" do
-      expect { described_class.perform_now(model.id) }.to change { ModelFile.count }.from(0).to(1)
+      expect { described_class.perform_now(model.id) }.to change(ModelFile, :count).from(0).to(1)
     end
 
     it "doesn't include datapackage in resources" do
@@ -26,7 +26,7 @@ RSpec.describe UpdateDatapackageJob do
     end
 
     it "uses existing file if one already exists" do
-      expect { described_class.perform_now(model.id) }.not_to change { ModelFile.count }
+      expect { described_class.perform_now(model.id) }.not_to change(ModelFile, :count)
     end
 
     it "doesn't include datapackage in resources" do
