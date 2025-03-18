@@ -122,4 +122,32 @@ RSpec.describe Library do
     expect(library).to be_valid
     expect(Dir).to exist(library.path)
   end
+
+  context "when deleting libraries" do
+    around do |ex|
+      MockDirectory.create([
+        "model/file.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+    let(:model) { create(:model, path: "model", library: library) }
+    let!(:file) { create(:model_file, filename: "file.stl", model: model) } # rubocop:disable RSpec/LetSetup
+
+    it "removes associated Models" do
+      expect { library.destroy }.to change(Model, :count).from(1).to(0)
+    end
+
+    it "removes associated ModelFiles" do
+      expect { library.destroy }.to change(ModelFile, :count).from(1).to(0)
+    end
+
+    it "preserves files on disk" do # rubocop:disable RSpec/MultipleExpectations
+      expect(File.exist?(File.join(@library_path, "model/file.stl"))).to be true # rubocop:todo RSpec/InstanceVariable
+      expect { library.destroy }.not_to change { File.exist?(File.join(@library_path, "model/file.stl")) } # rubocop:todo RSpec/InstanceVariable
+    end
+  end
 end

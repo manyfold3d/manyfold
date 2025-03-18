@@ -18,6 +18,8 @@ class LibraryUploader < Shrine
 
   storage(/library_(\d+)/) do |m|
     Library.find(m[1]).storage # rubocop:disable Pundit/UsePolicyScope
+  rescue ActiveRecord::RecordNotFound
+    nil
   end
 
   class Attacher
