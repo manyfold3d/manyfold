@@ -21,7 +21,7 @@ class ModelsController < ApplicationController
   def show
     respond_to do |format|
       format.html do
-        files = @model.model_files
+        files = @model.model_files.without_special
         @images = files.select(&:is_image?)
         @images.unshift(@model.preview_file) if @images.delete(@model.preview_file)
         if helpers.file_list_settings["hide_presupported_versions"]

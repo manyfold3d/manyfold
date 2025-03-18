@@ -64,13 +64,13 @@ class ModelFilesController < ApplicationController
   end
 
   def bulk_edit
-    @files = policy_scope(ModelFile).where(model: @model)
+    @files = policy_scope(ModelFile).without_special.where(model: @model)
   end
 
   def bulk_update
     hash = bulk_update_params
     ids_to_update = params[:model_files].keep_if { |key, value| value == "1" }.keys
-    files = policy_scope(ModelFile).where(model: @model, public_id: ids_to_update)
+    files = policy_scope(ModelFile).without_special.where(model: @model, public_id: ids_to_update)
     files.each do |file|
       ActiveRecord::Base.transaction do
         current_user.set_list_state(file, :printed, params[:printed] === "1")
