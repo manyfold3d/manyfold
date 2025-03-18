@@ -1,14 +1,14 @@
 require:
   - standard
+  - rubocop-pundit
+
+plugins:
+  - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
   - rubocop-rspec_rails
   - rubocop-i18n
   - rubocop-factory_bot
-  - rubocop-pundit
-
-plugins:
-  - rubocop-performance
 
 inherit_gem:
   standard: config/base.yml
