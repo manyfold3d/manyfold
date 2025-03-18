@@ -33,8 +33,7 @@ class ModelFile < ApplicationRecord
 
   after_commit :clear_presupported_relation, on: :update, if: :presupported_previously_changed?
 
-  scope :excluding_special, -> { where.not(filename: SPECIAL_FILES) }
-  scope :including_special, -> { unscope(where: :filename) }
+  scope :without_special, -> { where.not(filename: SPECIAL_FILES) }
   scope :unsupported, -> { where(presupported: false) }
   scope :presupported, -> { where(presupported: true) }
 

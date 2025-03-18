@@ -247,7 +247,7 @@ class ModelsController < ApplicationController
   end
 
   def file_list(model, selection)
-    scope = model.model_files.including_special
+    scope = model.model_files
     case selection
     when nil
       scope
