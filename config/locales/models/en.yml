@@ -22,9 +22,12 @@ en:
       success: Model deleted!
     exceeds_max_size: 'Selected file exceeds maximum size: %{max_size} MiB.'
     file:
+      delete: Delete file
+      edit: Edit file
       open_button:
         label: View details for %{name}
         text: Open
+      presupported: Presupported Version
       set_as_preview: Set as preview
     form:
       notes:
