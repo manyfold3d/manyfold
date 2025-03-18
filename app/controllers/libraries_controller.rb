@@ -63,7 +63,11 @@ class LibrariesController < ApplicationController
   end
 
   def destroy
-    @library.destroy
+    begin
+      @library.destroy
+    rescue Shrine::Error # Not ideal, but file after_commit callbacks explode if the library has gone
+      nil
+    end
     redirect_to settings_libraries_path, notice: t(".success")
   end
 
