@@ -61,6 +61,8 @@ class Model < ApplicationRecord
 
     # Work out path to this model from the target
     relative_path = Pathname.new(path).relative_path_from(Pathname.new(target.path))
+    # Remove datapackage
+    model_files.find_by(filename: "datapackage.json")&.destroy
     # Move files
     model_files.each do |f|
       new_filename = File.join(relative_path, f.filename)
@@ -75,8 +77,6 @@ class Model < ApplicationRecord
       end
     end
     Scan::CheckModelIntegrityJob.set(wait: 5.seconds).perform_later(target.id)
-    # Remove datapackage
-    model_files.including_special.find_by(filename: "datapackage.json")&.destroy
     # Destroy this model
     reload
     destroy
@@ -87,7 +87,7 @@ class Model < ApplicationRecord
     # This will go away later when we do proper file relationships rather than linking the tables directly
     model_files.update_all(presupported_version_id: nil) # rubocop:disable Rails/SkipsModelValidations
     # Trigger deletion for each file separately, to make sure cleanup happens
-    model_files.including_special.each { |f| f.delete_from_disk_and_destroy }
+    model_files.each { |f| f.delete_from_disk_and_destroy }
     # Remove tags first - sometimes this causes problems if we don't do it beforehand
     update!(tags: [])
     # Delete directory corresponding to model
@@ -229,7 +229,7 @@ class Model < ApplicationRecord
 
   def move_files
     # Move all the files
-    model_files.including_special.each(&:reattach!)
+    model_files.each(&:reattach!)
     # Remove the old folder if it's still there
     previous_library.storage.delete_prefixed(previous_path)
   end

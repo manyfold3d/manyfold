@@ -21,7 +21,7 @@ RSpec.describe ModelScanJob do
 
     it "detects model files" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(2)
-      expect(model.model_files.map(&:filename)).to eq ["part_1.lys", "part_2.obj"]
+      expect(model.model_files.map(&:filename).sort).to eq ["part_1.lys", "part_2.obj"].sort
     end
 
     it "sets the preview file to the first renderable scanned file by default" do # rubocop:todo RSpec/MultipleExpectations

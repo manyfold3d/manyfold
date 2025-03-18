@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe UpdateDatapackageJob do
   let(:model) { create(:model) }
-  let(:datapackage_json) { JSON.parse(model.model_files.including_special.find_by(filename: "datapackage.json").attachment.read) }
+  let(:datapackage_json) { JSON.parse(model.model_files.find_by(filename: "datapackage.json").attachment.read) }
 
   it "raises exception if model ID is not found" do
     expect { described_class.perform_now(nil) }.to raise_error(ActiveRecord::RecordNotFound)
@@ -10,7 +10,7 @@ RSpec.describe UpdateDatapackageJob do
 
   context "when creating first datapackage" do
     it "creates file if there isn't one already" do
-      expect { described_class.perform_now(model.id) }.to change { ModelFile.including_special.count }.from(0).to(1)
+      expect { described_class.perform_now(model.id) }.to change(ModelFile, :count).from(0).to(1)
     end
 
     it "doesn't include datapackage in resources" do
@@ -26,7 +26,7 @@ RSpec.describe UpdateDatapackageJob do
     end
 
     it "uses existing file if one already exists" do
-      expect { described_class.perform_now(model.id) }.not_to change { ModelFile.including_special.count }
+      expect { described_class.perform_now(model.id) }.not_to change(ModelFile, :count)
     end
 
     it "doesn't include datapackage in resources" do

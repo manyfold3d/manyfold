@@ -248,7 +248,7 @@ module ApplicationHelper
   end
 
   def model_file_count
-    policy_scope(ModelFile).count
+    policy_scope(ModelFile).without_special.count
   end
 
   def oembed_params
