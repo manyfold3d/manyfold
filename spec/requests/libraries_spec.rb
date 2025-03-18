@@ -115,7 +115,13 @@ RSpec.describe "Libraries" do
     end
 
     describe "DELETE /libraries/:id" do
-      before { delete "/libraries/#{library.to_param}" }
+      before do
+        # Add a model and file to test cascading removal
+        model = create(:model, library: library)
+        create(:model_file, model: model)
+        # Remove library
+        delete "/libraries/#{library.to_param}"
+      end
 
       it "removes the library", :as_administrator do
         expect(response).to redirect_to("/settings/libraries")
