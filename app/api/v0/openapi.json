@@ -754,7 +754,7 @@
       "get": {
         "summary": "oEmbed response for Collections",
         "tags": [
-          "oEmbed"
+          "Collections"
         ],
         "parameters": [
           {
@@ -825,7 +825,7 @@
       "get": {
         "summary": "oEmbed response for Creators",
         "tags": [
-          "oEmbed"
+          "Creators"
         ],
         "parameters": [
           {
@@ -874,7 +874,7 @@
       "get": {
         "summary": "oEmbed response for Models",
         "tags": [
-          "oEmbed"
+          "Models"
         ],
         "parameters": [
           {
