@@ -135,6 +135,66 @@
         }
       }
     },
+    "/collections/{id}": {
+      "get": {
+        "summary": "Details of a single collection",
+        "tags": [
+          "Collections"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "example": "abc123",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "type": "string",
+                      "example": "https://schema.org/Collection"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/collections/abc123"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "Collection"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Interesting Things"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Lorem ipsum dolor sit amet...",
+                      "description": "A longer description for the collection. Can contain Markdown syntax."
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "name"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/creators": {
       "get": {
         "summary": "A list of creators",
@@ -264,6 +324,66 @@
         }
       }
     },
+    "/creators/{id}": {
+      "get": {
+        "summary": "Details of a single creator",
+        "tags": [
+          "Creators"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "example": "abc123",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "type": "string",
+                      "example": "https://schema.org/Organization"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/creators/abc123"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "Organization"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Bruce Wayne"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Lorem ipsum dolor sit amet...",
+                      "description": "A longer description for the creator. Can contain Markdown syntax."
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "name"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/models": {
       "get": {
         "summary": "A list of models",
@@ -385,6 +505,66 @@
                     "totalItems",
                     "member",
                     "view"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/models/{id}": {
+      "get": {
+        "summary": "Details of a single model",
+        "tags": [
+          "Models"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "example": "abc123",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "type": "string",
+                      "example": "https://schema.org/3DModel"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/models/abc123"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "3DModel"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "3D Benchy"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Lorem ipsum dolor sit amet...",
+                      "description": "A longer description for the model. Can contain Markdown syntax."
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "name"
                   ]
                 }
               }
