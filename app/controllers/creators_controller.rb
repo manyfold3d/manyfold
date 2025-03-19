@@ -28,7 +28,10 @@ class CreatorsController < ApplicationController
     @creators = @creators.includes(:links, :collections)
     # Apply tag filters in-place
     @filter_in_place = true
-    render layout: "card_list_page"
+    respond_to do |format|
+      format.html { render layout: "card_list_page" }
+      format.json_ld { render json: JsonLd::CreatorListSerializer.new(@creators).serialize }
+    end
   end
 
   def show

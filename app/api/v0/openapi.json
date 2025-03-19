@@ -6,11 +6,11 @@
     "description": "This document describes the REST API for this [Manyfold](https://manyfold.app) instance.\n\nWarning! This API...\n\n* ... is not complete! Functionality is limited for now, but future releases will add more capabilities.\n* ... is not yet at v1! It's subject to breaking changes at any time.\n* ... is only valid for this host! Other Manyfold instances running different software versions may expose a different set of API functionality.\n"
   },
   "paths": {
-    "/models": {
+    "/collections": {
       "get": {
-        "summary": "A list of models",
+        "summary": "A list of collections",
         "tags": [
-          "Models"
+          "Collections"
         ],
         "parameters": [
           {
@@ -18,6 +18,7 @@
             "in": "query",
             "example": 1,
             "description": "Specify which page of results to retrieve.",
+            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -31,6 +32,265 @@
             ],
             "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
             "example": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "type": "string",
+                      "example": "http://www.w3.org/ns/hydra/context.jsonld"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/collections"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "Collection"
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 42
+                    },
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "@id": {
+                            "type": "string",
+                            "example": "/collections/abc123",
+                            "description": "The URL of the collection"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Collection",
+                            "description": "The human name of the collection"
+                          }
+                        },
+                        "required": [
+                          "@id",
+                          "name"
+                        ]
+                      }
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=2"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "PartialCollectionView"
+                        },
+                        "first": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=1"
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=1"
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=3"
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=10"
+                        }
+                      },
+                      "required": [
+                        "@id",
+                        "@type",
+                        "first",
+                        "last"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "totalItems",
+                    "member",
+                    "view"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/creators": {
+      "get": {
+        "summary": "A list of creators",
+        "tags": [
+          "Creators"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "example": 1,
+            "description": "Specify which page of results to retrieve.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "enum": [
+              "name",
+              "recent"
+            ],
+            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
+            "example": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "type": "string",
+                      "example": "http://www.w3.org/ns/hydra/context.jsonld"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/creators"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "Collection"
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 42
+                    },
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "@id": {
+                            "type": "string",
+                            "example": "/creators/abc123",
+                            "description": "The URL of the creator"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Fred",
+                            "description": "The human name of the creator"
+                          }
+                        },
+                        "required": [
+                          "@id",
+                          "name"
+                        ]
+                      }
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=2"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "PartialCollectionView"
+                        },
+                        "first": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=1"
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=1"
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=3"
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=10"
+                        }
+                      },
+                      "required": [
+                        "@id",
+                        "@type",
+                        "first",
+                        "last"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "totalItems",
+                    "member",
+                    "view"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/models": {
+      "get": {
+        "summary": "A list of models",
+        "tags": [
+          "Models"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "example": 1,
+            "description": "Specify which page of results to retrieve.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "enum": [
+              "name",
+              "recent"
+            ],
+            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
+            "example": "name",
+            "required": false,
             "schema": {
               "type": "string"
             }
@@ -81,6 +341,41 @@
                           "name"
                         ]
                       }
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=2"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "PartialCollectionView"
+                        },
+                        "first": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=1"
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=1"
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=3"
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=10"
+                        }
+                      },
+                      "required": [
+                        "@id",
+                        "@type",
+                        "first",
+                        "last"
+                      ]
                     }
                   },
                   "required": [
@@ -88,7 +383,8 @@
                     "@id",
                     "@type",
                     "totalItems",
-                    "member"
+                    "member",
+                    "view"
                   ]
                 }
               }
