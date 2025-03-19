@@ -4,7 +4,7 @@ require "swagger_helper"
 describe "Creators", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   before do
     create(:admin)
-    create_list(:creator, 10)
+    create_list(:creator, 10, :public)
   end
 
   path "/creators" do
@@ -47,6 +47,29 @@ describe "Creators", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
           },
           required: ["@context", "@id", "@type", "totalItems", "member", "view"]
 
+        run_test!
+      end
+    end
+  end
+
+  path "/creators/{id}" do
+    get "Details of a single creator" do
+      tags "Creators"
+      produces "application/ld+json"
+      parameter name: :id, in: :path, type: :string, required: true, example: "abc123"
+
+      response "200", "Success" do
+        schema type: :object,
+          properties: {
+            "@context": {type: :string, example: "https://schema.org/Organization"},
+            "@id": {type: :string, example: "https://example.com/creators/abc123"},
+            "@type": {type: :string, example: "Organization"},
+            name: {type: :string, example: "Bruce Wayne"},
+            description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the creator. Can contain Markdown syntax."}
+          },
+          required: ["@context", "@id", "@type", "name"]
+
+        let(:id) { Creator.first.to_param }
         run_test!
       end
     end

@@ -43,6 +43,7 @@ class CreatorsController < ApplicationController
         render layout: "card_list_page"
       end
       format.oembed { render json: OEmbed::CreatorSerializer.new(@creator, helpers.oembed_params).serialize }
+      format.json_ld { render json: JsonLd::CreatorSerializer.new(@creator).serialize }
     end
   end
 
