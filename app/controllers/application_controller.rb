@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index, unless: :active_admin_controller?
   after_action :set_content_security_policy_header, if: -> { request.format.html? }
 
-  before_action :authenticate_user!, if: -> { !SiteSettings.multiuser_enabled? }
+  before_action :authenticate_user!, unless: -> { SiteSettings.multiuser_enabled? || has_signed_id? }
   around_action :switch_locale
   before_action :check_for_first_use
   before_action :show_security_alerts
@@ -44,6 +44,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def has_signed_id?
+    params[:id] && ApplicationRecord.signed_id_verifier.valid_message?(params[:id])
+  end
 
   def img_src
     url = ENV.fetch "SITE_ICON", nil

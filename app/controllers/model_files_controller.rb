@@ -140,7 +140,7 @@ class ModelFilesController < ApplicationController
 
   def get_file
     # Check for signed download URLs
-    if params[:id].length > 20
+    if has_signed_id?
       @file = @model.model_files.find_signed!(params[:id], purpose: "download")
       skip_authorization
     else
