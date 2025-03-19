@@ -8,7 +8,34 @@
   "paths": {
     "/models": {
       "get": {
-        "summary": "Model list",
+        "summary": "A list of models",
+        "tags": [
+          "Models"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "example": 1,
+            "description": "Specify which page of results to retrieve.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "enum": [
+              "name",
+              "recent"
+            ],
+            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
+            "example": "name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
