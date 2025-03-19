@@ -45,6 +45,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def has_signed_id?
+    params[:id] && ApplicationRecord.signed_id_verifier.valid_message?(params[:id])
+  end
+
   def img_src
     url = ENV.fetch "SITE_ICON", nil
     url ? URI.parse(url).host : nil
