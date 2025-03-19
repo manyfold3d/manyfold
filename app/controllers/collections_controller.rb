@@ -46,6 +46,7 @@ class CollectionsController < ApplicationController
         render layout: "card_list_page"
       end
       format.oembed { render json: OEmbed::CollectionSerializer.new(@collection, helpers.oembed_params).serialize }
+      format.json_ld { render json: JsonLd::CollectionSerializer.new(@collection).serialize }
     end
   end
 
