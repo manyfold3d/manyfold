@@ -6,6 +6,70 @@
     "description": "This document describes the REST API for this [Manyfold](https://manyfold.app) instance.\n\nWarning! This API...\n\n* ... is not complete! Functionality is limited for now, but future releases will add more capabilities.\n* ... is not yet at v1! It's subject to breaking changes at any time.\n* ... is only valid for this host! Other Manyfold instances running different software versions may expose a different set of API functionality.\n"
   },
   "paths": {
+    "/models": {
+      "get": {
+        "summary": "Model list",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "type": "string",
+                      "example": "http://www.w3.org/ns/hydra/context.jsonld"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/models"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "Collection"
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 42
+                    },
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "@id": {
+                            "type": "string",
+                            "example": "/models/abc123",
+                            "description": "The URL of the model"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Model",
+                            "description": "The human name of the model"
+                          }
+                        },
+                        "required": [
+                          "@id",
+                          "name"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "totalItems",
+                    "member"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/.well-known/nodeinfo": {
       "get": {
         "summary": "Discovery URL for NodeInfo protocol",
@@ -248,8 +312,8 @@
               }
             }
           },
-          "401": {
-            "description": "Unauthorized"
+          "404": {
+            "description": "Not Found or Unauthorized"
           }
         }
       }
@@ -297,8 +361,8 @@
               }
             }
           },
-          "401": {
-            "description": "Unauthorized"
+          "404": {
+            "description": "Not Found or Unauthorized"
           }
         }
       }
@@ -368,8 +432,8 @@
               }
             }
           },
-          "401": {
-            "description": "Unauthorized"
+          "404": {
+            "description": "Not Found, or Unauthorized"
           }
         }
       }
