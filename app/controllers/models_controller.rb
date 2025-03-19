@@ -54,6 +54,7 @@ class ModelsController < ApplicationController
         # We will rely on Shrine to clean up the temp file
       end
       format.oembed { render json: OEmbed::ModelSerializer.new(@model, helpers.oembed_params).serialize }
+      format.json_ld { render json: JsonLd::ModelSerializer.new(@model).serialize }
     end
   end
 
