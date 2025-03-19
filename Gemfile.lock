@@ -766,6 +766,8 @@ GEM
       attr_required (>= 0.0.5)
       faraday (~> 2.0)
       faraday-follow_redirects
+    sys-cpu (1.1.0)
+      ffi (~> 1.1)
     sys-filesystem (1.5.3)
       ffi (~> 1.1)
     terminal-table (4.0.0)
@@ -919,6 +921,7 @@ DEPENDENCIES
   standard (~> 1.47.0)
   stopwords-filter2
   string-similarity (~> 2.1)
+  sys-cpu (~> 1.1)
   sys-filesystem (~> 1.5)
   to_regexp (~> 0.2.1)
   translation (~> 1.41)
