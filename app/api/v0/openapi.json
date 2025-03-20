@@ -384,6 +384,93 @@
         }
       }
     },
+    "/models/{model_id}/model_files/{id}": {
+      "get": {
+        "summary": "Details of a single file in a model",
+        "tags": [
+          "Files"
+        ],
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "example": "abc123",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "example": "def456",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "type": "string",
+                      "example": "https://schema.org/3DModel"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/models/abc123/model_files/def456"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "3DModel"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Benchy"
+                    },
+                    "isPartOf": {
+                      "type": "string",
+                      "example": "https://example.com/models/abc123"
+                    },
+                    "encodingFormat": {
+                      "type": "string",
+                      "example": "model/stl"
+                    },
+                    "contentUrl": {
+                      "type": "string",
+                      "example": "https://example.com/models/abc123/model_files/def456.stl"
+                    },
+                    "contentSize": {
+                      "type": "integer",
+                      "example": 12345
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Lorem ipsum dolor sit amet...",
+                      "description": "A longer description for the file. Can contain Markdown syntax."
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "name",
+                    "isPartOf",
+                    "encodingFormat"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/models": {
       "get": {
         "summary": "A list of models",
@@ -558,13 +645,44 @@
                       "type": "string",
                       "example": "Lorem ipsum dolor sit amet...",
                       "description": "A longer description for the model. Can contain Markdown syntax."
+                    },
+                    "hasPart": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "@id": {
+                            "type": "string",
+                            "example": "https://example.com/models/abc123/model_files/def456"
+                          },
+                          "@type": {
+                            "type": "string",
+                            "example": "3DModel"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Benchy"
+                          },
+                          "encodingFormat": {
+                            "type": "string",
+                            "example": "model/stl"
+                          }
+                        }
+                      },
+                      "required": [
+                        "@id",
+                        "@type",
+                        "name",
+                        "encodingFormat"
+                      ]
                     }
                   },
                   "required": [
                     "@context",
                     "@id",
                     "@type",
-                    "name"
+                    "name",
+                    "hasPart"
                   ]
                 }
               }
