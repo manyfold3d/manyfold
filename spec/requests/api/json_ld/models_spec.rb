@@ -64,9 +64,22 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
             "@id": {type: :string, example: "https://example.com/models/abc123"},
             "@type": {type: :string, example: "3DModel"},
             name: {type: :string, example: "3D Benchy"},
-            description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the model. Can contain Markdown syntax."}
+            description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the model. Can contain Markdown syntax."},
+            hasPart: {
+              type: :array,
+              items: {
+                type: :object,
+                properties: {
+                  "@id": {type: :string, example: "https://example.com/models/abc123/model_files/def456"},
+                  "@type": {type: :string, example: "3DModel"},
+                  name: {type: :string, example: "Benchy"},
+                  encodingFormat: {type: :string, example: "model/stl"}
+                }
+              },
+              required: ["@id", "@type", "name", "encodingFormat"]
+            }
           },
-          required: ["@context", "@id", "@type", "name"]
+          required: ["@context", "@id", "@type", "name", "hasPart"]
 
         let(:id) { Model.first.to_param }
         run_test!
