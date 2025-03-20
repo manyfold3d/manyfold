@@ -10,6 +10,11 @@ RSpec.describe ModelFilesHelper do
       expect(url).to match(/orcaslicer#{slic3r_family_regex}/)
     end
 
+    it "orcaslicer link should include name in query param" do
+      url = helper.slicer_url(:orca, file)
+      expect(url).to include("&name=model.stl")
+    end
+
     it "generates bambustudio links" do
       url = helper.slicer_url(:bambu, file)
       expect(url).to match(/bambustudioopen#{slic3r_family_regex}/)
