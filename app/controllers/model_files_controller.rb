@@ -21,7 +21,7 @@ class ModelFilesController < ApplicationController
       @duplicates = @file.duplicates
       respond_to do |format|
         format.html
-        format.js
+        format.json_ld { render json: JsonLd::ModelFileSerializer.new(@file).serialize }
         format.any(*SupportedMimeTypes.indexable_types.map(&:to_sym)) do
           send_file_content disposition: (params[:download] == "true") ? :attachment : :inline
         end
