@@ -38,7 +38,7 @@ RSpec.describe "Users::Passwords" do
     end
   end
 
-  context "when in single user mode" do
+  context "when in single user mode", :singleuser do
     context "when signed out" do
       describe "GET /users/password/new" do
         it "raises an error" do
