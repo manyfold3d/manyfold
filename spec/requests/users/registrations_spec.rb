@@ -35,7 +35,7 @@ RSpec.describe "Users::Registrations" do
     }
   }
 
-  context "when in single user mode" do
+  context "when in single user mode", :singleuser do
     context "when signed out" do
       describe "GET /users/sign_up" do
         it "raises an error" do

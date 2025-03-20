@@ -54,7 +54,7 @@ RSpec.describe "Users::Sessions" do
     end
   end
 
-  context "when in single user mode" do
+  context "when in single user mode", :singleuser do
     context "when signed out" do
       describe "/" do
         it "forces login" do
