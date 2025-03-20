@@ -27,7 +27,7 @@ module ModelFilesHelper
     signed_url = model_url(file.model) + "/model_files/#{signed_id}.#{file.extension}"
     case slicer
     when :orca
-      slic3r_family_open_url "orcaslicer", signed_url
+      slic3r_family_open_url "orcaslicer", signed_url, name: file.filename
     when :prusa, :superslicer
       # Prusa will only open files from printables.com
       slic3r_family_open_url "prusaslicer", signed_url
@@ -66,11 +66,11 @@ module ModelFilesHelper
 
   private
 
-  def slic3r_family_open_url(scheme, signed_url)
+  def slic3r_family_open_url(scheme, signed_url, options = {})
     URI::Generic.new(
       scheme, nil,
       "open", nil, nil, nil, nil,
-      {file: signed_url}.to_query, nil
+      options.merge(file: signed_url).to_query, nil
     ).to_s
   end
 end
