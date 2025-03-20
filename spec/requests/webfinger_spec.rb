@@ -18,7 +18,7 @@ require "rails_helper"
       end
     end
 
-    [
+    [ # rubocop:disable Performance/CollectionLiteralInLoop
       :user,
       :collection,
       :creator,
