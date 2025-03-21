@@ -6,7 +6,15 @@ module ModelFilesHelper
     # i18n-tasks-use t('model_files.download.bambu')
     safe_join(
       [:cura, :orca].map do |slicer|
-        content_tag(:li) { link_to t("model_files.download.%{slicer}" % {slicer: slicer}), slicer_url(slicer, file), class: "dropdown-item", download: "download" }
+        content_tag(:li) {
+          link_to safe_join(
+            [
+              slicer_icon_tag(slicer, alt: t("model_files.download.%{slicer}" % {slicer: slicer})),
+              t("model_files.download.%{slicer}" % {slicer: slicer})
+            ].compact,
+            " "
+          ), slicer_url(slicer, file), class: "dropdown-item", download: "download"
+        }
       end
     )
   end
@@ -26,6 +34,17 @@ module ModelFilesHelper
     when :cura
       slic3r_family_open_url "cura", signed_url
     end
+  end
+
+  def slicer_icon_tag(slicer, alt:)
+    url = case slicer
+    when :orca
+      "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/orcaslicer.webp"
+    when :cura
+      "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/cura.webp"
+    end
+    return if url.nil?
+    image_tag(url, class: "slicer-icon", alt: alt)
   end
 
   private

@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   def img_src
     url = ENV.fetch "SITE_ICON", nil
     url ? URI.parse(url).host : nil
-    [:self, :data, url].compact
+    [:self, :data, url, "https://cdn.jsdelivr.net"].compact
   end
 
   def configure_content_security_policy
