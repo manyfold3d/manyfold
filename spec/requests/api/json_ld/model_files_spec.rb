@@ -4,7 +4,8 @@ require "swagger_helper"
 describe "ModelFiles", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   before do
     create(:admin)
-    create(:model_file, model: create(:model, :public))
+    model = create(:model, :public, creator: create(:creator, :public), collection: create(:collection, :public))
+    create(:model_file, model: model)
   end
 
   path "/models/{model_id}/model_files/{id}" do
