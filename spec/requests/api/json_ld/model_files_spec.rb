@@ -18,7 +18,7 @@ describe "ModelFiles", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
       response "200", "Success" do
         schema type: :object,
           properties: {
-            "@context": {type: :array, items: {type: :string, example: "https://schema.org/3DModel"}},
+            "@context": {"$ref" => "#/components/schemas/jsonld_context"},
             "@id": {type: :string, example: "https://example.com/models/abc123/model_files/def456"},
             "@type": {type: :string, example: "3DModel"},
             name: {type: :string, example: "Benchy"},

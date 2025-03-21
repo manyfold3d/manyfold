@@ -17,7 +17,7 @@ describe "Collections", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
       response "200", "Success" do
         schema type: :object,
           properties: {
-            "@context": {type: :string, example: "http://www.w3.org/ns/hydra/context.jsonld"},
+            "@context": {"$ref" => "#/components/schemas/jsonld_context"},
             "@id": {type: :string, example: "https://example.com/collections"},
             "@type": {type: :string, example: "hydra:Collection"},
             totalItems: {type: :integer, example: 42},
@@ -61,7 +61,7 @@ describe "Collections", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
       response "200", "Success" do
         schema type: :object,
           properties: {
-            "@context": {type: :string, example: "https://schema.org/Collection"},
+            "@context": {"$ref" => "#/components/schemas/jsonld_context"},
             "@id": {type: :string, example: "https://example.com/collections/abc123"},
             "@type": {type: :string, example: "Collection"},
             name: {type: :string, example: "Interesting Things"},

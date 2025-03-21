@@ -38,6 +38,15 @@ RSpec.configure do |config|
       ],
       components: {
         schemas: {
+          jsonld_context: {
+            type: :array,
+            items: {
+              oneOf: [
+                {type: :string},
+                {type: :object}
+              ]
+            }
+          },
           oembed_link: {
             type: :object,
             properties: {
