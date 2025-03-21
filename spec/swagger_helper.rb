@@ -115,7 +115,7 @@ RSpec.configure do |config|
           spdxLicense: {
             type: :object,
             properties: {
-              "@type": {type: :string, example: "http://spdx.org/rdf/terms#License"},
+              "@type": {type: :string, example: "spdx:License"},
               "@id": {type: :string, example: "http://spdx.org/licenses/MIT"},
               licenseId: {type: :string, example: "MIT"}
             },
