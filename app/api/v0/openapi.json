@@ -178,6 +178,19 @@
                       "type": "string",
                       "example": "Lorem ipsum dolor sit amet...",
                       "description": "A longer description for the collection. Can contain Markdown syntax."
+                    },
+                    "creator": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/creators/abc123"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "Organization"
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -461,6 +474,19 @@
                     },
                     "spdx:license": {
                       "$ref": "#/components/schemas/spdxLicense"
+                    },
+                    "creator": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/creators/abc123"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "Organization"
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -508,6 +534,26 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "creator",
+            "in": "query",
+            "description": "The ID of a creator to filter the model list",
+            "example": "abc123",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "collection",
+            "in": "query",
+            "description": "The ID of a collection to filter the model list",
+            "example": "abc123",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -542,6 +588,10 @@
                             "type": "string",
                             "example": "/models/abc123",
                             "description": "The URL of the model"
+                          },
+                          "@type": {
+                            "type": "string",
+                            "example": "3DModel"
                           },
                           "name": {
                             "type": "string",
@@ -695,6 +745,26 @@
                           "type": "string",
                           "example": "Collection"
                         }
+                      }
+                    },
+                    "creator": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/creators/abc123"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "Organization"
+                        }
+                      }
+                    },
+                    "keywords": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "tag"
                       }
                     }
                   },
@@ -1090,10 +1160,16 @@
     "schemas": {
       "jsonld_context": {
         "type": "array",
-        "items": [
-          "string",
-          "object"
-        ]
+        "items": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
       },
       "oembed_link": {
         "type": "object",
@@ -1309,7 +1385,7 @@
         "properties": {
           "@type": {
             "type": "string",
-            "example": "http://spdx.org/rdf/terms#License"
+            "example": "spdx:License"
           },
           "@id": {
             "type": "string",
