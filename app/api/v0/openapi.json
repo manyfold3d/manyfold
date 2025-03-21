@@ -419,8 +419,11 @@
                   "type": "object",
                   "properties": {
                     "@context": {
-                      "type": "string",
-                      "example": "https://schema.org/3DModel"
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "https://schema.org/3DModel"
+                      }
                     },
                     "@id": {
                       "type": "string",
@@ -454,6 +457,22 @@
                       "type": "string",
                       "example": "Lorem ipsum dolor sit amet...",
                       "description": "A longer description for the file. Can contain Markdown syntax."
+                    },
+                    "license": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "http://spdx.org/licenses/MIT"
+                        },
+                        "licenseId": {
+                          "type": "string",
+                          "example": "MIT"
+                        }
+                      },
+                      "required": [
+                        "licenseId"
+                      ]
                     }
                   },
                   "required": [
@@ -626,8 +645,11 @@
                   "type": "object",
                   "properties": {
                     "@context": {
-                      "type": "string",
-                      "example": "https://schema.org/3DModel"
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "https://schema.org/3DModel"
+                      }
                     },
                     "@id": {
                       "type": "string",
@@ -675,7 +697,23 @@
                         "name",
                         "encodingFormat"
                       ]
-                    }
+                    },
+                    "license": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "http://spdx.org/licenses/MIT"
+                        },
+                        "licenseId": {
+                          "type": "string",
+                          "example": "MIT"
+                        }
+                      }
+                    },
+                    "required": [
+                      "licenseId"
+                    ]
                   },
                   "required": [
                     "@context",
