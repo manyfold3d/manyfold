@@ -17,7 +17,7 @@ describe "ModelFiles", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
       response "200", "Success" do
         schema type: :object,
           properties: {
-            "@context": {type: :string, example: "https://schema.org/3DModel"},
+            "@context": {type: :array, items: {type: :string, example: "https://schema.org/3DModel"}},
             "@id": {type: :string, example: "https://example.com/models/abc123/model_files/def456"},
             "@type": {type: :string, example: "3DModel"},
             name: {type: :string, example: "Benchy"},
@@ -25,7 +25,15 @@ describe "ModelFiles", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
             encodingFormat: {type: :string, example: "model/stl"},
             contentUrl: {type: :string, example: "https://example.com/models/abc123/model_files/def456.stl"},
             contentSize: {type: :integer, example: 12345},
-            description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the file. Can contain Markdown syntax."}
+            description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the file. Can contain Markdown syntax."},
+            license: {
+              type: :object,
+              properties: {
+                "@id": {type: :string, example: "http://spdx.org/licenses/MIT"},
+                licenseId: {type: :string, example: "MIT"}
+              },
+              required: ["licenseId"]
+            }
           },
           required: ["@context", "@id", "@type", "name", "isPartOf", "encodingFormat"]
 

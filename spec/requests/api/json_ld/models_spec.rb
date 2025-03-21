@@ -60,7 +60,7 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
       response "200", "Success" do
         schema type: :object,
           properties: {
-            "@context": {type: :string, example: "https://schema.org/3DModel"},
+            "@context": {type: :array, items: {type: :string, example: "https://schema.org/3DModel"}},
             "@id": {type: :string, example: "https://example.com/models/abc123"},
             "@type": {type: :string, example: "3DModel"},
             name: {type: :string, example: "3D Benchy"},
@@ -77,7 +77,15 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
                 }
               },
               required: ["@id", "@type", "name", "encodingFormat"]
-            }
+            },
+            license: {
+              type: :object,
+              properties: {
+                "@id": {type: :string, example: "http://spdx.org/licenses/MIT"},
+                licenseId: {type: :string, example: "MIT"}
+              }
+            },
+            required: ["licenseId"]
           },
           required: ["@context", "@id", "@type", "name", "hasPart"]
 
