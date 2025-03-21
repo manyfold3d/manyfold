@@ -47,8 +47,7 @@
                   "type": "object",
                   "properties": {
                     "@context": {
-                      "type": "string",
-                      "example": "http://www.w3.org/ns/hydra/context.jsonld"
+                      "$ref": "#/components/schemas/jsonld_context"
                     },
                     "@id": {
                       "type": "string",
@@ -56,7 +55,7 @@
                     },
                     "@type": {
                       "type": "string",
-                      "example": "Collection"
+                      "example": "hydra:Collection"
                     },
                     "totalItems": {
                       "type": "integer",
@@ -74,7 +73,7 @@
                           },
                           "name": {
                             "type": "string",
-                            "example": "Collection",
+                            "example": "Printer Parts",
                             "description": "The human name of the collection"
                           }
                         },
@@ -93,7 +92,7 @@
                         },
                         "@type": {
                           "type": "string",
-                          "example": "PartialCollectionView"
+                          "example": "hydra:PartialCollectionView"
                         },
                         "first": {
                           "type": "string",
@@ -161,8 +160,7 @@
                   "type": "object",
                   "properties": {
                     "@context": {
-                      "type": "string",
-                      "example": "https://schema.org/Collection"
+                      "$ref": "#/components/schemas/jsonld_context"
                     },
                     "@id": {
                       "type": "string",
@@ -180,6 +178,19 @@
                       "type": "string",
                       "example": "Lorem ipsum dolor sit amet...",
                       "description": "A longer description for the collection. Can contain Markdown syntax."
+                    },
+                    "creator": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/creators/abc123"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "Organization"
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -236,8 +247,7 @@
                   "type": "object",
                   "properties": {
                     "@context": {
-                      "type": "string",
-                      "example": "http://www.w3.org/ns/hydra/context.jsonld"
+                      "$ref": "#/components/schemas/jsonld_context"
                     },
                     "@id": {
                       "type": "string",
@@ -245,7 +255,7 @@
                     },
                     "@type": {
                       "type": "string",
-                      "example": "Collection"
+                      "example": "hydra:Collection"
                     },
                     "totalItems": {
                       "type": "integer",
@@ -282,7 +292,7 @@
                         },
                         "@type": {
                           "type": "string",
-                          "example": "PartialCollectionView"
+                          "example": "hydra:PartialCollectionView"
                         },
                         "first": {
                           "type": "string",
@@ -350,8 +360,7 @@
                   "type": "object",
                   "properties": {
                     "@context": {
-                      "type": "string",
-                      "example": "https://schema.org/Organization"
+                      "$ref": "#/components/schemas/jsonld_context"
                     },
                     "@id": {
                       "type": "string",
@@ -419,11 +428,7 @@
                   "type": "object",
                   "properties": {
                     "@context": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "example": "https://schema.org/3DModel"
-                      }
+                      "$ref": "#/components/schemas/jsonld_context"
                     },
                     "@id": {
                       "type": "string",
@@ -438,8 +443,17 @@
                       "example": "Benchy"
                     },
                     "isPartOf": {
-                      "type": "string",
-                      "example": "https://example.com/models/abc123"
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/models/abc123"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "3DModel"
+                        }
+                      }
                     },
                     "encodingFormat": {
                       "type": "string",
@@ -458,21 +472,21 @@
                       "example": "Lorem ipsum dolor sit amet...",
                       "description": "A longer description for the file. Can contain Markdown syntax."
                     },
-                    "license": {
+                    "spdx:license": {
+                      "$ref": "#/components/schemas/spdxLicense"
+                    },
+                    "creator": {
                       "type": "object",
                       "properties": {
                         "@id": {
                           "type": "string",
-                          "example": "http://spdx.org/licenses/MIT"
+                          "example": "https://example.com/creators/abc123"
                         },
-                        "licenseId": {
+                        "@type": {
                           "type": "string",
-                          "example": "MIT"
+                          "example": "Organization"
                         }
-                      },
-                      "required": [
-                        "licenseId"
-                      ]
+                      }
                     }
                   },
                   "required": [
@@ -520,6 +534,26 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "creator",
+            "in": "query",
+            "description": "The ID of a creator to filter the model list",
+            "example": "abc123",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "collection",
+            "in": "query",
+            "description": "The ID of a collection to filter the model list",
+            "example": "abc123",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -531,8 +565,7 @@
                   "type": "object",
                   "properties": {
                     "@context": {
-                      "type": "string",
-                      "example": "http://www.w3.org/ns/hydra/context.jsonld"
+                      "$ref": "#/components/schemas/jsonld_context"
                     },
                     "@id": {
                       "type": "string",
@@ -540,7 +573,7 @@
                     },
                     "@type": {
                       "type": "string",
-                      "example": "Collection"
+                      "example": "hydra:Collection"
                     },
                     "totalItems": {
                       "type": "integer",
@@ -555,6 +588,10 @@
                             "type": "string",
                             "example": "/models/abc123",
                             "description": "The URL of the model"
+                          },
+                          "@type": {
+                            "type": "string",
+                            "example": "3DModel"
                           },
                           "name": {
                             "type": "string",
@@ -577,7 +614,7 @@
                         },
                         "@type": {
                           "type": "string",
-                          "example": "PartialCollectionView"
+                          "example": "hydra:PartialCollectionView"
                         },
                         "first": {
                           "type": "string",
@@ -645,11 +682,7 @@
                   "type": "object",
                   "properties": {
                     "@context": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "example": "https://schema.org/3DModel"
-                      }
+                      "$ref": "#/components/schemas/jsonld_context"
                     },
                     "@id": {
                       "type": "string",
@@ -698,22 +731,42 @@
                         "encodingFormat"
                       ]
                     },
-                    "license": {
+                    "spdx:license": {
+                      "$ref": "#/components/schemas/spdxLicense"
+                    },
+                    "isPartOf": {
                       "type": "object",
                       "properties": {
                         "@id": {
                           "type": "string",
-                          "example": "http://spdx.org/licenses/MIT"
+                          "example": "https://example.com/collections/abc123"
                         },
-                        "licenseId": {
+                        "@type": {
                           "type": "string",
-                          "example": "MIT"
+                          "example": "Collection"
                         }
                       }
                     },
-                    "required": [
-                      "licenseId"
-                    ]
+                    "creator": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/creators/abc123"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "Organization"
+                        }
+                      }
+                    },
+                    "keywords": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "tag"
+                      }
+                    }
                   },
                   "required": [
                     "@context",
@@ -1105,6 +1158,19 @@
   ],
   "components": {
     "schemas": {
+      "jsonld_context": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
       "oembed_link": {
         "type": "object",
         "properties": {
@@ -1312,6 +1378,27 @@
           "html",
           "width",
           "height"
+        ]
+      },
+      "spdxLicense": {
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "spdx:License"
+          },
+          "@id": {
+            "type": "string",
+            "example": "http://spdx.org/licenses/MIT"
+          },
+          "licenseId": {
+            "type": "string",
+            "example": "MIT"
+          }
+        },
+        "required": [
+          "@type",
+          "licenseId"
         ]
       }
     }

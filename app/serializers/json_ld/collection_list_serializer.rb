@@ -2,9 +2,9 @@ module JsonLd
   class CollectionListSerializer < ApplicationSerializer
     def serialize
       {
-        "@context": "http://www.w3.org/ns/hydra/context.jsonld",
+        "@context": context,
         "@id": Rails.application.routes.url_helpers.collections_path,
-        "@type": "Collection",
+        "@type": "hydra:Collection",
         totalItems: @object.total_count,
         member: @object.map { |collection|
           {
@@ -14,7 +14,7 @@ module JsonLd
         },
         view: {
           "@id": Rails.application.routes.url_helpers.collections_path(page: @object.current_page),
-          "@type": "PartialCollectionView",
+          "@type": "hydra:PartialCollectionView",
           first: Rails.application.routes.url_helpers.collections_path(page: 1),
           previous: (Rails.application.routes.url_helpers.collections_path(page: @object.prev_page) if @object.prev_page),
           next: (Rails.application.routes.url_helpers.collections_path(page: @object.next_page) if @object.next_page),

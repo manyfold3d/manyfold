@@ -4,7 +4,7 @@ require "swagger_helper"
 describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   before do
     create(:admin)
-    create_list(:model, 10, :public)
+    create_list(:model, 10, :public, creator: create(:creator, :public), collection: create(:collection, :public))
   end
 
   path "/models" do
@@ -13,13 +13,15 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
       produces "application/ld+json"
       parameter name: :page, in: :query, type: :integer, example: 1, description: "Specify which page of results to retrieve.", required: false
       parameter name: :order, in: :query, type: :string, enum: ["name", "recent"], description: "Specify order of results; either by name or creation time", example: "name", required: false
+      parameter name: :creator, in: :query, type: :string, description: "The ID of a creator to filter the model list", example: "abc123", required: false
+      parameter name: :collection, in: :query, type: :string, description: "The ID of a collection to filter the model list", example: "abc123", required: false
 
       response "200", "Success" do
         schema type: :object,
           properties: {
-            "@context": {type: :string, example: "http://www.w3.org/ns/hydra/context.jsonld"},
+            "@context": {"$ref" => "#/components/schemas/jsonld_context"},
             "@id": {type: :string, example: "https://example.com/models"},
-            "@type": {type: :string, example: "Collection"},
+            "@type": {type: :string, example: "hydra:Collection"},
             totalItems: {type: :integer, example: 42},
             member: {
               type: :array,
@@ -27,6 +29,7 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
                 type: :object,
                 properties: {
                   "@id": {type: :string, example: "/models/abc123", description: "The URL of the model"},
+                  "@type": {type: :string, example: "3DModel"},
                   name: {type: :string, example: "Model", description: "The human name of the model"}
                 },
                 required: ["@id", "name"]
@@ -36,7 +39,7 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
               type: :object,
               properties: {
                 "@id": {type: :string, example: "https://example.com/models?page=2"},
-                "@type": {type: :string, example: "PartialCollectionView"},
+                "@type": {type: :string, example: "hydra:PartialCollectionView"},
                 first: {type: :string, example: "https://example.com/models?page=1"},
                 prev: {type: :string, example: "https://example.com/models?page=1"},
                 next: {type: :string, example: "https://example.com/models?page=3"},
@@ -60,7 +63,7 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
       response "200", "Success" do
         schema type: :object,
           properties: {
-            "@context": {type: :array, items: {type: :string, example: "https://schema.org/3DModel"}},
+            "@context": {"$ref" => "#/components/schemas/jsonld_context"},
             "@id": {type: :string, example: "https://example.com/models/abc123"},
             "@type": {type: :string, example: "3DModel"},
             name: {type: :string, example: "3D Benchy"},
@@ -78,14 +81,25 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
               },
               required: ["@id", "@type", "name", "encodingFormat"]
             },
-            license: {
+            "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"},
+            isPartOf: {type: :object, properties: {
+              "@id": {type: :string, example: "https://example.com/collections/abc123"},
+              "@type": {type: :string, example: "Collection"}
+            }},
+            creator: {
               type: :object,
               properties: {
-                "@id": {type: :string, example: "http://spdx.org/licenses/MIT"},
-                licenseId: {type: :string, example: "MIT"}
+                "@id": {type: :string, example: "https://example.com/creators/abc123"},
+                "@type": {type: :string, example: "Organization"}
               }
             },
-            required: ["licenseId"]
+            keywords: {
+              type: :array,
+              items: {
+                type: :string,
+                example: "tag"
+              }
+            }
           },
           required: ["@context", "@id", "@type", "name", "hasPart"]
 

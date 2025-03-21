@@ -4,7 +4,8 @@ require "swagger_helper"
 describe "ModelFiles", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   before do
     create(:admin)
-    create(:model_file, model: create(:model, :public))
+    model = create(:model, :public, creator: create(:creator, :public), collection: create(:collection, :public))
+    create(:model_file, model: model)
   end
 
   path "/models/{model_id}/model_files/{id}" do
@@ -17,22 +18,25 @@ describe "ModelFiles", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
       response "200", "Success" do
         schema type: :object,
           properties: {
-            "@context": {type: :array, items: {type: :string, example: "https://schema.org/3DModel"}},
+            "@context": {"$ref" => "#/components/schemas/jsonld_context"},
             "@id": {type: :string, example: "https://example.com/models/abc123/model_files/def456"},
             "@type": {type: :string, example: "3DModel"},
             name: {type: :string, example: "Benchy"},
-            isPartOf: {type: :string, example: "https://example.com/models/abc123"},
+            isPartOf: {type: :object, properties: {
+              "@id": {type: :string, example: "https://example.com/models/abc123"},
+              "@type": {type: :string, example: "3DModel"}
+            }},
             encodingFormat: {type: :string, example: "model/stl"},
             contentUrl: {type: :string, example: "https://example.com/models/abc123/model_files/def456.stl"},
             contentSize: {type: :integer, example: 12345},
             description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the file. Can contain Markdown syntax."},
-            license: {
+            "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"},
+            creator: {
               type: :object,
               properties: {
-                "@id": {type: :string, example: "http://spdx.org/licenses/MIT"},
-                licenseId: {type: :string, example: "MIT"}
-              },
-              required: ["licenseId"]
+                "@id": {type: :string, example: "https://example.com/creators/abc123"},
+                "@type": {type: :string, example: "Organization"}
+              }
             }
           },
           required: ["@context", "@id", "@type", "name", "isPartOf", "encodingFormat"]

@@ -38,6 +38,15 @@ RSpec.configure do |config|
       ],
       components: {
         schemas: {
+          jsonld_context: {
+            type: :array,
+            items: {
+              oneOf: [
+                {type: :string},
+                {type: :object}
+              ]
+            }
+          },
           oembed_link: {
             type: :object,
             properties: {
@@ -102,6 +111,15 @@ RSpec.configure do |config|
               cache_age: {type: :integer, example: 86400}
             },
             required: [:version, :type, :html, :width, :height]
+          },
+          spdxLicense: {
+            type: :object,
+            properties: {
+              "@type": {type: :string, example: "spdx:License"},
+              "@id": {type: :string, example: "http://spdx.org/licenses/MIT"},
+              licenseId: {type: :string, example: "MIT"}
+            },
+            required: ["@type", "licenseId"]
           }
         }
       }

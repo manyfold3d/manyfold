@@ -1,13 +1,13 @@
 module JsonLd
   class CollectionSerializer < ApplicationSerializer
     def serialize
-      {
-        "@context": "https://schema.org/Collection",
-        "@id": Rails.application.routes.url_helpers.collection_path(@object),
-        "@type": "Collection",
+      collection_ref(@object).merge(
+        "@context": context,
         name: @object.name,
-        description: @object.notes
-      }
+        description: @object.notes,
+        creator: creator_ref(@object.creator),
+        isPartOf: collection_ref(@object.collection)
+      ).compact
     end
   end
 end
