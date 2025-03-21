@@ -15,7 +15,10 @@ class ModelsController < ApplicationController
   def index
     @models = filtered_models @filters
     prepare_model_list
-    render layout: "card_list_page"
+    respond_to do |format|
+      format.html { render layout: "card_list_page" }
+      format.json_ld { render json: JsonLd::ModelListSerializer.new(@models).serialize }
+    end
   end
 
   def show
@@ -51,6 +54,7 @@ class ModelsController < ApplicationController
         # We will rely on Shrine to clean up the temp file
       end
       format.oembed { render json: OEmbed::ModelSerializer.new(@model, helpers.oembed_params).serialize }
+      format.json_ld { render json: JsonLd::ModelSerializer.new(@model).serialize }
     end
   end
 

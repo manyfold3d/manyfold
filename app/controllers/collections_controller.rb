@@ -31,7 +31,10 @@ class CollectionsController < ApplicationController
     @collections = @collections.includes :collections, :collection, :links
     # Apply tag filters in-place
     @filter_in_place = true
-    render layout: "card_list_page"
+    respond_to do |format|
+      format.html { render layout: "card_list_page" }
+      format.json_ld { render json: JsonLd::CreatorListSerializer.new(@collections).serialize }
+    end
   end
 
   def show
@@ -43,6 +46,7 @@ class CollectionsController < ApplicationController
         render layout: "card_list_page"
       end
       format.oembed { render json: OEmbed::CollectionSerializer.new(@collection, helpers.oembed_params).serialize }
+      format.json_ld { render json: JsonLd::CollectionSerializer.new(@collection).serialize }
     end
   end
 

@@ -6,7 +6,7 @@ describe "Collections", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
 
   path "/collections/{id}.oembed" do
     get "oEmbed response for Collections" do
-      tags "oEmbed"
+      tags "Collections"
       produces "application/json+oembed"
       parameter name: :id, in: :path, type: :string
       parameter name: :maxwidth, in: :query, type: :integer, required: false
