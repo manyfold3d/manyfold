@@ -4,6 +4,16 @@ module JsonLd
       @object = object
     end
 
+    def context
+      [
+        "https://schema.org/",
+        {
+          hydra: "http://www.w3.org/ns/hydra/core#",
+          spdx: "http://spdx.org/rdf/terms#"
+        }
+      ]
+    end
+
     def license(id)
       return if id.blank?
       {

@@ -2,7 +2,7 @@ module JsonLd
   class CollectionListSerializer < ApplicationSerializer
     def serialize
       {
-        "@context": "http://www.w3.org/ns/hydra/context.jsonld",
+        "@context": context,
         "@id": Rails.application.routes.url_helpers.collections_path,
         "@type": "Collection",
         totalItems: @object.total_count,

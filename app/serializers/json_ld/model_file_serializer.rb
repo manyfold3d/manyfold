@@ -2,10 +2,7 @@ module JsonLd
   class ModelFileSerializer < ApplicationSerializer
     def serialize
       file_ref(@object).merge(
-        "@context": [
-          "https://schema.org/3DModel",
-          "https://spdx.org/rdf/3.0.0/spdx-context.jsonld"
-        ],
+        "@context": context,
         name: @object.name,
         isPartOf: model_ref(@object.model),
         contentUrl: Rails.application.routes.url_helpers.model_model_file_path(@object.model, @object, format: @object.extension),

@@ -2,7 +2,7 @@ module JsonLd
   class CreatorSerializer < ApplicationSerializer
     def serialize
       creator_ref(@object).merge(
-        "@context": "https://schema.org/Organization",
+        "@context": context,
         name: @object.name,
         description: @object.notes
       )

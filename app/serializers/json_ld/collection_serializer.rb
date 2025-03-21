@@ -2,7 +2,7 @@ module JsonLd
   class CollectionSerializer < ApplicationSerializer
     def serialize
       collection_ref(@object).merge(
-        "@context": "https://schema.org/Collection",
+        "@context": context,
         name: @object.name,
         description: @object.notes
       )

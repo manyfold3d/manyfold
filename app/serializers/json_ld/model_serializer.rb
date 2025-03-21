@@ -2,11 +2,7 @@ module JsonLd
   class ModelSerializer < ApplicationSerializer
     def serialize
       model_ref(@object).merge(
-        "@context": [
-          "https://schema.org/3DModel",
-          "https://schema.org/Collection",
-          "https://spdx.org/rdf/3.0.0/spdx-context.jsonld"
-        ],
+        "@context": context,
         name: @object.name,
         description: @object.notes,
         license: license(@object.license),
