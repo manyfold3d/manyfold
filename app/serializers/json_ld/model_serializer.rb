@@ -13,6 +13,7 @@ module JsonLd
           )
         end,
         isPartOf: collection_ref(@object.collection),
+        creator: creator_ref(@object.creator)
       ).compact
     end
   end

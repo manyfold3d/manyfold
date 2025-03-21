@@ -9,7 +9,8 @@ module JsonLd
         encodingFormat: @object.mime_type.to_s,
         contentSize: @object.size,
         description: @object.notes,
-        "spdx:license": license(@object.model.license)
+        "spdx:license": license(@object.model.license),
+        creator: creator_ref(@object.model.creator)
       ).compact
     end
   end

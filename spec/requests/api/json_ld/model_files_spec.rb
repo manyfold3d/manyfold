@@ -30,7 +30,14 @@ describe "ModelFiles", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
             contentUrl: {type: :string, example: "https://example.com/models/abc123/model_files/def456.stl"},
             contentSize: {type: :integer, example: 12345},
             description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the file. Can contain Markdown syntax."},
-            "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"}
+            "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"},
+            creator: {
+              type: :object,
+              properties: {
+                "@id": {type: :string, example: "https://example.com/creators/abc123"},
+                "@type": {type: :string, example: "Organization"}
+              }
+            }
           },
           required: ["@context", "@id", "@type", "name", "isPartOf", "encodingFormat"]
 

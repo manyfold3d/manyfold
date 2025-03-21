@@ -83,14 +83,14 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
             isPartOf: {type: :object, properties: {
               "@id": {type: :string, example: "https://example.com/collections/abc123"},
               "@type": {type: :string, example: "Collection"}
-            }}
-            # creator: {
-            #   type: :object,
-            #   properties: {
-            #     "@id": {type: :string, example: "https://example.com/creators/abc123"},
-            #     "@type": {type: :string, example: "Organization"}
-            #   }
-            # }
+            }},
+            creator: {
+              type: :object,
+              properties: {
+                "@id": {type: :string, example: "https://example.com/creators/abc123"},
+                "@type": {type: :string, example: "Organization"}
+              }
+            }
           },
           required: ["@context", "@id", "@type", "name", "hasPart"]
 
