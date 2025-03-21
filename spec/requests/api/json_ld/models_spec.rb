@@ -27,6 +27,7 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
                 type: :object,
                 properties: {
                   "@id": {type: :string, example: "/models/abc123", description: "The URL of the model"},
+                  "@type": {type: :string, example: "3DModel"},
                   name: {type: :string, example: "Model", description: "The human name of the model"}
                 },
                 required: ["@id", "name"]
@@ -83,6 +84,13 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
               "@id": {type: :string, example: "https://example.com/collections/abc123"},
               "@type": {type: :string, example: "Collection"}
             }}
+            # creator: {
+            #   type: :object,
+            #   properties: {
+            #     "@id": {type: :string, example: "https://example.com/creators/abc123"},
+            #     "@type": {type: :string, example: "Organization"}
+            #   }
+            # }
           },
           required: ["@context", "@id", "@type", "name", "hasPart"]
 

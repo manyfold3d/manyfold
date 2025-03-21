@@ -7,10 +7,9 @@ module JsonLd
         "@type": "hydra:Collection",
         totalItems: @object.total_count,
         member: @object.map { |model|
-          {
-            "@id": Rails.application.routes.url_helpers.model_path(model),
+          model_ref(model).merge(
             name: model.name
-          }
+          )
         },
         view: {
           "@id": Rails.application.routes.url_helpers.models_path(page: @object.current_page),
