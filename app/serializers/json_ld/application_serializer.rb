@@ -17,6 +17,7 @@ module JsonLd
     def license(id)
       return if id.blank?
       {
+        "@type": "spdx:License",
         "@id": id.starts_with?("LicenseRef-") ?
           nil :
           "http://spdx.org/licenses/#{id}",

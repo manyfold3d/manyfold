@@ -9,7 +9,7 @@ module JsonLd
         encodingFormat: @object.mime_type.to_s,
         contentSize: @object.size,
         description: @object.notes,
-        license: license(@object.model.license),
+        "spdx:license": license(@object.model.license)
       ).compact
     end
   end

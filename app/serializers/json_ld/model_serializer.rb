@@ -5,7 +5,7 @@ module JsonLd
         "@context": context,
         name: @object.name,
         description: @object.notes,
-        license: license(@object.license),
+        "spdx:license": license(@object.license),
         hasPart: @object.model_files.without_special.map do |file|
           file_ref(file).merge(
             name: file.name,

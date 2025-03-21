@@ -78,14 +78,7 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
               },
               required: ["@id", "@type", "name", "encodingFormat"]
             },
-            license: {
-              type: :object,
-              properties: {
-                "@id": {type: :string, example: "http://spdx.org/licenses/MIT"},
-                licenseId: {type: :string, example: "MIT"}
-              },
-              required: ["licenseId"]
-            },
+            "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"},
             isPartOf: {type: :object, properties: {
               "@id": {type: :string, example: "https://example.com/collections/abc123"},
               "@type": {type: :string, example: "Collection"}

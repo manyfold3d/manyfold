@@ -102,6 +102,15 @@ RSpec.configure do |config|
               cache_age: {type: :integer, example: 86400}
             },
             required: [:version, :type, :html, :width, :height]
+          },
+          spdxLicense: {
+            type: :object,
+            properties: {
+              "@type": {type: :string, example: "http://spdx.org/rdf/terms#License"},
+              "@id": {type: :string, example: "http://spdx.org/licenses/MIT"},
+              licenseId: {type: :string, example: "MIT"}
+            },
+            required: ["@type", "licenseId"]
           }
         }
       }
