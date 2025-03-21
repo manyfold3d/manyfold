@@ -90,6 +90,13 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
                 "@id": {type: :string, example: "https://example.com/creators/abc123"},
                 "@type": {type: :string, example: "Organization"}
               }
+            },
+            keywords: {
+              type: :array,
+              items: {
+                type: :string,
+                example: "tag"
+              }
             }
           },
           required: ["@context", "@id", "@type", "name", "hasPart"]
