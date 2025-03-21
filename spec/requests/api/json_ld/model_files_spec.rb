@@ -21,7 +21,10 @@ describe "ModelFiles", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
             "@id": {type: :string, example: "https://example.com/models/abc123/model_files/def456"},
             "@type": {type: :string, example: "3DModel"},
             name: {type: :string, example: "Benchy"},
-            isPartOf: {type: :string, example: "https://example.com/models/abc123"},
+            isPartOf: {type: :object, properties: {
+              "@id": {type: :string, example: "https://example.com/models/abc123"},
+              "@type": {type: :string, example: "3DModel"}
+            }},
             encodingFormat: {type: :string, example: "model/stl"},
             contentUrl: {type: :string, example: "https://example.com/models/abc123/model_files/def456.stl"},
             contentSize: {type: :integer, example: 12345},

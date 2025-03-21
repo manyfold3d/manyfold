@@ -7,7 +7,7 @@ module JsonLd
           "https://spdx.org/rdf/3.0.0/spdx-context.jsonld"
         ],
         name: @object.name,
-        isPartOf: Rails.application.routes.url_helpers.model_path(@object.model),
+        isPartOf: model_ref(@object.model),
         contentUrl: Rails.application.routes.url_helpers.model_model_file_path(@object.model, @object, format: @object.extension),
         encodingFormat: @object.mime_type.to_s,
         contentSize: @object.size,
