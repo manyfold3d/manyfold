@@ -83,9 +83,9 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
               properties: {
                 "@id": {type: :string, example: "http://spdx.org/licenses/MIT"},
                 licenseId: {type: :string, example: "MIT"}
-              }
-            },
-            required: ["licenseId"]
+              },
+              required: ["licenseId"]
+            }
           },
           required: ["@context", "@id", "@type", "name", "hasPart"]
 
