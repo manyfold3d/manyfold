@@ -65,7 +65,14 @@ describe "Collections", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
             "@id": {type: :string, example: "https://example.com/collections/abc123"},
             "@type": {type: :string, example: "Collection"},
             name: {type: :string, example: "Interesting Things"},
-            description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the collection. Can contain Markdown syntax."}
+            description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the collection. Can contain Markdown syntax."},
+            creator: {
+              type: :object,
+              properties: {
+                "@id": {type: :string, example: "https://example.com/creators/abc123"},
+                "@type": {type: :string, example: "Organization"}
+              }
+            }
           },
           required: ["@context", "@id", "@type", "name"]
 
