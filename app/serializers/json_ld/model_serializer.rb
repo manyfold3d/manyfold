@@ -4,6 +4,7 @@ module JsonLd
       model_ref(@object).merge(
         "@context": [
           "https://schema.org/3DModel",
+          "https://schema.org/Collection",
           "https://spdx.org/rdf/3.0.0/spdx-context.jsonld"
         ],
         name: @object.name,
@@ -14,6 +15,8 @@ module JsonLd
             name: file.name,
             encodingFormat: file.mime_type.to_s
           )
+        end,
+        isPartOf: collection_ref(@object.collection),
       ).compact
     end
   end

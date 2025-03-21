@@ -85,7 +85,11 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
                 licenseId: {type: :string, example: "MIT"}
               },
               required: ["licenseId"]
-            }
+            },
+            isPartOf: {type: :object, properties: {
+              "@id": {type: :string, example: "https://example.com/collections/abc123"},
+              "@type": {type: :string, example: "Collection"}
+            }}
           },
           required: ["@context", "@id", "@type", "name", "hasPart"]
 
