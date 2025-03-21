@@ -19,7 +19,7 @@ describe "Creators", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
           properties: {
             "@context": {type: :string, example: "http://www.w3.org/ns/hydra/context.jsonld"},
             "@id": {type: :string, example: "https://example.com/creators"},
-            "@type": {type: :string, example: "Collection"},
+            "@type": {type: :string, example: "hydra:Collection"},
             totalItems: {type: :integer, example: 42},
             member: {
               type: :array,
@@ -36,7 +36,7 @@ describe "Creators", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
               type: :object,
               properties: {
                 "@id": {type: :string, example: "https://example.com/creators?page=2"},
-                "@type": {type: :string, example: "PartialCollectionView"},
+                "@type": {type: :string, example: "hydra:PartialCollectionView"},
                 first: {type: :string, example: "https://example.com/creators?page=1"},
                 prev: {type: :string, example: "https://example.com/creators?page=1"},
                 next: {type: :string, example: "https://example.com/creators?page=3"},

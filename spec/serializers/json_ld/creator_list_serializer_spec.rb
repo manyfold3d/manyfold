@@ -13,11 +13,11 @@ RSpec.describe JsonLd::CreatorListSerializer do
     let(:creator) { Creator.first }
 
     it "uses HYDRA JSON-LD context" do
-      expect(output[:@context]).to eq "http://www.w3.org/ns/hydra/context.jsonld"
+      expect(output[:@context][1]).to include({hydra: "http://www.w3.org/ns/hydra/core#"})
     end
 
     it "uses HYDRA collection type" do
-      expect(output[:@type]).to eq "Collection"
+      expect(output[:@type]).to eq "hydra:Collection"
     end
 
     it "has creator list URL in @id" do
@@ -37,7 +37,7 @@ RSpec.describe JsonLd::CreatorListSerializer do
     end
 
     it "view object has correct type" do
-      expect(output[:view][:@type]).to eq "PartialCollectionView"
+      expect(output[:view][:@type]).to eq "hydra:PartialCollectionView"
     end
 
     it "view object includes link to first page" do
