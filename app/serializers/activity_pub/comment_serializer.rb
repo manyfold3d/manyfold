@@ -14,7 +14,10 @@ module ActivityPub
     end
 
     def cc
-      @object.commenter.federails_actor.followers_url
+      [
+        @object.commenter.federails_actor.followers_url,
+        @object.commentable.federails_actor.followers_url
+      ]
     end
 
     private
