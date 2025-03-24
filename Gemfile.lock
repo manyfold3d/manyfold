@@ -820,6 +820,8 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    with_model (2.2.0)
+      activerecord (>= 7.0)
     zeitwerk (2.7.2)
     zxcvbn (0.1.10)
 
@@ -933,6 +935,7 @@ DEPENDENCIES
   view_component (~> 3.21)
   warning (~> 1.5)
   web-console (>= 4.1.0)
+  with_model (~> 2.2)
 
 RUBY VERSION
    ruby 3.4.1p0
