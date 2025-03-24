@@ -15,7 +15,7 @@ RSpec.describe MultimodelUniquenessValidator do
         t.string :public_id
       end
       model do
-        validates :public_id, multimodel_uniqueness: {check: {creator: :public_id, collection: :public_id}}
+        validates :public_id, multimodel_uniqueness: {check: {creator: :public_id, collection: :public_id, thing: :public_id}}
       end
     end
 
@@ -37,6 +37,12 @@ RSpec.describe MultimodelUniquenessValidator do
 
     it "does not add error if value is unique" do
       thing = Thing.new(public_id: "cba321")
+      expect(thing).to be_valid
+    end
+
+    it "does not check against itself" do
+      Thing.create(public_id: "cba321")
+      thing = Thing.last
       expect(thing).to be_valid
     end
   end

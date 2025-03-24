@@ -7,6 +7,7 @@ class MultimodelUniquenessValidator < ActiveModel::EachValidator
       query = (options[:case_sensitive] == false) ?
         model.arel_table[attr].lower.eq(value.downcase) :
         model.arel_table[attr].eq(value)
+      query = query.and(model.arel_table[:id].not_eq(record.id)) if record.instance_of?(model)
       # Run the check
       record.errors.add(attribute, :taken) if model.unscoped.where(query).count > 0 # rubocop:disable Pundit/AvoidUnscoped
     end
