@@ -7,7 +7,7 @@ class User < ApplicationRecord
   include PublicIDable
 
   acts_as_federails_actor(
-    username_field: :public_id,
+    username_field: :username,
     name_field: :username,
     user_count_method: :user_count
   )
@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: %i[openid_connect] if SiteSettings.oidc_enabled?
 
-  validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: ApplicationRecord::FEDIVERSE_USERNAMES}
+  validates :username, multimodel_uniqueness: {case_sensitive: false, check: ApplicationRecord::FEDIVERSE_USERNAMES}
 
   validates :username,
     presence: true,

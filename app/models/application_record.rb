@@ -2,7 +2,7 @@ class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
   FEDIVERSE_USERNAMES = {
-    user: :public_id,
+    user: :username,
     creator: :slug,
     collection: :public_id,
     model: :public_id
