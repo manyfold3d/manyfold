@@ -23,6 +23,7 @@ class Collection < ApplicationRecord
   belongs_to :collection, optional: true
   belongs_to :creator, optional: true
   validates :name, uniqueness: {case_sensitive: false}
+  validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: ApplicationRecord::FEDIVERSE_USERNAMES}
 
   def name_with_domain
     remote? ? name + " (#{federails_actor.server})" : name

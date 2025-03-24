@@ -1,5 +1,6 @@
 class MultimodelUniquenessValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
+    return unless value
     (options[:check] || {}).each_pair do |model_name, attr|
       # Get class constant
       model = model_name.to_s.classify.constantize

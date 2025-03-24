@@ -12,6 +12,8 @@ class Creator < ApplicationRecord
   has_many :collections, dependent: :nullify
   validates :name, uniqueness: {case_sensitive: false}
 
+  validates :slug, multimodel_uniqueness: {case_sensitive: false, check: ApplicationRecord::FEDIVERSE_USERNAMES}
+
   def name_with_domain
     remote? ? name + " (#{federails_actor.server})" : name
   end
