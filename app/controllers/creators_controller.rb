@@ -72,8 +72,11 @@ class CreatorsController < ApplicationController
   end
 
   def update
-    @creator.update(creator_params)
-    redirect_to @creator, notice: t(".success")
+    if @creator.update(creator_params)
+      redirect_to @creator, notice: t(".success")
+    else
+      render "edit", status: :unprocessable_entity
+    end
   end
 
   def destroy
