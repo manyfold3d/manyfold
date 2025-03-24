@@ -20,6 +20,8 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: %i[openid_connect] if SiteSettings.oidc_enabled?
 
+  validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: ApplicationRecord::FEDIVERSE_USERNAMES}
+
   validates :username,
     presence: true,
     uniqueness: {case_sensitive: false},
