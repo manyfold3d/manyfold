@@ -7,10 +7,11 @@
         <div class="card mb-2">
           <h4 class="card-header"><%= t(".contact_info") %></h4>
           <div class="card-body">
-            <%= text_input_row f, :email, autofocus: true, autocomplete: "email",
+            <%= text_input_row f, :email, autocomplete: "email",
                   help: (devise_mapping.confirmable? && resource.pending_reconfirmation?) ?
                     t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) :
                     nil %>
+            <%= text_input_row f, :username, autocomplete: false %>
             <% if SiteSettings.federation_enabled? %>
               <div class="row mb-3">
                 <div class="col-auto col-form-label"><%= t("settings.users.index.fediverse_address") %></div>
