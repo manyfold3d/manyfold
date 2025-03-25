@@ -175,7 +175,7 @@ class Library < ApplicationRecord
   end
 
   def self.default
-    Library.find_by(id: SiteSettings.default_library)
+    SiteSettings.default_library ? Library.find_by(id: SiteSettings.default_library) : Library.first
   end
 
   def default?
