@@ -11,6 +11,7 @@ en:
         caption: Tagline
         name: Name
         notes: Description
+        slug: Handle
       federails/moderation/domain_block:
         created_at: Created at
         domain: Domain
