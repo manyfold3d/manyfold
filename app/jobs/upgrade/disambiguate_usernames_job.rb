@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Upgrade::DisambiguateUsernamesJob < ApplicationJob
+  queue_as :upgrade
+  unique :until_executed
+
   def perform
     duplicates = duplicated_usernames
     return if duplicates.empty?
