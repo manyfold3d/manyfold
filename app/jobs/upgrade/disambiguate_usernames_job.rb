@@ -2,10 +2,11 @@
 
 class Upgrade::DisambiguateUsernamesJob < ApplicationJob
   def perform
+    duplicates = duplicated_usernames
+    return if duplicates.empty?
     suffix = 0
     FederailsCommon::FEDIVERSE_USERNAMES.each_pair do |model_name, attr|
-      model = model_name.to_s.classify.constantize
-      model.unscoped.find_each do |it|
+      finder_scope(model_name).where(attr => duplicates).find_each do |it|
         it.validate
         if it.errors.of_kind?(attr, :taken)
           suffix += 1
@@ -14,5 +15,19 @@ class Upgrade::DisambiguateUsernamesJob < ApplicationJob
         end
       end
     end
+  end
+
+  private
+
+  def duplicated_usernames
+    FederailsCommon::FEDIVERSE_USERNAMES
+      .map { |model_name, attr| finder_scope(model_name).pluck(attr) }
+      .flatten.tally
+      .select { |k, v| k if v > 1 }
+      .keys
+  end
+
+  def finder_scope(model_name)
+    model_name.to_s.classify.constantize.unscoped
   end
 end
