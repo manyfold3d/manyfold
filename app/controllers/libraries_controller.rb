@@ -39,6 +39,7 @@ class LibrariesController < ApplicationController
     uptags = library_params[:tag_regex]&.reject(&:empty?)
     @library.tag_regex = uptags
     if @library.save
+      set_default @library if params.dig("library", "default") == "1"
       redirect_to models_path, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
