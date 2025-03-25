@@ -426,6 +426,15 @@ en:
     open_button:
       label: Open model %{name}
       text: Open
+  moderator_mailer:
+    new_approval:
+      greeting: Hi!
+      message: Someone new has signed up for an account, and requires approval. Approve the account at %{link}.
+      subject: New account needs approval
+    new_report:
+      greeting: Hi!
+      message: Someone has reported content which needs moderations. Review the report at %{link}.
+      subject: New report received
   renderer:
     errors:
       canvas: 'Could not find #webgl canvas!'
