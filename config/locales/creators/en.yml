@@ -17,6 +17,8 @@ en:
     form:
       notes:
         help_html: You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      slug:
+        help: Used in URLs and as Fediverse username (if enabled).
     general:
       edit: Edit Creator
       new: New Creator

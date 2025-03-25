@@ -1,6 +1,6 @@
 <%= form_with model: @creator do |form| %>
   <%= text_input_row form, :name %>
-  <%= text_input_row form, :slug, value: @attemped_slug || @creator.slug if @creator.slug.presence %>
+  <%= text_input_row form, :slug, help: t(".slug.help"), value: @attemped_slug || @creator.slug if @creator.slug.presence %>
   <%= render "links_form", form: form %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
