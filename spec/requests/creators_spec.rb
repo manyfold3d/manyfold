@@ -90,7 +90,7 @@ RSpec.describe "Creators" do
     end
 
     describe "PATCH /creators/:id" do
-      before { patch "/creators/#{creator.to_param}", params: {creator: {name: "newname"}} }
+      before { patch "/creators/#{creator.to_param}", params: {creator: {slug: "newname"}} }
 
       it "saves details", :as_moderator do
         expect(response).to redirect_to("/creators/newname")
