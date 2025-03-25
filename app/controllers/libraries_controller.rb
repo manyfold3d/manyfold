@@ -26,6 +26,7 @@ class LibrariesController < ApplicationController
     @library.tag_regex = params[:tag_regex]
     if @library.valid?
       Scan::DetectFilesystemChangesJob.perform_later(@library.id)
+      set_default @library if policy_scope(Library).count == 1
       redirect_to @library, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
@@ -72,6 +73,10 @@ class LibrariesController < ApplicationController
   end
 
   private
+
+  def set_default(library)
+    SiteSettings.default_library = library&.to_param
+  end
 
   def library_params
     params.require(:library).permit(
