@@ -48,7 +48,7 @@ class Model < ApplicationRecord
   validate :check_for_submodels, on: :update, if: :need_to_move_files?
   validate :destination_is_vacant, on: :update, if: :need_to_move_files?
   validates :license, spdx: true, allow_nil: true
-  validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: ApplicationRecord::FEDIVERSE_USERNAMES}
+  validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
 
   def parents
     Pathname.new(path).parent.descend.filter_map do |path|
