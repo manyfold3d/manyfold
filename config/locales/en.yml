@@ -429,11 +429,11 @@ en:
   moderator_mailer:
     new_approval:
       greeting: Hi!
-      message: Someone new has signed up for an account, and requires approval. Approve the account at %{link}.
+      message: Someone new has signed up for an account, and requires approval. Approve the account at %{link}
       subject: New account needs approval
     new_report:
       greeting: Hi!
-      message: Someone has reported content which needs moderations. Review the report at %{link}.
+      message: Someone has reported content which needs moderations. Review the report at %{link}
       subject: New report received
   renderer:
     errors:
@@ -461,7 +461,7 @@ en:
   user_mailer:
     account_approved:
       greeting: Hi!
-      message: Your account has been approved; you may now sign in at %{link}.
+      message: Your account has been approved; you may now sign in at %{link}
       subject: Account approved
     test_email:
       subject: Test email
