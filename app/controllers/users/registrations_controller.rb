@@ -28,7 +28,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     authorize User
     super do |user|
-      user.update(approved: false) if SiteSettings.approve_signups
+      if SiteSettings.approve_signups
+        user.update(approved: false)
+        ModeratorMailer.with(user: @user).new_approval.deliver_later if SiteSettings.email_configured?
+      end
     end
   end
 
