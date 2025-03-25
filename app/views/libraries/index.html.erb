@@ -6,10 +6,11 @@
 <div class="row">
   <% Library.find_each do |library| %>
     <div class="col-md-6">
-      <div class="card">
+      <div class="card <%= "border-info" if library.default? %>">
         <div class="card-header">
           <%= icon(library.icon, library.icon) if library.icon %>
           <%= library.name %>
+          <%= content_tag(:small, class: "text-info float-end") { t("activerecord.attributes.library.default") } if library.default? %>
         </div>
         <div class="card-body">
           <%= link_to t("general.edit"), edit_library_path(library), {class: "btn btn-secondary float-end #{policy(:library).edit? ? "" : "disabled"}"} %>
