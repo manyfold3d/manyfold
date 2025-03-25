@@ -15,10 +15,12 @@
     <%= link_to t("creators.general.new"), new_creator_path, class: "btn btn-outline-secondary col-auto" if policy(:creator).new? %>
   </div>
 
-  <div class="row mb-3 input-group">
-    <%= form.label :library_id, class: "col-sm-2 col-form-label" %>
-    <%= form.collection_select :library_id, policy_scope(Library).all, :id, :name, {include_blank: false}, {class: "form-control col-auto form-select", disabled: @model.contains_other_models?} %>
-  </div>
+  <% if SiteSettings.show_libraries || current_user.is_administrator? %>
+    <div class="row mb-3 input-group">
+      <%= form.label :library_id, class: "col-sm-2 col-form-label" %>
+      <%= form.collection_select :library_id, policy_scope(Library).all, :id, :name, {include_blank: false}, {class: "form-control col-auto form-select", disabled: @model.contains_other_models?} %>
+    </div>
+  <% end %>
 
   <%= render "tags_edit", form: form, name: "model[tag_list]", value: (@model.tags.order(taggings_count: :desc, name: :asc).map { |tag| tag.name }).join(","), label: translate(".tags"), tags: @available_tags %>
 
