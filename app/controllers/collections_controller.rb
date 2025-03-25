@@ -31,6 +31,10 @@ class CollectionsController < ApplicationController
     @collections = @collections.includes :collections, :collection, :links
     # Apply tag filters in-place
     @filter_in_place = true
+
+    # Count unassiged models
+    @unassigned_count = policy_scope(Model).where(collection: nil).count
+
     respond_to do |format|
       format.html { render layout: "card_list_page" }
       format.json_ld { render json: JsonLd::CreatorListSerializer.new(@collections).serialize }
