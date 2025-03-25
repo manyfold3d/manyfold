@@ -8,10 +8,6 @@ module Sluggable
   private
 
   def slugify_name
-    if persisted?
-      self.slug = name.parameterize if name_changed?
-    else
-      self.slug ||= name&.parameterize
-    end
+    self.slug = name&.parameterize unless slug.presence
   end
 end

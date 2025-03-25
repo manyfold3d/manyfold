@@ -72,8 +72,14 @@ class CreatorsController < ApplicationController
   end
 
   def update
-    @creator.update(creator_params)
-    redirect_to @creator, notice: t(".success")
+    if @creator.update(creator_params)
+      redirect_to @creator, notice: t(".success")
+    else
+      # Restore previous slug
+      @attemped_slug = @creator.slug
+      @creator.slug = @creator.slug_was
+      render "edit", status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -98,6 +104,7 @@ class CreatorsController < ApplicationController
   def creator_params
     params.require(:creator).permit(
       :name,
+      :slug,
       :caption,
       :notes,
       links_attributes: [:id, :url, :_destroy]
