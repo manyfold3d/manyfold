@@ -66,6 +66,7 @@ class LibrariesController < ApplicationController
   def destroy
     begin
       @library.destroy
+      set_default(Library.first) if SiteSetting.default_library == @library.to_param
     rescue Shrine::Error # Not ideal, but file after_commit callbacks explode if the library has gone
       nil
     end
