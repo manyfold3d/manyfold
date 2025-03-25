@@ -174,12 +174,16 @@ class Library < ApplicationRecord
     end
   end
 
+  def self.default
+    Library.find_by(id: SiteSettings.default_library)
+  end
+
   def default?
-    SiteSettings.default_library == to_param
+    SiteSettings.default_library == id
   end
 
   def make_default
-    SiteSettings.default_library = to_param
+    SiteSettings.default_library = id
   end
 
   private
