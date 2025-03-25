@@ -174,6 +174,18 @@ class Library < ApplicationRecord
     end
   end
 
+  def self.default
+    SiteSettings.default_library ? Library.find_by(id: SiteSettings.default_library) : Library.first
+  end
+
+  def default?
+    SiteSettings.default_library == id
+  end
+
+  def make_default
+    SiteSettings.default_library = id
+  end
+
   private
 
   def ensure_path_case_is_correct

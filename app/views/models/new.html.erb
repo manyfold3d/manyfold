@@ -7,7 +7,10 @@
   <div class="row mb-3 input-group">
     <%= form.label :library, Library.model_name.human, class: "col-sm-2 col-form-label" %>
     <div class='col-sm-10 ps-0'>
-      <%= form.select :library, policy_scope(Library).all.map { |lib| [library_select_title(lib), lib.to_param] }, {include_blank: false}, {class: "form-control form-select"} %>
+      <%= form.select :library,
+            policy_scope(Library).all.map { |lib| [library_select_title(lib), lib.to_param] },
+            {include_blank: false, selected: Library.default.to_param},
+            {class: "form-control form-select"} %>
       <span class="form-text"><%= t ".library.help" %></span>
     </div>
   </div>

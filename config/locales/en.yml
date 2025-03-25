@@ -22,6 +22,7 @@ en:
       library:
         caption: Caption
         create_path_if_not_on_disk: Auto-create folder
+        default: Default
         icon: Icon
         name: Name
         notes: Notes

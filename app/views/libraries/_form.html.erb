@@ -1,5 +1,6 @@
 <%= form_with model: @library do |form| %>
   <%= text_input_row form, :name %>
+  <%= checkbox_input_row form, :default, help: t(".default.help"), checked: @library.default? %>
   <% unless @library.persisted? %>
     <div class="row mb-3 input-group">
       <%= form.label :storage_service, class: "col-sm-2 col-form-label" %>
