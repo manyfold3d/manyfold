@@ -4,6 +4,7 @@ class SettingsController < ApplicationController
   def update
     # Save site-wide settings if user is an admin
     update_folder_settings(params[:folders])
+    update_library_settings(params[:libraries])
     update_appearance_settings(params[:appearance])
     update_file_settings(params[:files])
     update_tagging_settings(params[:model_tags])
@@ -32,6 +33,11 @@ class SettingsController < ApplicationController
   def update_appearance_settings(settings)
     return unless settings
     SiteSettings.theme = settings[:theme]
+  end
+
+  def update_library_settings(settings)
+    return unless settings
+    SiteSettings.show_libraries = settings[:show] == "1"
   end
 
   def update_tagging_settings(settings)

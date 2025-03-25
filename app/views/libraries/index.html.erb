@@ -68,3 +68,17 @@
     </div>
   <% end %>
 </div>
+
+<hr>
+
+<%= form_with url: settings_path, method: :patch do |form| %>
+  <h4><%= t(".settings") %></h4>
+  <div class="row mb-2">
+    <%= form.label nil, t(".show.label"), for: "libraries[show]", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8 form-check form-switch">
+      <%= form.check_box "libraries[show]", checked: SiteSettings.show_libraries, class: "form-check-input" %>
+      <small><%= t(".show.help") %></small>
+    </div>
+  </div>
+  <%= render "settings/submit", form: form %>
+<% end %>
