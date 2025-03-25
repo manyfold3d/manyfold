@@ -174,6 +174,14 @@ class Library < ApplicationRecord
     end
   end
 
+  def default?
+    SiteSettings.default_library == to_param
+  end
+
+  def make_default
+    SiteSettings.default_library = to_param
+  end
+
   private
 
   def ensure_path_case_is_correct

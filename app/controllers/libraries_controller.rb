@@ -26,7 +26,7 @@ class LibrariesController < ApplicationController
     @library.tag_regex = params[:tag_regex]
     if @library.valid?
       Scan::DetectFilesystemChangesJob.perform_later(@library.id)
-      set_default @library if policy_scope(Library).count == 1
+      @library.make_default if SiteSettings.default_library.nil?
       redirect_to @library, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
@@ -39,7 +39,7 @@ class LibrariesController < ApplicationController
     uptags = library_params[:tag_regex]&.reject(&:empty?)
     @library.tag_regex = uptags
     if @library.save
-      set_default @library if params.dig("library", "default") == "1"
+      @library.make_default if params.dig("library", "default") == "1"
       redirect_to models_path, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
@@ -67,7 +67,7 @@ class LibrariesController < ApplicationController
   def destroy
     begin
       @library.destroy
-      set_default(Library.first) if SiteSetting.default_library == @library.to_param
+      Library.first&.make_default if @library.default?
     rescue Shrine::Error # Not ideal, but file after_commit callbacks explode if the library has gone
       nil
     end
@@ -75,10 +75,6 @@ class LibrariesController < ApplicationController
   end
 
   private
-
-  def set_default(library)
-    SiteSettings.default_library = library&.to_param
-  end
 
   def library_params
     params.require(:library).permit(
