@@ -75,6 +75,9 @@ class CreatorsController < ApplicationController
     if @creator.update(creator_params)
       redirect_to @creator, notice: t(".success")
     else
+      # Restore previous slug
+      @attemped_slug = @creator.slug
+      @creator.slug = @creator.slug_was
       render "edit", status: :unprocessable_entity
     end
   end
