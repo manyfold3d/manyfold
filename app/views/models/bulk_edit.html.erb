@@ -39,12 +39,14 @@
 
       <%= render "tags_edit", form: form, name: :remove_tags, value: "", label: translate(".remove_tags"), tags: [] %>
 
-      <div class="row mb-3">
-        <%= form.label :new_library_id, class: "col-sm-2 col-form-label" %>
-        <div class="col-sm-10">
-          <%= form.collection_select :new_library_id, policy_scope(Library).all, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
+      <% if SiteSettings.show_libraries || current_user.is_administrator? %>
+        <div class="row mb-3">
+          <%= form.label :new_library_id, class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.collection_select :new_library_id, policy_scope(Library).all, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
+          </div>
         </div>
-      </div>
+      <% end %>
 
       <%= checkbox_input_row form, :organize %>
 

@@ -21,6 +21,7 @@ class SiteSettings < RailsSettings::Base
   field :approve_signups, type: :boolean, default: false
   field :theme, type: :string, default: "default"
   field :default_library, type: :integer, default: nil
+  field :show_libraries, type: :boolean, default: false
 
   validates :model_ignored_files, regex_array: {strict: true}
 

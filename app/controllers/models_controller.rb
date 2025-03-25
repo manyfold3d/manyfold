@@ -71,7 +71,7 @@ class ModelsController < ApplicationController
 
   def create
     authorize :model
-    library = Library.find_param(params[:library])
+    library = SiteSettings.show_libraries ? Library.find_param(params[:library]) : Library.default
     uploads = begin
       JSON.parse(params[:uploads])
     rescue

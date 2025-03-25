@@ -41,6 +41,10 @@ en:
       free_space:
         label: Free Space
       heading: Libraries
+      settings: Settings
+      show:
+        help: Shows or hides libraries in the navigation bar and forms. Library choice in edit forms will always be shown to administrators.
+        label: Show libraries
       tag_regex:
         check: Check
         search_missing: Search Missing

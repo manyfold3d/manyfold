@@ -18,15 +18,17 @@
         <li class="nav-item">
           <%= nav_link "collection", Collection.model_name.human(count: 100), collections_path(@filters&.except(:collection)) %>
         </li>
-        <% policy_scope(Library).find_each do |library| %>
-          <li class="nav-item">
-            <%= nav_link(
-                  library.icon.presence || "boxes",
-                  library.name,
-                  models_path((@filters&.except(:library) || {}).merge({library: library})),
-                  title: library.caption
-                )	%>
-          </li>
+        <% if SiteSettings.show_libraries %>
+          <% policy_scope(Library).find_each do |library| %>
+            <li class="nav-item">
+              <%= nav_link(
+                    library.icon.presence || "boxes",
+                    library.name,
+                    models_path((@filters&.except(:library) || {}).merge({library: library})),
+                    title: library.caption
+                  )	%>
+            </li>
+          <% end %>
         <% end %>
       </ul>
       <ul class="navbar-nav col-6 pe-4 align-self-start justify-content-end">
