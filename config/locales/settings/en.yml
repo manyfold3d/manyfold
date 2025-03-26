@@ -18,7 +18,7 @@ en:
       site_tagline:
         help: A few words to introduce your site, shown on the homepage.
         label: Tagline
-      summary: Customise the visual style of your instance.
+      summary: Customise your instance.
       theme:
         help_html: Affects all users. Visit <a href="https://bootswatch.com">Bootswatch</a> to see previews.
         label: Theme
