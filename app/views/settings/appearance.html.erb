@@ -41,5 +41,8 @@
       <span class="form-text"><%= t(".theme.help_html") %></span>
     </div>
   </div>
+  <hr>
+  <h4><%= t(".information") %></h4>
+  <%= rich_text_input_row form, "appearance[rules]", label: t(".rules.label"), value: SiteSettings.rules, help: t(".rules.help_html") %>
   <%= render "submit", form: form %>
 <% end %>

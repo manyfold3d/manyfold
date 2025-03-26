@@ -9,6 +9,10 @@ en:
         label: Detect mesh errors
     appearance:
       heading: Appearance
+      information: Information
+      rules:
+        help_html: Shown at signup; you can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+        label: Server rules
       site_icon:
         help: Shown at the top left of each page
         label: Logo URL

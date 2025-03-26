@@ -28,7 +28,7 @@ class SiteSettings < RailsSettings::Base
   field :site_tagline, type: :string, default: ENV.fetch("SITE_TAGLINE", nil)
   field :site_icon, type: :string, default: ENV.fetch("SITE_ICON", nil)
   field :about, type: :text, default: nil
-  field :rules, type: :text, default: nil
+  field :rules, type: :string, default: nil
 
   validates :model_ignored_files, regex_array: {strict: true}
 
