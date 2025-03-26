@@ -151,7 +151,7 @@ gem "devise_zxcvbn", "~> 6.0"
 
 gem "ransack", "~> 4.3"
 gem "federails", git: "https://gitlab.com/experimentslabs/federails", branch: "main"
-gem "federails-moderation", "~> 0.2"
+gem "federails-moderation", "~> 0.3"
 gem "caber"
 
 gem "nanoid", "~> 2.0"
