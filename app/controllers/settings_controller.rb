@@ -56,6 +56,7 @@ class SettingsController < ApplicationController
 
   def update_multiuser_settings(settings)
     return unless settings
+    SiteSettings.registration_enabled = (settings[:registration_open])
     SiteSettings.approve_signups = (settings[:approve_signups])
     SiteSettings.default_viewer_role = (settings[:default_viewer_role].presence)
   end

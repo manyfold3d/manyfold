@@ -150,7 +150,7 @@ gem "better_content_security_policy", "~> 0.1.4"
 gem "devise_zxcvbn", "~> 6.0"
 
 gem "ransack", "~> 4.3"
-gem "federails", git: "https://gitlab.com/experimentslabs/federails", ref: "58e11556eb357129be1c50fc0d0418557ebcccbd"
+gem "federails", git: "https://gitlab.com/experimentslabs/federails", branch: "open-registrations-proc"
 gem "federails-moderation", "~> 0.3"
 gem "caber"
 
