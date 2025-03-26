@@ -101,7 +101,7 @@ gem "mittsu", "~> 0.5"
 gem "mittsu-mesh_analysis"
 gem "mittsu-3mf"
 
-gem "view_component", "~> 3.21"
+gem "view_component", "~> 3.22"
 
 gem "rails-controller-testing", "~> 1.0", group: :test
 
