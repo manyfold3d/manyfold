@@ -1,14 +1,14 @@
 module ApplicationHelper
   def site_name
-    ENV.fetch("SITE_NAME", translate("application.title"))
+    SiteSettings.site_name.presence || translate("application.title")
   end
 
   def site_tagline
-    ENV.fetch("SITE_TAGLINE", t("application.tagline"))
+    SiteSettings.site_tagline.presence || t("application.tagline")
   end
 
   def site_icon
-    ENV.fetch("SITE_ICON", "roundel.svg")
+    SiteSettings.site_icon.presence || "roundel.svg"
   end
 
   def icon(icon, label, id: nil)

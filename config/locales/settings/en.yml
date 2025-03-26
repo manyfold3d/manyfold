@@ -9,7 +9,16 @@ en:
         label: Detect mesh errors
     appearance:
       heading: Appearance
-      summary: Customise the visual style of your instance.
+      site_icon:
+        help: Shown at the top left of each page
+        label: Logo URL
+      site_name:
+        help: The name of your site. Used in navigation and on the homepage.
+        label: Site name
+      site_tagline:
+        help: A few words to introduce your site, shown on the homepage.
+        label: Tagline
+      summary: Customise your instance.
       theme:
         help_html: Affects all users. Visit <a href="https://bootswatch.com">Bootswatch</a> to see previews.
         label: Theme

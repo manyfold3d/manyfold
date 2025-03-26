@@ -50,8 +50,7 @@ class ApplicationController < ActionController::Base
   end
 
   def img_src
-    url = ENV.fetch "SITE_ICON", nil
-    url ? URI.parse(url).host : nil
+    url = SiteSettings.site_icon ? URI.parse(SiteSettings.site_icon).host : nil
     [:self, :data, url, "https://cdn.jsdelivr.net"].compact
   end
 
