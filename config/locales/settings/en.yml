@@ -8,6 +8,9 @@ en:
         help: Check for non-manifold meshes (i.e. they have holes or impossible surfaces)
         label: Detect mesh errors
     appearance:
+      about:
+        help_html: Shown on the about page; You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+        label: About this instance
       heading: Appearance
       information: Information
       rules:

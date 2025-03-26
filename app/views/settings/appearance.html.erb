@@ -43,6 +43,7 @@
   </div>
   <hr>
   <h4><%= t(".information") %></h4>
+  <%= rich_text_input_row form, "appearance[about]", label: t(".about.label"), value: SiteSettings.about, help: t(".about.help_html") %>
   <%= rich_text_input_row form, "appearance[rules]", label: t(".rules.label"), value: SiteSettings.rules, help: t(".rules.help_html") %>
   <%= render "submit", form: form %>
 <% end %>
