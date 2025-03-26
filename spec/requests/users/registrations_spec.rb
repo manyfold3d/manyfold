@@ -277,7 +277,10 @@ RSpec.describe "Users::Registrations" do
       end
 
       describe "POST /users with approval disabled" do
-        before { post "/users", params: post_options }
+        before {
+          allow(SiteSettings).to receive(:approve_signups).and_return(false)
+          post "/users", params: post_options
+        }
 
         it "creates a new user" do
           expect(User.count).to eq 2
