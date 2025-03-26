@@ -19,6 +19,10 @@ Federails.configure do |conf|
   conf.remote_follow_url_method = :new_follow_url
 end
 
+Federails::Moderation.configure do |conf|
+  conf.after_report_created = ->(report) { ReportHandler.call(report) }
+end
+
 Rails.application.config.after_initialize do
   Fediverse::Inbox.register_handler("Create", "*", ActivityPub::ActorActivityHandler, :handle_create_activity)
   Fediverse::Inbox.register_handler("Update", "*", ActivityPub::ActorActivityHandler, :handle_update_activity)
