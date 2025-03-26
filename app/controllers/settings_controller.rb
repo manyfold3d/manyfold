@@ -32,6 +32,9 @@ class SettingsController < ApplicationController
 
   def update_appearance_settings(settings)
     return unless settings
+    SiteSettings.site_name = settings[:site_name]
+    SiteSettings.site_tagline = settings[:site_tagline]
+    SiteSettings.site_icon = settings[:site_icon]
     SiteSettings.theme = settings[:theme]
   end
 

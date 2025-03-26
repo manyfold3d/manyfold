@@ -24,6 +24,10 @@ class SiteSettings < RailsSettings::Base
   field :show_libraries, type: :boolean, default: false
   field :registration_enabled, type: :boolean, default: (ENV.fetch("REGISTRATION", nil) == "enabled")
 
+  field :site_name, type: :string, default: ENV.fetch("SITE_NAME", nil)
+  field :site_tagline, type: :string, default: ENV.fetch("SITE_TAGLINE", nil)
+  field :site_icon, type: :string, default: ENV.fetch("SITE_ICON", nil)
+
   validates :model_ignored_files, regex_array: {strict: true}
 
   def self.email_configured?
