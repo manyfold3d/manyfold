@@ -71,7 +71,9 @@ en:
       oidc: OpenID Connect configured?
       permissions: Permissions
       registration: Account registration
-      registration_open: Account registration open?
+      registration_open:
+        help: Lets visitors sign up for accounts.
+        label: Enable signup
       single_user_mode: Manyfold is running in single user mode.
     reporting:
       description_html: If you enable usage tracking, the following information will be sent once a day to <code>%{endpoint}</code>. The <code>id</code> is randomly generated when you enable tracking.
