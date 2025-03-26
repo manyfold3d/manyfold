@@ -16,8 +16,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: 036524a9354be6a0b81ad71d7abeda134d3f669e
-  branch: main
+  revision: 58e11556eb357129be1c50fc0d0418557ebcccbd
+  ref: 58e11556eb357129be1c50fc0d0418557ebcccbd
   specs:
     federails (0.5.0)
       faraday
