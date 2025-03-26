@@ -137,7 +137,7 @@ module ApplicationHelper
         form.label(name, options[:label], class: "col-auto col-form-label"),
         content_tag(:div, class: "col p-0") do
           safe_join [
-            form.text_area(name, class: "form-control col-auto"),
+            form.text_area(name, {class: "form-control col-auto"}.merge(options)),
             errors_for(form.object, name),
             (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
           ].compact
