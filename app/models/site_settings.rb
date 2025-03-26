@@ -22,12 +22,9 @@ class SiteSettings < RailsSettings::Base
   field :theme, type: :string, default: "default"
   field :default_library, type: :integer, default: nil
   field :show_libraries, type: :boolean, default: false
+  field :registration_enabled, type: :boolean, default: (ENV.fetch("REGISTRATION", nil) == "enabled")
 
   validates :model_ignored_files, regex_array: {strict: true}
-
-  def self.registration_enabled?
-    Rails.application.config.manyfold_features[:registration]
-  end
 
   def self.email_configured?
     !Rails.env.production? || ENV.fetch("SMTP_SERVER", false)
