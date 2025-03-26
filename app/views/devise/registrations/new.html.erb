@@ -1,5 +1,16 @@
 <h1><%= t(".sign_up") %></h1>
 
+<% if SiteSettings.rules.presence %>
+  <h2><%= t(".rules") %></h2>
+  <div class="alert alert-warning">
+    <%= markdownify(SiteSettings.rules) %>
+  </div>
+  <p>
+    <%= t(".rules_agree") %>
+  </p>
+<% end %>
+
+<h2><%= t(".details") %></h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
   <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
   <%= text_input_row form, :username, autocomplete: "username" %>

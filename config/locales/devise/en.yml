@@ -107,6 +107,9 @@ en:
           show: Show as normal
       new:
         approval_help: After creating your account, it will be manually reviewed by our moderators. We'll let you know when approval is complete and you can sign in.
+        details: Your Details
+        rules: Server Rules
+        rules_agree: By signing up for an account, you agree to abide by the rules above.
         sign_up: Sign up
       pagination_settings:
         collections:

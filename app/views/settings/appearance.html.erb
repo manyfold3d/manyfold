@@ -3,7 +3,7 @@
   <p class="lead"><%= t(".summary") %></p>
   <%= text_input_row form, "appearance[site_name]", label: t(".site_name.label"), value: SiteSettings.site_name, placeholder: t("application.title"), help: t(".site_name.help") %>
   <%= text_input_row form, "appearance[site_tagline]", label: t(".site_tagline.label"), value: SiteSettings.site_tagline, placeholder: t("application.tagline"), help: t(".site_tagline.help") %>
-  <%= text_input_row form, "appearance[site_icon]", label: t(".site_icon.label"), value: SiteSettings.site_icon, help: t(".site_icon.help") %>
+  <%= url_input_row form, "appearance[site_icon]", label: t(".site_icon.label"), value: SiteSettings.site_icon, help: t(".site_icon.help") %>
   <div class="row mb-3 input-group">
     <%= form.label nil, t(".theme.label"), for: "appearance[theme]", class: "col-auto col-form-label" %>
     <div class="col p-0">
@@ -41,5 +41,8 @@
       <span class="form-text"><%= t(".theme.help_html") %></span>
     </div>
   </div>
+  <hr>
+  <h4><%= t(".information") %></h4>
+  <%= rich_text_input_row form, "appearance[rules]", label: t(".rules.label"), value: SiteSettings.rules, help: t(".rules.help_html") %>
   <%= render "submit", form: form %>
 <% end %>
