@@ -91,6 +91,8 @@ de:
       update:
         ignored: Die Meldung wurde ignoriert
         resolved: Die Meldung wurde als Gelöst Markiert
+    show:
+      stats: Statistiken
     tag_settings:
       auto_tag_new:
         label: Automatisch neue Modelle mit Tag(s) markieren

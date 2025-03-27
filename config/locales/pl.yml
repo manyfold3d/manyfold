@@ -245,7 +245,6 @@ pl:
       open_source_html: Projekt Open Source na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencji MIT</a>.
       social: Sociale
       sponsor: Sponsoruj
-      stats_heading: Statystyki
       version: Wersja
     link_fields:
       url:

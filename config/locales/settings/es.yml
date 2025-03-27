@@ -91,6 +91,8 @@ es:
       update:
         ignored: El informe ha sido ignorado.
         resolved: El informe se ha marcado como resuelto.
+    show:
+      stats: Estadísticas
     tag_settings:
       auto_tag_new:
         label: Etiquetar automáticamente los nuevos modelos con

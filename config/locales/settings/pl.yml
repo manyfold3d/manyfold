@@ -91,6 +91,8 @@ pl:
       update:
         ignored: Zgłoszenie zostało zignorowane.
         resolved: Zgłoszenie zostało oznaczone jako rozwiązane.
+    show:
+      stats: Statystyki
     tag_settings:
       auto_tag_new:
         label: Automatycznie taguj nowe modele za pomocą
