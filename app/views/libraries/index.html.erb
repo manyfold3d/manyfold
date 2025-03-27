@@ -66,7 +66,7 @@
           <div class="row">
             <%= render StatBlockComponent.new(title: Model, value: model_count(library: library)) %>
             <%= render StatBlockComponent.new(title: ModelFile, value: model_file_count(library: library)) %>
-            <%= render StatBlockComponent.new(title: t(".total_file_size"), value: number_to_human_size(total_file_size(library: library), precision: 2)) %>
+            <%= render StatBlockComponent.new(title: t("settings.show.total_file_size"), value: number_to_human_size(total_file_size(library: library), precision: 2)) %>
           </div>
         </div>
       </div>

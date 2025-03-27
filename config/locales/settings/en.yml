@@ -106,6 +106,9 @@ en:
       update:
         ignored: The report has been ignored.
         resolved: The report has been marked as resolved.
+    show:
+      stats: Statistics
+      total_file_size: Total file size
     tag_settings:
       auto_tag_new:
         label: Automatically tag new models with
