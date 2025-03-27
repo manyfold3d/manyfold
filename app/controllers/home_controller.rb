@@ -6,6 +6,10 @@ class HomeController < ApplicationController
     @feed = Timeline.local for_user: current_user
   end
 
+  def about
+    skip_authorization
+  end
+
   private
 
   def check_library_exists
