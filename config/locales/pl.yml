@@ -239,7 +239,7 @@ pl:
       by_html: Zaprojektowany i stworzony przez <a href="https://floppy.org.uk" target="_blank">Jamesa</a> z pomocą od <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">naszych współautorów</a>.
       chat: Czat
       code: Kod
-      community_heading: Społeczność
+      community: Społeczność
       development_heading: Rozwój
       issues: Problemy
       open_source_html: Projekt Open Source na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencji MIT</a>.
