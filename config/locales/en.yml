@@ -248,7 +248,6 @@ en:
       open_source_html: Open Source under the <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT license</a>.
       social: Social
       sponsor: Sponsor
-      stats_heading: Stats
       version: Version
     link_fields:
       url:

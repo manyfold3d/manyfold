@@ -239,14 +239,6 @@ module ApplicationHelper
     end
   end
 
-  def model_count
-    policy_scope(Model).count
-  end
-
-  def model_file_count
-    policy_scope(ModelFile).without_special.count
-  end
-
   def oembed_params
     params.permit(:maxwidth, :maxheight)
   end

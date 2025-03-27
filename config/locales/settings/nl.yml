@@ -91,6 +91,8 @@ nl:
       update:
         ignored: De melding is genegeerd.
         resolved: De melding is gemarkeerd als opgelost.
+    show:
+      stats: Statistieken
     tag_settings:
       auto_tag_new:
         label: Tag nieuwe modellen automatisch met
