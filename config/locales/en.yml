@@ -246,6 +246,7 @@ en:
       development_heading: Development
       issues: Issues
       open_source_html: Open Source under the <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT license</a>.
+      powered_by_html: Powered by <a href="https://manyfold.app">%{name}</a>
       social: Social
       sponsor: Sponsor
       version: Version
