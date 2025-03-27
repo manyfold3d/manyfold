@@ -237,13 +237,9 @@ nl:
       unknown: Onbekend
     footer:
       by_html: Ontworpen en gebouwd door <a href="https://floppy.org.uk" target="_blank">James</a> met hulp van <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">onze bijdragers</a>.
-      chat: Chat
-      code: Code
-      community_heading: Gemeenschap
-      development_heading: Ontwikkeling
+      community: Gemeenschap
       issues: Problemen
-      open_source_html: Open Source onder de <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT-licentie</a>.
-      social: Sociaal
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> onder de <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT-licentie</a>.
       sponsor: Sponsor
       version: Versie
     link_fields:

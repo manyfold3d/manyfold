@@ -237,13 +237,9 @@ pl:
       unknown: Nieznany
     footer:
       by_html: Zaprojektowany i stworzony przez <a href="https://floppy.org.uk" target="_blank">Jamesa</a> z pomocą od <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">naszych współautorów</a>.
-      chat: Czat
-      code: Kod
-      community_heading: Społeczność
-      development_heading: Rozwój
+      community: Społeczność
       issues: Problemy
-      open_source_html: Projekt Open Source na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencji MIT</a>.
-      social: Sociale
+      open_source_html: Projekt <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencji MIT</a>.
       sponsor: Sponsoruj
       version: Wersja
     link_fields:
