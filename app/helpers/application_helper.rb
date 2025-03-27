@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def site_name
-    SiteSettings.site_name.presence || translate("application.title")
+  def site_name(default: translate("application.title"))
+    SiteSettings.site_name.presence || default
   end
 
   def site_tagline
