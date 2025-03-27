@@ -1,4 +1,19 @@
+<h3><%= t(".stats") %></h3>
+
+<div class="row">
+  <%= render StatBlockComponent.new(title: Model, value: model_count) %>
+  <%= render StatBlockComponent.new(title: ModelFile, value: model_file_count) %>
+  <%= render StatBlockComponent.new(title: Creator, value: creator_count) %>
+  <%= render StatBlockComponent.new(title: Collection, value: collection_count) %>
+  <%= render StatBlockComponent.new(title: User, value: user_count) %>
+  <%= render StatBlockComponent.new(title: ActsAsTaggableOn::Tag, value: tag_count) %>
+  <%= render StatBlockComponent.new(title: t(".total_file_size"), value: number_to_human_size(total_file_size, precision: 2)) %>
+</div>
+
+<hr>
+
 <%= form_with url: settings_path, method: :patch do |form| %>
+
   <%= render "folder_settings", form: form %>
   <hr>
   <%= render "file_settings", form: form %>
