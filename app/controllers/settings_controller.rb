@@ -38,6 +38,7 @@ class SettingsController < ApplicationController
     SiteSettings.theme = settings[:theme]
     SiteSettings.about = settings[:about]
     SiteSettings.rules = settings[:rules]
+    SiteSettings.support_link = settings[:support_link]
   end
 
   def update_library_settings(settings)

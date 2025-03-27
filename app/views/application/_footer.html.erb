@@ -19,6 +19,9 @@
       <h5><%= site_name(default: t(".instance_heading")) %></h5>
       <ul class="list-unstyled">
         <li class="mb-2"><%= link_to t(".about"), about_path %></li>
+        <% if SiteSettings.support_link.presence %>
+          <li class="mb-2"><a href="<%= SiteSettings.support_link %>" target="_blank"><%= t ".support" %></a></li>
+        <% end %>
         <li class="mb-2"><%= link_to t(".api"), api_url, rel: "noopener", target: "_blank" %></li>
       </ul>
     </div>

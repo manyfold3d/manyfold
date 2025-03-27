@@ -26,6 +26,9 @@ en:
         help: A few words to introduce your site, shown on the homepage.
         label: Tagline
       summary: Customise your instance.
+      support_link:
+        help: A link to a place where your users can support the instance financially (e.g. OpenCollective, Patreon). Shown in footer.
+        label: Support link
       theme:
         help_html: Affects all users. Visit <a href="https://bootswatch.com">Bootswatch</a> to see previews.
         label: Theme
