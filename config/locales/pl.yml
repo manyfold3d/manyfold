@@ -242,7 +242,7 @@ pl:
       community: Społeczność
       development_heading: Rozwój
       issues: Problemy
-      open_source_html: Projekt Open Source na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencji MIT</a>.
+      open_source_html: Projekt <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencji MIT</a>.
       social: Sociale
       sponsor: Sponsoruj
       version: Wersja

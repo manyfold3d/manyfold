@@ -242,7 +242,7 @@ nl:
       community: Gemeenschap
       development_heading: Ontwikkeling
       issues: Problemen
-      open_source_html: Open Source onder de <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT-licentie</a>.
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> onder de <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT-licentie</a>.
       social: Sociaal
       sponsor: Sponsor
       version: Versie
