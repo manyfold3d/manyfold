@@ -16,8 +16,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: 2d0f48121c1afb71b3e3cbd210f31d66bfd09ae4
-  branch: open-registrations-proc
+  revision: 58e4e271c608d7f2a8bbdcf35f45e174f6e199b4
+  branch: manu/rework-local-improved
   specs:
     federails (0.5.0)
       faraday
@@ -409,7 +409,7 @@ GEM
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     locale (2.1.4)
-    logger (1.6.6)
+    logger (1.7.0)
     lograge (0.14.0)
       actionpack (>= 4)
       activesupport (>= 4)

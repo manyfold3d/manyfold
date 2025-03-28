@@ -8,7 +8,7 @@ RSpec.describe ActivityPub::ModelDeserializer do
       create(:library)
     end
 
-    let(:actor) { create(:model_actor) }
+    let(:actor) { create(:actor, :distant, :f3di_model) }
     let(:output) { deserializer.create! }
 
     it_behaves_like "GenericDeserializer"
