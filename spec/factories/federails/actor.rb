@@ -2,14 +2,6 @@ FactoryBot.define do
   factory :actor, class: "Federails::Actor" do
     name { Faker::Name.name }
     entity { nil }
-    federated_url { "https://example.com/actors/#{rand(1...10_000)}" }
-    username { Faker::Internet.username separators: ["-", "_"] }
-    server { "example.com" }
-    inbox_url { "#{federated_url}/inbox" }
-    outbox_url { "#{federated_url}/outbox" }
-    followers_url { "#{federated_url}/followers" }
-    followings_url { "#{federated_url}/followings" }
-    profile_url { "https://example.com/users/#{federated_url.split("/").last}" }
     extensions {
       {
         summary: Faker::Lorem.sentence,
@@ -27,7 +19,19 @@ FactoryBot.define do
       }
     }
 
-    factory :model_actor do
+    trait :distant do
+      local { false }
+      federated_url { "https://example.com/actors/#{rand(1...10_000)}" }
+      username { Faker::Internet.username separators: ["-", "_"] }
+      server { "example.com" }
+      inbox_url { "#{federated_url}/inbox" }
+      outbox_url { "#{federated_url}/outbox" }
+      followers_url { "#{federated_url}/followers" }
+      followings_url { "#{federated_url}/followings" }
+      profile_url { "https://example.com/users/#{federated_url.split("/").last}" }
+    end
+
+    trait :f3di_model do
       extensions {
         {
           tag: [
@@ -48,6 +52,46 @@ FactoryBot.define do
           "spdx:license": {
             "spdx:licenseId": "MIT"
           },
+          attachment: [
+            {
+              "type" => "Link",
+              "href" => "https://example.org"
+            },
+            {
+              "type" => "Ignored",
+              "href" => "https://example.org"
+            }
+          ]
+        }
+      }
+    end
+
+    trait :f3di_creator do
+      extensions {
+        {
+          summary: Faker::Lorem.sentence,
+          content: Faker::Lorem.paragraph,
+          "f3di:concreteType": "Creator",
+          attachment: [
+            {
+              "type" => "Link",
+              "href" => "https://example.org"
+            },
+            {
+              "type" => "Ignored",
+              "href" => "https://example.org"
+            }
+          ]
+        }
+      }
+    end
+
+    trait :f3di_collection do
+      extensions {
+        {
+          summary: Faker::Lorem.sentence,
+          content: Faker::Lorem.paragraph,
+          "f3di:concreteType": "Creator",
           attachment: [
             {
               "type" => "Link",
