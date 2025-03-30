@@ -1,0 +1,41 @@
+---
+cs:
+  model_files:
+    bulk_edit:
+      description: 'Vyberte soubory, které chcete změnit:'
+      form_subtitle: 'Vyberte změny, které chcete provést:'
+      pattern: Najít
+      rename: Přejmenovat soubory
+      replacement: Nahradit
+      select: Vybrat soubor '%{name}'
+      select_all: Vybrat všechny soubory
+      split: Rozdělit vybrané soubory do nového modelu
+      submit: Aktualizace vybraných souborů
+      title: Hromadné úpravy souborů
+    bulk_update:
+      success: Soubory byly úspěšně aktualizovány.
+    create:
+      conversion_started: Konverze souborů byla zahájena. Převedený soubor by měl být brzy k dispozici.
+      success: Soubory byly úspěšně nahrány!
+    destroy:
+      confirm: Opravdu chcete tento soubor odstranit ze svého souborového systému?
+      success: Soubor smazán!
+    download:
+      bambu: Otevřít v Bambu Studio
+      cura: Otevřít v Ultimaker Cura
+      orca: Otevřít v OrcaSlicer
+      prusa: Otevřít v PrusaSlicer
+    form:
+      notes:
+        help_html: Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+    general:
+      edit: Upravit informace o souboru
+    show:
+      convert: Převést do 3MF
+      details_heading: Detaily
+      download:
+        menu_header: Možnosti stahování
+      notes_heading: Poznámky
+    update:
+      failure: Došlo k chybě a údaje o souboru nelze uložit.
+      success: Detaily souboru uloženy.

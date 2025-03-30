@@ -1,0 +1,161 @@
+---
+cs:
+  settings:
+    analysis:
+      description: Provádění hloubkové analýzy modelů. Tyto možnosti způsobí, že kontrola bude trvat podstatně déle a bude využívat mnohem více procesoru a paměti.
+      heading: Analýza modelu
+      manifold:
+        help: Zkontrolovat, zda nejsou modely nemanifoldní (tj. zda nemají díry nebo nereálné povrchy)
+        label: Detekovat chyby v modelu
+    appearance:
+      about:
+        help_html:
+        label:
+      heading: Vzhled
+      information:
+      rules:
+        help_html:
+        label:
+      site_icon:
+        help:
+        label:
+      site_name:
+        help:
+        label:
+      site_tagline:
+        help:
+        label: Popisek
+      summary: Přizpůsobte vizuální styl Vaší instance.
+      support_link:
+        help:
+        label:
+      theme:
+        help_html: Týká se všech uživatelů. Pro zobrazení náhledů navštivte <a href="https://bootswatch.com">Bootswatch</a>.
+        label: Téma
+    domain_blocks:
+      create:
+        success: Blok domény byl úspěšně vytvořen.
+      destroy:
+        success: Blok domény odstraněn.
+      index:
+        confirm_destroy: Jste si jisti, že chcete tento blok domény odstranit a znovu povolit federaci?
+        description: Bloky domén zabraňují federaci se servery ActivityPub na zadaných doménách, včetně všech subdomén.
+        new: Nový blok domény
+        title: Bloky domén
+      new:
+        submit: Blokovat doménu
+        title: Nový blok domény
+    file_settings:
+      custom_ignore_filters:
+        details: Filtry jsou ve formátu regex oddělené novým řádkem.
+        label: Regex filtry ignorovaných souborů.
+      summary: Změna nastavení souborů, například ignorované soubory.
+      title: Nastavení souborů
+    folder_settings:
+      details: Struktura složky se řídí šablonou, kterou definujete pomocí tokenů. Do šablony můžete zahrnout i jiný text (například oddělovače složek) a bude zahrnut tak, jak je.
+      model_path_template:
+        label: Šablona cesty modelu
+      parse_metadata_from_path:
+        help: Nastaví autora, kolekci a štítky na základě šablony
+        label: Vyplnění metadat z cesty a šablony během kontroly
+      safe_folder_names:
+        help_html: např. <code>spinal-tap</code> místo <code>Spın̈al Tap</code>
+        label: Použít bezpečné názvy složek
+      summary: Definujte strukturu složek používanou pro "uspořádání souborů" a pro automatické doplňování metadat během kontroly. Týká se všech uživatelů.
+      title: Pojmenování složek
+      tokens:
+        collection: Název kolekce, ve které se model nachází, je-li nastavena.
+        creator: Jméno autora, je-li nastaveno.
+        model_id: Jedinečný číselný identifikátor modelu. Důrazně doporučujeme, aby byl vždy uveden na konci šablony, aby se předešlo konfliktům názvů na disku.
+        model_name: Verze názvu modelu bezpečná pro souborový systém.
+        tags_html: 'řada vnořených složek, jedna pro každý štítek, uspořádaných podle oblíbenosti štítků. Například: <code>fantasy/lidé/čarodějové</code>'
+    general:
+      submit: Uložit nastavení
+    multiuser:
+      approve_signups:
+        help: Všechny nové účty musí před přihlášením schválit moderátor.
+        label: Schválit účty
+      default_viewer_role:
+        help: Kdo může ve výchozím nastavení zobrazovat nové modely / autory / kolekce?
+        label: Výchozí viditelnost
+        options:
+          member: Přihlášení lokální uživatelé
+          none: Soukromé
+      details_html: Chcete-li tato nastavení změnit, upravte <a href='https://manyfold.app/sysadmin/configuration.html'>proměnné prostředí</a> serveru a restartujte jej.
+      email: Doručování e-mailů nakonfigurováno?
+      federation: Federace povolena?
+      heading: Více uživatelů
+      multiuser: Víceuživatelský režim?
+      multiuser_mode: Manyfold je spuštěn ve víceuživatelském režimu.
+      oidc: Nastaveno OpenID Connect?
+      permissions: Oprávnění
+      registration: Registrace účtu
+      registration_open:
+        help:
+        label:
+      single_user_mode: Manyfold je spuštěn v režimu jednoho uživatele.
+    reporting:
+      description_html: Pokud povolíte sledování používání, budou na adresu <code>%{endpoint}</code> jednou denně odesílány následující informace. <code>Id</code> je náhodně vygenerováno při povolení sledování.
+      heading: Sledování používání
+      report_usage:
+        label: Povolení anonymního sledování používání
+      summary: Upozornit vývojáře, že používáte Manyfold.
+      use_of_data: Žádné další informace se neodesílají ani neukládají a vývojáři je nikdy nepoužijí k jiným účelům než k měření počtu spuštěných instancí Manyfoldu a jejich verzí.
+      verification_html: Pokud chcete ověřit, co odesíláme, můžete změnit proměnnou prostředí <code>USAGE_REPORTING_URL</code> a odeslat data někam, kde je můžete zkontrolovat. V protokolu také můžete vidět, co přesně se odesílá.
+    reports:
+      index:
+        description: Obsah nahlášený místními uživateli nebo uživateli Fediverse se zde zobrazuje ke kontrole.
+        title: Hlášení
+      show:
+        ignore: Ignorovat
+        resolve: Označit jako vyřešené
+      update:
+        ignored: Hlášení bylo ignorováno.
+        resolved: Hlášení bylo označeno jako vyřešené.
+    show:
+      stats:
+      total_file_size:
+    tag_settings:
+      auto_tag_new:
+        label: Automaticky označit nové modely
+      custom_stop_words:
+        label: 'Vlastní stopslova '
+      description: Přidávat štítky ke všem nově naskenovaným modelům a při automatickém vytváření štítků filtrovat určitá slova ("stopslova"). Týká se všech uživatelů.
+      filter_stop_words:
+        label: Filtrovat stopslova
+      heading: Označování
+      stop_words_locale:
+        label: Lokalizace stopslov
+      tag_model_directory_name:
+        help: 'Varování: Může produkovat velké množství štítků!'
+        label: Vytvoření štítků z názvu adresáře modelu
+    update:
+      success: Nastavení uloženo.
+    users:
+      create:
+        success: Uživatel byl úspěšně vytvořen.
+      destroy:
+        success: Uživatel odstraněn!
+      edit:
+        title: 'Upravit uživatele: %{username}'
+      form:
+        password_reset_help: Uživateli bude automaticky odeslán odkaz, aby si mohl nastavit vlastní heslo.
+        submit: Uložit
+      index:
+        description: Zobrazit a úpravit účty registrovaných uživatelů.
+        fediverse_address: Adresa Fediverse
+        local: Lokální
+        new: Nový uživatel
+        title: Spravovat uživatele
+        view: Zobrazit
+      new:
+        title: Vytvořit uživatele
+      show:
+        approve: Schválit uživatele
+        confirm_destroy: Opravdu chcete tento uživatelský účet okamžitě odebrat? To nelze vzít zpět!
+        reset_password: Obnovit heslo
+        title: 'Detaily uživatele: %{username}'
+      update:
+        approved: Uživatel byl úspěšně schválen.
+        reset_link_sent: Uživateli byl zaslán odkaz, aby si mohl nastavit nové heslo.
+        success: Uživatel byl úspěšně aktualizován.
