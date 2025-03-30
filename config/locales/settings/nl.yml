@@ -8,8 +8,27 @@ nl:
         help: Controleer op niet-manifold meshes (d.w.z. ze hebben gaten of onmogelijke oppervlakken)
         label: Detecteer mesh-fouten
     appearance:
+      about:
+        help_html:
+        label:
       heading:
+      information:
+      rules:
+        help_html:
+        label:
+      site_icon:
+        help:
+        label:
+      site_name:
+        help:
+        label:
+      site_tagline:
+        help:
+        label: Tagline
       summary:
+      support_link:
+        help:
+        label:
       theme:
         help_html:
         label:
@@ -71,7 +90,9 @@ nl:
       oidc: OpenID Connect geconfigureerd?
       permissions: Machtigingen
       registration: Accountregistratie
-      registration_open: Accountregistratie open?
+      registration_open:
+        help:
+        label:
       single_user_mode: Manyfold draait in enkele-gebruiker modus.
     reporting:
       description_html: Als je gebruiksregistratie inschakelt, wordt de volgende informatie eenmaal per dag verzonden naar <code>%{endpoint}</code>. De <code>id</code> wordt willekeurig gegenereerd wanneer je registratie inschakelt.
@@ -92,7 +113,8 @@ nl:
         ignored: De melding is genegeerd.
         resolved: De melding is gemarkeerd als opgelost.
     show:
-      stats: Statistieken
+      stats:
+      total_file_size:
     tag_settings:
       auto_tag_new:
         label: Tag nieuwe modellen automatisch met

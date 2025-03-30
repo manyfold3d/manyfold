@@ -8,8 +8,27 @@ fr:
         help: Detection de maillages non-manifold (par exemple, si il y a des trous ou des surfaces impossibles)
         label: Détecter les erreurs de maillage
     appearance:
+      about:
+        help_html:
+        label:
       heading:
+      information:
+      rules:
+        help_html:
+        label:
+      site_icon:
+        help:
+        label:
+      site_name:
+        help:
+        label:
+      site_tagline:
+        help:
+        label: Légende
       summary:
+      support_link:
+        help:
+        label:
       theme:
         help_html:
         label:
@@ -71,7 +90,9 @@ fr:
       oidc: OpenID Connect est-il configuré ?
       permissions: Permissions
       registration: Enregistrement de comptes
-      registration_open: Est-il possible d'enregistrer de nouveaux comptes ?
+      registration_open:
+        help:
+        label:
       single_user_mode: Manyfold fonctionne en mode mono-utilisateur.
     reporting:
       description_html: Si vous activez le suivi de l'utilisation, les informations suivantes seront envoyées une fois par jour à <code>%{endpoint}.</code> L'<code>identifiant</code> est généré de manière aléatoire lorsque vous activez le suivi.
@@ -92,7 +113,8 @@ fr:
         ignored: Le rapport a été ignoré.
         resolved: Le rapport a été marqué comme résolu.
     show:
-      stats: Statistiques
+      stats:
+      total_file_size:
     tag_settings:
       auto_tag_new:
         label: Etiqueter automatiquement les nouveaux modèles

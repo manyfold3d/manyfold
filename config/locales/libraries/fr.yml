@@ -10,7 +10,11 @@ fr:
       add_line: Ajouter une ligne
       caption:
         help: Facultatif ; s'affiche sous forme d'info-bulle sur les liens de la bibliothèque.
+      confirm_destroy:
+        help:
       create_path_if_not_on_disk:
+        help:
+      default:
         help:
       filesystem_description_html: Pour utiliser le stockage sur votre système de fichiers local, assurez-vous tout d'abord qu'il est monté en tant que <a href="https://docs.docker.com/storage/bind-mounts/">"bind mount"</a> ou autre volume dans votre conteneur Docker, puis entrez le chemin d'accès Docker ; pas le chemin d'accès sur votre serveur hôte ! Par exemple, si vous avez un répertoire plein de fichiers dans <code>/mnt/media/3d/models</code> sur votre hôte, et que vous avez lié <code>/mnt/media/3d</code> à <code>/libraries</code> dans votre configuration Docker, le chemin requis serait <code>/libraries/models</code>.
       icon:
@@ -37,6 +41,10 @@ fr:
       free_space:
         label: Espace libre
       heading: Bibliothèques
+      settings:
+      show:
+        help:
+        label:
       tag_regex:
         check: Vérifier
         search_missing: Recherche manquante
