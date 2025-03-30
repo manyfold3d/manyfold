@@ -11,6 +11,7 @@ fr:
         caption: Légende
         name: Nom
         notes: Notes
+        slug:
       federails/moderation/domain_block:
         created_at: Enregistré à
         domain: Domaine
@@ -22,6 +23,7 @@ fr:
       library:
         caption: Légende
         create_path_if_not_on_disk:
+        default:
         icon: Icône
         name: Nom
         notes: Notes
@@ -236,11 +238,16 @@ fr:
       title: Filtres
       unknown: Inconnu
     footer:
+      about:
+      api:
       by_html: Conçu et réalisé par <a href="https://floppy.org.uk" target="_blank">James</a> avec l'aide de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">nos contributeurs</a>.
-      community: Communauté
+      community:
+      instance_heading:
       issues: Problèmes
-      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> sous <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licence MIT.</a>
+      open_source_html: Open Source sous <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licence MIT.</a>
+      powered_by_html:
       sponsor: Sponsor
+      support:
       version: Version
     link_fields:
       url:
@@ -407,6 +414,15 @@ fr:
     open_button:
       label: Ouvrir le modèle %{name}
       text: Ouvrir
+  moderator_mailer:
+    new_approval:
+      greeting: Bonjour !
+      message:
+      subject:
+    new_report:
+      greeting: Bonjour !
+      message:
+      subject:
   renderer:
     errors:
       canvas: 'Impossible de trouver le canevas #webgl !'

@@ -20,6 +20,11 @@ fr:
     destroy:
       confirm: Êtes-vous sûr de vouloir supprimer ce fichier de votre système de fichiers ?
       success: Fichier supprimé !
+    download:
+      bambu:
+      cura:
+      orca:
+      prusa:
     form:
       notes:
         help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
@@ -28,6 +33,8 @@ fr:
     show:
       convert: Convertir en 3MF
       details_heading: Détails
+      download:
+        menu_header:
       notes_heading: Notes
     update:
       failure: Une erreur s'est produite et les détails du fichier n'ont pas pu être sauvegardés.

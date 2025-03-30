@@ -20,6 +20,11 @@ es:
     destroy:
       confirm: "¿Estás seguro de que quieres eliminar este archivo del sistema?"
       success: "¡Fichero eliminado!"
+    download:
+      bambu: Abrir en Bambu Studio
+      cura: Abrir en Ultimaker Cura
+      orca: Abrir en OrcaSlicer
+      prusa: Abrir en PrusaSlicer
     form:
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
@@ -28,6 +33,8 @@ es:
     show:
       convert: Convertir a 3MF
       details_heading: Detalles
+      download:
+        menu_header: Opciones de Descarga
       notes_heading: Notas
     update:
       failure: Se ha producido un error y no se ha podido guardar la información del fichero.
