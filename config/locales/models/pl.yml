@@ -22,9 +22,12 @@ pl:
       success: Model usunięty!
     exceeds_max_size: 'Wybrany plik przekracza maksymalny rozmiar: %{max_size} MiB.'
     file:
+      delete: Usuń plik
+      edit: Edytuj plik
       open_button:
         label: Wyświetl szczegóły %{name}
         text: Otwórz
+      presupported:
       set_as_preview: Ustaw jako podgląd
     form:
       notes:

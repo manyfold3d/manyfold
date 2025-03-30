@@ -17,6 +17,8 @@ pl:
     form:
       notes:
         help_html: Możesz używać <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      slug:
+        help: Używany w adresach URL i jako nazwa użytkownika Fediverse (jeśli jest włączona).
     general:
       edit: Edytuj Twórcę
       new: Nowy Twórca
