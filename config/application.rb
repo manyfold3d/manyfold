@@ -42,12 +42,13 @@ module Manyfold
     config.i18n.fallbacks = true
     config.i18n.default_locale = :en
     config.i18n.available_locales = [
-      :en,
+      :cs,
       :de,
+      :en,
       :es,
       :fr,
-      :pl,
-      :nl
+      :nl,
+      :pl
     ]
 
     # Don't generate system test files.

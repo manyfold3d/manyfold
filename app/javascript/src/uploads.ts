@@ -2,12 +2,15 @@ import Uppy from '@uppy/core'
 import Dashboard from '@uppy/dashboard'
 import Tus from '@uppy/tus'
 
-import en from '@uppy/locales/lib/en_US'
-import fr from '@uppy/locales/lib/fr_FR'
+import cs from '@uppy/locales/lib/cs_CZ'
 import de from '@uppy/locales/lib/de_DE'
+import en from '@uppy/locales/lib/en_US'
+import es from '@uppy/locales/lib/es_ES'
+import fr from '@uppy/locales/lib/fr_FR'
+import nl from '@uppy/locales/lib/nl_NL'
 import pl from '@uppy/locales/lib/pl_PL'
 
-const uppyLocales = { en, de, fr, pl }
+const uppyLocales = { cs, de, en, es, fr, nl, pl }
 
 document.addEventListener('ManyfoldReady', () => {
   document.querySelectorAll('#uppy').forEach((element: HTMLDivElement) => {

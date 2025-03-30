@@ -10,9 +10,11 @@ unless ENV["RACK_ENV"] === "production"
 end
 
 locales = [
+  :cs,
   :de,
   :es,
   :fr,
+  :nl,
   :pl
 ]
 
