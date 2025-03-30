@@ -4,12 +4,13 @@
 base_locale: en
 ## All available locales are inferred from the data by default. Alternatively, specify them explicitly:
 locales: [
+  cs,
+  de,
   en,
   es,
-  de,
   fr,
-  pl,
-  nl
+  nl,
+  pl
 ]
 ## Reporting locale, default: en. Available: en, ru.
 # internal_locale: en

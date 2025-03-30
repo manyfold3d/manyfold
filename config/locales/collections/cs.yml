@@ -1,0 +1,33 @@
+---
+cs:
+  collections:
+    collection:
+      collections_button:
+        label: Zobrazit podkolekce v %{name}
+      edit_button:
+        label: Upravit kolekci %{name}
+        text: Upravit
+      models_button:
+        label: Zobrazit modely v %{name}
+      no_preview: Není k dispozici žádný náhled
+    create:
+      success: Nové údaje o kolekci uloženy.
+    destroy:
+      success: Kolekce smazána!
+    form:
+      notes:
+        help_html: Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+    general:
+      edit: Upravit kolekci
+      new: Nová kolekce
+    get_collection:
+      unknown: Neznámé
+    index:
+      skip_collections: Přeskočit seznam kolekcí
+    show:
+      edit: Upravit kolekci
+    unassigned:
+      caption: Všechny modely mimo kolekci.
+      name: Nepřiřazeno
+    update:
+      success: Detaily kolekce uloženy.

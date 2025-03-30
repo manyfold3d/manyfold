@@ -1,0 +1,35 @@
+---
+cs:
+  creators:
+    create:
+      success: Detaily nového autora uloženy.
+    creator:
+      edit_button:
+        label: Upravit autora%{name}
+        text: Upravit
+      models_button:
+        label: Zobrazit modely podle %{name}
+        remote_label: Zobrazit lokální modely podle %{name}
+      visit_button:
+        label: Navštívit
+    destroy:
+      success: Autor smazán!
+    form:
+      notes:
+        help_html: Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      slug:
+        help: Používá se v adresách URL a jako uživatelské jméno Fediverse (je-li povoleno).
+    general:
+      edit: Upravit autora
+      new: Nový autor
+    get_creator:
+      unknown: Neznámý
+    index:
+      skip_creators: Přeskočit seznam autorů
+    show:
+      edit: Upravit profil autora
+    unassigned:
+      caption: Všechny modely bez známého autora.
+      name: Nepřiřazeno
+    update:
+      success: Detaily autora uloženy.
