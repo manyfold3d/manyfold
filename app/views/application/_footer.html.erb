@@ -8,11 +8,13 @@
       <ul class="list-unstyled small text-muted">
         <li class="mb-2"><%= t ".by_html" %></li>
         <li class="mb-2"><%= t ".open_source_html" %></li>
-        <li class="mb-2"><%= t ".version" %>:
-          <%= link_to "#{Rails.application.config.app_version} (#{Rails.application.config.git_sha.first(8)})",
-                "#{Rails.application.config.upstream_repo}/tree/#{Rails.application.config.git_sha}",
-                target: "_blank", rel: "noopener" %>
-        </li>
+        <% if current_user&.is_administrator? %>
+          <li class="mb-2"><%= t ".version" %>:
+            <%= link_to "#{Rails.application.config.app_version} (#{Rails.application.config.git_sha.first(8)})",
+                  "#{Rails.application.config.upstream_repo}/tree/#{Rails.application.config.git_sha}",
+                  target: "_blank", rel: "noopener" %>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div class="col-4 col-lg-2 mb-3">
