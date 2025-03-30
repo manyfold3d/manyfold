@@ -88,6 +88,8 @@ de:
       first_use:
         email_help: Wird nie öffentlich angezeigt; wird nur für Anmelde- und Kontosicherheits-E-Mails verwendet.
         guidance: Bei der ersten Verwendung musst du einen Benutzernamen, eine Kontakt-E-Mail und ein Passwort für den Administrator festlegen. Im Einzelbenutzermodus musst du diese Angaben normalerweise nicht machen, um dich anzumelden, aber im Mehrbenutzermodus kannst du ohne diese Angaben nicht auf Manyfold zugreifen.
+        password:
+          help_html: Wir verlangen standardmäßig ein starkes Passwort; um ein einfacheres Passwort auf einer privaten Instanz zu erlauben, setze die Umgebungsvariable <a href="https://manyfold.app/sysadmin/configuration.html#min_password_score">MIN_PASSWORD_SCORE</a>.
         submit: Speichern
         title: Einrichtung
         username_help: Einen eindeutigen Benutzernamen; verwende den vordefinierten oder wähle einen eigenen.
@@ -105,6 +107,9 @@ de:
           show: Ganz normal anzeigen
       new:
         approval_help: Nachdem du dein Konto erstellt hast, wird es manuell von unseren Moderatoren überprüft. Wir werden dich benachrichtigen, wenn die Prüfung abgeschlossen ist und dich anmelden kannst.
+        details: Deine Details
+        rules: Server-Regeln
+        rules_agree: Indem du dich für ein Konto anmelden, erklärst du die oben genannten Regeln einzuhalten.
         sign_up: Registrieren
       pagination_settings:
         collections:

@@ -11,6 +11,7 @@ de:
         caption: Beschreibung
         name: Name
         notes: Beschreibung
+        slug: Handgriff
       federails/moderation/domain_block:
         created_at: Erstellt am
         domain: Domain
@@ -22,6 +23,7 @@ de:
       library:
         caption: Beschreibung
         create_path_if_not_on_disk: Ordner automatisch erstellen
+        default: Standard
         icon: Symbol
         name: Name
         notes: Notizen
@@ -236,11 +238,16 @@ de:
       title: Filter
       unknown: Unbekannt
     footer:
-      by_html: Entworfen und erstellt von <a href="https://floppy.org.uk" target="_blank">James</a> mit Hilfe von  <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">our contributors</a>.
-      community: Community
-      issues: Bugs
-      open_source_html: '<a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> unter dieser Lizenz: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT license</a>'
-      sponsor: Sponsoren
+      about: Über diese Instanz
+      api: Erkunde unsere API
+      by_html: Entworfen und erstellt von <a href="https://floppy.org.uk" target="_blank">James</a> mit Hilfe  <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">unserer Mitwirkenden</a>.
+      community: Tritt der Community bei
+      instance_heading: Details zur Instanz
+      issues: Einen Fehler melden
+      open_source_html: '<a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> unter dieser Lizenz: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT license</a>.'
+      powered_by_html: Powered by <a href="https://manyfold.app">%{name}</a>
+      sponsor: Entwickler unterstützen
+      support: Diese Instanz unterstützen
       version: Version
     link_fields:
       url:
@@ -262,7 +269,7 @@ de:
       scan_changes: Nach Änderungen suchen
       scanning: Scannen
       search: Suche
-      settings: Website-Einstellungen
+      settings: Admin-Einstellungen
       upload: Hochladen
     order_buttons:
       sort:
@@ -407,6 +414,15 @@ de:
     open_button:
       label: Öffne Modell %{name}
       text: Öffnen
+  moderator_mailer:
+    new_approval:
+      greeting: Hallo!
+      message: Eine neue Person hat sich für ein Konto angemeldet und benötigt eine Genehmigung. Genehmige das Konto hier %{link}
+      subject: Neues Konto muss genehmigt werden
+    new_report:
+      greeting: Hallo!
+      message: Jemand hat Inhalte gemeldet, die moderiert werden müssen. Überprüfe den Bericht unter %{link}
+      subject: Neuer Bericht eingegangen
   renderer:
     errors:
       canvas: 'Konnte #webgl canvas nicht finden!'
