@@ -22,9 +22,12 @@ es:
       success: "¡Modelo eliminado!"
     exceeds_max_size: 'El archivo seleccionado supera el tamaño máximo: %{max_size} MiB.'
     file:
+      delete: Eliminar fichero
+      edit: Editar fichero
       open_button:
         label: Ver detalles de %{name}
         text: Abrir
+      presupported: Versión con soporte predefinido
       set_as_preview: Establecer como vista previa
     form:
       notes:

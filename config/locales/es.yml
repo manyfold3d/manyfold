@@ -11,6 +11,7 @@ es:
         caption: Subtítulo
         name: Nombre
         notes: Notas
+        slug: Handle
       federails/moderation/domain_block:
         created_at: Creado el
         domain: Dominio
@@ -22,6 +23,7 @@ es:
       library:
         caption: Subtítulo
         create_path_if_not_on_disk: Auto-crear carpeta
+        default: Por defecto
         icon: Icono
         name: Nombre
         notes: Notas
@@ -55,7 +57,7 @@ es:
         model_id: Modelo
         notes: Notas
         presupported: Soporte predefinido
-        presupported_version: Versión de soporte predefinido
+        presupported_version: Versión con soporte predefinido
         printed: Impreso
         size: Tamaño del archivo
         unsupported_version: Versión sin soporte
@@ -238,11 +240,16 @@ es:
       title: Filtros
       unknown: Desconocido
     footer:
+      about: Acerca de esta instancia
+      api: API
       by_html: Diseñado y construido por <a href="https://floppy.org.uk" target="_blank">James</a> con la ayuda de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">nuestros colaboradores</a>.
-      community: Comunidad
+      community: Únete a la comunidad
+      instance_heading: Detalles de la instancia
       issues: Problemas
       open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> bajo <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencia MIT</a>.
+      powered_by_html: Desarrollado por <a href="https://manyfold.app">%{name}</a>
       sponsor: Colaborar
+      support: Apoyar esta instancia
       version: Versión
     link_fields:
       url:
@@ -409,6 +416,15 @@ es:
     open_button:
       label: Abrir modelo %{name}
       text: Abrir
+  moderator_mailer:
+    new_approval:
+      greeting: "¡Hola!"
+      message: Alguien nuevo se ha registrado para obtener una cuenta y requiere aprobación. Aprobar la cuenta en %{link}
+      subject: La nueva cuenta necesita aprobación
+    new_report:
+      greeting: "¡Hola!"
+      message: Alguien ha denunciado un contenido que necesita moderación. Revise el informe en %{link}
+      subject: Nuevo informe recibido
   renderer:
     errors:
       canvas: "¡No se encontró el canvas #webgl!"
