@@ -16,9 +16,6 @@ class ActivityPub::ActorActivityHandler
     object = Federails::Actor.find_or_create_by_federation_url(attributes[:federated_url]) # rubocop:disable Rails/DynamicFindBy
     object&.update!(attributes)
 
-    # Store activity record
-    Federails::Activity.create! actor: get_actor(activity), action: action, entity: object
-
     if object.entity
       ActivityPub::ApplicationDeserializer.deserializer_for(object)&.update!
     else
