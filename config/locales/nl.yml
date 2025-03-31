@@ -336,15 +336,16 @@ nl:
     save: Opslaan
     view: Bekijken
   home:
+    activity:
+      created: toegevoegd %{time} geleden
+      updated: bijgewerkt %{time} geleden
     index:
-      create_actor: toegevoegd door %{name} %{time} geleden
       how_long_ago: "%{time} geleden"
       no_activities: Er zijn momenteel geen activiteiten om weer te geven.
       recent_activity: Recente Activiteit
       search:
         placeholder: Waar zoek je naar?
         submit: Zoeken
-      update_actor: bijgewerkt door %{name} %{time} geleden
   jobs:
     activity:
       creator_added_model:

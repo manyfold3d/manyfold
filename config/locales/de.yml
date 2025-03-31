@@ -325,15 +325,16 @@ de:
     save: Speichern
     view: Siehe
   home:
+    activity:
+      created: hinzugefügt vor %{time}
+      updated: aktualisiert vor %{time}
     index:
-      create_actor: 'hinzugefügt von %{name} vor %{time} '
       how_long_ago: vor %{time}
       no_activities: Im Moment gibt es keine Aktivitäten zu sehen.
       recent_activity: Neuste Aktivität
       search:
         placeholder: Wonach suchen Sie?
         submit: Suche
-      update_actor: aktualisiert von %{name} vor %{time}
   jobs:
     activity:
       creator_added_model:
