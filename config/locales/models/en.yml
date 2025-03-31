@@ -73,6 +73,7 @@ en:
       files_card:
         bulk_edit: Edit all files
         heading: Files
+      followers: Followers
       license: License
       merge:
         heading: Merge
