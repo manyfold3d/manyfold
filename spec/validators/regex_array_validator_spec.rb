@@ -27,7 +27,6 @@ RSpec.describe RegexArrayValidator do
     end
 
     it "does not add error to invalid record when array contains only regexes" do
-      puts array_of_regexes.inspect
       expect {
         validator.validate_each(record, :model_ignore_files, array_of_regexes)
       }.not_to change(record.errors, :count)
