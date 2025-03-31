@@ -327,15 +327,15 @@ es:
     save: Guardar
     view: Ver
   home:
+    activity:
+      created: subido hace %{time}
+      updated: actualizado hace %{time}
     index:
-      create_actor: subido por %{name} hace %{time}
-      how_long_ago: hace %{time}
       no_activities: Por ahora no hay actividades que mostrar.
       recent_activity: Actividad reciente
       search:
         placeholder: "¿Qué busca?"
         submit: Buscar
-      update_actor: actualizado por %{name} hace %{time}
   jobs:
     activity:
       creator_added_model:

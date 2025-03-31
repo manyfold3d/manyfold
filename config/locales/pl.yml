@@ -325,15 +325,15 @@ pl:
     save: Zapisz
     view: Widok
   home:
+    activity:
+      created: dodany %{time} temu
+      updated: zaktualizowany %{time} temu
     index:
-      create_actor: dodany przez %{name} %{time} temu
-      how_long_ago: "%{time} temu"
       no_activities: Na razie nie ma żadnych aktywności do wyświetlenia.
       recent_activity: Ostatnia Aktywność
       search:
         placeholder: Czego szukasz?
         submit: Wyszukaj
-      update_actor: zaktualizowany przez %{name} %{time} temu
   jobs:
     activity:
       creator_added_model:

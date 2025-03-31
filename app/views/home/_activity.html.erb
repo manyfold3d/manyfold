@@ -1,0 +1,34 @@
+<div class="card border-0 border-bottom">
+  <div class="card-body py-2">
+    <div class="row">
+      <div class="col col-auto">
+        <%= icon icon_for(activity.class), activity.class.model_name.human %>
+      </div>
+      <div class="col">
+        <%- if activity.federails_actor.nil? || activity.federails_actor.local? %>
+          <%= link_to activity.name, activity %>
+        <%- elsif activity.federails_actor&.profile_url %>
+          <%= link_to activity.name, activity.federails_actor&.profile_url %>
+        <%- else %>
+          <%= activity.name %>
+        <%- end %>
+        <%= server_indicator activity.federails_actor %>
+        <%= icon("explicit", Model.human_attribute_name(:sensitive)) if activity.respond_to?(:sensitive) && activity.sensitive %>
+      </div>
+      <% if activity.is_a? Model %>
+        <div class="col col-auto">
+          <%= status_badges(activity) %>
+        </div>
+      <% end %>
+      <div class="col col-auto">
+        <small>
+          <% if activity.updated_at >= (activity.created_at + 1.minute) %>
+            <%= t(".updated", time: time_ago_in_words(activity.updated_at)) %>
+          <% else %>
+            <%= t(".created", time: time_ago_in_words(activity.updated_at)) %>
+          <% end %>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

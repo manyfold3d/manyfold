@@ -325,15 +325,15 @@ cs:
     save: Uložit
     view: Zobrazení
   home:
+    activity:
+      created: přidal před %{time}
+      updated: aktualizo před %{time}
     index:
-      create_actor: přidal %{name} před %{time}
-      how_long_ago: před %{time}
       no_activities: Prozatím nejsou k dispozici žádné aktivity, ke zobrazení.
       recent_activity: Poslední aktivita
       search:
         placeholder: Co hledáte?
         submit: Vyhledávání
-      update_actor: aktualizováno %{name} před %{time}
   jobs:
     activity:
       creator_added_model:

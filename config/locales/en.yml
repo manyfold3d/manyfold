@@ -343,15 +343,15 @@ en:
     save: Save
     view: View
   home:
+    activity:
+      created: added %{time} ago
+      updated: updated %{time} ago
     index:
-      create_actor: added by %{name} %{time} ago
-      how_long_ago: "%{time} ago"
       no_activities: There are no activities to display for now.
       recent_activity: Recent Activity
       search:
         placeholder: What are you looking for?
         submit: Search
-      update_actor: updated by %{name} %{time} ago
   jobs:
     activity:
       creator_added_model:
