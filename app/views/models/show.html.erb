@@ -98,6 +98,12 @@
         <td><%= icon "tag", t(".tags") %></td>
         <td><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc) %></td>
       </tr>
+      <% if SiteSettings.social_enabled? %>
+        <tr>
+          <td><%= icon "people", t(".followers") %></td>
+          <td><%= t("general.followers", count: @model.followers.count) %></td>
+        </tr>
+      <% end %>
     </table>
     <%= render FollowButtonComponent.new(follower: current_user, target: @model) unless @model.remote? %>
     <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_model_path(@model), class: "btn btn-primary" if policy(@model).edit? %>

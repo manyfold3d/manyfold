@@ -26,7 +26,8 @@
       <div class="col">
         <%= content_tag(:p, class: "lead") { @collection.caption } if @collection.caption %>
         <%= content_tag(:p, class: "card-text") { markdownify @collection.notes } if @collection.notes %>
-        <%= "#{policy_scope(Model).where(collection: @collection).count} #{Model.model_name.human count: policy_scope(Model).where(collection: @collection).count}" %>
+        <p><%= "#{policy_scope(Model).where(collection: @collection).count} #{Model.model_name.human count: policy_scope(Model).where(collection: @collection).count}" %></p>
+        <%= content_tag(:p) { t("general.followers", count: @collection.followers.count) } if SiteSettings.social_enabled? %>
       </div>
     </div>
   </div>

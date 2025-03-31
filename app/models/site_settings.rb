@@ -65,6 +65,10 @@ class SiteSettings < RailsSettings::Base
     User.with_role(:administrator).first
   end
 
+  def self.social_enabled?
+    multiuser_enabled? || federation_enabled?
+  end
+
   def self.ignored_file?(pathname)
     patterns ||= model_ignored_files
     (File.split(pathname) - ["."]).any? do |path_component|

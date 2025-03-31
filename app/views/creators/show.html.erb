@@ -28,7 +28,8 @@
       <div class="col">
         <%= content_tag(:p, class: "lead") { @creator.caption } if @creator.caption %>
         <%= content_tag(:p, class: "card-text") { markdownify @creator.notes } if @creator.notes %>
-        <%= "#{policy_scope(Model).where(creator: @creator).count} #{Model.model_name.human count: policy_scope(Model).where(creator: @creator).count}" %>
+        <p><%= "#{policy_scope(Model).where(creator: @creator).count} #{Model.model_name.human count: policy_scope(Model).where(creator: @creator).count}" %></p>
+        <%= content_tag(:p) { t("general.followers", count: @creator.followers.count) } if SiteSettings.social_enabled? %>
       </div>
     </div>
   </div>

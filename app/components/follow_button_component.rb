@@ -34,7 +34,7 @@ class FollowButtonComponent < ViewComponent::Base
   end
 
   def render?
-    social_enabled? && (helpers.policy(Federails::Following).create? || remote_follow_allowed?)
+    SiteSettings.social_enabled? && (helpers.policy(Federails::Following).create? || remote_follow_allowed?)
   end
 
   def call
@@ -50,10 +50,6 @@ class FollowButtonComponent < ViewComponent::Base
   end
 
   private
-
-  def social_enabled?
-    SiteSettings.multiuser_enabled? || SiteSettings.federation_enabled?
-  end
 
   def remote_follow_allowed?
     SiteSettings.federation_enabled? && @signed_out

@@ -330,6 +330,13 @@ en:
     download: Download
     edit: Edit
     expand: Expand
+    followers:
+      few: "%{count} Followers"
+      many: "%{count} Followers"
+      one: "%{count} Follower"
+      other: "%{count} Followers"
+      two: "%{count} Followers"
+      zero: "%{count} Followers"
     menu: Menu
     new: New
     report: Report %{type}
