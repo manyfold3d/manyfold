@@ -329,7 +329,6 @@ de:
       created: hinzugefügt vor %{time}
       updated: aktualisiert vor %{time}
     index:
-      how_long_ago: vor %{time}
       no_activities: Im Moment gibt es keine Aktivitäten zu sehen.
       recent_activity: Neuste Aktivität
       search:

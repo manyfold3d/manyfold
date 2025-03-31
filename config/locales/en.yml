@@ -347,7 +347,6 @@ en:
       created: added %{time} ago
       updated: updated %{time} ago
     index:
-      how_long_ago: "%{time} ago"
       no_activities: There are no activities to display for now.
       recent_activity: Recent Activity
       search:

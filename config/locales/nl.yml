@@ -340,7 +340,6 @@ nl:
       created: toegevoegd %{time} geleden
       updated: bijgewerkt %{time} geleden
     index:
-      how_long_ago: "%{time} geleden"
       no_activities: Er zijn momenteel geen activiteiten om weer te geven.
       recent_activity: Recente Activiteit
       search:

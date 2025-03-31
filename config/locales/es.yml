@@ -331,7 +331,6 @@ es:
       created: subido hace %{time}
       updated: actualizado hace %{time}
     index:
-      how_long_ago: hace %{time}
       no_activities: Por ahora no hay actividades que mostrar.
       recent_activity: Actividad reciente
       search:

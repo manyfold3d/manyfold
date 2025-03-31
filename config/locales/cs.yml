@@ -329,7 +329,6 @@ cs:
       created: přidal před %{time}
       updated: aktualizo před %{time}
     index:
-      how_long_ago: před %{time}
       no_activities: Prozatím nejsou k dispozici žádné aktivity, ke zobrazení.
       recent_activity: Poslední aktivita
       search:
