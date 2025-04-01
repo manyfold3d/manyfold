@@ -1,9 +1,9 @@
 <h2><%= t(".title") %></h2>
 
-<h3><%= t(".following") %></h3>
+<h3><%= t(".following") %> (<%= @followings.count %>)</h3>
 
 <%= render "actor_table", actors: @followings %>
 
-<h3><%= t(".followers") %></h3>
+<h3><%= t(".followers") %> (<%= @followers.count %>)</h3>
 
 <%= render "actor_table", actors: @followers %>
