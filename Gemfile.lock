@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: 58e4e271c608d7f2a8bbdcf35f45e174f6e199b4
+  revision: 0cb3fab426ca1bbc93f082d8ca37c65c79dee724
   branch: main
   specs:
     federails (0.5.0)
@@ -457,14 +457,14 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.6)
+    nokogiri (1.18.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.6-x64-mingw-ucrt)
+    nokogiri (1.18.7-x64-mingw-ucrt)
       racc (~> 1.4)
-    nokogiri (1.18.6-x86_64-darwin)
+    nokogiri (1.18.7-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.6-x86_64-linux-gnu)
+    nokogiri (1.18.7-x86_64-linux-gnu)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
