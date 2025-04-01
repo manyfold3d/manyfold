@@ -308,7 +308,9 @@ en:
     follow_remote_actor:
       followed: Followed %{actor} successfully
     index:
-      title: Following
+      followers: Followers
+      following: Following
+      title: Connections
     new:
       help: You can follow public creators, collections or models on another Manyfold server, in fact any public account in the Fediverse! Just enter the account name in the search box!
       no_results: Sorry, couldn't find anything for "%{query}". Is it a valid ActivityPub account or URL?
