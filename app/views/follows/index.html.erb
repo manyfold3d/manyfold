@@ -1,3 +1,9 @@
 <h2><%= t(".title") %></h2>
 
-<%= render "actor_table", actors: @followings.map(&:target_actor) %>
+<h3><%= t(".following") %></h3>
+
+<%= render "actor_table", actors: @followings %>
+
+<h3><%= t(".followers") %></h3>
+
+<%= render "actor_table", actors: @followers %>
