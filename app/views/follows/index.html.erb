@@ -6,11 +6,11 @@
 
 <div class="row">
 	<div class="col">
-		<h3><%= t(".following") %> (<%= @followings.count %>)</h3>
+		<h3><%= t(".following") %> <span class="badge bg-primary"><%= @followings.count %></span></h3>
 		<%= render "actor_table", actors: @followings %>
 	</div>
 	<div class="col">
-		<h3><%= t(".followers") %> (<%= @followers.count %>)</h3>
+		<h3><%= t(".followers") %> <span class="badge bg-primary"><%= @followers.count %></span></h3>
 		<%= render "actor_table", actors: @followers %>
 	</div>
 </div>
