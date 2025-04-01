@@ -75,6 +75,7 @@ en:
         danger_zone: Danger zone!
         leave_blank_if_you_don_t_want_to_change_it: leave blank if you don't want to change it
         security: Security
+        social: Social
         submit: Save changes
         title: My Settings
         unhappy: Unhappy?
