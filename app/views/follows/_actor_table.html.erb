@@ -2,7 +2,7 @@
   <tr>
     <th></th>
     <th><%= t(".name") %></th>
-    <th><%= t(".address") %></th>
+    <%= content_tag(:th) { t(".address") } if SiteSettings.federation_enabled? %>
     <th><%= t(".actions") %></th>
     <th></th>
   </tr>
@@ -12,7 +12,7 @@
         <%= actor.entity ? icon(icon_for(actor.entity.class), actor.entity.class.model_name.human) : "⁂" %>
       </td>
       <td><%= link_to actor.name, actor.profile_url %></td>
-      <td><%= actor.short_at_address %></td>
+      <%= content_tag(:td) { actor.short_at_address } if SiteSettings.federation_enabled? %>
       <td><%= render FollowButtonComponent.new(follower: current_user, target: actor) %></td>
       <td>
         <% if !actor.local? && actor.extensions&.dig("f3di:concreteType").nil? %>
