@@ -7,17 +7,14 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     return if model.remote?
     # Set tags and default files
     options = {}
-    tags = []
     options.merge!(identify_preview_file(model)) unless model.preview_file
-    if model.tags.empty?
-      generate_tags_from_directory_name!(model) if SiteSettings.model_tags_tag_model_directory_name
-      if SiteSettings.model_tags_auto_tag_new.present?
-        model.tag_list << SiteSettings.model_tags_auto_tag_new
-      end
-    end
+    tag_list = tags_from_directory_name(model.path) + tags_from_auto_new
     if !model.creator_id && SiteSettings.parse_metadata_from_path
-      parse_metadata_from_path(model)
+      attributes, tags = parse_metadata_from_path(model)
+      tag_list.concat tags
+      options.merge! attributes
     end
+    options[:tag_list] = remove_stop_words(tag_list.uniq) if model.tags.empty?
     model.update!(options)
   end
 
@@ -35,38 +32,32 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     100
   end
 
-  def generate_tags_from_directory_name!(model)
-    tags = File.split(model.path).last.split(/[\W_+-]/).filter { |it| it.length > 1 }
-    model.tag_list.add(remove_stop_words(tags))
+  def tags_from_directory_name(path)
+    return [] unless SiteSettings.model_tags_tag_model_directory_name
+    File.split(path).last.split(/[\W_+-]/).filter { |it| it.length > 1 }
+  end
+
+  def tags_from_auto_new
+    return [] unless SiteSettings.model_tags_auto_tag_new
+    [SiteSettings.model_tags_auto_tag_new].flatten
   end
 
   def parse_metadata_from_path(model)
-    return unless SiteSettings.model_path_template
+    return {} unless SiteSettings.model_path_template
     components = PathParserService.new(SiteSettings.model_path_template, model.path).call
-    parse_tags(model, components[:tags])
-    parse_creator(model, components[:creator])
-    parse_collection(model, components[:collection])
-    parse_name(model, components[:model_name])
+    [
+      {
+        creator: find_or_create_from_path_component(Creator, components[:creator]),
+        collection: find_or_create_from_path_component(Collection, components[:collection]),
+        name: to_human_name(components[:model_name])
+      }.compact,
+      parse_tags(components[:tags])
+    ]
   end
 
-  def parse_creator(model, component)
-    return unless component
-    model.creator = find_or_create_from_path_component(Creator, component)
-  end
-
-  def parse_collection(model, component)
-    return unless component
-    model.collection = find_or_create_from_path_component(Collection, component)
-  end
-
-  def parse_name(model, component)
-    return unless component
-    model.name = to_human_name(component)
-  end
-
-  def parse_tags(model, component)
-    return unless component
-    model.tag_list.add(remove_stop_words(component).map { |tag| tag.titleize.downcase })
+  def parse_tags(component)
+    return [] if component.nil?
+    component.map { |tag| tag.titleize.downcase }
   end
 
   def remove_stop_words(words)
@@ -79,6 +70,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   end
 
   def find_or_create_from_path_component(klass, path_component)
+    return unless path_component
     klass.find_by(slug: path_component) ||
       klass.create_with(slug: path_component.parameterize).find_or_create_by(
         name: to_human_name(path_component)
@@ -86,6 +78,6 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   end
 
   def to_human_name(str)
-    str.humanize.tr("+", " ").careful_titleize
+    str&.humanize&.tr("+", " ")&.careful_titleize
   end
 end
