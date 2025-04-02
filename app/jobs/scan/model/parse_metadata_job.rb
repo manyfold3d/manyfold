@@ -1,4 +1,3 @@
-require "shellwords"
 class Scan::Model::ParseMetadataJob < ApplicationJob
   queue_as :scan
   unique :until_executed
@@ -6,24 +5,79 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   def perform(model_id)
     model = Model.find(model_id)
     return if model.remote?
-    return if Problem.create_or_clear(model, :missing, !model.exists_on_storage?)
-    # Set tags and default files
-    model.preview_file = model.model_files.min_by { |it| preview_priority(it) } unless model.preview_file
-    if model.tags.empty?
-      model.generate_tags_from_directory_name! if SiteSettings.model_tags_tag_model_directory_name
-      if SiteSettings.model_tags_auto_tag_new.present?
-        model.tag_list << SiteSettings.model_tags_auto_tag_new
-      end
-    end
-    if !model.creator_id && SiteSettings.parse_metadata_from_path
-      model.parse_metadata_from_path
-    end
-    model.save! # Problem check will run automatically after save
+    options = {}
+    # Set preview file
+    options.merge! identify_preview_file(model) unless model.preview_file
+    # Set path template attributes
+    options.merge! attributes_from_path_template(model.path) unless model.creator
+    # Build combined tag list
+    tag_list =
+      tags_from_directory_name(model.path) +
+      tags_from_auto_new +
+      tags_from_path_template(model.path)
+    options[:tag_list] = remove_stop_words(tag_list.uniq) if model.tags.empty?
+    # Store new metadata
+    model.update!(options)
+  end
+
+  private
+
+  def identify_preview_file(model)
+    {
+      preview_file: model.model_files.min_by { |it| preview_priority(it) }
+    }
   end
 
   def preview_priority(file)
     return 0 if file.is_image?
     return 1 if file.is_renderable?
     100
+  end
+
+  def tags_from_directory_name(path)
+    return [] unless SiteSettings.model_tags_tag_model_directory_name
+    File.split(path).last.split(/[\W_+-]/).filter { |it| it.length > 1 }
+  end
+
+  def tags_from_auto_new
+    return [] unless SiteSettings.model_tags_auto_tag_new
+    [SiteSettings.model_tags_auto_tag_new].flatten
+  end
+
+  def attributes_from_path_template(path)
+    return {} unless SiteSettings.parse_metadata_from_path && SiteSettings.model_path_template
+    components = PathParserService.new(SiteSettings.model_path_template, path).call
+    {
+      creator: find_or_create_from_path_component(Creator, components[:creator]),
+      collection: find_or_create_from_path_component(Collection, components[:collection]),
+      name: to_human_name(components[:model_name])
+    }.compact
+  end
+
+  def tags_from_path_template(path)
+    return [] unless SiteSettings.parse_metadata_from_path && SiteSettings.model_path_template
+    components = PathParserService.new(SiteSettings.model_path_template, path).call
+    components[:tags] ? components[:tags].map { |tag| tag.titleize.downcase } : []
+  end
+
+  def remove_stop_words(words)
+    return words if !SiteSettings.model_tags_filter_stop_words
+    stopword_filter = Stopwords::Snowball::Filter.new(
+      SiteSettings.model_tags_stop_words_locale,
+      SiteSettings.model_tags_custom_stop_words
+    )
+    stopword_filter.filter(words)
+  end
+
+  def find_or_create_from_path_component(klass, path_component)
+    return unless path_component
+    klass.find_by(slug: path_component) ||
+      klass.create_with(slug: path_component.parameterize).find_or_create_by(
+        name: to_human_name(path_component)
+      )
+  end
+
+  def to_human_name(str)
+    str&.humanize&.tr("+", " ")&.careful_titleize
   end
 end
