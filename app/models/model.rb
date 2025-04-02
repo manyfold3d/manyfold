@@ -41,7 +41,7 @@ class Model < ApplicationRecord
   before_update :move_files, if: :need_to_move_files?
   after_update :post_update_activity
   after_save :queue_datapackage_update
-  after_commit :check_integrity, on: :update
+  after_commit :check_integrity_later, on: :update
 
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
@@ -77,7 +77,7 @@ class Model < ApplicationRecord
         )
       end
     end
-    Scan::CheckModelIntegrityJob.set(wait: 5.seconds).perform_later(target.id)
+    target.check_integrity_later
     # Destroy this model
     reload
     destroy
@@ -187,6 +187,10 @@ class Model < ApplicationRecord
     ActivityPub::ModelSerializer.new(self).serialize
   end
 
+  def check_integrity_later(delay: 5.seconds)
+    Scan::CheckModelIntegrityJob.set(wait: delay).perform_later(id)
+  end
+
   private
 
   def normalize_license
@@ -233,10 +237,6 @@ class Model < ApplicationRecord
     model_files.each(&:reattach!)
     # Remove the old folder if it's still there
     previous_library.storage.delete_prefixed(previous_path)
-  end
-
-  def check_integrity
-    Scan::CheckModelIntegrityJob.set(wait: 5.seconds).perform_later(id)
   end
 
   def post_creation_activity

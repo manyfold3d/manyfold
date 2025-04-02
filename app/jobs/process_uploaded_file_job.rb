@@ -43,7 +43,7 @@ class ProcessUploadedFileJob < ApplicationJob
     if new_model
       ModelScanJob.perform_later(model.id, include_all_subfolders: true)
     else
-      Scan::CheckModelIntegrityJob.perform_later(model.id)
+      model.check_integrity_later
     end
     ModelFileScanJob.perform_later(new_file.id) if new_file
   end
