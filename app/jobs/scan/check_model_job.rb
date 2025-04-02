@@ -13,7 +13,7 @@ class Scan::CheckModelJob < ApplicationJob
     end
     # Run analysis job on individual files
     model.model_files.each do |file|
-      Analysis::AnalyseModelFileJob.perform_later(file.id)
+      file.analyse_later
     end
   end
 end
