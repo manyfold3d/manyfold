@@ -8,7 +8,7 @@ module PathParser
 
   def parse_metadata_from_path
     return unless SiteSettings.model_path_template
-    components = extract_path_components
+    components = PathParserService.new(SiteSettings.model_path_template, path).call
     parse_tags(components[:tags])
     parse_creator(components[:creator])
     parse_collection(components[:collection])
@@ -35,39 +35,6 @@ module PathParser
   def parse_tags(component)
     return unless component
     tag_list.add(remove_stop_words(component).map { |tag| tag.titleize.downcase })
-  end
-
-  def self.path_parse_pattern
-    Regexp.new("^/?.*?" +
-      SiteSettings.model_path_template.gsub(/{.+?}/) { |token|
-        case token
-        when "{tags}"
-          "(?<tags>[[:print:]]*)"
-        when "{creator}"
-          "(?<creator>[[:print:]&&[^/]]*?)"
-        when "{collection}"
-          "(?<collection>[[:print:]&&[^/]]*?)"
-        when "{modelName}"
-          "(?<model_name>[[:print:]&&[^/]]*?)"
-        when "{modelId}"
-          "(?<model_id>#[[:digit:]]+)?"
-        else
-          "[[:print:]&&[^/]]*"
-        end
-      } + "$")
-  end
-
-  def path_parse_pattern
-    PathParser.path_parse_pattern
-  end
-
-  def extract_path_components
-    components = path.match(path_parse_pattern)&.named_captures&.symbolize_keys
-    return {} if components.nil?
-    components.merge({
-      tags: components[:tags]&.split("/")&.compact_blank,
-      model_id: nil # discard ID, never gonna use it in parsing
-    }).compact
   end
 
   def remove_stop_words(words)
