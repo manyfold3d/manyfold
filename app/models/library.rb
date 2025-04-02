@@ -186,6 +186,10 @@ class Library < ApplicationRecord
     SiteSettings.default_library = id
   end
 
+  def detect_filesystem_changes_later(delay: 0.seconds)
+    Scan::DetectFilesystemChangesJob.set(wait: delay).perform_later(id)
+  end
+
   private
 
   def ensure_path_case_is_correct
