@@ -291,7 +291,6 @@ cs:
     actor_table:
       actions: Akce
       address: Adresa Fediverse
-      info: Info
       name: Název
       non_manyfold_account: Toto není účet Manyfold; můžete ho sledovat, ale pravděpodobně se nic zajímavého nestane, alespoň prozatím.
     follow_remote_actor:
