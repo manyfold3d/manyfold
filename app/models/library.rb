@@ -190,6 +190,10 @@ class Library < ApplicationRecord
     Scan::DetectFilesystemChangesJob.set(wait: delay).perform_later(id)
   end
 
+  def create_model_from_path_later(path, delay: 0.seconds)
+    Scan::CreateModelJob.set(wait: delay).perform_later(id, path)
+  end
+
   private
 
   def ensure_path_case_is_correct

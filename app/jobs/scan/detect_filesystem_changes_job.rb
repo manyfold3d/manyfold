@@ -42,6 +42,6 @@ class Scan::DetectFilesystemChangesJob < ApplicationJob
     return if Problem.create_or_clear(library, :missing, !library.storage_exists?)
     # For each folder in the library with a change, find or create a model, then scan it
     status[:step] = "jobs.scan.detect_filesystem_changes.creating_models" # i18n-tasks-use t('jobs.scan.detect_filesystem_changes.creating_models')
-    folders_with_changes(library).each { |path| Scan::CreateModelJob.perform_later(library.id, path) }
+    folders_with_changes(library).each { |path| library.create_model_from_path_later(path) }
   end
 end
