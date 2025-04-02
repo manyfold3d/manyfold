@@ -187,6 +187,10 @@ class Model < ApplicationRecord
     ActivityPub::ModelSerializer.new(self).serialize
   end
 
+  def check_later(scan: true, delay: 0.seconds)
+    Scan::CheckModelJob.set(wait: delay).perform_later(id, scan: scan)
+  end
+
   def check_integrity_later(delay: 5.seconds)
     Scan::CheckModelIntegrityJob.set(wait: delay).perform_later(id)
   end
