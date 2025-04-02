@@ -8,8 +8,8 @@ class Upgrade::BackfillDataPackages < ApplicationJob
     # Find models that don't have a datapackage and enqueue their generation
     Model.where.not(
       id: ModelFile.where(filename: "datapackage.json").select(:model_id)
-    ).pluck(:id).each do |id|
-      UpdateDatapackageJob.perform_later(id)
+    ).each do |model|
+      model.write_datapackage_later
     end
   end
 end
