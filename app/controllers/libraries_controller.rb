@@ -25,7 +25,7 @@ class LibrariesController < ApplicationController
     @library = Library.create(library_params)
     @library.tag_regex = params[:tag_regex]
     if @library.valid?
-      Scan::DetectFilesystemChangesJob.perform_later(@library.id)
+      @library.detect_filesystem_changes_later
       @library.make_default if SiteSettings.default_library.nil?
       redirect_to @library, notice: t(".success")
     else
@@ -48,7 +48,7 @@ class LibrariesController < ApplicationController
   end
 
   def scan
-    Scan::DetectFilesystemChangesJob.perform_later(@library.id)
+    @library.detect_filesystem_changes_later
     redirect_back_or_to @library, notice: t(".success")
   end
 
@@ -58,7 +58,7 @@ class LibrariesController < ApplicationController
       Scan::CheckAllJob.perform_later
     else
       Library.find_each do |library|
-        Scan::DetectFilesystemChangesJob.perform_later(library.id)
+        library.detect_filesystem_changes_later
       end
     end
     redirect_back_or_to models_path, notice: t(".success")

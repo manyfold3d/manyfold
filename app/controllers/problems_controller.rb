@@ -130,7 +130,7 @@ class ProblemsController < ApplicationController
     case problem.problematic_type
     when "ModelFile"
       problem.update(in_progress: true)
-      problem.problematic.convert_to! :threemf
+      problem.problematic.convert_later :threemf
     else
       raise NotImplementedError
     end

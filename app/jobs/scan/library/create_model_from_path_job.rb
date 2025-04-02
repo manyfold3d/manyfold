@@ -1,4 +1,4 @@
-class Scan::CreateModelJob < ApplicationJob
+class Scan::Library::CreateModelFromPathJob < ApplicationJob
   queue_as :scan
   unique :until_executed
 
@@ -11,7 +11,7 @@ class Scan::CreateModelJob < ApplicationJob
     }
     model = library.models.create_with(new_model_properties).find_or_create_by(path: path.trim_path_separators)
     if model.valid?
-      ModelScanJob.perform_later(model.id, include_all_subfolders: include_all_subfolders)
+      model.add_new_files_later(include_all_subfolders: include_all_subfolders)
     else
       Rails.logger.error(model.inspect)
       Rails.logger.error(model.errors.full_messages.inspect)

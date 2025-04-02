@@ -97,7 +97,7 @@ class ModelsController < ApplicationController
     hash = model_params
     organize = hash.delete(:organize) == "true"
     if @model.update(hash)
-      OrganizeModelJob.perform_later(@model.id) if organize
+      @model.organize_later if organize
       redirect_to @model, notice: t(".success")
     else
       redirect_back_or_to edit_model_path(@model), alert: t(".failure")
@@ -120,7 +120,7 @@ class ModelsController < ApplicationController
     # Clear digests for files so that we force a full geometry rescan
     @model.model_files.update_all(digest: nil) # rubocop:disable Rails/SkipsModelValidations
     # Start the scans
-    Scan::CheckModelJob.perform_later(@model.id)
+    @model.check_later
     # Back to the model page
     redirect_to @model, notice: t(".success")
   end
@@ -161,7 +161,7 @@ class ModelsController < ApplicationController
         model.tag_list = existing_tags + add_tags - remove_tags
         model.save
       end
-      OrganizeModelJob.perform_later(model.id) if organize
+      model.organize_later if organize
     end
     redirect_back_or_to edit_models_path(@filters), notice: t(".success")
   end

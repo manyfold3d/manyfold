@@ -6,14 +6,14 @@ class Scan::CheckModelJob < ApplicationJob
     model = Model.find(model_id)
     if scan
       # Scan for new files (runs integrity check automatically)
-      ModelScanJob.perform_later(model.id)
+      model.add_new_files_later
     else
       # Run integrity check
-      Scan::CheckModelIntegrityJob.perform_later(model.id)
+      model.check_for_problems_later
     end
     # Run analysis job on individual files
     model.model_files.each do |file|
-      Analysis::AnalyseModelFileJob.perform_later(file.id)
+      file.analyse_later
     end
   end
 end

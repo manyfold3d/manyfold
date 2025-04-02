@@ -178,8 +178,8 @@ class ModelFile < ApplicationRecord
     end
   end
 
-  def convert_to!(format)
-    Analysis::FileConversionJob.perform_later(id, format.to_sym)
+  def convert_later(format, delay: 0.seconds)
+    Analysis::FileConversionJob.set(wait: delay).perform_later(id, format.to_sym)
   end
 
   def loadable?
@@ -191,10 +191,22 @@ class ModelFile < ApplicationRecord
     destroy
   end
 
+  def analyse_later(delay: 5.seconds)
+    Analysis::AnalyseModelFileJob.set(wait: delay).perform_later(id)
+  end
+
+  def analyse_geometry_later(delay: 0.seconds)
+    Analysis::GeometricAnalysisJob.set(wait: delay).perform_later(id)
+  end
+
+  def parse_metadata_later(delay: 0.seconds)
+    Scan::ModelFile::ParseMetadataJob.set(wait: delay).perform_later(id)
+  end
+
   private
 
   def rescan_duplicates
-    duplicates.each { |it| Analysis::AnalyseModelFileJob.set(wait: 5.seconds).perform_later(it.id) }
+    duplicates.each { |it| it.analyse_later }
   end
 
   def presupported_files_cannot_have_presupported_version

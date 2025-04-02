@@ -44,7 +44,7 @@ class Analysis::FileConversionJob < ApplicationJob
       # Store record in database
       new_file.save
       # Queue up file scan
-      Analysis::AnalyseModelFileJob.perform_later(new_file.id)
+      new_file.analyse_later
     end
   rescue NonManifoldError
     # Log non-manifold error as a problem, and absorb error so we don't retry

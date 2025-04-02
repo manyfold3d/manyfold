@@ -6,19 +6,19 @@ RSpec.describe Scan::CheckModelJob do
 
   it "queues up model file scan job" do
     expect { described_class.perform_now(thing.id) }.to(
-      have_enqueued_job(ModelScanJob).with(thing.id).once
+      have_enqueued_job(Scan::Model::AddNewFilesJob).with(thing.id, include_all_subfolders: false).once
     )
   end
 
   it "does not queue up model file scan job if scan parameter is false" do
     expect { described_class.perform_now(thing.id, scan: false) }.not_to(
-      have_enqueued_job(ModelScanJob)
+      have_enqueued_job(Scan::Model::AddNewFilesJob)
     )
   end
 
-  it "queues up model integrity check job instead if scan is false" do
+  it "queues up model problem check job instead if scan is false" do
     expect { described_class.perform_now(thing.id, scan: false) }.to(
-      have_enqueued_job(Scan::CheckModelIntegrityJob).with(thing.id).once
+      have_enqueued_job(Scan::Model::CheckForProblemsJob).with(thing.id).once
     )
   end
 

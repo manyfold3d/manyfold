@@ -1,4 +1,4 @@
-class Scan::CheckModelIntegrityJob < ApplicationJob
+class Scan::Model::CheckForProblemsJob < ApplicationJob
   queue_as :scan
   unique :until_executed
 

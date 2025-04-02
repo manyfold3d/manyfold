@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ModelFileScanJob do
+RSpec.describe Scan::ModelFile::ParseMetadataJob do
   let(:file) { create(:model_file) }
   let(:supported_file) { create(:model_file, filename: "file1_supported.stl") }
 
