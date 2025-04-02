@@ -1,4 +1,4 @@
-class Scan::CreateModelJob < ApplicationJob
+class Scan::Library::CreateModelFromPathJob < ApplicationJob
   queue_as :scan
   unique :until_executed
 

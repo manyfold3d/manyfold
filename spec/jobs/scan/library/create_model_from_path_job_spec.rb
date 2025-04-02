@@ -1,7 +1,7 @@
 require "rails_helper"
 require "support/mock_directory"
 
-RSpec.describe Scan::CreateModelJob do
+RSpec.describe Scan::Library::CreateModelFromPathJob do
   let(:library) { create(:library) }
 
   it "creates a single model" do
