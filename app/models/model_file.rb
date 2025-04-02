@@ -178,8 +178,8 @@ class ModelFile < ApplicationRecord
     end
   end
 
-  def convert_to!(format)
-    Analysis::FileConversionJob.perform_later(id, format.to_sym)
+  def convert_later(format, delay: 0.seconds)
+    Analysis::FileConversionJob.set(wait: delay).perform_later(id, format.to_sym)
   end
 
   def loadable?
