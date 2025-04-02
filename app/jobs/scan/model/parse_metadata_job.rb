@@ -5,7 +5,6 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   def perform(model_id)
     model = Model.find(model_id)
     return if model.remote?
-    return if Problem.create_or_clear(model, :missing, !model.exists_on_storage?)
     # Set tags and default files
     model.preview_file = model.model_files.min_by { |it| preview_priority(it) } unless model.preview_file
     if model.tags.empty?
