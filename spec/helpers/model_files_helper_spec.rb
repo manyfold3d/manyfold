@@ -24,5 +24,10 @@ RSpec.describe ModelFilesHelper do
       url = helper.slicer_url(:cura, file)
       expect(url).to match(/cura#{slic3r_family_regex}/)
     end
+
+    it "generates elegoo links" do
+      url = helper.slicer_url(:elegoo, file)
+      expect(url).to match(/elegooslicer#{slic3r_family_regex}/)
+    end
   end
 end
