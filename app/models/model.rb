@@ -1,7 +1,6 @@
 class Model < ApplicationRecord
   extend Memoist
   include PathBuilder
-  include PathParser
   include Followable
   include CaberObject
   include Linkable
