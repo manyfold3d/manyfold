@@ -70,5 +70,21 @@ RSpec.describe Scan::Model::ParseMetadataJob do
         expect(model.tag_list).to eq ["this", "is", "fantasy", "model"]
       end
     end
+
+    context "with stop word filtering" do
+      before do
+        allow(SiteSettings).to receive_messages(
+          model_tags_stop_words_locale: "en",
+          model_tags_filter_stop_words: true,
+          model_tags_custom_stop_words: ["chicken"]
+        )
+      end
+
+      it "generates tags and filters custom stop words" do
+        model = create(:model, path: "/library1/stuff/this-is-a-scifi-chicken-model")
+        described_class.perform_now(model.id)
+        expect(model.reload.tag_list).to eq ["scifi", "model"]
+      end
+    end
   end
 end
