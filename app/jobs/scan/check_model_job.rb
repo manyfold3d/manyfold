@@ -6,7 +6,7 @@ class Scan::CheckModelJob < ApplicationJob
     model = Model.find(model_id)
     if scan
       # Scan for new files (runs integrity check automatically)
-      model.scan_later
+      model.add_new_files_later
     else
       # Run integrity check
       model.check_for_problems_later

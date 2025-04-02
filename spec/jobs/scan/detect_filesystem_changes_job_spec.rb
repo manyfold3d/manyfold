@@ -24,7 +24,7 @@ RSpec.describe Scan::DetectFilesystemChangesJob do
 
     it "only scans models with changes on rescan" do
       model_one = create(:model, path: "model_one", library: library)
-      ModelScanJob.perform_now(model_one.id)
+      Scan::Model::AddNewFilesJob.perform_now(model_one.id)
       expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::CreateModelJob).with(library.id, "subfolder/model_two").exactly(1).times
     end
   end

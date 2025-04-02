@@ -93,8 +93,8 @@ RSpec.describe ProcessUploadedFileJob do
       expect(Model.last.path).to eq "tag1/test#1"
     end
 
-    it "queues up model scan" do
-      expect { job.perform(library.id, file) }.to have_enqueued_job(ModelScanJob).once
+    it "queues up model new file scan" do
+      expect { job.perform(library.id, file) }.to have_enqueued_job(Scan::Model::AddNewFilesJob).once
     end
   end
 

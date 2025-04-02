@@ -18,13 +18,13 @@ RSpec.describe Scan::CreateModelJob do
     expect(Model.first.path).to eql "model"
   end
 
-  it "queues model up for a full scan" do
+  it "queues model new file scan" do
     described_class.perform_now(library.id, "model")
-    expect(ModelScanJob).to have_been_enqueued.with(Model.first.id, include_all_subfolders: false).once
+    expect(Scan::Model::AddNewFilesJob).to have_been_enqueued.with(Model.first.id, include_all_subfolders: false).once
   end
 
-  it "queues model up for a full scan including subfolders" do
+  it "queues model new file scan including subfolders" do
     described_class.perform_now(library.id, "model", include_all_subfolders: true)
-    expect(ModelScanJob).to have_been_enqueued.with(Model.first.id, include_all_subfolders: true).once
+    expect(Scan::Model::AddNewFilesJob).to have_been_enqueued.with(Model.first.id, include_all_subfolders: true).once
   end
 end

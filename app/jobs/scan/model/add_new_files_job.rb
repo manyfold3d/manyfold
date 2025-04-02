@@ -1,6 +1,6 @@
 require "shellwords"
 
-class ModelScanJob < ApplicationJob
+class Scan::Model::AddNewFilesJob < ApplicationJob
   queue_as :scan
   unique :until_executed
 

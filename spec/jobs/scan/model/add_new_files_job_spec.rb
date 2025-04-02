@@ -1,7 +1,7 @@
 require "rails_helper"
 require "support/mock_directory"
 
-RSpec.describe ModelScanJob do
+RSpec.describe Scan::Model::AddNewFilesJob do
   context "with a simple model folder" do
     around do |ex|
       MockDirectory.create([

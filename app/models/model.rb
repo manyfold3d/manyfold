@@ -187,8 +187,8 @@ class Model < ApplicationRecord
     ActivityPub::ModelSerializer.new(self).serialize
   end
 
-  def scan_later(include_all_subfolders: false, delay: 0.seconds)
-    ModelScanJob.set(wait: delay).perform_later(id, include_all_subfolders: include_all_subfolders)
+  def add_new_files_later(include_all_subfolders: false, delay: 0.seconds)
+    Scan::Model::AddNewFilesJob.set(wait: delay).perform_later(id, include_all_subfolders: include_all_subfolders)
   end
 
   def check_later(scan: true, delay: 0.seconds)
