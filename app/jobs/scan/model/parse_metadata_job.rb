@@ -1,4 +1,3 @@
-require "shellwords"
 class Scan::Model::ParseMetadataJob < ApplicationJob
   queue_as :scan
   unique :until_executed
