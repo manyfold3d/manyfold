@@ -37,7 +37,7 @@ module PathParser
     tag_list.add(remove_stop_words(component).map { |tag| tag.titleize.downcase })
   end
 
-  def path_parse_pattern
+  def self.path_parse_pattern
     Regexp.new("^/?.*?" +
       SiteSettings.model_path_template.gsub(/{.+?}/) { |token|
         case token
@@ -55,6 +55,10 @@ module PathParser
           "[[:print:]&&[^/]]*"
         end
       } + "$")
+  end
+
+  def path_parse_pattern
+    PathParser.path_parse_pattern
   end
 
   def extract_path_components
