@@ -34,8 +34,8 @@ RSpec.describe ModelScanJob do
       expect { described_class.perform_now(model.id) }.to have_enqueued_job(ModelFileScanJob).exactly(2).times
     end
 
-    it "queues up integrity check" do
-      expect { described_class.perform_now(model.id) }.to have_enqueued_job(Scan::CheckModelIntegrityJob).with(model.id).once
+    it "queues up check for model problems" do
+      expect { described_class.perform_now(model.id) }.to have_enqueued_job(Scan::Model::CheckForProblemsJob).with(model.id).once
     end
   end
 

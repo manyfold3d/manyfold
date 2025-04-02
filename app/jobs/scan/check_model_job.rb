@@ -9,7 +9,7 @@ class Scan::CheckModelJob < ApplicationJob
       model.scan_later
     else
       # Run integrity check
-      model.check_integrity_later
+      model.check_for_problems_later
     end
     # Run analysis job on individual files
     model.model_files.each do |file|

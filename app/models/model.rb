@@ -41,7 +41,7 @@ class Model < ApplicationRecord
   before_update :move_files, if: :need_to_move_files?
   after_update :post_update_activity
   after_save :write_datapackage_later
-  after_commit :check_integrity_later, on: :update
+  after_commit :check_for_problems_later, on: :update
 
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
@@ -77,7 +77,7 @@ class Model < ApplicationRecord
         )
       end
     end
-    target.check_integrity_later
+    target.check_for_problems_later
     # Destroy this model
     reload
     destroy
@@ -195,8 +195,8 @@ class Model < ApplicationRecord
     Scan::CheckModelJob.set(wait: delay).perform_later(id, scan: scan)
   end
 
-  def check_integrity_later(delay: 5.seconds)
-    Scan::CheckModelIntegrityJob.set(wait: delay).perform_later(id)
+  def check_for_problems_later(delay: 5.seconds)
+    Scan::Model::CheckForProblemsJob.set(wait: delay).perform_later(id)
   end
 
   def organize_later(delay: 5.seconds)

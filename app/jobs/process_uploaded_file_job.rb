@@ -43,7 +43,7 @@ class ProcessUploadedFileJob < ApplicationJob
     if new_model
       model.scan_later(include_all_subfolders: true)
     else
-      model.check_integrity_later
+      model.check_for_problems_later
     end
     new_file&.scan_later
   end

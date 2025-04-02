@@ -1,7 +1,7 @@
 require "rails_helper"
 require "support/mock_directory"
 
-RSpec.describe Scan::CheckModelIntegrityJob do
+RSpec.describe Scan::Model::CheckForProblemsJob do
   context "when checking for missing files" do
     around do |ex|
       MockDirectory.create([
