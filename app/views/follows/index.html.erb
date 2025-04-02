@@ -1,16 +1,16 @@
 <h2><%= t(".title") %></h2>
 
 <% if SiteSettings.federation_enabled? %>
-	<p class="lead"%><%= t("settings.users.index.fediverse_address") %>: <code><%= current_user.federails_actor.at_address %></code></p>
+  <p class="lead"><%= t("settings.users.index.fediverse_address") %>: <code><%= current_user.federails_actor.at_address %></code></p>
 <% end %>
 
 <div class="row">
-	<div class="col">
-		<h3><%= t(".following") %> <span class="badge bg-primary"><%= @followings.count %></span></h3>
-		<%= render "actor_table", actors: @followings %>
-	</div>
-	<div class="col">
-		<h3><%= t(".followers") %> <span class="badge bg-primary"><%= @followers.count %></span></h3>
-		<%= render "actor_table", actors: @followers %>
-	</div>
+  <div class="col">
+    <h3><%= t(".following") %> <span class="badge bg-primary"><%= @followings.count %></span></h3>
+    <%= render "actor_table", actors: @followings %>
+  </div>
+  <div class="col">
+    <h3><%= t(".followers") %> <span class="badge bg-primary"><%= @followers.count %></span></h3>
+    <%= render "actor_table", actors: @followers %>
+  </div>
 </div>
