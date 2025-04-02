@@ -9,10 +9,6 @@ module Follower
     after_follow_accepted :after_accept
   end
 
-  def follows
-    federails_actor.follows.map(&:user)
-  end
-
   def follow(target)
     following_follows.create(target_actor: target.is_a?(Federails::Actor) ? target : target.federails_actor)
   end

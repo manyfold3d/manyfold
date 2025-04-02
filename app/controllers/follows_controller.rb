@@ -5,7 +5,8 @@ class FollowsController < ApplicationController
 
   def index
     authorize Federails::Following
-    @followings = policy_scope(Federails::Following).all
+    @followings = current_user&.federails_actor&.follows
+    @followers = current_user&.federails_actor&.followers
   end
 
   # Incoming remote follow
