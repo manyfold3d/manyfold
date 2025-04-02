@@ -199,6 +199,10 @@ class Model < ApplicationRecord
     Scan::CheckModelIntegrityJob.set(wait: delay).perform_later(id)
   end
 
+  def organize_later(delay: 5.seconds)
+    OrganizeModelJob.set(wait: delay).perform_later(id)
+  end
+
   private
 
   def normalize_license
