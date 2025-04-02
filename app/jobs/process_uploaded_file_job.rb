@@ -45,7 +45,7 @@ class ProcessUploadedFileJob < ApplicationJob
     else
       model.check_for_problems_later
     end
-    new_file&.scan_later
+    new_file&.parse_metadata_later
   end
 
   private

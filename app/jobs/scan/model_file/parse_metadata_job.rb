@@ -1,4 +1,4 @@
-class ModelFileScanJob < ApplicationJob
+class Scan::ModelFile::ParseMetadataJob < ApplicationJob
   queue_as :scan
   unique :until_executed
 

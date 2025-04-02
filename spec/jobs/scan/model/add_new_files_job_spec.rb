@@ -24,8 +24,8 @@ RSpec.describe Scan::Model::AddNewFilesJob do
       expect(model.model_files.map(&:filename).sort).to eq ["part_1.lys", "part_2.obj"].sort
     end
 
-    it "queues up individual file scans" do
-      expect { described_class.perform_now(model.id) }.to have_enqueued_job(ModelFileScanJob).exactly(2).times
+    it "queues up individual file metadata parsing" do
+      expect { described_class.perform_now(model.id) }.to have_enqueued_job(Scan::ModelFile::ParseMetadataJob).exactly(2).times
     end
 
     it "queues up metadata parsing" do
