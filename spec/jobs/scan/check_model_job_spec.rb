@@ -6,7 +6,7 @@ RSpec.describe Scan::CheckModelJob do
 
   it "queues up model file scan job" do
     expect { described_class.perform_now(thing.id) }.to(
-      have_enqueued_job(ModelScanJob).with(thing.id).once
+      have_enqueued_job(ModelScanJob).with(thing.id, include_all_subfolders: false).once
     )
   end
 
