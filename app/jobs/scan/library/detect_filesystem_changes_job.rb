@@ -1,4 +1,4 @@
-class Scan::DetectFilesystemChangesJob < ApplicationJob
+class Scan::Library::DetectFilesystemChangesJob < ApplicationJob
   queue_as :scan
   unique :until_executed
 

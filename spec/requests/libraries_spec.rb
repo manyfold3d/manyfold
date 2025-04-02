@@ -25,7 +25,7 @@ RSpec.describe "Libraries" do
 
     describe "POST /libraries/:id/scan" do
       it "scans a single library", :as_contributor do # rubocop:todo RSpec/MultipleExpectations
-        expect { post "/libraries/#{library.to_param}/scan" }.to have_enqueued_job(Scan::DetectFilesystemChangesJob).exactly(:once)
+        expect { post "/libraries/#{library.to_param}/scan" }.to have_enqueued_job(Scan::Library::DetectFilesystemChangesJob).exactly(:once)
         expect(response).to redirect_to("/libraries/#{library.public_id}")
       end
 
@@ -37,7 +37,7 @@ RSpec.describe "Libraries" do
 
     describe "POST /libraries/scan" do
       it "scans all libraries", :as_contributor do # rubocop:todo RSpec/MultipleExpectations
-        expect { post "/libraries/scan" }.to have_enqueued_job(Scan::DetectFilesystemChangesJob).exactly(:once)
+        expect { post "/libraries/scan" }.to have_enqueued_job(Scan::Library::DetectFilesystemChangesJob).exactly(:once)
         expect(response).to redirect_to("/models")
       end
 

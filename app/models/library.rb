@@ -187,7 +187,7 @@ class Library < ApplicationRecord
   end
 
   def detect_filesystem_changes_later(delay: 0.seconds)
-    Scan::DetectFilesystemChangesJob.set(wait: delay).perform_later(id)
+    Scan::Library::DetectFilesystemChangesJob.set(wait: delay).perform_later(id)
   end
 
   def create_model_from_path_later(path, delay: 0.seconds)

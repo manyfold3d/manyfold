@@ -1,7 +1,7 @@
 require "rails_helper"
 require "support/mock_directory"
 
-RSpec.describe Scan::DetectFilesystemChangesJob do
+RSpec.describe Scan::Library::DetectFilesystemChangesJob do
   context "with files in various folders" do
     around do |ex|
       MockDirectory.create([
