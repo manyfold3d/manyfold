@@ -6,7 +6,9 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     model = Model.find(model_id)
     return if model.remote?
     # Set tags and default files
-    model.preview_file = model.model_files.min_by { |it| preview_priority(it) } unless model.preview_file
+    options = {}
+    tags = []
+    options.merge!(identify_preview_file(model)) unless model.preview_file
     if model.tags.empty?
       generate_tags_from_directory_name!(model) if SiteSettings.model_tags_tag_model_directory_name
       if SiteSettings.model_tags_auto_tag_new.present?
@@ -16,10 +18,16 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     if !model.creator_id && SiteSettings.parse_metadata_from_path
       parse_metadata_from_path(model)
     end
-    model.save! # Problem check will run automatically after save
+    model.update!(options)
   end
 
   private
+
+  def identify_preview_file(model)
+    {
+      preview_file: model.model_files.min_by { |it| preview_priority(it) }
+    }
+  end
 
   def preview_priority(file)
     return 0 if file.is_image?
