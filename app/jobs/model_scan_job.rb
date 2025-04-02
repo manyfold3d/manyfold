@@ -26,7 +26,7 @@ class ModelScanJob < ApplicationJob
     file_list(model.path, model.library, include_all_subfolders: include_all_subfolders).each do |filename|
       # Create the file
       file = model.model_files.find_or_create_by(filename: filename.gsub(model.path + "/", ""))
-      ModelFileScanJob.perform_later(file.id) if file.valid?
+      file.scan_later if file.valid?
     end
     # Set tags and default files
     model.model_files.reload

@@ -45,7 +45,7 @@ class ProcessUploadedFileJob < ApplicationJob
     else
       model.check_integrity_later
     end
-    ModelFileScanJob.perform_later(new_file.id) if new_file
+    new_file&.scan_later
   end
 
   private
