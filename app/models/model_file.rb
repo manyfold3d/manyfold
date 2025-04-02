@@ -195,6 +195,10 @@ class ModelFile < ApplicationRecord
     Analysis::AnalyseModelFileJob.set(wait: delay).perform_later(id)
   end
 
+  def analyse_geometry_later(delay: 0.seconds)
+    Analysis::GeometricAnalysisJob.set(wait: delay).perform_later(id)
+  end
+
   def scan_later(delay: 0.seconds)
     ModelFileScanJob.set(wait: delay).perform_later(id)
   end
