@@ -291,7 +291,6 @@ de:
     actor_table:
       actions: Aktionen
       address: Fediverse Adresse
-      info: Info
       name: Name
       non_manyfold_account: Dies ist kein Manyfold-Konto; Du kannst ihm folgen, aber wahrscheinlich wird nichts Interessantes passieren, zumindest im Moment.
     follow_remote_actor:

@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: 58e4e271c608d7f2a8bbdcf35f45e174f6e199b4
+  revision: 0cb3fab426ca1bbc93f082d8ca37c65c79dee724
   branch: main
   specs:
     federails (0.5.0)
@@ -136,18 +136,19 @@ GEM
       ruby2_keywords (>= 0.0.2)
     ast (2.4.3)
     attr_required (1.0.2)
-    aws-eventstream (1.3.1)
-    aws-partitions (1.1052.0)
-    aws-sdk-core (3.219.0)
+    aws-eventstream (1.3.2)
+    aws-partitions (1.1078.0)
+    aws-sdk-core (3.222.1)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
       base64
       jmespath (~> 1, >= 1.6.1)
+      logger
     aws-sdk-kms (1.99.0)
       aws-sdk-core (~> 3, >= 3.216.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.182.0)
+    aws-sdk-s3 (1.183.0)
       aws-sdk-core (~> 3, >= 3.216.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -175,7 +176,7 @@ GEM
       racc
     browser (6.1.0)
     builder (3.3.0)
-    bullet (8.0.1)
+    bullet (8.0.2)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (12.0.0)
@@ -456,14 +457,14 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.6)
+    nokogiri (1.18.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.6-x64-mingw-ucrt)
+    nokogiri (1.18.7-x64-mingw-ucrt)
       racc (~> 1.4)
-    nokogiri (1.18.6-x86_64-darwin)
+    nokogiri (1.18.7-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.6-x86_64-linux-gnu)
+    nokogiri (1.18.7-x86_64-linux-gnu)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -839,7 +840,7 @@ DEPENDENCIES
   activerecord-nulldb-adapter (~> 1.1.1)
   acts-as-taggable-on (~> 12.0)
   acts_as_favoritor (~> 6.0)
-  aws-sdk-s3 (< 1.183)
+  aws-sdk-s3 (< 1.184)
   better_content_security_policy (~> 0.1.4)
   bootsnap (>= 1.4.4)
   brakeman (~> 7.0)
