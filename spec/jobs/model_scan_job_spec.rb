@@ -24,18 +24,13 @@ RSpec.describe ModelScanJob do
       expect(model.model_files.map(&:filename).sort).to eq ["part_1.lys", "part_2.obj"].sort
     end
 
-    it "sets the preview file to the first renderable scanned file by default" do # rubocop:todo RSpec/MultipleExpectations
-      expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(2)
-      model.reload
-      expect(model.preview_file.filename).to eq "part_2.obj"
-    end
-
     it "queues up individual file scans" do
       expect { described_class.perform_now(model.id) }.to have_enqueued_job(ModelFileScanJob).exactly(2).times
     end
 
-    it "queues up check for model problems" do
-      expect { described_class.perform_now(model.id) }.to have_enqueued_job(Scan::Model::CheckForProblemsJob).with(model.id).once
+    it "queues up metadata parsing" do
+      expect { described_class.perform_now(model.id) }
+        .to have_enqueued_job(Scan::Model::ParseMetadataJob).with(model.id).once
     end
   end
 

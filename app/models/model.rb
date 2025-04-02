@@ -207,6 +207,10 @@ class Model < ApplicationRecord
     UpdateDatapackageJob.set(wait: delay).perform_later(id)
   end
 
+  def parse_metadata_later(delay: 0.seconds)
+    Scan::Model::ParseMetadataJob.set(wait: delay).perform_later(id)
+  end
+
   private
 
   def normalize_license
