@@ -24,4 +24,12 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     return 1 if file.is_renderable?
     100
   end
+
+  def self.path_parse_pattern
+    PathParser.path_parse_pattern
+  end
+
+  def self.extract_path_components(model)
+    model.send(:extract_path_components)
+  end
 end
