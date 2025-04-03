@@ -23,6 +23,12 @@ RSpec.describe DataPackage::CreatorDeserializer do
       it "matches creator ID" do
         expect(output[:id]).to eq creator.id
       end
+
+      it "parses links"
+
+      it "parses notes"
+
+      it "parses caption"
     end
 
     context "with a valid creator hosted elsewhere" do
