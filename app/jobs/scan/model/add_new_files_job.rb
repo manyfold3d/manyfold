@@ -15,7 +15,7 @@ class Scan::Model::AddNewFilesJob < ApplicationJob
             pattern
           )
         end
-    library.list_files(glob)
+    library.list_files(glob) + library.list_files(File.join(Shellwords.escape(model_path), "datapackage.json"))
   end
 
   def perform(model_id, include_all_subfolders: false)
