@@ -172,7 +172,7 @@ group :development, :production do
 end
 
 gem "pghero", "~> 3.6"
-gem "pg_query", "~> 6.0"
+gem "pg_query", "~> 6.1"
 
 gem "to_regexp", "~> 0.2.1"
 
