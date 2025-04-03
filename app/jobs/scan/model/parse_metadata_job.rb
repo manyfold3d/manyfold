@@ -13,8 +13,23 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     # Build combined tag list
     tag_list =
       tags_from_directory_name(model.path) +
-      tags_from_auto_new +
       tags_from_path_template(model.path)
+    # Load from datapackage
+    if (datapackage = model.model_files.find_by(filename: "datapackage.json"))
+      data = DataPackage::ModelDeserializer.new(JSON.parse(datapackage.attachment.read)).deserialize
+      # match creator
+      data[:creator] = data.dig(:creator, :id) ? Creator.find(data.dig(:creator, :id)) :
+        find_or_create_from_path_component(Creator, data.dig(:creator, :name))
+      # match preview file
+      data[:preview_file] = model.model_files.find_by(filename: data[:preview_file])
+      # Remove model file data, don't need it until there's something useful in it
+      data.delete(:model_files)
+      # Merge in to main lists
+      tag_list.concat data.delete(:tag_list)
+      options.merge! data
+    end
+    tag_list.concat tags_from_auto_new if tag_list.empty?
+    # Filter stop words
     options[:tag_list] = remove_stop_words(tag_list.uniq) if model.tags.empty?
     # Store new metadata
     model.update!(options)
@@ -57,7 +72,9 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   def tags_from_path_template(path)
     return [] unless SiteSettings.parse_metadata_from_path && SiteSettings.model_path_template
     components = PathParserService.new(SiteSettings.model_path_template, path).call
-    components[:tags] ? components[:tags].map { |tag| tag.titleize.downcase } : []
+    tags = components[:tags] ? components[:tags].map { |tag| tag.titleize.downcase } : []
+    tags.delete("@untagged")
+    tags
   end
 
   def remove_stop_words(words)
