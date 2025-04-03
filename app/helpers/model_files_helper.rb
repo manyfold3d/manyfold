@@ -4,8 +4,9 @@ module ModelFilesHelper
     # i18n-tasks-use t('model_files.download.orca')
     # i18n-tasks-use t('model_files.download.prusa')
     # i18n-tasks-use t('model_files.download.bambu')
+    # i18n-tasks-use t('model_files.download.elegoo')
     safe_join(
-      [:cura, :orca].map do |slicer|
+      [:cura, :orca, :elegoo].map do |slicer|
         content_tag(:li) {
           link_to safe_join(
             [
@@ -33,6 +34,8 @@ module ModelFilesHelper
       slic3r_family_open_url "bambustudioopen", signed_url
     when :cura
       slic3r_family_open_url "cura", signed_url
+    when :elegoo
+      slic3r_family_open_url "elegooslicer", signed_url
     end
   end
 
@@ -42,6 +45,8 @@ module ModelFilesHelper
       "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/orcaslicer.webp"
     when :cura
       "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/cura.webp"
+    when :elegoo
+      "https://raw.githubusercontent.com/ELEGOO-3D/ElegooSlicer/refs/heads/main/resources/images/ElegooSlicer.svg"
     end
     return if url.nil?
     image_tag(url, class: "slicer-icon", alt: alt)

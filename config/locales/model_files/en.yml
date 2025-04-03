@@ -23,6 +23,7 @@ en:
     download:
       bambu: Open in Bambu Studio
       cura: Open in Ultimaker Cura
+      elegoo: Open in ElegooSlicer
       orca: Open in OrcaSlicer
       prusa: Open in PrusaSlicer
     form:
