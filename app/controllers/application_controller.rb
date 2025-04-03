@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
 
   def img_src
     url = SiteSettings.site_icon ? URI.parse(SiteSettings.site_icon).host : nil
-    [:self, :data, url, "https://cdn.jsdelivr.net"].compact
+    [:self, :data, url, "https://cdn.jsdelivr.net","https://raw.githubusercontent.com"].compact
   end
 
   def configure_content_security_policy
