@@ -97,5 +97,9 @@ RSpec.describe DataPackage::ModelSerializer do
       object.creator = nil
       expect(output[:contributors]).to be_nil
     end
+
+    it "includes links"
+
+    it "includes collection"
   end
 end

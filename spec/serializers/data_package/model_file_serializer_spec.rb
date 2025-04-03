@@ -18,5 +18,13 @@ RSpec.describe DataPackage::ModelFileSerializer do
     it "includes media type" do
       expect(output[:mediatype]).to eq "model/stl"
     end
+
+    it "includes notes"
+
+    it "includes caption"
+
+    it "includes presupported flag"
+
+    it "includes orientation"
   end
 end

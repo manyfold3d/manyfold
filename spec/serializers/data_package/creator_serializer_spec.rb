@@ -18,5 +18,11 @@ RSpec.describe DataPackage::CreatorSerializer do
     it "includes path" do
       expect(output[:path]).to eq "http://localhost:3214/creators/#{object.to_param}"
     end
+
+    it "includes links"
+
+    it "includes notes"
+
+    it "includes caption"
   end
 end
