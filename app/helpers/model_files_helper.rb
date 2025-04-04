@@ -5,8 +5,9 @@ module ModelFilesHelper
     # i18n-tasks-use t('model_files.download.prusa')
     # i18n-tasks-use t('model_files.download.bambu')
     # i18n-tasks-use t('model_files.download.elegoo')
+    # i18n-tasks-use t('model_files.download.superslicer')
     safe_join(
-      [:cura, :orca, :elegoo].map do |slicer|
+      [:cura, :orca, :elegoo, :superslicer].map do |slicer|
         content_tag(:li) {
           link_to safe_join(
             [
@@ -26,7 +27,7 @@ module ModelFilesHelper
     case slicer
     when :orca
       slic3r_family_open_url "orcaslicer", signed_url
-    when :prusa
+    when :prusa, :superslicer
       # Prusa will only open files from printables.com
       slic3r_family_open_url "prusaslicer", signed_url
     when :bambu
@@ -47,6 +48,8 @@ module ModelFilesHelper
       "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/cura.webp"
     when :elegoo
       "https://raw.githubusercontent.com/ELEGOO-3D/ElegooSlicer/refs/heads/main/resources/images/ElegooSlicer.svg"
+    when :superslicer
+      "https://raw.githubusercontent.com/supermerill/SuperSlicer/refs/heads/master_27/resources/icons/SuperSlicer.svg"
     end
     return if url.nil?
     image_tag(url, class: "slicer-icon", alt: alt)

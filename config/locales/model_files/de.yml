@@ -26,6 +26,7 @@ de:
       elegoo: in ElegooSlicer öffnen
       orca: in OrcaSlicer öffnen
       prusa: in PrusaSlicer öffnen
+      superslicer: in SuperSlicer öffnen
     form:
       notes:
         help_html: 'Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden. '
