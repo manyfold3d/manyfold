@@ -20,6 +20,9 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       # match creator
       data[:creator] = data.dig(:creator, :id) ? Creator.find(data.dig(:creator, :id)) :
         find_or_create_from_path_component(Creator, data.dig(:creator, :name))
+      # match collection
+      data[:collection] = data.dig(:collection, :id) ? Collection.find(data.dig(:collection, :id)) :
+        find_or_create_from_path_component(Collection, data.dig(:collection, :name))
       # match preview file
       data[:preview_file] = model.model_files.find_by(filename: data[:preview_file])
       # Remove model file data, don't need it until there's something useful in it
