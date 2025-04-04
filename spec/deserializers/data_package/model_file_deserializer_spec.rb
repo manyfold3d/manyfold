@@ -8,7 +8,11 @@ RSpec.describe DataPackage::ModelFileDeserializer do
     let(:object) {
       {
         "path" => "files/test.stl",
-        "mediatype" => "model/stl"
+        "mediatype" => "model/stl",
+        "caption" => "caption goes here",
+        "description" => "description goes here",
+        "up" => "+y",
+        "presupported" => true
       }
     }
 
@@ -20,12 +24,20 @@ RSpec.describe DataPackage::ModelFileDeserializer do
       expect(output[:mime_type]).to eq "model/stl"
     end
 
-    it "parses notes"
+    it "parses notes" do
+      expect(output[:notes]).to eq "description goes here"
+    end
 
-    it "parses caption"
+    it "parses caption" do
+      expect(output[:caption]).to eq "caption goes here"
+    end
 
-    it "parses presupported flag"
+    it "parses presupported flag" do
+      expect(output[:presupported]).to be true
+    end
 
-    it "parses orientation"
+    it "parses orientation" do
+      expect(output[:y_up]).to be true
+    end
   end
 end
