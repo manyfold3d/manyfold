@@ -98,8 +98,10 @@ RSpec.describe DataPackage::ModelSerializer do
       expect(output[:contributors]).to be_nil
     end
 
-    it "includes links"
-
-    it "includes collection"
+    context "with extension fields" do
+      it "includes link to extension schema" do
+        expect(output[:"$schema"]).to eq "https://manyfold.app/profiles/0.0/datapackage.json"
+      end
+    end
   end
 end

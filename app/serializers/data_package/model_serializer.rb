@@ -2,6 +2,7 @@ module DataPackage
   class ModelSerializer < BaseSerializer
     def serialize
       {
+        "$schema": "https://manyfold.app/profiles/0.0/datapackage.json",
         name: @object.name.parameterize,
         title: @object.name,
         description: [@object.caption, @object.notes].compact.join("\n\n"),
