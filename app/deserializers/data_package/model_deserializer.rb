@@ -3,8 +3,8 @@ module DataPackage
     def deserialize
       {
         name: @object["title"],
-        caption: @object["description"].split("\n\n", 2).first,
-        notes: @object["description"].split("\n\n", 2).last,
+        caption: @object["caption"],
+        notes: @object["description"],
         links_attributes: [{url: @object["homepage"]}],
         preview_file: @object["image"],
         tag_list: @object["keywords"],

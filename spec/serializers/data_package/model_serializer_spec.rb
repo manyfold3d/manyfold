@@ -21,19 +21,7 @@ RSpec.describe DataPackage::ModelSerializer do
       expect(output[:title]).to eq "Test Model"
     end
 
-    it "includes caption and notes in description" do
-      expect(output[:description]).to eq "#{object.caption}
-
-#{object.notes}"
-    end
-
-    it "includes just caption if there's no notes" do
-      object.notes = nil
-      expect(output[:description]).to eq object.caption
-    end
-
-    it "includes just notes if there's no caption" do
-      object.caption = nil
+    it "includes notes in description field" do
       expect(output[:description]).to eq object.notes
     end
 
@@ -100,7 +88,11 @@ RSpec.describe DataPackage::ModelSerializer do
 
     context "with extension fields" do
       it "includes link to extension schema" do
-        expect(output[:"$schema"]).to eq "https://manyfold.app/profiles/0.0/datapackage.json"
+        expect(output[:$schema]).to eq "https://manyfold.app/profiles/0.0/datapackage.json"
+      end
+
+      it "includes caption" do
+        expect(output[:caption]).to eq object.caption
       end
     end
   end

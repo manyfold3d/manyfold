@@ -12,7 +12,8 @@ RSpec.describe DataPackage::ModelDeserializer do
         "homepage" => "https://example.com",
         "image" => "images/pic.png",
         "keywords" => ["fantasy", "wizard"],
-        "description" => "caption\n\nand multiline\nnote",
+        "caption" => "caption",
+        "description" => "multiline\nnote",
         "licenses" => [
           {
             "name" => "MIT",
@@ -44,7 +45,7 @@ RSpec.describe DataPackage::ModelDeserializer do
     end
 
     it "parses notes" do
-      expect(output[:notes]).to eq "and multiline\nnote"
+      expect(output[:notes]).to eq "multiline\nnote"
     end
 
     it "parses homepage link" do
