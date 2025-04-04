@@ -3,6 +3,7 @@ require "sidekiq/cron/web"
 require "federails"
 
 Rails.application.routes.draw do
+  use_doorkeeper
   get ".well-known/change-password", to: redirect("/users/edit")
   get "health" => "rails/health#show", :as => :rails_health_check
   get "problems/index"
