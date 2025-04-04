@@ -23,8 +23,10 @@ nl:
     download:
       bambu:
       cura:
+      elegoo:
       orca:
       prusa:
+      superslicer:
     form:
       notes:
         help_html: Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
