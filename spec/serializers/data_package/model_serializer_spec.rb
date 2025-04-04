@@ -10,6 +10,7 @@ RSpec.describe DataPackage::ModelSerializer do
         name: "Test Model",
         creator: create(:creator),
         collection: create(:collection),
+        sensitive: true,
         links_attributes: [
           {url: "https://example.com"}
         ])
@@ -107,6 +108,10 @@ RSpec.describe DataPackage::ModelSerializer do
 
       it "includes caption" do
         expect(output[:caption]).to eq object.caption
+      end
+
+      it "includes sensitive flag" do
+        expect(output[:sensitive]).to eq object.sensitive
       end
     end
   end

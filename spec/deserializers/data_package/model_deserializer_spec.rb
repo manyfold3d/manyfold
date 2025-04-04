@@ -43,7 +43,8 @@ RSpec.describe DataPackage::ModelDeserializer do
           {
             "path" => "https://example.com/other-link"
           }
-        ]
+        ],
+        "sensitive" => true
       }
     end
 
@@ -99,6 +100,10 @@ RSpec.describe DataPackage::ModelDeserializer do
 
     it "parses collection link if collection doesn't exist" do
       expect(output.dig(:collection, :links_attributes, 0, :url)).to eq "http://localhost:3214/collections/abc123"
+    end
+
+    it "parses sensitive flag" do
+      expect(output[:sensitive]).to be true
     end
   end
 end
