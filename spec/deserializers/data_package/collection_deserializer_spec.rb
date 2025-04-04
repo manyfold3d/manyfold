@@ -1,18 +1,17 @@
 require "rails_helper"
 
-RSpec.describe DataPackage::CreatorDeserializer do
+RSpec.describe DataPackage::CollectionDeserializer do
   context "when parsing a Data Package" do
     subject(:deserializer) { described_class.new(object) }
 
     let(:output) { deserializer.deserialize }
 
-    context "with a valid creator linked to this server" do
-      let(:creator) { create(:creator) }
+    context "with a valid collection linked to this server" do
+      let(:collection) { create(:collection) }
       let(:object) do
         {
-          "title" => creator.name,
-          "path" => "http://localhost:3214/creators/#{creator.to_param}",
-          "roles" => ["creator"],
+          "title" => collection.name,
+          "path" => "http://localhost:3214/collections/#{collection.to_param}",
           "caption" => "caption goes here",
           "description" => "description goes here",
           "links" => [
@@ -24,15 +23,15 @@ RSpec.describe DataPackage::CreatorDeserializer do
       end
 
       it "parses name" do
-        expect(output[:name]).to eq creator.name
+        expect(output[:name]).to eq collection.name
       end
 
-      it "matches creator ID" do
-        expect(output[:id]).to eq creator.id
+      it "matches collection ID" do
+        expect(output[:id]).to eq collection.id
       end
 
       it "does not add main detected path as link" do
-        expect(output[:links_attributes]).not_to include({url: "http://localhost:3214/creators/#{creator.to_param}"})
+        expect(output[:links_attributes]).not_to include({url: "http://localhost:3214/collections/#{collection.to_param}"})
       end
 
       it "parses links" do
@@ -48,12 +47,12 @@ RSpec.describe DataPackage::CreatorDeserializer do
       end
     end
 
-    context "with a valid creator hosted elsewhere" do
+    context "with a valid collection hosted elsewhere" do
       let(:object) do
         {
           "title" => "Bruce Wayne",
           "path" => "http://example.com/bruce-wayne",
-          "roles" => ["creator"]
+          "roles" => ["collection"]
         }
       end
 
@@ -65,20 +64,6 @@ RSpec.describe DataPackage::CreatorDeserializer do
         expect(output[:links_attributes]).to include({
           url: "http://example.com/bruce-wayne"
         })
-      end
-    end
-
-    context "with a non-creator contributor" do
-      let(:object) do
-        {
-          "title" => "Contributor Name",
-          "path" => "http://localhost:3214/creators/creator-name",
-          "roles" => ["contributor"]
-        }
-      end
-
-      it "ignores item" do
-        expect(output).to be_nil
       end
     end
   end

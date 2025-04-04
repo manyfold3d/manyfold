@@ -1,7 +1,7 @@
 module DataPackage
-  class CreatorDeserializer < BaseDeserializer
+  class CollectionDeserializer < BaseDeserializer
     def deserialize
-      return unless @object && @object["roles"]&.include?("creator")
+      return unless @object
       attributes = {
         name: @object["title"],
         caption: @object["caption"],
@@ -9,8 +9,8 @@ module DataPackage
       }
       begin
         route_options = Rails.application.routes.recognize_path(@object["path"])
-        if route_options[:controller] == "creators"
-          attributes[:id] = Creator.find_param(route_options[:id]).id
+        if route_options[:controller] == "collections"
+          attributes[:id] = Collection.find_param(route_options[:id]).id
         end
       rescue ActionController::RoutingError, ActiveRecord::RecordNotFound
       end
