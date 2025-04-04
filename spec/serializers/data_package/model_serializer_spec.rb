@@ -6,7 +6,13 @@ RSpec.describe DataPackage::ModelSerializer do
 
     let(:output) { serializer.serialize }
     let(:object) {
-      m = create(:model, :with_tags, name: "Test Model", creator: create(:creator))
+      m = create(:model, :with_tags,
+        name: "Test Model",
+        creator: create(:creator),
+        collection: create(:collection),
+        links_attributes: [
+          {url: "https://example.com"}
+        ])
       image = create(:model_file, filename: "image.png", model: m)
       m.preview_file = image
       create(:model_file, filename: "model.stl", model: m)
@@ -89,6 +95,14 @@ RSpec.describe DataPackage::ModelSerializer do
     context "with extension fields" do
       it "includes link to extension schema" do
         expect(output[:$schema]).to eq "https://manyfold.app/profiles/0.0/datapackage.json"
+      end
+
+      it "includes links" do
+        expect(output.dig(:links, 0, :path)).to be_present
+      end
+
+      it "includes collection data" do
+        expect(output.dig(:collections, 0, :title)).to be_present
       end
 
       it "includes caption" do

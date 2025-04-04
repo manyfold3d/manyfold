@@ -32,6 +32,17 @@ RSpec.describe DataPackage::ModelDeserializer do
             "path" => "http://localhost:3214/creators/bruce-wayne",
             "roles" => ["creator"]
           }
+        ],
+        "collections" => [
+          {
+            "title" => "Wonderful Toys",
+            "path" => "http://localhost:3214/collections/abc123"
+          }
+        ],
+        "links" => [
+          {
+            "path" => "https://example.com/other-link"
+          }
         ]
       }
     end
@@ -52,7 +63,9 @@ RSpec.describe DataPackage::ModelDeserializer do
       expect(output[:links_attributes]).to include({url: "https://example.com"})
     end
 
-    it "parses other links"
+    it "parses other links" do
+      expect(output[:links_attributes]).to include({url: "https://example.com/other-link"})
+    end
 
     it "parses preview image" do
       expect(output[:preview_file]).to eq "images/pic.png"
@@ -79,6 +92,13 @@ RSpec.describe DataPackage::ModelDeserializer do
       expect(output.dig(:creator, :links_attributes, 0, :url)).to eq "http://localhost:3214/creators/bruce-wayne"
     end
 
-    it "parses collection"
+    it "parses collection ID if collection exists" do
+      collection = create(:collection, name: "Wonderful Toys", public_id: "abc123")
+      expect(output.dig(:collection, :id)).to eq collection.id
+    end
+
+    it "parses collection link if collection doesn't exist" do
+      expect(output.dig(:collection, :links_attributes, 0, :url)).to eq "http://localhost:3214/collections/abc123"
+    end
   end
 end

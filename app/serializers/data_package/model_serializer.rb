@@ -17,7 +17,9 @@ module DataPackage
           }.compact
         ] : nil),
         resources: @object.model_files.filter_map { |it| ModelFileSerializer.new(it).serialize },
-        contributors: @object.creator ? [CreatorSerializer.new(@object.creator).serialize] : nil
+        contributors: @object.creator ? [CreatorSerializer.new(@object.creator).serialize] : nil,
+        collections: @object.collection ? [CollectionSerializer.new(@object.collection).serialize] : nil,
+        links: @object.links.map { |it| LinkSerializer.new(it).serialize }
       }.compact
     end
   end
