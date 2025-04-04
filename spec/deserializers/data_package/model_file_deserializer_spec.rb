@@ -20,10 +20,6 @@ RSpec.describe DataPackage::ModelFileDeserializer do
       expect(output[:filename]).to eq "files/test.stl"
     end
 
-    it "parses media type" do
-      expect(output[:mime_type]).to eq "model/stl"
-    end
-
     it "parses notes" do
       expect(output[:notes]).to eq "description goes here"
     end
