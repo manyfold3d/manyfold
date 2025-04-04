@@ -46,6 +46,18 @@ class User < ApplicationRecord
   attribute :problem_settings, :json
   attribute :file_list_settings, :json
 
+  has_many :access_grants,
+    class_name: "Doorkeeper::AccessGrant",
+    foreign_key: :resource_owner_id,
+    dependent: :delete_all,
+    inverse_of: :resource_owner
+
+  has_many :access_tokens,
+    class_name: "Doorkeeper::AccessToken",
+    foreign_key: :resource_owner_id,
+    dependent: :delete_all,
+    inverse_of: :resource_owner
+
   def federails_name
     username
   end
