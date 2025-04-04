@@ -10,8 +10,9 @@ module DataPackage
         end
       rescue ActionController::RoutingError, ActiveRecord::RecordNotFound
       end
-      attributes[:links_attributes] = [{url: @object["path"]}] unless attributes.has_key?(:creator_id)
-      attributes
+      attributes[:links_attributes] = []
+      attributes[:links_attributes] << {url: @object["path"]} unless attributes.has_key?(:id)
+      attributes.compact
     end
   end
 end

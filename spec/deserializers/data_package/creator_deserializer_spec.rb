@@ -24,6 +24,10 @@ RSpec.describe DataPackage::CreatorDeserializer do
         expect(output[:id]).to eq creator.id
       end
 
+      it "does not add main detected path as link" do
+        expect(output[:links_attributes]).not_to include({url: "http://localhost:3214/creators/#{creator.to_param}"})
+      end
+
       it "parses links"
 
       it "parses notes"
@@ -44,7 +48,7 @@ RSpec.describe DataPackage::CreatorDeserializer do
         expect(output[:name]).to eq "Bruce Wayne"
       end
 
-      it "extracts links" do
+      it "includes main path as link" do
         expect(output[:links_attributes]).to include({
           url: "http://example.com/bruce-wayne"
         })
