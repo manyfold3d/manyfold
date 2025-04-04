@@ -23,6 +23,7 @@ pl:
     download:
       bambu: Otwórz w Bambu Studio
       cura: Otwórz w Ultimaker Cura
+      elegoo: Otwórz w ElegooSlicer
       orca: Otwórz w OrcaSlicer
       prusa: Otwórz w PrusaSlicer
     form:

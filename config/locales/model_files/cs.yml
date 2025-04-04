@@ -23,6 +23,7 @@ cs:
     download:
       bambu: Otevřít v Bambu Studio
       cura: Otevřít v Ultimaker Cura
+      elegoo: Otevřít v ElegooSlicer
       orca: Otevřít v OrcaSlicer
       prusa: Otevřít v PrusaSlicer
     form:

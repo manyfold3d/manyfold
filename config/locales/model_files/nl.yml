@@ -23,6 +23,7 @@ nl:
     download:
       bambu:
       cura:
+      elegoo:
       orca:
       prusa:
     form:
