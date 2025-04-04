@@ -12,7 +12,14 @@ RSpec.describe DataPackage::CreatorDeserializer do
         {
           "title" => creator.name,
           "path" => "http://localhost:3214/creators/#{creator.to_param}",
-          "roles" => ["creator"]
+          "roles" => ["creator"],
+          "caption" => "caption goes here",
+          "description" => "description goes here",
+          "links" => [
+            {
+              "path" => "http://example.com"
+            }
+          ]
         }
       end
 
@@ -28,11 +35,17 @@ RSpec.describe DataPackage::CreatorDeserializer do
         expect(output[:links_attributes]).not_to include({url: "http://localhost:3214/creators/#{creator.to_param}"})
       end
 
-      it "parses links"
+      it "parses links" do
+        expect(output[:links_attributes]).to include({url: "http://example.com"})
+      end
 
-      it "parses notes"
+      it "parses notes" do
+        expect(output[:notes]).to eq "description goes here"
+      end
 
-      it "parses caption"
+      it "parses caption" do
+        expect(output[:caption]).to eq "caption goes here"
+      end
     end
 
     context "with a valid creator hosted elsewhere" do
