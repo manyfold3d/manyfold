@@ -33,8 +33,10 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       end
       # match preview file
       data[:preview_file] = model.model_files.find_by(filename: data[:preview_file])
-      # Remove model file data, don't need it until there's something useful in it
-      data.delete(:model_files)
+      # Set file data
+      data.delete(:model_files).each do |file|
+        model_files.where(filename: file.delete(:filename)).update(file)
+      end
       # Merge in to main lists
       tag_list.concat data.delete(:tag_list)
       options.merge! data
