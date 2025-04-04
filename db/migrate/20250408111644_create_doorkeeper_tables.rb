@@ -5,13 +5,8 @@ class CreateDoorkeeperTables < ActiveRecord::Migration[7.2]
     create_table :oauth_applications do |t|
       t.string :name, null: false
       t.string :uid, null: false
-      # Remove `null: false` or use conditional constraint if you are planning to use public clients.
       t.string :secret, null: false
-
-      # Remove `null: false` if you are planning to use grant flows
-      # that doesn't require redirect URI to be used during authorization
-      # like Client Credentials flow or Resource Owner Password.
-      t.text :redirect_uri, null: false
+      t.text :redirect_uri
       t.string :scopes, null: false, default: ""
       t.boolean :confidential, null: false, default: true
       t.timestamps null: false
