@@ -3,7 +3,6 @@ module DataPackage
     def deserialize
       {
         filename: @object["path"],
-        mime_type: @object["mediatype"],
         caption: @object["caption"],
         notes: @object["description"],
         presupported: @object["presupported"],
