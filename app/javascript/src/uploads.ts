@@ -34,7 +34,7 @@ document.addEventListener('ManyfoldReady', () => {
       })
       .use(Tus, {
         endpoint: settings.uploadEndpoint ?? '/upload',
-        chunkSize: 5 * 1024 * 1024
+        chunkSize: 1 * 1024 * 1024
       })
     const submitButton = element?.closest('form')?.querySelector("input[type='submit']")
     uppy.on('upload', () => {
