@@ -5,8 +5,12 @@ module DataPackage
       {
         name: @object.basename.parameterize,
         path: @object.filename,
-        mediatype: @object.mime_type
-      }
+        mediatype: @object.mime_type,
+        caption: @object.caption,
+        description: @object.notes,
+        up: @object.y_up ? "+y" : "+z",
+        presupported: @object.presupported
+      }.compact
     end
   end
 end
