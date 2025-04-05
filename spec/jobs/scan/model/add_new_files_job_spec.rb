@@ -197,6 +197,29 @@ RSpec.describe Scan::Model::AddNewFilesJob do
     end
   end
 
+  context "with a datapackage in a model folder" do
+    around do |ex|
+      MockDirectory.create([
+        "model_one/model.stl",
+        "model_one/datapackage.json"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    let(:model) do
+      create(:model, path: "model_one", library: library)
+    end
+
+    it "detects model files" do # rubocop:todo RSpec/MultipleExpectations
+      expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(2)
+      expect(model.model_files.map(&:filename).sort).to eq ["model.stl", "datapackage.json"].sort
+    end
+  end
+
   it "raises exception if model ID is not found" do
     expect { described_class.perform_now(nil) }.to raise_error(ActiveRecord::RecordNotFound)
   end

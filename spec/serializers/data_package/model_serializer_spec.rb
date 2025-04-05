@@ -6,7 +6,14 @@ RSpec.describe DataPackage::ModelSerializer do
 
     let(:output) { serializer.serialize }
     let(:object) {
-      m = create(:model, :with_tags, name: "Test Model", creator: create(:creator))
+      m = create(:model, :with_tags,
+        name: "Test Model",
+        creator: create(:creator),
+        collection: create(:collection),
+        sensitive: true,
+        links_attributes: [
+          {url: "https://example.com"}
+        ])
       image = create(:model_file, filename: "image.png", model: m)
       m.preview_file = image
       create(:model_file, filename: "model.stl", model: m)
@@ -21,19 +28,7 @@ RSpec.describe DataPackage::ModelSerializer do
       expect(output[:title]).to eq "Test Model"
     end
 
-    it "includes caption and notes in description" do
-      expect(output[:description]).to eq "#{object.caption}
-
-#{object.notes}"
-    end
-
-    it "includes just caption if there's no notes" do
-      object.notes = nil
-      expect(output[:description]).to eq object.caption
-    end
-
-    it "includes just notes if there's no caption" do
-      object.caption = nil
+    it "includes notes in description field" do
       expect(output[:description]).to eq object.notes
     end
 
@@ -96,6 +91,28 @@ RSpec.describe DataPackage::ModelSerializer do
     it "does not include contributors if there is no creator" do
       object.creator = nil
       expect(output[:contributors]).to be_nil
+    end
+
+    context "with extension fields" do
+      it "includes link to extension schema" do
+        expect(output[:$schema]).to eq "https://manyfold.app/profiles/0.0/datapackage.json"
+      end
+
+      it "includes links" do
+        expect(output.dig(:links, 0, :path)).to be_present
+      end
+
+      it "includes collection data" do
+        expect(output.dig(:collections, 0, :title)).to be_present
+      end
+
+      it "includes caption" do
+        expect(output[:caption]).to eq object.caption
+      end
+
+      it "includes sensitive flag" do
+        expect(output[:sensitive]).to eq object.sensitive
+      end
     end
   end
 end

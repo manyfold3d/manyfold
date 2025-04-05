@@ -20,6 +20,12 @@ RSpec.describe ModelFilesHelper do
       expect(url).to match(/prusaslicer#{slic3r_family_regex}/)
     end
 
+    it "generates superslicer links" do
+      # Superslicer uses the prusaslicer URL handler
+      url = helper.slicer_url(:superslicer, file)
+      expect(url).to match(/prusaslicer#{slic3r_family_regex}/)
+    end
+
     it "generates cura links" do
       url = helper.slicer_url(:cura, file)
       expect(url).to match(/cura#{slic3r_family_regex}/)

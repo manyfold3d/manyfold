@@ -10,7 +10,7 @@ class ModelFile < ApplicationRecord
     "datapackage.json"
   ]
 
-  belongs_to :model
+  belongs_to :model, touch: true
 
   after_create :attach_existing_file!
 
