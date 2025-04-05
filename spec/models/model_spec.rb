@@ -73,6 +73,11 @@ RSpec.describe Model do
     expect(model.path).to eq "models/car"
   end
 
+  it "strips leading and trailing backslashes from tags" do
+    model = create(:model, tag_list: ["\\tag1", "tag2\\"])
+    expect(model.tag_list).to eq ["tag1", "tag2"]
+  end
+
   context "with a library on disk" do
     around do |ex|
       MockDirectory.create([

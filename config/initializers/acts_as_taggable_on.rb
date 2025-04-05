@@ -17,4 +17,14 @@ module ActsAsTaggableOn
       ["context", "created_at", "id", "tag_id", "taggable_id", "taggable_type", "tagger_id", "tagger_type"]
     end
   end
+
+  class CustomParser < GenericParser
+    def parse
+      TagList.new.tap do |tag_list|
+        tag_list.add @tag_list.map! {|t| t.gsub!(/(^\\*|\\*$)/, "")}
+      end
+    end
+  end
 end
+
+ActsAsTaggableOn.default_parser = ActsAsTaggableOn::CustomParser
