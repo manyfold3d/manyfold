@@ -19,7 +19,7 @@
         <%= form.select "tag_cloud_settings[sorting]",
               [[t(".sorting.frequency"), nil], [t(".sorting.alphabetical"), "alphabetical"]],
               {selected: @user.tag_cloud_settings["sorting"]},
-              {class: "form-select"} %>
+              class: "form-select" %>
       </div>
     </div>
     <div class="row mb-2">
