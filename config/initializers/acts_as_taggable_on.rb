@@ -20,9 +20,20 @@ module ActsAsTaggableOn
 
   class CustomParser < GenericParser
     def parse
+      string = @tag_list
+
+      string = string.join(ActsAsTaggableOn.glue) if string.respond_to?(:join)
       TagList.new.tap do |tag_list|
-        tag_list.add @tag_list.map! { |t| t.gsub!(/(^\\*|\\*$)/, "") }
+        string = string.to_s.dup
+        string.gsub!(/(^\\*|\\*$)/, "").gsub!(/(, \\*|\\*, )/, ",")
+
+        tag_list.add(string.split(ActsAsTaggableOn.delimiter))
       end
+    end
+
+    private
+    def delimiter
+
     end
   end
 end
