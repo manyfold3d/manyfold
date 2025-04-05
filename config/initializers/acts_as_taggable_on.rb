@@ -21,7 +21,7 @@ module ActsAsTaggableOn
   class CustomParser < GenericParser
     def parse
       TagList.new.tap do |tag_list|
-        tag_list.add @tag_list.map! {|t| t.gsub!(/(^\\*|\\*$)/, "")}
+        tag_list.add @tag_list.map! { |t| t.gsub!(/(^\\*|\\*$)/, "") }
       end
     end
   end
