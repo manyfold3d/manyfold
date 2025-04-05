@@ -30,11 +30,6 @@ module ActsAsTaggableOn
         tag_list.add(string.split(ActsAsTaggableOn.delimiter))
       end
     end
-
-    private
-    def delimiter
-
-    end
   end
 end
 
