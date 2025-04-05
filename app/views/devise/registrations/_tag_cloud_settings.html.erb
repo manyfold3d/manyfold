@@ -4,7 +4,7 @@
     <div class="row">
       <%= form.label nil, t(".threshold.label"), for: "tag_cloud_settings[threshold]", class: "col col-form-label" %>
       <div class="col">
-        <%= form.text_field "tag_cloud_settings[threshold]", value: @user.tag_cloud_settings["threshold"], class: "form-control" %>
+        <%= form.number_field "tag_cloud_settings[threshold]", value: @user.tag_cloud_settings["threshold"], class: "form-control" %>
       </div>
     </div>
     <div class="row">
@@ -16,7 +16,8 @@
     <div class="row">
       <%= form.label nil, t(".sorting.label"), for: "tag_cloud_settings[sorting]", class: "col col-form-label" %>
       <div class="col">
-        <%= form.select "tag_cloud_settings[sorting]", ["frequency", "alphabetical"],
+        <%= form.select "tag_cloud_settings[sorting]",
+              [[t(".sorting.frequency"), nil], [t(".sorting.alphabetical"), "alphabetical"]],
               {selected: @user.tag_cloud_settings["sorting"]},
               class: "form-select" %>
       </div>

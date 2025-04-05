@@ -169,6 +169,8 @@ en:
         keypair:
           label: Use delimiter to represent keypairs
         sorting:
+          alphabetical: alphabetical
+          frequency: frequency
           label: Sorting
         threshold:
           label: Minimum count of tag for display

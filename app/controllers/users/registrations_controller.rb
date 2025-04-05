@@ -149,7 +149,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     {
       "threshold" => settings[:threshold].to_i,
       "heatmap" => settings[:heatmap] == "1",
-      "keypair" => settings[:keypair] == "1"
+      "keypair" => settings[:keypair] == "1",
+      "sorting" => settings[:sorting].to_s
     }
   end
 
