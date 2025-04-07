@@ -1,0 +1,12 @@
+<h1><%= t("oauth_applications.index.title") %></h1>
+
+<table class="table table-striped">
+	<% @applications.find_each do |app| %>
+		<tr>
+			<td><%= link_to app.name, app %></td>
+			<td><%= app.owner.username %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to t(".new"), new_doorkeeper_application_path %>

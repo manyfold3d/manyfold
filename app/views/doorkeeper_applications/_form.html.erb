@@ -1,0 +1,7 @@
+<%= form_with model: @application do |form| %>
+  <%= text_input_row form, :name %>
+	<%= text_input_row form, :redirect_uri %>
+	<%= text_input_row form, :scopes %>
+	<%= checkbox_input_row form, :confidential %>
+  <%= form.submit "Save", class: "btn btn-primary" %>
+<% end %>

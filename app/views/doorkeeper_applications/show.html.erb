@@ -1,0 +1,34 @@
+<%= render "breadcrumb" %>
+<h1><%= t("oauth_applications.show.title") %></h1>
+
+<table class="table table-striped">
+	<tr>
+		<td><%= Doorkeeper::Application.human_attribute_name :name %></td>
+		<td><%= @application.name %></td>
+	</tr>
+	<tr>
+		<td><%= Doorkeeper::Application.human_attribute_name :uid %></td>
+		<td><code><%= @application.uid %></code></td>
+	</tr>
+	<tr>
+		<td><%= Doorkeeper::Application.human_attribute_name :secret %></td>
+		<td><code><%= @application.secret %></code></td>
+	</tr>
+	<tr>
+		<td><%= Doorkeeper::Application.human_attribute_name :confidential %></td>
+		<td><%= @application.confidential %></td>
+	</tr>
+	<tr>
+		<td><%= Doorkeeper::Application.human_attribute_name :redirect_uri %></td>
+		<td><code><%= @application.redirect_uri %></code></td>
+	</tr>
+	<tr>
+		<td><%= Doorkeeper::Application.human_attribute_name :access_token %></td>
+		<td>
+			<%= content_tag(:code) { @access_token } if @access_token %>
+			<%= button_to t(".regenerate"), @application, class: "btn btn-sm btn-outline-warning" %>
+		</td>
+	</tr>
+</table>
+
+<%= link_to t(".edit"), edit_doorkeeper_application_path(@application) %>

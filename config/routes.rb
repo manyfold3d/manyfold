@@ -3,7 +3,6 @@ require "sidekiq/cron/web"
 require "federails"
 
 Rails.application.routes.draw do
-  use_doorkeeper
   get ".well-known/change-password", to: redirect("/users/edit")
   get "health" => "rails/health#show", :as => :rails_health_check
   get "problems/index"
@@ -141,4 +140,9 @@ Rails.application.routes.draw do
 
   mount Rswag::Ui::Engine => "/api", :as => :api
   mount Rswag::Api::Engine => "/api"
+
+  use_doorkeeper do
+    skip_controllers :applications
+  end
+  resources :doorkeeper_applications, path: "/oauth/applications"
 end
