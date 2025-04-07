@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :actor, class: "Federails::Actor" do
     name { Faker::Name.name }
+    actor_type { "Person" }
     entity { nil }
     extensions {
       {
