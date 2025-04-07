@@ -58,6 +58,12 @@ class User < ApplicationRecord
     dependent: :delete_all,
     inverse_of: :resource_owner
 
+  has_many :oauth_applications,
+    class_name: "Doorkeeper::Application",
+    as: :owner,
+    dependent: :delete_all,
+    inverse_of: :owner
+
   def federails_name
     username
   end
