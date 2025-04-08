@@ -1,20 +1,22 @@
-<h1><%= t("oauth_applications.index.title") %></h1>
+<h1><%= t(".title") %></h1>
+
+<p class="lead"><%= t(".description") %></p>
 
 <table class="table table-striped">
-	<tr>
-		<td><%= t ".name" %></td>
-		<%= content_tag(:td) { t ".owner" } if current_user.is_moderator? %>
-		<td><%= t ".scopes" %></td>
-		<td><%= t ".created" %></td>
-	</tr>
-	<% @applications.find_each do |app| %>
-		<tr>
-			<td><%= link_to app.name, app %></td>
-			<%= content_tag(:td) { app.owner.username } if current_user.is_moderator? %>
-			<td><%= app.scopes %></td>
-			<td><%= app.created_at.to_formatted_s(:long) %></td>
-		</tr>
-	<% end %>
+  <tr>
+    <td><%= Doorkeeper::Application.human_attribute_name(:name) %></td>
+    <%= content_tag(:td) { Doorkeeper::Application.human_attribute_name(:owner) } if current_user.is_moderator? %>
+    <td><%= t Doorkeeper::Application.human_attribute_name(:scopes) %></td>
+    <td><%= t Doorkeeper::Application.human_attribute_name(:created_at) %></td>
+  </tr>
+  <% @applications.find_each do |app| %>
+    <tr>
+      <td><%= link_to app.name, app %></td>
+      <%= content_tag(:td) { app.owner.username } if current_user.is_moderator? %>
+      <td><%= app.scopes %></td>
+      <td><%= app.created_at.to_fs(:long) %></td>
+    </tr>
+  <% end %>
 </table>
 
-<%= link_to t(".new"), new_doorkeeper_application_path %>
+<%= link_to t(".new"), new_doorkeeper_application_path, class: "btn btn-primary" %>

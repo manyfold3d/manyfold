@@ -1,7 +1,7 @@
 <%= form_with model: @application do |form| %>
   <%= text_input_row form, :name, autofocus: true %>
-	<%= text_input_row form, :redirect_uri %>
-	<%= text_input_row form, :scopes %>
-	<%= checkbox_input_row form, :confidential %>
-  <%= form.submit "Save", class: "btn btn-primary" %>
+  <%= text_input_row form, :redirect_uri, help: t(".redirect_uri.help") %>
+  <%= text_input_row form, :scopes, help: t(".scopes.help") %>
+  <%= checkbox_input_row form, :confidential, help: t(".confidential.help") %>
+  <%= form.submit translate(".submit"), class: "btn btn-primary" %>
 <% end %>
