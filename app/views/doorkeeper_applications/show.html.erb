@@ -25,8 +25,15 @@
 	<tr>
 		<td><%= Doorkeeper::Application.human_attribute_name :access_token %></td>
 		<td>
-			<%= content_tag(:code) { @access_token } if @access_token %>
-			<%= button_to t(".regenerate"), @application, class: "btn btn-sm btn-outline-warning" %>
+			<% if @plaintext_token %>
+				<div class="alert alert-outline alert-warning bg-default">
+					<p><%= t(".access_token_help") %></p>
+					<%= text_field :access_token, {}, value: @plaintext_token, readonly: true, class: "form-control" %>
+				</div>
+			<% else %>
+				<%= t(".access_token_expiry", how_long: time_ago_in_words(@access_token.expires_at)) if @access_token %>
+				<%= button_to t(".generate_access_token"), doorkeeper_application_path(@application, "doorkeeper_application[generate_token]": "1"), method: :patch, class: "btn btn-sm btn-outline-warning" %>
+			<% end %>
 		</td>
 	</tr>
 </table>
