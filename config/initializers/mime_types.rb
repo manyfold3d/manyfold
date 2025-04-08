@@ -30,6 +30,7 @@ Mime::Type.register "model/x-meshmixer", :mix
 Mime::Type.register "model/x-modo", :modo, [], ["lxo"]
 Mime::Type.register "model/x-ply", :ply
 Mime::Type.register "model/x-sketchup", :sketchup, [], ["skp"]
+Mime::Type.register "model/x-solidworks-part", :sldprt
 Mime::Type.register "model/x-hfp", :hfp
 Mime::Type.register "model/x-speedtree", :speedtree, [], ["spm"]
 Mime::Type.register "model/x3d", :x3d, ["model/x3d+xml", "model/x3d-vrml", "model/x3d+fastinfoset"]
