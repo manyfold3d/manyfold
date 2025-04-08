@@ -84,8 +84,7 @@ module SupportedMimeTypes
         "image/vnd.dxf",
         "image/vnd.dwg",
         "application/x-3ds",
-        "application/x-amf",
-        "application/x-hfp"
+        "application/x-amf"
       ]
       type.to_s.start_with?("model/") || extras.include?(type.to_s)
     end
