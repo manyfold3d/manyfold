@@ -14,6 +14,7 @@ describe "ModelFiles", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
       produces "application/ld+json"
       parameter name: :model_id, in: :path, type: :string, required: true, example: "abc123"
       parameter name: :id, in: :path, type: :string, required: true, example: "def456"
+      security [client_credentials: ["read"]]
 
       response "200", "Success" do
         schema type: :object,
@@ -41,6 +42,7 @@ describe "ModelFiles", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
           },
           required: ["@context", "@id", "@type", "name", "isPartOf", "encodingFormat"]
 
+        let(:Authorization) { "Bearer #{create(:oauth_access_token).plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:model_id) { Model.first.to_param }
         let(:id) { ModelFile.first.to_param }
         run_test!

@@ -37,6 +37,20 @@ RSpec.configure do |config|
         }
       ],
       components: {
+        securitySchemes: {
+          client_credentials: {
+            type: :oauth2,
+            description: "Authentication with the OAuth2 Client Credentials grant flow. You can generate a client app and a long-lived bearer token at /oauth/applications.",
+            flows: {
+              clientCredentials: {
+                tokenUrl: "/oauth/token",
+                scopes: {
+                  read: "read any data accessible to the OAuth application's owner"
+                }
+              }
+            }
+          }
+        },
         schemas: {
           jsonld_context: {
             type: :array,
