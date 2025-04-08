@@ -40,7 +40,7 @@ class DoorkeeperApplicationsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @application.destroy
     redirect_to doorkeeper_applications_path, notice: t(".success")
   end
