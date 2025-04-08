@@ -12,6 +12,16 @@ en:
         name: Name
         notes: Description
         slug: Handle
+      doorkeeper/application:
+        access_token: Access Token
+        confidential: Confidential
+        created_at: Created
+        name: Name
+        owner: Owner
+        redirect_uri: Redirect URI
+        scopes: Scopes
+        secret: Client Secret
+        uid: Client ID
       federails/moderation/domain_block:
         created_at: Created at
         domain: Domain
@@ -283,6 +293,40 @@ en:
     tags_card:
       skip_tags: Skip tag list
     title: Manyfold
+  doorkeeper_applications:
+    create:
+      failure: An error occurred, and the application could not be created.
+      success: Application created successfully.
+    destroy:
+      success: Application deleted successfully.
+    edit:
+      title: Edit application
+    form:
+      confidential:
+        help: A confidential application can hold secrets securely (e.g. a web server backend, or machine-to-machine script).
+      redirect_uri:
+        help: Use "urn:ietf:wg:oauth:2.0:oob" if your application does not need a redirect URI (e.g. machine-to-machine apps).
+      scopes:
+        help: Currently only "read" scope is available. More are coming soon.
+      submit: Save application
+    index:
+      description: OAuth applications allow you to access Manyfold resources from other services via our API.
+      new: New application
+      title: OAuth Applications
+    new:
+      title: New application
+    show:
+      access_token:
+        expiry: Expires in %{how_long}
+        generate: Create new access token
+      destroy: Delete
+      edit: Edit
+      plaintext_token:
+        help: This token will only be shown once. If you lose it, you will need to generate a new one, which will automatically revoke all existing tokens.
+      title: Application details
+    update:
+      failure: An error occurred, and the application could not be saved.
+      success: Application saved successfully.
   errors:
     messages:
       already_confirmed: was already confirmed, please try signing in

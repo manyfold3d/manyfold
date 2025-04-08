@@ -140,4 +140,9 @@ Rails.application.routes.draw do
 
   mount Rswag::Ui::Engine => "/api", :as => :api
   mount Rswag::Api::Engine => "/api"
+
+  use_doorkeeper do
+    skip_controllers :applications
+  end
+  resources :doorkeeper_applications, path: "/oauth/applications"
 end

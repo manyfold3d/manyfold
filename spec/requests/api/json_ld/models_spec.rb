@@ -15,6 +15,7 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
       parameter name: :order, in: :query, type: :string, enum: ["name", "recent"], description: "Specify order of results; either by name or creation time", example: "name", required: false
       parameter name: :creator, in: :query, type: :string, description: "The ID of a creator to filter the model list", example: "abc123", required: false
       parameter name: :collection, in: :query, type: :string, description: "The ID of a collection to filter the model list", example: "abc123", required: false
+      security [client_credentials: []]
 
       response "200", "Success" do
         schema type: :object,
@@ -50,6 +51,7 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
           },
           required: ["@context", "@id", "@type", "totalItems", "member", "view"]
 
+        let(:Authorization) { "Bearer #{create(:oauth_access_token).plaintext_token}" } # rubocop:disable RSpec/VariableName
         run_test!
       end
     end
@@ -59,6 +61,7 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
       tags "Models"
       produces "application/ld+json"
       parameter name: :id, in: :path, type: :string, required: true, example: "abc123"
+      security [client_credentials: []]
 
       response "200", "Success" do
         schema type: :object,
@@ -103,6 +106,7 @@ describe "Models", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
           },
           required: ["@context", "@id", "@type", "name", "hasPart"]
 
+        let(:Authorization) { "Bearer #{create(:oauth_access_token).plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:id) { Model.first.to_param }
         run_test!
       end

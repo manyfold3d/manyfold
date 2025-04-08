@@ -46,6 +46,22 @@ class User < ApplicationRecord
   attribute :problem_settings, :json
   attribute :file_list_settings, :json
 
+  has_many :access_grants, # rubocop:disable Rails/InverseOf
+    class_name: "Doorkeeper::AccessGrant",
+    foreign_key: :resource_owner_id,
+    dependent: :delete_all
+
+  has_many :access_tokens, # rubocop:disable Rails/InverseOf
+    class_name: "Doorkeeper::AccessToken",
+    foreign_key: :resource_owner_id,
+    dependent: :delete_all
+
+  has_many :oauth_applications,
+    class_name: "Doorkeeper::Application",
+    as: :owner,
+    dependent: :delete_all,
+    inverse_of: :owner
+
   def federails_name
     username
   end

@@ -1,0 +1,42 @@
+<%= render "breadcrumb" %>
+<h1><%= t(".title") %></h1>
+
+<table class="table table-striped">
+  <tr>
+    <td><%= Doorkeeper::Application.human_attribute_name :name %></td>
+    <td><%= @application.name %></td>
+  </tr>
+  <tr>
+    <td><%= Doorkeeper::Application.human_attribute_name :uid %></td>
+    <td><code><%= @application.uid %></code></td>
+  </tr>
+  <tr>
+    <td><%= Doorkeeper::Application.human_attribute_name :secret %></td>
+    <td><code><%= @application.secret %></code></td>
+  </tr>
+  <tr>
+    <td><%= Doorkeeper::Application.human_attribute_name :confidential %></td>
+    <td><%= @application.confidential %></td>
+  </tr>
+  <tr>
+    <td><%= Doorkeeper::Application.human_attribute_name :redirect_uri %></td>
+    <td><code><%= @application.redirect_uri %></code></td>
+  </tr>
+  <tr>
+    <td><%= Doorkeeper::Application.human_attribute_name :access_token %></td>
+    <td>
+      <% if @plaintext_token %>
+        <div class="alert alert-outline alert-warning bg-default">
+          <p><%= t(".plaintext_token.help") %></p>
+          <%= text_field :access_token, {}, value: @plaintext_token, readonly: true, class: "form-control" %>
+        </div>
+      <% else %>
+        <%= t(".access_token.expiry", how_long: time_ago_in_words(@access_token.expires_at)) if @access_token %>
+        <%= link_to t(".access_token.generate"), doorkeeper_application_path(@application, "doorkeeper_application[generate_token]": "1"), method: :patch, class: "ms-5 btn btn-sm btn-outline-warning" %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<%= link_to t(".edit"), edit_doorkeeper_application_path(@application), class: "btn btn-primary" %>
+<%= link_to t(".destroy"), doorkeeper_application_path(@application), method: :delete, class: "btn btn-outline-danger" %>

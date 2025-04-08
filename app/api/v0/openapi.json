@@ -38,6 +38,13 @@
             }
           }
         ],
+        "security": [
+          {
+            "client_credentials": [
+              "read"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -151,6 +158,13 @@
             }
           }
         ],
+        "security": [
+          {
+            "client_credentials": [
+              "read"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -236,6 +250,13 @@
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "read"
+            ]
           }
         ],
         "responses": {
@@ -351,6 +372,13 @@
             }
           }
         ],
+        "security": [
+          {
+            "client_credentials": [
+              "read"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -417,6 +445,13 @@
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "read"
+            ]
           }
         ],
         "responses": {
@@ -556,6 +591,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "client_credentials": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -671,6 +711,11 @@
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": []
           }
         ],
         "responses": {
@@ -1157,6 +1202,20 @@
     }
   ],
   "components": {
+    "securitySchemes": {
+      "client_credentials": {
+        "type": "oauth2",
+        "description": "Authentication with the OAuth2 Client Credentials grant flow. You can generate a client app and a long-lived bearer token at /oauth/applications.",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "/oauth/token",
+            "scopes": {
+              "read": "read any data accessible to the OAuth application's owner"
+            }
+          }
+        }
+      }
+    },
     "schemas": {
       "jsonld_context": {
         "type": "array",
