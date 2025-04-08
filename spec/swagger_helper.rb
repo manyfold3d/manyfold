@@ -40,7 +40,7 @@ RSpec.configure do |config|
         securitySchemes: {
           client_credentials: {
             type: :oauth2,
-            description: "Authentication with the OAuth2 Client Credentials grant flow. You can generate a client app and a long-lived bearer token at /oauth/applications.",
+            description: "Authentication with the OAuth2 Client Credentials grant flow. You can generate client app credentials at /oauth/applications.",
             flows: {
               clientCredentials: {
                 tokenUrl: "/oauth/token",
