@@ -316,13 +316,8 @@ en:
     new:
       title: New application
     show:
-      access_token:
-        expiry: Expires in %{how_long}
-        generate: Create new access token
       destroy: Delete
       edit: Edit
-      plaintext_token:
-        help: This token will only be shown once. If you lose it, you will need to generate a new one, which will automatically revoke all existing tokens.
       title: Application details
     update:
       failure: An error occurred, and the application could not be saved.
