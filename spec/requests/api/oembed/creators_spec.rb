@@ -1,9 +1,7 @@
 # spec/requests/blogs_spec.rb
 require "swagger_helper"
 
-describe "Creators", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
-  before { create(:admin) }
-
+describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   path "/creators/{id}.oembed" do
     get "oEmbed response for Creators" do
       tags "Creators"

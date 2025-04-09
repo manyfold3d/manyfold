@@ -1,9 +1,8 @@
 # spec/requests/blogs_spec.rb
 require "swagger_helper"
 
-describe "ModelFiles", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
+describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   before do
-    create(:admin)
     model = create(:model, :public, creator: create(:creator, :public), collection: create(:collection, :public))
     create(:model_file, model: model)
   end
