@@ -46,8 +46,7 @@ RSpec.describe ProcessUploadedFileJob do
     end
   end
 
-  context "when uploading a file" do
-    let!(:admin) { create(:admin) }
+  context "when uploading a file", :after_first_run do
     let(:uploader) { create(:contributor) }
     let(:library) { create(:library) }
     let(:file) { Rack::Test::UploadedFile.new(StringIO.new("solid\n"), original_filename: "test.stl") }
@@ -58,7 +57,7 @@ RSpec.describe ProcessUploadedFileJob do
 
     it "Sets default owner permission if no owner set" do
       job.perform(library.id, file)
-      expect(Model.last.permitted_users.with_permission(:own)).to include admin
+      expect(Model.last.permitted_users.with_permission(:own)).to include SiteSettings.default_user
     end
 
     it "Sets owner permission to provided user" do
