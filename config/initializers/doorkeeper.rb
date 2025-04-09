@@ -16,7 +16,6 @@ Doorkeeper.configure do
 
   # Authentication
   resource_owner_from_credentials { nil }
-  admin_authenticator { current_user } # Temporary
 
   # Available scopes
   default_scopes :read
