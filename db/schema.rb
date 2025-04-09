@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_08_145956) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_09_125753) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -386,6 +386,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_08_145956) do
     t.string "sensitive_content_handling"
     t.string "public_id"
     t.boolean "approved", default: true, null: false
+    t.integer "quota", default: 0
+    t.boolean "quota_use_site_default", default: true, null: false
     t.index ["approved"], name: "index_users_on_approved"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["public_id"], name: "index_users_on_public_id"

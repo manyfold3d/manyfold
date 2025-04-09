@@ -42,6 +42,21 @@ RSpec.describe User do
     expect(u).to have_role(:member)
   end
 
+  it "has quota set to defined value" do
+    user = create(:user, quota: 42, quota_use_site_default: false)
+    expect(user.quota).to eq 42
+  end
+
+  it "has unlimited quota" do
+    user = create(:user, quota: 0, quota_use_site_default: false)
+    expect(user.has_quota?).to be false
+  end
+
+  it "uses site default quota" do
+    user = create(:user, quota: 42, quota_use_site_default: true)
+    expect(user.quota).to eq SiteSettings.default_user_quota
+  end
+
   context "with omniauth" do
     let(:auth_data) do
       OpenStruct.new({
