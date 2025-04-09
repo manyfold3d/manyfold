@@ -6,6 +6,13 @@ class Upgrade::UpdateActorsJob < ApplicationJob
   unique :until_executed
 
   def perform
-    Federails::Maintenance::ActorsUpdater.run
+    if SiteSettings.federation_enabled?
+      # Fix incorrectly-flagged local actors
+      Federails::Actor.where(local: true)
+        .where.not(server: [PublicUrl.hostname, nil])
+        .update_all(local: false) # rubocop:disable Rails/SkipsModelValidations
+      # Update remove actor data
+      Federails::Maintenance::ActorsUpdater.run
+    end
   end
 end
