@@ -30,6 +30,7 @@ module ModelListable
     end
 
     # Load extra data
-    @models = @models.includes [:library, :model_files, :preview_file, :creator, :collection]
+    @models = @models.includes [:creator, :collection]
+    @models = @models.preload [:model_files, :preview_file] # Use preload query to avoid joining JSON fields
   end
 end

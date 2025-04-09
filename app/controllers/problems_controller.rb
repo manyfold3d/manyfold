@@ -6,12 +6,12 @@ class ProblemsController < ApplicationController
     authorize Problem
     # Are we showing ignored problems?
     @show_ignored = (params[:show_ignored] == "true")
-    query = @show_ignored ? policy_scope(Problem.unscoped) : policy_scope(Problem)
+    query = @show_ignored ? policy_scope(Problem.including_ignored) : policy_scope(Problem)
     # Now, which page are we on?
     page = params[:page] || 1
     # What categories are we showing?
     # First, get the possible categories based on severity filter
-    severities = params[:severity] ? Problem::CATEGORIES.select { |cat| params[:severity]&.include?(current_user.problem_severity(cat).to_s) } : nil
+    severities = params[:severity] ? Problem::CATEGORIES.select { |cat| params[:severity]&.include?(current_user.problem_severity(cat).to_s) } : nil # rubocop:disable Pundit/UsePolicyScope
     # Then get the category filter
     categories = params[:category]&.map(&:to_sym)
     # Now query with the intersection of the two, or if we don't have both, then whichever we do have
@@ -26,13 +26,13 @@ class ProblemsController < ApplicationController
     # Don't show types ignored in user settings
     query = query.visible(helpers.problem_settings)
     query = query.includes([:problematic])
-    @problems = query.page(page).per(50).order([:category, :problematic_type])
+    @problems = query.page(page).per(50).order([:category, :problematic_type]).includes(problematic: [:library, :model])
     # Do we have any filters at all?
     @filters_applied = [:show_ignored, :severity, :category, :type].any? { |k| params.has_key?(k) }
   end
 
   def update
-    @problem = Problem.unscoped.find_param(params[:id])
+    @problem = Problem.including_ignored.find_param(params[:id])
     authorize @problem
     @problem.update!(permitted_params)
     notice = t(
@@ -101,7 +101,7 @@ class ProblemsController < ApplicationController
     when "Model"
       problem.problematic.delete_from_disk_and_destroy
     when "ModelFile"
-      problem.problematic.destroy
+      problem.problematic.delete_from_disk_and_destroy
     else
       raise NotImplementedError
     end
@@ -130,7 +130,7 @@ class ProblemsController < ApplicationController
     case problem.problematic_type
     when "ModelFile"
       problem.update(in_progress: true)
-      problem.problematic.convert_to! :threemf
+      problem.problematic.convert_later :threemf
     else
       raise NotImplementedError
     end

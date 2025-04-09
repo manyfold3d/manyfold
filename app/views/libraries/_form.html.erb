@@ -1,5 +1,6 @@
 <%= form_with model: @library do |form| %>
   <%= text_input_row form, :name %>
+  <%= checkbox_input_row form, :default, help: t(".default.help"), checked: @library.default? %>
   <% unless @library.persisted? %>
     <div class="row mb-3 input-group">
       <%= form.label :storage_service, class: "col-sm-2 col-form-label" %>
@@ -10,12 +11,13 @@
             <p><%= t ".filesystem_description_html" %></p>
           </div>
           <%= text_input_row form, :path, placeholder: translate(".path.placeholder") %>
+          <%= checkbox_input_row form, :create_path_if_not_on_disk, help: t(".create_path_if_not_on_disk.help") %>
         </div>
         <div id="options-s3" class="card p-3 collapse show storage-collapse" data-bs-parent="#library_storage_service">
           <div class="row">
             <p><%= t ".s3_description_html" %></p>
           </div>
-          <%= text_input_row form, :s3_endpoint, help: t(".s3_endpoint.help"), autocomplete: false %>
+          <%= url_input_row form, :s3_endpoint, help: t(".s3_endpoint.help"), autocomplete: false %>
           <%= text_input_row form, :s3_bucket, help: t(".s3_bucket.help"), autocomplete: false %>
           <%= text_input_row form, :s3_region, autocomplete: false %>
           <%= text_input_row form, :s3_access_key_id, autocomplete: false %>
@@ -54,4 +56,16 @@
   <% end %>
 
   <%= form.submit translate("general.save"), class: "btn btn-primary" %>
+
+  <% if @library.persisted? %>
+    <%= if policy(@library).destroy?
+          link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "),
+            library_path(@library.public_id),
+            {
+              method: :delete,
+              class: "float-end btn btn-outline-danger",
+              data: {confirm: translate(".confirm_destroy.help", count: @library.models.count)}
+            }
+        end %>
+  <% end %>
 <% end %>

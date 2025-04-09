@@ -3,11 +3,7 @@ require "rails_helper"
 RSpec.describe "Comments" do
   context "when on a public item in multiuser mode", :multiuser do
     let(:user) { create(:user) }
-    let(:model) {
-      m = create(:model)
-      m.grant_permission_to "view", nil
-      m
-    }
+    let(:model) { create(:model, :public) }
     let(:comment) { model.comments.create(commenter: user, comment: Faker::Lorem.paragraph) }
 
     describe "GET #show" do

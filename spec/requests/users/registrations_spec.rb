@@ -35,17 +35,19 @@ RSpec.describe "Users::Registrations" do
     }
   }
 
-  context "when in single user mode" do
+  context "when in single user mode", :singleuser do
     context "when signed out" do
       describe "GET /users/sign_up" do
         it "raises an error" do
-          expect { get "/users/sign_up" }.to raise_error(Pundit::NotAuthorizedError)
+          get "/users/sign_up"
+          expect(response).to have_http_status(:forbidden)
         end
       end
 
       describe "POST /users" do
         it "raises an error" do
-          expect { post "/users", params: post_options }.to raise_error(Pundit::NotAuthorizedError)
+          post "/users", params: post_options
+          expect(response).to have_http_status(:forbidden)
         end
       end
 
@@ -72,7 +74,8 @@ RSpec.describe "Users::Registrations" do
 
       describe "GET /users/cancel without a signup in progress" do
         it "raises an error" do
-          expect { get "/users/cancel" }.to raise_error(Pundit::NotAuthorizedError)
+          get "/users/cancel"
+          expect(response).to have_http_status(:forbidden)
         end
       end
     end
@@ -122,7 +125,8 @@ RSpec.describe "Users::Registrations" do
 
       describe "DELETE /users" do
         it "raises an error" do
-          expect { delete "/users" }.to raise_error(Pundit::NotAuthorizedError)
+          delete "/users"
+          expect(response).to have_http_status(:forbidden)
         end
       end
 
@@ -144,13 +148,15 @@ RSpec.describe "Users::Registrations" do
     context "when signed out" do
       describe "GET /users/sign_up" do
         it "raises an error" do
-          expect { get "/users/sign_up" }.to raise_error(Pundit::NotAuthorizedError)
+          get "/users/sign_up"
+          expect(response).to have_http_status(:forbidden)
         end
       end
 
       describe "POST /users" do
         it "raises an error" do
-          expect { post "/users", params: post_options }.to raise_error(Pundit::NotAuthorizedError)
+          post "/users", params: post_options
+          expect(response).to have_http_status(:forbidden)
         end
       end
 
@@ -271,7 +277,10 @@ RSpec.describe "Users::Registrations" do
       end
 
       describe "POST /users with approval disabled" do
-        before { post "/users", params: post_options }
+        before {
+          allow(SiteSettings).to receive(:approve_signups).and_return(false)
+          post "/users", params: post_options
+        }
 
         it "creates a new user" do
           expect(User.count).to eq 2

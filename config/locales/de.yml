@@ -11,6 +11,7 @@ de:
         caption: Beschreibung
         name: Name
         notes: Beschreibung
+        slug: Handgriff
       federails/moderation/domain_block:
         created_at: Erstellt am
         domain: Domain
@@ -21,6 +22,8 @@ de:
         object: Objekt
       library:
         caption: Beschreibung
+        create_path_if_not_on_disk: Ordner automatisch erstellen
+        default: Standard
         icon: Symbol
         name: Name
         notes: Notizen
@@ -28,6 +31,7 @@ de:
         s3_access_key_id: Zugangs Schlüssel ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpunkt URL
+        s3_path_style: Verwende pfad-ähnliche URLs
         s3_region: Region
         s3_secret_access_key: Geheimer Zugangs Schlüssel
         storage_service: Speicherdienst
@@ -35,7 +39,7 @@ de:
       link:
         url: Link
       model:
-        caption: Beschreibung
+        caption: Bildunterschrift
         collection_id: Kollektion
         creator_id: Autor
         library_id: Sammlung
@@ -234,16 +238,16 @@ de:
       title: Filter
       unknown: Unbekannt
     footer:
-      by_html: Entworfen und erstellt von <a href="https://floppy.org.uk" target="_blank">James</a> mit Hilfe von  <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">our contributors</a>.
-      chat: Chat
-      code: Code
-      community_heading: Community
-      development_heading: Entwicklung
-      issues: Bugs
-      open_source_html: 'Open Source unter dieser Lizenz: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT license</a>'
-      social: Social Media
-      sponsor: Sponsoren
-      stats_heading: Statistiken
+      about: Über diese Instanz
+      api: Erkunde unsere API
+      by_html: Entworfen und erstellt von <a href="https://floppy.org.uk" target="_blank">James</a> mit Hilfe  <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">unserer Mitwirkenden</a>.
+      community: Tritt der Community bei
+      instance_heading: Details zur Instanz
+      issues: Einen Fehler melden
+      open_source_html: '<a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> unter dieser Lizenz: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT license</a>.'
+      powered_by_html: Powered by <a href="https://manyfold.app">%{name}</a>
+      sponsor: Entwickler unterstützen
+      support: Diese Instanz unterstützen
       version: Version
     link_fields:
       url:
@@ -265,7 +269,7 @@ de:
       scan_changes: Nach Änderungen suchen
       scanning: Scannen
       search: Suche
-      settings: Website-Einstellungen
+      settings: Admin-Einstellungen
       upload: Hochladen
     order_buttons:
       sort:
@@ -281,16 +285,18 @@ de:
     title: Manyfold
   follow_button_component:
     follow: Folge %{name}
+    pending: Angefordert
     unfollow: "%{name} nicht mehr Folgen"
   follows:
     actor_table:
       actions: Aktionen
       address: Fediverse Adresse
-      info: Info
       name: Name
       non_manyfold_account: Dies ist kein Manyfold-Konto; Du kannst ihm folgen, aber wahrscheinlich wird nichts Interessantes passieren, zumindest im Moment.
     follow_remote_actor:
       followed: Erfolgreich %{actor} gefolgt
+    index:
+      title: Follgende
     new:
       help: Du kannst öffentlichen Authoren, Sammlungen oder Modellen auf einem anderen Manyfold-Server folgen, und zwar jedem öffentlichen Konto im Fediverse! Gib einfach den Namen des Accounts in das Suchfeld ein!
       no_results: Ich konnte leider nichts zu "%{query}" finden. Handelt es sich um ein gültiges ActivityPub-Konto oder eine URL?
@@ -299,12 +305,14 @@ de:
     remote_follow:
       help: Du brauchst kein Konto auf diesem Server, um %{name} zu folgen; gib hier deinen eigenen Kontonamen ein, und wir schicken Sie nach Hause, um den Vorgang abzuschließen.
       no_results_html: Wir konnten dein Privatkonto nicht finden; hast du es richtig angegeben?
-      placeholder: dein Fediverse-Benutzername, z. B. @manyfold@3dp.chat
+      placeholder: dein Fediverse-Benutzername, z. B. manyfold@3dp.chat
       submit: Bring mich nach Hause
       title: Folge %{name}
     search_form:
       placeholder: Gib ein Fediverse-Konto oder eine URL ein, z. B. @admin@try.manyfold.app
       submit: Suche
+    unfollow_remote_actor:
+      unfollowed: "%{actor} nicht mehr Folgen"
   general:
     delete: Löschen
     download: Herunterladen
@@ -316,15 +324,15 @@ de:
     save: Speichern
     view: Siehe
   home:
+    activity:
+      created: hinzugefügt vor %{time}
+      updated: aktualisiert vor %{time}
     index:
-      create_actor: 'hinzugefügt von %{name} vor %{time} '
-      how_long_ago: vor %{time}
       no_activities: Im Moment gibt es keine Aktivitäten zu sehen.
       recent_activity: Neuste Aktivität
       search:
         placeholder: Wonach suchen Sie?
         submit: Suche
-      update_actor: aktualisiert von %{name} vor %{time}
   jobs:
     activity:
       creator_added_model:
@@ -374,6 +382,7 @@ de:
       actions_heading: Aktionen
     settings:
       activeadmin: Erweiterte Administration
+      appearance: Erscheinungsbild
       libraries: Sammlungen
       organization: Organisation
       performance: Leistungs-Dashboard
@@ -400,9 +409,19 @@ de:
       label: Bearbeite Modell %{name}
       text: Bearbeiten
     no_preview: Keine Vorschau verfügbar
+    no_remote_preview: Vorschauen für Modelle auf anderen Instanzen sind leider noch nicht verfügbar, werden aber bald folgen!
     open_button:
       label: Öffne Modell %{name}
       text: Öffnen
+  moderator_mailer:
+    new_approval:
+      greeting: Hallo!
+      message: Eine neue Person hat sich für ein Konto angemeldet und benötigt eine Genehmigung. Genehmige das Konto hier %{link}
+      subject: Neues Konto muss genehmigt werden
+    new_report:
+      greeting: Hallo!
+      message: Jemand hat Inhalte gemeldet, die moderiert werden müssen. Überprüfe den Bericht unter %{link}
+      subject: Neuer Bericht eingegangen
   renderer:
     errors:
       canvas: 'Konnte #webgl canvas nicht finden!'

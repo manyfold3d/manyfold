@@ -24,6 +24,8 @@ nl:
       unknown: Onbekend
     index:
       skip_collections: Collectielijst overslaan
+    show:
+      edit: Collectie Bewerken
     unassigned:
       caption: Alle modellen die niet in een collectie zitten.
       name: Niet toegewezen

@@ -20,6 +20,13 @@ nl:
     destroy:
       confirm: Weet je zeker dat je dit bestand wilt verwijderen van je bestandssysteem?
       success: Bestand verwijderd!
+    download:
+      bambu:
+      cura:
+      elegoo:
+      orca:
+      prusa:
+      superslicer:
     form:
       notes:
         help_html: Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
@@ -28,6 +35,8 @@ nl:
     show:
       convert: Converteren naar 3MF
       details_heading: Details
+      download:
+        menu_header:
       notes_heading: Notities
     update:
       failure: Er is een fout opgetreden en de bestandsdetails konden niet worden opgeslagen.

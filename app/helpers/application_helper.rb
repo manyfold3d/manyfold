@@ -1,14 +1,14 @@
 module ApplicationHelper
-  def site_name
-    ENV.fetch("SITE_NAME", translate("application.title"))
+  def site_name(default: translate("application.title"))
+    SiteSettings.site_name.presence || default
   end
 
   def site_tagline
-    ENV.fetch("SITE_TAGLINE", t("application.tagline"))
+    SiteSettings.site_tagline.presence || t("application.tagline")
   end
 
   def site_icon
-    ENV.fetch("SITE_ICON", "roundel.svg")
+    SiteSettings.site_icon.presence || "roundel.svg"
   end
 
   def icon(icon, label, id: nil)
@@ -102,7 +102,27 @@ module ApplicationHelper
         form.label(name, options[:label], class: "col-auto col-form-label"),
         content_tag(:div, class: "col p-0") do
           safe_join [
-            form.password_field(name, {class: "form-control"}.merge(options)),
+            form.password_field(name, {class: "form-control", "data-zxcvbn": options[:strength_meter]}.merge(options)),
+            (if options[:strength_meter]
+               content_tag(:div, class: "progress") do
+                 content_tag(:div, nil, class: "progress-bar w-0 zxcvbn-meter", "data-zxcvbn-min-score": Devise.min_password_score)
+               end
+             end),
+            errors_for(form.object, name),
+            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+          ].compact
+        end
+      ]
+    end
+  end
+
+  def url_input_row(form, name, options = {})
+    content_tag :div, class: "row mb-3 input-group" do
+      safe_join [
+        form.label(name, options[:label], class: "col-auto col-form-label"),
+        content_tag(:div, class: "col p-0") do
+          safe_join [
+            form.url_field(name, {class: "form-control"}.merge(options)),
             errors_for(form.object, name),
             (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
           ].compact
@@ -117,7 +137,7 @@ module ApplicationHelper
         form.label(name, options[:label], class: "col-auto col-form-label"),
         content_tag(:div, class: "col p-0") do
           safe_join [
-            form.text_area(name, class: "form-control col-auto"),
+            form.text_area(name, {class: "form-control col-auto"}.merge(options)),
             errors_for(form.object, name),
             (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
           ].compact
@@ -206,5 +226,20 @@ module ApplicationHelper
 
   def random_password
     (SecureRandom.base64(32) + "!0aB").chars.shuffle.join
+  end
+
+  def server_indicator(object)
+    actor = object.respond_to?(:federails_actor) ? object.federails_actor : object
+    return if !SiteSettings.federation_enabled? || actor.local?
+    content_tag :small, class: "text-secondary" do
+      safe_join([
+        "⁂",
+        actor.server
+      ], " ")
+    end
+  end
+
+  def oembed_params
+    params.permit(:maxwidth, :maxheight)
   end
 end

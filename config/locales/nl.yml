@@ -11,6 +11,7 @@ nl:
         caption: Tagline
         name: Naam
         notes: Beschrijving
+        slug:
       federails/moderation/domain_block:
         created_at: Aangemaakt op
         domain: Domein
@@ -21,6 +22,8 @@ nl:
         object: Object
       library:
         caption: Onderschrift
+        create_path_if_not_on_disk:
+        default:
         icon: Icoon
         name: Naam
         notes: Notities
@@ -28,6 +31,7 @@ nl:
         s3_access_key_id: Toegangssleutel ID
         s3_bucket: Bucket Naam
         s3_endpoint: Endpoint URL
+        s3_path_style:
         s3_region: Regio
         s3_secret_access_key: Geheime Toegangssleutel
         storage_service: Opslagservice
@@ -234,16 +238,16 @@ nl:
       title: Filters
       unknown: Onbekend
     footer:
+      about:
+      api:
       by_html: Ontworpen en gebouwd door <a href="https://floppy.org.uk" target="_blank">James</a> met hulp van <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">onze bijdragers</a>.
-      chat: Chat
-      code: Code
-      community_heading: Gemeenschap
-      development_heading: Ontwikkeling
+      community:
+      instance_heading:
       issues: Problemen
       open_source_html: Open Source onder de <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT-licentie</a>.
-      social: Sociaal
+      powered_by_html:
       sponsor: Sponsor
-      stats_heading: Statistieken
+      support:
       version: Versie
     link_fields:
       url:
@@ -292,16 +296,18 @@ nl:
       weak_password: niet sterk genoeg. Overweeg een cijfer, symbolen of meer letters toe te voegen om het sterker te maken.
   follow_button_component:
     follow: Volg %{name}
+    pending:
     unfollow: Ontvolg %{name}
   follows:
     actor_table:
       actions: Acties
       address:
-      info: Info
       name: Naam
       non_manyfold_account:
     follow_remote_actor:
       followed: "%{actor} succesvol gevolgd"
+    index:
+      title:
     new:
       help: Je kunt openbare makers, collecties of modellen op een andere Manyfold-server volgen, eigenlijk elk openbaar account in het Fediverse! Voer gewoon de accountnaam in het zoekvak in!
       no_results: Sorry, kon niets vinden voor "%{query}". Is het een geldig ActivityPub-account of URL?
@@ -310,12 +316,14 @@ nl:
     remote_follow:
       help: Je hebt geen account nodig op deze server om %{name} te volgen; voer hier je eigen accountnaam in, en we sturen je terug naar je eigen server om het proces te voltooien.
       no_results_html: We konden je thuisaccount niet vinden; heb je het correct ingevoerd?
-      placeholder: Je Fediverse-gebruikersnaam, bijv. @manyfold@3dp.chat
+      placeholder: Je Fediverse-gebruikersnaam, bijv. manyfold@3dp.chat
       submit: Breng me naar huis
       title: Volg %{name}
     search_form:
-      placeholder: Voer een Fediverse-account of URL in, bijv. @admin@try.manyfold.app
+      placeholder:
       submit: Zoeken
+    unfollow_remote_actor:
+      unfollowed:
   general:
     delete: Verwijderen
     download: Downloaden
@@ -327,15 +335,15 @@ nl:
     save: Opslaan
     view: Bekijken
   home:
+    activity:
+      created: toegevoegd %{time} geleden
+      updated: bijgewerkt %{time} geleden
     index:
-      create_actor: toegevoegd door %{name} %{time} geleden
-      how_long_ago: "%{time} geleden"
       no_activities: Er zijn momenteel geen activiteiten om weer te geven.
       recent_activity: Recente Activiteit
       search:
         placeholder: Waar zoek je naar?
         submit: Zoeken
-      update_actor: bijgewerkt door %{name} %{time} geleden
   jobs:
     activity:
       creator_added_model:
@@ -385,6 +393,7 @@ nl:
       actions_heading: Acties
     settings:
       activeadmin: Geavanceerd Beheer
+      appearance:
       libraries: Bibliotheken
       organization: Organisatie
       performance: Prestatie Dashboard
@@ -411,9 +420,19 @@ nl:
       label: Bewerk model %{name}
       text: Bewerken
     no_preview: Geen voorbeeld beschikbaar
+    no_remote_preview:
     open_button:
       label: Open model %{name}
       text: Openen
+  moderator_mailer:
+    new_approval:
+      greeting: Hoi!
+      message:
+      subject:
+    new_report:
+      greeting: Hoi!
+      message:
+      subject:
   renderer:
     errors:
       canvas: 'Kon #webgl canvas niet vinden!'

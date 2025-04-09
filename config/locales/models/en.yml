@@ -22,9 +22,12 @@ en:
       success: Model deleted!
     exceeds_max_size: 'Selected file exceeds maximum size: %{max_size} MiB.'
     file:
+      delete: Delete file
+      edit: Edit file
       open_button:
         label: View details for %{name}
         text: Open
+      presupported: Presupported Version
       set_as_preview: Set as preview
     form:
       notes:
@@ -66,11 +69,11 @@ en:
         menu_header: Download Options
         supported: Supported Files Only
         unsupported: Unsupported Files Only
-      fediverse_address: Fediverse Address
       files: Files
       files_card:
         bulk_edit: Edit all files
         heading: Files
+      followers: Followers
       license: License
       merge:
         heading: Merge

@@ -7,10 +7,11 @@
         <div class="card mb-2">
           <h4 class="card-header"><%= t(".contact_info") %></h4>
           <div class="card-body">
-            <%= text_input_row f, :email, autofocus: true, autocomplete: "email",
+            <%= text_input_row f, :email, autocomplete: "email",
                   help: (devise_mapping.confirmable? && resource.pending_reconfirmation?) ?
                     t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) :
                     nil %>
+            <%= text_input_row f, :username, autocomplete: false %>
             <% if SiteSettings.federation_enabled? %>
               <div class="row mb-3">
                 <div class="col-auto col-form-label"><%= t("settings.users.index.fediverse_address") %></div>
@@ -22,7 +23,7 @@
         <div class="card mb-2">
           <h4 class="card-header"><%= t(".security") %></h4>
           <div class="card-body">
-            <%= password_input_row f, :password, autocomplete: "new-password" %>
+            <%= password_input_row f, :password, autocomplete: "new-password", strength_meter: true %>
             <%= password_input_row f, :password_confirmation, autocomplete: "new-password" %>
             <%= password_input_row f, :current_password, autocomplete: "current-password",
                   help: t(".current_password_help") %>
@@ -33,6 +34,27 @@
       <%= render "problem_settings", form: f %>
     </div>
     <div class="col-12 col-sm">
+      <%- if SiteSettings.multiuser_enabled? %>
+        <div class="card mb-2">
+          <h3 class="card-header"><%= t(".social") %></h3>
+          <div class="card-body">
+            <div class="row mb-3 text-center">
+              <div class="col">
+                <%= link_to follow_path, class: "text-reset text-decoration-none fs-5" do %>
+                  <%= t("follows.index.following") %>
+                  <span class="badge bg-primary"><%= current_user.federails_actor.follows.count %></span>
+                <% end %>
+              </div>
+              <div class="col">
+                <%= link_to follow_path, class: "text-reset text-decoration-none fs-5" do %>
+                  <%= t("follows.index.followers") %>
+                  <span class="badge bg-primary"><%= current_user.federails_actor.followers.count %></span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
       <%= render "general_settings", form: f %>
       <%= render "pagination_settings", form: f %>
       <%= render "file_list_settings", form: f %>

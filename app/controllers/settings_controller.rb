@@ -4,6 +4,8 @@ class SettingsController < ApplicationController
   def update
     # Save site-wide settings if user is an admin
     update_folder_settings(params[:folders])
+    update_library_settings(params[:libraries])
+    update_appearance_settings(params[:appearance])
     update_file_settings(params[:files])
     update_tagging_settings(params[:model_tags])
     update_multiuser_settings(params[:multiuser])
@@ -28,6 +30,22 @@ class SettingsController < ApplicationController
     end
   end
 
+  def update_appearance_settings(settings)
+    return unless settings
+    SiteSettings.site_name = settings[:site_name]
+    SiteSettings.site_tagline = settings[:site_tagline]
+    SiteSettings.site_icon = settings[:site_icon]
+    SiteSettings.theme = settings[:theme]
+    SiteSettings.about = settings[:about]
+    SiteSettings.rules = settings[:rules]
+    SiteSettings.support_link = settings[:support_link]
+  end
+
+  def update_library_settings(settings)
+    return unless settings
+    SiteSettings.show_libraries = settings[:show] == "1"
+  end
+
   def update_tagging_settings(settings)
     return unless settings
     SiteSettings.model_tags_filter_stop_words = settings[:filter_stop_words] == "1"
@@ -44,6 +62,7 @@ class SettingsController < ApplicationController
 
   def update_multiuser_settings(settings)
     return unless settings
+    SiteSettings.registration_enabled = (settings[:registration_open])
     SiteSettings.approve_signups = (settings[:approve_signups])
     SiteSettings.default_viewer_role = (settings[:default_viewer_role].presence)
   end

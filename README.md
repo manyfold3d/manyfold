@@ -9,7 +9,7 @@ Visit [manyfold.app](https://manyfold.app/) for more details, installation instr
 There are a few routes to get help:
 
 * [GitHub issues](https://github.com/manyfold3d/manyfold/issues/new) is the best place to report bugs.
-* [Live chat](https://matrix.to/#/#manyfold:one.ems.host) to the "team" on Matrix (an open Discord/Slack-like chat system).
+* [Live chat](https://matrix.to/#/#manyfold:matrix.org) to the "team" on Matrix (an open Discord/Slack-like chat system).
 * Get in touch with our [social media](https://3dp.chat/@manyfold) presence in the Fediverse (Mastodon, etc).
 
 And, if you want to contribute financially to development efforts...
@@ -40,16 +40,42 @@ There are a few other major components that we build with:
 
 To run the app yourself, you'll need the following installed:
 
-* Ruby 3.2
-* Bundler 2.x
-* Node.js 22.x
-* Yarn >= 1.22
+* Ruby 3.4
+* Bundler 2.6+
+* Node.js 22.13+ (and run `corepack enable`)
+* Yarn 3.8+
 * Foreman or [another Procfile runner](https://github.com/ddollar/foreman#ports)
 * [libarchive](https://github.com/chef/ffi-libarchive#installation) (for upload support)
 
 To run the application once you've cloned this repo, you should be able to just run `bin/dev`; that should set up the database, perform migrations, install dependencies, and then make the application available at <http://127.0.0.1:5000>.
 
 If you want to configure optional features, set the appropriate [environment variables](https://manyfold.app/sysadmin/configuration.html) in a file called `.env`. See `env.example` for a template file. Note that the required environment variables in the documentation are not needed in development mode, due to the use of SQLite instead of PostgreSQL.
+
+### Using the Devcontainer
+
+To simplify the development environment setup, Manyfold includes a devcontainer configuration. This allows you to use Visual Studio Code's Remote - Containers extension to develop inside a container.
+
+#### Prerequisites
+
+- Docker installed on your machine
+- Visual Studio Code with the Remote - Containers extension
+
+#### Steps
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/manyfold3d/manyfold.git
+    cd manyfold
+    ```
+
+2. Open the repository in Visual Studio Code:
+    ```sh
+    code .
+    ```
+
+3. When prompted by Visual Studio Code, click on "Reopen in Container". This will build the devcontainer and open the project inside it.
+
+4. Once the container is running, you can use the integrated terminal in Visual Studio Code to run commands as usual.
 
 ### Coding standards
 

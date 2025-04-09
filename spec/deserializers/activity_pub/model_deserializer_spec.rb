@@ -8,8 +8,8 @@ RSpec.describe ActivityPub::ModelDeserializer do
       create(:library)
     end
 
-    let(:actor) { create(:model_actor) }
-    let(:output) { deserializer.deserialize }
+    let(:actor) { create(:actor, :distant, :f3di_model) }
+    let(:output) { deserializer.create! }
 
     it_behaves_like "GenericDeserializer"
 
@@ -18,7 +18,7 @@ RSpec.describe ActivityPub::ModelDeserializer do
     end
 
     it "sets correct tags" do
-      expect(output.tag_list).to eq ["hash tag", "wizard"]
+      expect(output.tag_list).to eq ["Hash Tag", "Wizard"]
     end
   end
 end

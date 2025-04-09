@@ -1,0 +1,98 @@
+---
+cs:
+  models:
+    bulk_edit:
+      description: 'Vyberte modely, které chcete změnit:'
+      form_subtitle: 'Vyberte změny, které chcete provést:'
+      needs_organizing: Potřebuje uspořádat
+      remove_tags: Odstranit štítky
+      select: Vybrat model '%{name}'
+      select_all: Vybrat všechny modely
+      submit: Aktualizace vybraných modelů
+      title: Hromadné úpravy modelů
+      update_all: Aktualizace všech %{count} modelů
+    bulk_fields:
+      add_tags: Přidat štítky
+    bulk_update:
+      success: Modely byly úspěšně aktualizovány.
+    create:
+      success: Soubory byly úspěšně nahrány!
+    destroy:
+      confirm: Tím se odstraní související soubory, pokud na disku existují. Určitě chcete pokračovat?
+      success: Model smazán!
+    exceeds_max_size: 'Vybraný soubor přesahuje maximální velikost: %{max_size} MiB.'
+    file:
+      delete: Smazat soubor
+      edit: Upravit soubor
+      open_button:
+        label: Zobrazit podrobnosti pro %{name}
+        text: Otevřít
+      presupported: Předběžně podporovaná verze
+      set_as_preview: Nastavit jako náhled
+    form:
+      notes:
+        help_html: Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      preview_file:
+        help: Soubor zobrazený jako náhled modelu na stránkách knihovny
+      tags: Štítky
+    general:
+      edit: Upravit model
+    image_carousel:
+      next: Další
+      play_pause: Přehrávání nebo pozastavení obrázků
+      previous: Předchozí
+      select_slide: Vyberte obrázek ke zobrazení
+      slide_label: "%{name} (%{index} z %{count})"
+    list:
+      bulk_edit: Upravit všechny modely
+      no_results_html: Je nám líto, ale nenašli jsme nic, co bychom Vám mohli ukázat! Zkuste změnit filtry nebo vyhledávací filtry nebo nahrát nějaké modely.
+      skip_models: Přeskočit seznam modelů
+    merge:
+      success: Modely byly úspěšně sloučeny.
+    new:
+      description: Přidávejte nové modely nahráváním souborů! Pokud nahrajete komprimovaný archiv, bude rozbalen a stane se z něj jeden model obsahující všechny soubory. Pokud nahrajete jednotlivé soubory, každý z nich se stane samostatným modelem.
+      files:
+        label: Vybrat soubory
+      free_space: "(%{available} volných)"
+      library:
+        help: Knihovna, do které se má nahrávat.
+      submit: Vytvořit modely
+      title: Nahrát
+    problem:
+      merge_all: Sloučit vše
+    scan:
+      success: Spuštěna kontrola modelu.
+    show:
+      download:
+        file_type: 'Pouze soubory %{type} '
+        label: Stáhnout vše
+        menu_header: Možnosti stažení
+        supported: Pouze podporované soubory
+        unsupported: Pouze nepodporované soubory
+      files: Soubory
+      files_card:
+        bulk_edit: Upravit všechny soubory
+        heading: Soubory
+      license: Licence
+      merge:
+        heading: Sloučit
+        warning: Sloučení přesune všechny soubory z tohoto modelu do cílového a odstraní tento model. Metadata souborů zůstanou zachována, ale všechna metadata modelu budou ztracena!
+        with: Sloučit s
+      model_details: Detaily modelu
+      organize:
+        button_text: Uspořádání souborů
+        confirm:
+          are_you_sure: Jste si jistí, že to chcete udělat?
+          'no': Ne, zrušit
+          summary_html: Složka a soubory, které tvoří tento model, budou přesunuty z:<br> <code>%{from}</code><br> do<br> <code>%{to}</code>
+          'yes': Ano, přesunout soubory
+      path: Cesta
+      rescan: Znovu zkontrolovat soubory
+      search: Vyhledávání modelů s tímto názvem na internetu
+      submit: Nahrát soubory
+      tags: Štítky
+      upload_card:
+        heading: Nahrát
+    update:
+      failure: Došlo k chybě a detaily modelu nebylo možné uložit.
+      success: Detaily modelu uloženy.

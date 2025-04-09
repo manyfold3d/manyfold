@@ -3,12 +3,24 @@ class HomeController < ApplicationController
   skip_after_action :verify_policy_scoped
 
   def index
-    @feed = Timeline.local for_user: current_user
+    @feed = local_timeline
+  end
+
+  def about
+    skip_authorization
   end
 
   private
 
   def check_library_exists
-    redirect_to new_library_path if Library.count === 0
+    redirect_to new_library_path if Library.count === 0 # rubocop:disable Pundit/UsePolicyScope
+  end
+
+  def local_timeline
+    [Model, Creator, Collection].map do |model|
+      query = policy_scope(model)
+      query = query.includes(:federails_actor) if SiteSettings.federation_enabled?
+      query.order(updated_at: :desc).limit(20)
+    end.flatten.sort_by(&:updated_at).last(20).reverse
   end
 end

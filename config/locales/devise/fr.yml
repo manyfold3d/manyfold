@@ -88,6 +88,8 @@ fr:
       first_use:
         email_help: Jamais affiché publiquement ; utilisé uniquement pour se connecter et les mails de sécurité du compte.
         guidance: Lors de la première utilisation, vous devez définir un nom d'utilisateur, une adresse mail de contact et un mot de passe pour l'administrateur principal. Si vous travaillez en mode mono-utilisateur, vous n'aurez normalement pas besoin d'entrer ces informations pour vous connecter, mais en mode multi-utilisateur, vous ne pourrez pas accéder à Manyfold sans ces informations.
+        password:
+          help_html:
         submit: Sauvegarder
         title: Installation
         username_help: Un nom d'utilisateur unique ; utilisez le nom prédéfini ou choisissez le vôtre.
@@ -105,6 +107,9 @@ fr:
           show: Afficher comme les autres
       new:
         approval_help: Après la création de votre compte, celui-ci sera examiné manuellement par nos modérateurs. Nous vous informerons lorsque le processus d'approbation sera terminé et que vous pourrez vous connecter.
+        details:
+        rules:
+        rules_agree:
         sign_up: Inscription
       pagination_settings:
         collections:
@@ -149,7 +154,7 @@ fr:
           label: Style de rendu
           lambert: Ombres réalistes
           normals: Direction de la surface
-          shadowed:
+          shadowed: Ombré réaliste
         show_grid:
           label: Afficher le plan de masse
       signed_up: Bienvenue ! Vous vous êtes bien enregistré(e).

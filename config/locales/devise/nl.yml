@@ -88,6 +88,8 @@ nl:
       first_use:
         email_help: Nooit publiekelijk zichtbaar; alleen gebruikt voor inloggen en account beveiligingsmails.
         guidance: Bij eerste gebruik moet je een gebruikersnaam, contact e-mail en wachtwoord instellen voor de hoofdbeheerder. Als je in enkele-gebruiker modus draait, hoef je deze gegevens normaal gesproken niet in te voeren om in te loggen, maar in multi-gebruiker modus kun je Manyfold niet gebruiken zonder deze gegevens.
+        password:
+          help_html:
         submit: Opslaan
         title: Setup
         username_help: Een unieke gebruikersnaam; gebruik de vooraf gegenereerde of kies je eigen.
@@ -105,6 +107,9 @@ nl:
           show: Normaal weergeven
       new:
         approval_help: Na het aanmaken van je account wordt het handmatig beoordeeld door onze moderators. We laten je weten wanneer de goedkeuring voltooid is en je kunt inloggen.
+        details:
+        rules:
+        rules_agree:
         sign_up: Registreren
       pagination_settings:
         collections:

@@ -18,15 +18,22 @@ class SiteSettings < RailsSettings::Base
   field :analyse_manifold, type: :boolean, default: false
   field :anonymous_usage_id, type: :string, default: nil
   field :default_viewer_role, type: :string, default: "member"
-  field :approve_signups, type: :boolean, default: false
+  field :approve_signups, type: :boolean, default: true
+  field :theme, type: :string, default: "default"
+  field :default_library, type: :integer, default: nil
+  field :show_libraries, type: :boolean, default: false
+  field :registration_enabled, type: :boolean, default: (ENV.fetch("REGISTRATION", nil) == "enabled")
+
+  field :site_name, type: :string, default: ENV.fetch("SITE_NAME", nil)
+  field :site_tagline, type: :string, default: ENV.fetch("SITE_TAGLINE", nil)
+  field :site_icon, type: :string, default: ENV.fetch("SITE_ICON", nil)
+  field :about, type: :string, default: nil
+  field :rules, type: :string, default: nil
+  field :support_link, type: :string, default: nil
 
   field :default_user_quota, type: :integer, default: 0
 
   validates :model_ignored_files, regex_array: {strict: true}
-
-  def self.registration_enabled?
-    Rails.application.config.manyfold_features[:registration]
-  end
 
   def self.email_configured?
     !Rails.env.production? || ENV.fetch("SMTP_SERVER", false)
@@ -58,6 +65,10 @@ class SiteSettings < RailsSettings::Base
 
   def self.default_user
     User.with_role(:administrator).first
+  end
+
+  def self.social_enabled?
+    multiuser_enabled? || federation_enabled?
   end
 
   def self.ignored_file?(pathname)

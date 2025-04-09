@@ -1,6 +1,7 @@
 <% content_for :head do %>
   <%= tag.meta property: "og:type", content: "profile" %>
   <%= tag.meta name: "description", content: truncate(sanitize(@creator.caption), length: 80) if @creator.caption.present? %>
+  <%= tag.link rel: "alternate", type: Mime[:oembed], href: creator_url(@creator, format: :oembed), title: @creator.name %>
 <% end %>
 
 <%= content_for :items do %>
@@ -27,7 +28,8 @@
       <div class="col">
         <%= content_tag(:p, class: "lead") { @creator.caption } if @creator.caption %>
         <%= content_tag(:p, class: "card-text") { markdownify @creator.notes } if @creator.notes %>
-        <%= "#{policy_scope(Model).where(creator: @creator).count} #{Model.model_name.human count: policy_scope(Model).where(creator: @creator).count}" %>
+        <p><%= "#{policy_scope(Model).where(creator: @creator).count} #{Model.model_name.human count: policy_scope(Model).where(creator: @creator).count}" %></p>
+        <%= content_tag(:p) { t("general.followers", count: @creator.followers.count) } if SiteSettings.social_enabled? %>
       </div>
     </div>
   </div>

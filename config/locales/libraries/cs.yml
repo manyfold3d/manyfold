@@ -1,0 +1,60 @@
+---
+cs:
+  libraries:
+    create:
+      failure: Došlo k chybě a knihovnu nebylo možné uložit.
+      success: Vytvořena nová knihovna!
+    destroy:
+      success: Knihovna smazána!
+    form:
+      add_line: Přidat řádek
+      caption:
+        help: Nepovinné; zobrazuje se jako tooltip u odkazů na knihovny.
+      confirm_destroy:
+        help: Odstraněním této knihovny se odstraní také %{count} modelů a jejich dat. Soubory na disku nebudou odstraněny. Jste si jisti, že chcete knihovnu odstranit?
+      create_path_if_not_on_disk:
+        help: Vytvoří výše zadanou složku knihovny, pokud na disku ještě neexistuje.
+      default:
+        help: Nastavit tuto knihovnu jako výchozí pro nahrávání
+      filesystem_description_html: Chcete-li použít úložiště na místním souborovém systému, nejprve se ujistěte, že je připojen jako <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> nebo jiný svazek uvnitř kontejneru Docker, a poté zadejte cestu Dockeru; nikoli cestu na hostitelském serveru! Například pokud máte na hostitelském serveru složku plnou souborů v adresáři <code>/mnt/media/3d/models</code> a v konfiguraci Dockeru jste připojili <code>/mnt/media/3d</code> k <code>/libraries</code>, požadovaná cesta bude <code>/libraries/models</code>.
+      icon:
+        help_html: Nepovinné; libovolná ikona z <a href="https://icons.getbootstrap.com/" target="_blank">ikon Boostrap</a> nebo <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
+        placeholder: boxy
+      notes:
+        help_html: Nepovinné; zobrazeno pouze správcům na stránce nastavení. Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      path:
+        placeholder: "/libraries/models"
+      s3_bucket:
+        help: Pouze název bucketu, nikoli celá adresa URL
+      s3_description_html: Manyfold může pro vaši knihovnu použít libovolné úložiště objektů kompatibilní s S3; může to být některá z velkého počtu <a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">open source</a> nebo <a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">komerčních</a> služeb.
+      s3_endpoint:
+        help: Nepovinné; nutné pouze pro služby kompatibilní s S3, nikoli s AWS.
+      s3_path_style:
+        help: Vypnout používání adres URL bucketu ve stylu hostitele. Používá se pouze pro služby kompatibilní s S3, nikoli s AWS.
+      tag_regex:
+        help: Kontrola, zda modelům chybí štítky odpovídající těmto regexům.
+    general:
+      edit: Upravit knihovnu
+      new: Nová knihovna
+    index:
+      description: Podívejte se na podrobnosti o knihovně a upravte.
+      free_space:
+        label: Volné místo
+      heading: Knihovny
+      settings: Nastavení
+      show:
+        help: Zobrazí nebo skryje knihovny na navigačním panelu a ve formulářích. Volba knihovny ve formulářích pro úpravy se vždy zobrazí správcům.
+        label: Zobrazit knihovny
+      tag_regex:
+        check: Kontrola
+        search_missing: Vyhledávání chybějících
+    scan:
+      success: Spuštěna kontrola knihovny.
+    scan_all:
+      success: Spuštěna kontrola všech knihoven.
+    storage_services:
+      filesystem: Místní souborový systém
+      s3: Cloudové úložiště kompatibilní s S3
+    update:
+      failure: Došlo k chybě a knihovnu nebylo možné uložit.
+      success: Detaily knihovny uloženy.

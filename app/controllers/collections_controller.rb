@@ -5,11 +5,12 @@ class CollectionsController < ApplicationController
   include ModelListable
 
   before_action :get_collection, except: [:index, :new, :create]
+  before_action :get_creators, except: [:index, :create]
 
   def index
     @models = filtered_models @filters
     @collections = policy_scope(Collection)
-    @collections = @collections.tree_both(Collection.find_param(@filters[:collection]).id || nil, @models.pluck(:collection_id).uniq) unless @filters[:collection].nil?
+    @collections = filtered_collections @filters
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
@@ -27,17 +28,30 @@ class CollectionsController < ApplicationController
       @collections = @collections.page(page).per(helpers.pagination_settings["per_page"])
     end
     # Eager load
-    @collections = @collections.includes :collections, :collection, :links, models: [:preview_file, :library]
+    @collections = @collections.includes :collections, :collection, :links
     # Apply tag filters in-place
     @filter_in_place = true
-    render layout: "card_list_page"
+
+    # Count unassiged models
+    @unassigned_count = policy_scope(Model).where(collection: nil).count
+
+    respond_to do |format|
+      format.html { render layout: "card_list_page" }
+      format.json_ld { render json: JsonLd::CreatorListSerializer.new(@collections).serialize }
+    end
   end
 
   def show
-    @models = policy_scope(Model).where(collection: @collection)
-    prepare_model_list
-    @additional_filters = {collection: @collection}
-    render layout: "card_list_page"
+    respond_to do |format|
+      format.html do
+        @models = policy_scope(Model).where(collection: @collection)
+        prepare_model_list
+        @additional_filters = {collection: @collection}
+        render layout: "card_list_page"
+      end
+      format.oembed { render json: OEmbed::CollectionSerializer.new(@collection, helpers.oembed_params).serialize }
+      format.json_ld { render json: JsonLd::CollectionSerializer.new(@collection).serialize }
+    end
   end
 
   def new
@@ -46,13 +60,13 @@ class CollectionsController < ApplicationController
     @collection.links.build if @collection.links.empty? # populate empty link
     @collection.caber_relations.build if @collection.caber_relations.empty?
     @title = t("collections.general.new")
-    @collections = Collection.all
+    @collections = policy_scope(Collection).all
   end
 
   def edit
     @collection.links.build if @collection.links.empty? # populate empty link
     @collection.caber_relations.build if @collection.caber_relations.empty?
-    @collections = Collection.all
+    @collections = policy_scope(Collection).all
   end
 
   def create
@@ -84,15 +98,20 @@ class CollectionsController < ApplicationController
       authorize Collection
       @title = t(".unknown")
     else
-      @collection = Collection.includes(:links, :caber_relations).find_param(params[:id])
+      @collection = policy_scope(Collection).find_param(params[:id])
       authorize @collection
       @title = @collection.name
     end
   end
 
+  def get_creators
+    @creators = policy_scope(Creator).order("LOWER(name) ASC")
+  end
+
   def collection_params
     params.require(:collection).permit(
       :name,
+      :creator_id,
       :collection_id,
       :caption,
       :notes,

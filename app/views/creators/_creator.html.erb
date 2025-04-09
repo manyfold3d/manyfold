@@ -3,13 +3,7 @@
     <div class="card-body <%= "remote-actor" if creator.remote? %>">
       <div class="card-title">
         <%= creator.name %>
-        <% if SiteSettings.federation_enabled? && creator.remote? %>
-          <br>
-          <small class="text-secondary">
-            <%= icon "globe2", t(".remote") %>
-            <%= creator.federails_actor&.server %>
-          </small>
-        <% end %>
+        <br><%= server_indicator creator %>
       </div>
       <% if creator.caption %>
         <small class="card-subtitle mb-2 text-muted"><%= sanitize creator.caption %></small>
@@ -21,9 +15,11 @@
       </ul>
       <% if creator.remote? %>
         <%= link_to "#{policy_scope(Model).where(creator: creator).count} #{Model.model_name.human count: policy_scope(Model).where(creator: creator).count}", creator, {class: "btn btn-primary", "aria-label": translate(".models_button.remote_label", name: creator.name)} if policy(creator).show? %>
-        <%= link_to icon("globe2", t(".visit_button.text")), creator.federails_actor.profile_url, {class: "btn btn-outline-secondary", "aria-label": translate(".visit_button.label", name: creator.name, target: "new")} %>
+        <%= link_to "#{policy_scope(Collection).where(creator: creator).count} #{Collection.model_name.human count: policy_scope(Collection).where(creator: creator).count}", "collections?creator=" + creator.to_param, {class: "btn btn-primary", "aria-label": translate(".models_button.remote_label", name: creator.name)} if policy(creator).show? && !creator.collections.empty? %>
+        <%= link_to "⁂", creator.federails_actor.profile_url, {class: "btn btn-outline-secondary", "aria-label": translate(".visit_button.label", name: creator.name, target: "new")} %>
       <% else %>
         <%= link_to "#{policy_scope(Model).where(creator: creator).count} #{Model.model_name.human count: policy_scope(Model).where(creator: creator).count}", creator, {class: "btn btn-primary", "aria-label": translate(".models_button.label", name: creator.name)} if policy(creator).show? %>
+        <%= link_to "#{policy_scope(Collection).where(creator: creator).count} #{Collection.model_name.human count: policy_scope(Collection).where(creator: creator).count}", "collections?creator=" + creator.to_param, {class: "btn btn-primary", "aria-label": translate(".models_button.label", name: creator.name)} if policy(creator).show? && !creator.collections.empty? %>
         <%= link_to icon("pencil-fill", t(".edit_button.text")), edit_creator_path(creator), {class: "btn btn-outline-secondary", "aria-label": translate(".edit_button.label", name: creator.name)} if policy(creator).edit? %>
       <% end %>
     </div>

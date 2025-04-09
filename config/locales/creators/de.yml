@@ -9,11 +9,16 @@ de:
         text: Bearbeiten
       models_button:
         label: Modelle von %{name} anzeigen
+        remote_label: Lokale Modelle nach %{name} anzeigen
+      visit_button:
+        label: Besuchen
     destroy:
       success: Ersteller gelöscht!
     form:
       notes:
         help_html: Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden.
+      slug:
+        help: Wird in URLs und als Fediverse-Benutzername verwendet (falls aktiviert).
     general:
       edit: Bearbeite den Ersteller
       new: Neuer Ersteller

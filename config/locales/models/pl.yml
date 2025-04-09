@@ -10,7 +10,7 @@ pl:
       select_all: Zaznacz wszystkie modele
       submit: Aktualizuj zaznaczone modele
       title: Edytuj zbiorczo modele
-      update_all: Aktualizuj wszystkie modele
+      update_all: Zaktualizuj Wszystkie %{count} Modele(i)
     bulk_fields:
       add_tags: Dodaj tagi
     bulk_update:
@@ -22,9 +22,12 @@ pl:
       success: Model usunięty!
     exceeds_max_size: 'Wybrany plik przekracza maksymalny rozmiar: %{max_size} MiB.'
     file:
+      delete: Usuń plik
+      edit: Edytuj plik
       open_button:
         label: Wyświetl szczegóły %{name}
         text: Otwórz
+      presupported:
       set_as_preview: Ustaw jako podgląd
     form:
       notes:

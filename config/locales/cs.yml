@@ -1,0 +1,462 @@
+---
+cs:
+  activerecord:
+    attributes:
+      collection:
+        caption: Titulek
+        collection_id: Kolekce
+        name: Název
+        notes: Poznámky
+      creator:
+        caption: Popisek
+        name: Jméno
+        notes: Popis
+        slug: Handle
+      federails/moderation/domain_block:
+        created_at: Vytvořeno
+        domain: Doména
+      federails/moderation/report:
+        content: Komentář
+        created_at: Přijato
+        federails_actor: Nahlášeno
+        object: Objekt
+      library:
+        caption: Titulek
+        create_path_if_not_on_disk: Automatické vytvoření složky
+        default: Výchozí
+        icon: Ikona
+        name: Název
+        notes: Poznámky
+        path: Cesta
+        s3_access_key_id: ID přístupového klíče
+        s3_bucket: Název Bucketu
+        s3_endpoint: Adresa URL koncového bodu
+        s3_path_style: Použít URL jako cesty
+        s3_region: Region
+        s3_secret_access_key: Tajný přístupový klíč
+        storage_service: Služba ukládání
+        tag_regex: Povinné štítky
+      link:
+        url: Odkaz
+      model:
+        caption: Titulek
+        collection_id: Kolekce
+        creator_id: Autor
+        library_id: Knihovna
+        license: Licence
+        name: Název
+        notes: Popis
+        path: Cesta
+        preview_file: Soubor náhledu
+        sensitive: Citlivý obsah
+        tags: Štítky
+      model_file:
+        caption: Titulek
+        digest: Digest
+        filename: Název souboru
+        model_id: Model
+        notes: Poznámky
+        presupported: Předběžně podporované
+        presupported_version: Předběžně podporovaná verze
+        printed: Vytisknuto
+        size: Velikost souboru
+        unsupported_version: Nepodporovaná verze
+        y_up: Y nahoru
+      problem:
+        category: Kategorie
+        ignored: Skryté
+        note: Poznámka
+        problematic_type: Typ objektu
+        severity: Závažnost
+      user:
+        approved: Účet čeká na vyřízení
+        confirmation_sent_at: Potvrzení zasláno na
+        confirmation_token: Potvrzovací token
+        confirmed_at: Potvrzeno
+        created_at: Vytvořeno
+        current_password: Současné heslo
+        current_sign_in_at: Současné přihlášení na
+        current_sign_in_ip: Současné přihlášení z IP
+        email: E-mail
+        encrypted_password: Zašifrované heslo
+        failed_attempts: Chybných pokusů
+        last_sign_in_at: Poslední přihlášení
+        last_sign_in_ip: Poslední přihlášení z IP
+        locked_at: Uzamčeno
+        password: Heslo
+        password_confirmation: Potvrzení hesla
+        remember_created_at: Zapamatování vytvořeno
+        remember_me: Zapamatuj si mě
+        reset_password_sent_at: Obnova hesla poslána
+        reset_password_token: Token obnovy hesla
+        sign_in_count: Počet přihlášení
+        unconfirmed_email: Nepotvrzený e-mail
+        unlock_token: Odemykací token
+        updated_at: Upraveno
+    errors:
+      models:
+        library:
+          attributes:
+            path:
+              non_writable: musí být zapisovatelné
+              not_found: na disku nebylo nalezeno
+              unsafe: nemůže být systémovou cestou s privilegii
+        model:
+          attributes:
+            library:
+              nested: nelze změnit, model obsahuje další modely
+            license:
+              invalid_spdx: není platná licence
+            path:
+              destination_exists: již existuje
+              nested: nelze změnit, model obsahuje další modely
+        model_file:
+          attributes:
+            filename:
+              cannot_change_type: není stejný typ souboru
+              case_change_only: nemůže jít pouze o změnu velikosti písmen
+            presupported_version:
+              already_presupported: nelze nastavit u předběžně podporovaného souboru
+              not_supported: není předběžně podporovaný soubor
+    models:
+      acts_as_taggable_on/tag:
+        few: Štítky
+        many: Štítky
+        one: Štítek
+        other: Štítky
+        two: Štítky
+        zero: Štítky
+      collection:
+        few: Kolekce
+        many: Kolekce
+        one: Kolekce
+        other: Kolekce
+        two: Kolekce
+        zero: Kolekce
+      creator:
+        few: Autoři
+        many: Autoři
+        one: Autor
+        other: Autoři
+        two: Autoři
+        zero: Autoři
+      federails/moderation/domain_block:
+        few: Blokování domén
+        many: Blokování domén
+        one: Blokování domény
+        other: Blokování domén
+        two: Blokování domén
+        zero: Blokování domén
+      federails/moderation/report:
+        few: Hlášení
+        many: Hlášení
+        one: Hlášení
+        other: Hlášení
+        two: Hlášení
+        zero: Hlášení
+      library:
+        few: Knihovny
+        many: Knihovny
+        one: Knihovna
+        other: Knihovny
+        two: Knihovny
+        zero: Knihovny
+      link:
+        few: Odkazy
+        many: Odkazy
+        one: Odkaz
+        other: Odkazy
+        two: Odkazy
+        zero: Odkazy
+      model:
+        few: Modely
+        many: Modely
+        one: Model
+        other: Modely
+        two: Modely
+        zero: Modely
+      model_file:
+        few: Soubory
+        many: Soubory
+        one: Soubor
+        other: Soubory
+        two: Soubory
+        zero: Soubory
+      problem:
+        few: Problémy
+        many: Problémy
+        one: Problém
+        other: Problémy
+        two: Problémy
+        zero: Problémy
+      user:
+        few: Uživatelé
+        many: Uživatelé
+        one: Uživatel
+        other: Uživatelé
+        two: Uživatelé
+        zero: Uživatelé
+  activity:
+    index:
+      description: Záznamy jsou po %{retention_period} smazány.
+      message: Zpráva
+      name: Název
+      time: Kdy
+      title: Poslední aktivita
+  activity_helper:
+    status_icon:
+      completed: Hotovo
+      error: Chybné
+      queued: Ve frontě
+      working: Pracuje
+  application:
+    caber_relation_fields:
+      delete: Smazat
+      permissions:
+        edit: Lze upravovat
+        own: Vlastník (může zobrazit, upravit, smazat a sdílet)
+        view: Pouze zobrazení
+      subject:
+        placeholder: E-mailová adresa, uživatelské jméno nebo role
+        role:
+          member: Jakýkoli přihlášený místní uživatel
+          public: Všichni (bez přihlášení)
+        you: "(vy)"
+    caber_relations_form:
+      add: přidat další oprávnění
+      permissions: Sdílení
+    demo_mode: Tato instance je v demo režimu. Nemůžete přidávat ani odebírat modely, ale můžete dělat vše ostatní.
+    filters_card:
+      missing_tags: Chybějící štítky
+      remove_collection_filter: Odstranit filtr kolekce
+      remove_creator_filter: Odstranit filtr autora
+      remove_library_filter: Odstranit filtr knihovny
+      remove_missing_tag_filter: Odstranit filtr chybějících štítků
+      remove_search_filter: Odstranit filtr vyhledávání
+      remove_tag_filter: Odstranit filtr štítků
+      search: Vyhledávání
+      title: Filtry
+      unknown: Neznámý
+    footer:
+      about:
+      api: API
+      by_html: Navrhl a sestavil <a href="https://floppy.org.uk" target="_blank">James</a> s pomocí <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">našich přispěvatelů</a>.
+      community:
+      instance_heading:
+      issues: Problémy
+      open_source_html: Otevřený zdrojový kód pod licencí <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT</a>.
+      powered_by_html:
+      sponsor: Sponzor
+      support:
+      version: Verze
+    link_fields:
+      url:
+        delete: Smazat
+        placeholder: Jakákoli související webová stránka
+    links_form:
+      add: přidat další odkaz
+    navbar:
+      account: Mé nastavení
+      activity: Aktivita
+      check_existing: Kontrola stávajících modelů
+      home: Domovská stránka
+      log_in: Přihlásit se
+      log_out: Odhlásit se
+      navbar:
+        toggler:
+          label: Přepínání navigace
+      scan: Kontrola
+      scan_changes: Kontrola změn
+      scanning: Kontrolování
+      search: Hledat
+      settings: Nastavení webu
+      upload: Nahrát
+    order_buttons:
+      sort:
+        name: Seřadit podle jména
+        time: Řazení podle času
+    tag_list:
+      unrelated_tag_count:
+        one: skryto %{count} nesouvisejících štítků
+        other: skryto %{count} nesouvisejících štítků
+    tagline: Pomáhá Vám sledovat vaše soubory pro 3d tisk
+    tags_card:
+      skip_tags: Přeskočit seznam štítků
+    title: Manyfold
+  follow_button_component:
+    follow: Sledovat %{name}
+    pending: Požadováno
+    unfollow: Přestat sledovat %{name}
+  follows:
+    actor_table:
+      actions: Akce
+      address: Adresa Fediverse
+      name: Název
+      non_manyfold_account: Toto není účet Manyfold; můžete ho sledovat, ale pravděpodobně se nic zajímavého nestane, alespoň prozatím.
+    follow_remote_actor:
+      followed: Úspěšně sledován %{actor}
+    index:
+      title: Sledování
+    new:
+      help: Můžete sledovat veřejné tvůrce, kolekce nebo modely na jiném serveru Manyfold, vlastně jakýkoli veřejný účet ve Fediverse! Stačí zadat název účtu do vyhledávacího pole!
+      no_results: Omlouváme se, ale pro "%{query}" se nepodařilo nic najít. Jedná se o platný účet ActivityPub nebo adresu URL?
+      results: Výsledky vyhledávání
+      title: Sledujte Fediverse
+    remote_follow:
+      help: Pro sledování %{name} nepotřebujete účet na tomto serveru; zadejte zde své vlastní jméno účtu a my vás pošleme na domovskou stránku, abyste proces dokončili.
+      no_results_html: Váš domácí účet jsme nenašli; zadali jste ho správně?
+      placeholder: Vaše uživatelské jméno Fediverse, např. @manyfold@3dp.chat
+      submit: Domů
+      title: Sledovat %{name}
+    search_form:
+      placeholder: Zadejte účet Fediverse nebo adresu URL, např. @admin@try.manyfold.app
+      submit: Vyhledávání
+    unfollow_remote_actor:
+      unfollowed: Již nesledován %{actor}
+  general:
+    delete: Smazat
+    download: Stáhnout
+    edit: Upravit
+    expand: Rozbalit
+    menu: Menu
+    new: Nový
+    report: Nahlásit %{type}
+    save: Uložit
+    view: Zobrazení
+  home:
+    activity:
+      created: přidal před %{time}
+      updated: aktualizo před %{time}
+    index:
+      no_activities: Prozatím nejsou k dispozici žádné aktivity, ke zobrazení.
+      recent_activity: Poslední aktivita
+      search:
+        placeholder: Co hledáte?
+        submit: Vyhledávání
+  jobs:
+    activity:
+      creator_added_model:
+        comment: 'Právě jsem přidal nový model: ["%{model_name}"](%{url})'
+    analysis:
+      analyse_model_file:
+        detect_duplicates: Detekce duplicitních souborů
+        detect_ineffiency: Detekce neefektivních formátů
+        file_statistics: Výpočet statistik souborů
+        matching: Přiřazení podporovaných souborů
+      file_conversion:
+        exporting: Export nového souboru
+        loading_mesh: Načítání modelu
+      geometric_analysis:
+        direction_check: Kontrola orientace povrchu
+        loading_mesh: Načítání modelu
+        manifold_check: Kontrola, zda je model manifold
+    scan:
+      check_all:
+        queueing_model_checks: Zařazení kontroly modelu do fronty
+        removing_orphaned_problems: Odstranění samostatných problémů
+      detect_filesystem_changes:
+        building_filename_list: Sestavení seznamu souborů
+        building_folder_list: Sestavení seznamu změněných složek
+        creating_models: Vytváření modelů
+  kaminari:
+    first_page:
+      label: Přejít na první stránku
+    last_page:
+      label: Přejít na poslední stránku
+    next_page:
+      label: Přejít na další stránku
+    page:
+      current_page: Aktuální stránka
+      label: Přejít na stránku %{page}
+    paginator:
+      label: Navigace stránky
+    prev_page:
+      label: Přejít na předchozí stránku
+  layouts:
+    application:
+      alert:
+        danger: Nebezpečí
+        info: Info
+      skip_to_content: Přeskočit na hlavní obsah
+    card_list_page:
+      actions_heading: Akce
+    settings:
+      activeadmin: Pokročilá administrace
+      appearance: Vzhled
+      libraries: Knihovny
+      organization: Organizace
+      performance: Výkonnostní dashboard
+      pghero: PgHero
+      sidekiq: Sidekiq
+      title: Nastavení webu
+      tools_heading: Pokročilé nástroje
+  licenses:
+    CC-BY-40: Creative Commons Uveďte autora
+    CC-BY-NC-40: Creative Commons Uveďte autora, Neužívejte komerčně
+    CC-BY-NC-ND-40: Creative Commons Uveďte autora, Neužívejte komerčně, Bez derivátů
+    CC-BY-NC-SA-40: 'Creative Commons Uveďte autora, Neužívejte komerčně, Zachovejte licenci '
+    CC-BY-ND-40: Creative Commons Uveďte autora, Bez derivátů
+    CC-BY-SA-40: Creative Commons Uveďte autora, Zachovejte licenci
+    CC-PDDC: Prohlášení Creative Commons Volné dílo
+    CC0-10: Creative Commons Nula
+    LicenseRef-Commercial: Komerční; pouze pro soukromé použití
+    MIT: MIT
+  model_component:
+    delete_button:
+      label: Smazat model %{name}
+      text: Smazat
+    edit_button:
+      label: Upravit model %{name}
+      text: Upravit
+    no_preview: Není k dispozici náhled
+    no_remote_preview: Omlouváme se, náhledy modelů v jiných instancích zatím nejsou k dispozici, ale brzy budou!
+    open_button:
+      label: Otevřít model %{name}
+      text: Otevřít
+  moderator_mailer:
+    new_approval:
+      greeting: Ahoj!
+      message: Někdo nový si vytvořil účet a vyžaduje schválení. Schvalte účet na adrese %{link}
+      subject: Nový účet je třeba schválit
+    new_report:
+      greeting: Ahoj!
+      message: Někdo nahlásil obsah, který je třeba posoudit. Prohlédněte si zprávu na adrese %{link}
+      subject: Obdrženo nové hlášení
+  renderer:
+    errors:
+      canvas: 'Nepodařilo se najít #webgl canvas!'
+      load: Chyba načítání
+      webglrenderer: Nelze vytvořit vykreslovač!
+    load: Nahrát
+    processing: Vzorkování splinů...
+  reports:
+    create:
+      success: Hlášení odesláno. Děkujeme!
+    new:
+      description: Pokud tato položka porušuje zákony nebo zásady serveru, můžete ji nahlásit našim moderátorům. Přidejte komentář a sdělte nám proč!
+      submit: Odeslat hlášení
+      title: 'Nahlásit %{type}: "%{name}"'
+  security:
+    running_as_root_html: Manyfold je spuštěn jako root, což představuje bezpečnostní riziko. Spusťte jej jako jiný uživatel systému nastavením proměnných prostředí <code>PUID</code> a <code>PGID</code>. Podrobnosti naleznete v <a href='https://manyfold.app/sysadmin/configuration.html#required'>konfigurační dokumentaci</a>.
+  sites:
+    cgtrader: CGTrader
+    comicsgamesandthings: Comics, Games, and Things
+    cults3d: Cults3D
+    myminifactory: MyMiniFactory
+    theminiindex: The Mini Index
+    thingiverse: Thingiverse
+  user_mailer:
+    account_approved:
+      greeting: Ahoj!
+      message: Váš účet byl schválen; nyní se můžete přihlásit na adrese %{link}
+      subject: Účet schválen
+    test_email:
+      subject: Testovací e-mail
+      test_email_message: Testovací e-mail
+  views:
+    pagination:
+      first: "« První"
+      last: Poslední »
+      next: Další ›
+      previous: "‹ Předchozí"
+      truncate: "..."

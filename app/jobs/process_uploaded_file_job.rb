@@ -41,11 +41,11 @@ class ProcessUploadedFileJob < ApplicationJob
     attacher.destroy
     # Queue scans to fill in data or update things
     if new_model
-      ModelScanJob.perform_later(model.id, include_all_subfolders: true)
+      model.add_new_files_later(include_all_subfolders: true)
     else
-      Scan::CheckModelIntegrityJob.perform_later(model.id)
+      model.check_for_problems_later
     end
-    ModelFileScanJob.perform_later(new_file.id) if new_file
+    new_file&.parse_metadata_later
   end
 
   private

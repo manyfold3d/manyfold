@@ -9,11 +9,16 @@ es:
         text: Editar
       models_button:
         label: Mostrar modelos de %{name}
+        remote_label: Mostrar modelos locales por %{name}
+      visit_button:
+        label: Visitar
     destroy:
       success: "¡Creador eliminado!"
     form:
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      slug:
+        help: Se utiliza en las URL y como nombre de usuario de Fediverse (si está activado).
     general:
       edit: Editar Creador
       new: Nuevo creador

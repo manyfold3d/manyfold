@@ -10,6 +10,12 @@ en:
       add_line: Add Line
       caption:
         help: Optional; shown as a tooltip on library links.
+      confirm_destroy:
+        help: Deleting this library will also remove %{count} models and their data. Files on disk will not be removed. Are you sure you want to delete the library?
+      create_path_if_not_on_disk:
+        help: Creates the library folder specified above if it doesn't already exist on disk.
+      default:
+        help: Set this library as the default for uploads
       filesystem_description_html: To use storage on your local filesystem, firstly make sure it is mounted as a <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> or other volume inside your Docker container, then enter the Docker path; not the path on your host server! For instance, if you have a folder full of files at <code>/mnt/media/3d/models</code> on your host, and have bound <code>/mnt/media/3d</code> to <code>/libraries</code> in your Docker configuration, the required path would be <code>/libraries/models</code>.
       icon:
         help_html: Optional; any icon from <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a> or <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
@@ -35,6 +41,10 @@ en:
       free_space:
         label: Free Space
       heading: Libraries
+      settings: Settings
+      show:
+        help: Shows or hides libraries in the navigation bar and forms. Library choice in edit forms will always be shown to administrators.
+        label: Show libraries
       tag_regex:
         check: Check
         search_missing: Search Missing

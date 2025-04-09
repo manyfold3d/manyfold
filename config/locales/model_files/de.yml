@@ -20,6 +20,13 @@ de:
     destroy:
       confirm: Bist du sicher, dass du diese Datei aus Ihrem Dateisystem entfernen möchtest?
       success: Datei gelöscht!
+    download:
+      bambu: in Bambu Studio öffnen
+      cura: in Ultimaker Cura öffnen
+      elegoo: in ElegooSlicer öffnen
+      orca: in OrcaSlicer öffnen
+      prusa: in PrusaSlicer öffnen
+      superslicer: in SuperSlicer öffnen
     form:
       notes:
         help_html: 'Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden. '
@@ -28,6 +35,8 @@ de:
     show:
       convert: zu 3MF konvertieren
       details_heading: Details
+      download:
+        menu_header: Download optionen
       notes_heading: Notizen
     update:
       failure: Es ist ein Fehler aufgetreten und die Dateidetails konnten nicht gespeichert werden.

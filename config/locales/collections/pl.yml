@@ -24,6 +24,8 @@ pl:
       unknown: Nieznany
     index:
       skip_collections: Pomiń listę kolekcji
+    show:
+      edit: Edytuj Kolekcję
     unassigned:
       caption: Wszystkie modele spoza kolekcji.
       name: Nieprzypisany

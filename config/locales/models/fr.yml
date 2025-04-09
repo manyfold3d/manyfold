@@ -10,7 +10,7 @@ fr:
       select_all: Sélectionner tous les modèles
       submit: Mettre à jour les modèles sélectionnés
       title: Modifier les modèles en lot
-      update_all: Mettre à jour tous les modèles
+      update_all: Mettre à jour les %{count} modèles
     bulk_fields:
       add_tags: Ajouter des étiquettes
     bulk_update:
@@ -22,9 +22,12 @@ fr:
       success: Modèle supprimé !
     exceeds_max_size: 'Le fichier sélectionné dépasse la taille maximale : %{max_size} MiB.'
     file:
+      delete:
+      edit:
       open_button:
         label: Voir les détails pour %{name}
         text: Ouvrir
+      presupported:
       set_as_preview: Définir comme aperçu
     form:
       notes:

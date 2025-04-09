@@ -9,7 +9,10 @@ class Creator < ApplicationRecord
   acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for
 
   has_many :models, dependent: :nullify
+  has_many :collections, dependent: :nullify
   validates :name, uniqueness: {case_sensitive: false}
+
+  validates :slug, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
 
   def name_with_domain
     remote? ? name + " (#{federails_actor.server})" : name
@@ -20,7 +23,7 @@ class Creator < ApplicationRecord
   end
 
   def self.ransackable_associations(_auth_object = nil)
-    ["links", "models"]
+    ["collections", "links", "models"]
   end
 
   def to_param

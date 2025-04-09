@@ -10,7 +10,7 @@ de:
       select_all: Alle Modelle auswählen
       submit: Ausgewählte Modelle aktualisieren
       title: Modelle massenweise bearbeiten
-      update_all: Alle Modelle aktualisieren
+      update_all: Alle %{count}-Modelle aktualisieren
     bulk_fields:
       add_tags: Tags hinzufügen
     bulk_update:
@@ -22,9 +22,12 @@ de:
       success: Modell gelöscht!
     exceeds_max_size: 'Ausgewählte Datei überschreitet maximale Größe: %{max_size} MiB.'
     file:
+      delete: Datei löschen
+      edit: Datei bearbeiten
       open_button:
         label: Details für %{name} anzeigen
         text: Öffnen
+      presupported: Version mit Support struktur
       set_as_preview: Als Vorschau setzen
     form:
       notes:
@@ -36,7 +39,7 @@ de:
       edit: Modell bearbeiten
     image_carousel:
       next: Weiter
-      play_pause: Pausiere oder Starte das Laden von Beispiel Bildern.
+      play_pause: Pausiere oder Starte Diashow
       previous: Zurück
       select_slide: Bild zum Anzeigen auswählen
       slide_label: "%{name} (%{index} von %{count})"
@@ -61,7 +64,7 @@ de:
       success: Modell-Scan gestartet
     show:
       download:
-        file_type: "%{type} Nur Dateien"
+        file_type: "%{type} Dateien"
         label: Alle herunterladen
         menu_header: Download optionen
         supported: Nur Dateien mit Support Struktur
@@ -77,7 +80,7 @@ de:
         with: Zusammenführen mit
       model_details: Modelldetails
       organize:
-        button_text: Dateien sortieren
+        button_text: Dateien organisieren
         confirm:
           are_you_sure: Bist du sicher?
           'no': Nein, abbrechen

@@ -93,8 +93,8 @@ RSpec.describe ProcessUploadedFileJob do
       expect(Model.last.path).to eq "tag1/test#1"
     end
 
-    it "queues up model scan" do
-      expect { job.perform(library.id, file) }.to have_enqueued_job(ModelScanJob).once
+    it "queues up model new file scan" do
+      expect { job.perform(library.id, file) }.to have_enqueued_job(Scan::Model::AddNewFilesJob).once
     end
   end
 
@@ -112,8 +112,8 @@ RSpec.describe ProcessUploadedFileJob do
       expect { job.perform(library.id, file, model: model) }.to change(model.model_files, :count).by(1)
     end
 
-    it "queues up file scan" do
-      expect { job.perform(library.id, file, model: model) }.to have_enqueued_job(ModelFileScanJob).once
+    it "queues up file metadata parsing" do
+      expect { job.perform(library.id, file, model: model) }.to have_enqueued_job(Scan::ModelFile::ParseMetadataJob).once
     end
   end
 

@@ -18,9 +18,9 @@ RSpec.describe Library do
     end
 
     it "is invalid if a bad path is specified" do # rubocop:todo RSpec/MultipleExpectations
-      l = build(:library, path: "/nope")
+      l = build(:library, path: "/nope", create_path_if_not_on_disk: "0")
       expect(l).not_to be_valid
-      expect(l.errors[:path].first).to eq "could not be found on disk"
+      expect(l.errors[:path].first).to eq "must be writable"
     end
 
     it "has many models" do
@@ -114,6 +114,40 @@ RSpec.describe Library do
 
     it "lists files" do
       expect(library.list_files("**/*")).not_to be_empty
+    end
+  end
+
+  it "is valid if path can be created" do # rubocop:todo RSpec/MultipleExpectations
+    library = build(:library, path: "/tmp/libraries/subdirectory", create_path_if_not_on_disk: "1")
+    expect(library).to be_valid
+    expect(Dir).to exist(library.path)
+  end
+
+  context "when deleting libraries" do
+    around do |ex|
+      MockDirectory.create([
+        "model/file.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+    let(:model) { create(:model, path: "model", library: library) }
+    let!(:file) { create(:model_file, filename: "file.stl", model: model) } # rubocop:disable RSpec/LetSetup
+
+    it "removes associated Models" do
+      expect { library.destroy }.to change(Model, :count).from(1).to(0)
+    end
+
+    it "removes associated ModelFiles" do
+      expect { library.destroy }.to change(ModelFile, :count).from(1).to(0)
+    end
+
+    it "preserves files on disk" do # rubocop:disable RSpec/MultipleExpectations
+      expect(File.exist?(File.join(@library_path, "model/file.stl"))).to be true # rubocop:todo RSpec/InstanceVariable
+      expect { library.destroy }.not_to change { File.exist?(File.join(@library_path, "model/file.stl")) } # rubocop:todo RSpec/InstanceVariable
     end
   end
 end

@@ -1,0 +1,204 @@
+---
+cs:
+  devise:
+    confirmations:
+      confirmed: Vaše e-mailová adresa byla úspěšně potvrzena.
+      new:
+        resend_confirmation_instructions: Opět poslat instrukce pro potvrzení
+      send_instructions: Za několik minut obdržíte e-mail s instrukcemi k potvrzení Vašeho účtu.
+      send_paranoid_instructions: Pokud Váš e-mail existuje v naší databázi, za několik minut obdržíte e-mail s pokyny o tom, jak potvrdit svůj účet.
+    failure:
+      already_authenticated: Jste již přihlášen(a).
+      inactive: Váš účet ještě nebyl aktivován.
+      invalid: Neplatné %{authentication_keys} nebo heslo.
+      last_attempt: Máte ještě jeden pokus než bude Váš účet uzamčen.
+      locked: Váš účet je uzamčen.
+      not_approved: Váš účet ještě nebyl schválen moderátorem.
+      not_found_in_database: Neplatné %{authentication_keys} nebo heslo.
+      timeout: Vaše relace vypršela, přihlaste se znovu, pro pokračování.
+      unauthenticated: Musíte se zaregistrovat nebo přihlásit, teprve poté budete moct pokračovat.
+      unconfirmed: Musíte potvrdit svoji e-mailovou adresu, teprve poté budete moct pokračovat.
+    mailer:
+      confirmation_instructions:
+        action: Potvrdit můj účet
+        greeting: Vítejte, %{recipient}!
+        instruction: 'Můžete potvrdit e-mailovou adresu pomocí níže uvedeného odkazu:'
+        subject: Instrukce k potvrzení
+      email_changed:
+        greeting: Ahoj, %{recipient}!
+        message: Kontaktovali jsme Vás, abychom Vás upozornili, že Vaše e-mailová adresa byla změněna na %{email}.
+        message_unconfirmed: Kontaktujeme vás, abychom vám oznámili, že váš e-mail byl změněn na %{email}.
+        subject: E-mail změněn
+      password_change:
+        greeting: Ahoj %{recipient}!
+        message: Dáváme vám vědět, že Vaše heslo bylo změněno.
+        subject: Heslo změněno
+      reset_password_instructions:
+        action: Změna hesla
+        greeting: Ahoj %{recipient}!
+        instruction: Někdo si vyžádal odkaz pro změnu Vašeho hesla. Změnu můžete provést pomocí odkazu níže.
+        instruction_2: Pokud jste si toto nevyžádali, ignorujte tento e-mail.
+        instruction_3: Vaše heslo se nezmění dokud neotevřete výše uvedený odkaz a nevytvoříte si nové heslo.
+        subject: Instrukce k nastavení nového hesla
+      unlock_instructions:
+        action: Odblokovat můj účet
+        greeting: Ahoj %{recipient}!
+        instruction: 'Účet odblokujete kliknutím na níže uvedený odkaz:'
+        message: Váš účet byl zablokován pro nadměrný počet neúspěšných pokusů o přihlášení.
+        subject: Instrukce k odemknutí účtu
+    omniauth_callbacks:
+      failure: Není možná autentizace z %{kind}, protože "%{reason}".
+      success: Úspěšná autentizace z účtu %{kind}.
+    passwords:
+      edit:
+        change_my_password: Změnit mé heslo
+        change_your_password: Změna Vašeho hesla
+        confirm_new_password: Potvrdit nové heslo
+        new_password: Nové heslo
+      new:
+        forgot_your_password: Zapomněli jste heslo?
+        send_me_reset_password_instructions: Poslat instrukce pro obnovení hesla
+      no_token: Na tuto stránku se nelze dostat jinak než z e-mailu pro resetování hesla. Pokud jste přišli z takového e-mailu, přesvědčte se že jste použili celou URL adresu.
+      send_instructions: Za několik minut obdržíte e-mail s instrukcemi pro nastavení nového hesla.
+      send_paranoid_instructions: Pokud Vaše e-mailová adresa existuje v naší databázi, za několik minut obdržíte e-mail s instrukcemi pro nastavení nového hesla.
+      updated: Vaše heslo bylo změněno. Nyní jste přihlášen(a).
+      updated_not_active: Vaše heslo bylo změněno.
+    registrations:
+      destroyed: Mějte se! Váš účet byl úspěšně zrušen. Doufáme, že se brzy opět uvidíme.
+      edit:
+        are_you_sure: Jste si jist(á)?
+        cancel_my_account: Zrušit můj účet
+        confirm_deletion: Opravdu chcete svůj účet odstranit?
+        contact_info: Kontaktní informace
+        current_password_help: Aktuální heslo vyžadované pro zabezpečení
+        currently_waiting_confirmation_for_email: 'Čeká na potvrzení pro: %{email}'
+        danger_zone: Nebezpečná zóna!
+        leave_blank_if_you_don_t_want_to_change_it: nevyplňujte, pokud nechcete měnit
+        security: Zabezpečení
+        submit: Uložení změn
+        title: Moje nastavení
+        unhappy: Nespokojení?
+        update: Aktualizovat
+        we_need_your_current_password_to_confirm_your_changes: k potvrzení změn potřebujeme vaše aktuální heslo
+      file_list_settings:
+        heading: Seznamy souborů
+        hide_presupported_versions:
+          label: Kombinovat propojené nepodporované a předběžně podporované soubory
+        summary: Ovládání zobrazení seznamů souborů modelů
+      first_use:
+        email_help: Nikdy se nezobrazuje veřejně; používá se pouze pro přihlašovací a bezpečnostní e-maily.
+        guidance: Při prvním použití je třeba nastavit uživatelské jméno, kontaktní e-mail a heslo hlavního administrátora. Pokud používáte jednouživatelský režim, nemusíte tyto údaje pro přihlášení běžně zadávat, ale ve víceuživatelském režimu bez nich nebudete mít přístup k aplikaci Manyfold.
+        password:
+          help_html: Ve výchozím nastavení požadujeme silné heslo; chcete-li v soukromé instanci povolit jednodušší heslo, nastavte proměnnou prostředí <a href="https://manyfold.app/sysadmin/configuration.html#min_password_score">MIN_PASSWORD_SCORE</a>.
+        submit: Uložit
+        title: Nastavení
+        username_help: Jedinečné uživatelské jméno; použijte předem vygenerované nebo si zvolte vlastní.
+      general_settings:
+        heading: Obecné
+        interface_language:
+          autodetect: Použít nastavení prohlížeče
+          help: 'Poznámka: některé nepřeložené texty se mohou stále zobrazovat v angličtině.'
+          label: Jazyk rozhraní
+        sensitive_content:
+          help: Ovlivňuje způsob zobrazení obsahu označeného jako "citlivý"
+          hide: Úplně skrýt
+          label: Citlivý obsah
+          mask: Rozmazání v seznamech
+          show: Zobrazit normálně
+      new:
+        approval_help: Po vytvoření účtu jej ručně zkontrolují naši moderátoři. Po dokončení schvalování Vám dáme vědět a budete se moci přihlásit.
+        details:
+        rules:
+        rules_agree:
+        sign_up: Zaregistrovat se
+      pagination_settings:
+        collections:
+          label: Stránkovat kolekce
+        creators:
+          label: Stránkovat autory
+        description: Na stránkách se seznamem zobrazit pouze určitý počet položek najednou, nikoli vše najednou. To může urychlit načítání.
+        heading: Stránkování
+        models:
+          label: Stránkovat modelů
+        per_page:
+          label: Položky na stránku
+      problem_settings:
+        description: Změnit závažnost zjištěných problémů nebo je zcela ignorovat.
+        title: Detekce problémů
+      renderer_settings:
+        auto_load_max_size:
+          always: Vždy
+          label: Automaticky načítat náhledy
+          never: Nikdy
+          under_1024: Až 1024 MB
+          under_128: Až 128 MB
+          under_16: Až 16 MB
+          under_2: Až 2 MB
+          under_256: Až 256 MB
+          under_32: Až 32 MB
+          under_4: Až 4 MB
+          under_512: Až 512 MB
+          under_64: Až 64 MB
+          under_8: Až 8 MB
+        background_colour:
+          label: Barva pozadí
+        description: Přizpůsobení nastavení pro 3D náhledy.
+        enable_pan_zoom:
+          label: Povolit ovládání posunu/zvětšení
+        grid_width:
+          label: Velikost podlahové roviny (mm)
+        heading: Renderer
+        object_colour:
+          label: Barva objektu
+        render_style:
+          label: Styl vykreslování
+          lambert: Hladké stínování
+          normals: Směr povrchu
+          shadowed: Realistické se stíny
+        show_grid:
+          label: Ukázat podlahovou rovinu
+      signed_up: Vítejte! Úspěšně jste se zaregistroval(a).
+      signed_up_but_inactive: Úspěšně jste se zaregistroval(a). Bohužel se nemůžete přihlásit, protože Váš účet ještě není aktivován.
+      signed_up_but_locked: Úspěšně jste se zaregistroval(a). Bohužel se nemůžete přihlásit, protože Váš účet je zamknutý.
+      signed_up_but_unconfirmed: Byl vám zaslán potvrzovací e-mail. Pro dokončení klikněte na aktivační odkaz zaslaný na Váš e-mail.
+      tag_cloud_settings:
+        heading: Štítkový cloud
+        heatmap:
+          label: Zobrazení počtu štítků pro jednotlivé štítky
+        keypair:
+          label: Použít oddělovač pro reprezentaci dvojic klíčů
+        sorting:
+          label: Třídění
+        threshold:
+          label: Minimální počet štítků pro zobrazení
+      update:
+        setup_complete: Nastavení dokončeno!
+      update_needs_confirmation: Úspěšně jste aktualizovali svůj účet, ale ještě musíte ověřit svou novou e-mailovou adresu. Zkontrolujte svou schránku a klikněte na odkaz pro dokončení ověření Vaší nové e-mailové adresy.
+      updated: Váš účet byl úspěšně aktualizován.
+      updated_but_not_signed_in: Vaše nastavení bylo úspěšně aktualizováno, ale protože bylo změněno Vaše heslo, musíte se znovu přihlásit.
+      user:
+        signed_up_but_not_approved: Úspěšně jste se zaregistrovali. Váš účet brzy zkontroluje moderátor a poté se budete moci přihlásit.
+    sessions:
+      already_signed_out: Úspěšně odhlášen(a).
+      new:
+        sign_in: Přihlásit se
+      signed_in: Úspěšně přihlášen(a).
+      signed_out: Úspěšně odhlášen(a).
+    shared:
+      links:
+        back: Zpět
+        didn_t_receive_confirmation_instructions: Nedostali jste instrukce pro potvrzení?
+        didn_t_receive_unlock_instructions: Nedostali jste instrukce pro odblokování?
+        forgot_your_password: Zapomněli jste heslo?
+        sign_in: Přihlásit se
+        sign_in_with_provider: Přihlásit se přes %{provider}
+        sign_up: Zaregistrovat se
+      minimum_password_length:
+        one: "(minimálně %{count} znak)"
+        other: "(minimálně %{count} znaků)"
+    unlocks:
+      new:
+        resend_unlock_instructions: Znovu odeslat instrukce pro odblokování
+      send_instructions: Za několik minut obdržíte e-mail s instrukcemi, jak odemknout svůj účet.
+      send_paranoid_instructions: Pokud Váš e-mail existuje v naší databázi, za několik minut obdržíte e-mail s instrukcemi pro odemknutí účtu.
+      unlocked: Váš účet byl úspěšně odblokován.

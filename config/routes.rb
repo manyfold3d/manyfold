@@ -22,11 +22,12 @@ Rails.application.routes.draw do
         get :analysis
         get :multiuser
         get :reporting
+        get :appearance
       end
       resources :libraries, only: [:index]
     end
     mount Sidekiq::Web => "/admin/sidekiq"
-    mount RailsPerformance::Engine => "/admin/performance" unless Rails.env.test?
+    mount RailsPerformance::Engine => "/admin/performance" unless Rails.env.test? || ENV["RAILS_ASSETS_PRECOMPILE"].present?
     mount PgHero::Engine => "/admin/pghero"
     get "/activity" => "activity#index", :as => :activity
   end
@@ -57,6 +58,7 @@ Rails.application.routes.draw do
   end
 
   root to: "home#index"
+  get "/about", to: "home#about", as: :about
 
   resources :libraries, except: [:index] do
     member do
@@ -81,7 +83,7 @@ Rails.application.routes.draw do
     resources :comments, {only: [:show]}.merge(options)
   end
   concern :reportable do |options|
-    resources :reports, {only: [:new, :create]}.merge(options) if SiteSettings.multiuser_enabled?
+    resources :reports, {only: [:new, :create]}.merge(options)
   end
 
   resources :models do
@@ -126,4 +128,21 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.is_contributor? } do
     mount Tus::Server => "/upload", :as => :upload
   end
+
+  get("/oembed", to: redirect(status: 303) { |_, request|
+    path = URI.parse(request.params[:url])&.path
+    raise ActionController::BadRequest if path.blank?
+    URI::HTTP.build(path: path + ".oembed", query: {
+      maxwidth: request.params[:maxwidth],
+      maxheight: request.params[:maxheight]
+    }.compact.to_query)
+  })
+
+  mount Rswag::Ui::Engine => "/api", :as => :api
+  mount Rswag::Api::Engine => "/api"
+
+  use_doorkeeper do
+    skip_controllers :applications
+  end
+  resources :doorkeeper_applications, path: "/oauth/applications"
 end

@@ -53,29 +53,32 @@ RSpec.describe "Collections" do
       end
 
       it "denies member permission", :as_member do
-        expect { post "/collections", params: {collection: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
+        post "/collections", params: {collection: {name: "newname"}}
+        expect(response).to have_http_status(:forbidden)
       end
     end
 
     describe "GET /collections/new" do
+      before { get "/collections/new" }
+
       it "Shows the new collection form", :as_contributor do
-        get "/collections/new"
         expect(response).to have_http_status(:success)
       end
 
       it "denies member permission", :as_member do
-        expect { get "/collections/new" }.to raise_error(Pundit::NotAuthorizedError)
+        expect(response).to have_http_status(:forbidden)
       end
     end
 
     describe "GET /collections/:id/edit" do
+      before { get "/collections/#{collection.to_param}/edit" }
+
       it "Shows the new collection form", :as_moderator do
-        get "/collections/#{collection.to_param}/edit"
         expect(response).to have_http_status(:success)
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { get "/collections/#{collection.to_param}/edit" }.to raise_error(Pundit::NotAuthorizedError)
+        expect(response).to have_http_status(:forbidden)
       end
     end
 
@@ -94,13 +97,14 @@ RSpec.describe "Collections" do
     end
 
     describe "DELETE /collections/:id" do
+      before { delete "/collections/#{collection.to_param}" }
+
       it "removes collection", :as_moderator do
-        delete "/collections/#{collection.to_param}"
         expect(response).to redirect_to("/collections")
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { delete "/collections/#{collection.to_param}" }.to raise_error(Pundit::NotAuthorizedError)
+        expect(response).to have_http_status(:forbidden)
       end
     end
   end

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   include PublicIDable
 
   acts_as_federails_actor(
-    username_field: :public_id,
+    username_field: :username,
     name_field: :username,
     user_count_method: :user_count
   )
@@ -20,10 +20,12 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: %i[openid_connect] if SiteSettings.oidc_enabled?
 
+  validates :username, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
+
   validates :username,
     presence: true,
     uniqueness: {case_sensitive: false},
-    format: {with: /\A[[:alnum:]]{3,}\z/}
+    format: {with: /\A[[:alnum:]]+\z/}
 
   validates :email,
     presence: true,
@@ -43,6 +45,22 @@ class User < ApplicationRecord
   attribute :tag_cloud_settings, :json
   attribute :problem_settings, :json
   attribute :file_list_settings, :json
+
+  has_many :access_grants, # rubocop:disable Rails/InverseOf
+    class_name: "Doorkeeper::AccessGrant",
+    foreign_key: :resource_owner_id,
+    dependent: :delete_all
+
+  has_many :access_tokens, # rubocop:disable Rails/InverseOf
+    class_name: "Doorkeeper::AccessToken",
+    foreign_key: :resource_owner_id,
+    dependent: :delete_all
+
+  has_many :oauth_applications,
+    class_name: "Doorkeeper::Application",
+    as: :owner,
+    dependent: :delete_all,
+    inverse_of: :owner
 
   attribute :quota_use_site_default, :boolean, default: true
 
@@ -116,11 +134,11 @@ class User < ApplicationRecord
   end
 
   def self.user_count(range)
-    return User.count if range.nil?
+    return User.count if range.nil? # rubocop:disable Pundit/UsePolicyScope
 
     # Updated date isn't a great proxy for activity, but it'll do for now
     # We can improve this by using devise trackable to track logins at some point
-    User.where(updated_at: range).count
+    User.where(updated_at: range).count # rubocop:disable Pundit/UsePolicyScope
   end
 
   # Devise approval checks

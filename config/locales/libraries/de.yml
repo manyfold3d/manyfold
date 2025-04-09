@@ -10,6 +10,12 @@ de:
       add_line: Zeile hinzufügen
       caption:
         help: Optional; wird als Tooltip auf Bibliothekslinks angezeigt.
+      confirm_destroy:
+        help: Beim Löschen dieser Bibliothek werden auch %{count} Modelle und deren Daten entfernt. Die Dateien auf der Festplatte werden nicht entfernt. Bist du sicher, dass du die Bibliothek löschen möchtest?
+      create_path_if_not_on_disk:
+        help: Erstellt den oben angegebenen Bibliotheksordner, wenn er nicht bereits existiert.
+      default:
+        help: Diese Bibliothek als Standard für Uploads festlegen
       filesystem_description_html: Um Speicherplatz auf deinem lokalen Dateisystem zu verwenden, stelle zunächst sicher, dass er als <a href="https://docs.docker.com/storage/bind-mounts/">Bind-Mount</a> oder anderes Volume in deinem Docker-Container eingehängt ist, und gebe dann den Docker-Pfad ein; nicht den Pfad auf dem Host-Server! Wenn du zum Beispiel einen Ordner voller Dateien unter <code>/mnt/media/3d/models</code> auf deinem Host hast und <code>/mnt/media/3d</code> in deinem Docker-Konfiguration an <code>/libraries</code> gebunden hast, wäre der erforderliche Pfad <code>/libraries/models</code>.
       icon:
         help_html: Optional; ein beliebiges Symbol von <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a> or <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
@@ -23,6 +29,8 @@ de:
       s3_description_html: Manyfold kann jeden S3-kompatiblen Objektspeicher für Ihre Bibliothek verwenden; dies kann einer der zahlreichen <a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">Open-Source-</a> oder <a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">kommerziellen</a> Dienste sein.
       s3_endpoint:
         help: Optional; nur für S3-kompatible Dienste erforderlich, nicht für AWS.
+      s3_path_style:
+        help: Deaktivieren, um Bucket-URLs im Vhost-Stil zu verwenden. Wird nur für S3-kompatible Dienste verwendet, nicht für AWS.
       tag_regex:
         help: Suche nach Modellen, die diese Regex erfüllen.
     general:
@@ -33,6 +41,10 @@ de:
       free_space:
         label: Freier Speicherplatz
       heading: Sammlungen
+      settings: Einstellungen
+      show:
+        help: Zeigt oder versteckt Bibliotheken in der Navigationsleiste und in Formularen. Die Bibliotheksauswahl in Bearbeitungsformularen wird immer für Administratoren angezeigt.
+        label: Bibliotheken anzeigen
       tag_regex:
         check: Check
         search_missing: Suche Fehlende

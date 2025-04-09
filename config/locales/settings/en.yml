@@ -7,6 +7,31 @@ en:
       manifold:
         help: Check for non-manifold meshes (i.e. they have holes or impossible surfaces)
         label: Detect mesh errors
+    appearance:
+      about:
+        help_html: Shown on the about page; You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+        label: About this instance
+      heading: Appearance
+      information: Information
+      rules:
+        help_html: Shown at signup; you can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+        label: Server rules
+      site_icon:
+        help: Shown at the top left of each page
+        label: Logo URL
+      site_name:
+        help: The name of your site. Used in navigation and on the homepage.
+        label: Site name
+      site_tagline:
+        help: A few words to introduce your site, shown on the homepage.
+        label: Tagline
+      summary: Customise your instance.
+      support_link:
+        help: A link to a place where your users can support the instance financially (e.g. OpenCollective, Patreon). Shown in footer.
+        label: Support link
+      theme:
+        help_html: Affects all users. Visit <a href="https://bootswatch.com">Bootswatch</a> to see previews.
+        label: Theme
     domain_blocks:
       create:
         success: Domain block created successfully.
@@ -65,7 +90,9 @@ en:
       oidc: OpenID Connect configured?
       permissions: Permissions
       registration: Account registration
-      registration_open: Account registration open?
+      registration_open:
+        help: Lets visitors sign up for accounts.
+        label: Enable signup
       single_user_mode: Manyfold is running in single user mode.
     reporting:
       description_html: If you enable usage tracking, the following information will be sent once a day to <code>%{endpoint}</code>. The <code>id</code> is randomly generated when you enable tracking.
@@ -85,6 +112,9 @@ en:
       update:
         ignored: The report has been ignored.
         resolved: The report has been marked as resolved.
+    show:
+      stats: Statistics
+      total_file_size: Total file size
     tag_settings:
       auto_tag_new:
         label: Automatically tag new models with

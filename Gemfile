@@ -15,7 +15,7 @@ gem "cssbundling-rails", "~> 1.4"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.13"
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 5.3"
+gem "redis", "~> 5.4"
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -41,7 +41,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails"
-  gem "standard", "~> 1.44.0"
+  gem "standard", "~> 1.49.0"
   gem "factory_bot"
   gem "faker", "~> 3.5"
   gem "guard", "~> 2.19"
@@ -53,9 +53,11 @@ group :development, :test do
   gem "rubocop-factory_bot", require: false
   gem "rubocop-i18n", require: false
   gem "rubocop-performance", "~> 1.23", require: false
+  gem "rubocop-pundit", github: "manyfold3d/rubocop-pundit", require: false
   gem "rubyzip", "~> 2.4"
   gem "i18n-tasks", "~> 1.0"
   gem "simplecov", "~> 0.22.0", require: false
+  gem "with_model", "~> 2.2"
 end
 
 group :development do
@@ -80,12 +82,12 @@ gem "memoist", "~> 0.16.2"
 gem "stopwords-filter2", require: "stopwords"
 
 gem "devise", "~> 4.9"
-gem "devise-i18n", "~> 1.12"
+gem "devise-i18n", "~> 1.13"
 
-gem "data_migrate", "11.2.0"
+gem "data_migrate", "11.3.0"
 
 gem "rails-settings-cached", "~> 2.9"
-gem "activeadmin", "~> 3.2"
+gem "activeadmin", "~> 3.3"
 
 gem "kaminari", "~> 1.2"
 
@@ -99,11 +101,11 @@ gem "mittsu", "~> 0.5"
 gem "mittsu-mesh_analysis"
 gem "mittsu-3mf"
 
-gem "view_component", "~> 3.21"
+gem "view_component", "~> 3.22"
 
 gem "rails-controller-testing", "~> 1.0", group: :test
 
-gem "pundit", "~> 2.4"
+gem "pundit", "~> 2.5"
 
 gem "spdx", "~> 4.1"
 gem "rack-contrib", "~> 2.5"
@@ -141,15 +143,15 @@ gem "shrine", "~> 3.6"
 gem "tus-server", "~> 2.3"
 gem "shrine-tus", "~> 2.1"
 
-gem "aws-sdk-s3", "< 1.181"
+gem "aws-sdk-s3", "< 1.184"
 
 gem "better_content_security_policy", "~> 0.1.4"
 
 gem "devise_zxcvbn", "~> 6.0"
 
-gem "ransack", "~> 4.2"
-gem "federails", git: "https://gitlab.com/experimentslabs/federails", branch: "prepend-at-symbol"
-gem "federails-moderation", "~> 0.2"
+gem "ransack", "~> 4.3"
+gem "federails", "~> 0.6"
+gem "federails-moderation", "~> 0.3"
 gem "caber"
 
 gem "nanoid", "~> 2.0"
@@ -160,16 +162,26 @@ gem "omniauth", "~> 2.1"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "omniauth_openid_connect", "~> 0.8.0"
 
-gem "sidekiq-cron", "~> 2.1"
+gem "sidekiq-cron", "~> 2.2"
 
 group :development, :production do
+  gem "sys-cpu", "~> 1.1"
+  gem "get_process_mem", "~> 1.0"
   gem "rails_performance", "~> 1.4"
   gem "redis-namespace"
 end
 
 gem "pghero", "~> 3.6"
-gem "pg_query", "~> 6.0"
-
-gem "get_process_mem", "~> 1.0"
+gem "pg_query", "~> 6.1"
 
 gem "to_regexp", "~> 0.2.1"
+
+gem "activejob-uniqueness", "~> 0.4.0", require: "active_job/uniqueness/sidekiq_patch"
+
+gem "job-iteration", "~> 1.10"
+gem "rswag", "~> 2.16"
+gem "warning", "~> 1.5"
+
+gem "rack-cors", "~> 2.0"
+
+gem "doorkeeper", "~> 5.8"

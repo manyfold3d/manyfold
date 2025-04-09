@@ -59,7 +59,7 @@ class UserPolicy < ApplicationPolicy
     end
 
     def resolve
-      scope.all
+      scope
     end
   end
 end

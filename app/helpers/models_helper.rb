@@ -23,8 +23,12 @@ module ModelsHelper
   def status_badges(model)
     badges = []
     badges << content_tag(:span, icon("bi bi-stars", t("general.new")), class: "text-warning align-middle") if model.new?
-    badges << problem_icon_tag(model.problems_including_files.visible(problem_settings)) if policy(Problem).show?
+    badges << problem_icon_tag(problems_including_files(model).visible(problem_settings)) if policy(Problem).show?
     content_tag :span, safe_join(badges, " "), class: "status-badges"
+  end
+
+  def problems_including_files(model)
+    policy_scope(Problem).where(problematic: model.model_files + [self])
   end
 
   def license_select_options(selected: nil)

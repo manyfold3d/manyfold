@@ -7,6 +7,31 @@ pl:
       manifold:
         help: Sprawdź, czy siatki nie są siatkami nierozmaitymi (tj. mają dziury lub niemożliwe powierzchnie)
         label: Wykryj błędy siatki
+    appearance:
+      about:
+        help_html: Pokazane na stronie o instancji; Możesz użyć <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+        label: O tej instancji
+      heading: Wygląd
+      information: Informacje
+      rules:
+        help_html: Pokazane przy rejestracji; możesz użyć <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+        label: Zasady serwera
+      site_icon:
+        help: Wyświetlane w lewym górnym rogu każdej strony
+        label: Adres URL loga
+      site_name:
+        help: Nazwa twojej strony. Używana w nawigacji i na stronie głównej.
+        label: Nazwa witryny
+      site_tagline:
+        help: Kilka słów przedstawiających twoją stronę, wyświetlane na stronie głównej.
+        label: Napis
+      summary: Dostosuj swoją instancje.
+      support_link:
+        help: Link do miejsca, w którym użytkownicy mogą wesprzeć instancję finansowo (np. OpenCollective, Patreon). Pokazywane w stopce strony.
+        label:
+      theme:
+        help_html: Dotyczy wszystkich użytkowników. Odwiedź <a href="https://bootswatch.com">Bootswatch</a>, aby zobaczyć podgląd.
+        label: Motyw
     domain_blocks:
       create:
         success: Blok domeny został pomyślnie utworzony.
@@ -20,6 +45,12 @@ pl:
       new:
         submit: Zablokuj domene
         title: Nowy Blok Domeny
+    file_settings:
+      custom_ignore_filters:
+        details: Filtry są w formacie regex i są oddzielone nową linią.
+        label: Filtry regex ignorowanych plików.
+      summary: Zmień ustawienia plików, takie jak ignorowane pliki.
+      title: Ustawienia plików
     folder_settings:
       details: Struktura folderów jest zgodna z szablonem zdefiniowanym przy użyciu tokenów. Do szablonu możesz również dołączyć inny tekst (np. separatory folderów), który zostanie uwzględniony jak jest.
       model_path_template:
@@ -59,7 +90,9 @@ pl:
       oidc: OpenID Connect skonfigurowany?
       permissions: Uprawnienia
       registration: Rejestracja konta
-      registration_open: Rejestracja kont otwarta?
+      registration_open:
+        help: Umożliwia odwiedzającym rejestrację kont.
+        label: Włącz rejestrację
       single_user_mode: Manyfold działa w trybie pojedynczego użytkownika.
     reporting:
       description_html: Jeśli włączysz śledzenie użytkowania, poniższe informacje będą wysyłane raz dziennie do <code>%{endpoint}</code>. <code>Identyfikator</code> jest generowany losowo po włączeniu śledzenia.
@@ -79,6 +112,9 @@ pl:
       update:
         ignored: Zgłoszenie zostało zignorowane.
         resolved: Zgłoszenie zostało oznaczone jako rozwiązane.
+    show:
+      stats: Statystyki
+      total_file_size: Całkowity rozmiar pliku
     tag_settings:
       auto_tag_new:
         label: Automatycznie taguj nowe modele za pomocą

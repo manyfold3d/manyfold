@@ -11,6 +11,7 @@ pl:
         caption: Napis
         name: Nazwa
         notes: Opis
+        slug:
       federails/moderation/domain_block:
         created_at: Data utworzenia
         domain: Domena
@@ -21,6 +22,8 @@ pl:
         object: Obiekt
       library:
         caption: Napis
+        create_path_if_not_on_disk: Automatycznie twórz folder
+        default: Domyślne
         icon: Ikona
         name: Nazwa
         notes: Notatki
@@ -28,6 +31,7 @@ pl:
         s3_access_key_id:
         s3_bucket:
         s3_endpoint:
+        s3_path_style:
         s3_region: Region
         s3_secret_access_key:
         storage_service: Usługa przechowywania plików
@@ -146,7 +150,7 @@ pl:
       federails/moderation/report:
         few: Zgłoszenia
         many: Zgłoszeń
-        one: Zgloszenie
+        one: Zgłoszenie
         other: Zgłoszenia
         two:
         zero:
@@ -234,16 +238,16 @@ pl:
       title: Filtry
       unknown: Nieznany
     footer:
+      about: O tej instancji
+      api: Poznaj nasze API
       by_html: Zaprojektowany i stworzony przez <a href="https://floppy.org.uk" target="_blank">Jamesa</a> z pomocą od <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">naszych współautorów</a>.
-      chat: Czat
-      code: Kod
-      community_heading: Społeczność
-      development_heading: Rozwój
-      issues: Problemy
-      open_source_html: Projekt Open Source na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencji MIT</a>.
-      social: Sociale
-      sponsor: Sponsoruj
-      stats_heading: Statystyki
+      community: Dołącz do społeczności
+      instance_heading: Szczegóły Instancji
+      issues: Zgłoś problem
+      open_source_html: Projekt <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencji MIT</a>.
+      powered_by_html:
+      sponsor: Sponsoruj rozwój
+      support: Wesprzyj tą instancje
       version: Wersja
     link_fields:
       url:
@@ -281,18 +285,20 @@ pl:
     title: Manyfold
   follow_button_component:
     follow: Obserwuj %{name}
+    pending: Żądane
     unfollow: Przestań obserwować %{name}
   follows:
     actor_table:
       actions: Akcje
       address: Adres Fediverse
-      info: Informacja
       name: Nazwa
       non_manyfold_account: To nie jest konto Manyfold; możesz je zaobserwować, ale prawdopodobnie nic ciekawego się nie stanie, przynajmniej na razie.
     follow_remote_actor:
       followed: Pomyślnie zaczęto obserwować %{actor}
+    index:
+      title: Obserwowane
     new:
-      help: Możesz obserwować publicznych twórców, kolekcje lub modele na innym serwerze Manyfold, a nawet każde publiczne konto w Fediverse! Wystarczy, że wpiszesz nazwę konta w polu wyszukiwania!
+      help: Możesz obserwować publicznych twórców, kolekcje lub modele na innym serwerze Manyfold, a nawet każde publiczne konto w Fediversie! Wystarczy, że wpiszesz nazwę konta w polu wyszukiwania!
       no_results: Przepraszamy, nie mogliśmy znaleźć niczego dla "%{query}". Czy jest to prawidłowe konto ActivityPub lub adres URL?
       results: Wyniki wyszukiwania
       title: Śledź Fediverse
@@ -305,6 +311,8 @@ pl:
     search_form:
       placeholder: Wprowadź konto Fediverse lub adres URL, np. @admin@try.manyfold.app
       submit: Wyszukaj
+    unfollow_remote_actor:
+      unfollowed: Przestano obserwować %{actor}
   general:
     delete: Usuń
     download: Pobierz
@@ -316,15 +324,15 @@ pl:
     save: Zapisz
     view: Widok
   home:
+    activity:
+      created: dodany %{time} temu
+      updated: zaktualizowany %{time} temu
     index:
-      create_actor: dodany przez %{name} %{time} temu
-      how_long_ago: "%{time} temu"
       no_activities: Na razie nie ma żadnych aktywności do wyświetlenia.
       recent_activity: Ostatnia Aktywność
       search:
         placeholder: Czego szukasz?
         submit: Wyszukaj
-      update_actor: zaktualizowany przez %{name} %{time} temu
   jobs:
     activity:
       creator_added_model:
@@ -374,6 +382,7 @@ pl:
       actions_heading: Akcje
     settings:
       activeadmin: Zaawansowana Administracja
+      appearance: Wygląd
       libraries: Biblioteki
       organization: Organizacja
       performance: Pulpit Wydajności
@@ -400,9 +409,19 @@ pl:
       label: Edytuj model %{name}
       text: Edytuj
     no_preview: Podgląd jest niedostępny
+    no_remote_preview: Przepraszamy, podgląd modeli na innych instancjach nie jest jeszcze dostępny, ale pojawi się wkrótce!
     open_button:
       label: Otwórz model %{name}
       text: Otwórz
+  moderator_mailer:
+    new_approval:
+      greeting: Cześć!
+      message: Ktoś nowy zarejestrował konto i wymaga zatwierdzenia. Zatwierdź konto pod adresem %{link}
+      subject: Nowe konto wymaga zatwierdzenia
+    new_report:
+      greeting: Cześć!
+      message: Ktoś zgłosił zawartość wymagającą moderacji. Przejrzyj zgłoszenie pod adresem %{link}
+      subject: Otrzymano nowe zgłoszenie
   renderer:
     errors:
       canvas: 'Nie można znaleźć canvasu #webgl!'

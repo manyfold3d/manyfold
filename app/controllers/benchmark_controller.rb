@@ -40,7 +40,7 @@ class BenchmarkController < ApplicationController
   end
 
   def load_random_model
-    @model = Model.find(policy_scope(Model).pluck(:id).sample)
+    @model = policy_scope(Model).find(policy_scope(Model).pluck(:id).sample)
     authorize @model
   end
 end

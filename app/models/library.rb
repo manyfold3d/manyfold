@@ -25,7 +25,6 @@ class Library < ApplicationRecord
   validates :path,
     presence: true,
     uniqueness: true,
-    existing_path: true,
     safe_path: true,
     writable: true,
     if: -> { storage_service == "filesystem" }
@@ -163,6 +162,36 @@ class Library < ApplicationRecord
     else
       raise "Invalid storage service: #{storage_service}"
     end
+  end
+
+  def create_path_if_not_on_disk=(val)
+    if val == "1" && storage_service == "filesystem"
+      begin
+        FileUtils.makedirs(path)
+      rescue Errno::EROFS, Errno::EACCES
+        errors.add(:path, :non_writable)
+      end
+    end
+  end
+
+  def self.default
+    SiteSettings.default_library ? Library.find_by(id: SiteSettings.default_library) : Library.first
+  end
+
+  def default?
+    SiteSettings.default_library == id
+  end
+
+  def make_default
+    SiteSettings.default_library = id
+  end
+
+  def detect_filesystem_changes_later(delay: 0.seconds)
+    Scan::Library::DetectFilesystemChangesJob.set(wait: delay).perform_later(id)
+  end
+
+  def create_model_from_path_later(path, delay: 0.seconds)
+    Scan::Library::CreateModelFromPathJob.set(wait: delay).perform_later(id, path)
   end
 
   private

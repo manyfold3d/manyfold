@@ -11,6 +11,7 @@ es:
         caption: Subtítulo
         name: Nombre
         notes: Notas
+        slug: Handle
       federails/moderation/domain_block:
         created_at: Creado el
         domain: Dominio
@@ -21,15 +22,16 @@ es:
         object: Objeto
       library:
         caption: Subtítulo
+        create_path_if_not_on_disk: Auto-crear carpeta
+        default: Por defecto
         icon: Icono
         name: Nombre
         notes: Notas
         path: Ruta
         s3_access_key_id: Clave de acceso ID
         s3_bucket: Nombre del Bucket
-        s3_endpoint: 'Endpoint URL
-
-          '
+        s3_endpoint: Endpoint URL
+        s3_path_style: Usar URLs path-style
         s3_region: Región
         s3_secret_access_key: Clave de acceso secreta
         storage_service: Servicio de almacenamiento
@@ -55,7 +57,7 @@ es:
         model_id: Modelo
         notes: Notas
         presupported: Soporte predefinido
-        presupported_version: Versión de soporte predefinido
+        presupported_version: Versión con soporte predefinido
         printed: Impreso
         size: Tamaño del archivo
         unsupported_version: Versión sin soporte
@@ -238,16 +240,16 @@ es:
       title: Filtros
       unknown: Desconocido
     footer:
+      about: Acerca de esta instancia
+      api: API
       by_html: Diseñado y construido por <a href="https://floppy.org.uk" target="_blank">James</a> con la ayuda de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">nuestros colaboradores</a>.
-      chat: Chat
-      code: Código
-      community_heading: Comunidad
-      development_heading: Desarrollo
+      community: Únete a la comunidad
+      instance_heading: Detalles de la instancia
       issues: Problemas
-      open_source_html: Open Source bajo <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencia MIT</a>.
-      social: Social
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> bajo <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencia MIT</a>.
+      powered_by_html: Desarrollado por <a href="https://manyfold.app">%{name}</a>
       sponsor: Colaborar
-      stats_heading: Estadísticas
+      support: Apoyar esta instancia
       version: Versión
     link_fields:
       url:
@@ -285,16 +287,18 @@ es:
     title: Manyfold
   follow_button_component:
     follow: Seguir %{name}
+    pending: Requerido
     unfollow: Dejar de seguir %{name}
   follows:
     actor_table:
       actions: Acciones
       address: Dirección Fediverse
-      info: Información
       name: Nombre
       non_manyfold_account: Esta no es una cuenta Manyfold. Puedes seguirla, pero probablemente no ocurra nada interesante, al menos por ahora.
     follow_remote_actor:
       followed: Siguiendo a %{actor} correctamente.
+    index:
+      title: Siguiendo
     new:
       help: Puedes seguir creadores, colecciones o modelos públicos en otro servidor de Manyfold; ¡de hecho, cualquier cuenta pública en el Fediverse! Solo ingresa el nombre de la cuenta en el cuadro de búsqueda.
       no_results: Lo siento, no encontré nada para "%{query}". ¿Es una cuenta o URL de ActivityPub válida?
@@ -303,12 +307,14 @@ es:
     remote_follow:
       help: No es necesario tener una cuenta en este servidor para seguir a %{name}. Escribe tu nombre de usuario aquí y te llevaremos de vuelta para completar el proceso
       no_results_html: No se pudo encontrar tu cuenta de inicio; ¿la escribiste correctamente?
-      placeholder: Tu nombre de usuario de Fediverse, por ejemplo @manyfold@3dp.chat
+      placeholder: Tu nombre de usuario de Fediverse, por ejemplo manyfold@3dp.chat
       submit: Llévame a casa
       title: Seguir %{name}
     search_form:
       placeholder: Introduzca una cuenta Fediverse o URL, por ejemplo @admin@try.manyfold.app
       submit: Buscar
+    unfollow_remote_actor:
+      unfollowed: Dejar de seguir a %{actor}
   general:
     delete: Borrar
     download: Descargar
@@ -320,15 +326,15 @@ es:
     save: Guardar
     view: Ver
   home:
+    activity:
+      created: subido hace %{time}
+      updated: actualizado hace %{time}
     index:
-      create_actor: subido por %{name} hace %{time}
-      how_long_ago: hace %{time}
       no_activities: Por ahora no hay actividades que mostrar.
       recent_activity: Actividad reciente
       search:
         placeholder: "¿Qué busca?"
         submit: Buscar
-      update_actor: actualizado por %{name} hace %{time}
   jobs:
     activity:
       creator_added_model:
@@ -378,6 +384,7 @@ es:
       actions_heading: Acciones
     settings:
       activeadmin: Administración avanzada
+      appearance: Apariencia
       libraries: Bibliotecas
       organization: Organización
       performance: Panel de rendimiento
@@ -404,9 +411,19 @@ es:
       label: Editar modelo %{name}
       text: Editar
     no_preview: Vista previa no disponible
+    no_remote_preview: Lo sentimos, las vistas previas de los modelos de otras instancias aún no están disponibles, pero lo estarán pronto
     open_button:
       label: Abrir modelo %{name}
       text: Abrir
+  moderator_mailer:
+    new_approval:
+      greeting: "¡Hola!"
+      message: Alguien nuevo se ha registrado para obtener una cuenta y requiere aprobación. Aprobar la cuenta en %{link}
+      subject: La nueva cuenta necesita aprobación
+    new_report:
+      greeting: "¡Hola!"
+      message: Alguien ha denunciado un contenido que necesita moderación. Revise el informe en %{link}
+      subject: Nuevo informe recibido
   renderer:
     errors:
       canvas: "¡No se encontró el canvas #webgl!"

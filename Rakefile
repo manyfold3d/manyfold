@@ -10,9 +10,11 @@ unless ENV["RACK_ENV"] === "production"
 end
 
 locales = [
+  :cs,
   :de,
   :es,
   :fr,
+  :nl,
   :pl
 ]
 
@@ -42,6 +44,22 @@ namespace :db do
       files = Dir.glob(ActiveRecord::Base.connection.instance_variable_get(:@config)[:database] + "*")
       # Change ownership - this will fail safe if the env vars aren't set
       FileUtils.chown(ENV.fetch("PUID", nil), ENV.fetch("PGID", nil), files, verbose: true)
+    end
+  end
+end
+
+namespace :themes do
+  task generate: :environment do
+    raw = Net::HTTP.get(URI.parse("https://bootswatch.com/api/5.json"))
+    json = JSON.parse(raw)
+    json["themes"].each do |theme|
+      name = theme["name"].downcase
+      contents = <<~EOF
+        @import "bootswatch/dist/#{name}/variables";
+        @import '../../application';
+        @import "bootswatch/dist/#{name}/bootswatch";
+      EOF
+      Rails.root.join("app/assets/stylesheets/entrypoints/themes/#{name}.scss").write(contents)
     end
   end
 end

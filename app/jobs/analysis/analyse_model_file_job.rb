@@ -2,6 +2,7 @@ require "string/similarity"
 
 class Analysis::AnalyseModelFileJob < ApplicationJob
   queue_as :analysis
+  unique :until_executed
 
   def perform(file_id)
     file = ModelFile.find(file_id)
@@ -15,7 +16,7 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
       # Store updated file metadata
       file.save!
       # If the digest has changed, queue up detailed geometric mesh analysis
-      Analysis::GeometricAnalysisJob.perform_later(file_id) if file.is_3d_model? && file.digest_previously_changed?
+      file.analyse_geometry_later if file.is_3d_model? && file.digest_previously_changed?
     end
     # Raise problems for empty files
     Problem.create_or_clear file, :empty, (file.size == 0)

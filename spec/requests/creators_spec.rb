@@ -53,29 +53,32 @@ RSpec.describe "Creators" do
       end
 
       it "denies member permission", :as_member do
-        expect { post "/creators", params: {creator: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
+        post "/creators", params: {creator: {name: "newname"}}
+        expect(response).to have_http_status(:forbidden)
       end
     end
 
     describe "GET /creators/new" do
+      before { get "/creators/new" }
+
       it "Shows the new creator form", :as_contributor do
-        get "/creators/new"
         expect(response).to have_http_status(:success)
       end
 
       it "denies member permission", :as_member do
-        expect { get "/creators/new" }.to raise_error(Pundit::NotAuthorizedError)
+        expect(response).to have_http_status(:forbidden)
       end
     end
 
     describe "GET /creators/:id/edit" do
+      before { get "/creators/#{creator.to_param}/edit" }
+
       it "Shows the new creator form", :as_moderator do
-        get "/creators/#{creator.to_param}/edit"
         expect(response).to have_http_status(:success)
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { get "/creators/#{creator.to_param}/edit" }.to raise_error(Pundit::NotAuthorizedError)
+        expect(response).to have_http_status(:forbidden)
       end
     end
 
@@ -87,24 +90,26 @@ RSpec.describe "Creators" do
     end
 
     describe "PATCH /creators/:id" do
+      before { patch "/creators/#{creator.to_param}", params: {creator: {slug: "newname"}} }
+
       it "saves details", :as_moderator do
-        patch "/creators/#{creator.to_param}", params: {creator: {name: "newname"}}
         expect(response).to redirect_to("/creators/newname")
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { patch "/creators/#{creator.to_param}", params: {creator: {name: "newname"}} }.to raise_error(Pundit::NotAuthorizedError)
+        expect(response).to have_http_status(:forbidden)
       end
     end
 
     describe "DELETE /creators/:id" do
+      before { delete "/creators/#{creator.to_param}" }
+
       it "removes creator", :as_moderator do
-        delete "/creators/#{creator.to_param}"
         expect(response).to redirect_to("/creators")
       end
 
       it "is denied to non-moderators", :as_contributor do
-        expect { delete "/creators/#{creator.to_param}" }.to raise_error(Pundit::NotAuthorizedError)
+        expect(response).to have_http_status(:forbidden)
       end
     end
   end

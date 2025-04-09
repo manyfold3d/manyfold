@@ -1,0 +1,34 @@
+{
+    "name": "manyfold Development Container",
+    "image": "ghcr.io/rails/devcontainer/images/ruby:3.4.1",
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "22"
+        },
+         "ghcr.io/rails/devcontainer/features/activestorage": {},
+         "ghcr.io/itsmechlark/features/redis-server:1": {}
+    },
+    "postCreateCommand": "sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install libpq-dev libmariadb-dev libarchive13 -y && export COREPACK_ENABLE_DOWNLOAD_PROMPT=0 && corepack enable && bundle install && yarn install",
+    "postStartCommand": "bash ./bin/dev",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "Shopify.ruby-lsp"
+            ]
+        }
+    },
+    "containerEnv": {
+        "SHELL": "/bin/bash",
+        "RAILS_ENV": "development",
+        "NODE_ENV": "development"
+    },
+    "forwardPorts": [5000],
+    "portsAttributes": {
+        "5000": {
+            "label": "Rails Server",
+            "onAutoForward": "notify"
+        }
+    }
+}

@@ -6,7 +6,11 @@ class ModelFile < ApplicationRecord
 
   extend Memoist
 
-  belongs_to :model
+  SPECIAL_FILES = [
+    "datapackage.json"
+  ]
+
+  belongs_to :model, touch: true
 
   after_create :attach_existing_file!
 
@@ -29,7 +33,7 @@ class ModelFile < ApplicationRecord
 
   after_commit :clear_presupported_relation, on: :update, if: :presupported_previously_changed?
 
-  default_scope { order(:filename) }
+  scope :without_special, -> { where.not(filename: SPECIAL_FILES) }
   scope :unsupported, -> { where(presupported: false) }
   scope :presupported, -> { where(presupported: true) }
 
@@ -134,8 +138,8 @@ class ModelFile < ApplicationRecord
   end
 
   def duplicates
-    return ModelFile.none if digest.nil?
-    ModelFile.where(digest: digest).where.not(id: id)
+    return ModelFile.none if digest.nil? # rubocop:todo Pundit/UsePolicyScope
+    ModelFile.where(digest: digest).where.not(id: id) # rubocop:todo Pundit/UsePolicyScope
   end
 
   def duplicate?
@@ -164,23 +168,45 @@ class ModelFile < ApplicationRecord
 
   def reattach!
     if attachment.id != path_within_library || attachment.storage_key != model.library.storage_key
+      old_path = attachment.id
+      old_storage = attachment.storage
+      # Reattach
       attachment_attacher.attach attachment, storage: model.library.storage_key
+      # Remove previous file
+      old_storage.delete old_path
       save!
     end
   end
 
-  def convert_to!(format)
-    Analysis::FileConversionJob.perform_later(id, format.to_sym)
+  def convert_later(format, delay: 0.seconds)
+    Analysis::FileConversionJob.set(wait: delay).perform_later(id, format.to_sym)
   end
 
   def loadable?
     loader.present?
   end
 
+  def delete_from_disk_and_destroy
+    model.library.storage.delete path_within_library
+    destroy
+  end
+
+  def analyse_later(delay: 5.seconds)
+    Analysis::AnalyseModelFileJob.set(wait: delay).perform_later(id)
+  end
+
+  def analyse_geometry_later(delay: 0.seconds)
+    Analysis::GeometricAnalysisJob.set(wait: delay).perform_later(id)
+  end
+
+  def parse_metadata_later(delay: 0.seconds)
+    Scan::ModelFile::ParseMetadataJob.set(wait: delay).perform_later(id)
+  end
+
   private
 
   def rescan_duplicates
-    duplicates.each { |it| Analysis::AnalyseModelFileJob.set(wait: 5.seconds).perform_later(it.id) }
+    duplicates.each { |it| it.analyse_later }
   end
 
   def presupported_files_cannot_have_presupported_version

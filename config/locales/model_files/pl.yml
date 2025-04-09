@@ -20,6 +20,13 @@ pl:
     destroy:
       confirm: Czy na pewno chcesz usunąć ten plik z systemu plików?
       success: Plik usunięty!
+    download:
+      bambu: Otwórz w Bambu Studio
+      cura: Otwórz w Ultimaker Cura
+      elegoo: Otwórz w ElegooSlicer
+      orca: Otwórz w OrcaSlicer
+      prusa: Otwórz w PrusaSlicer
+      superslicer: Otwórz w SuperSlicer
     form:
       notes:
         help_html: Możesz używać <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
@@ -28,6 +35,8 @@ pl:
     show:
       convert: Konwertuj do 3MF
       details_heading: Szczegóły
+      download:
+        menu_header: Opcje pobierania
       notes_heading: Notatki
     update:
       failure: Wystąpił błąd i nie można było zapisać szczegółów pliku.

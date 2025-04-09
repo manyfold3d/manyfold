@@ -11,8 +11,32 @@ require "support/mock_directory"
 #                        DELETE /models/:model_id/model_files/:id(.:format)       model_files#destroy
 
 RSpec.describe "Model Files" do
-  context "when signed out" do
-    it "needs testing when multiuser is enabled"
+  [:multiuser, :singleuser].each do |mode|
+    context "when signed out in #{mode} mode", mode do
+      context "when downloading via a signed ID" do
+        before { create(:admin) }
+
+        let!(:file) { create(:model_file, filename: "test.jpg") }
+
+        it "succeeds with a valid ID" do
+          id = file.signed_id(expires_in: 1.minute, purpose: "download")
+          get "/models/#{file.model.to_param}/model_files/#{id}.jpg?download=true"
+          expect(response).to have_http_status(:success)
+        end
+
+        it "fails if expired" do
+          id = file.signed_id(expires_at: 1.minute.ago, purpose: "download")
+          get "/models/#{file.model.to_param}/model_files/#{id}.jpg?download=true"
+          expect(response).to have_http_status(:not_found)
+        end
+
+        it "fails if purpose doesn't match" do
+          id = file.signed_id(expires_in: 1.minute, purpose: "shenanigans")
+          get "/models/#{file.model.to_param}/model_files/#{id}.jpg?download=true"
+          expect(response).to have_http_status(:not_found)
+        end
+      end
+    end
   end
 
   context "when signed in" do

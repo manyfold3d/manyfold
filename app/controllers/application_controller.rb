@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index, unless: :active_admin_controller?
   after_action :set_content_security_policy_header, if: -> { request.format.html? }
 
-  before_action :authenticate_user!, if: -> { !SiteSettings.multiuser_enabled? }
+  before_action :authenticate_user!, unless: -> { SiteSettings.multiuser_enabled? || has_signed_id? }
+  before_action :doorkeeper_token_authorize!, if: :is_api_request?
   around_action :switch_locale
   before_action :check_for_first_use
   before_action :show_security_alerts
@@ -26,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_for_first_use
-    authenticate_user! if User.count == 0
+    authenticate_user! if User.count == 0 # rubocop:disable Pundit/UsePolicyScope
     redirect_to(edit_user_registration_path) if current_user&.reset_password_token == "first_use"
   end
 
@@ -45,10 +46,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def has_signed_id?
+    params[:id] && ApplicationRecord.signed_id_verifier.valid_message?(params[:id])
+  end
+
   def img_src
-    url = ENV.fetch "SITE_ICON", nil
-    url ? URI.parse(url).host : nil
-    [:self, :data, url].compact
+    url = SiteSettings.site_icon ? URI.parse(SiteSettings.site_icon).host : nil
+    [:self, :data, url, "https://cdn.jsdelivr.net", "https://raw.githubusercontent.com"].compact
   end
 
   def configure_content_security_policy
@@ -57,14 +61,15 @@ class ApplicationController < ActionController::Base
     content_security_policy.connect_src :self
     content_security_policy.frame_ancestors :self
     content_security_policy.frame_src :self
-    content_security_policy.font_src :self, "https://cdn.jsdelivr.net"
+    content_security_policy.font_src :self, "https://cdn.jsdelivr.net", "https://fonts.gstatic.com"
     content_security_policy.img_src(*img_src)
     content_security_policy.object_src :none
     content_security_policy.script_src :self
     content_security_policy.style_src :self
     content_security_policy.style_src_attr :unsafe_inline
+    content_security_policy.style_src_elem :self, "https://fonts.googleapis.com"
     # Add libary origins
-    origins = Library.all.filter_map(&:storage_origin)
+    origins = Library.all.filter_map(&:storage_origin) # rubocop:disable Pundit/UsePolicyScope
     content_security_policy.img_src(*origins)
     content_security_policy.connect_src(*origins)
     # If we're using Scout DevTrace in local development, we need to allow a load
@@ -99,6 +104,19 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def is_api_request?
+    request.format.json_ld?
+  end
+
+  def doorkeeper_token_authorize!
+    app_owner = doorkeeper_token&.application&.owner
+    if app_owner&.active_for_authentication?
+      sign_in app_owner, store: false
+    else
+      doorkeeper_render_error
+    end
+  end
 
   def user_not_authorized
     if current_user

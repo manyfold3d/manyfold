@@ -16,7 +16,7 @@ FactoryBot.define do
 
       after(:create) do |model, evaluator|
         evaluator.tags_count.times do |i|
-          model.tag_list.add("tag_#{i}")
+          model.tag_list.add("Tag ##{i}")
         end
         model.save
       end
@@ -38,6 +38,10 @@ FactoryBot.define do
 
     trait :with_collection do
       collection
+    end
+
+    trait :public do
+      after(:create) { |it| it.grant_permission_to "view", nil }
     end
   end
 end

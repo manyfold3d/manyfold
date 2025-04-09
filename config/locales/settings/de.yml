@@ -7,6 +7,31 @@ de:
       manifold:
         help: Prüfung auf nicht-verzweigte Maschen (d.h. sie haben Löcher oder unmögliche Oberflächen)
         label: Erkennung von Fehlern im Mesh
+    appearance:
+      about:
+        help_html: Gezeigt auf der Info-Seite; kannst du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden.
+        label: Über diese Instanz
+      heading: Erscheinungsbild
+      information: Informationen
+      rules:
+        help_html: Wird bei der Anmeldung angezeigt; kannst du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden.
+        label: Server-Regeln
+      site_icon:
+        help: Oben links auf jeder Seite abgebildet
+        label: Logo URL
+      site_name:
+        help: Der Name deiner Website. Wird in der Navigation und auf der Homepage verwendet.
+        label: Name der Website
+      site_tagline:
+        help: Ein paar Worte zur Vorstellung deiner Website, die auf der Startseite angezeigt werden.
+        label: Beschreibung
+      summary: Passe das aussehen deiner Instanz an.
+      support_link:
+        help: Ein Link zu einem Ort, an dem deine Nutzer die Instanz finanziell unterstützen können (z. B. OpenCollective, Patreon). Wird in der Fußzeile angezeigt.
+        label: Support-Link
+      theme:
+        help_html: Betrifft alle Benutzer. Besuche <a href="https://bootswatch.com">Bootswatch</a>, um eine Vorschau zu sehen.
+        label: Aussehen
     domain_blocks:
       create:
         success: Domänenblock erfolgreich erstellt.
@@ -15,11 +40,17 @@ de:
       index:
         confirm_destroy: Bist du sicher, dass du diese Domänensperre aufheben willst, und federation wieder aktivierst?
         description: Domänensperren verhindern die Verbindung mit ActivityPub-Servern mit den angegebenen Domänen, einschließlich aller Subdomains.
-        new: Neuer Domänenblock
+        new: Neuer Block
         title: Blockierte Domains
       new:
         submit: Domain Blockieren
         title: Neuer Domain-block
+    file_settings:
+      custom_ignore_filters:
+        details: Die Filter sind im Regex-Format und durch eine neue Zeile getrennt.
+        label: Ignorierte Dateien Regex-Filter.
+      summary: Ändere Dateieinstellungen wie z. B. ignorierte Dateien.
+      title: Datei-Einstellungen
     folder_settings:
       details: Die Ordnerstruktur folgt einer Vorlage, die du mit Token definierst. Du kannst auch anderen Text in die Vorlage einfügen (z. B. Ordnertrennzeichen) und dieser wird unverändert übernommen.
       model_path_template:
@@ -59,7 +90,9 @@ de:
       oidc: OpenID Connect konfiguriert?
       permissions: Berechtigungen
       registration: Kontoregistrierung
-      registration_open: Kontoregistrierung offen?
+      registration_open:
+        help: Ermöglicht es Besuchern, sich für Konten anzumelden.
+        label: Aktiviere registrierung
       single_user_mode: Manyfold läuft im Single user modus.
     reporting:
       description_html: Wenn du die Nutzungsverfolgung aktivieren, werden die folgenden Informationen einmal täglich an <code>%{endpoint}</code> gesendet. Die <code>id</code> wird zufällig generiert, wenn die Verfolgung aktiviert wird.
@@ -79,6 +112,9 @@ de:
       update:
         ignored: Die Meldung wurde ignoriert
         resolved: Die Meldung wurde als Gelöst Markiert
+    show:
+      stats: Statistiken
+      total_file_size: Gesamtgröße der Datei
     tag_settings:
       auto_tag_new:
         label: Automatisch neue Modelle mit Tag(s) markieren

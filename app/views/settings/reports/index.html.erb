@@ -9,7 +9,8 @@
     <th><%= Federails::Moderation::Report.human_attribute_name(:created_at) %></th>
     <th></th>
   </tr>
-  <% @reports.each do |report| %>
+  <% @reports.each do |report|
+    next unless report.object %>
     <tr>
       <td><%= icon icon_for(report.object.entity.class), "" %></td>
       <td><%= link_to report.object.entity.name, report.object.entity if report.object&.entity %></td>

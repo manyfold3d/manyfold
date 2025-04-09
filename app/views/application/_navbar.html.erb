@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class='container-fluid'>
     <a class="navbar-brand ms-2" href="<%= root_path %>" aria-label="<%= translate ".home" %>">
       <%= image_tag site_icon, alt: site_name, height: "40px", class: "me-2" %>
@@ -18,15 +18,17 @@
         <li class="nav-item">
           <%= nav_link "collection", Collection.model_name.human(count: 100), collections_path(@filters&.except(:collection)) %>
         </li>
-        <% policy_scope(Library).find_each do |library| %>
-          <li class="nav-item">
-            <%= nav_link(
-                  library.icon.presence || "boxes",
-                  library.name,
-                  models_path((@filters&.except(:library) || {}).merge({library: library})),
-                  title: library.caption
-                )	%>
-          </li>
+        <% if SiteSettings.show_libraries %>
+          <% policy_scope(Library).find_each do |library| %>
+            <li class="nav-item">
+              <%= nav_link(
+                    library.icon.presence || "boxes",
+                    library.name,
+                    models_path((@filters&.except(:library) || {}).merge({library: library})),
+                    title: library.caption
+                  )	%>
+            </li>
+          <% end %>
         <% end %>
       </ul>
       <ul class="navbar-nav col-6 pe-4 align-self-start justify-content-end">
@@ -54,7 +56,7 @@
         <%- if current_user %>
           <% if policy(Problem).index? && Problem.visible(problem_settings).count > 0 %>
             <li class="nav-item">
-              <% severity = max_problem_severity %>
+              <% severity = max_problem_severity(policy_scope(Problem).all) %>
               <%= nav_link problem_icon(severity),
                     Problem.model_name.human(count: 100),
                     problems_path,

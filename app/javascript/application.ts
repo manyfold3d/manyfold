@@ -14,6 +14,7 @@ import 'src/tag'
 import 'src/carousel'
 import 'src/file_size_validation'
 import 'src/uploads'
+import 'src/passwords'
 import 'src/library_form'
 
 // Load i18n definitions

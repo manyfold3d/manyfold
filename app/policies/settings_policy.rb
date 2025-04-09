@@ -7,6 +7,10 @@ class SettingsPolicy < ApplicationPolicy
     update?
   end
 
+  def appearance?
+    update?
+  end
+
   def multiuser?
     update?
   end

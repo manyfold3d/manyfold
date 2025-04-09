@@ -30,6 +30,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super do |user|
       user.update(approved: false) if SiteSettings.approve_signups
     end
+    if @user.persisted?
+      ModeratorMailer.with(user: @user).new_approval.deliver_later if SiteSettings.approve_signups && SiteSettings.email_configured?
+    end
   end
 
   # PUT /resource
@@ -73,6 +76,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update) do |user|
       user.permit(
         :email,
+        :username,
         :password,
         :password_confirmation,
         :current_password,
@@ -145,7 +149,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     {
       "threshold" => settings[:threshold].to_i,
       "heatmap" => settings[:heatmap] == "1",
-      "keypair" => settings[:keypair] == "1"
+      "keypair" => settings[:keypair] == "1",
+      "sorting" => settings[:sorting].to_s
     }
   end
 

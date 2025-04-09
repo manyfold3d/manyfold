@@ -14,7 +14,8 @@ RSpec.describe "Activities" do
   context "when logged in as non-admin", :as_moderator do
     describe "GET /" do
       it "raises a routing error" do
-        expect { get "/activity" }.to raise_error(ActionController::RoutingError)
+        get "/activity"
+        expect(response).to have_http_status :not_found
       end
     end
   end

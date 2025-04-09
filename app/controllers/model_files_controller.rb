@@ -7,12 +7,21 @@ class ModelFilesController < ApplicationController
   skip_after_action :verify_authorized, only: [:bulk_edit, :bulk_update]
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
+  def configure_content_security_policy
+    # If embed mode, allow any frame ancestor
+    content_security_policy.frame_ancestors [:https, :http] if embedded?
+  end
+
   def show
-    if stale?(@file)
+    if embedded?
+      respond_to do |format|
+        format.html { render "embedded", layout: "embed" }
+      end
+    elsif stale?(@file)
       @duplicates = @file.duplicates
       respond_to do |format|
         format.html
-        format.js
+        format.json_ld { render json: JsonLd::ModelFileSerializer.new(@file).serialize }
         format.any(*SupportedMimeTypes.indexable_types.map(&:to_sym)) do
           send_file_content disposition: (params[:download] == "true") ? :attachment : :inline
         end
@@ -24,7 +33,7 @@ class ModelFilesController < ApplicationController
     authorize @model
     if params[:convert]
       file = ModelFile.find_param(params[:convert][:id])
-      file.convert_to! params[:convert][:to]
+      file.convert_later params[:convert][:to]
       redirect_back_or_to [@model, file], notice: t(".conversion_started")
     elsif params[:uploads]
       uploads = begin
@@ -55,13 +64,13 @@ class ModelFilesController < ApplicationController
   end
 
   def bulk_edit
-    @files = policy_scope(ModelFile).where(model: @model).select(&:is_3d_model?)
+    @files = policy_scope(ModelFile).without_special.where(model: @model)
   end
 
   def bulk_update
     hash = bulk_update_params
     ids_to_update = params[:model_files].keep_if { |key, value| value == "1" }.keys
-    files = policy_scope(ModelFile).where(model: @model, public_id: ids_to_update)
+    files = policy_scope(ModelFile).without_special.where(model: @model, public_id: ids_to_update)
     files.each do |file|
       ActiveRecord::Base.transaction do
         current_user.set_list_state(file, :printed, params[:printed] === "1")
@@ -84,7 +93,7 @@ class ModelFilesController < ApplicationController
 
   def destroy
     authorize @file
-    @file.destroy
+    @file.delete_from_disk_and_destroy
     if request.referer && (URI.parse(request.referer).path == model_model_file_path(@model, @file))
       # If we're coming from the file page itself, we can't go back there
       redirect_to model_path(@model), notice: t(".success")
@@ -130,8 +139,20 @@ class ModelFilesController < ApplicationController
   end
 
   def get_file
-    @file = @model.model_files.includes(:unsupported_version, :presupported_version).find_param(params[:id])
-    authorize @file
+    # Check for signed download URLs
+    if has_signed_id?
+      @file = @model.model_files.find_signed!(params[:id], purpose: "download")
+      skip_authorization
+    else
+      @file = @model.model_files.find_param(params[:id])
+      authorize @file
+    end
     @title = @file.name
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    raise ActiveRecord::RecordNotFound
+  end
+
+  def embedded?
+    params[:embed] == "true"
   end
 end

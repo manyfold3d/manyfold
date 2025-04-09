@@ -6,10 +6,11 @@
 <div class="row">
   <% Library.find_each do |library| %>
     <div class="col-md-6">
-      <div class="card">
+      <div class="card <%= "border-info" if library.default? %>">
         <div class="card-header">
           <%= icon(library.icon, library.icon) if library.icon %>
           <%= library.name %>
+          <%= content_tag(:small, class: "text-info float-end") { t("activerecord.attributes.library.default") } if library.default? %>
         </div>
         <div class="card-body">
           <%= link_to t("general.edit"), edit_library_path(library), {class: "btn btn-secondary float-end #{policy(:library).edit? ? "" : "disabled"}"} %>
@@ -62,8 +63,27 @@
               </td>
             </tr>
           </table>
+          <div class="row">
+            <%= render StatBlockComponent.new(title: Model, value: model_count(library: library)) %>
+            <%= render StatBlockComponent.new(title: ModelFile, value: model_file_count(library: library)) %>
+            <%= render StatBlockComponent.new(title: t("settings.show.total_file_size"), value: number_to_human_size(total_file_size(library: library), precision: 2)) %>
+          </div>
         </div>
       </div>
     </div>
   <% end %>
 </div>
+
+<hr>
+
+<%= form_with url: settings_path, method: :patch do |form| %>
+  <h4><%= t(".settings") %></h4>
+  <div class="row mb-2">
+    <%= form.label nil, t(".show.label"), for: "libraries[show]", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8 form-check form-switch">
+      <%= form.check_box "libraries[show]", checked: SiteSettings.show_libraries, class: "form-check-input" %>
+      <small><%= t(".show.help") %></small>
+    </div>
+  </div>
+  <%= render "settings/submit", form: form %>
+<% end %>

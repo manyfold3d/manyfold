@@ -42,12 +42,13 @@ module Manyfold
     config.i18n.fallbacks = true
     config.i18n.default_locale = :en
     config.i18n.available_locales = [
-      :en,
+      :cs,
       :de,
+      :en,
       :es,
       :fr,
-      :pl,
-      :nl
+      :nl,
+      :pl
     ]
 
     # Don't generate system test files.
@@ -74,7 +75,6 @@ module Manyfold
     # Some are automatically enabled in test mode because they impact initialization
     config.manyfold_features = {
       multiuser: (ENV.fetch("MULTIUSER", nil) == "enabled"),
-      registration: (ENV.fetch("REGISTRATION", nil) == "enabled"),
       federation: (ENV.fetch("FEDERATION", nil) == "enabled"),
       demo_mode: (ENV.fetch("DEMO_MODE", nil) == "enabled"),
       oidc: ENV.key?("OIDC_CLIENT_ID") && ENV.key?("OIDC_CLIENT_SECRET") && ENV.key?("OIDC_ISSUER")

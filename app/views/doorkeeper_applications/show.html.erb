@@ -1,0 +1,28 @@
+<%= render "breadcrumb" %>
+<h1><%= t(".title") %></h1>
+
+<table class="table table-striped">
+  <tr>
+    <td><%= Doorkeeper::Application.human_attribute_name :name %></td>
+    <td><%= @application.name %></td>
+  </tr>
+  <tr>
+    <td><%= Doorkeeper::Application.human_attribute_name :uid %></td>
+    <td><code><%= @application.uid %></code></td>
+  </tr>
+  <tr>
+    <td><%= Doorkeeper::Application.human_attribute_name :secret %></td>
+    <td><code><%= @application.secret %></code></td>
+  </tr>
+  <tr>
+    <td><%= Doorkeeper::Application.human_attribute_name :confidential %></td>
+    <td><%= @application.confidential %></td>
+  </tr>
+  <tr>
+    <td><%= Doorkeeper::Application.human_attribute_name :redirect_uri %></td>
+    <td><code><%= @application.redirect_uri %></code></td>
+  </tr>
+</table>
+
+<%= link_to t(".edit"), edit_doorkeeper_application_path(@application), class: "btn btn-primary" %>
+<%= link_to t(".destroy"), doorkeeper_application_path(@application), method: :delete, class: "btn btn-outline-danger" %>

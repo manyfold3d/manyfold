@@ -17,6 +17,7 @@ module ActivityPub
     def cc
       [
         @object.federails_actor.followers_url,
+        @object.creator&.federails_actor&.followers_url,
         @object.collection&.federails_actor&.followers_url
       ].compact
     end

@@ -15,13 +15,16 @@ class ModelsController < ApplicationController
   def index
     @models = filtered_models @filters
     prepare_model_list
-    render layout: "card_list_page"
+    respond_to do |format|
+      format.html { render layout: "card_list_page" }
+      format.json_ld { render json: JsonLd::ModelListSerializer.new(@models).serialize }
+    end
   end
 
   def show
     respond_to do |format|
       format.html do
-        files = @model.model_files
+        files = @model.model_files.without_special
         @images = files.select(&:is_image?)
         @images.unshift(@model.preview_file) if @images.delete(@model.preview_file)
         if helpers.file_list_settings["hide_presupported_versions"]
@@ -31,7 +34,7 @@ class ModelsController < ApplicationController
         files = files.includes(:presupported_version, :problems)
         files = files.reject(&:is_image?)
         @groups = helpers.group(files)
-        @extensions = @model.file_extensions
+        @extensions = @model.file_extensions.excluding("json")
         @has_supported_and_unsupported = @model.has_supported_and_unsupported?
         @download_format = :zip
         render layout: "card_list_page"
@@ -50,6 +53,8 @@ class ModelsController < ApplicationController
         send_file(tmpfile, filename: filename, type: :zip, disposition: :attachment)
         # We will rely on Shrine to clean up the temp file
       end
+      format.oembed { render json: OEmbed::ModelSerializer.new(@model, helpers.oembed_params).serialize }
+      format.json_ld { render json: JsonLd::ModelSerializer.new(@model).serialize }
     end
   end
 
@@ -66,7 +71,7 @@ class ModelsController < ApplicationController
 
   def create
     authorize :model
-    library = Library.find_param(params[:library])
+    library = SiteSettings.show_libraries ? Library.find_param(params[:library]) : Library.default
     uploads = begin
       JSON.parse(params[:uploads])
     rescue
@@ -92,7 +97,7 @@ class ModelsController < ApplicationController
     hash = model_params
     organize = hash.delete(:organize) == "true"
     if @model.update(hash)
-      OrganizeModelJob.perform_later(@model.id) if organize
+      @model.organize_later if organize
       redirect_to @model, notice: t(".success")
     else
       redirect_back_or_to edit_model_path(@model), alert: t(".failure")
@@ -115,14 +120,14 @@ class ModelsController < ApplicationController
     # Clear digests for files so that we force a full geometry rescan
     @model.model_files.update_all(digest: nil) # rubocop:disable Rails/SkipsModelValidations
     # Start the scans
-    Scan::CheckModelJob.perform_later(@model.id)
+    @model.check_later
     # Back to the model page
     redirect_to @model, notice: t(".success")
   end
 
   def bulk_edit
     authorize Model
-    @models = filtered_models @filters
+    @models = filtered_models(@filters).includes(:collection, :creator)
     generate_available_tag_list
     if helpers.pagination_settings["models"]
       page = params[:page] || 1
@@ -156,7 +161,7 @@ class ModelsController < ApplicationController
         model.tag_list = existing_tags + add_tags - remove_tags
         model.save
       end
-      OrganizeModelJob.perform_later(model.id) if organize
+      model.organize_later if organize
     end
     redirect_back_or_to edit_models_path(@filters), notice: t(".success")
   end
@@ -178,8 +183,8 @@ class ModelsController < ApplicationController
   end
 
   def generate_available_tag_list
-    @available_tags = ActsAsTaggableOn::Tag.where(
-      id: ActsAsTaggableOn::Tagging.where(
+    @available_tags = policy_scope(ActsAsTaggableOn::Tag).where(
+      id: policy_scope(ActsAsTaggableOn::Tagging).where(
         taggable_type: "Model", taggable_id: policy_scope(Model).select(:id)
       ).select(:tag_id)
     ).order(:name)
@@ -221,7 +226,7 @@ class ModelsController < ApplicationController
   end
 
   def get_model
-    @model = Model.includes(:model_files, :creator, :preview_file, :library, :tags, :taggings, :links, :caber_relations).find_param(params[:id])
+    @model = policy_scope(Model).find_param(params[:id])
     authorize @model
     @title = @model.name
   end
@@ -246,15 +251,16 @@ class ModelsController < ApplicationController
   end
 
   def file_list(model, selection)
+    scope = model.model_files
     case selection
     when nil
-      model.model_files
+      scope
     when "supported"
-      model.model_files.where(presupported: true)
+      scope.where(presupported: true)
     when "unsupported"
-      model.model_files.where(presupported: false)
+      scope.where(presupported: false)
     else
-      model.model_files.select { |f| f.extension == selection }
+      scope.select { |f| f.extension == selection }
     end
   end
 

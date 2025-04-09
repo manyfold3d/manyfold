@@ -1,0 +1,1465 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Manyfold API",
+    "version": "0",
+    "description": "This document describes the REST API for this [Manyfold](https://manyfold.app) instance.\n\nWarning! This API...\n\n* ... is not complete! Functionality is limited for now, but future releases will add more capabilities.\n* ... is not yet at v1! It's subject to breaking changes at any time.\n* ... is only valid for this host! Other Manyfold instances running different software versions may expose a different set of API functionality.\n"
+  },
+  "paths": {
+    "/collections": {
+      "get": {
+        "summary": "A list of collections",
+        "tags": [
+          "Collections"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "example": 1,
+            "description": "Specify which page of results to retrieve.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "enum": [
+              "name",
+              "recent"
+            ],
+            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
+            "example": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "$ref": "#/components/schemas/jsonld_context"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/collections"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "hydra:Collection"
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 42
+                    },
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "@id": {
+                            "type": "string",
+                            "example": "/collections/abc123",
+                            "description": "The URL of the collection"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Printer Parts",
+                            "description": "The human name of the collection"
+                          }
+                        },
+                        "required": [
+                          "@id",
+                          "name"
+                        ]
+                      }
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=2"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "hydra:PartialCollectionView"
+                        },
+                        "first": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=1"
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=1"
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=3"
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=10"
+                        }
+                      },
+                      "required": [
+                        "@id",
+                        "@type",
+                        "first",
+                        "last"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "totalItems",
+                    "member",
+                    "view"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/collections/{id}": {
+      "get": {
+        "summary": "Details of a single collection",
+        "tags": [
+          "Collections"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "example": "abc123",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "$ref": "#/components/schemas/jsonld_context"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/collections/abc123"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "Collection"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Interesting Things"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Lorem ipsum dolor sit amet...",
+                      "description": "A longer description for the collection. Can contain Markdown syntax."
+                    },
+                    "creator": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/creators/abc123"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "Organization"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "name"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/creators": {
+      "get": {
+        "summary": "A list of creators",
+        "tags": [
+          "Creators"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "example": 1,
+            "description": "Specify which page of results to retrieve.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "enum": [
+              "name",
+              "recent"
+            ],
+            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
+            "example": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "$ref": "#/components/schemas/jsonld_context"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/creators"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "hydra:Collection"
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 42
+                    },
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "@id": {
+                            "type": "string",
+                            "example": "/creators/abc123",
+                            "description": "The URL of the creator"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Fred",
+                            "description": "The human name of the creator"
+                          }
+                        },
+                        "required": [
+                          "@id",
+                          "name"
+                        ]
+                      }
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=2"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "hydra:PartialCollectionView"
+                        },
+                        "first": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=1"
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=1"
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=3"
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=10"
+                        }
+                      },
+                      "required": [
+                        "@id",
+                        "@type",
+                        "first",
+                        "last"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "totalItems",
+                    "member",
+                    "view"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/creators/{id}": {
+      "get": {
+        "summary": "Details of a single creator",
+        "tags": [
+          "Creators"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "example": "abc123",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "$ref": "#/components/schemas/jsonld_context"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/creators/abc123"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "Organization"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Bruce Wayne"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Lorem ipsum dolor sit amet...",
+                      "description": "A longer description for the creator. Can contain Markdown syntax."
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "name"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/models/{model_id}/model_files/{id}": {
+      "get": {
+        "summary": "Details of a single file in a model",
+        "tags": [
+          "Files"
+        ],
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "example": "abc123",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "example": "def456",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "$ref": "#/components/schemas/jsonld_context"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/models/abc123/model_files/def456"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "3DModel"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Benchy"
+                    },
+                    "isPartOf": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/models/abc123"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "3DModel"
+                        }
+                      }
+                    },
+                    "encodingFormat": {
+                      "type": "string",
+                      "example": "model/stl"
+                    },
+                    "contentUrl": {
+                      "type": "string",
+                      "example": "https://example.com/models/abc123/model_files/def456.stl"
+                    },
+                    "contentSize": {
+                      "type": "integer",
+                      "example": 12345
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Lorem ipsum dolor sit amet...",
+                      "description": "A longer description for the file. Can contain Markdown syntax."
+                    },
+                    "spdx:license": {
+                      "$ref": "#/components/schemas/spdxLicense"
+                    },
+                    "creator": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/creators/abc123"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "Organization"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "name",
+                    "isPartOf",
+                    "encodingFormat"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/models": {
+      "get": {
+        "summary": "A list of models",
+        "tags": [
+          "Models"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "example": 1,
+            "description": "Specify which page of results to retrieve.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "enum": [
+              "name",
+              "recent"
+            ],
+            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
+            "example": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creator",
+            "in": "query",
+            "description": "The ID of a creator to filter the model list",
+            "example": "abc123",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "collection",
+            "in": "query",
+            "description": "The ID of a collection to filter the model list",
+            "example": "abc123",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "$ref": "#/components/schemas/jsonld_context"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/models"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "hydra:Collection"
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 42
+                    },
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "@id": {
+                            "type": "string",
+                            "example": "/models/abc123",
+                            "description": "The URL of the model"
+                          },
+                          "@type": {
+                            "type": "string",
+                            "example": "3DModel"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Model",
+                            "description": "The human name of the model"
+                          }
+                        },
+                        "required": [
+                          "@id",
+                          "name"
+                        ]
+                      }
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=2"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "hydra:PartialCollectionView"
+                        },
+                        "first": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=1"
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=1"
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=3"
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=10"
+                        }
+                      },
+                      "required": [
+                        "@id",
+                        "@type",
+                        "first",
+                        "last"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "totalItems",
+                    "member",
+                    "view"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/models/{id}": {
+      "get": {
+        "summary": "Details of a single model",
+        "tags": [
+          "Models"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "example": "abc123",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "$ref": "#/components/schemas/jsonld_context"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/models/abc123"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "3DModel"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "3D Benchy"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Lorem ipsum dolor sit amet...",
+                      "description": "A longer description for the model. Can contain Markdown syntax."
+                    },
+                    "hasPart": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "@id": {
+                            "type": "string",
+                            "example": "https://example.com/models/abc123/model_files/def456"
+                          },
+                          "@type": {
+                            "type": "string",
+                            "example": "3DModel"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Benchy"
+                          },
+                          "encodingFormat": {
+                            "type": "string",
+                            "example": "model/stl"
+                          }
+                        }
+                      },
+                      "required": [
+                        "@id",
+                        "@type",
+                        "name",
+                        "encodingFormat"
+                      ]
+                    },
+                    "spdx:license": {
+                      "$ref": "#/components/schemas/spdxLicense"
+                    },
+                    "isPartOf": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/collections/abc123"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "Collection"
+                        }
+                      }
+                    },
+                    "creator": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/creators/abc123"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "Organization"
+                        }
+                      }
+                    },
+                    "keywords": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "tag"
+                      }
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "name",
+                    "hasPart"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/nodeinfo": {
+      "get": {
+        "summary": "Discovery URL for NodeInfo protocol",
+        "tags": [
+          "NodeInfo"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json; profile=\"http://nodeinfo.diaspora.software/ns/schema/2.0#\"": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "links": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "rel": {
+                            "type": "string",
+                            "example": "https://nodeinfo.diaspora.software/ns/schema/2.0"
+                          },
+                          "href": {
+                            "type": "string",
+                            "example": "/nodeinfo/2.0",
+                            "description": "The URL to the full NodeInfo document"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "links"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nodeinfo/2.0": {
+      "get": {
+        "summary": "Get server metadata in NodeInfo 2.0 format",
+        "tags": [
+          "NodeInfo"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json; profile=\"http://nodeinfo.diaspora.software/ns/schema/2.0#\"": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "version": {
+                      "type": "string",
+                      "example": "2.0"
+                    },
+                    "software": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "Manyfold"
+                        },
+                        "version": {
+                          "type": "string",
+                          "example": "v0.103.0"
+                        }
+                      }
+                    },
+                    "protocols": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "activitypub"
+                      }
+                    },
+                    "services": {
+                      "type": "object",
+                      "properties": {
+                        "inbound": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": []
+                        },
+                        "outbound": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": []
+                        }
+                      }
+                    },
+                    "openRegistrations": {
+                      "type": "boolean"
+                    },
+                    "usage": {
+                      "type": "object",
+                      "properties": {
+                        "users": {
+                          "type": "object",
+                          "properties": {
+                            "total": {
+                              "type": "integer"
+                            },
+                            "activeMonth": {
+                              "type": "integer"
+                            },
+                            "activeHalfyear": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "version",
+                    "software",
+                    "protocols",
+                    "openRegistrations"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/oembed": {
+      "get": {
+        "summary": "generic oEmbed API endpoint",
+        "tags": [
+          "oEmbed"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxwidth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxheight",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "303": {
+            "description": "Redirect to oembed version of the provided URL"
+          }
+        }
+      }
+    },
+    "/collections/{id}.oembed": {
+      "get": {
+        "summary": "oEmbed response for Collections",
+        "tags": [
+          "Collections"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxwidth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxheight",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json+oembed": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/oembed_rich"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_photo"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_video"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_link"
+                    }
+                  ],
+                  "discriminator": {
+                    "propertyName": "type",
+                    "mapping": {
+                      "rich": "#/components/schemas/oembed_rich",
+                      "photo": "#/components/schemas/oembed_photo",
+                      "video": "#/components/schemas/oembed_video",
+                      "link": "#/components/schemas/oembed_link"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found or Unauthorized"
+          }
+        }
+      }
+    },
+    "/creators/{id}.oembed": {
+      "get": {
+        "summary": "oEmbed response for Creators",
+        "tags": [
+          "Creators"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxwidth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxheight",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json+oembed": {
+                "schema": {
+                  "$ref": "#/components/schemas/oembed_link"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found or Unauthorized"
+          }
+        }
+      }
+    },
+    "/models/{id}.oembed": {
+      "get": {
+        "summary": "oEmbed response for Models",
+        "tags": [
+          "Models"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxwidth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxheight",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json+oembed": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/oembed_rich"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_photo"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_video"
+                    },
+                    {
+                      "$ref": "#/components/schemas/oembed_link"
+                    }
+                  ],
+                  "discriminator": {
+                    "propertyName": "type",
+                    "mapping": {
+                      "rich": "#/components/schemas/oembed_rich",
+                      "photo": "#/components/schemas/oembed_photo",
+                      "video": "#/components/schemas/oembed_video",
+                      "link": "#/components/schemas/oembed_link"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found, or Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://try.manyfold.app"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "client_credentials": {
+        "type": "oauth2",
+        "description": "Authentication with the OAuth2 Client Credentials grant flow. You can generate a client app and a long-lived bearer token at /oauth/applications.",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "/oauth/token",
+            "scopes": {
+              "read": "read any data accessible to the OAuth application's owner"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "jsonld_context": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "oembed_link": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "1.0"
+          },
+          "type": {
+            "type": "string",
+            "example": "link"
+          },
+          "title": {
+            "type": "string",
+            "example": "Model Title"
+          },
+          "author_name": {
+            "type": "string",
+            "example": "Creator Name"
+          },
+          "author_url": {
+            "type": "string",
+            "example": "https://example.com/creators/bob"
+          },
+          "provider_name": {
+            "type": "string",
+            "example": "Manyfold"
+          },
+          "provider_url": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "cache_age": {
+            "type": "integer",
+            "example": 86400
+          }
+        },
+        "required": [
+          "version",
+          "type"
+        ]
+      },
+      "oembed_photo": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "1.0"
+          },
+          "type": {
+            "type": "string",
+            "example": "photo"
+          },
+          "url": {
+            "type": "string",
+            "example": "https://example.com/models/123/model_files/456.png"
+          },
+          "width": {
+            "type": "integer",
+            "example": "256"
+          },
+          "height": {
+            "type": "integer",
+            "example": "256"
+          },
+          "title": {
+            "type": "string",
+            "example": "Model Title"
+          },
+          "author_name": {
+            "type": "string",
+            "example": "Creator Name"
+          },
+          "author_url": {
+            "type": "string",
+            "example": "https://example.com/creators/bob"
+          },
+          "provider_name": {
+            "type": "string",
+            "example": "Manyfold"
+          },
+          "provider_url": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "cache_age": {
+            "type": "integer",
+            "example": 86400
+          }
+        },
+        "required": [
+          "version",
+          "type",
+          "url",
+          "width",
+          "height"
+        ]
+      },
+      "oembed_video": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "1.0"
+          },
+          "type": {
+            "type": "string",
+            "example": "video"
+          },
+          "html": {
+            "type": "string",
+            "example": "<iframe>...</iframe>"
+          },
+          "width": {
+            "type": "integer",
+            "example": "256"
+          },
+          "height": {
+            "type": "integer",
+            "example": "256"
+          },
+          "title": {
+            "type": "string",
+            "example": "Model Title"
+          },
+          "author_name": {
+            "type": "string",
+            "example": "Creator Name"
+          },
+          "author_url": {
+            "type": "string",
+            "example": "https://example.com/creators/bob"
+          },
+          "provider_name": {
+            "type": "string",
+            "example": "Manyfold"
+          },
+          "provider_url": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "cache_age": {
+            "type": "integer",
+            "example": 86400
+          }
+        },
+        "required": [
+          "version",
+          "type",
+          "html",
+          "width",
+          "height"
+        ]
+      },
+      "oembed_rich": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "1.0"
+          },
+          "type": {
+            "type": "string",
+            "example": "rich"
+          },
+          "html": {
+            "type": "string",
+            "example": "<iframe>...</iframe>"
+          },
+          "width": {
+            "type": "integer",
+            "example": "256"
+          },
+          "height": {
+            "type": "integer",
+            "example": "256"
+          },
+          "title": {
+            "type": "string",
+            "example": "Model Title"
+          },
+          "author_name": {
+            "type": "string",
+            "example": "Creator Name"
+          },
+          "author_url": {
+            "type": "string",
+            "example": "https://example.com/creators/bob"
+          },
+          "provider_name": {
+            "type": "string",
+            "example": "Manyfold"
+          },
+          "provider_url": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "cache_age": {
+            "type": "integer",
+            "example": 86400
+          }
+        },
+        "required": [
+          "version",
+          "type",
+          "html",
+          "width",
+          "height"
+        ]
+      },
+      "spdxLicense": {
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "example": "spdx:License"
+          },
+          "@id": {
+            "type": "string",
+            "example": "http://spdx.org/licenses/MIT"
+          },
+          "licenseId": {
+            "type": "string",
+            "example": "MIT"
+          }
+        },
+        "required": [
+          "@type",
+          "licenseId"
+        ]
+      }
+    }
+  }
+}

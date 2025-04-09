@@ -4,9 +4,9 @@ fr:
     bulk_edit:
       description: 'Sélectionnez les fichiers à modifier :'
       form_subtitle: 'Sélectionnez les modifications à apporter :'
-      pattern:
-      rename:
-      replacement:
+      pattern: Trouver
+      rename: Renommer les fichiers
+      replacement: Remplacer par
       select: Sélectionner le fichier '%{name}'
       select_all: Sélectionner tous les fichiers
       split: Éclater les fichiers sélectionnés en un nouveau modèle
@@ -20,6 +20,13 @@ fr:
     destroy:
       confirm: Êtes-vous sûr de vouloir supprimer ce fichier de votre système de fichiers ?
       success: Fichier supprimé !
+    download:
+      bambu:
+      cura:
+      elegoo:
+      orca:
+      prusa:
+      superslicer:
     form:
       notes:
         help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
@@ -28,6 +35,8 @@ fr:
     show:
       convert: Convertir en 3MF
       details_heading: Détails
+      download:
+        menu_header:
       notes_heading: Notes
     update:
       failure: Une erreur s'est produite et les détails du fichier n'ont pas pu être sauvegardés.

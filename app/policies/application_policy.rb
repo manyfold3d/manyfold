@@ -61,7 +61,7 @@ class ApplicationPolicy
     end
 
     def resolve
-      return scope.all if user&.is_moderator? || !scope.respond_to?(:granted_to)
+      return scope if user&.is_moderator? || !scope.respond_to?(:granted_to)
 
       result = scope.granted_to(["view", "edit", "own"], [user, nil])
       result = result.or(scope.granted_to(["view", "edit", "own"], user.roles)) if user

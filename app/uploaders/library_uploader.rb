@@ -6,6 +6,7 @@ class LibraryUploader < Shrine
   plugin :activerecord
   plugin :refresh_metadata
   plugin :metadata_attributes, size: "size"
+  plugin :keep_files
   plugin :determine_mime_type
   plugin :rack_response
   plugin :dynamic_storage
@@ -16,7 +17,9 @@ class LibraryUploader < Shrine
   }
 
   storage(/library_(\d+)/) do |m|
-    Library.find(m[1]).storage
+    Library.find(m[1]).storage # rubocop:disable Pundit/UsePolicyScope
+  rescue ActiveRecord::RecordNotFound
+    nil
   end
 
   class Attacher

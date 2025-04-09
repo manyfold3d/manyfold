@@ -10,6 +10,7 @@ nl:
       select_all: Selecteer alle modellen
       submit: Geselecteerde Modellen Bijwerken
       title: Modellen Bulksgewijs Bewerken
+      update_all:
     bulk_fields:
       add_tags: Tags toevoegen
     bulk_update:
@@ -21,9 +22,12 @@ nl:
       success: Model verwijderd!
     exceeds_max_size: 'Geselecteerd bestand overschrijdt maximale grootte: %{max_size} MiB.'
     file:
+      delete:
+      edit:
       open_button:
         label: Bekijk details voor %{name}
         text: Openen
+      presupported:
       set_as_preview: Als voorbeeld instellen
     form:
       notes:

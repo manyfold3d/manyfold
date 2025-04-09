@@ -9,11 +9,16 @@ fr:
         text: Modifier
       models_button:
         label: Afficher les modèles par %{name}
+        remote_label: Afficher les modèles locaux de %{name}
+      visit_button:
+        label: Visiter
     destroy:
       success: Créateur supprimé !
     form:
       notes:
         help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      slug:
+        help:
     general:
       edit: Modifier le créateur
       new: Nouveau créateur

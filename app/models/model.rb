@@ -1,7 +1,6 @@
 class Model < ApplicationRecord
   extend Memoist
   include PathBuilder
-  include PathParser
   include Followable
   include CaberObject
   include Linkable
@@ -40,13 +39,15 @@ class Model < ApplicationRecord
   after_create :post_creation_activity
   before_update :move_files, if: :need_to_move_files?
   after_update :post_update_activity
-  after_commit :check_integrity, on: :update
+  after_save :write_datapackage_later
+  after_commit :check_for_problems_later, on: :update
 
   validates :name, presence: true
   validates :path, presence: true, uniqueness: {scope: :library}
   validate :check_for_submodels, on: :update, if: :need_to_move_files?
   validate :destination_is_vacant, on: :update, if: :need_to_move_files?
   validates :license, spdx: true, allow_nil: true
+  validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
 
   def parents
     Pathname.new(path).parent.descend.filter_map do |path|
@@ -60,6 +61,8 @@ class Model < ApplicationRecord
 
     # Work out path to this model from the target
     relative_path = Pathname.new(path).relative_path_from(Pathname.new(target.path))
+    # Remove datapackage
+    model_files.find_by(filename: "datapackage.json")&.destroy
     # Move files
     model_files.each do |f|
       new_filename = File.join(relative_path, f.filename)
@@ -73,7 +76,8 @@ class Model < ApplicationRecord
         )
       end
     end
-    Scan::CheckModelIntegrityJob.set(wait: 5.seconds).perform_later(target.id)
+    target.check_for_problems_later
+    # Destroy this model
     reload
     destroy
   end
@@ -83,7 +87,7 @@ class Model < ApplicationRecord
     # This will go away later when we do proper file relationships rather than linking the tables directly
     model_files.update_all(presupported_version_id: nil) # rubocop:disable Rails/SkipsModelValidations
     # Trigger deletion for each file separately, to make sure cleanup happens
-    model_files.each { |f| f.destroy }
+    model_files.each { |f| f.delete_from_disk_and_destroy }
     # Remove tags first - sometimes this causes problems if we don't do it beforehand
     update!(tags: [])
     # Delete directory corresponding to model
@@ -115,10 +119,6 @@ class Model < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     ["base_tags", "collection", "creator", "library", "links", "model_files", "preview_file", "problems", "tag_taggings", "taggings", "tags"]
-  end
-
-  def problems_including_files
-    Problem.where(problematic: model_files + [self])
   end
 
   def new?
@@ -179,11 +179,35 @@ class Model < ApplicationRecord
   end
 
   def size_on_disk
-    model_files.pluck(:size).sum
+    model_files.pluck(:size).compact.sum
   end
 
   def to_activitypub_object
     ActivityPub::ModelSerializer.new(self).serialize
+  end
+
+  def add_new_files_later(include_all_subfolders: false, delay: 0.seconds)
+    Scan::Model::AddNewFilesJob.set(wait: delay).perform_later(id, include_all_subfolders: include_all_subfolders)
+  end
+
+  def check_later(scan: true, delay: 0.seconds)
+    Scan::CheckModelJob.set(wait: delay).perform_later(id, scan: scan)
+  end
+
+  def check_for_problems_later(delay: 5.seconds)
+    Scan::Model::CheckForProblemsJob.set(wait: delay).perform_later(id)
+  end
+
+  def organize_later(delay: 5.seconds)
+    OrganizeModelJob.set(wait: delay).perform_later(id)
+  end
+
+  def write_datapackage_later(delay: 1.second)
+    UpdateDatapackageJob.set(wait: delay).perform_later(id)
+  end
+
+  def parse_metadata_later(delay: 0.seconds)
+    Scan::Model::ParseMetadataJob.set(wait: delay).perform_later(id)
   end
 
   private
@@ -232,10 +256,6 @@ class Model < ApplicationRecord
     model_files.each(&:reattach!)
     # Remove the old folder if it's still there
     previous_library.storage.delete_prefixed(previous_path)
-  end
-
-  def check_integrity
-    Scan::CheckModelIntegrityJob.set(wait: 5.seconds).perform_later(id)
   end
 
   def post_creation_activity

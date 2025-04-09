@@ -1,0 +1,30 @@
+$color-mode-type: media-query;
+$table-bg-scale: -90%;
+
+@import 'bootstrap/scss/bootstrap';
+
+$bootstrap-icons-font-dir: "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/fonts";
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+$ra-font-path: "https://cdn.jsdelivr.net/npm/@infinizhen/rpg-awesome-continued@1.0.6/fonts";
+@import '@infinizhen/rpg-awesome-continued/scss/rpg-awesome-continued';
+
+@import 'src/layout';
+@import 'src/libraries';
+@import 'src/links';
+@import 'src/models';
+@import 'src/model_files';
+
+@import '@selectize/selectize/dist/css/selectize.bootstrap5';
+
+@import '@uppy/core/dist/style.min';
+@import '@uppy/dashboard/dist/style.min';
+
+.selectize-control {
+	padding: 1px;
+}
+
+p.alert:empty,
+p.notice:empty {
+	display: none;
+}

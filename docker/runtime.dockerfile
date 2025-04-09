@@ -43,6 +43,8 @@ ENV RACK_ENV=production
 ENV RAILS_ENV=production
 ENV NODE_ENV=production
 ENV RAILS_SERVE_STATIC_FILES=true
+ENV AWS_RESPONSE_CHECKSUM_VALIDATION=when_required
+ENV AWS_REQUEST_CHECKSUM_CALCULATION=when_required
 # PUID and PGID env vars - these control what user the app is run as inside
 # the entrypoint script. Default to root for backwards compatibility with existing
 # installations, but the admin will be warned if these aren't overridden with something

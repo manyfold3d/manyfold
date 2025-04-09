@@ -3,7 +3,7 @@
     <div class="card-body">
       <div class="card-title"><%= t(".name") %></div>
       <h6 class="card-subtitle mb-2 text-muted"><%= t(".caption") %></h6>
-      <%= link_to "#{policy_scope(Model).where(creator: nil).count} #{Model.model_name.human count: policy_scope(Model).where(creator: nil).count}", models_path(creator: ""), {class: "btn btn-primary"} %>
+      <%= link_to "#{@unassigned_count} #{Model.model_name.human count: @unassigned_count}", models_path(creator: ""), {class: "btn btn-primary"} %>
     </div>
   </div>
 </div>

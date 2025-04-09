@@ -5,13 +5,9 @@ RSpec.describe ActivityPub::ModelSerializer do
     subject(:serializer) { described_class.new(object) }
 
     let(:ap) { serializer.serialize }
-    let(:object) {
-      c = create(:model, :with_tags)
-      c.grant_permission_to "view", nil
-      c
-    }
+    let(:object) { create(:model, :with_tags, :public) }
 
-    it_behaves_like "GenericSerializer"
+    it_behaves_like "GenericActivityPubSerializer"
 
     it "includes concrete type" do
       expect(ap[:"f3di:concreteType"]).to eq "3DModel"
@@ -24,8 +20,8 @@ RSpec.describe ActivityPub::ModelSerializer do
     it "has valid tag structure" do
       expect(ap[:tag].first).to eq({
         type: "Hashtag",
-        name: "#Tag0",
-        href: "http://localhost:3214/models?tag=tag_0"
+        name: "Tag #0",
+        href: "http://localhost:3214/models?tag=Tag+%230"
       })
     end
   end

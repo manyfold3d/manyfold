@@ -11,6 +11,17 @@ en:
         caption: Tagline
         name: Name
         notes: Description
+        slug: Handle
+      doorkeeper/application:
+        access_token: Access Token
+        confidential: Confidential
+        created_at: Created
+        name: Name
+        owner: Owner
+        redirect_uri: Redirect URI
+        scopes: Scopes
+        secret: Client Secret
+        uid: Client ID
       federails/moderation/domain_block:
         created_at: Created at
         domain: Domain
@@ -21,6 +32,8 @@ en:
         object: Object
       library:
         caption: Caption
+        create_path_if_not_on_disk: Auto-create folder
+        default: Default
         icon: Icon
         name: Name
         notes: Notes
@@ -235,16 +248,16 @@ en:
       title: Filters
       unknown: Unknown
     footer:
+      about: About this instance
+      api: Explore our API
       by_html: Designed and built by <a href="https://floppy.org.uk" target="_blank">James</a> with help from <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">our contributors</a>.
-      chat: Chat
-      code: Code
-      community_heading: Community
-      development_heading: Development
-      issues: Issues
-      open_source_html: Open Source under the <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT license</a>.
-      social: Social
-      sponsor: Sponsor
-      stats_heading: Stats
+      community: Join the community
+      instance_heading: Instance Details
+      issues: Report a problem
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> under the <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT license</a>.
+      powered_by_html: Powered by <a href="https://manyfold.app">%{name}</a>
+      sponsor: Sponsor development
+      support: Support this instance
       version: Version
     link_fields:
       url:
@@ -280,6 +293,35 @@ en:
     tags_card:
       skip_tags: Skip tag list
     title: Manyfold
+  doorkeeper_applications:
+    create:
+      failure: An error occurred, and the application could not be created.
+      success: Application created successfully.
+    destroy:
+      success: Application deleted successfully.
+    edit:
+      title: Edit application
+    form:
+      confidential:
+        help: A confidential application can hold secrets securely (e.g. a web server backend, or machine-to-machine script).
+      redirect_uri:
+        help: Use "urn:ietf:wg:oauth:2.0:oob" if your application does not need a redirect URI (e.g. machine-to-machine apps).
+      scopes:
+        help: Currently only "read" scope is available. More are coming soon.
+      submit: Save application
+    index:
+      description: OAuth applications allow you to access Manyfold resources from other services via our API.
+      new: New application
+      title: OAuth Applications
+    new:
+      title: New application
+    show:
+      destroy: Delete
+      edit: Edit
+      title: Application details
+    update:
+      failure: An error occurred, and the application could not be saved.
+      success: Application saved successfully.
   errors:
     messages:
       already_confirmed: was already confirmed, please try signing in
@@ -299,13 +341,14 @@ en:
     actor_table:
       actions: Actions
       address: Fediverse Address
-      info: Info
       name: Name
       non_manyfold_account: This is not a Manyfold account; you can follow it, but probably nothing interesting will happen, at least for now.
     follow_remote_actor:
       followed: Followed %{actor} successfully
     index:
-      title: Following
+      followers: Followers
+      following: Following
+      title: Connections
     new:
       help: You can follow public creators, collections or models on another Manyfold server, in fact any public account in the Fediverse! Just enter the account name in the search box!
       no_results: Sorry, couldn't find anything for "%{query}". Is it a valid ActivityPub account or URL?
@@ -327,21 +370,28 @@ en:
     download: Download
     edit: Edit
     expand: Expand
+    followers:
+      few: "%{count} Followers"
+      many: "%{count} Followers"
+      one: "%{count} Follower"
+      other: "%{count} Followers"
+      two: "%{count} Followers"
+      zero: "%{count} Followers"
     menu: Menu
     new: New
     report: Report %{type}
     save: Save
     view: View
   home:
+    activity:
+      created: added %{time} ago
+      updated: updated %{time} ago
     index:
-      create_actor: added by %{name} %{time} ago
-      how_long_ago: "%{time} ago"
       no_activities: There are no activities to display for now.
       recent_activity: Recent Activity
       search:
         placeholder: What are you looking for?
         submit: Search
-      update_actor: updated by %{name} %{time} ago
   jobs:
     activity:
       creator_added_model:
@@ -391,6 +441,7 @@ en:
       actions_heading: Actions
     settings:
       activeadmin: Advanced Administration
+      appearance: Appearance
       libraries: Libraries
       organization: Organization
       performance: Performance Dashboard
@@ -417,11 +468,19 @@ en:
       label: Edit model %{name}
       text: Edit
     no_preview: No preview available
+    no_remote_preview: Sorry, previews for models on other instances are not available yet, but will be coming soon!
     open_button:
       label: Open model %{name}
-      remote: Remote
       text: Open
-    remote: Remote
+  moderator_mailer:
+    new_approval:
+      greeting: Hi!
+      message: Someone new has signed up for an account, and requires approval. Approve the account at %{link}
+      subject: New account needs approval
+    new_report:
+      greeting: Hi!
+      message: Someone has reported content which needs moderations. Review the report at %{link}
+      subject: New report received
   renderer:
     errors:
       canvas: 'Could not find #webgl canvas!'
@@ -448,7 +507,7 @@ en:
   user_mailer:
     account_approved:
       greeting: Hi!
-      message: Your account has been approved; you may now sign in at %{link}.
+      message: Your account has been approved; you may now sign in at %{link}
       subject: Account approved
     test_email:
       subject: Test email

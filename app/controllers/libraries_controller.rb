@@ -3,7 +3,7 @@ class LibrariesController < ApplicationController
   skip_after_action :verify_policy_scoped, only: [:index]
 
   def index
-    redirect_to new_library_path and return if Library.count === 0
+    redirect_to new_library_path and return if Library.count === 0 # rubocop:disable Pundit/UsePolicyScope
     render layout: "settings"
   end
 
@@ -25,7 +25,8 @@ class LibrariesController < ApplicationController
     @library = Library.create(library_params)
     @library.tag_regex = params[:tag_regex]
     if @library.valid?
-      Scan::DetectFilesystemChangesJob.perform_later(@library.id)
+      @library.detect_filesystem_changes_later
+      @library.make_default if SiteSettings.default_library.nil?
       redirect_to @library, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
@@ -38,6 +39,7 @@ class LibrariesController < ApplicationController
     uptags = library_params[:tag_regex]&.reject(&:empty?)
     @library.tag_regex = uptags
     if @library.save
+      @library.make_default if params.dig("library", "default") == "1"
       redirect_to models_path, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
@@ -46,7 +48,7 @@ class LibrariesController < ApplicationController
   end
 
   def scan
-    Scan::DetectFilesystemChangesJob.perform_later(@library.id)
+    @library.detect_filesystem_changes_later
     redirect_back_or_to @library, notice: t(".success")
   end
 
@@ -56,14 +58,19 @@ class LibrariesController < ApplicationController
       Scan::CheckAllJob.perform_later
     else
       Library.find_each do |library|
-        Scan::DetectFilesystemChangesJob.perform_later(library.id)
+        library.detect_filesystem_changes_later
       end
     end
     redirect_back_or_to models_path, notice: t(".success")
   end
 
   def destroy
-    @library.destroy
+    begin
+      @library.destroy
+      Library.first&.make_default if @library.default?
+    rescue Shrine::Error # Not ideal, but file after_commit callbacks explode if the library has gone
+      nil
+    end
     redirect_to settings_libraries_path, notice: t(".success")
   end
 
@@ -71,7 +78,7 @@ class LibrariesController < ApplicationController
 
   def library_params
     params.require(:library).permit(
-      :path, :name, :notes, :caption, :icon, {tag_regex: []}, :storage_service,
+      :path, :create_path_if_not_on_disk, :name, :notes, :caption, :icon, {tag_regex: []}, :storage_service,
       :s3_endpoint, :s3_bucket, :s3_region, :s3_access_key_id, :s3_secret_access_key, :s3_path_style
     )
   end

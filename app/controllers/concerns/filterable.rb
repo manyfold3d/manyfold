@@ -10,7 +10,7 @@ module Filterable
   end
 
   def filtered_models(filters)
-    models = policy_scope(Model).includes(:tags, :creator, :collection)
+    models = policy_scope(Model).all
     models = filter_by_library(models, filters[:library])
     models = filter_by_missing_tag(models, filters[:missingtag], filters[:library])
     models = filter_by_tag(models, filters[:tag])
@@ -20,7 +20,36 @@ module Filterable
     filter_by_search(models, filters[:q])
   end
 
+  def filtered_collections(filters)
+    collections = policy_scope(Collection).includes(:creator)
+    collections = filter_collection_by_collection(collections, filters[:collection])
+    collections = filter_collection_by_creator(collections, filters[:creator])
+    filter_by_search(collections, filters[:q])
+  end
+
   private
+
+  def filter_collection_by_collection(collections, collection)
+    case collection
+    when nil
+      collections
+    when ""
+      collections.where(collection: nil)
+    else
+      collections.where(collection: Collection.find_param(collection))
+    end
+  end
+
+  def filter_collection_by_creator(collections, creator)
+    case creator
+    when nil
+      collections
+    when ""
+      collections.where(creator_id: nil)
+    else
+      collections.where(creator: Creator.find_param(creator))
+    end
+  end
 
   # Filter by library
   def filter_by_library(models, library)
@@ -62,7 +91,8 @@ module Filterable
       models.where("(select count(*) from taggings where taggings.taggable_id=models.id and taggings.context='tags')<1")
     else
       @filter_tags = ActsAsTaggableOn::Tag.named_any(tags)
-      models.tagged_with(tags)
+      # Build query directly rather than using tagged_with, which parses the tag list again using default separators
+      ::ActsAsTaggableOn::Taggable::TaggedWithQuery.build(models, ActsAsTaggableOn::Tag, ActsAsTaggableOn::Tagging, @filter_tags.map(&:name), {})
     end
   end
 

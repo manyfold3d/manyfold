@@ -5,7 +5,8 @@ class FollowsController < ApplicationController
 
   def index
     authorize Federails::Following
-    @followings = policy_scope(Federails::Following).all
+    @followings = current_user&.federails_actor&.follows
+    @followers = current_user&.federails_actor&.followers
   end
 
   # Incoming remote follow
@@ -46,8 +47,6 @@ class FollowsController < ApplicationController
     authorize Federails::Following, :create?
     @actor = Federails::Actor.find_param(params[:id])
     current_user.follow(@actor)
-    # If the remote actor has a known Manyfold type, we can create a real object for it
-    find_or_create_entity(@actor)
     redirect_back_or_to root_url, notice: t(".followed", actor: @actor.at_address)
   end
 
@@ -77,17 +76,5 @@ class FollowsController < ApplicationController
     followable_param = params[:followable_class].parameterize + "_id"
     id = params[followable_param]
     @target = policy_scope(followable).find_param(id)
-  end
-
-  def find_or_create_entity(actor)
-    actor.entity ||
-      case actor.extensions&.dig("f3di:concreteType")
-      when "Creator"
-        ActivityPub::CreatorDeserializer.new(actor).deserialize
-      when "3DModel"
-        ActivityPub::ModelDeserializer.new(actor).deserialize
-      when "Collection"
-        ActivityPub::CollectionDeserializer.new(actor).deserialize
-      end
   end
 end
