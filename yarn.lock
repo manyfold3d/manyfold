@@ -1493,16 +1493,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/dashboard@npm:^4.3.2":
-  version: 4.3.2
-  resolution: "@uppy/dashboard@npm:4.3.2"
+"@uppy/dashboard@npm:^4.3.3":
+  version: 4.3.3
+  resolution: "@uppy/dashboard@npm:4.3.3"
   dependencies:
     "@transloadit/prettier-bytes": ^0.3.4
     "@uppy/informer": ^4.2.1
     "@uppy/provider-views": ^4.4.2
-    "@uppy/status-bar": ^4.1.2
+    "@uppy/status-bar": ^4.1.3
     "@uppy/thumbnail-generator": ^4.1.1
-    "@uppy/utils": ^6.1.2
+    "@uppy/utils": ^6.1.3
     classnames: ^2.2.6
     lodash: ^4.17.21
     memoize-one: ^6.0.0
@@ -1510,8 +1510,8 @@ __metadata:
     preact: ^10.5.13
     shallow-equal: ^3.0.0
   peerDependencies:
-    "@uppy/core": ^4.4.2
-  checksum: e18c2c770390251d93b018d747676170911cdcacc6b7e983d0f2341fb54422eeaa20f1b6c2305e748e273fb2e910928462d2cc7d863701243019c5a1a067ec7e
+    "@uppy/core": ^4.4.4
+  checksum: 45722a710b9a672a5bed6106c8b71cd638d845706bc77f5cc1f40d1f2cf2d60509fe9e9282e8f93def8bdbfd0bf2be04095db5d67d0f04c266f104e511fe1b92
   languageName: node
   linkType: hard
 
@@ -1563,17 +1563,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/status-bar@npm:^4.1.2":
-  version: 4.1.2
-  resolution: "@uppy/status-bar@npm:4.1.2"
+"@uppy/status-bar@npm:^4.1.3":
+  version: 4.1.3
+  resolution: "@uppy/status-bar@npm:4.1.3"
   dependencies:
     "@transloadit/prettier-bytes": ^0.3.4
-    "@uppy/utils": ^6.1.2
+    "@uppy/utils": ^6.1.3
     classnames: ^2.2.6
     preact: ^10.5.13
   peerDependencies:
-    "@uppy/core": ^4.4.2
-  checksum: 3010b437ff76d9c3dd916957597168fbcb2eb51d6b8fe6ae8db6f963222378927df038b773cea8c896d2da43dd5714ee57af50b8abcf0577276781f6134abed3
+    "@uppy/core": ^4.4.4
+  checksum: 8df4226c5fefa0e55a0db47dcb82cca7279cd381a201bb5d650135be0251a0c8e7bf4386ff0bb97b55c7e3419c00adb69b434e0d5b64be015cf00954acff54e8
   languageName: node
   linkType: hard
 
@@ -4417,7 +4417,7 @@ __metadata:
     "@types/webxr": ^0.5.21
     "@typescript-eslint/parser": ^8.29.1
     "@uppy/core": ^4.4.4
-    "@uppy/dashboard": ^4.3.2
+    "@uppy/dashboard": ^4.3.3
     "@uppy/form": ^4.1.1
     "@uppy/locales": ^4.5.2
     "@uppy/tus": ^4.2.2
