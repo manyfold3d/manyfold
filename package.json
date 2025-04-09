@@ -20,7 +20,7 @@
     "@uppy/core": "^4.4.3",
     "@uppy/dashboard": "^4.3.2",
     "@uppy/form": "^4.1.1",
-    "@uppy/locales": "^4.5.1",
+    "@uppy/locales": "^4.5.2",
     "@uppy/tus": "^4.2.2",
     "@zxcvbn-ts/core": "^3.0.4",
     "@zxcvbn-ts/language-common": "^3.0.4",
