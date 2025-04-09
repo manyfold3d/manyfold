@@ -745,21 +745,21 @@
       }
     },
     "/creators/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "example": "abc123",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
       "get": {
         "summary": "Details of a single creator",
         "tags": [
           "Creators"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "example": "abc123",
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "security": [
           {
@@ -804,6 +804,37 @@
                     "@type",
                     "name"
                   ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove a creator",
+        "tags": [
+          "Creators"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "delete"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "type": null
                 }
               }
             }

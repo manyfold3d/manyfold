@@ -3,6 +3,7 @@ class CreatorsController < ApplicationController
   include Permittable
 
   allow_api_access only: [:index, :show], scope: [:read, :public]
+  allow_api_access only: :destroy, scope: :delete
 
   before_action :get_creator, except: [:index, :new, :create]
 
@@ -90,7 +91,10 @@ class CreatorsController < ApplicationController
 
   def destroy
     @creator.destroy
-    redirect_to creators_path, notice: t(".success")
+    respond_to do |format|
+      format.html { redirect_to creators_path, notice: t(".success") }
+      format.manyfold_api_v0 { head :no_content }
+    end
   end
 
   private
