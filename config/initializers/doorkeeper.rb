@@ -17,7 +17,8 @@ Doorkeeper.configure do
   resource_owner_from_credentials { nil }
 
   # Available scopes
-  default_scopes :read
+  default_scopes :public
+  optional_scopes :read, :write, :delete
   enforce_configured_scopes
 
   # Per-user applications

@@ -45,7 +45,10 @@ RSpec.configure do |config|
               clientCredentials: {
                 tokenUrl: "/oauth/token",
                 scopes: {
-                  read: "read any data accessible to the OAuth application's owner"
+                  public: "read public data accessible without logging in",
+                  read: "read data accessible to the OAuth application's owner",
+                  write: "create or change data that the OAuth application's owner has appropriate permissions for",
+                  delete: "remove data that the OAuth application's owner has appropriate permissions for"
                 }
               }
             }
