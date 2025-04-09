@@ -25,6 +25,18 @@
     <td><%= @user.updated_at.to_fs(:long) %></td>
   </tr>
   <tr>
+    <th><%= t("settings.users.quota.current_space_used") %></th>
+    <td><%= @user.current_space_used.to_formatted_s(:human_size, precision: 2) %></td>
+  </tr>
+  <tr>
+    <th><%= t("settings.users.quota.using_site_default") %></th>
+    <td><%= @user.quota_use_site_default? ? "✅" : "❌" %></td>
+  </tr>
+  <tr>
+    <th><%= t("settings.users.quota.title") %></th>
+    <td><%= @user.has_quota? ? @user.quota.to_formatted_s(:human_size, precision: 2) : t("settings.users.quota.unlimited_quota") %></td>
+  </tr>
+  <tr>
     <th><%= User.human_attribute_name(:interface_language) %></th>
     <td><%= @user.interface_language.present? ? I18nData.languages(@user.interface_language)[@user.interface_language.to_s]&.capitalize : t("devise.registrations.general_settings.interface_language.autodetect") %></td>
   </tr>

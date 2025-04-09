@@ -6,6 +6,8 @@ class User < ApplicationRecord
   include CaberSubject
   include PublicIDable
 
+  before_save :set_quota
+
   acts_as_federails_actor(
     username_field: :username,
     name_field: :username,
@@ -61,6 +63,9 @@ class User < ApplicationRecord
     as: :owner,
     dependent: :delete_all,
     inverse_of: :owner
+
+  attribute :quota_use_site_default, :boolean, default: true
+  attribute :quota, :integer, default: 0
 
   def federails_name
     username
@@ -168,7 +173,19 @@ class User < ApplicationRecord
     true
   end
 
+  def has_quota?
+    !(quota == 0)
+  end
+
+  def current_space_used
+    permitted_models.with_permission("own").sum(&:size_on_disk)
+  end
+
   private
+
+  def set_quota
+    self.quota = SiteSettings.default_user_quota if quota_use_site_default
+  end
 
   def has_any_role_of?(*args)
     args.map { |it| has_role? it }.any?
