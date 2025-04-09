@@ -11,6 +11,10 @@ class Upgrade::UpdateActorsJob < ApplicationJob
       Federails::Actor.where(local: true)
         .where.not(server: [PublicUrl.hostname, nil])
         .update_all(local: false) # rubocop:disable Rails/SkipsModelValidations
+      # Fix incorrect entity type fields
+      Federails::Actor.where(entity_id: nil)
+        .where.not(entity_type: nil)
+        .update_all(entity_type: nil) # rubocop:disable Rails/SkipsModelValidations
       # Update remove actor data
       Federails::Maintenance::ActorsUpdater.run
     end
