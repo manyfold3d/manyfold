@@ -41,6 +41,7 @@
         "security": [
           {
             "client_credentials": [
+              "public",
               "read"
             ]
           }
@@ -137,6 +138,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
           }
         }
       }
@@ -161,6 +168,7 @@
         "security": [
           {
             "client_credentials": [
+              "public",
               "read"
             ]
           }
@@ -216,6 +224,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
           }
         }
       }
@@ -255,6 +269,7 @@
         "security": [
           {
             "client_credentials": [
+              "public",
               "read"
             ]
           }
@@ -351,6 +366,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
           }
         }
       }
@@ -375,6 +396,7 @@
         "security": [
           {
             "client_credentials": [
+              "public",
               "read"
             ]
           }
@@ -417,6 +439,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
           }
         }
       }
@@ -450,6 +478,7 @@
         "security": [
           {
             "client_credentials": [
+              "public",
               "read"
             ]
           }
@@ -535,6 +564,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
           }
         }
       }
@@ -593,7 +628,10 @@
         ],
         "security": [
           {
-            "client_credentials": []
+            "client_credentials": [
+              "public",
+              "read"
+            ]
           }
         ],
         "responses": {
@@ -692,6 +730,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
           }
         }
       }
@@ -715,7 +759,10 @@
         ],
         "security": [
           {
-            "client_credentials": []
+            "client_credentials": [
+              "public",
+              "read"
+            ]
           }
         ],
         "responses": {
@@ -823,6 +870,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
           }
         }
       }
@@ -1205,12 +1258,15 @@
     "securitySchemes": {
       "client_credentials": {
         "type": "oauth2",
-        "description": "Authentication with the OAuth2 Client Credentials grant flow. You can generate a client app and a long-lived bearer token at /oauth/applications.",
+        "description": "Authentication with the OAuth2 Client Credentials grant flow. You can generate client app credentials at /oauth/applications.",
         "flows": {
           "clientCredentials": {
             "tokenUrl": "/oauth/token",
             "scopes": {
-              "read": "read any data accessible to the OAuth application's owner"
+              "public": "read public data accessible without logging in",
+              "read": "read data accessible to the OAuth application's owner",
+              "write": "create or change data that the OAuth application's owner has appropriate permissions for",
+              "delete": "remove data that the OAuth application's owner has appropriate permissions for"
             }
           }
         }

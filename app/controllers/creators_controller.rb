@@ -2,6 +2,8 @@ class CreatorsController < ApplicationController
   include ModelListable
   include Permittable
 
+  allow_api_access only: [:index, :show], scope: [:read, :public]
+
   before_action :get_creator, except: [:index, :new, :create]
 
   def index

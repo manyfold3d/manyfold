@@ -2,17 +2,17 @@
 require "swagger_helper"
 
 describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
-  before do
-    create_list(:collection, 10, :public)
-  end
-
   path "/collections" do
+    before do
+      create_list(:collection, 10)
+    end
+
     get "A list of collections" do
       tags "Collections"
       produces "application/ld+json"
       parameter name: :page, in: :query, type: :integer, example: 1, description: "Specify which page of results to retrieve.", required: false
       parameter name: :order, in: :query, type: :string, enum: ["name", "recent"], description: "Specify order of results; either by name or creation time", example: "name", required: false
-      security [client_credentials: ["read"]]
+      security [client_credentials: ["public", "read"]]
 
       response "200", "Success" do
         schema type: :object,
@@ -47,7 +47,17 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
           },
           required: ["@context", "@id", "@type", "totalItems", "member", "view"]
 
-        let(:Authorization) { "Bearer #{create(:oauth_access_token).plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        run_test!
+      end
+
+      response "401", "Unuthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
         run_test!
       end
     end
@@ -58,7 +68,10 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       tags "Collections"
       produces "application/ld+json"
       parameter name: :id, in: :path, type: :string, required: true, example: "abc123"
-      security [client_credentials: ["read"]]
+      security [client_credentials: ["public", "read"]]
+
+      let(:collection) { create(:collection) }
+      let(:id) { collection.to_param }
 
       response "200", "Success" do
         schema type: :object,
@@ -78,8 +91,17 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
           },
           required: ["@context", "@id", "@type", "name"]
 
-        let(:Authorization) { "Bearer #{create(:oauth_access_token).plaintext_token}" } # rubocop:disable RSpec/VariableName
-        let(:id) { Collection.first.to_param }
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        run_test!
+      end
+
+      response "401", "Unuthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
         run_test!
       end
     end
