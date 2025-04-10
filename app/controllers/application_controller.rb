@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   after_action :set_content_security_policy_header, if: -> { request.format.html? }
 
   before_action :authenticate_user!, unless: -> { SiteSettings.multiuser_enabled? || has_signed_id? }
-  before_action -> { doorkeeper_token_authorize! "read" }, if: :is_api_request?
   around_action :switch_locale
   before_action :check_for_first_use
   before_action :show_security_alerts
@@ -42,6 +41,19 @@ class ApplicationController < ActionController::Base
 
   def active_admin_controller?
     is_a?(ActiveAdmin::BaseController)
+  end
+
+  def self.allow_api_access(only:, scope:)
+    before_action only: Array(only), if: -> { request.format.json_ld? } do
+      # Perform general auth and scope check
+      doorkeeper_authorize!(*Array(scope))
+      app_owner = doorkeeper_token&.application&.owner
+      if app_owner&.active_for_authentication?
+        sign_in app_owner, store: false
+      else
+        doorkeeper_render_error
+      end
+    end
   end
 
   private
@@ -101,23 +113,6 @@ class ApplicationController < ActionController::Base
     # Not sure how secure this is; it's used to help with timing attacks on login ID lookups
     # by adding a random 0-2 second delay into the response. There is probably a better way.
     sleep Random.new.rand(2.0)
-  end
-
-  private
-
-  def is_api_request?
-    request.format.json_ld?
-  end
-
-  def doorkeeper_token_authorize!(*scopes)
-    # Perform general auth and scope check
-    doorkeeper_authorize!(*scopes)
-    app_owner = doorkeeper_token&.application&.owner
-    if app_owner&.active_for_authentication?
-      sign_in app_owner, store: false
-    else
-      doorkeeper_render_error
-    end
   end
 
   def user_not_authorized
