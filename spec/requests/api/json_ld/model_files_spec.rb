@@ -15,6 +15,9 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
       parameter name: :id, in: :path, type: :string, required: true, example: "def456"
       security [client_credentials: ["read"]]
 
+      let(:model_id) { Model.first.to_param }
+      let(:id) { ModelFile.first.to_param }
+
       response "200", "Success" do
         schema type: :object,
           properties: {
@@ -41,9 +44,16 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
           },
           required: ["@context", "@id", "@type", "name", "isPartOf", "encodingFormat"]
 
-        let(:Authorization) { "Bearer #{create(:oauth_access_token).plaintext_token}" } # rubocop:disable RSpec/VariableName
-        let(:model_id) { Model.first.to_param }
-        let(:id) { ModelFile.first.to_param }
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        run_test!
+      end
+      response "401", "Unuthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
         run_test!
       end
     end
