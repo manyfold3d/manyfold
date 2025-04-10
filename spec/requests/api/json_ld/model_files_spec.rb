@@ -2,21 +2,19 @@
 require "swagger_helper"
 
 describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
-  before do
-    model = create(:model, :public, creator: create(:creator, :public), collection: create(:collection, :public))
-    create(:model_file, model: model)
-  end
-
   path "/models/{model_id}/model_files/{id}" do
+    let(:model) { create(:model, :public, creator: create(:creator, :public), collection: create(:collection, :public)) }
+    let(:file) { create(:model_file, model: model) }
+
+    let(:model_id) { model.to_param }
+    let(:id) { file.to_param }
+
     get "Details of a single file in a model" do
       tags "Files"
       produces "application/ld+json"
       parameter name: :model_id, in: :path, type: :string, required: true, example: "abc123"
       parameter name: :id, in: :path, type: :string, required: true, example: "def456"
       security [client_credentials: ["read"]]
-
-      let(:model_id) { Model.first.to_param }
-      let(:id) { ModelFile.first.to_param }
 
       response "200", "Success" do
         schema type: :object,

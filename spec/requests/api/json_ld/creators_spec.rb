@@ -2,11 +2,11 @@
 require "swagger_helper"
 
 describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
-  before do
-    create_list(:creator, 10, :public)
-  end
-
   path "/creators" do
+    before do
+      create_list(:creator, 10, :public)
+    end
+
     get "A list of creators" do
       tags "Creators"
       produces "application/ld+json"
@@ -70,7 +70,8 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
       parameter name: :id, in: :path, type: :string, required: true, example: "abc123"
       security [client_credentials: ["read"]]
 
-      let(:id) { create(:creator).to_param }
+      let(:creator) { create(:creator) }
+      let(:id) { creator.to_param }
 
       response "200", "Success" do
         schema type: :object,

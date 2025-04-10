@@ -2,11 +2,11 @@
 require "swagger_helper"
 
 describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
-  before do
-    create_list(:collection, 10, :public)
-  end
-
   path "/collections" do
+    before do
+      create_list(:collection, 10, :public)
+    end
+
     get "A list of collections" do
       tags "Collections"
       produces "application/ld+json"
@@ -70,7 +70,8 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       parameter name: :id, in: :path, type: :string, required: true, example: "abc123"
       security [client_credentials: ["read"]]
 
-      let(:id) { Collection.first.to_param }
+      let(:collection) { create(:collection) }
+      let(:id) { collection.to_param }
 
       response "200", "Success" do
         schema type: :object,
