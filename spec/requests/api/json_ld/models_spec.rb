@@ -4,7 +4,7 @@ require "swagger_helper"
 describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   path "/models" do
     before do
-      create_list(:model, 10, :public, creator: create(:creator, :public), collection: create(:collection, :public))
+      create_list(:model, 10, creator: create(:creator), collection: create(:collection))
     end
 
     get "A list of models" do
@@ -14,7 +14,7 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
       parameter name: :order, in: :query, type: :string, enum: ["name", "recent"], description: "Specify order of results; either by name or creation time", example: "name", required: false
       parameter name: :creator, in: :query, type: :string, description: "The ID of a creator to filter the model list", example: "abc123", required: false
       parameter name: :collection, in: :query, type: :string, description: "The ID of a collection to filter the model list", example: "abc123", required: false
-      security [client_credentials: ["read"]]
+      security [client_credentials: ["public", "read"]]
 
       response "200", "Success" do
         schema type: :object,
@@ -70,7 +70,7 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
       tags "Models"
       produces "application/ld+json"
       parameter name: :id, in: :path, type: :string, required: true, example: "abc123"
-      security [client_credentials: ["read"]]
+      security [client_credentials: ["public", "read"]]
 
       let(:model) { create(:model) }
       let(:id) { model.to_param }

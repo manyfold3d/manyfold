@@ -3,7 +3,7 @@ require "swagger_helper"
 
 describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   path "/models/{model_id}/model_files/{id}" do
-    let(:model) { create(:model, :public, creator: create(:creator, :public), collection: create(:collection, :public)) }
+    let(:model) { create(:model, creator: create(:creator), collection: create(:collection)) }
     let(:file) { create(:model_file, model: model) }
 
     let(:model_id) { model.to_param }
@@ -14,7 +14,7 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
       produces "application/ld+json"
       parameter name: :model_id, in: :path, type: :string, required: true, example: "abc123"
       parameter name: :id, in: :path, type: :string, required: true, example: "def456"
-      security [client_credentials: ["read"]]
+      security [client_credentials: ["public", "read"]]
 
       response "200", "Success" do
         schema type: :object,

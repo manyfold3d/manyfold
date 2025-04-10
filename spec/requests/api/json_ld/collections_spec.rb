@@ -4,7 +4,7 @@ require "swagger_helper"
 describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   path "/collections" do
     before do
-      create_list(:collection, 10, :public)
+      create_list(:collection, 10)
     end
 
     get "A list of collections" do
@@ -12,7 +12,7 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       produces "application/ld+json"
       parameter name: :page, in: :query, type: :integer, example: 1, description: "Specify which page of results to retrieve.", required: false
       parameter name: :order, in: :query, type: :string, enum: ["name", "recent"], description: "Specify order of results; either by name or creation time", example: "name", required: false
-      security [client_credentials: ["read"]]
+      security [client_credentials: ["public", "read"]]
 
       response "200", "Success" do
         schema type: :object,
@@ -68,7 +68,7 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       tags "Collections"
       produces "application/ld+json"
       parameter name: :id, in: :path, type: :string, required: true, example: "abc123"
-      security [client_credentials: ["read"]]
+      security [client_credentials: ["public", "read"]]
 
       let(:collection) { create(:collection) }
       let(:id) { collection.to_param }
