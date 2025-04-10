@@ -4,7 +4,7 @@ class ModelsController < ApplicationController
   include ModelListable
   include Permittable
 
-  allow_api_access only: [:index, :show], scope: :read
+  allow_api_access only: [:index, :show], scope: [:read, :public]
 
   before_action :redirect_search, only: [:index], if: -> { params.key?(:q) }
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]

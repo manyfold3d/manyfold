@@ -47,11 +47,20 @@ class ApplicationController < ActionController::Base
     before_action only: Array(only), if: -> { request.format.json_ld? } do
       # Perform general auth and scope check
       doorkeeper_authorize!(*Array(scope))
-      app_owner = doorkeeper_token&.application&.owner
-      if app_owner&.active_for_authentication?
-        sign_in app_owner, store: false
+      # If scope is :public, we need no resource owner
+      resource_owner = if doorkeeper_token&.scopes == ["public"]
+        nil
       else
-        doorkeeper_render_error
+        # If this is a client credentials flow, the resource owner should be the owner of the application
+        doorkeeper_token&.application&.owner
+      end
+      # Sign in resource owner
+      if resource_owner
+        if resource_owner.active_for_authentication?
+          sign_in resource_owner, store: false
+        else
+          doorkeeper_render_error
+        end
       end
     end
   end
