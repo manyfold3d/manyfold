@@ -89,7 +89,7 @@ class CollectionsController < ApplicationController
         if @collection.valid?
           render json: ManyfoldApi::V0::CollectionSerializer.new(@collection).serialize, status: :created, location: collection_path(@collection)
         else
-          render json: @collection.errors.to_json, status: :bad_request
+          render json: @collection.errors.to_json, status: :unprocessable_entity
         end
       end
     end
@@ -105,7 +105,7 @@ class CollectionsController < ApplicationController
         if @collection.valid?
           render json: ManyfoldApi::V0::CollectionSerializer.new(@collection).serialize
         else
-          render json: @collection.errors.to_json, status: :bad_request
+          render json: @collection.errors.to_json, status: :unprocessable_entity
         end
       end
     end

@@ -84,7 +84,7 @@ class CreatorsController < ApplicationController
         if @creator.valid?
           render json: ManyfoldApi::V0::CreatorSerializer.new(@creator).serialize, status: :created, location: creator_path(@creator)
         else
-          render json: @creator.errors.to_json, status: :bad_request
+          render json: @creator.errors.to_json, status: :unprocessable_entity
         end
       end
     end
@@ -107,7 +107,7 @@ class CreatorsController < ApplicationController
         if @creator.valid?
           render json: ManyfoldApi::V0::CreatorSerializer.new(@creator).serialize
         else
-          render json: @creator.errors.to_json, status: :bad_request
+          render json: @creator.errors.to_json, status: :unprocessable_entity
         end
       end
     end

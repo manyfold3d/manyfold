@@ -103,8 +103,11 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
 
       response "422", "Creation failed due to invalid data" do
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => create(:creator).name} }
 
-        run_test!
+        run_test! do
+          expect(response.parsed_body["name"]).to include("has already been taken")
+        end
       end
 
       response "401", "Unuthorized; the request did not provide valid authentication details" do
@@ -178,8 +181,11 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
 
       response "422", "Creation failed due to invalid data" do
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => create(:creator).name} }
 
-        run_test!
+        run_test! do
+          expect(response.parsed_body["name"]).to include("has already been taken")
+        end
       end
 
       response "401", "Unuthorized; the request did not provide valid authentication details" do
