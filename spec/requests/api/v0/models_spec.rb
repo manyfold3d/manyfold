@@ -3,12 +3,12 @@ require "swagger_helper"
 
 describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   path "/models" do
-    before do
-      create_list(:model, 9, creator: create(:creator), collection: create(:collection))
-      create_list(:model, 3, :public, creator: create(:creator, :public), collection: create(:collection, :public))
-    end
-
     get "A list of models" do
+      before do
+        create_list(:model, 9, creator: create(:creator), collection: create(:collection))
+        create_list(:model, 3, :public, creator: create(:creator, :public), collection: create(:collection, :public))
+      end
+
       tags "Models"
       produces Mime[:manyfold_api_v0].to_s
       parameter name: :page, in: :query, type: :integer, example: 1, description: "Specify which page of results to retrieve.", required: false
