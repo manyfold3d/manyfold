@@ -93,9 +93,10 @@ class CreatorsController < ApplicationController
   end
 
   def update
+    @creator.update(creator_params)
     respond_to do |format|
       format.html do
-        if @creator.update(creator_params)
+        if @creator.valid?
           redirect_to @creator, notice: t(".success")
         else
           # Restore previous slug
