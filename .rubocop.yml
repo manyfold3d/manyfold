@@ -12,6 +12,7 @@ plugins:
 
 inherit_gem:
   standard: config/base.yml
+  rswag-specs: .rubocop_rspec_alias_config.yml
 
 AllCops:
   TargetRubyVersion: 3.4
