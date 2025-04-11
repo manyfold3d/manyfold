@@ -1,4 +1,4 @@
-module JsonLd
+module ManyfoldApi::V0
   class CreatorSerializer < ApplicationSerializer
     def serialize
       creator_ref(@object).merge(

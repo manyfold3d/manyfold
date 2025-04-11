@@ -19,7 +19,7 @@ class ModelsController < ApplicationController
     prepare_model_list
     respond_to do |format|
       format.html { render layout: "card_list_page" }
-      format.json_ld { render json: JsonLd::ModelListSerializer.new(@models).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelListSerializer.new(@models).serialize }
     end
   end
 
@@ -56,7 +56,7 @@ class ModelsController < ApplicationController
         # We will rely on Shrine to clean up the temp file
       end
       format.oembed { render json: OEmbed::ModelSerializer.new(@model, helpers.oembed_params).serialize }
-      format.json_ld { render json: JsonLd::ModelSerializer.new(@model).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelSerializer.new(@model).serialize }
     end
   end
 

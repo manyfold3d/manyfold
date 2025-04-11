@@ -36,7 +36,7 @@ class CreatorsController < ApplicationController
 
     respond_to do |format|
       format.html { render layout: "card_list_page" }
-      format.json_ld { render json: JsonLd::CreatorListSerializer.new(@creators).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CreatorListSerializer.new(@creators).serialize }
     end
   end
 
@@ -49,7 +49,7 @@ class CreatorsController < ApplicationController
         render layout: "card_list_page"
       end
       format.oembed { render json: OEmbed::CreatorSerializer.new(@creator, helpers.oembed_params).serialize }
-      format.json_ld { render json: JsonLd::CreatorSerializer.new(@creator).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CreatorSerializer.new(@creator).serialize }
     end
   end
 

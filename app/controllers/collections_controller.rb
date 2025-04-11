@@ -39,7 +39,7 @@ class CollectionsController < ApplicationController
 
     respond_to do |format|
       format.html { render layout: "card_list_page" }
-      format.json_ld { render json: JsonLd::CreatorListSerializer.new(@collections).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CreatorListSerializer.new(@collections).serialize }
     end
   end
 
@@ -52,7 +52,7 @@ class CollectionsController < ApplicationController
         render layout: "card_list_page"
       end
       format.oembed { render json: OEmbed::CollectionSerializer.new(@collection, helpers.oembed_params).serialize }
-      format.json_ld { render json: JsonLd::CollectionSerializer.new(@collection).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CollectionSerializer.new(@collection).serialize }
     end
   end
 

@@ -1,4 +1,4 @@
-module JsonLd
+module ManyfoldApi::V0
   class ModelListSerializer < ApplicationSerializer
     def serialize
       {
