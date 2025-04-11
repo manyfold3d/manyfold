@@ -41,7 +41,7 @@ class CollectionsController < ApplicationController
 
     respond_to do |format|
       format.html { render layout: "card_list_page" }
-      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CreatorListSerializer.new(@collections).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CollectionListSerializer.new(@collections).serialize }
     end
   end
 
