@@ -232,6 +232,39 @@ RSpec.configure do |config|
               }
             },
             required: ["@context", "@id", "@type", "name", "hasPart"]
+          },
+          model_file_request: {
+            type: :object,
+            properties: {
+              filename: {type: :string, example: "model.stl"},
+              description: {type: :string, example: "Lorem ipsum dolor sit amet..."}
+            }
+          },
+          model_file_response: {
+            type: :object,
+            properties: {
+              "@context": {"$ref" => "#/components/schemas/jsonld_context"},
+              "@id": {type: :string, example: "https://example.com/models/abc123/model_files/def456"},
+              "@type": {type: :string, example: "3DModel"},
+              name: {type: :string, example: "Benchy"},
+              isPartOf: {type: :object, properties: {
+                "@id": {type: :string, example: "https://example.com/models/abc123"},
+                "@type": {type: :string, example: "3DModel"}
+              }},
+              encodingFormat: {type: :string, example: "model/stl"},
+              contentUrl: {type: :string, example: "https://example.com/models/abc123/model_files/def456.stl"},
+              contentSize: {type: :integer, example: 12345},
+              description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the file. Can contain Markdown syntax."},
+              "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"},
+              creator: {
+                type: :object,
+                properties: {
+                  "@id": {type: :string, example: "https://example.com/creators/abc123"},
+                  "@type": {type: :string, example: "Organization"}
+                }
+              }
+            },
+            required: ["@context", "@id", "@type", "name", "isPartOf", "encodingFormat"]
           }
         }
       }
