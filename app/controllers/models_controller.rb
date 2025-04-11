@@ -5,6 +5,7 @@ class ModelsController < ApplicationController
   include Permittable
 
   allow_api_access only: [:index, :show], scope: [:read, :public]
+  allow_api_access only: :update, scope: :write
   allow_api_access only: :destroy, scope: :delete
 
   before_action :redirect_search, only: [:index], if: -> { params.key?(:q) }
@@ -99,11 +100,23 @@ class ModelsController < ApplicationController
   def update
     hash = model_params
     organize = hash.delete(:organize) == "true"
-    if @model.update(hash)
-      @model.organize_later if organize
-      redirect_to @model, notice: t(".success")
-    else
-      redirect_back_or_to edit_model_path(@model), alert: t(".failure")
+    result = @model.update(hash)
+    respond_to do |format|
+      format.html do
+        if result
+          @model.organize_later if organize
+          redirect_to @model, notice: t(".success")
+        else
+          redirect_back_or_to edit_model_path(@model), alert: t(".failure")
+        end
+      end
+      format.manyfold_api_v0 do
+        if result
+          render json: ManyfoldApi::V0::ModelSerializer.new(@model).serialize
+        else
+          render json: @model.errors.to_json, status: :unprocessable_entity
+        end
+      end
     end
   end
 
@@ -212,6 +225,10 @@ class ModelsController < ApplicationController
   end
 
   def model_params
+    if is_api_request?
+      raise ActionController::BadRequest unless params[:json]
+      return ManyfoldApi::V0::ModelDeserializer.new(params[:json]).deserialize
+    end
     params.require(:model).permit(
       :preview_file_id,
       :creator_id,

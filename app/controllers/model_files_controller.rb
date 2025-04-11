@@ -2,6 +2,7 @@ class ModelFilesController < ApplicationController
   include ActionController::Live
 
   allow_api_access only: :show, scope: [:read, :public]
+  allow_api_access only: :update, scope: :write
   allow_api_access only: :destroy, scope: :delete
 
   before_action :get_model
@@ -58,11 +59,23 @@ class ModelFilesController < ApplicationController
   end
 
   def update
-    if @file.update(file_params)
-      current_user.set_list_state(@file, :printed, params[:model_file][:printed] === "1")
-      redirect_to [@model, @file], notice: t(".success")
-    else
-      render :edit, alert: t(".failure")
+    result = @file.update(file_params)
+    respond_to do |format|
+      format.html do
+        if result
+          current_user.set_list_state(@file, :printed, params[:model_file][:printed] === "1")
+          redirect_to [@model, @file], notice: t(".success")
+        else
+          render :edit, alert: t(".failure")
+        end
+      end
+      format.manyfold_api_v0 do
+        if result
+          render json: ManyfoldApi::V0::ModelFileSerializer.new(@file).serialize
+        else
+          render json: @file.errors.to_json, status: :unprocessable_entity
+        end
+      end
     end
   end
 
@@ -132,6 +145,10 @@ class ModelFilesController < ApplicationController
   end
 
   def file_params
+    if is_api_request?
+      raise ActionController::BadRequest unless params[:json]
+      return ManyfoldApi::V0::ModelFileDeserializer.new(params[:json]).deserialize
+    end
     params.require(:model_file).permit([
       :filename,
       :presupported,

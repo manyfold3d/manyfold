@@ -18,34 +18,56 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
       security [client_credentials: ["public", "read"]]
 
       response "200", "Success" do
-        schema type: :object,
-          properties: {
-            "@context": {"$ref" => "#/components/schemas/jsonld_context"},
-            "@id": {type: :string, example: "https://example.com/models/abc123/model_files/def456"},
-            "@type": {type: :string, example: "3DModel"},
-            name: {type: :string, example: "Benchy"},
-            isPartOf: {type: :object, properties: {
-              "@id": {type: :string, example: "https://example.com/models/abc123"},
-              "@type": {type: :string, example: "3DModel"}
-            }},
-            encodingFormat: {type: :string, example: "model/stl"},
-            contentUrl: {type: :string, example: "https://example.com/models/abc123/model_files/def456.stl"},
-            contentSize: {type: :integer, example: 12345},
-            description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the file. Can contain Markdown syntax."},
-            "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"},
-            creator: {
-              type: :object,
-              properties: {
-                "@id": {type: :string, example: "https://example.com/creators/abc123"},
-                "@type": {type: :string, example: "Organization"}
-              }
-            }
-          },
-          required: ["@context", "@id", "@type", "name", "isPartOf", "encodingFormat"]
+        schema({"$ref": "#/components/schemas/model_file_response"})
 
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
         run_test!
+      end
+
+      response "401", "Unuthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
+
+    patch "Update file details" do
+      tags "Files"
+      consumes Mime[:manyfold_api_v0].to_s
+      produces Mime[:manyfold_api_v0].to_s
+      security [client_credentials: ["write"]]
+      parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/model_file_request"}
+
+      response "200", "File updated" do
+        schema({"$ref": "#/components/schemas/model_file_response"})
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"description" => "lorem ipsum etc"} }
+
+        run_test! do
+          expect(response.parsed_body["description"]).to eq "lorem ipsum etc"
+        end
+      end
+
+      response "400", "The request structure was incorrect" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "422", "Update failed due to invalid data" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"filename" => ""} }
+
+        run_test! do
+          expect(response.parsed_body["filename"]).to include("can't be blank")
+        end
       end
 
       response "401", "Unuthorized; the request did not provide valid authentication details" do
