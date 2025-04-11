@@ -4,7 +4,8 @@ require "swagger_helper"
 describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   path "/creators" do
     before do
-      create_list(:creator, 10)
+      create_list(:creator, 9)
+      create_list(:creator, 3, :public)
     end
 
     get "A list of creators" do
@@ -47,9 +48,21 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
           },
           required: ["@context", "@id", "@type", "totalItems", "member", "view"]
 
-        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        context "with public scope" do
+          let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "public").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
-        run_test!
+          run_test! do
+            expect(response.parsed_body["totalItems"]).to eq 3
+          end
+        end
+
+        context "with read scope" do
+          let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+          run_test! do
+            expect(response.parsed_body["totalItems"]).to eq 12
+          end
+        end
       end
 
       response "401", "Unuthorized; the request did not provide valid authentication details" do
