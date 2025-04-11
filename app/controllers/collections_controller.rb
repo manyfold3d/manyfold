@@ -115,6 +115,7 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
+    return ManyfoldApi::V0::CollectionDeserializer.new(request.body).deserialize if is_api_request?
     params.require(:collection).permit(
       :name,
       :creator_id,
