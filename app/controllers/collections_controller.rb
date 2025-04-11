@@ -5,6 +5,7 @@ class CollectionsController < ApplicationController
   include ModelListable
 
   allow_api_access only: [:index, :show], scope: [:read, :public]
+  allow_api_access only: :destroy, scope: :delete
 
   before_action :get_collection, except: [:index, :new, :create]
   before_action :get_creators, except: [:index, :create]
@@ -89,7 +90,10 @@ class CollectionsController < ApplicationController
 
   def destroy
     @collection.destroy
-    redirect_to collections_path, notice: t(".success")
+    respond_to do |format|
+      format.html { redirect_to collections_path, notice: t(".success") }
+      format.manyfold_api_v0 { head :no_content }
+    end
   end
 
   private
