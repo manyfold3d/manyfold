@@ -44,7 +44,8 @@ class ApplicationController < ActionController::Base
   end
 
   def self.allow_api_access(only:, scope:)
-    before_action only: Array(only), if: -> { request.format.manyfold_api_v0? } do
+    skip_before_action :verify_authenticity_token, if: :is_api_request?
+    before_action only: Array(only), if: :is_api_request? do
       # Perform general auth and scope check
       doorkeeper_authorize!(*Array(scope))
       # If scope is :public, we need no resource owner
@@ -66,6 +67,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def is_api_request?
+    request.format.manyfold_api_v0?
+  end
 
   def has_signed_id?
     params[:id] && ApplicationRecord.signed_id_verifier.valid_message?(params[:id])
