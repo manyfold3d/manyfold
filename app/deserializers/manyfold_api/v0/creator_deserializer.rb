@@ -1,0 +1,11 @@
+module ManyfoldApi::V0
+  class CreatorDeserializer < BaseDeserializer
+    def deserialize
+      return unless @object
+      {
+        name: @object["name"],
+        notes: @object["description"]
+      }.compact
+    end
+  end
+end

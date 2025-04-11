@@ -163,6 +163,25 @@ RSpec.configure do |config|
               }
             },
             required: ["@context", "@id", "@type", "name"]
+          },
+          creator_request: {
+            type: :object,
+            properties: {
+              name: {type: :string, example: "Bruce Wayne"},
+              description: {type: :string, example: "Lorem ipsum dolor sit amet..."}
+            },
+            required: ["name"]
+          },
+          creator_response: {
+            type: :object,
+            properties: {
+              "@context": {"$ref" => "#/components/schemas/jsonld_context"},
+              "@id": {type: :string, example: "https://example.com/creators/abc123"},
+              "@type": {type: :string, example: "Organization"},
+              name: {type: :string, example: "Bruce Wayne"},
+              description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the creator. Can contain Markdown syntax."}
+            },
+            required: ["@context", "@id", "@type", "name"]
           }
         }
       }

@@ -3,6 +3,7 @@ class CreatorsController < ApplicationController
   include Permittable
 
   allow_api_access only: [:index, :show], scope: [:read, :public]
+  allow_api_access only: [:create, :update], scope: :write
   allow_api_access only: :destroy, scope: :delete
 
   before_action :get_creator, except: [:index, :new, :create]
@@ -70,23 +71,49 @@ class CreatorsController < ApplicationController
   def create
     authorize Creator
     @creator = Creator.create(creator_params.merge(Creator.caber_owner(current_user)))
-    if session[:return_after_new]
-      redirect_to session[:return_after_new] + "?new_creator=#{@creator.to_param}", notice: t(".success")
-      session[:return_after_new] = nil
-    else
-      redirect_to creators_path, notice: t(".success")
+    respond_to do |format|
+      format.html do
+        if session[:return_after_new]
+          redirect_to session[:return_after_new] + "?new_creator=#{@creator.to_param}", notice: t(".success")
+          session[:return_after_new] = nil
+        else
+          redirect_to creators_path, notice: t(".success")
+        end
+      end
+      format.manyfold_api_v0 do
+        if @creator.valid?
+          render json: ManyfoldApi::V0::CreatorSerializer.new(@creator).serialize, status: :created, location: creator_path(@creator)
+        else
+          render json: @creator.errors.to_json, status: :bad_request
+        end
+      end
     end
+  rescue JSON::ParserError
+    head :bad_request
   end
 
   def update
-    if @creator.update(creator_params)
-      redirect_to @creator, notice: t(".success")
-    else
-      # Restore previous slug
-      @attemped_slug = @creator.slug
-      @creator.slug = @creator.slug_was
-      render "edit", status: :unprocessable_entity
+    respond_to do |format|
+      format.html do
+        if @creator.update(creator_params)
+          redirect_to @creator, notice: t(".success")
+        else
+          # Restore previous slug
+          @attemped_slug = @creator.slug
+          @creator.slug = @creator.slug_was
+          render "edit", status: :unprocessable_entity
+        end
+      end
+      format.manyfold_api_v0 do
+        if @creator.valid?
+          render json: ManyfoldApi::V0::CreatorSerializer.new(@creator).serialize
+        else
+          render json: @creator.errors.to_json, status: :bad_request
+        end
+      end
     end
+  rescue JSON::ParserError
+    head :bad_request
   end
 
   def destroy
@@ -112,6 +139,7 @@ class CreatorsController < ApplicationController
   end
 
   def creator_params
+    return ManyfoldApi::V0::CreatorDeserializer.new(request.body).deserialize if is_api_request?
     params.require(:creator).permit(
       :name,
       :slug,
