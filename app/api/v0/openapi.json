@@ -514,6 +514,53 @@
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
           }
         }
+      },
+      "post": {
+        "summary": "Create a new collection",
+        "tags": [
+          "Collections"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "type": null
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request structure was incorrect"
+          },
+          "422": {
+            "description": "Creation failed due to invalid data"
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.manyfold.v0+json": {
+              "schema": {
+                "$ref": "#/components/schemas/collection_request"
+              }
+            }
+          }
+        }
       }
     },
     "/collections/{id}": {
@@ -1638,6 +1685,22 @@
         "required": [
           "@type",
           "licenseId"
+        ]
+      },
+      "collection_request": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "My Favourites"
+          },
+          "description": {
+            "type": "string",
+            "example": "This is my collection of favourite things"
+          }
+        },
+        "required": [
+          "name"
         ]
       }
     }

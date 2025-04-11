@@ -5,6 +5,7 @@ class CollectionsController < ApplicationController
   include ModelListable
 
   allow_api_access only: [:index, :show], scope: [:read, :public]
+  allow_api_access only: :create, scope: :write
   allow_api_access only: :destroy, scope: :delete
 
   before_action :get_collection, except: [:index, :new, :create]
@@ -75,12 +76,25 @@ class CollectionsController < ApplicationController
   def create
     authorize Collection
     @collection = Collection.create(collection_params.merge(Collection.caber_owner(current_user)))
-    if session[:return_after_new]
-      redirect_to session[:return_after_new] + "?new_collection=#{@collection.to_param}", notice: t(".success")
-      session[:return_after_new] = nil
-    else
-      redirect_to collections_path, notice: t(".success")
+    respond_to do |format|
+      format.html do
+        if session[:return_after_new]
+          redirect_to session[:return_after_new] + "?new_collection=#{@collection.to_param}", notice: t(".success")
+          session[:return_after_new] = nil
+        else
+          redirect_to collections_path, notice: t(".success")
+        end
+      end
+      format.manyfold_api_v0 do
+        if @collection.valid?
+          head :created, location: collection_path(@collection)
+        else
+          render json: @collection.errors.to_json, status: :bad_request
+        end
+      end
     end
+  rescue JSON::ParserError
+    head :bad_request
   end
 
   def update

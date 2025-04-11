@@ -137,6 +137,14 @@ RSpec.configure do |config|
               licenseId: {type: :string, example: "MIT"}
             },
             required: ["@type", "licenseId"]
+          },
+          collection_request: {
+            type: :object,
+            properties: {
+              name: {type: :string, example: "My Favourites"},
+              description: {type: :string, example: "This is my collection of favourite things"}
+            },
+            required: ["name"]
           }
         }
       }
