@@ -3,7 +3,8 @@ FactoryBot.define do
     sequence(:name) { |n| "Model #{n}" }
     library
     sequence(:public_id) { |n| "model_#{n}" }
-    path { Faker::File.dir }
+    path { Faker::File.dir } # rubocop:disable RSpec/MissingExampleGroupArgument, RSpec/EmptyExampleGroup
+
     license { "MIT" }
     caption { Faker::Lorem.sentence }
     notes { Faker::Lorem.paragraph }

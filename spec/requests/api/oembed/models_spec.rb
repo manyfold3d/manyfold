@@ -29,11 +29,13 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
           }
 
         let(:id) { create(:model, :public).to_param }
+
         run_test!
       end
 
       response "404", "Not Found, or Unauthorized" do
         let(:id) { create(:model).to_param }
+
         run_test!
       end
     end
