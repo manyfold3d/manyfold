@@ -88,6 +88,7 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       response "201", "Collection created" do
         schema({"$ref": "#/components/schemas/collection_response"})
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => "My Favourites"} }
 
         run_test! do
           expect(response.parsed_body["name"]).to eq "My Favourites"
@@ -160,6 +161,7 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       response "200", "Collection updated" do
         schema({"$ref": "#/components/schemas/collection_response"})
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => "My Favourites"} }
 
         run_test! do
           expect(response.parsed_body["name"]).to eq "My Favourites"

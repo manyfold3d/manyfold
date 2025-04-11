@@ -88,6 +88,7 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
       response "201", "Creator created" do
         schema({"$ref": "#/components/schemas/creator_response"})
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => "Bruce Wayne"} }
 
         run_test! do
           expect(response.parsed_body["name"]).to eq "Bruce Wayne"
@@ -162,6 +163,7 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
       response "200", "Creator updated" do
         schema({"$ref": "#/components/schemas/creator_response"})
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => "Bruce Wayne"} }
 
         run_test! do
           expect(response.parsed_body["name"]).to eq "Bruce Wayne"
