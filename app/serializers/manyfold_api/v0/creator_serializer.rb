@@ -5,7 +5,7 @@ module ManyfoldApi::V0
         "@context": context,
         name: @object.name,
         description: @object.notes
-      )
+      ).compact
     end
   end
 end
