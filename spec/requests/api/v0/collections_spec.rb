@@ -85,11 +85,13 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       security [client_credentials: ["write"]]
       parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/collection_request"}
 
-      response "201", "Success" do
-        schema type: nil
+      response "201", "Collection created" do
+        schema({"$ref": "#/components/schemas/collection_response"})
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
-        run_test!
+        run_test! do
+          expect(response.parsed_body["name"]).to eq "My Favourites"
+        end
       end
 
       response "400", "The request structure was incorrect" do

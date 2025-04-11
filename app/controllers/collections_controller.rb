@@ -87,7 +87,7 @@ class CollectionsController < ApplicationController
       end
       format.manyfold_api_v0 do
         if @collection.valid?
-          head :created, location: collection_path(@collection)
+          render json: ManyfoldApi::V0::CollectionSerializer.new(@collection).serialize, status: :created, location: collection_path(@collection)
         else
           render json: @collection.errors.to_json, status: :bad_request
         end
