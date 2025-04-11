@@ -3,12 +3,12 @@ require "swagger_helper"
 
 describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   path "/collections" do
-    before do
-      create_list(:collection, 9)
-      create_list(:collection, 3, :public)
-    end
-
     get "A list of collections" do
+      before do
+        create_list(:collection, 9)
+        create_list(:collection, 3, :public)
+      end
+
       tags "Collections"
       produces Mime[:manyfold_api_v0].to_s
       parameter name: :page, in: :query, type: :integer, example: 1, description: "Specify which page of results to retrieve.", required: false
@@ -77,6 +77,51 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
         run_test!
       end
     end
+
+    post "Create a new collection" do
+      tags "Collections"
+      consumes Mime[:manyfold_api_v0].to_s
+      produces Mime[:manyfold_api_v0].to_s
+      security [client_credentials: ["write"]]
+      parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/collection_request"}
+
+      response "201", "Collection created" do
+        schema({"$ref": "#/components/schemas/collection_response"})
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => "My Favourites"} }
+
+        run_test! do
+          expect(response.parsed_body["name"]).to eq "My Favourites"
+        end
+      end
+
+      response "400", "The request structure was incorrect" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "422", "Creation failed due to invalid data" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => create(:collection).name} }
+
+        run_test! do
+          expect(response.parsed_body["name"]).to include("has already been taken")
+        end
+      end
+
+      response "401", "Unuthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
   end
 
   path "/collections/{id}" do
@@ -90,26 +135,55 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       security [client_credentials: ["public", "read"]]
 
       response "200", "Success" do
-        schema type: :object,
-          properties: {
-            "@context": {"$ref" => "#/components/schemas/jsonld_context"},
-            "@id": {type: :string, example: "https://example.com/collections/abc123"},
-            "@type": {type: :string, example: "Collection"},
-            name: {type: :string, example: "Interesting Things"},
-            description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the collection. Can contain Markdown syntax."},
-            creator: {
-              type: :object,
-              properties: {
-                "@id": {type: :string, example: "https://example.com/creators/abc123"},
-                "@type": {type: :string, example: "Organization"}
-              }
-            }
-          },
-          required: ["@context", "@id", "@type", "name"]
-
+        schema({"$ref": "#/components/schemas/collection_response"})
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
         run_test!
+      end
+
+      response "401", "Unuthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
+
+    patch "Update a collection" do
+      tags "Collections"
+      consumes Mime[:manyfold_api_v0].to_s
+      produces Mime[:manyfold_api_v0].to_s
+      security [client_credentials: ["write"]]
+      parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/collection_request"}
+
+      response "200", "Collection updated" do
+        schema({"$ref": "#/components/schemas/collection_response"})
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => "My Favourites"} }
+
+        run_test! do
+          expect(response.parsed_body["name"]).to eq "My Favourites"
+        end
+      end
+
+      response "400", "The request structure was incorrect" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "422", "Creation failed due to invalid data" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => create(:collection).name} }
+
+        run_test! do
+          expect(response.parsed_body["name"]).to include("has already been taken")
+        end
       end
 
       response "401", "Unuthorized; the request did not provide valid authentication details" do

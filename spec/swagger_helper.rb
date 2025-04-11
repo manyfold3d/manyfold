@@ -137,6 +137,51 @@ RSpec.configure do |config|
               licenseId: {type: :string, example: "MIT"}
             },
             required: ["@type", "licenseId"]
+          },
+          collection_request: {
+            type: :object,
+            properties: {
+              name: {type: :string, example: "My Favourites"},
+              description: {type: :string, example: "This is my collection of favourite things"}
+            },
+            required: ["name"]
+          },
+          collection_response: {
+            type: :object,
+            properties: {
+              "@context": {"$ref" => "#/components/schemas/jsonld_context"},
+              "@id": {type: :string, example: "https://example.com/collections/abc123"},
+              "@type": {type: :string, example: "Collection"},
+              name: {type: :string, example: "Interesting Things"},
+              description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the collection. Can contain Markdown syntax."},
+              creator: {
+                type: :object,
+                properties: {
+                  "@id": {type: :string, example: "https://example.com/creators/abc123"},
+                  "@type": {type: :string, example: "Organization"}
+                }
+              }
+            },
+            required: ["@context", "@id", "@type", "name"]
+          },
+          creator_request: {
+            type: :object,
+            properties: {
+              name: {type: :string, example: "Bruce Wayne"},
+              description: {type: :string, example: "Lorem ipsum dolor sit amet..."}
+            },
+            required: ["name"]
+          },
+          creator_response: {
+            type: :object,
+            properties: {
+              "@context": {"$ref" => "#/components/schemas/jsonld_context"},
+              "@id": {type: :string, example: "https://example.com/creators/abc123"},
+              "@type": {type: :string, example: "Organization"},
+              name: {type: :string, example: "Bruce Wayne"},
+              description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the creator. Can contain Markdown syntax."}
+            },
+            required: ["@context", "@id", "@type", "name"]
           }
         }
       }

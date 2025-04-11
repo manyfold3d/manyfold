@@ -3,12 +3,12 @@ require "swagger_helper"
 
 describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   path "/creators" do
-    before do
-      create_list(:creator, 9)
-      create_list(:creator, 3, :public)
-    end
-
     get "A list of creators" do
+      before do
+        create_list(:creator, 9)
+        create_list(:creator, 3, :public)
+      end
+
       tags "Creators"
       produces Mime[:manyfold_api_v0].to_s
       parameter name: :page, in: :query, type: :integer, example: 1, description: "Specify which page of results to retrieve.", required: false
@@ -77,6 +77,51 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
         run_test!
       end
     end
+
+    post "Update a creator" do
+      tags "Creators"
+      consumes Mime[:manyfold_api_v0].to_s
+      produces Mime[:manyfold_api_v0].to_s
+      security [client_credentials: ["write"]]
+      parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/creator_request"}
+
+      response "201", "Creator created" do
+        schema({"$ref": "#/components/schemas/creator_response"})
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => "Bruce Wayne"} }
+
+        run_test! do
+          expect(response.parsed_body["name"]).to eq "Bruce Wayne"
+        end
+      end
+
+      response "400", "The request structure was incorrect" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "422", "Creation failed due to invalid data" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => create(:creator).name} }
+
+        run_test! do
+          expect(response.parsed_body["name"]).to include("has already been taken")
+        end
+      end
+
+      response "401", "Unuthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
   end
 
   path "/creators/{id}" do
@@ -92,18 +137,55 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
       security [client_credentials: ["public", "read"]]
 
       response "200", "Success" do
-        schema type: :object,
-          properties: {
-            "@context": {"$ref" => "#/components/schemas/jsonld_context"},
-            "@id": {type: :string, example: "https://example.com/creators/abc123"},
-            "@type": {type: :string, example: "Organization"},
-            name: {type: :string, example: "Bruce Wayne"},
-            description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the creator. Can contain Markdown syntax."}
-          },
-          required: ["@context", "@id", "@type", "name"]
+        schema({"$ref": "#/components/schemas/creator_response"})
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
         run_test!
+      end
+
+      response "401", "Unuthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
+
+    patch "Update a creator" do
+      tags "Creators"
+      consumes Mime[:manyfold_api_v0].to_s
+      produces Mime[:manyfold_api_v0].to_s
+      security [client_credentials: ["write"]]
+      parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/creator_request"}
+
+      response "200", "Creator updated" do
+        schema({"$ref": "#/components/schemas/creator_response"})
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => "Bruce Wayne"} }
+
+        run_test! do
+          expect(response.parsed_body["name"]).to eq "Bruce Wayne"
+        end
+      end
+
+      response "400", "The request structure was incorrect" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "422", "Creation failed due to invalid data" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => create(:creator).name} }
+
+        run_test! do
+          expect(response.parsed_body["name"]).to include("has already been taken")
+        end
       end
 
       response "401", "Unuthorized; the request did not provide valid authentication details" do
