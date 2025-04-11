@@ -48,16 +48,19 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
           required: ["@context", "@id", "@type", "totalItems", "member", "view"]
 
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
         run_test!
       end
 
       response "401", "Unuthorized; the request did not provide valid authentication details" do
         let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
         run_test!
       end
 
       response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
         run_test!
       end
     end
@@ -85,16 +88,19 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
           required: ["@context", "@id", "@type", "name"]
 
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
         run_test!
       end
 
       response "401", "Unuthorized; the request did not provide valid authentication details" do
         let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
         run_test!
       end
 
       response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
         run_test!
       end
     end

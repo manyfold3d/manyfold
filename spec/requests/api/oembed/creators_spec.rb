@@ -14,11 +14,13 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
         schema "$ref" => "#/components/schemas/oembed_link"
 
         let(:id) { create(:creator, :public).to_param }
+
         run_test!
       end
 
       response "404", "Not Found or Unauthorized" do
         let(:id) { create(:creator).to_param }
+
         run_test!
       end
     end
