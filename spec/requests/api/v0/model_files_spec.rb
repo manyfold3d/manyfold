@@ -11,7 +11,7 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
 
     get "Details of a single file in a model" do
       tags "Files"
-      produces "application/ld+json"
+      produces Mime[:manyfold_api_v0].to_s
       parameter name: :model_id, in: :path, type: :string, required: true, example: "abc123"
       parameter name: :id, in: :path, type: :string, required: true, example: "def456"
       security [client_credentials: ["public", "read"]]

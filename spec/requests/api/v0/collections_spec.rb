@@ -1,15 +1,15 @@
 # spec/requests/blogs_spec.rb
 require "swagger_helper"
 
-describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
-  path "/creators" do
+describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
+  path "/collections" do
     before do
-      create_list(:creator, 10)
+      create_list(:collection, 10)
     end
 
-    get "A list of creators" do
-      tags "Creators"
-      produces "application/ld+json"
+    get "A list of collections" do
+      tags "Collections"
+      produces Mime[:manyfold_api_v0].to_s
       parameter name: :page, in: :query, type: :integer, example: 1, description: "Specify which page of results to retrieve.", required: false
       parameter name: :order, in: :query, type: :string, enum: ["name", "recent"], description: "Specify order of results; either by name or creation time", example: "name", required: false
       security [client_credentials: ["public", "read"]]
@@ -18,7 +18,7 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
         schema type: :object,
           properties: {
             "@context": {"$ref" => "#/components/schemas/jsonld_context"},
-            "@id": {type: :string, example: "https://example.com/creators"},
+            "@id": {type: :string, example: "https://example.com/collections"},
             "@type": {type: :string, example: "hydra:Collection"},
             totalItems: {type: :integer, example: 42},
             member: {
@@ -26,8 +26,8 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
               items: {
                 type: :object,
                 properties: {
-                  "@id": {type: :string, example: "/creators/abc123", description: "The URL of the creator"},
-                  name: {type: :string, example: "Fred", description: "The human name of the creator"}
+                  "@id": {type: :string, example: "/collections/abc123", description: "The URL of the collection"},
+                  name: {type: :string, example: "Printer Parts", description: "The human name of the collection"}
                 },
                 required: ["@id", "name"]
               }
@@ -35,12 +35,12 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
             view: {
               type: :object,
               properties: {
-                "@id": {type: :string, example: "https://example.com/creators?page=2"},
+                "@id": {type: :string, example: "https://example.com/collections?page=2"},
                 "@type": {type: :string, example: "hydra:PartialCollectionView"},
-                first: {type: :string, example: "https://example.com/creators?page=1"},
-                prev: {type: :string, example: "https://example.com/creators?page=1"},
-                next: {type: :string, example: "https://example.com/creators?page=3"},
-                last: {type: :string, example: "https://example.com/creators?page=10"}
+                first: {type: :string, example: "https://example.com/collections?page=1"},
+                prev: {type: :string, example: "https://example.com/collections?page=1"},
+                next: {type: :string, example: "https://example.com/collections?page=3"},
+                last: {type: :string, example: "https://example.com/collections?page=10"}
               },
               required: ["@id", "@type", "first", "last"]
             }
@@ -66,24 +66,31 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
     end
   end
 
-  path "/creators/{id}" do
-    get "Details of a single creator" do
-      tags "Creators"
-      produces "application/ld+json"
+  path "/collections/{id}" do
+    get "Details of a single collection" do
+      tags "Collections"
+      produces Mime[:manyfold_api_v0].to_s
       parameter name: :id, in: :path, type: :string, required: true, example: "abc123"
       security [client_credentials: ["public", "read"]]
 
-      let(:creator) { create(:creator) }
-      let(:id) { creator.to_param }
+      let(:collection) { create(:collection) }
+      let(:id) { collection.to_param }
 
       response "200", "Success" do
         schema type: :object,
           properties: {
             "@context": {"$ref" => "#/components/schemas/jsonld_context"},
-            "@id": {type: :string, example: "https://example.com/creators/abc123"},
-            "@type": {type: :string, example: "Organization"},
-            name: {type: :string, example: "Bruce Wayne"},
-            description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the creator. Can contain Markdown syntax."}
+            "@id": {type: :string, example: "https://example.com/collections/abc123"},
+            "@type": {type: :string, example: "Collection"},
+            name: {type: :string, example: "Interesting Things"},
+            description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the collection. Can contain Markdown syntax."},
+            creator: {
+              type: :object,
+              properties: {
+                "@id": {type: :string, example: "https://example.com/creators/abc123"},
+                "@type": {type: :string, example: "Organization"}
+              }
+            }
           },
           required: ["@context", "@id", "@type", "name"]
 

@@ -1,4 +1,4 @@
-module JsonLd
+module ManyfoldApi::V0
   class CollectionSerializer < ApplicationSerializer
     def serialize
       collection_ref(@object).merge(

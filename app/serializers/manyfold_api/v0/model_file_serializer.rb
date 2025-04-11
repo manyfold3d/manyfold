@@ -1,4 +1,4 @@
-module JsonLd
+module ManyfoldApi::V0
   class ModelFileSerializer < ApplicationSerializer
     def serialize
       file_ref(@object).merge(

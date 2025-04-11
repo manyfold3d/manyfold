@@ -1,16 +1,16 @@
 require "rails_helper"
 
-RSpec.describe JsonLd::ModelListSerializer do
+RSpec.describe ManyfoldApi::V0::CreatorListSerializer do
   context "when generating a JSON-LD representation" do
     subject(:serializer) { described_class.new(object) }
 
     before do
-      create_list(:model, 10)
+      create_list(:creator, 10)
     end
 
     let(:output) { serializer.serialize }
-    let(:object) { Model.all.page(0).per(2) }
-    let(:model) { Model.first }
+    let(:object) { Creator.all.page(0).per(2) }
+    let(:creator) { Creator.first }
 
     it "uses HYDRA JSON-LD context" do
       expect(output[:@context][1]).to include({hydra: "http://www.w3.org/ns/hydra/core#"})
@@ -20,8 +20,8 @@ RSpec.describe JsonLd::ModelListSerializer do
       expect(output[:@type]).to eq "hydra:Collection"
     end
 
-    it "has model list URL in @id" do
-      expect(output[:@id]).to eq "/models"
+    it "has creator list URL in @id" do
+      expect(output[:@id]).to eq "/creators"
     end
 
     it "has total item count" do
@@ -33,7 +33,7 @@ RSpec.describe JsonLd::ModelListSerializer do
     end
 
     it "view object has current page in ID" do
-      expect(output[:view][:@id]).to eq "/models?page=1"
+      expect(output[:view][:@id]).to eq "/creators?page=1"
     end
 
     it "view object has correct type" do
@@ -41,11 +41,11 @@ RSpec.describe JsonLd::ModelListSerializer do
     end
 
     it "view object includes link to first page" do
-      expect(output[:view][:first]).to eq "/models?page=1"
+      expect(output[:view][:first]).to eq "/creators?page=1"
     end
 
     it "view object includes link to next page" do
-      expect(output[:view][:next]).to eq "/models?page=2"
+      expect(output[:view][:next]).to eq "/creators?page=2"
     end
 
     it "view object has no link to previous page if at start" do
@@ -53,19 +53,19 @@ RSpec.describe JsonLd::ModelListSerializer do
     end
 
     it "view object includes link to last page" do
-      expect(output[:view][:last]).to eq "/models?page=5"
+      expect(output[:view][:last]).to eq "/creators?page=5"
     end
 
     it "produces member array" do
       expect(output[:member]).to be_an Array
     end
 
-    it "includes ID for each model" do
-      expect(output[:member][0][:@id]).to eq "/models/#{model.to_param}"
+    it "includes ID for each creator" do
+      expect(output[:member][0][:@id]).to eq "/creators/#{creator.to_param}"
     end
 
-    it "includes name for each model" do
-      expect(output[:member][0][:name]).to eq model.name
+    it "includes name for each creator" do
+      expect(output[:member][0][:name]).to eq creator.name
     end
   end
 end

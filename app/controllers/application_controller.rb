@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   end
 
   def self.allow_api_access(only:, scope:)
-    before_action only: Array(only), if: -> { request.format.json_ld? } do
+    before_action only: Array(only), if: -> { request.format.manyfold_api_v0? } do
       # Perform general auth and scope check
       doorkeeper_authorize!(*Array(scope))
       # If scope is :public, we need no resource owner
