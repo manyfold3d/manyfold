@@ -93,8 +93,6 @@ class CollectionsController < ApplicationController
         end
       end
     end
-  rescue JSON::ParserError
-    head :bad_request
   end
 
   def update
@@ -111,8 +109,6 @@ class CollectionsController < ApplicationController
         end
       end
     end
-  rescue JSON::ParserError
-    head :bad_request
   end
 
   def destroy
@@ -142,7 +138,10 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    return ManyfoldApi::V0::CollectionDeserializer.new(request.body).deserialize if is_api_request?
+    if is_api_request?
+      raise ActionController::BadRequest unless params[:json]
+      return ManyfoldApi::V0::CollectionDeserializer.new(params[:json]).deserialize
+    end
     params.require(:collection).permit(
       :name,
       :creator_id,

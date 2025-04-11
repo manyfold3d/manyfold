@@ -88,8 +88,6 @@ class CreatorsController < ApplicationController
         end
       end
     end
-  rescue JSON::ParserError
-    head :bad_request
   end
 
   def update
@@ -113,8 +111,6 @@ class CreatorsController < ApplicationController
         end
       end
     end
-  rescue JSON::ParserError
-    head :bad_request
   end
 
   def destroy
@@ -140,7 +136,10 @@ class CreatorsController < ApplicationController
   end
 
   def creator_params
-    return ManyfoldApi::V0::CreatorDeserializer.new(request.body).deserialize if is_api_request?
+    if is_api_request?
+      raise ActionController::BadRequest unless params[:json]
+      return ManyfoldApi::V0::CreatorDeserializer.new(params[:json]).deserialize
+    end
     params.require(:creator).permit(
       :name,
       :slug,
