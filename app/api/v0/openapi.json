@@ -517,21 +517,21 @@
       }
     },
     "/collections/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "example": "abc123",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
       "get": {
         "summary": "Details of a single collection",
         "tags": [
           "Collections"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "example": "abc123",
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "security": [
           {
@@ -589,6 +589,37 @@
                     "@type",
                     "name"
                   ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove a collection",
+        "tags": [
+          "Collections"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "delete"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "type": null
                 }
               }
             }
@@ -745,21 +776,21 @@
       }
     },
     "/creators/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "example": "abc123",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
       "get": {
         "summary": "Details of a single creator",
         "tags": [
           "Creators"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "example": "abc123",
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "security": [
           {
@@ -815,33 +846,64 @@
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
           }
         }
+      },
+      "delete": {
+        "summary": "Remove a creator",
+        "tags": [
+          "Creators"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "delete"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "type": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
       }
     },
     "/models/{model_id}/model_files/{id}": {
+      "parameters": [
+        {
+          "name": "model_id",
+          "in": "path",
+          "required": true,
+          "example": "abc123",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "example": "def456",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
       "get": {
         "summary": "Details of a single file in a model",
         "tags": [
           "Files"
-        ],
-        "parameters": [
-          {
-            "name": "model_id",
-            "in": "path",
-            "required": true,
-            "example": "abc123",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "example": "def456",
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "security": [
           {
@@ -929,6 +991,37 @@
                     "isPartOf",
                     "encodingFormat"
                   ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove a single file",
+        "tags": [
+          "Files"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "delete"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "type": null
                 }
               }
             }
@@ -1109,21 +1202,21 @@
       }
     },
     "/models/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "example": "abc123",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
       "get": {
         "summary": "Details of a single model",
         "tags": [
           "Models"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "example": "abc123",
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "security": [
           {
@@ -1235,6 +1328,37 @@
                     "name",
                     "hasPart"
                   ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove an entire model",
+        "tags": [
+          "Models"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "delete"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "type": null
                 }
               }
             }

@@ -80,14 +80,14 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
   end
 
   path "/collections/{id}" do
+    parameter name: :id, in: :path, type: :string, required: true, example: "abc123"
+    let(:collection) { create(:collection) }
+    let(:id) { collection.to_param }
+
     get "Details of a single collection" do
       tags "Collections"
       produces Mime[:manyfold_api_v0].to_s
-      parameter name: :id, in: :path, type: :string, required: true, example: "abc123"
       security [client_credentials: ["public", "read"]]
-
-      let(:collection) { create(:collection) }
-      let(:id) { collection.to_param }
 
       response "200", "Success" do
         schema type: :object,
@@ -108,6 +108,30 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
           required: ["@context", "@id", "@type", "name"]
 
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "401", "Unuthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
+
+    delete "Remove a collection" do
+      tags "Collections"
+      produces Mime[:manyfold_api_v0].to_s
+      security [client_credentials: ["delete"]]
+      response "204", "Success" do
+        schema type: nil
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "delete").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
         run_test!
       end

@@ -5,6 +5,7 @@ class ModelsController < ApplicationController
   include Permittable
 
   allow_api_access only: [:index, :show], scope: [:read, :public]
+  allow_api_access only: :destroy, scope: :delete
 
   before_action :redirect_search, only: [:index], if: -> { params.key?(:q) }
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
@@ -170,11 +171,16 @@ class ModelsController < ApplicationController
 
   def destroy
     @model.delete_from_disk_and_destroy
-    if request.referer && (URI.parse(request.referer).path == model_path(@model))
-      # If we're coming from the model page itself, we can't go back there
-      redirect_to root_path, notice: t(".success")
-    else
-      redirect_back_or_to root_path, notice: t(".success")
+    respond_to do |format|
+      format.html do
+        if request.referer && (URI.parse(request.referer).path == model_path(@model))
+          # If we're coming from the model page itself, we can't go back there
+          redirect_to root_path, notice: t(".success")
+        else
+          redirect_back_or_to root_path, notice: t(".success")
+        end
+      end
+      format.manyfold_api_v0 { head :no_content }
     end
   end
 

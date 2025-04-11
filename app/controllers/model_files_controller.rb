@@ -2,6 +2,7 @@ class ModelFilesController < ApplicationController
   include ActionController::Live
 
   allow_api_access only: :show, scope: [:read, :public]
+  allow_api_access only: :destroy, scope: :delete
 
   before_action :get_model
   before_action :get_file, except: [:create, :bulk_edit, :bulk_update]
@@ -96,11 +97,16 @@ class ModelFilesController < ApplicationController
   def destroy
     authorize @file
     @file.delete_from_disk_and_destroy
-    if request.referer && (URI.parse(request.referer).path == model_model_file_path(@model, @file))
-      # If we're coming from the file page itself, we can't go back there
-      redirect_to model_path(@model), notice: t(".success")
-    else
-      redirect_back_or_to model_path(@model), notice: t(".success")
+    respond_to do |format|
+      format.html do
+        if request.referer && (URI.parse(request.referer).path == model_model_file_path(@model, @file))
+          # If we're coming from the file page itself, we can't go back there
+          redirect_to model_path(@model), notice: t(".success")
+        else
+          redirect_back_or_to model_path(@model), notice: t(".success")
+        end
+      end
+      format.manyfold_api_v0 { head :no_content }
     end
   end
 
