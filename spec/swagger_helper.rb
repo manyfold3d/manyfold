@@ -182,6 +182,56 @@ RSpec.configure do |config|
               description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the creator. Can contain Markdown syntax."}
             },
             required: ["@context", "@id", "@type", "name"]
+          },
+          model_request: {
+            type: :object,
+            properties: {
+              name: {type: :string, example: "Batmobile"},
+              description: {type: :string, example: "Lorem ipsum dolor sit amet..."}
+            }
+          },
+          model_response: {
+            type: :object,
+            properties: {
+              "@context": {"$ref" => "#/components/schemas/jsonld_context"},
+              "@id": {type: :string, example: "https://example.com/models/abc123"},
+              "@type": {type: :string, example: "3DModel"},
+              name: {type: :string, example: "3D Benchy"},
+              description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the model. Can contain Markdown syntax."},
+              hasPart: {
+                type: :array,
+                items: {
+                  type: :object,
+                  properties: {
+                    "@id": {type: :string, example: "https://example.com/models/abc123/model_files/def456"},
+                    "@type": {type: :string, example: "3DModel"},
+                    name: {type: :string, example: "Benchy"},
+                    encodingFormat: {type: :string, example: "model/stl"}
+                  }
+                },
+                required: ["@id", "@type", "name", "encodingFormat"]
+              },
+              "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"},
+              isPartOf: {type: :object, properties: {
+                "@id": {type: :string, example: "https://example.com/collections/abc123"},
+                "@type": {type: :string, example: "Collection"}
+              }},
+              creator: {
+                type: :object,
+                properties: {
+                  "@id": {type: :string, example: "https://example.com/creators/abc123"},
+                  "@type": {type: :string, example: "Organization"}
+                }
+              },
+              keywords: {
+                type: :array,
+                items: {
+                  type: :string,
+                  example: "tag"
+                }
+              }
+            },
+            required: ["@context", "@id", "@type", "name", "hasPart"]
           }
         }
       }

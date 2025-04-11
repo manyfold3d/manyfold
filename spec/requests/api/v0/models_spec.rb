@@ -93,51 +93,56 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
       security [client_credentials: ["public", "read"]]
 
       response "200", "Success" do
-        schema type: :object,
-          properties: {
-            "@context": {"$ref" => "#/components/schemas/jsonld_context"},
-            "@id": {type: :string, example: "https://example.com/models/abc123"},
-            "@type": {type: :string, example: "3DModel"},
-            name: {type: :string, example: "3D Benchy"},
-            description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the model. Can contain Markdown syntax."},
-            hasPart: {
-              type: :array,
-              items: {
-                type: :object,
-                properties: {
-                  "@id": {type: :string, example: "https://example.com/models/abc123/model_files/def456"},
-                  "@type": {type: :string, example: "3DModel"},
-                  name: {type: :string, example: "Benchy"},
-                  encodingFormat: {type: :string, example: "model/stl"}
-                }
-              },
-              required: ["@id", "@type", "name", "encodingFormat"]
-            },
-            "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"},
-            isPartOf: {type: :object, properties: {
-              "@id": {type: :string, example: "https://example.com/collections/abc123"},
-              "@type": {type: :string, example: "Collection"}
-            }},
-            creator: {
-              type: :object,
-              properties: {
-                "@id": {type: :string, example: "https://example.com/creators/abc123"},
-                "@type": {type: :string, example: "Organization"}
-              }
-            },
-            keywords: {
-              type: :array,
-              items: {
-                type: :string,
-                example: "tag"
-              }
-            }
-          },
-          required: ["@context", "@id", "@type", "name", "hasPart"]
+        schema({"$ref": "#/components/schemas/model_response"})
 
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
         run_test!
+      end
+
+      response "401", "Unuthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
+
+    patch "Update a model" do
+      tags "Models"
+      consumes Mime[:manyfold_api_v0].to_s
+      produces Mime[:manyfold_api_v0].to_s
+      security [client_credentials: ["write"]]
+      parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/model_request"}
+
+      response "200", "Model updated" do
+        schema({"$ref": "#/components/schemas/model_response"})
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => "New Model Name"} }
+
+        run_test! do
+          expect(response.parsed_body["name"]).to eq "New Model Name"
+        end
+      end
+
+      response "400", "The request structure was incorrect" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "422", "Update failed due to invalid data" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"spdx:License" => {"licenseId" => "Ceci n'est pas un License"}} }
+
+        run_test! do
+          expect(response.parsed_body["license"]).to include("is not a valid license")
+        end
       end
 
       response "401", "Unuthorized; the request did not provide valid authentication details" do

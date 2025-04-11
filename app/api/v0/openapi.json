@@ -1351,102 +1351,7 @@
             "content": {
               "application/vnd.manyfold.v0+json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "@context": {
-                      "$ref": "#/components/schemas/jsonld_context"
-                    },
-                    "@id": {
-                      "type": "string",
-                      "example": "https://example.com/models/abc123"
-                    },
-                    "@type": {
-                      "type": "string",
-                      "example": "3DModel"
-                    },
-                    "name": {
-                      "type": "string",
-                      "example": "3D Benchy"
-                    },
-                    "description": {
-                      "type": "string",
-                      "example": "Lorem ipsum dolor sit amet...",
-                      "description": "A longer description for the model. Can contain Markdown syntax."
-                    },
-                    "hasPart": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "@id": {
-                            "type": "string",
-                            "example": "https://example.com/models/abc123/model_files/def456"
-                          },
-                          "@type": {
-                            "type": "string",
-                            "example": "3DModel"
-                          },
-                          "name": {
-                            "type": "string",
-                            "example": "Benchy"
-                          },
-                          "encodingFormat": {
-                            "type": "string",
-                            "example": "model/stl"
-                          }
-                        }
-                      },
-                      "required": [
-                        "@id",
-                        "@type",
-                        "name",
-                        "encodingFormat"
-                      ]
-                    },
-                    "spdx:license": {
-                      "$ref": "#/components/schemas/spdxLicense"
-                    },
-                    "isPartOf": {
-                      "type": "object",
-                      "properties": {
-                        "@id": {
-                          "type": "string",
-                          "example": "https://example.com/collections/abc123"
-                        },
-                        "@type": {
-                          "type": "string",
-                          "example": "Collection"
-                        }
-                      }
-                    },
-                    "creator": {
-                      "type": "object",
-                      "properties": {
-                        "@id": {
-                          "type": "string",
-                          "example": "https://example.com/creators/abc123"
-                        },
-                        "@type": {
-                          "type": "string",
-                          "example": "Organization"
-                        }
-                      }
-                    },
-                    "keywords": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "example": "tag"
-                      }
-                    }
-                  },
-                  "required": [
-                    "@context",
-                    "@id",
-                    "@type",
-                    "name",
-                    "hasPart"
-                  ]
+                  "$ref": "#/components/schemas/model_response"
                 }
               }
             }
@@ -1456,6 +1361,53 @@
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update a model",
+        "tags": [
+          "Models"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Model updated",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/model_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request structure was incorrect"
+          },
+          "422": {
+            "description": "Update failed due to invalid data"
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.manyfold.v0+json": {
+              "schema": {
+                "$ref": "#/components/schemas/model_request"
+              }
+            }
           }
         }
       },
@@ -1864,6 +1816,117 @@
           "@id",
           "@type",
           "name"
+        ]
+      },
+      "model_request": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Batmobile"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet..."
+          }
+        }
+      },
+      "model_response": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/jsonld_context"
+          },
+          "@id": {
+            "type": "string",
+            "example": "https://example.com/models/abc123"
+          },
+          "@type": {
+            "type": "string",
+            "example": "3DModel"
+          },
+          "name": {
+            "type": "string",
+            "example": "3D Benchy"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet...",
+            "description": "A longer description for the model. Can contain Markdown syntax."
+          },
+          "hasPart": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "example": "https://example.com/models/abc123/model_files/def456"
+                },
+                "@type": {
+                  "type": "string",
+                  "example": "3DModel"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Benchy"
+                },
+                "encodingFormat": {
+                  "type": "string",
+                  "example": "model/stl"
+                }
+              }
+            },
+            "required": [
+              "@id",
+              "@type",
+              "name",
+              "encodingFormat"
+            ]
+          },
+          "spdx:license": {
+            "$ref": "#/components/schemas/spdxLicense"
+          },
+          "isPartOf": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/collections/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Collection"
+              }
+            }
+          },
+          "creator": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/creators/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Organization"
+              }
+            }
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "tag"
+            }
+          }
+        },
+        "required": [
+          "@context",
+          "@id",
+          "@type",
+          "name",
+          "hasPart"
         ]
       }
     }
