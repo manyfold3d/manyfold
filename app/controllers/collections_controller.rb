@@ -5,7 +5,7 @@ class CollectionsController < ApplicationController
   include ModelListable
 
   allow_api_access only: [:index, :show], scope: [:read, :public]
-  allow_api_access only: :create, scope: :write
+  allow_api_access only: [:create, :update], scope: :write
   allow_api_access only: :destroy, scope: :delete
 
   before_action :get_collection, except: [:index, :new, :create]
@@ -99,7 +99,20 @@ class CollectionsController < ApplicationController
 
   def update
     @collection.update(collection_params)
-    redirect_to collections_path, notice: t(".success")
+    respond_to do |format|
+      format.html do
+        redirect_to collections_path, notice: t(".success")
+      end
+      format.manyfold_api_v0 do
+        if @collection.valid?
+          render json: ManyfoldApi::V0::CollectionSerializer.new(@collection).serialize
+        else
+          render json: @collection.errors.to_json, status: :bad_request
+        end
+      end
+    end
+  rescue JSON::ParserError
+    head :bad_request
   end
 
   def destroy

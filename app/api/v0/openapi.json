@@ -187,7 +187,7 @@
       "get": {
         "summary": "oEmbed response for Collections",
         "tags": [
-          "Collections"
+          "oEmbed"
         ],
         "parameters": [
           {
@@ -258,7 +258,7 @@
       "get": {
         "summary": "oEmbed response for Creators",
         "tags": [
-          "Creators"
+          "oEmbed"
         ],
         "parameters": [
           {
@@ -307,7 +307,7 @@
       "get": {
         "summary": "oEmbed response for Models",
         "tags": [
-          "Models"
+          "oEmbed"
         ],
         "parameters": [
           {
@@ -604,6 +604,53 @@
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update a collection",
+        "tags": [
+          "Collections"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Collection updated",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/collection_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request structure was incorrect"
+          },
+          "422": {
+            "description": "Creation failed due to invalid data"
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.manyfold.v0+json": {
+              "schema": {
+                "$ref": "#/components/schemas/collection_request"
+              }
+            }
           }
         }
       },
