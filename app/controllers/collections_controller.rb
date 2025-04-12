@@ -140,15 +140,9 @@ class CollectionsController < ApplicationController
   def collection_params
     if is_api_request?
       raise ActionController::BadRequest unless params[:json]
-      return ManyfoldApi::V0::CollectionDeserializer.new(params[:json]).deserialize
+      ManyfoldApi::V0::CollectionDeserializer.new(params[:json]).deserialize
+    else
+      Form::CollectionDeserializer.new(params).deserialize
     end
-    params.require(:collection).permit(
-      :name,
-      :creator_id,
-      :collection_id,
-      :caption,
-      :notes,
-      links_attributes: [:id, :url, :_destroy]
-    ).deep_merge(caber_relations_params(type: :collection))
   end
 end
