@@ -227,27 +227,10 @@ class ModelsController < ApplicationController
   def model_params
     if is_api_request?
       raise ActionController::BadRequest unless params[:json]
-      return ManyfoldApi::V0::ModelDeserializer.new(params[:json]).deserialize
+      ManyfoldApi::V0::ModelDeserializer.new(params[:json]).deserialize
+    else
+      Form::ModelDeserializer.new(params).deserialize
     end
-    params.require(:model).permit(
-      :preview_file_id,
-      :creator_id,
-      :library_id,
-      :name,
-      :caption,
-      :notes,
-      :license,
-      :sensitive,
-      :collection_id,
-      :q,
-      :library,
-      :creator,
-      :tag,
-      :organize,
-      :missingtag,
-      tag_list: [],
-      links_attributes: [:id, :url, :_destroy]
-    ).deep_merge(caber_relations_params(type: :model))
   end
 
   def get_model

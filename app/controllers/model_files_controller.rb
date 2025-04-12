@@ -147,16 +147,10 @@ class ModelFilesController < ApplicationController
   def file_params
     if is_api_request?
       raise ActionController::BadRequest unless params[:json]
-      return ManyfoldApi::V0::ModelFileDeserializer.new(params[:json]).deserialize
+      ManyfoldApi::V0::ModelFileDeserializer.new(params[:json]).deserialize
+    else
+      Form::ModelFileDeserializer.new(params).deserialize
     end
-    params.require(:model_file).permit([
-      :filename,
-      :presupported,
-      :notes,
-      :caption,
-      :y_up,
-      :presupported_version_id
-    ])
   end
 
   def get_model
