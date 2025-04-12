@@ -4,6 +4,7 @@ require:
 
 plugins:
   - rubocop-performance
+  - rubocop-capybara
   - rubocop-rails
   - rubocop-rspec
   - rubocop-rspec_rails
