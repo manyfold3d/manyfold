@@ -65,6 +65,8 @@ RSpec.configure do |config|
     end
   end
 
+  config.filter_run_excluding :documentation unless ENV.fetch("DOC_SCREENSHOT", false) === "true"
+
   config.include ScreenshotHelpers, type: :system
 end
 
