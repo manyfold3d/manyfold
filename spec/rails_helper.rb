@@ -14,6 +14,8 @@ require "rspec/rails"
 require "rake"
 Rails.application.load_tasks
 
+Capybara::Screenshot.prune_strategy = :keep_last_run
+
 Rails.root.glob("spec/support/**/*.rb").sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
