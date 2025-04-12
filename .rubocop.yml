@@ -4,6 +4,7 @@ require:
 
 plugins:
   - rubocop-performance
+  - rubocop-capybara
   - rubocop-rails
   - rubocop-rspec
   - rubocop-rspec_rails
@@ -35,3 +36,6 @@ RSpec/NestedGroups:
   Max: 5
 RSpec/MultipleMemoizedHelpers:
   Max: 6
+RSpec/NoExpectationExample:
+  Exclude:
+    - spec/system/documentation_screenshots_spec.rb

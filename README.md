@@ -101,6 +101,17 @@ You can run the test suite as a one off with the command `bundle exec rake`, or 
 
 Tests are run automatically when pushed to our repository using GitHub Actions.
 
+Generation of screenshots for the documentation is made with system specs and is not run by default. 
+To generate screenshots, set `DOC_SCREENSHOT=true`: 
+
+```sh
+# All specs and documentation
+DOC_SCREENSHOT=true bundle exec rspec
+# Only documentation specs
+DOC_SCREENSHOT=true bundle exec rspec -t @documentation
+```
+
+
 ### Internationalisation & Translation
 
 Manyfold uses [Rails' I18n framework](https://guides.rubyonrails.org/i18n.html) to handle all text content.

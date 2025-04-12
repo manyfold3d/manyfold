@@ -82,6 +82,8 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_content_security_policy
+    return if Rails.env.test?
+
     # Standard security policy
     content_security_policy.default_src :self
     content_security_policy.connect_src :self
@@ -94,7 +96,7 @@ class ApplicationController < ActionController::Base
     content_security_policy.style_src :self
     content_security_policy.style_src_attr :unsafe_inline
     content_security_policy.style_src_elem :self, "https://fonts.googleapis.com"
-    # Add libary origins
+    # Add library origins
     origins = Library.all.filter_map(&:storage_origin) # rubocop:disable Pundit/UsePolicyScope
     content_security_policy.img_src(*origins)
     content_security_policy.connect_src(*origins)
