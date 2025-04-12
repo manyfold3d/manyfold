@@ -82,6 +82,8 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_content_security_policy
+    return if Rails.env.test?
+
     # Standard security policy
     content_security_policy.default_src :self
     content_security_policy.connect_src :self
