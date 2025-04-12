@@ -138,14 +138,9 @@ class CreatorsController < ApplicationController
   def creator_params
     if is_api_request?
       raise ActionController::BadRequest unless params[:json]
-      return ManyfoldApi::V0::CreatorDeserializer.new(params[:json]).deserialize
+      ManyfoldApi::V0::CreatorDeserializer.new(params[:json]).deserialize
+    else
+      Form::CreatorDeserializer.new(params).deserialize
     end
-    params.require(:creator).permit(
-      :name,
-      :slug,
-      :caption,
-      :notes,
-      links_attributes: [:id, :url, :_destroy]
-    ).deep_merge(caber_relations_params(type: :creator))
   end
 end
