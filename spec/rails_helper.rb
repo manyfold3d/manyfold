@@ -64,6 +64,8 @@ RSpec.configure do |config|
       config.filter_run_excluding case_sensitive: true
     end
   end
+
+  config.include ScreenshotHelpers, type: :system
 end
 
 # Copy parsers into integration tests - this doesn't happen automatically for some reason
