@@ -51,5 +51,17 @@ module ManyfoldApi::V0
         "@type": type
       }
     end
+
+    def self.schema_ref_name
+      name.underscore.split("/").last.gsub("_serializer", "_response")
+    end
+
+    def self.schema_ref
+      {"$ref" => "#/components/schemas/#{schema_ref_name}"}
+    end
+
+    def self.schema
+      raise NotImplementedError
+    end
   end
 end

@@ -8,7 +8,7 @@ module DataPackage
         mediatype: @object.mime_type,
         caption: @object.caption,
         description: @object.notes,
-        up: @object.y_up ? "+y" : "+z",
+        up: @object.up_direction,
         presupported: @object.presupported
       }.compact
     end

@@ -93,7 +93,7 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
       security [client_credentials: ["public", "read"]]
 
       response "200", "Success" do
-        schema({"$ref": "#/components/schemas/model_response"})
+        schema ManyfoldApi::V0::ModelSerializer.schema_ref
 
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
@@ -118,10 +118,10 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
       consumes Mime[:manyfold_api_v0].to_s
       produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["write"]]
-      parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/model_request"}
+      parameter name: :body, in: :body, schema: ManyfoldApi::V0::ModelDeserializer.schema_ref
 
       response "200", "Model updated" do
-        schema({"$ref": "#/components/schemas/model_response"})
+        schema ManyfoldApi::V0::ModelSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:body) { {"name" => "New Model Name"} }
 

@@ -55,7 +55,7 @@ RSpec.configure do |config|
           }
         },
         schemas: {
-          jsonld_context: {
+          :jsonld_context => {
             type: :array,
             items: {
               oneOf: [
@@ -64,7 +64,7 @@ RSpec.configure do |config|
               ]
             }
           },
-          oembed_link: {
+          :oembed_link => {
             type: :object,
             properties: {
               version: {type: :string, example: "1.0"},
@@ -78,7 +78,7 @@ RSpec.configure do |config|
             },
             required: [:version, :type]
           },
-          oembed_photo: {
+          :oembed_photo => {
             type: :object,
             properties: {
               version: {type: :string, example: "1.0"},
@@ -95,7 +95,7 @@ RSpec.configure do |config|
             },
             required: [:version, :type, :url, :width, :height]
           },
-          oembed_video: {
+          :oembed_video => {
             type: :object,
             properties: {
               version: {type: :string, example: "1.0"},
@@ -112,7 +112,7 @@ RSpec.configure do |config|
             },
             required: [:version, :type, :html, :width, :height]
           },
-          oembed_rich: {
+          :oembed_rich => {
             type: :object,
             properties: {
               version: {type: :string, example: "1.0"},
@@ -129,7 +129,7 @@ RSpec.configure do |config|
             },
             required: [:version, :type, :html, :width, :height]
           },
-          spdxLicense: {
+          :spdxLicense => {
             type: :object,
             properties: {
               "@type": {type: :string, example: "spdx:License"},
@@ -138,134 +138,14 @@ RSpec.configure do |config|
             },
             required: ["@type", "licenseId"]
           },
-          collection_request: {
-            type: :object,
-            properties: {
-              name: {type: :string, example: "My Favourites"},
-              description: {type: :string, example: "This is my collection of favourite things"}
-            },
-            required: ["name"]
-          },
-          collection_response: {
-            type: :object,
-            properties: {
-              "@context": {"$ref" => "#/components/schemas/jsonld_context"},
-              "@id": {type: :string, example: "https://example.com/collections/abc123"},
-              "@type": {type: :string, example: "Collection"},
-              name: {type: :string, example: "Interesting Things"},
-              description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the collection. Can contain Markdown syntax."},
-              creator: {
-                type: :object,
-                properties: {
-                  "@id": {type: :string, example: "https://example.com/creators/abc123"},
-                  "@type": {type: :string, example: "Organization"}
-                }
-              }
-            },
-            required: ["@context", "@id", "@type", "name"]
-          },
-          creator_request: {
-            type: :object,
-            properties: {
-              name: {type: :string, example: "Bruce Wayne"},
-              description: {type: :string, example: "Lorem ipsum dolor sit amet..."}
-            },
-            required: ["name"]
-          },
-          creator_response: {
-            type: :object,
-            properties: {
-              "@context": {"$ref" => "#/components/schemas/jsonld_context"},
-              "@id": {type: :string, example: "https://example.com/creators/abc123"},
-              "@type": {type: :string, example: "Organization"},
-              name: {type: :string, example: "Bruce Wayne"},
-              description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the creator. Can contain Markdown syntax."}
-            },
-            required: ["@context", "@id", "@type", "name"]
-          },
-          model_request: {
-            type: :object,
-            properties: {
-              name: {type: :string, example: "Batmobile"},
-              description: {type: :string, example: "Lorem ipsum dolor sit amet..."}
-            }
-          },
-          model_response: {
-            type: :object,
-            properties: {
-              "@context": {"$ref" => "#/components/schemas/jsonld_context"},
-              "@id": {type: :string, example: "https://example.com/models/abc123"},
-              "@type": {type: :string, example: "3DModel"},
-              name: {type: :string, example: "3D Benchy"},
-              description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the model. Can contain Markdown syntax."},
-              hasPart: {
-                type: :array,
-                items: {
-                  type: :object,
-                  properties: {
-                    "@id": {type: :string, example: "https://example.com/models/abc123/model_files/def456"},
-                    "@type": {type: :string, example: "3DModel"},
-                    name: {type: :string, example: "Benchy"},
-                    encodingFormat: {type: :string, example: "model/stl"}
-                  }
-                },
-                required: ["@id", "@type", "name", "encodingFormat"]
-              },
-              "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"},
-              isPartOf: {type: :object, properties: {
-                "@id": {type: :string, example: "https://example.com/collections/abc123"},
-                "@type": {type: :string, example: "Collection"}
-              }},
-              creator: {
-                type: :object,
-                properties: {
-                  "@id": {type: :string, example: "https://example.com/creators/abc123"},
-                  "@type": {type: :string, example: "Organization"}
-                }
-              },
-              keywords: {
-                type: :array,
-                items: {
-                  type: :string,
-                  example: "tag"
-                }
-              }
-            },
-            required: ["@context", "@id", "@type", "name", "hasPart"]
-          },
-          model_file_request: {
-            type: :object,
-            properties: {
-              filename: {type: :string, example: "model.stl"},
-              description: {type: :string, example: "Lorem ipsum dolor sit amet..."}
-            }
-          },
-          model_file_response: {
-            type: :object,
-            properties: {
-              "@context": {"$ref" => "#/components/schemas/jsonld_context"},
-              "@id": {type: :string, example: "https://example.com/models/abc123/model_files/def456"},
-              "@type": {type: :string, example: "3DModel"},
-              name: {type: :string, example: "Benchy"},
-              isPartOf: {type: :object, properties: {
-                "@id": {type: :string, example: "https://example.com/models/abc123"},
-                "@type": {type: :string, example: "3DModel"}
-              }},
-              encodingFormat: {type: :string, example: "model/stl"},
-              contentUrl: {type: :string, example: "https://example.com/models/abc123/model_files/def456.stl"},
-              contentSize: {type: :integer, example: 12345},
-              description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the file. Can contain Markdown syntax."},
-              "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"},
-              creator: {
-                type: :object,
-                properties: {
-                  "@id": {type: :string, example: "https://example.com/creators/abc123"},
-                  "@type": {type: :string, example: "Organization"}
-                }
-              }
-            },
-            required: ["@context", "@id", "@type", "name", "isPartOf", "encodingFormat"]
-          }
+          ManyfoldApi::V0::CollectionDeserializer.schema_ref_name => ManyfoldApi::V0::CollectionDeserializer.schema,
+          ManyfoldApi::V0::CollectionSerializer.schema_ref_name => ManyfoldApi::V0::CollectionSerializer.schema,
+          ManyfoldApi::V0::CreatorDeserializer.schema_ref_name => ManyfoldApi::V0::CreatorDeserializer.schema,
+          ManyfoldApi::V0::CreatorSerializer.schema_ref_name => ManyfoldApi::V0::CreatorSerializer.schema,
+          ManyfoldApi::V0::ModelDeserializer.schema_ref_name => ManyfoldApi::V0::ModelDeserializer.schema,
+          ManyfoldApi::V0::ModelSerializer.schema_ref_name => ManyfoldApi::V0::ModelSerializer.schema,
+          ManyfoldApi::V0::ModelFileDeserializer.schema_ref_name => ManyfoldApi::V0::ModelFileDeserializer.schema,
+          ManyfoldApi::V0::ModelFileSerializer.schema_ref_name => ManyfoldApi::V0::ModelFileSerializer.schema
         }
       }
     }
