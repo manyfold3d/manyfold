@@ -78,12 +78,12 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
       end
     end
 
-    post "Update a creator" do
+    post "Create a creator" do
       tags "Creators"
       consumes Mime[:manyfold_api_v0].to_s
       produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["write"]]
-      parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/creator_request"}
+      parameter name: :body, in: :body, schema: ManyfoldApi::V0::CreatorDeserializer.schema_ref
 
       response "201", "Creator created" do
         schema({"$ref": "#/components/schemas/creator_response"})
@@ -161,7 +161,7 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
       consumes Mime[:manyfold_api_v0].to_s
       produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["write"]]
-      parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/creator_request"}
+      parameter name: :body, in: :body, schema: ManyfoldApi::V0::CreatorDeserializer.schema_ref
 
       response "200", "Creator updated" do
         schema({"$ref": "#/components/schemas/creator_response"})

@@ -55,7 +55,7 @@ RSpec.configure do |config|
           }
         },
         schemas: {
-          jsonld_context: {
+          :jsonld_context => {
             type: :array,
             items: {
               oneOf: [
@@ -64,7 +64,7 @@ RSpec.configure do |config|
               ]
             }
           },
-          oembed_link: {
+          :oembed_link => {
             type: :object,
             properties: {
               version: {type: :string, example: "1.0"},
@@ -78,7 +78,7 @@ RSpec.configure do |config|
             },
             required: [:version, :type]
           },
-          oembed_photo: {
+          :oembed_photo => {
             type: :object,
             properties: {
               version: {type: :string, example: "1.0"},
@@ -95,7 +95,7 @@ RSpec.configure do |config|
             },
             required: [:version, :type, :url, :width, :height]
           },
-          oembed_video: {
+          :oembed_video => {
             type: :object,
             properties: {
               version: {type: :string, example: "1.0"},
@@ -112,7 +112,7 @@ RSpec.configure do |config|
             },
             required: [:version, :type, :html, :width, :height]
           },
-          oembed_rich: {
+          :oembed_rich => {
             type: :object,
             properties: {
               version: {type: :string, example: "1.0"},
@@ -129,7 +129,7 @@ RSpec.configure do |config|
             },
             required: [:version, :type, :html, :width, :height]
           },
-          spdxLicense: {
+          :spdxLicense => {
             type: :object,
             properties: {
               "@type": {type: :string, example: "spdx:License"},
@@ -138,15 +138,8 @@ RSpec.configure do |config|
             },
             required: ["@type", "licenseId"]
           },
-          collection_request: {
-            type: :object,
-            properties: {
-              name: {type: :string, example: "My Favourites"},
-              description: {type: :string, example: "This is my collection of favourite things"}
-            },
-            required: ["name"]
-          },
-          collection_response: {
+          ManyfoldApi::V0::CollectionDeserializer.schema_ref_name => ManyfoldApi::V0::CollectionDeserializer.schema_ref,
+          :collection_response => {
             type: :object,
             properties: {
               "@context": {"$ref" => "#/components/schemas/jsonld_context"},
@@ -164,15 +157,8 @@ RSpec.configure do |config|
             },
             required: ["@context", "@id", "@type", "name"]
           },
-          creator_request: {
-            type: :object,
-            properties: {
-              name: {type: :string, example: "Bruce Wayne"},
-              description: {type: :string, example: "Lorem ipsum dolor sit amet..."}
-            },
-            required: ["name"]
-          },
-          creator_response: {
+          ManyfoldApi::V0::CreatorDeserializer.schema_ref_name => ManyfoldApi::V0::CreatorDeserializer.schema_ref,
+          :creator_response => {
             type: :object,
             properties: {
               "@context": {"$ref" => "#/components/schemas/jsonld_context"},
@@ -183,14 +169,8 @@ RSpec.configure do |config|
             },
             required: ["@context", "@id", "@type", "name"]
           },
-          model_request: {
-            type: :object,
-            properties: {
-              name: {type: :string, example: "Batmobile"},
-              description: {type: :string, example: "Lorem ipsum dolor sit amet..."}
-            }
-          },
-          model_response: {
+          ManyfoldApi::V0::ModelDeserializer.schema_ref_name => ManyfoldApi::V0::ModelDeserializer.schema_ref,
+          :model_response => {
             type: :object,
             properties: {
               "@context": {"$ref" => "#/components/schemas/jsonld_context"},
@@ -233,14 +213,8 @@ RSpec.configure do |config|
             },
             required: ["@context", "@id", "@type", "name", "hasPart"]
           },
-          model_file_request: {
-            type: :object,
-            properties: {
-              filename: {type: :string, example: "model.stl"},
-              description: {type: :string, example: "Lorem ipsum dolor sit amet..."}
-            }
-          },
-          model_file_response: {
+          ManyfoldApi::V0::ModelFileDeserializer.schema_ref_name => ManyfoldApi::V0::ModelFileDeserializer.schema_ref,
+          :model_file_response => {
             type: :object,
             properties: {
               "@context": {"$ref" => "#/components/schemas/jsonld_context"},

@@ -43,7 +43,7 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
       consumes Mime[:manyfold_api_v0].to_s
       produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["write"]]
-      parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/model_file_request"}
+      parameter name: :body, in: :body, schema: ManyfoldApi::V0::ModelFileDeserializer.schema_ref
 
       response "200", "File updated" do
         schema({"$ref": "#/components/schemas/model_file_response"})

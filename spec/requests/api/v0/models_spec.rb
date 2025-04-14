@@ -118,7 +118,7 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
       consumes Mime[:manyfold_api_v0].to_s
       produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["write"]]
-      parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/model_request"}
+      parameter name: :body, in: :body, schema: ManyfoldApi::V0::ModelDeserializer.schema_ref
 
       response "200", "Model updated" do
         schema({"$ref": "#/components/schemas/model_response"})

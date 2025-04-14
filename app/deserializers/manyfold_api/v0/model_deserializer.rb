@@ -8,5 +8,17 @@ module ManyfoldApi::V0
         license: @object.dig("spdx:License", "licenseId")
       }.compact
     end
+
+    def self.schema
+      {
+        type: :object,
+        properties: {
+          name: {type: :string, example: "Batmobile"},
+          description: {type: :string, example: "Lorem ipsum dolor sit amet..."},
+          "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"}
+        },
+        required: ["name"]
+      }
+    end
   end
 end

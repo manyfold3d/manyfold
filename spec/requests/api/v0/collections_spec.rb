@@ -83,7 +83,7 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       consumes Mime[:manyfold_api_v0].to_s
       produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["write"]]
-      parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/collection_request"}
+      parameter name: :body, in: :body, schema: ManyfoldApi::V0::CollectionDeserializer.schema_ref
 
       response "201", "Collection created" do
         schema({"$ref": "#/components/schemas/collection_response"})
@@ -159,7 +159,7 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       consumes Mime[:manyfold_api_v0].to_s
       produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["write"]]
-      parameter name: :body, in: :body, schema: {"$ref": "#/components/schemas/collection_request"}
+      parameter name: :body, in: :body, schema: ManyfoldApi::V0::CollectionDeserializer.schema_ref
 
       response "200", "Collection updated" do
         schema({"$ref": "#/components/schemas/collection_response"})
