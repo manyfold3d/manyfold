@@ -13,7 +13,7 @@ module ManyfoldApi::V0
         type: :object,
         properties: {
           filename: {type: :string, example: "model.stl"},
-          description: {type: :string, example: "Lorem ipsum dolor sit amet..."}
+          description: {type: :string, example: "Lorem ipsum dolor sit amet..."} # rubocop:disable I18n/RailsI18n/DecorateString
         }
       }
     end

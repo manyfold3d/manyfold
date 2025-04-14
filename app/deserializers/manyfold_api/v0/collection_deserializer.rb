@@ -13,7 +13,7 @@ module ManyfoldApi::V0
         type: :object,
         properties: {
           name: {type: :string, example: "Interesting Things"},
-          description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the collection. Can contain Markdown syntax."}
+          description: {type: :string, example: "Lorem ipsum dolor sit amet...", description: "A longer description for the collection. Can contain Markdown syntax."} # rubocop:disable I18n/RailsI18n/DecorateString
         },
         required: ["name"]
       }

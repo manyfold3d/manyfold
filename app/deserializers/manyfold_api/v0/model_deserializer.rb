@@ -14,7 +14,7 @@ module ManyfoldApi::V0
         type: :object,
         properties: {
           name: {type: :string, example: "Batmobile"},
-          description: {type: :string, example: "Lorem ipsum dolor sit amet..."},
+          description: {type: :string, example: "Lorem ipsum dolor sit amet..."}, # rubocop:disable I18n/RailsI18n/DecorateString
           "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"}
         },
         required: ["name"]
