@@ -18,7 +18,7 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
       security [client_credentials: ["public", "read"]]
 
       response "200", "Success" do
-        schema({"$ref": "#/components/schemas/model_file_response"})
+        schema ManyfoldApi::V0::ModelFileSerializer.schema_ref
 
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
@@ -46,7 +46,7 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
       parameter name: :body, in: :body, schema: ManyfoldApi::V0::ModelFileDeserializer.schema_ref
 
       response "200", "File updated" do
-        schema({"$ref": "#/components/schemas/model_file_response"})
+        schema ManyfoldApi::V0::ModelFileSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:body) { {"description" => "lorem ipsum etc"} }
 

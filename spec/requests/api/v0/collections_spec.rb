@@ -86,7 +86,7 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       parameter name: :body, in: :body, schema: ManyfoldApi::V0::CollectionDeserializer.schema_ref
 
       response "201", "Collection created" do
-        schema({"$ref": "#/components/schemas/collection_response"})
+        schema ManyfoldApi::V0::CollectionSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:body) { {"name" => "My Favourites"} }
 
@@ -135,7 +135,7 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       security [client_credentials: ["public", "read"]]
 
       response "200", "Success" do
-        schema({"$ref": "#/components/schemas/collection_response"})
+        schema ManyfoldApi::V0::CollectionSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
         run_test!
@@ -162,7 +162,7 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       parameter name: :body, in: :body, schema: ManyfoldApi::V0::CollectionDeserializer.schema_ref
 
       response "200", "Collection updated" do
-        schema({"$ref": "#/components/schemas/collection_response"})
+        schema ManyfoldApi::V0::CollectionSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:body) { {"name" => "My Favourites"} }
 

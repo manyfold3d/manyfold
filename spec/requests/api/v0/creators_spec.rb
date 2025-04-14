@@ -86,7 +86,7 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
       parameter name: :body, in: :body, schema: ManyfoldApi::V0::CreatorDeserializer.schema_ref
 
       response "201", "Creator created" do
-        schema({"$ref": "#/components/schemas/creator_response"})
+        schema ManyfoldApi::V0::CreatorSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:body) { {"name" => "Bruce Wayne"} }
 
@@ -137,7 +137,7 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
       security [client_credentials: ["public", "read"]]
 
       response "200", "Success" do
-        schema({"$ref": "#/components/schemas/creator_response"})
+        schema ManyfoldApi::V0::CreatorSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
         run_test!
@@ -164,7 +164,7 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
       parameter name: :body, in: :body, schema: ManyfoldApi::V0::CreatorDeserializer.schema_ref
 
       response "200", "Creator updated" do
-        schema({"$ref": "#/components/schemas/creator_response"})
+        schema ManyfoldApi::V0::CreatorSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:body) { {"name" => "Bruce Wayne"} }
 

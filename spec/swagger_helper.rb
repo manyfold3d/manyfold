@@ -138,8 +138,8 @@ RSpec.configure do |config|
             },
             required: ["@type", "licenseId"]
           },
-          ManyfoldApi::V0::CollectionDeserializer.schema_ref_name => ManyfoldApi::V0::CollectionDeserializer.schema_ref,
-          :collection_response => {
+          ManyfoldApi::V0::CollectionDeserializer.schema_ref_name => ManyfoldApi::V0::CollectionDeserializer.schema,
+          ManyfoldApi::V0::CollectionSerializer.schema_ref_name => {
             type: :object,
             properties: {
               "@context": {"$ref" => "#/components/schemas/jsonld_context"},
@@ -157,8 +157,8 @@ RSpec.configure do |config|
             },
             required: ["@context", "@id", "@type", "name"]
           },
-          ManyfoldApi::V0::CreatorDeserializer.schema_ref_name => ManyfoldApi::V0::CreatorDeserializer.schema_ref,
-          :creator_response => {
+          ManyfoldApi::V0::CreatorDeserializer.schema_ref_name => ManyfoldApi::V0::CreatorDeserializer.schema,
+          ManyfoldApi::V0::CreatorSerializer.schema_ref_name => {
             type: :object,
             properties: {
               "@context": {"$ref" => "#/components/schemas/jsonld_context"},
@@ -169,8 +169,8 @@ RSpec.configure do |config|
             },
             required: ["@context", "@id", "@type", "name"]
           },
-          ManyfoldApi::V0::ModelDeserializer.schema_ref_name => ManyfoldApi::V0::ModelDeserializer.schema_ref,
-          :model_response => {
+          ManyfoldApi::V0::ModelDeserializer.schema_ref_name => ManyfoldApi::V0::ModelDeserializer.schema,
+          ManyfoldApi::V0::ModelSerializer.schema_ref_name => {
             type: :object,
             properties: {
               "@context": {"$ref" => "#/components/schemas/jsonld_context"},
@@ -213,8 +213,8 @@ RSpec.configure do |config|
             },
             required: ["@context", "@id", "@type", "name", "hasPart"]
           },
-          ManyfoldApi::V0::ModelFileDeserializer.schema_ref_name => ManyfoldApi::V0::ModelFileDeserializer.schema_ref,
-          :model_file_response => {
+          ManyfoldApi::V0::ModelFileDeserializer.schema_ref_name => ManyfoldApi::V0::ModelFileDeserializer.schema,
+          ManyfoldApi::V0::ModelFileSerializer.schema_ref_name => {
             type: :object,
             properties: {
               "@context": {"$ref" => "#/components/schemas/jsonld_context"},
