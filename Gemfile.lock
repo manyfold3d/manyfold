@@ -749,7 +749,7 @@ GEM
     scout_apm (5.6.2)
       parser
     securerandom (0.4.1)
-    selenium-webdriver (4.28.0)
+    selenium-webdriver (4.31.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
