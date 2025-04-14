@@ -203,6 +203,10 @@ class ModelFile < ApplicationRecord
     Scan::ModelFile::ParseMetadataJob.set(wait: delay).perform_later(id)
   end
 
+  def up_direction
+    y_up ? "+y" : "+z"
+  end
+
   private
 
   def rescan_duplicates
