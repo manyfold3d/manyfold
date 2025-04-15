@@ -42,19 +42,18 @@ RSpec.describe User do
     expect(u).to have_role(:member)
   end
 
-  it "has quota set to defined value" do
-    user = create(:user, quota: 42, quota_use_site_default: false)
-    expect(user.quota).to eq 42
+  it "quotas are valid when not explicitly defined" do
+    expect(build(:user).quota).to eq SiteSettings.default_user_quota
   end
 
-  it "has unlimited quota" do
-    user = create(:user, quota: 0, quota_use_site_default: false)
-    expect(user.has_quota?).to be false
-  end
-
-  it "uses site default quota" do
+  it "quotas use site default quota" do
     user = create(:user, quota: 42, quota_use_site_default: true)
     expect(user.quota).to eq SiteSettings.default_user_quota
+  end
+
+  it "quotas are considered unlimited" do
+    user = create(:user, quota: 0)
+    expect(user.has_quota?).to be false
   end
 
   context "with omniauth" do

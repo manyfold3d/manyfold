@@ -48,6 +48,9 @@ class User < ApplicationRecord
   attribute :problem_settings, :json
   attribute :file_list_settings, :json
 
+  attribute :quota_use_site_default, :boolean, default: true
+  attribute :quota, :integer, default: nil
+
   has_many :access_grants, # rubocop:disable Rails/InverseOf
     class_name: "Doorkeeper::AccessGrant",
     foreign_key: :resource_owner_id,
@@ -63,9 +66,6 @@ class User < ApplicationRecord
     as: :owner,
     dependent: :delete_all,
     inverse_of: :owner
-
-  attribute :quota_use_site_default, :boolean, default: true
-  attribute :quota, :integer, default: 0
 
   def federails_name
     username
@@ -174,7 +174,7 @@ class User < ApplicationRecord
   end
 
   def has_quota?
-    !(quota == 0)
+    !(quota&.nonzero?) && SiteSettings.enable_user_quota
   end
 
   def current_space_used
@@ -184,7 +184,7 @@ class User < ApplicationRecord
   private
 
   def set_quota
-    self.quota = SiteSettings.default_user_quota if quota_use_site_default
+    self.quota = SiteSettings.default_user_quota if self.quota_use_site_default && SiteSettings.enable_user_quota
   end
 
   def has_any_role_of?(*args)
