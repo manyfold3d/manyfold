@@ -52,7 +52,7 @@ class DoorkeeperApplicationsController < ApplicationController
       :name,
       :redirect_uri,
       :confidential,
-      :scopes
+      scopes: []
     )
   end
 

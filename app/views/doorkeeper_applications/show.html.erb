@@ -19,6 +19,10 @@
     <td><%= @application.confidential %></td>
   </tr>
   <tr>
+    <td><%= Doorkeeper::Application.human_attribute_name :scopes %></td>
+    <td><%= safe_join(@application.scopes.to_a.map { |it| content_tag(:code) { it } }, ", ") %></td>
+  </tr>
+  <tr>
     <td><%= Doorkeeper::Application.human_attribute_name :redirect_uri %></td>
     <td><code><%= @application.redirect_uri %></code></td>
   </tr>
