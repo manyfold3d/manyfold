@@ -59,6 +59,11 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
         context "with read scope" do
           let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
+          run_test! "produces valid linked data" do
+            graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+            expect(graph).to be_valid
+          end
+
           run_test! do
             expect(response.parsed_body["totalItems"]).to eq 12
           end
@@ -90,7 +95,12 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:body) { {"name" => "Bruce Wayne"} }
 
-        run_test! do
+        run_test! "produces valid linked data" do # rubocop:todo RSpec/MultipleExpectations
+          # Tests are currently combined because database doesn't seem to clear between run_test! runs
+          # Check JSON-LD
+          graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+          expect(graph).to be_valid
+          # Check attributes
           expect(response.parsed_body["name"]).to eq "Bruce Wayne"
         end
       end
@@ -140,7 +150,10 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
         schema ManyfoldApi::V0::CreatorSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
-        run_test!
+        run_test! "produces valid linked data" do
+          graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+          expect(graph).to be_valid
+        end
       end
 
       response "401", "Unuthorized; the request did not provide valid authentication details" do
@@ -167,6 +180,11 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
         schema ManyfoldApi::V0::CreatorSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:body) { {"name" => "Bruce Wayne"} }
+
+        run_test! "produces valid linked data" do
+          graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+          expect(graph).to be_valid
+        end
 
         run_test! do
           expect(response.parsed_body["name"]).to eq "Bruce Wayne"

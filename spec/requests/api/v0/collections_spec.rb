@@ -51,6 +51,11 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
         context "with public scope" do
           let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "public").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
+          run_test! "produces valid linked data" do
+            graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+            expect(graph).to be_valid
+          end
+
           run_test! do
             expect(response.parsed_body["totalItems"]).to eq 3
           end
@@ -90,7 +95,12 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:body) { {"name" => "My Favourites"} }
 
-        run_test! do
+        run_test! "produces valid linked data" do # rubocop:todo RSpec/MultipleExpectations
+          # Tests are currently combined because database doesn't seem to clear between run_test! runs
+          # Check JSON-LD
+          graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+          expect(graph).to be_valid
+          # Check attributes
           expect(response.parsed_body["name"]).to eq "My Favourites"
         end
       end
@@ -137,6 +147,11 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       response "200", "Success" do
         schema ManyfoldApi::V0::CollectionSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test! "produces valid linked data" do
+          graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+          expect(graph).to be_valid
+        end
 
         run_test! do
           expect(response.parsed_body["name"]).to eq collection.name
@@ -195,6 +210,11 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
             "isPartOf" => {"@id" => "http://localhost:3214/collections/#{parent_collection.to_param}"}
           }
         }
+
+        run_test! "produces valid linked data" do
+          graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+          expect(graph).to be_valid
+        end
 
         run_test! do
           expect(response.parsed_body["name"]).to eq "My Favourites"
