@@ -7,7 +7,8 @@ class Scan::Library::CreateModelFromPathJob < ApplicationJob
     return if library.nil?
     new_model_properties = {
       # Initial best guess at name, this might be overwritten later by path parser
-      name: File.basename(path).humanize.tr("+", " ").careful_titleize
+      name: File.basename(path).humanize.tr("+", " ").careful_titleize,
+      tag_list: Array(SiteSettings.model_tags_auto_tag_new)
     }
     model = library.models.create_with(new_model_properties).find_or_create_by(path: path.trim_path_separators)
     if model.valid?

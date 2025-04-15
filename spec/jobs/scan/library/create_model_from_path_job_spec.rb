@@ -27,4 +27,15 @@ RSpec.describe Scan::Library::CreateModelFromPathJob do
     described_class.perform_now(library.id, "model", include_all_subfolders: true)
     expect(Scan::Model::AddNewFilesJob).to have_been_enqueued.with(Model.first.id, include_all_subfolders: true).once
   end
+
+  it "applies automatic new tag" do
+    described_class.perform_now(library.id, "model")
+    expect(Model.first.tag_list).to include "!new"
+  end
+
+  it "does not apply automatic new tag if there isn't one set" do
+    allow(SiteSettings).to receive(:model_tags_auto_tag_new).and_return nil
+    described_class.perform_now(library.id, "model")
+    expect(Model.first.tag_list).to be_empty
+  end
 end

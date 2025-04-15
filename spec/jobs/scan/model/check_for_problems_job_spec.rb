@@ -93,13 +93,13 @@ RSpec.describe Scan::Model::CheckForProblemsJob do
 
   context "when checking for missing tags" do
     it "flags models without tags as a problem" do
-      model = create(:model)
+      model = create(:model, tag_list: [])
       described_class.perform_now(model.id)
       expect(model.problems.map(&:category)).to include("no_tags")
     end
 
     it "doesn't raise a problem for models with tags" do
-      model = create(:model, tag_list: "tag")
+      model = create(:model, tag_list: ["tag"])
       described_class.perform_now(model.id)
       expect(model.problems.map(&:category)).not_to include("no_tags")
     end

@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <%= render "bulk_fields", form: form %>
+  <%= render "bulk_fields", form: form, default_tags: SiteSettings.model_tags_auto_tag_new %>
 
   <div class="row mb-3 input-group">
     <div class='offset-sm-2 col-sm-10 ps-0'>
