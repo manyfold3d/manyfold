@@ -34,6 +34,12 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       )
     end
 
+    it "preserves existing tags" do
+      model = create(:model, path: "/library1/stuff/testing")
+      described_class.perform_now(model.id)
+      expect(model.tag_list).to include "!new"
+    end
+
     context "without stop word filtering" do
       before do
         allow(SiteSettings).to receive(:model_tags_filter_stop_words).and_return(false)
@@ -101,6 +107,13 @@ RSpec.describe Scan::Model::ParseMetadataJob do
         model_tags_auto_tag_new: nil,
         model_tags_filter_stop_words: false
       )
+    end
+
+    it "preserves existing tags" do
+      allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}{modelId}")
+      described_class.perform_now(model.id)
+      model.reload
+      expect(model.tag_list).to include "!new"
     end
 
     it "parses tags" do
