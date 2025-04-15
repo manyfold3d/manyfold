@@ -7,7 +7,8 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
     parameter name: :id, in: :path, type: :string, required: true, example: "def456"
 
     let(:model) { create(:model, creator: create(:creator), collection: create(:collection)) }
-    let(:file) { create(:model_file, model: model) }
+    let(:supported_file) { create(:model_file, model: model, presupported: true) }
+    let(:file) { create(:model_file, model: model, presupported_version: supported_file) }
 
     let(:model_id) { model.to_param }
     let(:id) { file.to_param }
