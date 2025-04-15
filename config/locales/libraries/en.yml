@@ -28,7 +28,7 @@ en:
         help: Just the bucket name, not the full URL
       s3_description_html: Manyfold can use any S3-compatible object storage for your library; this could be from any of a large number of <a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">open source</a> or <a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">commercial</a> services.
       s3_endpoint:
-        help: Optional; only needed for S3-compatible services, not AWS.
+        help: Optional; only needed for S3-compatible services, not AWS. Enter the full URL, starting with "https://"
       s3_path_style:
         help: Disable to use vhost-style bucket URLs. Only used for S3-compatible services, not AWS.
       tag_regex:
