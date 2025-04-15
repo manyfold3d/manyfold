@@ -125,6 +125,10 @@ class Model < ApplicationRecord
     tags.where(name: SiteSettings.model_tags_auto_tag_new).any?
   end
 
+  def valid_preview_files
+    model_files.select { |it| it.is_image? || it.is_renderable? }
+  end
+
   def image_files
     model_files.select(&:is_image?)
   end
