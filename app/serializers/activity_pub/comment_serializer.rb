@@ -33,7 +33,7 @@ module ActivityPub
 
     def to_html
       [
-        Kramdown::Document.new(@object.comment).to_html,
+        Kramdown::Document.new(@object.comment, input: "GFM").to_html,
         hashtags&.map { |t| %(<a href="#{t[:href]}" class="mention hashtag" rel="tag">#{t[:name]}</a>) }&.join(" ")
       ].compact.join("\n\n")
     end

@@ -192,3 +192,5 @@ gem "warning", "~> 1.5"
 gem "rack-cors", "~> 2.0"
 
 gem "doorkeeper", "~> 5.8"
+
+gem "kramdown-parser-gfm", "~> 1.1"
