@@ -10,6 +10,8 @@ FactoryBot.define do
     notes { Faker::Lorem.paragraph }
     links_attributes { [{url: "http://example.com"}] }
 
+    tag_list { "!new" }
+
     trait :with_tags do
       transient do
         tags_count { 2 }

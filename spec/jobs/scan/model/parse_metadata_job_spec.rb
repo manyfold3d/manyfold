@@ -30,8 +30,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     before do
       allow(SiteSettings).to receive_messages(
         model_tags_tag_model_directory_name: true,
-        parse_metadata_from_path: false,
-        model_tags_auto_tag_new: nil
+        parse_metadata_from_path: false
       )
     end
 
@@ -131,7 +130,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       model.reload
       expect(model.creator.name).to eq "Library 1"
       expect(model.collection.name).to eq "Stuff"
-      expect(model.tag_list).to eq ["tags", "are", "greedy"]
+      expect(model.tag_list).to include("tags", "are", "greedy")
     end
 
     it "ignores extra path components" do # rubocop:todo RSpec/MultipleExpectations, RSpec/ExampleLength
@@ -140,7 +139,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       model.reload
       expect(model.creator.name).to eq "Greedy"
       expect(model.collection).to be_nil
-      expect(model.tag_list).to eq []
+      expect(model.tag_list).to eq ["!new"]
     end
 
     it "handles a completely empty template" do # rubocop:todo RSpec/MultipleExpectations, RSpec/ExampleLength
@@ -149,7 +148,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       model.reload
       expect(model.creator).to be_nil
       expect(model.collection).to be_nil
-      expect(model.tag_list).to eq []
+      expect(model.tag_list).to eq ["!new"]
     end
 
     it "removes stop words from tag lists" do # rubocop:todo RSpec/ExampleLength
