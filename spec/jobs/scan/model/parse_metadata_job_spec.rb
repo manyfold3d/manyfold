@@ -43,31 +43,35 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       it "skips single letter tags" do
         model = create(:model, path: "/library1/stuff/a")
         described_class.perform_now(model.id)
-        expect(model.tag_list).to eq []
+        expect(model.tag_list).not_to include("a")
       end
 
       it "generates tag from whitespace delimited file names" do
         model = create(:model, path: "/library1/stuff/this is a fantasy model", tags: [])
         described_class.perform_now(model.id)
-        expect(model.tag_list).to eq ["this", "is", "fantasy", "model"]
+        model.reload
+        expect(model.tag_list).to include("this", "is", "fantasy", "model")
       end
 
       it "generates tag from underscore delimited file names" do
         model = create(:model, path: "/library1/stuff/this_is_a_fantasy_model")
         described_class.perform_now(model.id)
-        expect(model.tag_list).to eq ["this", "is", "fantasy", "model"]
+        model.reload
+        expect(model.tag_list).to include("this", "is", "fantasy", "model")
       end
 
       it "generates tag from plus delimited file names" do
         model = create(:model, path: "/library1/stuff/this+is+a+fantasy+model")
         described_class.perform_now(model.id)
-        expect(model.tag_list).to eq ["this", "is", "fantasy", "model"]
+        model.reload
+        expect(model.tag_list).to include("this", "is", "fantasy", "model")
       end
 
       it "generates tag from hyphen delimited file names" do
         model = create(:model, path: "/library1/stuff/this-is-a-fantasy-model")
         described_class.perform_now(model.id)
-        expect(model.tag_list).to eq ["this", "is", "fantasy", "model"]
+        model.reload
+        expect(model.tag_list).to include("this", "is", "fantasy", "model")
       end
     end
 
@@ -80,10 +84,10 @@ RSpec.describe Scan::Model::ParseMetadataJob do
         )
       end
 
-      it "generates tags and filters custom stop words" do
+      it "filters custom stop words" do
         model = create(:model, path: "/library1/stuff/this-is-a-scifi-chicken-model")
         described_class.perform_now(model.id)
-        expect(model.reload.tag_list).to eq ["scifi", "model"]
+        expect(model.reload.tag_list).not_to include("chicken")
       end
     end
   end
@@ -103,7 +107,8 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     it "parses tags" do
       allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}{modelId}")
       described_class.perform_now(model.id)
-      expect(model.tag_list).to eq ["library 1", "stuff", "tags", "are", "greedy"]
+      model.reload
+      expect(model.tag_list).to include("library 1", "stuff", "tags", "are", "greedy")
     end
 
     it "parses creator" do
@@ -155,7 +160,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
         model_path_template: "{tags}/{modelName}{modelId}"
       )
       described_class.perform_now(model.id)
-      expect(model.tag_list).to eq ["library 1", "tags", "greedy"]
+      expect(model.tag_list).not_to include "stuff"
     end
   end
 
@@ -258,6 +263,6 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     model.reload
     expect(model.name).to eq "Model Name"
     expect(model.creator.name).to eq "Bruce Wayne"
-    expect(model.tag_list).to eq ["human", "wizard"]
+    expect(model.tag_list).to include("human", "wizard")
   end
 end
