@@ -49,10 +49,23 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
       response "200", "File updated" do
         schema ManyfoldApi::V0::ModelFileSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
-        let(:body) { {"description" => "lorem ipsum etc"} }
+        let(:new_supported_file) { create(:model_file, model: model, presupported: true) }
+        let(:body) {
+          {
+            "description" => "lorem ipsum etc",
+            "related" => [{
+              "@id" => "http://localhost:3214/models/#{model_id}/model_files/#{new_supported_file.to_param}",
+              "relationship" => "presupported_version"
+            }]
+          }
+        }
 
         run_test! do
           expect(response.parsed_body["description"]).to eq "lorem ipsum etc"
+        end
+
+        run_test! do
+          expect(response.parsed_body.dig("related", 0, "@id")).to eq "http://localhost:3214/models/#{model_id}/model_files/#{new_supported_file.to_param}"
         end
       end
 

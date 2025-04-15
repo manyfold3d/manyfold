@@ -8,7 +8,7 @@ module ManyfoldApi::V0
         caption: @object["caption"],
         presupported: @object["presupported"],
         y_up: @object["up"] == "+y",
-        presupported_version: dereference(@object["related"].find { |it| it["relationship"] == "presupported_version" }, ModelFile)
+        presupported_version: dereference(@object["related"]&.find { |it| it["relationship"] == "presupported_version" }&.dig("@id"), ModelFile)
       }.compact
     end
 
