@@ -126,7 +126,7 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
 
   path "/collections/{id}" do
     parameter name: :id, in: :path, type: :string, required: true, example: "abc123"
-    let(:collection) { create(:collection) }
+    let(:collection) { create(:collection, creator: create(:creator), collection: create(:collection)) }
     let(:id) { collection.to_param }
 
     get "Details of a single collection" do
@@ -138,7 +138,29 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
         schema ManyfoldApi::V0::CollectionSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
-        run_test!
+        run_test! do
+          expect(response.parsed_body["name"]).to eq collection.name
+        end
+
+        run_test! do
+          expect(response.parsed_body["description"]).to eq collection.notes
+        end
+
+        run_test! do
+          expect(response.parsed_body["caption"]).to eq collection.caption
+        end
+
+        run_test! do
+          expect(response.parsed_body.dig("links", 0, "url")).to eq "http://example.com"
+        end
+
+        run_test! do
+          expect(response.parsed_body.dig("creator", "@id")).to include collection.creator.to_param
+        end
+
+        run_test! do
+          expect(response.parsed_body.dig("isPartOf", "@id")).to include collection.collection.to_param
+        end
       end
 
       response "401", "Unuthorized; the request did not provide valid authentication details" do
@@ -164,10 +186,26 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       response "200", "Collection updated" do
         schema ManyfoldApi::V0::CollectionSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
-        let(:body) { {"name" => "My Favourites"} }
+        let(:creator) { create(:creator) }
+        let(:parent_collection) { create(:collection) }
+        let(:body) {
+          {
+            "name" => "My Favourites",
+            "creator" => {"@id" => "http://localhost:3214/creators/#{creator.to_param}"},
+            "isPartOf" => {"@id" => "http://localhost:3214/collections/#{parent_collection.to_param}"}
+          }
+        }
 
         run_test! do
           expect(response.parsed_body["name"]).to eq "My Favourites"
+        end
+
+        run_test! do
+          expect(response.parsed_body.dig("creator", "@id")).to eq "http://localhost:3214/creators/#{creator.to_param}"
+        end
+
+        run_test! do
+          expect(response.parsed_body.dig("isPartOf", "@id")).to eq "http://localhost:3214/collections/#{parent_collection.to_param}"
         end
       end
 

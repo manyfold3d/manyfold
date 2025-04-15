@@ -4,7 +4,10 @@ module ManyfoldApi::V0
       creator_ref(@object).merge(
         "@context": context,
         name: @object.name,
-        description: @object.notes
+        slug: @object.slug,
+        caption: @object.caption,
+        description: @object.notes,
+        links: @object.links.map { |it| LinkSerializer.new(it).serialize }
       ).compact
     end
 

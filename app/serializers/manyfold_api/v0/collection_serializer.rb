@@ -4,9 +4,11 @@ module ManyfoldApi::V0
       collection_ref(@object).merge(
         "@context": context,
         name: @object.name,
+        caption: @object.caption,
         description: @object.notes,
         creator: creator_ref(@object.creator),
-        isPartOf: collection_ref(@object.collection)
+        isPartOf: collection_ref(@object.collection),
+        links: @object.links.map { |it| LinkSerializer.new(it).serialize }
       ).compact
     end
 

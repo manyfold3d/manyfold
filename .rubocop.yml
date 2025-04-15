@@ -35,7 +35,8 @@ I18n/RailsI18n:
 RSpec/NestedGroups:
   Max: 5
 RSpec/MultipleMemoizedHelpers:
-  Max: 6
+  Exclude:
+    - "spec/requests/api/**/*"
 RSpec/NoExpectationExample:
   Exclude:
     - spec/system/documentation_screenshots_spec.rb

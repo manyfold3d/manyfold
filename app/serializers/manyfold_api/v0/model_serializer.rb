@@ -4,6 +4,7 @@ module ManyfoldApi::V0
       model_ref(@object).merge(
         "@context": context,
         name: @object.name,
+        caption: @object.caption,
         description: @object.notes,
         "spdx:license": license(@object.license),
         hasPart: @object.model_files.without_special.map do |file|
@@ -13,7 +14,11 @@ module ManyfoldApi::V0
           )
         end,
         isPartOf: collection_ref(@object.collection),
-        creator: creator_ref(@object.creator)
+        creator: creator_ref(@object.creator),
+        sensitive: @object.sensitive,
+        keywords: @object.tag_list,
+        preview_file: file_ref(@object.preview_file),
+        links: @object.links.map { |it| LinkSerializer.new(it).serialize }
       ).compact
     end
 
