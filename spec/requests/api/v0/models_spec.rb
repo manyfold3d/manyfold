@@ -62,6 +62,11 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
         context "with read scope" do
           let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
+          run_test! "produces valid linked data" do
+            graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+            expect(graph).to be_valid
+          end
+
           run_test! do
             expect(response.parsed_body["totalItems"]).to eq 12
           end
@@ -97,7 +102,10 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
 
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
-        run_test!
+        run_test! "produces valid linked data" do
+          graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+          expect(graph).to be_valid
+        end
       end
 
       response "401", "Unuthorized; the request did not provide valid authentication details" do
@@ -130,6 +138,11 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
              "@id" => "http://localhost:3214/models/#{id}/model_files/#{preview_file.to_param}"
            }}
         }
+
+        run_test! "produces valid linked data" do
+          graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+          expect(graph).to be_valid
+        end
 
         run_test! do
           expect(response.parsed_body["name"]).to eq "New Model Name"
