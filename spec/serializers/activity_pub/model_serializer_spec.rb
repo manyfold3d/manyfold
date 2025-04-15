@@ -5,7 +5,7 @@ RSpec.describe ActivityPub::ModelSerializer do
     subject(:serializer) { described_class.new(object) }
 
     let(:ap) { serializer.serialize }
-    let(:object) { create(:model, :with_tags, :public) }
+    let(:object) { create(:model, :with_tags, :public, tag_list: []) }
 
     it_behaves_like "GenericActivityPubSerializer"
 

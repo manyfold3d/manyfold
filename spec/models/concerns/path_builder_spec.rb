@@ -59,7 +59,7 @@ RSpec.describe PathBuilder do
   end
 
   context "when creating path from missing model metadata" do
-    let(:model) { create(:model, name: "Batarang") }
+    let(:model) { create(:model, name: "Batarang", tag_list: []) }
 
     it "includes creator error if set" do
       SiteSettings.model_path_template = "{creator}/{modelName}{modelId}"
