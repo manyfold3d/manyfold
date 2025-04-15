@@ -3,5 +3,5 @@
 # oEmbed
 Mime::Type.register "application/json+oembed", :oembed
 
-# JSON-LD
-Mime::Type.register "application/ld+json", :json_ld
+# API format
+Mime::Type.register "application/vnd.manyfold.v0+json", :manyfold_api_v0

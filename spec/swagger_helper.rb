@@ -45,14 +45,17 @@ RSpec.configure do |config|
               clientCredentials: {
                 tokenUrl: "/oauth/token",
                 scopes: {
-                  read: "read any data accessible to the OAuth application's owner"
+                  public: "read public data accessible without logging in",
+                  read: "read data accessible to the OAuth application's owner",
+                  write: "create or change data that the OAuth application's owner has appropriate permissions for",
+                  delete: "remove data that the OAuth application's owner has appropriate permissions for"
                 }
               }
             }
           }
         },
         schemas: {
-          jsonld_context: {
+          :jsonld_context => {
             type: :array,
             items: {
               oneOf: [
@@ -61,7 +64,7 @@ RSpec.configure do |config|
               ]
             }
           },
-          oembed_link: {
+          :oembed_link => {
             type: :object,
             properties: {
               version: {type: :string, example: "1.0"},
@@ -75,7 +78,7 @@ RSpec.configure do |config|
             },
             required: [:version, :type]
           },
-          oembed_photo: {
+          :oembed_photo => {
             type: :object,
             properties: {
               version: {type: :string, example: "1.0"},
@@ -92,7 +95,7 @@ RSpec.configure do |config|
             },
             required: [:version, :type, :url, :width, :height]
           },
-          oembed_video: {
+          :oembed_video => {
             type: :object,
             properties: {
               version: {type: :string, example: "1.0"},
@@ -109,7 +112,7 @@ RSpec.configure do |config|
             },
             required: [:version, :type, :html, :width, :height]
           },
-          oembed_rich: {
+          :oembed_rich => {
             type: :object,
             properties: {
               version: {type: :string, example: "1.0"},
@@ -126,7 +129,7 @@ RSpec.configure do |config|
             },
             required: [:version, :type, :html, :width, :height]
           },
-          spdxLicense: {
+          :spdxLicense => {
             type: :object,
             properties: {
               "@type": {type: :string, example: "spdx:License"},
@@ -134,7 +137,15 @@ RSpec.configure do |config|
               licenseId: {type: :string, example: "MIT"}
             },
             required: ["@type", "licenseId"]
-          }
+          },
+          ManyfoldApi::V0::CollectionDeserializer.schema_ref_name => ManyfoldApi::V0::CollectionDeserializer.schema,
+          ManyfoldApi::V0::CollectionSerializer.schema_ref_name => ManyfoldApi::V0::CollectionSerializer.schema,
+          ManyfoldApi::V0::CreatorDeserializer.schema_ref_name => ManyfoldApi::V0::CreatorDeserializer.schema,
+          ManyfoldApi::V0::CreatorSerializer.schema_ref_name => ManyfoldApi::V0::CreatorSerializer.schema,
+          ManyfoldApi::V0::ModelDeserializer.schema_ref_name => ManyfoldApi::V0::ModelDeserializer.schema,
+          ManyfoldApi::V0::ModelSerializer.schema_ref_name => ManyfoldApi::V0::ModelSerializer.schema,
+          ManyfoldApi::V0::ModelFileDeserializer.schema_ref_name => ManyfoldApi::V0::ModelFileDeserializer.schema,
+          ManyfoldApi::V0::ModelFileSerializer.schema_ref_name => ManyfoldApi::V0::ModelFileSerializer.schema
         }
       }
     }

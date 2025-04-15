@@ -12,10 +12,8 @@ require "support/mock_directory"
 
 RSpec.describe "Model Files" do
   [:multiuser, :singleuser].each do |mode|
-    context "when signed out in #{mode} mode", mode do
+    context "when signed out in #{mode} mode", mode, :after_first_run do
       context "when downloading via a signed ID" do
-        before { create(:admin) }
-
         let!(:file) { create(:model_file, filename: "test.jpg") }
 
         it "succeeds with a valid ID" do

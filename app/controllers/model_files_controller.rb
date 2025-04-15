@@ -1,6 +1,10 @@
 class ModelFilesController < ApplicationController
   include ActionController::Live
 
+  allow_api_access only: :show, scope: [:read, :public]
+  allow_api_access only: :update, scope: :write
+  allow_api_access only: :destroy, scope: :delete
+
   before_action :get_model
   before_action :get_file, except: [:create, :bulk_edit, :bulk_update]
 
@@ -21,7 +25,7 @@ class ModelFilesController < ApplicationController
       @duplicates = @file.duplicates
       respond_to do |format|
         format.html
-        format.json_ld { render json: JsonLd::ModelFileSerializer.new(@file).serialize }
+        format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelFileSerializer.new(@file).serialize }
         format.any(*SupportedMimeTypes.indexable_types.map(&:to_sym)) do
           send_file_content disposition: (params[:download] == "true") ? :attachment : :inline
         end
@@ -55,11 +59,23 @@ class ModelFilesController < ApplicationController
   end
 
   def update
-    if @file.update(file_params)
-      current_user.set_list_state(@file, :printed, params[:model_file][:printed] === "1")
-      redirect_to [@model, @file], notice: t(".success")
-    else
-      render :edit, alert: t(".failure")
+    result = @file.update(file_params)
+    respond_to do |format|
+      format.html do
+        if result
+          current_user.set_list_state(@file, :printed, params[:model_file][:printed] === "1")
+          redirect_to [@model, @file], notice: t(".success")
+        else
+          render :edit, alert: t(".failure")
+        end
+      end
+      format.manyfold_api_v0 do
+        if result
+          render json: ManyfoldApi::V0::ModelFileSerializer.new(@file).serialize
+        else
+          render json: @file.errors.to_json, status: :unprocessable_entity
+        end
+      end
     end
   end
 
@@ -94,11 +110,16 @@ class ModelFilesController < ApplicationController
   def destroy
     authorize @file
     @file.delete_from_disk_and_destroy
-    if request.referer && (URI.parse(request.referer).path == model_model_file_path(@model, @file))
-      # If we're coming from the file page itself, we can't go back there
-      redirect_to model_path(@model), notice: t(".success")
-    else
-      redirect_back_or_to model_path(@model), notice: t(".success")
+    respond_to do |format|
+      format.html do
+        if request.referer && (URI.parse(request.referer).path == model_model_file_path(@model, @file))
+          # If we're coming from the file page itself, we can't go back there
+          redirect_to model_path(@model), notice: t(".success")
+        else
+          redirect_back_or_to model_path(@model), notice: t(".success")
+        end
+      end
+      format.manyfold_api_v0 { head :no_content }
     end
   end
 
@@ -124,14 +145,12 @@ class ModelFilesController < ApplicationController
   end
 
   def file_params
-    params.require(:model_file).permit([
-      :filename,
-      :presupported,
-      :notes,
-      :caption,
-      :y_up,
-      :presupported_version_id
-    ])
+    if is_api_request?
+      raise ActionController::BadRequest unless params[:json]
+      ManyfoldApi::V0::ModelFileDeserializer.new(params[:json]).deserialize
+    else
+      Form::ModelFileDeserializer.new(params).deserialize
+    end
   end
 
   def get_model

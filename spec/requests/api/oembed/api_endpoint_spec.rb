@@ -13,6 +13,7 @@ describe "oEmbed" do # rubocop:disable RSpec/EmptyExampleGroup, RSpec/DescribeCl
         let(:url) { "http://www.example.com/models/abc123" }
         let(:maxwidth) { 256 }
         let(:maxheight) { 256 }
+
         run_test! do |response|
           expect(response).to redirect_to "http://www.example.com/models/abc123.oembed?maxheight=256&maxwidth=256"
         end

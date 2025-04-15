@@ -4,6 +4,10 @@ class CollectionsController < ApplicationController
   include Permittable
   include ModelListable
 
+  allow_api_access only: [:index, :show], scope: [:read, :public]
+  allow_api_access only: [:create, :update], scope: :write
+  allow_api_access only: :destroy, scope: :delete
+
   before_action :get_collection, except: [:index, :new, :create]
   before_action :get_creators, except: [:index, :create]
 
@@ -37,7 +41,7 @@ class CollectionsController < ApplicationController
 
     respond_to do |format|
       format.html { render layout: "card_list_page" }
-      format.json_ld { render json: JsonLd::CreatorListSerializer.new(@collections).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CollectionListSerializer.new(@collections).serialize }
     end
   end
 
@@ -50,7 +54,7 @@ class CollectionsController < ApplicationController
         render layout: "card_list_page"
       end
       format.oembed { render json: OEmbed::CollectionSerializer.new(@collection, helpers.oembed_params).serialize }
-      format.json_ld { render json: JsonLd::CollectionSerializer.new(@collection).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::CollectionSerializer.new(@collection).serialize }
     end
   end
 
@@ -72,22 +76,47 @@ class CollectionsController < ApplicationController
   def create
     authorize Collection
     @collection = Collection.create(collection_params.merge(Collection.caber_owner(current_user)))
-    if session[:return_after_new]
-      redirect_to session[:return_after_new] + "?new_collection=#{@collection.to_param}", notice: t(".success")
-      session[:return_after_new] = nil
-    else
-      redirect_to collections_path, notice: t(".success")
+    respond_to do |format|
+      format.html do
+        if session[:return_after_new]
+          redirect_to session[:return_after_new] + "?new_collection=#{@collection.to_param}", notice: t(".success")
+          session[:return_after_new] = nil
+        else
+          redirect_to collections_path, notice: t(".success")
+        end
+      end
+      format.manyfold_api_v0 do
+        if @collection.valid?
+          render json: ManyfoldApi::V0::CollectionSerializer.new(@collection).serialize, status: :created, location: collection_path(@collection)
+        else
+          render json: @collection.errors.to_json, status: :unprocessable_entity
+        end
+      end
     end
   end
 
   def update
     @collection.update(collection_params)
-    redirect_to collections_path, notice: t(".success")
+    respond_to do |format|
+      format.html do
+        redirect_to collections_path, notice: t(".success")
+      end
+      format.manyfold_api_v0 do
+        if @collection.valid?
+          render json: ManyfoldApi::V0::CollectionSerializer.new(@collection).serialize
+        else
+          render json: @collection.errors.to_json, status: :unprocessable_entity
+        end
+      end
+    end
   end
 
   def destroy
     @collection.destroy
-    redirect_to collections_path, notice: t(".success")
+    respond_to do |format|
+      format.html { redirect_to collections_path, notice: t(".success") }
+      format.manyfold_api_v0 { head :no_content }
+    end
   end
 
   private
@@ -109,13 +138,11 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.require(:collection).permit(
-      :name,
-      :creator_id,
-      :collection_id,
-      :caption,
-      :notes,
-      links_attributes: [:id, :url, :_destroy]
-    ).deep_merge(caber_relations_params(type: :collection))
+    if is_api_request?
+      raise ActionController::BadRequest unless params[:json]
+      ManyfoldApi::V0::CollectionDeserializer.new(params[:json]).deserialize
+    else
+      Form::CollectionDeserializer.new(params).deserialize
+    end
   end
 end

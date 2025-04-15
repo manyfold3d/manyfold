@@ -6,827 +6,6 @@
     "description": "This document describes the REST API for this [Manyfold](https://manyfold.app) instance.\n\nWarning! This API...\n\n* ... is not complete! Functionality is limited for now, but future releases will add more capabilities.\n* ... is not yet at v1! It's subject to breaking changes at any time.\n* ... is only valid for this host! Other Manyfold instances running different software versions may expose a different set of API functionality.\n"
   },
   "paths": {
-    "/collections": {
-      "get": {
-        "summary": "A list of collections",
-        "tags": [
-          "Collections"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "example": 1,
-            "description": "Specify which page of results to retrieve.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "order",
-            "in": "query",
-            "enum": [
-              "name",
-              "recent"
-            ],
-            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
-            "example": "name",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "client_credentials": [
-              "read"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/ld+json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "@context": {
-                      "$ref": "#/components/schemas/jsonld_context"
-                    },
-                    "@id": {
-                      "type": "string",
-                      "example": "https://example.com/collections"
-                    },
-                    "@type": {
-                      "type": "string",
-                      "example": "hydra:Collection"
-                    },
-                    "totalItems": {
-                      "type": "integer",
-                      "example": 42
-                    },
-                    "member": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "@id": {
-                            "type": "string",
-                            "example": "/collections/abc123",
-                            "description": "The URL of the collection"
-                          },
-                          "name": {
-                            "type": "string",
-                            "example": "Printer Parts",
-                            "description": "The human name of the collection"
-                          }
-                        },
-                        "required": [
-                          "@id",
-                          "name"
-                        ]
-                      }
-                    },
-                    "view": {
-                      "type": "object",
-                      "properties": {
-                        "@id": {
-                          "type": "string",
-                          "example": "https://example.com/collections?page=2"
-                        },
-                        "@type": {
-                          "type": "string",
-                          "example": "hydra:PartialCollectionView"
-                        },
-                        "first": {
-                          "type": "string",
-                          "example": "https://example.com/collections?page=1"
-                        },
-                        "prev": {
-                          "type": "string",
-                          "example": "https://example.com/collections?page=1"
-                        },
-                        "next": {
-                          "type": "string",
-                          "example": "https://example.com/collections?page=3"
-                        },
-                        "last": {
-                          "type": "string",
-                          "example": "https://example.com/collections?page=10"
-                        }
-                      },
-                      "required": [
-                        "@id",
-                        "@type",
-                        "first",
-                        "last"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "@context",
-                    "@id",
-                    "@type",
-                    "totalItems",
-                    "member",
-                    "view"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/collections/{id}": {
-      "get": {
-        "summary": "Details of a single collection",
-        "tags": [
-          "Collections"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "example": "abc123",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "client_credentials": [
-              "read"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/ld+json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "@context": {
-                      "$ref": "#/components/schemas/jsonld_context"
-                    },
-                    "@id": {
-                      "type": "string",
-                      "example": "https://example.com/collections/abc123"
-                    },
-                    "@type": {
-                      "type": "string",
-                      "example": "Collection"
-                    },
-                    "name": {
-                      "type": "string",
-                      "example": "Interesting Things"
-                    },
-                    "description": {
-                      "type": "string",
-                      "example": "Lorem ipsum dolor sit amet...",
-                      "description": "A longer description for the collection. Can contain Markdown syntax."
-                    },
-                    "creator": {
-                      "type": "object",
-                      "properties": {
-                        "@id": {
-                          "type": "string",
-                          "example": "https://example.com/creators/abc123"
-                        },
-                        "@type": {
-                          "type": "string",
-                          "example": "Organization"
-                        }
-                      }
-                    }
-                  },
-                  "required": [
-                    "@context",
-                    "@id",
-                    "@type",
-                    "name"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/creators": {
-      "get": {
-        "summary": "A list of creators",
-        "tags": [
-          "Creators"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "example": 1,
-            "description": "Specify which page of results to retrieve.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "order",
-            "in": "query",
-            "enum": [
-              "name",
-              "recent"
-            ],
-            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
-            "example": "name",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "client_credentials": [
-              "read"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/ld+json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "@context": {
-                      "$ref": "#/components/schemas/jsonld_context"
-                    },
-                    "@id": {
-                      "type": "string",
-                      "example": "https://example.com/creators"
-                    },
-                    "@type": {
-                      "type": "string",
-                      "example": "hydra:Collection"
-                    },
-                    "totalItems": {
-                      "type": "integer",
-                      "example": 42
-                    },
-                    "member": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "@id": {
-                            "type": "string",
-                            "example": "/creators/abc123",
-                            "description": "The URL of the creator"
-                          },
-                          "name": {
-                            "type": "string",
-                            "example": "Fred",
-                            "description": "The human name of the creator"
-                          }
-                        },
-                        "required": [
-                          "@id",
-                          "name"
-                        ]
-                      }
-                    },
-                    "view": {
-                      "type": "object",
-                      "properties": {
-                        "@id": {
-                          "type": "string",
-                          "example": "https://example.com/creators?page=2"
-                        },
-                        "@type": {
-                          "type": "string",
-                          "example": "hydra:PartialCollectionView"
-                        },
-                        "first": {
-                          "type": "string",
-                          "example": "https://example.com/creators?page=1"
-                        },
-                        "prev": {
-                          "type": "string",
-                          "example": "https://example.com/creators?page=1"
-                        },
-                        "next": {
-                          "type": "string",
-                          "example": "https://example.com/creators?page=3"
-                        },
-                        "last": {
-                          "type": "string",
-                          "example": "https://example.com/creators?page=10"
-                        }
-                      },
-                      "required": [
-                        "@id",
-                        "@type",
-                        "first",
-                        "last"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "@context",
-                    "@id",
-                    "@type",
-                    "totalItems",
-                    "member",
-                    "view"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/creators/{id}": {
-      "get": {
-        "summary": "Details of a single creator",
-        "tags": [
-          "Creators"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "example": "abc123",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "client_credentials": [
-              "read"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/ld+json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "@context": {
-                      "$ref": "#/components/schemas/jsonld_context"
-                    },
-                    "@id": {
-                      "type": "string",
-                      "example": "https://example.com/creators/abc123"
-                    },
-                    "@type": {
-                      "type": "string",
-                      "example": "Organization"
-                    },
-                    "name": {
-                      "type": "string",
-                      "example": "Bruce Wayne"
-                    },
-                    "description": {
-                      "type": "string",
-                      "example": "Lorem ipsum dolor sit amet...",
-                      "description": "A longer description for the creator. Can contain Markdown syntax."
-                    }
-                  },
-                  "required": [
-                    "@context",
-                    "@id",
-                    "@type",
-                    "name"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/models/{model_id}/model_files/{id}": {
-      "get": {
-        "summary": "Details of a single file in a model",
-        "tags": [
-          "Files"
-        ],
-        "parameters": [
-          {
-            "name": "model_id",
-            "in": "path",
-            "required": true,
-            "example": "abc123",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "example": "def456",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "client_credentials": [
-              "read"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/ld+json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "@context": {
-                      "$ref": "#/components/schemas/jsonld_context"
-                    },
-                    "@id": {
-                      "type": "string",
-                      "example": "https://example.com/models/abc123/model_files/def456"
-                    },
-                    "@type": {
-                      "type": "string",
-                      "example": "3DModel"
-                    },
-                    "name": {
-                      "type": "string",
-                      "example": "Benchy"
-                    },
-                    "isPartOf": {
-                      "type": "object",
-                      "properties": {
-                        "@id": {
-                          "type": "string",
-                          "example": "https://example.com/models/abc123"
-                        },
-                        "@type": {
-                          "type": "string",
-                          "example": "3DModel"
-                        }
-                      }
-                    },
-                    "encodingFormat": {
-                      "type": "string",
-                      "example": "model/stl"
-                    },
-                    "contentUrl": {
-                      "type": "string",
-                      "example": "https://example.com/models/abc123/model_files/def456.stl"
-                    },
-                    "contentSize": {
-                      "type": "integer",
-                      "example": 12345
-                    },
-                    "description": {
-                      "type": "string",
-                      "example": "Lorem ipsum dolor sit amet...",
-                      "description": "A longer description for the file. Can contain Markdown syntax."
-                    },
-                    "spdx:license": {
-                      "$ref": "#/components/schemas/spdxLicense"
-                    },
-                    "creator": {
-                      "type": "object",
-                      "properties": {
-                        "@id": {
-                          "type": "string",
-                          "example": "https://example.com/creators/abc123"
-                        },
-                        "@type": {
-                          "type": "string",
-                          "example": "Organization"
-                        }
-                      }
-                    }
-                  },
-                  "required": [
-                    "@context",
-                    "@id",
-                    "@type",
-                    "name",
-                    "isPartOf",
-                    "encodingFormat"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/models": {
-      "get": {
-        "summary": "A list of models",
-        "tags": [
-          "Models"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "example": 1,
-            "description": "Specify which page of results to retrieve.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "order",
-            "in": "query",
-            "enum": [
-              "name",
-              "recent"
-            ],
-            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
-            "example": "name",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "creator",
-            "in": "query",
-            "description": "The ID of a creator to filter the model list",
-            "example": "abc123",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "collection",
-            "in": "query",
-            "description": "The ID of a collection to filter the model list",
-            "example": "abc123",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "client_credentials": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/ld+json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "@context": {
-                      "$ref": "#/components/schemas/jsonld_context"
-                    },
-                    "@id": {
-                      "type": "string",
-                      "example": "https://example.com/models"
-                    },
-                    "@type": {
-                      "type": "string",
-                      "example": "hydra:Collection"
-                    },
-                    "totalItems": {
-                      "type": "integer",
-                      "example": 42
-                    },
-                    "member": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "@id": {
-                            "type": "string",
-                            "example": "/models/abc123",
-                            "description": "The URL of the model"
-                          },
-                          "@type": {
-                            "type": "string",
-                            "example": "3DModel"
-                          },
-                          "name": {
-                            "type": "string",
-                            "example": "Model",
-                            "description": "The human name of the model"
-                          }
-                        },
-                        "required": [
-                          "@id",
-                          "name"
-                        ]
-                      }
-                    },
-                    "view": {
-                      "type": "object",
-                      "properties": {
-                        "@id": {
-                          "type": "string",
-                          "example": "https://example.com/models?page=2"
-                        },
-                        "@type": {
-                          "type": "string",
-                          "example": "hydra:PartialCollectionView"
-                        },
-                        "first": {
-                          "type": "string",
-                          "example": "https://example.com/models?page=1"
-                        },
-                        "prev": {
-                          "type": "string",
-                          "example": "https://example.com/models?page=1"
-                        },
-                        "next": {
-                          "type": "string",
-                          "example": "https://example.com/models?page=3"
-                        },
-                        "last": {
-                          "type": "string",
-                          "example": "https://example.com/models?page=10"
-                        }
-                      },
-                      "required": [
-                        "@id",
-                        "@type",
-                        "first",
-                        "last"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "@context",
-                    "@id",
-                    "@type",
-                    "totalItems",
-                    "member",
-                    "view"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/models/{id}": {
-      "get": {
-        "summary": "Details of a single model",
-        "tags": [
-          "Models"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "example": "abc123",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "client_credentials": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/ld+json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "@context": {
-                      "$ref": "#/components/schemas/jsonld_context"
-                    },
-                    "@id": {
-                      "type": "string",
-                      "example": "https://example.com/models/abc123"
-                    },
-                    "@type": {
-                      "type": "string",
-                      "example": "3DModel"
-                    },
-                    "name": {
-                      "type": "string",
-                      "example": "3D Benchy"
-                    },
-                    "description": {
-                      "type": "string",
-                      "example": "Lorem ipsum dolor sit amet...",
-                      "description": "A longer description for the model. Can contain Markdown syntax."
-                    },
-                    "hasPart": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "@id": {
-                            "type": "string",
-                            "example": "https://example.com/models/abc123/model_files/def456"
-                          },
-                          "@type": {
-                            "type": "string",
-                            "example": "3DModel"
-                          },
-                          "name": {
-                            "type": "string",
-                            "example": "Benchy"
-                          },
-                          "encodingFormat": {
-                            "type": "string",
-                            "example": "model/stl"
-                          }
-                        }
-                      },
-                      "required": [
-                        "@id",
-                        "@type",
-                        "name",
-                        "encodingFormat"
-                      ]
-                    },
-                    "spdx:license": {
-                      "$ref": "#/components/schemas/spdxLicense"
-                    },
-                    "isPartOf": {
-                      "type": "object",
-                      "properties": {
-                        "@id": {
-                          "type": "string",
-                          "example": "https://example.com/collections/abc123"
-                        },
-                        "@type": {
-                          "type": "string",
-                          "example": "Collection"
-                        }
-                      }
-                    },
-                    "creator": {
-                      "type": "object",
-                      "properties": {
-                        "@id": {
-                          "type": "string",
-                          "example": "https://example.com/creators/abc123"
-                        },
-                        "@type": {
-                          "type": "string",
-                          "example": "Organization"
-                        }
-                      }
-                    },
-                    "keywords": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "example": "tag"
-                      }
-                    }
-                  },
-                  "required": [
-                    "@context",
-                    "@id",
-                    "@type",
-                    "name",
-                    "hasPart"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/.well-known/nodeinfo": {
       "get": {
         "summary": "Discovery URL for NodeInfo protocol",
@@ -1008,7 +187,7 @@
       "get": {
         "summary": "oEmbed response for Collections",
         "tags": [
-          "Collections"
+          "oEmbed"
         ],
         "parameters": [
           {
@@ -1079,7 +258,7 @@
       "get": {
         "summary": "oEmbed response for Creators",
         "tags": [
-          "Creators"
+          "oEmbed"
         ],
         "parameters": [
           {
@@ -1128,7 +307,7 @@
       "get": {
         "summary": "oEmbed response for Models",
         "tags": [
-          "Models"
+          "oEmbed"
         ],
         "parameters": [
           {
@@ -1194,6 +373,1051 @@
           }
         }
       }
+    },
+    "/collections": {
+      "get": {
+        "summary": "A list of collections",
+        "tags": [
+          "Collections"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "example": 1,
+            "description": "Specify which page of results to retrieve.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "enum": [
+              "name",
+              "recent"
+            ],
+            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
+            "example": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "public",
+              "read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "$ref": "#/components/schemas/jsonld_context"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/collections"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "hydra:Collection"
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 42
+                    },
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "@id": {
+                            "type": "string",
+                            "example": "/collections/abc123",
+                            "description": "The URL of the collection"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Printer Parts",
+                            "description": "The human name of the collection"
+                          }
+                        },
+                        "required": [
+                          "@id",
+                          "name"
+                        ]
+                      }
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=2"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "hydra:PartialCollectionView"
+                        },
+                        "first": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=1"
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=1"
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=3"
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://example.com/collections?page=10"
+                        }
+                      },
+                      "required": [
+                        "@id",
+                        "@type",
+                        "first",
+                        "last"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "totalItems",
+                    "member",
+                    "view"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new collection",
+        "tags": [
+          "Collections"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Collection created",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/collection_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request structure was incorrect"
+          },
+          "422": {
+            "description": "Creation failed due to invalid data"
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.manyfold.v0+json": {
+              "schema": {
+                "$ref": "#/components/schemas/collection_request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/collections/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "example": "abc123",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Details of a single collection",
+        "tags": [
+          "Collections"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "public",
+              "read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/collection_response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update a collection",
+        "tags": [
+          "Collections"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Collection updated",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/collection_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request structure was incorrect"
+          },
+          "422": {
+            "description": "Creation failed due to invalid data"
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.manyfold.v0+json": {
+              "schema": {
+                "$ref": "#/components/schemas/collection_request"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove a collection",
+        "tags": [
+          "Collections"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "delete"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "type": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      }
+    },
+    "/creators": {
+      "get": {
+        "summary": "A list of creators",
+        "tags": [
+          "Creators"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "example": 1,
+            "description": "Specify which page of results to retrieve.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "enum": [
+              "name",
+              "recent"
+            ],
+            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
+            "example": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "public",
+              "read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "$ref": "#/components/schemas/jsonld_context"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/creators"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "hydra:Collection"
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 42
+                    },
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "@id": {
+                            "type": "string",
+                            "example": "/creators/abc123",
+                            "description": "The URL of the creator"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Fred",
+                            "description": "The human name of the creator"
+                          }
+                        },
+                        "required": [
+                          "@id",
+                          "name"
+                        ]
+                      }
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=2"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "hydra:PartialCollectionView"
+                        },
+                        "first": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=1"
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=1"
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=3"
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://example.com/creators?page=10"
+                        }
+                      },
+                      "required": [
+                        "@id",
+                        "@type",
+                        "first",
+                        "last"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "totalItems",
+                    "member",
+                    "view"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      },
+      "post": {
+        "summary": "Update a creator",
+        "tags": [
+          "Creators"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Creator created",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/creator_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request structure was incorrect"
+          },
+          "422": {
+            "description": "Creation failed due to invalid data"
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.manyfold.v0+json": {
+              "schema": {
+                "$ref": "#/components/schemas/creator_request"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/creators/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "example": "abc123",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Details of a single creator",
+        "tags": [
+          "Creators"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "public",
+              "read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/creator_response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update a creator",
+        "tags": [
+          "Creators"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Creator updated",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/creator_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request structure was incorrect"
+          },
+          "422": {
+            "description": "Creation failed due to invalid data"
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.manyfold.v0+json": {
+              "schema": {
+                "$ref": "#/components/schemas/creator_request"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove a creator",
+        "tags": [
+          "Creators"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "delete"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "type": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      }
+    },
+    "/models/{model_id}/model_files/{id}": {
+      "parameters": [
+        {
+          "name": "model_id",
+          "in": "path",
+          "required": true,
+          "example": "abc123",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "example": "def456",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Details of a single file in a model",
+        "tags": [
+          "Files"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "public",
+              "read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/model_file_response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update file details",
+        "tags": [
+          "Files"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "File updated",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/model_file_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request structure was incorrect"
+          },
+          "422": {
+            "description": "Update failed due to invalid data"
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.manyfold.v0+json": {
+              "schema": {
+                "$ref": "#/components/schemas/model_file_request"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove a single file",
+        "tags": [
+          "Files"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "delete"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "type": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      }
+    },
+    "/models": {
+      "get": {
+        "summary": "A list of models",
+        "tags": [
+          "Models"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "example": 1,
+            "description": "Specify which page of results to retrieve.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "enum": [
+              "name",
+              "recent"
+            ],
+            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
+            "example": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creator",
+            "in": "query",
+            "description": "The ID of a creator to filter the model list",
+            "example": "abc123",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "collection",
+            "in": "query",
+            "description": "The ID of a collection to filter the model list",
+            "example": "abc123",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "public",
+              "read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "$ref": "#/components/schemas/jsonld_context"
+                    },
+                    "@id": {
+                      "type": "string",
+                      "example": "https://example.com/models"
+                    },
+                    "@type": {
+                      "type": "string",
+                      "example": "hydra:Collection"
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 42
+                    },
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "@id": {
+                            "type": "string",
+                            "example": "/models/abc123",
+                            "description": "The URL of the model"
+                          },
+                          "@type": {
+                            "type": "string",
+                            "example": "3DModel"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Model",
+                            "description": "The human name of the model"
+                          }
+                        },
+                        "required": [
+                          "@id",
+                          "name"
+                        ]
+                      }
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=2"
+                        },
+                        "@type": {
+                          "type": "string",
+                          "example": "hydra:PartialCollectionView"
+                        },
+                        "first": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=1"
+                        },
+                        "prev": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=1"
+                        },
+                        "next": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=3"
+                        },
+                        "last": {
+                          "type": "string",
+                          "example": "https://example.com/models?page=10"
+                        }
+                      },
+                      "required": [
+                        "@id",
+                        "@type",
+                        "first",
+                        "last"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "@context",
+                    "@id",
+                    "@type",
+                    "totalItems",
+                    "member",
+                    "view"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      }
+    },
+    "/models/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "example": "abc123",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Details of a single model",
+        "tags": [
+          "Models"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "public",
+              "read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/model_response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update a model",
+        "tags": [
+          "Models"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Model updated",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/model_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request structure was incorrect"
+          },
+          "422": {
+            "description": "Update failed due to invalid data"
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.manyfold.v0+json": {
+              "schema": {
+                "$ref": "#/components/schemas/model_request"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove an entire model",
+        "tags": [
+          "Models"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "delete"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/vnd.manyfold.v0+json": {
+                "schema": {
+                  "type": null
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unuthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        }
+      }
     }
   },
   "servers": [
@@ -1205,12 +1429,15 @@
     "securitySchemes": {
       "client_credentials": {
         "type": "oauth2",
-        "description": "Authentication with the OAuth2 Client Credentials grant flow. You can generate a client app and a long-lived bearer token at /oauth/applications.",
+        "description": "Authentication with the OAuth2 Client Credentials grant flow. You can generate client app credentials at /oauth/applications.",
         "flows": {
           "clientCredentials": {
             "tokenUrl": "/oauth/token",
             "scopes": {
-              "read": "read any data accessible to the OAuth application's owner"
+              "public": "read public data accessible without logging in",
+              "read": "read data accessible to the OAuth application's owner",
+              "write": "create or change data that the OAuth application's owner has appropriate permissions for",
+              "delete": "remove data that the OAuth application's owner has appropriate permissions for"
             }
           }
         }
@@ -1458,6 +1685,311 @@
         "required": [
           "@type",
           "licenseId"
+        ]
+      },
+      "collection_request": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "My Favourites"
+          },
+          "description": {
+            "type": "string",
+            "example": "This is my collection of favourite things"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "collection_response": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/jsonld_context"
+          },
+          "@id": {
+            "type": "string",
+            "example": "https://example.com/collections/abc123"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Collection"
+          },
+          "name": {
+            "type": "string",
+            "example": "Interesting Things"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet...",
+            "description": "A longer description for the collection. Can contain Markdown syntax."
+          },
+          "creator": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/creators/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Organization"
+              }
+            }
+          }
+        },
+        "required": [
+          "@context",
+          "@id",
+          "@type",
+          "name"
+        ]
+      },
+      "creator_request": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Bruce Wayne"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet..."
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "creator_response": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/jsonld_context"
+          },
+          "@id": {
+            "type": "string",
+            "example": "https://example.com/creators/abc123"
+          },
+          "@type": {
+            "type": "string",
+            "example": "Organization"
+          },
+          "name": {
+            "type": "string",
+            "example": "Bruce Wayne"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet...",
+            "description": "A longer description for the creator. Can contain Markdown syntax."
+          }
+        },
+        "required": [
+          "@context",
+          "@id",
+          "@type",
+          "name"
+        ]
+      },
+      "model_request": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Batmobile"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet..."
+          }
+        }
+      },
+      "model_response": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/jsonld_context"
+          },
+          "@id": {
+            "type": "string",
+            "example": "https://example.com/models/abc123"
+          },
+          "@type": {
+            "type": "string",
+            "example": "3DModel"
+          },
+          "name": {
+            "type": "string",
+            "example": "3D Benchy"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet...",
+            "description": "A longer description for the model. Can contain Markdown syntax."
+          },
+          "hasPart": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "example": "https://example.com/models/abc123/model_files/def456"
+                },
+                "@type": {
+                  "type": "string",
+                  "example": "3DModel"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Benchy"
+                },
+                "encodingFormat": {
+                  "type": "string",
+                  "example": "model/stl"
+                }
+              }
+            },
+            "required": [
+              "@id",
+              "@type",
+              "name",
+              "encodingFormat"
+            ]
+          },
+          "spdx:license": {
+            "$ref": "#/components/schemas/spdxLicense"
+          },
+          "isPartOf": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/collections/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Collection"
+              }
+            }
+          },
+          "creator": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/creators/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Organization"
+              }
+            }
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "tag"
+            }
+          }
+        },
+        "required": [
+          "@context",
+          "@id",
+          "@type",
+          "name",
+          "hasPart"
+        ]
+      },
+      "model_file_request": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": "string",
+            "example": "model.stl"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet..."
+          }
+        }
+      },
+      "model_file_response": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/jsonld_context"
+          },
+          "@id": {
+            "type": "string",
+            "example": "https://example.com/models/abc123/model_files/def456"
+          },
+          "@type": {
+            "type": "string",
+            "example": "3DModel"
+          },
+          "name": {
+            "type": "string",
+            "example": "Benchy"
+          },
+          "isPartOf": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/models/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "3DModel"
+              }
+            }
+          },
+          "encodingFormat": {
+            "type": "string",
+            "example": "model/stl"
+          },
+          "contentUrl": {
+            "type": "string",
+            "example": "https://example.com/models/abc123/model_files/def456.stl"
+          },
+          "contentSize": {
+            "type": "integer",
+            "example": 12345
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet...",
+            "description": "A longer description for the file. Can contain Markdown syntax."
+          },
+          "spdx:license": {
+            "$ref": "#/components/schemas/spdxLicense"
+          },
+          "creator": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/creators/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Organization"
+              }
+            }
+          }
+        },
+        "required": [
+          "@context",
+          "@id",
+          "@type",
+          "name",
+          "isPartOf",
+          "encodingFormat"
         ]
       }
     }

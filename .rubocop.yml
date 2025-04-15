@@ -4,6 +4,7 @@ require:
 
 plugins:
   - rubocop-performance
+  - rubocop-capybara
   - rubocop-rails
   - rubocop-rspec
   - rubocop-rspec_rails
@@ -12,6 +13,7 @@ plugins:
 
 inherit_gem:
   standard: config/base.yml
+  rswag-specs: .rubocop_rspec_alias_config.yml
 
 AllCops:
   TargetRubyVersion: 3.4
@@ -31,4 +33,9 @@ I18n/RailsI18n:
   Exclude:
     - "spec/**/*"
 RSpec/NestedGroups:
-  Max: 4
+  Max: 5
+RSpec/MultipleMemoizedHelpers:
+  Max: 6
+RSpec/NoExpectationExample:
+  Exclude:
+    - spec/system/documentation_screenshots_spec.rb

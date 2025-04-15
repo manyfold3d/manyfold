@@ -14,6 +14,8 @@ require "rspec/rails"
 require "rake"
 Rails.application.load_tasks
 
+Capybara::Screenshot.prune_strategy = :keep_last_run
+
 Rails.root.glob("spec/support/**/*.rb").sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
@@ -62,6 +64,10 @@ RSpec.configure do |config|
       config.filter_run_excluding case_sensitive: true
     end
   end
+
+  config.filter_run_excluding :documentation unless ENV.fetch("DOC_SCREENSHOT", false) === "true"
+
+  config.include ScreenshotHelpers, type: :system
 end
 
 # Copy parsers into integration tests - this doesn't happen automatically for some reason

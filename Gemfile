@@ -51,6 +51,7 @@ group :development, :test do
   gem "rubocop-rspec", require: false
   gem "rubocop-rspec_rails", require: false
   gem "rubocop-factory_bot", require: false
+  gem "rubocop-capybara", require: false
   gem "rubocop-i18n", require: false
   gem "rubocop-performance", "~> 1.23", require: false
   gem "rubocop-pundit", github: "manyfold3d/rubocop-pundit", require: false
@@ -58,6 +59,12 @@ group :development, :test do
   gem "i18n-tasks", "~> 1.0"
   gem "simplecov", "~> 0.22.0", require: false
   gem "with_model", "~> 2.2"
+
+  # system tests and custom screenshots
+  gem "capybara"
+  gem "capybara-screenshot", github: "el-cms/capybara-screenshot", branch: "custom-prefixes"
+  gem "image_processing"
+  gem "selenium-webdriver"
 end
 
 group :development do
@@ -150,7 +157,7 @@ gem "better_content_security_policy", "~> 0.1.4"
 gem "devise_zxcvbn", "~> 6.0"
 
 gem "ransack", "~> 4.3"
-gem "federails", "~> 0.6"
+gem "federails", git: "https://gitlab.com/experimentslabs/federails", branch: "main"
 gem "federails-moderation", "~> 0.3"
 gem "caber"
 

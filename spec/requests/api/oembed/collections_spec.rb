@@ -1,12 +1,10 @@
 # spec/requests/blogs_spec.rb
 require "swagger_helper"
 
-describe "Collections", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
-  before { create(:admin) }
-
+describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   path "/collections/{id}.oembed" do
     get "oEmbed response for Collections" do
-      tags "Collections"
+      tags "oEmbed"
       produces "application/json+oembed"
       parameter name: :id, in: :path, type: :string
       parameter name: :maxwidth, in: :query, type: :integer, required: false
@@ -31,11 +29,13 @@ describe "Collections", :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
           }
 
         let(:id) { create(:collection, :public).to_param }
+
         run_test!
       end
 
       response "404", "Not Found or Unauthorized" do
         let(:id) { create(:collection).to_param }
+
         run_test!
       end
     end

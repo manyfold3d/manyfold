@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/el-cms/capybara-screenshot.git
+  revision: 866841fa662cbe54043cc254be2d76e6511895da
+  branch: custom-prefixes
+  specs:
+    capybara-screenshot (1.0.26)
+      capybara (>= 1.0, < 4)
+      launchy
+
+GIT
   remote: https://github.com/manyfold3d/rubocop-pundit.git
   revision: 10ac81bbec63a9abd3d58be84dc47d9c490b29c6
   specs:
@@ -13,6 +22,20 @@ GIT
     sqlite3_ar_regexp (2.2.0)
       activerecord (>= 3.2)
       sqlite3
+
+GIT
+  remote: https://gitlab.com/experimentslabs/federails
+  revision: aebea00d582bb3b961be5643a26a7b63c580dc6f
+  branch: main
+  specs:
+    federails (0.6.1)
+      faraday
+      faraday-follow_redirects
+      json-ld (>= 3.2.0)
+      json-ld-preloaded (>= 3.2.0)
+      kaminari (>= 1.2.0)
+      pundit (>= 2.3.0)
+      rails (>= 7.0.4)
 
 GEM
   remote: https://rubygems.org/
@@ -168,6 +191,15 @@ GEM
     byebug (12.0.0)
     caber (0.4.0)
       rails (>= 7.1.4)
+    capybara (3.40.0)
+      addressable
+      matrix
+      mini_mime (>= 0.1.3)
+      nokogiri (~> 1.11)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (>= 1.5, < 3.0)
+      xpath (~> 3.2)
     chunky_png (1.4.0)
     climate_control (1.2.0)
     cocooned (2.4.1)
@@ -208,9 +240,9 @@ GEM
     domain_name (0.6.20240107)
     doorkeeper (5.8.2)
       railties (>= 5)
-    dotenv (3.1.7)
-    dotenv-rails (3.1.7)
-      dotenv (= 3.1.7)
+    dotenv (3.1.8)
+    dotenv-rails (3.1.8)
+      dotenv (= 3.1.8)
       railties (>= 6.1)
     down (5.4.2)
       addressable (~> 2.8)
@@ -239,14 +271,6 @@ GEM
       faraday (>= 1, < 3)
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
-    federails (0.6.1)
-      faraday
-      faraday-follow_redirects
-      json-ld (>= 3.2.0)
-      json-ld-preloaded (>= 3.2.0)
-      kaminari (>= 1.2.0)
-      pundit (>= 2.3.0)
-      rails (>= 7.0.4)
     federails-moderation (0.3.0)
       federails (~> 0.4)
       public_suffix (~> 6.0)
@@ -342,6 +366,9 @@ GEM
       terminal-table (>= 1.5.1)
     i18n_data (1.1.0)
       simple_po_parser (~> 1.1)
+    image_processing (1.14.0)
+      mini_magick (>= 4.9.5, < 6)
+      ruby-vips (>= 2.0.17, < 3)
     inherited_resources (1.14.0)
       actionpack (>= 6.0)
       has_scope (>= 0.6)
@@ -432,8 +459,12 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
+    matrix (0.4.2)
     memoist (0.16.2)
     method_source (1.1.0)
+    mini_magick (5.2.0)
+      benchmark
+      logger
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
     minitest (5.25.5)
@@ -500,7 +531,7 @@ GEM
     orm_adapter (0.5.0)
     ostruct (0.6.1)
     parallel (1.26.3)
-    parser (3.3.7.4)
+    parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
@@ -685,6 +716,9 @@ GEM
     rubocop-ast (1.44.0)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
+    rubocop-capybara (2.22.1)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
     rubocop-factory_bot (2.27.1)
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
@@ -695,11 +729,11 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.30.3)
+    rubocop-rails (2.31.0)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
-      rubocop (>= 1.72.1, < 2.0)
+      rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
     rubocop-rspec (3.5.0)
       lint_roller (~> 1.1)
@@ -709,11 +743,20 @@ GEM
       rubocop (~> 1.72, >= 1.72.1)
       rubocop-rspec (~> 3.5)
     ruby-progressbar (1.13.0)
+    ruby-vips (2.2.3)
+      ffi (~> 1.12)
+      logger
     ruby2_keywords (0.0.5)
     rubyzip (2.4.1)
-    scout_apm (5.6.2)
+    scout_apm (5.6.4)
       parser
     securerandom (0.4.1)
+    selenium-webdriver (4.31.0)
+      base64 (~> 0.2)
+      logger (~> 1.4)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     shellany (0.0.1)
     shrine (3.6.0)
       content_disposition (~> 1.0)
@@ -824,12 +867,15 @@ GEM
       faraday (~> 2.0)
       faraday-follow_redirects
     webrick (1.9.1)
+    websocket (1.2.11)
     websocket-driver (0.7.7)
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     with_model (2.2.0)
       activerecord (>= 7.0)
+    xpath (3.2.0)
+      nokogiri (~> 1.8)
     zeitwerk (2.7.2)
     zxcvbn (0.1.10)
 
@@ -854,6 +900,8 @@ DEPENDENCIES
   bullet (~> 8.0)
   byebug
   caber
+  capybara
+  capybara-screenshot!
   climate_control (~> 1.2)
   cocooned (~> 2.4)
   cssbundling-rails (~> 1.4)
@@ -867,7 +915,7 @@ DEPENDENCIES
   erb_lint (~> 0.9.0)
   factory_bot
   faker (~> 3.5)
-  federails (~> 0.6)
+  federails!
   federails-moderation (~> 0.3)
   ffi-libarchive (~> 1.1)
   get_process_mem (~> 1.0)
@@ -876,6 +924,7 @@ DEPENDENCIES
   i18n-js (~> 4.2)
   i18n-tasks (~> 1.0)
   i18n_data (~> 1.1.0)
+  image_processing
   jbuilder (~> 2.13)
   job-iteration (~> 1.10)
   jsbundling-rails
@@ -914,6 +963,7 @@ DEPENDENCIES
   rolify (~> 6.0)
   rspec-rails
   rswag (~> 2.16)
+  rubocop-capybara
   rubocop-factory_bot
   rubocop-i18n
   rubocop-performance (~> 1.23)
@@ -923,6 +973,7 @@ DEPENDENCIES
   rubocop-rspec_rails
   rubyzip (~> 2.4)
   scout_apm
+  selenium-webdriver
   shrine (~> 3.6)
   shrine-tus (~> 2.1)
   sidekiq (~> 7.3)

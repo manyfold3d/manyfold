@@ -4,6 +4,10 @@ class ModelsController < ApplicationController
   include ModelListable
   include Permittable
 
+  allow_api_access only: [:index, :show], scope: [:read, :public]
+  allow_api_access only: :update, scope: :write
+  allow_api_access only: :destroy, scope: :delete
+
   before_action :redirect_search, only: [:index], if: -> { params.key?(:q) }
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
   before_action :get_creators_and_collections, only: [:new, :edit, :bulk_edit]
@@ -17,7 +21,7 @@ class ModelsController < ApplicationController
     prepare_model_list
     respond_to do |format|
       format.html { render layout: "card_list_page" }
-      format.json_ld { render json: JsonLd::ModelListSerializer.new(@models).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelListSerializer.new(@models).serialize }
     end
   end
 
@@ -54,7 +58,7 @@ class ModelsController < ApplicationController
         # We will rely on Shrine to clean up the temp file
       end
       format.oembed { render json: OEmbed::ModelSerializer.new(@model, helpers.oembed_params).serialize }
-      format.json_ld { render json: JsonLd::ModelSerializer.new(@model).serialize }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelSerializer.new(@model).serialize }
     end
   end
 
@@ -96,11 +100,23 @@ class ModelsController < ApplicationController
   def update
     hash = model_params
     organize = hash.delete(:organize) == "true"
-    if @model.update(hash)
-      @model.organize_later if organize
-      redirect_to @model, notice: t(".success")
-    else
-      redirect_back_or_to edit_model_path(@model), alert: t(".failure")
+    result = @model.update(hash)
+    respond_to do |format|
+      format.html do
+        if result
+          @model.organize_later if organize
+          redirect_to @model, notice: t(".success")
+        else
+          redirect_back_or_to edit_model_path(@model), alert: t(".failure")
+        end
+      end
+      format.manyfold_api_v0 do
+        if result
+          render json: ManyfoldApi::V0::ModelSerializer.new(@model).serialize
+        else
+          render json: @model.errors.to_json, status: :unprocessable_entity
+        end
+      end
     end
   end
 
@@ -168,11 +184,16 @@ class ModelsController < ApplicationController
 
   def destroy
     @model.delete_from_disk_and_destroy
-    if request.referer && (URI.parse(request.referer).path == model_path(@model))
-      # If we're coming from the model page itself, we can't go back there
-      redirect_to root_path, notice: t(".success")
-    else
-      redirect_back_or_to root_path, notice: t(".success")
+    respond_to do |format|
+      format.html do
+        if request.referer && (URI.parse(request.referer).path == model_path(@model))
+          # If we're coming from the model page itself, we can't go back there
+          redirect_to root_path, notice: t(".success")
+        else
+          redirect_back_or_to root_path, notice: t(".success")
+        end
+      end
+      format.manyfold_api_v0 { head :no_content }
     end
   end
 
@@ -204,25 +225,12 @@ class ModelsController < ApplicationController
   end
 
   def model_params
-    params.require(:model).permit(
-      :preview_file_id,
-      :creator_id,
-      :library_id,
-      :name,
-      :caption,
-      :notes,
-      :license,
-      :sensitive,
-      :collection_id,
-      :q,
-      :library,
-      :creator,
-      :tag,
-      :organize,
-      :missingtag,
-      tag_list: [],
-      links_attributes: [:id, :url, :_destroy]
-    ).deep_merge(caber_relations_params(type: :model))
+    if is_api_request?
+      raise ActionController::BadRequest unless params[:json]
+      ManyfoldApi::V0::ModelDeserializer.new(params[:json]).deserialize
+    else
+      Form::ModelDeserializer.new(params).deserialize
+    end
   end
 
   def get_model

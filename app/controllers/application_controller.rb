@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   after_action :set_content_security_policy_header, if: -> { request.format.html? }
 
   before_action :authenticate_user!, unless: -> { SiteSettings.multiuser_enabled? || has_signed_id? }
-  before_action :doorkeeper_token_authorize!, if: :is_api_request?
   around_action :switch_locale
   before_action :check_for_first_use
   before_action :show_security_alerts
@@ -44,7 +43,34 @@ class ApplicationController < ActionController::Base
     is_a?(ActiveAdmin::BaseController)
   end
 
+  def self.allow_api_access(only:, scope:)
+    skip_before_action :verify_authenticity_token, if: :is_api_request?
+    before_action only: Array(only), if: :is_api_request? do
+      # Perform general auth and scope check
+      doorkeeper_authorize!(*Array(scope))
+      # If scope is :public, we need no resource owner
+      resource_owner = if doorkeeper_token&.scopes == ["public"]
+        nil
+      else
+        # If this is a client credentials flow, the resource owner should be the owner of the application
+        doorkeeper_token&.application&.owner
+      end
+      # Sign in resource owner
+      if resource_owner
+        if resource_owner.active_for_authentication?
+          sign_in resource_owner, store: false
+        else
+          doorkeeper_render_error
+        end
+      end
+    end
+  end
+
   private
+
+  def is_api_request?
+    request.format.manyfold_api_v0?
+  end
 
   def has_signed_id?
     params[:id] && ApplicationRecord.signed_id_verifier.valid_message?(params[:id])
@@ -56,6 +82,8 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_content_security_policy
+    return if Rails.env.test?
+
     # Standard security policy
     content_security_policy.default_src :self
     content_security_policy.connect_src :self
@@ -68,7 +96,7 @@ class ApplicationController < ActionController::Base
     content_security_policy.style_src :self
     content_security_policy.style_src_attr :unsafe_inline
     content_security_policy.style_src_elem :self, "https://fonts.googleapis.com"
-    # Add libary origins
+    # Add library origins
     origins = Library.all.filter_map(&:storage_origin) # rubocop:disable Pundit/UsePolicyScope
     content_security_policy.img_src(*origins)
     content_security_policy.connect_src(*origins)
@@ -101,21 +129,6 @@ class ApplicationController < ActionController::Base
     # Not sure how secure this is; it's used to help with timing attacks on login ID lookups
     # by adding a random 0-2 second delay into the response. There is probably a better way.
     sleep Random.new.rand(2.0)
-  end
-
-  private
-
-  def is_api_request?
-    request.format.json_ld?
-  end
-
-  def doorkeeper_token_authorize!
-    app_owner = doorkeeper_token&.application&.owner
-    if app_owner&.active_for_authentication?
-      sign_in app_owner, store: false
-    else
-      doorkeeper_render_error
-    end
   end
 
   def user_not_authorized

@@ -14,9 +14,7 @@ require "rails_helper"
 #   scan_model  POST   /models/:id/scan(.:format)                        models#scan
 
 RSpec.describe "Models" do
-  context "when signed out in multiuser mode", :multiuser do
-    before { create(:admin) }
-
+  context "when signed out in multiuser mode", :after_first_run, :multiuser do
     context "with public model" do
       let!(:model) { create(:model, :public) }
 
