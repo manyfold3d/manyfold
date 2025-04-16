@@ -6,6 +6,7 @@ class UploadPolicy < ApplicationPolicy
   def create?
     all_of(
       user&.is_contributor?,
+      user.has_quota? ? user.current_space_used < user.quota : true,
       none_of(
         SiteSettings.demo_mode_enabled?
       )
