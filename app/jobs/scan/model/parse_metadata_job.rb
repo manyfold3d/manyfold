@@ -47,6 +47,8 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       tag_list.concat data.delete(:tag_list) if data.key?(:tag_list)
       options.merge! data
     end
+    # Make sure links are unique
+    options[:links_attributes]&.filter! { |it| model.links.map(&:url).exclude?(it[:url]) }
     # Filter stop words
     options[:tag_list] = remove_stop_words(tag_list.uniq)
     # Store new metadata
