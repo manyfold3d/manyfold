@@ -7,7 +7,8 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
     parameter name: :id, in: :path, type: :string, required: true, example: "def456"
 
     let(:model) { create(:model, creator: create(:creator), collection: create(:collection)) }
-    let(:file) { create(:model_file, model: model) }
+    let(:supported_file) { create(:model_file, model: model, presupported: true) }
+    let(:file) { create(:model_file, model: model, presupported_version: supported_file) }
 
     let(:model_id) { model.to_param }
     let(:id) { file.to_param }
@@ -22,7 +23,10 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
 
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
 
-        run_test!
+        run_test! "produces valid linked data" do
+          graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+          expect(graph).to be_valid
+        end
       end
 
       response "401", "Unuthorized; the request did not provide valid authentication details" do
@@ -48,10 +52,28 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
       response "200", "File updated" do
         schema ManyfoldApi::V0::ModelFileSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
-        let(:body) { {"description" => "lorem ipsum etc"} }
+        let(:new_supported_file) { create(:model_file, model: model, presupported: true) }
+        let(:body) {
+          {
+            "description" => "lorem ipsum etc",
+            "related" => [{
+              "@id" => "http://localhost:3214/models/#{model_id}/model_files/#{new_supported_file.to_param}",
+              "relationship" => "presupported_version"
+            }]
+          }
+        }
+
+        run_test! "produces valid linked data" do
+          graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+          expect(graph).to be_valid
+        end
 
         run_test! do
           expect(response.parsed_body["description"]).to eq "lorem ipsum etc"
+        end
+
+        run_test! do
+          expect(response.parsed_body.dig("related", 0, "@id")).to eq "http://localhost:3214/models/#{model_id}/model_files/#{new_supported_file.to_param}"
         end
       end
 

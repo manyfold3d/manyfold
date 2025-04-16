@@ -208,7 +208,7 @@ RSpec.describe Model do
     let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
     let!(:model) {
       FileUtils.mkdir_p(File.join(library.path, "original"))
-      m = create(:model, library: library, name: "test model", path: "original")
+      m = create(:model, library: library, name: "test model", path: "original", tag_list: [])
       create(:model_file, model: m)
       m
     }

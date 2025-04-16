@@ -37,7 +37,7 @@
     <div class="col">
       <%= render "bulk_fields", form: form %>
 
-      <%= render "tags_edit", form: form, name: :remove_tags, value: "", label: translate(".remove_tags"), tags: [] %>
+      <%= render "tags_edit", form: form, name: :remove_tags, label: translate(".remove_tags"), tags: [] %>
 
       <% if SiteSettings.show_libraries || current_user.is_administrator? %>
         <div class="row mb-3">

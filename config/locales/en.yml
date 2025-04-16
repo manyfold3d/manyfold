@@ -307,7 +307,7 @@ en:
       redirect_uri:
         help: Use "urn:ietf:wg:oauth:2.0:oob" if your application does not need a redirect URI (e.g. machine-to-machine apps).
       scopes:
-        help: Currently only "read" scope is available. More are coming soon.
+        label: Scopes
       submit: Save application
     index:
       description: OAuth applications allow you to access Manyfold resources from other services via our API.

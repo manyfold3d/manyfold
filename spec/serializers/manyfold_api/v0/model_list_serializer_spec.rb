@@ -61,7 +61,7 @@ RSpec.describe ManyfoldApi::V0::ModelListSerializer do
     end
 
     it "includes ID for each model" do
-      expect(output[:member][0][:@id]).to eq "/models/#{model.to_param}"
+      expect(output[:member][0][:@id]).to eq "http://localhost:3214/models/#{model.to_param}"
     end
 
     it "includes name for each model" do

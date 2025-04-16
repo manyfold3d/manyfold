@@ -27,4 +27,4 @@
 
 <%= checkbox_input_row form, :sensitive %>
 
-<%= render "tags_edit", form: form, name: :add_tags, value: "", label: translate(".add_tags"), tags: @available_tags || [] %>
+<%= render "tags_edit", form: form, name: :add_tags, selected: (defined?(default_tags) ? default_tags : nil), label: translate(".add_tags"), tags: @available_tags || [] %>

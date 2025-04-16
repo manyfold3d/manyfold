@@ -4,7 +4,10 @@ module ManyfoldApi::V0
       return unless @object
       {
         name: @object["name"],
-        notes: @object["description"]
+        slug: @object["slug"],
+        caption: @object["caption"],
+        notes: @object["description"],
+        links_attributes: @object["links"]&.map { |it| LinkDeserializer.new(it).deserialize }
       }.compact
     end
 
@@ -15,7 +18,11 @@ module ManyfoldApi::V0
           name: {type: :string, example: "Bruce Wayne"},
           slug: {type: :string, example: "bruce-wayne"},
           caption: {type: :string, example: "A short description"},
-          description: {type: :string, example: "Lorem ipsum dolor sit amet..."} # rubocop:disable I18n/RailsI18n/DecorateString
+          description: {type: :string, example: "Lorem ipsum dolor sit amet..."}, # rubocop:disable I18n/RailsI18n/DecorateString
+          links: {
+            type: :array,
+            items: LinkDeserializer.schema_ref
+          }
         },
         required: ["name"]
       }

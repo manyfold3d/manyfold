@@ -78,11 +78,7 @@ RSpec.describe "Models" do
         it "adds tags to a model", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
           put "/models/#{library.models.first.to_param}", params: {model: {tag_list: ["a", "b", "c"]}}
           expect(response).to have_http_status(:redirect)
-          tags = library.models.first.tag_list
-          expect(tags.length).to eq 3
-          expect(tags[0]).to eq "a"
-          expect(tags[1]).to eq "b"
-          expect(tags[2]).to eq "c"
+          expect(library.models.first.tag_list).to include("a", "b", "c")
         end
 
         it "clears returnable session param", :as_moderator do
@@ -199,7 +195,7 @@ RSpec.describe "Models" do
 
           expect(response).to have_http_status(:redirect)
           library.models.take(2).each do |model|
-            expect(model.tag_list).to eq ["a", "b", "c"]
+            expect(model.tag_list).to include("a", "b", "c")
           end
         end
 

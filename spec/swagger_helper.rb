@@ -138,6 +138,7 @@ RSpec.configure do |config|
             },
             required: ["@type", "licenseId"]
           },
+          ManyfoldApi::V0::LinkDeserializer.schema_ref_name => ManyfoldApi::V0::LinkDeserializer.schema,
           ManyfoldApi::V0::CollectionDeserializer.schema_ref_name => ManyfoldApi::V0::CollectionDeserializer.schema,
           ManyfoldApi::V0::CollectionSerializer.schema_ref_name => ManyfoldApi::V0::CollectionSerializer.schema,
           ManyfoldApi::V0::CreatorDeserializer.schema_ref_name => ManyfoldApi::V0::CreatorDeserializer.schema,

@@ -12,6 +12,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     options.merge! attributes_from_path_template(model.path) unless model.creator
     # Build combined tag list
     tag_list =
+      model.tag_list +
       tags_from_directory_name(model.path) +
       tags_from_path_template(model.path)
     # Load from datapackage
@@ -41,9 +42,8 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       tag_list.concat data.delete(:tag_list)
       options.merge! data
     end
-    tag_list.concat tags_from_auto_new if tag_list.empty?
     # Filter stop words
-    options[:tag_list] = remove_stop_words(tag_list.uniq) if model.tags.empty?
+    options[:tag_list] = remove_stop_words(tag_list.uniq)
     # Store new metadata
     model.update!(options)
   end
@@ -65,11 +65,6 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   def tags_from_directory_name(path)
     return [] unless SiteSettings.model_tags_tag_model_directory_name
     File.split(path).last.split(/[\W_+-]/).filter { |it| it.length > 1 }
-  end
-
-  def tags_from_auto_new
-    return [] unless SiteSettings.model_tags_auto_tag_new
-    [SiteSettings.model_tags_auto_tag_new].flatten
   end
 
   def attributes_from_path_template(path)

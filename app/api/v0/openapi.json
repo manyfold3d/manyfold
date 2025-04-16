@@ -828,7 +828,7 @@
         }
       },
       "post": {
-        "summary": "Update a creator",
+        "summary": "Create a creator",
         "tags": [
           "Creators"
         ],
@@ -1687,16 +1687,70 @@
           "licenseId"
         ]
       },
+      "link_request": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "example": "https://example.com"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
       "collection_request": {
         "type": "object",
         "properties": {
           "name": {
             "type": "string",
-            "example": "My Favourites"
+            "example": "Interesting Things"
+          },
+          "caption": {
+            "type": "string",
+            "example": "A short description"
           },
           "description": {
             "type": "string",
-            "example": "This is my collection of favourite things"
+            "example": "Lorem ipsum dolor sit amet..."
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/link_request"
+            }
+          },
+          "creator": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/creators/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Organization"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "isPartOf": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/collections/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Collection"
+              }
+            },
+            "required": [
+              "@id"
+            ]
           }
         },
         "required": [
@@ -1721,10 +1775,19 @@
             "type": "string",
             "example": "Interesting Things"
           },
+          "caption": {
+            "type": "string",
+            "example": "A short description"
+          },
           "description": {
             "type": "string",
-            "example": "Lorem ipsum dolor sit amet...",
-            "description": "A longer description for the collection. Can contain Markdown syntax."
+            "example": "Lorem ipsum dolor sit amet..."
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/link_request"
+            }
           },
           "creator": {
             "type": "object",
@@ -1737,14 +1800,32 @@
                 "type": "string",
                 "example": "Organization"
               }
-            }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "isPartOf": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/collections/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Collection"
+              }
+            },
+            "required": [
+              "@id"
+            ]
           }
         },
         "required": [
           "@context",
           "@id",
-          "@type",
-          "name"
+          "@type"
         ]
       },
       "creator_request": {
@@ -1754,9 +1835,23 @@
             "type": "string",
             "example": "Bruce Wayne"
           },
+          "slug": {
+            "type": "string",
+            "example": "bruce-wayne"
+          },
+          "caption": {
+            "type": "string",
+            "example": "A short description"
+          },
           "description": {
             "type": "string",
             "example": "Lorem ipsum dolor sit amet..."
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/link_request"
+            }
           }
         },
         "required": [
@@ -1781,17 +1876,29 @@
             "type": "string",
             "example": "Bruce Wayne"
           },
+          "slug": {
+            "type": "string",
+            "example": "bruce-wayne"
+          },
+          "caption": {
+            "type": "string",
+            "example": "A short description"
+          },
           "description": {
             "type": "string",
-            "example": "Lorem ipsum dolor sit amet...",
-            "description": "A longer description for the creator. Can contain Markdown syntax."
+            "example": "Lorem ipsum dolor sit amet..."
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/link_request"
+            }
           }
         },
         "required": [
           "@context",
           "@id",
-          "@type",
-          "name"
+          "@type"
         ]
       },
       "model_request": {
@@ -1801,11 +1908,86 @@
             "type": "string",
             "example": "Batmobile"
           },
+          "caption": {
+            "type": "string",
+            "example": "A short description"
+          },
           "description": {
             "type": "string",
             "example": "Lorem ipsum dolor sit amet..."
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/link_request"
+            }
+          },
+          "creator": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/creators/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Organization"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "isPartOf": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/collections/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Collection"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "spdx:license": {
+            "$ref": "#/components/schemas/spdxLicense"
+          },
+          "sensitive": {
+            "type": "boolean",
+            "example": true
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "tag"
+            }
+          },
+          "preview_file": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/models/abc123/model_files/def456"
+              },
+              "@type": {
+                "type": "string",
+                "example": "3DModel"
+              }
+            },
+            "required": [
+              "@id"
+            ]
           }
-        }
+        },
+        "required": [
+          "name"
+        ]
       },
       "model_response": {
         "type": "object",
@@ -1820,15 +2002,6 @@
           "@type": {
             "type": "string",
             "example": "3DModel"
-          },
-          "name": {
-            "type": "string",
-            "example": "3D Benchy"
-          },
-          "description": {
-            "type": "string",
-            "example": "Lorem ipsum dolor sit amet...",
-            "description": "A longer description for the model. Can contain Markdown syntax."
           },
           "hasPart": {
             "type": "array",
@@ -1860,20 +2033,22 @@
               "encodingFormat"
             ]
           },
-          "spdx:license": {
-            "$ref": "#/components/schemas/spdxLicense"
+          "name": {
+            "type": "string",
+            "example": "Batmobile"
           },
-          "isPartOf": {
-            "type": "object",
-            "properties": {
-              "@id": {
-                "type": "string",
-                "example": "https://example.com/collections/abc123"
-              },
-              "@type": {
-                "type": "string",
-                "example": "Collection"
-              }
+          "caption": {
+            "type": "string",
+            "example": "A short description"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet..."
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/link_request"
             }
           },
           "creator": {
@@ -1887,7 +2062,33 @@
                 "type": "string",
                 "example": "Organization"
               }
-            }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "isPartOf": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/collections/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Collection"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "spdx:license": {
+            "$ref": "#/components/schemas/spdxLicense"
+          },
+          "sensitive": {
+            "type": "boolean",
+            "example": true
           },
           "keywords": {
             "type": "array",
@@ -1895,13 +2096,28 @@
               "type": "string",
               "example": "tag"
             }
+          },
+          "preview_file": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/models/abc123/model_files/def456"
+              },
+              "@type": {
+                "type": "string",
+                "example": "3DModel"
+              }
+            },
+            "required": [
+              "@id"
+            ]
           }
         },
         "required": [
           "@context",
           "@id",
           "@type",
-          "name",
           "hasPart"
         ]
       },
@@ -1915,6 +2131,46 @@
           "description": {
             "type": "string",
             "example": "Lorem ipsum dolor sit amet..."
+          },
+          "caption": {
+            "type": "string",
+            "example": "A short caption describing the file"
+          },
+          "presupported": {
+            "type": "boolean",
+            "example": true
+          },
+          "up": {
+            "type": "string",
+            "enum": [
+              "+y",
+              "+z"
+            ],
+            "example": "+y"
+          },
+          "related": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "example": "https://example.com/models/abc123/model_files/def456"
+                },
+                "@type": {
+                  "type": "string",
+                  "example": "3DModel"
+                },
+                "relationship": {
+                  "type": "string",
+                  "enum": [
+                    "presupported_version",
+                    "presupported_version_of"
+                  ],
+                  "example": "presupported_version"
+                }
+              }
+            }
           }
         }
       },
@@ -1936,19 +2192,6 @@
             "type": "string",
             "example": "Benchy"
           },
-          "isPartOf": {
-            "type": "object",
-            "properties": {
-              "@id": {
-                "type": "string",
-                "example": "https://example.com/models/abc123"
-              },
-              "@type": {
-                "type": "string",
-                "example": "3DModel"
-              }
-            }
-          },
           "encodingFormat": {
             "type": "string",
             "example": "model/stl"
@@ -1961,10 +2204,18 @@
             "type": "integer",
             "example": 12345
           },
-          "description": {
-            "type": "string",
-            "example": "Lorem ipsum dolor sit amet...",
-            "description": "A longer description for the file. Can contain Markdown syntax."
+          "isPartOf": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/models/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "3DModel"
+              }
+            }
           },
           "spdx:license": {
             "$ref": "#/components/schemas/spdxLicense"
@@ -1981,13 +2232,60 @@
                 "example": "Organization"
               }
             }
+          },
+          "filename": {
+            "type": "string",
+            "example": "model.stl"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet..."
+          },
+          "caption": {
+            "type": "string",
+            "example": "A short caption describing the file"
+          },
+          "presupported": {
+            "type": "boolean",
+            "example": true
+          },
+          "up": {
+            "type": "string",
+            "enum": [
+              "+y",
+              "+z"
+            ],
+            "example": "+y"
+          },
+          "related": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "example": "https://example.com/models/abc123/model_files/def456"
+                },
+                "@type": {
+                  "type": "string",
+                  "example": "3DModel"
+                },
+                "relationship": {
+                  "type": "string",
+                  "enum": [
+                    "presupported_version",
+                    "presupported_version_of"
+                  ],
+                  "example": "presupported_version"
+                }
+              }
+            }
           }
         },
         "required": [
           "@context",
           "@id",
           "@type",
-          "name",
           "isPartOf",
           "encodingFormat"
         ]

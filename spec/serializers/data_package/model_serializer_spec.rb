@@ -51,10 +51,10 @@ RSpec.describe DataPackage::ModelSerializer do
     end
 
     it "includes tags in keywords" do
-      expect(output[:keywords]).to eq [
+      expect(output[:keywords]).to include(
         "Tag #0",
         "Tag #1"
-      ]
+      )
     end
 
     it "includes license" do

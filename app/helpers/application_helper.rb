@@ -40,7 +40,8 @@ module ApplicationHelper
   def markdownify(text)
     Kramdown::Document.new(
       sanitize(text),
-      header_offset: 2
+      header_offset: 2,
+      input: "GFM"
     ).to_html.html_safe # rubocop:disable Rails/OutputSafety
   end
 
