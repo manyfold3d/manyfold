@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe UpdateDatapackageJob do
   let(:model) { create(:model) }
-  let(:datapackage_json) { JSON.parse(model.model_files.find_by(filename: "datapackage.json").attachment.read) }
+  let(:datapackage_json) { model.datapackage_content }
 
   it "raises exception if model ID is not found" do
     expect { described_class.perform_now(nil) }.to raise_error(ActiveRecord::RecordNotFound)

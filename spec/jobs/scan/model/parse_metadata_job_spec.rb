@@ -358,4 +358,29 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     expect(model.creator.name).to eq "Bruce Wayne"
     expect(model.tag_list).to include("human", "wizard")
   end
+
+  context "when loading data from datapackage" do
+    let(:model) { create(:model, links_attributes: []) }
+
+    before do
+      allow(model).to receive(:datapackage_content).and_return({
+        "links" => [
+          {
+            "path" => "https://example.com/"
+          }
+        ]
+      })
+      allow(Model).to receive(:find).with(model.id).and_return(model)
+    end
+
+    it "adds links" do
+      expect { described_class.perform_now(model.id) }.to change { model.links.count }.from(0).to(1)
+    end
+
+    it "does not duplicate links" do
+      # Parse twice so we might duplicate the links
+      described_class.perform_now(model.id)
+      expect { described_class.perform_now(model.id) }.not_to change { model.links.count }
+    end
+  end
 end
