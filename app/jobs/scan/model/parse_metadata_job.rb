@@ -40,11 +40,11 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       # match preview file
       data[:preview_file] = model.model_files.find_by(filename: data[:preview_file])
       # Set file data
-      data.delete(:model_files).each do |file|
+      data.delete(:model_files)&.each do |file|
         model.model_files.find_by(filename: file.delete(:filename))&.update(file)
       end
       # Merge in to main lists
-      tag_list.concat data.delete(:tag_list)
+      tag_list.concat data.delete(:tag_list) if data.key?(:tag_list)
       options.merge! data
     end
     # Filter stop words
