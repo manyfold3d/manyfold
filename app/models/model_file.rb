@@ -207,6 +207,18 @@ class ModelFile < ApplicationRecord
     y_up ? "+y" : "+z"
   end
 
+  def mtime
+    attachment&.mtime || updated_at
+  rescue NoMethodError
+    updated_at
+  end
+
+  def ctime
+    attachment&.ctime || created_at
+  rescue NoMethodError
+    created_at
+  end
+
   private
 
   def rescan_duplicates

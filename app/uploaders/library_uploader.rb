@@ -36,9 +36,11 @@ class LibraryUploader < Shrine
 
   add_metadata :ctime do |io|
     Shrine.with_file(io) { |it| [it.mtime, it.ctime].compact.min }
+  rescue NoMethodError
   end
 
   add_metadata :mtime do |io|
     Shrine.with_file(io) { |it| it.mtime }
+  rescue NoMethodError
   end
 end
