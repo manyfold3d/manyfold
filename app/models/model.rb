@@ -62,7 +62,7 @@ class Model < ApplicationRecord
     # Work out path to this model from the target
     relative_path = Pathname.new(path).relative_path_from(Pathname.new(target.path))
     # Remove datapackage
-    model_files.find_by(filename: "datapackage.json")&.destroy
+    datapackage&.destroy
     # Move files
     model_files.each do |f|
       new_filename = File.join(relative_path, f.filename)
@@ -212,6 +212,14 @@ class Model < ApplicationRecord
 
   def parse_metadata_later(delay: 0.seconds)
     Scan::Model::ParseMetadataJob.set(wait: delay).perform_later(id)
+  end
+
+  def datapackage
+    model_files.find_by(filename: "datapackage.json")
+  end
+
+  def datapackage_content
+    JSON.parse(datapackage.attachment.read) unless datapackage.nil?
   end
 
   private

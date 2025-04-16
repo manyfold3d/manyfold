@@ -21,8 +21,8 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       tags_from_directory_name(model.path) +
       tags_from_path_template(model.path)
     # Load from datapackage
-    if (datapackage = model.model_files.find_by(filename: "datapackage.json"))
-      data = DataPackage::ModelDeserializer.new(JSON.parse(datapackage.attachment.read)).deserialize
+    if (datapackage_content = model.datapackage_content)
+      data = DataPackage::ModelDeserializer.new(datapackage_content).deserialize
       # match creator
       creator_data = data.delete(:creator)
       if creator_data
