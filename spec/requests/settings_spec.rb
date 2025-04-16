@@ -6,7 +6,21 @@ require "rails_helper"
 
 RSpec.describe "Settings" do
   context "when signed out" do
-    it "needs testing when multiuser is enabled"
+    describe "GET /settings" do
+      it "returns access denied" do
+        get "/settings"
+        expect(response).to redirect_to("/users/sign_in")
+      end
+    end
+  end
+
+  context "when signed in", :as_contributor do
+    describe "GET /settings" do
+      it "returns not found" do
+        get "/settings"
+        expect(response).to have_http_status(:not_found)
+      end
+    end
   end
 
   context "when signed in", :as_administrator do
