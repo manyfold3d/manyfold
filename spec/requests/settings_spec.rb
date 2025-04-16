@@ -37,6 +37,36 @@ RSpec.describe "Settings" do
         expect(response).to redirect_to("/settings")
       end
 
+      context "with folder settings params" do
+        let(:params) {
+          {
+            folders: {
+              model_path_template: "test/{tags}/{modelName}{modelId}",
+              parse_metadata_from_path: "1",
+              safe_folder_names: "0"
+            }
+          }
+        }
+
+        before do
+          SiteSettings.model_path_template = "before"
+          SiteSettings.parse_metadata_from_path = false
+          SiteSettings.safe_folder_names = true
+          patch "/settings", params: params
+        end
+
+        it "saves path template" do
+          expect(SiteSettings.model_path_template).to eq "test/{tags}/{modelName}{modelId}"
+        end
+
+        it "saves parsing setting" do
+          expect(SiteSettings.parse_metadata_from_path).to be true
+        end
+
+        it "saves safe folder name setting" do
+          expect(SiteSettings.safe_folder_names).to be false
+        end
+      end
 
       context "with file settings params" do
         let(:params) {
