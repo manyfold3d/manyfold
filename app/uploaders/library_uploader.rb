@@ -4,6 +4,7 @@ require "shrine/storage/tus"
 
 class LibraryUploader < Shrine
   plugin :activerecord
+  plugin :add_metadata
   plugin :refresh_metadata
   plugin :metadata_attributes, size: "size"
   plugin :keep_files
@@ -31,5 +32,15 @@ class LibraryUploader < Shrine
   def generate_location(io, record: nil, derivative: nil, metadata: {}, **)
     return super unless record&.valid?
     record.path_within_library
+  end
+
+  add_metadata :ctime do |io|
+    Shrine.with_file(io) { |it| [it.mtime, it.ctime].compact.min }
+  rescue NoMethodError
+  end
+
+  add_metadata :mtime do |io|
+    Shrine.with_file(io) { |it| it.mtime }
+  rescue NoMethodError
   end
 end
