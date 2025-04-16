@@ -5,11 +5,16 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   def perform(model_id)
     model = Model.find(model_id)
     return if model.remote?
-    options = {}
+    options = {
+      # Some things are preserved if already set
+      creator: model.creator,
+      collection: model.collection,
+      preview_file: model.preview_file
+    }.compact
     # Set preview file
-    options.merge! identify_preview_file(model) unless model.preview_file
+    options.reverse_merge! identify_preview_file(model)
     # Set path template attributes
-    options.merge! attributes_from_path_template(model.path) unless model.creator
+    options.reverse_merge! attributes_from_path_template(model.path)
     # Build combined tag list
     tag_list =
       model.tag_list +
