@@ -39,8 +39,7 @@
     <div class="row">
       <%= form.label nil, t("settings.users.quota.current_quota"), class: "col-sm-4 col-form-label" %>
       <div class="col-sm-8">
-        <%= form.number_field "quota", min: 0, step: 1,
-                              value: (user.quota.to_i / 1.megabyte) %>
+        <%= form.number_field "quota", min: 0, step: 1, value: (user.quota.to_i / 1.megabyte) %>
       </div>
     </div>
   <% end %>

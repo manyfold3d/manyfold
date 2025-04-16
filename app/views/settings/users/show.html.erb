@@ -26,7 +26,7 @@
   </tr>
   <tr>
     <th><%= t("settings.users.quota.current_space_used") %></th>
-    <td><%= @user.current_space_used.to_formatted_s(:human_size, precision: 2) %></td>
+    <td><%= @user.current_space_used.to_fs(:human_size, precision: 2) %></td>
   </tr>
   <% if SiteSettings.enable_user_quota %>
     <tr>
@@ -35,7 +35,7 @@
     </tr>
     <tr>
       <th><%= t("settings.users.quota.title") %></th>
-      <td><%= @user.has_quota? ? @user.quota.to_formatted_s(:human_size) : t("settings.users.quota.unlimited_quota") %></td>
+      <td><%= @user.has_quota? ? @user.quota.to_fs(:human_size) : t("settings.users.quota.unlimited_quota") %></td>
     </tr>
   <% end %>
   <tr>

@@ -77,9 +77,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_09_125753) do
     t.index ["slug"], name: "index_creators_on_slug", unique: true
   end
 
-  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
-  end
-
   create_table "favorites", force: :cascade do |t|
     t.string "favoritable_type", null: false
     t.integer "favoritable_id", null: false
@@ -386,7 +383,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_09_125753) do
     t.string "sensitive_content_handling"
     t.string "public_id"
     t.boolean "approved", default: true, null: false
-    t.integer "quota", default: 0, null: false
+    t.integer "quota", default: 1, null: false
     t.boolean "quota_use_site_default", default: true, null: false
     t.index ["approved"], name: "index_users_on_approved"
     t.index ["email"], name: "index_users_on_email", unique: true

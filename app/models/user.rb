@@ -49,7 +49,7 @@ class User < ApplicationRecord
   attribute :file_list_settings, :json
 
   attribute :quota_use_site_default, :boolean, default: true
-  attribute :quota, :integer, default: 0
+  attribute :quota, :integer
 
   has_many :access_grants, # rubocop:disable Rails/InverseOf
     class_name: "Doorkeeper::AccessGrant",

@@ -28,7 +28,9 @@ class Settings::UsersController < ApplicationController
     # Create user with a random password if one isn't provided
     @user = User.create({
       "password" => password,
-      "password_confirmation" => password
+      "password_confirmation" => password,
+      "quota" => SiteSettings.default_user_quota,
+      "quota_use_site_default" => true
     }.merge(user_params))
     if @user.valid?
       @user.send_reset_password_instructions if SiteSettings.email_configured?
