@@ -279,6 +279,8 @@ class ModelsController < ApplicationController
           entry.pathname = file.filename
           entry.size = file.size
           entry.filetype = Archive::Entry::FILE
+          entry.mtime = file.updated_at
+          entry.ctime = file.created_at
           archive.write_header entry
           archive.write_data file.attachment.read
         end
