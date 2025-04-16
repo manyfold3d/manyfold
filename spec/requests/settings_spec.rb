@@ -36,12 +36,24 @@ RSpec.describe "Settings" do
         patch "/settings"
         expect(response).to redirect_to("/settings")
       end
-    end
 
-    describe "PUT /settings" do
-      it "redirects back to settings on success" do
-        put "/settings"
-        expect(response).to redirect_to("/settings")
+
+      context "with file settings params" do
+        let(:params) {
+          {
+            files: {
+              model_ignored_files: "/.*\\.lys/\n/.*\\.lyt/"
+            }
+          }
+        }
+
+        before do
+          patch "/settings", params: params
+        end
+
+        it "saves file ignore regexes" do
+          expect(SiteSettings.model_ignored_files).to eq [/.*\.lys/, /.*\.lyt/]
+        end
       end
     end
   end
