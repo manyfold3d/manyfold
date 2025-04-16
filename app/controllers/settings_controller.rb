@@ -25,9 +25,8 @@ class SettingsController < ApplicationController
 
   def update_file_settings(settings)
     return unless settings
-    unless settings[:model_ignored_files].split("\n").any? { |p| p.to_regexp.nil? }
-      SiteSettings.model_ignored_files = settings[:model_ignored_files]
-    end
+    regexes = settings[:model_ignored_files].split("\n").map { |p| p.to_regexp }
+    SiteSettings.model_ignored_files = regexes unless regexes.any?(&:nil?)
   end
 
   def update_appearance_settings(settings)
