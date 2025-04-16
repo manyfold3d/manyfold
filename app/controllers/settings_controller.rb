@@ -66,7 +66,7 @@ class SettingsController < ApplicationController
     SiteSettings.approve_signups = (settings[:approve_signups])
     SiteSettings.default_viewer_role = (settings[:default_viewer_role].presence)
     SiteSettings.enable_user_quota = (settings[:enable_user_quota].presence)
-    SiteSettings.default_user_quota = (settings[:default_user_quota])
+    SiteSettings.default_user_quota = (settings[:default_user_quota].to_i * 1.megabyte)
   end
 
   def update_usage_settings(settings)

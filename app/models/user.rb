@@ -173,8 +173,13 @@ class User < ApplicationRecord
     true
   end
 
+  # Quota is in MB and is referred to in the UI as file storage limits for clarity
+  def quota
+    quota_use_site_default ? SiteSettings.default_user_quota : attributes["quota"].to_i * 1.megabyte
+  end
+
   def has_quota?
-    !quota.zero? && SiteSettings.enable_user_quota
+    !(attributes["quota"] == 0) && SiteSettings.enable_user_quota
   end
 
   def current_space_used
@@ -184,7 +189,7 @@ class User < ApplicationRecord
   private
 
   def set_quota
-    self.quota = SiteSettings.default_user_quota if quota_use_site_default
+    attributes["quota"] = SiteSettings.default_user_quota if quota_use_site_default
   end
 
   def has_any_role_of?(*args)

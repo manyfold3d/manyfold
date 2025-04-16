@@ -71,6 +71,8 @@ class Settings::UsersController < ApplicationController
       :username,
       :password,
       :password_confirmation,
+      :quota,
+      :quota_use_site_default,
       role_ids: []
     )
   end

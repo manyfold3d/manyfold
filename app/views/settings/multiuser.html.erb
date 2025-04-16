@@ -67,8 +67,8 @@
   <div class="row">
     <%= form.label nil, t(".user_quotas_site_default"), for: "multiuser[default_user_quota]", class: "col-sm-4 col-form-label" %>
     <div class="col-sm-8">
-      <%= form.number_field "multiuser[default_user_quota]", min: 1, step: 1,
-                            value: SiteSettings.default_user_quota %>
+      <%= form.number_field "multiuser[default_user_quota]", min: 0, step: 1,
+                            value: (SiteSettings.default_user_quota.to_i / 1.megabyte) %>
     </div>
   </div>
   <%= render "submit", form: form %>
