@@ -77,6 +77,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_09_125753) do
     t.index ["slug"], name: "index_creators_on_slug", unique: true
   end
 
+  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.string "favoritable_type", null: false
     t.integer "favoritable_id", null: false
