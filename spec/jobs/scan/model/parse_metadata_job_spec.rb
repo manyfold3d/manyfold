@@ -97,6 +97,41 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     end
   end
 
+  context "when parsing from template and folder name" do
+    let(:model) { create(:model, path: "/creator/tag1/tag2/model-name", tag_list: ["existing", "tags"]) }
+
+    before do
+      allow(SiteSettings).to receive_messages(
+        model_tags_tag_model_directory_name: true,
+        parse_metadata_from_path: true,
+        model_tags_auto_tag_new: "!new",
+        model_path_template: "{creator}/{tags}/{modelName}{modelId}"
+      )
+      described_class.perform_now(model.id)
+      model.reload
+    end
+
+    it "includes tags parsed from folder name" do
+      expect(model.tag_list).to include("model", "name")
+    end
+
+    it "includes tags parsed from path" do
+      expect(model.tag_list).to include("tag1", "tag2")
+    end
+
+    it "preserves pre-existing tags" do
+      expect(model.tag_list).to include("existing", "tags")
+    end
+
+    it "doesn't add auto-new tag" do
+      expect(model.tag_list).not_to include("!new")
+    end
+
+    it "includes creator info parsed from path" do
+      expect(model.creator.name).to include("Creator")
+    end
+  end
+
   context "when parsing with a path template" do
     let(:model) { create(:model, path: "/library-1/stuff/tags/are/greedy/model-name") }
 
