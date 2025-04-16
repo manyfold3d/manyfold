@@ -52,7 +52,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     # Filter stop words
     options[:tag_list] = remove_stop_words(tag_list.uniq)
     # Store new metadata
-    model.update!(options)
+    model.update!(options.compact)
   end
 
   private
