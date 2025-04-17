@@ -220,6 +220,7 @@ class Model < ApplicationRecord
 
   def datapackage_content
     JSON.parse(datapackage.attachment.read) unless datapackage.nil?
+  rescue Shrine::FileNotFound
   end
 
   private
