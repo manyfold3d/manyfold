@@ -27,7 +27,7 @@ jobs:
       - name: Upload Coverage
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-        run: bash <(curl -Ls https://coverage.codacy.com/get.sh)
+        run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/coverage.xml
     services:
       redis:
         image: redis
