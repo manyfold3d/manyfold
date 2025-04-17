@@ -41,7 +41,7 @@ RSpec.describe "Settings" do
         let(:params) {
           {
             folders: {
-              model_path_template: "test/{tags}/{modelName}{modelId}",
+              model_path_template: "test/{tags}/{modelName}",
               parse_metadata_from_path: "1",
               safe_folder_names: "0"
             }
@@ -56,7 +56,7 @@ RSpec.describe "Settings" do
         end
 
         it "saves path template" do
-          expect(SiteSettings.model_path_template).to eq "test/{tags}/{modelName}{modelId}"
+          expect(SiteSettings.model_path_template).to eq "test/{tags}/{modelName}"
         end
 
         it "saves parsing setting" do

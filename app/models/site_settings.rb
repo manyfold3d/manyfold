@@ -7,7 +7,7 @@ class SiteSettings < RailsSettings::Base
   field :model_tags_stop_words_locale, type: :string, default: "en"
   field :model_tags_custom_stop_words, type: :array, default: SupportedMimeTypes.indexable_extensions
   field :model_tags_auto_tag_new, type: :string, default: "!new"
-  field :model_path_template, type: :string, default: "{tags}/{modelName}{modelId}"
+  field :model_path_template, type: :string, default: "{tags}/{modelName}"
   field :model_ignored_files, type: :array, default: [
     /^\.[^\.]+/, # Hidden files starting with .
     /.*\/@eaDir\/.*/, # Synology temp files
