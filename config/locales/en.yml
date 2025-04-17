@@ -501,9 +501,15 @@ en:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
     cults3d: Cults3D
+    github: GitHub
+    makerworld: MakerWorld
+    manyfold: Manyfold
     myminifactory: MyMiniFactory
+    printables: Printables
+    thangs: Thangs
     theminiindex: The Mini Index
     thingiverse: Thingiverse
+    yeggi: yeggi
   user_mailer:
     account_approved:
       greeting: Hi!
