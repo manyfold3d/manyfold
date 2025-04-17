@@ -791,6 +791,9 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
+    simplecov-cobertura (2.1.0)
+      rexml
+      simplecov (~> 0.19)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
     singleton (0.2.0)
@@ -986,6 +989,7 @@ DEPENDENCIES
   sidekiq-cron (~> 2.2)
   sidekiq-failures (~> 1.0)
   simplecov (~> 0.22.0)
+  simplecov-cobertura
   spdx (~> 4.1)
   spring
   sqlite3_ar_regexp!

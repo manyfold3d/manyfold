@@ -3,8 +3,10 @@ require "spec_helper"
 
 ENV["RAILS_ENV"] ||= "test"
 require "simplecov"
+require "simplecov-cobertura"
 SimpleCov.start "rails" do
   enable_coverage :branch
+  SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
 end
 
 require File.expand_path("../config/environment", __dir__)
