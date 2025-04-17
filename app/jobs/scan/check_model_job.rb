@@ -12,7 +12,7 @@ class Scan::CheckModelJob < ApplicationJob
       model.check_for_problems_later
     end
     # Run analysis job on individual files
-    model.model_files.each do |file|
+    model.model_files.without_special.each do |file|
       file.analyse_later
     end
   end
