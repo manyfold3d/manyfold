@@ -26,7 +26,7 @@ class Scan::Model::AddNewFilesJob < ApplicationJob
     file_list(model.path, model.library, include_all_subfolders: include_all_subfolders).each do |filename|
       # Create the file
       file = model.model_files.find_or_create_by(filename: filename.gsub(model.path + "/", ""))
-      file.parse_metadata_later if file.valid?
+      file.parse_metadata_later if file.valid? && file.filename != "datapackage.json"
     end
     model.parse_metadata_later
   end
