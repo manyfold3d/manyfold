@@ -111,6 +111,8 @@ en:
               non_writable: must be writable
               not_found: could not be found on disk
               unsafe: cannot be a privileged system path
+              cannot_contain: cannot contain other libraries
+              cannot_be_contained: cannot be inside another library
         model:
           attributes:
             library:

@@ -27,6 +27,7 @@ class Library < ApplicationRecord
     uniqueness: true,
     safe_path: true,
     writable: true,
+    disjoint_library_folder: true,
     if: -> { storage_service == "filesystem" }
 
   validates :s3_bucket, presence: true, if: -> { storage_service == "s3" }
