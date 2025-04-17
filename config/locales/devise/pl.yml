@@ -75,6 +75,7 @@ pl:
         danger_zone: Strefa zagrożenia!
         leave_blank_if_you_don_t_want_to_change_it: pozostaw puste, jeśli nie chcesz wprowadzać zmian
         security: Bezpieczeństwo
+        social:
         submit: Zapisz zmiany
         title: Moje Ustawienia
         unhappy: Niezadowolony?
@@ -168,6 +169,8 @@ pl:
         keypair:
           label: Użyj separatora do reprezentowania par kluczy
         sorting:
+          alphabetical: alfabetycznie
+          frequency: częstotliwość
           label: Sortowanie
         threshold:
           label: Minimalna liczba tagów do wyświetlenia

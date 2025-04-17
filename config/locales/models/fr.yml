@@ -73,6 +73,7 @@ fr:
       files_card:
         bulk_edit: Modifier tous les fichiers
         heading: Fichiers
+      followers:
       license: Licence
       merge:
         heading: Fusionner

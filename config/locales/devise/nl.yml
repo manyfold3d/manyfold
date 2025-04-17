@@ -75,6 +75,7 @@ nl:
         danger_zone: Gevarenzone!
         leave_blank_if_you_don_t_want_to_change_it: laat leeg als je het niet wilt wijzigen
         security: Beveiliging
+        social:
         submit: Wijzigingen opslaan
         title: Mijn Instellingen
         unhappy: Ontevreden?
@@ -168,6 +169,8 @@ nl:
         keypair:
           label: Gebruik scheidingsteken voor sleutel-waarde paren
         sorting:
+          alphabetical:
+          frequency:
           label: Sortering
         threshold:
           label: Minimaal aantal van tag voor weergave

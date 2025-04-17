@@ -73,6 +73,7 @@ pl:
       files_card:
         bulk_edit: Edytuj wszystkie pliki
         heading: Pliki
+      followers:
       license: Licencja
       merge:
         heading: Połącz
