@@ -194,3 +194,5 @@ gem "rack-cors", "~> 2.0"
 gem "doorkeeper", "~> 5.8"
 
 gem "kramdown-parser-gfm", "~> 1.1"
+
+gem "doorkeeper-i18n", "~> 5.2"
