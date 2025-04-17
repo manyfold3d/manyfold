@@ -79,8 +79,7 @@ To simplify the development environment setup, Manyfold includes a devcontainer 
 
 ### Coding standards
 
-![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/manyfold3d/manyfold)
-![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/manyfold3d/manyfold)
+[![Codacy Quality](https://img.shields.io/codacy/grade/0d309b8b38b5431c9195e62cd7b707f3)](https://app.codacy.com/gh/manyfold3d/manyfold/dashboard)
 
 We use [Rubocop](https://rubocop.org/) to monitor adherence to coding standards in Ruby code. We use [StandardRB](https://github.com/standardrb/standard) rules along with some other rulesets for specific libraries and frameworks.
 
@@ -93,7 +92,7 @@ Code linting is automatically performed by our GitHub Actions test runners, but 
 ### Testing
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/manyfold3d/manyfold/push.yml)
-![Code Climate coverage](https://img.shields.io/codeclimate/coverage/manyfold3d/manyfold)
+[![Codacy Coverage](https://img.shields.io/codacy/coverage/0d309b8b38b5431c9195e62cd7b707f3)](https://app.codacy.com/gh/manyfold3d/manyfold/dashboard)
 
 We want to produce well-tested code; it's not 100%, but we aim to increase test coverage with each new bit of code.
 
@@ -101,8 +100,8 @@ You can run the test suite as a one off with the command `bundle exec rake`, or 
 
 Tests are run automatically when pushed to our repository using GitHub Actions.
 
-Generation of screenshots for the documentation is made with system specs and is not run by default. 
-To generate screenshots, set `DOC_SCREENSHOT=true`: 
+Generation of screenshots for the documentation is made with system specs and is not run by default.
+To generate screenshots, set `DOC_SCREENSHOT=true`:
 
 ```sh
 # All specs and documentation

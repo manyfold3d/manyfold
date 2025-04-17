@@ -23,11 +23,11 @@ jobs:
       - name: Compile assets
         run: bundle exec rails assets:precompile
       - name: Run tests
-        uses: paambaati/codeclimate-action@v9.0.0
-        with:
-          coverageCommand: bundle exec rake
+        run: bundle exec rake
+      - name: Upload Coverage
         env:
-          CC_TEST_REPORTER_ID: f570c8191542a0db2056d5994b06e9d0be35b25bc6897b5e913c1b783b920a0a
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/coverage.xml
     services:
       redis:
         image: redis
