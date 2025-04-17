@@ -150,4 +150,52 @@ RSpec.describe Library do
       expect { library.destroy }.not_to change { File.exist?(File.join(@library_path, "model/file.stl")) } # rubocop:todo RSpec/InstanceVariable
     end
   end
+
+  context "when attempting to create one library inside another" do
+    subject(:library) { build(:library, path: outer_library.path + "/nested_library") }
+
+    let(:outer_library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    around do |ex|
+      MockDirectory.create([
+        "nested_library/model/model.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    it "does not validate" do
+      expect(library).not_to be_valid
+    end
+
+    it "displays a useful error message" do
+      library.validate
+      expect(library.errors[:path].first).to eq "cannot be inside another library"
+    end
+  end
+
+  context "when attempting to create one library outside another" do
+    subject(:library) { build(:library, path: nested_library.path.gsub("/nested_library", "")) }
+
+    let(:nested_library) { create(:library, path: @library_path + "/nested_library") } # rubocop:todo RSpec/InstanceVariable
+
+    around do |ex|
+      MockDirectory.create([
+        "nested_library/model/model.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    it "does not validate" do
+      expect(library).not_to be_valid
+    end
+
+    it "displays a useful error message" do
+      library.validate
+      expect(library.errors[:path].first).to eq "cannot contain other libraries"
+    end
+  end
 end
