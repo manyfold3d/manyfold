@@ -17,7 +17,7 @@ document.addEventListener('ManyfoldReady', () => {
 
     function onPause (pause: boolean, updateState: boolean): void {
       if (pause) {
-        $('#imageCarousel').carousel('pause')
+        Carousel.getInstance(carouselElement)?.pause()
         $('#imageCarouselInner').attr('aria-live', 'polite')
         if (updateState) {
           paused = true
@@ -25,7 +25,7 @@ document.addEventListener('ManyfoldReady', () => {
           $('#rotationControlIcon').removeClass('bi-pause')
         }
       } else {
-        $('#imageCarousel').carousel('cycle')
+        Carousel.getInstance(carouselElement)?.cycle()
         $('#imageCarouselInner').attr('aria-live', 'off')
         if (updateState) {
           paused = false
