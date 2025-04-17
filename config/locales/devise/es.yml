@@ -77,6 +77,7 @@ es:
         danger_zone: "¡Zona peligrosa!"
         leave_blank_if_you_don_t_want_to_change_it: dejar en blanco si no desea modificarlo
         security: Seguridad
+        social:
         submit: Guardar cambios
         title: Configuración de la cuenta
         unhappy: "¿Descontento?"
@@ -170,6 +171,8 @@ es:
         keypair:
           label: Utilizar delimitadores para representar pares de claves
         sorting:
+          alphabetical:
+          frequency:
           label: Ordenar
         threshold:
           label: Número mínimo de etiquetas para la visualización

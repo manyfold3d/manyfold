@@ -12,6 +12,16 @@ cs:
         name: Jméno
         notes: Popis
         slug: Handle
+      doorkeeper/application:
+        access_token:
+        confidential: Důvěrné
+        created_at:
+        name: Jméno
+        owner:
+        redirect_uri: URI přesměrování
+        scopes: Scopes
+        secret:
+        uid:
       federails/moderation/domain_block:
         created_at: Vytvořeno
         domain: Doména
@@ -95,9 +105,22 @@ cs:
         updated_at: Upraveno
     errors:
       models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              forbidden_uri: je serverem zakázána.
+              fragment_present: nemůže obsahovat fragment.
+              invalid_uri: musí být platná URI.
+              relative_uri: musí být absolutní URI.
+              secured_uri: musí být HTTPS/SSL URI.
+              unspecified_scheme: must specify a scheme.
+            scopes:
+              not_match_configured: neodpovídá nastavenému serveru.
         library:
           attributes:
             path:
+              cannot_be_contained:
+              cannot_contain:
               non_writable: musí být zapisovatelné
               not_found: na disku nebylo nalezeno
               unsafe: nemůže být systémovou cestou s privilegii
@@ -283,6 +306,155 @@ cs:
     tags_card:
       skip_tags: Přeskočit seznam štítků
     title: Manyfold
+  doorkeeper:
+    applications:
+      buttons:
+        authorize: Autorizovat
+        cancel: Zrušit
+        destroy: Smazat
+        edit: Upravit
+        submit: Odeslat
+      confirmations:
+        destroy: Opravdu smazat?
+      edit:
+        title: Upravit aplikaci
+      form:
+        error: Chyba! Zkontrolujte a opravte chyby ve formuláři
+      help:
+        blank_redirect_uri: Ponechte prázdné, pokud jste nakonfigurovali svého poskytovatele, aby používal pověření klienta, pověření vlastníka hesla nebo jiný typ grantu, který nevyžaduje přesměrování identifikátoru URI.
+        confidential: Aplikace bude použita tam, kde je možné zachovat důvěrnost klienta. Nativní mobilní aplikace a aplikace s jednou stránkou jsou považovány za nedůvěrné.
+        redirect_uri: Na každý řádek jedna URI
+        scopes: Oddělte scopy mezerami. Nechte prázdné pro použití default scopu.
+      index:
+        actions: Akce
+        callback_url: Callback URL
+        confidential: Důvěrné?
+        confidentiality:
+          'no': Ne
+          'yes': Ano
+        name: Název
+        new: Nová aplikace
+        title: Vaše aplikace
+      new:
+        title: Nová aplikace
+      show:
+        actions: Akce
+        application_id: UID aplikace
+        callback_urls: Url přesměrování
+        confidential: Důvěrné
+        not_defined:
+        scopes: Scopes
+        secret: Secret
+        secret_hashed:
+        title: 'Aplikace: %{name}'
+    authorizations:
+      buttons:
+        authorize: Autorizovat
+        deny: Odmítnout
+      error:
+        title: Vyskytla se chyba
+      form_post:
+        title:
+      new:
+        able_to: Tato aplikace bude mít tato oprávnění
+        prompt: Autorizovat %{client_name} k přístupu k vašemu účtu?
+        title: Nutná autorizace
+      show:
+        title: Autorizační kód
+    authorized_applications:
+      buttons:
+        revoke: Odebrat autorizaci
+      confirmations:
+        revoke: Opravdu autorizovat?
+      index:
+        application: Aplikace
+        created_at: Vytvořeno
+        date_format: "%H:%M:%S %d.%m.%T"
+        title: Vaše autorizované aplikace
+    errors:
+      messages:
+        access_denied: Vlastník zdroje nebo autorizační server požadavek odmítl.
+        admin_authenticator_not_configured: Přístup k panelu admin je zakázán kvůli tomu, že Doorkeeper.configure.admin_authenticator je nekonfigurován.
+        credential_flow_not_configured: Flow pověření vlastníka zdroje se nezdařil kvůli tomu, že Doorkeeper.configure.resource_owner_from_credentials není nakonfigurován.
+        forbidden_token:
+          missing_scope:
+        invalid_client: Autentizace klienta se nezdařila kvůli neznámému klientovi, žádnému ověřování klienta nebo nepodporované metodě ověřování.
+        invalid_code_challenge_method:
+          one:
+          other:
+          zero:
+        invalid_grant: Poskytnutý grant pro udělení oprávnění je neplatný, jeho platnost vypršela, zrušena, neodpovídá identifikátoru URI přesměrování použitého v žádosti o autorizaci nebo byla vydána jinému klientovi.
+        invalid_redirect_uri: Požadované přesměrování uri je chybně formátováno nebo neodpovídá přesměrování URI klienta.
+        invalid_request:
+          invalid_code_challenge:
+          missing_param: 'Missing required parameter: %{value}.'
+          request_not_authorized: Request need to be authorized. Required parameter for authorizing request is missing or invalid.
+          unknown: Požadavku chybí požadovaný parametr, obsahuje nepodporovanou hodnotu parametru, nebo je jinak poškozen.
+        invalid_scope: Požadovaný rozsah je neplatný, neznámý nebo poškozený.
+        invalid_token:
+          expired: Tento přístupový token vypršel
+          revoked: Tento přístupový token byl zneplatněn
+          unknown: Tento přístupový token je neplatný
+        resource_owner_authenticator_not_configured: Vyhledání zdroje se nezdařilo z důvodu, že Doorkeeper.configure.resource_owner_authenticator je nekonfigurován.
+        revoke:
+          unauthorized: You are not authorized to revoke this token
+        server_error: Autorizační server narazil na neočekávanou podmínku, která mu znemožnila splnit požadavek.
+        temporarily_unavailable: Autorizační server není v současné době schopen zpracovat požadavek z důvodu dočasného přetížení nebo údržby serveru.
+        unauthorized_client: Klient není oprávněn provádět tento požadavek touto metodou.
+        unsupported_grant_type: Autorizační server nepodporuje typ autorizačního grantu.
+        unsupported_response_mode:
+        unsupported_response_type: Autorizační server nepodporuje tento typ odpovědi.
+    flash:
+      applications:
+        create:
+          notice: Aplikace vytvořena.
+        destroy:
+          notice: Aplikace smazána.
+        update:
+          notice: Aplikace aktualizována.
+      authorized_applications:
+        destroy:
+          notice: Aplikaci bylo odebráno oprávnění.
+    layouts:
+      admin:
+        nav:
+          applications: Aplikace
+          home: Domů
+          oauth2_provider: OAuth2 poskytovatel
+        title: Doorkeeper
+      application:
+        title: OAuth vyžaduje autorizaci
+    pre_authorization:
+      status: Pre-autorizace
+  doorkeeper_applications:
+    create:
+      failure:
+      success:
+    destroy:
+      success:
+    edit:
+      title: Upravit aplikaci
+    form:
+      confidential:
+        help:
+      redirect_uri:
+        help:
+      scopes:
+        label: Scopes
+      submit:
+    index:
+      description:
+      new:
+      title:
+    new:
+      title:
+    show:
+      destroy: Smazat
+      edit: Upravit
+      title:
+    update:
+      failure:
+      success:
   follow_button_component:
     follow: Sledovat %{name}
     pending: Požadováno
@@ -296,6 +468,8 @@ cs:
     follow_remote_actor:
       followed: Úspěšně sledován %{actor}
     index:
+      followers:
+      following:
       title: Sledování
     new:
       help: Můžete sledovat veřejné tvůrce, kolekce nebo modely na jiném serveru Manyfold, vlastně jakýkoli veřejný účet ve Fediverse! Stačí zadat název účtu do vyhledávacího pole!
@@ -318,6 +492,13 @@ cs:
     download: Stáhnout
     edit: Upravit
     expand: Rozbalit
+    followers:
+      few:
+      many:
+      one:
+      other:
+      two:
+      zero:
     menu: Menu
     new: Nový
     report: Nahlásit %{type}
@@ -325,8 +506,8 @@ cs:
     view: Zobrazení
   home:
     activity:
-      created: přidal před %{time}
-      updated: aktualizo před %{time}
+      created:
+      updated:
     index:
       no_activities: Prozatím nejsou k dispozici žádné aktivity, ke zobrazení.
       recent_activity: Poslední aktivita
@@ -442,9 +623,15 @@ cs:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
     cults3d: Cults3D
+    github:
+    makerworld:
+    manyfold: Manyfold
     myminifactory: MyMiniFactory
+    printables:
+    thangs:
     theminiindex: The Mini Index
     thingiverse: Thingiverse
+    yeggi:
   user_mailer:
     account_approved:
       greeting: Ahoj!

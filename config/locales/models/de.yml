@@ -73,6 +73,7 @@ de:
       files_card:
         bulk_edit: Alle Dateien bearbeiten
         heading: Dateien
+      followers:
       license: Lizenz
       merge:
         heading: Zusammenführen

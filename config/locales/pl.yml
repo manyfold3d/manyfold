@@ -12,6 +12,16 @@ pl:
         name: Nazwa
         notes: Opis
         slug:
+      doorkeeper/application:
+        access_token:
+        confidential: Poufne
+        created_at: Utworzony
+        name: Nazwa
+        owner: Właściciel
+        redirect_uri:
+        scopes:
+        secret:
+        uid:
       federails/moderation/domain_block:
         created_at: Data utworzenia
         domain: Domena
@@ -95,9 +105,22 @@ pl:
         updated_at: Data uaktualnienia
     errors:
       models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              forbidden_uri: jest zabronione przez serwer.
+              fragment_present: nie może zawierać fragmentu.
+              invalid_uri:
+              relative_uri:
+              secured_uri:
+              unspecified_scheme:
+            scopes:
+              not_match_configured:
         library:
           attributes:
             path:
+              cannot_be_contained:
+              cannot_contain:
               non_writable:
               not_found: nie można znaleźć na dysku
               unsafe:
@@ -283,6 +306,155 @@ pl:
     tags_card:
       skip_tags: Pomiń listę tagów
     title: Manyfold
+  doorkeeper:
+    applications:
+      buttons:
+        authorize:
+        cancel:
+        destroy:
+        edit: Edytuj
+        submit:
+      confirmations:
+        destroy: Jesteś pewny?
+      edit:
+        title:
+      form:
+        error:
+      help:
+        blank_redirect_uri:
+        confidential:
+        redirect_uri:
+        scopes:
+      index:
+        actions: Akcje
+        callback_url:
+        confidential:
+        confidentiality:
+          'no':
+          'yes':
+        name: Nazwa
+        new:
+        title:
+      new:
+        title:
+      show:
+        actions: Akcje
+        application_id:
+        callback_urls:
+        confidential:
+        not_defined:
+        scopes:
+        secret:
+        secret_hashed:
+        title:
+    authorizations:
+      buttons:
+        authorize:
+        deny:
+      error:
+        title:
+      form_post:
+        title:
+      new:
+        able_to:
+        prompt:
+        title:
+      show:
+        title:
+    authorized_applications:
+      buttons:
+        revoke:
+      confirmations:
+        revoke: Jesteś pewny?
+      index:
+        application:
+        created_at:
+        date_format:
+        title:
+    errors:
+      messages:
+        access_denied:
+        admin_authenticator_not_configured:
+        credential_flow_not_configured:
+        forbidden_token:
+          missing_scope:
+        invalid_client:
+        invalid_code_challenge_method:
+          one:
+          other:
+          zero:
+        invalid_grant:
+        invalid_redirect_uri:
+        invalid_request:
+          invalid_code_challenge:
+          missing_param:
+          request_not_authorized:
+          unknown:
+        invalid_scope:
+        invalid_token:
+          expired:
+          revoked:
+          unknown:
+        resource_owner_authenticator_not_configured:
+        revoke:
+          unauthorized:
+        server_error:
+        temporarily_unavailable:
+        unauthorized_client:
+        unsupported_grant_type:
+        unsupported_response_mode:
+        unsupported_response_type:
+    flash:
+      applications:
+        create:
+          notice:
+        destroy:
+          notice:
+        update:
+          notice:
+      authorized_applications:
+        destroy:
+          notice:
+    layouts:
+      admin:
+        nav:
+          applications:
+          home:
+          oauth2_provider:
+        title:
+      application:
+        title:
+    pre_authorization:
+      status:
+  doorkeeper_applications:
+    create:
+      failure:
+      success:
+    destroy:
+      success:
+    edit:
+      title:
+    form:
+      confidential:
+        help:
+      redirect_uri:
+        help:
+      scopes:
+        label:
+      submit:
+    index:
+      description:
+      new:
+      title:
+    new:
+      title:
+    show:
+      destroy: Usuń
+      edit: Edytuj
+      title:
+    update:
+      failure:
+      success:
   follow_button_component:
     follow: Obserwuj %{name}
     pending: Żądane
@@ -296,6 +468,8 @@ pl:
     follow_remote_actor:
       followed: Pomyślnie zaczęto obserwować %{actor}
     index:
+      followers:
+      following:
       title: Obserwowane
     new:
       help: Możesz obserwować publicznych twórców, kolekcje lub modele na innym serwerze Manyfold, a nawet każde publiczne konto w Fediversie! Wystarczy, że wpiszesz nazwę konta w polu wyszukiwania!
@@ -318,6 +492,13 @@ pl:
     download: Pobierz
     edit: Edytuj
     expand: Rozwiń
+    followers:
+      few:
+      many:
+      one:
+      other:
+      two:
+      zero:
     menu: Menu
     new: Nowy
     report: Zgłoś %{type}
@@ -325,8 +506,8 @@ pl:
     view: Widok
   home:
     activity:
-      created: dodany %{time} temu
-      updated: zaktualizowany %{time} temu
+      created: dodane %{time} temu
+      updated: zaktualizowane %{time} temu
     index:
       no_activities: Na razie nie ma żadnych aktywności do wyświetlenia.
       recent_activity: Ostatnia Aktywność
@@ -442,9 +623,15 @@ pl:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
     cults3d: Cults3D
+    github:
+    makerworld:
+    manyfold: Manyfold
     myminifactory: MyMiniFactory
+    printables:
+    thangs:
     theminiindex: The Mini Index
     thingiverse: Thingiverse
+    yeggi:
   user_mailer:
     account_approved:
       greeting: Cześć!

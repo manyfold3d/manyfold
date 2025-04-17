@@ -73,6 +73,7 @@ nl:
       files_card:
         bulk_edit: Alle bestanden bewerken
         heading: Bestanden
+      followers:
       license: Licentie
       merge:
         heading: Samenvoegen

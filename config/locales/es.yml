@@ -12,6 +12,16 @@ es:
         name: Nombre
         notes: Notas
         slug: Handle
+      doorkeeper/application:
+        access_token:
+        confidential: Confidential
+        created_at:
+        name: Nombre
+        owner:
+        redirect_uri: URI de redirección
+        scopes: Ámbitos
+        secret:
+        uid:
       federails/moderation/domain_block:
         created_at: Creado el
         domain: Dominio
@@ -95,9 +105,22 @@ es:
         updated_at: Actualizado el
     errors:
       models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              forbidden_uri: está prohibido por el servidor.
+              fragment_present: no puede contener un fragmento.
+              invalid_uri: debe ser una URI válida.
+              relative_uri: debe ser una URI absoluta.
+              secured_uri: debe ser una URI HTTPS/SSL.
+              unspecified_scheme: debe especificar un esquema.
+            scopes:
+              not_match_configured: doesn't match configured on the server.
         library:
           attributes:
             path:
+              cannot_be_contained:
+              cannot_contain:
               non_writable: se debe poder escribir
               not_found: no se ha encontrado en el disco
               unsafe: no puede ser una ruta privilegiada del sistema
@@ -285,6 +308,155 @@ es:
     tags_card:
       skip_tags: Saltar lista de etiquetas
     title: Manyfold
+  doorkeeper:
+    applications:
+      buttons:
+        authorize: Autorizar
+        cancel: Cancelar
+        destroy: Eliminar
+        edit: Editar
+        submit: Enviar
+      confirmations:
+        destroy: "¿Estás seguro?"
+      edit:
+        title: Editar aplicación
+      form:
+        error: Ups! Verifica tu formulario por posibles errores
+      help:
+        blank_redirect_uri: Leave it blank if you configured your provider to use Client Credentials, Resource Owner Password Credentials or any other grant type that doesn't require redirect URI.
+        confidential: Application will be used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential.
+        redirect_uri: Usa una linea por URI
+        scopes: Separa los ámbitos con espacios. Deja en blanco para usar los ámbitos predeterminados.
+      index:
+        actions: Actions
+        callback_url: Callback URL
+        confidential: Confidential?
+        confidentiality:
+          'no': 'No'
+          'yes': Sí
+        name: Nombre
+        new: Nueva aplicación
+        title: Tus aplicaciones
+      new:
+        title: Nueva aplicación
+      show:
+        actions: Acciones
+        application_id: Identificador de aplicación
+        callback_urls: Callback urls
+        confidential: Confidential
+        not_defined:
+        scopes: Ámbitos
+        secret: Secret
+        secret_hashed:
+        title: 'Aplicación: %{name}'
+    authorizations:
+      buttons:
+        authorize: Autorizar
+        deny: Denegar
+      error:
+        title: Ha ocurrido un error
+      form_post:
+        title:
+      new:
+        able_to: Está aplicación tendrá permisos para
+        prompt: "¿Autorizas a %{client_name} para usar tu cuenta?"
+        title: Autorización requerida
+      show:
+        title: Código de autorización
+    authorized_applications:
+      buttons:
+        revoke: Revocar
+      confirmations:
+        revoke: "¿Estás seguro?"
+      index:
+        application: Aplicación
+        created_at: Creada el
+        date_format: "%d/%m/%Y %H:%M:%S"
+        title: Tus aplicaciones autorizadas
+    errors:
+      messages:
+        access_denied: El propietario del recurso o el servidor de autorización han denegado la petición.
+        admin_authenticator_not_configured: Access to admin panel is forbidden due to Doorkeeper.configure.admin_authenticator being unconfigured.
+        credential_flow_not_configured: El flujo de credenciales del propietario del recurso ha fallado porque Doorkeeper.configure.resource_owner_from_credentials no está configurado.
+        forbidden_token:
+          missing_scope:
+        invalid_client: La autenticación del cliente ha fallado por cliente desconocido, cliente no autenticado, o método de autenticación incompatible.
+        invalid_code_challenge_method:
+          one:
+          other:
+          zero:
+        invalid_grant: La autorización proporcionada no es válida, ha expirado, se ha revocado, no coincide con la URI de redirección utilizada en la petición de autorización, o ha sido solicitada por otro cliente.
+        invalid_redirect_uri: La uri de redirección no es valida.
+        invalid_request:
+          invalid_code_challenge:
+          missing_param: 'Missing required parameter: %{value}.'
+          request_not_authorized: Request need to be authorized. Required parameter for authorizing request is missing or invalid.
+          unknown: La petición no tiene un parámetro obligatorio, incluye un valor de parámetro incompatible, o tiene un formato incorrecto.
+        invalid_scope: El scope solicitado no es válido, es desconocido, o tiene un formato incorrecto.
+        invalid_token:
+          expired: El token de acceso ha expirado
+          revoked: El token de acceso ha sido revocado
+          unknown: El token de acceso es inválido
+        resource_owner_authenticator_not_configured: La búsqueda del propietario del recurso ha fallado porque Doorkeeper.configure.resource_owner_authenticator no está configurado.
+        revoke:
+          unauthorized: No tiene autorización para revocar este token
+        server_error: El servidor de autorización ha encontrado una condición inesperada que le ha impedido completar la petición.
+        temporarily_unavailable: El servidor de autorización no ha podido manejar la petición por una sobrecarga temporal o por mantenimiento del servidor.
+        unauthorized_client: El cliente no tiene autorización para realizar esta petición utilizando este método.
+        unsupported_grant_type: El tipo de autorización no está soportada por el servidor de autorización.
+        unsupported_response_mode:
+        unsupported_response_type: El servidor de autorización no soporta este tipo de respuesta.
+    flash:
+      applications:
+        create:
+          notice: Aplicación creada.
+        destroy:
+          notice: Aplicación eliminada.
+        update:
+          notice: Aplicación actualizada.
+      authorized_applications:
+        destroy:
+          notice: Aplicación revocada.
+    layouts:
+      admin:
+        nav:
+          applications: Aplicaciones
+          home: Home
+          oauth2_provider: Proveedor OAuth2
+        title: Doorkeeper
+      application:
+        title: Autorización OAuth requerida
+    pre_authorization:
+      status: Pre-authorization
+  doorkeeper_applications:
+    create:
+      failure:
+      success:
+    destroy:
+      success:
+    edit:
+      title: Editar aplicación
+    form:
+      confidential:
+        help:
+      redirect_uri:
+        help:
+      scopes:
+        label: Ámbitos
+      submit:
+    index:
+      description:
+      new:
+      title:
+    new:
+      title:
+    show:
+      destroy: Borrar
+      edit: Editar
+      title:
+    update:
+      failure:
+      success:
   follow_button_component:
     follow: Seguir %{name}
     pending: Requerido
@@ -298,6 +470,8 @@ es:
     follow_remote_actor:
       followed: Siguiendo a %{actor} correctamente.
     index:
+      followers:
+      following:
       title: Siguiendo
     new:
       help: Puedes seguir creadores, colecciones o modelos públicos en otro servidor de Manyfold; ¡de hecho, cualquier cuenta pública en el Fediverse! Solo ingresa el nombre de la cuenta en el cuadro de búsqueda.
@@ -320,6 +494,13 @@ es:
     download: Descargar
     edit: Editar
     expand: Expandir
+    followers:
+      few:
+      many:
+      one:
+      other:
+      two:
+      zero:
     menu: Menú
     new: Nuevo
     report: Informe %{type}
@@ -327,8 +508,8 @@ es:
     view: Ver
   home:
     activity:
-      created: subido hace %{time}
-      updated: actualizado hace %{time}
+      created:
+      updated:
     index:
       no_activities: Por ahora no hay actividades que mostrar.
       recent_activity: Actividad reciente
@@ -444,9 +625,15 @@ es:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
     cults3d: Cults3D
+    github:
+    makerworld:
+    manyfold: Manyfold
     myminifactory: MyMiniFactory
+    printables:
+    thangs:
     theminiindex: The Mini Index
     thingiverse: Thingiverse
+    yeggi:
   user_mailer:
     account_approved:
       greeting: "¡Hola!"

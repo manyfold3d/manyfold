@@ -12,6 +12,16 @@ nl:
         name: Naam
         notes: Beschrijving
         slug:
+      doorkeeper/application:
+        access_token:
+        confidential: Confidentieel
+        created_at:
+        name: Naam
+        owner:
+        redirect_uri: Redirect URI
+        scopes: Scopes
+        secret:
+        uid:
       federails/moderation/domain_block:
         created_at: Aangemaakt op
         domain: Domein
@@ -95,9 +105,22 @@ nl:
         updated_at: Bijgewerkt op
     errors:
       models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              forbidden_uri: is forbidden by the server.
+              fragment_present: kan geen fragment bevatten.
+              invalid_uri: moet een geldige URI zijn.
+              relative_uri: moet een absolute URI zijn.
+              secured_uri: moet een HTTPS/SSL URI zijn.
+              unspecified_scheme: moet een schema specificeren.
+            scopes:
+              not_match_configured: komt niet overeen met server configuratie.
         library:
           attributes:
             path:
+              cannot_be_contained:
+              cannot_contain:
               non_writable: moet schrijfbaar zijn
               not_found: kon niet worden gevonden op schijf
               unsafe: kan geen bevoorrecht systeempad zijn
@@ -283,6 +306,155 @@ nl:
     tags_card:
       skip_tags: Taglijst overslaan
     title: Manyfold
+  doorkeeper:
+    applications:
+      buttons:
+        authorize: Authoriseren
+        cancel: Annuleren
+        destroy: Verwijderen
+        edit: Bewerken
+        submit: Opslaan
+      confirmations:
+        destroy: Weet je het zeker?
+      edit:
+        title: Bewerk applicatie
+      form:
+        error: Oops! Controleer het formulier op fouten
+      help:
+        blank_redirect_uri: Laat het leeg indien u uw provider heeft geconfigureerd voor het gebruik van Client Credentials, Resource Owner Password Credentials of een ander type authorisatie dat geen omleiding van URI vereist.
+        confidential: Toepassing zal worden gebruikt waar de client secret vertrouwelijk kan worden gehouden. Native mobile apps en Single Page Apps worden beschouwd als niet-vertrouwelijk.
+        redirect_uri: 'Gebruik één regel per URI. '
+        scopes: Scheid scopes met spaties. Laat leeg om de standaard scopes te gebruiken.
+      index:
+        actions: Actions
+        callback_url: Callback URL
+        confidential: Confidential?
+        confidentiality:
+          'no': Nee
+          'yes': Ja
+        name: Naam
+        new: Nieuwe applicatie
+        title: Jouw applicaties
+      new:
+        title: Nieuwe applicatie
+      show:
+        actions: Acties
+        application_id: Applicatie UID
+        callback_urls: Callback urls
+        confidential: Confidentieel
+        not_defined:
+        scopes: Scopes
+        secret: Secret
+        secret_hashed:
+        title: 'Applicatie: %{name}'
+    authorizations:
+      buttons:
+        authorize: Authoriseren
+        deny: Weigeren
+      error:
+        title: Er is een fout opgetreden
+      form_post:
+        title:
+      new:
+        able_to: Deze applicatie zal in staat zijn om
+        prompt: "%{client_name} authoriseren om uw account te gebruiken?"
+        title: Authorisatie vereist
+      show:
+        title: Authorisatie code
+    authorized_applications:
+      buttons:
+        revoke: Intrekken
+      confirmations:
+        revoke: Weet je het zeker?
+      index:
+        application: Applicatie
+        created_at: Aangemaakt op
+        date_format: "%d-%m-%Y %H:%M:%S"
+        title: Jouw geauthoriseerde applicaties
+    errors:
+      messages:
+        access_denied: De resource eigenaar of authorisatie-server weigerde het verzoek.
+        admin_authenticator_not_configured: Toegang tot het adminpaneel is verboden omdat Doorkeeper.configure.admin_authenticator niet geconfigureerd is.
+        credential_flow_not_configured: Resource Owner Password Credentials flow is mislukt doordat Doorkeeper.configure.resource_owner_from_credentials niet geconfigureerd is.
+        forbidden_token:
+          missing_scope:
+        invalid_client: Client verificatie is mislukt door onbekende klant, geen client authenticatie opgegeven, of een niet-ondersteunde authenticatie methode.
+        invalid_code_challenge_method:
+          one:
+          other:
+          zero:
+        invalid_grant: De verstrekte authorisatie is ongeldig, verlopen, ingetrokken, komt niet overeen met de redirect uri die is opgegeven, of werd uitgegeven aan een andere klant.
+        invalid_redirect_uri: De opgegeven redirect uri is niet geldig.
+        invalid_request:
+          invalid_code_challenge:
+          missing_param: 'Ontbrekende vereiste parameter: %{value}.'
+          request_not_authorized: Verzoek moet worden geautoriseerd. Vereiste parameter voor het autoriseren van de aanvraag ontbreekt of is ongeldig.
+          unknown: Het verzoek mist een vereiste parameter, bevat een niet-ondersteunde parameter waarde of is anderszins onjuist.
+        invalid_scope: De opgevraagde scope is niet geldig, onbekend of onjuist.
+        invalid_token:
+          expired: Het toegangstoken is verlopen
+          revoked: Het toegangstoken is geweigerd
+          unknown: Het toegangstoken is ongeldig
+        resource_owner_authenticator_not_configured: Resource Owner opzoeking mislukt doordat Doorkeeper.configure.resource_owner_authenticator niet is gevonden.
+        revoke:
+          unauthorized: U bent niet bevoegd om dit token in te trekken...
+        server_error: De authorisatie server is een onverwachte voorwaarde tegengekomen die het verzoek verhinderd.
+        temporarily_unavailable: De authorisatie-server is momenteel niet in staat het verzoek te behandelen als gevolg van een tijdelijke overbelasting of onderhoud aan de server.
+        unauthorized_client: De client is niet bevoegd om dit verzoek met deze methode uit te voeren.
+        unsupported_grant_type: Het type authorisatie is niet ondersteund door de authorisatie-server
+        unsupported_response_mode:
+        unsupported_response_type: De authorisatie server ondersteunt dit response type niet
+    flash:
+      applications:
+        create:
+          notice: Applicatie aangemaakt.
+        destroy:
+          notice: Applicatie verwijderd.
+        update:
+          notice: Applicatie bewerkt.
+      authorized_applications:
+        destroy:
+          notice: Applicatie ingetrokken.
+    layouts:
+      admin:
+        nav:
+          applications: Applicaties
+          home: Home
+          oauth2_provider: OAuth2 Provider
+        title: Doorkeeper
+      application:
+        title: OAuth authorisatie vereist
+    pre_authorization:
+      status: Pre-authorization
+  doorkeeper_applications:
+    create:
+      failure:
+      success:
+    destroy:
+      success:
+    edit:
+      title: Bewerk applicatie
+    form:
+      confidential:
+        help:
+      redirect_uri:
+        help:
+      scopes:
+        label: Scopes
+      submit:
+    index:
+      description:
+      new:
+      title:
+    new:
+      title:
+    show:
+      destroy: Verwijderen
+      edit: Bewerken
+      title:
+    update:
+      failure:
+      success:
   errors:
     messages:
       already_confirmed: was al bevestigd, probeer in te loggen
@@ -307,6 +479,8 @@ nl:
     follow_remote_actor:
       followed: "%{actor} succesvol gevolgd"
     index:
+      followers:
+      following:
       title:
     new:
       help: Je kunt openbare makers, collecties of modellen op een andere Manyfold-server volgen, eigenlijk elk openbaar account in het Fediverse! Voer gewoon de accountnaam in het zoekvak in!
@@ -329,6 +503,13 @@ nl:
     download: Downloaden
     edit: Bewerken
     expand: Uitvouwen
+    followers:
+      few:
+      many:
+      one:
+      other:
+      two:
+      zero:
     menu: Menu
     new: Nieuw
     report: Rapporteer %{type}
@@ -336,8 +517,8 @@ nl:
     view: Bekijken
   home:
     activity:
-      created: toegevoegd %{time} geleden
-      updated: bijgewerkt %{time} geleden
+      created:
+      updated:
     index:
       no_activities: Er zijn momenteel geen activiteiten om weer te geven.
       recent_activity: Recente Activiteit
@@ -453,9 +634,15 @@ nl:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
     cults3d: Cults3D
+    github:
+    makerworld:
+    manyfold: Manyfold
     myminifactory: MyMiniFactory
+    printables:
+    thangs:
     theminiindex: The Mini Index
     thingiverse: Thingiverse
+    yeggi:
   user_mailer:
     account_approved:
       greeting: Hoi!

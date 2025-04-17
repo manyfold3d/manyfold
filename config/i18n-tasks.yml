@@ -26,6 +26,7 @@ data:
     - config/locales/**/%{locale}.yml
     - config/locales/devise.%{locale}.yml
     - config/locales/devise.*.%{locale}.yml
+    - config/locales/doorkeeper.%{locale}.yml
     ## Read in translation.io synced files
     - config/locales/translation.%{locale}.yml
 
@@ -149,6 +150,7 @@ ignore_unused:
 - 'follow_button_component.*' # Used in follow button component
 - 'active_admin.exit' # Used in initializer, not detected automatically
 - 'devise.*' # Used deep down
+- 'doorkeeper.*' # Used deep down
 - 'renderer.errors.*' # Used client side via i18n-js
 - 'renderer.processing' # Used client side via i18n-js
 - 'models.exceeds_max_size' # Used client side via i18n-js
