@@ -20,7 +20,8 @@ AllCops:
   NewCops: enable
   Exclude:
     - db/schema.rb
-    - bin/*
+    - bin/bundle
+    - bin/yarn
     - "node_modules/**/*"
     - "tmp/**/*"
     - "vendor/**/*"
@@ -32,6 +33,7 @@ I18n/RailsI18n:
   Enabled: true
   Exclude:
     - "spec/**/*"
+    - "bin/manyfold"
 RSpec/NestedGroups:
   Max: 5
 RSpec/MultipleMemoizedHelpers:

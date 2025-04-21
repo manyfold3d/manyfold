@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+require "thor"
+require File.expand_path("../../config/environment", __FILE__)
+
+class CollectionCLI < Thor
+  desc "prune", "removes all empty collections"
+  def prune
+    Collection.find_each { |it| it.destroy if it.models.empty? && it.collections.empty? }
+  end
+end
+
+class CreatorCLI < Thor
+  desc "prune", "removes all creators that aren't associated with any models"
+  def prune
+    Creator.find_each { |it| it.destroy if it.models.empty? }
+  end
+end
+
+class ProblemCLI < Thor
+  desc "prune", "removes any problems without an associated problematic object"
+  def prune
+    Problem.find_each { |it| it.destroy if it.problematic.nil? }
+  end
+
+  desc "purge", "removes all problem records"
+  option :type, required: false, type: :string, default: nil, aliases: :t
+  option :class, required: false, type: :string, default: nil, aliases: :c
+  def purge
+    return unless ask("Are you sure you want to remove all problems", limited_to: %w[y n]) == "y"
+    scope = Problem
+    scope = scope.where(type: options[:type]) if options[:type]
+    scope = scope.where(problematic_type: options[:class]) if options[:class]
+    scope.destroy_all
+  end
+end
+
+class TagCLI < Thor
+  desc "purge", "removes all tags"
+  def purge
+    return unless ask("Are you sure you want to remove all tags?", limited_to: %w[y n]) == "y"
+    ActsAsTaggableOn::Tagging.destroy_all
+    ActsAsTaggableOn::Tag.destroy_all
+  end
+end
+
+class ManyfoldCLI < Thor
+  desc "creators", "manage creators"
+  subcommand "creators", CreatorCLI
+
+  desc "collections", "manage collections"
+  subcommand "collections", CollectionCLI
+
+  desc "problems", "manage problems"
+  subcommand "problems", ProblemCLI
+
+  desc "tags", "manage tags"
+  subcommand "tags", TagCLI
+end
+
+ManyfoldCLI.start(ARGV)
