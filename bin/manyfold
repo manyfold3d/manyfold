@@ -26,10 +26,10 @@ class ProblemCLI < Thor
   option :type, required: false, type: :string, default: nil, aliases: :t
   option :class, required: false, type: :string, default: nil, aliases: :c
   def purge
-    scope = problem
+    scope = Problem
     scope = scope.where(type: options[:type]) if options[:type]
     scope = scope.where(problematic_type: options[:class]) if options[:class]
-    Problem.destroy_all
+    scope.destroy_all
   end
 end
 
@@ -54,6 +54,5 @@ class ManyfoldCLI < Thor
   desc "tags", "manage tags"
   subcommand "tags", TagCLI
 end
-
 
 ManyfoldCLI.start(ARGV)
