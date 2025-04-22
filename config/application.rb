@@ -38,6 +38,8 @@ module Manyfold
     # config.time_zone = "Central Time (US & Canada)"
     config.eager_load_paths << config.root.join("app/uploaders")
 
+    config.autoload_once_paths << "#{root}/app/lib"
+
     # Load locale files in nested folders as well as locale root
     config.i18n.load_path += Rails.root.glob("config/locales/**/*.{rb,yml}")
     config.i18n.fallbacks = true
