@@ -23,8 +23,8 @@ class ProblemCLI < Thor
   end
 
   desc "purge", "removes all problem records"
-  option :type, required: false, type: :string, default: nil, aliases: :t
-  option :class, required: false, type: :string, default: nil, aliases: :c
+  option :type, required: false, type: :string, default: nil, aliases: :t, enum: Problem::CATEGORIES
+  option :class, required: false, type: :string, default: nil, aliases: :c, enum: %w[Model ModelFile Library]
   def purge
     return unless ask("Are you sure you want to remove all problems", limited_to: %w[y n]) == "y"
     scope = Problem
