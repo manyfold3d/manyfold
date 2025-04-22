@@ -16,6 +16,13 @@ class CreatorCLI < Thor
   end
 end
 
+class MailCLI < Thor
+  desc "test_email", "sends test email"
+  def test
+    UserMailer.with(user: User.find(1)).account_approved.deliver_now
+  end
+end
+
 class ModelCLI < Thor
   desc "update_metadata", "reruns the metadata parser for all models"
   def update_metadata
@@ -61,6 +68,9 @@ class ManyfoldCLI < Thor
 
   desc "collections", "manage collections"
   subcommand "collections", CollectionCLI
+
+  desc "email", "test email"
+  subcommand "email", MailCLI
 
   desc "models", "manage models"
   subcommand "models", ModelCLI
