@@ -49,7 +49,7 @@ To run the app yourself, you'll need the following installed:
 
 To run the application once you've cloned this repo, you should be able to just run `bin/dev`; that should set up the database, perform migrations, install dependencies, and then make the application available at <http://127.0.0.1:5000>.
 
-If you want to configure optional features, set the appropriate [environment variables](https://manyfold.app/sysadmin/configuration.html) in a file called `.env`. See `env.example` for a template file. Note that the required environment variables in the documentation are not needed in development mode, due to the use of SQLite instead of PostgreSQL.
+If you want to configure optional features, set the appropriate [environment variables](https://manyfold.app/sysadmin/configuration.html) in a file called `.env.development.local`. See `env.example` for a template file. Note that the required environment variables in the documentation are not needed in development mode, due to the use of SQLite instead of PostgreSQL.
 
 ### Using the Devcontainer
 

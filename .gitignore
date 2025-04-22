@@ -41,7 +41,7 @@ yarn-debug.log*
 
 /vendor/bundle
 
-.env
+.env*
 
 /config/credentials/test.key
 docker-compose.yml
