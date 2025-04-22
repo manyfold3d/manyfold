@@ -888,14 +888,14 @@ PLATFORMS
 DEPENDENCIES
   activeadmin (~> 3.3)
   activejob-status (~> 1.0)
-  activejob-uniqueness (~> 0.4.0)
-  activerecord-enhancedsqlite3-adapter (~> 0.8.0)
-  activerecord-nulldb-adapter (~> 1.1.1)
+  activejob-uniqueness (~> 0.4)
+  activerecord-enhancedsqlite3-adapter (~> 0.8)
+  activerecord-nulldb-adapter (~> 1.1)
   acts-as-taggable-on (~> 12.0)
   acts_as_favoritor (~> 6.0)
   aws-sdk-s3 (< 1.184)
-  better_content_security_policy (~> 0.1.4)
-  bootsnap (>= 1.4.4)
+  better_content_security_policy (~> 0.1)
+  bootsnap (~> 1.4)
   brakeman (~> 7.0)
   bullet (~> 8.0)
   byebug
@@ -905,7 +905,7 @@ DEPENDENCIES
   climate_control (~> 1.2)
   cocooned (~> 2.4)
   cssbundling-rails (~> 1.4)
-  data_migrate (= 11.3.0)
+  data_migrate (~> 11.3)
   database_cleaner-active_record (~> 2.2)
   devise (~> 4.9)
   devise-i18n (~> 1.13)
@@ -913,7 +913,7 @@ DEPENDENCIES
   doorkeeper (~> 5.8)
   doorkeeper-i18n (~> 5.2)
   dotenv-rails (~> 3.1)
-  erb_lint (~> 0.9.0)
+  erb_lint (~> 0.9)
   factory_bot
   faker (~> 3.5)
   federails!
@@ -924,7 +924,7 @@ DEPENDENCIES
   guard-rspec (~> 4.7)
   i18n-js (~> 4.2)
   i18n-tasks (~> 1.0)
-  i18n_data (~> 1.1.0)
+  i18n_data (~> 1.1)
   image_processing
   jbuilder (~> 2.13)
   job-iteration (~> 1.10)
@@ -934,17 +934,17 @@ DEPENDENCIES
   kramdown-parser-gfm (~> 1.1)
   letter_opener (~> 1.10)
   listen (~> 3.9)
-  lograge (~> 0.14.0)
+  lograge (~> 0.14)
   logstash-event (~> 1.2)
-  memoist (~> 0.16.2)
+  memoist (~> 0.16)
   mittsu (~> 0.5)
   mittsu-3mf
   mittsu-mesh_analysis
-  mysql2 (~> 0.5.6)
+  mysql2 (~> 0.5)
   nanoid (~> 2.0)
   omniauth (~> 2.1)
   omniauth-rails_csrf_protection (~> 1.0)
-  omniauth_openid_connect (~> 0.8.0)
+  omniauth_openid_connect (~> 0.8)
   pg (~> 1.5)
   pg_query (~> 6.1)
   pghero (~> 3.6)
@@ -980,23 +980,23 @@ DEPENDENCIES
   shrine-tus (~> 2.1)
   sidekiq (~> 8.0)
   sidekiq-cron (~> 2.2)
-  simplecov (~> 0.22.0)
+  simplecov (~> 0.22)
   simplecov-cobertura
   spdx (~> 4.1)
   spring
   sqlite3_ar_regexp (~> 3.0)
-  standard (~> 1.49.0)
+  standard (~> 1.49)
   stopwords-filter2
   string-similarity (~> 2.1)
   sys-cpu (~> 1.1)
   sys-filesystem (~> 1.5)
-  to_regexp (~> 0.2.1)
+  to_regexp (~> 0.2)
   translation (~> 1.41)
   tus-server (~> 2.3)
   tzinfo-data
   view_component (~> 3.22)
   warning (~> 1.5)
-  web-console (>= 4.1.0)
+  web-console (~> 4.1)
   with_model (~> 2.2)
 
 RUBY VERSION
