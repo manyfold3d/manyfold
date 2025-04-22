@@ -149,8 +149,6 @@ en:
         fediverse_address: Fediverse address
         local: Local
         new: New user
-        quota:
-          title: Title
         title: Manage Users
         view: View
       new:
