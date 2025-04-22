@@ -1,0 +1,74 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "11d160afdc33a4cc5f8141fbf75b06610da9bb1c65670d6e1c4abc8cda25e007",
+      "check_name": "UnsafeReflection",
+      "message": "Unsafe reflection method `constantize` called on parameter value",
+      "file": "app/controllers/reports_controller.rb",
+      "line": 23,
+      "link": "https://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "params[:reportable_class].constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ReportsController",
+        "method": "get_reportable"
+      },
+      "user_input": "params[:reportable_class]",
+      "confidence": "High",
+      "cwe_id": [
+        470
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "81347f40cf15212ece1e778f98ccb4e7ad38a69cd0b1ca0c8f07780f23885fe2",
+      "check_name": "UnsafeReflection",
+      "message": "Unsafe reflection method `constantize` called on parameter value",
+      "file": "app/controllers/comments_controller.rb",
+      "line": 15,
+      "link": "https://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "params[:commentable_class].constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CommentsController",
+        "method": "get_commentable"
+      },
+      "user_input": "params[:commentable_class]",
+      "confidence": "High",
+      "cwe_id": [
+        470
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "e43cfc3187c4bead86e47daaa7e4075414035f44c776d8a8dda394c09b4ea467",
+      "check_name": "UnsafeReflection",
+      "message": "Unsafe reflection method `constantize` called on parameter value",
+      "file": "app/controllers/follows_controller.rb",
+      "line": 75,
+      "link": "https://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "params[:followable_class].constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "FollowsController",
+        "method": "get_target"
+      },
+      "user_input": "params[:followable_class]",
+      "confidence": "High",
+      "cwe_id": [
+        470
+      ],
+      "note": ""
+    }
+  ],
+  "brakeman_version": "7.0.2"
+}
