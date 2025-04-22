@@ -68,14 +68,16 @@ class Settings::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(
-      :email,
-      :username,
-      :password,
-      :password_confirmation,
-      :quota,
-      :quota_use_site_default,
-      role_ids: []
+    params.expect(
+      user: [
+        :email,
+        :username,
+        :password,
+        :password_confirmation,
+        :quota,
+        :quota_use_site_default,
+        role_ids: []
+      ]
     )
   end
 end
