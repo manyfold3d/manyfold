@@ -1271,19 +1271,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^8.30.1":
-  version: 8.30.1
-  resolution: "@typescript-eslint/parser@npm:8.30.1"
+"@typescript-eslint/parser@npm:^8.31.0":
+  version: 8.31.0
+  resolution: "@typescript-eslint/parser@npm:8.31.0"
   dependencies:
-    "@typescript-eslint/scope-manager": 8.30.1
-    "@typescript-eslint/types": 8.30.1
-    "@typescript-eslint/typescript-estree": 8.30.1
-    "@typescript-eslint/visitor-keys": 8.30.1
+    "@typescript-eslint/scope-manager": 8.31.0
+    "@typescript-eslint/types": 8.31.0
+    "@typescript-eslint/typescript-estree": 8.31.0
+    "@typescript-eslint/visitor-keys": 8.31.0
     debug: ^4.3.4
   peerDependencies:
     eslint: ^8.57.0 || ^9.0.0
     typescript: ">=4.8.4 <5.9.0"
-  checksum: cac3cfe1c1e85e6639a05b9fedf3bdc56034eba063c1d637282c278cf6d4d6bd039f31513e9591056e8da4dd6c433d4f9ac841e8bee52a19e5b8709599a9168a
+  checksum: 7d35be4a51f4062b106b61591d4848feeceb6ec7c375c0f9d71780cf949d2d1a542ad5b893ca23333dcff73126ed9c05fd615fcc9652d4f78eb4d3922a47bd6b
   languageName: node
   linkType: hard
 
@@ -1307,13 +1307,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/scope-manager@npm:8.30.1":
-  version: 8.30.1
-  resolution: "@typescript-eslint/scope-manager@npm:8.30.1"
+"@typescript-eslint/scope-manager@npm:8.31.0":
+  version: 8.31.0
+  resolution: "@typescript-eslint/scope-manager@npm:8.31.0"
   dependencies:
-    "@typescript-eslint/types": 8.30.1
-    "@typescript-eslint/visitor-keys": 8.30.1
-  checksum: cef9e700167fa1345edf26f60b384f04d05c386d2a255f6b89d602306165b6d7cf2a6e5d51f683571af6ebf1eebf89c07aed7f3253f399d632ecbb2ef1cbbaf1
+    "@typescript-eslint/types": 8.31.0
+    "@typescript-eslint/visitor-keys": 8.31.0
+  checksum: df114f39eacfac6f38551aed3947cb01479f13ce182b7ed503eb8ea0e0cfac15b9b5a35c01c33f83eb162009169895a551a1b63133988f809f55d212f76bd2bc
   languageName: node
   linkType: hard
 
@@ -1348,10 +1348,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/types@npm:8.30.1":
-  version: 8.30.1
-  resolution: "@typescript-eslint/types@npm:8.30.1"
-  checksum: 264c4d8e1bef5b9e79509e2322a3978716768f03ef3af9ed62a7490bec04d3aaa1535b71221fe95f0d113227dfbade3664f5d5687d7859585c6bce536f138927
+"@typescript-eslint/types@npm:8.31.0":
+  version: 8.31.0
+  resolution: "@typescript-eslint/types@npm:8.31.0"
+  checksum: 5c0cb0f421dca169efccacd25c1eff529446eceb337ed8a439b4d0e3f4c797658a6b34a5cc6b4436262c841e3719b01ac3d26766958757487f75f97c6e6dd1e3
   languageName: node
   linkType: hard
 
@@ -1391,12 +1391,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/typescript-estree@npm:8.30.1":
-  version: 8.30.1
-  resolution: "@typescript-eslint/typescript-estree@npm:8.30.1"
+"@typescript-eslint/typescript-estree@npm:8.31.0":
+  version: 8.31.0
+  resolution: "@typescript-eslint/typescript-estree@npm:8.31.0"
   dependencies:
-    "@typescript-eslint/types": 8.30.1
-    "@typescript-eslint/visitor-keys": 8.30.1
+    "@typescript-eslint/types": 8.31.0
+    "@typescript-eslint/visitor-keys": 8.31.0
     debug: ^4.3.4
     fast-glob: ^3.3.2
     is-glob: ^4.0.3
@@ -1405,7 +1405,7 @@ __metadata:
     ts-api-utils: ^2.0.1
   peerDependencies:
     typescript: ">=4.8.4 <5.9.0"
-  checksum: f57a34e36de92aad859081bd64004fa8cbc5c00836145230bf6ed555bcd63a360e34086619aa77bbf17b97167a17be75b8a472c7951eee7a423760c482852b62
+  checksum: 1982056fa3b9aa3488408760cd15a41fd301444c998b2063c8e323aa9a715bf1cc36388c29a58f19c529de80578a738b4074e6d9da7eb8ed9c0eb4df7293f86d
   languageName: node
   linkType: hard
 
@@ -1447,13 +1447,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/visitor-keys@npm:8.30.1":
-  version: 8.30.1
-  resolution: "@typescript-eslint/visitor-keys@npm:8.30.1"
+"@typescript-eslint/visitor-keys@npm:8.31.0":
+  version: 8.31.0
+  resolution: "@typescript-eslint/visitor-keys@npm:8.31.0"
   dependencies:
-    "@typescript-eslint/types": 8.30.1
+    "@typescript-eslint/types": 8.31.0
     eslint-visitor-keys: ^4.2.0
-  checksum: 7878f1e3e2d497596e007c96ee5fd7993e79009c7de88fa10a431983be16de5292b73ccbb5ebab4dc2ab88d4864250a6b0f3c3e3acde775bb915fa6e34fc878d
+  checksum: ce88b8edb75517d4a4e9d262d7b60b5d5a1ead7cac181345a1df0dcb4c7da650785df226d2ce8abbdbd9dbf2b29040d026f792df59d3d0189236c334de56a06e
   languageName: node
   linkType: hard
 
@@ -4415,7 +4415,7 @@ __metadata:
     "@types/three": ^0.175.0
     "@types/webpack-env": ^1.18.8
     "@types/webxr": ^0.5.22
-    "@typescript-eslint/parser": ^8.30.1
+    "@typescript-eslint/parser": ^8.31.0
     "@uppy/core": ^4.4.4
     "@uppy/dashboard": ^4.3.3
     "@uppy/form": ^4.1.1
