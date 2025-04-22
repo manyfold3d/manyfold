@@ -19,7 +19,7 @@ end
 class MailCLI < Thor
   desc "test_email", "sends test email"
   def test
-    UserMailer.with(user: User.find(1)).account_approved.deliver_now
+    UserMailer.with(user: User.find(1)).account_approved.deliver_now # rubocop:disable Pundit/UsePolicyScope
   end
 end
 
@@ -66,31 +66,27 @@ class UserCLI < Thor
   desc "approve", "approves a user"
   option :email, required: true, type: :string, aliases: :mail
   def approve
-    begin
-      u = User.find_by(email: options[:email])
-      raise "User not found" if u.nil?
-      u.update(approved: true)
-      puts "\nUser #{u.email} approved"
-    rescue RuntimeError => e
-      puts "\nUser #{options[:email]} not found"
-    end
+    u = User.find_by(email: options[:email])
+    raise "User not found" if u.nil?
+    u.update(approved: true)
+    puts "\nUser #{u.email} approved"
+  rescue RuntimeError
+    puts "\nUser #{options[:email]} not found"
   end
 
   desc "password", "resets password for user"
   option :email, required: true, type: :string, aliases: :mail
   def password
-    begin
-      u = User.find_by(email: options[:email])
-      raise "User not found" if u.nil?
-      u.password = ask("Enter password: ", echo: false)
-      puts "\n"
-      u.password_confirmation = ask("Confirm password: ", echo: false)
-      puts "\nPassword changed!" if u.save!
-    rescue ActiveRecord::RecordInvalid => e
-      puts "\n#{e}"
-    rescue RuntimeError => e
-      puts "\n#{e}"
-    end
+    u = User.find_by(email: options[:email])
+    raise "User not found" if u.nil?
+    u.password = ask("Enter password: ", echo: false)
+    puts "\n"
+    u.password_confirmation = ask("Confirm password: ", echo: false)
+    puts "\nPassword changed!" if u.save!
+  rescue ActiveRecord::RecordInvalid => e
+    puts "\n#{e}"
+  rescue RuntimeError => e
+    puts "\n#{e}"
   end
 end
 
