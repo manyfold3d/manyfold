@@ -6,6 +6,8 @@ class User < ApplicationRecord
   include CaberSubject
   include PublicIDable
 
+  before_save :set_quota
+
   acts_as_federails_actor(
     username_field: :username,
     name_field: :username,
@@ -168,7 +170,24 @@ class User < ApplicationRecord
     true
   end
 
+  # Quota is in MB and is referred to in the UI as file storage limits for clarity
+  def quota
+    quota_use_site_default ? SiteSettings.default_user_quota : attributes["quota"].to_i * 1.megabyte
+  end
+
+  def has_quota?
+    !(attributes["quota"] == 0) && SiteSettings.enable_user_quota
+  end
+
+  def current_space_used
+    permitted_models.with_permission("own").sum(&:size_on_disk)
+  end
+
   private
+
+  def set_quota
+    attributes["quota"] = SiteSettings.default_user_quota if quota_use_site_default
+  end
 
   def has_any_role_of?(*args)
     args.map { |it| has_role? it }.any?

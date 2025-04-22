@@ -31,6 +31,9 @@ class SiteSettings < RailsSettings::Base
   field :rules, type: :string, default: nil
   field :support_link, type: :string, default: nil
 
+  field :enable_user_quota, type: :boolean, default: false
+  field :default_user_quota, type: :integer, default: 0
+
   validates :model_ignored_files, regex_array: {strict: true}
 
   def self.email_configured?

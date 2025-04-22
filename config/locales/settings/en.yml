@@ -94,6 +94,9 @@ en:
         help: Lets visitors sign up for accounts.
         label: Enable signup
       single_user_mode: Manyfold is running in single user mode.
+      user_quotas: User upload size limit
+      user_quotas_enable_quota: Enable user upload storage limit
+      user_quotas_site_default: Site default user upload storage limit in MB
     reporting:
       description_html: If you enable usage tracking, the following information will be sent once a day to <code>%{endpoint}</code>. The <code>id</code> is randomly generated when you enable tracking.
       heading: Usage Tracking
@@ -150,6 +153,12 @@ en:
         view: View
       new:
         title: Create user
+      quota:
+        current_quota: Current file storage limit in MB
+        current_space_used: Currently used file storage
+        title: File storage limit
+        unlimited_quota: Unlimited
+        using_site_default: Using site default file storage limit?
       show:
         approve: Approve user
         confirm_destroy: Are you sure you want to remove this user account immediately? This cannot be undone!
