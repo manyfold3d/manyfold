@@ -75,6 +75,7 @@ cs:
         danger_zone: Nebezpečná zóna!
         leave_blank_if_you_don_t_want_to_change_it: nevyplňujte, pokud nechcete měnit
         security: Zabezpečení
+        social:
         submit: Uložení změn
         title: Moje nastavení
         unhappy: Nespokojení?
@@ -168,6 +169,8 @@ cs:
         keypair:
           label: Použít oddělovač pro reprezentaci dvojic klíčů
         sorting:
+          alphabetical:
+          frequency:
           label: Třídění
         threshold:
           label: Minimální počet štítků pro zobrazení

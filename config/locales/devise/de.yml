@@ -75,6 +75,7 @@ de:
         danger_zone: Achtung!
         leave_blank_if_you_don_t_want_to_change_it: freilassen, wenn du das nicht ändern willst
         security: Sicherheit
+        social:
         submit: Änderungen speichern
         title: Meine Einstellungen
         unhappy: Unzufrieden?
@@ -168,6 +169,8 @@ de:
         keypair:
           label: Begrenzungszeichen zur Darstellung von Schlüsselpaaren verwenden
         sorting:
+          alphabetical:
+          frequency:
           label: Sortieren
         threshold:
           label: Mindestanzahl der Tags, um Angezeigt zu werden

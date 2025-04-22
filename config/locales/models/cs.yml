@@ -73,6 +73,7 @@ cs:
       files_card:
         bulk_edit: Upravit všechny soubory
         heading: Soubory
+      followers:
       license: Licence
       merge:
         heading: Sloučit

@@ -49,7 +49,7 @@ class ModelsController < ApplicationController
           @model.slug,
           params[:selection]
         ].compact.join("-") + ".zip"
-        tmpfile = File.join(tmpdir, "#{@model.updated_at.to_time.to_i}-#{@model.id}-#{params[:selection]}.zip")
+        tmpfile = File.join(tmpdir, "#{SecureRandom.urlsafe_base64}.zip")
         unless File.exist?(tmpfile)
           files = file_list(@model, params[:selection])
           write_archive(tmpfile, files)
@@ -279,6 +279,8 @@ class ModelsController < ApplicationController
           entry.pathname = file.filename
           entry.size = file.size
           entry.filetype = Archive::Entry::FILE
+          entry.mtime = file.mtime
+          entry.ctime = file.ctime
           archive.write_header entry
           archive.write_data file.attachment.read
         end

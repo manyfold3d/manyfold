@@ -12,6 +12,16 @@ de:
         name: Name
         notes: Beschreibung
         slug: Handgriff
+      doorkeeper/application:
+        access_token:
+        confidential: Vertraulich
+        created_at:
+        name: Name
+        owner:
+        redirect_uri: Redirect URI
+        scopes: Scopes
+        secret:
+        uid:
       federails/moderation/domain_block:
         created_at: Erstellt am
         domain: Domain
@@ -95,9 +105,22 @@ de:
         updated_at: Aktualisiert am
     errors:
       models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              forbidden_uri: ist vom server verboten.
+              fragment_present: darf kein Fragment enthalten.
+              invalid_uri: muss ein valider URI (Identifier) sein.
+              relative_uri: muss ein absoluter URI (Identifier) sein.
+              secured_uri: muss ein HTTPS/SSL URI (Identifier) sein.
+              unspecified_scheme: muss ein Schema angeben.
+            scopes:
+              not_match_configured: stimmen nicht mit denen am server hinterlegten überein.
         library:
           attributes:
             path:
+              cannot_be_contained:
+              cannot_contain:
               non_writable: User muss schreib rechte haben
               not_found: konnte nicht auf der Festplatte gefunden werden
               unsafe: kann kein privilegierter Systempfad sein
@@ -283,6 +306,155 @@ de:
     tags_card:
       skip_tags: Tag-Liste überspringen
     title: Manyfold
+  doorkeeper:
+    applications:
+      buttons:
+        authorize: Autorisieren
+        cancel: Abbrechen
+        destroy: Löschen
+        edit: Bearbeiten
+        submit: Übertragen
+      confirmations:
+        destroy: Bist du sicher?
+      edit:
+        title: Applikation bearbeiten
+      form:
+        error: Whoops! Bitte überprüfe das Formular auf Fehler!
+      help:
+        blank_redirect_uri: Leave it blank if you configured your provider to use Client Credentials, Resource Owner Password Credentials or any other grant type that doesn't require redirect URI.
+        confidential: Application will be used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential.
+        redirect_uri: Bitte benutze eine Zeile pro URI
+        scopes: Bitte die "Scopes" mit Leerzeichen trennen. Bitte frei lassen für die Verwendung der Default-Werte.
+      index:
+        actions: Aktionen
+        callback_url: Callback URL
+        confidential: Vertraulich?
+        confidentiality:
+          'no': Nein
+          'yes': Ja
+        name: Name
+        new: Neue Applikation
+        title: Deine Applikationen
+      new:
+        title: Neue Applikation
+      show:
+        actions: Aktionen
+        application_id: Applikations-ID
+        callback_urls: Callback URLs
+        confidential: Vertraulich
+        not_defined:
+        scopes: Scopes
+        secret: Secret
+        secret_hashed:
+        title: 'Applikation: %{name}'
+    authorizations:
+      buttons:
+        authorize: Autorisieren
+        deny: Verweigern
+      error:
+        title: Ein Fehler ist aufgetreten
+      form_post:
+        title:
+      new:
+        able_to: Diese Anwendung wird folgende Rechte haben
+        prompt: Soll %{client_name} für die Benutzung dieses Accounts autorisiert werden?
+        title: Autorisierung erforderlich
+      show:
+        title: Autorisierungscode
+    authorized_applications:
+      buttons:
+        revoke: Ungültig machen
+      confirmations:
+        revoke: Bist du sicher?
+      index:
+        application: Applikation
+        created_at: erstellt am
+        date_format: "%Y-%m-%d %H:%M:%S"
+        title: Deine autorisierten Applikationen
+    errors:
+      messages:
+        access_denied: Der Resource Owner oder der Autorisierungs-Server hat die Anfrage verweigert.
+        admin_authenticator_not_configured: Access to admin panel is forbidden due to Doorkeeper.configure.admin_authenticator being unconfigured.
+        credential_flow_not_configured: 'Die Prozedur "Resource Owner Password Credentials" ist fehlgeschlagen: Doorkeeper.configure.resource_owner_from_credentials ist nicht konfiguriert.'
+        forbidden_token:
+          missing_scope:
+        invalid_client: 'Client-Autorisierung MKIM ist fehlgeschlagen: Unbekannter Client, keine Autorisierung mitgeliefert oder Autorisierungsmethode nicht unterstützt.'
+        invalid_code_challenge_method:
+          one:
+          other:
+          zero:
+        invalid_grant: Die bereitgestellte Autorisierung ist inkorrekt, abgelaufen, widerrufen, ist mit einem anderen Client verknüpft oder der Redirection URI stimmt nicht mit der Autorisierungs-Anfrage überein.
+        invalid_redirect_uri: Der Redirect-URI in der Anfrage ist ungültig.
+        invalid_request:
+          invalid_code_challenge:
+          missing_param: 'Missing required parameter: %{value}.'
+          request_not_authorized: Request need to be authorized. Required parameter for authorizing request is missing or invalid.
+          unknown: Die Anfrage enthält einen nicht-unterstützten Parameter, ein Parameter fehlt oder sie ist anderweitig fehlerhaft.
+        invalid_scope: Der angeforderte Scope ist inkorrekt, unbekannt oder fehlerhaft.
+        invalid_token:
+          expired: Der Access Token ist abgelaufen
+          revoked: Der Access Token wurde annuliert
+          unknown: Der Access Token ist nicht gültig/korrekt
+        resource_owner_authenticator_not_configured: 'Die Prozedur "Resource Owner find" ist fehlgeschlagen: Doorkeeper.configure.resource_owner_authenticator ist nicht konfiguriert.'
+        revoke:
+          unauthorized: Sie sind nicht berechtigt, dieses Token zu widerrufen
+        server_error: Der Autorisierungs-Server hat ein unerwartetes Problem festgestellt und konnte die Anfrage nicht beenden.
+        temporarily_unavailable: Der Autorisierungs-Server ist derzeit auf Grund von temporärer Überlastung oder Wartungsarbeiten am Server nicht in der Lage, die Anfrage zu bearbeiten .
+        unauthorized_client: Der Client ist nicht autorisiert, diese Anfrage mit dieser Methode auszuführen.
+        unsupported_grant_type: Der Autorisierungs-Typ wird nicht vom Autorisierungs-Server unterstützt.
+        unsupported_response_mode:
+        unsupported_response_type: Der Autorisierungs-Server unterstützt diesen Antwort-Typ nicht.
+    flash:
+      applications:
+        create:
+          notice: Applikation erstellt.
+        destroy:
+          notice: Applikation gelöscht.
+        update:
+          notice: Applikation geupdated.
+      authorized_applications:
+        destroy:
+          notice: Applikation widerrufen.
+    layouts:
+      admin:
+        nav:
+          applications: Applikationen
+          home: Home
+          oauth2_provider: OAuth2 Provider
+        title: Doorkeeper
+      application:
+        title: OAuth Autorisierung erforderlich
+    pre_authorization:
+      status: Pre-authorization
+  doorkeeper_applications:
+    create:
+      failure:
+      success:
+    destroy:
+      success:
+    edit:
+      title: Applikation bearbeiten
+    form:
+      confidential:
+        help:
+      redirect_uri:
+        help:
+      scopes:
+        label: Scopes
+      submit:
+    index:
+      description:
+      new:
+      title:
+    new:
+      title:
+    show:
+      destroy: Löschen
+      edit: Bearbeiten
+      title:
+    update:
+      failure:
+      success:
   follow_button_component:
     follow: Folge %{name}
     pending: Angefordert
@@ -296,7 +468,9 @@ de:
     follow_remote_actor:
       followed: Erfolgreich %{actor} gefolgt
     index:
-      title: Follgende
+      followers:
+      following:
+      title: Verbindungen
     new:
       help: Du kannst öffentlichen Authoren, Sammlungen oder Modellen auf einem anderen Manyfold-Server folgen, und zwar jedem öffentlichen Konto im Fediverse! Gib einfach den Namen des Accounts in das Suchfeld ein!
       no_results: Ich konnte leider nichts zu "%{query}" finden. Handelt es sich um ein gültiges ActivityPub-Konto oder eine URL?
@@ -318,6 +492,13 @@ de:
     download: Herunterladen
     edit: Bearbeiten
     expand: Erweitern
+    followers:
+      few:
+      many:
+      one:
+      other:
+      two:
+      zero:
     menu: Menü
     new: Neue
     report: Melde %{type}
@@ -325,8 +506,8 @@ de:
     view: Siehe
   home:
     activity:
-      created: hinzugefügt vor %{time}
-      updated: aktualisiert vor %{time}
+      created:
+      updated:
     index:
       no_activities: Im Moment gibt es keine Aktivitäten zu sehen.
       recent_activity: Neuste Aktivität
@@ -442,9 +623,15 @@ de:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
     cults3d: Cults3D
+    github:
+    makerworld:
+    manyfold: Manyfold
     myminifactory: MyMiniFactory
+    printables:
+    thangs:
     theminiindex: The Mini Index
     thingiverse: Thingiverse
+    yeggi:
   user_mailer:
     account_approved:
       greeting: Hallo!

@@ -23,10 +23,10 @@ de:
     download:
       bambu: in Bambu Studio öffnen
       cura: in Ultimaker Cura öffnen
-      elegoo: in ElegooSlicer öffnen
+      elegoo:
       orca: in OrcaSlicer öffnen
       prusa: in PrusaSlicer öffnen
-      superslicer: in SuperSlicer öffnen
+      superslicer:
     form:
       notes:
         help_html: 'Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden. '

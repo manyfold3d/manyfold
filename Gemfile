@@ -58,6 +58,7 @@ group :development, :test do
   gem "rubyzip", "~> 2.4"
   gem "i18n-tasks", "~> 1.0"
   gem "simplecov", "~> 0.22.0", require: false
+  gem "simplecov-cobertura", require: false
   gem "with_model", "~> 2.2"
 
   # system tests and custom screenshots
@@ -194,3 +195,5 @@ gem "rack-cors", "~> 2.0"
 gem "doorkeeper", "~> 5.8"
 
 gem "kramdown-parser-gfm", "~> 1.1"
+
+gem "doorkeeper-i18n", "~> 5.2"

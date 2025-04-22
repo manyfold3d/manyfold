@@ -57,7 +57,7 @@ en:
         label: Model path template
       parse_metadata_from_path:
         help: Sets creator, collection, and tags based on template
-        label: Populate metadata from path and template during scan
+        label: Populate metadata from model path template during scan
       safe_folder_names:
         help_html: e.g. <code>spinal-tap</code> instead of <code>Spın̈al Tap</code>
         label: Use safe folder names
@@ -68,7 +68,7 @@ en:
         creator: The name of the creator, if set.
         model_id: A unique numerical identifier for the model. We strongly recommend always including this at the end of your template to avoid name conflicts on disk.
         model_name: A filesystem-safe version of the model name.
-        tags_html: 'a series of nested folders, one for each tag, arranged in order of tag popularity. For example: <code>fantasy/human/wizard</code>'
+        tags_html: 'a series of nested folders, one for each tag, arranged in order of tag popularity. For example: <code>fantasy/human/wizard</code>. This token is "greedy"; it will parse as many tags as it can.'
     general:
       submit: Save Settings
     multiuser:
@@ -130,8 +130,8 @@ en:
       stop_words_locale:
         label: Stop words locale
       tag_model_directory_name:
-        help: 'Warning: Can produce a lot of tags!'
-        label: Create tags from model directory name
+        help: 'Every word in the model name (not the path) will be added as a tag. Warning: this can produce a LOT of tags!'
+        label: Create tags from model name
     update:
       success: Settings saved.
     users:

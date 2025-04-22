@@ -97,6 +97,41 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     end
   end
 
+  context "when parsing from template and folder name" do
+    let(:model) { create(:model, path: "/creator/tag1/tag2/model-name", tag_list: ["existing", "tags"]) }
+
+    before do
+      allow(SiteSettings).to receive_messages(
+        model_tags_tag_model_directory_name: true,
+        parse_metadata_from_path: true,
+        model_tags_auto_tag_new: "!new",
+        model_path_template: "{creator}/{tags}/{modelName}{modelId}"
+      )
+      described_class.perform_now(model.id)
+      model.reload
+    end
+
+    it "includes tags parsed from folder name" do
+      expect(model.tag_list).to include("model", "name")
+    end
+
+    it "includes tags parsed from path" do
+      expect(model.tag_list).to include("tag1", "tag2")
+    end
+
+    it "preserves pre-existing tags" do
+      expect(model.tag_list).to include("existing", "tags")
+    end
+
+    it "doesn't add auto-new tag" do
+      expect(model.tag_list).not_to include("!new")
+    end
+
+    it "includes creator info parsed from path" do
+      expect(model.creator.name).to include("Creator")
+    end
+  end
+
   context "when parsing with a path template" do
     let(:model) { create(:model, path: "/library-1/stuff/tags/are/greedy/model-name") }
 
@@ -214,6 +249,29 @@ RSpec.describe Scan::Model::ParseMetadataJob do
         expect(model.creator).to eq creator
       end
     end
+
+    context "with a creator already assigned" do
+      let(:model) { create(:model, path: "bruce-wayne/toys/model-name", creator: create(:creator, name: "Existing")) }
+
+      before do
+        allow(SiteSettings).to receive_messages(
+          model_path_template: "{creator}/{collection}/{modelName}",
+          parse_metadata_from_path: true
+        )
+      end
+
+      it "doesn't overwrite existing creator" do
+        expect { described_class.perform_now(model.id) }.not_to change { model.reload.creator }
+      end
+
+      it "sets collection" do
+        expect { described_class.perform_now(model.id) }.to change { model.reload.collection }
+      end
+
+      it "sets name" do
+        expect { described_class.perform_now(model.id) }.to change { model.reload.name }
+      end
+    end
   end
 
   context "when parsing collection out of a path" do
@@ -254,6 +312,29 @@ RSpec.describe Scan::Model::ParseMetadataJob do
         expect(model.collection).to eq collection
       end
     end
+
+    context "with a creator already assigned" do
+      let(:model) { create(:model, path: "bruce-wayne/toys/model-name", collection: create(:collection, name: "Existing")) }
+
+      before do
+        allow(SiteSettings).to receive_messages(
+          model_path_template: "{creator}/{collection}/{modelName}",
+          parse_metadata_from_path: true
+        )
+      end
+
+      it "sets creator" do
+        expect { described_class.perform_now(model.id) }.to change { model.reload.creator }
+      end
+
+      it "doesn't overwrite existing collection" do
+        expect { described_class.perform_now(model.id) }.not_to change { model.reload.collection }
+      end
+
+      it "sets name" do
+        expect { described_class.perform_now(model.id) }.to change { model.reload.name }
+      end
+    end
   end
 
   it "discards model ID and doesn't include it in model name" do # rubocop:todo RSpec/MultipleExpectations
@@ -276,5 +357,30 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     expect(model.name).to eq "Model Name"
     expect(model.creator.name).to eq "Bruce Wayne"
     expect(model.tag_list).to include("human", "wizard")
+  end
+
+  context "when loading data from datapackage" do
+    let(:model) { create(:model, links_attributes: []) }
+
+    before do
+      allow(model).to receive(:datapackage_content).and_return({
+        "links" => [
+          {
+            "path" => "https://example.com/"
+          }
+        ]
+      })
+      allow(Model).to receive(:find).with(model.id).and_return(model)
+    end
+
+    it "adds links" do
+      expect { described_class.perform_now(model.id) }.to change { model.links.count }.from(0).to(1)
+    end
+
+    it "does not duplicate links" do
+      # Parse twice so we might duplicate the links
+      described_class.perform_now(model.id)
+      expect { described_class.perform_now(model.id) }.not_to change { model.links.count }
+    end
   end
 end

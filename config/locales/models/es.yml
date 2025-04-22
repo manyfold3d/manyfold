@@ -73,6 +73,7 @@ es:
       files_card:
         bulk_edit: Editar todos los archivos
         heading: Archivos
+      followers:
       license: Licencia
       merge:
         heading: Fusionar
