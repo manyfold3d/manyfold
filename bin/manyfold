@@ -16,6 +16,13 @@ class CreatorCLI < Thor
   end
 end
 
+class MailCLI < Thor
+  desc "test_email", "sends test email"
+  def test
+    UserMailer.with(user: User.find(1)).account_approved.deliver_now # rubocop:disable Pundit/UsePolicyScope
+  end
+end
+
 class ModelCLI < Thor
   desc "update_metadata", "reruns the metadata parser for all models"
   def update_metadata
@@ -55,12 +62,43 @@ class TagCLI < Thor
   end
 end
 
+class UserCLI < Thor
+  desc "approve", "approves a user"
+  option :email, required: true, type: :string, aliases: :mail
+  def approve
+    u = User.find_by(email: options[:email])
+    raise "User not found" if u.nil?
+    u.update(approved: true)
+    puts "\nUser #{u.email} approved"
+  rescue RuntimeError
+    puts "\nUser #{options[:email]} not found"
+  end
+
+  desc "password", "resets password for user"
+  option :email, required: true, type: :string, aliases: :mail
+  def password
+    u = User.find_by(email: options[:email])
+    raise "User not found" if u.nil?
+    u.password = ask("Enter password: ", echo: false)
+    puts "\n"
+    u.password_confirmation = ask("Confirm password: ", echo: false)
+    puts "\nPassword changed!" if u.save!
+  rescue ActiveRecord::RecordInvalid => e
+    puts "\n#{e}"
+  rescue RuntimeError => e
+    puts "\n#{e}"
+  end
+end
+
 class ManyfoldCLI < Thor
   desc "creators", "manage creators"
   subcommand "creators", CreatorCLI
 
   desc "collections", "manage collections"
   subcommand "collections", CollectionCLI
+
+  desc "email", "test email"
+  subcommand "email", MailCLI
 
   desc "models", "manage models"
   subcommand "models", ModelCLI
@@ -70,6 +108,9 @@ class ManyfoldCLI < Thor
 
   desc "tags", "manage tags"
   subcommand "tags", TagCLI
+
+  desc "user", "manage users"
+  subcommand "user", UserCLI
 end
 
 ManyfoldCLI.start(ARGV)
