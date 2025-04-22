@@ -1,7 +1,7 @@
 module Filterable
   extend ActiveSupport::Concern
   included do
-    before_action :get_filters, only: [:bulk_edit, :bulk_update, :index, :show] # rubocop:todo Rails/LexicallyScopedActionFilter
+    before_action :get_filters, only: [:index, :show] # rubocop:todo Rails/LexicallyScopedActionFilter
   end
 
   def get_filters

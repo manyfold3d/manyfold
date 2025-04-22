@@ -13,6 +13,7 @@ class ModelsController < ApplicationController
   before_action :get_creators_and_collections, only: [:new, :edit, :bulk_edit]
   before_action :set_returnable, only: [:bulk_edit, :edit, :new]
   before_action :clear_returnable, only: [:bulk_update, :update, :create]
+  before_action :get_filters, only: [:bulk_edit, :bulk_update, :index, :show] # rubocop:todo Rails/LexicallyScopedActionFilter
 
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
