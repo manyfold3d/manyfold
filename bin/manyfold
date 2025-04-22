@@ -62,6 +62,38 @@ class TagCLI < Thor
   end
 end
 
+class UserCLI < Thor
+  desc "approve", "approves a user"
+  option :email, required: true, type: :string, aliases: :mail
+  def approve
+    begin
+      u = User.find_by(email: options[:email])
+      raise "User not found" if u.nil?
+      u.update(approved: true)
+      puts "\nUser #{u.email} approved"
+    rescue RuntimeError => e
+      puts "\nUser #{options[:email]} not found"
+    end
+  end
+
+  desc "password", "resets password for user"
+  option :email, required: true, type: :string, aliases: :mail
+  def password
+    begin
+      u = User.find_by(email: options[:email])
+      raise "User not found" if u.nil?
+      u.password = ask("Enter password: ", echo: false)
+      puts "\n"
+      u.password_confirmation = ask("Confirm password: ", echo: false)
+      puts "\nPassword changed!" if u.save!
+    rescue ActiveRecord::RecordInvalid => e
+      puts "\n#{e}"
+    rescue RuntimeError => e
+      puts "\n#{e}"
+    end
+  end
+end
+
 class ManyfoldCLI < Thor
   desc "creators", "manage creators"
   subcommand "creators", CreatorCLI
@@ -80,6 +112,9 @@ class ManyfoldCLI < Thor
 
   desc "tags", "manage tags"
   subcommand "tags", TagCLI
+
+  desc "user", "manage users"
+  subcommand "user", UserCLI
 end
 
 ManyfoldCLI.start(ARGV)
