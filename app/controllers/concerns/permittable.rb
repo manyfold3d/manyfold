@@ -6,9 +6,15 @@ module Permittable
   end
 
   def caber_relations_params(type: nil)
-    params.require(type).permit(
-      caber_relations_attributes: [:id, :subject_type, :subject_id, :permission, :_destroy]
-    )
+    params.expect(type => [
+      caber_relations_attributes: [
+        :id,
+        :subject_type,
+        :subject_id,
+        :permission,
+        :_destroy
+      ]
+    ])
   end
 
   def find_caber_subjects

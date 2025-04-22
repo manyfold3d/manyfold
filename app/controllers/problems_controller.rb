@@ -137,7 +137,7 @@ class ProblemsController < ApplicationController
   end
 
   def permitted_params
-    params.require(:problem).permit([
+    params.expect(problem: [
       :ignored
     ])
   end

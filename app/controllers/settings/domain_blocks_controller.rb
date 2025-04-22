@@ -32,6 +32,8 @@ class Settings::DomainBlocksController < ApplicationController
   private
 
   def domain_block_params
-    params.require(:domain_block).permit(:domain)
+    params.expect(domain_block: [
+      :domain
+    ])
   end
 end

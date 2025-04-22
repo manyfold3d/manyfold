@@ -48,12 +48,12 @@ class DoorkeeperApplicationsController < ApplicationController
   private
 
   def application_params
-    params.require(:doorkeeper_application).permit(
+    params.expect(doorkeeper_application: [
       :name,
       :redirect_uri,
       :confidential,
       scopes: []
-    )
+    ])
   end
 
   def get_application

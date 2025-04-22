@@ -10,7 +10,7 @@ class Library < ApplicationRecord
 
   has_many :models, dependent: :destroy
   has_many :model_files, through: :models
-  serialize :tag_regex, type: Array
+  serialize :tag_regex, type: Array, coder: YAML
   after_initialize :init
   before_validation :ensure_path_case_is_correct
   after_commit :register_storage, on: :create

@@ -16,7 +16,9 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:content)
+    params.expect(report: [
+      :content
+    ])
   end
 
   def get_reportable
