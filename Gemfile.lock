@@ -186,7 +186,7 @@ GEM
       racc
     browser (6.1.0)
     builder (3.3.0)
-    bullet (8.0.3)
+    bullet (8.0.4)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (12.0.0)
