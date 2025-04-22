@@ -777,8 +777,6 @@ GEM
       fugit (~> 1.8, >= 1.11.1)
       globalid (>= 1.0.1)
       sidekiq (>= 6.5.0)
-    sidekiq-failures (1.0.4)
-      sidekiq (>= 4.0.0)
     simple_po_parser (1.1.6)
     simplecov (0.22.0)
       docile (~> 1.1)
@@ -982,7 +980,6 @@ DEPENDENCIES
   shrine-tus (~> 2.1)
   sidekiq (~> 8.0)
   sidekiq-cron (~> 2.2)
-  sidekiq-failures (~> 1.0)
   simplecov (~> 0.22.0)
   simplecov-cobertura
   spdx (~> 4.1)
