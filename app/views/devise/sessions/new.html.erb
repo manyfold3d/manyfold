@@ -15,14 +15,18 @@
       <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
       <%= password_input_row form, :password, autocomplete: "current-password" %>
 
+      <div class="row">
       <% if devise_mapping.rememberable? %>
-        <div class="field">
+        <div class="col field">
           <%= form.check_box :remember_me %>
           <%= form.label :remember_me %>
         </div>
       <% end %>
 
-      <%= form.submit translate(".sign_in"), class: "btn btn-primary" %>
+        <div class="col text-end">
+          <%= form.submit translate(".sign_in"), class: "btn btn-primary float-end" %>
+        </div>
+      </div>
     <% end %>
 
     <%= render "devise/shared/links" %>
