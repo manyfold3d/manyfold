@@ -383,4 +383,55 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       expect { described_class.perform_now(model.id) }.not_to change { model.links.count }
     end
   end
+
+  context "when loading information from README" do
+    let(:model) { create(:model, notes: nil) }
+    let(:readme) { create(:model_file, model: model) }
+
+    context "with nothing in datapackage" do
+      before do
+        allow(Model).to receive(:find).with(model.id).and_return(model)
+        allow(model).to receive_messages(
+          model_files: instance_double(ActiveRecord::Relation, find_by: readme, min_by: nil),
+          datapackage_content: nil
+        )
+        allow(readme).to receive(:attachment).and_return class_double(File, read: "new content")
+      end
+
+      it "adds content to notes field" do
+        expect { described_class.perform_now(model.id) }.to change { model.reload.notes }.from(nil).to("new content")
+      end
+    end
+
+    context "with description in datapackage" do
+      before do
+        allow(Model).to receive(:find).with(model.id).and_return(model)
+        allow(model).to receive_messages(
+          model_files: instance_double(ActiveRecord::Relation, find_by: readme, min_by: nil),
+          datapackage_content: {"description" => "from datapackage"}
+        )
+        allow(readme).to receive(:attachment).and_return class_double(File, read: "from readme")
+      end
+
+      it "uses datapackage notes" do
+        expect { described_class.perform_now(model.id) }.to change { model.reload.notes }.from(nil).to("from datapackage")
+      end
+    end
+
+    context "with already-set notes" do
+      before do
+        model.update!(notes: "already set")
+        allow(Model).to receive(:find).with(model.id).and_return(model)
+        allow(model).to receive_messages(
+          model_files: instance_double(ActiveRecord::Relation, find_by: readme, min_by: nil),
+          datapackage_content: nil
+        )
+        allow(readme).to receive(:attachment).and_return class_double(File, read: "from readme")
+      end
+
+      it "does not overwrite existing notes" do
+        expect { described_class.perform_now(model.id) }.not_to change { model.reload.notes }
+      end
+    end
+  end
 end

@@ -2,6 +2,12 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   queue_as :scan
   unique :until_executed
 
+  README_FILES = [
+    "readme",
+    "readme.md",
+    "readme.txt"
+  ]
+
   def perform(model_id)
     model = Model.find(model_id)
     return if model.remote?
@@ -47,12 +53,15 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       tag_list.concat data.delete(:tag_list) if data.key?(:tag_list)
       options.merge! data
     end
+    # Load information from READMEs (but don't overwrite)
+    options.compact_blank!
+    options.reverse_merge! attributes_from_readme(model.model_files.find_by(filename_lower: README_FILES)) if model.notes.blank?
     # Make sure links are unique
     options[:links_attributes]&.filter! { |it| model.links.map(&:url).exclude?(it[:url]) }
     # Filter stop words
     options[:tag_list] = remove_stop_words(tag_list.uniq)
     # Store new metadata
-    model.update!(options.compact)
+    model.update!(options.compact_blank!)
   end
 
   private
@@ -82,6 +91,13 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       collection: find_or_create_from_path_component(Collection, components[:collection]),
       name: to_human_name(components[:model_name])
     }.compact
+  end
+
+  def attributes_from_readme(file)
+    return {} if file.nil?
+    {
+      notes: file.attachment.read
+    }
   end
 
   def tags_from_path_template(path)
