@@ -90,7 +90,6 @@ gem "memoist", "~> 0.16"
 gem "stopwords-filter2", require: "stopwords"
 
 gem "devise", "~> 4.9"
-gem "devise-i18n", "~> 1.13"
 
 gem "data_migrate", "~> 11.3"
 

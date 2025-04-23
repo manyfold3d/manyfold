@@ -221,9 +221,6 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.13.0)
-      devise (>= 4.9.0)
-      rails-i18n
     devise_zxcvbn (6.0.0)
       devise
       zxcvbn (~> 0.1.7)
@@ -908,7 +905,6 @@ DEPENDENCIES
   data_migrate (~> 11.3)
   database_cleaner-active_record (~> 2.2)
   devise (~> 4.9)
-  devise-i18n (~> 1.13)
   devise_zxcvbn (~> 6.0)
   doorkeeper (~> 5.8)
   doorkeeper-i18n (~> 5.2)
