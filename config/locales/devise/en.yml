@@ -111,7 +111,7 @@ en:
         details: Your Details
         rules: Server Rules
         rules_agree: By signing up for an account, you agree to abide by the rules above.
-        sign_up: Sign up
+        sign_up: Create account
       pagination_settings:
         collections:
           label: Paginate collections
@@ -195,7 +195,7 @@ en:
         forgot_your_password: Forgot your password?
         sign_in: Sign in
         sign_in_with_provider: Sign in with %{provider}
-        sign_up: Sign up
+        sign_up: Create account
       minimum_password_length:
         one: "(%{count} character minimum)"
         other: "(%{count} characters minimum)"
