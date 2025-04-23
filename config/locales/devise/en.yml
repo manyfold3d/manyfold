@@ -88,7 +88,7 @@ en:
         summary: Control how model file lists are displayed
       first_use:
         email_help: Never shown publicly; only used for login and account security emails.
-        guidance: On first use, you need to set a username, contact email and password for the main administrator user. If you're running single-user mode, you will not normally need to enter these details to log in, but in multiuser mode you will not be able to access Manyfold without them.
+        guidance: On first use, you need to set a username, contact email and password for the main administrator user. If you're running single-user mode, you will not normally need to enter these details to sign in, but in multiuser mode you will not be able to access Manyfold without them.
         password:
           help_html: We ask for a strong password by default; to allow a simpler one on a private instance, set the <a href="https://manyfold.app/sysadmin/configuration.html#min_password_score">MIN_PASSWORD_SCORE</a> environment variable.
         submit: Save
@@ -184,7 +184,7 @@ en:
     sessions:
       already_signed_out: Signed out successfully.
       new:
-        sign_in: Log in
+        sign_in: Sign in
       signed_in: Signed in successfully.
       signed_out: Signed out successfully.
     shared:
@@ -193,7 +193,7 @@ en:
         didn_t_receive_confirmation_instructions: Didn't receive confirmation instructions?
         didn_t_receive_unlock_instructions: Didn't receive unlock instructions?
         forgot_your_password: Forgot your password?
-        sign_in: Log in
+        sign_in: Sign in
         sign_in_with_provider: Sign in with %{provider}
         sign_up: Sign up
       minimum_password_length:
