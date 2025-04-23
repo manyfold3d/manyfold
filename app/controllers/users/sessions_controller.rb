@@ -36,7 +36,7 @@ class Users::SessionsController < Devise::SessionsController
     # Autocreate an admin user if there isn't one
     create_admin_user if User.with_role(:administrator).empty?
     # If in single user mode, or on first run,
-    # automatically log in with an admin account
+    # automatically sign in with an admin account
     if !SiteSettings.multiuser_enabled? || User.with_role(:administrator).first.reset_password_token == "first_use"
       sign_in(:user, User.with_role(:administrator).first)
       flash.discard

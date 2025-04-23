@@ -32,7 +32,7 @@ RSpec.describe "Users::Sessions" do
           admin.update(reset_password_token: nil)
         end
 
-        it "doesn't auto log in" do
+        it "doesn't auto sign in" do
           get "/users/sign_in"
           expect(controller.current_user).to be_nil
         end

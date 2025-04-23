@@ -1,23 +1,25 @@
-<h1><%= t(".sign_up") %></h1>
+<div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+  <h1><%= t(".sign_up") %></h1>
 
-<% if SiteSettings.rules.presence %>
-  <h2><%= t(".rules") %></h2>
-  <div class="alert alert-warning">
-    <%= markdownify(SiteSettings.rules) %>
-  </div>
-  <p>
-    <%= t(".rules_agree") %>
-  </p>
-<% end %>
+  <% if SiteSettings.rules.presence %>
+    <h2><%= t(".rules") %></h2>
+    <div class="alert alert-warning">
+      <%= markdownify(SiteSettings.rules) %>
+    </div>
+    <p>
+      <%= t(".rules_agree") %>
+    </p>
+  <% end %>
 
-<h2><%= t(".details") %></h2>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
-  <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
-  <%= text_input_row form, :username, autocomplete: "username" %>
-  <%= password_input_row form, :password, autocomplete: "new-password", strength_meter: true %>
-  <%= password_input_row form, :password_confirmation, autocomplete: "new-password" %>
-  <%= content_tag :div, t(".approval_help"), class: "alert alert-info" if SiteSettings.approve_signups %>
-  <%= form.submit translate(".sign_up"), class: "btn btn-primary" %>
-<% end %>
+  <h2><%= t(".details") %></h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+    <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
+    <%= text_input_row form, :username, autocomplete: "username" %>
+    <%= password_input_row form, :password, autocomplete: "new-password", strength_meter: true %>
+    <%= password_input_row form, :password_confirmation, autocomplete: "new-password" %>
+    <%= content_tag :div, t(".approval_help"), class: "alert alert-info" if SiteSettings.approve_signups %>
+    <%= form.submit translate(".sign_up"), class: "btn btn-primary" %>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
