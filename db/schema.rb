@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_09_125753) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_23_094525) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -229,8 +229,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_09_125753) do
     t.integer "presupported_version_id"
     t.json "attachment_data"
     t.string "public_id"
+    t.virtual "filename_lower", type: :string, as: "LOWER(filename)", stored: true
     t.index ["digest"], name: "index_model_files_on_digest"
     t.index ["filename", "model_id"], name: "index_model_files_on_filename_and_model_id", unique: true
+    t.index ["filename_lower"], name: "index_model_files_on_filename_lower"
     t.index ["model_id"], name: "index_model_files_on_model_id"
     t.index ["presupported_version_id"], name: "index_model_files_on_presupported_version_id"
     t.index ["public_id"], name: "index_model_files_on_public_id"
