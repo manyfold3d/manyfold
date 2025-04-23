@@ -10,8 +10,6 @@ class Scan::CheckAllJob < ApplicationJob
     end
     # Check all models
     status[:step] = "jobs.scan.check_all.queueing_model_checks" # i18n-tasks-use t('jobs.scan.check_all.queueing_model_checks')
-    Model.find_each do |model|
-      model.check_later(scan: false)
-    end
+    Model.find_each(&:check_later)
   end
 end

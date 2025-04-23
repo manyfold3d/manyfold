@@ -194,8 +194,8 @@ class Model < ApplicationRecord
     Scan::Model::AddNewFilesJob.set(wait: delay).perform_later(id, include_all_subfolders: include_all_subfolders)
   end
 
-  def check_later(scan: true, delay: 0.seconds)
-    Scan::CheckModelJob.set(wait: delay).perform_later(id, scan: scan)
+  def check_later(delay: 0.seconds)
+    Scan::CheckModelJob.set(wait: delay).perform_later(id)
   end
 
   def check_for_problems_later(delay: 5.seconds)

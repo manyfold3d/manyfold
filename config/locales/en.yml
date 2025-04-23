@@ -281,7 +281,7 @@ en:
     navbar:
       account: My Settings
       activity: Activity
-      check_existing: Check existing models
+      check_existing: Rescan existing models
       home: Homepage
       log_in: Sign in
       log_out: Sign out
