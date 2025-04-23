@@ -40,7 +40,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     authorize current_user
     if @first_use
       if current_user.update(account_update_params.merge(reset_password_token: nil))
-        sign_in(current_user, bypass: true)
+        bypass_sign_in current_user
         redirect_to root_path, notice: t("devise.registrations.update.setup_complete")
       else
         render "first_use"
