@@ -73,7 +73,7 @@ en:
       submit: Save Settings
     multiuser:
       approve_signups:
-        help: All new accounts must be approved by a moderator before they can log in.
+        help: All new accounts must be approved by a moderator before they can sign in.
         label: Approve accounts
       default_viewer_role:
         help: Who can view new models / creators / collections by default?
