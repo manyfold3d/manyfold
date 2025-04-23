@@ -1,22 +1,22 @@
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+<nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
   <div class='container-fluid'>
     <a class="navbar-brand ms-2" href="<%= root_path %>" aria-label="<%= translate ".home" %>">
       <%= image_tag site_icon, alt: site_name, height: "40px", class: "me-2" %>
-      <span class="d-lg-none"><%= site_name %></span>
+      <span class="d-md-none"><%= site_name %></span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="<%= translate ".navbar.toggler.label" %>">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse row" id="navbar">
-      <ul class="navbar-nav col-6 ps-4 ps-lg-0 align-self-start">
+      <ul class="navbar-nav col ps-4 ps-md-0 align-self-start">
         <li class="nav-item">
-          <%= nav_link "box", Model.model_name.human(count: 100), models_path(@filters) %>
+          <%= nav_link "box", Model.model_name.human(count: 100), models_path(@filters), text_style: "d-md-none d-lg-inline" %>
         </li>
         <li class="nav-item">
-          <%= nav_link "people", Creator.model_name.human(count: 100), creators_path(@filters&.except(:creator)) %>
+          <%= nav_link "people", Creator.model_name.human(count: 100), creators_path(@filters&.except(:creator)), text_style: "d-md-none d-lg-inline" %>
         </li>
         <li class="nav-item">
-          <%= nav_link "collection", Collection.model_name.human(count: 100), collections_path(@filters&.except(:collection)) %>
+          <%= nav_link "collection", Collection.model_name.human(count: 100), collections_path(@filters&.except(:collection)), text_style: "d-md-none d-lg-inline" %>
         </li>
         <% if SiteSettings.show_libraries %>
           <% policy_scope(Library).find_each do |library| %>
@@ -31,9 +31,9 @@
           <% end %>
         <% end %>
       </ul>
-      <ul class="navbar-nav col-6 pe-4 align-self-start justify-content-end">
+      <ul class="navbar-nav col-auto pe-4 align-self-start justify-content-end">
         <li class="nav-item">
-          <%= nav_link "upload", t(".upload"), new_model_path, style: "btn btn-warning btn-sm me-1 mt-lg-1" if policy(:upload).index? %>
+          <%= nav_link "upload", t(".upload"), new_model_path, style: "btn btn-warning btn-sm me-1 mt-1", text_style: "d-md-none d-lg-inline" if policy(:upload).index? %>
         </li>
         <li class="nav-item">
           <% if policy(:library).scan? %>
@@ -62,18 +62,18 @@
                     problems_path,
                     title: translate("problems.severities.#{severity}"), # rubocop:todo I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
                     icon_style: "link-#{severity}",
-                    text_style: "d-lg-none",
+                    text_style: "d-md-none",
                     aria_label: Problem.model_name.human(count: 100) %>
             </li>
           <% end %>
           <% if policy(:activity).index? %>
             <li class="nav-item">
-              <%= nav_link "activity", t(".activity"), activity_path, text_style: "d-lg-none" %>
+              <%= nav_link "activity", t(".activity"), activity_path, text_style: "d-md-none" %>
             </li>
           <% end %>
           <% if policy(:settings).index? %>
             <li class="nav-item">
-              <%= nav_link "gear", t(".settings"), settings_path, text_style: "d-lg-none" %>
+              <%= nav_link "gear", t(".settings"), settings_path, text_style: "d-md-none" %>
             </li>
           <% end %>
         <% end %>
@@ -84,13 +84,13 @@
         </li>
         <%- if current_user %>
           <li class="nav-item">
-            <%= nav_link "sliders", t(".account"), edit_user_registration_path, text_style: "d-lg-none" %>
+            <%= nav_link "sliders", t(".account"), edit_user_registration_path, text_style: "d-md-none" %>
           </li>
         <% end %>
         <%- if SiteSettings.multiuser_enabled? %>
           <li class="nav-item">
             <%- if current_user %>
-              <%= nav_link "box-arrow-right", t(".log_out"), destroy_user_session_path, method: :delete, title: translate(".log_out"), text_style: "d-lg-none" %>
+              <%= nav_link "box-arrow-right", t(".log_out"), destroy_user_session_path, method: :delete, title: translate(".log_out"), text_style: "d-md-none" %>
             <% else %>
               <%= nav_link "box-arrow-in-right", "", new_user_session_path, title: translate(".log_in") %>
             <% end %>
