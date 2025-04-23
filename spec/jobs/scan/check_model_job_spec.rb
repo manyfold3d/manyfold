@@ -10,18 +10,6 @@ RSpec.describe Scan::CheckModelJob do
     )
   end
 
-  it "does not queue up model file scan job if scan parameter is false" do
-    expect { described_class.perform_now(thing.id, scan: false) }.not_to(
-      have_enqueued_job(Scan::Model::AddNewFilesJob)
-    )
-  end
-
-  it "queues up model problem check job instead if scan is false" do
-    expect { described_class.perform_now(thing.id, scan: false) }.to(
-      have_enqueued_job(Scan::Model::CheckForProblemsJob).with(thing.id).once
-    )
-  end
-
   it "queues up analysis jobs for all model files" do
     expect { described_class.perform_now(thing.id) }.to(
       have_enqueued_job(Analysis::AnalyseModelFileJob).with(file.id).once

@@ -306,7 +306,7 @@ RSpec.describe "Models" do
       describe "POST /models/:id/scan" do
         it "schedules a scan job", :as_moderator do
           expect { post "/models/#{library.models.first.to_param}/scan" }.to(
-            have_enqueued_job(Scan::CheckModelJob).with(library.models.first.id, scan: true).once
+            have_enqueued_job(Scan::CheckModelJob).with(library.models.first.id).once
           )
         end
 

@@ -21,7 +21,7 @@ flowchart TD
     ModelEdit([fa:fa-person Model edited])
     Organize([fa:fa-person Organize button])
     ScanAll([fa:fa-person Scan for changes])
-    CheckAll([fa:fa-person Check integrity])
+    CheckAll([fa:fa-person Rescan all models])
     MainUpload([fa:fa-person Upload button])
     FileUpload([fa:fa-person Upload files in model])
     FileConvert([fa:fa-person Convert file button])
