@@ -2,6 +2,12 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   queue_as :scan
   unique :until_executed
 
+  README_FILES = [
+    "readme",
+    "readme.md",
+    "readme.txt"
+  ]
+
   def perform(model_id)
     model = Model.find(model_id)
     return if model.remote?
@@ -49,7 +55,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     end
     # Load information from READMEs (but don't overwrite)
     options.compact_blank!
-    options.reverse_merge! attributes_from_readme(model.model_files.find_by(filename_lower: ["readme.txt", "readme", "readme.md"])) if model.notes.blank?
+    options.reverse_merge! attributes_from_readme(model.model_files.find_by(filename_lower: README_FILES)) if model.notes.blank?
     # Make sure links are unique
     options[:links_attributes]&.filter! { |it| model.links.map(&:url).exclude?(it[:url]) }
     # Filter stop words
