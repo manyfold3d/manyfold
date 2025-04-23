@@ -4435,7 +4435,7 @@ __metadata:
     i18n-js: ^4.5.1
     jquery: ^3.7.1
     masonry-layout: ^4.2.2
-    nodemon: ^3.1.9
+    nodemon: ^3.1.10
     postcss: ^8.5.3
     postcss-cli: ^11.0.1
     sass-embedded: ^1.87.0
@@ -4715,9 +4715,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemon@npm:^3.1.9":
-  version: 3.1.9
-  resolution: "nodemon@npm:3.1.9"
+"nodemon@npm:^3.1.10":
+  version: 3.1.10
+  resolution: "nodemon@npm:3.1.10"
   dependencies:
     chokidar: ^3.5.2
     debug: ^4
@@ -4731,7 +4731,7 @@ __metadata:
     undefsafe: ^2.0.5
   bin:
     nodemon: bin/nodemon.js
-  checksum: d045065dea08904f1356d18132538e71a61df12cb4e2852730310492943676d4789bedb28c343a5d85d5e07558bf47b73f000a8017409f0b7d522a3c1c42b2e5
+  checksum: cdd2bcae3ad810fcc0f00a01ed3b0addb76a1328ee024e483cdcadfab7eed2d24964e3feaf7e6c83895ad6154379d5403ffcf762a87841158fd3514c50ea9ef8
   languageName: node
   linkType: hard
 
