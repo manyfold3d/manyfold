@@ -2,7 +2,7 @@
   <% if @models.empty? %>
     <div class="alert alert-info">
       <%= icon "person-arms-up", "" %>
-      <%= t(".no_results_html") %>
+      <%= signed_in? ? t(".no_results_html") : t(".no_results_signed_out_html", link: new_user_session_path) %>
     </div>
   <% else %>
     <div class="skip-link-container">
