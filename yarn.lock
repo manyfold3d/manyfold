@@ -530,6 +530,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@dimforge/rapier3d-compat@npm:^0.12.0":
+  version: 0.12.0
+  resolution: "@dimforge/rapier3d-compat@npm:0.12.0"
+  checksum: 86cb3b39925673761aa5dca5429ca44e0c7ac8072472cca925e2ca732be695292e318501a2ab39110be1549d4f143a0af0620246657f76570c8cdd1b0b3df36c
+  languageName: node
+  linkType: hard
+
 "@esbuild/aix-ppc64@npm:0.25.3":
   version: 0.25.3
   resolution: "@esbuild/aix-ppc64@npm:0.25.3"
@@ -1196,17 +1203,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/three@npm:^0.175.0":
-  version: 0.175.0
-  resolution: "@types/three@npm:0.175.0"
+"@types/three@npm:^0.176.0":
+  version: 0.176.0
+  resolution: "@types/three@npm:0.176.0"
   dependencies:
+    "@dimforge/rapier3d-compat": ^0.12.0
     "@tweenjs/tween.js": ~23.1.3
     "@types/stats.js": "*"
     "@types/webxr": "*"
     "@webgpu/types": "*"
     fflate: ~0.8.2
     meshoptimizer: ~0.18.1
-  checksum: f345254142cdaf780b99456097ac0375158ca61ed8b0fd4994b8d6cf7e25dedb9c1e14086287ce17846bfe364ad5add02d419d1133bbcb756d8daaceb153ad9f
+  checksum: 84821e0c7ddf5cc7e7a17561631f4d6e91fc7377898ce4402f69f24dfce08ea875b527620fb3d2f9772d0440cbbee6da97819cdb3a63f368aac284b8a10c9cbe
   languageName: node
   linkType: hard
 
@@ -4412,7 +4420,7 @@ __metadata:
     "@types/lodash": ^4.17.16
     "@types/node": ^20.17.30
     "@types/selectize": ^0.12.39
-    "@types/three": ^0.175.0
+    "@types/three": ^0.176.0
     "@types/webpack-env": ^1.18.8
     "@types/webxr": ^0.5.22
     "@typescript-eslint/parser": ^8.31.0
