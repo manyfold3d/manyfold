@@ -100,7 +100,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
 
   def attributes_from_readme(file)
     return {} if file.nil?
-    content = file.attachment.read
+    content = file.attachment.read.force_encoding(Encoding::UTF_8)
     case content
     when SIMPLE_THINGIVERSE_README
       attributes_from_simple_thingiverse_readme(content)
