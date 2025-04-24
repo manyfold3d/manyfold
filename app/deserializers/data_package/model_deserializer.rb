@@ -21,7 +21,7 @@ module DataPackage
     def parse_links
       links = (@object["links"] || []).map { |it| LinkDeserializer.new(it).deserialize }
       links << {url: @object["homepage"]} if @object["homepage"]
-      links
+      links.reject { |it| it[:url] == Rails.application.routes.url_helpers.model_url(id: @object["name"]) }
     end
   end
 end
