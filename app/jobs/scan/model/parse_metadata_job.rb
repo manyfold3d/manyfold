@@ -95,8 +95,8 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     }.compact
   end
 
-  ASCII_ART_THINGIVERSE_README = /(?<url>https?:\/\/www.thingiverse.com\/thing:[0-9]+)\n(?<title>.*) by (?<creator>.*) is licensed under the (?<license_name>.*) license\.\n(?<license_url>https?:\/\/.*)\n\n# Summary\n\n(?<summary>.*)/
-  SIMPLE_THINGIVERSE_README = /(?<title>.*) by (?<creator>.*) on Thingiverse: (?<url>https?:\/\/www.thingiverse.com\/thing:[0-9]+)/
+  ASCII_ART_THINGIVERSE_README = /(?<url>https?:\/\/www\.thingiverse\.com\/thing:[0-9]+)\n(?<title>.*) by (?<creator>.*) is licensed under the (?<license_name>.*) license\.\n(?<license_url>https?:\/\/.*)\n\n# Summary\n\n(?<summary>.*)/
+  SIMPLE_THINGIVERSE_README = /(?<title>.*) by (?<creator>.*) on Thingiverse: (?<url>https?:\/\/www\.thingiverse\.com\/thing:[0-9]+)/
 
   def attributes_from_readme(file)
     return {} if file.nil?
