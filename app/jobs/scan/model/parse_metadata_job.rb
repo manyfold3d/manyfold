@@ -53,13 +53,15 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       tag_list.concat data.delete(:tag_list) if data.key?(:tag_list)
       options.merge! data
     end
-    # Load information from READMEs (but don't overwrite)
+    # Load information from READMEs
     options.compact_blank!
-    options.reverse_merge! attributes_from_readme(model.model_files.find_by(filename_lower: README_FILES)) if model.notes.blank?
+    options.merge! attributes_from_readme(model.model_files.find_by(filename_lower: README_FILES))
     # Make sure links are unique
     options[:links_attributes]&.filter! { |it| model.links.map(&:url).exclude?(it[:url]) }
     # Filter stop words
     options[:tag_list] = remove_stop_words(tag_list.uniq)
+    # Remove data that shouldn't be overwritten
+    options.delete(:notes) if model.notes.present?
     # Store new metadata
     model.update!(options.compact_blank!)
   end
@@ -93,11 +95,54 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     }.compact
   end
 
+  ASCII_ART_THINGIVERSE_README = /(?<url>https?:\/\/www\.thingiverse\.com\/thing:[0-9]+)\n(?<title>.*) by (?<creator>.*) is licensed under the (?<license_name>.*) license\.\n(?<license_url>https?:\/\/.*)\n\n# Summary\n\n(?<summary>.*)/
+  SIMPLE_THINGIVERSE_README = /(?<title>.*) by (?<creator>.*) on Thingiverse: (?<url>https?:\/\/www\.thingiverse\.com\/thing:[0-9]+)/
+
   def attributes_from_readme(file)
     return {} if file.nil?
+    content = file.attachment.read
+    case content
+    when SIMPLE_THINGIVERSE_README
+      attributes_from_simple_thingiverse_readme(content)
+    when ASCII_ART_THINGIVERSE_README
+      attributes_from_ascii_art_thingiverse_readme(content)
+    else
+      attributes_from_generic_readme(content)
+    end
+  end
+
+  def attributes_from_generic_readme(content)
     {
-      notes: file.attachment.read
+      notes: content
     }
+  end
+
+  def attributes_from_ascii_art_thingiverse_readme(content)
+    matches = content.match ASCII_ART_THINGIVERSE_README
+    {
+      name: matches[:title],
+      notes: matches[:summary],
+      links_attributes: [
+        {url: matches[:url]}
+      ],
+      creator: find_or_create_from_path_component(Creator, matches[:creator]),
+      license: license_id_from_url(matches[:license_url])
+    }.compact
+  end
+
+  def attributes_from_simple_thingiverse_readme(content)
+    matches = content.match SIMPLE_THINGIVERSE_README
+    {
+      name: matches[:title],
+      links_attributes: [
+        {url: matches[:url]}
+      ],
+      creator: find_or_create_from_path_component(Creator, matches[:creator])
+    }
+  end
+
+  def license_id_from_url(url)
+    Spdx.licenses.find { |id, details| details["seeAlso"].map { |it| it.gsub("legalcode", "") }.include?(url.gsub("http:", "https:")) }&.dig(0)
   end
 
   def tags_from_path_template(path)

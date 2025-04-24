@@ -413,8 +413,8 @@ RSpec.describe Scan::Model::ParseMetadataJob do
         allow(readme).to receive(:attachment).and_return class_double(File, read: "from readme")
       end
 
-      it "uses datapackage notes" do
-        expect { described_class.perform_now(model.id) }.to change { model.reload.notes }.from(nil).to("from datapackage")
+      it "prefers notes from README" do
+        expect { described_class.perform_now(model.id) }.to change { model.reload.notes }.from(nil).to("from readme")
       end
     end
 
@@ -431,6 +431,108 @@ RSpec.describe Scan::Model::ParseMetadataJob do
 
       it "does not overwrite existing notes" do
         expect { described_class.perform_now(model.id) }.not_to change { model.reload.notes }
+      end
+    end
+  end
+
+  context "when loading information from a Thingiverse ASCII-art README" do
+    let(:content) {
+      <<~EOF
+                           .:                     :,
+        ,:::::::: ::`      :::                   :::
+        ,:::::::: ::`      :::                   :::
+        .,,:::,,, ::`.:,   ... .. .:,     .:. ..`... ..`   ..   .:,    .. ::  .::,     .:,`
+           ,::    :::::::  ::, :::::::  `:::::::.,:: :::  ::: .::::::  ::::: ::::::  .::::::
+           ,::    :::::::: ::, :::::::: ::::::::.,:: :::  ::: :::,:::, ::::: ::::::, ::::::::
+           ,::    :::  ::: ::, :::  :::`::.  :::.,::  ::,`::`:::   ::: :::  `::,`   :::   :::
+           ,::    ::.  ::: ::, ::`  :::.::    ::.,::  :::::: ::::::::: ::`   :::::: :::::::::
+           ,::    ::.  ::: ::, ::`  :::.::    ::.,::  .::::: ::::::::: ::`    :::::::::::::::
+           ,::    ::.  ::: ::, ::`  ::: ::: `:::.,::   ::::  :::`  ,,, ::`  .::  :::.::.  ,,,
+           ,::    ::.  ::: ::, ::`  ::: ::::::::.,::   ::::   :::::::` ::`   ::::::: :::::::.
+           ,::    ::.  ::: ::, ::`  :::  :::::::`,::    ::.    :::::`  ::`   ::::::   :::::.
+                                        ::,  ,::                               ``
+                                        ::::::::
+                                         ::::::
+                                          `,,`
+
+
+        http://www.thingiverse.com/thing:1234567
+        Test Model by example creator is licensed under the Creative Commons - Attribution - Non-Commercial - Share Alike license.
+        http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+        # Summary
+
+        This is a test model
+      EOF
+    }
+    let(:model) { create(:model, notes: nil) }
+    let(:readme) { create(:model_file, model: model) }
+
+    context "with nothing in datapackage" do
+      before do
+        allow(Model).to receive(:find).with(model.id).and_return(model)
+        allow(model).to receive_messages(
+          model_files: instance_double(ActiveRecord::Relation, find_by: readme, min_by: nil),
+          datapackage_content: nil
+        )
+        allow(readme).to receive(:attachment).and_return class_double(File, read: content)
+        described_class.perform_now(model.id)
+        model.reload
+      end
+
+      it "sets name" do
+        expect(model.name).to eq "Test Model"
+      end
+
+      it "adds summary section to notes field" do
+        expect(model.notes).to eq "This is a test model"
+      end
+
+      it "adds thingiverse link" do
+        expect(model.links.last.url).to eq "http://www.thingiverse.com/thing:1234567"
+      end
+
+      it "sets creator" do
+        expect(model.creator.name).to eq "Example Creator"
+      end
+
+      it "sets license" do
+        expect(model.license).to eq "CC-BY-NC-SA-3.0"
+      end
+    end
+  end
+
+  context "when loading information from a simple Thingiverse README" do
+    let(:content) {
+      <<~EOF
+        Test Model by example creator on Thingiverse: http://www.thingiverse.com/thing:1234567
+      EOF
+    }
+    let(:model) { create(:model, notes: nil) }
+    let(:readme) { create(:model_file, model: model) }
+
+    context "with nothing in datapackage" do
+      before do
+        allow(Model).to receive(:find).with(model.id).and_return(model)
+        allow(model).to receive_messages(
+          model_files: instance_double(ActiveRecord::Relation, find_by: readme, min_by: nil),
+          datapackage_content: nil
+        )
+        allow(readme).to receive(:attachment).and_return class_double(File, read: content)
+        described_class.perform_now(model.id)
+        model.reload
+      end
+
+      it "sets name" do
+        expect(model.name).to eq "Test Model"
+      end
+
+      it "adds thingiverse link" do
+        expect(model.links.last.url).to eq "http://www.thingiverse.com/thing:1234567"
+      end
+
+      it "sets creator" do
+        expect(model.creator.name).to eq "Example Creator"
       end
     end
   end
