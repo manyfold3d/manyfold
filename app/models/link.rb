@@ -1,6 +1,8 @@
 class Link < ApplicationRecord
   belongs_to :linkable, polymorphic: true
 
+  validates :url, uniqueness: {scope: :linkable} # rubocop:disable Rails/UniqueValidationWithoutIndex
+
   def host
     URI.parse(url).host || url
   rescue URI::InvalidURIError, URI::InvalidComponentError
@@ -11,6 +13,14 @@ class Link < ApplicationRecord
     PublicSuffix.parse(host).sld
   rescue PublicSuffix::DomainInvalid
     host
+  end
+
+  def remove_duplicates!
+    Link.where.not(id: id).where(linkable: linkable, url: url).destroy_all # rubocop:disable Pundit/UsePolicyScope
+  end
+
+  def self.find_duplicated
+    group([:linkable_type, :linkable_id, :url]).having("count(*) > 1")
   end
 
   def self.ransackable_attributes(_auth_object = nil)

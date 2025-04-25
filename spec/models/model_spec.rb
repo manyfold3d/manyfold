@@ -459,4 +459,24 @@ RSpec.describe Model do
     create(:model_file, model: model, filename: "test.obj")
     expect(model.file_extensions.sort).to eq ["obj", "stl"]
   end
+
+  context "when adding links" do
+    let(:url) { "https://example.com" }
+    let(:model) { create(:model, links_attributes: [{url: url}]) }
+
+    it "adds unique links" do
+      opts = {links_attributes: [{url: "https://new.url.com"}]}
+      expect { model.update! opts }.to change { model.links.count }.from(1).to(2)
+    end
+
+    it "doesn't add duplicate links" do
+      opts = {links_attributes: [{url: url}]}
+      expect { model.update! opts }.not_to change { model.links.count }
+    end
+
+    it "filters duplicate links without raising an error" do
+      opts = {links_attributes: [{url: url}]}
+      expect { model.update! opts }.not_to raise_error
+    end
+  end
 end
