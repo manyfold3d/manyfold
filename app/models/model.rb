@@ -38,8 +38,8 @@ class Model < ApplicationRecord
 
   after_create :post_creation_activity
   before_update :move_files, if: :need_to_move_files?
-  after_update :post_update_activity
-  after_save :write_datapackage_later
+  after_update :post_update_activity, if: :was_changed?
+  after_save :write_datapackage_later, if: :was_changed?
   after_commit :check_for_problems_later, on: :update
 
   validates :name, presence: true
@@ -55,6 +55,10 @@ class Model < ApplicationRecord
     end
   end
   memoize :parents
+
+  def was_changed?
+    !previous_changes.empty?
+  end
 
   def merge_into!(target)
     return unless target
