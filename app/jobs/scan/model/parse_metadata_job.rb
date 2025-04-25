@@ -56,8 +56,6 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     # Load information from READMEs
     options.compact_blank!
     options.merge! attributes_from_readme(model.model_files.find_by(filename_lower: README_FILES))
-    # Make sure links are unique
-    options[:links_attributes]&.filter! { |it| model.links.map(&:url).exclude?(it[:url]) }
     # Filter stop words
     options[:tag_list] = remove_stop_words(tag_list.uniq)
     # Remove data that shouldn't be overwritten
