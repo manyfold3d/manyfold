@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_23_094525) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_25_104619) do
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"
@@ -212,6 +212,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_094525) do
     t.integer "linkable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["linkable_id", "linkable_type", "url"], name: "index_links_on_linkable_id_and_linkable_type_and_url"
     t.index ["linkable_type", "linkable_id"], name: "index_links_on_linkable"
   end
 
