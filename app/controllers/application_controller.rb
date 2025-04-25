@@ -47,11 +47,7 @@ class ApplicationController < ActionController::Base
     skip_before_action :verify_authenticity_token, if: :is_api_request?
 
     before_action only: Array(only), if: :is_api_request? do
-      if doorkeeper_token.nil?
-        head :unauthorized
-      else
-        head :forbidden unless doorkeeper_token.acceptable?(Array(scope))
-      end
+      head :forbidden unless doorkeeper_token&.acceptable?(Array(scope))
     end
   end
 

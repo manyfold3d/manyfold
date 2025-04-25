@@ -5,7 +5,7 @@ class ClientCredentialsStrategy < Devise::Strategies::Authenticatable
 
   def authenticate!
     token = ::Doorkeeper::OAuth::Token.authenticate(request, :from_bearer_authorization)
-    return unless token&.accessible?
+    fail! and throw :warden unless token&.accessible?
 
     # If scope is :public, we need no resource owner
     resource_owner = if token.scopes == ["public"]
