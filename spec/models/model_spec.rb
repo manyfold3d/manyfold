@@ -431,6 +431,16 @@ RSpec.describe Model do
       model.update(creator: create(:creator))
       expect(Activity::CreatorAddedModelJob).to have_been_enqueued.with(model.id).at_least(:once)
     end
+
+    it "writes datapackage if model has changed" do
+      model = create(:model)
+      expect { model.update(name: "Changed") }.to have_enqueued_job(UpdateDatapackageJob).with(model.id)
+    end
+
+    it "doesn't update datapackage if model didn't actually change" do
+      model = create(:model)
+      expect { model.update(name: model.name) }.not_to have_enqueued_job(UpdateDatapackageJob)
+    end
   end
 
   it "detects if a model has both supported and unsupported files" do
