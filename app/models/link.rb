@@ -20,7 +20,11 @@ class Link < ApplicationRecord
   end
 
   def self.find_duplicated
-    group([:linkable_type, :linkable_id, :url]).having("count(*) > 1")
+    Link.select(:linkable_type, :linkable_id, :url) # rubocop:disable Pundit/UsePolicyScope
+      .group([:linkable_type, :linkable_id, :url])
+      .having("count(*) > 1").map do |it|
+      Link.find_by(linkable_type: it.linkable_type, linkable_id: it.linkable_id, url: it.url)
+    end
   end
 
   def self.ransackable_attributes(_auth_object = nil)
