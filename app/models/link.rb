@@ -15,6 +15,14 @@ class Link < ApplicationRecord
     host
   end
 
+  def remove_duplicates!
+    Link.where.not(id: id).where(linkable: linkable, url: url).destroy_all # rubocop:disable Pundit/UsePolicyScope
+  end
+
+  def self.find_duplicated
+    group([:linkable_type, :linkable_id, :url]).having("count(*) > 1")
+  end
+
   def self.ransackable_attributes(_auth_object = nil)
     ["created_at", "id", "linkable_id", "linkable_type", "updated_at", "url"]
   end

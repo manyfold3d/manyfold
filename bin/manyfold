@@ -90,6 +90,13 @@ class UserCLI < Thor
   end
 end
 
+class LinksCommand < Thor
+  desc "deduplicate", "removes duplicate links"
+  def deduplicate
+    Link.find_duplicated.each(&:remove_duplicates!)
+  end
+end
+
 class ManyfoldCLI < Thor
   desc "creators", "manage creators"
   subcommand "creators", CreatorCLI
@@ -99,6 +106,9 @@ class ManyfoldCLI < Thor
 
   desc "email", "test email"
   subcommand "email", MailCLI
+
+  desc "links", "manage links"
+  subcommand "links", LinksCommand
 
   desc "models", "manage models"
   subcommand "models", ModelCLI
