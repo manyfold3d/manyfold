@@ -73,7 +73,7 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
         end
       end
 
-      response "401", "Unuthorized; the request did not provide valid authentication details" do
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
         let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
 
         run_test!
@@ -108,7 +108,7 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
         end
       end
 
-      response "401", "Unuthorized; the request did not provide valid authentication details" do
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
         let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
 
         run_test!
@@ -168,7 +168,7 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
         end
       end
 
-      response "401", "Unuthorized; the request did not provide valid authentication details" do
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
         let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
 
         run_test!
@@ -192,7 +192,7 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
         run_test!
       end
 
-      response "401", "Unuthorized; the request did not provide valid authentication details" do
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
         let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
 
         run_test!
