@@ -51,7 +51,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       end
       # Merge in to main lists
       tag_list.concat data.delete(:tag_list) if data.key?(:tag_list)
-      options.merge! data
+      options.merge! data.compact_blank
     end
     # Load information from READMEs
     options.compact_blank!
