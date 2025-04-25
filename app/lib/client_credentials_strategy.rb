@@ -1,0 +1,23 @@
+class ClientCredentialsStrategy < Devise::Strategies::Authenticatable
+  def valid?
+    request.format.manyfold_api_v0? && request.headers.key?("Authorization")
+  end
+
+  def authenticate!
+    token = ::Doorkeeper::OAuth::Token.authenticate(request, :from_bearer_authorization)
+    return unless token&.accessible?
+
+    # If scope is :public, we need no resource owner
+    resource_owner = if token.scopes == ["public"]
+      nil
+    else
+      # If this is a client credentials flow, the resource owner should be the owner of the application
+      token.application&.owner
+    end
+    # Sign in resource owner
+    if resource_owner&.active_for_authentication?
+      request.session_options[:skip] = true
+      success! resource_owner
+    end
+  end
+end

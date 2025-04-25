@@ -45,23 +45,12 @@ class ApplicationController < ActionController::Base
 
   def self.allow_api_access(only:, scope:)
     skip_before_action :verify_authenticity_token, if: :is_api_request?
+
     before_action only: Array(only), if: :is_api_request? do
-      # Perform general auth and scope check
-      doorkeeper_authorize!(*Array(scope))
-      # If scope is :public, we need no resource owner
-      resource_owner = if doorkeeper_token&.scopes == ["public"]
-        nil
+      if doorkeeper_token.nil?
+        head :unauthorized
       else
-        # If this is a client credentials flow, the resource owner should be the owner of the application
-        doorkeeper_token&.application&.owner
-      end
-      # Sign in resource owner
-      if resource_owner
-        if resource_owner.active_for_authentication?
-          sign_in resource_owner, store: false
-        else
-          doorkeeper_render_error
-        end
+        head :forbidden unless doorkeeper_token.acceptable?(Array(scope))
       end
     end
   end
