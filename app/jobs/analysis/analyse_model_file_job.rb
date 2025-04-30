@@ -12,9 +12,8 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
     # If the file is modified, or we're lacking metadata
     status[:step] = "jobs.analysis.analyse_model_file.file_statistics" # i18n-tasks-use t('jobs.analysis.analyse_model_file.file_statistics')
     if file.file_last_modified > file.updated_at || file.digest.nil?
-      file.digest = file.calculate_digest
       # Store updated file metadata
-      file.save!
+      file.update!(digest: file.calculate_digest)
       # If the digest has changed, queue up detailed geometric mesh analysis
       file.analyse_geometry_later if file.is_3d_model? && file.digest_previously_changed?
     end

@@ -134,8 +134,6 @@ class ModelsController < ApplicationController
   end
 
   def scan
-    # Clear digests for files so that we force a full geometry rescan
-    @model.model_files.update_all(digest: nil) # rubocop:disable Rails/SkipsModelValidations
     # Start the scans
     @model.check_later
     # Back to the model page
