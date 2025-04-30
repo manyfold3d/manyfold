@@ -35,9 +35,7 @@
           <p class="card-text"><%= markdownify collection.notes %></p>
         <% end %>
         <ul class='links'>
-          <% collection.links.each do |link| %>
-            <li><%= link_to t("sites.%{site}" % {site: link.site}, default: "%{site}" % {site: link.site}), link.url %></li>
-          <% end %>
+          <%= render LinkComponent.with_collection collection.links %>
         </ul>
       </div>
       <div>
