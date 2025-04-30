@@ -10,6 +10,11 @@ RSpec.describe Link do
     expect(link.site).to eq "boop"
   end
 
+  it "must have a valid url" do
+    model = create(:model, links_attributes: [{url: ""}])
+    expect(model.links).to be_empty
+  end
+
   it "must be unique per linkable thing" do
     url = "https://www.example.com"
     model = create(:model, links_attributes: [{url: url}])

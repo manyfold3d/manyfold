@@ -9,9 +9,7 @@
         <small class="card-subtitle mb-2 text-muted"><%= sanitize creator.caption %></small>
       <% end %>
       <ul class='links'>
-        <% creator.links.each do |link| %>
-          <li><%= link_to t("sites.%{site}" % {site: link.site}, default: "%{site}" % {site: link.site}), link.url %></li>
-        <% end %>
+        <%= render LinkComponent.with_collection creator.links %>
       </ul>
       <% if creator.remote? %>
         <%= link_to "#{policy_scope(Model).where(creator: creator).count} #{Model.model_name.human count: policy_scope(Model).where(creator: creator).count}", creator, {class: "btn btn-primary", "aria-label": translate(".models_button.remote_label", name: creator.name)} if policy(creator).show? %>

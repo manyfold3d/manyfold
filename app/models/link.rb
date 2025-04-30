@@ -1,7 +1,7 @@
 class Link < ApplicationRecord
   belongs_to :linkable, polymorphic: true
 
-  validates :url, uniqueness: {scope: :linkable} # rubocop:disable Rails/UniqueValidationWithoutIndex
+  validates :url, presence: true, uniqueness: {scope: :linkable} # rubocop:disable Rails/UniqueValidationWithoutIndex
 
   def host
     URI.parse(url).host || url
