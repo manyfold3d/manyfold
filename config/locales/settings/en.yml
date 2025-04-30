@@ -27,10 +27,10 @@ en:
         label: Tagline
       summary: Customise your instance.
       support_link:
-        help: A link to a place where your users can support the instance financially (e.g. OpenCollective, Patreon). Shown in footer.
+        help: A link to a place where visitors can support the instance financially (e.g. OpenCollective, Patreon). Shown in footer.
         label: Support link
       theme:
-        help_html: Affects all users. Visit <a href="https://bootswatch.com">Bootswatch</a> to see previews.
+        help_html: Affects all accounts. Visit <a href="https://bootswatch.com">Bootswatch</a> to see previews.
         label: Theme
     domain_blocks:
       create:
@@ -61,7 +61,7 @@ en:
       safe_folder_names:
         help_html: e.g. <code>spinal-tap</code> instead of <code>Spın̈al Tap</code>
         label: Use safe folder names
-      summary: Define the folder structure used by "organize files" and for auto-populating metadata during scan. Affects all users.
+      summary: Define the folder structure used by "organize files" and for auto-populating metadata during scan. Affects all accounts.
       title: Folder naming
       tokens:
         collection: The title of the collection the model is in, if set.
@@ -79,7 +79,7 @@ en:
         help: Who can view new models / creators / collections by default?
         label: Default visibility
         options:
-          member: Logged-in local users
+          member: Logged-in local accounts
           none: Private
       details_html: To change these settings, edit the server's <a href='https://manyfold.app/sysadmin/configuration.html'>environment variables</a> and restart.
       email: Email delivery configured?
@@ -94,9 +94,9 @@ en:
         help: Lets visitors sign up for accounts.
         label: Enable signup
       single_user_mode: Manyfold is running in single user mode.
-      user_quotas: User upload size limit
-      user_quotas_enable_quota: Enable user upload storage limit
-      user_quotas_site_default: Site default user upload storage limit in MB
+      user_quotas: Account upload size limit
+      user_quotas_enable_quota: Enable account upload storage limit
+      user_quotas_site_default: Site default account upload storage limit in MB
     reporting:
       description_html: If you enable usage tracking, the following information will be sent once a day to <code>%{endpoint}</code>. The <code>id</code> is randomly generated when you enable tracking.
       heading: Usage Tracking
@@ -107,7 +107,7 @@ en:
       verification_html: If you want to verify what we send, you can change the <code>USAGE_REPORTING_URL</code> environment variable and send the data somewhere you can inspect it. You can also see exactly what is sent in the log.
     reports:
       index:
-        description: Content reported by local or Fediverse users shows up here for moderation.
+        description: Content reported by local or Fediverse accounts shows up here for moderation.
         title: Reports
       show:
         ignore: Ignore
@@ -123,7 +123,7 @@ en:
         label: Automatically tag new models with
       custom_stop_words:
         label: Custom stop words
-      description: Add tags to all newly-scanned models, and filter out certain words ("stop words") during automatic tag creation. Affects all users.
+      description: Add tags to all newly-scanned models, and filter out certain words ("stop words") during automatic tag creation. Affects all accounts.
       filter_stop_words:
         label: Filter out stop words
       heading: Tagging
@@ -136,23 +136,23 @@ en:
       success: Settings saved.
     users:
       create:
-        success: User created successfully.
+        success: Account created successfully.
       destroy:
-        success: User removed!
+        success: Account removed!
       edit:
-        title: 'Edit user: %{username}'
+        title: 'Edit account: %{username}'
       form:
-        password_reset_help: A link will be sent automatically to the user for them to set their own password.
+        password_reset_help: A link will be sent automatically to the account owner for them to set their own password.
         submit: Save
       index:
-        description: View and edit registered user accounts.
+        description: View and edit registered accounts.
         fediverse_address: Fediverse address
         local: Local
-        new: New user
-        title: Manage Users
+        new: New account
+        title: Manage Accounts
         view: View
       new:
-        title: Create user
+        title: Create account
       quota:
         current_quota: Current file storage limit in MB
         current_space_used: Currently used file storage
@@ -160,11 +160,11 @@ en:
         unlimited_quota: Unlimited
         using_site_default: Using site default file storage limit?
       show:
-        approve: Approve user
-        confirm_destroy: Are you sure you want to remove this user account immediately? This cannot be undone!
+        approve: Approve account
+        confirm_destroy: Are you sure you want to remove this account immediately? This cannot be undone!
         reset_password: Reset password
-        title: 'User details: %{username}'
+        title: 'Account details: %{username}'
       update:
-        approved: User was approved successfully.
-        reset_link_sent: A link has been sent to the user for them to set a new password.
-        success: User updated successfully.
+        approved: Account was approved successfully.
+        reset_link_sent: A link has been sent to the account owner for them to set a new password.
+        success: Account updated successfully.
