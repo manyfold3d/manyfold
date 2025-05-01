@@ -6,6 +6,6 @@ Rails.application.config.after_initialize do
     # Features
     Bullet.n_plus_one_query_enable = true
     Bullet.unused_eager_loading_enable = true
-    Bullet.counter_cache_enable = false
+    Bullet.counter_cache_enable = true
   end
 end
