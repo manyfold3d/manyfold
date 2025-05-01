@@ -9,9 +9,11 @@ class CreatorsController < ApplicationController
   before_action :get_creator, except: [:index, :new, :create]
 
   def index
-    @models = filtered_models @filters
     @creators = policy_scope(Creator)
-    @creators = @creators.where(id: @models.pluck(:creator_id).uniq) unless @filters.empty?
+    unless @filters.empty?
+      @models = filtered_models @filters
+      @creators = @creators.where(id: @models.pluck(:creator_id).uniq)
+    end
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)

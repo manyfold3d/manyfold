@@ -12,9 +12,11 @@ class CollectionsController < ApplicationController
   before_action :get_creators, except: [:index, :create]
 
   def index
-    @models = filtered_models @filters
     @collections = policy_scope(Collection)
-    @collections = filtered_collections @filters
+    unless @filters.empty?
+      @models = filtered_models @filters
+      @collections = filtered_collections @filters
+    end
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
