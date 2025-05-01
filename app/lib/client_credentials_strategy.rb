@@ -7,13 +7,15 @@ class ClientCredentialsStrategy < Devise::Strategies::Authenticatable
     token = ::Doorkeeper::OAuth::Token.authenticate(request, :from_bearer_authorization)
     fail! and throw(:warden, status: :unauthorized) unless token&.accessible?
 
-    scopes = case request.env.dig("action_dispatch.request.parameters", "action")
+    scopes = case request.env.dig("action_dispatch.request.parameters", "action") || request.env.dig("action_dispatch.route_uri_pattern")
     when "index", "show"
       ["public", "read"]
     when "create", "update"
       ["write"]
     when "destroy"
       ["delete"]
+    when "/upload"
+      ["upload"]
     end
     fail! and throw(:warden, status: :forbidden) unless token.acceptable?(scopes)
 
