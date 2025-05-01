@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   before_action :check_scan_status
   before_action :remember_ordering
 
-  skip_before_action :verify_authenticity_token, if: :is_api_request?
+  protect_from_forgery with: :null_session, if: :is_api_request?
 
   unless Rails.env.test?
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
