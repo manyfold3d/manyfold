@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
   before_action :check_scan_status
   before_action :remember_ordering
 
+  skip_before_action :verify_authenticity_token, if: :is_api_request?
+
   unless Rails.env.test?
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   end
@@ -44,11 +46,6 @@ class ApplicationController < ActionController::Base
   end
 
   def self.allow_api_access(only:, scope:)
-    skip_before_action :verify_authenticity_token, if: :is_api_request?
-
-    before_action only: Array(only), if: :is_api_request? do
-      head :forbidden unless doorkeeper_token&.acceptable?(Array(scope))
-    end
   end
 
   private

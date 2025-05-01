@@ -7,6 +7,16 @@ class ClientCredentialsStrategy < Devise::Strategies::Authenticatable
     token = ::Doorkeeper::OAuth::Token.authenticate(request, :from_bearer_authorization)
     fail! and throw :warden unless token&.accessible?
 
+    scopes = case request.env.dig("action_dispatch.request.parameters", "action")
+    when "index", "show"
+      ["public", "read"]
+    when "create", "update"
+      ["write"]
+    when "destroy"
+      ["delete"]
+    end
+    fail! and throw :warden unless token.acceptable?(scopes)
+
     # If scope is :public, we need no resource owner
     resource_owner = if token.scopes == ["public"]
       nil
