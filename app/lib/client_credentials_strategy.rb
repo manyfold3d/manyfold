@@ -5,7 +5,7 @@ class ClientCredentialsStrategy < Devise::Strategies::Authenticatable
 
   def authenticate!
     token = ::Doorkeeper::OAuth::Token.authenticate(request, :from_bearer_authorization)
-    fail! and throw :warden unless token&.accessible?
+    fail! and throw(:warden, status: :unauthorized) unless token&.accessible?
 
     scopes = case request.env.dig("action_dispatch.request.parameters", "action")
     when "index", "show"
@@ -15,7 +15,7 @@ class ClientCredentialsStrategy < Devise::Strategies::Authenticatable
     when "destroy"
       ["delete"]
     end
-    fail! and throw :warden unless token.acceptable?(scopes)
+    fail! and throw(:warden, status: :forbidden) unless token.acceptable?(scopes)
 
     # If scope is :public, we need no resource owner
     resource_owner = if token.scopes == ["public"]

@@ -340,5 +340,7 @@ Devise.setup do |config|
 
   config.warden do |config|
     config.default_strategies(scope: :user).unshift :client_credentials
+
+    config.failure_app = AuthFailureApp
   end
 end
