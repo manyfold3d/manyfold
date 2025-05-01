@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
   before_action :check_scan_status
   before_action :remember_ordering
 
+  protect_from_forgery with: :null_session, if: :is_api_request?
+
   unless Rails.env.test?
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   end
@@ -44,26 +46,6 @@ class ApplicationController < ActionController::Base
   end
 
   def self.allow_api_access(only:, scope:)
-    skip_before_action :verify_authenticity_token, if: :is_api_request?
-    before_action only: Array(only), if: :is_api_request? do
-      # Perform general auth and scope check
-      doorkeeper_authorize!(*Array(scope))
-      # If scope is :public, we need no resource owner
-      resource_owner = if doorkeeper_token&.scopes == ["public"]
-        nil
-      else
-        # If this is a client credentials flow, the resource owner should be the owner of the application
-        doorkeeper_token&.application&.owner
-      end
-      # Sign in resource owner
-      if resource_owner
-        if resource_owner.active_for_authentication?
-          sign_in resource_owner, store: false
-        else
-          doorkeeper_render_error
-        end
-      end
-    end
   end
 
   private

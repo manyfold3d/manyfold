@@ -508,7 +508,7 @@
             }
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -546,7 +546,7 @@
             "description": "Creation failed due to invalid data"
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -600,7 +600,7 @@
             }
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -638,7 +638,7 @@
             "description": "Creation failed due to invalid data"
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -678,7 +678,7 @@
             }
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -820,7 +820,7 @@
             }
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -858,7 +858,7 @@
             "description": "Creation failed due to invalid data"
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -912,7 +912,7 @@
             }
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -950,7 +950,7 @@
             "description": "Creation failed due to invalid data"
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -990,7 +990,7 @@
             }
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -1044,7 +1044,7 @@
             }
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -1082,7 +1082,7 @@
             "description": "Update failed due to invalid data"
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -1122,7 +1122,7 @@
             }
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -1288,7 +1288,7 @@
             }
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -1333,7 +1333,7 @@
             }
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -1371,7 +1371,7 @@
             "description": "Update failed due to invalid data"
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
@@ -1411,7 +1411,7 @@
             }
           },
           "401": {
-            "description": "Unuthorized; the request did not provide valid authentication details"
+            "description": "Unauthorized; the request did not provide valid authentication details"
           },
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"

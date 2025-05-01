@@ -334,4 +334,13 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
+  # Register our API token custom auth strategy
+  Warden::Strategies.add(:client_credentials, ClientCredentialsStrategy)
+
+  config.warden do |config|
+    config.default_strategies(scope: :user).unshift :client_credentials
+
+    config.failure_app = AuthFailureApp
+  end
 end

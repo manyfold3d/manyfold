@@ -70,7 +70,7 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
         end
       end
 
-      response "401", "Unuthorized; the request did not provide valid authentication details" do
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
         let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
 
         run_test!
@@ -120,7 +120,7 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
         end
       end
 
-      response "401", "Unuthorized; the request did not provide valid authentication details" do
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
         let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
 
         run_test!
@@ -156,7 +156,7 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
         end
       end
 
-      response "401", "Unuthorized; the request did not provide valid authentication details" do
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
         let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
 
         run_test!
@@ -206,7 +206,7 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
         end
       end
 
-      response "401", "Unuthorized; the request did not provide valid authentication details" do
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
         let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
 
         run_test!
@@ -230,7 +230,7 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
         run_test!
       end
 
-      response "401", "Unuthorized; the request did not provide valid authentication details" do
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
         let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
 
         run_test!
