@@ -1,5 +1,3 @@
-require "digest/sha1"
-
 class ArchiveDownloadService
   attr_reader :pathname
 
@@ -8,7 +6,7 @@ class ArchiveDownloadService
     @selection = selection
     @tmpdir = LibraryUploader.find_storage(:cache).directory
     @pathname = File.join(@tmpdir, "#{@model.updated_at.to_time.to_i}-#{@model.id}-#{@selection}.zip")
-    @tmpfile = File.join(@tmpdir, Digest::SHA1.hexdigest(@pathname))
+    @tmpfile = File.join(@tmpdir, Digest::SHA256.hexdigest(@pathname))
   end
 
   def filename
