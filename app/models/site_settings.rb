@@ -57,6 +57,8 @@ class SiteSettings < RailsSettings::Base
   field :cults3d_api_key, type: :string
   field :cults3d_api_username, type: :string
 
+  field :web_sub_hub, type: :string, default: nil
+
   validates :model_ignored_files, regex_array: {strict: true}
 
   def self.email_configured?
