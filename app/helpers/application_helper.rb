@@ -243,4 +243,12 @@ module ApplicationHelper
   def oembed_params
     params.permit(:maxwidth, :maxheight)
   end
+
+  def web_sub_tags(collection: false)
+    return unless SiteSettings.web_sub_hub
+    safe_join([
+      tag.link(rel: "hub", href: SiteSettings.web_sub_hub),
+      tag.link(rel: "self", href: request.url + (collection ? "/*" : ""))
+    ])
+  end
 end
