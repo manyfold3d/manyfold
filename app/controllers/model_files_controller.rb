@@ -1,10 +1,6 @@
 class ModelFilesController < ApplicationController
   include ActionController::Live
 
-  allow_api_access only: :show, scope: [:read, :public]
-  allow_api_access only: :update, scope: :write
-  allow_api_access only: :destroy, scope: :delete
-
   before_action :get_model
   before_action :get_file, except: [:create, :bulk_edit, :bulk_update]
 

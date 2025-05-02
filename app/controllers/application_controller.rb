@@ -45,9 +45,6 @@ class ApplicationController < ActionController::Base
     is_a?(ActiveAdmin::BaseController)
   end
 
-  def self.allow_api_access(only:, scope:)
-  end
-
   private
 
   def is_api_request?
