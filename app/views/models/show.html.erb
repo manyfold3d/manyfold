@@ -7,6 +7,7 @@
   <%- if @model.entrypoint %>
     <%= tag.link rel: "alternate", as: "spatial-entrypoint", type: @model.entrypoint.mime_type, href: model_model_file_raw_url(@model, @model.entrypoint.filename, anchor: @model.entrypoint_fragment) %>
   <%- end %>
+  <%= web_sub_tags %>
 <% end %>
 
 <div itemscope itemtype="https://schema.org/3DModel">
