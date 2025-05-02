@@ -3,7 +3,7 @@ class ArchiveDownloadService
 
   def initialize(model:, selection:)
     @model = model
-    @selection = selection
+    @selection = sanitize selection
     @tmpdir = LibraryUploader.find_storage(:cache).directory
     @pathname = File.join(@tmpdir, "#{@model.updated_at.to_time.to_i}-#{@model.id}-#{@selection}.zip")
     @tmpfile = File.join(@tmpdir, Digest::SHA256.hexdigest(@pathname))
@@ -40,6 +40,10 @@ class ArchiveDownloadService
   end
 
   private
+
+  def sanitize(selection)
+    selection.gsub(/\W/, "")
+  end
 
   def file_list(model, selection)
     scope = model.model_files
