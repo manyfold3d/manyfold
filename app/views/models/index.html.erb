@@ -2,4 +2,8 @@
   <%= PageTitle title: Model.model_name.human(count: 100), heading: false %>
 <% end %>
 
+<% content_for :head do %>
+  <%= web_sub_tags collection: true %>
+<% end %>
+
 <%= render "list" %>
