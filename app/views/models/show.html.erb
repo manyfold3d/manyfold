@@ -4,6 +4,7 @@
   <%= tag.meta name: "description", content: truncate(sanitize(@model.notes), length: 80) if @model.notes.present? %>
   <%= tag.meta name: "fediverse:creator", content: @model.creator.federails_actor.at_address if @model.creator %>
   <%= tag.link rel: "alternate", type: Mime[:oembed], href: model_url(@model, format: :oembed), title: @model.name %>
+  <%= web_sub_tags %>
 <% end %>
 
 <% content_for :page_header do %>

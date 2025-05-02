@@ -8,6 +8,7 @@ class Model < ApplicationRecord
   include PublicIDable
   include Commentable
   include Problematic
+  include WebSubbable
 
   acts_as_federails_actor(
     username_field: :public_id,
