@@ -41,18 +41,10 @@ class ModelsController < ApplicationController
         render layout: "card_list_page"
       end
       format.zip do
-        tmpdir = LibraryUploader.find_storage(:cache).directory
-        filename = [
-          @model.slug,
-          params[:selection]
-        ].compact.join("-") + ".zip"
-        tmpfile = File.join(tmpdir, "#{SecureRandom.urlsafe_base64}.zip")
-        unless File.exist?(tmpfile)
-          files = file_list(@model, params[:selection])
-          write_archive(tmpfile, files)
-        end
-        send_file(tmpfile, filename: filename, type: :zip, disposition: :attachment)
-        # We will rely on Shrine to clean up the temp file
+        download = ArchiveDownloadService.new(model: @model, selection: params[:selection])
+        download.prepare
+        download.wait_until_ready # synchronous wait for archive to be ready, for now
+        send_file(download.pathname, filename: download.filename, type: :zip, disposition: :attachment)
       end
       format.oembed { render json: OEmbed::ModelSerializer.new(@model, helpers.oembed_params).serialize }
       format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelSerializer.new(@model).serialize }
@@ -251,35 +243,5 @@ class ModelsController < ApplicationController
 
   def clear_returnable
     session[:return_after_new] = nil
-  end
-
-  def file_list(model, selection)
-    scope = model.model_files
-    case selection
-    when nil
-      scope
-    when "supported"
-      scope.where(presupported: true)
-    when "unsupported"
-      scope.where(presupported: false)
-    else
-      scope.select { |f| f.extension == selection }
-    end
-  end
-
-  def write_archive(filename, files)
-    Archive.write_open_filename(filename, Archive::COMPRESSION_COMPRESS, Archive::FORMAT_ZIP) do |archive|
-      files.each do |file|
-        archive.new_entry do |entry|
-          entry.pathname = file.filename
-          entry.size = file.size
-          entry.filetype = Archive::Entry::FILE
-          entry.mtime = file.mtime
-          entry.ctime = file.ctime
-          archive.write_header entry
-          archive.write_data file.attachment.read
-        end
-      end
-    end
   end
 end
