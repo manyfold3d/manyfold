@@ -4,10 +4,6 @@ class CollectionsController < ApplicationController
   include Permittable
   include ModelListable
 
-  allow_api_access only: [:index, :show], scope: [:read, :public]
-  allow_api_access only: [:create, :update], scope: :write
-  allow_api_access only: :destroy, scope: :delete
-
   before_action :get_collection, except: [:index, :new, :create]
   before_action :get_creators, except: [:index, :create]
 
