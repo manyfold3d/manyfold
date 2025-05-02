@@ -41,7 +41,7 @@ class ModelsController < ApplicationController
         render layout: "card_list_page"
       end
       format.zip do
-        download = ArchiveDownloadService.new(model: @model, selection: params[:selection])
+        download = ArchiveDownloadService.new(model: @model, selection: params[:selection].gsub(/\W/, ""))
         download.prepare
         download.wait_until_ready # synchronous wait for archive to be ready, for now
         send_file(download.pathname, filename: download.filename, type: :zip, disposition: :attachment)
