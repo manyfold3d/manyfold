@@ -9,25 +9,25 @@
     <div class="row">
       <%= form.label nil, t(".models.label"), for: "pagination_settings[models]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
-        <%= form.check_box "pagination_settings[models]", checked: @user.pagination_settings["models"], class: "form-check-input" %>
+        <%= form.check_box "pagination_settings[models]", checked: pagination_settings["models"], class: "form-check-input" %>
       </div>
     </div>
     <div class="row">
       <%= form.label nil, t(".creators.label"), for: "pagination_settings[creators]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
-        <%= form.check_box "pagination_settings[creators]", checked: @user.pagination_settings["creators"], class: "form-check-input" %>
+        <%= form.check_box "pagination_settings[creators]", checked: pagination_settings["creators"], class: "form-check-input" %>
       </div>
     </div>
     <div class="row">
       <%= form.label nil, t(".collections.label"), for: "pagination_settings[collections]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
-        <%= form.check_box "pagination_settings[collections]", checked: @user.pagination_settings["collections"], class: "form-check-input" %>
+        <%= form.check_box "pagination_settings[collections]", checked: pagination_settings["collections"], class: "form-check-input" %>
       </div>
     </div>
     <div class="row">
       <%= form.label nil, t(".per_page.label"), for: "pagination_settings[per_page]", class: "col col-form-label" %>
       <div class="col">
-        <%= form.number_field "pagination_settings[per_page]", value: @user.pagination_settings["per_page"], in: 1..100, class: "form-control" %>
+        <%= form.number_field "pagination_settings[per_page]", value: pagination_settings["per_page"], in: 1..100, class: "form-control" %>
       </div>
     </div>
   </div>

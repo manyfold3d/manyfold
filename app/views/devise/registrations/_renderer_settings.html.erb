@@ -22,44 +22,44 @@
                 [t(".auto_load_max_size.under_1024"), 1024],
                 [t(".auto_load_max_size.always"), 9_999_999]
               ],
-              {selected: @user.renderer_settings["auto_load_max_size"] || 9_999_999},
+              {selected: renderer_settings["auto_load_max_size"] || 9_999_999},
               {class: "form-select"} %>
       </div>
     </div>
     <div class="row">
       <%= form.label nil, t(".show_grid.label"), for: "renderer_settings[show_grid]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
-        <%= form.check_box "renderer_settings[show_grid]", checked: @user.renderer_settings["show_grid"], class: "form-check-input" %>
+        <%= form.check_box "renderer_settings[show_grid]", checked: renderer_settings["show_grid"], class: "form-check-input" %>
       </div>
     </div>
     <div class="row">
       <%= form.label nil, t(".grid_width.label"), for: "renderer_settings[grid_width]", class: "col col-form-label" %>
       <div class="col">
-        <%= form.number_field "renderer_settings[grid_width]", value: @user.renderer_settings["grid_width"], class: "form-control" %>
+        <%= form.number_field "renderer_settings[grid_width]", value: renderer_settings["grid_width"], class: "form-control" %>
       </div>
     </div>
     <div class="row">
       <%= form.label nil, t(".enable_pan_zoom.label"), for: "renderer_settings[enable_pan_zoom]", class: "col col-form-label" %>
       <div class="col form-check form-switch">
-        <%= form.check_box "renderer_settings[enable_pan_zoom]", checked: @user.renderer_settings["enable_pan_zoom"], class: "form-check-input" %>
+        <%= form.check_box "renderer_settings[enable_pan_zoom]", checked: renderer_settings["enable_pan_zoom"], class: "form-check-input" %>
       </div>
     </div>
     <div class="row">
       <%= form.label nil, t(".background_colour.label"), for: "renderer_settings[background_colour]", class: "col col-form-label" %>
       <div class="col">
-        <%= form.color_field "renderer_settings[background_colour]", value: @user.renderer_settings["background_colour"], class: "form-control" %>
+        <%= form.color_field "renderer_settings[background_colour]", value: renderer_settings["background_colour"], class: "form-control" %>
       </div>
     </div>
     <div class="row">
       <%= form.label nil, t(".render_style.label"), for: "renderer_settings[render_style]", class: "col col-form-label" %>
       <div class="col">
-        <%= form.select "renderer_settings[render_style]", [[t(".render_style.normals"), "normals"], [t(".render_style.lambert"), "lambert"], [t(".render_style.shadowed"), "shadowed"]], {selected: @user.renderer_settings["render_style"]}, {class: "form-select"} %>
+        <%= form.select "renderer_settings[render_style]", [[t(".render_style.normals"), "normals"], [t(".render_style.lambert"), "lambert"], [t(".render_style.shadowed"), "shadowed"]], {selected: renderer_settings["render_style"]}, {class: "form-select"} %>
       </div>
     </div>
     <div class="row">
       <%= form.label nil, t(".object_colour.label"), for: "renderer_settings[object_colour]", class: "col col-form-label" %>
       <div class="col">
-        <%= form.color_field "renderer_settings[object_colour]", value: @user.renderer_settings["object_colour"], class: "form-control" %>
+        <%= form.color_field "renderer_settings[object_colour]", value: renderer_settings["object_colour"], class: "form-control" %>
       </div>
     </div>
   </div>
