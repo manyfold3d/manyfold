@@ -1,34 +1,36 @@
-<div class="card mb-2">
-  <h3 class="card-header"><%= t(".heading") %></h3>
-  <div class="card-body">
+<%= form.fields_for :pagination_settings do |pagination_settings_form| %>
+  <div class="card mb-2">
+    <h3 class="card-header"><%= t(".heading") %></h3>
+    <div class="card-body">
 
-    <p class='lead'>
-      <%= t(".description") %>
-    </p>
+      <p class='lead'>
+        <%= t(".description") %>
+      </p>
 
-    <div class="row">
-      <%= form.label nil, t(".models.label"), for: "pagination_settings[models]", class: "col col-form-label" %>
-      <div class="col form-check form-switch">
-        <%= form.check_box "pagination_settings[models]", checked: @user.pagination_settings["models"], class: "form-check-input" %>
+      <div class="row">
+        <%= pagination_settings_form.label nil, t(".models.label"), for: :models, class: "col col-form-label" %>
+        <div class="col form-check form-switch">
+          <%= pagination_settings_form.check_box :models, checked: pagination_settings["models"], class: "form-check-input" %>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <%= form.label nil, t(".creators.label"), for: "pagination_settings[creators]", class: "col col-form-label" %>
-      <div class="col form-check form-switch">
-        <%= form.check_box "pagination_settings[creators]", checked: @user.pagination_settings["creators"], class: "form-check-input" %>
+      <div class="row">
+        <%= pagination_settings_form.label nil, t(".creators.label"), for: :creators, class: "col col-form-label" %>
+        <div class="col form-check form-switch">
+          <%= pagination_settings_form.check_box :creators, checked: pagination_settings["creators"], class: "form-check-input" %>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <%= form.label nil, t(".collections.label"), for: "pagination_settings[collections]", class: "col col-form-label" %>
-      <div class="col form-check form-switch">
-        <%= form.check_box "pagination_settings[collections]", checked: @user.pagination_settings["collections"], class: "form-check-input" %>
+      <div class="row">
+        <%= pagination_settings_form.label nil, t(".collections.label"), for: :collections, class: "col col-form-label" %>
+        <div class="col form-check form-switch">
+          <%= pagination_settings_form.check_box :collections, checked: pagination_settings["collections"], class: "form-check-input" %>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <%= form.label nil, t(".per_page.label"), for: "pagination_settings[per_page]", class: "col col-form-label" %>
-      <div class="col">
-        <%= form.number_field "pagination_settings[per_page]", value: @user.pagination_settings["per_page"], in: 1..100, class: "form-control" %>
+      <div class="row">
+        <%= pagination_settings_form.label nil, t(".per_page.label"), for: :per_page, class: "col col-form-label" %>
+        <div class="col">
+          <%= pagination_settings_form.number_field :per_page, value: pagination_settings["per_page"], in: 1..100, class: "form-control" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
