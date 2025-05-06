@@ -3,9 +3,9 @@
   <div class="card-body">
 
     <div class="row mb-2">
-      <%= form.label nil, t(".interface_language.label"), for: "interface_language", class: "col col-form-label" %>
+      <%= form.label nil, t(".interface_language.label"), for: :interface_language, class: "col col-form-label" %>
       <div class="col">
-        <%= form.select "interface_language",
+        <%= form.select :interface_language,
               @languages,
               {selected: @user.interface_language},
               {class: "form-select"} %>
@@ -14,9 +14,9 @@
     </div>
 
     <div class="row">
-      <%= form.label nil, t(".sensitive_content.label"), for: "sensitive_content_handling", class: "col col-form-label" %>
+      <%= form.label nil, t(".sensitive_content.label"), for: :sensitive_content_handling, class: "col col-form-label" %>
       <div class="col">
-        <%= form.select "sensitive_content_handling",
+        <%= form.select :sensitive_content_handling,
               [
                 [t(".sensitive_content.show"), nil],
                 [t(".sensitive_content.mask"), "mask"],

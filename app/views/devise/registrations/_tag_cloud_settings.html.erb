@@ -1,32 +1,34 @@
-<div class="card mb-2">
-  <h3 class="card-header"><%= t(".heading") %></h3>
-  <div class="card-body">
-    <div class="row">
-      <%= form.label nil, t(".threshold.label"), for: "tag_cloud_settings[threshold]", class: "col col-form-label" %>
-      <div class="col">
-        <%= form.number_field "tag_cloud_settings[threshold]", value: tag_cloud_settings["threshold"], class: "form-control" %>
+<%= form.fields_for :tag_cloud_settings do |tag_cloud_settings_form| %>
+  <div class="card mb-2">
+    <h3 class="card-header"><%= t(".heading") %></h3>
+    <div class="card-body">
+      <div class="row">
+        <%= tag_cloud_settings_form.label nil, t(".threshold.label"), for: :threshold, class: "col col-form-label" %>
+        <div class="col">
+          <%= tag_cloud_settings_form.number_field :threshold, value: tag_cloud_settings["threshold"], class: "form-control" %>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <%= form.label nil, t(".heatmap.label"), for: "tag_cloud_settings[heatmap]", class: "col col-form-label" %>
-      <div class="col form-check form-switch">
-        <%= form.check_box "tag_cloud_settings[heatmap]", checked: tag_cloud_settings["heatmap"], class: "form-check-input" %>
+      <div class="row">
+        <%= tag_cloud_settings_form.label nil, t(".heatmap.label"), for: :heatmap, class: "col col-form-label" %>
+        <div class="col form-check form-switch">
+          <%= tag_cloud_settings_form.check_box :heatmap, checked: tag_cloud_settings["heatmap"], class: "form-check-input" %>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <%= form.label nil, t(".sorting.label"), for: "tag_cloud_settings[sorting]", class: "col col-form-label" %>
-      <div class="col">
-        <%= form.select "tag_cloud_settings[sorting]",
-              [[t(".sorting.frequency"), nil], [t(".sorting.alphabetical"), "alphabetical"]],
-              {selected: tag_cloud_settings["sorting"]},
-              class: "form-select" %>
+      <div class="row">
+        <%= tag_cloud_settings_form.label nil, t(".sorting.label"), for: :sorting, class: "col col-form-label" %>
+        <div class="col">
+          <%= tag_cloud_settings_form.select :sorting,
+                [[t(".sorting.frequency"), nil], [t(".sorting.alphabetical"), "alphabetical"]],
+                {selected: tag_cloud_settings["sorting"]},
+                class: "form-select" %>
+        </div>
       </div>
-    </div>
-    <div class="row mb-2">
-      <%= form.label nil, t(".keypair.label"), for: "tag_cloud_settings[keypair]", class: "col col-form-label" %>
-      <div class="col form-check form-switch">
-        <%= form.check_box "tag_cloud_settings[keypair]", checked: tag_cloud_settings["keypair"], class: "form-check-input" %>
+      <div class="row mb-2">
+        <%= tag_cloud_settings_form.label nil, t(".keypair.label"), for: :keypair, class: "col col-form-label" %>
+        <div class="col form-check form-switch">
+          <%= tag_cloud_settings_form.check_box :keypair, checked: tag_cloud_settings["keypair"], class: "form-check-input" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
