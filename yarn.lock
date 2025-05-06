@@ -1796,12 +1796,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap@npm:^5.3.5":
-  version: 5.3.5
-  resolution: "bootstrap@npm:5.3.5"
+"bootstrap@npm:^5.3.6":
+  version: 5.3.6
+  resolution: "bootstrap@npm:5.3.6"
   peerDependencies:
     "@popperjs/core": ^2.11.8
-  checksum: 2e10f709ae7dc26a28dafb57f29e005b4fbfe8f49878d0d178332993a658cf147df2bac0d0b8ca346e29798ef537ea2f4b176e14fe345198a05a5908022540fb
+  checksum: ffd7c31590e90290a1242fdd86522ad4c5a8aa7aaf76b664d4b66d782a005b60eddf80c0d9c465168734124eed7d0c74c48ee505582fec08b3d7d6d2cc9c2918
   languageName: node
   linkType: hard
 
@@ -4589,7 +4589,7 @@ __metadata:
     "@zxcvbn-ts/language-common": ^3.0.4
     "@zxcvbn-ts/language-en": ^3.0.2
     autoprefixer: ^10.4.21
-    bootstrap: ^5.3.5
+    bootstrap: ^5.3.6
     bootstrap-icons: ^1.12.1
     bootswatch: ^5.3.5
     comlink: ^4.4.2
