@@ -309,6 +309,10 @@ en:
     title: Manyfold
   components:
     download_button:
+      download:
+        missing: Request download
+        preparing: Preparing download, please wait
+        ready: Ready to download
       file_type: "%{type} Files Only"
       label: Download All
       menu_header: Download Options

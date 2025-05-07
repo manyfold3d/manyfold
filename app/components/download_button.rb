@@ -11,14 +11,11 @@ class Components::DownloadButton < Components::Base
   def before_template
     @extensions = @model.file_extensions.excluding("json")
     @has_supported_and_unsupported = @model.has_supported_and_unsupported?
-    @downloaders = {
-      nil => ArchiveDownloadService.new(model: @model, selection: nil)
-    }
   end
 
   def view_template
     div class: "btn-group ml-auto mr-auto" do
-      download_link html_class: "btn btn-lg btn-primary", icon_name: "cloud-download"
+      download_link html_class: "btn btn-lg btn-primary"
       button(type: "button",
         class: "btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split",
         "data-bs-toggle": "dropdown",
@@ -39,12 +36,17 @@ class Components::DownloadButton < Components::Base
     end
   end
 
-  def download_link(selection: nil, file_type: nil, html_class: "dropdown-item", icon_name: nil)
+  def download_link(selection: nil, file_type: nil, html_class: "dropdown-item")
+    downloader = ArchiveDownloadService.new(model: @model, selection: selection || file_type)
     link_to model_path(@model, format: @format, selection: selection || file_type), class: html_class, download: "download" do
-      if icon_name
-        icon(icon_name, "")
-        whitespace
+      if downloader.ready?
+        icon("cloud-download", t("components.download_button.download.ready"))
+      elsif downloader.preparing?
+        icon("hourglass-split", t("components.download_button.download.preparing"))
+      else
+        icon("hourglass-top", t("components.download_button.download.missing"))
       end
+      whitespace
       span do
         if file_type
           t("components.download_button.file_type", type: file_type.upcase)
