@@ -18,42 +18,42 @@ class Components::DownloadButton < Components::Base
 
   def view_template
     div class: "btn-group ml-auto mr-auto" do
-      link_to model_path(@model, format: @format), class: "btn btn-lg btn-primary", download: "download" do # i18n-tasks-use t('components.download_button.label')
-        icon("cloud-download", "")
-        whitespace
-        span { t("components.download_button.label") }
-      end
+      download_link html_class: "btn btn-lg btn-primary", icon_name: "cloud-download"
       button(type: "button",
         class: "btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split",
         "data-bs-toggle": "dropdown",
         "aria-expanded": "false") do
-        span class: "visually-hidden" do
-          t("components.download_button.menu_header") # i18n-tasks-use t('components.download_button.menu_header')
-        end
+        span(class: "visually-hidden") { t("components.download_button.menu_header") }
       end
       ul class: "dropdown-menu" do
-        li class: "dropdown-header" do
-          t("components.download_button.menu_header") # i18n-tasks-use t('components.download_button.menu_header')
-        end
+        li(class: "dropdown-header") { t("components.download_button.menu_header") }
         if @has_supported_and_unsupported
-          li do
-            link_to model_path(@model, format: @format, selection: "supported"), class: "dropdown-item", download: "download" do # i18n-tasks-use t('components.download_button.supported')
-              t("components.download_button.supported")
-            end
-          end
-          li do
-            link_to model_path(@model, format: @format, selection: "unsupported"), class: "dropdown-item", download: "download" do # i18n-tasks-use t('components.download_button.unsupported')
-              t("components.download_button.unsupported")
-            end
-          end
+          li { download_link selection: "supported" }
+          li { download_link selection: "unsupported" }
           li { hr class: "dropdown-divider" }
         end
         @extensions&.compact&.map do |type|
-          li do
-            link_to model_path(@model, format: @format, selection: type), class: "dropdown-item", download: "download" do # i18n-tasks-use t('components.download_button.file_type')
-              t("components.download_button.file_type", type: type.upcase)
-            end
-          end
+          li { download_link file_type: type }
+        end
+      end
+    end
+  end
+
+  def download_link(selection: nil, file_type: nil, html_class: "dropdown-item", icon_name: nil)
+    link_to model_path(@model, format: @format, selection: selection || file_type), class: html_class, download: "download" do
+      if icon_name
+        icon(icon_name, "")
+        whitespace
+      end
+      span do
+        if file_type
+          t("components.download_button.file_type", type: file_type.upcase)
+        elsif selection
+          # i18n-tasks-use t('components.download_button.supported')
+          # i18n-tasks-use t('components.download_button.unsupported')
+          t("components.download_button.%{selection}" % {selection: selection})
+        else
+          t("components.download_button.label")
         end
       end
     end
