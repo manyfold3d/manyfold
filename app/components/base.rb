@@ -7,6 +7,9 @@ class Components::Base < Phlex::HTML
   include Phlex::Rails::Helpers::Routes
   include Phlex::Rails::Helpers::Translate
 
+  register_value_helper :policy
+  register_output_helper :icon
+
   if Rails.env.development?
     def before_template
       comment { "Before #{self.class.name}" }

@@ -17,7 +17,7 @@ class Components::FollowButton < Components::Base
       method: @method,
       class: "btn #{(@following == :pending) ? "btn-outline-primary " : "btn-primary"}"
     ) do
-      span { helpers.icon(@icon, "") }
+      span { icon(@icon, "") }
       whitespace
       span { translate(@i18n_key, name: @name) }
     end
@@ -52,7 +52,7 @@ class Components::FollowButton < Components::Base
   end
 
   def render?
-    SiteSettings.social_enabled? && (helpers.policy(Federails::Following).create? || remote_follow_allowed?)
+    SiteSettings.social_enabled? && (policy(Federails::Following).create? || remote_follow_allowed?)
   end
 
   def remote_follow_allowed?
