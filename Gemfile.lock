@@ -177,7 +177,7 @@ GEM
       racc
     browser (6.1.0)
     builder (3.3.0)
-    bullet (8.0.5)
+    bullet (8.0.6)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (12.0.0)
@@ -842,7 +842,7 @@ GEM
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
-    uniform_notifier (1.16.0)
+    uniform_notifier (1.17.0)
     uri (1.0.3)
     useragent (0.16.11)
     validate_url (1.0.15)
