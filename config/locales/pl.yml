@@ -306,6 +306,23 @@ pl:
     tags_card:
       skip_tags: Pomiń listę tagów
     title: Manyfold
+  components:
+    follow_button:
+      follow: Obserwuj %{name}
+      pending: Żądane
+      unfollow: Przestań obserwować %{name}
+    model_card:
+      delete_button:
+        label: Usuń model %{name}
+        text: Usuń
+      edit_button:
+        label: Edytuj model %{name}
+        text: Edytuj
+      no_preview: Podgląd jest niedostępny
+      no_remote_preview: Przepraszamy, podgląd modeli na innych instancjach nie jest jeszcze dostępny, ale pojawi się wkrótce!
+      open_button:
+        label: Otwórz model %{name}
+        text: Otwórz
   doorkeeper:
     applications:
       buttons:
@@ -455,10 +472,6 @@ pl:
     update:
       failure:
       success:
-  follow_button_component:
-    follow: Obserwuj %{name}
-    pending: Żądane
-    unfollow: Przestań obserwować %{name}
   follows:
     actor_table:
       actions: Akcje
@@ -582,18 +595,6 @@ pl:
     CC0-10: Creative Commons Zero
     LicenseRef-Commercial: Komercyjne; tylko do użytku prywatnego
     MIT: MIT
-  model_component:
-    delete_button:
-      label: Usuń model %{name}
-      text: Usuń
-    edit_button:
-      label: Edytuj model %{name}
-      text: Edytuj
-    no_preview: Podgląd jest niedostępny
-    no_remote_preview: Przepraszamy, podgląd modeli na innych instancjach nie jest jeszcze dostępny, ale pojawi się wkrótce!
-    open_button:
-      label: Otwórz model %{name}
-      text: Otwórz
   moderator_mailer:
     new_approval:
       greeting: Cześć!

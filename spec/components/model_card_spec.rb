@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe ModelComponent, type: :component do
+RSpec.describe Components::ModelCard, type: :component do
   it "needs testing"
 
   # it "renders something useful" do

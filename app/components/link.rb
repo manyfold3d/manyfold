@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
-class LinkComponent < ViewComponent::Base
+class Components::Link < Components::Base
+  include Phlex::Rails::Helpers::LinkTo
+
   def initialize(link:)
     @link = link
   end
 
-  def call
+  def view_template
     return unless @link.valid?
-    content_tag :li do
+    li do
       link_to t("sites.%{site}" % {site: @link.site}, default: "%{site}" % {site: @link.site}), @link.url
     end
   end

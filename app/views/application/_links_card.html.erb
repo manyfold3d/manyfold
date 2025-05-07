@@ -1,7 +1,7 @@
 <% unless links.empty? %>
   <%= card :secondary, Link.model_name.human(count: 100) do %>
     <ul class='links'>
-      <%= render LinkComponent.with_collection links %>
+      <%= safe_join(links.map { |it| render Components::Link.new(link: it) }) %>
     </ul>
   <% end %>
 <% end %>

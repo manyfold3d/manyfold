@@ -221,10 +221,6 @@ module ApplicationHelper
     current_user&.problem_settings || Problem::DEFAULT_SEVERITIES
   end
 
-  def needs_hiding?(thing)
-    thing.sensitive && (current_user.nil? || current_user.sensitive_content_handling.present?)
-  end
-
   def random_password
     (SecureRandom.base64(32) + "!0aB").chars.shuffle.join
   end
