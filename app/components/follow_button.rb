@@ -52,7 +52,10 @@ class Components::FollowButton < Components::Base
   end
 
   def render?
-    SiteSettings.social_enabled? && (policy(Federails::Following).create? || remote_follow_allowed?)
+    SiteSettings.social_enabled? && (
+      Pundit::PolicyFinder.new(Federails::Following).policy.new(current_user, nil).create? ||
+      remote_follow_allowed?
+    )
   end
 
   def remote_follow_allowed?
