@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LinkComponent < ViewComponent::Base
+class Components::LinkComponent < ViewComponent::Base
   def initialize(link:)
     @link = link
   end

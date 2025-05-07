@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe FollowButtonComponent, type: :component do
+RSpec.describe Components::FollowButtonComponent, type: :component do
   let(:follower) { create(:user) }
   let(:target) { create(:creator) }
 

@@ -35,7 +35,7 @@
           <p class="card-text"><%= markdownify collection.notes %></p>
         <% end %>
         <ul class='links'>
-          <%= render LinkComponent.with_collection collection.links %>
+          <%= render Components::LinkComponent.with_collection collection.links %>
         </ul>
       </div>
       <div>

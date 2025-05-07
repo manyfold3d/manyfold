@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TagComponent < ViewComponent::Base
+class Components::TagComponent < ViewComponent::Base
   CLASSES = "badge rounded-pill bg-secondary tag"
 
   def initialize(tag:, show_count: false, filters: {}, html_options: {}, filter_in_place: false)

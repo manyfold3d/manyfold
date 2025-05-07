@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class StatBlockComponent < ViewComponent::Base
+class Components::StatBlockComponent < ViewComponent::Base
   def initialize(title:, value:)
     @title = title
     @value = value

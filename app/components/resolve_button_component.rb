@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ResolveButtonComponent < ViewComponent::Base
+class Components::ResolveButtonComponent < ViewComponent::Base
   OPTIONS = {
     show: {
       icon: "box",
