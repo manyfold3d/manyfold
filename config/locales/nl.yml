@@ -311,6 +311,18 @@ nl:
       follow: Volg %{name}
       pending:
       unfollow: Ontvolg %{name}
+    model_card:
+      delete_button:
+        label: Verwijder model %{name}
+        text: Verwijderen
+      edit_button:
+        label: Bewerk model %{name}
+        text: Bewerken
+      no_preview: Geen voorbeeld beschikbaar
+      no_remote_preview:
+      open_button:
+        label: Open model %{name}
+        text: Openen
   doorkeeper:
     applications:
       buttons:
@@ -594,18 +606,6 @@ nl:
     CC0-10: Creative Commons Zero
     LicenseRef-Commercial: Commercieel; alleen privégebruik
     MIT: MIT
-  model_component:
-    delete_button:
-      label: Verwijder model %{name}
-      text: Verwijderen
-    edit_button:
-      label: Bewerk model %{name}
-      text: Bewerken
-    no_preview: Geen voorbeeld beschikbaar
-    no_remote_preview:
-    open_button:
-      label: Open model %{name}
-      text: Openen
   moderator_mailer:
     new_approval:
       greeting: Hoi!

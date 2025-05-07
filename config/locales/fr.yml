@@ -311,6 +311,18 @@ fr:
       follow: Suivre %{name}
       pending: Demandé
       unfollow: ne plus suivre %{name}
+    model_card:
+      delete_button:
+        label: Supprimer le modèle %{name}
+        text: Supprimer
+      edit_button:
+        label: Modifier le modèle %{name}
+        text: Modifier
+      no_preview: Pas d'aperçu disponible
+      no_remote_preview:
+      open_button:
+        label: Ouvrir le modèle %{name}
+        text: Ouvrir
   doorkeeper:
     applications:
       buttons:
@@ -586,18 +598,6 @@ fr:
     CC0-10: Creative Commons Zero
     LicenseRef-Commercial: Commercial ; usage privé uniquement
     MIT: MIT
-  model_component:
-    delete_button:
-      label: Supprimer le modèle %{name}
-      text: Supprimer
-    edit_button:
-      label: Modifier le modèle %{name}
-      text: Modifier
-    no_preview: Pas d'aperçu disponible
-    no_remote_preview:
-    open_button:
-      label: Ouvrir le modèle %{name}
-      text: Ouvrir
   moderator_mailer:
     new_approval:
       greeting: Bonjour !

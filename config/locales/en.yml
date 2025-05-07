@@ -312,6 +312,18 @@ en:
       follow: Follow %{name}
       pending: Requested
       unfollow: Unfollow %{name}
+    model_card:
+      delete_button:
+        label: Delete model %{name}
+        text: Delete
+      edit_button:
+        label: Edit model %{name}
+        text: Edit
+      no_preview: No preview available
+      no_remote_preview: Sorry, previews for models on other instances are not available yet, but will be coming soon!
+      open_button:
+        label: Open model %{name}
+        text: Open
   doorkeeper:
     applications:
       buttons:
@@ -595,18 +607,6 @@ en:
     CC0-10: Creative Commons Zero
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
-  model_component:
-    delete_button:
-      label: Delete model %{name}
-      text: Delete
-    edit_button:
-      label: Edit model %{name}
-      text: Edit
-    no_preview: No preview available
-    no_remote_preview: Sorry, previews for models on other instances are not available yet, but will be coming soon!
-    open_button:
-      label: Open model %{name}
-      text: Open
   moderator_mailer:
     new_approval:
       greeting: Hi!

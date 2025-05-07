@@ -311,6 +311,18 @@ cs:
       follow: Sledovat %{name}
       pending: Požadováno
       unfollow: Přestat sledovat %{name}
+    model_card:
+      delete_button:
+        label: Smazat model %{name}
+        text: Smazat
+      edit_button:
+        label: Upravit model %{name}
+        text: Upravit
+      no_preview: Není k dispozici náhled
+      no_remote_preview: Omlouváme se, náhledy modelů v jiných instancích zatím nejsou k dispozici, ale brzy budou!
+      open_button:
+        label: Otevřít model %{name}
+        text: Otevřít
   doorkeeper:
     applications:
       buttons:
@@ -583,18 +595,6 @@ cs:
     CC0-10: Creative Commons Nula
     LicenseRef-Commercial: Komerční; pouze pro soukromé použití
     MIT: MIT
-  model_component:
-    delete_button:
-      label: Smazat model %{name}
-      text: Smazat
-    edit_button:
-      label: Upravit model %{name}
-      text: Upravit
-    no_preview: Není k dispozici náhled
-    no_remote_preview: Omlouváme se, náhledy modelů v jiných instancích zatím nejsou k dispozici, ale brzy budou!
-    open_button:
-      label: Otevřít model %{name}
-      text: Otevřít
   moderator_mailer:
     new_approval:
       greeting: Ahoj!
