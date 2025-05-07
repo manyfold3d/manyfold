@@ -196,3 +196,5 @@ gem "doorkeeper", "~> 5.8"
 gem "kramdown-parser-gfm", "~> 1.1"
 
 gem "doorkeeper-i18n", "~> 5.2"
+
+gem "phlex-rails", "~> 2.2"
