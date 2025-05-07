@@ -1,0 +1,42 @@
+class PrepareDownloadJob < ApplicationJob
+  queue_as :default
+  unique :until_executed
+
+  def perform(model_id:, selection:, temp_file:, output_file:)
+    model = Model.find(model_id)
+    write_archive(temp_file, file_list(model, selection))
+    FileUtils.mv(temp_file, output_file)
+  end
+
+  private
+
+  def file_list(model, selection)
+    scope = model.model_files
+    case selection
+    when nil
+      scope
+    when "supported"
+      scope.where(presupported: true)
+    when "unsupported"
+      scope.where(presupported: false)
+    else
+      scope.select { |f| f.extension == selection }
+    end
+  end
+
+  def write_archive(filename, files)
+    Archive.write_open_filename(filename, Archive::COMPRESSION_COMPRESS, Archive::FORMAT_ZIP) do |archive|
+      files.each do |file|
+        archive.new_entry do |entry|
+          entry.pathname = file.filename
+          entry.size = file.size
+          entry.filetype = Archive::Entry::FILE
+          entry.mtime = file.mtime
+          entry.ctime = file.ctime
+          archive.write_header entry
+          archive.write_data file.attachment.read
+        end
+      end
+    end
+  end
+end
