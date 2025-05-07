@@ -42,7 +42,7 @@ class ArchiveDownloadService
   private
 
   def sanitize(selection)
-    selection.gsub(/\W/, "")
+    selection&.gsub(/\W/, "")
   end
 
   def file_list(model, selection)
