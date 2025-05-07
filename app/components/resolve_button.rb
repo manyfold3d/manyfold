@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Components::ResolveButtonComponent < ViewComponent::Base
+class Components::ResolveButton < Components::Base
+  include Phlex::Rails::Helpers::LinkTo
+
   OPTIONS = {
     show: {
       icon: "box",
@@ -40,31 +42,21 @@ class Components::ResolveButtonComponent < ViewComponent::Base
     @user = user
   end
 
-  def before_render
+  def before_template
     @options = OPTIONS[@problem.resolution_strategy.to_sym]
   end
 
-  def render?
-    ProblemPolicy.new(@user, @problem).resolve?
-  end
-
-  def call
+  def view_template
+    return unless render?
     text = t @options[:i18n_key]
     if @problem.in_progress
-      link_to(
-        safe_join(
-          [
-            content_tag(:span, helpers.icon("", ""), class: "spinner-border spinner-border-sm"),
-            content_tag(:span, text)
-          ],
-          " "
-        ),
-        "#",
-        class: "btn btn-#{@options[:button_type]} disabled"
-      )
+      link_to("#", class: "btn btn-#{@options[:button_type]} disabled") do
+        span(class: "spinner-border spinner-border-sm") { helpers.icon("", "") }
+        whitespace
+        span { text }
+      end
     else
       link_to(
-        safe_join([helpers.icon(@options[:icon], text), text], " "),
         resolve_problem_path(@problem),
         class: "btn btn-#{@options[:button_type]}",
         data: {
@@ -73,7 +65,17 @@ class Components::ResolveButtonComponent < ViewComponent::Base
             nil
         },
         method: :post
-      )
+      ) do
+        helpers.icon(@options[:icon], text)
+        whitespace
+        span { text }
+      end
     end
+  end
+
+  private
+
+  def render?
+    ProblemPolicy.new(@user, @problem).resolve?
   end
 end

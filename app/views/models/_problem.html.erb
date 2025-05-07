@@ -12,6 +12,6 @@
         <%= t("problems.model.nesting.warning") %>
       </p>
     <% end %>
-    <div class="mt-3 float-end"><%= render Components::ResolveButtonComponent.new(problem: problem, user: current_user) %></div>
+    <div class="mt-3 float-end"><%= render Components::ResolveButton.new(problem: problem, user: current_user) %></div>
   <% end %>
 <% end %>
