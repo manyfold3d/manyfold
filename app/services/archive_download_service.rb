@@ -26,10 +26,12 @@ class ArchiveDownloadService
 
   def prepare
     return if ready? || preparing?
-
-    tmpfile = File.join(@tmpdir, "#{SecureRandom.urlsafe_base64}.zip")
-    write_archive(tmpfile, file_list(@model, @selection))
-    FileUtils.mv(tmpfile, @pathname)
+    PrepareDownloadJob.perform_later(
+      model_id: @model.id,
+      selection: @selection,
+      temp_file: @tmpfile,
+      output_file: @pathname
+    )
   end
 
   def wait_until_ready
@@ -43,35 +45,5 @@ class ArchiveDownloadService
 
   def sanitize(selection)
     selection&.gsub(/\W/, "")
-  end
-
-  def file_list(model, selection)
-    scope = model.model_files
-    case selection
-    when nil
-      scope
-    when "supported"
-      scope.where(presupported: true)
-    when "unsupported"
-      scope.where(presupported: false)
-    else
-      scope.select { |f| f.extension == selection }
-    end
-  end
-
-  def write_archive(filename, files)
-    Archive.write_open_filename(filename, Archive::COMPRESSION_COMPRESS, Archive::FORMAT_ZIP) do |archive|
-      files.each do |file|
-        archive.new_entry do |entry|
-          entry.pathname = file.filename
-          entry.size = file.size
-          entry.filetype = Archive::Entry::FILE
-          entry.mtime = file.mtime
-          entry.ctime = file.ctime
-          archive.write_header entry
-          archive.write_data file.attachment.read
-        end
-      end
-    end
   end
 end
