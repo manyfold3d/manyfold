@@ -63,12 +63,6 @@ pl:
     scan:
       success: Rozpoczęto skanowanie modelów
     show:
-      download:
-        file_type: Tylko Pliki %{type}
-        label: Pobierz Wszystko
-        menu_header: Opcje Pobierania
-        supported: Tylko Obsługiwane Pliki
-        unsupported: Tylko Nieobsługiwane Pliki
       files: Pliki
       files_card:
         bulk_edit: Edytuj wszystkie pliki

@@ -63,12 +63,6 @@ nl:
     scan:
       success: Modelscan gestart
     show:
-      download:
-        file_type: Alleen %{type} Bestanden
-        label: Alles Downloaden
-        menu_header: Download Opties
-        supported: Alleen Ondersteunde Bestanden
-        unsupported: Alleen Niet-ondersteunde Bestanden
       files: Bestanden
       files_card:
         bulk_edit: Alle bestanden bewerken

@@ -308,6 +308,12 @@ en:
       skip_tags: Skip tag list
     title: Manyfold
   components:
+    download_button:
+      file_type: "%{type} Files Only"
+      label: Download All
+      menu_header: Download Options
+      supported: Supported Files Only
+      unsupported: Unsupported Files Only
     follow_button:
       follow: Follow %{name}
       pending: Requested

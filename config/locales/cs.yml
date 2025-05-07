@@ -307,6 +307,12 @@ cs:
       skip_tags: Přeskočit seznam štítků
     title: Manyfold
   components:
+    download_button:
+      file_type: 'Pouze soubory %{type} '
+      label: Stáhnout vše
+      menu_header: Možnosti stažení
+      supported: Pouze podporované soubory
+      unsupported: Pouze nepodporované soubory
     follow_button:
       follow: Sledovat %{name}
       pending: Požadováno

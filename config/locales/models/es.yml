@@ -63,12 +63,6 @@ es:
     scan:
       success: Escaneo de modelos iniciado
     show:
-      download:
-        file_type: Solo archivos %{type}
-        label: Descargar modelo
-        menu_header: Opciones de Descarga
-        supported: Sólo archivos compatibles
-        unsupported: Sólo archivos no compatibles
       files: Archivos
       files_card:
         bulk_edit: Editar todos los archivos

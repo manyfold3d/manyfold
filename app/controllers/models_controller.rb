@@ -35,9 +35,6 @@ class ModelsController < ApplicationController
         files = files.includes(:presupported_version, :problems)
         files = files.reject(&:is_image?)
         @groups = helpers.group(files)
-        @extensions = @model.file_extensions.excluding("json")
-        @has_supported_and_unsupported = @model.has_supported_and_unsupported?
-        @download_format = :zip
         render layout: "card_list_page"
       end
       format.zip do
