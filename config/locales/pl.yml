@@ -306,6 +306,11 @@ pl:
     tags_card:
       skip_tags: Pomiń listę tagów
     title: Manyfold
+  components:
+    follow_button:
+      follow: Obserwuj %{name}
+      pending: Żądane
+      unfollow: Przestań obserwować %{name}
   doorkeeper:
     applications:
       buttons:
@@ -455,10 +460,6 @@ pl:
     update:
       failure:
       success:
-  follow_button_component:
-    follow: Obserwuj %{name}
-    pending: Żądane
-    unfollow: Przestań obserwować %{name}
   follows:
     actor_table:
       actions: Akcje

@@ -306,6 +306,11 @@ nl:
     tags_card:
       skip_tags: Taglijst overslaan
     title: Manyfold
+  components:
+    follow_button:
+      follow: Volg %{name}
+      pending:
+      unfollow: Ontvolg %{name}
   doorkeeper:
     applications:
       buttons:
@@ -466,10 +471,6 @@ nl:
         one: '1 fout verhinderde dat deze %{resource} werd opgeslagen:'
         other: "%{count} fouten verhinderden dat deze %{resource} werd opgeslagen:"
       weak_password: niet sterk genoeg. Overweeg een cijfer, symbolen of meer letters toe te voegen om het sterker te maken.
-  follow_button_component:
-    follow: Volg %{name}
-    pending:
-    unfollow: Ontvolg %{name}
   follows:
     actor_table:
       actions: Acties

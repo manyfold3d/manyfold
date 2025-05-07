@@ -20,7 +20,7 @@
               <small class="text-secondary"><%= @collection.federails_actor.short_at_address if SiteSettings.federation_enabled? %></small>
             <% end %>
           </p>
-          <%= render Components::FollowButtonComponent.new(follower: current_user, target: @collection) %>
+          <%= render Components::FollowButton.new(follower: current_user, target: @collection) %>
         <% end %>
       </div>
       <div class="col">

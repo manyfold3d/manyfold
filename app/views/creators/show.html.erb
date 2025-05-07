@@ -22,7 +22,7 @@
               <% end %>
             </p>
           <% end %>
-          <%= render Components::FollowButtonComponent.new(follower: current_user, target: @creator) %>
+          <%= render Components::FollowButton.new(follower: current_user, target: @creator) %>
         <% end %>
       </div>
       <div class="col">

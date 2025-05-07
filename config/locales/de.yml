@@ -306,6 +306,11 @@ de:
     tags_card:
       skip_tags: Tag-Liste überspringen
     title: Manyfold
+  components:
+    follow_button:
+      follow: Folge %{name}
+      pending: Angefordert
+      unfollow: "%{name} nicht mehr Folgen"
   doorkeeper:
     applications:
       buttons:
@@ -455,10 +460,6 @@ de:
     update:
       failure:
       success:
-  follow_button_component:
-    follow: Folge %{name}
-    pending: Angefordert
-    unfollow: "%{name} nicht mehr Folgen"
   follows:
     actor_table:
       actions: Aktionen

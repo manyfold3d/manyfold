@@ -308,6 +308,11 @@ es:
     tags_card:
       skip_tags: Saltar lista de etiquetas
     title: Manyfold
+  components:
+    follow_button:
+      follow: Seguir %{name}
+      pending: Requerido
+      unfollow: Dejar de seguir %{name}
   doorkeeper:
     applications:
       buttons:
@@ -457,10 +462,6 @@ es:
     update:
       failure:
       success:
-  follow_button_component:
-    follow: Seguir %{name}
-    pending: Requerido
-    unfollow: Dejar de seguir %{name}
   follows:
     actor_table:
       actions: Acciones

@@ -306,6 +306,11 @@ cs:
     tags_card:
       skip_tags: Přeskočit seznam štítků
     title: Manyfold
+  components:
+    follow_button:
+      follow: Sledovat %{name}
+      pending: Požadováno
+      unfollow: Přestat sledovat %{name}
   doorkeeper:
     applications:
       buttons:
@@ -455,10 +460,6 @@ cs:
     update:
       failure:
       success:
-  follow_button_component:
-    follow: Sledovat %{name}
-    pending: Požadováno
-    unfollow: Přestat sledovat %{name}
   follows:
     actor_table:
       actions: Akce
