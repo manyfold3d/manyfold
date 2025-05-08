@@ -26,6 +26,7 @@ class ArchiveDownloadService
 
   def prepare
     return if ready? || preparing?
+    FileUtils.touch(@tmpfile)
     PrepareDownloadJob.perform_later(
       model_id: @model.id,
       selection: @selection,

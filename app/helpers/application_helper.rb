@@ -11,13 +11,14 @@ module ApplicationHelper
     SiteSettings.site_icon.presence || "roundel.svg"
   end
 
-  def icon(icon, label, id: nil)
+  def icon(icon, label, id: nil, effect: nil)
     prefix = "bi"
     if icon.starts_with? "ra-"
       prefix = "ra"
       icon = icon.gsub("ra-", "")
     end
-    tag.i class: "#{prefix} #{prefix}-#{icon}", role: "img", title: label, id: id
+    classes = [prefix, "#{prefix}-#{icon}", effect].compact.join(" ")
+    tag.i class: classes, role: "img", title: label, id: id
   end
 
   def icon_for(klass)

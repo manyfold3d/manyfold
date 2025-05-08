@@ -35,16 +35,18 @@ class ModelsController < ApplicationController
         files = files.includes(:presupported_version, :problems)
         files = files.reject(&:is_image?)
         @groups = helpers.group(files)
-        @extensions = @model.file_extensions.excluding("json")
-        @has_supported_and_unsupported = @model.has_supported_and_unsupported?
-        @download_format = :zip
         render layout: "card_list_page"
       end
       format.zip do
         download = ArchiveDownloadService.new(model: @model, selection: params[:selection])
-        download.prepare
-        download.wait_until_ready # synchronous wait for archive to be ready, for now
-        send_file(download.pathname, filename: download.filename, type: :zip, disposition: :attachment)
+        if download.ready?
+          send_file(download.pathname, filename: download.filename, type: :zip, disposition: :attachment)
+        elsif download.preparing?
+          redirect_to model_path(@model, format: :html), notice: t(".download_preparing")
+        else
+          download.prepare
+          redirect_to model_path(@model, format: :html), notice: t(".download_requested")
+        end
       end
       format.oembed { render json: OEmbed::ModelSerializer.new(@model, helpers.oembed_params).serialize }
       format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelSerializer.new(@model).serialize }

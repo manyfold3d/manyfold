@@ -64,12 +64,8 @@ en:
     scan:
       success: Model scan started
     show:
-      download:
-        file_type: "%{type} Files Only"
-        label: Download All
-        menu_header: Download Options
-        supported: Supported Files Only
-        unsupported: Unsupported Files Only
+      download_preparing: Download is being prepared, please wait.
+      download_requested: Download requested and will be ready soon, please wait.
       files: Files
       files_card:
         bulk_edit: Edit all files

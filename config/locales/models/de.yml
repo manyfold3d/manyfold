@@ -63,12 +63,6 @@ de:
     scan:
       success: Modell-Scan gestartet
     show:
-      download:
-        file_type: "%{type} Dateien"
-        label: Alle herunterladen
-        menu_header: Download optionen
-        supported: Nur Dateien mit Support Struktur
-        unsupported: Nur Dateien ohne Support Struktur
       files: Dateien
       files_card:
         bulk_edit: Alle Dateien bearbeiten

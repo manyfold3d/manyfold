@@ -1,0 +1,25 @@
+.icon-flip::before {
+	animation: flip 5s ease-in-out infinite;
+}
+
+@keyframes flip {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	10% {
+		transform: rotate(180deg);
+	}
+
+	50% {
+		transform: rotate(180deg);
+	}
+
+	60% {
+		transform: rotate(360deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}

@@ -307,6 +307,12 @@ pl:
       skip_tags: Pomiń listę tagów
     title: Manyfold
   components:
+    download_button:
+      file_type: Tylko Pliki %{type}
+      label: Pobierz Wszystko
+      menu_header: Opcje Pobierania
+      supported: Tylko Obsługiwane Pliki
+      unsupported: Tylko Nieobsługiwane Pliki
     follow_button:
       follow: Obserwuj %{name}
       pending: Żądane

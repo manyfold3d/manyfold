@@ -307,6 +307,12 @@ fr:
       skip_tags: Sauter la liste des balises
     title: Manyfold
   components:
+    download_button:
+      file_type: Fichiers %{type} uniquement
+      label: Télécharger tout
+      menu_header: Options de téléchargement
+      supported: Fichiers pris en charge uniquement
+      unsupported: Fichiers non pris en charge uniquement
     follow_button:
       follow: Suivre %{name}
       pending: Demandé

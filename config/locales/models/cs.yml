@@ -63,12 +63,6 @@ cs:
     scan:
       success: Spuštěna kontrola modelu.
     show:
-      download:
-        file_type: 'Pouze soubory %{type} '
-        label: Stáhnout vše
-        menu_header: Možnosti stažení
-        supported: Pouze podporované soubory
-        unsupported: Pouze nepodporované soubory
       files: Soubory
       files_card:
         bulk_edit: Upravit všechny soubory

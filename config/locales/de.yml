@@ -307,6 +307,12 @@ de:
       skip_tags: Tag-Liste überspringen
     title: Manyfold
   components:
+    download_button:
+      file_type: "%{type} Dateien"
+      label: Alle herunterladen
+      menu_header: Download optionen
+      supported: Nur Dateien mit Support Struktur
+      unsupported: Nur Dateien ohne Support Struktur
     follow_button:
       follow: Folge %{name}
       pending: Angefordert

@@ -309,6 +309,12 @@ es:
       skip_tags: Saltar lista de etiquetas
     title: Manyfold
   components:
+    download_button:
+      file_type: Solo archivos %{type}
+      label: Descargar modelo
+      menu_header: Opciones de Descarga
+      supported: Sólo archivos compatibles
+      unsupported: Sólo archivos no compatibles
     follow_button:
       follow: Seguir %{name}
       pending: Requerido
