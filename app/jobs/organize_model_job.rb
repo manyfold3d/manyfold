@@ -1,5 +1,5 @@
 class OrganizeModelJob < ApplicationJob
-  queue_as :default
+  queue_as :high
 
   def perform(model_id)
     model = Model.find(model_id)

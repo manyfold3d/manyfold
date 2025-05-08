@@ -1,5 +1,5 @@
 class PrepareDownloadJob < ApplicationJob
-  queue_as :default
+  queue_as :critical
   unique :until_executed
 
   def perform(model_id:, selection:, temp_file:, output_file:)

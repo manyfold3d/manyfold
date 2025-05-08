@@ -1,8 +1,12 @@
 ---
 :concurrency: <%= ENV.fetch("DEFAULT_WORKER_CONCURRENCY", 4) %>
 :queues:
+  - critical
+  - high
   - scan
-  - analysis
   - default
+  - low
+  # legacy queues kept for a while for upgrade compatibility
+  - analysis
   - activity
   - upgrade

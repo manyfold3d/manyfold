@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Upgrade::DisambiguateUsernamesJob < ApplicationJob
-  queue_as :upgrade
+  queue_as :low
   unique :until_executed
 
   def perform
