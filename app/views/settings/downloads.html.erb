@@ -1,0 +1,24 @@
+<%= form_with url: settings_path, method: :patch do |form| %>
+  <h3><%= t(".heading") %></h3>
+  <p class='lead'>
+    <%= t(".description") %>
+  </p>
+  <div class="row mb-2">
+    <%= form.label nil, t(".pregenerate.label"), for: "downloads[pregenerate]", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8 form-check form-switch">
+      <%= form.check_box "downloads[pregenerate]", checked: SiteSettings.pregenerate_downloads, class: "form-check-input" %>
+      <small><%= t(".pregenerate.help") %></small>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <%= form.label nil, t(".expiry.label"), for: "downloads[expiry]", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8">
+      <div class="input-group">
+        <%= form.number_field "downloads[expiry]", min: 0, step: 1, value: SiteSettings.download_expiry_time_in_hours, class: "form-control" %>
+        <span class="input-group-text"><%= t(".expiry.hours") %></span>
+      </div>
+      <small><%= t(".expiry.help") %></small>
+    </div>
+  </div>
+  <%= render "submit", form: form %>
+<% end %>

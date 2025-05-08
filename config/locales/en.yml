@@ -599,6 +599,7 @@ en:
     settings:
       activeadmin: Advanced Administration
       appearance: Appearance
+      downloads: Downloads
       libraries: Libraries
       organization: Organization
       performance: Performance Dashboard
