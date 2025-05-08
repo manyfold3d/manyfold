@@ -47,7 +47,6 @@ class ModelCLI < Thor
     end
     puts "\n#{Model.count} models queued for download creation" # rubocop:disable Pundit/UsePolicyScope
   end
-
 end
 
 class ProblemCLI < Thor
