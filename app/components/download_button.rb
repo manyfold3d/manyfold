@@ -38,7 +38,7 @@ class Components::DownloadButton < Components::Base
 
   def download_link(selection: nil, file_type: nil, html_class: "dropdown-item")
     downloader = ArchiveDownloadService.new(model: @model, selection: selection || file_type)
-    link_to model_path(@model, format: @format, selection: selection || file_type), class: html_class, download: "download" do
+    link_to model_path(@model, format: @format, selection: selection || file_type), class: html_class, download: (downloader.ready? ? "download" : nil) do
       if downloader.ready?
         icon("cloud-download", t("components.download_button.download.ready"))
       elsif downloader.preparing?
