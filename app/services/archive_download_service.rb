@@ -24,10 +24,10 @@ class ArchiveDownloadService
     File.exist?(@tmpfile)
   end
 
-  def prepare
+  def prepare(delay: 0.seconds)
     return if ready? || preparing?
     FileUtils.touch(@tmpfile)
-    PrepareDownloadJob.perform_later(
+    PrepareDownloadJob.set(wait: delay).perform_later(
       model_id: @model.id,
       selection: @selection,
       temp_file: @tmpfile,

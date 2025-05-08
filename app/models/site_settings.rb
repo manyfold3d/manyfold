@@ -34,6 +34,7 @@ class SiteSettings < RailsSettings::Base
   field :enable_user_quota, type: :boolean, default: false
   field :default_user_quota, type: :integer, default: 0
 
+  field :pregenerate_downloads, type: :boolean, default: false
   field :download_expiry_time_in_hours, type: :integer, default: 24
 
   validates :model_ignored_files, regex_array: {strict: true}
