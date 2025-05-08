@@ -2,10 +2,11 @@ class PrepareDownloadJob < ApplicationJob
   queue_as :default
   unique :until_executed
 
-  def perform(model_id:, selection:, temp_file:, output_file:)
-    model = Model.find(model_id)
-    write_archive(temp_file, file_list(model, selection))
-    FileUtils.mv(temp_file, output_file)
+  def perform(model_id:, selection:)
+    @model = Model.find(model_id)
+    @downloader = ArchiveDownloadService.new(model: @model, selection: selection)
+    write_archive(@downloader.temp_file, file_list(@model, selection))
+    FileUtils.mv(@downloader.temp_file, @downloader.output_file)
   end
 
   private

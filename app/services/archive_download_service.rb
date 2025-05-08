@@ -1,37 +1,44 @@
 class ArchiveDownloadService
-  attr_reader :pathname
-
   def initialize(model:, selection:)
     @model = model
     @selection = sanitize selection
-    @tmpdir = LibraryUploader.find_storage(:downloads).directory
-    @pathname = File.join(@tmpdir, "#{@model.updated_at.to_time.to_i}-#{@model.id}-#{@selection}.zip")
-    @tmpfile = File.join(@tmpdir, Digest::SHA256.hexdigest(@pathname))
   end
 
   def filename
-    [
+    @filename ||= [
       @model.slug,
       @selection
     ].compact.join("-") + ".zip"
   end
 
+  def output_file
+    @output_file ||= File.join(
+      LibraryUploader.find_storage(:downloads).directory,
+      filename
+    )
+  end
+
+  def temp_file
+    @temp_file ||= File.join(
+      LibraryUploader.find_storage(:downloads).directory,
+      Digest::SHA256.hexdigest(filename)
+    )
+  end
+
   def ready?
-    File.exist?(@pathname)
+    File.exist?(output_file)
   end
 
   def preparing?
-    File.exist?(@tmpfile)
+    File.exist?(temp_file)
   end
 
   def prepare(delay: 0.seconds)
     return if ready? || preparing?
-    FileUtils.touch(@tmpfile)
+    FileUtils.touch(temp_file)
     PrepareDownloadJob.set(wait: delay).perform_later(
       model_id: @model.id,
-      selection: @selection,
-      temp_file: @tmpfile,
-      output_file: @pathname
+      selection: @selection
     )
   end
 
