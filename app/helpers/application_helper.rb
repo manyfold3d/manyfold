@@ -17,7 +17,8 @@ module ApplicationHelper
       prefix = "ra"
       icon = icon.gsub("ra-", "")
     end
-    tag.i class: "#{prefix} #{prefix}-#{icon} #{effect}", role: "img", title: label, id: id
+    classes = [prefix, "#{prefix}-#{icon}", effect].compact.join(" ")
+    tag.i class: classes, role: "img", title: label, id: id
   end
 
   def icon_for(klass)
