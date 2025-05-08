@@ -42,7 +42,7 @@ class Components::DownloadButton < Components::Base
       if downloader.ready?
         icon("cloud-download", t("components.download_button.download.ready"))
       elsif downloader.preparing?
-        icon("hourglass-split", t("components.download_button.download.preparing"))
+        icon("hourglass-split", t("components.download_button.download.preparing"), effect: "icon-flip")
       else
         icon("hourglass-top", t("components.download_button.download.missing"))
       end
