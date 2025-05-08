@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resource :settings, only: [:show, :update] do
       collection do
         get :analysis
+        get :downloads
         get :multiuser
         get :reporting
         get :appearance

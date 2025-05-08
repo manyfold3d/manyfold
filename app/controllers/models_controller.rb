@@ -40,7 +40,7 @@ class ModelsController < ApplicationController
       format.zip do
         download = ArchiveDownloadService.new(model: @model, selection: params[:selection])
         if download.ready?
-          send_file(download.pathname, filename: download.filename, type: :zip, disposition: :attachment)
+          send_file(download.output_file, filename: download.filename, type: :zip, disposition: :attachment)
         elsif download.preparing?
           redirect_to model_path(@model, format: :html), notice: t(".download_preparing")
         else

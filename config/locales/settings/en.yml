@@ -45,6 +45,16 @@ en:
       new:
         submit: Block domain
         title: New Domain Block
+    downloads:
+      description: Manyfold will generate ZIP files of models on request, but for busy sites you may want these available more quickly. Here you can tell Manyfold to create ZIP files immediately, and also set how long they are kept in the download cache. Beware; this may use a lot of disk space!
+      expiry:
+        help: A setting of 0 means keep forever.
+        hours: Hours
+        label: Remove download ZIP files after
+      heading: Downloads
+      pregenerate:
+        help: If enabled, ZIP files are created whenever a model is added or updated. If disabled, ZIP files are only created when requested.
+        label: Proactively create downloadable ZIP files
     file_settings:
       custom_ignore_filters:
         details: Filters are in regex format separated by a new line.

@@ -11,6 +11,7 @@ class SettingsController < ApplicationController
     update_multiuser_settings(params[:multiuser])
     update_analysis_settings(params[:analysis])
     update_usage_settings(params[:usage])
+    update_download_settings(params[:downloads])
     redirect_back_or_to settings_path, notice: t(".success")
   end
 
@@ -71,6 +72,12 @@ class SettingsController < ApplicationController
   def update_usage_settings(settings)
     return unless settings
     (settings[:report] == "1") ? UsageReport.enable! : UsageReport.disable!
+  end
+
+  def update_download_settings(settings)
+    return unless settings
+    SiteSettings.pregenerate_downloads = (settings[:pregenerate] == "1")
+    SiteSettings.download_expiry_time_in_hours = (settings[:expiry].to_i)
   end
 
   def check_owner_permission

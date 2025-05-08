@@ -11,6 +11,10 @@ class SettingsPolicy < ApplicationPolicy
     update?
   end
 
+  def downloads?
+    update?
+  end
+
   def multiuser?
     update?
   end

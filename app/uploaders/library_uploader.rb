@@ -14,7 +14,8 @@ class LibraryUploader < Shrine
   plugin :tus
 
   self.storages = {
-    cache: Shrine::Storage::FileSystem.new("tmp/shrine")
+    cache: Shrine::Storage::FileSystem.new("tmp/shrine"),
+    downloads: Shrine::Storage::FileSystem.new("tmp/downloads")
   }
 
   storage(/library_(\d+)/) do |m|
