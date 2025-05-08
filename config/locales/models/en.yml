@@ -64,6 +64,8 @@ en:
     scan:
       success: Model scan started
     show:
+      download_preparing: Download is being prepared, please wait.
+      download_requested: Download requested and will be ready soon, please wait.
       files: Files
       files_card:
         bulk_edit: Edit all files
