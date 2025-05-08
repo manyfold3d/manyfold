@@ -6,7 +6,7 @@ class ArchiveDownloadService
 
   def filename
     @filename ||= [
-      @model.slug,
+      sanitize(@model.slug),
       @selection
     ].compact.join("-") + ".zip"
   end
