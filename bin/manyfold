@@ -33,6 +33,21 @@ class ModelCLI < Thor
     end
     puts "\n#{Model.count} models queued for metadata parsing" # rubocop:disable Pundit/UsePolicyScope
   end
+
+  desc "pregenerate_downloads", "generate downloadable ZIP files for all models"
+  def pregenerate_downloads
+    if !SiteSettings.pregenerate_downloads
+      puts "ERROR: Enable proactive ZIP download creation in admin settings."
+      return
+    end
+    Model.find_each do |it|
+      it.pregenerate_downloads delay: 5.seconds
+      print "."
+      sleep 0.01 # Slows down connections a bit so as not to saturate Redis
+    end
+    puts "\n#{Model.count} models queued for download creation" # rubocop:disable Pundit/UsePolicyScope
+  end
+
 end
 
 class ProblemCLI < Thor
