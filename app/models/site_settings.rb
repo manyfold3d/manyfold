@@ -34,6 +34,8 @@ class SiteSettings < RailsSettings::Base
   field :enable_user_quota, type: :boolean, default: false
   field :default_user_quota, type: :integer, default: 0
 
+  field :web_sub_hub, type: :string, default: nil
+
   validates :model_ignored_files, regex_array: {strict: true}
 
   def self.email_configured?
