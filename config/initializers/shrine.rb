@@ -23,6 +23,11 @@ Rails.application.config.after_initialize do
       cron: "every hour",
       class: "CacheSweepJob"
     )
+    Sidekiq::Cron::Job.create(
+      name: "clear-downloads",
+      cron: "every hour",
+      class: "DownloadsSweepJob"
+    )
   rescue RedisClient::CannotConnectError
   end
 end
