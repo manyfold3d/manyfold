@@ -229,6 +229,20 @@ class Model < ApplicationRecord
   rescue Shrine::FileNotFound
   end
 
+  def pregenerate_downloads(delay: 10.minutes)
+    # By default, give 10 minutes' grace for followup changes before we pregenerate the download
+    # Other scan jobs could be running, which might take some time.
+    # This is brittle, and we need a better way to say "this model is done changing for a while"
+    return unless SiteSettings.pregenerate_downloads
+
+    download_types = [nil]
+    download_types += ["supported", "unsupported"] if has_supported_and_unsupported?
+    download_types += file_extensions.excluding("json")
+    download_types.each do |selection|
+      ArchiveDownloadService.new(model: self, selection: selection).prepare(delay: delay)
+    end
+  end
+
   private
 
   def normalize_license
@@ -286,20 +300,6 @@ class Model < ApplicationRecord
   def post_update_activity
     if creator_previously_changed?
       Activity::CreatorAddedModelJob.set(wait: 5.seconds).perform_later(id)
-    end
-  end
-
-  def pregenerate_downloads
-    return unless SiteSettings.pregenerate_downloads
-
-    download_types = [nil]
-    download_types += ["supported", "unsupported"] if has_supported_and_unsupported?
-    download_types += file_extensions.excluding("json")
-    download_types.each do |selection|
-      # Give 10 minutes' grace for followup changes before we pregenerate the download
-      # Other scan jobs could be running, which might take some time.
-      # This is brittle, and we need a better way to say "this model is done changing for a while"
-      ArchiveDownloadService.new(model: self, selection: selection).prepare(delay: 10.minutes)
     end
   end
 end
