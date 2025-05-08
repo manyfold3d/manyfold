@@ -1,7 +1,7 @@
 require "string/similarity"
 
 class Analysis::AnalyseModelFileJob < ApplicationJob
-  queue_as :analysis
+  queue_as :low
   unique :until_executed
 
   def perform(file_id)

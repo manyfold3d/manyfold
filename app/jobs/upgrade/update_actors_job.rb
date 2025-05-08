@@ -2,7 +2,7 @@
 
 require "federails/maintenance/actors_updater"
 class Upgrade::UpdateActorsJob < ApplicationJob
-  queue_as :upgrade
+  queue_as :low
   unique :until_executed
 
   def perform
