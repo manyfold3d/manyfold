@@ -6,6 +6,8 @@ class Collection < ApplicationRecord
   include PublicIDable
   include Commentable
 
+  broadcasts_refreshes
+
   acts_as_federails_actor(
     username_field: :public_id,
     name_field: :name,

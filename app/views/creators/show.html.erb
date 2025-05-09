@@ -5,6 +5,7 @@
 <% end %>
 
 <%= content_for :items do %>
+  <%= turbo_stream_from @creator %>
   <div class="card mb-3 <%= "remote-actor" if @creator.remote? %>">
     <div class="card-header"><%= @creator.model_name.human %></div>
     <div class="card-body row">
