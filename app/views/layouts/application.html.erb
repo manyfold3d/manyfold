@@ -10,7 +10,7 @@
     <%= tag.meta name: "apple-mobile-web-app-title", content: site_name %>
     <%= javascript_include_tag "application", nonce: true, defer: true %>
     <%= stylesheet_link_tag "themes/#{SiteSettings.theme}", nonce: true %>
-    <%= turbo_refreshes_with method: :morph, scroll: :preserve  %>
+    <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
     <%= yield :head %>
   </head>
 
