@@ -660,6 +660,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hotwired/turbo-rails@npm:^8.0.13":
+  version: 8.0.13
+  resolution: "@hotwired/turbo-rails@npm:8.0.13"
+  dependencies:
+    "@hotwired/turbo": ^8.0.13
+    "@rails/actioncable": ^7.0
+  checksum: 6039c83fb8c17a8f63bed15919f4a0cfbf7652d8c685934a758d3bce13a650763b2b2d32ab9c826acadb23a3793ea90a86ba86ba2434e6480173563f14eccf31
+  languageName: node
+  linkType: hard
+
+"@hotwired/turbo@npm:^8.0.13":
+  version: 8.0.13
+  resolution: "@hotwired/turbo@npm:8.0.13"
+  checksum: 599382b3f840980d5dc360108cd0f9d70b4d3686fd3e1cf0e5816a5162e0d38d0447fd384d0fe0ff6ffd147db1e0ba0f79ccd71aa9378f2801d3870f562f0015
+  languageName: node
+  linkType: hard
+
 "@humanfs/core@npm:^0.19.1":
   version: 0.19.1
   resolution: "@humanfs/core@npm:0.19.1"
@@ -908,6 +925,13 @@ __metadata:
   version: 2.11.8
   resolution: "@popperjs/core@npm:2.11.8"
   checksum: e5c69fdebf52a4012f6a1f14817ca8e9599cb1be73dd1387e1785e2ed5e5f0862ff817f420a87c7fc532add1f88a12e25aeb010ffcbdc98eace3d55ce2139cf0
+  languageName: node
+  linkType: hard
+
+"@rails/actioncable@npm:^7.0":
+  version: 7.2.201
+  resolution: "@rails/actioncable@npm:7.2.201"
+  checksum: fcb794c8b70b83c0f748d2111a373b847204f4a0b8d78bc7936b8d800fa9fe9462009cdf9e7e971a7f21f1b2fe18157b9017332b55bd1fd3d06432d3039fce14
   languageName: node
   linkType: hard
 
@@ -4565,6 +4589,7 @@ __metadata:
     "@babel/core": ^7
     "@babel/eslint-parser": ^7.27.1
     "@babel/preset-typescript": ^7.27.1
+    "@hotwired/turbo-rails": ^8.0.13
     "@infinizhen/rpg-awesome-continued": ^1.0.6
     "@notus.sh/cocooned": ^2.4.1
     "@popperjs/core": ^2.11.8

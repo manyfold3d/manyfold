@@ -2,6 +2,7 @@
 // Entry point for the build script in your package.json
 import Rails from '@rails/ujs'
 import $ from 'jquery' // Just needed for selectize
+import '@hotwired/turbo-rails'
 
 import 'masonry-layout'
 
@@ -29,6 +30,10 @@ const manyfoldReady = new Event('ManyfoldReady')
 document.addEventListener('DOMContentLoaded', () => {
   window.i18n.locale = document.querySelector('html')?.lang ?? 'en'
   Rails.start()
+  document.dispatchEvent(new Event('turbo:load'))
+})
+
+document.addEventListener('turbo:load', () => {
   Cocooned.start()
   document.dispatchEvent(manyfoldReady)
 })

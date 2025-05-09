@@ -836,6 +836,9 @@ GEM
       gettext (~> 3.2, >= 3.2.5, <= 3.4.9)
     treetop (1.6.14)
       polyglot (~> 0.3)
+    turbo-rails (2.0.13)
+      actionpack (>= 7.1.0)
+      railties (>= 7.1.0)
     tus-server (2.3.0)
       content_disposition (~> 1.0)
       roda (>= 2.27, < 4)
@@ -990,6 +993,7 @@ DEPENDENCIES
   sys-filesystem (~> 1.5)
   to_regexp (~> 0.2)
   translation (~> 1.41)
+  turbo-rails (~> 2.0)
   tus-server (~> 2.3)
   tzinfo-data
   warning (~> 1.5)
