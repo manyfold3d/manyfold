@@ -7,6 +7,7 @@
 <% end %>
 
 <% content_for :page_header do %>
+  <%= turbo_stream_from @model %>
   <h1>
     <a contenteditable="plaintext-only"
        data-controller="editable"
