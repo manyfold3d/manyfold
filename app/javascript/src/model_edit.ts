@@ -1,6 +1,6 @@
 import '@selectize/selectize'
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('ManyfoldReady', () => {
   window.tagInputs = []
   $('select[data-selectize]').each(
     function () {
