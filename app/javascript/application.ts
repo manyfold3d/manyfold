@@ -30,7 +30,7 @@ const manyfoldReady = new Event('ManyfoldReady')
 document.addEventListener('DOMContentLoaded', () => {
   window.i18n.locale = document.querySelector('html')?.lang ?? 'en'
   Rails.start()
-  document.dispatchEvent('turbo:load')
+  document.dispatchEvent(new Event('turbo:load'))
 })
 
 document.addEventListener('turbo:load', () => {
