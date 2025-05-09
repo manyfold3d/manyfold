@@ -2,6 +2,7 @@
 // Entry point for the build script in your package.json
 import Rails from '@rails/ujs'
 import $ from 'jquery' // Just needed for selectize
+import '@hotwired/turbo-rails'
 
 import 'masonry-layout'
 
