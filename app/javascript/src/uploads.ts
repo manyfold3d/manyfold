@@ -14,8 +14,10 @@ const uppyLocales = { cs, de, en, es, fr, nl, pl }
 
 document.addEventListener('ManyfoldReady', () => {
   document.querySelectorAll('#uppy').forEach((element: HTMLDivElement) => {
+    if (element.uppy)
+      return
     const settings = element.dataset
-    const uppy = new Uppy({
+    element.uppy = new Uppy({
       autoProceed: true,
       locale: uppyLocales[window.i18n.locale],
       restrictions: {
