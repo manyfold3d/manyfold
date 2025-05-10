@@ -6,6 +6,8 @@ class ModelFile < ApplicationRecord
 
   extend Memoist
 
+  broadcasts_refreshes
+
   SPECIAL_FILES = [
     "datapackage.json"
   ]
