@@ -12,12 +12,14 @@ import pl from '@uppy/locales/lib/pl_PL'
 
 const uppyLocales = { cs, de, en, es, fr, nl, pl }
 
+let uppy = null
+
 document.addEventListener('ManyfoldReady', () => {
   document.querySelectorAll('#uppy').forEach((element: HTMLDivElement) => {
-    if (element.uppy)
+    if (uppy)
       return
     const settings = element.dataset
-    element.uppy = new Uppy({
+    uppy = new Uppy({
       autoProceed: true,
       locale: uppyLocales[window.i18n.locale],
       restrictions: {
