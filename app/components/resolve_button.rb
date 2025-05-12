@@ -47,7 +47,6 @@ class Components::ResolveButton < Components::Base
   end
 
   def view_template
-    return unless render?
     text = t @options[:i18n_key]
     if @problem.in_progress
       link_to("#", class: "btn btn-#{@options[:button_type]} disabled") do
@@ -72,8 +71,6 @@ class Components::ResolveButton < Components::Base
       end
     end
   end
-
-  private
 
   def render?
     ProblemPolicy.new(@user, @problem).resolve?

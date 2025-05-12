@@ -11,7 +11,6 @@ class Components::FollowButton < Components::Base
   end
 
   def view_template
-    return unless render?
     button_to(
       @path,
       method: @method,
@@ -21,6 +20,13 @@ class Components::FollowButton < Components::Base
       whitespace
       span { translate(@i18n_key, name: @name) }
     end
+  end
+
+  def render?
+    SiteSettings.social_enabled? && (
+      Pundit::PolicyFinder.new(Federails::Following).policy.new(current_user, nil).create? ||
+      remote_follow_allowed?
+    )
   end
 
   private
@@ -49,13 +55,6 @@ class Components::FollowButton < Components::Base
       @method = @following ? :delete : :post
     end
     super
-  end
-
-  def render?
-    SiteSettings.social_enabled? && (
-      Pundit::PolicyFinder.new(Federails::Following).policy.new(current_user, nil).create? ||
-      remote_follow_allowed?
-    )
   end
 
   def remote_follow_allowed?
