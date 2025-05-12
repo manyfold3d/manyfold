@@ -28,7 +28,7 @@
     "@zxcvbn-ts/language-en": "^3.0.2",
     "autoprefixer": "^10.4.21",
     "bootstrap": "^5.3.6",
-    "bootstrap-icons": "^1.12.1",
+    "bootstrap-icons": "^1.13.1",
     "bootswatch": "^5.3.5",
     "comlink": "^4.4.2",
     "esbuild": "^0.25.4",
