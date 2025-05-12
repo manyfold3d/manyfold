@@ -12,10 +12,13 @@ import pl from '@uppy/locales/lib/pl_PL'
 
 const uppyLocales = { cs, de, en, es, fr, nl, pl }
 
+let uppy: Uppy | null = null
+
 document.addEventListener('ManyfoldReady', () => {
   document.querySelectorAll('#uppy').forEach((element: HTMLDivElement) => {
+    if (uppy == null) { return }
     const settings = element.dataset
-    const uppy = new Uppy({
+    uppy = new Uppy({
       autoProceed: true,
       locale: uppyLocales[window.i18n.locale],
       restrictions: {
@@ -46,7 +49,7 @@ document.addEventListener('ManyfoldReady', () => {
       }
     })
     element.closest('form')?.addEventListener('formdata', (event) => {
-      const uploads = uppy.getFiles().map((f) => {
+      const uploads = uppy?.getFiles().map((f) => {
         return {
           id: f.tus?.uploadUrl,
           storage: 'cache',
