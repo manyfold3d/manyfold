@@ -1813,10 +1813,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap-icons@npm:^1.12.1":
-  version: 1.12.1
-  resolution: "bootstrap-icons@npm:1.12.1"
-  checksum: 98c2037c938144ad61dac8703cf2943ba3b36871aad628961590195fb0e55b37bcdd4cf1aaf36cdd743beaa24759e6994638db3955b28ada55679e64e0dd9855
+"bootstrap-icons@npm:^1.13.1":
+  version: 1.13.1
+  resolution: "bootstrap-icons@npm:1.13.1"
+  checksum: 7ca8735db00a2e78349fdac786982a4cd6b4a7346f6c7eaf3d06314d5d9d7f5e6728dc594a80e5502aa0d2d164ad91df44084ea9d5879775a0338443b3e68476
   languageName: node
   linkType: hard
 
@@ -4615,7 +4615,7 @@ __metadata:
     "@zxcvbn-ts/language-en": ^3.0.2
     autoprefixer: ^10.4.21
     bootstrap: ^5.3.6
-    bootstrap-icons: ^1.12.1
+    bootstrap-icons: ^1.13.1
     bootswatch: ^5.3.5
     comlink: ^4.4.2
     esbuild: ^0.25.4
