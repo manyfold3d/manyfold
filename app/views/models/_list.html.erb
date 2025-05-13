@@ -14,7 +14,7 @@
         <% end %>
       </div>
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-        <%= safe_join @models.map { |it| render Components::ModelCard.new(model: it, can_edit: @can_edit, can_destroy: @can_destroy) } %>
+        <%= render_component_collection Components::ModelCard, :model, @models, can_edit: @can_edit, can_destroy: @can_destroy %>
       </div>
       <% if pagination_settings["models"] %>
         <%= paginate @models %>

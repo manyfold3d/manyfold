@@ -240,4 +240,8 @@ module ApplicationHelper
   def oembed_params
     params.permit(:maxwidth, :maxheight)
   end
+
+  def render_component_collection(component, param, collection, kwargs = {})
+    safe_join(collection.map { |it| render component.new(**{param => it}.merge(kwargs)) }, " ")
+  end
 end
