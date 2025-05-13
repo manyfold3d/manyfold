@@ -17,6 +17,7 @@ import 'src/file_size_validation'
 import 'src/uploads'
 import 'src/passwords'
 import 'src/library_form'
+import 'controllers/index'
 
 // Load i18n definitions
 import { I18n } from 'i18n-js'

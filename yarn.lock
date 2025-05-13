@@ -660,6 +660,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hotwired/stimulus@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "@hotwired/stimulus@npm:3.2.2"
+  checksum: e0c13469df89f760f35cce0fd7af5f7eeabd4ff79c4ad2b05fe7d8d7b845818c6736c3cd515c1906e144aa27529d5a60377647937b756950b4f709be329c9046
+  languageName: node
+  linkType: hard
+
 "@hotwired/turbo-rails@npm:^8.0.13":
   version: 8.0.13
   resolution: "@hotwired/turbo-rails@npm:8.0.13"
@@ -4575,6 +4582,7 @@ __metadata:
     "@babel/core": ^7
     "@babel/eslint-parser": ^7.27.1
     "@babel/preset-typescript": ^7.27.1
+    "@hotwired/stimulus": ^3.2.2
     "@hotwired/turbo-rails": ^8.0.13
     "@infinizhen/rpg-awesome-continued": ^1.0.6
     "@notus.sh/cocooned": ^2.4.1
