@@ -9,7 +9,7 @@
         <small class="card-subtitle mb-2 text-muted"><%= sanitize creator.caption %></small>
       <% end %>
       <ul class='links'>
-        <%= safe_join(creator.links.map { |it| render Components::Link.new(link: it) }) %>
+        <%= render_component_collection Components::Link, :link, creator.links %>
       </ul>
       <% model_count = policy_scope(Model).where(creator: creator).count %>
       <% collection_count = policy_scope(Collection).where(creator: creator).count %>

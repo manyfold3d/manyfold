@@ -35,7 +35,7 @@
           <p class="card-text"><%= markdownify collection.notes %></p>
         <% end %>
         <ul class='links'>
-          <%= safe_join(collection.links.map { |it| render Components::Link.new(link: it) }) %>
+          <%= render_component_collection Components::Link, :link, collection.links %>
         </ul>
       </div>
       <div>
