@@ -16,7 +16,7 @@ let uppy: Uppy | null = null
 
 document.addEventListener('ManyfoldReady', () => {
   document.querySelectorAll('#uppy').forEach((element: HTMLDivElement) => {
-    if (uppy == null) { return }
+    if (uppy != null) { return }
     const settings = element.dataset
     uppy = new Uppy({
       autoProceed: true,
