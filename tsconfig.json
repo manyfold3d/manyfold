@@ -27,7 +27,7 @@
       "webpack-env",
       "three",
       "jquery",
-      "selectize",
+      "tom-select",
       "i18n-js",
       "bootstrap"
     ],
