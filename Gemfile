@@ -167,7 +167,7 @@ gem "omniauth", "~> 2.1"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "omniauth_openid_connect", "~> 0.8"
 
-gem "sidekiq-cron", "~> 2.2"
+gem "sidekiq-cron", "~> 2.3"
 
 group :development, :production do
   gem "sys-cpu", "~> 1.1"
