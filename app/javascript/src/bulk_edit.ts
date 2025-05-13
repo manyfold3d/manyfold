@@ -1,12 +1,12 @@
 function updateTagOptions (tags: string[], input, addTags = true): void {
   tags.forEach((tag) => {
     if (addTags) {
-      input.addOption({ value: tag, text: tag })
+      input.selectize.addOption({ value: tag, text: tag })
     } else {
-      input.removeOption({ value: tag, text: tag })
+      input.selectize.removeOption({ value: tag, text: tag })
     }
   })
-  input.refreshOptions(false)
+  input.selectize.refreshOptions(false)
 }
 
 function getTags (modelId: string): string[] {
@@ -21,12 +21,8 @@ function getTags (modelId: string): string[] {
 
 function updateTagList (modelId: string, add: boolean): void {
   const tags = getTags(modelId)
-  if (tags.length > 0 && window.tagInputs != null) {
-    window.tagInputs.forEach((input) => {
-      if (input[0].getAttribute('name') === 'remove_tags[]') {
-        updateTagOptions(tags, input[0].selectize, add)
-      }
-    })
+  if (tags.length > 0) {
+    updateTagOptions(tags, document.querySelector('select[name="remove_tags[]"]'), add)
   }
 }
 

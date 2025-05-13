@@ -1,7 +1,6 @@
 import '@selectize/selectize'
 
 document.addEventListener('ManyfoldReady', () => {
-  window.tagInputs = []
   $('select[data-selectize]').each(
     function () {
       const tagInput = $(this).selectize({
@@ -9,7 +8,6 @@ document.addEventListener('ManyfoldReady', () => {
         create: true,
         plugins: ['remove_button']
       })
-      window.tagInputs.push(tagInput)
     }
   )
   // Editable names (and other fields):
