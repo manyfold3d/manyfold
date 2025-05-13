@@ -27,12 +27,12 @@ window.$ = $
 const manyfoldReady = new Event('ManyfoldReady')
 
 document.addEventListener('DOMContentLoaded', () => {
+  window.i18n.locale = document.querySelector('html')?.lang ?? 'en'
   Rails.start()
+  Cocooned.start()
   document.dispatchEvent(new Event('turbo:load'))
 })
 
 document.addEventListener('turbo:load', () => {
-  window.i18n.locale = document.querySelector('html')?.lang ?? 'en'
-  Cocooned.start()
   document.dispatchEvent(manyfoldReady)
 })
