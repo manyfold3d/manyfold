@@ -5,14 +5,14 @@ document.addEventListener('ManyfoldReady', () => {
   document.querySelectorAll('select[data-tom-select]').forEach(
     (element: TomInput) => {
       if (element.tomselect != null) { return }
-      new TomSelect(element, {
+      new TomSelect(element, { // eslint-disable-line no-new
         addPrecedence: true,
         create: true,
         plugins: ['remove_button'],
         selectOnTab: true,
         onItemAdd: function () {
-          this.setTextboxValue('');
-          this.refreshOptions();
+          this.setTextboxValue('')
+          this.refreshOptions()
         }
       })
     }
