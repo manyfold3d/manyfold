@@ -17,7 +17,6 @@
     "@notus.sh/cocooned": "^2.4.1",
     "@popperjs/core": "^2.11.8",
     "@rails/ujs": "^7.1.501",
-    "@selectize/selectize": "^0.15.2",
     "@uppy/core": "^4.4.4",
     "@uppy/dashboard": "^4.3.3",
     "@uppy/form": "^4.1.1",
@@ -40,7 +39,8 @@
     "postcss-cli": "^11.0.1",
     "sass-embedded": "^1.88.0",
     "three": "^0.176.0",
-    "threejs-webworker-3mf-loader": "https://github.com/manyfold3d/threejs-webworker-3mf-loader"
+    "threejs-webworker-3mf-loader": "https://github.com/manyfold3d/threejs-webworker-3mf-loader",
+    "tom-select": "^2.4.3"
   },
   "version": "0.1.0",
   "devDependencies": {
@@ -52,7 +52,6 @@
     "@types/jquery": "^3.5.32",
     "@types/lodash": "^4.17.16",
     "@types/node": "^20.17.46",
-    "@types/selectize": "^0.12.39",
     "@types/three": "^0.176.0",
     "@types/webpack-env": "^1.18.8",
     "@types/webxr": "^0.5.22",

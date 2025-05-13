@@ -1,15 +1,20 @@
-import '@selectize/selectize'
+import TomSelect from 'tom-select'
+import type { TomInput } from 'tom-select/dist/cjs/types'
 
 document.addEventListener('ManyfoldReady', () => {
-  window.tagInputs = []
-  $('select[data-selectize]').each(
-    function () {
-      const tagInput = $(this).selectize({
+  document.querySelectorAll('select[data-tom-select]').forEach(
+    (element: TomInput) => {
+      if (element.tomselect != null) { return }
+      new TomSelect(element, { // eslint-disable-line no-new
         addPrecedence: true,
         create: true,
-        plugins: ['remove_button']
+        plugins: ['remove_button'],
+        selectOnTab: true,
+        onItemAdd: function () {
+          this.setTextboxValue('')
+          this.refreshOptions()
+        }
       })
-      window.tagInputs.push(tagInput)
     }
   )
   // Editable names (and other fields):

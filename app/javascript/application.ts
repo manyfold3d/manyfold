@@ -1,7 +1,7 @@
 
 // Entry point for the build script in your package.json
 import Rails from '@rails/ujs'
-import $ from 'jquery' // Just needed for selectize
+import $ from 'jquery' // Just needed for activeadmin and a coyoke couple of other bits
 import '@hotwired/turbo-rails'
 
 import 'masonry-layout'

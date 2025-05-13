@@ -914,6 +914,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@orchidjs/sifter@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@orchidjs/sifter@npm:1.1.0"
+  dependencies:
+    "@orchidjs/unicode-variants": ^1.1.2
+  checksum: affe38c1b9017f2a98384ba1e79af3b3a08575dcfa34856eb5654008ffb186da5f1168eaa79dd4be21111bd62d127d6f1140ce5400b6fd47f4ca6fa9bc3d4beb
+  languageName: node
+  linkType: hard
+
+"@orchidjs/unicode-variants@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@orchidjs/unicode-variants@npm:1.1.2"
+  checksum: 2b643dfbc67e88158340df8448b065a022a521788b00f648b33ccef6152af8ebb99f91250d80289fbbaecabcd5cacc26b2f7c17aeb525c5922f9ea97b98e0c4d
+  languageName: node
+  linkType: hard
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -939,20 +955,6 @@ __metadata:
   version: 7.1.501
   resolution: "@rails/ujs@npm:7.1.501"
   checksum: 8d009970360eed8451afb639bc0e27663dc467161fd73ea0472e4e05be626ea5eb92c41a8643a342287acba2f464d3009312365b5691087db5bf6d7ee2dac37e
-  languageName: node
-  linkType: hard
-
-"@selectize/selectize@npm:^0.15.2":
-  version: 0.15.2
-  resolution: "@selectize/selectize@npm:0.15.2"
-  dependencies:
-    jquery-ui: "npm:^1.13.2"
-  peerDependencies:
-    jquery: ^1.7.0 || ^2 || ^3
-  dependenciesMeta:
-    jquery-ui:
-      optional: true
-  checksum: 114f63a430b44a41e87d38364d17367d405b84f0e93baf48aca016f25fc449a21b876699d8ae0ebba5fca05a0ccb3564ed9d4ade0440404c15901eb08933a773
   languageName: node
   linkType: hard
 
@@ -1045,13 +1047,6 @@ __metadata:
   version: 0.12.2
   resolution: "@types/retry@npm:0.12.2"
   checksum: e5675035717b39ce4f42f339657cae9637cf0c0051cf54314a6a2c44d38d91f6544be9ddc0280587789b6afd056be5d99dbe3e9f4df68c286c36321579b1bf4a
-  languageName: node
-  linkType: hard
-
-"@types/selectize@npm:^0.12.39":
-  version: 0.12.39
-  resolution: "@types/selectize@npm:0.12.39"
-  checksum: ff9d87276a14cdeeef85290bd9cabdf89d8dc987c145f3ece0238c779507f1e2ae75a1a31125c2a3ace24ce006ea13487d142d5e56ac059a3859f6a719777a8c
   languageName: node
   linkType: hard
 
@@ -4218,15 +4213,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jquery-ui@npm:^1.13.2":
-  version: 1.13.2
-  resolution: "jquery-ui@npm:1.13.2"
-  dependencies:
-    jquery: "npm:>=1.8.0 <4.0.0"
-  checksum: 0d04a4b86e703d6ff71bcc37335f99be137b03fa24fa22f00f61f5aac132e7143b7d6dd9973ad4f72366e102826e417bc3d88c1640f7dd824961a7131bd3966a
-  languageName: node
-  linkType: hard
-
 "jquery-ui@npm:^1.13.3":
   version: 1.14.1
   resolution: "jquery-ui@npm:1.14.1"
@@ -4245,7 +4231,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jquery@npm:>=1.12.0 <5.0.0, jquery@npm:>=1.8.0 <4.0.0, jquery@npm:^3.4.1, jquery@npm:^3.7.1":
+"jquery@npm:>=1.12.0 <5.0.0, jquery@npm:^3.4.1, jquery@npm:^3.7.1":
   version: 3.7.1
   resolution: "jquery@npm:3.7.1"
   checksum: 4370b8139d6ae82867eb6f7f21d1edccf1d1bdf41c0840920ea80d366c2cd5dbe1ceebb110ee9772aa839b04400faa1572c5c560b507c688ed7b61cea26c0e27
@@ -4594,13 +4580,11 @@ __metadata:
     "@notus.sh/cocooned": ^2.4.1
     "@popperjs/core": ^2.11.8
     "@rails/ujs": ^7.1.501
-    "@selectize/selectize": ^0.15.2
     "@types/bootstrap": ^5.2.10
     "@types/i18n-js": ^4.0.1
     "@types/jquery": ^3.5.32
     "@types/lodash": ^4.17.16
     "@types/node": ^20.17.46
-    "@types/selectize": ^0.12.39
     "@types/three": ^0.176.0
     "@types/webpack-env": ^1.18.8
     "@types/webxr": ^0.5.22
@@ -4630,6 +4614,7 @@ __metadata:
     sass-embedded: ^1.88.0
     three: ^0.176.0
     threejs-webworker-3mf-loader: "https://github.com/manyfold3d/threejs-webworker-3mf-loader"
+    tom-select: ^2.4.3
     ts-standard: ^12.0.2
     typescript: ^5.8.3
   languageName: unknown
@@ -6576,6 +6561,16 @@ __metadata:
   version: 1.0.1
   resolution: "toidentifier@npm:1.0.1"
   checksum: 952c29e2a85d7123239b5cfdd889a0dde47ab0497f0913d70588f19c53f7e0b5327c95f4651e413c74b785147f9637b17410ac8c846d5d4a20a5a33eb6dc3a45
+  languageName: node
+  linkType: hard
+
+"tom-select@npm:^2.4.3":
+  version: 2.4.3
+  resolution: "tom-select@npm:2.4.3"
+  dependencies:
+    "@orchidjs/sifter": ^1.1.0
+    "@orchidjs/unicode-variants": ^1.1.2
+  checksum: 85f01549d6a8e10b3ae2da40fa76271efefba8b888f39a242860f35a8923d5d9f04f932012ac77014d52ab459c81f0e80d5fa1106e89ada73d3bf9bb6f3140d9
   languageName: node
   linkType: hard
 
