@@ -1,12 +1,12 @@
 function updateTagOptions (tags: string[], input, addTags = true): void {
   tags.forEach((tag) => {
     if (addTags) {
-      input.selectize.addOption({ value: tag, text: tag })
+      input.tomselect.addOption({ value: tag, text: tag })
     } else {
-      input.selectize.removeOption({ value: tag, text: tag })
+      input.tomselect.removeOption({ value: tag, text: tag })
     }
   })
-  input.selectize.refreshOptions(false)
+  input.tomselect.refreshOptions(false)
 }
 
 function getTags (modelId: string): string[] {

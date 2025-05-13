@@ -1,12 +1,17 @@
-import '@selectize/selectize'
+import TomSelect from 'tom-select'
 
 document.addEventListener('ManyfoldReady', () => {
-  $('select[data-selectize]').each(
-    function () {
-      const tagInput = $(this).selectize({
+  document.querySelectorAll('select[data-tom-select]').forEach(
+    (element: HTMLSelectElement) => {
+      new TomSelect(element, {
         addPrecedence: true,
         create: true,
-        plugins: ['remove_button']
+        plugins: ['remove_button'],
+        selectOnTab: true,
+        onItemAdd: function () {
+          this.setTextboxValue('');
+          this.refreshOptions();
+        }
       })
     }
   )
