@@ -9,8 +9,9 @@ import CarouselController from './carousel_controller'
 import RendererController from "./renderer_controller"
 application.register("renderer", RendererController)
 
-import TagInputController from "./tag_input_controller"
-application.register("tag-input", TagInputController)
+import StorageServiceController from './storage_service_controller'
+
+import TagInputController from './tag_input_controller'
 
 import TagSectionController from './tag_section_controller'
 

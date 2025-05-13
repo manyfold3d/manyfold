@@ -11,7 +11,6 @@ import Cocooned from '@notus.sh/cocooned'
 import 'src/bulk_edit'
 import 'src/model_edit'
 import 'src/passwords'
-import 'src/library_form'
 import 'controllers/index'
 
 // Load i18n definitions
