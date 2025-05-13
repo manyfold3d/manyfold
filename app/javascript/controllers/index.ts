@@ -12,5 +12,13 @@ application.register("renderer", RendererController)
 import TagInputController from "./tag_input_controller"
 application.register("tag-input", TagInputController)
 
-import UploadController from "./upload_controller"
-application.register("upload", UploadController)
+import TagSectionController from './tag_section_controller'
+
+import UploadController from './upload_controller'
+application.register('carousel', CarouselController)
+application.register('editable', EditableController)
+application.register('renderer', RendererController)
+application.register('storage-service', StorageServiceController)
+application.register('tag-input', TagInputController)
+application.register('tag-section', TagSectionController)
+application.register('upload', UploadController)

@@ -10,7 +10,6 @@ import Cocooned from '@notus.sh/cocooned'
 
 import 'src/bulk_edit'
 import 'src/model_edit'
-import 'src/tag'
 import 'src/passwords'
 import 'src/library_form'
 import 'controllers/index'
