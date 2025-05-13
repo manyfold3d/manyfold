@@ -20,7 +20,6 @@ en:
     destroy:
       confirm: This will delete associated files if they exist on disk. Are you sure you want to continue?
       success: Model deleted!
-    exceeds_max_size: 'Selected file exceeds maximum size: %{max_size} MiB.'
     file:
       delete: Delete file
       edit: Edit file

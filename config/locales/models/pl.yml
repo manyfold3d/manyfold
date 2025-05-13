@@ -20,7 +20,6 @@ pl:
     destroy:
       confirm: Spowoduje to usunięciem powiązanych plików, jeśli istnieją na dysku. Czy na pewno chcesz kontynuować?
       success: Model usunięty!
-    exceeds_max_size: 'Wybrany plik przekracza maksymalny rozmiar: %{max_size} MiB.'
     file:
       delete: Usuń plik
       edit: Edytuj plik

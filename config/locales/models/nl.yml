@@ -20,7 +20,6 @@ nl:
     destroy:
       confirm: Dit zal bijbehorende bestanden verwijderen als ze op schijf bestaan. Weet je zeker dat je wilt doorgaan?
       success: Model verwijderd!
-    exceeds_max_size: 'Geselecteerd bestand overschrijdt maximale grootte: %{max_size} MiB.'
     file:
       delete:
       edit:

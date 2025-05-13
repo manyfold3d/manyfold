@@ -20,7 +20,6 @@ de:
     destroy:
       confirm: Hiermit werden alle Dateien gelöscht, welche mit dieser in Relation stehen. bist du sicher, dass du fortfahren möchtest?
       success: Modell gelöscht!
-    exceeds_max_size: 'Ausgewählte Datei überschreitet maximale Größe: %{max_size} MiB.'
     file:
       delete: Datei löschen
       edit: Datei bearbeiten
