@@ -1,4 +1,5 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from '@hotwired/stimulus'
+
 import TomSelect from 'tom-select'
 import type { TomInput } from 'tom-select/dist/cjs/types'
 

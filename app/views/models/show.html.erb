@@ -173,8 +173,8 @@
       <%= form_with url: model_model_files_path(@model), id: "upload-form", class: "d-grid" do |form| %>
 
         <%= content_tag :div, nil,
-              id: "uppy",
               class: "mb-3",
+              "data-controller": "upload",
               "data-max-file-size": SiteSettings.max_file_upload_size,
               "data-allowed-file-types": input_accept_string,
               "data-upload-endpoint": upload_path %>

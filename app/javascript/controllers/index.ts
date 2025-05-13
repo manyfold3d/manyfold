@@ -6,3 +6,6 @@ import { application } from './application'
 
 import TagInputController from "./tag_input_controller"
 application.register("tag-input", TagInputController)
+
+import UploadController from "./upload_controller"
+application.register("upload", UploadController)
