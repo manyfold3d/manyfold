@@ -1,8 +1,10 @@
 import TomSelect from 'tom-select'
+import type { TomInput } from 'tom-select/dist/cjs/types'
 
 document.addEventListener('ManyfoldReady', () => {
   document.querySelectorAll('select[data-tom-select]').forEach(
-    (element: HTMLSelectElement) => {
+    (element: TomInput) => {
+      if (element.tomselect != null) { return }
       new TomSelect(element, {
         addPrecedence: true,
         create: true,
