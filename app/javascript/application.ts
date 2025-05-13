@@ -8,7 +8,6 @@ import 'masonry-layout'
 
 import Cocooned from '@notus.sh/cocooned'
 
-import 'src/preview'
 import 'src/bulk_edit'
 import 'src/model_edit'
 import 'src/tag'

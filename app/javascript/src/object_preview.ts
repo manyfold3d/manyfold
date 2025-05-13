@@ -2,7 +2,7 @@ import * as Comlink from 'comlink'
 import 'src/comlink_event_handler'
 import type { OffscreenRenderer } from 'offscreen_renderer'
 
-class ObjectPreview {
+export class ObjectPreview {
   progressBar: HTMLDivElement | null
   progressLabel: HTMLSpanElement | null
   canvas: HTMLCanvasElement
@@ -129,14 +129,3 @@ class ObjectPreview {
     )
   }
 }
-
-const previewWindows: ObjectPreview[] = []
-document.addEventListener('ManyfoldReady', () => {
-  document.querySelectorAll('[data-preview]').forEach((canvas: HTMLCanvasElement) => {
-    const preview = new ObjectPreview(canvas)
-    previewWindows.push(preview)
-    void (async () => {
-      await preview.run()
-    })() // Wrap up the promise, we don't want it
-  })
-})

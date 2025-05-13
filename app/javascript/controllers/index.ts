@@ -4,6 +4,9 @@
 
 import { application } from './application'
 
+import RendererController from "./renderer_controller"
+application.register("renderer", RendererController)
+
 import TagInputController from "./tag_input_controller"
 application.register("tag-input", TagInputController)
 
