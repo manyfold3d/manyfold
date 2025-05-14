@@ -4,20 +4,17 @@
 
 import { application } from './application'
 
+import BulkEditController from './bulk_edit_controller'
 import CarouselController from './carousel_controller'
-
 import EditableController from './editable_controller'
-
 import RendererController from './renderer_controller'
-
 import StorageServiceController from './storage_service_controller'
-
 import TagInputController from './tag_input_controller'
-
 import TagSectionController from './tag_section_controller'
-
 import UploadController from './upload_controller'
+
 application.register('carousel', CarouselController)
+application.register('bulk-edit', BulkEditController)
 application.register('editable', EditableController)
 application.register('renderer', RendererController)
 application.register('storage-service', StorageServiceController)
