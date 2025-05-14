@@ -15,6 +15,15 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js'
 import { CanvasProxy } from 'src/canvas_proxy'
 
+const loaders = {
+  "3mf": ThreeMFLoader,
+  "gltf": GLTFLoader,
+  "glb": GLTFLoader,
+  "obj": OBJLoader,
+  "stl": STLLoader,
+  "ply": PLYLoader
+}
+
 export class OffscreenRenderer {
   canvas: CanvasProxy
   renderer: THREE.WebGLRenderer
@@ -88,26 +97,11 @@ export class OffscreenRenderer {
     this.cbLoadProgress = cbLoadProgress
     this.cbLoadError = cbLoadError
     // Load
-    let loader: OBJLoader | STLLoader | ThreeMFLoader | PLYLoader | GLTFLoader | null = null
-    switch (this.settings.format) {
-      case 'obj':
-        loader = new OBJLoader()
-        break
-      case 'stl':
-        loader = new STLLoader()
-        break
-      case '3mf':
-        loader = new ThreeMFLoader()
-        break
-      case 'ply':
-        loader = new PLYLoader()
-        break
-      case 'gltf':
-      case 'glb':
-        loader = new GLTFLoader()
-        break
-    }
-    if (loader !== null) {
+    let loaderClass: THREE.Loader | null = loaders[this.settings.format as string]
+    if (loaderClass !== null) {
+      // Create loader
+      const loader = new loaderClass()
+      // Load
       loader.load(
         this.settings.previewUrl ?? '',
         this.onLoad.bind(this),
