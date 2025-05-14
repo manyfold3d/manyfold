@@ -89,7 +89,8 @@ class ModelFile < ApplicationRecord
   end
 
   def filename_without_extension
-    File.join(File.dirname(filename), basename(include_extension: false))
+    dirname = File.dirname(filename)
+    File.join([dirname, basename(include_extension: false)].reject { |it| it == "." })
   end
 
   def name
