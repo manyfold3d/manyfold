@@ -174,7 +174,7 @@ module ApplicationHelper
     link_to(
       safe_join(
         [
-          content_tag(:span, icon(ico, (options[:title].presence || text)), class: options[:icon_style]),
+          content_tag(:span, icon(ico, options[:title].presence || text), class: options[:icon_style]),
           content_tag(:span, text, class: options[:text_style])
         ],
         " "
