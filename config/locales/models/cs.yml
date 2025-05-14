@@ -20,7 +20,6 @@ cs:
     destroy:
       confirm: Tím se odstraní související soubory, pokud na disku existují. Určitě chcete pokračovat?
       success: Model smazán!
-    exceeds_max_size: 'Vybraný soubor přesahuje maximální velikost: %{max_size} MiB.'
     file:
       delete: Smazat soubor
       edit: Upravit soubor

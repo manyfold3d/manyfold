@@ -152,7 +152,6 @@ ignore_unused:
 - 'doorkeeper.*' # Used deep down
 - 'renderer.errors.*' # Used client side via i18n-js
 - 'renderer.processing' # Used client side via i18n-js
-- 'models.exceeds_max_size' # Used client side via i18n-js
 
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'

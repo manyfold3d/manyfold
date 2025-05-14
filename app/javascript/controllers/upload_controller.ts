@@ -1,3 +1,5 @@
+import { Controller } from '@hotwired/stimulus'
+
 import Uppy from '@uppy/core'
 import Dashboard from '@uppy/dashboard'
 import Tus from '@uppy/tus'
@@ -12,13 +14,14 @@ import pl from '@uppy/locales/lib/pl_PL'
 
 const uppyLocales = { cs, de, en, es, fr, nl, pl }
 
-let uppy: Uppy | null = null
+// Connects to data-controller="upload"
+export default class extends Controller {
+  uppy: Uppy | null = null
 
-document.addEventListener('ManyfoldReady', () => {
-  document.querySelectorAll('#uppy').forEach((element: HTMLDivElement) => {
-    if (uppy != null) { return }
-    const settings = element.dataset
-    uppy = new Uppy({
+  connect (): void {
+    if (this.uppy != null) { return }
+    const settings = (this.element as HTMLElement).dataset
+    this.uppy = new Uppy({
       autoProceed: true,
       locale: uppyLocales[window.i18n.locale],
       restrictions: {
@@ -28,7 +31,7 @@ document.addEventListener('ManyfoldReady', () => {
     })
       .use(Dashboard, {
         inline: true,
-        target: `#${element.id}`,
+        target: this.element,
         theme: 'auto',
         width: '100%',
         height: '25rem',
@@ -39,17 +42,17 @@ document.addEventListener('ManyfoldReady', () => {
         endpoint: settings.uploadEndpoint ?? '/upload',
         chunkSize: 1 * 1024 * 1024
       })
-    const submitButton = element?.closest('form')?.querySelector("input[type='submit']")
-    uppy.on('upload', () => {
+    const submitButton = this.element?.closest('form')?.querySelector("input[type='submit']")
+    this.uppy.on('upload', () => {
       submitButton?.setAttribute('disabled', 'disabled')
     })
-    uppy.on('complete', (result) => {
+    this.uppy.on('complete', (result) => {
       if (result.successful?.length != null && result.successful.length > 0) {
         submitButton?.removeAttribute('disabled')
       }
     })
-    element.closest('form')?.addEventListener('formdata', (event) => {
-      const uploads = uppy?.getFiles().map((f) => {
+    this.element.closest('form')?.addEventListener('formdata', (event) => {
+      const uploads = this.uppy?.getFiles().map((f) => {
         return {
           id: f.tus?.uploadUrl,
           storage: 'cache',
@@ -62,5 +65,5 @@ document.addEventListener('ManyfoldReady', () => {
       })
       event.formData.set('uploads', JSON.stringify(uploads))
     })
-  })
-})
+  }
+}

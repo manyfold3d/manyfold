@@ -15,7 +15,7 @@
   <ul class="list-unstyled">
     <% tiers.each do |tier| %>
       <li>
-        <details id="<%= tier %>">
+        <details id="<%= tier %>" data-controller="tag-section" data-action="toggle->tag-section#saveState">
           <summary><%= tier %></summary>
           <%= render "tag_list", tags: kv_tags.select { |obj| obj.name.match?("^#{tier}:") } %>
           <%- if tierunset && tierunset[tier] > 0 %>

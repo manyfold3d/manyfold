@@ -5,7 +5,7 @@
 
 <%= form_with url: bulk_update_model_model_files_path(@model), method: :patch do |form| %>
 
-  <table class="table table-striped" data-bulk-edit>
+  <table class="table table-striped" data-controller="bulk-edit" data-action="change->bulk-edit#handleCheckboxChange">
     <tr>
       <th><input type="checkbox" aria-label="<%= translate ".select_all" %>" value="0" name="bulk-select-all"></th>
       <th><%= ModelFile.human_attribute_name(:name) %></th>

@@ -1,7 +1,7 @@
 <% unless images.empty? %>
-  <div id="imageCarousel" class="carousel slide mb-3" data-bs-ride="carousel" role="group" aria-roledescription="carousel">
+  <div id="imageCarousel" class="carousel slide mb-3" data-bs-ride="carousel" role="group" aria-roledescription="carousel" data-controller="carousel" data-action="mouseenter->carousel#onEnter mouseleave->carousel#onLeave">
     <% if images.count > 1 %>
-      <button id="rotationControl" class="carousel-control-play btn btn-secondary m-2">
+      <button id="rotationControl" class="carousel-control-play btn btn-secondary m-2" data-action="click->carousel#onPauseButton">
         <%= icon "pause", t(".play_pause"), id: "rotationControlIcon" %>
       </button>
       <div class="carousel-indicators" role="group" aria-label="<%= translate ".select_slide" %>">

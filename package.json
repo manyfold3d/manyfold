@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@activeadmin/activeadmin": "^3.3.0",
+    "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.13",
     "@infinizhen/rpg-awesome-continued": "^1.0.6",
     "@notus.sh/cocooned": "^2.4.1",
@@ -32,8 +33,6 @@
     "comlink": "^4.4.2",
     "esbuild": "^0.25.4",
     "i18n-js": "^4.5.1",
-    "jquery": "^3.7.1",
-    "masonry-layout": "^4.2.2",
     "nodemon": "^3.1.10",
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.1",
