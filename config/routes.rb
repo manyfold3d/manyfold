@@ -148,5 +148,5 @@ Rails.application.routes.draw do
   resources :doorkeeper_applications, path: "/oauth/applications"
 
   # Fallback route for filename matching
-  get "/models/:model_id/model_files/*filename" => "model_files#show", :as => "model_model_files_by_filename"
+  get "/models/:model_id/model_files/*filename" => "model_files#show", :as => "model_model_file_by_filename"
 end
