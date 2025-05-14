@@ -55,11 +55,11 @@
         <%= renderer_settings_form.label nil, t(".render_style.label"), for: :render_style, class: "col col-form-label" %>
         <div class="col">
           <%= renderer_settings_form.select :render_style, [
-            [t(".render_style.original"), "original"],
-            [t(".render_style.normals"), "normals"],
-            [t(".render_style.lambert"), "lambert"],
-            [t(".render_style.shadowed"), "shadowed"]
-          ], {selected: renderer_settings["render_style"]}, {class: "form-select"} %>
+                [t(".render_style.original"), "original"],
+                [t(".render_style.normals"), "normals"],
+                [t(".render_style.lambert"), "lambert"],
+                [t(".render_style.shadowed"), "shadowed"]
+              ], {selected: renderer_settings["render_style"]}, {class: "form-select"} %>
         </div>
       </div>
       <div class="row">
