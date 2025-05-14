@@ -9,8 +9,6 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
 import { ThreeMFLoader } from 'threejs-webworker-3mf-loader'
 import { PLYLoader } from 'three/addons/loaders/PLYLoader.js'
 import { TDSLoader } from 'three/addons/loaders/TDSLoader.js'
-import { AMFLoader } from 'three/addons/loaders/AMFLoader.js'
-import { ColladaLoader } from 'three/addons/loaders/ColladaLoader.js'
 import { FBXLoader } from 'three/addons/loaders/FBXLoader.js'
 import { GCodeLoader } from 'three/addons/loaders/GCodeLoader.js'
 
@@ -30,8 +28,6 @@ const loaders = {
   stl: STLLoader,
   ply: PLYLoader,
   '3ds': TDSLoader,
-  amf: AMFLoader,
-  dae: ColladaLoader,
   fbx: FBXLoader,
   gcode: GCodeLoader
 }
