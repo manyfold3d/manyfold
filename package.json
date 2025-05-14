@@ -33,7 +33,6 @@
     "comlink": "^4.4.2",
     "esbuild": "^0.25.4",
     "i18n-js": "^4.5.1",
-    "masonry-layout": "^4.2.2",
     "nodemon": "^3.1.10",
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.1",

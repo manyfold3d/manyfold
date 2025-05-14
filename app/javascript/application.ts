@@ -3,8 +3,6 @@
 import Rails from '@rails/ujs'
 import '@hotwired/turbo-rails'
 
-import 'masonry-layout'
-
 import Cocooned from '@notus.sh/cocooned'
 
 // Include stimulus controllers
