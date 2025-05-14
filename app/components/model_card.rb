@@ -55,7 +55,7 @@ class Components::ModelCard < Components::Base
 
   def title
     div class: "card-title" do
-      a "data-field": "model[name]", "data-path": model_path(@model), contenteditable: true do
+      a "data-editable-field": "model[name]", "data-editable-path": model_path(@model), contenteditable: "plaintext-only", "data-controller": "editable", "data-action": "focus->editable#onFocus blur->editable#onBlur" do
         @model.name
       end
       icon("explicit", Model.human_attribute_name(:sensitive)) if @model.sensitive

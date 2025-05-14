@@ -9,8 +9,9 @@ import 'masonry-layout'
 import Cocooned from '@notus.sh/cocooned'
 
 import 'src/bulk_edit'
-import 'src/model_edit'
 import 'src/passwords'
+
+// Include stimulus controllers
 import 'controllers/index'
 
 // Load i18n definitions

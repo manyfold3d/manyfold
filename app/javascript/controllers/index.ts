@@ -6,8 +6,9 @@ import { application } from './application'
 
 import CarouselController from './carousel_controller'
 
-import RendererController from "./renderer_controller"
-application.register("renderer", RendererController)
+import EditableController from './editable_controller'
+
+import RendererController from './renderer_controller'
 
 import StorageServiceController from './storage_service_controller'
 
