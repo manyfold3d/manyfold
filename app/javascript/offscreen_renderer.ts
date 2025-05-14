@@ -18,6 +18,7 @@ import { CanvasProxy } from 'src/canvas_proxy'
 
 const loaders = {
   '3mf': ThreeMFLoader,
+  drc: DRACOLoader,
   gltf: GLTFLoader,
   glb: GLTFLoader,
   obj: OBJLoader,
