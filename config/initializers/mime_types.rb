@@ -15,6 +15,7 @@ Mime::Type.register "model/obj", :obj
 Mime::Type.register "model/step", :step, ["model/step+xml", "model/step+zip", "model/step-xml+zip"], ["stp"]
 Mime::Type.register "model/stl", :stl
 Mime::Type.register "model/vnd.collada+xml", :collada, [], ["dae"]
+Mime::Type.register "model/vnd.google.draco", :draco, [], ["drc"]
 Mime::Type.register "model/vrml", :vrml, [], ["wrl"]
 Mime::Type.register "model/x-alembic", :abc
 Mime::Type.register "model/x-blender", :blend
