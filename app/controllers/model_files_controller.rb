@@ -162,7 +162,7 @@ class ModelFilesController < ApplicationController
       begin
         @file = @model.model_files.find_param(params[:id])
       rescue ActiveRecord::RecordNotFound
-        @file = @model.model_files.find_by!(filename: [params[:filename], params[:format]].join("."))
+        @file = @model.model_files.find_by!(filename: [params[:id], params[:format]].join("."))
       end
       authorize @file
     end

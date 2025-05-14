@@ -182,7 +182,7 @@ RSpec.describe "Model Files" do
       describe "GET a model file from its filename" do
         before do
           create(:model_file, model: model, filename: "subfolder/test.stl")
-          get model_model_file_by_filename_path(model_id: model.to_param, filename: "subfolder/test", format: :stl)
+          get model_model_file_by_filename_path(model_id: model.to_param, id: "subfolder/test", format: :stl)
         end
 
         it "returns http success" do
