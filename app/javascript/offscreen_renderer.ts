@@ -8,6 +8,9 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
 import { ThreeMFLoader } from 'threejs-webworker-3mf-loader'
 import { PLYLoader } from 'three/addons/loaders/PLYLoader.js'
+import { TDSLoader } from 'three/addons/loaders/TDSLoader.js'
+import { FBXLoader } from 'three/addons/loaders/FBXLoader.js'
+import { GCodeLoader } from 'three/addons/loaders/GCodeLoader.js'
 
 import { OrbitControls } from 'src/orbit_controls.js'
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
@@ -23,7 +26,10 @@ const loaders = {
   glb: GLTFLoader,
   obj: OBJLoader,
   stl: STLLoader,
-  ply: PLYLoader
+  ply: PLYLoader,
+  '3ds': TDSLoader,
+  fbx: FBXLoader,
+  gcode: GCodeLoader
 }
 
 export class OffscreenRenderer {
@@ -108,6 +114,8 @@ export class OffscreenRenderer {
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
         loader.setDRACOLoader(dracoLoader)
+      } else if (LoaderClass === DRACOLoader) {
+        loader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
       }
       // Load
       loader.load(
