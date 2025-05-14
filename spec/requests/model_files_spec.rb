@@ -177,5 +177,22 @@ RSpec.describe "Model Files" do
         expect(response).to redirect_to(model_path(model))
       end
     end
+
+    describe "GET /models/:model_id/model_files/:filename", :as_member do
+      describe "GET a model file from its filename" do
+        before do
+          create(:model_file, model: model, filename: "subfolder/test.stl")
+          get model_model_files_by_filename_path(model_id: model.to_param, filename: "subfolder/test", format: :stl)
+        end
+
+        it "returns http success" do
+          expect(response).to have_http_status(:success)
+        end
+
+        it "has correct MIME type" do
+          expect(response.media_type).to eq("model/stl")
+        end
+      end
+    end
   end
 end
