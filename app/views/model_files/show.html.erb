@@ -4,6 +4,7 @@
 <% end %>
 
 <%= render partial: "breadcrumb" %>
+<%= turbo_stream_from @file %>
 <h1><%= @file.name %></h1>
 
 <div class="row row-cols-2">
