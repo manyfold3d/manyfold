@@ -4238,7 +4238,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jquery@npm:>=1.12.0 <5.0.0, jquery@npm:^3.4.1, jquery@npm:^3.7.1":
+"jquery@npm:>=1.12.0 <5.0.0, jquery@npm:^3.4.1":
   version: 3.7.1
   resolution: "jquery@npm:3.7.1"
   checksum: 4370b8139d6ae82867eb6f7f21d1edccf1d1bdf41c0840920ea80d366c2cd5dbe1ceebb110ee9772aa839b04400faa1572c5c560b507c688ed7b61cea26c0e27
@@ -4614,7 +4614,6 @@ __metadata:
     eslint: ^9.26.0
     husky: ^9.1.7
     i18n-js: ^4.5.1
-    jquery: ^3.7.1
     masonry-layout: ^4.2.2
     nodemon: ^3.1.10
     postcss: ^8.5.3
