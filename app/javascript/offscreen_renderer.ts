@@ -2,17 +2,28 @@ import * as Comlink from 'comlink'
 import 'src/comlink_event_handler'
 
 import * as THREE from 'three'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
-import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js'
+import { STLLoader } from 'three/addons/loaders/STLLoader.js'
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
 import { ThreeMFLoader } from 'threejs-webworker-3mf-loader'
-import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
+import { PLYLoader } from 'three/addons/loaders/PLYLoader.js'
+
 import { OrbitControls } from 'src/orbit_controls.js'
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
 import { SSAOPass } from 'three/addons/postprocessing/SSAOPass.js'
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js'
 import { CanvasProxy } from 'src/canvas_proxy'
+
+const loaders = {
+  '3mf': ThreeMFLoader,
+  gltf: GLTFLoader,
+  glb: GLTFLoader,
+  obj: OBJLoader,
+  stl: STLLoader,
+  ply: PLYLoader
+}
 
 export class OffscreenRenderer {
   canvas: CanvasProxy
@@ -87,26 +98,17 @@ export class OffscreenRenderer {
     this.cbLoadProgress = cbLoadProgress
     this.cbLoadError = cbLoadError
     // Load
-    let loader: OBJLoader | STLLoader | ThreeMFLoader | PLYLoader | GLTFLoader | null = null
-    switch (this.settings.format) {
-      case 'obj':
-        loader = new OBJLoader()
-        break
-      case 'stl':
-        loader = new STLLoader()
-        break
-      case '3mf':
-        loader = new ThreeMFLoader()
-        break
-      case 'ply':
-        loader = new PLYLoader()
-        break
-      case 'gltf':
-      case 'glb':
-        loader = new GLTFLoader()
-        break
-    }
-    if (loader !== null) {
+    const LoaderClass: THREE.Loader | null = loaders[this.settings.format as string]
+    if (LoaderClass !== null) {
+      // Create loader
+      const loader = new LoaderClass()
+      // Set up DRACO loader for GLTF
+      if (LoaderClass === GLTFLoader) {
+        const dracoLoader = new DRACOLoader()
+        dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
+        loader.setDRACOLoader(dracoLoader)
+      }
+      // Load
       loader.load(
         this.settings.previewUrl ?? '',
         this.onLoad.bind(this),
