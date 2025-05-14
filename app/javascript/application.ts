@@ -10,13 +10,7 @@ import Cocooned from '@notus.sh/cocooned'
 // Include stimulus controllers
 import 'controllers/index'
 
-// Load i18n definitions
-import { I18n } from 'i18n-js'
-import locales from 'src/locales.json'
-window.i18n = new I18n(locales)
-
 document.addEventListener('DOMContentLoaded', () => {
-  window.i18n.locale = document.querySelector('html')?.lang ?? 'en'
   Rails.start()
   Cocooned.start()
 })

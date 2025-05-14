@@ -7,6 +7,7 @@ import { application } from './application'
 import BulkEditController from './bulk_edit_controller'
 import CarouselController from './carousel_controller'
 import EditableController from './editable_controller'
+import I18nController from './i18n_controller'
 import RendererController from './renderer_controller'
 import StorageServiceController from './storage_service_controller'
 import TagInputController from './tag_input_controller'
@@ -17,6 +18,7 @@ import ZxcvbnController from './zxcvbn_controller'
 application.register('carousel', CarouselController)
 application.register('bulk-edit', BulkEditController)
 application.register('editable', EditableController)
+application.register('i18n', I18nController)
 application.register('renderer', RendererController)
 application.register('storage-service', StorageServiceController)
 application.register('tag-input', TagInputController)
