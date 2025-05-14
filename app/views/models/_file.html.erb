@@ -35,9 +35,12 @@
       <div class="card-title">
         <%= file.name %>
       </div>
-      <% if file.caption %>
-        <p class="card-text"><%= sanitize file.caption %></p>
-      <% end %>
+      <div class="card-text">
+        <% if file.caption %>
+          <p><%= sanitize file.caption %></p>
+        <% end %>
+        <small><code><%= sanitize file.filename %></code></small>
+      </div>
       <div class="row">
         <div class="col">
           <%= link_to t(".open_button.text"), model_model_file_path(@model, file), {class: "btn btn-primary", "aria-label": translate(".open_button.label", name: file.name)} %>
