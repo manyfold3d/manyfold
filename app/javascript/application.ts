@@ -1,14 +1,13 @@
-
-// Entry point for the build script in your package.json
-import Rails from '@rails/ujs'
+// Turbo and Stimulus
 import '@hotwired/turbo-rails'
-
-import Cocooned from '@notus.sh/cocooned'
-
-// Include stimulus controllers
 import 'controllers/index'
 
+import Rails from '@rails/ujs'
+import Cocooned from '@notus.sh/cocooned'
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Legacy Rails UJS
   Rails.start()
+  // Cocooned only wants initializing once, it seems
   Cocooned.start()
 })
