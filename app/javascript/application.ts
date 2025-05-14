@@ -15,15 +15,8 @@ import { I18n } from 'i18n-js'
 import locales from 'src/locales.json'
 window.i18n = new I18n(locales)
 
-const manyfoldReady = new Event('ManyfoldReady')
-
 document.addEventListener('DOMContentLoaded', () => {
   window.i18n.locale = document.querySelector('html')?.lang ?? 'en'
   Rails.start()
   Cocooned.start()
-  document.dispatchEvent(new Event('turbo:load'))
-})
-
-document.addEventListener('turbo:load', () => {
-  document.dispatchEvent(manyfoldReady)
 })
