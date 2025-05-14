@@ -210,7 +210,7 @@ GEM
     data_migrate (11.3.0)
       activerecord (>= 6.1)
       railties (>= 6.1)
-    database_cleaner-active_record (2.2.0)
+    database_cleaner-active_record (2.2.1)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
