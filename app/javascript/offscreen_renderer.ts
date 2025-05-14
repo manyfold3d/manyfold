@@ -122,14 +122,18 @@ export class OffscreenRenderer {
   }
 
   onLoad (model): void {
-    const material = this.settings.renderStyle === 'normals'
-      ? new THREE.MeshNormalMaterial({
-        flatShading: true
-      })
-      : new THREE.MeshLambertMaterial({
-        flatShading: true,
-        color: (this.settings.objectColour ?? '#cccccc')
-      })
+    let material = new THREE.MeshLambertMaterial({
+      flatShading: true,
+      color: (this.settings.objectColour ?? '#cccccc')
+    })
+
+    switch (this.settings.renderStyle) {
+      case 'normals':
+        material = new THREE.MeshNormalMaterial({
+          flatShading: true
+        })
+        break
+    }
     // find mesh
     let object: THREE.Mesh | THREE.Group | null = null
     if (model.type === 'BufferGeometry') {
@@ -141,9 +145,12 @@ export class OffscreenRenderer {
     }
     // Set material
     if (object == null) { return }
+    const overwriteMaterials = this.settings.renderStyle !== 'original'
     object.traverse(function (node: THREE.Mesh) {
       if (node.isMesh === true) {
-        node.material = material
+        if (node.material == null || overwriteMaterials) {
+          node.material = material
+        }
       }
     })
     // Transform to screen coords from print

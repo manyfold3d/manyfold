@@ -155,6 +155,7 @@ en:
           label: Rendering style
           lambert: Smooth shading
           normals: Surface direction
+          original: Original (from file)
           shadowed: Realistic with shadows
         show_grid:
           label: Show ground plane
