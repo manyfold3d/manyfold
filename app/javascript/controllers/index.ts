@@ -12,6 +12,7 @@ import StorageServiceController from './storage_service_controller'
 import TagInputController from './tag_input_controller'
 import TagSectionController from './tag_section_controller'
 import UploadController from './upload_controller'
+import ZxcvbnController from './zxcvbn_controller'
 
 application.register('carousel', CarouselController)
 application.register('bulk-edit', BulkEditController)
@@ -21,3 +22,4 @@ application.register('storage-service', StorageServiceController)
 application.register('tag-input', TagInputController)
 application.register('tag-section', TagSectionController)
 application.register('upload', UploadController)
+application.register('zxcvbn', ZxcvbnController)

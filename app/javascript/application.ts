@@ -7,8 +7,6 @@ import 'masonry-layout'
 
 import Cocooned from '@notus.sh/cocooned'
 
-import 'src/passwords'
-
 // Include stimulus controllers
 import 'controllers/index'
 

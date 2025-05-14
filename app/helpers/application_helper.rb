@@ -99,12 +99,17 @@ module ApplicationHelper
   end
 
   def password_input_row(form, name, options = {})
+    field_options = {class: "form-control"}.merge(options)
+    if options[:strength_meter]
+      field_options["data-controller"] = "zxcvbn"
+      field_options["data-action"] = "input->zxcvbn#onInput"
+    end
     content_tag :div, class: "row mb-3 input-group" do
       safe_join [
         form.label(name, options[:label], class: "col-auto col-form-label"),
         content_tag(:div, class: "col p-0") do
           safe_join [
-            form.password_field(name, {class: "form-control", "data-zxcvbn": options[:strength_meter]}.merge(options)),
+            form.password_field(name, field_options),
             (if options[:strength_meter]
                content_tag(:div, class: "progress") do
                  content_tag(:div, nil, class: "progress-bar w-0 zxcvbn-meter", "data-zxcvbn-min-score": Devise.min_password_score)
