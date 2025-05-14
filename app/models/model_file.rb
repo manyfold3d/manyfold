@@ -88,6 +88,10 @@ class ModelFile < ApplicationRecord
     File.basename(filename, include_extension ? "" : ".*")
   end
 
+  def filename_without_extension
+    File.join(File.dirname(filename), basename(include_extension: false))
+  end
+
   def name
     basename.humanize.careful_titleize
   end
