@@ -73,7 +73,8 @@ module SupportedMimeTypes
         "text/plain",
         "text/html",
         "application/msword",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "application/octet-stream"
       ].include?(type.to_s)
     end
 
