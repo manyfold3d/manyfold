@@ -8,6 +8,11 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
 import { ThreeMFLoader } from 'threejs-webworker-3mf-loader'
 import { PLYLoader } from 'three/addons/loaders/PLYLoader.js'
+import { TDSLoader } from 'three/addons/loaders/TDSLoader.js'
+import { AMFLoader } from 'three/addons/loaders/AMFLoader.js'
+import { ColladaLoader } from 'three/addons/loaders/ColladaLoader.js'
+import { FBXLoader } from 'three/addons/loaders/FBXLoader.js'
+import { GCodeLoader } from 'three/addons/loaders/GCodeLoader.js'
 
 import { OrbitControls } from 'src/orbit_controls.js'
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
@@ -23,7 +28,12 @@ const loaders = {
   glb: GLTFLoader,
   obj: OBJLoader,
   stl: STLLoader,
-  ply: PLYLoader
+  ply: PLYLoader,
+  '3ds': TDSLoader,
+  amf: AMFLoader,
+  dae: ColladaLoader,
+  fbx: FBXLoader,
+  gcode: GCodeLoader
 }
 
 export class OffscreenRenderer {
