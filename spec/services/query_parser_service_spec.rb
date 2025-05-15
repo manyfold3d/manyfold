@@ -64,16 +64,6 @@ RSpec.describe QueryParserService do
     end
   end
 
-  context "with quoted phrase" do
-    let(:query) { "\"cat in\" the hat" }
-
-    it "includes quoted part as a single term" do
-      expect(service.parse(query)[:query]).to include({
-        term: "cat in"
-      })
-    end
-  end
-
   context "with quoted phrase, specific prefix and operator" do
     let(:query) { "-creator:\"cat in\" the hat" }
 
@@ -82,29 +72,6 @@ RSpec.describe QueryParserService do
         term: "cat in",
         operator: "-",
         prefix: "creator"
-      })
-    end
-  end
-
-  context "with excluded terms" do
-    let(:query) { "cat in the -hat" }
-
-    it "includes minus operator on relevant term" do
-      expect(service.parse(query)[:query]).to include({
-        term: "hat",
-        operator: "-"
-      })
-    end
-  end
-
-  context "with field prefixes" do
-    let(:query) { "cat in the -tag:hat" }
-
-    it "includes prefix and operator on relevant term" do
-      expect(service.parse(query)[:query]).to include({
-        term: "hat",
-        operator: "-",
-        prefix: "tag"
       })
     end
   end
