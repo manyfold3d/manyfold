@@ -28,7 +28,7 @@ gem "acts-as-taggable-on", "~> 12.0"
 gem "ffi-libarchive", "~> 1.1"
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.4", require: false
+gem "bootsnap", "~> 1.18", require: false
 
 # Database adapters
 gem "activerecord-enhancedsqlite3-adapter", "~> 0.8"
