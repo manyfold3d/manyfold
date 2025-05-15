@@ -29,4 +29,26 @@ RSpec.describe QueryParserService do
       })
     end
   end
+
+  context "with required terms" do
+    let(:query) { "cat in the +hat" }
+
+    it "includes plus operator on relevant term" do
+      expect(service.parse(query)[:query]).to include({
+        term: "hat",
+        operator: "+"
+      })
+    end
+  end
+
+  context "with excluded terms" do
+    let(:query) { "cat in the -hat" }
+
+    it "includes minus operator on relevant term" do
+      expect(service.parse(query)[:query]).to include({
+        term: "hat",
+        operator: "-"
+      })
+    end
+  end
 end
