@@ -51,4 +51,16 @@ RSpec.describe QueryParserService do
       })
     end
   end
+
+  context "with field prefixes" do
+    let(:query) { "cat in the -tag:hat" }
+
+    it "includes prefix and operator on relevant term" do
+      expect(service.parse(query)[:query]).to include({
+        term: "hat",
+        operator: "-",
+        prefix: "tag"
+      })
+    end
+  end
 end
