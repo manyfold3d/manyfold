@@ -5,7 +5,7 @@ class RansackTransformer
   end
 
   def ransack_options
-    term = @query.dig(:query, 0, :term)
+    term = @query[:query].pluck(:term).compact.join(" ")
     {
       m: "or",
       name_cont: term,

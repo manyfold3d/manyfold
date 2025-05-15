@@ -14,4 +14,19 @@ RSpec.describe QueryParserService do
       })
     end
   end
+
+  context "with a multiword query" do
+    let(:query) { "cat in the hat" }
+
+    it "produces a parse tree with a muliple terms" do # rubocop:disable RSpec/ExampleLength
+      expect(service.parse(query)).to eq({
+        query: [
+          {term: "cat"},
+          {term: "in"},
+          {term: "the"},
+          {term: "hat"}
+        ]
+      })
+    end
+  end
 end
