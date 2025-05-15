@@ -1,3 +1,5 @@
+# Search query parsing is heavily based on
+# http://recursion.org/query-parser. Thanks ❤️
 class QueryParserService < Parslet::Parser
   root(:query)
   rule(:operator) { match("[+-]").as(:operator) }
