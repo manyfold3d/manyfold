@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe RansackTransformer do
+RSpec.describe SearchQuery do
   subject(:service) { described_class.new(["cat", "in", "the", "hat"]) }
 
   context "with a simple query" do

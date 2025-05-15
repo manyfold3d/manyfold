@@ -1,4 +1,4 @@
-class RansackTransformer
+class SearchQuery
   def initialize(terms)
     @terms = terms
   end
@@ -14,7 +14,7 @@ class RansackTransformer
     }
   end
 
-  def perform(scope)
+  def ransack(scope)
     scope.ransack(ransack_options).result(distinct: true)
   end
 end

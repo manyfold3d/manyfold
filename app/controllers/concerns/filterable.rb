@@ -113,7 +113,7 @@ module Filterable
     if query
       parse_tree = QueryParserService.new.parse(query)
       query = QueryTransformer.new.apply(parse_tree)
-      query.perform(models)
+      query.ransack(models)
     else
       models
     end
