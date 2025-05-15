@@ -64,6 +64,18 @@ RSpec.describe QueryParserService do
     end
   end
 
+  context "with quoted phrase, specific prefix and operator" do
+    let(:query) { "-creator:\"cat in\" the hat" }
+
+    it "includes quoted part as a single term" do
+      expect(service.parse(query)[:query]).to include({
+        term: "cat in",
+        operator: "-",
+        prefix: "creator"
+      })
+    end
+  end
+
   context "with quoted phrase" do
     let(:query) { "\"cat in\" the hat" }
 
@@ -74,14 +86,22 @@ RSpec.describe QueryParserService do
     end
   end
 
-  context "with quoted phrase, specific prefix and operator" do
-    let(:query) { "-creator:\"cat in\" the hat" }
+  context "when using non alphanumeric characters in terms" do
+    it "allows apostrophes in terms" do
+      expect(service.parse("Bob's Burgers")[:query]).to include({
+        term: "Bob's"
+      })
+    end
 
-    it "includes quoted part as a single term" do
-      expect(service.parse(query)[:query]).to include({
-        term: "cat in",
-        operator: "-",
-        prefix: "creator"
+    it "allows emoji in terms" do
+      expect(service.parse("I ❤️ NY")[:query]).to include({
+        term: "❤️"
+      })
+    end
+
+    it "allows hyphenated words" do
+      expect(service.parse("Miles Cholmondley-Warner")[:query]).to include({
+        term: "Cholmondley-Warner"
       })
     end
   end
