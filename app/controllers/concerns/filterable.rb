@@ -111,10 +111,9 @@ module Filterable
   # Filter by search query
   def filter_by_search(models, query)
     if query
-      RansackTransformer.new(
-        models,
-        QueryParserService.new(query)
-      ).perform
+      parse_tree = QueryParserService.new.parse(query)
+      query = QueryTransformer.new.apply(parse_tree)
+      query.perform(models)
     else
       models
     end

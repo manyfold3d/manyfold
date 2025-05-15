@@ -1,11 +1,9 @@
 require "rails_helper"
 
 RSpec.describe RansackTransformer do
-  subject(:service) { described_class.new(nil, query) }
+  subject(:service) { described_class.new(["cat", "in", "the", "hat"]) }
 
   context "with a simple query" do
-    let(:query) { QueryParserService.new.parse("cat in the hat") }
-
     context "when converting to ransack" do
       it "searches fields using OR" do
         expect(service.ransack_options[:m]).to eq "or"
