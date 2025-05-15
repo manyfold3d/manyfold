@@ -63,4 +63,26 @@ RSpec.describe QueryParserService do
       })
     end
   end
+
+  context "with quoted phrase" do
+    let(:query) { "\"cat in\" the hat" }
+
+    it "includes quoted part as a single term" do
+      expect(service.parse(query)[:query]).to include({
+        term: "cat in"
+      })
+    end
+  end
+
+  context "with quoted phrase, specific prefix and operator" do
+    let(:query) { "-creator:\"cat in\" the hat" }
+
+    it "includes quoted part as a single term" do
+      expect(service.parse(query)[:query]).to include({
+        term: "cat in",
+        operator: "-",
+        prefix: "creator"
+      })
+    end
+  end
 end
