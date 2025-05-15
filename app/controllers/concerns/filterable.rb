@@ -111,12 +111,10 @@ module Filterable
   # Filter by search query
   def filter_by_search(models, query)
     if query
-      r = models.ransack(m: "or",
-        name_cont: query,
-        tags_name_in: query,
-        creator_name_cont: query,
-        collection_name_cont: query)
-      r.result(distinct: true)
+      RansackTransformer.new(
+        models,
+        QueryParserService.new(query)
+      ).perform
     else
       models
     end
