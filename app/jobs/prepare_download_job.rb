@@ -7,6 +7,7 @@ class PrepareDownloadJob < ApplicationJob
     @downloader = ArchiveDownloadService.new(model: @model, selection: selection)
     write_archive(@downloader.temp_file, file_list(@model, selection))
     FileUtils.mv(@downloader.temp_file, @downloader.output_file)
+    @model.broadcast_refresh
   end
 
   private
