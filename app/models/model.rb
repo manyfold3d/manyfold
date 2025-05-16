@@ -53,6 +53,11 @@ class Model < ApplicationRecord
   validates :license, spdx: true, allow_nil: true
   validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
 
+  scoped_search on: :name
+  scoped_search relation: :creator, on: :name
+  scoped_search relation: :collection, on: :name
+  scoped_search relation: :tags, on: :name, default_operator: :eq
+
   def parents
     Pathname.new(path).parent.descend.filter_map do |path|
       library.models.find_by(path: path.to_s)
