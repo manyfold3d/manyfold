@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe QueryParserService do
+RSpec.describe Search::QueryParserService do
   subject(:service) { described_class.new }
 
   context "with a simple query" do
