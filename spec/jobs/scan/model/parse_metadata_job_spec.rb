@@ -105,7 +105,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
         model_tags_tag_model_directory_name: true,
         parse_metadata_from_path: true,
         model_tags_auto_tag_new: "!new",
-        model_path_template: "{creator}/{tags}/{modelName}{modelId}"
+        model_path_template: "{creator}/{tags}/{modelName}"
       )
       described_class.perform_now(model.id)
       model.reload
@@ -145,35 +145,35 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     end
 
     it "preserves existing tags" do
-      allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}{modelId}")
+      allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}")
       described_class.perform_now(model.id)
       model.reload
       expect(model.tag_list).to include "!new"
     end
 
     it "parses tags" do
-      allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}{modelId}")
+      allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}")
       described_class.perform_now(model.id)
       model.reload
       expect(model.tag_list).to include("library 1", "stuff", "tags", "are", "greedy")
     end
 
     it "parses creator" do
-      allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}{modelId}")
+      allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}")
       described_class.perform_now(model.id)
       model.reload
       expect(model.creator.name).to eq "Greedy"
     end
 
     it "parses collection" do
-      allow(SiteSettings).to receive(:model_path_template).and_return("{collection}/{modelName}{modelId}")
+      allow(SiteSettings).to receive(:model_path_template).and_return("{collection}/{modelName}")
       described_class.perform_now(model.id)
       model.reload
       expect(model.collection.name).to eq "Greedy"
     end
 
     it "parses everything at once" do # rubocop:todo RSpec/MultipleExpectations, RSpec/ExampleLength
-      allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{collection}/{tags}/{modelName}{modelId}")
+      allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{collection}/{tags}/{modelName}")
       described_class.perform_now(model.id)
       model.reload
       expect(model.creator.name).to eq "Library 1"
@@ -182,7 +182,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     end
 
     it "ignores extra path components" do # rubocop:todo RSpec/MultipleExpectations, RSpec/ExampleLength
-      allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}{modelId}")
+      allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}")
       described_class.perform_now(model.id)
       model.reload
       expect(model.creator.name).to eq "Greedy"
@@ -204,7 +204,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
         model_tags_stop_words_locale: "en",
         model_tags_filter_stop_words: true,
         model_tags_custom_stop_words: ["stuff"],
-        model_path_template: "{tags}/{modelName}{modelId}"
+        model_path_template: "{tags}/{modelName}"
       )
       described_class.perform_now(model.id)
       expect(model.tag_list).not_to include "stuff"
@@ -338,7 +338,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
   end
 
   it "discards model ID and doesn't include it in model name" do # rubocop:todo RSpec/MultipleExpectations
-    allow(SiteSettings).to receive(:model_path_template).and_return("{modelName}{modelId}")
+    allow(SiteSettings).to receive(:model_path_template).and_return("{modelName}")
     model = create(:model, path: "model-name#1234")
     described_class.perform_now(model.id)
     model.reload
@@ -348,7 +348,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
   it "handles paths matching a complex templates" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
     allow(SiteSettings).to receive_messages(
       parse_metadata_from_path: true,
-      model_path_template: "{tags}/{creator} - {modelName}{modelId}",
+      model_path_template: "{tags}/{creator} - {modelName}",
       model_tags_auto_tag_new: nil
     )
     model = create(:model, path: "human/wizard/bruce-wayne - model-name#1234")

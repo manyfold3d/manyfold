@@ -28,10 +28,10 @@ class PathParserService
         when "{modelName}"
           "(?<model_name>[[:print:]&&[^/]]*?)"
         when "{modelId}"
-          "(?<model_id>#[[:digit:]]+)?"
+          "" # Always detected by default, moved below, kept for compatibility
         else
           "[[:print:]&&[^/]]*"
         end
-      } + "$")
+      } + "(?<model_id>#[[:digit:]]+)?" + "$")
   end
 end
