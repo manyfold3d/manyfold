@@ -1,6 +1,6 @@
 # Search query parsing is heavily based on
 # http://recursion.org/query-parser. Thanks ❤️
-class QueryParserService < Parslet::Parser
+class Search::QueryParserService < Parslet::Parser
   root(:query)
   rule(:operator) { match("[+-]").as(:operator) }
   rule(:clause) { (operator.maybe >> prefix_with_separator.maybe >> (term.as(:term) | quoted_term)) }

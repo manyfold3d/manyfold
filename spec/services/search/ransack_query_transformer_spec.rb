@@ -1,10 +1,10 @@
 require "rails_helper"
 
-RSpec.describe RansackQueryTransformer do
+RSpec.describe Search::RansackQueryTransformer do
   subject(:result) { described_class.new.apply(query) }
 
   context "with a simple query" do
-    let(:query) { QueryParserService.new.parse("cat in the hat") }
+    let(:query) { Search::QueryParserService.new.parse("cat in the hat") }
 
     context "when converting to ransack" do
       it "searches fields using OR" do
@@ -30,7 +30,7 @@ RSpec.describe RansackQueryTransformer do
   end
 
   context "with a quoted query" do
-    let(:query) { QueryParserService.new.parse("cat in \"the hat\"") }
+    let(:query) { Search::QueryParserService.new.parse("cat in \"the hat\"") }
 
     context "when converting to ransack" do
       it "searches fields using OR" do
