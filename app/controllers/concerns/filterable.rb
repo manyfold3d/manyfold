@@ -111,10 +111,7 @@ module Filterable
   # Filter by search query
   def filter_by_search(models, query)
     if query
-      parse_tree = Search::QueryParserService.new.parse(query)
-      models.ransack(
-        Search::RansackQueryTransformer.new.apply(parse_tree)
-      ).result(distinct: true)
+      Search::ModelSearchService.new(models).search(query)
     else
       models
     end
