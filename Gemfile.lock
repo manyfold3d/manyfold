@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails
-  revision: 8c7509ff763ebfb79fd5d76f70fe48f79cc56c4b
+  revision: 5605fd4931d45b58a26fd709325a31507a99d7b0
   branch: main
   specs:
     federails (0.6.2)
@@ -254,7 +254,7 @@ GEM
       activesupport (>= 6.1.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
-    faraday (2.13.0)
+    faraday (2.13.1)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -442,7 +442,7 @@ GEM
       railties (>= 4)
       request_store (~> 1.0)
     logstash-event (1.2.02)
-    loofah (2.24.0)
+    loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     lumberjack (1.2.10)
@@ -459,7 +459,7 @@ GEM
       benchmark
       logger
     mini_mime (1.1.5)
-    mini_portile2 (2.8.8)
+    mini_portile2 (2.8.9)
     minitest (5.25.5)
     mittsu (0.5.0)
       chunky_png
@@ -476,7 +476,7 @@ GEM
     nenv (0.3.0)
     net-http (0.6.0)
       uri
-    net-imap (0.5.7)
+    net-imap (0.5.8)
       date
       net-protocol
     net-pop (0.1.2)
@@ -555,7 +555,7 @@ GEM
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    psych (5.2.3)
+    psych (5.2.6)
       date
       stringio
     public_suffix (6.0.2)
