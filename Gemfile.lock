@@ -966,7 +966,6 @@ DEPENDENCIES
   rails-i18n (~> 8.0)
   rails-settings-cached (~> 2.9)
   rails_performance (~> 1.4)
-  ransack (~> 4.3)
   redis (~> 5.4)
   redis-namespace
   rolify (~> 6.0)

@@ -9,7 +9,8 @@ RSpec.describe Search::ModelSearchService do
     create(:model, name: "cat in the hat", tag_list: ["dog", "log", "frog", "cat"], creator: seuss, notes: "lorem ipsum")
     create(:model, name: "hat on the cat", tag_list: ["dog"], creator: seuss, notes: nil, caption: "dolor sit amet")
     create(:model, name: "bat on a mat", tag_list: ["log"], collection: bats, notes: nil, caption: nil)
-    create(:model, name: "bat on a hat", tag_list: ["frog"], collection: bats, notes: nil, caption: nil)
+    model = create(:model, name: "bat on a hat", tag_list: ["frog"], collection: bats, notes: nil, caption: nil)
+    create(:model_file, filename: "big_hat.stl", model: model)
   end
 
   it "searches for a simple term" do
@@ -155,6 +156,12 @@ RSpec.describe Search::ModelSearchService do
   it "searches in captions" do
     expect(service.search("dolor").pluck(:name)).to eq [
       "hat on the cat"
+    ]
+  end
+
+  it "searches in model filenames" do
+    expect(service.search("big").pluck(:name)).to eq [
+      "bat on a hat"
     ]
   end
 end
