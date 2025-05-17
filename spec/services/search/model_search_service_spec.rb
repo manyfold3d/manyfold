@@ -41,10 +41,17 @@ RSpec.describe Search::ModelSearchService do
   end
 
   it "searches for results with any of the specified terms" do
-    expect(service.search("cat in the hat").pluck(:name)).to eq [
+    expect(service.search("cat or in or the or hat").pluck(:name)).to eq [
       "cat in the hat",
       "hat on the cat",
       "bat on a hat"
+    ]
+  end
+
+  it "searches for results containing two unquoted terms" do
+    expect(service.search("the hat").pluck(:name)).to eq [
+      "cat in the hat",
+      "hat on the cat"
     ]
   end
 
@@ -54,36 +61,75 @@ RSpec.describe Search::ModelSearchService do
     ]
   end
 
-  it "searches for results which don't have an excluded term", pending: "awaiting implementation" do
-    expect(service.search("hat -cat").pluck(:name)).to eq [
+  it "searches for results which don't have an excluded term" do
+    expect(service.search("hat and not cat").pluck(:name)).to eq [
+      "bat on a hat"
+    ]
+  end
+
+  it "searches for AND combination of exclusions" do
+    expect(service.search("not cat and not hat").pluck(:name)).to eq [
       "bat on a mat"
     ]
   end
 
-  it "searches for results which have a compulsory word", pending: "awaiting implementation" do
-    expect(service.search("hat +on").pluck(:name)).to eq [
-      "hat on the cat",
+  it "searches for OR combination of exclusions" do
+    expect(service.search("not cat or not hat").pluck(:name)).to eq [
       "bat on a mat",
       "bat on a hat"
     ]
   end
 
-  it "searches for results which have a specific tag", pending: "awaiting implementation" do
-    expect(service.search("tag:cat").pluck(:name)).to eq [
+  it "searches for complex combinations" do
+    expect(service.search("(cat or hat) and not on").pluck(:name)).to eq [
       "cat in the hat"
     ]
   end
 
-  it "searches for results which don't have the specified tag", pending: "awaiting implementation" do
-    expect(service.search("-tag:frog").pluck(:name)).to eq [
+  it "searches for other complex combinations" do
+    expect(service.search("(cat or hat) and on").pluck(:name)).to eq [
+      "hat on the cat",
+      "bat on a hat"
+    ]
+  end
+
+  it "searches for results which have all the words" do
+    expect(service.search("hat on").pluck(:name)).to eq [
+      "hat on the cat",
+      "bat on a hat"
+    ]
+  end
+
+  it "searches for results which have a specific tag" do
+    expect(service.search("hat tag=cat").pluck(:name)).to eq [
+      "cat in the hat"
+    ]
+  end
+
+  it "searches for results which don't have the specified tag" do
+    expect(service.search("on tag != frog").pluck(:name)).to eq [
       "hat on the cat",
       "bat on a mat"
     ]
   end
 
-  it "finds results which have a required word and a required tag", pending: "awaiting implementation" do
-    expect(service.search("+on +tag:bat").pluck(:name)).to eq [
+  it "finds results which have a required word and a required tag" do
+    expect(service.search("on tag=frog").pluck(:name)).to eq [
       "bat on a hat"
+    ]
+  end
+
+  it "finds results with a combination of tags" do
+    expect(service.search("tag=frog tag=dog").pluck(:name)).to eq [
+      "cat in the hat"
+    ]
+  end
+
+  it "finds results with an OR combination of tags" do
+    expect(service.search("tag=frog or tag=dog").pluck(:name)).to eq [
+      "cat in the hat",
+      "bat on a hat",
+      "hat on the cat"
     ]
   end
 end

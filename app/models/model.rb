@@ -56,7 +56,7 @@ class Model < ApplicationRecord
   scoped_search on: :name
   scoped_search relation: :creator, on: :name
   scoped_search relation: :collection, on: :name
-  scoped_search relation: :tags, on: :name, default_operator: :eq
+  scoped_search relation: :tags, on: :name, default_operator: :eq, rename: :tag
 
   def parents
     Pathname.new(path).parent.descend.filter_map do |path|

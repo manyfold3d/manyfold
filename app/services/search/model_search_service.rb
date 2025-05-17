@@ -4,8 +4,6 @@ class Search::ModelSearchService
   end
 
   def search(query)
-    parse_tree = Search::QueryParserService.new.parse(query)
-    q = Search::ScopedSearchQueryTransformer.new.apply(parse_tree)
-    @scope.search_for(q).distinct
+    @scope.search_for(query).distinct
   end
 end
