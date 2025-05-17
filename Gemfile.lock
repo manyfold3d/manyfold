@@ -527,7 +527,6 @@ GEM
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
-    parslet (2.0.0)
     pg (1.5.9)
     pg (1.5.9-x64-mingw-ucrt)
     pg_query (6.1.0)
@@ -950,7 +949,6 @@ DEPENDENCIES
   omniauth (~> 2.1)
   omniauth-rails_csrf_protection (~> 1.0)
   omniauth_openid_connect (~> 0.8)
-  parslet (~> 2.0)
   pg (~> 1.5)
   pg_query (~> 6.1)
   pghero (~> 3.6)
