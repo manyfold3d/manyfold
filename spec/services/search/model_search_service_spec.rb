@@ -34,7 +34,7 @@ RSpec.describe Search::ModelSearchService do
   end
 
   it "searches in collection names" do
-    expect(service.search("chiroptera").pluck(:name)).to eq [
+    expect(service.search("chiro").pluck(:name)).to eq [
       "bat on a mat",
       "bat on a hat"
     ]
@@ -130,6 +130,18 @@ RSpec.describe Search::ModelSearchService do
       "cat in the hat",
       "bat on a hat",
       "hat on the cat"
+    ]
+  end
+
+  it "search specifically by creator name" do
+    expect(service.search("on creator~dr").pluck(:name)).to eq [
+      "hat on the cat"
+    ]
+  end
+
+  it "filter specifically by collection name" do
+    expect(service.search("hat collection~chiro").pluck(:name)).to eq [
+      "bat on a hat"
     ]
   end
 end

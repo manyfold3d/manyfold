@@ -54,8 +54,8 @@ class Model < ApplicationRecord
   validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
 
   scoped_search on: :name
-  scoped_search relation: :creator, on: :name
-  scoped_search relation: :collection, on: :name
+  scoped_search relation: :creator, on: :name, rename: :creator
+  scoped_search relation: :collection, on: :name, rename: :collection
   scoped_search relation: :tags, on: :name, default_operator: :eq, rename: :tag
 
   def parents
