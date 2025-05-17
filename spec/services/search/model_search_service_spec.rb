@@ -6,10 +6,10 @@ RSpec.describe Search::ModelSearchService do
   before do
     seuss = create(:creator, name: "Dr Seuss")
     bats = create(:collection, name: "Chiroptera")
-    create(:model, name: "cat in the hat", tag_list: ["dog", "log", "frog", "cat"], creator: seuss)
-    create(:model, name: "hat on the cat", tag_list: ["dog"], creator: seuss)
-    create(:model, name: "bat on a mat", tag_list: ["log"], collection: bats)
-    create(:model, name: "bat on a hat", tag_list: ["frog"], collection: bats)
+    create(:model, name: "cat in the hat", tag_list: ["dog", "log", "frog", "cat"], creator: seuss, notes: "lorem ipsum")
+    create(:model, name: "hat on the cat", tag_list: ["dog"], creator: seuss, notes: nil, caption: "dolor sit amet")
+    create(:model, name: "bat on a mat", tag_list: ["log"], collection: bats, notes: nil, caption: nil)
+    create(:model, name: "bat on a hat", tag_list: ["frog"], collection: bats, notes: nil, caption: nil)
   end
 
   it "searches for a simple term" do
@@ -87,16 +87,17 @@ RSpec.describe Search::ModelSearchService do
   end
 
   it "searches for other complex combinations" do
-    expect(service.search("(cat or hat) and on").pluck(:name)).to eq [
+    expect(service.search("(cat or bat) and hat").pluck(:name)).to eq [
+      "cat in the hat",
       "hat on the cat",
       "bat on a hat"
     ]
   end
 
   it "searches for results which have all the words" do
-    expect(service.search("hat on").pluck(:name)).to eq [
-      "hat on the cat",
-      "bat on a hat"
+    expect(service.search("cat hat").pluck(:name)).to eq [
+      "cat in the hat",
+      "hat on the cat"
     ]
   end
 
@@ -107,8 +108,7 @@ RSpec.describe Search::ModelSearchService do
   end
 
   it "searches for results which don't have the specified tag" do
-    expect(service.search("on tag != frog").pluck(:name)).to eq [
-      "hat on the cat",
+    expect(service.search("bat tag != frog").pluck(:name)).to eq [
       "bat on a mat"
     ]
   end
@@ -134,7 +134,8 @@ RSpec.describe Search::ModelSearchService do
   end
 
   it "search specifically by creator name" do
-    expect(service.search("on creator~dr").pluck(:name)).to eq [
+    expect(service.search("hat creator~dr").pluck(:name)).to eq [
+      "cat in the hat",
       "hat on the cat"
     ]
   end
@@ -142,6 +143,18 @@ RSpec.describe Search::ModelSearchService do
   it "filter specifically by collection name" do
     expect(service.search("hat collection~chiro").pluck(:name)).to eq [
       "bat on a hat"
+    ]
+  end
+
+  it "searches in notes" do
+    expect(service.search("lorem").pluck(:name)).to eq [
+      "cat in the hat"
+    ]
+  end
+
+  it "searches in captions" do
+    expect(service.search("dolor").pluck(:name)).to eq [
+      "hat on the cat"
     ]
   end
 end
