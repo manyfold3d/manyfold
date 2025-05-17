@@ -4,9 +4,6 @@ class Search::ModelSearchService
   end
 
   def search(query)
-    parse_tree = Search::QueryParserService.new.parse(query)
-    @scope.ransack(
-      Search::RansackQueryTransformer.new.apply(parse_tree)
-    ).result(distinct: true)
+    @scope.search_for(query).distinct
   end
 end

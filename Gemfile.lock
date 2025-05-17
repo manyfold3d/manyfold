@@ -748,6 +748,8 @@ GEM
       logger
     ruby2_keywords (0.0.5)
     rubyzip (2.4.1)
+    scoped_search (4.2.0)
+      activerecord (>= 4.2.0)
     scout_apm (5.6.4)
       parser
     securerandom (0.4.1)
@@ -979,6 +981,7 @@ DEPENDENCIES
   rubocop-rspec
   rubocop-rspec_rails
   rubyzip (~> 2.4)
+  scoped_search (~> 4.2)
   scout_apm
   selenium-webdriver
   shrine (~> 3.6)
