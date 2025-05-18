@@ -11,8 +11,15 @@ class ApplicationController < ActionController::Base
   before_action :show_security_alerts
   before_action :check_scan_status
   before_action :remember_ordering
+  before_action :restore_failed_search
 
   protect_from_forgery with: :null_session, if: :is_api_request?
+
+  rescue_from ScopedSearch::QueryNotSupported, with: -> {
+    flash[:alert] = t("application.search_error")
+    flash[:query] = params[:q]
+    redirect_back_or_to root_path
+  }
 
   unless Rails.env.test?
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -46,6 +53,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def restore_failed_search
+    @query ||= flash[:query]
+  end
 
   def is_api_request?
     request.format.manyfold_api_v0?
