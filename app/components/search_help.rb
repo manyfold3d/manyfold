@@ -13,73 +13,73 @@ class Components::SearchHelp < Components::Base
       p do
         t("components.search_help.intro")
       end
-      table class: "table table-striped" do
-        tr do
-          td { code { "cat hat" } }
-          td { t("components.search_help.simple") }
-        end
-        tr do
-          td { code { "cat or hat" } }
-          td { t("components.search_help.boolean") }
-        end
-        tr do
-          td do
-            code { "cat -hat" }
-            br
-            code { "cat !hat" }
-            br
-            code { "cat not hat" }
-          end
-          td { t("components.search_help.negation") }
-        end
-        tr do
-          td { code { '"cat hat"' } }
-          td { t("components.search_help.quotes") }
-        end
-        tr do
-          td { code { "(cat or hat) and not bat" } }
-          td { t("components.search_help.parentheses") }
-        end
-        tr do
-          td do
-            code { "tag = cat" }
-          end
-          td { t("components.search_help.tag") }
-        end
-        tr do
-          td do
-            code { "tag != cat" }
-          end
-          td { t("components.search_help.without_tag") }
-        end
-        tr do
-          td do
-            code { "description ~ cat" }
-            br
-            code { "caption ~ cat" }
-            br
-            code { "creator ~ cat" }
-            br
-            code { "collection ~ cat" }
-          end
-          td { t("components.search_help.specific_fields") }
-        end
-        tr do
-          td do
-            code { "not set? tag" }
-          end
-          td { t("components.search_help.unset") }
-        end
-        tr do
-          td do
-            code { "filename = cat.stl" }
-          end
-          td { t("components.search_help.filename") }
-        end
-      end
+      help_table
       p do
         t("components.search_help.more_details_html")
       end
     end
+  end
+
+  def help_table
+    table class: "table table-striped" do
+      tr do
+        td { code { "cat hat" } }
+        td { t("components.search_help.simple") }
+      end
+      tr do
+        td { code { "cat or hat" } }
+        td { t("components.search_help.boolean") }
+      end
+      tr { negation }
+      tr do
+        td { code { '"cat hat"' } }
+        td { t("components.search_help.quotes") }
+      end
+      tr do
+        td { code { "(cat or hat) and not bat" } }
+        td { t("components.search_help.parentheses") }
+      end
+      tr do
+        td { code { "tag = cat" } }
+        td { t("components.search_help.tag") }
+      end
+      tr do
+        td { code { "tag != cat" } }
+        td { t("components.search_help.without_tag") }
+      end
+      tr { specific_fields }
+      tr do
+        td { code { "not set? tag" } }
+        td { t("components.search_help.unset") }
+      end
+      tr do
+        td { code { "filename = cat.stl" } }
+        td { t("components.search_help.filename") }
+      end
+    end
+  end
+
+  def specific_fields
+    td do
+      code { "description ~ cat" }
+      br
+      code { "caption ~ cat" }
+      br
+      code { "creator ~ cat" }
+      br
+      code { "collection ~ cat" }
+    end
+    td { t("components.search_help.specific_fields") }
+  end
+
+  def negation
+    td do
+      code { "cat -hat" }
+      br
+      code { "cat !hat" }
+      br
+      code { "cat not hat" }
+    end
+    td { t("components.search_help.negation") }
   end
 end
