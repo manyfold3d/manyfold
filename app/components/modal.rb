@@ -10,7 +10,7 @@ class Components::Modal < Components::Base
         div class: "modal-content" do
           div class: "modal-header" do
             h1(class: "modal-title fs-5", id: "#{@id}-label") { @title }
-            button type: "button", class: "btn-close", "data-bs-dismiss": "modal", "aria-label": t(".close")
+            button type: "button", class: "btn-close", "data-bs-dismiss": "modal", "aria-label": t("components.modal.close")
           end
           div class: "modal-body" do
             yield
