@@ -79,7 +79,7 @@
         <% end %>
         <li class="nav-item ms-1 me-3">
           <%= form_with url: models_path, method: :get, role: "search" do |f| %>
-            <%= f.search_field :q, class: "form-control", placeholder: translate(".search"), aria_label: translate(".search"), aria_describedby: "button-search", value: params[:q] %>
+            <%= f.search_field :q, class: "form-control", placeholder: translate(".search"), aria_label: translate(".search"), aria_describedby: "button-search", value: @query || params[:q] %>
           <% end %>
         </li>
         <%- if current_user %>
