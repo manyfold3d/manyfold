@@ -6,7 +6,7 @@ class Search::ModelSearchService
   def search(query)
     if ApplicationRecord.connection.adapter_name == "PostgreSQL"
       @scope.where(
-        Model.select("DISTINCT ON (models.id) models.*") # rubocop:disable Pundit/UsePolicyScope
+        id: Model.select("DISTINCT ON (models.id) models.*") # rubocop:disable Pundit/UsePolicyScope
           .search_for(query)
           .pluck(:id) # rubocop:todo Rails/PluckInWhere
       )
