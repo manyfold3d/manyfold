@@ -186,7 +186,7 @@ gem "job-iteration", "~> 1.10"
 gem "rswag", "~> 2.16"
 gem "warning", "~> 1.5"
 
-gem "rack-cors", "~> 2.0"
+gem "rack-cors", "~> 3.0"
 
 gem "doorkeeper", "~> 5.8"
 
