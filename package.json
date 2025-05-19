@@ -18,7 +18,7 @@
     "@notus.sh/cocooned": "^2.4.1",
     "@popperjs/core": "^2.11.8",
     "@rails/ujs": "^7.1.501",
-    "@uppy/core": "^4.4.4",
+    "@uppy/core": "^4.4.5",
     "@uppy/dashboard": "^4.3.3",
     "@uppy/form": "^4.1.1",
     "@uppy/locales": "^4.5.2",
