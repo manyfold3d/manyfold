@@ -18,6 +18,6 @@ class Comment < ApplicationRecord
   end
 
   def public?
-    commenter.public? && commentable.public?
+    commenter&.public? && commentable&.public?
   end
 end
