@@ -1358,16 +1358,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/dashboard@npm:^4.3.3":
-  version: 4.3.3
-  resolution: "@uppy/dashboard@npm:4.3.3"
+"@uppy/dashboard@npm:^4.3.4":
+  version: 4.3.4
+  resolution: "@uppy/dashboard@npm:4.3.4"
   dependencies:
     "@transloadit/prettier-bytes": ^0.3.4
     "@uppy/informer": ^4.2.1
-    "@uppy/provider-views": ^4.4.2
+    "@uppy/provider-views": ^4.4.3
     "@uppy/status-bar": ^4.1.3
     "@uppy/thumbnail-generator": ^4.1.1
-    "@uppy/utils": ^6.1.3
+    "@uppy/utils": ^6.1.4
     classnames: ^2.2.6
     lodash: ^4.17.21
     memoize-one: ^6.0.0
@@ -1375,8 +1375,8 @@ __metadata:
     preact: ^10.5.13
     shallow-equal: ^3.0.0
   peerDependencies:
-    "@uppy/core": ^4.4.4
-  checksum: 45722a710b9a672a5bed6106c8b71cd638d845706bc77f5cc1f40d1f2cf2d60509fe9e9282e8f93def8bdbfd0bf2be04095db5d67d0f04c266f104e511fe1b92
+    "@uppy/core": ^4.4.5
+  checksum: fc0851cc0611ec1c28d87e733ab2032a5145f28a86e3b1ce86031bec48157a4f5844ae344ecb09d979de36aae77920f10701028cf7ee7411d13f8b0102fa52cd
   languageName: node
   linkType: hard
 
@@ -1413,18 +1413,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/provider-views@npm:^4.4.2":
-  version: 4.4.2
-  resolution: "@uppy/provider-views@npm:4.4.2"
+"@uppy/provider-views@npm:^4.4.3":
+  version: 4.4.3
+  resolution: "@uppy/provider-views@npm:4.4.3"
   dependencies:
-    "@uppy/utils": ^6.1.2
+    "@uppy/utils": ^6.1.3
     classnames: ^2.2.6
     nanoid: ^5.0.9
     p-queue: ^8.0.0
     preact: ^10.5.13
   peerDependencies:
-    "@uppy/core": ^4.4.2
-  checksum: 0ae6eb8784edeec03d1a42002dd81a35f150169c4e3a601927c1ef59d012c977e29e4b139b2887b709b6836f75c8ab7753e87b38ced90535d0f4aca57c18d96b
+    "@uppy/core": ^4.4.4
+  checksum: ba5716c4782f514417b46fea4393a548c1b8d9af484845262e3afe89307e91682f9481e491c2a5c5b6a8396fc36ded280bfc8b85781e3ab3a7085e842f33e9a2
   languageName: node
   linkType: hard
 
@@ -1481,16 +1481,6 @@ __metadata:
     lodash: ^4.17.21
     preact: ^10.5.13
   checksum: 452f1b02e2875650c831bba9e67283a9261447587f9ab1f5020bdfc8e218a9749c49397fdc6db9b014ecc748064dbc2d01cd6e64b151dbcf4a4344fb4f7390c2
-  languageName: node
-  linkType: hard
-
-"@uppy/utils@npm:^6.1.2":
-  version: 6.1.2
-  resolution: "@uppy/utils@npm:6.1.2"
-  dependencies:
-    lodash: ^4.17.21
-    preact: ^10.5.13
-  checksum: 51bd81c1fd6e74bc0f23ce108bd59e29de1d563f9c68eb16fd682b0dd46334e6be122d872c688ee1b27b900ec4141b9812898822fcd4d146e994852b658f303e
   languageName: node
   linkType: hard
 
@@ -4210,10 +4200,11 @@ __metadata:
     "@types/webxr": ^0.5.22
     "@typescript-eslint/parser": ^8.32.1
     "@uppy/core": ^4.4.5
-    "@uppy/dashboard": ^4.3.3
+    "@uppy/dashboard": ^4.3.4
     "@uppy/form": ^4.1.1
     "@uppy/locales": ^4.5.2
     "@uppy/tus": ^4.2.2
+    "@uppy/utils": ^6.1.4
     "@zxcvbn-ts/core": ^3.0.4
     "@zxcvbn-ts/language-common": ^3.0.4
     "@zxcvbn-ts/language-en": ^3.0.2
