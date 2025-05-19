@@ -27,7 +27,7 @@ class PrepareDownloadJob < ApplicationJob
   end
 
   def write_archive(filename, files)
-    Archive.write_open_filename(filename, Archive::COMPRESSION_COMPRESS, Archive::FORMAT_ZIP) do |archive|
+    Archive.write_open_filename(filename, Archive::COMPRESSION_NONE, Archive::FORMAT_ZIP) do |archive|
       files.each do |file|
         archive.new_entry do |entry|
           entry.pathname = file.filename
