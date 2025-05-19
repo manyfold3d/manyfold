@@ -30,7 +30,7 @@ class Components::SearchHelp < Components::Base
         td { code { "cat or hat" } }
         td { t("components.search_help.boolean") }
       end
-      tr { negation }
+      negation
       tr do
         td { code { '"cat hat"' } }
         td { t("components.search_help.quotes") }
@@ -47,7 +47,7 @@ class Components::SearchHelp < Components::Base
         td { code { "tag != cat" } }
         td { t("components.search_help.without_tag") }
       end
-      tr { specific_fields }
+      specific_fields
       tr do
         td { code { "not set? tag" } }
         td { t("components.search_help.unset") }
@@ -56,30 +56,45 @@ class Components::SearchHelp < Components::Base
         td { code { "filename = cat.stl" } }
         td { t("components.search_help.filename") }
       end
+      federation
     end
   end
 
   def specific_fields
-    td do
-      code { "description ~ cat" }
-      br
-      code { "caption ~ cat" }
-      br
-      code { "creator ~ cat" }
-      br
-      code { "collection ~ cat" }
+    tr do
+      td do
+        code { "description ~ cat" }
+        br
+        code { "caption ~ cat" }
+        br
+        code { "creator ~ cat" }
+        br
+        code { "collection ~ cat" }
+      end
+      td { t("components.search_help.specific_fields") }
     end
-    td { t("components.search_help.specific_fields") }
   end
 
   def negation
-    td do
-      code { "cat -hat" }
-      br
-      code { "cat !hat" }
-      br
-      code { "cat not hat" }
+    tr do
+      td do
+        code { "cat -hat" }
+        br
+        code { "cat !hat" }
+        br
+        code { "cat not hat" }
+      end
+      td { t("components.search_help.negation") }
     end
-    td { t("components.search_help.negation") }
+  end
+
+  def federation
+    return unless SiteSettings.federation_enabled?
+    tr do
+      td do
+        code { "@manyfold@3dp.chat" }
+      end
+      td { t("components.search_help.federation") }
+    end
   end
 end
