@@ -4,6 +4,7 @@
 Mime::Type.register "application/x-3ds", :threeds, ["image/x-3ds"], ["3ds"]
 Mime::Type.register "application/x-3dsmax", :max
 Mime::Type.register "application/x-amf", :amf
+Mime::Type.register "application/x-ldraw", :ldr, [], ["mpd"]
 Mime::Type.register "application/x-openscad", :scad
 Mime::Type.register "image/vnd.dwg", :dwg
 Mime::Type.register "image/vnd.dxf", :dxf
