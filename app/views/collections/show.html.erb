@@ -37,7 +37,7 @@
 
 <% content_for :actions do %>
   <%= link_to safe_join([icon("pencil", t(".edit")), t(".edit")], " "), edit_collection_path(@collection), class: "btn btn-primary" if policy(@collection).edit? %>
-  <%= link_to safe_join([icon("flag", t("general.report", type: @collection.model_name.human)), t("general.report", type: @collection.model_name.human)], " "), new_collection_report_path(@collection), class: "btn btn-outline-warning" if SiteSettings.multiuser_enabled? %>
+  <%= render Components::ReportButton.new(object: @collection, path: new_collection_report_path(@collection)) %>
 <% end %>
 
 <%= render "models/list" %>

@@ -118,7 +118,7 @@
   </div>
 
   <%= card :secondary, t("layouts.card_list_page.actions_heading") do %>
-    <%= link_to safe_join([icon("flag", t("general.report", type: Model.model_name.human)), t("general.report", type: Model.model_name.human)], " "), new_model_report_path(@model), class: "btn btn-outline-warning" %>
+    <%= render Components::ReportButton.new(object: @model, path: new_model_report_path(@model)) %>
   <% end if SiteSettings.multiuser_enabled? %>
 
   <% if !@model.parents.empty? && policy(@model).merge? %>
