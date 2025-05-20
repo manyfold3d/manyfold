@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe Scan::ModelFile::ParseMetadataJob do
   let(:file) { create(:model_file) }
   let(:supported_file) { create(:model_file, filename: "file1_supported.stl") }
+  let(:image_file) { create(:model_file, filename: "preview.jpg") }
 
   it "detects if file is presupported" do
     described_class.perform_now(supported_file.id)
@@ -14,6 +15,18 @@ RSpec.describe Scan::ModelFile::ParseMetadataJob do
     described_class.perform_now(file.id)
     file.reload
     expect(file.presupported).to be false
+  end
+
+  it "sets images as previewable" do
+    described_class.perform_now(image_file.id)
+    image_file.reload
+    expect(image_file.previewable).to be true
+  end
+
+  it "defaults models to not be previewable" do
+    described_class.perform_now(file.id)
+    file.reload
+    expect(file.previewable).to be false
   end
 
   it "queues analysis job" do

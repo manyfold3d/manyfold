@@ -4,13 +4,30 @@ class Scan::ModelFile::ParseMetadataJob < ApplicationJob
 
   def perform(file_id)
     file = ModelFile.find(file_id)
-    # Try to guess if the file is presupported
-    if !(
-      file.path_within_library.split(/[[:punct:]]|[[:space:]]/).map(&:downcase) & ModelFile::SUPPORT_KEYWORDS
-    ).empty?
-      file.update!(presupported: true)
+    params = if file.is_image?
+      image_metadata(file)
+    elsif file.is_3d_model?
+      model_metadata(file)
     end
+    file.update!(params.compact)
     # Queue up deeper analysis job
     file.analyse_later
+  end
+
+  def image_metadata(file)
+    {
+      previewable: true
+    }
+  end
+
+  def model_metadata(file)
+    {
+      presupported: presupported?(file)
+    }
+  end
+
+  def presupported?(file)
+    elements = file.path_within_library.split(/[[:punct:]]|[[:space:]]/).map(&:downcase)
+    elements.any? { |it| ModelFile::SUPPORT_KEYWORDS.include?(it) }
   end
 end
