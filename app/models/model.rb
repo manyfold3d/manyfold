@@ -239,7 +239,7 @@ class Model < ApplicationRecord
   rescue Shrine::FileNotFound
   end
 
-  def pregenerate_downloads(delay: 10.minutes)
+  def pregenerate_downloads(delay: 10.minutes, queue: nil)
     # By default, give 10 minutes' grace for followup changes before we pregenerate the download
     # Other scan jobs could be running, which might take some time.
     # This is brittle, and we need a better way to say "this model is done changing for a while"
@@ -249,7 +249,7 @@ class Model < ApplicationRecord
     download_types += ["supported", "unsupported"] if has_supported_and_unsupported?
     download_types += file_extensions.excluding("json")
     download_types.each do |selection|
-      ArchiveDownloadService.new(model: self, selection: selection).prepare(delay: delay)
+      ArchiveDownloadService.new(model: self, selection: selection).prepare(delay: delay, queue: queue)
     end
   end
 
