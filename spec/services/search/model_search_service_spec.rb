@@ -147,8 +147,8 @@ RSpec.describe Search::ModelSearchService do
     ]
   end
 
-  it "searches in notes" do
-    expect(service.search("lorem").pluck(:name)).to eq [
+  it "searches in notes if specified" do
+    expect(service.search("description ~ lorem").pluck(:name)).to eq [
       "cat in the hat"
     ]
   end
@@ -159,8 +159,8 @@ RSpec.describe Search::ModelSearchService do
     ]
   end
 
-  it "searches in model filenames" do
-    expect(service.search("big").pluck(:name)).to eq [
+  it "searches in model filenames if specified" do
+    expect(service.search("filename ~ big").pluck(:name)).to eq [
       "bat on a hat"
     ]
   end

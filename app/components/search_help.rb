@@ -52,24 +52,36 @@ class Components::SearchHelp < Components::Base
         td { code { "not set? tag" } }
         td { t("components.search_help.unset") }
       end
-      tr do
-        td { code { "filename = cat.stl" } }
-        td { t("components.search_help.filename") }
-      end
+      filenames
       federation
+    end
+  end
+
+  def filenames
+    tr do
+      td do
+        code { "filename = cat.stl" }
+        br
+        code { "filename ~ cat" }
+      end
+      td { t("components.search_help.filename") }
     end
   end
 
   def specific_fields
     tr do
       td do
-        code { "description ~ cat" }
-        br
-        code { "caption ~ cat" }
-        br
         code { "creator ~ cat" }
         br
         code { "collection ~ cat" }
+        br
+        code { "caption ~ cat" }
+        br
+        code { "description ~ cat" }
+        if SiteSettings.show_libraries?
+          br
+          code { "library = #{Library.first.name}" }
+        end
       end
       td { t("components.search_help.specific_fields") }
     end

@@ -54,11 +54,12 @@ class Model < ApplicationRecord
   validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
 
   scoped_search on: [:name, :caption]
-  scoped_search on: :notes, rename: :description
+  scoped_search on: :notes, aliases: [:description], only_explicit: true
+  scoped_search relation: :library, on: :name, rename: :library, only_explicit: true, default_operator: :eq
   scoped_search relation: :creator, on: :name, rename: :creator
   scoped_search relation: :collection, on: :name, rename: :collection
   scoped_search relation: :tags, on: :name, default_operator: :eq, rename: :tag
-  scoped_search relation: :model_files, on: :filename, rename: :filename
+  scoped_search relation: :model_files, on: :filename, rename: :filename, only_explicit: true
 
   def parents
     Pathname.new(path).parent.descend.filter_map do |path|
