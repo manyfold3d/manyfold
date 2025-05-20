@@ -52,11 +52,19 @@ class Components::SearchHelp < Components::Base
         td { code { "not set? tag" } }
         td { t("components.search_help.unset") }
       end
-      tr do
-        td { code { "filename = cat.stl" } }
-        td { t("components.search_help.filename") }
-      end
+      filenames
       federation
+    end
+  end
+
+  def filenames
+    tr do
+      td do
+        code { "filename = cat.stl" }
+        br
+        code { "filename ~ cat" }
+      end
+      td { t("components.search_help.filename") }
     end
   end
 
