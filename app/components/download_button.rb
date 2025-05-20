@@ -52,11 +52,11 @@ class Components::DownloadButton < Components::Base
     end
     link_to model_path(@model, format: @format, selection: selection || file_type), link_options do
       if downloader.ready?
-        icon("cloud-download", t("components.download_button.download.ready"))
+        Icon(icon: "cloud-download", label: t("components.download_button.download.ready"))
       elsif downloader.preparing?
-        icon("hourglass-split", t("components.download_button.download.preparing"), effect: "icon-flip")
+        Icon(icon: "hourglass-split", label: t("components.download_button.download.preparing"), effect: "icon-flip")
       else
-        icon("hourglass-top", t("components.download_button.download.missing"))
+        Icon(icon: "hourglass-top", label: t("components.download_button.download.missing"))
       end
       whitespace
       span do

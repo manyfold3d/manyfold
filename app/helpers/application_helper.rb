@@ -12,13 +12,7 @@ module ApplicationHelper
   end
 
   def icon(icon, label, id: nil, effect: nil)
-    prefix = "bi"
-    if icon.starts_with? "ra-"
-      prefix = "ra"
-      icon = icon.gsub("ra-", "")
-    end
-    classes = [prefix, "#{prefix}-#{icon}", effect].compact.join(" ")
-    tag.i class: classes, role: "img", title: label, id: id
+    render Components::Icon.new(icon: icon, label: label, id: id, effect: effect)
   end
 
   def icon_for(klass)
