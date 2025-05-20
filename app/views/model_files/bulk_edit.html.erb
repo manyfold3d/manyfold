@@ -13,6 +13,7 @@
       <th><%= ModelFile.human_attribute_name(:printed) %></th>
       <th><%= ModelFile.human_attribute_name(:presupported) %></th>
       <th><%= ModelFile.human_attribute_name(:y_up) %></th>
+      <th><%= ModelFile.human_attribute_name(:previewable) %></th>
     </tr>
     <% @files.each do |file| %>
       <tr>
@@ -22,6 +23,7 @@
         <td><%= icon "check-circle-fill", ModelFile.human_attribute_name(:printed) if current_user.printed?(file) %></td>
         <td><%= icon "check-circle-fill", ModelFile.human_attribute_name(:presupported) if file.presupported %></td>
         <td><%= icon "check-circle-fill", ModelFile.human_attribute_name(:y_up) if file.y_up %></td>
+        <td><%= icon "check-circle-fill", ModelFile.human_attribute_name(:previewable) if file.previewable %></td>
       </tr>
     <% end %>
   </table>
@@ -41,6 +43,7 @@
   <%= checkbox_input_row form, :printed, label: ModelFile.human_attribute_name(:printed) %>
   <%= checkbox_input_row form, :presupported, label: ModelFile.human_attribute_name(:presupported) %>
   <%= checkbox_input_row form, :y_up, label: ModelFile.human_attribute_name(:y_up) %>
+  <%= checkbox_input_row form, :previewable, label: ModelFile.human_attribute_name(:previewable) %>
 
   <%= form.submit translate(".submit"), class: "btn btn-primary" %>
   <%= form.submit translate(".split"), name: "split", class: "btn btn-warning" %>
