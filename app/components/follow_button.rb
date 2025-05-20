@@ -11,15 +11,13 @@ class Components::FollowButton < Components::Base
   end
 
   def view_template
-    button_to(
-      @path,
+    Button(
+      icon: @icon,
+      href: @path,
+      text: translate(@i18n_key, name: @name),
       method: @method,
-      class: "btn #{(@following == :pending) ? "btn-outline-primary " : "btn-primary"}"
-    ) do
-      span { icon(@icon, "") }
-      whitespace
-      span { translate(@i18n_key, name: @name) }
-    end
+      variant: (@following == :pending) ? "outline-primary " : "primary"
+    )
   end
 
   def render?
