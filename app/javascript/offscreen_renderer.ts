@@ -11,6 +11,7 @@ import { PLYLoader } from 'three/addons/loaders/PLYLoader.js'
 import { TDSLoader } from 'three/addons/loaders/TDSLoader.js'
 import { FBXLoader } from 'three/addons/loaders/FBXLoader.js'
 import { GCodeLoader } from 'three/addons/loaders/GCodeLoader.js'
+import { LDrawLoader } from 'three/addons/loaders/LDrawLoader.js'
 
 import { OrbitControls } from 'src/orbit_controls.js'
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
@@ -18,6 +19,7 @@ import { SSAOPass } from 'three/addons/postprocessing/SSAOPass.js'
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js'
 import { CanvasProxy } from 'src/canvas_proxy'
+import { LDrawConditionalLineMaterial } from 'three/addons/materials/LDrawConditionalLineMaterial.js';
 
 const loaders = {
   '3mf': ThreeMFLoader,
@@ -29,7 +31,9 @@ const loaders = {
   ply: PLYLoader,
   '3ds': TDSLoader,
   fbx: FBXLoader,
-  gcode: GCodeLoader
+  gcode: GCodeLoader,
+  ldr: LDrawLoader,
+  mpd: LDrawLoader
 }
 
 export class OffscreenRenderer {
@@ -99,7 +103,7 @@ export class OffscreenRenderer {
     this.composer.addPass(new OutputPass())
   }
 
-  load (cbLoadComplete, cbLoadProgress, cbLoadError): void {
+  async load (cbLoadComplete, cbLoadProgress, cbLoadError): Promise<void> {
     // Store callbacks
     this.cbLoadComplete = cbLoadComplete
     this.cbLoadProgress = cbLoadProgress
@@ -116,6 +120,10 @@ export class OffscreenRenderer {
         loader.setDRACOLoader(dracoLoader)
       } else if (LoaderClass === DRACOLoader) {
         loader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
+      } else if (LoaderClass === LDrawLoader) {
+        loader.setConditionalLineMaterial(LDrawConditionalLineMaterial);
+        loader.setPartsLibraryPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/');
+        await loader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/colors/ldcfgalt.ldr');
       }
       // Load
       loader.load(
