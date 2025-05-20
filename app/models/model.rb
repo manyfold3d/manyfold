@@ -55,6 +55,7 @@ class Model < ApplicationRecord
 
   scoped_search on: [:name, :caption]
   scoped_search on: :notes, aliases: [:description], only_explicit: true
+  scoped_search relation: :library, on: :name, rename: :library, only_explicit: true, default_operator: :eq
   scoped_search relation: :creator, on: :name, rename: :creator
   scoped_search relation: :collection, on: :name, rename: :collection
   scoped_search relation: :tags, on: :name, default_operator: :eq, rename: :tag
