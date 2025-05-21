@@ -13,7 +13,7 @@ class Components::Link < Components::Base
   end
 
   def view_template
-    link_to(@href, method: @method, class: "btn btn-#{@variant}") do
+    link_to(@href, method: @method, class: "btn btn-#{@variant}", aria: {label: @icon_only ? @label : nil}) do
       if @icon
         Icon(icon: @icon, label: @label)
         whitespace
