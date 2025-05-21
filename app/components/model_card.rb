@@ -113,17 +113,19 @@ class Components::ModelCard < Components::Base
   end
 
   def actions
-    div class: "card-footer row" do
-      div(class: "col") do
-        open_button
-        whitespace
-        status_badges @model
-      end
-      div(class: "col col-auto") do
-        BurgerMenu do
-          DropdownItem(icon: "pencil", label: t("components.model_card.edit_button.text"), path: edit_model_path(@model)) if @can_edit
-          DropdownItem(icon: "trash", label: t("components.model_card.delete_button.text"), path: model_path(@model), method: :delete) if @can_destroy
-          DropdownItem(icon: "flag", label: t("general.report", type: ""), path: new_model_report_path(@model)) if SiteSettings.multiuser_enabled?
+    div class: "card-footer" do
+      div class: "row" do
+        div class: "col" do
+          open_button
+          whitespace
+          status_badges @model
+        end
+        div class: "col col-auto" do
+          BurgerMenu do
+            DropdownItem(icon: "pencil", label: t("components.model_card.edit_button.text"), path: edit_model_path(@model)) if @can_edit
+            DropdownItem(icon: "trash", label: t("components.model_card.delete_button.text"), path: model_path(@model), method: :delete) if @can_destroy
+            DropdownItem(icon: "flag", label: t("general.report", type: ""), path: new_model_report_path(@model)) if SiteSettings.multiuser_enabled?
+          end
         end
       end
     end

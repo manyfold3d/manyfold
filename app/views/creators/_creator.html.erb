@@ -9,25 +9,36 @@
       <div class="card-title">
         <%= creator.name %>
       </div>
-      <div>
-        <% if creator.caption %>
+      <% if creator.caption %>
+        <div>
           <span class="card-subtitle mb-2 text-muted"><%= sanitize creator.caption %></span>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
       <%= render Components::LinkList.new links: creator.links %>
     </div>
     <div class='card-footer'>
-      <% model_count = policy_scope(Model).where(creator: creator).count %>
-      <% collection_count = policy_scope(Collection).where(creator: creator).count %>
-      <% if creator.remote? %>
-        <%= link_to "#{model_count} #{Model.model_name.human count: model_count}", creator, {class: "btn btn-primary", "aria-label": translate(".models_button.remote_label", name: creator.name)} if policy(creator).show? %>
-        <%= link_to "#{collection_count} #{Collection.model_name.human count: collection_count}", "collections?creator=" + creator.to_param, {class: "btn btn-primary", "aria-label": translate(".models_button.remote_label", name: creator.name)} if policy(creator).show? && !creator.collections.empty? %>
-        <%= link_to "⁂", creator.federails_actor.profile_url, {class: "btn btn-outline-secondary", "aria-label": translate(".visit_button.label", name: creator.name, target: "new")} %>
-      <% else %>
-        <%= link_to "#{model_count} #{Model.model_name.human count: model_count}", creator, {class: "btn btn-primary", "aria-label": translate(".models_button.label", name: creator.name)} if policy(creator).show? %>
-        <%= link_to "#{collection_count} #{Collection.model_name.human count: collection_count}", "collections?creator=" + creator.to_param, {class: "btn btn-primary", "aria-label": translate(".models_button.label", name: creator.name)} if policy(creator).show? && !creator.collections.empty? %>
-        <%= render Components::GoButton.new(icon: "pencil-fill", label: translate(".edit_button.label", name: creator.name), href: edit_creator_path(creator), variant: "outline-secondary", icon_only: true) if policy(creator).edit? %>
-      <% end %>
+      <div class='row'>
+        <% model_count = policy_scope(Model).where(creator: creator).count %>
+        <% collection_count = policy_scope(Collection).where(creator: creator).count %>
+        <div class='col'>
+          <%= if policy(creator).show?
+                link_to "#{model_count} #{Model.model_name.human count: model_count}", creator, {
+                  class: "btn btn-primary",
+                  aria: {
+                    label: translate(creator.remote? ? ".models_button.remote_label" : ".models_button.label", name: creator.name)
+                  }
+                }
+              end %>
+          <%= link_to "#{collection_count} #{Collection.model_name.human count: collection_count}", "collections?creator=" + creator.to_param, {class: "btn btn-primary", "aria-label": translate(".models_button.remote_label", name: creator.name)} if policy(creator).show? && !creator.collections.empty? %>
+        </div>
+        <div class='col col-auto'>
+          <%= render Components::BurgerMenu.new do %>
+            <%= render Components::DropdownItem.new(icon: "pencil", label: translate("general.edit"), path: edit_creator_path(creator)) if policy(creator).edit? %>
+            <%= render Components::DropdownItem.new(icon: "trash", label: translate("general.delete"), path: creator_path(creator), method: :delete) if policy(creator).destroy? %>
+            <%= render Components::DropdownItem.new(icon: "flag", label: translate("general.report", type: ""), path: new_creator_report_path(creator)) if SiteSettings.multiuser_enabled? %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
