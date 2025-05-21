@@ -6,12 +6,9 @@ cs:
     creator:
       edit_button:
         label: Upravit autora%{name}
-        text: Upravit
       models_button:
         label: Zobrazit modely podle %{name}
         remote_label: Zobrazit lokální modely podle %{name}
-      visit_button:
-        label: Navštívit
     destroy:
       success: Autor smazán!
     form:

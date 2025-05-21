@@ -6,12 +6,9 @@ de:
     creator:
       edit_button:
         label: Bearbeite ersteller %{name}
-        text: Bearbeiten
       models_button:
         label: Modelle von %{name} anzeigen
         remote_label: Lokale Modelle nach %{name} anzeigen
-      visit_button:
-        label: Besuchen
     destroy:
       success: Ersteller gelöscht!
     form:

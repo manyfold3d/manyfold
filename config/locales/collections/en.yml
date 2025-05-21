@@ -4,11 +4,15 @@ en:
     collection:
       collections_button:
         label: Show sub-collections in %{name}
+        remote_label: Show local sub-collections in %{name}
+      delete_button:
+        confirm: Are you sure you want to remove this item? No files will be affected.
+        label: Delete collection %{name}
       edit_button:
         label: Edit collection %{name}
-        text: Edit
       models_button:
         label: Show models in %{name}
+        remote_label: Show local models in %{name}
       no_preview: No preview availiable
     create:
       success: New collection details saved.

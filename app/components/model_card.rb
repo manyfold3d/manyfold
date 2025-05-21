@@ -18,10 +18,9 @@ class Components::ModelCard < Components::Base
     div class: "col mb-4" do
       div class: "card preview-card" do
         preview_frame
-        div class: "card-body" do
-          info_row
-          actions_row
-        end
+        div(class: "card-header") { server_indicator @model } if @model.remote?
+        div(class: "card-body") { info_row }
+        actions
       end
     end
   end
@@ -59,41 +58,6 @@ class Components::ModelCard < Components::Base
         @model.name
       end
       Icon(icon: "explicit", label: Model.human_attribute_name(:sensitive)) if @model.sensitive
-      br
-      server_indicator @model
-    end
-  end
-
-  def edit_menu_item
-    return unless @can_edit
-    li do
-      link_to edit_model_path(@model), class: "dropdown-item", "aria-label": translate("components.model_card.edit_button.label", name: @model.name) do
-        Icon(icon: "pencil-fill", label: t("components.model_card.edit_button.text"))
-        whitespace
-        span { t("components.model_card.edit_button.text") }
-      end
-    end
-  end
-
-  def destroy_menu_item
-    return unless @can_destroy
-    li do
-      link_to model_path(@model), {method: :delete, class: "dropdown-item", data: {confirm: translate("models.destroy.confirm")}} do
-        Icon(icon: "trash", label: t("components.model_card.delete_button.label"))
-        whitespace
-        span { t("components.model_card.delete_button.text") }
-      end
-    end
-  end
-
-  def report_menu_item
-    return unless SiteSettings.multiuser_enabled?
-    li do
-      link_to new_model_report_path(@model), class: "dropdown-item" do
-        Icon(icon: "flag", label: t("general.report", type: ""))
-        whitespace
-        span { t("general.report", type: "") }
-      end
     end
   end
 
@@ -128,23 +92,8 @@ class Components::ModelCard < Components::Base
 
   def caption
     if @model.caption
-      p class: "card-text" do
+      span class: "card-subtitle text-muted" do
         sanitize @model.caption
-      end
-    end
-  end
-
-  def menu
-    div class: "float-end" do
-      div class: "btn-group" do
-        a href: "#", role: "button", "data-bs-toggle": "dropdown", "aria-expanded": "false" do
-          Icon icon: "three-dots-vertical", label: t("general.menu")
-        end
-        ul class: "dropdown-menu dropdown-menu-end" do
-          edit_menu_item
-          destroy_menu_item
-          report_menu_item
-        end
       end
     end
   end
@@ -153,23 +102,31 @@ class Components::ModelCard < Components::Base
     div class: "row" do
       div class: "col" do
         title
+        caption
       end
       div class: "col-auto" do
         small do
           credits
-          caption
         end
       end
     end
   end
 
-  def actions_row
-    div class: "row" do
-      div class: "col" do
-        open_button
-        whitespace
-        status_badges(@model)
-        menu
+  def actions
+    div class: "card-footer" do
+      div class: "row" do
+        div class: "col" do
+          open_button
+          whitespace
+          status_badges @model
+        end
+        div class: "col col-auto" do
+          BurgerMenu do
+            DropdownItem(icon: "pencil", label: t("components.model_card.edit_button.text"), path: edit_model_path(@model), aria_label: translate("components.model_card.edit_button.label", name: @model.name)) if @can_edit
+            DropdownItem(icon: "trash", label: t("components.model_card.delete_button.text"), path: model_path(@model), method: :delete, aria_label: translate("components.model_card.delete_button.label", name: @model.name), confirm: translate("models.destroy.confirm")) if @can_destroy
+            DropdownItem(icon: "flag", label: t("general.report", type: ""), path: new_model_report_path(@model)) if SiteSettings.multiuser_enabled?
+          end
+        end
       end
     end
   end

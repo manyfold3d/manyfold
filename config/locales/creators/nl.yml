@@ -6,12 +6,9 @@ nl:
     creator:
       edit_button:
         label: Bewerk maker %{name}
-        text: Bewerken
       models_button:
         label: Toon modellen van %{name}
         remote_label:
-      visit_button:
-        label:
     destroy:
       success: Maker verwijderd!
     form:

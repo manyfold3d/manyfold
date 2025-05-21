@@ -6,7 +6,6 @@ pl:
         label: Pokaż podkolekcję w %{name}
       edit_button:
         label: Edytuj kolekcję %{name}
-        text: Edytuj
       models_button:
         label: Pokaż modele w %{name}
       no_preview: Podgląd jest niedostępny

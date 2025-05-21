@@ -6,7 +6,6 @@ nl:
         label: Toon subcollecties in %{name}
       edit_button:
         label: Bewerk collectie %{name}
-        text: Bewerken
       models_button:
         label: Toon modellen in %{name}
       no_preview: Geen voorbeeld beschikbaar

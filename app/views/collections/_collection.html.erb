@@ -14,33 +14,75 @@
     <% else %>
       <div class='preview-empty'> <p><%= t ".no_preview" %></p></div>
     <% end %>
+    <% if collection.remote? %>
+      <div class='card-header'>
+        <%= server_indicator collection %>
+      </div>
+    <% end %>
     <div class="card-body">
-      <div class="card-title">
-        <%= collection.name.careful_titleize %>
-        <br><%= server_indicator collection %>
+      <div class="row">
+        <div class="col">
+          <div class="card-title">
+            <%= collection.name.careful_titleize %>
+          </div>
+          <% if collection.caption %>
+            <span class="card-subtitle mb-2 text-muted"><%= sanitize collection.caption %></span>
+          <% end %>
+          <%= render Components::LinkList.new links: collection.links %>
+        </div>
+        <div class="col col-auto">
+          <small>
+            <ul class="list-unstyled">
+              <% if collection.creator %>
+                <li>
+                  <%= icon "person", Creator.model_name.human %>
+                  <%= link_to collection.creator.name, "collections?creator=" + collection.creator.to_param, @filters || {} %><br>
+                </li>
+              <% end %>
+              <% if collection.collection %>
+                <li>
+                  <%= icon "collection", Collection.model_name.human %>
+                  <%= link_to collection.collection.name, collection, @filters || {} %><br>
+                </li>
+              <% end %>
+            </ul>
+          </small>
+        </div>
       </div>
-      <div class="col-auto">
-        <% if collection.creator %>
-          <%= icon "person", collection.creator.model_name.human %>
-          <%= link_to collection.creator.name, "collections?creator=" + collection.creator.to_param, @filters || {} %><br>
-        <% end %>
-        <% if collection.collection %>
-          <%= icon "collection", collection.model_name.human %>
-          <%= link_to collection.collection.name, collection, @filters || {} %><br>
-        <% end %>
-        <% if collection.caption %>
-          <h6 class="card-subtitle mb-2 text-muted"><%= sanitize collection.caption %></h6>
-        <% end %>
-        <% if collection.notes && collection.notes != "" %>
-          <p class="card-text"><%= markdownify collection.notes %></p>
-        <% end %>
-        <%= render Components::LinkList.new links: collection.links %>
-      </div>
-      <div>
-        <% model_count = policy_scope(Model).where(collection: collection).count %>
-        <%= link_to "#{model_count} #{Model.model_name.human count: model_count}", collection, class: "btn btn-primary", "aria-label": translate(".models_button.label", name: collection.name) if policy(collection).show? %>
-        <%= link_to "#{collection.collections.count} #{Collection.model_name.human count: collection.collections.count}", (@filters || {}).merge(controller: "collections", collection: collection), class: "btn btn-primary", "aria-label": translate(".collections_button.label", name: collection.name) if collection.collections.count > 0 && policy(collection).show? %>
-        <%= link_to icon("pencil-fill", t(".edit_button.text")), edit_collection_path(collection), {class: "btn btn-outline-secondary", "aria-label": translate(".edit_button.label", name: collection.name)} if policy(collection).edit? %>
+    </div>
+    <div class='card-footer'>
+      <div class='row'>
+        <% model_count = policy_scope(collection.models).count %>
+        <% collection_count = policy_scope(collection.collections).count %>
+        <div class='col'>
+          <%= if policy(collection).show?
+                render Components::GoButton.new(
+                  label: "#{model_count} #{Model.model_name.human count: model_count}",
+                  aria_label: collection.remote? ?
+                    translate(".models_button.remote_label", name: collection.name) :
+                    translate(".models_button.label", name: collection.name),
+                  href: collection_path(collection),
+                  variant: "primary"
+                )
+              end %>
+          <%= if policy(collection).show? && !collection.collections.empty?
+                render Components::GoButton.new(
+                  label: "#{collection_count} #{Collection.model_name.human count: collection_count}",
+                  aria_label: collection.remote? ?
+                    translate(".collections_button.remote_label", name: collection.name) :
+                    translate(".collections_button.label", name: collection.name),
+                  href: collections_path(collection: collection),
+                  variant: "primary"
+                )
+              end %>
+        </div>
+        <div class='col col-auto'>
+          <%= render Components::BurgerMenu.new do %>
+            <%= render Components::DropdownItem.new(icon: "pencil", label: translate("general.edit"), path: edit_collection_path(collection), aria_label: translate(".edit_button.label", name: collection.name)) if policy(collection).edit? %>
+            <%= render Components::DropdownItem.new(icon: "trash", label: translate("general.delete"), path: collection_path(collection), method: :delete, aria_label: translate(".delete_button.label", name: collection.name), confirm: t(".delete_button.confirm")) if policy(collection).destroy? %>
+            <%= render Components::DropdownItem.new(icon: "flag", label: translate("general.report", type: ""), path: new_collection_report_path(collection)) if SiteSettings.multiuser_enabled? %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
