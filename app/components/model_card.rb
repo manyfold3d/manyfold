@@ -19,12 +19,8 @@ class Components::ModelCard < Components::Base
       div class: "card preview-card" do
         preview_frame
         div(class: "card-header") { server_indicator @model } if @model.remote?
-        div class: "card-body" do
-          info_row
-        end
-        div class: "card-footer" do
-          actions_row
-        end
+        div(class: "card-body") { info_row }
+        actions
       end
     end
   end
@@ -129,23 +125,8 @@ class Components::ModelCard < Components::Base
 
   def caption
     if @model.caption
-      p class: "card-text" do
+      span class: "card-subtitle text-muted" do
         sanitize @model.caption
-      end
-    end
-  end
-
-  def menu
-    div class: "float-end" do
-      div class: "btn-group" do
-        a href: "#", role: "button", "data-bs-toggle": "dropdown", "aria-expanded": "false" do
-          Icon icon: "three-dots-vertical", label: t("general.menu")
-        end
-        ul class: "dropdown-menu dropdown-menu-end" do
-          edit_menu_item
-          destroy_menu_item
-          report_menu_item
-        end
       end
     end
   end
@@ -154,23 +135,29 @@ class Components::ModelCard < Components::Base
     div class: "row" do
       div class: "col" do
         title
+        caption
       end
       div class: "col-auto" do
         small do
           credits
-          caption
         end
       end
     end
   end
 
-  def actions_row
-    div class: "row" do
-      div class: "col" do
+  def actions
+    div class: "card-footer row" do
+      div(class: "col") do
         open_button
         whitespace
-        status_badges(@model)
-        menu
+        status_badges @model
+      end
+      div(class: "col col-auto") do
+        BurgerMenu do
+          edit_menu_item
+          destroy_menu_item
+          report_menu_item
+        end
       end
     end
   end
