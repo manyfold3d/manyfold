@@ -228,7 +228,7 @@ module ApplicationHelper
   def server_indicator(object)
     actor = object.respond_to?(:federails_actor) ? object.federails_actor : object
     return if !SiteSettings.federation_enabled? || actor.local?
-    link_to object.federails_actor.profile_url, class: "link-secondary link-underline-opacity-0 link-underline-opacity-100-hover" do
+    link_to actor.profile_url, class: "link-secondary link-underline-opacity-0 link-underline-opacity-100-hover" do
       safe_join([
         "⁂",
         actor.server
