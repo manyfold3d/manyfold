@@ -136,7 +136,8 @@ class ModelFilesController < ApplicationController
   def bulk_update_params
     params.permit(
       :presupported,
-      :y_up
+      :y_up,
+      :previewable
     ).compact_blank
   end
 

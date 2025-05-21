@@ -4,6 +4,7 @@
     <%= checkbox_input_row form, :printed, checked: current_user.printed?(@file) %>
     <%= checkbox_input_row form, :presupported %>
     <%= checkbox_input_row form, :y_up %>
+    <%= checkbox_input_row form, :previewable %>
 
     <% unless @file.presupported %>
       <div class="row mb-3 input-group">
