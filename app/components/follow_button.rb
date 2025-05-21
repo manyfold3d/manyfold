@@ -11,10 +11,10 @@ class Components::FollowButton < Components::Base
   end
 
   def view_template
-    Button(
+    DoButton(
       icon: @icon,
       href: @path,
-      text: translate(@i18n_key, name: @name),
+      label: translate(@i18n_key, name: @name),
       method: @method,
       variant: (@following == :pending) ? "outline-primary " : "primary"
     )
