@@ -6,7 +6,6 @@ de:
         label: Untersammlungen in %{name} anzeigen
       edit_button:
         label: Sammlung bearbeiten %{name}
-        text: Bearbeiten
       models_button:
         label: Modelle in %{name} anzeigen
       no_preview: keine Vorschau verfügbar

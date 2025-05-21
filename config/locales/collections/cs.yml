@@ -6,7 +6,6 @@ cs:
         label: Zobrazit podkolekce v %{name}
       edit_button:
         label: Upravit kolekci %{name}
-        text: Upravit
       models_button:
         label: Zobrazit modely v %{name}
       no_preview: Není k dispozici žádný náhled

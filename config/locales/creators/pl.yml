@@ -6,12 +6,9 @@ pl:
     creator:
       edit_button:
         label: Edytuj twórcę %{name}
-        text: Edytuj
       models_button:
         label: Pokaż modele według %{name}
         remote_label: Pokaż lokalne modele według %{name}
-      visit_button:
-        label: Odwiedź
     destroy:
       success: Twórca usunięty!
     form:

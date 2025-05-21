@@ -6,7 +6,6 @@ es:
         label: Mostrar subcolecciones en %{name}
       edit_button:
         label: Editar colección %{name}
-        text: Editar
       models_button:
         label: Mostrar modelos en %{name}
       no_preview: vista previa no disponible

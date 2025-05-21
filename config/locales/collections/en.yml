@@ -6,7 +6,6 @@ en:
         label: Show sub-collections in %{name}
       edit_button:
         label: Edit collection %{name}
-        text: Edit
       models_button:
         label: Show models in %{name}
       no_preview: No preview availiable

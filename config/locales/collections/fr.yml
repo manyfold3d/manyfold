@@ -6,7 +6,6 @@ fr:
         label: Montrer les sous-collections dans %{name}
       edit_button:
         label: Modifier la collection %{name}
-        text: Modifier
       models_button:
         label: Voir les modèles dans %{name}
       no_preview: pas d'aperçu disponible

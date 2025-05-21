@@ -6,12 +6,9 @@ en:
     creator:
       edit_button:
         label: Edit creator %{name}
-        text: Edit
       models_button:
         label: Show models by %{name}
         remote_label: Show local models by %{name}
-      visit_button:
-        label: Visit
     destroy:
       success: Creator deleted!
     form:
