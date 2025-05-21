@@ -11,7 +11,7 @@ class Components::FollowButton < Components::Base
   end
 
   def view_template
-    Button(
+    DoButton(
       icon: @icon,
       href: @path,
       label: translate(@i18n_key, name: @name),

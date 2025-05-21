@@ -7,7 +7,7 @@ class Components::ReportButton < Components::Base
   end
 
   def view_template
-    Button(
+    GoButton(
       icon: "flag",
       href: @path,
       label: t("general.report", type: @object.model_name.human),

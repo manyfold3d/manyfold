@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Components::Button < Components::BaseButton
+class Components::DoButton < Components::BaseButton
   include Phlex::Rails::Helpers::ButtonTo
 
   def helper(*args)
