@@ -3,7 +3,7 @@
 class ApplicationPolicy
   attr_reader :user, :record
 
-  STANDARD_VIEW_PERMISSIONS = ["view", "edit", "own"]
+  STANDARD_VIEW_PERMISSIONS = ["preview", "view", "edit", "own"]
   STANDARD_EDIT_PERMISSIONS = ["edit", "own"]
 
   def initialize(user, record)
