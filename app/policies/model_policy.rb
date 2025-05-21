@@ -5,10 +5,7 @@ class ModelPolicy < ApplicationPolicy
 
   def merge?
     all_of(
-      one_of(
-        user&.is_moderator?,
-        check_permissions(record, ["edit", "own"], user)
-      ),
+      update?,
       none_of(
         SiteSettings.demo_mode_enabled?
       )
