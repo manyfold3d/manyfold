@@ -1,7 +1,5 @@
 <% unless links.empty? %>
   <%= card :secondary, Link.model_name.human(count: 100) do %>
-    <ul class='links'>
-      <%= render_component_collection Components::Link, :link, links %>
-    </ul>
+    <%= render Components::LinkList.new links: links %>
   <% end %>
 <% end %>

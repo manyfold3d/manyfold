@@ -8,9 +8,7 @@
       <% if creator.caption %>
         <small class="card-subtitle mb-2 text-muted"><%= sanitize creator.caption %></small>
       <% end %>
-      <ul class='links'>
-        <%= render_component_collection Components::Link, :link, creator.links %>
-      </ul>
+      <%= render Components::LinkList.new links: creator.links %>
       <% model_count = policy_scope(Model).where(creator: creator).count %>
       <% collection_count = policy_scope(Collection).where(creator: creator).count %>
       <% if creator.remote? %>
