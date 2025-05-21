@@ -1,14 +1,22 @@
 <div class="col mb-4">
   <div class="card">
+    <% if creator.remote? %>
+      <div class='card-header'>
+        <%= server_indicator creator %>
+      </div>
+    <% end %>
     <div class="card-body <%= "remote-actor" if creator.remote? %>">
       <div class="card-title">
         <%= creator.name %>
-        <br><%= server_indicator creator %>
       </div>
-      <% if creator.caption %>
-        <small class="card-subtitle mb-2 text-muted"><%= sanitize creator.caption %></small>
-      <% end %>
+      <div>
+        <% if creator.caption %>
+          <span class="card-subtitle mb-2 text-muted"><%= sanitize creator.caption %></span>
+        <% end %>
+      </div>
       <%= render Components::LinkList.new links: creator.links %>
+    </div>
+    <div class='card-footer'>
       <% model_count = policy_scope(Model).where(creator: creator).count %>
       <% collection_count = policy_scope(Collection).where(creator: creator).count %>
       <% if creator.remote? %>
@@ -18,7 +26,7 @@
       <% else %>
         <%= link_to "#{model_count} #{Model.model_name.human count: model_count}", creator, {class: "btn btn-primary", "aria-label": translate(".models_button.label", name: creator.name)} if policy(creator).show? %>
         <%= link_to "#{collection_count} #{Collection.model_name.human count: collection_count}", "collections?creator=" + creator.to_param, {class: "btn btn-primary", "aria-label": translate(".models_button.label", name: creator.name)} if policy(creator).show? && !creator.collections.empty? %>
-        <%= link_to icon("pencil-fill", t(".edit_button.text")), edit_creator_path(creator), {class: "btn btn-outline-secondary", "aria-label": translate(".edit_button.label", name: creator.name)} if policy(creator).edit? %>
+        <%= render Components::GoButton.new(icon: "pencil-fill", label: translate(".edit_button.label", name: creator.name), href: edit_creator_path(creator), variant: "outline-secondary", icon_only: true) if policy(creator).edit? %>
       <% end %>
     </div>
   </div>

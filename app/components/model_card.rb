@@ -18,8 +18,11 @@ class Components::ModelCard < Components::Base
     div class: "col mb-4" do
       div class: "card preview-card" do
         preview_frame
+        div(class: "card-header") { server_indicator @model } if @model.remote?
         div class: "card-body" do
           info_row
+        end
+        div class: "card-footer" do
           actions_row
         end
       end
@@ -59,8 +62,6 @@ class Components::ModelCard < Components::Base
         @model.name
       end
       Icon(icon: "explicit", label: Model.human_attribute_name(:sensitive)) if @model.sensitive
-      br
-      server_indicator @model
     end
   end
 
