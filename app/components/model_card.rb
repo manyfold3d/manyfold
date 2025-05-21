@@ -58,7 +58,7 @@ class Components::ModelCard < Components::Base
       a "data-editable-field": "model[name]", "data-editable-path": model_path(@model), contenteditable: "plaintext-only", "data-controller": "editable", "data-action": "focus->editable#onFocus blur->editable#onBlur" do
         @model.name
       end
-      icon("explicit", Model.human_attribute_name(:sensitive)) if @model.sensitive
+      Icon(icon: "explicit", label: Model.human_attribute_name(:sensitive)) if @model.sensitive
       br
       server_indicator @model
     end
@@ -68,7 +68,7 @@ class Components::ModelCard < Components::Base
     return unless @can_edit
     li do
       link_to edit_model_path(@model), class: "dropdown-item", "aria-label": translate("components.model_card.edit_button.label", name: @model.name) do
-        icon("pencil-fill", t("components.model_card.edit_button.text"))
+        Icon(icon: "pencil-fill", label: t("components.model_card.edit_button.text"))
         whitespace
         span { t("components.model_card.edit_button.text") }
       end
@@ -79,7 +79,7 @@ class Components::ModelCard < Components::Base
     return unless @can_destroy
     li do
       link_to model_path(@model), {method: :delete, class: "dropdown-item", data: {confirm: translate("models.destroy.confirm")}} do
-        icon("trash", t("components.model_card.delete_button.label"))
+        Icon(icon: "trash", label: t("components.model_card.delete_button.label"))
         whitespace
         span { t("components.model_card.delete_button.text") }
       end
@@ -90,7 +90,7 @@ class Components::ModelCard < Components::Base
     return unless SiteSettings.multiuser_enabled?
     li do
       link_to new_model_report_path(@model), class: "dropdown-item" do
-        icon("flag", t("general.report", type: ""))
+        Icon(icon: "flag", label: t("general.report", type: ""))
         whitespace
         span { t("general.report", type: "") }
       end
@@ -113,13 +113,13 @@ class Components::ModelCard < Components::Base
     ul class: "list-unstyled" do
       if @model.creator
         li do
-          icon "person", Creator.model_name.human
+          Icon icon: "person", label: Creator.model_name.human
           link_to @model.creator.name, @model.creator, "aria-label": [Creator.model_name.human, @model.creator.name].join(": ")
         end
       end
       if @model.collection
         li do
-          icon "collection", @model.collection.model_name.human
+          Icon icon: "collection", label: @model.collection.model_name.human
           link_to @model.collection.name, @model.collection, "aria-label": [@model.collection.model_name.human, @model.collection.name].join(": ")
         end
       end
@@ -138,7 +138,7 @@ class Components::ModelCard < Components::Base
     div class: "float-end" do
       div class: "btn-group" do
         a href: "#", role: "button", "data-bs-toggle": "dropdown", "aria-expanded": "false" do
-          icon "three-dots-vertical", t("general.menu")
+          Icon icon: "three-dots-vertical", label: t("general.menu")
         end
         ul class: "dropdown-menu dropdown-menu-end" do
           edit_menu_item

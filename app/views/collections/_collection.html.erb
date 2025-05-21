@@ -34,9 +34,7 @@
         <% if collection.notes && collection.notes != "" %>
           <p class="card-text"><%= markdownify collection.notes %></p>
         <% end %>
-        <ul class='links'>
-          <%= render_component_collection Components::Link, :link, collection.links %>
-        </ul>
+        <%= render Components::LinkList.new links: collection.links %>
       </div>
       <div>
         <% model_count = policy_scope(Model).where(collection: collection).count %>

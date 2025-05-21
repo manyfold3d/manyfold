@@ -2,13 +2,13 @@ module ActivityHelper
   def status_icon(status)
     case status
     when :queued
-      icon "hourglass", translate("activity_helper.status_icon.queued")
+      render Components::Icon.new(icon: "hourglass", label: translate("activity_helper.status_icon.queued"))
     when :working
-      icon "gear", translate("activity_helper.status_icon.working")
+      render Components::Icon.new(icon: "gear", label: translate("activity_helper.status_icon.working"), effect: "icon-spin")
     when :completed
-      icon "check2-circle", translate("activity_helper.status_icon.completed")
+      render Components::Icon.new(icon: "check2-circle", label: translate("activity_helper.status_icon.completed"))
     when :failed
-      icon "exclamation-diamond", translate("activity_helper.status_icon.error")
+      render Components::Icon.new(icon: "exclamation-diamond", label: translate("activity_helper.status_icon.error"))
     end
   end
 

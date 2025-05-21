@@ -50,7 +50,7 @@ class Components::ResolveButton < Components::Base
     text = t @options[:i18n_key]
     if @problem.in_progress
       link_to("#", class: "btn btn-#{@options[:button_type]} disabled") do
-        span(class: "spinner-border spinner-border-sm") { icon("", "") }
+        span(class: "spinner-border spinner-border-sm") { Icon(icon: "", label: "") }
         whitespace
         span { text }
       end
@@ -65,7 +65,7 @@ class Components::ResolveButton < Components::Base
         },
         method: :post
       ) do
-        icon(@options[:icon], text)
+        Icon(icon: @options[:icon], label: text)
         whitespace
         span { text }
       end

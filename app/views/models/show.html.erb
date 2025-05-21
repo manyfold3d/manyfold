@@ -109,8 +109,8 @@
       <% end %>
     </table>
     <%= render Components::FollowButton.new(follower: current_user, target: @model) unless @model.remote? %>
-    <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_model_path(@model), class: "btn btn-primary" if policy(@model).edit? %>
-    <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), model_path(@model), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: translate("models.destroy.confirm")}} if policy(@model).destroy? %>
+    <%= render Components::Link.new(icon: "pencil", text: t("general.edit"), href: edit_model_path(@model), variant: "primary") if policy(@model).edit? %>
+    <%= render Components::Button.new(icon: "trash", text: t("general.delete"), href: model_path(@model), method: :delete, variant: "outline-danger") if policy(@model).destroy? %>
   <% end %>
 
   <div class="mb-3 w-100 text-center">
@@ -118,7 +118,7 @@
   </div>
 
   <%= card :secondary, t("layouts.card_list_page.actions_heading") do %>
-    <%= link_to safe_join([icon("flag", t("general.report", type: Model.model_name.human)), t("general.report", type: Model.model_name.human)], " "), new_model_report_path(@model), class: "btn btn-outline-warning" %>
+    <%= render Components::ReportButton.new(object: @model, path: new_model_report_path(@model)) %>
   <% end if SiteSettings.multiuser_enabled? %>
 
   <% if !@model.parents.empty? && policy(@model).merge? %>

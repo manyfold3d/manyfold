@@ -8,7 +8,6 @@ class Components::Base < Phlex::HTML
   include Phlex::Rails::Helpers::Translate
 
   register_value_helper :current_user
-  register_output_helper :icon
 
   if Rails.env.development?
     def before_template
