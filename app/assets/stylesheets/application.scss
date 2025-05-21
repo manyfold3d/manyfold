@@ -29,3 +29,8 @@ p.alert:empty,
 p.notice:empty {
 	display: none;
 }
+
+.button_to,
+.button_to .div {
+	display: inline;
+}

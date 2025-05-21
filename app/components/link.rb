@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Components::Button < Components::Base
-  include Phlex::Rails::Helpers::ButtonTo
+class Components::Link < Components::Base
+  include Phlex::Rails::Helpers::LinkTo
 
   def initialize(icon:, text:, href:, variant:, method: nil)
     @icon = icon
@@ -12,7 +12,7 @@ class Components::Button < Components::Base
   end
 
   def view_template
-    button_to(@href, method: @method, class: "btn btn-#{@variant}") do
+    link_to(@href, method: @method, class: "btn btn-#{@variant}") do
       if @icon
         Icon(icon: @icon, label: @text)
         whitespace
