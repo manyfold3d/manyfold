@@ -10,7 +10,7 @@ class Components::ReportButton < Components::Base
     Button(
       icon: "flag",
       href: @path,
-      text: t("general.report", type: @object.model_name.human),
+      label: t("general.report", type: @object.model_name.human),
       variant: "outline-warning"
     )
   end

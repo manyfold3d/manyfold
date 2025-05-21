@@ -3,9 +3,9 @@
 class Components::Link < Components::Base
   include Phlex::Rails::Helpers::LinkTo
 
-  def initialize(icon:, text:, href:, variant:, method: nil)
+  def initialize(icon:, label:, href:, variant:, method: nil)
     @icon = icon
-    @text = text
+    @label = label
     @href = href
     @variant = variant
     @method = method
@@ -14,10 +14,10 @@ class Components::Link < Components::Base
   def view_template
     link_to(@href, method: @method, class: "btn btn-#{@variant}") do
       if @icon
-        Icon(icon: @icon, label: @text)
+        Icon(icon: @icon, label: @label)
         whitespace
       end
-      span { @text }
+      span { @label }
     end
   end
 end

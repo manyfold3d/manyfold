@@ -14,7 +14,7 @@ class Components::FollowButton < Components::Base
     Button(
       icon: @icon,
       href: @path,
-      text: translate(@i18n_key, name: @name),
+      label: translate(@i18n_key, name: @name),
       method: @method,
       variant: (@following == :pending) ? "outline-primary " : "primary"
     )
