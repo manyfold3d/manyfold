@@ -1,6 +1,7 @@
 class ModelFilePolicy < ApplicationPolicy
   def show?
-    ModelPolicy.new(@user, @record.model).show?
+    return false unless ModelPolicy.new(@user, @record.model).show?
+    @record.previewable? || check_permissions(@record.model, ["view", "edit", "own"], @user)
   end
 
   def create?
