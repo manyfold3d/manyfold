@@ -56,19 +56,30 @@
         <% collection_count = policy_scope(collection.collections).count %>
         <div class='col'>
           <%= if policy(collection).show?
-                link_to "#{model_count} #{Model.model_name.human count: model_count}", collection, {
-                  class: "btn btn-primary",
-                  aria: {
-                    label: translate(collection.remote? ? ".models_button.remote_label" : ".models_button.label", name: collection.name)
-                  }
-                }
+                render Components::GoButton.new(
+                  label: "#{model_count} #{Model.model_name.human count: model_count}",
+                  aria_label: collection.remote? ?
+                    translate(".models_button.remote_label", name: collection.name) :
+                    translate(".models_button.label", name: collection.name),
+                  href: collection_path(collection),
+                  variant: "primary"
+                )
               end %>
-          <%= link_to "#{collection_count} #{Collection.model_name.human count: collection_count}", (@filters || {}).merge(controller: "collections", collection: collection), {class: "btn btn-primary", "aria-label": translate(".collections_button.label", name: collection.name)} if collection.collections.count > 0 && policy(collection).show? %>
+          <%= if policy(collection).show? && !collection.collections.empty?
+                render Components::GoButton.new(
+                  label: "#{collection_count} #{Collection.model_name.human count: collection_count}",
+                  aria_label: collection.remote? ?
+                    translate(".collections_button.remote_label", name: collection.name) :
+                    translate(".collections_button.label", name: collection.name),
+                  href: collections_path(collection: collection),
+                  variant: "primary"
+                )
+              end %>
         </div>
         <div class='col col-auto'>
           <%= render Components::BurgerMenu.new do %>
-            <%= render Components::DropdownItem.new(icon: "pencil", label: translate("general.edit"), path: edit_collection_path(collection)) if policy(collection).edit? %>
-            <%= render Components::DropdownItem.new(icon: "trash", label: translate("general.delete"), path: collection_path(collection), method: :delete) if policy(collection).destroy? %>
+            <%= render Components::DropdownItem.new(icon: "pencil", label: translate("general.edit"), path: edit_collection_path(collection), aria_label: translate(".edit_button.label", name: collection.name)) if policy(collection).edit? %>
+            <%= render Components::DropdownItem.new(icon: "trash", label: translate("general.delete"), path: collection_path(collection), method: :delete, aria_label: translate(".delete_button.label", name: collection.name), confirm: t(".delete_button.confirm")) if policy(collection).destroy? %>
             <%= render Components::DropdownItem.new(icon: "flag", label: translate("general.report", type: ""), path: new_collection_report_path(collection)) if SiteSettings.multiuser_enabled? %>
           <% end %>
         </div>
