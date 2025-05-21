@@ -20,23 +20,35 @@
       </div>
     <% end %>
     <div class="card-body">
-      <div class="card-title">
-        <%= collection.name.careful_titleize %>
+      <div class="row">
+        <div class="col">
+          <div class="card-title">
+            <%= collection.name.careful_titleize %>
+          </div>
+          <% if collection.caption %>
+            <span class="card-subtitle mb-2 text-muted"><%= sanitize collection.caption %></span>
+          <% end %>
+          <%= render Components::LinkList.new links: collection.links %>
+        </div>
+        <div class="col col-auto">
+          <small>
+            <ul class="list-unstyled">
+              <% if collection.creator %>
+                <li>
+                  <%= icon "person", Creator.model_name.human %>
+                  <%= link_to collection.creator.name, "collections?creator=" + collection.creator.to_param, @filters || {} %><br>
+                </li>
+              <% end %>
+              <% if collection.collection %>
+                <li>
+                  <%= icon "collection", Collection.model_name.human %>
+                  <%= link_to collection.collection.name, collection, @filters || {} %><br>
+                </li>
+              <% end %>
+            </ul>
+          </small>
+        </div>
       </div>
-      <div>
-        <% if collection.creator %>
-          <%= icon "person", collection.creator.model_name.human %>
-          <%= link_to collection.creator.name, "collections?creator=" + collection.creator.to_param, @filters || {} %><br>
-        <% end %>
-        <% if collection.collection %>
-          <%= icon "collection", collection.model_name.human %>
-          <%= link_to collection.collection.name, collection, @filters || {} %><br>
-        <% end %>
-        <% if collection.caption %>
-          <span class="card-subtitle mb-2 text-muted"><%= sanitize collection.caption %></span>
-        <% end %>
-      </div>
-      <%= render Components::LinkList.new links: collection.links %>
     </div>
     <div class='card-footer'>
       <div class='row'>
