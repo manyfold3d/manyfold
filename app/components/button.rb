@@ -3,12 +3,13 @@
 class Components::Button < Components::Base
   include Phlex::Rails::Helpers::ButtonTo
 
-  def initialize(icon:, label:, href:, variant:, method: nil)
+  def initialize(icon:, label:, href:, variant:, method: nil, icon_only: false)
     @icon = icon
     @label = label
     @href = href
     @variant = variant
     @method = method
+    @icon_only = icon_only
   end
 
   def view_template
@@ -17,7 +18,7 @@ class Components::Button < Components::Base
         Icon(icon: @icon, label: @label)
         whitespace
       end
-      span { @label }
+      span { @label } unless @icon_only
     end
   end
 end
