@@ -28,7 +28,7 @@ module ModelsHelper
   end
 
   def problems_including_files(model)
-    policy_scope(Problem).where(problematic: model.model_files + [self])
+    policy_scope(Problem).where(problematic: policy_scope(model.model_files) + [self])
   end
 
   def license_select_options(selected: nil)

@@ -76,13 +76,13 @@ class ModelFilesController < ApplicationController
   end
 
   def bulk_edit
-    @files = policy_scope(ModelFile).without_special.where(model: @model)
+    @files = policy_scope(@model.model_files.without_special)
   end
 
   def bulk_update
     hash = bulk_update_params
     ids_to_update = params[:model_files].keep_if { |key, value| value == "1" }.keys
-    files = policy_scope(ModelFile).without_special.where(model: @model, public_id: ids_to_update)
+    files = policy_scope(@model.model_files.without_special).where(public_id: ids_to_update)
     files.each do |file|
       ActiveRecord::Base.transaction do
         current_user.set_list_state(file, :printed, params[:printed] === "1")
@@ -155,15 +155,16 @@ class ModelFilesController < ApplicationController
   end
 
   def get_file
+    scope = policy_scope(@model.model_files)
     # Check for signed download URLs
     if has_signed_id?
-      @file = @model.model_files.find_signed!(params[:id], purpose: "download")
+      @file = scope.find_signed!(params[:id], purpose: "download")
       skip_authorization
     else
       begin
-        @file = @model.model_files.find_param(params[:id])
+        @file = scope.find_param(params[:id])
       rescue ActiveRecord::RecordNotFound
-        @file = @model.model_files.find_by!(filename: [params[:id], params[:format]].join("."))
+        @file = scope.find_by!(filename: [params[:id], params[:format]].join("."))
       end
       authorize @file
     end
