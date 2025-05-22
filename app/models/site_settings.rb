@@ -89,8 +89,8 @@ class SiteSettings < RailsSettings::Base
       show_grid: true,
       enable_pan_zoom: false,
       background_colour: "#000000",
-      object_colour: "#cccccc",
-      render_style: "normals"
+      object_colour: "#ffffff",
+      render_style: "original"
     )
 
     PAGINATION = ActiveSupport::HashWithIndifferentAccess.new(
