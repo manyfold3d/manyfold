@@ -172,6 +172,29 @@ export class OffscreenRenderer {
         }
       }
     })
+    // Transform coordinate system and rescale for LDraw
+    if (this.settings.format == "ldr" || this.settings.format == "mpd") {
+      const coordSystemTransform = new THREE.Matrix4()
+      coordSystemTransform.set(
+        0.4,
+        0,
+        0,
+        0, // x -> x
+        0,
+        -0.4,
+        0,
+        0, // y -> -y
+        0,
+        0,
+        -0.4,
+        0, // z -> -z
+        0,
+        0,
+        0,
+        1
+      )
+      object.applyMatrix4(coordSystemTransform)
+    }
     // Transform to screen coords from print
     if (this.settings.yUp !== 'true') {
       const coordSystemTransform = new THREE.Matrix4()
