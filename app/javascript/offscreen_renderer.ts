@@ -123,7 +123,7 @@ export class OffscreenRenderer {
       } else if (LoaderClass === LDrawLoader) {
         loader.setConditionalLineMaterial(LDrawConditionalLineMaterial);
         loader.setPartsLibraryPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/');
-        await loader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/colors/ldcfgalt.ldr');
+        await loader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/LDConfig.ldr');
       }
       // Load
       loader.load(
