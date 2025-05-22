@@ -239,6 +239,7 @@ en:
       permissions:
         edit: Can edit
         own: Owner (can view, edit, delete, and share)
+        preview: 'Preview: specific previewable files only'
         view: View only
       subject:
         placeholder: Email address, account name, or role

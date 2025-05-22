@@ -42,4 +42,19 @@ describe ModelPolicy::Scope do
       expect(scope.resolve).not_to include model
     end
   end
+
+  context "when granting preview" do
+    let(:model) { create(:model) }
+
+    it "doesn't find model without permission" do
+      scope = described_class.new(nil, Model)
+      expect(scope.resolve).not_to include model
+    end
+
+    it "finds model if preview grant exists" do
+      model.grant_permission_to "preview", nil
+      scope = described_class.new(nil, Model)
+      expect(scope.resolve).to include model
+    end
+  end
 end

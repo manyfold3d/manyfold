@@ -43,5 +43,24 @@ describe ModelPolicy do
         expect(policy).not_to permit(member, model)
       end
     end
+
+    context "with preview granted" do
+      it "allows preview items with no user" do
+        model.grant_permission_to "preview", nil
+        expect(policy).to permit(nil, model)
+      end
+
+      it "allows user with standard permissions to preview" do
+        model.revoke_all_permissions(Role.find_by!(name: :member))
+        model.grant_permission_to "preview", nil
+        expect(policy).to permit(member, model)
+      end
+
+      it "allows user with specific preview grant" do
+        model.revoke_all_permissions(Role.find_by!(name: :member))
+        model.grant_permission_to "preview", member
+        expect(policy).to permit(member, model)
+      end
+    end
   end
 end

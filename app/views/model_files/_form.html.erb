@@ -9,7 +9,7 @@
     <% unless @file.presupported %>
       <div class="row mb-3 input-group">
         <%= form.label :presupported_version_id, class: "col-sm-2 col-form-label" %>
-        <%= form.collection_select :presupported_version_id, @model.model_files.presupported, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
+        <%= form.collection_select :presupported_version_id, policy_scope(@model.model_files).presupported, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
       </div>
     <% end %>
   <% end %>
