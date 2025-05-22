@@ -155,12 +155,12 @@ class ModelFilesController < ApplicationController
   end
 
   def get_file
-    scope = policy_scope(@model.model_files)
     # Check for signed download URLs
     if has_signed_id?
-      @file = scope.find_signed!(params[:id], purpose: "download")
+      @file = @model.model_files.find_signed!(params[:id], purpose: "download")
       skip_authorization
     else
+      scope = policy_scope(@model.model_files)
       begin
         @file = scope.find_param(params[:id])
       rescue ActiveRecord::RecordNotFound
