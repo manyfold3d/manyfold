@@ -84,6 +84,7 @@ en:
           summary_html: The folder and files that make up this model will be moved from:<br> <code>%{from}</code><br> to<br> <code>%{to}</code>
           'yes': Yes, move the files
       path: Path
+      preview: This is just a preview of the complete model, which contains %{count} more files. Contact the model owner to get full access.
       rescan: Rescan files
       search: Search the Internet for models with this name
       submit: Upload Files

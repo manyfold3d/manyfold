@@ -26,6 +26,7 @@ class ModelsController < ApplicationController
     respond_to do |format|
       format.html do
         files = policy_scope(@model.model_files).without_special
+        @locked_files = @model.model_files.without_special.count - files.count
         @images = files.select(&:is_image?)
         @images.unshift(@model.preview_file) if @images.delete(@model.preview_file)
         if helpers.file_list_settings["hide_presupported_versions"]
@@ -35,6 +36,7 @@ class ModelsController < ApplicationController
         files = files.includes(:presupported_version, :problems)
         files = files.reject(&:is_image?)
         @groups = helpers.group(files)
+        @num_files = files.count
         render layout: "card_list_page"
       end
       format.zip do
