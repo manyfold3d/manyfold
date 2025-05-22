@@ -19,7 +19,7 @@ import { SSAOPass } from 'three/addons/postprocessing/SSAOPass.js'
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js'
 import { CanvasProxy } from 'src/canvas_proxy'
-import { LDrawConditionalLineMaterial } from 'three/addons/materials/LDrawConditionalLineMaterial.js';
+import { LDrawConditionalLineMaterial } from 'three/addons/materials/LDrawConditionalLineMaterial.js'
 
 const loaders = {
   '3mf': ThreeMFLoader,
@@ -121,9 +121,9 @@ export class OffscreenRenderer {
       } else if (LoaderClass === DRACOLoader) {
         loader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
       } else if (LoaderClass === LDrawLoader) {
-        loader.setConditionalLineMaterial(LDrawConditionalLineMaterial);
-        loader.setPartsLibraryPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/');
-        await loader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/LDConfig.ldr');
+        loader.setConditionalLineMaterial(LDrawConditionalLineMaterial)
+        loader.setPartsLibraryPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/')
+        await loader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/LDConfig.ldr')
       }
       // Load
       loader.load(
@@ -173,7 +173,7 @@ export class OffscreenRenderer {
       }
     })
     // Transform coordinate system and rescale for LDraw
-    if (this.settings.format == "ldr" || this.settings.format == "mpd") {
+    if (this.settings.format === 'ldr' || this.settings.format === 'mpd') {
       const coordSystemTransform = new THREE.Matrix4()
       coordSystemTransform.set(
         0.4,
