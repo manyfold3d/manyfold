@@ -4221,7 +4221,7 @@ __metadata:
     postcss: ^8.5.3
     postcss-cli: ^11.0.1
     sass-embedded: ^1.89.0
-    three: ^0.176.0
+    three: "manyfold3d/three.js#ldraw-materials"
     threejs-webworker-3mf-loader: "https://github.com/manyfold3d/threejs-webworker-3mf-loader"
     tom-select: ^2.4.3
     ts-standard: ^12.0.2
@@ -5869,17 +5869,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"three@manyfold3d/three.js#ldraw-materials":
+  version: 0.176.0
+  resolution: "three@https://github.com/manyfold3d/three.js.git#commit=fefbb4cda84bf06e885b4d0e4a55b9d2a7c8e34e"
+  checksum: c55ecf292630c36910d55a8f9ab200872d4d2298155f0914a4e190d9ea0c7e592b8cfa6ee419a29aa9872cbca5b7b6bb44279cf65ce26bc62c197d7435b4c56a
+  languageName: node
+  linkType: hard
+
 "three@npm:^0.164.1":
   version: 0.164.1
   resolution: "three@npm:0.164.1"
   checksum: 64a1b713cd14b53af12858ad1b89a9daaa493ee2a42384480e408ec3add6cd474811b34a5faa4a3611398db39ed86afb3a96b4d0a54a2feaacc9c5dc54cf5c8a
-  languageName: node
-  linkType: hard
-
-"three@npm:^0.176.0":
-  version: 0.176.0
-  resolution: "three@npm:0.176.0"
-  checksum: 660040290fca89ec3c7a5319b384218c2fb867d5191addb0507012e3beeefb57dfde0823655b675ce2fcf0b2ca4287a7b63b559b7a575a0c62a7b80c99fb142b
   languageName: node
   linkType: hard
 

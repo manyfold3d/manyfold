@@ -77,7 +77,7 @@ class ModelFile < ApplicationRecord
   end
 
   def is_renderable?
-    ["stl", "obj", "3mf", "ply", "gltf", "glb", "drc", "fbx", "3ds", "gcode"].include? extension
+    ["stl", "obj", "3mf", "ply", "gltf", "glb", "drc", "fbx", "3ds", "gcode", "mpd", "ldr"].include? extension
   end
 
   def mime_type
