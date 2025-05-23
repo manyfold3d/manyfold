@@ -17,14 +17,16 @@
     </div>
   <% end %>
 
-  <div class="row mb-3 input-group">
+  <div class="row mb-3 input-group" data-turbo-permanent>
     <%= form.label :files, t(".files.label"), class: "col-sm-2 col-form-label" %>
     <div class='col-sm-10 ps-0'>
-      <%= content_tag :div, nil,
-            "data-controller": "upload",
-            "data-max-file-size": SiteSettings.max_file_upload_size,
-            "data-allowed-file-types": input_accept_string,
-            "data-upload-endpoint": upload_path %>
+      <%= content_tag :div, nil, data: {
+            controller: "upload",
+            action: "turbo:morph@window->upload#reconnect",
+            max_file_size: SiteSettings.max_file_upload_size,
+            allowed_file_types: input_accept_string,
+            upload_endpoint: upload_path
+          } %>
     </div>
   </div>
 

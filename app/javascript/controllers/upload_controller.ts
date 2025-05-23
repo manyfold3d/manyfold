@@ -66,4 +66,14 @@ export default class extends Controller {
       event.formData.set('uploads', JSON.stringify(uploads))
     })
   }
+
+  disconnect (): void {
+    this.uppy?.destroy()
+    this.uppy = null
+  }
+
+  reconnect (): void {
+    this.disconnect()
+    this.connect()
+  }
 }

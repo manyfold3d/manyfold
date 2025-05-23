@@ -181,13 +181,13 @@
     <%= card :warning, t(".upload_card.heading") do %>
       <%= form_with url: model_model_files_path(@model), id: "upload-form", class: "d-grid" do |form| %>
 
-        <%= content_tag :div, nil,
-              class: "mb-3",
-              "data-controller": "upload",
-              "data-max-file-size": SiteSettings.max_file_upload_size,
-              "data-allowed-file-types": input_accept_string,
-              "data-upload-endpoint": upload_path %>
-
+        <%= content_tag :div, nil, class: "mb-3", data: {
+              controller: "upload",
+              action: "turbo:morph@window->upload#reconnect",
+              max_file_size: SiteSettings.max_file_upload_size,
+              allowed_file_types: input_accept_string,
+              upload_endpoint: upload_path
+            } %>
         <%= submit_tag translate(".submit"), class: "btn btn-primary d-block" %>
       <% end %>
     <% end %>
