@@ -19,11 +19,13 @@ export default class extends Controller {
       }
     })
   }
+
   disconnect (): void {
-    this.tomSelect?.destroy();
+    this.tomSelect?.destroy()
   }
+
   reconnect (): void {
-    this.disconnect();
-    this.connect();
+    this.disconnect()
+    this.connect()
   }
 }
