@@ -4,7 +4,7 @@
       <%= t(".permissions") %>
     </div>
     <div class="col border p-3">
-      <%= cocooned_container id: "cocooned-caber-relations" do %>
+      <%= cocooned_container id: "cocooned-caber-relations", data: { controller: "cocooned" } do %>
         <%= form.fields_for :caber_relations do |f| %>
           <%= render "caber_relation_fields", f: f %>
         <% end %>

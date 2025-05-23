@@ -1,4 +1,4 @@
-<%= cocooned_container id: "cocooned-links" do %>
+<%= cocooned_container id: "cocooned-links", data: { controller: "cocooned" } do %>
   <%= form.fields_for :links do |f| %>
     <%= render "link_fields", f: f %>
   <% end %>

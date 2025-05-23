@@ -6,6 +6,7 @@ import { application } from './application'
 
 import BulkEditController from './bulk_edit_controller'
 import CarouselController from './carousel_controller'
+import CocoonedController from './cocooned_controller'
 import EditableController from './editable_controller'
 import I18nController from './i18n_controller'
 import RendererController from './renderer_controller'
@@ -16,6 +17,7 @@ import UploadController from './upload_controller'
 import ZxcvbnController from './zxcvbn_controller'
 
 application.register('carousel', CarouselController)
+application.register('cocooned', CocoonedController)
 application.register('bulk-edit', BulkEditController)
 application.register('editable', EditableController)
 application.register('i18n', I18nController)
