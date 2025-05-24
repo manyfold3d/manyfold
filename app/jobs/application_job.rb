@@ -50,12 +50,21 @@ class ApplicationJob < ActiveJob::Base
 
   def self.common_subfolders
     {
+      "3mf" => file_pattern,
+      "fdm" => file_pattern,
       "files" => file_pattern,
       "images" => image_pattern,
+      "lychee" => file_pattern,
+      "lys" => file_pattern,
+      "model" => file_pattern,
+      "obj" => file_pattern,
+      "parts" => file_pattern,
       "presupported" => file_pattern,
+      "resin" => file_pattern,
+      "stl" => file_pattern,
+      "sup" => file_pattern,
       "supported" => file_pattern,
-      "unsupported" => file_pattern,
-      "parts" => file_pattern
+      "unsupported" => file_pattern
     }
   end
 end
