@@ -9,6 +9,7 @@ class Upgrade::FixNilFileSizeValues < ApplicationJob
   end
 
   def each_iteration(modelfile)
+    modelfile.attachment_attacher.refresh_metadata!
     modelfile.update(size: modelfile.attachment_data["metadata"]["size"]) if modelfile.attachment_data?
   end
 end
