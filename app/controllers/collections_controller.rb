@@ -5,6 +5,7 @@ class CollectionsController < ApplicationController
   include ModelListable
 
   before_action :get_collection, except: [:index, :new, :create]
+  before_action :get_parent_collections, except: [:index, :create]
   before_action :get_creators, except: [:index, :create]
 
   def index
@@ -62,13 +63,11 @@ class CollectionsController < ApplicationController
     @collection.links.build if @collection.links.empty? # populate empty link
     @collection.caber_relations.build if @collection.caber_relations.empty?
     @title = t("collections.general.new")
-    @collections = policy_scope(Collection).all
   end
 
   def edit
     @collection.links.build if @collection.links.empty? # populate empty link
     @collection.caber_relations.build if @collection.caber_relations.empty?
-    @collections = policy_scope(Collection).all
   end
 
   def create
@@ -132,7 +131,13 @@ class CollectionsController < ApplicationController
   end
 
   def get_creators
-    @creators = policy_scope(Creator).order("LOWER(name) ASC")
+    # Creators that we can assign this collection to
+    @creators = policy_scope(Creator, policy_scope_class: ApplicationPolicy::UpdateScope).order("LOWER(name) ASC")
+  end
+
+  def get_parent_collections
+    # Collection that we can add this one to
+    @collections = policy_scope(Collection, policy_scope_class: ApplicationPolicy::UpdateScope).order("LOWER(name) ASC")
   end
 
   def collection_params
