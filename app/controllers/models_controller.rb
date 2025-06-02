@@ -231,8 +231,9 @@ class ModelsController < ApplicationController
   end
 
   def get_creators_and_collections
-    @creators = policy_scope(Creator).order("LOWER(name) ASC")
-    @collections = policy_scope(Collection).order("LOWER(name) ASC")
+    # Creators and collections that we can assign this model to
+    @creators = policy_scope(Creator, policy_scope_class: ApplicationPolicy::UpdateScope).order("LOWER(name) ASC")
+    @collections = policy_scope(Collection, policy_scope_class: ApplicationPolicy::UpdateScope).order("LOWER(name) ASC")
   end
 
   def set_returnable
