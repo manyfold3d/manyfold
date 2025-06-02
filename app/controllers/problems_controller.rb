@@ -38,7 +38,7 @@ class ProblemsController < ApplicationController
     notice = t(
       (@problem.ignored ? ".ignored" : ".unignored"),
       name: @problem.problematic.name,
-      message: translate("problems.%{type}_%{category}.title" % {type: @problem.problematic_type.underscore, category: @problem.category})
+      message: translate("problems.%{type}.%{category}.title" % {type: @problem.problematic_type.underscore, category: @problem.category})
     )
     redirect_back_or_to problems_path, notice: notice
   end
@@ -49,23 +49,27 @@ class ProblemsController < ApplicationController
     # Resolve each problem individually
     # Some can't be done in bulk mode, so check that
     bulk = @problems.count > 1
-    @problems.each do |problem|
-      case problem.resolution_strategy
-      when :show
-        resolve_by_showing(problem) unless bulk
-      when :edit
-        resolve_by_editing(problem) unless bulk
-      when :destroy
-        resolve_by_destroying(problem)
-      when :merge
-        resolve_by_merging(problem)
-      when :upload
-        resolve_by_uploading(problem) unless bulk
-      when :convert
-        resolve_by_converting(problem)
-      else
-        raise NotImplementedError
+    if params[:resolve]
+      @problems.each do |problem|
+        case problem.resolution_strategy
+        when :show
+          resolve_by_showing(problem) unless bulk
+        when :edit
+          resolve_by_editing(problem) unless bulk
+        when :destroy
+          resolve_by_destroying(problem)
+        when :merge
+          resolve_by_merging(problem)
+        when :upload
+          resolve_by_uploading(problem) unless bulk
+        when :convert
+          resolve_by_converting(problem)
+        else
+          raise NotImplementedError
+        end
       end
+    elsif params[:ignore]
+      @problems.update(ignored: true)
     end
     redirect_back_or_to problems_path unless performed?
   end
