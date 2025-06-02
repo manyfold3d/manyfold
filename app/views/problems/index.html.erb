@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<%= form_with url: resolve_problems_path, method: :post, class: "mb-3", data: {confirm: translate(".bulk_confirm")} do |form| %>
+<%= form_with url: resolve_problems_path, method: :post, class: "mb-3" do |form| %>
   <table class="table table-striped" data-controller="bulk-edit" data-action="change->bulk-edit#handleCheckboxChange">
     <tr>
       <th><input type="checkbox" aria-label="<%= translate ".select_all" %>" value="0" name="bulk-select-all"></th>
@@ -41,14 +41,15 @@
           <% if problem.ignored %>
             <%= link_to icon("eye-fill", t(".unignore")), problem_path(problem, problem: {ignored: false}), method: :patch, class: "btn btn-outline-secondary" %>
           <% else %>
-            <%= link_to icon("eye-slash", t(".ignore")), problem_path(problem, problem: {ignored: true}), method: :patch, class: "btn btn-outline-secondary", data: {bs_toggle: "collapse", bs_target: "#problem-#{problem.id}" } %>
+            <%= link_to icon("eye-slash", t(".ignore")), problem_path(problem, problem: {ignored: true}), method: :patch, class: "btn btn-outline-secondary", data: {bs_toggle: "collapse", bs_target: "#problem-#{problem.id}"} %>
           <% end %>
         </td>
       </tr>
     <% end %>
   </table>
 
-  <%= form.submit translate(".bulk_resolve"), class: "btn btn-danger" %>
+  <%= form.submit translate(".bulk_resolve"), name: "resolve", class: "btn btn-danger", data: {confirm: translate(".bulk_confirm")} %>
+  <%= form.submit translate(".bulk_ignore"), name: "ignore", class: "btn btn-secondary" %>
 <% end %>
 
 <%= paginate @problems %>
