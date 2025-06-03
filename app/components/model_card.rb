@@ -18,7 +18,7 @@ class Components::ModelCard < Components::Base
     div class: "col mb-4" do
       div class: "card preview-card" do
         div(class: "card-header position-absolute w-100 top-0 z-3 bg-body-secondary text-secondary-emphasis opacity-75") { server_indicator @model } if @model.remote?
-        preview_frame
+        PreviewFrame(object: @model)
         div(class: "card-body") { info_row }
         actions
       end
@@ -27,52 +27,6 @@ class Components::ModelCard < Components::Base
 
   private
 
-  def needs_hiding?(thing)
-    thing.sensitive && (current_user.nil? || current_user.sensitive_content_handling.present?)
-  end
-
-  def preview_frame
-    if (file = @model.preview_file)
-      if file.is_image?
-        image model_model_file_path(@model, file, format: file.extension), file.name
-      elsif file.is_renderable?
-        div class: "card-img-top #{"sensitive" if needs_hiding?(@model)}" do
-          render partial("object_preview", model: @model, file: file)
-        end
-      else
-        empty
-      end
-    elsif @model.remote?
-      preview_data = @model.federails_actor&.extensions&.dig("preview")
-      case preview_data&.dig("type")
-      when "Image"
-        image preview_data["url"], preview_data["summary"]
-      when "Document"
-        div class: "card-img-top #{"sensitive" if needs_hiding?(@model)}" do
-          iframe(
-            scrolling: "no",
-            srcdoc: safe([
-              "<html><body style=\"margin: 0; padding: 0; aspect-ratio: 1\">",
-              preview_data["content"],
-              "</body></html>"
-            ].join),
-            title: preview_data["summary"]
-          )
-        end
-      else
-        empty
-      end
-    else
-      empty
-    end
-  end
-
-  def empty
-    div class: "preview-empty" do
-      p { t("components.model_card.no_preview") }
-    end
-  end
-
   def title
     div class: "card-title" do
       a "data-editable-field": "model[name]", "data-editable-path": model_path(@model), contenteditable: "plaintext-only", "data-controller": "editable", "data-action": "focus->editable#onFocus blur->editable#onBlur" do
@@ -80,11 +34,6 @@ class Components::ModelCard < Components::Base
       end
       Icon(icon: "explicit", label: Model.human_attribute_name(:sensitive)) if @model.sensitive
     end
-  end
-
-  def image(url, alt)
-    div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
-    image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?(@model)}", alt: alt
   end
 
   def open_button
