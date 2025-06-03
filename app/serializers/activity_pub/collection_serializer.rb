@@ -11,7 +11,7 @@ module ActivityPub
         "f3di:concreteType": "Collection",
         attachment: @object.links.map { |it| {type: "Link", href: it.url} },
         context: @object.collection&.federails_actor&.federated_url,
-        preview: oembed_to_preview(OEmbed::CollectionSerializer.new(@object).serialize)
+        preview: oembed_to_preview(OEmbed::CollectionSerializer.new(@object, maxwidth: "100%", maxheight: "100%").serialize)
       }.merge(address_fields)
     end
 

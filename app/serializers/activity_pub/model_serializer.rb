@@ -17,7 +17,7 @@ module ActivityPub
         attributedTo: @object.creator&.federails_actor&.federated_url,
         context: @object.collection&.federails_actor&.federated_url,
         "spdx:license": license,
-        preview: oembed_to_preview(OEmbed::ModelSerializer.new(@object).serialize)
+        preview: oembed_to_preview(OEmbed::ModelSerializer.new(@object, maxwidth: "100%", maxheight: "100%").serialize)
       }.compact.merge(address_fields)
     end
 
