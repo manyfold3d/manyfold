@@ -11,7 +11,7 @@ module ActivityPub
     private
 
     def oembed_to_preview(oembed_data)
-      case oembed_data[:type]
+      data = case oembed_data[:type]
       when "photo"
         {
           type: "Image",
@@ -31,6 +31,10 @@ module ActivityPub
           mediaType: @object.preview_file.mime_type.to_s
         }
       end
+      data.merge({
+        name: @object.name,
+        summary: @object.preview_file.caption
+      }).compact
     end
   end
 end
