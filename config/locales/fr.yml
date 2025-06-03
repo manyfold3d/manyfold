@@ -325,7 +325,6 @@ fr:
         label: Modifier le modèle %{name}
         text: Modifier
       no_preview: Pas d'aperçu disponible
-      no_remote_preview:
       open_button:
         label: Ouvrir le modèle %{name}
         text: Ouvrir

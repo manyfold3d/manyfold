@@ -325,7 +325,6 @@ cs:
         label: Upravit model %{name}
         text: Upravit
       no_preview: Není k dispozici náhled
-      no_remote_preview: Omlouváme se, náhledy modelů v jiných instancích zatím nejsou k dispozici, ale brzy budou!
       open_button:
         label: Otevřít model %{name}
         text: Otevřít

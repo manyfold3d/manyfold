@@ -327,7 +327,6 @@ es:
         label: Editar modelo %{name}
         text: Editar
       no_preview: Vista previa no disponible
-      no_remote_preview: Lo sentimos, las vistas previas de los modelos de otras instancias aún no están disponibles, pero lo estarán pronto
       open_button:
         label: Abrir modelo %{name}
         text: Abrir
