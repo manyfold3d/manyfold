@@ -95,4 +95,8 @@ class Collection < ApplicationRecord
   def to_activitypub_object
     ActivityPub::CollectionSerializer.new(self).serialize
   end
+
+  def preview_file
+    models.first&.preview_file
+  end
 end

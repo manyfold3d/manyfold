@@ -6,7 +6,7 @@ module OEmbed
       }.merge(
         generic_properties,
         author_properties(@object.creator),
-        model_file_properties(@object.models.first&.preview_file)
+        model_file_properties(@object.preview_file)
       )
     end
   end
