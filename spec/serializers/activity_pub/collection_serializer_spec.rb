@@ -17,7 +17,7 @@ RSpec.describe ActivityPub::CollectionSerializer do
       model = create(:model, collection: object)
       file = create(:model_file, filename: "image.png", model: model)
       model.update!(preview_file: file)
-      expect(ap[:preview]).to eq({
+      expect(ap[:preview]).to include({
         type: "Image",
         mediaType: "image/png",
         url: "http://localhost:3214/models/#{model.to_param}/model_files/#{file.to_param}.png"
@@ -28,7 +28,7 @@ RSpec.describe ActivityPub::CollectionSerializer do
       model = create(:model, collection: object)
       file = create(:model_file, filename: "video.mp4", model: model)
       model.update!(preview_file: file)
-      expect(ap[:preview]).to eq({
+      expect(ap[:preview]).to include({
         type: "Video",
         mediaType: "video/mp4",
         url: "http://localhost:3214/models/#{model.to_param}/model_files/#{file.to_param}.mp4"

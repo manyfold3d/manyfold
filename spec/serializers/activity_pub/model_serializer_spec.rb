@@ -28,7 +28,7 @@ RSpec.describe ActivityPub::ModelSerializer do
     it "includes preview images" do # rubocop:disable RSpec/ExampleLength
       file = create(:model_file, filename: "image.png", model: object)
       object.update!(preview_file: file)
-      expect(ap[:preview]).to eq({
+      expect(ap[:preview]).to include({
         type: "Image",
         mediaType: "image/png",
         url: "http://localhost:3214/models/#{object.to_param}/model_files/#{file.to_param}.png"
@@ -38,7 +38,7 @@ RSpec.describe ActivityPub::ModelSerializer do
     it "includes preview videos" do # rubocop:disable RSpec/ExampleLength
       file = create(:model_file, filename: "video.mp4", model: object)
       object.update!(preview_file: file)
-      expect(ap[:preview]).to eq({
+      expect(ap[:preview]).to include({
         type: "Video",
         mediaType: "video/mp4",
         url: "http://localhost:3214/models/#{object.to_param}/model_files/#{file.to_param}.mp4"
@@ -53,6 +53,15 @@ RSpec.describe ActivityPub::ModelSerializer do
         mediaType: "text/html"
       })
       expect(ap[:preview][:content]).to start_with "<iframe"
+    end
+
+    it "includes preview file name and summary" do # rubocop:disable RSpec/ExampleLength
+      file = create(:model_file, filename: "model_name.stl", model: object, caption: "caption here")
+      object.update!(preview_file: file)
+      expect(ap[:preview]).to include({
+        name: "Model Name",
+        summary: "caption here"
+      })
     end
   end
 end
