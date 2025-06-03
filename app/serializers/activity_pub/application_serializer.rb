@@ -16,7 +16,7 @@ module ActivityPub
         {
           type: "Image",
           url: oembed_data[:url],
-          mediaType: @object.preview_file.mime_type
+          mediaType: @object.preview_file.mime_type.to_s
         }
       when "rich"
         {
