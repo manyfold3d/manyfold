@@ -325,7 +325,6 @@ de:
         label: Bearbeite Modell %{name}
         text: Bearbeiten
       no_preview: Keine Vorschau verfügbar
-      no_remote_preview: Vorschauen für Modelle auf anderen Instanzen sind leider noch nicht verfügbar, werden aber bald folgen!
       open_button:
         label: Öffne Modell %{name}
         text: Öffnen

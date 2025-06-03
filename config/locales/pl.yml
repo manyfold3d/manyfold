@@ -325,7 +325,6 @@ pl:
         label: Edytuj model %{name}
         text: Edytuj
       no_preview: Podgląd jest niedostępny
-      no_remote_preview: Przepraszamy, podgląd modeli na innych instancjach nie jest jeszcze dostępny, ale pojawi się wkrótce!
       open_button:
         label: Otwórz model %{name}
         text: Otwórz

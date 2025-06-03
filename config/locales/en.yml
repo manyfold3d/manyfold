@@ -334,7 +334,6 @@ en:
         label: Edit model %{name}
         text: Edit
       no_preview: No preview available
-      no_remote_preview: Sorry, previews for models on other instances are not available yet, but will be coming soon!
       open_button:
         label: Open model %{name}
         text: Open

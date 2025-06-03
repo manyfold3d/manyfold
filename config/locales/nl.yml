@@ -325,7 +325,6 @@ nl:
         label: Bewerk model %{name}
         text: Bewerken
       no_preview: Geen voorbeeld beschikbaar
-      no_remote_preview:
       open_button:
         label: Open model %{name}
         text: Openen
