@@ -68,7 +68,21 @@ class ApplicationController < ActionController::Base
 
   def img_src
     url = SiteSettings.site_icon ? URI.parse(SiteSettings.site_icon).host : nil
-    [:self, :data, url, "https://cdn.jsdelivr.net", "https://raw.githubusercontent.com"].compact
+    [
+      :self,
+      :data,
+      url,
+      "https://cdn.jsdelivr.net",
+      "https://raw.githubusercontent.com",
+      SiteSettings.federation_enabled? ? :https : nil
+    ].compact
+  end
+
+  def frame_src
+    [
+      :self,
+      SiteSettings.federation_enabled? ? :https : nil
+    ].compact
   end
 
   def configure_content_security_policy
@@ -78,7 +92,7 @@ class ApplicationController < ActionController::Base
     content_security_policy.default_src :self
     content_security_policy.connect_src :self
     content_security_policy.frame_ancestors :self
-    content_security_policy.frame_src :self
+    content_security_policy.frame_src(*frame_src)
     content_security_policy.font_src :self, "https://cdn.jsdelivr.net", "https://fonts.gstatic.com"
     content_security_policy.img_src(*img_src)
     content_security_policy.object_src :none

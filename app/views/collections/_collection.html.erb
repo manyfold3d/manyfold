@@ -1,6 +1,10 @@
 <div class="col mb-4">
   <div class="card preview-card">
-
+    <% if collection.remote? %>
+      <div class='card-header position-absolute w-100 top-0 z-3 bg-body-secondary text-secondary-emphasis opacity-75'>
+        <%= server_indicator collection %>
+      </div>
+    <% end %>
     <% if collection.preview_file&.is_image? %>
       <%= content_tag :div, nil, class: "card-img-top card-img-top-background", style: "background-image: url(#{model_model_file_path(model, file, format: collection.preview_file.extension)})" %>
       <%= image_tag model_model_file_path(model, file, format: collection.preview_file.extension), class: "card-img-top image-preview ", alt: collection.preview_file.name %>
@@ -10,11 +14,6 @@
       </div>
     <% else %>
       <div class='preview-empty'> <p><%= t ".no_preview" %></p></div>
-    <% end %>
-    <% if collection.remote? %>
-      <div class='card-header'>
-        <%= server_indicator collection %>
-      </div>
     <% end %>
     <div class="card-body">
       <div class="row">
