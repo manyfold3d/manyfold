@@ -16,7 +16,8 @@ module ActivityPub
         tag: hashtags,
         attributedTo: @object.creator&.federails_actor&.federated_url,
         context: @object.collection&.federails_actor&.federated_url,
-        "spdx:license": license
+        "spdx:license": license,
+        preview: oembed_to_preview(OEmbed::ModelSerializer.new(@object).serialize)
       }.compact.merge(address_fields)
     end
 
