@@ -29,6 +29,14 @@ div.form-control.tag-container {
     min-width: 100%;
   }
 
+  iframe {
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    aspect-ratio: 1;
+  }
+
   .preview-empty {
     position: relative;
     width: 100%;

@@ -47,6 +47,18 @@ class Components::ModelCard < Components::Base
       case preview_data&.dig("type")
       when "Image"
         image preview_data["url"], preview_data["summary"]
+      when "Document"
+        div class: "card-img-top #{"sensitive" if needs_hiding?(@model)}" do
+          iframe(
+            scrolling: "no",
+            srcdoc: safe([
+              "<html><body style=\"margin: 0; padding: 0; aspect-ratio: 1\">",
+              preview_data["content"],
+              "</body></html>"
+            ].join),
+            title: preview_data["summary"]
+          )
+        end
       else
         empty
       end
