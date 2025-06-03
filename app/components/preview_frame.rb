@@ -10,41 +10,49 @@ class Components::PreviewFrame < Components::Base
 
   def view_template
     if @file
-      if @file.is_image?
-        image model_model_file_path(@file.model, @file, format: @file.extension), @file.name
-      elsif @file.is_renderable?
-        div class: "card-img-top #{"sensitive" if needs_hiding?(@object)}" do
-          render partial("object_preview", model: @file.model, file: @file)
-        end
-      else
-        empty
-      end
+      local
     elsif @object.remote?
-      preview_data = @object.federails_actor&.extensions&.dig("preview")
-      case preview_data&.dig("type")
-      when "Image"
-        image preview_data["url"], preview_data["summary"]
-      when "Document"
-        div class: "card-img-top #{"sensitive" if needs_hiding?(@object)}" do
-          iframe(
-            scrolling: "no",
-            srcdoc: safe([
-              "<html><body style=\"margin: 0; padding: 0; aspect-ratio: 1\">",
-              preview_data["content"],
-              "</body></html>"
-            ].join),
-            title: preview_data["summary"]
-          )
-        end
-      else
-        empty
-      end
+      remote
     else
       empty
     end
   end
 
   private
+
+  def local
+    if @file.is_image?
+      image model_model_file_path(@file.model, @file, format: @file.extension), @file.name
+    elsif @file.is_renderable?
+      div class: "card-img-top #{"sensitive" if needs_hiding?(@object)}" do
+        render partial("object_preview", model: @file.model, file: @file)
+      end
+    else
+      empty
+    end
+  end
+
+  def remote
+    preview_data = @object.federails_actor&.extensions&.dig("preview")
+    case preview_data&.dig("type")
+    when "Image"
+      image preview_data["url"], preview_data["summary"]
+    when "Document"
+      div class: "card-img-top #{"sensitive" if needs_hiding?(@object)}" do
+        iframe(
+          scrolling: "no",
+          srcdoc: safe([
+            "<html><body style=\"margin: 0; padding: 0; aspect-ratio: 1\">",
+            preview_data["content"],
+            "</body></html>"
+          ].join),
+          title: preview_data["summary"]
+        )
+      end
+    else
+      empty
+    end
+  end
 
   def needs_hiding?(thing)
     return false unless current_user.nil? || current_user.sensitive_content_handling.present?
