@@ -39,6 +39,8 @@ class Components::ModelCard < Components::Base
         div class: "card-img-top #{"sensitive" if needs_hiding?(@model)}" do
           render partial("object_preview", model: @model, file: file)
         end
+      else
+        empty
       end
     elsif @model.remote?
       preview_data = @model.federails_actor&.extensions&.dig("preview")
