@@ -79,7 +79,7 @@ module OEmbed
         <iframe
           src="#{Rails.application.routes.url_helpers.model_model_file_url(model_file.model, model_file, embed: true)}"
           width="#{width}" height="#{height}" loading="lazy" referrerpolicy="no-referrer" scrolling="no" style="overflow:hidden"
-          sandbox="allow-scripts allow-pointer-lock allow-same-origin"
+          sandbox="allow-scripts allow-pointer-lock allow-same-origin">
         </iframe>
       EOF
       {
