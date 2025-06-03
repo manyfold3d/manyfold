@@ -42,13 +42,19 @@ class Components::ModelCard < Components::Base
         end
       end
     elsif @model.remote?
-      div class: "preview-empty" do
-        p { t("components.model_card.no_remote_preview") }
+      preview_data = @model.federails_actor&.extensions&.dig("preview")
+      case preview_data&.dig("type")
+      else
+        empty
       end
     else
-      div class: "preview-empty" do
-        p { t("components.model_card.no_preview") }
-      end
+      empty
+    end
+  end
+
+  def empty
+    div class: "preview-empty" do
+      p { t("components.model_card.no_preview") }
     end
   end
 
