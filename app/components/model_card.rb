@@ -34,8 +34,7 @@ class Components::ModelCard < Components::Base
   def preview_frame
     if (file = @model.preview_file)
       if file.is_image?
-        div class: "card-img-top card-img-top-background", style: "background-image: url(#{model_model_file_path(@model, file, format: file.extension)})"
-        image_tag model_model_file_path(@model, file, format: file.extension), class: "card-img-top image-preview #{"sensitive" if needs_hiding?(@model)}", alt: file.name
+        image model_model_file_path(@model, file, format: file.extension), file.name
       elsif file.is_renderable?
         div class: "card-img-top #{"sensitive" if needs_hiding?(@model)}" do
           render partial("object_preview", model: @model, file: file)
@@ -44,6 +43,8 @@ class Components::ModelCard < Components::Base
     elsif @model.remote?
       preview_data = @model.federails_actor&.extensions&.dig("preview")
       case preview_data&.dig("type")
+      when "Image"
+        image preview_data["url"], preview_data["summary"]
       else
         empty
       end
@@ -65,6 +66,11 @@ class Components::ModelCard < Components::Base
       end
       Icon(icon: "explicit", label: Model.human_attribute_name(:sensitive)) if @model.sensitive
     end
+  end
+
+  def image(url, alt)
+    div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
+    image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?(@model)}", alt: alt
   end
 
   def open_button
