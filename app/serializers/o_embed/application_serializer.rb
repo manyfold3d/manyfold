@@ -65,6 +65,7 @@ module OEmbed
       EOF
       {
         type: "video",
+        url: Rails.application.routes.url_helpers.model_model_file_url(model_file.model, model_file, format: model_file.extension),
         html: html,
         width: width,
         height: height

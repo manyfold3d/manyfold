@@ -56,6 +56,10 @@ RSpec.describe OEmbed::ModelSerializer do
         expect(result[:type]).to eq "video"
       end
 
+      it "includes video url" do
+        expect(result[:url]).to eq "http://localhost:3214/models/#{model.to_param}/model_files/#{model.preview_file.to_param}.mp4"
+      end
+
       it "generates HTML video tag" do
         expect(result[:html]).to start_with "<video"
       end
