@@ -1,16 +1,13 @@
-<% model = policy_scope(Model).where(collection: collection).first %>
 <div class="col mb-4">
   <div class="card preview-card">
 
-    <% if model && (file = model.preview_file) %>
-      <% if file.is_image? %>
-        <%= content_tag :div, nil, class: "card-img-top card-img-top-background", style: "background-image: url(#{model_model_file_path(model, file, format: file.extension)})" %>
-        <%= image_tag model_model_file_path(model, file, format: file.extension), class: "card-img-top image-preview ", alt: file.name %>
-      <% elsif file.is_renderable? %>
-        <div class="card-img-top">
-          <%= render partial: "object_preview", locals: {model: model, file: file} %>
-        </div>
-      <% end %>
+    <% if collection.preview_file&.is_image? %>
+      <%= content_tag :div, nil, class: "card-img-top card-img-top-background", style: "background-image: url(#{model_model_file_path(model, file, format: collection.preview_file.extension)})" %>
+      <%= image_tag model_model_file_path(model, file, format: collection.preview_file.extension), class: "card-img-top image-preview ", alt: collection.preview_file.name %>
+    <% elsif collection.preview_file&.is_renderable? %>
+      <div class="card-img-top">
+        <%= render partial: "object_preview", locals: {model: model, file: file} %>
+      </div>
     <% else %>
       <div class='preview-empty'> <p><%= t ".no_preview" %></p></div>
     <% end %>
