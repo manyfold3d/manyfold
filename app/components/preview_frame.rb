@@ -25,7 +25,7 @@ class Components::PreviewFrame < Components::Base
       image model_model_file_path(@file.model, @file, format: @file.extension), @file.name
     elsif @file.is_renderable?
       div class: "card-img-top #{"sensitive" if needs_hiding?(@object)}" do
-        render partial("object_preview", model: @file.model, file: @file)
+        Renderer file: @file
       end
     else
       empty
