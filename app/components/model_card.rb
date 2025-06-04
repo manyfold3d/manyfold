@@ -32,7 +32,10 @@ class Components::ModelCard < Components::Base
       a "data-editable-field": "model[name]", "data-editable-path": model_path(@model), contenteditable: "plaintext-only", "data-controller": "editable", "data-action": "focus->editable#onFocus blur->editable#onBlur" do
         @model.name
       end
-      Icon(icon: "explicit", label: Model.human_attribute_name(:sensitive)) if @model.sensitive
+      if @model.sensitive
+        whitespace
+        Icon(icon: "explicit", label: Model.human_attribute_name(:sensitive))
+      end
     end
   end
 
