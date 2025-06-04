@@ -3,6 +3,7 @@ class Activity::CreatorAddedModelJob < ApplicationJob
 
   def perform(model_id)
     model = Model.find(model_id)
+    return if model.creator.nil?
     Comment.create!(
       system: true,
       commentable: model,

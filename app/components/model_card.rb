@@ -53,19 +53,28 @@ class Components::ModelCard < Components::Base
 
   def credits
     ul class: "list-unstyled" do
-      if @model.creator
-        li do
-          Icon icon: "person", label: Creator.model_name.human
-          link_to @model.creator.name, @model.creator, "aria-label": [Creator.model_name.human, @model.creator.name].join(": ")
+      if @model.remote?
+        if (creator = @model.federails_actor.extensions["attributedTo"])
+          li { creator target: creator["url"], name: creator["name"] }
         end
-      end
-      if @model.collection
-        li do
-          Icon icon: "collection", label: @model.collection.model_name.human
-          link_to @model.collection.name, @model.collection, "aria-label": [@model.collection.model_name.human, @model.collection.name].join(": ")
+        if (collection = @model.federails_actor.extensions["context"])
+          li { collection target: collection["url"], name: collection["name"] }
         end
+      else
+        li { creator target: @model.creator, name: @model.creator.name } if @model.creator
+        li { collection target: @model.collection, name: @model.collection.name } if @model.collection
       end
     end
+  end
+
+  def creator(target:, name:)
+    Icon icon: "person", label: Creator.model_name.human
+    link_to name, target, "aria-label": [Creator.model_name.human, name].join(": ")
+  end
+
+  def collection(target:, name:)
+    Icon icon: "collection", label: Collection.model_name.human
+    link_to name, target, "aria-label": [Collection.model_name.human, name].join(": ")
   end
 
   def caption
