@@ -26,7 +26,7 @@ class Components::Renderer < Components::Base
           preview_url: model_model_file_by_filename_path(@file.model, @file.filename_without_extension, @file.extension&.to_sym),
           worker_url: javascript_path("offscreen_renderer.js"),
           format: @file.extension,
-          y_up: @file.y_up,
+          y_up: @file.y_up.to_s,
           grid_size_x: @settings["grid_width"],
           grid_size_z: @settings["grid_depth"],
           show_grid: @settings["show_grid"].to_s,
