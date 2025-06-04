@@ -1,5 +1,6 @@
 class Activity::CreatorAddedModelJob < ApplicationJob
   queue_as :default
+  unique :until_executed
 
   def perform(model_id)
     model = Model.find(model_id)
