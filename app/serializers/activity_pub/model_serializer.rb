@@ -14,8 +14,8 @@ module ActivityPub
         attachment: @object.links.map { |it| {type: "Link", href: it.url} },
         sensitive: @object.sensitive,
         tag: hashtags,
-        attributedTo: @object.creator&.federails_actor&.federated_url,
-        context: @object.collection&.federails_actor&.federated_url,
+        attributedTo: short_creator(@object.creator),
+        context: short_collection(@object.collection),
         "spdx:license": license,
         preview: oembed_to_preview(OEmbed::ModelSerializer.new(@object, maxwidth: "100%", maxheight: "100%").serialize)
       }.compact.merge(address_fields)
