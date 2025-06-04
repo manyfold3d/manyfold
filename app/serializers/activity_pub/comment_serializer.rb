@@ -7,9 +7,10 @@ module ActivityPub
         custom: {
           "context" => Rails.application.routes.url_helpers.url_for([@object.commentable, {only_path: false}]),
           "sensitive" => @object.sensitive,
+          "summary" => (@object.sensitive ? "Sensitive Content" : nil), # Adding a summary if sensitive, for Mastodon
           "tag" => hashtags,
           "f3di:compatibilityNote" => @object.system
-        }.merge(address_fields)
+        }.compact.merge(address_fields)
       )
     end
 
