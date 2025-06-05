@@ -3,11 +3,14 @@ module ActivityPub
     def serialize
       raise ActiveRecord::RecordNotFound unless federate? # Temporary guard against publishing non-public Federails::ActorEntity objects
       {
-        "@context": {
-          spdx: "http://spdx.org/rdf/terms#",
-          f3di: "http://purl.org/f3di/ns#",
-          Hashtag: "as:Hashtag"
-        },
+        "@context": [
+          "https://purl.archive.org/miscellany",
+          {
+            spdx: "http://spdx.org/rdf/terms#",
+            f3di: "http://purl.org/f3di/ns#",
+            Hashtag: "as:Hashtag"
+          }
+        ],
         summary: @object.caption,
         content: @object.notes,
         "f3di:concreteType": "3DModel",

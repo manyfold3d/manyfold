@@ -5,6 +5,13 @@ module ActivityPub
         @object,
         content: to_html,
         custom: {
+          "@context" => [
+            "https://purl.archive.org/miscellany",
+            {
+              f3di: "http://purl.org/f3di/ns#",
+              Hashtag: "as:Hashtag"
+            }
+          ],
           "context" => Rails.application.routes.url_helpers.url_for([@object.commentable, {only_path: false}]),
           "sensitive" => @object.sensitive,
           "summary" => (@object.sensitive ? "Sensitive Content" : nil), # Adding a summary if sensitive, for Mastodon

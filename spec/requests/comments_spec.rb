@@ -24,8 +24,12 @@ RSpec.describe "Comments" do
           expect(response.parsed_body["type"]).to eq "Note"
         end
 
-        it "includes JSON-LD context" do
-          expect(response.parsed_body["@context"]).to eq "https://www.w3.org/ns/activitystreams"
+        it "includes standard JSON-LD context" do
+          expect(response.parsed_body["@context"]).to include("https://www.w3.org/ns/activitystreams")
+        end
+
+        it "includes extended JSON-LD context" do
+          expect(response.parsed_body["@context"]).to include("https://purl.archive.org/miscellany")
         end
       end
     end
