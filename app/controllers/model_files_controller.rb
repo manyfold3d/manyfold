@@ -165,6 +165,7 @@ class ModelFilesController < ApplicationController
         @file = scope.find_param(params[:id])
       rescue ActiveRecord::RecordNotFound
         @file = scope.find_by!(filename: [params[:id], params[:format]].join("."))
+        request.format = params[:format].downcase
       end
       authorize @file
     end
