@@ -154,7 +154,7 @@ gem "better_content_security_policy", "~> 0.1"
 
 gem "devise_zxcvbn", "~> 6.0"
 
-gem "federails", "~> 0.7"
+gem "federails", git: "https://gitlab.com/experimentslabs/federails.git", branch: "merge-contexts"
 gem "federails-moderation", "~> 0.3"
 gem "caber"
 
