@@ -193,6 +193,21 @@ RSpec.describe "Model Files" do
           expect(response.media_type).to eq("model/stl")
         end
       end
+
+      describe "GET a model file from its filename with uppercase content" do
+        before do
+          file = create(:model_file, model: model, filename: "subfolder/Test.STL")
+          get model_model_file_by_filename_path(model_id: model.to_param, id: file.filename)
+        end
+
+        it "returns http success" do
+          expect(response).to have_http_status(:success)
+        end
+
+        it "has correct MIME type" do
+          expect(response.media_type).to eq("model/stl")
+        end
+      end
     end
   end
 end
