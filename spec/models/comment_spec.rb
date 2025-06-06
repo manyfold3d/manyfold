@@ -61,7 +61,7 @@ RSpec.describe Comment do
 
       it "includes tags appended to content" do
         {"tag+one": "#TagOne", tag2: "#Tag2"}.each_pair do |link, hashtag|
-          expect(ap_object["content"]).to include %(<a href="http://localhost:3214/models?tag=#{link}" class="mention hashtag" rel="tag">#{hashtag}</a>)
+          expect(ap_object["content"]).to include %(<a role="listitem" href="http://localhost:3214/models?tag=#{link}" class="mention hashtag" rel="tag">#{hashtag}</a>)
         end
       end
 
