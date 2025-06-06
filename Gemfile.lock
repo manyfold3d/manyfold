@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails.git
-  revision: b17ce200f34f7ff31ba28b0ce1407056973c2758
+  revision: 26813a09b022bd01423fdc23e5e0f350ebd42d71
   branch: merge-contexts
   specs:
     federails (0.7.0)
@@ -168,7 +168,7 @@ GEM
       erubi (~> 1.4)
       parser (>= 2.4)
       smart_properties
-    bigdecimal (3.2.1)
+    bigdecimal (3.2.2)
     bindata (2.5.0)
     bindex (0.8.1)
     bootsnap (1.18.6)
@@ -255,7 +255,7 @@ GEM
       activesupport (>= 6.1.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
-    faraday (2.13.0)
+    faraday (2.13.1)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -477,7 +477,7 @@ GEM
     nenv (0.3.0)
     net-http (0.6.0)
       uri
-    net-imap (0.5.7)
+    net-imap (0.5.8)
       date
       net-protocol
     net-pop (0.1.2)
@@ -877,7 +877,7 @@ GEM
       faraday (~> 2.0)
       faraday-follow_redirects
     websocket (1.2.11)
-    websocket-driver (0.7.7)
+    websocket-driver (0.8.0)
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
