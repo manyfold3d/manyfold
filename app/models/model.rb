@@ -306,8 +306,12 @@ class Model < ApplicationRecord
   end
 
   def post_update_activity
-    if creator_previously_changed?
+    if creator_previously_changed? && creator&.public?
       Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
+    elsif collection_previously_changed? && collection&.public?
+      Activity::ModelCollectedJob.set(wait: 5.seconds).perform_later(id, collection.id)
+    elsif public?
+      Activity::ModelUpdatedJob.set(wait: 5.seconds).perform_later(id)
     end
   end
 end
