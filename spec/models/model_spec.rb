@@ -523,10 +523,10 @@ RSpec.describe Model do
       }.to have_enqueued_job(Activity::ModelPublishedJob).once
     end
 
-    it "doesn't queues any activity jobs if the creator was changed to a private one" do
+    it "queues normal update activity job if the creator was changed to a private one" do
       expect {
         model.update!(creator: create(:creator))
-      }.not_to have_enqueued_job(Activity::ModelPublishedJob)
+      }.to have_enqueued_job(Activity::ModelUpdatedJob)
     end
 
     it "queues collected activity job if the collection was changed to a public one" do
@@ -535,10 +535,10 @@ RSpec.describe Model do
       }.to have_enqueued_job(Activity::ModelCollectedJob).once
     end
 
-    it "doesn't queues any activity jobs if the collection was changed to a private one" do
+    it "queues normal update activity job if the collection was changed to a private one" do
       expect {
         model.update!(collection: create(:collection))
-      }.not_to have_enqueued_job(Activity::ModelCollectedJob)
+      }.to have_enqueued_job(Activity::ModelUpdatedJob)
     end
   end
 end
