@@ -518,6 +518,7 @@ RSpec.describe Model do
     end
 
     it "queues publish activity job if the creator was changed to a public one" do
+      model
       expect {
         model.update!(creator: create(:creator, :public))
       }.to have_enqueued_job(Activity::ModelPublishedJob).once
@@ -530,6 +531,7 @@ RSpec.describe Model do
     end
 
     it "queues collected activity job if the collection was changed to a public one" do
+      model
       expect {
         model.update!(collection: create(:collection, :public))
       }.to have_enqueued_job(Activity::ModelCollectedJob).once
