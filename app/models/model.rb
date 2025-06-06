@@ -38,10 +38,10 @@ class Model < ApplicationRecord
   # In Rails 7.1 we will be able to do this instead:
   # normalizes :license, with: -> license { license.blank? ? nil : license }
 
-  after_create :post_creation_activity
+  after_create_commit :post_creation_activity
   after_create :pregenerate_downloads
   before_update :move_files, if: :need_to_move_files?
-  after_update :post_update_activity, if: :was_changed?
+  after_update_commit :post_update_activity, if: :was_changed?
   after_update :pregenerate_downloads, if: :was_changed?
   after_save :write_datapackage_later, if: :was_changed?
   after_commit :check_for_problems_later, on: :update
