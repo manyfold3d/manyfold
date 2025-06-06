@@ -302,9 +302,7 @@ class Model < ApplicationRecord
   end
 
   def post_creation_activity
-    if creator.present?
-      Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
-    end
+    Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id) if public?
   end
 
   def post_update_activity
