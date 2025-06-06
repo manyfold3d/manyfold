@@ -572,6 +572,8 @@ en:
     activity:
       collection_published:
         comment: A new collection of 3D models, ["%{name}"](%{url}), was just published!
+      model_collected:
+        comment: '["%{model_name}"](%{model_url}) was just added to the ["%{collection_name}"](%{collection_url}) collection.'
       model_published:
         comment: A new 3D model, ["%{name}"](%{url}), was just published!
     analysis:
