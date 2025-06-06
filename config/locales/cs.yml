@@ -534,7 +534,7 @@ cs:
         submit: Vyhledávání
   jobs:
     activity:
-      creator_added_model:
+      model_published:
         comment: 'Právě jsem přidal nový model: ["%{model_name}"](%{url})'
     analysis:
       analyse_model_file:

@@ -422,14 +422,14 @@ RSpec.describe Model do
   context "when making changes" do
     it "queues creator-specific model creation job when model is created if a creator is set" do
       model = create(:model, creator: create(:creator))
-      expect(Activity::CreatorAddedModelJob).to have_been_enqueued.with(model.id).at_least(:once)
+      expect(Activity::ModelPublishedJob).to have_been_enqueued.with(model.id).at_least(:once)
     end
 
     it "queues creator-specific model creation job when model is updated if a creator has changed" do
       model = create(:model)
       ActiveJob::Base.queue_adapter.enqueued_jobs.clear
       model.update(creator: create(:creator))
-      expect(Activity::CreatorAddedModelJob).to have_been_enqueued.with(model.id).at_least(:once)
+      expect(Activity::ModelPublishedJob).to have_been_enqueued.with(model.id).at_least(:once)
     end
 
     it "writes datapackage if model has changed" do

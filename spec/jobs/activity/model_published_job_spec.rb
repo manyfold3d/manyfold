@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Activity::CreatorAddedModelJob do
+RSpec.describe Activity::ModelPublishedJob do
   let(:creator) { create(:creator) }
   let(:model) { create(:model, creator: creator, tag_list: "tag1, tag2", sensitive: true) }
 

@@ -1,4 +1,4 @@
-class Activity::CreatorAddedModelJob < ApplicationJob
+class Activity::ModelPublishedJob < ApplicationJob
   queue_as :default
   unique :until_executed
 
@@ -9,7 +9,7 @@ class Activity::CreatorAddedModelJob < ApplicationJob
       system: true,
       commentable: model,
       commenter: model.creator,
-      comment: I18n.t("jobs.activity.creator_added_model.comment", # rubocop:disable I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
+      comment: I18n.t("jobs.activity.model_published.comment", # rubocop:disable I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
         model_name: model.name,
         url: model.federails_actor.profile_url,
         tags: model.tag_list.map { |t| "##{t}" }.join(" ")),

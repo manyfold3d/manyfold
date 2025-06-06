@@ -303,13 +303,13 @@ class Model < ApplicationRecord
 
   def post_creation_activity
     if creator.present?
-      Activity::CreatorAddedModelJob.set(wait: 5.seconds).perform_later(id)
+      Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
     end
   end
 
   def post_update_activity
     if creator_previously_changed?
-      Activity::CreatorAddedModelJob.set(wait: 5.seconds).perform_later(id)
+      Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
     end
   end
 end

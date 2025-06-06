@@ -570,7 +570,7 @@ en:
         submit: Search
   jobs:
     activity:
-      creator_added_model:
+      model_published:
         comment: 'I''ve just added a new model: ["%{model_name}"](%{url})'
     analysis:
       analyse_model_file:
