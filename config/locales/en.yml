@@ -570,6 +570,8 @@ en:
         submit: Search
   jobs:
     activity:
+      collection_published:
+        comment: A new collection of 3D models, ["%{name}"](%{url}), was just published!
       model_published:
         comment: A new 3D model, ["%{name}"](%{url}), was just published!
     analysis:
