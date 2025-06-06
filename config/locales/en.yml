@@ -571,7 +571,7 @@ en:
   jobs:
     activity:
       model_published:
-        comment: 'I''ve just added a new model: ["%{model_name}"](%{url})'
+        comment: A new 3D model, ["%{name}"](%{url}), was just published!
     analysis:
       analyse_model_file:
         detect_duplicates: Detecting duplicate files

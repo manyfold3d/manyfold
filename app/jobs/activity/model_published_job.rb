@@ -9,9 +9,8 @@ class Activity::ModelPublishedJob < ApplicationJob
       commentable: model,
       commenter: model.creator || model,
       comment: I18n.t("jobs.activity.model_published.comment", # rubocop:disable I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
-        model_name: model.name,
-        url: model.federails_actor.profile_url,
-        tags: model.tag_list.map { |t| "##{t}" }.join(" ")),
+        name: model.name,
+        url: model.federails_actor.profile_url),
       sensitive: model.sensitive
     )
   end
