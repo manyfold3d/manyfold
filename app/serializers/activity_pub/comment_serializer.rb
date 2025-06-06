@@ -9,7 +9,8 @@ module ActivityPub
             "https://purl.archive.org/miscellany",
             {
               f3di: "http://purl.org/f3di/ns#",
-              Hashtag: "as:Hashtag"
+              Hashtag: "as:Hashtag",
+              sensitive: "as:sensitive"
             }
           ],
           "context" => Rails.application.routes.url_helpers.url_for([@object.commentable, {only_path: false}]),

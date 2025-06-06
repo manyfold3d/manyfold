@@ -8,7 +8,8 @@ module ActivityPub
           {
             spdx: "http://spdx.org/rdf/terms#",
             f3di: "http://purl.org/f3di/ns#",
-            Hashtag: "as:Hashtag"
+            Hashtag: "as:Hashtag",
+            sensitive: "as:sensitive"
           }
         ],
         summary: @object.caption,
