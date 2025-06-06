@@ -38,10 +38,10 @@ class Model < ApplicationRecord
   # In Rails 7.1 we will be able to do this instead:
   # normalizes :license, with: -> license { license.blank? ? nil : license }
 
-  after_create :post_creation_activity
+  after_create_commit :post_creation_activity
   after_create :pregenerate_downloads
   before_update :move_files, if: :need_to_move_files?
-  after_update :post_update_activity, if: :was_changed?
+  after_update_commit :post_update_activity
   after_update :pregenerate_downloads, if: :was_changed?
   after_save :write_datapackage_later, if: :was_changed?
   after_commit :check_for_problems_later, on: :update
@@ -302,14 +302,33 @@ class Model < ApplicationRecord
   end
 
   def post_creation_activity
-    if creator.present?
-      Activity::CreatorAddedModelJob.set(wait: 5.seconds).perform_later(id)
-    end
+    Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id) if public?
   end
 
   def post_update_activity
-    if creator_previously_changed?
-      Activity::CreatorAddedModelJob.set(wait: 5.seconds).perform_later(id)
+    if creator_previously_changed? && creator&.public?
+      Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
+    elsif collection_previously_changed? && collection&.public?
+      Activity::ModelCollectedJob.set(wait: 5.seconds).perform_later(id, collection.id)
+    elsif just_became_public?
+      Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
+    elsif public? && noteworthy_change?
+      Activity::ModelUpdatedJob.set(wait: 5.seconds).perform_later(id)
     end
+  end
+
+  def noteworthy_change?
+    # Exclude internal fields, they're not interesting enough to post comments for
+    !previous_changes.keys.without([
+      "id",
+      "path",
+      "library_id",
+      "created_at",
+      "updated_at",
+      "preview_file_id",
+      "slug",
+      "public_id",
+      "name_lower"
+    ]).empty?
   end
 end

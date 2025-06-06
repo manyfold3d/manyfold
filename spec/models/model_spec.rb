@@ -420,18 +420,6 @@ RSpec.describe Model do
   end
 
   context "when making changes" do
-    it "queues creator-specific model creation job when model is created if a creator is set" do
-      model = create(:model, creator: create(:creator))
-      expect(Activity::CreatorAddedModelJob).to have_been_enqueued.with(model.id).at_least(:once)
-    end
-
-    it "queues creator-specific model creation job when model is updated if a creator has changed" do
-      model = create(:model)
-      ActiveJob::Base.queue_adapter.enqueued_jobs.clear
-      model.update(creator: create(:creator))
-      expect(Activity::CreatorAddedModelJob).to have_been_enqueued.with(model.id).at_least(:once)
-    end
-
     it "writes datapackage if model has changed" do
       model = create(:model)
       expect { model.update(name: "Changed") }.to have_enqueued_job(UpdateDatapackageJob).with(model.id)
@@ -487,6 +475,84 @@ RSpec.describe Model do
     it "filters duplicate links without raising an error" do
       opts = {links_attributes: [{url: url}]}
       expect { model.update! opts }.not_to raise_error
+    end
+  end
+
+  context "when creating a model" do
+    it "queues model publish activity job if the model is public" do
+      expect {
+        create(:model, :public)
+      }.to have_enqueued_job(Activity::ModelPublishedJob).once
+    end
+
+    it "doesn't queue any activity jobs if the model isn't public" do
+      expect {
+        create(:model)
+      }.not_to have_enqueued_job(Activity::ModelPublishedJob)
+    end
+  end
+
+  context "when updating a private model" do
+    let!(:model) { create(:model) }
+
+    before do
+      model.clear_changes_information
+    end
+
+    it "doesn't queue any activity jobs" do
+      expect {
+        model.update!(caption: "new caption!")
+      }.not_to have_enqueued_job(Activity::ModelUpdatedJob)
+    end
+
+    it "queues publish activity job if the model was just made public" do
+      expect {
+        model.update!(caber_relations_attributes: [{subject: nil, permission: "view"}])
+      }.to have_enqueued_job(Activity::ModelPublishedJob).once
+    end
+  end
+
+  context "when updating a public model" do
+    let!(:model) { create(:model, :public) }
+
+    before do
+      model.clear_changes_information
+    end
+
+    it "queues update activity job" do
+      expect {
+        model.update!(caption: "new caption!")
+      }.to have_enqueued_job(Activity::ModelUpdatedJob).once
+    end
+
+    it "doesn't queue any activity jobs if the update isn't noteworthy" do
+      expect {
+        model.update(path: "test")
+      }.not_to have_enqueued_job(Activity::ModelUpdatedJob)
+    end
+
+    it "queues publish activity job if the creator was changed to a public one" do
+      expect {
+        model.update!(creator: create(:creator, :public))
+      }.to have_enqueued_job(Activity::ModelPublishedJob).once
+    end
+
+    it "queues normal update activity job if the creator was changed to a private one" do
+      expect {
+        model.update!(creator: create(:creator))
+      }.to have_enqueued_job(Activity::ModelUpdatedJob).once
+    end
+
+    it "queues collected activity job if the collection was changed to a public one" do
+      expect {
+        model.update!(collection: create(:collection, :public))
+      }.to have_enqueued_job(Activity::ModelCollectedJob).once
+    end
+
+    it "queues normal update activity job if the collection was changed to a private one" do
+      expect {
+        model.update!(collection: create(:collection))
+      }.to have_enqueued_job(Activity::ModelUpdatedJob).once
     end
   end
 end

@@ -537,7 +537,7 @@ fr:
         submit: Recherche
   jobs:
     activity:
-      creator_added_model:
+      model_published:
         comment: 'Je viens d''ajouter un nouveau modèle : ["%{model_name}"](%{url})'
     analysis:
       analyse_model_file:

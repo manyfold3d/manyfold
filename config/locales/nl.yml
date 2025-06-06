@@ -545,7 +545,7 @@ nl:
         submit: Zoeken
   jobs:
     activity:
-      creator_added_model:
+      model_published:
         comment: 'Ik heb net een nieuw model toegevoegd: ["%{model_name}"](%{url})'
     analysis:
       analyse_model_file:
