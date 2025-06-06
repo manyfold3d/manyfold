@@ -27,6 +27,8 @@ class Collection < ApplicationRecord
   validates :name, uniqueness: {case_sensitive: false}
   validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
 
+  after_create_commit :after_create
+
   def name_with_domain
     remote? ? name + " (#{federails_actor.server})" : name
   end
@@ -99,4 +101,9 @@ class Collection < ApplicationRecord
   def preview_file
     models.first&.preview_file
   end
+
+  def after_create
+    Activity::CollectionPublishedJob.set(wait: 5.seconds).perform_later(id) if public?
+  end
+
 end
