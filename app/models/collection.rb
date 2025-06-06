@@ -28,6 +28,7 @@ class Collection < ApplicationRecord
   validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
 
   after_create_commit :after_create
+  after_update_commit :after_update
 
   def name_with_domain
     remote? ? name + " (#{federails_actor.server})" : name
@@ -106,4 +107,7 @@ class Collection < ApplicationRecord
     Activity::CollectionPublishedJob.set(wait: 5.seconds).perform_later(id) if public?
   end
 
+  def after_update
+    Activity::CollectionPublishedJob.set(wait: 5.seconds).perform_later(id) if just_became_public?
+  end
 end

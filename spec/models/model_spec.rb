@@ -493,7 +493,7 @@ RSpec.describe Model do
   end
 
   context "when updating a private model" do
-    let(:model) { create(:model) }
+    let!(:model) { create(:model) }
 
     it "doesn't queue any activity jobs" do
       expect {
@@ -503,13 +503,13 @@ RSpec.describe Model do
 
     it "queues publish activity job if the model was just made public" do
       expect {
-        model.grant_permission_to "view", nil
+        model.update!(caber_relations_attributes: [{subject: nil, permission: "view"}])
       }.to have_enqueued_job(Activity::ModelPublishedJob).once
     end
   end
 
   context "when updating a public model" do
-    let(:model) { create(:model, :public) }
+    let!(:model) { create(:model, :public) }
 
     it "queues update activity job" do
       expect {
@@ -518,7 +518,6 @@ RSpec.describe Model do
     end
 
     it "queues publish activity job if the creator was changed to a public one" do
-      model
       expect {
         model.update!(creator: create(:creator, :public))
       }.to have_enqueued_job(Activity::ModelPublishedJob).once
@@ -531,7 +530,6 @@ RSpec.describe Model do
     end
 
     it "queues collected activity job if the collection was changed to a public one" do
-      model
       expect {
         model.update!(collection: create(:collection, :public))
       }.to have_enqueued_job(Activity::ModelCollectedJob).once

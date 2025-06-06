@@ -10,6 +10,8 @@ module CaberObject
 
     after_create :assign_default_permissions
 
+    before_update -> { @was_private = !public? }
+
     def self.caber_owner(subject)
       {caber_relations_attributes: [{permission: "own", subject: subject}]}
     end
@@ -17,6 +19,10 @@ module CaberObject
 
   def public?
     Pundit::PolicyFinder.new(self.class).policy.new(nil, self).show?
+  end
+
+  def just_became_public?
+    public? && @was_private
   end
 
   def assign_default_permissions
