@@ -495,6 +495,10 @@ RSpec.describe Model do
   context "when updating a private model" do
     let!(:model) { create(:model) }
 
+    before do
+      model.clear_changes_information
+    end
+
     it "doesn't queue any activity jobs" do
       expect {
         model.update!(caption: "new caption!")
@@ -511,10 +515,20 @@ RSpec.describe Model do
   context "when updating a public model" do
     let!(:model) { create(:model, :public) }
 
+    before do
+      model.clear_changes_information
+    end
+
     it "queues update activity job" do
       expect {
         model.update!(caption: "new caption!")
       }.to have_enqueued_job(Activity::ModelUpdatedJob).once
+    end
+
+    it "doesn't queue any activity jobs if the update isn't noteworthy" do
+      expect {
+        model.update(path: "test")
+      }.not_to have_enqueued_job(Activity::ModelUpdatedJob)
     end
 
     it "queues publish activity job if the creator was changed to a public one" do
@@ -526,7 +540,7 @@ RSpec.describe Model do
     it "queues normal update activity job if the creator was changed to a private one" do
       expect {
         model.update!(creator: create(:creator))
-      }.to have_enqueued_job(Activity::ModelUpdatedJob)
+      }.to have_enqueued_job(Activity::ModelUpdatedJob).once
     end
 
     it "queues collected activity job if the collection was changed to a public one" do
@@ -538,7 +552,7 @@ RSpec.describe Model do
     it "queues normal update activity job if the collection was changed to a private one" do
       expect {
         model.update!(collection: create(:collection))
-      }.to have_enqueued_job(Activity::ModelUpdatedJob)
+      }.to have_enqueued_job(Activity::ModelUpdatedJob).once
     end
   end
 end

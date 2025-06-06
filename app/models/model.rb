@@ -312,8 +312,23 @@ class Model < ApplicationRecord
       Activity::ModelCollectedJob.set(wait: 5.seconds).perform_later(id, collection.id)
     elsif just_became_public?
       Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
-    elsif public?
+    elsif public? && noteworthy_change?
       Activity::ModelUpdatedJob.set(wait: 5.seconds).perform_later(id)
     end
+  end
+
+  def noteworthy_change?
+    # Exclude internal fields, they're not interesting enough to post comments for
+    !previous_changes.keys.without([
+      "id",
+      "path",
+      "library_id",
+      "created_at",
+      "updated_at",
+      "preview_file_id",
+      "slug",
+      "public_id",
+      "name_lower"
+    ]).empty?
   end
 end
