@@ -27,19 +27,23 @@ class FollowsController < ApplicationController
 
   # Outgoing remote follow - ask for target account
   def remote_follow
+    @remote_account = cookies[:fediverse_account]
     @name = params[:name]
     @uri = params[:uri]
   end
 
   # Outgoing remote follow - perform webfinger, then redirect
   def perform_remote_follow
-    parts = Fediverse::Webfinger.split_account(params[:remote_account])
+    @remote_account = params[:remote_account]
+    parts = Fediverse::Webfinger.split_account(@remote_account)
     target = Fediverse::Webfinger.remote_follow_url(parts[:username], parts[:domain], actor_url: params[:uri])
+    # Store remote username in a cookie for future convenience
+    cookies[:fediverse_account] = @remote_account
+    # And off we go
     redirect_to target, allow_other_host: true
   rescue ActiveRecord::RecordNotFound, NoMethodError
     @name = params[:name]
     @uri = params[:uri]
-    @remote_account = params[:remote_account]
     render :remote_follow
   end
 
