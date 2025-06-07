@@ -7,6 +7,6 @@ export default class extends Controller {
   }
 
   copy (): void {
-    navigator.clipboard.writeText(this.textValue)
+    void navigator.clipboard.writeText(this.textValue)
   }
 }
