@@ -310,6 +310,8 @@ en:
       skip_tags: Skip tag list
     title: Manyfold
   components:
+    copy_button:
+      copy: Copy to Clipboard
     download_button:
       download:
         missing: Request download
