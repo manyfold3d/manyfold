@@ -16,7 +16,10 @@ class Components::FollowButton < Components::Base
       href: @path,
       label: translate(@i18n_key, name: @name),
       method: @method,
-      variant: (@following == :pending) ? "outline-primary " : "primary"
+      variant: (@following == :pending) ? "outline-primary " : "primary",
+      data: {
+        turbo: !@signed_out
+      }
     )
   end
 
