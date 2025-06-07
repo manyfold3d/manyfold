@@ -6,6 +6,8 @@ export default class extends Controller {
     text: String
   }
 
+  declare textValue: string
+
   copy (): void {
     void navigator.clipboard.writeText(this.textValue)
   }
