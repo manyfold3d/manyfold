@@ -45,6 +45,7 @@ pl:
     list:
       bulk_edit: Edytuj Wszystkie Modele
       no_results_html: Przepraszamy, nie mogliśmy znaleźć niczego do pokazania! Spróbuj zmienić filtry lub wyszukiwane hasło albo przesłać kilka modeli.
+      no_results_signed_out_html:
       skip_models: Pomiń listę modeli
     merge:
       success: Modele zostały pomyślnie połączone.
@@ -62,6 +63,8 @@ pl:
     scan:
       success: Rozpoczęto skanowanie modelów
     show:
+      download_preparing:
+      download_requested:
       files: Pliki
       files_card:
         bulk_edit: Edytuj wszystkie pliki
@@ -81,6 +84,7 @@ pl:
           summary_html: Folder i pliki tworzące ten model zostaną przeniesione z:<br> <code>%{from}</code><br> do<br> <code>%{to}</code>
           'yes': Tak, przenieś pliki
       path: Ścieżka
+      preview:
       rescan: Ponownie przeskanuj pliki
       search: Wyszukaj w Internecie modele o tej samej nazwie
       submit: Prześlij pliki

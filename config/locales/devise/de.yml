@@ -75,7 +75,7 @@ de:
         danger_zone: Achtung!
         leave_blank_if_you_don_t_want_to_change_it: freilassen, wenn du das nicht ändern willst
         security: Sicherheit
-        social:
+        social: Soziales
         submit: Änderungen speichern
         title: Meine Einstellungen
         unhappy: Unzufrieden?
@@ -88,12 +88,12 @@ de:
         summary: Steuere, wie Modelle und Datei Listen angezeigt werden
       first_use:
         email_help: Wird nie öffentlich angezeigt; wird nur für Anmelde- und Kontosicherheits-E-Mails verwendet.
-        guidance: Bei der ersten Verwendung musst du einen Benutzernamen, eine Kontakt-E-Mail und ein Passwort für den Administrator festlegen. Im Einzelbenutzermodus musst du diese Angaben normalerweise nicht machen, um dich anzumelden, aber im Mehrbenutzermodus kannst du ohne diese Angaben nicht auf Manyfold zugreifen.
+        guidance: Bei der ersten Verwendung musst du einen Accountnamen, eine Kontakt-E-Mail und ein Passwort für den Administrator festlegen. Im Einzelbenutzermodus musst du diese Angaben normalerweise nicht machen, um dich anzumelden, aber im Mehrbenutzermodus kannst du ohne diese Angaben nicht auf Manyfold zugreifen.
         password:
           help_html: Wir verlangen standardmäßig ein starkes Passwort; um ein einfacheres Passwort auf einer privaten Instanz zu erlauben, setze die Umgebungsvariable <a href="https://manyfold.app/sysadmin/configuration.html#min_password_score">MIN_PASSWORD_SCORE</a>.
         submit: Speichern
         title: Einrichtung
-        username_help: Einen eindeutigen Benutzernamen; verwende den vordefinierten oder wähle einen eigenen.
+        username_help: Einen eindeutigen Accountnamen; verwende den vordefinierten oder wähle einen eigenen.
       general_settings:
         heading: Allgemein
         interface_language:
@@ -111,7 +111,7 @@ de:
         details: Deine Details
         rules: Server-Regeln
         rules_agree: Indem du dich für ein Konto anmelden, erklärst du die oben genannten Regeln einzuhalten.
-        sign_up: Registrieren
+        sign_up: Account erstellen
       pagination_settings:
         collections:
           label: Kollektionen auf Seiten verteilen
@@ -155,6 +155,7 @@ de:
           label: Rendering-Stil
           lambert: Glatt schattiert
           normals: Richtung der Oberfläche
+          original: Original (aus Datei)
           shadowed: Realistisch mit Schatten
         show_grid:
           label: Grundplatte anzeigen
@@ -169,8 +170,8 @@ de:
         keypair:
           label: Begrenzungszeichen zur Darstellung von Schlüsselpaaren verwenden
         sorting:
-          alphabetical:
-          frequency:
+          alphabetical: alphabetisch
+          frequency: frequenz
           label: Sortieren
         threshold:
           label: Mindestanzahl der Tags, um Angezeigt zu werden
@@ -195,7 +196,7 @@ de:
         forgot_your_password: Passwort vergessen?
         sign_in: Anmelden
         sign_in_with_provider: Mit %{provider} anmelden
-        sign_up: Registrieren
+        sign_up: Account erstellen
       minimum_password_length:
         one: "(mindestens %{count} Zeichen)"
         other: "(mindestens %{count} Zeichen)"

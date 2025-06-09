@@ -9,26 +9,26 @@ cs:
         label: Detekovat chyby v modelu
     appearance:
       about:
-        help_html:
-        label:
+        help_html: Zobrazeno na stránce o aplikaci; Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+        label: O této instanci
       heading: Vzhled
-      information:
+      information: Informace
       rules:
-        help_html:
-        label:
+        help_html: Zobrazeno při registraci; můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+        label: Pravidla serveru
       site_icon:
-        help:
-        label:
+        help: Zobrazeno v levém horním rohu každé stránky
+        label: Adresa URL loga
       site_name:
-        help:
-        label:
+        help: Název vašeho webu. Používá se v navigaci a na domovské stránce.
+        label: Název stránky
       site_tagline:
-        help:
+        help: Několik slov k představení vašeho webu, které se zobrazí na domovské stránce.
         label: Popisek
       summary: Přizpůsobte vizuální styl Vaší instance.
       support_link:
-        help:
-        label:
+        help: Odkaz na místo, kde mohou uživatelé finančně podpořit instanci (např. OpenCollective, Patreon). Zobrazuje se v zápatí.
+        label: Odkaz na podporu
       theme:
         help_html: Týká se všech uživatelů. Pro zobrazení náhledů navštivte <a href="https://bootswatch.com">Bootswatch</a>.
         label: Téma
@@ -45,6 +45,16 @@ cs:
       new:
         submit: Blokovat doménu
         title: Nový blok domény
+    downloads:
+      description:
+      expiry:
+        help:
+        hours:
+        label:
+      heading:
+      pregenerate:
+        help:
+        label:
     file_settings:
       custom_ignore_filters:
         details: Filtry jsou ve formátu regex oddělené novým řádkem.
@@ -91,9 +101,12 @@ cs:
       permissions: Oprávnění
       registration: Registrace účtu
       registration_open:
-        help:
-        label:
+        help: Umožňuje návštěvníkům zaregistrovat účty.
+        label: Povolit registraci
       single_user_mode: Manyfold je spuštěn v režimu jednoho uživatele.
+      user_quotas:
+      user_quotas_enable_quota:
+      user_quotas_site_default:
     reporting:
       description_html: Pokud povolíte sledování používání, budou na adresu <code>%{endpoint}</code> jednou denně odesílány následující informace. <code>Id</code> je náhodně vygenerováno při povolení sledování.
       heading: Sledování používání
@@ -113,8 +126,8 @@ cs:
         ignored: Hlášení bylo ignorováno.
         resolved: Hlášení bylo označeno jako vyřešené.
     show:
-      stats:
-      total_file_size:
+      stats: Statistiky
+      total_file_size: Celková velikost souboru
     tag_settings:
       auto_tag_new:
         label: Automaticky označit nové modely
@@ -150,6 +163,12 @@ cs:
         view: Zobrazit
       new:
         title: Vytvořit uživatele
+      quota:
+        current_quota:
+        current_space_used:
+        title:
+        unlimited_quota:
+        using_site_default:
       show:
         approve: Schválit uživatele
         confirm_destroy: Opravdu chcete tento uživatelský účet okamžitě odebrat? To nelze vzít zpět!

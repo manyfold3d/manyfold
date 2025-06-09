@@ -4,6 +4,12 @@ pl:
     create:
       success: Szczegóły nowego twórcy zostały zapisane.
     creator:
+      collections_button:
+        label:
+        remote_label:
+      delete_button:
+        confirm:
+        label:
       edit_button:
         label: Edytuj twórcę %{name}
       models_button:

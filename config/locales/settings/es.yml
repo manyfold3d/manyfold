@@ -45,6 +45,16 @@ es:
       new:
         submit: Bloqueo de dominio
         title: Nuevo dominio bloqueado
+    downloads:
+      description: Manyfold generará archivos ZIP de los modelos a petición, pero para los sitios ocupados es posible que desee que estén disponibles más rápidamente. Aquí puedes decirle a Manyfold que debe crear archivos ZIP inmediatamente, y también establecer cuánto tiempo se mantienen en la caché de descargas. Cuidado, esto puede consumir mucho espacio en disco
+      expiry:
+        help: Un valor de 0 significa mantener para siempre.
+        hours: Horas
+        label: Eliminar archivos ZIP después de la descarga
+      heading: Descargas
+      pregenerate:
+        help: Si está activada, los archivos ZIP se crean cada vez que se añade o actualiza un modelo. Si se desactiva, los archivos ZIP sólo se crean cuando se solicitan.
+        label: Crear proactivamente archivos ZIP descargables
     file_settings:
       custom_ignore_filters:
         details: Los filtros están en formato regex separados por un salto de línea.
@@ -94,6 +104,9 @@ es:
         help: Permite a los visitantes suscribirse a cuentas.
         label: Activar el registro
       single_user_mode: Manyfold se está ejecutando en modo usuario único.
+      user_quotas: Tamaño máximo de fichero de la cuenta
+      user_quotas_enable_quota: Activar el tamaño máximo de subida para la cuenta
+      user_quotas_site_default: Tamaño máximo por defecto en MB
     reporting:
       description_html: Si activa el seguimiento de uso, la siguiente información se enviará una vez al día a <code>%{endpoint}</code>. El <code>identificador</code> se genera aleatoriamente al activar el seguimiento.
       heading: Seguimiento de uso
@@ -150,6 +163,12 @@ es:
         view: Ver
       new:
         title: Crear usuario
+      quota:
+        current_quota: Tamaño máximo actual de archivos en MB
+        current_space_used: Almacenamiento de archivos utilizado actualmente
+        title: Tamaño máximo de archivo
+        unlimited_quota: Sin límites
+        using_site_default: "¿Utilizar el tamaño máximo de archivos por defecto del sitio?"
       show:
         approve: Aprobar usuario
         confirm_destroy: "¿Está seguro de que desea eliminar esta cuenta de usuario inmediatamente? Esto no se puede deshacer"

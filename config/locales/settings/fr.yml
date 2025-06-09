@@ -45,6 +45,16 @@ fr:
       new:
         submit: Bloquer le domaine
         title: Bloquer un domaine
+    downloads:
+      description:
+      expiry:
+        help:
+        hours:
+        label:
+      heading:
+      pregenerate:
+        help:
+        label:
     file_settings:
       custom_ignore_filters:
         details: Les filtres sont au format regex et sont séparés par une nouvelle ligne.
@@ -94,6 +104,9 @@ fr:
         help:
         label:
       single_user_mode: Manyfold fonctionne en mode mono-utilisateur.
+      user_quotas:
+      user_quotas_enable_quota:
+      user_quotas_site_default:
     reporting:
       description_html: Si vous activez le suivi de l'utilisation, les informations suivantes seront envoyées une fois par jour à <code>%{endpoint}.</code> L'<code>identifiant</code> est généré de manière aléatoire lorsque vous activez le suivi.
       heading: Rapport d'utilisation
@@ -150,6 +163,12 @@ fr:
         view: Afficher
       new:
         title: Créer un utilisateur
+      quota:
+        current_quota:
+        current_space_used:
+        title:
+        unlimited_quota:
+        using_site_default:
       show:
         approve: Approuver l'utilisateur
         confirm_destroy: Êtes-vous sûr de vouloir supprimer ce compte d'utilisateur immédiatement ? Cette action est irréversible !

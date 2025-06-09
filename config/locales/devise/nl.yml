@@ -155,6 +155,7 @@ nl:
           label: Renderingstijl
           lambert: Vloeiende schaduw
           normals: Oppervlakterichting
+          original:
           shadowed: Realistisch met schaduwen
         show_grid:
           label: Toon grondvlak

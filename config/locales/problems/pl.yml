@@ -22,6 +22,7 @@ pl:
       title: Filtry
     index:
       bulk_confirm: Czy na pewno chcesz automatycznie rozwiązać wszystkie wybrane problemy? Może to spowodować usunięciem plików i danych.
+      bulk_ignore:
       bulk_resolve: Rozwiąż wybrane
       description: Opis
       ignore: Ukryj

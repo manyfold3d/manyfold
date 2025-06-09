@@ -45,6 +45,7 @@ fr:
     list:
       bulk_edit: Modifier tous les modèles
       no_results_html: Désolé, nous n'avons rien à vous montrer ! Essayez de modifier les filtres ou les termes de recherche, ou de télécharger des modèles.
+      no_results_signed_out_html:
       skip_models: Sauter la liste des modèles
     merge:
       success: Les modèles ont été fusionnés avec succès.
@@ -62,6 +63,8 @@ fr:
     scan:
       success: Début de l'analyse du modèle
     show:
+      download_preparing:
+      download_requested:
       files: Fichiers
       files_card:
         bulk_edit: Modifier tous les fichiers
@@ -81,6 +84,7 @@ fr:
           summary_html: Le dossier et les fichiers qui composent ce modèle seront déplacés de :<br> <code>%{from}</code><br> à<br> <code>%{to}</code>
           'yes': Oui, déplacer les fichiers
       path: Chemin
+      preview:
       rescan: Rescanner les fichiers
       search: Recherchez sur Internet des modèles portant ce nom
       submit: Téléverser les fichiers

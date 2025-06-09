@@ -103,6 +103,7 @@ nl:
         unconfirmed_email: Onbevestigde e-mail
         unlock_token: Ontgrendelingstoken
         updated_at: Bijgewerkt op
+        username:
     errors:
       models:
         doorkeeper/application:
@@ -238,6 +239,7 @@ nl:
       permissions:
         edit: Kan bewerken
         own: Eigenaar (kan bekijken, bewerken, verwijderen en delen)
+        preview:
         view: Alleen bekijken
       subject:
         placeholder: E-mailadres, gebruikersnaam of rol
@@ -298,6 +300,7 @@ nl:
       sort:
         name: Sorteren op Naam
         time: Sorteren op Tijd
+    search_error:
     tag_list:
       unrelated_tag_count:
         one: "%{count} ongerelateerde tag verborgen"
@@ -307,7 +310,13 @@ nl:
       skip_tags: Taglijst overslaan
     title: Manyfold
   components:
+    copy_button:
+      copy:
     download_button:
+      download:
+        missing:
+        preparing:
+        ready:
       file_type: Alleen %{type} Bestanden
       label: Alles Downloaden
       menu_header: Download Opties
@@ -317,6 +326,8 @@ nl:
       follow: Volg %{name}
       pending:
       unfollow: Ontvolg %{name}
+    modal:
+      close:
     model_card:
       delete_button:
         label: Verwijder model %{name}
@@ -328,6 +339,21 @@ nl:
       open_button:
         label: Open model %{name}
         text: Openen
+    search_help:
+      boolean:
+      federation:
+      filename:
+      intro:
+      more_details_html:
+      negation:
+      parentheses:
+      quotes:
+      simple:
+      specific_fields:
+      tag:
+      title:
+      unset:
+      without_tag:
   doorkeeper:
     applications:
       buttons:
@@ -539,14 +565,21 @@ nl:
       updated:
     index:
       no_activities: Er zijn momenteel geen activiteiten om weer te geven.
+      open_search_help:
       recent_activity: Recente Activiteit
       search:
         placeholder: Waar zoek je naar?
         submit: Zoeken
   jobs:
     activity:
+      collection_published:
+        comment:
+      model_collected:
+        comment:
       model_published:
-        comment: 'Ik heb net een nieuw model toegevoegd: ["%{model_name}"](%{url})'
+        comment:
+      updated_model:
+        comment:
     analysis:
       analyse_model_file:
         detect_duplicates: Dubbele bestanden detecteren
@@ -593,6 +626,7 @@ nl:
     settings:
       activeadmin: Geavanceerd Beheer
       appearance:
+      downloads:
       libraries: Bibliotheken
       organization: Organisatie
       performance: Prestatie Dashboard
