@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  rate_limit to: 3, within: 2.minutes, only: :create
+
   before_action :random_delay, only: [:create, :cancel]
   before_action :configure_sign_up_params, only: [:create]
   before_action :detect_if_first_use, only: [:edit, :update]
