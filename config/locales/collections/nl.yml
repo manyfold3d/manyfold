@@ -4,10 +4,15 @@ nl:
     collection:
       collections_button:
         label: Toon subcollecties in %{name}
+        remote_label:
+      delete_button:
+        confirm:
+        label:
       edit_button:
         label: Bewerk collectie %{name}
       models_button:
         label: Toon modellen in %{name}
+        remote_label:
       no_preview: Geen voorbeeld beschikbaar
     create:
       success: Nieuwe collectiedetails opgeslagen.

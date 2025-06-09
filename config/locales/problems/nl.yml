@@ -22,6 +22,7 @@ nl:
       title: Filters
     index:
       bulk_confirm: Weet je zeker dat je alle geselecteerde problemen automatisch wilt oplossen? Dit kan bestanden en gegevens verwijderen.
+      bulk_ignore:
       bulk_resolve: Geselecteerde problemen oplossen
       description: Beschrijving
       ignore: Verbergen

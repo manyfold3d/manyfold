@@ -4,6 +4,12 @@ nl:
     create:
       success: Nieuwe makerdetails opgeslagen.
     creator:
+      collections_button:
+        label:
+        remote_label:
+      delete_button:
+        confirm:
+        label:
       edit_button:
         label: Bewerk maker %{name}
       models_button:

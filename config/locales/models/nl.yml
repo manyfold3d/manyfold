@@ -45,6 +45,7 @@ nl:
     list:
       bulk_edit: Alle Modellen Bewerken
       no_results_html: Sorry, we konden niets vinden om te tonen! Probeer je filters of zoektermen aan te passen, of upload wat modellen.
+      no_results_signed_out_html:
       skip_models: Modellijst overslaan
     merge:
       success: Modellen succesvol samengevoegd.
@@ -62,6 +63,8 @@ nl:
     scan:
       success: Modelscan gestart
     show:
+      download_preparing:
+      download_requested:
       files: Bestanden
       files_card:
         bulk_edit: Alle bestanden bewerken
@@ -81,6 +84,7 @@ nl:
           summary_html: De map en bestanden die dit model vormen worden verplaatst van:<br> <code>%{from}</code><br> naar<br> <code>%{to}</code>
           'yes': Ja, verplaats de bestanden
       path: Pad
+      preview:
       rescan: Bestanden opnieuw scannen
       search: Zoek op internet naar modellen met deze naam
       submit: Bestanden Uploaden
