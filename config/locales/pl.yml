@@ -103,6 +103,7 @@ pl:
         unconfirmed_email: Niepotwierdzony adres e-mail
         unlock_token: Token odblokowywujący
         updated_at: Data uaktualnienia
+        username:
     errors:
       models:
         doorkeeper/application:
@@ -119,8 +120,8 @@ pl:
         library:
           attributes:
             path:
-              cannot_be_contained:
-              cannot_contain:
+              cannot_be_contained: nie może znajdować się wewnątrz innej biblioteki
+              cannot_contain: nie może zawierać innych bibliotek
               non_writable:
               not_found: nie można znaleźć na dysku
               unsafe:
@@ -238,6 +239,7 @@ pl:
       permissions:
         edit: Może edytować
         own: Właściciel (może wyświetlać, edytować, usuwać i udostępniać)
+        preview:
         view: Wyświetlaj tylko
       subject:
         placeholder: Adres e-mail, nazwa użytkownika albo rola
@@ -298,6 +300,7 @@ pl:
       sort:
         name: Sortuj według nazwy
         time: Sortuj według czasu
+    search_error:
     tag_list:
       unrelated_tag_count:
         one: "%{count} niepowiązany tag ukryty"
@@ -307,7 +310,13 @@ pl:
       skip_tags: Pomiń listę tagów
     title: Manyfold
   components:
+    copy_button:
+      copy:
     download_button:
+      download:
+        missing:
+        preparing:
+        ready:
       file_type: Tylko Pliki %{type}
       label: Pobierz Wszystko
       menu_header: Opcje Pobierania
@@ -317,6 +326,8 @@ pl:
       follow: Obserwuj %{name}
       pending: Żądane
       unfollow: Przestań obserwować %{name}
+    modal:
+      close:
     model_card:
       delete_button:
         label: Usuń model %{name}
@@ -328,6 +339,21 @@ pl:
       open_button:
         label: Otwórz model %{name}
         text: Otwórz
+    search_help:
+      boolean:
+      federation:
+      filename:
+      intro:
+      more_details_html:
+      negation:
+      parentheses:
+      quotes:
+      simple:
+      specific_fields:
+      tag:
+      title:
+      unset:
+      without_tag:
   doorkeeper:
     applications:
       buttons:
@@ -488,7 +514,7 @@ pl:
     index:
       followers:
       following:
-      title: Obserwowane
+      title: Połączenia
     new:
       help: Możesz obserwować publicznych twórców, kolekcje lub modele na innym serwerze Manyfold, a nawet każde publiczne konto w Fediversie! Wystarczy, że wpiszesz nazwę konta w polu wyszukiwania!
       no_results: Przepraszamy, nie mogliśmy znaleźć niczego dla "%{query}". Czy jest to prawidłowe konto ActivityPub lub adres URL?
@@ -528,14 +554,21 @@ pl:
       updated: zaktualizowane %{time} temu
     index:
       no_activities: Na razie nie ma żadnych aktywności do wyświetlenia.
+      open_search_help:
       recent_activity: Ostatnia Aktywność
       search:
         placeholder: Czego szukasz?
         submit: Wyszukaj
   jobs:
     activity:
+      collection_published:
+        comment:
+      model_collected:
+        comment:
       model_published:
-        comment: 'Właśnie dodałem(-am) nowy model: ["%{model_name}"](%{url})'
+        comment:
+      updated_model:
+        comment:
     analysis:
       analyse_model_file:
         detect_duplicates: Wykrywanie zduplikowanych plików
@@ -582,6 +615,7 @@ pl:
     settings:
       activeadmin: Zaawansowana Administracja
       appearance: Wygląd
+      downloads:
       libraries: Biblioteki
       organization: Organizacja
       performance: Pulpit Wydajności
@@ -629,15 +663,15 @@ pl:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
     cults3d: Cults3D
-    github:
-    makerworld:
+    github: GitHub
+    makerworld: MakerWorld
     manyfold: Manyfold
     myminifactory: MyMiniFactory
-    printables:
-    thangs:
+    printables: Printables
+    thangs: Thangs
     theminiindex: The Mini Index
     thingiverse: Thingiverse
-    yeggi:
+    yeggi: yeggi
   user_mailer:
     account_approved:
       greeting: Cześć!

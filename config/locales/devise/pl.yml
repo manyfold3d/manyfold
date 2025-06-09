@@ -155,6 +155,7 @@ pl:
           label: Styl renderowania
           lambert: Płynnie cieniowany
           normals: Kierunek powierzchni
+          original:
           shadowed: Realistyczne z cieniami
         show_grid:
           label: Pokaż płaszczyznę podłoża

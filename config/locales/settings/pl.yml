@@ -45,6 +45,16 @@ pl:
       new:
         submit: Zablokuj domene
         title: Nowy Blok Domeny
+    downloads:
+      description:
+      expiry:
+        help:
+        hours:
+        label:
+      heading:
+      pregenerate:
+        help:
+        label:
     file_settings:
       custom_ignore_filters:
         details: Filtry są w formacie regex i są oddzielone nową linią.
@@ -57,7 +67,7 @@ pl:
         label: Szablon ścieżki modelu
       parse_metadata_from_path:
         help: Ustawia twórcę, kolekcję i tagi na podstawie szablonu
-        label: Wypełnij metadane ze ścieżki i szablonu podczas skanowania
+        label: Wypełnij metadane z szablonu ścieżki modelu podczas skanowania
       safe_folder_names:
         help_html: np. <code>spinal-tap</code> zamiast <code>Spın̈al Tap</code>
         label: Używaj bezpiecznych nazw folderów
@@ -68,7 +78,7 @@ pl:
         creator: Nazwa twórcy, jeśli ustawiona.
         model_id: Unikalny numeryczny identyfikator modelu. Zdecydowanie polecamy podawanie go zawsze na końcu szablonu, aby uniknąć konfliktów nazw na dysku.
         model_name: Bezpieczna dla systemu plików wersja nazwy modelu.
-        tags_html: 'seria zagnieżdżonych folderów, po jednym dla każdego z tagów, ułożonych w kolejności popularności tagów. Na przykład: <code>fantasy/człowiek/czarodziej</code>'
+        tags_html: 'seria zagnieżdżonych folderów, po jednym dla każdego z tagów, ułożonych w kolejności popularności tagów. Na przykład: <code>fantasy/człowiek/czarodziej</code>. Ten token jest "chciwy"; przeanalizuje on tak wiele tagów, jak to tylko możliwe.'
     general:
       submit: Zapisz Ustawienia
     multiuser:
@@ -94,6 +104,9 @@ pl:
         help: Umożliwia odwiedzającym rejestrację kont.
         label: Włącz rejestrację
       single_user_mode: Manyfold działa w trybie pojedynczego użytkownika.
+      user_quotas:
+      user_quotas_enable_quota:
+      user_quotas_site_default:
     reporting:
       description_html: Jeśli włączysz śledzenie użytkowania, poniższe informacje będą wysyłane raz dziennie do <code>%{endpoint}</code>. <code>Identyfikator</code> jest generowany losowo po włączeniu śledzenia.
       heading: Śledzenie Użytkowania
@@ -127,8 +140,8 @@ pl:
       stop_words_locale:
         label: Język słów stopu
       tag_model_directory_name:
-        help: 'Uwaga: Może generować wiele tagów!'
-        label: Twórz tagi na podstawie nazwy katalogu modelu
+        help: 'Każde słowo w nazwie modelu (nie ścieżki) zostanie dodane jako tag. Uwaga: może to wygenerować DUŻO tagów!'
+        label: Stwórz tagi na podstawie nazwy modelu
     update:
       success: Ustawienia zapisane.
     users:
@@ -150,6 +163,12 @@ pl:
         view: Widok
       new:
         title: Stwórz użytkownika
+      quota:
+        current_quota:
+        current_space_used:
+        title:
+        unlimited_quota:
+        using_site_default:
       show:
         approve: Zatwierdź użytkownika
         confirm_destroy: Czy na pewno chcesz natychmiast usunąć to konto użytkownika? Nie można tego cofnąć!
