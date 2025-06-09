@@ -45,6 +45,7 @@ es:
     list:
       bulk_edit: Editar todos los modelos
       no_results_html: Lo sentimos, ¡no hemos encontrado nada que mostrarte! Prueba a cambiar los filtros o los términos de búsqueda, o a subir algunos modelos.
+      no_results_signed_out_html: Lo sentimos, no hemos encontrado nada que mostrarte. Puede que haya más cosas que ver si <a href="%{link}">inicias sesión</a>.
       skip_models: Omitir lista de modelos
     merge:
       success: Modelos fusionados correctamente.
@@ -62,11 +63,13 @@ es:
     scan:
       success: Escaneo de modelos iniciado
     show:
+      download_preparing: Se está preparando la descarga, por favor espere.
+      download_requested: Descarga solicitada y estará lista en breve, por favor espere.
       files: Archivos
       files_card:
         bulk_edit: Editar todos los archivos
         heading: Archivos
-      followers:
+      followers: Seguidores
       license: Licencia
       merge:
         heading: Fusionar
@@ -81,6 +84,7 @@ es:
           summary_html: La carpeta y los archivos que componen este modelo se moverán de:<br> <code>%{from}</code><br> a<br> <code>%{to}</code>
           'yes': Sí, mueve los archivos
       path: Ruta
+      preview:
       rescan: Re-escanear archivos
       search: Busca en Internet modelos con este nombre
       submit: Cargar archivos

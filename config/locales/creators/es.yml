@@ -4,6 +4,12 @@ es:
     create:
       success: Nuevos detalles del creador guardados.
     creator:
+      collections_button:
+        label:
+        remote_label:
+      delete_button:
+        confirm:
+        label:
       edit_button:
         label: Editar creador %{name}
       models_button:

@@ -77,7 +77,7 @@ es:
         danger_zone: "¡Zona peligrosa!"
         leave_blank_if_you_don_t_want_to_change_it: dejar en blanco si no desea modificarlo
         security: Seguridad
-        social:
+        social: Social
         submit: Guardar cambios
         title: Configuración de la cuenta
         unhappy: "¿Descontento?"
@@ -157,6 +157,7 @@ es:
           label: Estilo de renderizado
           lambert: Sombreado realista
           normals: Dirección de la superficie
+          original: Original (de archivo)
           shadowed: Realista con sombras
         show_grid:
           label: Mostrar plano de tierra
@@ -171,8 +172,8 @@ es:
         keypair:
           label: Utilizar delimitadores para representar pares de claves
         sorting:
-          alphabetical:
-          frequency:
+          alphabetical: alfabético
+          frequency: frecuencia
           label: Ordenar
         threshold:
           label: Número mínimo de etiquetas para la visualización

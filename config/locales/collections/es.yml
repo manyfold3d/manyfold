@@ -4,10 +4,15 @@ es:
     collection:
       collections_button:
         label: Mostrar subcolecciones en %{name}
+        remote_label:
+      delete_button:
+        confirm:
+        label:
       edit_button:
         label: Editar colección %{name}
       models_button:
         label: Mostrar modelos en %{name}
+        remote_label:
       no_preview: vista previa no disponible
     create:
       success: Detalles de la nueva colección guardados.

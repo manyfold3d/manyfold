@@ -23,10 +23,10 @@ es:
     download:
       bambu: Abrir en Bambu Studio
       cura: Abrir en Ultimaker Cura
-      elegoo:
+      elegoo: Abrir en ElegooSlicer
       orca: Abrir en OrcaSlicer
       prusa: Abrir en PrusaSlicer
-      superslicer:
+      superslicer: Abrir en SuperSlicer
     form:
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.

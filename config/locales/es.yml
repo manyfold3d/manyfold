@@ -13,15 +13,15 @@ es:
         notes: Notas
         slug: Handle
       doorkeeper/application:
-        access_token:
+        access_token: Token de Acceso
         confidential: Confidential
-        created_at:
+        created_at: Creado
         name: Nombre
-        owner:
+        owner: Propietario
         redirect_uri: URI de redirección
         scopes: Ámbitos
-        secret:
-        uid:
+        secret: Client Secret
+        uid: ID de Cliente
       federails/moderation/domain_block:
         created_at: Creado el
         domain: Dominio
@@ -103,6 +103,7 @@ es:
         unconfirmed_email: Email no confirmado
         unlock_token: Código de desbloqueo
         updated_at: Actualizado el
+        username: Nombre de usuario
     errors:
       models:
         doorkeeper/application:
@@ -119,8 +120,8 @@ es:
         library:
           attributes:
             path:
-              cannot_be_contained:
-              cannot_contain:
+              cannot_be_contained: no puede estar dentro de otra biblioteca
+              cannot_contain: no puede contener otras bibliotecas
               non_writable: se debe poder escribir
               not_found: no se ha encontrado en el disco
               unsafe: no puede ser una ruta privilegiada del sistema
@@ -238,6 +239,7 @@ es:
       permissions:
         edit: Puede editar
         own: Propietario (puede ver, editar, eliminar y compartir)
+        preview:
         view: Ver sólo
       subject:
         placeholder: Dirección de correo electrónico, nombre de usuario o rol
@@ -300,6 +302,7 @@ es:
       sort:
         name: Ordenar por nombre
         time: Ordenar por tiempo
+    search_error:
     tag_list:
       unrelated_tag_count:
         one: "%{count} etiqueta no relacionada oculta"
@@ -309,7 +312,13 @@ es:
       skip_tags: Saltar lista de etiquetas
     title: Manyfold
   components:
+    copy_button:
+      copy:
     download_button:
+      download:
+        missing: Solicitar descarga
+        preparing: Preparando descarga, por favor espere
+        ready: Listo para descargar
       file_type: Solo archivos %{type}
       label: Descargar modelo
       menu_header: Opciones de Descarga
@@ -319,6 +328,8 @@ es:
       follow: Seguir %{name}
       pending: Requerido
       unfollow: Dejar de seguir %{name}
+    modal:
+      close: Cerrar
     model_card:
       delete_button:
         label: Borrar modelo %{name}
@@ -330,6 +341,21 @@ es:
       open_button:
         label: Abrir modelo %{name}
         text: Abrir
+    search_help:
+      boolean: Utilice "or" para buscar modelos que coincidan con cualquiera de los términos.
+      federation:
+      filename: También puede buscar nombres de archivo específicos.
+      intro: 'Encuentre lo que necesita con nuestra potente sintaxis de búsqueda:'
+      more_details_html: Para más información, lea la documentación completa <a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">del lenguaje de consulta de scoped_search</a>.
+      negation: Para excluir términos, utilice "not", "!" o "-".
+      parentheses: Agrupe los términos entre paréntesis para obtener combinaciones lógicas más complejas.
+      quotes: Para buscar varias palabras en un mismo término, utilice las comillas; sólo se mostrarán los modelos con el texto exacto.
+      simple: Por defecto, la búsqueda encontrará los modelos que coincidan con todos los términos.
+      specific_fields: Puede buscar términos en algunos campos específicos. Utilice "~" para que coincida con parte del campo o "=" que intentará que coincida con todo.
+      tag: Busca modelos con una etiqueta específica
+      title: Sintaxis de búsqueda
+      unset: Utilice "set?" para consultar si un campo concreto está establecido, y añada "not" para encontrar lo contrario.
+      without_tag: Utilice "!=" para encontrar modelos sin una etiqueta específica
   doorkeeper:
     applications:
       buttons:
@@ -366,10 +392,10 @@ es:
         application_id: Identificador de aplicación
         callback_urls: Callback urls
         confidential: Confidential
-        not_defined:
+        not_defined: No definido
         scopes: Ámbitos
         secret: Secret
-        secret_hashed:
+        secret_hashed: Hash Secreto
         title: 'Aplicación: %{name}'
     authorizations:
       buttons:
@@ -378,7 +404,7 @@ es:
       error:
         title: Ha ocurrido un error
       form_post:
-        title:
+        title: Envíe este formulario
       new:
         able_to: Está aplicación tendrá permisos para
         prompt: "¿Autorizas a %{client_name} para usar tu cuenta?"
@@ -401,16 +427,16 @@ es:
         admin_authenticator_not_configured: Access to admin panel is forbidden due to Doorkeeper.configure.admin_authenticator being unconfigured.
         credential_flow_not_configured: El flujo de credenciales del propietario del recurso ha fallado porque Doorkeeper.configure.resource_owner_from_credentials no está configurado.
         forbidden_token:
-          missing_scope:
+          missing_scope: El acceso a este recurso requiere el ámbito "%{oauth_scopes}".
         invalid_client: La autenticación del cliente ha fallado por cliente desconocido, cliente no autenticado, o método de autenticación incompatible.
         invalid_code_challenge_method:
-          one:
-          other:
-          zero:
+          one: El método code_challenge debe ser %{challenge_methods}.
+          other: El método code_challenge_method debe ser uno de %{challenge_methods}.
+          zero: El servidor de autorización no admite PKCE porque no hay valores code_challenge_method aceptados.
         invalid_grant: La autorización proporcionada no es válida, ha expirado, se ha revocado, no coincide con la URI de redirección utilizada en la petición de autorización, o ha sido solicitada por otro cliente.
         invalid_redirect_uri: La uri de redirección no es valida.
         invalid_request:
-          invalid_code_challenge:
+          invalid_code_challenge: Es necesario impugnar el código.
           missing_param: 'Missing required parameter: %{value}.'
           request_not_authorized: Request need to be authorized. Required parameter for authorizing request is missing or invalid.
           unknown: La petición no tiene un parámetro obligatorio, incluye un valor de parámetro incompatible, o tiene un formato incorrecto.
@@ -426,7 +452,7 @@ es:
         temporarily_unavailable: El servidor de autorización no ha podido manejar la petición por una sobrecarga temporal o por mantenimiento del servidor.
         unauthorized_client: El cliente no tiene autorización para realizar esta petición utilizando este método.
         unsupported_grant_type: El tipo de autorización no está soportada por el servidor de autorización.
-        unsupported_response_mode:
+        unsupported_response_mode: El servidor de autorización no soporta este tipo de respuesta.
         unsupported_response_type: El servidor de autorización no soporta este tipo de respuesta.
     flash:
       applications:
@@ -452,33 +478,33 @@ es:
       status: Pre-authorization
   doorkeeper_applications:
     create:
-      failure:
-      success:
+      failure: Se ha producido un error y no se ha podido guardar la aplicación.
+      success: Aplicación creada con éxito.
     destroy:
-      success:
+      success: Aplicación eliminada con éxito.
     edit:
       title: Editar aplicación
     form:
       confidential:
-        help:
+        help: Una aplicación confidencial puede guardar secretos de forma segura (por ejemplo, un backend de servidor web o un script de máquina a máquina).
       redirect_uri:
-        help:
+        help: Utilice "urn:ietf:wg:oauth:2.0:oob" si su aplicación no necesita un URI de redirección (por ejemplo, aplicaciones de máquina a máquina).
       scopes:
         label: Ámbitos
-      submit:
+      submit: Guardar aplicación
     index:
-      description:
-      new:
-      title:
+      description: Las aplicaciones OAuth le permiten acceder a los recursos de Manyfold desde otros servicios a través de nuestra API.
+      new: Nueva aplicación
+      title: Aplicaciones OAuth
     new:
-      title:
+      title: Nueva aplicación
     show:
       destroy: Borrar
       edit: Editar
-      title:
+      title: Detalles de la aplicación
     update:
-      failure:
-      success:
+      failure: Se ha producido un error y no se ha podido guardar la aplicación.
+      success: Aplicación guardada correctamente.
   follows:
     actor_table:
       actions: Acciones
@@ -488,8 +514,8 @@ es:
     follow_remote_actor:
       followed: Siguiendo a %{actor} correctamente.
     index:
-      followers:
-      following:
+      followers: Seguidores
+      following: Siguiendo
       title: Siguiendo
     new:
       help: Puedes seguir creadores, colecciones o modelos públicos en otro servidor de Manyfold; ¡de hecho, cualquier cuenta pública en el Fediverse! Solo ingresa el nombre de la cuenta en el cuadro de búsqueda.
@@ -513,12 +539,12 @@ es:
     edit: Editar
     expand: Expandir
     followers:
-      few:
-      many:
-      one:
-      other:
-      two:
-      zero:
+      few: "%{count} Seguidores"
+      many: "%{count} Seguidores"
+      one: "%{count} Seguidores"
+      other: "%{count} Seguidores"
+      two: "%{count} Seguidores"
+      zero: "%{count} Seguidores"
     menu: Menú
     new: Nuevo
     report: Informe %{type}
@@ -526,18 +552,25 @@ es:
     view: Ver
   home:
     activity:
-      created:
-      updated:
+      created: añadido hace %{time}
+      updated: actualizado hace %{time}
     index:
       no_activities: Por ahora no hay actividades que mostrar.
+      open_search_help: Sintaxis de búsqueda
       recent_activity: Actividad reciente
       search:
         placeholder: "¿Qué busca?"
         submit: Buscar
   jobs:
     activity:
+      collection_published:
+        comment:
+      model_collected:
+        comment:
       model_published:
-        comment: 'Acabo de añadir un nuevo modelo: ["%{model_name}"](%{url})'
+        comment:
+      updated_model:
+        comment:
     analysis:
       analyse_model_file:
         detect_duplicates: Buscando ficheros duplicados
@@ -584,6 +617,7 @@ es:
     settings:
       activeadmin: Administración avanzada
       appearance: Apariencia
+      downloads: Descargas
       libraries: Bibliotecas
       organization: Organización
       performance: Panel de rendimiento
@@ -631,15 +665,15 @@ es:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
     cults3d: Cults3D
-    github:
-    makerworld:
+    github: GitHub
+    makerworld: MakerWorld
     manyfold: Manyfold
     myminifactory: MyMiniFactory
-    printables:
-    thangs:
+    printables: Printables
+    thangs: Thangs
     theminiindex: The Mini Index
     thingiverse: Thingiverse
-    yeggi:
+    yeggi: yeggi
   user_mailer:
     account_approved:
       greeting: "¡Hola!"
