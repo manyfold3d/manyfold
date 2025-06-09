@@ -27,10 +27,10 @@ de:
         label: Beschreibung
       summary: Passe das aussehen deiner Instanz an.
       support_link:
-        help: Ein Link zu einem Ort, an dem deine Nutzer die Instanz finanziell unterstützen können (z. B. OpenCollective, Patreon). Wird in der Fußzeile angezeigt.
+        help: Ein Link zu einem Ort, an dem deine Besucher die Instanz finanziell unterstützen können (z. B. OpenCollective, Patreon). Wird in der Fußzeile angezeigt.
         label: Support-Link
       theme:
-        help_html: Betrifft alle Benutzer. Besuche <a href="https://bootswatch.com">Bootswatch</a>, um eine Vorschau zu sehen.
+        help_html: Betrifft alle Accounts. Besuche <a href="https://bootswatch.com">Bootswatch</a>, um eine Vorschau zu sehen.
         label: Aussehen
     domain_blocks:
       create:
@@ -45,6 +45,16 @@ de:
       new:
         submit: Domain Blockieren
         title: Neuer Domain-block
+    downloads:
+      description: Manyfold generiert ZIP-Dateien von Modellen auf Anfrage, aber für stark frequentierte Websites möchtest du diese vielleicht schneller verfügbar haben. Hier kannst du Manyfold anweisen, ZIP-Dateien sofort zu erstellen, und auch festlegen, wie lange sie im Download-Cache aufbewahrt werden sollen. Vorsicht, dies kann eine Menge Speicherplatz verbrauchen!
+      expiry:
+        help: 0 bedeutet "für immer".
+        hours: Stunden
+        label: Entferne heruntergeladene ZIP-Dateien danach
+      heading: Herunterladen
+      pregenerate:
+        help: Wenn diese Option aktiviert ist, werden ZIP-Dateien immer dann erstellt, wenn ein Modell hinzugefügt oder aktualisiert wird. Wenn deaktiviert, werden ZIP-Dateien nur auf Anforderung erstellt.
+        label: Proaktiv herunterladbare ZIP-Dateien erstellen
     file_settings:
       custom_ignore_filters:
         details: Die Filter sind im Regex-Format und durch eine neue Zeile getrennt.
@@ -57,18 +67,18 @@ de:
         label: Modellpfad-Vorlage
       parse_metadata_from_path:
         help: Legt Ersteller, Sammlung und Tags basierend auf der Vorlage fest
-        label: Metadaten aus Pfad und Vorlage während des Scannens auffüllen
+        label: Metadaten aus der Modellpfadvorlage während des Scannens auffüllen
       safe_folder_names:
         help_html: z.B. <code>Spinal-Tap</code> statt <code>Spın̈al Tap</code>
         label: Dateisystem sichere Ordnernamen verwenden
-      summary: Definiere die Ordnerstruktur, die von "Dateien organisieren" und für das automatische Ausfüllen von Metadaten beim Scannen verwendet wird. Wirkt sich auf alle Benutzer aus.
+      summary: Definiere die Ordnerstruktur, die von "Dateien organisieren" und für das automatische Ausfüllen von Metadaten beim Scannen verwendet wird. Wirkt sich auf alle Accounts aus.
       title: Ordner Benennung
       tokens:
         collection: Der Titel der Sammlung, in der sich das Modell befindet, falls festgelegt.
         creator: Der Name des Erstellers, falls festgelegt.
         model_id: Ein eindeutiger numerischer Bezeichner für das Modell. Wir empfehlen dringend, diese Kennung immer am Ende der Vorlage anzugeben, um Namenskonflikte zu vermeiden.
         model_name: Eine dateisystemsichere Version des Modellnamens.
-        tags_html: 'eine Reihe von verschachtelten Ordnern, einen für jedes Tag, geordnet nach der Beliebtheit der Tags. Zum Beispiel: <code>fantasy/human/wizard</code>'
+        tags_html: 'eine Reihe von verschachtelten Ordnern, einen für jedes Tag, geordnet nach der Beliebtheit der Tags. Zum Beispiel: <code>fantasy/human/wizard</code>. Dieses Token ist "gierig"; es analysiert so viele Tags wie möglich.'
     general:
       submit: Einstellungen speichern
     multiuser:
@@ -79,7 +89,7 @@ de:
         help: Wer kann neue Modelle/Ersteller/Sammlungen standardmäßig anzeigen?
         label: Standard-Sichtbarkeit
         options:
-          member: Eingeloggte lokale Benutzer
+          member: Eingeloggte lokale Konten
           none: Privat
       details_html: Um diese Einstellungen zu ändern, bearbeite die <a href='https://manyfold.app/sysadmin/configuration.html'>Umgebungsvariablen</a> des Servers und starten Sie ihn neu.
       email: E-Mail-Zustellung konfiguriert?
@@ -94,6 +104,9 @@ de:
         help: Ermöglicht es Besuchern, sich für Konten anzumelden.
         label: Aktiviere registrierung
       single_user_mode: Manyfold läuft im Single user modus.
+      user_quotas: Größenbeschränkung für den Konto-Upload
+      user_quotas_enable_quota: Speicherlimit für Konto-Uploads aktivieren
+      user_quotas_site_default: Standard-Konto-Upload-Speicherlimit in MB
     reporting:
       description_html: Wenn du die Nutzungsverfolgung aktivieren, werden die folgenden Informationen einmal täglich an <code>%{endpoint}</code> gesendet. Die <code>id</code> wird zufällig generiert, wenn die Verfolgung aktiviert wird.
       heading: Nutzungs Analyse
@@ -104,7 +117,7 @@ de:
       verification_html: Wenn du überprüfen willst, was wir senden, kannst du die Umgebungsvariable <code>USAGE_REPORTING_URL</code> ändern und die Daten an einen Ort senden, an dem du sie überprüfen kannst. Du kannst auch im Protokoll genau sehen, was gesendet wird.
     reports:
       index:
-        description: Von lokalen oder Fediverse-Benutzern gemeldete Inhalte werden hier zur Moderation angezeigt.
+        description: Von lokalen oder Fediverse-Konten gemeldete Inhalte werden hier zur Moderation angezeigt.
         title: Meldungen
       show:
         ignore: Ignorieren
@@ -120,42 +133,48 @@ de:
         label: Automatisch neue Modelle mit Tag(s) markieren
       custom_stop_words:
         label: Ignorierte Wörter
-      description: Hinzufügen von Tags zu allen neu gescannten Modellen und Herausfiltern bestimmter Wörter (Ignorieren bestimmter Wörter) bei der automatischen Erstellung von Tags. Wirkt sich auf alle Benutzer aus.
+      description: Hinzufügen von Tags zu allen neu gescannten Modellen und Herausfiltern bestimmter Wörter (Ignorieren bestimmter Wörter) bei der automatischen Erstellung von Tags. Wirkt sich auf alle Konten aus.
       filter_stop_words:
         label: Ignorierte Wörter
       heading: Tagging
       stop_words_locale:
         label: Sprache der Ignorierten wörter
       tag_model_directory_name:
-        help: Achtung! Kann eine Menge Tags erzeugen!
-        label: Tags aus Modellverzeichnisnamen erstellen
+        help: 'Jedes Wort im Modellnamen (nicht der Pfad) wird als Tag hinzugefügt. Warnung: Dies kann eine MENGE von Tags erzeugen!'
+        label: Tags aus Modellnamen erstellen
     update:
       success: Einstellungen gespeichert.
     users:
       create:
-        success: Benutzer erfolgreich angelegt.
+        success: Konto erfolgreich angelegt.
       destroy:
-        success: Benutzer entfernt!
+        success: Konto entfernt!
       edit:
-        title: 'Benutzer bearbeiten: %{username}'
+        title: 'Konto bearbeiten: %{username}'
       form:
-        password_reset_help: Ein Link wird automatisch zum Nutzer gesendet, damit er sein eigenes Passwort setzten kann.
+        password_reset_help: Ein Link wird automatisch zum Konto inhaber gesendet, damit er sein eigenes Passwort setzten kann.
         submit: Speichern
       index:
-        description: Anzeigen und Bearbeiten von registrierten Benutzerkonten.
+        description: Anzeigen und Bearbeiten von registrierten Konten.
         fediverse_address: Fediverse-Adresse
         local: Lokal
-        new: Neuer Benutzer
-        title: Benutzer verwaltung
+        new: Neues Konto
+        title: Konten verwaltung
         view: Siehe
       new:
-        title: Benutzer erstellen
+        title: Konto erstellen
+      quota:
+        current_quota: Aktuelles Speicherlimit in MB
+        current_space_used: Derzeit verwendeter Speicherplatz
+        title: Datei speicher Limit
+        unlimited_quota: Unbegrenzt
+        using_site_default: Verwende das Standard-Speicherlimit der Website?
       show:
-        approve: Benutzer genehmigen
-        confirm_destroy: Bist du sicher, dass du dieses Benutzerkonto sofort entfernen möchtest? Dies kann nicht rückgängig gemacht werden!
+        approve: Konto genehmigen
+        confirm_destroy: Bist du sicher, dass du dieses Konto sofort entfernen möchtest? Dies kann nicht rückgängig gemacht werden!
         reset_password: Passwort zurücksetzen
-        title: 'Angaben zum Benutzer: %{username}'
+        title: 'Angaben zum Konto: %{username}'
       update:
-        approved: Der Benutzer wurde erfolgreich zugelassen.
-        reset_link_sent: Dem Benutzer wurde ein Link zugesandt, über den er ein neues Passwort festlegen kann.
-        success: Benutzer erfolgreich aktualisiert.
+        approved: Das Konto wurde erfolgreich zugelassen.
+        reset_link_sent: Dem Konto Inhaber wurde ein Link zugesandt, über den er ein neues Passwort festlegen kann.
+        success: Konto erfolgreich aktualisiert.

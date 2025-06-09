@@ -4,6 +4,12 @@ de:
     create:
       success: Neue Erstellerdetails gespeichert.
     creator:
+      collections_button:
+        label:
+        remote_label:
+      delete_button:
+        confirm:
+        label:
       edit_button:
         label: Bearbeite ersteller %{name}
       models_button:
@@ -15,7 +21,7 @@ de:
       notes:
         help_html: Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden.
       slug:
-        help: Wird in URLs und als Fediverse-Benutzername verwendet (falls aktiviert).
+        help: Wird in URLs und als Fediverse-Handle (falls aktiviert) verwendet.
     general:
       edit: Bearbeite den Ersteller
       new: Neuer Ersteller

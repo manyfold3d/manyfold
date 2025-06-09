@@ -13,15 +13,15 @@ de:
         notes: Beschreibung
         slug: Handgriff
       doorkeeper/application:
-        access_token:
+        access_token: Zugangs-Token
         confidential: Vertraulich
-        created_at:
+        created_at: Erstellt
         name: Name
-        owner:
+        owner: Eigentümer
         redirect_uri: Redirect URI
         scopes: Scopes
-        secret:
-        uid:
+        secret: Client Secret
+        uid: Client ID
       federails/moderation/domain_block:
         created_at: Erstellt am
         domain: Domain
@@ -103,6 +103,7 @@ de:
         unconfirmed_email: Unbestätigte E-Mail-Adresse
         unlock_token: Entsperrungs-Token
         updated_at: Aktualisiert am
+        username: Name des Kontos
     errors:
       models:
         doorkeeper/application:
@@ -119,8 +120,8 @@ de:
         library:
           attributes:
             path:
-              cannot_be_contained:
-              cannot_contain:
+              cannot_be_contained: kann nicht innerhalb einer anderen Bibliothek liegen
+              cannot_contain: kann keine anderen Bibliotheken enthalten
               non_writable: User muss schreib rechte haben
               not_found: konnte nicht auf der Festplatte gefunden werden
               unsafe: kann kein privilegierter Systempfad sein
@@ -213,12 +214,12 @@ de:
         two: Probleme
         zero: Probleme
       user:
-        few: Benutzer
-        many: Benutzer
-        one: Benutzer
-        other: Benutzer
-        two: Benutzer
-        zero: Benutzer
+        few: Konten
+        many: Konten
+        one: Konto
+        other: Konten
+        two: Konten
+        zero: Konten
   activity:
     index:
       description: Einträge älter als %{retention_period} werden verworfen.
@@ -238,11 +239,12 @@ de:
       permissions:
         edit: kann Bearbeiten
         own: Eigentümer (kann anzeigen, bearbeiten, löschen und freigeben)
+        preview:
         view: Nur Anzeigbar
       subject:
-        placeholder: E-Mail-Adresse, Nutzername oder Rolle
+        placeholder: E-Mail-Adresse, Kontoname oder Rolle
         role:
-          member: Jeder angemeldete lokale Benutzer
+          member: Jedes eingeloggte lokale Konto
           public: Jeder (ohne Login)
         you: "(Du)"
     caber_relations_form:
@@ -281,7 +283,7 @@ de:
     navbar:
       account: Meine Einstellungen
       activity: Aktivität
-      check_existing: Vorhandene Modelle prüfen
+      check_existing: Vorhandene Modelle neu scannen
       home: Homepage
       log_in: Einloggen
       log_out: Abmelden
@@ -298,6 +300,7 @@ de:
       sort:
         name: Nach Namen sortieren
         time: Sortieren nach Zeit
+    search_error:
     tag_list:
       unrelated_tag_count:
         one: "%{count} unabhängige Tags versteckt"
@@ -307,7 +310,13 @@ de:
       skip_tags: Tag-Liste überspringen
     title: Manyfold
   components:
+    copy_button:
+      copy:
     download_button:
+      download:
+        missing: Download anfordern
+        preparing: Download wird vorbereitet, bitte warten
+        ready: Bereit zum Herunterladen
       file_type: "%{type} Dateien"
       label: Alle herunterladen
       menu_header: Download optionen
@@ -317,6 +326,8 @@ de:
       follow: Folge %{name}
       pending: Angefordert
       unfollow: "%{name} nicht mehr Folgen"
+    modal:
+      close: Schließen
     model_card:
       delete_button:
         label: Lösche modell %{name}
@@ -328,6 +339,21 @@ de:
       open_button:
         label: Öffne Modell %{name}
         text: Öffnen
+    search_help:
+      boolean: Verwende "oder", um Modelle zu finden, die einem der Begriffe entsprechen.
+      federation:
+      filename: DU kannst auch nach bestimmten Dateinamen suchen.
+      intro: 'Finden, was Du brauchst, mit unserer leistungsstarken Such-Syntax:'
+      more_details_html: Weitere Informationen findest du in der vollständigen Dokumentation für <a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">die Abfragesprache von scoped_search</a>.
+      negation: Um Begriffe auszuschließen, verwende  "not", "!" oder "-".
+      parentheses: Gruppiere Begriffe mit Klammern für komplexere logische Kombinationen.
+      quotes: Um nach mehreren Wörtern in einem einzigen Begriff zu suchen, verwende Anführungszeichen; es werden dann nur Modelle mit dem exakten Text angezeigt.
+      simple: In der Standardeinstellung findet die Suche Modelle, die allen Begriffen entsprechen.
+      specific_fields: Du kannst nach Begriffen in einigen bestimmten Feldern suchen. Verwende "~", um einen Teil des Feldes zu finden; verwende "=" um das ganze Feld zu finden.
+      tag: Findet Modelle mit einem bestimmten Tag
+      title: Such Syntax
+      unset: Verwende "set?", um abzufragen, ob ein bestimmtes Feld gesetzt ist, und füge "not" hinzu, um das Gegenteil festzustellen.
+      without_tag: Verwende "!=", um Modelle ohne ein bestimmtes Tag zu finden
   doorkeeper:
     applications:
       buttons:
@@ -364,10 +390,10 @@ de:
         application_id: Applikations-ID
         callback_urls: Callback URLs
         confidential: Vertraulich
-        not_defined:
+        not_defined: Nicht definiert
         scopes: Scopes
         secret: Secret
-        secret_hashed:
+        secret_hashed: Secret gehashed
         title: 'Applikation: %{name}'
     authorizations:
       buttons:
@@ -376,7 +402,7 @@ de:
       error:
         title: Ein Fehler ist aufgetreten
       form_post:
-        title:
+        title: Dieses Formular abschicken
       new:
         able_to: Diese Anwendung wird folgende Rechte haben
         prompt: Soll %{client_name} für die Benutzung dieses Accounts autorisiert werden?
@@ -399,16 +425,16 @@ de:
         admin_authenticator_not_configured: Access to admin panel is forbidden due to Doorkeeper.configure.admin_authenticator being unconfigured.
         credential_flow_not_configured: 'Die Prozedur "Resource Owner Password Credentials" ist fehlgeschlagen: Doorkeeper.configure.resource_owner_from_credentials ist nicht konfiguriert.'
         forbidden_token:
-          missing_scope:
+          missing_scope: Der Zugriff auf diese Ressource erfordert den Bereich "%{oauth_scopes}".
         invalid_client: 'Client-Autorisierung MKIM ist fehlgeschlagen: Unbekannter Client, keine Autorisierung mitgeliefert oder Autorisierungsmethode nicht unterstützt.'
         invalid_code_challenge_method:
-          one:
-          other:
-          zero:
+          one: Die code_challenge_method muss %{challenge_methods} sein.
+          other: Die code_challenge_method muss einer der folgenden Werte sein %{challenge_methods}.
+          zero: Der Autorisierungsserver unterstützt PKCE nicht, da es keine akzeptierten code_challenge_method-Werte gibt.
         invalid_grant: Die bereitgestellte Autorisierung ist inkorrekt, abgelaufen, widerrufen, ist mit einem anderen Client verknüpft oder der Redirection URI stimmt nicht mit der Autorisierungs-Anfrage überein.
         invalid_redirect_uri: Der Redirect-URI in der Anfrage ist ungültig.
         invalid_request:
-          invalid_code_challenge:
+          invalid_code_challenge: Code Challenge ist erforderlich.
           missing_param: 'Missing required parameter: %{value}.'
           request_not_authorized: Request need to be authorized. Required parameter for authorizing request is missing or invalid.
           unknown: Die Anfrage enthält einen nicht-unterstützten Parameter, ein Parameter fehlt oder sie ist anderweitig fehlerhaft.
@@ -424,7 +450,7 @@ de:
         temporarily_unavailable: Der Autorisierungs-Server ist derzeit auf Grund von temporärer Überlastung oder Wartungsarbeiten am Server nicht in der Lage, die Anfrage zu bearbeiten .
         unauthorized_client: Der Client ist nicht autorisiert, diese Anfrage mit dieser Methode auszuführen.
         unsupported_grant_type: Der Autorisierungs-Typ wird nicht vom Autorisierungs-Server unterstützt.
-        unsupported_response_mode:
+        unsupported_response_mode: Der Autorisierungsserver unterstützt diesen Antwortmodus nicht.
         unsupported_response_type: Der Autorisierungs-Server unterstützt diesen Antwort-Typ nicht.
     flash:
       applications:
@@ -450,33 +476,33 @@ de:
       status: Pre-authorization
   doorkeeper_applications:
     create:
-      failure:
-      success:
+      failure: Es ist ein Fehler aufgetreten, und die Anwendung konnte nicht erstellt werden.
+      success: Anwendung erfolgreich erstellt.
     destroy:
-      success:
+      success: Anwendung erfolgreich gelöscht.
     edit:
       title: Applikation bearbeiten
     form:
       confidential:
-        help:
+        help: Eine vertrauliche Anwendung kann Geheimnisse sicher aufbewahren (z. B. ein Webserver-Backend oder ein Machine-to-Machine-Skript).
       redirect_uri:
-        help:
+        help: Verwende "urn:ietf:wg:oauth:2.0:oob", wenn deine Anwendung keinen Redirect-URI benötigt (z. B. bei Machine-to-Machine-Anwendungen).
       scopes:
         label: Scopes
-      submit:
+      submit: Anwendung speichern
     index:
-      description:
-      new:
-      title:
+      description: OAuth-Anwendungen ermöglichen den Zugriff auf Manyfold-Ressourcen von anderen Diensten aus über unsere API.
+      new: Neue Anwendung
+      title: OAuth-Anwendungen
     new:
-      title:
+      title: Neue Anwendung
     show:
       destroy: Löschen
       edit: Bearbeiten
-      title:
+      title: Anwendungs details
     update:
-      failure:
-      success:
+      failure: Es ist ein Fehler aufgetreten, und die Anwendung konnte nicht gespeichert werden.
+      success: Anwendung erfolgreich gespeichert.
   follows:
     actor_table:
       actions: Aktionen
@@ -486,8 +512,8 @@ de:
     follow_remote_actor:
       followed: Erfolgreich %{actor} gefolgt
     index:
-      followers:
-      following:
+      followers: Follower
+      following: Follgende
       title: Verbindungen
     new:
       help: Du kannst öffentlichen Authoren, Sammlungen oder Modellen auf einem anderen Manyfold-Server folgen, und zwar jedem öffentlichen Konto im Fediverse! Gib einfach den Namen des Accounts in das Suchfeld ein!
@@ -497,7 +523,7 @@ de:
     remote_follow:
       help: Du brauchst kein Konto auf diesem Server, um %{name} zu folgen; gib hier deinen eigenen Kontonamen ein, und wir schicken Sie nach Hause, um den Vorgang abzuschließen.
       no_results_html: Wir konnten dein Privatkonto nicht finden; hast du es richtig angegeben?
-      placeholder: dein Fediverse-Benutzername, z. B. manyfold@3dp.chat
+      placeholder: dein Fediverse-handle, z. B. manyfold@3dp.chat
       submit: Bring mich nach Hause
       title: Folge %{name}
     search_form:
@@ -511,12 +537,12 @@ de:
     edit: Bearbeiten
     expand: Erweitern
     followers:
-      few:
-      many:
-      one:
-      other:
-      two:
-      zero:
+      few: "%{count} Follower"
+      many: "%{count} Follower"
+      one: "%{count} Follower"
+      other: "%{count} Follower"
+      two: "%{count} Follower"
+      zero: "%{count} Follower"
     menu: Menü
     new: Neue
     report: Melde %{type}
@@ -524,18 +550,25 @@ de:
     view: Siehe
   home:
     activity:
-      created:
-      updated:
+      created: hinzugefügt vor %{time}
+      updated: hinzugefügt vor %{time}
     index:
       no_activities: Im Moment gibt es keine Aktivitäten zu sehen.
+      open_search_help: Such-Syntax
       recent_activity: Neuste Aktivität
       search:
         placeholder: Wonach suchen Sie?
         submit: Suche
   jobs:
     activity:
+      collection_published:
+        comment:
+      model_collected:
+        comment:
       model_published:
-        comment: 'Ich habe gerade ein neues Modell hinzugefügt: ["%{model_name}"](%{url})'
+        comment:
+      updated_model:
+        comment:
     analysis:
       analyse_model_file:
         detect_duplicates: Doppelte Datei erkannt
@@ -582,6 +615,7 @@ de:
     settings:
       activeadmin: Erweiterte Administration
       appearance: Erscheinungsbild
+      downloads: Herunterladen
       libraries: Sammlungen
       organization: Organisation
       performance: Leistungs-Dashboard
@@ -629,15 +663,15 @@ de:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
     cults3d: Cults3D
-    github:
-    makerworld:
+    github: GitHub
+    makerworld: MakerWorld
     manyfold: Manyfold
     myminifactory: MyMiniFactory
-    printables:
-    thangs:
+    printables: Printables
+    thangs: Thangs
     theminiindex: The Mini Index
     thingiverse: Thingiverse
-    yeggi:
+    yeggi: yeggi
   user_mailer:
     account_approved:
       greeting: Hallo!

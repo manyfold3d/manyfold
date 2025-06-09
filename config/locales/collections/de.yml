@@ -4,10 +4,15 @@ de:
     collection:
       collections_button:
         label: Untersammlungen in %{name} anzeigen
+        remote_label:
+      delete_button:
+        confirm:
+        label:
       edit_button:
         label: Sammlung bearbeiten %{name}
       models_button:
         label: Modelle in %{name} anzeigen
+        remote_label:
       no_preview: keine Vorschau verfügbar
     create:
       success: Neue Kollektionsdetails gespeichert.

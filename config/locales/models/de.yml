@@ -45,6 +45,7 @@ de:
     list:
       bulk_edit: Alle Modelle bearbeiten
       no_results_html: Wir konnten leider nichts finden, was wir dir zeigen könnten! Versuche, deine Filter oder Suchbegriffe zu ändern, oder lade ein einige Modelle hoch.
+      no_results_signed_out_html: Wir konnten leider nichts finden, was wir dir zeigen können! Vielleicht gibt es mehr zu sehen, wenn du <a href="%{link}">sign in</a>.
       skip_models: Modellliste überspringen
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
@@ -62,11 +63,13 @@ de:
     scan:
       success: Modell-Scan gestartet
     show:
+      download_preparing: Download wird vorbereitet, bitte warten
+      download_requested: Der Download wurde angefordert und wird in Kürze verfügbar sein, bitte warten.
       files: Dateien
       files_card:
         bulk_edit: Alle Dateien bearbeiten
         heading: Dateien
-      followers:
+      followers: Follower
       license: Lizenz
       merge:
         heading: Zusammenführen
@@ -81,6 +84,7 @@ de:
           summary_html: Der Ordner und die Dateien, aus denen dieses Modell besteht, werden verschoben von:<br> <code>%{from}</code><br> nach<br> <code>%{to}</code>
           'yes': Ja, verschiebe die Dateien
       path: Pfad
+      preview:
       rescan: Dateien neu scannen
       search: Suche im Internet nach Modellen mit diesem Namen
       submit: Dateien hochladen
