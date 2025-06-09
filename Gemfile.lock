@@ -536,7 +536,7 @@ GEM
       activerecord (>= 7.1)
     phlex (2.3.1)
       zeitwerk (~> 2.7)
-    phlex-rails (2.3.0)
+    phlex-rails (2.3.1)
       phlex (~> 2.3.0)
       railties (>= 7.1, < 9)
       zeitwerk (~> 2.7)
