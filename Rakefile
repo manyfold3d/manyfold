@@ -14,6 +14,7 @@ locales = [
   :de,
   :es,
   :fr,
+  :ja,
   :nl,
   :pl
 ]

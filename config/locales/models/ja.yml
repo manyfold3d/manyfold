@@ -1,0 +1,96 @@
+---
+ja:
+  models:
+    bulk_edit:
+      description:
+      form_subtitle:
+      needs_organizing:
+      remove_tags:
+      select:
+      select_all:
+      submit:
+      title:
+      update_all:
+    bulk_fields:
+      add_tags:
+    bulk_update:
+      success:
+    create:
+      success:
+    destroy:
+      confirm:
+      success:
+    file:
+      delete:
+      edit:
+      open_button:
+        label:
+        text:
+      presupported:
+      set_as_preview:
+    form:
+      notes:
+        help_html:
+      preview_file:
+        help:
+      tags:
+    general:
+      edit:
+    image_carousel:
+      next:
+      play_pause:
+      previous:
+      select_slide:
+      slide_label:
+    list:
+      bulk_edit:
+      no_results_html:
+      no_results_signed_out_html:
+      skip_models:
+    merge:
+      success: モデルは正常にマージされた。
+    new:
+      description:
+      files:
+        label: ファイルを選択
+      free_space:
+      library:
+        help: アップロード先のライブラリー。
+      submit: モデルの作成
+      title: アップロード
+    problem:
+      merge_all: すべてをマージする
+    scan:
+      success: モデルスキャン開始
+    show:
+      download_preparing:
+      download_requested:
+      files:
+      files_card:
+        bulk_edit:
+        heading:
+      followers:
+      license:
+      merge:
+        heading:
+        warning:
+        with:
+      model_details:
+      organize:
+        button_text:
+        confirm:
+          are_you_sure:
+          'no':
+          summary_html:
+          'yes':
+      path:
+      preview:
+      rescan:
+      search:
+      submit:
+      tags:
+      upload_card:
+        heading:
+    update:
+      failure:
+      success:

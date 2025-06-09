@@ -1,0 +1,43 @@
+---
+ja:
+  model_files:
+    bulk_edit:
+      description:
+      form_subtitle:
+      pattern:
+      rename:
+      replacement:
+      select:
+      select_all:
+      split:
+      submit:
+      title:
+    bulk_update:
+      success:
+    create:
+      conversion_started:
+      success:
+    destroy:
+      confirm:
+      success:
+    download:
+      bambu: Bambu Studioにオープン
+      cura: Ultimaker Curaにオープン
+      elegoo: ElegooSlicerにオープン
+      orca: OrcaSlicerにオープン
+      prusa: PrusaSlicerにオープン
+      superslicer: SuperSlicerにオープン
+    form:
+      notes:
+        help_html:
+    general:
+      edit:
+    show:
+      convert: 3MFに変換
+      details_heading:
+      download:
+        menu_header:
+      notes_heading:
+    update:
+      failure:
+      success:

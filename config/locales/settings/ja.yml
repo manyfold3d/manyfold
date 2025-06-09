@@ -1,0 +1,180 @@
+---
+ja:
+  settings:
+    analysis:
+      description:
+      heading:
+      manifold:
+        help:
+        label: メッシュエラーの検出
+    appearance:
+      about:
+        help_html: アバウトページに掲載。<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdownを</a>使用することができます。
+        label: このインスタンスについて
+      heading: 外観
+      information: インフォメーション
+      rules:
+        help_html: サインアップ時に表示されます。<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdownを</a>使用することもできます。
+        label: サーバールール
+      site_icon:
+        help: 各ページの左上に表示
+        label: ロゴURL
+      site_name:
+        help: サイトの名前。ナビゲーションやホームページで使用します。
+        label: サイト名
+      site_tagline:
+        help: トップページに表示される、サイトを紹介するための一言。
+        label: タグライン
+      summary: インスタンスをカスタマイズ
+      support_link:
+        help:
+        label: サポートリンク
+      theme:
+        help_html:
+        label: テーマ
+    domain_blocks:
+      create:
+        success: ドメインブロックが正常に作成されました。
+      destroy:
+        success: ドメインブロックが削除されました。
+      index:
+        confirm_destroy:
+        description:
+        new: 新ドメインブロック
+        title: ドメインブロック
+      new:
+        submit: ドメインをブロックする
+        title: 新ドメインブロック
+    downloads:
+      description: Manyfoldはリクエストに応じてモデルのZIPファイルを生成しますが、多忙なサイトではより早くZIPファイルを利用したい場合もあるでしょう。ここでは、ManyfoldにZIPファイルをすぐに作成するように指示したり、ダウンロードキャッシュに保存する期間を設定したりすることができます。この場合、多くのディスク容量を使用することになりますのでご注意ください！
+      expiry:
+        help: 0は永久保存を意味する。
+        hours: 時間数
+        label: ダウンロードしたZIPファイルを削除する
+      heading: ダウンロード
+      pregenerate:
+        help: 有効にすると、モデルが追加または更新されるたびにZIPファイルが作成されます。無効の場合、ZIPファイルは要求されたときのみ作成されます。
+        label: ダウンロード可能なZIPファイルを積極的に作成
+    file_settings:
+      custom_ignore_filters:
+        details: フィルターは改行で区切られた正規表現形式である。
+        label: 正規表現フィルターは無視される。
+      summary: 無視するファイルなどのファイル設定を変更する。
+      title: ファイル設定
+    folder_settings:
+      details: フォルダ構造は、トークンを使って定義したテンプレートに従います。テンプレートに他のテキストを含めることもでき（フォルダーのセパレーターなど）、そのテキストはそのまま含まれます。
+      model_path_template:
+        label: モデル・パス・テンプレート
+      parse_metadata_from_path:
+        help: テンプレートに基づいてクリエイター、コレクション、タグを設定する
+        label: スキャン中にモデル・パス・テンプレートからメタデータを入力する
+      safe_folder_names:
+        help_html: 例：<code>Spın̈al Tap</code>の代わりに<code>spinal-tap</code>
+        label: 安全なフォルダ名を使用する
+      summary: "「ファイルの整理」とスキャン中のメタデータの自動入力で使用されるフォルダ構造を定義します。すべてのアカウントに影響します。"
+      title: フォルダ名式
+      tokens:
+        collection: モデルが入っているコレクションのタイトル（設定されている場合）。
+        creator: もし設定されていれば、作成者の名前。
+        model_id: モデルの一意な数値識別子。ディスク上での名前の衝突を避けるため、テンプレートの最後に必ず含めることを強くお勧めします。
+        model_name: モデル名のファイルシステムに安全なバージョン。
+        tags_html: 各タグに1つずつ、タグの人気順に並べられた、入れ子になった一連のフォルダ。例えば、<code>hogehoge/piyopiyp/piyohogeの</code>ように。このトークンは「貪欲」で、できるだけ多くのタグを解析します。
+    general:
+      submit: 設定の保存
+    multiuser:
+      approve_signups:
+        help: すべての新規アカウントは、サインインする前にモデレーターの承認が必要です。
+        label: アカウント承認
+      default_viewer_role:
+        help: デフォルトでは、誰が新しいモデル/クリエイター/コレクションを見ることができますか？
+        label: デフォルトの可視性
+        options:
+          member: ログインされたローカルアカウント
+          none: プライベート
+      details_html: これらの設定を変更するには、サーバーの<a href='https://manyfold.app/sysadmin/configuration.html'>環境変数を</a>編集して再起動してください。
+      email: メール配信設定
+      federation: 連合有効
+      heading: マルチユーザー
+      multiuser: マルチユーザーモード
+      multiuser_mode: Manyfoldはマルチユーザーモードで動作中です。
+      oidc: OpenID Connectは設定されていますか？
+      permissions: アクセス許可
+      registration: アカウント登録
+      registration_open:
+        help: 訪問者がアカウントにサインアップできる。
+        label: サインアップを有効にする
+      single_user_mode: Manyfoldはシングルユーザーモードで動作中です。
+      user_quotas: アカウントのアップロードサイズ制限
+      user_quotas_enable_quota: アカウントのアップロード保存制限を有効にする
+      user_quotas_site_default: サイトのデフォルトアカウントのアップロード保存上限（MB）
+    reporting:
+      description_html: 利用トラッキングを有効にすると、以下の情報が1日1回<code>%{endpoint}</code>に送信されます。<code>IDは</code>トラッキングを有効にした際にランダムに生成されます。
+      heading: 利用トラッキング
+      report_usage:
+        label: 匿名の利用トラッキングを有効にする
+      summary: Manyfoldを使用していることを開発者に知らせてください。
+      use_of_data: それ以外の情報が送信されたり、保存されたりすることはありません。また、Manyfoldのインスタンスの数とバージョンを測定する以外の目的で、開発者が情報を使用することもありません。
+      verification_html: 私たちが送信したものを確認したい場合は、<code>USAGE_REPORTING_URL</code>環境変数を変更し、あなたが検査できる場所にデータを送信することができます。また、ログで送信されたものを正確に見ることもできます。
+    reports:
+      index:
+        description: ローカルまたはFediverseのアカウントから報告されたコンテンツは、モデレーションのためにここに表示されます。
+        title: レポート
+      show:
+        ignore: 無視
+        resolve: 解決済みとしてマークする
+      update:
+        ignored: 報告書は無視されている。
+        resolved: 報告書は解決済みとされた。
+    show:
+      stats: 統計
+      total_file_size: 全ファイルサイズ
+    tag_settings:
+      auto_tag_new:
+        label: 新しいモデルには自動的に
+      custom_stop_words:
+        label: カスタム・ストップワード
+      description: 新しくスキャンされたすべてのモデルにタグを追加し、自動タグ作成中に特定の単語（「ストップワード」）をフィルタリングします。すべてのアカウントに影響します。
+      filter_stop_words:
+        label: ストップワードのフィルタリング
+      heading: タグ
+      stop_words_locale:
+        label:
+      tag_model_directory_name:
+        help:
+        label:
+    update:
+      success:
+    users:
+      create:
+        success:
+      destroy:
+        success:
+      edit:
+        title:
+      form:
+        password_reset_help:
+        submit:
+      index:
+        description:
+        fediverse_address: フェディバースアドレス
+        local: ローカル
+        new: 新規アカウント
+        title: アカウント管理
+        view: 表示
+      new:
+        title: アカウント作成
+      quota:
+        current_quota: 現在のファイル保存上限（MB）
+        current_space_used: 現在使用中のファイルストレージ
+        title: ファイルの保存制限
+        unlimited_quota: 無制限
+        using_site_default: サイトのデフォルトのファイル保存制限を使用していますか？
+      show:
+        approve: アカウントの承認
+        confirm_destroy: このアカウントをすぐに削除してもよろしいですか？これは元に戻せません！
+        reset_password: パスワードのリセット
+        title: 口座の詳細[%{username}］
+      update:
+        approved: アカウントは正常に承認されました。
+        reset_link_sent: 新しいパスワードを設定するためのリンクがアカウント所有者に送信されました。
+        success: アカウントは正常に更新されました。

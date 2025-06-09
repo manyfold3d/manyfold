@@ -50,6 +50,7 @@ module Manyfold
       :en,
       :es,
       :fr,
+      :ja,
       :nl,
       :pl
     ]
