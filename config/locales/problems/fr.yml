@@ -22,6 +22,7 @@ fr:
       title: Filtres
     index:
       bulk_confirm: Êtes-vous sûr de vouloir résoudre automatiquement tous les problèmes sélectionnés ? Cette opération peut supprimer des fichiers et des données.
+      bulk_ignore:
       bulk_resolve: Résoudre les problèmes sélectionnés
       description: Description
       ignore: Cacher

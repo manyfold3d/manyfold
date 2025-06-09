@@ -4,10 +4,15 @@ fr:
     collection:
       collections_button:
         label: Montrer les sous-collections dans %{name}
+        remote_label:
+      delete_button:
+        confirm:
+        label:
       edit_button:
         label: Modifier la collection %{name}
       models_button:
         label: Voir les modèles dans %{name}
+        remote_label:
       no_preview: pas d'aperçu disponible
     create:
       success: Détails de la nouvelle collection enregistrés.

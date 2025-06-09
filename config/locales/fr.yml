@@ -103,6 +103,7 @@ fr:
         unconfirmed_email: Email non confirmé
         unlock_token: Clé de déverrouillage
         updated_at: Date de mise à jour
+        username:
     errors:
       models:
         doorkeeper/application:
@@ -238,6 +239,7 @@ fr:
       permissions:
         edit: Peut éditer
         own: Propriétaire (peut consulter, modifier, supprimer et partager)
+        preview:
         view: Consulter seulement
       subject:
         placeholder: Adresse électronique, nom d'utilisateur ou rôle
@@ -298,6 +300,7 @@ fr:
       sort:
         name: Trier par nom
         time: Trier par heure
+    search_error:
     tag_list:
       unrelated_tag_count:
         one: "%{count} étiquette non liée cachée"
@@ -307,7 +310,13 @@ fr:
       skip_tags: Sauter la liste des balises
     title: Manyfold
   components:
+    copy_button:
+      copy:
     download_button:
+      download:
+        missing:
+        preparing:
+        ready:
       file_type: Fichiers %{type} uniquement
       label: Télécharger tout
       menu_header: Options de téléchargement
@@ -317,6 +326,8 @@ fr:
       follow: Suivre %{name}
       pending: Demandé
       unfollow: ne plus suivre %{name}
+    modal:
+      close:
     model_card:
       delete_button:
         label: Supprimer le modèle %{name}
@@ -328,6 +339,21 @@ fr:
       open_button:
         label: Ouvrir le modèle %{name}
         text: Ouvrir
+    search_help:
+      boolean:
+      federation:
+      filename:
+      intro:
+      more_details_html:
+      negation:
+      parentheses:
+      quotes:
+      simple:
+      specific_fields:
+      tag:
+      title:
+      unset:
+      without_tag:
   doorkeeper:
     applications:
       buttons:
@@ -531,14 +557,21 @@ fr:
       updated:
     index:
       no_activities: Il n'y a pas d'activités à afficher pour l'instant.
+      open_search_help:
       recent_activity: Activité récente
       search:
         placeholder: Que recherchez-vous ?
         submit: Recherche
   jobs:
     activity:
+      collection_published:
+        comment:
+      model_collected:
+        comment:
       model_published:
-        comment: 'Je viens d''ajouter un nouveau modèle : ["%{model_name}"](%{url})'
+        comment:
+      updated_model:
+        comment:
     analysis:
       analyse_model_file:
         detect_duplicates: Détection des fichiers en double
@@ -585,6 +618,7 @@ fr:
     settings:
       activeadmin: Administration avancée
       appearance:
+      downloads:
       libraries: Bibliothèques
       organization: Organisation
       performance: Tableau de bord des performances

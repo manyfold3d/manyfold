@@ -155,6 +155,7 @@ fr:
           label: Style de rendu
           lambert: Ombres réalistes
           normals: Direction de la surface
+          original:
           shadowed: Ombré réaliste
         show_grid:
           label: Afficher le plan de masse
