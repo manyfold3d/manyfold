@@ -8,9 +8,7 @@ es:
       send_instructions: Vas a recibir un correo con instrucciones sobre cómo confirmar tu cuenta en unos minutos.
       send_paranoid_instructions: Si tu correo existe en nuestra base de datos, en unos minutos recibirás un correo con instrucciones sobre cómo confirmar tu cuenta.
     failure:
-      already_authenticated: 'Ya estás registrado.
-
-        '
+      already_authenticated: Ya estás registrado.
       inactive: Tu cuenta aún no ha sido activada.
       invalid: "%{authentication_keys} o contraseña incorrectos."
       last_attempt: Tienes un intento más antes de que tu cuenta quede bloqueada.

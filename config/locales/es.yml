@@ -249,9 +249,7 @@ es:
         you: "(tú)"
     caber_relations_form:
       add: añadir otro permiso
-      permissions: 'Compartiendo
-
-        '
+      permissions: Compartiendo
     demo_mode: Esta instancia es una demo. No puedes añadir ni eliminar modelos, pero puedes hacer todo lo demás.
     filters_card:
       missing_tags: Etiquetas vacías
