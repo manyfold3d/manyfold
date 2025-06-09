@@ -75,7 +75,7 @@ cs:
         danger_zone: Nebezpečná zóna!
         leave_blank_if_you_don_t_want_to_change_it: nevyplňujte, pokud nechcete měnit
         security: Zabezpečení
-        social:
+        social: Social
         submit: Uložení změn
         title: Moje nastavení
         unhappy: Nespokojení?
@@ -108,9 +108,9 @@ cs:
           show: Zobrazit normálně
       new:
         approval_help: Po vytvoření účtu jej ručně zkontrolují naši moderátoři. Po dokončení schvalování Vám dáme vědět a budete se moci přihlásit.
-        details:
-        rules:
-        rules_agree:
+        details: Vaše údaje
+        rules: Pravidla serveru
+        rules_agree: Registrací účtu souhlasíte s dodržováním výše uvedených pravidel.
         sign_up: Zaregistrovat se
       pagination_settings:
         collections:
@@ -155,6 +155,7 @@ cs:
           label: Styl vykreslování
           lambert: Hladké stínování
           normals: Směr povrchu
+          original:
           shadowed: Realistické se stíny
         show_grid:
           label: Ukázat podlahovou rovinu
@@ -169,8 +170,8 @@ cs:
         keypair:
           label: Použít oddělovač pro reprezentaci dvojic klíčů
         sorting:
-          alphabetical:
-          frequency:
+          alphabetical: abecední
+          frequency: frekvence
           label: Třídění
         threshold:
           label: Minimální počet štítků pro zobrazení

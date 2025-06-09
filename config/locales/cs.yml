@@ -13,15 +13,15 @@ cs:
         notes: Popis
         slug: Handle
       doorkeeper/application:
-        access_token:
+        access_token: Přístupový token
         confidential: Důvěrné
-        created_at:
+        created_at: Vytvořeno
         name: Jméno
-        owner:
+        owner: Vlastník
         redirect_uri: URI přesměrování
         scopes: Scopes
-        secret:
-        uid:
+        secret: Klient secret
+        uid: ID klienta
       federails/moderation/domain_block:
         created_at: Vytvořeno
         domain: Doména
@@ -103,6 +103,7 @@ cs:
         unconfirmed_email: Nepotvrzený e-mail
         unlock_token: Odemykací token
         updated_at: Upraveno
+        username:
     errors:
       models:
         doorkeeper/application:
@@ -119,8 +120,8 @@ cs:
         library:
           attributes:
             path:
-              cannot_be_contained:
-              cannot_contain:
+              cannot_be_contained: nemůže být uvnitř jiné knihovny
+              cannot_contain: nemůže obsahovat jiné knihovny
               non_writable: musí být zapisovatelné
               not_found: na disku nebylo nalezeno
               unsafe: nemůže být systémovou cestou s privilegii
@@ -238,6 +239,7 @@ cs:
       permissions:
         edit: Lze upravovat
         own: Vlastník (může zobrazit, upravit, smazat a sdílet)
+        preview:
         view: Pouze zobrazení
       subject:
         placeholder: E-mailová adresa, uživatelské jméno nebo role
@@ -261,16 +263,16 @@ cs:
       title: Filtry
       unknown: Neznámý
     footer:
-      about:
+      about: O této instanci
       api: API
       by_html: Navrhl a sestavil <a href="https://floppy.org.uk" target="_blank">James</a> s pomocí <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">našich přispěvatelů</a>.
-      community:
-      instance_heading:
+      community: Připojte se ke komunitě
+      instance_heading: Podrobnosti o instanci
       issues: Problémy
-      open_source_html: Otevřený zdrojový kód pod licencí <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT</a>.
-      powered_by_html:
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> pod <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT licencí</a>.
+      powered_by_html: Funguje na <a href="https://manyfold.app">%{name}</a>
       sponsor: Sponzor
-      support:
+      support: Podporovat tuto instanci
       version: Verze
     link_fields:
       url:
@@ -298,6 +300,7 @@ cs:
       sort:
         name: Seřadit podle jména
         time: Řazení podle času
+    search_error:
     tag_list:
       unrelated_tag_count:
         one: skryto %{count} nesouvisejících štítků
@@ -307,8 +310,14 @@ cs:
       skip_tags: Přeskočit seznam štítků
     title: Manyfold
   components:
+    copy_button:
+      copy:
     download_button:
-      file_type: 'Pouze soubory %{type} '
+      download:
+        missing:
+        preparing:
+        ready:
+      file_type: Pouze soubory %{type}
       label: Stáhnout vše
       menu_header: Možnosti stažení
       supported: Pouze podporované soubory
@@ -317,6 +326,8 @@ cs:
       follow: Sledovat %{name}
       pending: Požadováno
       unfollow: Přestat sledovat %{name}
+    modal:
+      close:
     model_card:
       delete_button:
         label: Smazat model %{name}
@@ -328,6 +339,21 @@ cs:
       open_button:
         label: Otevřít model %{name}
         text: Otevřít
+    search_help:
+      boolean:
+      federation:
+      filename:
+      intro:
+      more_details_html:
+      negation:
+      parentheses:
+      quotes:
+      simple:
+      specific_fields:
+      tag:
+      title:
+      unset:
+      without_tag:
   doorkeeper:
     applications:
       buttons:
@@ -364,10 +390,10 @@ cs:
         application_id: UID aplikace
         callback_urls: Url přesměrování
         confidential: Důvěrné
-        not_defined:
+        not_defined: Není definováno
         scopes: Scopes
         secret: Secret
-        secret_hashed:
+        secret_hashed: Hashováno
         title: 'Aplikace: %{name}'
     authorizations:
       buttons:
@@ -376,7 +402,7 @@ cs:
       error:
         title: Vyskytla se chyba
       form_post:
-        title:
+        title: Odeslat tento formulář
       new:
         able_to: Tato aplikace bude mít tato oprávnění
         prompt: Autorizovat %{client_name} k přístupu k vašemu účtu?
@@ -399,16 +425,16 @@ cs:
         admin_authenticator_not_configured: Přístup k panelu admin je zakázán kvůli tomu, že Doorkeeper.configure.admin_authenticator je nekonfigurován.
         credential_flow_not_configured: Flow pověření vlastníka zdroje se nezdařil kvůli tomu, že Doorkeeper.configure.resource_owner_from_credentials není nakonfigurován.
         forbidden_token:
-          missing_scope:
+          missing_scope: Přístup k tomuto prostředku vyžaduje "%{oauth_scopes}".
         invalid_client: Autentizace klienta se nezdařila kvůli neznámému klientovi, žádnému ověřování klienta nebo nepodporované metodě ověřování.
         invalid_code_challenge_method:
-          one:
-          other:
-          zero:
+          one: Code_challenge_method musí být %{challenge_methods}.
+          other: Code_challenge_method musí být jeden z %{challenge_methods}.
+          zero: Autorizační server nepodporuje PKCE, protože neexistují žádné přijatelné hodnoty code_challenge_method.
         invalid_grant: Poskytnutý grant pro udělení oprávnění je neplatný, jeho platnost vypršela, zrušena, neodpovídá identifikátoru URI přesměrování použitého v žádosti o autorizaci nebo byla vydána jinému klientovi.
         invalid_redirect_uri: Požadované přesměrování uri je chybně formátováno nebo neodpovídá přesměrování URI klienta.
         invalid_request:
-          invalid_code_challenge:
+          invalid_code_challenge: Je vyžadována výzva ke kódu.
           missing_param: 'Missing required parameter: %{value}.'
           request_not_authorized: Request need to be authorized. Required parameter for authorizing request is missing or invalid.
           unknown: Požadavku chybí požadovaný parametr, obsahuje nepodporovanou hodnotu parametru, nebo je jinak poškozen.
@@ -424,7 +450,7 @@ cs:
         temporarily_unavailable: Autorizační server není v současné době schopen zpracovat požadavek z důvodu dočasného přetížení nebo údržby serveru.
         unauthorized_client: Klient není oprávněn provádět tento požadavek touto metodou.
         unsupported_grant_type: Autorizační server nepodporuje typ autorizačního grantu.
-        unsupported_response_mode:
+        unsupported_response_mode: Autorizační server nepodporuje tento typ odpovědi.
         unsupported_response_type: Autorizační server nepodporuje tento typ odpovědi.
     flash:
       applications:
@@ -450,33 +476,33 @@ cs:
       status: Pre-autorizace
   doorkeeper_applications:
     create:
-      failure:
-      success:
+      failure: Došlo k chybě a aplikaci nebylo možné vytvořit.
+      success: Aplikace byla úspěšně vytvořena.
     destroy:
-      success:
+      success: Aplikace byla úspěšně odstraněna.
     edit:
       title: Upravit aplikaci
     form:
       confidential:
-        help:
+        help: Důvěrná aplikace může bezpečně uchovávat tajemství (např. backend webového serveru nebo skript machine-to-machine).
       redirect_uri:
-        help:
+        help: Pokud vaše aplikace nepotřebuje přesměrování URI (např. aplikace machine-to-machine), použijte "urn:ietf:wg:oauth:2.0:oob".
       scopes:
         label: Scopes
-      submit:
+      submit: Uložit aplikaci
     index:
-      description:
-      new:
-      title:
+      description: Aplikace OAuth umožňují přístup k prostředkům Manyfold z jiných služeb prostřednictvím našeho rozhraní API.
+      new: Nová aplikace
+      title: Aplikace OAuth
     new:
-      title:
+      title: Nová aplikace
     show:
       destroy: Smazat
       edit: Upravit
-      title:
+      title: Podrobnosti o aplikaci
     update:
-      failure:
-      success:
+      failure: Došlo k chybě a aplikaci nebylo možné uložit.
+      success: Aplikace byla úspěšně uložena.
   follows:
     actor_table:
       actions: Akce
@@ -486,8 +512,8 @@ cs:
     follow_remote_actor:
       followed: Úspěšně sledován %{actor}
     index:
-      followers:
-      following:
+      followers: Sledující
+      following: Sledování
       title: Sledování
     new:
       help: Můžete sledovat veřejné tvůrce, kolekce nebo modely na jiném serveru Manyfold, vlastně jakýkoli veřejný účet ve Fediverse! Stačí zadat název účtu do vyhledávacího pole!
@@ -511,12 +537,12 @@ cs:
     edit: Upravit
     expand: Rozbalit
     followers:
-      few:
-      many:
-      one:
-      other:
-      two:
-      zero:
+      few: "%{count} sledující"
+      many: "%{count} sledující"
+      one: "%{count} sledující"
+      other: "%{count} sledující"
+      two: "%{count} sledující"
+      zero: "%{count} sledující"
     menu: Menu
     new: Nový
     report: Nahlásit %{type}
@@ -524,18 +550,25 @@ cs:
     view: Zobrazení
   home:
     activity:
-      created:
-      updated:
+      created: 'přidáno před %{time} '
+      updated: aktualizováno před %{time}
     index:
       no_activities: Prozatím nejsou k dispozici žádné aktivity, ke zobrazení.
+      open_search_help:
       recent_activity: Poslední aktivita
       search:
         placeholder: Co hledáte?
         submit: Vyhledávání
   jobs:
     activity:
+      collection_published:
+        comment:
+      model_collected:
+        comment:
       model_published:
-        comment: 'Právě jsem přidal nový model: ["%{model_name}"](%{url})'
+        comment:
+      updated_model:
+        comment:
     analysis:
       analyse_model_file:
         detect_duplicates: Detekce duplicitních souborů
@@ -582,6 +615,7 @@ cs:
     settings:
       activeadmin: Pokročilá administrace
       appearance: Vzhled
+      downloads:
       libraries: Knihovny
       organization: Organizace
       performance: Výkonnostní dashboard
@@ -629,15 +663,15 @@ cs:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
     cults3d: Cults3D
-    github:
-    makerworld:
+    github: GitHub
+    makerworld: MakerWorld
     manyfold: Manyfold
     myminifactory: MyMiniFactory
-    printables:
-    thangs:
+    printables: Tisknutelné materiály
+    thangs: Thangs
     theminiindex: The Mini Index
     thingiverse: Thingiverse
-    yeggi:
+    yeggi: yeggi
   user_mailer:
     account_approved:
       greeting: Ahoj!

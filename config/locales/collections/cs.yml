@@ -4,10 +4,15 @@ cs:
     collection:
       collections_button:
         label: Zobrazit podkolekce v %{name}
+        remote_label:
+      delete_button:
+        confirm:
+        label:
       edit_button:
         label: Upravit kolekci %{name}
       models_button:
         label: Zobrazit modely v %{name}
+        remote_label:
       no_preview: Není k dispozici žádný náhled
     create:
       success: Nové údaje o kolekci uloženy.

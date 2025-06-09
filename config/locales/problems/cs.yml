@@ -22,6 +22,7 @@ cs:
       title: Filtry
     index:
       bulk_confirm: Určitě chcete automaticky vyřešit všechny vybrané problémy? Může dojít k odstranění souborů a dat.
+      bulk_ignore:
       bulk_resolve: Vyřešit vybrané
       description: Popis
       ignore: Skrýt

@@ -23,10 +23,10 @@ cs:
     download:
       bambu: Otevřít v Bambu Studio
       cura: Otevřít v Ultimaker Cura
-      elegoo:
+      elegoo: Otevřít v ElegooSlicer
       orca: Otevřít v OrcaSlicer
       prusa: Otevřít v PrusaSlicer
-      superslicer:
+      superslicer: Otevřít v SuperSlicer
     form:
       notes:
         help_html: Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.

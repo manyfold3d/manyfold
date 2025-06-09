@@ -4,6 +4,12 @@ cs:
     create:
       success: Detaily nového autora uloženy.
     creator:
+      collections_button:
+        label:
+        remote_label:
+      delete_button:
+        confirm:
+        label:
       edit_button:
         label: Upravit autora%{name}
       models_button:

@@ -45,6 +45,7 @@ cs:
     list:
       bulk_edit: Upravit všechny modely
       no_results_html: Je nám líto, ale nenašli jsme nic, co bychom Vám mohli ukázat! Zkuste změnit filtry nebo vyhledávací filtry nebo nahrát nějaké modely.
+      no_results_signed_out_html:
       skip_models: Přeskočit seznam modelů
     merge:
       success: Modely byly úspěšně sloučeny.
@@ -62,11 +63,13 @@ cs:
     scan:
       success: Spuštěna kontrola modelu.
     show:
+      download_preparing:
+      download_requested:
       files: Soubory
       files_card:
         bulk_edit: Upravit všechny soubory
         heading: Soubory
-      followers:
+      followers: Sledující
       license: Licence
       merge:
         heading: Sloučit
@@ -81,6 +84,7 @@ cs:
           summary_html: Složka a soubory, které tvoří tento model, budou přesunuty z:<br> <code>%{from}</code><br> do<br> <code>%{to}</code>
           'yes': Ano, přesunout soubory
       path: Cesta
+      preview:
       rescan: Znovu zkontrolovat soubory
       search: Vyhledávání modelů s tímto názvem na internetu
       submit: Nahrát soubory
