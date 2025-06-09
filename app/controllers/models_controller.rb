@@ -4,6 +4,8 @@ class ModelsController < ApplicationController
   include ModelListable
   include Permittable
 
+  rate_limit to: 10, within: 3.minutes, only: :create
+
   before_action :redirect_search, only: [:index], if: -> { params.key?(:q) }
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
   before_action :get_creators_and_collections, only: [:new, :edit, :bulk_edit]
