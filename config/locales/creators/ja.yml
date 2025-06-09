@@ -1,0 +1,38 @@
+---
+ja:
+  creators:
+    create:
+      success: 新しいクリエイターの詳細が保存されました。
+    creator:
+      collections_button:
+        label:
+        remote_label:
+      delete_button:
+        confirm:
+        label:
+      edit_button:
+        label: クリエイター%{name}を編集する
+      models_button:
+        label: "%{name}のモデルを表示"
+        remote_label: "%{name}によるローカルモデルの表示"
+    destroy:
+      success: クリエイターは削除された！
+    form:
+      notes:
+        help_html: <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdownが</a>使える。
+      slug:
+        help: URLおよびFediverseハンドルネーム（有効な場合）として使用されます。
+    general:
+      edit: クリエイターを編集する
+      new: 新作クリエイター
+    get_creator:
+      unknown: 不明
+    index:
+      skip_creators: クリエイターリストをスキップ
+    show:
+      edit: クリエイタープロフィールを編集
+    unassigned:
+      caption: クリエイターは不明の全てモデル。
+      name: 未指定
+    update:
+      success: クリエイターの詳細が保存されました。
