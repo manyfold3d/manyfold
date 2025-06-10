@@ -42,6 +42,13 @@ RSpec.describe User do
     expect(u).to have_role(:member)
   end
 
+  it "gets contributor and member roles if contributor is set as default" do # rubocop:disable RSpec/MultipleExpectations
+    allow(SiteSettings).to receive(:default_signup_role).and_return("contributor")
+    u = create(:user)
+    expect(u).to have_role(:member)
+    expect(u).to have_role(:contributor)
+  end
+
   it "enables quotas" do
     SiteSettings.enable_user_quota = true
     SiteSettings.default_user_quota = 100
