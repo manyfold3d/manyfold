@@ -194,7 +194,9 @@ class User < ApplicationRecord
   end
 
   def assign_default_role
-    add_role(:member) if roles.blank?
+    return unless roles.empty?
+    default_roles = [:member, SiteSettings.default_signup_role.to_sym].uniq
+    default_roles.each { |it| add_role(it) }
   end
 
   def password_required?
