@@ -48,9 +48,9 @@
     <%= form.label nil, t(".default_viewer_role.label"), for: "multiuser[default_viewer_role]", class: "col-sm-4 col-form-label" %>
     <div class="col-sm-8">
       <%= form.select "multiuser[default_viewer_role]",
-            [[translate(".default_viewer_role.options.none"), nil],
+            [[translate(".default_viewer_role.options.none"), ""],
               [translate(".default_viewer_role.options.member"), "member"]],
-            {selected: SiteSettings.default_viewer_role},
+            {selected: SiteSettings.default_viewer_role.to_s},
             {class: "form-select"} %>
       <small><%= t(".default_viewer_role.help") %></small>
     </div>
