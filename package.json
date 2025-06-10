@@ -27,6 +27,7 @@
     "@zxcvbn-ts/core": "^3.0.4",
     "@zxcvbn-ts/language-common": "^3.0.4",
     "@zxcvbn-ts/language-en": "^3.0.2",
+    "altcha": "^2.0.3",
     "autoprefixer": "^10.4.21",
     "bootstrap": "^5.3.6",
     "bootstrap-icons": "^1.13.1",
