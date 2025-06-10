@@ -1,0 +1,35 @@
+div.altcha-wrapper {
+	@extend .border;
+	@extend .rounded;
+	@extend .p-1;
+
+	&:has(div.altcha[data-state="verifying"]) {
+		@extend .border-secondary;
+		@extend .bg-secondary-subtle;
+	}
+
+	&:has(div.altcha[data-state="verified"]) {
+		@extend .border-success;
+		@extend .bg-success-subtle;
+	}
+
+	div.altcha {
+		display: inline-block;
+
+		&[data-state="verifying"] {
+			div.altcha-main {
+				::after {
+					content: "";
+					@extend .spinner-border;
+					@extend .spinner-border-sm;
+				}
+			}
+
+		}
+
+		.altcha-checkbox {
+			display: none;
+		}
+	}
+
+}
