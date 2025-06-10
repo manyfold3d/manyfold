@@ -2,6 +2,7 @@ shared_examples "Caber::Object" do
   let(:caber_object) { create(described_class.to_s.underscore.to_sym) }
   let!(:admin) { create(:admin) }
   let(:contributor) { create(:contributor) }
+  let(:member) { create(:user) }
 
   it "has caber relations" do
     expect(caber_object.class).to respond_to :can_grant_permissions_to
@@ -16,5 +17,37 @@ shared_examples "Caber::Object" do
     object = create(described_class.to_s.underscore.to_sym, described_class.caber_owner(contributor))
     expect(object.grants_permission_to?("own", contributor)).to be true
     expect(object.grants_permission_to?("own", admin)).to be false
+  end
+
+  context "with default permissions set to member-visible" do
+    before do
+      allow(SiteSettings).to receive(:default_viewer_role).and_return(:member)
+    end
+
+    let(:object) { create(described_class.to_s.underscore.to_sym, described_class.caber_owner(contributor)) }
+
+    it "grants view permission to member role" do
+      expect(object.grants_permission_to?("view", Role.find_by!(name: "member"))).to be true
+    end
+
+    it "does not grants public view permission" do
+      expect(object.grants_permission_to?("view", nil)).to be false
+    end
+  end
+
+  context "with default permissions set to private" do
+    before do
+      allow(SiteSettings).to receive(:default_viewer_role).and_return(nil)
+    end
+
+    let(:object) { create(described_class.to_s.underscore.to_sym, described_class.caber_owner(contributor)) }
+
+    it "does not grant view permission to member role" do
+      expect(object.grants_permission_to?("view", Role.find_by!(name: "member"))).to be false
+    end
+
+    it "does not grants public view permission" do
+      expect(object.grants_permission_to?("view", nil)).to be false
+    end
   end
 end
