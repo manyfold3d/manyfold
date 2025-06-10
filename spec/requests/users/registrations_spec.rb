@@ -279,6 +279,7 @@ RSpec.describe "Users::Registrations" do
       describe "POST /users with approval disabled" do
         before {
           allow(SiteSettings).to receive(:approve_signups).and_return(false)
+          allow(AltchaSolution).to receive(:verify_and_save).and_return(true)
           post "/users", params: post_options
         }
 
@@ -302,6 +303,7 @@ RSpec.describe "Users::Registrations" do
       describe "POST /users with approval enabled" do
         before {
           allow(SiteSettings).to receive(:approve_signups).and_return(true)
+          allow(AltchaSolution).to receive(:verify_and_save).and_return(true)
           post "/users", params: post_options
         }
 
