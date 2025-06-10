@@ -85,11 +85,17 @@ en:
       approve_signups:
         help: All new accounts must be approved by a moderator before they can sign in.
         label: Approve accounts
+      default_signup_role:
+        help: The role assigned to new accounts when they sign up
+        label: Default role
+        options:
+          contributor: Contributor (can upload content)
+          member: Member (read only)
       default_viewer_role:
         help: Who can view new models / creators / collections by default?
         label: Default visibility
         options:
-          member: Logged-in local accounts
+          member: Members (logged-in local accounts)
           none: Private
       details_html: To change these settings, edit the server's <a href='https://manyfold.app/sysadmin/configuration.html'>environment variables</a> and restart.
       email: Email delivery configured?

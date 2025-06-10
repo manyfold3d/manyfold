@@ -41,6 +41,17 @@
       <small><%= t(".approve_signups.help") %></small>
     </div>
   </div>
+  <div class="row">
+    <%= form.label nil, t(".default_signup_role.label"), for: "multiuser[default_signup_role]", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8">
+      <%= form.select "multiuser[default_signup_role]",
+            [[translate(".default_signup_role.options.member"), "member"],
+              [translate(".default_signup_role.options.contributor"), "contributor"]],
+            {selected: SiteSettings.default_signup_role},
+            {class: "form-select"} %>
+      <small><%= t(".default_signup_role.help") %></small>
+    </div>
+  </div>
   <hr>
 
   <h3><%= t(".permissions") %></h3>
