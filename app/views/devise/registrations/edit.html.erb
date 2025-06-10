@@ -57,6 +57,18 @@
             </div>
           </div>
         </div>
+        <%- if @user.has_quota? %>
+        <div class="card mb-2">
+          <h3 class="card-header"><%= t("settings.users.quota.title") %></h3>
+          <div class="card-body">
+            <div class="row mb-3 text-center">
+              <div class="col">
+                <%= render Components::DisplayUserQuota.new(current_size: @user.current_space_used, quota: @user.quota) %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
       <% end %>
       <%= render "general_settings", form: f %>
       <%= render "pagination_settings", form: f %>
