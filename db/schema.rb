@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_20_111046) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_09_210440) do
+  create_table "altcha_solutions", force: :cascade do |t|
+    t.string "algorithm"
+    t.string "challenge"
+    t.string "salt"
+    t.string "signature"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["algorithm", "challenge", "salt", "signature", "number"], name: "index_altcha_solutions", unique: true
+  end
+
   create_table "caber_relations", force: :cascade do |t|
     t.string "subject_type"
     t.integer "subject_id"

@@ -19,6 +19,9 @@
     <%= password_input_row form, :password_confirmation, autocomplete: "new-password" %>
     <%= content_tag :div, t(".approval_help"), class: "alert alert-info" if SiteSettings.approve_signups %>
     <%= form.submit translate(".sign_up"), class: "btn btn-primary" %>
+    <div class="float-end">
+      <%= render Components::AltchaWidget.new %>
+    </div>
   <% end %>
 
   <%= render "devise/shared/links" %>

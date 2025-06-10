@@ -310,6 +310,8 @@ en:
       skip_tags: Skip tag list
     title: Manyfold
   components:
+    altcha_widget:
+      help: privacy-friendly spam protection by ALTCHA
     copy_button:
       copy: Copy to Clipboard
     download_button:
@@ -691,6 +693,10 @@ en:
     test_email:
       subject: Test email
       test_email_message: Test email
+  users:
+    registrations:
+      create:
+        altcha_failed: ALTCHA verification failed
   views:
     pagination:
       first: "« First"

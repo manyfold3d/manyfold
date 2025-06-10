@@ -23,6 +23,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@altcha/crypto@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "@altcha/crypto@npm:0.0.1"
+  checksum: 8e2e65f32d3ede6354e423d710ad61f3058b430b41f38380aae02f99e0f1d243361f1783d99bd7a840fc904778e1e0efaf474ad5f4a79ea19e7c8ef4cb95b4b7
+  languageName: node
+  linkType: hard
+
 "@ampproject/remapping@npm:^2.2.0":
   version: 2.2.1
   resolution: "@ampproject/remapping@npm:2.2.1"
@@ -947,6 +954,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rollup/rollup-linux-x64-gnu@npm:4.18.0":
+  version: 4.18.0
+  resolution: "@rollup/rollup-linux-x64-gnu@npm:4.18.0"
+  conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
 "@transloadit/prettier-bytes@npm:^0.3.4":
   version: 0.3.4
   resolution: "@transloadit/prettier-bytes@npm:0.3.4"
@@ -1612,6 +1626,19 @@ __metadata:
     json-schema-traverse: "npm:^0.4.1"
     uri-js: "npm:^4.2.2"
   checksum: 874972efe5c4202ab0a68379481fbd3d1b5d0a7bd6d3cc21d40d3536ebff3352a2a1fabb632d4fd2cc7fe4cbdcd5ed6782084c9bbf7f32a1536d18f9da5007d4
+  languageName: node
+  linkType: hard
+
+"altcha@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "altcha@npm:2.0.3"
+  dependencies:
+    "@altcha/crypto": ^0.0.1
+    "@rollup/rollup-linux-x64-gnu": 4.18.0
+  dependenciesMeta:
+    "@rollup/rollup-linux-x64-gnu":
+      optional: true
+  checksum: cff861dc5f86e9a8003bf6cbc5ffe590798a768323538c1aa0772a52570caf45d733a969d50820ad649060603355efb4e34758fac2deec6470f871e875272ea6
   languageName: node
   linkType: hard
 
@@ -4208,6 +4235,7 @@ __metadata:
     "@zxcvbn-ts/core": ^3.0.4
     "@zxcvbn-ts/language-common": ^3.0.4
     "@zxcvbn-ts/language-en": ^3.0.2
+    altcha: ^2.0.3
     autoprefixer: ^10.4.21
     bootstrap: ^5.3.6
     bootstrap-icons: ^1.13.1
