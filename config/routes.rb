@@ -61,6 +61,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
   get "/about", to: "home#about", as: :about
+  get "/welcome", to: "home#welcome", as: :welcome
 
   resources :libraries, except: [:index] do
     member do
