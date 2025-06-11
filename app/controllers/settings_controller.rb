@@ -34,11 +34,16 @@ class SettingsController < ApplicationController
     return unless settings
     SiteSettings.site_name = settings[:site_name]
     SiteSettings.site_tagline = settings[:site_tagline]
-    SiteSettings.site_icon = settings[:site_icon]
     SiteSettings.theme = settings[:theme]
     SiteSettings.about = settings[:about]
     SiteSettings.rules = settings[:rules]
     SiteSettings.support_link = settings[:support_link]
+    SiteSettings.site_icon = begin
+      URI.parse(settings[:site_icon])
+      settings[:site_icon]
+    rescue URI::InvalidURIError
+      nil
+    end
   end
 
   def update_library_settings(settings)
