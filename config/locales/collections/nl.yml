@@ -6,7 +6,6 @@ nl:
         label: Toon subcollecties in %{name}
         remote_label:
       delete_button:
-        confirm:
         label:
       edit_button:
         label: Bewerk collectie %{name}
@@ -17,6 +16,7 @@ nl:
     create:
       success: Nieuwe collectiedetails opgeslagen.
     destroy:
+      confirm:
       success: Collectie verwijderd!
     form:
       notes:

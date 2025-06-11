@@ -6,7 +6,6 @@ cs:
         label: Zobrazit podkolekce v %{name}
         remote_label:
       delete_button:
-        confirm:
         label:
       edit_button:
         label: Upravit kolekci %{name}
@@ -17,6 +16,7 @@ cs:
     create:
       success: Nové údaje o kolekci uloženy.
     destroy:
+      confirm:
       success: Kolekce smazána!
     form:
       notes:

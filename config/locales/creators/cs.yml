@@ -8,7 +8,6 @@ cs:
         label:
         remote_label:
       delete_button:
-        confirm:
         label:
       edit_button:
         label: Upravit autora%{name}
@@ -16,6 +15,7 @@ cs:
         label: Zobrazit modely podle %{name}
         remote_label: Zobrazit lokální modely podle %{name}
     destroy:
+      confirm:
       success: Autor smazán!
     form:
       notes:

@@ -8,7 +8,6 @@ fr:
         label:
         remote_label:
       delete_button:
-        confirm:
         label:
       edit_button:
         label: Modifier le créateur %{name}
@@ -16,6 +15,7 @@ fr:
         label: Afficher les modèles par %{name}
         remote_label: Afficher les modèles locaux de %{name}
     destroy:
+      confirm:
       success: Créateur supprimé !
     form:
       notes:

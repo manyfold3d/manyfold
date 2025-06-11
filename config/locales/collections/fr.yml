@@ -6,7 +6,6 @@ fr:
         label: Montrer les sous-collections dans %{name}
         remote_label:
       delete_button:
-        confirm:
         label:
       edit_button:
         label: Modifier la collection %{name}
@@ -17,6 +16,7 @@ fr:
     create:
       success: Détails de la nouvelle collection enregistrés.
     destroy:
+      confirm:
       success: Collection supprimée !
     form:
       notes:

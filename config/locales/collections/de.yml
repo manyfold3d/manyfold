@@ -6,7 +6,6 @@ de:
         label: Untersammlungen in %{name} anzeigen
         remote_label:
       delete_button:
-        confirm:
         label:
       edit_button:
         label: Sammlung bearbeiten %{name}
@@ -17,6 +16,7 @@ de:
     create:
       success: Neue Kollektionsdetails gespeichert.
     destroy:
+      confirm:
       success: Kollektion gelöscht!
     form:
       notes:
