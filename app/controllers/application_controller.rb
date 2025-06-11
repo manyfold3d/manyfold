@@ -67,11 +67,15 @@ class ApplicationController < ActionController::Base
   end
 
   def img_src
-    url = SiteSettings.site_icon ? URI.parse(SiteSettings.site_icon).host : nil
+    host = begin
+      SiteSettings.site_icon ? URI.parse(SiteSettings.site_icon).host : nil
+    rescue
+      nil
+    end
     [
       :self,
       :data,
-      url,
+      host,
       "https://cdn.jsdelivr.net",
       "https://raw.githubusercontent.com",
       SiteSettings.federation_enabled? ? :https : nil
