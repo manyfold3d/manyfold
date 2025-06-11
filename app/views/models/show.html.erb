@@ -119,7 +119,7 @@
     </table>
     <%= render Components::FollowButton.new(follower: current_user, target: @model) unless @model.remote? %>
     <%= render Components::GoButton.new(icon: "pencil", label: t("general.edit"), href: edit_model_path(@model), variant: "primary") if policy(@model).edit? %>
-    <%= render Components::DoButton.new(icon: "trash", label: t("general.delete"), href: model_path(@model), method: :delete, variant: "outline-danger") if policy(@model).destroy? %>
+    <%= render Components::DoButton.new(icon: "trash", label: t("general.delete"), href: model_path(@model), method: :delete, variant: "outline-danger", confirm: translate("models.destroy.confirm")) if policy(@model).destroy? %>
   <% end %>
 
   <div class="mb-3 w-100 text-center">
