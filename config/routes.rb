@@ -62,6 +62,10 @@ Rails.application.routes.draw do
   root to: "home#index"
   get "/about", to: "home#about", as: :about
 
+  authenticate :user do
+    get "/welcome", to: "home#welcome", as: :welcome
+  end
+
   resources :libraries, except: [:index] do
     member do
       post "scan"

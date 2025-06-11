@@ -6,6 +6,10 @@ class HomeController < ApplicationController
     @feed = local_timeline
   end
 
+  def welcome
+    skip_authorization
+  end
+
   def about
     skip_authorization
   end

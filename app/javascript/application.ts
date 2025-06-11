@@ -3,6 +3,7 @@ import '@hotwired/turbo-rails'
 import 'controllers/index'
 
 import Rails from '@rails/ujs'
+import 'masonry-layout'
 
 import 'altcha/external'
 import 'altcha/i18n/cs'
