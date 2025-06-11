@@ -291,8 +291,8 @@ RSpec.describe "Users::Registrations" do
           expect(User.last).to be_approved
         end
 
-        it "redirects to root" do
-          expect(response).to redirect_to("/")
+        it "redirects to welcome page" do
+          expect(response).to redirect_to("/welcome")
         end
 
         it "signs in the user" do
