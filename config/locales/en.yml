@@ -602,7 +602,7 @@ en:
       title: Uploading
       upload: Upload
     welcome:
-      lead: This site is running Manyfold, software for managing and sharing 3D models; here's a quick introduction...
+      lead: This site is running Manyfold, software for managing and sharing 3D models; here's a quick guide...
       title: Welcome to %{site_name}!
   jobs:
     activity:
