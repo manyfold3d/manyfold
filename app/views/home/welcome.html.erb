@@ -1,2 +1,16 @@
 <div class="container">
+  <h1><%= t ".title", site_name: site_name %></h1>
+
+  <p class="lead">
+    <%= t ".lead" %>
+  </p>
+
+  <div class="row row-cols-md-2" data-masonry='{"percentPosition": true }'>
+    <%= content_tag(:article, class: "col mb-3") { render "browsing" } %>
+    <%= content_tag(:article, class: "col mb-3") { render "uploading" } if current_user&.is_contributor? %>
+    <%= content_tag(:article, class: "col mb-3") { render "publishing" } if current_user&.is_contributor? %>
+    <%= content_tag(:article, class: "col mb-3") { render "federation" } if SiteSettings.federation_enabled? %>
+    <%= content_tag(:article, class: "col mb-3") { render "support" } if SiteSettings.support_link.presence %>
+  </div>
+
 </div>

@@ -1,0 +1,16 @@
+<div class="card">
+  <h2 class="card-header"><%= t ".title" %></h2>
+
+  <div class="card-body">
+    <p>
+      <%= t ".content" %>
+    </p>
+    <p>
+      <%= t ".new_creator.content" %>
+    </p>
+    <div class="text-end">
+      <%= render Components::GoButton.new(label: t(".new_creator.button"), href: new_creator_path, variant: :primary, icon: "box-arrow-up-right") %>
+    </div>
+  </div>
+
+</div>
