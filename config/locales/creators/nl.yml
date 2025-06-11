@@ -8,7 +8,6 @@ nl:
         label:
         remote_label:
       delete_button:
-        confirm:
         label:
       edit_button:
         label: Bewerk maker %{name}
@@ -16,6 +15,7 @@ nl:
         label: Toon modellen van %{name}
         remote_label:
     destroy:
+      confirm:
       success: Maker verwijderd!
     form:
       notes:

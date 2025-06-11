@@ -20,7 +20,7 @@
     </div>
     <% if @collection.persisted? %>
       <div class='col text-end'>
-        <%= link_to t("general.delete"), collection_path(@collection), {method: :delete, class: "btn btn-outline-danger"} if policy(@collection).destroy? %>
+        <%= render Components::DoButton.new(icon: "trash", label: t("general.delete"), href: collection_path(@collection), method: :delete, variant: "outline-danger", confirm: translate("collections.destroy.confirm")) if policy(@collection).destroy? %>
       </div>
     <% end %>
   </div>

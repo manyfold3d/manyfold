@@ -11,7 +11,7 @@
     </div>
     <% if @creator.persisted? %>
       <div class='col text-end'>
-        <%= link_to t("general.delete"), creator_path(@creator), {method: :delete, class: "btn btn-outline-danger"} if policy(@creator).destroy? %>
+        <%= render Components::DoButton.new(icon: "trash", label: t("general.delete"), href: creator_path(@creator), method: :delete, variant: "outline-danger", confirm: translate("creators.destroy.confirm")) if policy(@creator).destroy? %>
       </div>
     <% end %>
   </div>
