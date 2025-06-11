@@ -14,7 +14,7 @@
   <h2><%= t(".details") %></h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
     <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
-    <%= text_input_row form, :username, autocomplete: "username" %>
+    <%= text_input_row form, :username, autocomplete: "username", help: t(".username.help") %>
     <%= password_input_row form, :password, autocomplete: "new-password", strength_meter: true %>
     <%= password_input_row form, :password_confirmation, autocomplete: "new-password" %>
     <%= content_tag :div, t(".approval_help"), class: "alert alert-info" if SiteSettings.approve_signups %>

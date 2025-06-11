@@ -112,6 +112,8 @@ en:
         rules: Server Rules
         rules_agree: By signing up for an account, you agree to abide by the rules above.
         sign_up: Create account
+        username:
+          help: A short username for your personal account; if you make a creator profile for publishing your models, it will need a different account name.
       pagination_settings:
         collections:
           label: Paginate collections
