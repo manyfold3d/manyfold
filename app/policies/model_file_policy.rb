@@ -5,19 +5,19 @@ class ModelFilePolicy < ApplicationPolicy
   end
 
   def create?
-    ModelPolicy.new(@user, @record.model).edit?
+    can_update_model?
   end
 
   def convert?
-    create? && @record.loadable? && !@record.problems.exists?(category: :non_manifold)
+    can_update_model? && @record.loadable? && !@record.problems.exists?(category: :non_manifold)
   end
 
   def update?
-    create?
+    can_update_model?
   end
 
-  def delete?
-    create?
+  def destroy?
+    can_update_model?
   end
 
   def bulk_edit?
@@ -25,7 +25,7 @@ class ModelFilePolicy < ApplicationPolicy
   end
 
   def bulk_update?
-    create?
+    can_update_model?
   end
 
   class Scope < ApplicationPolicy::Scope
@@ -43,5 +43,11 @@ class ModelFilePolicy < ApplicationPolicy
           scope.where(model: Model.granted_to(FULL_VIEW_PERMISSIONS, subject_list))
         )
     end
+  end
+
+  private
+
+  def can_update_model?
+    ModelPolicy.new(@user, @record.model).update?
   end
 end
