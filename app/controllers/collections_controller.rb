@@ -60,14 +60,10 @@ class CollectionsController < ApplicationController
   def new
     authorize Collection
     @collection = Collection.new
-    @collection.links.build if @collection.links.empty? # populate empty link
-    @collection.caber_relations.build if @collection.caber_relations.empty?
     @title = t("collections.general.new")
   end
 
   def edit
-    @collection.links.build if @collection.links.empty? # populate empty link
-    @collection.caber_relations.build if @collection.caber_relations.empty?
   end
 
   def create

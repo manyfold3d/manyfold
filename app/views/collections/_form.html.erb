@@ -1,3 +1,6 @@
+<%- @collection.links.build if @collection.links.empty? # populate empty link %>
+<%- @collection.caber_relations.build if @collection.caber_relations.empty? %>
+
 <%= form_with model: @collection do |form| %>
   <%= text_input_row form, :name %>
   <div class="row mb-3 input-group">
