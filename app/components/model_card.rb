@@ -7,11 +7,10 @@ class Components::ModelCard < Components::Base
 
   register_output_helper :status_badges
   register_output_helper :server_indicator
+  register_value_helper :policy
 
-  def initialize(model:, can_edit: false, can_destroy: false)
+  def initialize(model:)
     @model = model
-    @can_destroy = can_destroy
-    @can_edit = can_edit
   end
 
   def view_template
@@ -111,8 +110,8 @@ class Components::ModelCard < Components::Base
         end
         div class: "col col-auto" do
           BurgerMenu do
-            DropdownItem(icon: "pencil", label: t("components.model_card.edit_button.text"), path: edit_model_path(@model), aria_label: translate("components.model_card.edit_button.label", name: @model.name)) if @can_edit
-            DropdownItem(icon: "trash", label: t("components.model_card.delete_button.text"), path: model_path(@model), method: :delete, aria_label: translate("components.model_card.delete_button.label", name: @model.name), confirm: translate("models.destroy.confirm")) if @can_destroy
+            DropdownItem(icon: "pencil", label: t("components.model_card.edit_button.text"), path: edit_model_path(@model), aria_label: translate("components.model_card.edit_button.label", name: @model.name)) if policy(@model).edit?
+            DropdownItem(icon: "trash", label: t("components.model_card.delete_button.text"), path: model_path(@model), method: :delete, aria_label: translate("components.model_card.delete_button.label", name: @model.name), confirm: translate("models.destroy.confirm")) if policy(@model).destroy?
             DropdownItem(icon: "flag", label: t("general.report", type: ""), path: new_model_report_path(@model)) if SiteSettings.multiuser_enabled?
           end
         end
