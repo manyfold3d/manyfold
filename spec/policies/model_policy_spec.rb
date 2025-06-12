@@ -1,6 +1,10 @@
 require "rails_helper"
 
 describe ModelPolicy do
+  let(:target_class) { Model }
+
+  it_behaves_like "ApplicationPolicy"
+
   subject(:policy) { described_class }
 
   let(:member) { create(:user) }
