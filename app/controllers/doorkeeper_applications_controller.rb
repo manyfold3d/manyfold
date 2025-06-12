@@ -26,7 +26,7 @@ class DoorkeeperApplicationsController < ApplicationController
       redirect_to @application, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -36,7 +36,7 @@ class DoorkeeperApplicationsController < ApplicationController
       render :show, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

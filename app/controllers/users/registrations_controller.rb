@@ -40,7 +40,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       build_resource
       clean_up_passwords(resource)
       flash[:alert] = t(".altcha_failed")
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

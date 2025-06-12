@@ -34,9 +34,9 @@ RSpec.describe "Creators" do
     end
 
     describe "POST /creators" do
-      it "creates a new creator and redirects to list", :as_contributor do
+      it "creates a new creator and redirects to new item", :as_contributor do
         post "/creators", params: {creator: {name: "newname"}}
-        expect(response).to redirect_to("/creators")
+        expect(response).to redirect_to("/creators/#{Creator.last.to_param}")
       end
 
       it "creates a new creator owned by the current user", :as_contributor do # rubocop:disable RSpec/MultipleExpectations

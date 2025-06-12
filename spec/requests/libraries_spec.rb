@@ -60,10 +60,10 @@ RSpec.describe "Libraries" do
     end
 
     describe "POST /libraries/" do
-      before { post "/libraries", params: {library: {name: "new"}} }
+      before { post "/libraries", params: {library: {name: "new", path: "."}} }
 
       it "creates a new library", :as_administrator do
-        expect(response).to have_http_status(:success)
+        expect(response).to redirect_to("/libraries/#{Library.last.to_param}")
       end
 
       it "is denied to non-admins", :as_moderator do

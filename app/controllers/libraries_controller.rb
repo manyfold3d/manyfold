@@ -30,7 +30,7 @@ class LibrariesController < ApplicationController
       redirect_to @library, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -43,7 +43,7 @@ class LibrariesController < ApplicationController
       redirect_to models_path, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

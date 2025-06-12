@@ -62,7 +62,7 @@ class ModelFilesController < ApplicationController
           current_user.set_list_state(@file, :printed, params[:model_file][:printed] === "1")
           redirect_to [@model, @file], notice: t(".success")
         else
-          render :edit, alert: t(".failure")
+          render :edit, alert: t(".failure"), status: :unprocessable_entity
         end
       end
       format.manyfold_api_v0 do

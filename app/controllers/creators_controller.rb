@@ -56,14 +56,10 @@ class CreatorsController < ApplicationController
   def new
     authorize Creator
     @creator = Creator.new
-    @creator.links.build if @creator.links.empty? # populate empty link
-    @creator.caber_relations.build if @creator.caber_relations.empty?
     @title = t("creators.general.new")
   end
 
   def edit
-    @creator.links.build if @creator.links.empty? # populate empty link
-    @creator.caber_relations.build if @creator.caber_relations.empty?
   end
 
   def create
@@ -71,11 +67,15 @@ class CreatorsController < ApplicationController
     @creator = Creator.create(creator_params.merge(Creator.caber_owner(current_user)))
     respond_to do |format|
       format.html do
-        if session[:return_after_new]
-          redirect_to session[:return_after_new] + "?new_creator=#{@creator.to_param}", notice: t(".success")
-          session[:return_after_new] = nil
+        if @creator.valid?
+          if session[:return_after_new]
+            redirect_to session[:return_after_new] + "?new_creator=#{@creator.to_param}", notice: t(".success")
+            session[:return_after_new] = nil
+          else
+            redirect_to creator_path(@creator), notice: t(".success")
+          end
         else
-          redirect_to creators_path, notice: t(".success")
+          render :new, status: :unprocessable_entity
         end
       end
       format.manyfold_api_v0 do
@@ -98,7 +98,7 @@ class CreatorsController < ApplicationController
           # Restore previous slug
           @attemped_slug = @creator.slug
           @creator.slug = @creator.slug_was
-          render "edit", status: :unprocessable_entity
+          render :edit, status: :unprocessable_entity
         end
       end
       format.manyfold_api_v0 do
