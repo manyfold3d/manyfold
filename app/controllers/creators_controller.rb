@@ -94,7 +94,7 @@ class CreatorsController < ApplicationController
           # Restore previous slug
           @attemped_slug = @creator.slug
           @creator.slug = @creator.slug_was
-          render "edit", status: :unprocessable_entity
+          render :edit, status: :unprocessable_entity
         end
       end
       format.manyfold_api_v0 do
