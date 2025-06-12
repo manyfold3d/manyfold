@@ -3,7 +3,7 @@ class Settings::UsersController < ApplicationController
   respond_to :html
 
   def index
-    @users = policy_scope(Federails::Actor).where(entity_type: "User").where.not(entity_id: nil).includes(entity: [:roles])
+    @users = policy_scope(Federails::Actor).where(entity_type: "User", tombstoned_at: nil).where.not(entity_id: nil).includes(entity: [:roles])
     render layout: "settings"
   end
 
