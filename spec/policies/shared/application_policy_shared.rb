@@ -1,14 +1,12 @@
-require "rails_helper"
-
-describe ApplicationPolicy do
+shared_examples "ApplicationPolicy" do
   subject(:policy) { described_class }
 
   let(:member) { create(:user) }
-  let(:model) { create(:model) }
+  let(:object) { create(target_class.to_s.underscore.to_sym) }
 
   permissions :index?, :show? do
     it "allows users with member role by default" do
-      expect(policy).to permit(member, model)
+      expect(policy).to permit(member, object)
     end
 
     it "falls back to member role if ReBAC isn't available on the record" do
@@ -18,27 +16,27 @@ describe ApplicationPolicy do
 
     context "when default member role access is removed" do
       before do
-        model.revoke_permission("view", Role.find_by(name: :member))
+        object.revoke_permission("view", Role.find_by(name: :member))
       end
 
       it "denies users without individual view permission" do
-        expect(policy).not_to permit(member, model)
+        expect(policy).not_to permit(member, object)
       end
 
       it "allows users with individual view permission" do
-        model.grant_permission_to "view", member
-        expect(policy).to permit(member, model)
+        object.grant_permission_to "view", member
+        expect(policy).to permit(member, object)
       end
     end
 
     context "with an unknown user" do
       it "denies access if public view permission isn't set" do
-        expect(policy).not_to permit(nil, model)
+        expect(policy).not_to permit(nil, object)
       end
 
       it "allows access if public view permission is set" do
-        model.grant_permission_to "view", nil
-        expect(policy).to permit(nil, model)
+        object.grant_permission_to "view", nil
+        expect(policy).to permit(nil, object)
       end
     end
   end
@@ -64,26 +62,26 @@ describe ApplicationPolicy do
     let(:contributor) { create(:contributor) }
 
     it "allows all users with moderator role" do
-      expect(policy).to permit(moderator, model)
+      expect(policy).to permit(moderator, object)
     end
 
     it "denies users with contributor role" do
-      expect(policy).not_to permit(contributor, model)
+      expect(policy).not_to permit(contributor, object)
     end
 
     it "allows users with granted edit permission" do
-      model.grant_permission_to "edit", member
-      expect(policy).to permit(member, model)
+      object.grant_permission_to "edit", member
+      expect(policy).to permit(member, object)
     end
 
     it "allows users with granted owner permission" do
-      model.grant_permission_to "own", member
-      expect(policy).to permit(member, model)
+      object.grant_permission_to "own", member
+      expect(policy).to permit(member, object)
     end
 
-    it "denies unknown users on public models" do
-      model.grant_permission_to "view", nil
-      expect(policy).not_to permit(nil, model)
+    it "denies unknown users on public objects" do
+      object.grant_permission_to "view", nil
+      expect(policy).not_to permit(nil, object)
     end
   end
 end

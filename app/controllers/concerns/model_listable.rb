@@ -9,10 +9,6 @@ module ModelListable
   private
 
   def prepare_model_list
-    # Work out policies for showing buttons up front
-    @can_destroy = policy(Model).destroy?
-    @can_edit = policy(Model).edit?
-
     # Ordering
     @models = case session["order"]
     when "recent"

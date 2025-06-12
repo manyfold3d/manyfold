@@ -3,10 +3,14 @@ require "rails_helper"
 describe ModelPolicy do
   subject(:policy) { described_class }
 
-  let(:member) { create(:user) }
-  let(:moderator) { create(:moderator) }
-  let(:model) { create(:model) }
+  let(:target_class) { Model }
+
   let(:nested) { create(:model) }
+  let(:model) { create(:model) }
+  let(:moderator) { create(:moderator) }
+  let(:member) { create(:user) }
+
+  it_behaves_like "ApplicationPolicy"
 
   permissions :destroy? do
     it "denies deletion to users with member role" do

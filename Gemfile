@@ -156,7 +156,7 @@ gem "devise_zxcvbn", "~> 6.0"
 
 gem "federails", git: "https://gitlab.com/experimentslabs/federails.git", branch: "merge-contexts"
 gem "federails-moderation", "~> 0.3"
-gem "caber"
+gem "caber", github: "manyfold3d/caber"
 
 gem "nanoid", "~> 2.0"
 
