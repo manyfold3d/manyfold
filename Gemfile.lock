@@ -8,6 +8,13 @@ GIT
       launchy
 
 GIT
+  remote: https://github.com/manyfold3d/caber.git
+  revision: 501a9f4dba0df4772f41713fc69cfc8ec470a7ba
+  specs:
+    caber (0.4.0)
+      rails (>= 7.1.4)
+
+GIT
   remote: https://github.com/manyfold3d/rubocop-pundit.git
   revision: 10ac81bbec63a9abd3d58be84dc47d9c490b29c6
   specs:
@@ -182,8 +189,6 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (12.0.0)
-    caber (0.4.0)
-      rails (>= 7.1.4)
     capybara (3.40.0)
       addressable
       matrix
@@ -910,7 +915,7 @@ DEPENDENCIES
   brakeman (~> 7.0)
   bullet (~> 8.0)
   byebug
-  caber
+  caber!
   capybara
   capybara-screenshot!
   climate_control (~> 1.2)
