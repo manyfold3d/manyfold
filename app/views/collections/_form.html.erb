@@ -17,14 +17,13 @@
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
   <%= render "caber_relations_form", form: form %>
-  <div class="row mb-4">
-    <div class='col'>
-      <%= form.submit translate("general.save"), class: "btn btn-primary" %>
-    </div>
-    <% if @collection.persisted? %>
-      <div class='col text-end'>
-        <%= render Components::DoButton.new(icon: "trash", label: t("general.delete"), href: collection_path(@collection), method: :delete, variant: "outline-danger", confirm: translate("collections.destroy.confirm")) if policy(@collection).destroy? %>
-      </div>
-    <% end %>
+  <%= form.submit translate("general.save"), class: "btn btn-primary float-start" %>
+<% end %>
+
+<% if @collection.persisted? %>
+  <div class='float-end'>
+    <%= render Components::DoButton.new(icon: "trash", label: t("general.delete"), href: collection_path(@collection), method: :delete, variant: "outline-danger", confirm: translate("collections.destroy.confirm")) if policy(@collection).destroy? %>
   </div>
 <% end %>
+
+<div class="clearfix"></div>
