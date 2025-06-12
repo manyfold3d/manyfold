@@ -67,11 +67,15 @@ class CreatorsController < ApplicationController
     @creator = Creator.create(creator_params.merge(Creator.caber_owner(current_user)))
     respond_to do |format|
       format.html do
-        if session[:return_after_new]
-          redirect_to session[:return_after_new] + "?new_creator=#{@creator.to_param}", notice: t(".success")
-          session[:return_after_new] = nil
+        if @creator.valid?
+          if session[:return_after_new]
+            redirect_to session[:return_after_new] + "?new_creator=#{@creator.to_param}", notice: t(".success")
+            session[:return_after_new] = nil
+          else
+            redirect_to creator_path(@creator), notice: t(".success")
+          end
         else
-          redirect_to creators_path, notice: t(".success")
+          render :new, status: :unprocessable_entity
         end
       end
       format.manyfold_api_v0 do
