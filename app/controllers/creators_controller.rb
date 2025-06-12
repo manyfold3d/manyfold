@@ -56,14 +56,10 @@ class CreatorsController < ApplicationController
   def new
     authorize Creator
     @creator = Creator.new
-    @creator.links.build if @creator.links.empty? # populate empty link
-    @creator.caber_relations.build if @creator.caber_relations.empty?
     @title = t("creators.general.new")
   end
 
   def edit
-    @creator.links.build if @creator.links.empty? # populate empty link
-    @creator.caber_relations.build if @creator.caber_relations.empty?
   end
 
   def create
