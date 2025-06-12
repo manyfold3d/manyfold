@@ -35,6 +35,12 @@
         <% model_count = policy_scope(Model).where(creator: @creator).count %>
         <p><%= "#{model_count} #{Model.model_name.human count: model_count}" %></p>
         <%= content_tag(:p) { t("general.followers", count: @creator.followers.count) } if SiteSettings.social_enabled? %>
+        <% if @creator.public? %>
+          <p>
+            <%= icon("eye", t("general.visibility")) %>
+            <%= t("general.public") %>
+          </p>
+        <% end %>
       </div>
     </div>
   </div>

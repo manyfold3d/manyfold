@@ -36,6 +36,8 @@ class Components::ModelCard < Components::Base
         whitespace
         Icon(icon: "explicit", label: Model.human_attribute_name(:sensitive))
       end
+      whitespace
+      AccessIndicator(object: @model)
     end
   end
 

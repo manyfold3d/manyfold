@@ -8,6 +8,7 @@
     <div class="card-body <%= "remote-actor" if creator.remote? %>">
       <div class="card-title">
         <%= creator.name %>
+        <%= render Components::AccessIndicator.new object: creator %>
       </div>
       <% if creator.caption %>
         <div>

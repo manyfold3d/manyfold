@@ -558,9 +558,11 @@ en:
       zero: "%{count} Followers"
     menu: Menu
     new: New
+    public: Public
     report: Report %{type}
     save: Save
     view: View
+    visibility: Visibility
   home:
     activity:
       created: added %{time} ago
