@@ -22,11 +22,11 @@ module SettingsHelper
   end
 
   def creator_count
-    policy_scope(Creator).count
+    policy_scope(Creator).local.count
   end
 
   def collection_count
-    policy_scope(Collection).count
+    policy_scope(Collection).local.count
   end
 
   def tag_count
