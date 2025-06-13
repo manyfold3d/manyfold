@@ -33,7 +33,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       super do |user|
         opts = {}
         opts [:approved] = false if SiteSettings.approve_signups
-        creator_username = params.dig(:user, :creators_attributes, 0, :slug)
+        creator_username = params.dig(:user, :creators_attributes, "0", :slug)
         opts [:username] ||= "u;#{creator_username}" if SiteSettings.autocreate_creator_for_new_users && creator_username
         opts.compact!
         user.update(opts) unless opts.empty?

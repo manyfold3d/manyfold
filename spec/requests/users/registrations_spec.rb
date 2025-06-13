@@ -315,10 +315,12 @@ RSpec.describe "Users::Registrations" do
               email: Faker::Internet.email,
               password: old_password,
               password_confirmation: old_password,
-              creators_attributes: [{
-                name: Faker::Name.name,
-                slug: Faker::Internet.username(specifier: 3, separators: [])
-              }]
+              creators_attributes: {
+                "0" => {
+                  name: Faker::Name.name,
+                  slug: Faker::Internet.username(specifier: 3, separators: [])
+                }
+              }
             }
           }
         }
@@ -330,7 +332,7 @@ RSpec.describe "Users::Registrations" do
 
         it "sets a username derived from the creator username" do
           form_post
-          expect(controller.current_user&.username).to eq "u;" + post_with_creator_options.dig(:user, :creators_attributes, 0, :slug)
+          expect(controller.current_user&.username).to eq "u;" + post_with_creator_options.dig(:user, :creators_attributes, "0", :slug)
         end
 
         it "adds a Creator" do
