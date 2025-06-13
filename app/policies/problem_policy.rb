@@ -1,19 +1,22 @@
 class ProblemPolicy < ApplicationPolicy
   def index?
-    user&.is_contributor?
+    user&.is_moderator?
   end
 
   def show?
-    user&.is_contributor?
+    user&.is_moderator?
   end
 
   def resolve?
-    Pundit::PolicyFinder.new(record.problematic).policy.new(user, record.problematic).send(:"#{record.resolution_strategy}?")
+    all_of(
+      user&.is_moderator?,
+      Pundit::PolicyFinder.new(record.problematic).policy.new(user, record.problematic).send(:"#{record.resolution_strategy}?")
+    )
   end
 
   class Scope < ApplicationPolicy::Scope
     def resolve
-      scope
+      @user.is_moderator? ? scope : scope.none
     end
   end
 end

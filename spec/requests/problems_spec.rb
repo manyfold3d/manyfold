@@ -9,14 +9,14 @@ RSpec.describe "Problems" do
   end
 
   context "when signed in" do
-    describe "GET /problems", :as_member do
-      it "is denied to members" do
+    describe "GET /problems", :as_contributor do
+      it "is denied to contributors" do
         get "/problems/index"
         expect(response).to have_http_status(:forbidden)
       end
     end
 
-    describe "GET /problems", :as_contributor do
+    describe "GET /problems", :as_moderator do
       before do
         create_list(:problem, 2, category: :inefficient)
         create_list(:problem_on_model, 3, category: :missing)
