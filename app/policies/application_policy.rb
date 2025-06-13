@@ -86,6 +86,14 @@ class ApplicationPolicy
     end
   end
 
+  class OwnerScope < Scope
+    def resolve
+      scope.granted_to("own", user)
+    rescue NoMethodError
+      scope.none
+    end
+  end
+
   private
 
   def check_permissions(record, permissions, user, role_fallback: nil)
