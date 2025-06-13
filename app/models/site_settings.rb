@@ -19,7 +19,7 @@ class SiteSettings < RailsSettings::Base
   field :anonymous_usage_id, type: :string, default: nil
   field :default_viewer_role, type: :string, default: "member"
   field :default_signup_role, type: :string, default: "member"
-  field :autocreate_creator_for_new_users, type: :boolean, default: true
+  field :autocreate_creator_for_new_users, type: :boolean, default: false
   field :approve_signups, type: :boolean, default: true
   field :theme, type: :string, default: "default"
   field :default_library, type: :integer, default: nil

@@ -302,7 +302,10 @@ RSpec.describe "Users::Registrations" do
 
       describe "POST /users with approval disabled and creator options" do # rubocop:disable RSpec/MultipleMemoizedHelpers
         before {
-          allow(SiteSettings).to receive(:approve_signups).and_return(false)
+          allow(SiteSettings).to receive_messages(
+            approve_signups: false,
+            autocreate_creator_for_new_users: true
+          )
           allow(AltchaSolution).to receive(:verify_and_save).and_return(true)
         }
 
