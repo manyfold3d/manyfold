@@ -9,7 +9,7 @@ en:
         notes: Notes
       creator:
         caption: Tagline
-        name: Name
+        name: Creator Name
         notes: Description
         slug: Handle
       doorkeeper/application:
