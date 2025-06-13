@@ -2,6 +2,11 @@ module FederailsCommon
   extend ActiveSupport::Concern
   include Federails::ActorEntity
 
+  included do
+    scope :local, -> { includes(:federails_actor).where("federails_actor.local": true) }
+    scope :remote, -> { includes(:federails_actor).where("federails_actor.local": false) }
+  end
+
   # Listed in increasing order of priority
   FEDIVERSE_USERNAMES = {
     collection: :public_id,

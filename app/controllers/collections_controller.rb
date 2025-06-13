@@ -136,12 +136,12 @@ class CollectionsController < ApplicationController
 
   def get_creators
     # Creators that we can assign this collection to
-    @creators = policy_scope(Creator, policy_scope_class: ApplicationPolicy::UpdateScope).order("LOWER(name) ASC")
+    @creators = policy_scope(Creator, policy_scope_class: ApplicationPolicy::UpdateScope).local.order("LOWER(creators.name) ASC")
   end
 
   def get_parent_collections
     # Collection that we can add this one to
-    @collections = policy_scope(Collection, policy_scope_class: ApplicationPolicy::UpdateScope).order("LOWER(name) ASC")
+    @collections = policy_scope(Collection, policy_scope_class: ApplicationPolicy::UpdateScope).local.order("LOWER(collections.name) ASC")
   end
 
   def collection_params
