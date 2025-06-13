@@ -6,6 +6,9 @@ class User < ApplicationRecord
   include CaberSubject
   include PublicIDable
 
+  # Creator ownership relation used for auto-creation
+  has_many :creators, -> { where("caber_relations.permission": "own")}, through: :caber_relations, source_type: "Creator", source: :object
+
   before_save :set_quota
 
   acts_as_federails_actor(

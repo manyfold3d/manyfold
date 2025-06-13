@@ -70,6 +70,26 @@ RSpec.describe User do
     expect(user.has_quota?).to be_falsey # rubocop:disable RSpec/PredicateMatcher
   end
 
+  context "with owner permissions on a creator" do
+    let!(:user) { create(:user) }
+    let!(:creator) { create(:creator) }
+
+    it "accesses owned creators through association" do
+      creator.grant_permission_to("own", user)
+      expect(user.reload.creators).to include creator
+    end
+
+    it "can't access non-owned creators through association" do
+      creator.grant_permission_to("own", create(:moderator))
+      expect(user.creators).to be_empty
+    end
+
+    it "doesn't access viewable creators through association" do
+      creator.grant_permission_to("view", user)
+      expect(user.reload.creators).to be_empty
+    end
+  end
+
   context "with omniauth" do
     let(:auth_data) do
       OpenStruct.new({
