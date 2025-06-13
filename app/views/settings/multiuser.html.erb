@@ -42,6 +42,13 @@
     </div>
   </div>
   <div class="row">
+    <%= form.label nil, t(".autocreate_creator.label"), for: "multiuser[autocreate_creator_for_new_users]", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8 form-check form-switch">
+      <%= form.check_box "multiuser[autocreate_creator_for_new_users]", checked: SiteSettings.autocreate_creator_for_new_users, class: "form-check-input" %>
+      <small><%= t(".autocreate_creator.help") %></small>
+    </div>
+  </div>
+  <div class="row">
     <%= form.label nil, t(".default_signup_role.label"), for: "multiuser[default_signup_role]", class: "col-sm-4 col-form-label" %>
     <div class="col-sm-8">
       <%= form.select "multiuser[default_signup_role]",
