@@ -31,7 +31,7 @@ class User < ApplicationRecord
   validates :username,
     presence: true,
     uniqueness: {case_sensitive: false},
-    format: {with: /\A[[:alnum:]]+\z/}
+    format: {with: /\A[[:alnum:];]+\z/}
 
   validates :email,
     presence: true,

@@ -300,6 +300,51 @@ RSpec.describe "Users::Registrations" do
         end
       end
 
+      describe "POST /users with approval disabled and creator options" do # rubocop:disable RSpec/MultipleMemoizedHelpers
+        before {
+          allow(SiteSettings).to receive(:approve_signups).and_return(false)
+          allow(AltchaSolution).to receive(:verify_and_save).and_return(true)
+        }
+
+        let(:post_with_creator_options) {
+          {
+            user: {
+              email: Faker::Internet.email,
+              password: old_password,
+              password_confirmation: old_password,
+              creators_attributes: [{
+                name: Faker::Name.name,
+                slug: Faker::Internet.username(specifier: 3, separators: [])
+              }]
+            }
+          }
+        }
+        let(:form_post) { post "/users", params: post_with_creator_options }
+
+        it "creates a new user" do
+          expect { form_post }.to change(User, :count).by(1)
+        end
+
+        it "sets a username derived from the creator username" do
+          form_post
+          expect(controller.current_user&.username).to eq "u;" + post_with_creator_options.dig(:user, :creators_attributes, 0, :slug)
+        end
+
+        it "adds a Creator" do
+          expect { form_post }.to change(Creator, :count).by(1)
+        end
+
+        it "adds a permission" do
+          allow(SiteSettings).to receive(:default_viewer_role).and_return(nil)
+          expect { form_post }.to change(Caber::Relation, :count).by(1)
+        end
+
+        it "sets up ownership relation with the Creator" do
+          form_post
+          expect(controller.current_user.creators.count).to eq 1
+        end
+      end
+
       describe "POST /users with approval enabled" do
         before {
           allow(SiteSettings).to receive(:approve_signups).and_return(true)
