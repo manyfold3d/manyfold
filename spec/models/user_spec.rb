@@ -70,6 +70,25 @@ RSpec.describe User do
     expect(user.has_quota?).to be_falsey # rubocop:disable RSpec/PredicateMatcher
   end
 
+  context "when autocreating creator" do
+    it "creates creator successfully if data is valid" do
+      user = create(:user, creators_attributes: [{slug: "creator", name: "Creator"}])
+      expect(user.creators.first.name).to eq "Creator"
+    end
+
+    it "validates creator data properly" do
+      user = build(:user, creators_attributes: [{slug: "invalid+slug", name: ""}])
+      expect(user).not_to be_valid
+    end
+
+    it "logs errors with creator data properly" do # rubocop:disable RSpec/MultipleExpectations
+      user = build(:user, creators_attributes: [{slug: "invalid+slug", name: ""}])
+      user.validate
+      expect(user.errors.where("creators.name").first.type).to eq :blank
+      expect(user.errors.where("creators.slug").first.type).to eq :invalid
+    end
+  end
+
   context "with owner permissions on a creator" do
     let!(:user) { create(:user) }
     let!(:creator) { create(:creator) }
