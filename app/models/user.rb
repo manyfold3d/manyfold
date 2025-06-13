@@ -6,6 +6,10 @@ class User < ApplicationRecord
   include CaberSubject
   include PublicIDable
 
+  # Creator ownership relation used for auto-creation
+  has_many :creators, -> { where("caber_relations.permission": "own") }, through: :caber_relations, source_type: "Creator", source: :object
+  accepts_nested_attributes_for :creators
+
   before_save :set_quota
 
   acts_as_federails_actor(
@@ -27,7 +31,7 @@ class User < ApplicationRecord
   validates :username,
     presence: true,
     uniqueness: {case_sensitive: false},
-    format: {with: /\A[[:alnum:]]+\z/}
+    format: {with: /\A[[:alnum:];]+\z/}
 
   validates :email,
     presence: true,

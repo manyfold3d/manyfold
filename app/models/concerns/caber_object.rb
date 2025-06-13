@@ -8,7 +8,7 @@ module CaberObject
 
     accepts_nested_attributes_for :caber_relations, reject_if: :all_blank, allow_destroy: true
 
-    after_create :assign_default_permissions
+    after_create_commit :assign_default_permissions
 
     before_update -> { @was_private = !public? }
 

@@ -31,7 +31,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     authorize User
     if AltchaSolution.verify_and_save(params.permit(:altcha)[:altcha])
       super do |user|
-        user.update(approved: false) if SiteSettings.approve_signups
+        opts = {}
+        opts [:approved] = false if SiteSettings.approve_signups
+        creator_username = params.dig(:user, :creators_attributes, "0", :slug)
+        opts [:username] ||= "u;#{creator_username}" if SiteSettings.autocreate_creator_for_new_users && creator_username
+        opts.compact!
+        user.update(opts) unless opts.empty?
       end
       if @user.persisted?
         ModeratorMailer.with(user: @user).new_approval.deliver_later if SiteSettings.approve_signups && SiteSettings.email_configured?
@@ -78,7 +83,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, creators_attributes: [:slug, :name]])
   end
 
   def configure_account_update_params

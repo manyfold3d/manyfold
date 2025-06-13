@@ -70,6 +70,7 @@ class SettingsController < ApplicationController
     SiteSettings.registration_enabled = (settings[:registration_open])
     SiteSettings.approve_signups = (settings[:approve_signups])
     SiteSettings.default_signup_role = settings[:default_signup_role]
+    SiteSettings.autocreate_creator_for_new_users = settings[:autocreate_creator_for_new_users]
     SiteSettings.default_viewer_role = settings[:default_viewer_role]
     SiteSettings.enable_user_quota = (settings[:enable_user_quota].presence)
     SiteSettings.default_user_quota = (settings[:default_user_quota].to_i * 1.megabyte)

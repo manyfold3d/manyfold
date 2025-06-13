@@ -70,6 +70,45 @@ RSpec.describe User do
     expect(user.has_quota?).to be_falsey # rubocop:disable RSpec/PredicateMatcher
   end
 
+  context "when autocreating creator" do
+    it "creates creator successfully if data is valid" do
+      user = create(:user, creators_attributes: [{slug: "creator", name: "Creator"}])
+      expect(user.creators.first.name).to eq "Creator"
+    end
+
+    it "validates creator data properly" do
+      user = build(:user, creators_attributes: [{slug: "invalid+slug", name: ""}])
+      expect(user).not_to be_valid
+    end
+
+    it "logs errors with creator data properly" do # rubocop:disable RSpec/MultipleExpectations
+      user = build(:user, creators_attributes: [{slug: "invalid+slug", name: ""}])
+      user.validate
+      expect(user.errors.where("creators.name").first.type).to eq :blank
+      expect(user.errors.where("creators.slug").first.type).to eq :invalid
+    end
+  end
+
+  context "with owner permissions on a creator" do
+    let!(:user) { create(:user) }
+    let!(:creator) { create(:creator) }
+
+    it "accesses owned creators through association" do
+      creator.grant_permission_to("own", user)
+      expect(user.reload.creators).to include creator
+    end
+
+    it "can't access non-owned creators through association" do
+      creator.grant_permission_to("own", create(:moderator))
+      expect(user.creators).to be_empty
+    end
+
+    it "doesn't access viewable creators through association" do
+      creator.grant_permission_to("view", user)
+      expect(user.reload.creators).to be_empty
+    end
+  end
+
   context "with omniauth" do
     let(:auth_data) do
       OpenStruct.new({

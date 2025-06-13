@@ -85,6 +85,9 @@ en:
       approve_signups:
         help: All new accounts must be approved by a moderator before they can sign in.
         label: Approve accounts
+      autocreate_creator:
+        help: Only applied if accounts are given the "contributor" role by default.
+        label: Autocreate Creators for new accounts
       default_signup_role:
         help: The role assigned to new accounts when they sign up
         label: Default role
