@@ -18,7 +18,7 @@ pl:
         created_at: Utworzony
         name: Nazwa
         owner: Właściciel
-        redirect_uri:
+        redirect_uri: Przekierowanie URI
         scopes:
         secret:
         uid:
@@ -242,9 +242,9 @@ pl:
         preview:
         view: Wyświetlaj tylko
       subject:
-        placeholder: Adres e-mail, nazwa użytkownika albo rola
+        placeholder: Adres e-mail, nazwa konta albo rola
         role:
-          member: Dowolny zalogowany lokalny użytkownik
+          member: Dowolne zalogowane lokalne konto
           public: Wszyscy (bez logowania)
         you: "(ty)"
     caber_relations_form:
@@ -283,7 +283,7 @@ pl:
     navbar:
       account: Moje Ustawienia
       activity: Aktywność
-      check_existing: Sprawdź istniejące modele
+      check_existing: Ponownie zeskanuj istniejące modele
       home: Strona główna
       log_in: Zaloguj się
       log_out: Wyloguj się
@@ -310,13 +310,15 @@ pl:
       skip_tags: Pomiń listę tagów
     title: Manyfold
   components:
+    altcha_widget:
+      help:
     copy_button:
-      copy:
+      copy: Kopiuj do schowka
     download_button:
       download:
         missing:
         preparing:
-        ready:
+        ready: Gotowe do pobrania
       file_type: Tylko Pliki %{type}
       label: Pobierz Wszystko
       menu_header: Opcje Pobierania
@@ -327,7 +329,7 @@ pl:
       pending: Żądane
       unfollow: Przestań obserwować %{name}
     modal:
-      close:
+      close: Zamknij
     model_card:
       delete_button:
         label: Usuń model %{name}
@@ -340,34 +342,34 @@ pl:
         label: Otwórz model %{name}
         text: Otwórz
     search_help:
-      boolean:
-      federation:
+      boolean: Użyj "or", aby znaleźć modele pasujące do któregokolwiek z terminów.
+      federation: Wyszukaj dowolną nazwę użytkownika Fediverse, aby ją zaobserwować.
       filename:
       intro:
       more_details_html:
-      negation:
+      negation: Aby wykluczyć terminy, użyj "not", "!" lub "-".
       parentheses:
       quotes:
       simple:
       specific_fields:
       tag:
-      title:
+      title: Składnia Wyszukiwania
       unset:
       without_tag:
   doorkeeper:
     applications:
       buttons:
-        authorize:
-        cancel:
-        destroy:
+        authorize: Autoryzuj
+        cancel: Anuluj
+        destroy: Zniszcz
         edit: Edytuj
         submit:
       confirmations:
         destroy: Jesteś pewny?
       edit:
-        title:
+        title: Edytuj aplikację
       form:
-        error:
+        error: Ups! Sprawdź swój formularz pod kątem możliwych błędów
       help:
         blank_redirect_uri:
         confidential:
@@ -378,47 +380,47 @@ pl:
         callback_url:
         confidential:
         confidentiality:
-          'no':
-          'yes':
+          'no': Nie
+          'yes': Tak
         name: Nazwa
-        new:
-        title:
+        new: Nowa Aplikacja
+        title: Twoje aplikacje
       new:
-        title:
+        title: Nowa Aplikacja
       show:
         actions: Akcje
-        application_id:
+        application_id: UID
         callback_urls:
         confidential:
-        not_defined:
+        not_defined: Nie zdefiniowane
         scopes:
-        secret:
-        secret_hashed:
-        title:
+        secret: Sekret
+        secret_hashed: Zhaszowany sekret
+        title: 'Aplikacja: %{name}'
     authorizations:
       buttons:
-        authorize:
-        deny:
+        authorize: Autoryzuj
+        deny: Odmów
       error:
-        title:
+        title: Wystąpił błąd
       form_post:
-        title:
+        title: Prześlij ten formularz
       new:
-        able_to:
-        prompt:
-        title:
+        able_to: Aplikacja ta będzie w stanie
+        prompt: Autoryzować %{client_name} do zkorzystania z twojego konta?
+        title: Wymagana autoryzacja
       show:
-        title:
+        title: Kod autoryzacji
     authorized_applications:
       buttons:
         revoke:
       confirmations:
         revoke: Jesteś pewny?
       index:
-        application:
+        application: Aplikacja
         created_at:
-        date_format:
-        title:
+        date_format: "%Y-%m-%d %H:%M:%S"
+        title: Twoje autoryzowane aplikacje
     errors:
       messages:
         access_denied:
@@ -466,12 +468,12 @@ pl:
     layouts:
       admin:
         nav:
-          applications:
-          home:
-          oauth2_provider:
-        title:
+          applications: Aplikacje
+          home: Strona główna
+          oauth2_provider: Dostawca OAuth2
+        title: Doorkeeper
       application:
-        title:
+        title: Wymagana autoryzacja OAuth
     pre_authorization:
       status:
   doorkeeper_applications:
@@ -512,8 +514,8 @@ pl:
     follow_remote_actor:
       followed: Pomyślnie zaczęto obserwować %{actor}
     index:
-      followers:
-      following:
+      followers: Obserwujący
+      following: Obserwowane
       title: Połączenia
     new:
       help: Możesz obserwować publicznych twórców, kolekcje lub modele na innym serwerze Manyfold, a nawet każde publiczne konto w Fediversie! Wystarczy, że wpiszesz nazwę konta w polu wyszukiwania!
@@ -566,7 +568,7 @@ pl:
       title:
     index:
       no_activities: Na razie nie ma żadnych aktywności do wyświetlenia.
-      open_search_help:
+      open_search_help: Składnia wyszukiwania
       recent_activity: Ostatnia Aktywność
       search:
         placeholder: Czego szukasz?
@@ -596,13 +598,13 @@ pl:
   jobs:
     activity:
       collection_published:
-        comment:
+        comment: Nowa kolekcja modeli 3D ["%{name}"](%{url}) została właśnie opublikowana!
       model_collected:
-        comment:
+        comment: '["%{model_name}"](%{model_url}) został właśnie dodany do kolekcji ["%{collection_name}"](%{collection_url}).'
       model_published:
-        comment:
+        comment: Nowy model 3D ["%{name}"](%{url}) został właśnie opublikowany!
       updated_model:
-        comment:
+        comment: Model 3D ["%{name}"](%{url}) został właśnie zaktualizowany!
     analysis:
       analyse_model_file:
         detect_duplicates: Wykrywanie zduplikowanych plików
@@ -649,7 +651,7 @@ pl:
     settings:
       activeadmin: Zaawansowana Administracja
       appearance: Wygląd
-      downloads:
+      downloads: Pobrane
       libraries: Biblioteki
       organization: Organizacja
       performance: Pulpit Wydajności

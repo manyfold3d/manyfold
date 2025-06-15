@@ -27,10 +27,10 @@ pl:
         label: Napis
       summary: Dostosuj swoją instancje.
       support_link:
-        help: Link do miejsca, w którym użytkownicy mogą wesprzeć instancję finansowo (np. OpenCollective, Patreon). Pokazywane w stopce strony.
+        help: Link do miejsca, w którym odwiedzający mogą wesprzeć instancję finansowo (np. OpenCollective, Patreon). Pokazywane w stopce strony.
         label:
       theme:
-        help_html: Dotyczy wszystkich użytkowników. Odwiedź <a href="https://bootswatch.com">Bootswatch</a>, aby zobaczyć podgląd.
+        help_html: Dotyczy wszystkich kont. Odwiedź <a href="https://bootswatch.com">Bootswatch</a>, aby zobaczyć podgląd.
         label: Motyw
     domain_blocks:
       create:
@@ -71,7 +71,7 @@ pl:
       safe_folder_names:
         help_html: np. <code>spinal-tap</code> zamiast <code>Spın̈al Tap</code>
         label: Używaj bezpiecznych nazw folderów
-      summary: Określ strukturę folderów używaną przez "organizuj pliki" i do automatycznego uzupełniania metadanych podczas skanowania. Dotyczy wszystkich użytkowników.
+      summary: Określ strukturę folderów używaną przez "organizuj pliki" i do automatycznego uzupełniania metadanych podczas skanowania. Dotyczy wszystkich kont.
       title: Nazewnictwo folderów
       tokens:
         collection: Tytuł kolekcji, w której znajduje się model, jeśli jest ustawiony.
@@ -98,7 +98,7 @@ pl:
         help: Kto może domyślnie wyświetlać nowe modele / twórców / kolekcje?
         label: Domyślna widoczność
         options:
-          member: Zalogowani lokalni użytkownicy
+          member: Zalogowane lokalne konta
           none: Prywatne
       details_html: Aby zmienić te ustawienia, edytuj <a href='https://manyfold.app/sysadmin/configuration.html'>zmienne środowiskowe</a> serwera i uruchom go ponownie.
       email: Dostarczanie wiadomości e-mail skonfigurowane?
@@ -126,7 +126,7 @@ pl:
       verification_html: Jeśli chcesz zweryfikować to, co wysyłamy, możesz zmienić zmienną środowiskową <code>USAGE_REPORTING_URL</code> i wysłać dane w miejsce, w którym możesz je sprawdzić. Możesz również zobaczyć dokładnie, co jest wysyłane w logach.
     reports:
       index:
-        description: Treści zgłoszone przez użytkowników lokalnych lub z Fediverse są wyświetlane tutaj do moderacji.
+        description: Treści zgłoszone przez konta lokalne lub pochodzące z Fediverse są wyświetlane tutaj do moderacji.
         title: Zgłoszenia
       show:
         ignore: Ignoruj
@@ -142,7 +142,7 @@ pl:
         label: Automatycznie taguj nowe modele za pomocą
       custom_stop_words:
         label: Niestandardowe słowa stopu
-      description: Dodaje tagi do wszystkich nowo zeskanowanych modeli i odfiltrowuje określone słowa ("słowa stopu") podczas automatycznego tworzenia tagów. Dotyczy wszystkich użytkowników.
+      description: Dodaje tagi do wszystkich nowo zeskanowanych modeli i odfiltrowuje określone słowa ("słowa stopu") podczas automatycznego tworzenia tagów. Dotyczy wszystkich kont.
       filter_stop_words:
         label: Odfiltruj słowa stopu
       heading: Tagowanie
@@ -155,23 +155,23 @@ pl:
       success: Ustawienia zapisane.
     users:
       create:
-        success: Użytkownik pomyślnie utworzony.
+        success: Konto pomyślnie utworzone.
       destroy:
-        success: Użytkownik usunięty!
+        success: Konto usunięte!
       edit:
-        title: 'Edytuj użytkownika: %{username}'
+        title: 'Edytuj konto: %{username}'
       form:
-        password_reset_help: Link zostanie automatycznie wysłany do użytkownika w celu ustawienia przez niego własnego hasła.
+        password_reset_help: Link zostanie automatycznie wysłany do właściciela konta w celu ustawienia przez niego własnego hasła.
         submit: Zapisz
       index:
-        description: Wyświetl i edytuj konta zarejestrowanych użytkowników.
+        description: Wyświetl i edytuj zarejestrowane konta.
         fediverse_address: Adres Fediverse
         local: Lokalny
-        new: Nowy użytkownik
-        title: Zarządzaj użytkownikami
+        new: Nowe konto
+        title: Zarządzaj Kontami
         view: Widok
       new:
-        title: Stwórz użytkownika
+        title: Utwórz konto
       quota:
         current_quota:
         current_space_used:
@@ -179,11 +179,11 @@ pl:
         unlimited_quota:
         using_site_default:
       show:
-        approve: Zatwierdź użytkownika
-        confirm_destroy: Czy na pewno chcesz natychmiast usunąć to konto użytkownika? Nie można tego cofnąć!
+        approve: Zatwierdź konto
+        confirm_destroy: Czy na pewno chcesz natychmiast usunąć to konto? Nie można tego cofnąć!
         reset_password: Zresetuj hasło
-        title: 'Dane użytkownika: %{username}'
+        title: 'Dane konta: %{username}'
       update:
-        approved: Użytkownik pomyślnie zatwierdzony.
-        reset_link_sent: Do użytkownika został wysłany link umożliwiający ustawienie przez niego nowego hasła.
-        success: Użytkownik pomyślnie zaktualizowany.
+        approved: Konto pomyślnie zatwierdzone.
+        reset_link_sent: Do właściciel konta został wysłany link umożliwiający ustawienie przez niego nowego hasła.
+        success: Konto pomyślnie zaktualizowane.

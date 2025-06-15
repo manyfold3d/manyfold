@@ -88,12 +88,12 @@ pl:
         summary: Kontroluj sposób wyświetlania list plików modeli
       first_use:
         email_help: Nigdy nie pokazywany publicznie; używany tylko do logowania i wiadomości e-mail dotyczących bezpieczeństwa konta.
-        guidance: Przy pierwszym użyciu należy ustawić nazwę użytkownika, kontaktowy adres e-mail i hasło dla głównego użytkownika administratora. Jeśli korzystasz z trybu pojedynczego użytkownika, zwykle nie będziesz musiał wprowadzać tych danych, aby się zalogować, ale w trybie wielu użytkowników nie będziesz mógł uzyskać dostępu do Manyfold bez nich.
+        guidance: Przy pierwszym użyciu należy ustawić nazwę konta, kontaktowy adres e-mail i hasło dla konta głównego administratora. Jeśli korzystasz z trybu pojedynczego użytkownika, zwykle nie będziesz musiał wprowadzać tych danych, aby się zalogować, ale w trybie wielu użytkowników nie będziesz mógł uzyskać dostępu do Manyfold bez nich.
         password:
           help_html: Domyślnie wymagamy silnego hasła; aby zezwolić na prostsze hasło w prywatnej instancji, należy ustawić zmienną środowiskową <a href="https://manyfold.app/sysadmin/configuration.html#min_password_score">MIN_PASSWORD_SCORE</a>.
         submit: Zapisz
         title: Konfiguracja
-        username_help: Unikalna nazwa użytkownika; użyj wstępnie wygenerowanej lub wybierz własną.
+        username_help: Unikalna nazwa konta; użyj wstępnie wygenerowanej lub wybierz własną.
       general_settings:
         heading: Główne
         interface_language:
@@ -118,6 +118,7 @@ pl:
         details: Twoje Dane
         rules: Zasady Serwera
         rules_agree: Zakładając konto, użytkownik zgadza się przestrzegać powyższych zasad.
+        sign_up: Utwórz konto
         username:
           help:
       pagination_settings:
@@ -204,7 +205,7 @@ pl:
         forgot_your_password: Zapomniałeś hasła?
         sign_in: Zaloguj się
         sign_in_with_provider: Zaloguj się przez %{provider}
-        sign_up: Zarejestruj się
+        sign_up: Utwórz konto
       minimum_password_length:
         one: "(%{count} znak minimum)"
         other: "(%{count} znaków minimum)"

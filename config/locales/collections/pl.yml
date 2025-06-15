@@ -6,17 +6,17 @@ pl:
         label: Pokaż podkolekcję w %{name}
         remote_label:
       delete_button:
-        label:
+        label: Usuń kolekcję %{name}
       edit_button:
         label: Edytuj kolekcję %{name}
       models_button:
         label: Pokaż modele w %{name}
-        remote_label:
+        remote_label: Pokaż lokalne modele w %{name}
       no_preview: Podgląd jest niedostępny
     create:
       success: Szczegóły nowej kolekcji zostały zapisane.
     destroy:
-      confirm:
+      confirm: Czy na pewno chcesz usunąć ten element? Nie będzie to miało wpływu na żadne pliki.
       success: Kolekcja usunięta!
     form:
       notes:
