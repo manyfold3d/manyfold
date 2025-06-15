@@ -310,6 +310,8 @@ fr:
       skip_tags: Sauter la liste des balises
     title: Manyfold
   components:
+    altcha_widget:
+      help:
     copy_button:
       copy:
     download_button:
@@ -548,13 +550,25 @@ fr:
       zero:
     menu: Menu
     new: Nouveau
+    public:
     report: Rapporter %{type}
     save: Sauvegarder
     view: Afficher
+    visibility:
   home:
     activity:
       created:
       updated:
+    browsing:
+      content:
+      manual_link:
+      more_access:
+      title:
+    federation:
+      content_html:
+      following:
+      handle_html:
+      title:
     index:
       no_activities: Il n'y a pas d'activités à afficher pour l'instant.
       open_search_help:
@@ -562,6 +576,28 @@ fr:
       search:
         placeholder: Que recherchez-vous ?
         submit: Recherche
+    publishing:
+      content:
+      new_creator:
+        button:
+        content:
+      title:
+    support:
+      content:
+      manyfold_html:
+      support_link:
+      title:
+    uploading:
+      how_to_upload:
+      permissions:
+        edit:
+        member:
+        private:
+      title:
+      upload: Télécharger
+    welcome:
+      lead:
+      title:
   jobs:
     activity:
       collection_published:
@@ -683,6 +719,10 @@ fr:
     test_email:
       subject: Email de test
       test_email_message: Email de test
+  users:
+    registrations:
+      create:
+        altcha_failed:
   views:
     pagination:
       first: "« Premier"

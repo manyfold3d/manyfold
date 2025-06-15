@@ -310,6 +310,8 @@ cs:
       skip_tags: Přeskočit seznam štítků
     title: Manyfold
   components:
+    altcha_widget:
+      help:
     copy_button:
       copy:
     download_button:
@@ -545,13 +547,25 @@ cs:
       zero: "%{count} sledující"
     menu: Menu
     new: Nový
+    public:
     report: Nahlásit %{type}
     save: Uložit
     view: Zobrazení
+    visibility:
   home:
     activity:
       created: 'přidáno před %{time} '
       updated: aktualizováno před %{time}
+    browsing:
+      content:
+      manual_link:
+      more_access:
+      title:
+    federation:
+      content_html:
+      following:
+      handle_html:
+      title:
     index:
       no_activities: Prozatím nejsou k dispozici žádné aktivity, ke zobrazení.
       open_search_help:
@@ -559,6 +573,28 @@ cs:
       search:
         placeholder: Co hledáte?
         submit: Vyhledávání
+    publishing:
+      content:
+      new_creator:
+        button:
+        content:
+      title:
+    support:
+      content:
+      manyfold_html:
+      support_link: Podporovat tuto instanci
+      title:
+    uploading:
+      how_to_upload:
+      permissions:
+        edit:
+        member:
+        private:
+      title:
+      upload: Nahrát
+    welcome:
+      lead:
+      title:
   jobs:
     activity:
       collection_published:
@@ -680,6 +716,10 @@ cs:
     test_email:
       subject: Testovací e-mail
       test_email_message: Testovací e-mail
+  users:
+    registrations:
+      create:
+        altcha_failed:
   views:
     pagination:
       first: "« První"

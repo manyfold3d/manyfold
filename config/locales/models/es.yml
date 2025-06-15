@@ -84,7 +84,7 @@ es:
           summary_html: La carpeta y los archivos que componen este modelo se moverán de:<br> <code>%{from}</code><br> a<br> <code>%{to}</code>
           'yes': Sí, mueve los archivos
       path: Ruta
-      preview:
+      preview: Esta es solo una vista previa del modelo completo, que contiene %{count} archivos más. Contacte con el propietario del modelo para obtener acceso completo.
       rescan: Re-escanear archivos
       search: Busca en Internet modelos con este nombre
       submit: Cargar archivos

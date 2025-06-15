@@ -108,10 +108,19 @@ cs:
           show: Zobrazit normálně
       new:
         approval_help: Po vytvoření účtu jej ručně zkontrolují naši moderátoři. Po dokončení schvalování Vám dáme vědět a budete se moci přihlásit.
+        creators:
+          name:
+            help:
+            label:
+          slug:
+            help:
+            help_fedi:
         details: Vaše údaje
         rules: Pravidla serveru
         rules_agree: Registrací účtu souhlasíte s dodržováním výše uvedených pravidel.
         sign_up: Zaregistrovat se
+        username:
+          help:
       pagination_settings:
         collections:
           label: Stránkovat kolekce

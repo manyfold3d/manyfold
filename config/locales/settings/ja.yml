@@ -85,6 +85,15 @@ ja:
       approve_signups:
         help: すべての新規アカウントは、サインインする前にモデレーターの承認が必要です。
         label: アカウント承認
+      autocreate_creator:
+        help:
+        label:
+      default_signup_role:
+        help:
+        label:
+        options:
+          contributor:
+          member:
       default_viewer_role:
         help: デフォルトでは、誰が新しいモデル/クリエイター/コレクションを見ることができますか？
         label: デフォルトの可視性

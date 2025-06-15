@@ -4,19 +4,19 @@ de:
     collection:
       collections_button:
         label: Untersammlungen in %{name} anzeigen
-        remote_label:
+        remote_label: Lokale Untersammlungen in %{name} anzeigen
       delete_button:
-        label:
+        label: Sammlung löschen %{name}
       edit_button:
         label: Sammlung bearbeiten %{name}
       models_button:
         label: Modelle in %{name} anzeigen
-        remote_label:
+        remote_label: Lokale Modelle in %{name} anzeigen
       no_preview: keine Vorschau verfügbar
     create:
       success: Neue Kollektionsdetails gespeichert.
     destroy:
-      confirm:
+      confirm: Bist du sicher, dass du dieses Element entfernen möchtest? Es werden keine Dateien betroffen sein.
       success: Kollektion gelöscht!
     form:
       notes:

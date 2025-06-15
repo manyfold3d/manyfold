@@ -85,6 +85,15 @@ fr:
       approve_signups:
         help: Tous les nouveaux comptes doivent être approuvés par un modérateur avant de pouvoir se connecter.
         label: Approuver les comptes
+      autocreate_creator:
+        help:
+        label:
+      default_signup_role:
+        help:
+        label:
+        options:
+          contributor:
+          member:
       default_viewer_role:
         help: Qui peut voir les nouveaux modèles / créateurs / collections par défaut ?
         label: Visibilité par défaut

@@ -108,10 +108,19 @@ de:
           show: Ganz normal anzeigen
       new:
         approval_help: Nachdem du dein Konto erstellt hast, wird es manuell von unseren Moderatoren überprüft. Wir werden dich benachrichtigen, wenn die Prüfung abgeschlossen ist und dich anmelden kannst.
+        creators:
+          name:
+            help:
+            label:
+          slug:
+            help:
+            help_fedi:
         details: Deine Details
         rules: Server-Regeln
         rules_agree: Indem du dich für ein Konto anmelden, erklärst du die oben genannten Regeln einzuhalten.
         sign_up: Account erstellen
+        username:
+          help:
       pagination_settings:
         collections:
           label: Kollektionen auf Seiten verteilen

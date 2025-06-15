@@ -84,7 +84,7 @@ de:
           summary_html: Der Ordner und die Dateien, aus denen dieses Modell besteht, werden verschoben von:<br> <code>%{from}</code><br> nach<br> <code>%{to}</code>
           'yes': Ja, verschiebe die Dateien
       path: Pfad
-      preview:
+      preview: Dies ist nur eine Vorschau des vollständigen Modells, das %{count} weitere Dateien enthält. Wende dich an den Eigentümer des Modells, um vollen Zugriff zu erhalten.
       rescan: Dateien neu scannen
       search: Suche im Internet nach Modellen mit diesem Namen
       submit: Dateien hochladen

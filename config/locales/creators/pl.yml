@@ -15,7 +15,7 @@ pl:
         label: Pokaż modele według %{name}
         remote_label: Pokaż lokalne modele według %{name}
     destroy:
-      confirm:
+      confirm: Czy na pewno chcesz usunąć ten element? Nie będzie to miało wpływu na żadne pliki.
       success: Twórca usunięty!
     form:
       notes:

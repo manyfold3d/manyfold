@@ -108,10 +108,19 @@ es:
           show: Mostrar como normal
       new:
         approval_help: Después de crear tu cuenta, será revisada manualmente por nuestros moderadores. Te avisaremos cuando se haya aprobado y puedas iniciar sesión.
+        creators:
+          name:
+            help:
+            label:
+          slug:
+            help:
+            help_fedi:
         details: Sus datos
         rules: Normas del servidor
         rules_agree: Al crear una cuenta, acepta cumplir las normas anteriores.
         sign_up: Registrarse
+        username:
+          help:
       pagination_settings:
         collections:
           label: Paginar colecciones

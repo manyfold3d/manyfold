@@ -22,7 +22,7 @@ de:
       title: Filter
     index:
       bulk_confirm: Bist du sicher, dass du alle ausgewählten Probleme automatisch beheben möchtest? Dadurch könnten Dateien und Daten gelöscht werden.
-      bulk_ignore:
+      bulk_ignore: Ausgewählte ausblenden
       bulk_resolve: Ausgewählte lösen
       description: Beschreibung
       ignore: Ausblenden

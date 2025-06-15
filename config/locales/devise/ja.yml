@@ -108,10 +108,19 @@ ja:
           show: 通常通り表示
       new:
         approval_help: アカウント作成後、モデレーターによる手動審査が行われます。承認が完了し、サインインできるようになったらお知らせします。
+        creators:
+          name:
+            help:
+            label:
+          slug:
+            help:
+            help_fedi:
         details: あなたの詳細
         rules: サーバールール
         rules_agree: アカウントにサインアップすると、上記のルールに従うことに同意します。
         sign_up: アカウント登録
+        username:
+          help:
       pagination_settings:
         collections:
           label: コレクションをページ分割
