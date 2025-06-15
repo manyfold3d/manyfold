@@ -1,5 +1,37 @@
 ---
 ja:
   collections:
+    collection:
+      collections_button:
+        label: "%{name}]のサブコレクションを表示する"
+        remote_label:
+      delete_button:
+        label:
+      edit_button:
+        label: コレクション%{name}を編集する
+      models_button:
+        label: "%{name}]のモデルを表示"
+        remote_label:
+      no_preview: プレビュー不可
+    create:
+      success: 新しいコレクションの詳細が保存された。
     destroy:
       confirm:
+      success: コレクションは削除された！
+    form:
+      notes:
+        help_html: <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdownが</a>使える。
+    general:
+      edit: コレクションを編集する
+      new: 新作コレクション
+    get_collection:
+      unknown: 不明
+    index:
+      skip_collections: コレクションのリストをスキップ
+    show:
+      edit: コレクションを編集する
+    unassigned:
+      caption: コレクションにないすべてのモデル
+      name: 未指定
+    update:
+      success: コレクションの詳細を保存された
