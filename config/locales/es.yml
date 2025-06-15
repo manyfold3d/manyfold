@@ -239,7 +239,7 @@ es:
       permissions:
         edit: Puede editar
         own: Propietario (puede ver, editar, eliminar y compartir)
-        preview:
+        preview: 'Vista previa: sólo archivos específicos previsualizables'
         view: Ver sólo
       subject:
         placeholder: Dirección de correo electrónico, nombre de usuario o rol
@@ -300,7 +300,7 @@ es:
       sort:
         name: Ordenar por nombre
         time: Ordenar por tiempo
-    search_error:
+    search_error: Error en la sintaxis de búsqueda. Por favor, compruébelo e inténtelo de nuevo
     tag_list:
       unrelated_tag_count:
         one: "%{count} etiqueta no relacionada oculta"
@@ -310,8 +310,10 @@ es:
       skip_tags: Saltar lista de etiquetas
     title: Manyfold
   components:
+    altcha_widget:
+      help:
     copy_button:
-      copy:
+      copy: Copiar al portapapeles
     download_button:
       download:
         missing: Solicitar descarga
@@ -341,7 +343,7 @@ es:
         text: Abrir
     search_help:
       boolean: Utilice "or" para buscar modelos que coincidan con cualquiera de los términos.
-      federation:
+      federation: Busca cualquier nombre de usuario de Fediverse para seguirlo.
       filename: También puede buscar nombres de archivo específicos.
       intro: 'Encuentre lo que necesita con nuestra potente sintaxis de búsqueda:'
       more_details_html: Para más información, lea la documentación completa <a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">del lenguaje de consulta de scoped_search</a>.
@@ -596,13 +598,13 @@ es:
   jobs:
     activity:
       collection_published:
-        comment:
+        comment: Una nueva colección de modelos 3D, ["%{name}"](%{url}) ha sido publicada
       model_collected:
-        comment:
+        comment: '["%{model_name}"](%{model_url}) ha sido agregado a  la colección ["%{collection_name}"](%{collection_url}).'
       model_published:
-        comment:
+        comment: 'Un nuevo modelo 3D, ["%{name}"](%{url}), ha sido publicado '
       updated_model:
-        comment:
+        comment: El modelo 3D ["%{name}"](%{url}), ha sido actualizado.
     analysis:
       analyse_model_file:
         detect_duplicates: Buscando ficheros duplicados
@@ -714,6 +716,10 @@ es:
     test_email:
       subject: Probar email
       test_email_message: Probar email
+  users:
+    registrations:
+      create:
+        altcha_failed:
   views:
     pagination:
       first: "« Primera"
