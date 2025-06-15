@@ -85,6 +85,15 @@ es:
       approve_signups:
         help: Todas las cuentas nuevas deben ser aprobadas por un moderador antes de poder iniciar sesión.
         label: Aprobar cuentas
+      autocreate_creator:
+        help:
+        label:
+      default_signup_role:
+        help:
+        label:
+        options:
+          contributor:
+          member:
       default_viewer_role:
         help: "¿Quién puede ver por defecto los nuevos modelos / creadores / colecciones?"
         label: Visibilidad por defecto

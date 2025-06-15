@@ -85,6 +85,15 @@ cs:
       approve_signups:
         help: Všechny nové účty musí před přihlášením schválit moderátor.
         label: Schválit účty
+      autocreate_creator:
+        help:
+        label:
+      default_signup_role:
+        help:
+        label:
+        options:
+          contributor:
+          member:
       default_viewer_role:
         help: Kdo může ve výchozím nastavení zobrazovat nové modely / autory / kolekce?
         label: Výchozí viditelnost

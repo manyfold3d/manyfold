@@ -545,13 +545,25 @@ pl:
       zero:
     menu: Menu
     new: Nowy
+    public:
     report: Zgłoś %{type}
     save: Zapisz
     view: Widok
+    visibility:
   home:
     activity:
       created: dodane %{time} temu
       updated: zaktualizowane %{time} temu
+    browsing:
+      content:
+      manual_link:
+      more_access:
+      title:
+    federation:
+      content_html:
+      following:
+      handle_html:
+      title:
     index:
       no_activities: Na razie nie ma żadnych aktywności do wyświetlenia.
       open_search_help:
@@ -559,6 +571,28 @@ pl:
       search:
         placeholder: Czego szukasz?
         submit: Wyszukaj
+    publishing:
+      content:
+      new_creator:
+        button:
+        content:
+      title:
+    support:
+      content:
+      manyfold_html:
+      support_link: Wesprzyj tą instancje
+      title:
+    uploading:
+      how_to_upload:
+      permissions:
+        edit:
+        member:
+        private:
+      title:
+      upload: Prześlij
+    welcome:
+      lead:
+      title:
   jobs:
     activity:
       collection_published:
@@ -680,6 +714,10 @@ pl:
     test_email:
       subject: Testowy email
       test_email_message: Testowy email
+  users:
+    registrations:
+      create:
+        altcha_failed:
   views:
     pagination:
       first: "« Pierwsza"

@@ -108,10 +108,19 @@ nl:
           show: Normaal weergeven
       new:
         approval_help: Na het aanmaken van je account wordt het handmatig beoordeeld door onze moderators. We laten je weten wanneer de goedkeuring voltooid is en je kunt inloggen.
+        creators:
+          name:
+            help:
+            label:
+          slug:
+            help:
+            help_fedi:
         details:
         rules:
         rules_agree:
         sign_up: Registreren
+        username:
+          help:
       pagination_settings:
         collections:
           label: Pagineer collecties

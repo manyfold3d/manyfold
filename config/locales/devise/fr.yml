@@ -108,10 +108,19 @@ fr:
           show: Afficher comme les autres
       new:
         approval_help: Après la création de votre compte, celui-ci sera examiné manuellement par nos modérateurs. Nous vous informerons lorsque le processus d'approbation sera terminé et que vous pourrez vous connecter.
+        creators:
+          name:
+            help:
+            label:
+          slug:
+            help:
+            help_fedi:
         details:
         rules:
         rules_agree:
         sign_up: Inscription
+        username:
+          help:
       pagination_settings:
         collections:
           label: Paginer les collections

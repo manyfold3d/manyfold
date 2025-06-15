@@ -310,6 +310,8 @@ ja:
       skip_tags: タグリストをスキップする
     title: Manyfold
   components:
+    altcha_widget:
+      help:
     copy_button:
       copy:
     download_button:
@@ -545,13 +547,25 @@ ja:
       zero:
     menu:
     new:
+    public:
     report:
     save:
     view:
+    visibility:
   home:
     activity:
       created:
       updated:
+    browsing:
+      content:
+      manual_link:
+      more_access:
+      title:
+    federation:
+      content_html:
+      following:
+      handle_html:
+      title:
     index:
       no_activities:
       open_search_help:
@@ -559,6 +573,28 @@ ja:
       search:
         placeholder:
         submit:
+    publishing:
+      content:
+      new_creator:
+        button:
+        content:
+      title:
+    support:
+      content:
+      manyfold_html:
+      support_link: インスタンスをスポンサー
+      title:
+    uploading:
+      how_to_upload:
+      permissions:
+        edit:
+        member:
+        private:
+      title:
+      upload: アップロード
+    welcome:
+      lead:
+      title:
   jobs:
     activity:
       collection_published:
@@ -680,6 +716,10 @@ ja:
     test_email:
       subject: テストメール
       test_email_message: テストメール
+  users:
+    registrations:
+      create:
+        altcha_failed:
   views:
     pagination:
       first: "&laquo; 最初"

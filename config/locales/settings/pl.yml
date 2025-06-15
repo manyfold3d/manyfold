@@ -85,6 +85,15 @@ pl:
       approve_signups:
         help: Wszystkie nowe konta muszą zostać zatwierdzone przez moderatora, zanim będą oni mogli się zalogować.
         label: Zatwierdź konta
+      autocreate_creator:
+        help:
+        label:
+      default_signup_role:
+        help:
+        label:
+        options:
+          contributor:
+          member:
       default_viewer_role:
         help: Kto może domyślnie wyświetlać nowe modele / twórców / kolekcje?
         label: Domyślna widoczność

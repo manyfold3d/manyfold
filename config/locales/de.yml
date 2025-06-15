@@ -545,13 +545,25 @@ de:
       zero: "%{count} Follower"
     menu: Menü
     new: Neue
+    public:
     report: Melde %{type}
     save: Speichern
     view: Siehe
+    visibility:
   home:
     activity:
       created: hinzugefügt vor %{time}
       updated: hinzugefügt vor %{time}
+    browsing:
+      content:
+      manual_link:
+      more_access:
+      title:
+    federation:
+      content_html:
+      following:
+      handle_html:
+      title:
     index:
       no_activities: Im Moment gibt es keine Aktivitäten zu sehen.
       open_search_help: Such-Syntax
@@ -559,6 +571,28 @@ de:
       search:
         placeholder: Wonach suchen Sie?
         submit: Suche
+    publishing:
+      content:
+      new_creator:
+        button:
+        content:
+      title:
+    support:
+      content:
+      manyfold_html:
+      support_link: Diese Instanz unterstützen
+      title:
+    uploading:
+      how_to_upload:
+      permissions:
+        edit:
+        member:
+        private:
+      title:
+      upload: Hochladen
+    welcome:
+      lead:
+      title:
   jobs:
     activity:
       collection_published:
@@ -680,6 +714,10 @@ de:
     test_email:
       subject: Test-E-Mail
       test_email_message: Test-E-Mail
+  users:
+    registrations:
+      create:
+        altcha_failed:
   views:
     pagination:
       first: "« Anfang"

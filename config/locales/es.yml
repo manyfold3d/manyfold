@@ -545,13 +545,25 @@ es:
       zero: "%{count} Seguidores"
     menu: Menú
     new: Nuevo
+    public:
     report: Informe %{type}
     save: Guardar
     view: Ver
+    visibility:
   home:
     activity:
       created: añadido hace %{time}
       updated: actualizado hace %{time}
+    browsing:
+      content:
+      manual_link:
+      more_access:
+      title:
+    federation:
+      content_html:
+      following:
+      handle_html:
+      title:
     index:
       no_activities: Por ahora no hay actividades que mostrar.
       open_search_help: Sintaxis de búsqueda
@@ -559,6 +571,28 @@ es:
       search:
         placeholder: "¿Qué busca?"
         submit: Buscar
+    publishing:
+      content:
+      new_creator:
+        button:
+        content:
+      title:
+    support:
+      content:
+      manyfold_html:
+      support_link: Apoyar esta instancia
+      title:
+    uploading:
+      how_to_upload:
+      permissions:
+        edit:
+        member:
+        private:
+      title:
+      upload: Cargar
+    welcome:
+      lead:
+      title:
   jobs:
     activity:
       collection_published:

@@ -310,6 +310,8 @@ nl:
       skip_tags: Taglijst overslaan
     title: Manyfold
   components:
+    altcha_widget:
+      help:
     copy_button:
       copy:
     download_button:
@@ -556,13 +558,25 @@ nl:
       zero:
     menu: Menu
     new: Nieuw
+    public:
     report: Rapporteer %{type}
     save: Opslaan
     view: Bekijken
+    visibility:
   home:
     activity:
       created:
       updated:
+    browsing:
+      content:
+      manual_link:
+      more_access:
+      title:
+    federation:
+      content_html:
+      following:
+      handle_html:
+      title:
     index:
       no_activities: Er zijn momenteel geen activiteiten om weer te geven.
       open_search_help:
@@ -570,6 +584,28 @@ nl:
       search:
         placeholder: Waar zoek je naar?
         submit: Zoeken
+    publishing:
+      content:
+      new_creator:
+        button:
+        content:
+      title:
+    support:
+      content:
+      manyfold_html:
+      support_link:
+      title:
+    uploading:
+      how_to_upload:
+      permissions:
+        edit:
+        member:
+        private:
+      title:
+      upload: Uploaden
+    welcome:
+      lead:
+      title:
   jobs:
     activity:
       collection_published:
@@ -691,6 +727,10 @@ nl:
     test_email:
       subject: Testmail
       test_email_message: Testmail
+  users:
+    registrations:
+      create:
+        altcha_failed:
   views:
     pagination:
       first: "« Eerste"

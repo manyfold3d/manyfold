@@ -108,10 +108,18 @@ pl:
           show: Pokaż jak zwykle
       new:
         approval_help: Po utworzeniu konta zostanie ono ręcznie sprawdzone przez naszych moderatorów. Powiadomimy Cię, gdy zostanie ono zatwierdzenie i będziesz mógł się zalogować.
+        creators:
+          name:
+            help:
+            label:
+          slug:
+            help:
+            help_fedi:
         details: Twoje Dane
         rules: Zasady Serwera
         rules_agree: Zakładając konto, użytkownik zgadza się przestrzegać powyższych zasad.
-        sign_up: Zarejestruj się
+        username:
+          help:
       pagination_settings:
         collections:
           label: Paginuj kolekcję

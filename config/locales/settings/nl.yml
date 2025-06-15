@@ -85,6 +85,15 @@ nl:
       approve_signups:
         help: Alle nieuwe accounts moeten worden goedgekeurd door een moderator voordat ze kunnen inloggen.
         label: Accounts goedkeuren
+      autocreate_creator:
+        help:
+        label:
+      default_signup_role:
+        help:
+        label:
+        options:
+          contributor:
+          member:
       default_viewer_role:
         help: Wie kan standaard nieuwe modellen / makers / collecties bekijken?
         label: Standaard zichtbaarheid
