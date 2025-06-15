@@ -11,7 +11,7 @@ de:
         caption: Beschreibung
         name: Name
         notes: Beschreibung
-        slug: Handgriff
+        slug: Benutzername
       doorkeeper/application:
         access_token: Zugangs-Token
         confidential: Vertraulich
@@ -239,7 +239,7 @@ de:
       permissions:
         edit: kann Bearbeiten
         own: Eigentümer (kann anzeigen, bearbeiten, löschen und freigeben)
-        preview:
+        preview: 'Vorschau: nur bestimmte vorschaubare Dateien'
         view: Nur Anzeigbar
       subject:
         placeholder: E-Mail-Adresse, Kontoname oder Rolle
@@ -300,7 +300,7 @@ de:
       sort:
         name: Nach Namen sortieren
         time: Sortieren nach Zeit
-    search_error:
+    search_error: Fehler in der Such-Syntax. Bitte prüfen und erneut versuchen!
     tag_list:
       unrelated_tag_count:
         one: "%{count} unabhängige Tags versteckt"
@@ -310,8 +310,10 @@ de:
       skip_tags: Tag-Liste überspringen
     title: Manyfold
   components:
+    altcha_widget:
+      help:
     copy_button:
-      copy:
+      copy: In die Zwischenablage kopieren
     download_button:
       download:
         missing: Download anfordern
@@ -341,15 +343,15 @@ de:
         text: Öffnen
     search_help:
       boolean: Verwende "oder", um Modelle zu finden, die einem der Begriffe entsprechen.
-      federation:
-      filename: DU kannst auch nach bestimmten Dateinamen suchen.
+      federation: Suche nach einem beliebigen Fediverse-Benutzernamen, um ihm zu folgen.
+      filename: Du kannst innerhalb von Dateinamen suchen, indem du das Feld explizit angibst.
       intro: 'Finden, was Du brauchst, mit unserer leistungsstarken Such-Syntax:'
       more_details_html: Weitere Informationen findest du in der vollständigen Dokumentation für <a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">die Abfragesprache von scoped_search</a>.
       negation: Um Begriffe auszuschließen, verwende  "not", "!" oder "-".
       parentheses: Gruppiere Begriffe mit Klammern für komplexere logische Kombinationen.
       quotes: Um nach mehreren Wörtern in einem einzigen Begriff zu suchen, verwende Anführungszeichen; es werden dann nur Modelle mit dem exakten Text angezeigt.
       simple: In der Standardeinstellung findet die Suche Modelle, die allen Begriffen entsprechen.
-      specific_fields: Du kannst nach Begriffen in einigen bestimmten Feldern suchen. Verwende "~", um einen Teil des Feldes zu finden; verwende "=" um das ganze Feld zu finden.
+      specific_fields: Du kannst nach Begriffen in einigen bestimmten Feldern suchen. Verwende "~", um einen Teil des Feldes zu finden; verwende "=" um das ganze Feld zu finden. Modell beschreibungen und Bibliotheks namen werden nur durchsucht, wenn du es explizit angibst
       tag: Findet Modelle mit einem bestimmten Tag
       title: Such Syntax
       unset: Verwende "set?", um abzufragen, ob ein bestimmtes Feld gesetzt ist, und füge "not" hinzu, um das Gegenteil festzustellen.
@@ -596,13 +598,13 @@ de:
   jobs:
     activity:
       collection_published:
-        comment:
+        comment: Eine neue Sammlung von 3D-Modellen, ["%{name}"](%{url}), wurde gerade veröffentlicht!
       model_collected:
-        comment:
+        comment: '["%{model_name}"](%{model_url}) wurde gerade der Sammlung ["%{collection_name}"](%{collection_url}) hinzugefügt.'
       model_published:
-        comment:
+        comment: Ein neues 3D-Modell, ["%{name}"](%{url}), wurde gerade veröffentlicht!
       updated_model:
-        comment:
+        comment: Das 3D-Modell ["%{name}"](%{url}), wurde gerade aktualisiert!
     analysis:
       analyse_model_file:
         detect_duplicates: Doppelte Datei erkannt
