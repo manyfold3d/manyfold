@@ -29,6 +29,9 @@ class PrepareDownloadJob < ApplicationJob
   def write_archive(filename, files)
     Archive.write_open_filename(filename, Archive::COMPRESSION_NONE, Archive::FORMAT_ZIP) do |archive|
       files.each do |file|
+        # Make sure we have a file size before proceeding
+        file.attachment_attacher&.refresh_metadata! if file.size.nil?
+        # Build archive
         archive.new_entry do |entry|
           entry.pathname = file.filename
           entry.size = file.size
