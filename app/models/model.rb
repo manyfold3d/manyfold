@@ -345,6 +345,7 @@ class Model < ApplicationRecord
       # Check required fields
       errors.add :license, :blank if license.nil?
       errors.add :creator, :blank if creator.nil?
+      errors.add :creator, :private if creator && !creator.public?
     end
   end
 end
