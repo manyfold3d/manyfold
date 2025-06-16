@@ -45,6 +45,7 @@ FactoryBot.define do
 
     trait :public do
       caber_relations_attributes { [{subject: nil, permission: "view"}] }
+      creator
     end
   end
 end
