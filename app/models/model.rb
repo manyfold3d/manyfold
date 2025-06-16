@@ -166,25 +166,20 @@ class Model < ApplicationRecord
 
   def split!(files: [])
     new_model = dup
-    new_model.name = "Copy of #{name}"
-    new_model.public_id = nil
-    new_model.tags = tags
+    new_model.update(
+      name: "Copy of #{name}",
+      public_id: nil,
+      tags: tags,
+      preview_file: files.include?(preview_file) ? preview_file : nil,
+      caber_relations_attributes: caber_relations.all.map { |it| {permission: it.permission, subject: it.subject} }
+    )
     new_model.organize!
+    # Clear preview file if it was moved
+    update!(preview_file: nil) if files.include?(preview_file)
     # Move files
     files.each do |file|
       file.update!(model: new_model)
       file.reattach!
-    end
-    # Clear preview file appropriately
-    if files.include?(preview_file)
-      update!(preview_file: nil)
-    else
-      new_model.update!(preview_file: nil)
-    end
-    # Copy permissions
-    new_model.caber_relations.destroy_all
-    caber_relations.each do |relation|
-      new_model.grant_permission_to(relation.permission, relation.subject)
     end
     # Done!
     new_model
