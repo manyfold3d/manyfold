@@ -53,6 +53,8 @@ class Model < ApplicationRecord
   validates :license, spdx: true, allow_nil: true
   validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
 
+  validate :validate_publishable
+
   scoped_search on: [:name, :caption]
   scoped_search on: :notes, aliases: [:description], only_explicit: true
   scoped_search relation: :library, on: :name, rename: :library, only_explicit: true, default_operator: :eq
@@ -335,5 +337,14 @@ class Model < ApplicationRecord
       "public_id",
       "name_lower"
     ]).empty?
+  end
+
+  def validate_publishable
+    # If the model will be public
+    if caber_relations.find { |it| it.subject.nil? }
+      # Check required fields
+      errors.add :license, :blank if license.nil?
+      errors.add :creator, :blank if creator.nil?
+    end
   end
 end

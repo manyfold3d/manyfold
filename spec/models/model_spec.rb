@@ -503,8 +503,30 @@ RSpec.describe Model do
     end
   end
 
+  context "when making a model public" do
+    let!(:model) { create(:model, license: nil) }
+
+    before do
+      model.clear_changes_information
+      model.update(caber_relations_attributes: [{subject: nil, permission: "view"}])
+      model.validate
+    end
+
+    it "requires a creator" do
+      expect(model.errors[:creator]).to include "can't be blank"
+    end
+
+    it "requires a license" do
+      expect(model.errors[:license]).to include "can't be blank"
+    end
+
+    it "doesn't make model public if validation failed" do
+      expect(model.reload.public?).to be false
+    end
+  end
+
   context "when updating a private model" do
-    let!(:model) { create(:model) }
+    let!(:model) { create(:model, creator: create(:creator)) }
 
     before do
       model.clear_changes_information
