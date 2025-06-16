@@ -26,4 +26,29 @@ RSpec.describe Collection do
       }.to have_enqueued_job(Activity::CollectionPublishedJob).once
     end
   end
+
+  context "when making a collection public" do
+    let!(:collection) { create(:collection) }
+
+    before do
+      collection.update(
+        caber_relations_attributes: [{subject: nil, permission: "view"}],
+        creator: create(:creator),
+        collection: create(:collection)
+      )
+      collection.validate
+    end
+
+    it "requires creator to be public if set" do
+      expect(collection.errors[:creator]).to include "must be public"
+    end
+
+    it "requires collection to be public if set" do
+      expect(collection.errors[:collection]).to include "must be public"
+    end
+
+    it "doesn't make collection public if validation failed" do
+      expect(collection.reload.public?).to be false
+    end
+  end
 end

@@ -79,7 +79,7 @@ RSpec.describe Comment do
 
   context "with non-public commenter" do
     let(:commenter) { create(:creator) }
-    let(:commentable) { create(:model, :public, creator: commenter) }
+    let(:commentable) { create(:model, :public) }
 
     it "Does not post a Federails Activity on creation" do
       expect { create(:comment, commenter: commenter, commentable: commentable) }.not_to change(Federails::Activity, :count)

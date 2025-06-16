@@ -106,6 +106,12 @@ en:
         username: Account name
     errors:
       models:
+        collection:
+          attributes:
+            collection:
+              private: must be public
+            creator:
+              private: must be public
         doorkeeper/application:
           attributes:
             redirect_uri:

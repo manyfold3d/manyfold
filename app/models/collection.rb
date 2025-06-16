@@ -27,6 +27,8 @@ class Collection < ApplicationRecord
   validates :name, uniqueness: {case_sensitive: false}
   validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
 
+  validate :validate_publishable
+
   after_create_commit :after_create
   after_update_commit :after_update
 
@@ -109,5 +111,14 @@ class Collection < ApplicationRecord
 
   def after_update
     Activity::CollectionPublishedJob.set(wait: 5.seconds).perform_later(id) if just_became_public?
+  end
+
+  def validate_publishable
+    # If the model will be public
+    if caber_relations.find { |it| it.subject.nil? }
+      # Check required fields
+      errors.add :creator, :private if creator && !creator.public?
+      errors.add :collection, :private if collection && !collection.public?
+    end
   end
 end
