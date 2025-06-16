@@ -24,7 +24,7 @@ shared_examples "Caber::Object" do
       allow(SiteSettings).to receive(:default_viewer_role).and_return(:member)
     end
 
-    let(:object) { create(described_class.to_s.underscore.to_sym, described_class.caber_owner(contributor)) }
+    let(:object) { create(described_class.to_s.underscore.to_sym) }
 
     it "grants view permission to member role" do
       expect(object.grants_permission_to?("view", Role.find_by!(name: "member"))).to be true
