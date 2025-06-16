@@ -56,7 +56,7 @@ class Components::ResolveButton < Components::Base
       end
     else
       link_to(
-        resolve_problem_path(@problem),
+        resolve_problem_path(@problem, resolve: true),
         class: "btn btn-#{@options[:button_type]}",
         data: {
           confirm: @options[:confirm] ?
