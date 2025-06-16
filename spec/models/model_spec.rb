@@ -503,8 +503,35 @@ RSpec.describe Model do
     end
   end
 
+  context "when making a model public" do
+    let!(:model) { create(:model, license: nil) }
+
+    before do
+      model.clear_changes_information
+      model.update(caber_relations_attributes: [{subject: nil, permission: "view"}])
+      model.validate
+    end
+
+    it "requires a creator" do
+      expect(model.errors[:creator]).to include "can't be blank"
+    end
+
+    it "requires a public creator" do
+      model.update(creator: create(:creator))
+      expect(model.errors[:creator]).to include "must be public"
+    end
+
+    it "requires a license" do
+      expect(model.errors[:license]).to include "can't be blank"
+    end
+
+    it "doesn't make model public if validation failed" do
+      expect(model.reload.public?).to be false
+    end
+  end
+
   context "when updating a private model" do
-    let!(:model) { create(:model) }
+    let!(:model) { create(:model, creator: create(:creator, :public)) }
 
     before do
       model.clear_changes_information
@@ -546,12 +573,6 @@ RSpec.describe Model do
       expect {
         model.update!(creator: create(:creator, :public))
       }.to have_enqueued_job(Activity::ModelPublishedJob).once
-    end
-
-    it "queues normal update activity job if the creator was changed to a private one" do
-      expect {
-        model.update!(creator: create(:creator))
-      }.to have_enqueued_job(Activity::ModelUpdatedJob).once
     end
 
     it "queues collected activity job if the collection was changed to a public one" do

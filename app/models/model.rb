@@ -53,6 +53,8 @@ class Model < ApplicationRecord
   validates :license, spdx: true, allow_nil: true
   validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
 
+  validate :validate_publishable
+
   scoped_search on: [:name, :caption]
   scoped_search on: :notes, aliases: [:description], only_explicit: true
   scoped_search relation: :library, on: :name, rename: :library, only_explicit: true, default_operator: :eq
@@ -164,25 +166,20 @@ class Model < ApplicationRecord
 
   def split!(files: [])
     new_model = dup
-    new_model.name = "Copy of #{name}"
-    new_model.public_id = nil
-    new_model.tags = tags
+    new_model.update(
+      name: "Copy of #{name}",
+      public_id: nil,
+      tags: tags,
+      preview_file: files.include?(preview_file) ? preview_file : nil,
+      caber_relations_attributes: caber_relations.all.map { |it| {permission: it.permission, subject: it.subject} }
+    )
     new_model.organize!
+    # Clear preview file if it was moved
+    update!(preview_file: nil) if files.include?(preview_file)
     # Move files
     files.each do |file|
       file.update!(model: new_model)
       file.reattach!
-    end
-    # Clear preview file appropriately
-    if files.include?(preview_file)
-      update!(preview_file: nil)
-    else
-      new_model.update!(preview_file: nil)
-    end
-    # Copy permissions
-    new_model.caber_relations.destroy_all
-    caber_relations.each do |relation|
-      new_model.grant_permission_to(relation.permission, relation.subject)
     end
     # Done!
     new_model
@@ -335,5 +332,15 @@ class Model < ApplicationRecord
       "public_id",
       "name_lower"
     ]).empty?
+  end
+
+  def validate_publishable
+    # If the model will be public
+    if caber_relations.find { |it| it.subject.nil? }
+      # Check required fields
+      errors.add :license, :blank if license.nil?
+      errors.add :creator, :blank if creator.nil?
+      errors.add :creator, :private if creator && !creator.public?
+    end
   end
 end
