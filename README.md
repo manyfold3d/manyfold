@@ -51,6 +51,8 @@ To run the application once you've cloned this repo, you should be able to just 
 
 If you want to configure optional features, set the appropriate [environment variables](https://manyfold.app/sysadmin/configuration.html) in a file called `.env.development.local`. See `env.example` for a template file. Note that the required environment variables in the documentation are not needed in development mode, due to the use of SQLite instead of PostgreSQL.
 
+To work with ActivityPub federation in development, your dev instance needs a public URL and an HTTPS certificate. The easiest way to do that is to use [ngrok](https://ngrok.com) to set up a tunnel from a public URL to your local development instance.
+
 ### Using the Devcontainer
 
 To simplify the development environment setup, Manyfold includes a devcontainer configuration. This allows you to use Visual Studio Code's Remote - Containers extension to develop inside a container.
