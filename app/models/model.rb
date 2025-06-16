@@ -179,6 +179,11 @@ class Model < ApplicationRecord
     else
       new_model.update!(preview_file: nil)
     end
+    # Copy permissions
+    new_model.caber_relations.destroy_all
+    caber_relations.each do |relation|
+      new_model.grant_permission_to(relation.permission, relation.subject)
+    end
     # Done!
     new_model
   end
