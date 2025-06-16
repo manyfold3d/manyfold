@@ -281,6 +281,7 @@ RSpec.describe Model do
 
   context "when splitting" do
     subject!(:model) {
+      create(:admin) # We need a user for permission setting
       m = create(:model, creator: create(:creator), collection: create(:collection), license: "CC-BY-4.0", caption: "test", notes: "note")
       m.tag_list << "tag1"
       m.tag_list << "tag2"
@@ -333,6 +334,16 @@ RSpec.describe Model do
       new_model = model.split! files: [model.model_files.last]
       expect(new_model.reload.preview_file).to be_nil
       expect(model.preview_file).to eq preview_file
+    end
+
+    it "copies permissions" do # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
+      member_role = Role.find_by(name: :member)
+      model.revoke_permission("view", member_role)
+      new_model = model.split! files: [model.model_files.first]
+      expect(new_model.caber_relations.count).to eq model.caber_relations.count
+      model.caber_relations.each do |relation|
+        expect(new_model.grants_permission_to?(relation.permission, relation.subject)).to be true
+      end
     end
   end
 
