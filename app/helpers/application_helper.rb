@@ -164,6 +164,26 @@ module ApplicationHelper
     end
   end
 
+  def collection_select_input_row(form, name, collection, value_method, text_method, options = {})
+    content_tag :div, class: "row mb-3 input-group" do
+      safe_join [
+        form.label(name, options[:label], class: "col-auto col-form-label"),
+        content_tag(:div, class: "col p-0") do
+          safe_join [
+            content_tag(:div, class: "input-group") do
+              safe_join [
+                form.collection_select(:"#{name}_id", collection, value_method, text_method, options.compact, {class: "form-control col-auto form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
+                (link_to(options[:button][:label], options[:button][:path], class: "btn btn-outline-secondary col-auto") if options[:button])
+              ]
+            end,
+            errors_for(form.object, name),
+            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+          ].compact
+        end
+      ]
+    end
+  end
+
   def nav_link(ico, text, path, options = {})
     link_to(
       safe_join(
