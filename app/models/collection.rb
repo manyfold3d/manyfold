@@ -27,6 +27,8 @@ class Collection < ApplicationRecord
   validates :name, uniqueness: {case_sensitive: false}
   validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
 
+  before_validation :publish_creator, if: :will_be_public?
+
   validate :validate_publishable
 
   after_create_commit :after_create
@@ -120,5 +122,9 @@ class Collection < ApplicationRecord
       errors.add :creator, :private if creator && !creator.public?
       errors.add :collection, :private if collection && !collection.public?
     end
+  end
+
+  def publish_creator
+    creator&.update!(caber_relations_attributes: [{permission: "view", subject: nil}]) unless creator&.public?
   end
 end
