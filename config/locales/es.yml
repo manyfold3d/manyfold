@@ -106,6 +106,12 @@ es:
         username: Nombre de usuario
     errors:
       models:
+        collection:
+          attributes:
+            collection:
+              private:
+            creator:
+              private:
         doorkeeper/application:
           attributes:
             redirect_uri:
@@ -127,6 +133,8 @@ es:
               unsafe: no puede ser una ruta privilegiada del sistema
         model:
           attributes:
+            creator:
+              private:
             library:
               nested: no puede ser modificado, el modelo contiene otros modelos
             license:
@@ -311,7 +319,7 @@ es:
     title: Manyfold
   components:
     altcha_widget:
-      help:
+      help: protección antispam mediante ALTCHA
     copy_button:
       copy: Copiar al portapapeles
     download_button:
@@ -547,25 +555,25 @@ es:
       zero: "%{count} Seguidores"
     menu: Menú
     new: Nuevo
-    public:
+    public: Público
     report: Informe %{type}
     save: Guardar
     view: Ver
-    visibility:
+    visibility: Visibilidad
   home:
     activity:
       created: añadido hace %{time}
       updated: actualizado hace %{time}
     browsing:
-      content:
-      manual_link:
-      more_access:
-      title:
+      content: Puede explorar los modelos haciendo clic en los enlaces de la barra de menús; navegar por una lista completa y filtrar por etiqueta, o navegar por colección o creador. Si lo prefiere, escriba en el cuadro de búsqueda para encontrar lo que busca
+      manual_link: Guía de usuario
+      more_access: Actualmente sólo tiene acceso de lectura a esta instancia; para obtener más permisos, como subir archivos, póngase en contacto con el administrador.
+      title: Navegando por
     federation:
-      content_html:
-      following:
-      handle_html:
-      title:
+      content_html: Esta instancia de Manyfold forma parte de <a href="https://jointhefediverse.net">Fediverse</a>, una red de redes sociales que funcionan conjuntamente. Eso significa que si tienes una cuenta aquí, puedes seguir contenido en otras instancias de Manyfold, o la gente puede seguir tu contenido desde otras plataformas como Mastodon.
+      following: Si conoces el "handle" de alguien o algo que quieres seguir, sólo tienes que introducirlo en el cuadro de búsqueda; si no, introduce tu "handle" personal más arriba cuando sigas algo en otra instancia.
+      handle_html: 'Tu "handle" en fediverse es: <code>%{handle}</code>'
+      title: Federación
     index:
       no_activities: Por ahora no hay actividades que mostrar.
       open_search_help: Sintaxis de búsqueda
@@ -574,27 +582,27 @@ es:
         placeholder: "¿Qué busca?"
         submit: Buscar
     publishing:
-      content:
+      content: Puedes publicar contenido públicamente dando permiso de "vista" o "vista previa" al rol "público" en la página de edición del elemento. Ten en cuenta que los creadores, las colecciones y los modelos tienen sus propios permisos, por lo que tendrás que hacerlos públicos por separado si quieres que sean visibles.
       new_creator:
-        button:
-        content:
-      title:
+        button: Crear un nuevo perfil de creador
+        content: 'Si vas a publicar tu propio trabajo, probablemente querrás crear tu propio perfil de creador y hacerlo público:'
+      title: Publicando
     support:
-      content:
-      manyfold_html:
+      content: Las instancias de Manyfold están gestionadas por gente como tú. Si encuentra útil esta instancia, puede ayudar a mantenerla en funcionamiento haciendo clic a continuación.
+      manyfold_html: Para apoyar el desarrollo de Manyfold, puedes hacerlo en <a href="https://opencollective.com/manyfold">OpenCollective</a>.
       support_link: Apoyar esta instancia
-      title:
+      title: Ayuda
     uploading:
-      how_to_upload:
+      how_to_upload: Puedes añadir modelos haciendo clic en el botón de carga de la barra de menús. Para cargar muchos archivos como un único modelo, comprímalos en un único archivo (por ejemplo, ZIP o RAR).
       permissions:
-        edit:
-        member:
-        private:
-      title:
+        edit: Puede conceder permisos adicionales en la página de edición del elemento.
+        member: Por defecto, el contenido subido será visible para cualquier usuario local conectado.
+        private: Por defecto, el contenido subido no será visible para ningún otro usuario.
+      title: Cargando
       upload: Cargar
     welcome:
-      lead:
-      title:
+      lead: Este sitio utiliza Manyfold, un programa para gestionar y compartir modelos 3D. Aquí encontrará una breve guía...
+      title: "¡Bienvenido a %{site_name}!"
   jobs:
     activity:
       collection_published:
@@ -719,7 +727,7 @@ es:
   users:
     registrations:
       create:
-        altcha_failed:
+        altcha_failed: Error en la verificación ALTCHA
   views:
     pagination:
       first: "« Primera"

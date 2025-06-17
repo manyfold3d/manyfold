@@ -110,17 +110,17 @@ es:
         approval_help: Después de crear tu cuenta, será revisada manualmente por nuestros moderadores. Te avisaremos cuando se haya aprobado y puedas iniciar sesión.
         creators:
           name:
-            help:
-            label:
+            help: Esto se mostrará públicamente, como el título de su perfil de Creador.
+            label: Nombre del creador
           slug:
-            help:
-            help_fedi:
+            help: Un nombre de usuario corto para tu perfil de creador, utilizado en la URL.
+            help_fedi: Un nombre de usuario corto para tu perfil de creador, utilizado en la URL y Fediverse.
         details: Sus datos
         rules: Normas del servidor
         rules_agree: Al crear una cuenta, acepta cumplir las normas anteriores.
         sign_up: Registrarse
         username:
-          help:
+          help: Un nombre de usuario corto para tu cuenta personal; si más adelante creas un perfil de creador para publicar tus modelos, necesitará un nombre diferente.
       pagination_settings:
         collections:
           label: Paginar colecciones

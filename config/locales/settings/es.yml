@@ -86,14 +86,14 @@ es:
         help: Todas las cuentas nuevas deben ser aprobadas por un moderador antes de poder iniciar sesión.
         label: Aprobar cuentas
       autocreate_creator:
-        help:
-        label:
+        help: Sólo se aplica si las cuentas tienen por defecto el rol de "colaborador".
+        label: Creación automática de creadores para cuentas nuevas
       default_signup_role:
-        help:
-        label:
+        help: El rol asignado a las nuevas cuentas cuando se registran
+        label: Rol por defecto
         options:
-          contributor:
-          member:
+          contributor: Colaborador (puede cargar contenidos)
+          member: Miembro (sólo lectura)
       default_viewer_role:
         help: "¿Quién puede ver por defecto los nuevos modelos / creadores / colecciones?"
         label: Visibilidad por defecto
