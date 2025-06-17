@@ -516,9 +516,10 @@ RSpec.describe Model do
       expect(model.errors[:creator]).to include "can't be blank"
     end
 
-    it "requires a public creator" do
-      model.update(creator: create(:creator))
-      expect(model.errors[:creator]).to include "must be public"
+    it "make creators public" do
+      new_creator = create(:creator)
+      model.update!(creator: new_creator, license: "MIT")
+      expect(new_creator).to be_public
     end
 
     it "requires a license" do

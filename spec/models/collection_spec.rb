@@ -39,8 +39,8 @@ RSpec.describe Collection do
       collection.validate
     end
 
-    it "requires creator to be public if set" do
-      expect(collection.errors[:creator]).to include "must be public"
+    it "makes creator public automatically" do
+      expect(collection.creator).to be_public
     end
 
     it "requires collection to be public if set" do

@@ -33,7 +33,7 @@ class Model < ApplicationRecord
   acts_as_taggable_on :tags
 
   before_validation :strip_separators_from_path, if: :path_changed?
-
+  before_validation :publish_creator, if: :will_be_public?
   before_validation :normalize_license
   # In Rails 7.1 we will be able to do this instead:
   # normalizes :license, with: -> license { license.blank? ? nil : license }
@@ -336,11 +336,14 @@ class Model < ApplicationRecord
 
   def validate_publishable
     # If the model will be public
-    if caber_relations.find { |it| it.subject.nil? }
-      # Check required fields
-      errors.add :license, :blank if license.nil?
-      errors.add :creator, :blank if creator.nil?
-      errors.add :creator, :private if creator && !creator.public?
-    end
+    return unless will_be_public?
+    # Check required fields
+    errors.add :license, :blank if license.nil?
+    errors.add :creator, :blank if creator.nil?
+    errors.add :creator, :private if creator && !creator.public?
+  end
+
+  def publish_creator
+    creator&.update!(caber_relations_attributes: [{permission: "view", subject: nil}]) unless creator&.public?
   end
 end

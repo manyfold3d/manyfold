@@ -36,4 +36,8 @@ module CaberObject
       grant_permission_to("own", owner) if owner
     end
   end
+
+  def will_be_public?
+    caber_relations.find { |it| it.subject.nil? }
+  end
 end
