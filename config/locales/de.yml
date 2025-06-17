@@ -106,6 +106,12 @@ de:
         username: Name des Kontos
     errors:
       models:
+        collection:
+          attributes:
+            collection:
+              private:
+            creator:
+              private:
         doorkeeper/application:
           attributes:
             redirect_uri:
@@ -127,6 +133,8 @@ de:
               unsafe: kann kein privilegierter Systempfad sein
         model:
           attributes:
+            creator:
+              private:
             library:
               nested: kann nicht geändert werden, Modell enthält andere Modelle
             license:

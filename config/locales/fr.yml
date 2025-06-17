@@ -106,6 +106,12 @@ fr:
         username:
     errors:
       models:
+        collection:
+          attributes:
+            collection:
+              private:
+            creator:
+              private:
         doorkeeper/application:
           attributes:
             redirect_uri:
@@ -127,6 +133,8 @@ fr:
               unsafe: 'ne peut pas être un chemin privilégié du système '
         model:
           attributes:
+            creator:
+              private:
             library:
               nested: ne peut être modifié, le modèle contient d'autres modèles
             license:

@@ -106,6 +106,12 @@ ja:
         username: アカウント名
     errors:
       models:
+        collection:
+          attributes:
+            collection:
+              private:
+            creator:
+              private:
         doorkeeper/application:
           attributes:
             redirect_uri:
@@ -127,6 +133,8 @@ ja:
               unsafe: 特権システムパスであってはならない
         model:
           attributes:
+            creator:
+              private:
             library:
               nested: 変更不可、モデルは他のモデルを含む
             license:

@@ -106,6 +106,12 @@ pl:
         username:
     errors:
       models:
+        collection:
+          attributes:
+            collection:
+              private:
+            creator:
+              private:
         doorkeeper/application:
           attributes:
             redirect_uri:
@@ -127,6 +133,8 @@ pl:
               unsafe:
         model:
           attributes:
+            creator:
+              private:
             library:
               nested: nie można zmienić, model zawiera inne modele
             license:
