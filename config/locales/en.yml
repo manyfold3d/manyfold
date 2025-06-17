@@ -593,10 +593,13 @@ en:
         placeholder: What are you looking for?
         submit: Search
     publishing:
-      content: You can publish content publicly by giving "view" or "preview" permission to the "public" role on the item's edit page. Note that creators, collections and models all have their own permissions, so will need to be set public separately if you want them to be visible.
+      content: You can publish content publicly by giving "view" or "preview" permission to the "public" role on the item's edit page. Creators for public models will automatically be made public, but collections need to be expicitly published if you want them to be visible.
+      existing_creator:
+        button: Edit your creator profile
+        content: 'If you''re publishing your own work, you will probably want to customise your creator profile:'
       new_creator:
         button: Set up a new creator profile
-        content: 'If you''re publishing your own work, you will probably want to set up your own creator profile and make it public:'
+        content: 'If you''re publishing your own work, you will probably want to set up your own creator profile:'
       title: Publishing
     support:
       content: Manyfold instances are run by people like you! If you find this instance useful, you can help keep it running by clicking below.
