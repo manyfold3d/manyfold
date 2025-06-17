@@ -92,5 +92,4 @@ nl:
       upload_card:
         heading: Uploaden
     update:
-      failure: Er is een fout opgetreden en de modeldetails konden niet worden opgeslagen.
       success: Modeldetails opgeslagen.

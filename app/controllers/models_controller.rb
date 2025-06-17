@@ -102,7 +102,9 @@ class ModelsController < ApplicationController
           @model.organize_later if organize
           redirect_to @model, notice: t(".success")
         else
-          redirect_back_or_to edit_model_path(@model), alert: t(".failure")
+          get_creators_and_collections
+          edit
+          render :edit, status: :unprocessable_entity
         end
       end
       format.manyfold_api_v0 do

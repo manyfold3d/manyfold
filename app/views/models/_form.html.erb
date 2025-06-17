@@ -1,34 +1,38 @@
 <%= form_with model: @model do |form| %>
   <%= text_input_row form, :name %>
 
-  <div class="row mb-3 input-group">
-    <%= form.label :preview_file_id, class: "col-sm-2 col-form-label" %>
-    <div class='col-sm-10 ps-0'>
-      <%= form.collection_select :preview_file_id, @model.valid_preview_files, :id, :name, {}, {class: "form-control form-select"} %>
-      <span id="previewFileHelp" class="form-text"><%= t(".preview_file.help") %></span>
-    </div>
-  </div>
+  <%= collection_select_input_row form, :preview_file, @model.valid_preview_files, :id, :name, help: t(".preview_file.help") %>
 
-  <div class="row mb-3 input-group">
-    <%= form.label :creator_id, class: "col-sm-2 col-form-label" %>
-    <%= form.collection_select :creator_id, @creators, :id, :name_with_domain, {include_blank: true, selected: @default_creator&.id}.compact, {class: "form-control col-auto form-select"} %>
-    <%= link_to t("creators.general.new"), new_creator_path, class: "btn btn-outline-secondary col-auto" if policy(:creator).new? %>
-  </div>
+  <%= collection_select_input_row form,
+        :creator, @creators, :id, :name_with_domain,
+        include_blank: true,
+        selected: @default_creator&.id,
+        button: (if policy(:creator).new?
+                   {
+                     path: new_creator_path,
+                     label: t("creators.general.new")
+                   }
+                 end) %>
 
   <% if SiteSettings.show_libraries || current_user.is_administrator? %>
-    <div class="row mb-3 input-group">
-      <%= form.label :library_id, class: "col-sm-2 col-form-label" %>
-      <%= form.collection_select :library_id, policy_scope(Library).all, :id, :name, {include_blank: false}, {class: "form-control col-auto form-select", disabled: @model.contains_other_models?} %>
-    </div>
+    <%= unless @model.contains_other_models?
+          collection_select_input_row form,
+            :library, policy_scope(Library).all, :id, :name,
+            include_blank: true
+        end %>
   <% end %>
 
   <%= render "tags_edit", form: form, name: "model[tag_list]", value: (@model.tags.order(taggings_count: :desc, name: :asc).map { |tag| tag.name }).join(","), label: translate(".tags"), tags: @available_tags %>
 
-  <div class="row mb-3 input-group">
-    <%= form.label :collection_id, class: "col-sm-2 col-form-label" %>
-    <%= form.collection_select :collection_id, @collections, :id, :name_with_domain, {include_blank: true}, {class: "form-control col-auto form-select"} %>
-    <%= link_to t("collections.general.new"), new_collection_path, class: "btn btn-outline-secondary col-auto" if policy(:collection).new? %>
-  </div>
+  <%= collection_select_input_row form,
+        :collection, @collections, :id, :name_with_domain,
+        include_blank: true,
+        button: (if policy(:collection).new?
+                   {
+                     path: new_collection_path,
+                     label: t("collections.general.new")
+                   }
+                 end) %>
 
   <%= render "links_form", form: form %>
   <%= text_input_row form, :caption %>
