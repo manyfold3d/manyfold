@@ -92,5 +92,4 @@ fr:
       upload_card:
         heading: Télécharger
     update:
-      failure: Une erreur s'est produite et les détails du modèle n'ont pas pu être sauvegardés.
       success: Détails du modèle sauvegardés.

@@ -92,5 +92,4 @@ de:
       upload_card:
         heading: Hochladen
     update:
-      failure: Es ist ein Fehler aufgetreten und die Modelldetails konnten nicht gespeichert werden.
       success: Modelldetails gespeichert.

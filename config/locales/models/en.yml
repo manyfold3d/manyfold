@@ -92,5 +92,4 @@ en:
       upload_card:
         heading: Upload
     update:
-      failure: An error occurred and the model details could not be saved.
       success: Model details saved.

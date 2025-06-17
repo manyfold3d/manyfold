@@ -92,5 +92,4 @@ es:
       upload_card:
         heading: Cargar
     update:
-      failure: Se ha producido un error y no se ha podido guardar la información del modelo.
       success: Información del modelo guardada.

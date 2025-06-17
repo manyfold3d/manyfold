@@ -92,5 +92,4 @@ cs:
       upload_card:
         heading: Nahrát
     update:
-      failure: Došlo k chybě a detaily modelu nebylo možné uložit.
       success: Detaily modelu uloženy.
