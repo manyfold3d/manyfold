@@ -19,7 +19,7 @@
   <div class="row mb-3 input-group">
     <%= form.label :roles, class: "col-auto col-form-label" %>
     <div class="form-control col-auto">
-      <%= form.collection_check_boxes :role_ids, Role.all, :id, :name do |b| # rubocop:disable Pundit/UsePolicyScope
+      <%= form.collection_check_boxes :role_ids, @available_roles, :id, :name do |b| # rubocop:disable Pundit/UsePolicyScope
             content_tag :div, class: "form-check" do
               b.check_box(class: "form-check-input") +
                 b.label(class: "form-check-label")

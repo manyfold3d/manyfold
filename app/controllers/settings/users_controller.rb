@@ -1,5 +1,6 @@
 class Settings::UsersController < ApplicationController
   before_action :get_user, except: [:index, :new, :create]
+  before_action :get_available_roles, only: [:new, :create, :edit, :update]
   respond_to :html
 
   def index
@@ -62,13 +63,17 @@ class Settings::UsersController < ApplicationController
 
   private
 
+  def get_available_roles
+    @available_roles = policy_scope(Role).all
+  end
+
   def get_user
     @user = policy_scope(User).find_param(params[:id])
     authorize @user
   end
 
   def user_params
-    params.expect(
+    filtered = params.expect(
       user: [
         :email,
         :username,
@@ -79,5 +84,10 @@ class Settings::UsersController < ApplicationController
         role_ids: []
       ]
     )
+    # Filter out admin privilege for anyone but admins
+    unless current_user.is_administrator?
+      filtered[:role_ids]&.delete_if { |it| @available_roles.map(&:id).exclude? it.to_i }
+    end
+    filtered
   end
 end
