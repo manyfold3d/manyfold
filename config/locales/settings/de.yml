@@ -76,7 +76,6 @@ de:
       tokens:
         collection: Der Titel der Sammlung, in der sich das Modell befindet, falls festgelegt.
         creator: Der Name des Erstellers, falls festgelegt.
-        model_id: Ein eindeutiger numerischer Bezeichner für das Modell. Wir empfehlen dringend, diese Kennung immer am Ende der Vorlage anzugeben, um Namenskonflikte zu vermeiden.
         model_name: Eine dateisystemsichere Version des Modellnamens.
         tags_html: 'eine Reihe von verschachtelten Ordnern, einen für jedes Tag, geordnet nach der Beliebtheit der Tags. Zum Beispiel: <code>fantasy/human/wizard</code>. Dieses Token ist "gierig"; es analysiert so viele Tags wie möglich.'
     general:

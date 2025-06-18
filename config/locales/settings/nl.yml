@@ -76,7 +76,6 @@ nl:
       tokens:
         collection: De titel van de collectie waarin het model zich bevindt, indien ingesteld.
         creator: De naam van de maker, indien ingesteld.
-        model_id: Een unieke numerieke identificatie voor het model. We raden sterk aan om dit altijd aan het einde van je sjabloon op te nemen om naamconflicten op schijf te voorkomen.
         model_name: Een bestandssysteem-veilige versie van de modelnaam.
         tags_html: 'een reeks geneste mappen, één voor elke tag, gerangschikt op volgorde van tagpopulariteit. Bijvoorbeeld: <code>fantasy/human/wizard</code>'
     general:
