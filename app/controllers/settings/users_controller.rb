@@ -68,7 +68,7 @@ class Settings::UsersController < ApplicationController
   end
 
   def user_params
-    params.expect(
+    filtered = params.expect(
       user: [
         :email,
         :username,
@@ -79,5 +79,11 @@ class Settings::UsersController < ApplicationController
         role_ids: []
       ]
     )
+    # Filter out admin privilege for anyone but admins
+    unless current_user.is_administrator?
+      banned = [:administrator, :moderator].filter_map { |it| Role.find_by(name: it)&.id&.to_s }
+      filtered[:role_ids]&.delete_if { |it| banned.include? it }
+    end
+    filtered
   end
 end

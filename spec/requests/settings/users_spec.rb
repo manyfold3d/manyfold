@@ -69,6 +69,50 @@ RSpec.describe "/settings/users", :multiuser do
     end
   end
 
+  describe "PATCH /update assigning roles" do
+    let(:user) { create(:user) }
+
+    before do
+      Role::ROLES.each do |r|
+        Role.find_or_create_by name: r
+      end
+    end
+
+    context "when administrator", :as_administrator do
+      it "can grant admin permissions" do
+        patch "/settings/users/#{user.to_param}",
+          params: {user: {role_ids: [Role.find_by!(name: :administrator).id.to_s]}}
+        expect(user.reload.is_administrator?).to be true
+      end
+
+      it "can grant moderator permissions" do
+        patch "/settings/users/#{user.to_param}",
+          params: {user: {role_ids: [Role.find_by!(name: :moderator).id.to_s]}}
+        expect(user.reload.is_moderator?).to be true
+      end
+    end
+
+    context "when moderator", :as_moderator do
+      it "cannot grant admin permissions" do
+        patch "/settings/users/#{user.to_param}",
+          params: {user: {role_ids: [Role.find_by!(name: :administrator).id.to_s]}}
+        expect(user.reload.is_administrator?).to be false
+      end
+
+      it "cannot grant moderator permissions" do
+        patch "/settings/users/#{user.to_param}",
+          params: {user: {role_ids: [Role.find_by!(name: :moderator).id.to_s]}}
+        expect(user.reload.is_moderator?).to be false
+      end
+
+      it "cannot grant contributor permissions" do
+        patch "/settings/users/#{user.to_param}",
+          params: {user: {role_ids: [Role.find_by!(name: :contributor).id.to_s]}}
+        expect(user.reload.is_contributor?).to be true
+      end
+    end
+  end
+
   describe "PATCH /update", :as_moderator do
     let(:user) { create(:user) }
 
