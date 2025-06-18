@@ -44,7 +44,11 @@ module ModelsHelper
         CC-PDDC
         CC0-1.0
         MIT
+        GPL-2.0-only
         GPL-3.0-only
+        LGPL-2.0-only
+        LGPL-3.0-only
+        0BSD
         LicenseRef-Commercial
       ].map { |id|
         [

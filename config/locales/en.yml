@@ -693,9 +693,13 @@ en:
     CC-BY-SA-40: Creative Commons Attribution ShareAlike
     CC-PDDC: Creative Commons Public Domain Declaration
     CC0-10: Creative Commons Zero
-    GPL-30-only: GNU General Public License Version 3
+    GPL-2.0-only: GNU General Public License v2.0
+    GPL-3.0-only: GNU General Public License v3.0
+    LGPL-2.0-only: GNU Lesser General Public License v2
+    LGPL-3.0-only: GNU Lesser General Public License v3
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
+    0BSD: BSD Zero Clause License
   moderator_mailer:
     new_approval:
       greeting: Hi!
