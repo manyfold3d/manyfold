@@ -44,6 +44,7 @@ module ModelsHelper
         CC-PDDC
         CC0-1.0
         MIT
+        GPL-3.0
         LicenseRef-Commercial
       ].map { |id|
         [
