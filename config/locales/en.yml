@@ -322,6 +322,8 @@ en:
       help: privacy-friendly spam protection by ALTCHA
     copy_button:
       copy: Copy to Clipboard
+    display_user_quota:
+      request_increase: To request a quota increase, contact your site administrator.
     download_button:
       download:
         missing: Request download
@@ -612,6 +614,7 @@ en:
         edit: You can grant additional permissions on the item's edit page.
         member: By default, uploaded content will be visible to any local logged-in user.
         private: By default, uploaded content will not be visible to any other users.
+      quota: You can upload up to %{quota} of content, and you can always view your current quota usage on your settings page.
       title: Uploading
       upload: Upload
     welcome:

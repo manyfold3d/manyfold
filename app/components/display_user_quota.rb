@@ -21,13 +21,16 @@ class Components::DisplayUserQuota < Components::Base
     when 90..Float::INFINITY
       progress_bar_background = "text-bg-danger"
     end
-    h1 do
-      plain "#{current_size_in_mb}/#{quota_in_mb}"
+    div class: "fs-2" do
+      plain "#{current_size_in_mb} / #{quota_in_mb}"
     end
     div class: "progress", role: %(progressbar), "aria-label": "Quota progress bar", "aria-valuemin": 0, "aria-valuemax": 100, "aria-value": percent_used do
       div class: "progress-bar #{progress_bar_background}", style: "width:#{percent_used}%" do
         "#{percent_used}%"
       end
+    end
+    p class: "mt-3 text-start" do
+      t "components.display_user_quota.request_increase"
     end
   end
 end
