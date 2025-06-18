@@ -1,5 +1,6 @@
 class Settings::UsersController < ApplicationController
   before_action :get_user, except: [:index, :new, :create]
+  before_action :get_available_roles, only: [:new, :create, :edit, :update]
   respond_to :html
 
   def index
@@ -62,6 +63,10 @@ class Settings::UsersController < ApplicationController
 
   private
 
+  def get_available_roles
+    @available_roles = policy_scope(Role).all
+  end
+
   def get_user
     @user = policy_scope(User).find_param(params[:id])
     authorize @user
@@ -81,8 +86,7 @@ class Settings::UsersController < ApplicationController
     )
     # Filter out admin privilege for anyone but admins
     unless current_user.is_administrator?
-      banned = [:administrator, :moderator].filter_map { |it| Role.find_by(name: it)&.id&.to_s }
-      filtered[:role_ids]&.delete_if { |it| banned.include? it }
+      filtered[:role_ids]&.delete_if { |it| @available_roles.map(&:id).exclude? it.to_i }
     end
     filtered
   end
