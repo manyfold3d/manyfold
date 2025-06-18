@@ -322,6 +322,8 @@ en:
       help: privacy-friendly spam protection by ALTCHA
     copy_button:
       copy: Copy to Clipboard
+    display_user_quota:
+      request_increase: To request a quota increase, contact your site administrator.
     download_button:
       download:
         missing: Request download
