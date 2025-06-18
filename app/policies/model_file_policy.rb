@@ -1,7 +1,7 @@
 class ModelFilePolicy < ApplicationPolicy
   def show?
     return false unless ModelPolicy.new(@user, @record.model).show?
-    @record.previewable? || check_permissions(@record.model, ["view", "edit", "own"], @user)
+    @user&.is_moderator? || @record.previewable? || check_permissions(@record.model, ["view", "edit", "own"], @user)
   end
 
   def create?
@@ -32,6 +32,7 @@ class ModelFilePolicy < ApplicationPolicy
     FULL_VIEW_PERMISSIONS = ["view", "edit", "own"]
 
     def resolve
+      return scope if @user&.is_moderator?
       subject_list = [nil, user, user&.roles].flatten
       scope
         # Where the user only has preview permissions, then show previewable files
