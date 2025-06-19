@@ -665,7 +665,7 @@ de:
       performance: Leistungs-Dashboard
       pghero: PgHero
       sidekiq: Sidekiq
-      title: Einstellungen
+      site_settings_title: Einstellungen
       tools_heading: Erweiterte Werkzeuge
   licenses:
     CC-BY-40: Creative Commons Attribution

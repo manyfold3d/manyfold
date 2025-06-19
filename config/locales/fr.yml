@@ -668,7 +668,7 @@ fr:
       performance: Tableau de bord des performances
       pghero: PgHero
       sidekiq: Sidekiq
-      title: Paramètres
+      site_settings_title: Paramètres
       tools_heading: Outils avancés
   licenses:
     CC-BY-40: Creative Commons Attribution

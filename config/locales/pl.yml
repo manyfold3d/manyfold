@@ -665,7 +665,7 @@ pl:
       performance: Pulpit Wydajności
       pghero: PgHero
       sidekiq: Sidekiq
-      title: Ustawienia Strony
+      site_settings_title: Ustawienia Strony
       tools_heading: Zaawansowane Narzędzia
   licenses:
     CC-BY-40: Creative Commons Uznanie autorstwa

@@ -665,7 +665,7 @@ cs:
       performance: Výkonnostní dashboard
       pghero: PgHero
       sidekiq: Sidekiq
-      title: Nastavení webu
+      site_settings_title: Nastavení webu
       tools_heading: Pokročilé nástroje
   licenses:
     CC-BY-40: Creative Commons Uveďte autora
