@@ -50,7 +50,7 @@
         </li>
       <% end %>
     </ul>
-    <% if policy(:settings).index? and not SiteSettings.demo_mode_enabled?  %>
+    <% if policy(:settings).index? and not SiteSettings.demo_mode_enabled? %>
       <hr>
       <h5><%= t(".tools_heading") %></h5>
       <ul class="nav flex-column">
