@@ -12,6 +12,7 @@ class SettingsController < ApplicationController
     update_analysis_settings(params[:analysis])
     update_usage_settings(params[:usage])
     update_download_settings(params[:downloads])
+    update_discovery_settings(params[:discovery])
     redirect_back_or_to settings_path, notice: t(".success")
   end
 
@@ -79,6 +80,11 @@ class SettingsController < ApplicationController
   def update_usage_settings(settings)
     return unless settings
     (settings[:report] == "1") ? UsageReport.enable! : UsageReport.disable!
+  end
+
+  def update_discovery_settings(settings)
+    return unless settings
+    SiteSettings.allow_robots = settings[:allow_robots] == "1"
   end
 
   def update_download_settings(settings)

@@ -32,6 +32,12 @@ en:
       theme:
         help_html: Affects all accounts. Visit <a href="https://bootswatch.com">Bootswatch</a> to see previews.
         label: Theme
+    discovery:
+      allow_robots:
+        help: Unless turned on, web crawlers will be asked not to index any public content on this instance.
+        label: Allow web crawlers
+      description: Control how the rest of the world finds your public content. Note that all these settings are advisory; we can't guarantee the good behaviour of other systems.
+      heading: Discovery
     domain_blocks:
       create:
         success: Domain block created successfully.

@@ -20,5 +20,4 @@ RSpec.describe "Robots" do
       expect(response).to have_http_status(:not_found)
     end
   end
-  end
 end

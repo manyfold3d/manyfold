@@ -43,6 +43,9 @@
 
       <% if policy(:settings).index? %>
         <li class="nav-item">
+          <%= link_to t("settings.discovery.heading"), discovery_settings_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
           <%= link_to t("settings.reporting.heading"), reporting_settings_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
