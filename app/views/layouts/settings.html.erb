@@ -1,25 +1,32 @@
-<h1><%= t ".title" %></h1>
+
+<% if policy(:settings).index? %>
+  <h1><%= t ".site_settings_title" %></h1>
+<% elsif policy(:user).index? %>
+  <h1><%= t ".moderation_settings_title" %></h1>
+<% end %>
 <div class="row mt-2">
   <div class="col col-auto border-end" id="sidebar">
     <ul class="nav flex-column">
-      <li class="nav-item">
-        <%= link_to t(".organization"), settings_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to t(".libraries"), settings_libraries_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to t(".downloads"), downloads_settings_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to t(".appearance"), appearance_settings_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to t("settings.analysis.heading"), analysis_settings_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to t("settings.multiuser.heading"), multiuser_settings_path, class: "nav-link" %>
-      </li>
+      <% if policy(:settings).index? %>
+        <li class="nav-item">
+          <%= link_to t(".organization"), settings_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t(".libraries"), settings_libraries_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t(".downloads"), downloads_settings_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t(".appearance"), appearance_settings_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t("settings.analysis.heading"), analysis_settings_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t("settings.multiuser.heading"), multiuser_settings_path, class: "nav-link" %>
+        </li>
+      <% end %>
       <% if SiteSettings.multiuser_enabled? %>
         <li class="nav-item">
           <%= link_to t("settings.users.index.title"), settings_users_path, class: "nav-link" %>
@@ -33,14 +40,17 @@
           <%= link_to t("settings.domain_blocks.index.title"), settings_domain_blocks_path, class: "nav-link" %>
         </li>
       <% end %>
-      <li class="nav-item">
-        <%= link_to t("settings.reporting.heading"), reporting_settings_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to t("doorkeeper_applications.index.title"), doorkeeper_applications_path, class: "nav-link" %>
-      </li>
+
+      <% if policy(:settings).index? %>
+        <li class="nav-item">
+          <%= link_to t("settings.reporting.heading"), reporting_settings_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t("doorkeeper_applications.index.title"), doorkeeper_applications_path, class: "nav-link" %>
+        </li>
+      <% end %>
     </ul>
-    <% unless SiteSettings.demo_mode_enabled? %>
+    <% if policy(:settings).index? and not SiteSettings.demo_mode_enabled?  %>
       <hr>
       <h5><%= t(".tools_heading") %></h5>
       <ul class="nav flex-column">

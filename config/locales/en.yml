@@ -295,6 +295,7 @@ en:
       home: Homepage
       log_in: Sign in
       log_out: Sign out
+      moderator_settings: Moderator Settings
       navbar:
         toggler:
           label: Toggle navigation
@@ -678,11 +679,12 @@ en:
       appearance: Appearance
       downloads: Downloads
       libraries: Libraries
+      moderation_settings_title: Moderation Settings
       organization: Organization
       performance: Performance Dashboard
       pghero: PgHero
       sidekiq: Sidekiq
-      title: Site Settings
+      site_settings_title: Site Settings
       tools_heading: Advanced Tools
   licenses:
     0BSD: BSD Zero Clause License
