@@ -154,4 +154,7 @@ Rails.application.routes.draw do
 
   # Fallback route for filename matching
   get "/models/:model_id/model_files/*id" => "model_files#show", :as => "model_model_file_by_filename"
+
+  # Web crawler stuff
+  get "/robots", to: "robots#index"
 end
