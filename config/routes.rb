@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         get :multiuser
         get :reporting
         get :appearance
+        get :discovery
       end
       resources :libraries, only: [:index]
     end
