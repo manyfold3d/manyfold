@@ -665,7 +665,7 @@ es:
       performance: Panel de rendimiento
       pghero: PgHero
       sidekiq: Sidekiq
-      title: Ajustes
+      site_settings_title: Ajustes
       tools_heading: Herramientas avanzadas
   licenses:
     CC-BY-40: Creative Commons - Reconocimiento

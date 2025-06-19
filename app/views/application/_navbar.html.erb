@@ -76,6 +76,11 @@
               <%= nav_link "gear", t(".settings"), settings_path, text_style: "d-md-none" %>
             </li>
           <% end %>
+          <% if policy(:user).index? and not policy(:settings).index? %>
+            <li class="nav-item">
+              <%= nav_link "people", t(".moderator_settings"), settings_users_path, text_style: "d-md-none" %>
+            </li>
+          <% end %>
         <% end %>
         <li class="nav-item ms-1 me-3">
           <%= form_with url: models_path, method: :get, role: "search" do |f| %>

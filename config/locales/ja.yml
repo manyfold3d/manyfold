@@ -665,7 +665,7 @@ ja:
       performance:
       pghero:
       sidekiq:
-      title:
+      site_settings_title:
       tools_heading:
   licenses:
     CC-BY-40:
