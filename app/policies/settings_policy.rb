@@ -28,4 +28,8 @@ class SettingsPolicy < ApplicationPolicy
       user&.is_administrator?
     )
   end
+
+  def discovery?
+    update?
+  end
 end

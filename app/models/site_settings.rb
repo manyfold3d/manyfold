@@ -39,6 +39,8 @@ class SiteSettings < RailsSettings::Base
   field :pregenerate_downloads, type: :boolean, default: false
   field :download_expiry_time_in_hours, type: :integer, default: 24
 
+  field :allow_robots, type: :boolean, default: false
+
   validates :model_ignored_files, regex_array: {strict: true}
 
   def self.email_configured?
