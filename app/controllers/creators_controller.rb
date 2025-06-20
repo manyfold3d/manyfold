@@ -3,6 +3,7 @@ class CreatorsController < ApplicationController
   include Permittable
 
   before_action :get_creator, except: [:index, :new, :create]
+  before_action -> { set_indexable @creator }, except: [:index, :new, :create]
 
   def index
     @creators = policy_scope(Creator)
@@ -33,6 +34,7 @@ class CreatorsController < ApplicationController
 
     # Count unassiged models
     @unassigned_count = policy_scope(Model).where(creator: nil).count
+    set_indexable @creators
 
     respond_to do |format|
       format.html { render layout: "card_list_page" }

@@ -10,13 +10,59 @@ require "rails_helper"
 #                  DELETE /collections/:id(.:format)                                              collections#destroy
 
 RSpec.describe "Collections" do
-  let(:collection) { create(:collection) }
+  context "when signed out in multiuser mode", :after_first_run, :multiuser do
+    context "with public collection" do
+      let!(:collection) { create(:collection, :public) }
 
-  context "when signed out" do
-    it "needs testing when multiuser is enabled"
+      describe "GET /collections" do
+        it "includes indexing directive header" do
+          allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+          get "/collections"
+          expect(response.headers["X-Robots-Tag"]).to eq "noai noimageai"
+        end
+
+        it "includes indexing directive meta tag" do
+          allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+          get "/collections"
+          expect(response.body).to include %(<meta name="robots" content="noai noimageai">)
+        end
+      end
+
+      describe "GET /collections/:id" do
+        it "returns http success" do
+          get "/collections/#{collection.to_param}"
+          expect(response).to have_http_status(:success)
+        end
+
+        it "includes indexing directive header" do
+          allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+          get "/collections/#{collection.to_param}"
+          expect(response.headers["X-Robots-Tag"]).to eq "noai noimageai"
+        end
+
+        it "includes indexing directive meta tag" do
+          allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+          get "/collections/#{collection.to_param}"
+          expect(response.body).to include %(<meta name="robots" content="noai noimageai">)
+        end
+      end
+    end
+
+    context "with non-public collection" do
+      let!(:collection) { create(:collection) }
+
+      describe "GET /collections/:id" do
+        it "returns not found" do
+          get "/collections/#{collection.to_param}"
+          expect(response).to be_not_found
+        end
+      end
+    end
   end
 
   context "when signed in" do
+    let(:collection) { create(:collection) }
+
     before do
       build_list(:collection, 13) do |collection|
         collection.save! # See https://dev.to/hernamvel/the-optimal-way-to-create-a-set-of-records-with-factorybot-createlist-factorybot-buildlist-1j64

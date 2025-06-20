@@ -7,6 +7,7 @@ class CollectionsController < ApplicationController
   before_action :get_collection, except: [:index, :new, :create]
   before_action :get_parent_collections, except: [:index, :create]
   before_action :get_creators, except: [:index, :create]
+  before_action -> { set_indexable @collection }, except: [:index, :new, :create]
 
   def index
     @collections = policy_scope(Collection)
@@ -37,7 +38,7 @@ class CollectionsController < ApplicationController
 
     # Count unassiged models
     @unassigned_count = policy_scope(Model).where(collection: nil).count
-
+    set_indexable @collections
     respond_to do |format|
       format.html { render layout: "card_list_page" }
       format.manyfold_api_v0 { render json: ManyfoldApi::V0::CollectionListSerializer.new(@collections).serialize }
