@@ -8,6 +8,8 @@ module Form
         :collection_id,
         :caption,
         :notes,
+        :indexable,
+        :ai_indexable,
         links_attributes: [:id, :url, :_destroy]
       ).deep_merge(caber_relations_params(type: :collection))
     end

@@ -48,6 +48,21 @@
 
   <%= checkbox_input_row form, :sensitive %>
 
+  <div class="row mb-3 input-group">
+    <%= form.label :indexable, class: "col-sm-2 col-form-label" %>
+    <div class="col p-0">
+      <%= form.select :indexable, indexable_select_options(form.object), class: "form-control form-select" %>
+      <%= errors_for form.object, :indexable %>
+    </div>
+  </div>
+  <div class="row mb-3 input-group">
+    <%= form.label :ai_indexable, class: "col-sm-2 col-form-label" %>
+    <div class="col p-0">
+      <%= form.select :ai_indexable, ai_indexable_select_options(form.object), class: "form-control form-select" %>
+      <%= errors_for form.object, :ai_indexable %>
+    </div>
+  </div>
+
   <%= render "caber_relations_form", form: form %>
 
   <%= form.submit "Save", class: "btn btn-primary" %>

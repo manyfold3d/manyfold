@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_09_210440) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_20_141805) do
   create_table "altcha_solutions", force: :cascade do |t|
     t.string "algorithm"
     t.string "challenge"
@@ -46,6 +46,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_09_210440) do
     t.string "public_id"
     t.virtual "name_lower", type: :string, as: "LOWER(name)", stored: true
     t.integer "creator_id"
+    t.integer "indexable"
+    t.integer "ai_indexable"
     t.index ["collection_id"], name: "index_collections_on_collection_id"
     t.index ["creator_id"], name: "index_collections_on_creator_id"
     t.index ["name"], name: "index_collections_on_name", unique: true
@@ -82,6 +84,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_09_210440) do
     t.string "slug"
     t.string "public_id"
     t.virtual "name_lower", type: :string, as: "LOWER(name)", stored: true
+    t.integer "indexable"
+    t.integer "ai_indexable"
     t.index ["name"], name: "index_creators_on_name", unique: true
     t.index ["name_lower"], name: "index_creators_on_name_lower"
     t.index ["public_id"], name: "index_creators_on_public_id"
@@ -267,6 +271,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_09_210440) do
     t.string "public_id"
     t.virtual "name_lower", type: :string, as: "LOWER(name)", stored: true
     t.boolean "sensitive", default: false, null: false
+    t.integer "indexable"
+    t.integer "ai_indexable"
     t.index ["collection_id"], name: "index_models_on_collection_id"
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
