@@ -11,6 +11,8 @@ module Form
         :notes,
         :license,
         :sensitive,
+        :indexable,
+        :ai_indexable,
         :collection_id,
         :q,
         :library,

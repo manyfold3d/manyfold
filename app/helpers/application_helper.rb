@@ -263,4 +263,28 @@ module ApplicationHelper
   def render_component_collection(component, param, collection, kwargs = {})
     safe_join(collection.map { |it| render component.new(**{param => it}.merge(kwargs)) }, " ")
   end
+
+  def indexable_select_options(object)
+    current = object.inherited_indexable? ? translate("application_helper.indexable_select_options.yes") : translate("application_helper.indexable_select_options.no")
+    options_for_select(
+      [
+        [translate("application_helper.indexable_select_options.inherit", inherited: current), "inherit"],
+        [translate("application_helper.indexable_select_options.always_no"), "no"],
+        [translate("application_helper.indexable_select_options.always_yes"), "yes"]
+      ],
+      selected: object&.indexable || "inherit"
+    )
+  end
+
+  def ai_indexable_select_options(object)
+    current = object.inherited_ai_indexable? ? translate("application_helper.indexable_select_options.yes") : translate("application_helper.indexable_select_options.no")
+    options_for_select(
+      [
+        [translate("application_helper.ai_indexable_select_options.inherit", inherited: current), "inherit"],
+        [translate("application_helper.ai_indexable_select_options.always_no"), "no"],
+        [translate("application_helper.ai_indexable_select_options.always_yes"), "yes"]
+      ],
+      selected: object&.ai_indexable || "inherit"
+    )
+  end
 end

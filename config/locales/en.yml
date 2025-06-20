@@ -49,9 +49,11 @@ en:
       link:
         url: Link
       model:
+        ai_indexable: Allow AI training bots
         caption: Caption
         collection_id: Collection
         creator_id: Creator
+        indexable: Allow search indexing
         library_id: Library
         license: License
         name: Name
@@ -318,6 +320,17 @@ en:
     tags_card:
       skip_tags: Skip tag list
     title: Manyfold
+  application_helper:
+    ai_indexable_select_options:
+      always_no: Always no
+      always_yes: Always yes
+      inherit: Inherit from parent object or default site setting; currently '%{inherited}'
+    indexable_select_options:
+      always_no: Always no
+      always_yes: Always yes
+      inherit: Inherit from parent object or default site setting; currently '%{inherited}'
+      'no': 'No'
+      'yes': 'Yes'
   components:
     altcha_widget:
       help: privacy-friendly spam protection by ALTCHA
