@@ -31,10 +31,22 @@ module Indexable
   end
 
   def inherited_indexable?
-    SiteSettings.default_indexable
+    if is_a?(Collection) && collection
+      collection.indexable?
+    elsif respond_to?(:creator) && creator
+      creator.indexable?
+    else
+      SiteSettings.default_indexable
+    end
   end
 
   def inherited_ai_indexable?
-    SiteSettings.default_ai_indexable
+    if is_a?(Collection) && collection
+      collection.ai_indexable?
+    elsif respond_to?(:creator) && creator
+      creator.ai_indexable?
+    else
+      SiteSettings.default_ai_indexable
+    end
   end
 end

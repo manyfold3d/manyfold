@@ -37,3 +37,45 @@ shared_examples "Indexable" do
     end
   end
 end
+
+shared_examples "IndexableWithCreatorDelegation" do
+  context "when delegating to creator indexing preference" do
+    before do
+      allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: true)
+    end
+
+    let(:object) {
+      create(described_class.name.downcase.to_sym,
+        creator: create(:creator, indexable: :no, ai_indexable: :no))
+    }
+
+    it "overrides default indexing" do
+      expect(object.indexable?).to be false
+    end
+
+    it "overrides default ai indexing" do
+      expect(object.ai_indexable?).to be false
+    end
+  end
+end
+
+shared_examples "IndexableWithCollectionDelegation" do
+  context "when delegating to collection indexing preference" do
+    before do
+      allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: true)
+    end
+
+    let(:object) {
+      create(described_class.name.downcase.to_sym,
+        collection: create(:collection, indexable: :no, ai_indexable: :no))
+    }
+
+    it "overrides default indexing" do
+      expect(object.indexable?).to be false
+    end
+
+    it "overrides default ai indexing" do
+      expect(object.ai_indexable?).to be false
+    end
+  end
+end
