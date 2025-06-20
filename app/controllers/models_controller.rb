@@ -19,8 +19,8 @@ class ModelsController < ApplicationController
 
   def index
     @models = filtered_models @filters
-    set_indexable @models
     prepare_model_list
+    set_indexable @models
     respond_to do |format|
       format.html { render layout: "card_list_page" }
       format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelListSerializer.new(@models).serialize }
@@ -142,13 +142,13 @@ class ModelsController < ApplicationController
   def bulk_edit
     authorize Model
     @models = filtered_models(@filters).includes(:collection, :creator)
-    set_indexable @models
     generate_available_tag_list
     if helpers.pagination_settings["models"]
       page = params[:page] || 1
       # Double the normal page size for bulk editing
       @models = @models.page(page).per(helpers.pagination_settings["per_page"] * 2)
     end
+    set_indexable @models
     # Apply tag filters in-place
     @filter_in_place = true
   end
