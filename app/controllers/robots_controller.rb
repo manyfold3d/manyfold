@@ -10,4 +10,10 @@ class RobotsController < ActionController::Base # rubocop:disable Rails/Applicat
       end
     end
   end
+
+  def sitemap
+    respond_to do |format|
+      format.xml
+    end
+  end
 end

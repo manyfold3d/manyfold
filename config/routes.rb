@@ -158,4 +158,5 @@ Rails.application.routes.draw do
 
   # Web crawler stuff
   get "/robots", to: "robots#index"
+  get "/sitemap", to: "robots#sitemap"
 end

@@ -20,4 +20,11 @@ RSpec.describe "Robots" do
       expect(response).to have_http_status(:not_found)
     end
   end
+
+  describe "GET /sitemap.xml" do
+    it "returns http success" do
+      get "/sitemap.xml"
+      expect(response).to have_http_status(:success)
+    end
+  end
 end
