@@ -85,6 +85,8 @@ class SettingsController < ApplicationController
   def update_discovery_settings(settings)
     return unless settings
     SiteSettings.allow_robots = settings[:allow_robots] == "1"
+    SiteSettings.default_indexable = settings[:default_indexable] == "1"
+    SiteSettings.default_ai_indexable = settings[:default_ai_indexable] == "1"
   end
 
   def update_download_settings(settings)
