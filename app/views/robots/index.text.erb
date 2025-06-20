@@ -1,2 +1,5 @@
 User-agent: *
-Disallow: /
+<%= SiteSettings.allow_robots ? "Allow" : "Disallow" %>: /
+<%- if SiteSettings.allow_robots %>
+Sitemap: <%= sitemap_url format: :xml %>
+<%- end %>

@@ -14,10 +14,23 @@ RSpec.describe "Robots" do
       expect(response.body).to include "User-agent: *\nDisallow: /"
     end
 
-    it "doesn't serve robots.txt if crawling is enabled" do
+    it "allows robots if crawling is enabled" do
       allow(SiteSettings).to receive(:allow_robots).and_return(true)
       get "/robots.txt"
-      expect(response).to have_http_status(:not_found)
+      expect(response.body).to include "User-agent: *\nAllow: /"
+    end
+
+    it "includes sitemap link if crawling is enabled" do
+      allow(SiteSettings).to receive(:allow_robots).and_return(true)
+      get "/robots.txt"
+      expect(response.body).to include "Sitemap: http://www.example.com/sitemap.xml"
+    end
+  end
+
+  describe "GET /sitemap.xml" do
+    it "returns http success" do
+      get "/sitemap.xml"
+      expect(response).to have_http_status(:success)
     end
   end
 end
