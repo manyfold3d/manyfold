@@ -12,11 +12,14 @@ class ModelsController < ApplicationController
   before_action :set_returnable, only: [:bulk_edit, :edit, :new]
   before_action :clear_returnable, only: [:bulk_update, :update, :create]
   before_action :get_filters, only: [:bulk_edit, :bulk_update, :index, :show] # rubocop:todo Rails/LexicallyScopedActionFilter
+  before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
+  before_action -> { set_indexable @model }, except: [:bulk_edit, :bulk_update, :index, :new, :create]
 
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
   def index
     @models = filtered_models @filters
+    set_indexable @models
     prepare_model_list
     respond_to do |format|
       format.html { render layout: "card_list_page" }
@@ -139,6 +142,7 @@ class ModelsController < ApplicationController
   def bulk_edit
     authorize Model
     @models = filtered_models(@filters).includes(:collection, :creator)
+    set_indexable @models
     generate_available_tag_list
     if helpers.pagination_settings["models"]
       page = params[:page] || 1

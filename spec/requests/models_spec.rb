@@ -18,10 +18,36 @@ RSpec.describe "Models" do
     context "with public model" do
       let!(:model) { create(:model, :public) }
 
+      describe "GET /models" do
+        it "includes indexing directive header" do
+          allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+          get "/models"
+          expect(response.headers["X-Robots-Tag"]).to eq "noai noimageai"
+        end
+
+        it "includes indexing directive meta tag" do
+          allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+          get "/models"
+          expect(response.body).to include %(<meta name="robots" content="noai noimageai">)
+        end
+      end
+
       describe "GET /models/:id" do
         it "returns http success" do
           get "/models/#{model.to_param}"
           expect(response).to have_http_status(:success)
+        end
+
+        it "includes indexing directive header" do
+          allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+          get "/models/#{model.to_param}"
+          expect(response.headers["X-Robots-Tag"]).to eq "noai noimageai"
+        end
+
+        it "includes indexing directive meta tag" do
+          allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+          get "/models/#{model.to_param}"
+          expect(response.body).to include %(<meta name="robots" content="noai noimageai">)
         end
       end
     end
