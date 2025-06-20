@@ -9,10 +9,32 @@ module Indexable
   end
 
   def indexable?
-    SiteSettings.default_indexable
+    case indexable
+    when "inherit"
+      inherited_indexable?
+    when "yes"
+      true
+    else
+      false
+    end
   end
 
   def ai_indexable?
+    case ai_indexable
+    when "inherit"
+      inherited_ai_indexable?
+    when "yes"
+      true
+    else
+      false
+    end
+  end
+
+  def inherited_indexable?
+    SiteSettings.default_indexable
+  end
+
+  def inherited_ai_indexable?
     SiteSettings.default_ai_indexable
   end
 end
