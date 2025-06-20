@@ -11,6 +11,25 @@ require "support/mock_directory"
 #                        DELETE /models/:model_id/model_files/:id(.:format)       model_files#destroy
 
 RSpec.describe "Model Files" do
+  context "when signed out in multiuser mode", :after_first_run, :multiuser do
+    context "with a public model" do
+      let(:model) { create(:model, :public) }
+      let(:file) { create(:model_file, model: model) }
+
+      it "includes indexing directive header" do
+        allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+        get "/models/#{model.to_param}/model_files/#{file.to_param}"
+        expect(response.headers["X-Robots-Tag"]).to eq "noai noimageai"
+      end
+
+      it "includes indexing directive meta tag" do
+        allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+        get "/models/#{model.to_param}/model_files/#{file.to_param}"
+        expect(response.body).to include %(<meta name="robots" content="noai noimageai">)
+      end
+    end
+  end
+
   [:multiuser, :singleuser].each do |mode|
     context "when signed out in #{mode} mode", mode, :after_first_run do
       context "when downloading via a signed ID" do
