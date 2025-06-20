@@ -5,6 +5,7 @@ RSpec.describe Creator do
   it_behaves_like "Commentable"
   it_behaves_like "Caber::Object"
   it_behaves_like "Sluggable"
+  it_behaves_like "Indexable"
 
   context "when generating an ActivityStreams representation" do
     subject(:creator) { create(:creator, :public) }

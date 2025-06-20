@@ -8,6 +8,7 @@ class Model < ApplicationRecord
   include PublicIDable
   include Commentable
   include Problematic
+  include Indexable
 
   broadcasts_refreshes
 

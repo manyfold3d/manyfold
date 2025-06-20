@@ -180,4 +180,21 @@ RSpec.describe ModelFile do
       expect(file.is_renderable?).to be result
     end
   end
+
+  [true, false].each do |state|
+    before do
+      allow(SiteSettings).to receive_messages(default_indexable: state, default_ai_indexable: state)
+    end
+
+    let(:model) { create(:model) }
+    let(:file) { create(:model_file, model: model) }
+
+    it "delegates indexable to model (#{state})" do
+      expect(file.indexable?).to eq model.indexable?
+    end
+
+    it "delegates AI indexable to model (#{state})" do
+      expect(file.ai_indexable?).to eq model.ai_indexable?
+    end
+  end
 end
