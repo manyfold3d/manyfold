@@ -42,6 +42,9 @@ class ModelFile < ApplicationRecord
   # Explicitly explain serialization for MariaDB
   attribute :attachment_data, :json
 
+  delegate :indexable?, to: :model
+  delegate :ai_indexable?, to: :model
+
   SUPPORT_KEYWORDS = %w[
     presupported
     presup

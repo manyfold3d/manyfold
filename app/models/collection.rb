@@ -5,6 +5,7 @@ class Collection < ApplicationRecord
   include Sluggable
   include PublicIDable
   include Commentable
+  include Indexable
 
   broadcasts_refreshes
 

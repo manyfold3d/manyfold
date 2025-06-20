@@ -11,6 +11,7 @@
     <%= javascript_include_tag "application", nonce: true, defer: true %>
     <%= stylesheet_link_tag "themes/#{SiteSettings.theme}", nonce: true %>
     <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+    <%= tag.meta name: "robots", content: @indexing_directives if @indexing_directives.presence %>
     <%= yield :head %>
   </head>
 

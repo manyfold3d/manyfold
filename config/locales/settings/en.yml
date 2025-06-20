@@ -34,10 +34,19 @@ en:
         label: Theme
     discovery:
       allow_robots:
-        help: Unless turned on, web crawlers will be asked not to index any public content on this instance.
+        help: Unless turned on, web crawlers will be asked to ignore this entire instance.
         label: Allow web crawlers
+      default_ai_indexable:
+        help_html: Unless turned on, AI training bots will be asked to ignore public content using <a href="https://www.deviantart.com/team/journal/A-New-Directive-for-Opting-Out-of-AI-Datasets-934500371">Deviantart's `noai` directive</a>.
+        label: Allow AI training
+      default_indexable:
+        help: Unless turned on, search engines will be asked to ignore public content by default.
+        label: Allow search indexing
       description: Control how the rest of the world finds your public content. Note that all these settings are advisory; we can't guarantee the good behaviour of other systems.
       heading: Discovery
+      indexing:
+        description: The following options set the site-wide defaults for search indexing preferences on public content (private content is never indexable). Individual models, creators, and collection can override this default with their own setting.
+        heading: Indexing Defaults
     domain_blocks:
       create:
         success: Domain block created successfully.

@@ -12,12 +12,15 @@ class ModelsController < ApplicationController
   before_action :set_returnable, only: [:bulk_edit, :edit, :new]
   before_action :clear_returnable, only: [:bulk_update, :update, :create]
   before_action :get_filters, only: [:bulk_edit, :bulk_update, :index, :show] # rubocop:todo Rails/LexicallyScopedActionFilter
+  before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
+  before_action -> { set_indexable @model }, except: [:bulk_edit, :bulk_update, :index, :new, :create]
 
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
   def index
     @models = filtered_models @filters
     prepare_model_list
+    set_indexable @models
     respond_to do |format|
       format.html { render layout: "card_list_page" }
       format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelListSerializer.new(@models).serialize }
@@ -145,6 +148,7 @@ class ModelsController < ApplicationController
       # Double the normal page size for bulk editing
       @models = @models.page(page).per(helpers.pagination_settings["per_page"] * 2)
     end
+    set_indexable @models
     # Apply tag filters in-place
     @filter_in_place = true
   end

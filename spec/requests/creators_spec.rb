@@ -10,10 +10,54 @@ require "rails_helper"
 #              DELETE /creators/:id(.:format)                                                 creators#destroy
 
 RSpec.describe "Creators" do
-  let(:creator) { create(:creator) }
+  context "when signed out in multiuser mode", :after_first_run, :multiuser do
+    context "with public creator" do
+      let!(:creator) { create(:creator, :public) }
 
-  context "when signed out" do
-    it "needs testing when multiuser is enabled"
+      describe "GET /creators" do
+        it "includes indexing directive header" do
+          allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+          get "/creators"
+          expect(response.headers["X-Robots-Tag"]).to eq "noai noimageai"
+        end
+
+        it "includes indexing directive meta tag" do
+          allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+          get "/creators"
+          expect(response.body).to include %(<meta name="robots" content="noai noimageai">)
+        end
+      end
+
+      describe "GET /creators/:id" do
+        it "returns http success" do
+          get "/creators/#{creator.to_param}"
+          expect(response).to have_http_status(:success)
+        end
+
+        it "includes indexing directive header" do
+          allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+          get "/creators/#{creator.to_param}"
+          expect(response.headers["X-Robots-Tag"]).to eq "noai noimageai"
+        end
+
+        it "includes indexing directive meta tag" do
+          allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: false)
+          get "/creators/#{creator.to_param}"
+          expect(response.body).to include %(<meta name="robots" content="noai noimageai">)
+        end
+      end
+    end
+
+    context "with non-public creator" do
+      let(:creator) { create(:creator) }
+
+      describe "GET /creators/:id" do
+        it "returns not found" do
+          get "/creators/#{creator.to_param}"
+          expect(response).to be_not_found
+        end
+      end
+    end
   end
 
   context "when signed in" do
@@ -71,6 +115,8 @@ RSpec.describe "Creators" do
     end
 
     describe "GET /creators/:id/edit" do
+      let(:creator) { create(:creator) }
+
       before { get "/creators/#{creator.to_param}/edit" }
 
       it "Shows the new creator form", :as_moderator do
@@ -83,6 +129,8 @@ RSpec.describe "Creators" do
     end
 
     describe "GET /creators/:id", :as_member do
+      let(:creator) { create(:creator) }
+
       it "Redirects to a list of models with that creator" do
         get "/creators/#{creator.to_param}"
         expect(response).to have_http_status(:success)
@@ -90,6 +138,8 @@ RSpec.describe "Creators" do
     end
 
     describe "PATCH /creators/:id" do
+      let(:creator) { create(:creator) }
+
       before { patch "/creators/#{creator.to_param}", params: {creator: {slug: "newname"}} }
 
       it "saves details", :as_moderator do
@@ -102,6 +152,8 @@ RSpec.describe "Creators" do
     end
 
     describe "DELETE /creators/:id" do
+      let(:creator) { create(:creator) }
+
       before { delete "/creators/#{creator.to_param}" }
 
       it "removes creator", :as_moderator do

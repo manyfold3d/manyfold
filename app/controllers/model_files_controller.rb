@@ -3,6 +3,7 @@ class ModelFilesController < ApplicationController
 
   before_action :get_model
   before_action :get_file, except: [:create, :bulk_edit, :bulk_update]
+  before_action -> { set_indexable @file }, except: [:create, :bulk_edit, :bulk_update]
 
   skip_after_action :verify_authorized, only: [:bulk_edit, :bulk_update]
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]

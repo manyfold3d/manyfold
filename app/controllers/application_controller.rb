@@ -146,4 +146,13 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path(:user)
     end
   end
+
+  def set_indexable(content)
+    arr = Array(content)
+    @indexing_directives = [
+      ("noindex" unless arr.map(&:indexable?).all?),
+      ("noai noimageai" unless arr.map(&:ai_indexable?).all?)
+    ].compact.join(" ")
+    response.headers["X-Robots-Tag"] = @indexing_directives if @indexing_directives.presence
+  end
 end
