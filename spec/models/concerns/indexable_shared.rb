@@ -8,7 +8,7 @@ shared_examples "Indexable" do
       let(:object) { create(described_class.name.downcase.to_sym) }
 
       it "defaults to inherit" do
-        expect(object.indexable).to eq "inherit"
+        expect(object.indexable).to be_nil
       end
 
       it "uses default indexable value" do
@@ -26,7 +26,7 @@ shared_examples "Indexable" do
       allow(SiteSettings).to receive_messages(default_indexable: true, default_ai_indexable: true)
     end
 
-    let(:object) { create(described_class.name.downcase.to_sym, indexable: :no, ai_indexable: :no) }
+    let(:object) { create(described_class.name.downcase.to_sym, indexable: "no", ai_indexable: "no") }
 
     it "overrides default indexing" do
       expect(object.indexable?).to be false
@@ -46,7 +46,7 @@ shared_examples "IndexableWithCreatorDelegation" do
 
     let(:object) {
       create(described_class.name.downcase.to_sym,
-        creator: create(:creator, indexable: :no, ai_indexable: :no))
+        creator: create(:creator, indexable: "no", ai_indexable: "no"))
     }
 
     it "overrides default indexing" do
@@ -67,7 +67,7 @@ shared_examples "IndexableWithCollectionDelegation" do
 
     let(:object) {
       create(described_class.name.downcase.to_sym,
-        collection: create(:collection, indexable: :no, ai_indexable: :no))
+        collection: create(:collection, indexable: "no", ai_indexable: "no"))
     }
 
     it "overrides default indexing" do

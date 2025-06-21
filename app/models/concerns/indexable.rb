@@ -2,13 +2,13 @@ module Indexable
   extend ActiveSupport::Concern
 
   included do
-    enum :indexable, {inherit: nil, no: 0, yes: 1}, suffix: true
-    enum :ai_indexable, {inherit: nil, no: 0, yes: 1}, suffix: true
+    validates :indexable, inclusion: [nil, "no", "yes"]
+    validates :ai_indexable, inclusion: [nil, "no", "yes"]
   end
 
   def indexable?
     case indexable
-    when "inherit"
+    when nil
       inherited_indexable?
     when "yes"
       true
@@ -19,7 +19,7 @@ module Indexable
 
   def ai_indexable?
     case ai_indexable
-    when "inherit"
+    when nil
       inherited_ai_indexable?
     when "yes"
       true
