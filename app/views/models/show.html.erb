@@ -47,8 +47,6 @@
       <% end %>
     </div>
     <div class="col-md-3" id="sidebar">
-      <% action_content = yield :actions %>
-      <%= card(:secondary, t(".actions_heading"), class: "action-card") { action_content } if action_content.present? %>
       <%= card :secondary, t(".model_details") do %>
         <table class="table table-borderless table-sm">
           <% if SiteSettings.federation_enabled? %>
