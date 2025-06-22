@@ -9,9 +9,9 @@ class RobotsController < ActionController::Base # rubocop:disable Rails/Applicat
   end
 
   def sitemap
-    @creators = policy_scope(Creator).local.filter(&:indexable?)
-    @collections = policy_scope(Collection).local.filter(&:indexable?)
-    @models = policy_scope(Model).local.filter(&:indexable?)
+    @creators = CreatorPolicy::Scope.new(nil, Creator).resolve.local.filter(&:indexable?)
+    @collections = CollectionPolicy::Scope.new(nil, Collection).resolve.local.filter(&:indexable?)
+    @models = ModelPolicy::Scope.new(nil, Model).resolve.local.filter(&:indexable?)
     respond_to do |format|
       format.xml
     end
