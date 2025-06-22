@@ -42,7 +42,6 @@ class ModelsController < ApplicationController
         files = files.reject(&:is_image?)
         @groups = helpers.group(files)
         @num_files = files.count
-        render layout: "card_list_page"
       end
       format.zip do
         download = ArchiveDownloadService.new(model: @model, selection: params[:selection])
