@@ -6,199 +6,204 @@
   <%= tag.link rel: "alternate", type: Mime[:oembed], href: model_url(@model, format: :oembed), title: @model.name %>
 <% end %>
 
-<% content_for :page_header do %>
+<div itemscope itemtype="https://schema.org/3DModel">
   <%= turbo_stream_from @model %>
   <h1>
-    <a contenteditable="plaintext-only"
-       data-controller="editable"
-       data-action="focus->editable#onFocus blur->editable#onBlur"
-       data-editable-field="model[name]"
-       data-editable-path="<%= model_path(@model) %>"><%= @model.name %></a>
+    <span itemprop="name">
+      <a contenteditable="plaintext-only"
+          data-controller="editable"
+          data-action="focus->editable#onFocus blur->editable#onBlur"
+          data-editable-field="model[name]"
+          data-editable-path="<%= model_path(@model) %>"><%= @model.name %></a>
+    </span>
     <%= link_to icon("search", t(".search")),
           "https://yeggi.com/q/#{ERB::Util.url_encode(@model.name)}/",
           class: "btn btn-outline", target: "manyfold_search" %>
   </h1>
-<% end %>
 
-<% content_for :items do %>
-  <% if @locked_files > 0 %>
-    <div class="alert alert-info"><%= t(".preview", count: @locked_files) %></div>
-  <% end %>
+  <div class="row row-cols-md-2 mt-2">
+    <div class="col-md-9" id="item_list">
+      <% if @locked_files > 0 %>
+        <div class="alert alert-info"><%= t(".preview", count: @locked_files) %></div>
+      <% end %>
 
-  <%= render "image_carousel", images: @images %>
+      <%= render "image_carousel", images: @images %>
 
-  <%= card(:secondary) do %>
-    <p class="card-text"><%= markdownify @model.notes %></p>
-  <% end if @model.notes.present? %>
+      <%= card(:secondary) do %>
+        <p class="card-text" itemprop="description"><%= markdownify @model.notes %></p>
+      <% end if @model.notes.present? %>
 
-  <% if @num_files > 0 %>
-    <h2><a name="files"><%= t(".files") %></a></h2>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-      <%= render partial: "file", collection: @groups.delete(nil) %>
+      <% if @num_files > 0 %>
+        <h2><a name="files"><%= t(".files") %></a></h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+          <%= render partial: "file", collection: @groups.delete(nil) %>
+        </div>
+        <% @groups.each_pair do |group, files| %>
+          <h3><a name="<%= group.parameterize %>"><%= group.strip.careful_titleize %>*</a></h3>
+          <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
+            <%= render partial: "file", collection: files %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-    <% @groups.each_pair do |group, files| %>
-      <h3><a name="<%= group.parameterize %>"><%= group.strip.careful_titleize %>*</a></h3>
-      <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-        <%= render partial: "file", collection: files %>
-      </div>
-    <% end %>
-  <% end %>
-<% end %>
-
-<% content_for :sidebar do %>
-  <%= card :secondary, t(".model_details") do %>
-    <table class="table table-borderless table-sm">
-      <% if SiteSettings.federation_enabled? %>
-        <tr>
-          <td>⁂</td>
-          <td><% if @model.remote? %>
-            <small><%= link_to @model.federails_actor.at_address, @model.federails_actor.profile_url, target: "new" %></small>
-          <% else %>
-            <small>
-              <%= @model.federails_actor.short_at_address %>
-              <%= render Components::CopyButton.new(text: @model.federails_actor.at_address) %>
-            </small>
-          <% end %></td>
-        </tr>
-      <% end %>
-      <% if @model.creator %>
-        <tr>
-          <td><%= icon "person", Creator.model_name.human %></td>
-          <td><%= link_to @model.creator.name, @model.creator %></td>
-        </tr>
-      <% end %>
-      <% if @model.collection %>
-        <tr>
-          <td><%= icon "collection", Collection.model_name.human(count: 100) %></td>
-          <td><%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection)) %></td>
-        </tr>
-      <% end %>
-      <% if @model.library %>
-        <tr>
-          <td><%= icon "boxes", Library.model_name.human %></td>
-          <td><%= link_to @model.library.name, models_path((@filters || {}).merge(library: @model.library)) %></td>
-        </tr>
-      <% end %>
-      <% if @model.license %>
-        <tr>
-          <td><%= icon "card-heading", t(".license") %></td>
-          <td>
-            <%= Spdx.licenses[@model.license]&.fetch("reference") ?
-              link_to(t_license(@model.license), Spdx.licenses[@model.license]["reference"]) :
-              t_license(@model.license) %>
-          </td>
-        </tr>
-      <% end %>
-      <% if @model.sensitive %>
-        <tr>
-          <td><%= icon("explicit", Model.human_attribute_name(:sensitive)) %></td>
-          <td>
-            <%= Model.human_attribute_name(:sensitive) %>
-          </td>
-        </tr>
-      <% end %>
-      <tr>
-        <td><%= icon "folder", t(".path") %></td>
-        <td>
-          <%= content_tag(:code, class: "path") { safe_join @model.path.split("/"), safe_join([tag.wbr, "/"]) } %>
-          <% unless @model.contains_other_models? %>
-          <div><%= button_tag(t(".organize.button_text"), class: "btn btn-warning btn-sm", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? && policy(@model).edit? %></div>
+    <div class="col-md-3" id="sidebar">
+      <% action_content = yield :actions %>
+      <%= card(:secondary, t(".actions_heading"), class: "action-card") { action_content } if action_content.present? %>
+      <%= card :secondary, t(".model_details") do %>
+        <table class="table table-borderless table-sm">
+          <% if SiteSettings.federation_enabled? %>
+            <tr>
+              <td>⁂</td>
+              <td><% if @model.remote? %>
+                <small><%= link_to @model.federails_actor.at_address, @model.federails_actor.profile_url, target: "new" %></small>
+              <% else %>
+                <small>
+                  <%= @model.federails_actor.short_at_address %>
+                  <%= render Components::CopyButton.new(text: @model.federails_actor.at_address) %>
+                </small>
+              <% end %></td>
+            </tr>
           <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td><%= icon "tag", t(".tags") %></td>
-        <td><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc) %></td>
-      </tr>
-      <% if SiteSettings.social_enabled? %>
-        <tr>
-          <td><%= icon "people", t(".followers") %></td>
-          <td><%= t("general.followers", count: @model.followers.count) %></td>
-        </tr>
+          <% if @model.creator %>
+            <tr>
+              <td><%= icon "person", Creator.model_name.human %></td>
+              <td><%= link_to @model.creator.name, @model.creator, itemprop: "author" %></td>
+            </tr>
+          <% end %>
+          <% if @model.collection %>
+            <tr>
+              <td><%= icon "collection", Collection.model_name.human(count: 100) %></td>
+              <td><%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection)) %></td>
+            </tr>
+          <% end %>
+          <% if @model.library %>
+            <tr>
+              <td><%= icon "boxes", Library.model_name.human %></td>
+              <td><%= link_to @model.library.name, models_path((@filters || {}).merge(library: @model.library)) %></td>
+            </tr>
+          <% end %>
+          <% if @model.license %>
+            <tr>
+              <td><%= icon "card-heading", t(".license") %></td>
+              <td>
+                <%= Spdx.licenses[@model.license]&.fetch("reference") ?
+                  link_to(t_license(@model.license), Spdx.licenses[@model.license]["reference"], itemprop: "license") :
+                  t_license(@model.license) %>
+              </td>
+            </tr>
+          <% end %>
+          <% if @model.sensitive %>
+            <tr>
+              <td><%= icon("explicit", Model.human_attribute_name(:sensitive)) %></td>
+              <td>
+                <%= Model.human_attribute_name(:sensitive) %>
+              </td>
+            </tr>
+          <% end %>
+          <tr>
+            <td><%= icon "folder", t(".path") %></td>
+            <td>
+              <%= content_tag(:code, class: "path") { safe_join @model.path.split("/"), safe_join([tag.wbr, "/"]) } %>
+              <% unless @model.contains_other_models? %>
+              <div><%= button_tag(t(".organize.button_text"), class: "btn btn-warning btn-sm", "data-bs-toggle": "modal", "data-bs-target": "#confirm-move") if @model.needs_organizing? && policy(@model).edit? %></div>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= icon "tag", t(".tags") %></td>
+            <td><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc) %></td>
+          </tr>
+          <% if SiteSettings.social_enabled? %>
+            <tr>
+              <td><%= icon "people", t(".followers") %></td>
+              <td><%= t("general.followers", count: @model.followers.count) %></td>
+            </tr>
+          <% end %>
+          <% if @model.public? %>
+            <tr>
+              <td><%= icon("eye", t("general.visibility")) %></td>
+              <td><%= t("general.public") %></td>
+            </tr>
+          <% end %>
+        </table>
+        <%= render Components::FollowButton.new(follower: current_user, target: @model) unless @model.remote? %>
+        <%= render Components::GoButton.new(icon: "pencil", label: t("general.edit"), href: edit_model_path(@model), variant: "primary") if policy(@model).edit? %>
+        <%= render Components::DoButton.new(icon: "trash", label: t("general.delete"), href: model_path(@model), method: :delete, variant: "outline-danger", confirm: translate("models.destroy.confirm")) if policy(@model).destroy? %>
       <% end %>
-      <% if @model.public? %>
-        <tr>
-          <td><%= icon("eye", t("general.visibility")) %></td>
-          <td><%= t("general.public") %></td>
-        </tr>
-      <% end %>
-    </table>
-    <%= render Components::FollowButton.new(follower: current_user, target: @model) unless @model.remote? %>
-    <%= render Components::GoButton.new(icon: "pencil", label: t("general.edit"), href: edit_model_path(@model), variant: "primary") if policy(@model).edit? %>
-    <%= render Components::DoButton.new(icon: "trash", label: t("general.delete"), href: model_path(@model), method: :delete, variant: "outline-danger", confirm: translate("models.destroy.confirm")) if policy(@model).destroy? %>
-  <% end %>
 
-  <div class="mb-3 w-100 text-center">
-    <%= render Components::DownloadButton.new(model: @model) %>
-  </div>
+      <div class="mb-3 w-100 text-center">
+        <%= render Components::DownloadButton.new(model: @model) %>
+      </div>
 
-  <%= card :secondary, t("layouts.card_list_page.actions_heading") do %>
-    <%= render Components::ReportButton.new(object: @model, path: new_model_report_path(@model)) %>
-  <% end if SiteSettings.multiuser_enabled? %>
+      <%= card :secondary, t("layouts.card_list_page.actions_heading") do %>
+        <%= render Components::ReportButton.new(object: @model, path: new_model_report_path(@model)) %>
+      <% end if SiteSettings.multiuser_enabled? %>
 
-  <% if !@model.parents.empty? && policy(@model).merge? %>
-    <%= card :danger, t(".merge.heading") do %>
-      <p>
-        <%= t(".merge.warning") %>
-      </p>
-      <strong><%= t(".merge.with") %>:</strong>
-      <% @model.parents.each do |target| %>
-        <%= link_to target.name, merge_model_path(@model, target: target), class: "btn btn-danger", method: :post %>
-      <% end %>
-    <% end %>
-  <% end %>
-
-  <%= render partial: "problem", collection: @model.problems.visible(problem_settings) %>
-
-  <%= card :secondary, t(".files_card.heading") do %>
-    <a href="#files">Top</a>
-    <ul>
-      <% @groups.each_pair do |group, files| %>
-        <li><a href="#<%= group.parameterize %>"><%= group.strip.careful_titleize %>*</a></li>
-      <% end %>
-    </ul>
-    <%= link_to t(".files_card.bulk_edit"), bulk_edit_model_model_files_path(@model), class: "btn btn-secondary" if policy(@model).edit? %>
-    <%= link_to t(".rescan"), scan_model_path(@model), class: "btn btn-warning", method: :post if policy(@model).scan? %>
-  <% end %>
-
-  <%= render "links_card", links: @model.links %>
-
-  <div class="modal fade" id="confirm-move" data-bs-backdrop='static' tabindex="-1" aria-labelledby="confirmMoveLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <div class="modal-title" id="confirmMoveLabel"><%= t(".organize.button_text") %></div>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
+      <% if !@model.parents.empty? && policy(@model).merge? %>
+        <%= card :danger, t(".merge.heading") do %>
           <p>
-            <%= t(".organize.confirm.summary_html", from: @model.path, to: @model.formatted_path) %>
+            <%= t(".merge.warning") %>
           </p>
-          <p>
-            <%= t(".organize.confirm.are_you_sure") %>
-          </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t(".organize.confirm.no") %></button>
-          <%= button_to t(".organize.confirm.yes"), model_path(@model, "model[organize]": true), method: :patch, class: "btn btn-warning" %>
+          <strong><%= t(".merge.with") %>:</strong>
+          <% @model.parents.each do |target| %>
+            <%= link_to target.name, merge_model_path(@model, target: target), class: "btn btn-danger", method: :post %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <%= render partial: "problem", collection: @model.problems.visible(problem_settings) %>
+
+      <%= card :secondary, t(".files_card.heading") do %>
+        <a href="#files">Top</a>
+        <ul>
+          <% @groups.each_pair do |group, files| %>
+            <li><a href="#<%= group.parameterize %>"><%= group.strip.careful_titleize %>*</a></li>
+          <% end %>
+        </ul>
+        <%= link_to t(".files_card.bulk_edit"), bulk_edit_model_model_files_path(@model), class: "btn btn-secondary" if policy(@model).edit? %>
+        <%= link_to t(".rescan"), scan_model_path(@model), class: "btn btn-warning", method: :post if policy(@model).scan? %>
+      <% end %>
+
+      <%= render "links_card", links: @model.links %>
+
+      <div class="modal fade" id="confirm-move" data-bs-backdrop='static' tabindex="-1" aria-labelledby="confirmMoveLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-title" id="confirmMoveLabel"><%= t(".organize.button_text") %></div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                <%= t(".organize.confirm.summary_html", from: @model.path, to: @model.formatted_path) %>
+              </p>
+              <p>
+                <%= t(".organize.confirm.are_you_sure") %>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t(".organize.confirm.no") %></button>
+              <%= button_to t(".organize.confirm.yes"), model_path(@model, "model[organize]": true), method: :patch, class: "btn btn-warning" %>
+            </div>
+          </div>
         </div>
       </div>
+
+      <% if policy(@model).upload? %>
+        <%= card :warning, t(".upload_card.heading") do %>
+          <%= form_with url: model_model_files_path(@model), id: "upload-form", class: "d-grid" do |form| %>
+
+            <%= content_tag :div, nil, class: "mb-3", data: {
+                  controller: "upload",
+                  action: "turbo:morph@window->upload#reconnect",
+                  max_file_size: SiteSettings.max_file_upload_size,
+                  allowed_file_types: input_accept_string,
+                  upload_endpoint: upload_path
+                } %>
+            <%= submit_tag translate(".submit"), class: "btn btn-primary d-block" %>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
-
-  <% if policy(@model).upload? %>
-    <%= card :warning, t(".upload_card.heading") do %>
-      <%= form_with url: model_model_files_path(@model), id: "upload-form", class: "d-grid" do |form| %>
-
-        <%= content_tag :div, nil, class: "mb-3", data: {
-              controller: "upload",
-              action: "turbo:morph@window->upload#reconnect",
-              max_file_size: SiteSettings.max_file_upload_size,
-              allowed_file_types: input_accept_string,
-              upload_endpoint: upload_path
-            } %>
-        <%= submit_tag translate(".submit"), class: "btn btn-primary d-block" %>
-      <% end %>
-    <% end %>
-  <% end %>
-<% end %>
+</div>

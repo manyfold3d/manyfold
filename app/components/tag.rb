@@ -16,10 +16,12 @@ class Components::Tag < Components::Base
 
   def view_template
     new_filters = @filters.merge(tag: @filters[:tag] | [@tag.name])
-    link_to (@filter_in_place ? new_filters : models_path(new_filters)), @html_options do
-      parts = [@tag.name]
-      parts << "(#{@tag.taggings_count})" if @show_count
-      parts.join " "
+    span itemprop: "keywords" do
+      link_to (@filter_in_place ? new_filters : models_path(new_filters)), @html_options do
+        parts = [@tag.name]
+        parts << "(#{@tag.taggings_count})" if @show_count
+        parts.join " "
+      end
     end
   end
 end
