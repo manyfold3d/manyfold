@@ -1,5 +1,70 @@
-User-agent: *
+<%- unless SiteSettings.allow_ai_bots %>
+# Block all known AI crawlers and assistants
+# from using content for training AI models.
+# Source: https://robotstxt.com/ai
+User-Agent: GPTBot
+User-Agent: ClaudeBot
+User-Agent: Claude-User
+User-Agent: Claude-SearchBot
+User-Agent: CCBot
+User-Agent: Google-Extended
+User-Agent: Applebot-Extended
+User-Agent: Facebookbot
+User-Agent: Meta-ExternalAgent
+User-Agent: Meta-ExternalFetcher
+User-Agent: diffbot
+User-Agent: PerplexityBot
+User-Agent: Perplexity-User
+User-Agent: Omgili
+User-Agent: Omgilibot
+User-Agent: webzio-extended
+User-Agent: ImagesiftBot
+User-Agent: Bytespider
+User-Agent: TikTokSpider
+User-Agent: Amazonbot
+User-Agent: Youbot
+User-Agent: SemrushBot-OCOB
+User-Agent: Petalbot
+User-Agent: VelenPublicWebCrawler
+User-Agent: TurnitinBot
+User-Agent: Timpibot
+User-Agent: OAI-SearchBot
+User-Agent: ICC-Crawler
+User-Agent: AI2Bot
+User-Agent: AI2Bot-Dolma
+User-Agent: DataForSeoBot
+User-Agent: AwarioBot
+User-Agent: AwarioSmartBot
+User-Agent: AwarioRssBot
+User-Agent: Google-CloudVertexBot
+User-Agent: PanguBot
+User-Agent: Kangaroo Bot
+User-Agent: Sentibot
+User-Agent: img2dataset
+User-Agent: Meltwater
+User-Agent: Seekr
+User-Agent: peer39_crawler
+User-Agent: cohere-ai
+User-Agent: cohere-training-data-crawler
+User-Agent: DuckAssistBot
+User-Agent: Scrapy
+User-Agent: Cotoyogi
+User-Agent: aiHitBot
+User-Agent: Factset_spyderbot
+User-Agent: FirecrawlAgent
+Disallow: /
+Content-Usage: ai=n
+DisallowAITraining: /
+<%- end %>
+
+User-Agent: *
+<%- unless SiteSettings.allow_ai_bots %>
+# Include generic "do not train" directives
+DisallowAITraining: /
+Content-Usage: ai=n
+<%- end %>
 <%= SiteSettings.allow_robots ? "Allow" : "Disallow" %>: /
+
 <%- if SiteSettings.allow_robots %>
 Sitemap: <%= sitemap_url format: :xml %>
 <%- end %>
