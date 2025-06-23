@@ -19,6 +19,7 @@ module ModelListable
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
+    @unrelated_tag_count = nil if @filters.empty?
 
     if helpers.pagination_settings["models"]
       page = params[:page] || 1
