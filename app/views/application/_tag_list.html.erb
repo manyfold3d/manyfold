@@ -26,6 +26,6 @@
     <% end %>
   </ul>
 <% end %>
-<% if defined?(unrelated_tag_count) && unrelated_tag_count > 0 %>
+<% if defined?(unrelated_tag_count) && unrelated_tag_count && unrelated_tag_count > 0 %>
   <p class="small"><%= t ".unrelated_tag_count", count: unrelated_tag_count %></p>
 <% end %>

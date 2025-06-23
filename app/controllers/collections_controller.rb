@@ -11,13 +11,16 @@ class CollectionsController < ApplicationController
 
   def index
     @collections = policy_scope(Collection)
-    unless @filters.empty?
+    if @filters.empty?
+      @models = policy_scope(Model).all
+    else
       @models = filtered_models @filters
       @collections = filtered_collections @filters
     end
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
+    @unrelated_tag_count = nil if @filters.empty?
 
     # Ordering
     @collections = case session["order"]
