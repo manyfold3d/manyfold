@@ -47,5 +47,11 @@ FactoryBot.define do
       caber_relations_attributes { [{subject: nil, permission: "view"}] }
       creator factory: [:creator, :public]
     end
+
+    trait :remote do
+      after(:create) do |model|
+        model.federails_actor.update_attribute(:local, false) # rubocop:disable Rails/SkipsModelValidations
+      end
+    end
   end
 end

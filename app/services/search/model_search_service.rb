@@ -1,6 +1,9 @@
 class Search::ModelSearchService
   def initialize(scope)
-    @scope = scope
+    base = scope.includes("federails_actor")
+    @scope = base.where("federails_actor.local": true).or(
+      base.where("federails_actor.local": false, indexable: "yes")
+    )
   end
 
   def search(query)
