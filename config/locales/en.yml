@@ -3,12 +3,16 @@ en:
   activerecord:
     attributes:
       collection:
+        ai_indexable: Allow use for AI training
         caption: Caption
         collection_id: Collection
+        indexable: Allow search indexing
         name: Name
         notes: Notes
       creator:
+        ai_indexable: Allow use for AI training
         caption: Tagline
+        indexable: Allow search indexing
         name: Creator Name
         notes: Description
         slug: Handle
