@@ -22,4 +22,8 @@ shared_examples "GenericDeserializer" do
   it "sets notes from content" do
     expect(output.notes).to eq actor.extensions["content"]
   end
+
+  it "sets indexable field" do
+    expect(output.indexable?).to eq actor.extensions["indexable"]
+  end
 end
