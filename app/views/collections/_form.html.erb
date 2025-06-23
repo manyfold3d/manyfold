@@ -33,13 +33,15 @@
       <%= errors_for form.object, :indexable %>
     </div>
   </div>
-  <div class="row mb-3 input-group">
-    <%= form.label :ai_indexable, class: "col-sm-2 col-form-label" %>
-    <div class="col p-0">
-      <%= form.select :ai_indexable, ai_indexable_select_options(form.object), class: "form-control form-select" %>
-      <%= errors_for form.object, :ai_indexable %>
+  <% if SiteSettings.allow_ai_bots %>
+    <div class="row mb-3 input-group">
+      <%= form.label :ai_indexable, class: "col-sm-2 col-form-label" %>
+      <div class="col p-0">
+        <%= form.select :ai_indexable, ai_indexable_select_options(form.object), class: "form-control form-select" %>
+        <%= errors_for form.object, :ai_indexable %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <%= render "caber_relations_form", form: form %>
   <%= form.submit translate("general.save"), class: "btn btn-primary float-start" %>
 <% end %>
