@@ -53,6 +53,7 @@ FactoryBot.define do
           "spdx:license": {
             "spdx:licenseId": "MIT"
           },
+          indexable: true,
           attachment: [
             {
               "type" => "Link",
@@ -73,6 +74,7 @@ FactoryBot.define do
           summary: Faker::Lorem.sentence,
           content: Faker::Lorem.paragraph,
           "f3di:concreteType": "Creator",
+          indexable: true,
           attachment: [
             {
               "type" => "Link",
@@ -93,6 +95,7 @@ FactoryBot.define do
           summary: Faker::Lorem.sentence,
           content: Faker::Lorem.paragraph,
           "f3di:concreteType": "Creator",
+          indexable: true,
           attachment: [
             {
               "type" => "Link",

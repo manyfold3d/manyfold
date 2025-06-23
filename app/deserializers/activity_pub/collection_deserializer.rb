@@ -17,8 +17,8 @@ module ActivityPub
         links: [], # Overwrite existing links
         links_attributes: parse_link_attributes(@object),
         caption: @object.extensions&.dig("summary"),
-        notes: @object.extensions&.dig("content")
-        # collection: parse from @object.extensions["context"]
+        notes: @object.extensions&.dig("content"),
+        indexable: (@object.extensions&.dig("indexable") == true) ? "yes" : "no"
       }
     end
   end

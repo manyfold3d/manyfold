@@ -8,7 +8,10 @@ module ActivityPub
           {
             spdx: "http://spdx.org/rdf/terms#",
             f3di: "http://purl.org/f3di/ns#",
-            Hashtag: "as:Hashtag"
+            toot: "http://joinmastodon.org/ns#",
+            Hashtag: "as:Hashtag",
+            sensitive: "as:sensitive",
+            indexable: "toot:indexable"
           }
         ],
         summary: @object.caption,
@@ -16,6 +19,7 @@ module ActivityPub
         "f3di:concreteType": "3DModel",
         attachment: @object.links.map { |it| {type: "Link", href: it.url} },
         sensitive: @object.sensitive,
+        indexable: @object.indexable?,
         tag: hashtags,
         attributedTo: short_creator(@object.creator),
         context: short_collection(@object.collection),

@@ -21,9 +21,8 @@ module ActivityPub
         caption: @object.extensions&.dig("summary"),
         notes: @object.extensions&.dig("content"),
         tag_list: parse_tags(@object),
-        # creator: parse from @object.extensions["attributedTo"]
-        # collection: parse from @object.extensions["context"]
-        license: @object.extensions&.dig("spdx:license", "spdx:licenseId")
+        license: @object.extensions&.dig("spdx:license", "spdx:licenseId"),
+        indexable: (@object.extensions&.dig("indexable") == true) ? "yes" : "no"
       }
     end
 
