@@ -74,7 +74,7 @@
               <td><%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection)) %></td>
             </tr>
           <% end %>
-          <% if @model.library %>
+          <% if SiteSettings.show_libraries || current_user&.is_administrator? %>
             <tr>
               <td><%= icon "boxes", Library.model_name.human %></td>
               <td><%= link_to @model.library.name, models_path((@filters || {}).merge(library: @model.library)) %></td>
