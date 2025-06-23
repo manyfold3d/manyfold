@@ -570,7 +570,6 @@ nl:
     report: Rapporteer %{type}
     save: Opslaan
     view: Bekijken
-    visibility:
   home:
     activity:
       created:

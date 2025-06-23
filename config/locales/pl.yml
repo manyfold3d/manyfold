@@ -559,7 +559,6 @@ pl:
     report: Zgłoś %{type}
     save: Zapisz
     view: Widok
-    visibility:
   home:
     activity:
       created: dodane %{time} temu

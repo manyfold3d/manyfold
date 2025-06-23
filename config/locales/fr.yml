@@ -562,7 +562,6 @@ fr:
     report: Rapporter %{type}
     save: Sauvegarder
     view: Afficher
-    visibility:
   home:
     activity:
       created:
