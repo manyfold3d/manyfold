@@ -40,6 +40,7 @@ class SiteSettings < RailsSettings::Base
   field :download_expiry_time_in_hours, type: :integer, default: 24
 
   field :allow_robots, type: :boolean, default: false
+  field :allow_ai_bots, type: :boolean, default: false
   field :default_indexable, type: :boolean, default: false
   field :default_ai_indexable, type: :boolean, default: false
 
