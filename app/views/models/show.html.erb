@@ -117,12 +117,10 @@
               <td><%= t("general.followers", count: @model.followers.count) %></td>
             </tr>
           <% end %>
-          <% if @model.public? %>
-            <tr>
-              <td><%= icon("eye", t("general.visibility")) %></td>
-              <td><%= t("general.public") %></td>
-            </tr>
-          <% end %>
+          <tr>
+            <td><%= render Components::AccessIndicator.new(object: @model, text: false) %></td>
+            <td><%= render Components::AccessIndicator.new(object: @model, text: true, icon: false) %></td>
+          </tr>
         </table>
         <%= render Components::FollowButton.new(follower: current_user, target: @model) unless @model.remote? %>
         <%= render Components::GoButton.new(icon: "pencil", label: t("general.edit"), href: edit_model_path(@model), variant: "primary") if policy(@model).edit? %>

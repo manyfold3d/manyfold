@@ -21,6 +21,10 @@ module CaberObject
     Pundit::PolicyFinder.new(self.class).policy.new(nil, self).show?
   end
 
+  def private?
+    caber_relations.where(subject_type: "Role").or(caber_relations.where(subject: nil)).none?
+  end
+
   def just_became_public?
     public? && @was_private
   end

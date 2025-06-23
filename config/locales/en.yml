@@ -582,9 +582,11 @@ en:
       zero: "%{count} Followers"
     menu: Menu
     new: New
-    public: Public
+    private: Private
+    public: Publicly visible
     report: Report %{type}
     save: Save
+    shared: Shared with local users
     view: View
     visibility: Visibility
   home:
