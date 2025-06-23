@@ -49,7 +49,7 @@ en:
       link:
         url: Link
       model:
-        ai_indexable: Allow AI training bots
+        ai_indexable: Allow use for AI training
         caption: Caption
         collection_id: Collection
         creator_id: Creator
@@ -588,7 +588,6 @@ en:
     save: Save
     shared: Shared with local users
     view: View
-    visibility: Visibility
   home:
     activity:
       created: added %{time} ago

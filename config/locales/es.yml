@@ -559,7 +559,6 @@ es:
     report: Informe %{type}
     save: Guardar
     view: Ver
-    visibility: Visibilidad
   home:
     activity:
       created: añadido hace %{time}

@@ -559,7 +559,6 @@ de:
     report: Melde %{type}
     save: Speichern
     view: Siehe
-    visibility:
   home:
     activity:
       created: hinzugefügt vor %{time}

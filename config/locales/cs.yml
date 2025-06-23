@@ -559,7 +559,6 @@ cs:
     report: Nahlásit %{type}
     save: Uložit
     view: Zobrazení
-    visibility:
   home:
     activity:
       created: 'přidáno před %{time} '
