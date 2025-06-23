@@ -5,6 +5,10 @@ class Components::AccessIndicator < Components::Base
     @text = text
   end
 
+  def render?
+    SiteSettings.multiuser_enabled? && !@object.remote? && current_user&.has_permission_on?("own", @object)
+  end
+
   def view_template
     span do
       if @object.private?
