@@ -10,6 +10,13 @@
       <small><%= t(".allow_robots.help") %></small>
     </div>
   </div>
+  <div class="row mb-2">
+    <%= form.label nil, t(".allow_ai_bots.label"), for: "discovery[allow_ai_bots]", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8 form-check form-switch">
+      <%= form.check_box "discovery[allow_ai_bots]", checked: SiteSettings.allow_ai_bots, class: "form-check-input" %>
+      <small><%= t(".allow_ai_bots.help") %></small>
+    </div>
+  </div>
   <hr>
   <h4><%= t(".indexing.heading") %></h4>
   <p>
