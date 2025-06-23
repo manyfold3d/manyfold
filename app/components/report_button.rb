@@ -11,7 +11,8 @@ class Components::ReportButton < Components::Base
       icon: "flag",
       href: @path,
       label: t("general.report", type: @object.model_name.human),
-      variant: "outline-warning"
+      variant: "outline-warning",
+      nofollow: true
     )
   end
 

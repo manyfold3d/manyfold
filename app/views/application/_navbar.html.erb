@@ -33,12 +33,12 @@
       </ul>
       <ul class="navbar-nav col-auto pe-4 align-self-start justify-content-end">
         <li class="nav-item">
-          <%= nav_link "upload", t(".upload"), new_model_path, style: "btn btn-warning btn-sm me-1 mt-1", text_style: "d-md-none d-lg-inline" if policy(:upload).index? %>
+          <%= nav_link "upload", t(".upload"), new_model_path, nofollow: true, style: "btn btn-warning btn-sm me-1 mt-1", text_style: "d-md-none d-lg-inline" if policy(:upload).index? %>
         </li>
         <li class="nav-item">
           <% if policy(:library).scan? %>
             <% if @scan_in_progress %>
-              <%= nav_link "", t(".scanning"), activity_path, style: "btn btn-outline-warning btn-sm me-1 mt-lg-1", icon_style: "spinner-border spinner-border-sm" %>
+              <%= nav_link "", t(".scanning"), activity_path, nofollow: true, style: "btn btn-outline-warning btn-sm me-1 mt-lg-1", icon_style: "spinner-border spinner-border-sm" %>
             <% else %>
               <div class="btn-group">
                 <button type="button" data-bs-toggle="dropdown" aria-expanded="false"
@@ -46,8 +46,8 @@
                   <%= t ".scan" %>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><%= link_to t(".scan_changes"), scan_libraries_path, method: :post, class: "dropdown-item" %></li>
-                  <li><%= link_to t(".check_existing"), scan_libraries_path(type: :check), method: :post, class: "dropdown-item" %>
+                  <li><%= link_to t(".scan_changes"), scan_libraries_path, method: :post, nofollow: true, class: "dropdown-item" %></li>
+                  <li><%= link_to t(".check_existing"), scan_libraries_path(type: :check), method: :post, nofollow: true, class: "dropdown-item" %>
                 </ul>
               </div>
             <% end %>
@@ -68,17 +68,17 @@
           <% end %>
           <% if policy(:activity).index? %>
             <li class="nav-item">
-              <%= nav_link "activity", t(".activity"), activity_path, text_style: "d-md-none" %>
+              <%= nav_link "activity", t(".activity"), activity_path, nofollow: true, text_style: "d-md-none" %>
             </li>
           <% end %>
           <% if policy(:settings).index? %>
             <li class="nav-item">
-              <%= nav_link "gear", t(".settings"), settings_path, text_style: "d-md-none" %>
+              <%= nav_link "gear", t(".settings"), settings_path, nofollow: true, text_style: "d-md-none" %>
             </li>
           <% end %>
           <% if policy(:user).index? and not policy(:settings).index? %>
             <li class="nav-item">
-              <%= nav_link "people", t(".moderator_settings"), settings_users_path, text_style: "d-md-none" %>
+              <%= nav_link "people", t(".moderator_settings"), settings_users_path, nofollow: true, text_style: "d-md-none" %>
             </li>
           <% end %>
         <% end %>
@@ -89,7 +89,7 @@
         </li>
         <%- if current_user %>
           <li class="nav-item">
-            <%= nav_link "sliders", t(".account"), edit_user_registration_path, text_style: "d-md-none" %>
+            <%= nav_link "sliders", t(".account"), edit_user_registration_path, nofollow: true, text_style: "d-md-none" %>
           </li>
         <% end %>
         <%- if SiteSettings.multiuser_enabled? %>
@@ -97,7 +97,7 @@
             <%- if current_user %>
               <%= nav_link "box-arrow-right", t(".log_out"), destroy_user_session_path, method: :delete, title: translate(".log_out"), text_style: "d-md-none" %>
             <% else %>
-              <%= nav_link "box-arrow-in-right", t(".log_in"), new_user_session_path, title: translate(".log_in"), style: "btn btn-secondary" %>
+              <%= nav_link "box-arrow-in-right", t(".log_in"), new_user_session_path, title: translate(".log_in"), nofollow: true, style: "btn btn-secondary" %>
             <% end %>
           </li>
         <%- end %>
