@@ -53,18 +53,14 @@ export default class extends Controller {
       }
     })
     this.element.closest('form')?.addEventListener('formdata', (event) => {
-      const uploads = this.uppy?.getFiles().map((f) => {
-        return {
-          id: f.tus?.uploadUrl,
-          storage: 'cache',
-          metadata: {
-            filename: f.name,
-            size: f.size,
-            mime_type: f.type
-          }
+      this.uppy?.getFiles().forEach((f, index) => {
+        if (f.tus?.uploadUrl != null) {
+          event.formData.set(`file[${index}][id]`, f.tus?.uploadUrl)
+          if (f.name != null) { event.formData.set(`file[${index}][name]`, f.name) }
+          if (f.size != null) { event.formData.set(`file[${index}][size]`, f.size.toString()) }
+          if (f.type != null) { event.formData.set(`file[${index}][type]`, f.type) }
         }
       })
-      event.formData.set('uploads', JSON.stringify(uploads))
     })
   }
 

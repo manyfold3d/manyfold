@@ -36,16 +36,19 @@ class ModelFilesController < ApplicationController
       file = ModelFile.find_param(params[:convert][:id])
       file.convert_later params[:convert][:to]
       redirect_back_or_to [@model, file], notice: t(".conversion_started")
-    elsif params[:uploads]
-      uploads = begin
-        JSON.parse(params[:uploads])
-      rescue
-        []
-      end
-      uploads.each do |upload|
+    elsif !(p = upload_params).empty?
+      p[:file].each_pair do |_id, file|
         ProcessUploadedFileJob.perform_later(
           @model.library.id,
-          upload,
+          {
+            id: file[:id],
+            storage: "cache",
+            metadata: {
+              filename: file[:name],
+              size: file[:size],
+              mime_type: file[:type]
+            }
+          },
           model: @model
         )
       end
@@ -177,5 +180,9 @@ class ModelFilesController < ApplicationController
 
   def embedded?
     params[:embed] == "true"
+  end
+
+  def upload_params
+    params.permit(file: [[:id, :name, :size, :type]])
   end
 end

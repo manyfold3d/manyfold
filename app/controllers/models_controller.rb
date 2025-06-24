@@ -73,16 +73,19 @@ class ModelsController < ApplicationController
   def create
     authorize :model
     library = SiteSettings.show_libraries ? Library.find_param(params[:library]) : Library.default
-    uploads = begin
-      JSON.parse(params[:uploads])
-    rescue
-      []
-    end
-
-    uploads.each do |upload|
+    p = upload_params
+    p[:file].each_pair do |_id, file|
       ProcessUploadedFileJob.perform_later(
         library.id,
-        upload,
+        {
+          id: file[:id],
+          storage: "cache",
+          metadata: {
+            filename: file[:name],
+            size: file[:size],
+            mime_type: file[:type]
+          }
+        },
         owner: current_user,
         creator_id: params[:creator_id],
         collection_id: params[:collection_id],
@@ -90,7 +93,6 @@ class ModelsController < ApplicationController
         tags: params[:add_tags]
       )
     end
-
     redirect_to models_path, notice: t(".success")
   end
 
@@ -256,5 +258,11 @@ class ModelsController < ApplicationController
 
   def clear_returnable
     session[:return_after_new] = nil
+  end
+
+  def upload_params
+    params.permit(
+      file: [[:id, :name, :size, :type]]
+    )
   end
 end
