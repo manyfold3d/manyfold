@@ -1,7 +1,7 @@
 class ProcessUploadedFileJob < ApplicationJob
   queue_as :critical
 
-  def perform(library_id, uploaded_file, owner: nil, creator_id: nil, collection_id: nil, tags: nil, license: nil, model: nil)
+  def perform(library_id, uploaded_file, owner: nil, creator_id: nil, collection_id: nil, tags: nil, license: nil, model: nil, sensitive: nil)
     # Find library
     library = Library.find(library_id)
     return if library.nil?
@@ -15,7 +15,8 @@ class ProcessUploadedFileJob < ApplicationJob
       creator_id: creator_id,
       collection_id: collection_id,
       tag_list: tags,
-      license: license
+      license: license,
+      sensitive: sensitive
     }.compact
     # Create model
     new_model = false

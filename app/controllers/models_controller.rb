@@ -72,8 +72,8 @@ class ModelsController < ApplicationController
 
   def create
     authorize :model
-    library = SiteSettings.show_libraries ? Library.find_param(params[:library]) : Library.default
     p = upload_params
+    library = SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
     p[:file].each_pair do |_id, file|
       ProcessUploadedFileJob.perform_later(
         library.id,
@@ -87,10 +87,11 @@ class ModelsController < ApplicationController
           }
         },
         owner: current_user,
-        creator_id: params[:creator_id],
-        collection_id: params[:collection_id],
-        license: params[:license],
-        tags: params[:add_tags]
+        creator_id: p[:creator_id],
+        collection_id: p[:collection_id],
+        license: p[:license],
+        sensitive: (p[:sensitive] == "1"),
+        tags: p[:add_tags]
       )
     end
     redirect_to models_path, notice: t(".success")
@@ -262,6 +263,12 @@ class ModelsController < ApplicationController
 
   def upload_params
     params.permit(
+      :creator_id,
+      :collection_id,
+      :library,
+      :license,
+      :sensitive,
+      add_tags: [],
       file: [[:id, :name, :size, :type]]
     )
   end
