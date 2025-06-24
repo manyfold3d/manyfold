@@ -76,7 +76,6 @@ es:
       tokens:
         collection: El título de la colección en la que se encuentra el modelo, si está establecido.
         creator: El nombre del creador, si se ha establecido.
-        model_id: Un identificador numérico único para el modelo. Recomendamos encarecidamente incluirlo siempre al final del modelo para evitar conflictos de nombres en el disco.
         model_name: Una versión segura para el sistema de ficheros del nombre del modelo.
         tags_html: 'una serie de carpetas anidadas, una para cada etiqueta, ordenadas según su popularidad. Por ejemplo: <code>fantasía/humano/mago</code>'
     general:
