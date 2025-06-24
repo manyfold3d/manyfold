@@ -1418,6 +1418,227 @@
           }
         }
       }
+    },
+    "/upload": {
+      "options": {
+        "summary": "Details of upload capabilities",
+        "tags": [
+          "File Uploading"
+        ],
+        "description": "Manyfold uses the Tus protocol for resumable uploading; see https://tus.io/protocols/resumable-upload for full details.",
+        "security": [
+          {
+            "client_credentials": [
+              "upload"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Upload capabilities",
+            "headers": {
+              "Tus-Resumable": {
+                "schema": {
+                  "type": "string",
+                  "example": "1.0.0",
+                  "description": "Tus protocol version"
+                }
+              },
+              "Tus-Version": {
+                "schema": {
+                  "type": "string",
+                  "example": "1.0.0,0.2.2,0.2.1",
+                  "description": "Comma separated versions of the Tus protocol supported by the server"
+                }
+              },
+              "Tus-Extension": {
+                "schema": {
+                  "type": "string",
+                  "example": "creation,termination,expiration,concatenation",
+                  "description": "Comma separated list of Tus protocol extensions supported by the server"
+                }
+              },
+              "Tus-Max-Size": {
+                "schema": {
+                  "type": "integer",
+                  "example": 1073741824,
+                  "description": "The maximum file size that can be uploaded to the server"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new upload",
+        "tags": [
+          "File Uploading"
+        ],
+        "description": "Manyfold uses the Tus protocol for resumable uploading; see https://tus.io/protocols/resumable-upload for full details.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Tus-Resumable",
+            "description": "Tus protocol version",
+            "example": "1.0.0",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Upload-Length",
+            "description": "Total size of upload, in bytes",
+            "example": 0,
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Upload-Metadata",
+            "description": "See https://tus.io/protocols/resumable-upload#upload-metadata",
+            "required": false
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "upload"
+            ]
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Upload created successfully",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string",
+                  "example": "/upload/24e533e02ec3bc40c387f1a0e460e216",
+                  "description": "URL for the newly created upload"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/upload/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "example": "24e533e02ec3bc40c387f1a0e460e216",
+          "required": true
+        },
+        {
+          "in": "header",
+          "name": "Tus-Resumable",
+          "description": "Tus protocol version",
+          "example": "1.0.0",
+          "required": true
+        }
+      ],
+      "head": {
+        "summary": "Get status of upload",
+        "tags": [
+          "File Uploading"
+        ],
+        "description": "Manyfold uses the Tus protocol for resumable uploading; see https://tus.io/protocols/resumable-upload for full details.",
+        "security": [
+          {
+            "client_credentials": [
+              "upload"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Upload status",
+            "headers": {
+              "Tus-Resumable": {
+                "schema": {
+                  "type": "string",
+                  "example": "1.0.0",
+                  "description": "Tus protocol version"
+                }
+              },
+              "Upload-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": 1024,
+                  "description": "The expected total length of the file to be uploaded"
+                }
+              },
+              "Upload-Offset": {
+                "schema": {
+                  "type": "integer",
+                  "example": 384,
+                  "description": "The number of bytes of the file that have been uploaded so far"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Upload bytes at specified offset",
+        "tags": [
+          "File Uploading"
+        ],
+        "description": "Manyfold uses the Tus protocol for resumable uploading; see https://tus.io/protocols/resumable-upload for full details.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Upload-Offset",
+            "description": "File offset for bytes being sent. Must be the same as current Upload-Offset value reported by the HEAD request.",
+            "example": 384,
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Content-Length",
+            "description": "The number of bytes being sent in the POST body",
+            "example": 128,
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "upload"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Upload successful",
+            "headers": {
+              "Upload-Offset": {
+                "schema": {
+                  "type": "integer",
+                  "description": "The new upload offset after the uploaded bytes have been added",
+                  "example": 512
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/offset+octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "byte"
+              }
+            }
+          },
+          "required": true
+        }
+      }
     }
   },
   "servers": [
