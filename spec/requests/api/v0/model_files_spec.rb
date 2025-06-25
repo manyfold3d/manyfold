@@ -2,6 +2,59 @@
 require "swagger_helper"
 
 describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
+  path "/models/{model_id}/model_files" do
+    post "Add a new file to a model" do
+      tags "Files"
+      consumes Mime[:manyfold_api_v0].to_s
+      produces Mime[:manyfold_api_v0].to_s
+      security [client_credentials: ["write"]]
+
+      parameter name: :model_id, in: :path, type: :string, required: true, example: "abc123"
+      parameter name: :body, in: :body, schema: ManyfoldApi::V0::UploadedFileDeserializer.schema_ref
+
+      let(:model) { create(:model, creator: create(:creator), collection: create(:collection)) }
+      let(:model_id) { model.to_param }
+
+      response "202", "Accepted; the files will be added to the model after processing" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) {
+          {
+            files: [
+              id: "https://example.com/uploads/tus_id",
+              name: "test.stl",
+              size: 1234,
+              type: "model/stl"
+            ]
+          }
+        }
+
+        run_test! do # rubocop:disable RSpec/ExampleLength
+          expect(ProcessUploadedFileJob).to have_been_enqueued.with(Library.first.id, {
+            id: "https://example.com/uploads/tus_id",
+            storage: "cache",
+            metadata: {
+              filename: "test.stl",
+              size: 1234,
+              mime_type: "model/stl"
+            }
+          }, model: model).once
+        end
+      end
+
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
+  end
+
   path "/models/{model_id}/model_files/{id}" do
     parameter name: :model_id, in: :path, type: :string, required: true, example: "abc123"
     parameter name: :id, in: :path, type: :string, required: true, example: "def456"

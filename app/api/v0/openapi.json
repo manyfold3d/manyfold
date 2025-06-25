@@ -998,6 +998,52 @@
         }
       }
     },
+    "/models/{model_id}/model_files": {
+      "post": {
+        "summary": "Add a new file to a model",
+        "tags": [
+          "Files"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "example": "abc123",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted; the files will be added to the model after processing"
+          },
+          "401": {
+            "description": "Unauthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.manyfold.v0+json": {
+              "schema": {
+                "$ref": "#/components/schemas/uploaded_file_request"
+              }
+            }
+          }
+        }
+      }
+    },
     "/models/{model_id}/model_files/{id}": {
       "parameters": [
         {
@@ -2509,6 +2555,45 @@
           "@type",
           "isPartOf",
           "encodingFormat"
+        ]
+      },
+      "uploaded_file_request": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "The ID of a completed upload, obtained from the upload endpoints",
+                  "example": "http://example.com/uploads/abc123456def"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "model.stl"
+                },
+                "size": {
+                  "type": "integer",
+                  "example": 1234
+                },
+                "type": {
+                  "type": "string",
+                  "example": "model/stl"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "type",
+                "size"
+              ]
+            }
+          }
+        },
+        "required": [
+          "files"
         ]
       }
     }

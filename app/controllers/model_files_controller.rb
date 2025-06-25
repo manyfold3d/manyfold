@@ -52,7 +52,10 @@ class ModelFilesController < ApplicationController
           model: @model
         )
       end
-      redirect_to @model, notice: t(".success")
+      respond_to do |format|
+        format.html { redirect_to @model, notice: t(".success") }
+        format.manyfold_api_v0 { head :accepted }
+      end
     else
       head :unprocessable_entity
     end
