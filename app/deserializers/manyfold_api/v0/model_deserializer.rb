@@ -9,7 +9,7 @@ module ManyfoldApi::V0
         caption: @object["caption"],
         notes: @object["description"],
         links_attributes: @object["links"]&.map { |it| LinkDeserializer.new(it).deserialize },
-        license: @object.dig("spdx:License", "licenseId"),
+        license: @object.dig("spdx:license", "licenseId"),
         sensitive: @object["sensitive"],
         preview_file: dereference(@object.dig("preview_file", "@id"), ModelFile),
         tag_list: @object["keywords"]

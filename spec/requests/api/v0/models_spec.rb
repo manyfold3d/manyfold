@@ -161,7 +161,7 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
 
       response "422", "Update failed due to invalid data" do
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
-        let(:body) { {"spdx:License" => {"licenseId" => "Ceci n'est pas un License"}} }
+        let(:body) { {"spdx:license" => {"licenseId" => "Ceci n'est pas un License"}} }
 
         run_test! do
           expect(response.parsed_body["license"]).to include("is not a valid license")
