@@ -1340,6 +1340,40 @@
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
           }
         }
+      },
+      "post": {
+        "summary": "Create new models from uploaded files",
+        "tags": [
+          "Models"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "202": {
+            "description": "Accepted; the files will be processed and turned into new models"
+          },
+          "401": {
+            "description": "Unauthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.manyfold.v0+json": {
+              "schema": {
+                "$ref": "#/components/schemas/uploaded_model_request"
+              }
+            }
+          }
+        }
       }
     },
     "/models/{id}": {
@@ -2589,6 +2623,91 @@
                 "type",
                 "size"
               ]
+            }
+          }
+        },
+        "required": [
+          "files"
+        ]
+      },
+      "uploaded_model_request": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "The ID of a completed upload, obtained from the upload endpoints",
+                  "example": "http://example.com/uploads/abc123456def"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "model.stl"
+                },
+                "size": {
+                  "type": "integer",
+                  "example": 1234
+                },
+                "type": {
+                  "type": "string",
+                  "example": "model/stl"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "type",
+                "size"
+              ]
+            }
+          },
+          "creator": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/creators/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Organization"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "isPartOf": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/collections/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Collection"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "spdx:license": {
+            "$ref": "#/components/schemas/spdxLicense"
+          },
+          "sensitive": {
+            "type": "boolean",
+            "example": true
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "tag"
             }
           }
         },

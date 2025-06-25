@@ -94,7 +94,10 @@ class ModelsController < ApplicationController
         tags: p[:add_tags]
       )
     end
-    redirect_to models_path, notice: t(".success")
+    respond_to do |format|
+      format.html { redirect_to models_path, notice: t(".success") }
+      format.manyfold_api_v0 { head :accepted }
+    end
   end
 
   def update
