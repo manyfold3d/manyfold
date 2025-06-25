@@ -234,6 +234,15 @@ class ModelsController < ApplicationController
     end
   end
 
+  def upload_params
+    if is_api_request?
+      raise ActionController::BadRequest unless params[:json]
+      ManyfoldApi::V0::UploadedFileDeserializer.new(params[:json]).deserialize
+    else
+      Form::UploadedFileDeserializer.new(params).deserialize
+    end
+  end
+
   def get_model
     @model = policy_scope(Model).find_param(params[:id])
     authorize @model
@@ -259,17 +268,5 @@ class ModelsController < ApplicationController
 
   def clear_returnable
     session[:return_after_new] = nil
-  end
-
-  def upload_params
-    params.permit(
-      :creator_id,
-      :collection_id,
-      :library,
-      :license,
-      :sensitive,
-      add_tags: [],
-      file: [[:id, :name, :size, :type]]
-    )
   end
 end

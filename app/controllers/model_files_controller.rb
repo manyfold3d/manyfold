@@ -154,6 +154,15 @@ class ModelFilesController < ApplicationController
     end
   end
 
+  def upload_params
+    if is_api_request?
+      raise ActionController::BadRequest unless params[:json]
+      ManyfoldApi::V0::UploadedFileDeserializer.new(params[:json]).deserialize
+    else
+      Form::UploadedFileDeserializer.new(params).deserialize
+    end
+  end
+
   def get_model
     @model = Model.find_param(params[:model_id])
   end
@@ -180,9 +189,5 @@ class ModelFilesController < ApplicationController
 
   def embedded?
     params[:embed] == "true"
-  end
-
-  def upload_params
-    params.permit(file: [[:id, :name, :size, :type]])
   end
 end
