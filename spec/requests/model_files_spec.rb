@@ -189,8 +189,18 @@ RSpec.describe "Model Files" do
           }}
         }
 
-        it "queues post-upload job" do
-          expect { post model_model_files_path(model, params: params) }.to have_enqueued_job(ProcessUploadedFileJob)
+        it "queues post-upload job" do # rubocop:disable RSpec/ExampleLength
+          expect { post model_model_files_path(model, params: params) }
+            .to have_enqueued_job(ProcessUploadedFileJob)
+            .with(Library.first.id, {
+              id: "upload_key",
+              storage: "cache",
+              metadata: {
+                filename: "test.stl",
+                size: "42",
+                mime_type: "model/stl"
+              }
+            }, model: model).once
         end
       end
 
