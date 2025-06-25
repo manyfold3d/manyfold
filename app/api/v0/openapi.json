@@ -998,6 +998,52 @@
         }
       }
     },
+    "/models/{model_id}/model_files": {
+      "post": {
+        "summary": "Add a new file to a model",
+        "tags": [
+          "Files"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "example": "abc123",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted; the files will be added to the model after processing"
+          },
+          "401": {
+            "description": "Unauthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.manyfold.v0+json": {
+              "schema": {
+                "$ref": "#/components/schemas/uploaded_file_request"
+              }
+            }
+          }
+        }
+      }
+    },
     "/models/{model_id}/model_files/{id}": {
       "parameters": [
         {
@@ -1294,6 +1340,40 @@
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
           }
         }
+      },
+      "post": {
+        "summary": "Create new models from uploaded files",
+        "tags": [
+          "Models"
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "write"
+            ]
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "202": {
+            "description": "Accepted; the files will be processed and turned into new models"
+          },
+          "401": {
+            "description": "Unauthorized; the request did not provide valid authentication details"
+          },
+          "403": {
+            "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/vnd.manyfold.v0+json": {
+              "schema": {
+                "$ref": "#/components/schemas/uploaded_model_request"
+              }
+            }
+          }
+        }
       }
     },
     "/models/{id}": {
@@ -1416,6 +1496,227 @@
           "403": {
             "description": "Forbidden; the provided credentials do not have permission to perform the requested action"
           }
+        }
+      }
+    },
+    "/upload": {
+      "options": {
+        "summary": "Details of upload capabilities",
+        "tags": [
+          "File Uploading"
+        ],
+        "description": "Manyfold uses the Tus protocol for resumable uploading; see https://tus.io/protocols/resumable-upload for full details.",
+        "security": [
+          {
+            "client_credentials": [
+              "upload"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Upload capabilities",
+            "headers": {
+              "Tus-Resumable": {
+                "schema": {
+                  "type": "string",
+                  "example": "1.0.0",
+                  "description": "Tus protocol version"
+                }
+              },
+              "Tus-Version": {
+                "schema": {
+                  "type": "string",
+                  "example": "1.0.0,0.2.2,0.2.1",
+                  "description": "Comma separated versions of the Tus protocol supported by the server"
+                }
+              },
+              "Tus-Extension": {
+                "schema": {
+                  "type": "string",
+                  "example": "creation,termination,expiration,concatenation",
+                  "description": "Comma separated list of Tus protocol extensions supported by the server"
+                }
+              },
+              "Tus-Max-Size": {
+                "schema": {
+                  "type": "integer",
+                  "example": 1073741824,
+                  "description": "The maximum file size that can be uploaded to the server"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new upload",
+        "tags": [
+          "File Uploading"
+        ],
+        "description": "Manyfold uses the Tus protocol for resumable uploading; see https://tus.io/protocols/resumable-upload for full details.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Tus-Resumable",
+            "description": "Tus protocol version",
+            "example": "1.0.0",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Upload-Length",
+            "description": "Total size of upload, in bytes",
+            "example": 0,
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Upload-Metadata",
+            "description": "See https://tus.io/protocols/resumable-upload#upload-metadata",
+            "required": false
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "upload"
+            ]
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Upload created successfully",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string",
+                  "example": "/upload/24e533e02ec3bc40c387f1a0e460e216",
+                  "description": "URL for the newly created upload"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/upload/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "example": "24e533e02ec3bc40c387f1a0e460e216",
+          "required": true
+        },
+        {
+          "in": "header",
+          "name": "Tus-Resumable",
+          "description": "Tus protocol version",
+          "example": "1.0.0",
+          "required": true
+        }
+      ],
+      "head": {
+        "summary": "Get status of upload",
+        "tags": [
+          "File Uploading"
+        ],
+        "description": "Manyfold uses the Tus protocol for resumable uploading; see https://tus.io/protocols/resumable-upload for full details.",
+        "security": [
+          {
+            "client_credentials": [
+              "upload"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Upload status",
+            "headers": {
+              "Tus-Resumable": {
+                "schema": {
+                  "type": "string",
+                  "example": "1.0.0",
+                  "description": "Tus protocol version"
+                }
+              },
+              "Upload-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": 1024,
+                  "description": "The expected total length of the file to be uploaded"
+                }
+              },
+              "Upload-Offset": {
+                "schema": {
+                  "type": "integer",
+                  "example": 384,
+                  "description": "The number of bytes of the file that have been uploaded so far"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Upload bytes at specified offset",
+        "tags": [
+          "File Uploading"
+        ],
+        "description": "Manyfold uses the Tus protocol for resumable uploading; see https://tus.io/protocols/resumable-upload for full details.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Upload-Offset",
+            "description": "File offset for bytes being sent. Must be the same as current Upload-Offset value reported by the HEAD request.",
+            "example": 384,
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "Content-Length",
+            "description": "The number of bytes being sent in the POST body",
+            "example": 128,
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "client_credentials": [
+              "upload"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Upload successful",
+            "headers": {
+              "Upload-Offset": {
+                "schema": {
+                  "type": "integer",
+                  "description": "The new upload offset after the uploaded bytes have been added",
+                  "example": 512
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/offset+octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "byte"
+              }
+            }
+          },
+          "required": true
         }
       }
     }
@@ -2288,6 +2589,130 @@
           "@type",
           "isPartOf",
           "encodingFormat"
+        ]
+      },
+      "uploaded_file_request": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "The ID of a completed upload, obtained from the upload endpoints",
+                  "example": "http://example.com/uploads/abc123456def"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "model.stl"
+                },
+                "size": {
+                  "type": "integer",
+                  "example": 1234
+                },
+                "type": {
+                  "type": "string",
+                  "example": "model/stl"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "type",
+                "size"
+              ]
+            }
+          }
+        },
+        "required": [
+          "files"
+        ]
+      },
+      "uploaded_model_request": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "The ID of a completed upload, obtained from the upload endpoints",
+                  "example": "http://example.com/uploads/abc123456def"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "model.stl"
+                },
+                "size": {
+                  "type": "integer",
+                  "example": 1234
+                },
+                "type": {
+                  "type": "string",
+                  "example": "model/stl"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "type",
+                "size"
+              ]
+            }
+          },
+          "creator": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/creators/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Organization"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "isPartOf": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/collections/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "Collection"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "spdx:license": {
+            "$ref": "#/components/schemas/spdxLicense"
+          },
+          "sensitive": {
+            "type": "boolean",
+            "example": true
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "tag"
+            }
+          }
+        },
+        "required": [
+          "files"
         ]
       }
     }

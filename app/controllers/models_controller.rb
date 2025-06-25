@@ -72,26 +72,32 @@ class ModelsController < ApplicationController
 
   def create
     authorize :model
-    library = SiteSettings.show_libraries ? Library.find_param(params[:library]) : Library.default
-    uploads = begin
-      JSON.parse(params[:uploads])
-    rescue
-      []
-    end
-
-    uploads.each do |upload|
+    p = upload_params
+    library = SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
+    p[:file].each_pair do |_id, file|
       ProcessUploadedFileJob.perform_later(
         library.id,
-        upload,
+        {
+          id: file[:id],
+          storage: "cache",
+          metadata: {
+            filename: file[:name],
+            size: file[:size],
+            mime_type: file[:type]
+          }
+        },
         owner: current_user,
-        creator_id: params[:creator_id],
-        collection_id: params[:collection_id],
-        license: params[:license],
-        tags: params[:add_tags]
+        creator_id: p[:creator_id],
+        collection_id: p[:collection_id],
+        license: p[:license],
+        sensitive: (p[:sensitive] == "1"),
+        tags: p[:add_tags]
       )
     end
-
-    redirect_to models_path, notice: t(".success")
+    respond_to do |format|
+      format.html { redirect_to models_path, notice: t(".success") }
+      format.manyfold_api_v0 { head :accepted }
+    end
   end
 
   def update
@@ -228,6 +234,15 @@ class ModelsController < ApplicationController
       ManyfoldApi::V0::ModelDeserializer.new(params[:json]).deserialize
     else
       Form::ModelDeserializer.new(params).deserialize
+    end
+  end
+
+  def upload_params
+    if is_api_request?
+      raise ActionController::BadRequest unless params[:json]
+      ManyfoldApi::V0::UploadedModelDeserializer.new(params[:json]).deserialize
+    else
+      Form::UploadedModelDeserializer.new(params).deserialize
     end
   end
 

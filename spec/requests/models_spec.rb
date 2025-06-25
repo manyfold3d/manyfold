@@ -378,17 +378,61 @@ RSpec.describe "Models" do
       end
 
       describe "POST /models" do
-        before { post "/models", params: {library: library.to_param, scan: "1", uploads: "{}"} }
+        let(:creator) { create(:creator) }
+        let(:collection) { create(:collection) }
+        let(:post_models) {
+          post "/models", params: {
+            library: library.to_param,
+            scan: "1",
+            file: {
+              "0" => {
+                id: "upload_key",
+                name: "test.stl",
+                size: 42,
+                type: "model/stl"
+              }
+            },
+            creator_id: creator.id,
+            collection_id: collection.id,
+            license: "MIT",
+            sensitive: "1",
+            add_tags: ["tag1", "tag2"]
+          }
+        }
+
+        it "enqueues processing job", :as_contributor do # rubocop:disable RSpec/ExampleLength
+          expect { post_models }
+            .to have_enqueued_job(ProcessUploadedFileJob)
+            .with(Library.first.id,
+              {
+                id: "upload_key",
+                storage: "cache",
+                metadata: {
+                  filename: "test.stl",
+                  size: "42",
+                  mime_type: "model/stl"
+                }
+              },
+              owner: User.last,
+              creator_id: creator.id.to_s,
+              collection_id: collection.id.to_s,
+              license: "MIT",
+              sensitive: true,
+              tags: ["tag1", "tag2"]).once
+        end
 
         it "redirect back to index after upload", :as_contributor do
+          post_models
           expect(response).to redirect_to("/models")
         end
 
         it "clears returnable session param", :as_contributor do
+          post_models
           expect(session[:return_after_new]).to be_nil
         end
 
         it "denies member permission", :as_member do
+          post_models
           expect(response).to have_http_status(:forbidden)
         end
       end
