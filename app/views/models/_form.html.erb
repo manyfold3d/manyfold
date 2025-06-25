@@ -37,33 +37,10 @@
   <%= render "links_form", form: form %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
-
-  <div class="row mb-3 input-group">
-    <%= form.label :license, class: "col-sm-2 col-form-label" %>
-    <div class="col p-0">
-      <%= form.select :license, license_select_options(selected: @model.license), {include_blank: true}, class: "form-control form-select" %>
-      <%= errors_for @model, :license %>
-    </div>
-  </div>
-
+  <%= select_input_row form, :license, license_select_options(selected: @model.license), include_blank: true %>
   <%= checkbox_input_row form, :sensitive %>
-
-  <div class="row mb-3 input-group">
-    <%= form.label :indexable, class: "col-sm-2 col-form-label" %>
-    <div class="col p-0">
-      <%= form.select :indexable, indexable_select_options(form.object), class: "form-control form-select" %>
-      <%= errors_for form.object, :indexable %>
-    </div>
-  </div>
-  <% if SiteSettings.allow_ai_bots %>
-    <div class="row mb-3 input-group">
-      <%= form.label :ai_indexable, class: "col-sm-2 col-form-label" %>
-      <div class="col p-0">
-        <%= form.select :ai_indexable, ai_indexable_select_options(form.object), class: "form-control form-select" %>
-        <%= errors_for form.object, :ai_indexable %>
-      </div>
-    </div>
-  <% end %>
+  <%= select_input_row form, :indexable, indexable_select_options(form.object) %>
+  <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots %>
   <%= render "caber_relations_form", form: form %>
 
   <%= form.submit "Save", class: "btn btn-primary" %>
