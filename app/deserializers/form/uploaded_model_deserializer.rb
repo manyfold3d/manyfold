@@ -10,7 +10,7 @@ module Form
         :sensitive,
         add_tags: [],
         file: [
-          [:id, :name, :size, :type]
+          [:id, :name]
         ]
       )
     end

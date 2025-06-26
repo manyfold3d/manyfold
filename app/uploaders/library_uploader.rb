@@ -7,6 +7,7 @@ class LibraryUploader < Shrine
   plugin :add_metadata
   plugin :refresh_metadata
   plugin :metadata_attributes, size: "size"
+  plugin :restore_cached_data
   plugin :keep_files
   plugin :determine_mime_type
   plugin :rack_response

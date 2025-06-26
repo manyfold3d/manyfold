@@ -44,9 +44,7 @@ class ModelFilesController < ApplicationController
             id: file[:id],
             storage: "cache",
             metadata: {
-              filename: file[:name],
-              size: file[:size],
-              mime_type: file[:type]
+              filename: file[:name]
             }
           },
           model: @model

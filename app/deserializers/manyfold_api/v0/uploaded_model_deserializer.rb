@@ -22,9 +22,7 @@ module ManyfoldApi::V0
               type: :object,
               properties: {
                 id: {type: :string, description: "The ID of a completed upload, obtained from the upload endpoints", example: "http://example.com/uploads/abc123456def"},
-                name: {type: :string, example: "model.stl"},
-                size: {type: :integer, example: 1234},
-                type: {type: :string, example: "model/stl"}
+                name: {type: :string, example: "model.stl"}
               },
               required: [:id, :name, :type, :size]
             }

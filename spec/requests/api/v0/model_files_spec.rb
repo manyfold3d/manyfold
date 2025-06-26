@@ -21,9 +21,7 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
           {
             files: [
               id: "https://example.com/uploads/tus_id",
-              name: "test.stl",
-              size: 1234,
-              type: "model/stl"
+              name: "test.stl"
             ]
           }
         }
@@ -33,9 +31,7 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
             id: "https://example.com/uploads/tus_id",
             storage: "cache",
             metadata: {
-              filename: "test.stl",
-              size: 1234,
-              mime_type: "model/stl"
+              filename: "test.stl"
             }
           }, model: model).once
         end
