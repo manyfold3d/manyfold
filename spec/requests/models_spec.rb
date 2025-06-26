@@ -387,9 +387,7 @@ RSpec.describe "Models" do
             file: {
               "0" => {
                 id: "upload_key",
-                name: "test.stl",
-                size: 42,
-                type: "model/stl"
+                name: "test.stl"
               }
             },
             creator_id: creator.id,
@@ -408,9 +406,7 @@ RSpec.describe "Models" do
                 id: "upload_key",
                 storage: "cache",
                 metadata: {
-                  filename: "test.stl",
-                  size: "42",
-                  mime_type: "model/stl"
+                  filename: "test.stl"
                 }
               },
               owner: User.last,

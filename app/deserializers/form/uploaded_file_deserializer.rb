@@ -4,7 +4,7 @@ module Form
       return nil unless @params
       @params.permit(
         file: [
-          [:id, :name, :size, :type]
+          [:id, :name]
         ]
       )
     end

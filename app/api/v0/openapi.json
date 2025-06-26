@@ -2607,14 +2607,6 @@
                 "name": {
                   "type": "string",
                   "example": "model.stl"
-                },
-                "size": {
-                  "type": "integer",
-                  "example": 1234
-                },
-                "type": {
-                  "type": "string",
-                  "example": "model/stl"
                 }
               },
               "required": [
@@ -2646,14 +2638,6 @@
                 "name": {
                   "type": "string",
                   "example": "model.stl"
-                },
-                "size": {
-                  "type": "integer",
-                  "example": 1234
-                },
-                "type": {
-                  "type": "string",
-                  "example": "model/stl"
                 }
               },
               "required": [

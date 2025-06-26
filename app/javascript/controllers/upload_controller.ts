@@ -57,8 +57,6 @@ export default class extends Controller {
         if (f.tus?.uploadUrl != null) {
           event.formData.set(`file[${index}][id]`, f.tus?.uploadUrl)
           if (f.name != null) { event.formData.set(`file[${index}][name]`, f.name) }
-          if (f.size != null) { event.formData.set(`file[${index}][size]`, f.size.toString()) }
-          if (f.type != null) { event.formData.set(`file[${index}][type]`, f.type) }
         }
       })
     })
