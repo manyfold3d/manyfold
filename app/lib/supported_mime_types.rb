@@ -74,7 +74,16 @@ module SupportedMimeTypes
         "text/html",
         "application/msword",
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        "application/octet-stream"
+        "application/octet-stream",
+        "application/x-gerber",
+        "application/x-gerber-job",
+        "application/x-excellon",
+        "application/x-kicad-project",
+        "application/x-kicad-footprint",
+        "application/x-kicad-pcb",
+        "application/x-kicad-symbol",
+        "application/x-kicad-schematic",
+        "application/x-kicad-worksheet"
       ].include?(type.to_s)
     end
 
