@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/manyfold3d/rubocop-pundit.git
-  revision: 10ac81bbec63a9abd3d58be84dc47d9c490b29c6
+  revision: 1f511e087a58867279ca8d77e0bb97dc2ce2da75
   specs:
     rubocop-pundit (0.1.0)
       rubocop
@@ -711,7 +711,7 @@ GEM
     rswag-ui (2.16.0)
       actionpack (>= 5.2, < 8.1)
       railties (>= 5.2, < 8.1)
-    rubocop (1.75.6)
+    rubocop (1.75.8)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -722,7 +722,7 @@ GEM
       rubocop-ast (>= 1.44.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.44.1)
+    rubocop-ast (1.45.1)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
     rubocop-capybara (2.22.1)
