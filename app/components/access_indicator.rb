@@ -6,7 +6,7 @@ class Components::AccessIndicator < Components::Base
   end
 
   def render?
-    SiteSettings.multiuser_enabled? && !@object.remote? && current_user&.has_permission_on?("own", @object)
+    SiteSettings.multiuser_enabled? && !@object.remote? && (current_user&.has_permission_on?("own", @object) || current_user&.is_moderator?)
   end
 
   def view_template
