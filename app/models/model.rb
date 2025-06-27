@@ -165,18 +165,29 @@ class Model < ApplicationRecord
     save!
   end
 
-  def split!(files: [])
-    new_model = dup
+  def self.create_from(other, link_preview_file:)
+    new_model = other.dup
     new_model.update(
-      name: "Copy of #{name}",
+      name: "Copy of #{other.name}",
       public_id: nil,
-      tags: tags,
-      preview_file: files.include?(preview_file) ? preview_file : nil,
-      caber_relations_attributes: caber_relations.all.map { |it| {permission: it.permission, subject: it.subject} }
+      tags: other.tags,
+      preview_file: link_preview_file ? other.preview_file : nil
+      # caber_relations_attributes: caber_relations.all.map { |it| {permission: it.permission, subject: it.subject} }
     )
     new_model.organize!
+    # Wipe permissions and copy from old model
+    new_model.caber_relations.delete_all
+    new_model.update!(
+      caber_relations_attributes: other.caber_relations.all.map { |it| {permission: it.permission, subject: it.subject} }
+    )
+    new_model
+  end
+
+  def split!(files: [])
+    preview_file_will_move = files.include?(preview_file)
+    new_model = Model.create_from(self, link_preview_file: preview_file_will_move)
     # Clear preview file if it was moved
-    update!(preview_file: nil) if files.include?(preview_file)
+    update!(preview_file: nil) if preview_file_will_move
     # Move files
     files.each do |file|
       file.update!(model: new_model)
