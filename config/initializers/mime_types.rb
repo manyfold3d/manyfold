@@ -55,3 +55,15 @@ Mime::Type.register "text/markdown", :md
 Mime::Type.register "application/msword", :doc
 Mime::Type.register "application/vnd.openxmlformats-officedocument.wordprocessingml.document", :docx
 Mime::Type.register "application/octet-stream", :bin
+
+# Hardware files, using types from KiCad source:
+# https://gitlab.com/kicad/code/kicad/-/tree/master/resources/linux/mime
+Mime::Type.register "application/x-gerber", :gbr, ["application/vnd.gerber"], ["gerber", "geb", "gb"]
+Mime::Type.register "application/x-gerber-job", :gbrjob
+Mime::Type.register "application/x-excellon", :drl
+Mime::Type.register "application/x-kicad-project", :kicad_pro, [], ["pro"]
+Mime::Type.register "application/x-kicad-footprint", :kicad_mod
+Mime::Type.register "application/x-kicad-pcb", :kicad_pcb
+Mime::Type.register "application/x-kicad-symbol", :kicad_sym
+Mime::Type.register "application/x-kicad-schematic", :kicad_sch, [], ["sch"]
+Mime::Type.register "application/x-kicad-worksheet", :kicad_wks
