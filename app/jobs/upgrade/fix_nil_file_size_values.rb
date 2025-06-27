@@ -11,5 +11,7 @@ class Upgrade::FixNilFileSizeValues < ApplicationJob
   def each_iteration(modelfile)
     modelfile.attachment_attacher.refresh_metadata!
     modelfile.save(touch: false)
+  rescue Shrine::FileNotFound
+    Rails.logger.info("File not found during FixNilFileSizeValues upgrade job: #{modelfile.path_within_library}")
   end
 end
