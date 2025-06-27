@@ -30,7 +30,6 @@ module CaberObject
   end
 
   def assign_default_permissions
-    return if caber_relations.count > 0
     # Grant local view access by default
     role = SiteSettings.default_viewer_role
     grant_permission_to("view", Role.find_or_create_by(name: role)) if role.presence

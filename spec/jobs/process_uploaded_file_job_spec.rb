@@ -65,6 +65,12 @@ RSpec.describe ProcessUploadedFileJob do
       expect(Model.last.permitted_users.with_permission(:own)).to include uploader
     end
 
+    it "Sets default visibility even if a owner is provided" do
+      allow(SiteSettings).to receive(:default_viewer_role).and_return("member")
+      job.perform(library.id, file, owner: uploader)
+      expect(Model.last.permitted_roles.with_permission(:view)).to include Role.find_by(name: "member")
+    end
+
     it "Stores creator if provided" do
       creator = create(:creator)
       job.perform(library.id, file, creator_id: creator.id)

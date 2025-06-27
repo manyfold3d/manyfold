@@ -342,7 +342,8 @@ RSpec.describe Model do
       member_role = Role.find_by(name: :member)
       model.revoke_permission("view", member_role)
       new_model = model.split! files: [model.model_files.first]
-      expect(new_model.caber_relations.count).to eq model.caber_relations.count
+      expect(model.caber_relations.count).to eq 1
+      expect(new_model.caber_relations.count).to eq 1
       model.caber_relations.each do |relation|
         expect(new_model.grants_permission_to?(relation.permission, relation.subject)).to be true
       end
