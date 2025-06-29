@@ -603,6 +603,7 @@ en:
       title: Browsing
     federation:
       content_html: This Manyfold instance is part of the <a href="https://jointhefediverse.net">Fediverse</a>, a network of social media sites that all work together. That means that if you have an account here, you can follow content on other Manyfold instances, or people can follow your content from other platforms like Mastodon.
+      creator_handle_html: 'The fediverse handle of your creator profile is: <code>%{handle}</code>.'
       following: If you know the handle of someone or something you want to follow, just enter it in the search box; otherwise, enter your personal handle above when you follow something on another instance.
       handle_html: 'Your fediverse handle is: <code>%{handle}</code>'
       title: Federation
