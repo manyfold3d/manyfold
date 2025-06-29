@@ -4,7 +4,7 @@ pl:
     attributes:
       collection:
         caption: Napis
-        collection_id: Kolekcja
+        collection: Kolekcja
         name: Nazwa
         notes: Notatki
       creator:

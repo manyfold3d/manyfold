@@ -5,7 +5,7 @@ en:
       collection:
         ai_indexable: Allow use for AI training
         caption: Caption
-        collection_id: Collection
+        collection: Parent Collection
         indexable: Allow search indexing
         name: Name
         notes: Notes

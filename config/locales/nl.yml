@@ -4,7 +4,7 @@ nl:
     attributes:
       collection:
         caption: Onderschrift
-        collection_id: Collectie
+        collection: Collectie
         name: Naam
         notes: Notities
       creator:

@@ -4,7 +4,7 @@ fr:
     attributes:
       collection:
         caption: Légende
-        collection_id: Collection
+        collection: Collection
         name: Nom
         notes: Notes
       creator:

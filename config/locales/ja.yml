@@ -4,7 +4,7 @@ ja:
     attributes:
       collection:
         caption: キャプション
-        collection_id: コレクション
+        collection: コレクション
         name: 名称
         notes: ノート
       creator:

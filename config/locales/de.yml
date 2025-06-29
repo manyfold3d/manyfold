@@ -4,7 +4,7 @@ de:
     attributes:
       collection:
         caption: Beschreibung
-        collection_id: Kollektion
+        collection: Kollektion
         name: Name
         notes: Notizen
       creator:
