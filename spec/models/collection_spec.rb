@@ -30,6 +30,21 @@ RSpec.describe Collection do
     end
   end
 
+  context "when updating a collection" do
+    let(:parent) { create(:collection) }
+    let(:collection) { create(:collection) }
+
+    it "can set parent collection" do
+      collection.update(collection: parent)
+      expect(collection).to be_valid
+    end
+
+    it "cannot set parent collection to self" do
+      collection.update(collection: collection)
+      expect(collection).not_to be_valid
+    end
+  end
+
   context "when making a collection public" do
     let!(:collection) { create(:collection) }
 
