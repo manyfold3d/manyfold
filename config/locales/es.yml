@@ -4,7 +4,7 @@ es:
     attributes:
       collection:
         caption: Subtítulo
-        collection_id: Colección
+        collection: Colección
         name: Nombre
         notes: Notas
       creator:
