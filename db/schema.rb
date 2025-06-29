@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_21_223410) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_29_212656) do
   create_table "altcha_solutions", force: :cascade do |t|
     t.string "algorithm"
     t.string "challenge"
@@ -49,11 +49,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_21_223410) do
     t.string "indexable"
     t.string "ai_indexable"
     t.index ["collection_id"], name: "index_collections_on_collection_id"
+    t.index ["created_at"], name: "index_collections_on_created_at"
     t.index ["creator_id"], name: "index_collections_on_creator_id"
     t.index ["name"], name: "index_collections_on_name", unique: true
     t.index ["name_lower"], name: "index_collections_on_name_lower"
     t.index ["public_id"], name: "index_collections_on_public_id"
     t.index ["slug"], name: "index_collections_on_slug", unique: true
+    t.index ["updated_at"], name: "index_collections_on_updated_at"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -86,10 +88,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_21_223410) do
     t.virtual "name_lower", type: :string, as: "LOWER(name)", stored: true
     t.string "indexable"
     t.string "ai_indexable"
+    t.index ["created_at"], name: "index_creators_on_created_at"
     t.index ["name"], name: "index_creators_on_name", unique: true
     t.index ["name_lower"], name: "index_creators_on_name_lower"
     t.index ["public_id"], name: "index_creators_on_public_id"
     t.index ["slug"], name: "index_creators_on_slug", unique: true
+    t.index ["updated_at"], name: "index_creators_on_updated_at"
   end
 
   create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
@@ -274,6 +278,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_21_223410) do
     t.string "indexable"
     t.string "ai_indexable"
     t.index ["collection_id"], name: "index_models_on_collection_id"
+    t.index ["created_at"], name: "index_models_on_created_at"
     t.index ["creator_id"], name: "index_models_on_creator_id"
     t.index ["library_id"], name: "index_models_on_library_id"
     t.index ["name_lower"], name: "index_models_on_name_lower"
@@ -281,6 +286,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_21_223410) do
     t.index ["preview_file_id"], name: "index_models_on_preview_file_id"
     t.index ["public_id"], name: "index_models_on_public_id"
     t.index ["slug"], name: "index_models_on_slug"
+    t.index ["updated_at"], name: "index_models_on_updated_at"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
