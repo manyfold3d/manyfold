@@ -5138,13 +5138,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"query-selector@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "query-selector@npm:2.0.0"
-  checksum: 3da9859c70b93c8d02e301d0606fc6bbee476d8814b9e288b1228872370b6fa84017a872957b4e93caeba5b9d82c0fa66c224461ba2274f3479c0290934c252e
-  languageName: node
-  linkType: hard
-
 "querystringify@npm:^2.1.1":
   version: 2.2.0
   resolution: "querystringify@npm:2.2.0"
@@ -5965,12 +5958,11 @@ __metadata:
 
 "threejs-webworker-3mf-loader@https://github.com/manyfold3d/threejs-webworker-3mf-loader":
   version: 1.0.0
-  resolution: "threejs-webworker-3mf-loader@https://github.com/manyfold3d/threejs-webworker-3mf-loader.git#commit=dda5a03bbeed41b632c576c6114c34356ddecb2a"
+  resolution: "threejs-webworker-3mf-loader@https://github.com/manyfold3d/threejs-webworker-3mf-loader.git#commit=cd9967b4e50e0ee07d511d481f525a97d98a0876"
   dependencies:
     "@xmldom/xmldom": ^0.8.1
-    query-selector: ^2.0.0
     three: ^0.164.1
-  checksum: 3778d49e3dd6f10fbb4de3eba287ce79f644e244e40f0db4ffe19629750821a3ee95f3dd0d1a2fc99b049249fc306f67cb9c67692c6dc9f59954258b8d71189b
+  checksum: 16422aa048422f196285060e8cf1db94305a9c1d1d27a3b6dcdf9eba39e39eca1e9850d782d3cf0dd660ad36e76db67592430afcd8db9890d626f29558da9a97
   languageName: node
   linkType: hard
 
