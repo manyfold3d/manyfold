@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Components::ResolveButton < Components::Base
-  include Phlex::Rails::Helpers::LinkTo
+  include Phlex::Rails::Helpers::ButtonTo
 
   OPTIONS = {
     show: {
@@ -44,31 +44,26 @@ class Components::ResolveButton < Components::Base
 
   def before_template
     @options = OPTIONS[@problem.resolution_strategy.to_sym]
+    @text = t @options[:i18n_key]
   end
 
   def view_template
-    text = t @options[:i18n_key]
     if @problem.in_progress
-      link_to("#", class: "btn btn-#{@options[:button_type]} disabled") do
+      button_to("#", class: "btn btn-#{@options[:button_type]} disabled") do
         span(class: "spinner-border spinner-border-sm") { Icon(icon: "", label: "") }
         whitespace
-        span { text }
+        span { @text }
       end
     else
-      link_to(
-        resolve_problem_path(@problem, resolve: true),
-        class: "btn btn-#{@options[:button_type]}",
-        data: {
-          confirm: @options[:confirm] ?
-            translate(@options[:confirm] % {type: @problem.problematic_type.underscore}) :
-            nil
-        },
-        method: :post
-      ) do
-        Icon(icon: @options[:icon], label: text)
-        whitespace
-        span { text }
-      end
+      DoButton(
+        label: @text,
+        href: resolve_problem_path(@problem, resolve: true),
+        variant: @options[:button_type],
+        icon: @options[:icon],
+        method: :post,
+        confirm: @options[:confirm] ? translate(@options[:confirm] % {type: @problem.problematic_type.underscore}) : nil,
+        nofollow: true
+      )
     end
   end
 

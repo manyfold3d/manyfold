@@ -1,5 +1,6 @@
 <% if policy(@model).merge? %>
   <%= card(problem_severity(problem), t("problems.model.%{cat}.title" % {cat: problem.category})) do %>
+    <%= turbo_stream_from problem %>
     <%= t("problems.model.%{cat}.description" % {cat: problem.category}, note: problem.note) %>
 
     <% if problem.category == "nesting" && @model.contains_other_models? %>

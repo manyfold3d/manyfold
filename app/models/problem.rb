@@ -13,6 +13,8 @@ class Problem < ApplicationRecord
     where(category: enabled.keys)
   }
 
+  broadcasts_refreshes
+
   CATEGORIES = [
     :missing,
     :empty,
