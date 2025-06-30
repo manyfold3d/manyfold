@@ -1,4 +1,5 @@
 <%= card(problem_severity(problem), t("problems.model_file.%{cat}.title" % {cat: problem.category})) do %>
+  <%= turbo_stream_from problem %>
   <%= t("problems.model_file.%{cat}.description" % {cat: problem.category}, note: problem.note) %>
 
   <% if problem.category == "duplicate" && !@duplicates.empty? %>

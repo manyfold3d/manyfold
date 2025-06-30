@@ -22,6 +22,7 @@
     <% @problems.each do |problem| %>
       <% next unless problem.problematic %>
       <tr id="problem-<%= problem.id %>" class="collapse show table-<%= problem_severity(problem) %> <%= problem.ignored && "opacity-50" %>">
+        <%= turbo_stream_from problem %>
         <td><%= form.check_box "problems[#{problem.to_param}]", data: {resolution_strategy: problem.resolution_strategy, bulk_item: problem.to_param}, "aria-label": translate(".select") %></td>
         <% if problem.parent %>
           <td><%= link_to problem.parent.name, problem.parent, class: "link-dark" %></td>
