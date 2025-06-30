@@ -14,6 +14,7 @@ class ActivityPub::ActorActivityHandler
     attributes = actor_object_attributes(activity)
     return unless attributes
     object = Federails::Actor.find_or_create_by_federation_url(attributes[:federated_url]) # rubocop:disable Rails/DynamicFindBy
+    return if object.local? # Don't update local objects, they must have already been done
     object&.update!(attributes)
 
     if object.entity
