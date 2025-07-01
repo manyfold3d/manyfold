@@ -95,6 +95,21 @@ class Model < ApplicationRecord
     Model.common_root(self, other) == path
   end
 
+  def adopt_file(file, path_prefix: nil)
+    new_filename = path_prefix ? File.join(path_prefix, file.filename) : file.filename
+    if model_files.exists?(filename: new_filename)
+      # TODO: Check file checksum first!!
+      file.problems.destroy_all # Remove associated problems for this file manually
+      file.delete # Don't run callbacks, just remove the database record
+    else
+      file.update(
+        filename: new_filename,
+        model: self
+      )
+      file.reattach!
+    end
+  end
+
   def merge_into!(target)
     return unless target
 
@@ -103,18 +118,7 @@ class Model < ApplicationRecord
     # Remove datapackage
     datapackage&.destroy
     # Move files
-    model_files.each do |f|
-      new_filename = File.join(relative_path, f.filename)
-      if target.model_files.exists?(filename: new_filename)
-        f.problems.destroy_all # Remove associated problems for this file manually
-        f.delete # Don't run callbacks, just remove the database record
-      else
-        f.update(
-          filename: new_filename,
-          model: target
-        )
-      end
-    end
+    model_files.each { |it| target.adopt_file(it, path_prefix: relative_path) }
     target.check_for_problems_later
     # Destroy this model
     reload
@@ -185,10 +189,10 @@ class Model < ApplicationRecord
     save!
   end
 
-  def self.create_from(other, link_preview_file:)
+  def self.create_from(other, link_preview_file:, name: nil)
     new_model = other.dup
     new_model.update(
-      name: "Copy of #{other.name}",
+      name: name || "Copy of #{other.name}",
       public_id: nil,
       tags: other.tags,
       preview_file: link_preview_file ? other.preview_file : nil
@@ -209,10 +213,7 @@ class Model < ApplicationRecord
     # Clear preview file if it was moved
     update!(preview_file: nil) if preview_file_will_move
     # Move files
-    files.each do |file|
-      file.update!(model: new_model)
-      file.reattach!
-    end
+    files.each { |it| new_model.adopt_file(it) }
     # Done!
     new_model
   end
