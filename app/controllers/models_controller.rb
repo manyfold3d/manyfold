@@ -124,11 +124,11 @@ class ModelsController < ApplicationController
   end
 
   def merge
-    if params[:target] && (target = (@model.parents.find { |it| it.public_id == params[:target] }))
-      target.merge! @model
-      redirect_to target, notice: t(".success")
-    elsif params[:all] && @model.contains_other_models?
-      @model.merge!(@model.contained_models)
+    model_ids = params.permit(models: [])[:models]
+    if !model_ids.empty?
+      @model.merge!(
+        policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope).local.where(public_id: model_ids)
+      )
       redirect_to @model, notice: t(".success")
     else
       head :bad_request
