@@ -111,6 +111,9 @@ class Model < ApplicationRecord
   end
 
   def merge!(*models)
+    # If we've got one argument and it's enumerable, use it directly
+    models = models[0] if models.length == 1 && models[0].is_a?(Enumerable)
+    # Go through the list
     models.each do |other|
       # Work out path to the other target from here
       relative_path = contains?(other) ? Pathname.new(other.path).relative_path_from(Pathname.new(path)) : nil

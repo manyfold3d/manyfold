@@ -250,6 +250,10 @@ RSpec.describe Model do
       expect(described_class.common_root(parent, child)).to eq "parent"
     end
 
+    it "can merge all contained models at once" do
+      expect { parent.merge!(parent.contained_models) }.to change(described_class, :count).by(-1)
+    end
+
     context "when merging a child model into a parent" do
       it "moves files" do # rubocop:todo RSpec/MultipleExpectations
         file = create(:model_file, model: child, filename: "child_part.stl")
