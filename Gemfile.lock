@@ -657,7 +657,7 @@ GEM
       psych (>= 4.0.0)
     redis (5.4.0)
       redis-client (>= 0.22.0)
-    redis-client (0.24.0)
+    redis-client (0.25.0)
       connection_pool
     redis-namespace (1.11.0)
       redis (>= 4)
@@ -780,7 +780,7 @@ GEM
       down (~> 5.0)
       http (>= 3.2, < 6)
       shrine (>= 3.0.0.rc, < 4)
-    sidekiq (8.0.4)
+    sidekiq (8.0.5)
       connection_pool (>= 2.5.0)
       json (>= 2.9.0)
       logger (>= 1.6.2)
