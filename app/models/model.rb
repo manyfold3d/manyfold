@@ -110,19 +110,19 @@ class Model < ApplicationRecord
     end
   end
 
-  def merge_into!(target)
-    return unless target
-
-    # Work out path to this model from the target
-    relative_path = target.contains?(self) ? Pathname.new(path).relative_path_from(Pathname.new(target.path)) : nil
-    # Remove datapackage
-    datapackage&.destroy
-    # Move files
-    model_files.each { |it| target.adopt_file(it, path_prefix: relative_path) }
-    target.check_for_problems_later
-    # Destroy this model
-    reload
-    destroy
+  def merge!(*models)
+    models.each do |other|
+      # Work out path to the other target from here
+      relative_path = contains?(other) ? Pathname.new(other.path).relative_path_from(Pathname.new(path)) : nil
+      # Remove datapackage
+      other.datapackage&.destroy
+      # Move files
+      other.model_files.each { |it| adopt_file(it, path_prefix: relative_path) }
+      check_for_problems_later
+      # Destroy the other model
+      other.reload
+      other.destroy
+    end
   end
 
   def delete_from_disk_and_destroy
@@ -225,12 +225,6 @@ class Model < ApplicationRecord
 
   def file_extensions
     model_files.map(&:extension).uniq
-  end
-
-  def merge_all_children!
-    contained_models.each do |child|
-      child.merge_into! self
-    end
   end
 
   def size_on_disk

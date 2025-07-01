@@ -137,8 +137,7 @@ RSpec.describe Model do
       let!(:new_model) { create(:model, library: library, path: "common/root") }
 
       before do
-        model_two.merge_into! new_model
-        model_one.merge_into! new_model
+        new_model.merge! model_one, model_two
       end
 
       it "moves files" do
@@ -186,7 +185,7 @@ RSpec.describe Model do
 
     context "when merging into an existing model" do
       before do
-        model_two.merge_into! model_one
+        model_one.merge! model_two
       end
 
       it "moves files" do
@@ -254,7 +253,7 @@ RSpec.describe Model do
     context "when merging a child model into a parent" do
       it "moves files" do # rubocop:todo RSpec/MultipleExpectations
         file = create(:model_file, model: child, filename: "child_part.stl")
-        child.merge_into! parent
+        parent.merge! child
         file.reload
         expect(file.filename).to eql "child/child_part.stl"
         expect(file.model).to eql parent
@@ -262,7 +261,7 @@ RSpec.describe Model do
 
       it "deletes merged model" do
         expect {
-          child.merge_into! parent
+          parent.merge! child
         }.to change(described_class, :count).from(2).to(1)
       end
     end
@@ -277,17 +276,17 @@ RSpec.describe Model do
 
       it "removes duplicated file" do
         expect {
-          child.merge_into! parent
+          parent.merge! child
         }.to change(ModelFile, :count).by(-1)
       end
 
       it "rehomes distinct file" do
-        child.merge_into! parent
+        parent.merge! child
         expect(parent.model_files.exists?(filename: "child/child_part.stl")).to be true
       end
 
       it "keeps all real files intact" do
-        child.merge_into! parent
+        parent.merge! child
         parent.model_files.each do |file|
           expect(file.exists_on_storage?).to be true
         end

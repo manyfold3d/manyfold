@@ -125,10 +125,10 @@ class ModelsController < ApplicationController
 
   def merge
     if params[:target] && (target = (@model.parents.find { |it| it.public_id == params[:target] }))
-      @model.merge_into! target
+      target.merge! @model
       redirect_to target, notice: t(".success")
     elsif params[:all] && @model.contains_other_models?
-      @model.merge_all_children!
+      @model.merge!(@model.contained_models)
       redirect_to @model, notice: t(".success")
     else
       head :bad_request
