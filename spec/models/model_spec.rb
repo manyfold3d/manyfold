@@ -113,12 +113,49 @@ RSpec.describe Model do
   end
 
   context "with a common root" do
-    let(:library) { create(:library) }
+    around do |ex|
+      MockDirectory.create([
+        "common/root/model_one/part_one.stl",
+        "common/root/model_two/part_two.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+    let!(:model_one) { create(:model, library: library, path: "common/root/model_one") }
+    let!(:model_two) { create(:model, library: library, path: "common/root/model_two") }
+    let!(:part_one) { create(:model_file, model: model_one, filename: "part_one.stl") } # rubocop:disable RSpec/LetSetup
+    let!(:part_two) { create(:model_file, model: model_two, filename: "part_two.stl") } # rubocop:disable RSpec/LetSetup
 
     it "finds common root folder for a set of models" do
-      m1 = create(:model, path: "shared/common/folder", library: library)
-      m2 = create(:model, path: "shared/parent/folder", library: library)
-      expect(described_class.common_root(m1, m2)).to eq "shared"
+      expect(described_class.common_root(model_one, model_two)).to eq "common/root"
+    end
+
+    context "when merging into a new parent model" do # rubocop:disable RSpec/MultipleMemoizedHelpers
+      let!(:new_model) { create(:model, library: library, path: "common/root") }
+
+      before do
+        model_two.merge_into! new_model
+        model_one.merge_into! new_model
+      end
+
+      it "moves files" do
+        expect(new_model.model_files.count).to eq 2
+      end
+
+      it "preserves subfolder paths within model" do # rubocop:disable RSpec/MultipleExpectations
+        expect(new_model.model_files.exists?(filename: "model_one/part_one.stl")).to be true
+        expect(new_model.model_files.exists?(filename: "model_two/part_two.stl")).to be true
+      end
+
+      it "handles filename clashes"
+
+      it "removes old models" do # rubocop:disable RSpec/MultipleExpectations
+        expect { model_one.reload }.to raise_error(ActiveRecord::RecordNotFound)
+        expect { model_two.reload }.to raise_error(ActiveRecord::RecordNotFound)
+      end
     end
   end
 
