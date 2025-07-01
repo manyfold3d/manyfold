@@ -123,18 +123,48 @@ RSpec.describe Model do
   end
 
   context "with disjoint models" do
-    let(:library) { create(:library) }
+    around do |ex|
+      MockDirectory.create([
+        "no/common/root/model_one/part_one.stl",
+        "common/root/model_two/part_two.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+    let!(:model_one) { create(:model, library: library, path: "no/common/root/model_one") }
+    let!(:model_two) { create(:model, library: library, path: "common/root/model_two") }
+    let!(:part_one) { create(:model_file, model: model_one, filename: "part_one.stl") } # rubocop:disable RSpec/LetSetup
+    let!(:part_two) { create(:model_file, model: model_two, filename: "part_two.stl") } # rubocop:disable RSpec/LetSetup
 
     it "detects if there is no common root for a set of models" do
-      m1 = create(:model, path: "shared/common/folder", library: library)
-      m2 = create(:model, path: "no/common/root", library: library)
-      expect(described_class.common_root(m1, m2)).to be_nil
+      expect(described_class.common_root(model_one, model_two)).to be_nil
     end
 
     it "detects disjoint models" do
-      m1 = create(:model, path: "no/common/folder", library: library)
-      m2 = create(:model, path: "none/at/all", library: library)
-      expect(m1.disjoint?(m2)).to be true
+      expect(model_one.disjoint?(model_two)).to be true
+    end
+
+    context "when merging into an existing model" do
+      before do
+        model_two.merge_into! model_one
+      end
+
+      it "moves files" do
+        expect(model_one.model_files.count).to eq 2
+      end
+
+      it "does not change paths within model" do
+        expect(model_one.model_files.exists?(filename: "part_two.stl")).to be true
+      end
+
+      it "handles filename clashes"
+
+      it "removes old model" do
+        expect { model_two.reload }.to raise_error(ActiveRecord::RecordNotFound)
+      end
     end
   end
 

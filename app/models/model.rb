@@ -114,7 +114,7 @@ class Model < ApplicationRecord
     return unless target
 
     # Work out path to this model from the target
-    relative_path = Pathname.new(path).relative_path_from(Pathname.new(target.path))
+    relative_path = target.contains?(self) ? Pathname.new(path).relative_path_from(Pathname.new(target.path)) : nil
     # Remove datapackage
     datapackage&.destroy
     # Move files
