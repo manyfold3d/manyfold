@@ -75,6 +75,26 @@ class Model < ApplicationRecord
     !previous_changes.empty?
   end
 
+  def self.common_root(*models)
+    # If there are different libraries, there is no common root
+    return nil unless models.map(&:library_id).uniq.count == 1
+    # Get each path, split, and working from the front, find the common elements
+
+    first, *remainder = models.map { |it| it.path.split(File::SEPARATOR).without(".") }
+    parts = first.zip(*remainder)
+    common = parts.map { |it| (it.uniq.length == 1) ? it.first : nil }
+    common = common.first(common.index(nil) || 99999)
+    common.empty? ? nil : File.join(common)
+  end
+
+  def disjoint?(other)
+    Model.common_root(self, other).nil?
+  end
+
+  def contains?(other)
+    Model.common_root(self, other) == path
+  end
+
   def merge_into!(target)
     return unless target
 

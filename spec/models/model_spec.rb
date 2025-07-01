@@ -105,6 +105,39 @@ RSpec.describe Model do
     end
   end
 
+  it "does not find a common root in different libraries" do
+    library = create(:library)
+    m1 = create(:model, path: "shared/common/folder", library: library)
+    m2 = create(:model, path: "shared/parent/folder", library: create(:library))
+    expect(described_class.common_root(m1, m2)).to be_nil
+  end
+
+  context "with a common root" do
+    let(:library) { create(:library) }
+
+    it "finds common root folder for a set of models" do
+      m1 = create(:model, path: "shared/common/folder", library: library)
+      m2 = create(:model, path: "shared/parent/folder", library: library)
+      expect(described_class.common_root(m1, m2)).to eq "shared"
+    end
+  end
+
+  context "with disjoint models" do
+    let(:library) { create(:library) }
+
+    it "detects if there is no common root for a set of models" do
+      m1 = create(:model, path: "shared/common/folder", library: library)
+      m2 = create(:model, path: "no/common/root", library: library)
+      expect(described_class.common_root(m1, m2)).to be_nil
+    end
+
+    it "detects disjoint models" do
+      m1 = create(:model, path: "no/common/folder", library: library)
+      m2 = create(:model, path: "none/at/all", library: library)
+      expect(m1.disjoint?(m2)).to be true
+    end
+  end
+
   context "when nested inside another" do
     around do |ex|
       MockDirectory.create([
@@ -129,12 +162,29 @@ RSpec.describe Model do
       expect(child.parents).to eql [parent]
     end
 
+    it "parent contains child" do
+      expect(parent.contains?(child)).to be true
+    end
+
+    it "child does not contain parent" do
+      expect(child.contains?(parent)).to be false
+    end
+
+    it "parent and child are not disjoint" do # rubocop:todo RSpec/MultipleExpectations
+      expect(parent.disjoint?(child)).to be false
+      expect(child.disjoint?(parent)).to be false
+    end
+
     it "has a bool check for contained models" do # rubocop:todo RSpec/MultipleExpectations
       expect(parent.contains_other_models?).to be true
       expect(child.contains_other_models?).to be false
     end
 
-    context "when merging into parent" do
+    it "detects parent as common root with child" do
+      expect(described_class.common_root(parent, child)).to eq "parent"
+    end
+
+    context "when merging a child model into a parent" do
       it "moves files" do # rubocop:todo RSpec/MultipleExpectations
         file = create(:model_file, model: child, filename: "child_part.stl")
         child.merge_into! parent
