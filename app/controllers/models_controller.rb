@@ -7,15 +7,14 @@ class ModelsController < ApplicationController
   rate_limit to: 10, within: 3.minutes, only: :create
 
   before_action :redirect_search, only: [:index], if: -> { params.key?(:q) }
-  before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
   before_action :get_creators_and_collections, only: [:new, :edit, :bulk_edit]
   before_action :set_returnable, only: [:bulk_edit, :edit, :new]
   before_action :clear_returnable, only: [:bulk_update, :update, :create]
   before_action :get_filters, only: [:bulk_edit, :bulk_update, :index, :show] # rubocop:todo Rails/LexicallyScopedActionFilter
-  before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
-  before_action -> { set_indexable @model }, except: [:bulk_edit, :bulk_update, :index, :new, :create]
+  before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create, :merge]
+  before_action -> { set_indexable @model }, except: [:bulk_edit, :bulk_update, :index, :new, :create, :merge]
 
-  after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
+  after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update, :merge]
 
   def index
     @models = filtered_models @filters
@@ -124,13 +123,19 @@ class ModelsController < ApplicationController
   end
 
   def merge
-    model_ids = params.permit(models: [])[:models]
-    if !model_ids.empty?
-      @model.merge!(
-        policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope).local.where(public_id: model_ids)
+    p = params.permit(
+      :target,
+      models: []
+    )
+    target = Model.find_param(p[:target])
+    authorize(target)
+    if target && p[:models] && !p[:models].empty?
+      target.merge!(
+        policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope).local.where(public_id: p[:models])
       )
-      redirect_to @model, notice: t(".success")
+      redirect_to target, notice: t(".success")
     else
+      skip_policy_scope
       head :bad_request
     end
   end

@@ -142,7 +142,7 @@
           </p>
           <strong><%= t(".merge.with") %>:</strong>
           <% @model.parents.each do |parent| %>
-            <%= render Components::DoButton.new(icon: "union", label: parent.name, href: merge_model_path(parent, models: [@model.public_id]), method: :post, variant: "danger") %>
+            <%= render Components::DoButton.new(icon: "union", label: parent.name, href: merge_models_path(target: parent.public_id, models: [@model.public_id]), method: :post, variant: "danger") %>
           <% end %>
         <% end %>
       <% end %>
