@@ -383,6 +383,29 @@ RSpec.describe "Models" do
             expect(response.body).to include(%(<form action="/models/merge" accept-charset="UTF-8" method="post">))
           end
         end
+
+        context "with form-encoded data", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
+          let(:model_one) { create(:model) }
+          let(:model_two) { create(:model) }
+          let(:merge_post) {
+            post "/models/merge", params: {
+              models: {
+                model_one.to_param => "0",
+                model_two.to_param => "1"
+              }
+            }
+          }
+
+          before { merge_post }
+
+          it "extracts selected models from form" do
+            expect(assigns(:models)).to include model_two
+          end
+
+          it "ignores unselected models" do
+            expect(assigns(:models)).not_to include model_one
+          end
+        end
       end
 
       describe "POST /models/:id/scan" do

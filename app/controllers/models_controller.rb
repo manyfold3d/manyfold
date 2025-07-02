@@ -123,6 +123,9 @@ class ModelsController < ApplicationController
   end
 
   def merge
+    if params[:models].respond_to?(:keys)
+      params[:models] = params[:models].select { |k, v| v == "1" }.keys
+    end
     p = params.permit(
       :target,
       models: []
