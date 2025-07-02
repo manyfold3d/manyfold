@@ -364,6 +364,25 @@ RSpec.describe "Models" do
           end
         end
 
+        context "without a target", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
+          let(:model_one) { create(:model) }
+          let(:model_two) { create(:model) }
+          let(:merge_post) {
+            post "/models/merge", params: {
+              models: [model_one.to_param, model_two.to_param]
+            }
+          }
+
+          before { merge_post }
+
+          it "shows the merge options page" do
+            expect(response).to have_http_status(:success)
+          end
+
+          it "merge options page includes a form for choosing the target" do
+            expect(response.body).to include(%(<form action="/models/merge" accept-charset="UTF-8" method="post">))
+          end
+        end
       end
 
       describe "POST /models/:id/scan" do

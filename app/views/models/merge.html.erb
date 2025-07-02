@@ -1,0 +1,10 @@
+<h1><%= t(".heading") %></h1>
+
+<p class="lead">
+	<%= t(".description") %>
+</p>
+
+<%= form_with url: merge_models_path do |form| %>
+
+	<%= form.submit %>
+<% end %>

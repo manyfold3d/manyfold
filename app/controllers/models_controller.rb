@@ -127,20 +127,20 @@ class ModelsController < ApplicationController
       :target,
       models: []
     )
-    target = Model.find_param(p[:target])
     if p[:models].blank?
       skip_authorization
       skip_policy_scope
       head :bad_request and return
     end
-    model_list = policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope)
+    @models = policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope)
       .local
       .where(public_id: p[:models])
       .where.not(public_id: p[:target])
-    if model_list.count != p[:models].count
+    if @models.count != p[:models].count
       skip_authorization
       head :forbidden
-    elsif target
+    elsif p[:target]
+      target = Model.find_param(p[:target])
       authorize(target)
       if target && !model_list.empty?
         target.merge!(model_list)
@@ -148,7 +148,6 @@ class ModelsController < ApplicationController
       end
     else
       skip_authorization
-      head :bad_request
     end
   end
 
