@@ -12,7 +12,7 @@ class ModelsController < ApplicationController
   before_action :clear_returnable, only: [:bulk_update, :update, :create]
   before_action :get_filters, only: [:bulk_edit, :bulk_update, :index, :show] # rubocop:todo Rails/LexicallyScopedActionFilter
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create, :merge]
-  before_action -> { set_indexable @model }, except: [:bulk_edit, :bulk_update, :index, :new, :create, :merge]
+  before_action :configure_indexable
 
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update, :merge]
 
