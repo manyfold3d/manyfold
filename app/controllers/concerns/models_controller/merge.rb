@@ -1,0 +1,54 @@
+module ModelsController::Merge
+  extend ActiveSupport::Concern
+
+  included do
+    # skip_before_action :get_model, only: [:merge, :configure_merge]
+
+    before_action :get_merge_params, only: [:merge, :configure_merge]
+    before_action :get_merging_models, only: [:merge, :configure_merge]
+
+    after_action :verify_policy_scoped, only: [:merge, :configure_merge]
+  end
+
+  def configure_merge
+  end
+
+  def merge
+    if @merge_params[:target]
+      target = Model.find_param(@merge_params[:target])
+      authorize(target)
+      if target && !@models.empty?
+        target.merge!(@models)
+        redirect_to target, notice: t("models.merge.success")
+      end
+    else
+      skip_authorization
+    end
+  end
+
+  private
+
+  def get_merge_params
+    if params[:models].respond_to?(:keys)
+      params[:models] = params[:models].select { |k, v| v == "1" }.keys
+    end
+    @merge_params = params.permit(
+      :target,
+      models: []
+    )
+    if @merge_params[:models].blank?
+      skip_authorization
+      skip_policy_scope
+      head :bad_request
+    end
+  end
+
+  def get_merging_models
+    model_ids = @merge_params[:models].without(@merge_params[:target])
+    @models = policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope).local.where(public_id: model_ids)
+    if @models.count != model_ids.count
+      skip_authorization
+      head :forbidden
+    end
+  end
+end

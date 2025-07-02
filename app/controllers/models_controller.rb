@@ -3,6 +3,7 @@ require "fileutils"
 class ModelsController < ApplicationController
   include ModelListable
   include Permittable
+  include ModelsController::Merge
 
   rate_limit to: 10, within: 3.minutes, only: :create
 
@@ -11,10 +12,10 @@ class ModelsController < ApplicationController
   before_action :set_returnable, only: [:bulk_edit, :edit, :new]
   before_action :clear_returnable, only: [:bulk_update, :update, :create]
   before_action :get_filters, only: [:bulk_edit, :bulk_update, :index, :show] # rubocop:todo Rails/LexicallyScopedActionFilter
-  before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create, :merge]
-  before_action :configure_indexable
+  before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
+  before_action -> { set_indexable @model if @model }
 
-  after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update, :merge]
+  after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
 
   def index
     @models = filtered_models @filters
@@ -119,38 +120,6 @@ class ModelsController < ApplicationController
           render json: @model.errors.to_json, status: :unprocessable_entity
         end
       end
-    end
-  end
-
-  def merge
-    if params[:models].respond_to?(:keys)
-      params[:models] = params[:models].select { |k, v| v == "1" }.keys
-    end
-    p = params.permit(
-      :target,
-      models: []
-    )
-    if p[:models].blank?
-      skip_authorization
-      skip_policy_scope
-      head :bad_request and return
-    end
-    @models = policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope)
-      .local
-      .where(public_id: p[:models])
-      .where.not(public_id: p[:target])
-    if @models.count != p[:models].count
-      skip_authorization
-      head :forbidden
-    elsif p[:target]
-      target = Model.find_param(p[:target])
-      authorize(target)
-      if target && !model_list.empty?
-        target.merge!(model_list)
-        redirect_to target, notice: t(".success")
-      end
-    else
-      skip_authorization
     end
   end
 
