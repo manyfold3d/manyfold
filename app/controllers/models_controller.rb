@@ -128,14 +128,26 @@ class ModelsController < ApplicationController
       models: []
     )
     target = Model.find_param(p[:target])
-    authorize(target)
-    if target && p[:models] && !p[:models].empty?
-      target.merge!(
-        policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope).local.where(public_id: p[:models])
-      )
-      redirect_to target, notice: t(".success")
-    else
+    if p[:models].blank?
+      skip_authorization
       skip_policy_scope
+      head :bad_request and return
+    end
+    model_list = policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope)
+      .local
+      .where(public_id: p[:models])
+      .where.not(public_id: p[:target])
+    if model_list.count != p[:models].count
+      skip_authorization
+      head :forbidden
+    elsif target
+      authorize(target)
+      if target && !model_list.empty?
+        target.merge!(model_list)
+        redirect_to target, notice: t(".success")
+      end
+    else
+      skip_authorization
       head :bad_request
     end
   end

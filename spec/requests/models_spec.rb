@@ -332,7 +332,7 @@ RSpec.describe "Models" do
       end
 
       describe "POST /models/merge" do
-        context "with a target and models to merge into it" do
+        context "with a target and models to merge into it", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
           let(:model_one) { create(:model) }
           let(:model_two) { create(:model) }
           let(:merge_post) {
@@ -346,9 +346,11 @@ RSpec.describe "Models" do
             merge_post
             expect(response).to have_http_status(:forbidden)
           end
+
+          it "is denied if the user doesn't have update permission on the target"
         end
 
-        context "without any models" do
+        context "without any models", :as_moderator do
           let(:model) { create(:model) }
           let(:merge_post) {
             post "/models/merge", params: {
@@ -356,11 +358,12 @@ RSpec.describe "Models" do
             }
           }
 
-          it "gives a bad request response if no models are provided", :as_moderator do
+          it "gives a bad request response if no models are provided" do
             merge_post
             expect(response).to have_http_status(:bad_request)
           end
         end
+
       end
 
       describe "POST /models/:id/scan" do
