@@ -4,6 +4,7 @@ en:
     bulk_edit:
       description: 'Select models to change:'
       form_subtitle: 'Select changes to make:'
+      merge: Merge selected models
       needs_organizing: Needs organizing
       remove_tags: Remove tags
       select: Select model '%{name}'
@@ -15,6 +16,9 @@ en:
       add_tags: Add tags
     bulk_update:
       success: Models updated successfully.
+    configure_merge:
+      description: Choose how you want to merge these models
+      heading: Merge models
     create:
       success: File(s) uploaded successfully.
     destroy:

@@ -375,12 +375,8 @@ RSpec.describe "Models" do
 
           before { merge_post }
 
-          it "shows the merge options page" do
-            expect(response).to have_http_status(:success)
-          end
-
-          it "merge options page includes a form for choosing the target" do
-            expect(response.body).to include(%(<form action="/models/merge" accept-charset="UTF-8" method="post">))
+          it "redirects to the merge options page" do
+            expect(response).to redirect_to("/models/merge?models%5B%5D=#{model_one.to_param}&models%5B%5D=#{model_two.to_param}")
           end
         end
 
@@ -405,6 +401,22 @@ RSpec.describe "Models" do
           it "ignores unselected models" do
             expect(assigns(:models)).not_to include model_one
           end
+        end
+      end
+
+      describe "GET /models/merge", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
+        let(:model_one) { create(:model) }
+        let(:model_two) { create(:model) }
+        let(:configure_merge) {
+          get "/models/merge", params: {
+            models: [model_one.to_param, model_two.to_param]
+          }
+        }
+
+        before { configure_merge }
+
+        it "merge options page includes a form for choosing the target" do
+          expect(response.body).to include(%(<form action="/models/merge" accept-charset="UTF-8" method="post">))
         end
       end
 

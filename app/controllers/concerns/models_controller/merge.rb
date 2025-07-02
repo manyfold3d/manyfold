@@ -2,7 +2,7 @@ module ModelsController::Merge
   extend ActiveSupport::Concern
 
   included do
-    # skip_before_action :get_model, only: [:merge, :configure_merge]
+    skip_before_action :get_model, only: [:merge, :configure_merge]
 
     before_action :get_merge_params, only: [:merge, :configure_merge]
     before_action :get_merging_models, only: [:merge, :configure_merge]
@@ -11,6 +11,7 @@ module ModelsController::Merge
   end
 
   def configure_merge
+    skip_authorization
   end
 
   def merge
@@ -23,6 +24,7 @@ module ModelsController::Merge
       end
     else
       skip_authorization
+      redirect_to configure_merge_models_path(models: @models.map(&:public_id))
     end
   end
 

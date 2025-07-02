@@ -3,7 +3,6 @@ require "fileutils"
 class ModelsController < ApplicationController
   include ModelListable
   include Permittable
-  include ModelsController::Merge
 
   rate_limit to: 10, within: 3.minutes, only: :create
 
@@ -16,6 +15,8 @@ class ModelsController < ApplicationController
   before_action -> { set_indexable @model if @model }
 
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
+
+  include ModelsController::Merge
 
   def index
     @models = filtered_models @filters

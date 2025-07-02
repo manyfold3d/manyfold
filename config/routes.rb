@@ -102,6 +102,7 @@ Rails.application.routes.draw do
     end
     collection do
       post "merge"
+      get "merge", action: "configure_merge", as: "configure_merge"
       get "edit", action: "bulk_edit"
       patch "/update", action: "bulk_update"
     end
