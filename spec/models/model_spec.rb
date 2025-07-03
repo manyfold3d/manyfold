@@ -302,6 +302,60 @@ RSpec.describe Model do
     end
   end
 
+  context "when merging models with metadata" do
+    it "sets creator if target doesn't have one" do
+      model = create(:model, creator: create(:creator))
+      target = create(:model)
+      expect { target.merge!(model) }.to change(target, :creator).to(model.creator)
+    end
+
+    it "doesn't set creator if target does have one" do
+      model = create(:model, creator: create(:creator))
+      target = create(:model, creator: create(:creator))
+      expect { target.merge!(model) }.not_to change(target, :creator)
+    end
+
+    it "sets collection if target doesn't have one" do
+      model = create(:model, collection: create(:collection))
+      target = create(:model)
+      expect { target.merge!(model) }.to change(target, :collection).to(model.collection)
+    end
+
+    it "doesn't set collection if target does have one" do
+      model = create(:model, collection: create(:collection))
+      target = create(:model, collection: create(:collection))
+      expect { target.merge!(model) }.not_to change(target, :collection)
+    end
+
+    it "sets license if target doesn't have one" do
+      model = create(:model, license: "MIT")
+      target = create(:model, license: nil)
+      expect { target.merge!(model) }.to change(target, :license).to("MIT")
+    end
+
+    it "doesn't set license if target does have one" do
+      model = create(:model, license: "MIT")
+      target = create(:model, license: "0BSD")
+      expect { target.merge!(model) }.not_to change(target, :license)
+    end
+
+    it "merges tags from both" do
+      model = create(:model, tag_list: ["tag3", "tag4"])
+      target = create(:model, tag_list: ["tag1", "tag2"])
+      target.merge!(model)
+      expect(target.tag_list).to eq ["tag1", "tag2", "tag3", "tag4"]
+    end
+
+    it "merges links from both" do # rubocop:disable RSpec/MultipleExpectations
+      model = create(:model, links_attributes: [{url: "https://manyfold.app"}, {url: "https://example.com"}])
+      target = create(:model, links_attributes: [{url: "https://bbc.co.uk"}, {url: "https://example.com"}])
+      target.merge!(model)
+      expect(target.links.count).to eq 3
+      expect(target.links.map(&:url)).to include "https://manyfold.app"
+      expect(target.links.map(&:url)).to include "https://bbc.co.uk"
+    end
+  end
+
   context "when nested inside another with underscores in the name" do
     around do |ex|
       MockDirectory.create([
