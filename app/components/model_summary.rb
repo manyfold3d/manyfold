@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
-class Components::ModelSummary < Components::Base
+class Components::ModelSummary < Components::ModelCard
   def initialize(model:)
     @model = model
   end
 
   def view_template
     div class: "card" do
-      div class: "card-body" do
-        code(class: "float-end") { @model.path }
-        div do
-          span(class: "fs-4") { @model.name }
-          whitespace
-          span(class: "text-secondary") { t("components.model_summary.byline", creator: @model.creator.name) } if @model.creator
-        end
-        div(class: "float-end") { @model.tags.map { |it| Tag(tag: it) } }
-        div do
+      div class: "card-body row" do
+        div class: "col" do
+          h5 { @model.name }
           span { @model.model_files.count }
           whitespace
           span { ModelFile.model_name.human count: @model.model_files.count }
+          span { " : " }
+          code { @model.path }
+        end
+        div(class: "col-auto") do
+          credits
+          div { @model.tags.map { |it| Tag(tag: it) } }
         end
       end
     end

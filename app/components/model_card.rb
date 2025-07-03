@@ -70,11 +70,13 @@ class Components::ModelCard < Components::Base
 
   def creator(target:, name:)
     Icon icon: "person", label: Creator.model_name.human
+    whitespace
     link_to name, target, "aria-label": [Creator.model_name.human, name].join(": ")
   end
 
   def collection(target:, name:)
     Icon icon: "collection", label: Collection.model_name.human
+    whitespace
     link_to name, target, "aria-label": [Collection.model_name.human, name].join(": ")
   end
 
