@@ -356,6 +356,25 @@ RSpec.describe Model do
     end
   end
 
+  context "when merging with duplicate filenames" do
+    let(:model) { create(:model) }
+    let(:target) { create(:model) }
+
+    it "renames incoming file to avoid conflict if files are different" do # rubocop:disable RSpec/MultipleExpectations
+      create(:model_file, model: model, filename: "test.stl", digest: "abcd")
+      create(:model_file, model: target, filename: "test.stl", digest: "1234")
+      expect { target.merge!(model) }.not_to change { target.model_files.count }
+      expect(target.model_files.last.filename).to eq "test1.stl"
+      expect(target.model_files.last.digest).to eq "1234"
+    end
+
+    it "discards incoming file if they are identical" do
+      create(:model_file, model: model, filename: "test.stl", digest: "abcd")
+      create(:model_file, model: target, filename: "test.stl", digest: "abcd")
+      expect { target.merge!(model) }.not_to change { target.model_files.count }
+    end
+  end
+
   context "when nested inside another with underscores in the name" do
     around do |ex|
       MockDirectory.create([
