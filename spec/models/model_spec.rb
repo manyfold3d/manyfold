@@ -105,11 +105,15 @@ RSpec.describe Model do
     end
   end
 
-  it "does not find a common root in different libraries" do
-    library = create(:library)
-    m1 = create(:model, path: "shared/common/folder", library: library)
-    m2 = create(:model, path: "shared/parent/folder", library: create(:library))
-    expect(described_class.common_root(m1, m2)).to be_nil
+  context "with models in different libraries" do
+    let(:library_a) { create(:library) }
+    let(:library_b) { create(:library) }
+
+    it "does not find a common root for models" do
+      m1 = create(:model, path: "shared/common/folder", library: library_a)
+      m2 = create(:model, path: "shared/parent/folder", library: library_b)
+      expect(described_class.common_root(m1, m2)).to be_nil
+    end
   end
 
   context "with a common root" do
