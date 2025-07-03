@@ -346,7 +346,7 @@ RSpec.describe Model do
       expect(target.tag_list).to eq ["tag1", "tag2", "tag3", "tag4"]
     end
 
-    it "merges links from both" do # rubocop:disable RSpec/MultipleExpectations
+    it "merges links from both" do # rubocop:disable RSpec/MultipleExpectations, RSpec/ExampleLength
       model = create(:model, links_attributes: [{url: "https://manyfold.app"}, {url: "https://example.com"}])
       target = create(:model, links_attributes: [{url: "https://bbc.co.uk"}, {url: "https://example.com"}])
       target.merge!(model)
