@@ -31,9 +31,12 @@ class ApplicationPolicy
   end
 
   def update?
-    one_of(
-      user&.is_moderator?,
-      check_permissions(record, STANDARD_EDIT_PERMISSIONS, user, role_fallback: :moderator)
+    all_of(
+      record.respond_to?(:local?) ? record.local? : true,
+      one_of(
+        user&.is_moderator?,
+        check_permissions(record, STANDARD_EDIT_PERMISSIONS, user, role_fallback: :moderator)
+      )
     )
   end
 
@@ -78,17 +81,17 @@ class ApplicationPolicy
 
   class UpdateScope < Scope
     def resolve
-      return scope if user&.is_moderator? || !scope.respond_to?(:granted_to)
+      return scope.local if user&.is_moderator? || !scope.respond_to?(:granted_to)
 
       result = scope.granted_to(STANDARD_EDIT_PERMISSIONS, [user, nil])
       result = result.or(scope.granted_to(STANDARD_EDIT_PERMISSIONS, user.roles)) if user
-      result
+      result.local
     end
   end
 
   class OwnerScope < Scope
     def resolve
-      scope.granted_to("own", user)
+      scope.granted_to("own", user).local
     rescue NoMethodError
       scope.none
     end

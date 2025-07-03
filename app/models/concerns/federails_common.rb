@@ -25,7 +25,11 @@ module FederailsCommon
     act
   end
 
+  def local?
+    federails_actor ? federails_actor.local? : true
+  end
+
   def remote?
-    !federails_actor&.local?
+    !local?
   end
 end
