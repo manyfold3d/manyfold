@@ -4,7 +4,20 @@
   <%= t(".description") %>
 </p>
 
-<%= form_with url: merge_models_path do |form| %>
+<div class="container">
+  <%= form_with url: merge_models_path do |form| %>
+    <% @models.each do |it| %>
+      <div class="row p-2 radio-option rounded">
+        <%= form.hidden_field "models[]", value: it.public_id %>
+        <%= form.radio_button :target, it.public_id, id: it.public_id %>
+        <label for="<%= it.public_id %>">
+          <%= render Components::ModelSummary.new(model: it) %>
+        </label>
+      </div>
+    <% end %>
 
-  <%= form.submit %>
-<% end %>
+    <div class="mt-3">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

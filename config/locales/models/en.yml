@@ -17,7 +17,7 @@ en:
     bulk_update:
       success: Models updated successfully.
     configure_merge:
-      description: Choose how you want to merge these models
+      description: Select one of the models to merge the others into, or create a new one.
       heading: Merge models
     create:
       success: File(s) uploaded successfully.
