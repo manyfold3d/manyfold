@@ -277,8 +277,8 @@ RSpec.describe Model do
     context "when merging models that have duplicated files" do
       before do
         create(:model_file, model: parent, filename: "parent_part.stl")
-        create(:model_file, model: parent, filename: "child/duplicate.stl")
-        create(:model_file, model: child, filename: "duplicate.stl")
+        create(:model_file, model: parent, filename: "child/duplicate.stl", digest: "abcd")
+        create(:model_file, model: child, filename: "duplicate.stl", digest: "abcd")
         create(:model_file, model: child, filename: "child_part.stl")
       end
 
@@ -353,6 +353,24 @@ RSpec.describe Model do
       expect(target.links.count).to eq 3
       expect(target.links.map(&:url)).to include "https://manyfold.app"
       expect(target.links.map(&:url)).to include "https://bbc.co.uk"
+    end
+  end
+
+  context "when merging with duplicate filenames" do
+    let(:model) { create(:model) }
+    let(:target) { create(:model) }
+
+    it "renames incoming file to avoid conflict if files are different" do # rubocop:disable RSpec/MultipleExpectations
+      create(:model_file, model: model, filename: "test.stl", digest: "abcd")
+      create(:model_file, model: target, filename: "test.stl", digest: "1234")
+      target.merge!(model)
+      expect(target.model_files.map(&:filename)).to eq ["test_abcd.stl", "test.stl"]
+    end
+
+    it "discards incoming file if they are identical" do
+      create(:model_file, model: model, filename: "test.stl", digest: "abcd")
+      create(:model_file, model: target, filename: "test.stl", digest: "abcd")
+      expect { target.merge!(model) }.not_to change { target.model_files.count }
     end
   end
 
