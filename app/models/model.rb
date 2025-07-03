@@ -96,18 +96,24 @@ class Model < ApplicationRecord
   end
 
   def adopt_file(file, path_prefix: nil)
+    # Work out the new filename
     new_filename = path_prefix ? File.join(path_prefix, file.filename) : file.filename
-    if model_files.exists?(filename: new_filename)
-      # TODO: Check file checksum first!!
+    # If there's an identical file already there...
+    existing_file = model_files.find_by(filename: new_filename)
+    if file.digest && file.digest == existing_file&.digest
       file.problems.destroy_all # Remove associated problems for this file manually
       file.delete # Don't run callbacks, just remove the database record
-    else
-      file.update(
-        filename: new_filename,
-        model: self
-      )
-      file.reattach!
+      return
+    elsif existing_file
+      # Otherwise, make sure the name is distinct by adding the digest to the end if there's a clash
+      new_filename = "#{File.basename(new_filename, ".*")}_#{file.digest}#{File.extname(new_filename)}"
     end
+    # Adopt the file
+    file.update(
+      filename: new_filename,
+      model: self
+    )
+    file.reattach!
   end
 
   def merge!(*models)
