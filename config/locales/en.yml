@@ -369,8 +369,6 @@ en:
       open_button:
         label: Open model %{name}
         text: Open
-    model_summary:
-      byline: by %{creator}
     search_help:
       boolean: Use "or" to find models that match any of the terms.
       federation: Search for any Fediverse username to follow it.
