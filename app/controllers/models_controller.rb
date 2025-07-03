@@ -144,7 +144,7 @@ class ModelsController < ApplicationController
 
   def bulk_edit
     authorize Model
-    @models = filtered_models(@filters).includes(:collection, :creator)
+    @models = policy_scope(filtered_models(@filters), policy_scope_class: ApplicationPolicy::UpdateScope).includes(:collection, :creator)
     generate_available_tag_list
     if helpers.pagination_settings["models"]
       page = params[:page] || 1
@@ -166,11 +166,11 @@ class ModelsController < ApplicationController
 
     models_to_update = if params.key?(:update_all)
       # If "Update All Models" was clicked, update all models in the filtered set
-      filtered_models(@filters)
+      policy_scope(filtered_models(@filters), policy_scope_class: ApplicationPolicy::UpdateScope)
     else
       # If "Update Selected Models" was clicked, only update checked models
       ids = params[:models].select { |k, v| v == "1" }.keys
-      policy_scope(Model).where(public_id: ids)
+      policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope).where(public_id: ids)
     end
 
     models_to_update.find_each do |model|
