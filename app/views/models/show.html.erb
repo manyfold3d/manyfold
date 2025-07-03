@@ -141,8 +141,8 @@
             <%= t(".merge.warning") %>
           </p>
           <strong><%= t(".merge.with") %>:</strong>
-          <% @model.parents.each do |target| %>
-            <%= link_to target.name, merge_model_path(@model, target: target), class: "btn btn-danger", method: :post %>
+          <% @model.parents.each do |parent| %>
+            <%= render Components::DoButton.new(icon: "union", label: parent.name, href: merge_models_path(target: parent.public_id, models: [@model.public_id]), method: :post, variant: "danger") %>
           <% end %>
         <% end %>
       <% end %>

@@ -115,7 +115,7 @@ class ProblemsController < ApplicationController
     case problem.problematic_type
     when "Model"
       problem.update(in_progress: true)
-      problem.problematic.merge_all_children!
+      problem.problematic.merge!(problem.problematic.contained_models)
     else
       raise NotImplementedError
     end

@@ -75,30 +75,57 @@ class Model < ApplicationRecord
     !previous_changes.empty?
   end
 
-  def merge_into!(target)
-    return unless target
+  def self.common_root(*models)
+    # If there are different libraries, there is no common root
+    return nil unless models.map(&:library_id).uniq.count == 1
+    # Get each path, split, and working from the front, find the common elements
 
-    # Work out path to this model from the target
-    relative_path = Pathname.new(path).relative_path_from(Pathname.new(target.path))
-    # Remove datapackage
-    datapackage&.destroy
-    # Move files
-    model_files.each do |f|
-      new_filename = File.join(relative_path, f.filename)
-      if target.model_files.exists?(filename: new_filename)
-        f.problems.destroy_all # Remove associated problems for this file manually
-        f.delete # Don't run callbacks, just remove the database record
-      else
-        f.update(
-          filename: new_filename,
-          model: target
-        )
-      end
+    first, *remainder = models.map { |it| it.path.split(File::SEPARATOR).without(".") }
+    parts = first.zip(*remainder)
+    common = parts.map { |it| (it.uniq.length == 1) ? it.first : nil }
+    common = common.first(common.index(nil) || 99999)
+    common.empty? ? nil : File.join(common)
+  end
+
+  def disjoint?(other)
+    Model.common_root(self, other).nil?
+  end
+
+  def contains?(other)
+    Model.common_root(self, other) == path
+  end
+
+  def adopt_file(file, path_prefix: nil)
+    new_filename = path_prefix ? File.join(path_prefix, file.filename) : file.filename
+    if model_files.exists?(filename: new_filename)
+      # TODO: Check file checksum first!!
+      file.problems.destroy_all # Remove associated problems for this file manually
+      file.delete # Don't run callbacks, just remove the database record
+    else
+      file.update(
+        filename: new_filename,
+        model: self
+      )
+      file.reattach!
     end
-    target.check_for_problems_later
-    # Destroy this model
-    reload
-    destroy
+  end
+
+  def merge!(*models)
+    # If we've got one argument and it's enumerable, use it directly
+    models = models[0] if models.length == 1 && models[0].is_a?(Enumerable)
+    # Go through the list
+    models.each do |other|
+      # Work out path to the other target from here
+      relative_path = contains?(other) ? Pathname.new(other.path).relative_path_from(Pathname.new(path)) : nil
+      # Remove datapackage
+      other.datapackage&.destroy
+      # Move files
+      other.model_files.each { |it| adopt_file(it, path_prefix: relative_path) }
+      check_for_problems_later
+      # Destroy the other model
+      other.reload
+      other.destroy
+    end
   end
 
   def delete_from_disk_and_destroy
@@ -165,10 +192,10 @@ class Model < ApplicationRecord
     save!
   end
 
-  def self.create_from(other, link_preview_file:)
+  def self.create_from(other, link_preview_file:, name: nil)
     new_model = other.dup
     new_model.update(
-      name: "Copy of #{other.name}",
+      name: name || "Copy of #{other.name}",
       public_id: nil,
       tags: other.tags,
       preview_file: link_preview_file ? other.preview_file : nil
@@ -189,10 +216,7 @@ class Model < ApplicationRecord
     # Clear preview file if it was moved
     update!(preview_file: nil) if preview_file_will_move
     # Move files
-    files.each do |file|
-      file.update!(model: new_model)
-      file.reattach!
-    end
+    files.each { |it| new_model.adopt_file(it) }
     # Done!
     new_model
   end
@@ -204,12 +228,6 @@ class Model < ApplicationRecord
 
   def file_extensions
     model_files.map(&:extension).uniq
-  end
-
-  def merge_all_children!
-    contained_models.each do |child|
-      child.merge_into! self
-    end
   end
 
   def size_on_disk

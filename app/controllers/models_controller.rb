@@ -7,15 +7,16 @@ class ModelsController < ApplicationController
   rate_limit to: 10, within: 3.minutes, only: :create
 
   before_action :redirect_search, only: [:index], if: -> { params.key?(:q) }
-  before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
   before_action :get_creators_and_collections, only: [:new, :edit, :bulk_edit]
   before_action :set_returnable, only: [:bulk_edit, :edit, :new]
   before_action :clear_returnable, only: [:bulk_update, :update, :create]
   before_action :get_filters, only: [:bulk_edit, :bulk_update, :index, :show] # rubocop:todo Rails/LexicallyScopedActionFilter
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
-  before_action -> { set_indexable @model }, except: [:bulk_edit, :bulk_update, :index, :new, :create]
+  before_action -> { set_indexable @model if @model }
 
   after_action :verify_policy_scoped, only: [:bulk_edit, :bulk_update]
+
+  include ModelsController::Merge
 
   def index
     @models = filtered_models @filters
@@ -120,18 +121,6 @@ class ModelsController < ApplicationController
           render json: @model.errors.to_json, status: :unprocessable_entity
         end
       end
-    end
-  end
-
-  def merge
-    if params[:target] && (target = (@model.parents.find { |it| it.public_id == params[:target] }))
-      @model.merge_into! target
-      redirect_to target, notice: t(".success")
-    elsif params[:all] && @model.contains_other_models?
-      @model.merge_all_children!
-      redirect_to @model, notice: t(".success")
-    else
-      head :bad_request
     end
   end
 

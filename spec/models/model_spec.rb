@@ -105,6 +105,109 @@ RSpec.describe Model do
     end
   end
 
+  context "with models in different libraries" do
+    let(:library_a) { create(:library) }
+    let(:library_b) { create(:library) }
+
+    it "does not find a common root for models" do
+      m1 = create(:model, path: "shared/common/folder", library: library_a)
+      m2 = create(:model, path: "shared/parent/folder", library: library_b)
+      expect(described_class.common_root(m1, m2)).to be_nil
+    end
+  end
+
+  context "with a common root" do
+    around do |ex|
+      MockDirectory.create([
+        "common/root/model_one/part_one.stl",
+        "common/root/model_two/part_two.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+    let!(:model_one) { create(:model, library: library, path: "common/root/model_one") }
+    let!(:model_two) { create(:model, library: library, path: "common/root/model_two") }
+    let!(:part_one) { create(:model_file, model: model_one, filename: "part_one.stl") } # rubocop:disable RSpec/LetSetup
+    let!(:part_two) { create(:model_file, model: model_two, filename: "part_two.stl") } # rubocop:disable RSpec/LetSetup
+
+    it "finds common root folder for a set of models" do
+      expect(described_class.common_root(model_one, model_two)).to eq "common/root"
+    end
+
+    context "when merging into a new parent model" do # rubocop:disable RSpec/MultipleMemoizedHelpers
+      let!(:new_model) { create(:model, library: library, path: "common/root") }
+
+      before do
+        new_model.merge! model_one, model_two
+      end
+
+      it "moves files" do
+        expect(new_model.model_files.count).to eq 2
+      end
+
+      it "preserves subfolder paths within model" do # rubocop:disable RSpec/MultipleExpectations
+        expect(new_model.model_files.exists?(filename: "model_one/part_one.stl")).to be true
+        expect(new_model.model_files.exists?(filename: "model_two/part_two.stl")).to be true
+      end
+
+      it "handles filename clashes"
+
+      it "removes old models" do # rubocop:disable RSpec/MultipleExpectations
+        expect { model_one.reload }.to raise_error(ActiveRecord::RecordNotFound)
+        expect { model_two.reload }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
+
+  context "with disjoint models" do
+    around do |ex|
+      MockDirectory.create([
+        "no/common/root/model_one/part_one.stl",
+        "common/root/model_two/part_two.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+    let!(:model_one) { create(:model, library: library, path: "no/common/root/model_one") }
+    let!(:model_two) { create(:model, library: library, path: "common/root/model_two") }
+    let!(:part_one) { create(:model_file, model: model_one, filename: "part_one.stl") } # rubocop:disable RSpec/LetSetup
+    let!(:part_two) { create(:model_file, model: model_two, filename: "part_two.stl") } # rubocop:disable RSpec/LetSetup
+
+    it "detects if there is no common root for a set of models" do
+      expect(described_class.common_root(model_one, model_two)).to be_nil
+    end
+
+    it "detects disjoint models" do
+      expect(model_one.disjoint?(model_two)).to be true
+    end
+
+    context "when merging into an existing model" do
+      before do
+        model_one.merge! model_two
+      end
+
+      it "moves files" do
+        expect(model_one.model_files.count).to eq 2
+      end
+
+      it "does not change paths within model" do
+        expect(model_one.model_files.exists?(filename: "part_two.stl")).to be true
+      end
+
+      it "handles filename clashes"
+
+      it "removes old model" do
+        expect { model_two.reload }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
+
   context "when nested inside another" do
     around do |ex|
       MockDirectory.create([
@@ -129,15 +232,36 @@ RSpec.describe Model do
       expect(child.parents).to eql [parent]
     end
 
+    it "parent contains child" do
+      expect(parent.contains?(child)).to be true
+    end
+
+    it "child does not contain parent" do
+      expect(child.contains?(parent)).to be false
+    end
+
+    it "parent and child are not disjoint" do # rubocop:todo RSpec/MultipleExpectations
+      expect(parent.disjoint?(child)).to be false
+      expect(child.disjoint?(parent)).to be false
+    end
+
     it "has a bool check for contained models" do # rubocop:todo RSpec/MultipleExpectations
       expect(parent.contains_other_models?).to be true
       expect(child.contains_other_models?).to be false
     end
 
-    context "when merging into parent" do
+    it "detects parent as common root with child" do
+      expect(described_class.common_root(parent, child)).to eq "parent"
+    end
+
+    it "can merge all contained models at once" do
+      expect { parent.merge!(parent.contained_models) }.to change(described_class, :count).by(-1)
+    end
+
+    context "when merging a child model into a parent" do
       it "moves files" do # rubocop:todo RSpec/MultipleExpectations
         file = create(:model_file, model: child, filename: "child_part.stl")
-        child.merge_into! parent
+        parent.merge! child
         file.reload
         expect(file.filename).to eql "child/child_part.stl"
         expect(file.model).to eql parent
@@ -145,7 +269,7 @@ RSpec.describe Model do
 
       it "deletes merged model" do
         expect {
-          child.merge_into! parent
+          parent.merge! child
         }.to change(described_class, :count).from(2).to(1)
       end
     end
@@ -160,17 +284,17 @@ RSpec.describe Model do
 
       it "removes duplicated file" do
         expect {
-          child.merge_into! parent
+          parent.merge! child
         }.to change(ModelFile, :count).by(-1)
       end
 
       it "rehomes distinct file" do
-        child.merge_into! parent
+        parent.merge! child
         expect(parent.model_files.exists?(filename: "child/child_part.stl")).to be true
       end
 
       it "keeps all real files intact" do
-        child.merge_into! parent
+        parent.merge! child
         parent.model_files.each do |file|
           expect(file.exists_on_storage?).to be true
         end

@@ -5,12 +5,12 @@ require "rails_helper"
 #               PATCH  /models/:id(.:format)                             models#update
 #               PUT    /models/:id(.:format)                             models#update
 #               DELETE /models/:id(.:format)                             models#destroy
-#   edit_models GET    /models/edit(.:format)                                                  models#bulk_edit
-# update_models PATCH  /models/update(.:format)                                                models#bulk_update
-#        models GET    /models(.:format)                                                       models#index
-#     new_model GET    /models/new(.:format)                                                      uploads#index
-#               POST   /models(.:format)                                                      uploads#create
-#   merge_model POST   /models/:id/merge(.:format)                       models#merge
+#   edit_models GET    /models/edit(.:format)                            models#bulk_edit
+# update_models PATCH  /models/update(.:format)                          models#bulk_update
+#        models GET    /models(.:format)                                 models#index
+#     new_model GET    /models/new(.:format)                             models#new
+#               POST   /models(.:format)                                 models#create
+#  merge_models POST   /models/merge(.:format)                           models#merge
 #   scan_model  POST   /models/:id/scan(.:format)                        models#scan
 
 RSpec.describe "Models" do
@@ -331,15 +331,92 @@ RSpec.describe "Models" do
         end
       end
 
-      describe "POST /models/:id/merge" do
-        before { post "/models/#{library.models.first.to_param}/merge" }
+      describe "POST /models/merge" do
+        context "with a target and models to merge into it", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
+          let(:model_one) { create(:model) }
+          let(:model_two) { create(:model) }
+          let(:merge_post) {
+            post "/models/merge", params: {
+              target: model_one.to_param,
+              models: [model_two.to_param]
+            }
+          }
 
-        it "gives a bad request response if no merge parameter is provided", :as_moderator do
-          expect(response).to have_http_status(:bad_request)
+          it "is denied if the user doesn't have update permission on the models", :as_contributor do
+            merge_post
+            expect(response).to have_http_status(:forbidden)
+          end
+
+          it "is denied if the user doesn't have update permission on the target"
         end
 
-        it "is denied to non-moderators", :as_contributor do
-          expect(response).to have_http_status(:forbidden)
+        context "without any models", :as_moderator do
+          let(:model) { create(:model) }
+          let(:merge_post) {
+            post "/models/merge", params: {
+              target: model.to_param
+            }
+          }
+
+          it "gives a bad request response if no models are provided" do
+            merge_post
+            expect(response).to have_http_status(:bad_request)
+          end
+        end
+
+        context "without a target", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
+          let(:model_one) { create(:model) }
+          let(:model_two) { create(:model) }
+          let(:merge_post) {
+            post "/models/merge", params: {
+              models: [model_one.to_param, model_two.to_param]
+            }
+          }
+
+          before { merge_post }
+
+          it "redirects to the merge options page" do
+            expect(response).to redirect_to("/models/merge?models%5B%5D=#{model_one.to_param}&models%5B%5D=#{model_two.to_param}")
+          end
+        end
+
+        context "with form-encoded data", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
+          let(:model_one) { create(:model) }
+          let(:model_two) { create(:model) }
+          let(:merge_post) {
+            post "/models/merge", params: {
+              models: {
+                model_one.to_param => "0",
+                model_two.to_param => "1"
+              }
+            }
+          }
+
+          before { merge_post }
+
+          it "extracts selected models from form" do
+            expect(assigns(:models)).to include model_two
+          end
+
+          it "ignores unselected models" do
+            expect(assigns(:models)).not_to include model_one
+          end
+        end
+      end
+
+      describe "GET /models/merge", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
+        let(:model_one) { create(:model) }
+        let(:model_two) { create(:model) }
+        let(:configure_merge) {
+          get "/models/merge", params: {
+            models: [model_one.to_param, model_two.to_param]
+          }
+        }
+
+        before { configure_merge }
+
+        it "merge options page includes a form for choosing the target" do
+          expect(response.body).to include(%(<form action="/models/merge" accept-charset="UTF-8" method="post">))
         end
       end
 

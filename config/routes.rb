@@ -98,10 +98,11 @@ Rails.application.routes.draw do
     concerns :commentable, commentable_class: "Model"
     concerns :reportable, reportable_class: "Model"
     member do
-      post "merge"
       post "scan"
     end
     collection do
+      post "merge"
+      get "merge", action: "configure_merge", as: "configure_merge"
       get "edit", action: "bulk_edit"
       patch "/update", action: "bulk_update"
     end

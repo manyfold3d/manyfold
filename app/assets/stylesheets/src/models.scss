@@ -125,3 +125,18 @@ div.form-control.tag-container {
   left: 0;
   z-index: 999;
 }
+
+.radio-option {
+
+  input[type="radio"] {
+    display: none
+  }
+
+  &:has(input[type="radio"]:checked) {
+    @extend .bg-success;
+  }
+
+  label {
+    display: block;
+  }
+}
