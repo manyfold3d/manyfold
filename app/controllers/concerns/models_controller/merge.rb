@@ -12,16 +12,24 @@ module ModelsController::Merge
 
   def configure_merge
     skip_authorization
+    @common_root = Model.common_root(*@models)
+    @common_root = nil if Model.find_by(path: @common_root)
   end
 
   def merge
-    if @merge_params[:target]
-      target = Model.find_param(@merge_params[:target])
-      authorize(target)
-      if target && !@models.empty?
-        target.merge!(@models)
-        redirect_to target, notice: t("models.merge.success")
-      end
+    @target = nil
+    @template = nil
+    if @merge_params[:target] == "==new=="
+      @target = Model.create_from(@models.first, name: @models.first.name)
+    elsif @merge_params[:target] == "==common_root=="
+      @target = Model.create_from(@models.first, name: @models.first.name, path: Model.common_root(*@models))
+    elsif @merge_params[:target]
+      @target = Model.find_param(@merge_params[:target])
+    end
+    if @target
+      authorize @target
+      @target.merge!(@models)
+      redirect_to @target, notice: t("models.merge.success")
     else
       skip_authorization
       redirect_to configure_merge_models_path(models: @models.map(&:public_id))

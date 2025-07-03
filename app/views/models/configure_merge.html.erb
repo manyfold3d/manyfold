@@ -15,7 +15,31 @@
         </label>
       </div>
     <% end %>
+    <div class="row p-2 radio-option rounded">
+      <%= form.radio_button :target, "==new==", id: "==new==" %>
+      <label for="==new==">
+        <div class="card">
+          <div class="card-body">
+            <h5><%= t(".new_model.title") %></h5>
+            <p><%= t(".new_model.description") %></p>
+          </div>
+        </div>
+      </label>
+    </div>
+    <% if @common_root %>
+      <div class="row p-2 radio-option rounded">
+        <%= form.radio_button :target, "==common_root==", id: "==common_root==" %>
+        <label for="==common_root==">
+        <div class="card">
+          <div class="card-body">
+            <h5><%= t(".common_root.title") %></h5>
+            <p><%= t(".common_root.description") %>: <code><%= @common_root %></code></p>
+          </div>
+        </div>
 
+        </label>
+      </div>
+    <% end %>
     <div class="mt-3">
       <%= form.submit %>
     </div>

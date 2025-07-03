@@ -192,16 +192,16 @@ class Model < ApplicationRecord
     save!
   end
 
-  def self.create_from(other, link_preview_file:, name: nil)
+  def self.create_from(other, link_preview_file: false, name: nil, path: nil)
     new_model = other.dup
     new_model.update(
+      path: path,
       name: name || "Copy of #{other.name}",
       public_id: nil,
       tags: other.tags,
       preview_file: link_preview_file ? other.preview_file : nil
-      # caber_relations_attributes: caber_relations.all.map { |it| {permission: it.permission, subject: it.subject} }
     )
-    new_model.organize!
+    path ? new_model.save! : new_model.organize!
     # Wipe permissions and copy from old model
     new_model.caber_relations.delete_all
     new_model.update!(

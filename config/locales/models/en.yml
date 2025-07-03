@@ -17,8 +17,14 @@ en:
     bulk_update:
       success: Models updated successfully.
     configure_merge:
+      common_root:
+        description: The models will be combined into a single one in the shared root folder
+        title: New model in common root folder
       description: Select one of the models to merge the others into, or create a new one.
       heading: Merge models
+      new_model:
+        description: A new model will be created from the combined data, and automatically organised on disk.
+        title: New model
     create:
       success: File(s) uploaded successfully.
     destroy:
