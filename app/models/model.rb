@@ -122,6 +122,16 @@ class Model < ApplicationRecord
       # Move files
       other.model_files.each { |it| adopt_file(it, path_prefix: relative_path) }
       check_for_problems_later
+      # Merge metadata
+      self.creator ||= other.creator
+      self.collection ||= other.collection
+      self.license ||= other.license
+      self.caption ||= other.caption
+      self.notes ||= other.notes
+      self.sensitive ||= other.sensitive
+      tag_list.add(*other.tag_list)
+      self.links_attributes = other.links.map { |it| {url: it.url} }
+      save!
       # Destroy the other model
       other.reload
       other.destroy
