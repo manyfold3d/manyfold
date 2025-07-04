@@ -19,4 +19,28 @@ RSpec.describe Integrations::MyMiniFactory::ModelDeserializer do
       expect(deserializer.object_id).to eq "1234"
     end
   end
+
+  context "when pulling data from MMF API", vcr: {cassette_name: "Integrations_MyMiniFactory_ModelDeserializer/success"} do
+    subject(:deserializer) { described_class.new(uri: uri, api_key: api_key) }
+
+    let(:uri) { "https://www.myminifactory.com/object/3d-print-michelangelo-s-david-in-florence-italy-2052" }
+
+    it "extracts name" do
+      expect(deserializer.deserialize[:name]).to eq "David"
+    end
+
+    it "extracts description" do
+      expect(deserializer.deserialize[:notes]).to include "Michelangelo"
+    end
+
+    it "extracts tags" do
+      expect(deserializer.deserialize[:tag_list]).to include "renaissance-sculpture"
+    end
+
+    it "extracts image URLs" do
+      expect(deserializer.deserialize[:image_urls]).to include "https://dl.myminifactory.com/object-assets/579f9e3b648b5/images/david-2.jpg"
+    end
+
+    it "extracts creator"
+  end
 end

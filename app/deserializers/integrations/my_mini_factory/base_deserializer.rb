@@ -10,6 +10,10 @@ class Integrations::MyMiniFactory::BaseDeserializer
     @uri.present?
   end
 
+  def deserialize
+    raise NotImplementedError
+  end
+
   private
 
   def canonicalize(uri)
