@@ -13,8 +13,13 @@ RSpec.describe Integrations::MyMiniFactory::CreatorDeserializer do
     end
 
     it "rejects user subfolder URIs" do
-      deserializer = described_class.new(uri: "https://www.myminifactory.com/users/example/collection/whatever")
+      deserializer = described_class.new(uri: "https://www.myminifactory.com/users/example/collection/what-ever")
       expect(deserializer).not_to be_valid
+    end
+
+    it "extracts username" do
+      deserializer = described_class.new(uri: "https://www.myminifactory.com/users/example")
+      expect(deserializer.username).to eq "example"
     end
   end
 end

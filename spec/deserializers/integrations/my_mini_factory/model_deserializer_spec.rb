@@ -11,5 +11,10 @@ RSpec.describe Integrations::MyMiniFactory::ModelDeserializer do
       deserializer = described_class.new(uri: "https://www.myminifactory.com/users/example")
       expect(deserializer).not_to be_valid
     end
+
+    it "extracts object ID" do
+      deserializer = described_class.new(uri: "https://www.myminifactory.com/object/3d-print-example-1234")
+      expect(deserializer.object_id).to eq "1234"
+    end
   end
 end
