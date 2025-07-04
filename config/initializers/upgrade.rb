@@ -9,6 +9,7 @@ Rails.application.config.after_initialize do
     Upgrade::DisambiguateUsernamesJob.set(queue: :upgrade).perform_later
     Upgrade::UpdateActorsJob.set(queue: :upgrade).perform_later
     Upgrade::FixParentCollections.set(queue: :upgrade).perform_later
+    Upgrade::PruneOrphanedProblems.set(queue: :upgrade).perform_later
   end
 rescue RedisClient::CannotConnectError
 end
