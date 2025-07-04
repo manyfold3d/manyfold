@@ -11,3 +11,5 @@ vendor/* linguist-vendored
 
 # Change line endings to lf
 * text=auto eol=lf
+
+spec/cassettes/**/* -diff
