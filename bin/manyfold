@@ -58,7 +58,7 @@ end
 class ProblemCLI < Thor
   desc "prune", "removes any problems without an associated problematic object"
   def prune
-    Problem.find_each { |it| it.destroy if it.problematic.nil? }
+    Upgrade::PruneOrphanedProblems.perform_now
   end
 
   desc "purge", "removes all problem records"
