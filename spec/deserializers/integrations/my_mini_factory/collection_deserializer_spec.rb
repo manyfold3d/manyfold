@@ -1,19 +1,21 @@
 require "rails_helper"
 
 RSpec.describe Integrations::MyMiniFactory::CollectionDeserializer do
+  let(:api_key) { ENV.fetch("MYMINIFACTORY_API_KEY", "abcd1234") }
+
   context "when creating from URI" do
     it "accepts collection URIs" do
-      deserializer = described_class.new(uri: "https://www.myminifactory.com/users/example/collection/what-ever")
+      deserializer = described_class.new(uri: "https://www.myminifactory.com/users/example/collection/what-ever", api_key: api_key)
       expect(deserializer).to be_valid
     end
 
     it "rejects non-collection URIs" do
-      deserializer = described_class.new(uri: "https://www.myminifactory.com/users/example")
+      deserializer = described_class.new(uri: "https://www.myminifactory.com/users/example", api_key: api_key)
       expect(deserializer).not_to be_valid
     end
 
     it "extracts collection slug" do
-      deserializer = described_class.new(uri: "https://www.myminifactory.com/users/example/collection/what-ever")
+      deserializer = described_class.new(uri: "https://www.myminifactory.com/users/example/collection/what-ever", api_key: api_key)
       expect(deserializer.collection_slug).to eq "what-ever"
     end
   end

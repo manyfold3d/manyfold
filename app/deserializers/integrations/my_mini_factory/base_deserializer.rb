@@ -1,8 +1,9 @@
 class Integrations::MyMiniFactory::BaseDeserializer
   attr_reader :uri
 
-  def initialize(uri:)
+  def initialize(uri:, api_key: ENV.fetch("MYMINIFACTORY_API_KEY"))
     @uri = canonicalize(uri)
+    @api_key = api_key
   end
 
   def valid?
