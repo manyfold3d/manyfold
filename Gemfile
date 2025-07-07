@@ -60,6 +60,7 @@ group :development, :test do
   gem "simplecov", "~> 0.22", require: false
   gem "simplecov-cobertura", require: false
   gem "with_model", "~> 2.2"
+  gem "vcr", "~> 6.3"
 
   # system tests and custom screenshots
   gem "capybara"
@@ -203,5 +204,3 @@ gem "stimulus-rails", "~> 1.3"
 gem "scoped_search", "~> 4.2"
 
 gem "altcha-rails", "~> 0.0.6"
-
-gem "vcr", "~> 6.3", :group => :development
