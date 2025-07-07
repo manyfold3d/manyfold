@@ -12,7 +12,7 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
       {Accept: "application/json"})
     {
       name: r.body["name"],
-      notes: r.body["description"],
+      notes: ReverseMarkdown.convert(r.body["description_html"]),
       tag_list: r.body["tags"],
       image_urls: r.body["images"].map { |it| it.dig("original", "url") }
     }

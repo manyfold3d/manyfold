@@ -671,6 +671,8 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    reverse_markdown (3.0.0)
+      nokogiri
     rexml (3.4.1)
     roda (3.87.0)
       rack
@@ -979,6 +981,7 @@ DEPENDENCIES
   rails_performance (~> 1.4)
   redis (~> 5.4)
   redis-namespace
+  reverse_markdown (~> 3.0)
   rolify (~> 6.0)
   rspec-rails
   rswag (~> 2.16)
