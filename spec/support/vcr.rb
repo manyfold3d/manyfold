@@ -5,5 +5,5 @@ VCR.configure do |config|
   config.hook_into :faraday
   config.ignore_localhost = true
   config.configure_rspec_metadata!
-  config.filter_sensitive_data("<MYMINIFACTORY_API_KEY>") { ENV["MYMINIFACTORY_API_KEY"] }
+  config.filter_sensitive_data("<MYMINIFACTORY_API_KEY>") { ENV.fetch("MYMINIFACTORY_API_KEY", "abcd1234") }
 end
