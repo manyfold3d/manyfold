@@ -8,8 +8,8 @@ class Integrations::MyMiniFactory::BaseDeserializer
     @api_key = api_key
   end
 
-  def valid?
-    @uri.present?
+  def valid?(for_class: nil)
+    @uri.present? && (for_class ? for_class == target_class : true)
   end
 
   def deserialize
@@ -17,6 +17,10 @@ class Integrations::MyMiniFactory::BaseDeserializer
   end
 
   private
+
+  def target_class
+    raise NotImplementedError
+  end
 
   def canonicalize(uri)
     u = URI.parse(uri)

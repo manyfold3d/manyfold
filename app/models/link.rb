@@ -34,4 +34,14 @@ class Link < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     ["linkable"]
   end
+
+  def deserializer
+    [
+      Integrations::MyMiniFactory::CreatorDeserializer,
+      Integrations::MyMiniFactory::CollectionDeserializer,
+      Integrations::MyMiniFactory::ModelDeserializer
+    ].map do |klass|
+      klass.new(uri: url)
+    end.find { |it| it.valid?(for_class: linkable.class) }
+  end
 end

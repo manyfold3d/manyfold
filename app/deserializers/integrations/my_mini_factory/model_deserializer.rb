@@ -20,6 +20,10 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
 
   private
 
+  def target_class
+    Model
+  end
+
   def valid_path?(path)
     match = /\A\/object\/3d-print-[[:alnum:]-]+-([[:digit:]]+)\Z/.match(path)
     @object_id = match[1] if match.present?

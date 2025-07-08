@@ -39,4 +39,27 @@ RSpec.describe Integrations::MyMiniFactory::CreatorDeserializer do
     end
   end
 
+  context "with a valid configuration" do
+    subject(:deserializer) { described_class.new(uri: uri, api_key: api_key) }
+
+    let(:uri) { "https://www.myminifactory.com/users/Scan%20The%20World" }
+
+    it "deserializes to a Creator" do
+      expect(deserializer.send(:target_class)).to eq Creator
+    end
+
+    it "is valid for deserialization to Creator" do
+      expect(deserializer.valid?(for_class: Creator)).to be true
+    end
+
+    it "is not valid for deserialization to Model" do
+      expect(deserializer.valid?(for_class: Model)).to be false
+    end
+
+    it "is created for this URI by a link object" do # rubocop:disable RSpec/MultipleExpectations
+      des = create(:link, url: uri, linkable: create(:creator)).deserializer
+      expect(des).to be_a(described_class)
+      expect(des).to be_valid
+    end
+  end
 end
