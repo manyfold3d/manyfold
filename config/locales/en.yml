@@ -356,6 +356,8 @@ en:
       follow: Follow %{name}
       pending: Requested
       unfollow: Unfollow %{name}
+    link_list:
+      sync: Sync capable
     modal:
       close: Close
     model_card:
