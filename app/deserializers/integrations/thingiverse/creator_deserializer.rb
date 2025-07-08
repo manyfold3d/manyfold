@@ -3,16 +3,7 @@ class Integrations::Thingiverse::CreatorDeserializer < Integrations::Thingiverse
 
   def deserialize
     return {} unless valid?
-    # Fetch from Thingiverse API
-    connection = Faraday.new do |builder|
-      builder.response :json
-    end
-    r = connection.get("https://api.thingiverse.com/users/#{CGI.escapeURIComponent(@username)}",
-      {},
-      {
-        Authorization: "Bearer #{@api_key}",
-        Accept: "application/json"
-      })
+    r = fetch "https://api.thingiverse.com/users/#{CGI.escapeURIComponent(@username)}"
     {
       name: r.body["name"],
       notes: ReverseMarkdown.convert(r.body["bio"])
