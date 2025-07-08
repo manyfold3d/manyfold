@@ -3,13 +3,13 @@ class Integrations::MyMiniFactory::BaseDeserializer
 
   USERNAME_PATTERN = /[[:alnum:]\- ]+/
 
-  def initialize(uri:, api_key: ENV.fetch("MYMINIFACTORY_API_KEY"))
+  def initialize(uri:, api_key: ENV.fetch("MYMINIFACTORY_API_KEY", nil))
     @uri = canonicalize(uri)
     @api_key = api_key
   end
 
   def valid?(for_class: nil)
-    @uri.present? && (for_class ? for_class == target_class : true)
+    @api_key && @uri.present? && (for_class ? for_class == target_class : true)
   end
 
   def deserialize
