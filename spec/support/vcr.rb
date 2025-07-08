@@ -7,3 +7,11 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<MYMINIFACTORY_API_KEY>") { ENV.fetch("MYMINIFACTORY_API_KEY", "abcd1234") }
 end
+
+RSpec.configure do |config|
+  config.around(:each, :mmf_api_key) do |example|
+    ClimateControl.modify MYMINIFACTORY_API_KEY: "abcd1234" do
+      example.run
+    end
+  end
+end
