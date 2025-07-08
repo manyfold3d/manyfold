@@ -7,7 +7,7 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
     connection = Faraday.new do |builder|
       builder.response :json
     end
-    r = connection.get("https://www.myminifactory.com/api/v2/objects/#{@object_id}",
+    r = connection.get("https://www.myminifactory.com/api/v2/objects/#{CGI.escapeURIComponent(@object_id)}",
       {key: @api_key},
       {Accept: "application/json"})
     {

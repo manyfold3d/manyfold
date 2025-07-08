@@ -19,4 +19,14 @@ RSpec.describe Integrations::MyMiniFactory::CollectionDeserializer do
       expect(deserializer.collection_slug).to eq "what-ever"
     end
   end
+
+  context "when pulling data from MMF API", vcr: {cassette_name: "Integrations_MyMiniFactory_CollectionDeserializer/success"} do
+    subject(:deserializer) { described_class.new(uri: uri, api_key: api_key) }
+
+    let(:uri) { "https://www.myminifactory.com/users/Scan%20The%20World/collection/sutton-hoo-artifacts" }
+
+    it "extracts name" do
+      expect(deserializer.deserialize[:name]).to eq "Sutton Hoo Artifacts"
+    end
+  end
 end

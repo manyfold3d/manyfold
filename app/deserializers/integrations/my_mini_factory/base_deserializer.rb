@@ -1,6 +1,8 @@
 class Integrations::MyMiniFactory::BaseDeserializer
   attr_reader :uri
 
+  USERNAME_PATTERN = /[[:alnum:]\- ]+/
+
   def initialize(uri:, api_key: ENV.fetch("MYMINIFACTORY_API_KEY"))
     @uri = canonicalize(uri)
     @api_key = api_key
