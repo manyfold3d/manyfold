@@ -14,6 +14,8 @@ class Components::LinkList < Components::Base
         if link.valid?
           li do
             link_to t("sites.%{site}" % {site: link.site}, default: "%{site}" % {site: link.site}), link.url
+            whitespace
+            Icon(icon: "arrow-repeat", label: t("components.link_list.sync")) if link.deserializer.present?
           end
         end
       end
