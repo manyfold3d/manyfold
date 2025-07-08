@@ -26,6 +26,7 @@ Rails.application.routes.draw do
         get :reporting
         get :appearance
         get :discovery
+        get :integrations
       end
       resources :libraries, only: [:index]
     end

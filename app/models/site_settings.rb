@@ -44,6 +44,9 @@ class SiteSettings < RailsSettings::Base
   field :default_indexable, type: :boolean, default: false
   field :default_ai_indexable, type: :boolean, default: false
 
+  field :myminifactory_api_key, type: :string
+  field :thingiverse_api_key, type: :string
+
   validates :model_ignored_files, regex_array: {strict: true}
 
   def self.email_configured?
