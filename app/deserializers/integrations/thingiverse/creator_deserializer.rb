@@ -3,7 +3,7 @@ class Integrations::Thingiverse::CreatorDeserializer < Integrations::Thingiverse
 
   def deserialize
     return {} unless valid?
-    r = fetch "https://api.thingiverse.com/users/#{CGI.escapeURIComponent(@username)}"
+    r = fetch "users/#{CGI.escapeURIComponent(@username)}"
     {
       name: r.body["name"],
       notes: ReverseMarkdown.convert(r.body["bio"])

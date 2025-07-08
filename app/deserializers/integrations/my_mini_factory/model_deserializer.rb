@@ -4,7 +4,7 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
   def deserialize
     return {} unless valid?
     # Fetch from MMF API
-    r = fetch "https://www.myminifactory.com/api/v2/objects/#{CGI.escapeURIComponent(@object_id)}"
+    r = fetch "objects/#{CGI.escapeURIComponent(@object_id)}"
     {
       name: r.body["name"],
       notes: ReverseMarkdown.convert(r.body["description_html"]),

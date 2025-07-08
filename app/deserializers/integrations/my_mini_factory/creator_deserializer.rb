@@ -3,7 +3,7 @@ class Integrations::MyMiniFactory::CreatorDeserializer < Integrations::MyMiniFac
 
   def deserialize
     return {} unless valid?
-    r = fetch "https://www.myminifactory.com/api/v2/users/#{CGI.escapeURIComponent(@username)}"
+    r = fetch "users/#{CGI.escapeURIComponent(@username)}"
     {
       name: r.body["name"],
       notes: ReverseMarkdown.convert(r.body["bio"])

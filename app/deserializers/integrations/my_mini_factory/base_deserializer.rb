@@ -22,7 +22,7 @@ class Integrations::MyMiniFactory::BaseDeserializer
     connection = Faraday.new do |builder|
       builder.response :json
     end
-    connection.get api_url, {key: @api_key}, {Accept: "application/json"}
+    connection.get "https://www.myminifactory.com/api/v2/#{api_url}", {key: @api_key}, {Accept: "application/json"}
   end
 
   def target_class

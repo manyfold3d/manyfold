@@ -3,7 +3,7 @@ class Integrations::Thingiverse::CollectionDeserializer < Integrations::Thingive
 
   def deserialize
     return {} unless valid?
-    r = fetch "https://api.thingiverse.com/collections/#{CGI.escapeURIComponent(@collection_id)}"
+    r = fetch "collections/#{CGI.escapeURIComponent(@collection_id)}"
     {
       name: r.body["name"],
       notes: r.body["description"]

@@ -22,7 +22,7 @@ class Integrations::Thingiverse::BaseDeserializer
     connection = Faraday.new do |builder|
       builder.response :json
     end
-    connection.get(api_url, {},
+    connection.get("https://api.thingiverse.com/#{api_url}", {},
       {
         Authorization: "Bearer #{@api_key}",
         Accept: "application/json"
