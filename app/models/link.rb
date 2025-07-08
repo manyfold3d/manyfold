@@ -40,7 +40,8 @@ class Link < ApplicationRecord
       Integrations::MyMiniFactory::CreatorDeserializer,
       Integrations::MyMiniFactory::CollectionDeserializer,
       Integrations::MyMiniFactory::ModelDeserializer,
-      Integrations::Thingiverse::CreatorDeserializer
+      Integrations::Thingiverse::CreatorDeserializer,
+      Integrations::Thingiverse::CollectionDeserializer
     ].map do |klass|
       klass.new(uri: url)
     end.find { |it| it.valid?(for_class: linkable.class) }

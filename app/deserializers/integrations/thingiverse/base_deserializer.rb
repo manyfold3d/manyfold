@@ -1,6 +1,8 @@
 class Integrations::Thingiverse::BaseDeserializer
   attr_reader :uri
 
+  USERNAME_PATTERN = /[[:alnum:]_\-]+/
+
   def initialize(uri:, api_key: ENV.fetch("THINGIVERSE_API_KEY"))
     @uri = canonicalize(uri)
     @api_key = api_key

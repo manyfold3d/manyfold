@@ -26,7 +26,7 @@ class Integrations::Thingiverse::CreatorDeserializer < Integrations::Thingiverse
   end
 
   def valid_path?(path)
-    match = /\A\/([[:alnum:]_-]+)\Z/o.match(CGI.unescape(path))
+    match = /\A\/(#{USERNAME_PATTERN})\Z/o.match(CGI.unescape(path))
     @username = match[1] if match.present?
     match.present?
   end
