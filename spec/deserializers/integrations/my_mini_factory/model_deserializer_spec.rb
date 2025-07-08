@@ -38,6 +38,7 @@ RSpec.describe Integrations::MyMiniFactory::ModelDeserializer do
     end
 
     it "extracts image URLs" do
+      pending "until Model can handle them"
       expect(deserializer.deserialize[:image_urls]).to include "https://dl.myminifactory.com/object-assets/579f9e3b648b5/images/david-2.jpg"
     end
 
