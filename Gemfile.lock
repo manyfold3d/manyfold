@@ -671,6 +671,8 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    reverse_markdown (3.0.0)
+      nokogiri
     rexml (3.4.1)
     roda (3.87.0)
       rack
@@ -870,6 +872,8 @@ GEM
     validate_url (1.0.15)
       activemodel (>= 3.0.0)
       public_suffix
+    vcr (6.3.1)
+      base64
     warden (1.2.9)
       rack (>= 2.0.9)
     warning (1.5.0)
@@ -977,6 +981,7 @@ DEPENDENCIES
   rails_performance (~> 1.4)
   redis (~> 5.4)
   redis-namespace
+  reverse_markdown (~> 3.0)
   rolify (~> 6.0)
   rspec-rails
   rswag (~> 2.16)
@@ -1012,6 +1017,7 @@ DEPENDENCIES
   turbo-rails (~> 2.0)
   tus-server (~> 2.3)
   tzinfo-data
+  vcr (~> 6.3)
   warning (~> 1.5)
   web-console (~> 4.1)
   with_model (~> 2.2)

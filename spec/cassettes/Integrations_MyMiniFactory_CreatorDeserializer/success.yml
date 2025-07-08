@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.myminifactory.com/api/v2/users/Scan%20The%20World?key=<MYMINIFACTORY_API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 08 Jul 2025 10:11:04 GMT
+      content-type:
+      - application/json
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      server:
+      - cloudflare
+      x-powered-by:
+      - PHP/8.1.31
+      cache-control:
+      - no-cache, private
+      nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      access-control-allow-credentials:
+      - 'true'
+      x-node-id:
+      - 76a936272ea6e3129c5a0a13742ac407
+      cf-cache-status:
+      - DYNAMIC
+      report-to:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=TN6oVO4CkzOEkgHLOTI6BNw4DxVel7%2BzY6N3DCL0SwvK%2B%2F0AlCgyswjxQlFl9620nzDHFQA%2B9A%2B9hEqtcuuSrPbxobK05yY%2Fqe3LnfsA7mYuSlOzvXy1yy5ALUCm8MXh"}]}'
+      content-encoding:
+      - gzip
+      set-cookie:
+      - hl=en; SameSite=Lax; Path=/; Max-Age=31536000; Expires=Wed, 08 Jul 2026 10:11:04
+        GMT, __cflb=02DiuHo5HdJdoFszo8vXRpCamJS7det5CcrtWKptts2iP; HttpOnly; SameSite=None;
+        Secure; Path=/; Expires=Tue, 15 Jul 2025 10:11:04 GMT
+      cf-ray:
+      - 95becb9d9984ced6-LHR
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":20099,"username":"Scan The World","name":"Scan The World","is_admin":true,"is_premium":true,"is_store_manager":true,"isHobbyHunterPicked":false,"is_campaign_manager":true,"profile_url":"https:\/\/www.myminifactory.com\/users\/Scan%20The%20World","profile_settings_url":"https:\/\/www.myminifactory.com\/settings\/profile","avatar_url":"https:\/\/images2.myminifactory.com\/insecure\/rt:fill-down\/w:400\/h:400\/el:1\/plain\/https:\/\/dl4.myminifactory.com\/public-assets\/profile-images\/52cb67b113714c45e8417ba399cce47f7df4692a.jpg","avatar_thumbnail_url":"https:\/\/images2.myminifactory.com\/insecure\/rt:fill-down\/w:200\/h:200\/el:1\/plain\/https:\/\/dl4.myminifactory.com\/public-assets\/profile-images\/52cb67b113714c45e8417ba399cce47f7df4692a.jpg","avatar_small_thumbnail_url":"https:\/\/images2.myminifactory.com\/insecure\/rt:fill-down\/w:50\/h:50\/el:1\/plain\/https:\/\/dl4.myminifactory.com\/public-assets\/profile-images\/52cb67b113714c45e8417ba399cce47f7df4692a.jpg","cover_url":"https:\/\/dl4.myminifactory.com\/public-assets\/profile-cover\/230b41e00ded375197728fa0f4349faa38881b53.jpg","website":null,"bio":"Scan
+        the World enables metaReverse with a conscience; an ecosystem for everyone
+        to freely share digital, 3D scanned cultural artefacts for physical 3D printing.","followings":25,"followers":11769,"likes":174398,"views":85609504,"objects":12446,"total_prints":12,"total_collections":51,"total_objects_store":0,"printing_since":{"date":"0001-01-01
+        00:00:00.000000","timezone_type":3,"timezone":"UTC"},"social_networks":{"total_count":12,"items":[{"id":1,"name":"Facebook","value":"https:\/\/www.facebook.com\/Scan-the-World-1656114977977499\/"},{"id":2,"name":"Twitter","value":"https:\/\/twitter.com\/scan_the_world"},{"id":3,"name":"Behance","value":""},{"id":4,"name":"Flickr","value":""},{"id":5,"name":"Google
+        Plus","value":""},{"id":6,"name":"LinkedIn","value":""},{"id":7,"name":"Tumblr","value":"http:\/\/blog.myminifactory.com\/"},{"id":8,"name":"Vimeo","value":""},{"id":9,"name":"Wordpress","value":""},{"id":10,"name":"Youtube","value":""},{"id":11,"name":"Zerply","value":""},{"id":12,"name":"Instagram","value":"https:\/\/www.instagram.com\/scantheworld\/"}]},"printers":{"total_count":2,"items":[{"id":1143,"name":"BIQU
+        Thunder","automatic_slicing":true,"premium":false,"model":"biqu-printer","brand":"BIQU","image":"biqu-logo.jpg","website":"https:\/\/www.biqu.equipment\/","nozzle_diameter":0.4,"dimensions":{"x":300,"y":300,"z":400}},{"id":1122,"name":"Prusa
+        i3 MK3","automatic_slicing":true,"premium":true,"model":"prusa-i3-mk3","brand":"Prusa","image":null,"website":"https:\/\/www.prusa3d.com\/original-prusa-i3-mk3\/","nozzle_diameter":0.4,"dimensions":{"x":250,"y":210,"z":210}}]}}'
+  recorded_at: Tue, 08 Jul 2025 10:11:04 GMT
+recorded_with: VCR 6.3.1
