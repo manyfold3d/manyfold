@@ -44,4 +44,8 @@ class Link < ApplicationRecord
       klass.new(uri: url)
     end.find { |it| it.valid?(for_class: linkable.class) }
   end
+
+  def update_metadata_from_link_later
+    UpdateMetadataFromLinkJob.perform_later(link: self)
+  end
 end
