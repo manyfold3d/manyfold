@@ -3,13 +3,12 @@ class Integrations::MyMiniFactory::BaseDeserializer
 
   USERNAME_PATTERN = /[[:alnum:]\- ]+/
 
-  def initialize(uri:, api_key: ENV.fetch("MYMINIFACTORY_API_KEY", nil))
+  def initialize(uri:)
     @uri = canonicalize(uri)
-    @api_key = api_key
   end
 
   def valid?(for_class: nil)
-    @api_key && @uri.present? && (for_class ? for_class == target_class : true)
+    SiteSettings.myminifactory_api_key && @uri.present? && (for_class ? for_class == target_class : true)
   end
 
   def deserialize
@@ -22,7 +21,7 @@ class Integrations::MyMiniFactory::BaseDeserializer
     connection = Faraday.new do |builder|
       builder.response :json
     end
-    connection.get "https://www.myminifactory.com/api/v2/#{api_url}", {key: @api_key}, {Accept: "application/json"}
+    connection.get "https://www.myminifactory.com/api/v2/#{api_url}", {key: SiteSettings.myminifactory_api_key}, {Accept: "application/json"}
   end
 
   def target_class

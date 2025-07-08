@@ -3,13 +3,12 @@ class Integrations::Thingiverse::BaseDeserializer
 
   USERNAME_PATTERN = /[[:alnum:]_\-]+/
 
-  def initialize(uri:, api_key: ENV.fetch("THINGIVERSE_API_KEY", nil))
+  def initialize(uri:)
     @uri = canonicalize(uri)
-    @api_key = api_key
   end
 
   def valid?(for_class: nil)
-    @api_key && @uri.present? && (for_class ? for_class == target_class : true)
+    SiteSettings.thingiverse_api_key && @uri.present? && (for_class ? for_class == target_class : true)
   end
 
   def deserialize
@@ -24,7 +23,7 @@ class Integrations::Thingiverse::BaseDeserializer
     end
     connection.get("https://api.thingiverse.com/#{api_url}", {},
       {
-        Authorization: "Bearer #{@api_key}",
+        Authorization: "Bearer #{SiteSettings.thingiverse_api_key}",
         Accept: "application/json"
       })
   end
