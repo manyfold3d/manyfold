@@ -32,4 +32,8 @@ class SettingsPolicy < ApplicationPolicy
   def discovery?
     update?
   end
+
+  def integrations?
+    update?
+  end
 end

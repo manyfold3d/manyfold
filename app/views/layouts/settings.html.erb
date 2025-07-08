@@ -51,6 +51,9 @@
         <li class="nav-item">
           <%= link_to t("doorkeeper_applications.index.title"), doorkeeper_applications_path, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to t("settings.integrations.heading"), integrations_settings_path, class: "nav-link" %>
+        </li>
       <% end %>
     </ul>
     <% if policy(:settings).index? and not SiteSettings.demo_mode_enabled? %>

@@ -13,6 +13,7 @@ class SettingsController < ApplicationController
     update_usage_settings(params[:usage])
     update_download_settings(params[:downloads])
     update_discovery_settings(params[:discovery])
+    update_integrations_settings(params[:integrations])
     redirect_back_or_to settings_path, notice: t(".success")
   end
 
@@ -94,6 +95,12 @@ class SettingsController < ApplicationController
     return unless settings
     SiteSettings.pregenerate_downloads = (settings[:pregenerate] == "1")
     SiteSettings.download_expiry_time_in_hours = (settings[:expiry].to_i)
+  end
+
+  def update_integrations_settings(settings)
+    return unless settings
+    SiteSettings.myminifactory_api_key = settings[:myminifactory_api_key]
+    SiteSettings.thingiverse_api_key = settings[:thingiverse_api_key]
   end
 
   def check_owner_permission

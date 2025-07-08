@@ -8,7 +8,7 @@ class Integrations::MyMiniFactory::BaseDeserializer
   end
 
   def valid?(for_class: nil)
-    SiteSettings.myminifactory_api_key && @uri.present? && (for_class ? for_class == target_class : true)
+    SiteSettings.myminifactory_api_key.present? && @uri.present? && (for_class ? for_class == target_class : true)
   end
 
   def deserialize

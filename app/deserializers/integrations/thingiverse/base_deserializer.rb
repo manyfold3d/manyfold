@@ -8,7 +8,7 @@ class Integrations::Thingiverse::BaseDeserializer
   end
 
   def valid?(for_class: nil)
-    SiteSettings.thingiverse_api_key && @uri.present? && (for_class ? for_class == target_class : true)
+    SiteSettings.thingiverse_api_key.present? && @uri.present? && (for_class ? for_class == target_class : true)
   end
 
   def deserialize
