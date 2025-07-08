@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.thingiverse.com/users/floppy_uk
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Authorization:
+      - Bearer <THINGIVERSE_API_KEY>
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 08 Jul 2025 14:27:07 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      vary:
+      - Accept-Encoding, Authorization,Cookie
+      expires:
+      - Tue, 08 Jul 2025 15:27:07 +0000
+      cache-control:
+      - max-age=3600
+      content-security-policy:
+      - frame-ancestors *.makerbot.com *.thingiverse.com *.mbot.me *.onshape.com *.makerbot.local
+        *.thingiverse.local;
+      access-control-max-age:
+      - '604800'
+      access-control-allow-headers:
+      - Authorization, Referer, Content-Type, User-Agent, Accept
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-methods:
+      - GET, POST, PATCH, DELETE
+      access-control-allow-origin:
+      - "*"
+      content-encoding:
+      - gzip
+      cf-cache-status:
+      - DYNAMIC
+      set-cookie:
+      - __cf_bm=aenapvdJ9flv_MVEz16WdFvMsk80Ox53ZvWtOxZWjZ8-1751984827-1.0.1.1-yG18y0DlJ8pehiKAVTPDkiIoM.tnIGbkadnm.Lk3l_GX.c2InqGnQ0VWwpBD93eo9naGv9FKvqjJ9SMGuynJFlYUXwqqH14NRZK4fkTwaJU;
+        path=/; expires=Tue, 08-Jul-25 14:57:07 GMT; domain=.thingiverse.com; HttpOnly;
+        Secure; SameSite=None, _cfuvid=6XhRu6JkF3MLgyXC5BLjMflE7Z6cBi_BiCGRTGwGKgE-1751984827421-0.0.1.1-604800000;
+        path=/; domain=.thingiverse.com; HttpOnly; Secure; SameSite=None
+      speculation-rules:
+      - '"/cdn-cgi/speculation"'
+      server:
+      - cloudflare
+      cf-ray:
+      - 95c042b23a759485-LHR
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"id":3154799,"name":"floppy_uk","first_name":"James","last_name":"Smith","full_name":"James
+        Smith","email":"","url":"https:\/\/api.thingiverse.com\/users\/floppy_uk","public_url":"https:\/\/www.thingiverse.com\/floppy_uk","thumbnail":"https:\/\/cdn.thingiverse.com\/assets\/04\/b8\/80\/49\/bd\/sketch_head.PNG","bio":"Amateur
+        3D printer, and creator of [Manyfold](https:\/\/manyfold.app).","level":10,"bio_html":"<div><p>Amateur
+        3D printer, and creator of <a rel=\"nofollow\" href=\"https:\/\/manyfold.app\">Manyfold<\/a>.<\/p><\/div>","location":"UK","country":"United
+        Kingdom","registered":"2019-11-11T23:03:19+00:00","last_active":"2025-07-08T14:26:58+00:00","cover_image":"https:\/\/cdn.thingiverse.com\/site\/img\/default\/cover\/cover-4_preview_birdwing.jpg","things_url":"https:\/\/api.thingiverse.com\/users\/floppy_uk\/things","copies_url":"https:\/\/api.thingiverse.com\/users\/floppy_uk\/copies","likes_url":"https:\/\/api.thingiverse.com\/users\/floppy_uk\/likes","printers":[{"id":41367,"name":"Ender
+        3 Pro","public_url":null}],"programs":[],"types":[{"id":7,"name":"Maker"}],"skill_level":"","accepts_tips":false,"groups":[],"website":"https:\/\/floppy.org.uk","twitter":null,"count_of_followers":32,"count_of_following":20,"count_of_designs":13,"collection_count":18,"make_count":7,"like_count":33,"has_favorite":false,"favorite_count":0,"is_admin":false,"is_moderator":false,"is_featured":false,"is_verified":false,"is_following":false}'
+  recorded_at: Tue, 08 Jul 2025 14:27:07 GMT
+recorded_with: VCR 6.3.1

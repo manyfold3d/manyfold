@@ -1,9 +1,9 @@
-class Integrations::MyMiniFactory::BaseDeserializer
+class Integrations::Thingiverse::BaseDeserializer
   attr_reader :uri
 
-  USERNAME_PATTERN = /[[:alnum:]\- ]+/
+  USERNAME_PATTERN = /[[:alnum:]_\-]+/
 
-  def initialize(uri:, api_key: ENV.fetch("MYMINIFACTORY_API_KEY", nil))
+  def initialize(uri:, api_key: ENV.fetch("THINGIVERSE_API_KEY", nil))
     @uri = canonicalize(uri)
     @api_key = api_key
   end
@@ -24,8 +24,8 @@ class Integrations::MyMiniFactory::BaseDeserializer
 
   def canonicalize(uri)
     u = URI.parse(uri)
-    u.host = "www.myminifactory.com" if u.host == "myminifactory.com"
-    return if u.host != "www.myminifactory.com"
+    u.host = "www.thingiverse.com" if u.host == "thingiverse.com"
+    return if u.host != "www.thingiverse.com"
     return unless valid_path?(u.path)
     # Force https
     u.scheme = "https"

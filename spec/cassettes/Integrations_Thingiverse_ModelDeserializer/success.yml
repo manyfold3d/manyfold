@@ -1,0 +1,104 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.thingiverse.com/things/4049220
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Authorization:
+      - Bearer <THINGIVERSE_API_KEY>
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 08 Jul 2025 14:42:47 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      vary:
+      - Accept-Encoding, Authorization,Cookie
+      expires:
+      - Tue, 08 Jul 2025 15:12:47 +0000
+      cache-control:
+      - max-age=1800
+      content-security-policy:
+      - frame-ancestors *.makerbot.com *.thingiverse.com *.mbot.me *.onshape.com *.makerbot.local
+        *.thingiverse.local;
+      access-control-max-age:
+      - '604800'
+      access-control-allow-headers:
+      - Authorization, Referer, Content-Type, User-Agent, Accept
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-methods:
+      - GET, POST, PATCH, DELETE
+      access-control-allow-origin:
+      - "*"
+      content-encoding:
+      - gzip
+      cf-cache-status:
+      - DYNAMIC
+      set-cookie:
+      - __cf_bm=bIIxzxXf1p_kauVCXjGF9xZm0Jc86sGjIFAQF1aDVqA-1751985767-1.0.1.1-OkpdVlmSByV42Z6hVfhB7Ff3BnbQfCl5LefHHccPLgRuGu5SMSLNBNlqlT1zlyTyWl6U8D4ao7Kx3j7AthVK25d6BAPEgkRaYoYxYJYKSd8;
+        path=/; expires=Tue, 08-Jul-25 15:12:47 GMT; domain=.thingiverse.com; HttpOnly;
+        Secure; SameSite=None, _cfuvid=vSX1evorn7tBsegzOZw3tmAH9kyg71ylNuxR1TuL1uM-1751985767556-0.0.1.1-604800000;
+        path=/; domain=.thingiverse.com; HttpOnly; Secure; SameSite=None
+      speculation-rules:
+      - '"/cdn-cgi/speculation"'
+      server:
+      - cloudflare
+      cf-ray:
+      - 95c059a5eca94197-LHR
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"id":4049220,"name":"Slatwall support","thumbnail":"https:\/\/cdn.thingiverse.com\/assets\/e3\/bc\/80\/9f\/87\/large_display_Slatwall_support.stl","url":"https:\/\/api.thingiverse.com\/things\/4049220","public_url":"https:\/\/www.thingiverse.com\/thing:4049220","creator":{"id":3154799,"name":"floppy_uk","first_name":"James","last_name":"Smith","url":"https:\/\/api.thingiverse.com\/users\/floppy_uk","public_url":"https:\/\/www.thingiverse.com\/floppy_uk","thumbnail":"https:\/\/cdn.thingiverse.com\/assets\/04\/b8\/80\/49\/bd\/sketch_head.PNG","count_of_followers":32,"count_of_following":20,"count_of_designs":13,"collection_count":18,"make_count":7,"accepts_tips":false,"is_following":false,"location":"UK","cover":"https:\/\/cdn.thingiverse.com\/site\/img\/default\/cover\/cover-4_preview_large.jpg","is_admin":false,"is_moderator":false,"is_featured":false,"is_verified":false},"added":"2019-12-14T20:50:10+00:00","modified":"2019-12-14T20:50:10+00:00","is_published":1,"is_wip":0,"is_featured":false,"is_nsfw":false,"is_ai":false,"is_winner":false,"is_edu_approved":false,"is_printable":false,"like_count":2,"is_liked":false,"collect_count":10,"is_collected":false,"comment_count":0,"is_watched":false,"default_image":{"id":12250747,"url":"https:\/\/cdn.thingiverse.com\/assets\/62\/09\/06\/48\/fa\/Slatwall_support.stl","name":"Slatwall_support.png","sizes":[{"type":"thumb","size":"large","url":"https:\/\/cdn.thingiverse.com\/assets\/48\/33\/76\/10\/2a\/large_thumb_Slatwall_support.stl"},{"type":"thumb","size":"medium","url":"https:\/\/cdn.thingiverse.com\/assets\/36\/44\/9e\/83\/e2\/medium_thumb_Slatwall_support.stl"},{"type":"thumb","size":"small","url":"https:\/\/cdn.thingiverse.com\/assets\/bf\/38\/c4\/75\/7c\/small_thumb_Slatwall_support.stl"},{"type":"thumb","size":"tiny","url":"https:\/\/cdn.thingiverse.com\/assets\/91\/3d\/55\/06\/aa\/tiny_thumb_Slatwall_support.stl"},{"type":"preview","size":"featured","url":"https:\/\/cdn.thingiverse.com\/assets\/3d\/e1\/cb\/53\/2e\/featured_preview_Slatwall_support.stl"},{"type":"preview","size":"card","url":"https:\/\/cdn.thingiverse.com\/assets\/20\/16\/75\/fb\/61\/card_preview_Slatwall_support.stl"},{"type":"preview","size":"large","url":"https:\/\/cdn.thingiverse.com\/assets\/ab\/61\/0d\/3f\/de\/large_preview_Slatwall_support.stl"},{"type":"preview","size":"medium","url":"https:\/\/cdn.thingiverse.com\/assets\/82\/32\/01\/85\/fa\/medium_preview_Slatwall_support.stl"},{"type":"preview","size":"small","url":"https:\/\/cdn.thingiverse.com\/assets\/61\/a2\/21\/1d\/58\/small_preview_Slatwall_support.stl"},{"type":"preview","size":"birdwing","url":"https:\/\/cdn.thingiverse.com\/assets\/5b\/36\/d3\/64\/7e\/birdwing_preview_Slatwall_support.stl"},{"type":"preview","size":"tiny","url":"https:\/\/cdn.thingiverse.com\/assets\/47\/af\/cf\/ca\/04\/tiny_preview_Slatwall_support.stl"},{"type":"preview","size":"tinycard","url":"https:\/\/cdn.thingiverse.com\/assets\/14\/5f\/84\/39\/ea\/tinycard_preview_Slatwall_support.stl"},{"type":"display","size":"large","url":"https:\/\/cdn.thingiverse.com\/assets\/e3\/bc\/80\/9f\/87\/large_display_Slatwall_support.stl"},{"type":"display","size":"medium","url":"https:\/\/cdn.thingiverse.com\/assets\/92\/3c\/75\/1d\/91\/medium_display_Slatwall_support.stl"},{"type":"display","size":"small","url":"https:\/\/cdn.thingiverse.com\/assets\/b2\/77\/e7\/8f\/17\/small_display_Slatwall_support.stl"}],"added":"2019-12-14T20:49:52+00:00"},"description":"This
+        is a support that nicely fits into Slatwall plastic inserts. It''s not intended
+        for printing directly, rather as something to combine with other objects to
+        attach them to the Slatwall. The Fusion360 file is included so you can remix
+        the shape with whatever else you want.","instructions":"","description_html":"<div><p>This
+        is a support that nicely fits into Slatwall plastic inserts. It''s not intended
+        for printing directly, rather as something to combine with other objects to
+        attach them to the Slatwall. The Fusion360 file is included so you can remix
+        the shape with whatever else you want.<\/p><\/div>","instructions_html":"<div><\/div>","details":"<div><h1
+        class=\"thing-component-header summary summary\">Summary<\/h1><div><p>This
+        is a support that nicely fits into Slatwall plastic inserts. It''s not intended
+        for printing directly, rather as something to combine with other objects to
+        attach them to the Slatwall. The Fusion360 file is included so you can remix
+        the shape with whatever else you want.<\/p><\/div><\/div>","details_parts":[{"type":"summary","name":"Summary","required":"required","data":[{"content":"<div><p>This
+        is a support that nicely fits into Slatwall plastic inserts. It''s not intended
+        for printing directly, rather as something to combine with other objects to
+        attach them to the Slatwall. The Fusion360 file is included so you can remix
+        the shape with whatever else you want.<\/p><\/div>"}]},{"type":"settings","name":"Print
+        Settings"},{"type":"tips","name":"Post-Printing"},{"type":"design","name":"How
+        I Designed This"},{"type":"custom","name":"Custom Section"}],"edu_details":"","edu_details_parts":[{"type":"grades","name":"Grade","required":"recommended","save_as_component":false,"template":"taglist_select","fieldname":"grades","default":"Choose
+        a range, help teachers see if this is a fit for their class","opts":{"15":"Kindergarten","16":"1st
+        Grade","17":"2nd Grade","18":"3rd Grade","19":"4th Grade","20":"5th Grade","21":"6th
+        Grade","22":"7th Grade","23":"8th Grade","24":"9th Grade","25":"10th Grade","26":"11th
+        Grade","27":"12th Grade","28":"Higher Education"}},{"type":"subjects","name":"Subject","required":"recommended","save_as_component":false,"template":"taglist_select","fieldname":"subjects","default":"Choose
+        a Subject, Make your project more findable","opts":{"11":"Science","12":"Math","13":"Engineering","14":"History","15":"Geography","16":"Art","17":"Languages","18":"Music","19":"Technology","20":"Special
+        Ed"}},{"type":"standards","name":"Standards","required":"recommended","save_as_component":false,"template":"taglist_select","fieldname":"standards","default":"Choose
+        a Requirement this lesson meets","opts":{"3":"NGSS","4":"CCSS"}},{"type":"overview","name":"Overview
+        and Background","required":"required"},{"type":"plan","name":"Lesson Plan
+        and Activity","required":"required"},{"type":"materials","name":"Materials
+        Needed","required":"recommended"},{"type":"skills","name":"Skills Learned","label":"Enter
+        each skill and press enter to add it as a tagged skill","required":false,"template":"taglist","fieldname":"skills","default":"Choose
+        Skills","opts":[]},{"type":"duration","name":"Duration of Lesson","template":"textfield"},{"type":"prep","name":"Preparation"},{"type":"assets","name":"Handouts
+        and Assets","save_as_component":false,"label":"Upload any files, docs, etc.
+        They will be found under the Files tab on the Thing Page.","template":"upload"},{"type":"assessment","name":"Rubric
+        and Assessment"},{"type":"references","name":"References"}],"license":"Creative
+        Commons - Attribution - Share Alike","allows_derivatives":true,"files_url":"https:\/\/api.thingiverse.com\/things\/4049220\/files","images_url":"https:\/\/api.thingiverse.com\/things\/4049220\/images","likes_url":"https:\/\/api.thingiverse.com\/things\/4049220\/likes","ancestors_url":"https:\/\/api.thingiverse.com\/things\/4049220\/ancestors","derivatives_url":"https:\/\/api.thingiverse.com\/things\/4049220\/derivatives","tags_url":"https:\/\/api.thingiverse.com\/things\/4049220\/tags","tags":[{"name":"slatwall","tag":"slatwall","url":"https:\/\/api.thingiverse.com\/tags\/slatwall","count":114,"things_url":"https:\/\/api.thingiverse.com\/tags\/slatwall\/things","absolute_url":"\/tag:slatwall"}],"categories_url":"https:\/\/api.thingiverse.com\/things\/4049220\/categories","file_count":2,"is_private":0,"is_purchased":0,"app_id":null,"download_count":327,"view_count":203,"education":{"grades":[],"subjects":[]},"remix_count":0,"make_count":0,"app_count":4,"root_comment_count":0,"moderation":"","is_derivative":false,"ancestors":[],"type_name":"Thing","is_banned":false,"is_comments_disabled":false,"needs_moderation":0,"is_decoy":0,"zip_data":{"files":[{"name":"Slatwall_support.stl","url":"https:\/\/cdn.thingiverse.com\/assets\/62\/09\/06\/48\/fa\/Slatwall_support.stl"},{"name":"Slatwall_support.f3d","url":"https:\/\/cdn.thingiverse.com\/assets\/a1\/c0\/aa\/da\/ce\/Slatwall_support.f3d"}],"images":[{"name":"Slatwall_support.png","url":"https:\/\/cdn.thingiverse.com\/assets\/81\/fd\/d4\/4e\/ec\/Slatwall_support.png"}]}}'
+  recorded_at: Tue, 08 Jul 2025 14:42:47 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.thingiverse.com/collections/16696069
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Authorization:
+      - Bearer <THINGIVERSE_API_KEY>
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 08 Jul 2025 14:36:12 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      vary:
+      - Accept-Encoding, Authorization,Cookie
+      expires:
+      - Tue, 08 Jul 2025 15:06:12 +0000
+      cache-control:
+      - max-age=1800
+      content-security-policy:
+      - frame-ancestors *.makerbot.com *.thingiverse.com *.mbot.me *.onshape.com *.makerbot.local
+        *.thingiverse.local;
+      access-control-max-age:
+      - '604800'
+      access-control-allow-headers:
+      - Authorization, Referer, Content-Type, User-Agent, Accept
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-methods:
+      - GET, POST, PATCH, DELETE
+      access-control-allow-origin:
+      - "*"
+      content-encoding:
+      - gzip
+      cf-cache-status:
+      - DYNAMIC
+      set-cookie:
+      - __cf_bm=mlewayBtRLpxpBnQyR1OiOk1c5QC1SRVw213WlgJtHI-1751985372-1.0.1.1-35gPDDxNRl0QU0aZ.zb3ZJPdEkcFz5JfuoFSBnTqV5u1VGRTj6exwIpPCagE8s.egkzBx0rioLzYkKjTsCbFfFIPdesi8u_1iUKX7AzV6ds;
+        path=/; expires=Tue, 08-Jul-25 15:06:12 GMT; domain=.thingiverse.com; HttpOnly;
+        Secure; SameSite=None, _cfuvid=BQQIVWGlmBeUhZ1aWxKzyvrlQWlq_HKw7HchsXNbCOw-1751985372185-0.0.1.1-604800000;
+        path=/; domain=.thingiverse.com; HttpOnly; Secure; SameSite=None
+      speculation-rules:
+      - '"/cdn-cgi/speculation"'
+      server:
+      - cloudflare
+      cf-ray:
+      - 95c04fff2a32bea2-LHR
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"id":16696069,"name":"Printer Upgrades","description":"Parts for my
+        printers, either an Ender 3 Pro, or an original Elegoo Mars.","description_html":"<div><p>Parts
+        for my printers, either an Ender 3 Pro, or an original Elegoo Mars.<\/p><\/div>","added":"2019-11-11T23:05:01+00:00","modified":"2025-07-08T14:35:32+00:00","creator":{"id":3154799,"name":"floppy_uk","first_name":"James","last_name":"Smith","url":"https:\/\/api.thingiverse.com\/users\/floppy_uk","public_url":"https:\/\/www.thingiverse.com\/floppy_uk","thumbnail":"https:\/\/cdn.thingiverse.com\/assets\/04\/b8\/80\/49\/bd\/sketch_head.PNG","count_of_followers":32,"count_of_following":20,"count_of_designs":13,"collection_count":18,"make_count":7,"accepts_tips":false,"is_following":false,"location":"UK","cover":"https:\/\/cdn.thingiverse.com\/site\/img\/default\/cover\/cover-4_preview_large.jpg","is_admin":false,"is_moderator":false,"is_featured":false,"is_verified":false},"url":"https:\/\/api.thingiverse.com\/collections\/16696069","count":47,"is_editable":false,"is_liked":false,"is_watched":false,"featured_thing_id":0,"preview_image":"https:\/\/cdn.thingiverse.com\/assets\/bd\/4f\/b3\/09\/87\/card_preview_double_funnel.png","absolute_url":"https:\/\/www.thingiverse.com\/floppy_uk\/collections\/16696069\/things","is_featured":false,"featured_thing":null,"thumbnail":"https:\/\/cdn.thingiverse.com\/assets\/68\/d2\/60\/b3\/1e\/medium_preview_double_funnel.png","thumbnail_1":"https:\/\/cdn.thingiverse.com\/renders\/5e\/45\/4e\/ff\/0c\/6e26915a67143672e2f9bbcb4235200d_preview_medium.jpg","thumbnail_2":"https:\/\/cdn.thingiverse.com\/assets\/68\/d2\/60\/b3\/1e\/medium_preview_double_funnel.png","thumbnail_3":"https:\/\/cdn.thingiverse.com\/renders\/82\/5a\/bb\/71\/71\/2d045c271e21025ef45f7a1e76f6f748_preview_medium.jpg","thumbnail_4":"https:\/\/cdn.thingiverse.com\/renders\/57\/fc\/13\/a0\/59\/e06efd7b6f2103154d180a656f541883_preview_medium.jpg"}'
+  recorded_at: Tue, 08 Jul 2025 14:36:12 GMT
+recorded_with: VCR 6.3.1
