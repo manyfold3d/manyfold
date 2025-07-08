@@ -18,6 +18,13 @@ class Integrations::MyMiniFactory::BaseDeserializer
 
   private
 
+  def fetch(api_url)
+    connection = Faraday.new do |builder|
+      builder.response :json
+    end
+    connection.get "https://www.myminifactory.com/api/v2/#{api_url}", {key: @api_key}, {Accept: "application/json"}
+  end
+
   def target_class
     raise NotImplementedError
   end

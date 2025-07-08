@@ -3,13 +3,7 @@ class Integrations::MyMiniFactory::CollectionDeserializer < Integrations::MyMini
 
   def deserialize
     return {} unless valid?
-    # Fetch from MMF API
-    connection = Faraday.new do |builder|
-      builder.response :json
-    end
-    r = connection.get("https://www.myminifactory.com/api/v2/users/#{CGI.escapeURIComponent(@username)}/collections/#{CGI.escapeURIComponent(@collection_slug)}",
-      {key: @api_key},
-      {Accept: "application/json"})
+    r = fetch "users/#{CGI.escapeURIComponent(@username)}/collections/#{CGI.escapeURIComponent(@collection_slug)}"
     {
       name: r.body["name"]
     }

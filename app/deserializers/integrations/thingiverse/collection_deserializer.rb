@@ -3,16 +3,7 @@ class Integrations::Thingiverse::CollectionDeserializer < Integrations::Thingive
 
   def deserialize
     return {} unless valid?
-    # Fetch from MMF API
-    connection = Faraday.new do |builder|
-      builder.response :json
-    end
-    r = connection.get("https://api.thingiverse.com/collections/#{CGI.escapeURIComponent(@collection_id)}",
-      {},
-      {
-        Authorization: "Bearer #{@api_key}",
-        Accept: "application/json"
-      })
+    r = fetch "collections/#{CGI.escapeURIComponent(@collection_id)}"
     {
       name: r.body["name"],
       notes: r.body["description"]

@@ -18,6 +18,17 @@ class Integrations::Thingiverse::BaseDeserializer
 
   private
 
+  def fetch(api_url)
+    connection = Faraday.new do |builder|
+      builder.response :json
+    end
+    connection.get("https://api.thingiverse.com/#{api_url}", {},
+      {
+        Authorization: "Bearer #{@api_key}",
+        Accept: "application/json"
+      })
+  end
+
   def target_class
     raise NotImplementedError
   end

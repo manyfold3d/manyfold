@@ -4,12 +4,7 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
   def deserialize
     return {} unless valid?
     # Fetch from MMF API
-    connection = Faraday.new do |builder|
-      builder.response :json
-    end
-    r = connection.get("https://www.myminifactory.com/api/v2/objects/#{CGI.escapeURIComponent(@object_id)}",
-      {key: @api_key},
-      {Accept: "application/json"})
+    r = fetch "objects/#{CGI.escapeURIComponent(@object_id)}"
     {
       name: r.body["name"],
       notes: ReverseMarkdown.convert(r.body["description_html"]),
