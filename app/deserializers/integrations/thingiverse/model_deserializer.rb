@@ -8,8 +8,9 @@ class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::
       name: r.body["name"],
       notes: r.body["description"],
       tag_list: r.body["tags"]&.pluck("tag"),
-      sensitive: r.body["is_nsfw"]
-      # image_urls: r.body["images"].map { |it| it.dig("original", "url") }
+      sensitive: r.body["is_nsfw"],
+      file_urls: r.body.dig("zip_data", "images").map { |it| it.dig("url") },
+      preview_filename: r.body.dig("default_image", "name")
     }
   end
 
