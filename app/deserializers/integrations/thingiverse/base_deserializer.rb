@@ -48,4 +48,8 @@ class Integrations::Thingiverse::BaseDeserializer
   def valid_path?(path)
     true
   end
+
+  def filename_from_url(url)
+    url&.split("/")&.last
+  end
 end

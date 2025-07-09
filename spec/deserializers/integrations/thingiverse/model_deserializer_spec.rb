@@ -39,7 +39,17 @@ RSpec.describe Integrations::Thingiverse::ModelDeserializer, :thingiverse_api_ke
       expect(deserializer.deserialize[:sensitive]).to be false
     end
 
-    it "extracts image URLs"
+    it "extracts image info to check and download" do
+      expect(deserializer.deserialize[:file_urls]).to include({
+        url: "https://cdn.thingiverse.com/assets/81/fd/d4/4e/ec/Slatwall_support.png",
+        filename: "images/Slatwall_support.png"
+      })
+    end
+
+    it "extracts preview filename" do
+      expect(deserializer.deserialize[:preview_filename]).to eq "images/Slatwall_support.png"
+    end
+
     it "extracts creator"
   end
 

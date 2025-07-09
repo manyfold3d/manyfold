@@ -6,7 +6,7 @@ class Integrations::Thingiverse::CreatorDeserializer < Integrations::Thingiverse
     r = fetch "users/#{CGI.escapeURIComponent(@username)}"
     {
       name: r.body["name"],
-      notes: ReverseMarkdown.convert(r.body["bio"])
+      notes: r.body["bio"]
     }
   end
 
