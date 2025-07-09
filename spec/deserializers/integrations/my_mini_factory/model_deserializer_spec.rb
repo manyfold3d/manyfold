@@ -42,6 +42,13 @@ RSpec.describe Integrations::MyMiniFactory::ModelDeserializer, :mmf_api_key do
       })
     end
 
+    it "extracts 3d file info to check and download" do
+      expect(deserializer.deserialize[:file_urls]).to include({
+        url: "https://www.myminifactory.com/download/2052?downloadfile=scan-the-world-michelangelo-s-david.stl",
+        filename: "scan-the-world-michelangelo-s-david.stl"
+      })
+    end
+
     it "extracts preview filename" do
       expect(deserializer.deserialize[:preview_filename]).to eq "david-2.jpg"
     end
