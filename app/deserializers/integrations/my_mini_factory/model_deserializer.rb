@@ -9,7 +9,8 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
       name: r.body["name"],
       notes: ReverseMarkdown.convert(r.body["description_html"]),
       tag_list: r.body["tags"],
-      file_urls: r.body["images"].map { |it| it.dig("original", "url") }
+      file_urls: r.body["images"].map { |it| it.dig("original", "url") },
+      preview_filename: r.body["images"].find { |it| it["is_primary"] === true }&.dig("original", "url")&.split("/")&.last
     }
   end
 

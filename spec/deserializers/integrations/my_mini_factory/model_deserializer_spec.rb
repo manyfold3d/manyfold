@@ -39,6 +39,10 @@ RSpec.describe Integrations::MyMiniFactory::ModelDeserializer, :mmf_api_key do
       expect(deserializer.deserialize[:file_urls]).to include "https://dl.myminifactory.com/object-assets/579f9e3b648b5/images/david-2.jpg"
     end
 
+    it "extracts preview filename" do
+      expect(deserializer.deserialize[:preview_filename]).to eq "david-2.jpg"
+    end
+
     it "extracts creator"
   end
 
