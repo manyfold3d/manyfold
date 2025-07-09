@@ -13,6 +13,9 @@ class UppyCompanionController < ApplicationController
   end
 
   def url_get
+    response = Faraday.get @uri
+    render status: response.status, json: {}
+  end
 
   private
 

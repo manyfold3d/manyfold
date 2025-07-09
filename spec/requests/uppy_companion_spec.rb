@@ -58,11 +58,34 @@ RSpec.describe "UppyCompanion" do
     end
   end
 
-  describe "GET /url_get" do
-    it "returns http success" do
-      get "/uppy_companion/url_get"
-      expect(response).to have_http_status(:success)
+  describe "POST /uppy_companion/url/get" do
+    let(:valid_post) do
+      post "/uppy_companion/url/get", params: {url: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Example.jpg"}.to_json, headers: {Accept: "application/json", "Content-Type": "application/json"}
+    end
+
+    it "returns unauthorized if user isn't authenticated" do
+      valid_post
+      expect(response).to have_http_status(:unauthorized)
+    end
+
+    it "returns not found if user doesn't have permission", :as_member do
+      valid_post
+      expect(response).to have_http_status(:not_found)
+    end
+
+    context "with valid URL", :as_contributor, vcr: {cassette_name: "UppyCompanion_get_success"} do
+      before { valid_post }
+
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    invalid_urls.each do |url|
+      it "flags bad request for invalid URL #{url.inspect}", :as_contributor do
+        post "/uppy_companion/url/get", params: {url: url}.to_json, headers: {Accept: "application/json", "Content-Type": "application/json"}
+        expect(response).to have_http_status(:bad_request)
+      end
     end
   end
-
 end
