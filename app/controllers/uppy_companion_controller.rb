@@ -1,6 +1,4 @@
 class UppyCompanionController < ApplicationController
-  protect_from_forgery with: :exception
-
   before_action :check_auth
   before_action :validate_uri
 

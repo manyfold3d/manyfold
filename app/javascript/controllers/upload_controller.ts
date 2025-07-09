@@ -31,6 +31,12 @@ export default class extends Controller {
         maxFileSize: +(settings?.maxFileSize ?? -1)
       }
     })
+      .use(Url, {
+        companionUrl: '/uppy_companion/',
+        companionHeaders: {
+          "X-CSRF-Token": (document.head.querySelector("meta[name=csrf-token]") as HTMLMetaElement)?.content
+        }
+      })
       .use(Dashboard, {
         inline: true,
         target: this.element,
@@ -40,7 +46,6 @@ export default class extends Controller {
         showRemoveButtonAfterComplete: true,
         hideProgressAfterFinish: true
       })
-      .use(Url, { companionUrl: '/uppy_companion/' })
       .use(Tus, {
         endpoint: settings.uploadEndpoint ?? '/upload',
         chunkSize: 1 * 1024 * 1024
