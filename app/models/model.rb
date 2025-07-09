@@ -144,9 +144,8 @@ class Model < ApplicationRecord
     end
   end
 
-  def add_file_from_url(url)
+  def add_file_from_url(url:, filename:)
     uri = URI.parse(url)
-    filename = uri.path.split("/").last
     if model_files.exists?(filename: filename)
       Rails.logger.info("Not downloading file #{filename} in model #{to_param}, already exists")
     else
