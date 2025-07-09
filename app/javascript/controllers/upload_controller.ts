@@ -40,7 +40,7 @@ export default class extends Controller {
         showRemoveButtonAfterComplete: true,
         hideProgressAfterFinish: true
       })
-      .use(Url, { companionUrl: '/' })
+      .use(Url, { companionUrl: '/uppy_companion/' })
       .use(Tus, {
         endpoint: settings.uploadEndpoint ?? '/upload',
         chunkSize: 1 * 1024 * 1024
