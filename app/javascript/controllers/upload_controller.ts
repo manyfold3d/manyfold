@@ -32,7 +32,7 @@ export default class extends Controller {
       }
     })
       .use(Url, {
-        companionUrl: '/uppy_companion/',
+        companionUrl: '/uppy_companion',
         companionHeaders: {
           "X-CSRF-Token": (document.head.querySelector("meta[name=csrf-token]") as HTMLMetaElement)?.content
         }
