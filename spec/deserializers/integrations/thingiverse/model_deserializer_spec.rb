@@ -46,6 +46,13 @@ RSpec.describe Integrations::Thingiverse::ModelDeserializer, :thingiverse_api_ke
       })
     end
 
+    it "extracts 3d file info to check and download" do
+      expect(deserializer.deserialize[:file_urls]).to include({
+        url: "https://cdn.thingiverse.com/assets/62/09/06/48/fa/Slatwall_support.stl",
+        filename: "files/Slatwall_support.stl"
+      })
+    end
+
     it "extracts preview filename" do
       expect(deserializer.deserialize[:preview_filename]).to eq "images/Slatwall_support.png"
     end
