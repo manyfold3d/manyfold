@@ -6,7 +6,7 @@ class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::
     r = fetch "things/#{CGI.escapeURIComponent(@object_id)}"
     {
       name: r.body["name"],
-      notes: ReverseMarkdown.convert(r.body["description"]),
+      notes: r.body["description"],
       tag_list: r.body["tags"]&.pluck("tag"),
       sensitive: r.body["is_nsfw"]
       # image_urls: r.body["images"].map { |it| it.dig("original", "url") }
