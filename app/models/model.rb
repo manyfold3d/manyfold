@@ -144,6 +144,17 @@ class Model < ApplicationRecord
     end
   end
 
+  def add_file_from_url(url)
+    uri = URI.parse(url)
+    filename = uri.path.split("/").last
+    if model_files.exists?(filename: filename)
+      Rails.logger.info("Not downloading file #{filename} in model #{to_param}, already exists")
+    else
+      model_files.create(filename: filename, attachment_remote_url: uri.to_s)
+    end
+  rescue URI::InvalidURIError
+  end
+
   def delete_from_disk_and_destroy
     # Remove all presupported_version relationships first, they get in the way
     # This will go away later when we do proper file relationships rather than linking the tables directly

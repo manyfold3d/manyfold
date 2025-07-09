@@ -35,9 +35,8 @@ RSpec.describe Integrations::MyMiniFactory::ModelDeserializer, :mmf_api_key do
       expect(deserializer.deserialize[:tag_list]).to include "renaissance-sculpture"
     end
 
-    it "extracts image URLs" do
-      pending "until Model can handle them"
-      expect(deserializer.deserialize[:image_urls]).to include "https://dl.myminifactory.com/object-assets/579f9e3b648b5/images/david-2.jpg"
+    it "extracts file URLs to check and download" do
+      expect(deserializer.deserialize[:file_urls]).to include "https://dl.myminifactory.com/object-assets/579f9e3b648b5/images/david-2.jpg"
     end
 
     it "extracts creator"

@@ -13,6 +13,8 @@ class LibraryUploader < Shrine
   plugin :rack_response
   plugin :dynamic_storage
   plugin :tus
+  plugin :remote_url, max_size: SiteSettings.max_file_upload_size
+  plugin :infer_extension
 
   self.storages = {
     cache: Shrine::Storage::FileSystem.new("tmp/shrine"),

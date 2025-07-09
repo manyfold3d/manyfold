@@ -8,8 +8,8 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
     {
       name: r.body["name"],
       notes: ReverseMarkdown.convert(r.body["description_html"]),
-      tag_list: r.body["tags"]
-      # image_urls: r.body["images"].map { |it| it.dig("original", "url") }
+      tag_list: r.body["tags"],
+      file_urls: r.body["images"].map { |it| it.dig("original", "url") }
     }
   end
 
