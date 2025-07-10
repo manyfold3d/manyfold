@@ -28,4 +28,12 @@ class Integrations::Cults3d::BaseDeserializer < Integrations::BaseDeserializer
     u.to_s
   rescue URI::InvalidURIError
   end
+  class << self
+    def client
+      @@client ||= Graphlient::Client.new(
+        "https://#{SiteSettings.cults3d_api_username}:#{SiteSettings.cults3d_api_key}@cults3d.com/graphql",
+        schema_path: "#{File.dirname(__FILE__)}/cults3d.json"
+      )
+    end
+  end
 end
