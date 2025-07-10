@@ -206,3 +206,5 @@ gem "scoped_search", "~> 4.2"
 gem "altcha-rails", "~> 0.0.6"
 
 gem "reverse_markdown", "~> 3.0"
+
+gem "graphlient", "~> 0.8.0"
