@@ -4,6 +4,8 @@
 </p>
 
 <%= form_with url: settings_path, method: :patch do |form| %>
+  <%= text_input_row form, "integrations[cults3d_api_key]", label: t(".cults3d_api_key.label"), value: SiteSettings.cults3d_api_key, help: t(".cults3d_api_key.help_html") %>
+  <%= text_input_row form, "integrations[cults3d_api_username]", label: t(".cults3d_api_username.label"), value: SiteSettings.cults3d_api_username, help: t(".cults3d_api_username.help_html") %>
   <%= text_input_row form, "integrations[myminifactory_api_key]", label: t(".myminifactory_api_key.label"), value: SiteSettings.myminifactory_api_key, help: t(".myminifactory_api_key.help_html") %>
   <%= text_input_row form, "integrations[thingiverse_api_key]", label: t(".thingiverse_api_key.label"), value: SiteSettings.thingiverse_api_key, help: t(".thingiverse_api_key.help_html") %>
   <%= render "submit", form: form %>

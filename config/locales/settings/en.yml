@@ -100,6 +100,12 @@ en:
     general:
       submit: Save Settings
     integrations:
+      cults3d_api_key:
+        help_html: Create an API key on your <a href="https://cults3d.com/en/api/keys">Cults3D API key</a> page.
+        label: Cults3D API key
+      cults3d_api_username:
+        help_html: The username of the Cults3d account that generated the API key.
+        label: Cults3D username
       description: Settings to configure integration with external services, to enable things like automatic metadata synchronisation.
       heading: Integrations
       myminifactory_api_key:
