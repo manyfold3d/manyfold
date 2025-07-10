@@ -3,10 +3,17 @@ class Integrations::Cults3d::CreatorDeserializer < Integrations::Cults3d::BaseDe
 
   def deserialize
     return {} unless valid?
-    # TODO: fetch data
+    result = self.class.client.query <<~GRAPHQL
+      {
+        user(nick: "#{@username}") {
+          nick
+          bio
+        }
+      }
+    GRAPHQL
     {
-      # TODO: name
-      # TODO: notes
+      name: result.data&.user&.nick,
+      notes: result.data&.user&.bio
     }
   end
 

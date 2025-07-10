@@ -38,7 +38,7 @@ RSpec.describe Integrations::Cults3d::CreatorDeserializer, :cults3d_api_key do
     end
   end
 
-  context "when pulling data from Cults3D API", vcr: {cassette_name: "Integrations_Cults3d_CreatorDeserializer/success"} do
+  context "when pulling data from API", vcr: {cassette_name: "Integrations_Cults3d_CreatorDeserializer/success"} do
     subject(:deserializer) { described_class.new(uri: uri) }
 
     let(:uri) { "https://cults3d.com/en/users/CreativeTools" }

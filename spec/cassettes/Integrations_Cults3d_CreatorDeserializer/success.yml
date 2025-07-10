@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cults3d.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query GraphQL__Client__OperationDefinition_21328 {\n  user(nick:
+        \"CreativeTools\") {\n    nick\n    bio\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_21328","variables":{}}'
+    headers:
+      Authorization:
+      - Basic <CULTS3D_BASIC_AUTH>
+      User-Agent:
+      - Faraday v2.13.1
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 10 Jul 2025 16:14:50 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      cache-control:
+      - max-age=0, private, must-revalidate
+      etag:
+      - W/"08703e107dd8ff9b1138713cfc34f252"
+      permissions-policy:
+      - interest-cohort=()
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      strict-transport-security:
+      - max-age=63072000; includeSubDomains
+      vary:
+      - Accept
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-permitted-cross-domain-policies:
+      - none
+      x-ratelimit-limit:
+      - '60'
+      x-ratelimit-remaining:
+      - '58'
+      x-ratelimit-reset:
+      - '2025-07-10T16:15:00.574130Z'
+      x-request-id:
+      - 9e9ce6d5-22cc-4ae7-9edc-31a7de340642
+      x-runtime:
+      - '0.038385'
+      x-xss-protection:
+      - '0'
+      cf-cache-status:
+      - DYNAMIC
+      report-to:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=m%2FXs4rzc%2BkSDTAKppcEBkh4QjRnh3Oye3YPMImMpgY5tKPYlI6YvuvlSAUIs41JvFqQdXm8Svanbk6KC33QUmoonbCs4KrTnWAwxA3U8z4nnjUh9R%2FM%3D"}]}'
+      content-encoding:
+      - gzip
+      server:
+      - cloudflare
+      set-cookie:
+      - _session_id=6f9ecce4f3b46aa16e7239dbd50e3b9f; HttpOnly; Secure; Path=/; Expires=Thu,
+        31 Jul 2025 16:14:50 GMT
+      cf-ray:
+      - 95d15b3daee2989b-LHR
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"data":{"user":{"nick":"CreativeTools","bio":"Creative Tools supplies
+        software, hardware and training in all things 3D - such as 3D modelling, animation,
+        rendering, workstations, 3D scanners and 3D printers.\r\nWeb: http://creative-tools.com\r\nTwitter:
+        https://twitter.com/CreativeTools"}}}'
+  recorded_at: Thu, 10 Jul 2025 16:14:50 GMT
+recorded_with: VCR 6.3.1
