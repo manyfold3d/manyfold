@@ -282,6 +282,7 @@ GEM
       rake
     ffi-libarchive (1.1.14)
       ffi (~> 1.0)
+    fiber-storage (1.0.1)
     formatador (1.1.0)
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
@@ -314,6 +315,13 @@ GEM
     google-protobuf (4.30.2-x86_64-linux)
       bigdecimal
       rake (>= 13)
+    graphql (2.5.11)
+      base64
+      fiber-storage
+      logger
+    graphql-client (0.26.0)
+      activesupport (>= 3.0)
+      graphql (>= 1.13.0)
     guard (2.19.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -939,6 +947,7 @@ DEPENDENCIES
   federails-moderation (~> 0.3)
   ffi-libarchive (~> 1.1)
   get_process_mem (~> 1.0)
+  graphql-client (~> 0.26.0)
   guard (~> 2.19)
   guard-rspec (~> 4.7)
   i18n-js (~> 4.2)
