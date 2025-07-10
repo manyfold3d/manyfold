@@ -46,13 +46,17 @@ RSpec.describe Integrations::Cults3d::ModelDeserializer, :cults3d_api_key do
 
     it "extracts image info to check and download" do
       expect(deserializer.deserialize[:file_urls]).to include({
-        url: "hhttps://images.cults3d.com/0Cci6s_5jLkNbANbpGrV8ai63bk=/516x516/filters:no_upscale():format(webp)/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782346-8151-9279/_1__3D-printed__3DBenchy_by_Creative-Tools.com.JPG",
-        filename: "3D-printed__3DBenchy_by_Creative-Tools.com.JPG"
+        url: "https://fbi.cults3d.com/uploaders/133/illustration-file/1428782346-8151-9279/_1__3D-printed__3DBenchy_by_Creative-Tools.com.JPG",
+        filename: "_1__3D-printed__3DBenchy_by_Creative-Tools.com.JPG"
       })
     end
 
     it "extracts preview filename" do
-      expect(deserializer.deserialize[:preview_filename]).to eq "3D-printed__3DBenchy_by_Creative-Tools.com.JPG"
+      expect(deserializer.deserialize[:preview_filename]).to eq "_1__3D-printed__3DBenchy_by_Creative-Tools.com.JPG"
+    end
+
+    it "extracts license" do
+      expect(deserializer.deserialize[:license]).to eq "CC-BY-ND-4.0"
     end
 
     it "extracts creator"
