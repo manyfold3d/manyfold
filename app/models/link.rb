@@ -37,6 +37,7 @@ class Link < ApplicationRecord
 
   def deserializer
     [
+      Integrations::Cults3d::CreatorDeserializer,
       Integrations::MyMiniFactory::CreatorDeserializer,
       Integrations::MyMiniFactory::CollectionDeserializer,
       Integrations::MyMiniFactory::ModelDeserializer,

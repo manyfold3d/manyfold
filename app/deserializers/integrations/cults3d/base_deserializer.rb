@@ -1,4 +1,11 @@
 class Integrations::Cults3d::BaseDeserializer < Integrations::BaseDeserializer
+  PATH_COMPONENTS = {
+    locale: "(en|de|pt|es|fr|ru|zh)",
+    users: "(users|benutzer|usuarios|utilisateurs|polzovateli|yònghù)",
+    username: /(?<username>[[:alnum:]\- ]+)/,
+    models: "(3d-models|3d-modelle|modelos-3d|fichiers-3d|3d-modeli|sānwèi-mó-xíng)"
+  }
+
   private
 
   def api_configured?
