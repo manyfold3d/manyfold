@@ -46,6 +46,8 @@ class SiteSettings < RailsSettings::Base
 
   field :myminifactory_api_key, type: :string
   field :thingiverse_api_key, type: :string
+  field :cults3d_api_key, type: :string
+  field :cults3d_api_username, type: :string
 
   validates :model_ignored_files, regex_array: {strict: true}
 
