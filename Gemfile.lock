@@ -315,6 +315,9 @@ GEM
     google-protobuf (4.30.2-x86_64-linux)
       bigdecimal
       rake (>= 13)
+    graphlient (0.8.0)
+      faraday (~> 2.0)
+      graphql-client
     graphql (2.5.11)
       base64
       fiber-storage
@@ -947,7 +950,7 @@ DEPENDENCIES
   federails-moderation (~> 0.3)
   ffi-libarchive (~> 1.1)
   get_process_mem (~> 1.0)
-  graphql-client (~> 0.26.0)
+  graphlient (~> 0.8.0)
   guard (~> 2.19)
   guard-rspec (~> 4.7)
   i18n-js (~> 4.2)
