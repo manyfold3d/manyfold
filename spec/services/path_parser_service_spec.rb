@@ -6,13 +6,13 @@ RSpec.describe PathParserService do
   let(:path) { "/top/middle/bottom/prefix - name#42" }
 
   {
-    "{tags}" => %r{^/?.*?(?<tags>[[:print:]]*)$},
-    "{creator}" => %r{^/?.*?(?<creator>[[:print:]&&[^/]]*?)$},
-    "{collection}" => %r{^/?.*?(?<collection>[[:print:]&&[^/]]*?)$},
-    "{tags}/{creator}" => %r{^/?.*?(?<tags>[[:print:]]*)/(?<creator>[[:print:]&&[^/]]*?)$},
-    "{tags}/{creator}/{modelName}{modelId}" => %r{^/?.*?(?<tags>[[:print:]]*)/(?<creator>[[:print:]&&[^/]]*?)/(?<model_name>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
-    "@{creator}{modelId}" => %r{^/?.*?@(?<creator>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
-    "{creator}/{collection}/{tags}/{modelName}{modelId}" => %r{^/?.*?(?<creator>[[:print:]&&[^/]]*?)/(?<collection>[[:print:]&&[^/]]*?)/(?<tags>[[:print:]]*)/(?<model_name>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$}
+    "{tags}" => %r{^/?.*?(?<tags>[[:print:]]*)(?<model_id>#[[:digit:]]+)?$},
+    "{creator}" => %r{^/?.*?(?<creator>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
+    "{collection}" => %r{^/?.*?(?<collection>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
+    "{tags}/{creator}" => %r{^/?.*?(?<tags>[[:print:]]*)/(?<creator>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
+    "{tags}/{creator}/{modelName}" => %r{^/?.*?(?<tags>[[:print:]]*)/(?<creator>[[:print:]&&[^/]]*?)/(?<model_name>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
+    "@{creator}" => %r{^/?.*?@(?<creator>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
+    "{creator}/{collection}/{tags}/{modelName}" => %r{^/?.*?(?<creator>[[:print:]&&[^/]]*?)/(?<collection>[[:print:]&&[^/]]*?)/(?<tags>[[:print:]]*)/(?<model_name>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$}
   }.each_pair do |tag, regexp|
     it "correctly converts #{tag} into a regexp matcher" do
       allow(SiteSettings).to receive(:model_path_template).and_return(tag)
@@ -21,27 +21,27 @@ RSpec.describe PathParserService do
   end
 
   {
-    "{tags}/{modelName}{modelId}" => {
+    "{tags}/{modelName}" => {
       tags: ["top", "middle", "bottom"],
       model_name: "prefix - name"
     },
-    "{creator}/{modelName}{modelId}" => {
+    "{creator}/{modelName}" => {
       creator: "bottom",
       model_name: "prefix - name"
     },
-    "{collection}/{modelName}{modelId}" => {
+    "{collection}/{modelName}" => {
       collection: "bottom",
       model_name: "prefix - name"
     },
-    "{tags}/{creator}/{modelName}{modelId}" => {
+    "{tags}/{creator}/{modelName}" => {
       creator: "bottom",
       tags: ["top", "middle"],
       model_name: "prefix - name"
     },
-    "{creator}{modelId}" => {
+    "{creator}" => {
       creator: "prefix - name"
     },
-    "{tags}/{creator}/{collection} - {modelName}{modelId}" => {
+    "{tags}/{creator}/{collection} - {modelName}" => {
       tags: ["top", "middle"],
       creator: "bottom",
       collection: "prefix",
