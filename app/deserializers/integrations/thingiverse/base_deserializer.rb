@@ -1,21 +1,11 @@
-class Integrations::Thingiverse::BaseDeserializer
-  attr_reader :uri
-
+class Integrations::Thingiverse::BaseDeserializer < Integrations::BaseDeserializer
   USERNAME_PATTERN = /[[:alnum:]_\-]+/
 
-  def initialize(uri:)
-    @uri = canonicalize(uri)
-  end
-
-  def valid?(for_class: nil)
-    SiteSettings.thingiverse_api_key.present? && @uri.present? && (for_class ? for_class == target_class : true)
-  end
-
-  def deserialize
-    raise NotImplementedError
-  end
-
   private
+
+  def api_configured?
+    SiteSettings.thingiverse_api_key.present?
+  end
 
   def fetch(api_url)
     connection = Faraday.new do |builder|
@@ -26,10 +16,6 @@ class Integrations::Thingiverse::BaseDeserializer
         Authorization: "Bearer #{SiteSettings.thingiverse_api_key}",
         Accept: "application/json"
       })
-  end
-
-  def target_class
-    raise NotImplementedError
   end
 
   def canonicalize(uri)
@@ -43,13 +29,5 @@ class Integrations::Thingiverse::BaseDeserializer
     u.query = u.fragment = nil
     u.to_s
   rescue URI::InvalidURIError
-  end
-
-  def valid_path?(path)
-    true
-  end
-
-  def filename_from_url(url)
-    url&.split("/")&.last
   end
 end
