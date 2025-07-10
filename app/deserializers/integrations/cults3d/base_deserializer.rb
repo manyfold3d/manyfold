@@ -5,7 +5,10 @@ class Integrations::Cults3d::BaseDeserializer < Integrations::BaseDeserializer
     username: /(?<username>[[:alnum:]\- ]+)/,
     models: "(3d-models|3d-modelle|modelos-3d|fichiers-3d|3d-modeli|sānwèi-mó-xíng)",
     collections: "(collections|kollectionen|colecoes|kollektsii|shōucáng-pǐn)",
-    collection: /(?<collection>[[:alnum:]\-]+)/
+    collection: /(?<collection>[[:alnum:]\-]+)/,
+    model: "(3d-model|modell-3d|modelo-3d|modèle-3d|3d-móxíng)",
+    category: "([[:alnum:]]+)",
+    model_slug: /(?<model_slug>[[:alnum:]\- ]+)/
   }
 
   private
