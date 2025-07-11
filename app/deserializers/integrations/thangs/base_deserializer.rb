@@ -1,4 +1,9 @@
 class Integrations::Thangs::BaseDeserializer < Integrations::BaseDeserializer
+  PATH_COMPONENTS = {
+    username: /(?<username>[[:alnum:]\- ]+)/,
+    model_slug: /(?<model_slug>[[:alnum:]\- ]+)/,
+    model_id: /(?<model_id>[[:digit:]]+)/
+  }
   USERNAME_PATTERN = /[[:alnum:]_\-]+/
 
   private

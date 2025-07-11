@@ -42,6 +42,7 @@ class Link < ApplicationRecord
       Integrations::MyMiniFactory::CreatorDeserializer,
       Integrations::MyMiniFactory::CollectionDeserializer,
       Integrations::MyMiniFactory::ModelDeserializer,
+      Integrations::Thangs::ModelDeserializer,
       Integrations::Thingiverse::CreatorDeserializer,
       Integrations::Thingiverse::CollectionDeserializer,
       Integrations::Thingiverse::ModelDeserializer
