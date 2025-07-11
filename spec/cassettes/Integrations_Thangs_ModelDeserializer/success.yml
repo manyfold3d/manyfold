@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://thangs.com/api/models/29638
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Fri, 11 Jul 2025 11:09:25 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '3433'
+      connection:
+      - keep-alive
+      server:
+      - cloudflare
+      accept-ranges:
+      - bytes
+      vary:
+      - Accept-Encoding, Origin
+      access-control-allow-origin:
+      - ''
+      access-control-allow-credentials:
+      - 'true'
+      access-control-expose-headers:
+      - x-thangs-refresh-token,content-length,x-decompressed-content-length
+      x-thangs-api-version:
+      - va3e2492
+      cache-control:
+      - s-maxage=900, public, stale-while-revalidate=31536000
+      x-response-time:
+      - 815ms
+      content-encoding:
+      - gzip
+      x-cloud-trace-context:
+      - 603fd055cd29e6f519856a2230acbd8b
+      via:
+      - 1.1 google
+      alt-svc:
+      - h3=":443"; ma=86400
+      last-modified:
+      - Fri, 11 Jul 2025 11:09:25 GMT
+      cf-cache-status:
+      - EXPIRED
+      cf-ray:
+      - 95d7d931cdea5f17-LHR
+    body:
+      encoding: UTF-8
+      string: '{"id":"29638","name":"CHEP Cube - Calibration Cube","parts":[{"name":"CHEP
+        Cube - Calibration Cube","filename":"d939b82f-8144-40e7-9650-0b34577e1a01/CHEPCalibrationCube.stl","isPrimary":true,"updatingUser":"CHEP","lastVersioned":"2021-10-17T15:14:57.49947+00:00","partIdentifier":"a78f2e4b6b5c5cc65eeac01910fe438a","originalFileName":"CHEPCalibrationCube.stl","phyndexerId":"f6e2b000-4b2e-4ffa-aef9-e9287f961a7f","thumbnailUrl":"https://storage.googleapis.com/thangs-thumbnails/production/d939b82f-8144-40e7-9650-0b34577e1a01/CHEPCalibrationCube.png","viewerUrl":"https://storage.googleapis.com/thangs-thumbnails/production/d939b82f-8144-40e7-9650-0b34577e1a01/CHEPCalibrationCube.scs","dracoGlbUrl":"https://storage.googleapis.com/gcp-and-physna.appspot.com/uploads/models/d939b82f-8144-40e7-9650-0b34577e1a01/CHEPCalibrationCube-draco.glb?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-platform%40gcp-and-physna.iam.gserviceaccount.com%2F20250711%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250711T110924Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=1b8a184a55f7169fc7af66e689fa20da393a172e1b39493c4661e26c12caca192765ca735950188bb214c98d0319241a43a6a4a33e6a0d47c922fd3d32a151b1aceb30721a5808224550c375f60edb5d137346f83b57a67921a1a0d01932465da7e5286b580bd51ed9ec937e995f6c162734bef7e4512a8c3476f39ea19efd9da20bfe82aff49e0cfe4f78b58affb7e5bd3ea1ed5120923deb048ac2b812957844bb1fec834e29c8f8cd3ca80f0c5027f30adf9aab970ff3902284f03441b2d30fa16356971e5f44a3cc4e7ae25bb94879b801b7f95856fef278c4b3d1f48c71af8a922d1f329795043f2d008a9717cca29d46aa979a1856d40dcc90563f74fe"}],"units":"mm","license":"d939b82f-8144-40e7-9650-0b34577e1a01/LICENSE.txt","folderId":null,"isPublic":true,"isAssembly":false,"description":"Model
+        originally uploaded to Thingiverse at https://www.thingiverse.com/thing:3189377.\n\nI
+        designed my own 20mm x 20mm x 20mm Calibration Cube in Tinkercad so I had
+        my own test print for reference.\r\nI call it the CHEP Cube. \r\nIt’s become
+        a popular print for many people and it’s fun to see where it turns up. \r\n\r\nThe
+        Images are from a print on my Ender 3.\r\n\r\nI added two images printed at
+        0.12 using my CHEP 0.12 profile.\r\nhttps://www.chepclub.com/cura-profiles.html","accessTypeId":0,"dependencies":[],"internalTags":["Business
+        & Industrial","Business Services","Office Supplies","Computers & Electronics","Computer
+        Hardware","Computer Peripherals"],"updatingUser":"CHEP","v2Categories":["3D
+        Printers/Creality"],"lastVersioned":"2023-11-17T01:28:31.215+00:00","internalCategory":"Business
+        & Industrial","owner":{"id":240257,"username":"CHEP","firstName":"Chuck","lastName":"H","fullName":"Chuck
+        H","profile":{"avatarUrl":"https://storage.googleapis.com/production-thangs-public/uploads/avatars/fae149da-90ac-4f8a-acd4-8dd4ce718431","description":"","publicProfileSettings":[]},"isBeingFollowedByRequester":false},"created":"2021-10-17T15:14:57.499Z","published":"2021-10-17T15:14:57.499Z","likesCount":327,"commentsCount":3,"downloadCount":7879,"viewCount":14601,"likes":[4419962,4347601,4310575,1094253,3737640,3726016,576126,3358336,3285838,3260392,3216198,1798786,1068808,2853289,1282874,1215858,2449591,2444031,1110429,2284393,1979571,502568,1936779,1904706,1874967,1704744,1683700,1755473,1570485,1655015,1332758,1591397,1046703,1564230,704465,1338882,743687,1538949,1520922,1487973,1492357,1496759,1454015,1425244,1437067,1433789,1422729,1421757,1415798,1419509,1408319,1405350,1356429,1401355,1397287,1382692,372677,1367263,1363566,1362441,1307622,148611,1334638,884278,566274,1312395,1300522,1279279,1280919,312686,138669,608244,1192595,307054,1227020,1224507,1216116,1023726,1194542,1143667,1029634,1186817,1183610,126336,601033,1170172,1144372,1130229,722830,1119652,1119394,1113739,1102969,1097191,1095925,827774,89838,797734,754020,1083857,341602,1081403,1079597,1071941,872872,1054306,1070414,155381,1049655,1037904,94028,1036380,1011356,1036273,1035899,1035100,1031598,1017840,1020875,230398,549612,999003,1003362,1011914,1009300,1003145,331971,276473,333448,333771,334293,328869,337059,30499,231177,365353,276830,390048,6892,304374,164615,457509,462722,463169,454315,159666,466322,466420,458875,460457,479517,480116,460025,472733,229941,482889,275842,492209,492403,491266,493213,495744,497435,499946,499864,502633,498816,483461,503259,505426,509276,512469,513499,513717,516340,507061,224195,527245,69883,327897,35311,166750,200176,20548,488449,540174,525660,476705,553520,330708,558735,559489,560387,558818,567222,569450,534871,575468,577506,579133,579369,579962,527016,586213,588571,507172,594117,599645,599751,592908,205716,600149,608508,500312,612400,614019,551790,335900,621461,623769,624615,627680,620448,622541,646289,648433,570838,671339,648192,594238,686642,96827,704601,512232,178839,13847,301414,707309,734617,735085,735998,738244,733540,365244,711888,119566,750920,718034,756261,721383,768251,803345,803781,793392,827630,376873,838353,703375,845443,369327,864213,867735,878558,889898,892108,876625,910468,919675,929845,817228,827591,943464,938396,962611,874798,888724,930917,990782,991057,870284,989966,889735,936831,969517,299291,954091,946502,940817,840170,881152,925811,923959,692474,246790,805531,885634,882976,880228,872379,865616,864858,798418,860223,481420,806148,720246,853136,461564,834011,826811,363877,752889,215583,459032,461396,312650,636631,519890,715895,697598,548770,716725,691425,576751,635657,74571,332614],"identifier":"CHEP/CHEP%20Cube%20-%20Calibration%20Cube-29638","matchingPhyndexerId":null,"modelDir":"d939b82f-8144-40e7-9650-0b34577e1a01","currentSha":"00000000-0000-0000-0000-000000000000","aggregatorId":null,"versionCount":1,"workspace":null,"modelType":"single-part","imageCount":null,"image":"","isHero":false,"allowRemix":false,"isRemix":false,"is2DFirst":false,"visibility":"public","enableModelPreviews":false,"marketplaceInfo":null,"isBlockedByCurrentUser":false,"attachments":[{"id":520190,"ownerId":1457071,"owner":{"id":1457071,"username":"3rafae0927","avatarUrl":"https://storage.googleapis.com/production-thangs-public/uploads/avatars/629ad68b-cf52-4a2e-b22d-160d9452b4b4"},"modelId":29638,"caption":"Good
+        Print, Minor Issues.","imageUrl":"https://storage.googleapis.com/production-thangs-public/uploads/attachments/cd36783e-7120-4b32-850f-00bd9059eff6/Chep%20Cube%20Print.jpg","landscapeUrl":"","animatedUrl":"","animatedLandscapeUrl":"","attachmentType":"image","uploadedByModelOwner":false,"enhancedImageUrl":"","metadata":null}],"referenceFiles":[],"suppressViewer":false,"suppressViewerMobile":false,"currentUserCanViewWorkspace":false}'
+  recorded_at: Fri, 11 Jul 2025 11:09:25 GMT
+recorded_with: VCR 6.3.1
