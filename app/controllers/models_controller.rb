@@ -3,6 +3,7 @@ require "fileutils"
 class ModelsController < ApplicationController
   include ModelListable
   include Permittable
+  include LinkableController
 
   rate_limit to: 10, within: 3.minutes, only: :create
 
@@ -234,7 +235,7 @@ class ModelsController < ApplicationController
   end
 
   def get_model
-    @model = policy_scope(Model).find_param(params[:id])
+    @model = @linkable = policy_scope(Model).find_param(params[:id])
     authorize @model
     @title = @model.name
   end

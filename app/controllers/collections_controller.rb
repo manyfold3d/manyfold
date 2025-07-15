@@ -3,6 +3,7 @@ class CollectionsController < ApplicationController
   include TagListable
   include Permittable
   include ModelListable
+  include LinkableController
 
   before_action :get_collection, except: [:index, :new, :create]
   before_action :get_parent_collections, except: [:index, :create]
@@ -132,7 +133,7 @@ class CollectionsController < ApplicationController
       authorize Collection
       @title = t(".unknown")
     else
-      @collection = policy_scope(Collection).find_param(params[:id])
+      @collection = @linkable = policy_scope(Collection).find_param(params[:id])
       authorize @collection
       @title = @collection.name
     end

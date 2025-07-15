@@ -93,11 +93,17 @@ Rails.application.routes.draw do
   concern :reportable do |options|
     resources :reports, {only: [:new, :create]}.merge(options)
   end
+  concern :linkable do
+    member do
+      post :sync
+    end
+  end
 
   resources :models do
     concerns :followable, followable_class: "Model"
     concerns :commentable, commentable_class: "Model"
     concerns :reportable, reportable_class: "Model"
+    concerns :linkable
     member do
       post "scan"
     end
@@ -118,11 +124,13 @@ Rails.application.routes.draw do
     concerns :followable, followable_class: "Creator"
     concerns :commentable, commentable_class: "Creator"
     concerns :reportable, reportable_class: "Creator"
+    concerns :linkable
   end
   resources :collections do
     concerns :followable, followable_class: "Collection"
     concerns :commentable, commentable_class: "Collection"
     concerns :reportable, reportable_class: "Collection"
+    concerns :linkable
   end
   resources :problems, only: [:index, :update] do
     collection do
