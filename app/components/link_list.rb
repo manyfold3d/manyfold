@@ -3,6 +3,8 @@
 class Components::LinkList < Components::Base
   include Phlex::Rails::Helpers::LinkTo
 
+  register_value_helper :policy
+
   def initialize(links:)
     @links = links
   end
@@ -14,8 +16,12 @@ class Components::LinkList < Components::Base
         if link.valid?
           li do
             link_to t("sites.%{site}" % {site: link.site}, default: "%{site}" % {site: link.site}), link.url
-            whitespace
-            Icon(icon: "arrow-repeat", label: t("components.link_list.sync")) if link.deserializer.present?
+            if link.deserializer.present? && policy(link.linkable).sync?
+              whitespace
+              link_to({action: "sync", id: link.linkable, link: link.id}, {method: :post, nofollow: true}) do
+                Icon(icon: "arrow-repeat", label: t("components.link_list.sync"))
+              end
+            end
           end
         end
       end
