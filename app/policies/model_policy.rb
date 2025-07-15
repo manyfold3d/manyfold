@@ -28,6 +28,10 @@ class ModelPolicy < ApplicationPolicy
     user&.is_contributor?
   end
 
+  def sync?
+    update?
+  end
+
   def bulk_edit?
     user&.is_moderator?
   end

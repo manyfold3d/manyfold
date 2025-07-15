@@ -1,6 +1,7 @@
 class CreatorsController < ApplicationController
   include ModelListable
   include Permittable
+  include LinkableController
 
   before_action :get_creator, except: [:index, :new, :create]
   before_action -> { set_indexable @creator }, except: [:index, :new, :create]
@@ -132,7 +133,7 @@ class CreatorsController < ApplicationController
       authorize Creator
       @title = t(".unknown")
     else
-      @creator = policy_scope(Creator).find_param(params[:id])
+      @creator = @linkable = policy_scope(Creator).find_param(params[:id])
       authorize @creator
       @title = @creator.name
     end

@@ -357,7 +357,7 @@ en:
       pending: Requested
       unfollow: Unfollow %{name}
     link_list:
-      sync: Sync capable
+      sync: Synchronize
     modal:
       close: Close
     model_card:
@@ -386,6 +386,11 @@ en:
       title: Search Syntax
       unset: Use "set?" to query if a particular field is set, and add "not" to find the opposite.
       without_tag: Use "!=" to find models without a certain tag
+  concerns:
+    linkable:
+      sync:
+        bad_request: 'Synchronization failed: missing link ID'
+        success: Synchronization requested successfully
   doorkeeper:
     applications:
       buttons:
