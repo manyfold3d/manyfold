@@ -46,7 +46,17 @@ RSpec.describe Integrations::MyMiniFactory::ModelDeserializer, :mmf_api_key do
       expect(deserializer.deserialize[:preview_filename]).to eq "david-2.jpg"
     end
 
-    it "extracts creator"
+    it "matches existing creator" do
+      creator = create(:creator, links_attributes: [{url: "https://www.myminifactory.com/users/Scan%20The%20World"}])
+      expect(deserializer.deserialize[:creator]).to eq creator
+    end
+
+    it "adds new creator if missing" do
+      expect(deserializer.deserialize[:creator_attributes]).to include({
+        name: "Scan The World",
+        links_attributes: [{url: "https://www.myminifactory.com/users/Scan%20The%20World"}]
+      })
+    end
   end
 
   context "with a valid URI" do

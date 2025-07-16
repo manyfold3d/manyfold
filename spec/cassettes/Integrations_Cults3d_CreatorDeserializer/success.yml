@@ -5,8 +5,8 @@ http_interactions:
     uri: https://cults3d.com/graphql
     body:
       encoding: UTF-8
-      string: '{"query":"query GraphQL__Client__OperationDefinition_21328 {\n  user(nick:
-        \"CreativeTools\") {\n    nick\n    bio\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_21328","variables":{}}'
+      string: '{"query":"query GraphQL__Client__OperationDefinition_21336 {\n  user(nick:
+        \"CreativeTools\") {\n    nick\n    bio\n    url\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_21336","variables":{}}'
     headers:
       Authorization:
       - Basic <CULTS3D_BASIC_AUTH>
@@ -20,7 +20,7 @@ http_interactions:
       message: OK
     headers:
       date:
-      - Thu, 10 Jul 2025 16:14:50 GMT
+      - Wed, 16 Jul 2025 11:22:23 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -30,7 +30,7 @@ http_interactions:
       cache-control:
       - max-age=0, private, must-revalidate
       etag:
-      - W/"08703e107dd8ff9b1138713cfc34f252"
+      - W/"f67a284e5f1f1b7c356632731624a8ab"
       permissions-policy:
       - interest-cohort=()
       referrer-policy:
@@ -50,28 +50,28 @@ http_interactions:
       x-ratelimit-limit:
       - '60'
       x-ratelimit-remaining:
-      - '58'
+      - '59'
       x-ratelimit-reset:
-      - '2025-07-10T16:15:00.574130Z'
+      - '2025-07-16T11:22:30.095412Z'
       x-request-id:
-      - 9e9ce6d5-22cc-4ae7-9edc-31a7de340642
+      - 8e42c216-ee8a-4b6e-a10a-1d5a3594634b
       x-runtime:
-      - '0.038385'
+      - '0.037679'
       x-xss-protection:
       - '0'
       cf-cache-status:
       - DYNAMIC
       report-to:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=m%2FXs4rzc%2BkSDTAKppcEBkh4QjRnh3Oye3YPMImMpgY5tKPYlI6YvuvlSAUIs41JvFqQdXm8Svanbk6KC33QUmoonbCs4KrTnWAwxA3U8z4nnjUh9R%2FM%3D"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=9o5frS4vAVo7NjCw5GPXVnWPkmf7jvlpLmMDIkmXl7wjzQxCxHcZS%2BLpaaVrEk8upe9UtQ6oo5utx4P7Vp3IsGjnjs1rlDONfriQBWphv2F79uCTpaY%3D"}]}'
       content-encoding:
       - gzip
       server:
       - cloudflare
       set-cookie:
-      - _session_id=6f9ecce4f3b46aa16e7239dbd50e3b9f; HttpOnly; Secure; Path=/; Expires=Thu,
-        31 Jul 2025 16:14:50 GMT
+      - _session_id=8b92dfaa3604761f3297dd4c04fac5ab; HttpOnly; Secure; Path=/; Expires=Wed,
+        06 Aug 2025 11:22:23 GMT
       cf-ray:
-      - 95d15b3daee2989b-LHR
+      - 96011f15c83e718d-LHR
       alt-svc:
       - h3=":443"; ma=86400
     body:
@@ -79,6 +79,6 @@ http_interactions:
       string: '{"data":{"user":{"nick":"CreativeTools","bio":"Creative Tools supplies
         software, hardware and training in all things 3D - such as 3D modelling, animation,
         rendering, workstations, 3D scanners and 3D printers.\r\nWeb: http://creative-tools.com\r\nTwitter:
-        https://twitter.com/CreativeTools"}}}'
-  recorded_at: Thu, 10 Jul 2025 16:14:50 GMT
+        https://twitter.com/CreativeTools","url":"https://cults3d.com/en/users/CreativeTools"}}}'
+  recorded_at: Wed, 16 Jul 2025 11:22:23 GMT
 recorded_with: VCR 6.3.1

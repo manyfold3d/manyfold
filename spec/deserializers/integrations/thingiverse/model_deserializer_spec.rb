@@ -57,7 +57,17 @@ RSpec.describe Integrations::Thingiverse::ModelDeserializer, :thingiverse_api_ke
       expect(deserializer.deserialize[:preview_filename]).to eq "images/Slatwall_support.png"
     end
 
-    it "extracts creator"
+    it "matches existing creator" do
+      creator = create(:creator, links_attributes: [{url: "https://www.thingiverse.com/floppy_uk"}])
+      expect(deserializer.deserialize[:creator]).to eq creator
+    end
+
+    it "adds new creator if missing" do
+      expect(deserializer.deserialize[:creator_attributes]).to include({
+        name: "floppy_uk",
+        links_attributes: [{url: "https://www.thingiverse.com/floppy_uk"}]
+      })
+    end
   end
 
   context "with a valid URI" do

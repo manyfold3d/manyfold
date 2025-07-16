@@ -8,12 +8,18 @@ class Integrations::Cults3d::CreatorDeserializer < Integrations::Cults3d::BaseDe
         user(nick: "#{@username}") {
           nick
           bio
+          url
         }
       }
     GRAPHQL
+    self.class.parse(result.data&.user)
+  end
+
+  def self.parse(data)
     {
-      name: result.data&.user&.nick,
-      notes: result.data&.user&.bio
+      name: data&.nick,
+      notes: data&.bio,
+      links_attributes: [{url: data&.url}]
     }
   end
 

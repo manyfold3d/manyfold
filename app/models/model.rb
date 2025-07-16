@@ -33,6 +33,8 @@ class Model < ApplicationRecord
   has_many :model_files, dependent: :destroy
   acts_as_taggable_on :tags
 
+  accepts_nested_attributes_for :creator
+
   before_validation :strip_separators_from_path, if: :path_changed?
   before_validation :publish_creator, if: :will_be_public?
   before_validation :normalize_license
@@ -149,7 +151,7 @@ class Model < ApplicationRecord
     if model_files.exists?(filename: filename)
       Rails.logger.info("Not downloading file #{filename} in model #{to_param}, already exists")
     else
-      model_files.create(filename: filename, attachment_remote_url: uri.to_s)
+      model_files.create!(filename: filename, attachment_remote_url: uri.to_s)
     end
   rescue URI::InvalidURIError
   end

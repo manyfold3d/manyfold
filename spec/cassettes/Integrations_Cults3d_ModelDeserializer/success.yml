@@ -8,7 +8,7 @@ http_interactions:
       string: '{"query":"query GraphQL__Client__OperationDefinition_21344 {\n  creation(slug:
         \"3dbenchy-the-jolly-3d-printing-torture-test\") {\n    name\n    description\n    license
         {\n      spdxId\n    }\n    safe\n    tags\n    illustrationImageUrl\n    illustrations
-        {\n      imageUrl\n    }\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_21344","variables":{}}'
+        {\n      imageUrl\n    }\n    creator {\n      nick\n      bio\n      url\n    }\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_21344","variables":{}}'
     headers:
       Authorization:
       - Basic <CULTS3D_BASIC_AUTH>
@@ -22,7 +22,7 @@ http_interactions:
       message: OK
     headers:
       date:
-      - Thu, 10 Jul 2025 16:05:14 GMT
+      - Wed, 16 Jul 2025 11:05:41 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -32,7 +32,7 @@ http_interactions:
       cache-control:
       - max-age=0, private, must-revalidate
       etag:
-      - W/"cccf750a67ad8fb7d1877ccae5a07a12"
+      - W/"81a0047fe9dff0e11babeb4915e42383"
       permissions-policy:
       - interest-cohort=()
       referrer-policy:
@@ -54,26 +54,26 @@ http_interactions:
       x-ratelimit-remaining:
       - '59'
       x-ratelimit-reset:
-      - '2025-07-10T16:05:30.663035Z'
+      - '2025-07-16T11:06:00.150215Z'
       x-request-id:
-      - 11b68176-2343-413e-ab8b-e954099b8871
+      - 86c0b761-763d-4295-850f-cafb39fe8826
       x-runtime:
-      - '0.070387'
+      - '0.101151'
       x-xss-protection:
       - '0'
       cf-cache-status:
       - DYNAMIC
       report-to:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2FN2AU6Q21GEl3itH8nhafX6DfFALCXSoBsUvw8FYZWA1xFpjJpNlq9kOPhUFQxeULUUIvH3ktdGyPZ%2B8YVqcJ%2BMwu4Xg4qNxxhFjT%2BS8YT0PUoL3"}]}'
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=tHvNTb6xNqXkCJgjbm07be%2BFCkANGTe2MEzVnU9PZNfeNfgI8kY60PuGgKhdVaDARcLDGJ0RRIAJB6KesBKEmN9AWWjtVH2EahlcW2NXSFIhhRaV%2B9I%3D"}]}'
       content-encoding:
       - gzip
       server:
       - cloudflare
       set-cookie:
-      - _session_id=27e9e25adab4314b48162063035bd770; HttpOnly; Secure; Path=/; Expires=Thu,
-        31 Jul 2025 16:05:14 GMT
+      - _session_id=6e0226276eb83de5e7137333fcff973c; HttpOnly; Secure; Path=/; Expires=Wed,
+        06 Aug 2025 11:05:41 GMT
       cf-ray:
-      - 95d14d2e68c1ed06-LHR
+      - 9601069fae7a6442-LHR
       alt-svc:
       - h3=":443"; ma=86400
     body:
@@ -90,6 +90,9 @@ http_interactions:
         \r\n- ... Flickr https://www.flickr.com/photos/3dbenchy/ \r\n- ... Wikipedia
         https://en.wikipedia.org/wiki/3DBenchy","license":{"spdxId":"CC-BY-ND-4.0"},"safe":true,"tags":["3dbenchy","benchy","3d
         print","3d-print","3d-printing","3d printing","3dprinting","print","torture
-        test","torture-test","benchmark","benchmarking","bench-mark","bench-marking","measure","calibrate","dimension","tolerance"],"illustrationImageUrl":"https://images.cults3d.com/DGze-O1vr45ET9Y4dPn24-lWGl0=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782346-8151-9279/_1__3D-printed__3DBenchy_by_Creative-Tools.com.JPG","illustrations":[{"imageUrl":"https://images.cults3d.com/DGze-O1vr45ET9Y4dPn24-lWGl0=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782346-8151-9279/_1__3D-printed__3DBenchy_by_Creative-Tools.com.JPG"},{"imageUrl":"https://images.cults3d.com/8cXf2KJU-VSAKb1ksnTNpkLJmXE=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782332-8151-4458/_2___3DBenchy__Side_view.png"},{"imageUrl":"https://images.cults3d.com/boHctLfUj7nuGsq4VKkZIV4hXtc=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782336-8151-2049/_3___3DBenchy__Curved_overhang.png"},{"imageUrl":"https://images.cults3d.com/HdTHHlECkxM5ANNhheoivtg90to=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782343-8151-3672/_4___3DBenchy__Default_view.png"},{"imageUrl":"https://images.cults3d.com/nRCPDDVGA7IPPMn-lA2U4BnpW50=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782348-8151-1904/_5___3DBenchy__Low-slope_surfaces.png"},{"imageUrl":"https://images.cults3d.com/gxOiAkwbe2HczyBbHx__T_NwOYE=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782339-8151-9522/_6___3DBenchy__Cut_view.png"},{"imageUrl":"https://images.cults3d.com/rTx0O9989lZxDYfG2ImLke1OzaM=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782344-8151-0575/_7___3DBenchy_movie_poster__3dbenchy.com_.jpg"}]}}}'
-  recorded_at: Thu, 10 Jul 2025 16:05:14 GMT
+        test","torture-test","benchmark","benchmarking","bench-mark","bench-marking","measure","calibrate","dimension","tolerance"],"illustrationImageUrl":"https://images.cults3d.com/DGze-O1vr45ET9Y4dPn24-lWGl0=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782346-8151-9279/_1__3D-printed__3DBenchy_by_Creative-Tools.com.JPG","illustrations":[{"imageUrl":"https://images.cults3d.com/DGze-O1vr45ET9Y4dPn24-lWGl0=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782346-8151-9279/_1__3D-printed__3DBenchy_by_Creative-Tools.com.JPG"},{"imageUrl":"https://images.cults3d.com/8cXf2KJU-VSAKb1ksnTNpkLJmXE=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782332-8151-4458/_2___3DBenchy__Side_view.png"},{"imageUrl":"https://images.cults3d.com/boHctLfUj7nuGsq4VKkZIV4hXtc=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782336-8151-2049/_3___3DBenchy__Curved_overhang.png"},{"imageUrl":"https://images.cults3d.com/HdTHHlECkxM5ANNhheoivtg90to=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782343-8151-3672/_4___3DBenchy__Default_view.png"},{"imageUrl":"https://images.cults3d.com/nRCPDDVGA7IPPMn-lA2U4BnpW50=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782348-8151-1904/_5___3DBenchy__Low-slope_surfaces.png"},{"imageUrl":"https://images.cults3d.com/gxOiAkwbe2HczyBbHx__T_NwOYE=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782339-8151-9522/_6___3DBenchy__Cut_view.png"},{"imageUrl":"https://images.cults3d.com/rTx0O9989lZxDYfG2ImLke1OzaM=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/133/illustration-file/1428782344-8151-0575/_7___3DBenchy_movie_poster__3dbenchy.com_.jpg"}],"creator":{"nick":"CreativeTools","bio":"Creative
+        Tools supplies software, hardware and training in all things 3D - such as
+        3D modelling, animation, rendering, workstations, 3D scanners and 3D printers.\r\nWeb:
+        http://creative-tools.com\r\nTwitter: https://twitter.com/CreativeTools","url":"https://cults3d.com/en/users/CreativeTools"}}}}'
+  recorded_at: Wed, 16 Jul 2025 11:05:41 GMT
 recorded_with: VCR 6.3.1
