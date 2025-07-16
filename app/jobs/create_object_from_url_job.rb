@@ -1,0 +1,30 @@
+class CreateObjectFromUrlJob < ApplicationJob
+  queue_as :low
+  unique :until_executed
+
+  def perform(url:)
+    # Get deserializer
+    deserializer = Link.deserializer_for(url: url)
+    # Create new object
+    object = case deserializer&.send(:target_class)&.name
+    when "Model"
+      Model.create(
+        library: Library.default,
+        name: SecureRandom.uuid,
+        path: SecureRandom.uuid,
+        links_attributes: [{url: url}]
+      )
+    when "Creator"
+      Creator.create(
+        name: SecureRandom.uuid,
+        links_attributes: [{url: url}]
+      )
+    when "Collection"
+      Collection.create(
+        name: SecureRandom.uuid,
+        links_attributes: [{url: url}]
+      )
+    end
+    object.links.first.update_metadata_from_link_later if object
+  end
+end
