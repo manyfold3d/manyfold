@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_29_212656) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_16_093106) do
   create_table "altcha_solutions", force: :cascade do |t|
     t.string "algorithm"
     t.string "challenge"
@@ -233,6 +233,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_29_212656) do
     t.datetime "updated_at", null: false
     t.index ["linkable_id", "linkable_type", "url"], name: "index_links_on_linkable_id_and_linkable_type_and_url"
     t.index ["linkable_type", "linkable_id"], name: "index_links_on_linkable"
+    t.index ["url"], name: "index_links_on_url"
   end
 
   create_table "model_files", force: :cascade do |t|
