@@ -9,7 +9,11 @@ class UpdateMetadataFromLinkJob < ApplicationJob
     linkable = link.linkable
     if linkable.is_a? Model
       # Download files
-      data.delete(:file_urls)&.each { |it| linkable.add_file_from_url(url: it[:url], filename: it[:filename]) }
+      data.delete(:file_urls)&.each do |it|
+        linkable.add_file_from_url(url: it[:url], filename: it[:filename])
+      rescue ActiveRecord::RecordInvalid
+        Rails.logger.info("Couldn't add file #{it[:url]} to model #{linkable.to_param}")
+      end
       # Select preview file
       data[:preview_file] = linkable.model_files.find_by(filename: data.delete(:preview_filename)) if data[:preview_filename].present?
     end
