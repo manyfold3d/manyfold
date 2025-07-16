@@ -13,7 +13,7 @@ class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::
         r.body.dig("zip_data", "images").map { |it| {url: it.dig("url"), filename: "images/" + filename_from_url(it.dig("url"))} } +
           r.body.dig("zip_data", "files").map { |it| {url: it.dig("url"), filename: "files/" + filename_from_url(it.dig("url"))} },
       preview_filename: "images/" + r.body.dig("default_image", "name")
-    }
+    }.merge(creator_attributes(r.body["creator"]))
   end
 
   private
@@ -26,5 +26,12 @@ class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::
     match = /\A\/thing:([[:digit:]]+)\Z/.match(path)
     @object_id = match[1] if match.present?
     match.present?
+  end
+
+  def creator_attributes(data)
+    return {} if data.nil? || data["public_url"].nil?
+    c = Creator.linked_to(data["public_url"]).first
+    return {creator: c} if c
+    {creator_attributes: Integrations::Thingiverse::CreatorDeserializer.parse(data)}
   end
 end
