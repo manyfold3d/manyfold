@@ -8,6 +8,7 @@ RSpec.describe Collection do
   it_behaves_like "Indexable"
   it_behaves_like "IndexableWithCreatorDelegation"
   it_behaves_like "IndexableWithCollectionDelegation"
+  it_behaves_like "Linkable"
 
   context "when creating a collection" do
     it "doesn't queue any activity jobs" do

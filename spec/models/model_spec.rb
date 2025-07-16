@@ -8,6 +8,7 @@ RSpec.describe Model do
   it_behaves_like "Sluggable"
   it_behaves_like "Indexable"
   it_behaves_like "IndexableWithCreatorDelegation"
+  it_behaves_like "Linkable"
 
   it "is not valid without a path" do
     expect(build(:model, path: nil)).not_to be_valid
