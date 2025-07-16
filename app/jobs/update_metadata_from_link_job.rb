@@ -13,6 +13,8 @@ class UpdateMetadataFromLinkJob < ApplicationJob
       # Select preview file
       data[:preview_file] = linkable.model_files.find_by(filename: data.delete(:preview_filename)) if data[:preview_filename].present?
     end
+    # Preserve existing tags
+    data[:tag_list].concat(linkable.tag_list).uniq
     # Update object
     linkable.update! data
   end
