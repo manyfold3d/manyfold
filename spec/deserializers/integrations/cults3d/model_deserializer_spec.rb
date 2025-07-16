@@ -59,7 +59,17 @@ RSpec.describe Integrations::Cults3d::ModelDeserializer, :cults3d_api_key do
       expect(deserializer.deserialize[:license]).to eq "CC-BY-ND-4.0"
     end
 
-    it "extracts creator"
+    it "matches existing creator" do
+      creator = create(:creator, links_attributes: [{url: "https://cults3d.com/en/users/CreativeTools"}])
+      expect(deserializer.deserialize[:creator]).to eq creator
+    end
+
+    it "adds new creator if missing" do
+      expect(deserializer.deserialize[:creator_attributes]).to include({
+        name: "CreativeTools",
+        links_attributes: [{url: "https://cults3d.com/en/users/CreativeTools"}]
+      })
+    end
   end
 
   context "with a valid URI" do
