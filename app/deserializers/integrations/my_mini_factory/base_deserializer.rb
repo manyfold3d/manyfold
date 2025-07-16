@@ -10,6 +10,7 @@ class Integrations::MyMiniFactory::BaseDeserializer < Integrations::BaseDeserial
   def fetch(api_url)
     connection = Faraday.new do |builder|
       builder.response :json
+      builder.response :raise_error
     end
     connection.get "https://www.myminifactory.com/api/v2/#{api_url}", {key: SiteSettings.myminifactory_api_key}, {Accept: "application/json"}
   end
