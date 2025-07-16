@@ -38,7 +38,17 @@ RSpec.describe Integrations::Thangs::ModelDeserializer, :thingiverse_api_key do
       })
     end
 
-    it "extracts creator"
+    it "matches existing creator" do
+      creator = create(:creator, links_attributes: [{url: "https://thangs.com/designer/CHEP"}])
+      expect(deserializer.deserialize[:creator]).to eq creator
+    end
+
+    it "adds new creator if missing" do
+      expect(deserializer.deserialize[:creator_attributes]).to include({
+        name: "CHEP",
+        links_attributes: [{url: "https://thangs.com/designer/CHEP"}]
+      })
+    end
   end
 
   context "with a valid URI" do
