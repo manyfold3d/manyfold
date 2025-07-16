@@ -15,10 +15,11 @@ class UpdateMetadataFromLinkJob < ApplicationJob
         Rails.logger.info("Couldn't add file #{it[:url]} to model #{linkable.to_param}")
       end
       # Select preview file
-      data[:preview_file] = linkable.model_files.find_by(filename: data.delete(:preview_filename)) if data[:preview_filename].present?
+      preview_filename = data.delete(:preview_filename)
+      data[:preview_file] = linkable.model_files.find_by(filename: preview_filename) if preview_filename.present?
     end
     # Preserve existing tags
-    data[:tag_list].concat(linkable.tag_list).uniq
+    data[:tag_list]&.concat(linkable.tag_list)&.uniq
     # Update object
     linkable.update! data
   end
