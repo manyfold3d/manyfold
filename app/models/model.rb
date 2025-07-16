@@ -151,7 +151,7 @@ class Model < ApplicationRecord
     if model_files.exists?(filename: filename)
       Rails.logger.info("Not downloading file #{filename} in model #{to_param}, already exists")
     else
-      model_files.create(filename: filename, attachment_remote_url: uri.to_s)
+      model_files.create!(filename: filename, attachment_remote_url: uri.to_s)
     end
   rescue URI::InvalidURIError
   end
