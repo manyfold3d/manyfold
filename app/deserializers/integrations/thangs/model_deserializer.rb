@@ -4,11 +4,12 @@ class Integrations::Thangs::ModelDeserializer < Integrations::Thangs::BaseDeseri
   def deserialize
     return {} unless valid?
     r = fetch "models/#{CGI.escapeURIComponent(@object_id)}"
+    files = r.body.dig("attachments").filter_map { |it| {url: it.dig("imageUrl"), filename: filename_from_url(it.dig("imageUrl"))} if it.dig("attachmentType") == "image" }
     {
       name: r.body["name"],
       notes: r.body["description"],
-      file_urls:
-        r.body.dig("attachments").filter_map { |it| {url: it.dig("imageUrl"), filename: filename_from_url(it.dig("imageUrl"))} if it.dig("attachmentType") == "image" }
+      file_urls: files,
+      preview_filename: files.first&.dig(:filename)
     }.merge(creator_attributes(r.body["owner"]))
   end
 
