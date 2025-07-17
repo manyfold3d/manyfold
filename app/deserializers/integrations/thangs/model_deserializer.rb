@@ -18,12 +18,12 @@ class Integrations::Thangs::ModelDeserializer < Integrations::Thangs::BaseDeseri
       class: Model,
       name: true,
       notes: true,
-      tags: false,
-      sensitive: false,
       images: true,
       model_files: false,
-      license: false,
-      creator: true
+      creator: true,
+      tags: false,
+      sensitive: false,
+      license: false
     }
   end
 

@@ -19,12 +19,12 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
       class: Model,
       name: true,
       notes: true,
-      tags: true,
-      sensitive: false,
       images: true,
       model_files: false,
-      license: false,
-      creator: true
+      creator: true,
+      tags: true,
+      sensitive: false,
+      license: false
     }
   end
 

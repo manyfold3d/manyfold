@@ -41,12 +41,12 @@ class Integrations::Cults3d::ModelDeserializer < Integrations::Cults3d::BaseDese
       class: Model,
       name: true,
       notes: true,
-      tags: true,
-      sensitive: true,
       images: true,
       model_files: false,
-      license: true,
-      creator: true
+      creator: true,
+      tags: true,
+      sensitive: true,
+      license: true
     }
   end
 

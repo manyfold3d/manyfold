@@ -21,12 +21,12 @@ class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::
       class: Model,
       name: true,
       notes: true,
-      tags: true,
-      sensitive: true,
       images: true,
       model_files: true,
-      license: false,
-      creator: true
+      creator: true,
+      tags: true,
+      sensitive: true,
+      license: false
     }
   end
 
