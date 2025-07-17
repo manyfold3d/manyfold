@@ -33,6 +33,10 @@ RSpec.describe Integrations::Thingiverse::CreatorDeserializer, :thingiverse_api_
       expect(deserializer.deserialize[:name]).to eq "floppy_uk"
     end
 
+    it "extracts slug" do
+      expect(deserializer.deserialize[:slug]).to eq "floppy_uk"
+    end
+
     it "extracts bio" do # rubocop:disable RSpec/MultipleExpectations
       expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "Manyfold"

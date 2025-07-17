@@ -48,6 +48,10 @@ RSpec.describe Integrations::Cults3d::CreatorDeserializer, :cults3d_api_key do
       expect(deserializer.deserialize[:name]).to eq "CreativeTools"
     end
 
+    it "extracts slug" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.deserialize[:slug]).to eq "creativetools"
+    end
+
     it "extracts bio" do # rubocop:disable RSpec/MultipleExpectations
       expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "all things 3D"

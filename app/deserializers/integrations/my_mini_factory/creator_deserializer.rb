@@ -10,6 +10,7 @@ class Integrations::MyMiniFactory::CreatorDeserializer < Integrations::MyMiniFac
   def self.parse(data)
     {
       name: data["name"],
+      slug: data["username"].parameterize,
       notes: ReverseMarkdown.convert(data["bio"]),
       links_attributes: [{url: data["profile_url"]}]
     }
@@ -19,6 +20,7 @@ class Integrations::MyMiniFactory::CreatorDeserializer < Integrations::MyMiniFac
     {
       class: Creator,
       name: true,
+      slug: true,
       notes: true
     }
   end

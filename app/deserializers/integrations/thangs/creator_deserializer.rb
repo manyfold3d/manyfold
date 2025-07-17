@@ -2,6 +2,7 @@ class Integrations::Thangs::CreatorDeserializer < Integrations::MyMiniFactory::B
   def self.parse(data)
     {
       name: data["username"],
+      slug: data["username"],
       notes: ReverseMarkdown.convert(data.dig("profile", "description")),
       links_attributes: [{url: "https://thangs.com/designer/#{data["username"]}"}]
     }
@@ -11,6 +12,7 @@ class Integrations::Thangs::CreatorDeserializer < Integrations::MyMiniFactory::B
     {
       class: Creator,
       name: true,
+      slug: true,
       notes: true
     }
   end
