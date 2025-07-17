@@ -10,7 +10,8 @@ RSpec.describe UpdateMetadataFromLinkJob do
     let(:deserializer) {
       deserializer = instance_double(Integrations::Thingiverse::ModelDeserializer)
       allow(deserializer).to receive(:deserialize).and_return({creator_attributes: {
-        name: "creator"
+        name: "Bruce Wayne",
+        slug: "batman"
       }})
       deserializer
     }
@@ -21,7 +22,7 @@ RSpec.describe UpdateMetadataFromLinkJob do
     end
 
     context "with an existing creator" do
-      let!(:creator) { create(:creator, name: "creator") }
+      let!(:creator) { create(:creator, slug: "batman") }
 
       it "does not make a new creator" do
         expect { described_class.perform_now(link: link) }.not_to change(Creator, :count)

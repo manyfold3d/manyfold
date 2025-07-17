@@ -9,7 +9,7 @@ class UpdateMetadataFromLinkJob < ApplicationJob
     data[:tag_list]&.concat(linkable.tag_list)&.uniq
     # Match to existing creator
     if data[:creator_attributes]
-      creator = Creator.find_by(name: data.dig(:creator_attributes, :name))
+      creator = Creator.find_by(slug: data.dig(:creator_attributes, :slug))
       if creator
         data.delete :creator_attributes
         data[:creator_id] = creator.id
