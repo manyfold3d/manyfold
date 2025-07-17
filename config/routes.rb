@@ -63,6 +63,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
   get "/about", to: "home#about", as: :about
+  resources :imports, only: [:new, :create]
 
   authenticate :user do
     get "/welcome", to: "home#welcome", as: :welcome

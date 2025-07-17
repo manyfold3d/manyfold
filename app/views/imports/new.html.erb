@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Import</h1>
+
+  <code><%= @url %></code>
+
+  <%= render Components::DoButton.new label: "Import", href: imports_path(url: @url), method: :post, variant: "primary" %>
+</div>
