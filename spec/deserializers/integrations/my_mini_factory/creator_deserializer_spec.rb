@@ -28,11 +28,13 @@ RSpec.describe Integrations::MyMiniFactory::CreatorDeserializer, :mmf_api_key do
 
     let(:uri) { "https://www.myminifactory.com/users/Scan%20The%20World" }
 
-    it "extracts name" do
+    it "extracts name" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:name]).to be true
       expect(deserializer.deserialize[:name]).to eq "Scan The World"
     end
 
-    it "extracts bio" do
+    it "extracts bio" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "cultural artefacts"
     end
   end
@@ -43,7 +45,7 @@ RSpec.describe Integrations::MyMiniFactory::CreatorDeserializer, :mmf_api_key do
     let(:uri) { "https://www.myminifactory.com/users/Scan%20The%20World" }
 
     it "deserializes to a Creator" do
-      expect(deserializer.send(:target_class)).to eq Creator
+      expect(deserializer.capabilities[:class]).to eq Creator
     end
 
     it "is valid for deserialization to Creator" do

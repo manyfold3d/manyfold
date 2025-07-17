@@ -9,11 +9,15 @@ class Integrations::MyMiniFactory::CollectionDeserializer < Integrations::MyMini
     }
   end
 
-  private
-
-  def target_class
-    Collection
+  def capabilities
+    {
+      class: Collection,
+      name: true,
+      notes: false
+    }
   end
+
+  private
 
   def valid_path?(path)
     match = /\A\/users\/(#{USERNAME_PATTERN})\/collection\/([[:alnum:]-]+)\Z/o.match(CGI.unescape(path))

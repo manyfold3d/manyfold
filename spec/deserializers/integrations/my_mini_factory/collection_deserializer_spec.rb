@@ -23,8 +23,13 @@ RSpec.describe Integrations::MyMiniFactory::CollectionDeserializer, :mmf_api_key
 
     let(:uri) { "https://www.myminifactory.com/users/Scan%20The%20World/collection/sutton-hoo-artifacts" }
 
-    it "extracts name" do
+    it "extracts name" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:name]).to be true
       expect(deserializer.deserialize[:name]).to eq "Sutton Hoo Artifacts"
+    end
+
+    it "does not extract notes" do
+      expect(deserializer.capabilities[:notes]).to be false
     end
   end
 
@@ -34,7 +39,7 @@ RSpec.describe Integrations::MyMiniFactory::CollectionDeserializer, :mmf_api_key
     let(:uri) { "https://www.myminifactory.com/users/Scan%20The%20World/collection/sutton-hoo-artifacts" }
 
     it "deserializes to a Collection" do
-      expect(deserializer.send(:target_class)).to eq Collection
+      expect(deserializer.capabilities[:class]).to eq Collection
     end
 
     it "is valid for deserialization to Collection" do

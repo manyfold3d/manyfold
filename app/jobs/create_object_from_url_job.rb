@@ -6,7 +6,7 @@ class CreateObjectFromUrlJob < ApplicationJob
     # Get deserializer
     deserializer = Link.deserializer_for(url: url)
     # Create new object
-    object = case deserializer&.send(:target_class)&.name
+    object = case deserializer&.capabilities&.dig(:class)&.name
     when "Model"
       Model.create(
         library: Library.default,

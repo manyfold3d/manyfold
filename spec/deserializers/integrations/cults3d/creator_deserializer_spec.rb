@@ -43,11 +43,13 @@ RSpec.describe Integrations::Cults3d::CreatorDeserializer, :cults3d_api_key do
 
     let(:uri) { "https://cults3d.com/en/users/CreativeTools" }
 
-    it "extracts name" do
+    it "extracts name" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:name]).to be true
       expect(deserializer.deserialize[:name]).to eq "CreativeTools"
     end
 
-    it "extracts bio" do
+    it "extracts bio" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "all things 3D"
     end
   end
@@ -58,7 +60,7 @@ RSpec.describe Integrations::Cults3d::CreatorDeserializer, :cults3d_api_key do
     let(:uri) { "https://cults3d.com/en/users/CreativeTools" }
 
     it "deserializes to a Creator" do
-      expect(deserializer.send(:target_class)).to eq Creator
+      expect(deserializer.capabilities[:class]).to eq Creator
     end
 
     it "is valid for deserialization to Creator" do

@@ -7,9 +7,11 @@ class Integrations::Thangs::CreatorDeserializer < Integrations::MyMiniFactory::B
     }
   end
 
-  private
-
-  def target_class
-    Creator
+  def capabilities
+    {
+      class: Creator,
+      name: true,
+      notes: true
+    }
   end
 end

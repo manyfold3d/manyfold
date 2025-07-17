@@ -13,11 +13,21 @@ class Integrations::Thangs::ModelDeserializer < Integrations::Thangs::BaseDeseri
     }.merge(creator_attributes(r.body["owner"]))
   end
 
-  private
-
-  def target_class
-    Model
+  def capabilities
+    {
+      class: Model,
+      name: true,
+      notes: true,
+      tags: false,
+      sensitive: false,
+      images: true,
+      model_files: false,
+      license: false,
+      creator: true
+    }
   end
+
+  private
 
   def valid_path?(path)
     match = /\A\/designer\/#{PATH_COMPONENTS[:username]}\/3d-model\/#{PATH_COMPONENTS[:model_slug]}-#{PATH_COMPONENTS[:model_id]}\Z/.match(CGI.unescape(path))

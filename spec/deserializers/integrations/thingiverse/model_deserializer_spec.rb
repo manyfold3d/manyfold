@@ -23,30 +23,36 @@ RSpec.describe Integrations::Thingiverse::ModelDeserializer, :thingiverse_api_ke
 
     let(:uri) { "https://www.thingiverse.com/thing:4049220" }
 
-    it "extracts name" do
+    it "extracts name" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:name]).to be true
       expect(deserializer.deserialize[:name]).to eq "Slatwall support"
     end
 
-    it "extracts description" do
+    it "extracts description" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "Slatwall plastic inserts"
     end
 
-    it "extracts tags" do
+    it "extracts tags" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:tags]).to be true
       expect(deserializer.deserialize[:tag_list]).to include "slatwall"
     end
 
-    it "extracts sensitive tag" do
+    it "extracts sensitive tag" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:sensitive]).to be true
       expect(deserializer.deserialize[:sensitive]).to be false
     end
 
-    it "extracts image info to check and download" do
+    it "extracts image info to check and download" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:images]).to be true
       expect(deserializer.deserialize[:file_urls]).to include({
         url: "https://cdn.thingiverse.com/assets/81/fd/d4/4e/ec/Slatwall_support.png",
         filename: "images/Slatwall_support.png"
       })
     end
 
-    it "extracts 3d file info to check and download" do
+    it "extracts 3d file info to check and download" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:model_files]).to be true
       expect(deserializer.deserialize[:file_urls]).to include({
         url: "https://cdn.thingiverse.com/assets/62/09/06/48/fa/Slatwall_support.stl",
         filename: "files/Slatwall_support.stl"
@@ -57,7 +63,8 @@ RSpec.describe Integrations::Thingiverse::ModelDeserializer, :thingiverse_api_ke
       expect(deserializer.deserialize[:preview_filename]).to eq "images/Slatwall_support.png"
     end
 
-    it "matches existing creator" do
+    it "matches existing creator" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:creator]).to be true
       creator = create(:creator, links_attributes: [{url: "https://www.thingiverse.com/floppy_uk"}])
       expect(deserializer.deserialize[:creator]).to eq creator
     end
@@ -68,6 +75,10 @@ RSpec.describe Integrations::Thingiverse::ModelDeserializer, :thingiverse_api_ke
         links_attributes: [{url: "https://www.thingiverse.com/floppy_uk"}]
       })
     end
+
+    it "does not extract license" do
+      expect(deserializer.capabilities[:license]).to be false
+    end
   end
 
   context "with a valid URI" do
@@ -76,7 +87,7 @@ RSpec.describe Integrations::Thingiverse::ModelDeserializer, :thingiverse_api_ke
     let(:uri) { "https://www.thingiverse.com/thing:4049220" }
 
     it "deserializes to a Model" do
-      expect(deserializer.send(:target_class)).to eq Model
+      expect(deserializer.capabilities[:class]).to eq Model
     end
 
     it "is valid for deserialization to Model" do

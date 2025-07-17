@@ -10,11 +10,15 @@ class Integrations::Thingiverse::CollectionDeserializer < Integrations::Thingive
     }
   end
 
-  private
-
-  def target_class
-    Collection
+  def capabilities
+    {
+      class: Collection,
+      name: true,
+      notes: true
+    }
   end
+
+  private
 
   def valid_path?(path)
     match = /\A\/(#{USERNAME_PATTERN})\/collections\/([[:digit:]-]+)\/things\Z/o.match(CGI.unescape(path))

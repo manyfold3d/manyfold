@@ -23,11 +23,15 @@ class Integrations::Cults3d::CreatorDeserializer < Integrations::Cults3d::BaseDe
     }
   end
 
-  private
-
-  def target_class
-    Creator
+  def capabilities
+    {
+      class: Creator,
+      name: true,
+      notes: true
+    }
   end
+
+  private
 
   def valid_path?(path)
     match = /\A\/#{PATH_COMPONENTS[:locale]}\/#{PATH_COMPONENTS[:users]}\/#{PATH_COMPONENTS[:username]}(\/#{PATH_COMPONENTS[:models]})?\Z/o.match(CGI.unescape(path))

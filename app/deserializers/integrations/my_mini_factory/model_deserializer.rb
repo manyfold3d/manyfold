@@ -14,11 +14,21 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
     }.merge(creator_attributes(r.body["designer"]))
   end
 
-  private
-
-  def target_class
-    Model
+  def capabilities
+    {
+      class: Model,
+      name: true,
+      notes: true,
+      tags: true,
+      sensitive: false,
+      images: true,
+      model_files: false,
+      license: false,
+      creator: true
+    }
   end
+
+  private
 
   def valid_path?(path)
     match = /\A\/object\/3d-print-[[:alnum:]-]+-([[:digit:]]+)\Z/.match(path)

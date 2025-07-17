@@ -15,6 +15,6 @@ class ImportsController < ApplicationController
   def get_url
     @url = params[:url]
     @deserializer = Link.deserializer_for(url: @url)
-    authorize @deserializer.send :target_class
+    authorize @deserializer.capabilities[:class]
   end
 end
