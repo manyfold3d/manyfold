@@ -653,7 +653,7 @@ en:
       title: Welcome to %{site_name}!
   imports:
     create:
-      success: Success
+      success: Imported requested; the results should appear shortly.
     new:
       description: From some sites, Manyfold can download models for you with just a link!
       heading: Import from a link
