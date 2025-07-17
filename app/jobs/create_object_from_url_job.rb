@@ -25,6 +25,6 @@ class CreateObjectFromUrlJob < ApplicationJob
         links_attributes: [{url: url}]
       )
     end
-    object.links.first.update_metadata_from_link_later if object
+    object.links.first.update_metadata_from_link_later(organize: true) if object
   end
 end

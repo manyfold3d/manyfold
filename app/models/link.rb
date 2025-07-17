@@ -55,7 +55,7 @@ class Link < ApplicationRecord
     end.find { |it| it.valid?(for_class: for_class) }
   end
 
-  def update_metadata_from_link_later
-    UpdateMetadataFromLinkJob.perform_later(link: self)
+  def update_metadata_from_link_later(organize: false)
+    UpdateMetadataFromLinkJob.perform_later(link: self, organize: organize)
   end
 end
