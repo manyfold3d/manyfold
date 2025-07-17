@@ -6,20 +6,20 @@ class Integrations::BaseDeserializer
   end
 
   def valid?(for_class: nil)
-    api_configured? && @uri.present? && (for_class ? for_class == target_class : true)
+    api_configured? && @uri.present? && (for_class ? for_class == capabilities[:class] : true)
   end
 
   def deserialize
     raise NotImplementedError
   end
 
-  private
-
-  def api_configured?
+  def capabilities
     raise NotImplementedError
   end
 
-  def target_class
+  private
+
+  def api_configured?
     raise NotImplementedError
   end
 

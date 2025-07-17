@@ -55,11 +55,15 @@ en:
       model:
         ai_indexable: Allow use for AI training
         caption: Caption
+        collection: Collection
         collection_id: Collection
+        creator: Creator
         creator_id: Creator
+        images: Images
         indexable: Allow search indexing
         library_id: Library
         license: License
+        model_files: Files
         name: Name
         notes: Description
         path: Path
@@ -647,6 +651,14 @@ en:
     welcome:
       lead: This site is running Manyfold, software for managing and sharing 3D models; here's a quick guide...
       title: Welcome to %{site_name}!
+  imports:
+    create:
+      success: Imported requested; the results should appear shortly.
+    new:
+      description: From some sites, Manyfold can download models for you with just a link!
+      heading: Import from a link
+      import: Import this link
+      import_type_html: "<code>%{url}</code> will be added as a new %{object_type}. The following data can be imported automatically:"
   jobs:
     activity:
       collection_published:

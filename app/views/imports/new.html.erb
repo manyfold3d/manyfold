@@ -1,0 +1,18 @@
+<div class="container">
+  <h1><%= t(".heading") %></h1>
+
+  <p class="lead"><%= t(".description") %></p>
+
+  <p><%= t(".import_type_html", url: @url, object_type: @deserializer.capabilities[:class].model_name.human) %></p>
+
+  <table class="table table-striped">
+    <% @deserializer.capabilities.except(:class).each_pair do |key, value| %>
+      <tr>
+        <td><%= @deserializer.capabilities[:class].human_attribute_name(key) %></td>
+        <td><%= value ? "✅" : "❌" %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= render Components::DoButton.new icon: "download", label: t(".import"), href: imports_path(url: @url), method: :post, variant: "primary" %>
+</div>

@@ -36,6 +36,10 @@ class Link < ApplicationRecord
   end
 
   def deserializer
+    self.class.deserializer_for(url: url, for_class: linkable.class)
+  end
+
+  def self.deserializer_for(url:, for_class: nil)
     [
       Integrations::Cults3d::CreatorDeserializer,
       Integrations::Cults3d::ModelDeserializer,
@@ -48,10 +52,10 @@ class Link < ApplicationRecord
       Integrations::Thingiverse::ModelDeserializer
     ].map do |klass|
       klass.new(uri: url)
-    end.find { |it| it.valid?(for_class: linkable.class) }
+    end.find { |it| it.valid?(for_class: for_class) }
   end
 
-  def update_metadata_from_link_later
-    UpdateMetadataFromLinkJob.perform_later(link: self)
+  def update_metadata_from_link_later(organize: false)
+    UpdateMetadataFromLinkJob.perform_later(link: self, organize: organize)
   end
 end

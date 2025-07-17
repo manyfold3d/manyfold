@@ -16,11 +16,21 @@ class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::
     }.merge(creator_attributes(r.body["creator"]))
   end
 
-  private
-
-  def target_class
-    Model
+  def capabilities
+    {
+      class: Model,
+      name: true,
+      notes: true,
+      images: true,
+      model_files: true,
+      creator: true,
+      tags: true,
+      sensitive: true,
+      license: false
+    }
   end
+
+  private
 
   def valid_path?(path)
     match = /\A\/thing:([[:digit:]]+)\Z/.match(path)

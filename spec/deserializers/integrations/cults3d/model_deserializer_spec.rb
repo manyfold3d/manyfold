@@ -28,23 +28,28 @@ RSpec.describe Integrations::Cults3d::ModelDeserializer, :cults3d_api_key do
 
     let(:uri) { "https://cults3d.com/en/3d-model/tool/3dbenchy-the-jolly-3d-printing-torture-test" }
 
-    it "extracts name" do
+    it "extracts name" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:name]).to be true
       expect(deserializer.deserialize[:name]).to eq "Benchy - The jolly 3D printing torture-test"
     end
 
-    it "extracts description" do
+    it "extracts description" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "3DBenchy"
     end
 
-    it "extracts tags" do
+    it "extracts tags" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:tags]).to be true
       expect(deserializer.deserialize[:tag_list]).to include "calibrate"
     end
 
-    it "extracts sensitive tag" do
+    it "extracts sensitive tag" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:sensitive]).to be true
       expect(deserializer.deserialize[:sensitive]).to be false
     end
 
-    it "extracts image info to check and download" do
+    it "extracts image info to check and download" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:images]).to be true
       expect(deserializer.deserialize[:file_urls]).to include({
         url: "https://fbi.cults3d.com/uploaders/133/illustration-file/1428782346-8151-9279/_1__3D-printed__3DBenchy_by_Creative-Tools.com.JPG",
         filename: "_1__3D-printed__3DBenchy_by_Creative-Tools.com.JPG"
@@ -55,11 +60,13 @@ RSpec.describe Integrations::Cults3d::ModelDeserializer, :cults3d_api_key do
       expect(deserializer.deserialize[:preview_filename]).to eq "_1__3D-printed__3DBenchy_by_Creative-Tools.com.JPG"
     end
 
-    it "extracts license" do
+    it "extracts license" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:license]).to be true
       expect(deserializer.deserialize[:license]).to eq "CC-BY-ND-4.0"
     end
 
-    it "matches existing creator" do
+    it "matches existing creator" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:creator]).to be true
       creator = create(:creator, links_attributes: [{url: "https://cults3d.com/en/users/CreativeTools"}])
       expect(deserializer.deserialize[:creator]).to eq creator
     end
@@ -70,6 +77,10 @@ RSpec.describe Integrations::Cults3d::ModelDeserializer, :cults3d_api_key do
         links_attributes: [{url: "https://cults3d.com/en/users/CreativeTools"}]
       })
     end
+
+    it "does not import files" do
+      expect(deserializer.capabilities[:model_files]).to be false
+    end
   end
 
   context "with a valid URI" do
@@ -78,7 +89,7 @@ RSpec.describe Integrations::Cults3d::ModelDeserializer, :cults3d_api_key do
     let(:uri) { "https://cults3d.com/en/3d-model/tool/3dbenchy-the-jolly-3d-printing-torture-test" }
 
     it "deserializes to a Model" do
-      expect(deserializer.send(:target_class)).to eq Model
+      expect(deserializer.capabilities[:class]).to eq Model
     end
 
     it "is valid for deserialization to Model" do

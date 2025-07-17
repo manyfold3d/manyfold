@@ -23,11 +23,13 @@ RSpec.describe Integrations::Thingiverse::CollectionDeserializer, :thingiverse_a
 
     let(:uri) { "https://www.thingiverse.com/floppy_uk/collections/16696069/things" }
 
-    it "extracts name" do
+    it "extracts name" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:name]).to be true
       expect(deserializer.deserialize[:name]).to eq "Printer Upgrades"
     end
 
-    it "extracts description" do
+    it "extracts description" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "Ender 3 Pro"
     end
   end
@@ -38,7 +40,7 @@ RSpec.describe Integrations::Thingiverse::CollectionDeserializer, :thingiverse_a
     let(:uri) { "https://www.thingiverse.com/floppy_uk/collections/16696069/things" }
 
     it "deserializes to a Collection" do
-      expect(deserializer.send(:target_class)).to eq Collection
+      expect(deserializer.capabilities[:class]).to eq Collection
     end
 
     it "is valid for deserialization to Collection" do

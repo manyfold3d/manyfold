@@ -15,11 +15,15 @@ class Integrations::Thingiverse::CreatorDeserializer < Integrations::Thingiverse
     }
   end
 
-  private
-
-  def target_class
-    Creator
+  def capabilities
+    {
+      class: Creator,
+      name: true,
+      notes: true
+    }
   end
+
+  private
 
   def valid_path?(path)
     match = /\A\/(#{USERNAME_PATTERN})\Z/o.match(CGI.unescape(path))

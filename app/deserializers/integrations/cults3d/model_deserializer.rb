@@ -36,11 +36,21 @@ class Integrations::Cults3d::ModelDeserializer < Integrations::Cults3d::BaseDese
     }.merge(creator_attributes(result&.data&.creation&.creator))
   end
 
-  private
-
-  def target_class
-    Model
+  def capabilities
+    {
+      class: Model,
+      name: true,
+      notes: true,
+      images: true,
+      model_files: false,
+      creator: true,
+      tags: true,
+      sensitive: true,
+      license: true
+    }
   end
+
+  private
 
   def valid_path?(path)
     match = /\A\/#{PATH_COMPONENTS[:locale]}\/#{PATH_COMPONENTS[:model]}\/#{PATH_COMPONENTS[:category]}\/#{PATH_COMPONENTS[:model_slug]}\Z/.match(path)

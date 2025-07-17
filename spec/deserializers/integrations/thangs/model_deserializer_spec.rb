@@ -23,22 +23,26 @@ RSpec.describe Integrations::Thangs::ModelDeserializer, :thingiverse_api_key do
 
     let(:uri) { "https://thangs.com/designer/CHEP/3d-model/CHEP%20Cube%20-%20Calibration%20Cube-29638" }
 
-    it "extracts name" do
+    it "extracts name" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:name]).to be true
       expect(deserializer.deserialize[:name]).to eq "CHEP Cube - Calibration Cube"
     end
 
-    it "extracts description" do
+    it "extracts description" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "designed my own"
     end
 
-    it "extracts image info to check and download" do
+    it "extracts image info to check and download" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:images]).to be true
       expect(deserializer.deserialize[:file_urls]).to include({
         url: "https://storage.googleapis.com/production-thangs-public/uploads/attachments/cd36783e-7120-4b32-850f-00bd9059eff6/Chep%20Cube%20Print.jpg",
         filename: "Chep Cube Print.jpg"
       })
     end
 
-    it "matches existing creator" do
+    it "matches existing creator" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:creator]).to be true
       creator = create(:creator, links_attributes: [{url: "https://thangs.com/designer/CHEP"}])
       expect(deserializer.deserialize[:creator]).to eq creator
     end
@@ -49,6 +53,18 @@ RSpec.describe Integrations::Thangs::ModelDeserializer, :thingiverse_api_key do
         links_attributes: [{url: "https://thangs.com/designer/CHEP"}]
       })
     end
+
+    it "does not import files" do
+      expect(deserializer.capabilities[:model_files]).to be false
+    end
+
+    it "does not extract license" do
+      expect(deserializer.capabilities[:license]).to be false
+    end
+
+    it "does not extract sensitive flag" do
+      expect(deserializer.capabilities[:sensitive]).to be false
+    end
   end
 
   context "with a valid URI" do
@@ -57,7 +73,7 @@ RSpec.describe Integrations::Thangs::ModelDeserializer, :thingiverse_api_key do
     let(:uri) { "https://thangs.com/designer/CHEP/3d-model/CHEP%20Cube%20-%20Calibration%20Cube-29638" }
 
     it "deserializes to a Model" do
-      expect(deserializer.send(:target_class)).to eq Model
+      expect(deserializer.capabilities[:class]).to eq Model
     end
 
     it "is valid for deserialization to Model" do

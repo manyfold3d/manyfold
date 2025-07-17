@@ -15,11 +15,15 @@ class Integrations::MyMiniFactory::CreatorDeserializer < Integrations::MyMiniFac
     }
   end
 
-  private
-
-  def target_class
-    Creator
+  def capabilities
+    {
+      class: Creator,
+      name: true,
+      notes: true
+    }
   end
+
+  private
 
   def valid_path?(path)
     match = /\A\/users\/(#{USERNAME_PATTERN})\Z/o.match(CGI.unescape(path))
