@@ -1,0 +1,29 @@
+<ul class="list-unstyled">
+  <% if collection.remote? %>
+    <% if (creator = collection.federails_actor.extensions["attributedTo"]) %>
+      <li>
+        <%= icon "person", Creator.model_name.human %>
+        <%= link_to creator["name"], creator["url"] %><br>
+      </li>
+    <% end %>
+    <% if (c = collection.federails_actor.extensions["context"]) %>
+      <li>
+        <%= icon "collection", Collection.model_name.human %>
+        <%= link_to c["name"], c["url"] %><br>
+      </li>
+    <% end %>
+  <% else %>
+    <% if collection.creator %>
+      <li>
+        <%= icon "person", Creator.model_name.human %>
+        <%= link_to collection.creator.name, collections_path({creator: collection.creator}.merge(@filters || {})) %><br>
+      </li>
+    <% end %>
+    <% if collection.collection %>
+      <li>
+        <%= icon "collection", Collection.model_name.human %>
+        <%= link_to collection.collection.name, collection, @filters || {} %><br>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
