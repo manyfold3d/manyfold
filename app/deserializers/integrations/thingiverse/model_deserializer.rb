@@ -37,11 +37,4 @@ class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::
     @object_id = match[1] if match.present?
     match.present?
   end
-
-  def creator_attributes(data)
-    return {} if data.nil? || data["public_url"].nil?
-    c = Creator.linked_to(data["public_url"]).first
-    return {creator: c} if c
-    {creator_attributes: Integrations::Thingiverse::CreatorDeserializer.parse(data)}
-  end
 end
