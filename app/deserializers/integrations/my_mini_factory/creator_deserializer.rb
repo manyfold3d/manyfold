@@ -20,6 +20,7 @@ class Integrations::MyMiniFactory::CreatorDeserializer < Integrations::MyMiniFac
     {
       class: Creator,
       name: true,
+      slug: true,
       notes: true
     }
   end

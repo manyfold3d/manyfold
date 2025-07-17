@@ -20,6 +20,7 @@ class Integrations::Thingiverse::CreatorDeserializer < Integrations::Thingiverse
     {
       class: Creator,
       name: true,
+      slug: true,
       notes: true
     }
   end

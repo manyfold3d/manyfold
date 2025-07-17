@@ -28,6 +28,7 @@ class Integrations::Cults3d::CreatorDeserializer < Integrations::Cults3d::BaseDe
     {
       class: Creator,
       name: true,
+      slug: true,
       notes: true
     }
   end

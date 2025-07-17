@@ -12,6 +12,7 @@ class Integrations::Thangs::CreatorDeserializer < Integrations::MyMiniFactory::B
     {
       class: Creator,
       name: true,
+      slug: true,
       notes: true
     }
   end
