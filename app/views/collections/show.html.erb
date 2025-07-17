@@ -35,6 +35,10 @@
         <%= content_tag(:p) { t("general.followers", count: @collection.followers.count) } if SiteSettings.social_enabled? %>
         <p><%= render Components::AccessIndicator.new(object: @collection, text: true) %></p>
       </div>
+      <div class="col col-auto">
+        <%= render "attribution", collection: @collection %>
+        <%= render Components::LinkList.new links: @collection.links %>
+      </div>
     </div>
   </div>
 <% end %>
