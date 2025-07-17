@@ -10,6 +10,7 @@ class Integrations::Thingiverse::CreatorDeserializer < Integrations::Thingiverse
   def self.parse(data)
     {
       name: data["name"],
+      slug: data["name"],
       notes: data["bio"],
       links_attributes: [{url: data["public_url"]}]
     }

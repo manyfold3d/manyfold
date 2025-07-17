@@ -18,6 +18,7 @@ class Integrations::Cults3d::CreatorDeserializer < Integrations::Cults3d::BaseDe
   def self.parse(data)
     {
       name: data&.nick,
+      slug: data&.nick&.parameterize,
       notes: data&.bio,
       links_attributes: [{url: data&.url}]
     }

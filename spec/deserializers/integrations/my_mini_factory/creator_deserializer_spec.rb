@@ -33,6 +33,10 @@ RSpec.describe Integrations::MyMiniFactory::CreatorDeserializer, :mmf_api_key do
       expect(deserializer.deserialize[:name]).to eq "Scan The World"
     end
 
+    it "extracts slug" do
+      expect(deserializer.deserialize[:slug]).to eq "scan-the-world"
+    end
+
     it "extracts bio" do # rubocop:disable RSpec/MultipleExpectations
       expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "cultural artefacts"
