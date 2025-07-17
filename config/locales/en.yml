@@ -647,6 +647,13 @@ en:
     welcome:
       lead: This site is running Manyfold, software for managing and sharing 3D models; here's a quick guide...
       title: Welcome to %{site_name}!
+  imports:
+    create:
+      success: Success
+    new:
+      description: "From some sites, Manyfold can download models for you with just a link! Here's what we can do with the one you've entered:"
+      heading: Import from a link
+      import: Import
   jobs:
     activity:
       collection_published:
