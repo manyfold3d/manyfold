@@ -11,10 +11,12 @@ class Components::LinkList < Components::Base
 
   def view_template
     return if @links.empty?
-    ul class: "links" do
+    ul class: "list-unstyled" do
       @links.each do |link|
         if link.valid?
           li do
+            Icon(icon: "link-45deg")
+            whitespace
             link_to t("sites.%{site}" % {site: link.site}, default: "%{site}" % {site: link.site}), link.url
             if link.deserializer.present? && policy(link.linkable).sync?
               whitespace
