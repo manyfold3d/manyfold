@@ -10,7 +10,7 @@ class CreateObjectFromUrlJob < ApplicationJob
     when "Model"
       Model.create(
         library: Library.default,
-        name: SecureRandom.uuid,
+        name: url.split("://").last,
         path: SecureRandom.uuid,
         links_attributes: [{url: url}]
       )
