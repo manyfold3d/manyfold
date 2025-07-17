@@ -35,11 +35,4 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
     @object_id = match[1] if match.present?
     match.present?
   end
-
-  def creator_attributes(data)
-    return {} if data.nil? || data["profile_url"].nil?
-    c = Creator.linked_to(data["profile_url"]).first
-    return {creator: c} if c
-    {creator_attributes: Integrations::MyMiniFactory::CreatorDeserializer.parse(data)}
-  end
 end

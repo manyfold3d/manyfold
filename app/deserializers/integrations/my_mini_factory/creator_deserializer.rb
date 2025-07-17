@@ -12,7 +12,7 @@ class Integrations::MyMiniFactory::CreatorDeserializer < Integrations::MyMiniFac
       name: data["name"],
       slug: data["username"].parameterize,
       notes: ReverseMarkdown.convert(data["bio"]),
-      links_attributes: [{url: data["profile_url"]}]
+      links_attributes: [{url: data["profile_url"] || "https://www.myminifactory.com/users/#{ERB::Util.u(data["username"])}"}]
     }
   end
 

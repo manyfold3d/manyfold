@@ -30,4 +30,11 @@ class Integrations::Thingiverse::BaseDeserializer < Integrations::BaseDeserializ
     u.to_s
   rescue URI::InvalidURIError
   end
+
+  def creator_attributes(data)
+    return {} if data.nil? || data["public_url"].nil?
+    c = Creator.linked_to(data["public_url"]).first
+    return {creator: c} if c
+    {creator_attributes: Integrations::Thingiverse::CreatorDeserializer.parse(data)}
+  end
 end

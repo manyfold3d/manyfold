@@ -7,14 +7,15 @@ class Integrations::Thingiverse::CollectionDeserializer < Integrations::Thingive
     {
       name: r.body["name"],
       notes: r.body["description"]
-    }
+    }.merge(creator_attributes(r.body["creator"]))
   end
 
   def capabilities
     {
       class: Collection,
       name: true,
-      notes: true
+      notes: true,
+      creator: true
     }
   end
 
