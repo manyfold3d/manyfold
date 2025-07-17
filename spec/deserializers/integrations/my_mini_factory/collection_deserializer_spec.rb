@@ -31,6 +31,19 @@ RSpec.describe Integrations::MyMiniFactory::CollectionDeserializer, :mmf_api_key
     it "does not extract notes" do
       expect(deserializer.capabilities[:notes]).to be false
     end
+
+    it "matches existing creator" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:creator]).to be true
+      creator = create(:creator, links_attributes: [{url: "https://www.myminifactory.com/users/Scan%20The%20World"}])
+      expect(deserializer.deserialize[:creator]).to eq creator
+    end
+
+    it "adds new creator if missing" do
+      expect(deserializer.deserialize[:creator_attributes]).to include({
+        name: "Scan The World",
+        links_attributes: [{url: "https://www.myminifactory.com/users/Scan%20The%20World"}]
+      })
+    end
   end
 
   context "with a valid configuration" do

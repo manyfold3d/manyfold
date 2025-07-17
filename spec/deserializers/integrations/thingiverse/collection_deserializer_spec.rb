@@ -32,6 +32,19 @@ RSpec.describe Integrations::Thingiverse::CollectionDeserializer, :thingiverse_a
       expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "Ender 3 Pro"
     end
+
+    it "matches existing creator" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:creator]).to be true
+      creator = create(:creator, links_attributes: [{url: "https://www.thingiverse.com/floppy_uk"}])
+      expect(deserializer.deserialize[:creator]).to eq creator
+    end
+
+    it "adds new creator if missing" do
+      expect(deserializer.deserialize[:creator_attributes]).to include({
+        name: "floppy_uk",
+        links_attributes: [{url: "https://www.thingiverse.com/floppy_uk"}]
+      })
+    end
   end
 
   context "with a valid configuration" do

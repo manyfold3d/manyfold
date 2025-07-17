@@ -6,14 +6,15 @@ class Integrations::MyMiniFactory::CollectionDeserializer < Integrations::MyMini
     r = fetch "users/#{CGI.escapeURIComponent(@username)}/collections/#{CGI.escapeURIComponent(@collection_slug)}"
     {
       name: r.body["name"]
-    }
+    }.merge(creator_attributes(r.body["owner"]))
   end
 
   def capabilities
     {
       class: Collection,
       name: true,
-      notes: false
+      notes: false,
+      creator: true
     }
   end
 
