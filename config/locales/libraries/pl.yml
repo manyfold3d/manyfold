@@ -18,7 +18,7 @@ pl:
         help: Ustaw tę bibliotekę jako domyślną dla przesyłanych plików
       filesystem_description_html: Aby użyć przestrzeni w lokalnym systemie plików, najpierw upewnij się, że jest on zamontowany jako <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> lub inny wolumin wewnątrz twojego kontenera Dockera, a następnie wprowadź ścieżkę Dockera, a nie ścieżkę na serwerze hosta! Na przykład, jeśli masz folder pełen plików w <code>/mnt/media/3d/models</code> na hoście i powiązałeś <code>/mnt/media/3d</code> z <code>/libraries</code> w konfiguracji Dockera, wymaganą ścieżką będzie <code>/libraries/models</code>.
       icon:
-        help_html: Opcjonalne; wszystkie ikony z <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a> lub <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
+        help_html: Opcjonalne; wszystkie ikony z <a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">Boostrap icons</a> lub <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a>.
         placeholder: boxes
       notes:
         help_html: Opcjonalne; widoczne tylko dla administratorów na stronie ustawień. Możesz używać <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.

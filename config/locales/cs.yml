@@ -273,11 +273,11 @@ cs:
     footer:
       about: O této instanci
       api: API
-      by_html: Navrhl a sestavil <a href="https://floppy.org.uk" target="_blank">James</a> s pomocí <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">našich přispěvatelů</a>.
+      by_html: Navrhl a sestavil <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">James</a> s pomocí <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">našich přispěvatelů</a>.
       community: Připojte se ke komunitě
       instance_heading: Podrobnosti o instanci
       issues: Problémy
-      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> pod <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT licencí</a>.
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> pod <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT licencí</a>.
       powered_by_html: Funguje na <a href="https://manyfold.app">%{name}</a>
       sponsor: Sponzor
       support: Podporovat tuto instanci

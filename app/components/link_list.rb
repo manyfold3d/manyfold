@@ -17,10 +17,10 @@ class Components::LinkList < Components::Base
           li do
             Icon(icon: "link-45deg")
             whitespace
-            link_to t("sites.%{site}" % {site: link.site}, default: "%{site}" % {site: link.site}), link.url
+            link_to t("sites.%{site}" % {site: link.site}, default: "%{site}" % {site: link.site}), link.url, rel: "noreferrer"
             if link.deserializer.present? && policy(link.linkable).sync?
               whitespace
-              link_to({action: "sync", id: link.linkable, link: link.id}, {method: :post, nofollow: true}) do
+              link_to({action: "sync", id: link.linkable, link: link.id}, {method: :post}) do
                 Icon(icon: "arrow-repeat", label: t("components.link_list.sync"))
               end
             end

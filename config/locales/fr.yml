@@ -273,11 +273,11 @@ fr:
     footer:
       about:
       api:
-      by_html: Conçu et réalisé par <a href="https://floppy.org.uk" target="_blank">James</a> avec l'aide de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">nos contributeurs</a>.
+      by_html: Conçu et réalisé par <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">James</a> avec l'aide de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">nos contributeurs</a>.
       community:
       instance_heading:
       issues: Problèmes
-      open_source_html: Open Source sous <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licence MIT.</a>
+      open_source_html: Open Source sous <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">licence MIT.</a>
       powered_by_html:
       sponsor: Sponsor
       support:
