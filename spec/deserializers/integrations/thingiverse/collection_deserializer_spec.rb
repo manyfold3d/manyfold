@@ -45,6 +45,10 @@ RSpec.describe Integrations::Thingiverse::CollectionDeserializer, :thingiverse_a
         links_attributes: [{url: "https://www.thingiverse.com/floppy_uk"}]
       })
     end
+
+    it "gets a list of models" do
+      expect(deserializer.deserialize[:models]).to include("https://www.thingiverse.com/thing:3671545")
+    end
   end
 
   context "with a valid configuration" do
