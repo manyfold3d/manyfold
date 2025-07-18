@@ -17,7 +17,8 @@ class Integrations::Thingiverse::CollectionDeserializer < Integrations::Thingive
       class: Collection,
       name: true,
       notes: true,
-      creator: true
+      creator: true,
+      models: true
     }
   end
 

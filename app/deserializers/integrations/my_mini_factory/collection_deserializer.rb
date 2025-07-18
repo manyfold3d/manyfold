@@ -15,7 +15,8 @@ class Integrations::MyMiniFactory::CollectionDeserializer < Integrations::MyMini
       class: Collection,
       name: true,
       notes: false,
-      creator: true
+      creator: true,
+      models: true
     }
   end
 

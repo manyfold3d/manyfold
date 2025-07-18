@@ -7,8 +7,9 @@ en:
         caption: Caption
         collection: Parent Collection
         indexable: Allow search indexing
+        models: Models
         name: Name
-        notes: Notes
+        notes: Description
       creator:
         ai_indexable: Allow use for AI training
         caption: Tagline

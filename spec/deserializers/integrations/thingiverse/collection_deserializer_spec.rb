@@ -46,7 +46,8 @@ RSpec.describe Integrations::Thingiverse::CollectionDeserializer, :thingiverse_a
       })
     end
 
-    it "gets a list of models" do
+    it "gets a list of models" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:models]).to be true
       expect(deserializer.deserialize[:models]).to include("https://www.thingiverse.com/thing:3671545")
     end
   end

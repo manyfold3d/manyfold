@@ -16,11 +16,15 @@ class UpdateMetadataFromLinkJob < ApplicationJob
       end
     end
     # Update object
-    linkable.update! data.except(:file_urls, :preview_filename)
+    linkable.update! data.except(:file_urls, :preview_filename, :models)
     # Import files for models
     if linkable.is_a? Model
       linkable.organize! if organize
       import_files(data, linkable)
+    end
+    # Import models for collections
+    if linkable.is_a?(Collection) && data[:models]
+      data[:models].each { |it| CreateObjectFromUrlJob.perform_later(url: it, collection_id: linkable.id) }
     end
   end
 
