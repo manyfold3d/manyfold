@@ -12,7 +12,7 @@
           <li class="mb-2"><%= t ".version" %>:
             <%= link_to "#{Rails.application.config.app_version} (#{Rails.application.config.git_sha.first(8)})",
                   "#{Rails.application.config.upstream_repo}/tree/#{Rails.application.config.git_sha}",
-                  target: "_blank", rel: "noopener" %>
+                  target: "_blank", rel: "noreferrer" %>
           </li>
         <% end %>
       </ul>
@@ -22,7 +22,7 @@
       <ul class="list-unstyled">
         <li class="mb-2"><%= link_to t(".about"), about_path %></li>
         <% if SiteSettings.support_link.presence %>
-          <li class="mb-2"><a href="<%= SiteSettings.support_link %>" target="_blank"><%= t ".support" %></a></li>
+          <li class="mb-2"><a href="<%= SiteSettings.support_link %>" target="_blank" rel="noreferrer"><%= t ".support" %></a></li>
         <% end %>
         <li class="mb-2"><%= link_to t(".api"), api_url, rel: "noopener", target: "_blank" %></li>
       </ul>
@@ -30,9 +30,9 @@
     <div class="col-4 col-lg-2 mb-3">
       <h5><%= t "application.title" %></h5>
       <ul class="list-unstyled">
-        <li class="mb-2"><a href="https://github.com/manyfold3d/manyfold/issues/new/choose" target="_blank"><%= t ".issues" %></a></li>
-        <li class="mb-2"><a href="https://manyfold.app/community" target="_blank"><%= t ".community" %></a></li>
-        <li class="mb-2"><a href="https://manyfold.app/donate" target="_blank"><%= t ".sponsor" %></a></li>
+        <li class="mb-2"><a href="https://github.com/manyfold3d/manyfold/issues/new/choose" target="_blank" rel="noreferrer"><%= t ".issues" %></a></li>
+        <li class="mb-2"><a href="https://manyfold.app/community" target="_blank" rel="noreferrer"><%= t ".community" %></a></li>
+        <li class="mb-2"><a href="https://manyfold.app/donate" target="_blank" rel="noreferrer"><%= t ".sponsor" %></a></li>
       </ul>
     </div>
   </div>

@@ -273,11 +273,11 @@ de:
     footer:
       about: Über diese Instanz
       api: Erkunde unsere API
-      by_html: Entworfen und erstellt von <a href="https://floppy.org.uk" target="_blank">James</a> mit Hilfe  <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">unserer Mitwirkenden</a>.
+      by_html: Entworfen und erstellt von <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">James</a> mit Hilfe  <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">unserer Mitwirkenden</a>.
       community: Tritt der Community bei
       instance_heading: Details zur Instanz
       issues: Einen Fehler melden
-      open_source_html: '<a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> unter dieser Lizenz: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT license</a>.'
+      open_source_html: '<a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> unter dieser Lizenz: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT license</a>.'
       powered_by_html: Powered by <a href="https://manyfold.app">%{name}</a>
       sponsor: Entwickler unterstützen
       support: Diese Instanz unterstützen

@@ -273,11 +273,11 @@ ja:
     footer:
       about: このインスタンスについて
       api: APIについて
-      by_html: <a href="https://floppy.org.uk" target="_blank">Jamesが</a>設計し、<a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">我々の貢献者の</a>助けを借りて作り上げました。
+      by_html: <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">Jamesが</a>設計し、<a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">我々の貢献者の</a>助けを借りて作り上げました。
       community: コミュニティに参加する
       instance_heading: インスタンスの詳細
       issues: 問題を報告する
-      open_source_html: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MITライセンスの</a><a href="https://github.com/manyfold3d/manyfold" target="_blank">オープンソース</a>です。
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MITライセンスの</a><a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">オープンソース</a>です。
       powered_by_html: 概要 <a href="https://manyfold.app">[%{name}］</a>
       sponsor: 発明をスポンサー
       support: インスタンスをスポンサー
