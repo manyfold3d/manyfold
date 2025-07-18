@@ -2,7 +2,8 @@ class CreateObjectFromUrlJob < ApplicationJob
   queue_as :low
   unique :until_executed
 
-  def perform(url:)
+  def perform(url:, collection_id: nil)
+    return if Link.find_by(url: url)
     # Get deserializer
     deserializer = Link.deserializer_for(url: url)
     # Create new object
@@ -12,6 +13,7 @@ class CreateObjectFromUrlJob < ApplicationJob
         library: Library.default,
         name: url.split("://").last,
         path: SecureRandom.uuid,
+        collection_id: collection_id,
         links_attributes: [{url: url}]
       )
     when "Creator"

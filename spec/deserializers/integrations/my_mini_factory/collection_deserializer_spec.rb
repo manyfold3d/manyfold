@@ -44,6 +44,11 @@ RSpec.describe Integrations::MyMiniFactory::CollectionDeserializer, :mmf_api_key
         links_attributes: [{url: "https://www.myminifactory.com/users/Scan%20The%20World"}]
       })
     end
+
+    it "gets a list of models" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.capabilities[:models]).to be true
+      expect(deserializer.deserialize[:models]).to include("https://www.myminifactory.com/object/3d-print-sutton-hoo-helmet-26138")
+    end
   end
 
   context "with a valid configuration" do

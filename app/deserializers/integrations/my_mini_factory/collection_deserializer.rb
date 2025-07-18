@@ -5,7 +5,8 @@ class Integrations::MyMiniFactory::CollectionDeserializer < Integrations::MyMini
     return {} unless valid?
     r = fetch "users/#{CGI.escapeURIComponent(@username)}/collections/#{CGI.escapeURIComponent(@collection_slug)}"
     {
-      name: r.body["name"]
+      name: r.body["name"],
+      models: r.body.dig("objects", "items")&.pluck("url")
     }.merge(creator_attributes(r.body["owner"]))
   end
 
@@ -14,7 +15,8 @@ class Integrations::MyMiniFactory::CollectionDeserializer < Integrations::MyMini
       class: Collection,
       name: true,
       notes: false,
-      creator: true
+      creator: true,
+      models: true
     }
   end
 

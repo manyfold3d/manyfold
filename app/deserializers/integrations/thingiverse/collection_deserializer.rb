@@ -4,9 +4,11 @@ class Integrations::Thingiverse::CollectionDeserializer < Integrations::Thingive
   def deserialize
     return {} unless valid?
     r = fetch "collections/#{CGI.escapeURIComponent(@collection_id)}"
+    things = fetch "collections/#{CGI.escapeURIComponent(@collection_id)}/things"
     {
       name: r.body["name"],
-      notes: r.body["description"]
+      notes: r.body["description"],
+      models: things.body.pluck("public_url")
     }.merge(creator_attributes(r.body["creator"]))
   end
 
@@ -15,7 +17,8 @@ class Integrations::Thingiverse::CollectionDeserializer < Integrations::Thingive
       class: Collection,
       name: true,
       notes: true,
-      creator: true
+      creator: true,
+      models: true
     }
   end
 
