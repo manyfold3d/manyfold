@@ -193,7 +193,13 @@ class ModelsController < ApplicationController
 
   def redirect_search
     redirect_to new_follow_path(uri: params[:q]) if params[:q]&.match?(/(@|acct:)?([a-z0-9\-_.]+)@(.*)/)
-    redirect_to new_import_path(url: params[:q]) if params[:q]&.match?(URI::RFC2396_PARSER.make_regexp) && Link.deserializer_for(url: params[:q])
+    if params[:q]&.match?(URI::RFC2396_PARSER.make_regexp)
+      if (link = Link.find_by(url: params[:q]))
+        redirect_to link.linkable
+      elsif Link.deserializer_for(url: params[:q])
+        redirect_to new_import_path(url: params[:q])
+      end
+    end
   end
 
   def generate_available_tag_list
