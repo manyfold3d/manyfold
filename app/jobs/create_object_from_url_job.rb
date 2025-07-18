@@ -3,6 +3,7 @@ class CreateObjectFromUrlJob < ApplicationJob
   unique :until_executed
 
   def perform(url:)
+    return if Link.find_by(url: url)
     # Get deserializer
     deserializer = Link.deserializer_for(url: url)
     # Create new object
