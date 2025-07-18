@@ -28,7 +28,7 @@ class Integrations::Cults3d::ModelDeserializer < Integrations::Cults3d::BaseDese
     {
       name: result.data&.creation&.name,
       notes: result.data&.creation&.description,
-      tag_list: result.data&.creation&.tags,
+      tag_list: result.data&.creation&.tags.to_a,
       sensitive: result.data&.creation&.safe == false,
       file_urls: result.data&.creation&.illustrations&.map { |it| {url: it.image_url.split("()/").last, filename: filename_from_url(it.image_url.split("()/").last)} },
       preview_filename: filename_from_url(result.data&.creation&.illustration_image_url),
