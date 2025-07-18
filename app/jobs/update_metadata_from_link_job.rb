@@ -20,17 +20,17 @@ class UpdateMetadataFromLinkJob < ApplicationJob
     # Import files for models
     if linkable.is_a? Model
       linkable.organize! if organize
-      import_files(data)
+      import_files(data, linkable)
     end
   end
 
-  def import_files(data)
+  def import_files(data, model)
     data.dig(:file_urls)&.each do |it|
-      linkable.add_file_from_url(url: it[:url], filename: it[:filename])
+      model.add_file_from_url(url: it[:url], filename: it[:filename])
     rescue ActiveRecord::RecordInvalid
-      Rails.logger.info("Couldn't add file #{it[:url]} to model #{linkable.to_param}")
+      Rails.logger.info("Couldn't add file #{it[:url]} to model #{model.to_param}")
     end
     # Select preview file
-    linkable.update!(preview_file: linkable.model_files.find_by(filename: data[:preview_filename])) if data[:preview_filename].present?
+    model.update!(preview_file: model.model_files.find_by(filename: data[:preview_filename])) if data[:preview_filename].present?
   end
 end
