@@ -2,6 +2,8 @@ require "shrine/storage/file_system"
 require "shrine/storage/s3"
 require "shrine/storage/tus"
 
+require "image_processing/mini_magick"
+
 class LibraryUploader < Shrine
   plugin :activerecord
   plugin :add_metadata
