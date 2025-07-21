@@ -36,7 +36,7 @@ class LibraryUploader < Shrine
 
   def generate_location(io, record: nil, derivative: nil, metadata: {}, **)
     return super unless record&.valid?
-    record.path_within_library
+    record.path_within_library(derivative: derivative)
   end
 
   add_metadata :ctime do |io|
