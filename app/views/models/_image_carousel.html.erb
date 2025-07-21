@@ -15,7 +15,7 @@
     <div id="imageCarouselInner" class="carousel-inner" aria-atomic="false" aria-live="off">
       <% images.each_with_index do |image, index| %>
         <div class="carousel-item <%= "active" if index == 0 %>" role="group" aria-roledescription="slide" aria-label="<%= translate ".slide_label", index: (index + 1), count: images.count, name: image.name %>">
-          <%= image_tag model_model_file_path(@model, image, format: image.extension), alt: image.name, class: "d-block w-100 carousel" %>
+          <%= image_tag model_model_file_path(@model, image, format: image.extension, derivative: "carousel"), alt: image.name, class: "d-block w-100 carousel" %>
           <div class="carousel-caption d-none d-md-block">
             <% if @model.preview_file != image && policy(image).edit? %>
               <%= form_with model: @model, class: "d-inline" do |form| %>
