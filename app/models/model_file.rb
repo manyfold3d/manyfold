@@ -234,8 +234,8 @@ class ModelFile < ApplicationRecord
       url,
       downloader: {
         headers: {
-          "If-None-Match" => attachment.metadata["remote_etag"],
-          "If-Modified-Since" => attachment.metadata["remote_last_modified"]
+          "If-None-Match" => attachment&.metadata&.dig("remote_etag"),
+          "If-Modified-Since" => attachment&.metadata&.dig("remote_last_modified")
         }.compact
       }
     )

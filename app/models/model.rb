@@ -150,6 +150,7 @@ class Model < ApplicationRecord
     uri = URI.parse(url)
     file = model_files.find_or_create_by(filename: filename)
     file.update_from_url!(url: uri.to_s)
+    file
   rescue URI::InvalidURIError
   end
 

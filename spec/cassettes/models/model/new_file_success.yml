@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://raw.githubusercontent.com/Buildbee/example-stl/refs/heads/main/binary_cube.stl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Down/5.4.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '684'
+      Cache-Control:
+      - max-age=300
+      Content-Security-Policy:
+      - default-src 'none'; style-src 'unsafe-inline'; sandbox
+      Content-Type:
+      - application/octet-stream
+      Etag:
+      - W/"357a8d67199ae2dcd1933fbd1fbd0bcee7b6a1aa26f284333e7e09a7f0248ab4"
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Github-Request-Id:
+      - 126B:348A08:5E097:D68BC:687E294B
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Mon, 21 Jul 2025 12:08:29 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-lcy-egml8630028-LCY
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1753099710.846136,VS0,VE98
+      Vary:
+      - Authorization,Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Cross-Origin-Resource-Policy:
+      - cross-origin
+      X-Fastly-Request-Id:
+      - 44643d0b52a65398b8da4b146603ce48d9026a59
+      Expires:
+      - Mon, 21 Jul 2025 12:13:29 GMT
+      Source-Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        Q09MT1I9f39/IE1BVEVSSUFMPX9/fyB/f38gf39/ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAMAAAAAACAvwAAAAAAAAAAAAAgwQAAIMEAAAAAAAAgwQAAIEEAAKBBAAAgwQAAIEEAAAAAAAAAAAAAAAAAAAAAgD8AACDBAAAgwQAAoEEAACBBAAAgwQAAoEEAACBBAAAgQQAAoEEAAAAAAAAAAAAAAACAPwAAIMEAACDBAACgQQAAIEEAACBBAACgQQAAIMEAACBBAACgQQAAAACAPwAAAAAAAAAAAAAgQQAAIMEAAAAAAAAgQQAAIEEAAAAAAAAgQQAAIMEAAKBBAAAAAAAAAACAPwAAAAAAACDBAAAgQQAAAAAAACBBAAAgQQAAoEEAACBBAAAgQQAAAAAAAAAAAAAAAAAAAACAvwAAIMEAACDBAAAAAAAAIMEAACBBAAAAAAAAIEEAACBBAAAAAAAAAACAvwAAAAAAAAAAAAAgwQAAIMEAAAAAAAAgwQAAIMEAAKBBAAAgwQAAIEEAAKBBAAAAAAAAAACAvwAAAAAAACDBAAAgwQAAAAAAACBBAAAgwQAAAAAAACDBAAAgwQAAoEEAAAAAAAAAAIC/AAAAAAAAIEEAACDBAAAAAAAAIEEAACDBAACgQQAAIMEAACDBAACgQQAAAAAAAAAAAAAAAIC/AAAgwQAAIMEAAAAAAAAgQQAAIEEAAAAAAAAgQQAAIMEAAAAAAAAAAIA/AAAAAAAAAIAAACBBAAAgQQAAAAAAACBBAAAgQQAAoEEAACBBAAAgwQAAoEEAAAAAAAAAAIA/AAAAAAAAIMEAACBBAAAAAAAAIMEAACBBAACgQQAAIEEAACBBAACgQQAA
+  recorded_at: Mon, 21 Jul 2025 12:08:29 GMT
+recorded_with: VCR 6.3.1

@@ -788,4 +788,30 @@ RSpec.describe Model do
       }.to have_enqueued_job(Activity::ModelUpdatedJob).once
     end
   end
+
+  context "when downloading remote files", :thingiverse_api_key, :vcr do
+    let(:model) { create(:model) }
+
+    context "without an existing file", vcr: {cassette_name: "models/model/new_file_success"} do
+      let(:add_new_file) {
+        model.create_or_update_file_from_url(
+          url: "https://raw.githubusercontent.com/Buildbee/example-stl/refs/heads/main/binary_cube.stl",
+          filename: "binary_cube.stl"
+        )
+      }
+
+      it "adds a new file" do
+        expect { add_new_file }.to change(model.model_files, :count).by(1)
+      end
+
+      it "stores ETag" do
+        file = add_new_file
+        expect(file.attachment.metadata["remote_etag"]).to eq "W/\"357a8d67199ae2dcd1933fbd1fbd0bcee7b6a1aa26f284333e7e09a7f0248ab4\""
+      end
+
+      it "updated changed time on model" do
+        expect { add_new_file }.to change(model, :updated_at)
+      end
+    end
+  end
 end
