@@ -15,6 +15,7 @@ class LibraryUploader < Shrine
   plugin :tus
   plugin :remote_url, max_size: SiteSettings.max_file_upload_size
   plugin :infer_extension
+  plugin :derivatives
 
   self.storages = {
     cache: Shrine::Storage::FileSystem.new("tmp/shrine"),
@@ -56,5 +57,9 @@ class LibraryUploader < Shrine
   add_metadata :remote_last_modified do |io|
     io.meta["last-modified"]
   rescue NoMethodError
+  end
+
+  Attacher.derivatives do |original|
+    {}
   end
 end
