@@ -9,7 +9,7 @@ class Integrations::Thangs::BaseDeserializer < Integrations::BaseDeserializer
   private
 
   def api_configured?
-    true
+    false
   end
 
   def fetch(api_url)

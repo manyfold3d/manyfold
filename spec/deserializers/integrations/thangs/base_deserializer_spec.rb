@@ -5,6 +5,7 @@ RSpec.describe Integrations::Thangs::BaseDeserializer, :thingiverse_api_key do
     let(:canonical) { "https://thangs.com/designer/CHEP" }
 
     it "validates URI" do
+      pending "Disabled until we have clarity on API usage"
       deserializer = described_class.new(uri: canonical)
       expect(deserializer).to be_valid
     end
