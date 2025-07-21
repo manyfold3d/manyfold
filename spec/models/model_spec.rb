@@ -813,5 +813,64 @@ RSpec.describe Model do
         expect { add_new_file }.to change(model, :updated_at)
       end
     end
+
+    context "with an existing file, unchanged on remote", vcr: {cassette_name: "models/model/unchanged_file_success"} do
+      let(:update_file) {
+        model.create_or_update_file_from_url(
+          url: "https://raw.githubusercontent.com/Buildbee/example-stl/refs/heads/main/binary_cube.stl",
+          filename: "binary_cube.stl"
+        )
+      }
+
+      before do
+        file = create(:model_file, model: model, filename: "binary_cube.stl")
+        file.attachment_attacher.add_metadata("remote_etag" => "W/\"357a8d67199ae2dcd1933fbd1fbd0bcee7b6a1aa26f284333e7e09a7f0248ab4\"")
+        file.save!
+      end
+
+      it "doesn't add a new file" do
+        expect { update_file }.not_to change(model.model_files, :count)
+      end
+
+      it "doesn't change the file" do
+        expect { update_file }.not_to change(model.model_files.first, :updated_at)
+      end
+
+      it "doesn't change the model" do
+        expect { update_file }.not_to change(model, :updated_at)
+      end
+    end
+
+    context "with an existing file, changed on remote", vcr: {cassette_name: "models/model/changed_file_success"} do
+      let(:update_file) {
+        model.create_or_update_file_from_url(
+          url: "https://raw.githubusercontent.com/Buildbee/example-stl/refs/heads/main/binary_cube.stl",
+          filename: "binary_cube.stl"
+        )
+      }
+
+      before do
+        file = create(:model_file, model: model, filename: "binary_cube.stl")
+        file.attachment_attacher.add_metadata("remote_etag" => "W/\"outdated_etag\"")
+        file.save!
+      end
+
+      it "doesn't add a new file" do
+        expect { update_file }.not_to change(model.model_files, :count)
+      end
+
+      it "does change the file" do
+        expect { update_file }.not_to change(model.model_files.first, :updated_at)
+      end
+
+      it "does change the model" do
+        expect { update_file }.not_to change(model, :updated_at)
+      end
+
+      it "stores the new etag" do
+        file = update_file
+        expect(file.attachment.metadata["remote_etag"]).to eq "W/\"357a8d67199ae2dcd1933fbd1fbd0bcee7b6a1aa26f284333e7e09a7f0248ab4\""
+      end
+    end
   end
 end
