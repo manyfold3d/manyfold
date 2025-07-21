@@ -146,10 +146,10 @@ class Model < ApplicationRecord
     end
   end
 
-  def add_file_from_url(url:, filename:)
+  def create_or_update_file_from_url(url:, filename:)
     uri = URI.parse(url)
-    if model_files.exists?(filename: filename)
-      Rails.logger.info("Not downloading file #{filename} in model #{to_param}, already exists")
+    if (file = model_files.find_by(filename: filename))
+      file.update_from_url!(url: url)
     else
       model_files.create!(filename: filename, attachment_remote_url: uri.to_s)
     end
