@@ -148,11 +148,8 @@ class Model < ApplicationRecord
 
   def create_or_update_file_from_url(url:, filename:)
     uri = URI.parse(url)
-    if (file = model_files.find_by(filename: filename))
-      file.update_from_url!(url: url)
-    else
-      model_files.create!(filename: filename, attachment_remote_url: uri.to_s)
-    end
+    file = model_files.find_or_create_by(filename: filename)
+    file.update_from_url!(url: uri.to_s)
   rescue URI::InvalidURIError
   end
 
