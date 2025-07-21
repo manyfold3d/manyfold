@@ -229,6 +229,18 @@ class ModelFile < ApplicationRecord
     created_at
   end
 
+  def update_from_url!(url:)
+    attachment_attacher.assign_remote_url(
+      url,
+      downloader: {
+        headers: {
+          "If-None-Match" => attachment&.metadata&.dig("remote_etag"),
+          "If-Modified-Since" => attachment&.metadata&.dig("remote_last_modified")
+        }.compact
+      }
+    )
+  end
+
   private
 
   def rescan_duplicates

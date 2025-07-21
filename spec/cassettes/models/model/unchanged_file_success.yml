@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://raw.githubusercontent.com/Buildbee/example-stl/refs/heads/main/binary_cube.stl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Down/5.4.2
+      If-None-Match:
+      - W/"357a8d67199ae2dcd1933fbd1fbd0bcee7b6a1aa26f284333e7e09a7f0248ab4"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 304
+      message: Not Modified
+    headers:
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 21 Jul 2025 12:33:49 GMT
+      Via:
+      - 1.1 varnish
+      Cache-Control:
+      - max-age=300
+      Etag:
+      - W/"357a8d67199ae2dcd1933fbd1fbd0bcee7b6a1aa26f284333e7e09a7f0248ab4"
+      X-Served-By:
+      - cache-lcy-egml8630038-LCY
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1753101229.162513,VS0,VE1
+      Vary:
+      - Authorization,Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Cross-Origin-Resource-Policy:
+      - cross-origin
+      X-Fastly-Request-Id:
+      - 6c987c80d82270d4e46fd82354100633db11e809
+      Expires:
+      - Mon, 21 Jul 2025 12:38:49 GMT
+      Source-Age:
+      - '25'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 21 Jul 2025 12:33:49 GMT
+recorded_with: VCR 6.3.1

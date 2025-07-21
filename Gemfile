@@ -208,3 +208,5 @@ gem "altcha-rails", "~> 0.0.6"
 gem "reverse_markdown", "~> 3.0"
 
 gem "graphlient", "~> 0.8.0"
+
+gem "webmock", "~> 3.25", group: :test

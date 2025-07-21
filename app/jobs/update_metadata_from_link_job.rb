@@ -30,7 +30,7 @@ class UpdateMetadataFromLinkJob < ApplicationJob
 
   def import_files(data, model)
     data.dig(:file_urls)&.each do |it|
-      model.add_file_from_url(url: it[:url], filename: it[:filename])
+      model.create_or_update_file_from_url(url: it[:url], filename: it[:filename])
     rescue ActiveRecord::RecordInvalid
       Rails.logger.info("Couldn't add file #{it[:url]} to model #{model.to_param}")
     end

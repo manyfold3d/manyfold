@@ -47,4 +47,14 @@ class LibraryUploader < Shrine
     Shrine.with_file(io) { |it| it.mtime }
   rescue NoMethodError
   end
+
+  add_metadata :remote_etag do |io|
+    io.meta["etag"]
+  rescue NoMethodError
+  end
+
+  add_metadata :remote_last_modified do |io|
+    io.meta["last-modified"]
+  rescue NoMethodError
+  end
 end
