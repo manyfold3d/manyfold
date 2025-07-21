@@ -20,5 +20,15 @@
       <small><%= t(".expiry.help") %></small>
     </div>
   </div>
+  <hr>
+  <h4><%= t ".derivatives.heading" %></h4>
+  <p><%= t ".derivatives.description" %></p>
+  <div class="row mb-2">
+    <%= form.label nil, t(".derivatives.images.label"), for: "downloads[image_derivatives]", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8 form-check form-switch">
+      <%= form.check_box "downloads[image_derivatives]", checked: SiteSettings.generate_image_derivatives, class: "form-check-input" %>
+      <small><%= t(".derivatives.images.help") %></small>
+    </div>
+  </div>
   <%= render "submit", form: form %>
 <% end %>

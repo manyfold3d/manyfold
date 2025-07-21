@@ -62,7 +62,7 @@ class LibraryUploader < Shrine
   end
 
   Attacher.derivatives do |original|
-    if context[:record]&.is_image?
+    if SiteSettings.generate_image_derivatives && context[:record]&.is_image?
       magick = ImageProcessing::MiniMagick.source(original)
       {
         preview: magick.resize_to_limit!(320, 320),
