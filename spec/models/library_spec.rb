@@ -117,6 +117,28 @@ RSpec.describe Library do
     end
   end
 
+  context "when listing a folder with manyfold-specific data in" do
+    around do |ex|
+      MockDirectory.create([
+        "3d/model/part_1.png",
+        "3d/model/.manyfold/derivatives/part_1.png/preview.png"
+      ]) do |path|
+        @library_path = path + "/3d"
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    it "lists valid files" do
+      expect(library.list_files("**/*")).to include "model/part_1.png"
+    end
+
+    it "ignores manyfold-specific files" do
+      expect(library.list_files("**/*")).not_to include "model/.manyfold/derivatives/part_1.png/preview.png"
+    end
+  end
+
   it "is valid if path can be created" do # rubocop:todo RSpec/MultipleExpectations
     library = build(:library, path: "/tmp/libraries/subdirectory", create_path_if_not_on_disk: "1")
     expect(library).to be_valid

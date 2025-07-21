@@ -6,7 +6,8 @@ RSpec.describe Scan::Model::AddNewFilesJob do
     around do |ex|
       MockDirectory.create([
         "model_one/part_1.lys",
-        "model_one/part_2.obj"
+        "model_one/part_2.obj",
+        "model_one/.manyfold/derivatives/part_2.obj/stream.glb"
       ]) do |path|
         @library_path = path
         ex.run
@@ -21,7 +22,13 @@ RSpec.describe Scan::Model::AddNewFilesJob do
 
     it "detects model files" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(2)
-      expect(model.model_files.map(&:filename).sort).to eq ["part_1.lys", "part_2.obj"].sort
+      expect(model.model_files.pluck(:filename)).to include "part_1.lys"
+      expect(model.model_files.pluck(:filename)).to include "part_2.obj"
+    end
+
+    it "ignores derivatives" do
+      described_class.perform_now(model.id)
+      expect(model.model_files.pluck(:filename)).not_to include "stream.glb"
     end
 
     it "queues up individual file metadata parsing" do
