@@ -569,7 +569,7 @@ GEM
       forwardable
       singleton
     prism (1.4.0)
-    propshaft (1.2.0)
+    propshaft (1.2.1)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
