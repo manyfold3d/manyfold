@@ -230,7 +230,7 @@ class ModelFile < ApplicationRecord
   end
 
   def update_from_url!(url:)
-    attachment_attacher.assign_remote_url(
+    save! if attachment_attacher.assign_remote_url(
       url,
       downloader: {
         headers: {
