@@ -801,7 +801,7 @@ RSpec.describe Model do
       }
 
       it "adds a new file" do
-        expect { add_new_file }.to change(model.model_files, :count).by(1)
+        expect { add_new_file }.to change { model.model_files.count }.by(1)
       end
 
       it "stores ETag" do
@@ -829,11 +829,11 @@ RSpec.describe Model do
       end
 
       it "doesn't add a new file" do
-        expect { update_file }.not_to change(model.model_files, :count)
+        expect { update_file }.not_to change { model.model_files.count }
       end
 
       it "doesn't change the file" do
-        expect { update_file }.not_to change(model.model_files.first, :updated_at)
+        expect { update_file }.not_to change { model.model_files.first.updated_at }
       end
 
       it "doesn't change the model" do
@@ -850,21 +850,21 @@ RSpec.describe Model do
       }
 
       before do
-        file = create(:model_file, model: model, filename: "binary_cube.stl")
+        file = create(:model_file, model: model, filename: "binary_cube.stl", created_at: 1.week.ago, updated_at: 1.week.ago)
         file.attachment_attacher.add_metadata("remote_etag" => "W/\"outdated_etag\"")
-        file.save!
+        file.save!(touch: false)
       end
 
       it "doesn't add a new file" do
-        expect { update_file }.not_to change(model.model_files, :count)
+        expect { update_file }.not_to change { model.model_files.count }
       end
 
       it "does change the file" do
-        expect { update_file }.not_to change(model.model_files.first, :updated_at)
+        expect { update_file }.to change { model.model_files.first.updated_at }
       end
 
       it "does change the model" do
-        expect { update_file }.not_to change(model, :updated_at)
+        expect { update_file }.to change(model, :updated_at)
       end
 
       it "stores the new etag" do
