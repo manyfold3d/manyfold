@@ -10,8 +10,8 @@ class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::
       tag_list: r.body["tags"]&.pluck("tag"),
       sensitive: r.body["is_nsfw"],
       file_urls:
-        r.body.dig("zip_data", "images").map { |it| {url: it.dig("url"), filename: "images/" + filename_from_url(it.dig("url"))} } +
-          r.body.dig("zip_data", "files").map { |it| {url: it.dig("url"), filename: "files/" + filename_from_url(it.dig("url"))} },
+        r.body.dig("zip_data", "images").map { |it| {url: it.dig("url"), filename: "images/" + it.dig("name")} } +
+          r.body.dig("zip_data", "files").map { |it| {url: it.dig("url"), filename: "files/" + it.dig("name")} },
       preview_filename: "images/" + r.body.dig("default_image", "name")
     }.merge(creator_attributes(r.body["creator"]))
   end
