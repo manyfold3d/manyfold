@@ -1,66 +1,53 @@
 <form action="<%= problems_path %>" method="GET">
-
-  <div class="accordion accordion-flush mb-2">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button <%= "collapsed" unless @filters_applied %>" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-controls="filters">
-          <%= icon("filter", t(".title")) %>
-          <%= t ".title" %>
-        </button>
-      </h2>
-      <div id="filters" class="accordion-collapse collapse <%= "show" if @filters_applied %>">
-        <div class="accordion-body">
-          <div class="row mb-2">
-            <div class="col col-sm-6 col-md-4">
-              <label><%= Problem.human_attribute_name :category %></label>
-              <select name="category[]" class="form-select" multiple=true>
-                <% Problem::CATEGORIES # rubocop:disable Pundit/UsePolicyScope
-                     .select { |it| Problem::DEFAULT_SEVERITIES[it].present? }
-                     .select { |it| current_user.problem_severity(it) != :silent }
-                     .each do |cat| %>
-                  <option
-                    value="<%= cat %>"
-                    <%= "selected" if params[:category]&.include?(cat.to_s) %>><%= t("problems.categories.%{cat}" % {cat: cat}) %></option>
-                <% end %>
-              </select>
-            </div>
-            <div class="col col-sm-auto col-md-4">
-              <label><%= Problem.human_attribute_name :severity %></label>
-              <select name="severity[]" class="form-select" multiple=true>
-                <% (Problem::SEVERITIES - [:silent]).each do |sev| %>
-                  <option
-                    value="<%= sev %>"
-                    <%= "selected" if params[:severity]&.include?(sev.to_s) %>><%= t("problems.severities.%{sev}" % {sev: sev}) %></option>
-                <% end %>
-              </select>
-            </div>
-            <div class="col col-sm-auto col-md-4">
-              <label><%= Problem.human_attribute_name :problematic_type %></label>
-              <select name="type[]" class="form-select" multiple=true>
-                <option value="<%= Model.model_name.param_key %>"
-                  <%= "selected" if params[:type]&.include?(Model.model_name.param_key) %>><%= Model.model_name.human %></option>
-                <option value="<%= ModelFile.model_name.param_key %>"
-                  <%= "selected" if params[:type]&.include?(ModelFile.model_name.param_key) %>><%= ModelFile.model_name.human %></option>
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" name="show_ignored" value="true"
-                  <%= "checked" if params[:show_ignored] == "true" %>>
-                <label class="form-check-label" for="show_ignored">
-                  <%= t(".show_ignored") %>
-                </label>
-              </div>
-            </div>
-            <div class="col text-end">
-              <button type="submit" class="btn btn-primary"><%= t ".apply_filters" %></button>
-              <a href='/problems' class="btn btn-secondary"><%= t ".clear_filters" %></a>
-            </div>
-          </div>
-        </div>
+  <%= render Components::Accordion.new(title: safe_join([icon("filter", t(".title")), t(".title")], " "), id: "filters", open: @filters_applied) do %>
+    <div class="row mb-2">
+      <div class="col col-sm-6 col-md-4">
+        <label><%= Problem.human_attribute_name :category %></label>
+        <select name="category[]" class="form-select" multiple=true>
+          <% Problem::CATEGORIES # rubocop:disable Pundit/UsePolicyScope
+               .select { |it| Problem::DEFAULT_SEVERITIES[it].present? }
+               .select { |it| current_user.problem_severity(it) != :silent }
+               .each do |cat| %>
+            <option
+              value="<%= cat %>"
+              <%= "selected" if params[:category]&.include?(cat.to_s) %>><%= t("problems.categories.%{cat}" % {cat: cat}) %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="col col-sm-auto col-md-4">
+        <label><%= Problem.human_attribute_name :severity %></label>
+        <select name="severity[]" class="form-select" multiple=true>
+          <% (Problem::SEVERITIES - [:silent]).each do |sev| %>
+            <option
+              value="<%= sev %>"
+              <%= "selected" if params[:severity]&.include?(sev.to_s) %>><%= t("problems.severities.%{sev}" % {sev: sev}) %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="col col-sm-auto col-md-4">
+        <label><%= Problem.human_attribute_name :problematic_type %></label>
+        <select name="type[]" class="form-select" multiple=true>
+          <option value="<%= Model.model_name.param_key %>"
+            <%= "selected" if params[:type]&.include?(Model.model_name.param_key) %>><%= Model.model_name.human %></option>
+          <option value="<%= ModelFile.model_name.param_key %>"
+            <%= "selected" if params[:type]&.include?(ModelFile.model_name.param_key) %>><%= ModelFile.model_name.human %></option>
+        </select>
       </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" name="show_ignored" value="true"
+            <%= "checked" if params[:show_ignored] == "true" %>>
+          <label class="form-check-label" for="show_ignored">
+            <%= t(".show_ignored") %>
+          </label>
+        </div>
+      </div>
+      <div class="col text-end">
+        <button type="submit" class="btn btn-primary"><%= t ".apply_filters" %></button>
+        <a href='/problems' class="btn btn-secondary"><%= t ".clear_filters" %></a>
+      </div>
+    </div>
+  <% end %>
 </form>
