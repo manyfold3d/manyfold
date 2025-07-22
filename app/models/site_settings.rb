@@ -38,6 +38,7 @@ class SiteSettings < RailsSettings::Base
 
   field :pregenerate_downloads, type: :boolean, default: false
   field :download_expiry_time_in_hours, type: :integer, default: 24
+  field :generate_image_derivatives, type: :boolean, default: false
 
   field :allow_robots, type: :boolean, default: false
   field :allow_ai_bots, type: :boolean, default: false

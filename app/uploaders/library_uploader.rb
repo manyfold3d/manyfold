@@ -2,6 +2,8 @@ require "shrine/storage/file_system"
 require "shrine/storage/s3"
 require "shrine/storage/tus"
 
+require "image_processing/mini_magick"
+
 class LibraryUploader < Shrine
   plugin :activerecord
   plugin :add_metadata
@@ -15,6 +17,7 @@ class LibraryUploader < Shrine
   plugin :tus
   plugin :remote_url, max_size: SiteSettings.max_file_upload_size
   plugin :infer_extension
+  plugin :derivatives
 
   self.storages = {
     cache: Shrine::Storage::FileSystem.new("tmp/shrine"),
@@ -35,7 +38,7 @@ class LibraryUploader < Shrine
 
   def generate_location(io, record: nil, derivative: nil, metadata: {}, **)
     return super unless record&.valid?
-    record.path_within_library
+    record.path_within_library(derivative: derivative)
   end
 
   add_metadata :ctime do |io|
@@ -56,5 +59,17 @@ class LibraryUploader < Shrine
   add_metadata :remote_last_modified do |io|
     io.meta["last-modified"]
   rescue NoMethodError
+  end
+
+  Attacher.derivatives do |original|
+    if SiteSettings.generate_image_derivatives && context[:record]&.is_image?
+      magick = ImageProcessing::MiniMagick.source(original)
+      {
+        preview: magick.resize_to_limit!(320, 320),
+        carousel: magick.resize_to_limit!(1024, 768)
+      }
+    else
+      {}
+    end
   end
 end

@@ -65,7 +65,6 @@ group :development, :test do
   # system tests and custom screenshots
   gem "capybara"
   gem "capybara-screenshot", github: "el-cms/capybara-screenshot", branch: "custom-prefixes"
-  gem "image_processing"
   gem "selenium-webdriver"
 end
 
@@ -210,3 +209,5 @@ gem "reverse_markdown", "~> 3.0"
 gem "graphlient", "~> 0.8.0"
 
 gem "webmock", "~> 3.25", group: :test
+
+gem "image_processing"

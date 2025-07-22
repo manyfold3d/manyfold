@@ -100,8 +100,10 @@ class ModelFile < ApplicationRecord
     basename.humanize.careful_titleize
   end
 
-  def path_within_library
-    File.join(model.path, filename)
+  def path_within_library(derivative: nil)
+    derivative ?
+      File.join(model.path, ".manyfold", "derivatives", filename, "#{derivative}.#{extension}") :
+      File.join(model.path, filename)
   end
 
   def attach_existing_file!(refresh: true, skip_validations: false)

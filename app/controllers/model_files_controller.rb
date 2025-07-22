@@ -24,7 +24,7 @@ class ModelFilesController < ApplicationController
         format.html
         format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelFileSerializer.new(@file).serialize }
         format.any(*SupportedMimeTypes.indexable_types.map(&:to_sym)) do
-          send_file_content disposition: (params[:download] == "true") ? :attachment : :inline
+          send_file_content derivative: params[:derivative], disposition: (params[:download] == "true") ? :attachment : :inline
         end
       end
     end
@@ -126,11 +126,12 @@ class ModelFilesController < ApplicationController
 
   private
 
-  def send_file_content(disposition: :attachment)
+  def send_file_content(disposition: :attachment, derivative: nil)
+    attachment = @file.attachment(derivative) || @file.attachment
     # Check if we can send a direct URL
-    redirect_to(@file.attachment.url, allow_other_host: true) if /https?:\/\//.match?(@file.attachment.url)
+    redirect_to(attachment.url, allow_other_host: true) if /https?:\/\//.match?(attachment.url)
     # Otherwise provide a direct download
-    status, headers, body = @file.attachment.to_rack_response(disposition: disposition)
+    status, headers, body = attachment.to_rack_response(disposition: disposition)
     self.status = status
     self.headers.merge!(headers)
     self.response_body = body

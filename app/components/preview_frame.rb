@@ -22,7 +22,7 @@ class Components::PreviewFrame < Components::Base
 
   def local
     if @file.is_image?
-      image model_model_file_path(@file.model, @file, format: @file.extension), @file.name
+      image model_model_file_path(@file.model, @file, format: @file.extension, derivative: "preview"), @file.name
     elsif @file.is_renderable?
       div class: "card-img-top #{"sensitive" if needs_hiding?(@object)}" do
         Renderer file: @file

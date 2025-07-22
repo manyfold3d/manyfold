@@ -15,7 +15,8 @@ RUN apk add --no-cache \
   npm \
   postgresql-dev \
   mariadb-dev \
-  libarchive
+  libarchive \
+  imagemagick
 
 COPY package.json .
 COPY yarn.lock .
