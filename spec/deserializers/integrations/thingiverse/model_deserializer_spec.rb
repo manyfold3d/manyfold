@@ -18,7 +18,7 @@ RSpec.describe Integrations::Thingiverse::ModelDeserializer, :thingiverse_api_ke
     end
   end
 
-  context "when pulling data from MMF API", vcr: {cassette_name: "Integrations_Thingiverse_ModelDeserializer/success"} do
+  context "when pulling data from API", vcr: {cassette_name: "Integrations_Thingiverse_ModelDeserializer/success"} do
     subject(:deserializer) { described_class.new(uri: uri) }
 
     let(:uri) { "https://www.thingiverse.com/thing:4049220" }
@@ -78,6 +78,30 @@ RSpec.describe Integrations::Thingiverse::ModelDeserializer, :thingiverse_api_ke
 
     it "does not extract license" do
       expect(deserializer.capabilities[:license]).to be false
+    end
+  end
+
+  context "when pulling data from API with alternate file organisation", vcr: {cassette_name: "Integrations_Thingiverse_ModelDeserializer/alt_success"} do
+    subject(:deserializer) { described_class.new(uri: uri) }
+
+    let(:uri) { "https://www.thingiverse.com/thing:5993539" }
+
+    it "extracts image file info" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.deserialize[:file_urls]).to include({
+        url: "https://cdn.thingiverse.com/assets/d7/ce/a5/fb/aa/4a45092e-4832-4b2b-91f9-e99793b0f2f4.png",
+        filename: "images/4a45092e-4832-4b2b-91f9-e99793b0f2f4.png"
+      })
+    end
+
+    it "extracts preview filename" do
+      expect(deserializer.deserialize[:preview_filename]).to eq "images/4a45092e-4832-4b2b-91f9-e99793b0f2f4.png"
+    end
+
+    it "extracts 3d file info to check and download" do # rubocop:disable RSpec/MultipleExpectations
+      expect(deserializer.deserialize[:file_urls]).to include({
+        url: "https://cdn.thingiverse.com/assets/29/08/99/88/05/4a45092e-4832-4b2b-91f9-e99793b0f2f4.stl",
+        filename: "files/My_Modded_BLtouch_Mount.stl"
+      })
     end
   end
 
