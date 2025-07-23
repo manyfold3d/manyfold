@@ -38,7 +38,7 @@ module ActivityPub
         {
           type: "Image",
           url: oembed_data[:url],
-          mediaType: @object.preview_file.mime_type.to_s
+          mediaType: oembed_data[:mediaType]
         }
       when "rich"
         {
@@ -50,12 +50,12 @@ module ActivityPub
         {
           type: "Video",
           url: oembed_data[:url],
-          mediaType: @object.preview_file.mime_type.to_s
+          mediaType: oembed_data[:mediaType]
         }
       end
       data&.merge({
-        name: @object.preview_file&.name,
-        summary: @object.preview_file&.caption
+        name: oembed_data[:name],
+        summary: oembed_data[:summary]
       })&.compact
     end
   end
