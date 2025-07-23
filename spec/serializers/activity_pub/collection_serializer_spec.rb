@@ -14,7 +14,7 @@ RSpec.describe ActivityPub::CollectionSerializer do
     end
 
     it "includes preview images" do # rubocop:disable RSpec/ExampleLength
-      model = create(:model, collection: object)
+      model = create(:model, :public, collection: object)
       file = create(:model_file, filename: "image.png", model: model)
       model.update!(preview_file: file)
       expect(ap[:preview]).to include({
@@ -25,7 +25,7 @@ RSpec.describe ActivityPub::CollectionSerializer do
     end
 
     it "includes preview videos" do # rubocop:disable RSpec/ExampleLength
-      model = create(:model, collection: object)
+      model = create(:model, :public, collection: object)
       file = create(:model_file, filename: "video.mp4", model: model)
       model.update!(preview_file: file)
       expect(ap[:preview]).to include({
@@ -36,7 +36,7 @@ RSpec.describe ActivityPub::CollectionSerializer do
     end
 
     it "includes preview HTML" do # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
-      model = create(:model, collection: object)
+      model = create(:model, :public, collection: object)
       file = create(:model_file, filename: "model.stl", model: model)
       model.update!(preview_file: file)
       expect(ap[:preview]).to include({
@@ -44,6 +44,13 @@ RSpec.describe ActivityPub::CollectionSerializer do
         mediaType: "text/html"
       })
       expect(ap[:preview][:content]).to start_with "<iframe"
+    end
+
+    it "includes no preview if there is no public model" do # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
+      model = create(:model, collection: object)
+      file = create(:model_file, filename: "model.stl", model: model)
+      model.update!(preview_file: file)
+      expect(ap[:preview]).to be_nil
     end
   end
 end
