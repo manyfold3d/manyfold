@@ -3,9 +3,14 @@
 class Components::PreviewFrame < Components::Base
   include Phlex::Rails::Helpers::ImageTag
 
+  register_value_helper :policy_scope
+
   def initialize(object:)
     @object = object
-    @file = @object.preview_file
+  end
+
+  def before_template
+    @file = @object.is_a?(Model) ? @object.preview_file : policy_scope(@object.models).first&.preview_file
   end
 
   def view_template
@@ -60,7 +65,7 @@ class Components::PreviewFrame < Components::Base
     when Model
       thing.sensitive
     when Collection
-      thing.preview_file.sensitive
+      @file.model.sensitive
     else
       false
     end
