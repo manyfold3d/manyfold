@@ -220,4 +220,43 @@ RSpec.describe Library do
       expect(library.errors[:path].first).to eq "cannot contain other libraries"
     end
   end
+
+  context "with multiple libraries" do
+    let!(:first_library) { create(:library) }
+    let!(:second_library) { create(:library) }
+
+    it "uses first library as default if not explicitly set" do
+      expect(described_class.default).to eq first_library
+    end
+
+    it "uses second library as default if explicitly set" do
+      SiteSettings.default_library = second_library.id
+      expect(described_class.default).to eq second_library
+    end
+
+    it "falls back to first library as default if previous default is removed" do
+      SiteSettings.default_library = second_library.id
+      second_library.destroy
+      expect(described_class.default).to eq first_library
+    end
+
+    it "explicitly resets default library if default is destroyed (second)" do
+      SiteSettings.default_library = second_library.id
+      second_library.destroy
+      expect(SiteSettings.default_library).to eq first_library.id
+    end
+
+    it "explicitly resets default library if default is destroyed (first)" do
+      SiteSettings.default_library = first_library.id
+      first_library.destroy
+      expect(SiteSettings.default_library).to eq second_library.id
+    end
+
+    it "explicitly resets default library to nil if all libraries are destroyed" do
+      SiteSettings.default_library = first_library.id
+      first_library.destroy
+      second_library.destroy
+      expect(SiteSettings.default_library).to be_nil
+    end
+  end
 end
