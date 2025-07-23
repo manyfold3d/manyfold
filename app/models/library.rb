@@ -13,6 +13,7 @@ class Library < ApplicationRecord
   serialize :tag_regex, type: Array, coder: YAML
   after_initialize :init
   before_validation :ensure_path_case_is_correct
+  after_destroy :reset_default_library
   after_commit :register_storage, on: :create
 
   normalizes :path, with: ->(path) do
@@ -176,7 +177,7 @@ class Library < ApplicationRecord
   end
 
   def self.default
-    SiteSettings.default_library ? Library.find_by(id: SiteSettings.default_library) : Library.first
+    Library.find_by(id: SiteSettings.default_library) || Library.first
   end
 
   def default?
@@ -185,6 +186,11 @@ class Library < ApplicationRecord
 
   def make_default
     SiteSettings.default_library = id
+  end
+
+  def reset_default_library
+    new_default = Library.where.not(id: id).first # rubocop:disable Pundit/UsePolicyScope
+    new_default ? new_default.make_default : SiteSettings.default_library = nil
   end
 
   def detect_filesystem_changes_later(delay: 0.seconds)
