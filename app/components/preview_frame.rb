@@ -29,7 +29,7 @@ class Components::PreviewFrame < Components::Base
     if @file.is_image?
       image model_model_file_path(@file.model, @file, format: @file.extension, derivative: "preview"), @file.name
     elsif @file.is_renderable?
-      div class: "card-img-top #{"sensitive" if needs_hiding?(@object)}" do
+      div class: "card-img-top #{"sensitive" if needs_hiding?}" do
         Renderer file: @file
       end
     else
@@ -43,7 +43,7 @@ class Components::PreviewFrame < Components::Base
     when "Image"
       image preview_data["url"], preview_data["summary"]
     when "Document"
-      div class: "card-img-top #{"sensitive" if needs_hiding?(@object)}" do
+      div class: "card-img-top #{"sensitive" if needs_hiding?}" do
         iframe(
           scrolling: "no",
           srcdoc: safe([
@@ -59,11 +59,11 @@ class Components::PreviewFrame < Components::Base
     end
   end
 
-  def needs_hiding?(thing)
+  def needs_hiding?
     return false unless current_user.nil? || current_user.sensitive_content_handling.present?
-    case thing.class
+    case @object.class
     when Model
-      thing.sensitive
+      @object.sensitive
     when Collection
       @file.model.sensitive
     else
@@ -79,6 +79,6 @@ class Components::PreviewFrame < Components::Base
 
   def image(url, alt)
     div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
-    image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?(@object)}", alt: alt
+    image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?}", alt: alt
   end
 end
