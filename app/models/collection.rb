@@ -105,10 +105,6 @@ class Collection < ApplicationRecord
     ActivityPub::CollectionSerializer.new(self).serialize
   end
 
-  def preview_file
-    models.first&.preview_file
-  end
-
   def after_create
     Activity::CollectionPublishedJob.set(wait: 5.seconds).perform_later(id) if public?
   end
