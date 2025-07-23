@@ -24,7 +24,7 @@ module OEmbed
     end
 
     def model_file_properties(model_file)
-      if model_file&.is_image?
+      props = if model_file&.is_image?
         photo_properties(model_file)
       elsif model_file&.is_renderable?
         renderable_properties(model_file)
@@ -33,6 +33,10 @@ module OEmbed
       else
         link_properties
       end
+      props.merge({
+        name: model_file&.name,
+        summary: model_file&.caption
+      }).compact
     end
 
     def link_properties
@@ -48,7 +52,8 @@ module OEmbed
         type: "photo",
         url: Rails.application.routes.url_helpers.model_model_file_url(model_file.model, model_file, format: model_file.extension),
         width: width,
-        height: height
+        height: height,
+        mediaType: model_file.mime_type.to_s
       }
     end
 
@@ -68,7 +73,8 @@ module OEmbed
         url: Rails.application.routes.url_helpers.model_model_file_url(model_file.model, model_file, format: model_file.extension),
         html: html,
         width: width,
-        height: height
+        height: height,
+        mediaType: model_file.mime_type.to_s
       }
     end
 
@@ -86,7 +92,8 @@ module OEmbed
         type: "rich",
         html: html,
         width: width,
-        height: height
+        height: height,
+        mediaType: model_file.mime_type.to_s
       }
     end
   end
