@@ -59,9 +59,7 @@ class Integrations::Cults3d::ModelDeserializer < Integrations::Cults3d::BaseDese
   end
 
   def creator_attributes(creator)
-    return {} unless creator&.url
-    c = Creator.linked_to(creator.url).first
-    return {creator: c} if c
-    {creator_attributes: Integrations::Cults3d::CreatorDeserializer.parse(creator)}
+    return {} unless creator
+    attempt_creator_match(Integrations::Cults3d::CreatorDeserializer.parse(creator))
   end
 end

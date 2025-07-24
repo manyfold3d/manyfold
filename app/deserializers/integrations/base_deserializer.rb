@@ -35,4 +35,9 @@ class Integrations::BaseDeserializer
     return if url.blank?
     CGI.unescape(url).split("/")&.last
   end
+
+  def attempt_creator_match(attributes)
+    c = Creator.linked_to(attributes.dig(:links_attributes, 0, :url)).first
+    c ? {creator: c} : {creator_attributes: attributes}
+  end
 end

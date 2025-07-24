@@ -30,9 +30,6 @@ class Integrations::MyMiniFactory::BaseDeserializer < Integrations::BaseDeserial
 
   def creator_attributes(data)
     return {} if data.nil? || (data["profile_url"].nil? && data["username"].nil?)
-    profile_url = data["profile_url"] || "https://www.myminifactory.com/users/#{ERB::Util.u(data["username"])}"
-    c = Creator.linked_to(profile_url).first
-    return {creator: c} if c
-    {creator_attributes: Integrations::MyMiniFactory::CreatorDeserializer.parse(data)}
+    attempt_creator_match(Integrations::MyMiniFactory::CreatorDeserializer.parse(data))
   end
 end
