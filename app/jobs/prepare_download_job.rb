@@ -37,8 +37,8 @@ class PrepareDownloadJob < ApplicationJob
           entry.size = file.size
           entry.filetype = Archive::Entry::FILE
           entry.mode = Archive::Entry::S_IFREG | 0o640
-          entry.mtime = Time.parse(file.mtime).utc
-          entry.ctime = Time.parse(file.ctime).utc
+          entry.mtime = file.mtime
+          entry.ctime = file.ctime
           archive.write_header entry
           archive.write_data file.attachment.read
         end

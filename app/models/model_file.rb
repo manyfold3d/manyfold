@@ -220,13 +220,13 @@ class ModelFile < ApplicationRecord
   end
 
   def mtime
-    attachment&.mtime || updated_at
+    Time.zone.parse(attachment&.mtime) || updated_at
   rescue NoMethodError
     updated_at
   end
 
   def ctime
-    attachment&.ctime || created_at
+    Time.zone.parse(attachment&.ctime) || created_at
   rescue NoMethodError
     created_at
   end
