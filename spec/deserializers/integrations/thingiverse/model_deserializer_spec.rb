@@ -28,6 +28,10 @@ RSpec.describe Integrations::Thingiverse::ModelDeserializer, :thingiverse_api_ke
       expect(deserializer.deserialize[:name]).to eq "Slatwall support"
     end
 
+    it "extracts slug" do
+      expect(deserializer.deserialize[:slug]).to eq "slatwall-support"
+    end
+
     it "extracts description" do # rubocop:disable RSpec/MultipleExpectations
       expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "Slatwall plastic inserts"

@@ -6,6 +6,7 @@ class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::
     r = fetch "things/#{CGI.escapeURIComponent(@model_id)}"
     {
       name: r.body["name"],
+      slug: r.body["name"].parameterize,
       notes: r.body["description"],
       tag_list: r.body["tags"]&.pluck("tag"),
       sensitive: r.body["is_nsfw"],

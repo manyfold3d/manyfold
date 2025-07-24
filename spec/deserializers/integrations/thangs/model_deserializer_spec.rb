@@ -30,6 +30,11 @@ RSpec.describe Integrations::Thangs::ModelDeserializer, :thingiverse_api_key do
       expect(deserializer.deserialize[:name]).to eq "CHEP Cube - Calibration Cube"
     end
 
+    it "extracts slug" do
+      pending "Disabled until we have clarity on API usage"
+      expect(deserializer.deserialize[:slug]).to eq "chep-cube-calibration-cube"
+    end
+
     it "extracts description" do # rubocop:disable RSpec/MultipleExpectations
       pending "Disabled until we have clarity on API usage"
       expect(deserializer.capabilities[:notes]).to be true

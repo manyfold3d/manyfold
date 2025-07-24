@@ -7,6 +7,7 @@ class Integrations::Thangs::ModelDeserializer < Integrations::Thangs::BaseDeseri
     files = r.body.dig("attachments").filter_map { |it| {url: it.dig("imageUrl"), filename: filename_from_url(it.dig("imageUrl"))} if it.dig("attachmentType") == "image" }
     {
       name: r.body["name"],
+      slug: @model_slug.parameterize,
       notes: r.body["description"],
       file_urls: files,
       preview_filename: files.first&.dig(:filename)
@@ -31,7 +32,10 @@ class Integrations::Thangs::ModelDeserializer < Integrations::Thangs::BaseDeseri
 
   def valid_path?(path)
     match = /\A\/designer\/#{PATH_COMPONENTS[:username]}\/3d-model\/#{PATH_COMPONENTS[:model_slug]}-#{PATH_COMPONENTS[:model_id]}\Z/.match(CGI.unescape(path))
-    @model_id = match[:model_id] if match.present?
+    if match.present?
+      @model_id = match[:model_id]
+      @model_slug = match[:model_slug]
+    end
     match.present?
   end
 
