@@ -6,7 +6,7 @@ class ImportsController < ApplicationController
   end
 
   def create
-    CreateObjectFromUrlJob.perform_later(url: @url)
+    CreateObjectFromUrlJob.perform_later(url: @url, owner: current_user)
     redirect_to root_url, notice: t(".success")
   end
 
