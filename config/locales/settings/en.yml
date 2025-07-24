@@ -86,7 +86,7 @@ en:
       summary: Change file settings such as ignored files.
       title: File settings
     folder_settings:
-      details: Folder structure follows a template that you define using tokens. You can also include other text in the template (such as folder separators) and it will be included as-is.
+      details: Folder structure follows a template that you define using tokens. You can also include other text in the template (such as folder separators) and it will be included as-is. A model ID in the form `#123` is always appended to the folder name, to avoid folder naming clashes.
       model_path_template:
         label: Model path template
       parse_metadata_from_path:
@@ -100,7 +100,6 @@ en:
       tokens:
         collection: The title of the collection the model is in, if set.
         creator: The name of the creator, if set.
-        model_id: A unique numerical identifier for the model. We strongly recommend always including this at the end of your template to avoid name conflicts on disk.
         model_name: A filesystem-safe version of the model name.
         tags_html: 'a series of nested folders, one for each tag, arranged in order of tag popularity. For example: <code>fantasy/human/wizard</code>. This token is "greedy"; it will parse as many tags as it can.'
     general:
