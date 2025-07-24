@@ -7,14 +7,6 @@ class UpdateMetadataFromLinkJob < ApplicationJob
     linkable = link.linkable
     # Preserve existing tags
     data[:tag_list]&.concat(linkable.tag_list)&.uniq
-    # Match to existing creator
-    if data[:creator_attributes]
-      creator = Creator.find_by(slug: data.dig(:creator_attributes, :slug))
-      if creator
-        data.delete :creator_attributes
-        data[:creator_id] = creator.id
-      end
-    end
     # Update object
     linkable.update! data.except(:file_urls, :preview_filename, :models)
     # Import files for models
