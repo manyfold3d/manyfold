@@ -33,6 +33,10 @@ RSpec.describe Integrations::Cults3d::ModelDeserializer, :cults3d_api_key do
       expect(deserializer.deserialize[:name]).to eq "Benchy - The jolly 3D printing torture-test"
     end
 
+    it "extracts slug" do
+      expect(deserializer.deserialize[:slug]).to eq "3dbenchy-the-jolly-3d-printing-torture-test"
+    end
+
     it "extracts description" do # rubocop:disable RSpec/MultipleExpectations
       expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "3DBenchy"

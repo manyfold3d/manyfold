@@ -7,6 +7,7 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
     r = fetch "objects/#{CGI.escapeURIComponent(@model_id)}"
     {
       name: r.body["name"],
+      slug: @slug,
       notes: ReverseMarkdown.convert(r.body["description_html"]),
       tag_list: r.body["tags"],
       file_urls: r.body["images"]&.map { |it| {url: it.dig("original", "url"), filename: filename_from_url(it.dig("original", "url"))} },
@@ -31,8 +32,11 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
   private
 
   def valid_path?(path)
-    match = /\A\/object\/3d-print-[[:alnum:]-]+-([[:digit:]]+)\Z/.match(path)
-    @model_id = match[1] if match.present?
+    match = /\A\/object\/3d-print-(?<slug>[[:alnum:]-]+)-(?<model_id>[[:digit:]]+)\Z/.match(path)
+    if match.present?
+      @model_id = match[:model_id]
+      @slug = match[:slug]
+    end
     match.present?
   end
 end

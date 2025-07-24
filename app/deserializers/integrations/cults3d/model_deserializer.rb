@@ -27,6 +27,7 @@ class Integrations::Cults3d::ModelDeserializer < Integrations::Cults3d::BaseDese
     GRAPHQL
     {
       name: result.data&.creation&.name,
+      slug: @object_slug,
       notes: result.data&.creation&.description,
       tag_list: result.data&.creation&.tags.to_a,
       sensitive: result.data&.creation&.safe == false,

@@ -28,6 +28,10 @@ RSpec.describe Integrations::MyMiniFactory::ModelDeserializer, :mmf_api_key do
       expect(deserializer.deserialize[:name]).to eq "David"
     end
 
+    it "extracts slug" do
+      expect(deserializer.deserialize[:slug]).to eq "michelangelo-s-david-in-florence-italy"
+    end
+
     it "extracts description" do # rubocop:disable RSpec/MultipleExpectations
       expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "Michelangelo"
