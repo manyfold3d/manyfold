@@ -1,10 +1,10 @@
 class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFactory::BaseDeserializer
-  attr_reader :object_id
+  attr_reader :model_id
 
   def deserialize
     return {} unless valid?
     # Fetch from MMF API
-    r = fetch "objects/#{CGI.escapeURIComponent(@object_id)}"
+    r = fetch "objects/#{CGI.escapeURIComponent(@model_id)}"
     {
       name: r.body["name"],
       notes: ReverseMarkdown.convert(r.body["description_html"]),
@@ -32,7 +32,7 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
 
   def valid_path?(path)
     match = /\A\/object\/3d-print-[[:alnum:]-]+-([[:digit:]]+)\Z/.match(path)
-    @object_id = match[1] if match.present?
+    @model_id = match[1] if match.present?
     match.present?
   end
 end

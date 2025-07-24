@@ -1,9 +1,9 @@
 class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::BaseDeserializer
-  attr_reader :object_id
+  attr_reader :model_id
 
   def deserialize
     return {} unless valid?
-    r = fetch "things/#{CGI.escapeURIComponent(@object_id)}"
+    r = fetch "things/#{CGI.escapeURIComponent(@model_id)}"
     {
       name: r.body["name"],
       notes: r.body["description"],
@@ -34,7 +34,7 @@ class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::
 
   def valid_path?(path)
     match = /\A\/thing:([[:digit:]]+)\Z/.match(path)
-    @object_id = match[1] if match.present?
+    @model_id = match[1] if match.present?
     match.present?
   end
 end

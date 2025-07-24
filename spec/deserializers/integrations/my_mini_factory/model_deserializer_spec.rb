@@ -14,7 +14,7 @@ RSpec.describe Integrations::MyMiniFactory::ModelDeserializer, :mmf_api_key do
 
     it "extracts object ID" do
       deserializer = described_class.new(uri: "https://www.myminifactory.com/object/3d-print-example-1234")
-      expect(deserializer.object_id).to eq "1234"
+      expect(deserializer.model_id).to eq "1234"
     end
   end
 
