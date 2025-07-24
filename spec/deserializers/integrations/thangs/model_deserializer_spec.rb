@@ -15,7 +15,7 @@ RSpec.describe Integrations::Thangs::ModelDeserializer, :thingiverse_api_key do
 
     it "extracts object ID" do
       deserializer = described_class.new(uri: "https://thangs.com/designer/CHEP/3d-model/CHEP%20Cube%20-%20Calibration%20Cube-29638")
-      expect(deserializer.object_id).to eq "29638"
+      expect(deserializer.model_id).to eq "29638"
     end
   end
 

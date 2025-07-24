@@ -14,7 +14,7 @@ RSpec.describe Integrations::Thingiverse::ModelDeserializer, :thingiverse_api_ke
 
     it "extracts object ID" do
       deserializer = described_class.new(uri: "https://www.thingiverse.com/thing:4049220")
-      expect(deserializer.object_id).to eq "4049220"
+      expect(deserializer.model_id).to eq "4049220"
     end
   end
 
