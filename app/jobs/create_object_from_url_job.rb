@@ -7,23 +7,24 @@ class CreateObjectFromUrlJob < ApplicationJob
     # Get deserializer
     deserializer = Link.deserializer_for(url: url)
     # Create new object
+    name = "Importing from #{url.split("://").last} ..."
     object = case deserializer&.capabilities&.dig(:class)&.name
     when "Model"
       Model.create(
         library: Library.default,
-        name: url.split("://").last,
+        name: name,
         path: SecureRandom.uuid,
         collection_id: collection_id,
         links_attributes: [{url: url}]
       )
     when "Creator"
       Creator.create(
-        name: SecureRandom.uuid,
+        name: name,
         links_attributes: [{url: url}]
       )
     when "Collection"
       Collection.create(
-        name: SecureRandom.uuid,
+        name: name,
         links_attributes: [{url: url}]
       )
     end
