@@ -35,4 +35,11 @@ class Integrations::BaseDeserializer
     return if url.blank?
     CGI.unescape(url).split("/")&.last
   end
+
+  def attempt_creator_match(attributes)
+    c = Creator.linked_to(attributes.dig(:links_attributes, 0, :url)).first ||
+      Creator.where(slug: attributes[:slug]).first || # rubocop:disable Pundit/UsePolicyScope
+      Creator.where(name_lower: attributes[:name]&.downcase).first # rubocop:disable Pundit/UsePolicyScope
+    c ? {creator: c} : {creator_attributes: attributes}
+  end
 end

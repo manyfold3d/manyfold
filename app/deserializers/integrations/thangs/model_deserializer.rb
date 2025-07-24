@@ -37,9 +37,6 @@ class Integrations::Thangs::ModelDeserializer < Integrations::Thangs::BaseDeseri
 
   def creator_attributes(data)
     return {} if data.nil? || data["username"].nil?
-    url = "https://thangs.com/designer/#{data["username"]}"
-    c = Creator.linked_to(url).first
-    return {creator: c} if c
-    {creator_attributes: Integrations::Thangs::CreatorDeserializer.parse(data)}
+    attempt_creator_match(Integrations::Thangs::CreatorDeserializer.parse(data))
   end
 end

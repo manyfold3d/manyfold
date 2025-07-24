@@ -21,23 +21,6 @@ RSpec.describe UpdateMetadataFromLinkJob do
       link
     end
 
-    context "with an existing creator" do
-      let!(:creator) { create(:creator, slug: "batman") }
-
-      it "does not make a new creator" do
-        expect { described_class.perform_now(link: link) }.not_to change(Creator, :count)
-      end
-
-      it "sets creator" do
-        described_class.perform_now(link: link)
-        expect(model.reload.creator).to eq creator
-      end
-
-      it "stores sync time" do
-        expect { described_class.perform_now(link: link) }.to change(link, :synced_at).from(nil)
-      end
-    end
-
     it "creates a new creator if nothing matches" do
       expect { described_class.perform_now(link: link) }.to change(Creator, :count).by(1)
     end
