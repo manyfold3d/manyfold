@@ -26,6 +26,8 @@ class UpdateMetadataFromLinkJob < ApplicationJob
     if linkable.is_a?(Collection) && data[:models]
       data[:models].each { |it| CreateObjectFromUrlJob.perform_later(url: it, collection_id: linkable.id) }
     end
+    # If successful, set sync time
+    link.update!(synced_at: Time.now.utc)
   end
 
   def import_files(data, model)
