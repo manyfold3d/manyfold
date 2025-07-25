@@ -6,7 +6,10 @@ RUN apk add --no-cache \
   file \
   s6-overlay \
   jemalloc \
-  imagemagick
+  imagemagick \
+  imagemagick-jpeg \
+  imagemagick-webp \
+  imagemagick-heic
 
 COPY . .
 COPY --from=build /usr/src/app/vendor/bundle vendor/bundle
