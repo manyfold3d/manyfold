@@ -4,8 +4,9 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
   unique :until_executed
 
   def build_enumerator(cursor:)
+    method = ((ApplicationRecord.connection.adapter_name == "PostgreSQL") ? "json_extract_path" : "json_extract")
     enumerator_builder.active_record_on_records(
-      ModelFile.unscoped.where.not("attachment_data LIKE '%derivatives%'").and(ModelFile.unscoped.where("attachment_data LIKE '%\"image/%'")),
+      ModelFile.unscoped.where("#{method}(attachment_data, '$.derivatives', '$.preview') IS NULL"),
       cursor: cursor
     )
   end
