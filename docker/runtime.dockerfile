@@ -5,7 +5,8 @@ FROM base as runtime
 RUN apk add --no-cache \
   file \
   s6-overlay \
-  jemalloc
+  jemalloc \
+  imagemagick
 
 COPY . .
 COPY --from=build /usr/src/app/vendor/bundle vendor/bundle
