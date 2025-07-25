@@ -26,7 +26,7 @@ class ProblemsController < ApplicationController
     # Don't show types ignored in user settings
     query = query.visible(helpers.problem_settings)
     query = query.includes([:problematic])
-    @problems = query.page(page).per(50).order([:category, :problematic_type]).includes(problematic: [:library, :model])
+    @problems = query.page(page).per(params[:per_page]&.to_i || 50).order([:category, :problematic_type]).includes(problematic: [:library, :model])
     # Do we have any filters at all?
     @filters_applied = [:show_ignored, :severity, :category, :type].any? { |k| params.has_key?(k) }
   end
