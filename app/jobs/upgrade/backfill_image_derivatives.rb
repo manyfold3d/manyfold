@@ -17,6 +17,8 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
     modelfile.attachment_derivatives!
     modelfile.save(touch: false, validate: false)
   rescue Shrine::FileNotFound
-    Rails.logger.info("File not found: #{modelfile.path_within_library}")
+    Rails.logger.error("File not found: #{modelfile.path_within_library}")
+  rescue MiniMagick::Error => ex
+    Rails.logger.error ex.message
   end
 end
