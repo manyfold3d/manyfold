@@ -79,6 +79,40 @@ RSpec.describe ModelFile do
     expect(part1.duplicate?).to be false
   end
 
+  it "mtime reports attachment modified time" do
+    file = create(:model_file)
+    expect(file.mtime).to be_present
+  end
+
+  it "mtime reports updated time if attachment has no mtime metadata" do
+    file = create(:model_file)
+    allow(file).to receive(:attachment).and_return(double(mtime: nil)) # rubocop:disable RSpec/VerifiedDoubles
+    expect(file.mtime).to be_present
+  end
+
+  it "mtime reports updated time if there is no attachment" do
+    file = create(:model_file)
+    allow(file).to receive(:attachment).and_return(nil)
+    expect(file.mtime).to be_present
+  end
+
+  it "ctime reports attachment created time" do
+    file = create(:model_file)
+    expect(file.ctime).to be_present
+  end
+
+  it "mtime reports created time if attachment has no ctime metadata" do
+    file = create(:model_file)
+    allow(file).to receive(:attachment).and_return(double(ctime: nil)) # rubocop:disable RSpec/VerifiedDoubles
+    expect(file.ctime).to be_present
+  end
+
+  it "ctime reports created time if there is no attachment" do
+    file = create(:model_file)
+    allow(file).to receive(:attachment).and_return(nil)
+    expect(file.ctime).to be_present
+  end
+
   context "with actual files on disk" do
     around do |ex|
       MockDirectory.create([
