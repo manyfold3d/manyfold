@@ -65,11 +65,14 @@ en:
         title: New Domain Block
     downloads:
       derivatives:
-        description: Manyfold can create alternative versions of some files to increase site performance. Note that this will use more disk space.
+        description: Manyfold can create alternative versions of some files to increase site performance. Note that this will use more disk space; it won't clutter up your model folders though, the derived files are kept separate.
         heading: File Derivatives
         images:
           help: Generates lower-resolution versions of images that will load quicker on list and model pages.
           label: Image thumbnails
+        progressive_meshes:
+          help: Generates streamable versions of 3d models that will load quickly at a low resolution, then refine.
+          label: Streamable meshes
       description: Manyfold will generate ZIP files of models on request, but for busy sites you may want these available more quickly. Here you can tell Manyfold to create ZIP files immediately, and also set how long they are kept in the download cache. Beware; this may use a lot of disk space!
       expiry:
         help: A setting of 0 means keep forever.

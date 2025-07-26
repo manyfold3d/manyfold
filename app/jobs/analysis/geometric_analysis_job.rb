@@ -34,6 +34,20 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
         #     !mesh.solid?
         #   )
         # end
+        if SiteSettings.generate_progressive_meshes && mesh.manifold?
+          pmesh = Mittsu::MeshAnalysis::ProgressiveMesh.new(
+            file.mesh.geometry,
+            file.mesh.material
+          )
+          pmesh.progressify(ratio: 0.9)
+          exporter = Mittsu::GLTFExporter.new
+          Tempfile.create do |f|
+            exporter.export(pmesh, f.path, mode: :binary)
+            f.rewind
+            file.attachment_attacher.add_derivatives({progressive: f})
+            file.save(touch: false)
+          end
+        end
       else
         raise MeshLoadError.new
       end

@@ -21,6 +21,13 @@ RSpec.describe Analysis::GeometricAnalysisJob do
     expect { described_class.perform_now(file.id) }.not_to change(Problem, :count)
   end
 
+  it "creates progressive derivative" do
+    allow(SiteSettings).to receive(:generate_progressive_meshes).and_return(true)
+    allow(file).to receive(:mesh).and_return(mesh)
+    described_class.perform_now(file.id)
+    expect(file.reload.attachment(:progressive)).to be_present
+  end
+
   it "creates a Problem for a non-manifold mesh" do # rubocop:todo RSpec/MultipleExpectations
     allow(mesh).to receive(:manifold?).and_return(false)
     allow(file).to receive(:mesh).and_return(mesh)
