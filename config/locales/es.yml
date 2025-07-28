@@ -626,9 +626,6 @@ es:
         loading_mesh: Cargando malla
         manifold_check: Verificando que la malla sea válida
     scan:
-      check_all:
-        queueing_model_checks: Encolando verificaciones de modelos
-        removing_orphaned_problems: Eliminar problemas huérfanos
       detect_filesystem_changes:
         building_filename_list: Construyendo lista de archivos
         building_folder_list: Construyendo lista de carpetas modificadas

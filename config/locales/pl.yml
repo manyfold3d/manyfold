@@ -626,9 +626,6 @@ pl:
         loading_mesh: Ładowanie siatki
         manifold_check: Sprawdzanie, czy siatka jest rozmaita
     scan:
-      check_all:
-        queueing_model_checks: Kolejkowanie sprawdzania modeli
-        removing_orphaned_problems: Usuwanie osieroconych problemów
       detect_filesystem_changes:
         building_filename_list: Tworzenie listy plików
         building_folder_list: Tworzenie listy zmienionych folderów

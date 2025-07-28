@@ -637,9 +637,6 @@ nl:
         loading_mesh: Mesh laden
         manifold_check: Controleren of mesh manifold is
     scan:
-      check_all:
-        queueing_model_checks: Modelcontroles in wachtrij plaatsen
-        removing_orphaned_problems: Verweesde problemen verwijderen
       detect_filesystem_changes:
         building_filename_list: Bestandslijst opbouwen
         building_folder_list: Lijst met gewijzigde mappen opbouwen

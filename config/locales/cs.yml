@@ -626,9 +626,6 @@ cs:
         loading_mesh: Načítání modelu
         manifold_check: Kontrola, zda je model manifold
     scan:
-      check_all:
-        queueing_model_checks: Zařazení kontroly modelu do fronty
-        removing_orphaned_problems: Odstranění samostatných problémů
       detect_filesystem_changes:
         building_filename_list: Sestavení seznamu souborů
         building_folder_list: Sestavení seznamu změněných složek

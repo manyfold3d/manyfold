@@ -629,9 +629,6 @@ fr:
         loading_mesh: Chargement du maillage
         manifold_check: Vérification de la continuité du maillage
     scan:
-      check_all:
-        queueing_model_checks: Mise en file d'attente des vérifications
-        removing_orphaned_problems: Suppression des problèmes orphelins
       detect_filesystem_changes:
         building_filename_list: Création d'une liste de fichiers
         building_folder_list: Création d'une liste de répertoires modifiés
