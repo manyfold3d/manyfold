@@ -57,7 +57,9 @@ class LibrariesController < ApplicationController
     if params[:type] === "check"
       # Prune orphaned problems
       Upgrade::PruneOrphanedProblems.perform_later
-      Scan::CheckAllJob.perform_later
+      # Get filter list
+      @filters = {q: params[:q]}.compact
+      Scan::CheckAllJob.perform_later(@filters)
     else
       Library.find_each do |library|
         library.detect_filesystem_changes_later
