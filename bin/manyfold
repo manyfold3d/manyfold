@@ -27,14 +27,7 @@ class ModelCLI < Thor
   desc "update_metadata", "reruns the metadata parser for all models"
   option :search, required: false, type: :string
   def update_metadata
-    scope = Model
-    scope = Search::ModelSearchService.new(scope).search(options[:search]) if options[:search]
-    scope.find_each do |it|
-      Scan::Model::ParseMetadataJob.perform_later(it.id)
-      print "."
-      sleep 0.01 # Slows down connections a bit so as not to saturate Redis
-    end
-    puts "\n#{scope.count} models queued for metadata parsing" # rubocop:disable Pundit/UsePolicyScope
+    Scan::CheckAllJob.perform_later({q: options[:search].presence})
   end
 
   desc "pregenerate_downloads", "generate downloadable ZIP files for all models"
