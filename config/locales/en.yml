@@ -302,7 +302,8 @@ en:
     navbar:
       account: My Settings
       activity: Activity
-      check_existing: Rescan existing models
+      check_existing: Rescan all models
+      check_results: Rescan filtered models
       home: Homepage
       log_in: Sign in
       log_out: Sign out
