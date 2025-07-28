@@ -55,6 +55,8 @@ class LibrariesController < ApplicationController
   def scan_all
     authorize Library
     if params[:type] === "check"
+      # Prune orphaned problems
+      Upgrade::PruneOrphanedProblems.perform_later
       Scan::CheckAllJob.perform_later
     else
       Library.find_each do |library|
