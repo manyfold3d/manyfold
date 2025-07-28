@@ -52,8 +52,18 @@ class Components::SearchHelp < Components::Base
         td { code { "not set? tag" } }
         td { t("components.search_help.unset") }
       end
+      path
       filenames
       federation
+    end
+  end
+
+  def path
+    tr do
+      td do
+        code { "path ~ tools" }
+      end
+      td { t("components.search_help.path") }
     end
   end
 
