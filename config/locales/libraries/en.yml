@@ -51,7 +51,7 @@ en:
     scan:
       success: Library scan started.
     scan_all:
-      success: Scan started for all libraries.
+      success: Scan started.
     storage_services:
       filesystem: Local filesystem
       s3: S3-compatible cloud storage
