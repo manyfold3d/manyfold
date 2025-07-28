@@ -48,10 +48,6 @@ en:
       tag_regex:
         check: Check
         search_missing: Search Missing
-    scan:
-      success: Library scan started.
-    scan_all:
-      success: Scan started.
     storage_services:
       filesystem: Local filesystem
       s3: S3-compatible cloud storage

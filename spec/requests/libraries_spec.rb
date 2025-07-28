@@ -1,7 +1,5 @@
 require "rails_helper"
 
-#   scan_library POST   /libraries/:id/scan(.:format)                                           libraries#scan
-# scan_libraries POST   /libraries/scan(.:format)                                               libraries#scan_all
 #      libraries GET    /libraries(.:format)                                                    libraries#index
 #                POST   /libraries(.:format)                                                    libraries#create
 #    new_library GET    /libraries/new(.:format)                                                libraries#new
@@ -20,30 +18,6 @@ RSpec.describe "Libraries" do
     let!(:library) do
       create(:library) do |l|
         create_list(:model, 2, library: l)
-      end
-    end
-
-    describe "POST /libraries/:id/scan" do
-      it "scans a single library", :as_contributor do # rubocop:todo RSpec/MultipleExpectations
-        expect { post "/libraries/#{library.to_param}/scan" }.to have_enqueued_job(Scan::Library::DetectFilesystemChangesJob).exactly(:once)
-        expect(response).to redirect_to("/libraries/#{library.public_id}")
-      end
-
-      it "denies member permission", :as_member do
-        post "/libraries/#{library.to_param}/scan"
-        expect(response).to have_http_status(:forbidden)
-      end
-    end
-
-    describe "POST /libraries/scan" do
-      it "scans all libraries", :as_contributor do # rubocop:todo RSpec/MultipleExpectations
-        expect { post "/libraries/scan" }.to have_enqueued_job(Scan::Library::DetectFilesystemChangesJob).exactly(:once)
-        expect(response).to redirect_to("/models")
-      end
-
-      it "denies member permission", :as_member do
-        post "/libraries/scan"
-        expect(response).to have_http_status(:forbidden)
       end
     end
 

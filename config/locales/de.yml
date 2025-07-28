@@ -697,6 +697,9 @@ de:
       description: Wenn dieses Modell gegen ein Gesetz oder die Serverrichtlinien verstößt, kannst du es unseren Moderatoren melden. Füge einen Kommentar hinzu, um uns den Grund mitzuteilen!
       submit: Meldung einreichen
       title: 'Melde %{type}: "%{name}"'
+  scans:
+    create:
+      success: Scan für alle Sammlungen gestartet.
   security:
     running_as_root_html: Manyfold wird als root ausgeführt, was ein Sicherheitsrisiko darstellt. Führe Manyfold als einen anderen Systembenutzer aus, indem du die Umgebungsvariablen <code>PUID</code> und <code>PGID</code> setzt. Einzelheiten findest du in <a href='https://manyfold.app/sysadmin/configuration.html#required'>der Konfigurationsdokumentation</a>.
   sites:

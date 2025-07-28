@@ -48,10 +48,6 @@ pl:
       tag_regex:
         check: Sprawdź
         search_missing: Wyszukaj Brakujące
-    scan:
-      success: Rozpoczęto skanowanie biblioteki.
-    scan_all:
-      success: Rozpoczęto skanowanie wszystkich bibliotek.
     storage_services:
       filesystem: Lokalny system plików
       s3:

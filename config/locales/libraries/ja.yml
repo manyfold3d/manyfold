@@ -48,10 +48,6 @@ ja:
       tag_regex:
         check:
         search_missing:
-    scan:
-      success:
-    scan_all:
-      success:
     storage_services:
       filesystem:
       s3:

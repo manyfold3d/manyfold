@@ -708,6 +708,9 @@ nl:
       description: Als dit item wetten of serverbeleid schendt, kun je het melden aan onze moderators. Voeg een opmerking toe om ons te laten weten waarom!
       submit: Melding versturen
       title: 'Rapporteer %{type}: "%{name}"'
+  scans:
+    create:
+      success: Scan gestart voor alle bibliotheken.
   security:
     running_as_root_html: Manyfold draait als root, wat een beveiligingsrisico is. Draai als een andere systeemgebruiker door de <code>PUID</code> en <code>PGID</code> omgevingsvariabelen in te stellen. Zie <a href='https://manyfold.app/sysadmin/configuration.html#required'>de configuratiedocumentatie</a> voor details.
   sites:

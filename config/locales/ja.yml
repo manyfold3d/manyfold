@@ -697,6 +697,9 @@ ja:
       description:
       submit:
       title:
+  scans:
+    create:
+      success:
   security:
     running_as_root_html:
   sites:

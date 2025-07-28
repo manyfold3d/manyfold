@@ -48,10 +48,6 @@ fr:
       tag_regex:
         check: Vérifier
         search_missing: Recherche manquante
-    scan:
-      success: L'analyse de la bibliothèque a commencé.
-    scan_all:
-      success: L'analyse de toutes les bibliothèques a commencé.
     storage_services:
       filesystem: Système de fichiers local
       s3: Stockage en cloud compatible S3

@@ -700,6 +700,9 @@ fr:
       description: Si cet article enfreint une loi ou une politique du serveur, vous pouvez le signaler à nos modérateurs. Ajoutez un commentaire pour nous nous expliquer pourquoi !
       submit: Envoyer le rapport
       title: 'Rapporter %{type} : %{name}'
+  scans:
+    create:
+      success: L'analyse de toutes les bibliothèques a commencé.
   security:
     running_as_root_html: Manyfold s'exécute en tant que root, ce qui constitue un risque pour la sécurité. Exécute-le en tant qu'utilisateur différent en définissant les variables d'environnement <code>PUID</code> et <code>PGID</code>. Voir <a href='https://manyfold.app/sysadmin/configuration.html#required'>la documentation de configuration</a> pour plus de détails.
   sites:

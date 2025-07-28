@@ -1,5 +1,5 @@
 class LibrariesController < ApplicationController
-  before_action :get_library, except: [:index, :new, :create, :scan_all]
+  before_action :get_library, except: [:index, :new, :create]
   skip_after_action :verify_policy_scoped, only: [:index]
 
   def index
@@ -45,27 +45,6 @@ class LibrariesController < ApplicationController
       flash.now[:alert] = t(".failure")
       render :edit, status: :unprocessable_entity
     end
-  end
-
-  def scan
-    @library.detect_filesystem_changes_later
-    redirect_back_or_to @library, notice: t(".success")
-  end
-
-  def scan_all
-    authorize Library
-    if params[:type] === "check"
-      # Prune orphaned problems
-      Upgrade::PruneOrphanedProblems.perform_later
-      # Get filter list
-      @filters = {q: params[:q]}.compact
-      Scan::CheckAllJob.perform_later(@filters)
-    else
-      Library.find_each do |library|
-        library.detect_filesystem_changes_later
-      end
-    end
-    redirect_back_or_to models_path, notice: t(".success")
   end
 
   def destroy

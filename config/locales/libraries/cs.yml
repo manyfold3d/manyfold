@@ -48,10 +48,6 @@ cs:
       tag_regex:
         check: Kontrola
         search_missing: Vyhledávání chybějících
-    scan:
-      success: Spuštěna kontrola knihovny.
-    scan_all:
-      success: Spuštěna kontrola všech knihoven.
     storage_services:
       filesystem: Místní souborový systém
       s3: Cloudové úložiště kompatibilní s S3
