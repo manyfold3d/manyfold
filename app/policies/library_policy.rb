@@ -22,14 +22,6 @@ class LibraryPolicy < ApplicationPolicy
     create?
   end
 
-  def scan?
-    user&.is_contributor?
-  end
-
-  def scan_all?
-    scan?
-  end
-
   class Scope
     attr_reader :user, :scope
 
