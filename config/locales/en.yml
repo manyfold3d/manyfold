@@ -384,6 +384,7 @@ en:
       more_details_html: For more information, read the full documentation for <a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">scoped_search's query language</a>.
       negation: To exclude terms, use "not", "!", or "-".
       parentheses: Group terms with parentheses for more complex logic combinations.
+      path: Search within model folder paths by explicitly specifying it; use `~` for a partial match.
       quotes: To look for multiple words in a single term, use quotes; only models with the exact text will be shown.
       simple: By default, search will find models that match all terms.
       specific_fields: You can look for terms in a few specific fields. Use "~" to match part of the field; "=" will try to match the whole thing. Model descriptions and library names are only searched if you explicitly specify the fields.

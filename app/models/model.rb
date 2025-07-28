@@ -65,6 +65,7 @@ class Model < ApplicationRecord
   scoped_search relation: :collection, on: :name, rename: :collection
   scoped_search relation: :tags, on: :name, default_operator: :eq, rename: :tag
   scoped_search relation: :model_files, on: :filename, rename: :filename, only_explicit: true
+  scoped_search on: :path, only_explicit: true
 
   def parents
     Pathname.new(path).parent.descend.filter_map do |path|
