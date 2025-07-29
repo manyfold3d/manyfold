@@ -14,8 +14,8 @@ class CollectionsController < ApplicationController
     @models = policy_scope(Model).all
     @collections = policy_scope(Collection).all
     if @filter.any?
-      @models = filtered_models @filters
-      @collections = filtered_collections @filters
+      @models = @filter.models(@models)
+      @collections = @filter.collections(@collections)
     end
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)

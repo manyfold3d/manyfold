@@ -20,7 +20,7 @@ class ModelsController < ApplicationController
   include ModelsController::Merge
 
   def index
-    @models = filtered_models @filters
+    @models = @filter.models(policy_scope(Model))
     prepare_model_list
     set_indexable @models
     respond_to do |format|
@@ -134,7 +134,7 @@ class ModelsController < ApplicationController
 
   def bulk_edit
     authorize Model
-    @models = policy_scope(filtered_models(@filters), policy_scope_class: ApplicationPolicy::UpdateScope).includes(:collection, :creator)
+    @models = @filter.models(policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope)).includes(:collection, :creator)
     generate_available_tag_list
     if helpers.pagination_settings["models"]
       page = params[:page] || 1
@@ -156,7 +156,7 @@ class ModelsController < ApplicationController
 
     models_to_update = if params.key?(:update_all)
       # If "Update All Models" was clicked, update all models in the filtered set
-      policy_scope(filtered_models(@filters), policy_scope_class: ApplicationPolicy::UpdateScope)
+      @filter.models(policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope))
     else
       # If "Update Selected Models" was clicked, only update checked models
       ids = params[:models].select { |k, v| v == "1" }.keys

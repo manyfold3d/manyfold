@@ -10,7 +10,7 @@ class CreatorsController < ApplicationController
     @creators = policy_scope(Creator)
     @models = policy_scope(Model).all
     if @filter.any?
-      @models = filtered_models @filters
+      @models = @filter.models(@models)
       @creators = @creators.where(id: @models.pluck(:creator_id).uniq)
     end
 
