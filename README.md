@@ -47,12 +47,25 @@ To run the app yourself, you'll need the following installed:
 * Foreman or [another Procfile runner](https://github.com/ddollar/foreman#ports)
 * [libarchive](https://github.com/chef/ffi-libarchive#installation) (for upload support)
 * [imagemagick](https://imagemagick.org/index.php) (for image thumbnail generation)
+* [ngrok](https://ngrok.com) (for ActivityPub development)
 
 To run the application once you've cloned this repo, you should be able to just run `bin/dev`; that should set up the database, perform migrations, install dependencies, and then make the application available at <http://127.0.0.1:5000>.
 
 If you want to configure optional features, set the appropriate [environment variables](https://manyfold.app/sysadmin/configuration.html) in a file called `.env.development.local`. See `env.example` for a template file. Note that the required environment variables in the documentation are not needed in development mode, due to the use of SQLite instead of PostgreSQL.
 
-To work with ActivityPub federation in development, your dev instance needs a public URL and an HTTPS certificate. The easiest way to do that is to use [ngrok](https://ngrok.com) to set up a tunnel from a public URL to your local development instance.
+#### ngrok
+
+Running `bin/dev` also expects to be able to start a pre-configured [ngrok](https://ngrok.com) tunnel called "manyfold", to enable ActivityPub federation in development. If you don't want to use this, you can comment the line out of `Procfile.dev`, though please don't commit it!
+
+To configure the tunnel, add this to your [ngrok config file](https://ngrok.com/docs/agent/config/):
+
+```yaml
+endpoints:
+    - name: manyfold
+      url: https://{your-ngrok-url-here}
+      upstream:
+         url: 5000
+```
 
 ### Using the Devcontainer
 

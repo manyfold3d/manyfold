@@ -4,3 +4,4 @@ performance_worker: bundle exec sidekiq -C config/workers/performance.yml
 js: yarn build --watch
 css: yarn watch:css
 typecheck: yarn typecheck --watch --preserveWatchOutput
+ngrok: ngrok start manyfold
