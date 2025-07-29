@@ -14,7 +14,7 @@ class CreatorsController < ApplicationController
       @creators = @creators.where(id: @models.pluck(:creator_id).uniq)
     end
 
-    @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
+    @tags, @unrelated_tag_count = generate_tag_list(@models, @filter.tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
     @unrelated_tag_count = nil unless @filter.any?
 

@@ -17,7 +17,7 @@ module ModelListable
       @models.order(name_lower: :asc)
     end
 
-    @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
+    @tags, @unrelated_tag_count = generate_tag_list(@models, @filter.tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
     @unrelated_tag_count = nil unless @filter.any?
 

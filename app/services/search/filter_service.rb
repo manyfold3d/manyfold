@@ -55,6 +55,10 @@ class Search::FilterService
     filter_by_search(scope)
   end
 
+  def tags
+    ActsAsTaggableOn::Tag.named_any(parameter(:tag)) if filtering_by?(:tag)
+  end
+
   private
 
   # Filter by library
