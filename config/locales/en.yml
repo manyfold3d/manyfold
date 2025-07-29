@@ -312,7 +312,7 @@ en:
         toggler:
           label: Toggle navigation
       scan: Scan
-      scan_changes: Scan for changes
+      scan_changes: Scan for new files
       scanning: Scanning
       search: Search
       settings: Site Settings
