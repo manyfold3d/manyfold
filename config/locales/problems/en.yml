@@ -4,6 +4,7 @@ en:
     categories:
       duplicate: Duplicate files
       empty: Model or file is empty
+      http_error: HTTP error fetching link
       inefficient: Inefficient formats
       inside_out: Mesh is inside-out
       missing: Missing files or folders
@@ -32,6 +33,10 @@ en:
       select: Select
       select_all: Select all
       unignore: Show
+    link:
+      http_error:
+        description: An error occurred when reading the link from the remote server.
+        title: HTTP error fetching link
     model:
       empty:
         description: This model contains no files. Either delete it, or find where its files went!

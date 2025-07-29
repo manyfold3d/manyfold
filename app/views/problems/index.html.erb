@@ -26,7 +26,13 @@
         <td><%= form.check_box "problems[#{problem.to_param}]", data: {resolution_strategy: problem.resolution_strategy, bulk_item: problem.to_param}, "aria-label": translate(".select") %></td>
         <% if problem.parent %>
           <td><%= link_to problem.parent.name, problem.parent, class: "link-dark" %></td>
-          <td><%= link_to problem.problematic.name, [problem.parent, problem.problematic], class: "link-dark" %></td>
+          <% if problem.problematic.is_a? ModelFile %>
+            <td><%= link_to problem.problematic.name, [problem.parent, problem.problematic], class: "link-dark" %></td>
+          <% elsif problem.problematic.is_a? Link %>
+            <td><%= link_to problem.problematic.url, problem.problematic.url, class: "link-dark" %></td>
+          <% else %>
+            <td></td>
+          <% end %>
         <% else %>
           <td colspan=2><%= link_to problem.problematic.name, problem.problematic, class: "link-dark" %></td>
         <% end %>

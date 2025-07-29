@@ -29,7 +29,8 @@ class Problem < ApplicationRecord
     :no_license,
     :no_links,
     :no_creator,
-    :no_tags
+    :no_tags,
+    :http_error
   ]
   enum :category, CATEGORIES
 
@@ -53,7 +54,8 @@ class Problem < ApplicationRecord
     no_license: :silent,
     no_links: :silent,
     no_creator: :silent,
-    no_tags: :silent
+    no_tags: :silent,
+    http_error: :info
   )
 
   ICONS = ActiveSupport::HashWithIndifferentAccess.new(
@@ -63,7 +65,8 @@ class Problem < ApplicationRecord
     inefficient: "file-earmark-zip",
     no_image: "file-earmark-image",
     no_creator: "person-x",
-    no_tags: "label"
+    no_tags: "label",
+    http_error: "question-mark-circle"
   )
 
   def self.create_or_clear(problematic, category, should_exist, options = {})
@@ -84,7 +87,11 @@ class Problem < ApplicationRecord
   end
 
   def parent
-    problematic.model if problematic_type == "ModelFile"
+    if problematic_type == "ModelFile"
+      problematic.model
+    elsif problematic_type == "Link"
+      problematic.linkable
+    end
   end
 
   def icon
@@ -104,7 +111,8 @@ class Problem < ApplicationRecord
     no_license: :edit,
     no_links: :edit,
     no_creator: :edit,
-    no_tags: :edit
+    no_tags: :edit,
+    http_error: :edit
   }
 
   def resolution_strategy
