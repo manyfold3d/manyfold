@@ -171,7 +171,7 @@ class ModelsController < ApplicationController
       end
       model.organize_later if organize
     end
-    redirect_back_or_to edit_models_path(@filters), notice: t(".success")
+    redirect_back_or_to edit_models_path(@filter.to_params), notice: t(".success")
   end
 
   def destroy
