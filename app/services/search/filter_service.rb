@@ -4,6 +4,7 @@ class Search::FilterService
 
   # Get list filters from URL
   def initialize(params)
+    params = ActionController::Parameters.new(params) if params.is_a?(Hash)
     @filters = params.permit(
       :library,
       :collection,
@@ -12,7 +13,7 @@ class Search::FilterService
       :link,
       :missingtag,
       tag: []
-    ).compact || {}
+    )
     @collection = Collection.find_param(parameter(:collection)) if parameter(:collection).present?
     @creator = Creator.find_param(parameter(:creator)) if parameter(:creator).present?
   end
@@ -30,7 +31,7 @@ class Search::FilterService
   end
 
   def to_params(except: nil)
-    ActionController::Parameters.new(@filters.except(except))
+    @filters.except(except)
   end
 
   def tags

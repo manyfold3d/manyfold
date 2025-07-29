@@ -27,7 +27,7 @@ class ModelCLI < Thor
   desc "update_metadata", "reruns the metadata parser for all models"
   option :search, required: false, type: :string
   def update_metadata
-    Scan::CheckAllJob.perform_later({q: options[:search].presence})
+    Scan::CheckAllJob.perform_later({q: options[:search].presence}, nil)
   end
 
   desc "pregenerate_downloads", "generate downloadable ZIP files for all models"
