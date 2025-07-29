@@ -48,7 +48,7 @@
                 <ul class="dropdown-menu">
                   <li><%= link_to t(".scan_changes"), scans_path, method: :post, nofollow: true, class: "dropdown-item" %></li>
                   <li><%= link_to t(".check_existing"), scans_path(type: :check), method: :post, nofollow: true, class: "dropdown-item" %>
-                  <li><%= link_to t(".check_results"), scans_path({type: :check}.merge(@filters), ), method: :post, nofollow: true, class: "dropdown-item" if @filters && !@filters.empty?%>
+                  <li><%= link_to t(".check_results"), scans_path({type: :check}.merge(@filters)), method: :post, nofollow: true, class: "dropdown-item" if @filters.present? %>
                 </ul>
               </div>
             <% end %>
