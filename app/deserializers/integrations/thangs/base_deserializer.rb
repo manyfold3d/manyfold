@@ -15,6 +15,7 @@ class Integrations::Thangs::BaseDeserializer < Integrations::BaseDeserializer
   def fetch(api_url)
     connection = Faraday.new do |builder|
       builder.response :json
+      builder.response :raise_error
     end
     connection.get("https://thangs.com/api/#{api_url}", {},
       {
