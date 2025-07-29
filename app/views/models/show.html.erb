@@ -109,7 +109,7 @@
           </tr>
           <tr>
             <td><%= icon "tag", t(".tags") %></td>
-            <td><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc) %></td>
+            <td><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc), filter: @filter %></td>
           </tr>
           <% if SiteSettings.social_enabled? %>
             <tr>

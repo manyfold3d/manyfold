@@ -1,5 +1,5 @@
 <% unless @tags.empty? %>
   <%= card :secondary, ActsAsTaggableOn::Tag.model_name.human(count: 100), collapse: "md", skip_link: {target: "footer", text: t(".skip_tags")} do %>
-    <%= render "tag_list", tags: @tags, kv_tags: @kv_tags, unrelated_tag_count: @unrelated_tag_count %>
+    <%= render "tag_list", tags: @tags, kv_tags: @kv_tags, unrelated_tag_count: @unrelated_tag_count, filter: @filter %>
   <% end %>
 <% end %>
