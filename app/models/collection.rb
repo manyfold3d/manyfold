@@ -41,7 +41,7 @@ class Collection < ApplicationRecord
   end
 
   # returns all collections at and below given ids
-  #   this should be applied to @filters[:collection] to get models in sub-trees
+  #   used in Search::FilterService#parameter(:collection) to get models in sub-trees
   scope :tree_down, ->(id) {
     id ?
     where("collections.id IN (With RECURSIVE search_tree(id) AS (
