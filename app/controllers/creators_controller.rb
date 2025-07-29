@@ -8,16 +8,15 @@ class CreatorsController < ApplicationController
 
   def index
     @creators = policy_scope(Creator)
-    if @filters.empty?
-      @models = policy_scope(Model).all
-    else
-      @models = filtered_models @filters
+    @models = policy_scope(Model).all
+    if @filter.any?
+      @models = @filter.models(@models)
       @creators = @creators.where(id: @models.pluck(:creator_id).uniq)
     end
 
-    @tags, @unrelated_tag_count = generate_tag_list(@models, @filter_tags)
+    @tags, @unrelated_tag_count = generate_tag_list(@models, @filter.tags)
     @tags, @kv_tags = split_key_value_tags(@tags)
-    @unrelated_tag_count = nil if @filters.empty?
+    @unrelated_tag_count = nil unless @filter.any?
 
     # Ordering
     @creators = case session["order"]

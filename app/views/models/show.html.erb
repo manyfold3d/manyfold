@@ -71,13 +71,13 @@
           <% if @model.collection %>
             <tr>
               <td><%= icon "collection", Collection.model_name.human(count: 100) %></td>
-              <td><%= link_to @model.collection.name, models_path((@filters || {}).merge(collection: @model.collection)) %></td>
+              <td><%= link_to @model.collection.name, models_path({collection: @model.collection}.merge(@filter&.to_params)) %></td>
             </tr>
           <% end %>
           <% if SiteSettings.show_libraries || current_user&.is_administrator? %>
             <tr>
               <td><%= icon "boxes", Library.model_name.human %></td>
-              <td><%= link_to @model.library.name, models_path((@filters || {}).merge(library: @model.library)) %></td>
+              <td><%= link_to @model.library.name, models_path({library: @model.library}.merge(@filter&.to_params)) %></td>
             </tr>
           <% end %>
           <% if @model.license %>
@@ -109,7 +109,7 @@
           </tr>
           <tr>
             <td><%= icon "tag", t(".tags") %></td>
-            <td><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc) %></td>
+            <td><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc), filter: @filter %></td>
           </tr>
           <% if SiteSettings.social_enabled? %>
             <tr>

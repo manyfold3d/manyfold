@@ -10,16 +10,16 @@
 <% end %>
 <%- tag_html_opts = {data: {bulk_item_tags: defined?(model_id) ? model_id&.to_s : nil}} %>
 <%- heatmap = defined?(show_count) ? heatmap : tag_cloud_settings["heatmap"] %>
-<%= render_component_collection(Components::Tag, :tag, tags, filters: @filters.merge(@additional_filters), html_options: tag_html_opts, show_count: heatmap, filter_in_place: @filter_in_place) if tags %>
+<%= render_component_collection(Components::Tag, :tag, tags, filters: filter.to_params.merge(@additional_filters), html_options: tag_html_opts, show_count: heatmap, filter_in_place: @filter_in_place) if tags %>
 <% if defined?(kv_tags) && kv_tags %>
   <ul class="list-unstyled">
     <% tiers.each do |tier| %>
       <li>
         <details id="<%= tier %>" data-controller="tag-section" data-action="toggle->tag-section#saveState">
           <summary><%= tier %></summary>
-          <%= render "tag_list", tags: kv_tags.select { |obj| obj.name.match?("^#{tier}:") } %>
+          <%= render "tag_list", tags: kv_tags.select { |obj| obj.name.match?("^#{tier}:") }, filter: @filter %>
           <%- if tierunset && tierunset[tier] > 0 %>
-            <%= link_to "unset (#{tierunset[tier]})", (@filters || {}).merge(missingtag: tier), {class: "badge rounded-pill border border-muted text-danger tag"} %>
+            <%= link_to "unset (#{tierunset[tier]})", filter.to_params.merge(missingtag: tier), {class: "badge rounded-pill border border-muted text-danger tag"} %>
           <%- end %>
         </details>
       </li>

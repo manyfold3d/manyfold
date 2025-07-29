@@ -16,13 +16,13 @@
     <% if collection.creator %>
       <li>
         <%= icon "person", Creator.model_name.human %>
-        <%= link_to collection.creator.name, collections_path({creator: collection.creator}.merge(@filters || {})) %><br>
+        <%= link_to collection.creator.name, collections_path({creator: collection.creator}.merge(@filter.to_params)) %><br>
       </li>
     <% end %>
     <% if collection.collection %>
       <li>
         <%= icon "collection", Collection.model_name.human %>
-        <%= link_to collection.collection.name, collection, @filters || {} %><br>
+        <%= link_to collection.collection.name, collection, @filter.to_params %><br>
       </li>
     <% end %>
   <% end %>

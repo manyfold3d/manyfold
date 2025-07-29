@@ -23,7 +23,7 @@
         <td><%= form.check_box "models[#{model.to_param}]", data: {bulk_item: model.to_param}, "aria-label": translate(".select", name: model.name) %></td>
         <td><%= link_to model.name, model, title: model.path %></td>
         <td><%= link_to model.collection.name, model.collection if model.collection %></td>
-        <td><%= render "tag_list", tags: model.tags.order(taggings_count: :desc, name: :asc), model_id: model.to_param, show_count: false %></td>
+        <td><%= render "tag_list", tags: model.tags.order(taggings_count: :desc, name: :asc), model_id: model.to_param, show_count: false, filter: @filter %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
         <td><%= icon("explicit", Model.human_attribute_name(:sensitive)) if model.sensitive %></td>
         <td><%= icon("exclamation-triangle", t(".needs_organizing")) if model.needs_organizing? %></td>
@@ -50,20 +50,20 @@
 
       <%= checkbox_input_row form, :organize %>
 
-      <% if @filters[:tag] %>
-        <% @filters[:tag].each do |tag| %>
+      <% if @filter.filtering_by?(:tag) %>
+        <% @filter.parameter(:tag).each do |tag| %>
           <%= form.hidden_field :tag, multiple: true, value: tag %>
         <% end %>
       <% end %>
-      <%= form.hidden_field :q, value: @filters[:q] if @filters[:q] %>
-      <%= form.hidden_field :collection, value: @filters[:collection] if @filters[:collection] %>
-      <%= form.hidden_field :library, value: @filters[:library] if @filters[:library] %>
-      <%= form.hidden_field :creator, value: @filters[:creator] if @filters[:creator] %>
+      <%= form.hidden_field :q, value: @filter.parameter(:q) if @filter.filtering_by?(:q) %>
+      <%= form.hidden_field :collection, value: @filter.parameter(:collection) if @filter.filtering_by?(:collection) %>
+      <%= form.hidden_field :library, value: @filter.parameter(:library) if @filter.filtering_by?(:library) %>
+      <%= form.hidden_field :creator, value: @filter.parameter(:creator) if @filter.filtering_by?(:creator) %>
       <%= form.submit translate(".submit"), class: "btn btn-primary" %>
       <%= form.submit translate(".update_all", count: @models.total_count), class: "btn btn-secondary", name: "update_all" %>
       <%= form.submit translate(".merge"), class: "btn btn-outline-warning", formaction: merge_models_path, formmethod: :post, name: "merge" %>
     </div>
-    <% if !@filters.empty? %>
+    <% if !@filter.to_params.empty? %>
       <div class="col col-md-3">
         <%= render "filters_card" %>
       </div>

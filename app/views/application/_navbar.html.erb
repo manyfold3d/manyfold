@@ -10,13 +10,13 @@
     <div class="collapse navbar-collapse row" id="navbar">
       <ul class="navbar-nav col ps-4 ps-md-0 align-self-start">
         <li class="nav-item">
-          <%= nav_link "box", Model.model_name.human(count: 100), models_path(@filters), text_style: "d-md-none d-lg-inline" %>
+          <%= nav_link "box", Model.model_name.human(count: 100), models_path(@filter&.to_params), text_style: "d-md-none d-lg-inline" %>
         </li>
         <li class="nav-item">
-          <%= nav_link "people", Creator.model_name.human(count: 100), creators_path(@filters&.except(:creator)), text_style: "d-md-none d-lg-inline" %>
+          <%= nav_link "people", Creator.model_name.human(count: 100), creators_path(@filter&.to_params(except: :creator)), text_style: "d-md-none d-lg-inline" %>
         </li>
         <li class="nav-item">
-          <%= nav_link "collection", Collection.model_name.human(count: 100), collections_path(@filters&.except(:collection)), text_style: "d-md-none d-lg-inline" %>
+          <%= nav_link "collection", Collection.model_name.human(count: 100), collections_path(@filter&.to_params(except: :collection)), text_style: "d-md-none d-lg-inline" %>
         </li>
         <% if SiteSettings.show_libraries %>
           <% policy_scope(Library).find_each do |library| %>
@@ -24,7 +24,7 @@
               <%= nav_link(
                     library.icon.presence || "boxes",
                     library.name,
-                    models_path((@filters&.except(:library) || {}).merge({library: library})),
+                    models_path({library: library}.merge(@filter&.to_params(except: :library))),
                     title: library.caption
                   )	%>
             </li>
@@ -48,7 +48,7 @@
                 <ul class="dropdown-menu">
                   <li><%= link_to t(".scan_changes"), scans_path, method: :post, nofollow: true, class: "dropdown-item" %></li>
                   <li><%= link_to t(".check_existing"), scans_path(type: :check), method: :post, nofollow: true, class: "dropdown-item" %>
-                  <li><%= link_to t(".check_results"), scans_path({type: :check}.merge(@filters)), method: :post, nofollow: true, class: "dropdown-item" if @filters.present? %>
+                  <li><%= link_to t(".check_results"), scans_path({type: :check}.merge(@filter.to_params)), method: :post, nofollow: true, class: "dropdown-item" if @filter&.any? %>
                 </ul>
               </div>
             <% end %>

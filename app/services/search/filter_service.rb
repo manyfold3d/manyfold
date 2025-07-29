@@ -34,9 +34,6 @@ class Search::FilterService
     @filters.except(except)
   end
 
-  def tags
-  end
-
   def models(scope)
     scope = scope.all
     scope = filter_by_library(scope)
@@ -46,6 +43,17 @@ class Search::FilterService
     scope = filter_by_creator(scope)
     scope = filter_by_url(scope)
     filter_by_search(scope)
+  end
+
+  def collections(scope)
+    scope = scope.includes(:creator)
+    scope = filter_by_collection(scope)
+    scope = filter_by_creator(scope)
+    filter_by_search(scope)
+  end
+
+  def tags
+    ActsAsTaggableOn::Tag.named_any(parameter(:tag)) if filtering_by?(:tag)
   end
 
   private
