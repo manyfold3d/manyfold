@@ -48,10 +48,6 @@ nl:
       tag_regex:
         check: Controleren
         search_missing: Zoek Ontbrekende
-    scan:
-      success: Bibliotheekscan gestart.
-    scan_all:
-      success: Scan gestart voor alle bibliotheken.
     storage_services:
       filesystem: Lokaal bestandssysteem
       s3: S3-compatibele cloudopslag

@@ -48,10 +48,6 @@ de:
       tag_regex:
         check: Check
         search_missing: Suche Fehlende
-    scan:
-      success: Sammlungs-Scan wurde gestartet.
-    scan_all:
-      success: Scan für alle Sammlungen gestartet.
     storage_services:
       filesystem: Lokales Dateisystem
       s3: S3-kompatibler Cloud-Speicher

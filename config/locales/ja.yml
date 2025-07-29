@@ -626,9 +626,6 @@ ja:
         loading_mesh:
         manifold_check:
     scan:
-      check_all:
-        queueing_model_checks:
-        removing_orphaned_problems:
       detect_filesystem_changes:
         building_filename_list:
         building_folder_list:
@@ -700,6 +697,9 @@ ja:
       description:
       submit:
       title:
+  scans:
+    create:
+      success:
   security:
     running_as_root_html:
   sites:

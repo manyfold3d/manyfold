@@ -48,10 +48,6 @@ es:
       tag_regex:
         check: Revisar
         search_missing: Buscar Desaparecidos
-    scan:
-      success: Se ha iniciado el escaneo de la biblioteca.
-    scan_all:
-      success: Escaneado iniciado para todas las bibliotecas.
     storage_services:
       filesystem: Sistema de archivos local
       s3: Almacenamiento en la nube compatible con S3

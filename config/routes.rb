@@ -64,19 +64,13 @@ Rails.application.routes.draw do
   root to: "home#index"
   get "/about", to: "home#about", as: :about
   resources :imports, only: [:new, :create]
+  resources :scans, only: [:create]
 
   authenticate :user do
     get "/welcome", to: "home#welcome", as: :welcome
   end
 
-  resources :libraries, except: [:index] do
-    member do
-      post "scan"
-    end
-    collection do
-      post "scan", action: :scan_all
-    end
-  end
+  resources :libraries, except: [:index]
 
   concern :followable do |options|
     if SiteSettings.multiuser_enabled?

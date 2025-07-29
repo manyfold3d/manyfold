@@ -626,9 +626,6 @@ cs:
         loading_mesh: Načítání modelu
         manifold_check: Kontrola, zda je model manifold
     scan:
-      check_all:
-        queueing_model_checks: Zařazení kontroly modelu do fronty
-        removing_orphaned_problems: Odstranění samostatných problémů
       detect_filesystem_changes:
         building_filename_list: Sestavení seznamu souborů
         building_folder_list: Sestavení seznamu změněných složek
@@ -700,6 +697,9 @@ cs:
       description: Pokud tato položka porušuje zákony nebo zásady serveru, můžete ji nahlásit našim moderátorům. Přidejte komentář a sdělte nám proč!
       submit: Odeslat hlášení
       title: 'Nahlásit %{type}: "%{name}"'
+  scans:
+    create:
+      success: Spuštěna kontrola všech knihoven.
   security:
     running_as_root_html: Manyfold je spuštěn jako root, což představuje bezpečnostní riziko. Spusťte jej jako jiný uživatel systému nastavením proměnných prostředí <code>PUID</code> a <code>PGID</code>. Podrobnosti naleznete v <a href='https://manyfold.app/sysadmin/configuration.html#required'>konfigurační dokumentaci</a>.
   sites:

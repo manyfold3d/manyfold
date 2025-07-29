@@ -36,7 +36,7 @@
           <%= nav_link "upload", t(".upload"), new_model_path, nofollow: true, style: "btn btn-warning btn-sm me-1 mt-1", text_style: "d-md-none d-lg-inline" if policy(:upload).index? %>
         </li>
         <li class="nav-item">
-          <% if policy(:library).scan? %>
+          <% if policy(:scan).create? %>
             <% if @scan_in_progress %>
               <%= nav_link "", t(".scanning"), activity_path, nofollow: true, style: "btn btn-outline-warning btn-sm me-1 mt-lg-1", icon_style: "spinner-border spinner-border-sm" %>
             <% else %>
@@ -46,8 +46,9 @@
                   <%= t ".scan" %>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><%= link_to t(".scan_changes"), scan_libraries_path, method: :post, nofollow: true, class: "dropdown-item" %></li>
-                  <li><%= link_to t(".check_existing"), scan_libraries_path(type: :check), method: :post, nofollow: true, class: "dropdown-item" %>
+                  <li><%= link_to t(".scan_changes"), scans_path, method: :post, nofollow: true, class: "dropdown-item" %></li>
+                  <li><%= link_to t(".check_existing"), scans_path(type: :check), method: :post, nofollow: true, class: "dropdown-item" %>
+                  <li><%= link_to t(".check_results"), scans_path({type: :check}.merge(@filters)), method: :post, nofollow: true, class: "dropdown-item" if @filters.present? %>
                 </ul>
               </div>
             <% end %>

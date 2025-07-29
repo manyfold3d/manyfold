@@ -1,15 +1,18 @@
 class Scan::CheckAllJob < ApplicationJob
+  include JobIteration::Iteration
   queue_as :scan
   unique :until_executed
 
-  def perform
-    # Remove orphan problems
-    status[:step] = "jobs.scan.check_all.removing_orphaned_problems" # i18n-tasks-use t('jobs.scan.check_all.removing_orphaned_problems')
-    Problem.including_ignored.find_each do |problem|
-      problem.destroy if problem.problematic.nil?
-    end
-    # Check all models
-    status[:step] = "jobs.scan.check_all.queueing_model_checks" # i18n-tasks-use t('jobs.scan.check_all.queueing_model_checks')
-    Model.find_each(&:check_later)
+  def build_enumerator(filter_params, instigator, cursor:)
+    scope = instigator ?
+      ModelPolicy::UpdateScope.new(instigator, Model).resolve :
+      Model.all
+    scope = Search::FilterService.new(filter_params).models(scope)
+    Rails.logger.info "queueing rescan for #{scope.count} models"
+    enumerator_builder.active_record_on_records(scope, cursor: cursor)
+  end
+
+  def each_iteration(model, _filters, _instigator)
+    model.check_later
   end
 end
