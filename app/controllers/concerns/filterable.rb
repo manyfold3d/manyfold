@@ -5,18 +5,6 @@ module Filterable
   end
 
   def get_filters
-    # Get list filters from URL
     @filter = Search::FilterService.new(params)
-    @filters = @filter.to_params
-  end
-
-  def filtered_models(filters)
-    @collection = @filter.collection
-    @creator = @filter.creator
-    @filter.models(policy_scope(Model))
-  end
-
-  def filtered_collections(filters)
-    @filter.collections(policy_scope(Collection))
   end
 end
