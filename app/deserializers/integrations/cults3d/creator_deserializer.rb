@@ -12,6 +12,7 @@ class Integrations::Cults3d::CreatorDeserializer < Integrations::Cults3d::BaseDe
         }
       }
     GRAPHQL
+    raise Faraday::ResourceNotFound.new("Not Found") unless result.data&.user
     self.class.parse(result.data&.user)
   end
 

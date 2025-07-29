@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cults3d.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query GraphQL__Client__OperationDefinition_21696 {\n  user(nick:
+        \"ThisUserDoesNotExist\") {\n    nick\n    bio\n    url\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_21696","variables":{}}'
+    headers:
+      Authorization:
+      - Basic <CULTS3D_BASIC_AUTH>
+      User-Agent:
+      - Faraday v2.13.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Jul 2025 16:22:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"bccfa9d7d069d86a4e5ec455bbd5d967"
+      Permissions-Policy:
+      - interest-cohort=()
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Vary:
+      - Accept
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '59'
+      X-Ratelimit-Reset:
+      - '2025-07-29T16:23:00.385988Z'
+      X-Request-Id:
+      - 0f3fda4b-c218-4510-ba02-3804449e1526
+      X-Runtime:
+      - '0.039703'
+      X-Xss-Protection:
+      - '0'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=08p6Lhz9GI2Kf%2FRJi3JqhlgbZBwgMKNui33KgzzGq4fDpp0OhI937uY9zZlw28ICbKaIYw9qkCpFIy0YffRKquh5vYloO8OvPmo6kLSKj%2BAoAM2IujY%3D"}]}'
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - _session_id=3fabe288501fb7b8df9e9db07da58d6c; HttpOnly; Secure; Path=/; Expires=Tue,
+        19 Aug 2025 16:22:31 GMT
+      Cf-Ray:
+      - 966df49ddd966395-LHR
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"user":null}}'
+  recorded_at: Tue, 29 Jul 2025 16:22:31 GMT
+recorded_with: VCR 6.3.1

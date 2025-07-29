@@ -20,6 +20,10 @@ class UpdateMetadataFromLinkJob < ApplicationJob
     end
     # If successful, set sync time
     link.update!(synced_at: Time.now.utc)
+    Problem.create_or_clear(link, :http_error, false)
+  rescue Faraday::Error => err
+    Rails.logger.error err
+    Problem.create_or_clear(link, :http_error, true, note: err.to_s)
   end
 
   def import_files(data, model)

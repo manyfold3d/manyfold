@@ -15,7 +15,11 @@ class Components::LinkList < Components::Base
       @links.each do |link|
         if link.valid?
           li do
-            Icon(icon: "link-45deg")
+            if link.problems.exists?
+              Icon(icon: "exclamation-triangle-fill")
+            else
+              Icon(icon: "link-45deg")
+            end
             whitespace
             link_to t("sites.%{site}" % {site: link.site}, default: "%{site}" % {site: link.site}), link.url, rel: "noreferrer"
             if link.deserializer.present? && policy(link.linkable).sync?

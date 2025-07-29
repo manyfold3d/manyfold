@@ -25,6 +25,7 @@ class Integrations::Cults3d::ModelDeserializer < Integrations::Cults3d::BaseDese
         }
       }
     GRAPHQL
+    raise Faraday::ResourceNotFound.new("Not Found") unless result.data&.creation
     {
       name: result.data&.creation&.name,
       slug: @object_slug,

@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://thangs.com/api/models/999999999999
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 29 Jul 2025 16:27:12 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      Cf-Cache-Status:
+      - MISS
+      Vary:
+      - Origin, accept-encoding
+      Access-Control-Allow-Origin:
+      - ''
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - x-thangs-refresh-token,content-length,x-decompressed-content-length
+      X-Thangs-Api-Version:
+      - vfc5758e
+      Cache-Control:
+      - s-maxage=900, public, stale-while-revalidate=31536000
+      X-Response-Time:
+      - 10ms
+      X-Cloud-Trace-Context:
+      - 5a5bd8d042105545a3103853f17b9c7a
+      Via:
+      - 1.1 google
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Cf-Ray:
+      - 966dfb784eaf3d8e-LHR
+    body:
+      encoding: ASCII-8BIT
+      string: Not Found
+  recorded_at: Tue, 29 Jul 2025 16:27:12 GMT
+recorded_with: VCR 6.3.1

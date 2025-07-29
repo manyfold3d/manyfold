@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.myminifactory.com/api/v2/users/ThisUserDoesNotExist?key=<MYMINIFACTORY_API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 29 Jul 2025 16:24:08 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Powered-By:
+      - PHP/8.1.30
+      Cache-Control:
+      - no-cache, private
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Node-Id:
+      - fbd7db759be9369382ef5c08e6abb1c6
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=J2YFAX2jp6PG9mrNP3eaiuh3%2FNAFb1vaMS2Gu%2BBGnwuUtYldbMr6AynL5D7EKSDRzjXUcq9078VXd11itOi6Vkt8wpGdtbGh2aYtI1St0ebueS4iVKVXjk%2FUQPtdLUXh"}]}'
+      Set-Cookie:
+      - __cflb=02DiuHo5HdJdoFszo8wLUqUUMVXqwmqYT3E76h2skWDWj; HttpOnly; SameSite=None;
+        Secure; Path=/; Expires=Tue, 05 Aug 2025 16:24:08 GMT
+      Cf-Ray:
+      - 966df6fa1cd0f52d-LHR
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":"not_found"}'
+  recorded_at: Tue, 29 Jul 2025 16:24:08 GMT
+recorded_with: VCR 6.3.1

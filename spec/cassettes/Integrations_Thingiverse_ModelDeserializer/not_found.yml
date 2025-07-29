@@ -1,0 +1,70 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.thingiverse.com/things/7075185
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Authorization:
+      - Bearer <THINGIVERSE_API_KEY>
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 29 Jul 2025 16:08:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '40'
+      Connection:
+      - keep-alive
+      Vary:
+      - Authorization,Cookie
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Content-Security-Policy:
+      - frame-ancestors *.makerbot.com *.thingiverse.com *.mbot.me *.onshape.com *.makerbot.local
+        *.thingiverse.local;
+      Access-Control-Max-Age:
+      - '604800'
+      Access-Control-Allow-Headers:
+      - Authorization, Referer, Content-Type, User-Agent, Accept
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PATCH, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=b5InRXu75Fv6MvU_rBMVmT_uJts3b73gDUDpfyhJtEA-1753805328-1.0.1.1-ZMXQ4kDrcDoi155936LWOVPAl7gGLyyiAjreevJa8N7REUt0.uybLUdQGZhzRkjsOYI_t9VgESjHHooLp8ck8iBRpiMJXR06JhCgmW9hH.Y;
+        path=/; expires=Tue, 29-Jul-25 16:38:48 GMT; domain=.thingiverse.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=majYCBxV68l0tZwgE1roIIJtvhKmoPCvvZwgglg1Io0-1753805328426-0.0.1.1-604800000;
+        path=/; domain=.thingiverse.com; HttpOnly; Secure; SameSite=None
+      Speculation-Rules:
+      - '"/cdn-cgi/speculation"'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 966de085bc9793f8-LHR
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"error":"Thing 7075185 does not exist"}'
+  recorded_at: Tue, 29 Jul 2025 16:08:48 GMT
+recorded_with: VCR 6.3.1

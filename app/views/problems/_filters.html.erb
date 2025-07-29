@@ -31,6 +31,8 @@
             <%= "selected" if params[:type]&.include?(Model.model_name.param_key) %>><%= Model.model_name.human %></option>
           <option value="<%= ModelFile.model_name.param_key %>"
             <%= "selected" if params[:type]&.include?(ModelFile.model_name.param_key) %>><%= ModelFile.model_name.human %></option>
+          <option value="<%= Link.model_name.param_key %>"
+            <%= "selected" if params[:type]&.include?(Link.model_name.param_key) %>><%= Link.model_name.human %></option>
         </select>
       </div>
     </div>

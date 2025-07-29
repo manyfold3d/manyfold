@@ -103,4 +103,14 @@ RSpec.describe Integrations::MyMiniFactory::ModelDeserializer, :mmf_api_key do
       expect(des).to be_valid
     end
   end
+
+  context "with URL that returns a 404", vcr: {cassette_name: "Integrations_MyMiniFactory_ModelDeserializer/not_found"} do
+    subject(:deserializer) { described_class.new(uri: uri) }
+
+    let(:uri) { "https://www.myminifactory.com/object/3d-print-nope-9999999999999" }
+
+    it "propagates client error" do
+      expect { deserializer.deserialize }.to raise_error(Faraday::ResourceNotFound)
+    end
+  end
 end
