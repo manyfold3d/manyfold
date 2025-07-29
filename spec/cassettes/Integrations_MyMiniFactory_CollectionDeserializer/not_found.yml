@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.myminifactory.com/api/v2/users/Scan%20The%20World/collections/non-existent-collection?key=<MYMINIFACTORY_API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 29 Jul 2025 16:24:55 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - cloudflare
+      X-Powered-By:
+      - PHP/8.1.31
+      Vary:
+      - Accept
+      Cache-Control:
+      - no-cache, private
+      X-Node-Id:
+      - 76a936272ea6e3129c5a0a13742ac407
+      Cf-Cache-Status:
+      - DYNAMIC
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=elor6Tpl0cmHTW%2B%2FWIv8FFGEgEjzWnH8MfjpquSzYmd8NSxKVL5zLSQc%2BYrZFwfJ67iJesoUN%2BXktK%2FZv57wWc5qtgHCyfr4KpL%2Bx2YmDphzlWiG4qOhr16Z3AwjaJga"}]}'
+      Set-Cookie:
+      - __cflb=02DiuHo5HdJdoFszo8wLUqUUMVXqwmqYTdvca4VN9CQYB; HttpOnly; SameSite=None;
+        Secure; Path=/; Expires=Tue, 05 Aug 2025 16:24:55 GMT
+      Cf-Ray:
+      - 966df822589090c9-LHR
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"type":"https:\/\/tools.ietf.org\/html\/rfc2616#section-10","title":"An
+        error occurred","status":404,"detail":"Not Found","error":"not_found","error_description":"Collection
+        not found."}'
+  recorded_at: Tue, 29 Jul 2025 16:24:55 GMT
+recorded_with: VCR 6.3.1

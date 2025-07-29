@@ -103,4 +103,15 @@ RSpec.describe Integrations::Thangs::ModelDeserializer, :thingiverse_api_key do
       expect(des).to be_valid
     end
   end
+
+  context "with URL that returns a 404", vcr: {cassette_name: "Integrations_Thangs_ModelDeserializer/not_found"} do
+    subject(:deserializer) { described_class.new(uri: uri) }
+
+    let(:uri) { "https://thangs.com/designer/CHEP/3d-model/CHEP%20Cube%20-%20Calibration%20Cube-999999999999" }
+
+    it "propagates client error" do
+      pending "Disabled until we have clarity on API usage"
+      expect { deserializer.deserialize }.to raise_error(Faraday::ResourceNotFound)
+    end
+  end
 end

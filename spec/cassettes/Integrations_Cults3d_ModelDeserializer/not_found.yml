@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cults3d.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query GraphQL__Client__OperationDefinition_23248 {\n  creation(slug:
+        \"404benchy\") {\n    name\n    description\n    license {\n      spdxId\n    }\n    safe\n    tags\n    illustrationImageUrl\n    illustrations
+        {\n      imageUrl\n    }\n    creator {\n      nick\n      bio\n      url\n    }\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_23248","variables":{}}'
+    headers:
+      Authorization:
+      - Basic <CULTS3D_BASIC_AUTH>
+      User-Agent:
+      - Faraday v2.13.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Jul 2025 16:20:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"6559afa3f73666c4458c19b33c7068eb"
+      Permissions-Policy:
+      - interest-cohort=()
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Nel:
+      - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains
+      Vary:
+      - Accept
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '59'
+      X-Ratelimit-Reset:
+      - '2025-07-29T16:20:30.573389Z'
+      X-Request-Id:
+      - 2dfdfd78-2a51-4c85-b52f-4c1ba81cf50a
+      X-Runtime:
+      - '0.087165'
+      X-Xss-Protection:
+      - '0'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Hu%2F%2F0V8ntcNo5qxuh8uDETM73Ql%2Ff7Bl8EWW1SipmsxS4Nla2n2jwtJFUpHXhzOR8b9OZke9YPafa8td9HKtQzsfR%2FezBvg5p78WYirglgi1pzzZhrE%3D"}]}'
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - _session_id=27c82e4a8528910fd4f3a122017b4e32; HttpOnly; Secure; Path=/; Expires=Tue,
+        19 Aug 2025 16:20:11 GMT
+      Cf-Ray:
+      - 966df133acdd9466-LHR
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"creation":null}}'
+  recorded_at: Tue, 29 Jul 2025 16:20:11 GMT
+recorded_with: VCR 6.3.1

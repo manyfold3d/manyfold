@@ -66,4 +66,14 @@ RSpec.describe Integrations::Thingiverse::CreatorDeserializer, :thingiverse_api_
       expect(des).to be_valid
     end
   end
+
+  context "with URL that returns a 404", vcr: {cassette_name: "Integrations_Thingiverse_CreatorDeserializer/not_found"} do
+    subject(:deserializer) { described_class.new(uri: uri) }
+
+    let(:uri) { "https://www.thingiverse.com/404_not_found" }
+
+    it "propagates client error" do
+      expect { deserializer.deserialize }.to raise_error(Faraday::ResourceNotFound)
+    end
+  end
 end

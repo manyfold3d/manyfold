@@ -1,0 +1,137 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.thingiverse.com/collections/99999999
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Authorization:
+      - Bearer <THINGIVERSE_API_KEY>
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 29 Jul 2025 16:17:50 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '46'
+      Connection:
+      - keep-alive
+      Vary:
+      - Authorization,Cookie
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Content-Security-Policy:
+      - frame-ancestors *.makerbot.com *.thingiverse.com *.mbot.me *.onshape.com *.makerbot.local
+        *.thingiverse.local;
+      Access-Control-Max-Age:
+      - '604800'
+      Access-Control-Allow-Headers:
+      - Authorization, Referer, Content-Type, User-Agent, Accept
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PATCH, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=mQZi69uN6UO4inpYiNrIjyTkW5bKEFfkR.cXqbeykwg-1753805870-1.0.1.1-6RMTpaPJKOoOmycxTUZt5l7Cw4Apcjcx7HUEmTfKuf6o.WGTgYvOXYFHEvpCFC4BD04oUMbwDICKTrA4Kw7YHjMY2yw4_mvok2pq.t410cs;
+        path=/; expires=Tue, 29-Jul-25 16:47:50 GMT; domain=.thingiverse.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=gjx6IIzNSnhYCwmSMtpddAOkAphjSnYBZQL9eHL2SmI-1753805870515-0.0.1.1-604800000;
+        path=/; domain=.thingiverse.com; HttpOnly; Secure; SameSite=None
+      Speculation-Rules:
+      - '"/cdn-cgi/speculation"'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 966dedc1cd8bedbd-LHR
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"error":"Collection 99999999 does not exist"}'
+  recorded_at: Tue, 29 Jul 2025 16:17:50 GMT
+- request:
+    method: get
+    uri: https://api.thingiverse.com/collections/99999999/things
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Authorization:
+      - Bearer <THINGIVERSE_API_KEY>
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 29 Jul 2025 16:17:50 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '46'
+      Connection:
+      - keep-alive
+      Vary:
+      - Authorization,Cookie
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Content-Security-Policy:
+      - frame-ancestors *.makerbot.com *.thingiverse.com *.mbot.me *.onshape.com *.makerbot.local
+        *.thingiverse.local;
+      Access-Control-Max-Age:
+      - '604800'
+      Access-Control-Allow-Headers:
+      - Authorization, Referer, Content-Type, User-Agent, Accept
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PATCH, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=ojPxPgbDIJ.Vj76JCsxHv.9mBQyh8zOuHUzAObIEmUc-1753805870-1.0.1.1-_ZaakJYCT0UIpduzeCiWqJAzM2Eis_IjvcW5EtzRVq8do5G_r6V1FVMRabZyIVSlrxD0gQAdIoujNJP7u6boKqSOTnYNRh.chLtVBCkGdos;
+        path=/; expires=Tue, 29-Jul-25 16:47:50 GMT; domain=.thingiverse.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=KHHtFh39ca7EZyjgOWhS4Dyjx0Jvma1Xk4zonh7n.00-1753805870717-0.0.1.1-604800000;
+        path=/; domain=.thingiverse.com; HttpOnly; Secure; SameSite=None
+      Speculation-Rules:
+      - '"/cdn-cgi/speculation"'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 966dedc30917bee2-LHR
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"error":"Collection 99999999 does not exist"}'
+  recorded_at: Tue, 29 Jul 2025 16:17:50 GMT
+recorded_with: VCR 6.3.1

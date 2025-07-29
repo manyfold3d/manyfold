@@ -1,0 +1,70 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.thingiverse.com/users/404_not_found
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Authorization:
+      - Bearer <THINGIVERSE_API_KEY>
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 29 Jul 2025 16:16:28 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '12'
+      Connection:
+      - keep-alive
+      Vary:
+      - Authorization,Cookie
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Content-Security-Policy:
+      - frame-ancestors *.makerbot.com *.thingiverse.com *.mbot.me *.onshape.com *.makerbot.local
+        *.thingiverse.local;
+      Access-Control-Max-Age:
+      - '604800'
+      Access-Control-Allow-Headers:
+      - Authorization, Referer, Content-Type, User-Agent, Accept
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, PATCH, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=SfI.rUbY3UH1Nera_FO4YVVcntjuZgfeif7HfODBtC0-1753805788-1.0.1.1-bYL.Ttm3brkbh9y1QbMoClQx9v9Cxnx9nNFcmgctJumvFcZxxOwr5BJy5C1igIi2IIiOS1bChLbI33yaBDcGhnS5HXuwIa3B4M4bJKZZmFA;
+        path=/; expires=Tue, 29-Jul-25 16:46:28 GMT; domain=.thingiverse.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=ECrGOJvD.s60l1Y4mU6R4v7hf8nrkKLbaBz3pSYVzjA-1753805788379-0.0.1.1-604800000;
+        path=/; domain=.thingiverse.com; HttpOnly; Secure; SameSite=None
+      Speculation-Rules:
+      - '"/cdn-cgi/speculation"'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 966debc08805e5af-LHR
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"error":""}'
+  recorded_at: Tue, 29 Jul 2025 16:16:28 GMT
+recorded_with: VCR 6.3.1
