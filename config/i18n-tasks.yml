@@ -146,6 +146,7 @@ ignore_unused:
 - 'problems.update.unignored'
 - 'problems.model.*'
 - 'problems.model_file.*'
+- 'problems.link.*'
 - 'problems.severities.*'
 - 'application.caber_relation_fields.permissions.*'
 - 'active_admin.exit' # Used in initializer, not detected automatically
