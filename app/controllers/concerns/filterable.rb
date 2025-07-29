@@ -18,34 +18,6 @@ module Filterable
   end
 
   def filtered_collections(filters)
-    collections = policy_scope(Collection).includes(:creator)
-    collections = filter_collection_by_collection(collections, filters[:collection])
-    collections = filter_collection_by_creator(collections, filters[:creator])
-    collections = Search::ModelSearchService.new(collections).search(@filter.parameter(:q)) if @filter.filtering_by?(:q)
-    collections
-  end
-
-  private
-
-  def filter_collection_by_collection(collections, collection)
-    case collection
-    when nil
-      collections
-    when ""
-      collections.where(collection: nil)
-    else
-      collections.where(collection: Collection.find_param(collection))
-    end
-  end
-
-  def filter_collection_by_creator(collections, creator)
-    case creator
-    when nil
-      collections
-    when ""
-      collections.where(creator_id: nil)
-    else
-      collections.where(creator: Creator.find_param(creator))
-    end
+    @filter.collections(policy_scope(Collection))
   end
 end
