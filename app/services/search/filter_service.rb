@@ -34,9 +34,6 @@ class Search::FilterService
     @filters.except(except)
   end
 
-  def tags
-  end
-
   def models(scope)
     scope = scope.all
     scope = filter_by_library(scope)
