@@ -45,8 +45,8 @@ RSpec.describe ModelFile do
       )
     }
 
-    it "calculates a bounding box for model" do
-      expect(part.bounding_box).to eq([10, 15, 20])
+    it "calculates dimensions of model" do
+      expect(part.dimensions).to eq(Mittsu::Vector3.new(10, 15, 20))
     end
 
     it "calculates file size when attached" do
