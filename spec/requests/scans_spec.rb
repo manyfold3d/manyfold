@@ -8,18 +8,18 @@ RSpec.describe "Scans" do
       end
     end
 
-    context "when contributor", :as_contributor do
+    context "when admin", :as_administrator do
       it "scans all libraries" do
         expect { post "/scans" }.to have_enqueued_job(Scan::Library::DetectFilesystemChangesJob).exactly(:once)
       end
 
-      it "is allowed for contributors" do
+      it "is allowed" do
         post "/scans"
         expect(response).to redirect_to("/models")
       end
     end
 
-    it "denies member permission", :as_member do
+    it "is denied to mods and below", :as_moderator do
       post "/scans"
       expect(response).to have_http_status(:forbidden)
     end
