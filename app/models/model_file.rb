@@ -143,10 +143,14 @@ class ModelFile < ApplicationRecord
     nil
   end
 
-  def bounding_box
-    return nil unless mesh
-    bbox = Mittsu::Box3.new.set_from_object(mesh)
-    bbox.size.to_a
+  def dimensions
+    bbox = attachment.metadata.dig("object", "bounding_box")
+    return nil unless bbox
+    bbox = Mittsu::Box3.new.set_from_points([
+      Mittsu::Vector3.new(bbox.dig("minimum", "x"), bbox.dig("minimum", "y"), bbox.dig("minimum", "z")),
+      Mittsu::Vector3.new(bbox.dig("maximum", "x"), bbox.dig("maximum", "y"), bbox.dig("maximum", "z"))
+    ])
+    bbox.size
   end
 
   def duplicates

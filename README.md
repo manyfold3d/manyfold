@@ -48,6 +48,7 @@ To run the app yourself, you'll need the following installed:
 * [libarchive](https://github.com/chef/ffi-libarchive#installation) (for upload support)
 * [imagemagick](https://imagemagick.org/index.php) (for image thumbnail generation)
 * [ngrok](https://ngrok.com) (for ActivityPub development)
+* [assimp](https://www.assimp.org) (for model file analysis)
 
 To run the application once you've cloned this repo, you should be able to just run `bin/dev`; that should set up the database, perform migrations, install dependencies, and then make the application available at <http://127.0.0.1:5000>.
 

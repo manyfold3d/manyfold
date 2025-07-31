@@ -65,6 +65,12 @@
           <code><%= number_to_human_size @file.size, precision: 2 %></code>
         </p>
       <% end %>
+      <% if @file.dimensions %>
+        <p>
+          <%= ModelFile.human_attribute_name :dimensions %>:
+          <code><%= format("X=%<x>.2g Y=%<y>.2g Z=%<z>.2g", x: @file.dimensions.x, y: @file.dimensions.y, z: @file.dimensions.z) %></code>
+        </p>
+      <% end %>
       <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_model_model_file_path(@model, @file), class: "btn btn-primary" if policy(@file).edit? %>
       <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), model_model_file_path(@model, @file), {method: "delete", data: {confirm: translate("model_files.destroy.confirm")}, class: "btn btn-outline-danger"} if policy(@file).destroy? %>
     <% end %>

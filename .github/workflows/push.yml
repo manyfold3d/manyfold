@@ -10,6 +10,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Install requirements
+        run: sudo apt install -y assimp-utils
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - name: Remove data schema so we bootstrap from zero with data migrations
