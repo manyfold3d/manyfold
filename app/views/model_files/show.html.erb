@@ -68,7 +68,9 @@
       <% if @file.dimensions %>
         <p>
           <%= ModelFile.human_attribute_name :dimensions %>:
-          <code><%= format("X=%<x>.2g Y=%<y>.2g Z=%<z>.2g", x: @file.dimensions.x, y: @file.dimensions.y, z: @file.dimensions.z) %></code>
+          𝒙 <code><%= format("%g", @file.dimensions.x.round(1)) %></code>
+          𝒚 <code><%= format("%g", @file.dimensions.y.round(1)) %></code>
+          𝒛 <code><%= format("%g", @file.dimensions.z.round(1)) %></code>
         </p>
       <% end %>
       <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_model_model_file_path(@model, @file), class: "btn btn-primary" if policy(@file).edit? %>
