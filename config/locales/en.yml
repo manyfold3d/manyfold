@@ -74,6 +74,7 @@ en:
       model_file:
         caption: Caption
         digest: Digest
+        dimensions: Dimensions
         filename: Filename
         model_id: Model
         notes: Notes
