@@ -24,7 +24,7 @@
               <%= nav_link(
                     library.icon.presence || "boxes",
                     library.name,
-                    models_path({library: library}.merge(@filter&.to_params(except: :library))),
+                    models_path({library: library}.merge(@filter&.to_params(except: :library) || {})),
                     title: library.caption
                   )	%>
             </li>
