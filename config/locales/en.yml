@@ -714,7 +714,6 @@ en:
     card_list_page:
       actions_heading: Actions
     settings:
-      activeadmin: Advanced Administration
       appearance: Appearance
       downloads: Downloads
       libraries: Libraries

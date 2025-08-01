@@ -653,7 +653,6 @@ cs:
     card_list_page:
       actions_heading: Akce
     settings:
-      activeadmin: Pokročilá administrace
       appearance: Vzhled
       downloads:
       libraries: Knihovny

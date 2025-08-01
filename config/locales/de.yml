@@ -653,7 +653,6 @@ de:
     card_list_page:
       actions_heading: Aktionen
     settings:
-      activeadmin: Erweiterte Administration
       appearance: Erscheinungsbild
       downloads: Herunterladen
       libraries: Sammlungen
