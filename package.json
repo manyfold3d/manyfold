@@ -11,7 +11,6 @@
     "typecheck": "bundle exec i18n export --config=./config/i18n-js.yml && tsc --project tsconfig.json"
   },
   "dependencies": {
-    "@activeadmin/activeadmin": "^3.3.0",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.13",
     "@infinizhen/rpg-awesome-continued": "^1.0.6",
