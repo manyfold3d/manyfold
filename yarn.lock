@@ -12,17 +12,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@activeadmin/activeadmin@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "@activeadmin/activeadmin@npm:3.3.0"
-  dependencies:
-    jquery: ^3.4.1
-    jquery-ui: ^1.13.3
-    jquery-ujs: ^1.2.2
-  checksum: 8ba45d4f04ae73e29e8e23cf8f5cc708003862a0df62d2e14e06a12e9c84d44e948523d4d6dbba6b5a4f505934edd77215386ccb25ab35e6fedec8006b14a324
-  languageName: node
-  linkType: hard
-
 "@altcha/crypto@npm:^0.0.1":
   version: 0.0.1
   resolution: "@altcha/crypto@npm:0.0.1"
@@ -3879,31 +3868,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jquery-ui@npm:^1.13.3":
-  version: 1.14.1
-  resolution: "jquery-ui@npm:1.14.1"
-  dependencies:
-    jquery: ">=1.12.0 <5.0.0"
-  checksum: 376d2af7a3be0de1d42b522c2f1f2891dd521adde333f732f94f2dbff6c9926352d345d13bb92c784c9933bb49743934a712af498ada7d6cfb91e3aab66f03e3
-  languageName: node
-  linkType: hard
-
-"jquery-ujs@npm:^1.2.2":
-  version: 1.2.3
-  resolution: "jquery-ujs@npm:1.2.3"
-  peerDependencies:
-    jquery: ">=1.8.0"
-  checksum: 6174edc30bd814b2ef0cbb5c5503b06f20b25a66836398fbec27d4bc6ac0152f25117f1bd444245bd00a44e40dff94ea15ef1fc32aa3da75cb77b6f1196da8b3
-  languageName: node
-  linkType: hard
-
-"jquery@npm:>=1.12.0 <5.0.0, jquery@npm:^3.4.1":
-  version: 3.7.1
-  resolution: "jquery@npm:3.7.1"
-  checksum: 4370b8139d6ae82867eb6f7f21d1edccf1d1bdf41c0840920ea80d366c2cd5dbe1ceebb110ee9772aa839b04400faa1572c5c560b507c688ed7b61cea26c0e27
-  languageName: node
-  linkType: hard
-
 "js-base64@npm:^3.7.2":
   version: 3.7.7
   resolution: "js-base64@npm:3.7.7"
@@ -4237,7 +4201,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "manyfold@workspace:."
   dependencies:
-    "@activeadmin/activeadmin": ^3.3.0
     "@babel/core": ^7
     "@babel/eslint-parser": ^7.27.1
     "@babel/preset-typescript": ^7.27.1

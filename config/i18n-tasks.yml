@@ -34,7 +34,7 @@ data:
   # Locale files to write new keys to, based on a list of key pattern => file rules. Matched from top to bottom:
   # `i18n-tasks normalize -p` will force move the keys according to these rules
   write:
-    - ['{active_admin, collections, creators, devise, libraries, links, model_files, models, problems, settings, uploads}.*', 'config/locales/\1/%{locale}.yml']
+    - ['{collections, creators, devise, libraries, links, model_files, models, problems, settings, uploads}.*', 'config/locales/\1/%{locale}.yml']
     ## Catch-all default:
     - config/locales/%{locale}.yml
 
@@ -149,7 +149,6 @@ ignore_unused:
 - 'problems.link.*'
 - 'problems.severities.*'
 - 'application.caber_relation_fields.permissions.*'
-- 'active_admin.exit' # Used in initializer, not detected automatically
 - 'devise.*' # Used deep down
 - 'doorkeeper.*' # Used deep down
 - 'renderer.errors.*' # Used client side via i18n-js

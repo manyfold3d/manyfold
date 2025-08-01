@@ -3,15 +3,10 @@ if Rails.env.development?
     config.api_key = ENV["TRANSLATION_IO_API_KEY"]
     config.disable_gettext = true
     config.ignored_key_prefixes = [
-      # No ActiveAdmin for now, too much cruft
-      "active_admin",
-      "activerecord.attributes.active_admin",
-      "activerecord.models.active_admin",
       "activerecord.models.comment",
       "activerecord.errors.messages.record_invalid",
       "activerecord.errors.messages.restrict_dependent_destroy",
       "formtastic",
-      "ransack",
       # Other things we don't want to translate or don't know what they are
       "i18n_tasks",
       "number",

@@ -6,12 +6,11 @@
     "build": "bundle exec i18n export --config=./config/i18n-js.yml && esbuild app/javascript/*.* --minify=true --tree-shaking=true --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "build:css": "yarn build:css:compile && yarn build:css:prefix",
     "build:css:compile": "sass ./app/assets/stylesheets/entrypoints:./app/assets/builds --no-source-map --load-path=node_modules --quiet-deps --silence-deprecation import",
-    "build:css:prefix": "postcss ./app/assets/builds/*.css --use=autoprefixer -d ./app/assets/builds/",
+    "build:css:prefix": "postcss ./app/assets/builds/themes/*.css --use=autoprefixer -d ./app/assets/builds/themes",
     "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext scss --exec \"yarn build:css\"",
     "typecheck": "bundle exec i18n export --config=./config/i18n-js.yml && tsc --project tsconfig.json"
   },
   "dependencies": {
-    "@activeadmin/activeadmin": "^3.3.0",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.13",
     "@infinizhen/rpg-awesome-continued": "^1.0.6",

@@ -94,7 +94,6 @@ gem "devise", "~> 4.9"
 gem "data_migrate", "~> 11.3"
 
 gem "rails-settings-cached", "~> 2.9"
-gem "activeadmin", "~> 3.3"
 
 gem "kaminari", "~> 1.2"
 
@@ -211,3 +210,5 @@ gem "graphlient", "~> 0.8.0"
 gem "webmock", "~> 3.25", group: :test
 
 gem "image_processing"
+
+gem "csv", "~> 3.3"

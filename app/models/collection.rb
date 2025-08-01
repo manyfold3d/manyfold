@@ -93,14 +93,6 @@ class Collection < ApplicationRecord
   #         WHERE NOT collections.id IN (path)
   #     )  SELECT * FROM search_tree
 
-  def self.ransackable_attributes(_auth_object = nil)
-    ["caption", "created_at", "id", "public_id", "name", "notes", "slug", "updated_at"]
-  end
-
-  def self.ransackable_associations(_auth_object = nil)
-    ["collection", "collections", "creator", "links", "models"]
-  end
-
   def to_activitypub_object
     ActivityPub::CollectionSerializer.new(self).serialize
   end

@@ -28,14 +28,6 @@ class Link < ApplicationRecord
     end
   end
 
-  def self.ransackable_attributes(_auth_object = nil)
-    ["created_at", "id", "linkable_id", "linkable_type", "updated_at", "url"]
-  end
-
-  def self.ransackable_associations(auth_object = nil)
-    ["linkable"]
-  end
-
   def deserializer
     self.class.deserializer_for(url: url, for_class: linkable.class)
   end

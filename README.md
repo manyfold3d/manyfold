@@ -33,7 +33,6 @@ There are a few other major components that we build with:
 * [Bootstrap 5](https://getbootstrap.com) provides the frontend CSS / JS
 * [THREE.js](https://threejs.org/) (via TypeScript) is used for the client-side 3D rendering
 * [Mittsu](https://github.com/danini-the-panini/mittsu), a Ruby port of THREE.js, is used for server-side 3D code
-* [ActiveAdmin](https://activeadmin.info/) is used for now to provide an advanced database admin interface
 * [PostgreSQL](https://www.postgresql.org/) is the production database, though sqlite3 is used in dev
 
 ### Running locally

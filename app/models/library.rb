@@ -62,14 +62,6 @@ class Library < ApplicationRecord
     end
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["public_id", "caption", "created_at", "icon", "name", "notes", "tag_regex", "updated_at"]
-  end
-
-  def self.ransackable_associations(auth_object = nil)
-    []
-  end
-
   def free_space
     case storage_service
     when "filesystem"

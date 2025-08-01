@@ -78,14 +78,6 @@ class Problem < ApplicationRecord
     should_exist
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["category", "created_at", "id", "public_id", "note", "problematic_id", "problematic_type", "updated_at", "ignored", "in_progress"]
-  end
-
-  def self.ransackable_associations(auth_object = nil)
-    ["problematic"]
-  end
-
   def parent
     if problematic_type == "ModelFile"
       problematic.model

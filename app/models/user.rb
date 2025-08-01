@@ -84,14 +84,6 @@ class User < ApplicationRecord
     listed?(file, :printed)
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "email", "id", "updated_at", "username"]
-  end
-
-  def self.ransackable_associations(auth_object = nil)
-    ["role"]
-  end
-
   def is_administrator?
     has_any_role_of? :administrator
   end

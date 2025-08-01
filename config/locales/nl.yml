@@ -664,7 +664,6 @@ nl:
     card_list_page:
       actions_heading: Acties
     settings:
-      activeadmin: Geavanceerd Beheer
       appearance:
       downloads:
       libraries: Bibliotheken

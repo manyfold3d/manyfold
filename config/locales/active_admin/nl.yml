@@ -1,6 +1,0 @@
----
-nl:
-  active_admin:
-    dashboard: Dashboard
-    exit: Verlaat beheerdersinterface
-    recent_models: Recente modellen

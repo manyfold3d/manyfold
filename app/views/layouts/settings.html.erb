@@ -61,9 +61,6 @@
       <h5><%= t(".tools_heading") %></h5>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <%= link_to t(".activeadmin"), admin_root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
           <%= link_to t(".performance"), rails_performance_path, class: "nav-link" unless Rails.env.test? %>
         </li>
         <li class="nav-item">

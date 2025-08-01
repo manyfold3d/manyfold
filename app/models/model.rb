@@ -186,14 +186,6 @@ class Model < ApplicationRecord
     formatted_path != path
   end
 
-  def self.ransackable_attributes(_auth_object = nil)
-    ["caption", "created_at", "id", "public_id", "library_id", "name", "notes", "path", "slug", "updated_at", "license_cont", "license"]
-  end
-
-  def self.ransackable_associations(auth_object = nil)
-    ["base_tags", "collection", "creator", "library", "links", "model_files", "preview_file", "problems", "tag_taggings", "taggings", "tags"]
-  end
-
   def new?
     tags.where(name: SiteSettings.model_tags_auto_tag_new).any?
   end
