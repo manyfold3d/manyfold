@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   devise_controllers[:omniauth_callbacks] = "users/omniauth_callbacks" if Rails.application.config.manyfold_features[:oidc]
   devise_for :users, controllers: devise_controllers
 
-  ActiveAdmin.routes(self)
   authenticate :user, lambda { |u| u.is_administrator? } do
     resource :settings, only: [:show, :update] do
       collection do
