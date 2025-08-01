@@ -168,14 +168,6 @@ class ModelFile < ApplicationRecord
     digest
   end
 
-  def self.ransackable_attributes(_auth_object = nil)
-    ["caption", "created_at", "digest", "filename", "id", "public_id", "notes", "presupported", "size", "updated_at", "y_up", "presupported_version_id"]
-  end
-
-  def self.ransackable_associations(_auth_object = nil)
-    ["favorited", "model", "problems"]
-  end
-
   def mesh
     # TODO: This can be better, but needs changes upstream in Mittsu to allow loaders to parse from an IO object
     loader&.new&.parse(attachment.read)

@@ -7,7 +7,6 @@ if Rails.env.development?
       "activerecord.errors.messages.record_invalid",
       "activerecord.errors.messages.restrict_dependent_destroy",
       "formtastic",
-      "ransack",
       # Other things we don't want to translate or don't know what they are
       "i18n_tasks",
       "number",
