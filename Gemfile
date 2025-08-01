@@ -210,3 +210,5 @@ gem "graphlient", "~> 0.8.0"
 gem "webmock", "~> 3.25", group: :test
 
 gem "image_processing"
+
+gem "csv", "~> 3.3"
