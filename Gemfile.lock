@@ -743,7 +743,7 @@ GEM
     rubyzip (2.4.1)
     scoped_search (4.2.0)
       activerecord (>= 4.2.0)
-    scout_apm (5.6.5)
+    scout_apm (5.7.0)
       parser
     securerandom (0.4.1)
     selenium-webdriver (4.34.0)
