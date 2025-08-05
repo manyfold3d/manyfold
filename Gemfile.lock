@@ -15,6 +15,16 @@ GIT
       rails (>= 7.1.4)
 
 GIT
+  remote: https://github.com/manyfold3d/fasp_client.git
+  revision: faecf7b29d85ddecc6400c6ee840939d1542fcb4
+  ref: v0.1.0
+  specs:
+    fasp_client (0.1.0)
+      ed25519 (~> 1.4)
+      linzer (~> 0.7)
+      rails (~> 8.0)
+
+GIT
   remote: https://github.com/manyfold3d/rubocop-pundit.git
   revision: 1f511e087a58867279ca8d77e0bb97dc2ce2da75
   specs:
@@ -23,8 +33,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails.git
-  revision: 26813a09b022bd01423fdc23e5e0f350ebd42d71
-  branch: merge-contexts
+  revision: 338c1691256fa6000c643581f38221865043b3f3
+  branch: nodeinfo-metadata
   specs:
     federails (0.7.0)
       faraday
@@ -186,6 +196,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    cgi (0.4.2)
     chunky_png (1.4.0)
     climate_control (1.2.0)
     cocooned (2.4.1)
@@ -235,6 +246,7 @@ GEM
     down (5.4.2)
       addressable (~> 2.8)
     drb (2.2.3)
+    ed25519 (1.4.0)
     email_validator (2.2.4)
       activemodel
     erb (5.0.2)
@@ -423,6 +435,16 @@ GEM
       launchy (>= 2.2, < 4)
     link_header (0.0.8)
     lint_roller (1.1.0)
+    linzer (0.7.7)
+      cgi (~> 0.4.2)
+      forwardable (~> 1.3, >= 1.3.3)
+      logger (~> 1.7, >= 1.7.0)
+      net-http (~> 0.6.0)
+      openssl (~> 3.0, >= 3.0.0)
+      rack (>= 2.2, < 4.0)
+      starry (~> 0.2)
+      stringio (~> 3.1, >= 3.1.2)
+      uri (~> 1.0, >= 1.0.2)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -516,6 +538,7 @@ GEM
       tzinfo
       validate_url
       webfinger (~> 2.0)
+    openssl (3.3.0)
     orm_adapter (0.5.0)
     ostruct (0.6.1)
     parallel (1.27.0)
@@ -810,6 +833,8 @@ GEM
     standard-performance (1.8.0)
       lint_roller (~> 1.1)
       rubocop-performance (~> 1.25.0)
+    starry (0.2.0)
+      base64
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stopwords-filter2 (0.1.0)
@@ -921,6 +946,7 @@ DEPENDENCIES
   erb_lint (~> 0.9)
   factory_bot
   faker (~> 3.5)
+  fasp_client!
   federails!
   federails-moderation (~> 0.3)
   ffi-libarchive (~> 1.1)
