@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_24_094951) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_06_142734) do
   create_table "altcha_solutions", force: :cascade do |t|
     t.string "algorithm"
     t.string "challenge"
@@ -97,6 +97,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_24_094951) do
   end
 
   create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
+  end
+
+  create_table "fasp_client_providers", force: :cascade do |t|
+    t.string "uuid"
+    t.string "name"
+    t.string "base_url"
+    t.string "server_id"
+    t.string "public_key"
+    t.string "ed25519_signing_key"
+    t.integer "status"
+    t.json "capabilities"
+    t.json "privacy_policy"
+    t.string "sign_in_url"
+    t.string "contact_email"
+    t.string "fediverse_account"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
