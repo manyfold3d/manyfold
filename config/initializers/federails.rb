@@ -17,6 +17,10 @@ Federails.configure do |conf|
   conf.client_routes_path = "client"
 
   conf.remote_follow_url_method = :new_follow_url
+
+  conf.nodeinfo_metadata = -> do
+    {"faspBaseUrl" => Rails.application.routes.url_helpers.fasp_client_url}
+  end
 end
 
 Federails::Moderation.configure do |conf|
