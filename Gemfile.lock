@@ -16,8 +16,8 @@ GIT
 
 GIT
   remote: https://github.com/manyfold3d/fasp_client.git
-  revision: 78ffd0f694639dd7f5d4a2fe7588b32bd7788bf8
-  ref: v0.1.1
+  revision: 896cfd20ad89a9aaa3e641538edf166836a7203d
+  ref: v0.2.0
   specs:
     fasp_client (0.1.0)
       ed25519 (~> 1.4)
