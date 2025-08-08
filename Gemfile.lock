@@ -812,7 +812,7 @@ GEM
     smart_properties (1.17.0)
     spdx (4.1.5)
       treetop (~> 1.6)
-    spring (4.3.0)
+    spring (4.4.0)
     sqlite3 (2.5.0)
       mini_portile2 (~> 2.8.0)
     sqlite3 (2.5.0-x64-mingw-ucrt)
