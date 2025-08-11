@@ -300,6 +300,46 @@ RSpec.describe "Users::Registrations" do
         end
       end
 
+      describe "POST /users with approval disabled and creator options, but with no creator slug" do # rubocop:disable RSpec/MultipleMemoizedHelpers
+        before {
+          allow(SiteSettings).to receive_messages(
+            approve_signups: false,
+            autocreate_creator_for_new_users: true
+          )
+          allow(AltchaSolution).to receive(:verify_and_save).and_return(true)
+        }
+
+        let(:post_with_creator_options) {
+          {
+            user: {
+              email: Faker::Internet.email,
+              password: old_password,
+              password_confirmation: old_password,
+              creators_attributes: {
+                "0" => {
+                  name: Faker::Name.name,
+                  slug: ""
+                }
+              }
+            }
+          }
+        }
+        let(:form_post) { post "/users", params: post_with_creator_options }
+
+        it "doesn't create a new user" do
+          expect { form_post }.not_to change(User, :count)
+        end
+
+        it "doesn't create a new creator" do
+          expect { form_post }.not_to change(Creator, :count)
+        end
+
+        it "gives an unprocessable response" do
+          form_post
+          expect(response).to have_http_status :unprocessable_content
+        end
+      end
+
       describe "POST /users with approval disabled and creator options" do # rubocop:disable RSpec/MultipleMemoizedHelpers
         before {
           allow(SiteSettings).to receive_messages(
