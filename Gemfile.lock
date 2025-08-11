@@ -16,8 +16,8 @@ GIT
 
 GIT
   remote: https://github.com/manyfold3d/fasp_client.git
-  revision: 896cfd20ad89a9aaa3e641538edf166836a7203d
-  ref: v0.2.0
+  revision: 9bb971993f55e240c89af80af8f57aa5110884cc
+  ref: v0.3.0
   specs:
     fasp_client (0.1.0)
       ed25519 (~> 1.4)
@@ -155,7 +155,7 @@ GEM
     aws-sdk-kms (1.110.0)
       aws-sdk-core (~> 3, >= 3.228.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.196.1)
+    aws-sdk-s3 (1.195.0)
       aws-sdk-core (~> 3, >= 3.228.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)

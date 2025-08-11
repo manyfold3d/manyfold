@@ -559,6 +559,32 @@ en:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
       weak_password: not strong enough. Consider adding a number, symbols or more letters to make it stronger.
+  fasp_client:
+    providers:
+      edit:
+        approval_help: Check that the fingerprint displayed here matches the one shown by the provider, and only approve providers you trust.
+        approve: Approve
+        capability: Capability
+        contact_details: Contact details
+        deny: Deny
+        disable: Disable
+        email: Email
+        enable: Enable
+        fediverse_account: Fediverse address
+        fingerprint: Fingerprint
+        links: Links
+        privacy_policy: Privacy policy
+        registration: Registration
+        sign_in: Sign in
+        versions: Versions
+      index:
+        add_html: 'To enable a new FASP, visit the provider and enter this server''s URL on signup: <code>%{base_url}</code>. You should only use providers that you trust, and be sure to read their privacy policy in full before you enable services.'
+        description_html: Fediverse Auxiliary Service Providers (FASPs) enable extra features for Fediverse servers, such as search, trends, spam detection and more, as part of the <a href="https://fediscovery.org" target="_new" rel="noopener">Fediscovery project</a>.
+        heading: FASP Services
+        provider_list_title: Registered FASPs
+        registered_at: Registered at
+        status: Status
+        url: URL
   follows:
     actor_table:
       actions: Actions

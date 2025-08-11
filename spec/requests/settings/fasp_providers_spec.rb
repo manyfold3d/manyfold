@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "/fasp/providers", :multiuser do
+RSpec.describe "/fasp/providers", :after_first_run, :multiuser do
   describe "GET /fasp/providers" do
     it "denies access to anything except admin", :as_moderator do
       get "/fasp/providers"
