@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
   include BetterContentSecurityPolicy::HasContentSecurityPolicy
-  after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
+  after_action :verify_authorized, except: :index, unless: -> { respond_to?(:fasp_client_controller?) }
+  after_action :verify_policy_scoped, only: :index, unless: -> { respond_to?(:fasp_client_controller?) }
   after_action :set_content_security_policy_header, if: -> { request.format.html? }
 
   before_action :authenticate_user!, unless: -> { SiteSettings.multiuser_enabled? || has_signed_id? }
