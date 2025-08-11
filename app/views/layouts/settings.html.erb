@@ -39,6 +39,11 @@
         <li class="nav-item">
           <%= link_to t("settings.domain_blocks.index.title"), settings_domain_blocks_path, class: "nav-link" %>
         </li>
+        <% if current_user.is_administrator? %>
+          <li class="nav-item">
+            <%= link_to t("fasp_client.providers.index.heading"), fasp_client.providers_path, class: "nav-link" %>
+          </li>
+        <% end %>
       <% end %>
 
       <% if policy(:settings).index? %>
