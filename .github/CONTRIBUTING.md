@@ -26,3 +26,4 @@ Some things that will increase the chance that your pull request is accepted:
 * Write tests.
 * Check that your code passes our [linter](https://github.com/manyfold3d/manyfold?tab=readme-ov-file#coding-standards).
 * Write a [good commit message](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/).
+* We are highly unlikely to review or accept AI-generated "vibe coded" PRs; our time is very limited, and we need to know that *you* understand exactly what the code is doing and why, so that we can review it effectively.
