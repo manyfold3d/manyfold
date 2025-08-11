@@ -3,7 +3,7 @@
 require "fediverse/inbox"
 
 Federails.configure do |conf|
-  conf.app_name = "Manyfold"
+  conf.app_name = "manyfold"
   conf.app_version = Rails.application.config.app_version
 
   scheme = Rails.application.config.force_ssl ? "https" : "http"
