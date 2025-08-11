@@ -1,0 +1,76 @@
+<h3>FASP: <%= link_to @provider.name, @provider.base_url %></h3>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <div class="card-header">
+        <%= t ".registration" %>
+      </div>
+      <div class="card-body">
+        <p>Requested at: <%= @provider.created_at %></p>
+        <p>Status: <%= @provider.status %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <div class="card-header">
+        <%= t ".links" %>
+      </div>
+      <div class="card-body">
+        <ul>
+          <% if @provider.privacy_policy.any? %>
+            <li><%= link_to t(".privacy_policy"), @provider.privacy_policy.first["url"] %></li>
+          <% end %>
+          <% if @provider.sign_in_url %>
+            <li><%= link_to t(".sign_in"), @provider.sign_in_url %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <div class="card-header">
+        <%= t ".contact_details" %>
+      </div>
+      <div class="card-body">
+        <% if @provider.contact_email = "test@example.com" %>
+          <p><%= t ".email" %>: <%= link_to @provider.contact_email, "mailto:#{@provider.contact_email}" %></p>
+        <% end %>
+        <% if @provider.fediverse_account = "@test@example.com" %>
+          <p><%= t ".fediverse_account" %>: <%= @provider.fediverse_account %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <% if @provider.pending? %>
+    <p><%= t ".approval_help" %>
+    <p>
+      <%= t ".fingerprint" %>:
+      <code><%= @provider.fingerprint %></code>
+    </p>
+    <%= button_to t(".approve"), @provider, method: :patch, params: {provider: {status: "approved"}}, form: {style: "display: inline"}, class: "btn btn-success" %>
+    <%= button_to t(".deny"), @provider, method: :patch, params: {provider: {status: "denied"}}, form: {style: "display: inline"}, class: "btn btn-danger" %>
+  <% else %>
+    <table class="table table-striped">
+      <tr>
+        <th><%= t ".capability" %></th>
+        <th><%= t ".versions" %></th>
+        <th><%= t ".enable" %></th>
+        <th><%= t ".disable" %></th>
+      </tr>
+      <% @provider.capabilities.each do |cap| %>
+        <tr>
+          <td><code><%= cap["id"] %></code></td>
+          <td><%= cap["version"] %></td>
+          <td><%= button_to t(".enable"), @provider, method: :patch, params: {provider: {enable_capability: {id: cap["id"], version: cap["version"]}}}, class: "btn btn-success" %></td>
+          <td><%= button_to t(".disable"), @provider, method: :patch, params: {provider: {disable_capability: {id: cap["id"], version: cap["version"]}}}, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>

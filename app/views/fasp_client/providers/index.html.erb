@@ -1,0 +1,41 @@
+<h3><%= t(".heading") %></h3>
+
+<p class='lead'>
+  <%= t(".description_html") %>
+</p>
+<p>
+  <%= t(".add_html", base_url: fasp_client_url) %>
+</p>
+<% if @providers.any? %>
+  <h4><%= t(".provider_list_title") %></h4>
+<% end %>
+<div class="row">
+  <% @providers.find_each do |provider| %>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <%= provider.name %>
+        </div>
+        <div class="card-body">
+          <div class="float-end">
+            <%= render Components::GoButton.new(icon: "pencil", label: t("general.edit"), href: edit_provider_path(provider), variant: :secondary) %>
+          </div>
+          <table class="table">
+            <tr>
+              <td><%= t(".url") %></td>
+              <td><%= link_to provider.base_url, provider.base_url, rel: "noopener" %></td>
+            </tr>
+            <tr>
+              <td><%= t(".registered_at") %></td>
+              <td><%= provider.created_at %></td>
+            </tr>
+            <tr>
+              <td><%= t(".status") %></td>
+              <td><%= provider.status %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
