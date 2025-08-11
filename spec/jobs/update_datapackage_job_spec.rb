@@ -15,7 +15,7 @@ RSpec.describe UpdateDatapackageJob do
 
     it "doesn't include datapackage in resources" do
       described_class.perform_now(model.id)
-      expect(datapackage_json["resources"].map { |it| it["path"] }).not_to include("datapackage.json")
+      expect(datapackage_json["resources"].pluck("path")).not_to include("datapackage.json")
     end
   end
 
@@ -30,7 +30,7 @@ RSpec.describe UpdateDatapackageJob do
     end
 
     it "doesn't include datapackage in resources" do
-      expect(datapackage_json["resources"].map { |it| it["path"] }).not_to include("datapackage.json")
+      expect(datapackage_json["resources"].pluck("path")).not_to include("datapackage.json")
     end
   end
 
