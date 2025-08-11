@@ -42,8 +42,10 @@ Rails.application.routes.draw do
         resources :reports
       end
     end
-    mount Federails::Engine => "/" if SiteSettings.federation_enabled? || Rails.env.test?
-
+    if SiteSettings.federation_enabled? || Rails.env.test?
+      mount Federails::Engine => "/"
+      mount FaspClient::Engine => "/fasp"
+    end
     get "/follow" => "follows#index", :as => :follow
     get "/authorize_interaction" => "follows#new", :as => :new_follow
     post "/remote_follow" => "follows#remote_follow", :as => :remote_follow
@@ -163,6 +165,4 @@ Rails.application.routes.draw do
   # Web crawler stuff
   get "/robots", to: "robots#index"
   get "/sitemap", to: "robots#sitemap"
-
-  mount FaspClient::Engine => "/fasp"
 end
