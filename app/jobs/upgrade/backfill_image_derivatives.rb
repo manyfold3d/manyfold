@@ -16,8 +16,12 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
     Rails.logger.info("Creating image derivatives for: #{modelfile.path_within_library}")
     modelfile.attachment_derivatives!
     modelfile.save(touch: false, validate: false)
+  rescue Errno::EACCES => ex
+    Rails.logger.error ex.message
   rescue Shrine::FileNotFound
     Rails.logger.error("File not found: #{modelfile.path_within_library}")
+  rescue Shrine::Error => ex
+    Rails.logger.error("File error: #{ex.message} #{modelfile.path_within_library}")
   rescue MiniMagick::Error => ex
     Rails.logger.error ex.message
   end
