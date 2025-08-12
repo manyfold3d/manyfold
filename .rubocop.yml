@@ -33,7 +33,10 @@ I18n/RailsI18n:
   Enabled: true
   Exclude:
     - "spec/**/*"
-    - "bin/manyfold"
+    - "app/lib/cli/**/*"
+Rails/Output:
+  Exclude:
+    - "app/lib/cli/**/*"
 RSpec/NestedGroups:
   Max: 5
 RSpec/MultipleMemoizedHelpers:
