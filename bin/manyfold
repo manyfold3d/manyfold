@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 require "thor"
 require File.expand_path("../../config/environment", __FILE__)
+Rails.root.glob("app/lib/cli/**/*.rb").sort.each { |f| require f }
+
 
 class CollectionCLI < Thor
   desc "prune", "removes all empty collections"
@@ -128,6 +130,9 @@ class ManyfoldCLI < Thor
 
   desc "email", "test email"
   subcommand "email", MailCLI
+
+  desc "libraries", "manage libraries"
+  subcommand "libraries", CLI::LibrariesCommand
 
   desc "links", "manage links"
   subcommand "links", LinksCommand
