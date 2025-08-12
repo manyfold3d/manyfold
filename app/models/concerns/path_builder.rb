@@ -2,7 +2,7 @@ module PathBuilder
   extend ActiveSupport::Concern
 
   def formatted_path
-    SiteSettings.model_path_template.gsub(/{.+?}/) do |token|
+    path = SiteSettings.model_path_template.gsub(/{.+?}/) do |token|
       case token
       when "{tags}"
         (tags.count > 0) ?
@@ -15,11 +15,12 @@ module PathBuilder
       when "{modelName}"
         path_component(self)
       when "{modelId}"
-        "##{id}"
+        "" # Deprecated, now always added below; kept for compatibility
       else
         token
       end
     end
+    path + "##{id}"
   end
 
   private

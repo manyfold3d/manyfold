@@ -18,14 +18,11 @@
   <li>
     <code>{modelName}</code>: <%= t ".tokens.model_name" %>
   </li>
-  <li>
-    <code>{modelId}</code>: <%= t ".tokens.model_id" %>
-  </li>
 </ul>
 <div class="row mb-2">
   <%= form.label nil, t(".model_path_template.label"), for: "folders[model_path_template]", class: "col-sm-4 col-form-label" %>
   <div class="col-sm-8 form-check form-switch">
-    <%= form.text_field "folders[model_path_template]", value: SiteSettings.model_path_template, class: "form-control" %>
+    <%= form.text_field "folders[model_path_template]", value: SiteSettings.model_path_template.gsub("{modelId}", ""), class: "form-control" %>
   </div>
 </div>
 <div class="row mb-2">

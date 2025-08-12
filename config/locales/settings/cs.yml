@@ -76,7 +76,6 @@ cs:
       tokens:
         collection: Název kolekce, ve které se model nachází, je-li nastavena.
         creator: Jméno autora, je-li nastaveno.
-        model_id: Jedinečný číselný identifikátor modelu. Důrazně doporučujeme, aby byl vždy uveden na konci šablony, aby se předešlo konfliktům názvů na disku.
         model_name: Verze názvu modelu bezpečná pro souborový systém.
         tags_html: 'řada vnořených složek, jedna pro každý štítek, uspořádaných podle oblíbenosti štítků. Například: <code>fantasy/lidé/čarodějové</code>'
     general:

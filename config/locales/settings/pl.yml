@@ -76,7 +76,6 @@ pl:
       tokens:
         collection: Tytuł kolekcji, w której znajduje się model, jeśli jest ustawiony.
         creator: Nazwa twórcy, jeśli ustawiona.
-        model_id: Unikalny numeryczny identyfikator modelu. Zdecydowanie polecamy podawanie go zawsze na końcu szablonu, aby uniknąć konfliktów nazw na dysku.
         model_name: Bezpieczna dla systemu plików wersja nazwy modelu.
         tags_html: 'seria zagnieżdżonych folderów, po jednym dla każdego z tagów, ułożonych w kolejności popularności tagów. Na przykład: <code>fantasy/człowiek/czarodziej</code>. Ten token jest "chciwy"; przeanalizuje on tak wiele tagów, jak to tylko możliwe.'
     general:
