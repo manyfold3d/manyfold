@@ -43,6 +43,9 @@ module ModelsHelper
         CC-BY-SA-4.0
         CC-PDDC
         CC0-1.0
+        CERN-OHL-P-2.0
+        CERN-OHL-S-2.0
+        CERN-OHL-W-2.0
         MIT
         GPL-2.0-only
         GPL-3.0-only
