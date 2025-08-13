@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Install requirements
         run: sudo apt install -y assimp-utils
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./.github/actions/setup
       - name: Remove data schema so we bootstrap from zero with data migrations
         run: rm db/data_schema.rb
@@ -43,7 +43,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./.github/actions/setup
       - name: Lint Ruby code
         run: bundle exec rake rubocop
@@ -54,7 +54,7 @@ jobs:
   i18n:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./.github/actions/setup
       - name: Check translations
         run: bundle exec i18n-tasks health -l en
