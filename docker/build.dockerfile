@@ -15,7 +15,7 @@ RUN apk add --no-cache \
   npm \
   postgresql-dev \
   mariadb-dev \
-  libarchive \
+  libarchive-static \
   imagemagick \
   imagemagick-jpeg \
   imagemagick-webp \
