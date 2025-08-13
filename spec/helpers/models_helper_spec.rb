@@ -25,6 +25,10 @@ RSpec.describe ModelsHelper do
       expect(helper.license_select_options).to include('<option value="CC0-1.0">Creative Commons Zero</option>')
     end
 
+    it "includes CERN licenses" do
+      expect(helper.license_select_options).to include('<option value="CERN-OHL-S-2.0">CERN Open Hardware Licence Version 2 - Strongly Reciprocal</option>')
+    end
+
     it "sets selected option" do
       expect(helper.license_select_options(selected: "CC0-1.0")).to include('<option selected="selected" value="CC0-1.0">Creative Commons Zero</option>')
     end
