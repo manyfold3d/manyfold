@@ -21,6 +21,11 @@ RSpec.describe Integrations::MyMiniFactory::CreatorDeserializer, :mmf_api_key do
       deserializer = described_class.new(uri: "https://www.myminifactory.com/users/example")
       expect(deserializer.username).to eq "example"
     end
+
+    it "extracts username including underscore" do
+      deserializer = described_class.new(uri: "https://www.myminifactory.com/users/example_user")
+      expect(deserializer.username).to eq "example_user"
+    end
   end
 
   context "when pulling data from MMF API", vcr: {cassette_name: "Integrations_MyMiniFactory_CreatorDeserializer/success"} do

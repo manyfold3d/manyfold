@@ -1,5 +1,5 @@
 class Integrations::MyMiniFactory::BaseDeserializer < Integrations::BaseDeserializer
-  USERNAME_PATTERN = /[[:alnum:]\- ]+/
+  USERNAME_PATTERN = /[[:alnum:]\-_ ]+/
 
   private
 
