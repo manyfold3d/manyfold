@@ -142,7 +142,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   end
 
   def filter_thingiverse_text(content)
-    content.gsub(/{(.+?) %!S\(Bool=True\)}/, "\\1")
+    content.gsub(/{(.+?) %!S\(Bool=True\)}/i, "\\1")
   end
 
   def license_id_from_url(url)

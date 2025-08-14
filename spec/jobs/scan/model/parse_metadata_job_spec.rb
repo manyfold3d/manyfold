@@ -540,7 +540,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
   context "when loading information from a simple Thingiverse README including Go string errors" do
     let(:content) {
       <<~EOF
-        {Test Model %!S(Bool=True)} by {example creator %!S(Bool=True)} on Thingiverse: http://www.thingiverse.com/thing:1234567
+        {Test Model %!S(Bool=True)} by {example creator %!s(bool=true)} on Thingiverse: http://www.thingiverse.com/thing:1234567
       EOF
     }
     let(:model) { create(:model, notes: nil) }
