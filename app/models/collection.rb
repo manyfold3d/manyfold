@@ -26,7 +26,7 @@ class Collection < ApplicationRecord
   belongs_to :collection, optional: true
   belongs_to :creator, optional: true
   validates :name, uniqueness: {case_sensitive: false}
-  validates :public_id, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
+  validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
   validates :collection_id, exclusion: {in: ->(it) { Array(it.id) }}
 
   before_validation :publish_creator, if: :will_be_public?

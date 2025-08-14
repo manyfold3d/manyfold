@@ -26,12 +26,12 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: %i[openid_connect] if SiteSettings.oidc_enabled?
 
-  validates :username, multimodel_uniqueness: {case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
+  validates :username, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
 
   validates :username,
     presence: true,
     uniqueness: {case_sensitive: false},
-    format: {with: /\A[[:alnum:];]+\z/}
+    format: {with: /\A[[:alnum:]\.\-_;]+\z/}
 
   validates :email,
     presence: true,
@@ -119,11 +119,14 @@ class User < ApplicationRecord
         # Find an unused username - get the first of a few options
         user.username = [
           auth.info.preferred_username,
-          auth.info.nickname&.parameterize,
+          auth.info.nickname,
           auth.info.email&.split("@")&.[](0),
           # Fallback to any of the above with some random numbers on the end
-          (auth.info.preferred_username || auth.info.nickname&.parameterize || auth.info.email&.split("@")&.[](0) || "") + SecureRandom.hex(2)
-        ].compact.find { |u| !User.exists?(username: u) }
+          (auth.info.preferred_username || auth.info.nickname || auth.info.email&.split("@")&.[](0) || "") + SecureRandom.hex(2)
+        ]
+          .compact
+          .map { |u| u.gsub(/[^[:alnum:]\.\-_;]/, "-") }
+          .find { |u| !User.exists?(username: u) }
       end
     end
     user

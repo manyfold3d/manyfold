@@ -28,13 +28,34 @@ RSpec.describe User do
     expect(build(:user, username: "إعلانات")).to be_valid
   end
 
-  it "doesn't allows punctuation in usernames" do
-    expect(build(:user, username: "user-name")).not_to be_valid
+  it "allows hyphens in usernames" do
+    expect(build(:user, username: "user-name")).to be_valid
+  end
+
+  it "allows underscores in usernames" do
+    expect(build(:user, username: "user_name")).to be_valid
+  end
+
+  it "allows dots in usernames" do
+    expect(build(:user, username: "user.name")).to be_valid
+  end
+
+  it "allows semicolons in usernames" do
+    expect(build(:user, username: "user;name")).to be_valid
+  end
+
+  it "doesn't allow other punctuation in usernames" do
+    expect(build(:user, username: "user/name")).not_to be_valid
   end
 
   it "doesn't allow usernames that differ by case" do
     create(:user, username: "userName")
     expect(build(:user, username: "USERNAME")).not_to be_valid
+  end
+
+  it "doesn't allow usernames that differ by punctuation" do
+    create(:user, username: "username")
+    expect(build(:user, username: "user.name")).not_to be_valid
   end
 
   it "gets member role by default" do
@@ -173,6 +194,38 @@ RSpec.describe User do
       create(:user, username: "username")
       new_user = described_class.from_omniauth(auth_data)
       expect(new_user.username).to eq "nick"
+    end
+  end
+
+  {
+    "username" => "username",
+    "user.name" => "user.name",
+    "user-name" => "user-name",
+    "user_name" => "user_name",
+    "user name" => "user-name",
+    "user.name.1" => "user.name.1"
+  }.each_pair do |input, expected|
+    context "when OmniAuth has a username like '#{input}'" do
+      subject(:user) { described_class.from_omniauth(auth_data) }
+
+      let(:auth_data) {
+        OpenStruct.new({
+          provider: "openid_connect",
+          uid: "auth|123456789",
+          info: OpenStruct.new({
+            email: "test@example.com",
+            preferred_username: input
+          })
+        })
+      }
+
+      it "creates a valid user" do
+        expect(user).to be_valid
+      end
+
+      it "produces the expected username" do
+        expect(user.username).to eq expected
+      end
     end
   end
 end
