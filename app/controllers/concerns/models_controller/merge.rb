@@ -22,7 +22,9 @@ module ModelsController::Merge
     if @merge_params[:target] == "==new=="
       @target = Model.create_from(@models.first, name: @models.first.name)
     elsif @merge_params[:target] == "==common_root=="
-      @target = Model.create_from(@models.first, name: @models.first.name, path: Model.common_root(*@models))
+      path = Model.common_root(*@models)
+      name = File.basename(path).humanize.tr("+", " ").careful_titleize
+      @target = Model.create_from(@models.first, name: name, path: path)
     elsif @merge_params[:target]
       @target = Model.find_param(@merge_params[:target])
     end

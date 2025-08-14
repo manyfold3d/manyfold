@@ -380,6 +380,74 @@ RSpec.describe "Models" do
           end
         end
 
+        context "when merging to target model", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
+          let(:model_one) { create(:model) }
+          let(:model_two) { create(:model) }
+          let(:merge_post) {
+            post "/models/merge", params: {
+              models: [model_one.to_param, model_two.to_param],
+              target: model_one.to_param
+            }
+          }
+
+          before { merge_post }
+
+          it "redirects to the target model" do
+            expect(response).to redirect_to("/models/#{model_one.to_param}")
+          end
+        end
+
+        context "when merging to a completely new model", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
+          let(:model_one) { create(:model) }
+          let(:model_two) { create(:model) }
+          let(:merge_post) {
+            post "/models/merge", params: {
+              models: [model_one.to_param, model_two.to_param],
+              target: "==new=="
+            }
+          }
+
+          before { merge_post }
+
+          it "redirects to the new model" do
+            new_model = Model.last
+            expect(response).to redirect_to("/models/#{new_model.to_param}")
+          end
+
+          it "Uses the name of the first merged model as the new name" do
+            new_model = Model.last
+            expect(new_model.name).to eq model_one.name
+          end
+        end
+
+        context "when merging to a common root", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
+          let(:model_one) { create(:model, path: "common/model_one") }
+          let(:model_two) { create(:model, path: "common/model_two", library: model_one.library) }
+          let(:merge_post) {
+            post "/models/merge", params: {
+              models: [model_one.to_param, model_two.to_param],
+              target: "==common_root=="
+            }
+          }
+
+          before { merge_post }
+
+          it "redirects to the new model" do
+            new_model = Model.last
+            expect(response).to redirect_to("/models/#{new_model.to_param}")
+          end
+
+          it "uses the common root folder as the new path" do
+            new_model = Model.last
+            expect(new_model.path).to eq "common"
+          end
+
+          it "uses the name of the common root folder as the new name" do
+            new_model = Model.last
+            expect(new_model.name).to eq "Common"
+          end
+        end
+
         context "with form-encoded data", :as_moderator do # rubocop:todo RSpec/MultipleMemoizedHelpers
           let(:model_one) { create(:model) }
           let(:model_two) { create(:model) }
