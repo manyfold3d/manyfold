@@ -84,7 +84,7 @@ de:
       file_list_settings:
         heading: Datei-Listen
         hide_presupported_versions:
-          label: Kombiniere verknüpfte Dateien mit und ohne Support struktur.
+          label: Kombiniere verknüpfte Dateien mit und ohne Supportstruktur.
         summary: Steuere, wie Modelle und Datei Listen angezeigt werden
       first_use:
         email_help: Wird nie öffentlich angezeigt; wird nur für Anmelde- und Kontosicherheits-E-Mails verwendet.
@@ -110,17 +110,17 @@ de:
         approval_help: Nachdem du dein Konto erstellt hast, wird es manuell von unseren Moderatoren überprüft. Wir werden dich benachrichtigen, wenn die Prüfung abgeschlossen ist und dich anmelden kannst.
         creators:
           name:
-            help:
-            label:
+            help: Dies wird öffentlich als Titel deines Profils angezeigt.
+            label: Autor name
           slug:
-            help:
-            help_fedi:
+            help: Ein kurzer Nutzername für dein Profil, der in der URL verwendet wird.
+            help_fedi: Ein kurzer Nutzername für dein Profil, der in der URL und der Fediverse-Adresse verwendet wird.
         details: Deine Details
         rules: Server-Regeln
         rules_agree: Indem du dich für ein Konto anmelden, erklärst du die oben genannten Regeln einzuhalten.
         sign_up: Account erstellen
         username:
-          help:
+          help: Einen kurzen Benutzernamen für dein persönliches Konto; wenn du später ein Profil für die Veröffentlichung deiner Modelle erstellst, brauchst du einen anderen Kontonamen.
       pagination_settings:
         collections:
           label: Kollektionen auf Seiten verteilen

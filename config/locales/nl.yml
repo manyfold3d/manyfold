@@ -3,12 +3,17 @@ nl:
   activerecord:
     attributes:
       collection:
+        ai_indexable:
         caption: Onderschrift
-        collection: Collectie
+        collection:
+        indexable:
+        models: Modellen
         name: Naam
         notes: Notities
       creator:
+        ai_indexable:
         caption: Tagline
+        indexable:
         name: Naam
         notes: Beschrijving
         slug:
@@ -49,11 +54,17 @@ nl:
       link:
         url: Link
       model:
+        ai_indexable:
         caption: Onderschrift
+        collection: Collectie
         collection_id: Collectie
+        creator: Maker
         creator_id: Maker
+        images:
+        indexable:
         library_id: Bibliotheek
         license: Licentie
+        model_files: Bestanden
         name: Naam
         notes: Beschrijving
         path: Pad
@@ -63,6 +74,7 @@ nl:
       model_file:
         caption: Onderschrift
         digest: Digest
+        dimensions:
         filename: Bestandsnaam
         model_id: Model
         notes: Notities
@@ -273,11 +285,11 @@ nl:
     footer:
       about:
       api:
-      by_html: Ontworpen en gebouwd door <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">James</a> met hulp van <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">onze bijdragers</a>.
+      by_html: Ontworpen en gebouwd door <a href="https://floppy.org.uk" target="_blank">James</a> met hulp van <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">onze bijdragers</a>.
       community:
       instance_heading:
       issues: Problemen
-      open_source_html: Open Source onder de <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT-licentie</a>.
+      open_source_html: Open Source onder de <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT-licentie</a>.
       powered_by_html:
       sponsor: Sponsor
       support:
@@ -292,9 +304,11 @@ nl:
       account: Mijn Instellingen
       activity: Activiteit
       check_existing: Bestaande modellen controleren
+      check_results:
       home: Startpagina
       log_in: Inloggen
       log_out: Uitloggen
+      moderator_settings:
       navbar:
         toggler:
           label: Navigatie in-/uitklappen
@@ -317,11 +331,24 @@ nl:
     tags_card:
       skip_tags: Taglijst overslaan
     title: Manyfold
+  application_helper:
+    ai_indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+    indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+      'no': Nee
+      'yes': Ja
   components:
     altcha_widget:
       help:
     copy_button:
       copy:
+    display_user_quota:
+      request_increase:
     download_button:
       download:
         missing:
@@ -336,6 +363,8 @@ nl:
       follow: Volg %{name}
       pending:
       unfollow: Ontvolg %{name}
+    link_list:
+      sync:
     modal:
       close:
     model_card:
@@ -357,6 +386,7 @@ nl:
       more_details_html:
       negation:
       parentheses:
+      path:
       quotes:
       simple:
       specific_fields:
@@ -364,6 +394,11 @@ nl:
       title:
       unset:
       without_tag:
+  concerns:
+    linkable:
+      sync:
+        bad_request:
+        success:
   doorkeeper:
     applications:
       buttons:
@@ -524,6 +559,32 @@ nl:
         one: '1 fout verhinderde dat deze %{resource} werd opgeslagen:'
         other: "%{count} fouten verhinderden dat deze %{resource} werd opgeslagen:"
       weak_password: niet sterk genoeg. Overweeg een cijfer, symbolen of meer letters toe te voegen om het sterker te maken.
+  fasp_client:
+    providers:
+      edit:
+        approval_help:
+        approve:
+        capability:
+        contact_details:
+        deny: Weigeren
+        disable:
+        email: E-mail
+        enable:
+        fediverse_account: Fediverse-adres
+        fingerprint:
+        links: Links
+        privacy_policy:
+        registration:
+        sign_in: Inloggen
+        versions:
+      index:
+        add_html:
+        description_html:
+        heading:
+        provider_list_title:
+        registered_at:
+        status:
+        url:
   follows:
     actor_table:
       actions: Acties
@@ -566,9 +627,11 @@ nl:
       zero:
     menu: Menu
     new: Nieuw
+    private: Privé
     public:
     report: Rapporteer %{type}
     save: Opslaan
+    shared:
     view: Bekijken
   home:
     activity:
@@ -581,6 +644,7 @@ nl:
       title:
     federation:
       content_html:
+      creator_handle_html:
       following:
       handle_html:
       title:
@@ -593,6 +657,9 @@ nl:
         submit: Zoeken
     publishing:
       content:
+      existing_creator:
+        button:
+        content:
       new_creator:
         button:
         content:
@@ -608,11 +675,20 @@ nl:
         edit:
         member:
         private:
+      quota:
       title:
       upload: Uploaden
     welcome:
       lead:
       title:
+  imports:
+    create:
+      success:
+    new:
+      description:
+      heading:
+      import:
+      import_type_html:
   jobs:
     activity:
       collection_published:
@@ -667,6 +743,7 @@ nl:
       appearance:
       downloads:
       libraries: Bibliotheken
+      moderation_settings_title:
       organization: Organisatie
       performance: Prestatie Dashboard
       pghero: PgHero
@@ -674,6 +751,7 @@ nl:
       site_settings_title: Site-instellingen
       tools_heading: Geavanceerde Tools
   licenses:
+    0BSD:
     CC-BY-40: Creative Commons Naamsvermelding
     CC-BY-NC-40: Creative Commons Naamsvermelding NietCommercieel
     CC-BY-NC-ND-40: Creative Commons Naamsvermelding NietCommercieel GeenAfgeleideWerken
@@ -682,6 +760,13 @@ nl:
     CC-BY-SA-40: Creative Commons Naamsvermelding GelijkDelen
     CC-PDDC: Creative Commons Publiek Domein Verklaring
     CC0-10: Creative Commons Zero
+    CERN-OHL-P-20:
+    CERN-OHL-S-20:
+    CERN-OHL-W-20:
+    GPL-20-only:
+    GPL-30-only:
+    LGPL-20-only:
+    LGPL-30-only:
     LicenseRef-Commercial: Commercieel; alleen privégebruik
     MIT: MIT
   moderator_mailer:
@@ -709,7 +794,7 @@ nl:
       title: 'Rapporteer %{type}: "%{name}"'
   scans:
     create:
-      success: Scan gestart voor alle bibliotheken.
+      success:
   security:
     running_as_root_html: Manyfold draait als root, wat een beveiligingsrisico is. Draai als een andere systeemgebruiker door de <code>PUID</code> en <code>PGID</code> omgevingsvariabelen in te stellen. Zie <a href='https://manyfold.app/sysadmin/configuration.html#required'>de configuratiedocumentatie</a> voor details.
   sites:

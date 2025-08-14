@@ -18,7 +18,7 @@ nl:
         help:
       filesystem_description_html: Om opslag op je lokale bestandssysteem te gebruiken, zorg er eerst voor dat het is gekoppeld als een <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> of ander volume in je Docker container, en voer dan het Docker-pad in; niet het pad op je hostserver! Bijvoorbeeld, als je een map met bestanden hebt op <code>/mnt/media/3d/models</code> op je host, en <code>/mnt/media/3d</code> hebt gekoppeld aan <code>/libraries</code> in je Docker-configuratie, dan zou het vereiste pad <code>/libraries/models</code> zijn.
       icon:
-        help_html: Optioneel; elk pictogram van <a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">Boostrap icons</a> of <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a>.
+        help_html: Optioneel; elk pictogram van <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a> of <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
         placeholder: boxes
       notes:
         help_html: Optioneel; alleen zichtbaar voor beheerders op de instellingenpagina. Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.

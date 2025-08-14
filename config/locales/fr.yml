@@ -3,12 +3,17 @@ fr:
   activerecord:
     attributes:
       collection:
+        ai_indexable:
         caption: Légende
-        collection: Collection
+        collection:
+        indexable:
+        models: Modèles
         name: Nom
         notes: Notes
       creator:
+        ai_indexable:
         caption: Légende
+        indexable:
         name: Nom
         notes: Notes
         slug:
@@ -49,11 +54,17 @@ fr:
       link:
         url: Lien
       model:
+        ai_indexable:
         caption: Légende
+        collection: Collection
         collection_id: Collection
+        creator: Créateur
         creator_id: Créateur
+        images:
+        indexable:
         library_id: Bibliothèque
         license: Licence
+        model_files: Fichiers
         name: Nom
         notes: Description
         path: Chemin
@@ -63,6 +74,7 @@ fr:
       model_file:
         caption: Légende
         digest: Absorber
+        dimensions:
         filename: Nom de fichier
         model_id: Modèle
         notes: Notes
@@ -273,11 +285,11 @@ fr:
     footer:
       about:
       api:
-      by_html: Conçu et réalisé par <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">James</a> avec l'aide de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">nos contributeurs</a>.
+      by_html: Conçu et réalisé par <a href="https://floppy.org.uk" target="_blank">James</a> avec l'aide de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">nos contributeurs</a>.
       community:
       instance_heading:
       issues: Problèmes
-      open_source_html: Open Source sous <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">licence MIT.</a>
+      open_source_html: Open Source sous <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licence MIT.</a>
       powered_by_html:
       sponsor: Sponsor
       support:
@@ -292,9 +304,11 @@ fr:
       account: Mes paramètres
       activity: Activité
       check_existing: Vérifier les modèles existants
+      check_results:
       home: Page d'accueil
       log_in: Se connecter
       log_out: Se déconnecter
+      moderator_settings:
       navbar:
         toggler:
           label: Basculer la navigation
@@ -317,11 +331,24 @@ fr:
     tags_card:
       skip_tags: Sauter la liste des balises
     title: Manyfold
+  application_helper:
+    ai_indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+    indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+      'no': Non
+      'yes': Oui
   components:
     altcha_widget:
       help:
     copy_button:
       copy:
+    display_user_quota:
+      request_increase:
     download_button:
       download:
         missing:
@@ -336,6 +363,8 @@ fr:
       follow: Suivre %{name}
       pending: Demandé
       unfollow: ne plus suivre %{name}
+    link_list:
+      sync:
     modal:
       close:
     model_card:
@@ -357,6 +386,7 @@ fr:
       more_details_html:
       negation:
       parentheses:
+      path:
       quotes:
       simple:
       specific_fields:
@@ -364,6 +394,11 @@ fr:
       title:
       unset:
       without_tag:
+  concerns:
+    linkable:
+      sync:
+        bad_request:
+        success:
   doorkeeper:
     applications:
       buttons:
@@ -516,6 +551,32 @@ fr:
     update:
       failure:
       success:
+  fasp_client:
+    providers:
+      edit:
+        approval_help:
+        approve:
+        capability:
+        contact_details:
+        deny: Refuser
+        disable:
+        email: Email
+        enable:
+        fediverse_account: Adresse Fediverse
+        fingerprint:
+        links: Liens
+        privacy_policy:
+        registration:
+        sign_in: Se connecter
+        versions:
+      index:
+        add_html:
+        description_html:
+        heading:
+        provider_list_title:
+        registered_at:
+        status:
+        url:
   follows:
     actor_table:
       actions: Actions
@@ -558,9 +619,11 @@ fr:
       zero:
     menu: Menu
     new: Nouveau
+    private: Privé
     public:
     report: Rapporter %{type}
     save: Sauvegarder
+    shared:
     view: Afficher
   home:
     activity:
@@ -573,6 +636,7 @@ fr:
       title:
     federation:
       content_html:
+      creator_handle_html:
       following:
       handle_html:
       title:
@@ -585,6 +649,9 @@ fr:
         submit: Recherche
     publishing:
       content:
+      existing_creator:
+        button:
+        content:
       new_creator:
         button:
         content:
@@ -600,11 +667,20 @@ fr:
         edit:
         member:
         private:
+      quota:
       title:
       upload: Télécharger
     welcome:
       lead:
       title:
+  imports:
+    create:
+      success:
+    new:
+      description:
+      heading:
+      import:
+      import_type_html:
   jobs:
     activity:
       collection_published:
@@ -659,6 +735,7 @@ fr:
       appearance:
       downloads:
       libraries: Bibliothèques
+      moderation_settings_title:
       organization: Organisation
       performance: Tableau de bord des performances
       pghero: PgHero
@@ -666,6 +743,7 @@ fr:
       site_settings_title: Paramètres
       tools_heading: Outils avancés
   licenses:
+    0BSD:
     CC-BY-40: Creative Commons Attribution
     CC-BY-NC-40: Creative Commons Attribution NonCommercial
     CC-BY-NC-ND-40: Creative Commons Attribution NonCommercial NoDerivatives
@@ -674,6 +752,13 @@ fr:
     CC-BY-SA-40: Creative Commons Attribution ShareAlike
     CC-PDDC: Creative Commons Public Domain Declaration
     CC0-10: Creative Commons Zero
+    CERN-OHL-P-20:
+    CERN-OHL-S-20:
+    CERN-OHL-W-20:
+    GPL-20-only:
+    GPL-30-only:
+    LGPL-20-only:
+    LGPL-30-only:
     LicenseRef-Commercial: Commercial ; usage privé uniquement
     MIT: MIT
   moderator_mailer:
@@ -701,7 +786,7 @@ fr:
       title: 'Rapporter %{type} : %{name}'
   scans:
     create:
-      success: L'analyse de toutes les bibliothèques a commencé.
+      success:
   security:
     running_as_root_html: Manyfold s'exécute en tant que root, ce qui constitue un risque pour la sécurité. Exécute-le en tant qu'utilisateur différent en définissant les variables d'environnement <code>PUID</code> et <code>PGID</code>. Voir <a href='https://manyfold.app/sysadmin/configuration.html#required'>la documentation de configuration</a> pour plus de détails.
   sites:

@@ -4,6 +4,7 @@ cs:
     bulk_edit:
       description: 'Vyberte modely, které chcete změnit:'
       form_subtitle: 'Vyberte změny, které chcete provést:'
+      merge:
       needs_organizing: Potřebuje uspořádat
       remove_tags: Odstranit štítky
       select: Vybrat model '%{name}'
@@ -15,6 +16,15 @@ cs:
       add_tags: Přidat štítky
     bulk_update:
       success: Modely byly úspěšně aktualizovány.
+    configure_merge:
+      common_root:
+        description:
+        title:
+      description:
+      heading:
+      new_model:
+        description:
+        title:
     create:
       success: Soubory byly úspěšně nahrány!
     destroy:

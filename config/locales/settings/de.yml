@@ -32,6 +32,24 @@ de:
       theme:
         help_html: Betrifft alle Accounts. Besuche <a href="https://bootswatch.com">Bootswatch</a>, um eine Vorschau zu sehen.
         label: Aussehen
+    discovery:
+      allow_ai_bots:
+        help:
+        label:
+      allow_robots:
+        help:
+        label:
+      default_ai_indexable:
+        help_html:
+        label:
+      default_indexable:
+        help:
+        label:
+      description:
+      heading:
+      indexing:
+        description:
+        heading:
     domain_blocks:
       create:
         success: Domänenblock erfolgreich erstellt.
@@ -46,6 +64,12 @@ de:
         submit: Domain Blockieren
         title: Neuer Domain-block
     downloads:
+      derivatives:
+        description:
+        heading:
+        images:
+          help:
+          label:
       description: Manyfold generiert ZIP-Dateien von Modellen auf Anfrage, aber für stark frequentierte Websites möchtest du diese vielleicht schneller verfügbar haben. Hier kannst du Manyfold anweisen, ZIP-Dateien sofort zu erstellen, und auch festlegen, wie lange sie im Download-Cache aufbewahrt werden sollen. Vorsicht, dies kann eine Menge Speicherplatz verbrauchen!
       expiry:
         help: 0 bedeutet "für immer".
@@ -81,6 +105,21 @@ de:
         tags_html: 'eine Reihe von verschachtelten Ordnern, einen für jedes Tag, geordnet nach der Beliebtheit der Tags. Zum Beispiel: <code>fantasy/human/wizard</code>. Dieses Token ist "gierig"; es analysiert so viele Tags wie möglich.'
     general:
       submit: Einstellungen speichern
+    integrations:
+      cults3d_api_key:
+        help_html:
+        label:
+      cults3d_api_username:
+        help_html:
+        label:
+      description:
+      heading:
+      myminifactory_api_key:
+        help_html:
+        label:
+      thingiverse_api_key:
+        help_html:
+        label:
     multiuser:
       approve_signups:
         help: Alle neuen Konten müssen von einem Moderator genehmigt werden, bevor man sich anmelden kann.
@@ -98,7 +137,7 @@ de:
         help: Wer kann neue Modelle/Ersteller/Sammlungen standardmäßig anzeigen?
         label: Standard-Sichtbarkeit
         options:
-          member: Eingeloggte lokale Konten
+          member: Mitglieder (eingeloggte lokale Konten)
           none: Privat
       details_html: Um diese Einstellungen zu ändern, bearbeite die <a href='https://manyfold.app/sysadmin/configuration.html'>Umgebungsvariablen</a> des Servers und starten Sie ihn neu.
       email: E-Mail-Zustellung konfiguriert?

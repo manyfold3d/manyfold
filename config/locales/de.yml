@@ -3,13 +3,18 @@ de:
   activerecord:
     attributes:
       collection:
+        ai_indexable: Verwendung für KI-Training zulassen
         caption: Beschreibung
-        collection: Kollektion
+        collection: Überstehende Sammlung
+        indexable: Indizierung der Suche zulassen
+        models: Modelle
         name: Name
-        notes: Notizen
+        notes: Beschreibung
       creator:
+        ai_indexable: Verwendung für KI-Training zulassen
         caption: Beschreibung
-        name: Name
+        indexable: Indizierung der Suche zulassen
+        name: Autor
         notes: Beschreibung
         slug: Benutzername
       doorkeeper/application:
@@ -38,22 +43,28 @@ de:
         name: Name
         notes: Notizen
         path: Pfad
-        s3_access_key_id: Zugangs Schlüssel ID
+        s3_access_key_id: Zugangsschlüssel ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpunkt URL
         s3_path_style: Verwende pfad-ähnliche URLs
         s3_region: Region
-        s3_secret_access_key: Geheimer Zugangs Schlüssel
+        s3_secret_access_key: Geheimer Zugangsschlüssel
         storage_service: Speicherdienst
         tag_regex: Erforderliche Tags
       link:
         url: Link
       model:
+        ai_indexable: Verwendung für KI-Training zulassen
         caption: Bildunterschrift
+        collection: Kollektion
         collection_id: Kollektion
+        creator: Autor
         creator_id: Autor
+        images: Bilder
+        indexable: Indizierung der Suche zulassen
         library_id: Sammlung
         license: Lizenz
+        model_files: Dateien
         name: Name
         notes: Beschreibung
         path: Pfad
@@ -63,11 +74,12 @@ de:
       model_file:
         caption: Beschreibung
         digest: Hash
+        dimensions:
         filename: Dateiname
         model_id: Modell
         notes: Notizen
-        presupported: Support Struktur schon vorhanden
-        presupported_version: Version mit Support struktur
+        presupported: Supportstruktur schon vorhanden
+        presupported_version: Version mit Supportstruktur
         printed: Gedruckt
         size: Dateigröße
         unsupported_version: Nicht unterstützte Version
@@ -109,32 +121,32 @@ de:
         collection:
           attributes:
             collection:
-              private:
+              private: muss öffentlich sein
             creator:
-              private:
+              private: muss öffentlich sein
         doorkeeper/application:
           attributes:
             redirect_uri:
-              forbidden_uri: ist vom server verboten.
+              forbidden_uri: ist vom Server verboten.
               fragment_present: darf kein Fragment enthalten.
               invalid_uri: muss ein valider URI (Identifier) sein.
               relative_uri: muss ein absoluter URI (Identifier) sein.
               secured_uri: muss ein HTTPS/SSL URI (Identifier) sein.
               unspecified_scheme: muss ein Schema angeben.
             scopes:
-              not_match_configured: stimmen nicht mit denen am server hinterlegten überein.
+              not_match_configured: stimmen nicht mit denen auf dem Server hinterlegten überein.
         library:
           attributes:
             path:
               cannot_be_contained: kann nicht innerhalb einer anderen Bibliothek liegen
               cannot_contain: kann keine anderen Bibliotheken enthalten
-              non_writable: User muss schreib rechte haben
+              non_writable: User muss Schreibrechte haben
               not_found: konnte nicht auf der Festplatte gefunden werden
               unsafe: kann kein privilegierter Systempfad sein
         model:
           attributes:
             creator:
-              private:
+              private: muss öffentlich sein
             library:
               nested: kann nicht geändert werden, Modell enthält andere Modelle
             license:
@@ -148,8 +160,8 @@ de:
               cannot_change_type: ist nicht der gleiche Dateityp
               case_change_only: kann nicht eine reine Falländerung sein
             presupported_version:
-              already_presupported: kann nicht auf eine Datei gesetzt werden mit Support Struktur
-              not_supported: Ist keine Datei mit Support struktur
+              already_presupported: kann nicht auf eine Datei gesetzt werden mit Supportstruktur
+              not_supported: Ist keine Datei mit Supportstruktur
     models:
       acts_as_taggable_on/tag:
         few: Tags
@@ -273,11 +285,11 @@ de:
     footer:
       about: Über diese Instanz
       api: Erkunde unsere API
-      by_html: Entworfen und erstellt von <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">James</a> mit Hilfe  <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">unserer Mitwirkenden</a>.
+      by_html: Entworfen und erstellt von <a href="https://floppy.org.uk" target="_blank" rel="noreferrer"> mit Hilfe <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">unserer Mitwirkenden</a>.
       community: Tritt der Community bei
       instance_heading: Details zur Instanz
       issues: Einen Fehler melden
-      open_source_html: '<a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> unter dieser Lizenz: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT license</a>.'
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer"> unter dieser Lizenz:<a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT license</a>.
       powered_by_html: Powered by <a href="https://manyfold.app">%{name}</a>
       sponsor: Entwickler unterstützen
       support: Diese Instanz unterstützen
@@ -292,9 +304,11 @@ de:
       account: Meine Einstellungen
       activity: Aktivität
       check_existing: Vorhandene Modelle neu scannen
+      check_results:
       home: Homepage
       log_in: Einloggen
       log_out: Abmelden
+      moderator_settings: Moderator-Einstellungen
       navbar:
         toggler:
           label: Navigation umschalten
@@ -317,11 +331,24 @@ de:
     tags_card:
       skip_tags: Tag-Liste überspringen
     title: Manyfold
+  application_helper:
+    ai_indexable_select_options:
+      always_no: Immer nein
+      always_yes: Immer ja
+      inherit: Vererbung vom übergeordneten Objekt oder von der Standard-Site-Einstellung; derzeit '%{inherited}'
+    indexable_select_options:
+      always_no: Immer nein
+      always_yes: Immer ja
+      inherit: Vererbung vom übergeordneten Objekt oder von der Standard-Site-Einstellung; derzeit '%{inherited}'
+      'no': Nein
+      'yes': Ja
   components:
     altcha_widget:
-      help:
+      help: datenschutzfreundlicher Spamschutz durch ALTCHA
     copy_button:
       copy: In die Zwischenablage kopieren
+    display_user_quota:
+      request_increase: Um eine Quotenerhöhung zu beantragen, wende dich an deinen Website-Administrator.
     download_button:
       download:
         missing: Download anfordern
@@ -330,12 +357,14 @@ de:
       file_type: "%{type} Dateien"
       label: Alle herunterladen
       menu_header: Download optionen
-      supported: Nur Dateien mit Support Struktur
-      unsupported: Nur Dateien ohne Support Struktur
+      supported: Nur Dateien mit Supportstruktur
+      unsupported: Nur Dateien ohne Supportstruktur
     follow_button:
       follow: Folge %{name}
       pending: Angefordert
       unfollow: "%{name} nicht mehr Folgen"
+    link_list:
+      sync: Synchronisieren
     modal:
       close: Schließen
     model_card:
@@ -357,13 +386,19 @@ de:
       more_details_html: Weitere Informationen findest du in der vollständigen Dokumentation für <a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">die Abfragesprache von scoped_search</a>.
       negation: Um Begriffe auszuschließen, verwende  "not", "!" oder "-".
       parentheses: Gruppiere Begriffe mit Klammern für komplexere logische Kombinationen.
+      path:
       quotes: Um nach mehreren Wörtern in einem einzigen Begriff zu suchen, verwende Anführungszeichen; es werden dann nur Modelle mit dem exakten Text angezeigt.
       simple: In der Standardeinstellung findet die Suche Modelle, die allen Begriffen entsprechen.
-      specific_fields: Du kannst nach Begriffen in einigen bestimmten Feldern suchen. Verwende "~", um einen Teil des Feldes zu finden; verwende "=" um das ganze Feld zu finden. Modell beschreibungen und Bibliotheks namen werden nur durchsucht, wenn du es explizit angibst
+      specific_fields: Du kannst nach Begriffen in einigen bestimmten Feldern suchen. Verwende "~", um einen Teil des Feldes zu finden; verwende "=" um das ganze Feld zu finden. Modellbeschreibungen und Bibliotheksnamen werden nur durchsucht, wenn du es explizit angibst
       tag: Findet Modelle mit einem bestimmten Tag
-      title: Such Syntax
+      title: Suchsyntax
       unset: Verwende "set?", um abzufragen, ob ein bestimmtes Feld gesetzt ist, und füge "not" hinzu, um das Gegenteil festzustellen.
       without_tag: Verwende "!=", um Modelle ohne ein bestimmtes Tag zu finden
+  concerns:
+    linkable:
+      sync:
+        bad_request: 'Synchronisierung fehlgeschlagen: fehlende Link-ID'
+        success: Synchronisierung erfolgreich angefordert
   doorkeeper:
     applications:
       buttons:
@@ -509,10 +544,36 @@ de:
     show:
       destroy: Löschen
       edit: Bearbeiten
-      title: Anwendungs details
+      title: Anwendungsdetails
     update:
       failure: Es ist ein Fehler aufgetreten, und die Anwendung konnte nicht gespeichert werden.
       success: Anwendung erfolgreich gespeichert.
+  fasp_client:
+    providers:
+      edit:
+        approval_help:
+        approve:
+        capability:
+        contact_details:
+        deny: Verweigern
+        disable:
+        email: E-Mail
+        enable:
+        fediverse_account: Fediverse-Adresse
+        fingerprint:
+        links: URLs
+        privacy_policy:
+        registration:
+        sign_in: Einloggen
+        versions:
+      index:
+        add_html:
+        description_html:
+        heading:
+        provider_list_title:
+        registered_at:
+        status:
+        url:
   follows:
     actor_table:
       actions: Aktionen
@@ -555,22 +616,25 @@ de:
       zero: "%{count} Follower"
     menu: Menü
     new: Neue
-    public:
+    private: Privat
+    public: Öffentlich sichtbar
     report: Melde %{type}
     save: Speichern
+    shared: mit Lokalen Nutzern geteilt
     view: Siehe
   home:
     activity:
       created: hinzugefügt vor %{time}
       updated: hinzugefügt vor %{time}
     browsing:
-      content:
-      manual_link:
-      more_access:
-      title:
+      content: Du kannst die Modelle erkunden, indem du auf die Links in der Menüleiste klickst, eine vollständige Liste durchsuchen und nach Tags filtern oder nach Sammlung oder Ersteller suchen. Oder gib einfach in das Suchfeld ein, was du suchst!
+      manual_link: Benutzerhandbuch
+      more_access: Derzeit hast du nur Lesezugriff auf diese Instanz; um mehr Rechte zu erhalten, z. B. zum Hochladen, wende dich an den Instanzadministrator.
+      title: Durchsuchen
     federation:
-      content_html:
-      following:
+      content_html: Diese Manyfold-Instanz ist Teil des <a href="https://jointhefediverse.net">Fediverse</a>, eines Netzwerks von Social-Media-Sites, die alle zusammenarbeiten. Das bedeutet, dass, wenn du hier ein Konto hast, kannst du anderen Menschen auf ihren Instanzen Folgen, oder Menschen können dir von anderen Plattformen wie Mastodon folgen.
+      creator_handle_html: 'Das fediverse-Handle deines Erstellerprofils lautet: <code>%{handle}</code>.'
+      following: Wenn du das Handle von jemandem oder etwas kennst, dem du folgen möchtest, gib es einfach in das Suchfeld ein; andernfalls geb den persönlichen Handle oben ein, wenn du etwas auf einer anderen Instanz folgen möchstest.
       handle_html:
       title:
     index:
@@ -582,6 +646,9 @@ de:
         submit: Suche
     publishing:
       content:
+      existing_creator:
+        button:
+        content:
       new_creator:
         button:
         content:
@@ -597,11 +664,20 @@ de:
         edit:
         member:
         private:
+      quota:
       title:
       upload: Hochladen
     welcome:
       lead:
       title:
+  imports:
+    create:
+      success:
+    new:
+      description:
+      heading:
+      import:
+      import_type_html:
   jobs:
     activity:
       collection_published:
@@ -623,7 +699,7 @@ de:
         loading_mesh: Lade mesh
       geometric_analysis:
         direction_check: Kontrolliere Oberflächenausrichtung
-        loading_mesh: Lade meshs
+        loading_mesh: Lade Mesh
         manifold_check: Prüfe Mesh, auf nicht-verzweigte Maschen
     scan:
       detect_filesystem_changes:
@@ -656,13 +732,15 @@ de:
       appearance: Erscheinungsbild
       downloads: Herunterladen
       libraries: Sammlungen
+      moderation_settings_title:
       organization: Organisation
       performance: Leistungs-Dashboard
       pghero: PgHero
       sidekiq: Sidekiq
-      site_settings_title: Einstellungen
+      site_settings_title: Admin-Einstellungen
       tools_heading: Erweiterte Werkzeuge
   licenses:
+    0BSD:
     CC-BY-40: Creative Commons Attribution
     CC-BY-NC-40: Creative Commons Attribution NonCommercial
     CC-BY-NC-ND-40: Creative Commons Attribution NonCommercial NoDerivatives
@@ -671,6 +749,13 @@ de:
     CC-BY-SA-40: Creative Commons Attribution ShareAlike
     CC-PDDC: Creative Commons Public Domain Declaration
     CC0-10: Creative Commons Zero
+    CERN-OHL-P-20:
+    CERN-OHL-S-20:
+    CERN-OHL-W-20:
+    GPL-20-only:
+    GPL-30-only:
+    LGPL-20-only:
+    LGPL-30-only:
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
   moderator_mailer:
@@ -688,7 +773,7 @@ de:
       load: Fehler beim Laden
       webglrenderer: Renderer konnte nicht erstellt werden!
     load: Lädt
-    processing: verarbeite mesh
+    processing: verarbeite Mesh
   reports:
     create:
       success: Bericht eingereicht. Danke!
@@ -698,7 +783,7 @@ de:
       title: 'Melde %{type}: "%{name}"'
   scans:
     create:
-      success: Scan für alle Sammlungen gestartet.
+      success:
   security:
     running_as_root_html: Manyfold wird als root ausgeführt, was ein Sicherheitsrisiko darstellt. Führe Manyfold als einen anderen Systembenutzer aus, indem du die Umgebungsvariablen <code>PUID</code> und <code>PGID</code> setzt. Einzelheiten findest du in <a href='https://manyfold.app/sysadmin/configuration.html#required'>der Konfigurationsdokumentation</a>.
   sites:

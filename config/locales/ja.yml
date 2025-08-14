@@ -3,12 +3,17 @@ ja:
   activerecord:
     attributes:
       collection:
+        ai_indexable:
         caption: キャプション
-        collection: コレクション
+        collection:
+        indexable:
+        models: モデル
         name: 名称
         notes: ノート
       creator:
+        ai_indexable:
         caption: タグライン
+        indexable:
         name: 名前
         notes: 説明
         slug: ハンドルネーム
@@ -49,11 +54,17 @@ ja:
       link:
         url: リンク
       model:
+        ai_indexable:
         caption: キャプション
+        collection: コレクション
         collection_id: コレクション
+        creator: クリエイター
         creator_id: クリエイター
+        images:
+        indexable:
         library_id: ライブラリー
         license: ライセンス
+        model_files: ファイル
         name: 名前
         notes: 説明
         path: パス
@@ -63,6 +74,7 @@ ja:
       model_file:
         caption: キャプション
         digest: ダイジェスト
+        dimensions:
         filename: ファイル名
         model_id: モデル
         notes: ノート
@@ -273,11 +285,11 @@ ja:
     footer:
       about: このインスタンスについて
       api: APIについて
-      by_html: <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">Jamesが</a>設計し、<a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">我々の貢献者の</a>助けを借りて作り上げました。
+      by_html: <a href="https://floppy.org.uk" target="_blank">Jamesが</a>設計し、<a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">我々の貢献者の</a>助けを借りて作り上げました。
       community: コミュニティに参加する
       instance_heading: インスタンスの詳細
       issues: 問題を報告する
-      open_source_html: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MITライセンスの</a><a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">オープンソース</a>です。
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MITライセンスの</a><a href="https://github.com/manyfold3d/manyfold" target="_blank">オープンソース</a>です。
       powered_by_html: 概要 <a href="https://manyfold.app">[%{name}］</a>
       sponsor: 発明をスポンサー
       support: インスタンスをスポンサー
@@ -292,9 +304,11 @@ ja:
       account: 設定
       activity: アクティビティ
       check_existing: 既存モデルの再スキャン
+      check_results:
       home: ホームページ
       log_in: ログイン
       log_out: ログアウト
+      moderator_settings:
       navbar:
         toggler:
           label: ナビゲーションをトグル
@@ -317,11 +331,24 @@ ja:
     tags_card:
       skip_tags: タグリストをスキップする
     title: Manyfold
+  application_helper:
+    ai_indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+    indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+      'no': いいえ
+      'yes': はい
   components:
     altcha_widget:
       help:
     copy_button:
       copy:
+    display_user_quota:
+      request_increase:
     download_button:
       download:
         missing: ダウンロードをリクエスト
@@ -336,6 +363,8 @@ ja:
       follow: "%{name}]をフォローする"
       pending: リクエストされた
       unfollow: "%{name}]のフォローを解除する"
+    link_list:
+      sync:
     modal:
       close: 閉じる
     model_card:
@@ -357,6 +386,7 @@ ja:
       more_details_html: 詳しくは、<a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">scoped_searchのクエリー</a>言語の完全なドキュメントをお読みください。
       negation: 用語を除外するには、「not」、「!」、「or」を使用する。
       parentheses: より複雑なロジックの組み合わせのために、用語を括弧でグループ化する。
+      path:
       quotes: 1つの用語で複数の単語を検索するには、引用符を使用します。
       simple: デフォルトでは、すべての条件に一致するモデルを検索します。
       specific_fields: いくつかの特定のフィールドから用語を探すことができる。フィールドの一部にマッチする場合は「~」を、全体にマッチする場合は「=」を使用する。
@@ -364,6 +394,11 @@ ja:
       title: 検索構文
       unset: 特定のフィールドがセットされているかどうかを調べるには 「set?」を使い、その反対を調べるには 「not」を加える。
       without_tag: 特定のタグがないモデルを見つけるには「！」
+  concerns:
+    linkable:
+      sync:
+        bad_request:
+        success:
   doorkeeper:
     applications:
       buttons:
@@ -513,6 +548,32 @@ ja:
     update:
       failure:
       success:
+  fasp_client:
+    providers:
+      edit:
+        approval_help:
+        approve:
+        capability:
+        contact_details:
+        deny: 否認
+        disable:
+        email: Eメール
+        enable:
+        fediverse_account: フェディバースアドレス
+        fingerprint:
+        links: リンク
+        privacy_policy:
+        registration:
+        sign_in: ログイン
+        versions:
+      index:
+        add_html:
+        description_html:
+        heading:
+        provider_list_title:
+        registered_at:
+        status:
+        url:
   follows:
     actor_table:
       actions:
@@ -555,9 +616,11 @@ ja:
       zero:
     menu:
     new:
+    private: プライベート
     public:
     report:
     save:
+    shared:
     view:
   home:
     activity:
@@ -570,6 +633,7 @@ ja:
       title:
     federation:
       content_html:
+      creator_handle_html:
       following:
       handle_html:
       title:
@@ -582,6 +646,9 @@ ja:
         submit:
     publishing:
       content:
+      existing_creator:
+        button:
+        content:
       new_creator:
         button:
         content:
@@ -597,11 +664,20 @@ ja:
         edit:
         member:
         private:
+      quota:
       title:
       upload: アップロード
     welcome:
       lead:
       title:
+  imports:
+    create:
+      success:
+    new:
+      description:
+      heading:
+      import:
+      import_type_html:
   jobs:
     activity:
       collection_published:
@@ -656,13 +732,15 @@ ja:
       appearance:
       downloads:
       libraries:
+      moderation_settings_title:
       organization:
       performance:
       pghero:
       sidekiq:
-      site_settings_title:
+      site_settings_title: サイト設定
       tools_heading:
   licenses:
+    0BSD:
     CC-BY-40:
     CC-BY-NC-40:
     CC-BY-NC-ND-40:
@@ -671,6 +749,13 @@ ja:
     CC-BY-SA-40:
     CC-PDDC:
     CC0-10:
+    CERN-OHL-P-20:
+    CERN-OHL-S-20:
+    CERN-OHL-W-20:
+    GPL-20-only:
+    GPL-30-only:
+    LGPL-20-only:
+    LGPL-30-only:
     LicenseRef-Commercial:
     MIT:
   moderator_mailer:

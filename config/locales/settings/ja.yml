@@ -32,6 +32,24 @@ ja:
       theme:
         help_html:
         label: テーマ
+    discovery:
+      allow_ai_bots:
+        help:
+        label:
+      allow_robots:
+        help:
+        label:
+      default_ai_indexable:
+        help_html:
+        label:
+      default_indexable:
+        help:
+        label:
+      description:
+      heading:
+      indexing:
+        description:
+        heading:
     domain_blocks:
       create:
         success: ドメインブロックが正常に作成されました。
@@ -46,6 +64,12 @@ ja:
         submit: ドメインをブロックする
         title: 新ドメインブロック
     downloads:
+      derivatives:
+        description:
+        heading:
+        images:
+          help:
+          label:
       description: Manyfoldはリクエストに応じてモデルのZIPファイルを生成しますが、多忙なサイトではより早くZIPファイルを利用したい場合もあるでしょう。ここでは、ManyfoldにZIPファイルをすぐに作成するように指示したり、ダウンロードキャッシュに保存する期間を設定したりすることができます。この場合、多くのディスク容量を使用することになりますのでご注意ください！
       expiry:
         help: 0は永久保存を意味する。
@@ -81,6 +105,21 @@ ja:
         tags_html: 各タグに1つずつ、タグの人気順に並べられた、入れ子になった一連のフォルダ。例えば、<code>hogehoge/piyopiyp/piyohogeの</code>ように。このトークンは「貪欲」で、できるだけ多くのタグを解析します。
     general:
       submit: 設定の保存
+    integrations:
+      cults3d_api_key:
+        help_html:
+        label:
+      cults3d_api_username:
+        help_html:
+        label:
+      description:
+      heading:
+      myminifactory_api_key:
+        help_html:
+        label:
+      thingiverse_api_key:
+        help_html:
+        label:
     multiuser:
       approve_signups:
         help: すべての新規アカウントは、サインインする前にモデレーターの承認が必要です。

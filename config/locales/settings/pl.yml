@@ -32,6 +32,24 @@ pl:
       theme:
         help_html: Dotyczy wszystkich kont. Odwiedź <a href="https://bootswatch.com">Bootswatch</a>, aby zobaczyć podgląd.
         label: Motyw
+    discovery:
+      allow_ai_bots:
+        help:
+        label:
+      allow_robots:
+        help:
+        label:
+      default_ai_indexable:
+        help_html:
+        label:
+      default_indexable:
+        help:
+        label:
+      description:
+      heading:
+      indexing:
+        description:
+        heading:
     domain_blocks:
       create:
         success: Blok domeny został pomyślnie utworzony.
@@ -46,6 +64,12 @@ pl:
         submit: Zablokuj domene
         title: Nowy Blok Domeny
     downloads:
+      derivatives:
+        description:
+        heading:
+        images:
+          help:
+          label:
       description:
       expiry:
         help:
@@ -81,6 +105,21 @@ pl:
         tags_html: 'seria zagnieżdżonych folderów, po jednym dla każdego z tagów, ułożonych w kolejności popularności tagów. Na przykład: <code>fantasy/człowiek/czarodziej</code>. Ten token jest "chciwy"; przeanalizuje on tak wiele tagów, jak to tylko możliwe.'
     general:
       submit: Zapisz Ustawienia
+    integrations:
+      cults3d_api_key:
+        help_html:
+        label:
+      cults3d_api_username:
+        help_html:
+        label:
+      description:
+      heading:
+      myminifactory_api_key:
+        help_html:
+        label:
+      thingiverse_api_key:
+        help_html:
+        label:
     multiuser:
       approve_signups:
         help: Wszystkie nowe konta muszą zostać zatwierdzone przez moderatora, zanim będą oni mogli się zalogować.

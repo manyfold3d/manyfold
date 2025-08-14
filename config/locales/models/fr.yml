@@ -4,6 +4,7 @@ fr:
     bulk_edit:
       description: 'Sélectionner les modèles à modifier :'
       form_subtitle: 'Sélectionnez les modifications à apporter :'
+      merge:
       needs_organizing: Besoin d'organisation
       remove_tags: Supprimer les étiquettes
       select: Sélectionner le modèle '%{name}'
@@ -15,6 +16,15 @@ fr:
       add_tags: Ajouter des étiquettes
     bulk_update:
       success: Les modèles ont été mis à jour avec succès.
+    configure_merge:
+      common_root:
+        description:
+        title:
+      description:
+      heading:
+      new_model:
+        description:
+        title:
     create:
       success: Fichier(s) téléchargé(s) avec succès.
     destroy:

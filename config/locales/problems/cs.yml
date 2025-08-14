@@ -4,6 +4,7 @@ cs:
     categories:
       duplicate: Duplikovat soubory
       empty: Model nebo soubor je prázdný
+      http_error:
       inefficient: Neefektivní formáty
       inside_out: Model je naruby
       missing: Chybějící soubory nebo složky
@@ -32,6 +33,10 @@ cs:
       select: Vybrat
       select_all: Vybrat vše
       unignore: Zobrazit
+    link:
+      http_error:
+        description:
+        title:
     model:
       empty:
         description: Tento model neobsahuje žádné soubory. Buď ho smažte, nebo zjistěte, kam se jeho soubory poděly!

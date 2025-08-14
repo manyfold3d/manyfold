@@ -4,6 +4,7 @@ de:
     categories:
       duplicate: Duplizierte Dateien
       empty: Modell oder Datei ist Leer
+      http_error:
       inefficient: Unvollständige Formate
       inside_out: Mesh ist "verdreht"
       missing: Fehlende Dateien oder Ordner
@@ -32,6 +33,10 @@ de:
       select: Auswählen
       select_all: Alle auswählen
       unignore: Anzeigen
+    link:
+      http_error:
+        description:
+        title:
     model:
       empty:
         description: Dieses Modell enthält keine Dateien. Entweder löschen Sie es oder finde heraus, wo sie sind!

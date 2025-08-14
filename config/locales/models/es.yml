@@ -4,6 +4,7 @@ es:
     bulk_edit:
       description: 'Seleccione los modelos que desea modificar:'
       form_subtitle: 'Seleccione los cambios a realizar:'
+      merge: Fusionar los modelos seleccionados
       needs_organizing: Necesita organización
       remove_tags: Eliminar etiquetas
       select: Seleccione el modelo '%{name}'
@@ -15,6 +16,15 @@ es:
       add_tags: Añadir etiquetas
     bulk_update:
       success: Modelos actualizados correctamente.
+    configure_merge:
+      common_root:
+        description: Los modelos se combinarán en uno solo en la carpeta raíz compartida
+        title: Nuevo modelo en la carpeta raíz
+      description: Selecciona uno de los modelos para fusionarlo con los demás o crea uno nuevo.
+      heading: Fusionar modelos
+      new_model:
+        description: Se creará un nuevo modelo a partir de los datos combinados y se organizará automáticamente en disco.
+        title: Nuevo modelo
     create:
       success: Archivo(s) cargado(s) correctamente.
     destroy:

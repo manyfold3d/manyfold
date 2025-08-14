@@ -4,6 +4,7 @@ fr:
     categories:
       duplicate: Fichiers en double
       empty: Le modèle n'a pas de fichiers
+      http_error:
       inefficient: Formats inefficaces
       inside_out: Le maillage est à l'envers
       missing: Fichiers ou dossiers manquants
@@ -32,6 +33,10 @@ fr:
       select: Sélectionner
       select_all: Tout sélectionner
       unignore: Afficher
+    link:
+      http_error:
+        description:
+        title:
     model:
       empty:
         description: Ce modèle ne contient aucun fichier. Soit vous le supprimez, soit vous trouvez où sont passés ses fichiers !

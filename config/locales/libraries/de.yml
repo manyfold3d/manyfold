@@ -18,7 +18,7 @@ de:
         help: Diese Bibliothek als Standard für Uploads festlegen
       filesystem_description_html: Um Speicherplatz auf deinem lokalen Dateisystem zu verwenden, stelle zunächst sicher, dass er als <a href="https://docs.docker.com/storage/bind-mounts/">Bind-Mount</a> oder anderes Volume in deinem Docker-Container eingehängt ist, und gebe dann den Docker-Pfad ein; nicht den Pfad auf dem Host-Server! Wenn du zum Beispiel einen Ordner voller Dateien unter <code>/mnt/media/3d/models</code> auf deinem Host hast und <code>/mnt/media/3d</code> in deinem Docker-Konfiguration an <code>/libraries</code> gebunden hast, wäre der erforderliche Pfad <code>/libraries/models</code>.
       icon:
-        help_html: Optional; ein beliebiges Symbol von <a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">Boostrap icons</a> or <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a>.
+        help_html: Optional; ein beliebiges Symbol von <a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer"> or <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a>.
         placeholder: boxes
       notes:
         help_html: Optional, Wird nur Administratoren in den Einstellungen angezeigt. Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> benutzten.

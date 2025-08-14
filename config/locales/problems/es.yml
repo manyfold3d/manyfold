@@ -4,6 +4,7 @@ es:
     categories:
       duplicate: Archivos duplicados
       empty: El modelo no tiene archivos
+      http_error:
       inefficient: Formatos no recomendados
       inside_out: La malla está al revés
       missing: Faltan archivos o carpetas
@@ -32,6 +33,10 @@ es:
       select: Seleccionar
       select_all: Seleccionar todo
       unignore: Mostrar
+    link:
+      http_error:
+        description:
+        title:
     model:
       empty:
         description: Este modelo no contiene archivos. Elimínelo o encuentre dónde están sus archivos

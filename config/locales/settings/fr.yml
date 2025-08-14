@@ -32,6 +32,24 @@ fr:
       theme:
         help_html:
         label:
+    discovery:
+      allow_ai_bots:
+        help:
+        label:
+      allow_robots:
+        help:
+        label:
+      default_ai_indexable:
+        help_html:
+        label:
+      default_indexable:
+        help:
+        label:
+      description:
+      heading:
+      indexing:
+        description:
+        heading:
     domain_blocks:
       create:
         success: Blocage de domaine créé avec succès.
@@ -46,6 +64,12 @@ fr:
         submit: Bloquer le domaine
         title: Bloquer un domaine
     downloads:
+      derivatives:
+        description:
+        heading:
+        images:
+          help:
+          label:
       description:
       expiry:
         help:
@@ -81,6 +105,21 @@ fr:
         tags_html: 'une série de dossiers imbriqués, un pour chaque étiquette, classés par ordre de popularité de l''étiquette. Par exemple : <code>fantasy/humain/sorcier</code>'
     general:
       submit: Sauvegarder les paramètres
+    integrations:
+      cults3d_api_key:
+        help_html:
+        label:
+      cults3d_api_username:
+        help_html:
+        label:
+      description:
+      heading:
+      myminifactory_api_key:
+        help_html:
+        label:
+      thingiverse_api_key:
+        help_html:
+        label:
     multiuser:
       approve_signups:
         help: Tous les nouveaux comptes doivent être approuvés par un modérateur avant de pouvoir se connecter.
