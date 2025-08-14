@@ -38,12 +38,12 @@ de:
         name: Name
         notes: Notizen
         path: Pfad
-        s3_access_key_id: Zugangs Schlüssel ID
+        s3_access_key_id: Zugangsschlüssel ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpunkt URL
         s3_path_style: Verwende pfad-ähnliche URLs
         s3_region: Region
-        s3_secret_access_key: Geheimer Zugangs Schlüssel
+        s3_secret_access_key: Geheimer Zugangsschlüssel
         storage_service: Speicherdienst
         tag_regex: Erforderliche Tags
       link:
@@ -66,8 +66,8 @@ de:
         filename: Dateiname
         model_id: Modell
         notes: Notizen
-        presupported: Support Struktur schon vorhanden
-        presupported_version: Version mit Support struktur
+        presupported: Supportstruktur schon vorhanden
+        presupported_version: Version mit Supportstruktur
         printed: Gedruckt
         size: Dateigröße
         unsupported_version: Nicht unterstützte Version
@@ -115,20 +115,20 @@ de:
         doorkeeper/application:
           attributes:
             redirect_uri:
-              forbidden_uri: ist vom server verboten.
+              forbidden_uri: ist vom Server verboten.
               fragment_present: darf kein Fragment enthalten.
               invalid_uri: muss ein valider URI (Identifier) sein.
               relative_uri: muss ein absoluter URI (Identifier) sein.
               secured_uri: muss ein HTTPS/SSL URI (Identifier) sein.
               unspecified_scheme: muss ein Schema angeben.
             scopes:
-              not_match_configured: stimmen nicht mit denen am server hinterlegten überein.
+              not_match_configured: stimmen nicht mit denen auf dem Server hinterlegten überein.
         library:
           attributes:
             path:
               cannot_be_contained: kann nicht innerhalb einer anderen Bibliothek liegen
               cannot_contain: kann keine anderen Bibliotheken enthalten
-              non_writable: User muss schreib rechte haben
+              non_writable: User muss Schreibrechte haben
               not_found: konnte nicht auf der Festplatte gefunden werden
               unsafe: kann kein privilegierter Systempfad sein
         model:
@@ -148,8 +148,8 @@ de:
               cannot_change_type: ist nicht der gleiche Dateityp
               case_change_only: kann nicht eine reine Falländerung sein
             presupported_version:
-              already_presupported: kann nicht auf eine Datei gesetzt werden mit Support Struktur
-              not_supported: Ist keine Datei mit Support struktur
+              already_presupported: kann nicht auf eine Datei gesetzt werden mit Supportstruktur
+              not_supported: Ist keine Datei mit Supportstruktur
     models:
       acts_as_taggable_on/tag:
         few: Tags
@@ -330,8 +330,8 @@ de:
       file_type: "%{type} Dateien"
       label: Alle herunterladen
       menu_header: Download optionen
-      supported: Nur Dateien mit Support Struktur
-      unsupported: Nur Dateien ohne Support Struktur
+      supported: Nur Dateien mit Supportstruktur
+      unsupported: Nur Dateien ohne Supportstruktur
     follow_button:
       follow: Folge %{name}
       pending: Angefordert
@@ -359,9 +359,9 @@ de:
       parentheses: Gruppiere Begriffe mit Klammern für komplexere logische Kombinationen.
       quotes: Um nach mehreren Wörtern in einem einzigen Begriff zu suchen, verwende Anführungszeichen; es werden dann nur Modelle mit dem exakten Text angezeigt.
       simple: In der Standardeinstellung findet die Suche Modelle, die allen Begriffen entsprechen.
-      specific_fields: Du kannst nach Begriffen in einigen bestimmten Feldern suchen. Verwende "~", um einen Teil des Feldes zu finden; verwende "=" um das ganze Feld zu finden. Modell beschreibungen und Bibliotheks namen werden nur durchsucht, wenn du es explizit angibst
+      specific_fields: Du kannst nach Begriffen in einigen bestimmten Feldern suchen. Verwende "~", um einen Teil des Feldes zu finden; verwende "=" um das ganze Feld zu finden. Modellbeschreibungen und Bibliotheksnamen werden nur durchsucht, wenn du es explizit angibst.
       tag: Findet Modelle mit einem bestimmten Tag
-      title: Such Syntax
+      title: Suchsyntax
       unset: Verwende "set?", um abzufragen, ob ein bestimmtes Feld gesetzt ist, und füge "not" hinzu, um das Gegenteil festzustellen.
       without_tag: Verwende "!=", um Modelle ohne ein bestimmtes Tag zu finden
   doorkeeper:
@@ -509,7 +509,7 @@ de:
     show:
       destroy: Löschen
       edit: Bearbeiten
-      title: Anwendungs details
+      title: Anwendungsdetails
     update:
       failure: Es ist ein Fehler aufgetreten, und die Anwendung konnte nicht gespeichert werden.
       success: Anwendung erfolgreich gespeichert.
@@ -623,7 +623,7 @@ de:
         loading_mesh: Lade mesh
       geometric_analysis:
         direction_check: Kontrolliere Oberflächenausrichtung
-        loading_mesh: Lade meshs
+        loading_mesh: Lade Mesh
         manifold_check: Prüfe Mesh, auf nicht-verzweigte Maschen
     scan:
       detect_filesystem_changes:
@@ -688,7 +688,7 @@ de:
       load: Fehler beim Laden
       webglrenderer: Renderer konnte nicht erstellt werden!
     load: Lädt
-    processing: verarbeite mesh
+    processing: verarbeite Mesh
   reports:
     create:
       success: Bericht eingereicht. Danke!
