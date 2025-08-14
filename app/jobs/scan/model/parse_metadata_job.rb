@@ -116,6 +116,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   end
 
   def attributes_from_ascii_art_thingiverse_readme(content)
+    content = filter_thingiverse_text(content)
     matches = content.match ASCII_ART_THINGIVERSE_README
     {
       name: matches[:title],
@@ -129,6 +130,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   end
 
   def attributes_from_simple_thingiverse_readme(content)
+    content = filter_thingiverse_text(content)
     matches = content.match SIMPLE_THINGIVERSE_README
     {
       name: matches[:title],
@@ -137,6 +139,10 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       ],
       creator: find_or_create_from_path_component(Creator, matches[:creator])
     }
+  end
+
+  def filter_thingiverse_text(content)
+    content.gsub(/{(.+?) %!S\(Bool=True\)}/, "\\1")
   end
 
   def license_id_from_url(url)

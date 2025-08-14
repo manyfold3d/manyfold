@@ -536,4 +536,35 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       end
     end
   end
+
+  context "when loading information from a simple Thingiverse README including Go string errors" do
+    let(:content) {
+      <<~EOF
+        {Test Model %!S(Bool=True)} by {example creator %!S(Bool=True)} on Thingiverse: http://www.thingiverse.com/thing:1234567
+      EOF
+    }
+    let(:model) { create(:model, notes: nil) }
+    let(:readme) { create(:model_file, model: model) }
+
+    context "with nothing in datapackage" do
+      before do
+        allow(Model).to receive(:find).with(model.id).and_return(model)
+        allow(model).to receive_messages(
+          model_files: instance_double(ActiveRecord::Relation, find_by: readme, min_by: nil),
+          datapackage_content: nil
+        )
+        allow(readme).to receive(:attachment).and_return class_double(File, read: content)
+        described_class.perform_now(model.id)
+        model.reload
+      end
+
+      it "sets name" do
+        expect(model.name).to eq "Test Model"
+      end
+
+      it "sets creator" do
+        expect(model.creator.name).to eq "Example Creator"
+      end
+    end
+  end
 end
