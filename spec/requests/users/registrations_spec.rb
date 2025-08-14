@@ -326,17 +326,14 @@ RSpec.describe "Users::Registrations" do
         }
         let(:form_post) { post "/users", params: post_with_creator_options }
 
-        it "doesn't create a new user" do
-          expect { form_post }.not_to change(User, :count)
-        end
-
-        it "doesn't create a new creator" do
-          expect { form_post }.not_to change(Creator, :count)
-        end
-
-        it "gives an unprocessable response" do
+        it "autogenerates a creator slug" do
           form_post
-          expect(response).to have_http_status :unprocessable_content
+          expect(Creator.last.slug).to be_present
+        end
+
+        it "autocreates a username based on the creator slug" do
+          form_post
+          expect(User.last.username).to eq "u;" + Creator.last.slug
         end
       end
 
