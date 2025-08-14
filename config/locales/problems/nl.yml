@@ -4,6 +4,7 @@ nl:
     categories:
       duplicate: Dubbele bestanden
       empty: Model of bestand is leeg
+      http_error:
       inefficient: Inefficiënte formaten
       inside_out: Mesh is binnenstebuiten
       missing: Ontbrekende bestanden of mappen
@@ -32,6 +33,10 @@ nl:
       select: Selecteren
       select_all: Alles selecteren
       unignore: Tonen
+    link:
+      http_error:
+        description:
+        title:
     model:
       empty:
         description: Dit model bevat geen bestanden. Verwijder het of zoek uit waar de bestanden zijn gebleven!

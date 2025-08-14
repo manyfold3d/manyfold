@@ -18,7 +18,7 @@ fr:
         help:
       filesystem_description_html: Pour utiliser le stockage sur votre système de fichiers local, assurez-vous tout d'abord qu'il est monté en tant que <a href="https://docs.docker.com/storage/bind-mounts/">"bind mount"</a> ou autre volume dans votre conteneur Docker, puis entrez le chemin d'accès Docker ; pas le chemin d'accès sur votre serveur hôte ! Par exemple, si vous avez un répertoire plein de fichiers dans <code>/mnt/media/3d/models</code> sur votre hôte, et que vous avez lié <code>/mnt/media/3d</code> à <code>/libraries</code> dans votre configuration Docker, le chemin requis serait <code>/libraries/models</code>.
       icon:
-        help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">bibliothèque Bootstrap </a> ou <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a>.
+        help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank">bibliothèque Bootstrap </a> ou <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
         placeholder: boxes
       notes:
         help_html: Facultatif ; affiché uniquement par les administrateurs sur la page des paramètres. Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.

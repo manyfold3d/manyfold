@@ -32,6 +32,24 @@ es:
       theme:
         help_html: Afecta a todos los usuarios. Visita <a href="https://bootswatch.com">Bootswatch</a> para ver vistas previas.
         label: Tema
+    discovery:
+      allow_ai_bots:
+        help: A menos que estén activados, los robots de IA están completamente prohibidos en robots.txt. Activar esto puede causar mucha carga en el servidor.
+        label: Permitir rastreadores AI
+      allow_robots:
+        help: A menos que esté activada, se pedirá a los rastreadores web que ignoren toda la instancia.
+        label: Permitir rastreadores web
+      default_ai_indexable:
+        help_html: A menos que se active, se pedirá a los robots de entrenamiento de IA que ignoren el contenido público utilizando <a href="https://www.deviantart.com/team/journal/A-New-Directive-for-Opting-Out-of-AI-Datasets-934500371">la directiva `noai` de Deviantart</a>.
+        label: Permitir el entrenamiento de la IA
+      default_indexable:
+        help: A menos que se active, se pedirá a los motores de búsqueda que ignoren el contenido público por defecto.
+        label: Permitir la indexación de búsquedas
+      description: Controla cómo encuentra el resto del mundo tus contenidos públicos. Ten en cuenta que todos estos ajustes son orientativos; no podemos garantizar el buen comportamiento de otros sistemas.
+      heading: Descubrimiento
+      indexing:
+        description: Las siguientes opciones establecen los valores predeterminados en todo el sitio para las preferencias de indexación de búsqueda en contenido público (el contenido privado nunca es indexable). Los modelos, creadores y colecciones individuales pueden anular este valor predeterminado con su propia configuración. Estas opciones sólo tendrán efecto si los rastreadores están habilitados.
+        heading: Indexación por defecto
     domain_blocks:
       create:
         success: Bloqueo de dominio creado con éxito.
@@ -46,6 +64,12 @@ es:
         submit: Bloqueo de dominio
         title: Nuevo dominio bloqueado
     downloads:
+      derivatives:
+        description:
+        heading:
+        images:
+          help:
+          label:
       description: Manyfold generará archivos ZIP de los modelos a petición, pero para los sitios ocupados es posible que desee que estén disponibles más rápidamente. Aquí puedes decirle a Manyfold que debe crear archivos ZIP inmediatamente, y también establecer cuánto tiempo se mantienen en la caché de descargas. Cuidado, esto puede consumir mucho espacio en disco
       expiry:
         help: Un valor de 0 significa mantener para siempre.
@@ -81,6 +105,21 @@ es:
         tags_html: 'una serie de carpetas anidadas, una para cada etiqueta, ordenadas según su popularidad. Por ejemplo: <code>fantasía/humano/mago</code>'
     general:
       submit: Guardar ajustes
+    integrations:
+      cults3d_api_key:
+        help_html: Crea una clave API en tu página <a href="https://cults3d.com/en/api/keys">de claves API de Cults3D</a>.
+        label: Clave API
+      cults3d_api_username:
+        help_html: El nombre de usuario de la cuenta Cults3d que generó la clave API.
+        label: Nombre de usuario
+      description: Ajustes para configurar la integración con servicios externos, para permitir cosas como la sincronización automática de metadatos.
+      heading: Integraciones
+      myminifactory_api_key:
+        help_html: Cree una aplicación en la <a href="https://www.myminifactory.com/settings/developer">configuración de desarrollador de MyMiniFactory</a> y pegue la clave de API generada.
+        label: Clave API
+      thingiverse_api_key:
+        help_html: Cree una "aplicación web" en la <a href="https://www.thingiverse.com/developers/my-apps">consola de desarrollador de Thingiverse</a> y pegue aquí el "token de aplicación".
+        label: Clave API
     multiuser:
       approve_signups:
         help: Todas las cuentas nuevas deben ser aprobadas por un moderador antes de poder iniciar sesión.

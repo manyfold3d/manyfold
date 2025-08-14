@@ -32,6 +32,24 @@ nl:
       theme:
         help_html:
         label:
+    discovery:
+      allow_ai_bots:
+        help:
+        label:
+      allow_robots:
+        help:
+        label:
+      default_ai_indexable:
+        help_html:
+        label:
+      default_indexable:
+        help:
+        label:
+      description:
+      heading:
+      indexing:
+        description:
+        heading:
     domain_blocks:
       create:
         success: Domeinblokkering succesvol aangemaakt.
@@ -46,6 +64,12 @@ nl:
         submit: Domein blokkeren
         title: Nieuwe Domeinblokkering
     downloads:
+      derivatives:
+        description:
+        heading:
+        images:
+          help:
+          label:
       description:
       expiry:
         help:
@@ -81,6 +105,21 @@ nl:
         tags_html: 'een reeks geneste mappen, één voor elke tag, gerangschikt op volgorde van tagpopulariteit. Bijvoorbeeld: <code>fantasy/human/wizard</code>'
     general:
       submit: Instellingen Opslaan
+    integrations:
+      cults3d_api_key:
+        help_html:
+        label:
+      cults3d_api_username:
+        help_html:
+        label:
+      description:
+      heading:
+      myminifactory_api_key:
+        help_html:
+        label:
+      thingiverse_api_key:
+        help_html:
+        label:
     multiuser:
       approve_signups:
         help: Alle nieuwe accounts moeten worden goedgekeurd door een moderator voordat ze kunnen inloggen.

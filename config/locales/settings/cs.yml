@@ -32,6 +32,24 @@ cs:
       theme:
         help_html: Týká se všech uživatelů. Pro zobrazení náhledů navštivte <a href="https://bootswatch.com">Bootswatch</a>.
         label: Téma
+    discovery:
+      allow_ai_bots:
+        help:
+        label:
+      allow_robots:
+        help:
+        label:
+      default_ai_indexable:
+        help_html:
+        label:
+      default_indexable:
+        help:
+        label:
+      description:
+      heading:
+      indexing:
+        description:
+        heading:
     domain_blocks:
       create:
         success: Blok domény byl úspěšně vytvořen.
@@ -46,6 +64,12 @@ cs:
         submit: Blokovat doménu
         title: Nový blok domény
     downloads:
+      derivatives:
+        description:
+        heading:
+        images:
+          help:
+          label:
       description:
       expiry:
         help:
@@ -81,6 +105,21 @@ cs:
         tags_html: 'řada vnořených složek, jedna pro každý štítek, uspořádaných podle oblíbenosti štítků. Například: <code>fantasy/lidé/čarodějové</code>'
     general:
       submit: Uložit nastavení
+    integrations:
+      cults3d_api_key:
+        help_html:
+        label:
+      cults3d_api_username:
+        help_html:
+        label:
+      description:
+      heading:
+      myminifactory_api_key:
+        help_html:
+        label:
+      thingiverse_api_key:
+        help_html:
+        label:
     multiuser:
       approve_signups:
         help: Všechny nové účty musí před přihlášením schválit moderátor.

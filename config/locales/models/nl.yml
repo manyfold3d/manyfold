@@ -4,6 +4,7 @@ nl:
     bulk_edit:
       description: 'Selecteer modellen om te wijzigen:'
       form_subtitle: 'Selecteer aan te brengen wijzigingen:'
+      merge:
       needs_organizing: Moet worden georganiseerd
       remove_tags: Tags verwijderen
       select: Selecteer model '%{name}'
@@ -15,6 +16,15 @@ nl:
       add_tags: Tags toevoegen
     bulk_update:
       success: Modellen succesvol bijgewerkt.
+    configure_merge:
+      common_root:
+        description:
+        title:
+      description:
+      heading:
+      new_model:
+        description:
+        title:
     create:
       success: Bestand(en) succesvol geüpload.
     destroy:

@@ -3,12 +3,17 @@ pl:
   activerecord:
     attributes:
       collection:
+        ai_indexable:
         caption: Napis
-        collection: Kolekcja
+        collection:
+        indexable:
+        models: Modele
         name: Nazwa
         notes: Notatki
       creator:
+        ai_indexable:
         caption: Napis
+        indexable:
         name: Nazwa
         notes: Opis
         slug:
@@ -49,11 +54,17 @@ pl:
       link:
         url: Link
       model:
+        ai_indexable:
         caption: Napis
+        collection: Kolekcja
         collection_id: Kolekcja
+        creator: Twórca
         creator_id: Twórca
+        images:
+        indexable:
         library_id: Biblioteka
         license: Licencja
+        model_files: Pliki
         name: Nazwa
         notes: Opis
         path: Ścieżka
@@ -63,6 +74,7 @@ pl:
       model_file:
         caption: Napis
         digest:
+        dimensions:
         filename: Nazwa pliku
         model_id: Model
         notes: Notatki
@@ -273,11 +285,11 @@ pl:
     footer:
       about: O tej instancji
       api: Poznaj nasze API
-      by_html: Zaprojektowany i stworzony przez <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">Jamesa</a> z pomocą od <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">naszych współautorów</a>.
+      by_html: Zaprojektowany i stworzony przez <a href="https://floppy.org.uk" target="_blank">Jamesa</a> z pomocą od <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">naszych współautorów</a>.
       community: Dołącz do społeczności
       instance_heading: Szczegóły Instancji
       issues: Zgłoś problem
-      open_source_html: Projekt <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">licencji MIT</a>.
+      open_source_html: Projekt <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencji MIT</a>.
       powered_by_html:
       sponsor: Sponsoruj rozwój
       support: Wesprzyj tą instancje
@@ -292,9 +304,11 @@ pl:
       account: Moje Ustawienia
       activity: Aktywność
       check_existing: Ponownie zeskanuj istniejące modele
+      check_results:
       home: Strona główna
       log_in: Zaloguj się
       log_out: Wyloguj się
+      moderator_settings:
       navbar:
         toggler:
           label: Przełącz nawigację
@@ -317,11 +331,24 @@ pl:
     tags_card:
       skip_tags: Pomiń listę tagów
     title: Manyfold
+  application_helper:
+    ai_indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+    indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+      'no': Nie
+      'yes': Tak
   components:
     altcha_widget:
       help:
     copy_button:
       copy: Kopiuj do schowka
+    display_user_quota:
+      request_increase:
     download_button:
       download:
         missing:
@@ -336,6 +363,8 @@ pl:
       follow: Obserwuj %{name}
       pending: Żądane
       unfollow: Przestań obserwować %{name}
+    link_list:
+      sync:
     modal:
       close: Zamknij
     model_card:
@@ -357,6 +386,7 @@ pl:
       more_details_html:
       negation: Aby wykluczyć terminy, użyj "not", "!" lub "-".
       parentheses:
+      path:
       quotes:
       simple:
       specific_fields:
@@ -364,6 +394,11 @@ pl:
       title: Składnia Wyszukiwania
       unset:
       without_tag:
+  concerns:
+    linkable:
+      sync:
+        bad_request:
+        success:
   doorkeeper:
     applications:
       buttons:
@@ -513,6 +548,32 @@ pl:
     update:
       failure:
       success:
+  fasp_client:
+    providers:
+      edit:
+        approval_help:
+        approve:
+        capability:
+        contact_details:
+        deny: Odmów
+        disable:
+        email: Adres e-mail
+        enable:
+        fediverse_account: Adres Fediverse
+        fingerprint:
+        links: Linki
+        privacy_policy:
+        registration:
+        sign_in: Zaloguj się
+        versions:
+      index:
+        add_html:
+        description_html:
+        heading:
+        provider_list_title:
+        registered_at:
+        status:
+        url:
   follows:
     actor_table:
       actions: Akcje
@@ -555,9 +616,11 @@ pl:
       zero:
     menu: Menu
     new: Nowy
+    private: Prywatne
     public:
     report: Zgłoś %{type}
     save: Zapisz
+    shared:
     view: Widok
   home:
     activity:
@@ -570,6 +633,7 @@ pl:
       title:
     federation:
       content_html:
+      creator_handle_html:
       following:
       handle_html:
       title:
@@ -582,6 +646,9 @@ pl:
         submit: Wyszukaj
     publishing:
       content:
+      existing_creator:
+        button:
+        content:
       new_creator:
         button:
         content:
@@ -597,11 +664,20 @@ pl:
         edit:
         member:
         private:
+      quota:
       title:
       upload: Prześlij
     welcome:
       lead:
       title:
+  imports:
+    create:
+      success:
+    new:
+      description:
+      heading:
+      import:
+      import_type_html:
   jobs:
     activity:
       collection_published:
@@ -656,6 +732,7 @@ pl:
       appearance: Wygląd
       downloads: Pobrane
       libraries: Biblioteki
+      moderation_settings_title:
       organization: Organizacja
       performance: Pulpit Wydajności
       pghero: PgHero
@@ -663,6 +740,7 @@ pl:
       site_settings_title: Ustawienia Strony
       tools_heading: Zaawansowane Narzędzia
   licenses:
+    0BSD:
     CC-BY-40: Creative Commons Uznanie autorstwa
     CC-BY-NC-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne
     CC-BY-NC-ND-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne-Bez utworów zależnych
@@ -671,6 +749,13 @@ pl:
     CC-BY-SA-40: Creative Commons Uznanie autorstwa-Na tych samych warunkach
     CC-PDDC: Creative Commons Deklaracja Domeny Publicznej
     CC0-10: Creative Commons Zero
+    CERN-OHL-P-20:
+    CERN-OHL-S-20:
+    CERN-OHL-W-20:
+    GPL-20-only:
+    GPL-30-only:
+    LGPL-20-only:
+    LGPL-30-only:
     LicenseRef-Commercial: Komercyjne; tylko do użytku prywatnego
     MIT: MIT
   moderator_mailer:
@@ -698,7 +783,7 @@ pl:
       title: 'Zgłoś %{type}: "%{name}"'
   scans:
     create:
-      success: Rozpoczęto skanowanie wszystkich bibliotek.
+      success:
   security:
     running_as_root_html: Manyfold działa jako root, co stanowi zagrożenie dla bezpieczeństwa. Uruchom jako inny użytkownik systemu przez ustawienie zmiennych środowiskowych <code>PUID</code> i <code>PGID</code>. Szczegółowe informacje możesz znaleźć w <a href='https://manyfold.app/sysadmin/configuration.html#required'>dokumentacji konfiguracji</a>.
   sites:

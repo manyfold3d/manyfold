@@ -4,6 +4,7 @@ ja:
     bulk_edit:
       description:
       form_subtitle:
+      merge:
       needs_organizing:
       remove_tags:
       select:
@@ -15,6 +16,15 @@ ja:
       add_tags:
     bulk_update:
       success:
+    configure_merge:
+      common_root:
+        description:
+        title:
+      description:
+      heading:
+      new_model:
+        description:
+        title:
     create:
       success:
     destroy:

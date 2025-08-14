@@ -18,7 +18,7 @@ cs:
         help: Nastavit tuto knihovnu jako výchozí pro nahrávání
       filesystem_description_html: Chcete-li použít úložiště na místním souborovém systému, nejprve se ujistěte, že je připojen jako <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> nebo jiný svazek uvnitř kontejneru Docker, a poté zadejte cestu Dockeru; nikoli cestu na hostitelském serveru! Například pokud máte na hostitelském serveru složku plnou souborů v adresáři <code>/mnt/media/3d/models</code> a v konfiguraci Dockeru jste připojili <code>/mnt/media/3d</code> k <code>/libraries</code>, požadovaná cesta bude <code>/libraries/models</code>.
       icon:
-        help_html: Nepovinné; libovolná ikona z <a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">ikon Boostrap</a> nebo <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a>.
+        help_html: Nepovinné; libovolná ikona z <a href="https://icons.getbootstrap.com/" target="_blank">ikon Boostrap</a> nebo <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
         placeholder: boxy
       notes:
         help_html: Nepovinné; zobrazeno pouze správcům na stránce nastavení. Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.

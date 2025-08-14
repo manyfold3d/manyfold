@@ -4,6 +4,7 @@ ja:
     categories:
       duplicate:
       empty:
+      http_error:
       inefficient:
       inside_out:
       missing:
@@ -32,6 +33,10 @@ ja:
       select:
       select_all:
       unignore:
+    link:
+      http_error:
+        description:
+        title:
     model:
       empty:
         description:

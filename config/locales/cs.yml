@@ -3,12 +3,17 @@ cs:
   activerecord:
     attributes:
       collection:
+        ai_indexable:
         caption: Titulek
-        collection: Kolekce
+        collection:
+        indexable:
+        models: Modely
         name: Název
         notes: Poznámky
       creator:
+        ai_indexable:
         caption: Popisek
+        indexable:
         name: Jméno
         notes: Popis
         slug: Handle
@@ -49,11 +54,17 @@ cs:
       link:
         url: Odkaz
       model:
+        ai_indexable:
         caption: Titulek
+        collection: Kolekce
         collection_id: Kolekce
+        creator: Autor
         creator_id: Autor
+        images:
+        indexable:
         library_id: Knihovna
         license: Licence
+        model_files: Soubory
         name: Název
         notes: Popis
         path: Cesta
@@ -63,6 +74,7 @@ cs:
       model_file:
         caption: Titulek
         digest: Digest
+        dimensions:
         filename: Název souboru
         model_id: Model
         notes: Poznámky
@@ -273,11 +285,11 @@ cs:
     footer:
       about: O této instanci
       api: API
-      by_html: Navrhl a sestavil <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">James</a> s pomocí <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">našich přispěvatelů</a>.
+      by_html: Navrhl a sestavil <a href="https://floppy.org.uk" target="_blank">James</a> s pomocí <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">našich přispěvatelů</a>.
       community: Připojte se ke komunitě
       instance_heading: Podrobnosti o instanci
       issues: Problémy
-      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> pod <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT licencí</a>.
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> pod <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT licencí</a>.
       powered_by_html: Funguje na <a href="https://manyfold.app">%{name}</a>
       sponsor: Sponzor
       support: Podporovat tuto instanci
@@ -292,9 +304,11 @@ cs:
       account: Mé nastavení
       activity: Aktivita
       check_existing: Kontrola stávajících modelů
+      check_results:
       home: Domovská stránka
       log_in: Přihlásit se
       log_out: Odhlásit se
+      moderator_settings:
       navbar:
         toggler:
           label: Přepínání navigace
@@ -317,11 +331,24 @@ cs:
     tags_card:
       skip_tags: Přeskočit seznam štítků
     title: Manyfold
+  application_helper:
+    ai_indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+    indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+      'no': Ne
+      'yes': Ano
   components:
     altcha_widget:
       help:
     copy_button:
       copy:
+    display_user_quota:
+      request_increase:
     download_button:
       download:
         missing:
@@ -336,6 +363,8 @@ cs:
       follow: Sledovat %{name}
       pending: Požadováno
       unfollow: Přestat sledovat %{name}
+    link_list:
+      sync:
     modal:
       close:
     model_card:
@@ -357,6 +386,7 @@ cs:
       more_details_html:
       negation:
       parentheses:
+      path:
       quotes:
       simple:
       specific_fields:
@@ -364,6 +394,11 @@ cs:
       title:
       unset:
       without_tag:
+  concerns:
+    linkable:
+      sync:
+        bad_request:
+        success:
   doorkeeper:
     applications:
       buttons:
@@ -513,6 +548,32 @@ cs:
     update:
       failure: Došlo k chybě a aplikaci nebylo možné uložit.
       success: Aplikace byla úspěšně uložena.
+  fasp_client:
+    providers:
+      edit:
+        approval_help:
+        approve:
+        capability:
+        contact_details:
+        deny: Odmítnout
+        disable:
+        email: E-mail
+        enable:
+        fediverse_account: Adresa Fediverse
+        fingerprint:
+        links: Odkazy
+        privacy_policy:
+        registration:
+        sign_in: Přihlásit se
+        versions:
+      index:
+        add_html:
+        description_html:
+        heading:
+        provider_list_title:
+        registered_at:
+        status:
+        url:
   follows:
     actor_table:
       actions: Akce
@@ -555,9 +616,11 @@ cs:
       zero: "%{count} sledující"
     menu: Menu
     new: Nový
+    private: Soukromé
     public:
     report: Nahlásit %{type}
     save: Uložit
+    shared:
     view: Zobrazení
   home:
     activity:
@@ -570,6 +633,7 @@ cs:
       title:
     federation:
       content_html:
+      creator_handle_html:
       following:
       handle_html:
       title:
@@ -582,6 +646,9 @@ cs:
         submit: Vyhledávání
     publishing:
       content:
+      existing_creator:
+        button:
+        content:
       new_creator:
         button:
         content:
@@ -597,11 +664,20 @@ cs:
         edit:
         member:
         private:
+      quota:
       title:
       upload: Nahrát
     welcome:
       lead:
       title:
+  imports:
+    create:
+      success:
+    new:
+      description:
+      heading:
+      import:
+      import_type_html:
   jobs:
     activity:
       collection_published:
@@ -656,6 +732,7 @@ cs:
       appearance: Vzhled
       downloads:
       libraries: Knihovny
+      moderation_settings_title:
       organization: Organizace
       performance: Výkonnostní dashboard
       pghero: PgHero
@@ -663,6 +740,7 @@ cs:
       site_settings_title: Nastavení webu
       tools_heading: Pokročilé nástroje
   licenses:
+    0BSD:
     CC-BY-40: Creative Commons Uveďte autora
     CC-BY-NC-40: Creative Commons Uveďte autora, Neužívejte komerčně
     CC-BY-NC-ND-40: Creative Commons Uveďte autora, Neužívejte komerčně, Bez derivátů
@@ -671,6 +749,13 @@ cs:
     CC-BY-SA-40: Creative Commons Uveďte autora, Zachovejte licenci
     CC-PDDC: Prohlášení Creative Commons Volné dílo
     CC0-10: Creative Commons Nula
+    CERN-OHL-P-20:
+    CERN-OHL-S-20:
+    CERN-OHL-W-20:
+    GPL-20-only:
+    GPL-30-only:
+    LGPL-20-only:
+    LGPL-30-only:
     LicenseRef-Commercial: Komerční; pouze pro soukromé použití
     MIT: MIT
   moderator_mailer:
@@ -698,7 +783,7 @@ cs:
       title: 'Nahlásit %{type}: "%{name}"'
   scans:
     create:
-      success: Spuštěna kontrola všech knihoven.
+      success:
   security:
     running_as_root_html: Manyfold je spuštěn jako root, což představuje bezpečnostní riziko. Spusťte jej jako jiný uživatel systému nastavením proměnných prostředí <code>PUID</code> a <code>PGID</code>. Podrobnosti naleznete v <a href='https://manyfold.app/sysadmin/configuration.html#required'>konfigurační dokumentaci</a>.
   sites:

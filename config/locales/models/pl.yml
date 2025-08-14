@@ -4,6 +4,7 @@ pl:
     bulk_edit:
       description: 'Wybierz modele do zmiany:'
       form_subtitle: 'Wybierz zmiany do wprowadzenia:'
+      merge:
       needs_organizing: Wymaga uporządkowania
       remove_tags: Usuń tagi
       select: Zaznacz model '%{name}'
@@ -15,6 +16,15 @@ pl:
       add_tags: Dodaj tagi
     bulk_update:
       success: Modele zaktualizowane pomyślnie.
+    configure_merge:
+      common_root:
+        description:
+        title:
+      description:
+      heading:
+      new_model:
+        description:
+        title:
     create:
       success: Plik(i) przesłany(e) pomyślnie.
     destroy:
