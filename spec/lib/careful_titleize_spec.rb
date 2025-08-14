@@ -14,6 +14,12 @@ RSpec.describe CarefulTitleize do
   end
 
   {
+    "jack-in-the-box" => "Jack In The Box",
+    "AT&T" => "AT&T",
+    "#1 single" => "#1 Single",
+    "bull**** merchant" => "Bull**** Merchant",
+    "r'lyeh" => "R'lyeh",
+    "frankenstein's monster" => "Frankenstein's Monster",
     "all along the watchtower" => "All Along The Watchtower",
     "left_hand_3" => "Left Hand 3",
     "death_star_II" => "Death Star II"
