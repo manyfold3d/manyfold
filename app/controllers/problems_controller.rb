@@ -64,6 +64,8 @@ class ProblemsController < ApplicationController
           resolve_by_uploading(problem) unless bulk
         when :convert
           resolve_by_converting(problem)
+        when :organize
+          resolve_by_organizing(problem)
         else
           raise NotImplementedError
         end
@@ -137,6 +139,16 @@ class ProblemsController < ApplicationController
     when "ModelFile"
       problem.update(in_progress: true)
       problem.problematic.convert_later :threemf
+    else
+      raise NotImplementedError
+    end
+  end
+
+  def resolve_by_organizing(problem)
+    case problem.problematic_type
+    when "Model"
+      problem.update(in_progress: true)
+      problem.problematic.organize_later(delay: 0)
     else
       raise NotImplementedError
     end

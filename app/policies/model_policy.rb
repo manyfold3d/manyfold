@@ -32,6 +32,10 @@ class ModelPolicy < ApplicationPolicy
     update?
   end
 
+  def organize?
+    edit?
+  end
+
   def bulk_edit?
     user&.is_moderator?
   end
