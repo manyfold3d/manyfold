@@ -5,7 +5,6 @@ cs:
       description: 'Vyberte modely, které chcete změnit:'
       form_subtitle: 'Vyberte změny, které chcete provést:'
       merge:
-      needs_organizing: Potřebuje uspořádat
       remove_tags: Odstranit štítky
       select: Vybrat model '%{name}'
       select_all: Vybrat všechny modely

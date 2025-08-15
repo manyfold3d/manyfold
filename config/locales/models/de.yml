@@ -5,7 +5,6 @@ de:
       description: 'Wähle die zu ändernden Modelle aus:'
       form_subtitle: 'Wähle die Änderungen aus, die du vornehmen möchtest:'
       merge:
-      needs_organizing: Muss organisiert werden
       remove_tags: Tags entfernen
       select: Modell '%{name}' auswählen
       select_all: Alle Modelle auswählen

@@ -5,7 +5,6 @@ en:
       description: 'Select models to change:'
       form_subtitle: 'Select changes to make:'
       merge: Merge selected models
-      needs_organizing: Needs organizing
       remove_tags: Remove tags
       select: Select model '%{name}'
       select_all: Select all models

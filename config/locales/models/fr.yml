@@ -5,7 +5,6 @@ fr:
       description: 'Sélectionner les modèles à modifier :'
       form_subtitle: 'Sélectionnez les modifications à apporter :'
       merge:
-      needs_organizing: Besoin d'organisation
       remove_tags: Supprimer les étiquettes
       select: Sélectionner le modèle '%{name}'
       select_all: Sélectionner tous les modèles

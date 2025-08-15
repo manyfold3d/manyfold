@@ -5,7 +5,6 @@ nl:
       description: 'Selecteer modellen om te wijzigen:'
       form_subtitle: 'Selecteer aan te brengen wijzigingen:'
       merge:
-      needs_organizing: Moet worden georganiseerd
       remove_tags: Tags verwijderen
       select: Selecteer model '%{name}'
       select_all: Selecteer alle modellen

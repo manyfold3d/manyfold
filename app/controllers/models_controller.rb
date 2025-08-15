@@ -150,7 +150,6 @@ class ModelsController < ApplicationController
     authorize Model
     hash = bulk_update_params
     hash[:library_id] = hash.delete(:new_library_id) if hash[:new_library_id]
-    organize = hash.delete(:organize) == "1"
     add_tags = Set.new(hash.delete(:add_tags))
     remove_tags = Set.new(hash.delete(:remove_tags))
 
@@ -169,7 +168,6 @@ class ModelsController < ApplicationController
         model.tag_list = existing_tags + add_tags - remove_tags
         model.save
       end
-      model.organize_later if organize
     end
     redirect_back_or_to edit_models_path(@filter.to_params), notice: t(".success")
   end
