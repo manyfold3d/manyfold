@@ -67,6 +67,9 @@ pl:
         help: Biblioteka, do której ma zostać przesłany plik.
       submit: Stwórz modele
       title: Prześlij
+    organize:
+      confirm:
+      label: Zorganizuj pliki
     problem:
       merge_all: Połącz wszystko
     scan:
@@ -85,13 +88,6 @@ pl:
         warning: Scalanie przenosi wszystkie pliki z tego modelu do docelowego i usuwa ten model. Metadane plików zostaną zachowane, ale wszelkie metadane modelu zostaną utracone!
         with: Połącz z
       model_details: Szczegóły Modelu
-      organize:
-        button_text: Zorganizuj pliki
-        confirm:
-          are_you_sure: Czy na pewno chcesz to zrobić?
-          'no': Nie, anuluj
-          summary_html: Folder i pliki tworzące ten model zostaną przeniesione z:<br> <code>%{from}</code><br> do<br> <code>%{to}</code>
-          'yes': Tak, przenieś pliki
       path: Ścieżka
       preview:
       rescan: Ponownie przeskanuj pliki

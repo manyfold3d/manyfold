@@ -67,6 +67,9 @@ nl:
         help: De bibliotheek om naar te uploaden.
       submit: Modellen aanmaken
       title: Uploaden
+    organize:
+      confirm:
+      label: Bestanden organiseren
     problem:
       merge_all: Alles samenvoegen
     scan:
@@ -85,13 +88,6 @@ nl:
         warning: Samenvoegen verplaatst alle bestanden van dit model naar het doelmodel en verwijdert dit model. Bestandsmetadata blijft behouden, maar modelmetadata gaat verloren!
         with: Samenvoegen met
       model_details: Modeldetails
-      organize:
-        button_text: Bestanden organiseren
-        confirm:
-          are_you_sure: Weet je zeker dat je dit wilt doen?
-          'no': Nee, annuleren
-          summary_html: De map en bestanden die dit model vormen worden verplaatst van:<br> <code>%{from}</code><br> naar<br> <code>%{to}</code>
-          'yes': Ja, verplaats de bestanden
       path: Pad
       preview:
       rescan: Bestanden opnieuw scannen

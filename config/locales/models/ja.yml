@@ -67,6 +67,9 @@ ja:
         help: アップロード先のライブラリー。
       submit: モデルの作成
       title: アップロード
+    organize:
+      confirm:
+      label:
     problem:
       merge_all: すべてをマージする
     scan:
@@ -85,13 +88,6 @@ ja:
         warning:
         with:
       model_details:
-      organize:
-        button_text:
-        confirm:
-          are_you_sure:
-          'no':
-          summary_html:
-          'yes':
       path:
       preview:
       rescan:

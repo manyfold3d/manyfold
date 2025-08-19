@@ -159,29 +159,6 @@
 
       <%= render "links_card", links: @model.links %>
 
-      <div class="modal fade" id="confirm-move" data-bs-backdrop='static' tabindex="-1" aria-labelledby="confirmMoveLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <div class="modal-title" id="confirmMoveLabel"><%= t(".organize.button_text") %></div>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>
-                <%= t(".organize.confirm.summary_html", from: @model.path, to: @model.formatted_path) %>
-              </p>
-              <p>
-                <%= t(".organize.confirm.are_you_sure") %>
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t(".organize.confirm.no") %></button>
-              <%= button_to t(".organize.confirm.yes"), model_path(@model, "model[organize]": true), method: :patch, class: "btn btn-warning" %>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <% if policy(@model).upload? %>
         <%= card :warning, t(".upload_card.heading") do %>
           <%= form_with url: model_model_files_path(@model), id: "upload-form", class: "d-grid" do |form| %>

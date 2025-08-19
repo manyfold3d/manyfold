@@ -67,6 +67,9 @@ es:
         help: Biblioteca donde se cargará el archivo.
       submit: Crear modelos
       title: Cargar
+    organize:
+      confirm:
+      label: Organizar archivos
     problem:
       merge_all: Fusionar todo
     scan:
@@ -85,13 +88,6 @@ es:
         warning: La fusión mueve todos los archivos de este modelo al destino y elimina este modelo. Los metadatos de los archivos se conservan, pero los metadatos del modelo se pierden
         with: Fusionar con
       model_details: Información del modelo
-      organize:
-        button_text: Organizar archivos
-        confirm:
-          are_you_sure: "¿Seguro que quieres hacer  esto?"
-          'no': No, cancelar
-          summary_html: La carpeta y los archivos que componen este modelo se moverán de:<br> <code>%{from}</code><br> a<br> <code>%{to}</code>
-          'yes': Sí, mueve los archivos
       path: Ruta
       preview: Esta es solo una vista previa del modelo completo, que contiene %{count} archivos más. Contacte con el propietario del modelo para obtener acceso completo.
       rescan: Re-escanear archivos
