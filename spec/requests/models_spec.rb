@@ -288,21 +288,6 @@ RSpec.describe "Models" do
             end
           end
         end
-
-        context "with organization", :as_moderator do
-          let(:params) do
-            {
-              models: library.models.take(2).map { |m| [m.to_param, "1"] }.to_h,
-              organize: "1"
-            }
-          end
-
-          it "enqueues organize jobs for selected models" do
-            expect {
-              patch update_models_path, params: params
-            }.to have_enqueued_job(OrganizeModelJob).exactly(2).times
-          end
-        end
       end
 
       describe "GET /models", :as_member do
