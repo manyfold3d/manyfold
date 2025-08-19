@@ -5,7 +5,6 @@ cs:
       description: 'Vyberte modely, které chcete změnit:'
       form_subtitle: 'Vyberte změny, které chcete provést:'
       merge:
-      needs_organizing: Potřebuje uspořádat
       remove_tags: Odstranit štítky
       select: Vybrat model '%{name}'
       select_all: Vybrat všechny modely
@@ -68,6 +67,9 @@ cs:
         help: Knihovna, do které se má nahrávat.
       submit: Vytvořit modely
       title: Nahrát
+    organize:
+      confirm:
+      label: Uspořádání souborů
     problem:
       merge_all: Sloučit vše
     scan:
@@ -86,13 +88,6 @@ cs:
         warning: Sloučení přesune všechny soubory z tohoto modelu do cílového a odstraní tento model. Metadata souborů zůstanou zachována, ale všechna metadata modelu budou ztracena!
         with: Sloučit s
       model_details: Detaily modelu
-      organize:
-        button_text: Uspořádání souborů
-        confirm:
-          are_you_sure: Jste si jistí, že to chcete udělat?
-          'no': Ne, zrušit
-          summary_html: Složka a soubory, které tvoří tento model, budou přesunuty z:<br> <code>%{from}</code><br> do<br> <code>%{to}</code>
-          'yes': Ano, přesunout soubory
       path: Cesta
       preview:
       rescan: Znovu zkontrolovat soubory

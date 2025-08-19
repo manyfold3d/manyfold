@@ -4,6 +4,7 @@ en:
     categories:
       duplicate: Duplicate files
       empty: Model or file is empty
+      file_naming: Path does not match template
       http_error: HTTP error fetching link
       inefficient: Inefficient formats
       inside_out: Mesh is inside-out
@@ -41,6 +42,9 @@ en:
       empty:
         description: This model contains no files. Either delete it, or find where its files went!
         title: No files
+      file_naming:
+        description: The model folder path doesn't match the path template.
+        title: Path does not match template
       missing:
         description: The folder for this model is missing on disk; either delete it, or find where it went!
         title: Folder not found

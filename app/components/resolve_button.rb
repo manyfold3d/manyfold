@@ -34,6 +34,12 @@ class Components::ResolveButton < Components::Base
       icon: "arrow-left-right",
       i18n_key: "model_files.show.convert", # i18n-tasks-use t('model_files.show.convert')
       button_type: "warning"
+    },
+    organize: {
+      icon: "folder-check",
+      i18n_key: "models.organize.label", # i18n-tasks-use t('models.organize.label')
+      button_type: "warning",
+      confirm: "models.organize.confirm" # i18n-tasks-use t('models.organize.confirm')
     }
   }
 

@@ -30,7 +30,8 @@ class Problem < ApplicationRecord
     :no_links,
     :no_creator,
     :no_tags,
-    :http_error
+    :http_error,
+    :file_naming
   ]
   enum :category, CATEGORIES
 
@@ -55,7 +56,8 @@ class Problem < ApplicationRecord
     no_links: :silent,
     no_creator: :silent,
     no_tags: :silent,
-    http_error: :info
+    http_error: :info,
+    file_naming: :warning
   )
 
   ICONS = ActiveSupport::HashWithIndifferentAccess.new(
@@ -66,7 +68,8 @@ class Problem < ApplicationRecord
     no_image: "file-earmark-image",
     no_creator: "person-x",
     no_tags: "label",
-    http_error: "question-mark-circle"
+    http_error: "question-mark-circle",
+    file_naming: "folder-cross"
   )
 
   def self.create_or_clear(problematic, category, should_exist, options = {})
@@ -104,7 +107,8 @@ class Problem < ApplicationRecord
     no_links: :edit,
     no_creator: :edit,
     no_tags: :edit,
-    http_error: :edit
+    http_error: :edit,
+    file_naming: :organize
   }
 
   def resolution_strategy

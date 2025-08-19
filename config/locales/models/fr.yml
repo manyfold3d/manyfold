@@ -5,7 +5,6 @@ fr:
       description: 'Sélectionner les modèles à modifier :'
       form_subtitle: 'Sélectionnez les modifications à apporter :'
       merge:
-      needs_organizing: Besoin d'organisation
       remove_tags: Supprimer les étiquettes
       select: Sélectionner le modèle '%{name}'
       select_all: Sélectionner tous les modèles
@@ -68,6 +67,9 @@ fr:
         help: La bibliothèque vers laquelle télécharger.
       submit: Créer des modèles
       title: Télécharger
+    organize:
+      confirm:
+      label: Organiser les fichiers
     problem:
       merge_all: Tous fusionner
     scan:
@@ -86,13 +88,6 @@ fr:
         warning: La fusion déplace tous les fichiers de ce modèle vers la cible et supprime ce modèle. Les métadonnées des fichiers sont préservées, mais toutes les métadonnées du modèle sont perdues !
         with: Fusionner avec
       model_details: Détails du modèle
-      organize:
-        button_text: Organiser les fichiers
-        confirm:
-          are_you_sure: Êtes-vous sûr de vouloir faire cela ?
-          'no': Non, annuler
-          summary_html: Le dossier et les fichiers qui composent ce modèle seront déplacés de :<br> <code>%{from}</code><br> à<br> <code>%{to}</code>
-          'yes': Oui, déplacer les fichiers
       path: Chemin
       preview:
       rescan: Rescanner les fichiers

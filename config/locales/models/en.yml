@@ -5,7 +5,6 @@ en:
       description: 'Select models to change:'
       form_subtitle: 'Select changes to make:'
       merge: Merge selected models
-      needs_organizing: Needs organizing
       remove_tags: Remove tags
       select: Select model '%{name}'
       select_all: Select all models
@@ -68,6 +67,9 @@ en:
         help: The library to upload to.
       submit: Create models
       title: Upload
+    organize:
+      confirm: The folder and files that make up this model will be moved. Are you sure you want to do this?
+      label: Organize files
     problem:
       merge_all: Merge all
     scan:
@@ -86,13 +88,6 @@ en:
         warning: Merging moves all files from this model to the target, and removes this model. File metadata is preserved, but any model metadata will be lost!
         with: Merge with
       model_details: Model Details
-      organize:
-        button_text: Organize files
-        confirm:
-          are_you_sure: Are you sure you want to do this?
-          'no': No, cancel
-          summary_html: The folder and files that make up this model will be moved from:<br> <code>%{from}</code><br> to<br> <code>%{to}</code>
-          'yes': Yes, move the files
       path: Path
       preview: This is just a preview of the complete model, which contains %{count} more files. Contact the model owner to get full access.
       rescan: Rescan files
