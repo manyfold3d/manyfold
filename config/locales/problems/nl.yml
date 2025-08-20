@@ -4,6 +4,7 @@ nl:
     categories:
       duplicate: Dubbele bestanden
       empty: Model of bestand is leeg
+      file_naming:
       http_error:
       inefficient: Inefficiënte formaten
       inside_out: Mesh is binnenstebuiten
@@ -41,6 +42,9 @@ nl:
       empty:
         description: Dit model bevat geen bestanden. Verwijder het of zoek uit waar de bestanden zijn gebleven!
         title: Geen bestanden
+      file_naming:
+        description:
+        title:
       missing:
         description: De map voor dit model ontbreekt op schijf; verwijder het of zoek uit waar het is gebleven!
         title: Map niet gevonden

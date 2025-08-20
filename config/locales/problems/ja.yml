@@ -4,6 +4,7 @@ ja:
     categories:
       duplicate:
       empty:
+      file_naming:
       http_error:
       inefficient:
       inside_out:
@@ -39,6 +40,9 @@ ja:
         title:
     model:
       empty:
+        description:
+        title:
+      file_naming:
         description:
         title:
       missing:

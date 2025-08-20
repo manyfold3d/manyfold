@@ -303,7 +303,7 @@ de:
     navbar:
       account: Meine Einstellungen
       activity: Aktivität
-      check_existing: Vorhandene Modelle neu scannen
+      check_existing: Alle Modelle neu scannen
       check_results:
       home: Homepage
       log_in: Einloggen
@@ -313,7 +313,7 @@ de:
         toggler:
           label: Navigation umschalten
       scan: Scannen
-      scan_changes: Nach Änderungen suchen
+      scan_changes: Nach neuen Dateien suchen
       scanning: Scannen
       search: Suche
       settings: Admin-Einstellungen
