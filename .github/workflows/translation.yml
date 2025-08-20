@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v5
       - uses: ./.github/actions/setup
       - name: Sync to translation.io
-        run: bundle exec rake translation:sync
+        run: bundle exec rake translation:sync_and_show_purgeable
         env:
           TRANSLATION_IO_API_KEY: "${{ secrets.TRANSLATION_IO_API_KEY }}"
       - name: Organize changes
