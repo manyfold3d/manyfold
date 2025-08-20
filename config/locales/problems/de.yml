@@ -4,6 +4,7 @@ de:
     categories:
       duplicate: Duplizierte Dateien
       empty: Modell oder Datei ist Leer
+      file_naming:
       http_error:
       inefficient: Unvollständige Formate
       inside_out: Mesh ist "verdreht"
@@ -41,6 +42,9 @@ de:
       empty:
         description: Dieses Modell enthält keine Dateien. Entweder löschen Sie es oder finde heraus, wo sie sind!
         title: Keine Dateien
+      file_naming:
+        description:
+        title:
       missing:
         description: Der Ordner für dieses Modell fehlt auf der Festplatte; lösche ihn, oder finde heraus, wo er ist!
         title: Ordner nicht gefunden

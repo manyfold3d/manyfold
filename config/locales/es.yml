@@ -74,7 +74,7 @@ es:
       model_file:
         caption: Subtítulo
         digest: Digest
-        dimensions:
+        dimensions: Dimensiones
         filename: Archivo
         model_id: Modelo
         notes: Notas
@@ -304,7 +304,7 @@ es:
       account: Cuenta
       activity: Actividad
       check_existing: Comprobar modelos existentes
-      check_results:
+      check_results: Volver a escanear los modelos filtrados
       home: Inicio
       log_in: Iniciar sesión
       log_out: Cerrar sesión
@@ -386,7 +386,7 @@ es:
       more_details_html: Para más información, lea la documentación completa <a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">del lenguaje de consulta de scoped_search</a>.
       negation: Para excluir términos, utilice "not", "!" o "-".
       parentheses: Agrupe los términos entre paréntesis para obtener combinaciones lógicas más complejas.
-      path:
+      path: Busque dentro de las rutas de las carpetas del modelo especificándolo explícitamente; utilice `~` para una coincidencia parcial.
       quotes: Para buscar varias palabras en un mismo término, utilice las comillas; sólo se mostrarán los modelos con el texto exacto.
       simple: Por defecto, la búsqueda encontrará los modelos que coincidan con todos los términos.
       specific_fields: Puede buscar términos en algunos campos específicos. Utilice "~" para que coincida con parte del campo o "=" que intentará que coincida con todo.
@@ -551,29 +551,29 @@ es:
   fasp_client:
     providers:
       edit:
-        approval_help:
-        approve:
-        capability:
-        contact_details:
+        approval_help: Compruebe que la huella digital que aparece aquí coincide con la que muestra el proveedor, y sólo apruebe proveedores en los que confíe.
+        approve: Aprobar
+        capability: Capacidad
+        contact_details: Datos de contacto
         deny: Denegar
-        disable:
+        disable: Desactivar
         email: Email
-        enable:
+        enable: Activar
         fediverse_account: Dirección de Fediverse
-        fingerprint:
+        fingerprint: Huella dactilar
         links: Enlaces
-        privacy_policy:
-        registration:
+        privacy_policy: Política de privacidad
+        registration: Inscripción
         sign_in: Iniciar sesión
-        versions:
+        versions: Versiones
       index:
-        add_html:
-        description_html:
-        heading:
-        provider_list_title:
-        registered_at:
-        status:
-        url:
+        add_html: 'Para habilitar un nuevo FASP, visite el proveedor e introduzca la URL de este servidor al registrarse: [ <code>%{base_url}]</code>. Sólo debes utilizar proveedores en los que confíes, y asegúrate de leer su política de privacidad en su totalidad antes de habilitar los servicios.'
+        description_html: Los proveedores de servicios auxiliares de Fediverse (FASP) permiten funciones adicionales para los servidores de Fediverse, como búsqueda, tendencias, detección de spam y más, como parte del <a href="https://fediscovery.org" target="_new" rel="noopener">proyecto Fediscovery</a>.
+        heading: Servicios de la FASP
+        provider_list_title: FASP registrados
+        registered_at: Registrado en
+        status: Estado
+        url: URL
   follows:
     actor_table:
       actions: Acciones
@@ -749,9 +749,9 @@ es:
     CC-BY-SA-40: Creative Commons - Reconocimiento - Compartir Igual
     CC-PDDC: Creative Commons - Declaración de Dominio Público
     CC0-10: Creative Commons - Sin Derechos de Autor Reservados
-    CERN-OHL-P-20:
-    CERN-OHL-S-20:
-    CERN-OHL-W-20:
+    CERN-OHL-P-20: Licencia de hardware abierto del CERN, versión 2 - Permisiva
+    CERN-OHL-S-20: Licencia de hardware abierto del CERN, versión 2 - fuertemente recíproca
+    CERN-OHL-W-20: Licencia de hardware abierto del CERN, versión 2 - Débilmente recíproca
     GPL-20-only: Licencia Pública General GNU v2.0
     GPL-30-only: Licencia Pública General de GNU v3.0
     LGPL-20-only: Licencia Pública General Reducida GNU v2
@@ -783,7 +783,7 @@ es:
       title: 'Informe %{type}: "%{name}"'
   scans:
     create:
-      success:
+      success: Escaneo iniciado.
   security:
     running_as_root_html: Manyfold se está ejecutando como root, lo que supone un riesgo para la seguridad. Ejecútelo como un usuario de sistema diferente configurando las variables de entorno <code>PUID</code> y <code>PGID</code>. Consulte <a href='https://manyfold.app/sysadmin/configuration.html#required'>la documentación de configuración</a> para más detalles.
   sites:

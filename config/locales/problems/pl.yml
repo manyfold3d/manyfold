@@ -4,6 +4,7 @@ pl:
     categories:
       duplicate: Zduplikowane pliki
       empty: Model lub plik jest pusty
+      file_naming:
       http_error:
       inefficient: Nieefektywne formaty
       inside_out: Siatka jest skierowana środkiem na zewnątrz
@@ -41,6 +42,9 @@ pl:
       empty:
         description: Ten model nie zawiera żadnych plików. Usuń go albo znajdź miejsce, w którym znalazły się jego pliki!
         title: Brak plików
+      file_naming:
+        description:
+        title:
       missing:
         description: Na dysku brakuje folderu dla tego modelu. Usuń go albo znajdź miejsce, w którym się znalazł!
         title: Nie znaleziono folderu
