@@ -4,6 +4,7 @@ cs:
     categories:
       duplicate: Duplikovat soubory
       empty: Model nebo soubor je prázdný
+      file_naming:
       http_error:
       inefficient: Neefektivní formáty
       inside_out: Model je naruby
@@ -41,6 +42,9 @@ cs:
       empty:
         description: Tento model neobsahuje žádné soubory. Buď ho smažte, nebo zjistěte, kam se jeho soubory poděly!
         title: Žádné soubory
+      file_naming:
+        description:
+        title:
       missing:
         description: Složka pro tento model na disku chybí; buď ji odstraňte, nebo zjistěte, kam se poděla!
         title: Složka nebyla nalezena

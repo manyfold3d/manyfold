@@ -4,6 +4,7 @@ fr:
     categories:
       duplicate: Fichiers en double
       empty: Le modèle n'a pas de fichiers
+      file_naming:
       http_error:
       inefficient: Formats inefficaces
       inside_out: Le maillage est à l'envers
@@ -41,6 +42,9 @@ fr:
       empty:
         description: Ce modèle ne contient aucun fichier. Soit vous le supprimez, soit vous trouvez où sont passés ses fichiers !
         title: Aucun fichier
+      file_naming:
+        description:
+        title:
       missing:
         description: Le dossier de ce modèle est manquant sur le disque ; soit vous le supprimez, soit vous trouvez où il est passé !
         title: Dossier introuvable

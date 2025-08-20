@@ -4,7 +4,8 @@ es:
     categories:
       duplicate: Archivos duplicados
       empty: El modelo no tiene archivos
-      http_error:
+      file_naming:
+      http_error: Error HTTP al buscar el enlace
       inefficient: Formatos no recomendados
       inside_out: La malla está al revés
       missing: Faltan archivos o carpetas
@@ -35,12 +36,15 @@ es:
       unignore: Mostrar
     link:
       http_error:
-        description:
-        title:
+        description: Se ha producido un error al leer el enlace desde el servidor remoto.
+        title: Error HTTP al buscar el enlace
     model:
       empty:
         description: Este modelo no contiene archivos. Elimínelo o encuentre dónde están sus archivos
         title: No hay archivos
+      file_naming:
+        description:
+        title:
       missing:
         description: La carpeta de este modelo no está en el disco. Elimínela o averigua dónde está
         title: Carpeta no encontrada
