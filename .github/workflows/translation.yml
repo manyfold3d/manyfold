@@ -1,0 +1,26 @@
+name: Translation Sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 0 * * *'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ./.github/actions/setup
+      - name: Sync to translation.io
+        run: bundle exec rake translation:sync
+        env:
+          TRANSLATION_IO_API_KEY: "${{ secrets.TRANSLATION_IO_API_KEY }}"
+      - name: Organize changes
+        run: bundle exec i18n-tasks normalize -p
+      - name: Open pull request with changes
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: Automatically sync translations
+          labels: improvement,localisation
+          title: Translations updates
+          delete-branch: true
