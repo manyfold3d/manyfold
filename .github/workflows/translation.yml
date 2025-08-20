@@ -20,7 +20,7 @@ jobs:
       - name: Open pull request with changes
         uses: peter-evans/create-pull-request@v7
         with:
-          token: "${{ TRANSLATION_SYNC_PAT }}"
+          token: "${{ secrets.TRANSLATION_SYNC_PAT }}"
           commit-message: Automatically sync translations
           labels: improvement,localisation
           title: Translations updates
