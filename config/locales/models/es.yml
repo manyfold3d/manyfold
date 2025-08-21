@@ -68,7 +68,7 @@ es:
       submit: Crear modelos
       title: Cargar
     organize:
-      confirm:
+      confirm: Se moverán la carpeta y los archivos que componen este modelo. ¿Está seguro de que desea hacerlo?
       label: Organizar archivos
     problem:
       merge_all: Fusionar todo

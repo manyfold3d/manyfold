@@ -4,7 +4,7 @@ es:
     categories:
       duplicate: Archivos duplicados
       empty: El modelo no tiene archivos
-      file_naming:
+      file_naming: La ruta no coincide con la plantilla
       http_error: Error HTTP al buscar el enlace
       inefficient: Formatos no recomendados
       inside_out: La malla está al revés
@@ -43,8 +43,8 @@ es:
         description: Este modelo no contiene archivos. Elimínelo o encuentre dónde están sus archivos
         title: No hay archivos
       file_naming:
-        description:
-        title:
+        description: La ruta de la carpeta del modelo no coincide con la plantilla de ruta.
+        title: La ruta no coincide con la plantilla
       missing:
         description: La carpeta de este modelo no está en el disco. Elimínela o averigua dónde está
         title: Carpeta no encontrada
