@@ -2,7 +2,7 @@ module Sluggable
   extend ActiveSupport::Concern
 
   included do
-    before_validation :slugify_name
+    before_validation :slugify_name, if: -> { respond_to? :slug }
   end
 
   private
