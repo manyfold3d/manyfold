@@ -37,7 +37,7 @@ class Model < ApplicationRecord
 
   before_validation :strip_separators_from_path, if: :path_changed?
   before_validation :publish_creator, if: :will_be_public?
-  before_validation :normalize_license
+  before_validation :normalize_license, if: -> { respond_to? :license }
   # In Rails 7.1 we will be able to do this instead:
   # normalizes :license, with: -> license { license.blank? ? nil : license }
 
@@ -53,8 +53,8 @@ class Model < ApplicationRecord
   validates :path, presence: true, uniqueness: {scope: :library}
   validate :check_for_submodels, on: :update, if: :need_to_move_files?
   validate :destination_is_vacant, on: :update, if: :need_to_move_files?
-  validates :license, spdx: true, allow_nil: true
-  validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
+  validates :license, spdx: true, allow_nil: true, if: -> { respond_to? :license }
+  validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}, if: -> { respond_to? :public_id }
 
   validate :validate_publishable
 
