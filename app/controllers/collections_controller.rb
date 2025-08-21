@@ -83,14 +83,14 @@ class CollectionsController < ApplicationController
             redirect_to collections_path, notice: t(".success")
           end
         else
-          render :new, status: :unprocessable_entity
+          render :new, status: :unprocessable_content
         end
       end
       format.manyfold_api_v0 do
         if @collection.valid?
           render json: ManyfoldApi::V0::CollectionSerializer.new(@collection).serialize, status: :created, location: collection_path(@collection)
         else
-          render json: @collection.errors.to_json, status: :unprocessable_entity
+          render json: @collection.errors.to_json, status: :unprocessable_content
         end
       end
     end
@@ -103,14 +103,14 @@ class CollectionsController < ApplicationController
         if @collection.valid?
           redirect_to collections_path, notice: t(".success")
         else
-          render :edit, status: :unprocessable_entity
+          render :edit, status: :unprocessable_content
         end
       end
       format.manyfold_api_v0 do
         if @collection.valid?
           render json: ManyfoldApi::V0::CollectionSerializer.new(@collection).serialize
         else
-          render json: @collection.errors.to_json, status: :unprocessable_entity
+          render json: @collection.errors.to_json, status: :unprocessable_content
         end
       end
     end

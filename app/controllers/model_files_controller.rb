@@ -55,7 +55,7 @@ class ModelFilesController < ApplicationController
         format.manyfold_api_v0 { head :accepted }
       end
     else
-      head :unprocessable_entity
+      head :unprocessable_content
     end
   end
 
@@ -67,14 +67,14 @@ class ModelFilesController < ApplicationController
           current_user.set_list_state(@file, :printed, params[:model_file][:printed] === "1")
           redirect_to [@model, @file], notice: t(".success")
         else
-          render :edit, alert: t(".failure"), status: :unprocessable_entity
+          render :edit, alert: t(".failure"), status: :unprocessable_content
         end
       end
       format.manyfold_api_v0 do
         if result
           render json: ManyfoldApi::V0::ModelFileSerializer.new(@file).serialize
         else
-          render json: @file.errors.to_json, status: :unprocessable_entity
+          render json: @file.errors.to_json, status: :unprocessable_content
         end
       end
     end
