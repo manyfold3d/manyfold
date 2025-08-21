@@ -185,7 +185,7 @@ class User < ApplicationRecord
   private
 
   def set_quota
-    attributes["quota"] = SiteSettings.default_user_quota if quota_use_site_default
+    attributes["quota"] = SiteSettings.default_user_quota if try(:quota_use_site_default)
   end
 
   def has_any_role_of?(*args)
@@ -199,7 +199,7 @@ class User < ApplicationRecord
   end
 
   def password_required?
-    return false if auth_provider && auth_uid
+    return false if try(:auth_provider) && try(:auth_uid)
     !persisted? || !password.nil? || !password_confirmation.nil?
   end
 
