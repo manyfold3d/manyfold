@@ -23,6 +23,9 @@ module FederailsCommon
       reload
     end
     act
+  rescue NoMethodError
+    # Just return nil if we get errors from not running on fully-migrated data
+    nil
   end
 
   def local?
