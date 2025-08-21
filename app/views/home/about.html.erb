@@ -2,9 +2,9 @@
   <h1><%= site_name %></h1>
 
   <article>
-    <%= markdownify SiteSettings.about %>
+    <%= markdownify SiteSettings.about if SiteSettings.about.present? %>
 
-    <% if SiteSettings.rules.presence %>
+    <% if SiteSettings.rules.present? %>
       <h2><%= t("settings.appearance.rules.label") %></h2>
       <div class="alert alert-warning">
         <%= markdownify(SiteSettings.rules) %>
