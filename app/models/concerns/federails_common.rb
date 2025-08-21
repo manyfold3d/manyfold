@@ -24,7 +24,7 @@ module FederailsCommon
       reload
     end
     act
-  rescue NoMethodError
+  rescue NoMethodError, ActiveRecord::StatementInvalid
     # Just return nil if we get errors from not running on fully-migrated data
     nil
   end
