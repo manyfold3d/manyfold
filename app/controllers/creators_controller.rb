@@ -80,14 +80,14 @@ class CreatorsController < ApplicationController
             redirect_to creator_path(@creator), notice: t(".success")
           end
         else
-          render :new, status: :unprocessable_entity
+          render :new, status: :unprocessable_content
         end
       end
       format.manyfold_api_v0 do
         if @creator.valid?
           render json: ManyfoldApi::V0::CreatorSerializer.new(@creator).serialize, status: :created, location: creator_path(@creator)
         else
-          render json: @creator.errors.to_json, status: :unprocessable_entity
+          render json: @creator.errors.to_json, status: :unprocessable_content
         end
       end
     end
@@ -103,14 +103,14 @@ class CreatorsController < ApplicationController
           # Restore previous slug
           @attemped_slug = @creator.slug
           @creator.slug = @creator.slug_was
-          render :edit, status: :unprocessable_entity
+          render :edit, status: :unprocessable_content
         end
       end
       format.manyfold_api_v0 do
         if @creator.valid?
           render json: ManyfoldApi::V0::CreatorSerializer.new(@creator).serialize
         else
-          render json: @creator.errors.to_json, status: :unprocessable_entity
+          render json: @creator.errors.to_json, status: :unprocessable_content
         end
       end
     end

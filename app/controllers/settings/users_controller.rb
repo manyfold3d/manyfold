@@ -37,7 +37,7 @@ class Settings::UsersController < ApplicationController
       @user.send_reset_password_instructions if SiteSettings.email_configured?
       redirect_to [:settings, @user], notice: t(".success")
     else
-      render :new, layout: "settings", status: :unprocessable_entity
+      render :new, layout: "settings", status: :unprocessable_content
     end
   end
 
@@ -52,7 +52,7 @@ class Settings::UsersController < ApplicationController
     elsif @user.update(user_params)
       redirect_to [:settings, @user], notice: t(".success")
     else
-      render :edit, layout: "settings", status: :unprocessable_entity
+      render :edit, layout: "settings", status: :unprocessable_content
     end
   end
 

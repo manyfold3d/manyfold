@@ -47,7 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       build_resource
       clean_up_passwords(resource)
       flash[:alert] = t(".altcha_failed")
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -59,7 +59,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         bypass_sign_in current_user
         redirect_to root_path, notice: t("devise.registrations.update.setup_complete")
       else
-        render "first_use", status: :unprocessable_entity
+        render "first_use", status: :unprocessable_content
       end
     else
       super

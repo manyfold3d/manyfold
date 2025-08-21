@@ -112,14 +112,14 @@ class ModelsController < ApplicationController
         else
           get_creators_and_collections
           edit
-          render :edit, status: :unprocessable_entity
+          render :edit, status: :unprocessable_content
         end
       end
       format.manyfold_api_v0 do
         if result
           render json: ManyfoldApi::V0::ModelSerializer.new(@model).serialize
         else
-          render json: @model.errors.to_json, status: :unprocessable_entity
+          render json: @model.errors.to_json, status: :unprocessable_content
         end
       end
     end

@@ -202,7 +202,7 @@ RSpec.describe "Model Files" do
 
       it "shows an error with missing parameters" do
         post model_model_files_path(model, params: {})
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
 

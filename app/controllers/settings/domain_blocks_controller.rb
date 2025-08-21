@@ -18,7 +18,7 @@ class Settings::DomainBlocksController < ApplicationController
     if @domain_block.valid?
       redirect_to settings_domain_blocks_path, notice: t(".success")
     else
-      render :new, layout: "settings", status: :unprocessable_entity
+      render :new, layout: "settings", status: :unprocessable_content
     end
   end
 
