@@ -15,7 +15,7 @@ RSpec.describe "Migrations" do
 
       it "completes successfully" do
         migrate(to: version)
-        ActiveRecord::Base.connection.execute(File.read("spec/fixtures/migrations/#{version}.sql"))
+        load_sql(version)
         expect { migrate(from: version) }.not_to raise_error
       end
     end

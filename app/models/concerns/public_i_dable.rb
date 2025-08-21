@@ -3,7 +3,7 @@ module PublicIDable
 
   included do
     before_validation :generate_public_id
-    validates :public_id, presence: true, uniqueness: true
+    validates :public_id, presence: true, uniqueness: true, if: -> { respond_to? :public_id }
 
     def self.find_param(param)
       find_by!(public_id: param)
@@ -20,7 +20,7 @@ module PublicIDable
   private
 
   def generate_public_id
-    return if public_id
+    return if !respond_to?(:public_id) || public_id.present?
     self.public_id = begin
       Nanoid.generate(size: 12, alphabet: ALPHABET)
     end while public_id.nil? || self.class.exists?(public_id: public_id)

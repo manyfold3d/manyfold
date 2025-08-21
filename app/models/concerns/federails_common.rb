@@ -16,6 +16,7 @@ module FederailsCommon
   }
 
   def federails_actor
+    return nil unless ActiveRecord::Base.connection.data_source_exists? "federails_actors"
     return nil unless persisted?
     act = Federails::Actor.find_by(entity: self)
     if act.nil?
@@ -23,6 +24,9 @@ module FederailsCommon
       reload
     end
     act
+  rescue NoMethodError, ActiveRecord::StatementInvalid
+    # Just return nil if we get errors from not running on fully-migrated data
+    nil
   end
 
   def local?

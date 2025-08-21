@@ -21,6 +21,7 @@ module Followable
   end
 
   def owning_actor
+    return nil unless caber_ready?
     user = permitted_users.with_permission("own").first || SiteSettings.default_user
     user&.federails_actor
   end
@@ -28,6 +29,7 @@ module Followable
   private
 
   def recently_posted?
+    return false unless ActiveRecord::Base.connection.data_source_exists? "federails_activities"
     Federails::Activity.exists?(action: ["Create", "Update"], entity: federails_actor, created_at: TIMEOUT.minutes.ago..)
   end
 
