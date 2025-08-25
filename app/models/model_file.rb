@@ -239,6 +239,13 @@ class ModelFile < ApplicationRecord
     )
   end
 
+  def generate_derivatives!
+    attachment_derivatives!
+    ActiveRecord::Base.no_touching do
+      save! validate: false
+    end
+  end
+
   private
 
   def rescan_duplicates
