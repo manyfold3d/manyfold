@@ -637,7 +637,7 @@ GEM
     rails-settings-cached (2.9.6)
       activerecord (>= 5.0.0)
       railties (>= 5.0.0)
-    rails_performance (1.4.2)
+    rails_performance (1.4.3)
       browser
       railties
       redis
