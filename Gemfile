@@ -171,7 +171,7 @@ gem "sidekiq-cron", "~> 2.3"
 group :development, :production do
   gem "sys-cpu", "~> 1.1"
   gem "get_process_mem", "~> 1.0"
-  gem "rails_performance", "~> 1.4"
+  gem "rails_performance", "~> 1.5"
   gem "redis-namespace"
 end
 
