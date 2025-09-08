@@ -16,8 +16,8 @@ GIT
 
 GIT
   remote: https://github.com/manyfold3d/fasp_client.git
-  revision: 89af05fa4a0e25299612dc1e447e7103c33a22c9
-  ref: v0.3.1
+  revision: 80cbc2e7c9400069530a60e3f33819eee36609e2
+  ref: v0.4.0
   specs:
     fasp_client (0.1.0)
       ed25519 (~> 1.4)
@@ -174,7 +174,7 @@ GEM
       erubi (~> 1.4)
       parser (>= 2.4)
       smart_properties
-    bigdecimal (3.2.2)
+    bigdecimal (3.2.3)
     bindata (2.5.0)
     bindex (0.8.1)
     bootsnap (1.18.6)
@@ -203,7 +203,7 @@ GEM
       rails (>= 7.0, < 8.1)
     coderay (1.1.3)
     concurrent-ruby (1.3.5)
-    connection_pool (2.5.3)
+    connection_pool (2.5.4)
     content_disposition (1.0.0)
     crack (1.0.0)
       bigdecimal
@@ -493,7 +493,7 @@ GEM
     nenv (0.3.0)
     net-http (0.6.0)
       uri
-    net-imap (0.5.9)
+    net-imap (0.5.10)
       date
       net-protocol
     net-pop (0.1.2)
@@ -582,7 +582,7 @@ GEM
       activesupport (>= 3.0.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.2.0)
+    rack (3.2.1)
     rack-contrib (2.5.0)
       rack (< 4)
     rack-cors (3.0.0)
