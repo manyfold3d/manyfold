@@ -276,10 +276,10 @@ GEM
       federails (~> 0.4)
       public_suffix (~> 6.0)
       rails (>= 7.2.2)
-    ffi (1.17.1)
-    ffi (1.17.1-x64-mingw-ucrt)
-    ffi (1.17.1-x86_64-darwin)
-    ffi (1.17.1-x86_64-linux-gnu)
+    ffi (1.17.2)
+    ffi (1.17.2-x64-mingw-ucrt)
+    ffi (1.17.2-x86_64-darwin)
+    ffi (1.17.2-x86_64-linux-gnu)
     ffi-compiler (1.3.2)
       ffi (>= 1.15.5)
       rake
@@ -847,7 +847,7 @@ GEM
       faraday-follow_redirects
     sys-cpu (1.1.0)
       ffi (~> 1.1)
-    sys-filesystem (1.5.3)
+    sys-filesystem (1.5.4)
       ffi (~> 1.1)
     terminal-table (4.0.0)
       unicode-display_width (>= 1.1.1, < 4)
