@@ -732,7 +732,7 @@ GEM
     rswag-ui (2.16.0)
       actionpack (>= 5.2, < 8.1)
       railties (>= 5.2, < 8.1)
-    rubocop (1.75.8)
+    rubocop (1.80.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -740,7 +740,7 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.44.0, < 2.0)
+      rubocop-ast (>= 1.46.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
     rubocop-ast (1.47.1)
@@ -834,10 +834,10 @@ GEM
     sqlite3_ar_regexp (3.0.0)
       activerecord (>= 6.0)
       sqlite3 (>= 1.4)
-    standard (1.50.0)
+    standard (1.51.0)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
-      rubocop (~> 1.75.5)
+      rubocop (~> 1.80.2)
       standard-custom (~> 1.0.0)
       standard-performance (~> 1.8)
     standard-custom (1.0.2)
@@ -1034,7 +1034,7 @@ DEPENDENCIES
   spdx (~> 4.1)
   spring
   sqlite3_ar_regexp (~> 3.0)
-  standard (~> 1.50)
+  standard (~> 1.51)
   stimulus-rails (~> 1.3.4)
   stopwords-filter2
   string-similarity (~> 2.1)
@@ -1312,7 +1312,7 @@ CHECKSUMS
   rswag-api (2.16.0) sha256=b653f7bd92e98be18b01ab4525d88950d7b0960e293a99f856b9efcee3ae6074
   rswag-specs (2.16.0) sha256=8ba26085c408b0bd2ed21dc8015c80f417c7d34c63720ab7133c2549b5bd2a91
   rswag-ui (2.16.0) sha256=a1f49e927dceda92e6e6e7c1000f1e217ee66c565f69e28131dc98b33cd3a04f
-  rubocop (1.75.8) sha256=c80ab4286c5dcfc49d7ad1787cdba5569b63b58c96ee7afde4ec47a9c8a85be9
+  rubocop (1.80.2)
   rubocop-ast (1.47.1) sha256=592682017855408b046a8190689490763aecea175238232b1b526826349d01ae
   rubocop-capybara (2.22.1) sha256=ced88caef23efea53f46e098ff352f8fc1068c649606ca75cb74650970f51c0c
   rubocop-factory_bot (2.27.1) sha256=9d744b5916778c1848e5fe6777cc69855bd96548853554ec239ba9961b8573fe
@@ -1349,7 +1349,7 @@ CHECKSUMS
   sqlite3 (2.5.0-x86_64-darwin) sha256=e3c6d2fa04db9d0773455cb6c79835f230c363424b69c34dd718e1aff8609d35
   sqlite3 (2.5.0-x86_64-linux-gnu) sha256=c62c8d625da7e2ce93d694f02cd9c9d537638f56b09f2e8f28bea2d030b3923b
   sqlite3_ar_regexp (3.0.0) sha256=90ce99f00b9256721104550853a227e31972c6488963f203aa50f053a8c7c005
-  standard (1.50.0) sha256=b6c67f61fd6cedeec90ee338c6e913d9ccc4c467660ad1575da8aa6ba10f4aec
+  standard (1.51.0)
   standard-custom (1.0.2) sha256=424adc84179a074f1a2a309bb9cf7cd6bfdb2b6541f20c6bf9436c0ba22a652b
   standard-performance (1.8.0) sha256=ed17b7d0e061b2a19a91dd434bef629439e2f32310f22f26acb451addc92b788
   starry (0.2.0) sha256=2696b0a165694269177bd7d98f77b6e76fd62b69455f297684ba416088d429b1
