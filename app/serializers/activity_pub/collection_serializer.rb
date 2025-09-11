@@ -7,13 +7,15 @@ module ActivityPub
           {
             f3di: "http://purl.org/f3di/ns#",
             toot: "http://joinmastodon.org/ns#",
-            indexable: "toot:indexable"
+            indexable: "toot:indexable",
+            discoverable: "toot:discoverable"
           }
         ],
         summary: @object.caption,
         content: @object.notes,
         "f3di:concreteType": "Collection",
         indexable: @object.indexable?,
+        discoverable: @object.indexable?,
         attachment: @object.links.map { |it| {type: "Link", href: it.url} },
         attributedTo: short_creator(@object.creator),
         context: short_collection(@object.collection),

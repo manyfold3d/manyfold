@@ -7,6 +7,7 @@ module ActivityPub
           f3di: "http://purl.org/f3di/ns#",
           toot: "http://joinmastodon.org/ns#",
           indexable: "toot:indexable",
+          discoverable: "toot:discoverable",
           attributionDomains: {
             "@id": "toot:attributionDomains",
             "@type": "@id"
@@ -19,6 +20,7 @@ module ActivityPub
         ],
         "f3di:concreteType": "Creator",
         indexable: @object.indexable?,
+        discoverable: @object.indexable?,
         attachment: @object.links.map { |it| {type: "Link", href: it.url} }
       }.merge(address_fields)
     end
