@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   after_action :set_content_security_policy_header, if: -> { request.format.html? }
 
   before_action :authenticate_user!, unless: -> { SiteSettings.multiuser_enabled? || has_signed_id? }
-  around_action :switch_locale
+  around_action :switch_locale, if: -> { request.format.html? }
   before_action :check_for_first_use
   before_action :show_security_alerts
   before_action :check_scan_status
