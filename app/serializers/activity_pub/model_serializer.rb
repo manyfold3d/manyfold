@@ -11,7 +11,8 @@ module ActivityPub
             toot: "http://joinmastodon.org/ns#",
             Hashtag: "as:Hashtag",
             sensitive: "as:sensitive",
-            indexable: "toot:indexable"
+            indexable: "toot:indexable",
+            discoverable: "toot:discoverable"
           }
         ],
         summary: @object.caption,
@@ -20,6 +21,7 @@ module ActivityPub
         attachment: @object.links.map { |it| {type: "Link", href: it.url} },
         sensitive: @object.sensitive,
         indexable: @object.indexable?,
+        discoverable: @object.indexable?,
         tag: hashtags,
         attributedTo: short_creator(@object.creator),
         context: short_collection(@object.collection),

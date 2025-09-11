@@ -26,4 +26,12 @@ shared_examples "GenericActivityPubSerializer" do
       indexable: true
     })
   end
+
+  it "includes discoverable flag set to same as indexable" do
+    allow(SiteSettings).to receive(:default_indexable).and_return(false)
+    object.update!(indexable: "yes")
+    expect(ap).to include({
+      discoverable: true
+    })
+  end
 end
