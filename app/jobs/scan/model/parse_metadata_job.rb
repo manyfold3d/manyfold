@@ -11,6 +11,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   def perform(model_id)
     model = Model.find(model_id)
     return if model.remote?
+
     options = {
       # Some things are preserved if already set
       creator: model.creator,
@@ -75,16 +76,19 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   def preview_priority(file)
     return 0 if file.is_image?
     return 1 if file.is_renderable?
+
     100
   end
 
   def tags_from_directory_name(path)
     return [] unless SiteSettings.model_tags_tag_model_directory_name
+
     File.split(path).last.split(/[\W_+-]/).filter { |it| it.length > 1 }
   end
 
   def attributes_from_path_template(path)
     return {} unless SiteSettings.parse_metadata_from_path && SiteSettings.model_path_template
+
     components = PathParserService.new(SiteSettings.model_path_template, path).call
     {
       creator: find_or_create_from_path_component(Creator, components[:creator]),
@@ -98,6 +102,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
 
   def attributes_from_readme(file)
     return {} if file.nil?
+
     content = file.attachment.read.force_encoding(Encoding::UTF_8)
     case content
     when SIMPLE_THINGIVERSE_README
@@ -151,6 +156,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
 
   def tags_from_path_template(path)
     return [] unless SiteSettings.parse_metadata_from_path && SiteSettings.model_path_template
+
     components = PathParserService.new(SiteSettings.model_path_template, path).call
     tags = components[:tags] ? components[:tags].map { |tag| tag.titleize.downcase } : []
     tags.delete("@untagged")
@@ -159,6 +165,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
 
   def remove_stop_words(words)
     return words if !SiteSettings.model_tags_filter_stop_words
+
     stopword_filter = Stopwords::Snowball::Filter.new(
       SiteSettings.model_tags_stop_words_locale,
       SiteSettings.model_tags_custom_stop_words
@@ -168,6 +175,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
 
   def find_or_create_from_path_component(klass, path_component)
     return unless path_component
+
     klass.find_by(slug: path_component) ||
       klass.create_with(slug: path_component.parameterize).find_or_create_by(
         name: to_human_name(path_component)

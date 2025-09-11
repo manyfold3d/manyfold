@@ -22,6 +22,7 @@ module Followable
 
   def owning_actor
     return nil unless caber_ready?
+
     user = permitted_users.with_permission("own").first || SiteSettings.default_user
     user&.federails_actor
   end
@@ -30,6 +31,7 @@ module Followable
 
   def recently_posted?
     return false unless ActiveRecord::Base.connection.data_source_exists? "federails_activities"
+
     Federails::Activity.exists?(action: ["Create", "Update"], entity: federails_actor, created_at: TIMEOUT.minutes.ago..)
   end
 
@@ -43,6 +45,7 @@ module Followable
 
   def followable_post_activity(action)
     return unless owning_actor
+
     Federails::Activity.create!(
       actor: owning_actor,
       action: action,
@@ -53,6 +56,7 @@ module Followable
 
   def auto_accept(follow)
     return unless federails_actor.local?
+
     follow.accept!
   end
 end

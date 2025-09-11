@@ -10,6 +10,7 @@ RSpec.shared_context "with migration helpers" do
     # Work out which migrations we're going to run
     version = to&.to_i || from&.to_i
     raise ArgumentError.new("you must specify to: or from:") if version.nil?
+
     all_versions = (migration_context.pending_migration_versions + data_migration_context.pending_migration_versions).sort
     before, after = all_versions.partition { |i| i <= version.to_i }
     migrations = to ? before : after

@@ -108,6 +108,7 @@ class ModelFile < ApplicationRecord
 
   def attach_existing_file!(refresh: true, skip_validations: false)
     return if attachment.present? || !exists_on_storage?
+
     attachment_attacher.set ModelFileUploader.uploaded_file(
       storage: model.library.storage_key,
       id: path_within_library,
@@ -146,6 +147,7 @@ class ModelFile < ApplicationRecord
   def dimensions
     bbox = attachment.metadata.dig("object", "bounding_box")
     return nil unless bbox
+
     bbox = Mittsu::Box3.new.set_from_points([
       Mittsu::Vector3.new(bbox.dig("minimum", "x"), bbox.dig("minimum", "y"), bbox.dig("minimum", "z")),
       Mittsu::Vector3.new(bbox.dig("maximum", "x"), bbox.dig("maximum", "y"), bbox.dig("maximum", "z"))
@@ -155,6 +157,7 @@ class ModelFile < ApplicationRecord
 
   def duplicates
     return ModelFile.none if digest.nil? # rubocop:todo Pundit/UsePolicyScope
+
     ModelFile.where(digest: digest).where.not(id: id) # rubocop:todo Pundit/UsePolicyScope
   end
 

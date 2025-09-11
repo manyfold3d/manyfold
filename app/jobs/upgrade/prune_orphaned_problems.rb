@@ -2,6 +2,7 @@
 
 class Upgrade::PruneOrphanedProblems < ApplicationJob
   include JobIteration::Iteration
+
   unique :until_executed
 
   def build_enumerator(cursor:)

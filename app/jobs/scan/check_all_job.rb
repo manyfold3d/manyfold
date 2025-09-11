@@ -1,5 +1,6 @@
 class Scan::CheckAllJob < ApplicationJob
   include JobIteration::Iteration
+
   queue_as :scan
   unique :until_executed
 

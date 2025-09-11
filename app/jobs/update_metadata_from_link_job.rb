@@ -4,6 +4,7 @@ class UpdateMetadataFromLinkJob < ApplicationJob
 
   def perform(link:, organize: false)
     return unless (data = link.deserializer&.deserialize)
+
     linkable = link.linkable
     # Preserve existing tags
     data[:tag_list]&.concat(linkable.tag_list)&.uniq

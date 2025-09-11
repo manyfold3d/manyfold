@@ -10,6 +10,7 @@ module Cli
     def approve
       u = User.find_by(email: options[:email])
       raise "User not found" if u.nil?
+
       u.update(approved: true)
       puts "\nUser #{u.email} approved"
     rescue RuntimeError
@@ -21,6 +22,7 @@ module Cli
     def password
       u = User.find_by(email: options[:email])
       raise "User not found" if u.nil?
+
       u.password = ask("Enter password: ", echo: false)
       puts "\n"
       u.password_confirmation = ask("Confirm password: ", echo: false)

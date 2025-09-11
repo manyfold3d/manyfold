@@ -5,6 +5,7 @@ class Scan::Library::CreateModelFromPathJob < ApplicationJob
   def perform(library_id, path, include_all_subfolders: false)
     library = Library.find(library_id)
     return if library.nil?
+
     new_model_properties = {
       # Initial best guess at name, this might be overwritten later by path parser
       name: File.basename(path).humanize.tr("+", " ").careful_titleize,

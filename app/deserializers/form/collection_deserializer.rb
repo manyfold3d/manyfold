@@ -2,6 +2,7 @@ module Form
   class CollectionDeserializer < BaseDeserializer
     def deserialize
       return nil unless @params
+
       @params.require(:collection).permit(
         :name,
         :creator_id,

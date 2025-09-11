@@ -61,6 +61,7 @@ module ModelFilesHelper
       "https://lychee.co/static/metas/favicon-32x32.png"
     end
     return if url.nil?
+
     image_tag(url, class: "slicer-icon", alt: alt)
   end
 

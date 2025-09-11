@@ -1,6 +1,7 @@
 module ModelsHelper
   def group(files)
     return {} if files.empty?
+
     sections = {}
     min_section_size = [2, (files.count * 0.05).round].max
     min_prefix_length = 3

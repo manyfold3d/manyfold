@@ -3,6 +3,7 @@ class Integrations::Cults3d::ModelDeserializer < Integrations::Cults3d::BaseDese
 
   def deserialize
     return {} unless valid?
+
     result = self.class.client.query <<~GRAPHQL
       {
         creation(slug: "#{@object_slug}") {
@@ -27,6 +28,7 @@ class Integrations::Cults3d::ModelDeserializer < Integrations::Cults3d::BaseDese
       }
     GRAPHQL
     raise Faraday::ResourceNotFound.new("Not Found") unless result.data&.creation
+
     {
       name: result.data&.creation&.name,
       slug: @object_slug,
@@ -63,6 +65,7 @@ class Integrations::Cults3d::ModelDeserializer < Integrations::Cults3d::BaseDese
 
   def creator_attributes(creator)
     return {} unless creator
+
     attempt_creator_match(Integrations::Cults3d::CreatorDeserializer.parse(creator))
   end
 end

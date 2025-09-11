@@ -3,6 +3,7 @@ class Integrations::Thangs::ModelDeserializer < Integrations::Thangs::BaseDeseri
 
   def deserialize
     return {} unless valid?
+
     r = fetch "models/#{CGI.escapeURIComponent(@model_id)}"
     files = r.body.dig("attachments").filter_map { |it| {url: it.dig("imageUrl"), filename: filename_from_url(it.dig("imageUrl"))} if it.dig("attachmentType") == "image" }
     {
@@ -41,6 +42,7 @@ class Integrations::Thangs::ModelDeserializer < Integrations::Thangs::BaseDeseri
 
   def creator_attributes(data)
     return {} if data.nil? || data["username"].nil?
+
     attempt_creator_match(Integrations::Thangs::CreatorDeserializer.parse(data))
   end
 end

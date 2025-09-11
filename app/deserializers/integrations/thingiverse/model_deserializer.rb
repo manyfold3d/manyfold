@@ -3,6 +3,7 @@ class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::
 
   def deserialize
     return {} unless valid?
+
     r = fetch "things/#{CGI.escapeURIComponent(@model_id)}"
     {
       name: r.body["name"],

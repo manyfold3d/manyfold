@@ -4,6 +4,7 @@ class LibrariesController < ApplicationController
 
   def index
     redirect_to new_library_path and return if Library.count === 0 # rubocop:disable Pundit/UsePolicyScope
+
     render layout: "settings"
   end
 

@@ -198,6 +198,7 @@ RSpec.describe "Models" do
             get edit_models_path(tag: [tag.name])
             library.models.each do |model|
               next if model == tagged_model
+
               expect(response.body).not_to include(model.name)
             end
           end
@@ -279,6 +280,7 @@ RSpec.describe "Models" do
 
             library.models.each do |model|
               next if model == tagged_model
+
               expect(model.reload.library_id).to eq(library.id)
             end
           end

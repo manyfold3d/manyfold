@@ -2,6 +2,7 @@ module ActivityPub
   class CreatorSerializer < ApplicationSerializer
     def serialize
       raise ActiveRecord::RecordNotFound unless federate? # Temporary guard against publishing non-public Federails::ActorEntity objects
+
       {
         "@context": {
           f3di: "http://purl.org/f3di/ns#",

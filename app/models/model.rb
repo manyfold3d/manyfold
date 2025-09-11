@@ -87,6 +87,7 @@ class Model < ApplicationRecord
   def self.common_root(*models)
     # If there are different libraries, there is no common root
     return nil unless models.map(&:library_id).uniq.count == 1
+
     # Get each path, split, and working from the front, find the common elements
 
     first, *remainder = models.map { |it| it.path.split(File::SEPARATOR).without(".") }
@@ -392,6 +393,7 @@ class Model < ApplicationRecord
   def validate_publishable
     # If the model will be public
     return unless will_be_public?
+
     # Check required fields
     errors.add :license, :blank if license.nil?
     errors.add :creator, :blank if creator.nil?

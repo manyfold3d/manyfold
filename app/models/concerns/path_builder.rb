@@ -26,6 +26,7 @@ module PathBuilder
 
   def path_component(object)
     return nil if object.nil?
+
     SiteSettings.safe_folder_names ? object.slug : object.name
   end
 end

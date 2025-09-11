@@ -67,6 +67,7 @@ class Components::PreviewFrame < Components::Base
 
   def needs_hiding?
     return false unless current_user.nil? || current_user.sensitive_content_handling.present?
+
     case @object.class
     when Model
       @object.sensitive

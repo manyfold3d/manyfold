@@ -21,6 +21,7 @@ module PublicIDable
 
   def generate_public_id
     return if !respond_to?(:public_id) || public_id.present?
+
     self.public_id = begin
       Nanoid.generate(size: 12, alphabet: ALPHABET)
     end while public_id.nil? || self.class.exists?(public_id: public_id)

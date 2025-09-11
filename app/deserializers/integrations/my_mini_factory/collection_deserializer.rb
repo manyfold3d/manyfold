@@ -3,6 +3,7 @@ class Integrations::MyMiniFactory::CollectionDeserializer < Integrations::MyMini
 
   def deserialize
     return {} unless valid?
+
     r = fetch "users/#{CGI.escapeURIComponent(@username)}/collections/#{CGI.escapeURIComponent(@collection_slug)}"
     {
       name: r.body["name"],
