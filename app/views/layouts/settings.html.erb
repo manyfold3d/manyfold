@@ -27,44 +27,57 @@
           <%= link_to t("settings.multiuser.heading"), multiuser_settings_path, class: "nav-link" %>
         </li>
       <% end %>
-      <% if SiteSettings.multiuser_enabled? %>
+    </ul>
+    <% if SiteSettings.multiuser_enabled? %>
+      <hr>
+      <h5><%= t(".moderation_heading") %></h5>
+      <ul class="nav flex-column">
         <li class="nav-item">
           <%= link_to t("settings.users.index.title"), settings_users_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to t("settings.reports.index.title"), settings_reports_path, class: "nav-link" %>
         </li>
-      <% end %>
-      <% if SiteSettings.federation_enabled? %>
+        <% if SiteSettings.federation_enabled? %>
+          <li class="nav-item">
+            <%= link_to t("settings.domain_blocks.index.title"), settings_domain_blocks_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <% if policy(:settings).index? && current_user.is_administrator? %>
+      <hr>
+      <h5><%= t(".search_heading") %></h5>
+      <ul class="nav flex-column">
         <li class="nav-item">
-          <%= link_to t("settings.domain_blocks.index.title"), settings_domain_blocks_path, class: "nav-link" %>
+          <%= link_to t("settings.discovery.heading"), discovery_settings_path, class: "nav-link" %>
         </li>
-        <% if current_user.is_administrator? %>
+        <% if SiteSettings.federation_enabled? %>
           <li class="nav-item">
             <%= link_to t("fasp_client.providers.index.heading"), fasp_client.providers_path, class: "nav-link" %>
           </li>
         <% end %>
-      <% end %>
-
-      <% if policy(:settings).index? %>
-        <li class="nav-item">
-          <%= link_to t("settings.discovery.heading"), discovery_settings_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t("settings.reporting.heading"), reporting_settings_path, class: "nav-link" %>
-        </li>
+      </ul>
+    <% end %>
+    <% if policy(:settings).index? and not SiteSettings.demo_mode_enabled? %>
+      <hr>
+      <h5><%= t(".integrations_heading") %></h5>
+      <ul class="nav flex-column">
         <li class="nav-item">
           <%= link_to t("doorkeeper_applications.index.title"), doorkeeper_applications_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to t("settings.integrations.heading"), integrations_settings_path, class: "nav-link" %>
         </li>
-      <% end %>
-    </ul>
+      </ul>
+    <% end %>
     <% if policy(:settings).index? and not SiteSettings.demo_mode_enabled? %>
       <hr>
       <h5><%= t(".tools_heading") %></h5>
       <ul class="nav flex-column">
+        <li class="nav-item">
+          <%= link_to t("settings.reporting.heading"), reporting_settings_path, class: "nav-link" %>
+        </li>
         <li class="nav-item">
           <%= link_to t(".performance"), rails_performance_path, class: "nav-link" unless Rails.env.test? %>
         </li>
