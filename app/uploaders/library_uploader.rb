@@ -43,12 +43,12 @@ class LibraryUploader < Shrine
   end
 
   add_metadata :ctime do |io|
-    Shrine.with_file(io) { |it| [it.mtime, it.ctime].compact.min }
+    Shrine.with_file(io) { [it.mtime, it.ctime].compact.min }
   rescue NoMethodError
   end
 
   add_metadata :mtime do |io|
-    Shrine.with_file(io) { |it| it.mtime }
+    Shrine.with_file(io) { it.mtime }
   rescue NoMethodError
   end
 
@@ -65,7 +65,7 @@ class LibraryUploader < Shrine
   BB_REGEXP = /Minimum point\s+\((?<min_x>[[:digit:]\-.]+)\s+(?<min_y>[[:digit:]\-.]+)\s(?<min_z>[[:digit:]\-.]+)\)\nMaximum point\s+\((?<max_x>[[:digit:]\-.]+)\s+(?<max_y>[[:digit:]\-.]+)\s(?<max_z>[[:digit:]\-.]+)\)/
 
   add_metadata :object do |io|
-    Shrine.with_file(io) do |it|
+    Shrine.with_file(io) do
       output = Open3.capture2 "assimp", "info", it.path
       if (match = output.first.match(BB_REGEXP))
         {

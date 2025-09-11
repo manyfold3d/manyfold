@@ -20,7 +20,7 @@ module ActivityPub
         ],
         "f3di:concreteType": "Creator",
         indexable: @object.indexable?,
-        attachment: @object.links.map { |it| {type: "Link", href: it.url} }
+        attachment: @object.links.map { {type: "Link", href: it.url} }
       }.merge(address_fields)
     end
 

@@ -22,8 +22,8 @@ class Scan::Library::DetectFilesystemChangesJob < ApplicationJob
     status[:step] = "jobs.scan.detect_filesystem_changes.building_filename_list" # i18n-tasks-use t('jobs.scan.detect_filesystem_changes.building_filename_list')
     changes = (known_filenames(library).to_set ^ filenames_on_disk(library)).to_a
     # Discard thingiverse false-positives - sometimes they add images that have model extensions.
-    patterns = SupportedMimeTypes.model_extensions.map { |it| %r{images/[^/]*\.#{it}} }
-    changes = changes.reject { |f| patterns.any? { |it| f =~ it } }
+    patterns = SupportedMimeTypes.model_extensions.map { %r{images/[^/]*\.#{it}} }
+    changes = changes.reject { |f| patterns.any? { f =~ it } }
     # Make a list of library-relative folders with changed files
     status[:step] = "jobs.scan.detect_filesystem_changes.building_folder_list" # i18n-tasks-use t('jobs.scan.detect_filesystem_changes.building_folder_list')
     folders_with_changes = changes.map { |f| File.dirname(f) }.uniq

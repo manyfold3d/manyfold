@@ -7,7 +7,7 @@ module ManyfoldApi::V0
         slug: @object.slug,
         caption: @object.caption,
         description: @object.notes,
-        links: @object.links.map { |it| LinkSerializer.new(it).serialize }
+        links: @object.links.map { LinkSerializer.new(it).serialize }
       ).compact
     end
 

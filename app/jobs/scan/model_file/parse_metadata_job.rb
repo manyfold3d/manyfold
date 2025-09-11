@@ -32,6 +32,6 @@ class Scan::ModelFile::ParseMetadataJob < ApplicationJob
 
   def presupported?(file)
     elements = file.path_within_library.split(/[[:punct:]]|[[:space:]]/).map(&:downcase)
-    elements.any? { |it| ModelFile::SUPPORT_KEYWORDS.include?(it) }
+    elements.any? { ModelFile::SUPPORT_KEYWORDS.include?(it) }
   end
 end

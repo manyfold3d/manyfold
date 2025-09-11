@@ -70,10 +70,10 @@ RSpec.describe "Models" do
       let!(:collection) { create(:collection) }
       let!(:library) do
         l = create(:library)
-        build_list(:model, 5, library: l) { |it| it.save! }
-        build_list(:model, 5, library: l, creator: creator) { |it| it.save! }
-        build_list(:model, 5, library: l, collection: collection) { |it| it.save! }
-        build_list(:model, 5, library: l, creator: creator, collection: collection) { |it| it.save! }
+        build_list(:model, 5, library: l) { it.save! }
+        build_list(:model, 5, library: l, creator: creator) { it.save! }
+        build_list(:model, 5, library: l, collection: collection) { it.save! }
+        build_list(:model, 5, library: l, creator: creator, collection: collection) { it.save! }
         l
       end
 
@@ -262,7 +262,7 @@ RSpec.describe "Models" do
 
         it "is denied to non-moderators", :as_contributor do
           update = {}
-          library.models.take(2).each { |it| update[it.to_param] = 1 }
+          library.models.take(2).each { update[it.to_param] = 1 }
           patch update_models_path, params: {models: model_params, remove_tags: ["a", "b"]}
           expect(response).to have_http_status(:forbidden)
         end

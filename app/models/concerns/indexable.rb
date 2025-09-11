@@ -5,8 +5,8 @@ module Indexable
     validates :indexable, inclusion: {in: [nil, "no", "yes"]}
     validates :ai_indexable, inclusion: {in: [nil, "no", "yes"]}
 
-    normalizes :indexable, with: ->(it) { (it == "inherit") ? nil : it }
-    normalizes :ai_indexable, with: ->(it) { (it == "inherit") ? nil : it }
+    normalizes :indexable, with: -> { (it == "inherit") ? nil : it }
+    normalizes :ai_indexable, with: -> { (it == "inherit") ? nil : it }
   end
 
   def indexable?

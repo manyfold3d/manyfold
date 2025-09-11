@@ -93,7 +93,7 @@ class ModelFile < ApplicationRecord
 
   def filename_without_extension
     dirname = File.dirname(filename)
-    File.join([dirname, basename(include_extension: false)].reject { |it| it == "." })
+    File.join([dirname, basename(include_extension: false)].reject { it == "." })
   end
 
   def name
@@ -245,7 +245,7 @@ class ModelFile < ApplicationRecord
   private
 
   def rescan_duplicates
-    duplicates.each { |it| it.analyse_later }
+    duplicates.each { it.analyse_later }
   end
 
   def presupported_files_cannot_have_presupported_version

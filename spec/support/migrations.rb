@@ -26,7 +26,7 @@ RSpec.shared_context "with migration helpers" do
 
   def load_sql(version)
     queries = File.read("spec/fixtures/migrations/#{version}.sql")
-    queries.split(";").compact_blank.each { |it| ActiveRecord::Base.connection.execute(it) }
+    queries.split(";").compact_blank.each { ActiveRecord::Base.connection.execute(it) }
   end
 end
 

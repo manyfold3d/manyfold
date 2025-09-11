@@ -69,7 +69,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
 
   def identify_preview_file(model)
     {
-      preview_file: model.model_files.min_by { |it| preview_priority(it) }
+      preview_file: model.model_files.min_by { preview_priority(it) }
     }
   end
 
@@ -83,7 +83,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   def tags_from_directory_name(path)
     return [] unless SiteSettings.model_tags_tag_model_directory_name
 
-    File.split(path).last.split(/[\W_+-]/).filter { |it| it.length > 1 }
+    File.split(path).last.split(/[\W_+-]/).filter { it.length > 1 }
   end
 
   def attributes_from_path_template(path)
@@ -151,7 +151,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   end
 
   def license_id_from_url(url)
-    Spdx.licenses.find { |id, details| details["seeAlso"].map { |it| it.gsub("legalcode", "") }.include?(url.gsub("http:", "https:")) }&.dig(0)
+    Spdx.licenses.find { |id, details| details["seeAlso"].map { it.gsub("legalcode", "") }.include?(url.gsub("http:", "https:")) }&.dig(0)
   end
 
   def tags_from_path_template(path)

@@ -29,7 +29,7 @@ module ActivityPub
 
     def parse_tags(object)
       tags = object.extensions&.dig("tag") || []
-      tags.select { |it| it["type"] == "Hashtag" }&.map { |it| it["name"].delete_prefix("#") }
+      tags.select { it["type"] == "Hashtag" }&.map { it["name"].delete_prefix("#") }
     end
   end
 end

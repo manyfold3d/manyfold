@@ -18,7 +18,7 @@ module ActivityPub
         summary: @object.caption,
         content: @object.notes,
         "f3di:concreteType": "3DModel",
-        attachment: @object.links.map { |it| {type: "Link", href: it.url} },
+        attachment: @object.links.map { {type: "Link", href: it.url} },
         sensitive: @object.sensitive,
         indexable: @object.indexable?,
         tag: hashtags,

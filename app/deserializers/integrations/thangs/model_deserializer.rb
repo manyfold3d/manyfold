@@ -5,7 +5,7 @@ class Integrations::Thangs::ModelDeserializer < Integrations::Thangs::BaseDeseri
     return {} unless valid?
 
     r = fetch "models/#{CGI.escapeURIComponent(@model_id)}"
-    files = r.body.dig("attachments").filter_map { |it| {url: it.dig("imageUrl"), filename: filename_from_url(it.dig("imageUrl"))} if it.dig("attachmentType") == "image" }
+    files = r.body.dig("attachments").filter_map { {url: it.dig("imageUrl"), filename: filename_from_url(it.dig("imageUrl"))} if it.dig("attachmentType") == "image" }
     {
       name: r.body["name"],
       slug: @model_slug.parameterize,

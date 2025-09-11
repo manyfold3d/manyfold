@@ -20,7 +20,7 @@ module Cli
       end
       scope = Model
       scope = Search::ModelSearchService.new(scope).search(options[:search]) if options[:search]
-      scope.find_each do |it|
+      scope.find_each do
         it.pregenerate_downloads delay: 5.seconds, queue: :low
         print "."
         sleep 0.01 # Slows down connections a bit so as not to saturate Redis

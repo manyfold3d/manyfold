@@ -96,6 +96,6 @@ class ProcessUploadedFileJob < ApplicationJob
 
     first = arrays.shift
     zip = first.zip(*arrays)
-    zip.count { |it| it.uniq.count == 1 }
+    zip.count { it.uniq.count == 1 }
   end
 end

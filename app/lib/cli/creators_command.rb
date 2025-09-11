@@ -7,7 +7,7 @@ module Cli
 
     desc "prune", "removes all creators that aren't associated with any models"
     def prune
-      Creator.find_each { |it| it.destroy if it.models.empty? }
+      Creator.find_each { it.destroy if it.models.empty? }
     end
   end
 end
