@@ -22,7 +22,7 @@
         end %>
   <% end %>
 
-  <%= render "tags_edit", form: form, name: "model[tag_list]", value: (@model.tags.order(taggings_count: :desc, name: :asc).map { |tag| tag.name }).join(","), label: translate(".tags"), tags: @available_tags %>
+  <%= render "tags_edit", form: form, name: "model[tag_list]", value: @model.tags.order(taggings_count: :desc, name: :asc).map { |tag| tag.name }.join(","), label: translate(".tags"), tags: @available_tags %>
 
   <%= collection_select_input_row form,
         :collection, @collections, :id, :name_with_domain,
