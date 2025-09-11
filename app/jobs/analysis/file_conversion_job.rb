@@ -58,7 +58,7 @@ class Analysis::FileConversionJob < ApplicationJob
   ensure
     if file
       # Mark inefficient problem resolution as no longer in progress, if it's set
-      file.problems.where(category: :inefficient, in_progress: true).find_each do |it|
+      file.problems.where(category: :inefficient, in_progress: true).find_each do
         it.update(in_progress: false)
       end
     end

@@ -9,7 +9,7 @@ RSpec.describe ModelsHelper do
         head_1
         leg_l
         leg_r
-      ].map { |it| build(:model_file, filename: "#{it}.stl") }
+      ].map { build(:model_file, filename: "#{it}.stl") }
     end
 
     it "groups strings together with similar prefixes" do # rubocop:todo RSpec/MultipleExpectations

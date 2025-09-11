@@ -17,7 +17,7 @@ module ActivityPub
         "f3di:concreteType": "Collection",
         indexable: @object.indexable?,
         discoverable: @object.indexable?,
-        attachment: @object.links.map { |it| {type: "Link", href: it.url} },
+        attachment: @object.links.map { {type: "Link", href: it.url} },
         attributedTo: short_creator(@object.creator),
         context: short_collection(@object.collection),
         preview: oembed_to_preview(OEmbed::CollectionSerializer.new(@object, maxwidth: "100%", maxheight: "100%").serialize)

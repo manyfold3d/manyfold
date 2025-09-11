@@ -18,7 +18,7 @@ class Components::ModelSummary < Components::ModelCard
         end
         div(class: "col-auto") do
           credits
-          div { @model.tags.map { |it| Tag(tag: it) } }
+          div { @model.tags.map { Tag(tag: it) } }
         end
       end
     end

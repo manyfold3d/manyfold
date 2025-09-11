@@ -8,7 +8,7 @@ module ManyfoldApi::V0
         slug: @object["slug"],
         caption: @object["caption"],
         notes: @object["description"],
-        links_attributes: @object["links"]&.map { |it| LinkDeserializer.new(it).deserialize }
+        links_attributes: @object["links"]&.map { LinkDeserializer.new(it).deserialize }
       }.compact
     end
 

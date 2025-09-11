@@ -9,7 +9,7 @@
 # will be handled automatically, there is no need to edit this file.
 
 RSpec.describe "Migrations" do
-  Rails.root.glob("spec/fixtures/migrations/*.sql").map { |it| File.basename(it.to_s.split("/").last, ".*") }.each do |version|
+  Rails.root.glob("spec/fixtures/migrations/*.sql").map { File.basename(it.to_s.split("/").last, ".*") }.each do |version|
     context "when migrating database version #{version} to latest", :migration do
       let(:database) { "tmp/migration-test-#{version}.db" }
 
