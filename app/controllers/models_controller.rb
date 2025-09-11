@@ -224,6 +224,7 @@ class ModelsController < ApplicationController
   def model_params
     if is_api_request?
       raise ActionController::BadRequest unless params[:json]
+
       ManyfoldApi::V0::ModelDeserializer.new(params[:json]).deserialize
     else
       Form::ModelDeserializer.new(params).deserialize
@@ -233,6 +234,7 @@ class ModelsController < ApplicationController
   def upload_params
     if is_api_request?
       raise ActionController::BadRequest unless params[:json]
+
       ManyfoldApi::V0::UploadedModelDeserializer.new(params[:json]).deserialize
     else
       Form::UploadedModelDeserializer.new(params).deserialize

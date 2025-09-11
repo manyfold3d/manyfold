@@ -9,6 +9,7 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
     # Don't run analysis if the file is missing
     # The Problem is raised elsewhere.
     return if !file.exists_on_storage?
+
     # If the file is modified, or we're lacking metadata
     status[:step] = "jobs.analysis.analyse_model_file.file_statistics" # i18n-tasks-use t('jobs.analysis.analyse_model_file.file_statistics')
     if file.file_last_modified > file.updated_at || file.digest.nil?
@@ -43,6 +44,7 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
   def match_with_supported_file(file)
     # If this is a supported file or already matched, don't do anything
     return if file.presupported || file.presupported_version
+
     # Otherwise, find presupported files in the same model
     # Build list of files with normalised names
     matches = file.model.model_files.presupported.map { |s|
@@ -55,16 +57,16 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
       # Measure distance from this filename
       d = String::Similarity.cosine(normed.join(" "), human.join(" "))
       [d, s]
-    }.select { |it| it[0] > 0.95 }
+    }.select { it[0] > 0.95 }
     best = case matches.length
     when 0
       nil
     when 1
       matches.first[1]
     else
-      same_format = matches.select { |it| it[1].mime_type === file.mime_type }
+      same_format = matches.select { it[1].mime_type === file.mime_type }
       matches = same_format unless same_format.empty?
-      matches.max_by { |it| it[0] }[1]
+      matches.max_by { it[0] }[1]
     end
     file.update(presupported_version: best)
   end
@@ -73,6 +75,7 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
     return "ASCII STL" if (file.extension === "stl") && (file.head(6) === "solid ")
     return "Wavefront OBJ" if file.extension === "obj"
     return "ASCII PLY" if (file.extension === "ply") && (file.head(16) === "ply\rformat ascii")
+
     nil
   end
 

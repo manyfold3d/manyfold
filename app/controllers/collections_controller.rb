@@ -152,6 +152,7 @@ class CollectionsController < ApplicationController
   def collection_params
     if is_api_request?
       raise ActionController::BadRequest unless params[:json]
+
       ManyfoldApi::V0::CollectionDeserializer.new(params[:json]).deserialize
     else
       Form::CollectionDeserializer.new(params).deserialize

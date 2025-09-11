@@ -2,6 +2,7 @@ module DataPackage
   class CreatorDeserializer < BaseDeserializer
     def deserialize
       return unless @object && @object["roles"]&.include?("creator")
+
       attributes = {
         name: @object["title"],
         caption: @object["caption"],
@@ -14,7 +15,7 @@ module DataPackage
         end
       rescue ActionController::RoutingError, ActiveRecord::RecordNotFound
       end
-      attributes[:links_attributes] = @object["links"]&.map { |it| LinkDeserializer.new(it).deserialize } || []
+      attributes[:links_attributes] = @object["links"]&.map { LinkDeserializer.new(it).deserialize } || []
       attributes[:links_attributes] << {url: @object["path"]} unless attributes.has_key?(:id)
       attributes.compact
     end

@@ -2,6 +2,7 @@ module ManyfoldApi::V0
   class UploadedModelDeserializer < BaseDeserializer
     def deserialize
       return unless @object
+
       {
         file: @object.dig("files")&.each_with_index.to_h.invert,
         creator_id: dereference(@object.dig("creator", "@id"), Creator)&.id,

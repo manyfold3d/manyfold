@@ -6,7 +6,7 @@ module PathBuilder
       case token
       when "{tags}"
         (tags.count > 0) ?
-          File.join(tags.order(taggings_count: :desc, name: :asc).map { |it| it.to_s.parameterize }) :
+          File.join(tags.order(taggings_count: :desc, name: :asc).map { it.to_s.parameterize }) :
           "@untagged"
       when "{creator}"
         path_component(creator) || "@unattributed"
@@ -26,6 +26,7 @@ module PathBuilder
 
   def path_component(object)
     return nil if object.nil?
+
     SiteSettings.safe_folder_names ? object.slug : object.name
   end
 end

@@ -16,11 +16,11 @@ module DataPackage
             path: Spdx.licenses.dig(@object.license, "reference")
           }.compact
         ] : nil),
-        resources: @object.model_files.without_special.map { |it| ModelFileSerializer.new(it).serialize },
+        resources: @object.model_files.without_special.map { ModelFileSerializer.new(it).serialize },
         sensitive: @object.sensitive,
         contributors: @object.creator ? [CreatorSerializer.new(@object.creator).serialize] : nil,
         collections: @object.collection ? [CollectionSerializer.new(@object.collection).serialize] : nil,
-        links: @object.links.map { |it| LinkSerializer.new(it).serialize }
+        links: @object.links.map { LinkSerializer.new(it).serialize }
       }.compact
     end
   end

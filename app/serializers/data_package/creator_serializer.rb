@@ -7,7 +7,7 @@ module DataPackage
         roles: ["creator"],
         caption: @object.caption,
         description: @object.notes,
-        links: @object.links.map { |it| LinkSerializer.new(it).serialize }
+        links: @object.links.map { LinkSerializer.new(it).serialize }
       }.compact
     end
   end

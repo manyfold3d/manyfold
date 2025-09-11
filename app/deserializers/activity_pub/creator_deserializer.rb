@@ -11,6 +11,7 @@ module ActivityPub
 
     def deserialize
       raise ArgumentError unless @object.is_a?(Federails::Actor)
+
       {
         name: @object.name,
         slug: @object.username,

@@ -31,7 +31,7 @@ class User < ApplicationRecord
   validates :username,
     presence: true,
     uniqueness: {case_sensitive: false},
-    format: {with: /\A[[:alnum:]\.\-_;]+\z/}
+    format: {with: /\A[[:alnum:].\-_;]+\z/}
 
   validates :email,
     presence: true,
@@ -125,7 +125,7 @@ class User < ApplicationRecord
           (auth.info.preferred_username || auth.info.nickname || auth.info.email&.split("@")&.[](0) || "") + SecureRandom.hex(2)
         ]
           .compact
-          .map { |u| u.gsub(/[^[:alnum:]\.\-_;]/, "-") }
+          .map { |u| u.gsub(/[^[:alnum:].\-_;]/, "-") }
           .find { |u| !User.exists?(username: u) }
       end
     end
@@ -189,17 +189,19 @@ class User < ApplicationRecord
   end
 
   def has_any_role_of?(*args)
-    args.map { |it| has_role? it }.any?
+    args.map { has_role? it }.any?
   end
 
   def assign_default_role
     return unless roles.empty?
+
     default_roles = [:member, SiteSettings.default_signup_role.to_sym].uniq
-    default_roles.each { |it| add_role(it) }
+    default_roles.each { add_role(it) }
   end
 
   def password_required?
     return false if try(:auth_provider) && try(:auth_uid)
+
     !persisted? || !password.nil? || !password_confirmation.nil?
   end
 

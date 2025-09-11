@@ -7,6 +7,7 @@ class PathParserService
   def call
     components = @path.match(path_parse_pattern)&.named_captures&.symbolize_keys
     return {} if components.nil?
+
     components.merge({
       tags: components[:tags]&.split("/")&.compact_blank,
       model_id: nil # discard ID, never gonna use it in parsing

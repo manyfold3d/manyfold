@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe ProblemsHelper, :as_member do
   include Devise::Test::ControllerHelpers
+
   let(:model) { create(:model) }
 
   it "converts a problem to a severity level" do

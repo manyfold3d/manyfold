@@ -5,6 +5,7 @@ class ProcessUploadedFileJob < ApplicationJob
     # Find library
     library = Library.find(library_id)
     return if library.nil?
+
     # Attach cached upload file
     attacher = LibraryUploader::Attacher.new
     attacher.attach_cached(uploaded_file)
@@ -60,6 +61,7 @@ class ProcessUploadedFileJob < ApplicationJob
         reader.each_entry do |entry|
           next if !entry.file? || entry.size > SiteSettings.max_file_extract_size
           next if SiteSettings.ignored_file?(entry.pathname)
+
           filename = entry.pathname # Stored because pathname gets mutated by the extract and we want the original
           reader.extract(entry, Archive::EXTRACT_SECURE, destination: tmpdir.to_s)
           model.model_files.create(filename: filename, attachment: File.open(entry.pathname))
@@ -83,6 +85,7 @@ class ProcessUploadedFileJob < ApplicationJob
       end
     end
     return 0 if files_in_root
+
     paths = paths.map { |path| path.split(File::SEPARATOR) }
     # Count the common elements in the paths
     count_common_elements(paths)
@@ -90,8 +93,9 @@ class ProcessUploadedFileJob < ApplicationJob
 
   def count_common_elements(arrays)
     return 0 if arrays.empty?
+
     first = arrays.shift
     zip = first.zip(*arrays)
-    zip.count { |it| it.uniq.count == 1 }
+    zip.count { it.uniq.count == 1 }
   end
 end

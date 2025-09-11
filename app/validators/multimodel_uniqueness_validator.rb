@@ -1,6 +1,7 @@
 class MultimodelUniquenessValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     return unless value
+
     checkvalue = (options[:punctuation_sensitive] == false) ? value.gsub(/[^[:alnum:]]/, "") : value
     (options[:check] || {}).each_pair do |model_name, attr|
       # Get class constant

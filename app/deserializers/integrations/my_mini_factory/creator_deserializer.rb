@@ -3,6 +3,7 @@ class Integrations::MyMiniFactory::CreatorDeserializer < Integrations::MyMiniFac
 
   def deserialize
     return {} unless valid?
+
     r = fetch "users/#{CGI.escapeURIComponent(@username)}"
     self.class.parse(r.body)
   end

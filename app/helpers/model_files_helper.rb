@@ -52,6 +52,7 @@ module ModelFilesHelper
       "https://raw.githubusercontent.com/supermerill/SuperSlicer/refs/heads/master_27/resources/icons/SuperSlicer.svg"
     end
     return if url.nil?
+
     image_tag(url, class: "slicer-icon", alt: alt)
   end
 
