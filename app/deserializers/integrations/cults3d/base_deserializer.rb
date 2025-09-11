@@ -21,6 +21,7 @@ class Integrations::Cults3d::BaseDeserializer < Integrations::BaseDeserializer
     u = URI.parse(uri)
     return if u.host != "cults3d.com"
     return unless valid_path?(u.path)
+
     # Force https
     u.scheme = "https"
     # Remove query and fragment

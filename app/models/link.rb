@@ -1,5 +1,6 @@
 class Link < ApplicationRecord
   include Problematic
+
   belongs_to :linkable, polymorphic: true
 
   validates :url, presence: true, uniqueness: {scope: :linkable} # rubocop:disable Rails/UniqueValidationWithoutIndex

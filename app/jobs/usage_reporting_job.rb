@@ -4,6 +4,7 @@ class UsageReportingJob < ApplicationJob
   def perform
     # If there's no ID, don't send
     return unless SiteSettings.anonymous_usage_id
+
     # Get the endpoint
     uri = URI.parse(UsageReport.endpoint)
     # Prepare the report

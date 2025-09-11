@@ -2,6 +2,7 @@ module DataPackage
   class CollectionDeserializer < BaseDeserializer
     def deserialize
       return unless @object
+
       attributes = {
         name: @object["title"],
         caption: @object["caption"],

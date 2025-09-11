@@ -2,6 +2,7 @@ module ActivityPub
   class ModelSerializer < ApplicationSerializer
     def serialize
       raise ActiveRecord::RecordNotFound unless federate? # Temporary guard against publishing non-public Federails::ActorEntity objects
+
       {
         "@context": [
           "https://purl.archive.org/miscellany",
@@ -40,6 +41,7 @@ module ActivityPub
 
     def license
       return if @object.license.blank?
+
       {
         "@id": @object.license.starts_with?("LicenseRef-") ?
           nil :

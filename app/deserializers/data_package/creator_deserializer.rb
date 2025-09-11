@@ -2,6 +2,7 @@ module DataPackage
   class CreatorDeserializer < BaseDeserializer
     def deserialize
       return unless @object && @object["roles"]&.include?("creator")
+
       attributes = {
         name: @object["title"],
         caption: @object["caption"],

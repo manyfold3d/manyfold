@@ -3,6 +3,7 @@ class Integrations::MyMiniFactory::ModelDeserializer < Integrations::MyMiniFacto
 
   def deserialize
     return {} unless valid?
+
     # Fetch from MMF API
     r = fetch "objects/#{CGI.escapeURIComponent(@model_id)}"
     {

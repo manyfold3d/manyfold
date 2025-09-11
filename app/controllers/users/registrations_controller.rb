@@ -152,6 +152,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def pagination_json(settings)
     return nil unless settings
+
     {
       "models" => settings[:models] == "1",
       "creators" => settings[:creators] == "1",
@@ -162,6 +163,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def tag_cloud_json(settings)
     return nil unless settings
+
     {
       "threshold" => settings[:threshold].to_i,
       "heatmap" => settings[:heatmap] == "1",
@@ -172,6 +174,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def file_list_json(settings)
     return nil unless settings
+
     {
       "hide_presupported_versions" => settings[:hide_presupported_versions] == "1"
     }
@@ -179,6 +182,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def renderer_json(settings)
     return nil unless settings
+
     {
       "grid_width" => settings[:grid_width].to_i,
       "grid_depth" => settings[:grid_width].to_i, # Store width in both for now. See #834

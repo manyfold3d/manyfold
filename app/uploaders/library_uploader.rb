@@ -38,6 +38,7 @@ class LibraryUploader < Shrine
 
   def generate_location(io, record: nil, derivative: nil, metadata: {}, **)
     return super unless record&.valid?
+
     record.path_within_library(derivative: derivative)
   end
 
@@ -61,7 +62,7 @@ class LibraryUploader < Shrine
   rescue NoMethodError
   end
 
-  BB_REGEXP = /Minimum point\s+\((?<min_x>[[:digit:]\-\.]+)\s+(?<min_y>[[:digit:]\-\.]+)\s(?<min_z>[[:digit:]\-\.]+)\)\nMaximum point\s+\((?<max_x>[[:digit:]\-\.]+)\s+(?<max_y>[[:digit:]\-\.]+)\s(?<max_z>[[:digit:]\-\.]+)\)/
+  BB_REGEXP = /Minimum point\s+\((?<min_x>[[:digit:]\-.]+)\s+(?<min_y>[[:digit:]\-.]+)\s(?<min_z>[[:digit:]\-.]+)\)\nMaximum point\s+\((?<max_x>[[:digit:]\-.]+)\s+(?<max_y>[[:digit:]\-.]+)\s(?<max_z>[[:digit:]\-.]+)\)/
 
   add_metadata :object do |io|
     Shrine.with_file(io) do |it|

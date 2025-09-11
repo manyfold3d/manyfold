@@ -2,6 +2,7 @@ module ManyfoldApi::V0
   class CollectionDeserializer < BaseDeserializer
     def deserialize
       return unless @object
+
       {
         name: @object["name"],
         creator: dereference(@object.dig("creator", "@id"), Creator),

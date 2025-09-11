@@ -33,6 +33,7 @@ class Integrations::BaseDeserializer
 
   def filename_from_url(url)
     return if url.blank?
+
     CGI.unescape(url).split("/")&.last
   end
 

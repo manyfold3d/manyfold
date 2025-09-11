@@ -1,5 +1,6 @@
 class Upgrade::BackfillImageDerivatives < ApplicationJob
   include JobIteration::Iteration
+
   queue_as :low
   unique :until_executed
 
@@ -13,6 +14,7 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
 
   def each_iteration(modelfile)
     return unless modelfile.is_image?
+
     Rails.logger.info("Creating image derivatives for: #{modelfile.path_within_library}")
     modelfile.attachment_derivatives!
     modelfile.save(touch: false, validate: false)

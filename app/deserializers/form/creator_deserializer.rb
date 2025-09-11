@@ -2,6 +2,7 @@ module Form
   class CreatorDeserializer < BaseDeserializer
     def deserialize
       return nil unless @params
+
       @params.require(:creator).permit(
         :name,
         :slug,
