@@ -15,16 +15,6 @@ GIT
       rails (>= 7.1.4)
 
 GIT
-  remote: https://github.com/manyfold3d/fasp_client.git
-  revision: 80cbc2e7c9400069530a60e3f33819eee36609e2
-  ref: v0.4.0
-  specs:
-    fasp_client (0.1.0)
-      ed25519 (~> 1.4)
-      linzer (~> 0.7)
-      rails (~> 8.0)
-
-GIT
   remote: https://github.com/manyfold3d/rubocop-pundit.git
   revision: 1f511e087a58867279ca8d77e0bb97dc2ce2da75
   specs:
@@ -272,6 +262,10 @@ GEM
       faraday (>= 1, < 3)
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
+    fasp_client (0.5.0)
+      ed25519 (~> 1.4)
+      linzer (~> 0.7)
+      rails (~> 8.0)
     federails-moderation (0.3.0)
       federails (~> 0.4)
       public_suffix (~> 6.0)
@@ -946,7 +940,7 @@ DEPENDENCIES
   erb_lint (~> 0.9)
   factory_bot
   faker (~> 3.5)
-  fasp_client!
+  fasp_client (~> 0.5)
   federails!
   federails-moderation (~> 0.3)
   ffi-libarchive (~> 1.1)
