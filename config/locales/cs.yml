@@ -731,11 +731,14 @@ cs:
     settings:
       appearance: Vzhled
       downloads:
+      integrations_heading:
       libraries: Knihovny
+      moderation_heading:
       moderation_settings_title:
       organization: Organizace
       performance: Výkonnostní dashboard
       pghero: PgHero
+      search_heading:
       sidekiq: Sidekiq
       site_settings_title: Nastavení webu
       tools_heading: Pokročilé nástroje

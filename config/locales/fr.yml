@@ -734,11 +734,14 @@ fr:
     settings:
       appearance:
       downloads:
+      integrations_heading:
       libraries: Bibliothèques
+      moderation_heading:
       moderation_settings_title:
       organization: Organisation
       performance: Tableau de bord des performances
       pghero: PgHero
+      search_heading:
       sidekiq: Sidekiq
       site_settings_title: Paramètres
       tools_heading: Outils avancés

@@ -731,11 +731,14 @@ es:
     settings:
       appearance: Apariencia
       downloads: Descargas
+      integrations_heading: Integraciones
       libraries: Bibliotecas
+      moderation_heading:
       moderation_settings_title: Ajustes de moderación
       organization: Organización
       performance: Panel de rendimiento
       pghero: PgHero
+      search_heading:
       sidekiq: Sidekiq
       site_settings_title: Ajustes
       tools_heading: Herramientas avanzadas
