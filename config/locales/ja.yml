@@ -343,6 +343,8 @@ ja:
       'no': いいえ
       'yes': はい
   components:
+    actor_card:
+      non_manyfold_account:
     altcha_widget:
       help:
     copy_button:
@@ -575,11 +577,6 @@ ja:
         status:
         url:
   follows:
-    actor_table:
-      actions:
-      address:
-      name:
-      non_manyfold_account:
     follow_remote_actor:
       followed:
     index:

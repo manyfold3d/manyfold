@@ -22,6 +22,7 @@ class FollowsController < ApplicationController
     # This will happen if anyone comes here from a remote follow
     redirect_to url_for(@actor.entity) if @actor&.local?
     # If not local, we show a follow button and some details of the account
+    @actors = [@actor]
   rescue ActiveRecord::RecordNotFound
   end
 

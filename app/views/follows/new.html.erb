@@ -8,8 +8,8 @@
 <% if @query %>
 
   <h3><%= t(".results") %></h3>
-  <% if @actor %>
-    <%= render "actor_table", actors: [@actor] %>
+  <% if @actors %>
+    <%= render "actor_table", actors: @actors %>
   <% else %>
     <div class="alert alert-info">
       <%= icon "person-arms-up", "" %>

@@ -343,6 +343,8 @@ cs:
       'no': Ne
       'yes': Ano
   components:
+    actor_card:
+      non_manyfold_account: Toto není účet Manyfold; můžete ho sledovat, ale pravděpodobně se nic zajímavého nestane, alespoň prozatím.
     altcha_widget:
       help:
     copy_button:
@@ -575,11 +577,6 @@ cs:
         status:
         url:
   follows:
-    actor_table:
-      actions: Akce
-      address: Adresa Fediverse
-      name: Název
-      non_manyfold_account: Toto není účet Manyfold; můžete ho sledovat, ale pravděpodobně se nic zajímavého nestane, alespoň prozatím.
     follow_remote_actor:
       followed: Úspěšně sledován %{actor}
     index:

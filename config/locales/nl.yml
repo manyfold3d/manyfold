@@ -343,6 +343,8 @@ nl:
       'no': Nee
       'yes': Ja
   components:
+    actor_card:
+      non_manyfold_account:
     altcha_widget:
       help:
     copy_button:
@@ -586,11 +588,6 @@ nl:
         status:
         url:
   follows:
-    actor_table:
-      actions: Acties
-      address:
-      name: Naam
-      non_manyfold_account:
     follow_remote_actor:
       followed: "%{actor} succesvol gevolgd"
     index:

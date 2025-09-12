@@ -11,6 +11,7 @@ class Components::ModelCard < Components::Base
 
   def initialize(model:)
     @model = model
+    @actor = @model.federails_actor
   end
 
   def view_template
@@ -41,8 +42,8 @@ class Components::ModelCard < Components::Base
   end
 
   def open_button
-    if @model.remote?
-      link_to @model.federails_actor.profile_url, {class: "btn btn-primary btn-sm", "aria-label": translate("components.model_card.open_button.label", name: @model.name)} do
+    if @actor && !@actor.local
+      link_to @actor.profile_url, {class: "btn btn-primary btn-sm", "aria-label": translate("components.model_card.open_button.label", name: @actor.name)} do
         span { "⁂" }
         whitespace
         span { t("components.model_card.open_button.text") }
@@ -54,11 +55,11 @@ class Components::ModelCard < Components::Base
 
   def credits
     ul class: "list-unstyled" do
-      if @model.remote?
-        if (creator = @model.federails_actor.extensions["attributedTo"])
+      if @actor && !@actor.local
+        if (creator = @actor.extensions["attributedTo"])
           li { creator target: creator["url"], name: creator["name"] }
         end
-        if (collection = @model.federails_actor.extensions["context"])
+        if (collection = @actor.extensions["context"])
           li { collection target: collection["url"], name: collection["name"] }
         end
       else
@@ -81,9 +82,9 @@ class Components::ModelCard < Components::Base
   end
 
   def caption
-    if @model.caption
+    if (summary = @model.try(:caption) || @actor.extensions&.dig("summary"))
       span class: "card-subtitle text-muted" do
-        sanitize @model.caption
+        sanitize summary
       end
     end
   end

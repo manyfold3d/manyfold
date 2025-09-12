@@ -345,6 +345,8 @@ en:
       'no': 'No'
       'yes': 'Yes'
   components:
+    actor_card:
+      non_manyfold_account: This is not a Manyfold account; you can follow it, but probably nothing interesting will happen, at least for now.
     altcha_widget:
       help: privacy-friendly spam protection by ALTCHA
     copy_button:
@@ -595,11 +597,6 @@ en:
         status: Status
         url: URL
   follows:
-    actor_table:
-      actions: Actions
-      address: Fediverse Address
-      name: Name
-      non_manyfold_account: This is not a Manyfold account; you can follow it, but probably nothing interesting will happen, at least for now.
     follow_remote_actor:
       followed: Followed %{actor} successfully
     index:
