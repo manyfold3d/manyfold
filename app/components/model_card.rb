@@ -42,7 +42,7 @@ class Components::ModelCard < Components::Base
   end
 
   def open_button
-    if !@actor.local
+    if @actor && !@actor.local
       link_to @actor.profile_url, {class: "btn btn-primary btn-sm", "aria-label": translate("components.model_card.open_button.label", name: @actor.name)} do
         span { "⁂" }
         whitespace
@@ -55,7 +55,7 @@ class Components::ModelCard < Components::Base
 
   def credits
     ul class: "list-unstyled" do
-      if !@actor.local
+      if @actor && !@actor.local
         if (creator = @actor.extensions["attributedTo"])
           li { creator target: creator["url"], name: creator["name"] }
         end
