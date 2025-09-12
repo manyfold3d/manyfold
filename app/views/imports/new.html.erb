@@ -3,16 +3,31 @@
 
   <p class="lead"><%= t(".description") %></p>
 
-  <p><%= t(".import_type_html", url: @url, object_type: @deserializer.capabilities[:class].model_name.human) %></p>
+  <% if @deserializer %>
+    <p><%= t(".import_type_html", url: @url, object_type: @deserializer.capabilities[:class].model_name.human) %></p>
 
-  <table class="table table-striped">
-    <% @deserializer.capabilities.except(:class).each_pair do |key, value| %>
-      <tr>
-        <td><%= @deserializer.capabilities[:class].human_attribute_name(key) %></td>
-        <td><%= value ? "✅" : "❌" %></td>
-      </tr>
-    <% end %>
-  </table>
+    <table class="table table-striped">
+      <% @deserializer.capabilities.except(:class).each_pair do |key, value| %>
+        <tr>
+          <td><%= @deserializer.capabilities[:class].human_attribute_name(key) %></td>
+          <td><%= value ? "✅" : "❌" %></td>
+        </tr>
+      <% end %>
+    </table>
 
-  <%= render Components::DoButton.new icon: "download", label: t(".import"), href: imports_path(url: @url), method: :post, variant: "primary" %>
+    <%= render Components::DoButton.new icon: "download", label: t(".import"), href: imports_path(url: @url), method: :post, variant: "primary" %>
+  <% else %>
+
+    <p><%= t(".import_capabilities") %></p>
+
+    <div class="col-8">
+      <%= form_with url: new_import_path, method: :get, class: "mt-3" do |f| %>
+        <div class="input-group mb-3">
+          <%= f.url_field :url, class: "form-control", placeholder: translate(".placeholder"), aria_label: translate(".submit"), value: @url %>
+          <%= f.submit translate(".submit"), class: "btn btn-primary", name: nil %>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
 </div>

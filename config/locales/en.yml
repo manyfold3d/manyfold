@@ -303,9 +303,11 @@ en:
     navbar:
       account: My Settings
       activity: Activity
+      add_models: Add content
       check_existing: Rescan all models
       check_results: Rescan filtered models
       home: Homepage
+      import_url: Import URL
       log_in: Sign in
       log_out: Sign out
       moderator_settings: Moderator Settings
@@ -317,7 +319,7 @@ en:
       scanning: Scanning
       search: Search
       settings: Site Settings
-      upload: Upload
+      upload: Upload models
     order_buttons:
       sort:
         name: Sort by Name
@@ -692,10 +694,14 @@ en:
     create:
       success: Imported requested; the results should appear shortly.
     new:
+      bad_url: We couldn't get any useful information from that URL; it could be incorrect or unsupported.
       description: From some sites, Manyfold can download models for you with just a link!
       heading: Import from a link
       import: Import this link
+      import_capabilities: We can import models, creators and collections from MyMiniFactory, Thingiverse, and Cults3D. Exactly what we can import for your URL will be displayed after you enter it.
       import_type_html: "<code>%{url}</code> will be added as a new %{object_type}. The following data can be imported automatically:"
+      placeholder: Paste the address of the content you want to import (e.g. https://thingiverse.com/thing:1234)
+      submit: Import
   jobs:
     activity:
       collection_published:

@@ -14,7 +14,12 @@ class ImportsController < ApplicationController
 
   def get_url
     @url = params[:url]
-    @deserializer = Link.deserializer_for(url: @url)
-    authorize @deserializer.capabilities[:class]
+    @deserializer = Link.deserializer_for(url: @url) if @url.present?
+    if @deserializer.nil?
+      flash.now[:alert] = t(".bad_url") if @url.present?
+      skip_authorization
+    else
+      authorize @deserializer.capabilities[:class]
+    end
   end
 end
