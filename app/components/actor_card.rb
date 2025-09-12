@@ -47,8 +47,8 @@ class Components::ActorCard < Components::ModelCard
           FollowButton(follower: current_user, target: @actor)
           if !@actor.local? && @actor.extensions&.dig("f3di:concreteType").nil?
             span class: "text-warning ms-2" do
-              Icon(icon: "exclamation-triangle-fill", label: translate(".non_manyfold_account"))
-              t(".non_manyfold_account")
+              Icon(icon: "exclamation-triangle-fill", label: translate("components.actor_card.non_manyfold_account"))
+              t("components.actor_card.non_manyfold_account")
             end
           end
         end

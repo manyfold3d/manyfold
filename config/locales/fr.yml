@@ -343,6 +343,8 @@ fr:
       'no': Non
       'yes': Oui
   components:
+    actor_card:
+      non_manyfold_account: Il ne s'agit pas d'un compte Manyfold ; vous pouvez le suivre, mais il ne se passera probablement rien d'intéressant, du moins pour l'instant.
     altcha_widget:
       help:
     copy_button:
@@ -578,11 +580,6 @@ fr:
         status:
         url:
   follows:
-    actor_table:
-      actions: Actions
-      address: Adresse Fediverse
-      name: Nom
-      non_manyfold_account: Il ne s'agit pas d'un compte Manyfold ; vous pouvez le suivre, mais il ne se passera probablement rien d'intéressant, du moins pour l'instant.
     follow_remote_actor:
       followed: Suivi de %{actor} avec succès
     index:
