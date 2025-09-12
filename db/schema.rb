@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_06_142734) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_08_165009) do
   create_table "altcha_solutions", force: :cascade do |t|
     t.string "algorithm"
     t.string "challenge"
@@ -97,6 +97,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_142734) do
   end
 
   create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
+  end
+
+  create_table "fasp_client_backfill_requests", force: :cascade do |t|
+    t.integer "fasp_client_provider_id", null: false
+    t.string "category"
+    t.integer "max_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fasp_client_provider_id"], name: "index_fasp_client_backfill_requests_on_fasp_client_provider_id"
+  end
+
+  create_table "fasp_client_event_subscriptions", force: :cascade do |t|
+    t.integer "fasp_client_provider_id", null: false
+    t.string "category"
+    t.string "subscription_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fasp_client_provider_id"], name: "idx_on_fasp_client_provider_id_dd4cdc071c"
   end
 
   create_table "fasp_client_providers", force: :cascade do |t|
@@ -451,6 +469,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_142734) do
   add_foreign_key "collections", "collections"
   add_foreign_key "collections", "creators"
   add_foreign_key "comments", "federails_actors"
+  add_foreign_key "fasp_client_backfill_requests", "fasp_client_providers"
+  add_foreign_key "fasp_client_event_subscriptions", "fasp_client_providers"
   add_foreign_key "federails_activities", "federails_actors", column: "actor_id"
   add_foreign_key "federails_followings", "federails_actors", column: "actor_id"
   add_foreign_key "federails_followings", "federails_actors", column: "target_actor_id"

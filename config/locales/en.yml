@@ -564,18 +564,25 @@ en:
       edit:
         approval_help: Check that the fingerprint displayed here matches the one shown by the provider, and only approve providers you trust.
         approve: Approve
+        backfill_requests: Backfill requests
         capability: Capability
+        category: Category
         contact_details: Contact details
+        created: Created
+        data_sharing: Data sharing
         deny: Deny
         disable: Disable
         email: Email
         enable: Enable
+        event_subscriptions: Event subscriptions
         fediverse_account: Fediverse address
         fingerprint: Fingerprint
         links: Links
+        max_count: Max count
         privacy_policy: Privacy policy
         registration: Registration
         sign_in: Sign in
+        subscription_type: Subscription type
         versions: Versions
       index:
         add_html: 'To enable a new FASP, visit the provider and enter this server''s URL on signup: <code>%{base_url}</code>. You should only use providers that you trust, and be sure to read their privacy policy in full before you enable services.'

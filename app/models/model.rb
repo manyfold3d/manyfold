@@ -9,6 +9,7 @@ class Model < ApplicationRecord
   include Commentable
   include Problematic
   include Indexable
+  include FaspClient::DataSharing::Lifecycle
 
   broadcasts_refreshes
 
@@ -23,6 +24,11 @@ class Model < ApplicationRecord
     # See https://github.com/mastodon/mastodon/issues/22322
     actor_type: "Service"
   )
+  fasp_share_lifecycle category: "account", uri_method: :fasp_uri
+
+  def fasp_uri
+    federails_actor&.federated_url
+  end
 
   scope :recent, -> { order(created_at: :desc) }
 
