@@ -691,10 +691,10 @@ en:
       lead: This site is running Manyfold, software for managing and sharing 3D models; here's a quick guide...
       title: Welcome to %{site_name}!
   imports:
+    bad_url: We couldn't get any useful information from that URL; it could be incorrect or unsupported.
     create:
       success: Imported requested; the results should appear shortly.
     new:
-      bad_url: We couldn't get any useful information from that URL; it could be incorrect or unsupported.
       description: From some sites, Manyfold can download models for you with just a link!
       heading: Import from a link
       import: Import this link
