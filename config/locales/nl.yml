@@ -742,11 +742,14 @@ nl:
     settings:
       appearance:
       downloads:
+      integrations_heading:
       libraries: Bibliotheken
+      moderation_heading:
       moderation_settings_title:
       organization: Organisatie
       performance: Prestatie Dashboard
       pghero: PgHero
+      search_heading:
       sidekiq: Sidekiq
       site_settings_title: Site-instellingen
       tools_heading: Geavanceerde Tools

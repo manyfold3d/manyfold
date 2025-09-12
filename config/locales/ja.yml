@@ -731,11 +731,14 @@ ja:
     settings:
       appearance:
       downloads:
+      integrations_heading:
       libraries:
+      moderation_heading:
       moderation_settings_title:
       organization:
       performance:
       pghero:
+      search_heading:
       sidekiq:
       site_settings_title: サイト設定
       tools_heading:
