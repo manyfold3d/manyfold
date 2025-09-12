@@ -84,11 +84,13 @@
             </li>
           <% end %>
         <% end %>
-        <li id="nav-search" class="nav-item ms-1 me-3" data-turbo-permanent>
-          <%= form_with url: models_path, method: :get, role: "search" do |f| %>
-            <%= f.search_field :q, class: "form-control", placeholder: translate(".search"), aria_label: translate(".search"), aria_describedby: "button-search", value: @query || params[:q] %>
-          <% end %>
-        </li>
+        <%- unless current_page?(root_path) %>
+          <li id="nav-search" class="nav-item ms-1 me-3" data-turbo-permanent>
+            <%= form_with url: models_path, method: :get, role: "search" do |f| %>
+              <%= f.search_field :q, class: "form-control", placeholder: translate(".search"), aria_label: translate(".search"), aria_describedby: "button-search", value: @query || params[:q] %>
+            <% end %>
+          </li>
+        <% end %>
         <%- if current_user %>
           <li class="nav-item">
             <%= nav_link "sliders", t(".account"), edit_user_registration_path, nofollow: true, text_style: "d-md-none" %>
