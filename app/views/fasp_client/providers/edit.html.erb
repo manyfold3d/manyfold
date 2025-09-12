@@ -74,3 +74,40 @@
     </table>
   <% end %>
 </div>
+
+
+<% if @provider.approved? %>
+<div>
+  <h3><%= t ".data_sharing" %></h3>
+  <h4><%= t ".event_subscriptions" %></h4>
+  <table class="table table-striped">
+    <tr>
+      <th><%= t ".created" %></th>
+      <th><%= t ".category" %></th>
+      <th><%= t ".subscription_type" %></th>
+    </tr>
+    <% @provider.fasp_client_event_subscriptions.each do |sub| %>
+      <tr>
+        <td><%= sub.created_at %></td>
+        <td><%= sub.category %></td>
+        <td><%= sub.subscription_type %></td>
+      </tr>
+    <% end %>
+  </table>
+  <h4><%= t ".backfill_requests" %></h4>
+  <table class="table table-striped">
+    <tr>
+      <th><%= t ".created" %></th>
+      <th><%= t ".category" %></th>
+      <th><%= t ".max_count" %></th>
+    </tr>
+    <% @provider.fasp_client_backfill_requests.each do |req| %>
+      <tr>
+        <td><%= req.created_at %></td>
+        <td><%= req.category %></td>
+        <td><%= req.max_count %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<% end %>
