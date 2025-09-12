@@ -6,6 +6,7 @@ class Collection < ApplicationRecord
   include PublicIDable
   include Commentable
   include Indexable
+  include FaspClient::DataSharing::Lifecycle
 
   broadcasts_refreshes
 
@@ -35,6 +36,12 @@ class Collection < ApplicationRecord
 
   after_create_commit :after_create
   after_update_commit :after_update
+
+  fasp_share_lifecycle category: "account", uri_method: :fasp_uri
+
+  def fasp_uri
+    federails_actor&.federated_url
+  end
 
   def name_with_domain
     remote? ? name + " (#{federails_actor.server})" : name
