@@ -10,14 +10,15 @@ class Components::PreviewFrame < Components::Base
   end
 
   def before_template
+    return if remote?
     @file = @object.is_a?(Model) ? @object.preview_file : policy_scope(@object.models).first&.preview_file
   end
 
   def view_template
     if @file
-      local
-    elsif @object.remote?
-      remote
+      render_local
+    elsif remote?
+      render_remote
     else
       empty
     end
@@ -25,7 +26,11 @@ class Components::PreviewFrame < Components::Base
 
   private
 
-  def local
+  def remote?
+    @object.is_a?(Federails::Actor) ? !@object.local : @object.remote?
+  end
+
+  def render_local
     if @file.is_image?
       image model_model_file_path(@file.model, @file, format: @file.extension, derivative: "preview"), @file.name
     elsif @file.is_renderable?
@@ -37,8 +42,9 @@ class Components::PreviewFrame < Components::Base
     end
   end
 
-  def remote
-    preview_data = @object.federails_actor&.extensions&.dig("preview")
+  def render_remote
+    actor = @object.is_a?(Federails::Actor) ? @object : @object.federails_actor
+    preview_data = actor&.extensions&.dig("preview")
     case preview_data&.dig("type")
     when "Image"
       image preview_data["url"], preview_data["summary"]
