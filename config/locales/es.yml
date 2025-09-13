@@ -303,9 +303,11 @@ es:
     navbar:
       account: Cuenta
       activity: Actividad
+      add_models: Añadir contenido
       check_existing: Comprobar modelos existentes
       check_results: Volver a escanear los modelos filtrados
       home: Inicio
+      import_url: Importar URL
       log_in: Iniciar sesión
       log_out: Cerrar sesión
       moderator_settings: Configuración del moderador
@@ -555,18 +557,25 @@ es:
       edit:
         approval_help: Compruebe que la huella digital que aparece aquí coincide con la que muestra el proveedor, y sólo apruebe proveedores en los que confíe.
         approve: Aprobar
+        backfill_requests: Solicitudes de relleno
         capability: Capacidad
+        category: Categoría
         contact_details: Datos de contacto
+        created: Creado
+        data_sharing: Intercambio de datos
         deny: Denegar
         disable: Desactivar
         email: Email
         enable: Activar
+        event_subscriptions: Suscripciones a eventos
         fediverse_account: Dirección de Fediverse
         fingerprint: Huella dactilar
         links: Enlaces
+        max_count: Recuento máximo
         privacy_policy: Política de privacidad
         registration: Inscripción
         sign_in: Iniciar sesión
+        subscription_type: Tipo de suscripción
         versions: Versiones
       index:
         add_html: 'Para habilitar un nuevo FASP, visite el proveedor e introduzca la URL de este servidor al registrarse: [ <code>%{base_url}]</code>. Sólo debes utilizar proveedores en los que confíes, y asegúrate de leer su política de privacidad en su totalidad antes de habilitar los servicios.'
@@ -668,13 +677,17 @@ es:
       lead: Este sitio utiliza Manyfold, un programa para gestionar y compartir modelos 3D. Aquí encontrará una breve guía...
       title: "¡Bienvenido a %{site_name}!"
   imports:
+    bad_url: No pudimos obtener ninguna información útil de esa URL; podría ser incorrecta o no tener soporte.
     create:
       success: Importación solicitada. Los resultados aparecerán en breve.
     new:
       description: En algunos sitios, Manyfold puede descargarte modelos con sólo un enlace
       heading: Importar desde un enlace
       import: Importar este enlace
+      import_capabilities: Podemos importar modelos, creadores y colecciones de MyMiniFactory, Thingiverse y Cults3D. Lo que podemos importar exactamente para tu URL se mostrará después de que la introduzcas.
       import_type_html: "[<code>%{url}]</code> se añadirá como un nuevo %{object_type}. Los siguientes datos pueden importarse automáticamente:"
+      placeholder: Pegue la dirección del contenido que desea importar (por ejemplo, https://thingiverse.com/thing:1234)
+      submit: Importar
   jobs:
     activity:
       collection_published:
@@ -730,12 +743,12 @@ es:
       downloads: Descargas
       integrations_heading: Integraciones
       libraries: Bibliotecas
-      moderation_heading:
+      moderation_heading: Moderación
       moderation_settings_title: Ajustes de moderación
       organization: Organización
       performance: Panel de rendimiento
       pghero: PgHero
-      search_heading:
+      search_heading: Busca y Descubre
       sidekiq: Sidekiq
       site_settings_title: Ajustes
       tools_heading: Herramientas avanzadas

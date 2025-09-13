@@ -9,12 +9,12 @@ pl:
         indexable:
         models: Modele
         name: Nazwa
-        notes: Notatki
+        notes: Opis
       creator:
         ai_indexable:
         caption: Napis
         indexable:
-        name: Nazwa
+        name: Nazwa Twórcy
         notes: Opis
         slug:
       doorkeeper/application:
@@ -234,10 +234,10 @@ pl:
         two:
         zero:
       user:
-        few: Użytkowników
-        many: Użytkowników
-        one: Użytkownik
-        other: Użytkownicy
+        few: Konta
+        many: Kont
+        one: Konto
+        other: Konta
         two:
         zero:
   activity:
@@ -285,11 +285,11 @@ pl:
     footer:
       about: O tej instancji
       api: Poznaj nasze API
-      by_html: Zaprojektowany i stworzony przez <a href="https://floppy.org.uk" target="_blank">Jamesa</a> z pomocą od <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">naszych współautorów</a>.
+      by_html: Zaprojektowany i stworzony przez <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">Jamesa</a> z pomocą od <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">naszych współautorów</a>.
       community: Dołącz do społeczności
       instance_heading: Szczegóły Instancji
       issues: Zgłoś problem
-      open_source_html: Projekt <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencji MIT</a>.
+      open_source_html: Projekt <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">licencji MIT</a>.
       powered_by_html:
       sponsor: Sponsoruj rozwój
       support: Wesprzyj tą instancje
@@ -303,9 +303,11 @@ pl:
     navbar:
       account: Moje Ustawienia
       activity: Aktywność
-      check_existing: Ponownie zeskanuj istniejące modele
+      add_models:
+      check_existing: Ponownie zeskanuj wszystkie modele
       check_results:
       home: Strona główna
+      import_url:
       log_in: Zaloguj się
       log_out: Wyloguj się
       moderator_settings:
@@ -313,11 +315,11 @@ pl:
         toggler:
           label: Przełącz nawigację
       scan: Zeskanuj
-      scan_changes: Zeskanuj w poszukiwaniu zmian
+      scan_changes: Zeskanuj w poszukiwaniu nowych plików
       scanning: Skanowanie
       search: Wyszukaj
       settings: Ustawienia Strony
-      upload: Prześlij
+      upload: Prześlij modele
     order_buttons:
       sort:
         name: Sortuj według nazwy
@@ -555,18 +557,25 @@ pl:
       edit:
         approval_help:
         approve:
+        backfill_requests:
         capability:
+        category: Kategoria
         contact_details:
+        created: Utworzony
+        data_sharing:
         deny: Odmów
         disable:
         email: Adres e-mail
         enable:
+        event_subscriptions:
         fediverse_account: Adres Fediverse
         fingerprint:
         links: Linki
+        max_count:
         privacy_policy:
         registration:
         sign_in: Zaloguj się
+        subscription_type:
         versions:
       index:
         add_html:
@@ -668,13 +677,17 @@ pl:
       lead:
       title:
   imports:
+    bad_url:
     create:
       success:
     new:
       description:
       heading:
       import:
+      import_capabilities:
       import_type_html:
+      placeholder:
+      submit:
   jobs:
     activity:
       collection_published:

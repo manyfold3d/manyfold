@@ -303,9 +303,11 @@ cs:
     navbar:
       account: Mé nastavení
       activity: Aktivita
+      add_models:
       check_existing: Kontrola stávajících modelů
       check_results:
       home: Domovská stránka
+      import_url:
       log_in: Přihlásit se
       log_out: Odhlásit se
       moderator_settings:
@@ -555,18 +557,25 @@ cs:
       edit:
         approval_help:
         approve:
+        backfill_requests:
         capability:
+        category: Kategorie
         contact_details:
+        created: Vytvořeno
+        data_sharing:
         deny: Odmítnout
         disable:
         email: E-mail
         enable:
+        event_subscriptions:
         fediverse_account: Adresa Fediverse
         fingerprint:
         links: Odkazy
+        max_count:
         privacy_policy:
         registration:
         sign_in: Přihlásit se
+        subscription_type:
         versions:
       index:
         add_html:
@@ -668,13 +677,17 @@ cs:
       lead:
       title:
   imports:
+    bad_url:
     create:
       success:
     new:
       description:
       heading:
       import:
+      import_capabilities:
       import_type_html:
+      placeholder:
+      submit:
   jobs:
     activity:
       collection_published:

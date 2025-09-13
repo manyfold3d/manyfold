@@ -303,9 +303,11 @@ de:
     navbar:
       account: Meine Einstellungen
       activity: Aktivität
+      add_models:
       check_existing: Alle Modelle neu scannen
       check_results:
       home: Homepage
+      import_url:
       log_in: Einloggen
       log_out: Abmelden
       moderator_settings: Moderator-Einstellungen
@@ -555,18 +557,25 @@ de:
       edit:
         approval_help:
         approve:
+        backfill_requests:
         capability:
+        category: Kategorie
         contact_details:
+        created: Erstellt
+        data_sharing:
         deny: Verweigern
         disable:
         email: E-Mail
         enable:
+        event_subscriptions:
         fediverse_account: Fediverse-Adresse
         fingerprint:
         links: URLs
+        max_count:
         privacy_policy:
         registration:
         sign_in: Einloggen
+        subscription_type:
         versions:
       index:
         add_html:
@@ -668,13 +677,17 @@ de:
       lead:
       title:
   imports:
+    bad_url:
     create:
       success:
     new:
       description:
       heading:
       import:
+      import_capabilities:
       import_type_html:
+      placeholder:
+      submit:
   jobs:
     activity:
       collection_published:

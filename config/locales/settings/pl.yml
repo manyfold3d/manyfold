@@ -137,7 +137,7 @@ pl:
         help: Kto może domyślnie wyświetlać nowe modele / twórców / kolekcje?
         label: Domyślna widoczność
         options:
-          member: Zalogowane lokalne konta
+          member: Członkowie (zalogowane konta lokalne)
           none: Prywatne
       details_html: Aby zmienić te ustawienia, edytuj <a href='https://manyfold.app/sysadmin/configuration.html'>zmienne środowiskowe</a> serwera i uruchom go ponownie.
       email: Dostarczanie wiadomości e-mail skonfigurowane?
