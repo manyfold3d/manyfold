@@ -23,6 +23,8 @@ class FollowsController < ApplicationController
     redirect_to url_for(@actor.entity) if @actor&.local?
     # If not local, we show a follow button and some details of the account
     @actors = [@actor]
+    # Get recommended follows from FASPs if there's no query
+    get_recommended_accounts if @query.blank?
   rescue ActiveRecord::RecordNotFound
   end
 
@@ -75,6 +77,12 @@ class FollowsController < ApplicationController
   end
 
   private
+
+  def get_recommended_accounts
+    @recommended = FaspClient::Provider.find_each.map do |provider|
+      provider.follow_recommendation(current_user.federails_actor.federated_url)
+    end.flatten.uniq.map { |it| Federails::Actor.find_or_create_by_federation_url it }.reject(&:local)
+  end
 
   def get_target
     followable = params[:followable_class].constantize

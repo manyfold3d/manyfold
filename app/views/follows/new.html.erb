@@ -17,3 +17,10 @@
     </div>
   <% end %>
 <% end %>
+
+<% if @recommended&.any? %>
+
+  <h3><%= t(".recommended") %></h3>
+  <%= render "actor_table", actors: @recommended %>
+
+<% end %>
