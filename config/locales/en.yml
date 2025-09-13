@@ -597,6 +597,10 @@ en:
         status: Status
         url: URL
   follows:
+    actor_table:
+      actions: Actions
+      address: Fediverse Address
+      name: Name
     follow_remote_actor:
       followed: Followed %{actor} successfully
     index:

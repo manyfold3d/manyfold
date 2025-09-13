@@ -16,7 +16,7 @@
       <td><%= render Components::FollowButton.new(follower: current_user, target: actor) %></td>
       <td>
         <% if !actor.local? && actor.extensions&.dig("f3di:concreteType").nil? %>
-          <span class="text-warning"><%= icon("exclamation-triangle-fill", translate(".non_manyfold_account")) %></span>
+          <span class="text-warning"><%= icon("exclamation-triangle-fill", translate("components.actor_card.non_manyfold_account")) %></span>
         <% end %>
       </td>
     </tr>
