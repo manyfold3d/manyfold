@@ -13,11 +13,10 @@ class FollowsController < ApplicationController
   def new
     @query = params[:uri]
     @actor = if @query.starts_with?(%r{https?://})
-      Federails::Actor.find_by_federation_url @query # rubocop:disable Rails/DynamicFindBy
+      Federails::Actor.find_or_create_by_federation_url @query # rubocop:disable Rails/DynamicFindBy
     else
-      Federails::Actor.find_by_account @query # rubocop:disable Rails/DynamicFindBy
+      Federails::Actor.find_or_create_by_account @query # rubocop:disable Rails/DynamicFindBy
     end
-    @actor = Federails::Actor.find_or_create_by_federation_url @actor.federated_url
     # If local, go to the real thing
     # This will happen if anyone comes here from a remote follow
     redirect_to url_for(@actor.entity) if @actor&.local?
