@@ -593,7 +593,6 @@ es:
       following: Siguiendo
       title: Siguiendo
     new:
-      help: Puedes seguir creadores, colecciones o modelos públicos en otro servidor de Manyfold; ¡de hecho, cualquier cuenta pública en el Fediverse! Solo ingresa el nombre de la cuenta en el cuadro de búsqueda.
       no_results: Lo siento, no encontré nada para "%{query}". ¿Es una cuenta o URL de ActivityPub válida?
       results: Resultados de la búsqueda
       title: Sigue el Fediverse
@@ -604,6 +603,7 @@ es:
       submit: Llévame a casa
       title: Seguir %{name}
     search_form:
+      help: Puedes seguir creadores, colecciones o modelos públicos en otro servidor de Manyfold; ¡de hecho, cualquier cuenta pública en el Fediverse! Solo ingresa el nombre de la cuenta en el cuadro de búsqueda.
       placeholder: Introduzca una cuenta Fediverse o URL, por ejemplo @admin@try.manyfold.app
       submit: Buscar
     unfollow_remote_actor:

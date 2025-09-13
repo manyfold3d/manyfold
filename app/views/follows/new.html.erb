@@ -1,15 +1,16 @@
 <h2><%= t(".title") %></h2>
-<p>
-  <%= t(".help") %>
-</p>
 
 <%= render "search_form", query: @query %>
 
-<% if @query %>
+<% if @query.present? %>
 
   <h3><%= t(".results") %></h3>
-  <% if @actors %>
-    <%= render "actor_table", actors: @actors %>
+  <% if @actors&.any? %>
+    <div class="row">
+      <% @actors.each do |actor| %>
+        <%= render Components::ActorCard.new actor: actor %>
+      <% end %>
+    </div>
   <% else %>
     <div class="alert alert-info">
       <%= icon "person-arms-up", "" %>
@@ -21,6 +22,10 @@
 <% if @recommended&.any? %>
 
   <h3><%= t(".recommended") %></h3>
-  <%= render "actor_table", actors: @recommended %>
+  <div class="row">
+    <% @recommended.each do |actor| %>
+      <%= render Components::ActorCard.new actor: actor %>
+    <% end %>
+  </div>
 
 <% end %>

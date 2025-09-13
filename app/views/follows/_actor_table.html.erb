@@ -1,5 +1,24 @@
-<div class="row">
+<table class="table table-striped">
+  <tr>
+    <th></th>
+    <th><%= t(".name") %></th>
+    <%= content_tag(:th) { t(".address") } if SiteSettings.federation_enabled? %>
+    <th><%= t(".actions") %></th>
+    <th></th>
+  </tr>
   <% actors.each do |actor| %>
-    <%= render Components::ActorCard.new actor: actor %>
+    <tr class="align-middle">
+      <td>
+        <%= actor.entity ? icon(icon_for(actor.entity.class), actor.entity.class.model_name.human) : "⁂" %>
+      </td>
+      <td><%= link_to actor.name, actor.profile_url %></td>
+      <%= content_tag(:td) { actor.short_at_address } if SiteSettings.federation_enabled? %>
+      <td><%= render Components::FollowButton.new(follower: current_user, target: actor) %></td>
+      <td>
+        <% if !actor.local? && actor.extensions&.dig("f3di:concreteType").nil? %>
+          <span class="text-warning"><%= icon("exclamation-triangle-fill", translate("components.actor_card.non_manyfold_account")) %></span>
+        <% end %>
+      </td>
+    </tr>
   <% end %>
-</div>
+</table>

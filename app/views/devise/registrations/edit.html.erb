@@ -43,13 +43,13 @@
           <div class="card-body">
             <div class="row mb-3 text-center">
               <div class="col">
-                <%= link_to follow_path, class: "text-reset text-decoration-none fs-5" do %>
+                <%= link_to follows_path, class: "text-reset text-decoration-none fs-5" do %>
                   <%= t("follows.index.following") %>
                   <span class="badge bg-primary"><%= current_user.federails_actor.follows.count %></span>
                 <% end %>
               </div>
               <div class="col">
-                <%= link_to follow_path, class: "text-reset text-decoration-none fs-5" do %>
+                <%= link_to follows_path, class: "text-reset text-decoration-none fs-5" do %>
                   <%= t("follows.index.followers") %>
                   <span class="badge bg-primary"><%= current_user.federails_actor.followers.count %></span>
                 <% end %>

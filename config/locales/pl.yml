@@ -593,7 +593,6 @@ pl:
       following: Obserwowane
       title: Połączenia
     new:
-      help: Możesz obserwować publicznych twórców, kolekcje lub modele na innym serwerze Manyfold, a nawet każde publiczne konto w Fediversie! Wystarczy, że wpiszesz nazwę konta w polu wyszukiwania!
       no_results: Przepraszamy, nie mogliśmy znaleźć niczego dla "%{query}". Czy jest to prawidłowe konto ActivityPub lub adres URL?
       results: Wyniki wyszukiwania
       title: Śledź Fediverse
@@ -604,6 +603,7 @@ pl:
       submit: Zabierz mnie do domu
       title: Obserwuj %{name}
     search_form:
+      help: Możesz obserwować publicznych twórców, kolekcje lub modele na innym serwerze Manyfold, a nawet każde publiczne konto w Fediversie! Wystarczy, że wpiszesz nazwę konta w polu wyszukiwania!
       placeholder: Wprowadź konto Fediverse lub adres URL, np. @admin@try.manyfold.app
       submit: Wyszukaj
     unfollow_remote_actor:

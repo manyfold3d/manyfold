@@ -597,14 +597,18 @@ en:
         status: Status
         url: URL
   follows:
+    actor_table:
+      actions: Actions
+      address: Fediverse Address
+      name: Name
     follow_remote_actor:
       followed: Followed %{actor} successfully
     index:
+      explore_html: Or find some <a href="%{link}">recommended content</a> to follow!
       followers: Followers
       following: Following
       title: Connections
     new:
-      help: You can follow public creators, collections or models on another Manyfold server, in fact any public account in the Fediverse! Just enter the account name in the search box!
       no_results: Sorry, couldn't find anything for "%{query}". Is it a valid ActivityPub account or URL?
       recommended: Recommendations
       results: Search Results
@@ -616,6 +620,7 @@ en:
       submit: Take me home
       title: Follow %{name}
     search_form:
+      help: You can follow public creators, collections or models on another Manyfold server, in fact any public account in the Fediverse! Just enter the account name in the search box!
       placeholder: Enter a Fediverse account or URL, e.g. @admin@try.manyfold.app
       submit: Search
     unfollow_remote_actor:

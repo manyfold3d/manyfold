@@ -593,7 +593,6 @@ ja:
       following:
       title:
     new:
-      help:
       no_results:
       results:
       title:
@@ -604,6 +603,7 @@ ja:
       submit:
       title:
     search_form:
+      help:
       placeholder:
       submit:
     unfollow_remote_actor:
