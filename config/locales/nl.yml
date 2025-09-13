@@ -303,9 +303,11 @@ nl:
     navbar:
       account: Mijn Instellingen
       activity: Activiteit
+      add_models:
       check_existing: Bestaande modellen controleren
       check_results:
       home: Startpagina
+      import_url:
       log_in: Inloggen
       log_out: Uitloggen
       moderator_settings:
@@ -566,18 +568,25 @@ nl:
       edit:
         approval_help:
         approve:
+        backfill_requests:
         capability:
+        category: Categorie
         contact_details:
+        created:
+        data_sharing:
         deny: Weigeren
         disable:
         email: E-mail
         enable:
+        event_subscriptions:
         fediverse_account: Fediverse-adres
         fingerprint:
         links: Links
+        max_count:
         privacy_policy:
         registration:
         sign_in: Inloggen
+        subscription_type:
         versions:
       index:
         add_html:
@@ -679,13 +688,17 @@ nl:
       lead:
       title:
   imports:
+    bad_url:
     create:
       success:
     new:
       description:
       heading:
       import:
+      import_capabilities:
       import_type_html:
+      placeholder:
+      submit:
   jobs:
     activity:
       collection_published:

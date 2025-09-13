@@ -303,9 +303,11 @@ ja:
     navbar:
       account: 設定
       activity: アクティビティ
+      add_models:
       check_existing: 既存モデルの再スキャン
       check_results:
       home: ホームページ
+      import_url:
       log_in: ログイン
       log_out: ログアウト
       moderator_settings:
@@ -555,18 +557,25 @@ ja:
       edit:
         approval_help:
         approve:
+        backfill_requests:
         capability:
+        category: カテゴリー
         contact_details:
+        created: 作成日時
+        data_sharing:
         deny: 否認
         disable:
         email: Eメール
         enable:
+        event_subscriptions:
         fediverse_account: フェディバースアドレス
         fingerprint:
         links: リンク
+        max_count:
         privacy_policy:
         registration:
         sign_in: ログイン
+        subscription_type:
         versions:
       index:
         add_html:
@@ -668,13 +677,17 @@ ja:
       lead:
       title:
   imports:
+    bad_url:
     create:
       success:
     new:
       description:
       heading:
       import:
+      import_capabilities:
       import_type_html:
+      placeholder:
+      submit:
   jobs:
     activity:
       collection_published:
