@@ -46,8 +46,10 @@ Rails.application.routes.draw do
       mount Federails::Engine => "/"
       mount FaspClient::Engine => "/fasp"
     end
-    get "/follow" => "follows#index", :as => :follow
-    get "/authorize_interaction" => "follows#new", :as => :new_follow
+
+    resources :follows, only: [:index, :new]
+    get "/authorize_interaction" => "follows#new" # for compatibility with Mastodon, which assumes this URL
+
     post "/remote_follow" => "follows#remote_follow", :as => :remote_follow
     post "/perform_remote_follow" => "follows#perform_remote_follow", :as => :perform_remote_follow
     post "/follow_remote_actor/:id" => "follows#follow_remote_actor", :as => :follow_remote_actor
