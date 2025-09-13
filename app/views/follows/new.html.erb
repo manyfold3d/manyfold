@@ -2,7 +2,7 @@
 
 <%= render "search_form", query: @query %>
 
-<% if @query %>
+<% if @query.present? %>
 
   <h3><%= t(".results") %></h3>
   <% if @actors&.any? %>

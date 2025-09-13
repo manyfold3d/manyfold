@@ -13,17 +13,20 @@ class FollowsController < ApplicationController
   def new
     @query = params[:uri]
     # Get actor if this is a HTTP or acct URI
-    actor_uri = @query.starts_with?(%r{https?://}) ?
-      @query :
-      Federails::Actor.find_by_account(@query)&.federated_url # rubocop:disable Rails/DynamicFindBy
-    @actor = Federails::Actor.find_or_create_by_federation_url actor_uri # rubocop:disable Rails/DynamicFindBy
-    # If local, go to the real thing
-    # This will happen if anyone comes here from a remote follow
-    redirect_to url_for(@actor.entity) if @actor&.local?
-    # If not local, we show a follow button and some details of the account
-    @actors = [@actor]
-    # Get recommended follows from FASPs if there's no query
-    get_recommended_accounts if @query.blank?
+    if @query.present?
+      actor_uri = @query.starts_with?(%r{https?://}) ?
+        @query :
+        Federails::Actor.find_by_account(@query)&.federated_url # rubocop:disable Rails/DynamicFindBy
+      @actor = Federails::Actor.find_or_create_by_federation_url actor_uri # rubocop:disable Rails/DynamicFindBy
+      # If local, go to the real thing
+      # This will happen if anyone comes here from a remote follow
+      redirect_to url_for(@actor.entity) if @actor&.local?
+      # If not local, we show a follow button and some details of the account
+      @actors = [@actor]
+    else
+      # Get recommended follows from FASPs if there's no query
+      get_recommended_accounts
+    end
   rescue ActiveRecord::RecordNotFound
   end
 
