@@ -2,7 +2,9 @@
 
 <% if SiteSettings.federation_enabled? %>
   <p class="lead"><%= t("settings.users.index.fediverse_address") %>: <code><%= current_user.federails_actor.at_address %></code></p>
+  <%= render "search_form", query: @query %>
 <% end %>
+
 
 <div class="row">
   <div class="col">

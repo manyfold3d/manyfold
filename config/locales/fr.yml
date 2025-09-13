@@ -596,7 +596,6 @@ fr:
       following:
       title:
     new:
-      help: Vous pouvez suivre des créateurs publics, des collections ou des modèles sur un autre serveur Manyfold, en fait n'importe quel compte public dans Fediverse ! Il suffit d'entrer le nom du compte dans la boîte de recherche !
       no_results: Désolé, rien n'a été trouvé pour "%{query}". S'agit-il d'un compte ou d'une URL ActivityPub valide ?
       results: Résultats de la recherche
       title: Suivre le Fediverse
@@ -607,6 +606,7 @@ fr:
       submit: Retourner à l'accueil
       title: Suivre %{name}
     search_form:
+      help: Vous pouvez suivre des créateurs publics, des collections ou des modèles sur un autre serveur Manyfold, en fait n'importe quel compte public dans Fediverse ! Il suffit d'entrer le nom du compte dans la boîte de recherche !
       placeholder:
       submit: Recherche
     unfollow_remote_actor:

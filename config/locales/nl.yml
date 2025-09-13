@@ -604,7 +604,6 @@ nl:
       following:
       title:
     new:
-      help: Je kunt openbare makers, collecties of modellen op een andere Manyfold-server volgen, eigenlijk elk openbaar account in het Fediverse! Voer gewoon de accountnaam in het zoekvak in!
       no_results: Sorry, kon niets vinden voor "%{query}". Is het een geldig ActivityPub-account of URL?
       results: Zoekresultaten
       title: Volg het Fediverse
@@ -615,6 +614,7 @@ nl:
       submit: Breng me naar huis
       title: Volg %{name}
     search_form:
+      help: Je kunt openbare makers, collecties of modellen op een andere Manyfold-server volgen, eigenlijk elk openbaar account in het Fediverse! Voer gewoon de accountnaam in het zoekvak in!
       placeholder:
       submit: Zoeken
     unfollow_remote_actor:

@@ -593,7 +593,6 @@ cs:
       following: Sledování
       title: Sledování
     new:
-      help: Můžete sledovat veřejné tvůrce, kolekce nebo modely na jiném serveru Manyfold, vlastně jakýkoli veřejný účet ve Fediverse! Stačí zadat název účtu do vyhledávacího pole!
       no_results: Omlouváme se, ale pro "%{query}" se nepodařilo nic najít. Jedná se o platný účet ActivityPub nebo adresu URL?
       results: Výsledky vyhledávání
       title: Sledujte Fediverse
@@ -604,6 +603,7 @@ cs:
       submit: Domů
       title: Sledovat %{name}
     search_form:
+      help: Můžete sledovat veřejné tvůrce, kolekce nebo modely na jiném serveru Manyfold, vlastně jakýkoli veřejný účet ve Fediverse! Stačí zadat název účtu do vyhledávacího pole!
       placeholder: Zadejte účet Fediverse nebo adresu URL, např. @admin@try.manyfold.app
       submit: Vyhledávání
     unfollow_remote_actor:
