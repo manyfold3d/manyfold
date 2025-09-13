@@ -84,7 +84,7 @@ class Components::ModelCard < Components::Base
   def caption
     if (summary = @model.try(:caption) || @actor.extensions&.dig("summary"))
       span class: "card-subtitle text-muted" do
-        sanitize summary
+        sanitize summary.split("</p>", 1).first
       end
     end
   end
