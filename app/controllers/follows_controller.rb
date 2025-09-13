@@ -14,20 +14,31 @@ class FollowsController < ApplicationController
     @query = params[:uri]
     # Get actor if this is a HTTP or acct URI
     if @query.present?
-      actor_uri = @query.starts_with?(%r{https?://}) ?
-        @query :
-        Federails::Actor.find_by_account(@query)&.federated_url # rubocop:disable Rails/DynamicFindBy
-      @actor = Federails::Actor.find_or_create_by_federation_url actor_uri # rubocop:disable Rails/DynamicFindBy
-      # If local, go to the real thing
-      # This will happen if anyone comes here from a remote follow
-      redirect_to url_for(@actor.entity) if @actor&.local?
+      begin
+        actor_uri = if @query.starts_with?(%r{https?://})
+          @query
+        elsif @query.include?("@")
+          Federails::Actor.find_by_account(@query)&.federated_url # rubocop:disable Rails/DynamicFindBy
+        else
+          nil
+        end
+        @actor = Federails::Actor.find_or_create_by_federation_url actor_uri if actor_uri # rubocop:disable Rails/DynamicFindBy
+        # Ignore local users
+        @actor = nil if @actor&.local? && @actor.entity.is_a?(User)
+        # If this is a local actor, go to the real thing
+        # This will happen if anyone comes here from a remote follow
+        redirect_to url_for(@actor.entity) if @actor&.local?
+      rescue ActiveRecord::RecordNotFound
+      end
       # If not local, we show a follow button and some details of the account
-      @actors = [@actor]
+      @actors = @actor.nil? ?
+        # If there's no actor still, run a search
+        search(@query) :
+        [@actor]
     else
       # Get recommended follows from FASPs if there's no query
       get_recommended_accounts
     end
-  rescue ActiveRecord::RecordNotFound
   end
 
   # Outgoing remote follow - ask for target account
@@ -83,6 +94,12 @@ class FollowsController < ApplicationController
   def get_recommended_accounts
     @recommended = FaspClient::Provider.find_each.map do |provider|
       provider.follow_recommendation(current_user.federails_actor.federated_url)
+    end.flatten.uniq.map { |it| Federails::Actor.find_or_create_by_federation_url it }.reject(&:local)
+  end
+
+  def search(query)
+    FaspClient::Provider.find_each.map do |provider|
+      provider.account_search(query)
     end.flatten.uniq.map { |it| Federails::Actor.find_or_create_by_federation_url it }.reject(&:local)
   end
 
