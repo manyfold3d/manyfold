@@ -2,6 +2,7 @@
 
 <% if SiteSettings.federation_enabled? %>
   <%= render "search_form", query: @query %>
+  <p><%= t(".explore_html", link: new_follow_path) %></p>
   <hr>
 <% end %>
 

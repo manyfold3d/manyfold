@@ -604,6 +604,7 @@ en:
     follow_remote_actor:
       followed: Followed %{actor} successfully
     index:
+      explore_html: Or find some <a href="%{link}">recommended content</a> to follow!
       followers: Followers
       following: Following
       title: Connections
