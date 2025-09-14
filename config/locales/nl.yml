@@ -597,14 +597,20 @@ nl:
         status:
         url:
   follows:
+    actor_table:
+      actions: Acties
+      address:
+      name: Naam
     follow_remote_actor:
       followed: "%{actor} succesvol gevolgd"
     index:
+      explore_html:
       followers:
       following:
       title:
     new:
       no_results: Sorry, kon niets vinden voor "%{query}". Is het een geldig ActivityPub-account of URL?
+      recommended:
       results: Zoekresultaten
       title: Volg het Fediverse
     remote_follow:
