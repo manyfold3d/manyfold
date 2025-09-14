@@ -589,14 +589,20 @@ fr:
         status:
         url:
   follows:
+    actor_table:
+      actions: Actions
+      address: Adresse Fediverse
+      name: Nom
     follow_remote_actor:
       followed: Suivi de %{actor} avec succès
     index:
+      explore_html:
       followers:
       following:
       title:
     new:
       no_results: Désolé, rien n'a été trouvé pour "%{query}". S'agit-il d'un compte ou d'une URL ActivityPub valide ?
+      recommended:
       results: Résultats de la recherche
       title: Suivre le Fediverse
     remote_follow:

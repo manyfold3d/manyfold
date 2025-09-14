@@ -586,14 +586,20 @@ pl:
         status:
         url:
   follows:
+    actor_table:
+      actions: Akcje
+      address: Adres Fediverse
+      name: Nazwa
     follow_remote_actor:
       followed: Pomyślnie zaczęto obserwować %{actor}
     index:
+      explore_html:
       followers: Obserwujący
       following: Obserwowane
       title: Połączenia
     new:
       no_results: Przepraszamy, nie mogliśmy znaleźć niczego dla "%{query}". Czy jest to prawidłowe konto ActivityPub lub adres URL?
+      recommended:
       results: Wyniki wyszukiwania
       title: Śledź Fediverse
     remote_follow:

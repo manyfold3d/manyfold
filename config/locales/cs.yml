@@ -586,14 +586,20 @@ cs:
         status:
         url:
   follows:
+    actor_table:
+      actions: Akce
+      address: Adresa Fediverse
+      name: Název
     follow_remote_actor:
       followed: Úspěšně sledován %{actor}
     index:
+      explore_html:
       followers: Sledující
       following: Sledování
       title: Sledování
     new:
       no_results: Omlouváme se, ale pro "%{query}" se nepodařilo nic najít. Jedná se o platný účet ActivityPub nebo adresu URL?
+      recommended:
       results: Výsledky vyhledávání
       title: Sledujte Fediverse
     remote_follow:

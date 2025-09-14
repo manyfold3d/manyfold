@@ -586,14 +586,20 @@ es:
         status: Estado
         url: URL
   follows:
+    actor_table:
+      actions: Acciones
+      address: Dirección Fediverse
+      name: Nombre
     follow_remote_actor:
       followed: Siguiendo a %{actor} correctamente.
     index:
+      explore_html:
       followers: Seguidores
       following: Siguiendo
       title: Siguiendo
     new:
       no_results: Lo siento, no encontré nada para "%{query}". ¿Es una cuenta o URL de ActivityPub válida?
+      recommended:
       results: Resultados de la búsqueda
       title: Sigue el Fediverse
     remote_follow:

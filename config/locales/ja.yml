@@ -586,14 +586,20 @@ ja:
         status:
         url:
   follows:
+    actor_table:
+      actions:
+      address:
+      name:
     follow_remote_actor:
       followed:
     index:
+      explore_html:
       followers:
       following:
       title:
     new:
       no_results:
+      recommended:
       results:
       title:
     remote_follow:

@@ -586,14 +586,20 @@ de:
         status:
         url:
   follows:
+    actor_table:
+      actions: Aktionen
+      address: Fediverse Adresse
+      name: Name
     follow_remote_actor:
       followed: Erfolgreich %{actor} gefolgt
     index:
+      explore_html:
       followers: Follower
       following: Follgende
       title: Verbindungen
     new:
       no_results: Ich konnte leider nichts zu "%{query}" finden. Handelt es sich um ein gültiges ActivityPub-Konto oder eine URL?
+      recommended:
       results: Suchergebnisse
       title: Folge dem Fediverse
     remote_follow:
