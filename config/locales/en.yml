@@ -590,6 +590,7 @@ en:
         versions: Versions
       index:
         add_html: 'To enable a new FASP, visit the provider and enter this server''s URL on signup: <code>%{base_url}</code>. You should only use providers that you trust, and be sure to read their privacy policy in full before you enable services.'
+        search_3dprint_social_html: 'We recommend connecting the <a href="https://search.3dprint.social/registration/new" rel="noreferrer">search.3dprint.social</a> FASP; it''s run by the Manyfold developers, and is specifically configured for 3d content search.'
         description_html: Fediverse Auxiliary Service Providers (FASPs) enable extra features for Fediverse servers, such as search, trends, spam detection and more, as part of the <a href="https://fediscovery.org" target="_new" rel="noopener">Fediscovery project</a>.
         heading: FASP Services
         provider_list_title: Registered FASPs
