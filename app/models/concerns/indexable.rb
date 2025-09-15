@@ -10,7 +10,7 @@ module Indexable
   end
 
   def public_and_indexable?
-    indexable? && public?
+    respond_to?(:indexable) && indexable? && public?
   end
 
   def indexable?
