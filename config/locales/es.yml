@@ -593,13 +593,13 @@ es:
     follow_remote_actor:
       followed: Siguiendo a %{actor} correctamente.
     index:
-      explore_html:
+      explore_html: O encuentra algunos <a href="%{link}">contenidos recomendados</a> para seguir
       followers: Seguidores
       following: Siguiendo
       title: Siguiendo
     new:
       no_results: Lo siento, no encontré nada para "%{query}". ¿Es una cuenta o URL de ActivityPub válida?
-      recommended:
+      recommended: Recomendaciones
       results: Resultados de la búsqueda
       title: Sigue el Fediverse
     remote_follow:
