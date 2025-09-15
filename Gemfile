@@ -156,7 +156,7 @@ gem "devise_zxcvbn", "~> 6.0"
 gem "federails", git: "https://gitlab.com/experimentslabs/federails.git", branch: "nodeinfo-metadata"
 gem "federails-moderation", "~> 0.3"
 gem "caber", github: "manyfold3d/caber"
-gem "fasp_client", "~> 0.5"
+gem "fasp_client", "~> 0.6"
 
 gem "nanoid", "~> 2.0"
 

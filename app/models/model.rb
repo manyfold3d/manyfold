@@ -24,7 +24,7 @@ class Model < ApplicationRecord
     # See https://github.com/mastodon/mastodon/issues/22322
     actor_type: "Service"
   )
-  fasp_share_lifecycle category: "account", uri_method: :fasp_uri
+  fasp_share_lifecycle category: "account", uri_method: :fasp_uri, only_if: :public_and_indexable?
 
   def fasp_uri
     federails_actor&.federated_url

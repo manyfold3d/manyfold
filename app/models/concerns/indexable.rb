@@ -9,6 +9,10 @@ module Indexable
     normalizes :ai_indexable, with: ->(it) { (it == "inherit") ? nil : it }
   end
 
+  def public_and_indexable?
+    indexable? && public?
+  end
+
   def indexable?
     case indexable
     when nil

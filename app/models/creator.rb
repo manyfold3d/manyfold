@@ -11,7 +11,7 @@ class Creator < ApplicationRecord
   broadcasts_refreshes
 
   acts_as_federails_actor username_field: :slug, name_field: :name, profile_url_method: :url_for
-  fasp_share_lifecycle category: "account", uri_method: :fasp_uri
+  fasp_share_lifecycle category: "account", uri_method: :fasp_uri, only_if: :public_and_indexable?
 
   has_many :models, dependent: :nullify
   has_many :collections, dependent: :nullify
