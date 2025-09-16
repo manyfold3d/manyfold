@@ -583,6 +583,7 @@ es:
         heading: Servicios de la FASP
         provider_list_title: FASP registrados
         registered_at: Registrado en
+        search_3dprint_social_html:
         status: Estado
         url: URL
   follows:
