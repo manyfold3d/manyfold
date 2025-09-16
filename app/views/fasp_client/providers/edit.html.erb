@@ -35,10 +35,10 @@
         <%= t ".contact_details" %>
       </div>
       <div class="card-body">
-        <% if @provider.contact_email = "test@example.com" %>
+        <% if @provider.contact_email %>
           <p><%= t ".email" %>: <%= link_to @provider.contact_email, "mailto:#{@provider.contact_email}" %></p>
         <% end %>
-        <% if @provider.fediverse_account = "@test@example.com" %>
+        <% if @provider.fediverse_account %>
           <p><%= t ".fediverse_account" %>: <%= @provider.fediverse_account %></p>
         <% end %>
       </div>
