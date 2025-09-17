@@ -3,6 +3,8 @@
     <div class="alert alert-info">
       <%= icon "person-arms-up", "" %>
       <%= signed_in? ? t(".no_results_html") : t(".no_results_signed_out_html", link: new_user_session_path) %>
+      <%= t ".search.or_other_sites" %>
+      <%= render "search_links" %>
     </div>
   <% else %>
     <div class="skip-link-container">
@@ -18,6 +20,13 @@
       </div>
       <% if pagination_settings["models"] %>
         <%= paginate @models %>
+      <% end %>
+      <% if @search %>
+        <div class="alert alert-info">
+          <%= icon "search", "" %>
+          <%= t ".search.other_sites" %>
+          <%= render "search_links" %>
+        </div>
       <% end %>
     </div>
   <% end %>

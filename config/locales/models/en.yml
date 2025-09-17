@@ -55,6 +55,9 @@ en:
       bulk_edit: Edit All Models
       no_results_html: Sorry, we couldn't find anything to show you! Try changing your filters or search terms, or uploading some models.
       no_results_signed_out_html: Sorry, we couldn't find anything to show you! There might be more to see if you <a href="%{link}">sign in</a>.
+      search:
+        or_other_sites: 'Or, try searching elsewhere:'
+        other_sites: 'Can''t find what you want? Try searching elsewhere:'
       skip_models: Skip model list
     merge:
       success: Models merged successfully.
