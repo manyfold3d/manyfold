@@ -95,6 +95,10 @@ class SiteSettings < RailsSettings::Base
     end
   end
 
+  def self.fasp_data_sharing_enabled?
+    federation_enabled? && FaspClient::Provider.any? { |it| it.has_capability? :account_search }
+  end
+
   module UserDefaults
     RENDERER = ActiveSupport::HashWithIndifferentAccess.new(
       grid_width: 200,
