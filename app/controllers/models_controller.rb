@@ -21,6 +21,7 @@ class ModelsController < ApplicationController
 
   def index
     @models = @filter.models(policy_scope(Model))
+    @search = params[:q].presence
     prepare_model_list
     set_indexable @models
     respond_to do |format|

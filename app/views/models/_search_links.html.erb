@@ -1,0 +1,6 @@
+<% html_class = "ms-3" %>
+<div class="mt-2">
+  <%= link_to t("sites.fediverse"), new_follow_path(uri: @search), class: html_class if SiteSettings.fasp_data_sharing_enabled? %>
+  <%= link_to t("sites.thangs"), "https://thangs.com/search/#{ERB::Util.url_encode(@search)}?searchScope=all&view=list", class: html_class, target: "manyfold_thangs_search", rel: "noreferrer" %>
+  <%= link_to t("sites.yeggi"), "https://yeggi.com/q/#{ERB::Util.url_encode(@search)}/", target: "manyfold_yeggi_search", class: html_class, rel: "noreferrer" %>
+</div>
