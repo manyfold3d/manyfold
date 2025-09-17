@@ -15,7 +15,7 @@
     <%= yield :head %>
   </head>
 
-  <body>
+  <body class="<%= "#{SiteSettings.theme}-theme" %>">
     <%= skip_link "content", t(".skip_to_content") %>
     <%= render "application/navbar" %>
     <%= yield :breadcrumbs %>
