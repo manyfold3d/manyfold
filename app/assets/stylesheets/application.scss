@@ -21,6 +21,8 @@ $ra-font-path: "https://cdn.jsdelivr.net/npm/@infinizhen/rpg-awesome-continued@1
 @import '@uppy/core/dist/style.min';
 @import '@uppy/dashboard/dist/style.min';
 
+@import 'src/dark-theme-overrides';
+
 .ts-control {
 	padding: 1px;
 }

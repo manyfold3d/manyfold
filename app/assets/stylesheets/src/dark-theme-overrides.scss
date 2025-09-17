@@ -1,0 +1,23 @@
+@mixin tom-select-dark-mode() {
+
+	#model_tag_list-ts-dropdown,
+	.ts-wrapper .ts-control input,
+	.ts-wrapper .ts-dropdown .ts-dropdown-content .option {
+		color: #fff !important;
+		-webkit-text-fill-color: #fff !important;
+	}
+
+	.ts-dropdown .active {
+		background-color: #375a7f !important;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	@include tom-select-dark-mode();
+}
+
+body.darkly-theme,
+body.cyborg-theme,
+body.slate-theme {
+	@include tom-select-dark-mode();
+}
