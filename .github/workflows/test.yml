@@ -6,15 +6,13 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  DATABASE_URL: postgresql://manyfold:manyfold@localhost:5432/manyfold
+  RAILS_ENV: test
+
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      POSTGRES_USER: manyfold
-      POSTGRES_PASSWORD: manyfold
-      POSTGRES_DB: manyfold
-      DATABASE_URL: postgresql://${{POSTGRES_USER}}:${{POSTGRES_PASSWORD}}@postgres:5432/${{POSTGRES_DB}}
-      RAILS_ENV: test
     steps:
       - name: Install requirements
         run: sudo apt install -y assimp-utils
@@ -40,7 +38,7 @@ jobs:
           POSTGRES_PASSWORD: manyfold
           POSTGRES_DB: manyfold
         options: >-
-          --health-cmd "pg_isready -d ${{DATABASE_URL}}"
+          --health-cmd "pg_isready -d postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@localhost:5432/$POSTGRES_DB"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
