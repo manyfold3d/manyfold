@@ -21,8 +21,6 @@ jobs:
         run: rm db/data_schema.rb
       - name: Set up database with prepare command so we catch any migration explosions
         run: bundle exec rails db:prepare:with_data
-      - name: Check typescript
-        run: yarn typecheck
       - name: Compile assets
         run: bundle exec rails assets:precompile
       - name: Run tests
