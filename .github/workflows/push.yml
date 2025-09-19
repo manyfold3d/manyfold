@@ -9,6 +9,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/manyfold
+      RAILS_ENV: test
+      POSTGRES_PASSWORD: postgres
     steps:
       - name: Install requirements
         run: sudo apt install -y assimp-utils
@@ -18,8 +22,6 @@ jobs:
         run: rm db/data_schema.rb
       - name: Set up database with prepare command so we catch any migration explosions
         run: bundle exec rails db:prepare:with_data
-        env:
-          RAILS_ENV: test
       - name: Check typescript
         run: yarn typecheck
       - name: Compile assets
@@ -31,6 +33,15 @@ jobs:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/coverage.xml
     services:
+      postgres:
+        image: postgres
+        options: >-
+          --health-cmd "pg_isready"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
       redis:
         image: redis
         options: >-
