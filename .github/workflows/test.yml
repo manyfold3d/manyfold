@@ -6,13 +6,17 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-  DATABASE_URL: postgresql://manyfold:manyfold@localhost:5432/manyfold
-  RAILS_ENV: test
-
 jobs:
   test:
+    strategy:
+      matrix:
+        database_url:
+          - postgresql://manyfold:manyfold@localhost:5432/manyfold
+          - sqlite3:/tmp/test.db
     runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: ${{ matrix.database_url }}
     steps:
       - name: Install requirements
         run: sudo apt install -y assimp-utils
