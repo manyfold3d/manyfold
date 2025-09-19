@@ -24,8 +24,6 @@ jobs:
         run: sudo apt install -y assimp-utils
       - uses: actions/checkout@v5
       - uses: ./.github/actions/setup
-      - name: Remove data schema so we bootstrap from zero with data migrations
-        run: rm db/data_schema.rb
       - name: Set up database with prepare command so we catch any migration explosions
         run: bundle exec rails db:prepare:with_data
       - name: Compile assets
