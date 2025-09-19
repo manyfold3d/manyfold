@@ -12,7 +12,6 @@ jobs:
     env:
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/manyfold
       RAILS_ENV: test
-      POSTGRES_PASSWORD: postgres
     steps:
       - name: Install requirements
         run: sudo apt install -y assimp-utils
@@ -35,6 +34,8 @@ jobs:
     services:
       postgres:
         image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd "pg_isready"
           --health-interval 10s
