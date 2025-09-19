@@ -13,7 +13,7 @@ jobs:
       matrix:
         database_url:
           - postgresql://manyfold:manyfold@localhost:5432/manyfold
-          - mysql2://manyfold:manyfold@localhost:3306/manyfold
+          - mysql2://manyfold:manyfold@127.0.0.1:3306/manyfold
           - sqlite3:/tmp/test.db
     runs-on: ubuntu-latest
     env:
