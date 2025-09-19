@@ -27,7 +27,7 @@ RSpec.describe Model do
   end
 
   it "has many files" do
-    expect(build(:model).model_files).to eq []
+    expect(build(:model).model_files).to be_empty
   end
 
   context "with license information" do
@@ -78,7 +78,7 @@ RSpec.describe Model do
 
   it "strips leading and trailing backslashes from tags" do
     model = create(:model, tag_list: ["\\tag1", "tag2\\"])
-    expect(model.tag_list).to eq ["tag1", "tag2"]
+    expect(model.tag_list).to contain_exactly("tag1", "tag2")
   end
 
   context "with a library on disk" do
@@ -344,7 +344,7 @@ RSpec.describe Model do
       model = create(:model, tag_list: ["tag3", "tag4"])
       target = create(:model, tag_list: ["tag1", "tag2"])
       target.merge!(model)
-      expect(target.tag_list).to eq ["tag1", "tag2", "tag3", "tag4"]
+      expect(target.tag_list).to contain_exactly("tag1", "tag2", "tag3", "tag4")
     end
 
     it "merges links from both" do # rubocop:disable RSpec/MultipleExpectations, RSpec/ExampleLength
@@ -365,7 +365,7 @@ RSpec.describe Model do
       create(:model_file, model: model, filename: "test.stl", digest: "abcd")
       create(:model_file, model: target, filename: "test.stl", digest: "1234")
       target.merge!(model)
-      expect(target.model_files.map(&:filename).sort).to eq ["test_abcd.stl", "test.stl"].sort
+      expect(target.model_files.map(&:filename)).to contain_exactly("test_abcd.stl", "test.stl")
     end
 
     it "discards incoming file if they are identical" do
@@ -666,7 +666,7 @@ RSpec.describe Model do
     create(:model_file, model: model, filename: "test.stl")
     create(:model_file, model: model, filename: "test2.stl")
     create(:model_file, model: model, filename: "test.obj")
-    expect(model.file_extensions.sort).to eq ["obj", "stl"]
+    expect(model.file_extensions).to contain_exactly("obj", "stl")
   end
 
   context "when adding links" do

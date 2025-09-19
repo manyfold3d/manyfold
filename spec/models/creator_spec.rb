@@ -18,7 +18,7 @@ RSpec.describe Creator do
     end
 
     it "includes attributionDomain" do
-      expect(ap[:attributionDomains]).to eq ["localhost:3214"]
+      expect(ap[:attributionDomains]).to contain_exactly("localhost:3214")
     end
 
     it "includes caption in summary" do

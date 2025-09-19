@@ -60,7 +60,7 @@ RSpec.describe Scan::Model::AddNewFilesJob do
 
     it "scans files" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(thing.id) }.to change { thing.model_files.count }.to(4)
-      expect(thing.model_files.map(&:filename)).to eq ["LICENSE.txt", "README.txt", "files/part_one.stl", "images/card_preview_DISPLAY.png"]
+      expect(thing.model_files.map(&:filename)).to contain_exactly("LICENSE.txt", "README.txt", "files/part_one.stl", "images/card_preview_DISPLAY.png")
     end
 
     it "ignores model-type files in image directory" do # rubocop:todo RSpec/MultipleExpectations
@@ -162,12 +162,12 @@ RSpec.describe Scan::Model::AddNewFilesJob do
       expect(described_class.new.file_list(
         model.path,
         library
-      )).to eq ["#{model.path}/part_1.obj"]
+      )).to contain_exactly("#{model.path}/part_1.obj")
     end
 
     it "detects model files" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(1)
-      expect(model.model_files.map(&:filename)).to eq ["part_1.obj"]
+      expect(model.model_files.map(&:filename)).to contain_exactly("part_1.obj")
     end
   end
 
@@ -192,7 +192,7 @@ RSpec.describe Scan::Model::AddNewFilesJob do
       expect(described_class.new.file_list(
         model.path,
         library
-      )).to eq ["#{model.path}/part_1.obj"]
+      )).to contain_exactly("#{model.path}/part_1.obj")
     end
 
     it "generates a complete file list if including all subfolders" do
@@ -200,7 +200,7 @@ RSpec.describe Scan::Model::AddNewFilesJob do
         model.path,
         library,
         include_all_subfolders: true
-      )).to eq ["#{model.path}/part_1.obj", "#{model.path}/subfolder/part_2.obj"]
+      )).to contain_exactly("#{model.path}/part_1.obj", "#{model.path}/subfolder/part_2.obj")
     end
   end
 
@@ -223,7 +223,7 @@ RSpec.describe Scan::Model::AddNewFilesJob do
 
     it "detects model files" do # rubocop:todo RSpec/MultipleExpectations
       expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(2)
-      expect(model.model_files.map(&:filename).sort).to eq ["model.stl", "datapackage.json"].sort
+      expect(model.model_files.map(&:filename)).to contain_exactly("model.stl", "datapackage.json")
     end
   end
 

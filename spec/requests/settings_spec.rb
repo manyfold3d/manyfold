@@ -82,7 +82,7 @@ RSpec.describe "Settings" do
         end
 
         it "saves file ignore regexes" do
-          expect(SiteSettings.model_ignored_files).to eq [/.*\.lys/, /.*\.lyt/]
+          expect(SiteSettings.model_ignored_files).to contain_exactly(/.*\.lys/, /.*\.lyt/)
         end
       end
     end

@@ -66,7 +66,7 @@ RSpec.describe ModelFile do
     create(:model_file, model: model, filename: "different.stl", digest: "4321")
     allow(part1).to receive(:size).and_return(123)
     expect(part1.duplicate?).to be true
-    expect(part1.duplicates).to eq [part2]
+    expect(part1.duplicates).to contain_exactly(part2)
   end
 
   it "does not flag duplicates for nil digests" do # rubocop:todo RSpec/ExampleLength

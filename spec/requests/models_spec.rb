@@ -122,7 +122,7 @@ RSpec.describe "Models" do
           first.reload
           tags = first.tag_list
           expect(tags.length).to eq 2
-          expect(tags.sort).to eq ["a", "b"]
+          expect(tags).to contain_exactly("a", "b")
         end
 
         it "both adds and removes tags from a model", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
@@ -135,7 +135,7 @@ RSpec.describe "Models" do
           first.reload
           tags = first.tag_list
           expect(tags.length).to eq 3
-          expect(tags.sort).to eq ["a", "b", "d"]
+          expect(tags).to contain_exactly("a", "b", "d")
         end
 
         it "auto-publishes creator if being made public", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations

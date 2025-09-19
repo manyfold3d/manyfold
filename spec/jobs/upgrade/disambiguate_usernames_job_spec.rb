@@ -14,7 +14,7 @@ RSpec.describe Upgrade::DisambiguateUsernamesJob do
 
   it "detects that there is a duplicate" do
     creator.touch # rubocop:disable Rails/SkipsModelValidations
-    expect(job.send(:duplicated_usernames)).to eq ["conflict"]
+    expect(job.send(:duplicated_usernames)).to contain_exactly("conflict")
   end
 
   it "modifies creator name to remove duplication" do

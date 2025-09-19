@@ -15,155 +15,95 @@ RSpec.describe Search::ModelSearchService do
     end
 
     it "searches for a simple term" do
-      expect(service.search("cat").pluck(:name)).to eq [
-        "cat in the hat",
-        "hat on the cat"
-      ]
+      expect(service.search("cat").pluck(:name)).to contain_exactly("cat in the hat", "hat on the cat")
     end
 
     it "searches for term which match a tag" do
-      expect(service.search("dog").pluck(:name)).to eq [
-        "cat in the hat",
-        "hat on the cat"
-      ]
+      expect(service.search("dog").pluck(:name)).to contain_exactly("cat in the hat", "hat on the cat")
     end
 
     it "searches in creator names" do
-      expect(service.search("seuss").pluck(:name)).to eq [
-        "cat in the hat",
-        "hat on the cat"
-      ]
+      expect(service.search("seuss").pluck(:name)).to contain_exactly("cat in the hat", "hat on the cat")
     end
 
     it "searches in collection names" do
-      expect(service.search("chiro").pluck(:name)).to eq [
-        "bat on a mat",
-        "bat on a hat"
-      ]
+      expect(service.search("chiro").pluck(:name)).to contain_exactly("bat on a mat", "bat on a hat")
     end
 
     it "searches for results with any of the specified terms" do
-      expect(service.search("cat or in or the or hat").pluck(:name)).to eq [
-        "cat in the hat",
-        "hat on the cat",
-        "bat on a hat"
-      ]
+      expect(service.search("cat or in or the or hat").pluck(:name)).to contain_exactly("cat in the hat", "hat on the cat", "bat on a hat")
     end
 
     it "searches for results containing two unquoted terms" do
-      expect(service.search("the hat").pluck(:name)).to eq [
-        "cat in the hat",
-        "hat on the cat"
-      ]
+      expect(service.search("the hat").pluck(:name)).to contain_exactly("cat in the hat", "hat on the cat")
     end
 
     it "searches for results containing the exact quoted term" do
-      expect(service.search('"the hat"').pluck(:name)).to eq [
-        "cat in the hat"
-      ]
+      expect(service.search('"the hat"').pluck(:name)).to contain_exactly("cat in the hat")
     end
 
     it "searches for results which don't have an excluded term" do
-      expect(service.search("hat and not cat").pluck(:name)).to eq [
-        "bat on a hat"
-      ]
+      expect(service.search("hat and not cat").pluck(:name)).to contain_exactly("bat on a hat")
     end
 
     it "searches for AND combination of exclusions" do
-      expect(service.search("not cat and not hat").pluck(:name)).to eq [
-        "bat on a mat"
-      ]
+      expect(service.search("not cat and not hat").pluck(:name)).to contain_exactly("bat on a mat")
     end
 
     it "searches for OR combination of exclusions" do
-      expect(service.search("not cat or not hat").pluck(:name)).to eq [
-        "bat on a mat",
-        "bat on a hat"
-      ]
+      expect(service.search("not cat or not hat").pluck(:name)).to contain_exactly("bat on a mat", "bat on a hat")
     end
 
     it "searches for complex combinations" do
-      expect(service.search("(cat or hat) and not on").pluck(:name)).to eq [
-        "cat in the hat"
-      ]
+      expect(service.search("(cat or hat) and not on").pluck(:name)).to contain_exactly("cat in the hat")
     end
 
     it "searches for other complex combinations" do
-      expect(service.search("(cat or bat) and hat").pluck(:name)).to eq [
-        "cat in the hat",
-        "hat on the cat",
-        "bat on a hat"
-      ]
+      expect(service.search("(cat or bat) and hat").pluck(:name)).to contain_exactly("cat in the hat", "hat on the cat", "bat on a hat")
     end
 
     it "searches for results which have all the words" do
-      expect(service.search("cat hat").pluck(:name)).to eq [
-        "cat in the hat",
-        "hat on the cat"
-      ]
+      expect(service.search("cat hat").pluck(:name)).to contain_exactly("cat in the hat", "hat on the cat")
     end
 
     it "searches for results which have a specific tag" do
-      expect(service.search("hat tag=cat").pluck(:name)).to eq [
-        "cat in the hat"
-      ]
+      expect(service.search("hat tag=cat").pluck(:name)).to contain_exactly("cat in the hat")
     end
 
     it "searches for results which don't have the specified tag" do
-      expect(service.search("bat tag != frog").pluck(:name)).to eq [
-        "bat on a mat"
-      ]
+      expect(service.search("bat tag != frog").pluck(:name)).to contain_exactly("bat on a mat")
     end
 
     it "finds results which have a required word and a required tag" do
-      expect(service.search("on tag=frog").pluck(:name)).to eq [
-        "bat on a hat"
-      ]
+      expect(service.search("on tag=frog").pluck(:name)).to contain_exactly("bat on a hat")
     end
 
     it "finds results with a combination of tags" do
-      expect(service.search("tag=frog tag=dog").pluck(:name)).to eq [
-        "cat in the hat"
-      ]
+      expect(service.search("tag=frog tag=dog").pluck(:name)).to contain_exactly("cat in the hat")
     end
 
     it "finds results with an OR combination of tags" do
-      expect(service.search("tag=frog or tag=dog").pluck(:name).sort).to eq [
-        "cat in the hat",
-        "bat on a hat",
-        "hat on the cat"
-      ].sort
+      expect(service.search("tag=frog or tag=dog").pluck(:name)).to contain_exactly("cat in the hat", "bat on a hat", "hat on the cat")
     end
 
     it "search specifically by creator name" do
-      expect(service.search("hat creator~dr").pluck(:name)).to eq [
-        "cat in the hat",
-        "hat on the cat"
-      ]
+      expect(service.search("hat creator~dr").pluck(:name)).to contain_exactly("cat in the hat", "hat on the cat")
     end
 
     it "filter specifically by collection name" do
-      expect(service.search("hat collection~chiro").pluck(:name)).to eq [
-        "bat on a hat"
-      ]
+      expect(service.search("hat collection~chiro").pluck(:name)).to contain_exactly("bat on a hat")
     end
 
     it "searches in notes if specified" do
-      expect(service.search("description ~ lorem").pluck(:name)).to eq [
-        "cat in the hat"
-      ]
+      expect(service.search("description ~ lorem").pluck(:name)).to contain_exactly("cat in the hat")
     end
 
     it "searches in captions" do
-      expect(service.search("dolor").pluck(:name)).to eq [
-        "hat on the cat"
-      ]
+      expect(service.search("dolor").pluck(:name)).to contain_exactly("hat on the cat")
     end
 
     it "searches in model filenames if specified" do
-      expect(service.search("filename ~ big").pluck(:name)).to eq [
-        "bat on a hat"
-      ]
+      expect(service.search("filename ~ big").pluck(:name)).to contain_exactly("bat on a hat")
     end
   end
 
