@@ -9,6 +9,7 @@ on:
 jobs:
   test:
     strategy:
+      fail-fast: false
       matrix:
         database_url:
           - postgresql://manyfold:manyfold@localhost:5432/manyfold
