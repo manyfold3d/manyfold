@@ -213,3 +213,5 @@ gem "webmock", "~> 3.25", group: :test
 gem "image_processing"
 
 gem "csv", "~> 3.3"
+
+gem "arel_extensions", "~> 2.3"
