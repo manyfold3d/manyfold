@@ -12,6 +12,7 @@ jobs:
       matrix:
         database_url:
           - postgresql://manyfold:manyfold@localhost:5432/manyfold
+          - mysql2://manyfold:manyfold@localhost:3306/manyfold
           - sqlite3:/tmp/test.db
     runs-on: ubuntu-latest
     env:
@@ -48,6 +49,19 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
+      mariadb:
+        image: mariadb
+        env:
+          MARIADB_USER: manyfold
+          MARIADB_PASSWORD: manyfold
+          MARIADB_DATABASE: manyfold
+        options: >-
+          --health-cmd "healthcheck.sh --connect --innodb_initialized"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 3306:3306
       redis:
         image: redis
         options: >-
