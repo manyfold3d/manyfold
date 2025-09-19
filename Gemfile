@@ -34,7 +34,7 @@ gem "bootsnap", "~> 1.18", require: false
 gem "activerecord-enhancedsqlite3-adapter", "~> 0.8"
 group :production do
   gem "mysql2", "~> 0.5"
-  gem "pg", "~> 1.5"
+  gem "pg", "~> 1.6"
 end
 
 group :development, :test do
