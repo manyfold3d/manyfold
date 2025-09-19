@@ -419,7 +419,7 @@ RSpec.describe Model do
     end
 
     it "has a validation error if the destination path already exists, and does not move anything" do # rubocop:todo RSpec/MultipleExpectations
-      FileUtils.mkdir_p(File.join(library.path, "@untagged/test-model#1"))
+      FileUtils.mkdir_p(File.join(library.path, "@untagged/test-model##{model.id}"))
       expect { model.organize! }.to raise_error(ActiveRecord::RecordInvalid)
       expect(model.errors.full_messages).to include("Path already exists")
       expect(Dir.exist?(File.join(library.path, "original"))).to be true

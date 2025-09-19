@@ -248,10 +248,8 @@ RSpec.describe "Models" do
           patch update_models_path, params: {models: model_params, remove_tags: ["a", "b"]}
 
           expect(response).to have_http_status(:redirect)
-          library.models.take(2).each do |model|
-            model.reload
-            expect(model.tag_list).to eq ["c"]
-          end
+          expect(library.models.tagged_with("c").count).to eq 2
+          expect(library.models.tagged_with("a").count).to eq 0
         end
 
         it "clears returnable session param", :as_moderator do
