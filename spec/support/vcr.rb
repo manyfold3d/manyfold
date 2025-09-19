@@ -25,6 +25,6 @@ RSpec.configure do |config|
     )
     VCR.configure { |c| c.filter_sensitive_data("<CULTS3D_API_KEY>") { SiteSettings.cults3d_api_key } }
     VCR.configure { |c| c.filter_sensitive_data("<CULTS3D_API_USERNAME>") { SiteSettings.cults3d_api_username } }
-    VCR.configure { |c| c.filter_sensitive_data("<CULTS3D_BASIC_AUTH>") { Base64.encode64("#{SiteSettings.cults3d_api_username}:#{SiteSettings.cults3d_api_key}").chomp } }
+    VCR.configure { |c| c.filter_sensitive_data("<CULTS3D_BASIC_AUTH>") { Base64.strict_encode64("#{SiteSettings.cults3d_api_username}:#{SiteSettings.cults3d_api_key}").chomp } }
   end
 end

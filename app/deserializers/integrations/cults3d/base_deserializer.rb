@@ -34,7 +34,7 @@ class Integrations::Cults3d::BaseDeserializer < Integrations::BaseDeserializer
         "https://cults3d.com/graphql",
         schema_path: "#{File.dirname(__FILE__)}/cults3d.json",
         headers: {
-          "Authorization" => "Basic #{Base64.encode64("#{SiteSettings.cults3d_api_username}:#{SiteSettings.cults3d_api_key}").chomp}"
+          "Authorization" => "Basic #{Base64.strict_encode64("#{SiteSettings.cults3d_api_username}:#{SiteSettings.cults3d_api_key}").chomp}"
         }
       )
     end
