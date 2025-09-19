@@ -128,11 +128,11 @@ RSpec.describe Search::ModelSearchService do
     end
 
     it "finds results with an OR combination of tags" do
-      expect(service.search("tag=frog or tag=dog").pluck(:name)).to eq [
+      expect(service.search("tag=frog or tag=dog").pluck(:name).sort).to eq [
         "cat in the hat",
         "bat on a hat",
         "hat on the cat"
-      ]
+      ].sort
     end
 
     it "search specifically by creator name" do

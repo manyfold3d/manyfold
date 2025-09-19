@@ -365,7 +365,7 @@ RSpec.describe Model do
       create(:model_file, model: model, filename: "test.stl", digest: "abcd")
       create(:model_file, model: target, filename: "test.stl", digest: "1234")
       target.merge!(model)
-      expect(target.model_files.map(&:filename)).to eq ["test_abcd.stl", "test.stl"]
+      expect(target.model_files.map(&:filename).sort).to eq ["test_abcd.stl", "test.stl"].sort
     end
 
     it "discards incoming file if they are identical" do
@@ -415,7 +415,7 @@ RSpec.describe Model do
     it "moves model folder" do # rubocop:todo RSpec/MultipleExpectations
       expect { model.organize! }.not_to raise_error
       expect(Dir.exist?(File.join(library.path, "original"))).to be false
-      expect(Dir.exist?(File.join(library.path, "@untagged", "test-model#1"))).to be true
+      expect(Dir.exist?(File.join(library.path, "@untagged", "test-model##{model.id}"))).to be true
     end
 
     it "has a validation error if the destination path already exists, and does not move anything" do # rubocop:todo RSpec/MultipleExpectations

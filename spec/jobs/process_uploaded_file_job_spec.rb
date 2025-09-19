@@ -95,7 +95,8 @@ RSpec.describe ProcessUploadedFileJob do
 
     it "sets path using auto-organize" do
       job.perform(library.id, file, tags: "tag1")
-      expect(Model.last.path).to eq "tag1/test#1"
+      m = Model.last
+      expect(m.path).to eq "tag1/test##{m.id}"
     end
 
     it "queues up model new file scan" do
