@@ -10,7 +10,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      DATABASE_URL: postgresql://manyfold:manyfold@postgres:5432/manyfold
+      POSTGRES_USER: manyfold
+      POSTGRES_PASSWORD: manyfold
+      POSTGRES_DB: manyfold
+      DATABASE_URL: postgresql://${{POSTGRES_USER}}:${{POSTGRES_PASSWORD}}@postgres:5432/${{POSTGRES_DB}}
       RAILS_ENV: test
     steps:
       - name: Install requirements
@@ -37,7 +40,7 @@ jobs:
           POSTGRES_PASSWORD: manyfold
           POSTGRES_DB: manyfold
         options: >-
-          --health-cmd "pg_isready"
+          --health-cmd "pg_isready -d ${{DATABASE_URL}}"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
