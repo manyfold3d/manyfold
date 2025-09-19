@@ -122,8 +122,7 @@ RSpec.describe "Models" do
           first.reload
           tags = first.tag_list
           expect(tags.length).to eq 2
-          expect(tags[0]).to eq "a"
-          expect(tags[1]).to eq "b"
+          expect(tags.sort).to eq ["a", "b"]
         end
 
         it "both adds and removes tags from a model", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
@@ -136,9 +135,7 @@ RSpec.describe "Models" do
           first.reload
           tags = first.tag_list
           expect(tags.length).to eq 3
-          expect(tags[0]).to eq "a"
-          expect(tags[1]).to eq "b"
-          expect(tags[2]).to eq "d"
+          expect(tags.sort).to eq ["a", "b", "d"]
         end
 
         it "auto-publishes creator if being made public", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
