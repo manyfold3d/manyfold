@@ -24,7 +24,7 @@ RSpec.describe Library do
     end
 
     it "has many models" do
-      expect(build(:library).models).to eq []
+      expect(build(:library).models).to be_empty
     end
 
     it "must have a unique path" do

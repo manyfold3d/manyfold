@@ -187,7 +187,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       model.reload
       expect(model.creator.name).to eq "Greedy"
       expect(model.collection).to be_nil
-      expect(model.tag_list).to eq ["!new"]
+      expect(model.tag_list).to contain_exactly("!new")
     end
 
     it "handles a completely empty template" do # rubocop:todo RSpec/MultipleExpectations, RSpec/ExampleLength
@@ -196,7 +196,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       model.reload
       expect(model.creator).to be_nil
       expect(model.collection).to be_nil
-      expect(model.tag_list).to eq ["!new"]
+      expect(model.tag_list).to contain_exactly("!new")
     end
 
     it "removes stop words from tag lists" do # rubocop:todo RSpec/ExampleLength

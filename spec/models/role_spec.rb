@@ -124,7 +124,7 @@ RSpec.describe Role do
 
     it "leaves user with two valid roles" do
       described_class.merge_duplicates!
-      expect(user.roles.map(&:name)).to eq ["moderator", "member"]
+      expect(user.roles.map(&:name)).to contain_exactly("moderator", "member")
     end
 
     it "preserves moderator's mod role" do

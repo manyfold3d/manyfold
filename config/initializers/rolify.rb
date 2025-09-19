@@ -10,6 +10,6 @@ Rails.application.config.after_initialize do
   Role::ROLES.each do |r|
     Role.find_or_create_by name: r
   end
-rescue ActiveRecord::StatementInvalid
+rescue ActiveRecord::StatementInvalid, ActiveModel::UnknownAttributeError
   # Not migrated yet
 end

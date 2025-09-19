@@ -1,0 +1,73 @@
+name: Run tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        database_url:
+          - postgresql://manyfold:manyfold@localhost:5432/manyfold
+          - mysql2://manyfold:manyfold@127.0.0.1:3306/manyfold
+          - sqlite3:/tmp/test.db
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: ${{ matrix.database_url }}
+    steps:
+      - name: Install requirements
+        run: sudo apt install -y assimp-utils
+      - uses: actions/checkout@v5
+      - uses: ./.github/actions/setup
+      - name: Set up database with prepare command so we catch any migration explosions
+        run: bundle exec rails db:prepare:with_data
+      - name: Compile assets
+        run: bundle exec rails assets:precompile
+      - name: Run tests
+        run: bundle exec rake
+      - name: Upload Coverage
+        env:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/coverage.xml
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: manyfold
+          POSTGRES_PASSWORD: manyfold
+          POSTGRES_DB: manyfold
+        options: >-
+          --health-cmd "pg_isready -d postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@localhost:5432/$POSTGRES_DB"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+      mariadb:
+        image: mariadb
+        env:
+          MARIADB_USER: manyfold
+          MARIADB_PASSWORD: manyfold
+          MARIADB_DATABASE: manyfold
+          MARIADB_ROOT_PASSWORD: verysecret
+        options: >-
+          --health-cmd "healthcheck.sh --connect --innodb_initialized"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 3306:3306
+      redis:
+        image: redis
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379

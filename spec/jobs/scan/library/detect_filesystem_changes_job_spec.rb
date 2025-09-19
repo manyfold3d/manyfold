@@ -89,12 +89,12 @@ RSpec.describe Scan::Library::DetectFilesystemChangesJob do
     let(:model) { create(:model, library: library, path: "thingiverse_model") }
 
     it "detects changes of correct files" do
-      expect(described_class.new.folders_with_changes(library)).to eq ["thingiverse_model"]
+      expect(described_class.new.folders_with_changes(library)).to contain_exactly("thingiverse_model")
     end
 
     it "doesn't detect changes because of incorrect file in images folder" do
       create(:model_file, model: model, filename: "files/part_one.stl") # We already know about the correct file
-      expect(described_class.new.folders_with_changes(library)).to eq []
+      expect(described_class.new.folders_with_changes(library)).to be_empty
     end
   end
 

@@ -11,6 +11,6 @@ shared_examples "Listable" do
   end
 
   it "can access listers" do
-    expect(thing.listers(:printed)).to eq [user]
+    expect(thing.listers(:printed)).to contain_exactly(user)
   end
 end

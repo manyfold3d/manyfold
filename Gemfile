@@ -153,7 +153,7 @@ gem "better_content_security_policy", "~> 0.1"
 
 gem "devise_zxcvbn", "~> 6.0"
 
-gem "federails", git: "https://gitlab.com/experimentslabs/federails.git", branch: "nodeinfo-metadata"
+gem "federails", git: "https://gitlab.com/experimentslabs/federails.git", branch: "mariadb-serialization"
 gem "federails-moderation", "~> 0.3"
 gem "caber", github: "manyfold3d/caber"
 gem "fasp_client", "~> 0.6"
@@ -213,3 +213,5 @@ gem "webmock", "~> 3.25", group: :test
 gem "image_processing"
 
 gem "csv", "~> 3.3"
+
+gem "arel_extensions", "~> 2.3"

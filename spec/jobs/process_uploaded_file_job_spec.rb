@@ -90,12 +90,13 @@ RSpec.describe ProcessUploadedFileJob do
 
     it "Stores tags if provided" do
       job.perform(library.id, file, tags: "tag1, tag2, tag3")
-      expect(Model.last.tag_list).to eq ["tag1", "tag2", "tag3"]
+      expect(Model.last.tag_list).to contain_exactly("tag1", "tag2", "tag3")
     end
 
     it "sets path using auto-organize" do
       job.perform(library.id, file, tags: "tag1")
-      expect(Model.last.path).to eq "tag1/test#1"
+      m = Model.last
+      expect(m.path).to eq "tag1/test##{m.id}"
     end
 
     it "queues up model new file scan" do
@@ -164,7 +165,7 @@ RSpec.describe ProcessUploadedFileJob do
         end
         described_class.new.send(:unzip, model, Rack::Test::UploadedFile.new(file))
         expect(model.model_files.count).to be 2
-        expect(model.model_files.map(&:filename).sort).to eq ["one/test.stl", "two/more.stl"]
+        expect(model.model_files.map(&:filename)).to contain_exactly("one/test.stl", "two/more.stl")
       end
     end
 
@@ -178,7 +179,7 @@ RSpec.describe ProcessUploadedFileJob do
         end
         described_class.new.send(:unzip, model, Rack::Test::UploadedFile.new(file))
         expect(model.model_files.count).to eq 2
-        expect(model.model_files.map(&:filename).sort).to eq ["folder/test2.stl", "test.stl"]
+        expect(model.model_files.map(&:filename)).to contain_exactly("folder/test2.stl", "test.stl")
       end
     end
 
@@ -191,7 +192,7 @@ RSpec.describe ProcessUploadedFileJob do
         end
         described_class.new.send(:unzip, model, Rack::Test::UploadedFile.new(file))
         expect(model.model_files.count).to eq 2
-        expect(model.model_files.map(&:filename).sort).to eq ["subfolder/more.stl", "test.stl"]
+        expect(model.model_files.map(&:filename)).to contain_exactly("subfolder/more.stl", "test.stl")
       end
     end
   end

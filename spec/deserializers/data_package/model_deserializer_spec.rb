@@ -80,7 +80,7 @@ RSpec.describe DataPackage::ModelDeserializer do
     end
 
     it "parses tags" do
-      expect(output[:tag_list]).to eq ["fantasy", "wizard"]
+      expect(output[:tag_list]).to contain_exactly("fantasy", "wizard")
     end
 
     it "parses license" do

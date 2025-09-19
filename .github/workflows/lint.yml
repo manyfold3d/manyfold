@@ -1,0 +1,22 @@
+name: Lint
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ./.github/actions/setup
+      - name: Lint Ruby code
+        run: bundle exec rake rubocop
+      - name: Lint ERB templates
+        run: bundle exec erb_lint --lint-all
+      - name: Lint Typescript code
+        run: yarn run lint:ts
+      - name: Check typescript
+        run: yarn typecheck

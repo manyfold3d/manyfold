@@ -122,8 +122,7 @@ RSpec.describe "Models" do
           first.reload
           tags = first.tag_list
           expect(tags.length).to eq 2
-          expect(tags[0]).to eq "a"
-          expect(tags[1]).to eq "b"
+          expect(tags).to contain_exactly("a", "b")
         end
 
         it "both adds and removes tags from a model", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
@@ -136,9 +135,7 @@ RSpec.describe "Models" do
           first.reload
           tags = first.tag_list
           expect(tags.length).to eq 3
-          expect(tags[0]).to eq "a"
-          expect(tags[1]).to eq "b"
-          expect(tags[2]).to eq "d"
+          expect(tags).to contain_exactly("a", "b", "d")
         end
 
         it "auto-publishes creator if being made public", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
@@ -248,10 +245,8 @@ RSpec.describe "Models" do
           patch update_models_path, params: {models: model_params, remove_tags: ["a", "b"]}
 
           expect(response).to have_http_status(:redirect)
-          library.models.take(2).each do |model|
-            model.reload
-            expect(model.tag_list).to eq ["c"]
-          end
+          expect(library.models.tagged_with("c").count).to eq 2
+          expect(library.models.tagged_with("a").count).to eq 0
         end
 
         it "clears returnable session param", :as_moderator do
