@@ -56,6 +56,7 @@ jobs:
           MARIADB_USER: manyfold
           MARIADB_PASSWORD: manyfold
           MARIADB_DATABASE: manyfold
+          MARIADB_ROOT_PASSWORD: verysecret
         options: >-
           --health-cmd "healthcheck.sh --connect --innodb_initialized"
           --health-interval 10s
