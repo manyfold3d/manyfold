@@ -55,6 +55,9 @@ de:
       bulk_edit: Alle Modelle bearbeiten
       no_results_html: Wir konnten leider nichts finden, was wir dir zeigen könnten! Versuche, deine Filter oder Suchbegriffe zu ändern, oder lade ein einige Modelle hoch.
       no_results_signed_out_html: Wir konnten leider nichts finden, was wir dir zeigen können! Vielleicht gibt es mehr zu sehen, wenn du <a href="%{link}">sign in</a>.
+      search:
+        or_other_sites:
+        other_sites:
       skip_models: Modellliste überspringen
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.

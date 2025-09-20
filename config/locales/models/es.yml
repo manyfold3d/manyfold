@@ -55,6 +55,9 @@ es:
       bulk_edit: Editar todos los modelos
       no_results_html: Lo sentimos, ¡no hemos encontrado nada que mostrarte! Prueba a cambiar los filtros o los términos de búsqueda, o a subir algunos modelos.
       no_results_signed_out_html: Lo sentimos, no hemos encontrado nada que mostrarte. Puede que haya más cosas que ver si <a href="%{link}">inicias sesión</a>.
+      search:
+        or_other_sites:
+        other_sites:
       skip_models: Omitir lista de modelos
     merge:
       success: Modelos fusionados correctamente.

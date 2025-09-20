@@ -55,6 +55,9 @@ nl:
       bulk_edit: Alle Modellen Bewerken
       no_results_html: Sorry, we konden niets vinden om te tonen! Probeer je filters of zoektermen aan te passen, of upload wat modellen.
       no_results_signed_out_html:
+      search:
+        or_other_sites:
+        other_sites:
       skip_models: Modellijst overslaan
     merge:
       success: Modellen succesvol samengevoegd.
