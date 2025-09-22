@@ -4,7 +4,7 @@ require "shrine/storage/tus"
 
 require "image_processing/mini_magick"
 
-class LibraryUploader < Shrine
+class ModelFileUploader < Shrine
   plugin :activerecord
   plugin :add_metadata
   plugin :refresh_metadata

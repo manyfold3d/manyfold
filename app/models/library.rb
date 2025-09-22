@@ -107,7 +107,7 @@ class Library < ApplicationRecord
   memoize :storage
 
   def register_storage
-    LibraryUploader.storages[storage_key] = storage
+    ModelFileUploader.storages[storage_key] = storage
   end
 
   def self.register_all_storage

@@ -13,14 +13,14 @@ class ArchiveDownloadService
 
   def output_file
     @output_file ||= File.join(
-      LibraryUploader.find_storage(:downloads).directory,
+      ModelFileUploader.find_storage(:downloads).directory,
       filename
     )
   end
 
   def temp_file
     @temp_file ||= File.join(
-      LibraryUploader.find_storage(:downloads).directory,
+      ModelFileUploader.find_storage(:downloads).directory,
       Digest::SHA256.hexdigest(filename)
     )
   end

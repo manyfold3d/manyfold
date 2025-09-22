@@ -12,7 +12,7 @@ Rails.application.config.after_initialize do
     Library.all.map do |l|
       upload_options[l.storage_key] = {move: true} if l.storage_service == "filesystem"
     end
-    LibraryUploader.plugin :upload_options, **upload_options unless Rails.env.test?
+    ModelFileUploader.plugin :upload_options, **upload_options unless Rails.env.test?
   rescue ActiveRecord::StatementInvalid, NameError
     nil # migrations probably haven't run yet to create library table
   end
