@@ -4,7 +4,7 @@ require "shrine/storage/tus"
 
 require "image_processing/mini_magick"
 
-class LibraryUploader < Shrine
+class ApplicationUploader < Shrine
   plugin :activerecord
   plugin :add_metadata
   plugin :refresh_metadata
@@ -28,17 +28,6 @@ class LibraryUploader < Shrine
     Library.find(m[1]).storage # rubocop:disable Pundit/UsePolicyScope
   rescue ActiveRecord::RecordNotFound
     nil
-  end
-
-  class Attacher
-    def store_key
-      @record.model.library.storage_key
-    end
-  end
-
-  def generate_location(io, record: nil, derivative: nil, metadata: {}, **)
-    return super unless record&.valid?
-    record.path_within_library(derivative: derivative)
   end
 
   add_metadata :ctime do |io|

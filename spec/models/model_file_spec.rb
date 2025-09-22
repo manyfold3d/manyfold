@@ -38,7 +38,7 @@ RSpec.describe ModelFile do
         :model_file,
         model: model,
         filename: "example.obj",
-        attachment: LibraryUploader.upload(
+        attachment: ModelFileUploader.upload(
           File.open(File.join(library.path, model.path, "example.obj")),
           :cache
         )

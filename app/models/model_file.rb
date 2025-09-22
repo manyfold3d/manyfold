@@ -1,5 +1,5 @@
 class ModelFile < ApplicationRecord
-  include LibraryUploader::Attachment(:attachment)
+  include ModelFileUploader::Attachment(:attachment)
   include Listable
   include PublicIDable
   include Problematic
@@ -108,7 +108,7 @@ class ModelFile < ApplicationRecord
 
   def attach_existing_file!(refresh: true, skip_validations: false)
     return if attachment.present? || !exists_on_storage?
-    attachment_attacher.set LibraryUploader.uploaded_file(
+    attachment_attacher.set ModelFileUploader.uploaded_file(
       storage: model.library.storage_key,
       id: path_within_library,
       metadata: {
