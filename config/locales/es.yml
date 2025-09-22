@@ -583,7 +583,7 @@ es:
         heading: Servicios de la FASP
         provider_list_title: FASP registrados
         registered_at: Registrado en
-        search_3dprint_social_html:
+        search_3dprint_social_html: Recomendamos conectar el FASP <a href="https://search.3dprint.social/registration/new" rel="noreferrer">search.3dprint.social</a>. Está gestionado por los desarrolladores de Manyfold, y está configurado específicamente para la búsqueda de contenidos 3d.
         status: Estado
         url: URL
   follows:
@@ -810,6 +810,7 @@ es:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
     cults3d: Cults3D
+    fediverse:
     github: GitHub
     makerworld: MakerWorld
     manyfold: Manyfold

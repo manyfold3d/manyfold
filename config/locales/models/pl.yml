@@ -55,6 +55,9 @@ pl:
       bulk_edit: Edytuj Wszystkie Modele
       no_results_html: Przepraszamy, nie mogliśmy znaleźć niczego do pokazania! Spróbuj zmienić filtry lub wyszukiwane hasło albo przesłać kilka modeli.
       no_results_signed_out_html:
+      search:
+        or_other_sites:
+        other_sites:
       skip_models: Pomiń listę modeli
     merge:
       success: Modele zostały pomyślnie połączone.

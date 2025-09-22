@@ -55,6 +55,9 @@ fr:
       bulk_edit: Modifier tous les modèles
       no_results_html: Désolé, nous n'avons rien à vous montrer ! Essayez de modifier les filtres ou les termes de recherche, ou de télécharger des modèles.
       no_results_signed_out_html:
+      search:
+        or_other_sites:
+        other_sites:
       skip_models: Sauter la liste des modèles
     merge:
       success: Les modèles ont été fusionnés avec succès.

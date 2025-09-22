@@ -55,6 +55,9 @@ cs:
       bulk_edit: Upravit všechny modely
       no_results_html: Je nám líto, ale nenašli jsme nic, co bychom Vám mohli ukázat! Zkuste změnit filtry nebo vyhledávací filtry nebo nahrát nějaké modely.
       no_results_signed_out_html:
+      search:
+        or_other_sites:
+        other_sites:
       skip_models: Přeskočit seznam modelů
     merge:
       success: Modely byly úspěšně sloučeny.
