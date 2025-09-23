@@ -9,6 +9,7 @@ class Integrations::Cults3d::CreatorDeserializer < Integrations::Cults3d::BaseDe
           nick
           bio
           url
+          imageUrl
         }
       }
     GRAPHQL
@@ -21,7 +22,8 @@ class Integrations::Cults3d::CreatorDeserializer < Integrations::Cults3d::BaseDe
       name: data&.nick,
       slug: data&.nick&.parameterize,
       notes: data&.bio,
-      links_attributes: [{url: data&.url}]
+      links_attributes: [{url: data&.url}],
+      avatar_remote_url: data&.image_url
     }
   end
 

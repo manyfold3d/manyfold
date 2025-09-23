@@ -21,6 +21,7 @@ class Integrations::Cults3d::ModelDeserializer < Integrations::Cults3d::BaseDese
             nick
             bio
             url
+            imageUrl
           }
         }
       }
