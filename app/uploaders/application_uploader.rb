@@ -30,6 +30,16 @@ class ApplicationUploader < Shrine
     nil
   end
 
+  class Attacher
+    def store_key
+      Library.default.storage_key
+    end
+  end
+
+  def generate_location(io, record: nil, derivative: nil, metadata: {}, **)
+    ".manyfold/#{super}"
+  end
+
   add_metadata :ctime do |io|
     Shrine.with_file(io) { |it| [it.mtime, it.ctime].compact.min }
   rescue NoMethodError
