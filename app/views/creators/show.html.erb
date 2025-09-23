@@ -8,12 +8,13 @@
   <%= turbo_stream_from @creator %>
   <div class="card mb-3 <%= "remote-actor" if @creator.remote? %>">
     <div class="card-header"><%= @creator.model_name.human %></div>
-    <div class="card-body row">
+    <%= content_tag :div, class: "card-body row", style: (@creator.banner ? "background-image: url(#{banner_creator_path(@creator)}); background-size: cover" : nil) do %>
       <div class="col col-auto">
         <%= content_tag(:div, class: "text-center") do %>
           <h2>
             <%= @creator.name %>
           </h2>
+          <%= image_tag avatar_creator_path(@creator) if @creator.avatar %>
           <% if SiteSettings.federation_enabled? %>
             <p>
               <% if @creator.remote? %>
@@ -40,7 +41,7 @@
       <div class="col col-auto">
         <%= render Components::LinkList.new links: @creator.links %>
       </div>
-    </div>
+    <% end %>
   </div>
 <% end %>
 
