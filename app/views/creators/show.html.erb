@@ -36,7 +36,6 @@
       </div>
       <div class="col">
         <%= content_tag(:p, class: "lead") { @creator.caption } if @creator.caption %>
-        <%= content_tag(:p, class: "card-text") { markdownify @creator.notes } if @creator.notes %>
         <% model_count = policy_scope(Model).where(creator: @creator).count %>
         <p><%= "#{model_count} #{Model.model_name.human count: model_count}" %></p>
         <%= content_tag(:p) { t("general.followers", count: @creator.followers.count) } if SiteSettings.social_enabled? %>
@@ -45,6 +44,12 @@
       <div class="col col-auto">
         <%= render Components::LinkList.new links: @creator.links %>
       </div>
+    <% end %>
+    <% if @creator.notes %>
+      <hr>
+      <%= content_tag :div, class: "card-body row me-0 ms-0" do %>
+        <%= markdownify @creator.notes %>
+      <% end %>
     <% end %>
   </div>
 <% end %>
