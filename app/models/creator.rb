@@ -1,4 +1,6 @@
 class Creator < ApplicationRecord
+  include ApplicationUploader::Attachment(:avatar)
+  include ApplicationUploader::Attachment(:banner)
   include Followable
   include CaberObject
   include Linkable
@@ -17,6 +19,10 @@ class Creator < ApplicationRecord
   has_many :collections, dependent: :nullify
   validates :name, presence: true, uniqueness: {case_sensitive: false}
   validates :slug, presence: true, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}, format: {with: /\A[[:alnum:]\-_]+\z/}
+
+  # Explicitly explain serialization for MariaDB
+  attribute :avatar_data, :json
+  attribute :banner_data, :json
 
   def fasp_uri
     federails_actor&.federated_url
