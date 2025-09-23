@@ -46,7 +46,7 @@
       </div>
     <% end %>
     <% if @creator.notes %>
-      <hr>
+      <hr class="mt-0">
       <%= content_tag :div, class: "card-body row me-0 ms-0" do %>
         <%= markdownify @creator.notes %>
       <% end %>
