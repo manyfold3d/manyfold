@@ -151,4 +151,17 @@ class ApplicationController < ActionController::Base
     ].compact.join(" ")
     response.headers["X-Robots-Tag"] = @indexing_directives if @indexing_directives.presence
   end
+
+  def send_file_content(attachment, disposition: :attachment, derivative: nil)
+    head :not_found and return if attachment.nil?
+    # Check if we can send a direct URL
+    redirect_to(attachment.url, allow_other_host: true) if /https?:\/\//.match?(attachment.url)
+    # Otherwise provide a direct download
+    status, headers, body = attachment.to_rack_response(disposition: disposition)
+    self.status = status
+    self.headers.merge!(headers)
+    self.response_body = body
+  rescue Errno::ENOENT
+    head :internal_server_error
+  end
 end
