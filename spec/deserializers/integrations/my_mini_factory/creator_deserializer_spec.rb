@@ -46,6 +46,14 @@ RSpec.describe Integrations::MyMiniFactory::CreatorDeserializer, :mmf_api_key do
       expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "cultural artefacts"
     end
+
+    it "extracts avatar" do
+      expect(deserializer.deserialize[:avatar_remote_url]).to eq "https://images2.myminifactory.com/insecure/rt:fill-down/w:400/h:400/el:1/plain/https://dl4.myminifactory.com/public-assets/profile-images/52cb67b113714c45e8417ba399cce47f7df4692a.jpg"
+    end
+
+    it "extracts banner" do
+      expect(deserializer.deserialize[:banner_remote_url]).to eq "https://dl4.myminifactory.com/public-assets/profile-cover/230b41e00ded375197728fa0f4349faa38881b53.jpg"
+    end
   end
 
   context "with a valid configuration" do
