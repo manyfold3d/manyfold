@@ -41,6 +41,14 @@ RSpec.describe Integrations::Thingiverse::CreatorDeserializer, :thingiverse_api_
       expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "Manyfold"
     end
+
+    it "extracts avatar" do
+      expect(deserializer.deserialize[:avatar_remote_url]).to eq "https://cdn.thingiverse.com/assets/04/b8/80/49/bd/sketch_head.PNG"
+    end
+
+    it "extracts banner" do
+      expect(deserializer.deserialize[:banner_remote_url]).to eq "https://cdn.thingiverse.com/site/img/default/cover/cover-4_preview_birdwing.jpg"
+    end
   end
 
   context "with a valid configuration" do
