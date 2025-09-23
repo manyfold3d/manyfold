@@ -124,6 +124,16 @@ class CreatorsController < ApplicationController
     end
   end
 
+  def avatar
+    authorize @creator
+    send_file_content @creator.avatar, disposition: :inline
+  end
+
+  def banner
+    authorize @creator
+    send_file_content @creator.banner, disposition: :inline
+  end
+
   private
 
   def get_creator
