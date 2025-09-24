@@ -21,12 +21,25 @@ RSpec.describe ActivityPub::CreatorSerializer do
       expect(ap[:icon]).to be_nil
     end
 
-    it "includes icon if an avatar is set", :vcr do
+    it "includes icon if an avatar is set", :vcr do # rubocop:disable RSpec/ExampleLength
       object.avatar_remote_url = "https://avatars.githubusercontent.com/u/152926958?s=200&v=4"
       expect(ap[:icon]).to eq({
         type: "Image",
         mediaType: "image/png",
         url: "http://localhost:3214/creators/#{object.slug}/avatar"
+      })
+    end
+
+    it "does not include image if no banner is set" do
+      expect(ap[:image]).to be_nil
+    end
+
+    it "includes image if a banner is set", :vcr do # rubocop:disable RSpec/ExampleLength
+      object.banner_remote_url = "https://avatars.githubusercontent.com/u/152926958?s=200&v=4"
+      expect(ap[:image]).to eq({
+        type: "Image",
+        mediaType: "image/png",
+        url: "http://localhost:3214/creators/#{object.slug}/banner"
       })
     end
   end
