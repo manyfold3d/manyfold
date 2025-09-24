@@ -8,7 +8,12 @@
   <%= turbo_stream_from @creator %>
   <div class="card mb-3 <%= "remote-actor" if @creator.remote? %>">
     <div class="card-header"><%= @creator.model_name.human %></div>
-    <div class="card-body row">
+    <%= content_tag :div, class: "card-body row me-0 ms-0", style: (@creator.banner ? "background-image: url(#{banner_creator_path(@creator)}); background-position: center; background-size: cover" : nil) do %>
+      <% if @creator.avatar %>
+        <div class="col col-auto">
+          <%= render Components::Avatar.new(url: avatar_creator_path(@creator), size: :large) if @creator.avatar %>
+        </div>
+      <% end %>
       <div class="col col-auto">
         <%= content_tag(:div, class: "text-center") do %>
           <h2>
@@ -31,7 +36,6 @@
       </div>
       <div class="col">
         <%= content_tag(:p, class: "lead") { @creator.caption } if @creator.caption %>
-        <%= content_tag(:p, class: "card-text") { markdownify @creator.notes } if @creator.notes %>
         <% model_count = policy_scope(Model).where(creator: @creator).count %>
         <p><%= "#{model_count} #{Model.model_name.human count: model_count}" %></p>
         <%= content_tag(:p) { t("general.followers", count: @creator.followers.count) } if SiteSettings.social_enabled? %>
@@ -40,7 +44,13 @@
       <div class="col col-auto">
         <%= render Components::LinkList.new links: @creator.links %>
       </div>
-    </div>
+    <% end %>
+    <% if @creator.notes %>
+      <hr class="mt-0">
+      <%= content_tag :div, class: "card-body row me-0 ms-0" do %>
+        <%= markdownify @creator.notes %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
 

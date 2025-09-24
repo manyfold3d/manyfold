@@ -9,6 +9,8 @@ module Form
         :notes,
         :indexable,
         :ai_indexable,
+        :avatar,
+        :banner,
         links_attributes: [:id, :url, :_destroy]
       ).deep_merge(caber_relations_params(type: :creator))
     end

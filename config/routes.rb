@@ -123,6 +123,10 @@ Rails.application.routes.draw do
     concerns :commentable, commentable_class: "Creator"
     concerns :reportable, reportable_class: "Creator"
     concerns :linkable
+    member do
+      get :avatar
+      get :banner
+    end
   end
   resources :collections do
     concerns :followable, followable_class: "Collection"

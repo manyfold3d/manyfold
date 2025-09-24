@@ -56,6 +56,10 @@ RSpec.describe Integrations::Cults3d::CreatorDeserializer, :cults3d_api_key do
       expect(deserializer.capabilities[:notes]).to be true
       expect(deserializer.deserialize[:notes]).to include "all things 3D"
     end
+
+    it "extracts avatar image" do
+      expect(deserializer.deserialize[:avatar_remote_url]).to eq "https://images.cults3d.com/UUTTixazzr68WqITVWeTPUdyRBY=/120x120/https://fbi.cults3d.com/uploads/user/avatar/133/Creative_Tools_-_Logotype_-_Color__800_x_800_pixels_.jpg"
+    end
   end
 
   context "with a valid configuration" do

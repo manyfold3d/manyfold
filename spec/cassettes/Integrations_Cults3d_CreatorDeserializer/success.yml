@@ -5,80 +5,82 @@ http_interactions:
     uri: https://cults3d.com/graphql
     body:
       encoding: UTF-8
-      string: '{"query":"query GraphQL__Client__OperationDefinition_21336 {\n  user(nick:
-        \"CreativeTools\") {\n    nick\n    bio\n    url\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_21336","variables":{}}'
+      string: '{"query":"query GraphQL__Client__OperationDefinition_20832 {\n  user(nick:
+        \"CreativeTools\") {\n    nick\n    bio\n    url\n    imageUrl\n  }\n}","operationName":"GraphQL__Client__OperationDefinition_20832","variables":{}}'
     headers:
+      User-Agent:
+      - Manyfold/unknown
       Authorization:
       - Basic <CULTS3D_BASIC_AUTH>
-      User-Agent:
-      - Faraday v2.13.1
       Content-Type:
       - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 200
       message: OK
     headers:
-      date:
-      - Wed, 16 Jul 2025 11:22:23 GMT
-      content-type:
+      Date:
+      - Tue, 23 Sep 2025 15:37:20 GMT
+      Content-Type:
       - application/json; charset=utf-8
-      transfer-encoding:
+      Transfer-Encoding:
       - chunked
-      connection:
+      Connection:
       - keep-alive
-      cache-control:
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      etag:
-      - W/"f67a284e5f1f1b7c356632731624a8ab"
-      permissions-policy:
+      Etag:
+      - W/"d078080b457fc92e7b0737c543390472"
+      Permissions-Policy:
       - interest-cohort=()
-      referrer-policy:
+      Referrer-Policy:
       - strict-origin-when-cross-origin
-      nel:
+      Nel:
       - '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
-      strict-transport-security:
+      Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
-      vary:
+      Vary:
       - Accept
-      x-content-type-options:
+      X-Content-Type-Options:
       - nosniff
-      x-frame-options:
+      X-Frame-Options:
       - SAMEORIGIN
-      x-permitted-cross-domain-policies:
+      X-Permitted-Cross-Domain-Policies:
       - none
-      x-ratelimit-limit:
+      X-Ratelimit-Limit:
       - '60'
-      x-ratelimit-remaining:
+      X-Ratelimit-Remaining:
       - '59'
-      x-ratelimit-reset:
-      - '2025-07-16T11:22:30.095412Z'
-      x-request-id:
-      - 8e42c216-ee8a-4b6e-a10a-1d5a3594634b
-      x-runtime:
-      - '0.037679'
-      x-xss-protection:
+      X-Ratelimit-Reset:
+      - '2025-09-23T15:37:30.816208Z'
+      X-Request-Id:
+      - 6eb3db2c-50b2-4c26-ab03-270ef2e7b7ae
+      X-Runtime:
+      - '0.133970'
+      X-Xss-Protection:
       - '0'
-      cf-cache-status:
+      Cf-Cache-Status:
       - DYNAMIC
-      report-to:
-      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=9o5frS4vAVo7NjCw5GPXVnWPkmf7jvlpLmMDIkmXl7wjzQxCxHcZS%2BLpaaVrEk8upe9UtQ6oo5utx4P7Vp3IsGjnjs1rlDONfriQBWphv2F79uCTpaY%3D"}]}'
-      content-encoding:
-      - gzip
-      server:
+      Report-To:
+      - '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=NgPOQvW2Rv7KifS9FzwcIgMpYgMmLxEmYtxb00S4wnFczcqiI2kmqevEDZFxR2NnsQGgv01xXOTA0shDAk0106ec4Tq7aQIUoS5yiNDa%2BZdpy3DF9S0%3D"}]}'
+      Server:
       - cloudflare
-      set-cookie:
-      - _session_id=8b92dfaa3604761f3297dd4c04fac5ab; HttpOnly; Secure; Path=/; Expires=Wed,
-        06 Aug 2025 11:22:23 GMT
-      cf-ray:
-      - 96011f15c83e718d-LHR
-      alt-svc:
+      Set-Cookie:
+      - _session_id=fcb1591c8eff3740666eda224c204652; HttpOnly; Secure; Path=/; Expires=Tue,
+        14 Oct 2025 15:37:20 GMT
+      Cf-Ray:
+      - 983b1f704f666539-LHR
+      Alt-Svc:
       - h3=":443"; ma=86400
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"data":{"user":{"nick":"CreativeTools","bio":"Creative Tools supplies
         software, hardware and training in all things 3D - such as 3D modelling, animation,
         rendering, workstations, 3D scanners and 3D printers.\r\nWeb: http://creative-tools.com\r\nTwitter:
-        https://twitter.com/CreativeTools","url":"https://cults3d.com/en/users/CreativeTools"}}}'
-  recorded_at: Wed, 16 Jul 2025 11:22:23 GMT
+        https://twitter.com/CreativeTools","url":"https://cults3d.com/en/users/CreativeTools","imageUrl":"https://images.cults3d.com/UUTTixazzr68WqITVWeTPUdyRBY=/120x120/https://fbi.cults3d.com/uploads/user/avatar/133/Creative_Tools_-_Logotype_-_Color__800_x_800_pixels_.jpg"}}}'
+  recorded_at: Tue, 23 Sep 2025 15:37:20 GMT
 recorded_with: VCR 6.3.1

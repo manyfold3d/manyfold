@@ -12,6 +12,8 @@ en:
         notes: Description
       creator:
         ai_indexable: Allow use for AI training
+        avatar: Avatar image
+        banner: Banner image
         caption: Tagline
         indexable: Allow search indexing
         name: Creator Name
