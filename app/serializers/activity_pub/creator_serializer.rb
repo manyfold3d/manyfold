@@ -21,7 +21,17 @@ module ActivityPub
         "f3di:concreteType": "Creator",
         indexable: @object.indexable?,
         discoverable: @object.indexable?,
-        attachment: @object.links.map { |it| {type: "Link", href: it.url} }
+        attachment: @object.links.map { |it| {type: "Link", href: it.url} },
+        icon: @object.avatar ? {
+          type: "Image",
+          mediaType: @object.avatar.mime_type,
+          url: Rails.application.routes.url_helpers.avatar_creator_url(@object)
+        } : nil,
+        image: @object.banner ? {
+          type: "Image",
+          mediaType: @object.banner.mime_type,
+          url: Rails.application.routes.url_helpers.banner_creator_url(@object)
+        } : nil
       }.merge(address_fields)
     end
 
