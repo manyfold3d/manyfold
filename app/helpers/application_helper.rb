@@ -210,12 +210,18 @@ module ApplicationHelper
         form.label(name, options[:label], class: "col-auto col-form-label"),
         content_tag(:div, class: "col p-0") do
           safe_join [
-            form.file_field(name, {class: "form-control"}.merge(options)),
+            content_tag(:div, class: "input-group") do
+              safe_join [
+                form.file_field(name, class: "form-control"),
+                options[:remove] ? form.check_box(:"remove_#{name}", class: "btn-check", autocomplete: "off") : nil,
+                options[:remove] ? form.label(:"remove_#{name}", icon("trash", options[:remove_label]), class: "btn btn-outline-danger") : nil
+              ].compact
+            end,
             errors_for(form.object, name),
             (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
           ].compact
         end
-      ]
+      ].compact
     end
   end
 
