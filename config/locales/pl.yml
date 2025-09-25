@@ -12,6 +12,8 @@ pl:
         notes: Opis
       creator:
         ai_indexable:
+        avatar:
+        banner:
         caption: Napis
         indexable:
         name: Nazwa Twórcy

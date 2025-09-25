@@ -18,6 +18,14 @@ ja:
       confirm:
       success: クリエイターは削除された！
     form:
+      avatar:
+        current:
+        help:
+        none:
+      banner:
+        current:
+        help:
+        none:
       notes:
         help_html: <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdownが</a>使える。
       slug:

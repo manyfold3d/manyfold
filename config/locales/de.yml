@@ -12,6 +12,8 @@ de:
         notes: Beschreibung
       creator:
         ai_indexable: Verwendung für KI-Training zulassen
+        avatar:
+        banner:
         caption: Beschreibung
         indexable: Indizierung der Suche zulassen
         name: Autor

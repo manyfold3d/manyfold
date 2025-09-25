@@ -18,6 +18,14 @@ es:
       confirm: "¿Está seguro de que desea eliminar este elemento? Ningún archivo se verá afectado."
       success: "¡Creador eliminado!"
     form:
+      avatar:
+        current: Actualmente se utiliza `%{filename}`.
+        help: Una imagen de perfil cuadrada de unos 256x256px, en formato WEBP, PNG, GIF o JPG.
+        none: No establecido.
+      banner:
+        current: Actualmente se utiliza `%{filename}`.
+        help: Una imagen de fondo de unos 1000x200px, en formato WEBP, PNG, GIF o JPG.
+        none: No establecido.
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       slug:
