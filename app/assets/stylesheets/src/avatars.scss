@@ -12,9 +12,3 @@ img.avatar {
 		width: 6rem;
 	}
 }
-
-// Let's have hexagon avatars in the Vapor theme, just for fun!
-body.vapor-theme img.avatar {
-	aspect-ratio: 0.8660254;
-	clip-path: polygon(0% 25%, 0 74%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-}
