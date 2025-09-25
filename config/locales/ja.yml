@@ -12,6 +12,8 @@ ja:
         notes: ノート
       creator:
         ai_indexable:
+        avatar:
+        banner:
         caption: タグライン
         indexable:
         name: 名前

@@ -12,6 +12,8 @@ cs:
         notes: Poznámky
       creator:
         ai_indexable:
+        avatar:
+        banner:
         caption: Popisek
         indexable:
         name: Jméno

@@ -12,6 +12,8 @@ fr:
         notes: Notes
       creator:
         ai_indexable:
+        avatar:
+        banner:
         caption: Légende
         indexable:
         name: Nom

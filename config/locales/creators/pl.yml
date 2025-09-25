@@ -18,6 +18,14 @@ pl:
       confirm: Czy na pewno chcesz usunąć ten element? Nie będzie to miało wpływu na żadne pliki.
       success: Twórca usunięty!
     form:
+      avatar:
+        current:
+        help:
+        none:
+      banner:
+        current:
+        help:
+        none:
       notes:
         help_html: Możesz używać <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       slug:

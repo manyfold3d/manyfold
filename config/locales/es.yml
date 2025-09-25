@@ -12,6 +12,8 @@ es:
         notes: Notas
       creator:
         ai_indexable: Permitir el uso para el entrenamiento de IA
+        avatar: Avatar
+        banner: Banner
         caption: Subtítulo
         indexable: Permitir la indexación de búsquedas
         name: Nombre
@@ -810,7 +812,7 @@ es:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
     cults3d: Cults3D
-    fediverse:
+    fediverse: Fediverse
     github: GitHub
     makerworld: MakerWorld
     manyfold: Manyfold
