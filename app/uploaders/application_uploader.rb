@@ -18,6 +18,7 @@ class ApplicationUploader < Shrine
   plugin :remote_url, max_size: SiteSettings.max_file_upload_size
   plugin :infer_extension
   plugin :derivatives
+  plugin :remove_attachment
 
   self.storages = {
     cache: Shrine::Storage::FileSystem.new("tmp/shrine"),
