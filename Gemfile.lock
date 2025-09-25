@@ -765,7 +765,7 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (2.4.1)
-    scoped_search (4.2.0)
+    scoped_search (4.3.0)
       activerecord (>= 4.2.0)
     scout_apm (5.7.1)
       parser
@@ -1009,7 +1009,7 @@ DEPENDENCIES
   rubocop-rspec
   rubocop-rspec_rails
   rubyzip (~> 2.4)
-  scoped_search (~> 4.2)
+  scoped_search (~> 4.3)
   scout_apm
   selenium-webdriver
   shrine (~> 3.6)
@@ -1310,7 +1310,7 @@ CHECKSUMS
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
   ruby-vips (2.2.3) sha256=41d12b1a805cd6ead4a7965201a8f7c5fe459bb58d3a7d967c9eb0719a6edc92
   rubyzip (2.4.1) sha256=8577c88edc1fde8935eb91064c5cb1aef9ad5494b940cf19c775ee833e075615
-  scoped_search (4.2.0) sha256=730070b60bc75c77e8c0ccc2543b7b687aff34651dc406e1949370f44fcf4e70
+  scoped_search (4.3.0) sha256=554d84826f4836987bff0bb55ba9692c4812e66833cbf3cbd5bfb8942cce6e7f
   scout_apm (5.7.1) sha256=bc43fcb405e2198f5ef27adee7f4cb63f9136d17ca43d13d359f768b759db9d6
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   selenium-webdriver (4.35.0) sha256=6fc920cec4b9e6263afeb4941289d8deb0853acbc49e0d6f7de91c86986d359b

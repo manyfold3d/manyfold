@@ -200,7 +200,7 @@ gem "turbo-rails", "~> 2.0"
 
 gem "stimulus-rails", "~> 1.3"
 
-gem "scoped_search", "~> 4.2"
+gem "scoped_search", "~> 4.3"
 
 gem "altcha-rails", "~> 0.0.6"
 
