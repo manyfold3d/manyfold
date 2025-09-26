@@ -1,3 +1,16 @@
+div.card-body.with-background {
+
+	text-shadow:
+		0px -1px $card-bg,
+		0px 1px $card-bg,
+		1px 0px $card-bg,
+		-1px 0px $card-bg,
+		1px 1px $card-bg,
+		-1px 1px $card-bg,
+		-1px -1px $card-bg,
+		1px -1px $card-bg;
+}
+
 img.avatar {
 	width: 4rem;
 	object-fit: cover;
