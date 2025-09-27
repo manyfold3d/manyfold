@@ -20,7 +20,7 @@ COPY --from=build /usr/src/app/public/assets public/assets
 # It would be better to statically link the gems during build, if we can
 COPY --from=build \
   /usr/lib/libmariadb.so.* \
-  /usr/lib/libarchive.so.* \
+  /usr/lib/libarchive.a \
   /usr/lib/libacl.so.*\
   /usr/lib/libexpat.so.* \
   /usr/lib/liblzma.so.* \
