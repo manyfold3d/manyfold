@@ -15,6 +15,21 @@ GIT
       rails (>= 7.1.4)
 
 GIT
+  remote: https://github.com/manyfold3d/mittsu-gltf.git
+  revision: 82ca727a6f84d23765bb67c75240b6577885fa6a
+  specs:
+    mittsu-gltf (0.2.0)
+      jbuilder (~> 2.13)
+      mittsu (~> 0.4)
+
+GIT
+  remote: https://github.com/manyfold3d/mittsu-mesh_analysis.git
+  revision: 63bff9274a054e67973956048d3b057fea4ce8f6
+  specs:
+    mittsu-mesh_analysis (0.1.0)
+      mittsu (~> 0.4)
+
+GIT
   remote: https://github.com/manyfold3d/rubocop-pundit.git
   revision: 1f511e087a58867279ca8d77e0bb97dc2ce2da75
   specs:
@@ -480,8 +495,6 @@ GEM
       builder (~> 3.3)
       mittsu (~> 0.4)
       rubyzip (~> 2.3)
-    mittsu-mesh_analysis (0.1.0)
-      mittsu (~> 0.4)
     msgpack (1.8.0)
     multi_json (1.17.0)
     mysql2 (0.5.6)
@@ -973,7 +986,8 @@ DEPENDENCIES
   memoist (~> 0.16)
   mittsu (~> 0.5)
   mittsu-3mf
-  mittsu-mesh_analysis
+  mittsu-gltf!
+  mittsu-mesh_analysis!
   mysql2 (~> 0.5)
   nanoid (~> 2.0)
   omniauth (~> 2.1)

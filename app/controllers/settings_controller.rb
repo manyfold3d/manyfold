@@ -96,6 +96,7 @@ class SettingsController < ApplicationController
     SiteSettings.pregenerate_downloads = (settings[:pregenerate] == "1")
     SiteSettings.download_expiry_time_in_hours = (settings[:expiry].to_i)
     SiteSettings.generate_image_derivatives = (settings[:image_derivatives] == "1")
+    SiteSettings.generate_progressive_meshes = (settings[:progressive_meshes] == "1")
   end
 
   def update_integrations_settings(settings)

@@ -30,5 +30,12 @@
       <small><%= t(".derivatives.images.help") %></small>
     </div>
   </div>
+  <div class="row mb-2">
+    <%= form.label nil, t(".derivatives.progressive_meshes.label"), for: "downloads[progressive_meshes]", class: "col-sm-4 col-form-label" %>
+    <div class="col-sm-8 form-check form-switch">
+      <%= form.check_box "downloads[progressive_meshes]", checked: SiteSettings.generate_progressive_meshes, class: "form-check-input" %>
+      <small><%= t(".derivatives.progressive_meshes.help") %></small>
+    </div>
+  </div>
   <%= render "submit", form: form %>
 <% end %>
