@@ -22,10 +22,12 @@ ja:
         current:
         help:
         none:
+        remove:
       banner:
         current:
         help:
         none:
+        remove:
       notes:
         help_html: <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdownが</a>使える。
       slug:
