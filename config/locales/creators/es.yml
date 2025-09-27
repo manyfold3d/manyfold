@@ -22,10 +22,12 @@ es:
         current: Actualmente se utiliza `%{filename}`.
         help: Una imagen de perfil cuadrada de unos 256x256px, en formato WEBP, PNG, GIF o JPG.
         none: No establecido.
+        remove: Eliminar avatar
       banner:
         current: Actualmente se utiliza `%{filename}`.
         help: Una imagen de fondo de unos 1000x200px, en formato WEBP, PNG, GIF o JPG.
         none: No establecido.
+        remove: Eliminar banner
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       slug:
