@@ -35,5 +35,10 @@ RSpec.describe ModelFilesHelper do
       url = helper.slicer_url(:elegoo, file)
       expect(url).to match(/elegooslicer#{slic3r_family_regex}/)
     end
+
+    it "generates lychee links" do
+      url = helper.slicer_url(:lychee, file)
+      expect(url).to match(/lycheeslicer:\/\/open\/http%3A%2F%2Ftest.host%2Fmodels%2F#{file.model.to_param}%2Fmodel_files%2Fey[0-9a-zA-Z-]+.stl/)
+    end
   end
 end
