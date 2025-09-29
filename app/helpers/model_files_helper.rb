@@ -6,8 +6,9 @@ module ModelFilesHelper
     # i18n-tasks-use t('model_files.download.bambu')
     # i18n-tasks-use t('model_files.download.elegoo')
     # i18n-tasks-use t('model_files.download.superslicer')
+    # i18n-tasks-use t('model_files.download.lychee')
     safe_join(
-      [:cura, :orca, :elegoo, :superslicer].map do |slicer|
+      [:cura, :orca, :elegoo, :superslicer, :lychee].map do |slicer|
         content_tag(:li) {
           link_to safe_join(
             [
@@ -37,6 +38,12 @@ module ModelFilesHelper
       slic3r_family_open_url "cura", signed_url
     when :elegoo
       slic3r_family_open_url "elegooslicer", signed_url
+    when :lychee
+      URI::Generic.new(
+        "lycheeslicer", nil,
+        "open", nil, nil, CGI.escapeURIComponent(signed_url), nil,
+        nil, nil
+      ).to_s
     end
   end
 
@@ -50,6 +57,8 @@ module ModelFilesHelper
       "https://raw.githubusercontent.com/ELEGOO-3D/ElegooSlicer/refs/heads/main/resources/images/ElegooSlicer.svg"
     when :superslicer
       "https://raw.githubusercontent.com/supermerill/SuperSlicer/refs/heads/master_27/resources/icons/SuperSlicer.svg"
+    when :lychee
+      "https://lychee.co/static/metas/favicon-32x32.png"
     end
     return if url.nil?
     image_tag(url, class: "slicer-icon", alt: alt)
