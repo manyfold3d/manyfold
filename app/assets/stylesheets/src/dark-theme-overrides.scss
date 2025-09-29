@@ -1,6 +1,7 @@
 @mixin tom-select-dark-mode() {
 
 	#model_tag_list-ts-dropdown,
+	.single .ts-control div[data-ts-item],
 	.ts-wrapper .ts-control input,
 	.ts-wrapper .ts-dropdown .ts-dropdown-content .option {
 		color: #fff !important;
