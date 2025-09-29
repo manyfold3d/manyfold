@@ -58,7 +58,7 @@ module ModelFilesHelper
     when :superslicer
       "https://raw.githubusercontent.com/supermerill/SuperSlicer/refs/heads/master_27/resources/icons/SuperSlicer.svg"
     when :lychee
-      ""
+      nil
     end
     return if url.nil?
     image_tag(url, class: "slicer-icon", alt: alt)
