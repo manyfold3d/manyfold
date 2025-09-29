@@ -172,7 +172,7 @@ module ApplicationHelper
           safe_join [
             content_tag(:div, class: "input-group") do
               safe_join [
-                form.select(name, select_options, options.compact, {class: "form-control col-auto form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
+                form.select(name, select_options, options.compact, {data: {controller: "searchable-select"}, class: "form-control col-auto form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
                 (link_to(options[:button][:label], options[:button][:path], class: "btn btn-outline-secondary col-auto") if options[:button])
               ]
             end,
@@ -192,7 +192,7 @@ module ApplicationHelper
           safe_join [
             content_tag(:div, class: "input-group") do
               safe_join [
-                form.collection_select(:"#{name}_id", collection, value_method, text_method, options.compact, {class: "form-control col-auto form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
+                form.collection_select(:"#{name}_id", collection, value_method, text_method, options.compact, {data: {controller: "searchable-select"}, class: "form-control col-auto form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
                 (link_to(options[:button][:label], options[:button][:path], class: "btn btn-outline-secondary col-auto") if options[:button])
               ]
             end,

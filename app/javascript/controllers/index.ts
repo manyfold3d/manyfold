@@ -11,6 +11,7 @@ import CopyTextController from './copy_text_controller'
 import EditableController from './editable_controller'
 import I18nController from './i18n_controller'
 import RendererController from './renderer_controller'
+import SearchableSelectController from './searchable_select_controller'
 import StorageServiceController from './storage_service_controller'
 import TagInputController from './tag_input_controller'
 import TagSectionController from './tag_section_controller'
@@ -24,6 +25,7 @@ application.register('bulk-edit', BulkEditController)
 application.register('editable', EditableController)
 application.register('i18n', I18nController)
 application.register('renderer', RendererController)
+application.register('searchable-select', SearchableSelectController)
 application.register('storage-service', StorageServiceController)
 application.register('tag-input', TagInputController)
 application.register('tag-section', TagSectionController)
