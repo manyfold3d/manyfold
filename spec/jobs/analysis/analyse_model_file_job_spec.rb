@@ -74,7 +74,6 @@ RSpec.describe Analysis::AnalyseModelFileJob do
 
     [
       %w[model.stl model_supported.stl],
-      %w[model.stl model_supported.lys],
       %w[model.stl model_sup.stl],
       %w[model.stl SUPPORTED/model.stl],
       %w[unsupported/model.stl supported/model.stl],
@@ -122,7 +121,7 @@ RSpec.describe Analysis::AnalyseModelFileJob do
       end
     end
 
-    it "prefers to match same file format if possible even if the text match is a bit worse" do
+    it "only matches to same file format" do
       unsup = create(:model_file, model: model, filename: "Beefy Arm R.stl")
       sup = create(:model_file, model: model, filename: "Befy Arm R Supported.stl", presupported: true)
       create(:model_file, model: model, filename: "Beefy Arm R Supported.lys", presupported: true)

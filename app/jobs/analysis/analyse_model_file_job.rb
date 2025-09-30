@@ -45,7 +45,7 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
     return if file.presupported || file.presupported_version
     # Otherwise, find presupported files in the same model
     # Build list of files with normalised names
-    matches = file.model.model_files.presupported.map { |s|
+    matches = file.model.model_files.presupported.select { |x| x.extension.downcase == file.extension.downcase }.map { |s|
       # Normalize filename
       human = s.name.humanize.downcase
       # Normalize name of this file
