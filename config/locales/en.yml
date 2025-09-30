@@ -704,10 +704,12 @@ en:
       description: From some sites, Manyfold can download models for you with just a link!
       heading: Import from a link
       import: Import this link
-      import_capabilities: We can import models, creators and collections from MyMiniFactory, Thingiverse, and Cults3D. Exactly what we can import for your URL will be displayed after you enter it.
+      import_capabilities: We can import models, creators and collections from various other hosting sites. Exactly what we can import for your URL will be displayed after you enter it.
       import_type_html: "<code>%{url}</code> will be added as a new %{object_type}. The following data can be imported automatically:"
+      integration_settings: Edit integration settings
       placeholder: Paste the address of the content you want to import (e.g. https://thingiverse.com/thing:1234)
       submit: Import
+      supported_sites: Supported sites
   jobs:
     activity:
       collection_published:

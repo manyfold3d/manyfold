@@ -1,8 +1,6 @@
 <div class="container">
   <h1><%= t(".heading") %></h1>
 
-  <p class="lead"><%= t(".description") %></p>
-
   <% if @deserializer %>
     <p><%= t(".import_type_html", url: @url, object_type: @deserializer.capabilities[:class].model_name.human) %></p>
 
@@ -18,15 +16,30 @@
     <%= render Components::DoButton.new icon: "download", label: t(".import"), href: imports_path(url: @url), method: :post, variant: "primary" %>
   <% else %>
 
-    <p><%= t(".import_capabilities") %></p>
-
-    <div class="col-8">
-      <%= form_with url: new_import_path, method: :get, class: "mt-3" do |f| %>
-        <div class="input-group mb-3">
-          <%= f.url_field :url, class: "form-control", placeholder: translate(".placeholder"), aria_label: translate(".submit"), value: @url %>
-          <%= f.submit translate(".submit"), class: "btn btn-primary", name: nil %>
+    <div class="row">
+      <div class="col">
+        <p class="lead"><%= t(".description") %></p>
+        <p><%= t(".import_capabilities") %></p>
+        <%= form_with url: new_import_path, method: :get, class: "mt-3" do |f| %>
+          <div class="input-group mb-3">
+            <%= f.url_field :url, class: "form-control", placeholder: translate(".placeholder"), aria_label: translate(".submit"), value: @url %>
+            <%= f.submit translate(".submit"), class: "btn btn-primary", name: nil %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col col-auto">
+        <div class="card">
+          <div class="card-body">
+            <h5><%= t ".supported_sites" %></h5>
+            <ul class="list-unstyled">
+              <li><%= ((SiteSettings.cults3d_api_key.present? && SiteSettings.cults3d_api_username.present?) ? "✅" : "❌") %> <%= t "sites.cults3d" %></li>
+              <li><%= (SiteSettings.myminifactory_api_key.present? ? "✅" : "❌") %> <%= t "sites.myminifactory" %></li>
+              <li><%= (SiteSettings.thingiverse_api_key.present? ? "✅" : "❌") %> <%= t "sites.thingiverse" %></li>
+            </ul>
+            <%= link_to t(".integration_settings"), integrations_settings_path if policy(:settings).index? %>
+          </div>
         </div>
-      <% end %>
+      </div>
     </div>
 
   <% end %>
