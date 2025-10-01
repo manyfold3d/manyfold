@@ -10,7 +10,7 @@ RUN apk add --no-cache \
   imagemagick-jpeg \
   imagemagick-webp \
   imagemagick-heic \
-  assimp-libs
+  assimp-dev
 
 COPY . .
 COPY --from=build /usr/src/app/vendor/bundle vendor/bundle
