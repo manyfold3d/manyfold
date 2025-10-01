@@ -19,7 +19,8 @@ RUN apk add --no-cache \
   imagemagick \
   imagemagick-jpeg \
   imagemagick-webp \
-  imagemagick-heic
+  imagemagick-heic \
+  assimp-dev
 
 COPY package.json .
 COPY yarn.lock .

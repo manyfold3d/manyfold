@@ -9,8 +9,7 @@ RUN apk add --no-cache \
   imagemagick \
   imagemagick-jpeg \
   imagemagick-webp \
-  imagemagick-heic \
-  assimp
+  imagemagick-heic
 
 COPY . .
 COPY --from=build /usr/src/app/vendor/bundle vendor/bundle
@@ -28,6 +27,7 @@ COPY --from=build \
   /usr/lib/liblz4.so.* \
   /usr/lib/libbz2.so.* \
   /usr/lib/libpq.so.* \
+  /usr/lib/libassimp.so.* \
   /usr/lib
 
 # Set up jemalloc and YJIT for performance
