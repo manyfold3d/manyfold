@@ -65,10 +65,15 @@ jobs:
           context: .
           file: ./docker/${{ matrix.variant }}.dockerfile
           platforms: linux/amd64,linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           build-args: |
             APP_VERSION=${{ steps.docker_meta.outputs.version }}
             GIT_SHA=${{ github.sha }}
             DOCKER_TAG=${{ steps.docker_meta.outputs.tags }}
+
+      - name: Smoke test
+        run: docker run ${{ steps.docker_meta.outputs.tags }} bin/rails r "Manyfold::Application.initialized?"
+        env:
+          RAILS_ENV: production
