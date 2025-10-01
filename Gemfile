@@ -215,3 +215,5 @@ gem "image_processing"
 gem "csv", "~> 3.3"
 
 gem "arel_extensions", "~> 2.3"
+
+gem "assimp-ffi", git: "https://github.com/Kerilk/assimp-ruby.git"
