@@ -19,6 +19,13 @@ on:
 
 jobs:
   build:
+    strategy:
+      fail-fast: true
+      max-parallel: 1
+      matrix:
+        variant:
+          - manyfold
+          - manyfold-solo
     runs-on: ubuntu-latest
     permissions:
       contents: read # for checkout
@@ -32,7 +39,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository }}
+          images: ghcr.io/${{ github.repository_owner }}/${{ matrix.variant }}
           tags: |
             type=raw,value=${{ inputs.tag }},event=workflow_dispatch
             type=schedule,pattern=nightly
@@ -56,7 +63,7 @@ jobs:
         with:
           project: bsbhgkfhgc
           context: .
-          file: ./docker/manyfold.dockerfile
+          file: ./docker/${{ matrix.variant }}.dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
@@ -65,50 +72,3 @@ jobs:
             APP_VERSION=${{ steps.docker_meta.outputs.version }}
             GIT_SHA=${{ github.sha }}
             DOCKER_TAG=${{ steps.docker_meta.outputs.tags }}
-
-  solo:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read # for checkout
-      id-token: write # for OIDC token, used for Depot
-      packages: write # to upload build to GHCR
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v5
-
-      - name: Work out Docker tags
-        id: docker_meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ghcr.io/${{ github.repository }}-solo
-          tags: |
-            type=raw,value=${{ inputs.tag }},event=workflow_dispatch
-            type=schedule,pattern=nightly
-            type=semver,pattern={{version}}
-            type=ref,event=pr
-            type=edge
-
-      - name: Depot setup
-        uses: depot/setup-action@v1
-
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and push
-        id: depot
-        uses: depot/build-push-action@v1
-        with:
-          project: bsbhgkfhgc
-          context: .
-          file: ./docker/solo.dockerfile
-          platforms: linux/amd64,linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.docker_meta.outputs.tags }}
-          labels: ${{ steps.docker_meta.outputs.labels }}
-          build-args: |
-            APP_VERSION=${{ steps.docker_meta.outputs.version }}
-            GIT_SHA=${{ github.sha }}
