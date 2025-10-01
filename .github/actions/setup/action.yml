@@ -4,7 +4,12 @@ description: Set up Manyfold build environment
 runs:
   using: composite
   steps:
-    - uses: ruby/setup-ruby@v1
+    - name: Install system requirements
+      uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: assimp-utils
+    - name: Set up Ruby and install gems
+      uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
     - name: Enable Corepack
