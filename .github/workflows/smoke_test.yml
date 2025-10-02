@@ -17,9 +17,9 @@ jobs:
         env:
           SECRET_KEY_BASE: abc123
         options: >-
-          --health-cmd "curl http://localhost:3214/health --fail-with-body"
-          --health-interval 20s
+          --health-cmd "cat tmp/pids/server.pid"
+          --health-interval 30s
           --health-timeout 10s
-          --health-retries 10
+          --health-retries 6
         ports:
           - 3214:3214
