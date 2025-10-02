@@ -7,7 +7,7 @@ runs:
     - name: Install system requirements
       uses: awalsh128/cache-apt-pkgs-action@latest
       with:
-        packages: assimp-utils
+        packages: libassimp-dev
     - name: Set up Ruby and install gems
       uses: ruby/setup-ruby@v1
       with:
