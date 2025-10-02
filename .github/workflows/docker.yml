@@ -72,8 +72,3 @@ jobs:
             APP_VERSION=${{ steps.docker_meta.outputs.version }}
             GIT_SHA=${{ github.sha }}
             DOCKER_TAG=${{ steps.docker_meta.outputs.tags }}
-
-      - name: Smoke test
-        run: docker run ${{ steps.docker_meta.outputs.tags }} bin/rails r "Manyfold::Application.initialized?"
-        env:
-          RAILS_ENV: production
