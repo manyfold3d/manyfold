@@ -287,11 +287,11 @@ es:
     footer:
       about: Acerca de esta instancia
       api: API
-      by_html: Diseñado y construido por <a href="https://floppy.org.uk" target="_blank">James</a> con la ayuda de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">nuestros colaboradores</a>.
+      by_html: Diseñado y construido por <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">James</a> con la ayuda de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">nuestros colaboradores</a>.
       community: Únete a la comunidad
       instance_heading: Detalles de la instancia
       issues: Problemas
-      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank">Open Source</a> bajo <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licencia MIT</a>.
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> bajo <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">licencia MIT</a>.
       powered_by_html: Desarrollado por <a href="https://manyfold.app">%{name}</a>
       sponsor: Colaborar
       support: Apoyar esta instancia
@@ -695,8 +695,10 @@ es:
       import: Importar este enlace
       import_capabilities: Podemos importar modelos, creadores y colecciones de MyMiniFactory, Thingiverse y Cults3D. Lo que podemos importar exactamente para tu URL se mostrará después de que la introduzcas.
       import_type_html: "[<code>%{url}]</code> se añadirá como un nuevo %{object_type}. Los siguientes datos pueden importarse automáticamente:"
+      integration_settings: Editar los ajustes de integración
       placeholder: Pegue la dirección del contenido que desea importar (por ejemplo, https://thingiverse.com/thing:1234)
       submit: Importar
+      supported_sites: Sitios compatibles
   jobs:
     activity:
       collection_published:

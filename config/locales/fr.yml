@@ -698,8 +698,10 @@ fr:
       import:
       import_capabilities:
       import_type_html:
+      integration_settings:
       placeholder:
       submit:
+      supported_sites:
   jobs:
     activity:
       collection_published:
