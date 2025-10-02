@@ -45,6 +45,7 @@ jobs:
             type=schedule,pattern=nightly
             type=semver,pattern={{version}}
             type=ref,event=pr
+            type=sha,format=long
             type=edge
 
       - name: Depot setup
@@ -65,7 +66,7 @@ jobs:
           context: .
           file: ./docker/${{ matrix.variant }}.dockerfile
           platforms: linux/amd64,linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           build-args: |
