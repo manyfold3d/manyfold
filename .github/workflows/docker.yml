@@ -45,6 +45,7 @@ jobs:
             type=schedule,pattern=nightly
             type=semver,pattern={{version}}
             type=ref,event=pr
+            type=sha,format=long
             type=edge
 
       - name: Depot setup
