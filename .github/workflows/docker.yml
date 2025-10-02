@@ -1,4 +1,6 @@
 name: Docker
+env:
+  DEPOT_DEBUG: "1"
 
 on:
   pull_request:
