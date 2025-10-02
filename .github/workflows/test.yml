@@ -20,8 +20,6 @@ jobs:
       RAILS_ENV: test
       DATABASE_URL: ${{ matrix.database_url }}
     steps:
-      - name: Install requirements
-        run: sudo apt install -y assimp-utils
       - uses: actions/checkout@v5
       - uses: ./.github/actions/setup
       - name: Set up database with prepare command so we catch any migration explosions
@@ -29,7 +27,7 @@ jobs:
       - name: Compile assets
         run: bundle exec rails assets:precompile
       - name: Run tests
-        run: bundle exec rake
+        run: bundle exec rspec --fail-fast
       - name: Upload Coverage
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
