@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/Kerilk/assimp-ruby.git
+  revision: a36639b60556dcd9982e6305089fe32e6d716d6a
+  specs:
+    assimp-ffi (0.1.8)
+      ffi (~> 1.9, >= 1.9.19)
+
+GIT
   remote: https://github.com/el-cms/capybara-screenshot.git
   revision: 386c0541a428b8d025c936e3b6ebd6d2d2240523
   branch: custom-prefixes
@@ -930,6 +937,7 @@ DEPENDENCIES
   acts_as_favoritor (~> 6.0)
   altcha-rails (~> 0.0.6)
   arel_extensions (~> 2.3)
+  assimp-ffi!
   aws-sdk-s3 (< 1.200)
   better_content_security_policy (~> 0.1)
   bootsnap (~> 1.18)
@@ -1065,6 +1073,7 @@ CHECKSUMS
   aes_key_wrap (1.1.0) sha256=b935f4756b37375895db45669e79dfcdc0f7901e12d4e08974d5540c8e0776a5
   altcha-rails (0.0.6) sha256=0da0f081439abae730a797ab2f6b86a46ad2b533017db2a872488785cc35fae4
   arel_extensions (2.3.3) sha256=65bd6f4286d11447be528f4bb153d84a951870999149c76b4cbf3929226f4c1d
+  assimp-ffi (0.1.8)
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
   attr_required (1.0.2) sha256=f0ebfc56b35e874f4d0ae799066dbc1f81efefe2364ca3803dc9ea6a4de6cb99
   aws-eventstream (1.4.0) sha256=116bf85c436200d1060811e6f5d2d40c88f65448f2125bc77ffce5121e6e183b

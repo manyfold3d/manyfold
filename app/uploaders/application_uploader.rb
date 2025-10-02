@@ -61,29 +61,33 @@ class ApplicationUploader < Shrine
   rescue NoMethodError
   end
 
-  BB_REGEXP = /Minimum point\s+\((?<min_x>[[:digit:]\-\.]+)\s+(?<min_y>[[:digit:]\-\.]+)\s(?<min_z>[[:digit:]\-\.]+)\)\nMaximum point\s+\((?<max_x>[[:digit:]\-\.]+)\s+(?<max_y>[[:digit:]\-\.]+)\s(?<max_z>[[:digit:]\-\.]+)\)/
-
   add_metadata :object do |io|
     Shrine.with_file(io) do |it|
-      output = Open3.capture2 "assimp", "info", it.path
-      if (match = output.first.match(BB_REGEXP))
-        {
-          "bounding_box" => {
-            "minimum" => {
-              "x" => match[:min_x].to_f,
-              "y" => match[:min_y].to_f,
-              "z" => match[:min_z].to_f
-            },
-            "maximum" => {
-              "x" => match[:max_x].to_f,
-              "y" => match[:max_y].to_f,
-              "z" => match[:max_z].to_f
-            }
+      scene = Assimp.import_file(it.path)
+      scene.apply_post_processing(
+        0x80000000 # GenBoundingBox step, currently missing from assimp-ffi
+      )
+      bboxes = scene.meshes.map(&:aabb)
+      {
+        "bounding_box" => {
+          "minimum" => {
+            "x" => bboxes.map { |it| it.min.x }.min,
+            "y" => bboxes.map { |it| it.min.y }.min,
+            "z" => bboxes.map { |it| it.min.z }.min
+          },
+          "maximum" => {
+            "x" => bboxes.map { |it| it.max.x }.max,
+            "y" => bboxes.map { |it| it.max.y }.max,
+            "z" => bboxes.map { |it| it.max.z }.max
           }
         }
-      end
+      }
+    rescue => ex
+      # Assimp doesn't raise a specific error for failed load,
+      # just throws a string, so we have to catch all and absorb
+      Rails.logger.debug { "Load error: '#{ex.message}'" }
+      nil
     end
-  rescue NoMethodError
   end
 
   Attacher.derivatives do |original|
