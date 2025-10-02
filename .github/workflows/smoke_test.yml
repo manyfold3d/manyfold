@@ -18,6 +18,7 @@ jobs:
           SECRET_KEY_BASE: abc123
         options: >-
           --health-cmd "cat tmp/pids/server.pid"
+          --health-start-period	1m
           --health-interval 30s
           --health-timeout 10s
           --health-retries 6
