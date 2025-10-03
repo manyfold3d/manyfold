@@ -4,6 +4,7 @@ FROM base AS build
 
 RUN apk add --no-cache \
   alpine-sdk \
+  gcompat \
   bzip2 \
   ca-certificates \
   gmp-dev \

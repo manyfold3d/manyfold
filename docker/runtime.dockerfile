@@ -5,6 +5,7 @@ FROM base as runtime
 RUN apk add --no-cache \
   file \
   s6-overlay \
+  gcompat \
   jemalloc \
   imagemagick \
   imagemagick-jpeg \
