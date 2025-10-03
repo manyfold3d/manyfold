@@ -8,7 +8,7 @@ module ManyfoldApi::V0
         description: @object.notes,
         creator: creator_ref(@object.creator),
         isPartOf: collection_ref(@object.collection),
-        links: @object.links.map { |it| LinkSerializer.new(it).serialize }
+        links: @object.links.map { LinkSerializer.new(it).serialize }
       ).compact
     end
 

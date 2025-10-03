@@ -7,9 +7,10 @@ class Upgrade::DisambiguateUsernamesJob < ApplicationJob
   def perform
     duplicates = duplicated_usernames
     return if duplicates.empty?
+
     suffix = 0
     FederailsCommon::FEDIVERSE_USERNAMES.each_pair do |model_name, attr|
-      finder_scope(model_name).where(attr => duplicates).find_each do |it|
+      finder_scope(model_name).where(attr => duplicates).find_each do
         it.validate
         if it.errors.of_kind?(attr, :taken)
           suffix += 1

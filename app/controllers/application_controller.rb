@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
   include BetterContentSecurityPolicy::HasContentSecurityPolicy
+
   after_action :verify_authorized, except: :index, unless: -> { respond_to?(:fasp_client_controller?) }
   after_action :verify_policy_scoped, only: :index, unless: -> { respond_to?(:fasp_client_controller?) }
   after_action :set_content_security_policy_header, if: -> { request.format.html? }
@@ -126,6 +127,7 @@ class ApplicationController < ActionController::Base
   def show_security_alerts
     return unless current_user&.is_administrator?
     return if ENV.fetch("SUDO_RUN_UNSAFELY", nil) === "enabled"
+
     flash.now[:alert] = t("security.running_as_root_html") if Process.uid == 0
   end
 
@@ -154,6 +156,7 @@ class ApplicationController < ActionController::Base
 
   def send_file_content(attachment, disposition: :attachment, derivative: nil)
     head :not_found and return if attachment.nil?
+
     # Check if we can send a direct URL
     redirect_to(attachment.url, allow_other_host: true) if /https?:\/\//.match?(attachment.url)
     # Otherwise provide a direct download

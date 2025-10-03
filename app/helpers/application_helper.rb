@@ -245,6 +245,7 @@ module ApplicationHelper
   def errors_for(record, attribute)
     return if record.nil? || attribute.nil?
     return unless record.errors.include? attribute
+
     content_tag(:div,
       record.errors.full_messages_for(attribute).join("; "),
       class: "invalid-feedback d-block")
@@ -290,6 +291,7 @@ module ApplicationHelper
   def server_indicator(object, full_address: false)
     actor = object.respond_to?(:federails_actor) ? object.federails_actor : object
     return if !SiteSettings.federation_enabled? || actor.local?
+
     link_to actor.profile_url, class: "link-primary link-underline-opacity-0 link-underline-opacity-100-hover" do
       safe_join([
         "⁂",
@@ -303,7 +305,7 @@ module ApplicationHelper
   end
 
   def render_component_collection(component, param, collection, kwargs = {})
-    safe_join(collection.map { |it| render component.new(**{param => it}.merge(kwargs)) }, " ")
+    safe_join(collection.map { render component.new(**{param => it}.merge(kwargs)) }, " ")
   end
 
   def indexable_select_options(object)

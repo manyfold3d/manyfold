@@ -2,6 +2,7 @@ module PublicUrl
   def self.port
     # PUBLIC_PORT overrides everything
     return ENV.fetch("PUBLIC_PORT") if ENV.key?("PUBLIC_PORT")
+
     # If hostname is set, assume a standard port
     if ENV.key?("PUBLIC_HOSTNAME")
       https = ENV.fetch("HTTPS_ONLY", nil) === "enabled"

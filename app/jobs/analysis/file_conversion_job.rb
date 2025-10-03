@@ -16,12 +16,14 @@ class Analysis::FileConversionJob < ApplicationJob
     file = ModelFile.find(file_id)
     # Can we output this format?
     raise UnsupportedFormatError unless SupportedMimeTypes.can_export?(output_format) || !file.loadable?
+
     exporter = nil
     extension = nil
     status[:step] = "jobs.analysis.file_conversion.loading_mesh" # i18n-tasks-use t('jobs.analysis.file_conversion.loading_mesh')
     case output_format
     when :threemf
       raise NonManifoldError.new if !file.mesh.manifold?
+
       extension = "3mf"
       exporter = Mittsu::ThreeMFExporter.new
     end
@@ -56,7 +58,7 @@ class Analysis::FileConversionJob < ApplicationJob
   ensure
     if file
       # Mark inefficient problem resolution as no longer in progress, if it's set
-      file.problems.where(category: :inefficient, in_progress: true).find_each do |it|
+      file.problems.where(category: :inefficient, in_progress: true).find_each do
         it.update(in_progress: false)
       end
     end

@@ -6,7 +6,7 @@
 
 <div class="container">
   <%= form_with url: merge_models_path do |form| %>
-    <% @models.each do |it| %>
+    <% @models.each do %>
       <div class="row p-2 radio-option rounded">
         <%= form.hidden_field "models[]", value: it.public_id %>
         <%= form.radio_button :target, it.public_id, id: it.public_id %>

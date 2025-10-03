@@ -15,6 +15,7 @@ module Cli
     option :class, required: false, type: :string, default: nil, aliases: :c, enum: %w[Model ModelFile Library]
     def purge
       return unless ask("Are you sure you want to remove all problems", limited_to: %w[y n]) == "y"
+
       scope = Problem
       scope = scope.where(type: options[:type]) if options[:type]
       scope = scope.where(problematic_type: options[:class]) if options[:class]

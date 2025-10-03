@@ -42,12 +42,12 @@ class ApplicationUploader < Shrine
   end
 
   add_metadata :ctime do |io|
-    Shrine.with_file(io) { |it| [it.mtime, it.ctime].compact.min }
+    Shrine.with_file(io) { [it.mtime, it.ctime].compact.min }
   rescue NoMethodError
   end
 
   add_metadata :mtime do |io|
-    Shrine.with_file(io) { |it| it.mtime }
+    Shrine.with_file(io) { it.mtime }
   rescue NoMethodError
   end
 
@@ -62,7 +62,7 @@ class ApplicationUploader < Shrine
   end
 
   add_metadata :object do |io|
-    Shrine.with_file(io) do |it|
+    Shrine.with_file(io) do
       scene = Assimp.import_file(it.path)
       scene.apply_post_processing(
         0x80000000 # GenBoundingBox step, currently missing from assimp-ffi
@@ -71,14 +71,14 @@ class ApplicationUploader < Shrine
       {
         "bounding_box" => {
           "minimum" => {
-            "x" => bboxes.map { |it| it.min.x }.min,
-            "y" => bboxes.map { |it| it.min.y }.min,
-            "z" => bboxes.map { |it| it.min.z }.min
+            "x" => bboxes.map { it.min.x }.min,
+            "y" => bboxes.map { it.min.y }.min,
+            "z" => bboxes.map { it.min.z }.min
           },
           "maximum" => {
-            "x" => bboxes.map { |it| it.max.x }.max,
-            "y" => bboxes.map { |it| it.max.y }.max,
-            "z" => bboxes.map { |it| it.max.z }.max
+            "x" => bboxes.map { it.max.x }.max,
+            "y" => bboxes.map { it.max.y }.max,
+            "z" => bboxes.map { it.max.z }.max
           }
         }
       }

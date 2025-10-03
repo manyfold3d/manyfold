@@ -18,7 +18,7 @@ module ManyfoldApi::V0
         sensitive: @object.sensitive,
         keywords: @object.tag_list,
         preview_file: file_ref(@object.preview_file),
-        links: @object.links.map { |it| LinkSerializer.new(it).serialize }
+        links: @object.links.map { LinkSerializer.new(it).serialize }
       ).compact
     end
 

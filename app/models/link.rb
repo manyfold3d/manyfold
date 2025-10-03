@@ -1,5 +1,6 @@
 class Link < ApplicationRecord
   include Problematic
+
   belongs_to :linkable, polymorphic: true
 
   validates :url, presence: true, uniqueness: {scope: :linkable} # rubocop:disable Rails/UniqueValidationWithoutIndex
@@ -23,7 +24,7 @@ class Link < ApplicationRecord
   def self.find_duplicated
     Link.select(:linkable_type, :linkable_id, :url) # rubocop:disable Pundit/UsePolicyScope
       .group([:linkable_type, :linkable_id, :url])
-      .having("count(*) > 1").map do |it|
+      .having("count(*) > 1").map do
       Link.find_by(linkable_type: it.linkable_type, linkable_id: it.linkable_id, url: it.url)
     end
   end
@@ -45,7 +46,7 @@ class Link < ApplicationRecord
       Integrations::Thingiverse::ModelDeserializer
     ].map do |klass|
       klass.new(uri: url)
-    end.find { |it| it.valid?(for_class: for_class) }
+    end.find { it.valid?(for_class: for_class) }
   end
 
   def update_metadata_from_link_later(organize: false)

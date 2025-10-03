@@ -2,6 +2,7 @@ module Form
   class ModelDeserializer < BaseDeserializer
     def deserialize
       return nil unless @params
+
       @params.require(:model).permit(
         :preview_file_id,
         :creator_id,

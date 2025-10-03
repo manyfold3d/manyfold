@@ -3,6 +3,7 @@ class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::
 
   def deserialize
     return {} unless valid?
+
     r = fetch "things/#{CGI.escapeURIComponent(@model_id)}"
     {
       name: r.body["name"],
@@ -11,8 +12,8 @@ class Integrations::Thingiverse::ModelDeserializer < Integrations::Thingiverse::
       tag_list: r.body["tags"]&.pluck("tag"),
       sensitive: r.body["is_nsfw"],
       file_urls:
-        r.body.dig("zip_data", "images").map { |it| {url: it.dig("url"), filename: "images/" + it.dig("name")} } +
-          r.body.dig("zip_data", "files").map { |it| {url: it.dig("url"), filename: "files/" + it.dig("name")} },
+        r.body.dig("zip_data", "images").map { {url: it.dig("url"), filename: "images/" + it.dig("name")} } +
+          r.body.dig("zip_data", "files").map { {url: it.dig("url"), filename: "files/" + it.dig("name")} },
       preview_filename: "images/" + r.body.dig("default_image", "name")
     }.merge(creator_attributes(r.body["creator"]))
   end

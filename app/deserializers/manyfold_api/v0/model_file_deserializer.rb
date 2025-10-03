@@ -2,13 +2,14 @@ module ManyfoldApi::V0
   class ModelFileDeserializer < BaseDeserializer
     def deserialize
       return unless @object
+
       {
         filename: @object["filename"],
         notes: @object["description"],
         caption: @object["caption"],
         presupported: @object["presupported"],
         y_up: @object["up"] == "+y",
-        presupported_version: dereference(@object["related"]&.find { |it| it["relationship"] == "presupported_version" }&.dig("@id"), ModelFile)
+        presupported_version: dereference(@object["related"]&.find { it["relationship"] == "presupported_version" }&.dig("@id"), ModelFile)
       }.compact
     end
 
