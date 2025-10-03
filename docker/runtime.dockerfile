@@ -5,6 +5,7 @@ FROM base as runtime
 RUN apk add --no-cache \
   file \
   s6-overlay \
+  gcompat \
   jemalloc \
   imagemagick \
   imagemagick-jpeg \
@@ -28,7 +29,6 @@ COPY --from=build \
   /usr/lib/liblz4.so.* \
   /usr/lib/libbz2.so.* \
   /usr/lib/libpq.so.* \
-  /usr/lib/libresolv.so.* \
   /usr/lib
 
 # Set up jemalloc and YJIT for performance
