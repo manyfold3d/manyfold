@@ -156,6 +156,7 @@ class ApplicationController < ActionController::Base
 
   def send_file_content(attachment, disposition: :attachment, derivative: nil)
     head :not_found and return if attachment.nil?
+
     # Check if we can send a direct URL
     redirect_to(attachment.url, allow_other_host: true) if /https?:\/\//.match?(attachment.url)
     # Otherwise provide a direct download
