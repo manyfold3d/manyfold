@@ -96,7 +96,7 @@ class SiteSettings < RailsSettings::Base
   end
 
   def self.fasp_data_sharing_enabled?
-    federation_enabled? && FaspClient::Provider.any? { |it| it.has_capability? :account_search }
+    federation_enabled? && FaspClient::Provider.any? { it.has_capability? :account_search }
   end
 
   module UserDefaults

@@ -94,13 +94,13 @@ class FollowsController < ApplicationController
   def get_recommended_accounts
     @recommended = FaspClient::Provider.find_each.map do |provider|
       provider.follow_recommendation(current_user.federails_actor.federated_url)
-    end.flatten.uniq.map { |it| Federails::Actor.find_or_create_by_federation_url it }.reject(&:local)
+    end.flatten.uniq.map { Federails::Actor.find_or_create_by_federation_url it }.reject(&:local)
   end
 
   def search(query)
     FaspClient::Provider.find_each.map do |provider|
       provider.account_search(query)
-    end.flatten.uniq.map { |it| Federails::Actor.find_or_create_by_federation_url it }.reject(&:local)
+    end.flatten.uniq.map { Federails::Actor.find_or_create_by_federation_url it }.reject(&:local)
   end
 
   def get_target
