@@ -19,6 +19,6 @@ if Rails.env.development?
       "helpers"
     ]
     config.source_locale = "en"
-    config.target_locales = ["ru", "es", "fr", "de", "pl", "pt", "ja", "nl", "cs", "zh-CN"]
+    config.target_locales = YAML.load_file(Rails.root.join("config/locales.yml")).values.flatten.without(config.source_locale)
   end
 end

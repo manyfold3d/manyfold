@@ -2,17 +2,10 @@
 
 # The "main" locale.
 base_locale: en
+
 ## All available locales are inferred from the data by default. Alternatively, specify them explicitly:
-locales: [
-  cs,
-  de,
-  en,
-  es,
-  fr,
-  ja,
-  nl,
-  pl
-]
+# locales: []
+
 ## Reporting locale, default: en. Available: en, ru.
 # internal_locale: en
 
