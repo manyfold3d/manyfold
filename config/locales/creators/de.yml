@@ -19,15 +19,15 @@ de:
       success: Ersteller gelöscht!
     form:
       avatar:
-        current:
-        help:
-        none:
-        remove:
+        current: Derzeit wird `%{filename}` verwendet.
+        help: Ein quadratisches Profilbild mit den Maßen 256x256px im Format WEBP, PNG, GIF oder JPG.
+        none: Derzeit nicht festgelegt.
+        remove: Avatar entfernen
       banner:
-        current:
-        help:
-        none:
-        remove:
+        current: Derzeit wird `%{filename}` verwendet.
+        help: Ein Hintergrundbild mit den Maßen 1000x200px im Format WEBP, PNG, GIF oder JPG.
+        none: Derzeit nicht festgelegt.
+        remove: Banner entfernen
       notes:
         help_html: Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden.
       slug:

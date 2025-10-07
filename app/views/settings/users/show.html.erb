@@ -40,7 +40,7 @@
   <% end %>
   <tr>
     <th><%= User.human_attribute_name(:interface_language) %></th>
-    <td><%= @user.interface_language.present? ? I18nData.languages(@user.interface_language)[@user.interface_language.to_s]&.capitalize : t("devise.registrations.general_settings.interface_language.autodetect") %></td>
+    <td><%= @user.interface_language.present? ? I18nData.languages(@user.interface_language)[@user.interface_language.to_s.first(2).upcase.to_s]&.capitalize : t("devise.registrations.general_settings.interface_language.autodetect") %></td>
   </tr>
   <% if SiteSettings.oidc_enabled? %>
     <tr>

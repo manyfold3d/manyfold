@@ -1,0 +1,845 @@
+---
+zh-CN:
+  activerecord:
+    attributes:
+      collection:
+        ai_indexable:
+        caption:
+        collection:
+        indexable:
+        models:
+        name: 应用名称
+        notes:
+      creator:
+        ai_indexable:
+        avatar:
+        banner:
+        caption:
+        indexable:
+        name:
+        notes:
+        slug:
+      doorkeeper/application:
+        access_token:
+        confidential: Confidential
+        created_at:
+        name: 应用名称
+        owner:
+        redirect_uri: 重定向 URI
+        scopes: 权限范围
+        secret:
+        uid:
+      federails/moderation/domain_block:
+        created_at: 创建于
+        domain:
+      federails/moderation/report:
+        content:
+        created_at:
+        federails_actor:
+        object:
+      library:
+        caption:
+        create_path_if_not_on_disk:
+        default:
+        icon:
+        name: 应用名称
+        notes:
+        path:
+        s3_access_key_id:
+        s3_bucket:
+        s3_endpoint:
+        s3_path_style:
+        s3_region:
+        s3_secret_access_key:
+        storage_service:
+        tag_regex:
+      link:
+        url:
+      model:
+        ai_indexable:
+        caption:
+        collection:
+        collection_id:
+        creator:
+        creator_id:
+        images:
+        indexable:
+        library_id:
+        license:
+        model_files:
+        name: 应用名称
+        notes:
+        path:
+        preview_file:
+        sensitive:
+        tags:
+      model_file:
+        caption:
+        digest:
+        dimensions:
+        filename:
+        model_id:
+        notes:
+        presupported:
+        presupported_version:
+        printed:
+        size:
+        unsupported_version:
+        y_up:
+      problem:
+        category:
+        ignored:
+        note:
+        problematic_type:
+        severity:
+      user:
+        approved:
+        confirmation_sent_at: 确认邮件发送于
+        confirmation_token: 确认令牌
+        confirmed_at: 确认于
+        created_at: 创建于
+        current_password: 当前密码
+        current_sign_in_at: 最近登录于
+        current_sign_in_ip: 最近登录 IP
+        email: 电子邮箱
+        encrypted_password: 密码被加密
+        failed_attempts: 失败尝试
+        last_sign_in_at: 最后登录于
+        last_sign_in_ip: 最后登录的 IP
+        locked_at: 锁定于
+        password: 密码
+        password_confirmation: 密码确认
+        remember_created_at: 记住创建于
+        remember_me: 记住登录信息
+        reset_password_sent_at: 重置密码发送于
+        reset_password_token: 密码重置令牌
+        sign_in_count: 登录次数
+        unconfirmed_email: 未确认邮件
+        unlock_token: 帐户解锁令牌
+        updated_at: 更新于
+        username:
+    errors:
+      models:
+        collection:
+          attributes:
+            collection:
+              private:
+            creator:
+              private:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              forbidden_uri: 被服务器禁止。
+              fragment_present: 不能包含网址片段（#）
+              invalid_uri: 必须是有效的 URI 格式
+              relative_uri: 必须是绝对的 URI 地址
+              secured_uri: 必须是 HTTPS/SSL 的 URI 地址
+              unspecified_scheme: must specify a scheme.
+            scopes:
+              not_match_configured: 不匹配服务器上的配置。
+        library:
+          attributes:
+            path:
+              cannot_be_contained:
+              cannot_contain:
+              non_writable:
+              not_found:
+              unsafe:
+        model:
+          attributes:
+            creator:
+              private:
+            library:
+              nested:
+            license:
+              invalid_spdx:
+            path:
+              destination_exists:
+              nested:
+        model_file:
+          attributes:
+            filename:
+              cannot_change_type:
+              case_change_only:
+            presupported_version:
+              already_presupported:
+              not_supported:
+    models:
+      acts_as_taggable_on/tag:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      collection:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      creator:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      federails/moderation/domain_block:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      federails/moderation/report:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      library:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      link:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      model:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      model_file:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      problem:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      user:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+  activity:
+    index:
+      description:
+      message:
+      name: 应用名称
+      time:
+      title:
+  activity_helper:
+    status_icon:
+      completed:
+      error:
+      queued:
+      working:
+  application:
+    caber_relation_fields:
+      delete:
+      permissions:
+        edit:
+        own:
+        preview:
+        view:
+      subject:
+        placeholder:
+        role:
+          member:
+          public:
+        you:
+    caber_relations_form:
+      add:
+      permissions:
+    demo_mode:
+    filters_card:
+      missing_tags:
+      remove_collection_filter:
+      remove_creator_filter:
+      remove_library_filter:
+      remove_missing_tag_filter:
+      remove_search_filter:
+      remove_tag_filter:
+      search:
+      title:
+      unknown:
+    footer:
+      about:
+      api:
+      by_html:
+      community:
+      instance_heading:
+      issues:
+      open_source_html:
+      powered_by_html:
+      sponsor:
+      support:
+      version:
+    link_fields:
+      url:
+        delete:
+        placeholder:
+    links_form:
+      add:
+    navbar:
+      account: 修改%{resource}
+      activity:
+      add_models:
+      check_existing:
+      check_results:
+      home:
+      import_url:
+      log_in: 登录
+      log_out:
+      moderator_settings:
+      navbar:
+        toggler:
+          label:
+      scan:
+      scan_changes:
+      scanning:
+      search:
+      settings:
+      upload:
+    order_buttons:
+      sort:
+        name:
+        time:
+    search_error:
+    tag_list:
+      unrelated_tag_count:
+        one:
+        other:
+    tagline:
+    tags_card:
+      skip_tags:
+    title:
+  application_helper:
+    ai_indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+    indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+      'no': 沒有
+      'yes': 是
+  components:
+    actor_card:
+      non_manyfold_account:
+    altcha_widget:
+      help:
+    copy_button:
+      copy:
+    display_user_quota:
+      request_increase:
+    download_button:
+      download:
+        missing:
+        preparing:
+        ready:
+      file_type:
+      label:
+      menu_header:
+      supported:
+      unsupported:
+    follow_button:
+      follow:
+      pending:
+      unfollow:
+    link_list:
+      sync:
+    modal:
+      close:
+    model_card:
+      delete_button:
+        label:
+        text:
+      edit_button:
+        label:
+        text: 编辑
+      no_preview:
+      open_button:
+        label:
+        text:
+    search_help:
+      boolean:
+      federation:
+      filename:
+      intro:
+      more_details_html:
+      negation:
+      parentheses:
+      path:
+      quotes:
+      simple:
+      specific_fields:
+      tag:
+      title:
+      unset:
+      without_tag:
+  concerns:
+    linkable:
+      sync:
+        bad_request:
+        success:
+  doorkeeper:
+    applications:
+      buttons:
+        authorize: 授权
+        cancel: 取消
+        destroy: 删除
+        edit: 编辑
+        submit: 提交
+      confirmations:
+        destroy: 确定要删除应用吗？
+      edit:
+        title: 修改应用
+      form:
+        error: 抱歉! 提交信息的时候遇到了下面的错误
+      help:
+        blank_redirect_uri: Leave it blank if you configured your provider to use Client Credentials, Resource Owner Password Credentials or any other grant type that doesn't require redirect URI.
+        confidential: 应用程序的client secret可以保密，但原生移动应用和单页应用将无法保护client secret。
+        redirect_uri: 每行只能有一个 URI
+        scopes: 用空格分割权限范围，留空则使用默认设置
+      index:
+        actions: 动作
+        callback_url: 回调 URL
+        confidential: Confidential?
+        confidentiality:
+          'no': 沒有
+          'yes': 是
+        name: 名称
+        new: 创建新应用
+        title: 你的应用
+      new:
+        title: 创建新应用
+      show:
+        actions: 操作
+        application_id: 应用 UID
+        callback_urls: 回调 URL
+        confidential: Confidential
+        not_defined:
+        scopes: 权限范围
+        secret: 应用密钥
+        secret_hashed:
+        title: 应用：%{name}
+    authorizations:
+      buttons:
+        authorize: 同意授权
+        deny: 拒绝授权
+      error:
+        title: 发生错误
+      form_post:
+        title:
+      new:
+        able_to: 此应用将能够
+        prompt: 授权 %{client_name} 使用你的帐户？
+        title: 需要授权
+      show:
+        title: 授权代码
+    authorized_applications:
+      buttons:
+        revoke: 撤销授权
+      confirmations:
+        revoke: 确定要撤销对此应用的授权吗？
+      index:
+        application: 应用
+        created_at: 授权时间
+        date_format: "%Y-%m-%d %H:%M:%S"
+        title: 已授权的应用
+    errors:
+      messages:
+        access_denied: 资源所有者或服务器拒绝了请求。
+        admin_authenticator_not_configured: 由于 Doorkeeper.configure.admin_authenticator 尚未配置，禁止访问管理员面板。
+        credential_flow_not_configured: 由于 Doorkeeper.configure.resource_owner_from_credentials 尚未配置，应用验证授权流程失败。
+        forbidden_token:
+          missing_scope:
+        invalid_client: 由于应用信息未知、未提交认证信息或使用了不支持的认证方式，认证失败。
+        invalid_code_challenge_method:
+          one:
+          other:
+          zero:
+        invalid_grant: 授权方式无效、过期或已被撤销、与授权请求中的回调地址不一致，或使用了其他应用的回调地址。
+        invalid_redirect_uri: 无效的登录回调地址。
+        invalid_request:
+          invalid_code_challenge:
+          missing_param: 'Missing required parameter: %{value}.'
+          request_not_authorized: Request need to be authorized. Required parameter for authorizing request is missing or invalid.
+          unknown: 请求缺少必要的参数，或者参数值、格式不正确。
+        invalid_scope: 请求的权限范围无效、未知或格式不正确。
+        invalid_token:
+          expired: 访问令牌已过期
+          revoked: 访问令牌已被吊销
+          unknown: 访问令牌无效
+        resource_owner_authenticator_not_configured: 由于 Doorkeeper.configure.resource_owner_authenticator 尚未配置，查找资源所有者失败。
+        revoke:
+          unauthorized: You are not authorized to revoke this token
+        server_error: 服务器异常，无法处理请求。
+        temporarily_unavailable: 服务器维护中或负载过高，暂时无法处理请求。
+        unauthorized_client: 未授权的应用，请求无法执行。
+        unsupported_grant_type: 服务器不支持此类型的授权方式。
+        unsupported_response_mode:
+        unsupported_response_type: 服务器不支持这种响应类型。
+    flash:
+      applications:
+        create:
+          notice: 应用创建成功。
+        destroy:
+          notice: 应用删除成功。
+        update:
+          notice: 应用修改成功。
+      authorized_applications:
+        destroy:
+          notice: 已成功撤销对此应用的授权。
+    layouts:
+      admin:
+        nav:
+          applications: 应用
+          home: 首页
+          oauth2_provider: OAuth2 提供商
+        title: Doorkeeper
+      application:
+        title: 需要 OAuth 认证
+    pre_authorization:
+      status: 预授权
+  doorkeeper_applications:
+    create:
+      failure:
+      success:
+    destroy:
+      success:
+    edit:
+      title: 修改应用
+    form:
+      confidential:
+        help:
+      redirect_uri:
+        help:
+      scopes:
+        label: 权限范围
+      submit:
+    index:
+      description:
+      new:
+      title:
+    new:
+      title:
+    show:
+      destroy:
+      edit: 编辑
+      title:
+    update:
+      failure:
+      success:
+  fasp_client:
+    providers:
+      edit:
+        approval_help:
+        approve:
+        backfill_requests:
+        capability:
+        category:
+        contact_details:
+        created:
+        data_sharing:
+        deny: 拒绝授权
+        disable:
+        email: 电子邮箱
+        enable:
+        event_subscriptions:
+        fediverse_account:
+        fingerprint:
+        links:
+        max_count:
+        privacy_policy:
+        registration:
+        sign_in: 登录
+        subscription_type:
+        versions:
+      index:
+        add_html:
+        description_html:
+        heading:
+        provider_list_title:
+        registered_at:
+        search_3dprint_social_html:
+        status:
+        url:
+  follows:
+    actor_table:
+      actions: 动作
+      address:
+      name: 应用名称
+    follow_remote_actor:
+      followed:
+    index:
+      explore_html:
+      followers:
+      following:
+      title:
+    new:
+      no_results:
+      recommended:
+      results:
+      title:
+    remote_follow:
+      help:
+      no_results_html:
+      placeholder:
+      submit:
+      title:
+    search_form:
+      help:
+      placeholder:
+      submit:
+    unfollow_remote_actor:
+      unfollowed:
+  general:
+    delete:
+    download:
+    edit: 编辑
+    expand:
+    followers:
+      few:
+      many:
+      one:
+      other:
+      two:
+      zero:
+    menu:
+    new:
+    private:
+    public:
+    report:
+    save:
+    shared:
+    view:
+  home:
+    activity:
+      created:
+      updated:
+    browsing:
+      content:
+      manual_link:
+      more_access:
+      title:
+    federation:
+      content_html:
+      creator_handle_html:
+      following:
+      handle_html:
+      title:
+    index:
+      no_activities:
+      open_search_help:
+      recent_activity:
+      search:
+        placeholder:
+        submit:
+    publishing:
+      content:
+      existing_creator:
+        button:
+        content:
+      new_creator:
+        button:
+        content:
+      title:
+    support:
+      content:
+      manyfold_html:
+      support_link:
+      title:
+    uploading:
+      how_to_upload:
+      permissions:
+        edit:
+        member:
+        private:
+      quota:
+      title:
+      upload:
+    welcome:
+      lead:
+      title:
+  imports:
+    bad_url:
+    create:
+      success:
+    new:
+      description:
+      heading:
+      import:
+      import_capabilities:
+      import_type_html:
+      integration_settings:
+      placeholder:
+      submit:
+      supported_sites:
+  jobs:
+    activity:
+      collection_published:
+        comment:
+      model_collected:
+        comment:
+      model_published:
+        comment:
+      updated_model:
+        comment:
+    analysis:
+      analyse_model_file:
+        detect_duplicates:
+        detect_ineffiency:
+        file_statistics:
+        matching:
+      file_conversion:
+        exporting:
+        loading_mesh:
+      geometric_analysis:
+        direction_check:
+        loading_mesh:
+        manifold_check:
+    scan:
+      detect_filesystem_changes:
+        building_filename_list:
+        building_folder_list:
+        creating_models:
+  kaminari:
+    first_page:
+      label:
+    last_page:
+      label:
+    next_page:
+      label:
+    page:
+      current_page:
+      label:
+    paginator:
+      label:
+    prev_page:
+      label:
+  layouts:
+    application:
+      alert:
+        danger:
+        info:
+      skip_to_content:
+    card_list_page:
+      actions_heading: 动作
+    settings:
+      appearance:
+      downloads:
+      integrations_heading:
+      libraries:
+      moderation_heading:
+      moderation_settings_title:
+      organization:
+      performance:
+      pghero:
+      search_heading:
+      sidekiq:
+      site_settings_title:
+      tools_heading:
+  licenses:
+    0BSD:
+    CC-BY-40:
+    CC-BY-NC-40:
+    CC-BY-NC-ND-40:
+    CC-BY-NC-SA-40:
+    CC-BY-ND-40:
+    CC-BY-SA-40:
+    CC-PDDC:
+    CC0-10:
+    CERN-OHL-P-20:
+    CERN-OHL-S-20:
+    CERN-OHL-W-20:
+    GPL-20-only:
+    GPL-30-only:
+    LGPL-20-only:
+    LGPL-30-only:
+    LicenseRef-Commercial:
+    MIT:
+  moderator_mailer:
+    new_approval:
+      greeting:
+      message:
+      subject:
+    new_report:
+      greeting:
+      message:
+      subject:
+  renderer:
+    errors:
+      canvas:
+      load:
+      webglrenderer:
+    load:
+    processing:
+  reports:
+    create:
+      success:
+    new:
+      description:
+      submit:
+      title:
+  scans:
+    create:
+      success:
+  security:
+    running_as_root_html:
+  sites:
+    cgtrader:
+    comicsgamesandthings:
+    cults3d:
+    fediverse:
+    github:
+    makerworld:
+    manyfold:
+    myminifactory:
+    printables:
+    thangs:
+    theminiindex:
+    thingiverse:
+    yeggi:
+  user_mailer:
+    account_approved:
+      greeting:
+      message:
+      subject:
+    test_email:
+      subject:
+      test_email_message:
+  users:
+    registrations:
+      create:
+        altcha_failed:
+  views:
+    pagination:
+      first: "&laquo; 第一页"
+      last: 最后一页 &raquo;
+      next: 下一页 &rsaquo;
+      previous: "&lsaquo; 上一页"
+      truncate: "&hellip;"
