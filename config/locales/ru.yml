@@ -1,0 +1,845 @@
+---
+ru:
+  activerecord:
+    attributes:
+      collection:
+        ai_indexable:
+        caption: Описание
+        collection:
+        indexable:
+        models: Модели
+        name: Имя
+        notes: Примечания
+      creator:
+        ai_indexable:
+        avatar:
+        banner:
+        caption: Описание
+        indexable:
+        name:
+        notes: Примечания
+        slug:
+      doorkeeper/application:
+        access_token:
+        confidential: Конфиденциально
+        created_at:
+        name: Наименование
+        owner:
+        redirect_uri: URI для перенаправления
+        scopes: Скоупы
+        secret:
+        uid:
+      federails/moderation/domain_block:
+        created_at: Дата создания
+        domain:
+      federails/moderation/report:
+        content:
+        created_at:
+        federails_actor:
+        object:
+      library:
+        caption: Описание
+        create_path_if_not_on_disk:
+        default:
+        icon: Иконка
+        name: Имя
+        notes: Примечания
+        path: Путь
+        s3_access_key_id:
+        s3_bucket:
+        s3_endpoint: URL конечной точки
+        s3_path_style:
+        s3_region: Регион
+        s3_secret_access_key: Секретный ключ доступа
+        storage_service: Сервис хранения данных
+        tag_regex:
+      link:
+        url: Ссылка
+      model:
+        ai_indexable:
+        caption: Описание
+        collection: Коллекция
+        collection_id: Коллекция
+        creator: Автор
+        creator_id: Автор
+        images:
+        indexable:
+        library_id: Библиотека
+        license: Лицензия
+        model_files: Файлы
+        name: Имя
+        notes: Примечания
+        path: Путь
+        preview_file: Файл предварительного просмотра
+        sensitive:
+        tags: Теги
+      model_file:
+        caption: Описание
+        digest:
+        dimensions:
+        filename: Имя файла
+        model_id: Модель
+        notes: Примечания
+        presupported: С поддержками
+        presupported_version: Версия с поддержками
+        printed: Напечатано
+        size: Размер файла
+        unsupported_version: Версия без поддержек
+        y_up: Осью Y вверх
+      problem:
+        category: Категория
+        ignored: Скрытый
+        note: Примечания
+        problematic_type: Тип объекта
+        severity: Серьезность
+      user:
+        approved:
+        confirmation_sent_at: Дата отправки подтверждения
+        confirmation_token: Токен подтверждения
+        confirmed_at: Дата подтверждения
+        created_at: Дата создания
+        current_password: Текущий пароль
+        current_sign_in_at: Дата текущего входа
+        current_sign_in_ip: IP текущего входа
+        email: Email
+        encrypted_password: Зашифрованный пароль
+        failed_attempts: Неудачные попытки
+        last_sign_in_at: Дата последнего входа
+        last_sign_in_ip: IP последнего входа
+        locked_at: Дата блокировки
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        remember_created_at: Дата создания запоминания
+        remember_me: Запомнить меня
+        reset_password_sent_at: Дата отправки сброса пароля
+        reset_password_token: Токен сброса пароля
+        sign_in_count: Количество входов
+        unconfirmed_email: Неподтвержденный email
+        unlock_token: Токен разблокировки
+        updated_at: Дата обновления
+        username:
+    errors:
+      models:
+        collection:
+          attributes:
+            collection:
+              private:
+            creator:
+              private:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              forbidden_uri: заблокирован со стороны сервера.
+              fragment_present: не должен содержать фрагменты
+              invalid_uri: должен быть корректным URI
+              relative_uri: должен быть абсолютным URI
+              secured_uri: должен быть HTTPS/SSL URI
+              unspecified_scheme: должать содержать схему.
+            scopes:
+              not_match_configured: не соответствуют конфигурации сервера.
+        library:
+          attributes:
+            path:
+              cannot_be_contained:
+              cannot_contain:
+              non_writable:
+              not_found:
+              unsafe:
+        model:
+          attributes:
+            creator:
+              private:
+            library:
+              nested:
+            license:
+              invalid_spdx: не является действительной лицензией
+            path:
+              destination_exists:
+              nested:
+        model_file:
+          attributes:
+            filename:
+              cannot_change_type:
+              case_change_only:
+            presupported_version:
+              already_presupported:
+              not_supported:
+    models:
+      acts_as_taggable_on/tag:
+        few: Теги
+        many: Теги
+        one: Тег
+        other: Теги
+        two: Теги
+        zero: Теги
+      collection:
+        few: Коллекции
+        many: Коллекции
+        one: Коллекция
+        other: Коллекции
+        two: Коллекции
+        zero: Коллекции
+      creator:
+        few: Авторы
+        many: Авторы
+        one: Автор
+        other: Авторы
+        two: Авторы
+        zero: Авторы
+      federails/moderation/domain_block:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      federails/moderation/report:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      library:
+        few: Библиотеки
+        many: Библиотеки
+        one: Библиотека
+        other: Библиотеки
+        two: Библиотеки
+        zero: Библиотеки
+      link:
+        few: Ссылки
+        many: Ссылки
+        one: Ссылка
+        other: Ссылки
+        two: Ссылки
+        zero: Ссылки
+      model:
+        few: Модели
+        many: Модели
+        one: Модель
+        other: Модели
+        two: Модели
+        zero: Модели
+      model_file:
+        few: Файлы
+        many: Файлы
+        one: Файл
+        other: Файлы
+        two: Файлы
+        zero: Файлы
+      problem:
+        few: Проблемы
+        many: Проблемы
+        one: Проблема
+        other: Проблемы
+        two: Проблемы
+        zero: Проблемы
+      user:
+        few: Пользователя
+        many: Пользователей
+        one: Пользователь
+        other: Пользователи
+        two: Пользователи
+        zero: Пользователи
+  activity:
+    index:
+      description:
+      message: Сообщение
+      name: Имя
+      time:
+      title: Недавняя активность
+  activity_helper:
+    status_icon:
+      completed: Завершено
+      error: Ошибка
+      queued: В очереди
+      working: В работе
+  application:
+    caber_relation_fields:
+      delete:
+      permissions:
+        edit:
+        own:
+        preview:
+        view:
+      subject:
+        placeholder:
+        role:
+          member:
+          public:
+        you:
+    caber_relations_form:
+      add:
+      permissions:
+    demo_mode: Этот экземпляр находится в демонстрационном режиме. Вы не можете добавлять или удалять модели, но можете делать все остальное.
+    filters_card:
+      missing_tags: Отсутствующие теги
+      remove_collection_filter: Удалить фильтр коллекции
+      remove_creator_filter: Удалить фильтр автор
+      remove_library_filter: Удалить фильтр библиотеки
+      remove_missing_tag_filter: Удалить фильтр отсутствующих тегов
+      remove_search_filter:
+      remove_tag_filter:
+      search:
+      title:
+      unknown:
+    footer:
+      about:
+      api:
+      by_html:
+      community:
+      instance_heading:
+      issues:
+      open_source_html:
+      powered_by_html:
+      sponsor:
+      support:
+      version:
+    link_fields:
+      url:
+        delete:
+        placeholder:
+    links_form:
+      add:
+    navbar:
+      account:
+      activity:
+      add_models:
+      check_existing:
+      check_results:
+      home:
+      import_url:
+      log_in:
+      log_out:
+      moderator_settings:
+      navbar:
+        toggler:
+          label:
+      scan:
+      scan_changes:
+      scanning:
+      search:
+      settings:
+      upload:
+    order_buttons:
+      sort:
+        name: Сортировать по имени
+        time: Сортировать по времени
+    search_error:
+    tag_list:
+      unrelated_tag_count:
+        one:
+        other:
+    tagline:
+    tags_card:
+      skip_tags:
+    title:
+  application_helper:
+    ai_indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+    indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+      'no': Нет
+      'yes': Да
+  components:
+    actor_card:
+      non_manyfold_account:
+    altcha_widget:
+      help:
+    copy_button:
+      copy:
+    display_user_quota:
+      request_increase:
+    download_button:
+      download:
+        missing:
+        preparing:
+        ready:
+      file_type:
+      label:
+      menu_header:
+      supported:
+      unsupported:
+    follow_button:
+      follow:
+      pending:
+      unfollow:
+    link_list:
+      sync:
+    modal:
+      close:
+    model_card:
+      delete_button:
+        label:
+        text:
+      edit_button:
+        label:
+        text: Редактировать
+      no_preview:
+      open_button:
+        label:
+        text:
+    search_help:
+      boolean:
+      federation:
+      filename:
+      intro:
+      more_details_html:
+      negation:
+      parentheses:
+      path:
+      quotes:
+      simple:
+      specific_fields:
+      tag:
+      title:
+      unset:
+      without_tag:
+  concerns:
+    linkable:
+      sync:
+        bad_request:
+        success:
+  doorkeeper:
+    applications:
+      buttons:
+        authorize: Авторизовать
+        cancel: Отменить
+        destroy: Удалить
+        edit: Редактировать
+        submit: Сохранить
+      confirmations:
+        destroy: Вы уверены?
+      edit:
+        title: Редактировать приложение
+      form:
+        error: Возникли ошибки! Проверьте правильность заполнения полей
+      help:
+        blank_redirect_uri: Пакіньце пустым калі Ваш правайдар наладжаны на выкарыстанне Client Credentials, Resource Owner Password Credentials ці іншага метаду аўтарызацыі без URI зваротнага выкліку.
+        confidential: Приложение будет использоваться там, где секретный ключ защищён от просмотра. Мобильные приложения и одностраничные веб-приложения (SPA) рассматриваются как незащищённые.
+        redirect_uri: Указывайте каждый URI в отдельной строке
+        scopes: Записывайте скоупы через пробел. Оставьте поле пустым для использования значений по-умолчанию
+      index:
+        actions: Действия
+        callback_url: URL обратного вызова
+        confidential: Конфиденциально?
+        confidentiality:
+          'no': Нет
+          'yes': Да
+        name: Наименование
+        new: Новое приложение
+        title: Ваши приложения
+      new:
+        title: Новое приложение
+      show:
+        actions: Действия
+        application_id: ID приложения
+        callback_urls: Список URL обратного вызова
+        confidential: Конфиденциально
+        not_defined:
+        scopes: Скоупы
+        secret: Секретный ключ
+        secret_hashed:
+        title: 'Приложение: %{name}'
+    authorizations:
+      buttons:
+        authorize: Разрешить
+        deny: Отклонить
+      error:
+        title: Произошла ошибка
+      form_post:
+        title:
+      new:
+        able_to: 'Данное приложение требует следующие разрешения:'
+        prompt: Разрешить %{client_name} использовать данные Вашей учётной записи?
+        title: Требуется авторизация
+      show:
+        title: Код авторизации
+    authorized_applications:
+      buttons:
+        revoke: Отозвать авторизацию
+      confirmations:
+        revoke: Вы уверены?
+      index:
+        application: Приложение
+        created_at: Создано
+        date_format: "%d-%m-%Y %H:%M:%S"
+        title: Ваши авторизованные приложения
+    errors:
+      messages:
+        access_denied: 'Доступ запрещен: сервер или владелец ресурса отклонил запрос'
+        admin_authenticator_not_configured: Доступ к панели администратора заблокирован в связи настройкой опции Doorkeeper.configure.admin_authenticator.
+        credential_flow_not_configured: Resource Owner Password Credentials не сконфигурированы, необходимо настроить Doorkeeper.configure.resource_owner_from_credentials
+        forbidden_token:
+          missing_scope:
+        invalid_client: 'Ошибка аутентификации клиента: неверный токен, неизвестный клиент или неподдерживаемый метод аутентификации'
+        invalid_code_challenge_method:
+          one:
+          other:
+          zero:
+        invalid_grant: Право на авторизацию истекло или отозвано
+        invalid_redirect_uri: Некорректный URI для перенаправления
+        invalid_request:
+          invalid_code_challenge:
+          missing_param: 'Отсутствует обязательный параметр: %{value}.'
+          request_not_authorized: Запрос должен быть авторизован. Необходимый параметр для авторизации отсутствует или неверный.
+          unknown: В запросе отсутствуют необходимые параметры или они некорректны.
+        invalid_scope: Неверный скоуп
+        invalid_token:
+          expired: Токен доступа устарел
+          revoked: Токен доступа отозван
+          unknown: Неверный токен доступа
+        resource_owner_authenticator_not_configured: Resource Owner не найден, необходима конфигурация Doorkeeper.configure.resource_owner_authenticator
+        revoke:
+          unauthorized: Вы не авторизованы для удаления данного токена доступа
+        server_error: На авторизационном сервере произошла ошибка; запрос не выполнен
+        temporarily_unavailable: В настоящее время авторизационный сервер не может обработать запрос в силу высокой загруженности или тех. работ
+        unauthorized_client: Клиент не авторизован для выполнения данного запроса
+        unsupported_grant_type: Авторизационный сервер не поддерживает данный способ авторизации
+        unsupported_response_mode:
+        unsupported_response_type: Сервер авторизации не поддерживает данный тип запроса
+    flash:
+      applications:
+        create:
+          notice: Приложение создано
+        destroy:
+          notice: Приложение удалено
+        update:
+          notice: Приложение обновлено
+      authorized_applications:
+        destroy:
+          notice: Приложение отозвано
+    layouts:
+      admin:
+        nav:
+          applications: Приложения
+          home: Главная
+          oauth2_provider: OAuth 2 провайдер
+        title: Doorkeeper
+      application:
+        title: Необходима авторизация
+    pre_authorization:
+      status: Предварительная авторизация
+  doorkeeper_applications:
+    create:
+      failure:
+      success:
+    destroy:
+      success:
+    edit:
+      title: Редактировать приложение
+    form:
+      confidential:
+        help:
+      redirect_uri:
+        help:
+      scopes:
+        label: Скоупы
+      submit:
+    index:
+      description:
+      new:
+      title:
+    new:
+      title:
+    show:
+      destroy:
+      edit: Редактировать
+      title:
+    update:
+      failure:
+      success:
+  fasp_client:
+    providers:
+      edit:
+        approval_help:
+        approve:
+        backfill_requests:
+        capability:
+        category: Категория
+        contact_details:
+        created:
+        data_sharing:
+        deny: Отклонить
+        disable:
+        email: Email
+        enable:
+        event_subscriptions:
+        fediverse_account:
+        fingerprint:
+        links: Ссылки
+        max_count:
+        privacy_policy:
+        registration:
+        sign_in: Войти
+        subscription_type:
+        versions:
+      index:
+        add_html:
+        description_html:
+        heading:
+        provider_list_title:
+        registered_at:
+        search_3dprint_social_html:
+        status:
+        url:
+  follows:
+    actor_table:
+      actions:
+      address:
+      name: Имя
+    follow_remote_actor:
+      followed:
+    index:
+      explore_html:
+      followers:
+      following:
+      title:
+    new:
+      no_results:
+      recommended:
+      results:
+      title:
+    remote_follow:
+      help:
+      no_results_html:
+      placeholder:
+      submit:
+      title:
+    search_form:
+      help:
+      placeholder:
+      submit:
+    unfollow_remote_actor:
+      unfollowed:
+  general:
+    delete: Удалить
+    download:
+    edit:
+    expand:
+    followers:
+      few:
+      many:
+      one:
+      other:
+      two:
+      zero:
+    menu:
+    new:
+    private:
+    public:
+    report:
+    save:
+    shared:
+    view:
+  home:
+    activity:
+      created:
+      updated:
+    browsing:
+      content:
+      manual_link:
+      more_access:
+      title:
+    federation:
+      content_html:
+      creator_handle_html:
+      following:
+      handle_html:
+      title:
+    index:
+      no_activities:
+      open_search_help:
+      recent_activity:
+      search:
+        placeholder:
+        submit:
+    publishing:
+      content:
+      existing_creator:
+        button:
+        content:
+      new_creator:
+        button:
+        content:
+      title:
+    support:
+      content:
+      manyfold_html:
+      support_link:
+      title:
+    uploading:
+      how_to_upload:
+      permissions:
+        edit:
+        member:
+        private:
+      quota:
+      title:
+      upload:
+    welcome:
+      lead:
+      title:
+  imports:
+    bad_url:
+    create:
+      success:
+    new:
+      description:
+      heading:
+      import:
+      import_capabilities:
+      import_type_html:
+      integration_settings:
+      placeholder:
+      submit:
+      supported_sites:
+  jobs:
+    activity:
+      collection_published:
+        comment:
+      model_collected:
+        comment:
+      model_published:
+        comment:
+      updated_model:
+        comment:
+    analysis:
+      analyse_model_file:
+        detect_duplicates:
+        detect_ineffiency:
+        file_statistics:
+        matching:
+      file_conversion:
+        exporting:
+        loading_mesh:
+      geometric_analysis:
+        direction_check:
+        loading_mesh:
+        manifold_check:
+    scan:
+      detect_filesystem_changes:
+        building_filename_list:
+        building_folder_list:
+        creating_models:
+  kaminari:
+    first_page:
+      label:
+    last_page:
+      label:
+    next_page:
+      label:
+    page:
+      current_page:
+      label:
+    paginator:
+      label:
+    prev_page:
+      label:
+  layouts:
+    application:
+      alert:
+        danger:
+        info:
+      skip_to_content:
+    card_list_page:
+      actions_heading:
+    settings:
+      appearance:
+      downloads:
+      integrations_heading:
+      libraries: Библиотеки
+      moderation_heading:
+      moderation_settings_title:
+      organization:
+      performance:
+      pghero:
+      search_heading:
+      sidekiq:
+      site_settings_title:
+      tools_heading:
+  licenses:
+    0BSD:
+    CC-BY-40:
+    CC-BY-NC-40:
+    CC-BY-NC-ND-40:
+    CC-BY-NC-SA-40:
+    CC-BY-ND-40:
+    CC-BY-SA-40:
+    CC-PDDC:
+    CC0-10:
+    CERN-OHL-P-20:
+    CERN-OHL-S-20:
+    CERN-OHL-W-20:
+    GPL-20-only:
+    GPL-30-only:
+    LGPL-20-only:
+    LGPL-30-only:
+    LicenseRef-Commercial:
+    MIT: MIT
+  moderator_mailer:
+    new_approval:
+      greeting:
+      message:
+      subject:
+    new_report:
+      greeting:
+      message:
+      subject:
+  renderer:
+    errors:
+      canvas:
+      load:
+      webglrenderer:
+    load:
+    processing:
+  reports:
+    create:
+      success:
+    new:
+      description:
+      submit:
+      title:
+  scans:
+    create:
+      success:
+  security:
+    running_as_root_html:
+  sites:
+    cgtrader: CGTrader
+    comicsgamesandthings:
+    cults3d: Cults3D
+    fediverse:
+    github:
+    makerworld:
+    manyfold:
+    myminifactory: MyMiniFactory
+    printables:
+    thangs:
+    theminiindex:
+    thingiverse: Thingiverse
+    yeggi:
+  user_mailer:
+    account_approved:
+      greeting: Привет!
+      message: Ваша учетная запись была подтверждена, теперь вы можете войти в систему по адресу %{link}
+      subject: Учётная запись подтверждена
+    test_email:
+      subject:
+      test_email_message:
+  users:
+    registrations:
+      create:
+        altcha_failed:
+  views:
+    pagination:
+      first: "&laquo; Первая"
+      last: Последняя &raquo;
+      next: Следующая &rsaquo;
+      previous: "&lsaquo; Предыдущая"
+      truncate: "&hellip;"

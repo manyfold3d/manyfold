@@ -1,0 +1,37 @@
+---
+ru:
+  collections:
+    collection:
+      collections_button:
+        label:
+        remote_label:
+      delete_button:
+        label:
+      edit_button:
+        label:
+      models_button:
+        label:
+        remote_label:
+      no_preview:
+    create:
+      success:
+    destroy:
+      confirm:
+      success:
+    form:
+      notes:
+        help_html:
+    general:
+      edit:
+      new:
+    get_collection:
+      unknown:
+    index:
+      skip_collections:
+    show:
+      edit:
+    unassigned:
+      caption:
+      name:
+    update:
+      success:
