@@ -193,7 +193,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def load_languages
     @languages = [[t("devise.registrations.general_settings.interface_language.autodetect"), nil]].concat(
-      I18n.available_locales.map { |locale| [I18nData.languages(locale)[locale.upcase.to_s]&.capitalize, locale] }
+      I18n.available_locales.map { |locale| [I18nData.languages(locale)[locale.to_s.first(2).upcase.to_s]&.capitalize, locale] }
     )
   end
 
