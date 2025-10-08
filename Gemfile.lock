@@ -394,7 +394,7 @@ GEM
       activejob (>= 6.1)
     jsbundling-rails (1.3.1)
       railties (>= 6.0.0)
-    json (2.15.0)
+    json (2.15.1)
     json-canonicalization (1.0.0)
     json-jwt (1.16.6)
       activesupport (>= 4.2)
@@ -678,7 +678,7 @@ GEM
       reline
     redis (5.4.1)
       redis-client (>= 0.22.0)
-    redis-client (0.25.3)
+    redis-client (0.26.1)
       connection_pool
     redis-namespace (1.11.0)
       redis (>= 4)
@@ -802,7 +802,7 @@ GEM
       down (~> 5.0)
       http (>= 3.2, < 6)
       shrine (>= 3.0.0.rc, < 4)
-    sidekiq (8.0.7)
+    sidekiq (8.0.8)
       connection_pool (>= 2.5.0)
       json (>= 2.9.0)
       logger (>= 1.6.2)
@@ -1187,7 +1187,7 @@ CHECKSUMS
   jmespath (1.6.2) sha256=238d774a58723d6c090494c8879b5e9918c19485f7e840f2c1c7532cf84ebcb1
   job-iteration (1.11.0) sha256=3a5c876f26d65aaef20c190ecbda5ed72075b37949ef4870d79c8af7b97e3f16
   jsbundling-rails (1.3.1) sha256=0fa03f6d051c694cbf55a022d8be53399879f2c4cf38b2968f86379c62b1c2ca
-  json (2.15.0) sha256=bc24d490a1d81bcbf6b45ee5c02695545d4ed37f679cee879b789a2bbb53ad5c
+  json (2.15.1) sha256=b1c1b2e7c116eb1903e0ce0c374783e6ead8747a0f9eca132d274018ebb80b89
   json-canonicalization (1.0.0) sha256=d4848a8cca7534455c6721f2d9fc9e5e9adca49486864a898810024f67d59446
   json-jwt (1.16.6) sha256=ab451f9cd8743cecc4137f4170806046c1d8a6d4ee6e8570e0b5c958409b266c
   json-ld (3.3.2) sha256=b9531893bf5bdc01db428e96953845a23adb1097125ce918ae0f97c4a6e1ab27
@@ -1295,7 +1295,7 @@ CHECKSUMS
   rdoc (6.14.2) sha256=9fdd44df130f856ae70cc9a264dfd659b9b40de369b16581f4ab746e42439226
   readline (0.0.4) sha256=6138eef17be2b98298b672c3ea63bf9cb5158d401324f26e1e84f235879c1d6a
   redis (5.4.1) sha256=b5e675b57ad22b15c9bcc765d5ac26f60b675408af916d31527af9bd5a81faae
-  redis-client (0.25.3) sha256=bff579db68dd7c59be8f9575a5825d8fb2a23944438f6e5e7e57e7ffddd34e50
+  redis-client (0.26.1) sha256=1e39d2862c4516a75ff777ee6ed08827af39336bfece4a48e944244891d9a073
   redis-namespace (1.11.0) sha256=e91a1aa2b2d888b6dea1d4ab8d39e1ae6fac3426161feb9d91dd5cca598a2239
   redlock (2.0.6) sha256=de262f7d7c78112435b6b356766b7733e05c452f25cf66c23b0eec1dc2893dde
   regexp_parser (2.11.3) sha256=ca13f381a173b7a93450e53459075c9b76a10433caadcb2f1180f2c741fc55a4
@@ -1337,7 +1337,7 @@ CHECKSUMS
   shrine (3.6.0) sha256=d361b7e5a452d65d900f3326ed99fe343d0d3b2ce17e012fc04ae85b0373358c
   shrine-tus (2.1.1) sha256=fc16e11b7f806963b0ba8d61271bb5fbae24d8065aa8eed889abc9f46e841f99
   shrine-url (2.4.1) sha256=e086a9c3017b881483a8aaa516b369cfc3bc6dcbbe2bff55a26c8ace08634429
-  sidekiq (8.0.7) sha256=7efa1f9df14189fcdfab6a0ba6966bff9602dee3c9bd72f8d3b2e5a5d0f37f84
+  sidekiq (8.0.8) sha256=67b5f0e008025ae87e479c22a41cad54381de51dbfb4e1cc864fb0ce2e9db606
   sidekiq-cron (2.3.1) sha256=96ab3da372289a30dc744c1daa2ae2e85960b2444a6f6ed68df1ff7882c44aac
   simple_po_parser (1.1.6) sha256=122687d44d3de516a0e69e2f383a4180f5015e8c5ed5a7f2258f2b376f64cbf3
   simplecov (0.22.0) sha256=fe2622c7834ff23b98066bb0a854284b2729a569ac659f82621fc22ef36213a5
