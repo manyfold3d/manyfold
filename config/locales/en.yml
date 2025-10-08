@@ -690,6 +690,7 @@ en:
         edit: You can grant additional permissions on the item's edit page.
         member: By default, uploaded content will be visible to any local logged-in user.
         private: By default, uploaded content will not be visible to any other users.
+        public: By default, uploaded content will be publicly visible to anyone who visits the site.
       quota: You can upload up to %{quota} of content, and you can always view your current quota usage on your settings page.
       title: Uploading
       upload: Upload

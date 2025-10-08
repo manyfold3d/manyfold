@@ -32,8 +32,12 @@ module CaberObject
 
   def assign_default_permissions
     # Grant local view access by default
-    role = SiteSettings.default_viewer_role
-    grant_permission_to("view", Role.find_or_create_by(name: role)) if role.presence
+    case SiteSettings.default_viewer_role.to_sym
+    when :member
+      grant_permission_to("view", Role.find_or_create_by(name: "member"))
+    when :public
+      grant_permission_to("view", nil)
+    end
     # Set default owner if an owner isn't already set
     if permitted_users.with_permission("own").empty?
       owner = SiteSettings.default_user

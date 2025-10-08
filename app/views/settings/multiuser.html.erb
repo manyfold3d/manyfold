@@ -67,7 +67,8 @@
     <div class="col-sm-8">
       <%= form.select "multiuser[default_viewer_role]",
             [[translate(".default_viewer_role.options.none"), ""],
-              [translate(".default_viewer_role.options.member"), "member"]],
+              [translate(".default_viewer_role.options.member"), "member"],
+              [translate(".default_viewer_role.options.public"), "public"]],
             {selected: SiteSettings.default_viewer_role.to_s},
             {class: "form-select"} %>
       <small><%= t(".default_viewer_role.help") %></small>
