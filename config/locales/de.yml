@@ -12,8 +12,8 @@ de:
         notes: Beschreibung
       creator:
         ai_indexable: Verwendung für KI-Training zulassen
-        avatar:
-        banner:
+        avatar: Avatar-Bild
+        banner: Banner-Bild
         caption: Beschreibung
         indexable: Indizierung der Suche zulassen
         name: Autor
@@ -76,7 +76,7 @@ de:
       model_file:
         caption: Beschreibung
         digest: Hash
-        dimensions:
+        dimensions: Abmessungen
         filename: Dateiname
         model_id: Modell
         notes: Notizen
@@ -305,11 +305,11 @@ de:
     navbar:
       account: Meine Einstellungen
       activity: Aktivität
-      add_models:
+      add_models: Inhalt hinzufügen
       check_existing: Alle Modelle neu scannen
-      check_results:
+      check_results: Gefilterte Modelle erneut scannen
       home: Homepage
-      import_url:
+      import_url: URL importieren
       log_in: Einloggen
       log_out: Abmelden
       moderator_settings: Moderator-Einstellungen
@@ -321,7 +321,7 @@ de:
       scanning: Scannen
       search: Suche
       settings: Admin-Einstellungen
-      upload: Hochladen
+      upload: Modelle hochladen
     order_buttons:
       sort:
         name: Nach Namen sortieren
@@ -392,7 +392,7 @@ de:
       more_details_html: Weitere Informationen findest du in der vollständigen Dokumentation für <a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">die Abfragesprache von scoped_search</a>.
       negation: Um Begriffe auszuschließen, verwende  "not", "!" oder "-".
       parentheses: Gruppiere Begriffe mit Klammern für komplexere logische Kombinationen.
-      path:
+      path: Suche innerhalb von Modellordnerpfaden, indem du diese explizit angibst; verwende `~` für eine teilweise Übereinstimmung.
       quotes: Um nach mehreren Wörtern in einem einzigen Begriff zu suchen, verwende Anführungszeichen; es werden dann nur Modelle mit dem exakten Text angezeigt.
       simple: In der Standardeinstellung findet die Suche Modelle, die allen Begriffen entsprechen.
       specific_fields: Du kannst nach Begriffen in einigen bestimmten Feldern suchen. Verwende "~", um einen Teil des Feldes zu finden; verwende "=" um das ganze Feld zu finden. Modellbeschreibungen und Bibliotheksnamen werden nur durchsucht, wenn du es explizit angibst
@@ -557,37 +557,37 @@ de:
   fasp_client:
     providers:
       edit:
-        approval_help:
-        approve:
-        backfill_requests:
-        capability:
+        approval_help: Überprüfe, ob der hier angezeigte Fingerabdruck mit dem des Anbieters übereinstimmt, und lasse nur Anbieter zu, denen du vertraust.
+        approve: Genehmigen
+        backfill_requests: Anträge auf Verfüllung
+        capability: Fähigkeit
         category: Kategorie
-        contact_details:
+        contact_details: Kontaktangaben
         created: Erstellt
-        data_sharing:
+        data_sharing: Daten weitergabe
         deny: Verweigern
-        disable:
+        disable: Deaktivieren
         email: E-Mail
-        enable:
-        event_subscriptions:
+        enable: Aktivieren
+        event_subscriptions: Updates Erhalten
         fediverse_account: Fediverse-Adresse
-        fingerprint:
+        fingerprint: Fingerabdruck
         links: URLs
-        max_count:
-        privacy_policy:
-        registration:
+        max_count: Maximale Anzahl
+        privacy_policy: Datenschutzeinstellungen
+        registration: Registrierung
         sign_in: Einloggen
-        subscription_type:
-        versions:
+        subscription_type: Abo typ
+        versions: Versionen
       index:
-        add_html:
-        description_html:
-        heading:
-        provider_list_title:
-        registered_at:
-        search_3dprint_social_html:
-        status:
-        url:
+        add_html: 'Um einen neuen FASP zu aktivieren, besuche den Anbieter und gebe bei der Anmeldung die URL dieses Servers ein: <code>%{base_url}</code>. Du solltest nur Anbieter verwenden, denen du vertraust, und deren Datenschutzbestimmungen vollständig lesen, bevor du die Dienste aktivierst. Beachte, dass nur öffentliche indizierbare Inhalte mit FASPs geteilt werden.'
+        description_html: Fediverse Auxiliary Service Providers (FASPs) ermöglichen im Rahmen des <a href="https://fediscovery.org" target="_new" rel="noopener">Fediscovery-Projekts</a> zusätzliche Funktionen für Fediverse-Server, wie Suche, Trends, Spam-Erkennung und mehr.
+        heading: FASP Dienstleistungen
+        provider_list_title: Registrierte FASP
+        registered_at: Registriert bei
+        search_3dprint_social_html: Wir empfehlen, den <a href="https://search.3dprint.social/registration/new" rel="noreferrer">search.3dprint.social</a> FASP zu verbinden; er wird von den Manyfold-Entwicklern betrieben und ist speziell für die Suche nach 3D-Inhalten konfiguriert.
+        status: Status
+        url: URL
   follows:
     actor_table:
       actions: Aktionen
@@ -596,13 +596,13 @@ de:
     follow_remote_actor:
       followed: Erfolgreich %{actor} gefolgt
     index:
-      explore_html:
+      explore_html: Oder finde <a href="%{link}">empfohlene Inhalte</a>, denen du folgen kannst!
       followers: Follower
       following: Follgende
       title: Verbindungen
     new:
       no_results: Ich konnte leider nichts zu "%{query}" finden. Handelt es sich um ein gültiges ActivityPub-Konto oder eine URL?
-      recommended:
+      recommended: Empfehlungen
       results: Suchergebnisse
       title: Folge dem Fediverse
     remote_follow:
@@ -650,8 +650,8 @@ de:
       content_html: Diese Manyfold-Instanz ist Teil des <a href="https://jointhefediverse.net">Fediverse</a>, eines Netzwerks von Social-Media-Sites, die alle zusammenarbeiten. Das bedeutet, dass, wenn du hier ein Konto hast, kannst du anderen Menschen auf ihren Instanzen Folgen, oder Menschen können dir von anderen Plattformen wie Mastodon folgen.
       creator_handle_html: 'Das fediverse-Handle deines Erstellerprofils lautet: <code>%{handle}</code>.'
       following: Wenn du das Handle von jemandem oder etwas kennst, dem du folgen möchtest, gib es einfach in das Suchfeld ein; andernfalls geb den persönlichen Handle oben ein, wenn du etwas auf einer anderen Instanz folgen möchstest.
-      handle_html:
-      title:
+      handle_html: 'Ihr fediverse-Handle lautet: <code>%{handle}</code>'
+      title: Föderation
     index:
       no_activities: Im Moment gibt es keine Aktivitäten zu sehen.
       open_search_help: Such-Syntax
@@ -660,33 +660,33 @@ de:
         placeholder: Wonach suchen Sie?
         submit: Suche
     publishing:
-      content:
+      content: Du kannst Inhalte öffentlich veröffentlichen, indem du der Rolle "public" auf der Bearbeitungsseite des Artikels die Berechtigung "view" oder "preview" gibst. Ersteller von öffentlichen Modellen werden automatisch öffentlich gemacht, aber Sammlungen müssen explizit veröffentlicht werden, wenn sie sichtbar sein sollen.
       existing_creator:
-        button:
-        content:
+        button: Erstellerprofil bearbeiten
+        content: 'Wenn du deine eigenen Werke veröffentlichst, möchtest du wahrscheinlich dein Erstellerprofil anpassen:'
       new_creator:
-        button:
-        content:
-      title:
+        button: Ein neues Erstellerprofil einrichten
+        content: 'Wenn du deine eigenen Werke veröffentlichst, möchtest du wahrscheinlich dein eigenes Autorenprofil einrichten:'
+      title: Veröffentlichung
     support:
-      content:
-      manyfold_html:
+      content: Viele Instanzen werden von Menschen wie Ihnen betrieben! Wenn du diese Instanz nützlich findest, könntest du helfen, sie am Laufen zu halten, indem du unten klickst.
+      manyfold_html: Um die Entwicklung der Manyfold-Software selbst zu unterstützen, kannst du dies bei <a href="https://opencollective.com/manyfold">OpenCollective</a> tun.
       support_link: Diese Instanz unterstützen
-      title:
+      title: Unterstützen
     uploading:
-      how_to_upload:
+      how_to_upload: Du kannst Modelle hinzufügen, indem du in der Menüleiste auf die Schaltfläche Hochladen klickst. Um viele Dateien als ein einziges Modell hochzuladen, komprimiere sie in einer einzigen Archivdatei (z. B. ZIP oder RAR).
       permissions:
-        edit:
-        member:
-        private:
-      quota:
-      title:
+        edit: Du kannst auf der Bearbeitungsseite des Artikels zusätzliche Berechtigungen erteilen.
+        member: Standardmäßig sind hochgeladene Inhalte für jeden lokal angemeldeten Benutzer sichtbar.
+        private: Standardmäßig sind die hochgeladenen Inhalte für andere Nutzer nicht sichtbar.
+      quota: Du kannst bis zu %{quota} Inhalte hochladen, und du kannst deinen aktuellen Kontingentverbrauch jederzeit auf deiner Einstellungsseite einsehen.
+      title: Hochladen
       upload: Hochladen
     welcome:
-      lead:
-      title:
+      lead: Auf dieser Website läuft Manyfold, eine Software zum Verwalten und Freigeben von 3D-Modellen; hier ist eine kurze Anleitung...
+      title: Willkommen bei %{site_name}!
   imports:
-    bad_url:
+    bad_url: Wir konnten keine nützlichen Informationen von dieser URL erhalten; du könntest falsch sein oder nicht unterstützt werden.
     create:
       success:
     new:
