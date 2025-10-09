@@ -8,7 +8,8 @@ module CaberObject
 
     accepts_nested_attributes_for :caber_relations, reject_if: :all_blank, allow_destroy: true
 
-    after_create_commit :assign_default_permissions
+    after_create_commit :set_permissions_from_preset
+    after_create_commit :set_owner
 
     before_update -> { @was_private = !public? }
 
@@ -30,7 +31,7 @@ module CaberObject
     public? && @was_private
   end
 
-  def assign_default_permissions
+  def set_permissions_from_preset
     # Grant local view access by default
     case SiteSettings.default_viewer_role.to_sym
     when :member
@@ -38,6 +39,9 @@ module CaberObject
     when :public
       grant_permission_to("view", nil)
     end
+  end
+
+  def set_owner
     # Set default owner if an owner isn't already set
     if permitted_users.with_permission("own").empty?
       owner = SiteSettings.default_user
