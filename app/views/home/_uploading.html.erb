@@ -16,6 +16,7 @@
     <p>
       <%= t ".permissions.private" if SiteSettings.default_viewer_role == "" %>
       <%= t ".permissions.member" if SiteSettings.default_viewer_role == "member" %>
+      <%= t ".permissions.public" if SiteSettings.default_viewer_role == "public" %>
       <%= t ".permissions.edit" %>
     </p>
     <div class="text-end">

@@ -139,6 +139,7 @@ en:
         options:
           member: Members (logged-in local accounts)
           none: Private
+          public: Public
       details_html: To change these settings, edit the server's <a href='https://manyfold.app/sysadmin/configuration.html'>environment variables</a> and restart.
       email: Email delivery configured?
       federation: Federation enabled?

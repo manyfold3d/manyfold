@@ -19,6 +19,22 @@ shared_examples "Caber::Object" do
     expect(object.grants_permission_to?("own", admin)).to be false
   end
 
+  context "with default permissions set to public" do
+    before do
+      allow(SiteSettings).to receive(:default_viewer_role).and_return(:public)
+    end
+
+    let(:object) { create(described_class.to_s.underscore.to_sym) }
+
+    it "grants view permission to member role" do
+      expect(object.grants_permission_to?("view", nil)).to be true
+    end
+
+    it "does not grant public update permission" do
+      expect(object.grants_permission_to?("update", nil)).to be false
+    end
+  end
+
   context "with default permissions set to member-visible" do
     before do
       allow(SiteSettings).to receive(:default_viewer_role).and_return(:member)
@@ -30,7 +46,7 @@ shared_examples "Caber::Object" do
       expect(object.grants_permission_to?("view", Role.find_by!(name: "member"))).to be true
     end
 
-    it "does not grants public view permission" do
+    it "does not grant public view permission" do
       expect(object.grants_permission_to?("view", nil)).to be false
     end
   end
@@ -46,7 +62,7 @@ shared_examples "Caber::Object" do
       expect(object.grants_permission_to?("view", Role.find_by!(name: "member"))).to be false
     end
 
-    it "does not grants public view permission" do
+    it "does not grant public view permission" do
       expect(object.grants_permission_to?("view", nil)).to be false
     end
   end
