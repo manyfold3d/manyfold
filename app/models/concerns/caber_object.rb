@@ -6,6 +6,8 @@ module CaberObject
     can_grant_permissions_to User
     can_grant_permissions_to Role
 
+    attribute :owner, default: -> { SiteSettings.default_user }
+    attribute :permission_preset, default: -> { SiteSettings.default_viewer_role }
     accepts_nested_attributes_for :caber_relations, reject_if: :all_blank, allow_destroy: true
 
     after_create_commit :set_permissions_from_preset
@@ -32,8 +34,7 @@ module CaberObject
   end
 
   def set_permissions_from_preset
-    # Grant local view access by default
-    case SiteSettings.default_viewer_role.to_sym
+    case permission_preset.to_sym
     when :member
       grant_permission_to("view", Role.find_or_create_by(name: "member"))
     when :public
@@ -44,7 +45,6 @@ module CaberObject
   def set_owner
     # Set default owner if an owner isn't already set
     if permitted_users.with_permission("own").empty?
-      owner = SiteSettings.default_user
       grant_permission_to("own", owner) if owner
     end
   end
