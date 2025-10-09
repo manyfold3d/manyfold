@@ -14,7 +14,7 @@ shared_examples "Caber::Object" do
   end
 
   it "can be given an explicit owner at creation" do # rubocop:disable RSpec/MultipleExpectations, RSpec/ExampleLength
-    object = create(described_class.to_s.underscore.to_sym, described_class.caber_owner(contributor))
+    object = create(described_class.to_s.underscore.to_sym, owner: contributor)
     expect(object.grants_permission_to?("own", contributor)).to be true
     expect(object.grants_permission_to?("own", admin)).to be false
   end
@@ -56,7 +56,7 @@ shared_examples "Caber::Object" do
       allow(SiteSettings).to receive(:default_viewer_role).and_return("private")
     end
 
-    let(:object) { create(described_class.to_s.underscore.to_sym, described_class.caber_owner(contributor)) }
+    let(:object) { create(described_class.to_s.underscore.to_sym) }
 
     it "does not grant view permission to member role" do
       expect(object.grants_permission_to?("view", Role.find_by!(name: "member"))).to be false

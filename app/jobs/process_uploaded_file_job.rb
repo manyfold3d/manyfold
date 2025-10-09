@@ -23,7 +23,7 @@ class ProcessUploadedFileJob < ApplicationJob
     new_file = nil
     ActiveRecord::Base.transaction do
       if model.nil?
-        data.merge!(Model.caber_owner(owner)) if owner
+        data[:owner] = owner if owner
         model = library.models.create!(data)
         model.organize!
         new_model = true

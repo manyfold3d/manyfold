@@ -10,8 +10,8 @@ class CreateObjectFromUrlJob < ApplicationJob
     common_options = {
       name: "Importing from #{url.split("://").last} ...",
       links_attributes: [{url: url}],
-      caber_relations_attributes: (owner ? [{permission: "own", subject: owner}] : [])
-    }
+      owner: owner
+    }.compact
     # Create new object
     object = case deserializer&.capabilities&.dig(:class)&.name
     when "Model"
