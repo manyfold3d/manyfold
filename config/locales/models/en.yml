@@ -68,6 +68,7 @@ en:
       free_space: "(%{available} free)"
       library:
         help: The library to upload to.
+      permission_preset: Permissions
       submit: Create models
       title: Upload
     organize:

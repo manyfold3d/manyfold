@@ -8,6 +8,7 @@ module Form
         :library,
         :license,
         :sensitive,
+        :permission_preset,
         add_tags: [],
         file: [
           [:id, :name]

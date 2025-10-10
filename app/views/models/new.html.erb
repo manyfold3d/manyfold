@@ -32,6 +32,19 @@
 
   <%= render "bulk_fields", form: form, default_tags: SiteSettings.model_tags_auto_tag_new %>
 
+  <div class="row mb-3">
+    <%= form.label translate(".permission_preset"), for: :permission_preset, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.select :permission_preset, [
+              [translate("settings.multiuser.default_viewer_role.options.private"), "private"],
+              [translate("settings.multiuser.default_viewer_role.options.member"), "member"],
+              [translate("settings.multiuser.default_viewer_role.options.public"), "public"],
+            ],
+            {selected: SiteSettings.default_viewer_role, include_blank: true},
+            {class: "form-control col-auto form-select"} %>
+    </div>
+  </div>
+
   <div class="row mb-3 input-group">
     <div class='offset-sm-2 col-sm-10 ps-0'>
       <%= submit_tag translate(".submit"), class: "btn btn-primary" %>
