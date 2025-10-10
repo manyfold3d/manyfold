@@ -128,6 +128,7 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
               collection_id: nil,
               license: "MIT",
               sensitive: true,
+              permission_preset: nil,
               tags: ["tag1", "tag2"]
             ).once
           end

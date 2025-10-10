@@ -69,7 +69,7 @@ class CreatorsController < ApplicationController
 
   def create
     authorize Creator
-    @creator = Creator.create(creator_params.merge(Creator.caber_owner(current_user)))
+    @creator = Creator.create(creator_params.merge(owner: current_user))
     respond_to do |format|
       format.html do
         if @creator.valid?

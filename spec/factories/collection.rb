@@ -6,7 +6,7 @@ FactoryBot.define do
     links_attributes { [{url: "http://example.com"}] }
 
     trait :public do
-      caber_relations_attributes { [{subject: nil, permission: "view"}] }
+      permission_preset { :public }
     end
   end
 end

@@ -72,7 +72,7 @@ class CollectionsController < ApplicationController
 
   def create
     authorize Collection
-    @collection = Collection.create(collection_params.merge(Collection.caber_owner(current_user)))
+    @collection = Collection.create(collection_params.merge(owner: current_user))
     respond_to do |format|
       format.html do
         if @collection.valid?

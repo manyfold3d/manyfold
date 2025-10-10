@@ -92,7 +92,8 @@ class ModelsController < ApplicationController
         collection_id: p[:collection_id],
         license: p[:license],
         sensitive: (p[:sensitive] == "1"),
-        tags: p[:add_tags]
+        tags: p[:add_tags],
+        permission_preset: p[:permission_preset]
       )
     end
     respond_to do |format|

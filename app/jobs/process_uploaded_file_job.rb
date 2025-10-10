@@ -1,7 +1,7 @@
 class ProcessUploadedFileJob < ApplicationJob
   queue_as :critical
 
-  def perform(library_id, uploaded_file, owner: nil, creator_id: nil, collection_id: nil, tags: nil, license: nil, model: nil, sensitive: nil)
+  def perform(library_id, uploaded_file, owner: nil, creator_id: nil, collection_id: nil, tags: nil, license: nil, model: nil, sensitive: nil, permission_preset: nil)
     # Find library
     library = Library.find(library_id)
     return if library.nil?
@@ -16,14 +16,15 @@ class ProcessUploadedFileJob < ApplicationJob
       collection_id: collection_id,
       tag_list: tags,
       license: license,
-      sensitive: sensitive
+      sensitive: sensitive,
+      permission_preset: permission_preset
     }.compact
     # Create model
     new_model = false
     new_file = nil
     ActiveRecord::Base.transaction do
       if model.nil?
-        data.merge!(Model.caber_owner(owner)) if owner
+        data[:owner] = owner if owner
         model = library.models.create!(data)
         model.organize!
         new_model = true
