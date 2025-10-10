@@ -138,7 +138,7 @@ zh-CN:
         label:
         options:
           member:
-          none:
+          private:
       details_html:
       email:
       federation:

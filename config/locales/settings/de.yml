@@ -138,7 +138,7 @@ de:
         label: Standard-Sichtbarkeit
         options:
           member: Mitglieder (eingeloggte lokale Konten)
-          none: Privat
+          private: Privat
       details_html: Um diese Einstellungen zu ändern, bearbeite die <a href='https://manyfold.app/sysadmin/configuration.html'>Umgebungsvariablen</a> des Servers und starten Sie ihn neu.
       email: E-Mail-Zustellung konfiguriert?
       federation: Föderation möglich?

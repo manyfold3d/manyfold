@@ -138,7 +138,7 @@ es:
         label: Visibilidad por defecto
         options:
           member: Usuarios locales conectados
-          none: Privado
+          private: Privado
       details_html: Para cambiar esta configuración, edite las <a href='https://manyfold.app/sysadmin/configuration.html'>variables de entorno</a> del servidor y reinicie.
       email: "¿Está configurada la entrega de emails?"
       federation: "¿Federación habilitada?"

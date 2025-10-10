@@ -13,6 +13,7 @@ en:
       update_all: Update All %{count} Models
     bulk_fields:
       add_tags: Add tags
+      permission_preset: Permissions
     bulk_update:
       success: Models updated successfully.
     configure_merge:

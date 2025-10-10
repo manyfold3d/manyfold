@@ -66,7 +66,7 @@
     <%= form.label nil, t(".default_viewer_role.label"), for: "multiuser[default_viewer_role]", class: "col-sm-4 col-form-label" %>
     <div class="col-sm-8">
       <%= form.select "multiuser[default_viewer_role]",
-            [[translate(".default_viewer_role.options.none"), "private"],
+            [[translate(".default_viewer_role.options.private"), "private"],
               [translate(".default_viewer_role.options.member"), "member"],
               [translate(".default_viewer_role.options.public"), "public"]],
             {selected: SiteSettings.default_viewer_role.to_s},

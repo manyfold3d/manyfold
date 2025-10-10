@@ -135,10 +135,10 @@ en:
           member: Member (read only)
       default_viewer_role:
         help: Who can view new models / creators / collections by default?
-        label: Default visibility
+        label: Default permissions
         options:
           member: Members (logged-in local accounts)
-          none: Private
+          private: Private
           public: Public
       details_html: To change these settings, edit the server's <a href='https://manyfold.app/sysadmin/configuration.html'>environment variables</a> and restart.
       email: Email delivery configured?
