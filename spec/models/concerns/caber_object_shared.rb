@@ -53,7 +53,7 @@ shared_examples "Caber::Object" do
 
   context "with default permissions set to private" do
     before do
-      allow(SiteSettings).to receive(:default_viewer_role).and_return("")
+      allow(SiteSettings).to receive(:default_viewer_role).and_return("private")
     end
 
     let(:object) { create(described_class.to_s.underscore.to_sym, described_class.caber_owner(contributor)) }
