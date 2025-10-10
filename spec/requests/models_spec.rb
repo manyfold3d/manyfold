@@ -519,6 +519,7 @@ RSpec.describe "Models" do
             collection_id: collection.id,
             license: "MIT",
             sensitive: "1",
+            permission_preset: "public",
             add_tags: ["tag1", "tag2"]
           }
         }
@@ -539,6 +540,7 @@ RSpec.describe "Models" do
               collection_id: collection.id.to_s,
               license: "MIT",
               sensitive: true,
+              permission_preset: "public",
               tags: ["tag1", "tag2"]).once
         end
 
