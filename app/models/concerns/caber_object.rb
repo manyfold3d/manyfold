@@ -32,10 +32,15 @@ module CaberObject
   def set_permissions_from_preset
     preset = @permission_preset || SiteSettings.default_viewer_role
     case preset.to_sym
-    when :member
-      grant_permission_to("view", Role.find_or_create_by(name: "member"))
     when :public
       grant_permission_to("view", nil)
+      revoke_permission("view", Role.find_or_create_by(name: "member"))
+    when :member
+      revoke_permission("view", nil)
+      grant_permission_to("view", Role.find_or_create_by(name: "member"))
+    when :private
+      revoke_permission("view", nil)
+      revoke_permission("view", Role.find_or_create_by(name: "member"))
     end
   end
 
