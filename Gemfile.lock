@@ -30,8 +30,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails.git
-  revision: c72b26f802f28e58d8619cbda33b03165b699da3
-  branch: mariadb-serialization
+  revision: 41d26258cdbb19650d55390441b97540e84d20fa
+  branch: main
   specs:
     federails (0.7.0)
       faraday
