@@ -36,10 +36,10 @@
     <%= form.label translate(".permission_preset"), for: :permission_preset, class: "col-sm-2 col-form-label" %>
     <div class="col-sm-10">
       <%= form.select :permission_preset, [
-              [translate("settings.multiuser.default_viewer_role.options.private"), "private"],
-              [translate("settings.multiuser.default_viewer_role.options.member"), "member"],
-              [translate("settings.multiuser.default_viewer_role.options.public"), "public"],
-            ],
+            [translate("settings.multiuser.default_viewer_role.options.private"), "private"],
+            [translate("settings.multiuser.default_viewer_role.options.member"), "member"],
+            [translate("settings.multiuser.default_viewer_role.options.public"), "public"]
+          ],
             {selected: SiteSettings.default_viewer_role, include_blank: true},
             {class: "form-control col-auto form-select"} %>
     </div>
