@@ -14,7 +14,7 @@
       </p>
     <% end %>
     <p>
-      <%= t ".permissions.private" if SiteSettings.default_viewer_role == "" %>
+      <%= t ".permissions.private" if SiteSettings.default_viewer_role == "private" %>
       <%= t ".permissions.member" if SiteSettings.default_viewer_role == "member" %>
       <%= t ".permissions.public" if SiteSettings.default_viewer_role == "public" %>
       <%= t ".permissions.edit" %>
