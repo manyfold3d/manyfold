@@ -28,7 +28,7 @@ class Collection < ApplicationRecord
   belongs_to :creator, optional: true
   validates :name, uniqueness: {case_sensitive: false}
   validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
-  validates :collection_id, exclusion: {in: ->(it) { Array(it.id) }}
+  validates :collection_id, exclusion: {in: -> { Array(it.id) }}
 
   before_validation :publish_creator, if: :will_be_public?
 
@@ -114,7 +114,7 @@ class Collection < ApplicationRecord
 
   def validate_publishable
     # If the model will be public
-    if caber_relations.find { |it| it.subject.nil? }
+    if caber_relations.find { it.subject.nil? }
       # Check required fields
       errors.add :creator, :private if creator && !creator.public?
       errors.add :collection, :private if collection && !collection.public?

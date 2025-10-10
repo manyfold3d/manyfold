@@ -35,6 +35,7 @@ class ArchiveDownloadService
 
   def prepare(delay: 0.seconds, queue: nil)
     return if ready? || preparing?
+
     FileUtils.touch(temp_file)
     PrepareDownloadJob.set(wait: delay, queue: queue).perform_later(
       model_id: @model.id,
@@ -45,6 +46,7 @@ class ArchiveDownloadService
   def wait_until_ready
     loop do
       break if ready?
+
       sleep(1)
     end
   end

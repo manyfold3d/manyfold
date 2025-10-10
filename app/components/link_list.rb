@@ -11,6 +11,7 @@ class Components::LinkList < Components::Base
 
   def view_template
     return if @links.empty?
+
     ul class: "list-unstyled" do
       @links.each do |link|
         if link.valid?

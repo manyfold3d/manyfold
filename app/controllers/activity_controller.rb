@@ -10,8 +10,8 @@ class ActivityController < ApplicationController
   ]
 
   def index
-    @jobs = ActiveJob::Status.all.sort_by { |it| it.last_activity || "" }.reverse # rubocop:disable Pundit/UsePolicyScope
-    @jobs.reject! { |it| EXCLUSIONS.include? it.read.dig(:serialized_job, "job_class") }
+    @jobs = ActiveJob::Status.all.sort_by { it.last_activity || "" }.reverse # rubocop:disable Pundit/UsePolicyScope
+    @jobs.reject! { EXCLUSIONS.include? it.read.dig(:serialized_job, "job_class") }
     @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(50)
   end
 end

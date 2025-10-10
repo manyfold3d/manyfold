@@ -112,6 +112,7 @@ class Components::SearchHelp < Components::Base
 
   def federation
     return unless SiteSettings.federation_enabled?
+
     tr do
       td do
         code { "@manyfold@3dp.chat" }

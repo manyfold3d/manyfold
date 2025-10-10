@@ -12,6 +12,7 @@ module ActivityPub
 
     def short_creator(creator)
       return nil unless creator
+
       {
         "@id": creator.federails_actor.federated_url,
         type: "Person",
@@ -23,6 +24,7 @@ module ActivityPub
 
     def short_collection(collection)
       return nil unless collection
+
       {
         "@id": collection.federails_actor.federated_url,
         type: "Group",

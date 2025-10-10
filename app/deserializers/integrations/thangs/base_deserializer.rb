@@ -4,7 +4,7 @@ class Integrations::Thangs::BaseDeserializer < Integrations::BaseDeserializer
     model_slug: /(?<model_slug>[[:alnum:]\- ]+)/,
     model_id: /(?<model_id>[[:digit:]]+)/
   }
-  USERNAME_PATTERN = /[[:alnum:]_\-]+/
+  USERNAME_PATTERN = /[[:alnum:]_-]+/
 
   private
 
@@ -27,6 +27,7 @@ class Integrations::Thangs::BaseDeserializer < Integrations::BaseDeserializer
     u = URI.parse(uri)
     return if u.host != "thangs.com"
     return unless valid_path?(u.path)
+
     # Force https
     u.scheme = "https"
     # Remove query and fragment

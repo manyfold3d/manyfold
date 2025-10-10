@@ -11,6 +11,7 @@ class Components::PreviewFrame < Components::Base
 
   def before_template
     return if remote?
+
     @file = @object.is_a?(Model) ? @object.preview_file : policy_scope(@object.models).first&.preview_file
   end
 
@@ -67,6 +68,7 @@ class Components::PreviewFrame < Components::Base
 
   def needs_hiding?
     return false unless current_user.nil? || current_user.sensitive_content_handling.present?
+
     case @object.class
     when Model
       @object.sensitive

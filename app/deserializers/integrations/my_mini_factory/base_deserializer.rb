@@ -20,6 +20,7 @@ class Integrations::MyMiniFactory::BaseDeserializer < Integrations::BaseDeserial
     u.host = "www.myminifactory.com" if u.host == "myminifactory.com"
     return if u.host != "www.myminifactory.com"
     return unless valid_path?(u.path)
+
     # Force https
     u.scheme = "https"
     # Remove query and fragment
@@ -30,6 +31,7 @@ class Integrations::MyMiniFactory::BaseDeserializer < Integrations::BaseDeserial
 
   def creator_attributes(data)
     return {} if data.nil? || (data["profile_url"].nil? && data["username"].nil?)
+
     attempt_creator_match(Integrations::MyMiniFactory::CreatorDeserializer.parse(data))
   end
 end

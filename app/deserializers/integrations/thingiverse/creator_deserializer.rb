@@ -3,6 +3,7 @@ class Integrations::Thingiverse::CreatorDeserializer < Integrations::Thingiverse
 
   def deserialize
     return {} unless valid?
+
     r = fetch "users/#{CGI.escapeURIComponent(@username)}"
     self.class.parse(r.body)
   end

@@ -1,19 +1,20 @@
 module ModelsHelper
   def group(files)
     return {} if files.empty?
+
     sections = {}
     min_section_size = [2, (files.count * 0.05).round].max
     min_prefix_length = 3
-    names = files.map { |it| it.filename.downcase }
+    names = files.map { it.filename.downcase }
     slice = names.map(&:length).max
     while slice > min_prefix_length
       slice -= 1
-      candidates = names.map { |it| it.slice(0, slice) }
-      groups = candidates.group_by { |it| it }
+      candidates = names.map { it.slice(0, slice) }
+      groups = candidates.group_by { it }
       ready = groups.select { |k, v| v.count >= min_section_size }.map(&:first)
       ready.each do |r|
-        names.reject! { |it| it.starts_with? r }
-        sections[r], files = files.partition { |it| it.filename.downcase.starts_with? r }
+        names.reject! { it.starts_with? r }
+        sections[r], files = files.partition { it.filename.downcase.starts_with? r }
       end
     end
     # Sort and include empty set

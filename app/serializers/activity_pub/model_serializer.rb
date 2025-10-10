@@ -2,6 +2,7 @@ module ActivityPub
   class ModelSerializer < ApplicationSerializer
     def serialize
       raise ActiveRecord::RecordNotFound unless federate? # Temporary guard against publishing non-public Federails::ActorEntity objects
+
       {
         "@context": [
           "https://purl.archive.org/miscellany",
@@ -18,7 +19,7 @@ module ActivityPub
         summary: @object.caption,
         content: @object.notes,
         "f3di:concreteType": "3DModel",
-        attachment: @object.links.map { |it| {type: "Link", href: it.url} },
+        attachment: @object.links.map { {type: "Link", href: it.url} },
         sensitive: @object.sensitive,
         indexable: @object.indexable?,
         discoverable: @object.indexable?,
@@ -42,6 +43,7 @@ module ActivityPub
 
     def license
       return if @object.license.blank?
+
       {
         "@id": @object.license.starts_with?("LicenseRef-") ?
           nil :

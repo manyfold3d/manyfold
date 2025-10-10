@@ -9,7 +9,7 @@ class SiteSettings < RailsSettings::Base
   field :model_tags_auto_tag_new, type: :string, default: "!new"
   field :model_path_template, type: :string, default: "{tags}/{modelName}{modelId}"
   field :model_ignored_files, type: :array, default: [
-    /^\.[^\.]+/, # Hidden files starting with .
+    /^\.[^.]+/, # Hidden files starting with .
     /.*\/@eaDir\/.*/, # Synology temp files
     /__MACOSX/ # MACOS resource forks
   ]
@@ -96,7 +96,7 @@ class SiteSettings < RailsSettings::Base
   end
 
   def self.fasp_data_sharing_enabled?
-    federation_enabled? && FaspClient::Provider.any? { |it| it.has_capability? :account_search }
+    federation_enabled? && FaspClient::Provider.any? { it.has_capability? :account_search }
   end
 
   module UserDefaults

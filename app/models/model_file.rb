@@ -93,7 +93,7 @@ class ModelFile < ApplicationRecord
 
   def filename_without_extension
     dirname = File.dirname(filename)
-    File.join([dirname, basename(include_extension: false)].reject { |it| it == "." })
+    File.join([dirname, basename(include_extension: false)].reject { it == "." })
   end
 
   def name
@@ -108,6 +108,7 @@ class ModelFile < ApplicationRecord
 
   def attach_existing_file!(refresh: true, skip_validations: false)
     return if attachment.present? || !exists_on_storage?
+
     attachment_attacher.set ModelFileUploader.uploaded_file(
       storage: model.library.storage_key,
       id: path_within_library,
@@ -146,6 +147,7 @@ class ModelFile < ApplicationRecord
   def dimensions
     bbox = attachment.metadata.dig("object", "bounding_box")
     return nil unless bbox
+
     bbox = Mittsu::Box3.new.set_from_points([
       Mittsu::Vector3.new(bbox.dig("minimum", "x"), bbox.dig("minimum", "y"), bbox.dig("minimum", "z")),
       Mittsu::Vector3.new(bbox.dig("maximum", "x"), bbox.dig("maximum", "y"), bbox.dig("maximum", "z"))
@@ -155,6 +157,7 @@ class ModelFile < ApplicationRecord
 
   def duplicates
     return ModelFile.none if digest.nil? # rubocop:todo Pundit/UsePolicyScope
+
     ModelFile.where(digest: digest).where.not(id: id) # rubocop:todo Pundit/UsePolicyScope
   end
 
@@ -242,7 +245,7 @@ class ModelFile < ApplicationRecord
   private
 
   def rescan_duplicates
-    duplicates.each { |it| it.analyse_later }
+    duplicates.each { it.analyse_later }
   end
 
   def presupported_files_cannot_have_presupported_version

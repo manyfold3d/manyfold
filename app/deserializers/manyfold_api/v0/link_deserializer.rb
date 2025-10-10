@@ -2,6 +2,7 @@ module ManyfoldApi::V0
   class LinkDeserializer < BaseDeserializer
     def deserialize
       return unless @object
+
       {
         url: @object["url"]
       }.compact

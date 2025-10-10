@@ -1,5 +1,5 @@
 class Integrations::Thingiverse::BaseDeserializer < Integrations::BaseDeserializer
-  USERNAME_PATTERN = /[[:alnum:]_\-]+/
+  USERNAME_PATTERN = /[[:alnum:]_-]+/
 
   private
 
@@ -24,6 +24,7 @@ class Integrations::Thingiverse::BaseDeserializer < Integrations::BaseDeserializ
     u.host = "www.thingiverse.com" if u.host == "thingiverse.com"
     return if u.host != "www.thingiverse.com"
     return unless valid_path?(u.path)
+
     # Force https
     u.scheme = "https"
     # Remove query and fragment
@@ -34,6 +35,7 @@ class Integrations::Thingiverse::BaseDeserializer < Integrations::BaseDeserializ
 
   def creator_attributes(data)
     return {} if data.nil? || data["public_url"].nil?
+
     attempt_creator_match(Integrations::Thingiverse::CreatorDeserializer.parse(data))
   end
 end

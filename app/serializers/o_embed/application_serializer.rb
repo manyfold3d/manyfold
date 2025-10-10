@@ -17,6 +17,7 @@ module OEmbed
 
     def author_properties(creator)
       return {} if creator.nil?
+
       {
         author_name: creator.name,
         author_url: Rails.application.routes.url_helpers.creator_url(creator)

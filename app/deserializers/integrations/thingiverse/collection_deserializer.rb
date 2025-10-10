@@ -3,6 +3,7 @@ class Integrations::Thingiverse::CollectionDeserializer < Integrations::Thingive
 
   def deserialize
     return {} unless valid?
+
     r = fetch "collections/#{CGI.escapeURIComponent(@collection_id)}"
     things = fetch "collections/#{CGI.escapeURIComponent(@collection_id)}/things"
     {
