@@ -377,7 +377,7 @@ RSpec.describe "Users::Registrations" do
         end
 
         it "adds a permission" do
-          allow(SiteSettings).to receive(:default_viewer_role).and_return(nil)
+          allow(SiteSettings).to receive(:default_viewer_role).and_return(:private)
           expect { form_post }.to change(Caber::Relation, :count).by(1)
         end
 

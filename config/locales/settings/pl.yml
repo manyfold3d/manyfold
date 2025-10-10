@@ -138,7 +138,7 @@ pl:
         label: Domyślna widoczność
         options:
           member: Członkowie (zalogowane konta lokalne)
-          none: Prywatne
+          private: Prywatne
       details_html: Aby zmienić te ustawienia, edytuj <a href='https://manyfold.app/sysadmin/configuration.html'>zmienne środowiskowe</a> serwera i uruchom go ponownie.
       email: Dostarczanie wiadomości e-mail skonfigurowane?
       federation: Federacja włączona?

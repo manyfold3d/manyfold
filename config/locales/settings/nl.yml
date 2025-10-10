@@ -138,7 +138,7 @@ nl:
         label: Standaard zichtbaarheid
         options:
           member: Ingelogde lokale gebruikers
-          none: Privé
+          private: Privé
       details_html: Om deze instellingen te wijzigen, bewerk de <a href='https://manyfold.app/sysadmin/configuration.html'>omgevingsvariabelen</a> van de server en herstart.
       email: E-mailbezorging geconfigureerd?
       federation: Federatie ingeschakeld?

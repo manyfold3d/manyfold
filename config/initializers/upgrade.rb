@@ -1,4 +1,7 @@
 Rails.application.config.after_initialize do
+  # Update site settings from old values
+  SiteSettings.default_viewer_role = "private" if SiteSettings.default_viewer_role == ""
+
   # Attempt to connect to Redis first before queueing, and fail early
   Sidekiq.redis { |conn| conn.info }
   # Queue upgrade jobs if Redis is good to go
