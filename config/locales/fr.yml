@@ -682,6 +682,7 @@ fr:
         edit:
         member:
         private:
+        public:
       quota:
       title:
       upload: Télécharger

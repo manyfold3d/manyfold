@@ -690,6 +690,7 @@ nl:
         edit:
         member:
         private:
+        public:
       quota:
       title:
       upload: Uploaden

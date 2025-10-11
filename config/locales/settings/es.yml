@@ -139,6 +139,7 @@ es:
         options:
           member: Usuarios locales conectados
           private: Privado
+          public: Público
       details_html: Para cambiar esta configuración, edite las <a href='https://manyfold.app/sysadmin/configuration.html'>variables de entorno</a> del servidor y reinicie.
       email: "¿Está configurada la entrega de emails?"
       federation: "¿Federación habilitada?"

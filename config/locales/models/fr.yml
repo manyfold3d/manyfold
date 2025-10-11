@@ -68,6 +68,7 @@ fr:
       free_space: "(%{available} libre)"
       library:
         help: La bibliothèque vers laquelle télécharger.
+      permission_preset: Permissions
       submit: Créer des modèles
       title: Télécharger
     organize:

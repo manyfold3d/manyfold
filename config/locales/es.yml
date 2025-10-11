@@ -679,6 +679,7 @@ es:
         edit: Puede conceder permisos adicionales en la página de edición del elemento.
         member: Por defecto, el contenido subido será visible para cualquier usuario local conectado.
         private: Por defecto, el contenido subido no será visible para ningún otro usuario.
+        public: Por defecto, el contenido publicado será visible para cualquiera que visite la web.
       quota: Puedes subir hasta %{quota} de contenido, y siempre puedes ver el uso actual de tu cuota en tu página de configuración.
       title: Cargando
       upload: Cargar

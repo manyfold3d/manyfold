@@ -68,6 +68,7 @@ es:
       free_space: "(%{available} disponible)"
       library:
         help: Biblioteca donde se cargará el archivo.
+      permission_preset: Permisos
       submit: Crear modelos
       title: Cargar
     organize:
