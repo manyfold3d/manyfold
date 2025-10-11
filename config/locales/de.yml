@@ -679,6 +679,7 @@ de:
         edit: Du kannst auf der Bearbeitungsseite des Artikels zusätzliche Berechtigungen erteilen.
         member: Standardmäßig sind hochgeladene Inhalte für jeden lokal angemeldeten Benutzer sichtbar.
         private: Standardmäßig sind die hochgeladenen Inhalte für andere Nutzer nicht sichtbar.
+        public:
       quota: Du kannst bis zu %{quota} Inhalte hochladen, und du kannst deinen aktuellen Kontingentverbrauch jederzeit auf deiner Einstellungsseite einsehen.
       title: Hochladen
       upload: Hochladen
@@ -691,7 +692,7 @@ de:
       success:
     new:
       description:
-      heading:
+      heading: Importieren von einem Link
       import:
       import_capabilities:
       import_type_html:

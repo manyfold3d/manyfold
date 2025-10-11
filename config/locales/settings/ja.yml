@@ -139,6 +139,7 @@ ja:
         options:
           member: ログインされたローカルアカウント
           private: プライベート
+          public:
       details_html: これらの設定を変更するには、サーバーの<a href='https://manyfold.app/sysadmin/configuration.html'>環境変数を</a>編集して再起動してください。
       email: メール配信設定
       federation: 連合有効

@@ -68,6 +68,7 @@ de:
       free_space: "(%{available} frei)"
       library:
         help: Die Sammlung, in die hochgeladen werden soll.
+      permission_preset: Berechtigungen
       submit: Modelle erstellen
       title: Hochladen
     organize:

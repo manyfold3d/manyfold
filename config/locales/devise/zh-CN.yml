@@ -2,7 +2,7 @@
 zh-CN:
   devise:
     confirmations:
-      confirmed: 成功验证您的邮箱。
+      confirmed: 已成功验证您的邮箱。
       new:
         resend_confirmation_instructions: 重新发送确认邮件
       send_instructions: 几分钟后，您将收到确认帐户的电子邮件。
@@ -10,14 +10,14 @@ zh-CN:
     failure:
       already_authenticated: 您已经登录。
       inactive: 您的帐户还未激活。
-      invalid: "%{authentication_keys}或密码错误。"
+      invalid: 无效的 %{authentication_keys} 或密码。
       last_attempt: 您还有最后一次尝试机会，再次失败您的帐户将被锁定。
-      locked: 您的帐户正被锁定。
-      not_approved:
-      not_found_in_database: "%{authentication_keys}或密码错误。"
+      locked: 您的帐户将被锁定一小时，请稍后重试。
+      not_approved: 管理员尚未批准您的帐户。
+      not_found_in_database: 无效的 %{authentication_keys} 或密码。
       timeout: 登录超时，请重新登录。
       unauthenticated: 继续操作前请注册或者登录。
-      unconfirmed: 继续操作前请先确认您的帐户。
+      unconfirmed: 您必须先确认电子邮件地址，然后才能继续。
     mailer:
       confirmation_instructions:
         action: 确认我的帐户
@@ -38,7 +38,7 @@ zh-CN:
         greeting: 您好 %{recipient}！
         instruction: 有人要求更改密码的链接，您可以通过下面的链接更改密码：
         instruction_2: 如果您没有要求请求更改密码，请忽略此电子邮件。
-        instruction_3: 如果您没有访问上面的链接并更改密码，您的密码就不会被改变。
+        instruction_3: 在您访问上述链接并创建新密码之前，您的密码不会更改。
         subject: 重置密码信息
       unlock_instructions:
         action: 帐户解锁
@@ -47,8 +47,8 @@ zh-CN:
         message: 由于多次登录失败，您的帐户已被锁定。
         subject: 帐户解锁信息
     omniauth_callbacks:
-      failure: 由于%{reason}，无法从%{kind}获得授权。
-      success: 成功地从%{kind}获得授权。
+      failure: 由于%{reason}，无法从 %{kind} 获得授权。
+      success: 成功地从 %{kind} 获得授权。
     passwords:
       edit:
         change_my_password: 更改我的密码
@@ -58,7 +58,7 @@ zh-CN:
       new:
         forgot_your_password: 忘记密码？
         send_me_reset_password_instructions: 请给我发送重设密码的邮件
-      no_token: 无重置邮件不可访问密码重置页面。如果您是从重置邮件来到了这个页面，请确保您输入的URL完整。
+      no_token: 如果您没有收到重置密码的电子邮件，则无法访问此页面。如果您来自密码重置电子邮件，请确保您使用了所提供的完整 URL。
       send_instructions: 几分钟后，您将收到重置密码的电子邮件。
       send_paranoid_instructions: 如果您的邮箱存在于我们的数据库中，您将收到一封找回密码的邮件。
       updated: 您的密码已修改成功，您现在已登录。
@@ -68,16 +68,16 @@ zh-CN:
       edit:
         are_you_sure: 您确定吗？
         cancel_my_account: 注销我的帐户
-        confirm_deletion:
-        contact_info:
-        current_password_help:
+        confirm_deletion: 您确定要删除账户吗？
+        contact_info: 联系信息
+        current_password_help: 为安全起见需要当前密码
         currently_waiting_confirmation_for_email: 等待确认 %{email}
         danger_zone:
-        leave_blank_if_you_don_t_want_to_change_it: 如不想更改，则无需填写
+        leave_blank_if_you_don_t_want_to_change_it: 如果不想更改，请留空
         security:
         social:
-        submit:
-        title: 修改%{resource}
+        submit: 保存更改
+        title: 我的设置
         unhappy: 不喜欢
         update: 更新
         we_need_your_current_password_to_confirm_your_changes: 我们需要您的当前密码以确认更改

@@ -139,6 +139,7 @@ cs:
         options:
           member: Přihlášení lokální uživatelé
           private: Soukromé
+          public:
       details_html: Chcete-li tato nastavení změnit, upravte <a href='https://manyfold.app/sysadmin/configuration.html'>proměnné prostředí</a> serveru a restartujte jej.
       email: Doručování e-mailů nakonfigurováno?
       federation: Federace povolena?

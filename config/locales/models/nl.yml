@@ -68,6 +68,7 @@ nl:
       free_space: "(%{available} vrij)"
       library:
         help: De bibliotheek om naar te uploaden.
+      permission_preset: Machtigingen
       submit: Modellen aanmaken
       title: Uploaden
     organize:
