@@ -204,6 +204,8 @@ class ModelFile < ApplicationRecord
     loader.present?
   end
 
+  delegate :manifold?, to: :mesh
+
   def delete_from_disk_and_destroy
     model.library.storage.delete path_within_library
     destroy

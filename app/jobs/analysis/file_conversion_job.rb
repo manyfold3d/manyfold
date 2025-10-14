@@ -21,7 +21,7 @@ class Analysis::FileConversionJob < ApplicationJob
     status[:step] = "jobs.analysis.file_conversion.loading_mesh" # i18n-tasks-use t('jobs.analysis.file_conversion.loading_mesh')
     case output_format
     when :threemf
-      raise NonManifoldError.new if !file.mesh.manifold?
+      raise NonManifoldError.new if !file.manifold?
       extension = "3mf"
       exporter = Mittsu::ThreeMFExporter.new
     end
