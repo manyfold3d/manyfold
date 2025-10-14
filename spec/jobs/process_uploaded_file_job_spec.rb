@@ -145,13 +145,14 @@ RSpec.describe ProcessUploadedFileJob do
   context "when extracting a zip file" do
     let(:model) { create(:model) }
 
-    it "extracts files" do # rubocop:todo RSpec/ExampleLength
+    it "extracts files" do # rubocop:todo RSpec/ExampleLength,RSpec/MultipleExpectations
       Tempfile.create(%w[test .zip]) do |file|
         Zip::File.open(file, create: true) do |zipfile|
           zipfile.get_output_stream("test.stl") { |f| f.puts "solid" }
         end
         upload = Rack::Test::UploadedFile.new(file)
         expect { described_class.new.send(:unzip, model, upload) }.to change(ModelFile, :count).by(1)
+        expect(File.size(model.model_files.first.attachment)).to eq 6
       end
     end
 
