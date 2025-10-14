@@ -169,7 +169,7 @@ class ModelFile < ApplicationRecord
   end
 
   def scene
-    Shrine.with_file(attachment) do
+    Shrine.with_file(attachment.open) do |it|
       scene = Assimp.import_file(it.path)
       scene.apply_post_processing(Assimp::PostProcessSteps[
         :JoinIdenticalVertices,
