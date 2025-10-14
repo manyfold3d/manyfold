@@ -168,6 +168,16 @@ class ModelFile < ApplicationRecord
     digest
   end
 
+  def scene
+    Shrine.with_file(attachment) do
+      scene = Assimp.import_file(it.path)
+      scene.apply_post_processing(Assimp::PostProcessSteps[
+        :JoinIdenticalVertices,
+        :Triangulate
+      ])
+    end
+  end
+
   def mesh
     # TODO: This can be better, but needs changes upstream in Mittsu to allow loaders to parse from an IO object
     loader&.new&.parse(attachment.read)
