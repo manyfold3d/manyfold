@@ -64,12 +64,8 @@ class ProcessUploadedFileJob < ApplicationJob
           filename = entry.pathname # Stored because pathname gets mutated by the extract and we want the original
           reader.extract(entry, Archive::EXTRACT_SECURE, destination: tmpdir.to_s)
           model.model_files.create(filename: filename, attachment: File.open(entry.pathname))
-          # Clean up file
-          File.delete(entry.pathname) if File.exist?(entry.pathname)
         end
       end
-      # Clean up temp folder
-      Dir.rmdir(tmpdir) if Dir.empty?(tmpdir)
     end
   end
 
