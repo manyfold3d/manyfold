@@ -178,12 +178,6 @@ class ModelFile < ApplicationRecord
     end
   end
 
-  def mesh
-    # TODO: This can be better, but needs changes upstream in Mittsu to allow loaders to parse from an IO object
-    loader&.new&.parse(attachment.read)
-  end
-  memoize :mesh
-
   def reattach!
     if attachment.id != path_within_library || attachment.storage_key != model.library.storage_key
       old_path = attachment.id
@@ -201,7 +195,7 @@ class ModelFile < ApplicationRecord
   end
 
   def loadable?
-    loader.present?
+    true
   end
 
   delegate :manifold?, to: :mesh
@@ -266,15 +260,6 @@ class ModelFile < ApplicationRecord
   def presupported_version_is_presupported
     if presupported_version && !presupported_version.presupported
       errors.add(:presupported_version, :not_supported)
-    end
-  end
-
-  def loader
-    case extension
-    when "stl"
-      Mittsu::STLLoader
-    when "obj"
-      Mittsu::OBJLoader
     end
   end
 
