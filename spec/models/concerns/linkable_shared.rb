@@ -8,4 +8,8 @@ shared_examples "Linkable" do
   it "only matches exact link" do
     expect(described_class.linked_to("https://example.com/nope").exists?).to be false
   end
+
+  it "rejects self-referential links" do
+    expect { thing.update! links_attributes: [{url: Rails.application.routes.url_helpers.url_for(thing)}] }.not_to change(Link, :count)
+  end
 end

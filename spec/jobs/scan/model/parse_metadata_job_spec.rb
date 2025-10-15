@@ -366,7 +366,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       allow(model).to receive(:datapackage_content).and_return({
         "links" => [
           {
-            "path" => "https://example.com/"
+            "path" => "https://thingiverse.com/thing:1234"
           }
         ]
       })
