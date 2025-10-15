@@ -61,6 +61,6 @@ RSpec.describe Analysis::FileConversionJob do
   end
 
   it "does nothing with an invalid output format" do
-    expect { described_class.perform_now(file.id, :ply) }.to raise_error(UnsupportedFormatError)
+    expect { described_class.perform_now(file.id, :blend) }.to raise_error(UnsupportedFormatError)
   end
 end

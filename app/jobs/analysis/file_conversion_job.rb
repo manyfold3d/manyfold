@@ -14,43 +14,43 @@ class Analysis::FileConversionJob < ApplicationJob
   def perform(file_id, output_format)
     # Get model
     file = ModelFile.find(file_id)
-    # Can we output this format?
-    raise UnsupportedFormatError unless SupportedMimeTypes.can_export?(output_format) || !file.loadable?
-    extension = nil
+
+    # Can we convert this format?
+    raise UnsupportedFormatError if !SupportedMimeTypes.can_export?(output_format) || !file.loadable?
+    extension = Mime::EXTENSION_LOOKUP.select { |k, v| v.symbol == output_format }.keys.last
+
     status[:step] = "jobs.analysis.file_conversion.loading_mesh" # i18n-tasks-use t('jobs.analysis.file_conversion.loading_mesh')
-    case output_format
-    when :threemf
-      # raise NonManifoldError.new if !file.manifold?
-      extension = "3mf"
+    scene = file.scene
+
+    # Manifold check for 3MF files
+    # raise NonManifoldError.new if output_format == :threemf && !file.manifold?
+
+    status[:step] = "jobs.analysis.file_conversion.exporting" # i18n-tasks-use t('jobs.analysis.file_conversion.exporting')
+    new_file = ModelFile.new(
+      model: file.model,
+      filename: file.filename.gsub(".#{file.extension}", ".#{extension}")
+    )
+    dedup = 0
+    while new_file.exists_on_storage?
+      dedup += 1
+      new_file.filename = file.filename.gsub(".#{file.extension}", "-#{dedup}.#{extension}")
     end
-    if extension
-      status[:step] = "jobs.analysis.file_conversion.exporting" # i18n-tasks-use t('jobs.analysis.file_conversion.exporting')
-      new_file = ModelFile.new(
-        model: file.model,
-        filename: file.filename.gsub(".#{file.extension}", ".#{extension}")
+    # Save the new file into the Shrine cache, and attach
+    Tempfile.create("", ModelFileUploader.find_storage(:cache).directory) do |outfile|
+      scene.export(extension, outfile.path)
+      new_file.attachment = ModelFileUploader.uploaded_file(
+        storage: :cache,
+        id: File.basename(outfile.path),
+        metadata: {
+          filename: new_file.filename,
+          size: File.size(outfile.path)
+        }
       )
-      dedup = 0
-      while new_file.exists_on_storage?
-        dedup += 1
-        new_file.filename = file.filename.gsub(".#{file.extension}", "-#{dedup}.#{extension}")
-      end
-      # Save the new file into the Shrine cache, and attach
-      Tempfile.create("", ModelFileUploader.find_storage(:cache).directory) do |outfile|
-        file.scene.export(extension, outfile.path)
-        new_file.attachment = ModelFileUploader.uploaded_file(
-          storage: :cache,
-          id: File.basename(outfile.path),
-          metadata: {
-            filename: new_file.filename,
-            size: File.size(outfile.path)
-          }
-        )
-      end
-      # Store record in database
-      new_file.save
-      # Queue up file scan
-      new_file.analyse_later
     end
+    # Store record in database
+    new_file.save
+    # Queue up file scan
+    new_file.analyse_later
   rescue NonManifoldError
     # Log non-manifold error as a problem, and absorb error so we don't retry
     Problem.create_or_clear(
