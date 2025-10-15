@@ -195,7 +195,7 @@ class ModelFile < ApplicationRecord
   end
 
   def loadable?
-    true
+    SupportedMimeTypes.can_load? mime_type.symbol
   end
 
   delegate :manifold?, to: :mesh
