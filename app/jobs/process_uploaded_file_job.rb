@@ -54,7 +54,8 @@ class ProcessUploadedFileJob < ApplicationJob
 
   def unzip(model, uploaded_file)
     ModelFileUploader.with_file(uploaded_file) do |archive|
-      tmpdir = ModelFileUploader.find_storage(:cache).directory.join(SecureRandom.uuid)
+      dirname = SecureRandom.uuid
+      tmpdir = ModelFileUploader.find_storage(:cache).directory.join(dirname)
       tmpdir.mkdir
       strip = count_common_path_components(archive)
       Archive::Reader.open_filename(archive.path, strip_components: strip) do |reader|
@@ -63,7 +64,11 @@ class ProcessUploadedFileJob < ApplicationJob
           next if SiteSettings.ignored_file?(entry.pathname)
           filename = entry.pathname # Stored because pathname gets mutated by the extract and we want the original
           reader.extract(entry, Archive::EXTRACT_SECURE, destination: tmpdir.to_s)
-          model.model_files.create(filename: filename, attachment: File.open(entry.pathname))
+          model.model_files.create(filename: filename, attachment: ModelFileUploader.uploaded_file(
+            storage: :cache,
+            id: File.join(dirname, filename),
+            metadata: {filename: File.basename(filename)}
+          ))
         end
       end
     end
