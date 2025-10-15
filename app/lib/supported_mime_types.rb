@@ -39,8 +39,24 @@ module SupportedMimeTypes
     Mime::EXTENSION_LOOKUP.filter { |k, v| is_model_mime_type?(v) }.keys
   end
 
+  def self.loadable
+    Mime::EXTENSION_LOOKUP.slice(
+      *Assimp.extension_list.to_s.delete("*.").split(";")
+    ).values.map(&:to_sym)
+  end
+
+  def self.can_load?(type)
+    loadable.include? type
+  end
+
+  def self.exportable
+    Mime::EXTENSION_LOOKUP.slice(
+      *(0...Assimp.aiGetExportFormatCount).map { |it| Assimp.aiGetExportFormatDescription it }.map(&:file_extension)
+    ).values.map(&:to_sym)
+  end
+
   def self.can_export?(type)
-    [:threemf].include? type
+    exportable.include? type
   end
 
   def self.indexable_types
