@@ -28,12 +28,12 @@ class Analysis::FileConversionJob < ApplicationJob
     status[:step] = "jobs.analysis.file_conversion.exporting" # i18n-tasks-use t('jobs.analysis.file_conversion.exporting')
     new_file = ModelFile.new(
       model: file.model,
-      filename: file.filename.gsub(".#{file.extension}", ".#{extension}")
+      filename: Pathname.new(file.filename).sub_ext(".#{extension}")
     )
     dedup = 0
     while new_file.exists_on_storage?
       dedup += 1
-      new_file.filename = file.filename.gsub(".#{file.extension}", "-#{dedup}.#{extension}")
+      new_file.filename = Pathname.new(file.filename).sub_ext("-#{dedup}.#{extension}")
     end
     # Save the new file into the Shrine cache, and attach
     Tempfile.create("", ModelFileUploader.find_storage(:cache).directory) do |outfile|
