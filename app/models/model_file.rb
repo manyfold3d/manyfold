@@ -168,11 +168,15 @@ class ModelFile < ApplicationRecord
     digest
   end
 
-  def mesh
-    # TODO: This can be better, but needs changes upstream in Mittsu to allow loaders to parse from an IO object
-    loader&.new&.parse(attachment.read)
+  def scene
+    Shrine.with_file(attachment.open) do |it|
+      scene = Assimp.import_file(it.path)
+      scene.apply_post_processing(Assimp::PostProcessSteps[
+        :JoinIdenticalVertices,
+        :Triangulate
+      ])
+    end
   end
-  memoize :mesh
 
   def reattach!
     if attachment.id != path_within_library || attachment.storage_key != model.library.storage_key
@@ -191,8 +195,10 @@ class ModelFile < ApplicationRecord
   end
 
   def loadable?
-    loader.present?
+    true
   end
+
+  delegate :manifold?, to: :mesh
 
   def delete_from_disk_and_destroy
     model.library.storage.delete path_within_library
@@ -254,15 +260,6 @@ class ModelFile < ApplicationRecord
   def presupported_version_is_presupported
     if presupported_version && !presupported_version.presupported
       errors.add(:presupported_version, :not_supported)
-    end
-  end
-
-  def loader
-    case extension
-    when "stl"
-      Mittsu::STLLoader
-    when "obj"
-      Mittsu::OBJLoader
     end
   end
 

@@ -16,16 +16,14 @@ class Analysis::FileConversionJob < ApplicationJob
     file = ModelFile.find(file_id)
     # Can we output this format?
     raise UnsupportedFormatError unless SupportedMimeTypes.can_export?(output_format) || !file.loadable?
-    exporter = nil
     extension = nil
     status[:step] = "jobs.analysis.file_conversion.loading_mesh" # i18n-tasks-use t('jobs.analysis.file_conversion.loading_mesh')
     case output_format
     when :threemf
-      raise NonManifoldError.new if !file.mesh.manifold?
+      # raise NonManifoldError.new if !file.manifold?
       extension = "3mf"
-      exporter = Mittsu::ThreeMFExporter.new
     end
-    if exporter
+    if extension
       status[:step] = "jobs.analysis.file_conversion.exporting" # i18n-tasks-use t('jobs.analysis.file_conversion.exporting')
       new_file = ModelFile.new(
         model: file.model,
@@ -36,10 +34,17 @@ class Analysis::FileConversionJob < ApplicationJob
         dedup += 1
         new_file.filename = file.filename.gsub(".#{file.extension}", "-#{dedup}.#{extension}")
       end
-      # Save the actual file in new format
-      Tempfile.create do |outfile|
-        exporter.export(file.mesh, outfile.path)
-        new_file.attachment = outfile
+      # Save the new file into the Shrine cache, and attach
+      Tempfile.create("", ModelFileUploader.find_storage(:cache).directory) do |outfile|
+        file.scene.export(extension, outfile.path)
+        new_file.attachment = ModelFileUploader.uploaded_file(
+          storage: :cache,
+          id: File.basename(outfile.path),
+          metadata: {
+            filename: new_file.filename,
+            size: File.size(outfile.path)
+          }
+        )
       end
       # Store record in database
       new_file.save

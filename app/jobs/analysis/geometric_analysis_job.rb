@@ -9,11 +9,11 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
   def perform(file_id)
     # Get model
     file = ModelFile.find(file_id)
-    return unless file.loadable?
+    return unless self.class.loader(file)
     if SiteSettings.analyse_manifold
       status[:step] = "jobs.analysis.geometric_analysis.loading_mesh" # i18n-tasks-use t('jobs.analysis.geometric_analysis.loading_mesh')
       # Get mesh
-      mesh = file.mesh
+      mesh = self.class.load_mesh(file)
       if mesh
         status[:step] = "jobs.analysis.geometric_analysis.manifold_check" # i18n-tasks-use t('jobs.analysis.geometric_analysis.manifold_check')
         # Check for manifold mesh
@@ -38,5 +38,19 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
         raise MeshLoadError.new
       end
     end
+  end
+
+  def self.loader(file)
+    case file.extension
+    when "stl"
+      Mittsu::STLLoader
+    when "obj"
+      Mittsu::OBJLoader
+    end
+  end
+
+  def self.load_mesh(file)
+    # TODO: This can be better, but needs changes upstream in Mittsu to allow loaders to parse from an IO object
+    loader(file)&.new&.parse(file.attachment.read)
   end
 end
