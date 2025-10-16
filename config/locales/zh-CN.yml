@@ -3,95 +3,95 @@ zh-CN:
   activerecord:
     attributes:
       collection:
-        ai_indexable:
-        caption:
-        collection:
-        indexable:
-        models:
-        name: 应用名称
-        notes:
+        ai_indexable: 允许用于 AI 训练
+        caption: 标题
+        collection: 父合集
+        indexable: 允许搜索索引
+        models: 模型
+        name: 名称
+        notes: 说明
       creator:
-        ai_indexable:
-        avatar:
-        banner:
-        caption:
-        indexable:
-        name:
-        notes:
+        ai_indexable: 允许用于 AI 训练
+        avatar: 头像
+        banner: 横幅图片
+        caption: 标语
+        indexable: 允许搜索索引
+        name: 创作者姓名
+        notes: 说明
         slug:
       doorkeeper/application:
-        access_token:
+        access_token: 访问令牌
         confidential: Confidential
-        created_at:
+        created_at: 创建于
         name: 应用名称
-        owner:
+        owner: 所有者
         redirect_uri: 重定向 URI
         scopes: 权限范围
-        secret:
-        uid:
+        secret: Client Secret
+        uid: Client ID
       federails/moderation/domain_block:
         created_at: 创建于
         domain:
       federails/moderation/report:
         content:
-        created_at:
-        federails_actor:
+        created_at: 接收于
+        federails_actor: 报告人
         object:
       library:
         caption:
-        create_path_if_not_on_disk:
+        create_path_if_not_on_disk: 自动创建文件夹
         default:
-        icon:
+        icon: Icon
         name: 应用名称
         notes:
         path:
-        s3_access_key_id:
-        s3_bucket:
-        s3_endpoint:
+        s3_access_key_id: Access Key ID
+        s3_bucket: Bucket Name
+        s3_endpoint: Endpoint URL
         s3_path_style:
-        s3_region:
+        s3_region: Region
         s3_secret_access_key:
         storage_service:
         tag_regex:
       link:
         url:
       model:
-        ai_indexable:
+        ai_indexable: 允许用于 AI 训练
         caption:
-        collection:
-        collection_id:
-        creator:
-        creator_id:
-        images:
-        indexable:
+        collection: 合集
+        collection_id: 合集
+        creator: 创作者
+        creator_id: 创作者
+        images: 图片
+        indexable: 允许搜索索引
         library_id:
-        license:
-        model_files:
-        name: 应用名称
+        license: 许可证
+        model_files: 文件
+        name: 名称
         notes:
         path:
-        preview_file:
-        sensitive:
-        tags:
+        preview_file: 预览文件
+        sensitive: 敏感内容
+        tags: 标签
       model_file:
         caption:
         digest:
-        dimensions:
-        filename:
+        dimensions: 尺寸
+        filename: 文件名
         model_id:
         notes:
         presupported:
         presupported_version:
-        printed:
-        size:
-        unsupported_version:
-        y_up:
+        printed: 已打印
+        size: 文件大小
+        unsupported_version: 不支持的版本
+        y_up: Y 向上
       problem:
-        category:
-        ignored:
-        note:
-        problematic_type:
-        severity:
+        category: 类别
+        ignored: 隐藏
+        note: 备注
+        problematic_type: 对象类型
+        severity: 严重性
       user:
         approved:
         confirmation_sent_at: 确认邮件发送于
@@ -117,15 +117,15 @@ zh-CN:
         unconfirmed_email: 未确认邮件
         unlock_token: 帐户解锁令牌
         updated_at: 更新于
-        username:
+        username: 账户名称
     errors:
       models:
         collection:
           attributes:
             collection:
-              private:
+              private: 必须公开
             creator:
-              private:
+              private: 必须公开
         doorkeeper/application:
           attributes:
             redirect_uri:
@@ -134,58 +134,58 @@ zh-CN:
               invalid_uri: 必须是有效的 URI 格式
               relative_uri: 必须是绝对的 URI 地址
               secured_uri: 必须是 HTTPS/SSL 的 URI 地址
-              unspecified_scheme: must specify a scheme.
+              unspecified_scheme: 必须指定 Scheme。
             scopes:
               not_match_configured: 不匹配服务器上的配置。
         library:
           attributes:
             path:
-              cannot_be_contained:
-              cannot_contain:
-              non_writable:
-              not_found:
-              unsafe:
+              cannot_be_contained: 不能位于另一个库中
+              cannot_contain: 不能包含另一个库
+              non_writable: 必须可写
+              not_found: 在磁盘上找不到
+              unsafe: 路径无权访问
         model:
           attributes:
             creator:
-              private:
+              private: 必须公开
             library:
-              nested:
+              nested: 不能更改，该模型包含其他模型
             license:
-              invalid_spdx:
+              invalid_spdx: 许可证无效
             path:
-              destination_exists:
-              nested:
+              destination_exists: 已存在
+              nested: 不能更改，该模型包含其他模型
         model_file:
           attributes:
             filename:
-              cannot_change_type:
+              cannot_change_type: 不是同一文件类型
               case_change_only:
             presupported_version:
               already_presupported:
               not_supported:
     models:
       acts_as_taggable_on/tag:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: 标签
+        many: 标签
+        one: 标签
+        other: 标签
+        two: 标签
+        zero: 标签
       collection:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: 合集
+        many: 合集
+        one: 合集
+        other: 合集
+        two: 合集
+        zero: 合集
       creator:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: 创作者
+        many: 创作者
+        one: 创作者
+        other: 创作者
+        two: 创作者
+        zero: 创作者
       federails/moderation/domain_block:
         few:
         many:
@@ -303,114 +303,114 @@ zh-CN:
     links_form:
       add:
     navbar:
-      account: 修改%{resource}
-      activity:
-      add_models:
-      check_existing:
-      check_results:
-      home:
-      import_url:
+      account: 我的设置
+      activity: 近期动态
+      add_models: 添加内容
+      check_existing: 重新扫描所有模型
+      check_results: 重新扫描已过滤的模型
+      home: 主页
+      import_url: 导入 URL
       log_in: 登录
-      log_out:
+      log_out: 退出
       moderator_settings:
       navbar:
         toggler:
           label:
-      scan:
-      scan_changes:
-      scanning:
-      search:
-      settings:
-      upload:
+      scan: 扫描
+      scan_changes: 扫描新文件
+      scanning: 正在扫描
+      search: 搜索
+      settings: 网站设置
+      upload: 上传模型
     order_buttons:
       sort:
-        name:
-        time:
-    search_error:
+        name: 按名称排序
+        time: 按时间排序
+    search_error: 搜索语法错误。请检查并重试！
     tag_list:
       unrelated_tag_count:
         one:
         other:
-    tagline:
+    tagline: 帮助您跟踪 3D 打印文件
     tags_card:
-      skip_tags:
+      skip_tags: 跳过标签列表
     title:
   application_helper:
     ai_indexable_select_options:
       always_no:
       always_yes:
-      inherit:
+      inherit: 从父对象或默认网站设置继承；当前为 %{inherited}
     indexable_select_options:
       always_no:
       always_yes:
-      inherit:
+      inherit: 从父对象或默认网站设置继承；当前为 %{inherited}
       'no': 沒有
       'yes': 是
   components:
     actor_card:
-      non_manyfold_account:
+      non_manyfold_account: 这不是一个 Manyfold 账户；你可以关注它，但目前可能不会发生什么有趣的事情。
     altcha_widget:
       help:
     copy_button:
-      copy:
+      copy: 复制到剪贴板
     display_user_quota:
-      request_increase:
+      request_increase: 如需增加配额，请联系管理员。
     download_button:
       download:
-        missing:
-        preparing:
-        ready:
-      file_type:
-      label:
-      menu_header:
-      supported:
-      unsupported:
+        missing: 请求下载
+        preparing: 正在准备下载，请稍候
+        ready: 可下载
+      file_type: 仅限 %{type} 文件
+      label: 全部下载
+      menu_header: 下载选项
+      supported: 仅限支持的文件
+      unsupported: 仅限不支持的文件
     follow_button:
-      follow:
-      pending:
-      unfollow:
+      follow: 关注 %{name}
+      pending: 已请求
+      unfollow: 取消关注 %{name}
     link_list:
-      sync:
+      sync: 同步
     modal:
-      close:
+      close: 关闭
     model_card:
       delete_button:
-        label:
-        text:
+        label: 删除模型 %{name}
+        text: 删除
       edit_button:
-        label:
+        label: 编辑模型 %{name}
         text: 编辑
-      no_preview:
+      no_preview: 预览不可用
       open_button:
         label:
-        text:
+        text: 打开
     search_help:
-      boolean:
-      federation:
-      filename:
-      intro:
-      more_details_html:
-      negation:
-      parentheses:
-      path:
-      quotes:
-      simple:
-      specific_fields:
-      tag:
-      title:
-      unset:
-      without_tag:
+      boolean: 使用 "or" 查找匹配的模型。
+      federation: 搜索任何 Fediverse 用户名，即可关注该用户。
+      filename: 您可以通过明确指定在文件名字段内进行搜索。
+      intro: 使用搜索语法查找所需内容：
+      more_details_html: 有关详细信息，请阅读 <a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">scoped_search 查询语言</a> 的完整文档。
+      negation: 使用 "not"、"!" 或 "-" 来排除。
+      parentheses: 用括号将术语分组，以实现更复杂的逻辑组合。
+      path: 通过明确指定在模型文件夹路径内搜索；使用 `~` 进行部分匹配。
+      quotes: 要查找单个术语中的多个单词，请使用引号；只有包含确切文本的模型才会显示。
+      simple: 默认情况下，搜索将查找符合所有条件的模型。
+      specific_fields: 您可以在几个特定字段中查找术语。使用"~"匹配部分字段；"="将尝试匹配整个字段。只有在明确指定字段的情况下，才会搜索模型描述和库名。
+      tag: 查找带有特定 Tag 的模型
+      title: 搜索语法
+      unset: 使用 "set?" 查询特定字段是否已设置，添加 "not" 则可查找相反字段。
+      without_tag: 使用 "!=" 查找没有特定标记的模型
   concerns:
     linkable:
       sync:
-        bad_request:
-        success:
+        bad_request: 同步失败：缺少链接 ID
+        success: 同步请求成功
   doorkeeper:
     applications:
       buttons:
         authorize: 授权
         cancel: 取消
-        destroy: 删除
+        destroy: 销毁
         edit: 编辑
         submit: 提交
       confirmations:
@@ -418,10 +418,10 @@ zh-CN:
       edit:
         title: 修改应用
       form:
-        error: 抱歉! 提交信息的时候遇到了下面的错误
+        error: 哎呀！检查您的表格是否有错误
       help:
-        blank_redirect_uri: Leave it blank if you configured your provider to use Client Credentials, Resource Owner Password Credentials or any other grant type that doesn't require redirect URI.
-        confidential: 应用程序的client secret可以保密，但原生移动应用和单页应用将无法保护client secret。
+        blank_redirect_uri: 如果您将服务供应商配置为使用客户端凭据、资源所有者密码凭据或任何其他不需要重定向 URI 的授予类型，则将其留空。
+        confidential: 在客户秘密可以保密的情况下使用应用程序。本地移动应用程序和单页应用程序被视为非机密。
         redirect_uri: 每行只能有一个 URI
         scopes: 用空格分割权限范围，留空则使用默认设置
       index:
@@ -429,7 +429,7 @@ zh-CN:
         callback_url: 回调 URL
         confidential: Confidential?
         confidentiality:
-          'no': 沒有
+          'no': 否
           'yes': 是
         name: 名称
         new: 创建新应用
@@ -441,7 +441,7 @@ zh-CN:
         application_id: 应用 UID
         callback_urls: 回调 URL
         confidential: Confidential
-        not_defined:
+        not_defined: 未定义
         scopes: 权限范围
         secret: 应用密钥
         secret_hashed:
@@ -449,11 +449,11 @@ zh-CN:
     authorizations:
       buttons:
         authorize: 同意授权
-        deny: 拒绝授权
+        deny: 拒绝
       error:
         title: 发生错误
       form_post:
-        title:
+        title: 提交
       new:
         able_to: 此应用将能够
         prompt: 授权 %{client_name} 使用你的帐户？
@@ -527,10 +527,10 @@ zh-CN:
       status: 预授权
   doorkeeper_applications:
     create:
-      failure:
-      success:
+      failure: 发生错误，应用无法创建。
+      success: 应用创建成功。
     destroy:
-      success:
+      success: 应用已成功删除。
     edit:
       title: 修改应用
     form:
@@ -540,45 +540,45 @@ zh-CN:
         help:
       scopes:
         label: 权限范围
-      submit:
+      submit: 保存应用
     index:
-      description:
-      new:
-      title:
+      description: OAuth 应用程序允许您通过我们的 API 从其他服务访问 Manyfold 资源。
+      new: 创建新应用
+      title: OAuth 应用程序
     new:
-      title:
+      title: 新应用
     show:
-      destroy:
+      destroy: 删除
       edit: 编辑
-      title:
+      title: 应用详情
     update:
-      failure:
-      success:
+      failure: 发生错误，应用无法保存。
+      success: 应用已成功保存。
   fasp_client:
     providers:
       edit:
         approval_help:
-        approve:
+        approve: 批准
         backfill_requests:
         capability:
         category:
         contact_details:
         created:
-        data_sharing:
+        data_sharing: 数据共享
         deny: 拒绝授权
-        disable:
+        disable: 禁用
         email: 电子邮箱
-        enable:
-        event_subscriptions:
-        fediverse_account:
-        fingerprint:
-        links:
-        max_count:
-        privacy_policy:
-        registration:
+        enable: 启用
+        event_subscriptions: 活动订阅
+        fediverse_account: Fediverse 地址
+        fingerprint: 指纹
+        links: 链接
+        max_count: 最大计数
+        privacy_policy: 隐私政策
+        registration: 注册
         sign_in: 登录
-        subscription_type:
-        versions:
+        subscription_type: 订阅类型
+        versions: 版本
       index:
         add_html:
         description_html:
@@ -639,52 +639,53 @@ zh-CN:
     view:
   home:
     activity:
-      created:
-      updated:
+      created: 添加于 %{time} 前
+      updated: 更新于 %{time} 前
     browsing:
-      content:
-      manual_link:
-      more_access:
-      title:
+      content: 您可以点击菜单栏中的链接来浏览模型；浏览完整列表并按标签过滤，或按集合或创作者浏览。或者，只需在搜索框中输入您想要的内容即可！
+      manual_link: 用户指南
+      more_access: 目前，您对该实例仅有只读权限；要获得更多权限（如上传），请联系管理员。
+      title: 浏览
     federation:
-      content_html:
+      content_html: 这个 Manyfold 实例是<a href="https://jointhefediverse.net">Fediverse</a> 的一部分，<a href="https://jointhefediverse.net">Fediverse</a> 是一个由多个社交媒体网站组成的网络，所有这些网站都能协同工作。这意味着，如果您在这里拥有一个账户，您就可以关注其他 Manyfold 实例上的内容，或者人们可以关注您在其他平台（如 Mastodon）上的内容。
       creator_handle_html:
       following:
       handle_html:
       title:
     index:
-      no_activities:
-      open_search_help:
-      recent_activity:
+      no_activities: 暂时没有动态要展示。
+      open_search_help: 搜索语法
+      recent_activity: 近期动态
       search:
-        placeholder:
-        submit:
+        placeholder: 您在寻找什么？
+        submit: 搜索
     publishing:
-      content:
+      content: 您可以在项目的编辑页面上向 "公开 "角色授予 "查看 "或 "预览 "权限，从而公开发布内容。公开模型的创建者会自动公开，但如果想让收藏可见，则需要明确发布。
       existing_creator:
-        button:
-        content:
+        button: 编辑创作者简介
+        content: 如果您要发布自己的作品，您可能需要自定义您的创作者简介：
       new_creator:
-        button:
-        content:
-      title:
+        button: 设置新的创建者简介
+        content: 如果您要发布自己的作品，您可能需要自定义您的创作者简介：
+      title: 发布
     support:
-      content:
-      manyfold_html:
-      support_link:
-      title:
+      content: 每个人都可以自由运行 Manyfold 实例！如果您觉得这个实例有用，可以点击下面的链接帮助它继续运行。
+      manyfold_html: 您可以在<a href="https://opencollective.com/manyfold">OpenCollective</a> 上支持 Manyfold 软件的开发。
+      support_link: 支持此实例
+      title: 支持
     uploading:
-      how_to_upload:
+      how_to_upload: 点击菜单栏中的上传按钮即可添加模型。要将大量文件作为一个模型上传，请将它们压缩到一个压缩文件（如 ZIP 或 RAR）中。
       permissions:
-        edit:
-        member:
-        private:
-      quota:
-      title:
-      upload:
+        edit: 您可以在项目编辑页面授予其他权限。
+        member: 默认情况下，任何本地登录用户都可以看到上传的内容。
+        private: 默认情况下，其他用户看不到上传的内容。
+        public: 默认情况下，任何访问网站的人都可以看到上传的内容。
+      quota: 您最多可以上传 %{quota} 个内容，可随时在设置页面上查看当前配额使用情况。
+      title: 正在上传
+      upload: 上传
     welcome:
-      lead:
-      title:
+      lead: 该网站正在运行用于管理和共享 3D 模型的软件 Manyfold，以下是快速指南 ...
+      title: 欢迎来到 %{site_name}！
   imports:
     bad_url:
     create:
@@ -811,35 +812,35 @@ zh-CN:
   security:
     running_as_root_html:
   sites:
-    cgtrader:
-    comicsgamesandthings:
-    cults3d:
-    fediverse:
-    github:
-    makerworld:
-    manyfold:
-    myminifactory:
-    printables:
-    thangs:
-    theminiindex:
-    thingiverse:
-    yeggi:
+    cgtrader: CGTrader
+    comicsgamesandthings: Comics, Games, and Things
+    cults3d: Cults3D
+    fediverse: The Fediverse
+    github: GitHub
+    makerworld: MakerWorld
+    manyfold: Manyfold
+    myminifactory: MyMiniFactory
+    printables: Printables
+    thangs: Thangs
+    theminiindex: The Mini Index
+    thingiverse: Thingiverse
+    yeggi: Yeggi
   user_mailer:
     account_approved:
-      greeting:
-      message:
-      subject:
+      greeting: Hi,
+      message: 您的账户已获批准，您现在可以登录 %{link} 。
+      subject: 核准账户
     test_email:
-      subject:
-      test_email_message:
+      subject: 测试电子邮件
+      test_email_message: 测试电子邮件
   users:
     registrations:
       create:
-        altcha_failed:
+        altcha_failed: ALTCHA 验证失败
   views:
     pagination:
-      first: "&laquo; 第一页"
-      last: 最后一页 &raquo;
+      first: "&laquo; 首页"
+      last: 末页 &raquo;
       next: 下一页 &rsaquo;
       previous: "&lsaquo; 上一页"
       truncate: "&hellip;"

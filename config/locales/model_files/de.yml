@@ -24,7 +24,7 @@ de:
       bambu: in Bambu Studio öffnen
       cura: in Ultimaker Cura öffnen
       elegoo: Im ElegooSlicer öffnen
-      lychee:
+      lychee: In Lychee Slicer öffnen
       orca: in OrcaSlicer öffnen
       prusa: in PrusaSlicer öffnen
       superslicer: Im SuperSlicer öffnen
@@ -41,4 +41,4 @@ de:
       notes_heading: Notizen
     update:
       failure: Es ist ein Fehler aufgetreten und die Dateidetails konnten nicht gespeichert werden.
-      success: Datei-eigenschaften gespeichert.
+      success: Dateieigenschaften gespeichert.

@@ -5,7 +5,7 @@ de:
       collection:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Beschreibung
-        collection: Überstehende Sammlung
+        collection: Übergeordnete Sammlung
         indexable: Indizierung der Suche zulassen
         models: Modelle
         name: Name
@@ -45,7 +45,7 @@ de:
         name: Name
         notes: Notizen
         path: Pfad
-        s3_access_key_id: Zugangsschlüssel ID
+        s3_access_key_id: Zugangsschlüssel-ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpunkt URL
         s3_path_style: Verwende pfad-ähnliche URLs
@@ -70,7 +70,7 @@ de:
         name: Name
         notes: Beschreibung
         path: Pfad
-        preview_file: Vorschau Datei
+        preview_file: Vorschau anzeigen
         sensitive: Möglicherweise verstörender Inhalt
         tags: Tags
       model_file:
@@ -287,11 +287,11 @@ de:
     footer:
       about: Über diese Instanz
       api: Erkunde unsere API
-      by_html: Entworfen und erstellt von <a href="https://floppy.org.uk" target="_blank" rel="noreferrer"> mit Hilfe <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">unserer Mitwirkenden</a>.
+      by_html: Entworfen und erstellt von <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">James</a> mit Hilfe <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">unserer Mitwirkenden</a>.
       community: Tritt der Community bei
       instance_heading: Details zur Instanz
       issues: Einen Fehler melden
-      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer"> unter dieser Lizenz:<a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT license</a>.
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> unter der <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT-Lizenz</a>.
       powered_by_html: Powered by <a href="https://manyfold.app">%{name}</a>
       sponsor: Entwickler unterstützen
       support: Diese Instanz unterstützen
@@ -325,13 +325,13 @@ de:
     order_buttons:
       sort:
         name: Nach Namen sortieren
-        time: Sortieren nach Zeit
+        time: Nach Zeit sortieren
     search_error: Fehler in der Such-Syntax. Bitte prüfen und erneut versuchen!
     tag_list:
       unrelated_tag_count:
-        one: "%{count} unabhängige Tags versteckt"
-        other: "%{count} unabhängige Tags versteckt"
-    tagline: Hilft dir dabei, deine 3D-Druck Dateien zu verwalten
+        one: "%{count} nicht relevanter Tag versteckt"
+        other: "%{count} nicht relevante Tags versteckt"
+    tagline: Hilft dir dabei, deine 3D-Druck-Dateien zu verwalten
     tags_card:
       skip_tags: Tag-Liste überspringen
     title: Manyfold
@@ -564,12 +564,12 @@ de:
         category: Kategorie
         contact_details: Kontaktangaben
         created: Erstellt
-        data_sharing: Daten weitergabe
+        data_sharing: Gemeinsame Datennutzung
         deny: Verweigern
         disable: Deaktivieren
         email: E-Mail
         enable: Aktivieren
-        event_subscriptions: Updates Erhalten
+        event_subscriptions: Event-Abonnements
         fediverse_account: Fediverse-Adresse
         fingerprint: Fingerabdruck
         links: URLs
@@ -577,7 +577,7 @@ de:
         privacy_policy: Datenschutzeinstellungen
         registration: Registrierung
         sign_in: Einloggen
-        subscription_type: Abo typ
+        subscription_type: Art des Abonnements
         versions: Versionen
       index:
         add_html: 'Um einen neuen FASP zu aktivieren, besuche den Anbieter und gebe bei der Anmeldung die URL dieses Servers ein: <code>%{base_url}</code>. Du solltest nur Anbieter verwenden, denen du vertraust, und deren Datenschutzbestimmungen vollständig lesen, bevor du die Dienste aktivierst. Beachte, dass nur öffentliche indizierbare Inhalte mit FASPs geteilt werden.'
@@ -598,7 +598,7 @@ de:
     index:
       explore_html: Oder finde <a href="%{link}">empfohlene Inhalte</a>, denen du folgen kannst!
       followers: Follower
-      following: Follgende
+      following: Folge ich
       title: Verbindungen
     new:
       no_results: Ich konnte leider nichts zu "%{query}" finden. Handelt es sich um ein gültiges ActivityPub-Konto oder eine URL?
@@ -679,6 +679,7 @@ de:
         edit: Du kannst auf der Bearbeitungsseite des Artikels zusätzliche Berechtigungen erteilen.
         member: Standardmäßig sind hochgeladene Inhalte für jeden lokal angemeldeten Benutzer sichtbar.
         private: Standardmäßig sind die hochgeladenen Inhalte für andere Nutzer nicht sichtbar.
+        public: Standardmäßig sind die hochgeladenen Inhalte für alle Besucher der Website öffentlich sichtbar.
       quota: Du kannst bis zu %{quota} Inhalte hochladen, und du kannst deinen aktuellen Kontingentverbrauch jederzeit auf deiner Einstellungsseite einsehen.
       title: Hochladen
       upload: Hochladen
@@ -688,17 +689,17 @@ de:
   imports:
     bad_url: Wir konnten keine nützlichen Informationen von dieser URL erhalten; du könntest falsch sein oder nicht unterstützt werden.
     create:
-      success:
+      success: Import angefordert; die Ergebnisse sollten in Kürze erscheinen
     new:
-      description:
-      heading:
-      import:
-      import_capabilities:
-      import_type_html:
-      integration_settings:
-      placeholder:
-      submit:
-      supported_sites:
+      description: Von einigen Websites kann Manyfold mit nur einem Link Modelle für dich herunterladen!
+      heading: Importieren von einem Link
+      import: Diesen Link importieren
+      import_capabilities: Wir können Modelle, Ersteller und Sammlungen von verschiedenen anderen Hosting-Sites importieren. Was genau wir für Ihre URL importieren können, wird angezeigt, nachdem Sie sie eingegeben haben.
+      import_type_html: "<code>%{url}</code> wird als neue %{object_type} hinzugefügt. Die folgenden Daten können automatisch importiert werden:"
+      integration_settings: Integrationseinstellungen bearbeiten
+      placeholder: Füge die Adresse des Inhalts ein, den du importieren möchtest (z. B. https://thingiverse.com/thing:1234)
+      submit: Importieren
+      supported_sites: Unterstützte Seiten
   jobs:
     activity:
       collection_published:
@@ -752,19 +753,19 @@ de:
     settings:
       appearance: Erscheinungsbild
       downloads: Herunterladen
-      integrations_heading:
+      integrations_heading: Integrationen
       libraries: Sammlungen
-      moderation_heading:
-      moderation_settings_title:
+      moderation_heading: Moderation
+      moderation_settings_title: Moderationseinstellungen
       organization: Organisation
       performance: Leistungs-Dashboard
       pghero: PgHero
-      search_heading:
+      search_heading: Suchen & Entdecken
       sidekiq: Sidekiq
       site_settings_title: Admin-Einstellungen
       tools_heading: Erweiterte Werkzeuge
   licenses:
-    0BSD:
+    0BSD: BSD Zero Clause License
     CC-BY-40: Creative Commons Attribution
     CC-BY-NC-40: Creative Commons Attribution NonCommercial
     CC-BY-NC-ND-40: Creative Commons Attribution NonCommercial NoDerivatives
@@ -773,13 +774,13 @@ de:
     CC-BY-SA-40: Creative Commons Attribution ShareAlike
     CC-PDDC: Creative Commons Public Domain Declaration
     CC0-10: Creative Commons Zero
-    CERN-OHL-P-20:
-    CERN-OHL-S-20:
-    CERN-OHL-W-20:
-    GPL-20-only:
-    GPL-30-only:
-    LGPL-20-only:
-    LGPL-30-only:
+    CERN-OHL-P-20: CERN Open Hardware Licence Version 2 - Permissive
+    CERN-OHL-S-20: CERN Open Hardware Licence Version 2 - Strongly Reciprocal
+    CERN-OHL-W-20: CERN Open Hardware Licence Version 2 - Weakly Reciprocal
+    GPL-20-only: GNU General Public License v2.0
+    GPL-30-only: GNU General Public License v3.0
+    LGPL-20-only: GNU Lesser General Public License v2
+    LGPL-30-only: GNU Lesser General Public License v3
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
   moderator_mailer:
@@ -807,14 +808,14 @@ de:
       title: 'Melde %{type}: "%{name}"'
   scans:
     create:
-      success:
+      success: Scan gestartet.
   security:
     running_as_root_html: Manyfold wird als root ausgeführt, was ein Sicherheitsrisiko darstellt. Führe Manyfold als einen anderen Systembenutzer aus, indem du die Umgebungsvariablen <code>PUID</code> und <code>PGID</code> setzt. Einzelheiten findest du in <a href='https://manyfold.app/sysadmin/configuration.html#required'>der Konfigurationsdokumentation</a>.
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
     cults3d: Cults3D
-    fediverse:
+    fediverse: Das Fediverse
     github: GitHub
     makerworld: MakerWorld
     manyfold: Manyfold
@@ -835,7 +836,7 @@ de:
   users:
     registrations:
       create:
-        altcha_failed:
+        altcha_failed: ALTCHA-Verifizierung fehlgeschlagen
   views:
     pagination:
       first: "« Anfang"

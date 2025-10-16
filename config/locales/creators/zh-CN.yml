@@ -5,31 +5,31 @@ zh-CN:
       success:
     creator:
       collections_button:
-        label:
-        remote_label:
+        label: 按 %{name} 显示合集
+        remote_label: 按 %{name} 显示本地合集
       delete_button:
-        label:
+        label: 删除创建者 %{name}
       edit_button:
-        label:
+        label: 编辑创建者 %{name}
       models_button:
-        label:
-        remote_label:
+        label: 按 %{name} 显示模型
+        remote_label: 按 %{name} 显示本地模型
     destroy:
-      confirm:
-      success:
+      confirm: 您确定要删除此项目吗？不会影响任何文件。
+      success: 创作者已删除！
     form:
       avatar:
-        current:
-        help:
-        none:
-        remove:
+        current: 目前使用 `%{filename}`。
+        help: 256x256px 的正方形图像，WEBP、PNG、GIF 或 JPG 格式。
+        none: 目前尚未设置。
+        remove: 移除头像
       banner:
-        current:
-        help:
-        none:
-        remove:
+        current: 目前使用 `%{filename}`。
+        help: 约 1000x200px 的背景图片，WEBP、PNG、GIF 或 JPG 格式。
+        none: 目前尚未设置。
+        remove: 移除横幅
       notes:
-        help_html:
+        help_html: 您可以使用 <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> 语法。
       slug:
         help:
     general:

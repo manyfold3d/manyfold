@@ -68,6 +68,7 @@ ja:
       free_space:
       library:
         help: アップロード先のライブラリー。
+      permission_preset: アクセス許可
       submit: モデルの作成
       title: アップロード
     organize:

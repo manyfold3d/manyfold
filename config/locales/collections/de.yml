@@ -6,9 +6,9 @@ de:
         label: Untersammlungen in %{name} anzeigen
         remote_label: Lokale Untersammlungen in %{name} anzeigen
       delete_button:
-        label: Sammlung löschen %{name}
+        label: Sammlung %{name} löschen
       edit_button:
-        label: Sammlung bearbeiten %{name}
+        label: Sammlung %{name} bearbeiten
       models_button:
         label: Modelle in %{name} anzeigen
         remote_label: Lokale Modelle in %{name} anzeigen

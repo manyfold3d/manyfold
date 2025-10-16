@@ -139,6 +139,7 @@ pt:
         options:
           member:
           private:
+          public:
       details_html:
       email:
       federation:

@@ -3,35 +3,35 @@ zh-CN:
   collections:
     collection:
       collections_button:
-        label:
+        label: 显示 %{name} 中的子集
         remote_label:
       delete_button:
-        label:
+        label: 删除合集 %{name}
       edit_button:
-        label:
+        label: 编辑合集 %{name}
       models_button:
-        label:
+        label: 显示 %{name} 中的模型
         remote_label:
-      no_preview:
+      no_preview: 预览不可用
     create:
       success:
     destroy:
-      confirm:
-      success:
+      confirm: 您确定要删除此项目吗？不会影响任何文件。
+      success: 合集已删除！
     form:
       notes:
-        help_html:
+        help_html: 您可以使用 <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> 语法。
     general:
-      edit:
-      new:
+      edit: 编辑合集
+      new: 新合集
     get_collection:
-      unknown:
+      unknown: 未知
     index:
       skip_collections:
     show:
-      edit:
+      edit: 编辑合集
     unassigned:
       caption:
-      name:
+      name: 未分配
     update:
       success:

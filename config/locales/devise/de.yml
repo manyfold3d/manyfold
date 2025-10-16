@@ -85,7 +85,7 @@ de:
         heading: Datei-Listen
         hide_presupported_versions:
           label: Kombiniere verknüpfte Dateien mit und ohne Supportstruktur.
-        summary: Steuere, wie Modelle und Datei Listen angezeigt werden
+        summary: Steuere, wie Modelle und Dateilisten angezeigt werden
       first_use:
         email_help: Wird nie öffentlich angezeigt; wird nur für Anmelde- und Kontosicherheits-E-Mails verwendet.
         guidance: Bei der ersten Verwendung musst du einen Accountnamen, eine Kontakt-E-Mail und ein Passwort für den Administrator festlegen. Im Einzelbenutzermodus musst du diese Angaben normalerweise nicht machen, um dich anzumelden, aber im Mehrbenutzermodus kannst du ohne diese Angaben nicht auf Manyfold zugreifen.
@@ -173,7 +173,7 @@ de:
       signed_up_but_locked: Du hast sich erfolgreich registriert. Wir konnten dich jedoch nicht anmelden, weil dein Konto gesperrt ist.
       signed_up_but_unconfirmed: Du erhältst in wenigen Minuten eine E-Mail mit einem Link für die Bestätigung deiner Registrierung. Klicke auf den Link um dein Konto zu aktivieren.
       tag_cloud_settings:
-        heading: Tag Liste
+        heading: Tag-Wolke
         heatmap:
           label: Tag-Anzahl für einzelne Tags anzeigen
         keypair:

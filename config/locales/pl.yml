@@ -679,6 +679,7 @@ pl:
         edit:
         member:
         private:
+        public:
       quota:
       title:
       upload: Prześlij

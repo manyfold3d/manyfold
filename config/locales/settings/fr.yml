@@ -139,6 +139,7 @@ fr:
         options:
           member: Utilisateurs locaux connectés
           private: Privé
+          public:
       details_html: Pour modifier ces paramètres, modifiez les <a href='https://manyfold.app/sysadmin/configuration.html'>variables d'environnement</a> du serveur et redémarrez-le.
       email: L'envoi du courrier électronique est-il configuré ?
       federation: Fédération activée ?

@@ -2,7 +2,7 @@
 de:
   settings:
     analysis:
-      description: Führt genauere mesh-analysen an Modellen durch. Diese Aktion führt dazu, dass deine Scans erheblich länger dauern und viel mehr CPU und Speicher verbrauchen.
+      description: Führt genauere Mesh-Analysen an Modellen durch. Diese Aktion führt dazu, dass deine Scans erheblich länger dauern und viel mehr CPU und Speicher verbrauchen.
       heading: Mesh Analyse
       manifold:
         help: Prüfung auf nicht-verzweigte Maschen (d.h. sie haben Löcher oder unmögliche Oberflächen)
@@ -34,22 +34,22 @@ de:
         label: Aussehen
     discovery:
       allow_ai_bots:
-        help:
-        label:
+        help: Sofern deaktiviert sind KI-Bots in der robots.txt vollständig verboten. Diese Option zu aktivieren kann eine hohe Serverlast verursachen.
+        label: AI-Crawler zulassen
       allow_robots:
-        help:
-        label:
+        help: Sofern deaktiviert werden Web-Crawler gebeten, die gesamte Instanz zu ignorieren.
+        label: Web-Crawler zulassen
       default_ai_indexable:
-        help_html:
-        label:
+        help_html: 'Sofern deaktiviert werden Bots, die KI trainieren, gebeten, öffentliche Inhalte zu ignorieren, basierend auf <a href="https://www.deviantart.com/team/journal/A-New-Directive-for-Opting-Out-of-AI-Datasets-934500371">DeviantArts `noai` Direktive</a> '
+        label: KI-Training zulassen
       default_indexable:
-        help:
-        label:
-      description:
-      heading:
+        help: Sofern deaktiviert werden Suchmaschinen gebeten, öffentlichen Inhalt standardmäßig zu ignorieren.
+        label: Suchindizierung zulassen
+      description: Kontrolliere, wie der Rest der Welt deine öffentlichen Inhalte findet. Beachte, dass all diese Einstellungen Empfehlungen sind; Wir können nicht garantieren, dass sich andere Systeme gut verhalten.
+      heading: Entdeckung
       indexing:
-        description:
-        heading:
+        description: Die folgenden Optionen setzen seitenweite Standardeinstellungen für die Suchindizierung von öffentlichen Inhalten (private Inhalte sind nie indizierbar). Für einzelne Modelle, Autoren oder Kollektionen können diese Einstellungen überschrieben werden. Diese haben nur einen Effekt, wenn Crawler aktiviert sind.
+        heading: Standardeinstellungen für die Suchindizierung
     domain_blocks:
       create:
         success: Domänenblock erfolgreich erstellt.
@@ -65,11 +65,11 @@ de:
         title: Neuer Domain-block
     downloads:
       derivatives:
-        description:
-        heading:
+        description: Manyfold kann alternative Versionen einiger Dateien erstellen, um die Leistung der Seite zu erhöhen. Beachte, dass dies mehr Speicherplatz benötigt.
+        heading: Alternative Dateien
         images:
-          help:
-          label:
+          help: Erzeugt Bilder mit geringerer Auflösung, welche in Listen und Modellseiten schneller laden.
+          label: Bild-Miniaturansichten
       description: Manyfold generiert ZIP-Dateien von Modellen auf Anfrage, aber für stark frequentierte Websites möchtest du diese vielleicht schneller verfügbar haben. Hier kannst du Manyfold anweisen, ZIP-Dateien sofort zu erstellen, und auch festlegen, wie lange sie im Download-Cache aufbewahrt werden sollen. Vorsicht, dies kann eine Menge Speicherplatz verbrauchen!
       expiry:
         help: 0 bedeutet "für immer".
@@ -107,38 +107,39 @@ de:
       submit: Einstellungen speichern
     integrations:
       cults3d_api_key:
-        help_html:
-        label:
+        help_html: Erstelle einen API-Schlüssel auf deiner <a href="https://cults3d.com/en/api/keys">Cults3D API Key</a> Seite.
+        label: API-Schlüssel
       cults3d_api_username:
-        help_html:
-        label:
-      description:
-      heading:
+        help_html: Der Name des Cults3D-Kontos, das den API-Schlüssel generiert hat.
+        label: Kontoname
+      description: Einstellungen für die Integration von externen Diensten um beispielsweise die automatische Synchronisierung von Metadaten zu aktivieren.
+      heading: Integrationen
       myminifactory_api_key:
-        help_html:
-        label:
+        help_html: Erstelle eine Anwendung in den <a href="https://www.myminifactory.com/settings/developer">Entwicklereinstellungen von MyMiniFactory</a>und füge den erzeugten API-Schlüssel hier ein.
+        label: API-Schlüssel
       thingiverse_api_key:
-        help_html:
-        label:
+        help_html: Erstelle eine "Web App" in der <a href="https://www.thingiverse.com/developers/my-apps">Entwicklerkonsole von Thingiverse</a>und füge den App Token hier ein.
+        label: API-Schlüssel
     multiuser:
       approve_signups:
         help: Alle neuen Konten müssen von einem Moderator genehmigt werden, bevor man sich anmelden kann.
         label: Konten genehmigen
       autocreate_creator:
-        help:
-        label:
+        help: 'Wird nur angewendet, wenn Konten standardmäßig die Rolle "Mitwirkender" zugewiesen wird. '
+        label: Automatisch Maker aus neuen Accounts generieren
       default_signup_role:
-        help:
-        label:
+        help: Die Rolle, welche neue Konten bei der Registrierung zugewiesen wird
+        label: Standard-Rolle
         options:
-          contributor:
-          member:
+          contributor: Mitwirkender (kann Inhalte hochladen)
+          member: Mitglied (nur lesend)
       default_viewer_role:
         help: Wer kann neue Modelle/Ersteller/Sammlungen standardmäßig anzeigen?
-        label: Standard-Sichtbarkeit
+        label: Standard-Berechtigungen
         options:
           member: Mitglieder (eingeloggte lokale Konten)
           private: Privat
+          public: Öffentlich
       details_html: Um diese Einstellungen zu ändern, bearbeite die <a href='https://manyfold.app/sysadmin/configuration.html'>Umgebungsvariablen</a> des Servers und starten Sie ihn neu.
       email: E-Mail-Zustellung konfiguriert?
       federation: Föderation möglich?
@@ -214,7 +215,7 @@ de:
       quota:
         current_quota: Aktuelles Speicherlimit in MB
         current_space_used: Derzeit verwendeter Speicherplatz
-        title: Datei speicher Limit
+        title: Verbrauchter Speicherplatz
         unlimited_quota: Unbegrenzt
         using_site_default: Verwende das Standard-Speicherlimit der Website?
       show:
