@@ -100,129 +100,130 @@ zh-CN:
       tokens:
         collection:
         creator:
-        model_id:
+        model_id: 模型的唯一数字标识符。我们强烈建议将其放在模板的末尾，以避免磁盘上的名称冲突。
         model_name:
         tags_html:
     general:
-      submit:
+      submit: 保存设置
     integrations:
       cults3d_api_key:
-        help_html:
-        label:
+        help_html: 在<a href="https://cults3d.com/en/api/keys">Cults3D</a>API 密钥页面上创建 API 密钥。
+        label: API 密钥
       cults3d_api_username:
-        help_html:
-        label:
-      description:
-      heading:
+        help_html: 生成 API 密钥的 Cults3d 账户的用户名。
+        label: 用户名
+      description: 用于配置与外部服务集成的设置，以启用自动元数据同步等功能。
+      heading: 集成
       myminifactory_api_key:
-        help_html:
-        label:
+        help_html: 在<a href="https://www.myminifactory.com/settings/developer">MyMiniFactory 开发人员设置</a>中创建应用程序，并粘贴生成的 API 密钥。
+        label: API 密钥
       thingiverse_api_key:
-        help_html:
-        label:
+        help_html: 在<a href="https://www.thingiverse.com/developers/my-apps">Thingiverse 开发者控制台</a>创建一个 "网络应用程序"，并在此粘贴 "应用程序令牌"。
+        label: API 密钥
     multiuser:
       approve_signups:
-        help:
-        label:
+        help: 所有新账户必须经批准后才能登录。
+        label: 批准账户
       autocreate_creator:
-        help:
-        label:
+        help: 仅在默认情况下赋予账户 "贡献者 "角色时应用。
+        label: 为新账户自动创建创建者
       default_signup_role:
-        help:
-        label:
+        help: 新账户注册时分配给他们的角色
+        label: 默认角色
         options:
-          contributor:
-          member:
+          contributor: 撰稿人（可上传内容）
+          member: 成员（只读）
       default_viewer_role:
-        help:
-        label:
+        help: 默认情况下，谁可以查看新模型/创建者/收藏？
+        label: 默认权限
         options:
-          member:
-          private:
-      details_html:
-      email:
+          member: 成员（登录的本地账户）
+          private: 私密
+          public: 公开
+      details_html: 要更改这些设置，请编辑服务器的<a href='https://manyfold.app/sysadmin/configuration.html'>环境变量</a>并重新启动。
+      email: 是否配置了电子邮件发送功能？
       federation:
-      heading:
-      multiuser:
-      multiuser_mode:
-      oidc:
-      permissions:
-      registration:
+      heading: 多用户
+      multiuser: 多用户模式？
+      multiuser_mode: Manyfold 正以多用户模式运行。
+      oidc: 是否配置了 OpenID Connect？
+      permissions: 权限
+      registration: 账户注册
       registration_open:
-        help:
-        label:
-      single_user_mode:
-      user_quotas:
-      user_quotas_enable_quota:
-      user_quotas_site_default:
+        help: 让游客注册账户。
+        label: 启用注册
+      single_user_mode: Manyfold 正以单用户模式运行。
+      user_quotas: 账户上传大小限制
+      user_quotas_enable_quota: 启用账户上传存储限制
+      user_quotas_site_default: 网站默认账户上传存储限制（MB）
     reporting:
-      description_html:
-      heading:
+      description_html: 如果启用使用跟踪，以下信息将每天发送一次到<code>%{endpoint}</code>。该<code>ID</code>是在启用跟踪功能时随机生成的。
+      heading: 使用跟踪
       report_usage:
-        label:
-      summary:
-      use_of_data:
-      verification_html:
+        label: 启用匿名使用跟踪
+      summary: 让开发人员知道你正在运行 Manyfold。
+      use_of_data: 除了测量运行 Manyfold 的实例数量和版本外，开发人员绝不会将这些信息用于任何其他目的，也不会发送或存储其他信息。
+      verification_html: 如果要验证我们发送的内容，可以更改<code>USAGE_REPORTING_URL</code>环境变量，然后将数据发送到可以检查的地方。您还可以在日志中查看发送的具体内容。
     reports:
       index:
-        description:
-        title:
+        description: 本地账户或 Fediverse 账户报告的内容会显示在这里，以供审核。
+        title: 报告
       show:
-        ignore:
-        resolve:
+        ignore: 忽略
+        resolve: 标记为已解决
       update:
-        ignored:
-        resolved:
+        ignored: 该报告被标记为忽略。
+        resolved: 该报告被标记为已解决。
     show:
-      stats:
-      total_file_size:
+      stats: 统计
+      total_file_size: 文件总大小
     tag_settings:
       auto_tag_new:
-        label:
+        label: 自动标记新模型
       custom_stop_words:
-        label:
-      description:
+        label: 自定义禁止词
+      description: 为所有新扫描的模型添加标签，并在自动创建标签时过滤掉某些词（"禁止词"）。影响所有账户。
       filter_stop_words:
-        label:
+        label: 过滤禁止词
       heading:
       stop_words_locale:
-        label:
+        label: 禁止词
       tag_model_directory_name:
-        help:
-        label:
+        help: 模型名称（而不是路径）中的每个单词都会被添加为标签。警告：这会产生大量标签！
+        label: 根据模型名称创建标签
     update:
-      success:
+      success: 设置已保存。
     users:
       create:
-        success:
+        success: 账户创建成功。
       destroy:
-        success:
+        success: 帐户已删除！
       edit:
-        title:
+        title: 编辑账户：%{username}
       form:
-        password_reset_help:
-        submit:
+        password_reset_help: 系统会自动向账户所有者发送一个链接，让他们设置自己的密码。
+        submit: 保存
       index:
-        description:
-        fediverse_address:
-        local:
-        new:
-        title:
-        view:
+        description: 查看和编辑注册账户。
+        fediverse_address: Fediverse 地址
+        local: 本地
+        new: 新账户
+        title: 管理账户
+        view: 查看
       new:
-        title: 注册
+        title: 创建账户
       quota:
-        current_quota:
-        current_space_used:
-        title:
-        unlimited_quota:
-        using_site_default:
+        current_quota: 当前文件存储上限（MB）
+        current_space_used: 当前使用的文件存储
+        title: 文件存储限制
+        unlimited_quota: 无限制
+        using_site_default: 使用网站默认文件存储限制？
       show:
-        approve:
-        confirm_destroy:
-        reset_password:
-        title:
+        approve: 批准账户
+        confirm_destroy: 您确定要立即删除此帐户吗？无法撤销！
+        reset_password: 重置密码
+        title: 账户详细信息：[%{username}］
       update:
-        approved:
-        reset_link_sent:
-        success:
+        approved: 账户已成功批准。
+        reset_link_sent: 已向账户所有者发送链接，供其设置新密码。
+        success: 账户更新成功。

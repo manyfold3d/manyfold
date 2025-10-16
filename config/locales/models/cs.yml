@@ -68,6 +68,7 @@ cs:
       free_space: "(%{available} volných)"
       library:
         help: Knihovna, do které se má nahrávat.
+      permission_preset: Oprávnění
       submit: Vytvořit modely
       title: Nahrát
     organize:

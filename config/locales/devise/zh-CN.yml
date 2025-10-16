@@ -2,7 +2,7 @@
 zh-CN:
   devise:
     confirmations:
-      confirmed: 成功验证您的邮箱。
+      confirmed: 已成功验证您的邮箱。
       new:
         resend_confirmation_instructions: 重新发送确认邮件
       send_instructions: 几分钟后，您将收到确认帐户的电子邮件。
@@ -10,14 +10,14 @@ zh-CN:
     failure:
       already_authenticated: 您已经登录。
       inactive: 您的帐户还未激活。
-      invalid: "%{authentication_keys}或密码错误。"
+      invalid: 无效的 %{authentication_keys} 或密码。
       last_attempt: 您还有最后一次尝试机会，再次失败您的帐户将被锁定。
-      locked: 您的帐户正被锁定。
-      not_approved:
-      not_found_in_database: "%{authentication_keys}或密码错误。"
+      locked: 您的帐户将被锁定一小时，请稍后重试。
+      not_approved: 管理员尚未批准您的帐户。
+      not_found_in_database: 无效的 %{authentication_keys} 或密码。
       timeout: 登录超时，请重新登录。
       unauthenticated: 继续操作前请注册或者登录。
-      unconfirmed: 继续操作前请先确认您的帐户。
+      unconfirmed: 您必须先确认电子邮件地址，然后才能继续。
     mailer:
       confirmation_instructions:
         action: 确认我的帐户
@@ -38,7 +38,7 @@ zh-CN:
         greeting: 您好 %{recipient}！
         instruction: 有人要求更改密码的链接，您可以通过下面的链接更改密码：
         instruction_2: 如果您没有要求请求更改密码，请忽略此电子邮件。
-        instruction_3: 如果您没有访问上面的链接并更改密码，您的密码就不会被改变。
+        instruction_3: 在您访问上述链接并创建新密码之前，您的密码不会更改。
         subject: 重置密码信息
       unlock_instructions:
         action: 帐户解锁
@@ -47,8 +47,8 @@ zh-CN:
         message: 由于多次登录失败，您的帐户已被锁定。
         subject: 帐户解锁信息
     omniauth_callbacks:
-      failure: 由于%{reason}，无法从%{kind}获得授权。
-      success: 成功地从%{kind}获得授权。
+      failure: 由于%{reason}，无法从 %{kind} 获得授权。
+      success: 成功地从 %{kind} 获得授权。
     passwords:
       edit:
         change_my_password: 更改我的密码
@@ -58,7 +58,7 @@ zh-CN:
       new:
         forgot_your_password: 忘记密码？
         send_me_reset_password_instructions: 请给我发送重设密码的邮件
-      no_token: 无重置邮件不可访问密码重置页面。如果您是从重置邮件来到了这个页面，请确保您输入的URL完整。
+      no_token: 如果您没有收到重置密码的电子邮件，则无法访问此页面。如果您来自密码重置电子邮件，请确保您使用了所提供的完整 URL。
       send_instructions: 几分钟后，您将收到重置密码的电子邮件。
       send_paranoid_instructions: 如果您的邮箱存在于我们的数据库中，您将收到一封找回密码的邮件。
       updated: 您的密码已修改成功，您现在已登录。
@@ -68,16 +68,16 @@ zh-CN:
       edit:
         are_you_sure: 您确定吗？
         cancel_my_account: 注销我的帐户
-        confirm_deletion:
-        contact_info:
-        current_password_help:
+        confirm_deletion: 您确定要删除账户吗？
+        contact_info: 联系信息
+        current_password_help: 为安全起见需要当前密码
         currently_waiting_confirmation_for_email: 等待确认 %{email}
         danger_zone:
-        leave_blank_if_you_don_t_want_to_change_it: 如不想更改，则无需填写
+        leave_blank_if_you_don_t_want_to_change_it: 如果不想更改，请留空
         security:
         social:
-        submit:
-        title: 修改%{resource}
+        submit: 保存更改
+        title: 我的设置
         unhappy: 不喜欢
         update: 更新
         we_need_your_current_password_to_confirm_your_changes: 我们需要您的当前密码以确认更改
@@ -85,112 +85,112 @@ zh-CN:
         heading:
         hide_presupported_versions:
           label:
-        summary:
+        summary: 控制模型文件列表的显示方式
       first_use:
-        email_help:
-        guidance:
+        email_help: 从不公开显示；仅用于登录和账户安全邮件。
+        guidance: 首次使用时，您需要为主管理员账户设置账户名、邮箱和密码。如果运行的是单用户模式，通常无需输入这些信息即可登录，但在多用户模式下，没有这些信息将无法访问 Manyfold。
         password:
           help_html:
-        submit:
-        title:
-        username_help:
+        submit: 保存
+        title: 设置
+        username_help: 唯一的账户名称；使用预生成的名称，或选择自己的名称。
       general_settings:
-        heading:
+        heading: 通用
         interface_language:
-          autodetect:
-          help:
-          label:
+          autodetect: 使用浏览器设置
+          help: 注意：某些未翻译的文字可能仍显示为英文。
+          label: 界面语言
         sensitive_content:
-          help:
-          hide:
-          label:
-          mask:
-          show:
+          help: 影响标记为 "敏感" 的内容的显示方式
+          hide: 完全隐藏
+          label: 敏感内容
+          mask: 在列表中模糊
+          show: 正常显示
       new:
-        approval_help:
+        approval_help: 创建账户后，我们将对您的账户进行人工审核。审批完成后，您会收到登录通知。
         creators:
           name:
-            help:
-            label:
+            help: 这将作为您的创作者简介的标题公开显示。
+            label: 创作者名字
           slug:
-            help:
-            help_fedi:
-        details:
-        rules:
-        rules_agree:
-        sign_up: 注册
+            help: 简短用户名，将显示在 URL 中。
+            help_fedi: 简短用户名，将显示在 URL 和 Fediverse 地址中。
+        details: 您的详细信息
+        rules: 服务器规则
+        rules_agree: 注册账户即表示您同意遵守上述规则。
+        sign_up: 创建账户
         username:
-          help:
+          help: 您个人账户的简短用户名；如果您以后创建了用于发布模型的配置文件，则需要使用不同的账户名。
       pagination_settings:
         collections:
           label:
         creators:
           label:
-        description:
-        heading:
+        description: 在列表页面中一次只显示一定数量的项目，而不是同时显示所有项目。这样可以加快加载速度。
+        heading: 分页
         models:
-          label:
+          label: 分页模型
         per_page:
-          label:
+          label: 每页项目
       problem_settings:
         description:
-        title:
+        title: 问题检测
       renderer_settings:
         auto_load_max_size:
-          always:
-          label:
-          never:
-          under_1024:
-          under_128:
-          under_16:
-          under_2:
-          under_256:
-          under_32:
-          under_4:
-          under_512:
-          under_64:
-          under_8:
+          always: 始终
+          label: 自动加载预览
+          never: 从不
+          under_1024: 最大 1024 MB
+          under_128: 最大 128 MB
+          under_16: 最大 16 MB
+          under_2: 最大 2 MB
+          under_256: 最大 256 MB
+          under_32: 最大 32 MB
+          under_4: 最大 4 MB
+          under_512: 最大 512 MB
+          under_64: 最大 64 MB
+          under_8: 最大 8 MB
         background_colour:
-          label:
-        description:
+          label: 背景颜色
+        description: 自定义 3d 预览的设置。
         enable_pan_zoom:
-          label:
+          label: 启用平移/缩放控制
         grid_width:
-          label:
-        heading:
+          label: 地平面尺寸（mm）
+        heading: 渲染器
         object_colour:
-          label:
+          label: 物体颜色
         render_style:
-          label:
-          lambert:
-          normals:
-          original:
-          shadowed:
+          label: 渲染风格
+          lambert: 平滑阴影
+          normals: 表面方向
+          original: 原点（来自文件）
+          shadowed: 逼真的阴影效果
         show_grid:
-          label:
-      signed_up: 欢迎您！您已注册成功。
-      signed_up_but_inactive: 您的帐户还未被激活。激活前无法登录。
-      signed_up_but_locked: 您已成功注册，但帐号被锁定了，因此无法登录。
-      signed_up_but_unconfirmed: 谢谢您！一封确认邮件已经发至您的邮箱，请点击其中的链接激活您的帐户。
+          label: 显示地平面
+      signed_up: 欢迎！您已注册成功。
+      signed_up_but_inactive: 您已成功注册。但由于您的账户尚未激活，目前无法登录。
+      signed_up_but_locked: 您已成功注册，但该帐号已被锁定，目前无法登录。
+      signed_up_but_unconfirmed: 一封确认邮件已经发至您的邮箱，请点击其中的链接激活该帐户。
       tag_cloud_settings:
-        heading:
+        heading: 标签云
         heatmap:
-          label:
+          label: 显示单个标签的计数
         keypair:
-          label:
+          label: 使用分隔符来表示密钥对
         sorting:
-          alphabetical:
-          frequency:
-          label:
+          alphabetical: 字母顺序
+          frequency: 频率
+          label: 分类
         threshold:
-          label:
+          label: 最少显示的标签数
       update:
-        setup_complete:
-      update_needs_confirmation: 新的帐户信息已成功提交，确认邮件已经发至您的邮箱，请点击其中的链接以使您的新电子邮箱地址生效。
-      updated: 帐户资料更新成功。
-      updated_but_not_signed_in: 帐号资料更新成功。由于密码已修改，请重新登录。
+        setup_complete: 设置完成！
+      update_needs_confirmation: 您已成功更新账户，但我们需要验证新的邮件地址。请检查您的电子邮件，并按照确认链接确认您的新电子邮件地址。
+      updated: 您的设置已更新。
+      updated_but_not_signed_in: 设置已更新，但由于密码已更改，您需要重新登录。
       user:
-        signed_up_but_not_approved:
+        signed_up_but_not_approved: 您已成功注册。我们将很快审核您的账户，之后您就可以登录了。
     sessions:
       already_signed_out: 您已登出。
       new:
@@ -207,8 +207,8 @@ zh-CN:
         sign_in_with_provider: 通过 %{provider} 登录
         sign_up: 注册
       minimum_password_length:
-        one:
-        other:
+        one: "（最少 %{count} 字符数）"
+        other: "（最少 %{count} 字符数）"
     unlocks:
       new:
         resend_unlock_instructions: 重发解锁邮件

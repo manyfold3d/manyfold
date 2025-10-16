@@ -139,6 +139,7 @@ ru:
         options:
           member:
           private:
+          public:
       details_html:
       email:
       federation:
@@ -174,7 +175,7 @@ ru:
         ignored:
         resolved:
     show:
-      stats:
+      stats: Статистика
       total_file_size:
     tag_settings:
       auto_tag_new:
@@ -191,7 +192,7 @@ ru:
         help:
         label:
     update:
-      success:
+      success: Настройки сохранены.
     users:
       create:
         success:

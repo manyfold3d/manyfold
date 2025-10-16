@@ -4,7 +4,7 @@ de:
     bulk_edit:
       description: 'Wähle die zu ändernden Modelle aus:'
       form_subtitle: 'Wähle die Änderungen aus, die du vornehmen möchtest:'
-      merge:
+      merge: Ausgewählte Modelle zusammenführen
       remove_tags: Tags entfernen
       select: Modell '%{name}' auswählen
       select_all: Alle Modelle auswählen
@@ -17,13 +17,13 @@ de:
       success: Modelle erfolgreich aktualisiert.
     configure_merge:
       common_root:
-        description:
-        title:
-      description:
-      heading:
+        description: Die Modelle werden zu einem einzigen Modell im gemeinsamen Stammordner zusammengefasst
+        title: Neues Modell im gemeinsamen Stammordner
+      description: Wähle eines der Modelle aus, mit dem du die anderen zusammenführen möchtest, oder erstelle ein neues.
+      heading: Modelle zusammenführen
       new_model:
-        description:
-        title:
+        description: Aus den kombinierten Daten wird ein neues Modell erstellt, das automatisch auf der Festplatte abgelegt wird.
+        title: Neues Modell
     create:
       success: Die Datei(en) wurde(n) erfolgreich hochgeladen.
     destroy:
@@ -53,25 +53,26 @@ de:
       slide_label: "%{name} (%{index} von %{count})"
     list:
       bulk_edit: Alle Modelle bearbeiten
-      no_results_html: Wir konnten leider nichts finden, was wir dir zeigen könnten! Versuche, deine Filter oder Suchbegriffe zu ändern, oder lade ein einige Modelle hoch.
-      no_results_signed_out_html: Wir konnten leider nichts finden, was wir dir zeigen können! Vielleicht gibt es mehr zu sehen, wenn du <a href="%{link}">sign in</a>.
+      no_results_html: Wir konnten leider nichts finden, was wir dir zeigen könnten! Versuche, deine Filter oder Suchbegriffe zu ändern oder einige Modelle hochzuladen.
+      no_results_signed_out_html: Wir konnten leider nichts finden, was wir dir zeigen können! Vielleicht gibt es mehr zu sehen, wenn du <a href="%{link}">dich einloggst</a>.
       search:
-        or_other_sites:
-        other_sites:
+        or_other_sites: 'Oder suche woanders:'
+        other_sites: 'Nicht fündig geworden? Versuche, woanders zu suchen:'
       skip_models: Modellliste überspringen
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
     new:
-      description: Lade neue Modelle hoch. Jedes hochgeladene Archiv wird extrahiert und zu einem einzigen Modell, das alle Dateien enthält. Wenn du einzelne Dateien Hochlädst, werden sie zu einzelnen Modellen.
+      description: Lade neue Modelle hoch. Jedes hochgeladene Archiv wird extrahiert und zu einem einzigen Modell, das alle Dateien enthält. Wenn du einzelne Dateien hochlädst, werden sie zu einzelnen Modellen.
       files:
         label: Dateien auswählen
       free_space: "(%{available} frei)"
       library:
         help: Die Sammlung, in die hochgeladen werden soll.
+      permission_preset: Berechtigungen
       submit: Modelle erstellen
       title: Hochladen
     organize:
-      confirm:
+      confirm: Die zum Modell gehörenden Ordner und Dateien werden verschoben. Bist du sicher?
       label: Dateien organisieren
     problem:
       merge_all: Alle zusammenführen

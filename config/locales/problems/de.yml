@@ -4,8 +4,8 @@ de:
     categories:
       duplicate: Duplizierte Dateien
       empty: Modell oder Datei ist Leer
-      file_naming:
-      http_error:
+      file_naming: Der Pfad stimmt nicht mit der Vorlage überein
+      http_error: HTTP-Fehler beim Abrufen des Links
       inefficient: Unvollständige Formate
       inside_out: Mesh ist "verdreht"
       missing: Fehlende Dateien oder Ordner
@@ -36,15 +36,15 @@ de:
       unignore: Anzeigen
     link:
       http_error:
-        description:
-        title:
+        description: Beim Aufrufen des Links vom Server ist ein Fehler aufgetreten.
+        title: HTTP-Fehler beim Abrufen des Links
     model:
       empty:
         description: Dieses Modell enthält keine Dateien. Entweder löschen Sie es oder finde heraus, wo sie sind!
         title: Keine Dateien
       file_naming:
-        description:
-        title:
+        description: Der Pfad des Modell-Ordners stimmt nicht mit der Vorlage überein.
+        title: Der Pfad stimmt nicht mit der Vorlage überein
       missing:
         description: Der Ordner für dieses Modell fehlt auf der Festplatte; lösche ihn, oder finde heraus, wo er ist!
         title: Ordner nicht gefunden
