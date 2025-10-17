@@ -19,6 +19,7 @@ on:
 
 jobs:
   build:
+    if: github.triggering_actor != 'allcontributors[bot]'
     strategy:
       fail-fast: true
       max-parallel: 1
@@ -75,6 +76,7 @@ jobs:
             DOCKER_TAG=${{ steps.docker_meta.outputs.tags }}
 
   smoke-test:
+    if: github.triggering_actor != 'allcontributors[bot]'
     needs: build
     runs-on: ubuntu-latest
     steps:

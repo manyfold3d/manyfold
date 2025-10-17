@@ -7,6 +7,7 @@ on:
 
 jobs:
   sync:
+    if: github.triggering_actor != 'allcontributors[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
