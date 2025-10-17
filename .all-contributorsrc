@@ -223,6 +223,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "mcsgroi",
+      "name": "mcsgroi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8921172?v=4",
+      "profile": "https://github.com/mcsgroi",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
