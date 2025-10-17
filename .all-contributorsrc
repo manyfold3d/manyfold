@@ -9,7 +9,17 @@
   "imageSize": 100,
   "commit": true,
   "commitConvention": "none",
-  "contributors": [],
+  "contributors": [
+    {
+      "login": "Floppy",
+      "name": "James Smith",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3565?v=4",
+      "profile": "https://floppy.org.uk/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
   "contributorsPerLine": 7,
   "linkToUsage": true
 }
