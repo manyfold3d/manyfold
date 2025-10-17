@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-39-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-41-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -220,6 +220,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/OlegEnot"><img src="https://avatars.githubusercontent.com/u/121382147?v=4?s=100" width="100px;" alt="olegenot"/><br /><sub><b>olegenot</b></sub></a><br /><a href="#translation-OlegEnot" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/sohanev"><img src="https://avatars.githubusercontent.com/u/188066793?v=4?s=100" width="100px;" alt="Soha"/><br /><sub><b>Soha</b></sub></a><br /><a href="#translation-sohanev" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://tablecheck.com/en/company"><img src="https://avatars.githubusercontent.com/u/803797?v=4?s=100" width="100px;" alt="Aleksandr T."/><br /><sub><b>Aleksandr T.</b></sub></a><br /><a href="#translation-terghalin" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/macdylan"><img src="https://avatars.githubusercontent.com/u/331506?v=4?s=100" width="100px;" alt="Dylan"/><br /><sub><b>Dylan</b></sub></a><br /><a href="#translation-macdylan" title="Translation">🌍</a></td>
     </tr>
   </tbody>
   <tfoot>

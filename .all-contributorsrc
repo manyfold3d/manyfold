@@ -379,6 +379,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "macdylan",
+      "name": "Dylan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/331506?v=4",
+      "profile": "https://github.com/macdylan",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
