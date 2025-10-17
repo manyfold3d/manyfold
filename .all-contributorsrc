@@ -232,6 +232,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ichlubna",
+      "name": "Tomáš Chlubna",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43234438?v=4",
+      "profile": "https://www.fit.vut.cz/person/ichlubna/",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,

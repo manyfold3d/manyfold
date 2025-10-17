@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-23-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -200,6 +200,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ToasterUwU"><img src="https://avatars.githubusercontent.com/u/43654377?v=4?s=100" width="100px;" alt="Aki"/><br /><sub><b>Aki</b></sub></a><br /><a href="#translation-ToasterUwU" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mcsgroi"><img src="https://avatars.githubusercontent.com/u/8921172?v=4?s=100" width="100px;" alt="mcsgroi"/><br /><sub><b>mcsgroi</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=mcsgroi" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.fit.vut.cz/person/ichlubna/"><img src="https://avatars.githubusercontent.com/u/43234438?v=4?s=100" width="100px;" alt="Tomáš Chlubna"/><br /><sub><b>Tomáš Chlubna</b></sub></a><br /><a href="#translation-ichlubna" title="Translation">🌍</a></td>
     </tr>
   </tbody>
   <tfoot>
