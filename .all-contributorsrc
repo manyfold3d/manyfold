@@ -102,6 +102,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "fhp",
+      "name": "Stef Louwers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/374671?v=4",
+      "profile": "https://github.com/fhp",
+      "contributions": [
+        "code",
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
