@@ -8,6 +8,7 @@ on:
 
 jobs:
   test:
+    if: github.triggering_actor != 'allcontributors[bot]'
     strategy:
       fail-fast: false
       matrix:

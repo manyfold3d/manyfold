@@ -1,4 +1,8 @@
 changelog:
+  exclude:
+    authors:
+      - allcontributors[bot]
+      - dependabot[bot]
   categories:
     - title: 💥 Breaking Changes 💥
       labels:
