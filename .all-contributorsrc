@@ -460,6 +460,15 @@
       "contributions": [
         "financial"
       ]
+    },
+    {
+      "login": "HANICA",
+      "name": "HAN University of Applied Sciences - AIM",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7126625?v=4",
+      "profile": "http://www.han.nl/",
+      "contributions": [
+        "a11y"
+      ]
     }
   ],
   "contributorsPerLine": 7,
