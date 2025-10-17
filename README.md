@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-33-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-34-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -212,6 +212,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jc43"><img src="https://avatars.githubusercontent.com/u/30440804?v=4?s=100" width="100px;" alt="jc43"/><br /><sub><b>jc43</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=jc43" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://mikecoats.com/"><img src="https://avatars.githubusercontent.com/u/37802088?v=4?s=100" width="100px;" alt="Mike Coats"/><br /><sub><b>Mike Coats</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=MikeCoats" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ZwiebelTVDE"><img src="https://avatars.githubusercontent.com/u/48917674?v=4?s=100" width="100px;" alt="ZwiebelTVDE"/><br /><sub><b>ZwiebelTVDE</b></sub></a><br /><a href="#translation-ZwiebelTVDE" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Grecco-O"><img src="https://avatars.githubusercontent.com/u/48767181?v=4?s=100" width="100px;" alt="Petro"/><br /><sub><b>Petro</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/issues?q=author%3AGrecco-O" title="Bug reports">🐛</a> <a href="#translation-Grecco-O" title="Translation">🌍</a></td>
     </tr>
   </tbody>
   <tfoot>
