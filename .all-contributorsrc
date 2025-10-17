@@ -433,6 +433,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "translation",
+      "name": "Translation.io",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36972846?v=4",
+      "profile": "https://translation.io/",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
