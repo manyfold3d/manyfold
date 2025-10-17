@@ -507,10 +507,21 @@
       "contributions": [
         "financial"
       ]
+    },
+    {
+      "login": "Warrennoa",
+      "name": "Warrennoa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/99428467?v=4",
+      "profile": "https://github.com/Warrennoa",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "contributorsSortAlphabetically": true,
   "linkToUsage": true,
-  "badgeTemplate": "[![Contributors](https://img.shields.io/github/all-contributors/manyfold3d/manyfold?color=ee8449&style=flat-square)](CONTRIBUTORS.md)"
+  "badgeTemplate": "[![Contributors](https://img.shields.io/github/all-contributors/manyfold3d/manyfold?color=ee8449&style=flat-square)](CONTRIBUTORS.md)",
+  "commitType": "docs",
+  "skipCi": true
 }
