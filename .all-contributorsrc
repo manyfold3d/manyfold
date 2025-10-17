@@ -39,6 +39,15 @@
         "test",
         "promotion"
       ]
+    },
+    {
+      "login": "ksuquix",
+      "name": "Don Eisele",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2481529?v=4",
+      "profile": "https://oracleofthevoid.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
