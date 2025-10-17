@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-29-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-30-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -208,6 +208,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/neographophobic"><img src="https://avatars.githubusercontent.com/u/2062699?v=4?s=100" width="100px;" alt="Adam Reed"/><br /><sub><b>Adam Reed</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=neographophobic" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/clepoittevin"><img src="https://avatars.githubusercontent.com/u/25842859?v=4?s=100" width="100px;" alt="Cédric Lepoittevin"/><br /><sub><b>Cédric Lepoittevin</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=clepoittevin" title="Documentation">📖</a></td>
     </tr>
   </tbody>
   <tfoot>
