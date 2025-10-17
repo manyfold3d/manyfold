@@ -45,3 +45,5 @@ RSpec/MultipleMemoizedHelpers:
 RSpec/NoExpectationExample:
   Exclude:
     - spec/system/documentation_screenshots_spec.rb
+Style/ItAssignment:
+  Enabled: false

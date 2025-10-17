@@ -1,5 +1,6 @@
 class Upgrade::BackfillImageDerivatives < ApplicationJob
   include JobIteration::Iteration
+
   queue_as :low
   unique :until_executed
 

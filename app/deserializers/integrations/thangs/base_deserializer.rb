@@ -4,7 +4,7 @@ class Integrations::Thangs::BaseDeserializer < Integrations::BaseDeserializer
     model_slug: /(?<model_slug>[[:alnum:]\- ]+)/,
     model_id: /(?<model_id>[[:digit:]]+)/
   }
-  USERNAME_PATTERN = /[[:alnum:]_\-]+/
+  USERNAME_PATTERN = /[[:alnum:]_-]+/
 
   private
 

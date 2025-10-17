@@ -1,5 +1,5 @@
 class Integrations::Thingiverse::BaseDeserializer < Integrations::BaseDeserializer
-  USERNAME_PATTERN = /[[:alnum:]_\-]+/
+  USERNAME_PATTERN = /[[:alnum:]_-]+/
 
   private
 

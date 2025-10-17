@@ -3,6 +3,7 @@
 # Originally done in db/data/20230617222353_generate_slugs.rb
 class Upgrade::GenerateSlugsJob < ApplicationJob
   include JobIteration::Iteration
+
   unique :until_executed
 
   def build_enumerator(model, cursor:)
