@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -178,6 +178,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/XioR112"><img src="https://avatars.githubusercontent.com/u/72562583?v=4?s=100" width="100px;" alt="XioR112"/><br /><sub><b>XioR112</b></sub></a><br /><a href="#translation-XioR112" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://experimentslabs.com/"><img src="https://avatars.githubusercontent.com/u/1732268?v=4?s=100" width="100px;" alt="Manuel Tancoigne"/><br /><sub><b>Manuel Tancoigne</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=mtancoigne" title="Tests">⚠️</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/juanjomurga"><img src="https://avatars.githubusercontent.com/u/174307823?v=4?s=100" width="100px;" alt="juanjomurga"/><br /><sub><b>juanjomurga</b></sub></a><br /><a href="#translation-juanjomurga" title="Translation">🌍</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Mallo321123"><img src="https://avatars.githubusercontent.com/u/83690005?v=4?s=100" width="100px;" alt="Mallo321123"/><br /><sub><b>Mallo321123</b></sub></a><br /><a href="#translation-Mallo321123" title="Translation">🌍</a></td>
     </tr>
   </tbody>
   <tfoot>
