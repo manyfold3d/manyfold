@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -176,12 +176,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://oracleofthevoid.com/"><img src="https://avatars.githubusercontent.com/u/2481529?v=4?s=100" width="100px;" alt="Don Eisele"/><br /><sub><b>Don Eisele</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=ksuquix" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mattpage"><img src="https://avatars.githubusercontent.com/u/732573?v=4?s=100" width="100px;" alt="Matthew Page"/><br /><sub><b>Matthew Page</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=mattpage" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/XioR112"><img src="https://avatars.githubusercontent.com/u/72562583?v=4?s=100" width="100px;" alt="XioR112"/><br /><sub><b>XioR112</b></sub></a><br /><a href="#translation-XioR112" title="Translation">🌍</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://experimentslabs.com/"><img src="https://avatars.githubusercontent.com/u/1732268?v=4?s=100" width="100px;" alt="Manuel Tancoigne"/><br /><sub><b>Manuel Tancoigne</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=mtancoigne" title="Tests">⚠️</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://experimentslabs.com/"><img src="https://avatars.githubusercontent.com/u/1732268?v=4?s=100" width="100px;" alt="Manuel Tancoigne"/><br /><sub><b>Manuel Tancoigne</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=mtancoigne" title="Tests">⚠️</a> <a href="https://github.com/manyfold3d/manyfold/commits?author=mtancoigne" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/juanjomurga"><img src="https://avatars.githubusercontent.com/u/174307823?v=4?s=100" width="100px;" alt="juanjomurga"/><br /><sub><b>juanjomurga</b></sub></a><br /><a href="#translation-juanjomurga" title="Translation">🌍</a></td>
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Mallo321123"><img src="https://avatars.githubusercontent.com/u/83690005?v=4?s=100" width="100px;" alt="Mallo321123"/><br /><sub><b>Mallo321123</b></sub></a><br /><a href="#translation-Mallo321123" title="Translation">🌍</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/TheMBeat"><img src="https://avatars.githubusercontent.com/u/21243082?v=4?s=100" width="100px;" alt="TheMBeat"/><br /><sub><b>TheMBeat</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=TheMBeat" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/TheMBeat"><img src="https://avatars.githubusercontent.com/u/21243082?v=4?s=100" width="100px;" alt="TheMBeat"/><br /><sub><b>TheMBeat</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=TheMBeat" title="Code">💻</a> <a href="https://github.com/manyfold3d/manyfold/commits?author=TheMBeat" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/fhp"><img src="https://avatars.githubusercontent.com/u/374671?v=4?s=100" width="100px;" alt="Stef Louwers"/><br /><sub><b>Stef Louwers</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=fhp" title="Code">💻</a> <a href="#translation-fhp" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://erbridge.co.uk/"><img src="https://avatars.githubusercontent.com/u/1027364?v=4?s=100" width="100px;" alt="F"/><br /><sub><b>F</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=erbridge" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Andreaj42"><img src="https://avatars.githubusercontent.com/u/59033540?v=4?s=100" width="100px;" alt="Andréa Joly"/><br /><sub><b>Andréa Joly</b></sub></a><br /><a href="#translation-Andreaj42" title="Translation">🌍</a></td>
@@ -189,7 +189,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/james-harder"><img src="https://avatars.githubusercontent.com/u/2560523?v=4?s=100" width="100px;" alt="james-harder"/><br /><sub><b>james-harder</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=james-harder" title="Code">💻</a></td>
     </tr>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://nyeprice.space/"><img src="https://avatars.githubusercontent.com/u/46961848?v=4?s=100" width="100px;" alt="Aneurin Price"/><br /><sub><b>Aneurin Price</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=aneurinprice" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://nyeprice.space/"><img src="https://avatars.githubusercontent.com/u/46961848?v=4?s=100" width="100px;" alt="Aneurin Price"/><br /><sub><b>Aneurin Price</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=aneurinprice" title="Code">💻</a> <a href="#a11y-aneurinprice" title="Accessibility">️️️️♿️</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://smcleod.net/"><img src="https://avatars.githubusercontent.com/u/862951?v=4?s=100" width="100px;" alt="Sam"/><br /><sub><b>Sam</b></sub></a><br /><a href="#platform-sammcj" title="Packaging/porting to new platform">📦</a></td>
     </tr>
   </tbody>
   <tfoot>
