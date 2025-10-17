@@ -66,6 +66,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "mtancoigne",
+      "name": "Manuel Tancoigne",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1732268?v=4",
+      "profile": "https://experimentslabs.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
