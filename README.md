@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -185,6 +185,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/fhp"><img src="https://avatars.githubusercontent.com/u/374671?v=4?s=100" width="100px;" alt="Stef Louwers"/><br /><sub><b>Stef Louwers</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=fhp" title="Code">💻</a> <a href="#translation-fhp" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://erbridge.co.uk/"><img src="https://avatars.githubusercontent.com/u/1027364?v=4?s=100" width="100px;" alt="F"/><br /><sub><b>F</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=erbridge" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Andreaj42"><img src="https://avatars.githubusercontent.com/u/59033540?v=4?s=100" width="100px;" alt="Andréa Joly"/><br /><sub><b>Andréa Joly</b></sub></a><br /><a href="#translation-Andreaj42" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Rukongai"><img src="https://avatars.githubusercontent.com/u/11468686?v=4?s=100" width="100px;" alt="Joseph R."/><br /><sub><b>Joseph R.</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=Rukongai" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>

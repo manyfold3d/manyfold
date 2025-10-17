@@ -130,6 +130,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "Rukongai",
+      "name": "Joseph R.",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11468686?v=4",
+      "profile": "https://github.com/Rukongai",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
