@@ -277,6 +277,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "neographophobic",
+      "name": "Adam Reed",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2062699?v=4",
+      "profile": "https://github.com/neographophobic",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
