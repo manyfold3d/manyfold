@@ -208,7 +208,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/neographophobic"><img src="https://avatars.githubusercontent.com/u/2062699?v=4?s=100" width="100px;" alt="Adam Reed"/><br /><sub><b>Adam Reed</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=neographophobic" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/clepoittevin"><img src="https://avatars.githubusercontent.com/u/25842859?v=4?s=100" width="100px;" alt="Cédric Lepoittevin"/><br /><sub><b>Cédric Lepoittevin</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=clepoittevin" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/clepoittevin"><img src="https://avatars.githubusercontent.com/u/25842859?v=4?s=100" width="100px;" alt="Cédric Lepoittevin"/><br /><sub><b>Cédric Lepoittevin</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=clepoittevin" title="Documentation">📖</a> <a href="#translation-clepoittevin" title="Translation">🌍</a></td>
     </tr>
   </tbody>
   <tfoot>
