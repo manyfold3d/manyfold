@@ -469,6 +469,15 @@
       "contributions": [
         "a11y"
       ]
+    },
+    {
+      "login": "linuxserver",
+      "name": "LinuxServer.io",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12324908?v=4",
+      "profile": "https://www.linuxserver.io/",
+      "contributions": [
+        "platform"
+      ]
     }
   ],
   "contributorsPerLine": 7,
