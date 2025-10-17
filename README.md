@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-26-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-27-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -203,6 +203,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://www.fit.vut.cz/person/ichlubna/"><img src="https://avatars.githubusercontent.com/u/43234438?v=4?s=100" width="100px;" alt="Tomáš Chlubna"/><br /><sub><b>Tomáš Chlubna</b></sub></a><br /><a href="#translation-ichlubna" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://craftbeyondcode.com/"><img src="https://avatars.githubusercontent.com/u/253164?v=4?s=100" width="100px;" alt="Pedro Miguel Correia Araújo"/><br /><sub><b>Pedro Miguel Correia Araújo</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=pedromcaraujo" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/AevumDecessus"><img src="https://avatars.githubusercontent.com/u/1137023?v=4?s=100" width="100px;" alt="Siebren Bakker"/><br /><sub><b>Siebren Bakker</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=AevumDecessus" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://iamsaravieira.com/"><img src="https://avatars.githubusercontent.com/u/1051509?v=4?s=100" width="100px;" alt="Sara Vieira"/><br /><sub><b>Sara Vieira</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=SaraVieira" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
