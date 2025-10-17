@@ -73,7 +73,16 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/1732268?v=4",
       "profile": "https://experimentslabs.com/",
       "contributions": [
-        "code"
+        "test"
+      ]
+    },
+    {
+      "login": "juanjomurga",
+      "name": "juanjomurga",
+      "avatar_url": "https://avatars.githubusercontent.com/u/174307823?v=4",
+      "profile": "https://github.com/juanjomurga",
+      "contributions": [
+        "translation"
       ]
     }
   ],
