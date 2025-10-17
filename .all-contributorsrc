@@ -214,6 +214,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ToasterUwU",
+      "name": "Aki",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43654377?v=4",
+      "profile": "https://github.com/ToasterUwU",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
