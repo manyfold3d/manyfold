@@ -241,6 +241,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "pedromcaraujo",
+      "name": "Pedro Miguel Correia Araújo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/253164?v=4",
+      "profile": "https://craftbeyondcode.com/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
