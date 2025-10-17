@@ -222,6 +222,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://tablecheck.com/en/company"><img src="https://avatars.githubusercontent.com/u/803797?v=4?s=100" width="100px;" alt="Aleksandr T."/><br /><sub><b>Aleksandr T.</b></sub></a><br /><a href="#translation-terghalin" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/macdylan"><img src="https://avatars.githubusercontent.com/u/331506?v=4?s=100" width="100px;" alt="Dylan"/><br /><sub><b>Dylan</b></sub></a><br /><a href="#translation-macdylan" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Allen2TG"><img src="https://avatars.githubusercontent.com/u/192296799?v=4?s=100" width="100px;" alt="Allen2TG"/><br /><sub><b>Allen2TG</b></sub></a><br /><a href="#translation-Allen2TG" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/j4c3"><img src="https://avatars.githubusercontent.com/u/4007204?v=4?s=100" width="100px;" alt="jace"/><br /><sub><b>jace</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/issues?q=author%3Aj4c3" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
   <tfoot>

@@ -397,6 +397,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "j4c3",
+      "name": "jace",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4007204?v=4",
+      "profile": "https://github.com/j4c3",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
