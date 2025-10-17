@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -175,6 +175,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/matthewbadeau"><img src="https://avatars.githubusercontent.com/u/641764?v=4?s=100" width="100px;" alt="Matthew"/><br /><sub><b>Matthew</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=matthewbadeau" title="Code">💻</a> <a href="https://github.com/manyfold3d/manyfold/issues?q=author%3Amatthewbadeau" title="Bug reports">🐛</a> <a href="https://github.com/manyfold3d/manyfold/commits?author=matthewbadeau" title="Tests">⚠️</a> <a href="#promotion-matthewbadeau" title="Promotion">📣</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://oracleofthevoid.com/"><img src="https://avatars.githubusercontent.com/u/2481529?v=4?s=100" width="100px;" alt="Don Eisele"/><br /><sub><b>Don Eisele</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=ksuquix" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mattpage"><img src="https://avatars.githubusercontent.com/u/732573?v=4?s=100" width="100px;" alt="Matthew Page"/><br /><sub><b>Matthew Page</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=mattpage" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/XioR112"><img src="https://avatars.githubusercontent.com/u/72562583?v=4?s=100" width="100px;" alt="XioR112"/><br /><sub><b>XioR112</b></sub></a><br /><a href="#translation-XioR112" title="Translation">🌍</a></td>
     </tr>
   </tbody>
   <tfoot>
