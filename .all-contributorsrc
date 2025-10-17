@@ -522,5 +522,6 @@
   "contributorsSortAlphabetically": true,
   "linkToUsage": true,
   "badgeTemplate": "[![Contributors](https://img.shields.io/github/all-contributors/manyfold3d/manyfold?color=ee8449&style=flat-square)](CONTRIBUTORS.md)",
-  "commitType": "docs"
+  "commitType": "docs",
+  "skipCi": true
 }
