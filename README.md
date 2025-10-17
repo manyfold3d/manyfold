@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -192,6 +192,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://nyeprice.space/"><img src="https://avatars.githubusercontent.com/u/46961848?v=4?s=100" width="100px;" alt="Aneurin Price"/><br /><sub><b>Aneurin Price</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=aneurinprice" title="Code">💻</a> <a href="#a11y-aneurinprice" title="Accessibility">️️️️♿️</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://smcleod.net/"><img src="https://avatars.githubusercontent.com/u/862951?v=4?s=100" width="100px;" alt="Sam"/><br /><sub><b>Sam</b></sub></a><br /><a href="#platform-sammcj" title="Packaging/porting to new platform">📦</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/philstenning"><img src="https://avatars.githubusercontent.com/u/1886110?v=4?s=100" width="100px;" alt="Phil Stenning"/><br /><sub><b>Phil Stenning</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=philstenning" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/andrewemauney/"><img src="https://avatars.githubusercontent.com/u/2627689?v=4?s=100" width="100px;" alt="Andrew Mauney"/><br /><sub><b>Andrew Mauney</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=chryton" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
