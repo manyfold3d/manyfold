@@ -74,7 +74,8 @@
       "profile": "https://experimentslabs.com/",
       "contributions": [
         "test",
-        "doc"
+        "doc",
+        "translation"
       ]
     },
     {
@@ -301,6 +302,15 @@
       "name": "jc43",
       "avatar_url": "https://avatars.githubusercontent.com/u/30440804?v=4",
       "profile": "https://github.com/jc43",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "MikeCoats",
+      "name": "Mike Coats",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37802088?v=4",
+      "profile": "https://mikecoats.com/",
       "contributions": [
         "code"
       ]
