@@ -37,7 +37,8 @@
         "code",
         "bug",
         "test",
-        "promotion"
+        "promotion",
+        "translation"
       ]
     },
     {
@@ -339,6 +340,15 @@
       "name": "lucaj",
       "avatar_url": "https://avatars.githubusercontent.com/u/6617790?v=4",
       "profile": "https://github.com/lucaj",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "EUSKR",
+      "name": "euskr",
+      "avatar_url": "https://avatars.githubusercontent.com/u/124172576?v=4",
+      "profile": "https://github.com/EUSKR",
       "contributions": [
         "translation"
       ]

@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-35-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-36-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -172,7 +172,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://floppy.org.uk/"><img src="https://avatars.githubusercontent.com/u/3565?v=4?s=100" width="100px;" alt="James Smith"/><br /><sub><b>James Smith</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=Floppy" title="Code">💻</a> <a href="https://github.com/manyfold3d/manyfold/commits?author=Floppy" title="Tests">⚠️</a> <a href="#question-Floppy" title="Answering Questions">💬</a> <a href="#platform-Floppy" title="Packaging/porting to new platform">📦</a> <a href="#maintenance-Floppy" title="Maintenance">🚧</a> <a href="#infra-Floppy" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#ideas-Floppy" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/manyfold3d/manyfold/commits?author=Floppy" title="Documentation">📖</a> <a href="https://github.com/manyfold3d/manyfold/issues?q=author%3AFloppy" title="Bug reports">🐛</a> <a href="#a11y-Floppy" title="Accessibility">️️️️♿️</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/matthewbadeau"><img src="https://avatars.githubusercontent.com/u/641764?v=4?s=100" width="100px;" alt="Matthew"/><br /><sub><b>Matthew</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=matthewbadeau" title="Code">💻</a> <a href="https://github.com/manyfold3d/manyfold/issues?q=author%3Amatthewbadeau" title="Bug reports">🐛</a> <a href="https://github.com/manyfold3d/manyfold/commits?author=matthewbadeau" title="Tests">⚠️</a> <a href="#promotion-matthewbadeau" title="Promotion">📣</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/matthewbadeau"><img src="https://avatars.githubusercontent.com/u/641764?v=4?s=100" width="100px;" alt="Matthew"/><br /><sub><b>Matthew</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=matthewbadeau" title="Code">💻</a> <a href="https://github.com/manyfold3d/manyfold/issues?q=author%3Amatthewbadeau" title="Bug reports">🐛</a> <a href="https://github.com/manyfold3d/manyfold/commits?author=matthewbadeau" title="Tests">⚠️</a> <a href="#promotion-matthewbadeau" title="Promotion">📣</a> <a href="#translation-matthewbadeau" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://oracleofthevoid.com/"><img src="https://avatars.githubusercontent.com/u/2481529?v=4?s=100" width="100px;" alt="Don Eisele"/><br /><sub><b>Don Eisele</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=ksuquix" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mattpage"><img src="https://avatars.githubusercontent.com/u/732573?v=4?s=100" width="100px;" alt="Matthew Page"/><br /><sub><b>Matthew Page</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=mattpage" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/XioR112"><img src="https://avatars.githubusercontent.com/u/72562583?v=4?s=100" width="100px;" alt="XioR112"/><br /><sub><b>XioR112</b></sub></a><br /><a href="#translation-XioR112" title="Translation">🌍</a></td>
@@ -214,6 +214,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ZwiebelTVDE"><img src="https://avatars.githubusercontent.com/u/48917674?v=4?s=100" width="100px;" alt="ZwiebelTVDE"/><br /><sub><b>ZwiebelTVDE</b></sub></a><br /><a href="#translation-ZwiebelTVDE" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Grecco-O"><img src="https://avatars.githubusercontent.com/u/48767181?v=4?s=100" width="100px;" alt="Petro"/><br /><sub><b>Petro</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/issues?q=author%3AGrecco-O" title="Bug reports">🐛</a> <a href="#translation-Grecco-O" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/lucaj"><img src="https://avatars.githubusercontent.com/u/6617790?v=4?s=100" width="100px;" alt="lucaj"/><br /><sub><b>lucaj</b></sub></a><br /><a href="#translation-lucaj" title="Translation">🌍</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/EUSKR"><img src="https://avatars.githubusercontent.com/u/124172576?v=4?s=100" width="100px;" alt="euskr"/><br /><sub><b>euskr</b></sub></a><br /><a href="#translation-EUSKR" title="Translation">🌍</a></td>
     </tr>
   </tbody>
   <tfoot>
