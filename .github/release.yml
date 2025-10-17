@@ -2,7 +2,7 @@ changelog:
   exclude:
     authors:
       - allcontributors[bot]
-      - dependabot
+      - dependabot[bot]
   categories:
     - title: 💥 Breaking Changes 💥
       labels:
