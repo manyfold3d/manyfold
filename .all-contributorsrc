@@ -4,7 +4,8 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
-    "README.md"
+    "README.md",
+    "CONTRIBUTORS.md"
   ],
   "imageSize": 100,
   "commit": true,
@@ -25,7 +26,8 @@
         "ideas",
         "doc",
         "bug",
-        "a11y"
+        "a11y",
+        "security"
       ]
     },
     {
@@ -509,5 +511,6 @@
   ],
   "contributorsPerLine": 7,
   "contributorsSortAlphabetically": true,
-  "linkToUsage": true
+  "linkToUsage": true,
+  "badgeTemplate": "[![Contributors](https://img.shields.io/github/all-contributors/manyfold3d/manyfold?color=ee8449&style=flat-square)](CONTRIBUTORS.md)"
 }
