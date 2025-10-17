@@ -171,7 +171,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://floppy.org.uk/"><img src="https://avatars.githubusercontent.com/u/3565?v=4?s=100" width="100px;" alt="James Smith"/><br /><sub><b>James Smith</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=Floppy" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://floppy.org.uk/"><img src="https://avatars.githubusercontent.com/u/3565?v=4?s=100" width="100px;" alt="James Smith"/><br /><sub><b>James Smith</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=Floppy" title="Code">💻</a> <a href="https://github.com/manyfold3d/manyfold/commits?author=Floppy" title="Tests">⚠️</a> <a href="#question-Floppy" title="Answering Questions">💬</a> <a href="#platform-Floppy" title="Packaging/porting to new platform">📦</a> <a href="#maintenance-Floppy" title="Maintenance">🚧</a> <a href="#infra-Floppy" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#ideas-Floppy" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/manyfold3d/manyfold/commits?author=Floppy" title="Documentation">📖</a> <a href="https://github.com/manyfold3d/manyfold/issues?q=author%3AFloppy" title="Bug reports">🐛</a> <a href="#a11y-Floppy" title="Accessibility">️️️️♿️</a></td>
     </tr>
   </tbody>
   <tfoot>

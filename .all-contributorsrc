@@ -16,7 +16,16 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/3565?v=4",
       "profile": "https://floppy.org.uk/",
       "contributions": [
-        "code"
+        "code",
+        "test",
+        "question",
+        "platform",
+        "maintenance",
+        "infra",
+        "ideas",
+        "doc",
+        "bug",
+        "a11y"
       ]
     }
   ],
