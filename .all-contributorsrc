@@ -406,8 +406,18 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "andypiper",
+      "name": "Andy Piper",
+      "avatar_url": "https://avatars.githubusercontent.com/u/552452?v=4",
+      "profile": "https://andypiper.org/",
+      "contributions": [
+        "financial"
+      ]
     }
   ],
   "contributorsPerLine": 7,
+  "contributorsSortAlphabetically": true,
   "linkToUsage": true
 }
