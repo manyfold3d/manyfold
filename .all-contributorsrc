@@ -442,6 +442,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "mariushosting",
+      "name": "Lixandru Marius Bogdan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37554361?v=4",
+      "profile": "https://mariushosting.com/",
+      "contributions": [
+        "tutorial"
+      ]
     }
   ],
   "contributorsPerLine": 7,
