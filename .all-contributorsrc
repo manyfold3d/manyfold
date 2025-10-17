@@ -121,6 +121,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Andreaj42",
+      "name": "Andréa Joly",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59033540?v=4",
+      "profile": "https://github.com/Andreaj42",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
