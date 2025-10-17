@@ -31,7 +31,7 @@ class User < ApplicationRecord
   validates :username,
     presence: true,
     uniqueness: {case_sensitive: false},
-    format: {with: /\A[[:alnum:]\.\-_;]+\z/}
+    format: {with: /\A[[:alnum:].\-_;]+\z/}
 
   validates :email,
     presence: true,
@@ -125,7 +125,7 @@ class User < ApplicationRecord
           (auth.info.preferred_username || auth.info.nickname || auth.info.email&.split("@")&.[](0) || "") + SecureRandom.hex(2)
         ]
           .compact
-          .map { |u| u.gsub(/[^[:alnum:]\.\-_;]/, "-") }
+          .map { |u| u.gsub(/[^[:alnum:].\-_;]/, "-") }
           .find { |u| !User.exists?(username: u) }
       end
     end
