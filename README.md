@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -195,6 +195,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/andrewemauney/"><img src="https://avatars.githubusercontent.com/u/2627689?v=4?s=100" width="100px;" alt="Andrew Mauney"/><br /><sub><b>Andrew Mauney</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=chryton" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Daxx367"><img src="https://avatars.githubusercontent.com/u/3744006?v=4?s=100" width="100px;" alt="Max Connelly"/><br /><sub><b>Max Connelly</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=Daxx367" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/beniroquai"><img src="https://avatars.githubusercontent.com/u/4345528?v=4?s=100" width="100px;" alt="Benedict Diederich"/><br /><sub><b>Benedict Diederich</b></sub></a><br /><a href="#translation-beniroquai" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.richblox.nl/"><img src="https://avatars.githubusercontent.com/u/2945583?v=4?s=100" width="100px;" alt="Robin Rijkeboer"/><br /><sub><b>Robin Rijkeboer</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=Beagon" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
