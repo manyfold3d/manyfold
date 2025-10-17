@@ -41,7 +41,7 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
   end
 
   def self.loader(file)
-    case file.extension
+    case file.extension.downcase
     when "stl"
       Mittsu::STLLoader
     when "obj"
