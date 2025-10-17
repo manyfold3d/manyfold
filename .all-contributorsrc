@@ -424,6 +424,15 @@
       "contributions": [
         "security"
       ]
+    },
+    {
+      "login": "depot",
+      "name": "Depot",
+      "avatar_url": "https://avatars.githubusercontent.com/u/68166601?v=4",
+      "profile": "https://depot.dev/",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
