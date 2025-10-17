@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -172,6 +172,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://floppy.org.uk/"><img src="https://avatars.githubusercontent.com/u/3565?v=4?s=100" width="100px;" alt="James Smith"/><br /><sub><b>James Smith</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=Floppy" title="Code">💻</a> <a href="https://github.com/manyfold3d/manyfold/commits?author=Floppy" title="Tests">⚠️</a> <a href="#question-Floppy" title="Answering Questions">💬</a> <a href="#platform-Floppy" title="Packaging/porting to new platform">📦</a> <a href="#maintenance-Floppy" title="Maintenance">🚧</a> <a href="#infra-Floppy" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#ideas-Floppy" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/manyfold3d/manyfold/commits?author=Floppy" title="Documentation">📖</a> <a href="https://github.com/manyfold3d/manyfold/issues?q=author%3AFloppy" title="Bug reports">🐛</a> <a href="#a11y-Floppy" title="Accessibility">️️️️♿️</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/matthewbadeau"><img src="https://avatars.githubusercontent.com/u/641764?v=4?s=100" width="100px;" alt="Matthew"/><br /><sub><b>Matthew</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=matthewbadeau" title="Code">💻</a> <a href="https://github.com/manyfold3d/manyfold/issues?q=author%3Amatthewbadeau" title="Bug reports">🐛</a> <a href="https://github.com/manyfold3d/manyfold/commits?author=matthewbadeau" title="Tests">⚠️</a> <a href="#promotion-matthewbadeau" title="Promotion">📣</a></td>
     </tr>
   </tbody>
   <tfoot>

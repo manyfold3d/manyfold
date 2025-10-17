@@ -27,6 +27,18 @@
         "bug",
         "a11y"
       ]
+    },
+    {
+      "login": "matthewbadeau",
+      "name": "Matthew",
+      "avatar_url": "https://avatars.githubusercontent.com/u/641764?v=4",
+      "profile": "https://github.com/matthewbadeau",
+      "contributions": [
+        "code",
+        "bug",
+        "test",
+        "promotion"
+      ]
     }
   ],
   "contributorsPerLine": 7,
