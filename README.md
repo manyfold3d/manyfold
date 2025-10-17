@@ -1,6 +1,6 @@
 # Manyfold
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing.
@@ -181,6 +181,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Mallo321123"><img src="https://avatars.githubusercontent.com/u/83690005?v=4?s=100" width="100px;" alt="Mallo321123"/><br /><sub><b>Mallo321123</b></sub></a><br /><a href="#translation-Mallo321123" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/TheMBeat"><img src="https://avatars.githubusercontent.com/u/21243082?v=4?s=100" width="100px;" alt="TheMBeat"/><br /><sub><b>TheMBeat</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=TheMBeat" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>

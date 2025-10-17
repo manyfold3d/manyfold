@@ -93,6 +93,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "TheMBeat",
+      "name": "TheMBeat",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21243082?v=4",
+      "profile": "https://github.com/TheMBeat",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
