@@ -196,6 +196,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "beniroquai",
+      "name": "Benedict Diederich",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4345528?v=4",
+      "profile": "https://github.com/beniroquai",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
