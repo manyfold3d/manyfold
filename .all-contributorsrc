@@ -415,6 +415,15 @@
       "contributions": [
         "financial"
       ]
+    },
+    {
+      "login": "radicallyopensecurity",
+      "name": "Radically Open Security",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8194148?v=4",
+      "profile": "https://www.radicallyopensecurity.com/",
+      "contributions": [
+        "security"
+      ]
     }
   ],
   "contributorsPerLine": 7,
