@@ -30,7 +30,10 @@ export default class extends Controller {
     const widths = ['w-0', 'w-25', 'w-50', 'w-75', 'w-100']
     const severities = ['bg-danger', 'bg-danger', 'bg-danger', 'bg-warning', 'bg-success', 'bg-success', 'bg-success', 'bg-success', 'bg-success'].slice(4 - this.minScore, 4 - this.minScore + 5)
     const result = zxcvbn(this.value())
-    if (this.meter != null) { this.meter.className = `progress-bar zxcvbn-meter ${widths[result.score]} ${severities[result.score]}` }
+    if (this.meter != null) {
+      this.meter.className = `progress-bar zxcvbn-meter ${widths[result.score]} ${severities[result.score]}`
+      this.meter.textContent = String(result.feedback.warning ?? '')
+    }
   }
 }
 
