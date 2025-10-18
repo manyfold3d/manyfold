@@ -543,6 +543,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "t-paul",
+      "name": "Torsten Paul",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1330241?v=4",
+      "profile": "http://kcemu.sf.net/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
