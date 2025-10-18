@@ -758,12 +758,12 @@ ru:
       moderation_heading:
       moderation_settings_title:
       organization:
-      performance:
+      performance: Панель производительности
       pghero:
       search_heading:
       sidekiq:
       site_settings_title:
-      tools_heading:
+      tools_heading: Административные инструменты
   licenses:
     0BSD:
     CC-BY-40:

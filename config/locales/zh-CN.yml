@@ -244,11 +244,11 @@ zh-CN:
         zero:
   activity:
     index:
-      description:
-      message:
+      description: "%{retention_period}之后的条目将被删除。"
+      message: 消息
       name: 应用名称
-      time:
-      title:
+      time: 时间
+      title: 系统活动
   activity_helper:
     status_icon:
       completed:
@@ -391,15 +391,15 @@ zh-CN:
       intro: 使用搜索语法查找所需内容：
       more_details_html: 有关详细信息，请阅读 <a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">scoped_search 查询语言</a> 的完整文档。
       negation: 使用 "not"、"!" 或 "-" 来排除。
-      parentheses: 用括号将术语分组，以实现更复杂的逻辑组合。
+      parentheses: 用括号将搜索词分组，以实现更复杂的逻辑组合。
       path: 通过明确指定在模型文件夹路径内搜索；使用 `~` 进行部分匹配。
-      quotes: 要查找单个术语中的多个单词，请使用引号；只有包含确切文本的模型才会显示。
+      quotes: 要查找多个单词，请使用引号；只有包含确切文本的模型才会显示。
       simple: 默认情况下，搜索将查找符合所有条件的模型。
-      specific_fields: 您可以在几个特定字段中查找术语。使用"~"匹配部分字段；"="将尝试匹配整个字段。只有在明确指定字段的情况下，才会搜索模型描述和库名。
+      specific_fields: 您可以在几个特定字段中查找关键词。使用"~"匹配部分字段；"="将尝试匹配整个字段。只有在明确指定字段的情况下，才会搜索模型描述和库名。
       tag: 查找带有特定 Tag 的模型
       title: 搜索语法
       unset: 使用 "set?" 查询特定字段是否已设置，添加 "not" 则可查找相反字段。
-      without_tag: 使用 "!=" 查找没有特定标记的模型
+      without_tag: 使用 "!=" 查找不带有特定 Tag 的模型
   concerns:
     linkable:
       sync:
@@ -655,9 +655,9 @@ zh-CN:
     index:
       no_activities: 暂时没有动态要展示。
       open_search_help: 搜索语法
-      recent_activity: 近期动态
+      recent_activity: 近期更新
       search:
-        placeholder: 您在寻找什么？
+        placeholder: 搜索本地模型库
         submit: 搜索
     publishing:
       content: 您可以在项目的编辑页面上向 "公开 "角色授予 "查看 "或 "预览 "权限，从而公开发布内容。公开模型的创建者会自动公开，但如果想让收藏可见，则需要明确发布。
@@ -762,7 +762,7 @@ zh-CN:
       pghero:
       search_heading:
       sidekiq:
-      site_settings_title:
+      site_settings_title: 网站设置
       tools_heading:
   licenses:
     0BSD:
@@ -794,23 +794,23 @@ zh-CN:
       subject:
   renderer:
     errors:
-      canvas:
-      load:
-      webglrenderer:
-    load:
+      canvas: '找不到 #webgl 画布！'
+      load: 加载错误
+      webglrenderer: 无法创建渲染器！
+    load: 加载
     processing:
   reports:
     create:
-      success:
+      success: 报告已提交。谢谢！
     new:
-      description:
-      submit:
-      title:
+      description: 如果此项目违反了任何法律或服务器政策，您可以向我们的版主报告。添加评论，让我们知道原因！
+      submit: 发送报告
+      title: 报告 %{type}："%{name}"：
   scans:
     create:
-      success:
+      success: 扫描已开始。
   security:
-    running_as_root_html:
+    running_as_root_html: Manyfold 以 root 用户身份运行，存在安全隐患。通过设置<code>PUID</code>和<code>PGID</code>环境变量，以不同的系统用户身份运行。详情请查看<a href='https://manyfold.app/sysadmin/configuration.html#required'>配置文档</a>。
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
