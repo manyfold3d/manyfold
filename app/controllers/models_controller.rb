@@ -76,6 +76,15 @@ class ModelsController < ApplicationController
   def create
     authorize :model
     p = upload_params
+    common_args = {
+      owner: current_user,
+      creator_id: p[:creator_id],
+      collection_id: p[:collection_id],
+      license: p[:license],
+      sensitive: (p[:sensitive] == "1"),
+      tags: p[:add_tags],
+      permission_preset: p[:permission_preset]
+    }
     library = SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
     p[:file].each_pair do |_id, file|
       ProcessUploadedFileJob.perform_later(
@@ -87,14 +96,7 @@ class ModelsController < ApplicationController
             filename: file[:name]
           }
         },
-        name: p[:name],
-        owner: current_user,
-        creator_id: p[:creator_id],
-        collection_id: p[:collection_id],
-        license: p[:license],
-        sensitive: (p[:sensitive] == "1"),
-        tags: p[:add_tags],
-        permission_preset: p[:permission_preset]
+        **common_args
       )
     end
     respond_to do |format|
