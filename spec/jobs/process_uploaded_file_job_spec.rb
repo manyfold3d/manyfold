@@ -129,7 +129,7 @@ RSpec.describe ProcessUploadedFileJob do
 
     it "removes the created model" do # rubocop:todo RSpec/ExampleLength
       job = described_class.new
-      allow(job).to receive(:unzip).and_raise(StandardError)
+      allow(job).to receive(:unzip_into_model).and_raise(StandardError)
       expect {
         begin
           job.perform(library.id, file)
@@ -151,7 +151,7 @@ RSpec.describe ProcessUploadedFileJob do
           zipfile.get_output_stream("test.stl") { |f| f.puts "solid" }
         end
         upload = Rack::Test::UploadedFile.new(file)
-        expect { described_class.new.send(:unzip, model, upload) }.to change(ModelFile, :count).by(1)
+        expect { described_class.new.send(:unzip_into_model, model, upload) }.to change(ModelFile, :count).by(1)
         expect(File.size(model.model_files.first.attachment)).to eq 6
       end
     end
@@ -164,7 +164,7 @@ RSpec.describe ProcessUploadedFileJob do
           zipfile.get_output_stream("one/test.stl") { |f| f.puts "solid" }
           zipfile.get_output_stream("two/more.stl") { |f| f.puts "solid" }
         end
-        described_class.new.send(:unzip, model, Rack::Test::UploadedFile.new(file))
+        described_class.new.send(:unzip_into_model, model, Rack::Test::UploadedFile.new(file))
         expect(model.model_files.count).to be 2
         expect(model.model_files.map(&:filename)).to contain_exactly("one/test.stl", "two/more.stl")
       end
@@ -178,7 +178,7 @@ RSpec.describe ProcessUploadedFileJob do
           zipfile.get_output_stream("sub/test.stl") { |f| f.puts "solid" }
           zipfile.get_output_stream("sub/folder/test2.stl") { |f| f.puts "solid" }
         end
-        described_class.new.send(:unzip, model, Rack::Test::UploadedFile.new(file))
+        described_class.new.send(:unzip_into_model, model, Rack::Test::UploadedFile.new(file))
         expect(model.model_files.count).to eq 2
         expect(model.model_files.map(&:filename)).to contain_exactly("folder/test2.stl", "test.stl")
       end
@@ -191,7 +191,7 @@ RSpec.describe ProcessUploadedFileJob do
           zipfile.get_output_stream("test.stl") { |f| f.puts "solid" }
           zipfile.get_output_stream("subfolder/more.stl") { |f| f.puts "solid" }
         end
-        described_class.new.send(:unzip, model, Rack::Test::UploadedFile.new(file))
+        described_class.new.send(:unzip_into_model, model, Rack::Test::UploadedFile.new(file))
         expect(model.model_files.count).to eq 2
         expect(model.model_files.map(&:filename)).to contain_exactly("subfolder/more.stl", "test.stl")
       end
