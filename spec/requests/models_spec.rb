@@ -582,6 +582,12 @@ RSpec.describe "Models" do
               .and have_been_enqueued
               .with(Library.first.id, hash_including({metadata: {filename: "example.zip"}}), hash_including({})).once
           end
+
+          it "does not provide model name field" do # rubocop:disable RSpec/ExampleLength
+            post_models
+            expect(ProcessUploadedFileJob).to have_been_enqueued
+              .with(Library.first.id, hash_including({}), hash_not_including({name: "Only for single model upload"})).twice
+          end
         end
 
         context "without upload permission", :as_member do
