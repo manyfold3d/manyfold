@@ -86,18 +86,9 @@ class ModelsController < ApplicationController
       permission_preset: p[:permission_preset]
     }
     library = SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
-    p[:file].each_pair do |_id, file|
-      ProcessUploadedFileJob.perform_later(
-        library.id,
-        {
-          id: file[:id],
-          storage: "cache",
-          metadata: {
-            filename: file[:name]
-          }
-        },
-        **common_args
-      )
+    jobs = p[:file].values.map { |it| cached_file_data(it) }
+    jobs.each do |it|
+      ProcessUploadedFileJob.perform_later(library.id, it, **common_args)
     end
     respond_to do |format|
       format.html { redirect_to models_path, notice: t(".success") }
@@ -269,5 +260,15 @@ class ModelsController < ApplicationController
 
   def clear_returnable
     session[:return_after_new] = nil
+  end
+
+  def cached_file_data(file)
+    {
+      id: file[:id],
+      storage: "cache",
+      metadata: {
+        filename: file[:name]
+      }
+    }
   end
 end
