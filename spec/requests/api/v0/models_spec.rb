@@ -108,6 +108,7 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
               "spdx:license": {
                 licenseId: "MIT"
               },
+              name: "My New Model",
               sensitive: true,
               keywords: ["tag1", "tag2"]
             }
@@ -123,6 +124,7 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
                   filename: "test.stl"
                 }
               },
+              name: "My New Model",
               owner: User.last,
               creator_id: nil,
               collection_id: nil,

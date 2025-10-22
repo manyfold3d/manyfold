@@ -87,6 +87,7 @@ class ModelsController < ApplicationController
             filename: file[:name]
           }
         },
+        name: p[:name],
         owner: current_user,
         creator_id: p[:creator_id],
         collection_id: p[:collection_id],

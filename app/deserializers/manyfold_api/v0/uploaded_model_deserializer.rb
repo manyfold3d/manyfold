@@ -3,6 +3,7 @@ module ManyfoldApi::V0
     def deserialize
       return unless @object
       {
+        name: @object["name"],
         file: @object.dig("files")&.each_with_index.to_h.invert,
         creator_id: dereference(@object.dig("creator", "@id"), Creator)&.id,
         collection_id: dereference(@object.dig("isPartOf", "@id"), Collection)&.id,
@@ -16,6 +17,7 @@ module ManyfoldApi::V0
       {
         type: :object,
         properties: {
+          name: {type: :string, example: "My New Model", description: "Used as model name if any files are uploaded that aren't compressed archives"},
           files: {
             type: :array,
             items: {

@@ -515,7 +515,8 @@ RSpec.describe "Models" do
             license: "MIT",
             sensitive: "1",
             permission_preset: "public",
-            add_tags: ["tag1", "tag2"]
+            add_tags: ["tag1", "tag2"],
+            name: "Only used for single model upload"
           }
         }
 
@@ -546,7 +547,8 @@ RSpec.describe "Models" do
                 license: "MIT",
                 sensitive: true,
                 permission_preset: "public",
-                tags: ["tag1", "tag2"]).once
+                tags: ["tag1", "tag2"],
+                name: "Only used for single model upload").once
           end
 
           it "redirect back to index after upload" do
