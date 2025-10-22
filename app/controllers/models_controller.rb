@@ -86,7 +86,14 @@ class ModelsController < ApplicationController
       permission_preset: p[:permission_preset]
     }
     library = SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
-    jobs = p[:file].values.map { |it| cached_file_data(it) }
+    jobs = if p[:file].values.all? { |it| SupportedMimeTypes.archive_extensions.include? File.extname(it[:name]).delete(".").downcase }
+      # If this is all separate archives, enqueue separate jobs for each
+      p[:file].values.map { |it| cached_file_data(it) }
+    else
+      # Otherwise, enqueue one job for all files and add name to args
+      common_args[:name] = p[:name]
+      [p[:file].values.map { |it| cached_file_data(it) }]
+    end
     jobs.each do |it|
       ProcessUploadedFileJob.perform_later(library.id, it, **common_args)
     end
