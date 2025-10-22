@@ -117,13 +117,13 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
           run_test! do # rubocop:disable RSpec/ExampleLength
             expect(ProcessUploadedFileJob).to have_been_enqueued.with(
               Library.first.id,
-              {
+              [{
                 id: "https://example.com/uploads/tus_id",
                 storage: "cache",
                 metadata: {
                   filename: "test.stl"
                 }
-              },
+              }],
               name: "My New Model",
               owner: User.last,
               creator_id: nil,
