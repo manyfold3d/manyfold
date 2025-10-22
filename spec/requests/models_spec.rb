@@ -509,12 +509,7 @@ RSpec.describe "Models" do
           post "/models", params: {
             library: library.to_param,
             scan: "1",
-            file: {
-              "0" => {
-                id: "upload_key",
-                name: "test.stl"
-              }
-            },
+            file: files,
             creator_id: creator.id,
             collection_id: collection.id,
             license: "MIT",
@@ -524,39 +519,77 @@ RSpec.describe "Models" do
           }
         }
 
-        it "enqueues processing job", :as_contributor do # rubocop:disable RSpec/ExampleLength
-          expect { post_models }
-            .to have_enqueued_job(ProcessUploadedFileJob)
-            .with(Library.first.id,
-              {
+        context "with a single uncompressed file", :as_contributor do
+          let(:files) {
+            {
+              "0" => {
                 id: "upload_key",
-                storage: "cache",
-                metadata: {
-                  filename: "test.stl"
-                }
+                name: "test.stl"
+              }
+            }
+          }
+
+          it "enqueues processing job with all parameters" do # rubocop:disable RSpec/ExampleLength
+            expect { post_models }
+              .to have_enqueued_job(ProcessUploadedFileJob)
+              .with(Library.first.id,
+                {
+                  id: "upload_key",
+                  storage: "cache",
+                  metadata: {
+                    filename: "test.stl"
+                  }
+                },
+                owner: User.last,
+                creator_id: creator.id.to_s,
+                collection_id: collection.id.to_s,
+                license: "MIT",
+                sensitive: true,
+                permission_preset: "public",
+                tags: ["tag1", "tag2"]).once
+          end
+
+          it "redirect back to index after upload" do
+            post_models
+            expect(response).to redirect_to("/models")
+          end
+
+          it "clears returnable session param" do
+            post_models
+            expect(session[:return_after_new]).to be_nil
+          end
+        end
+
+        context "with multiple compressed files", :as_contributor do
+          let(:files) {
+            {
+              "0" => {
+                id: "upload_1",
+                name: "test.zip"
               },
-              owner: User.last,
-              creator_id: creator.id.to_s,
-              collection_id: collection.id.to_s,
-              license: "MIT",
-              sensitive: true,
-              permission_preset: "public",
-              tags: ["tag1", "tag2"]).once
+              "1" => {
+                id: "upload_2",
+                name: "example.zip"
+              }
+            }
+          }
+
+          it "enqueues separate archive processing jobs" do # rubocop:disable RSpec/ExampleLength
+            post_models
+            expect(ProcessUploadedFileJob).to have_been_enqueued
+              .with(Library.first.id, hash_including({metadata: {filename: "test.zip"}}), hash_including({})).once
+              .and have_been_enqueued
+              .with(Library.first.id, hash_including({metadata: {filename: "example.zip"}}), hash_including({})).once
+          end
         end
 
-        it "redirect back to index after upload", :as_contributor do
-          post_models
-          expect(response).to redirect_to("/models")
-        end
+        context "without upload permission", :as_member do
+          let(:files) { {} }
 
-        it "clears returnable session param", :as_contributor do
-          post_models
-          expect(session[:return_after_new]).to be_nil
-        end
-
-        it "denies member permission", :as_member do
-          post_models
-          expect(response).to have_http_status(:forbidden)
+          it "denies members" do
+            post_models
+            expect(response).to have_http_status(:forbidden)
+          end
         end
       end
     end
