@@ -137,6 +137,7 @@ zh-CN:
         help: 默认情况下，谁可以查看新模型/创建者/收藏？
         label: 默认权限
         options:
+          advanced:
           member: 成员（登录的本地账户）
           private: 私密
           public: 公开

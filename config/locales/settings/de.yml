@@ -137,6 +137,7 @@ de:
         help: Wer kann neue Modelle/Ersteller/Sammlungen standardmäßig anzeigen?
         label: Standard-Berechtigungen
         options:
+          advanced:
           member: Mitglieder (eingeloggte lokale Konten)
           private: Privat
           public: Öffentlich
