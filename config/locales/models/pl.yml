@@ -62,13 +62,20 @@ pl:
     merge:
       success: Modele zostały pomyślnie połączone.
     new:
+      archives-only:
       description: Dodawaj nowe modele poprzez przesyłanie plików! Jeśli prześlesz skompresowane archiwum, zostanie ono wyodrębnione i stanie się pojedynczym modelem zawierającym wszystkie pliki. Jeśli prześlesz pojedyncze pliki, każdy z nich stanie się osobnym modelem.
       files:
         label: Wybierz Pliki
       free_space: "(%{available} wolne)"
       library:
         help: Biblioteka, do której ma zostać przesłany plik.
+      model_name:
+        help:
+        label:
+      multi_model:
+      non-archives:
       permission_preset: Uprawnienia
+      single_model:
       submit: Stwórz modele
       title: Prześlij
     organize:
