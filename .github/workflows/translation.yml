@@ -37,6 +37,7 @@ jobs:
         with:
           token: "${{ secrets.TRANSLATION_SYNC_PAT }}"
           commit-message: "Automatically sync translations: ${{ matrix.locale }}"
+          branch: "translation-sync-(${{ matrix.locale }})"
           labels: improvement,localisation
           title: "Translation update (${{ matrix.locale }})"
           delete-branch: true
