@@ -2,98 +2,98 @@
 zh-CN:
   problems:
     categories:
-      duplicate:
-      empty:
-      file_naming:
-      http_error:
-      inefficient:
-      inside_out:
-      missing:
-      nesting:
-      no_3d_model:
-      no_creator:
-      no_image:
-      no_license:
-      no_links:
-      no_tags:
-      non_manifold:
+      duplicate: 重复文件
+      empty: 模型或文件为空
+      file_naming: 路径与模板不匹配
+      http_error: 获取链接时出现 HTTP 错误
+      inefficient: 低效格式
+      inside_out: 网格由内向外
+      missing: 文件或文件夹丢失
+      nesting: 模型包含其他模型
+      no_3d_model: 模型没有 3D 文件
+      no_creator: 模型没有指定作者
+      no_image: 模型没有图像文件
+      no_license: 模型没有许可证信息
+      no_links: 模型没有来源链接
+      no_tags: 模型没有任何标签
+      non_manifold: 网格为非网格
     filters:
-      apply_filters:
-      clear_filters:
-      show_ignored:
-      title:
+      apply_filters: 应用
+      clear_filters: 清除
+      show_ignored: 显示隐藏项
+      title: 过滤
     index:
-      bulk_confirm:
-      bulk_ignore:
-      bulk_resolve:
-      description:
-      ignore:
-      item:
-      no_problems:
-      resolve:
-      select:
-      select_all:
-      unignore:
+      bulk_confirm: 您确定要自动解决所有选定的问题吗？这可能会删除文件和数据。
+      bulk_ignore: 隐藏选定
+      bulk_resolve: 解决选定的问题
+      description: 说明
+      ignore: 隐藏
+      item: 项目
+      no_problems: 与目前的过滤器匹配没有问题。
+      resolve: 解决
+      select: 选择
+      select_all: 选择所有
+      unignore: 显示
     link:
       http_error:
-        description:
-        title:
+        description: 从远程服务器读取链接时发生错误。
+        title: 获取链接时出现 HTTP 错误
     model:
       empty:
-        description:
-        title:
+        description: 该模型不包含任何文件。要么删除它，要么找到它的文件去向！
+        title: 无文件
       file_naming:
-        description:
-        title:
+        description: 模型文件夹路径与路径模板不匹配。
+        title: 路径与模板不匹配
       missing:
-        description:
-        title:
+        description: 该模型的文件夹在磁盘中丢失；要么删除它，要么找到它的去向！
+        title: 未找到文件夹
       nesting:
-        description:
-        title:
-        warning:
+        description: 磁盘上的模型文件夹包含其他模型。您可能希望将它们合并到这个文件夹中，或者将它们移出。
+        title: 包含其他型号
+        warning: 批量合并会将上述模型中的所有文件移到这个模型中，并删除它们。文件元数据会被保留，但任何模型元数据都会丢失！
       no_3d_model:
-        description:
-        title:
+        description: 该模型不包含 3D 文件。这不可能是正确的。
+        title: 模型中没有 3D 文件
       no_creator:
-        description:
-        title:
+        description: 我们不知道谁制作了这个模型；请添加一个制作者，以帮助编目！
+        title: 模型不属于创作者
       no_image:
-        description:
-        title:
+        description: 该模型不包含图像文件。添加一个可能更便于浏览。
+        title: 模型中没有图像文件
       no_license:
-        description:
-        title:
+        description: 该模型没有指定许可证。添加一个许可将更清楚地说明是否可以共享以及如何共享。
+        title: 模型没有许可证信息
       no_links:
-        description:
-        title:
+        description: 此模型没有其他来源的链接。如果其他地方也有，您可能需要添加一个链接。
+        title: 模型没有源链接
       no_tags:
-        description:
-        title:
+        description: 此型号尚未标记，因此更难查找。添加一些标签以帮助查找！
+        title: 模型没有任何标签
     model_file:
       duplicate:
-        description:
-        title:
+        description: 此文件在其他模型中重复。您可能希望删除一些。
+        title: 重复文件
       empty:
-        description:
-        title:
+        description: 该文件长度为零！这很可能是不正确的；要么删除该文件，要么重新扫描模型以重新检查。
+        title: 空文件
       inefficient:
-        description:
-        title:
+        description: 该文件为 %{note}，是一种低效文件格式。请考虑将其转换为 3MF 等二进制格式，以节省磁盘空间。
+        title: 低效格式
       inside_out:
-        description:
-        title:
+        description: 该网格的面可能指向错误的方向，这可能会导致打印错误。请使用 3d 建模工具（如 MeshLab 或 3D Builder）进行修复。
+        title: 内侧网眼
       missing:
-        description:
-        title:
+        description: 该文件在磁盘上丢失；要么删除它，要么找到它的去向！
+        title: 未找到文件
       non_manifold:
-        description:
-        title:
+        description: 该网格似乎是非manifold网格，这意味着它有孔洞或有一些面是反向的，打印时可能会出错。请使用 3d 建模工具（如 MeshLab 或 3D Builder）进行修复。
+        title: 非成型网
     severities:
-      danger:
-      info:
-      silent:
-      warning:
+      danger: 危险
+      info: 信息
+      silent: 忽略
+      warning: 警告
     update:
-      ignored:
-      unignored:
+      ignored: '%{name}"上隐藏的问题：%{message}'
+      unignored: 恢复"%{name}"上的问题：%{message}
