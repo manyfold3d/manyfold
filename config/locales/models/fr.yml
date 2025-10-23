@@ -62,13 +62,20 @@ fr:
     merge:
       success: Les modèles ont été fusionnés avec succès.
     new:
+      archives-only:
       description: Ajoutez de nouveaux modèles en téléversant des fichiers ! Si vous téléversez une archive compressée, elle sera extraite et deviendra un modèle unique contenant tous les fichiers. Si vous téléversez des fichiers individuels, ils deviendront chacun un modèle distinct.
       files:
         label: Sélectionner un fichier
       free_space: "(%{available} libre)"
       library:
         help: La bibliothèque vers laquelle télécharger.
+      model_name:
+        help:
+        label:
+      multi_model:
+      non-archives:
       permission_preset: Permissions
+      single_model:
       submit: Créer des modèles
       title: Télécharger
     organize:

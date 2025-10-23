@@ -62,13 +62,20 @@ es:
     merge:
       success: Modelos fusionados correctamente.
     new:
+      archives-only:
       description: Añade nuevos modelos subiendo archivos. Si subes un archivo comprimido, se extraerá y se convertirá en un único modelo que contendrá todos los archivos. Si subes archivos individuales, cada uno de ellos se convertirá en un modelo independiente.
       files:
         label: Seleccionar archivos
       free_space: "(%{available} disponible)"
       library:
         help: Biblioteca donde se cargará el archivo.
+      model_name:
+        help:
+        label:
+      multi_model:
+      non-archives:
       permission_preset: Permisos
+      single_model:
       submit: Crear modelos
       title: Cargar
     organize:

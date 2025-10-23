@@ -62,13 +62,20 @@ nl:
     merge:
       success: Modellen succesvol samengevoegd.
     new:
+      archives-only:
       description: Voeg nieuwe modellen toe door bestanden te uploaden! Als je een gecomprimeerd archief uploadt, wordt het uitgepakt en wordt het één model met alle bestanden. Als je losse bestanden uploadt, wordt elk bestand een apart model.
       files:
         label: Selecteer Bestanden
       free_space: "(%{available} vrij)"
       library:
         help: De bibliotheek om naar te uploaden.
+      model_name:
+        help:
+        label:
+      multi_model:
+      non-archives:
       permission_preset: Machtigingen
+      single_model:
       submit: Modellen aanmaken
       title: Uploaden
     organize:
