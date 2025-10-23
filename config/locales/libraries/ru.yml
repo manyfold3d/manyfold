@@ -37,17 +37,17 @@ ru:
       edit:
       new:
     index:
-      description:
+      description: Просмотреть детали библиотеки и изменить.
       free_space:
-        label:
+        label: Свободное пространство
       heading: Библиотеки
       settings:
       show:
         help:
         label:
       tag_regex:
-        check:
-        search_missing:
+        check: Проверить
+        search_missing: Найти отсутствующие
     storage_services:
       filesystem:
       s3:

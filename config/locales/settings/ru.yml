@@ -2,26 +2,26 @@
 ru:
   settings:
     analysis:
-      description:
-      heading:
+      description: Выполните глубокий анализ сетки моделей. Эти параметры значительно увеличат время сканирования и потребление ЦП и памяти.
+      heading: Анализ сетки
       manifold:
         help:
         label:
     appearance:
       about:
         help_html:
-        label:
-      heading:
-      information:
+        label: Об этом сайте
+      heading: Внешний вид
+      information: Информация для пользователей
       rules:
         help_html:
-        label:
+        label: Правила сообщества
       site_icon:
-        help:
-        label:
+        help: Отображается в левом верхнем углу каждой страницы
+        label: URL-адрес логотипа
       site_name:
         help:
-        label:
+        label: Название сайта
       site_tagline:
         help:
         label: Описание
@@ -86,23 +86,23 @@ ru:
       summary:
       title:
     folder_settings:
-      details:
+      details: Структура папок следует шаблону, который вы определяете с помощью токенов. Вы также можете включить другой текст в шаблон (например, разделители папок), и он будет включен без изменений.
       model_path_template:
-        label:
+        label: Шаблон пути к модели
       parse_metadata_from_path:
-        help:
-        label:
+        help: Устанавливает создателя, коллекцию и теги на основе шаблона
+        label: Заполнить метаданные из пути и шаблона во время сканирования
       safe_folder_names:
-        help_html:
-        label:
-      summary:
-      title:
+        help_html: например, <code>spinal-tap</code> вместо <code>Spın̈al Tap</code>
+        label: Использовать безопасные имена папок
+      summary: Определите структуру папок, используемую для "организации файлов" и для автоматического заполнения метаданных во время сканирования. Влияет на всех пользователей.
+      title: Именование папок
       tokens:
-        collection:
-        creator:
-        model_id:
-        model_name:
-        tags_html:
+        collection: Название коллекции, в которой находится модель, если установлено.
+        creator: Имя создателя, если установлено.
+        model_id: Уникальный числовой идентификатор модели. Мы настоятельно рекомендуем всегда включать это в конце вашего шаблона, чтобы избежать конфликтов имен на диске.
+        model_name: Безопасная для файловой системы версия имени модели.
+        tags_html: 'серия вложенных папок, по одной для каждого тега, расположенных в порядке популярности тегов. Например: <code>fantasy/human/wizard</code>'
     general:
       submit:
     integrations:
@@ -134,36 +134,36 @@ ru:
           contributor:
           member:
       default_viewer_role:
-        help:
-        label:
+        help: Кто может по умолчанию просматривать новые модели / создателей / коллекции?
+        label: Видимость по умолчанию
         options:
-          member:
-          private:
+          member: Локальные пользователи с входом в систему
+          private: Частный
           public:
-      details_html:
-      email:
-      federation:
-      heading:
-      multiuser:
-      multiuser_mode:
-      oidc:
+      details_html: Чтобы изменить эти настройки, отредактируйте <a href='https://manyfold.app/sysadmin/configuration.html'>переменные окружения</a> сервера и перезапустите.
+      email: Настроена ли доставка по электронной почте?
+      federation: Включена ли федерация?
+      heading: Мультипользовательский режим
+      multiuser: Мультипользовательский режим?
+      multiuser_mode: Manyfold работает в мультипользовательском режиме.
+      oidc: Настроен ли OpenID Connect?
       permissions:
-      registration:
+      registration: Открыта ли регистрация учетных записей?
       registration_open:
         help:
         label:
-      single_user_mode:
+      single_user_mode: Manyfold работает в однопользовательском режиме.
       user_quotas:
       user_quotas_enable_quota:
       user_quotas_site_default:
     reporting:
-      description_html:
-      heading:
+      description_html: Если вы включите отслеживание использования, следующая информация будет отправляться раз в день на <code>%{endpoint}</code>. <code>id</code> генерируется случайным образом при включении отслеживания.
+      heading: Анонимное отслеживание использования
       report_usage:
-        label:
-      summary:
-      use_of_data:
-      verification_html:
+        label: Включить анонимное отслеживание использования
+      summary: Дайте разработчикам знать, что вы используете Manyfold.
+      use_of_data: Никакая другая информация не отправляется и не хранится, и разработчики никогда не будут использовать информацию для каких-либо целей, кроме измерения того, сколько экземпляров Manyfold работает и какую версию они используют.
+      verification_html: Если вы хотите проверить, что мы отправляем, вы можете изменить переменную окружения <code>USAGE_REPORTING_URL</code> и отправить данные куда-то, где вы можете их проверить. Вы также можете увидеть точно, что отправляется в журнале.
     reports:
       index:
         description:
@@ -179,18 +179,18 @@ ru:
       total_file_size:
     tag_settings:
       auto_tag_new:
-        label:
+        label: Автоматически присваивать новые теги моделям с
       custom_stop_words:
-        label:
-      description:
+        label: Пользовательские стоп-слова
+      description: Добавить теги ко всем вновь отсканированным моделям и исключить определенные слова ("стоп-слова") во время автоматического создания тегов. Влияет на всех пользователей.
       filter_stop_words:
-        label:
-      heading:
+        label: Исключить стоп-слова
+      heading: Тегирование
       stop_words_locale:
-        label:
+        label: Локализация стоп-слов
       tag_model_directory_name:
-        help:
-        label:
+        help: 'Каждое слово в имени модели (не путь) будет добавлено в качестве тега. Внимание: это может привести к созданию большого количества тегов!'
+        label: Создать теги из имени директории модели
     update:
       success: Настройки сохранены.
     users:

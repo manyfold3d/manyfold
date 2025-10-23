@@ -2,103 +2,103 @@
 zh-CN:
   models:
     bulk_edit:
-      description:
-      form_subtitle:
-      merge:
-      remove_tags:
-      select:
-      select_all:
-      submit:
-      title:
-      update_all:
+      description: 选择要更改的模型：
+      form_subtitle: 选择要进行的更改：
+      merge: 合并选定的模型
+      remove_tags: 移除标签
+      select: 选择模型 '%{name}'
+      select_all: 选择所有模型
+      submit: 更新选定模型
+      title: 批量编辑模型
+      update_all: 更新所有 %{count} 模型
     bulk_fields:
-      add_tags:
+      add_tags: 添加标签
     bulk_update:
-      success:
+      success: 模型更新成功。
     configure_merge:
       common_root:
-        description:
+        description: 这些模型将在共享根文件夹中合并为一个模型
         title:
-      description:
-      heading:
+      description: 选择其中一个模型，将其他模型合并到其中，或创建一个新模型。
+      heading: 合并模型
       new_model:
-        description:
-        title:
+        description: 将根据合并数据创建一个新模型，并自动整理到磁盘上。
+        title: 新模型
     create:
-      success:
+      success: 文件上传成功。
     destroy:
-      confirm:
-      success:
+      confirm: 这将删除磁盘上存在的相关文件。您确定要继续吗？
+      success: 模型已删除！
     file:
-      delete:
-      edit:
+      delete: 删除文件
+      edit: 编辑文件
       open_button:
-        label:
-        text:
-      presupported:
-      set_as_preview:
+        label: 查看 %{name} 的详细信息
+        text: 打开
+      presupported: 有支撑的版本
+      set_as_preview: 设置为预览
     form:
       notes:
-        help_html:
+        help_html: 您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
       preview_file:
-        help:
-      tags:
+        help: 在资料库页面中作为模型预览显示的文件
+      tags: Tags
     general:
-      edit:
+      edit: 编辑模型
     image_carousel:
       next:
       play_pause:
       previous:
-      select_slide:
+      select_slide: 选择要显示的图像
       slide_label:
     list:
-      bulk_edit:
-      no_results_html:
-      no_results_signed_out_html:
+      bulk_edit: 编辑所有模型
+      no_results_html: 抱歉，我们找不到任何可向您展示的内容！请尝试更改过滤器或搜索条件，或上传一些模型。
+      no_results_signed_out_html: 很抱歉，我们找不到任何可向您展示的内容！如果您<a href="%{link}">登录</a>，可能会看到更多内容。
       search:
-        or_other_sites:
-        other_sites:
-      skip_models:
+        or_other_sites: 或者，尝试在其他地方搜索：
+        other_sites: 找不到您想要的？试试在其他地方搜索：
+      skip_models: 跳过模型列表
     merge:
-      success:
+      success: 模型合并成功。
     new:
-      description:
+      description: 通过上传文件添加新模型！如果上传的是压缩包，它将被解压缩并成为包含所有文件的单一模型。如果上传单个文件，它们将各自成为一个单独的模型。
       files:
-        label:
-      free_space:
+        label: 选择文件
+      free_space: "(%{available} 可用)"
       library:
-        help:
+        help: 要上传的资料库。
       permission_preset:
-      submit:
-      title:
+      submit: 创建模型
+      title: 上传
     organize:
-      confirm:
-      label:
+      confirm: 构成此模型的文件夹和文件将被移动。您确定要这样做吗？
+      label: 整理文件
     problem:
-      merge_all:
+      merge_all: 合并所有
     scan:
-      success:
+      success: 模型扫描开始
     show:
-      download_preparing:
-      download_requested:
-      files:
+      download_preparing: 正在准备下载，请稍候。
+      download_requested: 已申请下载，将很快准备就绪，请稍候。
+      files: 文件
       files_card:
-        bulk_edit:
-        heading:
+        bulk_edit: 编辑所有文件
+        heading: 文件
       followers:
       license:
       merge:
-        heading:
+        heading: 合并
         warning:
         with:
       model_details:
       path:
       preview:
-      rescan:
+      rescan: 重新扫描文件
       search:
-      submit:
+      submit: 上传文件
       tags:
       upload_card:
-        heading:
+        heading: 上传
     update:
-      success:
+      success: 保存成功。
