@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class Components::Icon < Components::Base
-  def initialize(icon:, id: nil, label: nil, effect: nil)
+  def initialize(icon:, id: nil, label: nil, effect: nil, role: "img")
     @icon = icon
     @effect = effect
     @id = id
     @label = label
+    @role = role
   end
 
   def before_template
@@ -19,6 +20,6 @@ class Components::Icon < Components::Base
   end
 
   def view_template
-    i class: @classes, role: "img", title: @label, id: @id
+    i class: @classes, role: @role, title: @label, id: @id
   end
 end

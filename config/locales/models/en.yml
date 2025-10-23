@@ -72,8 +72,10 @@ en:
       model_name:
         help: Used if creating a single model; if you upload archive files the models will use the archive filename instead.
         label: Model name
+      multi_model: Each archive file will be extracted and created as a separate new model.
       non-archives: Upload any other files (STL, JPG, etc), and all the files will be added to a single new model.
       permission_preset: Permissions
+      single_model: All files will be added to a single new model with the specified name.
       submit: Create models
       title: Upload
     organize:

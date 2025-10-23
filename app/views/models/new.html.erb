@@ -29,8 +29,19 @@
             action: "turbo:morph@window->upload#reconnect",
             max_file_size: SiteSettings.max_file_upload_size,
             allowed_file_types: input_accept_string,
+            archive_extensions: SupportedMimeTypes.archive_extensions.join(","),
             upload_endpoint: upload_path
           } %>
+
+      <div class="alert alert-info" id="multi-model-message" style="display: none">
+        <%= render Components::Icon.new(icon: "boxes", role: "presentation") %>
+        <%= t(".multi_model") %>
+      </div>
+
+      <div class="alert alert-info" id="single-model-message" style="display: none">
+        <%= render Components::Icon.new(icon: "box", role: "presentation") %>
+        <%= t(".single_model") %>
+      </div>
     </div>
   </div>
 
