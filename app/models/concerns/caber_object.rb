@@ -64,6 +64,18 @@ module CaberObject
     @permission_preset == "public" || caber_relations.find { |it| it.subject.nil? }
   end
 
+  def matching_permission_preset
+    if caber_relations.count == 1 && caber_relations.where(permission: "own").one?
+      "private"
+    elsif caber_relations.count == 2 && caber_relations.where(permission: "view", subject: Role.find_by!(name: "member")).one?
+      "member"
+    elsif caber_relations.count == 2 && caber_relations.where(permission: "view", subject: nil).one?
+      "public"
+    else
+      ""
+    end
+  end
+
   private
 
   def caber_ready?

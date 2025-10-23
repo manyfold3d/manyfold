@@ -94,7 +94,7 @@ shared_examples "Caber::Object" do
 
     context "with default permissions set to private" do
       before do
-        allow(SiteSettings).to receive(:default_viewer_role).and_return("private")
+        allow(SiteSettings).to receive(:default_viewer_role).and_return(:private)
       end
 
       let(:object) { create(described_class.to_s.underscore.to_sym) }
@@ -174,6 +174,36 @@ shared_examples "Caber::Object" do
       it "does not wipe owner relation" do
         expect(object.grants_permission_to?("own", contributor)).to be true
       end
+    end
+  end
+
+  context "when working out matching preset" do
+    let(:object) { create(described_class.to_s.underscore.to_sym) }
+
+    before do
+      allow(SiteSettings).to receive(:default_viewer_role).and_return(:private)
+      object.caber_relations.destroy_all
+      object.grant_permission_to("own", SiteSettings.default_user)
+    end
+
+    it "is private if there is only one owner and no other permissions" do
+      expect(object.matching_permission_preset).to eq "private"
+    end
+
+    it "is public if there is a public view permission, an owner, and nothing else" do
+      object.update(creator: create(:creator)) if described_class.column_names.include?("creator_id")
+      object.grant_permission_to "view", nil
+      expect(object.reload.matching_permission_preset).to eq "public"
+    end
+
+    it "is member if there is a member view permission, an owner, and nothing else" do
+      object.grant_permission_to "view", Role.find_by(name: "member")
+      expect(object.reload.matching_permission_preset).to eq "member"
+    end
+
+    it "is advanced (empty) in any other case" do
+      object.grant_permission_to "edit", contributor
+      expect(object.reload.matching_permission_preset).to eq ""
     end
   end
 end
