@@ -22,10 +22,13 @@ changelog:
     - title: ⛑️ Trust & Safety ⛑️
       labels:
         - trust+safety
-    - title: 🌍 Sustainability & Performance 🌍
+    - title: 🔋 Sustainability & Performance 🔋
       labels:
         - sustainability
         - performance
+    - title: 🌍 Internationalization 🌏
+      labels:
+        - localisation
     - title: 🛠️ Other Improvements 🛠️
       labels:
         - "*"
