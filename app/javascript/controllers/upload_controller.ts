@@ -82,7 +82,8 @@ export default class extends Controller {
     if (this.uppy === null)
       return
     const extensions = new Set(this.uppy.getFiles().map((f) => f.extension))
-    const archive_extensions = new Set(["zip", "rar", "7z"])
+    const archive_extensions = new Set((this.element as HTMLElement).dataset.archiveExtensions?.split(','))
+    console.log(archive_extensions)
     const difference = new Set([...extensions].filter(value => !archive_extensions.has(value)))
     if (difference.size > 0)
       this.setSingleModelMode()
