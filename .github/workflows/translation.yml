@@ -30,7 +30,7 @@ jobs:
         env:
           TRANSLATION_IO_API_KEY: "${{ secrets.TRANSLATION_IO_API_KEY }}"
       - name: Organize changes
-        run: "bundle exec i18n-tasks normalize -p -l ${{ matrix.locale }}"
+        run: "bundle exec i18n-tasks normalize -p -l en,${{ matrix.locale }}"
       - name: Open pull request with changes
         uses: peter-evans/create-pull-request@v7
         with:
