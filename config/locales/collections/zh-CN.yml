@@ -4,17 +4,17 @@ zh-CN:
     collection:
       collections_button:
         label: 显示 %{name} 中的子集
-        remote_label:
+        remote_label: 在 %{name} 中显示本地模型
       delete_button:
         label: 删除合集 %{name}
       edit_button:
         label: 编辑合集 %{name}
       models_button:
         label: 显示 %{name} 中的模型
-        remote_label:
+        remote_label: 在 %{name} 中显示本地模型
       no_preview: 预览不可用
     create:
-      success:
+      success: 保存成功。
     destroy:
       confirm: 您确定要删除此项目吗？不会影响任何文件。
       success: 合集已删除！
@@ -27,11 +27,11 @@ zh-CN:
     get_collection:
       unknown: 未知
     index:
-      skip_collections:
+      skip_collections: 跳过合集清单
     show:
       edit: 编辑合集
     unassigned:
-      caption:
+      caption: 所有不在合集中的模型。
       name: 未分配
     update:
-      success:
+      success: 保存成功。

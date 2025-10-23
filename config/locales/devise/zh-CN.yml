@@ -82,9 +82,9 @@ zh-CN:
         update: 更新
         we_need_your_current_password_to_confirm_your_changes: 我们需要您的当前密码以确认更改
       file_list_settings:
-        heading:
+        heading: 文件列表
         hide_presupported_versions:
-          label:
+          label: 合并不支持和预支持的文件
         summary: 控制模型文件列表的显示方式
       first_use:
         email_help: 从不公开显示；仅用于登录和账户安全邮件。
@@ -123,17 +123,17 @@ zh-CN:
           help: 您个人账户的简短用户名；如果您以后创建了用于发布模型的配置文件，则需要使用不同的账户名。
       pagination_settings:
         collections:
-          label:
+          label: 合集列表分页
         creators:
-          label:
+          label: 创建者列表分页
         description: 在列表页面中一次只显示一定数量的项目，而不是同时显示所有项目。这样可以加快加载速度。
         heading: 分页
         models:
-          label: 分页模型
+          label: 模型列表分页
         per_page:
-          label: 每页项目
+          label: 每页显示项
       problem_settings:
-        description:
+        description: 改变检测到的问题的严重程度，或完全忽略它们。
         title: 问题检测
       renderer_settings:
         auto_load_max_size:
@@ -177,7 +177,7 @@ zh-CN:
         heatmap:
           label: 显示单个标签的计数
         keypair:
-          label: 使用分隔符来表示密钥对
+          label: 使用分隔符来表示键值对
         sorting:
           alphabetical: 字母顺序
           frequency: 频率

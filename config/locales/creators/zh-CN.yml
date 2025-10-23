@@ -2,7 +2,7 @@
 zh-CN:
   creators:
     create:
-      success:
+      success: 保存成功。
     creator:
       collections_button:
         label: 按 %{name} 显示合集
@@ -33,16 +33,16 @@ zh-CN:
       slug:
         help:
     general:
-      edit:
-      new:
+      edit: 编辑创建者
+      new: 新建作者
     get_creator:
-      unknown:
+      unknown: 未知
     index:
-      skip_creators:
+      skip_creators: 跳过创建者列表
     show:
-      edit:
+      edit: 编辑创作者简介
     unassigned:
       caption:
-      name:
+      name: 未分配
     update:
-      success:
+      success: 保存成功。

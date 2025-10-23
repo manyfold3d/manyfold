@@ -38,50 +38,50 @@ zh-CN:
         federails_actor: 报告人
         object:
       library:
-        caption:
+        caption: 标题
         create_path_if_not_on_disk: 自动创建文件夹
-        default:
-        icon: Icon
-        name: 应用名称
-        notes:
-        path:
+        default: 默认
+        icon: 图标
+        name: 名称
+        notes: 说明
+        path: 路径
         s3_access_key_id: Access Key ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpoint URL
-        s3_path_style:
+        s3_path_style: 使用路径式 URL
         s3_region: Region
-        s3_secret_access_key:
-        storage_service:
+        s3_secret_access_key: 访问密钥
+        storage_service: 存储服务
         tag_regex:
       link:
-        url:
+        url: 链接
       model:
         ai_indexable: 允许用于 AI 训练
-        caption:
+        caption: 标题
         collection: 合集
         collection_id: 合集
         creator: 创作者
         creator_id: 创作者
         images: 图片
         indexable: 允许搜索索引
-        library_id:
+        library_id: 资料库
         license: 许可证
         model_files: 文件
         name: 名称
-        notes:
-        path:
+        notes: 说明
+        path: 路径
         preview_file: 预览文件
         sensitive: 敏感内容
         tags: 标签
       model_file:
-        caption:
+        caption: 标题
         digest:
         dimensions: 尺寸
         filename: 文件名
-        model_id:
-        notes:
-        presupported:
-        presupported_version:
+        model_id: 模型
+        notes: 说明
+        presupported: 有支撑
+        presupported_version: 有支撑的版本
         printed: 已打印
         size: 文件大小
         unsupported_version: 不支持的版本
@@ -162,8 +162,8 @@ zh-CN:
               cannot_change_type: 不是同一文件类型
               case_change_only:
             presupported_version:
-              already_presupported:
-              not_supported:
+              already_presupported: 不能在有支撑的文件上设置
+              not_supported: 不是一个有支撑的文件
     models:
       acts_as_taggable_on/tag:
         few: 标签
@@ -201,54 +201,54 @@ zh-CN:
         two:
         zero:
       library:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: 资料库
+        many: 资料库
+        one: 资料库
+        other: 资料库
+        two: 资料库
+        zero: 资料库
       link:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: 链接
+        many: 链接
+        one: 链接
+        other: 链接
+        two: 链接
+        zero: 链接
       model:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: 模型
+        many: 模型
+        one: 模型
+        other: 模型
+        two: 模型
+        zero: 模型
       model_file:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: 文件
+        many: 文件
+        one: 文件
+        other: 文件
+        two: 文件
+        zero: 文件
       problem:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: 问题
+        many: 问题
+        one: 问题
+        other: 问题
+        two: 问题
+        zero: 问题
       user:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: 账户
+        many: 账户
+        one: 账户
+        other: 账户
+        two: 账户
+        zero: 账户
   activity:
     index:
-      description:
-      message:
-      name: 应用名称
-      time:
-      title:
+      description: "%{retention_period}之后的条目将被删除。"
+      message: 消息
+      name: 名称
+      time: 时间
+      title: 系统活动
   activity_helper:
     status_icon:
       completed:
@@ -257,51 +257,51 @@ zh-CN:
       working:
   application:
     caber_relation_fields:
-      delete:
+      delete: 删除
       permissions:
-        edit:
-        own:
-        preview:
-        view:
+        edit: 可编辑
+        own: 所有者（可以查看、编辑、删除和共享）
+        preview: 预览：只预览特定的可预览文件
+        view: 仅查看
       subject:
-        placeholder:
+        placeholder: 电邮地址、账户名称或角色
         role:
-          member:
-          public:
-        you:
+          member: 任何登录的本地账户
+          public: 所有人（无需登录）
+        you: "（你）"
     caber_relations_form:
-      add:
-      permissions:
-    demo_mode:
+      add: 增加一个权限
+      permissions: 共享
+    demo_mode: 此实例处于演示模式。您不能添加或删除模型，但可以进行其他操作。
     filters_card:
-      missing_tags:
-      remove_collection_filter:
-      remove_creator_filter:
-      remove_library_filter:
-      remove_missing_tag_filter:
-      remove_search_filter:
-      remove_tag_filter:
-      search:
-      title:
-      unknown:
+      missing_tags: 缺少标签
+      remove_collection_filter: 移除合集过滤器
+      remove_creator_filter: 移除创建者过滤器
+      remove_library_filter: 删除资料库过滤器
+      remove_missing_tag_filter: 删除丢失的标签过滤器
+      remove_search_filter: 移除搜索过滤器
+      remove_tag_filter: 移除标签过滤器
+      search: 搜索
+      title: 过滤
+      unknown: 未知
     footer:
-      about:
-      api:
-      by_html:
-      community:
-      instance_heading:
-      issues:
-      open_source_html:
-      powered_by_html:
-      sponsor:
-      support:
-      version:
+      about: 关于本实例
+      api: 探索我们的应用程序接口
+      by_html: 由<a href="https://floppy.org.uk" target="_blank" rel="noreferrer">詹姆斯</a>在<a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">我们的贡献者</a>的帮助下设计和制作。
+      community: 加入社区
+      instance_heading: 实例详细信息
+      issues: 报告问题
+      open_source_html: 根据<a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT 许可</a><a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">开源</a>。
+      powered_by_html: 由<a href="https://manyfold.app">%{name}</a>提供
+      sponsor: 赞助
+      support: 支持此实例
+      version: 版本
     link_fields:
       url:
-        delete:
-        placeholder:
+        delete: 删除
+        placeholder: 任何相关网页
     links_form:
-      add:
+      add: 添加新链接
     navbar:
       account: 我的设置
       activity: 近期动态
@@ -315,7 +315,7 @@ zh-CN:
       moderator_settings:
       navbar:
         toggler:
-          label:
+          label: 切换导航
       scan: 扫描
       scan_changes: 扫描新文件
       scanning: 正在扫描
@@ -331,7 +331,7 @@ zh-CN:
       unrelated_tag_count:
         one:
         other:
-    tagline: 帮助您跟踪 3D 打印文件
+    tagline: 帮助您管理 3D 打印文件
     tags_card:
       skip_tags: 跳过标签列表
     title:
@@ -382,7 +382,7 @@ zh-CN:
         text: 编辑
       no_preview: 预览不可用
       open_button:
-        label:
+        label: 打开模型 %{name}
         text: 打开
     search_help:
       boolean: 使用 "or" 查找匹配的模型。
@@ -391,15 +391,15 @@ zh-CN:
       intro: 使用搜索语法查找所需内容：
       more_details_html: 有关详细信息，请阅读 <a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">scoped_search 查询语言</a> 的完整文档。
       negation: 使用 "not"、"!" 或 "-" 来排除。
-      parentheses: 用括号将术语分组，以实现更复杂的逻辑组合。
+      parentheses: 用括号将搜索词分组，以实现更复杂的逻辑组合。
       path: 通过明确指定在模型文件夹路径内搜索；使用 `~` 进行部分匹配。
-      quotes: 要查找单个术语中的多个单词，请使用引号；只有包含确切文本的模型才会显示。
+      quotes: 要查找多个单词，请使用引号；只有包含确切文本的模型才会显示。
       simple: 默认情况下，搜索将查找符合所有条件的模型。
-      specific_fields: 您可以在几个特定字段中查找术语。使用"~"匹配部分字段；"="将尝试匹配整个字段。只有在明确指定字段的情况下，才会搜索模型描述和库名。
+      specific_fields: 您可以在几个特定字段中查找关键词。使用"~"匹配部分字段；"="将尝试匹配整个字段。只有在明确指定字段的情况下，才会搜索模型描述和库名。
       tag: 查找带有特定 Tag 的模型
       title: 搜索语法
       unset: 使用 "set?" 查询特定字段是否已设置，添加 "not" 则可查找相反字段。
-      without_tag: 使用 "!=" 查找没有特定标记的模型
+      without_tag: 使用 "!=" 查找不带有特定 Tag 的模型
   concerns:
     linkable:
       sync:
@@ -592,29 +592,29 @@ zh-CN:
         versions: 版本
       index:
         add_html:
-        description_html:
+        description_html: 作为<a href="https://fediscovery.org" target="_new" rel="noopener">Fediscovery 项目</a>的一部分，Fediverse 辅助服务提供商 (FASP) 可为 Fediverse 服务器提供搜索、趋势、垃圾邮件检测等额外功能。
         heading:
         provider_list_title:
         registered_at:
         search_3dprint_social_html:
         status:
-        url:
+        url: URL
   follows:
     actor_table:
       actions: 动作
       address:
-      name: 应用名称
+      name: 名称
     follow_remote_actor:
       followed:
     index:
       explore_html:
-      followers:
+      followers: 粉丝
       following:
       title:
     new:
       no_results:
       recommended:
-      results:
+      results: 搜索结果
       title:
     remote_follow:
       help:
@@ -623,31 +623,31 @@ zh-CN:
       submit:
       title:
     search_form:
-      help:
+      help: 您可以关注其他 Manyfold 服务器上的公共创作者、作品集或模型，实际上是 Fediverse 中的任何公共账户！只需在搜索框中输入账户名称即可！
       placeholder:
-      submit:
+      submit: 搜索
     unfollow_remote_actor:
       unfollowed:
   general:
-    delete:
-    download:
+    delete: 删除
+    download: 下载
     edit: 编辑
-    expand:
+    expand: 展开
     followers:
-      few:
-      many:
-      one:
-      other:
-      two:
-      zero:
-    menu:
+      few: "%{count} 粉丝"
+      many: "%{count} 粉丝"
+      one: "%{count} 粉丝"
+      other: "%{count} 粉丝"
+      two: "%{count} 粉丝"
+      zero: "%{count} 粉丝"
+    menu: 菜单
     new:
     private:
-    public:
+    public: 公开可见
     report:
-    save:
-    shared:
-    view:
+    save: 保存
+    shared: 与本地用户共享
+    view: 查看
   home:
     activity:
       created: 添加于 %{time} 前
@@ -666,9 +666,9 @@ zh-CN:
     index:
       no_activities: 暂时没有动态要展示。
       open_search_help: 搜索语法
-      recent_activity: 近期动态
+      recent_activity: 近期更新
       search:
-        placeholder: 您在寻找什么？
+        placeholder: 搜索本地模型库
         submit: 搜索
     publishing:
       content: 您可以在项目的编辑页面上向 "公开 "角色授予 "查看 "或 "预览 "权限，从而公开发布内容。公开模型的创建者会自动公开，但如果想让收藏可见，则需要明确发布。
@@ -698,19 +698,19 @@ zh-CN:
       lead: 该网站正在运行用于管理和共享 3D 模型的软件 Manyfold，以下是快速指南 ...
       title: 欢迎来到 %{site_name}！
   imports:
-    bad_url:
+    bad_url: 我们无法从该 URL 获取任何有用的信息；它可能是不正确的或不支持的。
     create:
-      success:
+      success: 已请求导入；结果很快就会出现。
     new:
-      description:
-      heading:
-      import:
-      import_capabilities:
-      import_type_html:
-      integration_settings:
-      placeholder:
-      submit:
-      supported_sites:
+      description: 在某些网站上，Manyfold 只需一个链接就能为您下载模型！
+      heading: 从链接导入
+      import: 导入此链接
+      import_capabilities: 我们可以从其它托管网站导入模型、创建者和收藏。您输入网址后，将显示可以导入的内容。
+      import_type_html: "<code>%{url}</code>将被添加为新的 %{object_type}。可自动导入以下数据："
+      integration_settings: 编辑集成设置
+      placeholder: 粘贴要导入内容的地址（如 https://thingiverse.com/thing:1234）
+      submit: 导入
+      supported_sites: 支持的网站
   jobs:
     activity:
       collection_published:
@@ -756,25 +756,25 @@ zh-CN:
   layouts:
     application:
       alert:
-        danger:
-        info:
-      skip_to_content:
+        danger: 危险
+        info: 信息
+      skip_to_content: 跳至主要内容
     card_list_page:
       actions_heading: 动作
     settings:
-      appearance:
-      downloads:
-      integrations_heading:
-      libraries:
-      moderation_heading:
-      moderation_settings_title:
-      organization:
-      performance:
+      appearance: 外观
+      downloads: 下载
+      integrations_heading: 集成
+      libraries: 资料库
+      moderation_heading: 审核
+      moderation_settings_title: 审核设置
+      organization: 整理
+      performance: 性能仪表板
       pghero:
       search_heading:
-      sidekiq:
-      site_settings_title:
-      tools_heading:
+      sidekiq: Sidekiq
+      site_settings_title: 网站设置
+      tools_heading: 高级工具
   licenses:
     0BSD:
     CC-BY-40:
@@ -805,23 +805,23 @@ zh-CN:
       subject:
   renderer:
     errors:
-      canvas:
-      load:
-      webglrenderer:
-    load:
+      canvas: '找不到 #webgl 画布！'
+      load: 加载错误
+      webglrenderer: 无法创建渲染器！
+    load: 加载
     processing:
   reports:
     create:
-      success:
+      success: 报告已提交。谢谢！
     new:
-      description:
-      submit:
-      title:
+      description: 如果此项目违反了任何法律或服务器政策，您可以向我们的版主报告。添加评论，让我们知道原因！
+      submit: 发送报告
+      title: 报告 %{type}："%{name}"：
   scans:
     create:
-      success:
+      success: 扫描已开始。
   security:
-    running_as_root_html:
+    running_as_root_html: Manyfold 以 root 用户身份运行，存在安全隐患。通过设置<code>PUID</code>和<code>PGID</code>环境变量，以不同的系统用户身份运行。详情请查看<a href='https://manyfold.app/sysadmin/configuration.html#required'>配置文档</a>。
   sites:
     cgtrader: CGTrader
     comicsgamesandthings: Comics, Games, and Things
@@ -850,8 +850,8 @@ zh-CN:
         altcha_failed: ALTCHA 验证失败
   views:
     pagination:
-      first: "&laquo; 首页"
-      last: 末页 &raquo;
-      next: 下一页 &rsaquo;
-      previous: "&lsaquo; 上一页"
-      truncate: "&hellip;"
+      first: "«  首页"
+      last: 末页 »
+      next: 下一页  ›
+      previous: "‹ 上一页"
+      truncate: "…"
