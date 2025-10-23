@@ -10,6 +10,8 @@ module CaberObject
     attr_writer :permission_preset
     accepts_nested_attributes_for :caber_relations, reject_if: :all_blank, allow_destroy: true
 
+    before_validation :ensure_permission_preset_precedence
+
     before_create :set_default_permission_preset
     after_commit :set_permissions_from_preset
     after_create_commit :set_owner
@@ -66,5 +68,9 @@ module CaberObject
 
   def caber_ready?
     ActiveRecord::Base.connection.data_source_exists? "caber_relations"
+  end
+
+  def ensure_permission_preset_precedence
+    self.caber_relations_attributes = [] if @permission_preset.present?
   end
 end
