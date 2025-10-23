@@ -137,6 +137,7 @@ es:
         help: "¿Quién puede ver por defecto los nuevos modelos / creadores / colecciones?"
         label: Visibilidad por defecto
         options:
+          advanced:
           member: Usuarios locales conectados
           private: Privado
           public: Público

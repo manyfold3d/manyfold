@@ -137,6 +137,7 @@ fr:
         help: Qui peut voir les nouveaux modèles / créateurs / collections par défaut ?
         label: Visibilité par défaut
         options:
+          advanced:
           member: Utilisateurs locaux connectés
           private: Privé
           public:

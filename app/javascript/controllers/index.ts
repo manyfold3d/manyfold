@@ -5,6 +5,7 @@
 import { application } from './application'
 
 import BulkEditController from './bulk_edit_controller'
+import CaberAdvancedController from './caber_advanced_controller'
 import CarouselController from './carousel_controller'
 import CocoonedController from './cocooned_controller'
 import CopyTextController from './copy_text_controller'
@@ -18,6 +19,7 @@ import TagSectionController from './tag_section_controller'
 import UploadController from './upload_controller'
 import ZxcvbnController from './zxcvbn_controller'
 
+application.register('caber-advanced', CaberAdvancedController)
 application.register('carousel', CarouselController)
 application.register('cocooned', CocoonedController)
 application.register('copy-text', CopyTextController)

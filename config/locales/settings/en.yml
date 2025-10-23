@@ -137,6 +137,7 @@ en:
         help: Who can view new models / creators / collections by default?
         label: Default permissions
         options:
+          advanced: Custom
           member: Members (logged-in local accounts)
           private: Private
           public: Public

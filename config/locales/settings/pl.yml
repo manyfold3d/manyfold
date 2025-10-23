@@ -137,6 +137,7 @@ pl:
         help: Kto może domyślnie wyświetlać nowe modele / twórców / kolekcje?
         label: Domyślna widoczność
         options:
+          advanced:
           member: Członkowie (zalogowane konta lokalne)
           private: Prywatne
           public:

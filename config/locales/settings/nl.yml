@@ -137,6 +137,7 @@ nl:
         help: Wie kan standaard nieuwe modellen / makers / collecties bekijken?
         label: Standaard zichtbaarheid
         options:
+          advanced:
           member: Ingelogde lokale gebruikers
           private: Privé
           public:

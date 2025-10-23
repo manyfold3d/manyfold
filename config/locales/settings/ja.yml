@@ -137,6 +137,7 @@ ja:
         help: デフォルトでは、誰が新しいモデル/クリエイター/コレクションを見ることができますか？
         label: デフォルトの可視性
         options:
+          advanced:
           member: ログインされたローカルアカウント
           private: プライベート
           public:

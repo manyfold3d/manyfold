@@ -137,6 +137,7 @@ ru:
         help:
         label:
         options:
+          advanced:
           member:
           private:
           public:

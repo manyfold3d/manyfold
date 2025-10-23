@@ -137,6 +137,7 @@ cs:
         help: Kdo může ve výchozím nastavení zobrazovat nové modely / autory / kolekce?
         label: Výchozí viditelnost
         options:
+          advanced:
           member: Přihlášení lokální uživatelé
           private: Soukromé
           public:

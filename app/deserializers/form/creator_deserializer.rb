@@ -13,6 +13,7 @@ module Form
         :remove_avatar,
         :banner,
         :remove_banner,
+        :permission_preset,
         links_attributes: [:id, :url, :_destroy]
       ).deep_merge(caber_relations_params(type: :creator))
     end
