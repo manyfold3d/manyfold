@@ -10,6 +10,7 @@ module CaberObject
     attr_writer :permission_preset
     accepts_nested_attributes_for :caber_relations, reject_if: :all_blank, allow_destroy: true
 
+    before_create :set_default_permission_preset
     after_create_commit :set_permissions_from_preset
     after_create_commit :set_owner
 
@@ -29,9 +30,12 @@ module CaberObject
     public? && @was_private
   end
 
+  def set_default_permission_preset
+    @permission_preset ||= SiteSettings.default_viewer_role
+  end
+
   def set_permissions_from_preset
-    preset = @permission_preset || SiteSettings.default_viewer_role
-    case preset.to_sym
+    case @permission_preset&.to_sym
     when :public
       grant_permission_to("view", nil)
       revoke_permission("view", Role.find_or_create_by(name: "member"))
