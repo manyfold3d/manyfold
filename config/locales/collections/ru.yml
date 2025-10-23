@@ -17,10 +17,10 @@ ru:
       success:
     destroy:
       confirm:
-      success:
+      success: Коллекция удалена!
     form:
       notes:
-        help_html:
+        help_html: Вы можете использовать <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit:
       new:

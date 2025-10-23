@@ -22,12 +22,12 @@ ru:
       success:
     download:
       bambu:
-      cura:
-      elegoo:
-      lychee:
-      orca:
-      prusa:
-      superslicer:
+      cura: Открыть в Ultimaker Cura
+      elegoo: Открыть в ElegooSlicer
+      lychee: Открыть в Lychee Slicer
+      orca: Открыть в OrcaSlicer
+      prusa: Открыть в PrusaSlicer
+      superslicer: Открыть в SuperSlicer
     form:
       notes:
         help_html:
