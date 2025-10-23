@@ -11,7 +11,7 @@
               [translate("settings.multiuser.default_viewer_role.options.public"), "public"],
               [translate("settings.multiuser.default_viewer_role.options.advanced"), ""]
             ],
-              {selected: SiteSettings.default_viewer_role},
+              {selected: form.object.matching_permission_preset},
               {class: "form-control col-auto form-select", data: {controller: "caber-advanced", action: "change->caber-advanced#update"}} %>
       </div>
       <div class="row border p-3" id="advanced-permissions">
