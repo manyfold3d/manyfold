@@ -2,43 +2,43 @@
 zh-CN:
   model_files:
     bulk_edit:
-      description:
-      form_subtitle:
-      pattern:
-      rename:
-      replacement:
-      select:
-      select_all:
-      split:
-      submit:
-      title:
+      description: 选择要更改的文件：
+      form_subtitle: 选择要进行的更改：
+      pattern: 查找
+      rename: 重命名文件
+      replacement: 替换为
+      select: 选择"%{name}"文件
+      select_all: 选择所有文件
+      split: 将所选文件分割为新模型
+      submit: 更新所选文件
+      title: 批量编辑文件
     bulk_update:
-      success:
+      success: 文件更新成功。
     create:
-      conversion_started:
-      success:
+      conversion_started: 文件转换开始。转换后的文件应该很快就能提供。
+      success: 文件上传成功！
     destroy:
-      confirm:
-      success:
+      confirm: 您确定要从文件系统中删除该文件吗？
+      success: 文件已删除！
     download:
-      bambu:
-      cura:
-      elegoo:
-      lychee:
-      orca:
-      prusa:
-      superslicer:
+      bambu: 在 Bambu Studio 中打开
+      cura: 在 Ultimaker Cura 中打开
+      elegoo: 在 ElegooSlicer 中打开
+      lychee: 在 Lychee Slicer 中打开
+      orca: 在 OrcaSlicer 中打开
+      prusa: 在 PrusaSlicer 中打开
+      superslicer: 在 SuperSlicer 中打开
     form:
       notes:
-        help_html:
+        help_html: 您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
     general:
-      edit:
+      edit: 编辑文件信息
     show:
-      convert:
-      details_heading:
+      convert: 转换为 3MF
+      details_heading: 详细信息
       download:
-        menu_header:
-      notes_heading:
+        menu_header: 下载选项
+      notes_heading: 说明
     update:
-      failure:
-      success:
+      failure: 发生错误，无法保存文件详细信息。
+      success: 保存成功。

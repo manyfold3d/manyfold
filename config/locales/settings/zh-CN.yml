@@ -2,54 +2,54 @@
 zh-CN:
   settings:
     analysis:
-      description:
-      heading:
+      description: 对模型进行深度网格分析。这些选项会大大延长扫描时间，并占用更多的 CPU 和内存。
+      heading: 网格分析
       manifold:
-        help:
-        label:
+        help: 检查非网格（即有孔洞或不可能存在的曲面）
+        label: 检测网格错误
     appearance:
       about:
-        help_html:
-        label:
-      heading:
-      information:
+        help_html: 如关于页面所示；您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
+        label: 关于本实例
+      heading: 外观
+      information: 信息
       rules:
-        help_html:
-        label:
+        help_html: 在注册时显示；您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
+        label: 服务器规则
       site_icon:
-        help:
-        label:
+        help: 显示在每页左上方
+        label: 徽标 URL
       site_name:
-        help:
-        label:
+        help: 网站名称。用于导航和主页。
+        label: 网站名称
       site_tagline:
-        help:
-        label:
-      summary:
+        help: 介绍网站的几句话，显示在主页上。
+        label: 标语
+      summary: 定制您的实例。
       support_link:
-        help:
-        label:
+        help: 访问者可以为实例提供资金支持的链接（如 OpenCollective、Patreon）。显示在页脚。
+        label: 支持链接
       theme:
-        help_html:
-        label:
+        help_html: 影响所有账户。访问<a href="https://bootswatch.com">Bootswatch</a>查看预览。
+        label: 主题
     discovery:
       allow_ai_bots:
-        help:
-        label:
+        help: 除非开启，否则 robots.txt 中完全禁止人工智能机器人。启用此功能会造成大量服务器负载。
+        label: 允许人工智能爬虫
       allow_robots:
-        help:
-        label:
+        help: 除非打开，否则网络爬虫将被要求忽略整个实例。
+        label: 允许网络爬虫
       default_ai_indexable:
-        help_html:
-        label:
+        help_html: 除非开启，否则人工智能训练机器人将被要求使用<a href="https://www.deviantart.com/team/journal/A-New-Directive-for-Opting-Out-of-AI-Datasets-934500371">Deviantart 的 "noai "指令</a>忽略公开内容。
+        label: 允许用于 AI 训练
       default_indexable:
-        help:
-        label:
-      description:
-      heading:
+        help: 除非开启，否则搜索引擎将被要求默认忽略公开内容。
+        label: 允许搜索索引
+      description: 控制其他人如何找到您的公开内容。请注意，所有这些设置都是建议性的；我们无法保证其他系统的良好行为。
+      heading: 发现
       indexing:
-        description:
-        heading:
+        description: 以下选项设置了全站范围内公共内容搜索索引首选项的默认值（私人内容永远无法索引）。个别模型、创建者和集合可以用自己的设置覆盖此默认值。这些选项只有在启用了上述爬网程序后才会生效。
+        heading: 索引默认值
     domain_blocks:
       create:
         success:
@@ -65,44 +65,44 @@ zh-CN:
         title:
     downloads:
       derivatives:
-        description:
-        heading:
+        description: Manyfold 可以为某些文件创建替代版本，以提高网站性能。请注意，这会占用更多磁盘空间。
+        heading: 文件衍生物
         images:
-          help:
-          label:
-      description:
+          help: 生成低分辨率版本的图像，以便在列表和模型页面上更快加载。
+          label: 图像缩略图
+      description: Manyfold 会根据请求生成模型的 ZIP 文件，但对于繁忙的网站，您可能希望更快地获得这些文件。在这里，您可以告诉 Manyfold 立即生成 ZIP 文件，还可以设置这些文件在下载缓存中保留的时间。请注意，这可能会占用大量磁盘空间！
       expiry:
-        help:
-        hours:
-        label:
-      heading:
+        help: 设置为 0 表示永久保留。
+        hours: 小时数
+        label: 删除下载后的 ZIP 文件
+      heading: 下载
       pregenerate:
-        help:
-        label:
+        help: 如果启用，则每次添加或更新模型时都会创建 ZIP 文件。如果禁用，则只在需要时创建 ZIP 文件。
+        label: 主动创建可下载的 ZIP 文件
     file_settings:
       custom_ignore_filters:
-        details:
-        label:
-      summary:
-      title:
+        details: 过滤器采用 regex 格式，用新行分隔。
+        label: 忽略文件正则过滤器。
+      summary: 更改文件设置，如忽略的文件等。
+      title: 文件设置
     folder_settings:
-      details:
+      details: 文件夹结构遵循您使用标记定义的模板。您也可以在模板中包含其他文本（如文件夹分隔符），这些文本将按原样包含在内。
       model_path_template:
-        label:
+        label: 模型路径模板
       parse_metadata_from_path:
-        help:
-        label:
+        help: 根据模板设置创建者、合集和 Tags
+        label: 扫描时从模型路径模板中填充元数据
       safe_folder_names:
-        help_html:
-        label:
-      summary:
-      title:
+        help_html: 例如，用<code>spinal-tap</code>代替<code>Spın̈al Tap</code>
+        label: 使用安全的文件夹名称
+      summary: 定义 "整理文件" 和扫描时自动填充元数据所使用的文件夹结构。影响所有账户。
+      title: 文件夹命名
       tokens:
-        collection:
-        creator:
+        collection: 模型所在集合的标题（如果已设置）。
+        creator: 创建者的名称（如果已设置）。
         model_id: 模型的唯一数字标识符。我们强烈建议将其放在模板的末尾，以避免磁盘上的名称冲突。
-        model_name:
-        tags_html:
+        model_name: 为模型名称使用文件系统安全的规范格式
+        tags_html: 在一系列嵌套文件夹中，每个文件夹被解析为一个 Tag，它们将按标签受欢迎程度排列。例如：<code>幻想/人类/巫师</code>。这个标记是 "贪婪" 的，意味着它会尽可能多地解析标签。
     general:
       submit: 保存设置
     integrations:
@@ -179,20 +179,20 @@ zh-CN:
       total_file_size: 文件总大小
     tag_settings:
       auto_tag_new:
-        label: 自动标记新模型
+        label: 自动标记新模型为
       custom_stop_words:
         label: 自定义禁止词
-      description: 为所有新扫描的模型添加标签，并在自动创建标签时过滤掉某些词（"禁止词"）。影响所有账户。
+      description: 为所有新扫描的模型添加标签，并在自动创建标签时过滤掉某些词（"禁止词"）。这将影响所有账户。
       filter_stop_words:
         label: 过滤禁止词
-      heading:
+      heading: 标签
       stop_words_locale:
         label: 禁止词
       tag_model_directory_name:
         help: 模型名称（而不是路径）中的每个单词都会被添加为标签。警告：这会产生大量标签！
         label: 根据模型名称创建标签
     update:
-      success: 设置已保存。
+      success: 保存成功。
     users:
       create:
         success: 账户创建成功。
