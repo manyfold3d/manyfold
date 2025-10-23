@@ -21,7 +21,11 @@ shared_examples "Caber::Object" do
 
   context "when assigning permissions at creation" do
     context "with public preset" do
-      let(:object) { create(described_class.to_s.underscore.to_sym, permission_preset: "public") }
+      let(:object) {
+        options = {permission_preset: "public"}
+        options[:creator] = create(:creator) if described_class.column_names.include?("creator_id")
+        create(described_class.to_s.underscore.to_sym, options)
+      }
 
       it "grants view permission to public role" do
         expect(object.grants_permission_to?("view", nil)).to be true

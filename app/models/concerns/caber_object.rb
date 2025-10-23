@@ -60,7 +60,7 @@ module CaberObject
 
   def will_be_public?
     return false unless caber_ready?
-    caber_relations.find { |it| it.subject.nil? }
+    @permission_preset == "public" || caber_relations.find { |it| it.subject.nil? }
   end
 
   private
