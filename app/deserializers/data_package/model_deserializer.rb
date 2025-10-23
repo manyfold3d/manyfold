@@ -21,12 +21,7 @@ module DataPackage
     def parse_links
       links = (@object["links"] || []).map { |it| LinkDeserializer.new(it).deserialize }
       links << {url: @object["homepage"]} if @object["homepage"]
-      links.reject { |it| it[:url] == self_link }
-    end
-
-    def self_link
-      Rails.application.routes.url_helpers.model_url(id: @object["name"])
-    rescue ActionController::UrlGenerationError
+      links
     end
   end
 end

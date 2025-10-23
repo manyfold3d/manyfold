@@ -63,10 +63,6 @@ RSpec.describe DataPackage::ModelDeserializer do
       expect(output[:notes]).to eq "multiline\nnote"
     end
 
-    it "ignores self link" do
-      expect(output[:links_attributes]).not_to include({url: "http://localhost:3214/models/test-model"})
-    end
-
     it "parses homepage link" do
       expect(output[:links_attributes]).to include({url: "https://example.com"})
     end
