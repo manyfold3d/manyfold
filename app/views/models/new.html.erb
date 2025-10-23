@@ -30,6 +30,8 @@
     </div>
   </div>
 
+  <%= text_input_row form, :name, label: t(".model_name") %>
+
   <%= render "bulk_fields", form: form, default_tags: SiteSettings.model_tags_auto_tag_new %>
 
   <div class="row mb-3">
