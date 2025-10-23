@@ -19,7 +19,7 @@ shared_examples "Caber::Object" do
     expect(object.grants_permission_to?("own", admin)).to be false
   end
 
-  context "when assigning permissions" do
+  context "when assigning permissions at creation" do
     context "with public preset" do
       let(:object) { create(described_class.to_s.underscore.to_sym, permission_preset: "public") }
 
@@ -55,53 +55,99 @@ shared_examples "Caber::Object" do
         expect(object.grants_permission_to?("view", nil)).to be false
       end
     end
+
+    context "with default permissions set to public" do
+      before do
+        allow(SiteSettings).to receive(:default_viewer_role).and_return(:public)
+      end
+
+      let(:object) { create(described_class.to_s.underscore.to_sym) }
+
+      it "grants view permission to member role" do
+        expect(object.grants_permission_to?("view", nil)).to be true
+      end
+
+      it "does not grant public update permission" do
+        expect(object.grants_permission_to?("update", nil)).to be false
+      end
+    end
+
+    context "with default permissions set to member-visible" do
+      before do
+        allow(SiteSettings).to receive(:default_viewer_role).and_return(:member)
+      end
+
+      let(:object) { create(described_class.to_s.underscore.to_sym) }
+
+      it "grants view permission to member role" do
+        expect(object.grants_permission_to?("view", Role.find_by!(name: "member"))).to be true
+      end
+
+      it "does not grant public view permission" do
+        expect(object.grants_permission_to?("view", nil)).to be false
+      end
+    end
+
+    context "with default permissions set to private" do
+      before do
+        allow(SiteSettings).to receive(:default_viewer_role).and_return("private")
+      end
+
+      let(:object) { create(described_class.to_s.underscore.to_sym) }
+
+      it "does not grant view permission to member role" do
+        expect(object.grants_permission_to?("view", Role.find_by!(name: "member"))).to be false
+      end
+
+      it "does not grant public view permission" do
+        expect(object.grants_permission_to?("view", nil)).to be false
+      end
+    end
   end
 
-  context "with default permissions set to public" do
-    before do
-      allow(SiteSettings).to receive(:default_viewer_role).and_return(:public)
-    end
-
+  context "when assigning permissions presets during update" do
     let(:object) { create(described_class.to_s.underscore.to_sym) }
 
-    it "grants view permission to member role" do
-      expect(object.grants_permission_to?("view", nil)).to be true
+    context "with public preset" do
+      before do
+        object.update!(permission_preset: "public")
+      end
+
+      it "grants view permission to public role" do
+        expect(object.grants_permission_to?("view", nil)).to be true
+      end
+
+      it "does not grant public update permission" do
+        expect(object.grants_permission_to?("update", nil)).to be false
+      end
     end
 
-    it "does not grant public update permission" do
-      expect(object.grants_permission_to?("update", nil)).to be false
-    end
-  end
+    context "with member preset" do
+      before do
+        object.update!(permission_preset: "member")
+      end
 
-  context "with default permissions set to member-visible" do
-    before do
-      allow(SiteSettings).to receive(:default_viewer_role).and_return(:member)
-    end
+      it "grants view permission to member role" do
+        expect(object.grants_permission_to?("view", Role.find_by!(name: "member"))).to be true
+      end
 
-    let(:object) { create(described_class.to_s.underscore.to_sym) }
-
-    it "grants view permission to member role" do
-      expect(object.grants_permission_to?("view", Role.find_by!(name: "member"))).to be true
+      it "does not grant public view permission" do
+        expect(object.grants_permission_to?("view", nil)).to be false
+      end
     end
 
-    it "does not grant public view permission" do
-      expect(object.grants_permission_to?("view", nil)).to be false
-    end
-  end
+    context "with private preset" do
+      before do
+        object.update!(permission_preset: "private")
+      end
 
-  context "with default permissions set to private" do
-    before do
-      allow(SiteSettings).to receive(:default_viewer_role).and_return("private")
-    end
+      it "does not grant view permission to member role" do
+        expect(object.grants_permission_to?("view", Role.find_by!(name: "member"))).to be false
+      end
 
-    let(:object) { create(described_class.to_s.underscore.to_sym) }
-
-    it "does not grant view permission to member role" do
-      expect(object.grants_permission_to?("view", Role.find_by!(name: "member"))).to be false
-    end
-
-    it "does not grant public view permission" do
-      expect(object.grants_permission_to?("view", nil)).to be false
+      it "does not grant public view permission" do
+        expect(object.grants_permission_to?("view", nil)).to be false
+      end
     end
   end
 end

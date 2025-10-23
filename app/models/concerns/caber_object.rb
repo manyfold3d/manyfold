@@ -11,7 +11,7 @@ module CaberObject
     accepts_nested_attributes_for :caber_relations, reject_if: :all_blank, allow_destroy: true
 
     before_create :set_default_permission_preset
-    after_create_commit :set_permissions_from_preset
+    after_commit :set_permissions_from_preset
     after_create_commit :set_owner
 
     before_update -> { @was_private = !public? }
@@ -46,6 +46,8 @@ module CaberObject
       revoke_permission("view", nil)
       revoke_permission("view", Role.find_or_create_by(name: "member"))
     end
+    # Clear attribute so we don't pollute later operations on the same object
+    @permission_preset = nil
   end
 
   def set_owner
