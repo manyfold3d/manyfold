@@ -40,11 +40,10 @@ module CaberObject
       grant_permission_to("view", nil)
       revoke_permission("view", Role.find_or_create_by(name: "member"))
     when :member
-      revoke_permission("view", nil)
+      revoke_all_permissions(nil)
       grant_permission_to("view", Role.find_or_create_by(name: "member"))
     when :private
-      revoke_permission("view", nil)
-      revoke_permission("view", Role.find_or_create_by(name: "member"))
+      Caber::Relation.where(object: self, permission: ["preview", "view", "edit"]).destroy_all # rubocop:disable Pundit/UsePolicyScope
     end
     # Clear attribute so we don't pollute later operations on the same object
     @permission_preset = nil
