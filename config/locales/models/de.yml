@@ -62,13 +62,20 @@ de:
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
     new:
+      archives-only:
       description: Lade neue Modelle hoch. Jedes hochgeladene Archiv wird extrahiert und zu einem einzigen Modell, das alle Dateien enthält. Wenn du einzelne Dateien hochlädst, werden sie zu einzelnen Modellen.
       files:
         label: Dateien auswählen
       free_space: "(%{available} frei)"
       library:
         help: Die Sammlung, in die hochgeladen werden soll.
+      model_name:
+        help:
+        label:
+      multi_model:
+      non-archives:
       permission_preset: Berechtigungen
+      single_model:
       submit: Modelle erstellen
       title: Hochladen
     organize:
