@@ -13,7 +13,6 @@ jobs:
         locale:
           - cs
           - de
-          - en
           - es
           - fr
           - ja
@@ -31,14 +30,14 @@ jobs:
         env:
           TRANSLATION_IO_API_KEY: "${{ secrets.TRANSLATION_IO_API_KEY }}"
       - name: Organize changes
-        run: "bundle exec i18n-tasks normalize -p -l ${{ matrix.locale }}"
+        run: "bundle exec i18n-tasks normalize -p -l en,${{ matrix.locale }}"
       - name: Open pull request with changes
         uses: peter-evans/create-pull-request@v7
         with:
           token: "${{ secrets.TRANSLATION_SYNC_PAT }}"
-          commit-message: "Automatically sync translations: ${{ matrix.locale }}"
-          branch: "translation-sync-(${{ matrix.locale }})"
+          commit-message: "Automatically synced translations: ${{ matrix.locale }}"
+          branch: "i18n/sync-${{ matrix.locale }}"
           labels: improvement,localisation
-          title: "Translation update (${{ matrix.locale }})"
+          title: "Translations updated: ${{ matrix.locale }}"
           delete-branch: true
           add-paths: config/locales

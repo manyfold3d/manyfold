@@ -554,6 +554,17 @@ es:
     update:
       failure: Se ha producido un error y no se ha podido guardar la aplicación.
       success: Aplicación guardada correctamente.
+  errors:
+    messages:
+      already_confirmed:
+      confirmation_period_expired:
+      expired:
+      not_found:
+      not_locked:
+      not_saved:
+        one:
+        other:
+      weak_password:
   fasp_client:
     providers:
       edit:

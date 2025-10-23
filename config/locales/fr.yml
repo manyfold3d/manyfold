@@ -557,6 +557,17 @@ fr:
     update:
       failure:
       success:
+  errors:
+    messages:
+      already_confirmed:
+      confirmation_period_expired:
+      expired:
+      not_found:
+      not_locked:
+      not_saved:
+        one:
+        other:
+      weak_password:
   fasp_client:
     providers:
       edit:

@@ -554,6 +554,17 @@ zh-CN:
     update:
       failure: 发生错误，应用无法保存。
       success: 应用已成功保存。
+  errors:
+    messages:
+      already_confirmed:
+      confirmation_period_expired:
+      expired:
+      not_found:
+      not_locked:
+      not_saved:
+        one:
+        other:
+      weak_password:
   fasp_client:
     providers:
       edit:
