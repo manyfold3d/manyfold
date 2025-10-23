@@ -62,13 +62,20 @@ cs:
     merge:
       success: Modely byly úspěšně sloučeny.
     new:
+      archives-only:
       description: Přidávejte nové modely nahráváním souborů! Pokud nahrajete komprimovaný archiv, bude rozbalen a stane se z něj jeden model obsahující všechny soubory. Pokud nahrajete jednotlivé soubory, každý z nich se stane samostatným modelem.
       files:
         label: Vybrat soubory
       free_space: "(%{available} volných)"
       library:
         help: Knihovna, do které se má nahrávat.
+      model_name:
+        help:
+        label:
+      multi_model:
+      non-archives:
       permission_preset: Oprávnění
+      single_model:
       submit: Vytvořit modely
       title: Nahrát
     organize:
