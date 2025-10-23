@@ -62,13 +62,20 @@ pt:
     merge:
       success:
     new:
+      archives-only:
       description:
       files:
         label:
       free_space:
       library:
         help:
+      model_name:
+        help:
+        label:
+      multi_model:
+      non-archives:
       permission_preset:
+      single_model:
       submit:
       title:
     organize:
