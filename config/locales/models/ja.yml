@@ -62,13 +62,20 @@ ja:
     merge:
       success: モデルは正常にマージされた。
     new:
+      archives-only:
       description:
       files:
         label: ファイルを選択
       free_space:
       library:
         help: アップロード先のライブラリー。
+      model_name:
+        help:
+        label:
+      multi_model:
+      non-archives:
       permission_preset: アクセス許可
+      single_model:
       submit: モデルの作成
       title: アップロード
     organize:

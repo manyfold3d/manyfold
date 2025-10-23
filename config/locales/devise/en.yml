@@ -5,8 +5,11 @@ en:
       confirmed: Your email address has been successfully confirmed.
       new:
         resend_confirmation_instructions: Resend confirmation instructions
-      send_instructions: You will receive an email with instructions for how to confirm your email address in a few minutes.
-      send_paranoid_instructions: If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes.
+      send_instructions: You will receive an email with instructions for how to confirm
+        your email address in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you
+        will receive an email with instructions for how to confirm your email address
+        in a few minutes.
     failure:
       already_authenticated: You are already signed in.
       inactive: Your account is not activated yet.
@@ -26,8 +29,10 @@ en:
         subject: Confirmation instructions
       email_changed:
         greeting: Hello %{recipient}!
-        message: We're contacting you to notify you that your email has been changed to %{email}.
-        message_unconfirmed: We're contacting you to notify you that your email is being changed to %{email}.
+        message: We're contacting you to notify you that your email has been changed
+          to %{email}.
+        message_unconfirmed: We're contacting you to notify you that your email is
+          being changed to %{email}.
         subject: Email Changed
       password_change:
         greeting: Hello %{recipient}!
@@ -36,15 +41,18 @@ en:
       reset_password_instructions:
         action: Change my password
         greeting: Hello %{recipient}!
-        instruction: Someone has requested a link to change your password. You can do this through the link below.
+        instruction: Someone has requested a link to change your password. You can
+          do this through the link below.
         instruction_2: If you didn't request this, please ignore this email.
-        instruction_3: Your password won't change until you access the link above and create a new one.
+        instruction_3: Your password won't change until you access the link above
+          and create a new one.
         subject: Reset password instructions
       unlock_instructions:
         action: Unlock my account
         greeting: Hello %{recipient}!
         instruction: 'Click the link below to unlock your account:'
-        message: Your account has been locked due to an excessive number of unsuccessful sign in attempts.
+        message: Your account has been locked due to an excessive number of unsuccessful
+          sign in attempts.
         subject: Unlock instructions
     omniauth_callbacks:
       failure: Could not authenticate you from %{kind} because "%{reason}".
@@ -58,13 +66,18 @@ en:
       new:
         forgot_your_password: Forgot your password?
         send_me_reset_password_instructions: Send me reset password instructions
-      no_token: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
-      send_instructions: You will receive an email with instructions on how to reset your password in a few minutes.
-      send_paranoid_instructions: If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.
+      no_token: You can't access this page without coming from a password reset email.
+        If you do come from a password reset email, please make sure you used the
+        full URL provided.
+      send_instructions: You will receive an email with instructions on how to reset
+        your password in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you
+        will receive a password recovery link at your email address in a few minutes.
       updated: Your password has been changed successfully. You are now signed in.
       updated_not_active: Your password has been changed successfully.
     registrations:
-      destroyed: Bye! Your account has been successfully cancelled. We hope to see you again soon.
+      destroyed: Bye! Your account has been successfully cancelled. We hope to see
+        you again soon.
       edit:
         are_you_sure: Are you sure?
         cancel_my_account: Delete my account
@@ -73,27 +86,36 @@ en:
         current_password_help: Current password required for security
         currently_waiting_confirmation_for_email: 'Awaiting confirmation for: %{email}'
         danger_zone: Danger zone!
-        leave_blank_if_you_don_t_want_to_change_it: leave blank if you don't want to change it
+        leave_blank_if_you_don_t_want_to_change_it: leave blank if you don't want
+          to change it
         security: Security
         social: Social
         submit: Save changes
         title: My Settings
         unhappy: Unhappy?
         update: Update
-        we_need_your_current_password_to_confirm_your_changes: we need your current password to confirm your changes
+        we_need_your_current_password_to_confirm_your_changes: we need your current
+          password to confirm your changes
       file_list_settings:
         heading: File Lists
         hide_presupported_versions:
           label: Combine linked unsupported and presupported files
         summary: Control how model file lists are displayed
       first_use:
-        email_help: Never shown publicly; only used for login and account security emails.
-        guidance: On first use, you need to set an account name, contact email and password for the main administrator account. If you're running single-user mode, you will not normally need to enter these details to sign in, but in multiuser mode you will not be able to access Manyfold without them.
+        email_help: Never shown publicly; only used for login and account security
+          emails.
+        guidance: On first use, you need to set an account name, contact email and
+          password for the main administrator account. If you're running single-user
+          mode, you will not normally need to enter these details to sign in, but
+          in multiuser mode you will not be able to access Manyfold without them.
         password:
-          help_html: We ask for a strong password by default; to allow a simpler one on a private instance, set the <a href="https://manyfold.app/sysadmin/configuration.html#min_password_score">MIN_PASSWORD_SCORE</a> environment variable.
+          help_html: We ask for a strong password by default; to allow a simpler one
+            on a private instance, set the <a href="https://manyfold.app/sysadmin/configuration.html#min_password_score">MIN_PASSWORD_SCORE</a>
+            environment variable.
         submit: Save
         title: Setup
-        username_help: A unique account name; use the pregenerated one, or choose your own.
+        username_help: A unique account name; use the pregenerated one, or choose
+          your own.
       general_settings:
         heading: General
         interface_language:
@@ -107,26 +129,32 @@ en:
           mask: Blur in lists
           show: Show as normal
       new:
-        approval_help: After creating your account, it will be manually reviewed by our moderators. We'll let you know when approval is complete and you can sign in.
+        approval_help: After creating your account, it will be manually reviewed by
+          our moderators. We'll let you know when approval is complete and you can
+          sign in.
         creators:
           name:
             help: This will be shown publicly, as the title of your Creator profile.
             label: Creator name
           slug:
             help: A short username for your creator profile, used in the URL.
-            help_fedi: A short username for your creator profile, used in the URL and Fediverse address.
+            help_fedi: A short username for your creator profile, used in the URL
+              and Fediverse address.
         details: Your Details
         rules: Server Rules
-        rules_agree: By signing up for an account, you agree to abide by the rules above.
+        rules_agree: By signing up for an account, you agree to abide by the rules
+          above.
         sign_up: Create account
         username:
-          help: A short username for your personal account; if later you make a creator profile for publishing your models, it will need a different account name.
+          help: A short username for your personal account; if later you make a creator
+            profile for publishing your models, it will need a different account name.
       pagination_settings:
         collections:
           label: Paginate collections
         creators:
           label: Paginate creators
-        description: Show only a certain number of items at a time in list pages, rather than everything at once. This can make things quicker to load.
+        description: Show only a certain number of items at a time in list pages,
+          rather than everything at once. This can make things quicker to load.
         heading: Pagination
         models:
           label: Paginate models
@@ -169,9 +197,12 @@ en:
         show_grid:
           label: Show ground plane
       signed_up: Welcome! You have signed up successfully.
-      signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
-      signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
-      signed_up_but_unconfirmed: A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.
+      signed_up_but_inactive: You have signed up successfully. However, we could not
+        sign you in because your account is not yet activated.
+      signed_up_but_locked: You have signed up successfully. However, we could not
+        sign you in because your account is locked.
+      signed_up_but_unconfirmed: A message with a confirmation link has been sent
+        to your email address. Please follow the link to activate your account.
       tag_cloud_settings:
         heading: Tag Cloud
         heatmap:
@@ -186,11 +217,15 @@ en:
           label: Minimum count of tag for display
       update:
         setup_complete: Setup complete!
-      update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address.
+      update_needs_confirmation: You updated your account successfully, but we need
+        to verify your new email address. Please check your email and follow the confirmation
+        link to confirm your new email address.
       updated: Your settings have been updated successfully.
-      updated_but_not_signed_in: Your settings have been updated successfully, but since your password was changed, you need to sign in again.
+      updated_but_not_signed_in: Your settings have been updated successfully, but
+        since your password was changed, you need to sign in again.
       user:
-        signed_up_but_not_approved: You have signed up successfully. A moderator will review your account soon, after which you will be able to sign in.
+        signed_up_but_not_approved: You have signed up successfully. A moderator will
+          review your account soon, after which you will be able to sign in.
     sessions:
       already_signed_out: Signed out successfully.
       new:
@@ -212,6 +247,8 @@ en:
     unlocks:
       new:
         resend_unlock_instructions: Resend unlock instructions
-      send_instructions: You will receive an email with instructions for how to unlock your account in a few minutes.
-      send_paranoid_instructions: If your account exists, you will receive an email with instructions for how to unlock it in a few minutes.
+      send_instructions: You will receive an email with instructions for how to unlock
+        your account in a few minutes.
+      send_paranoid_instructions: If your account exists, you will receive an email
+        with instructions for how to unlock it in a few minutes.
       unlocked: Your account has been unlocked successfully. Please sign in to continue.
