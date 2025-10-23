@@ -18,7 +18,9 @@ const uppyLocales = { cs, de, en, es, fr, ja, nl, pl }
 // Connects to data-controller="upload"
 export default class extends Controller {
   uppy: Uppy | null = null
-  name_line: HTMLDivElement | null = null
+  nameLine: HTMLDivElement | null = null
+  multiMessage: HTMLDivElement | null = null
+  singleMessage: HTMLDivElement | null = null
 
   connect (): void {
     if (this.uppy != null) { return }
@@ -46,8 +48,11 @@ export default class extends Controller {
       })
     const submitButton = this.element?.closest('form')?.querySelector("input[type='submit']")
     const form = this.element?.closest('form')
-    if (form)
-      this.name_line = form.querySelector("div:has(> label[for='name'])")
+    if (form != null) {
+      this.nameLine = form.querySelector("div:has(> label[for='name'])")
+      this.multiMessage = form.querySelector("div[id='multi-model-message']")
+      this.singleMessage = form.querySelector("div[id='single-model-message']")
+    }
     this.uppy.on('upload', () => {
       submitButton?.setAttribute('disabled', 'disabled')
     })
@@ -79,25 +84,22 @@ export default class extends Controller {
   }
 
   updateResultingModelState (): void {
-    if (this.uppy === null)
-      return
+    if (this.uppy === null) { return }
     const extensions = new Set(this.uppy.getFiles().map((f) => f.extension))
-    const archive_extensions = new Set((this.element as HTMLElement).dataset.archiveExtensions?.split(','))
-    console.log(archive_extensions)
-    const difference = new Set([...extensions].filter(value => !archive_extensions.has(value)))
-    if (difference.size > 0)
-      this.setSingleModelMode()
-    else
-      this.setMultiModelMode()
+    const archiveExtensions = new Set((this.element as HTMLElement).dataset.archiveExtensions?.split(','))
+    const difference = new Set([...extensions].filter(value => !archiveExtensions.has(value)))
+    if (difference.size > 0) { this.setSingleModelMode() } else { this.setMultiModelMode() }
   }
 
   setMultiModelMode (): void {
-    if (this.name_line)
-      (this.name_line as HTMLDivElement).style.display = "none";
+    if (this.nameLine != null) { this.nameLine.style.display = 'none' }
+    if (this.multiMessage != null) { this.multiMessage.style.display = 'block' }
+    if (this.singleMessage != null) { this.singleMessage.style.display = 'none' }
   }
 
   setSingleModelMode (): void {
-    if (this.name_line)
-      (this.name_line as HTMLDivElement).style.display = "flex";
+    if (this.nameLine != null) { this.nameLine.style.display = 'flex' }
+    if (this.multiMessage != null) { this.multiMessage.style.display = 'none' }
+    if (this.singleMessage != null) { this.singleMessage.style.display = 'block' }
   }
 }
