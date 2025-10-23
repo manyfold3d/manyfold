@@ -108,6 +108,7 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
               "spdx:license": {
                 licenseId: "MIT"
               },
+              name: "My New Model",
               sensitive: true,
               keywords: ["tag1", "tag2"]
             }
@@ -116,13 +117,14 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
           run_test! do # rubocop:disable RSpec/ExampleLength
             expect(ProcessUploadedFileJob).to have_been_enqueued.with(
               Library.first.id,
-              {
+              [{
                 id: "https://example.com/uploads/tus_id",
                 storage: "cache",
                 metadata: {
                   filename: "test.stl"
                 }
-              },
+              }],
+              name: "My New Model",
               owner: User.last,
               creator_id: nil,
               collection_id: nil,

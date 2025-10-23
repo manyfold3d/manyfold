@@ -76,25 +76,26 @@ class ModelsController < ApplicationController
   def create
     authorize :model
     p = upload_params
+    common_args = {
+      owner: current_user,
+      creator_id: p[:creator_id],
+      collection_id: p[:collection_id],
+      license: p[:license],
+      sensitive: (p[:sensitive] == "1"),
+      tags: p[:add_tags],
+      permission_preset: p[:permission_preset]
+    }
     library = SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
-    p[:file].each_pair do |_id, file|
-      ProcessUploadedFileJob.perform_later(
-        library.id,
-        {
-          id: file[:id],
-          storage: "cache",
-          metadata: {
-            filename: file[:name]
-          }
-        },
-        owner: current_user,
-        creator_id: p[:creator_id],
-        collection_id: p[:collection_id],
-        license: p[:license],
-        sensitive: (p[:sensitive] == "1"),
-        tags: p[:add_tags],
-        permission_preset: p[:permission_preset]
-      )
+    jobs = if p[:file].values.all? { |it| SupportedMimeTypes.archive_extensions.include? File.extname(it[:name]).delete(".").downcase }
+      # If this is all separate archives, enqueue separate jobs for each
+      p[:file].values.map { |it| cached_file_data(it) }
+    else
+      # Otherwise, enqueue one job for all files and add name to args
+      common_args[:name] = p[:name]
+      [p[:file].values.map { |it| cached_file_data(it) }]
+    end
+    jobs.each do |it|
+      ProcessUploadedFileJob.perform_later(library.id, it, **common_args)
     end
     respond_to do |format|
       format.html { redirect_to models_path, notice: t(".success") }
@@ -266,5 +267,15 @@ class ModelsController < ApplicationController
 
   def clear_returnable
     session[:return_after_new] = nil
+  end
+
+  def cached_file_data(file)
+    {
+      id: file[:id],
+      storage: "cache",
+      metadata: {
+        filename: file[:name]
+      }
+    }
   end
 end

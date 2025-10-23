@@ -62,12 +62,17 @@ en:
     merge:
       success: Models merged successfully.
     new:
-      description: Add new models by uploading files! If you upload a compressed archive, it will be extracted and become a single model containing all the files. If you upload individual files, they will each become a separate model.
+      archives-only: Upload only compressed archives (ZIP, RAR, etc), and each file will be extracted and become a separate model.
+      description: 'Add new models by uploading files! The models that are created depend on what you upload:'
       files:
         label: Select Files
       free_space: "(%{available} free)"
       library:
         help: The library to upload to.
+      model_name:
+        help: Used if creating a single model; if you upload archive files the models will use the archive filename instead.
+        label: Model name
+      non-archives: Upload any other files (STL, JPG, etc), and all the files will be added to a single new model.
       permission_preset: Permissions
       submit: Create models
       title: Upload

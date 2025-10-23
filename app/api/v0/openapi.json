@@ -2625,6 +2625,11 @@
       "uploaded_model_request": {
         "type": "object",
         "properties": {
+          "name": {
+            "type": "string",
+            "example": "My New Model",
+            "description": "Used as model name if any files are uploaded that aren't compressed archives"
+          },
           "files": {
             "type": "array",
             "items": {

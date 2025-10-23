@@ -1,6 +1,10 @@
 <h1><%= t ".title" %></h1>
 
 <p><%= t ".description" %></p>
+<ul>
+  <li><%= t ".archives-only" %></li>
+  <li><%= t ".non-archives" %></li>
+</ul>
 
 <%= form_with url: models_path, id: "upload-form" do |form| %>
 
@@ -29,6 +33,8 @@
           } %>
     </div>
   </div>
+
+  <%= text_input_row form, :name, label: t(".model_name.label"), help: t(".model_name.help") %>
 
   <%= render "bulk_fields", form: form, default_tags: SiteSettings.model_tags_auto_tag_new %>
 

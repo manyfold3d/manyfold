@@ -3,6 +3,7 @@ module Form
     def deserialize
       return nil unless @params
       @params.permit(
+        :name,
         :creator_id,
         :collection_id,
         :library,
