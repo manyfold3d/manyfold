@@ -20,6 +20,7 @@ module Form
         :tag,
         :organize,
         :missingtag,
+        :permission_preset,
         tag_list: [],
         links_attributes: [:id, :url, :_destroy]
       ).deep_merge(caber_relations_params(type: :model))
