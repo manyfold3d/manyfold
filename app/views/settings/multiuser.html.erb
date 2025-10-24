@@ -64,10 +64,10 @@
   <h3><%= t(".permissions") %></h3>
 
   <%= select_input_row form, "multiuser[default_viewer_role]", [
-          [translate(".default_viewer_role.options.private"), "private"],
-          [translate(".default_viewer_role.options.member"), "member"],
-          [translate(".default_viewer_role.options.public"), "public"]
-        ],
+        [translate(".default_viewer_role.options.private"), "private"],
+        [translate(".default_viewer_role.options.member"), "member"],
+        [translate(".default_viewer_role.options.public"), "public"]
+      ],
         label: t(".default_viewer_role.label"),
         selected: SiteSettings.default_viewer_role.to_s,
         help: t(".default_viewer_role.help") %>
