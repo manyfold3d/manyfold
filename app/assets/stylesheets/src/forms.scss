@@ -1,0 +1,13 @@
+.tabular-form {
+	display: grid;
+	grid-template-columns: max-content auto;
+	gap: 1em;
+
+	div:has(input[type=submit]) {
+		grid-column: 2;
+	}
+
+	table {
+		grid-column: span 2;
+	}
+}

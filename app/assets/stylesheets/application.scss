@@ -16,6 +16,7 @@ $ra-font-path: "../fonts" !default;
 @import 'src/effects';
 @import 'src/altcha';
 @import 'src/avatars';
+@import 'src/forms';
 
 @import 'tom-select/dist/css/tom-select.bootstrap5';
 
@@ -36,14 +37,4 @@ p.notice:empty {
 .button_to,
 .button_to .div {
 	display: inline;
-}
-
-form.tabular-form {
-	display: grid;
-	grid-template-columns: max-content auto;
-	gap: 1em;
-
-	div:has(input[type=submit]) {
-		grid-column: 2;
-	}
 }
