@@ -1,9 +1,11 @@
 <h3><%= t(".title") %></h3>
 
-<%= form_with model: [:settings, @domain_block] do |form| %>
+<%= form_with model: [:settings, @domain_block], class: "tabular-form" do |form| %>
 
   <%= text_input_row form, :domain %>
 
-  <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+  <div>
+    <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+  </div>
 
 <% end %>
