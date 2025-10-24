@@ -32,7 +32,6 @@ RSpec.describe ApplicationHelper do
       form = ActionView::Helpers::FormBuilder.new(:test, nil, helper, {})
       html = helper.text_input_row(form, :field)
       doc = Nokogiri::HTML(html)
-      expect(doc.at("div.row")["class"]).to include("mb-3 input-group")
       expect(doc.at("input")["class"]).to include("form-control")
     end
   end
@@ -42,8 +41,7 @@ RSpec.describe ApplicationHelper do
       form = ActionView::Helpers::FormBuilder.new(:test, nil, helper, {})
       html = helper.rich_text_input_row(form, :field)
       doc = Nokogiri::HTML(html)
-      expect(doc.at("div.row")["class"]).to include("mb-3 input-group")
-      expect(doc.at("textarea")["class"]).to include("form-control col-auto")
+      expect(doc.at("textarea")["class"]).to include("form-control")
     end
   end
 

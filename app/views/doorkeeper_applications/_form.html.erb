@@ -1,12 +1,12 @@
-<%= form_with model: @application do |form| %>
+<%= form_with model: @application, class: "container-md tabular-form" do |form| %>
   <%= text_input_row form, :name, autofocus: true %>
   <%= text_input_row form, :redirect_uri, help: t(".redirect_uri.help") %>
-  <div class="row mb-2">
-    <%= form.label nil, t(".scopes.label"), for: "application[scopes]", class: "col col-form-label col-auto" %>
-    <div class="col">
-      <%= form.select :scopes, ["public", "read", "write", "delete"], {}, {class: "form-control col-auto", multiple: true} %>
-    </div>
-  </div>
+  <%= select_input_row form, :scopes,
+        ["public", "read", "write", "delete"],
+        label: t(".scopes.label"),
+        multiple: true %>
   <%= checkbox_input_row form, :confidential, help: t(".confidential.help") %>
-  <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+  <div>
+    <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+  </div>
 <% end %>

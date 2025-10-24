@@ -1,4 +1,4 @@
-<%= form_with model: @library do |form| %>
+<%= form_with model: @library, class: "container-md tabular-form" do |form| %>
   <%= text_input_row form, :name %>
   <%= checkbox_input_row form, :default, help: t(".default.help"), checked: @library.default? %>
   <% unless @library.persisted? %>
@@ -32,20 +32,20 @@
   <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
 
   <% if @library.persisted? %>
-    <div class="row mb-3 input-group">
+    <div>
       <%= form.label :tag_regex, class: "col-sm-2 col-form-label mb-0" %>
-      <div id="newinput" class="col-sm-10 p-0">
-        <% @library.tag_regex.each do |reg| %>
-          <div class="input-group">
-            <%= text_field_tag "library[tag_regex][]", reg, class: "form-control col-sm-11", autocomplete: "off" %>
-            <%= link_to icon(:trash, "Delete"), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
-          </div>
-        <% end %>
-        <div id="regexclone" style="display: none">
-          <div class="input-group">
-            <%= text_field_tag "library[tag_regex][]", "", class: "form-control col-sm-11", autocomplete: "off" %>
-            <%= link_to icon(:trash, "Delete"), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
-          </div>
+    </div>
+    <div id="newinput">
+      <% @library.tag_regex.each do |reg| %>
+        <div class="input-group">
+          <%= text_field_tag "library[tag_regex][]", reg, class: "form-control col-sm-11", autocomplete: "off" %>
+          <%= link_to icon(:trash, "Delete"), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
+        </div>
+      <% end %>
+      <div id="regexclone" style="display: none">
+        <div class="input-group">
+          <%= text_field_tag "library[tag_regex][]", "", class: "form-control col-sm-11", autocomplete: "off" %>
+          <%= link_to icon(:trash, "Delete"), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
         </div>
       </div>
       <div class="col-sm-2"></div><div class="col-sm-10 p-0">
@@ -55,17 +55,19 @@
     </div>
   <% end %>
 
-  <%= form.submit translate("general.save"), class: "btn btn-primary" %>
+  <div>
+    <%= form.submit translate("general.save"), class: "btn btn-primary" %>
 
-  <% if @library.persisted? %>
-    <%= if policy(@library).destroy?
-          link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "),
-            library_path(@library.public_id),
-            {
-              method: :delete,
-              class: "float-end btn btn-outline-danger",
-              data: {confirm: translate(".confirm_destroy.help", count: @library.models.count)}
-            }
-        end %>
-  <% end %>
+    <% if @library.persisted? %>
+      <%= if policy(@library).destroy?
+            link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "),
+              library_path(@library.public_id),
+              {
+                method: :delete,
+                class: "float-end btn btn-outline-danger",
+                data: {confirm: translate(".confirm_destroy.help", count: @library.models.count)}
+              }
+          end %>
+    <% end %>
+  <div>
 <% end %>

@@ -1,13 +1,16 @@
-<%= cocooned_container id: "cocooned-links", data: {controller: "cocooned"} do %>
-  <%= form.fields_for :links do |f| %>
-    <%= render "link_fields", f: f %>
+<div>
+  <%= form.label :links %>
+</div>
+<div>
+  <%= cocooned_container id: "cocooned-links", data: {controller: "cocooned"} do %>
+    <%= form.fields_for :links do |f| %>
+      <%= render "link_fields", f: f %>
+    <% end %>
   <% end %>
-<% end %>
-<div class="row mb-3">
-  <%= tag.div class: "col-auto offset-sm-2 ps-0" do %>
+  <div>
     <%= cocooned_add_item_button t(".add"), form, :links,
           class: "btn btn-secondary",
           insertion_node: "#cocooned-links",
           insertion_method: "append" %>
-  <% end %>
+  </div>
 </div>

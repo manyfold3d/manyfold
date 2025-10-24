@@ -1,93 +1,75 @@
-<%= form_with url: settings_path, method: :patch do |form| %>
-  <h3><%= t(".heading") %></h3>
-  <p class='lead'>
-    <%= SiteSettings.multiuser_enabled? ? t(".multiuser_mode") : t(".single_user_mode") %>
-  </p>
-  <table class='table table-striped'>
-    <tr>
-      <td><%= t(".multiuser") %></td>
-      <td><%= SiteSettings.multiuser_enabled? ? "✅" : "❌" %></td>
-    </tr>
-    <tr>
-      <td><%= t(".federation") %></td>
-      <td><%= SiteSettings.federation_enabled? ? "✅" : "❌" %></td>
-    </tr>
-    <tr>
-      <td><%= t(".email") %></td>
-      <td><%= SiteSettings.email_configured? ? "✅" : "❌" %></td>
-    </tr>
-    <tr>
-      <td><%= t(".oidc") %></td>
-      <td><%= SiteSettings.oidc_enabled? ? "✅" : "❌" %></td>
-    </tr>
-  </table>
-  <p>
-    <%= t(".details_html") %>
-  </p>
-  <hr>
+<h3><%= t(".heading") %></h3>
+<p class='lead'>
+  <%= SiteSettings.multiuser_enabled? ? t(".multiuser_mode") : t(".single_user_mode") %>
+</p>
+<table class='table table-striped'>
+  <tr>
+    <td><%= t(".multiuser") %></td>
+    <td><%= SiteSettings.multiuser_enabled? ? "✅" : "❌" %></td>
+  </tr>
+  <tr>
+    <td><%= t(".federation") %></td>
+    <td><%= SiteSettings.federation_enabled? ? "✅" : "❌" %></td>
+  </tr>
+  <tr>
+    <td><%= t(".email") %></td>
+    <td><%= SiteSettings.email_configured? ? "✅" : "❌" %></td>
+  </tr>
+  <tr>
+    <td><%= t(".oidc") %></td>
+    <td><%= SiteSettings.oidc_enabled? ? "✅" : "❌" %></td>
+  </tr>
+</table>
+<p>
+  <%= t(".details_html") %>
+</p>
+<hr>
 
+<%= form_with url: settings_path, method: :patch, class: "tabular-form" do |form| %>
   <h3><%= t(".registration") %></h3>
-  <div class="row">
-    <%= form.label nil, t(".registration_open.label"), for: "multiuser[registration_open]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8 form-check form-switch">
-      <%= form.check_box "multiuser[registration_open]", checked: SiteSettings.registration_enabled, class: "form-check-input" %>
-      <small><%= t(".registration_open.help") %></small>
-    </div>
-  </div>
-  <div class="row">
-    <%= form.label nil, t(".approve_signups.label"), for: "multiuser[approve_signups]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8 form-check form-switch">
-      <%= form.check_box "multiuser[approve_signups]", checked: SiteSettings.approve_signups, class: "form-check-input" %>
-      <small><%= t(".approve_signups.help") %></small>
-    </div>
-  </div>
-  <div class="row">
-    <%= form.label nil, t(".autocreate_creator.label"), for: "multiuser[autocreate_creator_for_new_users]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8 form-check form-switch">
-      <%= form.check_box "multiuser[autocreate_creator_for_new_users]", checked: SiteSettings.autocreate_creator_for_new_users, class: "form-check-input" %>
-      <small><%= t(".autocreate_creator.help") %></small>
-    </div>
-  </div>
-  <div class="row">
-    <%= form.label nil, t(".default_signup_role.label"), for: "multiuser[default_signup_role]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8">
-      <%= form.select "multiuser[default_signup_role]",
-            [[translate(".default_signup_role.options.member"), "member"],
-              [translate(".default_signup_role.options.contributor"), "contributor"]],
-            {selected: SiteSettings.default_signup_role},
-            {class: "form-select"} %>
-      <small><%= t(".default_signup_role.help") %></small>
-    </div>
-  </div>
-  <hr>
+  <%= checkbox_input_row form, "multiuser[registration_open]",
+        label: t(".registration_open.label"),
+        checked: SiteSettings.registration_enabled,
+        help: t(".registration_open.help") %>
+  <%= checkbox_input_row form, "multiuser[approve_signups]",
+        label: t(".approve_signups.label"),
+        checked: SiteSettings.approve_signups,
+        help: t(".approve_signups.help") %>
+  <%= checkbox_input_row form, "multiuser[autocreate_creator_for_new_users]",
+        label: t(".autocreate_creator.label"),
+        checked: SiteSettings.autocreate_creator_for_new_users,
+        help: t(".autocreate_creator.help") %>
+  <%= select_input_row form, "multiuser[default_signup_role]", [
+        [translate(".default_signup_role.options.member"), "member"],
+        [translate(".default_signup_role.options.contributor"), "contributor"]
+      ],
+        label: t(".default_signup_role.label"),
+        selected: SiteSettings.default_signup_role,
+        help: t(".default_signup_role.help") %>
 
+  <hr>
   <h3><%= t(".permissions") %></h3>
-  <div class="row">
-    <%= form.label nil, t(".default_viewer_role.label"), for: "multiuser[default_viewer_role]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8">
-      <%= form.select "multiuser[default_viewer_role]",
-            [[translate(".default_viewer_role.options.private"), "private"],
-              [translate(".default_viewer_role.options.member"), "member"],
-              [translate(".default_viewer_role.options.public"), "public"]],
-            {selected: SiteSettings.default_viewer_role.to_s},
-            {class: "form-select"} %>
-      <small><%= t(".default_viewer_role.help") %></small>
-    </div>
-  </div>
-  <hr>
 
+  <%= select_input_row form, "multiuser[default_viewer_role]", [
+        [translate(".default_viewer_role.options.private"), "private"],
+        [translate(".default_viewer_role.options.member"), "member"],
+        [translate(".default_viewer_role.options.public"), "public"]
+      ],
+        label: t(".default_viewer_role.label"),
+        selected: SiteSettings.default_viewer_role.to_s,
+        help: t(".default_viewer_role.help") %>
+
+  <hr>
   <h3><%= t(".user_quotas") %></h3>
-  <div class="row">
-    <%= form.label nil, t(".user_quotas_enable_quota"), for: "multiuser[enable_user_quota]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8">
-      <%= form.check_box "multiuser[enable_user_quota]", checked: SiteSettings.enable_user_quota, class: "form-check-input" %>
-    </div>
-  </div>
-  <div class="row">
-    <%= form.label nil, t(".user_quotas_site_default"), for: "multiuser[default_user_quota]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8">
-      <%= form.number_field "multiuser[default_user_quota]", min: 0, step: 1, value: (SiteSettings.default_user_quota.to_i / 1.megabyte) %>
-    </div>
-  </div>
+
+  <%= checkbox_input_row form, "multiuser[enable_user_quota]",
+        label: t(".user_quotas_enable_quota"),
+        checked: SiteSettings.enable_user_quota %>
+  <%= numeric_input_row form, "multiuser[default_user_quota]",
+        label: t(".user_quotas_site_default"),
+        min: 0, step: 1,
+        value: (SiteSettings.default_user_quota.to_i / 1.megabyte),
+        unit: "MB" %>
+
   <%= render "submit", form: form %>
 <% end %>

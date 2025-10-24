@@ -1,14 +1,14 @@
-<div class="row mb-3 input-group">
-  <%= form.label label, class: "col-sm-2 col-form-label" %>
-  <div class="form-control col-auto tag-container">
-    <%= form.collection_select :tag_list, tags,
-          :name, :name, {
-            selected: defined?(selected) ? selected : nil
-          }.compact, {
-            multiple: true,
-            class: "form-select",
-            name: name ? "#{name}[]" : nil,
-            data: {controller: "tag-input", action: "turbo:morph@window->tag-input#reconnect"}
-          } %>
-  </div>
+<div>
+  <%= form.label label %>
+</div>
+<div class="form-control tag-container">
+  <%= form.collection_select :tag_list, tags,
+        :name, :name, {
+          selected: defined?(selected) ? selected : nil
+        }.compact, {
+          multiple: true,
+          class: "form-select",
+          name: name ? "#{name}[]" : nil,
+          data: {controller: "tag-input", action: "turbo:morph@window->tag-input#reconnect"}
+        } %>
 </div>

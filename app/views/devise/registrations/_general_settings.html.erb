@@ -1,31 +1,31 @@
 <div class="card mb-2">
   <h3 class="card-header"><%= t(".heading") %></h3>
-  <div class="card-body">
+  <div class="card-body tabular-form">
 
-    <div class="row mb-2">
-      <%= form.label nil, t(".interface_language.label"), for: :interface_language, class: "col col-form-label" %>
-      <div class="col">
-        <%= form.select :interface_language,
-              @languages,
-              {selected: @user.interface_language},
-              {class: "form-select"} %>
-        <small class="form-text"><%= t ".interface_language.help" %></small>
-      </div>
+    <div>
+      <%= form.label :interface_language, t(".interface_language.label"), class: "col-form-label" %>
+    </div>
+    <div>
+      <%= form.select :interface_language,
+            @languages,
+            {selected: @user.interface_language},
+            {class: "form-select"} %>
+      <small class="form-text"><%= t ".interface_language.help" %></small>
     </div>
 
-    <div class="row">
-      <%= form.label nil, t(".sensitive_content.label"), for: :sensitive_content_handling, class: "col col-form-label" %>
-      <div class="col">
-        <%= form.select :sensitive_content_handling,
-              [
-                [t(".sensitive_content.show"), nil],
-                [t(".sensitive_content.mask"), "mask"],
-                [t(".sensitive_content.hide"), "hide"]
-              ],
-              {selected: @user.sensitive_content_handling},
-              {class: "form-select"} %>
-        <small class="form-text"><%= t ".sensitive_content.help" %></small>
-      </div>
+    <div>
+      <%= form.label :sensitive_content_handling, t(".sensitive_content.label"), class: "col-form-label" %>
+    </div>
+    <div>
+      <%= form.select :sensitive_content_handling,
+            [
+              [t(".sensitive_content.show"), nil],
+              [t(".sensitive_content.mask"), "mask"],
+              [t(".sensitive_content.hide"), "hide"]
+            ],
+            {selected: @user.sensitive_content_handling},
+            {class: "form-select"} %>
+      <small class="form-text"><%= t ".sensitive_content.help" %></small>
     </div>
 
   </div>

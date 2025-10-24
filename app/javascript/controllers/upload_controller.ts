@@ -18,7 +18,8 @@ const uppyLocales = { cs, de, en, es, fr, ja, nl, pl }
 // Connects to data-controller="upload"
 export default class extends Controller {
   uppy: Uppy | null = null
-  nameLine: HTMLDivElement | null = null
+  nameLabel: HTMLDivElement | null = null
+  nameField: HTMLDivElement | null = null
   multiMessage: HTMLDivElement | null = null
   singleMessage: HTMLDivElement | null = null
 
@@ -49,7 +50,8 @@ export default class extends Controller {
     const submitButton = this.element?.closest('form')?.querySelector("input[type='submit']")
     const form = this.element?.closest('form')
     if (form != null) {
-      this.nameLine = form.querySelector("div:has(> label[for='name'])")
+      this.nameLabel = form.querySelector("div:has(> label[for='name'])")
+      this.nameField = form.querySelector("div:has(> input[name='name'])")
       this.multiMessage = form.querySelector("div[id='multi-model-message']")
       this.singleMessage = form.querySelector("div[id='single-model-message']")
     }
@@ -92,13 +94,15 @@ export default class extends Controller {
   }
 
   setMultiModelMode (): void {
-    if (this.nameLine != null) { this.nameLine.style.display = 'none' }
+    if (this.nameLabel != null) { this.nameLabel.style.display = 'none' }
+    if (this.nameField != null) { this.nameField.style.display = 'none' }
     if (this.multiMessage != null) { this.multiMessage.style.display = 'block' }
     if (this.singleMessage != null) { this.singleMessage.style.display = 'none' }
   }
 
   setSingleModelMode (): void {
-    if (this.nameLine != null) { this.nameLine.style.display = 'flex' }
+    if (this.nameLabel != null) { this.nameLabel.style.display = 'block' }
+    if (this.nameField != null) { this.nameField.style.display = 'block' }
     if (this.multiMessage != null) { this.multiMessage.style.display = 'none' }
     if (this.singleMessage != null) { this.singleMessage.style.display = 'block' }
   }

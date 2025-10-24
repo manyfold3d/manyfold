@@ -4,7 +4,7 @@
 <% elsif policy(:user).index? %>
   <h1><%= t ".moderation_settings_title" %></h1>
 <% end %>
-<div class="row mt-2">
+<div class="row mt-2 flex-nowrap">
   <div class="col col-auto border-end" id="sidebar">
     <ul class="nav flex-column">
       <% if policy(:settings).index? %>

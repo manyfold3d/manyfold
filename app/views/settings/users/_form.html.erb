@@ -1,14 +1,13 @@
-<%= form_with model: [:settings, user] do |form| %>
+<%= form_with model: [:settings, user], class: "tabular-form" do |form| %>
 
   <%= text_input_row form, :username %>
   <%= text_input_row form, :email %>
 
   <% if !user.persisted? %>
     <% if SiteSettings.email_configured? %>
-      <div class="row mb-3 input-group">
-        <div class="alert alert-info">
-          <%= t(".password_reset_help") %>
-        </div>
+      <div></div>
+      <div class="alert alert-info">
+        <%= t(".password_reset_help") %>
       </div>
     <% else %>
       <%= text_input_row form, :password %>
@@ -16,34 +15,30 @@
     <% end %>
   <% end %>
 
-  <div class="row mb-3 input-group">
+  <div>
     <%= form.label :roles, class: "col-auto col-form-label" %>
-    <div class="form-control col-auto">
-      <%= form.collection_check_boxes :role_ids, @available_roles, :id, :name do |b| # rubocop:disable Pundit/UsePolicyScope
-            content_tag :div, class: "form-check" do
-              b.check_box(class: "form-check-input") +
-                b.label(class: "form-check-label")
-            end
-          end %>
-    </div>
+  </div>
+  <div>
+    <%= form.collection_check_boxes :role_ids, @available_roles, :id, :name do |b| # rubocop:disable Pundit/UsePolicyScope
+          content_tag :div, class: "form-check" do
+            b.check_box(class: "form-check-input") +
+              b.label(class: "form-check-label")
+          end
+        end %>
   </div>
 
   <% if SiteSettings.enable_user_quota %>
     <h3><%= t("settings.users.quota.title") %></h3>
-    <div class="row">
-      <%= form.label nil, t("settings.users.quota.using_site_default"), class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8">
-        <%= form.check_box "quota_use_site_default", value: :quota_use_site_default, class: "form-check-input" %>
-      </div>
-    </div>
-    <div class="row">
-      <%= form.label nil, t("settings.users.quota.current_quota"), class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8">
-        <%= form.number_field "quota", min: 0, step: 1, value: (user.quota.to_i / 1.megabyte) %>
-      </div>
-    </div>
+    <%= checkbox_input_row form, :quota_use_site_default, label: t("settings.users.quota.using_site_default") %>
+    <%= numeric_input_row form, :quota,
+          label: t("settings.users.quota.current_quota"),
+          min: 0, step: 1,
+          unit: "MB",
+          value: (user.quota.to_i / 1.megabyte) %>
   <% end %>
 
-  <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+  <div>
+    <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+  </div>
 
 <% end %>

@@ -78,18 +78,18 @@ module ApplicationHelper
   end
 
   def text_input_row(form, name, options = {})
-    content_tag :div, class: "row mb-3 input-group" do
-      safe_join [
-        form.label(name, options[:label], class: "col-auto col-form-label"),
-        content_tag(:div, class: "col p-0") do
-          safe_join [
-            form.text_field(name, {class: "form-control"}.merge(options)),
-            errors_for(form.object, name),
-            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-          ].compact
-        end
-      ]
-    end
+    safe_join([
+      content_tag(:div) do
+        form.label(name, options[:label], class: "col-form-label")
+      end,
+      content_tag(:div) do
+        safe_join [
+          form.text_field(name, {class: "form-control"}.merge(options)),
+          errors_for(form.object, name),
+          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+        ].compact
+      end
+    ])
   end
 
   def password_input_row(form, name, options = {})
@@ -98,131 +98,151 @@ module ApplicationHelper
       field_options["data-controller"] = "zxcvbn"
       field_options["data-action"] = "input->zxcvbn#onInput"
     end
-    content_tag :div, class: "row mb-3 input-group" do
-      safe_join [
-        form.label(name, options[:label], class: "col-auto col-form-label"),
-        content_tag(:div, class: "col p-0") do
-          safe_join [
-            form.password_field(name, field_options),
-            (if options[:strength_meter]
-               content_tag(:div, class: "progress") do
-                 content_tag(:div, nil, class: "progress-bar w-0 zxcvbn-meter", "data-zxcvbn-min-score": Devise.min_password_score)
-               end
-             end),
-            errors_for(form.object, name),
-            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-          ].compact
-        end
-      ]
-    end
+    safe_join([
+      content_tag(:div) do
+        form.label(name, options[:label], class: "col-form-label")
+      end,
+      content_tag(:div) do
+        safe_join [
+          form.password_field(name, field_options),
+          (if options[:strength_meter]
+             content_tag(:div, class: "progress") do
+               content_tag(:div, nil, class: "progress-bar w-0 zxcvbn-meter", "data-zxcvbn-min-score": Devise.min_password_score)
+             end
+           end),
+          errors_for(form.object, name),
+          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+        ].compact
+      end
+    ])
   end
 
   def url_input_row(form, name, options = {})
-    content_tag :div, class: "row mb-3 input-group" do
-      safe_join [
-        form.label(name, options[:label], class: "col-auto col-form-label"),
-        content_tag(:div, class: "col p-0") do
-          safe_join [
-            form.url_field(name, {class: "form-control"}.merge(options)),
-            errors_for(form.object, name),
-            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-          ].compact
-        end
-      ]
-    end
+    safe_join([
+      content_tag(:div) do
+        form.label(name, options[:label], class: "col-form-label")
+      end,
+      content_tag(:div) do
+        safe_join [
+          form.url_field(name, {class: "form-control"}.merge(options)),
+          errors_for(form.object, name),
+          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+        ].compact
+      end
+    ])
+  end
+
+  def numeric_input_row(form, name, options = {})
+    safe_join([
+      content_tag(:div) do
+        form.label(name, options[:label], class: "col-form-label")
+      end,
+      content_tag(:div) do
+        safe_join [
+          content_tag(:div, class: "input-group") do
+            safe_join [
+              form.number_field(name, {class: "form-control"}.merge(options)),
+              options[:unit] ? content_tag(:span, class: "input-group-text") { options[:unit] } : nil
+            ]
+          end,
+          errors_for(form.object, name),
+          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+        ].compact
+      end
+    ])
   end
 
   def rich_text_input_row(form, name, options = {})
-    content_tag :div, class: "row mb-3 input-group" do
-      safe_join [
-        form.label(name, options[:label], class: "col-auto col-form-label"),
-        content_tag(:div, class: "col p-0") do
-          safe_join [
-            form.text_area(name, {class: "form-control col-auto"}.merge(options)),
-            errors_for(form.object, name),
-            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-          ].compact
-        end
-      ]
-    end
+    safe_join([
+      content_tag(:div) do
+        form.label(name, options[:label], class: "col-form-label")
+      end,
+      content_tag(:div) do
+        safe_join [
+          form.text_area(name, {class: "form-control"}.merge(options)),
+          errors_for(form.object, name),
+          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+        ].compact
+      end
+    ])
   end
 
   def checkbox_input_row(form, name, options = {})
-    content_tag :div, class: "row mb-3 input-group" do
-      safe_join [
-        form.label(name, options[:label], class: "col-sm-2 col-form-label"),
-        content_tag(:div, class: "col-sm-10") do
-          content_tag(:div, class: "form-switch") do
-            safe_join [
-              form.check_box(name, options.merge(class: "form-check-input form-check-inline")),
-              errors_for(form.object, name),
-              (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-            ].compact
-          end
+    safe_join([
+      content_tag(:div) do
+        form.label(name, options[:label])
+      end,
+      content_tag(:div) do
+        content_tag(:div, class: "form-switch") do
+          safe_join [
+            form.check_box(name, options.merge(class: "form-check-input form-check-inline")),
+            errors_for(form.object, name),
+            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+          ].compact
         end
-      ]
-    end
+      end
+    ])
   end
 
   def select_input_row(form, name, select_options, options = {})
-    content_tag :div, class: "row mb-3 input-group" do
-      safe_join [
-        form.label(name, options[:label], class: "col-auto col-form-label"),
-        content_tag(:div, class: "col p-0") do
-          safe_join [
-            content_tag(:div, class: "input-group") do
-              safe_join [
-                form.select(name, select_options, options.compact, {data: {controller: "searchable-select"}, class: "form-control col-auto form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
-                (link_to(options[:button][:label], options[:button][:path], class: "btn btn-outline-secondary col-auto") if options[:button])
-              ]
-            end,
-            errors_for(form.object, name),
-            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-          ].compact
-        end
-      ]
-    end
+    safe_join([
+      content_tag(:div) do
+        form.label(name, options[:label], class: "col-form-label")
+      end,
+      content_tag(:div) do
+        safe_join [
+          content_tag(:div, class: "input-group") do
+            safe_join [
+              form.select(name, select_options, options.compact, {data: {controller: "searchable-select"}, class: "form-control form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
+              (link_to(options[:button][:label], options[:button][:path], class: "btn btn-outline-secondary") if options[:button])
+            ]
+          end,
+          errors_for(form.object, name),
+          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+        ].compact
+      end
+    ])
   end
 
   def collection_select_input_row(form, name, collection, value_method, text_method, options = {})
-    content_tag :div, class: "row mb-3 input-group" do
-      safe_join [
-        form.label(name, options[:label], class: "col-auto col-form-label"),
-        content_tag(:div, class: "col p-0") do
-          safe_join [
-            content_tag(:div, class: "input-group") do
-              safe_join [
-                form.collection_select(:"#{name}_id", collection, value_method, text_method, options.compact, {data: {controller: "searchable-select"}, class: "form-control col-auto form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
-                (link_to(options[:button][:label], options[:button][:path], class: "btn btn-outline-secondary col-auto") if options[:button])
-              ]
-            end,
-            errors_for(form.object, name),
-            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-          ].compact
-        end
-      ]
-    end
+    safe_join([
+      content_tag(:div) do
+        form.label(name, options[:label], class: "col-form-label")
+      end,
+      content_tag(:div) do
+        safe_join [
+          content_tag(:div, class: "input-group") do
+            safe_join [
+              form.collection_select(:"#{name}_id", collection, value_method, text_method, options.compact, {data: {controller: "searchable-select"}, class: "form-control form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
+              (link_to(options[:button][:label], options[:button][:path], class: "btn btn-outline-secondary") if options[:button])
+            ]
+          end,
+          errors_for(form.object, name),
+          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+        ].compact
+      end
+    ])
   end
 
   def file_input_row(form, name, options = {})
-    content_tag :div, class: "row mb-3 input-group" do
-      safe_join [
-        form.label(name, options[:label], class: "col-auto col-form-label"),
-        content_tag(:div, class: "col p-0") do
-          safe_join [
-            content_tag(:div, class: "input-group") do
-              safe_join [
-                form.file_field(name, class: "form-control"),
-                options[:remove] ? form.check_box(:"remove_#{name}", class: "btn-check", autocomplete: "off") : nil,
-                options[:remove] ? form.label(:"remove_#{name}", icon("trash", options[:remove_label]), class: "btn btn-outline-danger") : nil
-              ].compact
-            end,
-            errors_for(form.object, name),
-            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-          ].compact
-        end
-      ].compact
-    end
+    safe_join([
+      content_tag(:div) do
+        form.label(name, options[:label], class: "col-form-label")
+      end,
+      content_tag(:div) do
+        safe_join [
+          content_tag(:div, class: "input-group") do
+            safe_join [
+              form.file_field(name, class: "form-control"),
+              options[:remove] ? form.check_box(:"remove_#{name}", class: "btn-check", autocomplete: "off") : nil,
+              options[:remove] ? form.label(:"remove_#{name}", icon("trash", options[:remove_label]), class: "btn btn-outline-danger") : nil
+            ].compact
+          end,
+          errors_for(form.object, name),
+          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+        ].compact
+      end
+    ])
   end
 
   def nav_link(ico, text, path, options = {})

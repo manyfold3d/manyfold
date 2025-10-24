@@ -2,10 +2,12 @@
 
 <p class="lead"><%= t ".description" %></p>
 
-<%= form_with model: [@reportable, @report] do |form| %>
+<%= form_with model: [@reportable, @report], class: "tabular-form" do |form| %>
 
   <%= text_input_row form, :content %>
 
-  <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+  <div>
+    <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+  </div>
 
 <% end %>

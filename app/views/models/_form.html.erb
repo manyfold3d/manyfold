@@ -1,4 +1,4 @@
-<%= form_with model: @model do |form| %>
+<%= form_with model: @model, class: "container-md tabular-form" do |form| %>
   <%= text_input_row form, :name %>
 
   <%= collection_select_input_row form, :preview_file, @model.valid_preview_files, :id, :name, help: t(".preview_file.help") %>
@@ -43,5 +43,7 @@
   <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots %>
   <%= render "caber_relations_form", form: form %>
 
-  <%= form.submit "Save", class: "btn btn-primary" %>
+  <div>
+    <%= form.submit translate("general.save"), class: "btn btn-primary" %>
+  </div>
 <% end %>

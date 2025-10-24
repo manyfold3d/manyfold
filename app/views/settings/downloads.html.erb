@@ -1,34 +1,25 @@
-<%= form_with url: settings_path, method: :patch do |form| %>
-  <h3><%= t(".heading") %></h3>
-  <p class='lead'>
-    <%= t(".description") %>
-  </p>
-  <div class="row mb-2">
-    <%= form.label nil, t(".pregenerate.label"), for: "downloads[pregenerate]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8 form-check form-switch">
-      <%= form.check_box "downloads[pregenerate]", checked: SiteSettings.pregenerate_downloads, class: "form-check-input" %>
-      <small><%= t(".pregenerate.help") %></small>
-    </div>
-  </div>
-  <div class="row mb-2">
-    <%= form.label nil, t(".expiry.label"), for: "downloads[expiry]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8">
-      <div class="input-group">
-        <%= form.number_field "downloads[expiry]", min: 0, step: 1, value: SiteSettings.download_expiry_time_in_hours, class: "form-control" %>
-        <span class="input-group-text"><%= t(".expiry.hours") %></span>
-      </div>
-      <small><%= t(".expiry.help") %></small>
-    </div>
-  </div>
+<h3><%= t(".heading") %></h3>
+<p class='lead'>
+  <%= t(".description") %>
+</p>
+
+<%= form_with url: settings_path, method: :patch, class: "tabular-form" do |form| %>
+  <%= checkbox_input_row form, "downloads[pregenerate]",
+        label: t(".pregenerate.label"),
+        checked: SiteSettings.pregenerate_downloads,
+        help: t(".pregenerate.help") %>
+  <%= numeric_input_row form, "downloads[expiry]",
+        label: t(".expiry.label"),
+        value: SiteSettings.download_expiry_time_in_hours,
+        min: 0, step: 1,
+        unit: t(".expiry.hours"),
+        help: t(".expiry.help") %>
   <hr>
   <h4><%= t ".derivatives.heading" %></h4>
   <p><%= t ".derivatives.description" %></p>
-  <div class="row mb-2">
-    <%= form.label nil, t(".derivatives.images.label"), for: "downloads[image_derivatives]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8 form-check form-switch">
-      <%= form.check_box "downloads[image_derivatives]", checked: SiteSettings.generate_image_derivatives, class: "form-check-input" %>
-      <small><%= t(".derivatives.images.help") %></small>
-    </div>
-  </div>
+  <%= checkbox_input_row form, "downloads[image_derivatives]",
+        label: t(".derivatives.images.label"),
+        checked: SiteSettings.generate_image_derivatives,
+        help: t(".derivatives.images.help") %>
   <%= render "submit", form: form %>
 <% end %>

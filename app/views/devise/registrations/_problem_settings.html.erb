@@ -1,22 +1,22 @@
 <%= form.fields_for :problem_settings do |problem_settings_form| %>
   <div class="card mb-2">
     <h3 class="card-header"><%= t(".title") %></h3>
-    <div class="card-body">
-      <p class='lead'>
-        <%= t(".description") %>
-      </p>
+    <div class="card-body lead">
+      <%= t(".description") %>
+    </div>
+    <div class="card-body tabular-form">
       <% Problem::CATEGORIES.each do |category| %>
         <% next if Problem::DEFAULT_SEVERITIES[category].nil? # Skip deprecated categories; they don't appear in the defaults list %>
-        <div class="row">
+        <div>
           <%= problem_settings_form.label nil, t("problems.categories.%{c}" % {c: category}),
                 for: category,
-                class: "col col-form-label" %>
-          <div class="col">
-            <%= problem_settings_form.select category,
-                  Problem::SEVERITIES.map { |s| [t("problems.severities.%{s}" % {s: s}), s] },
-                  {selected: @user.problem_severity(category)},
-                  class: "form-select" %>
-          </div>
+                class: "col-form-label" %>
+        </div>
+        <div>
+          <%= problem_settings_form.select category,
+                Problem::SEVERITIES.map { |s| [t("problems.severities.%{s}" % {s: s}), s] },
+                {selected: @user.problem_severity(category)},
+                class: "form-select" %>
         </div>
       <% end %>
     </div>

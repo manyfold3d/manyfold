@@ -1,0 +1,24 @@
+.tabular-form {
+	display: grid;
+	grid-template-columns: minmax(min-content, 25%) minmax(75%, auto);
+	gap: 1em;
+
+	div:has(input[type=submit]),
+	div:has(button[type=submit]) {
+		grid-column: 2;
+	}
+
+	table,
+	hr,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	ul {
+		grid-column: span 2;
+	}
+
+}
