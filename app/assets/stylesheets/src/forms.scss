@@ -3,11 +3,21 @@
 	grid-template-columns: max-content auto;
 	gap: 1em;
 
-	div:has(input[type=submit]) {
+	div:has(input[type=submit]),
+	div:has(button[type=submit]) {
 		grid-column: 2;
 	}
 
-	table {
+	table,
+	hr,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p.lead {
 		grid-column: span 2;
 	}
+
 }
