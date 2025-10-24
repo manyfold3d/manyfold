@@ -80,7 +80,7 @@ module ApplicationHelper
   def text_input_row(form, name, options = {})
     safe_join([
       content_tag(:div) do
-        form.label(name, options[:label])
+        form.label(name, options[:label], class: "col-form-label")
       end,
       content_tag(:div) do
         safe_join [
@@ -100,7 +100,7 @@ module ApplicationHelper
     end
     safe_join([
       content_tag(:div) do
-        form.label(name, options[:label])
+        form.label(name, options[:label], class: "col-form-label")
       end,
       content_tag(:div) do
         safe_join [
@@ -120,7 +120,7 @@ module ApplicationHelper
   def url_input_row(form, name, options = {})
     safe_join([
       content_tag(:div) do
-        form.label(name, options[:label])
+        form.label(name, options[:label], class: "col-form-label")
       end,
       content_tag(:div) do
         safe_join [
@@ -135,7 +135,7 @@ module ApplicationHelper
   def rich_text_input_row(form, name, options = {})
     safe_join([
       content_tag(:div) do
-        form.label(name, options[:label])
+        form.label(name, options[:label], class: "col-form-label")
       end,
       content_tag(:div) do
         safe_join [
@@ -167,7 +167,7 @@ module ApplicationHelper
   def select_input_row(form, name, select_options, options = {})
     safe_join([
       content_tag(:div) do
-        form.label(name, options[:label])
+        form.label(name, options[:label], class: "col-form-label")
       end,
       content_tag(:div) do
         safe_join [
@@ -187,7 +187,7 @@ module ApplicationHelper
   def collection_select_input_row(form, name, collection, value_method, text_method, options = {})
     safe_join([
       content_tag(:div) do
-        form.label(name, options[:label])
+        form.label(name, options[:label], class: "col-form-label")
       end,
       content_tag(:div) do
         safe_join [
@@ -207,7 +207,7 @@ module ApplicationHelper
   def file_input_row(form, name, options = {})
     safe_join([
       content_tag(:div) do
-        form.label(name, options[:label])
+        form.label(name, options[:label], class: "col-form-label")
       end,
       content_tag(:div) do
         safe_join [
