@@ -132,6 +132,26 @@ module ApplicationHelper
     ])
   end
 
+  def numeric_input_row(form, name, options = {})
+    safe_join([
+      content_tag(:div) do
+        form.label(name, options[:label], class: "col-form-label")
+      end,
+      content_tag(:div) do
+        safe_join [
+          content_tag(:div, class: "input-group") do
+            safe_join [
+              form.number_field(name, {class: "form-control"}.merge(options)),
+              options[:unit] ? content_tag(:span, class: "input-group-text") { options[:unit] } : nil
+            ]
+          end,
+          errors_for(form.object, name),
+          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
+        ].compact
+      end
+    ])
+  end
+
   def rich_text_input_row(form, name, options = {})
     safe_join([
       content_tag(:div) do
