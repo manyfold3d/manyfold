@@ -19,12 +19,7 @@
                  }
                end) %>
 
-<div>
-  <%= form.label :license %>
-</div>
-<div>
-  <%= form.select :license, license_select_options, {include_blank: true}, {class: "form-control form-select"} %>
-</div>
+<%= select_input_row form, :license, license_select_options, include_blank: true %>
 
 <%= checkbox_input_row form, :sensitive %>
 
