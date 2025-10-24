@@ -1,13 +1,15 @@
 <%= form.fields_for :file_list_settings do |file_list_settings_form| %>
   <div class="card mb-2">
     <h3 class="card-header"><%= t(".heading") %></h3>
-    <div class="card-body">
-      <p class="lead"><%= t(".summary") %></p>
-      <div class="row">
-        <%= file_list_settings_form.label nil, t(".hide_presupported_versions.label"), for: :hide_presupported_versions, class: "col col-form-label" %>
-        <div class="col form-check form-switch">
-          <%= file_list_settings_form.check_box :hide_presupported_versions, checked: file_list_settings["hide_presupported_versions"], class: "form-check-input" %>
-        </div>
+    <div class="card-body lead">
+      <%= t(".summary") %>
+    </div>
+    <div class="card-body tabular-form">
+      <div>
+        <%= file_list_settings_form.label :hide_presupported_versions, t(".hide_presupported_versions.label") %>
+      </div>
+      <div class="form-check form-switch">
+        <%= file_list_settings_form.check_box :hide_presupported_versions, checked: file_list_settings["hide_presupported_versions"], class: "form-check-input" %>
       </div>
     </div>
   </div>

@@ -6,26 +6,24 @@
       <%- if SiteSettings.multiuser_enabled? %>
         <div class="card mb-2">
           <h4 class="card-header"><%= t(".contact_info") %></h4>
-          <div class="card-body">
+          <div class="card-body tabular-form">
             <%= text_input_row f, :email, autocomplete: "email",
                   help: (devise_mapping.confirmable? && resource.pending_reconfirmation?) ?
                     t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) :
                     nil %>
             <%= text_input_row f, :username, autocomplete: false %>
             <% if SiteSettings.federation_enabled? %>
-              <div class="row mb-3">
-                <div class="col-auto col-form-label"><%= t("settings.users.index.fediverse_address") %></div>
-                <div class="col col-form-label">
-                  <code><%= resource.federails_actor.at_address %></code>
-                  <%= render Components::CopyButton.new(text: resource.federails_actor.at_address) %>
-                </div>
+              <div class="col-auto col-form-label"><%= t("settings.users.index.fediverse_address") %></div>
+              <div class="col col-form-label">
+                <code><%= resource.federails_actor.at_address %></code>
+                <%= render Components::CopyButton.new(text: resource.federails_actor.at_address) %>
               </div>
             <% end %>
           </div>
         </div>
         <div class="card mb-2">
           <h4 class="card-header"><%= t(".security") %></h4>
-          <div class="card-body">
+          <div class="card-body tabular-form">
             <%= password_input_row f, :password, autocomplete: "new-password", strength_meter: true %>
             <%= password_input_row f, :password_confirmation, autocomplete: "new-password" %>
             <%= password_input_row f, :current_password, autocomplete: "current-password",
@@ -33,8 +31,10 @@
           </div>
         </div>
       <% end %>
+      <%= render "general_settings", form: f %>
       <%= render "tag_cloud_settings", form: f %>
-      <%= render "problem_settings", form: f %>
+      <%= render "pagination_settings", form: f %>
+      <%= render "file_list_settings", form: f %>
     </div>
     <div class="col-12 col-sm">
       <%- if SiteSettings.multiuser_enabled? %>
@@ -70,10 +70,8 @@
         </div>
         <% end %>
       <% end %>
-      <%= render "general_settings", form: f %>
-      <%= render "pagination_settings", form: f %>
-      <%= render "file_list_settings", form: f %>
       <%= render "renderer_settings", form: f %>
+      <%= render "problem_settings", form: f %>
       <%- if SiteSettings.multiuser_enabled? %>
         <div class="card border-danger mt-3">
           <h4 class="card-header text-bg-danger"><%= t ".danger_zone" %></h4>

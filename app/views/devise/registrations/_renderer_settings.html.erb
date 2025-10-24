@@ -1,72 +1,72 @@
 <%= form.fields_for :renderer_settings do |renderer_settings_form| %>
   <div class="card mb-2">
     <h3 class="card-header"><%= t(".heading") %></h3>
-    <div class="card-body">
-      <p class='lead'>
-        <%= t(".description") %>
-      </p>
-      <div class="row">
-        <%= renderer_settings_form.label nil, t(".auto_load_max_size.label"), for: :auto_load_max_size, class: "col col-form-label" %>
-        <div class="col">
-          <%= renderer_settings_form.select :auto_load_max_size,
-                [
-                  [t(".auto_load_max_size.never"), 0],
-                  [t(".auto_load_max_size.under_2"), 2],
-                  [t(".auto_load_max_size.under_4"), 4],
-                  [t(".auto_load_max_size.under_8"), 8],
-                  [t(".auto_load_max_size.under_16"), 16],
-                  [t(".auto_load_max_size.under_32"), 32],
-                  [t(".auto_load_max_size.under_64"), 64],
-                  [t(".auto_load_max_size.under_128"), 128],
-                  [t(".auto_load_max_size.under_256"), 256],
-                  [t(".auto_load_max_size.under_512"), 512],
-                  [t(".auto_load_max_size.under_1024"), 1024],
-                  [t(".auto_load_max_size.always"), 9_999_999]
-                ],
-                {selected: renderer_settings["auto_load_max_size"] || 9_999_999},
-                {class: "form-select"} %>
-        </div>
+    <div class="card-body lead">
+      <%= t(".description") %>
+    </div>
+    <div class="card-body tabular-form">
+      <div>
+        <%= renderer_settings_form.label :auto_load_max_size, t(".auto_load_max_size.label"), class: "col-form-label" %>
       </div>
-      <div class="row">
-        <%= renderer_settings_form.label nil, t(".show_grid.label"), for: :show_grid, class: "col col-form-label" %>
-        <div class="col form-check form-switch">
-          <%= renderer_settings_form.check_box :show_grid, checked: renderer_settings["show_grid"], class: "form-check-input" %>
-        </div>
+      <div>
+        <%= renderer_settings_form.select :auto_load_max_size,
+              [
+                [t(".auto_load_max_size.never"), 0],
+                [t(".auto_load_max_size.under_2"), 2],
+                [t(".auto_load_max_size.under_4"), 4],
+                [t(".auto_load_max_size.under_8"), 8],
+                [t(".auto_load_max_size.under_16"), 16],
+                [t(".auto_load_max_size.under_32"), 32],
+                [t(".auto_load_max_size.under_64"), 64],
+                [t(".auto_load_max_size.under_128"), 128],
+                [t(".auto_load_max_size.under_256"), 256],
+                [t(".auto_load_max_size.under_512"), 512],
+                [t(".auto_load_max_size.under_1024"), 1024],
+                [t(".auto_load_max_size.always"), 9_999_999]
+              ],
+              {selected: renderer_settings["auto_load_max_size"] || 9_999_999},
+              {class: "form-select"} %>
       </div>
-      <div class="row">
-        <%= renderer_settings_form.label nil, t(".grid_width.label"), for: :grid_width, class: "col col-form-label" %>
-        <div class="col">
-          <%= renderer_settings_form.number_field :grid_width, value: renderer_settings["grid_width"], class: "form-control" %>
-        </div>
+      <div>
+        <%= renderer_settings_form.label :show_grid, t(".show_grid.label") %>
       </div>
-      <div class="row">
-        <%= renderer_settings_form.label nil, t(".enable_pan_zoom.label"), for: :enable_pan_zoom, class: "col col-form-label" %>
-        <div class="col form-check form-switch">
-          <%= renderer_settings_form.check_box :enable_pan_zoom, checked: renderer_settings["enable_pan_zoom"], class: "form-check-input" %>
-        </div>
+      <div class="col form-check form-switch">
+        <%= renderer_settings_form.check_box :show_grid, checked: renderer_settings["show_grid"], class: "form-check-input" %>
       </div>
-      <div class="row">
-        <%= renderer_settings_form.label nil, t(".background_colour.label"), for: :background_colour, class: "col col-form-label" %>
-        <div class="col">
-          <%= renderer_settings_form.color_field :background_colour, value: renderer_settings["background_colour"], class: "form-control" %>
-        </div>
+      <div>
+        <%= renderer_settings_form.label :grid_width, t(".grid_width.label"), class: "col-form-label" %>
       </div>
-      <div class="row">
-        <%= renderer_settings_form.label nil, t(".render_style.label"), for: :render_style, class: "col col-form-label" %>
-        <div class="col">
-          <%= renderer_settings_form.select :render_style, [
-                [t(".render_style.original"), "original"],
-                [t(".render_style.normals"), "normals"],
-                [t(".render_style.lambert"), "lambert"],
-                [t(".render_style.shadowed"), "shadowed"]
-              ], {selected: renderer_settings["render_style"]}, {class: "form-select"} %>
-        </div>
+      <div>
+        <%= renderer_settings_form.number_field :grid_width, value: renderer_settings["grid_width"], class: "form-control" %>
       </div>
-      <div class="row">
-        <%= renderer_settings_form.label nil, t(".object_colour.label"), for: :object_colour, class: "col col-form-label" %>
-        <div class="col">
-          <%= renderer_settings_form.color_field :object_colour, value: renderer_settings["object_colour"], class: "form-control" %>
-        </div>
+      <div>
+        <%= renderer_settings_form.label :enable_pan_zoom, t(".enable_pan_zoom.label"), class: "col-form-label" %>
+      </div>
+      <div class="form-check form-switch">
+        <%= renderer_settings_form.check_box :enable_pan_zoom, checked: renderer_settings["enable_pan_zoom"], class: "form-check-input" %>
+      </div>
+      <div>
+        <%= renderer_settings_form.label :background_colour, t(".background_colour.label") %>
+      </div>
+      <div>
+        <%= renderer_settings_form.color_field :background_colour, value: renderer_settings["background_colour"], class: "form-control" %>
+      </div>
+      <div>
+        <%= renderer_settings_form.label :render_style, t(".render_style.label"), class: "col-form-label" %>
+      </div>
+      <div>
+        <%= renderer_settings_form.select :render_style, [
+              [t(".render_style.original"), "original"],
+              [t(".render_style.normals"), "normals"],
+              [t(".render_style.lambert"), "lambert"],
+              [t(".render_style.shadowed"), "shadowed"]
+            ], {selected: renderer_settings["render_style"]}, {class: "form-select"} %>
+      </div>
+      <div>
+        <%= renderer_settings_form.label :object_colour, t(".object_colour.label") %>
+      </div>
+      <div>
+        <%= renderer_settings_form.color_field :object_colour, value: renderer_settings["object_colour"], class: "form-control" %>
       </div>
     </div>
   </div>
