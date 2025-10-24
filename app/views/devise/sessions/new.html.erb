@@ -15,16 +15,7 @@
       <div class="tabular-form">
         <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
         <%= password_input_row form, :password, autocomplete: "current-password" %>
-
-        <% if devise_mapping.rememberable? %>
-          <div>
-            <%= form.label :remember_me %>
-          </div>
-          <div class="form-check form-switch">
-            <%= form.check_box :remember_me, class: "form-check-input" %>
-          </div>
-        <% end %>
-
+        <%= checkbox_input_row form, :remember_me if devise_mapping.rememberable? %>
         <div>
           <%= form.submit translate(".sign_in"), class: "btn btn-primary" %>
         </div>
