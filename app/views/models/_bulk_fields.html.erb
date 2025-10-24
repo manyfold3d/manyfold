@@ -19,11 +19,11 @@
                  }
                end) %>
 
-<div class="row mb-3">
-  <%= form.label :license, class: "col-sm-2 col-form-label" %>
-  <div class="col-sm-10">
-    <%= form.select :license, license_select_options, {include_blank: true}, {class: "form-control col-auto form-select"} %>
-  </div>
+<div>
+  <%= form.label :license %>
+</div>
+<div>
+  <%= form.select :license, license_select_options, {include_blank: true}, {class: "form-control form-select"} %>
 </div>
 
 <%= checkbox_input_row form, :sensitive %>
