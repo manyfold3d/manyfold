@@ -3,35 +3,35 @@ ru:
   activerecord:
     attributes:
       collection:
-        ai_indexable:
+        ai_indexable: Разрешить использование данных для обучения ИИ
         caption: Описание
-        collection:
-        indexable:
+        collection: Родительская коллекция
+        indexable: Разрешить поисковую индексацию
         models: Модели
         name: Имя
         notes: Примечания
       creator:
-        ai_indexable:
-        avatar:
+        ai_indexable: Разрешить использование данных для обучения ИИ
+        avatar: Изображение аватара
         banner:
         caption: Описание
         indexable:
         name:
         notes: Примечания
-        slug:
+        slug: Уникальное имя автора
       doorkeeper/application:
-        access_token:
+        access_token: Токен доступа
         confidential: Конфиденциально
-        created_at:
+        created_at: Создано
         name: Наименование
-        owner:
+        owner: Владелец
         redirect_uri: URI для перенаправления
         scopes: Скоупы
-        secret:
-        uid:
+        secret: Клиентский ключ
+        uid: Идентификатор клиента
       federails/moderation/domain_block:
         created_at: Дата создания
-        domain:
+        domain: Домен
       federails/moderation/report:
         content:
         created_at:
@@ -39,14 +39,14 @@ ru:
         object:
       library:
         caption: Описание
-        create_path_if_not_on_disk:
-        default:
+        create_path_if_not_on_disk: Автосоздание папки
+        default: По умолчанию
         icon: Иконка
         name: Имя
         notes: Примечания
         path: Путь
-        s3_access_key_id:
-        s3_bucket:
+        s3_access_key_id: Access Key ID (Идентификатор ключа доступа)
+        s3_bucket: Bucket Name (Имя бакета)
         s3_endpoint: URL конечной точки
         s3_path_style:
         s3_region: Регион
@@ -56,14 +56,14 @@ ru:
       link:
         url: Ссылка
       model:
-        ai_indexable:
+        ai_indexable: Разрешить использование данных для обучения ИИ
         caption: Описание
         collection: Коллекция
         collection_id: Коллекция
         creator: Автор
         creator_id: Автор
-        images:
-        indexable:
+        images: Изображения
+        indexable: Разрешить индексацию поисковыми системами
         library_id: Библиотека
         license: Лицензия
         model_files: Файлы
@@ -71,12 +71,12 @@ ru:
         notes: Примечания
         path: Путь
         preview_file: Файл предварительного просмотра
-        sensitive:
+        sensitive: Чувствительный контент
         tags: Теги
       model_file:
         caption: Описание
         digest:
-        dimensions:
+        dimensions: Размеры
         filename: Имя файла
         model_id: Модель
         notes: Примечания
@@ -762,19 +762,19 @@ ru:
     card_list_page:
       actions_heading:
     settings:
-      appearance:
+      appearance: Внешний вид
       downloads:
       integrations_heading:
       libraries: Библиотеки
       moderation_heading:
       moderation_settings_title:
       organization:
-      performance:
+      performance: Панель производительности
       pghero:
       search_heading:
       sidekiq:
       site_settings_title:
-      tools_heading:
+      tools_heading: Административные инструменты
   licenses:
     0BSD:
     CC-BY-40:
