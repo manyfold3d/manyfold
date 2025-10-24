@@ -1,38 +1,34 @@
 <%- if SiteSettings.multiuser_enabled? && !form.object.try(:remote?) %>
-  <div class="row mb-3 input-group">
-    <div class="col col-auto">
-      <%= t(".permissions") %>
+  <div>
+    <%= t(".permissions") %>
+  </div>
+  <div>
+    <div>
+      <%= form.select :permission_preset, [
+            [translate("settings.multiuser.default_viewer_role.options.private"), "private"],
+            [translate("settings.multiuser.default_viewer_role.options.member"), "member"],
+            [translate("settings.multiuser.default_viewer_role.options.public"), "public"],
+            [translate("settings.multiuser.default_viewer_role.options.advanced"), ""]
+          ],
+            {selected: form.object.matching_permission_preset},
+            {class: "form-control form-select", data: {controller: "caber-advanced", action: "change->caber-advanced#update"}} %>
     </div>
-    <div class="col">
-      <div class="row">
-        <%= form.select :permission_preset, [
-              [translate("settings.multiuser.default_viewer_role.options.private"), "private"],
-              [translate("settings.multiuser.default_viewer_role.options.member"), "member"],
-              [translate("settings.multiuser.default_viewer_role.options.public"), "public"],
-              [translate("settings.multiuser.default_viewer_role.options.advanced"), ""]
-            ],
-              {selected: form.object.matching_permission_preset},
-              {class: "form-control col-auto form-select", data: {controller: "caber-advanced", action: "change->caber-advanced#update"}} %>
-      </div>
-      <div class="row border p-3" id="advanced-permissions">
-        <%= cocooned_container id: "cocooned-caber-relations", data: {controller: "cocooned"} do %>
-          <%= form.fields_for :caber_relations do |f| %>
-            <%= render "caber_relation_fields", f: f %>
-          <% end %>
+    <div class="border p-3" id="advanced-permissions">
+      <%= cocooned_container id: "cocooned-caber-relations", data: {controller: "cocooned"} do %>
+        <%= form.fields_for :caber_relations do |f| %>
+          <%= render "caber_relation_fields", f: f %>
         <% end %>
-        <div class="row">
-          <%= tag.div class: "col-auto offset-sm-2 ps-0" do %>
-            <%= cocooned_add_item_button t(".add"), form, :caber_relations,
-                  class: "btn btn-secondary",
-                  insertion_node: "#cocooned-caber-relations",
-                  insertion_method: "append" %>
-          <% end %>
-        </div>
-        <datalist id="caber-relations-role-list">
-          <option value="role::member" label="<%= translate "application.caber_relation_fields.subject.role.member" %>"></option>
-          <option value="role::public"><%= translate "application.caber_relation_fields.subject.role.public" %></option>
-        </datalist>
+      <% end %>
+      <div>
+        <%= cocooned_add_item_button t(".add"), form, :caber_relations,
+              class: "btn btn-secondary",
+              insertion_node: "#cocooned-caber-relations",
+              insertion_method: "append" %>
       </div>
+      <datalist id="caber-relations-role-list">
+        <option value="role::member" label="<%= translate "application.caber_relation_fields.subject.role.member" %>"></option>
+        <option value="role::public"><%= translate "application.caber_relation_fields.subject.role.public" %></option>
+      </datalist>
     </div>
   </div>
 <%- end %>
