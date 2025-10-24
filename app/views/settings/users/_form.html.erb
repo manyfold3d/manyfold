@@ -1,4 +1,4 @@
-<%= form_with model: [:settings, user], class: "container-md tabular-form" do |form| %>
+<%= form_with model: [:settings, user], class: "tabular-form" do |form| %>
 
   <%= text_input_row form, :username %>
   <%= text_input_row form, :email %>
@@ -29,20 +29,16 @@
 
   <% if SiteSettings.enable_user_quota %>
     <h3><%= t("settings.users.quota.title") %></h3>
-    <div class="row">
-      <%= form.label nil, t("settings.users.quota.using_site_default"), class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8">
-        <%= form.check_box "quota_use_site_default", value: :quota_use_site_default, class: "form-check-input" %>
-      </div>
-    </div>
-    <div class="row">
-      <%= form.label nil, t("settings.users.quota.current_quota"), class: "col-sm-4 col-form-label" %>
-      <div class="col-sm-8">
-        <%= form.number_field "quota", min: 0, step: 1, value: (user.quota.to_i / 1.megabyte) %>
-      </div>
-    </div>
+    <%= checkbox_input_row form, :quota_use_site_default, label: t("settings.users.quota.using_site_default") %>
+    <%= numeric_input_row form, :quota,
+          label: t("settings.users.quota.current_quota"),
+          min: 0, step: 1,
+          unit: "MB",
+          value: (user.quota.to_i / 1.megabyte) %>
   <% end %>
 
-  <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+  <div>
+    <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+  </div>
 
 <% end %>
