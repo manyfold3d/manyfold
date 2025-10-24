@@ -1,47 +1,48 @@
-<%= form_with url: settings_path, method: :patch do |form| %>
-  <h3><%= t(".heading") %></h3>
-  <p class="lead"><%= t(".summary") %></p>
+<h3><%= t(".heading") %></h3>
+<p class="lead"><%= t(".summary") %></p>
+
+<%= form_with url: settings_path, method: :patch, class: "tabular-form" do |form| %>
   <%= text_input_row form, "appearance[site_name]", label: t(".site_name.label"), value: SiteSettings.site_name, placeholder: t("application.title"), help: t(".site_name.help") %>
   <%= text_input_row form, "appearance[site_tagline]", label: t(".site_tagline.label"), value: SiteSettings.site_tagline, placeholder: t("application.tagline"), help: t(".site_tagline.help") %>
   <%= url_input_row form, "appearance[site_icon]", label: t(".site_icon.label"), value: SiteSettings.site_icon, help: t(".site_icon.help") %>
   <%= url_input_row form, "appearance[support_link]", label: t(".support_link.label"), value: SiteSettings.support_link, help: t(".support_link.help") %>
-  <div class="row mb-3 input-group">
-    <%= form.label nil, t(".theme.label"), for: "appearance[theme]", class: "col-auto col-form-label" %>
-    <div class="col p-0">
-      <%= form.select "appearance[theme]",
-            [
-              "brite",
-              "cerulean",
-              "cosmo",
-              "cyborg",
-              "darkly",
-              "default",
-              "flatly",
-              "journal",
-              "litera",
-              "lumen",
-              "lux",
-              "materia",
-              "minty",
-              "morph",
-              "pulse",
-              "quartz",
-              "sandstone",
-              "simplex",
-              "sketchy",
-              "slate",
-              "solar",
-              "spacelab",
-              "superhero",
-              "united",
-              "vapor",
-              "yeti",
-              "zephyr"
-            ].map { |it| [it.titleize, it] },
-            {selected: SiteSettings.theme},
-            {class: "form-select"} %>
-      <span class="form-text"><%= t(".theme.help_html") %></span>
-    </div>
+  <div>
+    <%= form.label "appearance[theme]", t(".theme.label"), class: "col-form-label" %>
+  </div>
+  <div>
+    <%= form.select "appearance[theme]",
+          [
+            "brite",
+            "cerulean",
+            "cosmo",
+            "cyborg",
+            "darkly",
+            "default",
+            "flatly",
+            "journal",
+            "litera",
+            "lumen",
+            "lux",
+            "materia",
+            "minty",
+            "morph",
+            "pulse",
+            "quartz",
+            "sandstone",
+            "simplex",
+            "sketchy",
+            "slate",
+            "solar",
+            "spacelab",
+            "superhero",
+            "united",
+            "vapor",
+            "yeti",
+            "zephyr"
+          ].map { |it| [it.titleize, it] },
+          {selected: SiteSettings.theme},
+          {class: "form-select"} %>
+    <span class="form-text"><%= t(".theme.help_html") %></span>
   </div>
   <hr>
   <h4><%= t(".information") %></h4>
