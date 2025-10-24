@@ -63,34 +63,26 @@
   <hr>
   <h3><%= t(".permissions") %></h3>
 
-  <div>
-    <%= form.label "multiuser[default_viewer_role]", t(".default_viewer_role.label"), class: "col-form-label" %>
-  </div>
-  <div>
-    <%= form.select "multiuser[default_viewer_role]",
-          [[translate(".default_viewer_role.options.private"), "private"],
-            [translate(".default_viewer_role.options.member"), "member"],
-            [translate(".default_viewer_role.options.public"), "public"]],
-          {selected: SiteSettings.default_viewer_role.to_s},
-          {class: "form-select"} %>
-    <small><%= t(".default_viewer_role.help") %></small>
-  </div>
+  <%= select_input_row form, "multiuser[default_viewer_role]", [
+          [translate(".default_viewer_role.options.private"), "private"],
+          [translate(".default_viewer_role.options.member"), "member"],
+          [translate(".default_viewer_role.options.public"), "public"]
+        ],
+        label: t(".default_viewer_role.label"),
+        selected: SiteSettings.default_viewer_role.to_s,
+        help: t(".default_viewer_role.help") %>
 
   <hr>
   <h3><%= t(".user_quotas") %></h3>
 
-  <div>
-    <%= form.label "multiuser[enable_user_quota]", t(".user_quotas_enable_quota") %>
-  </div>
-  <div class="form-check form-switch">
-    <%= form.check_box "multiuser[enable_user_quota]", checked: SiteSettings.enable_user_quota, class: "form-check-input" %>
-  </div>
-  <div>
-    <%= form.label "multiuser[default_user_quota]", t(".user_quotas_site_default"), class: "col-form-label" %>
-  </div>
-  <div>
-    <%= form.number_field "multiuser[default_user_quota]", min: 0, step: 1, value: (SiteSettings.default_user_quota.to_i / 1.megabyte), class: "form-control" %>
-  </div>
+  <%= text_input_row form, "multiuser[enable_user_quota]",
+        label: t(".user_quotas_enable_quota"),
+        checked: SiteSettings.enable_user_quota %>
+  <%= numeric_input_row form, "multiuser[default_user_quota]",
+        label: t(".user_quotas_site_default"),
+        min: 0, step: 1,
+        value: (SiteSettings.default_user_quota.to_i / 1.megabyte),
+        unit: "MB" %>
 
   <%= render "submit", form: form %>
 <% end %>

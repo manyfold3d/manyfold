@@ -1,40 +1,29 @@
-<%= form_with url: settings_path, method: :patch do |form| %>
-  <h3><%= t(".heading") %></h3>
-  <p class='lead'>
-    <%= t(".description") %>
-  </p>
-  <div class="row mb-2">
-    <%= form.label nil, t(".allow_robots.label"), for: "discovery[allow_robots]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8 form-check form-switch">
-      <%= form.check_box "discovery[allow_robots]", checked: SiteSettings.allow_robots, class: "form-check-input" %>
-      <small><%= t(".allow_robots.help") %></small>
-    </div>
-  </div>
-  <div class="row mb-2">
-    <%= form.label nil, t(".allow_ai_bots.label"), for: "discovery[allow_ai_bots]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8 form-check form-switch">
-      <%= form.check_box "discovery[allow_ai_bots]", checked: SiteSettings.allow_ai_bots, class: "form-check-input" %>
-      <small><%= t(".allow_ai_bots.help") %></small>
-    </div>
-  </div>
+<h3><%= t(".heading") %></h3>
+<p class='lead'>
+  <%= t(".description") %>
+</p>
+
+<%= form_with url: settings_path, method: :patch, class: "tabular-form" do |form| %>
+  <%= checkbox_input_row form, "discovery[allow_robots]",
+        label: t(".allow_robots.label"),
+        checked: SiteSettings.allow_robots,
+        help: t(".allow_robots.help") %>
+  <%= checkbox_input_row form, "discovery[allow_ai_bots]",
+        label: t(".allow_ai_bots.label"),
+        checked: SiteSettings.allow_ai_bots,
+        help: t(".allow_ai_bots.help") %>
   <hr>
   <h4><%= t(".indexing.heading") %></h4>
   <p>
     <%= t(".indexing.description") %>
   </p>
-  <div class="row mb-2">
-    <%= form.label nil, t(".default_indexable.label"), for: "discovery[default_indexable]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8 form-check form-switch">
-      <%= form.check_box "discovery[default_indexable]", checked: SiteSettings.default_indexable, class: "form-check-input" %>
-      <small><%= t(".default_indexable.help") %></small>
-    </div>
-  </div>
-  <div class="row mb-2">
-    <%= form.label nil, t(".default_ai_indexable.label"), for: "discovery[default_ai_indexable]", class: "col-sm-4 col-form-label" %>
-    <div class="col-sm-8 form-check form-switch">
-      <%= form.check_box "discovery[default_ai_indexable]", checked: SiteSettings.default_ai_indexable, class: "form-check-input" %>
-      <small><%= t(".default_ai_indexable.help_html") %></small>
-    </div>
-  </div>
+  <%= checkbox_input_row form, "discovery[default_indexable]",
+        label: t(".default_indexable.label"),
+        checked: SiteSettings.default_indexable,
+        help: t(".default_indexable.help") %>
+  <%= checkbox_input_row form, "discovery[default_ai_indexable]",
+        label: t(".default_ai_indexable.label"),
+        checked: SiteSettings.default_ai_indexable,
+        help: t(".default_ai_indexable.help_html") %>
   <%= render "submit", form: form %>
 <% end %>
