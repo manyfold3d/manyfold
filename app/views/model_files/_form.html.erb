@@ -1,4 +1,4 @@
-<%= form_with model: [@model, @file] do |form| %>
+<%= form_with model: [@model, @file], class: "container-md tabular-form" do |form| %>
   <%= text_input_row form, :filename %>
   <% if @file.is_3d_model? %>
     <%= checkbox_input_row form, :printed, checked: current_user.printed?(@file) %>
@@ -13,5 +13,7 @@
   <% end %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
-  <%= form.submit class: "btn btn-primary" %>
+  <div>
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
 <% end %>
