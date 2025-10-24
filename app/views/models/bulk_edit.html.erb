@@ -32,17 +32,17 @@
   <p class="lead"><%= t ".form_subtitle" %></p>
 
   <div class="row">
-    <div class="col">
+    <div class="col tabular-form">
       <%= render "bulk_fields", form: form %>
 
       <%= render "tags_edit", form: form, name: :remove_tags, label: translate(".remove_tags"), tags: [] %>
 
       <% if SiteSettings.show_libraries || current_user.is_administrator? %>
-        <div class="row mb-3">
+        <div>
           <%= form.label :new_library_id, class: "col-sm-2 col-form-label" %>
-          <div class="col-sm-10">
-            <%= form.collection_select :new_library_id, policy_scope(Library).all, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
-          </div>
+        </div>
+        <div>
+          <%= form.collection_select :new_library_id, policy_scope(Library).all, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
         </div>
       <% end %>
 
@@ -55,9 +55,11 @@
       <%= form.hidden_field :collection, value: @filter.parameter(:collection) if @filter.filtering_by?(:collection) %>
       <%= form.hidden_field :library, value: @filter.parameter(:library) if @filter.filtering_by?(:library) %>
       <%= form.hidden_field :creator, value: @filter.parameter(:creator) if @filter.filtering_by?(:creator) %>
-      <%= form.submit translate(".submit"), class: "btn btn-primary" %>
-      <%= form.submit translate(".update_all", count: @models.total_count), class: "btn btn-secondary", name: "update_all" %>
-      <%= form.submit translate(".merge"), class: "btn btn-outline-warning", formaction: merge_models_path, formmethod: :post, name: "merge" %>
+      <div>
+        <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+        <%= form.submit translate(".update_all", count: @models.total_count), class: "btn btn-secondary", name: "update_all" %>
+        <%= form.submit translate(".merge"), class: "btn btn-outline-warning", formaction: merge_models_path, formmethod: :post, name: "merge" %>
+      </div>
     </div>
     <% if !@filter.to_params.empty? %>
       <div class="col col-md-3">
