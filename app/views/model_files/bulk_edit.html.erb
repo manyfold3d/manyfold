@@ -30,22 +30,22 @@
 
   <p class="lead"><%= t ".form_subtitle" %></p>
 
-  <div class="row mb-3">
-    <div class="col col-auto mt-2">
+  <div class="tabular-form">
+    <div>
       <%= t(".rename") %>
     </div>
-    <div class="col border p-3">
+    <div class="border p-3 tabular-form">
       <%= text_input_row form, :pattern, label: t(".pattern") %>
       <%= text_input_row form, :replacement, label: t(".replacement") %>
     </div>
+    <%= checkbox_input_row form, :printed, label: ModelFile.human_attribute_name(:printed) %>
+    <%= checkbox_input_row form, :presupported, label: ModelFile.human_attribute_name(:presupported) %>
+    <%= checkbox_input_row form, :y_up, label: ModelFile.human_attribute_name(:y_up) %>
+    <%= checkbox_input_row form, :previewable, label: ModelFile.human_attribute_name(:previewable) %>
+    <div>
+      <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+      <%= form.submit translate(".split"), name: "split", class: "btn btn-warning" %>
+    </div>
   </div>
-
-  <%= checkbox_input_row form, :printed, label: ModelFile.human_attribute_name(:printed) %>
-  <%= checkbox_input_row form, :presupported, label: ModelFile.human_attribute_name(:presupported) %>
-  <%= checkbox_input_row form, :y_up, label: ModelFile.human_attribute_name(:y_up) %>
-  <%= checkbox_input_row form, :previewable, label: ModelFile.human_attribute_name(:previewable) %>
-
-  <%= form.submit translate(".submit"), class: "btn btn-primary" %>
-  <%= form.submit translate(".split"), name: "split", class: "btn btn-warning" %>
 
 <% end %>
