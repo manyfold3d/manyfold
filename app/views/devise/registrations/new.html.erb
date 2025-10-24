@@ -13,22 +13,26 @@
 
   <h2><%= t(".details") %></h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
-    <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
-    <%- if SiteSettings.default_signup_role == "contributor" && SiteSettings.autocreate_creator_for_new_users %>
-      <%= form.fields_for :creators, resource.creators.first || Creator.new do |f| %>
-        <%= text_input_row f, :name, autocomplete: false, help: t(".creators.name.help") %>
-        <%= text_input_row f, :slug, autocomplete: "username", help: t(SiteSettings.federation_enabled? ? ".creators.slug.help_fedi" : ".creators.slug.help") %>
+    <div class="tabular-form mb-3">
+      <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
+      <%- if SiteSettings.default_signup_role == "contributor" && SiteSettings.autocreate_creator_for_new_users %>
+        <%= form.fields_for :creators, resource.creators.first || Creator.new do |f| %>
+          <%= text_input_row f, :name, autocomplete: false, help: t(".creators.name.help") %>
+          <%= text_input_row f, :slug, autocomplete: "username", help: t(SiteSettings.federation_enabled? ? ".creators.slug.help_fedi" : ".creators.slug.help") %>
+        <% end %>
+      <%- else %>
+        <%= text_input_row form, :username, autocomplete: "username", help: t(".username.help") %>
       <% end %>
-    <%- else %>
-      <%= text_input_row form, :username, autocomplete: "username", help: t(".username.help") %>
-    <% end %>
-    <%= password_input_row form, :password, autocomplete: "new-password", strength_meter: true %>
-    <%= password_input_row form, :password_confirmation, autocomplete: "new-password" %>
-    <%= content_tag :div, t(".approval_help"), class: "alert alert-info" if SiteSettings.approve_signups %>
-    <%= form.submit translate(".sign_up"), class: "btn btn-primary" %>
-    <div class="float-end">
-      <%= render Components::AltchaWidget.new %>
+      <%= password_input_row form, :password, autocomplete: "new-password", strength_meter: true %>
+      <%= password_input_row form, :password_confirmation, autocomplete: "new-password" %>
+      <div>
+        <%= form.submit translate(".sign_up"), class: "btn btn-primary" %>
+        <div class="float-end">
+          <%= render Components::AltchaWidget.new %>
+        </div>
+      </div>
     </div>
+    <%= content_tag :div, t(".approval_help"), class: "alert alert-info" if SiteSettings.approve_signups %>
   <% end %>
 
   <%= render "devise/shared/links" %>
