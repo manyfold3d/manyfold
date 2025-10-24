@@ -159,7 +159,7 @@ module ApplicationHelper
       end,
       content_tag(:div) do
         safe_join [
-          form.text_area(name, {class: "form-control g-col-auto"}.merge(options)),
+          form.text_area(name, {class: "form-control"}.merge(options)),
           errors_for(form.object, name),
           (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
         ].compact
@@ -193,8 +193,8 @@ module ApplicationHelper
         safe_join [
           content_tag(:div, class: "input-group") do
             safe_join [
-              form.select(name, select_options, options.compact, {data: {controller: "searchable-select"}, class: "form-control g-col-auto form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
-              (link_to(options[:button][:label], options[:button][:path], class: "btn btn-outline-secondary g-col-auto") if options[:button])
+              form.select(name, select_options, options.compact, {data: {controller: "searchable-select"}, class: "form-control form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
+              (link_to(options[:button][:label], options[:button][:path], class: "btn btn-outline-secondary") if options[:button])
             ]
           end,
           errors_for(form.object, name),
@@ -213,8 +213,8 @@ module ApplicationHelper
         safe_join [
           content_tag(:div, class: "input-group") do
             safe_join [
-              form.collection_select(:"#{name}_id", collection, value_method, text_method, options.compact, {data: {controller: "searchable-select"}, class: "form-control g-col-auto form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
-              (link_to(options[:button][:label], options[:button][:path], class: "btn btn-outline-secondary g-col-auto") if options[:button])
+              form.collection_select(:"#{name}_id", collection, value_method, text_method, options.compact, {data: {controller: "searchable-select"}, class: "form-control form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
+              (link_to(options[:button][:label], options[:button][:path], class: "btn btn-outline-secondary") if options[:button])
             ]
           end,
           errors_for(form.object, name),
