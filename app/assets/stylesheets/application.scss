@@ -37,3 +37,13 @@ p.notice:empty {
 .button_to .div {
 	display: inline;
 }
+
+form.tabular-form {
+	display: grid;
+	grid-template-columns: max-content auto;
+	gap: 1em;
+
+	div:has(input[type=submit]) {
+		grid-column: 2;
+	}
+}
