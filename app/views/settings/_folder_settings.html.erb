@@ -22,16 +22,14 @@
     <code>{modelId}</code>: <%= t ".tokens.model_id" %>
   </li>
 </ul>
-<div class="tabular-form">
-  <%= text_input_row form, "folders[model_path_template]",
-        label: t(".model_path_template.label"),
-        value: SiteSettings.model_path_template %>
-  <%= checkbox_input_row form, "folders[parse_metadata_from_path]",
-        label: t(".parse_metadata_from_path.label"),
-        checked: SiteSettings.parse_metadata_from_path,
-        help: t(".parse_metadata_from_path.help") %>
-  <%= checkbox_input_row form, "folders[safe_folder_names]",
-        label: t(".safe_folder_names.label"),
-        checked: SiteSettings.safe_folder_names,
-        help: t(".safe_folder_names.help_html") %>
-</div>
+<%= text_input_row form, "folders[model_path_template]",
+      label: t(".model_path_template.label"),
+      value: SiteSettings.model_path_template %>
+<%= checkbox_input_row form, "folders[parse_metadata_from_path]",
+      label: t(".parse_metadata_from_path.label"),
+      checked: SiteSettings.parse_metadata_from_path,
+      help: t(".parse_metadata_from_path.help") %>
+<%= checkbox_input_row form, "folders[safe_folder_names]",
+      label: t(".safe_folder_names.label"),
+      checked: SiteSettings.safe_folder_names,
+      help: t(".safe_folder_names.help_html") %>

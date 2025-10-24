@@ -2,21 +2,19 @@
 <p class='lead'>
   <%= t(".description") %>
 </p>
-<div class="tabular-form">
-  <%= text_input_row form, "model_tags[auto_tag_new]",
-        label: t(".auto_tag_new.label"),
-        value: SiteSettings.model_tags_auto_tag_new %>
-  <%= checkbox_input_row form, "model_tags[tag_model_directory_name]",
-        label: t(".tag_model_directory_name.label"),
-        checked: SiteSettings.model_tags_tag_model_directory_name,
-        help: t(".tag_model_directory_name.help") %>
-  <%= checkbox_input_row form, "model_tags[filter_stop_words]",
-        label: t(".filter_stop_words.label"),
-        checked: SiteSettings.model_tags_filter_stop_words %>
-  <%= text_input_row form, "model_tags[stop_words_locale]",
-        label: t(".stop_words_locale.label"),
-        value: SiteSettings.model_tags_stop_words_locale %>
-  <%= text_input_row form, "model_tags[custom_stop_words]",
-        label: t(".custom_stop_words.label"),
-        value: SiteSettings.model_tags_custom_stop_words %>
-</div>
+<%= text_input_row form, "model_tags[auto_tag_new]",
+      label: t(".auto_tag_new.label"),
+      value: SiteSettings.model_tags_auto_tag_new %>
+<%= checkbox_input_row form, "model_tags[tag_model_directory_name]",
+      label: t(".tag_model_directory_name.label"),
+      checked: SiteSettings.model_tags_tag_model_directory_name,
+      help: t(".tag_model_directory_name.help") %>
+<%= checkbox_input_row form, "model_tags[filter_stop_words]",
+      label: t(".filter_stop_words.label"),
+      checked: SiteSettings.model_tags_filter_stop_words %>
+<%= text_input_row form, "model_tags[stop_words_locale]",
+      label: t(".stop_words_locale.label"),
+      value: SiteSettings.model_tags_stop_words_locale %>
+<%= text_input_row form, "model_tags[custom_stop_words]",
+      label: t(".custom_stop_words.label"),
+      value: SiteSettings.model_tags_custom_stop_words %>

@@ -2,9 +2,7 @@
 <p class='lead'>
   <%= t ".summary" %>
 </p>
-<div class="tabular-form">
-  <%= rich_text_input_row form, "files[model_ignored_files]",
-        label: t(".custom_ignore_filters.label"),
-        help: t(".custom_ignore_filters.details"),
-        value: SiteSettings.model_ignored_files.map(&:inspect).join("\n").delete("\"") %>
-</div>
+<%= rich_text_input_row form, "files[model_ignored_files]",
+      label: t(".custom_ignore_filters.label"),
+      help: t(".custom_ignore_filters.details"),
+      value: SiteSettings.model_ignored_files.map(&:inspect).join("\n").delete("\"") %>

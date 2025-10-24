@@ -12,7 +12,7 @@
 
 <hr>
 
-<%= form_with url: settings_path, method: :patch do |form| %>
+<%= form_with url: settings_path, method: :patch, class: "tabular-form" do |form| %>
 
   <%= render "folder_settings", form: form %>
   <hr>
