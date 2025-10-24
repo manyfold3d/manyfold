@@ -62,7 +62,7 @@
   <hr>
   <h3><%= t(".user_quotas") %></h3>
 
-  <%= text_input_row form, "multiuser[enable_user_quota]",
+  <%= checkbox_input_row form, "multiuser[enable_user_quota]",
         label: t(".user_quotas_enable_quota"),
         checked: SiteSettings.enable_user_quota %>
   <%= numeric_input_row form, "multiuser[default_user_quota]",
