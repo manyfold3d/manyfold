@@ -286,12 +286,12 @@ zh-CN:
       unknown: 未知
     footer:
       about: 关于本实例
-      api: 探索我们的应用程序接口
-      by_html: 由<a href="https://floppy.org.uk" target="_blank" rel="noreferrer">詹姆斯</a>在<a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">我们的贡献者</a>的帮助下设计和制作。
+      api: 应用程序接口
+      by_html: 由 <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">James</a> 和 <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">贡献者们</a> 的帮助下设计和制作。
       community: 加入社区
-      instance_heading: 实例详细信息
+      instance_heading: 实例信息
       issues: 报告问题
-      open_source_html: 根据<a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT 许可</a><a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">开源</a>。
+      open_source_html: 根据 <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT 许可</a> <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">开源</a>。
       powered_by_html: 由<a href="https://manyfold.app">%{name}</a>提供
       sponsor: 赞助
       support: 支持此实例
@@ -299,7 +299,7 @@ zh-CN:
     link_fields:
       url:
         delete: 删除
-        placeholder: 任何相关网页
+        placeholder: 任何相关的网页链接
     links_form:
       add: 添加新链接
     navbar:

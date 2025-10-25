@@ -93,18 +93,18 @@ zh-CN:
         bulk_edit: 编辑所有文件
         heading: 文件
       followers: 粉丝
-      license:
+      license: 许可证
       merge:
         heading: 合并
-        warning:
-        with:
-      model_details:
-      path:
-      preview:
+        warning: 合并会将此模型中的所有文件移到目标文件中，并删除此模型。文件元数据会被保留，但任何模型元数据都会丢失！
+        with: 合并至
+      model_details: 详情
+      path: 路径
+      preview: 这只是完整模型的预览，其中包含 %{count} 个文件。请联系模型所有者获取完整访问权限。
       rescan: 重新扫描文件
-      search:
+      search: 在互联网上搜索带有此名称的模型
       submit: 上传文件
-      tags:
+      tags: 标签
       upload_card:
         heading: 上传
     update:
