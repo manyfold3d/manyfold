@@ -51,6 +51,7 @@ class User < ApplicationRecord
   attribute :tag_cloud_settings, :json
   attribute :problem_settings, :json
   attribute :file_list_settings, :json
+  attribute :tour_state, :json
 
   has_many :access_grants, # rubocop:disable Rails/InverseOf
     class_name: "Doorkeeper::AccessGrant",
