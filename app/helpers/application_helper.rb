@@ -353,4 +353,13 @@ module ApplicationHelper
       selected: object&.ai_indexable || "inherit"
     )
   end
+
+  def tour_attributes(id:, title:, description:)
+    {
+      "tour-id": id,
+      "tour-id-completed": current_user&.tour_state&.dig("completed")&.include?(id),
+      "tour-title": title,
+      "tour-description": description
+    }.compact
+  end
 end
