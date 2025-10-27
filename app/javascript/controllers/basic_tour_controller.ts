@@ -21,12 +21,24 @@ export default class extends Controller {
         }
       ))
       // Create driver object
-      const driverObj = driver({
+      this.driverObject = driver({
+        onHighlighted: this.onHighlighted.bind(this),
+        onDestroyStarted: this.onDestroyStarted.bind(this),
         showProgress: true,
         steps: tourSteps
       })
       // Start
-      driverObj.drive()
+      this.driverObject.drive()
     }
+  }
+
+  onHighlighted (element?: Element, step: DriveStep, options: { config: Config, state: State, driver: Driver }): void {
+    this.completed.push(element.id)
+  }
+
+  onDestroyStarted (): void {
+    console.log('store tour state')
+    console.log(this.completed)
+    this.driverObject.destroy()
   }
 }
