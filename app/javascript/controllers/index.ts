@@ -4,7 +4,7 @@
 
 import { application } from './application'
 
-import BasicTourController from "./basic_tour_controller"
+import BasicTourController from './basic_tour_controller'
 import BulkEditController from './bulk_edit_controller'
 import CaberAdvancedController from './caber_advanced_controller'
 import CarouselController from './carousel_controller'
@@ -20,7 +20,7 @@ import TagSectionController from './tag_section_controller'
 import UploadController from './upload_controller'
 import ZxcvbnController from './zxcvbn_controller'
 
-application.register("basic-tour", BasicTourController)
+application.register('basic-tour', BasicTourController)
 application.register('bulk-edit', BulkEditController)
 application.register('caber-advanced', CaberAdvancedController)
 application.register('carousel', CarouselController)
