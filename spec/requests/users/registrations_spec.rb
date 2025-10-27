@@ -420,4 +420,24 @@ RSpec.describe "Users::Registrations" do
       end
     end
   end
+
+  context "when tracking tour completion", :as_contributor, :multiuser do # rubocop:disable RSpec/MultipleMemoizedHelpers
+    let(:completion_params) { {user: {tour_state: {completed: {add: ["new-item"]}}}} }
+
+    it "returns success" do
+      patch "/users", params: completion_params, as: :json
+      expect(response).to have_http_status :no_content
+    end
+
+    it "adds completion data to tour state" do
+      patch "/users", params: completion_params, as: :json
+      expect(User.first.tour_state["completed"]).to include "new-item"
+    end
+
+    it "adds completion data to existing tour state" do
+      User.first.update(tour_state: {"completed" => ["old-item"]})
+      patch "/users", params: completion_params, as: :json
+      expect(User.first.tour_state["completed"]).to include("new-item", "old-item")
+    end
+  end
 end

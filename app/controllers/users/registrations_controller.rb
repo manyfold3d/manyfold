@@ -10,6 +10,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: [:update]
   skip_before_action :check_for_first_use, only: [:edit, :update]
 
+  respond_to :html, :json
+
   # GET /resource/sign_up
   def new
     authorize User
@@ -123,7 +125,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
           :render_style,
           :auto_load_max_size
         ],
-        problem_settings: Problem::CATEGORIES
+        problem_settings: Problem::CATEGORIES,
+        tour_state: {
+          completed: {
+            add: []
+          }
+        }
       )
     end
   end
@@ -191,6 +198,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     }
   end
 
+  def tour_state_json(current_state, data)
+    return nil unless data
+    {
+      "completed" => (current_state["completed"] + data.dig("completed", "add")).uniq # Merge in added completions
+    }
+  end
+
   def load_languages
     @languages = [[t("devise.registrations.general_settings.interface_language.autodetect"), nil]].concat(
       I18n.available_locales.map { |locale| [I18nData.languages(locale)[locale.to_s.first(2).upcase.to_s]&.capitalize, locale] }
@@ -198,11 +212,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update_resource(resource, data)
-    # Transform form data to crrect types
+    # Transform form data to correct types
     data[:pagination_settings] = pagination_json(data[:pagination_settings])
     data[:renderer_settings] = renderer_json(data[:renderer_settings])
     data[:tag_cloud_settings] = tag_cloud_json(data[:tag_cloud_settings])
     data[:file_list_settings] = file_list_json(data[:file_list_settings])
+    data[:tour_state] = tour_state_json(resource.tour_state, data[:tour_state])
+    data.compact!
     # Require password if important details have changed
     if (data[:email] && (data[:email] != resource.email)) || data[:password].present?
       resource.update_with_password(data)
