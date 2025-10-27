@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 import { driver, Driver, DriveStep, Config, State } from 'driver.js'
 
-// Connects to data-controller="basic-tour"
+// Connects to data-controller="tour"
 export default class extends Controller {
   driverObject: Driver | null = null
   completed: string[] = []

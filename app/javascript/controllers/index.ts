@@ -4,7 +4,6 @@
 
 import { application } from './application'
 
-import BasicTourController from './basic_tour_controller'
 import BulkEditController from './bulk_edit_controller'
 import CaberAdvancedController from './caber_advanced_controller'
 import CarouselController from './carousel_controller'
@@ -17,10 +16,10 @@ import SearchableSelectController from './searchable_select_controller'
 import StorageServiceController from './storage_service_controller'
 import TagInputController from './tag_input_controller'
 import TagSectionController from './tag_section_controller'
+import TourController from './tour_controller'
 import UploadController from './upload_controller'
 import ZxcvbnController from './zxcvbn_controller'
 
-application.register('basic-tour', BasicTourController)
 application.register('bulk-edit', BulkEditController)
 application.register('caber-advanced', CaberAdvancedController)
 application.register('carousel', CarouselController)
@@ -33,5 +32,6 @@ application.register('searchable-select', SearchableSelectController)
 application.register('storage-service', StorageServiceController)
 application.register('tag-input', TagInputController)
 application.register('tag-section', TagSectionController)
+application.register('tour', TourController)
 application.register('upload', UploadController)
 application.register('zxcvbn', ZxcvbnController)
