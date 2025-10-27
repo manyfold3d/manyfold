@@ -62,7 +62,7 @@ es:
     merge:
       success: Modelos fusionados correctamente.
     new:
-      archives-only:
+      archives-only: Sube sólo archivos comprimidos (ZIP, RAR, etc.). Cada archivo se extraerá y se convertirá en un modelo independiente.
       description: Añade nuevos modelos subiendo archivos. Si subes un archivo comprimido, se extraerá y se convertirá en un único modelo que contendrá todos los archivos. Si subes archivos individuales, cada uno de ellos se convertirá en un modelo independiente.
       files:
         label: Seleccionar archivos
@@ -70,12 +70,12 @@ es:
       library:
         help: Biblioteca donde se cargará el archivo.
       model_name:
-        help:
-        label:
-      multi_model:
-      non-archives:
+        help: Se utiliza si se crea un único modelo; si se cargan ficheros de archivo, los modelos utilizarán en su lugar el nombre del fichero de archivo.
+        label: Nombre del modelo
+      multi_model: Cada archivo se extraerá y se creará como un nuevo modelo independiente.
+      non-archives: Sube cualquier otro archivo (STL, JPG, etc.). Todos los archivos se añadirán a un único modelo nuevo.
       permission_preset: Permisos
-      single_model:
+      single_model: Todos los archivos se añadirán a un único modelo nuevo con el nombre especificado.
       submit: Crear modelos
       title: Cargar
     organize:
