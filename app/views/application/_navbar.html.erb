@@ -10,13 +10,13 @@
     <div class="collapse navbar-collapse row" id="navbar">
       <ul class="navbar-nav col ps-4 ps-md-0 align-self-start">
         <li class="nav-item">
-          <%= nav_link "box", Model.model_name.human(count: 100), models_path(@filter&.to_params), text_style: "d-md-none d-lg-inline", id: "nav-link-models", data: {"tour-title": Model.model_name.human(count: 100), "tour-description": t("tour.models.description")} %>
+          <%= nav_link "box", Model.model_name.human(count: 100), models_path(@filter&.to_params), text_style: "d-md-none d-lg-inline", id: "nav-link-models", data: {"tour-title": Model.model_name.human(count: 100), "tour-description": t("tour.navbar.models.description")} %>
         </li>
         <li class="nav-item">
-          <%= nav_link "people", Creator.model_name.human(count: 100), creators_path(@filter&.to_params(except: :creator)), text_style: "d-md-none d-lg-inline", id: "nav-link-creators", data: {"tour-title": Creator.model_name.human(count: 100), "tour-description": t("tour.creators.description")} %>
+          <%= nav_link "people", Creator.model_name.human(count: 100), creators_path(@filter&.to_params(except: :creator)), text_style: "d-md-none d-lg-inline", id: "nav-link-creators", data: {"tour-title": Creator.model_name.human(count: 100), "tour-description": t("tour.navbar.creators.description")} %>
         </li>
         <li class="nav-item">
-          <%= nav_link "collection", Collection.model_name.human(count: 100), collections_path(@filter&.to_params(except: :collection)), text_style: "d-md-none d-lg-inline", id: "nav-link-collections", data: {"tour-title": Collection.model_name.human(count: 100), "tour-description": t("tour.collections.description")} %>
+          <%= nav_link "collection", Collection.model_name.human(count: 100), collections_path(@filter&.to_params(except: :collection)), text_style: "d-md-none d-lg-inline", id: "nav-link-collections", data: {"tour-title": Collection.model_name.human(count: 100), "tour-description": t("tour.navbar.collections.description")} %>
         </li>
         <% if SiteSettings.show_libraries %>
           <% policy_scope(Library).find_each do |library| %>
@@ -39,7 +39,7 @@
                 class="btn btn-warning btn-sm mt-1 me-1 dropdown-toggle"
                 id="nav-link-upload"
                 data-tour-title="<%= t ".add_models" %>"
-                data-tour-description="<%= t "tour.add_models.description" %>">
+                data-tour-description="<%= t "tour.navbar.add_models.description" %>">
                 <%= render Components::Icon.new(icon: "plus-circle") %>
                 <%= t ".add_models" %>
               </button>
@@ -108,7 +108,7 @@
         <% end %>
         <%- if current_user %>
           <li class="nav-item">
-            <%= nav_link "sliders", t(".account"), edit_user_registration_path, nofollow: true, text_style: "d-md-none", id: "nav-link-preferences", data: {"tour-title": t(".account"), "tour-description": t("tour.account.description")} %>
+            <%= nav_link "sliders", t(".account"), edit_user_registration_path, nofollow: true, text_style: "d-md-none", id: "nav-link-preferences", data: {"tour-title": t(".account"), "tour-description": t("tour.navbar.account.description")} %>
           </li>
         <% end %>
         <%- if SiteSettings.multiuser_enabled? %>

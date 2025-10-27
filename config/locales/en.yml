@@ -836,17 +836,6 @@ en:
     theminiindex: The Mini Index
     thingiverse: Thingiverse
     yeggi: yeggi
-  tour:
-    account:
-      description: In your settings, you can change your login details, preferred rendering style, pagination options, and more.
-    add_models:
-      description: Upload or import your own models here; you can keep them private, or share them publicly, it's up to you!
-    collections:
-      description: Models can be grouped together into "collections"; for instance, models with a similar theme or purpose.
-    creators:
-      description: A "creator" is the designer, publisher or author of a model.
-    models:
-      description: A "model" in Manyfold is a 3D file or set of files which go together; e.g. parts of a single assembly, or a kit. A model could also include instruction documents, pictures, and so on.
   user_mailer:
     account_approved:
       greeting: Hi!
