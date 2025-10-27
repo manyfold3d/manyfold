@@ -1,10 +1,10 @@
 import { Controller } from '@hotwired/stimulus'
-import { driver } from 'driver.js'
+import { driver, Driver, DriveStep, Config, State } from 'driver.js'
 
 // Connects to data-controller="basic-tour"
 export default class extends Controller {
-  driverObject = null
-  completed = []
+  driverObject: Driver | null = null
+  completed: string[] = []
 
   connect (): void {
     // Find uncompleted tour elements in page
@@ -32,13 +32,25 @@ export default class extends Controller {
     }
   }
 
-  onHighlighted (element?: Element, step: DriveStep, options: { config: Config, state: State, driver: Driver }): void {
+  onHighlighted (element: Element, step: DriveStep, options: { config: Config, state: State, driver: Driver }): void {
     this.completed.push(element.id)
   }
 
   onDestroyStarted (): void {
-    console.log('store tour state')
-    console.log(this.completed)
-    this.driverObject.destroy()
+    // Store tour state back into current user
+    const xhr = new XMLHttpRequest()
+    xhr.open('PATCH', '/users.json', true)
+    xhr.setRequestHeader('Content-Type', 'application/json')
+    xhr.send(JSON.stringify({
+      user: {
+        tour_state: {
+          completed: {
+            add: this.completed
+          }
+        }
+      }
+    }))
+    // Done, close the tour
+    this.driverObject?.destroy()
   }
 }
