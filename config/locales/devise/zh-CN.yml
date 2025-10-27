@@ -90,7 +90,7 @@ zh-CN:
         email_help: 从不公开显示；仅用于登录和账户安全邮件。
         guidance: 首次使用时，您需要为主管理员账户设置账户名、邮箱和密码。如果运行的是单用户模式，通常无需输入这些信息即可登录，但在多用户模式下，没有这些信息将无法访问 Manyfold。
         password:
-          help_html:
+          help_html: 默认情况下，我们要求使用强密码；要在私有实例中使用较简单的密码，请设置<a href="https://manyfold.app/sysadmin/configuration.html#min_password_score">MIN_PASSWORD_SCORE</a>环境变量。
         submit: 保存
         title: 设置
         username_help: 唯一的账户名称；使用预生成的名称，或选择自己的名称。

@@ -286,12 +286,12 @@ zh-CN:
       unknown: 未知
     footer:
       about: 关于本实例
-      api: 探索我们的应用程序接口
-      by_html: 由<a href="https://floppy.org.uk" target="_blank" rel="noreferrer">詹姆斯</a>在<a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">我们的贡献者</a>的帮助下设计和制作。
+      api: 应用程序接口
+      by_html: 由 <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">James</a> 和 <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">贡献者们</a> 的帮助下设计和制作。
       community: 加入社区
-      instance_heading: 实例详细信息
+      instance_heading: 实例信息
       issues: 报告问题
-      open_source_html: 根据<a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT 许可</a><a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">开源</a>。
+      open_source_html: 根据 <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT 许可</a> <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">开源</a>。
       powered_by_html: 由<a href="https://manyfold.app">%{name}</a>提供
       sponsor: 赞助
       support: 支持此实例
@@ -299,7 +299,7 @@ zh-CN:
     link_fields:
       url:
         delete: 删除
-        placeholder: 任何相关网页
+        placeholder: 任何相关的网页链接
     links_form:
       add: 添加新链接
     navbar:
@@ -312,7 +312,7 @@ zh-CN:
       import_url: 导入 URL
       log_in: 登录
       log_out: 退出
-      moderator_settings:
+      moderator_settings: 管理员设置
       navbar:
         toggler:
           label: 切换导航
@@ -329,22 +329,22 @@ zh-CN:
     search_error: 搜索语法错误。请检查并重试！
     tag_list:
       unrelated_tag_count:
-        one:
-        other:
+        one: "%{count} 个无关标签已隐藏"
+        other: "%{count} 个无关标签已隐藏"
     tagline: 帮助您管理 3D 打印文件
     tags_card:
       skip_tags: 跳过标签列表
-    title:
+    title: Manyfold
   application_helper:
     ai_indexable_select_options:
       always_no:
       always_yes:
       inherit: 从父对象或默认网站设置继承；当前为 %{inherited}
     indexable_select_options:
-      always_no:
-      always_yes:
+      always_no: 始终为否
+      always_yes: 始终为是
       inherit: 从父对象或默认网站设置继承；当前为 %{inherited}
-      'no': 沒有
+      'no': 否
       'yes': 是
   components:
     actor_card:
@@ -770,51 +770,51 @@ zh-CN:
       moderation_settings_title: 审核设置
       organization: 整理
       performance: 性能仪表板
-      pghero:
-      search_heading:
+      pghero: PgHero
+      search_heading: 搜索与发现
       sidekiq: Sidekiq
       site_settings_title: 网站设置
       tools_heading: 高级工具
   licenses:
-    0BSD:
-    CC-BY-40:
-    CC-BY-NC-40:
-    CC-BY-NC-ND-40:
-    CC-BY-NC-SA-40:
-    CC-BY-ND-40:
-    CC-BY-SA-40:
-    CC-PDDC:
-    CC0-10:
-    CERN-OHL-P-20:
-    CERN-OHL-S-20:
-    CERN-OHL-W-20:
-    GPL-20-only:
-    GPL-30-only:
-    LGPL-20-only:
-    LGPL-30-only:
-    LicenseRef-Commercial:
-    MIT:
+    0BSD: BSD Zero Clause License
+    CC-BY-40: Creative Commons Attribution
+    CC-BY-NC-40: Creative Commons Attribution NonCommercial
+    CC-BY-NC-ND-40: Creative Commons Attribution NonCommercial NoDerivatives
+    CC-BY-NC-SA-40: Creative Commons Attribution NonCommercial ShareAlike
+    CC-BY-ND-40: Creative Commons Attribution NoDerivatives
+    CC-BY-SA-40: Creative Commons Attribution ShareAlike
+    CC-PDDC: Creative Commons Public Domain Declaration
+    CC0-10: Creative Commons Zero
+    CERN-OHL-P-20: CERN Open Hardware Licence Version 2 - Permissive
+    CERN-OHL-S-20: CERN Open Hardware Licence Version 2 - Strongly Reciprocal
+    CERN-OHL-W-20: CERN Open Hardware Licence Version 2 - Weakly Reciprocal
+    GPL-20-only: GNU General Public License v2.0
+    GPL-30-only: GNU General Public License v3.0
+    LGPL-20-only: GNU Lesser General Public License v2
+    LGPL-30-only: GNU Lesser General Public License v3
+    LicenseRef-Commercial: Commercial; private use only
+    MIT: MIT
   moderator_mailer:
     new_approval:
-      greeting:
-      message:
-      subject:
+      greeting: Hi!
+      message: 有新用户注册了账户，需要批准。批准 %{link} 账户
+      subject: 新账户需要批准
     new_report:
-      greeting:
-      message:
-      subject:
+      greeting: Hi!
+      message: 有人报告了需要修改的内容。查看 %{link}
+      subject: 收到新报告
   renderer:
     errors:
       canvas: '找不到 #webgl 画布！'
       load: 加载错误
       webglrenderer: 无法创建渲染器！
     load: 加载
-    processing:
+    processing: 加载中...
   reports:
     create:
       success: 报告已提交。谢谢！
     new:
-      description: 如果此项目违反了任何法律或服务器政策，您可以向我们的版主报告。添加评论，让我们知道原因！
+      description: 如果此项目违反了任何法律或服务器政策，您可以向管理员报告。添加评论，让我们知道原因！
       submit: 发送报告
       title: 报告 %{type}："%{name}"：
   scans:
