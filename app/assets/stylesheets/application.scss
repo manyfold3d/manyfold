@@ -25,6 +25,8 @@ $ra-font-path: "../fonts" !default;
 
 @import 'src/dark-theme-overrides';
 
+@import "driver.js/dist/driver";
+
 .ts-control {
 	padding: 1px;
 }
