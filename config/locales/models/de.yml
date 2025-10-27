@@ -62,20 +62,20 @@ de:
     merge:
       success: Die Modelle wurden erfolgreich zusammengeführt.
     new:
-      archives-only:
-      description: Lade neue Modelle hoch. Jedes hochgeladene Archiv wird extrahiert und zu einem einzigen Modell, das alle Dateien enthält. Wenn du einzelne Dateien hochlädst, werden sie zu einzelnen Modellen.
+      archives-only: Lade nur komprimierte Archive (ZIP, RAR usw.) hoch, und jede Datei wird extrahiert und zu einem eigenen Modell.
+      description: 'Lade neue Modelle hoch. Die Modelle, die erstellt werden, hängen davon ab, was du hochlädst:'
       files:
         label: Dateien auswählen
       free_space: "(%{available} frei)"
       library:
         help: Die Sammlung, in die hochgeladen werden soll.
       model_name:
-        help:
-        label:
-      multi_model:
-      non-archives:
+        help: Wird verwendet, wenn du ein einzelnes Modell erstellst; wenn du Archivdateien hochlädst, werden die Modelle stattdessen den Dateinamen des Archivs verwenden.
+        label: Name des Modells
+      multi_model: Jede Archivdatei wird extrahiert und als separates neues Modell erstellt.
+      non-archives: Lade alle anderen Dateien (STL, JPG usw.) hoch, und alle Dateien werden zu einem einzigen neuen Modell hinzugefügt.
       permission_preset: Berechtigungen
-      single_model:
+      single_model: Alle Dateien werden zu einem einzigen neuen Modell mit dem angegebenen Namen hinzugefügt.
       submit: Modelle erstellen
       title: Hochladen
     organize:
