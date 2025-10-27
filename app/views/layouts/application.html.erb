@@ -15,7 +15,7 @@
     <%= yield :head %>
   </head>
 
-  <body class="<%= "#{SiteSettings.theme}-theme" %>" data-controller="basic-tour" data-tour-autostart=true>
+  <body class="<%= "#{SiteSettings.theme}-theme" %>" data-controller="basic-tour">
     <%= skip_link "content", t(".skip_to_content") %>
     <%= render "application/navbar" %>
     <%= yield :breadcrumbs %>

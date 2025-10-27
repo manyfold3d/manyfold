@@ -9,21 +9,24 @@ export default class extends Controller {
   connect (): void {
     // Find tour elements in page
     const tourElements = document.querySelectorAll('[data-tour-title]')
-    const tourSteps = [...tourElements].map((stepElement: HTMLElement) => (
-      {
-        element: '#' + stepElement.id,
-        popover: {
-          title: stepElement.dataset.tourTitle,
-          description: stepElement.dataset.tourDescription
+    if (tourElements.length > 0) {
+      // Create steps for each element
+      const tourSteps = [...tourElements].map((stepElement: HTMLElement) => (
+        {
+          element: '#' + stepElement.id,
+          popover: {
+            title: stepElement.dataset.tourTitle,
+            description: stepElement.dataset.tourDescription
+          }
         }
-      }
-    ))
-    const driverObj = driver({
-      showProgress: true,
-      steps: tourSteps
-    })
-    console.log(tourSteps);
-    if ((this.element as HTMLElement).dataset["tourAutostart"])
-      driverObj.drive();
+      ))
+      // Create driver object
+      const driverObj = driver({
+        showProgress: true,
+        steps: tourSteps
+      })
+      // Start
+      driverObj.drive()
+    }
   }
 }
