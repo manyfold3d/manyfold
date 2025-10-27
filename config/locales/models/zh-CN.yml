@@ -18,7 +18,7 @@ zh-CN:
     configure_merge:
       common_root:
         description: 这些模型将在共享根文件夹中合并为一个模型
-        title:
+        title: 同一个文件夹中的新模型
       description: 选择其中一个模型，将其他模型合并到其中，或创建一个新模型。
       heading: 合并模型
       new_model:
@@ -62,7 +62,7 @@ zh-CN:
     merge:
       success: 模型合并成功。
     new:
-      archives-only:
+      archives-only: 只接受上传压缩包（ZIP、RAR 等），每个文件将被解压缩并成为一个单独的模型。
       description: 通过上传文件添加新模型！如果上传的是压缩包，它将被解压缩并成为包含所有文件的单一模型。如果上传单个文件，它们将各自成为一个单独的模型。
       files:
         label: 选择文件
@@ -70,12 +70,12 @@ zh-CN:
       library:
         help: 要上传的资料库。
       model_name:
-        help:
-        label:
-      multi_model:
-      non-archives:
-      permission_preset:
-      single_model:
+        help: 用于创建单个模型；如果上传存档文件，模型将使用存档文件名。
+        label: 名字
+      multi_model: 每个存档文件都将被提取并创建为一个单独的新模型。
+      non-archives: 上传任何其他文件（STL、JPG 等），所有文件都将添加到一个新模型中。
+      permission_preset: 权限
+      single_model: 所有文件都将被添加到一个具有指定名称的新模型中。
       submit: 创建模型
       title: 上传
     organize:
@@ -93,18 +93,18 @@ zh-CN:
         bulk_edit: 编辑所有文件
         heading: 文件
       followers: 粉丝
-      license:
+      license: 许可证
       merge:
         heading: 合并
-        warning:
-        with:
-      model_details:
-      path:
-      preview:
+        warning: 合并会将此模型中的所有文件移到目标文件中，并删除此模型。文件元数据会被保留，但任何模型元数据都会丢失！
+        with: 合并至
+      model_details: 详情
+      path: 路径
+      preview: 这只是完整模型的预览，其中包含 %{count} 个文件。请联系模型所有者获取完整访问权限。
       rescan: 重新扫描文件
-      search:
+      search: 在互联网上搜索带有此名称的模型
       submit: 上传文件
-      tags:
+      tags: 标签
       upload_card:
         heading: 上传
     update:

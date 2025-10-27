@@ -7,7 +7,7 @@ zh-CN:
     destroy:
       success: 资料库已删除！
     form:
-      add_line:
+      add_line: 添加
       caption:
         help: 可选项；在资料库链接上显示为工具提示。
       confirm_destroy:
@@ -16,21 +16,21 @@ zh-CN:
         help: 如果上面指定的资料库文件夹在磁盘上不存在，则创建该文件夹。
       default:
         help: 将此资料库设置为上传的默认库
-      filesystem_description_html:
+      filesystem_description_html: 要使用本地文件系统上的存储，首先要确保它已作为<a href="https://docs.docker.com/storage/bind-mounts/">绑定挂载</a>或其他卷挂载到 Docker 容器中，然后输入 Docker 路径；而不是主机服务器上的路径！例如，如果你在主机上的<code>/mnt/media/3d/models</code>文件夹中有大量文件，并在 Docker 配置中将<code>/mnt/media/3d</code>绑定到<code>/libraries</code>，那么所需的路径就是<code>/libraries/models</code>。
       icon:
         help_html: 可选；<a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">Boostrap 图标</a>或<a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a> 中的任何图标。
-        placeholder:
+        placeholder: boxes
       notes:
         help_html: 可选项；仅在设置页面上向管理员显示。您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
       path:
-        placeholder:
+        placeholder: "/libraries/models"
       s3_bucket:
-        help:
+        help: 只显示 Bucket 名称，不显示完整的 URL
       s3_description_html: Manyfold 可以使用任何与 S3 兼容的对象存储库；它们来自<a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">开源</a>或<a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">商业</a>服务。
       s3_endpoint:
-        help:
+        help: 可选；仅 S3 兼容服务需要，AWS 不需要。输入完整的 URL，以 <code>https://</code> 开头
       s3_path_style:
-        help:
+        help: 禁用以使用 vhost 风格的 Bucket URL。仅用于 S3 兼容服务，不适用于 AWS。
       tag_regex:
         help: 检查模型是否缺少与这些正则匹配的 Tags。
     general:
@@ -50,7 +50,7 @@ zh-CN:
         search_missing:
     storage_services:
       filesystem: 本地文件系统
-      s3:
+      s3: 兼容 S3 的云存储
     update:
       failure: 发生错误，无法保存资料库。
       success: 资料库已保存。
