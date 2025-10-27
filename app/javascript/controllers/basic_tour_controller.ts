@@ -7,8 +7,8 @@ export default class extends Controller {
   completed = []
 
   connect (): void {
-    // Find tour elements in page
-    const tourElements = document.querySelectorAll('[data-tour-title]')
+    // Find uncompleted tour elements in page
+    const tourElements = document.querySelectorAll('[data-tour-id-completed="false"]')
     if (tourElements.length > 0) {
       // Create steps for each element
       const tourSteps = [...tourElements].map((stepElement: HTMLElement) => (
