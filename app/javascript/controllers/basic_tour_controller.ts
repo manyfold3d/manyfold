@@ -12,8 +12,8 @@ export default class extends Controller {
       {
         element: "#" + stepElement.id,
         popover: {
-          title: stepElement.dataset["title"],
-          description: stepElement.dataset["description"]
+          title: stepElement.dataset["tourTitle"],
+          description: stepElement.dataset["tourDescription"]
         }
       }
     ));
@@ -21,6 +21,7 @@ export default class extends Controller {
       showProgress: true,
       steps: tourSteps
     });
+    console.log(tourSteps);
     if ((this.element as HTMLElement).dataset["tourAutostart"])
       driverObj.drive();
   }
