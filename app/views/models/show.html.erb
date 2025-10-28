@@ -106,7 +106,12 @@
           <%= render Components::AccessIndicator.new(object: @model, text: false) %>
           <%= render Components::AccessIndicator.new(object: @model, text: true, icon: false) %>
         </div>
-        <button class="btn btn-outline-secondary float-end">
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= render Components::DownloadButton.new(model: @model) %>
+      <div class="float-end">
+        <button class="btn btn-outline-secondary">
           <%= render Components::BurgerMenu.new do %>
             <%= render Components::DropdownItem.new(icon: "pencil", label: t(".files_card.bulk_edit"), path: bulk_edit_model_model_files_path(@model)) if policy(@model).edit? %>
             <%= render Components::DropdownItem.new(icon: "radar", label: t(".rescan"), path: scan_model_path(@model), method: :post) if policy(@model).scan? %>
@@ -118,10 +123,6 @@
           <% end %>
         </button>
       <% end %>
-
-      <div class="mb-3 w-100 text-center">
-        <%= render Components::DownloadButton.new(model: @model) %>
-      </div>
 
       <% if !@model.parents.empty? && policy(@model).merge? %>
         <%= card :danger, t(".merge.heading") do %>
