@@ -144,7 +144,7 @@
         <% end %>
       <% end %>
 
-      <%= render partial: "problem", collection: @model.problems.visible(problem_settings) %>
+      <%= render partial: "problems_card", locals: {problems: @model.problems.visible(problem_settings)} %>
 
       <%= card :secondary, t(".files_card.heading") do %>
         <a href="#files">Top</a>
@@ -160,7 +160,7 @@
       <%= render "links_card", links: @model.links %>
 
       <% if policy(@model).upload? %>
-        <%= card :warning, t(".upload_card.heading") do %>
+        <%= card :secondary, t(".upload_card.heading") do %>
           <%= form_with url: model_model_files_path(@model), id: "upload-form", class: "d-grid" do |form| %>
 
             <%= content_tag :div, nil, class: "mb-3", data: {

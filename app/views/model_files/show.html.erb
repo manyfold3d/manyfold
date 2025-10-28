@@ -77,7 +77,7 @@
       <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), model_model_file_path(@model, @file), {method: "delete", data: {confirm: translate("model_files.destroy.confirm")}, class: "btn btn-outline-danger"} if policy(@file).destroy? %>
     <% end %>
 
-    <%= render partial: "problem", collection: @file.problems.visible(problem_settings) %>
+    <%= render partial: "problems_card", locals: {problems: @file.problems.visible(problem_settings)} %>
 
     <%= card :secondary, t("layouts.card_list_page.actions_heading") do %>
 
