@@ -1,3 +1,4 @@
+<% return if problems.empty? %>
 <%= card("secondary", Problem.model_name.human(count: 100)) do %>
   <% problems.each do |problem| %>
     <div class="clearfix">
