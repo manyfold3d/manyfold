@@ -136,9 +136,16 @@ class ModelFile < ApplicationRecord
     result
   end
 
-  # TODO: this should move to Shrine metadata processing to be more efficient
+  # Calculates SHA512 digest using streaming to avoid loading entire file into memory
+  # Uses 8KB chunks to maintain constant memory usage regardless of file size
   def calculate_digest
-    Digest::SHA512.new.update(attachment.read).hexdigest
+    digest = Digest::SHA512.new
+    attachment.open do |io|
+      while (chunk = io.read(8192))
+        digest.update(chunk)
+      end
+    end
+    digest.hexdigest
   rescue Errno::ENOENT
     nil
   end
@@ -159,7 +166,45 @@ class ModelFile < ApplicationRecord
   end
 
   def duplicate?
-    size && size > 0 && duplicates.count > 0 && !is_document?
+    # Use exists? instead of count > 0 to avoid full table scan
+    # EXISTS query stops at first match, COUNT scans all matches
+    size && size > 0 && duplicates.exists? && !is_document?
+  end
+
+  # Batch duplicate detection to avoid N+1 queries
+  # Returns a Hash mapping file IDs to boolean duplicate status
+  # Example: { 1 => true, 2 => false, 3 => true }
+  def self.batch_find_duplicates(file_ids)
+    return {} if file_ids.empty?
+
+    # Load all files in one query with necessary attributes
+    files = where(id: file_ids).select(:id, :digest, :size, :filename).index_by(&:id)
+
+    # Find all digests that have duplicates (appear more than once)
+    # and have non-zero size and are not nil
+    duplicate_digests = where.not(digest: nil)
+      .where.not(size: [nil, 0])
+      .group(:digest)
+      .having("COUNT(*) > 1")
+      .pluck(:digest)
+      .to_set
+
+    # Build result hash mapping file IDs to duplicate status
+    result = {}
+    file_ids.each do |file_id|
+      file = files[file_id]
+      if file.nil?
+        result[file_id] = false
+      else
+        # File is a duplicate if its digest appears in duplicate_digests
+        # and it meets the same criteria as the instance method
+        result[file_id] = file.size.to_i > 0 &&
+                          duplicate_digests.include?(file.digest) &&
+                          !file.is_document?
+      end
+    end
+
+    result
   end
 
   # Used for ETag in conditional GETs

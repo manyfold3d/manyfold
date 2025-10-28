@@ -53,6 +53,18 @@ RSpec.describe ModelFile do
     it "calculates digest for a file" do
       expect(part.calculate_digest.first(16)).to eq("8a0f188378204b67")
     end
+
+    it "uses streaming when calculating digest to avoid loading entire file into memory" do
+      # Mock the IO to verify we're reading in chunks rather than all at once
+      io_mock = double("io")
+      allow(io_mock).to receive(:read).with(8192).and_return("chunk1", "chunk2", nil)
+      allow(part.attachment).to receive(:open).and_yield(io_mock)
+
+      digest = part.calculate_digest
+      expect(digest).to be_a(String)
+      expect(digest.length).to eq(128) # SHA512 hex digest length
+      expect(io_mock).to have_received(:read).with(8192).at_least(3).times
+    end
   end
 
   it "finds duplicate files using digest" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
@@ -81,6 +93,56 @@ RSpec.describe ModelFile do
     create(:model_file, model: model, filename: "same.stl", digest: "1234")
     allow(part1).to receive(:size).and_return(0)
     expect(part1.duplicate?).to be false
+  end
+
+  describe ".batch_find_duplicates" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+    it "efficiently detects duplicates for multiple files in batch" do
+      library = create(:library, path: Rails.root.join("/tmp"))
+      model = create(:model, library: library, path: "model1")
+
+      # Create files: two duplicates and one unique
+      file1 = create(:model_file, model: model, filename: "dup1.stl", digest: "abc123", size: 1000)
+      file2 = create(:model_file, model: model, filename: "dup2.stl", digest: "abc123", size: 1000)
+      file3 = create(:model_file, model: model, filename: "unique.stl", digest: "xyz789", size: 2000)
+
+      result = ModelFile.batch_find_duplicates([file1.id, file2.id, file3.id])
+
+      expect(result[file1.id]).to be true   # Is a duplicate
+      expect(result[file2.id]).to be true   # Is a duplicate
+      expect(result[file3.id]).to be false  # Is unique
+    end
+
+    it "handles empty file list" do
+      result = ModelFile.batch_find_duplicates([])
+      expect(result).to eq({})
+    end
+
+    it "excludes zero-length files from duplicates" do
+      library = create(:library, path: Rails.root.join("/tmp"))
+      model = create(:model, library: library, path: "model1")
+
+      file1 = create(:model_file, model: model, filename: "empty1.stl", digest: "abc123", size: 0)
+      file2 = create(:model_file, model: model, filename: "empty2.stl", digest: "abc123", size: 0)
+
+      result = ModelFile.batch_find_duplicates([file1.id, file2.id])
+
+      expect(result[file1.id]).to be false
+      expect(result[file2.id]).to be false
+    end
+
+    it "excludes document files from duplicates" do
+      library = create(:library, path: Rails.root.join("/tmp"))
+      model = create(:model, library: library, path: "model1")
+
+      # Document files (.pdf, .txt, etc.) should not be flagged as duplicates
+      file1 = create(:model_file, model: model, filename: "readme.pdf", digest: "abc123", size: 1000)
+      file2 = create(:model_file, model: model, filename: "license.pdf", digest: "abc123", size: 1000)
+
+      result = ModelFile.batch_find_duplicates([file1.id, file2.id])
+
+      expect(result[file1.id]).to be false
+      expect(result[file2.id]).to be false
+    end
   end
 
   it "mtime reports attachment modified time" do

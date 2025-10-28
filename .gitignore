@@ -71,3 +71,13 @@ dump.rdb
 
 # Ignore schema file, it's database-dependent and Manyfold shouldn't be
 db/schema.rb
+
+# Local testing and development files
+BUGFIX_SUMMARY.md
+DEVGUIDE.md
+INSTALLATION_HANDOVER.md
+SCANNER_TEST_GUIDE.md
+config/initializers/file_logging.rb
+start-dev.sh
+tail_scanner_logs.sh
+package-lock.json

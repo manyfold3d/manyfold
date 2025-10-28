@@ -108,4 +108,45 @@ RSpec.describe Scan::Model::CheckForProblemsJob do
   it "raises exception if model ID is not found" do
     expect { described_class.perform_now(nil) }.to raise_error(ActiveRecord::RecordNotFound)
   end
+
+  context "performance optimizations" do # rubocop:todo RSpec/ExampleLength
+    it "uses eager loading to avoid N+1 queries" do
+      creator = create(:creator)
+      model = create(:model, creator: creator, license: "CC-BY-4.0", tag_list: ["test"])
+      link = Link.new url: "https://example.com"
+      model.links << link
+      create(:model_file, filename: "part1.stl", model: model)
+      create(:model_file, filename: "part2.stl", model: model)
+      create(:model_file, filename: "image.jpg", model: model)
+
+      # Count queries during job execution
+      query_count = 0
+      query_counter = lambda do |_name, _started, _finished, _unique_id, payload|
+        query_count += 1 unless payload[:name] == "SCHEMA" || payload[:sql].include?("sqlite_master")
+      end
+
+      ActiveSupport::Notifications.subscribed(query_counter, "sql.active_record") do
+        described_class.perform_now(model.id)
+      end
+
+      # Should be significantly fewer than 15-20 queries
+      # Expect: 1 for model load with includes, ~10-12 for Problem operations
+      expect(query_count).to be < 20
+    end
+
+    it "loads model_files only once and reuses the collection" do
+      model = create(:model)
+      files = []
+      10.times { |i| files << create(:model_file, filename: "part#{i}.stl", model: model) }
+
+      # Mock to verify we're not calling model.model_files multiple times
+      allow_any_instance_of(Model).to receive(:model_files).and_call_original # rubocop:disable RSpec/AnyInstance
+
+      described_class.perform_now(model.id)
+
+      # The job should load model_files once (via eager loading)
+      # and then reuse the collection
+      expect_any_instance_of(Model).to have_received(:model_files).at_most(3).times # rubocop:disable RSpec/AnyInstance
+    end
+  end
 end

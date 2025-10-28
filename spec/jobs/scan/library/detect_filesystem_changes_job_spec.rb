@@ -265,4 +265,53 @@ RSpec.describe Scan::Library::DetectFilesystemChangesJob do
       expect(Scan::Library::CreateModelFromPathJob).to have_been_enqueued.with(library.id, "subfolder/model_two")
     end
   end
+
+  context "performance optimizations" do
+    around do |ex|
+      MockDirectory.create([
+        "model_one/part_1.obj",
+        "model_two/part_1.obj",
+        "model_three/part_1.obj"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    it "uses eager loading to avoid N+1 queries when getting known filenames" do
+      # Create several models with files
+      3.times do |i|
+        model = create(:model, library: library, path: "model_#{i + 1}")
+        create(:model_file, model: model, filename: "part_1.obj")
+      end
+
+      # Count queries during known_filenames call
+      query_count = 0
+      query_counter = lambda do |_name, _started, _finished, _unique_id, payload|
+        query_count += 1 unless payload[:name] == "SCHEMA" || payload[:sql].include?("sqlite_master")
+      end
+
+      ActiveSupport::Notifications.subscribed(query_counter, "sql.active_record") do
+        described_class.new.known_filenames(library)
+      end
+
+      # Should be 2 queries (1 for model_files, 1 for eager loaded models), not 3+ N+1 queries
+      expect(query_count).to be <= 2
+    end
+
+    it "processes files in batches to manage memory" do
+      job = described_class.new
+
+      # Mock to verify batching happens
+      allow(job).to receive(:filenames_on_disk).and_return((1..2500).map { |i| "model/file#{i}.stl" })
+      allow(job).to receive(:known_filenames).and_return([])
+
+      # Verify that each_slice is called (batching mechanism)
+      expect_any_instance_of(Array).to receive(:each_slice).with(described_class::BATCH_SIZE).and_call_original # rubocop:disable RSpec/AnyInstance
+
+      job.folders_with_changes(library)
+    end
+  end
 end
