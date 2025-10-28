@@ -54,19 +54,6 @@
           </span>
         <% end %>
         <table class="table table-borderless table-sm">
-          <% if SiteSettings.federation_enabled? %>
-            <tr>
-              <td>⁂</td>
-              <td><% if @model.remote? %>
-                <small><%= link_to @model.federails_actor.at_address, @model.federails_actor.profile_url, target: "new" %></small>
-              <% else %>
-                <small>
-                  <%= @model.federails_actor.short_at_address %>
-                  <%= render Components::CopyButton.new(text: @model.federails_actor.at_address) %>
-                </small>
-              <% end %></td>
-            </tr>
-          <% end %>
           <% if @model.creator %>
             <tr>
               <td><%= icon "person", Creator.model_name.human %></td>
@@ -116,6 +103,19 @@
             <td><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc), filter: @filter %></td>
           </tr>
           <% if SiteSettings.social_enabled? %>
+            <% if SiteSettings.federation_enabled? %>
+              <tr>
+                <td>⁂</td>
+                <td><% if @model.remote? %>
+                  <small><%= link_to @model.federails_actor.at_address, @model.federails_actor.profile_url, target: "new" %></small>
+                <% else %>
+                  <small>
+                    <%= @model.federails_actor.short_at_address %>
+                    <%= render Components::CopyButton.new(text: @model.federails_actor.at_address) %>
+                  </small>
+                <% end %></td>
+              </tr>
+            <% end %>
             <tr>
               <td><%= icon "people", t(".followers") %></td>
               <td><%= t("general.followers", count: @model.followers.count) %></td>
