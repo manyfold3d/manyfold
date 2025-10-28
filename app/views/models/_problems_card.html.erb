@@ -1,0 +1,28 @@
+<%= card(max_problem_severity(problems), Problem.model_name.human(count: 100)) do %>
+  <% problems.each do |problem| %>
+    <div class="clearfix">
+      <%= turbo_stream_from problem %>
+      <details>
+        <summary><%= t("problems.model.%{cat}.title" % {cat: problem.category}) %></summary>
+        <div class="card mb-2">
+          <div class="card-body">
+            <p>
+              <%= t("problems.model.%{cat}.description" % {cat: problem.category}, note: problem.note) %>
+            </p>
+            <% if problem.category == "nesting" && @model.contains_other_models? %>
+              <ul>
+                <% @model.contained_models.each do |target| %>
+                  <li><%= link_to target.name, model_path(target) %></li>
+                <% end %>
+              </ul>
+              <p>
+                <%= t("problems.model.nesting.warning") %>
+              </p>
+            <% end %>
+            <div class="text-end"><%= render Components::ResolveButton.new(problem: problem, user: current_user) %></div>
+          </div>
+        </div>
+      </details>
+    </div>
+  <% end %>
+<% end %>
