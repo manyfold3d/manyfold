@@ -1,6 +1,10 @@
 ---
 es:
   tour:
+    libraries:
+      new:
+        description:
+        title:
     navbar:
       account:
         description:
