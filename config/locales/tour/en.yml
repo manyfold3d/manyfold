@@ -14,5 +14,8 @@ en:
         description: Models can be grouped together into "collections"; for instance, models with a similar theme or purpose.
       creators:
         description: A "creator" is the designer, publisher or author of a model.
+      main:
+        description: This short tour will briefly explain the most important site features and concepts.
+        title: Welcome to %{name}!
       models:
         description: A "model" in Manyfold is a 3D file or set of files which go together; e.g. parts of a single assembly, or a kit. A model could also include instruction documents, pictures, and so on.

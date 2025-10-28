@@ -1,4 +1,7 @@
-<nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+<%= content_tag :nav, class: "navbar navbar-expand-md bg-primary", id: "main-navbar",
+      data: {
+        bs_theme: "dark"
+      }.merge(tour_attributes(id: "main-navbar", title: t("tour.navbar.main.title", name: site_name), description: t("tour.navbar.main.description"))) do %>
   <div class='container-fluid'>
     <a class="navbar-brand ms-2" href="<%= root_path %>" aria-label="<%= translate ".home" %>">
       <%= image_tag site_icon, alt: site_name, height: "40px", class: "me-2" %>
@@ -135,4 +138,4 @@
       </ul>
     </div>
   </div>
-</nav>
+<% end %>
