@@ -15,9 +15,9 @@ class Components::DownloadButton < Components::Base
 
   def view_template
     div class: "btn-group ml-auto mr-auto" do
-      download_link html_class: "btn btn-lg btn-primary"
+      download_link html_class: "btn btn-primary"
       button(type: "button",
-        class: "btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split",
+        class: "btn btn-primary dropdown-toggle dropdown-toggle-split",
         "data-bs-toggle": "dropdown",
         "aria-expanded": "false") do
         span(class: "visually-hidden") { t("components.download_button.menu_header") }
