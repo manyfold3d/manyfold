@@ -48,6 +48,11 @@
     </div>
     <div class="col-md-3" id="sidebar">
       <%= card :secondary, t(".model_details") do %>
+        <% if SiteSettings.federation_enabled? %>
+          <span class="float-end">
+            <%= render Components::FollowButton.new(follower: current_user, target: @model) %>
+          </span>
+        <% end %>
         <table class="table table-borderless table-sm">
           <% if SiteSettings.federation_enabled? %>
             <tr>
@@ -121,18 +126,22 @@
             <td><%= render Components::AccessIndicator.new(object: @model, text: true, icon: false) %></td>
           </tr>
         </table>
-        <%= render Components::FollowButton.new(follower: current_user, target: @model) unless @model.remote? %>
-        <%= render Components::GoButton.new(icon: "pencil", label: t("general.edit"), href: edit_model_path(@model), variant: "primary") if policy(@model).edit? %>
-        <%= render Components::DoButton.new(icon: "trash", label: t("general.delete"), href: model_path(@model), method: :delete, variant: "outline-danger", confirm: translate("models.destroy.confirm")) if policy(@model).destroy? %>
+        <button class="btn btn-outline-secondary float-end">
+          <%= render Components::BurgerMenu.new do %>
+            <%= render Components::DropdownItem.new(icon: "pencil", label: t(".files_card.bulk_edit"), path: bulk_edit_model_model_files_path(@model)) if policy(@model).edit? %>
+            <%= render Components::DropdownItem.new(icon: "radar", label: t(".rescan"), path: scan_model_path(@model), method: :post) if policy(@model).scan? %>
+            <hr class="dropdown-divider">
+            <%= render Components::DropdownItem.new(icon: "pencil", label: translate("general.edit"), path: edit_model_path(@model), aria_label: translate(".edit_button.label", name: @model.name)) if policy(@model).edit? %>
+            <%= render Components::DropdownItem.new(icon: "trash", label: translate("general.delete"), path: model_path(@model), method: :delete, aria_label: translate(".delete_button.label", name: @model.name), confirm: t("models.destroy.confirm")) if policy(@model).destroy? %>
+            <hr class="dropdown-divider">
+            <%= render Components::DropdownItem.new(icon: "flag", label: translate("general.report", type: ""), path: new_model_report_path(@model)) if SiteSettings.multiuser_enabled? %>
+          <% end %>
+        </button>
       <% end %>
 
       <div class="mb-3 w-100 text-center">
         <%= render Components::DownloadButton.new(model: @model) %>
       </div>
-
-      <%= card :secondary, t("layouts.card_list_page.actions_heading") do %>
-        <%= render Components::ReportButton.new(object: @model, path: new_model_report_path(@model)) %>
-      <% end if SiteSettings.multiuser_enabled? %>
 
       <% if !@model.parents.empty? && policy(@model).merge? %>
         <%= card :danger, t(".merge.heading") do %>
@@ -155,8 +164,6 @@
             <li><a href="#<%= group.parameterize %>"><%= group.strip.careful_titleize %>*</a></li>
           <% end %>
         </ul>
-        <%= link_to t(".files_card.bulk_edit"), bulk_edit_model_model_files_path(@model), class: "btn btn-secondary" if policy(@model).edit? %>
-        <%= link_to t(".rescan"), scan_model_path(@model), class: "btn btn-warning", method: :post if policy(@model).scan? %>
       <% end %>
 
       <%= render "links_card", links: @model.links %>
