@@ -1,4 +1,4 @@
-<%= card(max_problem_severity(problems), Problem.model_name.human(count: 100)) do %>
+<%= card("secondary", safe_join([Problem.model_name.human(count: 100), problem_icon_tag(problems)], " ")) do %>
   <% problems.each do |problem| %>
     <div class="clearfix">
       <%= turbo_stream_from problem %>
