@@ -183,6 +183,10 @@ class User < ApplicationRecord
     permitted_models.with_permission("own").sum(&:size_on_disk)
   end
 
+  def first_use?
+    reset_password_token == "first_use"
+  end
+
   private
 
   def set_quota
