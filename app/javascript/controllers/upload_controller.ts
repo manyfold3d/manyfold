@@ -24,6 +24,7 @@ export default class extends Controller {
   singleMessage: HTMLDivElement | null = null
 
   connect (): void {
+    this.sweepLocalStorage()
     if (this.uppy != null) { return }
     const settings = (this.element as HTMLElement).dataset
     this.uppy = new Uppy({
@@ -105,5 +106,21 @@ export default class extends Controller {
     if (this.nameField != null) { this.nameField.style.display = 'block' }
     if (this.multiMessage != null) { this.multiMessage.style.display = 'none' }
     if (this.singleMessage != null) { this.singleMessage.style.display = 'block' }
+  }
+
+  sweepLocalStorage (): void {
+    // Remove upload records older than 12 hours. Cache sweep is 6 hours, so after 12, the upstream file
+    // is definitely gone and there's no point having the local record.
+    const cutoff = Date.now() - (12 * 60 * 60 * 1000)
+    // Get all the localStorage upload records
+    const keys = Object.keys(localStorage).filter((x) => x.startsWith('tus::tus-uppy'))
+    for (const key of keys) {
+      const value = localStorage.getItem(key)
+      if (value != null) {
+        if (Date.parse(JSON.parse(value).creationTime) < cutoff) {
+          localStorage.removeItem(key)
+        }
+      }
+    }
   }
 }
