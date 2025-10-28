@@ -1,9 +1,12 @@
-<%= card("secondary", safe_join([Problem.model_name.human(count: 100), problem_icon_tag(problems)], " ")) do %>
+<%= card("secondary", Problem.model_name.human(count: 100)) do %>
   <% problems.each do |problem| %>
     <div class="clearfix">
       <%= turbo_stream_from problem %>
       <details>
-        <summary><%= t("problems.model_file.%{cat}.title" % {cat: problem.category}) %></summary>
+        <summary>
+          <%= problem_icon_tag(problem) %>
+          <%= t("problems.model_file.%{cat}.title" % {cat: problem.category}) %>
+        </summary>
         <div class="card mb-2">
           <div class="card-body">
             <p>
