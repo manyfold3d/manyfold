@@ -1,10 +1,6 @@
 ---
 en:
   tour:
-    libraries:
-      new:
-        description: A "library" is a physical storage location for your files. It could be a local folder, or a cloud storage bucket. You could have just one, or you might have many; it's up to you. If there are already files in the library, they will be scanned and added to Manyfold automatically.
-        title: Libraries
     navbar:
       account:
         description: In your settings, you can change your login details, preferred rendering style, pagination options, and more.

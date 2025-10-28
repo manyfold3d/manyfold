@@ -1,10 +1,6 @@
 ---
 nl:
   tour:
-    libraries:
-      new:
-        description:
-        title:
     navbar:
       account:
         description:
