@@ -105,6 +105,10 @@
           <div><%= t("general.followers", count: @model.followers.count) %></div>
           <%= render Components::AccessIndicator.new(object: @model, text: false) %>
           <%= render Components::AccessIndicator.new(object: @model, text: true, icon: false) %>
+          <% unless @model.links.empty? %>
+            <div><%= icon "link-45deg", Model.human_attribute_name(:links) %></div>
+            <%= render Components::LinkList.new links: @model.links, icons: false %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -146,8 +150,6 @@
           <% end %>
         </ul>
       <% end %>
-
-      <%= render "links_card", links: @model.links %>
 
       <% if policy(@model).upload? %>
         <%= card :secondary, t(".upload_card.heading") do %>
