@@ -49,50 +49,59 @@
       <% if @file.caption %>
         <p class='lead'><%= @file.caption %></p>
       <% end %>
-      <p>
-        <%= ModelFile.human_attribute_name :filename %>:
-        <code><%= @file.filename %></code>
-      </p>
-      <% if @file.digest %>
-        <p>
-          <%= ModelFile.human_attribute_name :digest %>:
-          <code><%= @file.digest.slice(0, 16) %></code>
-        </p>
-      <% end %>
-      <% if @file.size %>
-        <p>
-          <%= ModelFile.human_attribute_name :size %>
-          <code><%= number_to_human_size @file.size, precision: 2 %></code>
-        </p>
-      <% end %>
-      <% if @file.dimensions %>
-        <p>
-          <%= ModelFile.human_attribute_name :dimensions %>:
-          𝒙 <code><%= format("%g", @file.dimensions.x.round(1)) %></code>
-          𝒚 <code><%= format("%g", @file.dimensions.y.round(1)) %></code>
-          𝒛 <code><%= format("%g", @file.dimensions.z.round(1)) %></code>
-        </p>
-      <% end %>
-      <%= link_to safe_join([icon("pencil", t("general.edit")), t("general.edit")], " "), edit_model_model_file_path(@model, @file), class: "btn btn-primary" if policy(@file).edit? %>
-      <%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), model_model_file_path(@model, @file), {method: "delete", data: {confirm: translate("model_files.destroy.confirm")}, class: "btn btn-outline-danger"} if policy(@file).destroy? %>
+      <div class="details-table">
+        <div><%= ModelFile.human_attribute_name :filename %></div>
+        <div><code><%= @file.filename %></code></div>
+        <% if @file.digest %>
+          <div>
+            <%= ModelFile.human_attribute_name :digest %>
+          </div>
+          <div>
+            <code><%= @file.digest.slice(0, 16) %></code>
+          </div>
+        <% end %>
+        <% if @file.size %>
+          <div>
+            <%= ModelFile.human_attribute_name :size %>
+          </div>
+          <div>
+            <code><%= number_to_human_size @file.size, precision: 2 %></code>
+          </div>
+        <% end %>
+        <% if @file.dimensions %>
+          <div>
+            <%= ModelFile.human_attribute_name :dimensions %>
+          </div>
+          <div>
+            𝒙 <code><%= format("%g", @file.dimensions.x.round(1)) %></code>
+            𝒚 <code><%= format("%g", @file.dimensions.y.round(1)) %></code>
+            𝒛 <code><%= format("%g", @file.dimensions.z.round(1)) %></code>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="btn-group">
+      <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), model_model_file_path(@model, @file, @file.extension&.to_sym, download: "true"), {class: "btn btn-primary", download: "download"} %>
+      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="visually-hidden">Download options</span>
+      </button>
+      <ul class="dropdown-menu">
+        <li class="dropdown-header"><%= t(".download.menu_header") %></li>
+        <%= slicer_links @file %>
+      </ul>
+    </div>
+    <div class="float-end">
+      <button class="btn btn-outline-secondary">
+        <%= render Components::BurgerMenu.new do %>
+          <%= render Components::DropdownItem.new(icon: "pencil", label: translate("general.edit"), path: edit_model_model_file_path(@model, @file)) if policy(@model).edit? %>
+          <%= render Components::DropdownItem.new(icon: "trash", label: translate("general.delete"), path: model_model_file_path(@model, @file), method: :delete, confirm: t("model_files.destroy.confirm")) if policy(@file).destroy? %>
+        <% end %>
+      </button>
     <% end %>
 
     <%= render partial: "problems_card", locals: {problems: @file.problems.visible(problem_settings)} %>
-
-    <%= card :secondary, t("layouts.card_list_page.actions_heading") do %>
-
-      <div class="btn-group ml-auto mr-auto">
-        <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), model_model_file_path(@model, @file, @file.extension&.to_sym, download: "true"), {class: "btn btn-secondary", download: "download"} %>
-        <button type="button" class="btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-          <span class="visually-hidden">Download options</span>
-        </button>
-        <ul class="dropdown-menu">
-          <li class="dropdown-header"><%= t(".download.menu_header") %></li>
-          <%= slicer_links @file %>
-        </ul>
-      </div>
-
-    <% end %>
 
   </div>
 </div>
