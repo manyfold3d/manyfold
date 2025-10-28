@@ -26,7 +26,7 @@ class Scan::Library::DetectFilesystemChangesJob < ApplicationJob
 
     changed_folders = Set.new
 
-    # Build a Set of known file paths using optimized SQL query
+    # Build Set of known file paths (uses eager loading to avoid N+1 queries)
     known_paths = known_filenames(library).to_set
 
     # Patterns for thingiverse false-positives
@@ -39,26 +39,25 @@ class Scan::Library::DetectFilesystemChangesJob < ApplicationJob
     disk_files = disk_files.to_a unless disk_files.is_a?(Array)
 
     # Find files on disk that aren't in database (new files)
-    # Process in batches to reduce peak memory usage when checking against set
+    # Process in batches to reduce peak memory usage
     disk_files.each_slice(BATCH_SIZE) do |batch|
       batch.each do |path|
-        # Skip thingiverse false-positives
         next if thingiverse_patterns.any? { |pattern| path =~ pattern }
 
         unless known_paths.include?(path)
-          # File exists on disk but not in database - it's new
           changed_folders.add(File.dirname(path))
         end
       end
     end
 
     # Find files in database that aren't on disk (deleted files)
-    # Process known_paths in batches to reduce peak memory usage
+    # Process in batches to reduce peak memory usage
     disk_files_set = disk_files.to_set
     known_paths.each_slice(BATCH_SIZE) do |batch|
       batch.each do |path|
+        next if thingiverse_patterns.any? { |pattern| path =~ pattern }
+
         unless disk_files_set.include?(path)
-          # File exists in database but not on disk - it's deleted
           changed_folders.add(File.dirname(path))
         end
       end
