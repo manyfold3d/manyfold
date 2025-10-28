@@ -355,6 +355,7 @@ module ApplicationHelper
   end
 
   def tour_attributes(id:, title:, description:)
+    return {} if current_user&.first_use?
     {
       "tour-id": id,
       "tour-id-completed": current_user&.tour_state&.dig("completed")&.include?(id),

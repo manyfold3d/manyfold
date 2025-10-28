@@ -136,7 +136,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def detect_if_first_use
-    if current_user.reset_password_token == "first_use"
+    if current_user.first_use?
       @first_use = true
       devise_parameter_sanitizer.permit(:account_update, keys: [:username])
     end
