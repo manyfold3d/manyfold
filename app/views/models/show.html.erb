@@ -98,12 +98,14 @@
               </td>
             </tr>
           <% end %>
-          <tr>
-            <td><%= icon "folder", t(".path") %></td>
-            <td>
-              <%= content_tag(:code, class: "path") { safe_join @model.path.split("/"), safe_join([tag.wbr, "/"]) } %>
-            </td>
-          </tr>
+          <% if current_user&.is_administrator? %>
+            <tr>
+              <td><%= icon "folder", t(".path") %></td>
+              <td>
+                <%= content_tag(:code, class: "path") { safe_join @model.path.split("/"), safe_join([tag.wbr, "/"]) } %>
+              </td>
+            </tr>
+          <% end %>
           <tr>
             <td><%= icon "tag", t(".tags") %></td>
             <td><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc), filter: @filter %></td>
