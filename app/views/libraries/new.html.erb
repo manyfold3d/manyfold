@@ -1,3 +1,5 @@
-<h1><%= t("libraries.general.new") %></h1>
+<%= content_tag :h1, id: "new-library", data: tour_attributes(id: "new-library", title: t("tour.libraries.new.title"), description: t("tour.libraries.new.description")) do %>
+  <%= t("libraries.general.new") %>
+<% end %>
 
 <%= render "form" %>
