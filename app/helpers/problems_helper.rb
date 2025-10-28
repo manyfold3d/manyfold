@@ -21,7 +21,7 @@ module ProblemsHelper
   end
 
   def problem_icon_tag(problems)
-    severity = max_problem_severity(problems)
+    severity = problems.is_a?(Problem) ? problem_severity(problems) : max_problem_severity(problems)
     ico = problem_icon(severity)
     content_tag(:span, icon(ico, t("problems.severities.#{severity}")), class: "text-#{severity} align-middle") if ico # rubocop:todo I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
   end

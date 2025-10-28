@@ -140,3 +140,9 @@ div.form-control.tag-container {
     display: block;
   }
 }
+
+.details-table {
+  display: grid;
+  grid-template-columns: min-content auto;
+  gap: 0.5em;
+}

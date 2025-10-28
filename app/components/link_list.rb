@@ -5,8 +5,9 @@ class Components::LinkList < Components::Base
 
   register_value_helper :policy
 
-  def initialize(links:)
+  def initialize(links:, icons: true)
     @links = links
+    @icons = icons
   end
 
   def view_template
@@ -15,11 +16,7 @@ class Components::LinkList < Components::Base
       @links.each do |link|
         if link.valid?
           li do
-            if link.problems.exists?
-              Icon(icon: "exclamation-triangle-fill")
-            else
-              Icon(icon: "link-45deg")
-            end
+            Icon(icon: "link-45deg") if @icons
             whitespace
             link_to t("sites.%{site}" % {site: link.site}, default: "%{site}" % {site: link.site}), link.url, rel: "noreferrer"
             if link.deserializer.present? && policy(link.linkable).sync?
@@ -27,6 +24,7 @@ class Components::LinkList < Components::Base
               link_to({action: "sync", id: link.linkable, link: link.id}, {method: :post}) do
                 Icon(icon: "arrow-repeat", label: t("components.link_list.sync"))
               end
+              Icon(icon: "exclamation-triangle-fill") if link.problems.exists?
             end
           end
         end
