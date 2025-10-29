@@ -223,7 +223,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0)
     database_cleaner-core (2.0.1)
-    date (3.4.1)
+    date (3.5.0)
     devise (4.9.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -661,7 +661,7 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
-    rake (13.3.0)
+    rake (13.3.1)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
@@ -877,7 +877,7 @@ GEM
     treetop (1.6.14)
       polyglot (~> 0.3)
     tsort (0.2.0)
-    turbo-rails (2.0.17)
+    turbo-rails (2.0.20)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     tus-server (2.3.0)
@@ -1047,7 +1047,7 @@ DEPENDENCIES
   sys-filesystem (~> 1.5)
   to_regexp (~> 0.2)
   translation (~> 1.41)
-  turbo-rails (~> 2.0.17)
+  turbo-rails (~> 2.0.20)
   tus-server (~> 2.3)
   tzinfo-data
   vcr (~> 6.3)
@@ -1122,7 +1122,7 @@ CHECKSUMS
   data_migrate (11.3.1) sha256=18b9b2189d15e482d5335f3fc2248b8b447204bd8257ded872dd077737168ffb
   database_cleaner-active_record (2.2.2) sha256=88296b9f3088c31f7c0d4fcec10f68e4b71c96698043916de59b04debec10388
   database_cleaner-core (2.0.1) sha256=8646574c32162e59ed7b5258a97a208d3c44551b854e510994f24683865d846c
-  date (3.4.1) sha256=bf268e14ef7158009bfeaec40b5fa3c7271906e88b196d958a89d4b408abe64f
+  date (3.5.0) sha256=5e74fd6c04b0e65d97ad4f3bb5cb2d8efb37f386cc848f46310b4593ffc46ee5
   devise (4.9.4) sha256=920042fe5e704c548aa4eb65ebdd65980b83ffae67feb32c697206bfd975a7f8
   devise_zxcvbn (6.0.0) sha256=92b45f0b50657f17d9472dfb72b4414482f59942a0cbdd8c4346e054d77ee3ee
   diff-lcs (1.6.2) sha256=9ae0d2cba7d4df3075fe8cd8602a8604993efc0dfa934cff568969efb1909962
@@ -1291,7 +1291,7 @@ CHECKSUMS
   rails_performance (1.5.2) sha256=f9b2f2f1e93369d0c8ff0b0d0bc1002f994111a7c42353bc55bc9db9e485575f
   railties (8.0.2.1) sha256=54e40e1771fc2878f572d5a4e076cddb057ba8d4d471f8b7d9bfc61bc1301d4c
   rainbow (3.1.1) sha256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
-  rake (13.3.0) sha256=96f5092d786ff412c62fde76f793cc0541bd84d2eb579caa529aa8a059934493
+  rake (13.3.1) sha256=8c9e89d09f66a26a01264e7e3480ec0607f0c497a861ef16063604b1b08eb19c
   rb-fsevent (0.11.2) sha256=43900b972e7301d6570f64b850a5aa67833ee7d87b458ee92805d56b7318aefe
   rb-inotify (0.11.1) sha256=a0a700441239b0ff18eb65e3866236cd78613d6b9f78fea1f9ac47a85e47be6e
   rdf (3.3.4) sha256=a77fa0821e5b4e2bea9fdbb7c9d980564c89d27e81979690ce5c9e6bc80859c1
@@ -1375,7 +1375,7 @@ CHECKSUMS
   translation (1.41) sha256=8a6e66fb158b7b9fdf53920db1ea587f2e00c2f705cfb0f18a8e714f6dc19f01
   treetop (1.6.14) sha256=ba31d1911ce53dbc68208b9e6b421d48d16bfc99551e5efb5bc71bbc8fc7aed4
   tsort (0.2.0) sha256=9650a793f6859a43b6641671278f79cfead60ac714148aabe4e3f0060480089f
-  turbo-rails (2.0.17) sha256=49fd304b62e1b7f308f4feda49d1e1941ec90e6cd2f16cd0d9f8380e72c21926
+  turbo-rails (2.0.20) sha256=cbcbb4dd3ce59f6471c9f911b1655b2c721998cc8303959d982da347f374ea95
   tus-server (2.3.0) sha256=fb5a2927d2511b4e735d2914b8a5a278ece38fec4cb8466c8bbb879059cfea19
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   tzinfo-data (1.2024.1) sha256=0219144089daa83b9c5972e9e22b38042a97964e12608cd657d2ce6a7a6de1e5
