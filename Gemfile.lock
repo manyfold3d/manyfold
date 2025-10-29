@@ -142,8 +142,8 @@ GEM
     ast (2.4.3)
     attr_required (1.0.2)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1174.0)
-    aws-sdk-core (3.234.0)
+    aws-partitions (1.1178.0)
+    aws-sdk-core (3.235.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -154,7 +154,7 @@ GEM
     aws-sdk-kms (1.115.0)
       aws-sdk-core (~> 3, >= 3.234.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.201.0)
+    aws-sdk-s3 (1.202.0)
       aws-sdk-core (~> 3, >= 3.234.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -943,7 +943,7 @@ DEPENDENCIES
   altcha-rails (~> 0.0.6)
   arel_extensions (~> 2.3)
   assimp-ffi!
-  aws-sdk-s3 (< 1.202)
+  aws-sdk-s3 (< 1.203)
   better_content_security_policy (~> 0.1)
   bootsnap (~> 1.18)
   brakeman (~> 7.1)
@@ -1082,10 +1082,10 @@ CHECKSUMS
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
   attr_required (1.0.2) sha256=f0ebfc56b35e874f4d0ae799066dbc1f81efefe2364ca3803dc9ea6a4de6cb99
   aws-eventstream (1.4.0) sha256=116bf85c436200d1060811e6f5d2d40c88f65448f2125bc77ffce5121e6e183b
-  aws-partitions (1.1174.0) sha256=40e58abd528fa3e2b2c177ccb2c53bab1d4b7fc565653699bf9ae996c85f40ac
-  aws-sdk-core (3.234.0) sha256=bbaaf1a0cd233b61f11acd0e9092cdf87f47e0398b996c99741d62ad7d54fd19
+  aws-partitions (1.1178.0) sha256=0f659ed9117ea0d26e6cec3d9820a1d0ea2d41900f66846c98627984f733f242
+  aws-sdk-core (3.235.0) sha256=75af52bd96259f286bfcc67959210f0091aaba1d595ceaed2c8bd1435b86cf90
   aws-sdk-kms (1.115.0) sha256=b7317ac68fed589a4147fcae606d51881f400f6a06d2ea5abd03626ccb59190b
-  aws-sdk-s3 (1.201.0) sha256=2f38f8f78b3b15178e9f7a15362dc2073d18af2a3266ad5c28957091d9a5eec8
+  aws-sdk-s3 (1.202.0) sha256=d1c2b3f2c66cc2aa09f9d7733e89a5be0eeaa1df04f469e0a2fda832652a964a
   aws-sigv4 (1.12.1) sha256=6973ff95cb0fd0dc58ba26e90e9510a2219525d07620c8babeb70ef831826c00
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
   bcp47_spec (0.2.1) sha256=3fd62edf96c126bd9624e4319ac74082a966081859d1ee0ef3c3041640a37810
