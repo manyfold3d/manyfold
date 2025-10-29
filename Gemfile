@@ -147,7 +147,7 @@ gem "shrine", "~> 3.6"
 gem "tus-server", "~> 2.3"
 gem "shrine-tus", "~> 2.1"
 
-gem "aws-sdk-s3", "< 1.202"
+gem "aws-sdk-s3", "< 1.203"
 
 gem "better_content_security_policy", "~> 0.1"
 
