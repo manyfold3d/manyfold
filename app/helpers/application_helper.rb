@@ -322,10 +322,6 @@ module ApplicationHelper
     params.permit(:maxwidth, :maxheight)
   end
 
-  def render_component_collection(component, param, collection, kwargs = {})
-    safe_join(collection.map { |it| render component.new(**{param => it}.merge(kwargs)) }, " ")
-  end
-
   def indexable_select_options(object)
     current = object.inherited_indexable? ? translate("application_helper.indexable_select_options.yes") : translate("application_helper.indexable_select_options.no")
     options_for_select(
