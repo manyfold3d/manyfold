@@ -648,7 +648,7 @@ GEM
     rails-settings-cached (2.9.6)
       activerecord (>= 5.0.0)
       railties (>= 5.0.0)
-    rails_performance (1.5.2)
+    rails_performance (1.6.0)
       browser
       railties
       redis
@@ -1011,7 +1011,7 @@ DEPENDENCIES
   rails-controller-testing (~> 1.0)
   rails-i18n (~> 8.0)
   rails-settings-cached (~> 2.9)
-  rails_performance (~> 1.5)
+  rails_performance (~> 1.6)
   redis (~> 5.4)
   redis-namespace
   reverse_markdown (~> 3.0)
@@ -1288,7 +1288,7 @@ CHECKSUMS
   rails-html-sanitizer (1.6.2) sha256=35fce2ca8242da8775c83b6ba9c1bcaad6751d9eb73c1abaa8403475ab89a560
   rails-i18n (8.0.1) sha256=15303195450bdac9a80636cf14c7e5ada2f43907cc60fcd19bbb3f81ab45be0d
   rails-settings-cached (2.9.6) sha256=761d6128221f1a162950b8b3911e233f3a49c6ecfd8b421110ed060e8c58a9b8
-  rails_performance (1.5.2) sha256=f9b2f2f1e93369d0c8ff0b0d0bc1002f994111a7c42353bc55bc9db9e485575f
+  rails_performance (1.6.0) sha256=712029a95c051ba98da362da98307a855bbf37f458e3cf186425bfea1ee37c48
   railties (8.0.2.1) sha256=54e40e1771fc2878f572d5a4e076cddb057ba8d4d471f8b7d9bfc61bc1301d4c
   rainbow (3.1.1) sha256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
   rake (13.3.1) sha256=8c9e89d09f66a26a01264e7e3480ec0607f0c497a861ef16063604b1b08eb19c
