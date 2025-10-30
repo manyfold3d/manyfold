@@ -1,6 +1,6 @@
 <div class="card">
   <h2 class="card-header">
-    <%= render Components::Icon.new icon: "send" %>
+    <%= Icon icon: "send" %>
     <%= t ".title" %>
   </h2>
 
@@ -13,14 +13,14 @@
         <%= t ".new_creator.content" %>
       </p>
       <div class="text-end">
-        <%= render Components::GoButton.new(label: t(".new_creator.button"), href: new_creator_path, variant: :primary, icon: "box-arrow-up-right") %>
+        <%= GoButton(label: t(".new_creator.button"), href: new_creator_path, variant: :primary, icon: "box-arrow-up-right") %>
       </div>
     <%- else %>
       <p>
         <%= t ".existing_creator.content" %>
       </p>
       <div class="text-end">
-        <%= render Components::GoButton.new(label: t(".existing_creator.button"), href: edit_creator_path(current_user.creators.first), variant: :primary, icon: "box-arrow-up-right") %>
+        <%= GoButton(label: t(".existing_creator.button"), href: edit_creator_path(current_user.creators.first), variant: :primary, icon: "box-arrow-up-right") %>
       </div>
     <%- end %>
   </div>

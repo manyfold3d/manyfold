@@ -1,5 +1,5 @@
 <% unless links.empty? %>
   <%= card :secondary, Link.model_name.human(count: 100) do %>
-    <%= render Components::LinkList.new links: links %>
+    <%= LinkList links: links %>
   <% end %>
 <% end %>

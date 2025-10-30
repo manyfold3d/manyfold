@@ -11,7 +11,7 @@
         <%= form.hidden_field "models[]", value: it.public_id %>
         <%= form.radio_button :target, it.public_id, id: it.public_id %>
         <label for="<%= it.public_id %>">
-          <%= render Components::ModelSummary.new(model: it) %>
+          <%= ModelSummary(model: it) %>
         </label>
       </div>
     <% end %>

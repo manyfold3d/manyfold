@@ -22,7 +22,7 @@ module ModelsHelper
 
   def status_badges(model)
     badges = []
-    badges << content_tag(:span, icon("bi bi-stars", t("general.new")), class: "text-warning align-middle") if model.new?
+    badges << content_tag(:span, Icon(icon: "stars", label: t("general.new")), class: "text-warning align-middle") if model.new?
     badges << problem_icon_tag(problems_including_files(model).visible(problem_settings)) if policy(Problem).show?
     content_tag :span, safe_join(badges, " "), class: "status-badges"
   end

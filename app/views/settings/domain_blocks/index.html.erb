@@ -12,7 +12,7 @@
     <tr>
       <td><%= block.domain %></td>
       <td><%= block.created_at %></td>
-      <td><%= link_to safe_join([icon("trash", t("general.delete")), t("general.delete")], " "), settings_domain_block_path(block), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: translate(".confirm_destroy")}} if policy(block).destroy? %></td>
+      <td><%= link_to safe_join([Icon(icon: "trash", label: t("general.delete")), t("general.delete")], " "), settings_domain_block_path(block), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: translate(".confirm_destroy")}} if policy(block).destroy? %></td>
     </tr>
   <% end %>
 </table>

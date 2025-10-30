@@ -17,7 +17,7 @@
   </tr>
   <% @jobs.each do |status| %>
     <tr class="<%= activity_row_style(status[:status]) %>">
-      <td><%= status_icon(status[:status]) %></td>
+      <td><%= status_Icon(status[:status]) %></td>
       <td><%= status.read.dig(:serialized_job, "job_class") %></td>
       <td><%= time_ago_in_words status.last_activity if status.last_activity %></td>
       <td><%= status[:exception]&.fetch(:message, nil) || t(status[:step] || status[:error]) %></td>

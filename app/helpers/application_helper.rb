@@ -11,10 +11,6 @@ module ApplicationHelper
     SiteSettings.site_icon.presence || "roundel.svg"
   end
 
-  def icon(icon, label, id: nil, effect: nil)
-    render Components::Icon.new(icon: icon, label: label, id: id, effect: effect)
-  end
-
   def icon_for(klass)
     case klass.name
     when "Creator"
@@ -54,7 +50,7 @@ module ApplicationHelper
             options[:collapse] ?
               safe_join([
                 title,
-                tag.span(icon("arrows-expand", t("general.expand")), class: "float-end d-#{options[:collapse]}-none"),
+                tag.span(Icon(icon: "arrows-expand", label: t("general.expand")), class: "float-end d-#{options[:collapse]}-none"),
                 tag.a(
                   nil,
                   class: "link-unstyled stretched-link d-#{options[:collapse]}-none",
@@ -235,7 +231,7 @@ module ApplicationHelper
             safe_join [
               form.file_field(name, class: "form-control"),
               options[:remove] ? form.check_box(:"remove_#{name}", class: "btn-check", autocomplete: "off") : nil,
-              options[:remove] ? form.label(:"remove_#{name}", icon("trash", options[:remove_label]), class: "btn btn-outline-danger") : nil
+              options[:remove] ? form.label(:"remove_#{name}", Icon(icon: "trash", label: options[:remove_label]), class: "btn btn-outline-danger") : nil
             ].compact
           end,
           errors_for(form.object, name),
@@ -249,7 +245,7 @@ module ApplicationHelper
     link_to(
       safe_join(
         [
-          content_tag(:span, icon(ico, options[:title].presence || text), class: options[:icon_style]),
+          content_tag(:span, Icon(icon: ico, label: options[:title].presence || text), class: options[:icon_style]),
           content_tag(:span, text, class: options[:text_style])
         ],
         " "
@@ -324,10 +320,6 @@ module ApplicationHelper
 
   def oembed_params
     params.permit(:maxwidth, :maxheight)
-  end
-
-  def render_component_collection(component, param, collection, kwargs = {})
-    safe_join(collection.map { |it| render component.new(**{param => it}.merge(kwargs)) }, " ")
   end
 
   def indexable_select_options(object)

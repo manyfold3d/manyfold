@@ -8,15 +8,15 @@
     <div class="col-md-6">
       <div class="card <%= "border-info" if library.default? %>">
         <div class="card-header">
-          <%= icon(library.icon, library.icon) if library.icon %>
+          <%= Icon(icon: library.icon, label: library.icon) if library.icon %>
           <%= library.name %>
           <%= content_tag(:small, class: "text-info float-end") { t("activerecord.attributes.library.default") } if library.default? %>
         </div>
         <div class="card-body">
           <div class="float-end">
-            <%= render Components::GoButton.new(icon: "box", icon_only: true, label: Model.model_name.human.pluralize, href: models_path(library: library.to_param), variant: "outline-secondary") %>
-            <%= render Components::DoButton.new(icon: "radar", icon_only: true, label: t("application.navbar.scan_changes"), href: scans_path(library: library.to_param), method: :post, variant: "outline-warning") if policy(:scan).create? %>
-            <%= render Components::GoButton.new(icon: "pencil", label: t("general.edit"), href: edit_library_path(library), variant: :secondary) %>
+            <%= GoButton(icon: "box", icon_only: true, label: Model.model_name.human.pluralize, href: models_path(library: library.to_param), variant: "outline-secondary") %>
+            <%= DoButton(icon: "radar", icon_only: true, label: t("application.navbar.scan_changes"), href: scans_path(library: library.to_param), method: :post, variant: "outline-warning") if policy(:scan).create? %>
+            <%= GoButton(icon: "pencil", label: t("general.edit"), href: edit_library_path(library), variant: :secondary) %>
           </div>
           <p>
             <%= markdownify(library.notes) if library.notes %>
@@ -68,9 +68,9 @@
             </tr>
           </table>
           <div class="row">
-            <%= render Components::StatBlock.new(title: Model, value: model_count(library: library)) %>
-            <%= render Components::StatBlock.new(title: ModelFile, value: model_file_count(library: library)) %>
-            <%= render Components::StatBlock.new(title: t("settings.show.total_file_size"), value: number_to_human_size(total_file_size(library: library), precision: 2)) %>
+            <%= StatBlock(title: Model, value: model_count(library: library)) %>
+            <%= StatBlock(title: ModelFile, value: model_file_count(library: library)) %>
+            <%= StatBlock(title: t("settings.show.total_file_size"), value: number_to_human_size(total_file_size(library: library), precision: 2)) %>
           </div>
         </div>
       </div>

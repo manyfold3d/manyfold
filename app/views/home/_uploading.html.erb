@@ -1,6 +1,6 @@
 <div class="card">
   <h2 class="card-header">
-    <%= render Components::Icon.new icon: "upload" %>
+    <%= Icon icon: "upload" %>
     <%= t ".title" %>
   </h2>
 
@@ -20,7 +20,7 @@
       <%= t ".permissions.edit" %>
     </p>
     <div class="text-end">
-      <%= render Components::GoButton.new(label: t(".upload"), href: new_model_path, variant: :primary, icon: "box-arrow-up-right") %>
+      <%= GoButton(label: t(".upload"), href: new_model_path, variant: :primary, icon: "box-arrow-up-right") %>
     </div>
   </div>
 

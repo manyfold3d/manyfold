@@ -1,5 +1,5 @@
 <form action="<%= problems_path %>" method="GET">
-  <%= render Components::Accordion.new(title: safe_join([icon("filter", t(".title")), t(".title")], " "), id: "filters", open: @filters_applied) do %>
+  <%= Accordion(title: safe_join([Icon(icon: "filter", label: t(".title")), t(".title")], " "), id: "filters", open: @filters_applied) do %>
     <div class="row mb-2">
       <div class="col col-sm-6 col-md-4">
         <label><%= Problem.human_attribute_name :category %></label>

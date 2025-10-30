@@ -35,7 +35,7 @@
           </li>
         </ul>
       <% end %>
-      <%= render Components::Renderer.new(file: @file) %>
+      <%= Renderer(file: @file) %>
     <% end %>
     <% if @file.notes %>
       <%= card(:secondary, t(".notes_heading")) do %>
@@ -83,7 +83,7 @@
   </div>
   <div class="card-footer">
     <div class="btn-group">
-      <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), model_model_file_path(@model, @file, @file.extension&.to_sym, download: "true"), {class: "btn btn-primary", download: "download"} %>
+      <%= link_to safe_join([Icon(icon: "cloud-download", label: t("general.download")), t("general.download")], " "), model_model_file_path(@model, @file, @file.extension&.to_sym, download: "true"), {class: "btn btn-primary", download: "download"} %>
       <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
         <span class="visually-hidden">Download options</span>
       </button>
@@ -94,9 +94,9 @@
     </div>
     <div class="float-end">
       <button class="btn btn-outline-secondary">
-        <%= render Components::BurgerMenu.new do %>
-          <%= render Components::DropdownItem.new(icon: "pencil", label: translate("general.edit"), path: edit_model_model_file_path(@model, @file)) if policy(@model).edit? %>
-          <%= render Components::DropdownItem.new(icon: "trash", label: translate("general.delete"), path: model_model_file_path(@model, @file), method: :delete, confirm: t("model_files.destroy.confirm")) if policy(@file).destroy? %>
+        <%= BurgerMenu do %>
+          <%= DropdownItem(icon: "pencil", label: translate("general.edit"), path: edit_model_model_file_path(@model, @file)) if policy(@model).edit? %>
+          <%= DropdownItem(icon: "trash", label: translate("general.delete"), path: model_model_file_path(@model, @file), method: :delete, confirm: t("model_files.destroy.confirm")) if policy(@file).destroy? %>
         <% end %>
       </button>
     <% end %>

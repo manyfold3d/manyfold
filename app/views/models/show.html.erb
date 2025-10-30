@@ -16,7 +16,7 @@
           data-editable-field="model[name]"
           data-editable-path="<%= model_path(@model) %>"><%= @model.name %></a>
     </span>
-    <%= link_to icon("search", t(".search")),
+    <%= link_to Icon(icon: "search", label: t(".search")),
           "https://yeggi.com/q/#{ERB::Util.url_encode(@model.name)}/",
           class: "btn btn-outline", target: "manyfold_search", rel: "noreferrer" %>
   </h1>
@@ -49,22 +49,22 @@
     <div class="col-md-3" id="sidebar">
       <%= card :secondary, t(".model_details") do %>
         <div class="details-table">
-          <%= render Components::AccessIndicator.new(object: @model, text: false) %>
-          <%= render Components::AccessIndicator.new(object: @model, text: true, icon: false) %>
+          <%= AccessIndicator(object: @model, text: false) %>
+          <%= AccessIndicator(object: @model, text: true, icon: false) %>
           <% if @model.creator %>
-            <div><%= icon "person", Creator.model_name.human %></div>
+            <div><%= Icon icon: "person", label: Creator.model_name.human %></div>
             <div><%= link_to @model.creator.name, @model.creator, itemprop: "author" %></div>
           <% end %>
           <% if @model.collection %>
-            <div><%= icon "collection", Collection.model_name.human(count: 100) %></div>
+            <div><%= Icon icon: "collection", label: Collection.model_name.human(count: 100) %></div>
             <div><%= link_to @model.collection.name, models_path({collection: @model.collection}.merge(@filter&.to_params)) %></div>
           <% end %>
           <% if SiteSettings.show_libraries || current_user&.is_administrator? %>
-            <div><%= icon "boxes", Library.model_name.human %></div>
+            <div><%= Icon icon: "boxes", label: Library.model_name.human %></div>
             <div><%= link_to @model.library.name, models_path({library: @model.library}.merge(@filter&.to_params)) %></div>
           <% end %>
           <% if @model.license %>
-            <div><%= icon "card-heading", t(".license") %></div>
+            <div><%= Icon icon: "card-heading", label: t(".license") %></div>
             <div>
               <%= Spdx.licenses[@model.license]&.fetch("reference") ?
                 link_to(t_license(@model.license), Spdx.licenses[@model.license]["reference"], itemprop: "license") :
@@ -72,22 +72,22 @@
             </div>
           <% end %>
           <% if @model.sensitive %>
-            <div><%= icon("explicit", Model.human_attribute_name(:sensitive)) %></div>
+            <div><%= Icon(icon: "explicit", label: Model.human_attribute_name(:sensitive)) %></div>
             <div>
               <%= Model.human_attribute_name(:sensitive) %>
             </div>
           <% end %>
           <% if current_user&.is_administrator? %>
-            <div><%= icon "folder", t(".path") %></div>
+            <div><%= Icon icon: "folder", label: t(".path") %></div>
             <div>
               <%= content_tag(:code, class: "path") { safe_join @model.path.split("/"), safe_join([tag.wbr, "/"]) } %>
             </div>
           <% end %>
-          <div><%= icon "tag", t(".tags") %></div>
+          <div><%= Icon icon: "tag", label: t(".tags") %></div>
           <div><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc), filter: @filter %></div>
           <% unless @model.links.empty? %>
-            <div><%= icon "link-45deg", Model.human_attribute_name(:links) %></div>
-            <%= render Components::LinkList.new links: @model.links, icons: false %>
+            <div><%= Icon icon: "link-45deg", label: Model.human_attribute_name(:links) %></div>
+            <%= LinkList links: @model.links, icons: false %>
           <% end %>
           <% if SiteSettings.social_enabled? %>
             <% if SiteSettings.federation_enabled? %>
@@ -98,16 +98,16 @@
                 <% else %>
                   <small>
                     <%= @model.federails_actor.short_at_address %>
-                    <%= render Components::CopyButton.new(text: @model.federails_actor.at_address) %>
+                    <%= CopyButton(text: @model.federails_actor.at_address) %>
                   </small>
                 <% end %>
               </div>
             <% end %>
-            <div><%= icon "people", t(".followers") %></div>
+            <div><%= Icon icon: "people", label: t(".followers") %></div>
             <div>
               <%= t("general.followers", count: @model.followers.count) %>
               <div class="float-end">
-                <%= render Components::FollowButton.new(follower: current_user, target: @model) %>
+                <%= FollowButton(follower: current_user, target: @model) %>
               </div>
             </div>
           <% end %>
@@ -115,16 +115,16 @@
       </div>
     </div>
     <div class="card-footer">
-      <%= render Components::DownloadButton.new(model: @model) %>
+      <%= DownloadButton(model: @model) %>
       <div class="float-end">
-        <%= render Components::BurgerMenu.new do %>
-          <%= render Components::DropdownItem.new(icon: "pencil", label: t(".files_card.bulk_edit"), path: bulk_edit_model_model_files_path(@model)) if policy(@model).edit? %>
-          <%= render Components::DropdownItem.new(icon: "radar", label: t(".rescan"), path: scan_model_path(@model), method: :post) if policy(@model).scan? %>
+        <%= BurgerMenu do %>
+          <%= DropdownItem(icon: "pencil", label: t(".files_card.bulk_edit"), path: bulk_edit_model_model_files_path(@model)) if policy(@model).edit? %>
+          <%= DropdownItem(icon: "radar", label: t(".rescan"), path: scan_model_path(@model), method: :post) if policy(@model).scan? %>
           <hr class="dropdown-divider">
-          <%= render Components::DropdownItem.new(icon: "pencil", label: translate("general.edit"), path: edit_model_path(@model), aria_label: translate("components.model_card.edit_button.label", name: @model.name)) if policy(@model).edit? %>
-          <%= render Components::DropdownItem.new(icon: "trash", label: translate("general.delete"), path: model_path(@model), method: :delete, aria_label: translate("components.model_card.delete_button.label", name: @model.name), confirm: t("models.destroy.confirm")) if policy(@model).destroy? %>
+          <%= DropdownItem(icon: "pencil", label: translate("general.edit"), path: edit_model_path(@model), aria_label: translate("components.model_card.edit_button.label", name: @model.name)) if policy(@model).edit? %>
+          <%= DropdownItem(icon: "trash", label: translate("general.delete"), path: model_path(@model), method: :delete, aria_label: translate("components.model_card.delete_button.label", name: @model.name), confirm: t("models.destroy.confirm")) if policy(@model).destroy? %>
           <hr class="dropdown-divider">
-          <%= render Components::DropdownItem.new(icon: "flag", label: translate("general.report", type: ""), path: new_model_report_path(@model)) if SiteSettings.multiuser_enabled? %>
+          <%= DropdownItem(icon: "flag", label: translate("general.report", type: ""), path: new_model_report_path(@model)) if SiteSettings.multiuser_enabled? %>
         <% end %>
       <% end %>
 
@@ -135,7 +135,7 @@
           </p>
           <strong><%= t(".merge.with") %>:</strong>
           <% @model.parents.each do |parent| %>
-            <%= render Components::DoButton.new(icon: "union", label: parent.name, href: merge_models_path(target: parent.public_id, models: [@model.public_id]), method: :post, variant: "danger") %>
+            <%= DoButton(icon: "union", label: parent.name, href: merge_models_path(target: parent.public_id, models: [@model.public_id]), method: :post, variant: "danger") %>
           <% end %>
         <% end %>
       <% end %>

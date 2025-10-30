@@ -33,7 +33,7 @@
     <%= form.submit translate("general.save"), class: "btn btn-primary" %>
     <% if @collection.persisted? %>
       <span class="float-end">
-        <%= render Components::DoButton.new(icon: "trash", label: t("general.delete"), href: collection_path(@collection), method: :delete, variant: "outline-danger", confirm: translate("collections.destroy.confirm")) if policy(@collection).destroy? %>
+        <%= DoButton(icon: "trash", label: t("general.delete"), href: collection_path(@collection), method: :delete, variant: "outline-danger", confirm: translate("collections.destroy.confirm")) if policy(@collection).destroy? %>
       </span>
     <% end %>
   </div>

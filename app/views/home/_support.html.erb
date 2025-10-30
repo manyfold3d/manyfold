@@ -1,6 +1,6 @@
 <div class="card card-secondary">
   <h2 class="card-header">
-    <%= render Components::Icon.new icon: "piggy-bank" %>
+    <%= Icon icon: "piggy-bank" %>
     <%= t ".title" %>
   </h2>
 
@@ -12,7 +12,7 @@
       <%= t ".manyfold_html" %>
     </p>
     <div class="text-end">
-      <%= render Components::GoButton.new(label: t(".support_link"), href: SiteSettings.support_link, variant: :primary, icon: "box-arrow-up-right") %>
+      <%= GoButton(label: t(".support_link"), href: SiteSettings.support_link, variant: :primary, icon: "box-arrow-up-right") %>
     </div>
   </div>
 

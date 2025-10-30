@@ -12,7 +12,7 @@
         <%= f.text_field :q, class: "form-control", placeholder: translate(".search.placeholder"), aria_label: translate(".search.submit"), aria_describedby: "button-search", value: @query %>
         <%= f.submit translate(".search.submit"), class: "btn btn-primary", name: nil %>
       </div>
-      <%= render Components::SearchHelp.new do %>
+      <%= SearchHelp do %>
         <div class="link-secondary ms-3"><small>
           <%= t(".open_search_help") %>
         </small></div>

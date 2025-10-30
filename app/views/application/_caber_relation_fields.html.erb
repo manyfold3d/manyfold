@@ -3,14 +3,14 @@
     <span class="col col-auto">
       <%- case f.object.subject.class.name %>
       <%- when "User" %>
-        <%= icon "person", f.object.subject.class.model_name.human %>
+        <%= Icon icon: "person", label: f.object.subject.class.model_name.human %>
         <%= f.object.subject.username %>
         <%= t(".subject.you") if f.object.subject == current_user %>
       <%- when "Role" %>
-        <%= icon "people", "" %>
+        <%= Icon icon: "people", label: "" %>
         <%= t(".subject.role.%{name}" % {name: f.object.subject&.name}) %>
       <%- when "NilClass" %>
-        <%= icon "globe", "" %>
+        <%= Icon icon: "globe", label: "" %>
         <%= t(".subject.role.public") %>
       <%- else %>
         what
@@ -20,5 +20,5 @@
     <%= f.text_field :subject, class: "col col-auto form-control", placeholder: translate(".subject.placeholder"), list: "caber-relations-role-list" %>
   <%- end %>
   <%= f.select :permission, Caber.configuration.permissions.map { |p| [translate(".permissions.%{perm}" % {perm: p}), p] }, {}, {class: "form-control col-auto", disabled: (f.object.subject == current_user)} %>
-  <%= cocooned_remove_item_button icon(:trash, translate(".delete")), f, class: "btn btn-outline-danger col-auto" unless f.object.subject == current_user %>
+  <%= cocooned_remove_item_button Icon(icon: "trash", label: translate(".delete")), f, class: "btn btn-outline-danger col-auto" unless f.object.subject == current_user %>
 <% end %>
