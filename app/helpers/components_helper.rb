@@ -21,4 +21,12 @@ module ComponentsHelper
   def AccessIndicator(**args, &block)
     render Components::AccessIndicator.new(**args, &block)
   end
+
+  def GoButton(**args, &block)
+    render Components::GoButton.new(**args, &block)
+  end
+
+  def DoButton(**args, &block)
+    render Components::DoButton.new(**args, &block)
+  end
 end

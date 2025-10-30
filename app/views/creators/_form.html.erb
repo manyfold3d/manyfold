@@ -16,7 +16,7 @@
     <%= form.submit translate("general.save"), class: "btn btn-primary" %>
     <% if @creator.persisted? %>
       <span class="float-end">
-        <%= render Components::DoButton.new(icon: "trash", label: t("general.delete"), href: creator_path(@creator), method: :delete, variant: "outline-danger", confirm: translate("creators.destroy.confirm")) if policy(@creator).destroy? %>
+        <%= DoButton(icon: "trash", label: t("general.delete"), href: creator_path(@creator), method: :delete, variant: "outline-danger", confirm: translate("creators.destroy.confirm")) if policy(@creator).destroy? %>
       </span>
     <% end %>
   </div>

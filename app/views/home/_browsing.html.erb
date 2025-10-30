@@ -10,7 +10,7 @@
     </p>
     <%= content_tag(:p) { t ".more_access" } if current_user && !current_user&.is_contributor? %>
     <div class="text-end">
-      <%= render Components::GoButton.new(label: t(".manual_link"), href: "https://manyfold.app/manual", variant: :primary, icon: "box-arrow-up-right") %>
+      <%= GoButton(label: t(".manual_link"), href: "https://manyfold.app/manual", variant: :primary, icon: "box-arrow-up-right") %>
     </div>
   </div>
 

@@ -13,7 +13,7 @@
       <% end %>
     </table>
 
-    <%= render Components::DoButton.new icon: "download", label: t(".import"), href: imports_path(url: @url), method: :post, variant: "primary" %>
+    <%= DoButton icon: "download", label: t(".import"), href: imports_path(url: @url), method: :post, variant: "primary" %>
   <% else %>
 
     <div class="row">

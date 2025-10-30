@@ -31,7 +31,7 @@
         <% collection_count = policy_scope(collection.collections).count %>
         <div class='col'>
           <%= if policy(collection).show?
-                render Components::GoButton.new(
+                GoButton(
                   label: "#{model_count} #{Model.model_name.human count: model_count}",
                   aria_label: collection.remote? ?
                     translate(".models_button.remote_label", name: collection.name) :
@@ -41,7 +41,7 @@
                 )
               end %>
           <%= if policy(collection).show? && !collection.collections.empty?
-                render Components::GoButton.new(
+                GoButton(
                   label: "#{collection_count} #{Collection.model_name.human count: collection_count}",
                   aria_label: collection.remote? ?
                     translate(".collections_button.remote_label", name: collection.name) :

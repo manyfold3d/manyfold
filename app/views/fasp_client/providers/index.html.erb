@@ -25,7 +25,7 @@
         </div>
         <div class="card-body">
           <div class="float-end">
-            <%= render Components::GoButton.new(icon: "pencil", label: t("general.edit"), href: edit_provider_path(provider), variant: :secondary) %>
+            <%= GoButton(icon: "pencil", label: t("general.edit"), href: edit_provider_path(provider), variant: :secondary) %>
           </div>
           <table class="table">
             <tr>
