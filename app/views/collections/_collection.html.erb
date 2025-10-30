@@ -11,7 +11,7 @@
         <div class="col">
           <div class="card-title">
             <%= collection.name.careful_titleize %>
-            <%= render Components::AccessIndicator.new object: collection %>
+            <%= AccessIndicator object: collection %>
           </div>
           <% if collection.caption %>
             <span class="card-subtitle mb-2 text-muted"><%= sanitize collection.caption %></span>

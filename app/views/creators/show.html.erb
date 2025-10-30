@@ -39,7 +39,7 @@
         <% model_count = policy_scope(Model).where(creator: @creator).count %>
         <p><%= "#{model_count} #{Model.model_name.human count: model_count}" %></p>
         <%= content_tag(:p) { t("general.followers", count: @creator.followers.count) } if SiteSettings.social_enabled? %>
-        <p><%= render Components::AccessIndicator.new(object: @creator, text: true) %></p>
+        <p><%= AccessIndicator(object: @creator, text: true) %></p>
       </div>
       <div class="col col-auto">
         <%= render Components::LinkList.new links: @creator.links %>

@@ -17,4 +17,8 @@ module ComponentsHelper
   def DropdownItem(**args, &block)
     render Components::DropdownItem.new(**args, &block)
   end
+
+  def AccessIndicator(**args, &block)
+    render Components::AccessIndicator.new(**args, &block)
+  end
 end

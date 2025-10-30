@@ -15,7 +15,7 @@
         <div class="col">
           <div class="card-title">
             <%= creator.name %>
-            <%= render Components::AccessIndicator.new object: creator %>
+            <%= AccessIndicator object: creator %>
           </div>
           <% if creator.caption %>
             <div>

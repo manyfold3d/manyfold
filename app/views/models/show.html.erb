@@ -49,8 +49,8 @@
     <div class="col-md-3" id="sidebar">
       <%= card :secondary, t(".model_details") do %>
         <div class="details-table">
-          <%= render Components::AccessIndicator.new(object: @model, text: false) %>
-          <%= render Components::AccessIndicator.new(object: @model, text: true, icon: false) %>
+          <%= AccessIndicator(object: @model, text: false) %>
+          <%= AccessIndicator(object: @model, text: true, icon: false) %>
           <% if @model.creator %>
             <div><%= Icon icon: "person", label: Creator.model_name.human %></div>
             <div><%= link_to @model.creator.name, @model.creator, itemprop: "author" %></div>
