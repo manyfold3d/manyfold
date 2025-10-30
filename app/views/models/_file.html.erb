@@ -5,7 +5,7 @@
       <%= image_tag model_model_file_path(@model, file, format: file.extension), class: "card-img-top image-preview", alt: file.name %>
     <% elsif file.is_renderable? %>
       <div class="card-img-top">
-        <%= render Components::Renderer.new(file: file) %>
+        <%= Renderer(file: file) %>
       </div>
     <% else %>
       <%= content_tag :div, nil, class: "card-img-top", style: "aspect-ratio: 1" do %>

@@ -43,7 +43,7 @@
             <small><%= problem.note %></small>
           <% end %>
         </td>
-        <td><%= render Components::ResolveButton.new(problem: problem, user: current_user) %></td>
+        <td><%= ResolveButton(problem: problem, user: current_user) %></td>
         <td>
           <% if problem.ignored %>
             <%= link_to Icon(icon: "eye-fill", label: t(".unignore")), problem_path(problem, problem: {ignored: false}), method: :patch, class: "btn btn-outline-secondary" %>

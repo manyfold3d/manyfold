@@ -11,7 +11,7 @@
     <%= content_tag :div, class: "card-body row me-0 ms-0 with-background", style: (@creator.banner ? "background-image: url(#{banner_creator_path(@creator)}); background-position: center; background-size: cover" : nil) do %>
       <% if @creator.avatar %>
         <div class="col col-auto">
-          <%= render Components::Avatar.new(url: avatar_creator_path(@creator), size: :large) if @creator.avatar %>
+          <%= Avatar(url: avatar_creator_path(@creator), size: :large) if @creator.avatar %>
         </div>
       <% end %>
       <div class="col col-auto">
@@ -26,12 +26,12 @@
               <% elsif SiteSettings.federation_enabled? %>
                 <small class="text-secondary">
                   <%= @creator.federails_actor.short_at_address %>
-                  <%= render Components::CopyButton.new(text: @creator.federails_actor.at_address) %>
+                  <%= CopyButton(text: @creator.federails_actor.at_address) %>
                 </small>
               <% end %>
             </p>
           <% end %>
-          <%= render Components::FollowButton.new(follower: current_user, target: @creator) %>
+          <%= FollowButton(follower: current_user, target: @creator) %>
         <% end %>
       </div>
       <div class="col">
@@ -42,7 +42,7 @@
         <p><%= AccessIndicator(object: @creator, text: true) %></p>
       </div>
       <div class="col col-auto">
-        <%= render Components::LinkList.new links: @creator.links %>
+        <%= LinkList links: @creator.links %>
       </div>
     <% end %>
     <% if @creator.notes %>
@@ -56,7 +56,7 @@
 
 <% content_for :actions do %>
   <%= link_to safe_join([Icon(icon: "pencil", label: t(".edit")), t(".edit")], " "), edit_creator_path(@creator), class: "btn btn-primary" if policy(@creator).edit? %>
-  <%= render Components::ReportButton.new(object: @creator, path: new_creator_report_path(@creator)) %>
+  <%= ReportButton(object: @creator, path: new_creator_report_path(@creator)) %>
 <% end %>
 
 <%= render "models/list" %>

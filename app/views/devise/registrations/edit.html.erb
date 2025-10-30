@@ -16,7 +16,7 @@
               <div class="col-auto col-form-label"><%= t("settings.users.index.fediverse_address") %></div>
               <div class="col col-form-label">
                 <code><%= resource.federails_actor.at_address %></code>
-                <%= render Components::CopyButton.new(text: resource.federails_actor.at_address) %>
+                <%= CopyButton(text: resource.federails_actor.at_address) %>
               </div>
             <% end %>
           </div>
@@ -63,7 +63,7 @@
           <div class="card-body">
             <div class="row text-center">
               <div class="col">
-                <%= render Components::DisplayUserQuota.new(current_size: @user.current_space_used, quota: @user.quota) %>
+                <%= DisplayUserQuota(current_size: @user.current_space_used, quota: @user.quota) %>
               </div>
             </div>
           </div>

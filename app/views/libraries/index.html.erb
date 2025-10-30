@@ -68,9 +68,9 @@
             </tr>
           </table>
           <div class="row">
-            <%= render Components::StatBlock.new(title: Model, value: model_count(library: library)) %>
-            <%= render Components::StatBlock.new(title: ModelFile, value: model_file_count(library: library)) %>
-            <%= render Components::StatBlock.new(title: t("settings.show.total_file_size"), value: number_to_human_size(total_file_size(library: library), precision: 2)) %>
+            <%= StatBlock(title: Model, value: model_count(library: library)) %>
+            <%= StatBlock(title: ModelFile, value: model_file_count(library: library)) %>
+            <%= StatBlock(title: t("settings.show.total_file_size"), value: number_to_human_size(total_file_size(library: library), precision: 2)) %>
           </div>
         </div>
       </div>

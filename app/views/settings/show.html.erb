@@ -1,13 +1,13 @@
 <h3><%= t(".stats") %></h3>
 
 <div class="row">
-  <%= render Components::StatBlock.new(title: Model, value: model_count) %>
-  <%= render Components::StatBlock.new(title: ModelFile, value: model_file_count) %>
-  <%= render Components::StatBlock.new(title: Creator, value: creator_count) %>
-  <%= render Components::StatBlock.new(title: Collection, value: collection_count) %>
-  <%= render Components::StatBlock.new(title: User, value: user_count) %>
-  <%= render Components::StatBlock.new(title: ActsAsTaggableOn::Tag, value: tag_count) %>
-  <%= render Components::StatBlock.new(title: t(".total_file_size"), value: number_to_human_size(total_file_size, precision: 2)) %>
+  <%= StatBlock(title: Model, value: model_count) %>
+  <%= StatBlock(title: ModelFile, value: model_file_count) %>
+  <%= StatBlock(title: Creator, value: creator_count) %>
+  <%= StatBlock(title: Collection, value: collection_count) %>
+  <%= StatBlock(title: User, value: user_count) %>
+  <%= StatBlock(title: ActsAsTaggableOn::Tag, value: tag_count) %>
+  <%= StatBlock(title: t(".total_file_size"), value: number_to_human_size(total_file_size, precision: 2)) %>
 </div>
 
 <hr>

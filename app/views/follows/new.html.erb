@@ -8,7 +8,7 @@
   <% if @actors&.any? %>
     <div class="row">
       <% @actors.each do |actor| %>
-        <%= render Components::ActorCard.new actor: actor %>
+        <%= ActorCard actor: actor %>
       <% end %>
     </div>
   <% else %>
@@ -24,7 +24,7 @@
   <h3><%= t(".recommended") %></h3>
   <div class="row">
     <% @recommended.each do |actor| %>
-      <%= render Components::ActorCard.new actor: actor %>
+      <%= ActorCard actor: actor %>
     <% end %>
   </div>
 

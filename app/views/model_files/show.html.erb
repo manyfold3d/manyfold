@@ -35,7 +35,7 @@
           </li>
         </ul>
       <% end %>
-      <%= render Components::Renderer.new(file: @file) %>
+      <%= Renderer(file: @file) %>
     <% end %>
     <% if @file.notes %>
       <%= card(:secondary, t(".notes_heading")) do %>

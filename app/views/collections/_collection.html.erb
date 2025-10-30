@@ -16,7 +16,7 @@
           <% if collection.caption %>
             <span class="card-subtitle mb-2 text-muted"><%= sanitize collection.caption %></span>
           <% end %>
-          <%= render Components::LinkList.new links: collection.links %>
+          <%= LinkList links: collection.links %>
         </div>
         <div class="col col-auto">
           <small>

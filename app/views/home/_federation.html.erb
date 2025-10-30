@@ -11,10 +11,10 @@
     <p>
       <% if SiteSettings.autocreate_creator_for_new_users %>
         <%= t ".creator_handle_html", handle: current_user.creators.first.federails_actor.at_address %>
-        <%= render Components::CopyButton.new text: current_user.creators.first.federails_actor.at_address %>
+        <%= CopyButton text: current_user.creators.first.federails_actor.at_address %>
       <% else %>
         <%= t ".handle_html", handle: current_user.federails_actor.at_address %>
-        <%= render Components::CopyButton.new text: current_user.federails_actor.at_address %>
+        <%= CopyButton text: current_user.federails_actor.at_address %>
       <% end %>
     </p>
     <p>

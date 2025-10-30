@@ -9,7 +9,7 @@
       <div class="row">
         <% if creator.avatar %>
           <div class="col col-auto">
-            <%= render Components::Avatar.new(url: avatar_creator_path(creator), size: :large) %>
+            <%= Avatar(url: avatar_creator_path(creator), size: :large) %>
           </div>
         <% end %>
         <div class="col">
@@ -22,7 +22,7 @@
               <span class="card-subtitle mb-2 text-muted"><%= sanitize creator.caption %></span>
             </div>
           <% end %>
-          <%= render Components::LinkList.new links: creator.links %>
+          <%= LinkList links: creator.links %>
         </div>
       </div>
     </div>

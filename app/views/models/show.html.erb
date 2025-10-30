@@ -87,7 +87,7 @@
           <div><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc), filter: @filter %></div>
           <% unless @model.links.empty? %>
             <div><%= Icon icon: "link-45deg", label: Model.human_attribute_name(:links) %></div>
-            <%= render Components::LinkList.new links: @model.links, icons: false %>
+            <%= LinkList links: @model.links, icons: false %>
           <% end %>
           <% if SiteSettings.social_enabled? %>
             <% if SiteSettings.federation_enabled? %>
@@ -98,7 +98,7 @@
                 <% else %>
                   <small>
                     <%= @model.federails_actor.short_at_address %>
-                    <%= render Components::CopyButton.new(text: @model.federails_actor.at_address) %>
+                    <%= CopyButton(text: @model.federails_actor.at_address) %>
                   </small>
                 <% end %>
               </div>
@@ -107,7 +107,7 @@
             <div>
               <%= t("general.followers", count: @model.followers.count) %>
               <div class="float-end">
-                <%= render Components::FollowButton.new(follower: current_user, target: @model) %>
+                <%= FollowButton(follower: current_user, target: @model) %>
               </div>
             </div>
           <% end %>
@@ -115,7 +115,7 @@
       </div>
     </div>
     <div class="card-footer">
-      <%= render Components::DownloadButton.new(model: @model) %>
+      <%= DownloadButton(model: @model) %>
       <div class="float-end">
         <%= BurgerMenu do %>
           <%= DropdownItem(icon: "pencil", label: t(".files_card.bulk_edit"), path: bulk_edit_model_model_files_path(@model)) if policy(@model).edit? %>

@@ -9,7 +9,7 @@ class Components::SearchHelp < Components::Base
   end
 
   def modal
-    render Components::Modal.new(id: "search-help", title: t("components.search_help.title")) do
+    Modal(id: "search-help", title: t("components.search_help.title")) do
       p do
         t("components.search_help.intro")
       end

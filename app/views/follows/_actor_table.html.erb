@@ -13,7 +13,7 @@
       </td>
       <td><%= link_to actor.name, actor.profile_url %></td>
       <%= content_tag(:td) { actor.short_at_address } if SiteSettings.federation_enabled? %>
-      <td><%= render Components::FollowButton.new(follower: current_user, target: actor) %></td>
+      <td><%= FollowButton(follower: current_user, target: actor) %></td>
       <td>
         <% if !actor.local? && actor.extensions&.dig("f3di:concreteType").nil? %>
           <span class="text-warning"><%= Icon(icon: "exclamation-triangle-fill", label: translate("components.actor_card.non_manyfold_account")) %></span>

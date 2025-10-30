@@ -5,5 +5,5 @@
 <% elsif @file.is_document? %>
   <%= tag.iframe src: model_model_file_path(@model, @file, format: @file.extension), alt: @file.name, style: "width: 100%; aspect-ratio: 0.707" %>
 <% elsif @file.is_renderable? %>
-  <%= render Components::Renderer.new(file: @file) %>
+  <%= Renderer(file: @file) %>
 <% end %>
