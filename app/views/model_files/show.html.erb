@@ -83,7 +83,7 @@
   </div>
   <div class="card-footer">
     <div class="btn-group">
-      <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), model_model_file_path(@model, @file, @file.extension&.to_sym, download: "true"), {class: "btn btn-primary", download: "download"} %>
+      <%= link_to safe_join([icon(icon: "cloud-download", label: t("general.download")), t("general.download")], " "), model_model_file_path(@model, @file, @file.extension&.to_sym, download: "true"), {class: "btn btn-primary", download: "download"} %>
       <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
         <span class="visually-hidden">Download options</span>
       </button>

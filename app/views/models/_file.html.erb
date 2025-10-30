@@ -44,17 +44,17 @@
       <div class="row">
         <div class="col">
           <%= link_to t(".open_button.text"), model_model_file_path(@model, file), {class: "btn btn-primary", "aria-label": translate(".open_button.label", name: file.name)} %>
-          <%= link_to icon("cloud-download", t("general.download")), model_model_file_path(@model, file, file.extension&.to_sym, download: "true"), {class: "btn btn-outline-secondary", download: "download"} %>
+          <%= link_to icon(icon: "cloud-download", label: t("general.download")), model_model_file_path(@model, file, file.extension&.to_sym, download: "true"), {class: "btn btn-outline-secondary", download: "download"} %>
           <% if file.presupported || file.presupported_version %>
-            <%= icon "bar-chart-line-fill", ModelFile.human_attribute_name(:presupported) %>
+            <%= icon icon: "bar-chart-line-fill", label: ModelFile.human_attribute_name(:presupported) %>
           <% end %>
           <%= problem_icon_tag(file.problems) if policy(Problem).show? %>
         </div>
         <div class="col col-auto">
           <div class="float-end">
-            <div class="btn-group dropup">
-              <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <%= icon "three-dots-vertical", t("general.menu") %>
+            <div class="dropup">
+              <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn btn-outline-secondary">
+                <%= icon icon: "list", label: t("general.menu") %>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
                 <%= slicer_links(file) if file.is_3d_model? %>
@@ -65,9 +65,9 @@
                   <%= slicer_links(file.presupported_version) if file.presupported_version.is_3d_model? %>
                   <li><hr class="dropdown-divider"></li>
                 <% end %>
-                <li><%= link_to safe_join([icon("pencil-fill", t(".edit")), t(".edit")], " "), edit_model_model_file_path(@model, file), {class: "dropdown-item"} if policy(file).edit? %></li>
-                <li><%= link_to safe_join([icon("image", t(".set_as_preview")), t(".set_as_preview")], " "), model_path(@model, "model[preview_file_id]": file.id), {method: :patch, class: "dropdown-item"} if policy(@model).edit? && file.is_renderable? || file.is_image? %></li>
-                <li><%= link_to safe_join([icon("trash", t(".delete")), t(".delete")], " "), model_model_file_path(@model, file), {method: :delete, class: "dropdown-item", data: {confirm: translate("model_files.destroy.confirm")}} if policy(file).destroy? %></li>
+                <li><%= link_to safe_join([icon(icon: "pencil-fill", label: t(".edit")), t(".edit")], " "), edit_model_model_file_path(@model, file), {class: "dropdown-item"} if policy(file).edit? %></li>
+                <li><%= link_to safe_join([icon(icon: "image", label:t(".set_as_preview")), t(".set_as_preview")], " "), model_path(@model, "model[preview_file_id]": file.id), {method: :patch, class: "dropdown-item"} if policy(@model).edit? && file.is_renderable? || file.is_image? %></li>
+                <li><%= link_to safe_join([icon(icon: "trash", label:t(".delete")), t(".delete")], " "), model_model_file_path(@model, file), {method: :delete, class: "dropdown-item", data: {confirm: translate("model_files.destroy.confirm")}} if policy(file).destroy? %></li>
               </ul>
             </div>
           </div>

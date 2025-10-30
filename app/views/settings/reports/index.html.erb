@@ -19,7 +19,7 @@
       </td>
       <td><%= report.reporter_address %></td>
       <td><%= report.created_at %></td>
-      <td><%= link_to safe_join([icon("search", t("general.view")), t("general.view")], " "), settings_report_path(report), {class: "float-end btn btn-primary"} %></td>
+      <td><%= link_to safe_join([icon(icon: "search", label: t("general.view")), t("general.view")], " "), settings_report_path(report), {class: "float-end btn btn-primary"} %></td>
     </tr>
   <% end %>
 </table>

@@ -14,7 +14,7 @@
           <%= activity.name %>
         <%- end %>
         <%= server_indicator activity.federails_actor %>
-        <%= icon("explicit", Model.human_attribute_name(:sensitive)) if activity.respond_to?(:sensitive) && activity.sensitive %>
+        <%= icon(icon: "explicit", label: Model.human_attribute_name(:sensitive)) if activity.respond_to?(:sensitive) && activity.sensitive %>
         <%= render Components::AccessIndicator.new(object: activity) %>
       </div>
       <% if activity.is_a? Model %>

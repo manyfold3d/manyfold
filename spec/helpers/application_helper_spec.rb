@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe ApplicationHelper do
   describe "#icon" do
     it "returns the correct HTML for the icon" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-      html = helper.icon("test", "Test Label")
+      html = helper.icon(icon: "test", label: "Test Label")
       doc = Nokogiri::HTML(html)
       expect(doc.at("i")["class"]).to eq("bi bi-test")
       expect(doc.at("i")["role"]).to eq("img")
@@ -11,7 +11,7 @@ RSpec.describe ApplicationHelper do
     end
 
     it "supports RPG-awesome icons" do
-      html = helper.icon("ra-test", "Test Label")
+      html = helper.icon(icon: "ra-test", label: "Test Label")
       doc = Nokogiri::HTML(html)
       expect(doc.at("i")["class"]).to eq("ra ra-test")
     end

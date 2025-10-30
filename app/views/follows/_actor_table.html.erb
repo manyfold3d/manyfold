@@ -9,14 +9,14 @@
   <% actors.each do |actor| %>
     <tr class="align-middle">
       <td>
-        <%= actor.entity ? icon(icon_for(actor.entity.class), actor.entity.class.model_name.human) : "⁂" %>
+        <%= actor.entity ? icon(icon: icon_for(actor.entity.class), label: actor.entity.class.model_name.human) : "⁂" %>
       </td>
       <td><%= link_to actor.name, actor.profile_url %></td>
       <%= content_tag(:td) { actor.short_at_address } if SiteSettings.federation_enabled? %>
       <td><%= render Components::FollowButton.new(follower: current_user, target: actor) %></td>
       <td>
         <% if !actor.local? && actor.extensions&.dig("f3di:concreteType").nil? %>
-          <span class="text-warning"><%= icon("exclamation-triangle-fill", translate("components.actor_card.non_manyfold_account")) %></span>
+          <span class="text-warning"><%= icon(icon: "exclamation-triangle-fill", label: translate("components.actor_card.non_manyfold_account")) %></span>
         <% end %>
       </td>
     </tr>

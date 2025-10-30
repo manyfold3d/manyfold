@@ -46,9 +46,9 @@
         <td><%= render Components::ResolveButton.new(problem: problem, user: current_user) %></td>
         <td>
           <% if problem.ignored %>
-            <%= link_to icon("eye-fill", t(".unignore")), problem_path(problem, problem: {ignored: false}), method: :patch, class: "btn btn-outline-secondary" %>
+            <%= link_to icon(icon: "eye-fill", label: t(".unignore")), problem_path(problem, problem: {ignored: false}), method: :patch, class: "btn btn-outline-secondary" %>
           <% else %>
-            <%= link_to icon("eye-slash", t(".ignore")), problem_path(problem, problem: {ignored: true}), method: :patch, class: "btn btn-outline-secondary", data: {bs_toggle: "collapse", bs_target: "#problem-#{problem.id}"} %>
+            <%= link_to icon(icon: "eye-slash", label: t(".ignore")), problem_path(problem, problem: {ignored: true}), method: :patch, class: "btn btn-outline-secondary", data: {bs_toggle: "collapse", bs_target: "#problem-#{problem.id}"} %>
           <% end %>
         </td>
       </tr>

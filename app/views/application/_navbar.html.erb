@@ -76,7 +76,7 @@
                   <%= t ".scan" %>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><%= link_to t(".scan_changes"), scans_path, method: :post, nofollow: true, class: "dropdown-item" %></li>
+                  <li><%= link_to t(".scan_changes"), scans_path, method: :post, nofollow: true, confirm: "poop", class: "dropdown-item" %></li>
                   <li><%= link_to t(".check_existing"), scans_path(type: :check), method: :post, nofollow: true, class: "dropdown-item" %>
                   <li><%= link_to t(".check_results"), scans_path({type: :check}.merge(@filter.to_params)), method: :post, nofollow: true, class: "dropdown-item" if @filter&.any? %>
                 </ul>

@@ -2,7 +2,7 @@
   <div id="imageCarousel" class="carousel slide mb-3" data-bs-ride="carousel" role="group" aria-roledescription="carousel" data-controller="carousel" data-action="mouseenter->carousel#onEnter mouseleave->carousel#onLeave">
     <% if images.count > 1 %>
       <button id="rotationControl" class="carousel-control-play btn btn-secondary m-2" data-action="click->carousel#onPauseButton">
-        <%= icon "pause", t(".play_pause"), id: "rotationControlIcon" %>
+        <%= icon icon: "pause", label: t(".play_pause"), id: "rotationControlIcon" %>
       </button>
       <div class="carousel-indicators" role="group" aria-label="<%= translate ".select_slide" %>">
         <% images.each_with_index do |image, index| %>
@@ -23,7 +23,7 @@
                 <%= form.button t("models.file.set_as_preview"), class: "btn btn-sm btn-outline-warning" %>
               <% end %>
             <% end %>
-            <%= link_to icon("trash", t("general.delete")), model_model_file_path(@model, image), {method: "delete", data: {confirm: translate("model_files.destroy.confirm")}, class: "btn btn-sm btn-outline-danger"} if policy(image).destroy? %>
+            <%= link_to icon(icon: "trash", label: t("general.delete")), model_model_file_path(@model, image), {method: "delete", data: {confirm: translate("model_files.destroy.confirm")}, class: "btn btn-sm btn-outline-danger"} if policy(image).destroy? %>
           </div>
         </div>
       <% end %>
