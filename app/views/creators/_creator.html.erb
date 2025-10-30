@@ -53,10 +53,10 @@
               end %>
         </div>
         <div class='col col-auto'>
-          <%= render Components::BurgerMenu.new do %>
-            <%= render Components::DropdownItem.new(icon: "pencil", label: translate("general.edit"), path: edit_creator_path(creator), aria_label: translate(".edit_button.label", name: creator.name)) if policy(creator).edit? %>
-            <%= render Components::DropdownItem.new(icon: "trash", label: translate("general.delete"), path: creator_path(creator), method: :delete, aria_label: translate(".delete_button.label", name: creator.name), confirm: t("creators.destroy.confirm")) if policy(creator).destroy? %>
-            <%= render Components::DropdownItem.new(icon: "flag", label: translate("general.report", type: ""), path: new_creator_report_path(creator)) if SiteSettings.multiuser_enabled? %>
+          <%= BurgerMenu do %>
+            <%= DropdownItem(icon: "pencil", label: translate("general.edit"), path: edit_creator_path(creator), aria_label: translate(".edit_button.label", name: creator.name)) if policy(creator).edit? %>
+            <%= DropdownItem(icon: "trash", label: translate("general.delete"), path: creator_path(creator), method: :delete, aria_label: translate(".delete_button.label", name: creator.name), confirm: t("creators.destroy.confirm")) if policy(creator).destroy? %>
+            <%= DropdownItem(icon: "flag", label: translate("general.report", type: ""), path: new_creator_report_path(creator)) if SiteSettings.multiuser_enabled? %>
           <% end %>
         </div>
       </div>

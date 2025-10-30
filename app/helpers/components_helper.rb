@@ -2,7 +2,19 @@ module ComponentsHelper
   # ERB helpers that map directly to Phlex components
   # purely to make the syntax tidier
 
-  def Icon(icon:, id: nil, label: nil, effect: nil, role: "img")
-    render Components::Icon.new(icon: icon, id: id, label: label, effect: effect, role: role)
+  def Icon(**args, &block)
+    render Components::Icon.new(**args, &block)
+  end
+
+  def PreviewFrame(**args, &block)
+    render Components::PreviewFrame.new(**args, &block)
+  end
+
+  def BurgerMenu(**args, &block)
+    render Components::BurgerMenu.new(**args, &block)
+  end
+
+  def DropdownItem(**args, &block)
+    render Components::DropdownItem.new(**args, &block)
   end
 end

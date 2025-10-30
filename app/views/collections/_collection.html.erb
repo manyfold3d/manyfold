@@ -5,7 +5,7 @@
         <%= server_indicator collection %>
       </div>
     <% end %>
-    <%= render Components::PreviewFrame.new(object: collection) %>
+    <%= PreviewFrame(object: collection) %>
     <div class="card-body">
       <div class="row">
         <div class="col">
@@ -52,10 +52,10 @@
               end %>
         </div>
         <div class='col col-auto'>
-          <%= render Components::BurgerMenu.new do %>
-            <%= render Components::DropdownItem.new(icon: "pencil", label: translate("general.edit"), path: edit_collection_path(collection), aria_label: translate(".edit_button.label", name: collection.name)) if policy(collection).edit? %>
-            <%= render Components::DropdownItem.new(icon: "trash", label: translate("general.delete"), path: collection_path(collection), method: :delete, aria_label: translate(".delete_button.label", name: collection.name), confirm: t("collections.destroy.confirm")) if policy(collection).destroy? %>
-            <%= render Components::DropdownItem.new(icon: "flag", label: translate("general.report", type: ""), path: new_collection_report_path(collection)) if SiteSettings.multiuser_enabled? %>
+          <%= BurgerMenu do %>
+            <%= DropdownItem(icon: "pencil", label: translate("general.edit"), path: edit_collection_path(collection), aria_label: translate(".edit_button.label", name: collection.name)) if policy(collection).edit? %>
+            <%= DropdownItem(icon: "trash", label: translate("general.delete"), path: collection_path(collection), method: :delete, aria_label: translate(".delete_button.label", name: collection.name), confirm: t("collections.destroy.confirm")) if policy(collection).destroy? %>
+            <%= DropdownItem(icon: "flag", label: translate("general.report", type: ""), path: new_collection_report_path(collection)) if SiteSettings.multiuser_enabled? %>
           <% end %>
         </div>
       </div>

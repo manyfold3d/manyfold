@@ -94,9 +94,9 @@
     </div>
     <div class="float-end">
       <button class="btn btn-outline-secondary">
-        <%= render Components::BurgerMenu.new do %>
-          <%= render Components::DropdownItem.new(icon: "pencil", label: translate("general.edit"), path: edit_model_model_file_path(@model, @file)) if policy(@model).edit? %>
-          <%= render Components::DropdownItem.new(icon: "trash", label: translate("general.delete"), path: model_model_file_path(@model, @file), method: :delete, confirm: t("model_files.destroy.confirm")) if policy(@file).destroy? %>
+        <%= BurgerMenu do %>
+          <%= DropdownItem(icon: "pencil", label: translate("general.edit"), path: edit_model_model_file_path(@model, @file)) if policy(@model).edit? %>
+          <%= DropdownItem(icon: "trash", label: translate("general.delete"), path: model_model_file_path(@model, @file), method: :delete, confirm: t("model_files.destroy.confirm")) if policy(@file).destroy? %>
         <% end %>
       </button>
     <% end %>
