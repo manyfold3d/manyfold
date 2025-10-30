@@ -20,10 +20,10 @@
         <td><%= form.check_box "model_files[#{file.to_param}]", data: {bulk_item: file.to_param}, "aria-label": translate(".select", name: file.name) %></td>
         <td><%= link_to file.name, [@model, file], title: file.filename %></td>
         <td><code><%= file.filename %></code></td>
-        <td><%= icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:printed) if current_user.printed?(file) %></td>
-        <td><%= icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:presupported) if file.presupported %></td>
-        <td><%= icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:y_up) if file.y_up %></td>
-        <td><%= icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:previewable) if file.previewable %></td>
+        <td><%= Icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:printed) if current_user.printed?(file) %></td>
+        <td><%= Icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:presupported) if file.presupported %></td>
+        <td><%= Icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:y_up) if file.y_up %></td>
+        <td><%= Icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:previewable) if file.previewable %></td>
       </tr>
     <% end %>
   </table>

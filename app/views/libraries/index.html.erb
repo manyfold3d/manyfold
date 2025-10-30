@@ -8,7 +8,7 @@
     <div class="col-md-6">
       <div class="card <%= "border-info" if library.default? %>">
         <div class="card-header">
-          <%= icon(icon: library.icon, label: library.icon) if library.icon %>
+          <%= Icon(icon: library.icon, label: library.icon) if library.icon %>
           <%= library.name %>
           <%= content_tag(:small, class: "text-info float-end") { t("activerecord.attributes.library.default") } if library.default? %>
         </div>

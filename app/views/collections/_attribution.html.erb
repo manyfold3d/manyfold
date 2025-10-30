@@ -2,26 +2,26 @@
   <% if collection.remote? %>
     <% if (creator = collection.federails_actor.extensions["attributedTo"]) %>
       <li>
-        <%= icon icon: "person", label: Creator.model_name.human %>
+        <%= Icon icon: "person", label: Creator.model_name.human %>
         <%= link_to creator["name"], creator["url"] %><br>
       </li>
     <% end %>
     <% if (c = collection.federails_actor.extensions["context"]) %>
       <li>
-        <%= icon icon: "collection", label: Collection.model_name.human %>
+        <%= Icon icon: "collection", label: Collection.model_name.human %>
         <%= link_to c["name"], c["url"] %><br>
       </li>
     <% end %>
   <% else %>
     <% if collection.creator %>
       <li>
-        <%= icon icon: "person", label: Creator.model_name.human %>
+        <%= Icon icon: "person", label: Creator.model_name.human %>
         <%= link_to collection.creator.name, collections_path({creator: collection.creator}.merge(@filter.to_params)) %><br>
       </li>
     <% end %>
     <% if collection.collection %>
       <li>
-        <%= icon icon: "collection", label: Collection.model_name.human %>
+        <%= Icon icon: "collection", label: Collection.model_name.human %>
         <%= link_to collection.collection.name, collection, @filter.to_params %><br>
       </li>
     <% end %>

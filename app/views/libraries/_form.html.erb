@@ -35,17 +35,17 @@
       <% @library.tag_regex.each do |reg| %>
         <div class="input-group">
           <%= text_field_tag "library[tag_regex][]", reg, class: "form-control col-sm-11", autocomplete: "off" %>
-          <%= link_to icon(icon: "trash", label: t("general.delete")), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
+          <%= link_to Icon(icon: "trash", label: t("general.delete")), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
         </div>
       <% end %>
       <div id="regexclone" style="display: none">
         <div class="input-group">
           <%= text_field_tag "library[tag_regex][]", "", class: "form-control col-sm-11", autocomplete: "off" %>
-          <%= link_to icon(icon: "trash", label: t("general.delete")), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
+          <%= link_to Icon(icon: "trash", label: t("general.delete")), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
         </div>
       </div>
       <div class="col-sm-2"></div><div class="col-sm-10 p-0">
-        <%= link_to icon(icon: "plus-square-dotted", label: t(".add_line")), "", onClick: "$('#newinput').append($('#regexclone').html()); return false;", class: "btn btn-primary" %>
+        <%= link_to Icon(icon: "plus-square-dotted", label: t(".add_line")), "", onClick: "$('#newinput').append($('#regexclone').html()); return false;", class: "btn btn-primary" %>
         <span id="libraryRegexHelp" class="form-text"><%= t(".tag_regex.help") %></span>
       </div>
     </div>
@@ -56,7 +56,7 @@
 
     <% if @library.persisted? %>
       <%= if policy(@library).destroy?
-            link_to safe_join([icon(icon: "trash", label: t("general.delete")), t("general.delete")], " "),
+            link_to safe_join([Icon(icon: "trash", label: t("general.delete")), t("general.delete")], " "),
               library_path(@library.public_id),
               {
                 method: :delete,

@@ -16,7 +16,7 @@
           data-editable-field="model[name]"
           data-editable-path="<%= model_path(@model) %>"><%= @model.name %></a>
     </span>
-    <%= link_to icon(icon: "search", label: t(".search")),
+    <%= link_to Icon(icon: "search", label: t(".search")),
           "https://yeggi.com/q/#{ERB::Util.url_encode(@model.name)}/",
           class: "btn btn-outline", target: "manyfold_search", rel: "noreferrer" %>
   </h1>
@@ -52,19 +52,19 @@
           <%= render Components::AccessIndicator.new(object: @model, text: false) %>
           <%= render Components::AccessIndicator.new(object: @model, text: true, icon: false) %>
           <% if @model.creator %>
-            <div><%= icon icon: "person", label: Creator.model_name.human %></div>
+            <div><%= Icon icon: "person", label: Creator.model_name.human %></div>
             <div><%= link_to @model.creator.name, @model.creator, itemprop: "author" %></div>
           <% end %>
           <% if @model.collection %>
-            <div><%= icon icon: "collection", label: Collection.model_name.human(count: 100) %></div>
+            <div><%= Icon icon: "collection", label: Collection.model_name.human(count: 100) %></div>
             <div><%= link_to @model.collection.name, models_path({collection: @model.collection}.merge(@filter&.to_params)) %></div>
           <% end %>
           <% if SiteSettings.show_libraries || current_user&.is_administrator? %>
-            <div><%= icon icon: "boxes", label: Library.model_name.human %></div>
+            <div><%= Icon icon: "boxes", label: Library.model_name.human %></div>
             <div><%= link_to @model.library.name, models_path({library: @model.library}.merge(@filter&.to_params)) %></div>
           <% end %>
           <% if @model.license %>
-            <div><%= icon icon: "card-heading", label: t(".license") %></div>
+            <div><%= Icon icon: "card-heading", label: t(".license") %></div>
             <div>
               <%= Spdx.licenses[@model.license]&.fetch("reference") ?
                 link_to(t_license(@model.license), Spdx.licenses[@model.license]["reference"], itemprop: "license") :
@@ -72,21 +72,21 @@
             </div>
           <% end %>
           <% if @model.sensitive %>
-            <div><%= icon(icon: "explicit", label: Model.human_attribute_name(:sensitive)) %></div>
+            <div><%= Icon(icon: "explicit", label: Model.human_attribute_name(:sensitive)) %></div>
             <div>
               <%= Model.human_attribute_name(:sensitive) %>
             </div>
           <% end %>
           <% if current_user&.is_administrator? %>
-            <div><%= icon icon: "folder", label: t(".path") %></div>
+            <div><%= Icon icon: "folder", label: t(".path") %></div>
             <div>
               <%= content_tag(:code, class: "path") { safe_join @model.path.split("/"), safe_join([tag.wbr, "/"]) } %>
             </div>
           <% end %>
-          <div><%= icon icon: "tag", label: t(".tags") %></div>
+          <div><%= Icon icon: "tag", label: t(".tags") %></div>
           <div><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc), filter: @filter %></div>
           <% unless @model.links.empty? %>
-            <div><%= icon icon: "link-45deg", label: Model.human_attribute_name(:links) %></div>
+            <div><%= Icon icon: "link-45deg", label: Model.human_attribute_name(:links) %></div>
             <%= render Components::LinkList.new links: @model.links, icons: false %>
           <% end %>
           <% if SiteSettings.social_enabled? %>
@@ -103,7 +103,7 @@
                 <% end %>
               </div>
             <% end %>
-            <div><%= icon icon: "people", label: t(".followers") %></div>
+            <div><%= Icon icon: "people", label: t(".followers") %></div>
             <div>
               <%= t("general.followers", count: @model.followers.count) %>
               <div class="float-end">

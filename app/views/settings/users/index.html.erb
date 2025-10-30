@@ -15,7 +15,7 @@
   <% @users.each do |user| %>
     <tr class="<%= user.entity&.approved? ? "" : "table-info" %>">
       <td>
-        <%= icon(icon: "hourglass", label: "") unless user.entity&.approved? %>
+        <%= Icon(icon: "hourglass", label: "") unless user.entity&.approved? %>
         <%= user.entity.is_a?(User) ? user.entity&.username : user.username %>
       </td>
       <td><%= user.entity.is_a?(User) ? masked_email(user.entity&.email) : nil %></td>
@@ -23,7 +23,7 @@
       <%= content_tag :td, (user.local? ? "✅" : "❌") if SiteSettings.federation_enabled? %>
       <%= content_tag :td, user.at_address if SiteSettings.federation_enabled? %>
       <td><%= user.entity&.roles&.map(&:name)&.join(", ") if user.entity&.is_a?(User) %></td>
-      <td><%= link_to safe_join([icon(icon: "search", label: t(".view")), t(".view")], " "), settings_user_path(user.entity), class: "btn btn-primary" if user.entity %></td>
+      <td><%= link_to safe_join([Icon(icon: "search", label: t(".view")), t(".view")], " "), settings_user_path(user.entity), class: "btn btn-primary" if user.entity %></td>
     </tr>
   <% end %>
 </table>

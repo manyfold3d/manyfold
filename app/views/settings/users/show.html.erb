@@ -12,7 +12,7 @@
     <tr>
       <th><%= User.human_attribute_name(:approved) %></th>
       <td>
-        <%= link_to safe_join([icon(icon: "person-check", label: t(".approve")), t(".approve")], " "), settings_user_path(@user, approve: true), method: :patch, class: "btn btn-primary btn-sm" if policy(@user).edit? %>
+        <%= link_to safe_join([Icon(icon: "person-check", label: t(".approve")), t(".approve")], " "), settings_user_path(@user, approve: true), method: :patch, class: "btn btn-primary btn-sm" if policy(@user).edit? %>
       </td>
     </tr>
   <% end %>
@@ -65,6 +65,6 @@
   </tr>
 </table>
 
-<%= link_to safe_join([icon(icon: "pencil", label: t("general.edit")), t("general.edit")], " "), edit_settings_user_path(@user), class: "btn btn-primary" if policy(@user).edit? %>
-<%= link_to safe_join([icon(icon: "key", label: t(".reset_password")), t(".reset_password")], " "), settings_user_path(@user, reset: true), method: :patch, class: "btn btn-warning" if policy(@user).edit? %>
-<%= link_to safe_join([icon(icon: "trash", label: t("general.delete")), t("general.delete")], " "), settings_user_path(@user), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: translate(".confirm_destroy")}} if policy(@user).destroy? && @user != current_user %>
+<%= link_to safe_join([Icon(icon: "pencil", label: t("general.edit")), t("general.edit")], " "), edit_settings_user_path(@user), class: "btn btn-primary" if policy(@user).edit? %>
+<%= link_to safe_join([Icon(icon: "key", label: t(".reset_password")), t(".reset_password")], " "), settings_user_path(@user, reset: true), method: :patch, class: "btn btn-warning" if policy(@user).edit? %>
+<%= link_to safe_join([Icon(icon: "trash", label: t("general.delete")), t("general.delete")], " "), settings_user_path(@user), {method: :delete, class: "float-end btn btn-outline-danger", data: {confirm: translate(".confirm_destroy")}} if policy(@user).destroy? && @user != current_user %>

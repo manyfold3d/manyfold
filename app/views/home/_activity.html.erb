@@ -3,7 +3,7 @@
   <div class="card-body py-2">
     <div class="row">
       <div class="col col-auto">
-        <%= icon icon_for(activity.class), activity.class.model_name.human %>
+        <%= Icon icon: icon_for(activity.class), label: activity.class.model_name.human %>
       </div>
       <div class="col">
         <%- if activity.federails_actor.nil? || activity.federails_actor.local? %>
@@ -14,7 +14,7 @@
           <%= activity.name %>
         <%- end %>
         <%= server_indicator activity.federails_actor %>
-        <%= icon(icon: "explicit", label: Model.human_attribute_name(:sensitive)) if activity.respond_to?(:sensitive) && activity.sensitive %>
+        <%= Icon(icon: "explicit", label: Model.human_attribute_name(:sensitive)) if activity.respond_to?(:sensitive) && activity.sensitive %>
         <%= render Components::AccessIndicator.new(object: activity) %>
       </div>
       <% if activity.is_a? Model %>

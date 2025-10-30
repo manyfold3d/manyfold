@@ -1,7 +1,7 @@
 <% content_for :items do %>
   <% if @models.empty? %>
     <div class="alert alert-info">
-      <%= icon icon: "person-arms-up", label: "" %>
+      <%= Icon icon: "person-arms-up", label: "" %>
       <%= signed_in? ? t(".no_results_html") : t(".no_results_signed_out_html", link: new_user_session_path) %>
       <% if @search %>
         <%= t ".search.or_other_sites" %>
@@ -25,7 +25,7 @@
       <% end %>
       <% if @search %>
         <div class="alert alert-info">
-          <%= icon icon: "search", label: "" %>
+          <%= Icon icon: "search", label: "" %>
           <%= t ".search.other_sites" %>
           <%= render "search_links" %>
         </div>

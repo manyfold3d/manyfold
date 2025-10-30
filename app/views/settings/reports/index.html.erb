@@ -12,14 +12,14 @@
   <% @reports.each do |report|
     next unless report.object %>
     <tr>
-      <td><%= icon icon_for(report.object.entity.class), "" %></td>
+      <td><%= Icon icon: icon_for(report.object.entity.class), label: "" %></td>
       <td><%= link_to report.object.entity.name, report.object.entity if report.object&.entity %></td>
       <td>
-        <%= icon (report.local? ? "house" : "globe"), "" %>
+        <%= icon (icon: report.local? ? "house" : "globe"), label: "" %>
       </td>
       <td><%= report.reporter_address %></td>
       <td><%= report.created_at %></td>
-      <td><%= link_to safe_join([icon(icon: "search", label: t("general.view")), t("general.view")], " "), settings_report_path(report), {class: "float-end btn btn-primary"} %></td>
+      <td><%= link_to safe_join([Icon(icon: "search", label: t("general.view")), t("general.view")], " "), settings_report_path(report), {class: "float-end btn btn-primary"} %></td>
     </tr>
   <% end %>
 </table>
