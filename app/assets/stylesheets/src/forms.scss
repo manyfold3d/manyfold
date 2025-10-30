@@ -1,6 +1,6 @@
 .tabular-form {
 	display: grid;
-	grid-template-columns: minmax(min-content, 25%) minmax(75%, auto);
+	grid-template-columns: minmax(min-content, max-content) auto;
 	gap: 1em;
 
 	div:has(input[type=submit]),
