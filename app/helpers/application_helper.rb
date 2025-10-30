@@ -11,10 +11,6 @@ module ApplicationHelper
     SiteSettings.site_icon.presence || "roundel.svg"
   end
 
-  def Icon(icon:, label:, id: nil, effect: nil)
-    render Components::Icon.new(icon: icon, label: label, id: id, effect: effect)
-  end
-
   def icon_for(klass)
     case klass.name
     when "Creator"
