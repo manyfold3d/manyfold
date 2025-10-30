@@ -20,13 +20,6 @@ module ModelsHelper
     {nil => files}.merge sections.sort_by { |k, v| k }.to_h
   end
 
-  def status_badges(model)
-    badges = []
-    badges << content_tag(:span, Icon(icon: "stars", label: t("general.new")), class: "text-warning align-middle") if model.new?
-    badges << problem_icon_tag(problems_including_files(model).visible(problem_settings)) if policy(Problem).show?
-    content_tag :span, safe_join(badges, " "), class: "status-badges"
-  end
-
   def problems_including_files(model)
     policy_scope(Problem).where(problematic: policy_scope(model.model_files) + [self])
   end

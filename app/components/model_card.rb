@@ -5,7 +5,6 @@ class Components::ModelCard < Components::Base
   include Phlex::Rails::Helpers::Sanitize
   include Phlex::Rails::Helpers::LinkTo
 
-  register_output_helper :status_badges
   register_output_helper :server_indicator
   register_value_helper :policy
 
@@ -15,7 +14,7 @@ class Components::ModelCard < Components::Base
   end
 
   def view_template
-    div class: "col mb-4" do
+    div class: "col mb-3" do
       div class: "card preview-card" do
         div(class: "card-header position-absolute w-100 top-0 z-3 bg-body-secondary text-secondary-emphasis opacity-75") { server_indicator @model } if @model.remote?
         PreviewFrame(object: @model)
@@ -109,7 +108,7 @@ class Components::ModelCard < Components::Base
         div class: "col" do
           open_button
           whitespace
-          status_badges @model
+          StatusBadges model: @model
         end
         div class: "col col-auto" do
           BurgerMenu(small: true) do

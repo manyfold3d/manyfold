@@ -19,7 +19,7 @@
       </div>
       <% if activity.is_a? Model %>
         <div class="col col-auto">
-          <%= status_badges(activity) %>
+          <%= StatusBadges(model: activity) %>
         </div>
       <% end %>
       <div class="col col-auto">
