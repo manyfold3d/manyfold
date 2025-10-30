@@ -55,7 +55,7 @@
                     aria: {
                       expanded: "false"
                     } do
-                    safe_join [render(Components::Icon.new(icon: "plus-circle")), t(".add_models")], " "
+                    safe_join [Icon(icon: "plus-circle"), t(".add_models")], " "
                   end %>
               <ul class="dropdown-menu">
                 <li><%= link_to t(".upload"), new_model_path, nofollow: true, class: "dropdown-item" %></li>
@@ -72,7 +72,7 @@
               <div class="btn-group">
                 <button type="button" data-bs-toggle="dropdown" aria-expanded="false"
                   class="btn btn-warning btn-sm mt-1 me-1 dropdown-toggle">
-                  <%= render Components::Icon.new(icon: "radar") %>
+                  <%= Icon(icon: "radar") %>
                   <%= t ".scan" %>
                 </button>
                 <ul class="dropdown-menu">
