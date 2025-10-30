@@ -551,7 +551,7 @@ GEM
     orm_adapter (0.5.0)
     ostruct (0.6.1)
     parallel (1.27.0)
-    parser (3.3.9.0)
+    parser (3.3.10.0)
       ast (~> 2.4.1)
       racc
     pg (1.6.2)
@@ -783,7 +783,7 @@ GEM
     rubyzip (2.4.1)
     scoped_search (4.3.1)
       activerecord (>= 4.2.0)
-    scout_apm (5.7.1)
+    scout_apm (5.8.0)
       parser
     securerandom (0.4.1)
     selenium-webdriver (4.38.0)
@@ -1252,7 +1252,7 @@ CHECKSUMS
   orm_adapter (0.5.0) sha256=aa5d0be5d540cbb46d3a93e88061f4ece6a25f6e97d6a47122beb84fe595e9b9
   ostruct (0.6.1) sha256=09a3fb7ecc1fa4039f25418cc05ae9c82bd520472c5c6a6f515f03e4988cb817
   parallel (1.27.0) sha256=4ac151e1806b755fb4e2dc2332cbf0e54f2e24ba821ff2d3dcf86bf6dc4ae130
-  parser (3.3.9.0) sha256=94d6929354b1a6e3e1f89d79d4d302cc8f5aa814431a6c9c7e0623335d7687f2
+  parser (3.3.10.0) sha256=ce3587fa5cc55a88c4ba5b2b37621b3329aadf5728f9eafa36bbd121462aabd6
   pg (1.6.2) sha256=58614afd405cc9c2c9e15bffe8432e0d6cfc58b722344ad4a47c73a85189c875
   pg (1.6.2-x64-mingw-ucrt) sha256=6952fb74f2289630da5bf2d5454d51195d40862675c5017db02b1c0ac9e92e09
   pg (1.6.2-x86_64-darwin) sha256=c441a55723584e2ae41749bf26024d7ffdfe1841b442308ed50cd6b7fda04115
@@ -1333,7 +1333,7 @@ CHECKSUMS
   ruby-vips (2.2.3) sha256=41d12b1a805cd6ead4a7965201a8f7c5fe459bb58d3a7d967c9eb0719a6edc92
   rubyzip (2.4.1) sha256=8577c88edc1fde8935eb91064c5cb1aef9ad5494b940cf19c775ee833e075615
   scoped_search (4.3.1) sha256=0b013af6576d7393813e65a6c6971a60bfa6188cc95ac8702f06dfa3e4f64940
-  scout_apm (5.7.1) sha256=bc43fcb405e2198f5ef27adee7f4cb63f9136d17ca43d13d359f768b759db9d6
+  scout_apm (5.8.0) sha256=b7988a85c413f28e470a914ed5ba8e5742f6ce4b4a9e936253fc89c0d6afd38a
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   selenium-webdriver (4.38.0) sha256=0a84e71fef66394ae8d9290d3a5bc24b33de49d45a7aa57fc09f246218bf102f
   shellany (0.0.1) sha256=0e127a9132698766d7e752e82cdac8250b6adbd09e6c0a7fbbb6f61964fedee7
