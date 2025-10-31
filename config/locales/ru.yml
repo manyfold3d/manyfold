@@ -15,7 +15,7 @@ ru:
         avatar: Изображение аватара
         banner:
         caption: Описание
-        indexable:
+        indexable: Разрешить индексацию поисковыми системами
         name:
         notes: Примечания
         slug: Уникальное имя автора
