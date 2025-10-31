@@ -42,7 +42,7 @@ zh-CN:
     show:
       edit: 编辑创作者简介
     unassigned:
-      caption:
+      caption: 所有未指定创作者的模型。
       name: 未分配
     update:
       success: 保存成功。
