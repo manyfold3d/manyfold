@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= tag.meta name: "csp-nonce", content: content_security_policy_nonce if content_security_policy_nonce %>
     <%= javascript_include_tag "application", nonce: true, defer: true %>
-    <%= stylesheet_link_tag "themes/#{SiteSettings.theme}", nonce: true %>
+    <%= stylesheet_link_tag "themes/#{SiteSettings.validated_theme}", nonce: true %>
     <%= yield :head %>
   </head>
 
