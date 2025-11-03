@@ -52,7 +52,7 @@ export default class extends Controller {
     const form = this.element?.closest('form')
     if (form != null) {
       this.nameLabel = form.querySelector("div:has(> label[for='name'])")
-      this.nameField = form.querySelector("div:has(> input[name='name'])")
+      this.nameField = form.querySelector("div:has(> div > input[name='name'])")
       this.multiMessage = form.querySelector("div[id='multi-model-message']")
       this.singleMessage = form.querySelector("div[id='single-model-message']")
     }
