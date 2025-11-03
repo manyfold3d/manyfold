@@ -87,7 +87,7 @@ zh-CN:
       success: 模型扫描开始
     show:
       download_preparing: 正在准备下载，请稍候。
-      download_requested: 已申请下载，将很快准备就绪，请稍候。
+      download_requested: 正在准备文件，如未自动开始下载，请刷新页面后再次点击。
       files: 文件
       files_card:
         bulk_edit: 编辑所有文件

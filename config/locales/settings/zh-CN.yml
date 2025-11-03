@@ -37,10 +37,10 @@ zh-CN:
         help: 除非开启，否则 robots.txt 中完全禁止人工智能机器人。启用此功能会造成大量服务器负载。
         label: 允许人工智能爬虫
       allow_robots:
-        help: 除非打开，否则网络爬虫将被要求忽略整个实例。
+        help: 除非开启，否则网络爬虫将被要求忽略整个实例。
         label: 允许网络爬虫
       default_ai_indexable:
-        help_html: 除非开启，否则人工智能训练机器人将被要求使用<a href="https://www.deviantart.com/team/journal/A-New-Directive-for-Opting-Out-of-AI-Datasets-934500371">Deviantart 的 "noai "指令</a>忽略公开内容。
+        help_html: 除非开启，否则人工智能训练机器人将被要求使用 <a href="https://www.deviantart.com/team/journal/A-New-Directive-for-Opting-Out-of-AI-Datasets-934500371">Deviantart 的 "noai "指令</a> 忽略公开内容。
         label: 允许用于 AI 训练
       default_indexable:
         help: 除非开启，否则搜索引擎将被要求默认忽略公开内容。
@@ -82,7 +82,7 @@ zh-CN:
     file_settings:
       custom_ignore_filters:
         details: 过滤器采用 regex 格式，用新行分隔。
-        label: 忽略文件正则过滤器。
+        label: 忽略文件正则过滤器
       summary: 更改文件设置，如忽略的文件等。
       title: 文件设置
     folder_settings:
@@ -93,7 +93,7 @@ zh-CN:
         help: 根据模板设置创建者、合集和 Tags
         label: 扫描时从模型路径模板中填充元数据
       safe_folder_names:
-        help_html: 例如，用<code>spinal-tap</code>代替<code>Spın̈al Tap</code>
+        help_html: 例如，用 <code>spinal-tap</code> 代替 <code>Spın̈al Tap</code>
         label: 使用安全的文件夹名称
       summary: 定义 "整理文件" 和扫描时自动填充元数据所使用的文件夹结构。影响所有账户。
       title: 文件夹命名
@@ -107,7 +107,7 @@ zh-CN:
       submit: 保存设置
     integrations:
       cults3d_api_key:
-        help_html: 在<a href="https://cults3d.com/en/api/keys">Cults3D</a>API 密钥页面上创建 API 密钥。
+        help_html: 在 <a href="https://cults3d.com/en/api/keys">Cults3D</a> API 密钥页面上创建 API 密钥。
         label: API 密钥
       cults3d_api_username:
         help_html: 生成 API 密钥的 Cults3d 账户的用户名。
@@ -115,10 +115,10 @@ zh-CN:
       description: 用于配置与外部服务集成的设置，以启用自动元数据同步等功能。
       heading: 集成
       myminifactory_api_key:
-        help_html: 在<a href="https://www.myminifactory.com/settings/developer">MyMiniFactory 开发人员设置</a>中创建应用程序，并粘贴生成的 API 密钥。
+        help_html: 在 <a href="https://www.myminifactory.com/settings/developer">MyMiniFactory 开发人员设置</a> 中创建应用程序，并粘贴生成的 API 密钥。
         label: API 密钥
       thingiverse_api_key:
-        help_html: 在<a href="https://www.thingiverse.com/developers/my-apps">Thingiverse 开发者控制台</a>创建一个 "网络应用程序"，并在此粘贴 "应用程序令牌"。
+        help_html: 在 <a href="https://www.thingiverse.com/developers/my-apps">Thingiverse 开发者控制台</a> 创建一个 "网络应用程序"，并在此粘贴 "应用程序令牌"。
         label: API 密钥
     multiuser:
       approve_signups:
@@ -158,13 +158,13 @@ zh-CN:
       user_quotas_enable_quota: 启用账户上传存储限制
       user_quotas_site_default: 网站默认账户上传存储限制（MB）
     reporting:
-      description_html: 如果启用使用跟踪，以下信息将每天发送一次到<code>%{endpoint}</code>。该<code>ID</code>是在启用跟踪功能时随机生成的。
+      description_html: 如果启用跟踪，以下信息将每天发送一次到 <code>%{endpoint}</code>。该 <code>ID</code> 是在启用跟踪功能时随机生成的。
       heading: 使用跟踪
       report_usage:
         label: 启用匿名使用跟踪
       summary: 让开发人员知道你正在运行 Manyfold。
       use_of_data: 除了测量运行 Manyfold 的实例数量和版本外，开发人员绝不会将这些信息用于任何其他目的，也不会发送或存储其他信息。
-      verification_html: 如果要验证我们发送的内容，可以更改<code>USAGE_REPORTING_URL</code>环境变量，然后将数据发送到可以检查的地方。您还可以在日志中查看发送的具体内容。
+      verification_html: 如果要验证我们发送的内容，可以更改 <code>USAGE_REPORTING_URL</code> 环境变量，然后将数据发送到可以检查的地方。您还可以在日志中查看发送的具体内容。
     reports:
       index:
         description: 本地账户或 Fediverse 账户报告的内容会显示在这里，以供审核。
