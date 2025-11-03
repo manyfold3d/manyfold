@@ -108,19 +108,14 @@ module ApplicationHelper
     ])
   end
 
-  def url_input_row(form, name, options = {})
-    safe_join([
-      content_tag(:div) do
-        form.label(name, options[:label], class: "col-form-label")
-      end,
-      content_tag(:div) do
-        safe_join [
-          form.url_field(name, {class: "form-control"}.merge(options)),
-          errors_for(form.object, name),
-          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-        ].compact
-      end
-    ])
+  def url_input_row(form, attribute, options = {})
+    UrlInputRow(
+      form: form,
+      attribute: attribute,
+      label: options.delete(:label),
+      help: options.delete(:help),
+      options: options
+    )
   end
 
   def numeric_input_row(form, name, options = {})
