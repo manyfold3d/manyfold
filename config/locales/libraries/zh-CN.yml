@@ -16,7 +16,7 @@ zh-CN:
         help: 如果上面指定的资料库文件夹在磁盘上不存在，则创建该文件夹。
       default:
         help: 将此资料库设置为上传的默认库
-      filesystem_description_html: 要使用本地文件系统上的存储，首先要确保它已作为<a href="https://docs.docker.com/storage/bind-mounts/">绑定挂载</a>或其他卷挂载到 Docker 容器中，然后输入 Docker 路径；而不是主机服务器上的路径！例如，如果你在主机上的<code>/mnt/media/3d/models</code>文件夹中有大量文件，并在 Docker 配置中将<code>/mnt/media/3d</code>绑定到<code>/libraries</code>，那么所需的路径就是<code>/libraries/models</code>。
+      filesystem_description_html: 要使用本地文件系统上的存储，首先要确保它已作为 <a href="https://docs.docker.com/storage/bind-mounts/">绑定挂载</a> 或其他卷挂载到 Docker 容器中，然后输入 Docker 路径；而不是主机服务器上的路径！例如，如果你在主机上的 <code>/mnt/media/3d/models</code> 文件夹中有大量文件，并在 Docker 配置中将 <code>/mnt/media/3d</code> 绑定到 <code>/libraries</code>，那么所需的路径就是 <code>/libraries/models</code>。
       icon:
         help_html: 可选；<a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">Boostrap 图标</a>或<a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a> 中的任何图标。
         placeholder: boxes
