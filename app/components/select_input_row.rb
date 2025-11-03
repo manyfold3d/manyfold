@@ -13,7 +13,7 @@ class Components::SelectInputRow < Components::InputRow
         data: {
           controller: "searchable-select"
         },
-        class: "form-control form-select #{"is-invalid" if @form.object&.errors&.include?(@attribute) && !@form.object.errors[@attribute].empty?}"
+        class: "form-control form-select #{"is-invalid" if @form.object&.errors&.include?(@attribute_without_id) && !@form.object.errors[@attribute_without_id].empty?}"
       }
     )
     if @options[:button]
