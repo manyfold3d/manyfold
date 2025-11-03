@@ -2,7 +2,7 @@ module Form
   class UploadedFileDeserializer < BaseDeserializer
     def deserialize
       return nil unless @params
-      @params.permit(
+      @params.require(:model).permit(
         file: [
           [:id, :name]
         ]
