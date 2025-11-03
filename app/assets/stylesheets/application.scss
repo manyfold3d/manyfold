@@ -19,11 +19,10 @@ $ra-font-path: "../fonts" !default;
 @import 'src/forms';
 
 @import 'tom-select/dist/css/tom-select.bootstrap5';
+@import 'src/tom-select-prefers-color-scheme-dark';
 
 @import '@uppy/core/dist/style.min';
 @import '@uppy/dashboard/dist/style.min';
-
-@import 'src/dark-theme-overrides';
 
 @import "driver.js/dist/driver";
 
