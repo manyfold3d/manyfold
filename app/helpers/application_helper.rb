@@ -148,21 +148,14 @@ module ApplicationHelper
     )
   end
 
-  def checkbox_input_row(form, name, options = {})
-    safe_join([
-      content_tag(:div) do
-        form.label(name, options[:label])
-      end,
-      content_tag(:div) do
-        content_tag(:div, class: "form-switch") do
-          safe_join [
-            form.check_box(name, options.merge(class: "form-check-input form-check-inline")),
-            errors_for(form.object, name),
-            (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-          ].compact
-        end
-      end
-    ])
+  def checkbox_input_row(form, attribute, options = {})
+    CheckBoxInputRow(
+      form: form,
+      attribute: attribute,
+      label: options.delete(:label),
+      help: options.delete(:help),
+      options: options
+    )
   end
 
   def select_input_row(form, name, select_options, options = {})
