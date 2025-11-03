@@ -135,24 +135,15 @@ module ApplicationHelper
     )
   end
 
-  def select_input_row(form, name, select_options, options = {})
-    safe_join([
-      content_tag(:div) do
-        form.label(name, options[:label], class: "col-form-label")
-      end,
-      content_tag(:div) do
-        safe_join [
-          content_tag(:div, class: "input-group") do
-            safe_join [
-              form.select(name, select_options, options.compact, {data: {controller: "searchable-select"}, class: "form-control form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
-              (link_to(options[:button][:label], options[:button][:path], class: "btn btn-outline-secondary") if options[:button])
-            ]
-          end,
-          errors_for(form.object, name),
-          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-        ].compact
-      end
-    ])
+  def select_input_row(form, attribute, select_options, options = {})
+    SelectInputRow(
+      form: form,
+      attribute: attribute,
+      select_options: select_options,
+      label: options.delete(:label),
+      help: options.delete(:help),
+      options: options
+    )
   end
 
   def collection_select_input_row(form, name, collection, value_method, text_method, options = {})
