@@ -63,6 +63,7 @@ class ModelsController < ApplicationController
   end
 
   def new
+    @model = Model.new # dummy model object
     authorize :model
     generate_available_tag_list
   end
@@ -76,7 +77,11 @@ class ModelsController < ApplicationController
   def create
     authorize :model
     p = upload_params
+    # First, is this a single or multi-model event?
+    multiple = p[:file]&.values&.all? { |it| SupportedMimeTypes.archive_extensions.include? File.extname(it[:name]).delete(".").downcase }
+    # Then run validations on a dummy object
     common_args = {
+      name: multiple ? nil : p[:name],
       owner: current_user,
       creator_id: p[:creator_id],
       collection_id: p[:collection_id],
@@ -84,22 +89,32 @@ class ModelsController < ApplicationController
       sensitive: (p[:sensitive] == "1"),
       tags: p[:add_tags],
       permission_preset: p[:permission_preset]
-    }
+    }.compact
     library = SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
-    jobs = if p[:file].values.all? { |it| SupportedMimeTypes.archive_extensions.include? File.extname(it[:name]).delete(".").downcase }
-      # If this is all separate archives, enqueue separate jobs for each
-      p[:file].values.map { |it| cached_file_data(it) }
+    @model = Model.new(common_args.merge(library: library)) # dummy model object
+    if @model.valid?(multiple ? :multi_upload : :single_upload)
+      # Handle actual files
+      jobs = if multiple
+        # If this is all separate archives, enqueue separate jobs for each
+        p[:file].values.map { |it| cached_file_data(it) }
+      else
+        # Otherwise, enqueue one job for all files and add name to args
+        [p[:file].values.map { |it| cached_file_data(it) }]
+      end
+      jobs.each do |it|
+        ProcessUploadedFileJob.perform_later(library.id, it, **common_args)
+      end
+      respond_to do |format|
+        format.html { redirect_to models_path, notice: t(".success") }
+        format.manyfold_api_v0 { head :accepted }
+      end
     else
-      # Otherwise, enqueue one job for all files and add name to args
-      common_args[:name] = p[:name]
-      [p[:file].values.map { |it| cached_file_data(it) }]
-    end
-    jobs.each do |it|
-      ProcessUploadedFileJob.perform_later(library.id, it, **common_args)
-    end
-    respond_to do |format|
-      format.html { redirect_to models_path, notice: t(".success") }
-      format.manyfold_api_v0 { head :accepted }
+      get_creators_and_collections
+      generate_available_tag_list
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_content }
+        format.manyfold_api_v0 { render json: @model.errors.to_json, status: :unprocessable_content }
+      end
     end
   end
 
