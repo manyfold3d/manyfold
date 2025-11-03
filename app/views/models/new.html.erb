@@ -6,7 +6,7 @@
   <li><%= t ".non-archives" %></li>
 </ul>
 
-<%= form_with url: models_path, id: "upload-form", class: "container-md tabular-form" do |form| %>
+<%= form_with model: @model, id: "upload-form", class: "container-md tabular-form" do |form| %>
 
   <% if SiteSettings.show_libraries %>
     <div>

@@ -51,8 +51,8 @@ export default class extends Controller {
     const submitButton = this.element?.closest('form')?.querySelector("input[type='submit']")
     const form = this.element?.closest('form')
     if (form != null) {
-      this.nameLabel = form.querySelector("div:has(> label[for='name'])")
-      this.nameField = form.querySelector("div:has(> div > input[name='name'])")
+      this.nameLabel = form.querySelector("div:has(> label[for='model_name'])")
+      this.nameField = form.querySelector("div:has(> div > input[name='model[name]'])")
       this.multiMessage = form.querySelector("div[id='multi-model-message']")
       this.singleMessage = form.querySelector("div[id='single-model-message']")
     }
@@ -69,8 +69,8 @@ export default class extends Controller {
     this.element.closest('form')?.addEventListener('formdata', (event) => {
       this.uppy?.getFiles().forEach((f, index) => {
         if (f.tus?.uploadUrl != null) {
-          event.formData.set(`file[${index}][id]`, f.tus?.uploadUrl)
-          if (f.name != null) { event.formData.set(`file[${index}][name]`, f.name) }
+          event.formData.set(`model[file][${index}][id]`, f.tus?.uploadUrl)
+          if (f.name != null) { event.formData.set(`model[file][${index}][name]`, f.name) }
         }
       })
     })
