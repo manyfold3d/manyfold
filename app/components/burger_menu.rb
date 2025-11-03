@@ -6,7 +6,7 @@ class Components::BurgerMenu < Components::Base
   end
 
   def view_template
-    classes = %w[btn btn-outline-secondary]
+    classes = %w[btn btn-secondary]
     classes << "btn-sm" if @small
     div do
       a href: "#", role: "button", data: {bs_toggle: "dropdown"}, aria: {expanded: false}, class: classes.join(" ") do
