@@ -83,29 +83,15 @@ module ApplicationHelper
     )
   end
 
-  def password_input_row(form, name, options = {})
-    field_options = {class: "form-control"}.merge(options)
-    if options[:strength_meter]
-      field_options["data-controller"] = "zxcvbn"
-      field_options["data-action"] = "input->zxcvbn#onInput"
-    end
-    safe_join([
-      content_tag(:div) do
-        form.label(name, options[:label], class: "col-form-label")
-      end,
-      content_tag(:div) do
-        safe_join [
-          form.password_field(name, field_options),
-          (if options[:strength_meter]
-             content_tag(:div, class: "progress") do
-               content_tag(:div, nil, class: "progress-bar w-0 zxcvbn-meter", "data-zxcvbn-min-score": Devise.min_password_score)
-             end
-           end),
-          errors_for(form.object, name),
-          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-        ].compact
-      end
-    ])
+  def password_input_row(form, attribute, options = {})
+    PasswordInputRow(
+      form: form,
+      attribute: attribute,
+      strength_meter: options.delete(:strength_meter),
+      label: options.delete(:label),
+      help: options.delete(:help),
+      options: options
+    )
   end
 
   def url_input_row(form, attribute, options = {})

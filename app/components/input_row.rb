@@ -12,11 +12,15 @@ class Components::InputRow < Components::Base
       @form.label(@attribute, @label, class: "col-form-label")
     end
     div do
-      div class: "input-group" do
-        input_element
-      end
+      input_group
       errors_for(@form.object, @attribute)
       span(class: "form-text") { @help } if @help
+    end
+  end
+
+  def input_group
+    div class: "input-group" do
+      input_element
     end
   end
 
