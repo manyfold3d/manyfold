@@ -9,7 +9,8 @@ export default class extends Controller {
 
   connect (): void {
     this.tomSelect = new TomSelect((this.element as TomInput), { // eslint-disable-line no-new
-      selectOnTab: true
+      selectOnTab: true,
+      allowEmptyOption: true
     })
   }
 
