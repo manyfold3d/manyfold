@@ -4,4 +4,8 @@ class Components::CheckBoxInputRow < Components::InputRow
       @form.check_box(@attribute, {class: "form-check-input form-check-inline"}.merge(@options))
     end
   end
+
+  def label_class
+    nil
+  end
 end
