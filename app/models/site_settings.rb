@@ -99,6 +99,40 @@ class SiteSettings < RailsSettings::Base
     federation_enabled? && FaspClient::Provider.any? { |it| it.has_capability? :account_search }
   end
 
+  AVAILABLE_THEMES = [
+    "brite",
+    "cerulean",
+    "cosmo",
+    "cyborg",
+    "darkly",
+    "default",
+    "flatly",
+    "journal",
+    "litera",
+    "lumen",
+    "lux",
+    "materia",
+    "minty",
+    "morph",
+    "pulse",
+    "quartz",
+    "sandstone",
+    "simplex",
+    "sketchy",
+    "slate",
+    "solar",
+    "spacelab",
+    "superhero",
+    "united",
+    "vapor",
+    "yeti",
+    "zephyr"
+  ]
+
+  def self.validated_theme
+    AVAILABLE_THEMES.include?(theme) ? theme : "default"
+  end
+
   module UserDefaults
     RENDERER = ActiveSupport::HashWithIndifferentAccess.new(
       grid_width: 200,

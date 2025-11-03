@@ -6,37 +6,9 @@
   <%= text_input_row form, "appearance[site_tagline]", label: t(".site_tagline.label"), value: SiteSettings.site_tagline, placeholder: t("application.tagline"), help: t(".site_tagline.help") %>
   <%= url_input_row form, "appearance[site_icon]", label: t(".site_icon.label"), value: SiteSettings.site_icon, help: t(".site_icon.help") %>
   <%= url_input_row form, "appearance[support_link]", label: t(".support_link.label"), value: SiteSettings.support_link, help: t(".support_link.help") %>
-  <%= select_input_row form, "appearance[theme]", [
-        "brite",
-        "cerulean",
-        "cosmo",
-        "cyborg",
-        "darkly",
-        "default",
-        "flatly",
-        "journal",
-        "litera",
-        "lumen",
-        "lux",
-        "materia",
-        "minty",
-        "morph",
-        "pulse",
-        "quartz",
-        "sandstone",
-        "simplex",
-        "sketchy",
-        "slate",
-        "solar",
-        "spacelab",
-        "superhero",
-        "united",
-        "vapor",
-        "yeti",
-        "zephyr"
-      ].map { |it| [it.titleize, it] },
+  <%= select_input_row form, "appearance[theme]", SiteSettings::AVAILABLE_THEMES.map { |it| [it.titleize, it] },
         label: t(".theme.label"),
-        selected: SiteSettings.theme,
+        selected: SiteSettings.validated_theme,
         help: t(".theme.help_html") %>
   <hr>
   <h4><%= t(".information") %></h4>

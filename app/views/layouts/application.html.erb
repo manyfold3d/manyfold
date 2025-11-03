@@ -9,13 +9,13 @@
     <%= tag.link rel: "apple-touch-icon", href: asset_path("square-180.png") %>
     <%= tag.meta name: "apple-mobile-web-app-title", content: site_name %>
     <%= javascript_include_tag "application", nonce: true, defer: true %>
-    <%= stylesheet_link_tag "themes/#{SiteSettings.theme}", nonce: true %>
+    <%= stylesheet_link_tag "themes/#{SiteSettings.validated_theme}", nonce: true %>
     <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
     <%= tag.meta name: "robots", content: @indexing_directives if @indexing_directives.presence %>
     <%= yield :head %>
   </head>
 
-  <body class="<%= "#{SiteSettings.theme}-theme" %>" data-controller="tour">
+  <body class="<%= "#{SiteSettings.validated_theme}-theme" %>" data-controller="tour">
     <%= skip_link "content", t(".skip_to_content") %>
     <%= render "application/navbar" %>
     <%= yield :breadcrumbs %>
