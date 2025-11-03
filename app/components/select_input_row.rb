@@ -17,7 +17,7 @@ class Components::SelectInputRow < Components::InputRow
       }
     )
     if @options[:button]
-      a href: @options[:button][:path], class: "btn btn-outline-secondary" do
+      a href: @options[:button][:path], class: "btn btn-secondary" do
         @options[:button][:label]
       end
     end

@@ -60,10 +60,10 @@
               <td><%= t("activerecord.attributes.library.tag_regex") %></td>
               <td>
                 <% library.tag_regex.each do |reg| %>
-                  <%= link_to t(".tag_regex.check"), models_path(library: library, missingtag: reg), {class: "btn btn-outline-secondary"} %>
+                  <%= link_to t(".tag_regex.check"), models_path(library: library, missingtag: reg), {class: "btn btn-secondary"} %>
                   <code><%= reg %></code><br>
                 <% end %>
-                <%= if !library.tag_regex.empty? then link_to t(".tag_regex.search_missing"), models_path(library: library, missingtag: ""), {class: "btn btn-outline-secondary"} end %>
+                <%= if !library.tag_regex.empty? then link_to t(".tag_regex.search_missing"), models_path(library: library, missingtag: ""), {class: "btn btn-secondary"} end %>
               </td>
             </tr>
           </table>
