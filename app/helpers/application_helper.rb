@@ -73,19 +73,14 @@ module ApplicationHelper
     end
   end
 
-  def text_input_row(form, name, options = {})
-    safe_join([
-      content_tag(:div) do
-        form.label(name, options[:label], class: "col-form-label")
-      end,
-      content_tag(:div) do
-        safe_join [
-          form.text_field(name, {class: "form-control"}.merge(options)),
-          errors_for(form.object, name),
-          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-        ].compact
-      end
-    ])
+  def text_input_row(form, attribute, options = {})
+    TextInputRow(
+      form: form,
+      attribute: attribute,
+      label: options.delete(:label),
+      help: options.delete(:help),
+      options: options
+    )
   end
 
   def password_input_row(form, name, options = {})
