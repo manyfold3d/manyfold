@@ -10,9 +10,9 @@ class Components::SelectInputRow < Components::InputRow
       @select_options,
       @options.compact,
       {
-        # data: {
-        #   controller: "searchable-select"
-        # },
+        data: {
+          controller: "searchable-select"
+        },
         class: "form-control form-select #{"is-invalid" if @form.object&.errors&.include?(@name) && !@form.object.errors[@name].empty?}"
       }
     )
