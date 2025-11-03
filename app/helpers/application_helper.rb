@@ -146,24 +146,17 @@ module ApplicationHelper
     )
   end
 
-  def collection_select_input_row(form, name, collection, value_method, text_method, options = {})
-    safe_join([
-      content_tag(:div) do
-        form.label(name, options[:label], class: "col-form-label")
-      end,
-      content_tag(:div) do
-        safe_join [
-          content_tag(:div, class: "input-group") do
-            safe_join [
-              form.collection_select(:"#{name}_id", collection, value_method, text_method, options.compact, {data: {controller: "searchable-select"}, class: "form-control form-select #{"is-invalid" if form.object&.errors&.include?(name) && !form.object.errors[name].empty?}"}),
-              (link_to(options[:button][:label], options[:button][:path], class: "btn btn-outline-secondary") if options[:button])
-            ]
-          end,
-          errors_for(form.object, name),
-          (options[:help] ? content_tag(:span, class: "form-text") { options[:help] } : nil)
-        ].compact
-      end
-    ])
+  def collection_select_input_row(form, attribute, collection, value_method, text_method, options = {})
+    CollectionSelectInputRow(
+      form: form,
+      attribute: attribute,
+      collection: collection,
+      value_method: value_method,
+      text_method: text_method,
+      label: options.delete(:label),
+      help: options.delete(:help),
+      options: options
+    )
   end
 
   def file_input_row(form, name, options = {})
