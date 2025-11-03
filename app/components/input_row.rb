@@ -1,6 +1,4 @@
 class Components::InputRow < Components::Base
-  register_output_helper :errors_for
-
   def initialize(form:, attribute:, label:, help: nil, options: {})
     @form = form
     @attribute = attribute
@@ -24,5 +22,13 @@ class Components::InputRow < Components::Base
 
   def input_element
     raise NotImplementedError
+  end
+
+  def errors_for(object, attribute)
+    return if object.nil? || attribute.nil?
+    return unless object.errors.include? attribute
+    div class: "invalid-feedback d-block" do
+      object.errors.full_messages_for(attribute).join("; ")
+    end
   end
 end
