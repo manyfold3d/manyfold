@@ -92,7 +92,7 @@ class Search::FilterService
   end
 
   def filter_by_owner(scope)
-    scope
+    owner ? scope.granted_to("own", owner).local : scope
   end
 
   # Filter by tag
