@@ -179,12 +179,16 @@ RSpec.describe "Model Files" do
 
       context "when uploading a file" do
         let(:params) {
-          {file: {
-            "0" => {
-              id: "upload_key",
-              name: "test.stl"
+          {
+            model: {
+              file: {
+                "0" => {
+                  id: "upload_key",
+                  name: "test.stl"
+                }
+              }
             }
-          }}
+          }
         }
 
         it "queues post-upload job" do # rubocop:disable RSpec/ExampleLength
