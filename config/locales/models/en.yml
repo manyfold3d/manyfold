@@ -84,6 +84,10 @@ en:
       label: Organize files
     problem:
       merge_all: Merge all
+    problems_card:
+      tour:
+        description: This card shows any problems that were detected on this model. You can change problem visibility settings in your account preferences.
+        title: Problems
     scan:
       success: Model scan started
     show:
@@ -95,6 +99,10 @@ en:
         heading: Files
       followers: Followers
       license: License
+      menu:
+        tour:
+          description: This menu contains extra functions like editing or deleting the model, or editing multiple files at once.
+          title: Editing
       merge:
         heading: Merge
         warning: Merging moves all files from this model to the target, and removes this model. File metadata is preserved, but any model metadata will be lost!

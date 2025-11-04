@@ -84,6 +84,10 @@ es:
       label: Organizar archivos
     problem:
       merge_all: Fusionar todo
+    problems_card:
+      tour:
+        description:
+        title:
     scan:
       success: Escaneo de modelos iniciado
     show:
@@ -95,6 +99,10 @@ es:
         heading: Archivos
       followers: Seguidores
       license: Licencia
+      menu:
+        tour:
+          description:
+          title:
       merge:
         heading: Fusionar
         warning: La fusión mueve todos los archivos de este modelo al destino y elimina este modelo. Los metadatos de los archivos se conservan, pero los metadatos del modelo se pierden

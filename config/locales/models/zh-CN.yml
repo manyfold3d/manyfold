@@ -84,6 +84,10 @@ zh-CN:
       label: 整理文件
     problem:
       merge_all: 合并所有
+    problems_card:
+      tour:
+        description:
+        title:
     scan:
       success: 模型扫描开始
     show:
@@ -95,6 +99,10 @@ zh-CN:
         heading: 文件
       followers: 粉丝
       license: 许可证
+      menu:
+        tour:
+          description:
+          title:
       merge:
         heading: 合并
         warning: 合并会将此模型中的所有文件移到目标文件中，并删除此模型。文件元数据会被保留，但任何模型元数据都会丢失！

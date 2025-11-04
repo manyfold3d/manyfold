@@ -43,7 +43,7 @@ module ApplicationHelper
       skiplink = skip_link(options[:skip_link][:target], options[:skip_link][:text])
       card_class += " skip-link-container"
     end
-    tag.div class: card_class do
+    tag.div class: card_class, data: options[:data], id: id do
       safe_join([
         if title.present?
           tag.div(class: "card-header text-white bg-#{style}") do
@@ -55,16 +55,16 @@ module ApplicationHelper
                   nil,
                   class: "link-unstyled stretched-link d-#{options[:collapse]}-none",
                   "data-bs-toggle": "collapse",
-                  "data-bs-target": "##{id}",
+                  "data-bs-target": "##{id}-collapse",
                   "aria-expanded": false,
-                  "aria-controls": id
+                  "aria-controls": "#{id}-collapse"
                 )
               ]) :
               title
           end
         end,
         skiplink,
-        tag.div(class: "card-body #{"collapse d-#{options[:collapse]}-block" if options[:collapse]}", id: id) do
+        tag.div(class: "card-body #{"collapse d-#{options[:collapse]}-block" if options[:collapse]}", id: "#{id}-collapse") do
           tag.div class: "card-text" do
             yield
           end

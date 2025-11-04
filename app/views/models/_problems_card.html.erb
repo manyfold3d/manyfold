@@ -1,5 +1,5 @@
 <% return if problems.empty? %>
-<%= card("secondary", Problem.model_name.human(count: 100)) do %>
+<%= card("secondary", Problem.model_name.human(count: 100), id: "model-problems-card", data: tour_attributes(id: "model-problems-card", title: translate(".tour.title"), description: translate(".tour.description"))) do %>
   <% problems.each do |problem| %>
     <div class="clearfix">
       <%= turbo_stream_from problem %>

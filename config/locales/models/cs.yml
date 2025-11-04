@@ -84,6 +84,10 @@ cs:
       label: Uspořádání souborů
     problem:
       merge_all: Sloučit vše
+    problems_card:
+      tour:
+        description:
+        title:
     scan:
       success: Spuštěna kontrola modelu.
     show:
@@ -95,6 +99,10 @@ cs:
         heading: Soubory
       followers: Sledující
       license: Licence
+      menu:
+        tour:
+          description:
+          title:
       merge:
         heading: Sloučit
         warning: Sloučení přesune všechny soubory z tohoto modelu do cílového a odstraní tento model. Metadata souborů zůstanou zachována, ale všechna metadata modelu budou ztracena!

@@ -84,6 +84,10 @@ pt:
       label:
     problem:
       merge_all:
+    problems_card:
+      tour:
+        description:
+        title:
     scan:
       success:
     show:
@@ -95,6 +99,10 @@ pt:
         heading:
       followers:
       license:
+      menu:
+        tour:
+          description:
+          title:
       merge:
         heading:
         warning:
