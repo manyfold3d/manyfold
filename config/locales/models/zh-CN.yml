@@ -2,6 +2,7 @@
 zh-CN:
   models:
     bulk_edit:
+      add_tags: 添加标签
       description: 选择要更改的模型：
       form_subtitle: 选择要进行的更改：
       merge: 合并选定的模型
@@ -11,8 +12,6 @@ zh-CN:
       submit: 更新选定模型
       title: 批量编辑模型
       update_all: 更新所有 %{count} 模型
-    bulk_fields:
-      add_tags: 添加标签
     bulk_update:
       success: 模型更新成功。
     configure_merge:

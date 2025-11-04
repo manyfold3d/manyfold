@@ -2,6 +2,7 @@
 es:
   models:
     bulk_edit:
+      add_tags: Añadir etiquetas
       description: 'Seleccione los modelos que desea modificar:'
       form_subtitle: 'Seleccione los cambios a realizar:'
       merge: Fusionar los modelos seleccionados
@@ -11,8 +12,6 @@ es:
       submit: Actualizar modelos seleccionados
       title: Edición masiva de modelos
       update_all: Actualizar los %{count} modelos
-    bulk_fields:
-      add_tags: Añadir etiquetas
     bulk_update:
       success: Modelos actualizados correctamente.
     configure_merge:
