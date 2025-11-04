@@ -334,8 +334,8 @@ en:
       upload: Upload models
     order_buttons:
       sort:
-        name: Sort by Name
-        time: Sort by Time
+        name: Sort by name (alphabetical order)
+        time: Sort by date added (newest first)
     search_error: Error in search syntax. Please check and try again!
     tag_list:
       unrelated_tag_count:

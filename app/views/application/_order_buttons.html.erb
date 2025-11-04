@@ -1,4 +1,4 @@
 <div class="float-end mb-3">
-  <%= link_to Icon(icon: "book", label: t(".sort.name")), {order: "name"}.merge(@filter&.to_params), class: "btn #{(session["order"] == "name") ? "btn-primary" : "btn-secondary"} btn-sm" %>
-  <%= link_to Icon(icon: "clock", label: t(".sort.time")), {order: "recent"}.merge(@filter&.to_params), class: "btn #{(session["order"] == "recent") ? "btn-primary" : "btn-secondary"} btn-sm" %>
+  <%= link_to safe_join([Icon(icon: "arrow-up"), "A-Z"]), {order: "name"}.merge(@filter&.to_params), class: "btn #{(session["order"] == "name") ? "btn-primary" : "btn-secondary"} btn-sm", title: t(".sort.name") %>
+  <%= link_to safe_join([Icon(icon: "arrow-down"), Icon(icon: "calendar-date")]), {order: "recent"}.merge(@filter&.to_params), class: "btn #{(session["order"] == "recent") ? "btn-primary" : "btn-secondary"} btn-sm", title: t(".sort.time") %>
 </div>
