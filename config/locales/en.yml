@@ -675,7 +675,7 @@ en:
         placeholder: What are you looking for?
         submit: Search
     publishing:
-      content: You can publish content publicly by giving "view" or "preview" permission to the "public" role on the item's edit page. Creators for public models will automatically be made public, but collections need to be expicitly published if you want them to be visible.
+      content: You can make your models public by going to the model edit page and setting the permissions.
       existing_creator:
         button: Edit your creator profile
         content: 'If you''re publishing your own work, you will probably want to customise your creator profile:'
