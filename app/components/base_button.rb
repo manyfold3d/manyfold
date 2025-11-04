@@ -3,7 +3,7 @@
 class Components::BaseButton < Components::Base
   include Phlex::Rails::Helpers::ButtonTo
 
-  def initialize(label:, href:, variant:, icon: nil, method: nil, icon_only: false, aria_label: nil, confirm: nil, data: {}, nofollow: nil)
+  def initialize(label:, href:, variant:, icon: nil, method: nil, icon_only: false, aria_label: nil, confirm: nil, data: {}, nofollow: nil, target: nil)
     @icon = icon
     @label = label
     @href = href
@@ -14,10 +14,11 @@ class Components::BaseButton < Components::Base
     @confirm = confirm
     @data = data
     @nofollow = nofollow
+    @target = target
   end
 
   def view_template
-    helper(@href, method: @method, class: "btn btn-#{@variant}", nofollow: @nofollow, aria: {label: @aria_label || (@icon_only ? @label : nil)}, data: {confirm: @confirm}.merge(@data)) do
+    helper(@href, method: @method, class: "btn btn-#{@variant}", nofollow: @nofollow, aria: {label: @aria_label || (@icon_only ? @label : nil)}, data: {confirm: @confirm}.merge(@data), target: @target) do
       if @icon
         Icon(icon: @icon, label: @label)
         whitespace
