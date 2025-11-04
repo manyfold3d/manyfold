@@ -308,8 +308,12 @@ cs:
       account: Mé nastavení
       activity: Aktivita
       add_models:
-      check_existing: Kontrola stávajících modelů
+      check_existing:
+        confirm:
+        label: Kontrola stávajících modelů
       check_results:
+        confirm:
+        label:
       home: Domovská stránka
       import_url:
       log_in: Přihlásit se
@@ -320,7 +324,9 @@ cs:
         toggler:
           label: Přepínání navigace
       scan: Kontrola
-      scan_changes: Kontrola změn
+      scan_changes:
+        confirm:
+        label: Kontrola změn
       scanning: Kontrolování
       search: Hledat
       settings: Nastavení webu

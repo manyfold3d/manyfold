@@ -308,8 +308,12 @@ en:
       account: My Account
       activity: Activity
       add_models: Add content
-      check_existing: Rescan all models
-      check_results: Rescan filtered models
+      check_existing:
+        confirm: Are you sure you want to start a rescan of all existing models? This may take a long time!
+        label: Rescan all models
+      check_results:
+        confirm: Are you sure you want to start a rescan of all filtered models? This may take a long time!
+        label: Rescan filtered models
       home: Homepage
       import_url: Import URL
       log_in: Sign in
@@ -320,7 +324,9 @@ en:
         toggler:
           label: Toggle navigation
       scan: Scan
-      scan_changes: Scan for new files
+      scan_changes:
+        confirm: Are you sure you want to scan all libraries for new files? This may take a long time!
+        label: Scan for new files
       scanning: Scanning
       search: Search
       settings: Site Settings

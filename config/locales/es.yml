@@ -308,8 +308,12 @@ es:
       account: Cuenta
       activity: Actividad
       add_models: Añadir contenido
-      check_existing: Comprobar modelos existentes
-      check_results: Volver a escanear los modelos filtrados
+      check_existing:
+        confirm:
+        label: Comprobar modelos existentes
+      check_results:
+        confirm:
+        label: Volver a escanear los modelos filtrados
       home: Inicio
       import_url: Importar URL
       log_in: Iniciar sesión
@@ -320,7 +324,9 @@ es:
         toggler:
           label: Mostrar/ocultar panel
       scan: Escanear
-      scan_changes: Buscar cambios
+      scan_changes:
+        confirm:
+        label: Buscar cambios
       scanning: Escaneando
       search: Buscar
       settings: Ajustes

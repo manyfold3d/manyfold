@@ -308,8 +308,12 @@ pl:
       account: Moje Ustawienia
       activity: Aktywność
       add_models:
-      check_existing: Ponownie zeskanuj wszystkie modele
+      check_existing:
+        confirm:
+        label: Ponownie zeskanuj wszystkie modele
       check_results:
+        confirm:
+        label:
       home: Strona główna
       import_url:
       log_in: Zaloguj się
@@ -320,7 +324,9 @@ pl:
         toggler:
           label: Przełącz nawigację
       scan: Zeskanuj
-      scan_changes: Zeskanuj w poszukiwaniu nowych plików
+      scan_changes:
+        confirm:
+        label: Zeskanuj w poszukiwaniu nowych plików
       scanning: Skanowanie
       search: Wyszukaj
       settings: Ustawienia Strony

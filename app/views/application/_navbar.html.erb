@@ -76,9 +76,9 @@
                   <%= t ".scan" %>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><%= DropdownItem label: t(".scan_changes"), path: scans_path, method: :post, nofollow: true %></li>
-                  <li><%= DropdownItem label: t(".check_existing"), path: scans_path(type: :check), method: :post, nofollow: true %>
-                  <li><%= DropdownItem label: t(".check_results"), path: scans_path({type: :check}.merge(@filter.to_params)), method: :post, nofollow: true if @filter&.any? %>
+                  <li><%= DropdownItem label: t(".scan_changes.label"), path: scans_path, method: :post, nofollow: true, confirm: translate(".scan_changes.confirm") %></li>
+                  <li><%= DropdownItem label: t(".check_existing.label"), path: scans_path(type: :check), method: :post, nofollow: true, confirm: translate(".check_existing.confirm") %>
+                  <li><%= DropdownItem label: t(".check_results.label"), path: scans_path({type: :check}.merge(@filter.to_params)), method: :post, nofollow: true, confirm: translate(".check_results.confirm") if @filter&.any? %>
                 </ul>
               </div>
             <% end %>
