@@ -11,7 +11,7 @@ en:
       select_all: Select all files
       split: Split selected files into new model
       submit: Update selected files
-      title: Bulk Edit Files
+      title: Edit Files
     bulk_update:
       success: Files updated successfully.
     create:
@@ -35,7 +35,7 @@ en:
       edit: Edit File Information
     show:
       convert: Convert to 3MF
-      details_heading: Details
+      details_heading: File Details
       download:
         menu_header: Download options
       notes_heading: Notes
