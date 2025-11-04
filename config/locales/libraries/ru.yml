@@ -41,6 +41,8 @@ ru:
       free_space:
         label: Свободное пространство
       heading: Библиотеки
+      scan_changes:
+        confirm:
       settings:
       show:
         help:

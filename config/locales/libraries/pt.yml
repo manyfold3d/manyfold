@@ -41,6 +41,8 @@ pt:
       free_space:
         label:
       heading:
+      scan_changes:
+        confirm:
       settings:
       show:
         help:

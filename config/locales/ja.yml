@@ -308,8 +308,12 @@ ja:
       account: 設定
       activity: アクティビティ
       add_models:
-      check_existing: 既存モデルの再スキャン
+      check_existing:
+        confirm:
+        label: 既存モデルの再スキャン
       check_results:
+        confirm:
+        label:
       home: ホームページ
       import_url:
       log_in: ログイン
@@ -320,7 +324,9 @@ ja:
         toggler:
           label: ナビゲーションをトグル
       scan: スキャン
-      scan_changes: 変更をスキャンする
+      scan_changes:
+        confirm:
+        label: 変更をスキャンする
       scanning: スキャン中
       search: 検索
       settings: サイト設定

@@ -309,7 +309,11 @@ pt:
       activity:
       add_models:
       check_existing:
+        confirm:
+        label:
       check_results:
+        confirm:
+        label:
       home:
       import_url:
       log_in:
@@ -321,6 +325,8 @@ pt:
           label:
       scan:
       scan_changes:
+        confirm:
+        label:
       scanning:
       search:
       settings:

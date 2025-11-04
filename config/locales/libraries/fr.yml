@@ -41,6 +41,8 @@ fr:
       free_space:
         label: Espace libre
       heading: Bibliothèques
+      scan_changes:
+        confirm:
       settings:
       show:
         help:

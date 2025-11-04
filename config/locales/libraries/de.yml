@@ -41,6 +41,8 @@ de:
       free_space:
         label: Freier Speicherplatz
       heading: Sammlungen
+      scan_changes:
+        confirm:
       settings: Einstellungen
       show:
         help: Zeigt oder versteckt Bibliotheken in der Navigationsleiste und in Formularen. Die Bibliotheksauswahl in Bearbeitungsformularen wird immer für Administratoren angezeigt.

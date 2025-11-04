@@ -308,8 +308,12 @@ nl:
       account: Mijn Instellingen
       activity: Activiteit
       add_models:
-      check_existing: Bestaande modellen controleren
+      check_existing:
+        confirm:
+        label: Bestaande modellen controleren
       check_results:
+        confirm:
+        label:
       home: Startpagina
       import_url:
       log_in: Inloggen
@@ -320,7 +324,9 @@ nl:
         toggler:
           label: Navigatie in-/uitklappen
       scan: Scannen
-      scan_changes: Scannen op wijzigingen
+      scan_changes:
+        confirm:
+        label: Scannen op wijzigingen
       scanning: Bezig met scannen
       search: Zoeken
       settings: Site-instellingen

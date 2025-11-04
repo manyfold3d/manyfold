@@ -41,6 +41,8 @@ es:
       free_space:
         label: Espacio libre
       heading: Bibliotecas
+      scan_changes:
+        confirm:
       settings: Ajustes
       show:
         help: Muestra u oculta las bibliotecas en la barra de navegación y en los formularios. La elección de biblioteca en los formularios de edición siempre se mostrará a los administradores.

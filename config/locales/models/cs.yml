@@ -11,7 +11,9 @@ cs:
       select_all: Vybrat všechny modely
       submit: Aktualizace vybraných modelů
       title: Hromadné úpravy modelů
-      update_all: Aktualizace všech %{count} modelů
+      update_all:
+        confirm:
+        label: Aktualizace všech %{count} modelů
     bulk_update:
       success: Modely byly úspěšně aktualizovány.
     configure_merge:

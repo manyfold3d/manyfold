@@ -308,8 +308,12 @@ fr:
       account: Mes paramètres
       activity: Activité
       add_models:
-      check_existing: Vérifier les modèles existants
+      check_existing:
+        confirm:
+        label: Vérifier les modèles existants
       check_results:
+        confirm:
+        label:
       home: Page d'accueil
       import_url:
       log_in: Se connecter
@@ -320,7 +324,9 @@ fr:
         toggler:
           label: Basculer la navigation
       scan: Scanner
-      scan_changes: Recherche de changements
+      scan_changes:
+        confirm:
+        label: Recherche de changements
       scanning: Scan en cours
       search: Recherche
       settings: Paramètres

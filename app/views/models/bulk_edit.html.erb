@@ -58,7 +58,7 @@
       <%= form.hidden_field :creator, value: @filter.parameter(:creator) if @filter.filtering_by?(:creator) %>
       <div>
         <%= form.submit translate(".submit"), class: "btn btn-primary" %>
-        <%= form.submit translate(".update_all", count: @models.total_count), class: "btn btn-secondary", name: "update_all" %>
+        <%= form.submit translate(".update_all.label", count: @models.total_count), class: "btn btn-secondary", name: "update_all", data: {confirm: translate(".update_all.confirm", count: @models.total_count)} %>
         <%= form.submit translate(".merge"), class: "btn btn-outline-warning", formaction: merge_models_path, formmethod: :post, name: "merge" %>
       </div>
     </div>

@@ -11,7 +11,9 @@ fr:
       select_all: Sélectionner tous les modèles
       submit: Mettre à jour les modèles sélectionnés
       title: Modifier les modèles en lot
-      update_all: Mettre à jour les %{count} modèles
+      update_all:
+        confirm:
+        label: Mettre à jour les %{count} modèles
     bulk_update:
       success: Les modèles ont été mis à jour avec succès.
     configure_merge:

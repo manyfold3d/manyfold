@@ -308,8 +308,12 @@ zh-CN:
       account: 我的设置
       activity: 近期动态
       add_models: 添加内容
-      check_existing: 重新扫描所有模型
-      check_results: 重新扫描已过滤的模型
+      check_existing:
+        confirm:
+        label: 重新扫描所有模型
+      check_results:
+        confirm:
+        label: 重新扫描已过滤的模型
       home: 主页
       import_url: 导入 URL
       log_in: 登录
@@ -320,7 +324,9 @@ zh-CN:
         toggler:
           label: 切换导航
       scan: 扫描
-      scan_changes: 扫描新文件
+      scan_changes:
+        confirm:
+        label: 扫描新文件
       scanning: 正在扫描
       search: 搜索
       settings: 网站设置

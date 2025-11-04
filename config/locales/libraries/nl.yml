@@ -41,6 +41,8 @@ nl:
       free_space:
         label: Vrije Ruimte
       heading: Bibliotheken
+      scan_changes:
+        confirm:
       settings:
       show:
         help:

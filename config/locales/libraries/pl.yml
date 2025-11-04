@@ -41,6 +41,8 @@ pl:
       free_space:
         label: Wolna przestrzeń
       heading: Biblioteki
+      scan_changes:
+        confirm:
       settings: Ustawienia
       show:
         help: Pokazuje lub ukrywa biblioteki na pasku nawigacyjnym i w formularzach. Wybór biblioteki w formularzach edycji będzie zawsze widoczny dla administratorów.

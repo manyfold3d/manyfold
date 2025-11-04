@@ -308,8 +308,12 @@ de:
       account: Meine Einstellungen
       activity: Aktivität
       add_models: Inhalt hinzufügen
-      check_existing: Alle Modelle neu scannen
-      check_results: Gefilterte Modelle erneut scannen
+      check_existing:
+        confirm:
+        label: Alle Modelle neu scannen
+      check_results:
+        confirm:
+        label: Gefilterte Modelle erneut scannen
       home: Homepage
       import_url: URL importieren
       log_in: Einloggen
@@ -320,7 +324,9 @@ de:
         toggler:
           label: Navigation umschalten
       scan: Scannen
-      scan_changes: Nach neuen Dateien suchen
+      scan_changes:
+        confirm:
+        label: Nach neuen Dateien suchen
       scanning: Scannen
       search: Suche
       settings: Admin-Einstellungen
