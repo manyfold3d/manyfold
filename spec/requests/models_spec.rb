@@ -507,16 +507,18 @@ RSpec.describe "Models" do
         let(:collection) { create(:collection) }
         let(:post_models) {
           post "/models", params: {
-            library: library.to_param,
-            scan: "1",
-            file: files,
-            creator_id: creator.id,
-            collection_id: collection.id,
-            license: "MIT",
-            sensitive: "1",
-            permission_preset: "public",
-            tag_list: ["tag1", "tag2"],
-            name: "Only used for single model upload"
+            model: {
+              library: library.to_param,
+              scan: "1",
+              file: files,
+              creator_id: creator.id,
+              collection_id: collection.id,
+              license: "MIT",
+              sensitive: "1",
+              permission_preset: "public",
+              tag_list: ["tag1", "tag2"],
+              name: "Only used for single model upload"
+            }
           }
         }
 
