@@ -1,5 +1,7 @@
-<%= render partial: "breadcrumb" %>
-<h1><%= t(".title") %></h1>
+<h1>
+  <%= link_to "#{@model.name} /", @model, class: "link-secondary link-underline-opacity-0" %>
+  <%= t(".title") %>
+</h1>
 
 <p class="lead"><%= t(".description") %></p>
 

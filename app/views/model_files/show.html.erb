@@ -3,9 +3,11 @@
   <%= tag.meta name: "fediverse:creator", content: @file.model.creator.federails_actor.at_address if @file.model.creator %>
 <% end %>
 
-<%= render partial: "breadcrumb" %>
 <%= turbo_stream_from @file %>
-<h1><%= @file.name %></h1>
+<h1>
+  <%= link_to "#{@file.model.name} /", @file.model, class: "link-secondary link-underline-opacity-0" %>
+  <%= @file.name %>
+</h1>
 
 <div class="row row-cols-2">
 

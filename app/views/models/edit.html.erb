@@ -1,4 +1,6 @@
-<%= render partial: "model_files/breadcrumb" %>
-<h1><%= t("models.general.edit") %></h1>
+<h1>
+  <%= link_to "#{@model.name} /", @model, class: "link-secondary link-underline-opacity-0" %>
+  <%= t("models.general.edit") %>
+</h1>
 
 <%= render "form" %>
