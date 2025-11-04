@@ -3,7 +3,9 @@ module ManyfoldApi::V0
     def deserialize
       return unless @object
       {
-        file: @object.dig("files")&.each_with_index.to_h.invert
+        model: {
+          file: @object.dig("files")&.each_with_index.to_h.invert
+        }
       }.compact
     end
 
