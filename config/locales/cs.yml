@@ -275,10 +275,12 @@ cs:
     demo_mode: Tato instance je v demo režimu. Nemůžete přidávat ani odebírat modely, ale můžete dělat vše ostatní.
     filters_card:
       missing_tags: Chybějící štítky
+      owner:
       remove_collection_filter: Odstranit filtr kolekce
       remove_creator_filter: Odstranit filtr autora
       remove_library_filter: Odstranit filtr knihovny
       remove_missing_tag_filter: Odstranit filtr chybějících štítků
+      remove_owner_filter:
       remove_search_filter: Odstranit filtr vyhledávání
       remove_tag_filter: Odstranit filtr štítků
       search: Vyhledávání
@@ -313,6 +315,9 @@ cs:
       log_in: Přihlásit se
       log_out: Odhlásit se
       moderator_settings:
+      my_collections:
+      my_creator:
+      my_models:
       navbar:
         toggler:
           label: Přepínání navigace

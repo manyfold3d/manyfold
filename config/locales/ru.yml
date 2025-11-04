@@ -275,10 +275,12 @@ ru:
     demo_mode: Этот экземпляр находится в демонстрационном режиме. Вы не можете добавлять или удалять модели, но можете делать все остальное.
     filters_card:
       missing_tags: Отсутствующие теги
+      owner:
       remove_collection_filter: Удалить фильтр коллекции
       remove_creator_filter: Удалить фильтр автор
       remove_library_filter: Удалить фильтр библиотеки
       remove_missing_tag_filter: Удалить фильтр отсутствующих тегов
+      remove_owner_filter:
       remove_search_filter:
       remove_tag_filter:
       search:
@@ -313,6 +315,9 @@ ru:
       log_in:
       log_out:
       moderator_settings:
+      my_collections:
+      my_creator:
+      my_models:
       navbar:
         toggler:
           label:

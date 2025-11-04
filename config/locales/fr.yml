@@ -275,10 +275,12 @@ fr:
     demo_mode: Cette instance est en mode démo. Vous ne pouvez pas ajouter ou supprimer des modèles, mais vous pouvez faire tout le reste.
     filters_card:
       missing_tags: Etiquette manquante
+      owner:
       remove_collection_filter: Supprimer la collection de filtres
       remove_creator_filter: Supprimer le filtre créateur
       remove_library_filter: Supprimer le filtre de bibliothèque
       remove_missing_tag_filter: Supprimer le filtre "étiquette manquante"
+      remove_owner_filter:
       remove_search_filter: Supprimer le filtre de recherche
       remove_tag_filter: Supprimer le filtre d'étiquette
       search: Recherche
@@ -313,6 +315,9 @@ fr:
       log_in: Se connecter
       log_out: Se déconnecter
       moderator_settings:
+      my_collections:
+      my_creator:
+      my_models:
       navbar:
         toggler:
           label: Basculer la navigation
