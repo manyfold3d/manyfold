@@ -394,7 +394,7 @@ GEM
       activejob (>= 6.1)
     jsbundling-rails (1.3.1)
       railties (>= 6.0.0)
-    json (2.15.1)
+    json (2.15.2)
     json-canonicalization (1.0.0)
     json-jwt (1.16.6)
       activesupport (>= 4.2)
@@ -593,7 +593,7 @@ GEM
       activesupport (>= 3.0.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.2.3)
+    rack (3.2.4)
     rack-contrib (2.5.0)
       rack (< 4)
     rack-cors (3.0.0)
@@ -804,7 +804,7 @@ GEM
       down (~> 5.0)
       http (>= 3.2, < 6)
       shrine (>= 3.0.0.rc, < 4)
-    sidekiq (8.0.8)
+    sidekiq (8.0.9)
       connection_pool (>= 2.5.0)
       json (>= 2.9.0)
       logger (>= 1.6.2)
@@ -1190,7 +1190,7 @@ CHECKSUMS
   jmespath (1.6.2) sha256=238d774a58723d6c090494c8879b5e9918c19485f7e840f2c1c7532cf84ebcb1
   job-iteration (1.11.0) sha256=3a5c876f26d65aaef20c190ecbda5ed72075b37949ef4870d79c8af7b97e3f16
   jsbundling-rails (1.3.1) sha256=0fa03f6d051c694cbf55a022d8be53399879f2c4cf38b2968f86379c62b1c2ca
-  json (2.15.1) sha256=b1c1b2e7c116eb1903e0ce0c374783e6ead8747a0f9eca132d274018ebb80b89
+  json (2.15.2) sha256=1068e1d966d2d0dcaf953eaed09c2d30e4104c64c1e3140c435d17be08d1fa27
   json-canonicalization (1.0.0) sha256=d4848a8cca7534455c6721f2d9fc9e5e9adca49486864a898810024f67d59446
   json-jwt (1.16.6) sha256=ab451f9cd8743cecc4137f4170806046c1d8a6d4ee6e8570e0b5c958409b266c
   json-ld (3.3.2) sha256=b9531893bf5bdc01db428e96953845a23adb1097125ce918ae0f97c4a6e1ab27
@@ -1274,7 +1274,7 @@ CHECKSUMS
   pundit (2.5.2) sha256=e374152baa24f90b630428293faf4b4c5468fc3cc010165f7d8fcb44ce108bbd
   raabro (1.4.0) sha256=d4fa9ff5172391edb92b242eed8be802d1934b1464061ae5e70d80962c5da882
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
-  rack (3.2.3) sha256=239a373da6584574f25f042d8ed4ba21e691c9799f1d2b5c8920bbbc23ca3d41
+  rack (3.2.4) sha256=5d74b6f75082a643f43c1e76b419c40f0e5527fcfee1e669ac1e6b73c0ccb6f6
   rack-contrib (2.5.0) sha256=51bd2ce82b8a3270f9173130c4cdaea72aab8b03dce8cd6af1c4344d84a32d02
   rack-cors (3.0.0) sha256=7b95be61db39606906b61b83bd7203fa802b0ceaaad8fcb2fef39e097bf53f68
   rack-oauth2 (2.2.1) sha256=c73aa87c508043e2258f02b4fb110cacba9b37d2ccf884e22487d014a120d1a5
@@ -1340,7 +1340,7 @@ CHECKSUMS
   shrine (3.6.0) sha256=d361b7e5a452d65d900f3326ed99fe343d0d3b2ce17e012fc04ae85b0373358c
   shrine-tus (2.1.1) sha256=fc16e11b7f806963b0ba8d61271bb5fbae24d8065aa8eed889abc9f46e841f99
   shrine-url (2.4.1) sha256=e086a9c3017b881483a8aaa516b369cfc3bc6dcbbe2bff55a26c8ace08634429
-  sidekiq (8.0.8) sha256=67b5f0e008025ae87e479c22a41cad54381de51dbfb4e1cc864fb0ce2e9db606
+  sidekiq (8.0.9) sha256=da0e2fb8a511699abe195df93a3e96210c68067efb7668a061cbdbcdb024f2ee
   sidekiq-cron (2.3.1) sha256=96ab3da372289a30dc744c1daa2ae2e85960b2444a6f6ed68df1ff7882c44aac
   simple_po_parser (1.1.6) sha256=122687d44d3de516a0e69e2f383a4180f5015e8c5ed5a7f2258f2b376f64cbf3
   simplecov (0.22.0) sha256=fe2622c7834ff23b98066bb0a854284b2729a569ac659f82621fc22ef36213a5
