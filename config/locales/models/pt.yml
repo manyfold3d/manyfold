@@ -82,6 +82,10 @@ pt:
       label:
     problem:
       merge_all:
+    problems_card:
+      tour:
+        description:
+        title:
     scan:
       success:
     show:

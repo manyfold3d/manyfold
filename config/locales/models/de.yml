@@ -82,6 +82,10 @@ de:
       label: Dateien organisieren
     problem:
       merge_all: Alle zusammenführen
+    problems_card:
+      tour:
+        description:
+        title:
     scan:
       success: Modell-Scan gestartet
     show:

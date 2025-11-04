@@ -82,6 +82,10 @@ ja:
       label:
     problem:
       merge_all: すべてをマージする
+    problems_card:
+      tour:
+        description:
+        title:
     scan:
       success: モデルスキャン開始
     show:

@@ -82,6 +82,10 @@ es:
       label: Organizar archivos
     problem:
       merge_all: Fusionar todo
+    problems_card:
+      tour:
+        description:
+        title:
     scan:
       success: Escaneo de modelos iniciado
     show:

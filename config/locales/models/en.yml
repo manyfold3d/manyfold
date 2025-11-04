@@ -82,6 +82,10 @@ en:
       label: Organize files
     problem:
       merge_all: Merge all
+    problems_card:
+      tour:
+        description: This card shows any problems that were detected on this model. You can change problem visibility settings in your account preferences.
+        title: Problems
     scan:
       success: Model scan started
     show:

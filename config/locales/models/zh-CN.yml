@@ -82,6 +82,10 @@ zh-CN:
       label: 整理文件
     problem:
       merge_all: 合并所有
+    problems_card:
+      tour:
+        description:
+        title:
     scan:
       success: 模型扫描开始
     show:

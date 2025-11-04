@@ -82,6 +82,10 @@ nl:
       label: Bestanden organiseren
     problem:
       merge_all: Alles samenvoegen
+    problems_card:
+      tour:
+        description:
+        title:
     scan:
       success: Modelscan gestart
     show:

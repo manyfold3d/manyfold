@@ -82,6 +82,10 @@ pl:
       label: Zorganizuj pliki
     problem:
       merge_all: Połącz wszystko
+    problems_card:
+      tour:
+        description:
+        title:
     scan:
       success: Rozpoczęto skanowanie modelów
     show:

@@ -82,6 +82,10 @@ fr:
       label: Organiser les fichiers
     problem:
       merge_all: Tous fusionner
+    problems_card:
+      tour:
+        description:
+        title:
     scan:
       success: Début de l'analyse du modèle
     show:

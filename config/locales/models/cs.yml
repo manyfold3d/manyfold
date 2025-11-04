@@ -82,6 +82,10 @@ cs:
       label: Uspořádání souborů
     problem:
       merge_all: Sloučit vše
+    problems_card:
+      tour:
+        description:
+        title:
     scan:
       success: Spuštěna kontrola modelu.
     show:
