@@ -89,7 +89,7 @@ class ModelsController < ApplicationController
       sensitive: (p[:sensitive] == "1"),
       tag_list: p[:tag_list],
       permission_preset: p[:permission_preset]
-    }.compact
+    }
     library = SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default
     @model = Model.new(common_args.merge(library: library)) # dummy model object
     if @model.valid?(multiple ? :multi_upload : :single_upload)
