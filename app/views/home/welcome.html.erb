@@ -10,7 +10,7 @@
     <%= content_tag(:article, class: "col mb-3") { render "uploading" } if current_user&.is_contributor? %>
     <%= content_tag(:article, class: "col mb-3") { render "publishing" } if current_user&.is_contributor? %>
     <%= content_tag(:article, class: "col mb-3") { render "federation" } if SiteSettings.federation_enabled? %>
-    <%= content_tag(:article, class: "col mb-3") { render "support" } if SiteSettings.support_link.presence %>
+    <%= content_tag(:article, class: "col mb-3") { render "support" } %>
   </div>
 
 </div>

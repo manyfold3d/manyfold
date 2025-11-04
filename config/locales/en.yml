@@ -685,7 +685,8 @@ en:
       title: Publishing
     support:
       content: Manyfold instances are run by people like you! If you find this instance useful, you can help keep it running by clicking below.
-      manyfold_html: To support development of the Manyfold software itself, you can do so at <a href="https://opencollective.com/manyfold" target="_manyfold_donate">OpenCollective</a>.
+      manyfold_html: Manyfold is 100% free and open source software. You can help make it better by making a donation!
+      support_manyfold: Support Manyfold
       support_link: Support this instance
       title: Support
     uploading:
