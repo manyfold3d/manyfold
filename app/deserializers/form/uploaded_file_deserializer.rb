@@ -3,9 +3,11 @@ module Form
     def deserialize
       return nil unless @params
       @params.permit(
-        file: [
-          [:id, :name]
-        ]
+        model: {
+          file: [
+            [:id, :name]
+          ]
+        }
       )
     end
   end

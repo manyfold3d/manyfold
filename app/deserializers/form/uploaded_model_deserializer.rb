@@ -2,7 +2,7 @@ module Form
   class UploadedModelDeserializer < BaseDeserializer
     def deserialize
       return nil unless @params
-      @params.permit(
+      @params.require(:model).permit(
         :name,
         :creator_id,
         :collection_id,
@@ -10,7 +10,7 @@ module Form
         :license,
         :sensitive,
         :permission_preset,
-        add_tags: [],
+        tag_list: [],
         file: [
           [:id, :name]
         ]

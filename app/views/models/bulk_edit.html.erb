@@ -35,6 +35,7 @@
     <div class="col tabular-form">
       <%= render "bulk_fields", form: form %>
 
+      <%= render "tags_edit", form: form, name: :add_tags, label: translate(".add_tags"), tags: @available_tags || [] %>
       <%= render "tags_edit", form: form, name: :remove_tags, label: translate(".remove_tags"), tags: [] %>
 
       <% if SiteSettings.show_libraries || current_user.is_administrator? %>

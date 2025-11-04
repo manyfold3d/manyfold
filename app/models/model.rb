@@ -55,12 +55,12 @@ class Model < ApplicationRecord
   after_save :write_datapackage_later, if: :was_changed?
   after_commit :check_for_problems_later, on: :update
 
-  validates :name, presence: true
-  validates :path, presence: true, uniqueness: {scope: :library}
+  validates :name, presence: true, on: [:create, :update, :single_upload]
+  validates :path, presence: true, uniqueness: {scope: :library}, on: [:create, :update]
   validate :check_for_submodels, on: :update, if: :need_to_move_files?
   validate :destination_is_vacant, on: :update, if: :need_to_move_files?
   validates :license, spdx: true, allow_nil: true, if: -> { respond_to? :license }
-  validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}, if: -> { respond_to? :public_id }
+  validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}, if: -> { respond_to? :public_id }, on: [:create, :update]
 
   validate :validate_publishable
 

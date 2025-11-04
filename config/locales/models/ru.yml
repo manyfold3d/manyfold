@@ -2,6 +2,7 @@
 ru:
   models:
     bulk_edit:
+      add_tags:
       description:
       form_subtitle:
       merge:
@@ -11,8 +12,6 @@ ru:
       submit:
       title:
       update_all:
-    bulk_fields:
-      add_tags:
     bulk_update:
       success:
     configure_merge:

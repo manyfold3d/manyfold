@@ -2,6 +2,7 @@
 cs:
   models:
     bulk_edit:
+      add_tags: Přidat štítky
       description: 'Vyberte modely, které chcete změnit:'
       form_subtitle: 'Vyberte změny, které chcete provést:'
       merge:
@@ -11,8 +12,6 @@ cs:
       submit: Aktualizace vybraných modelů
       title: Hromadné úpravy modelů
       update_all: Aktualizace všech %{count} modelů
-    bulk_fields:
-      add_tags: Přidat štítky
     bulk_update:
       success: Modely byly úspěšně aktualizovány.
     configure_merge:

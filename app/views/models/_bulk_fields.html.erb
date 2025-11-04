@@ -22,5 +22,3 @@
 <%= select_input_row form, :license, license_select_options, include_blank: true %>
 
 <%= checkbox_input_row form, :sensitive %>
-
-<%= render "tags_edit", form: form, name: :add_tags, selected: (defined?(default_tags) ? default_tags : nil), label: translate(".add_tags"), tags: @available_tags || [] %>

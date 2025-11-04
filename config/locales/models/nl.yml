@@ -2,6 +2,7 @@
 nl:
   models:
     bulk_edit:
+      add_tags: Tags toevoegen
       description: 'Selecteer modellen om te wijzigen:'
       form_subtitle: 'Selecteer aan te brengen wijzigingen:'
       merge:
@@ -11,8 +12,6 @@ nl:
       submit: Geselecteerde Modellen Bijwerken
       title: Modellen Bulksgewijs Bewerken
       update_all:
-    bulk_fields:
-      add_tags: Tags toevoegen
     bulk_update:
       success: Modellen succesvol bijgewerkt.
     configure_merge:

@@ -2,6 +2,7 @@ class Components::InputRow < Components::Base
   def initialize(form:, attribute:, label:, help: nil, options: {})
     @form = form
     @attribute = attribute
+    @attribute_without_id = @attribute.to_s.gsub("_id", "")
     @label = label
     @help = help
     @options = options
@@ -13,7 +14,7 @@ class Components::InputRow < Components::Base
     end
     div do
       input_group
-      errors_for(@form.object, @attribute)
+      errors_for(@form.object, @attribute_without_id)
       help
     end
   end
