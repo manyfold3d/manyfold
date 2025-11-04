@@ -689,15 +689,8 @@ es:
       support_link: Apoyar esta instancia
       title: Ayuda
     uploading:
-      how_to_upload: Puedes añadir modelos haciendo clic en el botón de carga de la barra de menús. Para cargar muchos archivos como un único modelo, comprímalos en un único archivo (por ejemplo, ZIP o RAR).
-      permissions:
-        edit: Puede conceder permisos adicionales en la página de edición del elemento.
-        member: Por defecto, el contenido subido será visible para cualquier usuario local conectado.
-        private: Por defecto, el contenido subido no será visible para ningún otro usuario.
-        public: Por defecto, el contenido publicado será visible para cualquiera que visite la web.
       quota: Puedes subir hasta %{quota} de contenido, y siempre puedes ver el uso actual de tu cuota en tu página de configuración.
       title: Cargando
-      upload: Cargar
     welcome:
       lead: Este sitio utiliza Manyfold, un programa para gestionar y compartir modelos 3D. Aquí encontrará una breve guía...
       title: "¡Bienvenido a %{site_name}!"
