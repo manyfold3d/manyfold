@@ -310,12 +310,12 @@ ja:
       add_models:
       check_existing: 既存モデルの再スキャン
       check_results:
-      following:
       home: ホームページ
       import_url:
       log_in: ログイン
       log_out: ログアウト
       moderator_settings:
+      my_stuff:
       navbar:
         toggler:
           label: ナビゲーションをトグル
@@ -324,6 +324,7 @@ ja:
       scanning: スキャン中
       search: 検索
       settings: サイト設定
+      social:
       upload: アップロード
     order_buttons:
       sort:

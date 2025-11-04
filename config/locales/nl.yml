@@ -310,12 +310,12 @@ nl:
       add_models:
       check_existing: Bestaande modellen controleren
       check_results:
-      following:
       home: Startpagina
       import_url:
       log_in: Inloggen
       log_out: Uitloggen
       moderator_settings:
+      my_stuff:
       navbar:
         toggler:
           label: Navigatie in-/uitklappen
@@ -324,6 +324,7 @@ nl:
       scanning: Bezig met scannen
       search: Zoeken
       settings: Site-instellingen
+      social:
       upload: Uploaden
     order_buttons:
       sort:

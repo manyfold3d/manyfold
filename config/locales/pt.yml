@@ -310,12 +310,12 @@ pt:
       add_models:
       check_existing:
       check_results:
-      following:
       home:
       import_url:
       log_in:
       log_out:
       moderator_settings:
+      my_stuff:
       navbar:
         toggler:
           label:
@@ -324,6 +324,7 @@ pt:
       scanning:
       search:
       settings:
+      social:
       upload:
     order_buttons:
       sort:

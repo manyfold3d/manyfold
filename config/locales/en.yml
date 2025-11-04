@@ -310,12 +310,12 @@ en:
       add_models: Add content
       check_existing: Rescan all models
       check_results: Rescan filtered models
-      following: Following
       home: Homepage
       import_url: Import URL
       log_in: Sign in
       log_out: Sign out
       moderator_settings: Moderator Settings
+      my_stuff: My Stuff
       navbar:
         toggler:
           label: Toggle navigation
@@ -324,6 +324,7 @@ en:
       scanning: Scanning
       search: Search
       settings: Site Settings
+      social: Social
       upload: Upload models
     order_buttons:
       sort:

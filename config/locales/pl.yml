@@ -310,12 +310,12 @@ pl:
       add_models:
       check_existing: Ponownie zeskanuj wszystkie modele
       check_results:
-      following:
       home: Strona główna
       import_url:
       log_in: Zaloguj się
       log_out: Wyloguj się
       moderator_settings:
+      my_stuff:
       navbar:
         toggler:
           label: Przełącz nawigację
@@ -324,6 +324,7 @@ pl:
       scanning: Skanowanie
       search: Wyszukaj
       settings: Ustawienia Strony
+      social:
       upload: Prześlij modele
     order_buttons:
       sort:

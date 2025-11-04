@@ -310,12 +310,12 @@ zh-CN:
       add_models: 添加内容
       check_existing: 重新扫描所有模型
       check_results: 重新扫描已过滤的模型
-      following:
       home: 主页
       import_url: 导入 URL
       log_in: 登录
       log_out: 退出
       moderator_settings: 管理员设置
+      my_stuff:
       navbar:
         toggler:
           label: 切换导航
@@ -324,6 +324,7 @@ zh-CN:
       scanning: 正在扫描
       search: 搜索
       settings: 网站设置
+      social:
       upload: 上传模型
     order_buttons:
       sort:
