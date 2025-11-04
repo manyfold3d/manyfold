@@ -689,15 +689,8 @@ pl:
       support_link: Wesprzyj tą instancje
       title:
     uploading:
-      how_to_upload:
-      permissions:
-        edit:
-        member:
-        private:
-        public:
       quota:
       title:
-      upload: Prześlij
     welcome:
       lead:
       title:

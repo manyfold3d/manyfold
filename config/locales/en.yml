@@ -689,15 +689,8 @@ en:
       support_link: Support this instance
       title: Support
     uploading:
-      how_to_upload: You can add models by clicking the upload button in the menu bar. To upload lots of files as a single model, compress them in a single archive file (e.g. ZIP or RAR).
-      permissions:
-        edit: You can grant additional permissions on the item's edit page.
-        member: By default, uploaded content will be visible to any local logged-in user.
-        private: By default, uploaded content will not be visible to any other users.
-        public: By default, uploaded content will be publicly visible to anyone who visits the site.
       quota: You can upload up to %{quota} of content, and you can always view your current quota usage on your settings page.
       title: Uploading
-      upload: Upload
     welcome:
       lead: This site is running Manyfold, software for managing and sharing 3D models; here's a quick guide...
       title: Welcome to %{site_name}!

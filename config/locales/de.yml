@@ -689,15 +689,8 @@ de:
       support_link: Diese Instanz unterstützen
       title: Unterstützen
     uploading:
-      how_to_upload: Du kannst Modelle hinzufügen, indem du in der Menüleiste auf die Schaltfläche Hochladen klickst. Um viele Dateien als ein einziges Modell hochzuladen, komprimiere sie in einer einzigen Archivdatei (z. B. ZIP oder RAR).
-      permissions:
-        edit: Du kannst auf der Bearbeitungsseite des Artikels zusätzliche Berechtigungen erteilen.
-        member: Standardmäßig sind hochgeladene Inhalte für jeden lokal angemeldeten Benutzer sichtbar.
-        private: Standardmäßig sind die hochgeladenen Inhalte für andere Nutzer nicht sichtbar.
-        public: Standardmäßig sind die hochgeladenen Inhalte für alle Besucher der Website öffentlich sichtbar.
       quota: Du kannst bis zu %{quota} Inhalte hochladen, und du kannst deinen aktuellen Kontingentverbrauch jederzeit auf deiner Einstellungsseite einsehen.
       title: Hochladen
-      upload: Hochladen
     welcome:
       lead: Auf dieser Website läuft Manyfold, eine Software zum Verwalten und Freigeben von 3D-Modellen; hier ist eine kurze Anleitung...
       title: Willkommen bei %{site_name}!

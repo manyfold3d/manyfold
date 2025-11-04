@@ -1,27 +1,15 @@
-<div class="card">
-  <h2 class="card-header">
-    <%= Icon icon: "upload" %>
-    <%= t ".title" %>
-  </h2>
+<%- if current_user.has_quota? %>
+  <div class="card">
+    <h2 class="card-header">
+      <%= Icon icon: "upload" %>
+      <%= t ".title" %>
+    </h2>
 
-  <div class="card-body">
-    <p>
-      <%= t ".how_to_upload" %>
-    </p>
-    <%- if current_user.has_quota? %>
+    <div class="card-body">
       <p>
         <%= t ".quota", quota: number_to_human_size(current_user.quota) %>
       </p>
-    <% end %>
-    <p>
-      <%= t ".permissions.private" if SiteSettings.default_viewer_role == "private" %>
-      <%= t ".permissions.member" if SiteSettings.default_viewer_role == "member" %>
-      <%= t ".permissions.public" if SiteSettings.default_viewer_role == "public" %>
-      <%= t ".permissions.edit" %>
-    </p>
-    <div class="text-end">
-      <%= GoButton(label: t(".upload"), href: new_model_path, variant: :primary, icon: "box-arrow-up-right") %>
     </div>
-  </div>
 
-</div>
+  </div>
+<% end %>

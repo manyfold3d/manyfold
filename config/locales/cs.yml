@@ -689,15 +689,8 @@ cs:
       support_link: Podporovat tuto instanci
       title:
     uploading:
-      how_to_upload:
-      permissions:
-        edit:
-        member:
-        private:
-        public:
       quota:
       title:
-      upload: Nahrát
     welcome:
       lead:
       title:

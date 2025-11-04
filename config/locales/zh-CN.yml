@@ -689,15 +689,8 @@ zh-CN:
       support_link: 支持此实例
       title: 支持
     uploading:
-      how_to_upload: 点击菜单栏中的上传按钮即可添加模型。要将大量文件作为一个模型上传，请将它们压缩到一个压缩文件（如 ZIP 或 RAR）中。
-      permissions:
-        edit: 您可以在项目编辑页面授予其他权限。
-        member: 默认情况下，任何本地登录用户都可以看到上传的内容。
-        private: 默认情况下，其他用户看不到上传的内容。
-        public: 默认情况下，任何访问网站的人都可以看到上传的内容。
       quota: 您最多可以上传 %{quota} 个内容，可随时在设置页面上查看当前配额使用情况。
       title: 正在上传
-      upload: 上传
     welcome:
       lead: 该网站正在运行用于管理和共享 3D 模型的软件 Manyfold，以下是快速指南 ...
       title: 欢迎来到 %{site_name}！
