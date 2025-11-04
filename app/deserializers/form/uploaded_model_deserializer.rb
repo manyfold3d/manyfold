@@ -10,7 +10,7 @@ module Form
         :license,
         :sensitive,
         :permission_preset,
-        tags: [],
+        tag_list: [],
         file: [
           [:id, :name]
         ]

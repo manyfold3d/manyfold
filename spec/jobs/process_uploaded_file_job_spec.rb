@@ -89,12 +89,12 @@ RSpec.describe ProcessUploadedFileJob do
     end
 
     it "Stores tags if provided" do
-      job.perform(library.id, file, tags: "tag1, tag2, tag3")
+      job.perform(library.id, file, tag_list: "tag1, tag2, tag3")
       expect(Model.last.tag_list).to contain_exactly("tag1", "tag2", "tag3")
     end
 
     it "sets path using auto-organize" do
-      job.perform(library.id, file, tags: "tag1")
+      job.perform(library.id, file, tag_list: "tag1")
       m = Model.last
       expect(m.path).to eq "tag1/test##{m.id}"
     end

@@ -50,7 +50,7 @@
 
   <%= render "bulk_fields", form: form %>
 
-  <%= render "tags_edit", form: form, name: "model[tags]", selected: SiteSettings.model_tags_auto_tag_new, label: ActsAsTaggableOn::Tag.model_name.human(count: 100), tags: @available_tags || [] %>
+  <%= render "tags_edit", form: form, name: "model[tag_list]", selected: SiteSettings.model_tags_auto_tag_new, label: ActsAsTaggableOn::Tag.model_name.human(count: 100), tags: @available_tags || [] %>
 
   <div>
     <%= form.label translate(".permission_preset"), for: :permission_preset %>
