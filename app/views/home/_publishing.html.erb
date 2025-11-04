@@ -20,7 +20,7 @@
         <%= t ".existing_creator.content" %>
       </p>
       <div class="text-end">
-        <%= GoButton(label: t(".existing_creator.button"), href: edit_creator_path(current_user.creators.first), variant: :primary, icon: "box-arrow-up-right", target: "_manyfold_edit_creator") %>
+        <%= GoButton(label: t(".existing_creator.button"), href: edit_creator_path(current_user.creators.local.first), variant: :primary, icon: "box-arrow-up-right", target: "_manyfold_edit_creator") %>
       </div>
     <%- end %>
   </div>
