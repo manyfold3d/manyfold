@@ -44,7 +44,7 @@
       <div class="row">
         <div class="col">
           <%= link_to t(".open_button.text"), model_model_file_path(@model, file), {class: "btn btn-primary", "aria-label": translate(".open_button.label", name: file.name)} %>
-          <%= link_to Icon(icon: "cloud-download", label: t("general.download")), model_model_file_path(@model, file, file.extension&.to_sym, download: "true"), {class: "btn btn-secondary", download: "download"} %>
+          <%= link_to Icon(icon: "cloud-download-fill", label: t("general.download")), model_model_file_path(@model, file, file.extension&.to_sym, download: "true"), {class: "btn btn-secondary", download: "download"} %>
           <% if file.presupported || file.presupported_version %>
             <%= Icon icon: "bar-chart-line-fill", label: ModelFile.human_attribute_name(:presupported) %>
           <% end %>
