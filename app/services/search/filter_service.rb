@@ -51,6 +51,7 @@ class Search::FilterService
 
   def collections(scope)
     scope = scope.includes(:creator)
+    scope = filter_by_owner(scope)
     scope = filter_by_collection(scope)
     scope = filter_by_creator(scope)
     filter_by_search(scope)
