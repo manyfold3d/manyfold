@@ -5,14 +5,13 @@ en:
       description: 'Select models to change:'
       form_subtitle: 'Select changes to make:'
       merge: Merge selected models
+      add_tags: Add tags
       remove_tags: Remove tags
       select: Select model '%{name}'
       select_all: Select all models
       submit: Update Selected Models
       title: Bulk Edit Models
       update_all: Update All %{count} Models
-    bulk_fields:
-      add_tags: Add tags
     bulk_update:
       success: Models updated successfully.
     configure_merge:

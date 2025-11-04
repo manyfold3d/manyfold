@@ -48,7 +48,9 @@
 
   <%= text_input_row form, :name, label: t(".model_name.label"), help: t(".model_name.help") %>
 
-  <%= render "bulk_fields", form: form, default_tags: SiteSettings.model_tags_auto_tag_new %>
+  <%= render "bulk_fields", form: form %>
+
+  <%= render "tags_edit", form: form, name: "model[tags]", selected: SiteSettings.model_tags_auto_tag_new, label: ActsAsTaggableOn::Tag.model_name.human(count: 100), tags: @available_tags || [] %>
 
   <div>
     <%= form.label translate(".permission_preset"), for: :permission_preset %>
