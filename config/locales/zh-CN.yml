@@ -275,10 +275,12 @@ zh-CN:
     demo_mode: 此实例处于演示模式。您不能添加或删除模型，但可以进行其他操作。
     filters_card:
       missing_tags: 缺少标签
+      owner:
       remove_collection_filter: 移除合集过滤器
       remove_creator_filter: 移除创建者过滤器
       remove_library_filter: 删除资料库过滤器
       remove_missing_tag_filter: 删除丢失的标签过滤器
+      remove_owner_filter:
       remove_search_filter: 移除搜索过滤器
       remove_tag_filter: 移除标签过滤器
       search: 搜索
@@ -313,6 +315,7 @@ zh-CN:
       log_in: 登录
       log_out: 退出
       moderator_settings: 管理员设置
+      my_stuff:
       navbar:
         toggler:
           label: 切换导航
@@ -321,6 +324,7 @@ zh-CN:
       scanning: 正在扫描
       search: 搜索
       settings: 网站设置
+      social:
       upload: 上传模型
     order_buttons:
       sort:

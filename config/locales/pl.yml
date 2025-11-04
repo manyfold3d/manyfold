@@ -275,10 +275,12 @@ pl:
     demo_mode: Ta instancja jest w trybie demonstracyjnym. Nie możesz dodawać ani usuwać modeli, ale możesz robić wszystko inne.
     filters_card:
       missing_tags: Brakujące tagi
+      owner:
       remove_collection_filter: Usuń filtr kolekcji
       remove_creator_filter: Usuń filtr twórcy
       remove_library_filter: Usuń filtr biblioteki
       remove_missing_tag_filter:
+      remove_owner_filter:
       remove_search_filter: Usuń filtr wyszukiwania
       remove_tag_filter: Usuń filtr taga
       search: Wyszukaj
@@ -313,6 +315,7 @@ pl:
       log_in: Zaloguj się
       log_out: Wyloguj się
       moderator_settings:
+      my_stuff:
       navbar:
         toggler:
           label: Przełącz nawigację
@@ -321,6 +324,7 @@ pl:
       scanning: Skanowanie
       search: Wyszukaj
       settings: Ustawienia Strony
+      social:
       upload: Prześlij modele
     order_buttons:
       sort:

@@ -38,25 +38,6 @@
     </div>
     <div class="col-12 col-sm">
       <%- if SiteSettings.multiuser_enabled? %>
-        <div class="card mb-2">
-          <h3 class="card-header"><%= t(".social") %></h3>
-          <div class="card-body">
-            <div class="row mb-3 text-center">
-              <div class="col">
-                <%= link_to follows_path, class: "text-reset text-decoration-none fs-5" do %>
-                  <%= t("follows.index.following") %>
-                  <span class="badge bg-primary"><%= current_user.federails_actor.follows.count %></span>
-                <% end %>
-              </div>
-              <div class="col">
-                <%= link_to follows_path, class: "text-reset text-decoration-none fs-5" do %>
-                  <%= t("follows.index.followers") %>
-                  <span class="badge bg-primary"><%= current_user.federails_actor.followers.count %></span>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
         <%- if @user.has_quota? %>
         <div class="card mb-2">
           <h3 class="card-header"><%= t("settings.users.quota.title") %></h3>

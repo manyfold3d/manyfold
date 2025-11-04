@@ -29,6 +29,13 @@
         <div class="col-auto"><%= link_to Icon(icon: "trash", label: t(".remove_creator_filter")), @filter.to_params(except: :creator), {class: "text-danger"} %></div>
       </div>
     <% end %>
+    <% if @filter.filtering_by?(:owner) %>
+      <div class="row">
+        <div class="col-auto"><%= Icon icon: "person", label: t(".owner") %></div>
+        <div class="col" aria-label="<%= t(".owner") %>"><%= @filter.owner.username %></div>
+        <div class="col-auto"><%= link_to Icon(icon: "trash", label: t(".remove_owner_filter")), @filter.to_params(except: :owner), {class: "text-danger"} %></div>
+      </div>
+    <% end %>
     <% if @filter.filtering_by?(:tag) %>
       <div class="row">
         <div class="col-auto"><%= Icon icon: "tag", label: ActsAsTaggableOn::Tag.model_name.human(count: 100) %></div>

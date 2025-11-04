@@ -275,10 +275,12 @@ pt:
     demo_mode:
     filters_card:
       missing_tags:
+      owner:
       remove_collection_filter:
       remove_creator_filter:
       remove_library_filter:
       remove_missing_tag_filter:
+      remove_owner_filter:
       remove_search_filter:
       remove_tag_filter:
       search:
@@ -313,6 +315,7 @@ pt:
       log_in:
       log_out:
       moderator_settings:
+      my_stuff:
       navbar:
         toggler:
           label:
@@ -321,6 +324,7 @@ pt:
       scanning:
       search:
       settings:
+      social:
       upload:
     order_buttons:
       sort:

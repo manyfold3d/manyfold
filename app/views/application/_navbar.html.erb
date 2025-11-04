@@ -121,10 +121,35 @@
           </li>
         <% end %>
         <%- if current_user %>
-          <li class="nav-item">
-            <%= nav_link "sliders", t(".account"), edit_user_registration_path, nofollow: true, text_style: "d-md-none", id: "nav-link-preferences",
-                  data: tour_attributes(id: "nav-link-preferences", title: t(".account"), description: t("tour.navbar.account.description")) %>
-          </li>
+          <%- if SiteSettings.multiuser_enabled? %>
+            <li class="nav-item dropdown">
+              <%= nav_link "person", t(".account"), edit_user_registration_path, nofollow: true, text_style: "d-md-none", id: "nav-link-preferences",
+                    data: {
+                      bs_toggle: "dropdown"
+                    }.merge(tour_attributes(id: "nav-link-preferences", title: t(".account"), description: t("tour.navbar.account.description"))),
+                    aria: {
+                      expanded: false
+                    } %>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><%= link_to t("devise.registrations.edit.title"), edit_user_registration_path, nofollow: true, class: "dropdown-item" %></li>
+                <li><hr class="dropdown-divider"></li>
+                <li class="dropdown-header"><%= t(".my_stuff") %></li>
+                <li><%= link_to Model.model_name.human(count: 100), models_path(owner: current_user.to_param), nofollow: true, class: "dropdown-item" %></li>
+                <li><%= link_to Creator.model_name.human(count: 100), creators_path(owner: current_user.to_param), nofollow: true, class: "dropdown-item" %></li>
+                <li><%= link_to Collection.model_name.human(count: 100), collections_path(owner: current_user.to_param), nofollow: true, class: "dropdown-item" %></li>
+                <%- if SiteSettings.federation_enabled? %>
+                  <li><hr class="dropdown-divider"></li>
+                  <li class="dropdown-header"><%= t(".social") %></li>
+                  <li><%= link_to t("follows.index.title"), follows_path, nofollow: true, class: "dropdown-item" %></li>
+                <%- end %>
+              </ul>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= nav_link "person", t("devise.registrations.edit.title"), edit_user_registration_path, nofollow: true, text_style: "d-md-none", id: "nav-link-preferences",
+                    data: tour_attributes(id: "nav-link-preferences", title: t(".account"), description: t("tour.navbar.account.description")) %>
+            </li>
+          <% end %>
         <% end %>
         <%- if SiteSettings.multiuser_enabled? %>
           <li class="nav-item">

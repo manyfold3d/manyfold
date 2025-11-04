@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe Search::FilterService do
   context "with a range of models" do
+    let(:contributor) { create(:contributor) }
     let(:creator) { create(:creator, name: "Dr Seuss") }
     let(:collection) { create(:collection, name: "Chiroptera") }
 
@@ -9,7 +10,7 @@ RSpec.describe Search::FilterService do
       create(:model, name: "cat in the hat", tag_list: ["dog", "log", "frog", "cat"], creator: creator, notes: "lorem ipsum", caption: nil)
       create(:model, name: "hat on the cat", tag_list: [], creator: creator, notes: nil, caption: "dolor sit amet")
       create(:model, name: "bat on a mat", tag_list: ["log"], collection: collection, notes: nil, caption: nil, links_attributes: [{url: "https://thingiverse.com/thing:1234"}])
-      create(:model, name: "bat on a hat", tag_list: ["frog"], collection: collection, notes: nil, caption: nil)
+      create(:model, name: "bat on a hat", tag_list: ["frog"], collection: collection, notes: nil, caption: nil, owner: contributor)
     end
 
     it "returns all models with no filters" do
@@ -70,6 +71,11 @@ RSpec.describe Search::FilterService do
     it "filters by link" do
       service = described_class.new(ActionController::Parameters.new(link: "thingiverse.com"))
       expect(service.models(Model.all).pluck(:name)).to contain_exactly("bat on a mat")
+    end
+
+    it "filters by owner" do
+      service = described_class.new(ActionController::Parameters.new(owner: contributor.to_param))
+      expect(service.models(Model.all).pluck(:name)).to contain_exactly("bat on a hat")
     end
   end
 end

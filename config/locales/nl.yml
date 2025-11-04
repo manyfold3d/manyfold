@@ -275,10 +275,12 @@ nl:
     demo_mode: Deze instantie staat in demomodus. Je kunt geen modellen toevoegen of verwijderen, maar je kunt wel alles anders doen.
     filters_card:
       missing_tags: Ontbrekende tags
+      owner:
       remove_collection_filter: Collectiefilter verwijderen
       remove_creator_filter: Makerfilter verwijderen
       remove_library_filter: Bibliotheekfilter verwijderen
       remove_missing_tag_filter: Filter voor ontbrekende tag verwijderen
+      remove_owner_filter:
       remove_search_filter: Zoekfilter verwijderen
       remove_tag_filter: Tagfilter verwijderen
       search: Zoeken
@@ -313,6 +315,7 @@ nl:
       log_in: Inloggen
       log_out: Uitloggen
       moderator_settings:
+      my_stuff:
       navbar:
         toggler:
           label: Navigatie in-/uitklappen
@@ -321,6 +324,7 @@ nl:
       scanning: Bezig met scannen
       search: Zoeken
       settings: Site-instellingen
+      social:
       upload: Uploaden
     order_buttons:
       sort:

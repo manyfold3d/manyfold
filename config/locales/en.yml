@@ -275,10 +275,12 @@ en:
     demo_mode: This instance is in demo mode. You cannot add or remove models, but you can do everything else.
     filters_card:
       missing_tags: Missing tags
+      owner: Owner
       remove_collection_filter: Remove collection filter
       remove_creator_filter: Remove creator filter
       remove_library_filter: Remove library filter
       remove_missing_tag_filter: Remove missing tag filter
+      remove_owner_filter: Remove owner filter
       remove_search_filter: Remove search filter
       remove_tag_filter: Remove tag filter
       search: Search
@@ -303,7 +305,7 @@ en:
     links_form:
       add: add another link
     navbar:
-      account: My Settings
+      account: My Account
       activity: Activity
       add_models: Add content
       check_existing: Rescan all models
@@ -313,6 +315,7 @@ en:
       log_in: Sign in
       log_out: Sign out
       moderator_settings: Moderator Settings
+      my_stuff: My Stuff
       navbar:
         toggler:
           label: Toggle navigation
@@ -321,6 +324,7 @@ en:
       scanning: Scanning
       search: Search
       settings: Site Settings
+      social: Social
       upload: Upload models
     order_buttons:
       sort:

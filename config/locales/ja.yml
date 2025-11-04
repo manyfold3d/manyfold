@@ -275,10 +275,12 @@ ja:
     demo_mode: このインスタンスはデモモードです。モデルの追加や削除はできませんが、それ以外のことはすべてできます。
     filters_card:
       missing_tags: タグの欠落
+      owner:
       remove_collection_filter: コレクションフィルターを削除する
       remove_creator_filter: クリエイターフィルターを削除する
       remove_library_filter: ライブラリーフィルタを削除する
       remove_missing_tag_filter: タグの欠落フィルターを削除する
+      remove_owner_filter:
       remove_search_filter: 検索フィルターを削除する
       remove_tag_filter: タグフィルターを削除する
       search: 検索
@@ -313,6 +315,7 @@ ja:
       log_in: ログイン
       log_out: ログアウト
       moderator_settings:
+      my_stuff:
       navbar:
         toggler:
           label: ナビゲーションをトグル
@@ -321,6 +324,7 @@ ja:
       scanning: スキャン中
       search: 検索
       settings: サイト設定
+      social:
       upload: アップロード
     order_buttons:
       sort:

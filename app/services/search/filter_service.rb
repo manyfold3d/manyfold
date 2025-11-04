@@ -1,6 +1,7 @@
 class Search::FilterService
   attr_reader :collection
   attr_reader :creator
+  attr_reader :owner
 
   # Get list filters from URL
   def initialize(params)
@@ -12,10 +13,12 @@ class Search::FilterService
       :creator,
       :link,
       :missingtag,
+      :owner,
       tag: []
     )
     @collection = Collection.find_param(parameter(:collection)) if parameter(:collection).present?
     @creator = Creator.find_param(parameter(:creator)) if parameter(:creator).present?
+    @owner = User.find_param(parameter(:owner)) if parameter(:owner).present?
   end
 
   def any?
@@ -36,6 +39,7 @@ class Search::FilterService
 
   def models(scope)
     scope = scope.all
+    scope = filter_by_owner(scope)
     scope = filter_by_library(scope)
     scope = filter_by_missing_tag(scope)
     scope = filter_by_tag(scope)
@@ -47,9 +51,16 @@ class Search::FilterService
 
   def collections(scope)
     scope = scope.includes(:creator)
+    scope = filter_by_owner(scope)
     scope = filter_by_collection(scope)
     scope = filter_by_creator(scope)
     filter_by_search(scope)
+  end
+
+  def creators(creator_scope, models)
+    creator_scope = creator_scope.where(id: models.pluck(:creator_id).uniq)
+    # Apply second-pass owner filter
+    filter_by_owner(creator_scope)
   end
 
   def tags
@@ -85,6 +96,10 @@ class Search::FilterService
     else
       scope.where(creator: creator)
     end
+  end
+
+  def filter_by_owner(scope)
+    owner ? scope.granted_to("own", owner).local : scope
   end
 
   # Filter by tag

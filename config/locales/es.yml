@@ -275,10 +275,12 @@ es:
     demo_mode: Esta instancia es una demo. No puedes añadir ni eliminar modelos, pero puedes hacer todo lo demás.
     filters_card:
       missing_tags: Etiquetas vacías
+      owner:
       remove_collection_filter: Eliminar filtro de colección
       remove_creator_filter: Eliminar filtro de creador
       remove_library_filter: Eliminar filtro de biblioteca
       remove_missing_tag_filter: Eliminar filtro de etiquetas vacias
+      remove_owner_filter:
       remove_search_filter: Eliminar filtro de búsqueda
       remove_tag_filter: Eliminar el filtro de etiqueta
       search: Buscar
@@ -313,6 +315,7 @@ es:
       log_in: Iniciar sesión
       log_out: Cerrar sesión
       moderator_settings: Configuración del moderador
+      my_stuff:
       navbar:
         toggler:
           label: Mostrar/ocultar panel
@@ -321,6 +324,7 @@ es:
       scanning: Escaneando
       search: Buscar
       settings: Ajustes
+      social:
       upload: Cargar
     order_buttons:
       sort:
