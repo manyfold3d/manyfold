@@ -310,14 +310,12 @@ de:
       add_models: Inhalt hinzufügen
       check_existing: Alle Modelle neu scannen
       check_results: Gefilterte Modelle erneut scannen
+      following:
       home: Homepage
       import_url: URL importieren
       log_in: Einloggen
       log_out: Abmelden
       moderator_settings: Moderator-Einstellungen
-      my_collections:
-      my_creator:
-      my_models:
       navbar:
         toggler:
           label: Navigation umschalten

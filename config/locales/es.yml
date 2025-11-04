@@ -310,14 +310,12 @@ es:
       add_models: Añadir contenido
       check_existing: Comprobar modelos existentes
       check_results: Volver a escanear los modelos filtrados
+      following:
       home: Inicio
       import_url: Importar URL
       log_in: Iniciar sesión
       log_out: Cerrar sesión
       moderator_settings: Configuración del moderador
-      my_collections:
-      my_creator:
-      my_models:
       navbar:
         toggler:
           label: Mostrar/ocultar panel

@@ -310,14 +310,12 @@ ru:
       add_models:
       check_existing:
       check_results:
+      following:
       home:
       import_url:
       log_in:
       log_out:
       moderator_settings:
-      my_collections:
-      my_creator:
-      my_models:
       navbar:
         toggler:
           label:

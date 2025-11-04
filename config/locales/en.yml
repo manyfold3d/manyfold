@@ -310,14 +310,12 @@ en:
       add_models: Add content
       check_existing: Rescan all models
       check_results: Rescan filtered models
+      following: Following
       home: Homepage
       import_url: Import URL
       log_in: Sign in
       log_out: Sign out
       moderator_settings: Moderator Settings
-      my_collections:
-      my_creator:
-      my_models:
       navbar:
         toggler:
           label: Toggle navigation

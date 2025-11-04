@@ -310,14 +310,12 @@ ja:
       add_models:
       check_existing: 既存モデルの再スキャン
       check_results:
+      following:
       home: ホームページ
       import_url:
       log_in: ログイン
       log_out: ログアウト
       moderator_settings:
-      my_collections:
-      my_creator:
-      my_models:
       navbar:
         toggler:
           label: ナビゲーションをトグル

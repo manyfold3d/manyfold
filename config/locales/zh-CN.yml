@@ -310,14 +310,12 @@ zh-CN:
       add_models: 添加内容
       check_existing: 重新扫描所有模型
       check_results: 重新扫描已过滤的模型
+      following:
       home: 主页
       import_url: 导入 URL
       log_in: 登录
       log_out: 退出
       moderator_settings: 管理员设置
-      my_collections:
-      my_creator:
-      my_models:
       navbar:
         toggler:
           label: 切换导航

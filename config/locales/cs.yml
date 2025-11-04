@@ -310,14 +310,12 @@ cs:
       add_models:
       check_existing: Kontrola stávajících modelů
       check_results:
+      following:
       home: Domovská stránka
       import_url:
       log_in: Přihlásit se
       log_out: Odhlásit se
       moderator_settings:
-      my_collections:
-      my_creator:
-      my_models:
       navbar:
         toggler:
           label: Přepínání navigace
