@@ -93,6 +93,10 @@ nl:
         heading: Bestanden
       followers:
       license: Licentie
+      menu:
+        tour:
+          description:
+          title:
       merge:
         heading: Samenvoegen
         warning: Samenvoegen verplaatst alle bestanden van dit model naar het doelmodel en verwijdert dit model. Bestandsmetadata blijft behouden, maar modelmetadata gaat verloren!

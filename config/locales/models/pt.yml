@@ -93,6 +93,10 @@ pt:
         heading:
       followers:
       license:
+      menu:
+        tour:
+          description:
+          title:
       merge:
         heading:
         warning:

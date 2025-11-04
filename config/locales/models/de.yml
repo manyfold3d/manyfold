@@ -93,6 +93,10 @@ de:
         heading: Dateien
       followers: Follower
       license: Lizenz
+      menu:
+        tour:
+          description:
+          title:
       merge:
         heading: Zusammenführen
         warning: Bei der Zusammenführung werden alle Dateien dieses Modells auf das Ziel verschoben und das Modell wird entfernt. Die Metadaten der Dateien bleiben erhalten, aber alle Metadaten des Modelle gehen verloren!

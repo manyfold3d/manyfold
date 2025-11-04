@@ -93,6 +93,10 @@ pl:
         heading: Pliki
       followers: Obserwujący
       license: Licencja
+      menu:
+        tour:
+          description:
+          title:
       merge:
         heading: Połącz
         warning: Scalanie przenosi wszystkie pliki z tego modelu do docelowego i usuwa ten model. Metadane plików zostaną zachowane, ale wszelkie metadane modelu zostaną utracone!

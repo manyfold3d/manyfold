@@ -93,6 +93,10 @@ fr:
         heading: Fichiers
       followers:
       license: Licence
+      menu:
+        tour:
+          description:
+          title:
       merge:
         heading: Fusionner
         warning: La fusion déplace tous les fichiers de ce modèle vers la cible et supprime ce modèle. Les métadonnées des fichiers sont préservées, mais toutes les métadonnées du modèle sont perdues !
