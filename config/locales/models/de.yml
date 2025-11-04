@@ -11,7 +11,9 @@ de:
       select_all: Alle Modelle auswählen
       submit: Ausgewählte Modelle aktualisieren
       title: Modelle massenweise bearbeiten
-      update_all: Alle %{count}-Modelle aktualisieren
+      update_all:
+        confirm:
+        label: Alle %{count}-Modelle aktualisieren
     bulk_update:
       success: Modelle erfolgreich aktualisiert.
     configure_merge:

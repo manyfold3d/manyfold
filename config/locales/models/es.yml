@@ -11,7 +11,9 @@ es:
       select_all: Seleccione todos los modelos
       submit: Actualizar modelos seleccionados
       title: Edición masiva de modelos
-      update_all: Actualizar los %{count} modelos
+      update_all:
+        confirm:
+        label: Actualizar los %{count} modelos
     bulk_update:
       success: Modelos actualizados correctamente.
     configure_merge:

@@ -11,7 +11,9 @@ pl:
       select_all: Zaznacz wszystkie modele
       submit: Aktualizuj zaznaczone modele
       title: Edytuj zbiorczo modele
-      update_all: Zaktualizuj Wszystkie %{count} Modele(i)
+      update_all:
+        confirm:
+        label: Zaktualizuj Wszystkie %{count} Modele(i)
     bulk_update:
       success: Modele zaktualizowane pomyślnie.
     configure_merge:

@@ -11,7 +11,9 @@ en:
       select_all: Select all models
       submit: Update Selected Models
       title: Bulk Edit Models
-      update_all: Update All %{count} Models
+      update_all:
+        confirm: Are you sure you want to apply these changes to all %{count} models matching the current filters?
+        label: Update All %{count} Models
     bulk_update:
       success: Models updated successfully.
     configure_merge:

@@ -11,7 +11,9 @@ zh-CN:
       select_all: 选择所有模型
       submit: 更新选定模型
       title: 批量编辑模型
-      update_all: 更新所有 %{count} 模型
+      update_all:
+        confirm:
+        label: 更新所有 %{count} 模型
     bulk_update:
       success: 模型更新成功。
     configure_merge:

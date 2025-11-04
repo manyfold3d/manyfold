@@ -12,6 +12,8 @@ nl:
       submit: Geselecteerde Modellen Bijwerken
       title: Modellen Bulksgewijs Bewerken
       update_all:
+        confirm:
+        label:
     bulk_update:
       success: Modellen succesvol bijgewerkt.
     configure_merge:

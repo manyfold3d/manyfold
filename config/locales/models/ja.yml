@@ -12,6 +12,8 @@ ja:
       submit:
       title:
       update_all:
+        confirm:
+        label:
     bulk_update:
       success:
     configure_merge:
