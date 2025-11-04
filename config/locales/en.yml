@@ -305,7 +305,7 @@ en:
     links_form:
       add: add another link
     navbar:
-      account: My Settings
+      account: My Account
       activity: Activity
       add_models: Add content
       check_existing: Rescan all models
