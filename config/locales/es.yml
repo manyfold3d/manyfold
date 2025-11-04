@@ -662,11 +662,13 @@ es:
       more_access: Actualmente sólo tiene acceso de lectura a esta instancia; para obtener más permisos, como subir archivos, póngase en contacto con el administrador.
       title: Navegando por
     federation:
+      account_handle:
       content_html: Esta instancia de Manyfold forma parte de <a href="https://jointhefediverse.net">Fediverse</a>, una red de redes sociales que funcionan conjuntamente. Eso significa que si tienes una cuenta aquí, puedes seguir contenido en otras instancias de Manyfold, o la gente puede seguir tu contenido desde otras plataformas como Mastodon.
+      creator_handle:
       creator_handle_html: 'El identificador fediverse de tu perfil de creador es: <code>%{handle}</code>.'
-      following: Si conoces el "handle" de alguien o algo que quieres seguir, sólo tienes que introducirlo en el cuadro de búsqueda; si no, introduce tu "handle" personal más arriba cuando sigas algo en otra instancia.
       handle_html: 'Tu "handle" en fediverse es: <code>%{handle}</code>'
       title: Federación
+      users_v_creators:
     index:
       no_activities: Por ahora no hay actividades que mostrar.
       open_search_help: Sintaxis de búsqueda
@@ -687,6 +689,7 @@ es:
       content: Las instancias de Manyfold están gestionadas por gente como tú. Si encuentra útil esta instancia, puede ayudar a mantenerla en funcionamiento haciendo clic a continuación.
       manyfold_html: Para apoyar el desarrollo de Manyfold, puedes hacerlo en <a href="https://opencollective.com/manyfold" target="_manyfold_donate">OpenCollective</a>.
       support_link: Apoyar esta instancia
+      support_manyfold:
       title: Ayuda
     uploading:
       quota: Puedes subir hasta %{quota} de contenido, y siempre puedes ver el uso actual de tu cuota en tu página de configuración.

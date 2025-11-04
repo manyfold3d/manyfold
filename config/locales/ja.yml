@@ -662,11 +662,13 @@ ja:
       more_access:
       title:
     federation:
+      account_handle:
       content_html:
+      creator_handle:
       creator_handle_html:
-      following:
       handle_html:
       title:
+      users_v_creators:
     index:
       no_activities:
       open_search_help:
@@ -687,6 +689,7 @@ ja:
       content:
       manyfold_html:
       support_link: インスタンスをスポンサー
+      support_manyfold:
       title:
     uploading:
       quota:
