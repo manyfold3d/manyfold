@@ -87,7 +87,7 @@ class ModelsController < ApplicationController
       collection_id: p[:collection_id],
       license: p[:license],
       sensitive: (p[:sensitive] == "1"),
-      tags: p[:add_tags],
+      tag_list: p[:tags],
       permission_preset: p[:permission_preset]
     }.compact
     library = SiteSettings.show_libraries ? Library.find_param(p[:library]) : Library.default

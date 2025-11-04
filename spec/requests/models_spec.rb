@@ -515,7 +515,7 @@ RSpec.describe "Models" do
             license: "MIT",
             sensitive: "1",
             permission_preset: "public",
-            add_tags: ["tag1", "tag2"],
+            tags: ["tag1", "tag2"],
             name: "Only used for single model upload"
           }
         }

@@ -9,7 +9,7 @@ module ManyfoldApi::V0
         collection_id: dereference(@object.dig("isPartOf", "@id"), Collection)&.id,
         license: @object.dig("spdx:license", "licenseId"),
         sensitive: @object["sensitive"] ? "1" : "0",
-        add_tags: @object["keywords"]
+        tags: @object["keywords"]
       }.compact
     end
 
