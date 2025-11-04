@@ -11,7 +11,7 @@ class CreatorsController < ApplicationController
     @models = policy_scope(Model).all
     if @filter.any?
       @models = @filter.models(@models)
-      @creators = @creators.where(id: @models.pluck(:creator_id).uniq)
+      @creators = @filter.creators(@creators, @models)
     end
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter.tags)

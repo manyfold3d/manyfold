@@ -57,6 +57,12 @@ class Search::FilterService
     filter_by_search(scope)
   end
 
+  def creators(creator_scope, models)
+    creator_scope = creator_scope.where(id: models.pluck(:creator_id).uniq)
+    # Apply second-pass owner filter
+    filter_by_owner(creator_scope)
+  end
+
   def tags
     ActsAsTaggableOn::Tag.named_any(parameter(:tag)) if filtering_by?(:tag)
   end
