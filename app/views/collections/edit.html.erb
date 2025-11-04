@@ -1,4 +1,7 @@
-<h1><%= t "collections.general.edit" %></h1>
+<h1>
+  <%= link_to "#{@collection.name} /", @collection, class: "link-secondary link-underline-opacity-0" %>
+  <%= t "collections.general.edit" %>
+</h1>
 <% if SiteSettings.federation_enabled? %>
   <p><small>⁂ <%= @collection.federails_actor&.at_address %></small></p>
 <% end %>
