@@ -41,6 +41,8 @@ en:
       free_space:
         label: Free Space
       heading: Libraries
+      scan_changes:
+        confirm: Are you sure you want to scan this library for new files? This may take a long time!
       settings: Settings
       show:
         help: Shows or hides libraries in the navigation bar and forms. Library choice in edit forms will always be shown to administrators.

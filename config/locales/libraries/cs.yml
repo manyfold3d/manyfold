@@ -41,6 +41,8 @@ cs:
       free_space:
         label: Volné místo
       heading: Knihovny
+      scan_changes:
+        confirm:
       settings: Nastavení
       show:
         help: Zobrazí nebo skryje knihovny na navigačním panelu a ve formulářích. Volba knihovny ve formulářích pro úpravy se vždy zobrazí správcům.

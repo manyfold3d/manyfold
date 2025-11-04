@@ -41,6 +41,8 @@ zh-CN:
       free_space:
         label: 剩余空间
       heading: 资料库
+      scan_changes:
+        confirm:
       settings: 设置
       show:
         help: 在导航栏和表单中显示或隐藏库。编辑表单中的库选择将始终显示给管理员。

@@ -15,7 +15,7 @@
         <div class="card-body">
           <div class="float-end">
             <%= GoButton(icon: "box", icon_only: true, label: Model.model_name.human.pluralize, href: models_path(library: library.to_param), variant: "outline-secondary") %>
-            <%= DoButton(icon: "radar", icon_only: true, label: t("application.navbar.scan_changes.label"), href: scans_path(library: library.to_param), method: :post, variant: "outline-warning") if policy(:scan).create? %>
+            <%= DoButton(icon: "radar", icon_only: true, label: t("application.navbar.scan_changes.label"), href: scans_path(library: library.to_param), method: :post, variant: "outline-warning", confirm: translate(".scan_changes.confirm")) if policy(:scan).create? %>
             <%= GoButton(icon: "pencil", label: t("general.edit"), href: edit_library_path(library), variant: :secondary) %>
           </div>
           <p>
