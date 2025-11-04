@@ -685,7 +685,7 @@ zh-CN:
       title: 发布
     support:
       content: 每个人都可以自由运行 Manyfold 实例！如果您觉得这个实例有用，可以点击下面的链接帮助它继续运行。
-      manyfold_html: 您可以在<a href="https://opencollective.com/manyfold">OpenCollective</a> 上支持 Manyfold 软件的开发。
+      manyfold_html: 您可以在<a href="https://opencollective.com/manyfold" target="_manyfold_donate">OpenCollective</a> 上支持 Manyfold 软件的开发。
       support_link: 支持此实例
       title: 支持
     uploading:

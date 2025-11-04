@@ -685,7 +685,7 @@ es:
       title: Publicando
     support:
       content: Las instancias de Manyfold están gestionadas por gente como tú. Si encuentra útil esta instancia, puede ayudar a mantenerla en funcionamiento haciendo clic a continuación.
-      manyfold_html: Para apoyar el desarrollo de Manyfold, puedes hacerlo en <a href="https://opencollective.com/manyfold">OpenCollective</a>.
+      manyfold_html: Para apoyar el desarrollo de Manyfold, puedes hacerlo en <a href="https://opencollective.com/manyfold" target="_manyfold_donate">OpenCollective</a>.
       support_link: Apoyar esta instancia
       title: Ayuda
     uploading:

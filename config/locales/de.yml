@@ -685,7 +685,7 @@ de:
       title: Veröffentlichung
     support:
       content: Viele Instanzen werden von Menschen wie Ihnen betrieben! Wenn du diese Instanz nützlich findest, könntest du helfen, sie am Laufen zu halten, indem du unten klickst.
-      manyfold_html: Um die Entwicklung der Manyfold-Software selbst zu unterstützen, kannst du dies bei <a href="https://opencollective.com/manyfold">OpenCollective</a> tun.
+      manyfold_html: Um die Entwicklung der Manyfold-Software selbst zu unterstützen, kannst du dies bei <a href="https://opencollective.com/manyfold" target="_manyfold_donate">OpenCollective</a> tun.
       support_link: Diese Instanz unterstützen
       title: Unterstützen
     uploading:
