@@ -585,7 +585,7 @@ en:
         email: Email
         enable: Enable
         event_subscriptions: Event subscriptions
-        fediverse_account: Fediverse address
+        fediverse_account: Fediverse handle
         fingerprint: Fingerprint
         links: Links
         max_count: Max count
@@ -606,7 +606,7 @@ en:
   follows:
     actor_table:
       actions: Actions
-      address: Fediverse Address
+      address: Fediverse handle
       name: Name
     follow_remote_actor:
       followed: Followed %{actor} successfully

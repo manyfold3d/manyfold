@@ -114,7 +114,7 @@ en:
             label: Creator name
           slug:
             help: A short username for your creator profile, used in the URL.
-            help_fedi: A short username for your creator profile, used in the URL and Fediverse address.
+            help_fedi: A short username for your creator profile, used in the URL and Fediverse handle.
         details: Your Details
         rules: Server Rules
         rules_agree: By signing up for an account, you agree to abide by the rules above.
