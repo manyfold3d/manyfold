@@ -122,7 +122,7 @@
         <% end %>
         <%- if current_user %>
           <li class="nav-item">
-            <%= nav_link "sliders", t(".account"), edit_user_registration_path, nofollow: true, text_style: "d-md-none", id: "nav-link-preferences",
+            <%= nav_link "person", t(".account"), edit_user_registration_path, nofollow: true, text_style: "d-md-none", id: "nav-link-preferences",
                   data: tour_attributes(id: "nav-link-preferences", title: t(".account"), description: t("tour.navbar.account.description")) %>
           </li>
         <% end %>
