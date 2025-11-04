@@ -5,14 +5,18 @@
   </h2>
 
   <div class="card-body">
-    <p>
-      <%= t ".content" %>
-    </p>
-    <p>
-      <%= t ".manyfold_html" %>
-    </p>
+    <% if SiteSettings.support_link.presence %>
+      <div class="mb-3">
+        <p><%= t ".content" %></p>
+        <div class="text-end">
+          <%= GoButton(label: t(".support_link"), href: SiteSettings.support_link, variant: :primary, icon: "box-arrow-up-right", target: "_manyfold_support") %>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+    <p><%= t ".manyfold_html" %></p>
     <div class="text-end">
-      <%= GoButton(label: t(".support_link"), href: SiteSettings.support_link, variant: :primary, icon: "box-arrow-up-right", target: "_manyfold_support") %>
+      <%= GoButton(label: t(".support_manyfold"), href: "https://opencollective.com/manyfold", variant: :primary, icon: "box-arrow-up-right", target: "_manyfold_donate") %>
     </div>
   </div>
 

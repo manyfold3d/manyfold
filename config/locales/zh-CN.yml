@@ -662,11 +662,13 @@ zh-CN:
       more_access: 目前，您对该实例仅有只读权限；要获得更多权限（如上传），请联系管理员。
       title: 浏览
     federation:
+      account_handle:
       content_html: 这个 Manyfold 实例是<a href="https://jointhefediverse.net">Fediverse</a> 的一部分，<a href="https://jointhefediverse.net">Fediverse</a> 是一个由多个社交媒体网站组成的网络，所有这些网站都能协同工作。这意味着，如果您在这里拥有一个账户，您就可以关注其他 Manyfold 实例上的内容，或者人们可以关注您在其他平台（如 Mastodon）上的内容。
+      creator_handle:
       creator_handle_html:
-      following:
       handle_html:
       title:
+      users_v_creators:
     index:
       no_activities: 暂时没有动态要展示。
       open_search_help: 搜索语法
@@ -687,6 +689,7 @@ zh-CN:
       content: 每个人都可以自由运行 Manyfold 实例！如果您觉得这个实例有用，可以点击下面的链接帮助它继续运行。
       manyfold_html: 您可以在<a href="https://opencollective.com/manyfold" target="_manyfold_donate">OpenCollective</a> 上支持 Manyfold 软件的开发。
       support_link: 支持此实例
+      support_manyfold:
       title: 支持
     uploading:
       quota: 您最多可以上传 %{quota} 个内容，可随时在设置页面上查看当前配额使用情况。

@@ -206,7 +206,7 @@ en:
         submit: Save
       index:
         description: View and edit registered accounts.
-        fediverse_address: Fediverse address
+        fediverse_address: Fediverse handle
         local: Local
         new: New account
         title: Manage Accounts

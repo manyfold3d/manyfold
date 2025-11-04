@@ -585,7 +585,7 @@ en:
         email: Email
         enable: Enable
         event_subscriptions: Event subscriptions
-        fediverse_account: Fediverse address
+        fediverse_account: Fediverse handle
         fingerprint: Fingerprint
         links: Links
         max_count: Max count
@@ -606,7 +606,7 @@ en:
   follows:
     actor_table:
       actions: Actions
-      address: Fediverse Address
+      address: Fediverse handle
       name: Name
     follow_remote_actor:
       followed: Followed %{actor} successfully
@@ -662,11 +662,13 @@ en:
       more_access: Currently you have read-only access to this instance; to get more permissions, such as uploading, contact your instance administrator.
       title: Browsing
     federation:
-      content_html: This Manyfold instance is part of the <a href="https://jointhefediverse.net">Fediverse</a>, a network of social media sites that all work together. That means that if you have an account here, you can follow content on other Manyfold instances, or people can follow your content from other platforms like Mastodon.
-      creator_handle_html: 'The fediverse handle of your creator profile is: <code>%{handle}</code>.'
-      following: If you know the handle of someone or something you want to follow, just enter it in the search box; otherwise, enter your personal handle above when you follow something on another instance.
-      handle_html: 'Your fediverse handle is: <code>%{handle}</code>'
-      title: Federation
+      account_handle: Account handle
+      content_html: This instance is part of the <a href="https://jointhefediverse.net">Fediverse</a>, a network of different sites that all work together. That means that if you have an account here, you can follow content on other Manyfold instances, or people can follow your content from other platforms like Mastodon.
+      creator_handle: Creator handle
+      creator_handle_html: 'We''ve automatically set up a creator profile for you. This handle is what people should follow to see what you publish:'
+      handle_html: 'If you need to enter your handle into another site in order to follow something, you''ll want to use your personal account handle:'
+      title: The Fediverse
+      users_v_creators: Unlike many Fediverse platforms, you don't just have one handle on Manyfold. Every model, creator and collection has its own handle for people to follow, as does the account you sign in with. This means you can manage more than one creator profile!
     index:
       no_activities: There are no activities to display for now.
       open_search_help: Search syntax
@@ -675,7 +677,7 @@ en:
         placeholder: What are you looking for?
         submit: Search
     publishing:
-      content: You can publish content publicly by giving "view" or "preview" permission to the "public" role on the item's edit page. Creators for public models will automatically be made public, but collections need to be expicitly published if you want them to be visible.
+      content: You can make your models public by going to the model edit page and setting the permissions.
       existing_creator:
         button: Edit your creator profile
         content: 'If you''re publishing your own work, you will probably want to customise your creator profile:'
@@ -685,8 +687,9 @@ en:
       title: Publishing
     support:
       content: Manyfold instances are run by people like you! If you find this instance useful, you can help keep it running by clicking below.
-      manyfold_html: To support development of the Manyfold software itself, you can do so at <a href="https://opencollective.com/manyfold" target="_manyfold_donate">OpenCollective</a>.
+      manyfold_html: Manyfold is 100% free and open source software. You can help make it better by making a donation!
       support_link: Support this instance
+      support_manyfold: Support Manyfold
       title: Support
     uploading:
       quota: You can upload up to %{quota} of content, and you can always view your current quota usage on your settings page.

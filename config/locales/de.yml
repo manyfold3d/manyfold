@@ -662,11 +662,13 @@ de:
       more_access: Derzeit hast du nur Lesezugriff auf diese Instanz; um mehr Rechte zu erhalten, z. B. zum Hochladen, wende dich an den Instanzadministrator.
       title: Durchsuchen
     federation:
+      account_handle:
       content_html: Diese Manyfold-Instanz ist Teil des <a href="https://jointhefediverse.net">Fediverse</a>, eines Netzwerks von Social-Media-Sites, die alle zusammenarbeiten. Das bedeutet, dass, wenn du hier ein Konto hast, kannst du anderen Menschen auf ihren Instanzen Folgen, oder Menschen können dir von anderen Plattformen wie Mastodon folgen.
+      creator_handle:
       creator_handle_html: 'Das fediverse-Handle deines Erstellerprofils lautet: <code>%{handle}</code>.'
-      following: Wenn du das Handle von jemandem oder etwas kennst, dem du folgen möchtest, gib es einfach in das Suchfeld ein; andernfalls geb den persönlichen Handle oben ein, wenn du etwas auf einer anderen Instanz folgen möchstest.
       handle_html: 'Ihr fediverse-Handle lautet: <code>%{handle}</code>'
       title: Föderation
+      users_v_creators:
     index:
       no_activities: Im Moment gibt es keine Aktivitäten zu sehen.
       open_search_help: Such-Syntax
@@ -687,6 +689,7 @@ de:
       content: Viele Instanzen werden von Menschen wie Ihnen betrieben! Wenn du diese Instanz nützlich findest, könntest du helfen, sie am Laufen zu halten, indem du unten klickst.
       manyfold_html: Um die Entwicklung der Manyfold-Software selbst zu unterstützen, kannst du dies bei <a href="https://opencollective.com/manyfold" target="_manyfold_donate">OpenCollective</a> tun.
       support_link: Diese Instanz unterstützen
+      support_manyfold:
       title: Unterstützen
     uploading:
       quota: Du kannst bis zu %{quota} Inhalte hochladen, und du kannst deinen aktuellen Kontingentverbrauch jederzeit auf deiner Einstellungsseite einsehen.

@@ -5,21 +5,40 @@
   </h2>
 
   <div class="card-body">
-    <p>
-      <%= t ".content_html" %>
-    </p>
-    <p>
-      <% if SiteSettings.autocreate_creator_for_new_users %>
-        <%= t ".creator_handle_html", handle: current_user.creators.first.federails_actor.at_address %>
-        <%= CopyButton text: current_user.creators.first.federails_actor.at_address %>
-      <% else %>
-        <%= t ".handle_html", handle: current_user.federails_actor.at_address %>
-        <%= CopyButton text: current_user.federails_actor.at_address %>
-      <% end %>
-    </p>
-    <p>
-      <%= t ".following" %>
-    </p>
+    <div class="mb-3">
+      <p>
+        <%= t ".content_html" %>
+      </p>
+      <%= t ".users_v_creators" %>
+    </div>
+
+    <% if SiteSettings.autocreate_creator_for_new_users %>
+      <div class="mb-3">
+        <p><%= t ".creator_handle_html", handle: current_user.creators.local.first.federails_actor.at_address %></p>
+        <div class="alert alert-info">
+          <div class="row">
+            <div class="col col-auto"><%= t(".creator_handle") %></div>
+            <div class="col">
+              <code><%= current_user.creators.local.first.federails_actor.at_address %></code>
+              <%= CopyButton text: current_user.creators.local.first.federails_actor.at_address %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <p><%= t ".handle_html", handle: current_user.federails_actor.at_address %></p>
+      <div class="alert alert-info">
+        <div class="row">
+          <div class="col col-auto"><%= t(".account_handle") %></div>
+          <div class="col">
+            <code><%= current_user.federails_actor.at_address %></code>
+            <%= CopyButton text: current_user.federails_actor.at_address %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
