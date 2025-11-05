@@ -58,8 +58,8 @@
                     safe_join [Icon(icon: "plus-circle"), t(".add_models")], " "
                   end %>
               <ul class="dropdown-menu">
-                <li><%= DropdownItem label: t(".upload"), path: new_model_path, nofollow: true %></li>
-                <li><%= DropdownItem label: t(".import_url"), path: new_import_path, nofollow: true %></li>
+                <li><%= DropdownItem label: t(".upload"), path: new_model_path %></li>
+                <li><%= DropdownItem label: t(".import_url"), path: new_import_path %></li>
               </ul>
             </div>
           <% end %>
@@ -76,9 +76,9 @@
                   <%= t ".scan" %>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><%= DropdownItem label: t(".scan_changes.label"), path: scans_path, method: :post, nofollow: true, confirm: translate(".scan_changes.confirm") %></li>
-                  <li><%= DropdownItem label: t(".check_existing.label"), path: scans_path(type: :check), method: :post, nofollow: true, confirm: translate(".check_existing.confirm") %>
-                  <li><%= DropdownItem label: t(".check_results.label"), path: scans_path({type: :check}.merge(@filter.to_params)), method: :post, nofollow: true, confirm: translate(".check_results.confirm") if @filter&.any? %>
+                  <li><%= DropdownItem label: t(".scan_changes.label"), path: scans_path, method: :post, confirm: translate(".scan_changes.confirm") %></li>
+                  <li><%= DropdownItem label: t(".check_existing.label"), path: scans_path(type: :check), method: :post, confirm: translate(".check_existing.confirm") %>
+                  <li><%= DropdownItem label: t(".check_results.label"), path: scans_path({type: :check}.merge(@filter.to_params)), method: :post, confirm: translate(".check_results.confirm") if @filter&.any? %>
                 </ul>
               </div>
             <% end %>
@@ -131,16 +131,16 @@
                       expanded: false
                     } %>
               <ul class="dropdown-menu dropdown-menu-end">
-                <li><%= DropdownItem label: t("devise.registrations.edit.title"), path: edit_user_registration_path, nofollow: true %></li>
+                <li><%= DropdownItem label: t("devise.registrations.edit.title"), path: edit_user_registration_path %></li>
                 <li><hr class="dropdown-divider"></li>
                 <li class="dropdown-header"><%= t(".my_stuff") %></li>
-                <li><%= DropdownItem label: Model.model_name.human(count: 100), path: models_path(owner: current_user.to_param), nofollow: true %></li>
-                <li><%= DropdownItem label: Creator.model_name.human(count: 100), path: creators_path(owner: current_user.to_param), nofollow: true %></li>
-                <li><%= DropdownItem label: Collection.model_name.human(count: 100), path: collections_path(owner: current_user.to_param), nofollow: true %></li>
+                <li><%= DropdownItem label: Model.model_name.human(count: 100), path: models_path(owner: current_user.to_param) %></li>
+                <li><%= DropdownItem label: Creator.model_name.human(count: 100), path: creators_path(owner: current_user.to_param) %></li>
+                <li><%= DropdownItem label: Collection.model_name.human(count: 100), path: collections_path(owner: current_user.to_param) %></li>
                 <%- if SiteSettings.federation_enabled? %>
                   <li><hr class="dropdown-divider"></li>
                   <li class="dropdown-header"><%= t(".social") %></li>
-                  <li><%= DropdownItem label: t("follows.index.title"), path: follows_path, nofollow: true %></li>
+                  <li><%= DropdownItem label: t("follows.index.title"), path: follows_path %></li>
                 <%- end %>
               </ul>
             </li>
