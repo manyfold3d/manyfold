@@ -332,10 +332,6 @@ de:
       settings: Admin-Einstellungen
       social:
       upload: Modelle hochladen
-    order_buttons:
-      created: Nach Zeit sortieren
-      sort-by:
-      title: Nach Namen sortieren
     search_error: Fehler in der Such-Syntax. Bitte prüfen und erneut versuchen!
     tag_list:
       unrelated_tag_count:
@@ -410,6 +406,11 @@ de:
       title: Suchsyntax
       unset: Verwende "set?", um abzufragen, ob ein bestimmtes Feld gesetzt ist, und füge "not" hinzu, um das Gegenteil festzustellen.
       without_tag: Verwende "!=", um Modelle ohne ein bestimmtes Tag zu finden
+    sort_menu:
+      name: Nach Namen sortieren
+      recent: Nach Zeit sortieren
+      sort-by:
+      updated:
   concerns:
     linkable:
       sync:

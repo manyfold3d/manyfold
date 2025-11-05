@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   before_action :check_for_first_use
   before_action :show_security_alerts
   before_action :check_scan_status
-  before_action :remember_ordering
   before_action :restore_failed_search
 
   protect_from_forgery with: :null_session, if: :is_api_request?
@@ -42,11 +41,6 @@ class ApplicationController < ActionController::Base
 
   def check_scan_status
     @scan_in_progress = Sidekiq::Queue.new("scan").size > 0
-  end
-
-  def remember_ordering
-    session["order"] ||= "name"
-    session["order"] = params["order"] if params["order"]
   end
 
   private

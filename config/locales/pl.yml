@@ -332,10 +332,6 @@ pl:
       settings: Ustawienia Strony
       social:
       upload: Prześlij modele
-    order_buttons:
-      created: Sortuj według czasu
-      sort-by:
-      title: Sortuj według nazwy
     search_error:
     tag_list:
       unrelated_tag_count:
@@ -410,6 +406,11 @@ pl:
       title: Składnia Wyszukiwania
       unset:
       without_tag:
+    sort_menu:
+      name: Sortuj według nazwy
+      recent: Sortuj według czasu
+      sort-by:
+      updated:
   concerns:
     linkable:
       sync:

@@ -332,10 +332,6 @@ es:
       settings: Ajustes
       social:
       upload: Cargar
-    order_buttons:
-      created: Ordenar por tiempo
-      sort-by:
-      title: Ordenar por nombre
     search_error: Error en la sintaxis de búsqueda. Por favor, compruébelo e inténtelo de nuevo
     tag_list:
       unrelated_tag_count:
@@ -410,6 +406,11 @@ es:
       title: Sintaxis de búsqueda
       unset: Utilice "set?" para consultar si un campo concreto está establecido, y añada "not" para encontrar lo contrario.
       without_tag: Utilice "!=" para encontrar modelos sin una etiqueta específica
+    sort_menu:
+      name: Ordenar por nombre
+      recent: Ordenar por tiempo
+      sort-by:
+      updated:
   concerns:
     linkable:
       sync:

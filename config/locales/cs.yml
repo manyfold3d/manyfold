@@ -332,10 +332,6 @@ cs:
       settings: Nastavení webu
       social:
       upload: Nahrát
-    order_buttons:
-      created: Řazení podle času
-      sort-by:
-      title: Seřadit podle jména
     search_error:
     tag_list:
       unrelated_tag_count:
@@ -410,6 +406,11 @@ cs:
       title:
       unset:
       without_tag:
+    sort_menu:
+      name: Seřadit podle jména
+      recent: Řazení podle času
+      sort-by:
+      updated:
   concerns:
     linkable:
       sync:
