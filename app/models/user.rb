@@ -53,6 +53,8 @@ class User < ApplicationRecord
   attribute :file_list_settings, :json
   attribute :tour_state, :json
 
+  enum :sort_order, {name: 0, recent: 1, updated: 2}, prefix: :sort_by, default: :name, validate: true
+
   has_many :access_grants, # rubocop:disable Rails/InverseOf
     class_name: "Doorkeeper::AccessGrant",
     foreign_key: :resource_owner_id,
