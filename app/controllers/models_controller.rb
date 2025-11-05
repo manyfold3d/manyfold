@@ -154,11 +154,9 @@ class ModelsController < ApplicationController
     authorize Model
     @models = @filter.models(policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope)).includes(:collection, :creator)
     generate_available_tag_list
-    if helpers.pagination_settings["models"]
-      page = params[:page] || 1
-      # Double the normal page size for bulk editing
-      @models = @models.page(page).per(helpers.pagination_settings["per_page"] * 2)
-    end
+    page = params[:page] || 1
+    # Double the normal page size for bulk editing
+    @models = @models.page(page).per(helpers.pagination_settings["per_page"] * 2)
     set_indexable @models
     # Apply tag filters in-place
     @filter_in_place = true

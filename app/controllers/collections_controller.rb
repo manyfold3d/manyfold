@@ -26,10 +26,8 @@ class CollectionsController < ApplicationController
     # Ordering
     @collections = apply_sort_order(@collections)
 
-    if helpers.pagination_settings["collections"]
-      page = params[:page] || 1
-      @collections = @collections.page(page).per(helpers.pagination_settings["per_page"])
-    end
+    page = params[:page] || 1
+    @collections = @collections.page(page).per(helpers.pagination_settings["per_page"])
     # Eager load
     @collections = @collections.includes :collections, :collection, :links
     # Apply tag filters in-place

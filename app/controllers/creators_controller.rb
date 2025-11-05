@@ -21,10 +21,8 @@ class CreatorsController < ApplicationController
     # Ordering
     @creators = apply_sort_order(@creators)
 
-    if helpers.pagination_settings["creators"]
-      page = params[:page] || 1
-      @creators = @creators.page(page).per(helpers.pagination_settings["per_page"])
-    end
+    page = params[:page] || 1
+    @creators = @creators.page(page).per(helpers.pagination_settings["per_page"])
     # Eager load data
     @creators = @creators.includes(:links, :collections)
     # Apply tag filters in-place
