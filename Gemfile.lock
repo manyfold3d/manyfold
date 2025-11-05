@@ -128,8 +128,8 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    acts-as-taggable-on (12.0.0)
-      activerecord (>= 7.1, < 8.1)
+    acts-as-taggable-on (13.0.0)
+      activerecord (>= 7.1, < 8.2)
       zeitwerk (>= 2.4, < 3.0)
     acts_as_favoritor (6.0.2)
       activerecord (>= 5.0)
@@ -870,7 +870,7 @@ GEM
       unicode-display_width (>= 1.1.1, < 4)
     text (1.3.1)
     thor (1.4.0)
-    timeout (0.4.3)
+    timeout (0.4.4)
     to_regexp (0.2.1)
     translation (1.41)
       gettext (~> 3.2, >= 3.2.5, <= 3.4.9)
@@ -892,7 +892,7 @@ GEM
       unicode-emoji (~> 4.1)
     unicode-emoji (4.1.0)
     uniform_notifier (1.18.0)
-    uri (1.0.4)
+    uri (1.1.1)
     useragent (0.16.11)
     validate_url (1.0.15)
       activemodel (>= 3.0.0)
@@ -938,7 +938,7 @@ DEPENDENCIES
   activejob-uniqueness (~> 0.4)
   activerecord-enhancedsqlite3-adapter (~> 0.8)
   activerecord-nulldb-adapter (~> 1.1)
-  acts-as-taggable-on (~> 12.0)
+  acts-as-taggable-on (~> 13.0)
   acts_as_favoritor (~> 6.0)
   altcha-rails (~> 0.0.6)
   arel_extensions (~> 2.3)
@@ -1072,7 +1072,7 @@ CHECKSUMS
   activerecord-nulldb-adapter (1.1.1) sha256=034c91106183b954b072fba14c2786adf1a2b9e852ce04f85f823afaf03e9820
   activestorage (8.0.2.1) sha256=43bb3d9e115471e201e6a66813810c1d15b607a321f29d62efdf9d90ffaf76f8
   activesupport (8.0.2.1) sha256=0405a76fd1ca989975d9ae00d46a4d3979bdf3817482d846b63affa84bd561c6
-  acts-as-taggable-on (12.0.0) sha256=d14c15a1602cef8997187336cd7eb54a3f97ddebbef61601f83eb1ec51260417
+  acts-as-taggable-on (13.0.0) sha256=dca776c6ddebc458d175b57554ad692488e283f27047117e01ed871f1cba6135
   acts_as_favoritor (6.0.2) sha256=8aa14accb36232d350e9e11153ffbfae4d956917d0c8c9d86e3e405b3025f93e
   addressable (2.8.7) sha256=462986537cf3735ab5f3c0f557f14155d778f4b43ea4f485a9deb9c8f7c58232
   aes_key_wrap (1.1.0) sha256=b935f4756b37375895db45669e79dfcdc0f7901e12d4e08974d5540c8e0776a5
@@ -1370,7 +1370,7 @@ CHECKSUMS
   terminal-table (4.0.0) sha256=f504793203f8251b2ea7c7068333053f0beeea26093ec9962e62ea79f94301d2
   text (1.3.1) sha256=2fbbbc82c1ce79c4195b13018a87cbb00d762bda39241bb3cdc32792759dd3f4
   thor (1.4.0) sha256=8763e822ccb0f1d7bee88cde131b19a65606657b847cc7b7b4b82e772bcd8a3d
-  timeout (0.4.3) sha256=9509f079b2b55fe4236d79633bd75e34c1c1e7e3fb4b56cb5fda61f80a0fe30e
+  timeout (0.4.4) sha256=f0f6f970104b82427cd990680f539b6bbb8b1e55efa913a55c6492935e4e0edb
   to_regexp (0.2.1) sha256=3b458ccd12e850816ca54b38fc592422a9bf412bb2d604ba23d4506ca15beae5
   translation (1.41) sha256=8a6e66fb158b7b9fdf53920db1ea587f2e00c2f705cfb0f18a8e714f6dc19f01
   treetop (1.6.14) sha256=ba31d1911ce53dbc68208b9e6b421d48d16bfc99551e5efb5bc71bbc8fc7aed4
@@ -1383,7 +1383,7 @@ CHECKSUMS
   unicode-display_width (3.2.0) sha256=0cdd96b5681a5949cdbc2c55e7b420facae74c4aaf9a9815eee1087cb1853c42
   unicode-emoji (4.1.0) sha256=4997d2d5df1ed4252f4830a9b6e86f932e2013fbff2182a9ce9ccabda4f325a5
   uniform_notifier (1.18.0) sha256=4787785556f66f6418486da0f1d78b3239aaff98e2e7938fb05e2062b0ffce9d
-  uri (1.0.4) sha256=34485d137c079f8753a0ca1d883841a7ba2e5fae556e3c30c2aab0dde616344b
+  uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
   useragent (0.16.11) sha256=700e6413ad4bb954bb63547fa098dddf7b0ebe75b40cc6f93b8d54255b173844
   validate_url (1.0.15) sha256=72fe164c0713d63a9970bd6700bea948babbfbdcec392f2342b6704042f57451
   vcr (6.3.1) sha256=37b56e157e720446a3f4d2d39919cabef8cb7b6c45936acffd2ef8229fec03ed
