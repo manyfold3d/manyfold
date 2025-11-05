@@ -396,9 +396,10 @@
             "in": "query",
             "enum": [
               "name",
-              "recent"
+              "recent",
+              "updated"
             ],
-            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
+            "description": "Specify order of results; either by name, creation time, or updated time:\n * `name` \n * `recent` \n * `updated` \n ",
             "example": "name",
             "required": false,
             "schema": {
@@ -708,9 +709,10 @@
             "in": "query",
             "enum": [
               "name",
-              "recent"
+              "recent",
+              "updated"
             ],
-            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
+            "description": "Specify order of results; either by name, creation time, or updated time:\n * `name` \n * `recent` \n * `updated` \n ",
             "example": "name",
             "required": false,
             "schema": {
@@ -1198,9 +1200,10 @@
             "in": "query",
             "enum": [
               "name",
-              "recent"
+              "recent",
+              "updated"
             ],
-            "description": "Specify order of results; either by name or creation time:\n * `name` \n * `recent` \n ",
+            "description": "Specify order of results; either by name, creation time, or updated time:\n * `name` \n * `recent` \n * `updated` \n ",
             "example": "name",
             "required": false,
             "schema": {
