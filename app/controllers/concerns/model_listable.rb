@@ -4,18 +4,14 @@ module ModelListable
   included do
     include TagListable
     include Filterable
+    include Sortable
   end
 
   private
 
   def prepare_model_list
     # Ordering
-    @models = case session["order"]
-    when "recent"
-      @models.order(created_at: :desc)
-    else
-      @models.order(name_lower: :asc)
-    end
+    @models = apply_sort_order(@models)
 
     @tags, @unrelated_tag_count = generate_tag_list(@models, @filter.tags)
     @tags, @kv_tags = split_key_value_tags(@tags)

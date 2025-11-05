@@ -19,12 +19,7 @@ class CreatorsController < ApplicationController
     @unrelated_tag_count = nil unless @filter.any?
 
     # Ordering
-    @creators = case session["order"]
-    when "recent"
-      @creators.order(created_at: :desc)
-    else
-      @creators.order(name_lower: :asc)
-    end
+    @creators = apply_sort_order(@creators)
 
     if helpers.pagination_settings["creators"]
       page = params[:page] || 1

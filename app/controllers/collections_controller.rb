@@ -4,6 +4,7 @@ class CollectionsController < ApplicationController
   include Permittable
   include ModelListable
   include LinkableController
+  include Sortable
 
   before_action :get_collection, except: [:index, :new, :create]
   before_action :get_parent_collections, except: [:index, :create]
@@ -23,12 +24,7 @@ class CollectionsController < ApplicationController
     @unrelated_tag_count = nil unless @filter.any?
 
     # Ordering
-    @collections = case session["order"]
-    when "recent"
-      @collections.order(created_at: :desc)
-    else
-      @collections.order(name_lower: :asc)
-    end
+    @collections = apply_sort_order(@collections)
 
     if helpers.pagination_settings["collections"]
       page = params[:page] || 1
