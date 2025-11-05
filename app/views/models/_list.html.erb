@@ -15,16 +15,12 @@
         <div class="float-end mb-3">
           <%= SortMenu(filter: @filter) %>
         </div>
-        <% if pagination_settings["models"] %>
-          <%= paginate @models %>
-        <% end %>
+        <%= paginate @models %>
       </div>
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
         <%= render_component_collection Components::ModelCard, :model, @models %>
       </div>
-      <% if pagination_settings["models"] %>
-        <%= paginate @models %>
-      <% end %>
+      <%= paginate @models %>
       <% if @search %>
         <div class="alert alert-info">
           <%= Icon icon: "search", label: "" %>

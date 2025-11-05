@@ -122,14 +122,7 @@ pl:
         username:
           help:
       pagination_settings:
-        collections:
-          label: Paginuj kolekcję
-        creators:
-          label: Paginuj twórców
-        description: Pokazuj jedynie określoną liczbę elementów na raz na stronie, a nie wszytko na raz. Może to przyspieszyć ładowanie stron.
         heading: Paginacja
-        models:
-          label: Paginuj modele
         per_page:
           label: Liczba elementów na stronę
       problem_settings:

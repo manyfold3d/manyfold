@@ -122,14 +122,7 @@ ja:
         username:
           help:
       pagination_settings:
-        collections:
-          label: コレクションをページ分割
-        creators:
-          label: クリエイターをページ分割
-        description: リストページでは、一度にすべてを表示するのではなく、一度に一定のアイテム数だけを表示します。これにより、ロード時間を短縮することができます。
         heading: ページ分割
-        models:
-          label: モデルをページ分割
         per_page:
           label: ページごとの項目
       problem_settings:

@@ -122,14 +122,7 @@ es:
         username:
           help: Un nombre de usuario corto para tu cuenta personal; si más adelante creas un perfil de creador para publicar tus modelos, necesitará un nombre diferente.
       pagination_settings:
-        collections:
-          label: Paginar colecciones
-        creators:
-          label: Paginar creadores
-        description: Mostrar sólo un cierto número de elementos a la vez en las páginas de lista, en lugar de todo a la vez. Esto puede acelerar la carga.
         heading: Paginación
-        models:
-          label: Paginar modelos
         per_page:
           label: Artículos por página
       problem_settings:

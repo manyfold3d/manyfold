@@ -122,14 +122,7 @@ pt:
         username:
           help:
       pagination_settings:
-        collections:
-          label:
-        creators:
-          label:
-        description:
         heading:
-        models:
-          label:
         per_page:
           label:
       problem_settings:

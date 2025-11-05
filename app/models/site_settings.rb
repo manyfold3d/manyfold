@@ -143,9 +143,6 @@ class SiteSettings < RailsSettings::Base
     )
 
     PAGINATION = ActiveSupport::HashWithIndifferentAccess.new(
-      models: true,
-      creators: true,
-      collections: true,
       per_page: 12
     )
 

@@ -122,14 +122,7 @@ fr:
         username:
           help:
       pagination_settings:
-        collections:
-          label: Paginer les collections
-        creators:
-          label: Paginer les créateurs
-        description: N'affichez qu'un certain nombre d'éléments à la fois dans les pages de liste, plutôt que tout en même temps. Cela peut accélérer le chargement.
         heading: Pagination
-        models:
-          label: Paginer les modèles
         per_page:
           label: Articles par page
       problem_settings:
