@@ -124,10 +124,10 @@
           <%- if SiteSettings.multiuser_enabled? %>
             <li class="nav-item dropdown">
               <%= content_tag :button, id: "nav-link-preferences", title: t(".account"), class: "btn btn-secondary btn-sm mt-1",
-                    data: { bs_toggle: "dropdown" }.merge(
+                    data: {bs_toggle: "dropdown"}.merge(
                       tour_attributes(id: "nav-link-preferences", title: t(".account"), description: t("tour.navbar.account.description"))
                     ),
-                    aria: { expanded: false } do %>
+                    aria: {expanded: false} do %>
                 <%= Icon(icon: "person") %>
               <% end %>
               <ul class="dropdown-menu dropdown-menu-end">
