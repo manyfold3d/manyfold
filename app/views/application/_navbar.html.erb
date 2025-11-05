@@ -123,13 +123,13 @@
         <%- if current_user %>
           <%- if SiteSettings.multiuser_enabled? %>
             <li class="nav-item dropdown">
-              <%= nav_link "person", t(".account"), edit_user_registration_path, nofollow: true, text_style: "d-md-none", id: "nav-link-preferences",
-                    data: {
-                      bs_toggle: "dropdown"
-                    }.merge(tour_attributes(id: "nav-link-preferences", title: t(".account"), description: t("tour.navbar.account.description"))),
-                    aria: {
-                      expanded: false
-                    } %>
+              <%= content_tag :button, id: "nav-link-preferences", title: t(".account"), class: "btn btn-secondary btn-sm mt-1",
+                    data: {bs_toggle: "dropdown"}.merge(
+                      tour_attributes(id: "nav-link-preferences", title: t(".account"), description: t("tour.navbar.account.description"))
+                    ),
+                    aria: {expanded: false} do %>
+                <%= Icon(icon: "person") %>
+              <% end %>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li><%= DropdownItem label: t("devise.registrations.edit.title"), path: edit_user_registration_path %></li>
                 <li><hr class="dropdown-divider"></li>
@@ -142,6 +142,8 @@
                   <li class="dropdown-header"><%= t(".social") %></li>
                   <li><%= DropdownItem label: t("follows.index.title"), path: follows_path %></li>
                 <%- end %>
+                <li><hr class="dropdown-divider"></li>
+                <li><%= DropdownItem icon: "box-arrow-right", label: t(".log_out"), path: destroy_user_session_path, method: :delete %></li>
               </ul>
             </li>
           <% else %>
@@ -151,13 +153,9 @@
             </li>
           <% end %>
         <% end %>
-        <%- if SiteSettings.multiuser_enabled? %>
+        <%- if SiteSettings.multiuser_enabled? && current_user.nil? %>
           <li class="nav-item">
-            <%- if current_user %>
-              <%= nav_link "box-arrow-right", t(".log_out"), destroy_user_session_path, method: :delete, title: translate(".log_out"), text_style: "d-md-none" %>
-            <% else %>
-              <%= nav_link "box-arrow-in-right", t(".log_in"), new_user_session_path, title: translate(".log_in"), nofollow: true, style: "btn btn-secondary" %>
-            <% end %>
+            <%= nav_link "box-arrow-in-right", t(".log_in"), new_user_session_path, title: translate(".log_in"), nofollow: true, style: "btn btn-secondary" %>
           </li>
         <%- end %>
       </ul>
