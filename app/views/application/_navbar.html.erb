@@ -123,13 +123,13 @@
         <%- if current_user %>
           <%- if SiteSettings.multiuser_enabled? %>
             <li class="nav-item dropdown">
-              <%= nav_link "person", t(".account"), edit_user_registration_path, nofollow: true, text_style: "d-md-none", id: "nav-link-preferences",
-                    data: {
-                      bs_toggle: "dropdown"
-                    }.merge(tour_attributes(id: "nav-link-preferences", title: t(".account"), description: t("tour.navbar.account.description"))),
-                    aria: {
-                      expanded: false
-                    } %>
+              <%= content_tag :button, id: "nav-link-preferences", title: t(".account"), class: "btn btn-secondary btn-sm mt-1",
+                    data: { bs_toggle: "dropdown" }.merge(
+                      tour_attributes(id: "nav-link-preferences", title: t(".account"), description: t("tour.navbar.account.description"))
+                    ),
+                    aria: { expanded: false } do %>
+                <%= Icon(icon: "person") %>
+              <% end %>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li><%= DropdownItem label: t("devise.registrations.edit.title"), path: edit_user_registration_path %></li>
                 <li><hr class="dropdown-divider"></li>
