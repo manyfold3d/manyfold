@@ -100,6 +100,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         :current_password,
         :interface_language,
         :sensitive_content_handling,
+        :sort_order,
         pagination_settings: [
           :per_page
         ],

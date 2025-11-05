@@ -37,11 +37,13 @@ RSpec.configure do |config|
     # Setup
     FileUtils.rm(Rails.root.glob(database + "*"), force: true)
     ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: database)
+    ActiveRecord::Base.descendants.each(&:reset_column_information)
     DataMigrate::DataMigrator.create_data_schema_table
     # Run
     example.run
     # Teardown
     ActiveRecord::Base.connection.close
     ActiveRecord::Base.establish_connection(:test)
+    ActiveRecord::Base.descendants.each(&:reset_column_information)
   end
 end

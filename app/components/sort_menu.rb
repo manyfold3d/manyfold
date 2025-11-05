@@ -21,7 +21,11 @@ class Components::SortMenu < Components::Base
   end
 
   def ordering_by?(order)
-    session["order"] == order.to_s
+    if current_user
+      current_user.sort_order == order
+    else
+      session["order"] == order
+    end
   end
 
   def ordered_url(order, direction)
