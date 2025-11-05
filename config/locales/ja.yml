@@ -333,9 +333,9 @@ ja:
       social:
       upload: アップロード
     order_buttons:
-      sort:
-        name: 名前順
-        time: 時間順
+      created: 時間順
+      sort-by:
+      title: 名前順
     search_error:
     tag_list:
       unrelated_tag_count:

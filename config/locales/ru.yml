@@ -333,9 +333,9 @@ ru:
       social:
       upload:
     order_buttons:
-      sort:
-        name: Сортировать по имени
-        time: Сортировать по времени
+      created: Сортировать по времени
+      sort-by:
+      title: Сортировать по имени
     search_error:
     tag_list:
       unrelated_tag_count:

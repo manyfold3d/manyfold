@@ -333,9 +333,9 @@ cs:
       social:
       upload: Nahrát
     order_buttons:
-      sort:
-        name: Seřadit podle jména
-        time: Řazení podle času
+      created: Řazení podle času
+      sort-by:
+      title: Seřadit podle jména
     search_error:
     tag_list:
       unrelated_tag_count:

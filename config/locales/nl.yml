@@ -333,9 +333,9 @@ nl:
       social:
       upload: Uploaden
     order_buttons:
-      sort:
-        name: Sorteren op Naam
-        time: Sorteren op Tijd
+      created: Sorteren op Tijd
+      sort-by:
+      title: Sorteren op Naam
     search_error:
     tag_list:
       unrelated_tag_count:

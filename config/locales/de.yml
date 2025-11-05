@@ -333,9 +333,9 @@ de:
       social:
       upload: Modelle hochladen
     order_buttons:
-      sort:
-        name: Nach Namen sortieren
-        time: Nach Zeit sortieren
+      created: Nach Zeit sortieren
+      sort-by:
+      title: Nach Namen sortieren
     search_error: Fehler in der Such-Syntax. Bitte prüfen und erneut versuchen!
     tag_list:
       unrelated_tag_count:

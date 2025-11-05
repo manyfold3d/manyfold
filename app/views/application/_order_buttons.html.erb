@@ -1,4 +1,12 @@
 <div class="float-end mb-3">
-  <%= link_to safe_join([Icon(icon: "arrow-up"), "A-Z"]), {order: "name"}.merge(@filter&.to_params), class: "btn #{(session["order"] == "name") ? "btn-primary" : "btn-secondary"} btn-sm", title: t(".sort.name") %>
-  <%= link_to safe_join([Icon(icon: "arrow-down"), Icon(icon: "calendar-date")]), {order: "recent"}.merge(@filter&.to_params), class: "btn #{(session["order"] == "recent") ? "btn-primary" : "btn-secondary"} btn-sm", title: t(".sort.time") %>
+  <div class="btn-group">
+    <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn btn-sm dropdown-toggle">
+      <%= Icon(icon: "sort-down") %>
+      <%= t ".sort-by" %>
+    </button>
+    <ul class="dropdown-menu">
+      <%= DropdownItem icon: "sort-alpha-down", label: t(".title"), path: url_for({order: "name", direction: "asc"}.merge(@filter&.to_params)), active: session["order"] == "name" %>
+      <%= DropdownItem icon: "sort-numeric-down-alt", label: t(".created"), path: url_for({order: "recent", direction: "desc"}.merge(@filter&.to_params)), active: session["order"] == "recent" %>
+    </ul>
+  </div>
 </div>
