@@ -333,9 +333,9 @@ pt:
       social:
       upload:
     order_buttons:
-      sort:
-        name:
-        time:
+      created:
+      sort-by:
+      title:
     search_error:
     tag_list:
       unrelated_tag_count:

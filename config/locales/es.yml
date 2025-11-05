@@ -333,9 +333,9 @@ es:
       social:
       upload: Cargar
     order_buttons:
-      sort:
-        name: Ordenar por nombre
-        time: Ordenar por tiempo
+      created: Ordenar por tiempo
+      sort-by:
+      title: Ordenar por nombre
     search_error: Error en la sintaxis de búsqueda. Por favor, compruébelo e inténtelo de nuevo
     tag_list:
       unrelated_tag_count:

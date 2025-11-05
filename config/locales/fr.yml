@@ -333,9 +333,9 @@ fr:
       social:
       upload: Télécharger
     order_buttons:
-      sort:
-        name: Trier par nom
-        time: Trier par heure
+      created: Trier par heure
+      sort-by:
+      title: Trier par nom
     search_error:
     tag_list:
       unrelated_tag_count:

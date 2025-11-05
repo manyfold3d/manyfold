@@ -333,9 +333,9 @@ zh-CN:
       social:
       upload: 上传模型
     order_buttons:
-      sort:
-        name: 按名称排序
-        time: 按时间排序
+      created: 按时间排序
+      sort-by:
+      title: 按名称排序
     search_error: 搜索语法错误。请检查并重试！
     tag_list:
       unrelated_tag_count:

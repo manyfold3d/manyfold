@@ -333,9 +333,9 @@ en:
       social: Social
       upload: Upload models
     order_buttons:
-      sort:
-        name: Sort by name (alphabetical order)
-        time: Sort by date added (newest first)
+      created: Newest
+      sort-by: Sort by
+      title: Title
     search_error: Error in search syntax. Please check and try again!
     tag_list:
       unrelated_tag_count:

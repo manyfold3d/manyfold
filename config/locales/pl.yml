@@ -333,9 +333,9 @@ pl:
       social:
       upload: Prześlij modele
     order_buttons:
-      sort:
-        name: Sortuj według nazwy
-        time: Sortuj według czasu
+      created: Sortuj według czasu
+      sort-by:
+      title: Sortuj według nazwy
     search_error:
     tag_list:
       unrelated_tag_count:
