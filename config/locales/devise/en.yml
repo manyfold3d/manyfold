@@ -82,7 +82,7 @@ en:
         update: Update
         we_need_your_current_password_to_confirm_your_changes: we need your current password to confirm your changes
       file_list_settings:
-        heading: File Lists
+        heading: Model pages
         hide_presupported_versions:
           label: Combine linked unsupported and presupported files
         summary: Control how model file lists are displayed
