@@ -122,14 +122,7 @@ zh-CN:
         username:
           help: 您个人账户的简短用户名；如果您以后创建了用于发布模型的配置文件，则需要使用不同的账户名。
       pagination_settings:
-        collections:
-          label: 合集列表分页
-        creators:
-          label: 创建者列表分页
-        description: 在列表页面中一次只显示一定数量的项目，而不是同时显示所有项目。这样可以加快加载速度。
         heading: 分页
-        models:
-          label: 模型列表分页
         per_page:
           label: 每页显示项
       problem_settings:

@@ -122,14 +122,7 @@ cs:
         username:
           help:
       pagination_settings:
-        collections:
-          label: Stránkovat kolekce
-        creators:
-          label: Stránkovat autory
-        description: Na stránkách se seznamem zobrazit pouze určitý počet položek najednou, nikoli vše najednou. To může urychlit načítání.
         heading: Stránkování
-        models:
-          label: Stránkovat modelů
         per_page:
           label: Položky na stránku
       problem_settings:

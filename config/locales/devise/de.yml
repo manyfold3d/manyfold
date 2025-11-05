@@ -122,14 +122,7 @@ de:
         username:
           help: Einen kurzen Benutzernamen für dein persönliches Konto; wenn du später ein Profil für die Veröffentlichung deiner Modelle erstellst, brauchst du einen anderen Kontonamen.
       pagination_settings:
-        collections:
-          label: Kollektionen auf Seiten verteilen
-        creators:
-          label: Ersteller auf Seiten verteilen
-        description: Zeige auf der Listenseiten immer nur eine bestimmte Anzahl von Elementen an, anstatt alles auf einmal. Dies kann das Laden der Seiten beschleunigen.
         heading: Seitenaufteilung
-        models:
-          label: Modelle auf Seiten verteilen
         per_page:
           label: Elemente Pro seite
       problem_settings:

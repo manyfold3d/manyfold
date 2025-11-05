@@ -122,14 +122,7 @@ en:
         username:
           help: A short username for your personal account; if later you make a creator profile for publishing your models, it will need a different account name.
       pagination_settings:
-        collections:
-          label: Paginate collections
-        creators:
-          label: Paginate creators
-        description: Show only a certain number of items at a time in list pages, rather than everything at once. This can make things quicker to load.
-        heading: Pagination
-        models:
-          label: Paginate models
+        heading: List pages
         per_page:
           label: Items per page
       problem_settings:

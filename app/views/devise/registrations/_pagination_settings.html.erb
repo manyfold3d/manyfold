@@ -1,28 +1,7 @@
 <%= form.fields_for :pagination_settings do |pagination_settings_form| %>
   <div class="card mb-2">
     <h3 class="card-header"><%= t(".heading") %></h3>
-    <div class="card-body lead">
-      <%= t(".description") %>
-    </div>
     <div class="card-body tabular-form">
-      <div>
-        <%= pagination_settings_form.label :models, t(".models.label") %>
-      </div>
-      <div class="form-check form-switch">
-        <%= pagination_settings_form.check_box :models, checked: pagination_settings["models"], class: "form-check-input" %>
-      </div>
-      <div>
-        <%= pagination_settings_form.label :creators, t(".creators.label") %>
-      </div>
-      <div class="form-check form-switch">
-        <%= pagination_settings_form.check_box :creators, checked: pagination_settings["creators"], class: "form-check-input" %>
-      </div>
-      <div>
-        <%= pagination_settings_form.label :collections, t(".collections.label") %>
-      </div>
-      <div class="form-check form-switch">
-        <%= pagination_settings_form.check_box :collections, checked: pagination_settings["collections"], class: "form-check-input" %>
-      </div>
       <div>
         <%= pagination_settings_form.label :per_page, t(".per_page.label"), class: "col-form-label" %>
       </div>

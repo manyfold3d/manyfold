@@ -122,14 +122,7 @@ nl:
         username:
           help:
       pagination_settings:
-        collections:
-          label: Pagineer collecties
-        creators:
-          label: Pagineer makers
-        description: Toon slechts een bepaald aantal items tegelijk in lijstpagina's, in plaats van alles in één keer. Dit kan het laden versnellen.
         heading: Paginering
-        models:
-          label: Pagineer modellen
         per_page:
           label: Items per pagina
       problem_settings:
