@@ -1,5 +1,5 @@
 class Components::SelectInputRow < Components::InputRow
-  def initialize(form:, attribute:, label:, select_options:, help:, options: {})
+  def initialize(form:, attribute:, label:, select_options:, help: nil, options: {})
     @select_options = select_options
     super(form: form, attribute: attribute, label: label, help: help, options: options)
   end
