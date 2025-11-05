@@ -332,10 +332,6 @@ en:
       settings: Site Settings
       social: Social
       upload: Upload models
-    order_buttons:
-      created: Newest
-      sort-by: Sort by
-      title: Title
     search_error: Error in search syntax. Please check and try again!
     tag_list:
       unrelated_tag_count:
@@ -410,6 +406,11 @@ en:
       title: Search Syntax
       unset: Use "set?" to query if a particular field is set, and add "not" to find the opposite.
       without_tag: Use "!=" to find models without a certain tag
+    sort_menu:
+      name: Title
+      recent: Newest
+      sort-by: Sort by
+      updated: Updated
   concerns:
     linkable:
       sync:

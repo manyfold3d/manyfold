@@ -2,7 +2,9 @@
   <div class="skip-link-container">
     <div class="clearfix">
       <%= skip_link "sidebar", t(".skip_collections") %>
-      <%= render "order_buttons" %>
+      <div class="float-end mb-3">
+        <%= SortMenu(filter: @filter) %>
+      </div>
       <% if pagination_settings["collections"] %>
         <%= paginate @collections %>
       <% end %>

@@ -332,10 +332,6 @@ nl:
       settings: Site-instellingen
       social:
       upload: Uploaden
-    order_buttons:
-      created: Sorteren op Tijd
-      sort-by:
-      title: Sorteren op Naam
     search_error:
     tag_list:
       unrelated_tag_count:
@@ -410,6 +406,11 @@ nl:
       title:
       unset:
       without_tag:
+    sort_menu:
+      name: Sorteren op Naam
+      recent: Sorteren op Tijd
+      sort-by:
+      updated:
   concerns:
     linkable:
       sync:

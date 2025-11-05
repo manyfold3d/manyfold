@@ -332,10 +332,6 @@ ja:
       settings: サイト設定
       social:
       upload: アップロード
-    order_buttons:
-      created: 時間順
-      sort-by:
-      title: 名前順
     search_error:
     tag_list:
       unrelated_tag_count:
@@ -410,6 +406,11 @@ ja:
       title: 検索構文
       unset: 特定のフィールドがセットされているかどうかを調べるには 「set?」を使い、その反対を調べるには 「not」を加える。
       without_tag: 特定のタグがないモデルを見つけるには「！」
+    sort_menu:
+      name: 名前順
+      recent: 時間順
+      sort-by:
+      updated:
   concerns:
     linkable:
       sync:

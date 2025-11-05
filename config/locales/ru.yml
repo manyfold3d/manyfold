@@ -332,10 +332,6 @@ ru:
       settings:
       social:
       upload:
-    order_buttons:
-      created: Сортировать по времени
-      sort-by:
-      title: Сортировать по имени
     search_error:
     tag_list:
       unrelated_tag_count:
@@ -410,6 +406,11 @@ ru:
       title:
       unset:
       without_tag:
+    sort_menu:
+      name: Сортировать по имени
+      recent: Сортировать по времени
+      sort-by:
+      updated:
   concerns:
     linkable:
       sync:

@@ -332,10 +332,6 @@ zh-CN:
       settings: 网站设置
       social:
       upload: 上传模型
-    order_buttons:
-      created: 按时间排序
-      sort-by:
-      title: 按名称排序
     search_error: 搜索语法错误。请检查并重试！
     tag_list:
       unrelated_tag_count:
@@ -410,6 +406,11 @@ zh-CN:
       title: 搜索语法
       unset: 使用 "set?" 查询特定字段是否已设置，添加 "not" 则可查找相反字段。
       without_tag: 使用 "!=" 查找不带有特定 Tag 的模型
+    sort_menu:
+      name: 按名称排序
+      recent: 按时间排序
+      sort-by:
+      updated:
   concerns:
     linkable:
       sync:

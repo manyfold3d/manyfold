@@ -332,10 +332,6 @@ fr:
       settings: Paramètres
       social:
       upload: Télécharger
-    order_buttons:
-      created: Trier par heure
-      sort-by:
-      title: Trier par nom
     search_error:
     tag_list:
       unrelated_tag_count:
@@ -410,6 +406,11 @@ fr:
       title:
       unset:
       without_tag:
+    sort_menu:
+      name: Trier par nom
+      recent: Trier par heure
+      sort-by:
+      updated:
   concerns:
     linkable:
       sync:
