@@ -18,7 +18,7 @@ class Components::BaseButton < Components::Base
   end
 
   def view_template
-    helper(@href, method: @method, class: "btn btn-#{@variant}", nofollow: @nofollow, aria: {label: @aria_label || (@icon_only ? @label : nil)}, data: {confirm: @confirm}.merge(@data), target: @target) do
+    helper(@href, method: @method, class: "btn btn-#{@variant}", rel: (@nofollow ? "nofollow" : nil), aria: {label: @aria_label || (@icon_only ? @label : nil)}, data: {confirm: @confirm}.merge(@data), target: @target) do
       if @icon
         Icon(icon: @icon, label: @label)
         whitespace

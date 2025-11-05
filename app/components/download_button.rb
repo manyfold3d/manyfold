@@ -40,7 +40,7 @@ class Components::DownloadButton < Components::Base
     downloader = ArchiveDownloadService.new(model: @model, selection: selection || file_type)
     link_options = {
       class: html_class,
-      nofollow: true,
+      rel: "nofollow",
       download: (downloader.ready? ? "download" : nil)
     }
     if downloader.preparing?
