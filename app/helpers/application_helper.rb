@@ -192,7 +192,7 @@ module ApplicationHelper
       path,
       class: options[:style] || safe_join(["nav-link", (current_page?(path) ? "active" : "")], " "),
       method: options[:method],
-      nofollow: options[:nofollow],
+      rel: options[:nofollow] ? "nofollow" : nil,
       id: options[:id],
       data: options[:data],
       aria: {
