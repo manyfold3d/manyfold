@@ -7,6 +7,7 @@
     <ul class="dropdown-menu">
       <%= DropdownItem icon: "sort-alpha-down", label: t(".title"), path: url_for({order: "name", direction: "asc"}.merge(@filter&.to_params)), active: session["order"] == "name" %>
       <%= DropdownItem icon: "sort-numeric-down-alt", label: t(".created"), path: url_for({order: "recent", direction: "desc"}.merge(@filter&.to_params)), active: session["order"] == "recent" %>
+      <%= DropdownItem icon: "sort-numeric-down-alt", label: t(".updated"), path: url_for({order: "updated", direction: "desc"}.merge(@filter&.to_params)), active: session["order"] == "updated" %>
     </ul>
   </div>
 </div>

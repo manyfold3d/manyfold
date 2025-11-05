@@ -12,7 +12,7 @@ describe "Collections", :after_first_run, :multiuser do # rubocop:disable RSpec/
       tags "Collections"
       produces Mime[:manyfold_api_v0].to_s
       parameter name: :page, in: :query, type: :integer, example: 1, description: "Specify which page of results to retrieve.", required: false
-      parameter name: :order, in: :query, type: :string, enum: ["name", "recent"], description: "Specify order of results; either by name or creation time", example: "name", required: false
+      parameter name: :order, in: :query, type: :string, enum: ["name", "recent", "updated"], description: "Specify order of results; either by name, creation time, or updated time", example: "name", required: false
       security [client_credentials: ["public", "read"]]
 
       response "200", "Success" do
