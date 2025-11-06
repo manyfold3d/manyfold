@@ -12,7 +12,7 @@ es:
       submit: Actualizar modelos seleccionados
       title: Edición masiva de modelos
       update_all:
-        confirm:
+        confirm: "¿Está seguro de que desea aplicar estos cambios a todos los modelos %{count} que coincidan con los filtros actuales?"
         label: Actualizar los %{count} modelos
     bulk_update:
       success: Modelos actualizados correctamente.
@@ -86,8 +86,8 @@ es:
       merge_all: Fusionar todo
     problems_card:
       tour:
-        description:
-        title:
+        description: Esta tarjeta muestra los problemas detectados en este modelo. Puede cambiar la configuración de visibilidad de problemas en las preferencias de su cuenta.
+        title: Problemas
     scan:
       success: Escaneo de modelos iniciado
     show:
@@ -101,8 +101,8 @@ es:
       license: Licencia
       menu:
         tour:
-          description:
-          title:
+          description: Este menú contiene funciones adicionales como editar o borrar el modelo, o editar varios archivos a la vez.
+          title: Edición
       merge:
         heading: Fusionar
         warning: La fusión mueve todos los archivos de este modelo al destino y elimina este modelo. Los metadatos de los archivos se conservan, pero los metadatos del modelo se pierden

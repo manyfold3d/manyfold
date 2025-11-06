@@ -42,7 +42,7 @@ es:
         label: Espacio libre
       heading: Bibliotecas
       scan_changes:
-        confirm:
+        confirm: "¿Está seguro de que desea buscar archivos nuevos en esta biblioteca? Esto puede llevar mucho tiempo."
       settings: Ajustes
       show:
         help: Muestra u oculta las bibliotecas en la barra de navegación y en los formularios. La elección de biblioteca en los formularios de edición siempre se mostrará a los administradores.
