@@ -275,7 +275,7 @@ cs:
     demo_mode: Tato instance je v demo režimu. Nemůžete přidávat ani odebírat modely, ale můžete dělat vše ostatní.
     filters_card:
       missing_tags: Chybějící štítky
-      owner:
+      owner: Vlastník
       remove_collection_filter: Odstranit filtr kolekce
       remove_creator_filter: Odstranit filtr autora
       remove_library_filter: Odstranit filtr knihovny
@@ -330,7 +330,7 @@ cs:
       scanning: Kontrolování
       search: Hledat
       settings: Nastavení webu
-      social:
+      social: Social
       upload: Nahrát
     search_error:
     tag_list:
@@ -407,8 +407,8 @@ cs:
       unset:
       without_tag:
     sort_menu:
-      name: Seřadit podle jména
-      recent: Řazení podle času
+      name:
+      recent:
       sort-by:
       updated:
   concerns:
