@@ -87,7 +87,7 @@ ja:
     problems_card:
       tour:
         description:
-        title:
+        title: 問題点
     scan:
       success: モデルスキャン開始
     show:
