@@ -275,7 +275,7 @@ ru:
     demo_mode: Этот экземпляр находится в демонстрационном режиме. Вы не можете добавлять или удалять модели, но можете делать все остальное.
     filters_card:
       missing_tags: Отсутствующие теги
-      owner:
+      owner: Владелец
       remove_collection_filter: Удалить фильтр коллекции
       remove_creator_filter: Удалить фильтр автор
       remove_library_filter: Удалить фильтр библиотеки
@@ -407,8 +407,8 @@ ru:
       unset:
       without_tag:
     sort_menu:
-      name: Сортировать по имени
-      recent: Сортировать по времени
+      name:
+      recent:
       sort-by:
       updated:
   concerns:
