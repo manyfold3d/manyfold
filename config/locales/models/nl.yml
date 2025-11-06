@@ -87,7 +87,7 @@ nl:
     problems_card:
       tour:
         description:
-        title:
+        title: Problemen
     scan:
       success: Modelscan gestart
     show:

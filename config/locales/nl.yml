@@ -407,8 +407,8 @@ nl:
       unset:
       without_tag:
     sort_menu:
-      name: Sorteren op Naam
-      recent: Sorteren op Tijd
+      name:
+      recent:
       sort-by:
       updated:
   concerns:
