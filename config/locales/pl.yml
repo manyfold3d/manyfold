@@ -275,7 +275,7 @@ pl:
     demo_mode: Ta instancja jest w trybie demonstracyjnym. Nie możesz dodawać ani usuwać modeli, ale możesz robić wszystko inne.
     filters_card:
       missing_tags: Brakujące tagi
-      owner:
+      owner: Właściciel
       remove_collection_filter: Usuń filtr kolekcji
       remove_creator_filter: Usuń filtr twórcy
       remove_library_filter: Usuń filtr biblioteki
@@ -407,8 +407,8 @@ pl:
       unset:
       without_tag:
     sort_menu:
-      name: Sortuj według nazwy
-      recent: Sortuj według czasu
+      name:
+      recent:
       sort-by:
       updated:
   concerns:
