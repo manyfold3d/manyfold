@@ -22,12 +22,12 @@ fr:
         current:
         help:
         none:
-        remove:
+        remove: Supprimer l'avatar
       banner:
         current:
         help:
         none:
-        remove:
+        remove: Supprimer la bannière
       notes:
         help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       slug:

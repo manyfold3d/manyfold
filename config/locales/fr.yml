@@ -6,29 +6,29 @@ fr:
         ai_indexable:
         caption: Légende
         collection:
-        indexable:
+        indexable: Autoriser l'indexation de la recherche
         models: Modèles
         name: Nom
         notes: Notes
       creator:
         ai_indexable:
-        avatar:
-        banner:
+        avatar: Avatar
+        banner: Image de la bannière
         caption: Légende
-        indexable:
+        indexable: Autoriser l'indexation de la recherche
         name: Nom
         notes: Notes
         slug:
       doorkeeper/application:
-        access_token:
+        access_token: Jeton d'accès
         confidential: Confidential
-        created_at:
+        created_at: Créée
         name: Nom
-        owner:
+        owner: Propriétaire
         redirect_uri: L'URL de redirection
         scopes: Portées
         secret:
-        uid:
+        uid: ID du client
       federails/moderation/domain_block:
         created_at: Enregistré à
         domain: Domaine
@@ -40,7 +40,7 @@ fr:
       library:
         caption: Légende
         create_path_if_not_on_disk:
-        default:
+        default: Défaut
         icon: Icône
         name: Nom
         notes: Notes
@@ -117,15 +117,15 @@ fr:
         unconfirmed_email: Email non confirmé
         unlock_token: Clé de déverrouillage
         updated_at: Date de mise à jour
-        username:
+        username: Nom du compte
     errors:
       models:
         collection:
           attributes:
             collection:
-              private:
+              private: doit être publique
             creator:
-              private:
+              private: doit être publique
         doorkeeper/application:
           attributes:
             redirect_uri:
@@ -148,7 +148,7 @@ fr:
         model:
           attributes:
             creator:
-              private:
+              private: doit être publique
             library:
               nested: ne peut être modifié, le modèle contient d'autres modèles
             license:
@@ -275,7 +275,7 @@ fr:
     demo_mode: Cette instance est en mode démo. Vous ne pouvez pas ajouter ou supprimer des modèles, mais vous pouvez faire tout le reste.
     filters_card:
       missing_tags: Etiquette manquante
-      owner:
+      owner: Propriétaire
       remove_collection_filter: Supprimer la collection de filtres
       remove_creator_filter: Supprimer le filtre créateur
       remove_library_filter: Supprimer le filtre de bibliothèque
@@ -307,7 +307,7 @@ fr:
     navbar:
       account: Mes paramètres
       activity: Activité
-      add_models:
+      add_models: Ajouter du contenu
       check_existing:
         confirm:
         label: Vérifier les modèles existants
@@ -315,7 +315,7 @@ fr:
         confirm:
         label:
       home: Page d'accueil
-      import_url:
+      import_url: Importer l'URL
       log_in: Se connecter
       log_out: Se déconnecter
       moderator_settings:
@@ -330,7 +330,7 @@ fr:
       scanning: Scan en cours
       search: Recherche
       settings: Paramètres
-      social:
+      social: Social
       upload: Télécharger
     search_error:
     tag_list:
@@ -343,12 +343,12 @@ fr:
     title: Manyfold
   application_helper:
     ai_indexable_select_options:
-      always_no:
-      always_yes:
+      always_no: Toujours non
+      always_yes: Toujours oui
       inherit:
     indexable_select_options:
-      always_no:
-      always_yes:
+      always_no: Toujours non
+      always_yes: Toujours oui
       inherit:
       'no': Non
       'yes': Oui
@@ -358,14 +358,14 @@ fr:
     altcha_widget:
       help:
     copy_button:
-      copy:
+      copy: Copier dans le presse-papiers
     display_user_quota:
       request_increase:
     download_button:
       download:
-        missing:
+        missing: Demander le téléchargement
         preparing:
-        ready:
+        ready: Prêt à télécharger
       file_type: Fichiers %{type} uniquement
       label: Télécharger tout
       menu_header: Options de téléchargement
@@ -376,9 +376,9 @@ fr:
       pending: Demandé
       unfollow: ne plus suivre %{name}
     link_list:
-      sync:
+      sync: Synchroniser
     modal:
-      close:
+      close: Fermer
     model_card:
       delete_button:
         label: Supprimer le modèle %{name}
@@ -396,7 +396,7 @@ fr:
       filename:
       intro:
       more_details_html:
-      negation:
+      negation: Pour exclure des termes, utilisez "pas", " !" ou "-".
       parentheses:
       path:
       quotes:
@@ -407,8 +407,8 @@ fr:
       unset:
       without_tag:
     sort_menu:
-      name: Trier par nom
-      recent: Trier par heure
+      name:
+      recent:
       sort-by:
       updated:
   concerns:
@@ -554,17 +554,17 @@ fr:
         help:
       scopes:
         label: Portées
-      submit:
+      submit: Sauvegarder l'application
     index:
       description:
-      new:
+      new: Nouvelle application
       title:
     new:
-      title:
+      title: Nouvelle application
     show:
       destroy: Supprimer
       edit: Modifier
-      title:
+      title: Détails de l'application
     update:
       failure:
       success:
@@ -583,17 +583,17 @@ fr:
     providers:
       edit:
         approval_help:
-        approve:
+        approve: Approuver
         backfill_requests:
         capability:
         category: Catégorie
         contact_details:
-        created:
-        data_sharing:
+        created: Créée
+        data_sharing: Partage des données
         deny: Refuser
-        disable:
+        disable: Désactiver
         email: Email
-        enable:
+        enable: Activer
         event_subscriptions:
         fediverse_account: Adresse Fediverse
         fingerprint:
@@ -602,8 +602,8 @@ fr:
         privacy_policy:
         registration:
         sign_in: Se connecter
-        subscription_type:
-        versions:
+        subscription_type: Type d'abonnement
+        versions: Versions
       index:
         add_html:
         description_html:
@@ -611,8 +611,8 @@ fr:
         provider_list_title:
         registered_at:
         search_3dprint_social_html:
-        status:
-        url:
+        status: Statut
+        url: URL
   follows:
     actor_table:
       actions: Actions
@@ -627,7 +627,7 @@ fr:
       title:
     new:
       no_results: Désolé, rien n'a été trouvé pour "%{query}". S'agit-il d'un compte ou d'une URL ActivityPub valide ?
-      recommended:
+      recommended: Recommandations
       results: Résultats de la recherche
       title: Suivre le Fediverse
     remote_follow:
@@ -657,10 +657,10 @@ fr:
     menu: Menu
     new: Nouveau
     private: Privé
-    public:
+    public: Visibilité publique
     report: Rapporter %{type}
     save: Sauvegarder
-    shared:
+    shared: Partagé avec les utilisateurs locaux
     view: Afficher
   home:
     activity:
@@ -668,9 +668,9 @@ fr:
       updated:
     browsing:
       content:
-      manual_link:
+      manual_link: Guide de l'utilisateur
       more_access:
-      title:
+      title: Navigation
     federation:
       account_handle:
       content_html:
@@ -703,7 +703,7 @@ fr:
       title:
     uploading:
       quota:
-      title:
+      title: Téléchargement
     welcome:
       lead:
       title:
@@ -713,8 +713,8 @@ fr:
       success:
     new:
       description:
-      heading:
-      import:
+      heading: Importer à partir d'un lien
+      import: Importer ce lien
       import_capabilities:
       import_type_html:
       integration_settings:
@@ -773,7 +773,7 @@ fr:
       actions_heading: Actions
     settings:
       appearance:
-      downloads:
+      downloads: Téléchargements
       integrations_heading:
       libraries: Bibliothèques
       moderation_heading:
@@ -786,7 +786,7 @@ fr:
       site_settings_title: Paramètres
       tools_heading: Outils avancés
   licenses:
-    0BSD:
+    0BSD: Licence BSD Zero Clause
     CC-BY-40: Creative Commons Attribution
     CC-BY-NC-40: Creative Commons Attribution NonCommercial
     CC-BY-NC-ND-40: Creative Commons Attribution NonCommercial NoDerivatives
@@ -798,10 +798,10 @@ fr:
     CERN-OHL-P-20:
     CERN-OHL-S-20:
     CERN-OHL-W-20:
-    GPL-20-only:
-    GPL-30-only:
-    LGPL-20-only:
-    LGPL-30-only:
+    GPL-20-only: Licence publique générale GNU v2.0
+    GPL-30-only: Licence publique générale GNU v3.0
+    LGPL-20-only: GNU Lesser General Public License v2
+    LGPL-30-only: GNU Lesser General Public License v3
     LicenseRef-Commercial: Commercial ; usage privé uniquement
     MIT: MIT
   moderator_mailer:

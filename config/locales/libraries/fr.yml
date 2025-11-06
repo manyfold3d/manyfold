@@ -43,10 +43,10 @@ fr:
       heading: Bibliothèques
       scan_changes:
         confirm:
-      settings:
+      settings: Paramètres
       show:
         help:
-        label:
+        label: Afficher les bibliothèques
       tag_regex:
         check: Vérifier
         search_missing: Recherche manquante

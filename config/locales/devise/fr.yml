@@ -75,7 +75,7 @@ fr:
         danger_zone: Zone de danger !
         leave_blank_if_you_don_t_want_to_change_it: laissez ce champ vide pour le laisser inchangé
         security: Sécurité
-        social:
+        social: Social
         submit: Enregistrer les modifications
         title: Paramètres du compte
         unhappy: Pas content ?
@@ -116,7 +116,7 @@ fr:
             help:
             help_fedi:
         details:
-        rules:
+        rules: Règles du serveur
         rules_agree:
         sign_up: Inscription
         username:
@@ -172,8 +172,8 @@ fr:
         keypair:
           label: Utiliser un délimiteur pour représenter les paires de clés
         sorting:
-          alphabetical:
-          frequency:
+          alphabetical: alphabétique
+          frequency: fréquence
           label: Trier
         threshold:
           label: Nombre minimum d'étiquettes à afficher
