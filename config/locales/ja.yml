@@ -275,7 +275,7 @@ ja:
     demo_mode: このインスタンスはデモモードです。モデルの追加や削除はできませんが、それ以外のことはすべてできます。
     filters_card:
       missing_tags: タグの欠落
-      owner:
+      owner: オーナー
       remove_collection_filter: コレクションフィルターを削除する
       remove_creator_filter: クリエイターフィルターを削除する
       remove_library_filter: ライブラリーフィルタを削除する
@@ -330,7 +330,7 @@ ja:
       scanning: スキャン中
       search: 検索
       settings: サイト設定
-      social:
+      social: ソーシャル
       upload: アップロード
     search_error:
     tag_list:
@@ -407,8 +407,8 @@ ja:
       unset: 特定のフィールドがセットされているかどうかを調べるには 「set?」を使い、その反対を調べるには 「not」を加える。
       without_tag: 特定のタグがないモデルを見つけるには「！」
     sort_menu:
-      name: 名前順
-      recent: 時間順
+      name:
+      recent:
       sort-by:
       updated:
   concerns:
