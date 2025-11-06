@@ -87,7 +87,7 @@ fr:
     problems_card:
       tour:
         description:
-        title:
+        title: Problèmes
     scan:
       success: Début de l'analyse du modèle
     show:

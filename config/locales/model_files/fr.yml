@@ -21,13 +21,13 @@ fr:
       confirm: Êtes-vous sûr de vouloir supprimer ce fichier de votre système de fichiers ?
       success: Fichier supprimé !
     download:
-      bambu:
-      cura:
-      elegoo:
-      lychee:
-      orca:
-      prusa:
-      superslicer:
+      bambu: Ouvert dans Bambu Studio
+      cura: Ouvrir dans Ultimaker Cura
+      elegoo: Ouvrir dans ElegooSlicer
+      lychee: Ouvrir dans Lychee Slicer
+      orca: Ouvrir dans OrcaSlicer
+      prusa: Ouvrir dans PrusaSlicer
+      superslicer: Ouvrir dans SuperSlicer
     form:
       notes:
         help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
@@ -37,7 +37,7 @@ fr:
       convert: Convertir en 3MF
       details_heading: Détails
       download:
-        menu_header:
+        menu_header: Options de téléchargement
       notes_heading: Notes
     update:
       failure: Une erreur s'est produite et les détails du fichier n'ont pas pu être sauvegardés.
