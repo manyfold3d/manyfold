@@ -275,7 +275,7 @@ zh-CN:
     demo_mode: 此实例处于演示模式。您不能添加或删除模型，但可以进行其他操作。
     filters_card:
       missing_tags: 缺少标签
-      owner:
+      owner: 所有者
       remove_collection_filter: 移除合集过滤器
       remove_creator_filter: 移除创建者过滤器
       remove_library_filter: 删除资料库过滤器
@@ -407,8 +407,8 @@ zh-CN:
       unset: 使用 "set?" 查询特定字段是否已设置，添加 "not" 则可查找相反字段。
       without_tag: 使用 "!=" 查找不带有特定 Tag 的模型
     sort_menu:
-      name: 按名称排序
-      recent: 按时间排序
+      name:
+      recent:
       sort-by:
       updated:
   concerns:
@@ -694,7 +694,7 @@ zh-CN:
       title: 发布
     support:
       content: 每个人都可以自由运行 Manyfold 实例！如果您觉得这个实例有用，可以点击下面的链接帮助它继续运行。
-      manyfold_html: 您可以在<a href="https://opencollective.com/manyfold" target="_manyfold_donate">OpenCollective</a> 上支持 Manyfold 软件的开发。
+      manyfold_html: 您可以在<a href="https://opencollective.com/manyfold">OpenCollective</a> 上支持 Manyfold 软件的开发。
       support_link: 支持此实例
       support_manyfold:
       title: 支持
