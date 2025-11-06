@@ -275,7 +275,7 @@ de:
     demo_mode: Diese Instanz befindet sich im Demo-Modus. Du kannst keine Modelle hinzufügen oder entfernen, aber alles andere ist möglich.
     filters_card:
       missing_tags: Fehlende Tags
-      owner:
+      owner: Eigentümer
       remove_collection_filter: Sammlungs-Filter entfernen
       remove_creator_filter: Ersteller-Filter entfernen
       remove_library_filter: Bibliotheks-Filter entfernen
@@ -330,7 +330,7 @@ de:
       scanning: Scannen
       search: Suche
       settings: Admin-Einstellungen
-      social:
+      social: Soziales
       upload: Modelle hochladen
     search_error: Fehler in der Such-Syntax. Bitte prüfen und erneut versuchen!
     tag_list:
@@ -407,8 +407,8 @@ de:
       unset: Verwende "set?", um abzufragen, ob ein bestimmtes Feld gesetzt ist, und füge "not" hinzu, um das Gegenteil festzustellen.
       without_tag: Verwende "!=", um Modelle ohne ein bestimmtes Tag zu finden
     sort_menu:
-      name: Nach Namen sortieren
-      recent: Nach Zeit sortieren
+      name:
+      recent:
       sort-by:
       updated:
   concerns:
@@ -694,7 +694,7 @@ de:
       title: Veröffentlichung
     support:
       content: Viele Instanzen werden von Menschen wie Ihnen betrieben! Wenn du diese Instanz nützlich findest, könntest du helfen, sie am Laufen zu halten, indem du unten klickst.
-      manyfold_html: Um die Entwicklung der Manyfold-Software selbst zu unterstützen, kannst du dies bei <a href="https://opencollective.com/manyfold" target="_manyfold_donate">OpenCollective</a> tun.
+      manyfold_html: Um die Entwicklung der Manyfold-Software selbst zu unterstützen, kannst du dies bei <a href="https://opencollective.com/manyfold">OpenCollective</a> tun.
       support_link: Diese Instanz unterstützen
       support_manyfold:
       title: Unterstützen
