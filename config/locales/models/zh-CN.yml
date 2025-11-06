@@ -87,7 +87,7 @@ zh-CN:
     problems_card:
       tour:
         description:
-        title:
+        title: 问题
     scan:
       success: 模型扫描开始
     show:
