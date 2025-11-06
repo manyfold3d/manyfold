@@ -87,7 +87,7 @@ cs:
     problems_card:
       tour:
         description:
-        title:
+        title: Problémy
     scan:
       success: Spuštěna kontrola modelu.
     show:
