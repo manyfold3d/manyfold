@@ -570,6 +570,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "UltraSalem",
+      "name": "Salem",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5058207?v=4",
+      "profile": "http://thevampireswardiaries.blogspot.com.au",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
