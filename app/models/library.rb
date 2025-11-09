@@ -159,7 +159,7 @@ class Library < ApplicationRecord
   end
 
   def create_path_if_not_on_disk=(val)
-    if val == "1" && storage_service == "filesystem"
+    if val == "1" && storage_service == "filesystem" && path.presence
       begin
         FileUtils.makedirs(path)
       rescue Errno::EROFS, Errno::EACCES
