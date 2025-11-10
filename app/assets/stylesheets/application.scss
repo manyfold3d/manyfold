@@ -43,3 +43,7 @@ p.notice:empty {
 .creator-card {
 	height: 100%;
 }
+
+#navbar>ul.navbar-nav>li>a.nav-link {
+	color: var(--bs-navbar-hover-color) !important;
+}
