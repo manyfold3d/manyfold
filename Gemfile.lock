@@ -924,6 +924,10 @@ GEM
       activerecord (>= 7.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yard (0.9.37)
+    yard-lint (1.2.3)
+      yard (~> 0.9)
+      zeitwerk (~> 2.6)
     zeitwerk (2.7.3)
     zxcvbn (0.1.10)
 
@@ -1055,6 +1059,7 @@ DEPENDENCIES
   web-console (~> 4.1)
   webmock (~> 3.26)
   with_model (~> 2.2)
+  yard-lint (~> 1.2)
 
 CHECKSUMS
   actioncable (8.0.2.1) sha256=6f1cb20db39fba28a93569e8d5dab42b2749d7ddd4baebb5bbecd4217e49d6a2
@@ -1397,6 +1402,8 @@ CHECKSUMS
   websocket-extensions (0.1.5) sha256=1c6ba63092cda343eb53fc657110c71c754c56484aad42578495227d717a8241
   with_model (2.2.0) sha256=eb0f498752391917e8c0a990951a343756bb89df2d12190faa5915a3fd99277e
   xpath (3.2.0) sha256=6dfda79d91bb3b949b947ecc5919f042ef2f399b904013eb3ef6d20dd3a4082e
+  yard (0.9.37) sha256=a6e910399e78e613f80ba9add9ba7c394b1a935f083cccbef82903a3d2a26992
+  yard-lint (1.2.3) sha256=d34b963d6dfa71417fc8dbd3a87743f730780bd94f1abba08290d12e97ce5554
   zeitwerk (2.7.3) sha256=b2e86b4a9b57d26ba68a15230dcc7fe6f040f06831ce64417b0621ad96ba3e85
   zxcvbn (0.1.10) sha256=46e49a7cadcaab543b0073715341607ed99ffcacfc96d6f883bf1bfefaf0aaa5
 
