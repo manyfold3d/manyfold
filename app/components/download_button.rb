@@ -16,21 +16,29 @@ class Components::DownloadButton < Components::Base
   def view_template
     div class: "btn-group ml-auto mr-auto" do
       download_link html_class: "btn btn-primary"
-      button(type: "button",
+      button type: "button",
         class: "btn btn-primary dropdown-toggle dropdown-toggle-split",
-        "data-bs-toggle": "dropdown",
-        "aria-expanded": "false") do
+        data: {
+          bs_toggle: "dropdown"
+        },
+        aria: {
+          expanded: false,
+          haspopup: true,
+          controls: "menu"
+        } do
         span(class: "visually-hidden") { t("components.download_button.menu_header") }
       end
-      ul class: "dropdown-menu" do
-        li(class: "dropdown-header") { t("components.download_button.menu_header") }
+      ul class: "dropdown-menu", aria: {
+        role: "menu"
+      } do
+        DropdownHeader text: t("components.download_button.menu_header")
         if @has_supported_and_unsupported
-          li { download_link selection: "supported" }
-          li { download_link selection: "unsupported" }
-          li { hr class: "dropdown-divider" }
+          li(role: "menuitem") { download_link selection: "supported" }
+          li(role: "menuitem") { download_link selection: "unsupported" }
+          DropdownDivider
         end
         @extensions&.compact&.map do |type|
-          li { download_link file_type: type }
+          li(role: "menuitem") { download_link file_type: type }
         end
       end
     end
