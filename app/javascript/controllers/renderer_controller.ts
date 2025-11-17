@@ -5,8 +5,6 @@ import { ObjectPreview } from '../src/object_preview'
 export default class extends Controller {
   connect (): void {
     const preview = new ObjectPreview(this.element)
-    void (async () => {
-      await preview.initialize()
-    })() // Wrap up the promise, we don't want it
+    preview.connect()
   }
 }
