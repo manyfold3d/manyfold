@@ -14,8 +14,14 @@ class Components::DropdownItem < Components::Base
   end
 
   def view_template
-    li do
-      link_to @path, method: @method, class: "dropdown-item #{"active" if @active}", aria: {label: @aria_label, current: @active.to_s}, data: {confirm: @confirm}, rel: "nofollow" do
+    li role: "presentation" do
+      link_to @path,
+        method: @method,
+        class: "dropdown-item #{"active" if @active}",
+        role: "menuitem",
+        aria: {label: @aria_label, current: @active.to_s},
+        data: {confirm: @confirm},
+        rel: "nofollow" do
         if @icon
           Icon(icon: @icon, label: @label)
           whitespace
