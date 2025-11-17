@@ -640,6 +640,7 @@ nl:
     unfollow_remote_actor:
       unfollowed:
   general:
+    copy_fediverse_handle:
     delete: Verwijderen
     download: Downloaden
     edit: Bewerken

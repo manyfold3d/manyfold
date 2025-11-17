@@ -640,6 +640,7 @@ es:
     unfollow_remote_actor:
       unfollowed: Dejar de seguir a %{actor}
   general:
+    copy_fediverse_handle:
     delete: Borrar
     download: Descargar
     edit: Editar

@@ -640,6 +640,7 @@ pl:
     unfollow_remote_actor:
       unfollowed: Przestano obserwować %{actor}
   general:
+    copy_fediverse_handle:
     delete: Usuń
     download: Pobierz
     edit: Edytuj

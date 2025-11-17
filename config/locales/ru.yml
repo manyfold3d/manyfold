@@ -640,6 +640,7 @@ ru:
     unfollow_remote_actor:
       unfollowed:
   general:
+    copy_fediverse_handle:
     delete: Удалить
     download:
     edit:

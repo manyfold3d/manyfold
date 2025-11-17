@@ -20,7 +20,7 @@
             <div class="col col-auto"><%= t(".creator_handle") %></div>
             <div class="col">
               <code><%= current_user.creators.local.first.federails_actor.at_address %></code>
-              <%= CopyButton text: current_user.creators.local.first.federails_actor.at_address %>
+              <%= CopyButton text: current_user.creators.local.first.federails_actor.at_address, label: t("general.copy_fediverse_handle") %>
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@
           <div class="col col-auto"><%= t(".account_handle") %></div>
           <div class="col">
             <code><%= current_user.federails_actor.at_address %></code>
-            <%= CopyButton text: current_user.federails_actor.at_address %>
+            <%= CopyButton text: current_user.federails_actor.at_address, label: t("general.copy_fediverse_handle") %>
           </div>
         </div>
       </div>
