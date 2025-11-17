@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
   end
 
   def has_signed_id?
-    params[:id] && ApplicationRecord.signed_id_verifier.valid_message?(params[:id])
+    params[:sig] && ApplicationRecord.signed_id_verifier.valid_message?(params[:sig])
   end
 
   def img_src

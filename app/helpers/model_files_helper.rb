@@ -24,7 +24,7 @@ module ModelFilesHelper
 
   def slicer_url(slicer, file)
     signed_id = file.signed_id expires_in: 1.hour, purpose: "download"
-    signed_url = model_url(file.model) + "/model_files/#{signed_id}.#{file.extension}"
+    signed_url = model_model_file_by_signed_filename_url(file.model, file.filename, sig: signed_id)
     case slicer
     when :orca
       slic3r_family_open_url "orcaslicer", signed_url

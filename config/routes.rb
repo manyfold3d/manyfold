@@ -165,7 +165,8 @@ Rails.application.routes.draw do
   end
   resources :doorkeeper_applications, path: "/oauth/applications"
 
-  # Fallback route for filename matching
+  # Fallback routes for filename matching and signed downloads
+  get "/models/:model_id/model_files/signed/:sig/*id" => "model_files#show", :as => "model_model_file_by_signed_filename"
   get "/models/:model_id/model_files/*id" => "model_files#show", :as => "model_model_file_by_filename"
 
   # Web crawler stuff
