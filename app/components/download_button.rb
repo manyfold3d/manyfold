@@ -24,13 +24,15 @@ class Components::DownloadButton < Components::Base
         aria: {
           expanded: false,
           haspopup: true,
-          controls: "menu"
+          controls: "download-menu"
         } do
         span(class: "visually-hidden") { t("components.download_button.menu_header") }
       end
-      ul class: "dropdown-menu", aria: {
-        role: "menu"
-      } do
+      ul class: "dropdown-menu",
+        id: "download-menu",
+        aria: {
+          role: "menu"
+        } do
         DropdownHeader text: t("components.download_button.menu_header")
         if @has_supported_and_unsupported
           li(role: "menuitem") { download_link selection: "supported" }
