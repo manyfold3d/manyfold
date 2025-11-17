@@ -23,7 +23,7 @@ class Components::DownloadButton < Components::Base
         },
         aria: {
           expanded: false,
-          haspopup: true,
+          haspopup: "menu",
           controls: "download-menu"
         } do
         span(class: "visually-hidden") { t("components.download_button.menu_header") }

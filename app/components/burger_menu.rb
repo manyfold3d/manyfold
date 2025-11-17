@@ -19,7 +19,7 @@ class Components::BurgerMenu < Components::Base
         },
         aria: {
           expanded: false,
-          haspopup: true,
+          haspopup: "menu",
           controls: "#{@id}-menu"
         },
         class: classes.join(" "),
