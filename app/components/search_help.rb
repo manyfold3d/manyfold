@@ -1,7 +1,11 @@
 class Components::SearchHelp < Components::Base
   def view_template
     div class: "text-start" do
-      a "data-bs-toggle": "modal", "data-bs-target": "#search-help" do
+      a class: "link-underline link-underline-opacity-0",
+        data: {
+          bs_toggle: "modal",
+          bs_target: "#search-help"
+        }, tabindex: 0, href: "#" do
         yield
       end
       modal
