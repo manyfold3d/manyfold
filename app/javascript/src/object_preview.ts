@@ -16,7 +16,7 @@ export class ObjectPreview {
     this.progressLabel = this.canvas.parentElement?.getElementsByClassName('progress-label')[0] as HTMLSpanElement
   }
 
-  async run (): Promise<void> {
+  async initializeOffscreenRenderer (): Promise<void> {
     if (this.canvas.dataset.workerUrl === undefined || this.canvas.dataset.workerUrl === null) {
       console.log('ERROR: Could not load worker!')
       return
@@ -29,6 +29,11 @@ export class ObjectPreview {
     this.renderer = await new RemoteOffscreenRenderer(
       Comlink.transfer(offscreenCanvas as unknown as HTMLCanvasElement, [offscreenCanvas]), { ...this.canvas.dataset }
     )
+    // Trigger resizing
+    this.onResize()
+  }
+
+  connect (): void {
     // Handle resize events
     window.addEventListener('resize', this.onResize.bind(this))
     this.onResize()
@@ -57,7 +62,7 @@ export class ObjectPreview {
 
   onIntersectionChanged (entries, observer): void {
     if ((this.canvas.dataset.autoLoad === 'true') && (entries[0].isIntersecting === true)) {
-      this.load()
+      void this.load()
     }
   }
 
@@ -84,7 +89,7 @@ export class ObjectPreview {
 
   onEvent (event): void {
     event.preventDefault()
-    this.renderer.handleEvent(event)
+    this.renderer?.handleEvent(event)
   }
 
   onLoadProgress (percentage: number): void {
@@ -106,22 +111,23 @@ export class ObjectPreview {
 
   onLoadError (): void {
     if ((this.progressBar == null) || (this.progressLabel == null)) { return }
-    this.progressBar?.classList.add('bg-danger')
+    this.progressBar.classList.add('bg-danger')
     this.progressBar.style.width = this.progressBar.ariaValueNow = '100%'
     this.progressLabel.textContent = window.i18n.t('renderer.errors.load')
   }
 
   onResize (): void {
-    this.renderer.onResize(
+    this.renderer?.onResize(
       this.canvas.clientWidth,
       this.canvas.clientHeight,
       window.devicePixelRatio
     )
   }
 
-  load (): void {
+  async load (): Promise<void> {
     if (this.loading) { return }
     this.loading = true
+    await this.initializeOffscreenRenderer()
     this.renderer.load(
       Comlink.proxy(this.onLoad.bind(this)),
       Comlink.proxy(this.onLoadProgress.bind(this)),
