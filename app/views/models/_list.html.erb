@@ -10,12 +10,14 @@
     </div>
   <% else %>
     <div class="skip-link-container">
-      <div class="clearfix">
+      <div class="row">
         <%= skip_link "sidebar", t(".skip_models") %>
-        <div class="float-end mb-3">
+        <div class="col">
+          <%= paginate @models %>
+        </div>
+        <div class="col col-auto">
           <%= SortMenu(filter: @filter) %>
         </div>
-        <%= paginate @models %>
       </div>
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
         <%= render_component_collection Components::ModelCard, :model, @models %>
