@@ -71,3 +71,6 @@ dump.rdb
 
 # Ignore schema file, it's database-dependent and Manyfold shouldn't be
 db/schema.rb
+
+.yardoc
+doc

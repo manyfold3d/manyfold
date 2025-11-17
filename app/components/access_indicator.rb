@@ -1,4 +1,7 @@
 class Components::AccessIndicator < Components::Base
+  # @param object The object to show the access details for; must include the CaberSubject concern
+  # @param icon Whether or not to show an indicator icon
+  # @param text Whether or not to show a indicator text
   def initialize(object:, icon: true, text: false)
     @object = object
     @icon = icon
