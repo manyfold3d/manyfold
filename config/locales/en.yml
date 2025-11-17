@@ -640,6 +640,7 @@ en:
     unfollow_remote_actor:
       unfollowed: Unfollowed %{actor}
   general:
+    copy_fediverse_handle: Copy Fediverse handle to clipboard
     delete: Delete
     download: Download
     edit: Edit

@@ -640,6 +640,7 @@ cs:
     unfollow_remote_actor:
       unfollowed: Již nesledován %{actor}
   general:
+    copy_fediverse_handle:
     delete: Smazat
     download: Stáhnout
     edit: Upravit

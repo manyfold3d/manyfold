@@ -640,6 +640,7 @@ zh-CN:
     unfollow_remote_actor:
       unfollowed:
   general:
+    copy_fediverse_handle:
     delete: 删除
     download: 下载
     edit: 编辑

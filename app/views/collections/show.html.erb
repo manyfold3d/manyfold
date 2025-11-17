@@ -20,7 +20,7 @@
             <% elsif SiteSettings.federation_enabled? %>
               <small class="text-secondary">
                 <%= @collection.federails_actor.short_at_address %>
-                <%= CopyButton(text: @collection.federails_actor.at_address) %>
+                <%= CopyButton(text: @collection.federails_actor.at_address, label: t("general.copy_fediverse_handle")) %>
               </small>
             <% end %>
           </p>

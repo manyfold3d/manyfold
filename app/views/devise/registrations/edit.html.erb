@@ -16,7 +16,7 @@
               <div class="col-auto col-form-label"><%= t("settings.users.index.fediverse_address") %></div>
               <div class="col col-form-label">
                 <code><%= resource.federails_actor.at_address %></code>
-                <%= CopyButton(text: resource.federails_actor.at_address) %>
+                <%= CopyButton(text: resource.federails_actor.at_address, label: t("general.copy_fediverse_handle")) %>
               </div>
             <% end %>
           </div>

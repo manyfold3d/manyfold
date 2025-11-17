@@ -643,6 +643,7 @@ fr:
     unfollow_remote_actor:
       unfollowed: Vous ne suivez plus %{actor}
   general:
+    copy_fediverse_handle:
     delete: Supprimer
     download: Télécharger
     edit: Modifier
