@@ -9,7 +9,7 @@
   <div id="home-search" class="col-8 offset-md-2 mt-3 mb-3" data-turbo-permanent>
     <%= form_with url: models_path, method: :get do |f| %>
       <div class="input-group">
-        <%= f.text_field :q, class: "form-control", placeholder: translate(".search.placeholder"), aria_label: translate(".search.submit"), aria_describedby: "button-search", value: @query %>
+        <%= f.text_field :q, class: "form-control", placeholder: translate(".search.placeholder"), aria_label: translate(".search.submit"), aria_describedby: "button-search", value: @query, role: "search" %>
         <%= f.submit translate(".search.submit"), class: "btn btn-primary", name: nil %>
       </div>
       <%= SearchHelp do %>
