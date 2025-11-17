@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
 class Components::BurgerMenu < Components::Base
-  def initialize(small: false, id: SecureRandom.uuid, data: {})
+  def initialize(small: false, direction: :down, id: SecureRandom.uuid, data: {})
     @small = small
     @id = id
     @data = data
+    @direction = direction
   end
 
   def view_template
     classes = %w[btn btn-secondary]
     classes << "btn-sm" if @small
-    div data: @data do
+    div data: @data, class: ("dropup" if @direction == :up) do
       a id: @id,
         href: "#",
         data: {
