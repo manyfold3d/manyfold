@@ -62,7 +62,7 @@ export class ObjectPreview {
 
   onIntersectionChanged (entries, observer): void {
     if ((this.canvas.dataset.autoLoad === 'true') && (entries[0].isIntersecting === true)) {
-      this.load()
+      void this.load()
     }
   }
 
