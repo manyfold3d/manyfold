@@ -6,7 +6,7 @@ export default class extends Controller {
   connect (): void {
     const preview = new ObjectPreview(this.element)
     void (async () => {
-      await preview.run()
+      await preview.initialize()
     })() // Wrap up the promise, we don't want it
   }
 }

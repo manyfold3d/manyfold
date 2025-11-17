@@ -16,7 +16,12 @@ export class ObjectPreview {
     this.progressLabel = this.canvas.parentElement?.getElementsByClassName('progress-label')[0] as HTMLSpanElement
   }
 
-  async run (): Promise<void> {
+  async initialize (): Promise<void> {
+    await this.initializeOffscreenRenderer();
+    this.connectEvents();
+  }
+
+  async initializeOffscreenRenderer (): Promise<void> {
     if (this.canvas.dataset.workerUrl === undefined || this.canvas.dataset.workerUrl === null) {
       console.log('ERROR: Could not load worker!')
       return
@@ -29,6 +34,9 @@ export class ObjectPreview {
     this.renderer = await new RemoteOffscreenRenderer(
       Comlink.transfer(offscreenCanvas as unknown as HTMLCanvasElement, [offscreenCanvas]), { ...this.canvas.dataset }
     )
+  }
+
+  connect (): void {
     // Handle resize events
     window.addEventListener('resize', this.onResize.bind(this))
     this.onResize()
