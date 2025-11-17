@@ -2,6 +2,9 @@ class Components::SearchHelp < Components::Base
   def view_template
     div class: "text-start" do
       a class: "link-underline link-underline-opacity-0",
+        aria: {
+          haspopup: true
+        },
         data: {
           bs_toggle: "modal",
           bs_target: "#search-help"
