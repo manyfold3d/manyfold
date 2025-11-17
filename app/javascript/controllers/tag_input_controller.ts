@@ -12,7 +12,6 @@ export default class extends Controller {
       addPrecedence: true,
       create: true,
       plugins: ['remove_button'],
-      selectOnTab: true,
       onItemAdd: function () {
         this.setTextboxValue('')
         this.refreshOptions()
