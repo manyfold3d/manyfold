@@ -20,7 +20,7 @@
     <%= render "application/navbar" %>
     <%= yield :breadcrumbs %>
     <main class="container-fluid" id="content">
-      <div>
+      <div id="alerts" aria-live="polite">
         <% if notice %>
           <p class="alert alert-info">
             <%= Icon icon: "info-circle-fill", label: t(".alert.info") %>
