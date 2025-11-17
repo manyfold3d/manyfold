@@ -31,7 +31,7 @@ class Components::DownloadButton < Components::Base
       ul class: "dropdown-menu", aria: {
         role: "menu"
       } do
-        li(class: "dropdown-header") { t("components.download_button.menu_header") }
+        DropdownHeader text: t("components.download_button.menu_header")
         if @has_supported_and_unsupported
           li(role: "menuitem") { download_link selection: "supported" }
           li(role: "menuitem") { download_link selection: "unsupported" }

@@ -90,7 +90,7 @@
         <span class="visually-hidden">Download options</span>
       </button>
       <ul class="dropdown-menu">
-        <li class="dropdown-header"><%= t(".download.menu_header") %></li>
+        <%= DropdownHeader text: t(".download.menu_header") %>
         <%= slicer_links @file %>
       </ul>
     </div>
