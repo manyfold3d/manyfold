@@ -9,14 +9,14 @@ module ModelFilesHelper
     # i18n-tasks-use t('model_files.download.lychee')
     safe_join(
       [:cura, :orca, :elegoo, :superslicer, :lychee].map do |slicer|
-        content_tag(:li) {
+        content_tag(:li, role: "presentation") {
           link_to safe_join(
             [
               slicer_icon_tag(slicer, alt: t("model_files.download.%{slicer}" % {slicer: slicer})),
               t("model_files.download.%{slicer}" % {slicer: slicer})
             ].compact,
             " "
-          ), slicer_url(slicer, file), class: "dropdown-item", download: "download"
+          ), slicer_url(slicer, file), role: "menuitem", class: "dropdown-item", download: "download"
         }
       end
     )
