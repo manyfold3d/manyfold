@@ -1,11 +1,13 @@
 <% content_for :items do %>
   <div class="skip-link-container">
-    <div class="clearfix">
-      <%= skip_link "sidebar", t(".skip_creators") %>
-      <div class="float-end mb-3">
+    <%= skip_link "sidebar", t(".skip_creators") %>
+    <div class="row">
+      <div class="col">
+        <%= paginate @creators %>
+      </div>
+      <div class="col col-auto">
         <%= SortMenu(filter: @filter) %>
       </div>
-      <%= paginate @creators %>
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
       <%= render "unassigned" if @unassigned_count > 0 && @creators.first_page? %>
