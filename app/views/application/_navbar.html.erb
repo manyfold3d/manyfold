@@ -11,22 +11,22 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse row" id="navbar">
-      <ul class="navbar-nav col ps-4 ps-md-0 align-self-start">
-        <li class="nav-item">
+      <ul class="navbar-nav col ps-4 ps-md-0 align-self-start" role="presentation">
+        <li class="nav-item" role="presentation">
           <%= nav_link "box", Model.model_name.human(count: 100), models_path(@filter&.to_params), text_style: "d-md-none d-lg-inline", id: "nav-link-models",
                 data: tour_attributes(id: "nav-link-models", title: Model.model_name.human(count: 100), description: t("tour.navbar.models.description")) %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" role="presentation">
           <%= nav_link "people", Creator.model_name.human(count: 100), creators_path(@filter&.to_params(except: :creator)), text_style: "d-md-none d-lg-inline", id: "nav-link-creators",
                 data: tour_attributes(id: "nav-link-creators", title: Creator.model_name.human(count: 100), description: t("tour.navbar.creators.description")) %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" role="presentation">
           <%= nav_link "collection", Collection.model_name.human(count: 100), collections_path(@filter&.to_params(except: :collection)), text_style: "d-md-none d-lg-inline", id: "nav-link-collections",
                 data: tour_attributes(id: "nav-link-collections", title: Collection.model_name.human(count: 100), description: t("tour.navbar.collections.description")) %>
         </li>
         <% if SiteSettings.show_libraries %>
           <% policy_scope(Library).find_each do |library| %>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
               <%= nav_link(
                     library.icon.presence || "boxes",
                     library.name,
@@ -37,8 +37,8 @@
           <% end %>
         <% end %>
       </ul>
-      <ul class="navbar-nav col-auto pe-4 align-self-start justify-content-end">
-        <li class="nav-item">
+      <ul class="navbar-nav col-auto pe-4 align-self-start justify-content-end" role="presentation">
+        <li class="nav-item" role="presentation">
           <% if policy(:upload).index? %>
             <div class="btn-group">
               <%= content_tag :button,
@@ -55,18 +55,18 @@
                     aria: {
                       expanded: false,
                       haspopup: true,
-                      controls: "menu"
+                      controls: "add-content-menu"
                     } do
                     safe_join [Icon(icon: "plus-circle"), t(".add_models")], " "
                   end %>
-              <ul class="dropdown-menu" role="menu">
+              <ul class="dropdown-menu" role="menu" id="add-content-menu">
                 <%= DropdownItem label: t(".upload"), path: new_model_path %>
                 <%= DropdownItem label: t(".import_url"), path: new_import_path %>
               </ul>
             </div>
           <% end %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" role="presentation">
           <% if policy(:scan).create? %>
             <% if @scan_in_progress %>
               <%= nav_link "", t(".scanning"), activity_path, nofollow: true, style: "btn btn-outline-warning btn-sm me-1 mt-lg-1", icon_style: "spinner-border spinner-border-sm" %>
@@ -88,7 +88,7 @@
         </li>
         <%- if current_user %>
           <% if policy(Problem).index? && Problem.visible(problem_settings).count > 0 %>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
               <% severity = max_problem_severity(policy_scope(Problem).all) %>
               <%= nav_link problem_icon(severity),
                     Problem.model_name.human(count: 100),
@@ -100,17 +100,17 @@
             </li>
           <% end %>
           <% if policy(:activity).index? %>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
               <%= nav_link "activity", t(".activity"), activity_path, nofollow: true, text_style: "d-md-none" %>
             </li>
           <% end %>
           <% if policy(:settings).index? %>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
               <%= nav_link "gear", t(".settings"), settings_path, nofollow: true, text_style: "d-md-none" %>
             </li>
           <% end %>
           <% if policy(:user).index? and not policy(:settings).index? %>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
               <%= nav_link "people", t(".moderator_settings"), settings_users_path, nofollow: true, text_style: "d-md-none" %>
             </li>
           <% end %>
@@ -124,7 +124,7 @@
         <% end %>
         <%- if current_user %>
           <%- if SiteSettings.multiuser_enabled? %>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" role="presentation">
               <%= content_tag :button, id: "nav-link-preferences", title: t(".account"), class: "btn btn-secondary btn-sm mt-1",
                     data: {bs_toggle: "dropdown"}.merge(
                       tour_attributes(id: "nav-link-preferences", title: t(".account"), description: t("tour.navbar.account.description"))
@@ -149,14 +149,14 @@
               </ul>
             </li>
           <% else %>
-            <li class="nav-item">
+            <li class="nav-item" role="presentation">
               <%= nav_link "person", t("devise.registrations.edit.title"), edit_user_registration_path, nofollow: true, text_style: "d-md-none", id: "nav-link-preferences",
                     data: tour_attributes(id: "nav-link-preferences", title: t(".account"), description: t("tour.navbar.account.description")) %>
             </li>
           <% end %>
         <% end %>
         <%- if SiteSettings.multiuser_enabled? && current_user.nil? %>
-          <li class="nav-item">
+          <li class="nav-item" role="presentation">
             <%= nav_link "box-arrow-in-right", t(".log_in"), new_user_session_path, title: translate(".log_in"), nofollow: true, style: "btn btn-secondary" %>
           </li>
         <%- end %>
