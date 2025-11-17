@@ -53,11 +53,13 @@
                       description: t("tour.navbar.add_models.description")
                     )),
                     aria: {
-                      expanded: "false"
+                      expanded: false,
+                      haspopup: true,
+                      controls: "menu"
                     } do
                     safe_join [Icon(icon: "plus-circle"), t(".add_models")], " "
                   end %>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" role="menu">
                 <%= DropdownItem label: t(".upload"), path: new_model_path %>
                 <%= DropdownItem label: t(".import_url"), path: new_import_path %>
               </ul>
