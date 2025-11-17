@@ -35,7 +35,7 @@ class Components::DownloadButton < Components::Base
         if @has_supported_and_unsupported
           li(role: "menuitem") { download_link selection: "supported" }
           li(role: "menuitem") { download_link selection: "unsupported" }
-          li { hr class: "dropdown-divider" }
+          DropdownDivider
         end
         @extensions&.compact&.map do |type|
           li(role: "menuitem") { download_link file_type: type }

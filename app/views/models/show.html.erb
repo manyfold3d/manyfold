@@ -120,10 +120,10 @@
         <%= BurgerMenu id: "model-actions-menu", data: tour_attributes(id: "model-actions-menu", title: translate(".menu.tour.title"), description: translate(".menu.tour.description")) do %>
           <%= DropdownItem(icon: "pencil", label: translate("general.edit"), path: edit_model_path(@model), aria_label: translate("components.model_card.edit_button.label", name: @model.name)) if policy(@model).edit? %>
           <%= DropdownItem(icon: "trash", label: translate("general.delete"), path: model_path(@model), method: :delete, aria_label: translate("components.model_card.delete_button.label", name: @model.name), confirm: t("models.destroy.confirm")) if policy(@model).destroy? %>
-          <li><hr class="dropdown-divider"></li>
+          <%= DropdownDivider() %>
           <%= DropdownItem(icon: "pencil", label: t(".files_card.bulk_edit"), path: bulk_edit_model_model_files_path(@model)) if policy(@model).edit? %>
           <%= DropdownItem(icon: "radar", label: t(".rescan"), path: scan_model_path(@model), method: :post) if policy(@model).scan? %>
-          <li><hr class="dropdown-divider"></li>
+          <%= DropdownDivider() %>
           <%= DropdownItem(icon: "flag", label: translate("general.report", type: ""), path: new_model_report_path(@model)) if SiteSettings.multiuser_enabled? %>
         <% end %>
       <% end %>
