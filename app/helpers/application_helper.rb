@@ -211,7 +211,7 @@ module ApplicationHelper
 
   def skip_link(target, text)
     content_tag :div, class: "container-fluid skip-link text-bg-success p-2" do
-      link_to text, "##{target}", class: "text-reset"
+      link_to text, "##{target}", class: "text-reset", tabindex: 0
     end
   end
 
