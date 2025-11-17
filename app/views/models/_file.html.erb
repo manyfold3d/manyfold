@@ -52,7 +52,7 @@
         </div>
         <div class="col col-auto">
           <div class="float-end">
-            <%= BurgerMenu(small: true, direction: :up) do %>
+            <%= BurgerMenu(direction: :up) do %>
               <%= slicer_links(file) if file.is_3d_model? %>
               <%= DropdownDivider() %>
               <% if file.presupported_version %>
