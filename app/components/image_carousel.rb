@@ -25,7 +25,6 @@ class Components::ImageCarousel < Components::Base
       } do
       if @images.count > 1
         play_pause_control
-        slide_indicators
       end
       div id: "imageCarouselInner",
         class: "carousel-inner",
@@ -48,6 +47,7 @@ class Components::ImageCarousel < Components::Base
         end
       end
       if @images.count > 1
+        slide_indicators
         next_prev_controls
       end
     end
@@ -90,6 +90,7 @@ class Components::ImageCarousel < Components::Base
   def next_prev_controls
     button class: "carousel-control-prev",
       type: "button",
+      tabindex: -1,
       data: {
         bs_target: "#imageCarousel",
         bs_slide: "prev"
@@ -99,6 +100,7 @@ class Components::ImageCarousel < Components::Base
     end
     button class: "carousel-control-next",
       type: "button",
+      tabindex: -1,
       data: {
         bs_target: "#imageCarousel",
         bs_slide: "next"
@@ -118,6 +120,7 @@ class Components::ImageCarousel < Components::Base
       end
       if policy(image).destroy?
         a href: model_model_file_path(image.model, image),
+          tabindex: 0,
           class: "btn btn-sm btn-outline-danger",
           data: {
             method: "delete",
