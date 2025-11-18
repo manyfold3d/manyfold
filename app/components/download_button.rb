@@ -3,9 +3,15 @@
 class Components::DownloadButton < Components::Base
   include Phlex::Rails::Helpers::LinkTo
 
+  register_value_helper :policy
+
   def initialize(model:, format: :zip)
     @model = model
     @format = format
+  end
+
+  def render?
+    policy(@model).download?
   end
 
   def before_template
