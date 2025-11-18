@@ -47,14 +47,18 @@ class ModelsController < ApplicationController
         @num_files = files.count
       end
       format.zip do
-        download = ArchiveDownloadService.new(model: @model, selection: params[:selection])
-        if download.ready?
-          send_file(download.output_file, filename: download.filename, type: :zip, disposition: :attachment)
-        elsif download.preparing?
-          redirect_to model_path(@model, format: :html), notice: t(".download_preparing")
+        if policy(@model).download?
+          download = ArchiveDownloadService.new(model: @model, selection: params[:selection])
+          if download.ready?
+            send_file(download.output_file, filename: download.filename, type: :zip, disposition: :attachment)
+          elsif download.preparing?
+            redirect_to model_path(@model, format: :html), notice: t(".download_preparing")
+          else
+            download.prepare
+            redirect_to model_path(@model, format: :html), notice: t(".download_requested")
+          end
         else
-          download.prepare
-          redirect_to model_path(@model, format: :html), notice: t(".download_requested")
+          head :forbidden
         end
       end
       format.oembed { render json: OEmbed::ModelSerializer.new(@model, helpers.oembed_params).serialize }

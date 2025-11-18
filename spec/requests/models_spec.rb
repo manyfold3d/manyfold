@@ -82,6 +82,26 @@ RSpec.describe "Models" do
           get "/models/#{library.models.first.to_param}"
           expect(response).to have_http_status(:success)
         end
+
+        context "with zip file prepared" do
+          let(:model) { create(:model, library: library) }
+
+          before do
+            PrepareDownloadJob.perform_now(model_id: model.id, selection: nil)
+          end
+
+          it "gets ZIP file" do
+            get "/models/#{model.to_param}.zip"
+            expect(response).to have_http_status(:success)
+          end
+
+          it "doesn't get zipfile if only preview access available" do
+            model.revoke_all_permissions(Role.find_by!(name: :member))
+            model.grant_permission_to("preview", User.last)
+            get "/models/#{model.to_param}.zip"
+            expect(response).to have_http_status(:forbidden)
+          end
+        end
       end
 
       describe "GET /models/:id/edit" do
