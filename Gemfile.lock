@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/el-cms/capybara-screenshot.git
-  revision: 386c0541a428b8d025c936e3b6ebd6d2d2240523
+  revision: 85521ff1b7e049219ef354372c76b84fac6939e3
   branch: custom-prefixes
   specs:
     capybara-screenshot (1.0.26)
