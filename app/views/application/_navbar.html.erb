@@ -125,7 +125,7 @@
         <%- if current_user %>
           <%- if SiteSettings.multiuser_enabled? %>
             <li class="nav-item dropdown" role="presentation">
-              <%= content_tag :button, id: "nav-link-preferences", title: t(".account"), class: "btn btn-secondary btn-sm mt-1",
+              <%= content_tag :button, id: "nav-link-preferences", title: t(".account"), class: "btn btn-light btn-sm mt-1",
                     data: {bs_toggle: "dropdown"}.merge(
                       tour_attributes(id: "nav-link-preferences", title: t(".account"), description: t("tour.navbar.account.description"))
                     ),
@@ -161,7 +161,7 @@
         <% end %>
         <%- if SiteSettings.multiuser_enabled? && current_user.nil? %>
           <li class="nav-item" role="presentation">
-            <%= nav_link "box-arrow-in-right", t(".log_in"), new_user_session_path, title: translate(".log_in"), nofollow: true, style: "btn btn-secondary" %>
+            <%= nav_link "box-arrow-in-right", t(".log_in"), new_user_session_path, title: translate(".log_in"), nofollow: true, style: "btn btn-light" %>
           </li>
         <%- end %>
       </ul>
