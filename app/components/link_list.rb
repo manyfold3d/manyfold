@@ -16,7 +16,7 @@ class Components::LinkList < Components::Base
       @links.each do |link|
         if link.valid?
           li do
-            Icon(icon: "link-45deg") if @icons
+            Icon(icon: "link-45deg", role: "presentation") if @icons
             whitespace
             link_to t("sites.%{site}" % {site: link.site}, default: "%{site}" % {site: link.site}), link.url, rel: "noreferrer"
             if link.deserializer.present? && policy(link.linkable).sync?

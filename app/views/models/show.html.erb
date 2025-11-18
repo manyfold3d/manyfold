@@ -86,7 +86,7 @@
           <div><%= Icon icon: "tag", label: t(".tags") %></div>
           <div><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc), filter: @filter %></div>
           <% unless @model.links.empty? %>
-            <div><%= Icon icon: "link-45deg", label: Model.human_attribute_name(:links) %></div>
+            <div><%= Icon icon: "link-45deg", role: "presentation", label: Model.human_attribute_name(:links) %></div>
             <%= LinkList links: @model.links, icons: false %>
           <% end %>
           <% if SiteSettings.social_enabled? %>
