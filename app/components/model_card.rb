@@ -13,6 +13,10 @@ class Components::ModelCard < Components::Base
     @actor = @model.federails_actor
   end
 
+  def before_template
+    @editable = policy(@model).edit?
+  end
+
   def view_template
     div class: "col mb-3" do
       div class: "card preview-card" do
@@ -28,9 +32,7 @@ class Components::ModelCard < Components::Base
 
   def title
     div class: "card-title" do
-      a "data-editable-field": "model[name]", "data-editable-path": model_path(@model), contenteditable: "plaintext-only", "data-controller": "editable", "data-action": "focus->editable#onFocus blur->editable#onBlur" do
-        @model.name
-      end
+      @editable ? EditableSpan(fieldname: "model[name]", path: model_path(@model), text: @model.name) : span { @model.name }
       if @model.sensitive
         whitespace
         Icon(icon: "explicit", label: Model.human_attribute_name(:sensitive))
