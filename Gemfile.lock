@@ -250,7 +250,7 @@ GEM
     ed25519 (1.4.0)
     email_validator (2.2.4)
       activemodel
-    erb (5.1.3)
+    erb (6.0.0)
     erb_lint (0.9.0)
       activesupport
       better_html (>= 2.0.1)
@@ -365,13 +365,14 @@ GEM
     i18n-js (4.2.4)
       glob (>= 0.4.0)
       i18n
-    i18n-tasks (1.0.15)
+    i18n-tasks (1.1.0)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
-      highline (>= 2.0.0)
+      highline (>= 3.0.0)
       i18n
       parser (>= 3.2.2.1)
+      prism
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.8, >= 1.8.1)
@@ -687,7 +688,7 @@ GEM
     redlock (2.0.6)
       redis-client (>= 0.14.1, < 1.0.0)
     regexp_parser (2.11.3)
-    reline (0.6.2)
+    reline (0.6.3)
       io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
@@ -856,7 +857,7 @@ GEM
       railties (>= 6.0.0)
     stopwords-filter2 (0.1.0)
     string-similarity (2.1.0)
-    stringio (3.1.7)
+    stringio (3.1.8)
     swd (2.0.3)
       activesupport (>= 3)
       attr_required (>= 0.0.5)
@@ -979,7 +980,7 @@ DEPENDENCIES
   guard (~> 2.19)
   guard-rspec (~> 4.7)
   i18n-js (~> 4.2)
-  i18n-tasks (~> 1.0)
+  i18n-tasks (~> 1.1)
   i18n_data (~> 1.1)
   image_processing
   jbuilder (~> 2.14)
@@ -1141,7 +1142,7 @@ CHECKSUMS
   drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
   ed25519 (1.4.0) sha256=16e97f5198689a154247169f3453ef4cfd3f7a47481fde0ae33206cdfdcac506
   email_validator (2.2.4) sha256=5ab238095bec7aef9389f230e9e0c64c5081cdf91f19d6c5cecee0a93af20604
-  erb (5.1.3) sha256=566e53057b6ba48699f824b578473b391fa8aef100aa14afad1c46725fae0e67
+  erb (6.0.0) sha256=2730893f9d8c9733f16cab315a4e4b71c1afa9cabc1a1e7ad1403feba8f52579
   erb_lint (0.9.0) sha256=dfb5e40ad839e8d1f0d56ca85ec9a7ac4c9cd966ec281138282f35b323ca7c31
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
   et-orbi (1.3.0) sha256=56716ce1c40f56412d6acb0721ebede6bd23b66525dab008a95d77df00c7d260
@@ -1186,7 +1187,7 @@ CHECKSUMS
   http-form_data (2.3.0) sha256=cc4eeb1361d9876821e31d7b1cf0b68f1cf874b201d27903480479d86448a5f3
   i18n (1.14.7) sha256=ceba573f8138ff2c0915427f1fc5bdf4aa3ab8ae88c8ce255eb3ecf0a11a5d0f
   i18n-js (4.2.4) sha256=61390d372f8fa68c495c5907d577657e8cc3a7031f4945db1e91f935e1391355
-  i18n-tasks (1.0.15) sha256=74f3e9e0e2db5d757c58e659f4269ee698c7a7532ed29066a2aaffc9efbdfb56
+  i18n-tasks (1.1.0) sha256=ebc1e145ca96418307e931f79a60e35e64b8e5f7c3758255c68c1dfad113b068
   i18n_data (1.1.0) sha256=fb7ae43bd03ec4dc2e6e62e726aac05aa868c170ba1444c056e2ab0d872bb2ed
   image_processing (1.14.0) sha256=754cc169c9c262980889bec6bfd325ed1dafad34f85242b5a07b60af004742fb
   io-console (0.8.1) sha256=1e15440a6b2f67b6ea496df7c474ed62c860ad11237f29b3bd187f054b925fcb
@@ -1307,7 +1308,7 @@ CHECKSUMS
   redis-namespace (1.11.0) sha256=e91a1aa2b2d888b6dea1d4ab8d39e1ae6fac3426161feb9d91dd5cca598a2239
   redlock (2.0.6) sha256=de262f7d7c78112435b6b356766b7733e05c452f25cf66c23b0eec1dc2893dde
   regexp_parser (2.11.3) sha256=ca13f381a173b7a93450e53459075c9b76a10433caadcb2f1180f2c741fc55a4
-  reline (0.6.2) sha256=1dad26a6008872d59c8e05244b119347c9f2ddaf4a53dce97856cd5f30a02846
+  reline (0.6.3) sha256=1198b04973565b36ec0f11542ab3f5cfeeec34823f4e54cebde90968092b1835
   request_store (1.5.1) sha256=07a204d161590789f2b1d27f9f0eadcdecd6d868cb2f03240250e1bc747df78e
   responders (3.1.1) sha256=92f2a87e09028347368639cfb468f5fefa745cb0dc2377ef060db1cdd79a341a
   reverse_markdown (3.0.0) sha256=ab228386765a0259835873cd07054b62939c40f620c77c247eafaaa3b23faca4
@@ -1368,7 +1369,7 @@ CHECKSUMS
   stimulus-rails (1.3.4) sha256=765676ffa1f33af64ce026d26b48e8ffb2e0b94e0f50e9119e11d6107d67cb06
   stopwords-filter2 (0.1.0) sha256=3b24452fd213c9c8a612b4f76babf205920d963b76e9413aabfe69d6e9c0cbea
   string-similarity (2.1.0) sha256=ab949bdd39fdeeedf64fc6a40a75546419a9d36bdb370f2dbbfc488bcc00a3bf
-  stringio (3.1.7) sha256=5b78b7cb242a315fb4fca61a8255d62ec438f58da2b90be66048546ade4507fa
+  stringio (3.1.8) sha256=99c43c3a9302843cca223fd985bfc503dd50a4b1723d3e4a9eb1d9c37d99e4ec
   swd (2.0.3) sha256=4cdbe2a4246c19f093fce22e967ec3ebdd4657d37673672e621bf0c7eb770655
   sys-cpu (1.1.0) sha256=72996f84346fdb9b5e6c2ded505ad87c2ae5f66c0b5bf4480c09c04e132c098f
   sys-filesystem (1.5.4) sha256=a6101674a4d0e641b0f628753439091134e080ed84a3e794570aa2fb07872b45
