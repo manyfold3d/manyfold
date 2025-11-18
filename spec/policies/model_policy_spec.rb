@@ -67,4 +67,31 @@ describe ModelPolicy do
       end
     end
   end
+
+  permissions :download? do
+    context "with preview granted" do
+      it "doesn't allow public download" do
+        model.grant_permission_to "preview", nil
+        expect(policy).not_to permit(nil, model)
+      end
+
+      it "doesn't allow user with standard permissions to download" do
+        model.revoke_all_permissions(Role.find_by!(name: :member))
+        model.grant_permission_to "preview", nil
+        expect(policy).not_to permit(member, model)
+      end
+
+      it "doesn't allow user with specific preview grant to download" do
+        model.revoke_all_permissions(Role.find_by!(name: :member))
+        model.grant_permission_to "preview", member
+        expect(policy).not_to permit(member, model)
+      end
+
+      it "allows user with proper view grant to download" do
+        model.revoke_all_permissions(Role.find_by!(name: :member))
+        model.grant_permission_to "view", member
+        expect(policy).to permit(member, model)
+      end
+    end
+  end
 end
