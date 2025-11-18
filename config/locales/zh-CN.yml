@@ -375,6 +375,12 @@ zh-CN:
       follow: 关注 %{name}
       pending: 已请求
       unfollow: 取消关注 %{name}
+    image_carousel:
+      next:
+      play_pause:
+      previous:
+      select_slide: 选择要显示的图像
+      slide_label:
     link_list:
       sync: 同步
     modal:

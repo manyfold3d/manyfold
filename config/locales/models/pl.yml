@@ -46,12 +46,6 @@ pl:
       tags: Tagi
     general:
       edit: Edytuj Model
-    image_carousel:
-      next: Następna
-      play_pause: Odtwórz lub wstrzymaj obrazy
-      previous: Poprzednia
-      select_slide: Wybierz obraz do wyświetlenia
-      slide_label: "%{name} (%{index} z %{count})"
     list:
       bulk_edit: Edytuj Wszystkie Modele
       no_results_html: Przepraszamy, nie mogliśmy znaleźć niczego do pokazania! Spróbuj zmienić filtry lub wyszukiwane hasło albo przesłać kilka modeli.

@@ -46,12 +46,6 @@ cs:
       tags: Štítky
     general:
       edit: Upravit model
-    image_carousel:
-      next: Další
-      play_pause: Přehrávání nebo pozastavení obrázků
-      previous: Předchozí
-      select_slide: Vyberte obrázek ke zobrazení
-      slide_label: "%{name} (%{index} z %{count})"
     list:
       bulk_edit: Upravit všechny modely
       no_results_html: Je nám líto, ale nenašli jsme nic, co bychom Vám mohli ukázat! Zkuste změnit filtry nebo vyhledávací filtry nebo nahrát nějaké modely.

@@ -375,6 +375,12 @@ pt:
       follow:
       pending:
       unfollow:
+    image_carousel:
+      next:
+      play_pause:
+      previous:
+      select_slide:
+      slide_label:
     link_list:
       sync:
     modal:

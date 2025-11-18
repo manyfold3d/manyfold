@@ -375,6 +375,12 @@ de:
       follow: Folge %{name}
       pending: Angefordert
       unfollow: "%{name} nicht mehr Folgen"
+    image_carousel:
+      next: Weiter
+      play_pause: Pausiere oder Starte Diashow
+      previous: Zurück
+      select_slide: Bild zum Anzeigen auswählen
+      slide_label: "%{name} (%{index} von %{count})"
     link_list:
       sync: Synchronisieren
     modal:

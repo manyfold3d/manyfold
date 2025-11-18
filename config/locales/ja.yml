@@ -375,6 +375,12 @@ ja:
       follow: "%{name}]をフォローする"
       pending: リクエストされた
       unfollow: "%{name}]のフォローを解除する"
+    image_carousel:
+      next:
+      play_pause:
+      previous:
+      select_slide:
+      slide_label:
     link_list:
       sync:
     modal:
