@@ -128,19 +128,20 @@
         <% end %>
       <% end %>
 
-      <% if !@model.parents.empty? && policy(@model).merge? %>
-        <%= card :danger, t(".merge.heading") do %>
-          <p>
-            <%= t(".merge.warning") %>
-          </p>
-          <strong><%= t(".merge.with") %>:</strong>
-          <% @model.parents.each do |parent| %>
-            <%= DoButton(icon: "union", label: parent.name, href: merge_models_path(target: parent.public_id, models: [@model.public_id]), method: :post, variant: "danger") %>
+      <% if policy(:problem).show? %>
+        <% if !@model.parents.empty? && policy(@model).merge? %>
+          <%= card :danger, t(".merge.heading") do %>
+            <p>
+              <%= t(".merge.warning") %>
+            </p>
+            <strong><%= t(".merge.with") %>:</strong>
+            <% @model.parents.each do |parent| %>
+              <%= DoButton(icon: "union", label: parent.name, href: merge_models_path(target: parent.public_id, models: [@model.public_id]), method: :post, variant: "danger") %>
+            <% end %>
           <% end %>
         <% end %>
+        <%= render partial: "problems_card", locals: {problems: @model.problems.visible(problem_settings)} %>
       <% end %>
-
-      <%= render partial: "problems_card", locals: {problems: @model.problems.visible(problem_settings)} %>
 
       <%= card :secondary, t(".files_card.heading") do %>
         <a href="#files">Top</a>
