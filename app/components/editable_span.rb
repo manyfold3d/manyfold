@@ -9,7 +9,7 @@ class Components::EditableSpan < Components::Base
 
   def view_template
     span(
-      class: "editable",
+      class: "editable p-1",
       contenteditable: "plaintext-only",
       data: {
         editable_field: @fieldname,
