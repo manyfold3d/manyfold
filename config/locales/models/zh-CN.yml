@@ -46,12 +46,6 @@ zh-CN:
       tags: Tags
     general:
       edit: 编辑模型
-    image_carousel:
-      next:
-      play_pause:
-      previous:
-      select_slide: 选择要显示的图像
-      slide_label:
     list:
       bulk_edit: 编辑所有模型
       no_results_html: 抱歉，我们找不到任何可向您展示的内容！请尝试更改过滤器或搜索条件，或上传一些模型。

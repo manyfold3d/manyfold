@@ -46,12 +46,6 @@ nl:
       tags: Tags
     general:
       edit: Model Bewerken
-    image_carousel:
-      next: Volgende
-      play_pause: Afbeeldingen afspelen of pauzeren
-      previous: Vorige
-      select_slide: Kies weer te geven afbeelding
-      slide_label: "%{name} (%{index} van %{count})"
     list:
       bulk_edit: Alle Modellen Bewerken
       no_results_html: Sorry, we konden niets vinden om te tonen! Probeer je filters of zoektermen aan te passen, of upload wat modellen.

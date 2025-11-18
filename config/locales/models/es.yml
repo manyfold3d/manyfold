@@ -46,12 +46,6 @@ es:
       tags: Etiquetas
     general:
       edit: Editar modelo
-    image_carousel:
-      next: Siguiente
-      play_pause: Reproducir o pausar imágenes
-      previous: Anterior
-      select_slide: Elija la imagen que desea mostrar
-      slide_label: "%{name} (%{index} de %{count})"
     list:
       bulk_edit: Editar todos los modelos
       no_results_html: Lo sentimos, ¡no hemos encontrado nada que mostrarte! Prueba a cambiar los filtros o los términos de búsqueda, o a subir algunos modelos.

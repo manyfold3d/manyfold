@@ -46,12 +46,6 @@ fr:
       tags: Étiquette
     general:
       edit: Modifier le modèle
-    image_carousel:
-      next: Suivant
-      play_pause: Lire/mettre en pause les images
-      previous: Précédent
-      select_slide: Choisir l'image à afficher
-      slide_label: "%{name} (%{index} sur %{count})"
     list:
       bulk_edit: Modifier tous les modèles
       no_results_html: Désolé, nous n'avons rien à vous montrer ! Essayez de modifier les filtres ou les termes de recherche, ou de télécharger des modèles.

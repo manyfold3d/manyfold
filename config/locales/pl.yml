@@ -375,6 +375,12 @@ pl:
       follow: Obserwuj %{name}
       pending: Żądane
       unfollow: Przestań obserwować %{name}
+    image_carousel:
+      next: Następna
+      play_pause: Odtwórz lub wstrzymaj obrazy
+      previous: Poprzednia
+      select_slide: Wybierz obraz do wyświetlenia
+      slide_label: "%{name} (%{index} z %{count})"
     link_list:
       sync:
     modal:

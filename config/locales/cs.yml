@@ -375,6 +375,12 @@ cs:
       follow: Sledovat %{name}
       pending: Požadováno
       unfollow: Přestat sledovat %{name}
+    image_carousel:
+      next: Další
+      play_pause: Přehrávání nebo pozastavení obrázků
+      previous: Předchozí
+      select_slide: Vyberte obrázek ke zobrazení
+      slide_label: "%{name} (%{index} z %{count})"
     link_list:
       sync:
     modal:

@@ -46,12 +46,6 @@ de:
       tags: Tags
     general:
       edit: Modell bearbeiten
-    image_carousel:
-      next: Weiter
-      play_pause: Pausiere oder Starte Diashow
-      previous: Zurück
-      select_slide: Bild zum Anzeigen auswählen
-      slide_label: "%{name} (%{index} von %{count})"
     list:
       bulk_edit: Alle Modelle bearbeiten
       no_results_html: Wir konnten leider nichts finden, was wir dir zeigen könnten! Versuche, deine Filter oder Suchbegriffe zu ändern oder einige Modelle hochzuladen.

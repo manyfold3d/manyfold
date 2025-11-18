@@ -375,6 +375,12 @@ es:
       follow: Seguir %{name}
       pending: Requerido
       unfollow: Dejar de seguir %{name}
+    image_carousel:
+      next: Siguiente
+      play_pause: Reproducir o pausar imágenes
+      previous: Anterior
+      select_slide: Elija la imagen que desea mostrar
+      slide_label: "%{name} (%{index} de %{count})"
     link_list:
       sync: Sincronice
     modal:

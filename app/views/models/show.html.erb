@@ -21,7 +21,7 @@
         <div class="alert alert-info"><%= t(".preview", count: @locked_files) %></div>
       <% end %>
 
-      <%= render "image_carousel", images: @images %>
+      <%= ImageCarousel(images: @images) %>
 
       <%= card(:secondary) do %>
         <p class="card-text" itemprop="description"><%= markdownify @model.notes %></p>
