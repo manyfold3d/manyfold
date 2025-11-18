@@ -15,7 +15,7 @@ class Components::EditableSpan < Components::Base
         editable_field: @fieldname,
         editable_path: @path,
         controller: "editable",
-        action: "focus->editable#onFocus blur->editable#onBlur"
+        action: "focus->editable#onFocus blur->editable#onBlur keypress->editable#onKeypress"
       }
     ) do
       @text
