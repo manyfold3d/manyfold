@@ -9,13 +9,7 @@
 <div itemscope itemtype="https://schema.org/3DModel">
   <%= turbo_stream_from @model %>
   <h1>
-    <span itemprop="name">
-      <a contenteditable="plaintext-only"
-          data-controller="editable"
-          data-action="focus->editable#onFocus blur->editable#onBlur"
-          data-editable-field="model[name]"
-          data-editable-path="<%= model_path(@model) %>"><%= @model.name %></a>
-    </span>
+    <%= policy(@model).edit? ? EditableSpan(fieldname: "model[name]", path: model_path(@model), text: @model.name) : @model.name %>
     <%= link_to Icon(icon: "search", label: t(".search")),
           "https://yeggi.com/q/#{ERB::Util.url_encode(@model.name)}/",
           class: "btn btn-outline", target: "manyfold_search", rel: "noreferrer" %>
