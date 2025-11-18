@@ -20,6 +20,10 @@ class ModelPolicy < ApplicationPolicy
     edit? && UploadPolicy.new(user, record).create?
   end
 
+  def download?
+    check_permissions(record, ["view", "edit", "own"], user)
+  end
+
   def destroy?
     super && (record.is_a?(Model) ? !record.contains_other_models? : true)
   end
