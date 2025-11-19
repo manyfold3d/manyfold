@@ -23,7 +23,7 @@ zh-CN:
       notes:
         help_html: 可选项；仅在设置页面上向管理员显示。您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
       path:
-        placeholder: "/libraries/models"
+        placeholder: 例如：/libraries/models
       s3_bucket:
         help: 只显示 Bucket 名称，不显示完整的 URL
       s3_description_html: Manyfold 可以使用任何与 S3 兼容的对象存储库；它们来自<a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">开源</a>或<a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">商业</a>服务。
@@ -42,7 +42,7 @@ zh-CN:
         label: 剩余空间
       heading: 资料库
       scan_changes:
-        confirm:
+        confirm: 您确定要扫描此库以查找新文件吗？这可能需要很长时间！
       settings: 设置
       show:
         help: 在导航栏和表单中显示或隐藏库。编辑表单中的库选择将始终显示给管理员。
