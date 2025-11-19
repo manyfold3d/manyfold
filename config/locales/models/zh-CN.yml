@@ -12,7 +12,7 @@ zh-CN:
       submit: 更新选定模型
       title: 批量编辑模型
       update_all:
-        confirm:
+        confirm: 您确定要将这些更改应用到当前筛选条件的全部 %{count} 个模型吗？
         label: 更新所有 %{count} 模型
     bulk_update:
       success: 模型更新成功。
@@ -80,7 +80,7 @@ zh-CN:
       merge_all: 合并所有
     problems_card:
       tour:
-        description:
+        description: 这个卡片显示该模型检测到的任何问题。您可以在账户首选项中更改问题可见性设置。
         title: 问题
     scan:
       success: 模型扫描开始
@@ -95,8 +95,8 @@ zh-CN:
       license: 许可证
       menu:
         tour:
-          description:
-          title:
+          description: 该菜单包含编辑或删除模型或同时编辑多个文件等额外功能。
+          title: 编辑
       merge:
         heading: 合并
         warning: 合并会将此模型中的所有文件移到目标文件中，并删除此模型。文件元数据会被保留，但任何模型元数据都会丢失！

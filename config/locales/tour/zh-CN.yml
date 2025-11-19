@@ -3,18 +3,18 @@ zh-CN:
   tour:
     libraries:
       new:
-        description:
+        description: '"资料库" 是文件的物理存储位置。它可以是本地文件夹，也可以是云存储。你可以只有一个，也可以有很多；这取决于你。如果资料库中已有文件，它们会被扫描并自动添加到 Manyfold 中。'
     navbar:
       account:
-        description:
+        description: 在设置中，您可以更改登录信息、首选渲染风格、分页选项等。
       add_models:
-        description:
+        description: 在这里上传或导入您自己的模型；您可以将它们保密，也可以公开分享，一切由您决定！
       collections:
-        description:
+        description: 可将模型组合成 "集合"；例如，主题或用途相似的模型。
       creators:
-        description:
+        description: '"创作者" 是指模型的设计者、出版者或作者。'
       main:
-        description:
-        title:
+        description: 这里将简要介绍最重要的网站功能和概念。
+        title: 欢迎来到 %{name}！
       models:
-        description:
+        description: Manyfold 中的 "模型" 是一个或多个组合在一起的三维文件；例如，单个组件的部件或套件。模型还可以包括说明文件、图片等。

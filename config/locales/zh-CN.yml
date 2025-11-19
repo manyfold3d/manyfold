@@ -309,10 +309,10 @@ zh-CN:
       activity: 近期动态
       add_models: 添加内容
       check_existing:
-        confirm:
+        confirm: 您确定要重新扫描所有现有模型吗？这可能需要很长时间！
         label: 重新扫描所有模型
       check_results:
-        confirm:
+        confirm: 您确定要重新扫描所有已过滤的模型吗？这可能需要很长时间！
         label: 重新扫描已过滤的模型
       home: 主页
       import_url: 导入 URL
@@ -325,7 +325,7 @@ zh-CN:
           label: 切换导航
       scan: 扫描
       scan_changes:
-        confirm:
+        confirm: 您确定要扫描所有库中的新文件吗？这可能需要很长时间！
         label: 扫描新文件
       scanning: 正在扫描
       search: 搜索
@@ -343,8 +343,8 @@ zh-CN:
     title: Manyfold
   application_helper:
     ai_indexable_select_options:
-      always_no:
-      always_yes:
+      always_no: 始终为否
+      always_yes: 始终为是
       inherit: 从父对象或默认网站设置继承；当前为 %{inherited}
     indexable_select_options:
       always_no: 始终为否
@@ -413,10 +413,10 @@ zh-CN:
       unset: 使用 "set?" 查询特定字段是否已设置，添加 "not" 则可查找相反字段。
       without_tag: 使用 "!=" 查找不带有特定 Tag 的模型
     sort_menu:
-      name:
-      recent:
-      sort-by:
-      updated:
+      name: 标题
+      recent: 上传时间
+      sort-by: 排序方式
+      updated: 更新时间
   concerns:
     linkable:
       sync:
