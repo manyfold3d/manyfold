@@ -3,7 +3,7 @@ fr:
   activerecord:
     attributes:
       collection:
-        ai_indexable:
+        ai_indexable: Permettre l'utilisation pour l'entrainement d'IA
         caption: Légende
         collection:
         indexable: Autoriser l'indexation de la recherche
@@ -56,13 +56,13 @@ fr:
       link:
         url: Lien
       model:
-        ai_indexable:
+        ai_indexable: Permettre l'utilisation pour l'entrainement d'IA
         caption: Légende
         collection: Collection
         collection_id: Collection
         creator: Créateur
         creator_id: Créateur
-        images:
+        images: Images
         indexable:
         library_id: Bibliothèque
         license: Licence
@@ -76,7 +76,7 @@ fr:
       model_file:
         caption: Légende
         digest: Absorber
-        dimensions:
+        dimensions: Dimensions
         filename: Nom de fichier
         model_id: Modèle
         notes: Notes
@@ -280,18 +280,18 @@ fr:
       remove_creator_filter: Supprimer le filtre créateur
       remove_library_filter: Supprimer le filtre de bibliothèque
       remove_missing_tag_filter: Supprimer le filtre "étiquette manquante"
-      remove_owner_filter:
+      remove_owner_filter: Supprimer le filtre propriétaire
       remove_search_filter: Supprimer le filtre de recherche
       remove_tag_filter: Supprimer le filtre d'étiquette
       search: Recherche
       title: Filtres
       unknown: Inconnu
     footer:
-      about:
-      api:
+      about: À propos de cette instance
+      api: Découvrez notre API
       by_html: Conçu et réalisé par <a href="https://floppy.org.uk" target="_blank">James</a> avec l'aide de <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">nos contributeurs</a>.
-      community:
-      instance_heading:
+      community: Rejoindre la communauté
+      instance_heading: Détails de l'instance
       issues: Problèmes
       open_source_html: Open Source sous <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licence MIT.</a>
       powered_by_html:
@@ -318,7 +318,7 @@ fr:
       import_url: Importer l'URL
       log_in: Se connecter
       log_out: Se déconnecter
-      moderator_settings:
+      moderator_settings: Paramètres du modérateur
       my_stuff:
       navbar:
         toggler:
@@ -332,7 +332,7 @@ fr:
       settings: Paramètres
       social: Social
       upload: Télécharger
-    search_error:
+    search_error: Erreur dans la syntaxe de recherche. Veuillez vérifier et réessayer !
     tag_list:
       unrelated_tag_count:
         one: "%{count} étiquette non liée cachée"
@@ -413,10 +413,10 @@ fr:
       unset:
       without_tag:
     sort_menu:
-      name:
-      recent:
-      sort-by:
-      updated:
+      name: Titre
+      recent: Le plus récent
+      sort-by: Trier par
+      updated: Mis à jour
   concerns:
     linkable:
       sync:
@@ -473,7 +473,7 @@ fr:
       error:
         title: Une erreur est survenue
       form_post:
-        title:
+        title: Envoyer ce formulaire
       new:
         able_to: Cette application pourra
         prompt: Autorisez %{client_name} à utiliser votre compte?
@@ -548,9 +548,9 @@ fr:
   doorkeeper_applications:
     create:
       failure:
-      success:
+      success: Application créée avec succès.
     destroy:
-      success:
+      success: Application supprimée avec succès.
     edit:
       title: Modifier l'application
     form:
@@ -606,7 +606,7 @@ fr:
         links: Liens
         max_count:
         privacy_policy:
-        registration:
+        registration: Inscription
         sign_in: Se connecter
         subscription_type: Type d'abonnement
         versions: Versions
@@ -844,15 +844,15 @@ fr:
     comicsgamesandthings: Bandes dessinées, jeux et objets
     cults3d: Cults3D
     fediverse:
-    github:
+    github: GitHub
     makerworld:
     manyfold: Manyfold
     myminifactory: MyMiniFactory
     printables:
-    thangs:
+    thangs: Thangs
     theminiindex: The Mini Index
     thingiverse: Thingiverse
-    yeggi:
+    yeggi: yeggi
   user_mailer:
     account_approved:
       greeting: Bonjour !

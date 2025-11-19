@@ -5,10 +5,10 @@ fr:
       success: Détails du nouveau créateur sauvegardés.
     creator:
       collections_button:
-        label:
+        label: Afficher les collections par %{name}
         remote_label:
       delete_button:
-        label:
+        label: Supprimer le créateur %{name}
       edit_button:
         label: Modifier le créateur %{name}
       models_button:
@@ -26,7 +26,7 @@ fr:
       banner:
         current:
         help:
-        none:
+        none: Pas encore fixé.
         remove: Supprimer la bannière
       notes:
         help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.

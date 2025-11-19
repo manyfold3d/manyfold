@@ -6,12 +6,12 @@ fr:
         label: Montrer les sous-collections dans %{name}
         remote_label:
       delete_button:
-        label:
+        label: Supprimer la collection %{name}
       edit_button:
         label: Modifier la collection %{name}
       models_button:
         label: Voir les modèles dans %{name}
-        remote_label:
+        remote_label: Afficher les modèles locaux de %{name}
       no_preview: pas d'aperçu disponible
     create:
       success: Détails de la nouvelle collection enregistrés.
