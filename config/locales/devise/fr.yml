@@ -111,11 +111,11 @@ fr:
         creators:
           name:
             help:
-            label:
+            label: Nom du créateur
           slug:
             help:
             help_fedi:
-        details:
+        details: Vos coordonnées
         rules: Règles du serveur
         rules_agree:
         sign_up: Inscription
@@ -157,7 +157,7 @@ fr:
           label: Style de rendu
           lambert: Ombres réalistes
           normals: Direction de la surface
-          original:
+          original: Original (à partir du fichier)
           shadowed: Ombré réaliste
         show_grid:
           label: Afficher le plan de masse

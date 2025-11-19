@@ -12,13 +12,13 @@ fr:
         help_html:
         label:
       heading:
-      information:
+      information: Informations
       rules:
         help_html:
-        label:
+        label: Règles du serveur
       site_icon:
         help:
-        label:
+        label: URL du logo
       site_name:
         help:
         label:
@@ -41,7 +41,7 @@ fr:
         label:
       default_ai_indexable:
         help_html:
-        label:
+        label: Autoriser l'entrainement d'IA
       default_indexable:
         help:
         label:
@@ -73,9 +73,9 @@ fr:
       description:
       expiry:
         help:
-        hours:
+        hours: Heures
         label:
-      heading:
+      heading: Téléchargements
       pregenerate:
         help:
         label:
@@ -108,18 +108,18 @@ fr:
     integrations:
       cults3d_api_key:
         help_html:
-        label:
+        label: Clé API
       cults3d_api_username:
         help_html:
-        label:
+        label: Nom d'utilisateur
       description:
       heading:
       myminifactory_api_key:
         help_html:
-        label:
+        label: Clé API
       thingiverse_api_key:
         help_html:
-        label:
+        label: Clé API
     multiuser:
       approve_signups:
         help: Tous les nouveaux comptes doivent être approuvés par un modérateur avant de pouvoir se connecter.
@@ -140,7 +140,7 @@ fr:
           advanced:
           member: Utilisateurs locaux connectés
           private: Privé
-          public:
+          public: Public
       details_html: Pour modifier ces paramètres, modifiez les <a href='https://manyfold.app/sysadmin/configuration.html'>variables d'environnement</a> du serveur et redémarrez-le.
       email: L'envoi du courrier électronique est-il configuré ?
       federation: Fédération activée ?
@@ -176,8 +176,8 @@ fr:
         ignored: Le rapport a été ignoré.
         resolved: Le rapport a été marqué comme résolu.
     show:
-      stats:
-      total_file_size:
+      stats: Statistiques
+      total_file_size: Taille totale du fichier
     tag_settings:
       auto_tag_new:
         label: Etiqueter automatiquement les nouveaux modèles
@@ -217,7 +217,7 @@ fr:
         current_quota:
         current_space_used:
         title:
-        unlimited_quota:
+        unlimited_quota: Illimité
         using_site_default:
       show:
         approve: Approuver l'utilisateur
