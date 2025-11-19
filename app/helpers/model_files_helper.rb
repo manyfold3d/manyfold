@@ -48,20 +48,7 @@ module ModelFilesHelper
   end
 
   def slicer_icon_tag(slicer, alt:)
-    url = case slicer
-    when :orca
-      "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/orcaslicer.webp"
-    when :cura
-      "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/cura.webp"
-    when :elegoo
-      "https://raw.githubusercontent.com/ELEGOO-3D/ElegooSlicer/refs/heads/main/resources/images/ElegooSlicer.svg"
-    when :superslicer
-      "https://raw.githubusercontent.com/supermerill/SuperSlicer/refs/heads/master_27/resources/icons/SuperSlicer.svg"
-    when :lychee
-      "https://lychee.co/static/metas/favicon-32x32.png"
-    end
-    return if url.nil?
-    image_tag(url, class: "slicer-icon", alt: alt)
+    image_tag("external-icons/#{slicer}.png", class: "slicer-icon", alt: alt)
   end
 
   private
