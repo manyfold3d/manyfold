@@ -16,7 +16,7 @@ es:
         banner: Banner
         caption: Subtítulo
         indexable: Permitir la indexación de búsquedas
-        name: Nombre
+        name: Nombre del creador
         notes: Notas
         slug: Handle
       doorkeeper/application:
@@ -413,10 +413,10 @@ es:
       unset: Utilice "set?" para consultar si un campo concreto está establecido, y añada "not" para encontrar lo contrario.
       without_tag: Utilice "!=" para encontrar modelos sin una etiqueta específica
     sort_menu:
-      name:
-      recent:
-      sort-by:
-      updated:
+      name: Título
+      recent: Más reciente
+      sort-by: Ordenar por
+      updated: Actualizado
   concerns:
     linkable:
       sync:
@@ -646,7 +646,7 @@ es:
     unfollow_remote_actor:
       unfollowed: Dejar de seguir a %{actor}
   general:
-    copy_fediverse_handle:
+    copy_fediverse_handle: Copiar handle de Fediverse al portapapeles
     delete: Borrar
     download: Descargar
     edit: Editar
