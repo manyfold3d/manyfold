@@ -23,7 +23,7 @@ jobs:
           - zh-CN
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ./.github/actions/setup
       - name: Sync to translation.io
         run: bundle exec rake translation:sync_and_show_purgeable
