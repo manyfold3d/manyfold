@@ -34,7 +34,7 @@ jobs:
       packages: write # to upload build to GHCR
     steps:
       - name: Check out code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Work out Docker tags
         id: docker_meta
