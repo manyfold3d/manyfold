@@ -17,5 +17,9 @@ module Form
         caber_relations_attributes: [:id, :subject_type, :subject_id, :permission, :_destroy]
       )
     end
+
+    def user_can_set_permissions?
+      @user.is_moderator? || (@record && @user&.owns?(@record))
+    end
   end
 end
