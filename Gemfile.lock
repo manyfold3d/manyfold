@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/experimentslabs/federails.git
-  revision: 3c6c4c46b211d7116385a23d3f929be7b008bd19
+  revision: 43d68af7e3c3577d705a87ec586dde7913fa57c7
   branch: main
   specs:
     federails (0.7.0)
