@@ -5,18 +5,6 @@ module Permittable
     before_action :find_caber_subjects, only: [:create, :update] # rubocop:todo Rails/LexicallyScopedActionFilter
   end
 
-  def caber_relations_params(type: nil)
-    params.expect(type => [
-      caber_relations_attributes: [
-        :id,
-        :subject_type,
-        :subject_id,
-        :permission,
-        :_destroy
-      ]
-    ])
-  end
-
   def find_caber_subjects
     params.values.each do |param|
       if param.is_a?(ActionController::Parameters) && param.has_key?("caber_relations_attributes")
