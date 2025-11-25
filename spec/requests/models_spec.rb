@@ -14,6 +14,8 @@ require "rails_helper"
 #   scan_model  POST   /models/:id/scan(.:format)                        models#scan
 
 RSpec.describe "Models" do
+  it_behaves_like "Permittable", Model
+
   context "when signed out in multiuser mode", :after_first_run, :multiuser do
     context "with public model" do
       let!(:model) { create(:model, :public) }
