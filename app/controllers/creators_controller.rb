@@ -144,9 +144,9 @@ class CreatorsController < ApplicationController
   def creator_params
     if is_api_request?
       raise ActionController::BadRequest unless params[:json]
-      ManyfoldApi::V0::CreatorDeserializer.new(params[:json]).deserialize
+      ManyfoldApi::V0::CreatorDeserializer.new(object: params[:json], user: current_user).deserialize
     else
-      Form::CreatorDeserializer.new(params).deserialize
+      Form::CreatorDeserializer.new(params: params, user: current_user).deserialize
     end
   end
 end
