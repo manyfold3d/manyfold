@@ -190,6 +190,10 @@ class User < ApplicationRecord
     reset_password_token == "first_use"
   end
 
+  def owns?(thing)
+    has_permission_on?("own", thing)
+  end
+
   private
 
   def set_quota
