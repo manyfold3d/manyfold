@@ -1,8 +1,9 @@
 module Form
   class BaseDeserializer
-    def initialize(params:, user:)
+    def initialize(params:, user:, record: nil)
       @params = params
       @user = user
+      @record = record
     end
 
     def deserialize
