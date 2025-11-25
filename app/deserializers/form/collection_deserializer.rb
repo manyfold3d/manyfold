@@ -12,7 +12,7 @@ module Form
         :ai_indexable,
         :permission_preset,
         links_attributes: [:id, :url, :_destroy]
-      ).deep_merge(caber_relations_params(type: :collection))
+      ).deep_merge(caber_relations_attributes(type: :collection))
     end
   end
 end
