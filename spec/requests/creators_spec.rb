@@ -10,6 +10,8 @@ require "rails_helper"
 #              DELETE /creators/:id(.:format)                                                 creators#destroy
 
 RSpec.describe "Creators" do
+  it_behaves_like "Permittable", Creator
+
   context "when signed out in multiuser mode", :after_first_run, :multiuser do
     context "with public creator" do
       let!(:creator) { create(:creator, :public) }

@@ -1,8 +1,10 @@
 module ManyfoldApi
   module V0
     class BaseDeserializer
-      def initialize(object)
+      def initialize(object:, user:, record: nil)
         @object = object
+        @user = user
+        @record = record
       end
 
       def deserialize
