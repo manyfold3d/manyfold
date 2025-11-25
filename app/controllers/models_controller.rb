@@ -291,7 +291,7 @@ class ModelsController < ApplicationController
       id: file[:id],
       storage: "cache",
       metadata: {
-        filename: file[:name]
+        filename: File.basename(file[:name])
       }
     }
   end
