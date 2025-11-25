@@ -45,7 +45,7 @@ class ModelFilesController < ApplicationController
             id: file[:id],
             storage: "cache",
             metadata: {
-              filename: File.basename(file[:name])
+              filename: Zaru.sanitize!(File.basename(file[:name]))
             }
           },
           model: @model
