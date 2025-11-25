@@ -31,5 +31,23 @@ shared_examples "Permittable" do |object_class|
         }.to change(object, :public?).from(false).to(true)
       end
     end
+
+    context "when logged in as editor" do # rubocop:disable RSpec/MultipleMemoizedHelpers
+      before do
+        sign_in editor
+      end
+
+      it "doesn't update permissions using preset" do
+        expect {
+          put "/#{path}/#{object.to_param}", params: {symbol => {permission_preset: "public"}}
+        }.not_to change(object, :public?)
+      end
+
+      it "doesn't update permissions using nested attributes" do
+        expect {
+          put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: "role::public", permission: "view"}}}}
+        }.not_to change(object, :public?)
+      end
+    end
   end
 end
