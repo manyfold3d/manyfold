@@ -300,6 +300,19 @@ RSpec.describe "Users::Registrations" do
         end
       end
 
+      describe "POST /users when at the rate limit" do
+        before do
+          allow(SiteSettings).to receive(:approve_signups).and_return(false)
+          allow(AltchaSolution).to receive(:verify_and_save).and_return(true)
+        end
+
+        it "rate limits login attempts" do
+          Rails.cache.increment("rate-limit:users/registrations:127.0.0.1", 3, expires_in: 1.minute)
+          post "/users", params: post_options
+          expect(response).to have_http_status :too_many_requests
+        end
+      end
+
       describe "POST /users with approval disabled and creator options, but with no creator slug" do # rubocop:disable RSpec/MultipleMemoizedHelpers
         before {
           allow(SiteSettings).to receive_messages(
