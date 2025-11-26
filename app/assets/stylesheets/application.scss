@@ -51,3 +51,7 @@ p.notice:empty {
 span.obfuscated {
 	-webkit-text-security: disc;
 }
+
+span.deobfuscated {
+	-webkit-text-security: none;
+}

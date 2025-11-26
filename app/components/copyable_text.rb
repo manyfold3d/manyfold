@@ -10,11 +10,11 @@ class Components::CopyableText < Components::Base
   end
 
   def view_template
-    div do
+    div(data: {controller: "obfuscated-text"}) do
       span(class: @obfuscated ? "obfuscated" : nil) { @text }
       whitespace
       if @obfuscated
-        button class: "btn btn-sm btn-outline-secondary", title: t("components.copyable_text.reveal") do
+        button class: "btn btn-sm btn-outline-secondary", title: t("components.copyable_text.reveal"), data: {action: "click->obfuscated-text#toggle:prevent"} do
           Icon icon: "eye"
         end
       end
