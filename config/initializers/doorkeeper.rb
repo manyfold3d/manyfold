@@ -2,7 +2,7 @@
 
 Doorkeeper.configure do
   orm :active_record
-  base_controller "ActionController::Base"
+  base_controller "DoorkeeperBaseController"
 
   # Enabled grant flows
   grant_flows %w[client_credentials]
