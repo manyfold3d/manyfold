@@ -359,6 +359,8 @@ fr:
       help:
     copy_button:
       copy: Copier dans le presse-papiers
+    copyable_text:
+      reveal:
     display_user_quota:
       request_increase:
     download_button:

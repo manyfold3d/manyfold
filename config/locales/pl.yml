@@ -359,6 +359,8 @@ pl:
       help:
     copy_button:
       copy: Kopiuj do schowka
+    copyable_text:
+      reveal:
     display_user_quota:
       request_increase:
     download_button:

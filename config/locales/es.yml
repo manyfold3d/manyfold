@@ -359,6 +359,8 @@ es:
       help: protección antispam mediante ALTCHA
     copy_button:
       copy: Copiar al portapapeles
+    copyable_text:
+      reveal:
     display_user_quota:
       request_increase: Para solicitar un aumento de cuota, póngase en contacto con el administrador de su sitio.
     download_button:

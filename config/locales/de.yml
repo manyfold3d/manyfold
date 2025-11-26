@@ -359,6 +359,8 @@ de:
       help: datenschutzfreundlicher Spamschutz durch ALTCHA
     copy_button:
       copy: In die Zwischenablage kopieren
+    copyable_text:
+      reveal:
     display_user_quota:
       request_increase: Um eine Quotenerhöhung zu beantragen, wende dich an deinen Website-Administrator.
     download_button:
