@@ -11,5 +11,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_session_url
       set_flash_message(:alert, :failure, kind: "OIDC", reason: @user.errors.full_messages.join("; ")) if is_navigational_format?
     end
+  rescue OmniAuth::Strategies::OpenIDConnect::CallbackError => error
+    redirect_to new_user_session_url
+    set_flash_message(:alert, :failure, kind: "OIDC", reason: error.error_reason) if is_navigational_format?
   end
 end

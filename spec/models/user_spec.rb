@@ -137,6 +137,7 @@ RSpec.describe User do
         uid: "auth|123456789",
         info: OpenStruct.new({
           email: "test@example.com",
+          email_verified: true,
           preferred_username: "username",
           nickname: "nick"
         })
@@ -194,6 +195,55 @@ RSpec.describe User do
       create(:user, username: "username")
       new_user = described_class.from_omniauth(auth_data)
       expect(new_user.username).to eq "nick"
+    end
+
+    context "with an unverified email address" do
+      let(:auth_data) do
+        OpenStruct.new({
+          provider: "openid_connect",
+          uid: "auth|123456789",
+          info: OpenStruct.new({
+            email: "test@example.com",
+            email_verified: false,
+            preferred_username: "username",
+            nickname: "nick"
+          })
+        })
+      end
+
+      it "throws an error if there is an existing user with that email" do
+        create(:user, email: "test@example.com")
+        expect { described_class.from_omniauth(auth_data) }.to raise_error(OmniAuth::Strategies::OpenIDConnect::CallbackError)
+      end
+
+      it "creates a new user if there is no existing user with that email" do
+        new_user = described_class.from_omniauth(auth_data)
+        expect(new_user.email).to eq "test@example.com"
+      end
+    end
+
+    context "with no email_verified claim" do
+      let(:auth_data) do
+        OpenStruct.new({
+          provider: "openid_connect",
+          uid: "auth|123456789",
+          info: OpenStruct.new({
+            email: "test@example.com",
+            preferred_username: "username",
+            nickname: "nick"
+          })
+        })
+      end
+
+      it "creates a new user if there is no existing user with that email" do
+        new_user = described_class.from_omniauth(auth_data)
+        expect(new_user.email).to eq "test@example.com"
+      end
+
+      it "throws an error if there is an existing user with that email" do
+        create(:user, email: "test@example.com")
+        expect { described_class.from_omniauth(auth_data) }.to raise_error(OmniAuth::Strategies::OpenIDConnect::CallbackError)
+      end
     end
   end
 

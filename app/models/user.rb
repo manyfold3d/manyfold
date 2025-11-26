@@ -109,16 +109,17 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    # Match existing users by email first
+    # Link existing users by verified email first
     user = find_by(auth_provider: nil, auth_uid: nil, email: auth.info.email)
     if user
+      raise OmniAuth::Strategies::OpenIDConnect::CallbackError, error: :email_unverified, reason: "Email not verified" unless auth.info.email_verified
       user.update!(
         auth_provider: auth.provider,
         auth_uid: auth.uid
       )
     else
       # Email isn't present, so let's match by ID
-      user = find_or_create_by(auth_provider: auth.provider, auth_uid: auth.uid) do |user|
+      user = find_or_create_by!(auth_provider: auth.provider, auth_uid: auth.uid) do |user|
         user.email = auth.info.email
         # Find an unused username - get the first of a few options
         user.username = [
