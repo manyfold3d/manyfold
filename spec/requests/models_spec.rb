@@ -584,6 +584,12 @@ RSpec.describe "Models" do
             post_models
             expect(session[:return_after_new]).to be_nil
           end
+
+          it "rate limits model uploads" do
+            Rails.cache.increment("rate-limit:models:127.0.0.1", 10, expires_in: 1.minute)
+            post_models
+            expect(response).to have_http_status :too_many_requests
+          end
         end
 
         context "with a filename including path traversal", :as_contributor do
