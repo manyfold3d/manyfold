@@ -47,3 +47,7 @@ p.notice:empty {
 #navbar>ul.navbar-nav>li>a.nav-link {
 	color: var(--bs-navbar-hover-color) !important;
 }
+
+span.obfuscated {
+	-webkit-text-security: disc;
+}
