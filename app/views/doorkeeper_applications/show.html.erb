@@ -8,11 +8,11 @@
   </tr>
   <tr>
     <td><%= Doorkeeper::Application.human_attribute_name :uid %></td>
-    <td><code><%= @application.uid %></code></td>
+    <td><%= CopyableText text: @application.uid %></td>
   </tr>
   <tr>
     <td><%= Doorkeeper::Application.human_attribute_name :secret %></td>
-    <td><code><%= @application.secret %></code></td>
+    <td><%= CopyableText text: @application.secret, obfuscated: true %></td>
   </tr>
   <tr>
     <td><%= Doorkeeper::Application.human_attribute_name :confidential %></td>
