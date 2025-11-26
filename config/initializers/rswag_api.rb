@@ -9,6 +9,6 @@ Rswag::Api.configure do |c|
   # The function will have access to the rack env for the current request
   # For example, you could leverage this to dynamically assign the "host" property
   c.swagger_filter = lambda { |swagger, env|
-    swagger["servers"][0]["url"] = Rails.application.routes.url_helpers.root_url
+    swagger["servers"][0]["url"] = "#{env["rack.url_scheme"]}://#{env["HTTP_HOST"]}"
   }
 end
