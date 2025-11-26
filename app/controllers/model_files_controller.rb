@@ -1,6 +1,8 @@
 class ModelFilesController < ApplicationController
   include ActionController::Live
 
+  rate_limit to: 10, within: 3.minutes, only: :create
+
   before_action :get_model
   before_action :get_file, except: [:create, :bulk_edit, :bulk_update]
   before_action -> { set_indexable @file }, except: [:create, :bulk_edit, :bulk_update]

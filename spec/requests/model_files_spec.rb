@@ -209,6 +209,12 @@ RSpec.describe "Model Files" do
               }
             }, model: model).once
         end
+
+        it "rate limits file uploads" do
+          Rails.cache.increment("rate-limit:model_files:127.0.0.1", 10, expires_in: 1.minute)
+          post model_model_files_path(model, params: params)
+          expect(response).to have_http_status :too_many_requests
+        end
       end
 
       context "when uploading a file with attempted path traversal" do
