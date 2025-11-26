@@ -1,4 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  rate_limit to: 10, within: 3.minutes
+
   skip_after_action :verify_authorized
 
   def openid_connect
