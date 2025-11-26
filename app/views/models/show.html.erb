@@ -91,8 +91,7 @@
                   <small><%= link_to @model.federails_actor.at_address, @model.federails_actor.profile_url, target: "new" %></small>
                 <% else %>
                   <small>
-                    <%= @model.federails_actor.short_at_address %>
-                    <%= CopyButton(text: @model.federails_actor.at_address, label: t("general.copy_fediverse_handle")) %>
+                    <%= CopyableText(text: @model.federails_actor.at_address, label: t("general.copy_fediverse_handle")) %>
                   </small>
                 <% end %>
               </div>
