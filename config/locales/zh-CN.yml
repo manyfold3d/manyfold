@@ -359,6 +359,8 @@ zh-CN:
       help:
     copy_button:
       copy: 复制到剪贴板
+    copyable_text:
+      reveal:
     display_user_quota:
       request_increase: 如需增加配额，请联系管理员。
     download_button:
