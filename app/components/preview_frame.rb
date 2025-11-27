@@ -2,6 +2,7 @@
 
 class Components::PreviewFrame < Components::Base
   include Phlex::Rails::Helpers::ImageTag
+  include Phlex::Rails::Helpers::Sanitize
 
   register_value_helper :policy_scope
 
@@ -47,7 +48,7 @@ class Components::PreviewFrame < Components::Base
     preview_data = actor&.extensions&.dig("preview")
     case preview_data&.dig("type")
     when "Image"
-      image preview_data["url"], preview_data["summary"]
+      image sanitize(preview_data["url"]), sanitize(preview_data["summary"])
     when "Document"
       div class: "card-img-top #{"sensitive" if needs_hiding?}" do
         iframe(
@@ -57,7 +58,7 @@ class Components::PreviewFrame < Components::Base
             preview_data["content"],
             "</body></html>"
           ].join),
-          title: preview_data["summary"]
+          title: sanitize(preview_data["summary"])
         )
       end
     else

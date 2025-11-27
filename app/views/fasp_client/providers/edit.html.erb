@@ -1,4 +1,4 @@
-<h3>FASP: <%= link_to @provider.name, @provider.base_url %></h3>
+<h3>FASP: <%= link_to sanitize(@provider.name), sanitize(@provider.base_url) %></h3>
 
 <div class="row">
   <div class="col-md-4">
@@ -20,10 +20,10 @@
       <div class="card-body">
         <ul>
           <% if @provider.privacy_policy.any? %>
-            <li><%= link_to t(".privacy_policy"), @provider.privacy_policy.first["url"] %></li>
+            <li><%= link_to t(".privacy_policy"), sanitize(@provider.privacy_policy.first["url"]) %></li>
           <% end %>
           <% if @provider.sign_in_url %>
-            <li><%= link_to t(".sign_in"), @provider.sign_in_url %></li>
+            <li><%= link_to t(".sign_in"), sanitize(@provider.sign_in_url) %></li>
           <% end %>
         </ul>
       </div>
@@ -36,10 +36,10 @@
       </div>
       <div class="card-body">
         <% if @provider.contact_email %>
-          <p><%= t ".email" %>: <%= link_to @provider.contact_email, "mailto:#{@provider.contact_email}" %></p>
+          <p><%= t ".email" %>: <%= link_to sanitize(@provider.contact_email), "mailto:#{@provider.contact_email}" %></p>
         <% end %>
         <% if @provider.fediverse_account %>
-          <p><%= t ".fediverse_account" %>: <%= @provider.fediverse_account %></p>
+          <p><%= t ".fediverse_account" %>: <%= sanitize(@provider.fediverse_account) %></p>
         <% end %>
       </div>
     </div>
@@ -51,7 +51,7 @@
     <p><%= t ".approval_help" %>
     <p>
       <%= t ".fingerprint" %>:
-      <code><%= @provider.fingerprint %></code>
+      <code><%= sanitize(@provider.fingerprint) %></code>
     </p>
     <%= button_to t(".approve"), @provider, method: :patch, params: {provider: {status: "approved"}}, form: {style: "display: inline"}, class: "btn btn-success" %>
     <%= button_to t(".deny"), @provider, method: :patch, params: {provider: {status: "denied"}}, form: {style: "display: inline"}, class: "btn btn-danger" %>
