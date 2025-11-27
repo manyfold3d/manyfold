@@ -5,6 +5,9 @@ class Components::ActorCard < Components::ModelCard
     @actor = actor
   end
 
+  def before_template
+  end
+
   def view_template
     div class: "col col-3 mb-4" do
       div class: "card preview-card" do
