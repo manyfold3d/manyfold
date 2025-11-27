@@ -27,7 +27,7 @@ RSpec.describe "OAuth access token request", :after_first_run do
     end
 
     it "rate limits token requests" do
-      Rails.cache.increment("rate-limit:doorkeeper/tokens:127.0.0.1", 10, expires_in: 1.minute)
+      Rails.cache.increment("rate-limit:doorkeeper_tokens:127.0.0.1", 10, expires_in: 1.minute)
       post "/oauth/token", params: client_credentials_params
       expect(response).to have_http_status :too_many_requests
     end
