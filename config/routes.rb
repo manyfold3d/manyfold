@@ -161,9 +161,10 @@ Rails.application.routes.draw do
   mount Rswag::Api::Engine => "/api"
 
   use_doorkeeper do
-    skip_controllers :applications
+    skip_controllers :applications, :tokens
   end
   resources :doorkeeper_applications, path: "/oauth/applications"
+  resources :doorkeeper_tokens, path: "/oauth/token"
 
   # Fallback routes for filename matching and signed downloads
   get "/models/:model_id/model_files/signed/:sig/*id" => "model_files#show", :as => "model_model_file_by_signed_filename"

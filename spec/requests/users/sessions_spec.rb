@@ -42,6 +42,27 @@ RSpec.describe "Users::Sessions" do
           expect(response).to have_http_status(:success)
         end
       end
+
+      describe "POST /users/sign_in" do
+        let(:password) { SecureRandom.hex }
+        let(:admin) { create(:admin, password: password, password_confirmation: password) }
+
+        it "succeeds and redirects to homepage with good credentials" do
+          post "/users/sign_in", params: {user: {email: admin.email, password: password}}
+          expect(response).to redirect_to("/")
+        end
+
+        it "fails with bad credentials" do
+          post "/users/sign_in", params: {user: {email: admin.email, password: "nope"}}
+          expect(response).to have_http_status :unprocessable_content
+        end
+
+        it "rate limits login attempts" do
+          Rails.cache.increment("rate-limit:users/sessions:127.0.0.1", 10, expires_in: 1.minute)
+          post "/users/sign_in", params: {user: {email: admin.email, password: password}}
+          expect(response).to have_http_status :too_many_requests
+        end
+      end
     end
 
     context "when signed in", :as_member do
