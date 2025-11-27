@@ -86,6 +86,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/matty14892"><img src="https://avatars.githubusercontent.com/u/242932855?v=4?s=100" width="100px;" alt="matty14892"/><br /><sub><b>matty14892</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/issues?q=author%3Amatty14892" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mcsgroi"><img src="https://avatars.githubusercontent.com/u/8921172?v=4?s=100" width="100px;" alt="mcsgroi"/><br /><sub><b>mcsgroi</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/commits?author=mcsgroi" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/OlegEnot"><img src="https://avatars.githubusercontent.com/u/121382147?v=4?s=100" width="100px;" alt="olegenot"/><br /><sub><b>olegenot</b></sub></a><br /><a href="#translation-OlegEnot" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/thechickenmoo"><img src="https://avatars.githubusercontent.com/u/3395535?v=4?s=100" width="100px;" alt="thechickenmoo"/><br /><sub><b>thechickenmoo</b></sub></a><br /><a href="https://github.com/manyfold3d/manyfold/issues?q=author%3Athechickenmoo" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
   <tfoot>
