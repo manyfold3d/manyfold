@@ -11,8 +11,8 @@ class Components::BurgerMenu < Components::Base
   def view_template
     classes = %w[btn btn-secondary]
     classes << "btn-sm" if @small
-    div data: @data, class: ("dropup" if @direction == :up) do
-      a id: @id,
+    div id: @id, data: @data, class: ("dropup" if @direction == :up) do
+      a id: @id + "-anchor",
         href: "#",
         data: {
           bs_toggle: "dropdown"
@@ -29,7 +29,7 @@ class Components::BurgerMenu < Components::Base
       ul class: "dropdown-menu dropdown-menu-end",
         id: "#{@id}-menu",
         role: "menu",
-        aria: {labelledby: @id} do
+        aria: {labelledby: @id + "-anchor"} do
         yield
       end
     end
