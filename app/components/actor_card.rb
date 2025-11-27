@@ -39,7 +39,7 @@ class Components::ActorCard < Components::ModelCard
       icon = f3di_icon_for(@actor.extensions&.dig("f3di:concreteType"))
       icon ? Icon(icon: icon) : span { "⁂" }
       whitespace
-      span { @actor.name }
+      span { sanitize(@actor.name) }
     end
   end
 

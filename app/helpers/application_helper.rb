@@ -249,10 +249,10 @@ module ApplicationHelper
   def server_indicator(object, full_address: false)
     actor = object.respond_to?(:federails_actor) ? object.federails_actor : object
     return if !SiteSettings.federation_enabled? || actor.local?
-    link_to actor.profile_url, class: "link-primary link-underline-opacity-0 link-underline-opacity-100-hover" do
+    link_to sanitize(actor.profile_url), class: "link-primary link-underline-opacity-0 link-underline-opacity-100-hover" do
       safe_join([
         "⁂",
-        full_address ? actor.at_address : actor.server
+        sanitize(full_address ? actor.at_address : actor.server)
       ], " ")
     end
   end
