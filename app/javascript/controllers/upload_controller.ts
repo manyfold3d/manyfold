@@ -3,6 +3,7 @@ import { Controller } from '@hotwired/stimulus'
 import Uppy from '@uppy/core'
 import Dashboard from '@uppy/dashboard'
 import Tus from '@uppy/tus'
+import Url from '@uppy/url'
 
 import cs from '@uppy/locales/lib/cs_CZ'
 import de from '@uppy/locales/lib/de_DE'
@@ -35,6 +36,12 @@ export default class extends Controller {
         maxFileSize: +(settings?.maxFileSize ?? -1)
       }
     })
+      .use(Url, {
+        companionUrl: '/uppy_companion',
+        companionHeaders: {
+          "X-CSRF-Token": (document.head.querySelector("meta[name=csrf-token]") as HTMLMetaElement)?.content
+        }
+      })
       .use(Dashboard, {
         inline: true,
         target: this.element,
