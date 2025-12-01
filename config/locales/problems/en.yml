@@ -43,7 +43,7 @@ en:
         description_html: This model contains no files. Either delete it, or find where its files went!
         title: No files
       file_naming:
-        description_html: The model folder path doesn't match the path template.
+        description_html: The model folder path doesn't match the path template. Expected <code>%{note}</code>.
         title: Path does not match template
       missing:
         description_html: The folder for this model is missing on disk; either delete it, or find where it went!
