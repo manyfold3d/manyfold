@@ -40,54 +40,54 @@ pl:
         title:
     model:
       empty:
-        description: Ten model nie zawiera żadnych plików. Usuń go albo znajdź miejsce, w którym znalazły się jego pliki!
+        description_html: Ten model nie zawiera żadnych plików. Usuń go albo znajdź miejsce, w którym znalazły się jego pliki!
         title: Brak plików
       file_naming:
-        description:
+        description_html:
         title:
       missing:
-        description: Na dysku brakuje folderu dla tego modelu. Usuń go albo znajdź miejsce, w którym się znalazł!
+        description_html: Na dysku brakuje folderu dla tego modelu. Usuń go albo znajdź miejsce, w którym się znalazł!
         title: Nie znaleziono folderu
       nesting:
-        description: Folder modeli na dysku zawiera inne modele. Można je połączyć z tym folderem lub przenieść je.
+        description_html: Folder modeli na dysku zawiera inne modele. Można je połączyć z tym folderem lub przenieść je.
         title: Zawiera inne modele
         warning: Scalanie zbiorcze przenosi wszystkie pliki z powyższych modeli do tego i usuwa je. Metadane plików zostaną zachowane, ale wszelkie metadane modeli zostaną utracone!
       no_3d_model:
-        description: Ten model nie zawiera plików 3D. Jest mało prawdopodobne, by było to zamierzone.
+        description_html: Ten model nie zawiera plików 3D. Jest mało prawdopodobne, by było to zamierzone.
         title: Brak plików 3D w modelu
       no_creator:
-        description: Nie wiemy, kto stworzył ten model; dodaj twórcę, by pomóc w katalogowaniu!
+        description_html: Nie wiemy, kto stworzył ten model; dodaj twórcę, by pomóc w katalogowaniu!
         title: Model nie jest przypisany do twórcy
       no_image:
-        description: Ten model nie zawiera plików graficznych. Dodanie jednego może ułatwić przeglądanie.
+        description_html: Ten model nie zawiera plików graficznych. Dodanie jednego może ułatwić przeglądanie.
         title: Brak plików graficznych w modelu
       no_license:
-        description: Ten model nie ma określonej licencji. Dodanie jej wyjaśni, czy i w jaki sposób można go udostępniać.
+        description_html: Ten model nie ma określonej licencji. Dodanie jej wyjaśni, czy i w jaki sposób można go udostępniać.
         title: Model nie ma informacji o licencji
       no_links:
-        description: Ten model nie ma linków do innych źródeł. Jeśli jest on również dostępny w innych miejscach, możesz chcieć dodać do nich link.
+        description_html: Ten model nie ma linków do innych źródeł. Jeśli jest on również dostępny w innych miejscach, możesz chcieć dodać do nich link.
         title: Model nie ma linków źródłowych
       no_tags:
-        description: Ten model nie został otagowany, co utrudnia jego znalezienie. Dodaj tagi, aby to zmienić!
+        description_html: Ten model nie został otagowany, co utrudnia jego znalezienie. Dodaj tagi, aby to zmienić!
         title: Model nie posiada żadnych tagów
     model_file:
       duplicate:
-        description: Ten plik jest zduplikowany w innych modelach. Niektóre z nich można usunąć.
+        description_html: Ten plik jest zduplikowany w innych modelach. Niektóre z nich można usunąć.
         title: Zduplikowany plik
       empty:
-        description: Ten plik ma zerową długość! Jest to najprawdopodobniej nieprawidłowe; usuń plik albo ponownie zeskanuj model, aby sprawdzić ponownie.
+        description_html: Ten plik ma zerową długość! Jest to najprawdopodobniej nieprawidłowe; usuń plik albo ponownie zeskanuj model, aby sprawdzić ponownie.
         title: Pusty plik
       inefficient:
-        description: Ten plik jest w %{note}, niewydajnym formacie pliku. Rozważ jego konwersję do formatu binarnego, takiego jak 3MF, aby zaoszczędzić miejsce na dysku.
+        description_html: Ten plik jest w %{note}, niewydajnym formacie pliku. Rozważ jego konwersję do formatu binarnego, takiego jak 3MF, aby zaoszczędzić miejsce na dysku.
         title: Nieefektywny format
       inside_out:
-        description: Ta siatka wygląda, jakby jej ściany były skierowane w niewłaściwą stronę, co może powodować błędy drukowania. Napraw ją w narzędziu do modelowania 3D, takim jak MeshLab lub 3D Builder.
+        description_html: Ta siatka wygląda, jakby jej ściany były skierowane w niewłaściwą stronę, co może powodować błędy drukowania. Napraw ją w narzędziu do modelowania 3D, takim jak MeshLab lub 3D Builder.
         title: Siatka skierowana środkiem na zewnątrz
       missing:
-        description: Tego pliku brakuje na dysku; usuń go albo znajdź gdzie się znajduje!
+        description_html: Tego pliku brakuje na dysku; usuń go albo znajdź gdzie się znajduje!
         title: Nie znaleziono pliku
       non_manifold:
-        description: Ta siatka wydaje się być nierozmaita, co oznacza, że ma dziury lub niektóre jej ściany są odwrócone i może powodować błędy podczas drukowania. Napraw ją w narzędziu do modelowania 3D, takim jak MeshLab lub 3D Builder.
+        description_html: Ta siatka wydaje się być nierozmaita, co oznacza, że ma dziury lub niektóre jej ściany są odwrócone i może powodować błędy podczas drukowania. Napraw ją w narzędziu do modelowania 3D, takim jak MeshLab lub 3D Builder.
         title: Siatka nierozmaita
     severities:
       danger: Niebezpieczeństwo

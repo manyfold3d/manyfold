@@ -40,54 +40,54 @@ de:
         title: HTTP-Fehler beim Abrufen des Links
     model:
       empty:
-        description: Dieses Modell enthält keine Dateien. Entweder löschen Sie es oder finde heraus, wo sie sind!
+        description_html: Dieses Modell enthält keine Dateien. Entweder löschen Sie es oder finde heraus, wo sie sind!
         title: Keine Dateien
       file_naming:
-        description: Der Pfad des Modell-Ordners stimmt nicht mit der Vorlage überein.
+        description_html: Der Pfad des Modell-Ordners stimmt nicht mit der Vorlage überein.
         title: Der Pfad stimmt nicht mit der Vorlage überein
       missing:
-        description: Der Ordner für dieses Modell fehlt auf der Festplatte; lösche ihn, oder finde heraus, wo er ist!
+        description_html: Der Ordner für dieses Modell fehlt auf der Festplatte; lösche ihn, oder finde heraus, wo er ist!
         title: Ordner nicht gefunden
       nesting:
-        description: Der Modellordner auf der Festplatte enthält weitere Modelle. Du kannst sie mit diesem Ordner zusammenführen oder auslagern.
+        description_html: Der Modellordner auf der Festplatte enthält weitere Modelle. Du kannst sie mit diesem Ordner zusammenführen oder auslagern.
         title: Enthält andere Modelle
         warning: Beim Zusammenfassen werden alle Dateien aus den oben genannten Modellen in dieses Modell verschoben und entfernt. Die Datei-Metadaten bleiben erhalten, aber alle Modell-Metadaten gehen verloren!
       no_3d_model:
-        description: Dieses Modell enthält keine 3D-Dateien. Es ist unwahrscheinlich, dass dies korrekt ist.
+        description_html: Dieses Modell enthält keine 3D-Dateien. Es ist unwahrscheinlich, dass dies korrekt ist.
         title: Keine 3D-Dateien im Modell
       no_creator:
-        description: Wir wissen nicht, wer dieses Modell hergestellt hat; füge einen Ersteller hinzu, um bei der Katalogisierung zu helfen!
+        description_html: Wir wissen nicht, wer dieses Modell hergestellt hat; füge einen Ersteller hinzu, um bei der Katalogisierung zu helfen!
         title: Modell ist keinem Ersteller zugeordnet
       no_image:
-        description: Dieses Modell enthält keine Bilddateien. Das Hinzufügen einer solchen Datei könnte die Suche erleichtern.
+        description_html: Dieses Modell enthält keine Bilddateien. Das Hinzufügen einer solchen Datei könnte die Suche erleichtern.
         title: Keine Bilddateien im Modell
       no_license:
-        description: Für dieses Modell gibt es keine spezielle Lizenz. Wenn du eine hinzufügst, wird es klarer, ob und wie es genutzt werden kann.
+        description_html: Für dieses Modell gibt es keine spezielle Lizenz. Wenn du eine hinzufügst, wird es klarer, ob und wie es genutzt werden kann.
         title: Modell hat keine Lizenzinformationen
       no_links:
-        description: Dieses Modell hat keine Links zu anderen Quellen. Wenn es auch anderswo erhältlich ist, solltest du einen Link hinzu fügen.
+        description_html: Dieses Modell hat keine Links zu anderen Quellen. Wenn es auch anderswo erhältlich ist, solltest du einen Link hinzu fügen.
         title: Modell hat keinen Link zur Quelle
       no_tags:
-        description: Dieses Modell wurde nicht getaggt, was die Suche erschwert. Füge Tags hinzu, um die suche zu unterstützen!
+        description_html: Dieses Modell wurde nicht getaggt, was die Suche erschwert. Füge Tags hinzu, um die suche zu unterstützen!
         title: Modell hat keine Tags
     model_file:
       duplicate:
-        description: Diese Datei ist in anderen Modellen dupliziert. Vielleicht möchten Sie einige davon entfernen.
+        description_html: Diese Datei ist in anderen Modellen dupliziert. Vielleicht möchten Sie einige davon entfernen.
         title: Doppelte Datei
       empty:
-        description: Diese Datei hat eine Länge von Null! Dies ist höchstwahrscheinlich falsch; entferne entweder die Datei oder scanne das Modell erneut, um es zu überprüfen.
+        description_html: Diese Datei hat eine Länge von Null! Dies ist höchstwahrscheinlich falsch; entferne entweder die Datei oder scanne das Modell erneut, um es zu überprüfen.
         title: Leere Datei
       inefficient:
-        description: Diese Datei ist in %{note}, einem ineffizienten Dateiformat. Erwäge, sie in ein Binärformat wie 3MF zu konvertieren, um Speicherplatz zu sparen.
+        description_html: Diese Datei ist in %{note}, einem ineffizienten Dateiformat. Erwäge, sie in ein Binärformat wie 3MF zu konvertieren, um Speicherplatz zu sparen.
         title: Ineffizientes Format
       inside_out:
-        description: Dieses Mesh sieht aus, als ob seine Flächen in die falsche Richtung zeigen, was zu Druckfehlern führen kann. Repariere es in einem 3D-Modellierungstool wie MeshLab oder 3D Builder.
+        description_html: Dieses Mesh sieht aus, als ob seine Flächen in die falsche Richtung zeigen, was zu Druckfehlern führen kann. Repariere es in einem 3D-Modellierungstool wie MeshLab oder 3D Builder.
         title: Mesh ist "verdreht"
       missing:
-        description: Diese Datei fehlt auf der Festplatte; lösche sie, oder finden heraus, wo sie ist!
+        description_html: Diese Datei fehlt auf der Festplatte; lösche sie, oder finden heraus, wo sie ist!
         title: Datei nicht gefunden
       non_manifold:
-        description: Dieses Mesh ist unbekannt, es hat Löcher und manche Flächen zeigen in die Falsche Richtung, was zu Druckfehlern führen kann. Repariere es in einem 3D-Modellierungstool wie MeshLab oder 3D Builder.
+        description_html: Dieses Mesh ist unbekannt, es hat Löcher und manche Flächen zeigen in die Falsche Richtung, was zu Druckfehlern führen kann. Repariere es in einem 3D-Modellierungstool wie MeshLab oder 3D Builder.
         title: Unbekanntes Mesh
     severities:
       danger: Gefahr

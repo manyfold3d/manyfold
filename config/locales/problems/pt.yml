@@ -40,54 +40,54 @@ pt:
         title:
     model:
       empty:
-        description:
+        description_html:
         title:
       file_naming:
-        description:
+        description_html:
         title:
       missing:
-        description:
+        description_html:
         title:
       nesting:
-        description:
+        description_html:
         title:
         warning:
       no_3d_model:
-        description:
+        description_html:
         title:
       no_creator:
-        description:
+        description_html:
         title:
       no_image:
-        description:
+        description_html:
         title:
       no_license:
-        description:
+        description_html:
         title:
       no_links:
-        description:
+        description_html:
         title:
       no_tags:
-        description:
+        description_html:
         title:
     model_file:
       duplicate:
-        description:
+        description_html:
         title:
       empty:
-        description:
+        description_html:
         title:
       inefficient:
-        description:
+        description_html:
         title:
       inside_out:
-        description:
+        description_html:
         title:
       missing:
-        description:
+        description_html:
         title:
       non_manifold:
-        description:
+        description_html:
         title:
     severities:
       danger:

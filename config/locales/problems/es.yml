@@ -40,54 +40,54 @@ es:
         title: Error HTTP al buscar el enlace
     model:
       empty:
-        description: Este modelo no contiene archivos. Elimínelo o encuentre dónde están sus archivos
+        description_html: Este modelo no contiene archivos. Elimínelo o encuentre dónde están sus archivos
         title: No hay archivos
       file_naming:
-        description: La ruta de la carpeta del modelo no coincide con la plantilla de ruta.
+        description_html: La ruta de la carpeta del modelo no coincide con la plantilla de ruta.
         title: La ruta no coincide con la plantilla
       missing:
-        description: La carpeta de este modelo no está en el disco. Elimínela o averigua dónde está
+        description_html: La carpeta de este modelo no está en el disco. Elimínela o averigua dónde está
         title: Carpeta no encontrada
       nesting:
-        description: La carpeta del modelo contiene otros modelos. Puedes optar por combinarlos en este o eliminarlos.
+        description_html: La carpeta del modelo contiene otros modelos. Puedes optar por combinarlos en este o eliminarlos.
         title: Contiene otros modelos
         warning: La fusión masiva mueve todos los archivos de los modelos anteriores a éste, y los elimina. Se conservan los metadatos de los archivos, pero se perderán los metadatos de los modelos
       no_3d_model:
-        description: Este modelo no contiene archivos 3D. Es poco probable que sea correcto.
+        description_html: Este modelo no contiene archivos 3D. Es poco probable que sea correcto.
         title: No hay archivos 3D en el modelo
       no_creator:
-        description: No sabemos quién hizo este modelo; ¡añade un creador para ayudar con la catalogación!
+        description_html: No sabemos quién hizo este modelo; ¡añade un creador para ayudar con la catalogación!
         title: El modelo no tiene asignado un creador
       no_image:
-        description: Este modelo no contiene archivos de imagen. Añadir uno podría facilitar la navegación.
+        description_html: Este modelo no contiene archivos de imagen. Añadir uno podría facilitar la navegación.
         title: No hay imagenes en el modelo
       no_license:
-        description: Este modelo no tiene una licencia especificada. Si se añade una, quedará más claro si se puede compartir y cómo.
+        description_html: Este modelo no tiene una licencia especificada. Si se añade una, quedará más claro si se puede compartir y cómo.
         title: El modelo no tiene información de licencia
       no_links:
-        description: Este modelo no tiene enlaces a otras fuentes. Si también está disponible en otro lugar, es posible que desee añadir un enlace hacia él.
+        description_html: Este modelo no tiene enlaces a otras fuentes. Si también está disponible en otro lugar, es posible que desee añadir un enlace hacia él.
         title: El modelo no tiene enlaces
       no_tags:
-        description: Este modelo no ha sido etiquetado, lo que dificulta su búsqueda. ¡Añade algunas etiquetas para ayudar!
+        description_html: Este modelo no ha sido etiquetado, lo que dificulta su búsqueda. ¡Añade algunas etiquetas para ayudar!
         title: El modelo no tiene ninguna etiqueta
     model_file:
       duplicate:
-        description: Este archivo está duplicado en otros modelos. Es posible que desee eliminar algunos.
+        description_html: Este archivo está duplicado en otros modelos. Es posible que desee eliminar algunos.
         title: Archivo duplicado
       empty:
-        description: "¡El archivo no contiene datos! Esto probablemente sea un error. Elimina el archivo o realiza un nuevo escaneo del modelo para verificar."
+        description_html: "¡El archivo no contiene datos! Esto probablemente sea un error. Elimina el archivo o realiza un nuevo escaneo del modelo para verificar."
         title: Archivo vacío
       inefficient:
-        description: Este archivo está en %{note}, un formato de archivo no recomendado. Considera la posibilidad de convertirlo a un formato binario como 3MF para ahorrar espacio en disco.
+        description_html: Este archivo está en %{note}, un formato de archivo no recomendado. Considera la posibilidad de convertirlo a un formato binario como 3MF para ahorrar espacio en disco.
         title: Formato no recomendado
       inside_out:
-        description: Las caras de esta malla podrían estar apuntando en la dirección equivocada, lo que podría causar errores de impresión. Repárela en una herramienta de modelado 3D como MeshLab o 3D Builder.
+        description_html: Las caras de esta malla podrían estar apuntando en la dirección equivocada, lo que podría causar errores de impresión. Repárela en una herramienta de modelado 3D como MeshLab o 3D Builder.
         title: Malla invertida
       missing:
-        description: Este archivo no está en el disco. Elimínelo o busque dónde se encuentra
+        description_html: Este archivo no está en el disco. Elimínelo o busque dónde se encuentra
         title: Archivo no encontrado
       non_manifold:
-        description: Esta malla parece no ser valida, lo que significa que tiene agujeros o tiene algunas caras al revés, lo que puede causar errores cuando se imprima. Repárela en una herramienta de modelado 3D como MeshLab o 3D Builder.
+        description_html: Esta malla parece no ser valida, lo que significa que tiene agujeros o tiene algunas caras al revés, lo que puede causar errores cuando se imprima. Repárela en una herramienta de modelado 3D como MeshLab o 3D Builder.
         title: La malla no es válida
     severities:
       danger: Peligro

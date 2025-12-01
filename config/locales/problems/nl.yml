@@ -40,54 +40,54 @@ nl:
         title:
     model:
       empty:
-        description: Dit model bevat geen bestanden. Verwijder het of zoek uit waar de bestanden zijn gebleven!
+        description_html: Dit model bevat geen bestanden. Verwijder het of zoek uit waar de bestanden zijn gebleven!
         title: Geen bestanden
       file_naming:
-        description:
+        description_html:
         title:
       missing:
-        description: De map voor dit model ontbreekt op schijf; verwijder het of zoek uit waar het is gebleven!
+        description_html: De map voor dit model ontbreekt op schijf; verwijder het of zoek uit waar het is gebleven!
         title: Map niet gevonden
       nesting:
-        description: De modelmap op schijf bevat andere modellen. Je kunt ze samenvoegen in dit model of ze verplaatsen.
+        description_html: De modelmap op schijf bevat andere modellen. Je kunt ze samenvoegen in dit model of ze verplaatsen.
         title: Bevat andere modellen
         warning: Bulksgewijs samenvoegen verplaatst alle bestanden van bovenstaande modellen naar dit model en verwijdert ze. Bestandsmetadata blijft behouden, maar modelmetadata gaat verloren!
       no_3d_model:
-        description: Dit model bevat geen 3D-bestanden. Dat is waarschijnlijk niet correct.
+        description_html: Dit model bevat geen 3D-bestanden. Dat is waarschijnlijk niet correct.
         title: Geen 3D-bestanden in model
       no_creator:
-        description: We weten niet wie dit model heeft gemaakt; voeg een maker toe om te helpen bij het catalogiseren!
+        description_html: We weten niet wie dit model heeft gemaakt; voeg een maker toe om te helpen bij het catalogiseren!
         title: Model is niet toegewezen aan een maker
       no_image:
-        description: Dit model bevat geen afbeeldingsbestanden. Het toevoegen van een afbeelding kan het bladeren makkelijker maken.
+        description_html: Dit model bevat geen afbeeldingsbestanden. Het toevoegen van een afbeelding kan het bladeren makkelijker maken.
         title: Geen afbeeldingsbestanden in model
       no_license:
-        description: Dit model heeft geen gespecificeerde licentie. Het toevoegen van een licentie maakt duidelijker of en hoe het kan worden gedeeld.
+        description_html: Dit model heeft geen gespecificeerde licentie. Het toevoegen van een licentie maakt duidelijker of en hoe het kan worden gedeeld.
         title: Model heeft geen licentie-informatie
       no_links:
-        description: Dit model heeft geen links naar andere bronnen. Als het ook elders beschikbaar is, kun je een link toevoegen.
+        description_html: Dit model heeft geen links naar andere bronnen. Als het ook elders beschikbaar is, kun je een link toevoegen.
         title: Model heeft geen bronlinks
       no_tags:
-        description: Dit model heeft geen tags, wat het moeilijker maakt om te vinden. Voeg wat tags toe om te helpen!
+        description_html: Dit model heeft geen tags, wat het moeilijker maakt om te vinden. Voeg wat tags toe om te helpen!
         title: Model heeft geen tags
     model_file:
       duplicate:
-        description: Dit bestand is gedupliceerd in andere modellen. Je kunt er eventueel enkele verwijderen.
+        description_html: Dit bestand is gedupliceerd in andere modellen. Je kunt er eventueel enkele verwijderen.
         title: Gedupliceerd bestand
       empty:
-        description: Dit bestand heeft een grootte van nul! Dit is waarschijnlijk niet correct; verwijder het bestand of scan het model opnieuw om te controleren.
+        description_html: Dit bestand heeft een grootte van nul! Dit is waarschijnlijk niet correct; verwijder het bestand of scan het model opnieuw om te controleren.
         title: Leeg bestand
       inefficient:
-        description: Dit bestand is in %{note}, een inefficiënt bestandsformaat. Overweeg het te converteren naar een binair formaat zoals 3MF om schijfruimte te besparen.
+        description_html: Dit bestand is in %{note}, een inefficiënt bestandsformaat. Overweeg het te converteren naar een binair formaat zoals 3MF om schijfruimte te besparen.
         title: Inefficiënt formaat
       inside_out:
-        description: Deze mesh lijkt vlakken te hebben die de verkeerde kant op wijzen, wat printfouten kan veroorzaken. Repareer het in een 3D-modelleertool zoals MeshLab of 3D Builder.
+        description_html: Deze mesh lijkt vlakken te hebben die de verkeerde kant op wijzen, wat printfouten kan veroorzaken. Repareer het in een 3D-modelleertool zoals MeshLab of 3D Builder.
         title: Binnenstebuiten mesh
       missing:
-        description: Dit bestand ontbreekt op schijf; verwijder het of zoek uit waar het is gebleven!
+        description_html: Dit bestand ontbreekt op schijf; verwijder het of zoek uit waar het is gebleven!
         title: Bestand niet gevonden
       non_manifold:
-        description: Deze mesh lijkt niet-manifold te zijn, wat betekent dat er gaten zijn of sommige vlakken achterstevoren zitten, en dit kan fouten veroorzaken bij het printen. Repareer het in een 3D-modelleertool zoals MeshLab of 3D Builder.
+        description_html: Deze mesh lijkt niet-manifold te zijn, wat betekent dat er gaten zijn of sommige vlakken achterstevoren zitten, en dit kan fouten veroorzaken bij het printen. Repareer het in een 3D-modelleertool zoals MeshLab of 3D Builder.
         title: Niet-manifold mesh
     severities:
       danger: Gevaar

@@ -40,54 +40,54 @@ en:
         title: HTTP error fetching link
     model:
       empty:
-        description: This model contains no files. Either delete it, or find where its files went!
+        description_html: This model contains no files. Either delete it, or find where its files went!
         title: No files
       file_naming:
-        description: The model folder path doesn't match the path template.
+        description_html: The model folder path doesn't match the path template.
         title: Path does not match template
       missing:
-        description: The folder for this model is missing on disk; either delete it, or find where it went!
+        description_html: The folder for this model is missing on disk; either delete it, or find where it went!
         title: Folder not found
       nesting:
-        description: The model folder on disk contains other models. You may wish to merge them into this one, or move them out.
+        description_html: The model folder on disk contains other models. You may wish to merge them into this one, or move them out.
         title: Contains other models
         warning: Bulk merging moves all files from the models above into this one, and removes them. File metadata is preserved, but any model metadata will be lost!
       no_3d_model:
-        description: This model contains no 3D files. That is unlikely to be correct.
+        description_html: This model contains no 3D files. That is unlikely to be correct.
         title: No 3D files in model
       no_creator:
-        description: We don't know who made this model; add a creator to help with cataloguing!
+        description_html: We don't know who made this model; add a creator to help with cataloguing!
         title: Model is not attributed to a creator
       no_image:
-        description: This model contains no image files. Adding one might make it easier to browse.
+        description_html: This model contains no image files. Adding one might make it easier to browse.
         title: No image files in model
       no_license:
-        description: This model doesn't have a specified license. Adding one will make it clearer if and how it can be shared.
+        description_html: This model doesn't have a specified license. Adding one will make it clearer if and how it can be shared.
         title: Model has no license information
       no_links:
-        description: This model has no links to other sources. If it's also available elsewhere, you might want to add a link to it.
+        description_html: This model has no links to other sources. If it's also available elsewhere, you might want to add a link to it.
         title: Model has no source links
       no_tags:
-        description: This model has not been tagged, which makes it harder to find. Add some tags to help!
+        description_html: This model has not been tagged, which makes it harder to find. Add some tags to help!
         title: Model does not have any tags
     model_file:
       duplicate:
-        description: This file is duplicated in other models. You may wish to remove some.
+        description_html: This file is duplicated in other models. You may wish to remove some.
         title: Duplicated file
       empty:
-        description: This file is zero-length! This is most likely incorrect; either remove the file or rescan the model to recheck.
+        description_html: This file is zero-length! This is most likely incorrect; either remove the file or rescan the model to recheck.
         title: Empty file
       inefficient:
-        description: This file is in %{note}, an inefficient file format. Consider converting it to a binary format such as 3MF to save disk space.
+        description_html: This file is in %{note}, an inefficient file format. Consider converting it to a binary format such as 3MF to save disk space.
         title: Inefficient format
       inside_out:
-        description: This mesh looks like its faces might be pointed the wrong way, which could cause print errors. Repair it in a 3d modeling tool such as MeshLab or 3D Builder.
+        description_html: This mesh looks like its faces might be pointed the wrong way, which could cause print errors. Repair it in a 3d modeling tool such as MeshLab or 3D Builder.
         title: Inside-out mesh
       missing:
-        description: This file is missing on disk; either delete it, or find where it went!
+        description_html: This file is missing on disk; either delete it, or find where it went!
         title: File not found
       non_manifold:
-        description: This mesh appears to be non-manifold, meaning it has holes or has some faces backwards, and may cause errors when printed. Repair it in a 3d modeling tool such as MeshLab or 3D Builder.
+        description_html: This mesh appears to be non-manifold, meaning it has holes or has some faces backwards, and may cause errors when printed. Repair it in a 3d modeling tool such as MeshLab or 3D Builder.
         title: Non-manifold mesh
     severities:
       danger: Danger
