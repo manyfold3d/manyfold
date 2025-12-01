@@ -14,7 +14,7 @@ class Scan::Model::CheckForProblemsJob < ApplicationJob
     Problem.create_or_clear model, :no_links, model.links.empty?
     Problem.create_or_clear model, :no_creator, model.creator.nil?
     Problem.create_or_clear model, :no_tags, model.tag_list.empty?
-    Problem.create_or_clear model, :file_naming, model.needs_organizing? && !model.contains_other_models?
+    Problem.create_or_clear model, :file_naming, (model.needs_organizing? && !model.contains_other_models?), note: model.formatted_path
     model.model_files.each do |f|
       Problem.create_or_clear(f, :missing, !f.exists_on_storage?)
     end

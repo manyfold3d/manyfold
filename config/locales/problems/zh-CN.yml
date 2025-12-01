@@ -40,54 +40,54 @@ zh-CN:
         title: 获取链接时出现 HTTP 错误
     model:
       empty:
-        description: 该模型不包含任何文件。要么删除它，要么找到它的文件去向！
+        description_html: 该模型不包含任何文件。要么删除它，要么找到它的文件去向！
         title: 无文件
       file_naming:
-        description: 模型文件夹路径与路径模板不匹配。
+        description_html: 模型文件夹路径与路径模板不匹配。
         title: 路径与模板不匹配
       missing:
-        description: 该模型的文件夹在磁盘中丢失；要么删除它，要么找到它的去向！
+        description_html: 该模型的文件夹在磁盘中丢失；要么删除它，要么找到它的去向！
         title: 未找到文件夹
       nesting:
-        description: 磁盘上的模型文件夹包含其他模型。您可能希望将它们合并到这个文件夹中，或者将它们移出。
+        description_html: 磁盘上的模型文件夹包含其他模型。您可能希望将它们合并到这个文件夹中，或者将它们移出。
         title: 包含其他型号
         warning: 批量合并会将上述模型中的所有文件移到这个模型中，并删除它们。文件元数据会被保留，但任何模型元数据都会丢失！
       no_3d_model:
-        description: 该模型不包含 3D 文件。这不可能是正确的。
+        description_html: 该模型不包含 3D 文件。这不可能是正确的。
         title: 模型中没有 3D 文件
       no_creator:
-        description: 我们不知道谁制作了这个模型；请添加一个制作者，以帮助编目！
+        description_html: 我们不知道谁制作了这个模型；请添加一个制作者，以帮助编目！
         title: 模型不属于创作者
       no_image:
-        description: 该模型不包含图像文件。添加一个可能更便于浏览。
+        description_html: 该模型不包含图像文件。添加一个可能更便于浏览。
         title: 模型中没有图像文件
       no_license:
-        description: 该模型没有指定许可证。添加一个许可将更清楚地说明是否可以共享以及如何共享。
+        description_html: 该模型没有指定许可证。添加一个许可将更清楚地说明是否可以共享以及如何共享。
         title: 模型没有许可证信息
       no_links:
-        description: 此模型没有其他来源的链接。如果其他地方也有，您可能需要添加一个链接。
+        description_html: 此模型没有其他来源的链接。如果其他地方也有，您可能需要添加一个链接。
         title: 模型没有源链接
       no_tags:
-        description: 此型号尚未标记，因此更难查找。添加一些标签以帮助查找！
+        description_html: 此型号尚未标记，因此更难查找。添加一些标签以帮助查找！
         title: 模型没有任何标签
     model_file:
       duplicate:
-        description: 此文件在其他模型中重复。您可能希望删除一些。
+        description_html: 此文件在其他模型中重复。您可能希望删除一些。
         title: 重复文件
       empty:
-        description: 该文件长度为零！这很可能是不正确的；要么删除该文件，要么重新扫描模型以重新检查。
+        description_html: 该文件长度为零！这很可能是不正确的；要么删除该文件，要么重新扫描模型以重新检查。
         title: 空文件
       inefficient:
-        description: 该文件为 %{note}，是一种低效文件格式。请考虑将其转换为 3MF 等二进制格式，以节省磁盘空间。
+        description_html: 该文件为 %{note}，是一种低效文件格式。请考虑将其转换为 3MF 等二进制格式，以节省磁盘空间。
         title: 低效格式
       inside_out:
-        description: 该网格的面可能指向错误的方向，这可能会导致打印错误。请使用 3d 建模工具（如 MeshLab 或 3D Builder）进行修复。
+        description_html: 该网格的面可能指向错误的方向，这可能会导致打印错误。请使用 3d 建模工具（如 MeshLab 或 3D Builder）进行修复。
         title: 内侧网眼
       missing:
-        description: 该文件在磁盘上丢失；要么删除它，要么找到它的去向！
+        description_html: 该文件在磁盘上丢失；要么删除它，要么找到它的去向！
         title: 未找到文件
       non_manifold:
-        description: 该网格似乎是非manifold网格，这意味着它有孔洞或有一些面是反向的，打印时可能会出错。请使用 3d 建模工具（如 MeshLab 或 3D Builder）进行修复。
+        description_html: 该网格似乎是非manifold网格，这意味着它有孔洞或有一些面是反向的，打印时可能会出错。请使用 3d 建模工具（如 MeshLab 或 3D Builder）进行修复。
         title: 非成型网
     severities:
       danger: 危险

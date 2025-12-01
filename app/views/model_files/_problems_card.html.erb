@@ -11,7 +11,7 @@
         <div class="card mb-2">
           <div class="card-body">
             <p>
-              <%= t("problems.model_file.%{cat}.description" % {cat: problem.category}, note: problem.note) %>
+              <%= t("problems.model_file.%{cat}.description_html" % {cat: problem.category}, note: problem.note) %>
             </p>
             <% if problem.category == "duplicate" && !@duplicates.empty? %>
               <ul>

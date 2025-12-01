@@ -11,7 +11,7 @@
         <div class="card mb-2">
           <div class="card-body">
             <p>
-              <%= t("problems.model.%{cat}.description" % {cat: problem.category}, note: problem.note) %>
+              <%= t("problems.model.%{cat}.description_html" % {cat: problem.category}, note: problem.note) %>
             </p>
             <% if problem.category == "nesting" && @model.contains_other_models? %>
               <ul>

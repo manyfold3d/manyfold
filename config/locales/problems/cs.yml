@@ -40,54 +40,54 @@ cs:
         title:
     model:
       empty:
-        description: Tento model neobsahuje žádné soubory. Buď ho smažte, nebo zjistěte, kam se jeho soubory poděly!
+        description_html: Tento model neobsahuje žádné soubory. Buď ho smažte, nebo zjistěte, kam se jeho soubory poděly!
         title: Žádné soubory
       file_naming:
-        description:
+        description_html:
         title:
       missing:
-        description: Složka pro tento model na disku chybí; buď ji odstraňte, nebo zjistěte, kam se poděla!
+        description_html: Složka pro tento model na disku chybí; buď ji odstraňte, nebo zjistěte, kam se poděla!
         title: Složka nebyla nalezena
       nesting:
-        description: Složka modelu na disku obsahuje další modely. Možná je budete chtít sloučit do této složky nebo je z ní přesunout.
+        description_html: Složka modelu na disku obsahuje další modely. Možná je budete chtít sloučit do této složky nebo je z ní přesunout.
         title: Obsahuje další modely
         warning: Hromadné sloučení přesune všechny soubory z výše uvedených modelů do tohoto modelu a odstraní je. Metadata souborů zůstanou zachována, ale veškerá metadata modelů budou ztracena!
       no_3d_model:
-        description: Tento model neobsahuje žádné 3D soubory. Je nepravděpodobné, že by to bylo správně.
+        description_html: Tento model neobsahuje žádné 3D soubory. Je nepravděpodobné, že by to bylo správně.
         title: Žádné 3D soubory v modelu
       no_creator:
-        description: Nevíme, kdo tento model vyrobil; přidejte autora, který vám pomůže s katalogizací!
+        description_html: Nevíme, kdo tento model vyrobil; přidejte autora, který vám pomůže s katalogizací!
         title: Model není přiřazen autorovi
       no_image:
-        description: Tento model neobsahuje žádné obrazové soubory. Přidání jednoho z nich by mohlo usnadnit prohlížení.
+        description_html: Tento model neobsahuje žádné obrazové soubory. Přidání jednoho z nich by mohlo usnadnit prohlížení.
         title: V modelu nejsou žádné obrazové soubory
       no_license:
-        description: Tento model nemá specifikovanou licenci. Jejím přidáním bude jasnější, zda a jak může být sdílen.
+        description_html: Tento model nemá specifikovanou licenci. Jejím přidáním bude jasnější, zda a jak může být sdílen.
         title: Model nemá žádné licenční informace
       no_links:
-        description: Tento model nemá žádné odkazy na jiné zdroje. Pokud je k dispozici i jinde, můžete na něj přidat odkaz.
+        description_html: Tento model nemá žádné odkazy na jiné zdroje. Pokud je k dispozici i jinde, můžete na něj přidat odkaz.
         title: Model nemá žádné zdrojové odkazy
       no_tags:
-        description: Tento model nebyl označen štítky, což ztěžuje jeho nalezení. Přidejte nějaké štítky, které pomohou!
+        description_html: Tento model nebyl označen štítky, což ztěžuje jeho nalezení. Přidejte nějaké štítky, které pomohou!
         title: Model nemá žádné štítky
     model_file:
       duplicate:
-        description: Tento soubor je duplikován v jiných modelech. Možná budete chtít některé z nich odstranit.
+        description_html: Tento soubor je duplikován v jiných modelech. Možná budete chtít některé z nich odstranit.
         title: Duplikovaný soubor
       empty:
-        description: Tento soubor má nulovou délku! Pravděpodobně se jedná o chybu; buď soubor odstraňte, nebo model znovu zkontrolujte.
+        description_html: Tento soubor má nulovou délku! Pravděpodobně se jedná o chybu; buď soubor odstraňte, nebo model znovu zkontrolujte.
         title: Prázdný soubor
       inefficient:
-        description: Tento soubor je ve formátu %{note}, který je neefektivní. Zvažte jeho konverzi do binárního formátu, například 3MF, abyste ušetřili místo na disku.
+        description_html: Tento soubor je ve formátu %{note}, který je neefektivní. Zvažte jeho konverzi do binárního formátu, například 3MF, abyste ušetřili místo na disku.
         title: Neefektivní formát
       inside_out:
-        description: Tato model vypadá, že jeho plochy mohou být nasměrovány špatným směrem, což by mohlo způsobit chyby při tisku. Opravte ji v nástroji pro 3D modelování, jako je MeshLab nebo 3D Builder.
+        description_html: Tato model vypadá, že jeho plochy mohou být nasměrovány špatným směrem, což by mohlo způsobit chyby při tisku. Opravte ji v nástroji pro 3D modelování, jako je MeshLab nebo 3D Builder.
         title: Model je naruby
       missing:
-        description: Tento soubor na disku chybí; buď jej odstraňte, nebo zjistěte, kam se ztratil!
+        description_html: Tento soubor na disku chybí; buď jej odstraňte, nebo zjistěte, kam se ztratil!
         title: Soubor nebyl nalezen
       non_manifold:
-        description: Tato síť se jeví jako nemanifoldní, což znamená, že má díry nebo některé plochy obrácené dozadu, a může způsobit chyby při tisku. Opravte ji v nástroji pro 3D modelování, jako je MeshLab nebo 3D Builder.
+        description_html: Tato síť se jeví jako nemanifoldní, což znamená, že má díry nebo některé plochy obrácené dozadu, a může způsobit chyby při tisku. Opravte ji v nástroji pro 3D modelování, jako je MeshLab nebo 3D Builder.
         title: Model je nemanifoldní
     severities:
       danger: Nebezpečí
