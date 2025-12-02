@@ -84,7 +84,7 @@ gem "cocooned", "~> 2.5"
 
 gem "public_suffix", "~> 6.0"
 
-gem "activerecord-nulldb-adapter", "~> 1.1"
+gem "activerecord-nulldb-adapter", "~> 1.2"
 
 gem "memoist", "~> 0.16"
 gem "stopwords-filter2", require: "stopwords"
