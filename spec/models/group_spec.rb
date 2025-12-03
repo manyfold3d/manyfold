@@ -5,4 +5,10 @@ RSpec.describe Group do
     group = build(:group, user: nil)
     expect(group).not_to be_valid
   end
+
+  it "is in the owning users list of groups" do
+    alice = create(:user)
+    group = create(:group, user: alice)
+    expect(alice.groups).to include(group)
+  end
 end
