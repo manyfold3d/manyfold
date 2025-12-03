@@ -11,4 +11,11 @@ RSpec.describe Group do
     group = create(:group, user: alice)
     expect(alice.groups).to include(group)
   end
+
+  it "has members (which are users)" do
+    alice = create(:user)
+    group = create(:group)
+    group.members << alice
+    expect(group.members).to include alice
+  end
 end
