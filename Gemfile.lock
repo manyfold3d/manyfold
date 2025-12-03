@@ -107,7 +107,7 @@ GEM
     activerecord-enhancedsqlite3-adapter (0.8.0)
       activerecord (>= 7.1)
       sqlite3 (>= 1.6)
-    activerecord-nulldb-adapter (1.2.0)
+    activerecord-nulldb-adapter (1.2.2)
       activerecord (>= 6.1, < 8.2)
     activestorage (8.0.2.1)
       actionpack (= 8.0.2.1)
@@ -1073,7 +1073,7 @@ CHECKSUMS
   activemodel (8.0.2.1) sha256=17bab6cdb86531844113df22f864480a89a276bf0318246e628f99e0ac077ec4
   activerecord (8.0.2.1) sha256=a6556e7bdd53f3889d18d2aa3a7ff115fd6c5e1463dd06f97fb88d06b58c6df1
   activerecord-enhancedsqlite3-adapter (0.8.0) sha256=5cf9a4a42104c4792f4a8808008c0ec8ad1b9a86b08ad7aa0107cb456256f329
-  activerecord-nulldb-adapter (1.2.0) sha256=a209380d3e3fb84c6bef1a9a1c4a79486b1f1444caa4ea5ca1c9aadfb0b1c496
+  activerecord-nulldb-adapter (1.2.2) sha256=01e0b2e49af11ad56a92e274a3d8c9fb3c50a12a5460218c4c4b45355d9ef968
   activestorage (8.0.2.1) sha256=43bb3d9e115471e201e6a66813810c1d15b607a321f29d62efdf9d90ffaf76f8
   activesupport (8.0.2.1) sha256=0405a76fd1ca989975d9ae00d46a4d3979bdf3817482d846b63affa84bd561c6
   acts-as-taggable-on (13.0.0) sha256=dca776c6ddebc458d175b57554ad692488e283f27047117e01ed871f1cba6135
