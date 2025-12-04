@@ -1,0 +1,114 @@
+require "rails_helper"
+
+RSpec.describe "Groups", :after_first_run do
+  let(:owner) { create(:user) }
+  let(:creator) { create(:creator, owner: owner) }
+  let!(:group) { create(:group, creator: creator) }
+
+  context "when signed in as an owner of the creator" do
+    before do
+      sign_in owner
+    end
+
+    describe "GET /creators/{creator_id}/groups" do
+      it "shows a group list for a creator" do
+        get "/creators/#{creator.to_param}/groups"
+        expect(response).to have_http_status :success
+      end
+    end
+
+    describe "GET /creators/{creator_id}/groups/{id}" do
+      it "shows group details" do
+        get "/creators/#{creator.to_param}/groups/#{group.to_param}"
+        expect(response).to have_http_status :success
+      end
+    end
+
+    describe "GET /creators/{creator_id}/groups/new" do
+      it "shows new group form" do
+        get "/creators/#{creator.to_param}/groups/new"
+        expect(response).to have_http_status :success
+      end
+    end
+
+    describe "POST /creators/{creator_id}/groups" do
+      let(:params) { {} }
+
+      it "creates new group" do
+        expect { post "/creators/#{creator.to_param}/groups", params: params }.to change(Group, :count).by(1)
+      end
+
+      it "redirects to show" do
+        post "/creators/#{creator.to_param}/groups", params: params
+        expect(response).to redirect_to("/creators/#{creator.to_param}/groups/#{Group.last.to_param}")
+      end
+    end
+
+    describe "GET /creators/{creator_id}/groups/{id}/edit" do
+      it "shows group edit form" do
+        get "/creators/#{creator.to_param}/groups/#{group.to_param}/edit"
+        expect(response).to have_http_status :success
+      end
+    end
+
+    describe "PATCH /creators/{creator_id}/groups/{id}" do
+      it "redirects back to show" do
+        patch "/creators/#{creator.to_param}/groups/#{group.to_param}"
+        expect(response).to redirect_to("/creators/#{creator.to_param}/groups/#{group.to_param}")
+      end
+    end
+
+    describe "DELETE /creators/{creator_id}/groups/{id}" do
+      it "removes group" do
+        expect {
+          delete "/creators/#{creator.to_param}/groups/#{group.to_param}"
+        }.to change(Group, :count).by(-1)
+      end
+
+      it "redirects to list" do
+        delete "/creators/#{creator.to_param}/groups/#{group.to_param}"
+        expect(response).to redirect_to "/creators/#{creator.to_param}/groups"
+      end
+    end
+  end
+
+  context "when signed in as a moderator" do
+    before do
+      sign_in create :moderator
+    end
+
+    describe "GET /creators/{creator_id}/groups" do
+      it "shows a group list for a creator" do
+        get "/creators/#{creator.to_param}/groups"
+        expect(response).to have_http_status :success
+      end
+    end
+
+    describe "GET /creators/{creator_id}/groups/{id}" do
+      it "shows group details" do
+        get "/creators/#{creator.to_param}/groups/#{group.id}"
+        expect(response).to have_http_status :success
+      end
+    end
+  end
+
+  context "when signed in as a member" do
+    before do
+      sign_in create :user
+    end
+
+    describe "GET /creators/{creator_id}/groups" do
+      it "doesn't show group list" do
+        get "/creators/#{creator.to_param}/groups"
+        expect(response).to have_http_status :forbidden
+      end
+    end
+
+    describe "GET /creators/{creator_id}/groups/{id}" do
+      it "doesn't show group details" do
+        get "/creators/#{creator.to_param}/groups/#{group.id}"
+        expect(response).to have_http_status :forbidden
+      end
+    end
+  end
+end
