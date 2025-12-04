@@ -17,6 +17,8 @@ class Creator < ApplicationRecord
 
   has_many :models, dependent: :nullify
   has_many :collections, dependent: :nullify
+  has_many :groups, dependent: :destroy
+
   validates :name, presence: true, uniqueness: {case_sensitive: false}
   validates :slug, presence: true, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}, format: {with: /\A[[:alnum:]\-_]+\z/}
 
