@@ -240,9 +240,9 @@ GEM
       railties (>= 5)
     doorkeeper-i18n (5.2.8)
       doorkeeper (>= 5.2)
-    dotenv (3.1.8)
-    dotenv-rails (3.1.8)
-      dotenv (= 3.1.8)
+    dotenv (3.2.0)
+    dotenv-rails (3.2.0)
+      dotenv (= 3.2.0)
       railties (>= 6.1)
     down (5.4.2)
       addressable (~> 2.8)
@@ -670,7 +670,7 @@ GEM
       logger (~> 1.5)
       ostruct (~> 0.6)
       readline (~> 0.0)
-    rdoc (6.16.0)
+    rdoc (6.16.1)
       erb
       psych (>= 4.0.0)
       tsort
@@ -854,7 +854,7 @@ GEM
       railties (>= 6.0.0)
     stopwords-filter2 (0.1.0)
     string-similarity (2.1.0)
-    stringio (3.1.8)
+    stringio (3.1.9)
     swd (2.0.3)
       activesupport (>= 3)
       attr_required (>= 0.0.5)
@@ -965,7 +965,7 @@ DEPENDENCIES
   devise_zxcvbn (~> 6.0)
   doorkeeper (~> 5.8)
   doorkeeper-i18n (~> 5.2)
-  dotenv-rails (~> 3.1)
+  dotenv-rails (~> 3.2)
   erb_lint (~> 0.9)
   factory_bot
   faker (~> 3.5)
@@ -1134,8 +1134,8 @@ CHECKSUMS
   domain_name (0.6.20240107) sha256=5f693b2215708476517479bf2b3802e49068ad82167bcd2286f899536a17d933
   doorkeeper (5.8.2) sha256=a73d07aeaf590b1e7e2a35390446f23131c9f37bc0561653e514d3973f4d50d3
   doorkeeper-i18n (5.2.8) sha256=e4054701df464892f3c0fd6c96507188e9b082cb52938da3aab45f4f9fdaf552
-  dotenv (3.1.8) sha256=9e1176060ced581f8e6ce4384e91361817763a76e3c625c8bddc18b35bd392c3
-  dotenv-rails (3.1.8) sha256=46c9d1226a8b58a83b5f61325aa8cffd25cea1c0fafdfbbbee1e5dfea77980c4
+  dotenv (3.2.0) sha256=e375b83121ea7ca4ce20f214740076129ab8514cd81378161f11c03853fe619d
+  dotenv-rails (3.2.0) sha256=657e25554ba622ffc95d8c4f1670286510f47f2edda9f68293c3f661b303beab
   down (5.4.2) sha256=516e5e01e7a96214a7e2cd155aac6f700593038ae6c857c0f4a05413b1c58acf
   drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
   ed25519 (1.4.0) sha256=16e97f5198689a154247169f3453ef4cfd3f7a47481fde0ae33206cdfdcac506
@@ -1298,7 +1298,7 @@ CHECKSUMS
   rb-fsevent (0.11.2) sha256=43900b972e7301d6570f64b850a5aa67833ee7d87b458ee92805d56b7318aefe
   rb-inotify (0.11.1) sha256=a0a700441239b0ff18eb65e3866236cd78613d6b9f78fea1f9ac47a85e47be6e
   rdf (3.3.4) sha256=a77fa0821e5b4e2bea9fdbb7c9d980564c89d27e81979690ce5c9e6bc80859c1
-  rdoc (6.16.0) sha256=d0ce6f787027a24e480c1acb9f3110125213cb5df6806fd7832d5a1b8f26a205
+  rdoc (6.16.1) sha256=71357cc208e6da77ba0c4494e01ae870dd18b437c7c7d801dd73ee2f340b9f5c
   readline (0.0.4) sha256=6138eef17be2b98298b672c3ea63bf9cb5158d401324f26e1e84f235879c1d6a
   redis (5.4.1) sha256=b5e675b57ad22b15c9bcc765d5ac26f60b675408af916d31527af9bd5a81faae
   redis-client (0.26.1) sha256=1e39d2862c4516a75ff777ee6ed08827af39336bfece4a48e944244891d9a073
@@ -1366,7 +1366,7 @@ CHECKSUMS
   stimulus-rails (1.3.4) sha256=765676ffa1f33af64ce026d26b48e8ffb2e0b94e0f50e9119e11d6107d67cb06
   stopwords-filter2 (0.1.0) sha256=3b24452fd213c9c8a612b4f76babf205920d963b76e9413aabfe69d6e9c0cbea
   string-similarity (2.1.0) sha256=ab949bdd39fdeeedf64fc6a40a75546419a9d36bdb370f2dbbfc488bcc00a3bf
-  stringio (3.1.8) sha256=99c43c3a9302843cca223fd985bfc503dd50a4b1723d3e4a9eb1d9c37d99e4ec
+  stringio (3.1.9) sha256=c111af13d3a73eab96a3bc2655ecf93788d13d28cb8e25c1dcbff89ace885121
   swd (2.0.3) sha256=4cdbe2a4246c19f093fce22e967ec3ebdd4657d37673672e621bf0c7eb770655
   sys-cpu (1.1.0) sha256=72996f84346fdb9b5e6c2ded505ad87c2ae5f66c0b5bf4480c09c04e132c098f
   sys-filesystem (1.5.4) sha256=a6101674a4d0e641b0f628753439091134e080ed84a3e794570aa2fb07872b45
