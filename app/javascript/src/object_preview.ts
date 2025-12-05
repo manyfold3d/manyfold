@@ -9,6 +9,7 @@ export class ObjectPreview {
   renderer: any
   observer: IntersectionObserver | null
   loading: boolean = false
+  worker: Worker
 
   constructor (canvas) {
     this.canvas = canvas
@@ -23,9 +24,8 @@ export class ObjectPreview {
     }
     // Create offscreen renderer worker
     const offscreenCanvas = this.canvas.transferControlToOffscreen()
-    const RemoteOffscreenRenderer = await Comlink.wrap<typeof OffscreenRenderer>(
-      new Worker(this.canvas.dataset.workerUrl, { type: 'module' })
-    )
+    this.worker = new Worker(this.canvas.dataset.workerUrl, { type: 'module' })
+    const RemoteOffscreenRenderer = await Comlink.wrap<typeof OffscreenRenderer>(this.worker)
     this.renderer = await new RemoteOffscreenRenderer(
       Comlink.transfer(offscreenCanvas as unknown as HTMLCanvasElement, [offscreenCanvas]), { ...this.canvas.dataset }
     )
@@ -58,6 +58,10 @@ export class ObjectPreview {
     // Monitor load button click
     const loadButton = this.canvas.parentElement?.getElementsByClassName('object-preview-progress')[0] as HTMLDivElement
     loadButton.addEventListener('click', this.load.bind(this))
+  }
+
+  disconnect (): void {
+    this.worker.terminate();
   }
 
   onIntersectionChanged (entries, observer): void {
