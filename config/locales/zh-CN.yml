@@ -75,7 +75,7 @@ zh-CN:
         tags: 标签
       model_file:
         caption: 标题
-        digest:
+        digest: 摘要
         dimensions: 尺寸
         filename: 文件名
         model_id: 模型
