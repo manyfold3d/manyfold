@@ -681,8 +681,8 @@ de:
       account_handle:
       content_html: Diese Manyfold-Instanz ist Teil des <a href="https://jointhefediverse.net">Fediverse</a>, eines Netzwerks von Social-Media-Sites, die alle zusammenarbeiten. Das bedeutet, dass, wenn du hier ein Konto hast, kannst du anderen Menschen auf ihren Instanzen Folgen, oder Menschen können dir von anderen Plattformen wie Mastodon folgen.
       creator_handle:
-      creator_handle_html: 'Das fediverse-Handle deines Erstellerprofils lautet: <code>%{handle}</code>.'
-      handle_html: 'Ihr fediverse-Handle lautet: <code>%{handle}</code>'
+      creator_handle_html: 'Das fediverse-Handle deines Erstellerprofils lautet:'
+      handle_html: 'Ihr fediverse-Handle lautet:'
       title: Föderation
       users_v_creators:
     index:
