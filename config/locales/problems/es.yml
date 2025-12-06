@@ -43,7 +43,7 @@ es:
         description_html: Este modelo no contiene archivos. Elimínelo o encuentre dónde están sus archivos
         title: No hay archivos
       file_naming:
-        description_html: La ruta de la carpeta del modelo no coincide con la plantilla de ruta.
+        description_html: La ruta de la carpeta del modelo no coincide con la plantilla de ruta. Se esperaba <code>%{note}</code>.
         title: La ruta no coincide con la plantilla
       missing:
         description_html: La carpeta de este modelo no está en el disco. Elimínela o averigua dónde está
