@@ -77,7 +77,7 @@ pt:
         security:
         social:
         submit:
-        title: Editar %{resource}
+        title: Preferências
         unhappy: Descontente?
         update: Atualizar
         we_need_your_current_password_to_confirm_your_changes: precisamos da sua palavra-passe atual para confirmar as alterações
