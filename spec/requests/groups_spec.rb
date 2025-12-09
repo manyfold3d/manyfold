@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe "Groups", :after_first_run do
   let(:owner) { create(:user) }
   let(:creator) { create(:creator, owner: owner) }
-  let!(:group) { create(:group, creator: creator) }
 
   context "when signed in as an owner of the creator" do
     before do
@@ -11,6 +10,8 @@ RSpec.describe "Groups", :after_first_run do
     end
 
     describe "GET /creators/{creator_id}/groups" do
+      before { create(:group, creator: creator) }
+
       it "shows a group list for a creator" do
         get "/creators/#{creator.to_param}/groups"
         expect(response).to have_http_status :success
@@ -18,6 +19,8 @@ RSpec.describe "Groups", :after_first_run do
     end
 
     describe "GET /creators/{creator_id}/groups/{id}" do
+      let(:group) { create(:group, creator: creator) }
+
       it "shows group details" do
         get "/creators/#{creator.to_param}/groups/#{group.to_param}"
         expect(response).to have_http_status :success
@@ -32,19 +35,31 @@ RSpec.describe "Groups", :after_first_run do
     end
 
     describe "POST /creators/{creator_id}/groups" do
-      let(:params) { {} }
+      let(:params) { {group: {name: "Group name"}} }
 
       it "creates new group" do
         expect { post "/creators/#{creator.to_param}/groups", params: params }.to change(Group, :count).by(1)
+      end
+
+      it "sets name" do
+        post "/creators/#{creator.to_param}/groups", params: params
+        expect(Group.last.name).to eq "Group name"
       end
 
       it "redirects to show" do
         post "/creators/#{creator.to_param}/groups", params: params
         expect(response).to redirect_to("/creators/#{creator.to_param}/groups/#{Group.last.to_param}")
       end
+
+      it "gives a 422 response if the data is invalid" do
+        post "/creators/#{creator.to_param}/groups", params: {group: {name: nil}}
+        expect(response).to have_http_status :unprocessable_content
+      end
     end
 
     describe "GET /creators/{creator_id}/groups/{id}/edit" do
+      let(:group) { create(:group, creator: creator) }
+
       it "shows group edit form" do
         get "/creators/#{creator.to_param}/groups/#{group.to_param}/edit"
         expect(response).to have_http_status :success
@@ -52,13 +67,28 @@ RSpec.describe "Groups", :after_first_run do
     end
 
     describe "PATCH /creators/{creator_id}/groups/{id}" do
+      let(:group) { create(:group, creator: creator) }
+      let(:params) { {group: {name: "Group name"}} }
+
       it "redirects back to show" do
-        patch "/creators/#{creator.to_param}/groups/#{group.to_param}"
+        patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: params
         expect(response).to redirect_to("/creators/#{creator.to_param}/groups/#{group.to_param}")
+      end
+
+      it "sets name" do
+        patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: params
+        expect(group.reload.name).to eq "Group name"
+      end
+
+      it "gives a 422 response if the data is invalid" do
+        patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: {group: {name: nil}}
+        expect(response).to have_http_status :unprocessable_content
       end
     end
 
     describe "DELETE /creators/{creator_id}/groups/{id}" do
+      let!(:group) { create(:group, creator: creator) }
+
       it "removes group" do
         expect {
           delete "/creators/#{creator.to_param}/groups/#{group.to_param}"
@@ -73,6 +103,8 @@ RSpec.describe "Groups", :after_first_run do
   end
 
   context "when signed in as a moderator" do
+    let(:group) { create(:group, creator: creator) }
+
     before do
       sign_in create :moderator
     end
@@ -93,6 +125,8 @@ RSpec.describe "Groups", :after_first_run do
   end
 
   context "when signed in as a member" do
+    let(:group) { create(:group, creator: creator) }
+
     before do
       sign_in create :user
     end

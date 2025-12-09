@@ -31,16 +31,29 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = @creator.groups.create
+    group = @creator.groups.create group_params
     authorize group
     respond_to do |format|
-      format.html { redirect_to creator_group_path(@creator, group) }
+      format.html do
+        if group.valid?
+          redirect_to creator_group_path(@creator, group), notice: t(".success")
+        else
+          render Views::Groups::New.new(group: group, creator: @creator), status: :unprocessable_content
+        end
+      end
     end
   end
 
   def update
+    @group.update group_params
     respond_to do |format|
-      format.html { redirect_to creator_group_path(@creator, @group) }
+      format.html do
+        if @group.valid?
+          redirect_to creator_group_path(@creator, @group), notice: t(".success")
+        else
+          render Views::Groups::Edit.new(group: @group, creator: @creator), status: :unprocessable_content
+        end
+      end
     end
   end
 
@@ -60,5 +73,14 @@ class GroupsController < ApplicationController
   def get_group
     @group = @creator.groups.find(params[:id])
     authorize @group
+  end
+
+  def group_params
+    if is_api_request?
+      raise ActionController::BadRequest unless params[:json]
+      # ManyfoldApi::V0::GroupDeserializer.new(object: params[:json], user: current_user, record: @creator).deserialize
+    else
+      Form::GroupDeserializer.new(params: params, user: current_user, record: @creator).deserialize
+    end
   end
 end
