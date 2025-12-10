@@ -32,7 +32,7 @@ jobs:
       - name: Organize changes
         run: "bundle exec i18n-tasks normalize -p -l en,${{ matrix.locale }}"
       - name: Open pull request with changes
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           token: "${{ secrets.TRANSLATION_SYNC_PAT }}"
           commit-message: "Automatically synced translations: ${{ matrix.locale }}"
