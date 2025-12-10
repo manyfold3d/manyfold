@@ -111,7 +111,8 @@ module SupportedMimeTypes
         "image/vnd.dwg",
         "application/x-3ds",
         "application/x-amf",
-        "application/x-ldraw"
+        "application/x-ldraw",
+        "application/vnd.flock+json"
       ]
       type.to_s.start_with?("model/") || extras.include?(type.to_s)
     end

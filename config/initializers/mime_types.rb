@@ -1,6 +1,7 @@
 # Extra MIME types that Rails doesn't already know about
 
 # 3D Models
+Mime::Type.register "application/vnd.flock+json", :flock
 Mime::Type.register "application/x-3ds", :threeds, ["image/x-3ds"], ["3ds"]
 Mime::Type.register "application/x-3dsmax", :max
 Mime::Type.register "application/x-amf", :amf
