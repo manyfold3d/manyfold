@@ -38,6 +38,13 @@ shared_examples "Permittable" do |object_class|
         }.to change { object.grants_permission_to?("view", u) }.from(false).to(true)
       end
 
+      it "grants permissions to users by email" do
+        u = create(:user)
+        expect {
+          put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: u.email, permission: "view"}}}}
+        }.to change { object.grants_permission_to?("view", u) }.from(false).to(true)
+      end
+
       it "grants permissions to groups" do
         group = create(:group)
         expect {
