@@ -53,7 +53,7 @@ group :development, :test do
   gem "rubocop-factory_bot", require: false
   gem "rubocop-capybara", require: false
   gem "rubocop-i18n", require: false
-  gem "rubocop-performance", "~> 1.23", require: false
+  gem "rubocop-performance", "~> 1.26", require: false
   gem "rubocop-pundit", github: "manyfold3d/rubocop-pundit", require: false
   gem "rubyzip", "~> 2.4"
   gem "i18n-tasks", "~> 1.1"
