@@ -668,6 +668,11 @@ pl:
     save: Zapisz
     shared:
     view: Widok
+  groups:
+    create:
+      success:
+    update:
+      success:
   home:
     activity:
       created: dodane %{time} temu

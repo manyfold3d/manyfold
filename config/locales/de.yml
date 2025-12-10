@@ -668,6 +668,11 @@ de:
     save: Speichern
     shared: mit Lokalen Nutzern geteilt
     view: Siehe
+  groups:
+    create:
+      success:
+    update:
+      success:
   home:
     activity:
       created: hinzugefügt vor %{time}

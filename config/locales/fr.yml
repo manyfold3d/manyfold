@@ -671,6 +671,11 @@ fr:
     save: Sauvegarder
     shared: Partagé avec les utilisateurs locaux
     view: Afficher
+  groups:
+    create:
+      success:
+    update:
+      success:
   home:
     activity:
       created:
