@@ -35,7 +35,8 @@ RSpec.describe "Groups", :after_first_run do
     end
 
     describe "POST /creators/{creator_id}/groups" do
-      let(:params) { {group: {name: "Group name"}} }
+      let(:user) { create(:user) }
+      let(:params) { {group: {name: "Group name", memberships_attributes: {"0" => {user_id: user.username}}}} }
 
       it "creates new group" do
         expect { post "/creators/#{creator.to_param}/groups", params: params }.to change(Group, :count).by(1)
@@ -44,6 +45,11 @@ RSpec.describe "Groups", :after_first_run do
       it "sets name" do
         post "/creators/#{creator.to_param}/groups", params: params
         expect(Group.last.name).to eq "Group name"
+      end
+
+      it "adds members" do
+        post "/creators/#{creator.to_param}/groups", params: params
+        expect(Group.last.members).to include user
       end
 
       it "redirects to show" do
@@ -67,8 +73,9 @@ RSpec.describe "Groups", :after_first_run do
     end
 
     describe "PATCH /creators/{creator_id}/groups/{id}" do
+      let(:user) { create(:user) }
       let(:group) { create(:group, creator: creator) }
-      let(:params) { {group: {name: "Group name"}} }
+      let(:params) { {group: {name: "Group name", memberships_attributes: {"0" => {user_id: user.username}}}} }
 
       it "redirects back to show" do
         patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: params
@@ -78,6 +85,24 @@ RSpec.describe "Groups", :after_first_run do
       it "sets name" do
         patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: params
         expect(group.reload.name).to eq "Group name"
+      end
+
+      it "adds members by username" do
+        patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: params
+        expect(group.reload.members).to include(user)
+      end
+
+      it "adds members by ID" do
+        id_params = {group: {memberships_attributes: {"0" => {user_id: user.id}}}}
+        patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: id_params
+        expect(group.reload.members).to include(user)
+      end
+
+      it "removes memberships" do
+        group.members << user
+        remove_params = {group: {memberships_attributes: {"0" => {id: group.memberships.last.id, _destroy: "1"}}}}
+        patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: remove_params
+        expect(group.reload.members).not_to include(user)
       end
 
       it "gives a 422 response if the data is invalid" do

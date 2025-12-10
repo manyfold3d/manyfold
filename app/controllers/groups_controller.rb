@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :get_creator
   before_action :get_group, except: [:index, :new, :create]
+  before_action :find_members, only: [:create, :update] # rubocop:todo Rails/LexicallyScopedActionFilter
 
   def index
     groups = policy_scope(@creator.groups)
@@ -81,6 +82,31 @@ class GroupsController < ApplicationController
       # ManyfoldApi::V0::GroupDeserializer.new(object: params[:json], user: current_user, record: @creator).deserialize
     else
       Form::GroupDeserializer.new(params: params, user: current_user, record: @creator).deserialize
+    end
+  end
+
+  def find_members
+    params.values.each do |param|
+      if param.is_a?(ActionController::Parameters) && param.has_key?("memberships_attributes")
+        param["memberships_attributes"].transform_values! do |value|
+          if value.has_key? "user_id"
+            user = case value["user_id"]
+            when /[[:digit:]]+/
+              # This should find the same ID, but will check the policy scope
+              policy_scope(User).find(value["user_id"].to_i)
+            when ""
+              raise ActiveRecord::RecordNotFound
+            else
+              policy_scope(User).find_by!(username: value["user_id"])
+            end
+            value["user_id"] = user&.id
+          end
+          value
+        rescue ActiveRecord::RecordNotFound
+          nil
+        end
+        param["memberships_attributes"].compact!
+      end
     end
   end
 end

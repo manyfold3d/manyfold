@@ -6,7 +6,13 @@ class CreateGroups < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    create_join_table :groups, :users, table_name: "memberships" do |t|
+    # Use standard table instead of create_join_table
+    # otherwise no id is generated that will support accepts_nested_attributes_for
+    # See https://github.com/rails/rails/issues/48714 and https://github.com/rails/rails/pull/48733
+    create_table :memberships do |t|
+      t.belongs_to :group
+      t.belongs_to :user
+      t.timestamps
       t.index [:group_id, :user_id]
       t.index [:user_id, :group_id]
     end
