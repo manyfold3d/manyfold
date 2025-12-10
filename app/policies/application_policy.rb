@@ -71,6 +71,7 @@ class ApplicationPolicy
 
       result = scope.granted_to(STANDARD_VIEW_PERMISSIONS, [user, nil])
       result = result.or(scope.granted_to(STANDARD_VIEW_PERMISSIONS, user.roles)) if user
+      result = result.or(scope.granted_to(STANDARD_VIEW_PERMISSIONS, user.groups)) if user
       result
     end
 
@@ -85,6 +86,7 @@ class ApplicationPolicy
 
       result = scope.granted_to(STANDARD_EDIT_PERMISSIONS, [user, nil])
       result = result.or(scope.granted_to(STANDARD_EDIT_PERMISSIONS, user.roles)) if user
+      result = result.or(scope.granted_to(STANDARD_EDIT_PERMISSIONS, user.groups)) if user
       result.local
     end
   end
@@ -100,7 +102,7 @@ class ApplicationPolicy
   private
 
   def check_permissions(record, permissions, user, role_fallback: nil)
-    record.grants_permission_to?(permissions, [user, user&.roles].flatten)
+    record.grants_permission_to?(permissions, [user, user&.roles, user&.groups].flatten)
   rescue NoMethodError
     user&.has_role?(role_fallback)
   end

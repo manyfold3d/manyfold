@@ -72,6 +72,9 @@ class User < ApplicationRecord
     dependent: :delete_all,
     inverse_of: :owner
 
+  has_many :memberships, dependent: :destroy
+  has_many :groups, through: :memberships
+
   def federails_name
     username
   end
