@@ -127,7 +127,7 @@ Rails.application.routes.draw do
       get :avatar
       get :banner
     end
-    resources :groups
+    resources :groups, except: [:show]
   end
   resources :collections do
     concerns :followable, followable_class: "Collection"
