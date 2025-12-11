@@ -878,11 +878,11 @@ en:
       edit:
         title: Edit
       index:
-        description: Groups are collections of local instance users, useful for managing things like Patreon or Liberapay subscribers. You can grant permissions to a group on any object.
+        description: User Groups are collections of local instance users, useful for managing things like Patreon or Liberapay subscribers. You can grant a group permissions on any object, just like a site role or individual user.
         member_count: "%{count} members"
         membership: Membership
         name: Name
-        title: Groups
+        title: User Groups
       new:
         title: New Group
     pagination:
