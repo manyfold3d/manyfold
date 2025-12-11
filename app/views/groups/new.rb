@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
-class Views::Groups::New < Views::Base
-  def initialize(creator:, group:)
-    @creator = creator
-    @group = group
-  end
-
+class Views::Groups::New < Views::Groups::Form
   def view_template
-    h1 { "Groups::New" }
-    p { "Find me in app/views/groups/new.rb" }
+    h1 do
+      link_to "#{@creator.name} /", @creator, class: "link-secondary link-underline-opacity-0"
+      whitespace
+      link_to "#{t("views.groups.index.title")} /", creator_groups_path(@creator), class: "link-secondary link-underline-opacity-0"
+      whitespace
+      span { t("views.groups.new.title") }
+    end
+    super
   end
 end

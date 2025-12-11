@@ -874,6 +874,17 @@ en:
       create:
         altcha_failed: ALTCHA verification failed
   views:
+    groups:
+      edit:
+        title: Edit
+      index:
+        description: Groups are super cool
+        member_count: '%{count} members'
+        membership: Membership
+        name: Name
+        title: Groups
+      new:
+        title: New Group
     pagination:
       first: "« First"
       last: Last »
