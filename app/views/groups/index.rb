@@ -7,11 +7,10 @@ class Views::Groups::Index < Views::Base
   end
 
   def view_template
-    h1 do
-      link_to "#{@creator.name} /", @creator, class: "link-secondary link-underline-opacity-0"
-      whitespace
-      span { t("views.groups.index.title") }
-    end
+    PageTitle title: t(".title"), breadcrumbs: {
+      Creator.model_name.human(count: 100) => creators_path,
+      @creator.name => creator_path(@creator)
+    }
     p { t("views.groups.index.description") }
     table class: "table table-striped" do
       tr do
