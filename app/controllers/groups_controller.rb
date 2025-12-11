@@ -4,10 +4,9 @@ class GroupsController < ApplicationController
   before_action :find_members, only: [:create, :update] # rubocop:todo Rails/LexicallyScopedActionFilter
 
   def index
-    groups = policy_scope(@creator.groups)
-    authorize @creator.groups.new # stub group to check authorization
+    authorize Group.new(creator: @creator) # stub group to check authorization
     respond_to do |format|
-      format.html { render Views::Groups::Index.new(groups: groups, creator: @creator) }
+      format.html { render Views::Groups::Index.new(groups: policy_scope(@creator.groups), creator: @creator) }
     end
   end
 
