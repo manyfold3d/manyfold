@@ -877,6 +877,8 @@ en:
     groups:
       edit:
         title: Edit
+      form:
+        confirm_destroy: Are you sure you want to remove this user group?
       index:
         copy: Copy ID to clipboard for use in permission settings.
         description: User Groups are collections of local instance users, useful for managing things like Patreon or Liberapay subscribers. You can grant a group permissions on any object by using its permission ID, just like a site role or individual user.

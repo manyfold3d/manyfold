@@ -12,7 +12,19 @@ class Views::Groups::Form < Views::Base
     form_with model: [@creator, @group], class: "container-md tabular-form" do |form|
       Components::TextInputRow(form: form, attribute: :name, label: Group.human_attribute_name(:name))
       div do
-        form.submit
+        form.submit class: "btn btn-primary"
+
+        if @group.persisted? && policy(@group).destroy?
+          link_to creator_group_path(@creator, @group), {
+            method: :delete,
+            class: "float-end btn btn-outline-danger",
+            data: {confirm: translate(".confirm_destroy")}
+          } do
+            Icon(icon: "trash", label: t("general.delete"))
+            whitespace
+            span { t("general.delete") }
+          end
+        end
       end
     end
   end
