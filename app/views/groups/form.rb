@@ -19,7 +19,7 @@ class Views::Groups::Form < Views::Base
           link_to creator_group_path(@creator, @group), {
             method: :delete,
             class: "float-end btn btn-outline-danger",
-            data: {confirm: translate(".confirm_destroy")}
+            data: {confirm: translate("views.groups.form.confirm_destroy")}
           } do
             Icon(icon: "trash", label: t("general.delete"))
             whitespace
