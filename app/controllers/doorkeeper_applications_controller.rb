@@ -3,9 +3,11 @@ class DoorkeeperApplicationsController < ApplicationController
 
   def index
     @applications = policy_scope(Doorkeeper::Application)
+    render layout: "settings"
   end
 
   def show
+    render layout: "settings"
   end
 
   def new
@@ -14,9 +16,11 @@ class DoorkeeperApplicationsController < ApplicationController
       redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
       scopes: Doorkeeper.configuration.default_scopes
     )
+    render layout: "settings"
   end
 
   def edit
+    render layout: "settings"
   end
 
   def create
@@ -26,7 +30,7 @@ class DoorkeeperApplicationsController < ApplicationController
       redirect_to @application, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
-      render :new, status: :unprocessable_content
+      render :new, layout: "settings", status: :unprocessable_content
     end
   end
 
@@ -36,7 +40,7 @@ class DoorkeeperApplicationsController < ApplicationController
       render :show, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
-      render :edit, status: :unprocessable_content
+      render :edit, layout: "settings", status: :unprocessable_content
     end
   end
 
