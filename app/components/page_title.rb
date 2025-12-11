@@ -7,22 +7,20 @@ class Components::PageTitle < Components::Base
   end
 
   def view_template
-    unless @breadcrumbs.empty?
-      nav aria: {label: "breadcrumb"} do
-        ol class: "breadcrumb" do
-          li class: "breadcrumb-item" do
-            a(href: root_url) { Icon icon: "house", label: t("application.navbar.home") }
-          end
-          @breadcrumbs.map do |text, path|
-            li class: "breadcrumb-item" do
-              a(href: path) { text }
-            end
-          end
-          li(class: "breadcrumb-item active", aria: {current: "page"}) { @title }
+    nav aria: {label: "breadcrumb"} do
+      ol class: "breadcrumb" do
+        li class: "breadcrumb-item" do
+          a(href: root_url) { Icon icon: "house", label: t("application.navbar.home") }
         end
+        @breadcrumbs.map do |text, path|
+          li class: "breadcrumb-item" do
+            a(href: path) { text }
+          end
+        end
+        li(class: "breadcrumb-item active", aria: {current: "page"}) { @title }
       end
-      hr
     end
+    hr
     h1 do
       span { @title }
     end
