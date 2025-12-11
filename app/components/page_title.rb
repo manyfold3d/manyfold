@@ -8,7 +8,7 @@ class Components::PageTitle < Components::Base
   end
 
   def view_template
-    nav aria: {label: "breadcrumb"} do
+    nav aria: {label: "breadcrumb"}, class: "border-bottom pt-1 pb-1" do
       ol class: "breadcrumb" do
         li class: "breadcrumb-item" do
           a(href: root_url) { Icon icon: "house", label: t("application.navbar.home") }
@@ -21,7 +21,6 @@ class Components::PageTitle < Components::Base
         li(class: "breadcrumb-item active", aria: {current: "page"}) { @title }
       end
     end
-    hr
     if @heading
       h1 do
         span { @title }
