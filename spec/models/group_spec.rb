@@ -20,4 +20,9 @@ RSpec.describe Group do
     group.members << alice
     expect(group.members).to include alice
   end
+
+  it "can have a description" do
+    group = create(:group, description: "details go here")
+    expect(group.description).to eq "details go here"
+  end
 end
