@@ -7,16 +7,16 @@ class Views::Groups::Index < Views::Base
   end
 
   def view_template
-    PageTitle title: t(".title"), breadcrumbs: {
+    PageTitle title: t("views.groups.index.title"), breadcrumbs: {
       Creator.model_name.human(count: 100) => creators_path,
       @creator.name => creator_path(@creator)
     }
     p { t("views.groups.index.description") }
     table class: "table table-striped" do
       tr do
-        th { t("views.groups.index.name") }
-        th { t("views.groups.index.membership") }
-        th { t("views.groups.index.typed_id") }
+        th { Group.human_attribute_name :name }
+        th { Group.human_attribute_name :memberships }
+        th { Group.human_attribute_name :typed_id }
         th
       end
       @groups.each do |group|

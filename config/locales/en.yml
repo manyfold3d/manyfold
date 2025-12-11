@@ -37,6 +37,11 @@ en:
         created_at: Received at
         federails_actor: Reported by
         object: Object
+      group:
+        description: Description
+        membership: Membership
+        name: Name
+        typed_id: Permission ID
       library:
         caption: Caption
         create_path_if_not_on_disk: Auto-create folder
@@ -883,10 +888,7 @@ en:
         copy: Copy ID to clipboard for use in permission settings.
         description: User Groups are collections of local instance users, useful for managing things like Patreon or Liberapay subscribers. You can grant a group permissions on any object by using its permission ID, just like a site role or individual user.
         member_count: "%{count} members"
-        membership: Membership
-        name: Name
         title: User Groups
-        typed_id: Permission ID
       new:
         title: New Group
     pagination:
