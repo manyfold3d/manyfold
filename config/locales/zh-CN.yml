@@ -668,6 +668,11 @@ zh-CN:
     save: 保存
     shared: 与本地用户共享
     view: 查看
+  groups:
+    create:
+      success:
+    update:
+      success:
   home:
     activity:
       created: 添加于 %{time} 前

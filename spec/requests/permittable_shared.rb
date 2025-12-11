@@ -25,10 +25,31 @@ shared_examples "Permittable" do |object_class|
         }.to change(object, :public?).from(false).to(true)
       end
 
-      it "updates permissions using nested attributes" do
+      it "grants permissions to roles" do
         expect {
           put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: "role::public", permission: "view"}}}}
-        }.to change(object, :public?).from(false).to(true)
+        }.to change { object.grants_permission_to?("view", nil) }.from(false).to(true)
+      end
+
+      it "grants permissions to usernames" do
+        u = create(:user)
+        expect {
+          put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: u.username, permission: "view"}}}}
+        }.to change { object.grants_permission_to?("view", u) }.from(false).to(true)
+      end
+
+      it "grants permissions to users by email" do
+        u = create(:user)
+        expect {
+          put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: u.email, permission: "view"}}}}
+        }.to change { object.grants_permission_to?("view", u) }.from(false).to(true)
+      end
+
+      it "grants permissions to groups" do
+        group = create(:group)
+        expect {
+          put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: "group::#{group.id}", permission: "view"}}}}
+        }.to change { object.grants_permission_to?("view", group) }.from(false).to(true)
       end
     end
 

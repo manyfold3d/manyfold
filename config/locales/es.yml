@@ -668,6 +668,11 @@ es:
     save: Guardar
     shared: Compartido con usuarios locales
     view: Ver
+  groups:
+    create:
+      success:
+    update:
+      success:
   home:
     activity:
       created: añadido hace %{time}

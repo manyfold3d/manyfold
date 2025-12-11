@@ -206,4 +206,41 @@ shared_examples "Caber::Object" do
       expect(object.reload.matching_permission_preset).to eq ""
     end
   end
+
+  context "when managing group permissions" do # rubocop:disable RSpec/MultipleMemoizedHelpers
+    let(:user) { create(:user) }
+    let(:group) { create(:group) }
+    let(:object) { create(described_class.to_s.underscore.to_sym) }
+
+    before do
+      group.members << user
+      allow(SiteSettings).to receive(:default_viewer_role).and_return(:private)
+      object.caber_relations.destroy_all
+      object.grant_permission_to("own", SiteSettings.default_user)
+    end
+
+    it "group does not have view permission by default" do
+      expect(object.grants_permission_to?("view", group)).to be false
+    end
+
+    it "user does not have view permission by default" do # rubocop:disable RSpec/MultipleExpectations
+      policy = Pundit::PolicyFinder.new(object).policy
+      scope = Pundit::PolicyFinder.new(object).scope
+      expect(policy.new(user, object).show?).to be false
+      expect(scope.new(user, described_class).resolve).not_to include object
+    end
+
+    it "can assign a permission to a group" do
+      object.grant_permission_to "view", group
+      expect(object.grants_permission_to?("view", group)).to be true
+    end
+
+    it "delegates user permission to the group" do # rubocop:disable RSpec/MultipleExpectations
+      object.grant_permission_to "view", group
+      policy = Pundit::PolicyFinder.new(object).policy
+      scope = Pundit::PolicyFinder.new(object).scope
+      expect(policy.new(user, object).show?).to be true
+      expect(scope.new(user, described_class).resolve).to include object
+    end
+  end
 end

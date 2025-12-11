@@ -9,6 +9,9 @@
       <%- when "Role" %>
         <%= Icon icon: "people", label: "" %>
         <%= t(".subject.role.%{name}" % {name: f.object.subject&.name}) %>
+      <%- when "Group" %>
+        <%= Icon icon: "people", label: "" %>
+        <%= f.object.subject&.name %>
       <%- when "NilClass" %>
         <%= Icon icon: "globe", label: "" %>
         <%= t(".subject.role.public") %>

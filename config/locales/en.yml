@@ -668,6 +668,11 @@ en:
     save: Save
     shared: Shared with local users
     view: View
+  groups:
+    create:
+      success: Group created successfully.
+    update:
+      success: Group updated successfully.
   home:
     activity:
       created: added %{time} ago

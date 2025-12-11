@@ -17,6 +17,8 @@ module Permittable
               Role.find_by!(name: :member)
             when "role::public"
               nil
+            when /group::([[:digit:]]+)/
+              policy_scope(Group).find($1)
             when ""
               raise ActiveRecord::RecordNotFound
             else

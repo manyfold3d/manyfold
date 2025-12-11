@@ -668,6 +668,11 @@ cs:
     save: Uložit
     shared:
     view: Zobrazení
+  groups:
+    create:
+      success:
+    update:
+      success:
   home:
     activity:
       created: 'přidáno před %{time} '
