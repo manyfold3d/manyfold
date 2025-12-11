@@ -11,6 +11,7 @@ class Views::Groups::Form < Views::Base
   def view_template
     form_with model: [@creator, @group], class: "container-md tabular-form" do |form|
       Components::TextInputRow(form: form, attribute: :name, label: Group.human_attribute_name(:name))
+      Components::RichTextInputRow(form: form, attribute: :description, label: Group.human_attribute_name(:description))
       div do
         form.submit class: "btn btn-primary"
 
