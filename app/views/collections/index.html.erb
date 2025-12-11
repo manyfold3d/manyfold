@@ -1,3 +1,7 @@
+<% content_for :page_header do %>
+  <%= PageTitle title: Collection.model_name.human(count: 100), heading: false %>
+<% end %>
+
 <% content_for :items do %>
   <div class="skip-link-container">
     <%= skip_link "sidebar", t(".skip_collections") %>

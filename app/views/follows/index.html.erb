@@ -1,4 +1,4 @@
-<h2><%= t(".title") %></h2>
+<%= PageTitle title: t(".title") %>
 
 <% if SiteSettings.federation_enabled? %>
   <%= render "search_form", query: @query %>

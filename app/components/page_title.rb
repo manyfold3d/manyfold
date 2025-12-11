@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Components::PageTitle < Components::Base
-  def initialize(title:, breadcrumbs: {})
+  def initialize(title:, breadcrumbs: {}, heading: true)
     @title = title
     @breadcrumbs = breadcrumbs
+    @heading = heading
   end
 
   def view_template
@@ -21,8 +22,10 @@ class Components::PageTitle < Components::Base
       end
     end
     hr
-    h1 do
-      span { @title }
+    if @heading
+      h1 do
+        span { @title }
+      end
     end
   end
 end
