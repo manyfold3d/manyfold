@@ -18,15 +18,6 @@ RSpec.describe "Groups", :after_first_run do
       end
     end
 
-    describe "GET /creators/{creator_id}/groups/{id}" do
-      let(:group) { create(:group, creator: creator) }
-
-      it "shows group details" do
-        get "/creators/#{creator.to_param}/groups/#{group.to_param}"
-        expect(response).to have_http_status :success
-      end
-    end
-
     describe "GET /creators/{creator_id}/groups/new" do
       it "shows new group form" do
         get "/creators/#{creator.to_param}/groups/new"
@@ -52,9 +43,9 @@ RSpec.describe "Groups", :after_first_run do
         expect(Group.last.members).to include user
       end
 
-      it "redirects to show" do
+      it "redirects to list" do
         post "/creators/#{creator.to_param}/groups", params: params
-        expect(response).to redirect_to("/creators/#{creator.to_param}/groups/#{Group.last.to_param}")
+        expect(response).to redirect_to("/creators/#{creator.to_param}/groups")
       end
 
       it "gives a 422 response if the data is invalid" do
@@ -77,9 +68,9 @@ RSpec.describe "Groups", :after_first_run do
       let(:group) { create(:group, creator: creator) }
       let(:params) { {group: {name: "Group name", memberships_attributes: {"0" => {user_id: user.username}}}} }
 
-      it "redirects back to show" do
+      it "redirects back to list" do
         patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: params
-        expect(response).to redirect_to("/creators/#{creator.to_param}/groups/#{group.to_param}")
+        expect(response).to redirect_to("/creators/#{creator.to_param}/groups")
       end
 
       it "sets name" do
@@ -140,13 +131,6 @@ RSpec.describe "Groups", :after_first_run do
         expect(response).to have_http_status :success
       end
     end
-
-    describe "GET /creators/{creator_id}/groups/{id}" do
-      it "shows group details" do
-        get "/creators/#{creator.to_param}/groups/#{group.id}"
-        expect(response).to have_http_status :success
-      end
-    end
   end
 
   context "when signed in as a member" do
@@ -159,13 +143,6 @@ RSpec.describe "Groups", :after_first_run do
     describe "GET /creators/{creator_id}/groups" do
       it "doesn't show group list" do
         get "/creators/#{creator.to_param}/groups"
-        expect(response).to have_http_status :forbidden
-      end
-    end
-
-    describe "GET /creators/{creator_id}/groups/{id}" do
-      it "doesn't show group details" do
-        get "/creators/#{creator.to_param}/groups/#{group.id}"
         expect(response).to have_http_status :forbidden
       end
     end
