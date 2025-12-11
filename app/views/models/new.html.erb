@@ -1,4 +1,6 @@
-<h1><%= t ".title" %></h1>
+<%= PageTitle title: t(".title"), breadcrumbs: {
+      Model.model_name.human(count: 100) => models_path
+    } %>
 
 <p><%= t ".description" %></p>
 <ul>

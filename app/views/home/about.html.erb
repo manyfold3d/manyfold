@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= site_name %></h1>
+  <%= PageTitle title: site_name %>
 
   <article>
     <%= markdownify SiteSettings.about if SiteSettings.about.present? %>

@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= t(".heading") %></h1>
+  <%= PageTitle title: t(".heading", site_name: site_name) %>
 
   <% if @deserializer %>
     <p><%= t(".import_type_html", url: @url, object_type: @deserializer.capabilities[:class].model_name.human) %></p>
