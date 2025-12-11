@@ -1,4 +1,6 @@
-<h1><%= t(".title") %></h1>
+<%= PageTitle title: t(".title"), breadcrumbs: {
+      t("layouts.settings.site_settings_title") => settings_path
+    } %>
 
 <p class="lead"><%= t(".description") %></p>
 
