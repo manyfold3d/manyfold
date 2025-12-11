@@ -1,6 +1,6 @@
-<h1>
-  <%= link_to "#{@model.name} /", @model, class: "link-secondary link-underline-opacity-0" %>
-  <%= t("models.general.edit") %>
-</h1>
+<%= PageTitle title: t("models.general.edit"), breadcrumbs: {
+      Model.model_name.human(count: 100) => models_path,
+      @model.name => model_path(@model)
+    } %>
 
 <%= render "form" %>

@@ -1,7 +1,7 @@
-<h1>
-  <%= link_to "#{@model.name} /", @model, class: "link-secondary link-underline-opacity-0" %>
-  <%= t(".title") %>
-</h1>
+<%= PageTitle title: t(".title"), breadcrumbs: {
+      Model.model_name.human(count: 100) => models_path,
+      @model.name => model_path(@model)
+    } %>
 
 <p class="lead"><%= t(".description") %></p>
 

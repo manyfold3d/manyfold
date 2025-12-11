@@ -1,7 +1,7 @@
-<h1>
-  <%= link_to "#{@file.model.name} /", @file.model, class: "link-secondary link-underline-opacity-0" %>
-  <%= link_to "#{@file.name} /", [@model, @file], class: "link-secondary link-underline-opacity-0" %>
-  <%= t("model_files.general.edit") %>
-</h1>
+<%= PageTitle title: t("model_files.general.edit"), breadcrumbs: {
+      Model.model_name.human(count: 100) => models_path,
+      @file.model.name => model_path(@file.model),
+      @file.name => model_model_file_path([@file.model, @file])
+    } %>
 
 <%= render "form" %>

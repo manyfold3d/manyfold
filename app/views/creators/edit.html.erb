@@ -1,6 +1,6 @@
-<h1>
-  <%= link_to "#{@creator.name} /", @creator, class: "link-secondary link-underline-opacity-0" %>
-  <%= t "creators.general.edit" %>
-</h1>
+<%= PageTitle title: t("creators.general.edit"), breadcrumbs: {
+      Creator.model_name.human(count: 100) => creators_path,
+      @creator.name => creator_path(@creator)
+    } %>
 
 <%= render "form" %>
