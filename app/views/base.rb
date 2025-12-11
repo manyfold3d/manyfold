@@ -3,6 +3,9 @@
 class Views::Base < Components::Base
   include Phlex::Rails::Helpers::LinkTo
 
+  register_value_helper :policy
+  register_value_helper :policy_scope
+
   # The `Views::Base` is an abstract class for all your views.
 
   # By default, it inherits from `Components::Base`, but you
