@@ -878,8 +878,8 @@ en:
       edit:
         title: Edit
       index:
-        description: Groups are super cool
-        member_count: '%{count} members'
+        description: Groups are collections of local instance users, useful for managing things like Patreon or Liberapay subscribers. You can grant permissions to a group on any object.
+        member_count: "%{count} members"
         membership: Membership
         name: Name
         title: Groups
