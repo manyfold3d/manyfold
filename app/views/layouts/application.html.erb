@@ -18,7 +18,6 @@
   <body class="<%= "#{SiteSettings.validated_theme}-theme" %>" data-controller="tour">
     <%= skip_link "content", t(".skip_to_content") %>
     <%= render "application/navbar" %>
-    <%= yield :breadcrumbs %>
     <main class="container-fluid" id="content">
       <div id="alerts" aria-live="polite">
         <% if notice %>
@@ -34,7 +33,7 @@
           </p>
         <% end %>
       </div>
-      <div class="pt-3">
+      <div>
         <%= yield %>
       </div>
     </main>

@@ -1,3 +1,6 @@
-<h1><%= t("libraries.general.edit") %></h1>
+<%= PageTitle title: t("libraries.general.edit"), breadcrumbs: {
+      t("layouts.settings.site_settings_title") => settings_path,
+      t("layouts.settings.libraries") => settings_libraries_path
+    } %>
 
 <%= render "form" %>

@@ -1,3 +1,5 @@
-<h1><%= t("collections.general.new") %></h1>
+<%= PageTitle title: t("collections.general.new"), breadcrumbs: {
+      Collection.model_name.human(count: 100) => collections_path
+    } %>
 
 <%= render "form" %>

@@ -1,4 +1,6 @@
-<h2><%= t(".title") %></h2>
+<%= PageTitle title: t(".title"), breadcrumbs: {
+      t("follows.index.title") => follows_path
+    } %>
 
 <%= render "search_form", query: @query %>
 

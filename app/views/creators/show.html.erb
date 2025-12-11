@@ -4,10 +4,15 @@
   <%= tag.link rel: "alternate", type: Mime[:oembed], href: creator_url(@creator, format: :oembed), title: @creator.name %>
 <% end %>
 
+<%= content_for :page_header do %>
+  <%= PageTitle title: @creator.name, heading: false, breadcrumbs: {
+        Creator.model_name.human(count: 100) => creators_path
+      } %>
+<% end %>
+
 <%= content_for :items do %>
   <%= turbo_stream_from @creator %>
   <div class="card mb-3 <%= "remote-actor" if @creator.remote? %>">
-    <div class="card-header"><%= @creator.model_name.human %></div>
     <%= content_tag :div, class: "card-body row me-0 ms-0 with-background", style: (@creator.banner ? "background-image: url(#{banner_creator_path(@creator)}); background-position: center; background-size: cover" : nil) do %>
       <% if @creator.avatar %>
         <div class="col col-auto">

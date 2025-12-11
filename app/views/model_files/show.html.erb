@@ -4,10 +4,11 @@
 <% end %>
 
 <%= turbo_stream_from @file %>
-<h1>
-  <%= link_to "#{@file.model.name} /", @file.model, class: "link-secondary link-underline-opacity-0" %>
-  <%= @file.name %>
-</h1>
+
+<%= PageTitle title: @file.name, breadcrumbs: {
+      Model.model_name.human(count: 100) => models_path,
+      @file.model.name => model_path(@file.model)
+    } %>
 
 <div class="row row-cols-2">
 

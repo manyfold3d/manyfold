@@ -1,1 +1,5 @@
+<% content_for :page_header do %>
+  <%= PageTitle title: Model.model_name.human(count: 100), heading: false %>
+<% end %>
+
 <%= render "list" %>

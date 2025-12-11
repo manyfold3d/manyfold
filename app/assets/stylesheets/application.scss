@@ -1,6 +1,8 @@
 $color-mode-type: media-query;
 $table-bg-scale: -90%;
 
+$breadcrumb-margin-bottom: 0;
+
 @import 'bootstrap/scss/bootstrap';
 
 $bootstrap-icons-font-dir: "../fonts" !default;

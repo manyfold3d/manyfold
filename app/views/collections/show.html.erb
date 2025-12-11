@@ -4,10 +4,15 @@
   <%= tag.link rel: "alternate", type: Mime[:oembed], href: collection_url(@collection, format: :oembed), title: @collection.name %>
 <% end %>
 
+<%= content_for :page_header do %>
+  <%= PageTitle title: @collection.name, heading: false, breadcrumbs: {
+        Collection.model_name.human(count: 100) => collections_path
+      } %>
+<% end %>
+
 <%= content_for :items do %>
   <%= turbo_stream_from @collection %>
   <div class="card mb-3 <%= "remote-actor" if @collection.remote? %>">
-    <div class="card-header"><%= @collection.model_name.human %></div>
     <div class="card-body row">
       <div class="col col-auto">
         <%= content_tag(:div, class: "text-center") do %>

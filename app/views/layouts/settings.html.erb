@@ -1,8 +1,8 @@
 
 <% if policy(:settings).index? %>
-  <h1><%= t ".site_settings_title" %></h1>
+  <%= PageTitle title: t(".site_settings_title") %>
 <% elsif policy(:user).index? %>
-  <h1><%= t ".moderation_settings_title" %></h1>
+  <%= PageTitle title: t(".moderation_settings_title") %>
 <% end %>
 <div class="row mt-2 flex-nowrap">
   <div class="col col-auto border-end" id="sidebar">

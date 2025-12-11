@@ -1,5 +1,7 @@
-<%= render "breadcrumb" %>
-<h1><%= t(".title") %></h1>
+<%= PageTitle title: t(".title"), breadcrumbs: {
+      t("layouts.settings.site_settings_title") => settings_path,
+      t("doorkeeper_applications.index.title") => doorkeeper_applications_path
+    } %>
 
 <table class="table table-striped">
   <tr>

@@ -1,3 +1,5 @@
-<h1><%= t("creators.general.new") %></h1>
+<%= PageTitle title: t("creators.general.new"), breadcrumbs: {
+      Creator.model_name.human(count: 100) => creators_path
+    } %>
 
 <%= render "form" %>
