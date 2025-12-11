@@ -2,13 +2,11 @@
 
 class Views::Groups::Edit < Views::Groups::Form
   def view_template
-    h1 do
-      link_to "#{@creator.name} /", @creator, class: "link-secondary link-underline-opacity-0"
-      whitespace
-      link_to "#{t("views.groups.index.title")} /", creator_groups_path(@creator), class: "link-secondary link-underline-opacity-0"
-      whitespace
-      span { t("views.groups.edit.title") }
-    end
+    PageTitle title: t("views.groups.edit.title"), breadcrumbs: {
+      Creator.model_name.human(count: 100) => creators_path,
+      @creator.name => creator_path(@creator),
+      t("views.groups.index.title") => creator_groups_path(@creator)
+    }
     super
   end
 end
