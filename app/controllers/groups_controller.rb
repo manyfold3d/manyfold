@@ -10,12 +10,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  def show
-    respond_to do |format|
-      format.html { render Views::Groups::Show.new(group: @group, creator: @creator) }
-    end
-  end
-
   def new
     group = @creator.groups.new
     authorize group
@@ -36,7 +30,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html do
         if group.valid?
-          redirect_to creator_group_path(@creator, group), notice: t(".success")
+          redirect_to creator_groups_path(@creator), notice: t(".success")
         else
           render Views::Groups::New.new(group: group, creator: @creator), status: :unprocessable_content
         end
@@ -49,7 +43,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html do
         if @group.valid?
-          redirect_to creator_group_path(@creator, @group), notice: t(".success")
+          redirect_to creator_groups_path(@creator), notice: t(".success")
         else
           render Views::Groups::Edit.new(group: @group, creator: @creator), status: :unprocessable_content
         end
