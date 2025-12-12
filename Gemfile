@@ -114,7 +114,7 @@ gem "pundit", "~> 2.5"
 gem "spdx", "~> 4.1"
 gem "rack-contrib", "~> 2.5"
 
-gem "rails-i18n", "~> 8.0"
+gem "rails-i18n", "~> 8.0.0"
 
 gem "erb_lint", "~> 0.9", group: :development, require: false
 
