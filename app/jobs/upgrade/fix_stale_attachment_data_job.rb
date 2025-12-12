@@ -23,8 +23,8 @@ class Upgrade::FixStaleAttachmentDataJob < ApplicationJob
   end
 
   def each_iteration(modelfile)
-    modelfile.attachment_data.store("id", f.path_within_library)
-    modelfile.attachment_data.store("storage", f.model.library.storage_key.to_s)
+    modelfile.attachment_data.store("id", modelfile.path_within_library)
+    modelfile.attachment_data.store("storage", modelfile.model.library.storage_key.to_s)
     modelfile.save!
   end
 end
