@@ -1,4 +1,3 @@
 --require spec_helper
---format Rswag::Specs::SwaggerFormatter
 --format progress
 --order random
