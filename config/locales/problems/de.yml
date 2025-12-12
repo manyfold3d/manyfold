@@ -43,7 +43,7 @@ de:
         description_html: Dieses Modell enthält keine Dateien. Entweder löschen Sie es oder finde heraus, wo sie sind!
         title: Keine Dateien
       file_naming:
-        description_html: Der Pfad des Modell-Ordners stimmt nicht mit der Vorlage überein.
+        description_html: Der Pfad des Modell-Ordners stimmt nicht mit der Vorlage überein. Erwartet <code>%{note}</code>.
         title: Der Pfad stimmt nicht mit der Vorlage überein
       missing:
         description_html: Der Ordner für dieses Modell fehlt auf der Festplatte; lösche ihn, oder finde heraus, wo er ist!

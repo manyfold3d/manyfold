@@ -23,7 +23,7 @@ de:
       notes:
         help_html: Optional, Wird nur Administratoren in den Einstellungen angezeigt. Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> benutzten.
       path:
-        placeholder: "/samlungen/modelle"
+        placeholder: z.B. /Samlungen/modelle
       s3_bucket:
         help: Nur den bucket, nicht die vollständige URL
       s3_description_html: Manyfold kann jeden S3-kompatiblen Objektspeicher für Ihre Bibliothek verwenden; dies kann einer der zahlreichen <a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">Open-Source-</a> oder <a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">kommerziellen</a> Dienste sein.
@@ -42,7 +42,7 @@ de:
         label: Freier Speicherplatz
       heading: Sammlungen
       scan_changes:
-        confirm:
+        confirm: Bist du sicher, dass du diese Bibliothek nach neuen Dateien durchsuchen willst? Dies kann sehr lange dauern!
       settings: Einstellungen
       show:
         help: Zeigt oder versteckt Bibliotheken in der Navigationsleiste und in Formularen. Die Bibliotheksauswahl in Bearbeitungsformularen wird immer für Administratoren angezeigt.

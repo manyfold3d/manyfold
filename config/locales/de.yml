@@ -117,7 +117,7 @@ de:
         unconfirmed_email: Unbestätigte E-Mail-Adresse
         unlock_token: Entsperrungs-Token
         updated_at: Aktualisiert am
-        username: Name des Kontos
+        username: Nutzername
     errors:
       models:
         collection:
@@ -248,7 +248,7 @@ de:
       message: Nachricht
       name: Name
       time: Wenn
-      title: Neuste Aktivität
+      title: Neuste Aktivitäten
   activity_helper:
     status_icon:
       completed: Vollständig
@@ -280,7 +280,7 @@ de:
       remove_creator_filter: Ersteller-Filter entfernen
       remove_library_filter: Bibliotheks-Filter entfernen
       remove_missing_tag_filter: Filter für fehlende Tags entfernen
-      remove_owner_filter:
+      remove_owner_filter: Eigentümer-Filter entfernen
       remove_search_filter: Suchfilter entfernen
       remove_tag_filter: Tag-Filter entfernen
       search: Suche
@@ -305,27 +305,29 @@ de:
     links_form:
       add: Füge einen Link hinzu
     navbar:
-      account: Meine Einstellungen
+      account: 'Mein Konto
+
+        '
       activity: Aktivität
       add_models: Inhalt hinzufügen
       check_existing:
-        confirm:
+        confirm: Bist du sicher, dass du einen neuen Scan aller vorhandenen Modelle starten willst? Das kann sehr lange dauern!
         label: Alle Modelle neu scannen
       check_results:
-        confirm:
+        confirm: Bist du sicher, dass du einen erneuten Scan aller gefilterten Modelle starten willst? Das kann sehr lange dauern!
         label: Gefilterte Modelle erneut scannen
       home: Homepage
       import_url: URL importieren
       log_in: Einloggen
       log_out: Abmelden
       moderator_settings: Moderator-Einstellungen
-      my_stuff:
+      my_stuff: Meine Sachen
       navbar:
         toggler:
           label: Navigation umschalten
       scan: Scannen
       scan_changes:
-        confirm:
+        confirm: Bist du sicher, dass du alle Bibliotheken nach neuen Dateien durchsuchen willst? Das kann sehr lange dauern!
         label: Nach neuen Dateien suchen
       scanning: Scannen
       search: Suche
@@ -360,7 +362,7 @@ de:
     copy_button:
       copy: In die Zwischenablage kopieren
     copyable_text:
-      reveal:
+      reveal: Enthüllen
     display_user_quota:
       request_increase: Um eine Quotenerhöhung zu beantragen, wende dich an deinen Website-Administrator.
     download_button:
@@ -374,7 +376,7 @@ de:
       supported: Nur Dateien mit Supportstruktur
       unsupported: Nur Dateien ohne Supportstruktur
     follow_button:
-      follow: Folge %{name}
+      follow: Folgen %{name}
       pending: Angefordert
       unfollow: "%{name} nicht mehr Folgen"
     image_carousel:
@@ -415,10 +417,10 @@ de:
       unset: Verwende "set?", um abzufragen, ob ein bestimmtes Feld gesetzt ist, und füge "not" hinzu, um das Gegenteil festzustellen.
       without_tag: Verwende "!=", um Modelle ohne ein bestimmtes Tag zu finden
     sort_menu:
-      name:
-      recent:
-      sort-by:
-      updated:
+      name: Titel
+      recent: Neueste
+      sort-by: Sortieren nach
+      updated: Aktualisiert
   concerns:
     linkable:
       sync:
@@ -648,7 +650,7 @@ de:
     unfollow_remote_actor:
       unfollowed: "%{actor} nicht mehr Folgen"
   general:
-    copy_fediverse_handle:
+    copy_fediverse_handle: Fediverse-Adresse in die Zwischenablage kopieren
     delete: Löschen
     download: Herunterladen
     edit: Bearbeiten
@@ -664,7 +666,7 @@ de:
     new: Neue
     private: Privat
     public: Öffentlich sichtbar
-    report: Melde %{type}
+    report: Melden %{type}
     save: Speichern
     shared: mit Lokalen Nutzern geteilt
     view: Siehe
@@ -683,22 +685,22 @@ de:
       more_access: Derzeit hast du nur Lesezugriff auf diese Instanz; um mehr Rechte zu erhalten, z. B. zum Hochladen, wende dich an den Instanzadministrator.
       title: Durchsuchen
     federation:
-      account_handle:
-      content_html: Diese Manyfold-Instanz ist Teil des <a href="https://jointhefediverse.net">Fediverse</a>, eines Netzwerks von Social-Media-Sites, die alle zusammenarbeiten. Das bedeutet, dass, wenn du hier ein Konto hast, kannst du anderen Menschen auf ihren Instanzen Folgen, oder Menschen können dir von anderen Plattformen wie Mastodon folgen.
-      creator_handle:
-      creator_handle_html: 'Das fediverse-Handle deines Erstellerprofils lautet: <code>%{handle}</code>.'
-      handle_html: 'Ihr fediverse-Handle lautet: <code>%{handle}</code>'
-      title: Föderation
-      users_v_creators:
+      account_handle: Konto-Adresse
+      content_html: Diese Instanz ist Teil des <a href="https://jointhefediverse.net">Fediverse</a>, eines Netzwerks von anderen Seiten, die alle zusammenarbeiten. Das bedeutet, dass, wenn du hier ein Konto hast, kannst du anderen Menschen auf ihren Instanzen Folgen, oder Menschen können dir von anderen Plattformen wie Mastodon folgen.
+      creator_handle: Ersteller-Adresse
+      creator_handle_html: 'Wir haben automatisch ein Erstellerprofil für dich eingerichtet. Diesem Handle sollten die Leute folgen, um zu sehen, was du veröffentlichst:'
+      handle_html: 'Wenn du deinen Handle auf einer anderen Website eingeben musst, um jemandem zu folgen, solltest du deinen persönlichen Kontohandle verwenden:'
+      title: Die Föderation
+      users_v_creators: Im Gegensatz zu vielen Fediverse-Plattformen hast du bei Manyfold nicht nur ein Handle. Jedes Modell, jeder Ersteller und jede Kollektion hat sein eigenes Handle, dem die Leute folgen können, ebenso wie das Konto, mit dem du dich anmeldest. Das bedeutet, dass du mehr als ein Ersteller-profil verwalten kannst!
     index:
       no_activities: Im Moment gibt es keine Aktivitäten zu sehen.
       open_search_help: Such-Syntax
-      recent_activity: Neuste Aktivität
+      recent_activity: Neuste Aktivitäten
       search:
         placeholder: Wonach suchen Sie?
         submit: Suche
     publishing:
-      content: Du kannst Inhalte öffentlich veröffentlichen, indem du der Rolle "public" auf der Bearbeitungsseite des Artikels die Berechtigung "view" oder "preview" gibst. Ersteller von öffentlichen Modellen werden automatisch öffentlich gemacht, aber Sammlungen müssen explizit veröffentlicht werden, wenn sie sichtbar sein sollen.
+      content: Du kannst deine Modelle öffentlich zugänglich machen, indem du auf die Modellbearbeitungsseite gehst und die Berechtigungen fetlegst.
       existing_creator:
         button: Erstellerprofil bearbeiten
         content: 'Wenn du deine eigenen Werke veröffentlichst, möchtest du wahrscheinlich dein Erstellerprofil anpassen:'
@@ -708,9 +710,9 @@ de:
       title: Veröffentlichung
     support:
       content: Viele Instanzen werden von Menschen wie Ihnen betrieben! Wenn du diese Instanz nützlich findest, könntest du helfen, sie am Laufen zu halten, indem du unten klickst.
-      manyfold_html: Um die Entwicklung der Manyfold-Software selbst zu unterstützen, kannst du dies bei <a href="https://opencollective.com/manyfold">OpenCollective</a> tun.
+      manyfold_html: Manyfold ist eine 100% freie und quelloffene Software. Du kannst helfen, sie zu verbessern, indem du eine Spende machst!
       support_link: Diese Instanz unterstützen
-      support_manyfold:
+      support_manyfold: Manyfold unterstützen
       title: Unterstützen
     uploading:
       quota: Du kannst bis zu %{quota} Inhalte hochladen, und du kannst deinen aktuellen Kontingentverbrauch jederzeit auf deiner Einstellungsseite einsehen.
@@ -872,7 +874,7 @@ de:
   views:
     pagination:
       first: "« Anfang"
-      last: Ende »
+      last: Letzte »
       next: Weiter ›
       previous: "‹ Zurück"
       truncate: "…"

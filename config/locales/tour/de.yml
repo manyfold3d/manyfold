@@ -3,18 +3,18 @@ de:
   tour:
     libraries:
       new:
-        description:
+        description: Eine "Bibliothek" ist ein physischer Speicherort für deine Dateien. Das kann ein lokaler Ordner oder ein Cloud-Speicherbereich sein. Du kannst nur eine haben oder viele, das bleibt dir überlassen. Wenn sich bereits Dateien in der Bibliothek befinden, werden sie gescannt und automatisch zu Manyfold hinzugefügt.
     navbar:
       account:
-        description:
+        description: In deinen Einstellungen kannst du deine Anmeldedaten, den bevorzugten Darstellungsstil, die Seitenoptionen und vieles mehr ändern.
       add_models:
-        description:
+        description: Hier kannst du deine eigenen Modelle hochladen oder importieren; Du kannst sie privat halten oder öffentlich zugänglich machen, das bleibt dir überlassen!
       collections:
-        description:
+        description: Modelle können in "Sammlungen" gruppiert werden, z. B. Modelle mit einem ähnlichen Thema oder Zweck.
       creators:
-        description:
+        description: Ein "Erstelller" ist der Designer, Herausgeber oder Autor eines Modells.
       main:
-        description:
-        title:
+        description: Bei diesem kurzen Rundgang werden die wichtigsten Merkmale und Konzepte der Website kurz erläutert.
+        title: Willkommen bei %{name}!
       models:
-        description:
+        description: Ein "Modell" in Manyfold ist eine 3D-Datei oder ein Satz von Dateien, die zusammengehören, z. B. Teile einer einzelnen Baugruppe oder eines Bausatzes. Ein Modell kann auch Anleitungsdokumente, Bilder usw. enthalten.
