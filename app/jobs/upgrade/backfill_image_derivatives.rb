@@ -4,12 +4,13 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
   queue_as :low
   unique :until_executed
 
-  def build_enumerator(cursor:)
+  def scope
     method = ((ApplicationRecord.connection.adapter_name == "PostgreSQL") ? "json_extract_path" : "json_extract")
-    enumerator_builder.active_record_on_records(
-      ModelFile.unscoped.where("#{method}(attachment_data, '$.derivatives', '$.preview') IS NULL"),
-      cursor: cursor
-    )
+    ModelFile.unscoped.where("#{method}(attachment_data, '$.derivatives', '$.preview') IS NULL")
+  end
+
+  def build_enumerator(cursor:)
+    enumerator_builder.active_record_on_records(scope, cursor: cursor)
   end
 
   def each_iteration(modelfile)
