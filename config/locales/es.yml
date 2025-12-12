@@ -360,7 +360,7 @@ es:
     copy_button:
       copy: Copiar al portapapeles
     copyable_text:
-      reveal:
+      reveal: Mostrar
     display_user_quota:
       request_increase: Para solicitar un aumento de cuota, póngase en contacto con el administrador de su sitio.
     download_button:
@@ -686,8 +686,8 @@ es:
       account_handle: Identificador de cuenta
       content_html: Esta instancia de Manyfold forma parte de <a href="https://jointhefediverse.net">Fediverse</a>, una red de redes sociales que funcionan conjuntamente. Eso significa que si tienes una cuenta aquí, puedes seguir contenido en otras instancias de Manyfold, o la gente puede seguir tu contenido desde otras plataformas como Mastodon.
       creator_handle: Identificador de creador
-      creator_handle_html: 'El identificador fediverse de tu perfil de creador es: <code>%{handle}</code>.'
-      handle_html: 'Tu "handle" en fediverse es: <code>%{handle}</code>'
+      creator_handle_html: 'El identificador fediverse de tu perfil de creador es:'
+      handle_html: 'Tu "handle" en fediverse es:'
       title: Federación
       users_v_creators: A diferencia de muchas plataformas Fediverse, en Manyfold no tienes un único usuario. Cada modelo, creador y colección tiene su propio "handle" para que la gente lo siga, al igual que la cuenta con la que te registras. Esto significa que puedes gestionar más de un perfil de creador.
     index:
