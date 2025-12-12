@@ -128,7 +128,7 @@ gem "rolify", "~> 6.0"
 
 gem "letter_opener", "~> 1.10", group: :development
 
-gem "sidekiq", "~> 8.0"
+gem "sidekiq", "~> 8.1"
 
 # gem "sidekiq-failures", "~> 1.0"
 gem "activejob-status", "~> 1.0"
