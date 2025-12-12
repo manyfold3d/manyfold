@@ -1,0 +1,26 @@
+name: OpenAPI Definition
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 0 * * *'
+
+jobs:
+  generate:
+    if: github.triggering_actor != 'allcontributors[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup
+      - name: Generate latest API docs
+        run: bundle exec rake rswag
+      - name: Open pull request with changes
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: "${{ secrets.TRANSLATION_SYNC_PAT }}"
+          commit-message: "Updated OpenAPI definition"
+          branch: "openapi/autogenerate"
+          labels: improvement
+          title: "OpenAPI definition updated"
+          delete-branch: true
+          add-paths: app/api
