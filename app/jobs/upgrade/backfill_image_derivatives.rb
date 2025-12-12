@@ -6,7 +6,7 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
 
   def scope
     method = ((ApplicationRecord.connection.adapter_name == "PostgreSQL") ? "json_extract_path" : "json_extract")
-    ModelFile.unscoped.where("#{method}(attachment_data, '$.derivatives', '$.preview') IS NULL")
+    ModelFile.unscoped.where("#{method}(attachment_data, '$.derivatives.preview') IS NULL")
   end
 
   def build_enumerator(cursor:)
