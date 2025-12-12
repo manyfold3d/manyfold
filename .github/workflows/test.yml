@@ -13,8 +13,9 @@ jobs:
       fail-fast: false
       matrix:
         database_url:
-          - postgresql://manyfold:manyfold@localhost:5432/manyfold
-          - mysql2://manyfold:manyfold@127.0.0.1:3306/manyfold
+          - postgresql://manyfold:manyfold@localhost:5432/manyfold_postgres
+          - mysql2://manyfold:manyfold@127.0.0.1:3306/manyfold_mysql
+          - mysql2://manyfold:manyfold@127.0.0.1:3307/manyfold_mariadb
           - sqlite3:/tmp/test.db
     runs-on: ubuntu-latest
     env:
@@ -39,7 +40,7 @@ jobs:
         env:
           POSTGRES_USER: manyfold
           POSTGRES_PASSWORD: manyfold
-          POSTGRES_DB: manyfold
+          POSTGRES_DB: manyfold_postgres
         options: >-
           --health-cmd "pg_isready -d postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@localhost:5432/$POSTGRES_DB"
           --health-interval 10s
@@ -47,13 +48,13 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
-      mariadb:
-        image: mariadb
+      mysql:
+        image: mysql
         env:
-          MARIADB_USER: manyfold
-          MARIADB_PASSWORD: manyfold
-          MARIADB_DATABASE: manyfold
-          MARIADB_ROOT_PASSWORD: verysecret
+          MYSQL_USER: manyfold
+          MYSQL_PASSWORD: manyfold
+          MYSQL_DATABASE: manyfold_mysql
+          MYSQL_ROOT_PASSWORD: verysecret
         options: >-
           --health-cmd "healthcheck.sh --connect --innodb_initialized"
           --health-interval 10s
@@ -61,6 +62,20 @@ jobs:
           --health-retries 5
         ports:
           - 3306:3306
+      mariadb:
+        image: mariadb
+        env:
+          MARIADB_USER: manyfold
+          MARIADB_PASSWORD: manyfold
+          MARIADB_DATABASE: manyfold_mariadb
+          MARIADB_ROOT_PASSWORD: verysecret
+        options: >-
+          --health-cmd "healthcheck.sh --connect --innodb_initialized"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 3307:3306
       redis:
         image: redis
         options: >-
