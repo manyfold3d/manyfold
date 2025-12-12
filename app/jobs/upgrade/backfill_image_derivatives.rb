@@ -5,8 +5,14 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
   unique :until_executed
 
   def scope
-    method = ((ApplicationRecord.connection.adapter_name == "PostgreSQL") ? "json_extract_path" : "json_extract")
-    ModelFile.unscoped.where("#{method}(attachment_data, '$.derivatives.preview') IS NULL")
+    where_clause = case ApplicationRecord.connection.adapter_name
+    when "PostgreSQL"
+      "json_extract_path(attachment_data, 'derivatives', 'preview') IS NULL"
+    else
+      # MySQL and SQLite3 have the same syntax
+      "json_extract(attachment_data, '$.derivatives.preview') IS NULL"
+    end
+    ModelFile.unscoped.where(where_clause)
   end
 
   def build_enumerator(cursor:)
