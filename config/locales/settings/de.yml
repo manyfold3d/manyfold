@@ -46,7 +46,7 @@ de:
         help: Sofern deaktiviert werden Suchmaschinen gebeten, öffentlichen Inhalt standardmäßig zu ignorieren.
         label: Suchindizierung zulassen
       description: Kontrolliere, wie der Rest der Welt deine öffentlichen Inhalte findet. Beachte, dass all diese Einstellungen Empfehlungen sind; Wir können nicht garantieren, dass sich andere Systeme gut verhalten.
-      heading: Entdeckung
+      heading: Suchmaschinen Indizierung
       indexing:
         description: Die folgenden Optionen setzen seitenweite Standardeinstellungen für die Suchindizierung von öffentlichen Inhalten (private Inhalte sind nie indizierbar). Für einzelne Modelle, Autoren oder Kollektionen können diese Einstellungen überschrieben werden. Diese haben nur einen Effekt, wenn Crawler aktiviert sind.
         heading: Standardeinstellungen für die Suchindizierung
@@ -74,7 +74,7 @@ de:
       expiry:
         help: 0 bedeutet "für immer".
         hours: Stunden
-        label: Entferne heruntergeladene ZIP-Dateien danach
+        label: Entferne heruntergeladene ZIP-Dateien nach
       heading: Herunterladen
       pregenerate:
         help: Wenn diese Option aktiviert ist, werden ZIP-Dateien immer dann erstellt, wenn ein Modell hinzugefügt oder aktualisiert wird. Wenn deaktiviert, werden ZIP-Dateien nur auf Anforderung erstellt.
@@ -123,10 +123,10 @@ de:
     multiuser:
       approve_signups:
         help: Alle neuen Konten müssen von einem Moderator genehmigt werden, bevor man sich anmelden kann.
-        label: Konten genehmigen
+        label: Konten erst genehmigen lassen
       autocreate_creator:
         help: 'Wird nur angewendet, wenn Konten standardmäßig die Rolle "Mitwirkender" zugewiesen wird. '
-        label: Automatisch Maker aus neuen Accounts generieren
+        label: Automatisch Authoren-Profile für jeden Account erstellen
       default_signup_role:
         help: Die Rolle, welche neue Konten bei der Registrierung zugewiesen wird
         label: Standard-Rolle
@@ -177,7 +177,7 @@ de:
         resolved: Die Meldung wurde als Gelöst Markiert
     show:
       stats: Statistiken
-      total_file_size: Gesamtgröße der Datei
+      total_file_size: Gesamtgröße aller Daten
     tag_settings:
       auto_tag_new:
         label: Automatisch neue Modelle mit Tag(s) markieren

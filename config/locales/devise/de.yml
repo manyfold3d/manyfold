@@ -77,12 +77,12 @@ de:
         security: Sicherheit
         social: Soziales
         submit: Änderungen speichern
-        title: Meine Einstellungen
+        title: Präferenzen
         unhappy: Unzufrieden?
         update: Aktualisieren
         we_need_your_current_password_to_confirm_your_changes: wir benötigen dein aktuelles Passwort, um die Änderung zu bestätigen
       file_list_settings:
-        heading: Datei-Listen
+        heading: Modell-Seiten
         hide_presupported_versions:
           label: Kombiniere verknüpfte Dateien mit und ohne Supportstruktur.
         summary: Steuere, wie Modelle und Dateilisten angezeigt werden
@@ -99,7 +99,7 @@ de:
         interface_language:
           autodetect: Browsereinstellungen verwenden
           help: 'Hinweis: Einige nicht übersetzte Texte werden möglicherweise noch auf Englisch angezeigt.'
-          label: Sprache der Oberfläche
+          label: Webseiten Sprache
         sensitive_content:
           help: Beeinflusst die Anzeige von als "Möglicherweise verstörender Inhalt" gekennzeichneten Inhalten
           hide: Vollständig ausblenden
@@ -122,7 +122,7 @@ de:
         username:
           help: Einen kurzen Benutzernamen für dein persönliches Konto; wenn du später ein Profil für die Veröffentlichung deiner Modelle erstellst, brauchst du einen anderen Kontonamen.
       pagination_settings:
-        heading: Seitenaufteilung
+        heading: Seiten auflisten
         per_page:
           label: Elemente Pro seite
       problem_settings:
@@ -168,15 +168,15 @@ de:
       tag_cloud_settings:
         heading: Tag-Wolke
         heatmap:
-          label: Tag-Anzahl für einzelne Tags anzeigen
+          label: Modell anzahl für jeden Tag anzeigen
         keypair:
           label: Begrenzungszeichen zur Darstellung von Schlüsselpaaren verwenden
         sorting:
           alphabetical: alphabetisch
-          frequency: frequenz
+          frequency: Anzahl
           label: Sortieren
         threshold:
-          label: Mindestanzahl der Tags, um Angezeigt zu werden
+          label: Mindestanzahl der modelle pro Tag, um angezeigt zu werden
       update:
         setup_complete: Einrichtung abgeschlossen!
       update_needs_confirmation: Deine Account-Daten wurden erfolgreich aktualisiert, aber du musst deine neue E-Mail-Adresse bestätigen. Du erhältst in wenigen Minuten eine E-Mail, mit der du die Änderungen bestätigen kannst.

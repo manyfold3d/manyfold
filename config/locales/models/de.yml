@@ -12,7 +12,7 @@ de:
       submit: Ausgewählte Modelle aktualisieren
       title: Modelle massenweise bearbeiten
       update_all:
-        confirm:
+        confirm: Bist du sicher, dass du diese Änderungen auf alle %{count}-Modelle anwenden willst, die den aktuellen Filtern entsprechen?
         label: Alle %{count}-Modelle aktualisieren
     bulk_update:
       success: Modelle erfolgreich aktualisiert.
@@ -80,7 +80,7 @@ de:
       merge_all: Alle zusammenführen
     problems_card:
       tour:
-        description:
+        description: Diese Karte zeigt alle Probleme an, die bei diesem Modell festgestellt wurden. Du kannst die Einstellungen für die Sichtbarkeit von Problemen in deinen Kontoeinstellungen ändern.
         title: Probleme
     scan:
       success: Modell-Scan gestartet
@@ -95,8 +95,8 @@ de:
       license: Lizenz
       menu:
         tour:
-          description:
-          title:
+          description: Dieses Menü enthält zusätzliche Funktionen wie das Bearbeiten oder Löschen des Modells oder die gleichzeitige Bearbeitung mehrerer Dateien.
+          title: Bearbeiten
       merge:
         heading: Zusammenführen
         warning: Bei der Zusammenführung werden alle Dateien dieses Modells auf das Ziel verschoben und das Modell wird entfernt. Die Metadaten der Dateien bleiben erhalten, aber alle Metadaten des Modelle gehen verloren!
