@@ -2,11 +2,14 @@ class ProcessUploadedFileJob < ApplicationJob
   queue_as :critical
 
   def perform(library_id, uploaded_file, name: nil, owner: nil, creator_id: nil, collection_id: nil, tag_list: nil, license: nil, model: nil, sensitive: nil, permission_preset: nil)
+    new_files = []
+    new_model = model.nil?
+    attachers = []
+
     ActiveRecord::Base.transaction do
       # Find library
       library = Library.find(library_id)
       return if library.nil?
-      new_model = model.nil?
 
       attachers = Array.wrap(uploaded_file).map do |it|
         # Attach cached upload file
@@ -18,7 +21,6 @@ class ProcessUploadedFileJob < ApplicationJob
       name ||= File.basename(attachers.first.file.original_filename, ".*").humanize.tr("+", " ").careful_titleize
       model ||= create_new_model(library, name: name, owner: owner, creator_id: creator_id, collection_id: collection_id, tag_list: tag_list, license: license, sensitive: sensitive, permission_preset: permission_preset)
 
-      new_files = []
       attachers.each do |it|
         new_files << if new_model && (attachers.length == 1) && is_archive?(it.file)
           unzip_into_model(model, it.file)
@@ -26,19 +28,19 @@ class ProcessUploadedFileJob < ApplicationJob
           add_single_file_to_model(model, it.file)
         end
       end
+    end
 
-      # Queue scans to fill in data or update things
-      if new_model
-        model.add_new_files_later(include_all_subfolders: true)
-      else
-        model.check_for_problems_later
-      end
-      new_files.flatten.each(&:parse_metadata_later)
+    # Queue scans to fill in data or update things
+    if new_model
+      model.add_new_files_later(include_all_subfolders: true)
+    else
+      model.check_for_problems_later
+    end
+    new_files.flatten.each(&:parse_metadata_later)
 
-      attachers.each do |it|
-        # Discard cached file
-        it.destroy
-      end
+    attachers.each do |it|
+      # Discard cached file
+      it.destroy
     end
   end
 
