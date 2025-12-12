@@ -9,5 +9,13 @@ FactoryBot.define do
     trait :public do
       permission_preset { :public }
     end
+
+    trait :with_avatar do
+      avatar { Rack::Test::UploadedFile.new(StringIO.new, original_filename: "avatar.png") }
+    end
+
+    trait :with_banner do
+      banner { Rack::Test::UploadedFile.new(StringIO.new, original_filename: "banner.png") }
+    end
   end
 end
