@@ -55,6 +55,18 @@ RSpec.describe ModelFile do
     end
   end
 
+  context "when serializing JSON fields" do
+    let(:file) { create(:model_file) }
+
+    [
+      :attachment_data
+    ].each do |field|
+      it "serializes #{field.to_s.humanize} correctly" do
+        expect(file.reload.send(field)).to be_a Hash
+      end
+    end
+  end
+
   it "finds duplicate files using digest" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
     library = create(:library, path: Rails.root.join("/tmp"))
     model = create(:model, library: library, path: "model")
