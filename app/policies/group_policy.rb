@@ -1,6 +1,6 @@
 class GroupPolicy < ApplicationPolicy
   def show?
-    @user.has_permission_on?("own", @record.creator) || @user.is_moderator?
+    @user&.has_permission_on?("own", @record.creator) || @user&.is_moderator?
   end
 
   alias_method :create?, :show?
