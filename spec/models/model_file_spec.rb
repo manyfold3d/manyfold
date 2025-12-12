@@ -235,4 +235,35 @@ RSpec.describe ModelFile do
       expect(file.ai_indexable?).to eq model.ai_indexable?
     end
   end
+
+  context "when creating derivatives for an image file" do
+    let(:model) { create(:model) }
+    let(:file) {
+      create(:model_file, model: model, filename: "logo.png",
+        attachment: LibraryUploader.upload(
+          File.open(Rails.root.join("logo.png")),
+          :cache
+        ))
+    }
+
+    before do
+      allow(SiteSettings).to receive_messages(generate_image_derivatives: true)
+    end
+
+    it "adds a preview derivative" do
+      expect { file.generate_derivatives! }.to change { file.reload.attachment_derivatives.key?(:preview) }.from(false).to(true)
+    end
+
+    it "adds a carousel derivative" do
+      expect { file.generate_derivatives! }.to change { file.reload.attachment_derivatives.key?(:carousel) }.from(false).to(true)
+    end
+
+    it "does not change the updated_at time of the file" do
+      expect { file.generate_derivatives! }.not_to change(file, :updated_at)
+    end
+
+    it "does not change the updated_at time of the owning model" do
+      expect { file.generate_derivatives! }.not_to change(model, :updated_at)
+    end
+  end
 end
