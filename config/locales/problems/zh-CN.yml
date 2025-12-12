@@ -43,7 +43,7 @@ zh-CN:
         description_html: 该模型不包含任何文件。要么删除它，要么找到它的文件去向！
         title: 无文件
       file_naming:
-        description_html: 模型文件夹路径与路径模板不匹配。
+        description_html: 模型文件夹路径与路径模板不匹配。预期<code>%{note}</code>。
         title: 路径与模板不匹配
       missing:
         description_html: 该模型的文件夹在磁盘中丢失；要么删除它，要么找到它的去向！
