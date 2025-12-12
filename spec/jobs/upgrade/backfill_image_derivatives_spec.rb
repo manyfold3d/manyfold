@@ -10,7 +10,7 @@ RSpec.describe Upgrade::BackfillImageDerivatives do
     let!(:without) { create(:model_file, filename: "without.stl") }
 
     before do
-      with.attachment_data["derivatives"] = {"preview" => {}}
+      with.attachment_data.store("derivatives", {"preview" => {"id" => "dummy_value"}})
       with.save!
     end
 
