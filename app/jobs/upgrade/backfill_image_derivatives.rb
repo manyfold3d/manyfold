@@ -8,9 +8,10 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
     where_clause = case ApplicationRecord.connection.adapter_name
     when "PostgreSQL"
       "json_extract_path(attachment_data, 'derivatives', 'preview') IS NULL"
-    else
-      # MySQL and SQLite3 have the same syntax
+    when "MySQL", "SQLite"
       "json_extract(attachment_data, '$.derivatives.preview') IS NULL"
+    else
+      raise NotImplementedError.new("Unknown database adapter #{ApplicationRecord.connection.adapter_name}")
     end
     ModelFile.unscoped.where(where_clause)
   end
