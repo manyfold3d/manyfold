@@ -670,9 +670,9 @@ es:
     view: Ver
   groups:
     create:
-      success:
+      success: Grupo creado correctamente.
     update:
-      success:
+      success: Grupo actualizado correctamente.
   home:
     activity:
       created: añadido hace %{time}
