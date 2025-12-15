@@ -4,6 +4,6 @@ module CrossDbJsonSerializer
   end
 
   def self.dump(payload)
-    payload
+    payload.is_a?(String) ? payload : JSON.dump(payload)
   end
 end
