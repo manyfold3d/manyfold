@@ -91,6 +91,28 @@ RSpec.describe User do
     expect(user.has_quota?).to be_falsey # rubocop:disable RSpec/PredicateMatcher
   end
 
+  context "when serializing JSON fields" do
+    let(:user) { create(:user) }
+
+    [
+      :pagination_settings,
+      :renderer_settings,
+      :tag_cloud_settings,
+      :problem_settings,
+      :file_list_settings,
+      :tour_state
+    ].each do |field|
+      it "deserializes #{field.to_s.humanize} correctly" do
+        expect(user.reload.send(field)).to be_a Hash
+      end
+
+      it "serializes #{field.to_s.humanize} correctly" do
+        user.update!(field => {"foo" => {"bar" => "qux"}})
+        expect(user.reload.send(field).dig("foo", "bar")).to eq "qux"
+      end
+    end
+  end
+
   context "when autocreating creator" do
     it "creates creator successfully if data is valid" do
       user = create(:user, creators_attributes: [{slug: "creator", name: "Creator"}])

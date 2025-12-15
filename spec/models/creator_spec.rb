@@ -33,4 +33,21 @@ RSpec.describe Creator do
       expect(ap[:attachment]).to include({type: "Link", href: "http://example.com"})
     end
   end
+
+  context "when serializing JSON fields", :after_first_run do
+    let(:creator) { create(:creator, :with_avatar, :with_banner) }
+
+    before do
+      create(:library)
+    end
+
+    [
+      :avatar_data,
+      :banner_data
+    ].each do |field|
+      it "deserializes #{field.to_s.humanize} correctly" do
+        expect(creator.reload.send(field)).to be_a Hash
+      end
+    end
+  end
 end

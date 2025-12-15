@@ -46,12 +46,12 @@ class User < ApplicationRecord
   after_create :assign_default_role
 
   # Explicitly explain serialization for MariaDB
-  attribute :pagination_settings, :json
-  attribute :renderer_settings, :json
-  attribute :tag_cloud_settings, :json
-  attribute :problem_settings, :json
-  attribute :file_list_settings, :json
-  attribute :tour_state, :json
+  serialize :pagination_settings, coder: CrossDbJsonSerializer
+  serialize :renderer_settings, coder: CrossDbJsonSerializer
+  serialize :tag_cloud_settings, coder: CrossDbJsonSerializer
+  serialize :problem_settings, coder: CrossDbJsonSerializer
+  serialize :file_list_settings, coder: CrossDbJsonSerializer
+  serialize :tour_state, coder: CrossDbJsonSerializer
 
   attribute :sort_order, :integer # Explicit declaration of attribute so as not to break old data migrations
   enum :sort_order, {name: 0, recent: 1, updated: 2}, prefix: :sort_by, default: :name, validate: true
