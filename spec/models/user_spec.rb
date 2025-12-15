@@ -102,8 +102,13 @@ RSpec.describe User do
       :file_list_settings,
       :tour_state
     ].each do |field|
-      it "serializes #{field.to_s.humanize} correctly" do
+      it "deserializes #{field.to_s.humanize} correctly" do
         expect(user.reload.send(field)).to be_a Hash
+      end
+
+      it "serializes #{field.to_s.humanize} correctly" do
+        user.update!(field => {"foo" => {"bar" => "qux"}})
+        expect(user.reload.send(field).dig("foo", "bar")).to eq "qux"
       end
     end
   end

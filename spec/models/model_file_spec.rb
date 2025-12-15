@@ -61,7 +61,7 @@ RSpec.describe ModelFile do
     [
       :attachment_data
     ].each do |field|
-      it "serializes #{field.to_s.humanize} correctly" do
+      it "deserializes #{field.to_s.humanize} correctly" do
         expect(file.reload.send(field)).to be_a Hash
       end
     end

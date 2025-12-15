@@ -45,7 +45,7 @@ RSpec.describe Creator do
       :avatar_data,
       :banner_data
     ].each do |field|
-      it "serializes #{field.to_s.humanize} correctly" do
+      it "deserializes #{field.to_s.humanize} correctly" do
         expect(creator.reload.send(field)).to be_a Hash
       end
     end
