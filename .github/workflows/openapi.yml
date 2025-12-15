@@ -13,6 +13,8 @@ jobs:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/setup
       - name: Generate latest API docs
+        run: bundle exec rake db:migrate
+      - name: Generate latest API docs
         run: bundle exec rake rswag
       - name: Open pull request with changes
         uses: peter-evans/create-pull-request@v8
