@@ -40,7 +40,7 @@ class ModelFile < ApplicationRecord
   scope :presupported, -> { where(presupported: true) }
 
   # Explicitly explain serialization for MariaDB
-  attribute :attachment_data, :json
+  serialize :attachment_data, coder: CrossDbJsonSerializer
 
   delegate :indexable?, to: :model
   delegate :ai_indexable?, to: :model

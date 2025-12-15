@@ -23,8 +23,8 @@ class Creator < ApplicationRecord
   validates :slug, presence: true, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}, format: {with: /\A[[:alnum:]\-_]+\z/}
 
   # Explicitly explain serialization for MariaDB
-  attribute :avatar_data, :json
-  attribute :banner_data, :json
+  serialize :avatar_data, coder: CrossDbJsonSerializer
+  serialize :banner_data, coder: CrossDbJsonSerializer
 
   def fasp_uri
     federails_actor&.federated_url
