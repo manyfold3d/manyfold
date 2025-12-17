@@ -8,7 +8,7 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
     where_clause = case ApplicationRecord.connection.adapter_name
     when "PostgreSQL"
       "json_extract_path(attachment_data, 'derivatives', 'preview') IS NULL"
-    when "MySQL", "SQLite"
+    when "Mysql2", "SQLite"
       "json_extract(attachment_data, '$.derivatives.preview') IS NULL"
     else
       raise NotImplementedError.new("Unknown database adapter #{ApplicationRecord.connection.adapter_name}")
