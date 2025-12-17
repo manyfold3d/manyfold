@@ -4,12 +4,20 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
   queue_as :low
   unique :until_executed
 
+  def scope
+    where_clause = case ApplicationRecord.connection.adapter_name
+    when "PostgreSQL"
+      "json_extract_path(attachment_data, 'derivatives', 'preview') IS NULL"
+    when "Mysql2", "SQLite"
+      "json_extract(attachment_data, '$.derivatives.preview') IS NULL"
+    else
+      raise NotImplementedError.new("Unknown database adapter #{ApplicationRecord.connection.adapter_name}")
+    end
+    ModelFile.unscoped.where(where_clause)
+  end
+
   def build_enumerator(cursor:)
-    method = ((ApplicationRecord.connection.adapter_name == "PostgreSQL") ? "json_extract_path" : "json_extract")
-    enumerator_builder.active_record_on_records(
-      ModelFile.unscoped.where("#{method}(attachment_data, '$.derivatives', '$.preview') IS NULL"),
-      cursor: cursor
-    )
+    enumerator_builder.active_record_on_records(scope, cursor: cursor)
   end
 
   def each_iteration(modelfile)
