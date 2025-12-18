@@ -94,6 +94,7 @@ de:
         severity: Schweregrad
       user:
         approved: Konto ausstehend
+        auth_uid:
         confirmation_sent_at: Bestätigung gesendet am
         confirmation_token: Bestätigungs-Token
         confirmed_at: Bestätigt am
@@ -359,6 +360,9 @@ de:
       non_manyfold_account: Dies ist kein Manyfold-Konto; Du kannst ihm folgen, aber wahrscheinlich wird nichts Interessantes passieren, zumindest im Moment.
     altcha_widget:
       help: datenschutzfreundlicher Spamschutz durch ALTCHA
+    column_header:
+      current_sort:
+      sort_by:
     copy_button:
       copy: In die Zwischenablage kopieren
     copyable_text:

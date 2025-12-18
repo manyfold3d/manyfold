@@ -94,6 +94,7 @@ pl:
         severity: Ważność
       user:
         approved:
+        auth_uid:
         confirmation_sent_at: Data wysłania potwierdzenia
         confirmation_token: Token potwierdzający
         confirmed_at: Data potwierdzenia
@@ -357,6 +358,9 @@ pl:
       non_manyfold_account: To nie jest konto Manyfold; możesz je zaobserwować, ale prawdopodobnie nic ciekawego się nie stanie, przynajmniej na razie.
     altcha_widget:
       help:
+    column_header:
+      current_sort:
+      sort_by:
     copy_button:
       copy: Kopiuj do schowka
     copyable_text:

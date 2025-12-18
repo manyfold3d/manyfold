@@ -94,6 +94,7 @@ zh-CN:
         severity: 严重性
       user:
         approved:
+        auth_uid:
         confirmation_sent_at: 确认邮件发送于
         confirmation_token: 确认令牌
         confirmed_at: 确认于
@@ -357,6 +358,9 @@ zh-CN:
       non_manyfold_account: 这不是一个 Manyfold 账户；你可以关注它，但目前可能不会发生什么有趣的事情。
     altcha_widget:
       help:
+    column_header:
+      current_sort:
+      sort_by:
     copy_button:
       copy: 复制到剪贴板
     copyable_text:

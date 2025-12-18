@@ -1,31 +1,40 @@
 <h3><%= t(".title") %></h3>
 
+<%= link_to t(".new"), new_settings_user_path, class: "btn btn-primary float-end" if policy(:user).new? %>
 <p class="lead"><%= t(".description") %></p>
+
+<%= paginate @users %>
 
 <table class="table table-striped">
   <tr>
-    <th><%= User.human_attribute_name(:username) %></th>
-    <th><%= User.human_attribute_name(:email) %></th>
-    <%= content_tag :th, User.human_attribute_name(:auth_uid) if SiteSettings.oidc_enabled? %>
-    <%= content_tag :th, t(".local") if SiteSettings.federation_enabled? %>
-    <%= content_tag :th, t(".fediverse_address") if SiteSettings.federation_enabled? %>
-    <th><%= User.human_attribute_name(:roles) %></th>
+    <%= ColumnHeader label: User.human_attribute_name(:approved), sort_param: :order, sort_option: "pending", sort_default: true if SiteSettings.approve_signups %>
+    <%= ColumnHeader label: User.human_attribute_name(:username), sort_param: :order, sort_option: "name" %>
+    <%= ColumnHeader label: User.human_attribute_name(:email) %>
+    <%= ColumnHeader label: User.human_attribute_name(:auth_uid) if SiteSettings.oidc_enabled? %>
+    <%= ColumnHeader label: t(".local") if SiteSettings.federation_enabled? %>
+    <%= ColumnHeader label: t(".fediverse_address") if SiteSettings.federation_enabled? %>
+    <%= ColumnHeader label: User.human_attribute_name(:created_at), sort_param: :order, sort_option: "recent" %>
+    <%= ColumnHeader label: User.human_attribute_name(:roles) %>
     <th></th>
   </tr>
   <% @users.each do |user| %>
-    <tr class="<%= user.entity&.approved? ? "" : "table-info" %>">
+    <tr class="<%= user.approved? ? "" : "table-info" %>">
       <td>
-        <%= Icon(icon: "hourglass", label: "") unless user.entity&.approved? %>
-        <%= user.entity.is_a?(User) ? user.entity&.username : user.username %>
+        <%= Icon(icon: "hourglass", label: "") unless user.approved? %>
+        <%= "✅" if user.approved? %>
       </td>
-      <td><%= user.entity.is_a?(User) ? masked_email(user.entity&.email) : nil %></td>
-      <%= content_tag :td, (user.entity&.auth_uid ? "✅" : "❌") if SiteSettings.oidc_enabled? %>
+      <td>
+        <%= user.username %>
+      </td>
+      <td><%= masked_email(user.email) %></td>
+      <%= content_tag :td, (user.auth_uid ? "✅" : "❌") if SiteSettings.oidc_enabled? %>
       <%= content_tag :td, (user.local? ? "✅" : "❌") if SiteSettings.federation_enabled? %>
       <%= content_tag :td, user.at_address if SiteSettings.federation_enabled? %>
-      <td><%= user.entity&.roles&.map(&:name)&.join(", ") if user.entity&.is_a?(User) %></td>
-      <td><%= link_to safe_join([Icon(icon: "search", label: t(".view")), t(".view")], " "), settings_user_path(user.entity), class: "btn btn-primary" if user.entity %></td>
+      <%= content_tag :td, user.created_at %>
+      <td><%= user.roles&.map(&:name)&.join(", ") %></td>
+      <td><%= link_to safe_join([Icon(icon: "search", label: t(".view")), t(".view")], " "), settings_user_path(user), class: "btn btn-secondary" %></td>
     </tr>
   <% end %>
 </table>
 
-<%= link_to t(".new"), new_settings_user_path, class: "btn btn-primary" if policy(:user).new? %>
+<%= paginate @users %>

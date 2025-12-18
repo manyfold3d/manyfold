@@ -94,6 +94,7 @@ ru:
         severity: Серьезность
       user:
         approved:
+        auth_uid:
         confirmation_sent_at: Дата отправки подтверждения
         confirmation_token: Токен подтверждения
         confirmed_at: Дата подтверждения
@@ -357,6 +358,9 @@ ru:
       non_manyfold_account:
     altcha_widget:
       help:
+    column_header:
+      current_sort:
+      sort_by:
     copy_button:
       copy:
     copyable_text:

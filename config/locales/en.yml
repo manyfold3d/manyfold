@@ -93,7 +93,8 @@ en:
         problematic_type: Object Type
         severity: Severity
       user:
-        approved: Account pending
+        approved: Approved?
+        auth_uid: OIDC
         confirmation_sent_at: Confirmation sent at
         confirmation_token: Confirmation token
         confirmed_at: Confirmed at
@@ -357,6 +358,9 @@ en:
       non_manyfold_account: This is not a Manyfold account; you can follow it, but probably nothing interesting will happen, at least for now.
     altcha_widget:
       help: privacy-friendly spam protection by ALTCHA
+    column_header:
+      current_sort: Active sort
+      sort_by: Sort by
     copy_button:
       copy: Copy to Clipboard
     copyable_text:

@@ -94,6 +94,7 @@ es:
         severity: Gravedad
       user:
         approved: Cuenta pendiente
+        auth_uid:
         confirmation_sent_at: Confirmación enviada a
         confirmation_token: Código de confirmación
         confirmed_at: Confirmado el
@@ -357,6 +358,9 @@ es:
       non_manyfold_account: Esta no es una cuenta Manyfold. Puedes seguirla, pero probablemente no ocurra nada interesante, al menos por ahora.
     altcha_widget:
       help: protección antispam mediante ALTCHA
+    column_header:
+      current_sort:
+      sort_by:
     copy_button:
       copy: Copiar al portapapeles
     copyable_text:

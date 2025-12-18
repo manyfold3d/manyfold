@@ -94,6 +94,7 @@ nl:
         severity: Ernst
       user:
         approved: Account in behandeling
+        auth_uid:
         confirmation_sent_at: Bevestiging verzonden op
         confirmation_token: Bevestigingstoken
         confirmed_at: Bevestigd op
@@ -357,6 +358,9 @@ nl:
       non_manyfold_account:
     altcha_widget:
       help:
+    column_header:
+      current_sort:
+      sort_by:
     copy_button:
       copy:
     copyable_text:
