@@ -4,7 +4,8 @@ class Settings::UsersController < ApplicationController
   respond_to :html
 
   def index
-    @users = policy_scope(Federails::Actor).where(entity_type: "User", tombstoned_at: nil).where.not(entity_id: nil).includes(entity: [:roles])
+    @users = policy_scope(User).includes([:roles])
+    @users = apply_sort_order(@users)
     render layout: "settings"
   end
 
@@ -89,5 +90,16 @@ class Settings::UsersController < ApplicationController
       filtered[:role_ids]&.delete_if { |it| @available_roles.map(&:id).exclude? it.to_i }
     end
     filtered
+  end
+
+  def apply_sort_order(scope)
+    case params[:order]
+    when "name"
+      scope.order(username: :asc)
+    when "recent"
+      scope.order(created_at: :desc)
+    else # default to "pending"
+      scope.order(approved: :asc, created_at: :desc)
+    end
   end
 end
