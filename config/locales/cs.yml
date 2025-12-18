@@ -94,6 +94,7 @@ cs:
         severity: Závažnost
       user:
         approved: Účet čeká na vyřízení
+        auth_uid:
         confirmation_sent_at: Potvrzení zasláno na
         confirmation_token: Potvrzovací token
         confirmed_at: Potvrzeno
@@ -357,6 +358,9 @@ cs:
       non_manyfold_account: Toto není účet Manyfold; můžete ho sledovat, ale pravděpodobně se nic zajímavého nestane, alespoň prozatím.
     altcha_widget:
       help:
+    column_header:
+      current_sort:
+      sort_by:
     copy_button:
       copy:
     copyable_text:

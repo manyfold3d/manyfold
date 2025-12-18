@@ -94,6 +94,7 @@ ja:
         severity: 重大性
       user:
         approved: アカウント保留中
+        auth_uid:
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -357,6 +358,9 @@ ja:
       non_manyfold_account:
     altcha_widget:
       help:
+    column_header:
+      current_sort:
+      sort_by:
     copy_button:
       copy:
     copyable_text:

@@ -94,6 +94,7 @@ pt:
         severity:
       user:
         approved:
+        auth_uid:
         confirmation_sent_at: Confirmação enviada em
         confirmation_token: Código de confirmação
         confirmed_at: Confirmado em
@@ -357,6 +358,9 @@ pt:
       non_manyfold_account:
     altcha_widget:
       help:
+    column_header:
+      current_sort:
+      sort_by:
     copy_button:
       copy:
     copyable_text:
