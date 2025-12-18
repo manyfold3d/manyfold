@@ -275,7 +275,8 @@ RSpec.describe User do
     "user-name" => "user-name",
     "user_name" => "user_name",
     "user name" => "user-name",
-    "user.name.1" => "user.name.1"
+    "user.name.1" => "user.name.1",
+    "user@example.com" => "user-example.com"
   }.each_pair do |input, expected|
     context "when OmniAuth has a username like '#{input}'" do
       subject(:user) { described_class.from_omniauth(auth_data) }

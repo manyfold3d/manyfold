@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   if SiteSettings.multiuser_enabled? || Rails.env.test?
     authenticate :user, lambda { |u| u.is_moderator? } do
       namespace :settings do
-        resources :users
+        resources :users, constraints: {id: /[^\/]+/}
         resources :reports
       end
     end
