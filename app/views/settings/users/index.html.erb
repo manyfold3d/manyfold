@@ -1,6 +1,9 @@
 <h3><%= t(".title") %></h3>
 
+<%= link_to t(".new"), new_settings_user_path, class: "btn btn-primary float-end" if policy(:user).new? %>
 <p class="lead"><%= t(".description") %></p>
+
+<%= paginate @users %>
 
 <table class="table table-striped">
   <tr>
@@ -29,9 +32,9 @@
       <%= content_tag :td, user.at_address if SiteSettings.federation_enabled? %>
       <%= content_tag :td, user.created_at %>
       <td><%= user.roles&.map(&:name)&.join(", ") %></td>
-      <td><%= link_to safe_join([Icon(icon: "search", label: t(".view")), t(".view")], " "), settings_user_path(user), class: "btn btn-primary" %></td>
+      <td><%= link_to safe_join([Icon(icon: "search", label: t(".view")), t(".view")], " "), settings_user_path(user), class: "btn btn-secondary" %></td>
     </tr>
   <% end %>
 </table>
 
-<%= link_to t(".new"), new_settings_user_path, class: "btn btn-primary" if policy(:user).new? %>
+<%= paginate @users %>
