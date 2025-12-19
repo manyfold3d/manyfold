@@ -1,0 +1,12 @@
+<div>
+  <%= form.label :memberships %>
+</div>
+<div>
+  <%= cocooned_container id: "cocooned-memberships", data: {controller: "cocooned"} do %>
+    <%= form.fields_for :memberships do |f| %>
+      <%= render "membership_fields", f: f %>
+    <% end %>
+  <% end %>
+  <div>
+  </div>
+</div>
