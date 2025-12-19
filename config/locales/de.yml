@@ -362,7 +362,7 @@ de:
       help: datenschutzfreundlicher Spamschutz durch ALTCHA
     column_header:
       current_sort:
-      sort_by:
+      sort_by: Sortieren nach
     copy_button:
       copy: In die Zwischenablage kopieren
     copyable_text:
@@ -676,9 +676,9 @@ de:
     view: Siehe
   groups:
     create:
-      success:
+      success: Gruppe erfolgreich erstellt.
     update:
-      success:
+      success: Gruppe erfolgreich aktualisiert.
   home:
     activity:
       created: hinzugefügt vor %{time}
