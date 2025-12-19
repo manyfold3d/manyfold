@@ -29,7 +29,7 @@
       <td><%= masked_email(user.email) %></td>
       <%= content_tag :td, (user.auth_uid ? "✅" : "❌") if SiteSettings.oidc_enabled? %>
       <%= content_tag :td, (user.local? ? "✅" : "❌") if SiteSettings.federation_enabled? %>
-      <%= content_tag :td, user.at_address if SiteSettings.federation_enabled? %>
+      <%= content_tag :td, user.federails_actor&.at_address if SiteSettings.federation_enabled? %>
       <%= content_tag :td, user.created_at %>
       <td><%= user.roles&.map(&:name)&.join(", ") %></td>
       <td><%= link_to safe_join([Icon(icon: "search", label: t(".view")), t(".view")], " "), settings_user_path(user), class: "btn btn-secondary" %></td>
