@@ -360,7 +360,7 @@ es:
       help: protección antispam mediante ALTCHA
     column_header:
       current_sort:
-      sort_by:
+      sort_by: Ordenar por
     copy_button:
       copy: Copiar al portapapeles
     copyable_text:
@@ -674,9 +674,9 @@ es:
     view: Ver
   groups:
     create:
-      success:
+      success: Grupo creado correctamente.
     update:
-      success:
+      success: Grupo actualizado correctamente.
   home:
     activity:
       created: añadido hace %{time}
