@@ -360,7 +360,7 @@ fr:
       help:
     column_header:
       current_sort:
-      sort_by:
+      sort_by: Trier par
     copy_button:
       copy: Copier dans le presse-papiers
     copyable_text:
