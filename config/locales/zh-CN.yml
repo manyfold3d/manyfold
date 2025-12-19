@@ -360,7 +360,7 @@ zh-CN:
       help:
     column_header:
       current_sort:
-      sort_by:
+      sort_by: 排序方式
     copy_button:
       copy: 复制到剪贴板
     copyable_text:
