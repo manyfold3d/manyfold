@@ -63,6 +63,22 @@ RSpec.describe User do
     expect(u).to have_role(:member)
   end
 
+  [
+    :pagination_settings,
+    :renderer_settings,
+    :tag_cloud_settings,
+    :problem_settings,
+    :file_list_settings,
+    :tour_state
+  ].each do |field|
+    it "has default #{field.to_s.humanize} set on creation" do # rubocop:disable RSpec/MultipleExpectations
+      user = create(:user)
+
+      expect(user.send(field)).to be_a Hash
+      expect(user.send(field).keys).not_to be_empty
+    end
+  end
+
   it "gets contributor and member roles if contributor is set as default" do # rubocop:disable RSpec/MultipleExpectations
     allow(SiteSettings).to receive(:default_signup_role).and_return("contributor")
     u = create(:user)

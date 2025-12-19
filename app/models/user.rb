@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :creators, -> { where("caber_relations.permission": "own") }, through: :caber_relations, source_type: "Creator", source: :object
   accepts_nested_attributes_for :creators
 
+  before_validation :set_json_field_defaults, on: :create
   before_save :set_quota
 
   acts_as_federails_actor(
@@ -221,5 +222,14 @@ class User < ApplicationRecord
 
   def weak_words
     ["manyfold", username]
+  end
+
+  def set_json_field_defaults
+    self.pagination_settings ||= SiteSettings::UserDefaults::PAGINATION
+    self.renderer_settings ||= SiteSettings::UserDefaults::RENDERER
+    self.tag_cloud_settings ||= SiteSettings::UserDefaults::TAG_CLOUD
+    self.problem_settings ||= Problem::DEFAULT_SEVERITIES
+    self.file_list_settings ||= SiteSettings::UserDefaults::FILE_LIST
+    self.tour_state ||= {completed: []}
   end
 end
