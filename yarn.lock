@@ -1407,12 +1407,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/locales@npm:^4.5.2":
-  version: 4.5.2
-  resolution: "@uppy/locales@npm:4.5.2"
+"@uppy/locales@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@uppy/locales@npm:5.1.0"
   dependencies:
-    "@uppy/utils": ^6.1.3
-  checksum: e0100713c905a605405598da0766bfe41f2395784bbcdb046b30d6c26d22939886f0e2e94494ffff28d75a0a7d222092d8b4d11870b7aacf064cc0266b7c124e
+    "@uppy/utils": ^7.1.4
+  checksum: 9fec860d40101a0d9418cd4c731e6b2cd548a30d34892a641d903b057fc522613c76e23910443fc8239f87721c0de07b5fab6445872099649dbd329af3b77b36
   languageName: node
   linkType: hard
 
@@ -1504,6 +1504,16 @@ __metadata:
     lodash: ^4.17.21
     preact: ^10.5.13
   checksum: 3e598eb6ce95670c85d49b04c1bb0d89fd71425e03d09281323fe79b81093dc504dd1f59fc0405a4bfdbc6b10cc31c64f74cfa452c869021ec9ec7ca45f83608
+  languageName: node
+  linkType: hard
+
+"@uppy/utils@npm:^7.1.4":
+  version: 7.1.5
+  resolution: "@uppy/utils@npm:7.1.5"
+  dependencies:
+    lodash: ^4.17.21
+    preact: ^10.5.13
+  checksum: 29906f38a975e87514d18d91cc6e84ec851e05fd8bddf42fd490117d145f98f2ed7b9151ec339c89f4e23e8b0e9eef3698f224b08492a54725d80edb3e02007d
   languageName: node
   linkType: hard
 
@@ -4222,7 +4232,7 @@ __metadata:
     "@uppy/core": ^4.4.5
     "@uppy/dashboard": ^4.3.4
     "@uppy/form": ^4.1.1
-    "@uppy/locales": ^4.5.2
+    "@uppy/locales": ^5.1.0
     "@uppy/tus": ^4.2.2
     "@uppy/utils": ^6.1.4
     "@zxcvbn-ts/core": ^3.0.4
