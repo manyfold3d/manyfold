@@ -663,20 +663,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hotwired/turbo-rails@npm:^8.0.13":
-  version: 8.0.13
-  resolution: "@hotwired/turbo-rails@npm:8.0.13"
+"@hotwired/turbo-rails@npm:^8.0.20":
+  version: 8.0.20
+  resolution: "@hotwired/turbo-rails@npm:8.0.20"
   dependencies:
-    "@hotwired/turbo": ^8.0.13
-    "@rails/actioncable": ^7.0
-  checksum: 6039c83fb8c17a8f63bed15919f4a0cfbf7652d8c685934a758d3bce13a650763b2b2d32ab9c826acadb23a3793ea90a86ba86ba2434e6480173563f14eccf31
+    "@hotwired/turbo": ^8.0.20
+    "@rails/actioncable": ">=7.0"
+  checksum: 0d8e62bc81fcd24b30fc3de49721b8b03cdfb25de72ae4a1f15443611a9042f0ce99767e6686fb54fc6b2f370d94a4e6fcc2c2394e6fe3ec4fecd66e684731ac
   languageName: node
   linkType: hard
 
-"@hotwired/turbo@npm:^8.0.13":
-  version: 8.0.13
-  resolution: "@hotwired/turbo@npm:8.0.13"
-  checksum: 599382b3f840980d5dc360108cd0f9d70b4d3686fd3e1cf0e5816a5162e0d38d0447fd384d0fe0ff6ffd147db1e0ba0f79ccd71aa9378f2801d3870f562f0015
+"@hotwired/turbo@npm:^8.0.20":
+  version: 8.0.20
+  resolution: "@hotwired/turbo@npm:8.0.20"
+  checksum: b33f6382d7c2b48a68b467cd2dc8a1223e3f8ae286170b93c204570564224f01208ccbf2e13fb0fe91d5432f48af8bf9fc8deb83e977083e192a6efc3ca774f5
   languageName: node
   linkType: hard
 
@@ -929,10 +929,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/actioncable@npm:^7.0":
-  version: 7.2.201
-  resolution: "@rails/actioncable@npm:7.2.201"
-  checksum: fcb794c8b70b83c0f748d2111a373b847204f4a0b8d78bc7936b8d800fa9fe9462009cdf9e7e971a7f21f1b2fe18157b9017332b55bd1fd3d06432d3039fce14
+"@rails/actioncable@npm:>=7.0":
+  version: 8.1.100
+  resolution: "@rails/actioncable@npm:8.1.100"
+  checksum: 137391e4b59339ee84b242f695a59b996cd906c0d62c4feae45d2c8f5c5abbe496ad203c99ddfaad3dfa5ef08b584550e6938b69d7e9884397c7c43db70af231
   languageName: node
   linkType: hard
 
@@ -4205,7 +4205,7 @@ __metadata:
     "@babel/eslint-parser": ^7.28.5
     "@babel/preset-typescript": ^7.27.1
     "@hotwired/stimulus": ^3.2.2
-    "@hotwired/turbo-rails": ^8.0.13
+    "@hotwired/turbo-rails": ^8.0.20
     "@infinizhen/rpg-awesome-continued": ^1.0.6
     "@notus.sh/cocooned": ^2.5.0
     "@popperjs/core": ^2.11.8
