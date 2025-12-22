@@ -1,4 +1,6 @@
 if DatabaseDetector.is_sqlite?
-  # Set temp_store to use memory, not disk
-  ActiveRecord::Base.connection.execute "PRAGMA temp_store=MEMORY;"
+  ActiveRecord::Base.with_connection do |connection|
+    # Set temp_store to use memory, not disk
+    connection.execute "PRAGMA temp_store=MEMORY;"
+  end
 end

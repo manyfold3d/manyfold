@@ -144,10 +144,10 @@ class Search::FilterService
       # Regexp match syntax - postgres is different from MySQL and SQLite
       regact = DatabaseDetector.is_postgres? ? "~" : "REGEXP"
       regexes.each do |reg|
-        qreg = ActiveRecord::Base.connection.quote(reg)
+        qreg = ActiveRecord::Base.with_connection { |conn| conn.quote(reg) }
         tag_regex_build.push "(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name #{regact} #{qreg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1"
       end
-      qreg = ActiveRecord::Base.connection.quote(parameter(:missingtag))
+      qreg = ActiveRecord::Base.with_connection { |conn| conn.quote(parameter(:missingtag)) }
       tag_regex_build.push "(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name #{regact} #{qreg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1"
       scope.where("(" + tag_regex_build.join(" OR ") + ")")
     else
