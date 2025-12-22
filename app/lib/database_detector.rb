@@ -27,4 +27,8 @@ module DatabaseDetector
   def self.is_sqlite?
     server == :sqlite
   end
+
+  def self.table_ready?(table_name)
+    ActiveRecord::Base.connection.data_source_exists? table_name
+  end
 end

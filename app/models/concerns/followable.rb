@@ -29,7 +29,7 @@ module Followable
   private
 
   def recently_posted?
-    return false unless ActiveRecord::Base.connection.data_source_exists? "federails_activities"
+    return false unless DatabaseDetector.table_ready? "federails_activities"
     Federails::Activity.exists?(action: ["Create", "Update"], entity: federails_actor, created_at: TIMEOUT.minutes.ago..)
   end
 
