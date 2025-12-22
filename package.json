@@ -21,7 +21,7 @@
     "@uppy/dashboard": "^4.3.4",
     "@uppy/form": "^4.1.1",
     "@uppy/locales": "^4.5.2",
-    "@uppy/tus": "^4.2.2",
+    "@uppy/tus": "^5.1.0",
     "@uppy/utils": "^6.1.4",
     "@zxcvbn-ts/core": "^3.0.4",
     "@zxcvbn-ts/language-common": "^3.0.4",

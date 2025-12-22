@@ -1332,16 +1332,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/companion-client@npm:^4.4.1":
-  version: 4.4.1
-  resolution: "@uppy/companion-client@npm:4.4.1"
+"@uppy/companion-client@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "@uppy/companion-client@npm:5.1.1"
   dependencies:
-    "@uppy/utils": ^6.1.1
+    "@uppy/utils": ^7.1.1
     namespace-emitter: ^2.0.1
     p-retry: ^6.1.0
   peerDependencies:
-    "@uppy/core": ^4.4.1
-  checksum: 607a821686bfae4834bd8a5aace5185c675ff3e01ac5f0d28b7274fd8f39cf7ffa24188eee07f1ec93d0283f920bf8cb94b5c422fde3588d43344110830adf8b
+    "@uppy/core": ^5.1.1
+  checksum: c7cf743522be8c37c8628e3ec498cb21cefa95f4cff9da5e7b470992731f36eccb8183ed6439fafd4340e34c625a03c2010205beb842e70dfc8fcbeb72f0bee3
   languageName: node
   linkType: hard
 
@@ -1464,16 +1464,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/tus@npm:^4.2.2":
-  version: 4.2.2
-  resolution: "@uppy/tus@npm:4.2.2"
+"@uppy/tus@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@uppy/tus@npm:5.1.0"
   dependencies:
-    "@uppy/companion-client": ^4.4.1
-    "@uppy/utils": ^6.1.1
+    "@uppy/companion-client": ^5.1.1
+    "@uppy/utils": ^7.1.4
     tus-js-client: ^4.2.3
   peerDependencies:
-    "@uppy/core": ^4.4.1
-  checksum: 4d7e5141afef60ffc138a657b2b45791b7bd6dcf7945632a142d745caf1827b8dc591256024e88134fc2bbd70d27ebf1f227ded8f8324a206f62450342dc67fa
+    "@uppy/core": ^5.2.0
+  checksum: 1413b355b7471bb49f9bcf562fedfe739994e5f3f81f6ba487fbc30dd1907416796922e52f5e9519a7943af305615c0d49f526c59e135d373a76ab40612d0cca
   languageName: node
   linkType: hard
 
@@ -1504,6 +1504,16 @@ __metadata:
     lodash: ^4.17.21
     preact: ^10.5.13
   checksum: 3e598eb6ce95670c85d49b04c1bb0d89fd71425e03d09281323fe79b81093dc504dd1f59fc0405a4bfdbc6b10cc31c64f74cfa452c869021ec9ec7ca45f83608
+  languageName: node
+  linkType: hard
+
+"@uppy/utils@npm:^7.1.1, @uppy/utils@npm:^7.1.4":
+  version: 7.1.5
+  resolution: "@uppy/utils@npm:7.1.5"
+  dependencies:
+    lodash: ^4.17.21
+    preact: ^10.5.13
+  checksum: 29906f38a975e87514d18d91cc6e84ec851e05fd8bddf42fd490117d145f98f2ed7b9151ec339c89f4e23e8b0e9eef3698f224b08492a54725d80edb3e02007d
   languageName: node
   linkType: hard
 
@@ -4223,7 +4233,7 @@ __metadata:
     "@uppy/dashboard": ^4.3.4
     "@uppy/form": ^4.1.1
     "@uppy/locales": ^4.5.2
-    "@uppy/tus": ^4.2.2
+    "@uppy/tus": ^5.1.0
     "@uppy/utils": ^6.1.4
     "@zxcvbn-ts/core": ^3.0.4
     "@zxcvbn-ts/language-common": ^3.0.4
