@@ -9,7 +9,7 @@ class MultimodelUniquenessValidator < ActiveModel::EachValidator
       query = if options[:case_sensitive] == false
         model.arel_table[attr].lower.eq(checkvalue.downcase)
       else
-        (ApplicationRecord.connection.adapter_name == "Mysql2") ? model.arel_table[attr].smatches(checkvalue) : model.arel_table[attr].eq(checkvalue)
+        DatabaseDetector.is_mysql? ? model.arel_table[attr].smatches(checkvalue) : model.arel_table[attr].eq(checkvalue)
       end
       query = query.and(model.arel_table[:id].not_eq(record.id)) if record.instance_of?(model)
       # Run the check

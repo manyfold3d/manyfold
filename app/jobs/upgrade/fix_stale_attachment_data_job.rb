@@ -5,12 +5,12 @@ class Upgrade::FixStaleAttachmentDataJob < ApplicationJob
   unique :until_executed
 
   def scope
-    where_clause = case ApplicationRecord.connection.adapter_name
-    when "PostgreSQL"
+    where_clause = case DatabaseDetector.server
+    when :postgresql
       "json_extract_path_text(attachment_data, 'storage') = 'cache'"
-    when "Mysql2"
+    when :mysql
       "json_value(attachment_data, '$.storage') = 'cache'"
-    when "SQLite"
+    when :sqlite
       "json_extract(attachment_data, '$.storage') = 'cache'"
     else
       raise NotImplementedError.new("Unknown database adapter #{ApplicationRecord.connection.adapter_name}")

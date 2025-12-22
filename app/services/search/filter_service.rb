@@ -142,7 +142,7 @@ class Search::FilterService
       tag_regex_build = []
       regexes = ((parameter(:missingtag) != "") ? [parameter(:missingtag)] : Library.find_param(parameter(:library)).tag_regex)
       # Regexp match syntax - postgres is different from MySQL and SQLite
-      regact = (ApplicationRecord.connection.adapter_name == "PostgreSQL") ? "~" : "REGEXP"
+      regact = DatabaseDetector.is_postgres? ? "~" : "REGEXP"
       regexes.each do |reg|
         qreg = ActiveRecord::Base.connection.quote(reg)
         tag_regex_build.push "(select count(*) from tags join taggings on tags.id=taggings.tag_id where tags.name #{regact} #{qreg} and taggings.taggable_id=models.id and taggings.taggable_type='Model')<1"
