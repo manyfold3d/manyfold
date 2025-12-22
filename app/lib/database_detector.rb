@@ -8,6 +8,8 @@ module DatabaseDetector
         :mysql
       when "SQLite"
         :sqlite
+      when "NullDB"
+        :null
       else
         raise NotImplementedError.new("Unknown database adapter #{connection.adapter_name}")
       end
