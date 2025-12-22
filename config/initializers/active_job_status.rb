@@ -2,7 +2,7 @@
 ActiveJob::Status.store = :redis_cache_store, {
   url: ENV.fetch("REDIS_URL", nil),
   pool: {
-    size: ActiveRecord::Base.connection.pool.size
+    size: ActiveRecord::Base.connection_pool.size
   }
 }
 

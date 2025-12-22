@@ -79,7 +79,7 @@ module CaberObject
   private
 
   def caber_ready?
-    ActiveRecord::Base.connection.data_source_exists? "caber_relations"
+    DatabaseDetector.table_ready? "caber_relations"
   end
 
   def ensure_permission_preset_precedence
