@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^8.0.13",
+    "@hotwired/turbo-rails": "^8.0.20",
     "@infinizhen/rpg-awesome-continued": "^1.0.6",
     "@notus.sh/cocooned": "^2.5.0",
     "@popperjs/core": "^2.11.8",
