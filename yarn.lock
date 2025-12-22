@@ -1507,6 +1507,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@uppy/utils@npm:^7.1.5":
+  version: 7.1.5
+  resolution: "@uppy/utils@npm:7.1.5"
+  dependencies:
+    lodash: ^4.17.21
+    preact: ^10.5.13
+  checksum: 29906f38a975e87514d18d91cc6e84ec851e05fd8bddf42fd490117d145f98f2ed7b9151ec339c89f4e23e8b0e9eef3698f224b08492a54725d80edb3e02007d
+  languageName: node
+  linkType: hard
+
 "@webgpu/types@npm:*":
   version: 0.1.46
   resolution: "@webgpu/types@npm:0.1.46"
@@ -4224,7 +4234,7 @@ __metadata:
     "@uppy/form": ^4.1.1
     "@uppy/locales": ^4.5.2
     "@uppy/tus": ^4.2.2
-    "@uppy/utils": ^6.1.4
+    "@uppy/utils": ^7.1.5
     "@zxcvbn-ts/core": ^3.0.4
     "@zxcvbn-ts/language-common": ^3.0.4
     "@zxcvbn-ts/language-en": ^3.0.2
