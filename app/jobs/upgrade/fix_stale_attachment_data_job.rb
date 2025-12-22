@@ -13,7 +13,7 @@ class Upgrade::FixStaleAttachmentDataJob < ApplicationJob
     when :sqlite
       "json_extract(attachment_data, '$.storage') = 'cache'"
     else
-      raise NotImplementedError.new("Unknown database adapter #{ApplicationRecord.connection.adapter_name}")
+      raise NotImplementedError.new("Unknown database adapter #{DatabaseDetector.server}")
     end
     ModelFile.unscoped.where(where_clause)
   end
