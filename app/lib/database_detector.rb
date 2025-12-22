@@ -1,14 +1,16 @@
 module DatabaseDetector
   def self.server
-    case ActiveRecord::Base.connection.adapter_name
-    when "PostgreSQL"
-      :postgresql
-    when "Mysql2"
-      :mysql
-    when "SQLite"
-      :sqlite
-    else
-      raise NotImplementedError.new("Unknown database adapter #{ApplicationRecord.connection.adapter_name}")
+    ActiveRecord::Base.with_connection do |connection|
+      case connection.adapter_name
+      when "PostgreSQL"
+        :postgresql
+      when "Mysql2"
+        :mysql
+      when "SQLite"
+        :sqlite
+      else
+        raise NotImplementedError.new("Unknown database adapter #{connection.adapter_name}")
+      end
     end
   end
 
@@ -29,6 +31,8 @@ module DatabaseDetector
   end
 
   def self.table_ready?(table_name)
-    ActiveRecord::Base.connection.data_source_exists? table_name
+    ActiveRecord::Base.with_connection do |connection|
+      connection.data_source_exists? table_name
+    end
   end
 end
