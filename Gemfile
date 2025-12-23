@@ -60,7 +60,7 @@ group :development, :test do
   gem "simplecov", "~> 0.22", require: false
   gem "simplecov-cobertura", require: false
   gem "with_model", "~> 2.2"
-  gem "vcr", "~> 6.3"
+  gem "vcr", "~> 6.4"
 
   # system tests and custom screenshots
   gem "capybara"
