@@ -8,7 +8,7 @@ module ModelFilesHelper
     # i18n-tasks-use t('model_files.download.superslicer')
     # i18n-tasks-use t('model_files.download.lychee')
     safe_join(
-      [:cura, :orca, :elegoo, :superslicer, :lychee].map do |slicer|
+      [:cura, :orca, :elegoo, :superslicer, :lychee, :bambu].map do |slicer|
         content_tag(:li, role: "presentation") {
           link_to safe_join(
             [
@@ -33,7 +33,11 @@ module ModelFilesHelper
       slic3r_family_open_url "prusaslicer", signed_url
     when :bambu
       # Bambu will only open from Makerworld and a few others
-      slic3r_family_open_url "bambustudioopen", signed_url
+      URI::Generic.new(
+        "bambustudioopen", nil,
+        CGI.escapeURIComponent(signed_url), nil, nil, nil, nil,
+        nil, nil
+      ).to_s
     when :cura
       slic3r_family_open_url "cura", signed_url
     when :elegoo
