@@ -48,7 +48,7 @@
   "devDependencies": {
     "@babel/core": "^7",
     "@babel/eslint-parser": "^7.28.5",
-    "@babel/preset-typescript": "^7.27.1",
+    "@babel/preset-typescript": "^7.28.5",
     "@types/bootstrap": "^5.2.10",
     "@types/i18n-js": "^4.0.1",
     "@types/jquery": "^3.5.32",
