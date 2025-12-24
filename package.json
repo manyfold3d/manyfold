@@ -16,7 +16,7 @@
     "@infinizhen/rpg-awesome-continued": "^1.0.6",
     "@notus.sh/cocooned": "^2.5.0",
     "@popperjs/core": "^2.11.8",
-    "@rails/ujs": "^7.1.501",
+    "@rails/ujs": "^7.1.600",
     "@uppy/core": "^4.4.5",
     "@uppy/dashboard": "^4.3.4",
     "@uppy/form": "^4.1.1",

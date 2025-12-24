@@ -1039,10 +1039,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:^7.1.501":
-  version: 7.1.501
-  resolution: "@rails/ujs@npm:7.1.501"
-  checksum: 8d009970360eed8451afb639bc0e27663dc467161fd73ea0472e4e05be626ea5eb92c41a8643a342287acba2f464d3009312365b5691087db5bf6d7ee2dac37e
+"@rails/ujs@npm:^7.1.600":
+  version: 7.1.600
+  resolution: "@rails/ujs@npm:7.1.600"
+  checksum: d43b31ef4a92e9c70a0e50bfd70d8a3e68e318ffe3f85a4dd98e14e8b852d51ce7c2e2b6872d71e2364c14adcfdb44b627db1cfde53a215b3794231aca23bb18
   languageName: node
   linkType: hard
 
@@ -4315,7 +4315,7 @@ __metadata:
     "@infinizhen/rpg-awesome-continued": ^1.0.6
     "@notus.sh/cocooned": ^2.5.0
     "@popperjs/core": ^2.11.8
-    "@rails/ujs": ^7.1.501
+    "@rails/ujs": ^7.1.600
     "@types/bootstrap": ^5.2.10
     "@types/i18n-js": ^4.0.1
     "@types/jquery": ^3.5.32
