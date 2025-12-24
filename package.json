@@ -56,7 +56,7 @@
     "@types/node": "^20.17.50",
     "@types/three": "^0.176.0",
     "@types/webpack-env": "^1.18.8",
-    "@types/webxr": "^0.5.22",
+    "@types/webxr": "^0.5.24",
     "@typescript-eslint/parser": "^8.32.1",
     "eslint": "^9.27.0",
     "husky": "^9.1.7",

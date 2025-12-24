@@ -1195,10 +1195,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/webxr@npm:^0.5.22":
-  version: 0.5.22
-  resolution: "@types/webxr@npm:0.5.22"
-  checksum: 063dc810937058526476a7f38c87779a0e4fa1d2483f82c3fc713c9ea0c0e404f47e4ba0b08a3279a152ce37f0effcc30c0457642d9fd558dd511d9ce3f6f727
+"@types/webxr@npm:^0.5.24":
+  version: 0.5.24
+  resolution: "@types/webxr@npm:0.5.24"
+  checksum: 3c87ea6a06cabb3023dc353363733763237c9d8f45d0402b07074823575805830133c0de00d34b4f73e9a6ba9a2ed2de204f62b33f6d820e14970a61a3333c36
   languageName: node
   linkType: hard
 
@@ -4323,7 +4323,7 @@ __metadata:
     "@types/node": ^20.17.50
     "@types/three": ^0.176.0
     "@types/webpack-env": ^1.18.8
-    "@types/webxr": ^0.5.22
+    "@types/webxr": ^0.5.24
     "@typescript-eslint/parser": ^8.32.1
     "@uppy/core": ^4.4.5
     "@uppy/dashboard": ^4.3.4
