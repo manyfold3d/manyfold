@@ -1905,10 +1905,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootswatch@npm:^5.3.6":
-  version: 5.3.6
-  resolution: "bootswatch@npm:5.3.6"
-  checksum: 9fd36f5a80c6ccfdf65f8f68031a9bd1ab9af67944fe20408230956d9e3ae5ec29d02fb5b2f204216bf02875df4f78ab742bafd1d89e027fc6b3992ac5e6c417
+"bootswatch@npm:^5.3.8":
+  version: 5.3.8
+  resolution: "bootswatch@npm:5.3.8"
+  checksum: c86b09c7e95ffb16a69bd647fc01a2a913e5f114e9c965928a1468ada81bfbc54a1c437fa55d900f3e81a2ec5e9dba327aa400f10a8ce1db18002ad4d006bfd3
   languageName: node
   linkType: hard
 
@@ -4338,7 +4338,7 @@ __metadata:
     autoprefixer: ^10.4.21
     bootstrap: ^5.3.8
     bootstrap-icons: ^1.13.1
-    bootswatch: ^5.3.6
+    bootswatch: ^5.3.8
     comlink: ^4.4.2
     driver.js: ^1.4.0
     esbuild: ^0.27.2
