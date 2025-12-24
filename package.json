@@ -30,7 +30,7 @@
     "autoprefixer": "^10.4.21",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
-    "bootswatch": "^5.3.6",
+    "bootswatch": "^5.3.8",
     "comlink": "^4.4.2",
     "driver.js": "^1.4.0",
     "esbuild": "^0.27.2",
