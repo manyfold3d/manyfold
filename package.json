@@ -37,7 +37,7 @@
     "i18n-js": "^4.5.1",
     "masonry-layout": "^4.2.2",
     "nodemon": "^3.1.11",
-    "postcss": "^8.5.3",
+    "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "sass-embedded": "^1.89.0",
     "three": "manyfold3d/three.js#ldraw-materials",
