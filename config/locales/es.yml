@@ -94,7 +94,7 @@ es:
         severity: Gravedad
       user:
         approved: Cuenta pendiente
-        auth_uid:
+        auth_uid: OIDC
         confirmation_sent_at: Confirmación enviada a
         confirmation_token: Código de confirmación
         confirmed_at: Confirmado el
@@ -359,7 +359,7 @@ es:
     altcha_widget:
       help: protección antispam mediante ALTCHA
     column_header:
-      current_sort:
+      current_sort: Ordenar por
       sort_by: Ordenar por
     copy_button:
       copy: Copiar al portapapeles
