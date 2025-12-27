@@ -14,7 +14,8 @@ jobs:
       matrix:
         database_url:
           - postgresql://manyfold:manyfold@localhost:5432/manyfold
-          - mysql2://manyfold:manyfold@127.0.0.1:3306/manyfold
+          - mysql2://manyfold:manyfold@127.0.0.1:3306/manyfold_mariadb
+          - mysql2://manyfold:manyfold@127.0.0.1:3307/manyfold_mysql
           - sqlite3:/tmp/test.db
     runs-on: ubuntu-latest
     env:
@@ -47,12 +48,26 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
+      mysql:
+        image: mysql
+        env:
+          MYSQL_USER: manyfold
+          MYSQL_PASSWORD: manyfold
+          MYSQL_DATABASE: manyfold_mysql
+          MYSQL_ROOT_PASSWORD: verysecret
+        options: >-
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 3307:3306
       mariadb:
         image: mariadb
         env:
           MARIADB_USER: manyfold
           MARIADB_PASSWORD: manyfold
-          MARIADB_DATABASE: manyfold
+          MARIADB_DATABASE: manyfold_mariadb
           MARIADB_ROOT_PASSWORD: verysecret
         options: >-
           --health-cmd "healthcheck.sh --connect --innodb_initialized"
