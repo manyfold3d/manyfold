@@ -4,6 +4,7 @@ module Form
       return nil unless @params
       @params.require(:group).permit(
         :name,
+        :description,
         memberships_attributes: [:id, :user_id, :_destroy]
       )
     end

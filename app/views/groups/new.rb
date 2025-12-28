@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-class Views::Groups::New < Views::Base
-  def initialize(creator:, group:)
-    @creator = creator
-    @group = group
-  end
-
+class Views::Groups::New < Views::Groups::Form
   def view_template
-    h1 { "Groups::New" }
-    p { "Find me in app/views/groups/new.rb" }
+    PageTitle title: t("views.groups.new.title"), breadcrumbs: {
+      Creator.model_name.human(count: 100) => creators_path,
+      @creator.name => creator_path(@creator),
+      t("views.groups.index.title") => creator_groups_path(@creator)
+    }
+    super
   end
 end
