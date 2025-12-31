@@ -1105,12 +1105,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jquery@npm:^3.5.32":
-  version: 3.5.32
-  resolution: "@types/jquery@npm:3.5.32"
+"@types/jquery@npm:^3.5.33":
+  version: 3.5.33
+  resolution: "@types/jquery@npm:3.5.33"
   dependencies:
     "@types/sizzle": "*"
-  checksum: 7fe7251bda3fc9d80417ef7c88ad963ccb591706bca2fb84ea5d9600498a8f9911c32302f28fd1910bb212c34193f38f63818757a9833b70e1f46c3a98a17625
+  checksum: 63a654cb5a141f794f8d2704891b851742bf40d1ef9c8ce7c38900b6e6aedded9324273d52a7a8ab5ddc17b395991b51e566119d4c14b160fef11342bdf18b3a
   languageName: node
   linkType: hard
 
@@ -4368,7 +4368,7 @@ __metadata:
     "@rails/ujs": ^7.1.600
     "@types/bootstrap": ^5.2.10
     "@types/i18n-js": ^4.0.1
-    "@types/jquery": ^3.5.32
+    "@types/jquery": ^3.5.33
     "@types/lodash": ^4.17.17
     "@types/node": ^20.17.50
     "@types/three": ^0.176.0
