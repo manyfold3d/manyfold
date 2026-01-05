@@ -194,7 +194,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def tour_state_json(current_state, data)
-    return nil unless data
+    current_state ||= User::DEFAULT_TOUR_STATE
+    return current_state unless data
     {
       "completed" => (current_state["completed"] + data.dig("completed", "add")).uniq # Merge in added completions
     }
