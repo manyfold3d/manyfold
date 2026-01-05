@@ -6,6 +6,8 @@ class User < ApplicationRecord
   include CaberSubject
   include PublicIDable
 
+  DEFAULT_TOUR_STATE = {completed: []}
+
   # Creator ownership relation used for auto-creation
   has_many :creators, -> { where("caber_relations.permission": "own") }, through: :caber_relations, source_type: "Creator", source: :object
   accepts_nested_attributes_for :creators
@@ -230,6 +232,6 @@ class User < ApplicationRecord
     self.tag_cloud_settings ||= SiteSettings::UserDefaults::TAG_CLOUD
     self.problem_settings ||= Problem::DEFAULT_SEVERITIES
     self.file_list_settings ||= SiteSettings::UserDefaults::FILE_LIST
-    self.tour_state ||= {completed: []}
+    self.tour_state ||= DEFAULT_TOUR_STATE
   end
 end
