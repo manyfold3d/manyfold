@@ -287,9 +287,10 @@ module ApplicationHelper
 
   def tour_attributes(id:, title:, description:)
     return {} if current_user.nil? || current_user.first_use?
+    tour_state = current_user.tour_state || User::DEFAULT_TOUR_STATE
     {
       "tour-id": id,
-      "tour-id-completed": current_user.tour_state.dig("completed").include?(id).to_s,
+      "tour-id-completed": tour_state.dig("completed").include?(id).to_s,
       "tour-title": title,
       "tour-description": description
     }
