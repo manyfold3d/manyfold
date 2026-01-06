@@ -6,7 +6,7 @@ class User < ApplicationRecord
   include CaberSubject
   include PublicIDable
 
-  DEFAULT_TOUR_STATE = {completed: []}
+  DEFAULT_TOUR_STATE = {"completed" => []}
 
   # Creator ownership relation used for auto-creation
   has_many :creators, -> { where("caber_relations.permission": "own") }, through: :caber_relations, source_type: "Creator", source: :object
