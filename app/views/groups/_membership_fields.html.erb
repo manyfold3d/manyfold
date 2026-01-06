@@ -1,0 +1,4 @@
+<%= cocooned_item class: "input-group" do %>
+  <%= f.text_field :user_id, class: "form-control" %>
+  <%= cocooned_remove_item_button Icon(icon: "trash", label: translate("general.delete")), f, class: "btn btn-outline-danger" %>
+<% end %>
