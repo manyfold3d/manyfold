@@ -680,6 +680,12 @@ en:
   groups:
     create:
       success: Group created successfully.
+    form:
+      add: add another member
+    membership_fields:
+      user_id:
+        delete: Delete
+        placeholder: Account name
     update:
       success: Group updated successfully.
   home:

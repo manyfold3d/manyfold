@@ -37,6 +37,11 @@ cs:
         created_at: Přijato
         federails_actor: Nahlášeno
         object: Objekt
+      group:
+        description:
+        membership:
+        name:
+        typed_id:
       library:
         caption: Titulek
         create_path_if_not_on_disk: Automatické vytvoření složky
@@ -675,6 +680,12 @@ cs:
   groups:
     create:
       success:
+    form:
+      add:
+    membership_fields:
+      user_id:
+        delete:
+        placeholder:
     update:
       success:
   home:
@@ -874,6 +885,18 @@ cs:
       create:
         altcha_failed:
   views:
+    groups:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        copy:
+        description:
+        member_count:
+        title:
+      new:
+        title:
     pagination:
       first: "« První"
       last: Poslední »

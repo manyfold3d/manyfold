@@ -37,6 +37,11 @@ zh-CN:
         created_at: 接收于
         federails_actor: 报告人
         object:
+      group:
+        description:
+        membership:
+        name:
+        typed_id:
       library:
         caption: 标题
         create_path_if_not_on_disk: 自动创建文件夹
@@ -675,6 +680,12 @@ zh-CN:
   groups:
     create:
       success:
+    form:
+      add:
+    membership_fields:
+      user_id:
+        delete:
+        placeholder:
     update:
       success:
   home:
@@ -874,6 +885,18 @@ zh-CN:
       create:
         altcha_failed: ALTCHA 验证失败
   views:
+    groups:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        copy:
+        description:
+        member_count:
+        title:
+      new:
+        title:
     pagination:
       first: "«  首页"
       last: 末页 »

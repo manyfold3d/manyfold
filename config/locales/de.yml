@@ -37,6 +37,11 @@ de:
         created_at: Empfangen am
         federails_actor: Gemeldet von
         object: Objekt
+      group:
+        description:
+        membership:
+        name:
+        typed_id:
       library:
         caption: Beschreibung
         create_path_if_not_on_disk: Ordner automatisch erstellen
@@ -677,6 +682,12 @@ de:
   groups:
     create:
       success: Gruppe erfolgreich erstellt.
+    form:
+      add:
+    membership_fields:
+      user_id:
+        delete:
+        placeholder:
     update:
       success: Gruppe erfolgreich aktualisiert.
   home:
@@ -876,6 +887,18 @@ de:
       create:
         altcha_failed: ALTCHA-Verifizierung fehlgeschlagen
   views:
+    groups:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        copy:
+        description:
+        member_count:
+        title:
+      new:
+        title:
     pagination:
       first: "« Anfang"
       last: Letzte »

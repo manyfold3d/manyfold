@@ -37,6 +37,11 @@ nl:
         created_at: Ontvangen op
         federails_actor: Gerapporteerd door
         object: Object
+      group:
+        description:
+        membership:
+        name:
+        typed_id:
       library:
         caption: Onderschrift
         create_path_if_not_on_disk:
@@ -675,6 +680,12 @@ nl:
   groups:
     create:
       success:
+    form:
+      add:
+    membership_fields:
+      user_id:
+        delete:
+        placeholder:
     update:
       success:
   home:
@@ -874,6 +885,18 @@ nl:
       create:
         altcha_failed:
   views:
+    groups:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        copy:
+        description:
+        member_count:
+        title:
+      new:
+        title:
     pagination:
       first: "« Eerste"
       last: Laatste »

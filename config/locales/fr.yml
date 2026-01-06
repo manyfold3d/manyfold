@@ -37,6 +37,11 @@ fr:
         created_at: Reçu le
         federails_actor: Rapporté par
         object: Objet
+      group:
+        description:
+        membership:
+        name:
+        typed_id:
       library:
         caption: Légende
         create_path_if_not_on_disk:
@@ -678,6 +683,12 @@ fr:
   groups:
     create:
       success:
+    form:
+      add:
+    membership_fields:
+      user_id:
+        delete:
+        placeholder:
     update:
       success:
   home:
@@ -877,6 +888,18 @@ fr:
       create:
         altcha_failed:
   views:
+    groups:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        copy:
+        description:
+        member_count:
+        title:
+      new:
+        title:
     pagination:
       first: "« Premier"
       last: Dernier »
