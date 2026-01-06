@@ -48,7 +48,7 @@ shared_examples "Permittable" do |object_class|
       it "grants permissions to groups" do
         group = create(:group)
         expect {
-          put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: "group::#{group.id}", permission: "view"}}}}
+          put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: group.typed_id, permission: "view"}}}}
         }.to change { object.grants_permission_to?("view", group) }.from(false).to(true)
       end
     end

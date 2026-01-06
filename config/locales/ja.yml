@@ -37,6 +37,11 @@ ja:
         created_at: 受け取り作成日時
         federails_actor: 報告者
         object:
+      group:
+        description:
+        membership:
+        name:
+        typed_id:
       library:
         caption: キャプション
         create_path_if_not_on_disk: フォルダを自動作成
@@ -675,6 +680,12 @@ ja:
   groups:
     create:
       success:
+    form:
+      add:
+    membership_fields:
+      user_id:
+        delete:
+        placeholder:
     update:
       success:
   home:
@@ -874,6 +885,18 @@ ja:
       create:
         altcha_failed:
   views:
+    groups:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        copy:
+        description:
+        member_count:
+        title:
+      new:
+        title:
     pagination:
       first: "&laquo; 最初"
       last: 最後 &raquo;

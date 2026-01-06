@@ -37,6 +37,11 @@ pt:
         created_at:
         federails_actor:
         object:
+      group:
+        description:
+        membership:
+        name:
+        typed_id:
       library:
         caption:
         create_path_if_not_on_disk:
@@ -675,6 +680,12 @@ pt:
   groups:
     create:
       success:
+    form:
+      add:
+    membership_fields:
+      user_id:
+        delete:
+        placeholder:
     update:
       success:
   home:
@@ -874,6 +885,18 @@ pt:
       create:
         altcha_failed:
   views:
+    groups:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        copy:
+        description:
+        member_count:
+        title:
+      new:
+        title:
     pagination:
       first:
       last:

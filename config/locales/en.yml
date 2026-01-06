@@ -37,6 +37,11 @@ en:
         created_at: Received at
         federails_actor: Reported by
         object: Object
+      group:
+        description: Description
+        membership: Membership
+        name: Name
+        typed_id: Permission ID
       library:
         caption: Caption
         create_path_if_not_on_disk: Auto-create folder
@@ -675,6 +680,12 @@ en:
   groups:
     create:
       success: Group created successfully.
+    form:
+      add: add another member
+    membership_fields:
+      user_id:
+        delete: Delete
+        placeholder: Account name
     update:
       success: Group updated successfully.
   home:
@@ -874,6 +885,18 @@ en:
       create:
         altcha_failed: ALTCHA verification failed
   views:
+    groups:
+      edit:
+        title: Edit
+      form:
+        confirm_destroy: Are you sure you want to remove this user group?
+      index:
+        copy: Copy ID to clipboard for use in permission settings.
+        description: User Groups are collections of local instance users, useful for managing things like Patreon or Liberapay subscribers. You can grant a group permissions on any object by using its permission ID, just like a site role or individual user.
+        member_count: "%{count} members"
+        title: User Groups
+      new:
+        title: New Group
     pagination:
       first: "« First"
       last: Last »

@@ -61,6 +61,7 @@
 <% content_for :actions do %>
   <%= link_to safe_join([Icon(icon: "pencil", label: t(".edit")), t(".edit")], " "), edit_creator_path(@creator), class: "btn btn-primary" if policy(@creator).edit? %>
   <%= ReportButton(object: @creator, path: new_creator_report_path(@creator)) %>
+  <%= GoButton(href: creator_groups_path(@creator), label: t("views.groups.index.title"), variant: :secondary) if policy(Group.new(creator: @creator)).index? %>
 <% end %>
 
 <%= render "models/list" %>

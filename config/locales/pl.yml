@@ -37,6 +37,11 @@ pl:
         created_at:
         federails_actor: Zgłoszone przez
         object: Obiekt
+      group:
+        description:
+        membership:
+        name:
+        typed_id:
       library:
         caption: Napis
         create_path_if_not_on_disk: Automatycznie twórz folder
@@ -675,6 +680,12 @@ pl:
   groups:
     create:
       success:
+    form:
+      add:
+    membership_fields:
+      user_id:
+        delete:
+        placeholder:
     update:
       success:
   home:
@@ -874,6 +885,18 @@ pl:
       create:
         altcha_failed:
   views:
+    groups:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        copy:
+        description:
+        member_count:
+        title:
+      new:
+        title:
     pagination:
       first: "« Pierwsza"
       last: Ostatnia »

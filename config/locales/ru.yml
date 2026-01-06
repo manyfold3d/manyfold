@@ -37,6 +37,11 @@ ru:
         created_at:
         federails_actor:
         object:
+      group:
+        description:
+        membership:
+        name:
+        typed_id:
       library:
         caption: Описание
         create_path_if_not_on_disk: Автосоздание папки
@@ -675,6 +680,12 @@ ru:
   groups:
     create:
       success:
+    form:
+      add:
+    membership_fields:
+      user_id:
+        delete:
+        placeholder:
     update:
       success:
   home:
@@ -874,6 +885,18 @@ ru:
       create:
         altcha_failed:
   views:
+    groups:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        copy:
+        description:
+        member_count:
+        title:
+      new:
+        title:
     pagination:
       first: "&laquo; Первая"
       last: Последняя &raquo;
