@@ -53,4 +53,30 @@ RSpec.describe ApplicationHelper do
       expect(doc.css("span")[1].text).to eq("Test Text")
     end
   end
+
+  describe "#tour_state" do
+    it "handles nil tour state in database" do
+      user = instance_double(User)
+      allow(user).to receive_messages(first_use?: false, tour_state: nil)
+      allow(helper).to receive(:current_user).and_return(user)
+      attrs = helper.tour_attributes(id: "id", title: "title", description: "description")
+      expect(attrs["tour-id-completed"]).to eq "false"
+    end
+
+    it "handles empty tour state in database" do
+      user = instance_double(User)
+      allow(user).to receive_messages(first_use?: false, tour_state: {})
+      allow(helper).to receive(:current_user).and_return(user)
+      attrs = helper.tour_attributes(id: "id", title: "title", description: "description")
+      expect(attrs["tour-id-completed"]).to eq "false"
+    end
+
+    it "matches completed tour states" do
+      user = instance_double(User)
+      allow(user).to receive_messages(first_use?: false, tour_state: {"completed" => ["id"]})
+      allow(helper).to receive(:current_user).and_return(user)
+      attrs = helper.tour_attributes(id: "id", title: "title", description: "description")
+      expect(attrs["tour-id-completed"]).to eq "true"
+    end
+  end
 end
