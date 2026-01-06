@@ -290,9 +290,9 @@ module ApplicationHelper
     tour_state = current_user.tour_state || User::DEFAULT_TOUR_STATE
     {
       "tour-id": id,
-      "tour-id-completed": tour_state.dig("completed").include?(id).to_s,
+      "tour-id-completed": (tour_state.dig("completed")&.include?(id) == true).to_s,
       "tour-title": title,
       "tour-description": description
-    }
+    }.compact
   end
 end
