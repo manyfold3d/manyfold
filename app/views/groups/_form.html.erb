@@ -7,10 +7,10 @@
 	</div>
   <div>
 		<%= cocooned_container id: "cocooned-memberships", data: {controller: "cocooned"} do
-			form.fields_for :memberships do |f|
-				render "membership_fields", f: f
-			end
-		end %>
+				form.fields_for :memberships do |f|
+					render "membership_fields", f: f
+				end
+			end %>
 		<%= cocooned_add_item_button t(".add"), form, :memberships,
 				class: "btn btn-secondary",
 				insertion_node: "#cocooned-memberships",
