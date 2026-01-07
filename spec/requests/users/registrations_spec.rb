@@ -452,5 +452,30 @@ RSpec.describe "Users::Registrations" do
       patch "/users", params: completion_params, as: :json
       expect(User.first.tour_state["completed"]).to include("new-item", "old-item")
     end
+
+    context "with an invalid user" do # rubocop:disable RSpec/MultipleMemoizedHelpers
+      let(:user) { create(:contributor) }
+      let(:creator) { create(:creator) }
+
+      before do
+        sign_in user
+        user.username = "@@@"
+        user.save validate: false
+      end
+
+      it "has an invalid user" do
+        expect(user).not_to be_valid
+      end
+
+      it "doesn't validate if only saving tour state or other settings" do
+        patch "/users", params: completion_params, as: :json
+        expect(response).to have_http_status :success
+      end
+
+      it "validates if important data is also entered" do
+        patch "/users", params: {user: {email: "test@example.com", tour_state: {completed: {add: ["new-item"]}}}}, as: :json
+        expect(response).to have_http_status :unprocessable_content
+      end
+    end
   end
 end
