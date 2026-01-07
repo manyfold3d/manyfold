@@ -65,6 +65,13 @@ class GroupsController < ApplicationController
           render Views::Groups::Edit.new(group: @group, creator: @creator), status: :unprocessable_content
         end
       end
+      format.manyfold_api_v0 do
+        if @group.valid?
+          render json: ManyfoldApi::V0::GroupSerializer.new(@group).serialize
+        else
+          render json: @group.errors.to_json, status: :unprocessable_content
+        end
+      end
     end
   end
 

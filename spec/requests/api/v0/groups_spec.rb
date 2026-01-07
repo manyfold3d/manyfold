@@ -167,6 +167,56 @@ describe "Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
       end
     end
 
+    patch "Update a group" do
+      tags "Groups"
+      consumes Mime[:manyfold_api_v0].to_s
+      produces Mime[:manyfold_api_v0].to_s
+      security [client_credentials: ["write"]]
+      parameter name: :body, in: :body, schema: ManyfoldApi::V0::GroupDeserializer.schema_ref
+
+      response "200", "Group updated" do
+        schema ManyfoldApi::V0::GroupSerializer.schema_ref
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => "Patrons", "description" => "My subscribers"} }
+
+        run_test! "produces valid linked data" do
+          graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+          expect(graph).to be_valid
+        end
+
+        run_test! do
+          expect(response.parsed_body["name"]).to eq "Patrons"
+        end
+      end
+
+      response "400", "The request structure was incorrect" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "422", "Creation failed due to invalid data" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
+        let(:body) { {"name" => ""} }
+
+        run_test! do
+          expect(response.parsed_body["name"]).to include("can't be blank")
+        end
+      end
+
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
+
     delete "Remove a group" do
       tags "Groups"
       produces Mime[:manyfold_api_v0].to_s
