@@ -53,7 +53,7 @@ To run the app yourself, you'll need the following installed:
 * [ngrok](https://ngrok.com) (for ActivityPub development)
 * [assimp](https://www.assimp.org) (for model file analysis)
 
-To run the application once you've cloned this repo, you should be able to just run `bin/dev`; that should set up the database, perform migrations, install dependencies, and then make the application available at <http://127.0.0.1:5000>.
+To run the application once you've cloned this repo, you should be able to just run `bin/dev`; that should set up the database, perform migrations, install dependencies, and then make the application available at <http://127.0.0.1:3214>.
 
 If you want to configure optional features, set the appropriate [environment variables](https://manyfold.app/sysadmin/configuration.html) in a file called `.env.development.local`. See `env.example` for a template file. Note that the required environment variables in the documentation are not needed in development mode, due to the use of SQLite instead of PostgreSQL.
 
@@ -68,7 +68,7 @@ endpoints:
     - name: manyfold
       url: https://{your-ngrok-url-here}
       upstream:
-         url: 5000
+         url: 3214
 ```
 
 ### Using the Devcontainer

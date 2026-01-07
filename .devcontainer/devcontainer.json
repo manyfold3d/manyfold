@@ -5,8 +5,8 @@
         "ghcr.io/devcontainers/features/node:1": {
             "version": "22"
         },
-         "ghcr.io/rails/devcontainer/features/activestorage": {},
-         "ghcr.io/itsmechlark/features/redis-server:1": {}
+        "ghcr.io/rails/devcontainer/features/activestorage": {},
+        "ghcr.io/itsmechlark/features/redis-server:1": {}
     },
     "postCreateCommand": "sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install libpq-dev libmariadb-dev libarchive13 -y && export COREPACK_ENABLE_DOWNLOAD_PROMPT=0 && corepack enable && bundle install && yarn install",
     "postStartCommand": "bash ./bin/dev",
@@ -24,9 +24,11 @@
         "RAILS_ENV": "development",
         "NODE_ENV": "development"
     },
-    "forwardPorts": [5000],
+    "forwardPorts": [
+        3214
+    ],
     "portsAttributes": {
-        "5000": {
+        "3214": {
             "label": "Rails Server",
             "onAutoForward": "notify"
         }
