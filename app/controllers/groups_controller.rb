@@ -13,6 +13,13 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show
+    authorize @group
+    respond_to do |format|
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::GroupSerializer.new(@group).serialize }
+    end
+  end
+
   def new
     group = @creator.groups.new
     authorize group

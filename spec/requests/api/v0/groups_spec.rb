@@ -78,4 +78,42 @@ describe "Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
       end
     end
   end
+
+  path "/creators/{creator_id}/groups/{id}" do
+    parameter name: :creator_id, in: :path, type: :string, required: true, example: "abc123"
+    parameter name: :id, in: :path, type: :string, required: true, example: "1"
+
+    let(:user) { create(:user) }
+    let(:group) { create(:group) }
+    let(:creator_id) { group.creator.to_param }
+    let(:id) { group.to_param }
+
+    get "Details of a single group" do
+      tags "Groups"
+      produces Mime[:manyfold_api_v0].to_s
+      security [client_credentials: ["read"]]
+
+      response "200", "Success" do
+        schema ManyfoldApi::V0::GroupSerializer.schema_ref
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "read").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test! "produces valid linked data" do
+          graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
+          expect(graph).to be_valid
+        end
+      end
+
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
+  end
 end
