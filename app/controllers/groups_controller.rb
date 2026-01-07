@@ -45,6 +45,13 @@ class GroupsController < ApplicationController
           render Views::Groups::New.new(group: group, creator: @creator), status: :unprocessable_content
         end
       end
+      format.manyfold_api_v0 do
+        if group.valid?
+          render json: ManyfoldApi::V0::GroupSerializer.new(group).serialize, status: :created, location: creator_group_path(@creator, group)
+        else
+          render json: group.errors.to_json, status: :unprocessable_content
+        end
+      end
     end
   end
 
@@ -83,7 +90,7 @@ class GroupsController < ApplicationController
   def group_params
     if is_api_request?
       raise ActionController::BadRequest unless params[:json]
-      # ManyfoldApi::V0::GroupDeserializer.new(object: params[:json], user: current_user, record: @creator).deserialize
+      ManyfoldApi::V0::GroupDeserializer.new(object: params[:json], user: current_user, record: @creator).deserialize
     else
       Form::GroupDeserializer.new(params: params, user: current_user, record: @creator).deserialize
     end
