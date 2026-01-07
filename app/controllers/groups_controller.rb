@@ -5,8 +5,11 @@ class GroupsController < ApplicationController
 
   def index
     authorize Group.new(creator: @creator) # stub group to check authorization
+    page = params[:page] || 1
+    groups = policy_scope(@creator.groups).page(page).per(100)
     respond_to do |format|
-      format.html { render Views::Groups::Index.new(groups: policy_scope(@creator.groups), creator: @creator) }
+      format.html { render Views::Groups::Index.new(groups: groups, creator: @creator) }
+      format.manyfold_api_v0 { render json: ManyfoldApi::V0::GroupListSerializer.new(@creator, groups).serialize }
     end
   end
 
