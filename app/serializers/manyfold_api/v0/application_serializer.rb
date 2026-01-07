@@ -35,6 +35,11 @@ module ManyfoldApi::V0
       ref id: Rails.application.routes.url_helpers.creator_url(creator), type: "Organization"
     end
 
+    def group_ref(group)
+      return if group.nil?
+      ref id: Rails.application.routes.url_helpers.creator_group_url(group.creator, group), type: "Group"
+    end
+
     def model_ref(model)
       return if model.nil?
       ref id: Rails.application.routes.url_helpers.model_url(model), type: "3DModel"
