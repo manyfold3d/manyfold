@@ -38,9 +38,9 @@ ru:
         federails_actor:
         object:
       group:
-        description:
+        description: Примечания
         membership:
-        name:
+        name: Имя
         typed_id:
       library:
         caption: Описание
@@ -684,7 +684,7 @@ ru:
       add:
     membership_fields:
       user_id:
-        delete:
+        delete: Удалить
         placeholder:
     update:
       success:
@@ -887,7 +887,7 @@ ru:
   views:
     groups:
       edit:
-        title:
+        title: Редактировать
       form:
         confirm_destroy:
       index:
