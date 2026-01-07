@@ -38,9 +38,9 @@ ja:
         federails_actor: 報告者
         object:
       group:
-        description:
+        description: ノート
         membership:
-        name:
+        name: 名前
         typed_id:
       library:
         caption: キャプション
@@ -684,8 +684,8 @@ ja:
       add:
     membership_fields:
       user_id:
-        delete:
-        placeholder:
+        delete: 削除
+        placeholder: アカウント名
     update:
       success:
   home:
@@ -887,7 +887,7 @@ ja:
   views:
     groups:
       edit:
-        title:
+        title: 編集
       form:
         confirm_destroy:
       index:
