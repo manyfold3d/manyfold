@@ -38,9 +38,9 @@ nl:
         federails_actor: Gerapporteerd door
         object: Object
       group:
-        description:
+        description: Beschrijving
         membership:
-        name:
+        name: Naam
         typed_id:
       library:
         caption: Onderschrift
@@ -684,7 +684,7 @@ nl:
       add:
     membership_fields:
       user_id:
-        delete:
+        delete: Verwijderen
         placeholder:
     update:
       success:
@@ -887,7 +887,7 @@ nl:
   views:
     groups:
       edit:
-        title:
+        title: Bewerken
       form:
         confirm_destroy:
       index:
