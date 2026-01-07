@@ -143,6 +143,8 @@ RSpec.configure do |config|
           ManyfoldApi::V0::CollectionSerializer.schema_ref_name => ManyfoldApi::V0::CollectionSerializer.schema,
           ManyfoldApi::V0::CreatorDeserializer.schema_ref_name => ManyfoldApi::V0::CreatorDeserializer.schema,
           ManyfoldApi::V0::CreatorSerializer.schema_ref_name => ManyfoldApi::V0::CreatorSerializer.schema,
+          ManyfoldApi::V0::GroupDeserializer.schema_ref_name => ManyfoldApi::V0::GroupDeserializer.schema,
+          ManyfoldApi::V0::GroupSerializer.schema_ref_name => ManyfoldApi::V0::GroupSerializer.schema,
           ManyfoldApi::V0::ModelDeserializer.schema_ref_name => ManyfoldApi::V0::ModelDeserializer.schema,
           ManyfoldApi::V0::ModelSerializer.schema_ref_name => ManyfoldApi::V0::ModelSerializer.schema,
           ManyfoldApi::V0::ModelFileDeserializer.schema_ref_name => ManyfoldApi::V0::ModelFileDeserializer.schema,
