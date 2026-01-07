@@ -38,9 +38,9 @@ cs:
         federails_actor: Nahlášeno
         object: Objekt
       group:
-        description:
+        description: Popis
         membership:
-        name:
+        name: Jméno
         typed_id:
       library:
         caption: Titulek
@@ -684,7 +684,7 @@ cs:
       add:
     membership_fields:
       user_id:
-        delete:
+        delete: Smazat
         placeholder:
     update:
       success:
@@ -887,7 +887,7 @@ cs:
   views:
     groups:
       edit:
-        title:
+        title: Upravit
       form:
         confirm_destroy:
       index:
