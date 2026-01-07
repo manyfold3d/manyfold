@@ -8,12 +8,12 @@ class BenchmarkController < ApplicationController
   # and locking behaviour.
 
   # GET /benchmark to do reads:
-  # `oha http://localhost:5000/benchmark`
+  # `oha http://localhost:3214/benchmark`
 
   # POST /benchmark to do writes
-  # `oha http://localhost:5000/benchmark -m POST`
+  # `oha http://localhost:3214/benchmark -m POST`
   # or for a more aggressive test:
-  # `oha -c 4 -z 5s -m POST --latency-correction --disable-keepalive --redirect 0 http://localhost:5000/benchmark`
+  # `oha -c 4 -z 5s -m POST --latency-correction --disable-keepalive --redirect 0 http://localhost:3214/benchmark`
 
   # Read a random model
   def index
