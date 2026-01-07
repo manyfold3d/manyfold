@@ -38,9 +38,9 @@ zh-CN:
         federails_actor: 报告人
         object:
       group:
-        description:
+        description: 说明
         membership:
-        name:
+        name: 名称
         typed_id:
       library:
         caption: 标题
@@ -684,8 +684,8 @@ zh-CN:
       add:
     membership_fields:
       user_id:
-        delete:
-        placeholder:
+        delete: 删除
+        placeholder: 账户名称
     update:
       success:
   home:
@@ -887,7 +887,7 @@ zh-CN:
   views:
     groups:
       edit:
-        title:
+        title: 编辑
       form:
         confirm_destroy:
       index:
