@@ -59,7 +59,7 @@ If you want to configure optional features, set the appropriate [environment var
 
 #### ngrok
 
-Running `bin/dev` also expects to be able to start a pre-configured [ngrok](https://ngrok.com) tunnel called "manyfold", to enable ActivityPub federation in development. If you don't want to use this, you can comment the line out of `Procfile.dev`, though please don't commit it!
+Running `bin/dev` also expects to be able to start a pre-configured [ngrok](https://ngrok.com) tunnel called "manyfold", to enable ActivityPub federation in development. If you don't want to use this, you can remove the line from `Procfile.dev`, though please don't commit it!
 
 To configure the tunnel, add this to your [ngrok config file](https://ngrok.com/docs/agent/config/):
 
