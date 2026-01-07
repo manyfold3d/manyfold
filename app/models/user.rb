@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :creators, -> { where("caber_relations.permission": "own") }, through: :caber_relations, source_type: "Creator", source: :object
   accepts_nested_attributes_for :creators
 
-  before_validation :set_json_field_defaults, on: :create
+  before_validation :set_json_field_defaults
   before_save :set_quota
 
   acts_as_federails_actor(
@@ -29,22 +29,22 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: %i[openid_connect] if SiteSettings.oidc_enabled?
 
-  validates :username, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
-
-  validates :username,
-    presence: true,
-    uniqueness: {case_sensitive: false},
-    format: {with: /\A[[:alnum:].\-_;]+\z/}
-
-  validates :email,
-    presence: true,
-    uniqueness: {case_sensitive: false},
-    format: {with: URI::MailTo::EMAIL_REGEXP}
-
-  validates :password,
-    presence: true,
-    confirmation: true,
-    if: :password_required?
+  # Reduce validations if only safe settings are being changed
+  with_options unless: :only_settings_changed? do
+    validates :username,
+      presence: true,
+      uniqueness: {case_sensitive: false},
+      format: {with: /\A[[:alnum:].\-_;]+\z/},
+      multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
+    validates :email,
+      presence: true,
+      uniqueness: {case_sensitive: false},
+      format: {with: URI::MailTo::EMAIL_REGEXP}
+    validates :password,
+      presence: true,
+      confirmation: true,
+      if: :password_required?
+  end
 
   after_create :assign_default_role
 
@@ -233,5 +233,13 @@ class User < ApplicationRecord
     self.problem_settings ||= Problem::DEFAULT_SEVERITIES
     self.file_list_settings ||= SiteSettings::UserDefaults::FILE_LIST
     self.tour_state ||= DEFAULT_TOUR_STATE
+  end
+
+  def only_settings_changed?
+    return false unless changed?
+    settings_attributes = [
+      "tour_state"
+    ].freeze
+    (changed - settings_attributes).empty?
   end
 end
