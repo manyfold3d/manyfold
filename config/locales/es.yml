@@ -38,9 +38,9 @@ es:
         federails_actor: Reportado por
         object: Objeto
       group:
-        description:
+        description: Descripción
         membership:
-        name:
+        name: Nombre
         typed_id:
       library:
         caption: Subtítulo
@@ -99,7 +99,7 @@ es:
         severity: Gravedad
       user:
         approved: Cuenta pendiente
-        auth_uid:
+        auth_uid: OIDC
         confirmation_sent_at: Confirmación enviada a
         confirmation_token: Código de confirmación
         confirmed_at: Confirmado el
@@ -364,7 +364,7 @@ es:
     altcha_widget:
       help: protección antispam mediante ALTCHA
     column_header:
-      current_sort:
+      current_sort: Ordenar por
       sort_by: Ordenar por
     copy_button:
       copy: Copiar al portapapeles
@@ -684,8 +684,8 @@ es:
       add:
     membership_fields:
       user_id:
-        delete:
-        placeholder:
+        delete: Borrar
+        placeholder: Nombre de usuario
     update:
       success: Grupo actualizado correctamente.
   home:
@@ -887,7 +887,7 @@ es:
   views:
     groups:
       edit:
-        title:
+        title: Editar
       form:
         confirm_destroy:
       index:
