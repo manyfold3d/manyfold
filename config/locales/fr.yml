@@ -38,9 +38,9 @@ fr:
         federails_actor: Rapporté par
         object: Objet
       group:
-        description:
+        description: Description
         membership:
-        name:
+        name: Nom
         typed_id:
       library:
         caption: Légende
@@ -687,8 +687,8 @@ fr:
       add:
     membership_fields:
       user_id:
-        delete:
-        placeholder:
+        delete: Supprimer
+        placeholder: Nom du compte
     update:
       success:
   home:
@@ -890,7 +890,7 @@ fr:
   views:
     groups:
       edit:
-        title:
+        title: Modifier
       form:
         confirm_destroy:
       index:
