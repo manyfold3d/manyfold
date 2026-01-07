@@ -38,9 +38,9 @@ pl:
         federails_actor: Zgłoszone przez
         object: Obiekt
       group:
-        description:
+        description: Opis
         membership:
-        name:
+        name: Nazwa
         typed_id:
       library:
         caption: Napis
@@ -684,7 +684,7 @@ pl:
       add:
     membership_fields:
       user_id:
-        delete:
+        delete: Usuń
         placeholder:
     update:
       success:
@@ -887,7 +887,7 @@ pl:
   views:
     groups:
       edit:
-        title:
+        title: Edytuj
       form:
         confirm_destroy:
       index:
