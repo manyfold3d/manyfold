@@ -65,6 +65,7 @@ class GroupsController < ApplicationController
     @group.destroy!
     respond_to do |format|
       format.html { redirect_to creator_groups_path(@creator) }
+      format.manyfold_api_v0 { head :no_content }
     end
   end
 

@@ -115,5 +115,29 @@ describe "Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
         run_test!
       end
     end
+
+    delete "Remove a group" do
+      tags "Groups"
+      produces Mime[:manyfold_api_v0].to_s
+      security [client_credentials: ["delete"]]
+      response "204", "Success" do
+        schema type: nil
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "delete").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "401", "Unauthorized; the request did not provide valid authentication details" do
+        let(:Authorization) { nil } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+
+      response "403", "Forbidden; the provided credentials do not have permission to perform the requested action" do
+        let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "").plaintext_token}" } # rubocop:disable RSpec/VariableName
+
+        run_test!
+      end
+    end
   end
 end
