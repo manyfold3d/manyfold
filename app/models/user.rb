@@ -238,6 +238,14 @@ class User < ApplicationRecord
   def only_settings_changed?
     return false unless changed?
     settings_attributes = [
+      "sensitive_content_handling",
+      "interface_language",
+      "sort_order",
+      "pagination_settings",
+      "renderer_settings",
+      "tag_cloud_settings",
+      "problem_settings",
+      "file_list_settings",
       "tour_state"
     ].freeze
     (changed - settings_attributes).empty?
