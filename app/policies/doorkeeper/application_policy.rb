@@ -42,7 +42,7 @@ class Doorkeeper::ApplicationPolicy < ApplicationPolicy
     end
 
     def resolve
-      user.is_moderator? ? scope : scope.where(owner: user)
+      user&.is_moderator? ? scope : scope.where(owner: user)
     end
   end
 end
