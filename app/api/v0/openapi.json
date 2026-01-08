@@ -1010,16 +1010,6 @@
           "schema": {
             "type": "string"
           }
-        },
-        {
-          "name": "page",
-          "in": "query",
-          "example": 1,
-          "description": "Specify which page of results to retrieve.",
-          "required": false,
-          "schema": {
-            "type": "integer"
-          }
         }
       ],
       "get": {
@@ -1032,6 +1022,18 @@
             "client_credentials": [
               "read"
             ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "example": 1,
+            "description": "Specify which page of results to retrieve.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "responses": {

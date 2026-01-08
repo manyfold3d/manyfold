@@ -11,12 +11,12 @@ describe "Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
 
   path "/creators/{creator_id}/groups" do
     parameter name: :creator_id, in: :path, type: :string, required: true, example: "abc123"
-    parameter name: :page, in: :query, type: :integer, example: 1, description: "Specify which page of results to retrieve.", required: false
 
     get "A list of groups associated with a creator" do
       tags "Groups"
       produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["read"]]
+      parameter name: :page, in: :query, type: :integer, example: 1, description: "Specify which page of results to retrieve.", required: false
 
       response "200", "Success" do
         schema type: :object,
