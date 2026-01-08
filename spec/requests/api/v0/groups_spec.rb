@@ -1,7 +1,7 @@
 # spec/requests/blogs_spec.rb
 require "swagger_helper"
 
-describe "Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
+describe "User Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/EmptyExampleGroup
   let(:creator) { create(:creator) }
   let(:creator_id) { creator.to_param }
 
@@ -12,8 +12,8 @@ describe "Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
   path "/creators/{creator_id}/groups" do
     parameter name: :creator_id, in: :path, type: :string, required: true, example: "abc123"
 
-    get "A list of groups associated with a creator" do
-      tags "Groups"
+    get "A list of user groups associated with a creator" do
+      tags "User Groups"
       produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["read"]]
       parameter name: :page, in: :query, type: :integer, example: 1, description: "Specify which page of results to retrieve.", required: false
@@ -30,8 +30,8 @@ describe "Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
               items: {
                 type: :object,
                 properties: {
-                  "@id": {type: :string, example: "/creators/abc123/groups/1", description: "The URL of the group"},
-                  name: {type: :string, example: "Fred", description: "The human name of the group"}
+                  "@id": {type: :string, example: "/creators/abc123/groups/1", description: "The URL of the user group"},
+                  name: {type: :string, example: "Patrons", description: "The human name of the user group"}
                 },
                 required: ["@id", "name"]
               }
@@ -78,8 +78,8 @@ describe "Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
       end
     end
 
-    post "Create a group" do
-      tags "Groups"
+    post "Create a new user group" do
+      tags "User Groups"
       consumes Mime[:manyfold_api_v0].to_s
       produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["write"]]
@@ -139,8 +139,8 @@ describe "Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
     let(:creator_id) { group.creator.to_param }
     let(:id) { group.to_param }
 
-    get "Details of a single group" do
-      tags "Groups"
+    get "Get details of a single user group" do
+      tags "User Groups"
       produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["read"]]
 
@@ -167,8 +167,8 @@ describe "Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
       end
     end
 
-    patch "Update a group" do
-      tags "Groups"
+    patch "Update a user group" do
+      tags "User Groups"
       consumes Mime[:manyfold_api_v0].to_s
       produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["write"]]
@@ -217,8 +217,8 @@ describe "Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
       end
     end
 
-    delete "Remove a group" do
-      tags "Groups"
+    delete "Remove a user group" do
+      tags "User Groups"
       produces Mime[:manyfold_api_v0].to_s
       security [client_credentials: ["delete"]]
       response "204", "Success" do

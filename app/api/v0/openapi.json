@@ -1013,9 +1013,9 @@
         }
       ],
       "get": {
-        "summary": "A list of groups associated with a creator",
+        "summary": "A list of user groups associated with a creator",
         "tags": [
-          "Groups"
+          "User Groups"
         ],
         "security": [
           {
@@ -1067,12 +1067,12 @@
                           "@id": {
                             "type": "string",
                             "example": "/creators/abc123/groups/1",
-                            "description": "The URL of the group"
+                            "description": "The URL of the user group"
                           },
                           "name": {
                             "type": "string",
-                            "example": "Fred",
-                            "description": "The human name of the group"
+                            "example": "Patrons",
+                            "description": "The human name of the user group"
                           }
                         },
                         "required": [
@@ -1138,9 +1138,9 @@
         }
       },
       "post": {
-        "summary": "Create a group",
+        "summary": "Create a new user group",
         "tags": [
-          "Groups"
+          "User Groups"
         ],
         "security": [
           {
@@ -1207,9 +1207,9 @@
         }
       ],
       "get": {
-        "summary": "Details of a single group",
+        "summary": "Get details of a single user group",
         "tags": [
-          "Groups"
+          "User Groups"
         ],
         "security": [
           {
@@ -1238,9 +1238,9 @@
         }
       },
       "patch": {
-        "summary": "Update a group",
+        "summary": "Update a user group",
         "tags": [
-          "Groups"
+          "User Groups"
         ],
         "security": [
           {
@@ -1285,9 +1285,9 @@
         }
       },
       "delete": {
-        "summary": "Remove a group",
+        "summary": "Remove a user group",
         "tags": [
-          "Groups"
+          "User Groups"
         ],
         "security": [
           {
