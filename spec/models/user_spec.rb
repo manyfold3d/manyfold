@@ -317,4 +317,40 @@ RSpec.describe User do
       end
     end
   end
+
+  context "with an invalid user" do
+    subject(:user) { create(:user) }
+
+    before do
+      user.username = "@@@"
+      user.save validate: false
+    end
+
+    it "has an invalid user for testing" do
+      expect(user).not_to be_valid
+    end
+
+    {
+      sensitive_content_handling: "hide",
+      interface_language: "en",
+      sort_order: "recent",
+      pagination_settings: {},
+      renderer_settings: {},
+      tag_cloud_settings: {},
+      problem_settings: {},
+      file_list_settings: {},
+      tour_state: {}
+    }.each_pair do |attribute, value|
+      it "doesn't validate if only saving #{attribute}" do
+        user.send :"#{attribute}=", value
+        expect(user).to be_valid
+      end
+    end
+
+    it "validates if non-settings data is set" do
+      user.email = "test@example.com"
+      user.tour_state = {}
+      expect(user).not_to be_valid
+    end
+  end
 end
