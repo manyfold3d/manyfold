@@ -2531,11 +2531,22 @@
           "description": {
             "type": "string",
             "example": "My subscribers"
+          },
+          "add_members": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "username"
+            }
+          },
+          "remove_members": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "username"
+            }
           }
-        },
-        "required": [
-          "name"
-        ]
+        }
       },
       "group_response": {
         "type": "object",
@@ -2550,6 +2561,13 @@
           "@type": {
             "type": "string",
             "example": "Group"
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "username"
+            }
           },
           "name": {
             "type": "string",

@@ -17,7 +17,7 @@ module ManyfoldApi::V0
           "@id": {type: :string, example: "https://example.com/creators/abc123/groups/1"},
           "@type": {type: :string, example: "Group"},
           members: {type: :array, items: {type: :string, example: "username"}}
-        }.merge(GroupDeserializer.schema[:properties]),
+        }.merge(GroupDeserializer.schema[:properties].except(:add_members, :remove_members)),
         required: ["@context", "@id", "@type"]
       }
     end

@@ -13,9 +13,10 @@ module ManyfoldApi::V0
         type: :object,
         properties: {
           name: {type: :string, example: "Patrons"},
-          description: {type: :string, example: "My subscribers"}
-        },
-        required: ["name"]
+          description: {type: :string, example: "My subscribers"},
+          add_members: {type: :array, items: {type: :string, example: "username"}},
+          remove_members: {type: :array, items: {type: :string, example: "username"}}
+        }
       }
     end
   end
