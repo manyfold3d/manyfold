@@ -97,7 +97,7 @@ class GroupsController < ApplicationController
   def group_params
     if is_api_request?
       raise ActionController::BadRequest unless params[:json]
-      ManyfoldApi::V0::GroupDeserializer.new(object: params[:json], user: current_user, record: @creator).deserialize
+      ManyfoldApi::V0::GroupDeserializer.new(object: params[:json], user: current_user, record: @group).deserialize
     else
       Form::GroupDeserializer.new(params: params, user: current_user, record: @creator).deserialize
     end

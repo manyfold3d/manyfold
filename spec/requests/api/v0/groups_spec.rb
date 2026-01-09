@@ -135,14 +135,10 @@ describe "User Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/
     parameter name: :id, in: :path, type: :string, required: true, example: "1"
 
     let(:user) { create(:user) }
-    let(:group) { create(:group) }
+    let(:group) { create(:group, members: [member]) }
     let(:creator_id) { group.creator.to_param }
     let(:id) { group.to_param }
     let(:member) { create(:user) }
-
-    before do
-      group.members << member
-    end
 
     get "Get details of a single user group" do
       tags "User Groups"
@@ -185,10 +181,7 @@ describe "User Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/
 
       let(:new_member) { create(:user) }
       let(:removed_member) { create(:user) }
-
-      before do
-        group.members << removed_member
-      end
+      let(:group) { create(:group, members: [member, removed_member]) }
 
       response "200", "Group updated" do
         schema ManyfoldApi::V0::GroupSerializer.schema_ref
@@ -197,30 +190,25 @@ describe "User Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/
           {
             "name" => "Patrons",
             "description" => "My subscribers",
-            "add_members" => [new_member.username],
-            "remove_members" => [removed_member.username]
+            "add_members" => [new_member.username, "non_existent_user"],
+            "remove_members" => [removed_member.username, "non_existent_user"]
           }
         }
 
-        run_test! "produces valid linked data" do
+        # Separating these into different tests causes problems with test setup conflicting, and I
+        # don't want to spend time run_test! esoterics right now.
+        run_test! do # rubocop:disable RSpec/MultipleExpectations, RSpec/ExampleLength
+          # run_test! "produces valid linked data" do
           graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
           expect(graph).to be_valid
-        end
-
-        run_test! do
+          # run_test! "updates basic data" do
           expect(response.parsed_body["name"]).to eq "Patrons"
-        end
-
-        run_test! "adds new members" do
+          # run_test! "adds new members" do
           expect(response.parsed_body["members"]).to include new_member.username
-        end
-
-        run_test! "removes members" do
+          # run_test! "removes members" do
           expect(response.parsed_body["members"]).not_to include removed_member.username
-        end
-
-        run_test! "leaves other members intact" do
-          expect(response.parsed_body["members"]).to eq [member.username]
+          # run_test! "leaves other members intact" do
+          expect(response.parsed_body["members"]).to include member.username
         end
       end
 
