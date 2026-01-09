@@ -39,9 +39,9 @@ es:
         object: Objeto
       group:
         description: Descripción
-        membership:
+        membership: Afiliación
         name: Nombre
-        typed_id:
+        typed_id: Permiso ID
       library:
         caption: Subtítulo
         create_path_if_not_on_disk: Auto-crear carpeta
@@ -681,7 +681,7 @@ es:
     create:
       success: Grupo creado correctamente.
     form:
-      add:
+      add: añadir otro miembro
     membership_fields:
       user_id:
         delete: Borrar
@@ -889,14 +889,14 @@ es:
       edit:
         title: Editar
       form:
-        confirm_destroy:
+        confirm_destroy: "¿Está seguro de que desea eliminar este grupo de usuarios?"
       index:
-        copy:
-        description:
-        member_count:
-        title:
+        copy: Copie el ID en el portapapeles para utilizarlo en la configuración de permisos.
+        description: Los Grupos de Usuarios son colecciones de usuarios de instancias locales, útiles para gestionar cosas como suscriptores de Patreon o Liberapay. Puedes conceder permisos a un grupo sobre cualquier objeto utilizando su ID de permiso, al igual que un rol de sitio o un usuario individual.
+        member_count: "%{count} miembros"
+        title: Grupos de usuarios
       new:
-        title:
+        title: Nuevo Grupo
     pagination:
       first: "« Primera"
       last: Última »
