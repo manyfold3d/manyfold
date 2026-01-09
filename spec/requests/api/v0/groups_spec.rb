@@ -138,6 +138,11 @@ describe "User Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/
     let(:group) { create(:group) }
     let(:creator_id) { group.creator.to_param }
     let(:id) { group.to_param }
+    let(:member) { create(:user) }
+
+    before do
+      group.members << member
+    end
 
     get "Get details of a single user group" do
       tags "User Groups"
@@ -151,6 +156,10 @@ describe "User Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/
         run_test! "produces valid linked data" do
           graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
           expect(graph).to be_valid
+        end
+
+        run_test! "includes member list" do
+          expect(response.parsed_body["members"]).to eq [member.username]
         end
       end
 
