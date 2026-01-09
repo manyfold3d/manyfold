@@ -12,6 +12,7 @@ import { TDSLoader } from 'three/addons/loaders/TDSLoader.js'
 import { FBXLoader } from 'three/addons/loaders/FBXLoader.js'
 import { GCodeLoader } from 'three/addons/loaders/GCodeLoader.js'
 import { LDrawLoader } from 'three/addons/loaders/LDrawLoader.js'
+import { Rhino3dmLoader } from 'three/addons/loaders/3DMLoader.js';
 
 import { OrbitControls } from 'src/orbit_controls.js'
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
@@ -33,7 +34,8 @@ const loaders = {
   fbx: FBXLoader,
   gcode: GCodeLoader,
   ldr: LDrawLoader,
-  mpd: LDrawLoader
+  mpd: LDrawLoader,
+  '3dm': Rhino3dmLoader
 }
 
 export class OffscreenRenderer {
@@ -124,6 +126,8 @@ export class OffscreenRenderer {
         loader.setConditionalLineMaterial(LDrawConditionalLineMaterial)
         loader.setPartsLibraryPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/')
         await loader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/LDConfig.ldr')
+      } else if (LoaderClass === Rhino3dmLoader) {
+        loader.setLibraryPath('https://cdn.jsdelivr.net/npm/rhino3dm@8.17.0/')
       }
       // Load
       loader.load(
