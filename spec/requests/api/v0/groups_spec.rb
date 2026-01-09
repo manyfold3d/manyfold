@@ -183,10 +183,24 @@ describe "User Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/
       security [client_credentials: ["write"]]
       parameter name: :body, in: :body, schema: ManyfoldApi::V0::GroupDeserializer.schema_ref
 
+      let(:new_member) { create(:user) }
+      let(:removed_member) { create(:user) }
+
+      before do
+        group.members << removed_member
+      end
+
       response "200", "Group updated" do
         schema ManyfoldApi::V0::GroupSerializer.schema_ref
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
-        let(:body) { {"name" => "Patrons", "description" => "My subscribers"} }
+        let(:body) {
+          {
+            "name" => "Patrons",
+            "description" => "My subscribers",
+            "add_members" => [new_member.username],
+            "remove_members" => [removed_member.username]
+          }
+        }
 
         run_test! "produces valid linked data" do
           graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
@@ -195,6 +209,18 @@ describe "User Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/
 
         run_test! do
           expect(response.parsed_body["name"]).to eq "Patrons"
+        end
+
+        run_test! "adds new members" do
+          expect(response.parsed_body["members"]).to include new_member.username
+        end
+
+        run_test! "removes members" do
+          expect(response.parsed_body["members"]).not_to include removed_member.username
+        end
+
+        run_test! "leaves other members intact" do
+          expect(response.parsed_body["members"]).to eq [member.username]
         end
       end
 
