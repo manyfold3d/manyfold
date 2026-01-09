@@ -10,6 +10,7 @@ Mime::Type.register "application/x-openscad", :scad
 Mime::Type.register "image/vnd.dwg", :dwg
 Mime::Type.register "image/vnd.dxf", :dxf
 Mime::Type.register "model/3mf", :threemf, [], ["3mf"]
+Mime::Type.register "model/3dm", :threedm, ["model/vnd.3dm"], ["3dm"]
 Mime::Type.register "model/gltf", :gltf, ["model/gltf+json", "model/gltf+binary", "model/gltf-binary"], ["glb"]
 Mime::Type.register "model/iges", :iges, [], ["igs"]
 Mime::Type.register "model/mtl", :mtl
