@@ -1,6 +1,6 @@
 {
     "name": "manyfold Development Container",
-    "image": "ghcr.io/rails/devcontainer/images/ruby:3.4.1",
+    "image": "ghcr.io/rails/devcontainer/images/ruby:3.4.8",
     "features": {
         "ghcr.io/devcontainers/features/node:1": {
             "version": "22"
