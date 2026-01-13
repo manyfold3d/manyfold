@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: https://upload.wikimedia.org/wikipedia/commons/a/a9/Example.jpg
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 08 Jul 2025 12:48:40 GMT
+      etag:
+      - a0480ac7f4f3bb017a699df1d004a854
+      server:
+      - ATS/9.2.11
+      content-type:
+      - image/jpeg
+      x-object-meta-sha1base36:
+      - ob4soz3k2tajaqywt72q8kz6zvbsjeo
+      last-modified:
+      - Sun, 06 Oct 2013 05:58:41 GMT
+      content-length:
+      - '9022'
+      age:
+      - '71947'
+      accept-ranges:
+      - bytes
+      x-cache:
+      - cp3078 hit, cp3078 hit/56
+      x-cache-status:
+      - hit-front
+      server-timing:
+      - cache;desc="hit-front", host;desc="cp3078"
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      x-client-ip:
+      - 2001:8b0:65de:83ec:e9cc:460f:d896:ac74
+      x-content-type-options:
+      - nosniff
+      access-control-allow-origin:
+      - "*"
+      access-control-expose-headers:
+      - Age, Date, Content-Length, Content-Range, X-Content-Duration, X-Cache
+      timing-allow-origin:
+      - "*"
+      set-cookie:
+      - WMF-Uniq=pbF44aao7znZRlzM3yOSDQIrAAAAAFvd7l8QJC3XatuS11o1KEs2fAs3-1e06_qM;Domain=upload.wikimedia.org;Path=/;HttpOnly;secure;SameSite=None;Expires=Thu,
+        09 Jul 2026 00:00:00 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Wed, 09 Jul 2025 08:47:47 GMT
+recorded_with: VCR 6.3.1

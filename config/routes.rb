@@ -147,6 +147,8 @@ Rails.application.routes.draw do
 
   authenticate :user, lambda { |u| u.is_contributor? } do
     mount Tus::Server => "/upload", :as => :upload
+    post "/uppy_companion/url/meta" => "uppy_companion#url_meta"
+    post "/uppy_companion/url/get" => "uppy_companion#url_get"
   end
 
   get("/oembed", to: redirect(status: 303) { |_, request|

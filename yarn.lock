@@ -1709,6 +1709,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@uppy/companion-client@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "@uppy/companion-client@npm:4.4.2"
+  dependencies:
+    "@uppy/utils": ^6.1.4
+    namespace-emitter: ^2.0.1
+    p-retry: ^6.1.0
+  peerDependencies:
+    "@uppy/core": ^4.4.5
+  checksum: 579d43e1b3c8ee5bcce0315b8f2db21767a68309a9ffd16108e5dd25e36b25b26ce7f08f53a7175da73cc866c5444eb1d89127d715845ac174a64f132497d724
+  languageName: node
+  linkType: hard
+
 "@uppy/core@npm:^4.4.5":
   version: 4.4.5
   resolution: "@uppy/core@npm:4.4.5"
@@ -1838,6 +1851,20 @@ __metadata:
   peerDependencies:
     "@uppy/core": ^4.4.1
   checksum: 4d7e5141afef60ffc138a657b2b45791b7bd6dcf7945632a142d745caf1827b8dc591256024e88134fc2bbd70d27ebf1f227ded8f8324a206f62450342dc67fa
+  languageName: node
+  linkType: hard
+
+"@uppy/url@npm:^4.2.1":
+  version: 4.2.4
+  resolution: "@uppy/url@npm:4.2.4"
+  dependencies:
+    "@uppy/companion-client": ^4.4.2
+    "@uppy/utils": ^6.1.4
+    nanoid: ^5.0.9
+    preact: ^10.5.13
+  peerDependencies:
+    "@uppy/core": ^4.4.5
+  checksum: 484cdd8b606f11124b7e4925343b6cae9dc10898c2726afa2dcf1f2a58dd8600364b28b2d9dfcd6079db76e0a893822d25e3069cbc71aff7b6a1005e2616ed22
   languageName: node
   linkType: hard
 
@@ -4635,6 +4662,7 @@ __metadata:
     "@uppy/form": ^4.1.1
     "@uppy/locales": ^4.5.2
     "@uppy/tus": ^4.2.2
+    "@uppy/url": ^4.2.1
     "@uppy/utils": ^6.1.4
     "@zxcvbn-ts/core": ^3.0.4
     "@zxcvbn-ts/language-common": ^3.0.4

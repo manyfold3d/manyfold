@@ -22,6 +22,7 @@
     "@uppy/form": "^4.1.1",
     "@uppy/locales": "^4.5.2",
     "@uppy/tus": "^4.2.2",
+    "@uppy/url": "^4.2.1",
     "@uppy/utils": "^6.1.4",
     "@zxcvbn-ts/core": "^3.0.4",
     "@zxcvbn-ts/language-common": "^3.0.4",
