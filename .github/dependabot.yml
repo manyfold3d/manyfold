@@ -10,6 +10,17 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    uppy:
+      patterns:
+        - "@uppy/*"
+    babel:
+      patterns:
+        - "@babel/*"
+    zxcvbn:
+      patterns:
+        - "@zxcvbn-ts/*"
+
 - package-ecosystem: "github-actions"
   directory: "/"
   schedule:
