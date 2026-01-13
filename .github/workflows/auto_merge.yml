@@ -30,7 +30,7 @@ jobs:
 
       - name: Enable auto-merge
         if: steps.check.outputs.should_merge == 'true'
-        run: gh pr merge --auto --squash "$PR_URL"
+        run: gh pr merge --auto "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
