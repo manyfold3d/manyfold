@@ -3,12 +3,41 @@ name: auto-merge
 on:
   pull_request:
 
+permissions:
+  pull-requests: write
+  contents: write
+
 jobs:
-  auto-merge:
-    runs-on: ubuntu-latest
+  dependabot:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v6
-      - uses: ahmadnassri/action-dependabot-auto-merge@v2
+      - name: Dependabot metadata
+        id: meta
+        uses: dependabot/fetch-metadata@v2
         with:
-          target: minor
-          github-token: ${{ secrets.AUTO_MERGE_TOKEN }}
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Check if auto-merge applicable
+        id: check
+        run: |
+          if [[ "${{ steps.meta.outputs.update-type }}" == "version-update:semver-patch" ]] || \
+             [[ "${{ steps.meta.outputs.update-type }}" == "version-update:semver-minor" ]]; then
+            echo "should_merge=true" >> $GITHUB_OUTPUT
+          else
+            echo "should_merge=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Approve dependabot PR
+        if: steps.check.outputs.should_merge == 'true'
+        run: gh pr review --approve "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Enable auto-merge
+        if: steps.check.outputs.should_merge == 'true'
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
