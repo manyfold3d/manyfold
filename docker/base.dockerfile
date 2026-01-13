@@ -1,6 +1,6 @@
 ## COMMON BASE ##########################################
 
-FROM ruby:3.4.1-alpine AS base
+FROM ruby:3.4.8-alpine3.22 AS base
 WORKDIR /usr/src/app
 
 RUN apk add --no-cache \
