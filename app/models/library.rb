@@ -27,7 +27,7 @@ class Library < ApplicationRecord
     presence: true,
     uniqueness: true,
     safe_path: true,
-    writable: true,
+    read_write: true,
     disjoint_library_folder: true,
     if: -> { storage_service == "filesystem" }
 

@@ -148,7 +148,11 @@ pt:
             path:
               cannot_be_contained:
               cannot_contain:
+              non_readable:
+              non_readable_subfolder:
               non_writable:
+              non_writable_subfolder:
+              not_a_directory:
               not_found:
               unsafe:
         model:

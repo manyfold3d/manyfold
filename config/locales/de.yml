@@ -148,7 +148,11 @@ de:
             path:
               cannot_be_contained: kann nicht innerhalb einer anderen Bibliothek liegen
               cannot_contain: kann keine anderen Bibliotheken enthalten
+              non_readable:
+              non_readable_subfolder:
               non_writable: User muss Schreibrechte haben
+              non_writable_subfolder:
+              not_a_directory:
               not_found: konnte nicht auf der Festplatte gefunden werden
               unsafe: kann kein privilegierter Systempfad sein
         model:

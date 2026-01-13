@@ -20,7 +20,8 @@ RSpec.describe Library do
     it "is invalid if a bad path is specified" do # rubocop:todo RSpec/MultipleExpectations
       l = build(:library, path: "/nope", create_path_if_not_on_disk: "0")
       expect(l).not_to be_valid
-      expect(l.errors[:path].first).to eq "must be writable"
+      expect(l.errors[:path]).to include "must be writable"
+      expect(l.errors[:path]).to include "must be readable"
     end
 
     it "has many models" do
@@ -74,6 +75,46 @@ RSpec.describe Library do
       library = build(:library, path: path)
       library.valid?
       expect(library.errors[:path]).to include "must be writable"
+    end
+
+    it "disallows folders that can't be read" do
+      path = "/tmp/library"
+      allow(FileTest).to receive(:readable?).with(path).and_return(false)
+      library = build(:library, path: path)
+      library.valid?
+      expect(library.errors[:path]).to include "must be readable"
+    end
+
+    it "disallows paths that exist but are files" do
+      path = "/tmp/actually_a_file"
+      allow(FileTest).to receive(:directory?).with(path).and_return(false)
+      library = build(:library, path: path)
+      library.valid?
+      expect(library.errors[:path]).to include "is not a directory"
+    end
+
+    context "with inaccessible subfolders" do
+      before do
+        allow(File).to receive(:exist?).with("/tmp/library").and_return(true)
+        allow(FileTest).to receive(:directory?).with("/tmp/library").and_return(true)
+        allow(FileTest).to receive(:readable?).with("/tmp/library").and_return(true)
+        allow(FileTest).to receive(:writable?).with("/tmp/library").and_return(true)
+        allow(Dir).to receive(:entries).with("/tmp/library").and_return([".", "..", "non_readable"])
+        allow(FileTest).to receive(:readable?).with("/tmp/library/non_readable").and_return(false)
+        allow(FileTest).to receive(:writable?).with("/tmp/library/non_readable").and_return(false)
+      end
+
+      it "reports that subfolders aren't readable" do
+        library = build(:library, path: "/tmp/library")
+        library.valid?
+        expect(library.errors[:path]).to include "includes non-readable subfolders"
+      end
+
+      it "reports that subfolders aren't writable" do
+        library = build(:library, path: "/tmp/library")
+        library.valid?
+        expect(library.errors[:path]).to include "includes non-writeable subfolders"
+      end
     end
 
     it "normalizes paths" do

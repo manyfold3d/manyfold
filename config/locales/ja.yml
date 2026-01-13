@@ -148,7 +148,11 @@ ja:
             path:
               cannot_be_contained: 他のライブラリの中にあることはできない
               cannot_contain: 他のライブラリの中にあることはできない
+              non_readable:
+              non_readable_subfolder:
               non_writable: 書き込み可能でなければならない
+              non_writable_subfolder:
+              not_a_directory:
               not_found: ディスクに見つかりませんでした
               unsafe: 特権システムパスであってはならない
         model:
