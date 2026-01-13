@@ -1747,15 +1747,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/form@npm:^4.1.1":
-  version: 4.1.1
-  resolution: "@uppy/form@npm:4.1.1"
+"@uppy/form@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@uppy/form@npm:5.1.0"
   dependencies:
-    "@uppy/utils": ^6.1.1
+    "@uppy/utils": ^7.1.4
     get-form-data: ^3.0.0
   peerDependencies:
-    "@uppy/core": ^4.4.1
-  checksum: c42f12037e4516953aecd5dfe4486ce51d55d7a0ddade51189664e0488173deb779393fd4f9dc19c2cd7b4b8d615ad7b823d01e6f7a20cec9e4bb46fb64f38b1
+    "@uppy/core": ^5.2.0
+  checksum: 3804c0896a28696ee53b6b8e273162cc07d2cd033c9bff48cf0b71cdf3044879a19d367960f505cf3630875711c9b2525e305b2a336564b8c8b0bc926298880e
   languageName: node
   linkType: hard
 
@@ -1868,6 +1868,16 @@ __metadata:
     lodash: ^4.17.21
     preact: ^10.5.13
   checksum: 3e598eb6ce95670c85d49b04c1bb0d89fd71425e03d09281323fe79b81093dc504dd1f59fc0405a4bfdbc6b10cc31c64f74cfa452c869021ec9ec7ca45f83608
+  languageName: node
+  linkType: hard
+
+"@uppy/utils@npm:^7.1.4":
+  version: 7.1.5
+  resolution: "@uppy/utils@npm:7.1.5"
+  dependencies:
+    lodash: ^4.17.21
+    preact: ^10.5.13
+  checksum: 29906f38a975e87514d18d91cc6e84ec851e05fd8bddf42fd490117d145f98f2ed7b9151ec339c89f4e23e8b0e9eef3698f224b08492a54725d80edb3e02007d
   languageName: node
   linkType: hard
 
@@ -4632,7 +4642,7 @@ __metadata:
     "@typescript-eslint/parser": ^8.53.0
     "@uppy/core": ^4.4.5
     "@uppy/dashboard": ^4.3.4
-    "@uppy/form": ^4.1.1
+    "@uppy/form": ^5.1.0
     "@uppy/locales": ^4.5.2
     "@uppy/tus": ^4.2.2
     "@uppy/utils": ^6.1.4
