@@ -68,7 +68,7 @@ RSpec.describe ModelFile do
   end
 
   it "finds duplicate files using digest" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-    library = create(:library, path: Rails.root.join("/tmp"))
+    library = create(:library, path: Rails.root.join("storage"))
     model = create(:model, library: library, path: "model")
     part1 = create(:model_file, model: model, filename: "same.obj", digest: "1234")
     part2 = create(:model_file, model: model, filename: "same.stl", digest: "1234")
@@ -79,7 +79,7 @@ RSpec.describe ModelFile do
   end
 
   it "does not flag duplicates for nil digests" do # rubocop:todo RSpec/ExampleLength
-    library = create(:library, path: Rails.root.join("/tmp"))
+    library = create(:library, path: Rails.root.join("storage"))
     model = create(:model, library: library, path: "model1")
     part1 = create(:model_file, model: model, filename: "nil.obj", digest: nil)
     create(:model_file, model: model, filename: "nil.stl", digest: nil)
@@ -87,7 +87,7 @@ RSpec.describe ModelFile do
   end
 
   it "does not flag duplicates for zero-length files" do # rubocop:todo RSpec/ExampleLength
-    library = create(:library, path: Rails.root.join("/tmp"))
+    library = create(:library, path: Rails.root.join("storage"))
     model = create(:model, library: library, path: "model1")
     part1 = create(:model_file, model: model, filename: "same.obj", digest: "1234")
     create(:model_file, model: model, filename: "same.stl", digest: "1234")
