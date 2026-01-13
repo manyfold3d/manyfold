@@ -148,7 +148,11 @@ en:
             path:
               cannot_be_contained: cannot be inside another library
               cannot_contain: cannot contain other libraries
+              non_readable: must be readable
+              non_readable_subfolder: includes non-readable subfolders
               non_writable: must be writable
+              non_writable_subfolder: includes non-writeable subfolders
+              not_a_directory: is not a directory
               not_found: could not be found on disk
               unsafe: cannot be a privileged system path
         model:
