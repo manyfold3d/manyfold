@@ -525,7 +525,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dimforge/rapier3d-compat@npm:^0.12.0":
+"@dimforge/rapier3d-compat@npm:~0.12.0":
   version: 0.12.0
   resolution: "@dimforge/rapier3d-compat@npm:0.12.0"
   checksum: 86cb3b39925673761aa5dca5429ca44e0c7ac8072472cca925e2ca732be695292e318501a2ab39110be1549d4f143a0af0620246657f76570c8cdd1b0b3df36c
@@ -1404,18 +1404,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/three@npm:^0.176.0":
-  version: 0.176.0
-  resolution: "@types/three@npm:0.176.0"
+"@types/three@npm:^0.182.0":
+  version: 0.182.0
+  resolution: "@types/three@npm:0.182.0"
   dependencies:
-    "@dimforge/rapier3d-compat": ^0.12.0
+    "@dimforge/rapier3d-compat": ~0.12.0
     "@tweenjs/tween.js": ~23.1.3
     "@types/stats.js": "*"
-    "@types/webxr": "*"
+    "@types/webxr": ">=0.5.17"
     "@webgpu/types": "*"
     fflate: ~0.8.2
-    meshoptimizer: ~0.18.1
-  checksum: 84821e0c7ddf5cc7e7a17561631f4d6e91fc7377898ce4402f69f24dfce08ea875b527620fb3d2f9772d0440cbbee6da97819cdb3a63f368aac284b8a10c9cbe
+    meshoptimizer: ~0.22.0
+  checksum: 0a5d6bcf25a9492506aa8a0ed7d880fe032017712af45455fa3ea29137a9bfeaec475558209e6a57894b39d5cd37caabefac36ec909a40b7750fa45b87b109c2
   languageName: node
   linkType: hard
 
@@ -1426,14 +1426,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/webxr@npm:*":
-  version: 0.5.2
-  resolution: "@types/webxr@npm:0.5.2"
-  checksum: e3387c3d64c140557796a4bcececd82d912a88f73ff8e34bf51c04d44078390fbe4756b256b2844b1ae4664a883d46f96bb40913d21f12e9ab484d9d8dbc68c3
-  languageName: node
-  linkType: hard
-
-"@types/webxr@npm:^0.5.24":
+"@types/webxr@npm:>=0.5.17, @types/webxr@npm:^0.5.24":
   version: 0.5.24
   resolution: "@types/webxr@npm:0.5.24"
   checksum: 3c87ea6a06cabb3023dc353363733763237c9d8f45d0402b07074823575805830133c0de00d34b4f73e9a6ba9a2ed2de204f62b33f6d820e14970a61a3333c36
@@ -4626,7 +4619,7 @@ __metadata:
     "@types/jquery": ^3.5.33
     "@types/lodash": ^4.17.23
     "@types/node": ^20.17.50
-    "@types/three": ^0.176.0
+    "@types/three": ^0.182.0
     "@types/webpack-env": ^1.18.8
     "@types/webxr": ^0.5.24
     "@typescript-eslint/parser": ^8.53.0
@@ -4687,10 +4680,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"meshoptimizer@npm:~0.18.1":
-  version: 0.18.1
-  resolution: "meshoptimizer@npm:0.18.1"
-  checksum: 101dbed8abd4cf167cdb7a0bc13db90dd0743332c689e43b18cc5254d238f0766750752432401fa63dc7e9e32399ef68daacf48f0d89db1484042c1761c7362d
+"meshoptimizer@npm:~0.22.0":
+  version: 0.22.0
+  resolution: "meshoptimizer@npm:0.22.0"
+  checksum: ee5cab07941f9866fca394ac7507f936542c2073c702293e588f4480d0bbcc85750be85f780da3127532bc00b40a07b7e06df31e6c519ad752e63f099935104d
   languageName: node
   linkType: hard
 
