@@ -11,7 +11,7 @@ export default class extends Controller {
   connect (): void {
     this.carousel = new Carousel(this.element, { /* eslint no-new: 0 */
       interval: 5000,
-      pause: this.paused
+      pause: false
     })
 
     this.element.addEventListener('slid.bs.carousel', function (event) {
