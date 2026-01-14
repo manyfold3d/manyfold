@@ -36,6 +36,7 @@ export class CanvasProxy extends EventDispatcher {
 
   handleEvent (event: Event): void {
     event.preventDefault = function () { }
+    // @ts-expect-error
     super.dispatchEvent(event)
   }
 
