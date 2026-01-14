@@ -116,17 +116,17 @@ export class OffscreenRenderer {
       // Create loader
       const loader = new LoaderClass()
       // Set up DRACO loader for GLTF
-      if (LoaderClass === GLTFLoader) {
+      if (loader instanceof GLTFLoader) {
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
         loader.setDRACOLoader(dracoLoader)
-      } else if (LoaderClass === DRACOLoader) {
+      } else if (loader instanceof DRACOLoader) {
         loader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
-      } else if (LoaderClass === LDrawLoader) {
+      } else if (loader instanceof LDrawLoader) {
         loader.setConditionalLineMaterial(LDrawConditionalLineMaterial)
         loader.setPartsLibraryPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/')
         await loader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/LDConfig.ldr')
-      } else if (LoaderClass === Rhino3dmLoader) {
+      } else if (loader instanceof Rhino3dmLoader) {
         loader.setLibraryPath('https://cdn.jsdelivr.net/npm/rhino3dm@8.17.0/')
       }
       // Load
