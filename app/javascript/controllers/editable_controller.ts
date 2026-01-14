@@ -21,8 +21,7 @@ export default class extends Controller {
   initialText: string | null = null
 
   onKeypress (event): void {
-    if (event.which === 13)
-      event.preventDefault()
+    if (event.which === 13) { event.preventDefault() }
   }
 
   onFocus (): void {

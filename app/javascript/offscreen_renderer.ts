@@ -12,7 +12,7 @@ import { TDSLoader } from 'three/addons/loaders/TDSLoader.js'
 import { FBXLoader } from 'three/addons/loaders/FBXLoader.js'
 import { GCodeLoader } from 'three/addons/loaders/GCodeLoader.js'
 import { LDrawLoader } from 'three/addons/loaders/LDrawLoader.js'
-import { Rhino3dmLoader } from 'three/addons/loaders/3DMLoader.js';
+import { Rhino3dmLoader } from 'three/addons/loaders/3DMLoader.js'
 
 import { OrbitControls } from './src/orbit_controls.js'
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
@@ -171,7 +171,7 @@ export class OffscreenRenderer {
     if (object == null) { return }
     const overwriteMaterials = this.settings.renderStyle !== 'original'
     object.traverse(function (node: THREE.Mesh) {
-      if (node.isMesh === true) {
+      if (node.isMesh) {
         if (node.material == null || overwriteMaterials) {
           node.material = material
         }

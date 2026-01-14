@@ -61,7 +61,7 @@ export class ObjectPreview {
   }
 
   disconnect (): void {
-    this.worker.terminate();
+    this.worker.terminate()
   }
 
   onIntersectionChanged (entries, observer): void {

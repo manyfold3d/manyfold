@@ -44,6 +44,6 @@ export class CanvasProxy extends EventDispatcher {
     return this
   }
 
-  setPointerCapture (): void {}
-  releasePointerCapture (): void {}
+  setPointerCapture (): void { }
+  releasePointerCapture (): void { }
 }
