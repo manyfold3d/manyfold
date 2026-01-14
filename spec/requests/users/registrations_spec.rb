@@ -18,7 +18,7 @@ RSpec.describe "Users::Registrations" do
     {
       user: {
         email: Faker::Internet.email,
-        username: Faker::Internet.username(specifier: 3, separators: []),
+        username: Faker::Internet.username(specifier: 1..32, separators: []),
         password: old_password,
         password_confirmation: old_password
       }
@@ -368,7 +368,7 @@ RSpec.describe "Users::Registrations" do
               creators_attributes: {
                 "0" => {
                   name: Faker::Name.name,
-                  slug: Faker::Internet.username(specifier: 3, separators: [])
+                  slug: Faker::Internet.username(specifier: 1..32, separators: [])
                 }
               }
             }
