@@ -68,7 +68,9 @@ export default class extends Controller {
     this.uppy.on('file-removed', this.updateResultingModelState.bind(this))
     this.element.closest('form')?.addEventListener('formdata', (event) => {
       this.uppy?.getFiles().forEach((f, index) => {
+        // @ts-expect-error
         if (f.tus?.uploadUrl != null) {
+          // @ts-expect-error
           event.formData.set(`model[file][${index}][id]`, f.tus?.uploadUrl)
           if (f.name != null) { event.formData.set(`model[file][${index}][name]`, f.name) }
         }
