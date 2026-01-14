@@ -269,7 +269,7 @@ export class OffscreenRenderer {
   onResize (width, height, pixelRatio): void {
     this.canvas.resize(width, height)
     this.renderer.setSize(width, height, false)
-    this.composer.setSize(width, height, false)
+    this.composer.setSize(width, height)
     // Update camera
     this.camera.aspect = width / height
     this.camera.updateProjectionMatrix()
