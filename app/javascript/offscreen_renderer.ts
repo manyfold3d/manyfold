@@ -43,7 +43,7 @@ export class OffscreenRenderer {
   renderer: THREE.WebGLRenderer
   settings: DOMStringMap
   scene: THREE.Scene
-  composer: THREE.EffectComposer
+  composer: EffectComposer
   camera: THREE.PerspectiveCamera
   controls: OrbitControls
   gridHelper: THREE.GridHelper
