@@ -1367,12 +1367,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:~22.0":
-  version: 22.0.3
-  resolution: "@types/node@npm:22.0.3"
+"@types/node@npm:~25.0":
+  version: 25.0.8
+  resolution: "@types/node@npm:25.0.8"
   dependencies:
-    undici-types: ~6.11.1
-  checksum: bde96612025eaf3f2c17fc9a16ff4539ac16d6f4fa76d01efc9370ec780f15241caf252d6f2923a6d6bb0ba4f0e220f2b478edd92f54567c0356971cd6098159
+    undici-types: ~7.16.0
+  checksum: 26348643a121bd07048dad55b60fcda5ba2e6661708ce88b8ec13a29521d0d4bd5f374d11be2d3cec9ae306b98a245b2ae226b9166c997362b788c0b032ff333
   languageName: node
   linkType: hard
 
@@ -4618,7 +4618,7 @@ __metadata:
     "@types/i18n-js": ^4.0.1
     "@types/jquery": ^3.5.33
     "@types/lodash": ^4.17.23
-    "@types/node": ~22.0
+    "@types/node": ~25.0
     "@types/three": ^0.182.0
     "@types/webpack-env": ^1.18.8
     "@types/webxr": ^0.5.24
@@ -6576,10 +6576,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~6.11.1":
-  version: 6.11.1
-  resolution: "undici-types@npm:6.11.1"
-  checksum: d7fc11bded93bc55ef3b88464e856ab061a747cf50ef2eff5df5ba3be18b9fcafe60e1b36a8c99e28aac2eade12891d32a504f2a32422452c44662e598e3b188
+"undici-types@npm:~7.16.0":
+  version: 7.16.0
+  resolution: "undici-types@npm:7.16.0"
+  checksum: 1ef68fc6c5bad200c8b6f17de8e5bc5cfdcadc164ba8d7208cd087cfa8583d922d8316a7fd76c9a658c22b4123d3ff847429185094484fbc65377d695c905857
   languageName: node
   linkType: hard
 
