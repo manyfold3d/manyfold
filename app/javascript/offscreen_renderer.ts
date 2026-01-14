@@ -114,6 +114,7 @@ export class OffscreenRenderer {
     const LoaderClass: THREE.Loader | null = loaders[this.settings.format as string]
     if (LoaderClass !== null) {
       // Create loader
+      // @ts-expect-error
       const loader = new LoaderClass()
       // Set up DRACO loader for GLTF
       if (loader instanceof GLTFLoader) {
