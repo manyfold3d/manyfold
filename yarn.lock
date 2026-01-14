@@ -1367,12 +1367,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:~22.0":
-  version: 22.0.3
-  resolution: "@types/node@npm:22.0.3"
+"@types/node@npm:~24.0":
+  version: 24.0.15
+  resolution: "@types/node@npm:24.0.15"
   dependencies:
-    undici-types: ~6.11.1
-  checksum: bde96612025eaf3f2c17fc9a16ff4539ac16d6f4fa76d01efc9370ec780f15241caf252d6f2923a6d6bb0ba4f0e220f2b478edd92f54567c0356971cd6098159
+    undici-types: ~7.8.0
+  checksum: 27f31e6976587efdfd13c0024703d7e11e6a27a6af48d488c6e5662733c9e8d47ac059e38cd9d491425f68f0c5e8e2bc060859b0b66afe79af0697acb0c25e4d
   languageName: node
   linkType: hard
 
@@ -4618,7 +4618,7 @@ __metadata:
     "@types/i18n-js": ^4.0.1
     "@types/jquery": ^3.5.33
     "@types/lodash": ^4.17.23
-    "@types/node": ~22.0
+    "@types/node": ~24.0
     "@types/three": ^0.182.0
     "@types/webpack-env": ^1.18.8
     "@types/webxr": ^0.5.24
@@ -4652,7 +4652,7 @@ __metadata:
     threejs-webworker-3mf-loader: "https://github.com/manyfold3d/threejs-webworker-3mf-loader"
     tom-select: ^2.4.3
     ts-standard: ^12.0.2
-    typescript: ~5.6.0
+    typescript: ~5.9.3
   languageName: unknown
   linkType: soft
 
@@ -6525,23 +6525,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:~5.6.0":
-  version: 5.6.3
-  resolution: "typescript@npm:5.6.3"
+"typescript@npm:~5.9.3":
+  version: 5.9.3
+  resolution: "typescript@npm:5.9.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: ba302f8822777ebefb28b554105f3e074466b671e7444ec6b75dadc008a62f46f373d9e57ceced1c433756d06c8b7dc569a7eefdf3a9573122a49205ff99021a
+  checksum: 0d0ffb84f2cd072c3e164c79a2e5a1a1f4f168e84cb2882ff8967b92afe1def6c2a91f6838fb58b168428f9458c57a2ba06a6737711fdd87a256bbe83e9a217f
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@~5.6.0#~builtin<compat/typescript>":
-  version: 5.6.3
-  resolution: "typescript@patch:typescript@npm%3A5.6.3#~builtin<compat/typescript>::version=5.6.3&hash=8c6c40"
+"typescript@patch:typescript@~5.9.3#~builtin<compat/typescript>":
+  version: 5.9.3
+  resolution: "typescript@patch:typescript@npm%3A5.9.3#~builtin<compat/typescript>::version=5.9.3&hash=8c6c40"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: f6947c263dc67ea8429eefc3921683320f901a07d9ef29a1101a34f5b30108343b5a29aa77a581217a17f2616091ae7bd3043b304cf37f37d5e128e19296c08b
+  checksum: 8bb8d86819ac86a498eada254cad7fb69c5f74778506c700c2a712daeaff21d3a6f51fd0d534fe16903cb010d1b74f89437a3d02d4d0ff5ca2ba9a4660de8497
   languageName: node
   linkType: hard
 
@@ -6576,10 +6576,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~6.11.1":
-  version: 6.11.1
-  resolution: "undici-types@npm:6.11.1"
-  checksum: d7fc11bded93bc55ef3b88464e856ab061a747cf50ef2eff5df5ba3be18b9fcafe60e1b36a8c99e28aac2eade12891d32a504f2a32422452c44662e598e3b188
+"undici-types@npm:~7.8.0":
+  version: 7.8.0
+  resolution: "undici-types@npm:7.8.0"
+  checksum: 59521a5b9b50e72cb838a29466b3557b4eacbc191a83f4df5a2f7b156bc8263072b145dc4bb8ec41da7d56a7e9b178892458da02af769243d57f801a50ac5751
   languageName: node
   linkType: hard
 
