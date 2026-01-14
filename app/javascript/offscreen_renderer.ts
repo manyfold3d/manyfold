@@ -1,5 +1,5 @@
 import * as Comlink from 'comlink'
-import 'src/comlink_event_handler'
+import './src/comlink_event_handler'
 
 import * as THREE from 'three'
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js'
@@ -14,12 +14,12 @@ import { GCodeLoader } from 'three/addons/loaders/GCodeLoader.js'
 import { LDrawLoader } from 'three/addons/loaders/LDrawLoader.js'
 import { Rhino3dmLoader } from 'three/addons/loaders/3DMLoader.js';
 
-import { OrbitControls } from 'src/orbit_controls.js'
+import { OrbitControls } from './src/orbit_controls.js'
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
 import { SSAOPass } from 'three/addons/postprocessing/SSAOPass.js'
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js'
-import { CanvasProxy } from 'src/canvas_proxy'
+import { CanvasProxy } from './src/canvas_proxy'
 import { LDrawConditionalLineMaterial } from 'three/addons/materials/LDrawConditionalLineMaterial.js'
 
 const loaders = {
