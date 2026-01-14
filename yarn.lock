@@ -71,9 +71,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/eslint-parser@npm:^7.28.5":
-  version: 7.28.5
-  resolution: "@babel/eslint-parser@npm:7.28.5"
+"@babel/eslint-parser@npm:^7.28.6":
+  version: 7.28.6
+  resolution: "@babel/eslint-parser@npm:7.28.6"
   dependencies:
     "@nicolo-ribaudo/eslint-scope-5-internals": 5.1.1-v1
     eslint-visitor-keys: ^2.1.0
@@ -81,7 +81,7 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.11.0
     eslint: ^7.5.0 || ^8.0.0 || ^9.0.0
-  checksum: 8daaf6f24d3f78c18bc4cf2bf1bedda3d829f330f385b85acf630adde3de7a703abf0d2615afea09244caa713dded01aa3c00f3637ea70568b2e8c547067fb99
+  checksum: 6d789f16842c6f47a6a15f8159ef822e4bf75e8d15f85be2a813098ca4ba49703590ff2cdd56c78cc8816f5779b687cd6245ada4049c25e923e8e40132ace501
   languageName: node
   linkType: hard
 
@@ -4613,7 +4613,7 @@ __metadata:
   resolution: "manyfold@workspace:."
   dependencies:
     "@babel/core": ^7
-    "@babel/eslint-parser": ^7.28.5
+    "@babel/eslint-parser": ^7.28.6
     "@babel/preset-typescript": ^7.28.5
     "@hotwired/stimulus": ^3.2.2
     "@hotwired/turbo-rails": ^8.0.20
