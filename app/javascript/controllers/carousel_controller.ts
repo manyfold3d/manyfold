@@ -6,7 +6,7 @@ import { Carousel } from 'bootstrap'
 export default class extends Controller {
   paused = false
   manual = false
-  carousel: Carousel = null
+  carousel: Carousel | null = null
 
   connect (): void {
     this.carousel = new Carousel(this.element, { /* eslint no-new: 0 */
