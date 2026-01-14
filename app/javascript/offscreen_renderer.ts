@@ -124,6 +124,7 @@ export class OffscreenRenderer {
         loader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
       } else if (loader instanceof LDrawLoader) {
         loader.setConditionalLineMaterial(LDrawConditionalLineMaterial)
+        // @ts-expect-error
         loader.setPartsLibraryPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/')
         await loader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/LDConfig.ldr')
       } else if (loader instanceof Rhino3dmLoader) {
