@@ -145,7 +145,7 @@ export class OffscreenRenderer {
   }
 
   onLoad (model): void {
-    let material = new THREE.MeshLambertMaterial({
+    let material: THREE.Material = new THREE.MeshLambertMaterial({
       flatShading: true,
       color: (this.settings.objectColour ?? '#cccccc')
     })
