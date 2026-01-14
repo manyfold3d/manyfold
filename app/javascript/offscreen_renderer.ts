@@ -1,5 +1,5 @@
 import * as Comlink from 'comlink'
-import 'src/comlink_event_handler'
+import './src/comlink_event_handler'
 
 import * as THREE from 'three'
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js'
@@ -12,14 +12,14 @@ import { TDSLoader } from 'three/addons/loaders/TDSLoader.js'
 import { FBXLoader } from 'three/addons/loaders/FBXLoader.js'
 import { GCodeLoader } from 'three/addons/loaders/GCodeLoader.js'
 import { LDrawLoader } from 'three/addons/loaders/LDrawLoader.js'
-import { Rhino3dmLoader } from 'three/addons/loaders/3DMLoader.js';
+import { Rhino3dmLoader } from 'three/addons/loaders/3DMLoader.js'
 
-import { OrbitControls } from 'src/orbit_controls.js'
+import { OrbitControls } from './src/orbit_controls.js'
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
 import { SSAOPass } from 'three/addons/postprocessing/SSAOPass.js'
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js'
-import { CanvasProxy } from 'src/canvas_proxy'
+import { CanvasProxy } from './src/canvas_proxy'
 import { LDrawConditionalLineMaterial } from 'three/addons/materials/LDrawConditionalLineMaterial.js'
 
 const loaders = {
@@ -43,7 +43,7 @@ export class OffscreenRenderer {
   renderer: THREE.WebGLRenderer
   settings: DOMStringMap
   scene: THREE.Scene
-  composer: THREE.EffectComposer
+  composer: EffectComposer
   camera: THREE.PerspectiveCamera
   controls: OrbitControls
   gridHelper: THREE.GridHelper
@@ -114,19 +114,21 @@ export class OffscreenRenderer {
     const LoaderClass: THREE.Loader | null = loaders[this.settings.format as string]
     if (LoaderClass !== null) {
       // Create loader
+      // @ts-expect-error
       const loader = new LoaderClass()
       // Set up DRACO loader for GLTF
-      if (LoaderClass === GLTFLoader) {
+      if (loader instanceof GLTFLoader) {
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
         loader.setDRACOLoader(dracoLoader)
-      } else if (LoaderClass === DRACOLoader) {
+      } else if (loader instanceof DRACOLoader) {
         loader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
-      } else if (LoaderClass === LDrawLoader) {
+      } else if (loader instanceof LDrawLoader) {
         loader.setConditionalLineMaterial(LDrawConditionalLineMaterial)
+        // @ts-expect-error
         loader.setPartsLibraryPath('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/')
         await loader.preloadMaterials('https://raw.githubusercontent.com/gkjohnson/ldraw-parts-library/master/complete/ldraw/LDConfig.ldr')
-      } else if (LoaderClass === Rhino3dmLoader) {
+      } else if (loader instanceof Rhino3dmLoader) {
         loader.setLibraryPath('https://cdn.jsdelivr.net/npm/rhino3dm@8.17.0/')
       }
       // Load
@@ -145,7 +147,7 @@ export class OffscreenRenderer {
   }
 
   onLoad (model): void {
-    let material = new THREE.MeshLambertMaterial({
+    let material: THREE.Material = new THREE.MeshLambertMaterial({
       flatShading: true,
       color: (this.settings.objectColour ?? '#cccccc')
     })
@@ -170,7 +172,7 @@ export class OffscreenRenderer {
     if (object == null) { return }
     const overwriteMaterials = this.settings.renderStyle !== 'original'
     object.traverse(function (node: THREE.Mesh) {
-      if (node.isMesh === true) {
+      if (node.isMesh) {
         if (node.material == null || overwriteMaterials) {
           node.material = material
         }
@@ -269,7 +271,7 @@ export class OffscreenRenderer {
   onResize (width, height, pixelRatio): void {
     this.canvas.resize(width, height)
     this.renderer.setSize(width, height, false)
-    this.composer.setSize(width, height, false)
+    this.composer.setSize(width, height)
     // Update camera
     this.camera.aspect = width / height
     this.camera.updateProjectionMatrix()

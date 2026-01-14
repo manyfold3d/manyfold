@@ -11,17 +11,17 @@ $bootstrap-icons-font-dir: "../fonts" !default;
 $ra-font-path: "../fonts" !default;
 @import '@infinizhen/rpg-awesome-continued/scss/rpg-awesome-continued';
 
-@import 'src/layout';
-@import 'src/libraries';
-@import 'src/models';
-@import 'src/model_files';
-@import 'src/effects';
-@import 'src/altcha';
-@import 'src/avatars';
-@import 'src/forms';
+@import './src/layout';
+@import './src/libraries';
+@import './src/models';
+@import './src/model_files';
+@import './src/effects';
+@import './src/altcha';
+@import './src/avatars';
+@import './src/forms';
 
 @import 'tom-select/dist/css/tom-select.bootstrap5';
-@import 'src/tom-select-prefers-color-scheme-dark';
+@import './src/tom-select-prefers-color-scheme-dark';
 
 @import '@uppy/core/dist/style.min';
 @import '@uppy/dashboard/dist/style.min';
