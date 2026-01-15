@@ -4,7 +4,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [
-      "es6",
+      "es2022",
       "dom",
       "dom.iterable"
     ],
@@ -13,7 +13,7 @@
     "baseUrl": ".",
     "sourceMap": true,
     "strictNullChecks": true,
-    "target": "es6",
+    "target": "es2022",
     "noEmit": true,
     "types": [
       "./app/javascript/src/window_extensions",
