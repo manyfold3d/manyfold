@@ -107,18 +107,7 @@ class GroupsController < ApplicationController
     params.values.each do |param|
       if param.is_a?(ActionController::Parameters) && param.has_key?("memberships_attributes")
         param["memberships_attributes"].transform_values! do |value|
-          if value.has_key? "user_id"
-            user = case value["user_id"]
-            when /[[:digit:]]+/
-              # This should find the same ID, but will check the policy scope
-              policy_scope(User).find(value["user_id"].to_i)
-            when ""
-              raise ActiveRecord::RecordNotFound
-            else
-              policy_scope(User).find_by!(username: value["user_id"])
-            end
-            value["user_id"] = user&.id
-          end
+          value["user_id"] = match_user(value["user_id"])&.id if value.has_key? "user_id"
           value
         rescue ActiveRecord::RecordNotFound
           nil

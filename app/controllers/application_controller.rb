@@ -159,4 +159,17 @@ class ApplicationController < ActionController::Base
   rescue Errno::ENOENT
     head :internal_server_error
   end
+
+  def match_user(value)
+    raise ActiveRecord::RecordNotFound if value.blank?
+    query = case value
+    when /[[:digit:]]+/
+      {id: value.to_i}
+    when URI::MailTo::EMAIL_REGEXP
+      {email: value}
+    else
+      {username: value}
+    end
+    policy_scope(User).find_by! query
+  end
 end
