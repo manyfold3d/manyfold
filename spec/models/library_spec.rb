@@ -104,9 +104,14 @@ RSpec.describe Library do
         allow(FileTest).to receive(:directory?).with("/tmp/library").and_return(true)
         allow(FileTest).to receive(:readable?).with("/tmp/library").and_return(true)
         allow(FileTest).to receive(:writable?).with("/tmp/library").and_return(true)
-        allow(Dir).to receive(:entries).with("/tmp/library").and_return([".", "..", "non_readable"])
+        allow(Dir).to receive(:glob).with("/tmp/library").and_return(["/tmp/library"]) # Used in case check before checking subfolders
+        allow(Dir).to receive(:glob).with("/tmp/library/*").and_return(["/tmp/library/non_readable", "/tmp/library/file"])
+        allow(FileTest).to receive(:directory?).with("/tmp/library/non_readable").and_return(true)
         allow(FileTest).to receive(:readable?).with("/tmp/library/non_readable").and_return(false)
         allow(FileTest).to receive(:writable?).with("/tmp/library/non_readable").and_return(false)
+        allow(FileTest).to receive(:directory?).with("/tmp/library/file").and_return(false)
+        allow(FileTest).to receive(:readable?).with("/tmp/library/file").and_return(false)
+        allow(FileTest).to receive(:writable?).with("/tmp/library/file").and_return(false)
       end
 
       it "reports that subfolders aren't readable" do

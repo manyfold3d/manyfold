@@ -6,10 +6,12 @@ class ReadWriteValidator < ActiveModel::EachValidator
     record.errors.add attribute, :non_writable unless FileTest.writable?(value)
     # Make sure subfolder permissions are OK as well
     if File.exist?(value) && record.errors.empty?
-      (Dir.entries(value) - [".", ".."]).each do |subfolder|
-        path = File.join(value, subfolder)
-        record.errors.add attribute, :non_readable_subfolder unless FileTest.readable?(path)
-        record.errors.add attribute, :non_writable_subfolder unless FileTest.writable?(path)
+      # Use Dir.glob because it leaves out hidden files
+      Dir.glob(File.join(value, "*")).each do |path|
+        if FileTest.directory?(path)
+          record.errors.add attribute, :non_readable_subfolder unless FileTest.readable?(path)
+          record.errors.add attribute, :non_writable_subfolder unless FileTest.writable?(path)
+        end
       end
     end
   end
