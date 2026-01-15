@@ -17,9 +17,9 @@ class Library < ApplicationRecord
   after_commit :register_storage, on: :create
 
   normalizes :path, with: ->(path) do
-    Pathname.new(path).realpath.to_s
+    Pathname.new(path.strip).realpath.to_s
   rescue Errno::ENOENT, Errno::EACCES # carry on, we validate these later
-    path
+    path.strip
   end
 
   validates :storage_service, presence: true, inclusion: STORAGE_SERVICES
