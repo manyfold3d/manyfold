@@ -8,6 +8,7 @@ shared_examples "Permittable" do |object_class|
     let(:object) { create(symbol, owner: owner) }
 
     before do
+      allow(SiteSettings).to receive(:default_viewer_role).and_return(:private)
       object.try(:license=, "MIT")
       object.try(:creator=, create(:creator))
       object.grant_permission_to("edit", editor)
@@ -25,31 +26,40 @@ shared_examples "Permittable" do |object_class|
         }.to change(object, :public?).from(false).to(true)
       end
 
-      it "grants permissions to roles" do
+      it "grants permissions to public role" do
         expect {
           put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: "role::public", permission: "view"}}}}
         }.to change { object.grants_permission_to?("view", nil) }.from(false).to(true)
       end
 
-      it "grants permissions to usernames" do
+      it "grants permissions to member role" do
+        expect {
+          put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: "role::member", permission: "view"}}}}
+        }.to change { object.grants_permission_to?("view", Role.find_by!(name: "member")) }.from(false).to(true)
+      end
+
+      it "grants permissions to usernames" do # rubocop:disable RSpec/MultipleExpectations
         u = create(:user)
         expect {
           put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: u.username, permission: "view"}}}}
         }.to change { object.grants_permission_to?("view", u) }.from(false).to(true)
+        expect(object.reload).not_to be_public
       end
 
-      it "grants permissions to users by email" do
+      it "grants permissions to users by email" do # rubocop:disable RSpec/MultipleExpectations
         u = create(:user)
         expect {
           put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: u.email, permission: "view"}}}}
         }.to change { object.grants_permission_to?("view", u) }.from(false).to(true)
+        expect(object.reload).not_to be_public
       end
 
-      it "grants permissions to groups" do
+      it "grants permissions to groups" do # rubocop:disable RSpec/MultipleExpectations
         group = create(:group)
         expect {
           put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: group.typed_id, permission: "view"}}}}
         }.to change { object.grants_permission_to?("view", group) }.from(false).to(true)
+        expect(object.reload).not_to be_public
       end
     end
 
