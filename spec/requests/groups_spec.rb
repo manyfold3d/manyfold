@@ -89,6 +89,12 @@ RSpec.describe "Groups", :after_first_run do
         expect(group.reload.members).to include(user)
       end
 
+      it "adds members by email" do
+        id_params = {group: {memberships_attributes: {"0" => {user_id: user.email}}}}
+        patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: id_params
+        expect(group.reload.members).to include(user)
+      end
+
       it "removes memberships" do
         group.members << user
         remove_params = {group: {memberships_attributes: {"0" => {id: group.memberships.last.id, _destroy: "1"}}}}

@@ -165,6 +165,8 @@ class ApplicationController < ActionController::Base
     query = case value
     when /[[:digit:]]+/
       {id: value.to_i}
+    when URI::MailTo::EMAIL_REGEXP
+      {email: value}
     else
       {username: value}
     end
