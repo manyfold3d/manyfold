@@ -17,6 +17,11 @@ RSpec.describe Library do
       expect(build(:library, path: @library_path)).to be_valid # rubocop:todo RSpec/InstanceVariable
     end
 
+    it "removes whitespace from paths" do
+      library = create(:library, path: " storage ")
+      expect(library.path).to eq Rails.root.join("storage").to_s
+    end
+
     it "is invalid if a bad path is specified" do # rubocop:todo RSpec/MultipleExpectations
       l = build(:library, path: "/nope", create_path_if_not_on_disk: "0")
       expect(l).not_to be_valid
