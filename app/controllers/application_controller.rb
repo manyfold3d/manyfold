@@ -163,8 +163,6 @@ class ApplicationController < ActionController::Base
   def match_user(value)
     raise ActiveRecord::RecordNotFound if value.blank?
     query = case value
-    when /[[:digit:]]+/
-      {id: value.to_i}
     when URI::MailTo::EMAIL_REGEXP
       {email: value}
     else

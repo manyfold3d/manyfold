@@ -83,10 +83,10 @@ RSpec.describe "Groups", :after_first_run do
         expect(group.reload.members).to include(user)
       end
 
-      it "adds members by ID" do
+      it "cannot add members by ID (to avoid enumeration)" do
         id_params = {group: {memberships_attributes: {"0" => {user_id: user.id}}}}
         patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: id_params
-        expect(group.reload.members).to include(user)
+        expect(group.reload.members).not_to include(user)
       end
 
       it "adds members by email" do
