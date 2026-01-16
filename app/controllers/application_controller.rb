@@ -159,24 +159,4 @@ class ApplicationController < ActionController::Base
   rescue Errno::ENOENT
     head :internal_server_error
   end
-
-  def match_user(value)
-    raise ActiveRecord::RecordNotFound if value.blank?
-    scope = policy_scope(User)
-    query = case value
-    when URI::MailTo::EMAIL_REGEXP
-      {email: value}
-    when /\A(acct:|@)([a-z0-9\-_.]+)(@(.*))?\z/io
-      if SiteSettings.federation_enabled?
-        actor = Federails::Actor.find_by_account(value) # rubocop:disable Rails/DynamicFindBy
-        {id: actor&.entity&.id}
-      else
-        scope = scope.none
-        {}
-      end
-    else
-      {username: value}
-    end
-    scope.find_by! query
-  end
 end
