@@ -95,6 +95,20 @@ RSpec.describe "Groups", :after_first_run do
         expect(group.reload.members).to include(user)
       end
 
+      it "adds members by fediverse address" do
+        allow(SiteSettings).to receive(:federation_enabled?).and_return(true)
+        id_params = {group: {memberships_attributes: {"0" => {user_id: user.federails_actor.at_address}}}}
+        patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: id_params
+        expect(group.reload.members).to include(user)
+      end
+
+      it "doesn't add any members by fediverse address if federation is disabled" do
+        allow(SiteSettings).to receive(:federation_enabled?).and_return(false)
+        id_params = {group: {memberships_attributes: {"0" => {user_id: user.federails_actor.at_address}}}}
+        patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: id_params
+        expect(group.reload.members).to be_empty
+      end
+
       it "removes memberships" do
         group.members << user
         remove_params = {group: {memberships_attributes: {"0" => {id: group.memberships.last.id, _destroy: "1"}}}}

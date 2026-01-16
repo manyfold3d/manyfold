@@ -54,6 +54,15 @@ shared_examples "Permittable" do |object_class|
         expect(object.reload).not_to be_public
       end
 
+      it "grants permissions to users by fediverse address" do # rubocop:disable RSpec/MultipleExpectations, RSpec/ExampleLength
+        allow(SiteSettings).to receive(:federation_enabled?).and_return(true)
+        u = create(:user)
+        expect {
+          put "/#{path}/#{object.to_param}", params: {symbol => {caber_relations_attributes: {"0" => {subject: u.federails_actor.at_address, permission: "view"}}}}
+        }.to change { object.grants_permission_to?("view", u) }.from(false).to(true)
+        expect(object.reload).not_to be_public
+      end
+
       it "grants permissions to groups" do # rubocop:disable RSpec/MultipleExpectations
         group = create(:group)
         expect {

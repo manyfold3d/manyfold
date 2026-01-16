@@ -19,8 +19,8 @@ module ManyfoldApi::V0
         properties: {
           name: {type: :string, example: "Patrons"},
           description: {type: :string, example: "My subscribers"},
-          add_members: {type: :array, items: {type: :string, example: "username"}},
-          remove_members: {type: :array, items: {type: :string, example: "username"}}
+          add_members: {type: :array, items: {type: :string, example: "username / email / fediverse address"}},
+          remove_members: {type: :array, items: {type: :string, example: "username / email / fediverse address"}}
         }
       }
     end
