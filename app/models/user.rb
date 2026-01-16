@@ -201,6 +201,25 @@ class User < ApplicationRecord
     has_permission_on?("own", thing)
   end
 
+  def self.match!(identifier:, scope: User)
+    raise ActiveRecord::RecordNotFound if identifier.blank?
+    query = case identifier
+    when URI::MailTo::EMAIL_REGEXP
+      {email: identifier}
+    when /\A(acct:|@)([a-z0-9\-_.]+)(@(.*))?\z/io
+      if SiteSettings.federation_enabled?
+        actor = Federails::Actor.find_by_account(identifier) # rubocop:disable Rails/DynamicFindBy
+        {id: actor&.entity&.id}
+      else
+        scope = scope.none
+        {}
+      end
+    else
+      {username: identifier}
+    end
+    scope.find_by! query
+  end
+
   private
 
   def set_quota

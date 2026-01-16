@@ -18,7 +18,7 @@ module Permittable
           when Group::TYPED_ID_PATTERN
             Group.find_by_typed_id(value["subject"], scope: policy_scope(Group))
           else
-            match_user(value["subject"])
+            User.match!(identifier: value["subject"], scope: policy_scope(User))
           end
           value["subject_id"] = subject&.id
           value["subject_type"] = subject&.class&.name

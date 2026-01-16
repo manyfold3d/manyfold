@@ -3,8 +3,20 @@ module ManyfoldApi::V0
     def deserialize
       return unless @object
       members = []
-      members += @object["add_members"].map { |it| {user: User.find_by(username: it)} } if @object["add_members"]
-      members += @object["remove_members"].map { |it| {id: @record.memberships.find_by(user: User.find_by(username: it))&.id, _destroy: "1"} } if @object["remove_members"] && @record
+      if @object["add_members"]
+        members += @object["add_members"].filter_map do |it|
+          {user: User.match!(identifier: it)}
+        rescue ActiveRecord::RecordNotFound
+          nil
+        end
+      end
+      if @object["remove_members"] && @record
+        members += @object["remove_members"].filter_map do |it|
+          {id: @record.memberships.find_by(user: User.match!(identifier: it))&.id, _destroy: "1"}
+        rescue ActiveRecord::RecordNotFound
+          nil
+        end
+      end
       memberships_attributes = (0...members.count).map(&:to_s).zip(members).to_h
       {
         name: @object["name"],

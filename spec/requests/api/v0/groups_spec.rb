@@ -190,8 +190,8 @@ describe "User Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/
           {
             "name" => "Patrons",
             "description" => "My subscribers",
-            "add_members" => [new_member.username, "non_existent_user"],
-            "remove_members" => [removed_member.username, "non_existent_user"]
+            "add_members" => [new_member.email, "non_existent_user"],
+            "remove_members" => [removed_member.email, "non_existent_user"]
           }
         }
 
