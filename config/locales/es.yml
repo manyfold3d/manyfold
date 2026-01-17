@@ -148,11 +148,11 @@ es:
             path:
               cannot_be_contained: no puede estar dentro de otra biblioteca
               cannot_contain: no puede contener otras bibliotecas
-              non_readable:
-              non_readable_subfolder:
+              non_readable: debe tener permisos de lectura
+              non_readable_subfolder: incluye subcarpetas sin permisos de lectura
               non_writable: se debe poder escribir
-              non_writable_subfolder:
-              not_a_directory:
+              non_writable_subfolder: incluye subcarpetas sin permisos de escritura
+              not_a_directory: no es un directorio
               not_found: no se ha encontrado en el disco
               unsafe: no puede ser una ruta privilegiada del sistema
         model:
