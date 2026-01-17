@@ -2536,14 +2536,14 @@
             "type": "array",
             "items": {
               "type": "string",
-              "example": "username"
+              "example": "username / email / fediverse address"
             }
           },
           "remove_members": {
             "type": "array",
             "items": {
               "type": "string",
-              "example": "username"
+              "example": "username / email / fediverse address"
             }
           }
         }
