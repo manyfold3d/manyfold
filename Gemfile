@@ -222,4 +222,4 @@ gem "yard-lint", "~> 1.3", group: :development
 gem "zaru", "~> 1.0"
 
 # v3 causes us problems
-gem "connection_pool", ">= 2.2.5", "< 3.0"
+gem "connection_pool", ">= 2.2.5", "< 4.0"
