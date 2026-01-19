@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :creators, -> { where("caber_relations.permission": "own") }, through: :caber_relations, source_type: "Creator", source: :object
   accepts_nested_attributes_for :creators
 
+  has_many :notifications, as: :recipient, class_name: "Noticed::Notification", dependent: :destroy
+
   before_validation :set_json_field_defaults
   before_save :set_quota
 
