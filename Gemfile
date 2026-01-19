@@ -44,7 +44,7 @@ group :development, :test do
   gem "standard", "~> 1.53"
   gem "factory_bot"
   gem "faker", "~> 3.5"
-  gem "guard", "~> 2.19"
+  gem "guard", "~> 2.20"
   gem "guard-rspec", "~> 4.7"
   gem "database_cleaner-active_record", "~> 2.2"
   gem "rubocop-rails", require: false
