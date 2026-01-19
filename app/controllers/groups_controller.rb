@@ -73,6 +73,11 @@ class GroupsController < ApplicationController
         end
       end
     end
+    if @group.valid?
+      NewGroupMemberNotifier.with(event: Membership.last).deliver(
+        policy_scope(User).where(id: group_params[:memberships_attributes].to_h.filter_map { |k, v| v[:user_id] })
+      )
+    end
   end
 
   def destroy
