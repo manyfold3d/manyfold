@@ -11,6 +11,7 @@ ja:
       already_authenticated: すでにログインしています。
       inactive: アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。
       invalid: "%{authentication_keys}またはパスワードが違います。"
+      invited:
       last_attempt: もう一回誤るとアカウントがロックされます。
       locked: アカウントはロックされています。
       not_approved: あなたのアカウントはまだモデレーターによって承認されていません。
@@ -18,6 +19,19 @@ ja:
       timeout: セッションがタイムアウトしました。もう一度ログインしてください。
       unauthenticated: アカウント登録もしくはログインしてください。
       unconfirmed: メールアドレスの本人確認が必要です。
+    invitations:
+      edit:
+        header:
+        submit_button:
+      invitation_removed:
+      invitation_token_invalid:
+      new:
+        header:
+        submit_button:
+      no_invitations_remaining:
+      send_instructions:
+      updated:
+      updated_not_active:
     mailer:
       confirmation_instructions:
         action: メールアドレスの確認
@@ -29,6 +43,13 @@ ja:
         message: あなたのメールの変更（%{email}）をお知らせいたします。
         message_unconfirmed:
         subject: メール変更完了
+      invitation_instructions:
+        accept:
+        accept_until:
+        hello:
+        ignore:
+        someone_invited_you:
+        subject:
       password_change:
         greeting: "%{recipient}様"
         message: パスワードが再設定されました。

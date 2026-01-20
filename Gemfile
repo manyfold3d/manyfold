@@ -225,3 +225,5 @@ gem "zaru", "~> 1.0"
 gem "connection_pool", ">= 2.2.5", "< 3.0"
 
 gem "noticed", "~> 3.0"
+
+gem "devise_invitable", "~> 2.0"

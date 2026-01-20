@@ -11,6 +11,7 @@ ru:
       already_authenticated: Вы уже вошли в систему.
       inactive: Ваша учетная запись еще не активирована.
       invalid: Неправильный %{authentication_keys} или пароль.
+      invited:
       last_attempt: У вас осталась последняя попытка ввода пароля до блокировки учетной записи.
       locked: Ваша учетная запись заблокирована.
       not_approved:
@@ -18,6 +19,19 @@ ru:
       timeout: Ваш сеанс закончился. Пожалуйста, войдите в систему снова.
       unauthenticated: Вам необходимо войти в систему или зарегистрироваться.
       unconfirmed: Вы должны подтвердить вашу учетную запись.
+    invitations:
+      edit:
+        header:
+        submit_button:
+      invitation_removed:
+      invitation_token_invalid:
+      new:
+        header:
+        submit_button:
+      no_invitations_remaining:
+      send_instructions:
+      updated:
+      updated_not_active:
     mailer:
       confirmation_instructions:
         action: Активировать
@@ -29,6 +43,13 @@ ru:
         message: Мы пытаемся связаться с вами, что бы сообщить, что ваш email был изменен на %{email}.
         message_unconfirmed:
         subject: Email изменен
+      invitation_instructions:
+        accept:
+        accept_until:
+        hello:
+        ignore:
+        someone_invited_you:
+        subject:
       password_change:
         greeting: Приветствуем, %{recipient}!
         message: Мы пытаемся связаться с вами, что бы сообщить, что ваш пароль был изменен.

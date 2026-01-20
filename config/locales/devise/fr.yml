@@ -11,6 +11,7 @@ fr:
       already_authenticated: Vous êtes déjà connecté(e).
       inactive: Votre compte n’est pas encore activé.
       invalid: "%{authentication_keys} ou mot de passe incorrect."
+      invited:
       last_attempt: Il vous reste une chance avant que votre compte soit bloqué.
       locked: Votre compte est verrouillé.
       not_approved: Votre compte n'a pas encore été approuvé par un modérateur.
@@ -18,6 +19,19 @@ fr:
       timeout: Votre session est expirée, veuillez vous reconnecter pour continuer.
       unauthenticated: Vous devez vous connecter ou vous enregistrer pour continuer.
       unconfirmed: Vous devez confirmer votre compte par email.
+    invitations:
+      edit:
+        header:
+        submit_button:
+      invitation_removed:
+      invitation_token_invalid:
+      new:
+        header:
+        submit_button:
+      no_invitations_remaining:
+      send_instructions:
+      updated:
+      updated_not_active:
     mailer:
       confirmation_instructions:
         action: Confirmer mon email
@@ -29,6 +43,13 @@ fr:
         message: Nous vous contactons pour vous notifier que votre adresse email a été changée en %{email}.
         message_unconfirmed: Nous vous contactons pour vous notifier que votre adresse email a été changée en %{email}.
         subject: Email modifié
+      invitation_instructions:
+        accept:
+        accept_until:
+        hello:
+        ignore:
+        someone_invited_you:
+        subject:
       password_change:
         greeting: Bonjour %{recipient} !
         message: Nous vous contactons pour vous notifier que votre mot de passe a été modifié.

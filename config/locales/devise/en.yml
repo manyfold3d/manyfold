@@ -11,6 +11,7 @@ en:
       already_authenticated: You are already signed in.
       inactive: Your account is not activated yet.
       invalid: Invalid %{authentication_keys} or password.
+      invited: You have a pending invitation, accept it to finish creating your account.
       last_attempt: You have one more attempt before your account is temporarily locked.
       locked: Your account is locked for an hour; try again later.
       not_approved: Your account has not yet been approved by a moderator.
@@ -18,6 +19,19 @@ en:
       timeout: Your session expired. Please sign in again to continue.
       unauthenticated: You need to sign in or sign up before continuing.
       unconfirmed: You have to confirm your email address before continuing.
+    invitations:
+      edit:
+        header: Set your password
+        submit_button: Set my password
+      invitation_removed: Your invitation was removed.
+      invitation_token_invalid: The invitation token provided is not valid!
+      new:
+        header: Send invitation
+        submit_button: Send an invitation
+      no_invitations_remaining: No invitations remaining
+      send_instructions: An invitation email has been sent to %{email}.
+      updated: Your password was set successfully. You are now signed in.
+      updated_not_active: Your password was set successfully.
     mailer:
       confirmation_instructions:
         action: Confirm my account
@@ -29,6 +43,13 @@ en:
         message: We're contacting you to notify you that your email has been changed to %{email}.
         message_unconfirmed: We're contacting you to notify you that your email is being changed to %{email}.
         subject: Email Changed
+      invitation_instructions:
+        accept: Accept invitation
+        accept_until: This invitation is valid until %{due_date}.
+        hello: Hello %{email}
+        ignore: If you don't want to accept the invitation, please ignore this email. Your account won't be created until you access the link above and set your password.
+        someone_invited_you: Someone has invited you to %{url}, you can accept it through the link below.
+        subject: Invitation instructions
       password_change:
         greeting: Hello %{recipient}!
         message: We're contacting you to notify you that your password has been changed.

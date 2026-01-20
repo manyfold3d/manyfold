@@ -11,6 +11,7 @@ zh-CN:
       already_authenticated: 您已经登录。
       inactive: 您的帐户还未激活。
       invalid: 无效的 %{authentication_keys} 或密码。
+      invited:
       last_attempt: 您还有最后一次尝试机会，再次失败您的帐户将被锁定。
       locked: 您的帐户将被锁定一小时，请稍后重试。
       not_approved: 管理员尚未批准您的帐户。
@@ -18,6 +19,19 @@ zh-CN:
       timeout: 登录超时，请重新登录。
       unauthenticated: 继续操作前请注册或者登录。
       unconfirmed: 您必须先确认电子邮件地址，然后才能继续。
+    invitations:
+      edit:
+        header:
+        submit_button:
+      invitation_removed:
+      invitation_token_invalid:
+      new:
+        header:
+        submit_button:
+      no_invitations_remaining:
+      send_instructions:
+      updated:
+      updated_not_active:
     mailer:
       confirmation_instructions:
         action: 确认我的帐户
@@ -29,6 +43,13 @@ zh-CN:
         message: 收到此邮件是因为您的电子邮件地址已被更改为 %{email}。
         message_unconfirmed: 收到此邮件是因为您的电子邮件地址正被更改为 %{email}。
         subject: 电子邮件已被修改
+      invitation_instructions:
+        accept:
+        accept_until:
+        hello:
+        ignore:
+        someone_invited_you:
+        subject:
       password_change:
         greeting: 您好 %{recipient}！
         message: 收到此邮件是因为您的帐户密码已被修改。
