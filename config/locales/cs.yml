@@ -681,6 +681,10 @@ cs:
     save: Uložit
     shared:
     view: Zobrazení
+  group_mailer:
+    new_member:
+      message:
+      subject:
   groups:
     create:
       success:
@@ -802,6 +806,7 @@ cs:
     card_list_page:
       actions_heading: Akce
     mailer:
+      footer:
       greeting: Ahoj!
     settings:
       appearance: Vzhled

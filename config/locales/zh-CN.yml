@@ -681,6 +681,10 @@ zh-CN:
     save: 保存
     shared: 与本地用户共享
     view: 查看
+  group_mailer:
+    new_member:
+      message:
+      subject:
   groups:
     create:
       success:
@@ -802,6 +806,7 @@ zh-CN:
     card_list_page:
       actions_heading: 动作
     mailer:
+      footer:
       greeting: Hi!
     settings:
       appearance: 外观

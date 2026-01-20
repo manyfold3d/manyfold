@@ -681,6 +681,10 @@ nl:
     save: Opslaan
     shared:
     view: Bekijken
+  group_mailer:
+    new_member:
+      message:
+      subject:
   groups:
     create:
       success:
@@ -802,6 +806,7 @@ nl:
     card_list_page:
       actions_heading: Acties
     mailer:
+      footer:
       greeting: Hoi!
     settings:
       appearance:

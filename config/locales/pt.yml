@@ -681,6 +681,10 @@ pt:
     save:
     shared:
     view:
+  group_mailer:
+    new_member:
+      message:
+      subject:
   groups:
     create:
       success:
@@ -802,6 +806,7 @@ pt:
     card_list_page:
       actions_heading:
     mailer:
+      footer:
       greeting:
     settings:
       appearance:

@@ -806,8 +806,8 @@ en:
     card_list_page:
       actions_heading: Actions
     mailer:
+      footer: 'This email was sent by %{site_name}: %{site_link}'
       greeting: Hi!
-      footer: "This email was sent by %{site_name}: %{site_link}"
     settings:
       appearance: Appearance
       downloads: Downloads

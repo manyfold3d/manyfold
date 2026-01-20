@@ -681,6 +681,10 @@ pl:
     save: Zapisz
     shared:
     view: Widok
+  group_mailer:
+    new_member:
+      message:
+      subject:
   groups:
     create:
       success:
@@ -802,6 +806,7 @@ pl:
     card_list_page:
       actions_heading: Akcje
     mailer:
+      footer:
       greeting: Cześć!
     settings:
       appearance: Wygląd

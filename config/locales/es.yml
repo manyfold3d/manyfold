@@ -681,6 +681,10 @@ es:
     save: Guardar
     shared: Compartido con usuarios locales
     view: Ver
+  group_mailer:
+    new_member:
+      message:
+      subject:
   groups:
     create:
       success: Grupo creado correctamente.
@@ -802,6 +806,7 @@ es:
     card_list_page:
       actions_heading: Acciones
     mailer:
+      footer:
       greeting: "¡Hola!"
     settings:
       appearance: Apariencia

@@ -684,6 +684,10 @@ fr:
     save: Sauvegarder
     shared: Partagé avec les utilisateurs locaux
     view: Afficher
+  group_mailer:
+    new_member:
+      message:
+      subject:
   groups:
     create:
       success:
@@ -805,6 +809,7 @@ fr:
     card_list_page:
       actions_heading: Actions
     mailer:
+      footer:
       greeting: Bonjour !
     settings:
       appearance:
