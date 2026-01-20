@@ -1,0 +1,11 @@
+<%= t(".hello", email: @resource.email) %>
+
+<%= t(".someone_invited_you", url: root_url) %>
+
+<%= accept_invitation_url(@resource, invitation_token: @token) %>
+
+<% if @resource.invitation_due_at %>
+  <%= t(".accept_until", due_date: l(@resource.invitation_due_at, format: :'.accept_until_format')) %>
+<% end %>
+
+<%= t(".ignore") %>
