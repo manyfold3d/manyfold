@@ -801,6 +801,8 @@ pt:
       skip_to_content:
     card_list_page:
       actions_heading:
+    mailer:
+      greeting:
     settings:
       appearance:
       downloads:
@@ -836,11 +838,9 @@ pt:
     MIT:
   moderator_mailer:
     new_approval:
-      greeting:
       message:
       subject:
     new_report:
-      greeting:
       message:
       subject:
   renderer:
@@ -878,7 +878,6 @@ pt:
     yeggi:
   user_mailer:
     account_approved:
-      greeting:
       message:
       subject:
     test_email:

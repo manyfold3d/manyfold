@@ -804,6 +804,8 @@ fr:
       skip_to_content: Passer et aller au contenu principal
     card_list_page:
       actions_heading: Actions
+    mailer:
+      greeting: Bonjour !
     settings:
       appearance:
       downloads: Téléchargements
@@ -839,11 +841,9 @@ fr:
     MIT: MIT
   moderator_mailer:
     new_approval:
-      greeting: Bonjour !
       message:
       subject:
     new_report:
-      greeting: Bonjour !
       message:
       subject:
   renderer:
@@ -881,7 +881,6 @@ fr:
     yeggi: yeggi
   user_mailer:
     account_approved:
-      greeting: Bonjour !
       message: Votre compte a été approuvé ; vous pouvez maintenant vous connecter à %{link}.
       subject: Compte approuvé
     test_email:

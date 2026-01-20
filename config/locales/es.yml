@@ -801,6 +801,8 @@ es:
       skip_to_content: Ir al contenido principal
     card_list_page:
       actions_heading: Acciones
+    mailer:
+      greeting: "¡Hola!"
     settings:
       appearance: Apariencia
       downloads: Descargas
@@ -836,11 +838,9 @@ es:
     MIT: MIT
   moderator_mailer:
     new_approval:
-      greeting: "¡Hola!"
       message: Alguien nuevo se ha registrado para obtener una cuenta y requiere aprobación. Aprobar la cuenta en %{link}
       subject: La nueva cuenta necesita aprobación
     new_report:
-      greeting: "¡Hola!"
       message: Alguien ha denunciado un contenido que necesita moderación. Revise el informe en %{link}
       subject: Nuevo informe recibido
   renderer:
@@ -878,7 +878,6 @@ es:
     yeggi: yeggi
   user_mailer:
     account_approved:
-      greeting: "¡Hola!"
       message: Su cuenta ha sido aprobada; ya puede iniciar sesión en %{link}.
       subject: Cuenta aprobada
     test_email:

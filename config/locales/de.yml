@@ -803,6 +803,8 @@ de:
       skip_to_content: Zum Hauptinhalt springen
     card_list_page:
       actions_heading: Aktionen
+    mailer:
+      greeting: Hallo!
     settings:
       appearance: Erscheinungsbild
       downloads: Herunterladen
@@ -838,11 +840,9 @@ de:
     MIT: MIT
   moderator_mailer:
     new_approval:
-      greeting: Hallo!
       message: Eine neue Person hat sich für ein Konto angemeldet und benötigt eine Genehmigung. Genehmige das Konto hier %{link}
       subject: Neues Konto muss genehmigt werden
     new_report:
-      greeting: Hallo!
       message: Jemand hat Inhalte gemeldet, die moderiert werden müssen. Überprüfe den Bericht unter %{link}
       subject: Neuer Bericht eingegangen
   renderer:
@@ -880,7 +880,6 @@ de:
     yeggi: yeggi
   user_mailer:
     account_approved:
-      greeting: Hallo!
       message: Dein Konto wurde genehmigt; Du kannst dich jetzt unter %{link} anmelden.
       subject: Konto genehmigt
     test_email:

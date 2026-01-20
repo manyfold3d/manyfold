@@ -801,6 +801,9 @@ en:
       skip_to_content: Skip to main content
     card_list_page:
       actions_heading: Actions
+    mailer:
+      greeting: Hi!
+      footer: "This email was sent by %{site_name}: %{site_link}"
     settings:
       appearance: Appearance
       downloads: Downloads
@@ -836,11 +839,9 @@ en:
     MIT: MIT
   moderator_mailer:
     new_approval:
-      greeting: Hi!
       message: Someone new has signed up for an account, and requires approval. Approve the account at %{link}
       subject: New account needs approval
     new_report:
-      greeting: Hi!
       message: Someone has reported content which needs moderations. Review the report at %{link}
       subject: New report received
   renderer:
@@ -878,7 +879,6 @@ en:
     yeggi: yeggi
   user_mailer:
     account_approved:
-      greeting: Hi!
       message: Your account has been approved; you may now sign in at %{link}
       subject: Account approved
     test_email:
