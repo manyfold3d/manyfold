@@ -681,6 +681,10 @@ en:
     save: Save
     shared: Shared with local users
     view: View
+  group_mailer:
+    new_member:
+      message: You've been added to %{creator_name}'s group "%{group_name}" on %{site_name}. If that group has access to any private models, you can now access them at %{link}
+      subject: You've been added to a group
   groups:
     create:
       success: Group created successfully.

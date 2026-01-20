@@ -1,3 +1,6 @@
-Group#new_membership
-
-<%= @greeting %>, find me in app/views/group_mailer/new_membership.text.erb
+<%= translate(".message",
+			creator_name: @group.creator.name,
+			group_name: @group.name,
+			link: creator_url(@group.creator),
+			site_name: SiteSettings.site_name)
+%>
