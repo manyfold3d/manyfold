@@ -36,21 +36,21 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = @creator.groups.create group_params
-    authorize group
+    @group = @creator.groups.create group_params
+    authorize @group
     respond_to do |format|
       format.html do
-        if group.valid?
+        if @group.valid?
           redirect_to creator_groups_path(@creator), notice: t(".success")
         else
-          render Views::Groups::New.new(group: group, creator: @creator), status: :unprocessable_content
+          render Views::Groups::New.new(group: @group, creator: @creator), status: :unprocessable_content
         end
       end
       format.manyfold_api_v0 do
-        if group.valid?
-          render json: ManyfoldApi::V0::GroupSerializer.new(group).serialize, status: :created, location: creator_group_path(@creator, group)
+        if @group.valid?
+          render json: ManyfoldApi::V0::GroupSerializer.new(@group).serialize, status: :created, location: creator_group_path(@creator, @group)
         else
-          render json: group.errors.to_json, status: :unprocessable_content
+          render json: @group.errors.to_json, status: :unprocessable_content
         end
       end
     end
