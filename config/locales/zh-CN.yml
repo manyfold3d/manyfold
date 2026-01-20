@@ -681,6 +681,10 @@ zh-CN:
     save: 保存
     shared: 与本地用户共享
     view: 查看
+  group_mailer:
+    new_member:
+      message:
+      subject:
   groups:
     create:
       success:
@@ -801,6 +805,9 @@ zh-CN:
       skip_to_content: 退回到主站
     card_list_page:
       actions_heading: 动作
+    mailer:
+      footer:
+      greeting: Hi!
     settings:
       appearance: 外观
       downloads: 下载
@@ -836,11 +843,9 @@ zh-CN:
     MIT: MIT
   moderator_mailer:
     new_approval:
-      greeting: Hi!
       message: 有新用户注册了账户，需要批准。批准 %{link} 账户
       subject: 新账户需要批准
     new_report:
-      greeting: Hi!
       message: 有人报告了需要修改的内容。查看 %{link}
       subject: 收到新报告
   renderer:
@@ -878,7 +883,6 @@ zh-CN:
     yeggi: Yeggi
   user_mailer:
     account_approved:
-      greeting: Hi,
       message: 您的账户已获批准，您现在可以登录 %{link} 。
       subject: 核准账户
     test_email:

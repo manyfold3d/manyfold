@@ -681,6 +681,10 @@ ja:
     save:
     shared:
     view:
+  group_mailer:
+    new_member:
+      message:
+      subject:
   groups:
     create:
       success:
@@ -801,6 +805,9 @@ ja:
       skip_to_content:
     card_list_page:
       actions_heading:
+    mailer:
+      footer:
+      greeting: こんにちは！
     settings:
       appearance:
       downloads:
@@ -836,11 +843,9 @@ ja:
     MIT:
   moderator_mailer:
     new_approval:
-      greeting: こんにちは！
       message:
       subject:
     new_report:
-      greeting: こんにちは！
       message:
       subject:
   renderer:
@@ -878,7 +883,6 @@ ja:
     yeggi: yeggi
   user_mailer:
     account_approved:
-      greeting: こんにちは！
       message: アカウントが承認されました。%{link}でサインインできます。
       subject: アカウント承認
     test_email:

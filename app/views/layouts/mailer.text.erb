@@ -1,1 +1,6 @@
+<%= translate(".greeting") %>
+
 <%= yield %>
+
+---
+<%= translate(".footer", site_name: SiteSettings.site_name, site_link: root_url) %>

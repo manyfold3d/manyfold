@@ -1,0 +1,6 @@
+<%= translate(".message",
+			creator_name: @group.creator.name,
+			group_name: @group.name,
+			link: creator_url(@group.creator),
+			site_name: SiteSettings.site_name)
+%>

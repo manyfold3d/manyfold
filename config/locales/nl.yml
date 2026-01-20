@@ -681,6 +681,10 @@ nl:
     save: Opslaan
     shared:
     view: Bekijken
+  group_mailer:
+    new_member:
+      message:
+      subject:
   groups:
     create:
       success:
@@ -801,6 +805,9 @@ nl:
       skip_to_content: Ga naar hoofdinhoud
     card_list_page:
       actions_heading: Acties
+    mailer:
+      footer:
+      greeting: Hoi!
     settings:
       appearance:
       downloads:
@@ -836,11 +843,9 @@ nl:
     MIT: MIT
   moderator_mailer:
     new_approval:
-      greeting: Hoi!
       message:
       subject:
     new_report:
-      greeting: Hoi!
       message:
       subject:
   renderer:
@@ -878,7 +883,6 @@ nl:
     yeggi:
   user_mailer:
     account_approved:
-      greeting: Hoi!
       message: Je account is goedgekeurd; je kunt nu inloggen op %{link}.
       subject: Account goedgekeurd
     test_email:

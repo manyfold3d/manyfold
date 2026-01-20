@@ -223,3 +223,5 @@ gem "zaru", "~> 1.0"
 
 # v3 causes us problems
 gem "connection_pool", ">= 2.2.5", "< 3.0"
+
+gem "noticed", "~> 3.0"

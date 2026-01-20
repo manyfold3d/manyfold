@@ -681,6 +681,10 @@ ru:
     save:
     shared:
     view:
+  group_mailer:
+    new_member:
+      message:
+      subject:
   groups:
     create:
       success:
@@ -801,6 +805,9 @@ ru:
       skip_to_content:
     card_list_page:
       actions_heading:
+    mailer:
+      footer:
+      greeting:
     settings:
       appearance: Внешний вид
       downloads:
@@ -836,11 +843,9 @@ ru:
     MIT: MIT
   moderator_mailer:
     new_approval:
-      greeting:
       message:
       subject:
     new_report:
-      greeting:
       message:
       subject:
   renderer:
@@ -878,7 +883,6 @@ ru:
     yeggi:
   user_mailer:
     account_approved:
-      greeting: Привет!
       message: Ваша учетная запись была подтверждена, теперь вы можете войти в систему по адресу %{link}
       subject: Учётная запись подтверждена
     test_email:

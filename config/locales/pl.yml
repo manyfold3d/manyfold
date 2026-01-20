@@ -681,6 +681,10 @@ pl:
     save: Zapisz
     shared:
     view: Widok
+  group_mailer:
+    new_member:
+      message:
+      subject:
   groups:
     create:
       success:
@@ -801,6 +805,9 @@ pl:
       skip_to_content: Przejdź do głównej treści
     card_list_page:
       actions_heading: Akcje
+    mailer:
+      footer:
+      greeting: Cześć!
     settings:
       appearance: Wygląd
       downloads: Pobrane
@@ -836,11 +843,9 @@ pl:
     MIT: MIT
   moderator_mailer:
     new_approval:
-      greeting: Cześć!
       message: Ktoś nowy zarejestrował konto i wymaga zatwierdzenia. Zatwierdź konto pod adresem %{link}
       subject: Nowe konto wymaga zatwierdzenia
     new_report:
-      greeting: Cześć!
       message: Ktoś zgłosił zawartość wymagającą moderacji. Przejrzyj zgłoszenie pod adresem %{link}
       subject: Otrzymano nowe zgłoszenie
   renderer:
@@ -878,7 +883,6 @@ pl:
     yeggi: yeggi
   user_mailer:
     account_approved:
-      greeting: Cześć!
       message: Twoje konto zostało zatwierdzone; możesz teraz zalogować się pod adresem %{link}.
       subject: Konto zatwierdzone
     test_email:

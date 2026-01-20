@@ -681,6 +681,10 @@ cs:
     save: Uložit
     shared:
     view: Zobrazení
+  group_mailer:
+    new_member:
+      message:
+      subject:
   groups:
     create:
       success:
@@ -801,6 +805,9 @@ cs:
       skip_to_content: Přeskočit na hlavní obsah
     card_list_page:
       actions_heading: Akce
+    mailer:
+      footer:
+      greeting: Ahoj!
     settings:
       appearance: Vzhled
       downloads:
@@ -836,11 +843,9 @@ cs:
     MIT: MIT
   moderator_mailer:
     new_approval:
-      greeting: Ahoj!
       message: Někdo nový si vytvořil účet a vyžaduje schválení. Schvalte účet na adrese %{link}
       subject: Nový účet je třeba schválit
     new_report:
-      greeting: Ahoj!
       message: Někdo nahlásil obsah, který je třeba posoudit. Prohlédněte si zprávu na adrese %{link}
       subject: Obdrženo nové hlášení
   renderer:
@@ -878,7 +883,6 @@ cs:
     yeggi: yeggi
   user_mailer:
     account_approved:
-      greeting: Ahoj!
       message: Váš účet byl schválen; nyní se můžete přihlásit na adrese %{link}
       subject: Účet schválen
     test_email:
