@@ -11,6 +11,7 @@ cs:
       already_authenticated: Jste již přihlášen(a).
       inactive: Váš účet ještě nebyl aktivován.
       invalid: Neplatné %{authentication_keys} nebo heslo.
+      invited:
       last_attempt: Máte ještě jeden pokus než bude Váš účet uzamčen.
       locked: Váš účet je uzamčen.
       not_approved: Váš účet ještě nebyl schválen moderátorem.
@@ -18,6 +19,19 @@ cs:
       timeout: Vaše relace vypršela, přihlaste se znovu, pro pokračování.
       unauthenticated: Musíte se zaregistrovat nebo přihlásit, teprve poté budete moct pokračovat.
       unconfirmed: Musíte potvrdit svoji e-mailovou adresu, teprve poté budete moct pokračovat.
+    invitations:
+      edit:
+        header:
+        submit_button:
+      invitation_removed:
+      invitation_token_invalid:
+      new:
+        header:
+        submit_button:
+      no_invitations_remaining:
+      send_instructions:
+      updated:
+      updated_not_active:
     mailer:
       confirmation_instructions:
         action: Potvrdit můj účet
@@ -29,6 +43,13 @@ cs:
         message: Kontaktovali jsme Vás, abychom Vás upozornili, že Vaše e-mailová adresa byla změněna na %{email}.
         message_unconfirmed: Kontaktujeme vás, abychom vám oznámili, že váš e-mail byl změněn na %{email}.
         subject: E-mail změněn
+      invitation_instructions:
+        accept:
+        accept_until:
+        hello:
+        ignore:
+        someone_invited_you:
+        subject:
       password_change:
         greeting: Ahoj %{recipient}!
         message: Dáváme vám vědět, že Vaše heslo bylo změněno.

@@ -11,6 +11,7 @@ pt:
       already_authenticated: Já se encontra autenticado.
       inactive: A sua conta ainda não foi ativada.
       invalid: "%{authentication_keys} ou palavra-passe inválidos."
+      invited:
       last_attempt: Tem mais uma tentativa antes da sua conta ser bloqueada.
       locked: A sua conta está bloqueada.
       not_approved:
@@ -18,6 +19,19 @@ pt:
       timeout: A sua sessão expirou, por favor autentique-se novamente para continuar.
       unauthenticated: Antes de continuar tem de se autenticar ou efetuar um registo.
       unconfirmed: Tem de confirmar a sua conta antes de continuar.
+    invitations:
+      edit:
+        header:
+        submit_button:
+      invitation_removed:
+      invitation_token_invalid:
+      new:
+        header:
+        submit_button:
+      no_invitations_remaining:
+      send_instructions:
+      updated:
+      updated_not_active:
     mailer:
       confirmation_instructions:
         action: Confirmar a minha conta
@@ -29,6 +43,13 @@ pt:
         message: Estamos a entrar em contacto para notificar que o seu endereço de email foi alterado para %{email}.
         message_unconfirmed:
         subject: Endereço de email alterado
+      invitation_instructions:
+        accept:
+        accept_until:
+        hello:
+        ignore:
+        someone_invited_you:
+        subject:
       password_change:
         greeting: Olá %{recipient}!
         message: Estamos a entrar em contacto para notificar que a sua palavra-passe foi alterada.

@@ -11,6 +11,7 @@ pl:
       already_authenticated: Jesteś już zalogowany.
       inactive: Twoje konto nie zostało jeszcze aktywowane.
       invalid: Błędny adres %{authentication_keys} lub hasło.
+      invited:
       last_attempt: Masz jeszcze jedną próbę nim Twoje konto zostanie tymczasowo zablokowane.
       locked: Twoje konto zostało zablokowane na godzinę; spróbuj ponownie później.
       not_approved: Twoje konto nie zostało jeszcze zatwierdzone przez moderatora.
@@ -18,6 +19,19 @@ pl:
       timeout: Sesja wygasła, aby kontynuować zaloguj się ponownie.
       unauthenticated: Aby kontynuować zaloguj lub zarejestruj się.
       unconfirmed: Aby kontynuować aktywuj konto.
+    invitations:
+      edit:
+        header:
+        submit_button:
+      invitation_removed:
+      invitation_token_invalid:
+      new:
+        header:
+        submit_button:
+      no_invitations_remaining:
+      send_instructions:
+      updated:
+      updated_not_active:
     mailer:
       confirmation_instructions:
         action: Potwierdź swoje konto
@@ -29,6 +43,13 @@ pl:
         message: Kontaktujemy się z Tobą, aby Cię poinformować o zmianie Twojego adresu e-mail na %{email}.
         message_unconfirmed: Kontaktujemy się z Tobą, aby Cię poinformować cię, że twój adresu e-mail jest zmieniany na %{email}.
         subject: E-mail zmieniony
+      invitation_instructions:
+        accept:
+        accept_until:
+        hello:
+        ignore:
+        someone_invited_you:
+        subject:
       password_change:
         greeting: Witaj %{recipient}!
         message: Kontaktujemy się z Tobą w celu poinformowania cię, że twoje hasło zostało zmienione.

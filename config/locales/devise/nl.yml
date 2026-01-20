@@ -11,6 +11,7 @@ nl:
       already_authenticated: Je bent al ingelogd.
       inactive: Je account is nog niet geactiveerd.
       invalid: Ongeldig %{authentication_keys} of wachtwoord.
+      invited:
       last_attempt: Je hebt nog één poging voordat je account tijdelijk wordt vergrendeld.
       locked: Je account is voor een uur vergrendeld; probeer het later opnieuw.
       not_approved: Je account is nog niet goedgekeurd door een moderator.
@@ -18,6 +19,19 @@ nl:
       timeout: Je sessie is verlopen. Log opnieuw in om door te gaan.
       unauthenticated: Je moet inloggen of registreren om door te gaan.
       unconfirmed: Je moet je e-mailadres bevestigen voordat je door kunt gaan.
+    invitations:
+      edit:
+        header:
+        submit_button:
+      invitation_removed:
+      invitation_token_invalid:
+      new:
+        header:
+        submit_button:
+      no_invitations_remaining:
+      send_instructions:
+      updated:
+      updated_not_active:
     mailer:
       confirmation_instructions:
         action: Bevestig mijn account
@@ -29,6 +43,13 @@ nl:
         message: We nemen contact op om je te laten weten dat je e-mailadres is gewijzigd naar %{email}.
         message_unconfirmed: We nemen contact op om je te laten weten dat je e-mailadres wordt gewijzigd naar %{email}.
         subject: E-mail Gewijzigd
+      invitation_instructions:
+        accept:
+        accept_until:
+        hello:
+        ignore:
+        someone_invited_you:
+        subject:
       password_change:
         greeting: Hallo %{recipient}!
         message: We nemen contact op om je te laten weten dat je wachtwoord is gewijzigd.
