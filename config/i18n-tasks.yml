@@ -20,6 +20,7 @@ data:
     - config/locales/**/%{locale}.yml
     - config/locales/devise.%{locale}.yml
     - config/locales/devise.*.%{locale}.yml
+    - config/locales/devise_invitable.%{locale}.yml
     - config/locales/doorkeeper.%{locale}.yml
     ## Read in translation.io synced files
     - config/locales/translation.%{locale}.yml
