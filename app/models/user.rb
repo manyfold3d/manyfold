@@ -27,7 +27,8 @@ class User < ApplicationRecord
   devise :database_authenticatable,
     :registerable, :zxcvbnable,
     :rememberable, :recoverable,
-    :lockable, :timeoutable
+    :lockable, :timeoutable,
+    :invitable
 
   devise :omniauthable, omniauth_providers: %i[openid_connect] if SiteSettings.oidc_enabled?
 
