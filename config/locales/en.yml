@@ -881,12 +881,6 @@ en:
     theminiindex: The Mini Index
     thingiverse: Thingiverse
     yeggi: yeggi
-  time:
-    formats:
-      devise:
-        mailer:
-          invitation_instructions:
-            accept_until_format: "%B %d, %Y %I:%M %p"
   user_mailer:
     account_approved:
       message: Your account has been approved; you may now sign in at %{link}

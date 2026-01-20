@@ -5,7 +5,7 @@
 <%= accept_invitation_url(@resource, invitation_token: @token) %>
 
 <% if @resource.invitation_due_at %>
-  <%= t(".accept_until", due_date: l(@resource.invitation_due_at, format: :'.accept_until_format')) %>
+  <%= t(".accept_until", due_date: @resource.invitation_due_at.to_date.to_fs(:long_ordinal)) %>
 <% end %>
 
 <%= t(".ignore") %>
