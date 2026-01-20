@@ -13,7 +13,7 @@
 
   <h2><%= t("devise.registrations.new.details") %></h2>
 
-  <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |form| %>
+  <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: {method: :put}) do |form| %>
     <div class="tabular-form mb-3">
       <%= form.hidden_field :invitation_token, readonly: true %>
 
