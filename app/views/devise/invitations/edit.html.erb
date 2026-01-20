@@ -1,0 +1,36 @@
+<div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+  <%= PageTitle title: t("devise.registrations.new.sign_up") %>
+
+  <% if SiteSettings.rules.presence %>
+    <h2><%= t("devise.registrations.new.rules") %></h2>
+    <div class="alert alert-warning">
+      <%= markdownify(SiteSettings.rules) %>
+    </div>
+    <p>
+      <%= t("devise.registrations.new.rules_agree") %>
+    </p>
+  <% end %>
+
+  <h2><%= t("devise.registrations.new.details") %></h2>
+
+  <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |form| %>
+    <div class="tabular-form mb-3">
+      <%= form.hidden_field :invitation_token, readonly: true %>
+
+      <%= text_input_row form, :username, autocomplete: "username", help: t("devise.registrations.new.username.help") %>
+
+      <% if form.object.class.require_password_on_accepting %>
+        <%= password_input_row form, :password, autocomplete: "new-password", strength_meter: true %>
+        <%= password_input_row form, :password_confirmation, autocomplete: "new-password" %>
+      <% end %>
+
+      <div>
+        <%= form.submit translate("devise.registrations.new.sign_up"), class: "btn btn-primary" %>
+        <div class="float-end">
+          <%= AltchaWidget() %>
+        </div>
+      </div>
+    </div>
+    <%= content_tag :div, t("devise.registrations.new.approval_help"), class: "alert alert-info" if SiteSettings.approve_signups %>
+  <% end %>
+</div>

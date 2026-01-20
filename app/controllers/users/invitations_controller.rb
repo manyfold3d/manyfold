@@ -6,6 +6,11 @@ class Users::InvitationsController < Devise::InvitationsController
 
   def update
     skip_authorization
-    super
+    if AltchaSolution.verify_and_save(params.permit(:altcha)[:altcha])
+      super
+    else
+      flash[:alert] = t(".altcha_failed")
+      render :edit, status: :unprocessable_content
+    end
   end
 end
