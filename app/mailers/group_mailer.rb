@@ -6,6 +6,7 @@ class GroupMailer < ApplicationMailer
   #
   def new_member
     @user = params[:notification].recipient
+    @group = params[:membership].group
     mail to: @user.email
   end
 end

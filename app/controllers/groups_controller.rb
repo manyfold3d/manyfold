@@ -88,7 +88,7 @@ class GroupsController < ApplicationController
 
   def send_notifications
     if @group.valid?
-      NewGroupMemberNotifier.with(event: Membership.last).deliver(
+      NewGroupMemberNotifier.with(membership: Membership.last).deliver(
         policy_scope(User).where(id: group_params[:memberships_attributes].to_h.filter_map { |k, v| v[:user_id] })
       )
     end
