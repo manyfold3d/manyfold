@@ -17,7 +17,7 @@
     <div class="tabular-form mb-3">
       <%= form.hidden_field :invitation_token, readonly: true %>
 
-      <%= text_input_row form, :username, autocomplete: "username", help: t("devise.registrations.new.username.help") %>
+      <%= text_input_row form, :username, autocomplete: "username", help: t("devise.registrations.new.username.help"), value: nil, required: true %>
 
       <% if form.object.class.require_password_on_accepting %>
         <%= password_input_row form, :password, autocomplete: "new-password", strength_meter: true %>

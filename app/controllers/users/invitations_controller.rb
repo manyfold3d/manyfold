@@ -13,4 +13,10 @@ class Users::InvitationsController < Devise::InvitationsController
       render :edit, status: :unprocessable_content
     end
   end
+
+  private
+
+  def update_resource_params
+    params.expect(user: [:username, :password, :password_confirmation, :invitation_token])
+  end
 end
