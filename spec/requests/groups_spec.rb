@@ -131,7 +131,7 @@ RSpec.describe "Groups", :after_first_run do
       end
 
       it "gives a 422 response if the data is invalid" do
-        patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: {group: {name: nil}}
+        patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: {group: {name: "     "}}
         expect(response).to have_http_status :unprocessable_content
       end
     end
