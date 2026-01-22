@@ -57,7 +57,9 @@ class GroupsController < ApplicationController
   end
 
   def update
+    previous_membership_ids = @group.memberships.pluck(:id)
     @group.update group_params
+    @new_memberships = @group.reload.memberships.where.not(id: previous_membership_ids)
     respond_to do |format|
       format.html do
         if @group.valid?
@@ -88,9 +90,9 @@ class GroupsController < ApplicationController
 
   def send_notifications
     if @group.valid?
-      NewGroupMemberNotifier.with(membership: Membership.last).deliver(
-        policy_scope(User).where(id: group_params[:memberships_attributes].to_h.filter_map { |k, v| v[:user_id] })
-      )
+      @new_memberships&.each do |it|
+        NewGroupMemberNotifier.with(membership: it).deliver(it.user)
+      end
     end
   end
 
