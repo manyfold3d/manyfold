@@ -5,7 +5,7 @@ module ManyfoldApi::V0
       members = []
       if @object["add_members"]
         members += @object["add_members"].filter_map do |it|
-          {user: User.match!(identifier: it)}
+          {user: User.match!(identifier: it, invite: true)}
         rescue ActiveRecord::RecordNotFound
           nil
         end

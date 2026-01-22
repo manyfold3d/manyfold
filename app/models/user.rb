@@ -206,7 +206,7 @@ class User < ApplicationRecord
     has_permission_on?("own", thing)
   end
 
-  def self.match!(identifier:, scope: User)
+  def self.match!(identifier:, scope: User, invite: false)
     raise ActiveRecord::RecordNotFound if identifier.blank?
     query = case identifier
     when URI::MailTo::EMAIL_REGEXP
@@ -223,6 +223,12 @@ class User < ApplicationRecord
       {username: identifier}
     end
     scope.find_by! query
+  rescue ActiveRecord::RecordNotFound
+    if identifier =~ URI::MailTo::EMAIL_REGEXP && invite
+      User.invite!(email: identifier, skip_invitation: true)
+    else
+      raise
+    end
   end
 
   def self.invite!(params)

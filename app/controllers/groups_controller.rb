@@ -116,10 +116,9 @@ class GroupsController < ApplicationController
     params.values.each do |param|
       if param.is_a?(ActionController::Parameters) && param.has_key?("memberships_attributes")
         param["memberships_attributes"].transform_values! do |value|
-          value["user_id"] = User.match!(identifier: value["user_id"], scope: policy_scope(User))&.id if value.has_key? "user_id"
+          value["user_id"] = User.match!(identifier: value["user_id"], scope: policy_scope(User), invite: true)&.id if value.has_key? "user_id"
           value
         rescue ActiveRecord::RecordNotFound
-          nil
         end
         param["memberships_attributes"].compact!
       end
