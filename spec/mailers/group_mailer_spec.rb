@@ -33,7 +33,7 @@ RSpec.describe GroupMailer do
     describe "new member invited to group by email" do
       let(:user) do
         attrs = attributes_for(:user)
-        User.invite!(email: attrs[:email], username: attrs[:username], skip_invitation: true)
+        User.invite!(email: attrs[:email], skip_invitation: true)
       end
 
       it "sets invitation delivery timestamp" do

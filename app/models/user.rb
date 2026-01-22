@@ -225,6 +225,12 @@ class User < ApplicationRecord
     scope.find_by! query
   end
 
+  def self.invite!(params)
+    options = params
+    options[:username] ||= "invite_#{SecureRandom.hex(8)}"
+    super(options)
+  end
+
   private
 
   def set_quota
