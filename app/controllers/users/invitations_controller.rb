@@ -9,6 +9,10 @@ class Users::InvitationsController < Devise::InvitationsController
     if AltchaSolution.verify_and_save(params.permit(:altcha)[:altcha])
       super
     else
+      params[:invitation_token] = params[:user][:invitation_token]
+      set_minimum_password_length
+      resource_from_invitation_token
+      resource.invitation_token = params[:invitation_token]
       flash[:alert] = t("users.registrations.create.altcha_failed")
       render :edit, status: :unprocessable_content
     end
