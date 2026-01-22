@@ -225,7 +225,7 @@ class User < ApplicationRecord
     scope.find_by! query
   rescue ActiveRecord::RecordNotFound
     if identifier =~ URI::MailTo::EMAIL_REGEXP && invite
-      User.invite!(email: identifier, skip_invitation: true)
+      scope.find(User.invite!(email: identifier, skip_invitation: true).id)
     else
       raise
     end
