@@ -687,7 +687,7 @@ en:
         message: You've been added to %{creator_name}'s group "%{group_name}" on %{site_name}. If that group has access to any private models, you can now access them at %{creator_link}
         subject: You've been added to a group on %{site_name}
       inviting:
-        message: You've been invited to %{creator_name}'s group "%{group_name}" on %{site_name}. To access the models, set up your account at %{invitation_link}, and then view the creator's models at %{creator_link}
+        message: You've been invited to %{creator_name}'s group "%{group_name}" on %{site_name}. To access the models, set up your account at %{invitation_link} and then view the creator's models at %{creator_link}
         subject: Claim your models on %{site_name}
   groups:
     create:
