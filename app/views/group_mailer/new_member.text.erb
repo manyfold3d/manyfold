@@ -1,6 +1,20 @@
-<%= translate(".message",
+<%- if @inviting %>
+<%= translate(".inviting.message",
 			creator_name: @group.creator.name,
 			group_name: @group.name,
-			link: creator_url(@group.creator),
+			invitation_link: accept_user_invitation_url(invitation_token: @user.raw_invitation_token),
+			creator_link: creator_url(@group.creator),
 			site_name: SiteSettings.site_name)
 %>
+
+<%= translate("devise.mailer.invitation_instructions.accept_until", due_date: @user.invitation_due_at.to_date.to_fs(:long_ordinal)) if @inviting %>
+
+<%= translate("devise.mailer.invitation_instructions.ignore") if @inviting %>
+<%- else %>
+<%= translate(".existing.message",
+			creator_name: @group.creator.name,
+			group_name: @group.name,
+			creator_link: creator_url(@group.creator),
+			site_name: SiteSettings.site_name)
+%>
+<%- end %>

@@ -683,8 +683,12 @@ cs:
     view: Zobrazení
   group_mailer:
     new_member:
-      message:
-      subject:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
   groups:
     create:
       success:

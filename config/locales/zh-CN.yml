@@ -683,8 +683,12 @@ zh-CN:
     view: 查看
   group_mailer:
     new_member:
-      message:
-      subject:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
   groups:
     create:
       success:

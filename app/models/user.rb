@@ -81,6 +81,8 @@ class User < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships
 
+  attr_writer :skip_invitation
+
   def federails_name
     username
   end
