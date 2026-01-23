@@ -39,7 +39,8 @@ zh-CN:
         object:
       group:
         description: 说明
-        membership:
+        invitations:
+        memberships:
         name: 名称
         typed_id:
       library:
@@ -910,6 +911,7 @@ zh-CN:
       index:
         copy:
         description:
+        invite_count:
         member_count:
         title:
       new:
