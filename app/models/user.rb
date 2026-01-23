@@ -81,6 +81,8 @@ class User < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships
 
+  attr_writer :skip_invitation
+
   def federails_name
     username
   end
@@ -204,7 +206,7 @@ class User < ApplicationRecord
     has_permission_on?("own", thing)
   end
 
-  def self.match!(identifier:, scope: User)
+  def self.match!(identifier:, scope: User, invite: false)
     raise ActiveRecord::RecordNotFound if identifier.blank?
     query = case identifier
     when URI::MailTo::EMAIL_REGEXP
@@ -221,6 +223,18 @@ class User < ApplicationRecord
       {username: identifier}
     end
     scope.find_by! query
+  rescue ActiveRecord::RecordNotFound
+    if identifier =~ URI::MailTo::EMAIL_REGEXP && invite
+      scope.find(User.invite!(email: identifier, skip_invitation: true).id)
+    else
+      raise
+    end
+  end
+
+  def self.invite!(params)
+    options = params
+    options[:username] ||= "invite_#{SecureRandom.hex(8)}"
+    super(options)
   end
 
   private

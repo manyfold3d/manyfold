@@ -95,6 +95,20 @@ RSpec.describe "Groups", :after_first_run do
         expect(group.reload.members).to include(user)
       end
 
+      context "when inviting new members by email" do
+        let(:params) { {group: {memberships_attributes: {"0" => {user_id: "new_user@example.com"}}}} }
+
+        it "adds a new user" do
+          expect { patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: params }
+            .to change { group.reload.members.count }.from(0).to(1)
+        end
+
+        it "doesn't mail immediately" do
+          patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: params
+          expect(group.members.first&.invitation_sent_at).to be_nil
+        end
+      end
+
       it "adds members by fediverse address" do
         allow(SiteSettings).to receive(:federation_enabled?).and_return(true)
         id_params = {group: {memberships_attributes: {"0" => {user_id: user.federails_actor.at_address}}}}
@@ -117,7 +131,7 @@ RSpec.describe "Groups", :after_first_run do
       end
 
       it "gives a 422 response if the data is invalid" do
-        patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: {group: {name: nil}}
+        patch "/creators/#{creator.to_param}/groups/#{group.to_param}", params: {group: {name: "     "}}
         expect(response).to have_http_status :unprocessable_content
       end
     end

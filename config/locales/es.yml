@@ -683,13 +683,21 @@ es:
     view: Ver
   group_mailer:
     new_member:
-      message:
-      subject:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
   groups:
     create:
       success: Grupo creado correctamente.
     form:
       add: añadir otro miembro
+      description:
+        help:
+      name:
+        help:
     membership_fields:
       user_id:
         delete: Borrar

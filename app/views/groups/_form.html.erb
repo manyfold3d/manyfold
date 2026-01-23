@@ -1,6 +1,8 @@
+<p><%= t(".intro") %></p>
+
 <%= form_with model: [creator, group], class: "container-md tabular-form" do |form| %>
-  <%= TextInputRow(form: form, attribute: :name, label: Group.human_attribute_name(:name)) %>
-  <%= RichTextInputRow(form: form, attribute: :description, label: Group.human_attribute_name(:description)) %>
+  <%= TextInputRow(form: form, attribute: :name, label: Group.human_attribute_name(:name), help: t(".name.help")) %>
+  <%= RichTextInputRow(form: form, attribute: :description, label: Group.human_attribute_name(:description), help: t(".description.help")) %>
 
   <div>
     <%= form.label :memberships %>
