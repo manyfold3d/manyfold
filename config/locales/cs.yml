@@ -39,7 +39,8 @@ cs:
         object: Objekt
       group:
         description: Popis
-        membership:
+        invitations:
+        memberships:
         name: Jméno
         typed_id:
       library:
@@ -683,13 +684,22 @@ cs:
     view: Zobrazení
   group_mailer:
     new_member:
-      message:
-      subject:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
   groups:
     create:
       success:
     form:
       add:
+      description:
+        help:
+      intro:
+      name:
+        help:
     membership_fields:
       user_id:
         delete: Smazat
@@ -901,6 +911,7 @@ cs:
       index:
         copy:
         description:
+        invite_count:
         member_count:
         title:
       new:

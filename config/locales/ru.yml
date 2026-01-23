@@ -39,7 +39,8 @@ ru:
         object:
       group:
         description: Примечания
-        membership:
+        invitations:
+        memberships:
         name: Имя
         typed_id:
       library:
@@ -683,13 +684,22 @@ ru:
     view:
   group_mailer:
     new_member:
-      message:
-      subject:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
   groups:
     create:
       success:
     form:
       add:
+      description:
+        help:
+      intro:
+      name:
+        help:
     membership_fields:
       user_id:
         delete: Удалить
@@ -807,7 +817,7 @@ ru:
       actions_heading:
     mailer:
       footer:
-      greeting:
+      greeting: Привет!
     settings:
       appearance: Внешний вид
       downloads:
@@ -901,6 +911,7 @@ ru:
       index:
         copy:
         description:
+        invite_count:
         member_count:
         title:
       new:

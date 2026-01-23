@@ -39,7 +39,8 @@ fr:
         object: Objet
       group:
         description: Description
-        membership:
+        invitations:
+        memberships:
         name: Nom
         typed_id:
       library:
@@ -686,13 +687,22 @@ fr:
     view: Afficher
   group_mailer:
     new_member:
-      message:
-      subject:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
   groups:
     create:
       success:
     form:
       add:
+      description:
+        help:
+      intro:
+      name:
+        help:
     membership_fields:
       user_id:
         delete: Supprimer
@@ -904,6 +914,7 @@ fr:
       index:
         copy:
         description:
+        invite_count:
         member_count:
         title:
       new:

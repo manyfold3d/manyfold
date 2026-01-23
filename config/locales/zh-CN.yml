@@ -39,7 +39,8 @@ zh-CN:
         object:
       group:
         description: 说明
-        membership:
+        invitations:
+        memberships:
         name: 名称
         typed_id:
       library:
@@ -683,13 +684,22 @@ zh-CN:
     view: 查看
   group_mailer:
     new_member:
-      message:
-      subject:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
   groups:
     create:
       success:
     form:
       add:
+      description:
+        help:
+      intro:
+      name:
+        help:
     membership_fields:
       user_id:
         delete: 删除
@@ -807,7 +817,7 @@ zh-CN:
       actions_heading: 动作
     mailer:
       footer:
-      greeting: Hi!
+      greeting: Hi,
     settings:
       appearance: 外观
       downloads: 下载
@@ -901,6 +911,7 @@ zh-CN:
       index:
         copy:
         description:
+        invite_count:
         member_count:
         title:
       new:

@@ -5,7 +5,7 @@ module ManyfoldApi::V0
         "@context": context,
         name: @object.name,
         description: @object.description,
-        members: @object.members.map(&:username)
+        members: @object.members.active.map(&:username)
       ).compact
     end
 
