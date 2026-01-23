@@ -1265,7 +1265,7 @@
             "description": "The request structure was incorrect"
           },
           "422": {
-            "description": "Creation failed due to invalid data"
+            "description": "Update failed due to invalid data"
           },
           "401": {
             "description": "Unauthorized; the request did not provide valid authentication details"
