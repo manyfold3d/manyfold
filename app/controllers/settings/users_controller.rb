@@ -4,7 +4,7 @@ class Settings::UsersController < ApplicationController
   respond_to :html
 
   def index
-    @users = policy_scope(User).includes([:roles])
+    @users = policy_scope(User).active.includes([:roles])
     @users = apply_sort_order(@users)
     @users = @users.page(params[:page]&.to_i || 1).per(params[:per_page]&.to_i || 25)
     render layout: "settings"
