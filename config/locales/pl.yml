@@ -694,6 +694,10 @@ pl:
       success:
     form:
       add:
+      description:
+        help:
+      name:
+        help:
     membership_fields:
       user_id:
         delete: Usuń

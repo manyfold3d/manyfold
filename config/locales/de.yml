@@ -696,6 +696,10 @@ de:
       success: Gruppe erfolgreich erstellt.
     form:
       add:
+      description:
+        help:
+      name:
+        help:
     membership_fields:
       user_id:
         delete: Löschen

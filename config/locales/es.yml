@@ -694,6 +694,10 @@ es:
       success: Grupo creado correctamente.
     form:
       add: añadir otro miembro
+      description:
+        help:
+      name:
+        help:
     membership_fields:
       user_id:
         delete: Borrar
