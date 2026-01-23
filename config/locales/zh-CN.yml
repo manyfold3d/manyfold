@@ -817,7 +817,7 @@ zh-CN:
       actions_heading: 动作
     mailer:
       footer:
-      greeting: Hi!
+      greeting: Hi,
     settings:
       appearance: 外观
       downloads: 下载
