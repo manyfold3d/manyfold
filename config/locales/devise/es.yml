@@ -11,7 +11,7 @@ es:
       already_authenticated: Ya estás registrado.
       inactive: Tu cuenta aún no ha sido activada.
       invalid: "%{authentication_keys} o contraseña incorrectos."
-      invited:
+      invited: Tienes una invitación pendiente, acéptala para terminar de crear tu cuenta.
       last_attempt: Tienes un intento más antes de que tu cuenta quede bloqueada.
       locked: Su cuenta ha sido bloqueada durante una hora. Inténtelo más tarde.
       not_approved: Tu cuenta aún no ha sido aprobada por un moderador.
@@ -21,17 +21,17 @@ es:
       unconfirmed: Tienes que confirmar tu cuenta para poder continuar.
     invitations:
       edit:
-        header:
-        submit_button:
-      invitation_removed:
-      invitation_token_invalid:
+        header: Establezca su contraseña
+        submit_button: Establecer mi contraseña
+      invitation_removed: Tu invitación ha sido retirada.
+      invitation_token_invalid: El código de invitación proporcionado no es válido
       new:
-        header:
-        submit_button:
-      no_invitations_remaining:
-      send_instructions:
-      updated:
-      updated_not_active:
+        header: Enviar invitación
+        submit_button: Enviar una invitación
+      no_invitations_remaining: No quedan invitaciones
+      send_instructions: Se ha enviado un correo electrónico de invitación a %{email}.
+      updated: Su contraseña se ha establecido correctamente. Ahora estás conectado.
+      updated_not_active: Su contraseña se ha establecido correctamente.
     mailer:
       confirmation_instructions:
         action: Confirmar mi cuenta
@@ -44,12 +44,12 @@ es:
         message_unconfirmed: Nos ponemos en contacto contigo para notificarle que su email cambiará a %{email}.
         subject: Email cambiado
       invitation_instructions:
-        accept:
-        accept_until:
-        hello:
-        ignore:
-        someone_invited_you:
-        subject:
+        accept: Aceptar invitación
+        accept_until: Esta invitación es válida hasta el %{due_date}.
+        hello: Hola %{email}
+        ignore: Si no desea aceptar la invitación, ignore este correo electrónico. Su cuenta no se creará hasta que acceda al enlace anterior y establezca su contraseña.
+        someone_invited_you: Alguien te ha invitado a %{url}, puedes aceptarla a través del siguiente enlace.
+        subject: Instrucciones para la invitación
       password_change:
         greeting: "¡Hola %{recipient}!"
         message: Nos ponemos en contacto contigo para notificarle que su contraseña ha sido modificada.
