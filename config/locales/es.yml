@@ -149,11 +149,11 @@ es:
             path:
               cannot_be_contained: no puede estar dentro de otra biblioteca
               cannot_contain: no puede contener otras bibliotecas
-              non_readable:
-              non_readable_subfolder:
+              non_readable: debe tener permisos de lectura
+              non_readable_subfolder: incluye subcarpetas sin permisos de lectura
               non_writable: se debe poder escribir
-              non_writable_subfolder:
-              not_a_directory:
+              non_writable_subfolder: incluye subcarpetas sin permisos de escritura
+              not_a_directory: no es un directorio
               not_found: no se ha encontrado en el disco
               unsafe: no puede ser una ruta privilegiada del sistema
         model:
@@ -685,8 +685,8 @@ es:
   group_mailer:
     new_member:
       existing:
-        message:
-        subject:
+        message: Has sido añadido al grupo "%{group_name}" de %{site_name}. Si ese grupo tiene acceso a algún modelo privado, ahora puedes acceder a él en %{link}
+        subject: Te han añadido a un grupo
       inviting:
         message:
         subject:
@@ -816,7 +816,7 @@ es:
     card_list_page:
       actions_heading: Acciones
     mailer:
-      footer:
+      footer: 'Este correo electrónico fue enviado por %{site_name}: %{site_link}'
       greeting: "¡Hola!"
     settings:
       appearance: Apariencia
