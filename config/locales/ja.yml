@@ -696,6 +696,7 @@ ja:
       add:
       description:
         help:
+      intro:
       name:
         help:
     membership_fields:

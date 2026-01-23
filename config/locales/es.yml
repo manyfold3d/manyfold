@@ -696,6 +696,7 @@ es:
       add: añadir otro miembro
       description:
         help:
+      intro:
       name:
         help:
     membership_fields:
