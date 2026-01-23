@@ -83,6 +83,9 @@ class User < ApplicationRecord
 
   attr_writer :skip_invitation
 
+  scope :active, -> { where(invitation_token: nil) }
+  scope :invited, -> { where.not(invitation_token: nil) }
+
   def federails_name
     username
   end
@@ -93,6 +96,14 @@ class User < ApplicationRecord
 
   def self.find_param(param)
     find_by!(username: param)
+  end
+
+  def active?
+    invitation_token.nil?
+  end
+
+  def invited?
+    invitation_token.present?
   end
 
   def printed?(file)

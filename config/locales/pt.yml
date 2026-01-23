@@ -39,7 +39,8 @@ pt:
         object:
       group:
         description:
-        membership:
+        invitations:
+        memberships:
         name:
         typed_id:
       library:
@@ -910,6 +911,7 @@ pt:
       index:
         copy:
         description:
+        invite_count:
         member_count:
         title:
       new:

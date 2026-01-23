@@ -39,7 +39,8 @@ fr:
         object: Objet
       group:
         description: Description
-        membership:
+        invitations:
+        memberships:
         name: Nom
         typed_id:
       library:
@@ -913,6 +914,7 @@ fr:
       index:
         copy:
         description:
+        invite_count:
         member_count:
         title:
       new:

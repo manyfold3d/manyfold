@@ -39,7 +39,8 @@ ja:
         object:
       group:
         description: ノート
-        membership:
+        invitations:
+        memberships:
         name: 名前
         typed_id:
       library:
@@ -910,6 +911,7 @@ ja:
       index:
         copy:
         description:
+        invite_count:
         member_count:
         title:
       new:
