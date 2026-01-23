@@ -39,7 +39,8 @@ es:
         object: Objeto
       group:
         description: Descripción
-        membership: Afiliación
+        invitations:
+        memberships:
         name: Nombre
         typed_id: Permiso ID
       library:
@@ -683,13 +684,22 @@ es:
     view: Ver
   group_mailer:
     new_member:
-      message: Has sido añadido al grupo "%{group_name}" de %{site_name}. Si ese grupo tiene acceso a algún modelo privado, ahora puedes acceder a él en %{link}
-      subject: Te han añadido a un grupo
+      existing:
+        message: Has sido añadido al grupo "%{group_name}" de %{site_name}. Si ese grupo tiene acceso a algún modelo privado, ahora puedes acceder a él en %{link}
+        subject: Te han añadido a un grupo
+      inviting:
+        message:
+        subject:
   groups:
     create:
       success: Grupo creado correctamente.
     form:
       add: añadir otro miembro
+      description:
+        help:
+      intro:
+      name:
+        help:
     membership_fields:
       user_id:
         delete: Borrar
@@ -901,6 +911,7 @@ es:
       index:
         copy: Copie el ID en el portapapeles para utilizarlo en la configuración de permisos.
         description: Los Grupos de Usuarios son colecciones de usuarios de instancias locales, útiles para gestionar cosas como suscriptores de Patreon o Liberapay. Puedes conceder permisos a un grupo sobre cualquier objeto utilizando su ID de permiso, al igual que un rol de sitio o un usuario individual.
+        invite_count:
         member_count: "%{count} miembros"
         title: Grupos de usuarios
       new:

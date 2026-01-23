@@ -39,7 +39,8 @@ de:
         object: Objekt
       group:
         description: Beschreibung
-        membership:
+        invitations:
+        memberships:
         name: Name
         typed_id:
       library:
@@ -685,13 +686,22 @@ de:
     view: Siehe
   group_mailer:
     new_member:
-      message:
-      subject:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
   groups:
     create:
       success: Gruppe erfolgreich erstellt.
     form:
       add:
+      description:
+        help:
+      intro:
+      name:
+        help:
     membership_fields:
       user_id:
         delete: Löschen
@@ -903,6 +913,7 @@ de:
       index:
         copy:
         description:
+        invite_count:
         member_count:
         title:
       new:

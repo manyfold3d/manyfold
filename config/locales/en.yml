@@ -39,7 +39,8 @@ en:
         object: Object
       group:
         description: Description
-        membership: Membership
+        invitations: Invitations
+        memberships: Memberships
         name: Name
         typed_id: Permission ID
       library:
@@ -683,13 +684,22 @@ en:
     view: View
   group_mailer:
     new_member:
-      message: You've been added to %{creator_name}'s group "%{group_name}" on %{site_name}. If that group has access to any private models, you can now access them at %{link}
-      subject: You've been added to a group
+      existing:
+        message: You've been added to %{creator_name}'s group "%{group_name}" on %{site_name}. If that group has access to any private models, you can now access them at %{creator_link}
+        subject: You've been added to a group on %{site_name}
+      inviting:
+        message: You've been invited to %{creator_name}'s group "%{group_name}" on %{site_name}. To access the models, set up your account at %{invitation_link} and then view the creator's models at %{creator_link}
+        subject: Claim your models on %{site_name}
   groups:
     create:
       success: Group created successfully.
     form:
       add: add another member
+      description:
+        help: Private note; not displayed publicly anywhere.
+      intro: Add members to the group by entering their site username or email. Members with existing site accounts will be notified they've been added, and those without will be invited to create an account in order to access content.
+      name:
+        help: Members will be shown this name when they're notified that they've been added.
     membership_fields:
       user_id:
         delete: Delete
@@ -901,6 +911,7 @@ en:
       index:
         copy: Copy ID to clipboard for use in permission settings.
         description: User Groups are collections of local instance users, useful for managing things like Patreon or Liberapay subscribers. You can grant a group permissions on any object by using its permission ID, just like a site role or individual user.
+        invite_count: "%{count} open invitations"
         member_count: "%{count} members"
         title: User Groups
       new:

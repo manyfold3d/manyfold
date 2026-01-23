@@ -39,7 +39,8 @@ pl:
         object: Obiekt
       group:
         description: Opis
-        membership:
+        invitations:
+        memberships:
         name: Nazwa
         typed_id:
       library:
@@ -683,13 +684,22 @@ pl:
     view: Widok
   group_mailer:
     new_member:
-      message:
-      subject:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
   groups:
     create:
       success:
     form:
       add:
+      description:
+        help:
+      intro:
+      name:
+        help:
     membership_fields:
       user_id:
         delete: Usuń
@@ -901,6 +911,7 @@ pl:
       index:
         copy:
         description:
+        invite_count:
         member_count:
         title:
       new:

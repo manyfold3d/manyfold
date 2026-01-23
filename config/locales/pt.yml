@@ -39,7 +39,8 @@ pt:
         object:
       group:
         description:
-        membership:
+        invitations:
+        memberships:
         name:
         typed_id:
       library:
@@ -683,13 +684,22 @@ pt:
     view:
   group_mailer:
     new_member:
-      message:
-      subject:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
   groups:
     create:
       success:
     form:
       add:
+      description:
+        help:
+      intro:
+      name:
+        help:
     membership_fields:
       user_id:
         delete:
@@ -901,6 +911,7 @@ pt:
       index:
         copy:
         description:
+        invite_count:
         member_count:
         title:
       new:
