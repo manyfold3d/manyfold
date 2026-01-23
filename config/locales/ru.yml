@@ -817,7 +817,7 @@ ru:
       actions_heading:
     mailer:
       footer:
-      greeting:
+      greeting: Привет!
     settings:
       appearance: Внешний вид
       downloads:
