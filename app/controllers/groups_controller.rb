@@ -37,6 +37,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = @creator.groups.create group_params
+    @new_memberships = @group.reload.memberships if @group.valid?
     authorize @group
     respond_to do |format|
       format.html do
@@ -59,7 +60,7 @@ class GroupsController < ApplicationController
   def update
     previous_membership_ids = @group.memberships.pluck(:id)
     @group.update group_params
-    @new_memberships = @group.reload.memberships.where.not(id: previous_membership_ids)
+    @new_memberships = @group.reload.memberships.where.not(id: previous_membership_ids) if @group.valid?
     respond_to do |format|
       format.html do
         if @group.valid?
@@ -89,10 +90,8 @@ class GroupsController < ApplicationController
   private
 
   def send_notifications
-    if @group.valid?
-      @new_memberships&.each do |it|
-        NewGroupMemberNotifier.with(membership: it).deliver(it.user)
-      end
+    @new_memberships&.each do |it|
+      NewGroupMemberNotifier.with(membership: it).deliver(it.user)
     end
   end
 
