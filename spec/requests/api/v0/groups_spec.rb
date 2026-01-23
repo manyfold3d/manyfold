@@ -218,7 +218,7 @@ describe "User Groups", :after_first_run, :multiuser do # rubocop:disable RSpec/
         run_test!
       end
 
-      response "422", "Creation failed due to invalid data" do
+      response "422", "Update failed due to invalid data" do
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:body) { {"name" => ""} }
 
