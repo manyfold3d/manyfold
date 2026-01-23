@@ -40,9 +40,9 @@ de:
       group:
         description: Beschreibung
         invitations:
-        memberships:
+        memberships: Mitgliedschaft
         name: Name
-        typed_id:
+        typed_id: Berechtigungsa-ID
       library:
         caption: Beschreibung
         create_path_if_not_on_disk: Ordner automatisch erstellen
@@ -696,7 +696,7 @@ de:
     create:
       success: Gruppe erfolgreich erstellt.
     form:
-      add:
+      add: ein weiteres Mitglied hinzufügen
       description:
         help:
       intro:
@@ -909,15 +909,15 @@ de:
       edit:
         title: Bearbeiten
       form:
-        confirm_destroy:
+        confirm_destroy: Bist du sicher, dass du diese Benutzergruppe entfernen möchtest?
       index:
-        copy:
-        description:
+        copy: Kopiere die ID in die Zwischenablage zur Verwendung in den Berechtigungseinstellungen.
+        description: Benutzergruppen sind Sammlungen von lokalen Instanzbenutzern, die für die Verwaltung von Dingen wie Patreon- oder Liberapay-Abonnenten nützlich sind. Du kannst einer Gruppe Rechte für jedes Objekt erteilen, indem Du ihre Rechte-ID verwendest, genau wie eine Site-Rolle oder ein einzelner Benutzer.
         invite_count:
-        member_count:
-        title:
+        member_count: "%{count} Mitglieder"
+        title: Benutzergruppen
       new:
-        title:
+        title: Neue Gruppe
     pagination:
       first: "« Anfang"
       last: Letzte »
