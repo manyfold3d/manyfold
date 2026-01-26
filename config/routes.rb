@@ -17,6 +17,15 @@ Rails.application.routes.draw do
   devise_controllers[:omniauth_callbacks] = "users/omniauth_callbacks" if Rails.application.config.manyfold_features[:oidc]
   devise_for :users, controllers: devise_controllers
 
+  use_doorkeeper do
+    skip_controllers :applications, :tokens
+  end
+  resources :doorkeeper_tokens, path: "/oauth/token"
+
+  authenticate :user do
+    resources :doorkeeper_applications, path: "/oauth/applications"
+  end
+
   authenticate :user, lambda { |u| u.is_administrator? } do
     resource :settings, only: [:show, :update] do
       collection do
@@ -161,12 +170,6 @@ Rails.application.routes.draw do
 
   mount Rswag::Ui::Engine => "/api", :as => :api
   mount Rswag::Api::Engine => "/api"
-
-  use_doorkeeper do
-    skip_controllers :applications, :tokens
-  end
-  resources :doorkeeper_applications, path: "/oauth/applications"
-  resources :doorkeeper_tokens, path: "/oauth/token"
 
   # Fallback routes for filename matching and signed downloads
   get "/models/:model_id/model_files/signed/:sig/*id" => "model_files#show", :as => "model_model_file_by_signed_filename"
