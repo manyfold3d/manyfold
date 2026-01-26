@@ -2,6 +2,12 @@
 
 <p class="lead"><%= t(".description") %></p>
 
+<% if current_user.is_moderator? %>
+  <div class="alert alert-info">
+    <%= t(".moderator_notice") %>
+  </div>
+<% end %>
+
 <table class="table table-striped">
   <tr>
     <td><%= Doorkeeper::Application.human_attribute_name(:name) %></td>
