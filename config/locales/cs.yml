@@ -325,6 +325,7 @@ cs:
       check_results:
         confirm:
         label:
+      developer:
       home: Domovská stránka
       import_url:
       log_in: Přihlásit se
@@ -576,6 +577,7 @@ cs:
       submit: Uložit aplikaci
     index:
       description: Aplikace OAuth umožňují přístup k prostředkům Manyfold z jiných služeb prostřednictvím našeho rozhraní API.
+      moderator_notice:
       new: Nová aplikace
       title: Aplikace OAuth
     new:

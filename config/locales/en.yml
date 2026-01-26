@@ -325,6 +325,7 @@ en:
       check_results:
         confirm: Are you sure you want to start a rescan of all filtered models? This may take a long time!
         label: Rescan filtered models
+      developer: Developers
       home: Homepage
       import_url: Import URL
       log_in: Sign in
@@ -576,6 +577,7 @@ en:
       submit: Save API key details
     index:
       description: API keys allow you to access Manyfold resources from other services via our API.
+      moderator_notice: As you are a moderator, you can access all users' API keys in this interface. A separate view for key moderation will be available in future to make it easier to manage just your own keys.
       new: New API key
       title: API keys
     new:

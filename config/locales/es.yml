@@ -325,6 +325,7 @@ es:
       check_results:
         confirm: "¿Está seguro de que quiere volver a escanear todos los modelos filtrados? Esto puede llevar mucho tiempo."
         label: Volver a escanear los modelos filtrados
+      developer:
       home: Inicio
       import_url: Importar URL
       log_in: Iniciar sesión
@@ -576,6 +577,7 @@ es:
       submit: Guardar aplicación
     index:
       description: Las aplicaciones OAuth le permiten acceder a los recursos de Manyfold desde otros servicios a través de nuestra API.
+      moderator_notice:
       new: Nueva aplicación
       title: Aplicaciones OAuth
     new:

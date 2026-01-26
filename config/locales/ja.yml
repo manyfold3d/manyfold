@@ -325,6 +325,7 @@ ja:
       check_results:
         confirm:
         label:
+      developer:
       home: ホームページ
       import_url:
       log_in: ログイン
@@ -576,6 +577,7 @@ ja:
       submit:
     index:
       description:
+      moderator_notice:
       new:
       title:
     new:
