@@ -560,12 +560,12 @@ en:
       status: Pre-authorization
   doorkeeper_applications:
     create:
-      failure: An error occurred, and the application could not be created.
-      success: Application created successfully.
+      failure: An error occurred, and the API key could not be created.
+      success: API key created successfully.
     destroy:
-      success: Application deleted successfully.
+      success: API key deleted successfully.
     edit:
-      title: Edit application
+      title: Edit API key
     form:
       confidential:
         help: A confidential application can hold secrets securely (e.g. a web server backend, or machine-to-machine script).
@@ -573,20 +573,20 @@ en:
         help: Use "urn:ietf:wg:oauth:2.0:oob" if your application does not need a redirect URI (e.g. machine-to-machine apps).
       scopes:
         label: Scopes
-      submit: Save application
+      submit: Save API key details
     index:
-      description: OAuth applications allow you to access Manyfold resources from other services via our API.
-      new: New application
-      title: OAuth Applications
+      description: API keys allow you to access Manyfold resources from other services via our API.
+      new: New API key
+      title: API keys
     new:
-      title: New application
+      title: New API key
     show:
       destroy: Delete
       edit: Edit
-      title: Application details
+      title: API Key details
     update:
-      failure: An error occurred, and the application could not be saved.
-      success: Application saved successfully.
+      failure: An error occurred, and the API key details could not be saved.
+      success: API key details saved successfully.
   errors:
     messages:
       already_confirmed: was already confirmed, please try signing in
