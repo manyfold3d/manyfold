@@ -1,3 +1,5 @@
-<h3><%= t(".title") %></h3>
+<%= PageTitle title: t(".title"), breadcrumbs: {
+      t("doorkeeper_applications.index.title") => doorkeeper_applications_path
+    } %>
 
 <%= render "form" %>

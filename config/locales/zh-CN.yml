@@ -325,6 +325,7 @@ zh-CN:
       check_results:
         confirm: 您确定要重新扫描所有已过滤的模型吗？这可能需要很长时间！
         label: 重新扫描已过滤的模型
+      developer:
       home: 主页
       import_url: 导入 URL
       log_in: 登录
@@ -576,6 +577,7 @@ zh-CN:
       submit: 保存应用
     index:
       description: OAuth 应用程序允许您通过我们的 API 从其他服务访问 Manyfold 资源。
+      moderator_notice:
       new: 创建新应用
       title: OAuth 应用程序
     new:

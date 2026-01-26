@@ -327,6 +327,7 @@ de:
       check_results:
         confirm: Bist du sicher, dass du einen erneuten Scan aller gefilterten Modelle starten willst? Das kann sehr lange dauern!
         label: Gefilterte Modelle erneut scannen
+      developer:
       home: Homepage
       import_url: URL importieren
       log_in: Einloggen
@@ -578,6 +579,7 @@ de:
       submit: Anwendung speichern
     index:
       description: OAuth-Anwendungen ermöglichen den Zugriff auf Manyfold-Ressourcen von anderen Diensten aus über unsere API.
+      moderator_notice:
       new: Neue Anwendung
       title: OAuth-Anwendungen
     new:

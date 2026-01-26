@@ -325,6 +325,7 @@ pl:
       check_results:
         confirm:
         label:
+      developer:
       home: Strona główna
       import_url:
       log_in: Zaloguj się
@@ -576,6 +577,7 @@ pl:
       submit:
     index:
       description:
+      moderator_notice:
       new:
       title:
     new:

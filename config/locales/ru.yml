@@ -325,6 +325,7 @@ ru:
       check_results:
         confirm:
         label:
+      developer:
       home:
       import_url:
       log_in:
@@ -576,6 +577,7 @@ ru:
       submit:
     index:
       description:
+      moderator_notice:
       new:
       title:
     new:

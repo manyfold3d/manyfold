@@ -325,6 +325,7 @@ nl:
       check_results:
         confirm:
         label:
+      developer:
       home: Startpagina
       import_url:
       log_in: Inloggen
@@ -576,6 +577,7 @@ nl:
       submit:
     index:
       description:
+      moderator_notice:
       new:
       title:
     new:
