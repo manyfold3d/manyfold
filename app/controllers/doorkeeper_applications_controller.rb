@@ -3,11 +3,9 @@ class DoorkeeperApplicationsController < ApplicationController
 
   def index
     @applications = policy_scope(Doorkeeper::Application)
-    render layout: "settings"
   end
 
   def show
-    render layout: "settings"
   end
 
   def new
@@ -16,11 +14,9 @@ class DoorkeeperApplicationsController < ApplicationController
       redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
       scopes: Doorkeeper.configuration.default_scopes
     )
-    render layout: "settings"
   end
 
   def edit
-    render layout: "settings"
   end
 
   def create
