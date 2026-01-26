@@ -1,6 +1,6 @@
 class Doorkeeper::ApplicationPolicy < ApplicationPolicy
   def index?
-    user.present?
+    user&.is_contributor?
   end
 
   def show?
@@ -11,8 +11,11 @@ class Doorkeeper::ApplicationPolicy < ApplicationPolicy
   end
 
   def create?
-    none_of(
-      SiteSettings.demo_mode_enabled?
+    all_of(
+      user&.is_contributor?,
+      none_of(
+        SiteSettings.demo_mode_enabled?
+      )
     )
   end
 

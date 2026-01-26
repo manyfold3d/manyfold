@@ -148,9 +148,11 @@
                   <%= DropdownHeader text: t(".social") %>
                   <%= DropdownItem label: t("follows.index.title"), path: follows_path %>
                 <%- end %>
-                <%= DropdownDivider() %>
-                <%= DropdownHeader text: t(".developer") %>
-                <%= DropdownItem label: t("doorkeeper_applications.index.title"), path: doorkeeper_applications_path %>
+                <%- if policy(Doorkeeper::Application).index? %>
+                  <%= DropdownDivider() %>
+                  <%= DropdownHeader text: t(".developer") %>
+                  <%= DropdownItem label: t("doorkeeper_applications.index.title"), path: doorkeeper_applications_path %>
+                <%- end %>
                 <%= DropdownDivider() %>
                 <%= DropdownItem icon: "box-arrow-right", label: t(".log_out"), path: destroy_user_session_path, method: :delete %>
               </ul>
