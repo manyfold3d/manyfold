@@ -2,6 +2,8 @@
       t("doorkeeper_applications.index.title") => doorkeeper_applications_path
     } %>
 
+<p><%= t ".oauth_help" %></p>
+
 <table class="table table-striped">
   <tr>
     <td><%= Doorkeeper::Application.human_attribute_name :name %></td>

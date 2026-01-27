@@ -585,6 +585,7 @@ en:
     show:
       destroy: Delete
       edit: Edit
+      oauth_help: You can access the Manyfold API via the OAuth client_credentials flow, using the security details below.
       title: API Key details
     update:
       failure: An error occurred, and the API key details could not be saved.
