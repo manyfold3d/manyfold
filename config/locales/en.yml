@@ -19,6 +19,12 @@ en:
         name: Creator Name
         notes: Description
         slug: Handle
+      doorkeeper/access_token:
+        active: Active
+        created_at: Created
+        expires_in: Lifetime
+        fingerprint: Fingerprint
+        scopes: Scopes
       doorkeeper/application:
         access_token: Access Token
         confidential: Confidential
@@ -587,6 +593,8 @@ en:
       edit: Edit
       oauth_help: You can access the Manyfold API via the OAuth client_credentials flow, using the security details below.
       title: API Key details
+      token_help: Access tokens are short-lived temporary keys used for actual API requests. The OAuth client_credentials flow automatically creates them as needed, and old ones are removed regularly, but if you want to, you can create long-lasting tokens to use in simple API clients.
+      tokens: Access Tokens
     update:
       failure: An error occurred, and the API key details could not be saved.
       success: API key details saved successfully.

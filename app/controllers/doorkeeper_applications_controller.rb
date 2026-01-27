@@ -6,6 +6,7 @@ class DoorkeeperApplicationsController < ApplicationController
   end
 
   def show
+    @access_tokens = @application.access_tokens
   end
 
   def new

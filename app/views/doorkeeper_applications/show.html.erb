@@ -33,3 +33,28 @@
 
 <%= link_to t(".edit"), edit_doorkeeper_application_path(@application), class: "btn btn-primary" %>
 <%= link_to t(".destroy"), doorkeeper_application_path(@application), method: :delete, class: "btn btn-outline-danger" %>
+
+<hr>
+
+<h3><%= t ".tokens" %></h3>
+
+<p><%= t ".token_help" %></p>
+
+<table class="table table-striped">
+  <tr>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:fingerprint) %></th>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:created_at) %></th>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:expires_in) %></th>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:scopes) %></th>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:active) %></th>
+  </tr>
+  <% @access_tokens.each do |token| %>
+    <tr>
+      <td><%= Digest::SHA256.hexdigest(token.token).first(8) %></td>
+      <td><%= token.created_at.to_fs(:long_ordinal) %></td>
+      <td><%= distance_of_time_in_words(token.created_at, token.created_at + token.expires_in) if token.expires_in %></td>
+      <td><%= token.scopes %></td>
+      <td><%= checkmark(!(token.expired? || token.revoked_at)) %></td>
+    </tr>
+  <% end %>
+</table>
