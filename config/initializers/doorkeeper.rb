@@ -11,6 +11,7 @@ Doorkeeper.configure do
   hash_token_secrets
   authorization_code_expires_in 10.minutes
   access_token_expires_in 2.hours
+  use_refresh_token
   forbid_redirect_uri { |uri| %w[data vbscript javascript].include?(uri.scheme.to_s.downcase) }
 
   # Authentication
