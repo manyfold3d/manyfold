@@ -434,7 +434,7 @@ es:
       tag: Busca modelos con una etiqueta específica
       title: Sintaxis de búsqueda
       unset: Utilice "set?" para consultar si un campo concreto está establecido, y añada "not" para encontrar lo contrario.
-      without_tag: Utilice "!=" para encontrar modelos sin una etiqueta específica
+      without_tag: Utilice "!tag" para encontrar modelos sin una etiqueta específica
     sort_menu:
       name: Título
       recent: Más reciente

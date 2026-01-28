@@ -434,7 +434,7 @@ zh-CN:
       tag: 查找带有特定 Tag 的模型
       title: 搜索语法
       unset: 使用 "set?" 查询特定字段是否已设置，添加 "not" 则可查找相反字段。
-      without_tag: 使用 "!=" 查找不带有特定 Tag 的模型
+      without_tag: 使用 "!tag" 查找不带有特定 Tag 的模型
     sort_menu:
       name: 标题
       recent: 上传时间

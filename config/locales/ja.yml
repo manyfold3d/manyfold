@@ -434,7 +434,7 @@ ja:
       tag: 特定のタグを持つモデルを検索する
       title: 検索構文
       unset: 特定のフィールドがセットされているかどうかを調べるには 「set?」を使い、その反対を調べるには 「not」を加える。
-      without_tag: 特定のタグがないモデルを見つけるには「！」
+      without_tag: 特定のタグがないモデルを見つけるには「!tag」
     sort_menu:
       name:
       recent:

@@ -434,7 +434,7 @@ en:
       tag: Finds models with a specific tag
       title: Search Syntax
       unset: Use "set?" to query if a particular field is set, and add "not" to find the opposite.
-      without_tag: Use "!=" to find models without a certain tag
+      without_tag: Use "!tag" to find models without a certain tag
     sort_menu:
       name: Title
       recent: Newest

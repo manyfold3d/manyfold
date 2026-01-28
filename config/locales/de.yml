@@ -436,7 +436,7 @@ de:
       tag: Findet Modelle mit einem bestimmten Tag
       title: Suchsyntax
       unset: Verwende "set?", um abzufragen, ob ein bestimmtes Feld gesetzt ist, und füge "not" hinzu, um das Gegenteil festzustellen.
-      without_tag: Verwende "!=", um Modelle ohne ein bestimmtes Tag zu finden
+      without_tag: Verwende "!tag", um Modelle ohne ein bestimmtes Tag zu finden
     sort_menu:
       name: Titel
       recent: Neueste
