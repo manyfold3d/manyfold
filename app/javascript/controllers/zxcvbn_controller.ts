@@ -12,11 +12,7 @@ export default class extends Controller {
   connect (): void {
     zxcvbnOptions.setOptions({
       translations: zxcvbnEnPackage.translations,
-      graphs: zxcvbnCommonPackage.adjacencyGraphs,
-      dictionary: {
-        ...zxcvbnCommonPackage.dictionary,
-        ...zxcvbnEnPackage.dictionary
-      }
+      graphs: zxcvbnCommonPackage.adjacencyGraphs
     })
     this.meter = this.element.parentElement?.querySelector('.zxcvbn-meter') ?? null
     this.minScore = parseInt(this.meter?.dataset.zxcvbnMinScore ?? '4')
