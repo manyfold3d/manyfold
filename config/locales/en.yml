@@ -21,8 +21,8 @@ en:
         slug: Handle
       doorkeeper/access_token:
         active: Active
-        created_at: Created
-        expires_in: Lifetime
+        created_at: Created at
+        expires_in: Expires in
         fingerprint: Fingerprint
         scopes: Scopes
       doorkeeper/application:
@@ -598,6 +598,11 @@ en:
     update:
       failure: An error occurred, and the API key details could not be saved.
       success: API key details saved successfully.
+  doorkeeper_applications_helper:
+    token_expiry_string:
+      expired: Expired
+      never: Never
+      revoked: Revoked
   errors:
     messages:
       already_confirmed: was already confirmed, please try signing in

@@ -51,10 +51,18 @@
   <% @access_tokens.each do |token| %>
     <tr>
       <td><%= Digest::SHA256.hexdigest(token.token).first(8) %></td>
-      <td title="<%= token.created_at %>"><%= token.created_at.to_fs(:long_ordinal) %></td>
-      <td title="<%= token.created_at + token.expires_in if token.expires_in %>"><%= distance_of_time_in_words(token.created_at, token.created_at + token.expires_in) if token.expires_in %></td>
+      <td>
+        <span title="<%= token.created_at %>">
+          <%= token.created_at.to_fs(:long_ordinal) %>
+        </span>
+      </td>
+      <td>
+        <span title="<%= token.created_at + token.expires_in if token.expires_in %>">
+          <%= token_expiry_string(token) %>
+        </span>
+      </td>
       <td><%= token.scopes %></td>
-      <td><%= checkmark(!(token.expired? || token.revoked_at)) %></td>
+      <td><%= checkmark(token.accessible?) %></td>
     </tr>
   <% end %>
 </table>
