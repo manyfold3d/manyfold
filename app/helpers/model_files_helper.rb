@@ -34,7 +34,7 @@ module ModelFilesHelper
     when :bambu
       # Bambu will only open from Makerworld and a few others
       URI::Generic.new(
-        "bambustudioopen", nil,
+        "bambustudio", nil,
         CGI.escapeURIComponent(signed_url), nil, nil, nil, nil,
         nil, nil
       ).to_s
