@@ -12,7 +12,7 @@ RSpec.describe ModelFilesHelper do
 
     it "generates bambustudio links" do
       url = helper.slicer_url(:bambu, file)
-      expect(url).to match(/bambustudioopen#{slic3r_family_regex}/)
+      expect(url).to match(/bambustudio#{slic3r_family_regex}/)
     end
 
     it "generates prusaslicer links" do
