@@ -14,7 +14,7 @@
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.21",
     "@infinizhen/rpg-awesome-continued": "^1.0.6",
-    "@notus.sh/cocooned": "^2.5.0",
+    "@notus.sh/cocooned": "^3.0.0",
     "@popperjs/core": "^2.11.8",
     "@rails/ujs": "^7.1.600",
     "@uppy/core": "^5.2.0",
