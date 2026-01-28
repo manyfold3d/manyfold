@@ -19,6 +19,12 @@ cs:
         name: Jméno
         notes: Popis
         slug: Handle
+      doorkeeper/access_token:
+        active:
+        created_at:
+        expires_in:
+        fingerprint:
+        scopes:
       doorkeeper/application:
         access_token: Přístupový token
         confidential: Důvěrné
@@ -559,6 +565,24 @@ cs:
         title: OAuth vyžaduje autorizaci
     pre_authorization:
       status: Pre-autorizace
+  doorkeeper_access_tokens:
+    create:
+      failed:
+      success:
+    destroy:
+      success:
+    new:
+      expiry:
+        label:
+      scopes:
+        label:
+      submit:
+      title:
+    show:
+      bearer_token_help:
+      description:
+      done:
+      title:
   doorkeeper_applications:
     create:
       failure: Došlo k chybě a aplikaci nebylo možné vytvořit.
@@ -585,10 +609,21 @@ cs:
     show:
       destroy: Smazat
       edit: Upravit
+      oauth_help:
+      revoke:
+        confirm:
+        label:
       title: Podrobnosti o aplikaci
+      token_help:
+      tokens:
     update:
       failure: Došlo k chybě a aplikaci nebylo možné uložit.
       success: Aplikace byla úspěšně uložena.
+  doorkeeper_applications_helper:
+    token_expiry_string:
+      expired:
+      never:
+      revoked:
   errors:
     messages:
       already_confirmed:

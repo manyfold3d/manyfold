@@ -12,23 +12,7 @@ class CacheSweepJob < ApplicationJob
   end
 
   def doorkeeper_cleanup
-    # Code taken from doorkeeper cleanup rake task
-
-    # Removes stale access tokens
-    cleaner = Doorkeeper::StaleRecordsCleaner.new(Doorkeeper.config.access_token_model)
-    cleaner.clean_revoked
-
-    # Removes expired (TTL passed) access tokens
-    expirable_tokens = Doorkeeper.config.access_token_model.where(refresh_token: nil)
-    cleaner = Doorkeeper::StaleRecordsCleaner.new(expirable_tokens)
-    cleaner.clean_expired(Doorkeeper.config.access_token_expires_in)
-
-    # Removes stale access grants
-    cleaner = Doorkeeper::StaleRecordsCleaner.new(Doorkeeper.config.access_grant_model)
-    cleaner.clean_revoked
-
-    # Removes expired (TTL passed) access grants
-    cleaner = Doorkeeper::StaleRecordsCleaner.new(Doorkeeper.config.access_grant_model)
-    cleaner.clean_expired(Doorkeeper.config.authorization_code_expires_in)
+    Doorkeeper.config.access_token_model.find_each { |it| it.destroy unless it.accessible? }
+    Doorkeeper.config.access_grant_model.find_each { |it| it.destroy unless it.accessible? }
   end
 end

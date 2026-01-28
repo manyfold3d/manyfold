@@ -19,6 +19,12 @@ zh-CN:
         name: 创作者姓名
         notes: 说明
         slug:
+      doorkeeper/access_token:
+        active:
+        created_at:
+        expires_in:
+        fingerprint:
+        scopes:
       doorkeeper/application:
         access_token: 访问令牌
         confidential: 保密
@@ -559,6 +565,24 @@ zh-CN:
         title: 需要 OAuth 认证
     pre_authorization:
       status: 预授权
+  doorkeeper_access_tokens:
+    create:
+      failed:
+      success:
+    destroy:
+      success:
+    new:
+      expiry:
+        label:
+      scopes:
+        label:
+      submit:
+      title:
+    show:
+      bearer_token_help:
+      description:
+      done:
+      title:
   doorkeeper_applications:
     create:
       failure: 发生错误，应用无法创建。
@@ -585,10 +609,21 @@ zh-CN:
     show:
       destroy: 删除
       edit: 编辑
+      oauth_help:
+      revoke:
+        confirm:
+        label:
       title: 应用详情
+      token_help:
+      tokens:
     update:
       failure: 发生错误，应用无法保存。
       success: 应用已成功保存。
+  doorkeeper_applications_helper:
+    token_expiry_string:
+      expired:
+      never:
+      revoked:
   errors:
     messages:
       already_confirmed:

@@ -19,6 +19,12 @@ en:
         name: Creator Name
         notes: Description
         slug: Handle
+      doorkeeper/access_token:
+        active: Active
+        created_at: Created at
+        expires_in: Expires in
+        fingerprint: Fingerprint
+        scopes: Scopes
       doorkeeper/application:
         access_token: Access Token
         confidential: Confidential
@@ -559,6 +565,24 @@ en:
         title: OAuth authorization required
     pre_authorization:
       status: Pre-authorization
+  doorkeeper_access_tokens:
+    create:
+      failed: Access token creation failed
+      success: Access token created successfully
+    destroy:
+      success: Access token revoked successfully.
+    new:
+      expiry:
+        label: Expiration
+      scopes:
+        label: Scopes
+      submit: Submit
+      title: New Access Token
+    show:
+      bearer_token_help: 'If you are using the token for a non-OAuth API client, you will need to provide it as a "bearer token" in your HTTP Authentication header:'
+      description: Your new access token has been created. Click below to reveal the token itself; this will only be shown once! If you lose it, you will need to generate a new one.
+      done: Done
+      title: Access Token Details
   doorkeeper_applications:
     create:
       failure: An error occurred, and the API key could not be created.
@@ -585,10 +609,21 @@ en:
     show:
       destroy: Delete
       edit: Edit
+      oauth_help: You can access the Manyfold API via the OAuth client_credentials flow, using the security details below.
+      revoke:
+        confirm: Are you sure you want to revoke this access token? Any application currently using it will be unable to authenticate.
+        label: Revoke
       title: API Key details
+      token_help: Access tokens are short-lived temporary keys used for actual API requests. The OAuth client_credentials flow automatically creates them as needed, and old ones are removed regularly, but if you want to, you can create long-lasting tokens to use in simple API clients.
+      tokens: Access Tokens
     update:
       failure: An error occurred, and the API key details could not be saved.
       success: API key details saved successfully.
+  doorkeeper_applications_helper:
+    token_expiry_string:
+      expired: Expired
+      never: Never
+      revoked: Revoked
   errors:
     messages:
       already_confirmed: was already confirmed, please try signing in

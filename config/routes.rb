@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   resources :doorkeeper_tokens, path: "/oauth/token"
 
   authenticate :user do
-    resources :doorkeeper_applications, path: "/oauth/applications"
+    resources :doorkeeper_applications, path: "/oauth/applications" do
+      resources :doorkeeper_access_tokens, except: [:index, :edit, :update], path: "tokens"
+    end
   end
 
   authenticate :user, lambda { |u| u.is_administrator? } do

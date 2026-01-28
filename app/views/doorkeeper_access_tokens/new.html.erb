@@ -1,0 +1,22 @@
+<%= PageTitle title: t(".title"), breadcrumbs: {
+      t("doorkeeper_applications.index.title") => doorkeeper_applications_path,
+      t("doorkeeper_applications.show.title") => doorkeeper_application_path(@application)
+    } %>
+
+<%= form_with model: [@application, @token], class: "container-md tabular-form" do |form| %>
+  <%= select_input_row form, :expires_in,
+        [
+          [distance_of_time_in_words(7.days), 7.days],
+          [distance_of_time_in_words(4.weeks), 4.weeks],
+          [distance_of_time_in_words(3.months), 3.months],
+          [distance_of_time_in_words(6.months), 6.months]
+        ],
+        label: t(".expiry.label") %>
+  <%= select_input_row form, :scopes,
+        ["public", "read", "write", "delete"],
+        label: t(".scopes.label"),
+        multiple: true %>
+  <div>
+    <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+  </div>
+<% end %>

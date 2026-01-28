@@ -2,6 +2,8 @@
       t("doorkeeper_applications.index.title") => doorkeeper_applications_path
     } %>
 
+<p><%= t ".oauth_help" %></p>
+
 <table class="table table-striped">
   <tr>
     <td><%= Doorkeeper::Application.human_attribute_name :name %></td>
@@ -31,3 +33,42 @@
 
 <%= link_to t(".edit"), edit_doorkeeper_application_path(@application), class: "btn btn-primary" %>
 <%= link_to t(".destroy"), doorkeeper_application_path(@application), method: :delete, class: "btn btn-outline-danger" %>
+
+<hr>
+
+<h3><%= t ".tokens" %></h3>
+
+<p><%= t ".token_help" %></p>
+
+<table class="table table-striped">
+  <tr>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:fingerprint) %></th>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:created_at) %></th>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:expires_in) %></th>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:scopes) %></th>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:active) %></th>
+    <th></th>
+  </tr>
+  <% @access_tokens.each do |token| %>
+    <tr>
+      <td><%= token_fingerprint(token) %></td>
+      <td>
+        <span title="<%= token.created_at %>">
+          <%= token.created_at.to_fs(:long_ordinal) %>
+        </span>
+      </td>
+      <td>
+        <span title="<%= token.created_at + token.expires_in if token.expires_in %>">
+          <%= token_expiry_string(token) %>
+        </span>
+      </td>
+      <td><%= token.scopes %></td>
+      <td><%= checkmark(token.accessible?) %></td>
+      <td>
+        <%= DoButton(icon: "trash", label: t(".revoke.label"), href: doorkeeper_application_doorkeeper_access_token_path(@application, token), method: :delete, variant: "outline-danger", confirm: translate(".revoke.confirm")) if token.accessible? %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= GoButton(icon: "plus-circle", label: t("doorkeeper_access_tokens.new.title"), href: new_doorkeeper_application_doorkeeper_access_token_path(@application), variant: "primary") %>

@@ -11,6 +11,10 @@ module ApplicationHelper
     SiteSettings.site_icon.presence || "roundel.svg"
   end
 
+  def checkmark(value)
+    value ? "✅" : "❌"
+  end
+
   def icon_for(klass)
     case klass.name
     when "Creator"
