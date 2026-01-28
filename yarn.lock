@@ -1067,10 +1067,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@notus.sh/cocooned@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "@notus.sh/cocooned@npm:2.5.0"
-  checksum: 64593cfdc7fec282f2d1dca26fe29d964a9fcedd17a0a8ad257cf5e836b8932c6ff5cfe1430a6ed19aabbca81f2ee1c9088ecf41ef3947e55d927f9fb35f1c33
+"@notus.sh/cocooned@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@notus.sh/cocooned@npm:3.0.0"
+  checksum: a80d683019af21d0dfdcddadd096ac4a03fb2db3f94787058654a3b6bf5e9d3ea5e0b98d3c6b78c8c5fde944f6fd2d8b0af9fe2df60b94d49ae30fffeeea1177
   languageName: node
   linkType: hard
 
@@ -4556,7 +4556,7 @@ __metadata:
     "@hotwired/stimulus": ^3.2.2
     "@hotwired/turbo-rails": ^8.0.21
     "@infinizhen/rpg-awesome-continued": ^1.0.6
-    "@notus.sh/cocooned": ^2.5.0
+    "@notus.sh/cocooned": ^3.0.0
     "@popperjs/core": ^2.11.8
     "@rails/ujs": ^7.1.600
     "@types/bootstrap": ^5.2.10
