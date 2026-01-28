@@ -19,6 +19,12 @@ de:
         name: Autor
         notes: Beschreibung
         slug: Benutzername
+      doorkeeper/access_token:
+        active:
+        created_at:
+        expires_in:
+        fingerprint:
+        scopes:
       doorkeeper/application:
         access_token: Zugangs-Token
         confidential: Vertraulich
@@ -561,6 +567,24 @@ de:
         title: OAuth Autorisierung erforderlich
     pre_authorization:
       status: Pre-authorization
+  doorkeeper_access_tokens:
+    create:
+      failed:
+      success:
+    destroy:
+      success:
+    new:
+      expiry:
+        label:
+      scopes:
+        label:
+      submit:
+      title:
+    show:
+      bearer_token_help:
+      description:
+      done:
+      title:
   doorkeeper_applications:
     create:
       failure: Es ist ein Fehler aufgetreten, und die Anwendung konnte nicht erstellt werden.
@@ -587,10 +611,21 @@ de:
     show:
       destroy: Löschen
       edit: Bearbeiten
+      oauth_help:
+      revoke:
+        confirm:
+        label:
       title: Anwendungsdetails
+      token_help:
+      tokens:
     update:
       failure: Es ist ein Fehler aufgetreten, und die Anwendung konnte nicht gespeichert werden.
       success: Anwendung erfolgreich gespeichert.
+  doorkeeper_applications_helper:
+    token_expiry_string:
+      expired:
+      never:
+      revoked:
   errors:
     messages:
       already_confirmed:

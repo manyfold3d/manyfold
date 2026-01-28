@@ -581,6 +581,7 @@ en:
     show:
       bearer_token_help: 'If you are using the token for a non-OAuth API client, you will need to provide it as a "bearer token" in your HTTP Authentication header:'
       description: Your new access token has been created. Click below to reveal the token itself; this will only be shown once! If you lose it, you will need to generate a new one.
+      done: Done
       title: Access Token Details
   doorkeeper_applications:
     create:
