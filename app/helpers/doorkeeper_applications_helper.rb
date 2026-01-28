@@ -1,5 +1,4 @@
 module DoorkeeperApplicationsHelper
-
   def token_expiry_string(token)
     return t(".revoked") if token.revoked?
     return t(".never") if token.expires_in.nil?

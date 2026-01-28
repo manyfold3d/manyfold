@@ -14,7 +14,7 @@ class DoorkeeperAccessTokensController < ApplicationController
   end
 
   def create
-    token_params = params.require(:doorkeeper_access_token).permit(:expires_in, scopes: [])
+    token_params = params.expect(doorkeeper_access_token: [:expires_in, scopes: []])
     @token = @application.access_tokens.create(
       expires_in: token_params[:expires_in].to_i,
       resource_owner_id: @application.owner.id,

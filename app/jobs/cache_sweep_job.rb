@@ -12,7 +12,7 @@ class CacheSweepJob < ApplicationJob
   end
 
   def doorkeeper_cleanup
-    Doorkeeper.config.access_token_model.all.each { |it| it.destroy unless it.accessible? }
-    Doorkeeper.config.access_grant_model.all.each { |it| it.destroy unless it.accessible? }
+    Doorkeeper.config.access_token_model.find_each { |it| it.destroy unless it.accessible? }
+    Doorkeeper.config.access_grant_model.find_each { |it| it.destroy unless it.accessible? }
   end
 end
