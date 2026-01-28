@@ -51,7 +51,7 @@ class Components::SearchHelp < Components::Base
         td { t("components.search_help.tag") }
       end
       tr do
-        td { code { "tag != cat" } }
+        td { code { "!tag = cat" } }
         td { t("components.search_help.without_tag") }
       end
       specific_fields
