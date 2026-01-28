@@ -33,11 +33,7 @@ module ModelFilesHelper
       slic3r_family_open_url "prusaslicer", signed_url
     when :bambu
       # Bambu will only open from Makerworld and a few others
-      URI::Generic.new(
-        "bambustudio", nil,
-        CGI.escapeURIComponent(signed_url), nil, nil, nil, nil,
-        nil, nil
-      ).to_s
+      slic3r_family_open_url "bambustudio", signed_url
     when :cura
       slic3r_family_open_url "cura", signed_url
     when :elegoo
