@@ -41,6 +41,13 @@ class DoorkeeperApplicationsController < ApplicationController
     end
   end
 
+  def revoke_token
+    @application.access_tokens.find(params[:token_id])&.revoke
+    redirect_to @application, notice: t(".token_revoked")
+  rescue ActiveRecord::RecordNotFound
+    redirect_to @application, notice: t(".token_not_found")
+  end
+
   def destroy
     @application.destroy
     redirect_to doorkeeper_applications_path, notice: t(".success")

@@ -23,7 +23,12 @@ Rails.application.routes.draw do
   resources :doorkeeper_tokens, path: "/oauth/token"
 
   authenticate :user do
-    resources :doorkeeper_applications, path: "/oauth/applications"
+    resources :doorkeeper_applications, path: "/oauth/applications" do
+      member do
+        delete :token, action: "revoke_token"
+        post :token, action: "issue_token"
+      end
+    end
   end
 
   authenticate :user, lambda { |u| u.is_administrator? } do

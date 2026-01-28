@@ -47,6 +47,7 @@
     <th><%= Doorkeeper::AccessToken.human_attribute_name(:expires_in) %></th>
     <th><%= Doorkeeper::AccessToken.human_attribute_name(:scopes) %></th>
     <th><%= Doorkeeper::AccessToken.human_attribute_name(:active) %></th>
+    <th></th>
   </tr>
   <% @access_tokens.each do |token| %>
     <tr>
@@ -63,6 +64,9 @@
       </td>
       <td><%= token.scopes %></td>
       <td><%= checkmark(token.accessible?) %></td>
+      <td>
+        <%= DoButton(icon: "trash", label: t(".revoke.label"), href: token_doorkeeper_application_path(@application, token_id: token.id), method: :delete, variant: "outline-danger", confirm: translate(".revoke.confirm")) if token.accessible? %>
+      </td>
     </tr>
   <% end %>
 </table>
