@@ -24,10 +24,7 @@ Rails.application.routes.draw do
 
   authenticate :user do
     resources :doorkeeper_applications, path: "/oauth/applications" do
-      member do
-        delete :token, action: "revoke_token"
-        post :token, action: "issue_token"
-      end
+      resources :doorkeeper_access_tokens, except: [:index, :edit, :update], path: "tokens"
     end
   end
 

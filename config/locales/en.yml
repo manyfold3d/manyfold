@@ -565,6 +565,23 @@ en:
         title: OAuth authorization required
     pre_authorization:
       status: Pre-authorization
+  doorkeeper_access_tokens:
+    create:
+      failed: Access token creation failed
+      success: Access token created successfully
+    destroy:
+      success: Access token revoked successfully.
+    new:
+      expiry:
+        label: Expiration
+      scopes:
+        label: Scopes
+      submit: Submit
+      title: New Access Token
+    show:
+      bearer_token_help: 'If you are using the token for a non-OAuth API client, you will need to provide it as a "bearer token" in your HTTP Authentication header:'
+      description: Your new access token has been created. Click below to reveal the token itself; this will only be shown once! If you lose it, you will need to generate a new one.
+      title: Access Token Details
   doorkeeper_applications:
     create:
       failure: An error occurred, and the API key could not be created.
@@ -588,9 +605,6 @@ en:
       title: API keys
     new:
       title: New API key
-    revoke_token:
-      token_not_found: Access token not found.
-      token_revoked: Access token revoked successfully.
     show:
       destroy: Delete
       edit: Edit

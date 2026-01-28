@@ -8,4 +8,7 @@ module DoorkeeperApplicationsHelper
     distance_of_time_in_words(Time.now.utc, expires_at)
   end
 
+  def token_fingerprint(token)
+    Digest::SHA256.hexdigest(token.token).first(8)
+  end
 end

@@ -36,10 +36,6 @@ class Doorkeeper::ApplicationPolicy < ApplicationPolicy
     update?
   end
 
-  def revoke_token?
-    update?
-  end
-
   class Scope
     attr_reader :user, :scope
 

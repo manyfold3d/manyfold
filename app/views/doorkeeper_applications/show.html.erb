@@ -51,7 +51,7 @@
   </tr>
   <% @access_tokens.each do |token| %>
     <tr>
-      <td><%= Digest::SHA256.hexdigest(token.token).first(8) %></td>
+      <td><%= token_fingerprint(token) %></td>
       <td>
         <span title="<%= token.created_at %>">
           <%= token.created_at.to_fs(:long_ordinal) %>
@@ -65,8 +65,10 @@
       <td><%= token.scopes %></td>
       <td><%= checkmark(token.accessible?) %></td>
       <td>
-        <%= DoButton(icon: "trash", label: t(".revoke.label"), href: token_doorkeeper_application_path(@application, token_id: token.id), method: :delete, variant: "outline-danger", confirm: translate(".revoke.confirm")) if token.accessible? %>
+        <%= DoButton(icon: "trash", label: t(".revoke.label"), href: doorkeeper_application_doorkeeper_access_token_path(@application, token), method: :delete, variant: "outline-danger", confirm: translate(".revoke.confirm")) if token.accessible? %>
       </td>
     </tr>
   <% end %>
 </table>
+
+<%= GoButton(icon: "plus-circle", label: t("doorkeeper_access_tokens.new.title"), href: new_doorkeeper_application_doorkeeper_access_token_path(@application), variant: "primary") %>
