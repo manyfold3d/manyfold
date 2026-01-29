@@ -2,14 +2,14 @@ class Federails::Moderation::ReportPolicy < ApplicationPolicy
   def index?
     all_of(
       SiteSettings.multiuser_enabled?,
-      @user.is_moderator?
+      @user&.is_moderator?
     )
   end
 
   def new?
     all_of(
       SiteSettings.multiuser_enabled?,
-      @user.is_member?
+      @user&.is_member?
     )
   end
 
