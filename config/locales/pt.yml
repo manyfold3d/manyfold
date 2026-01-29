@@ -21,7 +21,7 @@ pt:
         slug:
       doorkeeper/access_token:
         active:
-        created_at:
+        created_at: Criado em
         expires_in:
         fingerprint:
         scopes:
