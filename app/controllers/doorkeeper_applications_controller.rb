@@ -34,7 +34,7 @@ class DoorkeeperApplicationsController < ApplicationController
   def update
     @application.update(application_params)
     if @application.save
-      render :show, notice: t(".success")
+      redirect_to @application, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
       render :edit, status: :unprocessable_content
