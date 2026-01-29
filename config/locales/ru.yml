@@ -21,10 +21,10 @@ ru:
         slug: Уникальное имя автора
       doorkeeper/access_token:
         active:
-        created_at:
+        created_at: Дата создания
         expires_in:
         fingerprint:
-        scopes:
+        scopes: Скоупы
       doorkeeper/application:
         access_token: Токен доступа
         confidential: Конфиденциально
@@ -575,8 +575,8 @@ ru:
       expiry:
         label:
       scopes:
-        label:
-      submit:
+        label: Скоупы
+      submit: Сохранить
       title:
     show:
       bearer_token_help:
@@ -612,7 +612,7 @@ ru:
       oauth_help:
       revoke:
         confirm:
-        label:
+        label: Отозвать авторизацию
       title:
       token_help:
       tokens:
