@@ -851,20 +851,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hotwired/turbo-rails@npm:^8.0.21":
-  version: 8.0.21
-  resolution: "@hotwired/turbo-rails@npm:8.0.21"
+"@hotwired/turbo-rails@npm:^8.0.22":
+  version: 8.0.22
+  resolution: "@hotwired/turbo-rails@npm:8.0.22"
   dependencies:
-    "@hotwired/turbo": ^8.0.21
+    "@hotwired/turbo": ^8.0.22
     "@rails/actioncable": ">=7.0"
-  checksum: 0fe168095b33acacbcc0fd8adc9fcfbd5fb513b4c8675d635ae9153e7df7c57f50b3fb3baf9709bc2e99d00de3d1098abc79724231b5d059560133109de12008
+  checksum: c109bb167f52a3f44b6af2b35ccbc51f0aa2709c8e59ad3ca185ac4bc8b562eb76aba530d83704116126fc670941ef97f88708bab1bf2712062d20b59c44a9a2
   languageName: node
   linkType: hard
 
-"@hotwired/turbo@npm:^8.0.21":
-  version: 8.0.21
-  resolution: "@hotwired/turbo@npm:8.0.21"
-  checksum: 829faffff25ca0a307df167c8f8200681c93f9ca8a9a553545f58caa16675ab10e383eb5ae73e1d79388ce46e8caa61e4d4f1f36a7e9016ad72d48c57ea9cbf1
+"@hotwired/turbo@npm:^8.0.22":
+  version: 8.0.22
+  resolution: "@hotwired/turbo@npm:8.0.22"
+  checksum: 8ada98802e6365ab7524d1b97d125cf643643cdd53aa423bc891f446f08c86a87ed7113935cecb96470702127dea609770ab2b39ba1dbf569045930902949ab8
   languageName: node
   linkType: hard
 
@@ -4554,7 +4554,7 @@ __metadata:
     "@babel/eslint-parser": ^7.28.6
     "@babel/preset-typescript": ^7.28.5
     "@hotwired/stimulus": ^3.2.2
-    "@hotwired/turbo-rails": ^8.0.21
+    "@hotwired/turbo-rails": ^8.0.22
     "@infinizhen/rpg-awesome-continued": ^1.0.6
     "@notus.sh/cocooned": ^3.0.0
     "@popperjs/core": ^2.11.8
