@@ -15,6 +15,11 @@ module ApplicationHelper
     value ? "✅" : "❌"
   end
 
+  def client_os
+    user_agent = UserAgentParser.parse(request&.user_agent)
+    user_agent&.os
+  end
+
   def icon_for(klass)
     case klass.name
     when "Creator"

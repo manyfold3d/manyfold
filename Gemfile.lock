@@ -903,6 +903,7 @@ GEM
     unicode-emoji (4.2.0)
     uniform_notifier (1.18.0)
     uri (1.1.1)
+    user_agent_parser (2.20.0)
     useragent (0.16.11)
     validate_url (1.0.15)
       activemodel (>= 3.0.0)
@@ -1066,6 +1067,7 @@ DEPENDENCIES
   turbo-rails (~> 2.0.21)
   tus-server (~> 2.3)
   tzinfo-data
+  user_agent_parser (~> 2.20)
   vcr (~> 6.4)
   warning (~> 1.5)
   web-console (~> 4.1)
@@ -1404,6 +1406,7 @@ CHECKSUMS
   unicode-emoji (4.2.0) sha256=519e69150f75652e40bf736106cfbc8f0f73aa3fb6a65afe62fefa7f80b0f80f
   uniform_notifier (1.18.0) sha256=4787785556f66f6418486da0f1d78b3239aaff98e2e7938fb05e2062b0ffce9d
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
+  user_agent_parser (2.20.0) sha256=4bd9b667923ee4c7ca0abbe07135e49d9acd6534200b156b89c5e082acbe6ca6
   useragent (0.16.11) sha256=700e6413ad4bb954bb63547fa098dddf7b0ebe75b40cc6f93b8d54255b173844
   validate_url (1.0.15) sha256=72fe164c0713d63a9970bd6700bea948babbfbdcec392f2342b6704042f57451
   vcr (6.4.0) sha256=077ac92cc16efc5904eb90492a18153b5e6ca5398046d8a249a7c96a9ea24ae6

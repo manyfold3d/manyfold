@@ -227,3 +227,5 @@ gem "connection_pool", ">= 2.2.5", "< 3.0"
 gem "noticed", "~> 3.0"
 
 gem "devise_invitable", "~> 2.0"
+
+gem "user_agent_parser", "~> 2.20"
