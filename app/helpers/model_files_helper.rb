@@ -32,8 +32,15 @@ module ModelFilesHelper
       # Prusa will only open files from printables.com
       slic3r_family_open_url "prusaslicer", signed_url
     when :bambu
-      # Bambu will only open from Makerworld and a few others
-      slic3r_family_open_url "bambustudio", signed_url
+      if client_os.family == "Mac OS X"
+        URI::Generic.new(
+          "bambustudioopen", nil,
+          CGI.escapeURIComponent(signed_url), nil, nil, nil, nil,
+          nil, nil
+        ).to_s
+      else
+        slic3r_family_open_url "bambustudio", signed_url
+      end
     when :cura
       slic3r_family_open_url "cura", signed_url
     when :elegoo
