@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby file: ".ruby-version"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 8.0.0"
+gem "rails", "~> 8.0.4"
 # Use Puma as the app server
 gem "puma", "~> 7.2"
 # Deliver assets with Propshaft
@@ -128,7 +128,7 @@ gem "rolify", "~> 6.0"
 
 gem "letter_opener", "~> 1.10", group: :development
 
-gem "sidekiq", "~> 8.0"
+gem "sidekiq", "~> 8.1"
 
 # gem "sidekiq-failures", "~> 1.0"
 gem "activejob-status", "~> 1.0"
@@ -222,7 +222,7 @@ gem "yard-lint", "~> 1.4", group: :development
 gem "zaru", "~> 1.0"
 
 # v3 causes us problems
-gem "connection_pool", ">= 2.2.5", "< 3.0"
+gem "connection_pool", ">= 2.2.5", "< 4.0"
 
 gem "noticed", "~> 3.0"
 
