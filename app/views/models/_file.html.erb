@@ -53,12 +53,12 @@
         <div class="col col-auto">
           <div class="float-end">
             <%= BurgerMenu(direction: :up) do %>
-              <%= slicer_links(file) if file.is_3d_model? %>
+              <%= app_links(file) if file.is_3d_model? %>
               <%= DropdownDivider() %>
               <% if file.presupported_version %>
                 <%= DropdownHeader text: t(".presupported") %>
                 <%= link_to t("general.download"), model_model_file_path(@model, file.presupported_version, file.presupported_version.extension&.to_sym, download: "true"), {class: "dropdown-item", download: "download"} %>
-                <%= slicer_links(file.presupported_version) if file.presupported_version.is_3d_model? %>
+                <%= app_links(file.presupported_version) if file.presupported_version.is_3d_model? %>
                 <%= DropdownDivider() %>
               <% end %>
               <%= DropdownItem icon: "pencil-fill", label: t(".edit"), path: edit_model_model_file_path(@model, file) if policy(file).edit? %>

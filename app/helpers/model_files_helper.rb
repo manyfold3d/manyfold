@@ -1,5 +1,5 @@
 module ModelFilesHelper
-  def slicer_links(file)
+  def app_links(file)
     supported_types = {
       bambu: [:threemf],
       # i18n-tasks-use t('model_files.download.bambu')
@@ -30,26 +30,26 @@ module ModelFilesHelper
       # i18n-tasks-use t('model_files.download.superslicer')
       # From code at https://github.com/supermerill/SuperSlicer/tree/master_27/src/libslic3r/Format
     }.freeze
-    slicers = supported_types.filter_map { |slicer, formats| slicer if formats.include? file.mime_type.to_sym }
+    apps = supported_types.filter_map { |slicer, formats| slicer if formats.include? file.mime_type.to_sym }
     safe_join(
-      slicers.map do |slicer|
+      apps.map do |app|
         content_tag(:li, role: "presentation") {
           link_to safe_join(
             [
-              slicer_icon_tag(slicer, alt: t("model_files.download.%{slicer}" % {slicer: slicer})),
-              t("model_files.download.%{slicer}" % {slicer: slicer})
+              app_icon_tag(app, alt: t("model_files.download.%{app}" % {app: app})),
+              t("model_files.download.%{app}" % {app: app})
             ].compact,
             " "
-          ), slicer_url(slicer, file), role: "menuitem", class: "dropdown-item", download: "download"
+          ), app_url(app, file), role: "menuitem", class: "dropdown-item", download: "download"
         }
       end
     )
   end
 
-  def slicer_url(slicer, file)
+  def app_url(app, file)
     signed_id = file.signed_id expires_in: 1.hour, purpose: "download"
     signed_url = model_model_file_by_signed_filename_url(file.model, file.filename, sig: signed_id)
-    case slicer
+    case app
     when :orca
       slic3r_family_open_url "orcaslicer", signed_url
     when :prusa, :superslicer
@@ -78,8 +78,8 @@ module ModelFilesHelper
     end
   end
 
-  def slicer_icon_tag(slicer, alt:)
-    image_tag("external-icons/#{slicer}.png", class: "slicer-icon", alt: alt)
+  def app_icon_tag(app, alt:)
+    image_tag("external-icons/#{app}.png", class: "app-icon", alt: alt)
   end
 
   private
