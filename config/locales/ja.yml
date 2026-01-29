@@ -21,10 +21,10 @@ ja:
         slug: ハンドルネーム
       doorkeeper/access_token:
         active:
-        created_at:
+        created_at: 作成日
         expires_in:
         fingerprint:
-        scopes:
+        scopes: スコープ
       doorkeeper/application:
         access_token: アクセストークン
         confidential: 機密
@@ -575,8 +575,8 @@ ja:
       expiry:
         label:
       scopes:
-        label:
-      submit:
+        label: スコープ
+      submit: 登録
       title:
     show:
       bearer_token_help:
@@ -612,7 +612,7 @@ ja:
       oauth_help:
       revoke:
         confirm:
-        label:
+        label: 取消
       title:
       token_help:
       tokens:
@@ -622,7 +622,7 @@ ja:
   doorkeeper_applications_helper:
     token_expiry_string:
       expired:
-      never:
+      never: 決して
       revoked:
   errors:
     messages:
