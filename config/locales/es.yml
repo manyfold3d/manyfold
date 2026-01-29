@@ -21,10 +21,10 @@ es:
         slug: Handle
       doorkeeper/access_token:
         active:
-        created_at:
+        created_at: Creado el
         expires_in:
-        fingerprint:
-        scopes:
+        fingerprint: Huella dactilar
+        scopes: Ámbitos
       doorkeeper/application:
         access_token: Token de Acceso
         confidential: Confidential
@@ -45,8 +45,8 @@ es:
         object: Objeto
       group:
         description: Descripción
-        invitations:
-        memberships:
+        invitations: Invitaciones
+        memberships: Suscripciones
         name: Nombre
         typed_id: Permiso ID
       library:
@@ -331,7 +331,7 @@ es:
       check_results:
         confirm: "¿Está seguro de que quiere volver a escanear todos los modelos filtrados? Esto puede llevar mucho tiempo."
         label: Volver a escanear los modelos filtrados
-      developer:
+      developer: Desarrolladores
       home: Inicio
       import_url: Importar URL
       log_in: Iniciar sesión
@@ -575,8 +575,8 @@ es:
       expiry:
         label:
       scopes:
-        label:
-      submit:
+        label: Ámbitos
+      submit: Enviar
       title:
     show:
       bearer_token_help:
@@ -601,7 +601,7 @@ es:
       submit: Guardar aplicación
     index:
       description: Las aplicaciones OAuth le permiten acceder a los recursos de Manyfold desde otros servicios a través de nuestra API.
-      moderator_notice:
+      moderator_notice: Como eres moderador, puedes acceder a las claves API de todos los usuarios en esta interfaz. En el futuro habrá disponible una vista separada para la moderación de claves que facilitará la gestión de sus propias claves.
       new: Nueva aplicación
       title: Aplicaciones OAuth
     new:
@@ -612,7 +612,7 @@ es:
       oauth_help:
       revoke:
         confirm:
-        label:
+        label: Revocar
       title: Detalles de la aplicación
       token_help:
       tokens:
@@ -622,7 +622,7 @@ es:
   doorkeeper_applications_helper:
     token_expiry_string:
       expired:
-      never:
+      never: Nunca
       revoked:
   errors:
     messages:
@@ -722,21 +722,21 @@ es:
   group_mailer:
     new_member:
       existing:
-        message: Has sido añadido al grupo "%{group_name}" de %{site_name}. Si ese grupo tiene acceso a algún modelo privado, ahora puedes acceder a él en %{link}
-        subject: Te han añadido a un grupo
+        message: Has sido añadido al grupo "%{group_name}" de %{site_name}. Si ese grupo tiene acceso a algún modelo privado, ahora puedes acceder a él en %{creator_link}
+        subject: Has sido añadido a un grupo en %{site_name}
       inviting:
-        message:
-        subject:
+        message: Has sido invitado al grupo "%{group_name}" de %{site_name}. Para acceder a los modelos, configura tu cuenta en %{invitation_link} y, a continuación, visualiza los modelos del creador en %{creator_link}
+        subject: Reclame tus modelos en %{site_name}
   groups:
     create:
       success: Grupo creado correctamente.
     form:
       add: añadir otro miembro
       description:
-        help:
-      intro:
+        help: Nota privada. No se muestra públicamente en ningún sitio.
+      intro: Añade miembros al grupo introduciendo su nombre de usuario o correo electrónico. Los miembros que ya tengan cuenta en el sitio recibirán una notificación de que han sido añadidos, y a los que no la tengan se les invitará a crear una cuenta para poder acceder al contenido.
       name:
-        help:
+        help: Este nombre se mostrará a los miembros cuando se les notifique que han sido añadidos.
     membership_fields:
       user_id:
         delete: Borrar
@@ -948,7 +948,7 @@ es:
       index:
         copy: Copie el ID en el portapapeles para utilizarlo en la configuración de permisos.
         description: Los Grupos de Usuarios son colecciones de usuarios de instancias locales, útiles para gestionar cosas como suscriptores de Patreon o Liberapay. Puedes conceder permisos a un grupo sobre cualquier objeto utilizando su ID de permiso, al igual que un rol de sitio o un usuario individual.
-        invite_count:
+        invite_count: "%{count} invitaciones activas."
         member_count: "%{count} miembros"
         title: Grupos de usuarios
       new:
