@@ -5,8 +5,8 @@ de:
       collection:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Beschreibung
-        collection: Übergeordnete Sammlung
-        indexable: Indizierung der Suche zulassen
+        collection: Übergeordnete Kollektion
+        indexable: Suchindizierung zulassen
         models: Modelle
         name: Name
         notes: Beschreibung
@@ -15,16 +15,16 @@ de:
         avatar: Avatar-Bild
         banner: Banner-Bild
         caption: Beschreibung
-        indexable: Indizierung der Suche zulassen
+        indexable: Suchindizierung zulassen
         name: Autor
         notes: Beschreibung
         slug: Benutzername
       doorkeeper/access_token:
         active:
-        created_at:
+        created_at: Erstellt am
         expires_in:
-        fingerprint:
-        scopes:
+        fingerprint: Fingerabdruck
+        scopes: Scopes
       doorkeeper/application:
         access_token: Zugangs-Token
         confidential: Vertraulich
@@ -46,7 +46,7 @@ de:
       group:
         description: Beschreibung
         invitations:
-        memberships: Mitgliedschaft
+        memberships:
         name: Name
         typed_id: Berechtigungsa-ID
       library:
@@ -75,7 +75,7 @@ de:
         creator: Autor
         creator_id: Autor
         images: Bilder
-        indexable: Indizierung der Suche zulassen
+        indexable: Suchindizierung zulassen
         library_id: Sammlung
         license: Lizenz
         model_files: Dateien
@@ -577,8 +577,8 @@ de:
       expiry:
         label:
       scopes:
-        label:
-      submit:
+        label: Scopes
+      submit: Übertragen
       title:
     show:
       bearer_token_help:
@@ -614,7 +614,7 @@ de:
       oauth_help:
       revoke:
         confirm:
-        label:
+        label: Ungültig machen
       title: Anwendungsdetails
       token_help:
       tokens:
@@ -624,7 +624,7 @@ de:
   doorkeeper_applications_helper:
     token_expiry_string:
       expired:
-      never:
+      never: Niemals
       revoked:
   errors:
     messages:
