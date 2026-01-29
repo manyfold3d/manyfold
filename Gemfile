@@ -195,7 +195,7 @@ gem "doorkeeper-i18n", "~> 5.2"
 
 gem "phlex-rails", "~> 2.4"
 
-gem "turbo-rails", "~> 2.0.21"
+gem "turbo-rails", "~> 2.0.22"
 
 gem "stimulus-rails", "~> 1.3.4"
 
