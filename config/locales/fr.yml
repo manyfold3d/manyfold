@@ -21,10 +21,10 @@ fr:
         slug:
       doorkeeper/access_token:
         active:
-        created_at:
+        created_at: Enregistré à
         expires_in:
         fingerprint:
-        scopes:
+        scopes: Portées
       doorkeeper/application:
         access_token: Jeton d'accès
         confidential: Confidential
@@ -578,8 +578,8 @@ fr:
       expiry:
         label:
       scopes:
-        label:
-      submit:
+        label: Portées
+      submit: Envoyer
       title:
     show:
       bearer_token_help:
@@ -615,7 +615,7 @@ fr:
       oauth_help:
       revoke:
         confirm:
-        label:
+        label: Annuler
       title: Détails de l'application
       token_help:
       tokens:
@@ -625,7 +625,7 @@ fr:
   doorkeeper_applications_helper:
     token_expiry_string:
       expired:
-      never:
+      never: Jamais
       revoked:
   errors:
     messages:
