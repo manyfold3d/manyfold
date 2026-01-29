@@ -21,10 +21,10 @@ cs:
         slug: Handle
       doorkeeper/access_token:
         active:
-        created_at:
+        created_at: Vytvořeno
         expires_in:
         fingerprint:
-        scopes:
+        scopes: Scopes
       doorkeeper/application:
         access_token: Přístupový token
         confidential: Důvěrné
@@ -575,8 +575,8 @@ cs:
       expiry:
         label:
       scopes:
-        label:
-      submit:
+        label: Scopes
+      submit: Odeslat
       title:
     show:
       bearer_token_help:
@@ -612,7 +612,7 @@ cs:
       oauth_help:
       revoke:
         confirm:
-        label:
+        label: Odebrat autorizaci
       title: Podrobnosti o aplikaci
       token_help:
       tokens:
@@ -622,7 +622,7 @@ cs:
   doorkeeper_applications_helper:
     token_expiry_string:
       expired:
-      never:
+      never: Nikdy
       revoked:
   errors:
     messages:
