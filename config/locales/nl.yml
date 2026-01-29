@@ -21,10 +21,10 @@ nl:
         slug:
       doorkeeper/access_token:
         active:
-        created_at:
+        created_at: Aangemaakt op
         expires_in:
         fingerprint:
-        scopes:
+        scopes: Scopes
       doorkeeper/application:
         access_token:
         confidential: Confidentieel
@@ -575,8 +575,8 @@ nl:
       expiry:
         label:
       scopes:
-        label:
-      submit:
+        label: Scopes
+      submit: Opslaan
       title:
     show:
       bearer_token_help:
@@ -612,7 +612,7 @@ nl:
       oauth_help:
       revoke:
         confirm:
-        label:
+        label: Intrekken
       title:
       token_help:
       tokens:
@@ -622,7 +622,7 @@ nl:
   doorkeeper_applications_helper:
     token_expiry_string:
       expired:
-      never:
+      never: Nooit
       revoked:
   errors:
     messages:
