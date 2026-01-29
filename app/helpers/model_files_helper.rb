@@ -1,14 +1,38 @@
 module ModelFilesHelper
   def slicer_links(file)
-    # i18n-tasks-use t('model_files.download.cura')
-    # i18n-tasks-use t('model_files.download.orca')
-    # i18n-tasks-use t('model_files.download.prusa')
-    # i18n-tasks-use t('model_files.download.bambu')
-    # i18n-tasks-use t('model_files.download.elegoo')
-    # i18n-tasks-use t('model_files.download.superslicer')
-    # i18n-tasks-use t('model_files.download.lychee')
+    supported_types = {
+      bambu: [:threemf],
+      # i18n-tasks-use t('model_files.download.bambu')
+      # Bambu Studio doesn't seem to open anything except 3MF by URL
+
+      cura: [:threemf, :amf, :collada, :gcode, :gltf, :obj, :ply, :stl, :x3d],
+      # i18n-tasks-use t('model_files.download.cura')
+      # https://support.makerbot.com/s/article/1667411286871
+
+      elegoo: [:threemf, :amf, :obj, :step, :stl, :svg],
+      # i18n-tasks-use t('model_files.download.elegoo')
+      # From code at https://github.com/ELEGOO-3D/ElegooSlicer/tree/main/src/libslic3r/Format
+
+      lychee: [:threemf, :lychee, :obj, :stl],
+      # i18n-tasks-use t('model_files.download.lychee')
+      # https://doc.mango3d.io/doc/filament-documentation/filament-toolbar/import-2/
+
+      orca: [:threemf, :abc, :amf, :obj, :ply, :step, :stl, :svg],
+      # i18n-tasks-use t('model_files.download.orca')
+      # From file import dialog
+
+      prusa: [],
+      # i18n-tasks-use t('model_files.download.prusa')
+      # PrusaSlicer only loads from printables.com, so this list is
+      # empty until https://github.com/prusa3d/PrusaSlicer/issues/13752 is dealt with.
+
+      superslicer: [:threemf, :amf, :obj, :step, :stl, :svg]
+      # i18n-tasks-use t('model_files.download.superslicer')
+      # From code at https://github.com/supermerill/SuperSlicer/tree/master_27/src/libslic3r/Format
+    }.freeze
+    slicers = supported_types.filter_map { |slicer, formats| slicer if formats.include? file.mime_type.to_sym }
     safe_join(
-      [:cura, :orca, :elegoo, :superslicer, :lychee, :bambu].map do |slicer|
+      slicers.map do |slicer|
         content_tag(:li, role: "presentation") {
           link_to safe_join(
             [
