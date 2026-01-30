@@ -888,7 +888,7 @@ GEM
     treetop (1.6.18)
       polyglot (~> 0.3)
     tsort (0.2.0)
-    turbo-rails (2.0.22)
+    turbo-rails (2.0.23)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     tus-server (2.3.0)
@@ -1065,7 +1065,7 @@ DEPENDENCIES
   sys-filesystem (~> 1.5)
   to_regexp (~> 0.2)
   translation (~> 1.41)
-  turbo-rails (~> 2.0.22)
+  turbo-rails (~> 2.0.23)
   tus-server (~> 2.3)
   tzinfo-data
   user_agent_parser (~> 2.20)
@@ -1398,7 +1398,7 @@ CHECKSUMS
   translation (1.41) sha256=8a6e66fb158b7b9fdf53920db1ea587f2e00c2f705cfb0f18a8e714f6dc19f01
   treetop (1.6.18) sha256=a3043f32f1c652aa2abdf3a3848edb2d2f69897257af2675516ac61355c183da
   tsort (0.2.0) sha256=9650a793f6859a43b6641671278f79cfead60ac714148aabe4e3f0060480089f
-  turbo-rails (2.0.22) sha256=909f6f35a104aaad14cffbf43536aded9d4681352da6d8e79216fccd0282bb59
+  turbo-rails (2.0.23) sha256=ee0d90733aafff056cf51ff11e803d65e43cae258cc55f6492020ec1f9f9315f
   tus-server (2.3.0) sha256=fb5a2927d2511b4e735d2914b8a5a278ece38fec4cb8466c8bbb879059cfea19
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   tzinfo-data (1.2025.2) sha256=a92375a1fbb47d38fe88fd514c40a38cc8f97d168da2a6479f15185e86470939
