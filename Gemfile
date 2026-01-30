@@ -128,7 +128,7 @@ gem "rolify", "~> 6.0"
 
 gem "letter_opener", "~> 1.10", group: :development
 
-gem "sidekiq", "~> 8.0"
+gem "sidekiq", "~> 8.1"
 
 # gem "sidekiq-failures", "~> 1.0"
 gem "activejob-status", "~> 1.0"
@@ -222,7 +222,7 @@ gem "yard-lint", "~> 1.4", group: :development
 gem "zaru", "~> 1.0"
 
 # v3 causes us problems
-gem "connection_pool", ">= 2.2.5", "< 3.0"
+gem "connection_pool", ">= 2.2.5", "< 4.0"
 
 gem "noticed", "~> 3.0"
 
