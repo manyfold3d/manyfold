@@ -178,7 +178,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.22.0)
       msgpack (~> 1.2)
-    brakeman (7.1.2)
+    brakeman (8.0.1)
       racc
     browser (6.2.0)
     builder (3.3.0)
@@ -962,7 +962,7 @@ DEPENDENCIES
   aws-sdk-s3 (< 1.214)
   better_content_security_policy (~> 0.1)
   bootsnap (~> 1.22)
-  brakeman (~> 7.1)
+  brakeman (~> 8.0)
   bullet (~> 8.1)
   byebug
   caber!
@@ -1118,7 +1118,7 @@ CHECKSUMS
   bindata (2.5.1) sha256=53186a1ec2da943d4cb413583d680644eb810aacbf8902497aac8f191fad9e58
   bindex (0.8.1) sha256=7b1ecc9dc539ed8bccfc8cb4d2732046227b09d6f37582ff12e50a5047ceb17e
   bootsnap (1.22.0) sha256=5820c9d42c2efef095bee6565484bdc511f1223bf950140449c9385ae775793e
-  brakeman (7.1.2) sha256=6b04927710a2e7d13a72248b5d404c633188e02417f28f3d853e4b6370d26dce
+  brakeman (8.0.1) sha256=c68ce0ac35a6295027c4eab8b4ac597d2a0bfc82f0d62dcd334bbf944d352f70
   browser (6.2.0) sha256=281d5295788825c9396427c292c2d2be0a5c91875c93c390fde6e5d61a5ace2d
   builder (3.3.0) sha256=497918d2f9dca528fdca4b88d84e4ef4387256d984b8154e9d5d3fe5a9c8835f
   bullet (8.1.0) sha256=604b7e2636ec2137dcab3ba61a56248c39a0004a0c9405d58bad0686d23b98ff
