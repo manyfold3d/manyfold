@@ -42,7 +42,7 @@
     "sass-embedded": "^1.97.3",
     "three": "^0.182.0",
     "threejs-webworker-3mf-loader": "https://github.com/manyfold3d/threejs-webworker-3mf-loader",
-    "tom-select": "^2.4.3"
+    "tom-select": "^2.4.5"
   },
   "version": "0.1.0",
   "devDependencies": {
