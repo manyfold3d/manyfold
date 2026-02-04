@@ -71,7 +71,7 @@ export class OffscreenRenderer {
     this.scene = new THREE.Scene()
     this.scene.background = new THREE.Color(this.settings.backgroundColour ?? '#000000')
     this.camera = new THREE.PerspectiveCamera(
-      45,
+      50,
       this.canvas.clientWidth / this.canvas.clientHeight,
       0.1,
       100000
@@ -234,8 +234,7 @@ export class OffscreenRenderer {
     object.position.set(-centre.x, -bbox.min.y, -centre.z)
 
     // Configure camera
-    this.camera.position.z = this.camera.position.x = bsphere.radius * 1.63
-    this.camera.position.y = bsphere.radius * 0.75
+    this.camera.position.z = this.camera.position.y = this.camera.position.x = bsphere.radius * 1.6
     this.controls.target.set(0, modelHeight / 2, 0)
     this.scene.add(object)
     // Add the grid
