@@ -100,6 +100,22 @@ class ApplicationUploader < Shrine
           carousel: magick.resize_to_limit!(1024, 768)
         }
       end
+    elsif context[:record].mime_type.to_sym.in? SupportedMimeTypes.f3d_formats
+      f3d_opts = {
+        output: "-",
+        resolution: "512,512",
+        filename: "0",
+        "background-color": "0,0,0",
+        "ambient-occlusion": "1",
+        "grid-unit": "10",
+        "grid-color": "0,255,255",
+        "grid-subdivisions": 0,
+        axis: "0"
+      }.map { |k, v| "--#{k}=#{v}" }.join(" ").freeze
+      render = StringIO.new(`f3d #{original.path} #{f3d_opts}`)
+      {
+        render: (render.length > 0) ? render : nil
+      }.compact
     else
       {}
     end
