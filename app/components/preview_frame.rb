@@ -38,6 +38,8 @@ class Components::PreviewFrame < Components::Base
       div class: "card-img-top #{"sensitive" if needs_hiding?}" do
         Renderer file: @file
       end
+    elsif @file.is_3d_model? && @file.attachment(:render)
+      image model_model_file_path(@file.model, @file, format: @file.extension, derivative: "render"), @file.name
     else
       empty
     end

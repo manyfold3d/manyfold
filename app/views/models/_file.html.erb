@@ -7,6 +7,9 @@
       <div class="card-img-top">
         <%= Renderer(file: file) %>
       </div>
+    <% elsif file.is_3d_model? && file.attachment(:render)%>
+      <%= content_tag :div, nil, class: "card-img-top card-img-top-background", style: "background-image: url(#{model_model_file_path(@model, file, format: file.extension)})" %>
+      <%= image_tag model_model_file_path(file.model, file, format: file.extension, derivative: "render"), class: "card-img-top image-preview", alt: file.name %>
     <% else %>
       <%= content_tag :div, nil, class: "card-img-top", style: "aspect-ratio: 1" do %>
         <svg height="100%" width="100%" viewBox="0 0 100 100">

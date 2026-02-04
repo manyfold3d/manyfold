@@ -18,6 +18,7 @@ class Components::Renderer < Components::Base
 
   def view_template
     div class: "position-relative", data: {turbo_permanent: true} do
+      img src: model_model_file_path(@file.model, @file, format: @file.extension, derivative: :render), class: "card-img-top image-preview", alt: @file.name if @file.attachment_derivatives[:render]
       canvas id: "preview-file-#{@file.to_param}",
         class: "object-preview position-relative",
         tabindex: "0",
