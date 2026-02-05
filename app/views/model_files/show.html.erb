@@ -39,7 +39,7 @@
         </ul>
       <% end %>
       <%= Renderer(file: @file) %>
-    <% elsif @file.is_3d_model? && @file.attachment(:render)%>
+    <% elsif @file.is_3d_model? && @file.attachment(:render) %>
       <%= image_tag model_model_file_path(@model, @file, format: @file.extension, derivative: "render"), style: "width: 100%", alt: @file.name %>
     <% end %>
     <% if @file.notes %>
