@@ -17,7 +17,7 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
   end
 
   def each_iteration(modelfile)
-    return unless modelfile.is_image? || modelfile.mime_type&.to_sym&.in?(SupportedMimeTypes.f3d_formats)
+    return unless modelfile.is_image? || SupportedMimeTypes.can_render?(modelfile.mime_type)
     return if modelfile.extension.downcase == "svg"
     Rails.logger.info("Creating image derivatives for: #{modelfile.path_within_library}")
     modelfile.attachment_derivatives!

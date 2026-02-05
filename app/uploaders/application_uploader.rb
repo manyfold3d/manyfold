@@ -100,7 +100,7 @@ class ApplicationUploader < Shrine
           carousel: magick.resize_to_limit!(1024, 768)
         }
       end
-    elsif context[:record].mime_type.to_sym.in? SupportedMimeTypes.f3d_formats
+    elsif SupportedMimeTypes.can_render?(context[:record].mime_type)
       f3d_opts = {
         output: "-",
         resolution: "512,512",
