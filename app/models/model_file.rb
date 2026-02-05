@@ -83,6 +83,10 @@ class ModelFile < ApplicationRecord
     ["stl", "obj", "3mf", "ply", "gltf", "glb", "drc", "fbx", "3ds", "gcode", "mpd", "ldr", "3dm"].include? extension
   end
 
+  def has_render?
+    is_3d_model? && attachment_attacher.derivatives.key?(:render)
+  end
+
   def mime_type
     Mime::Type.lookup_by_extension(extension)
   end
