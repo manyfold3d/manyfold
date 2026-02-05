@@ -8,6 +8,7 @@ module Form
         :notes,
         :caption,
         :y_up,
+        :previewable,
         :presupported_version_id
       ])
     end
