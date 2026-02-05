@@ -87,7 +87,7 @@ class Settings::UsersController < ApplicationController
       ]
     )
     # Filter out admin privilege for anyone but admins
-    unless current_user.is_administrator?
+    unless current_user&.is_administrator?
       filtered[:role_ids]&.delete_if { |it| @available_roles.map(&:id).exclude? it.to_i }
     end
     filtered

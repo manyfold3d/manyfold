@@ -64,8 +64,11 @@ Rails.application.routes.draw do
 
     post "/remote_follow" => "follows#remote_follow", :as => :remote_follow
     post "/perform_remote_follow" => "follows#perform_remote_follow", :as => :perform_remote_follow
-    post "/follow_remote_actor/:id" => "follows#follow_remote_actor", :as => :follow_remote_actor
-    delete "/follow_remote_actor/:id" => "follows#unfollow_remote_actor", :as => :unfollow_remote_actor
+
+    authenticate :user do
+      post "/follow_remote_actor/:id" => "follows#follow_remote_actor", :as => :follow_remote_actor
+      delete "/follow_remote_actor/:id" => "follows#unfollow_remote_actor", :as => :unfollow_remote_actor
+    end
   end
 
   if SiteSettings.federation_enabled? || Rails.env.test?

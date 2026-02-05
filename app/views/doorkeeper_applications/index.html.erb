@@ -2,7 +2,7 @@
 
 <p class="lead"><%= t(".description") %></p>
 
-<% if current_user.is_moderator? %>
+<% if current_user&.is_moderator? %>
   <div class="alert alert-info">
     <%= t(".moderator_notice") %>
   </div>
@@ -11,14 +11,14 @@
 <table class="table table-striped">
   <tr>
     <td><%= Doorkeeper::Application.human_attribute_name(:name) %></td>
-    <%= content_tag(:td) { Doorkeeper::Application.human_attribute_name(:owner) } if current_user.is_moderator? %>
+    <%= content_tag(:td) { Doorkeeper::Application.human_attribute_name(:owner) } if current_user&.is_moderator? %>
     <td><%= t Doorkeeper::Application.human_attribute_name(:scopes) %></td>
     <td><%= t Doorkeeper::Application.human_attribute_name(:created_at) %></td>
   </tr>
   <% @applications.find_each do |app| %>
     <tr>
       <td><%= link_to app.name, app %></td>
-      <%= content_tag(:td) { app.owner.username } if current_user.is_moderator? %>
+      <%= content_tag(:td) { app.owner.username } if current_user&.is_moderator? %>
       <td><%= app.scopes %></td>
       <td><%= app.created_at.to_fs(:long) %></td>
     </tr>
