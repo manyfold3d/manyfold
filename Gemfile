@@ -133,7 +133,7 @@ gem "sidekiq", "~> 8.0"
 # gem "sidekiq-failures", "~> 1.0"
 gem "activejob-status", "~> 1.0"
 
-gem "brakeman", "~> 7.1"
+gem "brakeman", "~> 8.0"
 
 gem "i18n_data", "~> 1.1"
 gem "bullet", "~> 8.1", group: :development
