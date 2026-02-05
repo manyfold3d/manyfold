@@ -2831,6 +2831,10 @@
             ],
             "example": "+y"
           },
+          "previewable": {
+            "type": "boolean",
+            "example": false
+          },
           "related": {
             "type": "array",
             "items": {
@@ -2939,6 +2943,10 @@
               "+z"
             ],
             "example": "+y"
+          },
+          "previewable": {
+            "type": "boolean",
+            "example": false
           },
           "related": {
             "type": "array",

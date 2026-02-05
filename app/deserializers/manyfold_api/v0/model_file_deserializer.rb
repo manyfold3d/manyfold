@@ -8,6 +8,7 @@ module ManyfoldApi::V0
         caption: @object["caption"],
         presupported: @object["presupported"],
         y_up: @object["up"] == "+y",
+        previewable: @object["presupported"],
         presupported_version: dereference(@object["related"]&.find { |it| it["relationship"] == "presupported_version" }&.dig("@id"), ModelFile)
       }.compact
     end
@@ -21,6 +22,7 @@ module ManyfoldApi::V0
           caption: {type: :string, example: "A short caption describing the file"},
           presupported: {type: :boolean, example: true},
           up: {type: :string, enum: ["+y", "+z"], example: "+y"},
+          previewable: {type: :boolean, example: false},
           related: {
             type: :array,
             items: {
