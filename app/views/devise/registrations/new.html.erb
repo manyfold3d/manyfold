@@ -12,7 +12,7 @@
   <% end %>
 
   <h2><%= t(".details") %></h2>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: "false"}) do |form| %>
     <div class="tabular-form mb-3">
       <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
       <%- if SiteSettings.default_signup_role == "contributor" && SiteSettings.autocreate_creator_for_new_users %>
