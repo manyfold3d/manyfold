@@ -713,6 +713,8 @@ nl:
       zero:
     menu: Menu
     new: Nieuw
+    no_change:
+    none:
     private: Privé
     public:
     report: Rapporteer %{type}

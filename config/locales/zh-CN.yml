@@ -713,6 +713,8 @@ zh-CN:
       zero: "%{count} 粉丝"
     menu: 菜单
     new:
+    no_change:
+    none:
     private:
     public: 公开可见
     report:

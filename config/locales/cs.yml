@@ -713,6 +713,8 @@ cs:
       zero: "%{count} sledující"
     menu: Menu
     new: Nový
+    no_change:
+    none:
     private: Soukromé
     public:
     report: Nahlásit %{type}

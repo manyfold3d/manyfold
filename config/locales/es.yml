@@ -713,6 +713,8 @@ es:
       zero: "%{count} Seguidores"
     menu: Menú
     new: Nuevo
+    no_change:
+    none:
     private: Privado
     public: Público
     report: Informe %{type}

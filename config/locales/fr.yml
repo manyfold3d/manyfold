@@ -716,6 +716,8 @@ fr:
       zero:
     menu: Menu
     new: Nouveau
+    no_change:
+    none:
     private: Privé
     public: Visibilité publique
     report: Rapporter %{type}

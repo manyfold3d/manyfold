@@ -715,6 +715,8 @@ de:
       zero: "%{count} Follower"
     menu: Menü
     new: Neue
+    no_change:
+    none:
     private: Privat
     public: Öffentlich sichtbar
     report: Melden %{type}

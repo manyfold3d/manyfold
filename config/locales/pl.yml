@@ -713,6 +713,8 @@ pl:
       zero:
     menu: Menu
     new: Nowy
+    no_change:
+    none:
     private: Prywatne
     public:
     report: Zgłoś %{type}
