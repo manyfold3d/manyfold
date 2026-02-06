@@ -77,3 +77,9 @@ end
   ActionDispatch::IntegrationTest.register_encoder mime_type,
     response_parser: ActionDispatch::Request.parameter_parsers[mime_type]
 end
+
+def mock_upload(content: nil, filename: nil)
+  filename ||= Faker::File.file_name
+  content ||= filename
+  Rack::Test::UploadedFile.new(StringIO.new(content), original_filename: filename)
+end
