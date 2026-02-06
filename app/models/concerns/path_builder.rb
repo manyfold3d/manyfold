@@ -5,7 +5,7 @@ module PathBuilder
     SiteSettings.model_path_template.gsub(/{.+?}/) do |token|
       case token
       when "{tags}"
-        (tags.count > 0) ?
+        tags.exists? ?
           File.join(tags.order(taggings_count: :desc, name: :asc).map { |it| it.to_s.parameterize }) :
           "@untagged"
       when "{creator}"

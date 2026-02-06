@@ -247,8 +247,8 @@ class Model < ApplicationRecord
   end
 
   def has_supported_and_unsupported?
-    model_files.where(presupported: true).count > 0 &&
-      model_files.where(presupported: false).count > 0
+    model_files.exists?(presupported: true) &&
+      model_files.exists?(presupported: false)
   end
 
   def file_extensions
