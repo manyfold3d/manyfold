@@ -81,5 +81,9 @@ end
 def mock_upload(content: nil, filename: nil)
   filename ||= Faker::File.file_name
   content ||= filename
-  Rack::Test::UploadedFile.new(StringIO.new(content), original_filename: filename)
+  Rack::Test::UploadedFile.new(
+    StringIO.new(content),
+    Mime::EXTENSION_LOOKUP[File.extname(filename).slice(1..-1)].to_s,
+    original_filename: filename
+  )
 end
