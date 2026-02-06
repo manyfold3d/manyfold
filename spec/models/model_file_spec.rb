@@ -70,31 +70,27 @@ RSpec.describe ModelFile do
   it "finds duplicate files using digest" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
     library = create(:library, path: Rails.root.join("storage"))
     model = create(:model, library: library, path: "model")
-    part1 = create(:model_file, model: model, filename: "same.obj")
-    part1.update!(digest: "1234")
-    part2 = create(:model_file, model: model, filename: "same.stl")
-    part2.update!(digest: "1234")
-    different = create(:model_file, model: model, filename: "different.stl")
-    different.update!(digest: "4321")
+    part1 = create(:model_file, model: model, filename: "same.obj", attachment: mock_upload(content: "same\n"))
+    part2 = create(:model_file, model: model, filename: "same.stl", attachment: mock_upload(content: "same\n"))
+    create(:model_file, model: model, filename: "different.stl", attachment: mock_upload(content: "different\n"))
     allow(part1).to receive(:size).and_return(123)
     expect(part1.duplicate?).to be true
     expect(part1.duplicates).to contain_exactly(part2)
   end
 
-  it "does not flag duplicates for nil digests" do # rubocop:todo RSpec/ExampleLength
-    library = create(:library, path: Rails.root.join("storage"))
-    model = create(:model, library: library, path: "model1")
-    part1 = create(:model_file, model: model, filename: "nil.obj", digest: nil)
-    create(:model_file, model: model, filename: "nil.stl", digest: nil)
+  it "does not flag duplicates for nil digests" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+    # First, make sure we have duplicates
+    part1 = create(:model_file, filename: "test.stl")
+    part2 = create(:model_file, filename: "test.stl")
+    expect(part1.digest).to eq part2.digest
+    # Then make sure the digest appears to be nil
+    allow(part1).to receive(:digest).and_return(nil)
     expect(part1.duplicate?).to be false
   end
 
   it "does not flag duplicates for zero-length files" do # rubocop:todo RSpec/ExampleLength
-    library = create(:library, path: Rails.root.join("storage"))
-    model = create(:model, library: library, path: "model1")
-    part1 = create(:model_file, model: model, filename: "same.obj", digest: "1234")
-    create(:model_file, model: model, filename: "same.stl", digest: "1234")
-    allow(part1).to receive(:size).and_return(0)
+    part1 = create(:model_file, filename: "empty.stl", attachment: mock_upload(content: ""))
+    create(:model_file, filename: "empty.stl", attachment: mock_upload(content: ""))
     expect(part1.duplicate?).to be false
   end
 
@@ -144,11 +140,7 @@ RSpec.describe ModelFile do
 
     let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
     let(:model) { create(:model, library: library, path: "model_one") }
-    let(:file) do
-      f = create(:model_file, model: model, filename: "part_1.3mf")
-      f.update!(digest: "1234")
-      f
-    end
+    let(:file) { create(:model_file, model: model, filename: "part_1.3mf", attachment: mock_upload(content: "awesome_file")) }
 
     it "renames file on disk" do # rubocop:disable RSpec/MultipleExpectations
       file.update!(filename: "newname.3mf")
@@ -186,8 +178,7 @@ RSpec.describe ModelFile do
     end
 
     it "queues up rescans for duplicates on destroy" do
-      dupe = create(:model_file, model: model, filename: "duplicate.3mf")
-      dupe.update!(digest: "1234")
+      dupe = create(:model_file, model: model, filename: "duplicate.3mf", attachment: mock_upload(content: "awesome_file"))
       expect { file.destroy }.to(
         have_enqueued_job(Analysis::AnalyseModelFileJob).with(dupe.id)
       )

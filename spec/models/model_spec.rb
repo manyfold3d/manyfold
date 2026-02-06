@@ -278,8 +278,8 @@ RSpec.describe Model do
     context "when merging models that have duplicated files" do
       before do
         create(:model_file, model: parent, filename: "parent_part.stl")
-        create(:model_file, model: parent, filename: "child/duplicate.stl", digest: "abcd")
-        create(:model_file, model: child, filename: "duplicate.stl", digest: "abcd")
+        create(:model_file, model: parent, filename: "child/duplicate.stl", attachment: mock_upload(content: "duplicate\n"))
+        create(:model_file, model: child, filename: "duplicate.stl", attachment: mock_upload(content: "duplicate\n"))
         create(:model_file, model: child, filename: "child_part.stl")
       end
 
@@ -362,10 +362,10 @@ RSpec.describe Model do
     let(:target) { create(:model) }
 
     it "renames incoming file to avoid conflict if files are different" do # rubocop:disable RSpec/MultipleExpectations
-      create(:model_file, model: model, filename: "test.stl", digest: "abcd")
-      create(:model_file, model: target, filename: "test.stl", digest: "1234")
+      create(:model_file, model: model, filename: "test.stl", attachment: mock_upload(content: "same\n"))
+      create(:model_file, model: target, filename: "test.stl", attachment: mock_upload(content: "different\n"))
       target.merge!(model)
-      expect(target.model_files.map(&:filename)).to contain_exactly("test_abcd.stl", "test.stl")
+      expect(target.model_files.map(&:filename)).to contain_exactly("test_28d818.stl", "test.stl")
     end
 
     it "discards incoming file if they are identical" do
