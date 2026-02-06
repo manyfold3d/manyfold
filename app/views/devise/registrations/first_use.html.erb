@@ -8,7 +8,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put, class: "tabular-form"}) do |f| %>
   <%= text_input_row f, :email, autofocus: true, autocomplete: "email", help: t(".email_help") %>
   <%= text_input_row f, :username, help: t(".username_help") %>
-  <%= password_input_row f, :password, autocomplete: "new-password", help: t(".password.help_html"), strength_meter: true %>
+  <%= password_input_row f, :password, autocomplete: "new-password", help: t(".password.help_html") %>
   <%= password_input_row f, :password_confirmation, autocomplete: "new-password" %>
   <div>
     <button type="submit" class="btn btn-primary"><%= Icon(icon: "save", label: t(".submit")) %> <%= t(".submit") %></button>

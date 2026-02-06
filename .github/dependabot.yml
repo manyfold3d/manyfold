@@ -17,9 +17,6 @@ updates:
     babel:
       patterns:
         - "@babel/*"
-    zxcvbn:
-      patterns:
-        - "@zxcvbn-ts/*"
 
 - package-ecosystem: "github-actions"
   directory: "/"

@@ -23,7 +23,7 @@
       <%- else %>
         <%= text_input_row form, :username, autocomplete: "username", help: t(".username.help") %>
       <% end %>
-      <%= password_input_row form, :password, autocomplete: "new-password", strength_meter: true %>
+      <%= password_input_row form, :password, autocomplete: "new-password" %>
       <%= password_input_row form, :password_confirmation, autocomplete: "new-password" %>
       <div>
         <%= form.submit translate(".sign_up"), class: "btn btn-primary" %>

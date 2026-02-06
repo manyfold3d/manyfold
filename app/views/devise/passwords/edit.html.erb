@@ -2,7 +2,7 @@
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :put, class: "tabular-form"}) do |f| %>
   <%= f.hidden_field :reset_password_token %>
-  <%= password_input_row f, :password, autocomplete: "new-password", autofocus: true, strength_meter: true %>
+  <%= password_input_row f, :password, autocomplete: "new-password", autofocus: true %>
   <%= password_input_row f, :password_confirmation, autocomplete: "new-password" %>
   <div>
     <%= f.submit translate(".change_my_password"), class: "btn btn-primary" %>

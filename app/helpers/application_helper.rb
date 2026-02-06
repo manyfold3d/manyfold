@@ -96,7 +96,6 @@ module ApplicationHelper
     PasswordInputRow(
       form: form,
       attribute: attribute,
-      strength_meter: options.delete(:strength_meter),
       label: options.delete(:label),
       help: options.delete(:help),
       options: options
