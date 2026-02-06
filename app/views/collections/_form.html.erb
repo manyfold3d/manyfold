@@ -6,7 +6,7 @@
 
   <%= collection_select_input_row form,
         :creator, @creators, :id, :name_with_domain,
-        include_blank: true,
+        include_blank: t("general.none"),
         selected: @default_creator&.id,
         button: (if policy(:creator).new?
                    {
@@ -16,7 +16,7 @@
                  end) %>
   <%= collection_select_input_row form,
         :collection, @collections, :id, :name_with_domain,
-        include_blank: true,
+        include_blank: t("general.none"),
         button: (if policy(:collection).new?
                    {
                      path: new_collection_path,

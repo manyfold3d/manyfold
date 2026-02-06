@@ -713,6 +713,8 @@ ja:
       zero:
     menu:
     new:
+    no_change:
+    none:
     private: プライベート
     public:
     report:

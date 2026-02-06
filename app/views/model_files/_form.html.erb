@@ -8,7 +8,7 @@
     <%= unless @file.presupported
           collection_select_input_row form,
             :presupported_version, policy_scope(@model.model_files).presupported.select { |x| x.extension.downcase == @file.extension.downcase }, :id, :name,
-            include_blank: true
+            include_blank: t("general.none")
         end %>
   <% end %>
   <%= text_input_row form, :caption %>

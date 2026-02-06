@@ -5,7 +5,7 @@
 
   <%= collection_select_input_row form,
         :creator, @creators, :id, :name_with_domain,
-        include_blank: true,
+        include_blank: t("general.none"),
         selected: @default_creator&.id,
         button: (if policy(:creator).new?
                    {
@@ -17,8 +17,7 @@
   <% if SiteSettings.show_libraries || current_user.is_administrator? %>
     <%= unless @model.contains_other_models?
           collection_select_input_row form,
-            :library, policy_scope(Library).all, :id, :name,
-            include_blank: true
+            :library, policy_scope(Library).all, :id, :name
         end %>
   <% end %>
 
@@ -26,7 +25,7 @@
 
   <%= collection_select_input_row form,
         :collection, @collections, :id, :name_with_domain,
-        include_blank: true,
+        include_blank: t("general.none"),
         button: (if policy(:collection).new?
                    {
                      path: new_collection_path,
@@ -37,7 +36,7 @@
   <%= render "links_form", form: form %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
-  <%= select_input_row form, :license, license_select_options(selected: @model.license), include_blank: true %>
+  <%= select_input_row form, :license, license_select_options(selected: @model.license), include_blank: t("general.none") %>
   <%= checkbox_input_row form, :sensitive %>
   <%= select_input_row form, :indexable, indexable_select_options(form.object) %>
   <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots %>

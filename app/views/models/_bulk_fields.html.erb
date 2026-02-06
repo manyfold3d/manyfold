@@ -1,6 +1,6 @@
 <%= collection_select_input_row form,
       :creator, @creators, :id, :name_with_domain,
-      include_blank: true,
+      include_blank: t("general.no_change"),
       selected: @new_creator&.id || @default_creator&.id,
       button: (if policy(:creator).new?
                  {
@@ -10,7 +10,7 @@
                end) %>
 <%= collection_select_input_row form,
       :collection, @collections, :id, :name_with_domain,
-      include_blank: true,
+      include_blank: t("general.no_change"),
       selected: @new_collection&.id,
       button: (if policy(:collection).new?
                  {
@@ -19,6 +19,6 @@
                  }
                end) %>
 
-<%= select_input_row form, :license, license_select_options, include_blank: true %>
+<%= select_input_row form, :license, license_select_options, include_blank: t("general.no_change") %>
 
 <%= checkbox_input_row form, :sensitive %>
