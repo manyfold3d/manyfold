@@ -135,7 +135,7 @@ class CollectionsController < ApplicationController
   def get_creators
     # Creators that we can assign this collection to
     @creators = policy_scope(Creator, policy_scope_class: ApplicationPolicy::UpdateScope).local.order("LOWER(creators.name) ASC")
-    @default_creator = @creators.first if @creators.count == 1
+    @default_creator = @creators.first if @creators.one?
   end
 
   def get_parent_collections
