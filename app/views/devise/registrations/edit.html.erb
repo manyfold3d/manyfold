@@ -23,7 +23,7 @@
         <div class="card mb-2">
           <h4 class="card-header"><%= t(".security") %></h4>
           <div class="card-body tabular-form">
-            <%= password_input_row f, :password, autocomplete: "new-password", strength_meter: true %>
+            <%= password_input_row f, :password, autocomplete: "new-password" %>
             <%= password_input_row f, :password_confirmation, autocomplete: "new-password" %>
             <%= password_input_row f, :current_password, autocomplete: "current-password",
                   help: t(".current_password_help") %>
