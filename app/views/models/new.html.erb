@@ -17,7 +17,7 @@
     <div>
       <%= form.select :library,
             policy_scope(Library).all.map { |lib| [library_select_title(lib), lib.to_param] },
-            {include_blank: false, selected: Library.default.to_param},
+            {selected: Library.default.to_param},
             {class: "form-control form-select"} %>
       <span class="form-text"><%= t ".library.help" %></span>
     </div>
@@ -63,7 +63,7 @@
           [translate("settings.multiuser.default_viewer_role.options.member"), "member"],
           [translate("settings.multiuser.default_viewer_role.options.public"), "public"]
         ],
-          {selected: SiteSettings.default_viewer_role, include_blank: true},
+          {selected: SiteSettings.default_viewer_role},
           {class: "form-control col-auto form-select"} %>
   </div>
 

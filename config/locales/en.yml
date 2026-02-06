@@ -713,6 +713,8 @@ en:
       zero: "%{count} Followers"
     menu: Menu
     new: New
+    no_change: No change
+    none: None
     private: Private
     public: Publicly visible
     report: Report %{type}

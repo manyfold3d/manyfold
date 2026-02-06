@@ -43,7 +43,7 @@
           <%= form.label :new_library_id, class: "col-sm-2 col-form-label" %>
         </div>
         <div>
-          <%= form.collection_select :new_library_id, policy_scope(Library).all, :id, :name, {include_blank: true}, {class: "form-control col-auto form-select"} %>
+          <%= form.collection_select :new_library_id, policy_scope(Library).all, :id, :name, {include_blank: t("general.no_change")}, {class: "form-control col-auto form-select"} %>
         </div>
       <% end %>
 
