@@ -8,7 +8,7 @@ class ApplicationUploader < Shrine
   plugin :activerecord
   plugin :add_metadata
   plugin :refresh_metadata
-  plugin :metadata_attributes, size: "size"
+  plugin :metadata_attributes, size: "size", digest: "digest"
   plugin :restore_cached_data
   plugin :keep_files
   plugin :determine_mime_type
@@ -39,6 +39,16 @@ class ApplicationUploader < Shrine
 
   def generate_location(io, record: nil, derivative: nil, metadata: {}, **)
     ".manyfold/#{super}"
+  end
+
+  add_metadata :digest do |io|
+    updated = false
+    sha = Digest::SHA512.new
+    while (chunk = io.read(8192))
+      updated = true
+      sha.update(chunk)
+    end
+    sha.hexdigest if updated
   end
 
   add_metadata :ctime do |io|
