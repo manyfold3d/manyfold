@@ -115,7 +115,7 @@ class Model < ApplicationRecord
       return
     elsif existing_file
       # Otherwise, make sure the name is distinct by adding the digest to the end if there's a clash
-      new_filename = "#{File.basename(new_filename, ".*")}_#{file.digest}#{File.extname(new_filename)}"
+      new_filename = "#{File.basename(new_filename, ".*")}_#{file.digest.first(6)}#{File.extname(new_filename)}"
     end
     # Adopt the file
     file.update(
