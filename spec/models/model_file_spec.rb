@@ -51,7 +51,7 @@ RSpec.describe ModelFile do
     end
 
     it "calculates digest for a file" do
-      expect(part.calculate_digest.first(16)).to eq("8a0f188378204b67")
+      expect(part.digest.first(16)).to eq("8a0f188378204b67")
     end
   end
 
@@ -70,9 +70,12 @@ RSpec.describe ModelFile do
   it "finds duplicate files using digest" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
     library = create(:library, path: Rails.root.join("storage"))
     model = create(:model, library: library, path: "model")
-    part1 = create(:model_file, model: model, filename: "same.obj", digest: "1234")
-    part2 = create(:model_file, model: model, filename: "same.stl", digest: "1234")
-    create(:model_file, model: model, filename: "different.stl", digest: "4321")
+    part1 = create(:model_file, model: model, filename: "same.obj")
+    part1.update!(digest: "1234")
+    part2 = create(:model_file, model: model, filename: "same.stl")
+    part2.update!(digest: "1234")
+    different = create(:model_file, model: model, filename: "different.stl")
+    different.update!(digest: "4321")
     allow(part1).to receive(:size).and_return(123)
     expect(part1.duplicate?).to be true
     expect(part1.duplicates).to contain_exactly(part2)
@@ -141,7 +144,11 @@ RSpec.describe ModelFile do
 
     let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
     let(:model) { create(:model, library: library, path: "model_one") }
-    let(:file) { create(:model_file, model: model, filename: "part_1.3mf", digest: "1234") }
+    let(:file) do
+      f = create(:model_file, model: model, filename: "part_1.3mf")
+      f.update!(digest: "1234")
+      f
+    end
 
     it "renames file on disk" do # rubocop:disable RSpec/MultipleExpectations
       file.update!(filename: "newname.3mf")
@@ -179,7 +186,8 @@ RSpec.describe ModelFile do
     end
 
     it "queues up rescans for duplicates on destroy" do
-      dupe = create(:model_file, model: model, filename: "duplicate.3mf", digest: "1234")
+      dupe = create(:model_file, model: model, filename: "duplicate.3mf")
+      dupe.update!(digest: "1234")
       expect { file.destroy }.to(
         have_enqueued_job(Analysis::AnalyseModelFileJob).with(dupe.id)
       )
