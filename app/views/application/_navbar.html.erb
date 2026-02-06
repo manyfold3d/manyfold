@@ -87,7 +87,7 @@
           <% end %>
         </li>
         <%- if current_user %>
-          <% if policy(Problem).index? && Problem.visible(problem_settings).count > 0 %>
+          <% if policy(Problem).index? && Problem.visible(problem_settings).exists? %>
             <li class="nav-item" role="presentation">
               <% severity = max_problem_severity(policy_scope(Problem).all) %>
               <%= nav_link problem_icon(severity),

@@ -3,7 +3,7 @@ class LibrariesController < ApplicationController
   skip_after_action :verify_policy_scoped, only: [:index]
 
   def index
-    redirect_to new_library_path and return if Library.count === 0 # rubocop:disable Pundit/UsePolicyScope
+    redirect_to new_library_path and return if Library.all.empty? # rubocop:disable Pundit/UsePolicyScope
     render layout: "settings"
   end
 

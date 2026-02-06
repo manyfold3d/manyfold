@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_for_first_use
-    authenticate_user! if User.count == 0 # rubocop:disable Pundit/UsePolicyScope
+    authenticate_user! if User.all.empty? # rubocop:disable Pundit/UsePolicyScope
     redirect_to(edit_user_registration_path) if current_user&.first_use?
   end
 

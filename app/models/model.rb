@@ -86,7 +86,7 @@ class Model < ApplicationRecord
 
   def self.common_root(*models)
     # If there are different libraries, there is no common root
-    return nil unless models.map(&:library_id).uniq.count == 1
+    return nil unless models.map(&:library_id).uniq.one?
     # Get each path, split, and working from the front, find the common elements
 
     first, *remainder = models.map { |it| it.path.split(File::SEPARATOR).without(".") }
@@ -247,8 +247,8 @@ class Model < ApplicationRecord
   end
 
   def has_supported_and_unsupported?
-    model_files.where(presupported: true).count > 0 &&
-      model_files.where(presupported: false).count > 0
+    model_files.exists?(presupported: true) &&
+      model_files.exists?(presupported: false)
   end
 
   def file_extensions

@@ -13,7 +13,7 @@ class MultimodelUniquenessValidator < ActiveModel::EachValidator
       end
       query = query.and(model.arel_table[:id].not_eq(record.id)) if record.instance_of?(model)
       # Run the check
-      record.errors.add(attribute, :taken) if model.unscoped.where(query).count > 0 # rubocop:disable Pundit/AvoidUnscoped
+      record.errors.add(attribute, :taken) if model.unscoped.where(query).exists? # rubocop:disable Pundit/AvoidUnscoped
     end
   end
 end

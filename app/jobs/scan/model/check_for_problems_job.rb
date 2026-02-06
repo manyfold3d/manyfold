@@ -6,7 +6,7 @@ class Scan::Model::CheckForProblemsJob < ApplicationJob
     model = Model.find(model_id)
     return if model.remote?
     Problem.create_or_clear(model, :missing, !model.exists_on_storage?)
-    Problem.create_or_clear model, :empty, (model.model_files.count == 0)
+    Problem.create_or_clear model, :empty, model.model_files.empty?
     Problem.create_or_clear model, :nesting, model.contains_other_models?
     Problem.create_or_clear model, :no_image, model.image_files.empty?
     Problem.create_or_clear model, :no_3d_model, model.three_d_files.empty?

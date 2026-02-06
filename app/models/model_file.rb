@@ -159,7 +159,7 @@ class ModelFile < ApplicationRecord
   end
 
   def duplicate?
-    size && size > 0 && duplicates.count > 0 && !is_document?
+    size && size > 0 && duplicates.exists? && !is_document?
   end
 
   # Used for ETag in conditional GETs
