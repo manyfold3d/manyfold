@@ -2,7 +2,7 @@ require "thor"
 
 module Cli
   class CollectionsCommand < Thor
-    COMMAND = "collections"
+    namespace :collections
     DESCRIPTION = "manage collections"
 
     desc "prune", "removes all empty collections"

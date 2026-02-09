@@ -2,7 +2,7 @@ require "thor"
 
 module Cli
   class TagsCommand < Thor
-    COMMAND = "tags"
+    namespace :tags
     DESCRIPTION = "manage tags"
 
     desc "purge", "removes all tags"

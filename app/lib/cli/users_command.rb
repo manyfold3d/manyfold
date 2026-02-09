@@ -2,7 +2,7 @@ require "thor"
 
 module Cli
   class UsersCommand < Thor
-    COMMAND = "users"
+    namespace :users
     DESCRIPTION = "manage users"
 
     desc "approve", "approves a user"

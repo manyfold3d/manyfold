@@ -2,7 +2,7 @@ require "thor"
 
 module Cli
   class ModelsCommand < Thor
-    COMMAND = "models"
+    namespace :models
     DESCRIPTION = "manage models"
 
     desc "update_metadata", "reruns the metadata parser for all models"
