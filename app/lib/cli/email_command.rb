@@ -2,7 +2,7 @@ require "thor"
 
 module Cli
   class EmailCommand < Thor
-    COMMAND = "email"
+    namespace :email
     DESCRIPTION = "test email"
 
     desc "test", "sends test email"

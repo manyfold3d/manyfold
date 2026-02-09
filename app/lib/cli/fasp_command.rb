@@ -2,7 +2,7 @@ require "thor"
 
 module Cli
   class FaspCommand < Thor
-    COMMAND = "fasp"
+    namespace :fasp
     DESCRIPTION = "interact with FASP servers"
 
     desc "announce", "push all public indexable content to connected FASPs"

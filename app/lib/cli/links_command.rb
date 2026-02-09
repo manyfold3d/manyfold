@@ -2,7 +2,7 @@ require "thor"
 
 module Cli
   class LinksCommand < Thor
-    COMMAND = "links"
+    namespace :links
     DESCRIPTION = "manage links"
 
     desc "deduplicate", "removes duplicate links"

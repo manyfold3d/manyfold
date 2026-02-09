@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 Rails.root.glob("app/lib/cli/**/*.rb").sort.each { |f| require f }
 
 class ManyfoldCLI < Thor
+  namespace :manyfold
   [
     Cli::CollectionsCommand,
     Cli::CreatorsCommand,
@@ -16,8 +17,8 @@ class ManyfoldCLI < Thor
     Cli::TagsCommand,
     Cli::UsersCommand
   ].each do |c|
-    desc c::COMMAND, c::DESCRIPTION
-    subcommand c::COMMAND, c
+    desc c.namespace, c::DESCRIPTION
+    subcommand c.namespace, c
   end
 end
 

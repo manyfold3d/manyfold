@@ -2,7 +2,7 @@ require "thor"
 
 module Cli
   class ProblemsCommand < Thor
-    COMMAND = "problems"
+    namespace :problems
     DESCRIPTION = "manage problems"
 
     desc "prune", "removes any problems without an associated problematic object"

@@ -2,7 +2,7 @@ require "thor"
 
 module Cli
   class LibrariesCommand < Thor
-    COMMAND = "libraries"
+    namespace :libraries
     DESCRIPTION = "manage libraries"
 
     desc "scan", "scan library for filesystem changes"

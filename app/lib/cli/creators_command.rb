@@ -2,7 +2,7 @@ require "thor"
 
 module Cli
   class CreatorsCommand < Thor
-    COMMAND = "creators"
+    namespace :creators
     DESCRIPTION = "manage creators"
 
     desc "prune", "removes all creators that aren't associated with any models"
