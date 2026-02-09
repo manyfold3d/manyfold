@@ -30,7 +30,7 @@ module ModelFilesHelper
       # i18n-tasks-use t('model_files.download.superslicer')
       # From code at https://github.com/supermerill/SuperSlicer/tree/master_27/src/libslic3r/Format
     }.freeze
-    apps = supported_types.filter_map { |app, formats| app if formats.include? file.mime_type.to_sym }
+    apps = supported_types.filter_map { |app, formats| app if formats.include? file.mime_type&.to_sym }
     safe_join(
       apps.map do |app|
         content_tag(:li, role: "presentation") {
