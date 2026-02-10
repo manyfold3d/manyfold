@@ -1784,22 +1784,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/dashboard@npm:5.1.0":
-  version: 5.1.0
-  resolution: "@uppy/dashboard@npm:5.1.0"
+"@uppy/dashboard@npm:5.1.1":
+  version: 5.1.1
+  resolution: "@uppy/dashboard@npm:5.1.1"
   dependencies:
     "@transloadit/prettier-bytes": ^0.3.4
-    "@uppy/provider-views": ^5.2.0
+    "@uppy/provider-views": ^5.2.2
     "@uppy/thumbnail-generator": ^5.1.0
-    "@uppy/utils": ^7.1.4
+    "@uppy/utils": ^7.1.5
     classnames: ^2.2.6
-    lodash: ^4.17.21
+    lodash: ^4.17.23
     nanoid: ^5.0.9
-    preact: ^10.5.13
+    preact: ^10.26.10
     shallow-equal: ^3.0.0
   peerDependencies:
     "@uppy/core": ^5.2.0
-  checksum: 4b34a325784b5e49a8739b58642667458f1b7fc9b0e3acf0c522277d9a84669ff753413264aa5f62f4f8fb0d1fbfc3a7fb0882135c6512c70d4c5d2e18a25589
+  checksum: bf139b0b0ea264001317bf6e1a04b763a60b4ba8421ed4f62e93949da159971d1188aa7bbbc7d9ca9a747943a2f49021faab8c2664e3b266db9482dbe68ef4fa
   languageName: node
   linkType: hard
 
@@ -1824,7 +1824,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uppy/provider-views@npm:^5.2.0":
+"@uppy/provider-views@npm:^5.2.2":
   version: 5.2.2
   resolution: "@uppy/provider-views@npm:5.2.2"
   dependencies:
@@ -4490,7 +4490,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:*, lodash@npm:^4.17.21":
+"lodash@npm:*, lodash@npm:^4.17.21, lodash@npm:^4.17.23":
   version: 4.17.23
   resolution: "lodash@npm:4.17.23"
   checksum: 7daad39758a72872e94651630fbb54ba76868f904211089721a64516ce865506a759d9ad3d8ff22a2a49a50a09db5d27c36f22762d21766e47e3ba918d6d7bab
@@ -4583,7 +4583,7 @@ __metadata:
     "@types/webxr": ^0.5.24
     "@typescript-eslint/parser": ^8.54.0
     "@uppy/core": ^5.2.0
-    "@uppy/dashboard": 5.1.0
+    "@uppy/dashboard": 5.1.1
     "@uppy/form": ^5.1.0
     "@uppy/locales": ^5.1.1
     "@uppy/tus": ^5.1.1
@@ -5405,6 +5405,13 @@ __metadata:
     picocolors: ^1.1.1
     source-map-js: ^1.2.1
   checksum: 20f3b5d673ffeec2b28d65436756d31ee33f65b0a8bedb3d32f556fbd5973be38c3a7fb5b959a5236c60a5db7b91b0a6b14ffaac0d717dce1b903b964ee1c1bb
+  languageName: node
+  linkType: hard
+
+"preact@npm:^10.26.10":
+  version: 10.28.3
+  resolution: "preact@npm:10.28.3"
+  checksum: 8847b538127ff9f4dc86d7f3ffecd416137eaea868b559b9663a4c5a43bc1fcef77f8db41ee1fc55565bf339d9d951ffe90d11f3749726e6217315b3d658599a
   languageName: node
   linkType: hard
 
