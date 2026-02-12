@@ -2,17 +2,6 @@
 
 FROM base as runtime
 
-RUN apk add --no-cache \
-  file \
-  s6-overlay \
-  gcompat \
-  jemalloc \
-  imagemagick \
-  imagemagick-jpeg \
-  imagemagick-webp \
-  imagemagick-heic \
-  assimp-dev
-
 COPY . .
 COPY --from=build /usr/src/app/vendor/bundle vendor/bundle
 COPY --from=build /usr/src/app/public/assets public/assets
