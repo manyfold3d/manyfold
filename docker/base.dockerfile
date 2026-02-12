@@ -9,3 +9,14 @@ RUN apk add --no-cache \
 RUN gem install bundler -v 2.5.23
 RUN bundle config set --local deployment 'true'
 RUN bundle config set --local without 'development test'
+
+RUN apk add --no-cache \
+  file \
+  s6-overlay \
+  gcompat \
+  jemalloc \
+  imagemagick \
+  imagemagick-jpeg \
+  imagemagick-webp \
+  imagemagick-heic \
+  assimp-dev

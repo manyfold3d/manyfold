@@ -16,12 +16,7 @@ RUN apk add --no-cache \
   npm \
   postgresql-dev \
   mariadb-dev \
-  libarchive \
-  imagemagick \
-  imagemagick-jpeg \
-  imagemagick-webp \
-  imagemagick-heic \
-  assimp-dev
+  libarchive
 
 COPY package.json .
 COPY yarn.lock .
