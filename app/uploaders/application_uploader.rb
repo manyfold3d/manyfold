@@ -30,7 +30,6 @@ class ApplicationUploader < Shrine
     "anti-aliasing" => "true",
     "axis" => "0",
     "background-color" => "0,0,0",
-    "camera-direction" => "-1,-0.5,-1",
     "filename" => "0",
     "grid" => "1",
     "grid-color" => "0,255,255",
@@ -42,6 +41,11 @@ class ApplicationUploader < Shrine
     "tone-mapping" => "1",
     "translucency-support" => "1"
   }.map { |k, v| "--#{k}=#{v}" }.join(" ").freeze
+
+  CAMERA_OPTS = {
+    "+z" => "-1,1,-0.5",
+    "+y" => "-1,-0.5,-1"
+  }
 
   storage(/library_(\d+)/) do |m|
     Library.find(m[1]).storage # rubocop:disable Pundit/UsePolicyScope
@@ -120,7 +124,8 @@ class ApplicationUploader < Shrine
         end
       elsif SupportedMimeTypes.can_render?(context[:record].mime_type)
         Shrine.with_file(original) do |it|
-          render = StringIO.new(`f3d #{it.path} #{F3D_OPTS}`)
+          up = context[:record]&.up_direction
+          render = StringIO.new(`f3d #{it.path} #{F3D_OPTS} --up=#{up} --camera-direction=#{CAMERA_OPTS[up]}`)
           {
             render: (render.length > 0) ? render : nil
           }.compact
