@@ -22,7 +22,8 @@ RUN apk add --no-cache \
   imagemagick-jpeg \
   imagemagick-webp \
   imagemagick-heic \
-  assimp-dev
+  assimp-dev \
+  mesa-egl
 
 RUN wget "https://github.com/manyfold3d/f3d-alpine/releases/download/v3.4.1-r1/f3d-3.4.1-r1.`xx-info alpine-arch`.apk" -O /tmp/f3d.apk
 RUN wget "https://github.com/manyfold3d/f3d-alpine/releases/download/v3.4.1-r1/vtk-9.5.2-r0.`xx-info alpine-arch`.apk" -O /tmp/vtk.apk
