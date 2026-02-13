@@ -17,7 +17,7 @@ class ApplicationUploader < Shrine
   plugin :tus
   plugin :remote_url, max_size: SiteSettings.max_file_upload_size
   plugin :infer_extension
-  plugin :derivatives
+  plugin :derivatives, create_on_promote: true
   plugin :remove_attachment
 
   self.storages = {
