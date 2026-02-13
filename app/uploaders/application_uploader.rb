@@ -26,15 +26,21 @@ class ApplicationUploader < Shrine
   }
 
   F3D_OPTS = {
-    output: "-",
-    resolution: "512,512",
-    filename: "0",
-    "background-color": "0,0,0",
-    "ambient-occlusion": "1",
-    "grid-unit": "10",
-    "grid-color": "0,255,255",
-    "grid-subdivisions": 0,
-    axis: "0"
+    "ambient-occlusion" => "1",
+    "anti-aliasing" => "true",
+    "axis" => "0",
+    "background-color" => "0,0,0",
+    "camera-direction" => "-1,-0.5,-1",
+    "filename" => "0",
+    "grid" => "1",
+    "grid-color" => "0,255,255",
+    "grid-subdivisions" => 0,
+    "grid-unit" => "10",
+    "no-config" => "1",
+    "output" => "-",
+    "resolution" => "512,512",
+    "tone-mapping" => "1",
+    "translucency-support" => "1"
   }.map { |k, v| "--#{k}=#{v}" }.join(" ").freeze
 
   storage(/library_(\d+)/) do |m|
