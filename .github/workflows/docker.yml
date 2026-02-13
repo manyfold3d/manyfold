@@ -66,7 +66,7 @@ jobs:
           project: bsbhgkfhgc
           context: .
           file: ./docker/${{ matrix.variant }}.dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/arm64
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
