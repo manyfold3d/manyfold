@@ -17,7 +17,7 @@ class ApplicationUploader < Shrine
   plugin :tus
   plugin :remote_url, max_size: SiteSettings.max_file_upload_size
   plugin :infer_extension
-  plugin :derivatives
+  plugin :derivatives, create_on_promote: true
   plugin :remove_attachment
 
   self.storages = {
@@ -91,14 +91,17 @@ class ApplicationUploader < Shrine
   end
 
   Attacher.derivatives do |original|
-    break unless SiteSettings.generate_image_derivatives
-    if context[:record]&.is_image?
-      Shrine.with_file(original) do |it|
-        magick = ImageProcessing::MiniMagick.source(it)
-        {
-          preview: magick.resize_to_limit!(320, 320),
-          carousel: magick.resize_to_limit!(1024, 768)
-        }
+    if SiteSettings.generate_image_derivatives
+      if context[:record]&.is_image?
+        Shrine.with_file(original) do |it|
+          magick = ImageProcessing::MiniMagick.source(it)
+          {
+            preview: magick.resize_to_limit!(320, 320),
+            carousel: magick.resize_to_limit!(1024, 768)
+          }
+        end
+      else
+        {}
       end
     else
       {}
