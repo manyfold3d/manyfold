@@ -72,5 +72,5 @@ Rails.application.configure do
   config.generators.apply_rubocop_autocorrect_after_generate!
 
   # Change to "debug" to log everything (including potentially personally-identifiable information!)
-  config.log_level = ENV.fetch("MANYFOLD_LOG_LEVEL", "info").to_sym
+  config.log_level = ENV.fetch("MANYFOLD_LOG_LEVEL", "info").downcase.to_sym
 end
