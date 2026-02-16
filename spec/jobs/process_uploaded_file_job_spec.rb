@@ -49,7 +49,7 @@ RSpec.describe ProcessUploadedFileJob do
   context "when uploading a file", :after_first_run do
     let(:uploader) { create(:contributor) }
     let(:library) { create(:library) }
-    let(:file) { Rack::Test::UploadedFile.new(StringIO.new("solid\n"), original_filename: "test.stl") }
+    let(:file) { mock_upload(filename: "test.stl") }
 
     it "Creates a new model" do
       expect { job.perform(library.id, file) }.to change(Model, :count).by(1)
@@ -108,7 +108,7 @@ RSpec.describe ProcessUploadedFileJob do
     let(:uploader) { create(:contributor) }
     let(:library) { create(:library) }
     let!(:model) { create(:model, library: library) }
-    let(:file) { Rack::Test::UploadedFile.new(StringIO.new("solid\n"), original_filename: "test.stl") }
+    let(:file) { mock_upload(filename: "test.stl") }
 
     it "doesn't create a new model" do
       expect { job.perform(library.id, file, model: model) }.not_to change(Model, :count)
@@ -130,7 +130,7 @@ RSpec.describe ProcessUploadedFileJob do
 
   context "when errors occur during processing" do
     let(:library) { create(:library) }
-    let(:file) { Rack::Test::UploadedFile.new(StringIO.new, original_filename: "test.zip") }
+    let(:file) { mock_upload(filename: "test.zip") }
 
     it "removes the created model" do # rubocop:todo RSpec/ExampleLength
       job = described_class.new
