@@ -74,7 +74,7 @@ class Components::PreviewFrame < Components::Base
     when "Model"
       @object.sensitive
     when "Collection"
-      @file.model.sensitive
+      @file&.model&.sensitive
     else
       false
     end
