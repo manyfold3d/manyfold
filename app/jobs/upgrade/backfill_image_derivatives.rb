@@ -6,13 +6,17 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
 
   def scope
     image_types = SupportedMimeTypes.image_types.map(&:to_s)
-    ModelFile.unscoped
-      .where(
-        DatabaseDetector.is_postgres? ?
-          "json_extract_path_text(attachment_data, 'metadata', 'mime_type') IN (?)" :
-          "json_extract(attachment_data, '$.metadata.mime_type') IN (?)",
-        image_types
-      )
+    mime_type_clause = case DatabaseDetector.server
+    when :postgresql
+      "json_extract_path_text(attachment_data, 'metadata', 'mime_type') IN (?)"
+    when :mysql
+      "json_value(attachment_data, '$.metadata.mime_type') IN (?)"
+    when :sqlite
+      "json_extract(attachment_data, '$.metadata.mime_type') IN (?)"
+    else
+      raise NotImplementedError.new("Unknown database adapter #{DatabaseDetector.server}")
+    end
+    ModelFile.unscoped.where(mime_type_clause, image_types)
       .where(
         DatabaseDetector.is_postgres? ?
           "json_extract_path(attachment_data, 'derivatives', 'preview') IS NULL" :
