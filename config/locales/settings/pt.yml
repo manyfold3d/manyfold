@@ -32,6 +32,17 @@ pt:
       theme:
         help_html:
         label:
+    derivatives:
+      download_expiry:
+        help:
+        hours:
+        label:
+      image_derivatives:
+        help:
+        label:
+      pregenerate_downloads:
+        help:
+        label:
     discovery:
       allow_ai_bots:
         help:
@@ -67,18 +78,8 @@ pt:
       derivatives:
         description:
         heading:
-        images:
-          help:
-          label:
       description:
-      expiry:
-        help:
-        hours:
-        label:
       heading:
-      pregenerate:
-        help:
-        label:
     file_settings:
       custom_ignore_filters:
         details:

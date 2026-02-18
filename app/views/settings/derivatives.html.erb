@@ -4,22 +4,22 @@
 </p>
 
 <%= form_with url: settings_path, method: :patch, class: "tabular-form" do |form| %>
-  <%= checkbox_input_row form, "downloads[pregenerate]",
-        label: t(".pregenerate.label"),
+  <%= checkbox_input_row form, "derivatives[pregenerate_downloads]",
+        label: t(".pregenerate_downloads.label"),
         checked: SiteSettings.pregenerate_downloads,
-        help: t(".pregenerate.help") %>
-  <%= numeric_input_row form, "downloads[expiry]",
-        label: t(".expiry.label"),
+        help: t(".pregenerate_downloads.help") %>
+  <%= numeric_input_row form, "derivatives[download_expiry]",
+        label: t(".download_expiry.label"),
         value: SiteSettings.download_expiry_time_in_hours,
         min: 0, step: 1,
-        unit: t(".expiry.hours"),
-        help: t(".expiry.help") %>
+        unit: t(".download_expiry.hours"),
+        help: t(".download_expiry.help") %>
   <hr>
   <h4><%= t ".derivatives.heading" %></h4>
   <p><%= t ".derivatives.description" %></p>
-  <%= checkbox_input_row form, "downloads[image_derivatives]",
-        label: t(".derivatives.images.label"),
+  <%= checkbox_input_row form, "derivatives[image_derivatives]",
+        label: t(".image_derivatives.label"),
         checked: SiteSettings.generate_image_derivatives,
-        help: t(".derivatives.images.help") %>
+        help: t(".image_derivatives.help") %>
   <%= render "submit", form: form %>
 <% end %>
