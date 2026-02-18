@@ -5,11 +5,19 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
   unique :until_executed
 
   def scope
-    ModelFile.unscoped.where(
-      DatabaseDetector.is_postgres? ?
-        "json_extract_path(attachment_data, 'derivatives', 'preview') IS NULL" :
-        "json_extract(attachment_data, '$.derivatives.preview') IS NULL"
-    )
+    image_types = SupportedMimeTypes.image_types.map(&:to_s)
+    ModelFile.unscoped
+      .where(
+        DatabaseDetector.is_postgres? ?
+          "json_extract_path(attachment_data, 'metadata', 'mime_type') IN (?)" :
+          "json_extract(attachment_data, '$.metadata.mime_type') IN (?)",
+        image_types
+      )
+      .where(
+        DatabaseDetector.is_postgres? ?
+          "json_extract_path(attachment_data, 'derivatives', 'preview') IS NULL" :
+          "json_extract(attachment_data, '$.derivatives.preview') IS NULL"
+      )
   end
 
   def build_enumerator(cursor:)
@@ -17,7 +25,6 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
   end
 
   def each_iteration(modelfile)
-    return unless modelfile.is_image?
     return if modelfile.extension.downcase == "svg"
     Rails.logger.info("Creating image derivatives for: #{modelfile.path_within_library}")
     modelfile.attachment_derivatives!
