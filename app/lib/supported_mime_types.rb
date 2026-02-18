@@ -76,15 +76,15 @@ module SupportedMimeTypes
     end
     memoize :can_export?
 
-    def renderable
+    def renderable_types
       readers = `f3d --list-readers`.lines
       types = readers.filter_map { |it| it.match(/\w[a-z]*\/[0-9a-z.+-]*\w/)&.to_s }
-      types.filter_map { |it| Mime::Type.lookup(it).to_sym }.uniq
+      types.filter_map { |it| Mime::Type.lookup(it) }.uniq
     end
-    memoize :renderable
+    memoize :renderable_types
 
     def can_render?(type)
-      renderable.include? type&.to_sym
+      renderable_types.include? type
     end
     memoize :can_render?
 
