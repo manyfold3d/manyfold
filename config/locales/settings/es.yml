@@ -32,6 +32,22 @@ es:
       theme:
         help_html: Afecta a todos los usuarios. Visita <a href="https://bootswatch.com">Bootswatch</a> para ver vistas previas.
         label: Tema
+    derivatives:
+      description: Manyfold puede crear versiones alternativas de algunos archivos para aumentar el rendimiento del sitio. Tenga en cuenta que esto utilizará más espacio en disco.
+      download_expiry:
+        help: Un valor de 0 significa mantener para siempre.
+        hours: Horas
+        label: Eliminar archivos ZIP después de la descarga
+      downloads:
+        description: Manyfold generará archivos ZIP de los modelos a petición, pero para los sitios ocupados es posible que desee que estén disponibles más rápidamente. Aquí puedes decirle a Manyfold que debe crear archivos ZIP inmediatamente, y también establecer cuánto tiempo se mantienen en la caché de descargas. Cuidado, esto puede consumir mucho espacio en disco
+        heading: Descargas
+      heading: Ficheros derivados
+      image_derivatives:
+        help: Genera versiones de menor resolución de las imágenes que se cargarán más rápidamente en las páginas de listas y modelos.
+        label: Miniaturas de imágenes
+      pregenerate_downloads:
+        help: Si está activada, los archivos ZIP se crean cada vez que se añade o actualiza un modelo. Si se desactiva, los archivos ZIP sólo se crean cuando se solicitan.
+        label: Crear proactivamente archivos ZIP descargables
     discovery:
       allow_ai_bots:
         help: A menos que estén activados, los robots de IA están completamente prohibidos en robots.txt. Activar esto puede causar mucha carga en el servidor.
@@ -63,22 +79,6 @@ es:
       new:
         submit: Bloqueo de dominio
         title: Nuevo dominio bloqueado
-    downloads:
-      derivatives:
-        description: Manyfold puede crear versiones alternativas de algunos archivos para aumentar el rendimiento del sitio. Tenga en cuenta que esto utilizará más espacio en disco.
-        heading: Ficheros derivados
-        images:
-          help: Genera versiones de menor resolución de las imágenes que se cargarán más rápidamente en las páginas de listas y modelos.
-          label: Miniaturas de imágenes
-      description: Manyfold generará archivos ZIP de los modelos a petición, pero para los sitios ocupados es posible que desee que estén disponibles más rápidamente. Aquí puedes decirle a Manyfold que debe crear archivos ZIP inmediatamente, y también establecer cuánto tiempo se mantienen en la caché de descargas. Cuidado, esto puede consumir mucho espacio en disco
-      expiry:
-        help: Un valor de 0 significa mantener para siempre.
-        hours: Horas
-        label: Eliminar archivos ZIP después de la descarga
-      heading: Descargas
-      pregenerate:
-        help: Si está activada, los archivos ZIP se crean cada vez que se añade o actualiza un modelo. Si se desactiva, los archivos ZIP sólo se crean cuando se solicitan.
-        label: Crear proactivamente archivos ZIP descargables
     file_settings:
       custom_ignore_filters:
         details: Los filtros están en formato regex separados por un salto de línea.

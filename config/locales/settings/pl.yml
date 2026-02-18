@@ -32,6 +32,22 @@ pl:
       theme:
         help_html: Dotyczy wszystkich kont. Odwiedź <a href="https://bootswatch.com">Bootswatch</a>, aby zobaczyć podgląd.
         label: Motyw
+    derivatives:
+      description:
+      download_expiry:
+        help:
+        hours:
+        label:
+      downloads:
+        description:
+        heading:
+      heading:
+      image_derivatives:
+        help:
+        label:
+      pregenerate_downloads:
+        help:
+        label:
     discovery:
       allow_ai_bots:
         help:
@@ -63,22 +79,6 @@ pl:
       new:
         submit: Zablokuj domene
         title: Nowy Blok Domeny
-    downloads:
-      derivatives:
-        description:
-        heading:
-        images:
-          help:
-          label:
-      description:
-      expiry:
-        help:
-        hours:
-        label:
-      heading:
-      pregenerate:
-        help:
-        label:
     file_settings:
       custom_ignore_filters:
         details: Filtry są w formacie regex i są oddzielone nową linią.

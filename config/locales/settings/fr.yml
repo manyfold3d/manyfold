@@ -32,6 +32,22 @@ fr:
       theme:
         help_html:
         label:
+    derivatives:
+      description:
+      download_expiry:
+        help:
+        hours: Heures
+        label:
+      downloads:
+        description:
+        heading: Téléchargements
+      heading:
+      image_derivatives:
+        help:
+        label:
+      pregenerate_downloads:
+        help:
+        label:
     discovery:
       allow_ai_bots:
         help:
@@ -63,22 +79,6 @@ fr:
       new:
         submit: Bloquer le domaine
         title: Bloquer un domaine
-    downloads:
-      derivatives:
-        description:
-        heading:
-        images:
-          help:
-          label:
-      description:
-      expiry:
-        help:
-        hours: Heures
-        label:
-      heading: Téléchargements
-      pregenerate:
-        help:
-        label:
     file_settings:
       custom_ignore_filters:
         details: Les filtres sont au format regex et sont séparés par une nouvelle ligne.

@@ -1,0 +1,25 @@
+<h3><%= t(".heading") %></h3>
+<p class='lead'>
+  <%= t(".description") %>
+</p>
+
+<%= form_with url: settings_path, method: :patch, class: "tabular-form" do |form| %>
+  <%= checkbox_input_row form, "derivatives[image_derivatives]",
+        label: t(".image_derivatives.label"),
+        checked: SiteSettings.generate_image_derivatives,
+        help: t(".image_derivatives.help") %>
+  <hr>
+  <h4><%= t ".downloads.heading" %></h4>
+  <p><%= t ".downloads.description" %></p>
+  <%= checkbox_input_row form, "derivatives[pregenerate_downloads]",
+        label: t(".pregenerate_downloads.label"),
+        checked: SiteSettings.pregenerate_downloads,
+        help: t(".pregenerate_downloads.help") %>
+  <%= numeric_input_row form, "derivatives[download_expiry]",
+        label: t(".download_expiry.label"),
+        value: SiteSettings.download_expiry_time_in_hours,
+        min: 0, step: 1,
+        unit: t(".download_expiry.hours"),
+        help: t(".download_expiry.help") %>
+  <%= render "submit", form: form %>
+<% end %>

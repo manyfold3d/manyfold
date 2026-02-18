@@ -859,7 +859,6 @@ en:
       greeting: Hi!
     settings:
       appearance: Appearance
-      downloads: Downloads
       integrations_heading: Integrations
       libraries: Libraries
       moderation_heading: Moderation

@@ -32,6 +32,22 @@ nl:
       theme:
         help_html:
         label:
+    derivatives:
+      description:
+      download_expiry:
+        help:
+        hours:
+        label:
+      downloads:
+        description:
+        heading:
+      heading:
+      image_derivatives:
+        help:
+        label:
+      pregenerate_downloads:
+        help:
+        label:
     discovery:
       allow_ai_bots:
         help:
@@ -63,22 +79,6 @@ nl:
       new:
         submit: Domein blokkeren
         title: Nieuwe Domeinblokkering
-    downloads:
-      derivatives:
-        description:
-        heading:
-        images:
-          help:
-          label:
-      description:
-      expiry:
-        help:
-        hours:
-        label:
-      heading:
-      pregenerate:
-        help:
-        label:
     file_settings:
       custom_ignore_filters:
         details:

@@ -32,6 +32,22 @@ ja:
       theme:
         help_html:
         label: テーマ
+    derivatives:
+      description:
+      download_expiry:
+        help: 0は永久保存を意味する。
+        hours: 時間数
+        label: ダウンロードしたZIPファイルを削除する
+      downloads:
+        description: Manyfoldはリクエストに応じてモデルのZIPファイルを生成しますが、多忙なサイトではより早くZIPファイルを利用したい場合もあるでしょう。ここでは、ManyfoldにZIPファイルをすぐに作成するように指示したり、ダウンロードキャッシュに保存する期間を設定したりすることができます。この場合、多くのディスク容量を使用することになりますのでご注意ください！
+        heading: ダウンロード
+      heading:
+      image_derivatives:
+        help:
+        label:
+      pregenerate_downloads:
+        help: 有効にすると、モデルが追加または更新されるたびにZIPファイルが作成されます。無効の場合、ZIPファイルは要求されたときのみ作成されます。
+        label: ダウンロード可能なZIPファイルを積極的に作成
     discovery:
       allow_ai_bots:
         help:
@@ -63,22 +79,6 @@ ja:
       new:
         submit: ドメインをブロックする
         title: 新ドメインブロック
-    downloads:
-      derivatives:
-        description:
-        heading:
-        images:
-          help:
-          label:
-      description: Manyfoldはリクエストに応じてモデルのZIPファイルを生成しますが、多忙なサイトではより早くZIPファイルを利用したい場合もあるでしょう。ここでは、ManyfoldにZIPファイルをすぐに作成するように指示したり、ダウンロードキャッシュに保存する期間を設定したりすることができます。この場合、多くのディスク容量を使用することになりますのでご注意ください！
-      expiry:
-        help: 0は永久保存を意味する。
-        hours: 時間数
-        label: ダウンロードしたZIPファイルを削除する
-      heading: ダウンロード
-      pregenerate:
-        help: 有効にすると、モデルが追加または更新されるたびにZIPファイルが作成されます。無効の場合、ZIPファイルは要求されたときのみ作成されます。
-        label: ダウンロード可能なZIPファイルを積極的に作成
     file_settings:
       custom_ignore_filters:
         details: フィルターは改行で区切られた正規表現形式である。
