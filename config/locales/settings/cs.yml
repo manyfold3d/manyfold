@@ -33,10 +33,15 @@ cs:
         help_html: Týká se všech uživatelů. Pro zobrazení náhledů navštivte <a href="https://bootswatch.com">Bootswatch</a>.
         label: Téma
     derivatives:
+      description:
       download_expiry:
         help:
         hours:
         label:
+      downloads:
+        description:
+        heading:
+      heading:
       image_derivatives:
         help:
         label:
@@ -74,12 +79,6 @@ cs:
       new:
         submit: Blokovat doménu
         title: Nový blok domény
-    downloads:
-      derivatives:
-        description:
-        heading:
-      description:
-      heading:
     file_settings:
       custom_ignore_filters:
         details: Filtry jsou ve formátu regex oddělené novým řádkem.

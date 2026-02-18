@@ -33,10 +33,15 @@ zh-CN:
         help_html: 影响所有账户。访问<a href="https://bootswatch.com">Bootswatch</a>查看预览。
         label: 主题
     derivatives:
+      description: Manyfold 可以为某些文件创建替代版本，以提高网站性能。请注意，这会占用更多磁盘空间。
       download_expiry:
         help: 设置为 0 表示永久保留。
         hours: 小时数
         label: 删除下载后的 ZIP 文件
+      downloads:
+        description: Manyfold 会根据请求生成模型的 ZIP 文件，但对于繁忙的网站，您可能希望更快地获得这些文件。在这里，您可以告诉 Manyfold 立即生成 ZIP 文件，还可以设置这些文件在下载缓存中保留的时间。请注意，这可能会占用大量磁盘空间！
+        heading: 下载
+      heading: 文件衍生物
       image_derivatives:
         help: 生成低分辨率版本的图像，以便在列表和模型页面上更快加载。
         label: 图像缩略图
@@ -74,12 +79,6 @@ zh-CN:
       new:
         submit:
         title:
-    downloads:
-      derivatives:
-        description: Manyfold 可以为某些文件创建替代版本，以提高网站性能。请注意，这会占用更多磁盘空间。
-        heading: 文件衍生物
-      description: Manyfold 会根据请求生成模型的 ZIP 文件，但对于繁忙的网站，您可能希望更快地获得这些文件。在这里，您可以告诉 Manyfold 立即生成 ZIP 文件，还可以设置这些文件在下载缓存中保留的时间。请注意，这可能会占用大量磁盘空间！
-      heading: 下载
     file_settings:
       custom_ignore_filters:
         details: 过滤器采用 regex 格式，用新行分隔。

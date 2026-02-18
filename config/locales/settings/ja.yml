@@ -33,10 +33,15 @@ ja:
         help_html:
         label: テーマ
     derivatives:
+      description:
       download_expiry:
         help: 0は永久保存を意味する。
         hours: 時間数
         label: ダウンロードしたZIPファイルを削除する
+      downloads:
+        description: Manyfoldはリクエストに応じてモデルのZIPファイルを生成しますが、多忙なサイトではより早くZIPファイルを利用したい場合もあるでしょう。ここでは、ManyfoldにZIPファイルをすぐに作成するように指示したり、ダウンロードキャッシュに保存する期間を設定したりすることができます。この場合、多くのディスク容量を使用することになりますのでご注意ください！
+        heading: ダウンロード
+      heading:
       image_derivatives:
         help:
         label:
@@ -74,12 +79,6 @@ ja:
       new:
         submit: ドメインをブロックする
         title: 新ドメインブロック
-    downloads:
-      derivatives:
-        description:
-        heading:
-      description: Manyfoldはリクエストに応じてモデルのZIPファイルを生成しますが、多忙なサイトではより早くZIPファイルを利用したい場合もあるでしょう。ここでは、ManyfoldにZIPファイルをすぐに作成するように指示したり、ダウンロードキャッシュに保存する期間を設定したりすることができます。この場合、多くのディスク容量を使用することになりますのでご注意ください！
-      heading: ダウンロード
     file_settings:
       custom_ignore_filters:
         details: フィルターは改行で区切られた正規表現形式である。

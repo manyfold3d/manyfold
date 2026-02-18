@@ -859,7 +859,6 @@ cs:
       greeting: Ahoj!
     settings:
       appearance: Vzhled
-      derivatives:
       integrations_heading:
       libraries: Knihovny
       moderation_heading:

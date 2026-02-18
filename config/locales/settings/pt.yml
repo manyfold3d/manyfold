@@ -33,10 +33,15 @@ pt:
         help_html:
         label:
     derivatives:
+      description:
       download_expiry:
         help:
         hours:
         label:
+      downloads:
+        description:
+        heading:
+      heading:
       image_derivatives:
         help:
         label:
@@ -74,12 +79,6 @@ pt:
       new:
         submit:
         title:
-    downloads:
-      derivatives:
-        description:
-        heading:
-      description:
-      heading:
     file_settings:
       custom_ignore_filters:
         details:

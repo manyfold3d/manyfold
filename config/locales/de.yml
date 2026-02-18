@@ -861,7 +861,6 @@ de:
       greeting: Hallo!
     settings:
       appearance: Erscheinungsbild
-      derivatives:
       integrations_heading: Integrationen
       libraries: Sammlungen
       moderation_heading: Moderation

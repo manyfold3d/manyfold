@@ -859,7 +859,6 @@ nl:
       greeting: Hoi!
     settings:
       appearance:
-      derivatives:
       integrations_heading:
       libraries: Bibliotheken
       moderation_heading:

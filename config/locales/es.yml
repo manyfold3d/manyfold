@@ -859,7 +859,6 @@ es:
       greeting: "¡Hola!"
     settings:
       appearance: Apariencia
-      derivatives:
       integrations_heading: Integraciones
       libraries: Bibliotecas
       moderation_heading: Moderación

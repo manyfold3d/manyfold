@@ -33,10 +33,15 @@ pl:
         help_html: Dotyczy wszystkich kont. Odwiedź <a href="https://bootswatch.com">Bootswatch</a>, aby zobaczyć podgląd.
         label: Motyw
     derivatives:
+      description:
       download_expiry:
         help:
         hours:
         label:
+      downloads:
+        description:
+        heading:
+      heading:
       image_derivatives:
         help:
         label:
@@ -74,12 +79,6 @@ pl:
       new:
         submit: Zablokuj domene
         title: Nowy Blok Domeny
-    downloads:
-      derivatives:
-        description:
-        heading:
-      description:
-      heading:
     file_settings:
       custom_ignore_filters:
         details: Filtry są w formacie regex i są oddzielone nową linią.

@@ -859,7 +859,6 @@ en:
       greeting: Hi!
     settings:
       appearance: Appearance
-      derivatives: Derivatives
       integrations_heading: Integrations
       libraries: Libraries
       moderation_heading: Moderation

@@ -862,7 +862,6 @@ fr:
       greeting: Bonjour !
     settings:
       appearance:
-      derivatives:
       integrations_heading:
       libraries: Bibliothèques
       moderation_heading:

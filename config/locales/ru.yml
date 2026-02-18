@@ -859,7 +859,6 @@ ru:
       greeting: Привет!
     settings:
       appearance: Внешний вид
-      derivatives:
       integrations_heading:
       libraries: Библиотеки
       moderation_heading:

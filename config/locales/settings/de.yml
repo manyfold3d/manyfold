@@ -33,10 +33,15 @@ de:
         help_html: Betrifft alle Accounts. Besuche <a href="https://bootswatch.com">Bootswatch</a>, um eine Vorschau zu sehen.
         label: Aussehen
     derivatives:
+      description: Manyfold kann alternative Versionen einiger Dateien erstellen, um die Leistung der Seite zu erhöhen. Beachte, dass dies mehr Speicherplatz benötigt.
       download_expiry:
         help: 0 bedeutet "für immer".
         hours: Stunden
         label: Entferne heruntergeladene ZIP-Dateien nach
+      downloads:
+        description: Manyfold generiert ZIP-Dateien von Modellen auf Anfrage, aber für stark frequentierte Websites möchtest du diese vielleicht schneller verfügbar haben. Hier kannst du Manyfold anweisen, ZIP-Dateien sofort zu erstellen, und auch festlegen, wie lange sie im Download-Cache aufbewahrt werden sollen. Vorsicht, dies kann eine Menge Speicherplatz verbrauchen!
+        heading: Herunterladen
+      heading: Alternative Dateien
       image_derivatives:
         help: Erzeugt Bilder mit geringerer Auflösung, welche in Listen und Modellseiten schneller laden.
         label: Bild-Miniaturansichten
@@ -74,12 +79,6 @@ de:
       new:
         submit: Domain Blockieren
         title: Neuer Domain-block
-    downloads:
-      derivatives:
-        description: Manyfold kann alternative Versionen einiger Dateien erstellen, um die Leistung der Seite zu erhöhen. Beachte, dass dies mehr Speicherplatz benötigt.
-        heading: Alternative Dateien
-      description: Manyfold generiert ZIP-Dateien von Modellen auf Anfrage, aber für stark frequentierte Websites möchtest du diese vielleicht schneller verfügbar haben. Hier kannst du Manyfold anweisen, ZIP-Dateien sofort zu erstellen, und auch festlegen, wie lange sie im Download-Cache aufbewahrt werden sollen. Vorsicht, dies kann eine Menge Speicherplatz verbrauchen!
-      heading: Herunterladen
     file_settings:
       custom_ignore_filters:
         details: Die Filter sind im Regex-Format und durch eine neue Zeile getrennt.
