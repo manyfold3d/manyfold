@@ -113,25 +113,21 @@ class ApplicationUploader < Shrine
   end
 
   Attacher.derivatives do |original|
-    if SiteSettings.generate_image_derivatives
-      if context[:record]&.is_image?
-        Shrine.with_file(original) do |it|
-          magick = ImageProcessing::MiniMagick.source(it)
-          {
-            preview: magick.resize_to_limit!(320, 320),
-            carousel: magick.resize_to_limit!(1024, 768)
-          }
-        end
-      elsif SupportedMimeTypes.can_render?(context[:record].mime_type)
-        Shrine.with_file(original) do |it|
-          up = context[:record]&.up_direction
-          render = StringIO.new(`f3d #{it.path} #{F3D_OPTS} --up=#{up} --camera-direction=#{CAMERA_OPTS[up]}`)
-          {
-            render: (render.length > 0) ? render : nil
-          }.compact
-        end
-      else
-        {}
+    if SiteSettings.generate_image_derivatives && context[:record]&.is_image?
+      Shrine.with_file(original) do |it|
+        magick = ImageProcessing::MiniMagick.source(it)
+        {
+          preview: magick.resize_to_limit!(320, 320),
+          carousel: magick.resize_to_limit!(1024, 768)
+        }
+      end
+    elsif SiteSettings.generate_model_renders && SupportedMimeTypes.can_render?(context[:record].mime_type)
+      Shrine.with_file(original) do |it|
+        up = context[:record]&.up_direction
+        render = StringIO.new(`f3d #{it.path} #{F3D_OPTS} --up=#{up} --camera-direction=#{CAMERA_OPTS[up]}`)
+        {
+          render: (render.length > 0) ? render : nil
+        }.compact
       end
     else
       {}
