@@ -11,7 +11,7 @@ class SettingsController < ApplicationController
     update_multiuser_settings(params[:multiuser])
     update_analysis_settings(params[:analysis])
     update_usage_settings(params[:usage])
-    update_download_settings(params[:downloads])
+    update_derivatives_settings(params[:downloads])
     update_discovery_settings(params[:discovery])
     update_integrations_settings(params[:integrations])
     redirect_back_or_to settings_path, notice: t(".success")
@@ -91,7 +91,7 @@ class SettingsController < ApplicationController
     SiteSettings.default_ai_indexable = settings[:default_ai_indexable] == "1"
   end
 
-  def update_download_settings(settings)
+  def update_derivatives_settings(settings)
     return unless settings
     SiteSettings.pregenerate_downloads = (settings[:pregenerate] == "1")
     SiteSettings.download_expiry_time_in_hours = (settings[:expiry].to_i)

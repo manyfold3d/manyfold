@@ -11,7 +11,7 @@ class SettingsPolicy < ApplicationPolicy
     update?
   end
 
-  def downloads?
+  def derivatives?
     update?
   end
 

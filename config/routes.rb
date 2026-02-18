@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resource :settings, only: [:show, :update] do
       collection do
         get :analysis
-        get :downloads
+        get :derivatives
         get :multiuser
         get :reporting
         get :appearance
