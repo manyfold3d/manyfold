@@ -17,7 +17,7 @@ Rails.application.config.after_initialize do
     Upgrade::UpdateActorsJob.set(queue: :upgrade).perform_later
     Upgrade::FixParentCollections.set(queue: :upgrade).perform_later
     Upgrade::PruneOrphanedProblems.set(queue: :upgrade).perform_later
-    Upgrade::BackfillImageDerivatives.set(queue: :upgrade).perform_later if SiteSettings.generate_image_derivatives
+    Upgrade::BackfillImageDerivatives.perform_later if SiteSettings.generate_image_derivatives
   end
 rescue RedisClient::CannotConnectError
 end

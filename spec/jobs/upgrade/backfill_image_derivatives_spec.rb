@@ -9,6 +9,7 @@ RSpec.describe Upgrade::BackfillImageDerivatives do
     let!(:with) { create(:model_file, filename: "with.jpg") }
     let!(:without) { create(:model_file, filename: "without.jpg") }
     let!(:model) { create(:model_file, filename: "model.stl") }
+    let!(:svg) { create(:model_file, filename: "vector.svg") }
 
     before do
       with.attachment_data.store("derivatives", {"preview" => {"id" => "dummy_value"}})
@@ -25,6 +26,10 @@ RSpec.describe Upgrade::BackfillImageDerivatives do
 
     it "does not include non-images" do
       expect(job.scope).not_to include model
+    end
+
+    it "does not include vector images" do
+      expect(job.scope).not_to include svg
     end
   end
 end

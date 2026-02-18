@@ -97,7 +97,7 @@ class SettingsController < ApplicationController
     SiteSettings.download_expiry_time_in_hours = (settings[:download_expiry].to_i)
     SiteSettings.generate_image_derivatives = (settings[:image_derivatives] == "1")
     # Trigger background jobs if enabled
-    Upgrade::BackfillImageDerivatives.set(queue: :low).perform_later if SiteSettings.generate_image_derivatives
+    Upgrade::BackfillImageDerivatives.perform_later if SiteSettings.generate_image_derivatives
   end
 
   def update_integrations_settings(settings)
