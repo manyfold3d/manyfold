@@ -9,7 +9,7 @@ class Upgrade::BackfillImageDerivatives < ApplicationJob
     ModelFile.unscoped
       .where(
         DatabaseDetector.is_postgres? ?
-          "json_extract_path(attachment_data, 'metadata', 'mime_type') IN (?)" :
+          "json_extract_path_text(attachment_data, 'metadata', 'mime_type') IN (?)" :
           "json_extract(attachment_data, '$.metadata.mime_type') IN (?)",
         image_types
       )
