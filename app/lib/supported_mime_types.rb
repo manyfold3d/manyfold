@@ -76,6 +76,16 @@ module SupportedMimeTypes
     end
     memoize :can_export?
 
+    def renderable_types
+      F3d.reader_mime_types.filter_map { |it| Mime::Type.lookup(it) }.uniq
+    end
+    memoize :renderable_types
+
+    def can_render?(type)
+      renderable_types.include? type
+    end
+    memoize :can_render?
+
     def indexable_types
       image_types + model_types + video_types + document_types + archive_types
     end

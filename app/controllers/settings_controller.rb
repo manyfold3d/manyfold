@@ -96,8 +96,10 @@ class SettingsController < ApplicationController
     SiteSettings.pregenerate_downloads = (settings[:pregenerate_downloads] == "1")
     SiteSettings.download_expiry_time_in_hours = (settings[:download_expiry].to_i)
     SiteSettings.generate_image_derivatives = (settings[:image_derivatives] == "1")
+    SiteSettings.generate_model_renders = (settings[:model_renders] == "1")
     # Trigger background jobs if enabled
     Upgrade::BackfillImageDerivatives.perform_later if SiteSettings.generate_image_derivatives
+    Upgrade::BackfillModelRenders.perform_later if SiteSettings.generate_model_renders
   end
 
   def update_integrations_settings(settings)

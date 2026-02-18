@@ -4,6 +4,10 @@
 </p>
 
 <%= form_with url: settings_path, method: :patch, class: "tabular-form" do |form| %>
+  <%= checkbox_input_row form, "derivatives[model_renders]",
+        label: t(".model_renders.label"),
+        checked: SiteSettings.generate_model_renders,
+        help: t(".model_renders.help") %>
   <%= checkbox_input_row form, "derivatives[image_derivatives]",
         label: t(".image_derivatives.label"),
         checked: SiteSettings.generate_image_derivatives,

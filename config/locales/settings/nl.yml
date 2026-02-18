@@ -45,6 +45,9 @@ nl:
       image_derivatives:
         help:
         label:
+      model_renders:
+        help:
+        label:
       pregenerate_downloads:
         help:
         label:

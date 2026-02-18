@@ -25,6 +25,28 @@ class ApplicationUploader < Shrine
     downloads: Shrine::Storage::FileSystem.new("tmp/downloads")
   }
 
+  F3D_OPTS = {
+    "ambient-occlusion" => "1",
+    "anti-aliasing" => "true",
+    "axis" => "0",
+    "background-color" => "0,0,0",
+    "filename" => "0",
+    "grid" => "1",
+    "grid-color" => "0,255,255",
+    "grid-subdivisions" => 0,
+    "grid-unit" => "10",
+    "no-config" => "1",
+    "output" => "-",
+    "resolution" => "512,512",
+    "tone-mapping" => "1",
+    "translucency-support" => "1"
+  }.map { |k, v| "--#{k}=#{v}" }.join(" ").freeze
+
+  CAMERA_OPTS = {
+    "+z" => "-1,1,-0.5",
+    "+y" => "-1,-0.5,-1"
+  }
+
   storage(/library_(\d+)/) do |m|
     Library.find(m[1]).storage # rubocop:disable Pundit/UsePolicyScope
   rescue ActiveRecord::RecordNotFound
@@ -91,17 +113,21 @@ class ApplicationUploader < Shrine
   end
 
   Attacher.derivatives do |original|
-    if SiteSettings.generate_image_derivatives
-      if context[:record]&.is_image?
-        Shrine.with_file(original) do |it|
-          magick = ImageProcessing::MiniMagick.source(it)
-          {
-            preview: magick.resize_to_limit!(320, 320),
-            carousel: magick.resize_to_limit!(1024, 768)
-          }
-        end
-      else
-        {}
+    if SiteSettings.generate_image_derivatives && context[:record]&.is_image?
+      Shrine.with_file(original) do |it|
+        magick = ImageProcessing::MiniMagick.source(it)
+        {
+          preview: magick.resize_to_limit!(320, 320),
+          carousel: magick.resize_to_limit!(1024, 768)
+        }
+      end
+    elsif SiteSettings.generate_model_renders && SupportedMimeTypes.can_render?(context[:record].mime_type)
+      Shrine.with_file(original) do |it|
+        up = context[:record]&.up_direction
+        render = StringIO.new(`f3d #{it.path} #{F3D_OPTS} --up=#{up} --camera-direction=#{CAMERA_OPTS[up]}`)
+        {
+          render: (render.length > 0) ? render : nil
+        }.compact
       end
     else
       {}
