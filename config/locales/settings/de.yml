@@ -45,6 +45,9 @@ de:
       image_derivatives:
         help: Erzeugt Bilder mit geringerer Auflösung, welche in Listen und Modellseiten schneller laden.
         label: Bild-Miniaturansichten
+      model_renders:
+        help:
+        label:
       pregenerate_downloads:
         help: Wenn diese Option aktiviert ist, werden ZIP-Dateien immer dann erstellt, wenn ein Modell hinzugefügt oder aktualisiert wird. Wenn deaktiviert, werden ZIP-Dateien nur auf Anforderung erstellt.
         label: Proaktiv herunterladbare ZIP-Dateien erstellen

@@ -45,6 +45,9 @@ ja:
       image_derivatives:
         help:
         label:
+      model_renders:
+        help:
+        label:
       pregenerate_downloads:
         help: 有効にすると、モデルが追加または更新されるたびにZIPファイルが作成されます。無効の場合、ZIPファイルは要求されたときのみ作成されます。
         label: ダウンロード可能なZIPファイルを積極的に作成

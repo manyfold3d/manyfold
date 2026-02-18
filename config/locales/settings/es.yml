@@ -45,6 +45,9 @@ es:
       image_derivatives:
         help: Genera versiones de menor resolución de las imágenes que se cargarán más rápidamente en las páginas de listas y modelos.
         label: Miniaturas de imágenes
+      model_renders:
+        help:
+        label:
       pregenerate_downloads:
         help: Si está activada, los archivos ZIP se crean cada vez que se añade o actualiza un modelo. Si se desactiva, los archivos ZIP sólo se crean cuando se solicitan.
         label: Crear proactivamente archivos ZIP descargables
