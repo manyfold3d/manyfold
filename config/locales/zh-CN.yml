@@ -859,7 +859,7 @@ zh-CN:
       greeting: Hi,
     settings:
       appearance: 外观
-      downloads: 下载
+      derivatives:
       integrations_heading: 集成
       libraries: 资料库
       moderation_heading: 审核

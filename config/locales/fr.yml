@@ -862,7 +862,7 @@ fr:
       greeting: Bonjour !
     settings:
       appearance:
-      downloads: Téléchargements
+      derivatives:
       integrations_heading:
       libraries: Bibliothèques
       moderation_heading:

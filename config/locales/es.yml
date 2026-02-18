@@ -859,7 +859,7 @@ es:
       greeting: "¡Hola!"
     settings:
       appearance: Apariencia
-      downloads: Descargas
+      derivatives:
       integrations_heading: Integraciones
       libraries: Bibliotecas
       moderation_heading: Moderación

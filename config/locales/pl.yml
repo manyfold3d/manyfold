@@ -859,7 +859,7 @@ pl:
       greeting: Cześć!
     settings:
       appearance: Wygląd
-      downloads: Pobrane
+      derivatives:
       integrations_heading:
       libraries: Biblioteki
       moderation_heading:

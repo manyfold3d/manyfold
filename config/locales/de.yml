@@ -861,7 +861,7 @@ de:
       greeting: Hallo!
     settings:
       appearance: Erscheinungsbild
-      downloads: Herunterladen
+      derivatives:
       integrations_heading: Integrationen
       libraries: Sammlungen
       moderation_heading: Moderation
