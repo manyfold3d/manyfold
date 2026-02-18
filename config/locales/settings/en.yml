@@ -33,7 +33,7 @@ en:
         help_html: Affects all accounts. Visit <a href="https://bootswatch.com">Bootswatch</a> to see previews.
         label: Theme
     derivatives:
-      description: Manyfold can create alternative versions of some files to increase site performance. Note that this will use more disk space.
+      description: Manyfold can create alternative versions of some files to improve performance for users. Note that this will use more disk space and CPU power.
       download_expiry:
         help: A setting of 0 means keep forever.
         hours: Hours
@@ -46,7 +46,7 @@ en:
         help: Generates lower-resolution versions of images that will load quicker on list and model pages.
         label: Image thumbnails
       model_renders:
-        help: Renders static images of 3D models to help users see a model quickly.
+        help: Renders static images of 3D models to help users see a model quickly. This will use plenty of CPU power when turned on, until all models are rendered!
         label: 3D Renders
       pregenerate_downloads:
         help: If enabled, ZIP files are created whenever a model is added or updated. If disabled, ZIP files are only created when requested.
