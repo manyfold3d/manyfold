@@ -264,6 +264,7 @@ RSpec.describe ModelFile do
 
     before do
       allow(SiteSettings).to receive_messages(generate_image_derivatives: true)
+      file.reload
     end
 
     it "automatically generates a preview derivative" do
@@ -290,6 +291,8 @@ RSpec.describe ModelFile do
       file.attachment_derivatives.keys.each do |derivative|
         file.attachment_attacher.remove_derivative(derivative, delete: true)
       end
+      file.save!
+      file.reload
     end
 
     it "regenerates derivatives on demand" do
