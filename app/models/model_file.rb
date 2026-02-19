@@ -255,8 +255,9 @@ class ModelFile < ApplicationRecord
   end
 
   def create_derivatives!
-    ActiveRecord::Base.no_touching do
+    ApplicationRecord.no_touching do
       attachment_attacher&.create_derivatives
+      save!(validate: false, touch: false)
     end
   end
 
