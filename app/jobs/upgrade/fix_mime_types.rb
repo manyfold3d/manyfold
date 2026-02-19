@@ -10,9 +10,6 @@ class Upgrade::FixMimeTypes < Upgrade::FileTypeIterationJob
   end
 
   def apply(modelfile)
-    ApplicationRecord.no_touching do
-      modelfile.attachment_attacher.refresh_metadata!
-      modelfile.save(touch: false, validate: false)
-    end
+    modelfile.refresh_metadata!
   end
 end
