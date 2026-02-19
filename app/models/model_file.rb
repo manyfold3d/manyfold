@@ -261,8 +261,6 @@ class ModelFile < ApplicationRecord
     end
   end
 
-  delegate :delete_derivatives, to: :attachment_attacher
-
   private
 
   def rescan_duplicates

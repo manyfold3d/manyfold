@@ -253,8 +253,8 @@ RSpec.describe ModelFile do
   end
 
   context "when creating derivatives for an image file" do
-    let!(:model) { create(:model) }
-    let!(:file) {
+    let(:model) { create(:model) }
+    let(:file) {
       create(:model_file, model: model, filename: "logo.png",
         attachment: ModelFileUploader.upload(
           File.open(Rails.root.join("logo.png")),
@@ -276,8 +276,9 @@ RSpec.describe ModelFile do
 
     context "with missing derivatives" do
       before do
-        file.delete_derivatives
-        file.reload
+        file.attachment_derivatives.keys.each do |derivative|
+          file.attachment_attacher.remove_derivative(derivative, delete: true)
+        end
       end
 
       it "regenerates derivatives on demand" do
