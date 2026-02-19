@@ -29,8 +29,10 @@ class Upgrade::FixMimeTypes < ApplicationJob
   end
 
   def each_iteration(modelfile)
-    modelfile.attachment_attacher.refresh_metadata!
-    modelfile.save(touch: false)
+    ApplicationRecord.no_touching do
+      modelfile.attachment_attacher.refresh_metadata!
+      modelfile.save(touch: false, validate: false)
+    end
   rescue Errno::EACCES => ex
     Rails.logger.error ex.message
   rescue Shrine::FileNotFound
