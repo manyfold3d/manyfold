@@ -12,7 +12,6 @@ class Upgrade::BackfillDerivativesBase < Upgrade::FileTypeIterationJob
   end
 
   def apply(modelfile)
-    modelfile.attachment_derivatives!
-    modelfile.save(touch: false, validate: false)
+    modelfile.create_derivatives!
   end
 end
