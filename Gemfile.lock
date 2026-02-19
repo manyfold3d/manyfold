@@ -1007,6 +1007,7 @@ DEPENDENCIES
   listen (~> 3.10)
   lograge (~> 0.14)
   logstash-event (~> 1.2)
+  marcel (~> 1.1)
   memoist (~> 0.16)
   mittsu (~> 0.5)
   mittsu-3mf

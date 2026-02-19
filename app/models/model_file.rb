@@ -247,6 +247,13 @@ class ModelFile < ApplicationRecord
     )
   end
 
+  def refresh_metadata!
+    ApplicationRecord.no_touching do
+      attachment_attacher&.refresh_metadata!
+      save(touch: false, validate: false)
+    end
+  end
+
   private
 
   def rescan_duplicates

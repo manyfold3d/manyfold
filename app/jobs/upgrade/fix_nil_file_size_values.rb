@@ -10,8 +10,7 @@ class Upgrade::FixNilFileSizeValues < ApplicationJob
   end
 
   def each_iteration(modelfile)
-    modelfile.attachment_attacher.refresh_metadata!
-    modelfile.save(touch: false)
+    modelfile.refresh_metadata!
   rescue Errno::EACCES => ex
     Rails.logger.error ex.message
   rescue Shrine::FileNotFound
