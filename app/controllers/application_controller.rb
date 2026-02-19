@@ -156,6 +156,8 @@ class ApplicationController < ActionController::Base
     self.status = status
     self.headers.merge!(headers)
     self.response_body = body
+    # Don't set session cookie for asset delivery
+    request.session_options[:skip] = true
   rescue Errno::ENOENT
     head :internal_server_error
   end
