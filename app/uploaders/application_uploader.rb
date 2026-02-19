@@ -13,7 +13,7 @@ class ApplicationUploader < Shrine
   plugin :keep_files
   plugin :determine_mime_type, analyzer: ->(io, analyzers) do
     (
-      Mime::Type.lookup_by_extension(File.extname(io.metadata["filename"]).tr(".", "").downcase) ||
+      Mime::Type.lookup_by_extension(File.extname(io.try(:metadata)&.fetch("filename") || "").tr(".", "")&.downcase) ||
       analyzers[:marcel].call(io, filename_fallback: true)
     ).to_s
   end
