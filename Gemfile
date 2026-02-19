@@ -229,3 +229,5 @@ gem "noticed", "~> 3.0"
 gem "devise_invitable", "~> 2.0"
 
 gem "user_agent_parser", "~> 2.21"
+
+gem "marcel", "~> 1.1"
