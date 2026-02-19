@@ -33,7 +33,7 @@ zh-CN:
         help_html: 影响所有账户。访问<a href="https://bootswatch.com">Bootswatch</a>查看预览。
         label: 主题
     derivatives:
-      description: Manyfold 可以为某些文件创建替代版本，以提高网站性能。请注意，这会占用更多磁盘空间。
+      description:
       download_expiry:
         help: 设置为 0 表示永久保留。
         hours: 小时数
