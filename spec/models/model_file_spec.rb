@@ -53,6 +53,10 @@ RSpec.describe ModelFile do
     it "calculates digest for a file" do
       expect(part.calculate_digest.first(16)).to eq("8a0f188378204b67")
     end
+
+    it "updates model timestamp when changed" do
+      expect { part.update!(presupported: true) }.to change(model, :updated_at)
+    end
   end
 
   context "when serializing JSON fields" do
