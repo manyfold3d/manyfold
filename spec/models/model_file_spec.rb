@@ -253,8 +253,8 @@ RSpec.describe ModelFile do
   end
 
   context "when creating derivatives for an image file" do
-    let(:model) { create(:model) }
-    let(:file) {
+    let!(:model) { create(:model) }
+    let!(:file) {
       create(:model_file, model: model, filename: "logo.png",
         attachment: ModelFileUploader.upload(
           File.open(Rails.root.join("logo.png")),
@@ -266,21 +266,31 @@ RSpec.describe ModelFile do
       allow(SiteSettings).to receive_messages(generate_image_derivatives: true)
     end
 
-    it "adds a preview derivative" do
+    it "automatically generates a preview derivative" do
       expect(file.attachment_derivatives.key?(:preview)).to be true
     end
 
-    it "adds a carousel derivative" do
+    it "automatically generates a carousel derivative" do
       expect(file.attachment_derivatives.key?(:carousel)).to be true
     end
 
-    it "does not change the updated_at time of the file" do
-      file.delete_derivatives
-      expect { file.create_derivatives! }.not_to change(file, :updated_at)
-    end
+    context "with missing derivatives" do
+      before do
+        file.delete_derivatives
+        file.reload
+      end
 
-    it "does not change the updated_at time of the owning model" do
-      expect { file.create_derivatives! }.not_to change(model, :updated_at)
+      it "regenerates derivatives on demand" do
+        expect { file.create_derivatives! }.to change { file.attachment_derivatives.count }.from(0).to(2)
+      end
+
+      it "does not change the updated_at time of the file" do
+        expect { file.create_derivatives! }.not_to change(file.reload, :updated_at)
+      end
+
+      it "does not change the updated_at time of the owning model" do
+        expect { file.create_derivatives! }.not_to change(model.reload, :updated_at)
+      end
     end
   end
 end
