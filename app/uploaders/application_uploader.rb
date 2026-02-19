@@ -11,7 +11,9 @@ class ApplicationUploader < Shrine
   plugin :metadata_attributes, size: "size"
   plugin :restore_cached_data
   plugin :keep_files
-  plugin :determine_mime_type
+  plugin :determine_mime_type, analyzer: ->(io, _analyzers) do
+    Mime::Type.lookup_by_extension(File.extname(io.metadata["filename"]).tr(".", "")).to_s
+  end
   plugin :rack_response
   plugin :dynamic_storage
   plugin :tus
