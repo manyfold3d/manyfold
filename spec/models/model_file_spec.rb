@@ -267,31 +267,41 @@ RSpec.describe ModelFile do
     end
 
     it "automatically generates a preview derivative" do
-      expect(file.attachment_derivatives.key?(:preview)).to be true
+      expect(file.attachment_derivatives).to have_key(:preview)
     end
 
     it "automatically generates a carousel derivative" do
-      expect(file.attachment_derivatives.key?(:carousel)).to be true
+      expect(file.attachment_derivatives).to have_key(:carousel)
+    end
+  end
+
+  context "with missing derivatives" do
+    let(:model) { create(:model) }
+    let(:file) {
+      create(:model_file, model: model, filename: "logo.png",
+        attachment: ModelFileUploader.upload(
+          File.open(Rails.root.join("logo.png")),
+          :cache
+        ))
+    }
+
+    before do
+      allow(SiteSettings).to receive_messages(generate_image_derivatives: true)
+      file.attachment_derivatives.keys.each do |derivative|
+        file.attachment_attacher.remove_derivative(derivative, delete: true)
+      end
     end
 
-    context "with missing derivatives" do
-      before do
-        file.attachment_derivatives.keys.each do |derivative|
-          file.attachment_attacher.remove_derivative(derivative, delete: true)
-        end
-      end
+    it "regenerates derivatives on demand" do
+      expect { file.create_derivatives! }.to change { file.attachment_derivatives.count }.from(0).to(2)
+    end
 
-      it "regenerates derivatives on demand" do
-        expect { file.create_derivatives! }.to change { file.attachment_derivatives.count }.from(0).to(2)
-      end
+    it "does not change the updated_at time of the file" do
+      expect { file.create_derivatives! }.not_to change(file.reload, :updated_at)
+    end
 
-      it "does not change the updated_at time of the file" do
-        expect { file.create_derivatives! }.not_to change(file.reload, :updated_at)
-      end
-
-      it "does not change the updated_at time of the owning model" do
-        expect { file.create_derivatives! }.not_to change(model.reload, :updated_at)
-      end
+    it "does not change the updated_at time of the owning model" do
+      expect { file.create_derivatives! }.not_to change(model.reload, :updated_at)
     end
   end
 end
