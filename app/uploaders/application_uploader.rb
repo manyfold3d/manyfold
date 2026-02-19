@@ -137,5 +137,8 @@ class ApplicationUploader < Shrine
     else
       {}
     end
+  rescue => ex
+    Rails.logger.warn "Error in derivative generation for #{context[:record].to_param}: #{ex.message}"
+    {}
   end
 end
