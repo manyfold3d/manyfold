@@ -147,6 +147,10 @@ RSpec.describe "Model Files" do
         it "has correct MIME type" do
           expect(response.media_type).to eq("model/stl")
         end
+
+        it "does not set session cookies" do
+          expect(response.headers["set-cookie"]).to be_nil
+        end
       end
 
       describe "GET an image file in its original file format", :as_member do
@@ -160,6 +164,10 @@ RSpec.describe "Model Files" do
 
         it "has correct MIME type" do
           expect(response.media_type).to eq("image/jpeg")
+        end
+
+        it "does not set session cookies" do
+          expect(response.headers["set-cookie"]).to be_nil
         end
       end
     end
