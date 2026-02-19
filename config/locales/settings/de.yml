@@ -33,7 +33,7 @@ de:
         help_html: Betrifft alle Accounts. Besuche <a href="https://bootswatch.com">Bootswatch</a>, um eine Vorschau zu sehen.
         label: Aussehen
     derivatives:
-      description: Manyfold kann alternative Versionen einiger Dateien erstellen, um die Leistung der Seite zu erhöhen. Beachte, dass dies mehr Speicherplatz benötigt.
+      description:
       download_expiry:
         help: 0 bedeutet "für immer".
         hours: Stunden
