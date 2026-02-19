@@ -85,6 +85,33 @@ RSpec.describe "Settings" do
           expect(SiteSettings.model_ignored_files).to contain_exactly(/.*\.lys/, /.*\.lyt/)
         end
       end
+
+      context "with derivatives settings params" do
+        let(:params) {
+          {
+            derivatives: {
+              image_derivatives: "1",
+              model_renders: "1"
+            }
+          }
+        }
+
+        it "saves image derivative setting" do
+          expect { patch "/settings", params: params }.to change(SiteSettings, :generate_image_derivatives).from(false).to(true)
+        end
+
+        it "triggers image derivative backfill job" do
+          expect { patch "/settings", params: params }.to have_enqueued_job(Upgrade::BackfillImageDerivatives)
+        end
+
+        it "saves model render setting" do
+          expect { patch "/settings", params: params }.to change(SiteSettings, :generate_model_renders).from(false).to(true)
+        end
+
+        it "triggers model render backfill job" do
+          expect { patch "/settings", params: params }.to have_enqueued_job(Upgrade::BackfillModelRenders)
+        end
+      end
     end
   end
 end
