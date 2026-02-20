@@ -2114,6 +2114,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"balanced-match@npm:^4.0.2":
+  version: 4.0.3
+  resolution: "balanced-match@npm:4.0.3"
+  checksum: e9e2177f1eb7db0af2375715e6f992f15d41518921e14f5029de50766ff1b3da824e47e1d5492493e9bb7c743b827e42546cbc260a055b7086e45f54b2b152b9
+  languageName: node
+  linkType: hard
+
 "baseline-browser-mapping@npm:^2.9.0":
   version: 2.9.11
   resolution: "baseline-browser-mapping@npm:2.9.11"
@@ -2176,6 +2183,15 @@ __metadata:
   dependencies:
     balanced-match: "npm:^1.0.0"
   checksum: a61e7cd2e8a8505e9f0036b3b6108ba5e926b4b55089eeb5550cd04a471fe216c96d4fe7e4c7f995c728c554ae20ddfc4244cad10aef255e72b62930afd233d1
+  languageName: node
+  linkType: hard
+
+"brace-expansion@npm:^5.0.2":
+  version: 5.0.2
+  resolution: "brace-expansion@npm:5.0.2"
+  dependencies:
+    balanced-match: ^4.0.2
+  checksum: df4dcccb04ad168655716e9c2dc7ddc61afb8c0bc368dbfbffcf3d3cae2e4ceb9797484e9dd90d7b5a360066330fc6313afec2eac207110612637dabc5e34ca5
   languageName: node
   linkType: hard
 
@@ -4593,7 +4609,7 @@ __metadata:
     husky: ^9.1.7
     i18n-js: ^4.5.1
     masonry-layout: ^4.2.2
-    nodemon: ^3.1.11
+    nodemon: ^3.1.13
     postcss: ^8.5.6
     postcss-cli: ^11.0.1
     sass-embedded: ^1.97.3
@@ -4654,6 +4670,15 @@ __metadata:
   dependencies:
     "@isaacs/brace-expansion": ^5.0.1
   checksum: a6ad8bb522741fdf6aca0545054057a2a540d7c76c4f6ab0f34694e5de9616c5487dbab26b6ae564437636863d4d5cb3609fa0d8408b6e56312d7a3eb5e22e05
+  languageName: node
+  linkType: hard
+
+"minimatch@npm:^10.2.1":
+  version: 10.2.2
+  resolution: "minimatch@npm:10.2.2"
+  dependencies:
+    brace-expansion: ^5.0.2
+  checksum: b48f5cac833a83d0bdbc6b6fa656f35c86069b32cd692977c3e9d620f9b595081dbf3168bcb3027cc30b1fa0bfba83e70e09cba612adab4779aef4f8cdc7da39
   languageName: node
   linkType: hard
 
@@ -4894,14 +4919,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemon@npm:^3.1.11":
-  version: 3.1.11
-  resolution: "nodemon@npm:3.1.11"
+"nodemon@npm:^3.1.13":
+  version: 3.1.13
+  resolution: "nodemon@npm:3.1.13"
   dependencies:
     chokidar: ^3.5.2
     debug: ^4
     ignore-by-default: ^1.0.1
-    minimatch: ^3.1.2
+    minimatch: ^10.2.1
     pstree.remy: ^1.1.8
     semver: ^7.5.3
     simple-update-notifier: ^2.0.0
@@ -4910,7 +4935,7 @@ __metadata:
     undefsafe: ^2.0.5
   bin:
     nodemon: bin/nodemon.js
-  checksum: 9af4cce5260eee5410151cc887bcf1e6e0c72e607fe77df652da4ad92f866db97b631eb38cf29bdd86c07ddd845916949f9b6478df4b0381497829bb7d9d2d41
+  checksum: 5e7a5d6a39230b7c3680bd4e534c5724a4318a1b10a12c3ceec39df9f9228fd32f8c6e3eb2022d21aee5f161a9fe3625fd8a7197989f6cb95289096bc6f2a44c
   languageName: node
   linkType: hard
 
