@@ -51,6 +51,10 @@
     </div>
   <% end %>
 
+  <%= checkbox_input_row form, :flat_folder_scanning,
+        help: t(".flat_folder_scanning.help"),
+        checked: @library.flat_folder_scanning %>
+
   <div>
     <%= form.submit translate("general.save"), class: "btn btn-primary" %>
 

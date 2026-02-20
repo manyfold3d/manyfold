@@ -105,9 +105,17 @@ class ModelFile < ApplicationRecord
   end
 
   def path_within_library(derivative: nil)
-    derivative ?
-      File.join(model.path, ".manyfold", "derivatives", filename, "#{derivative}.#{extension}") :
-      File.join(model.path, filename)
+    base_path = model.virtual? ? model.physical_folder : model.path
+    if base_path.nil?
+      # Root-level virtual model — file is at library root
+      derivative ?
+        File.join(".manyfold", "derivatives", filename, "#{derivative}.#{extension}") :
+        filename
+    else
+      derivative ?
+        File.join(base_path, ".manyfold", "derivatives", filename, "#{derivative}.#{extension}") :
+        File.join(base_path, filename)
+    end
   end
 
   def attach_existing_file!(refresh: true, skip_validations: false)

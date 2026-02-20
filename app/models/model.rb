@@ -169,8 +169,11 @@ class Model < ApplicationRecord
     model_files.each { |f| f.delete_from_disk_and_destroy }
     # Remove tags first - sometimes this causes problems if we don't do it beforehand
     update!(tags: [])
-    # Delete directory corresponding to model
-    library.storage.delete_prefixed(path)
+    # Delete directory corresponding to model (only for non-virtual models,
+    # since virtual models share a folder with other models)
+    unless virtual?
+      library.storage.delete_prefixed(path)
+    end
     # Remove from DB
     destroy
   end
@@ -196,6 +199,20 @@ class Model < ApplicationRecord
     tags.where(name: SiteSettings.model_tags_auto_tag_new).any?
   end
 
+  def virtual?
+    File.basename(path).start_with?("@")
+  end
+
+  def virtual_basename
+    File.basename(path).delete_prefix("@") if virtual?
+  end
+
+  def physical_folder
+    return path unless virtual?
+    dir = File.dirname(path)
+    dir == "." ? nil : dir
+  end
+
   def valid_preview_files
     model_files.select { |it| it.is_image? || it.is_renderable? }
   end
@@ -209,7 +226,11 @@ class Model < ApplicationRecord
   end
 
   def exists_on_storage?
-    library.has_folder?(path)
+    if virtual?
+      model_files.any?(&:exists_on_storage?)
+    else
+      library.has_folder?(path)
+    end
   end
 
   def organize!
@@ -352,10 +373,14 @@ class Model < ApplicationRecord
   end
 
   def move_files
+    was_virtual = Pathname.new(previous_path).basename.to_s.start_with?("@")
     # Move all the files
     model_files.each(&:reattach!)
-    # Remove the old folder if it's still there
-    previous_library.storage.delete_prefixed(previous_path)
+    # Remove the old folder if it's still there (skip for virtual models
+    # since they share a folder with other models)
+    unless was_virtual
+      previous_library.storage.delete_prefixed(previous_path)
+    end
   end
 
   def post_creation_activity

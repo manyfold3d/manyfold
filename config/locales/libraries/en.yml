@@ -16,6 +16,8 @@ en:
         help: Creates the library folder specified above if it doesn't already exist on disk.
       default:
         help: Set this library as the default for uploads
+      flat_folder_scanning:
+        help: When enabled, individual files (or groups of related files) in a folder are treated as separate models instead of grouping all files in a folder into one model. Files at the library root will also be indexed.
       filesystem_description_html: To use storage on your local filesystem, firstly make sure it is mounted as a <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> or other volume inside your Docker container, then enter the Docker path; not the path on your host server! For instance, if you have a folder full of files at <code>/mnt/media/3d/models</code> on your host, and have bound <code>/mnt/media/3d</code> to <code>/libraries</code> in your Docker configuration, the required path would be <code>/libraries/models</code>.
       icon:
         help_html: Optional; any icon from <a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">Boostrap icons</a> or <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a>.
