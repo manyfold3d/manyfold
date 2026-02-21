@@ -832,6 +832,11 @@ en:
         building_filename_list: Building file list
         building_folder_list: Building changed folder list
         creating_models: Creating models
+    upgrade:
+      backfill_image_derivatives:
+        processing: Processing "%{filename}" from "%{model_name}"
+      backfill_model_renders:
+        rendering: Rendering "%{filename}" from "%{model_name}"
   kaminari:
     first_page:
       label: Go to first page
