@@ -10,6 +10,7 @@ class ManyfoldCLI < Thor
     Cli::CreatorsCommand,
     Cli::EmailCommand,
     Cli::FaspCommand,
+    Cli::JobsCommand,
     Cli::LibrariesCommand,
     Cli::LinksCommand,
     Cli::ModelsCommand,
