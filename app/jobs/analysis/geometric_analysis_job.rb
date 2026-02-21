@@ -9,15 +9,15 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
   def perform(file_id)
     # Get model
     file = ModelFile.find(file_id)
-    return unless self.class.loader(file)
+    return unless file.loadable?
     if SiteSettings.analyse_manifold
       status[:step] = "jobs.analysis.geometric_analysis.loading_mesh" # i18n-tasks-use t('jobs.analysis.geometric_analysis.loading_mesh')
       # Get mesh
-      mesh = self.class.load_mesh(file)
-      if mesh
+      scene = file.scene
+      if scene
         status[:step] = "jobs.analysis.geometric_analysis.manifold_check" # i18n-tasks-use t('jobs.analysis.geometric_analysis.manifold_check')
-        # Check for manifold mesh
-        manifold = mesh.manifold?
+        # Check that all meshes are manifold
+        manifold = scene.meshes.map { manifold?(it) }.all?
         Problem.create_or_clear(
           file,
           :non_manifold,
@@ -40,17 +40,30 @@ class Analysis::GeometricAnalysisJob < ApplicationJob
     end
   end
 
-  def self.loader(file)
-    case file.extension.downcase
-    when "stl"
-      Mittsu::STLLoader
-    when "obj"
-      Mittsu::OBJLoader
+  private
+
+  def manifold?(mesh)
+    # Shortcut if there is nothing here
+    return true if mesh.num_faces == 0
+    # Detect manifold geometry in this object
+    edges = {}
+    # For each face, record its edges in the edge hash
+    mesh.faces.each do |face|
+      update_edge_hash face.indices[0], face.indices[1], edges
+      update_edge_hash face.indices[1], face.indices[2], edges
+      update_edge_hash face.indices[2], face.indices[0], edges
     end
+    # If there's anything left in the edge hash, then either
+    # we have holes, or we have badly oriented faces
+    edges.empty?
   end
 
-  def self.load_mesh(file)
-    # TODO: This can be better, but needs changes upstream in Mittsu to allow loaders to parse from an IO object
-    loader(file)&.new&.parse(file.attachment.read)
+  # Updates edge hash with the passed vertex indexes
+  # First, the reverse edge is searched for in the hash
+  # If found, it's removed as we've got a match
+  # If not, we record this edge in the hash
+  def update_edge_hash(v1, v2, edges)
+    return if edges.delete [v2, v1].pack("QQ")
+    edges[[v1, v2].pack("QQ")] = true
   end
 end
