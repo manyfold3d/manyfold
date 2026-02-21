@@ -1470,9 +1470,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/three@npm:^0.182.0":
-  version: 0.182.0
-  resolution: "@types/three@npm:0.182.0"
+"@types/three@npm:^0.183.0":
+  version: 0.183.0
+  resolution: "@types/three@npm:0.183.0"
   dependencies:
     "@dimforge/rapier3d-compat": ~0.12.0
     "@tweenjs/tween.js": ~23.1.3
@@ -1480,8 +1480,8 @@ __metadata:
     "@types/webxr": ">=0.5.17"
     "@webgpu/types": "*"
     fflate: ~0.8.2
-    meshoptimizer: ~0.22.0
-  checksum: 0a5d6bcf25a9492506aa8a0ed7d880fe032017712af45455fa3ea29137a9bfeaec475558209e6a57894b39d5cd37caabefac36ec909a40b7750fa45b87b109c2
+    meshoptimizer: ~1.0.1
+  checksum: ba3e91577b2ecd1982de99e2b080576023340c658505a3a2e02fe4a18bf5104d5f9c3821ef0f1cc945d632fb63e41427333e5fbc7e6e0f09cab294d9f53ac2d5
   languageName: node
   linkType: hard
 
@@ -4587,7 +4587,7 @@ __metadata:
     "@types/jquery": ^3.5.33
     "@types/lodash": ^4.17.23
     "@types/node": ~24.10
-    "@types/three": ^0.182.0
+    "@types/three": ^0.183.0
     "@types/webpack-env": ^1.18.8
     "@types/webxr": ^0.5.24
     "@typescript-eslint/parser": ^8.56.0
@@ -4613,7 +4613,7 @@ __metadata:
     postcss: ^8.5.6
     postcss-cli: ^11.0.1
     sass-embedded: ^1.97.3
-    three: ^0.182.0
+    three: ^0.183.0
     threejs-webworker-3mf-loader: "https://github.com/manyfold3d/threejs-webworker-3mf-loader"
     tom-select: ^2.5.1
     ts-standard: ^12.0.2
@@ -4638,10 +4638,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"meshoptimizer@npm:~0.22.0":
-  version: 0.22.0
-  resolution: "meshoptimizer@npm:0.22.0"
-  checksum: ee5cab07941f9866fca394ac7507f936542c2073c702293e588f4480d0bbcc85750be85f780da3127532bc00b40a07b7e06df31e6c519ad752e63f099935104d
+"meshoptimizer@npm:~1.0.1":
+  version: 1.0.1
+  resolution: "meshoptimizer@npm:1.0.1"
+  checksum: 464597746fee252d457bee7303d6146a0a7a719a005b61e3375477840239bfd286ce695db23674ed63ab11021577e45c9e1d5b0b3d2376304134b8301c501d2c
   languageName: node
   linkType: hard
 
@@ -6334,10 +6334,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three@npm:^0.182.0":
-  version: 0.182.0
-  resolution: "three@npm:0.182.0"
-  checksum: f0161fe1178251e591ccafbd9d8e0dd289e641e9809ae6164e6f9e4f4eb30bacda0b06495253c5e650ea1059baabae5cbc28f7440b79da176c5bee690d564e08
+"three@npm:^0.183.0":
+  version: 0.183.0
+  resolution: "three@npm:0.183.0"
+  checksum: d434c901b4ce1efa5e221452969dd69a3c7ae8c847990fdd0df0cba87e7ecedb44329abd739604cd65a8103f764413723dc813bf0e426afeff0e2be3250db367
   languageName: node
   linkType: hard
 
