@@ -8,4 +8,13 @@ class Upgrade::BackfillModelRenders < Upgrade::BackfillDerivativesBase
   def derivative
     "render"
   end
+
+  def apply(modelfile)
+    status[:step] = "jobs.upgrade.backfill_model_renders.rendering" # i18n-tasks-use t('jobs.upgrade.backfill_model_renders.rendering')
+    status[:message_variables] = {
+      filename: modelfile.filename,
+      model_name: modelfile.model.name
+    }
+    super
+  end
 end

@@ -12,7 +12,6 @@ class Upgrade::BackfillDerivativesBase < Upgrade::FileTypeIterationJob
   end
 
   def apply(modelfile)
-    Rails.logger.info("Creating derivatives for: #{modelfile.path_within_library}")
     modelfile.attachment_derivatives!
     modelfile.save(touch: false, validate: false)
   end

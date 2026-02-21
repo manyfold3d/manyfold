@@ -835,6 +835,11 @@ fr:
         building_filename_list: Création d'une liste de fichiers
         building_folder_list: Création d'une liste de répertoires modifiés
         creating_models: Création de modèles
+    upgrade:
+      backfill_image_derivatives:
+        processing:
+      backfill_model_renders:
+        rendering:
   kaminari:
     first_page:
       label: Aller à la première page
