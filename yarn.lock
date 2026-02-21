@@ -3861,7 +3861,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18n-js@npm:*, i18n-js@npm:^4.5.1":
+"i18n-js@npm:*":
   version: 4.5.1
   resolution: "i18n-js@npm:4.5.1"
   dependencies:
@@ -3869,6 +3869,17 @@ __metadata:
     lodash: "*"
     make-plural: "*"
   checksum: 1cac75ffe65e116414784251daf306f6a60cd75a68c0b9c9b746a1dd76b31a2a027f0af2c93056611c9845659bcee7ebf6eea601a250009d934bdb7adb65be5e
+  languageName: node
+  linkType: hard
+
+"i18n-js@npm:^4.5.2":
+  version: 4.5.2
+  resolution: "i18n-js@npm:4.5.2"
+  dependencies:
+    bignumber.js: "*"
+    lodash: "*"
+    make-plural: 7.5.0
+  checksum: 4a52196337ab3eb79fb9aef8022f033ddfb6a475b66e92d2a24b5c144959b42cc2bd68d22c4920f1cb7db35de6e1d98af8fe8ad4cebc8702d8459fd4df0f2d0f
   languageName: node
   linkType: hard
 
@@ -4569,6 +4580,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"make-plural@npm:7.5.0":
+  version: 7.5.0
+  resolution: "make-plural@npm:7.5.0"
+  checksum: 4135520c9e93448a58aa0462103e5b18da3bfb3c82426ac51f7725284cb3721e8d6e5d17479c2440343e90bc76ce4479e6245f92d0dc3af93c25648456be0c8b
+  languageName: node
+  linkType: hard
+
 "manyfold@workspace:.":
   version: 0.0.0-use.local
   resolution: "manyfold@workspace:."
@@ -4607,7 +4625,7 @@ __metadata:
     esbuild: ^0.27.3
     eslint: ^10.0.0
     husky: ^9.1.7
-    i18n-js: ^4.5.1
+    i18n-js: ^4.5.2
     masonry-layout: ^4.2.2
     nodemon: ^3.1.13
     postcss: ^8.5.6
