@@ -53,6 +53,10 @@ RSpec.describe ModelFile do
     it "calculates digest for a file" do
       expect(part.calculate_digest.first(16)).to eq("8a0f188378204b67")
     end
+
+    it "updates model timestamp when changed" do
+      expect { part.update!(presupported: true) }.to change(model, :updated_at)
+    end
   end
 
   context "when serializing JSON fields" do
@@ -245,6 +249,74 @@ RSpec.describe ModelFile do
 
     it "delegates AI indexable to model (#{state})" do
       expect(file.ai_indexable?).to eq model.ai_indexable?
+    end
+  end
+
+  context "when creating derivatives for an image file" do
+    let(:model) { create(:model) }
+    let(:file) {
+      create(:model_file, model: model, filename: "logo.png",
+        attachment: ModelFileUploader.upload(
+          File.open(Rails.root.join("logo.png")),
+          :cache
+        ))
+    }
+
+    before do
+      allow(SiteSettings).to receive_messages(generate_image_derivatives: true)
+      file.reload
+    end
+
+    it "automatically generates a preview derivative" do
+      expect(file.attachment_derivatives).to have_key(:preview)
+    end
+
+    it "automatically generates a carousel derivative" do
+      expect(file.attachment_derivatives).to have_key(:carousel)
+    end
+  end
+
+  context "with missing derivatives" do
+    let(:model) { create(:model) }
+    let(:file) {
+      create(:model_file, model: model, filename: "logo.png",
+        attachment: ModelFileUploader.upload(
+          File.open(Rails.root.join("logo.png")),
+          :cache
+        ))
+    }
+
+    before do
+      allow(SiteSettings).to receive_messages(generate_image_derivatives: true)
+      file.attachment_derivatives.keys.each do |derivative|
+        file.attachment_attacher.remove_derivative(derivative, delete: true)
+      end
+      file.save!
+      file.reload
+    end
+
+    it "regenerates derivatives on demand" do
+      expect { file.create_derivatives! }.to change { file.attachment_derivatives.count }.from(0).to(2)
+    end
+
+    it "does not change the updated_at time of the file" do
+      expect { file.create_derivatives! }.not_to change(file.reload, :updated_at)
+    end
+
+    it "does not change the updated_at time of the owning model" do
+      expect { file.create_derivatives! }.not_to change(model.reload, :updated_at)
+    end
+
+    it "sends UI update for owning model" do
+      expect { file.create_derivatives! }.to have_enqueued_job(Turbo::Streams::BroadcastStreamJob).once
+    end
+
+    it "does not create followup jobs for owning model" do
+      expect { file.create_derivatives! }.not_to have_enqueued_job(Scan::Model::CheckForProblemsJob).once
+    end
+
+    it "does not create federated activites for change to owning model", :federation do
+      expect { file.create_derivatives! }.not_to change(Federails::Activity, :count)
     end
   end
 end
