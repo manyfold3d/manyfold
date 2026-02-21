@@ -832,6 +832,11 @@ ru:
         building_filename_list:
         building_folder_list:
         creating_models:
+    upgrade:
+      backfill_image_derivatives:
+        processing:
+      backfill_model_renders:
+        rendering:
   kaminari:
     first_page:
       label:

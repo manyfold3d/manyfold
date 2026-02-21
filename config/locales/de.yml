@@ -834,6 +834,11 @@ de:
         building_filename_list: Dateiliste erstellen
         building_folder_list: Erstellen einer Liste geänderter Ordner
         creating_models: Modelle erstellen
+    upgrade:
+      backfill_image_derivatives:
+        processing:
+      backfill_model_renders:
+        rendering:
   kaminari:
     first_page:
       label: Zur ersten Seite gehen
