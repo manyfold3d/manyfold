@@ -33,7 +33,7 @@ es:
         help_html: Afecta a todos los usuarios. Visita <a href="https://bootswatch.com">Bootswatch</a> para ver vistas previas.
         label: Tema
     derivatives:
-      description: Manyfold puede crear versiones alternativas de algunos archivos para aumentar el rendimiento del sitio. Tenga en cuenta que esto utilizará más espacio en disco.
+      description: Manyfold puede crear versiones alternativas de algunos archivos para mejorar el rendimiento para los usuarios. Tenga en cuenta que esto utilizará más espacio en disco y potencia de CPU.
       download_expiry:
         help: Un valor de 0 significa mantener para siempre.
         hours: Horas
@@ -46,8 +46,8 @@ es:
         help: Genera versiones de menor resolución de las imágenes que se cargarán más rápidamente en las páginas de listas y modelos.
         label: Miniaturas de imágenes
       model_renders:
-        help:
-        label:
+        help: Renderiza imágenes estáticas de modelos 3D para ayudar a los usuarios a ver un modelo rápidamente. Esta función consume mucha potencia de la CPU cuando está activada, ¡hasta que se renderizan todos los modelos!
+        label: Renderizado 3D
       pregenerate_downloads:
         help: Si está activada, los archivos ZIP se crean cada vez que se añade o actualiza un modelo. Si se desactiva, los archivos ZIP sólo se crean cuando se solicitan.
         label: Crear proactivamente archivos ZIP descargables
