@@ -20,9 +20,9 @@ es:
         notes: Notas
         slug: Handle
       doorkeeper/access_token:
-        active:
+        active: Activo
         created_at: Creado el
-        expires_in:
+        expires_in: Expira en
         fingerprint: Huella dactilar
         scopes: Ámbitos
       doorkeeper/application:
@@ -567,22 +567,22 @@ es:
       status: Pre-authorization
   doorkeeper_access_tokens:
     create:
-      failed:
-      success:
+      failed: Error en la creación del token de acceso
+      success: Token de acceso creado correctamente
     destroy:
-      success:
+      success: Token de acceso eliminado correctamente
     new:
       expiry:
-        label:
+        label: Caducidad
       scopes:
         label: Ámbitos
       submit: Enviar
-      title:
+      title: Nuevo token de acceso
     show:
-      bearer_token_help:
-      description:
-      done:
-      title:
+      bearer_token_help: 'Si utiliza el token para un cliente de API que no sea OAuth, tendrá que proporcionarlo como "token de portador" en su cabecera de autenticación HTTP:'
+      description: Se ha creado su nuevo código de acceso. Haga clic a continuación para ver el código de acceso. ¡Sólo se mostrará una vez! Si lo pierde, tendrá que generar uno nuevo.
+      done: Hecho
+      title: Detalles del token de acceso
   doorkeeper_applications:
     create:
       failure: Se ha producido un error y no se ha podido guardar la aplicación.
@@ -609,21 +609,21 @@ es:
     show:
       destroy: Borrar
       edit: Editar
-      oauth_help:
+      oauth_help: Puede acceder a la API Manyfold a través del flujo OAuth client_credentials, utilizando los detalles de seguridad que se indican a continuación.
       revoke:
-        confirm:
+        confirm: "¿Está seguro de que desea revocar este token de acceso? Cualquier aplicación que lo esté utilizando no podrá autenticarse."
         label: Revocar
       title: Detalles de la aplicación
-      token_help:
-      tokens:
+      token_help: Los tokens de acceso son claves temporales de corta duración que se utilizan para las solicitudes reales de la API. El flujo client_credentials de OAuth los crea automáticamente según sea necesario, y los antiguos se eliminan con regularidad, pero si lo deseas, puedes crear tokens de larga duración para utilizarlos en clientes de API sencillos.
+      tokens: Tokens de Acceso
     update:
       failure: Se ha producido un error y no se ha podido guardar la aplicación.
       success: Aplicación guardada correctamente.
   doorkeeper_applications_helper:
     token_expiry_string:
-      expired:
+      expired: Caducado
       never: Nunca
-      revoked:
+      revoked: Revocado
   errors:
     messages:
       already_confirmed:
@@ -713,8 +713,8 @@ es:
       zero: "%{count} Seguidores"
     menu: Menú
     new: Nuevo
-    no_change:
-    none:
+    no_change: Sin cambios
+    none: Ninguno
     private: Privado
     public: Público
     report: Informe %{type}
