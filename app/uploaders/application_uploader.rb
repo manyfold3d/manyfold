@@ -45,7 +45,7 @@ class ApplicationUploader < Shrine
     "resolution" => "512,512",
     "tone-mapping" => "1",
     "translucency-support" => "1"
-  }.map { |k, v| "--#{k}=#{v}" }.join(" ").freeze
+  }.freeze
 
   CAMERA_OPTS = {
     "+z" => "-1,1,-0.5",
@@ -129,9 +129,13 @@ class ApplicationUploader < Shrine
     elsif SiteSettings.generate_model_renders && SupportedMimeTypes.can_render?(context[:record].mime_type)
       Shrine.with_file(original) do |it|
         up = context[:record]&.up_direction
-        render = StringIO.new(`f3d #{it.path} #{F3D_OPTS} --up=#{up} --camera-direction=#{CAMERA_OPTS[up]}`)
+        options = F3D_OPTS.merge(
+          "up" => up,
+          "camera-direction" => CAMERA_OPTS[up]
+        ).map { |k, v| "--#{k}=#{v}" }
+        output, _err = Open3.capture3("f3d", it.path, *options)
         {
-          render: (render.length > 0) ? render : nil
+          render: (output.length > 0) ? StringIO.new(output) : nil
         }.compact
       end
     else
