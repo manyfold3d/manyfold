@@ -26,9 +26,13 @@ module ModelFilesHelper
       # PrusaSlicer only loads from printables.com, so this list is
       # empty until https://github.com/prusa3d/PrusaSlicer/issues/13752 is dealt with.
 
-      superslicer: [:threemf, :amf, :obj, :step, :stl, :svg]
+      superslicer: [:threemf, :amf, :obj, :step, :stl, :svg],
       # i18n-tasks-use t('model_files.download.superslicer')
       # From code at https://github.com/supermerill/SuperSlicer/tree/master_27/src/libslic3r/Format
+
+      freecad: [:threemf, :fcstd, :iges, :obj, :step, :stl]
+      # i18n-tasks-use t('model_files.download.freecad')
+
     }.freeze
     apps = supported_types.filter_map { |app, formats| app if formats.include? file.mime_type&.to_sym }
     safe_join(
@@ -73,6 +77,12 @@ module ModelFilesHelper
       URI::Generic.new(
         "lycheeslicer", nil,
         "open", nil, nil, CGI.escapeURIComponent(signed_url), nil,
+        nil, nil
+      ).to_s
+    when :freecad
+      URI::Generic.new(
+        "ondsel", nil,
+        CGI.escapeURIComponent(signed_url), nil, nil, nil, nil,
         nil, nil
       ).to_s
     end
