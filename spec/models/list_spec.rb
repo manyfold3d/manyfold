@@ -1,7 +1,8 @@
 require "rails_helper"
 
 RSpec.describe List do
-  # it_behaves_like
+  it_behaves_like "Caber::Object"
+
   it "has a name" do
     list = described_class.build(name: "My Favourites")
     expect(list.name).to eq "My Favourites"

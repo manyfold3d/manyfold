@@ -1,4 +1,6 @@
 class List < ApplicationRecord
+  include CaberObject
+
   has_many :list_items, dependent: :destroy
   has_many :models, through: :list_items, source: :listable, source_type: "Model"
 
