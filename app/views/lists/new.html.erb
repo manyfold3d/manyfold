@@ -1,0 +1,5 @@
+<%= PageTitle title: t(".title"), breadcrumbs: {
+      List.model_name.human(count: 100) => lists_path
+    } %>
+
+<%= render "form", list: @list %>
