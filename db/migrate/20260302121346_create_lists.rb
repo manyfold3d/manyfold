@@ -2,6 +2,8 @@ class CreateLists < ActiveRecord::Migration[8.0]
   def change
     create_table :lists do |t|
       t.string :name
+      t.string :public_id
+      t.index :public_id
       t.timestamps
     end
 

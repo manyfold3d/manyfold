@@ -12,7 +12,8 @@ module FederailsCommon
     collection: :public_id,
     model: :public_id,
     creator: :slug,
-    user: :username
+    user: :username,
+    list: :public_id
   }
 
   def federails_actor
