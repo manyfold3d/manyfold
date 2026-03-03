@@ -53,8 +53,9 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.expect(list: [
-      :name
-    ])
+    params.require(:list).permit(
+      :name,
+      list_items_attributes: [:id, :listable_type, :listable_id, :_destroy]
+    )
   end
 end

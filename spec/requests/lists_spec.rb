@@ -67,12 +67,27 @@ RSpec.describe "/lists", :as_member do
 
   describe "PATCH /update", :as_member do
     let(:list) { create(:list, owner: User.last) }
+    let(:model) { create(:model) }
 
     context "with valid parameters" do
       it "redirects to the list" do
         patch list_url(list), params: {list: attributes_for(:list)}
         list.reload
         expect(response).to redirect_to(list_url(list))
+      end
+
+      it "adds items" do
+        expect {
+          patch list_url(list), params: {list: {list_items_attributes: [{listable_type: "Model", listable_id: model.id}]}}
+        }.to change { list.reload.models.count }.from(0).to(1)
+      end
+
+      it "removes items" do
+        list.models << model
+        item = list.list_items.last
+        expect {
+          patch list_url(list), params: {list: {list_items_attributes: [{id: item.id, _destroy: "1"}]}}
+        }.to change { list.reload.models.count }.from(1).to(0)
       end
     end
 
