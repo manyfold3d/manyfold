@@ -59,7 +59,9 @@ class Components::ListsCard < Components::Base
           haspopup: "menu",
           controls: "lists-menu"
         } do
-        t("components.lists_card.add_to_list")
+        Icon(icon: "stars")
+        whitespace
+        span { t("components.lists_card.add_to_list") }
       end
       ul class: "dropdown-menu", role: "menu", id: "lists-menu" do
         @off_lists.map do |list|
@@ -73,11 +75,15 @@ class Components::ListsCard < Components::Base
 
   def on_lists
     span { t("components.lists_card.on_lists") }
-    ul do
+    table class: "table table-striped" do
       @on_lists.map do |it|
-        li do
-          link_to(it.name, list_path(it))
-          DoButton(icon: "trash", label: t("components.lists_card.remove"), href: remove_path(list: it), method: :patch, variant: :danger)
+        tr do
+          td { link_to it.name, list_path(it) }
+          td do
+            link_to remove_path(list: it), method: :patch, class: "link-danger link-underline-opacity-0" do
+              Icon(icon: "trash", label: t("components.lists_card.remove"))
+            end
+          end
         end
       end
     end
