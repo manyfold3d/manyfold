@@ -143,6 +143,7 @@
                 <%= DropdownItem label: Model.model_name.human(count: 100), path: models_path(owner: current_user.to_param) %>
                 <%= DropdownItem label: Creator.model_name.human(count: 100), path: creators_path(owner: current_user.to_param) %>
                 <%= DropdownItem label: Collection.model_name.human(count: 100), path: collections_path(owner: current_user.to_param) %>
+                <%= DropdownItem label: List.model_name.human(count: 100), path: lists_path %>
                 <%- if SiteSettings.federation_enabled? %>
                   <%= DropdownDivider() %>
                   <%= DropdownHeader text: t(".social") %>

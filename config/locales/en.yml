@@ -67,6 +67,9 @@ en:
         tag_regex: Required Tags
       link:
         url: Link
+      list:
+        list_items: Items
+        name: Name
       model:
         ai_indexable: Allow use for AI training
         caption: Caption
@@ -231,6 +234,13 @@ en:
         other: Links
         two: Links
         zero: Links
+      list:
+        few: Lists
+        many: Lists
+        one: List
+        other: Lists
+        two: Lists
+        zero: Lists
       model:
         few: Models
         many: Models
@@ -405,6 +415,11 @@ en:
       slide_label: "%{name} (%{index} of %{count})"
     link_list:
       sync: Synchronize
+    lists_card:
+      add_to_list: Add to list
+      on_lists: 'On lists:'
+      remove: Remove from list
+      title: Lists
     modal:
       close: Close
     model_card:
@@ -893,6 +908,13 @@ en:
     LGPL-30-only: GNU Lesser General Public License v3
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
+  lists:
+    create:
+      success: List created successfully
+    destroy:
+      success: List removed
+    update:
+      success: List updated successfully
   moderator_mailer:
     new_approval:
       message: Someone new has signed up for an account, and requires approval. Approve the account at %{link}
@@ -958,6 +980,19 @@ en:
         title: User Groups
       new:
         title: New Group
+    lists:
+      edit:
+        title: Edit list
+      form:
+        confirm_destroy: Are you sure you want to remove this list?
+      index:
+        description: Lists are a private way to organise models you like, save them for later printing, or whatever you want!
+        title: My Lists
+      new:
+        title: New list
+      show:
+        description: Add more items to your lists using the lists box on model pages.
+        title: 'List: %{name}'
     pagination:
       first: "« First"
       last: Last »

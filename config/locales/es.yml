@@ -67,6 +67,9 @@ es:
         tag_regex: Etiquetas obligatorias
       link:
         url: Enlace
+      list:
+        list_items:
+        name:
       model:
         ai_indexable: Permitir el uso para el entrenamiento de IA
         caption: Subtítulo
@@ -231,6 +234,13 @@ es:
         other: Enlaces
         two: Enlaces
         zero: Enlaces
+      list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: Modelos
         many: Modelos
@@ -405,6 +415,11 @@ es:
       slide_label: "%{name} (%{index} de %{count})"
     link_list:
       sync: Sincronice
+    lists_card:
+      add_to_list:
+      on_lists:
+      remove:
+      title:
     modal:
       close: Cerrar
     model_card:
@@ -893,6 +908,13 @@ es:
     LGPL-30-only: Licencia Pública General Reducida de GNU v3
     LicenseRef-Commercial: Comercial - Solo para uso privado
     MIT: MIT
+  lists:
+    create:
+      success:
+    destroy:
+      success:
+    update:
+      success:
   moderator_mailer:
     new_approval:
       message: Alguien nuevo se ha registrado para obtener una cuenta y requiere aprobación. Aprobar la cuenta en %{link}
@@ -958,6 +980,19 @@ es:
         title: Grupos de usuarios
       new:
         title: Nuevo Grupo
+    lists:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:
+      show:
+        description:
+        title:
     pagination:
       first: "« Primera"
       last: Última »

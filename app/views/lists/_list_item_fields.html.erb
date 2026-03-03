@@ -1,0 +1,10 @@
+<%= cocooned_item :tr do %>
+  <td class="align-middle">
+    <% if f.object.listable.is_a? Model %>
+      <%= link_to f.object.listable.name, model_path(f.object.listable) %>
+    <% end %>
+  </td>
+  <td>
+    <%= cocooned_remove_item_button Icon(icon: "trash", label: translate("components.lists_card.remove")), f, class: "btn btn-link link-danger" %>
+  </td>
+<% end %>
