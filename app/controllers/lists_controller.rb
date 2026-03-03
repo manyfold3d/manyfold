@@ -46,7 +46,7 @@ class ListsController < ApplicationController
     respond_to do |format|
       format.html do
         if @list.update(list_params)
-          redirect_to @list, notice: t(".success"), status: :see_other
+          redirect_back_or_to @list, notice: t(".success"), status: :see_other
         else
           render Views::Lists::Edit.new(list: @list), status: :unprocessable_content
         end
@@ -57,7 +57,7 @@ class ListsController < ApplicationController
   def destroy
     @list.destroy!
     respond_to do |format|
-      format.html { redirect_to lists_path, notice: t(".success"), status: :see_other }
+      format.html { redirect_back_or_to lists_path, notice: t(".success"), status: :see_other }
     end
   end
 

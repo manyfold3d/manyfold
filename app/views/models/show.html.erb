@@ -126,6 +126,8 @@
         <% end %>
       <% end %>
 
+      <%= ListsCard(listable: @model) if policy(:list).show? %>
+
       <% if policy(:problem).show? %>
         <% if !@model.parents.empty? && policy(@model).merge? %>
           <%= card :danger, t(".merge.heading") do %>
