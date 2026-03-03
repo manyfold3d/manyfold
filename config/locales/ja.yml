@@ -991,6 +991,7 @@ ja:
       new:
         title:
       show:
+        description:
         title:
     pagination:
       first: "&laquo; 最初"

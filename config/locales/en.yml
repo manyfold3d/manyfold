@@ -991,7 +991,8 @@ en:
       new:
         title: New list
       show:
-        title: "List: %{name}"
+        description: Add more items to your lists using the lists box on model pages.
+        title: 'List: %{name}'
     pagination:
       first: "« First"
       last: Last »

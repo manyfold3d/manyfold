@@ -991,6 +991,7 @@ zh-CN:
       new:
         title:
       show:
+        description:
         title:
     pagination:
       first: "«  首页"

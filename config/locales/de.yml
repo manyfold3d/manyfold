@@ -993,6 +993,7 @@ de:
       new:
         title:
       show:
+        description:
         title:
     pagination:
       first: "« Anfang"

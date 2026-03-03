@@ -991,6 +991,7 @@ es:
       new:
         title:
       show:
+        description:
         title:
     pagination:
       first: "« Primera"
