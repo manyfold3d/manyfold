@@ -1,9 +1,0 @@
-<%= PageTitle title: @list.name, breadcrumbs: {
-      List.model_name.human(count: 100) => lists_path
-    } %>
-
-<ul>
-  <% @list.models.each do |model| %>
-    <li><%= link_to model.name, model %></li>
-  <% end %>
-</ul>

@@ -3,9 +3,15 @@ class ListsController < ApplicationController
 
   def index
     @lists = policy_scope(List).all
+    respond_to do |format|
+      format.html { render Views::Lists::Index.new(lists: @lists) }
+    end
   end
 
   def show
+    respond_to do |format|
+      format.html { render Views::Lists::Show.new(list: @list) }
+    end
   end
 
   def new
