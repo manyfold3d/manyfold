@@ -6,7 +6,7 @@
       <%= form.label :list_items %>
     </div>
     <div>
-      <%= cocooned_container :ul, id: "cocooned-list-items", data: {controller: "cocooned"} do
+      <%= cocooned_container :table, id: "cocooned-list-items", data: {controller: "cocooned"}, class: "table table-striped" do
             form.fields_for :list_items do |f|
               render "list_item_fields", f: f
             end
