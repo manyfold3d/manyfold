@@ -24,7 +24,7 @@
     "@uppy/tus": "^5.1.1",
     "@uppy/utils": "^7.1.5",
     "altcha": "^2.3.0",
-    "autoprefixer": "^10.4.24",
+    "autoprefixer": "^10.4.27",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "bootswatch": "^5.3.8",
