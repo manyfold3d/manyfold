@@ -67,6 +67,9 @@ pt:
         tag_regex:
       link:
         url:
+      list:
+        list_items:
+        name:
       model:
         ai_indexable:
         caption:
@@ -225,6 +228,13 @@ pt:
         two:
         zero:
       link:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      list:
         few:
         many:
         one:
@@ -405,6 +415,11 @@ pt:
       slide_label:
     link_list:
       sync:
+    lists_card:
+      add_to_list:
+      on_lists:
+      remove:
+      title:
     modal:
       close:
     model_card:
@@ -893,6 +908,13 @@ pt:
     LGPL-30-only:
     LicenseRef-Commercial:
     MIT:
+  lists:
+    create:
+      success:
+    destroy:
+      success:
+    update:
+      success:
   moderator_mailer:
     new_approval:
       message:
@@ -957,6 +979,18 @@ pt:
         member_count:
         title:
       new:
+        title:
+    lists:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:
+      show:
         title:
     pagination:
       first:

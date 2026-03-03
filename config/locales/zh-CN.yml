@@ -67,6 +67,9 @@ zh-CN:
         tag_regex:
       link:
         url: 链接
+      list:
+        list_items:
+        name:
       model:
         ai_indexable: 允许用于 AI 训练
         caption: 标题
@@ -231,6 +234,13 @@ zh-CN:
         other: 链接
         two: 链接
         zero: 链接
+      list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: 模型
         many: 模型
@@ -405,6 +415,11 @@ zh-CN:
       slide_label:
     link_list:
       sync: 同步
+    lists_card:
+      add_to_list:
+      on_lists:
+      remove:
+      title:
     modal:
       close: 关闭
     model_card:
@@ -893,6 +908,13 @@ zh-CN:
     LGPL-30-only: GNU Lesser General Public License v3
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
+  lists:
+    create:
+      success:
+    destroy:
+      success:
+    update:
+      success:
   moderator_mailer:
     new_approval:
       message: 有新用户注册了账户，需要批准。批准 %{link} 账户
@@ -957,6 +979,18 @@ zh-CN:
         member_count:
         title:
       new:
+        title:
+    lists:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:
+      show:
         title:
     pagination:
       first: "«  首页"

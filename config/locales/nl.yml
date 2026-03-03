@@ -67,6 +67,9 @@ nl:
         tag_regex: Vereiste Tags
       link:
         url: Link
+      list:
+        list_items:
+        name:
       model:
         ai_indexable:
         caption: Onderschrift
@@ -231,6 +234,13 @@ nl:
         other: Links
         two: Links
         zero: Links
+      list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: Modellen
         many: Modellen
@@ -405,6 +415,11 @@ nl:
       slide_label: "%{name} (%{index} van %{count})"
     link_list:
       sync:
+    lists_card:
+      add_to_list:
+      on_lists:
+      remove:
+      title:
     modal:
       close:
     model_card:
@@ -893,6 +908,13 @@ nl:
     LGPL-30-only:
     LicenseRef-Commercial: Commercieel; alleen privégebruik
     MIT: MIT
+  lists:
+    create:
+      success:
+    destroy:
+      success:
+    update:
+      success:
   moderator_mailer:
     new_approval:
       message:
@@ -957,6 +979,18 @@ nl:
         member_count:
         title:
       new:
+        title:
+    lists:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:
+      show:
         title:
     pagination:
       first: "« Eerste"

@@ -67,6 +67,9 @@ fr:
         tag_regex: Étiquettes requises
       link:
         url: Lien
+      list:
+        list_items:
+        name:
       model:
         ai_indexable: Permettre l'utilisation pour l'entrainement d'IA
         caption: Légende
@@ -231,6 +234,13 @@ fr:
         other: Liens
         two: Liens
         zero: Liens
+      list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: Modèles
         many: Modèles
@@ -405,6 +415,11 @@ fr:
       slide_label: "%{name} (%{index} sur %{count})"
     link_list:
       sync: Synchroniser
+    lists_card:
+      add_to_list:
+      on_lists:
+      remove:
+      title:
     modal:
       close: Fermer
     model_card:
@@ -896,6 +911,13 @@ fr:
     LGPL-30-only: GNU Lesser General Public License v3
     LicenseRef-Commercial: Commercial ; usage privé uniquement
     MIT: MIT
+  lists:
+    create:
+      success:
+    destroy:
+      success:
+    update:
+      success:
   moderator_mailer:
     new_approval:
       message:
@@ -960,6 +982,18 @@ fr:
         member_count:
         title:
       new:
+        title:
+    lists:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:
+      show:
         title:
     pagination:
       first: "« Premier"

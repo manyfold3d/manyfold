@@ -67,6 +67,9 @@ ru:
         tag_regex:
       link:
         url: Ссылка
+      list:
+        list_items:
+        name:
       model:
         ai_indexable: Разрешить использование данных для обучения ИИ
         caption: Описание
@@ -231,6 +234,13 @@ ru:
         other: Ссылки
         two: Ссылки
         zero: Ссылки
+      list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: Модели
         many: Модели
@@ -405,6 +415,11 @@ ru:
       slide_label:
     link_list:
       sync:
+    lists_card:
+      add_to_list:
+      on_lists:
+      remove:
+      title:
     modal:
       close:
     model_card:
@@ -893,6 +908,13 @@ ru:
     LGPL-30-only:
     LicenseRef-Commercial:
     MIT: MIT
+  lists:
+    create:
+      success:
+    destroy:
+      success:
+    update:
+      success:
   moderator_mailer:
     new_approval:
       message:
@@ -957,6 +979,18 @@ ru:
         member_count:
         title:
       new:
+        title:
+    lists:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:
+      show:
         title:
     pagination:
       first: "&laquo; Первая"

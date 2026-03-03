@@ -67,6 +67,9 @@ ja:
         tag_regex: 必須タグ
       link:
         url: リンク
+      list:
+        list_items:
+        name:
       model:
         ai_indexable:
         caption: キャプション
@@ -231,6 +234,13 @@ ja:
         other: リンク
         two: リンク
         zero: リンク
+      list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: モデル
         many: モデル
@@ -405,6 +415,11 @@ ja:
       slide_label:
     link_list:
       sync:
+    lists_card:
+      add_to_list:
+      on_lists:
+      remove:
+      title:
     modal:
       close: 閉じる
     model_card:
@@ -893,6 +908,13 @@ ja:
     LGPL-30-only:
     LicenseRef-Commercial:
     MIT:
+  lists:
+    create:
+      success:
+    destroy:
+      success:
+    update:
+      success:
   moderator_mailer:
     new_approval:
       message:
@@ -957,6 +979,18 @@ ja:
         member_count:
         title:
       new:
+        title:
+    lists:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:
+      show:
         title:
     pagination:
       first: "&laquo; 最初"

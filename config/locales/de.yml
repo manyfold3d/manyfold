@@ -67,6 +67,9 @@ de:
         tag_regex: Erforderliche Tags
       link:
         url: Link
+      list:
+        list_items:
+        name:
       model:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Bildunterschrift
@@ -231,6 +234,13 @@ de:
         other: URLs
         two: URLs
         zero: URLs
+      list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: Modelle
         many: Modelle
@@ -407,6 +417,11 @@ de:
       slide_label: "%{name} (%{index} von %{count})"
     link_list:
       sync: Synchronisieren
+    lists_card:
+      add_to_list:
+      on_lists:
+      remove:
+      title:
     modal:
       close: Schließen
     model_card:
@@ -895,6 +910,13 @@ de:
     LGPL-30-only: GNU Lesser General Public License v3
     LicenseRef-Commercial: Commercial; private use only
     MIT: MIT
+  lists:
+    create:
+      success:
+    destroy:
+      success:
+    update:
+      success:
   moderator_mailer:
     new_approval:
       message: Eine neue Person hat sich für ein Konto angemeldet und benötigt eine Genehmigung. Genehmige das Konto hier %{link}
@@ -960,6 +982,18 @@ de:
         title: Benutzergruppen
       new:
         title: Neue Gruppe
+    lists:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:
+      show:
+        title:
     pagination:
       first: "« Anfang"
       last: Letzte »
