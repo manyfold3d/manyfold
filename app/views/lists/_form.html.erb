@@ -4,6 +4,17 @@
   <%= TextInputRow(form: form, attribute: :name, label: List.human_attribute_name(:name), help: t(".name.help")) %>
 
   <div>
+    <%= form.label :list_items %>
+  </div>
+  <div>
+    <%= cocooned_container :ul, id: "cocooned-list-items", data: {controller: "cocooned"} do
+          form.fields_for :list_items do |f|
+            render "list_item_fields", f: f
+          end
+        end %>
+  </div>
+
+  <div>
     <%= form.submit class: "btn btn-primary" %>
     <% if list.persisted? && policy(list).destroy? %>
       <%= link_to lists_path(list), {

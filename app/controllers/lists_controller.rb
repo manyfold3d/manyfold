@@ -11,29 +11,39 @@ class ListsController < ApplicationController
   def new
     @list = List.new
     authorize @list
+    respond_to do |format|
+      format.html { render Views::Lists::New.new(list: @list) }
+    end
   end
 
   def edit
+    respond_to do |format|
+      format.html { render Views::Lists::Edit.new(list: @list) }
+    end
   end
 
   def create
     @list = List.new(list_params)
     authorize @list
     respond_to do |format|
-      if @list.save
-        format.html { redirect_to @list, notice: t(".success") }
-      else
-        format.html { render :new, status: :unprocessable_content }
+      format.html do
+        if @list.save
+          redirect_to @list, notice: t(".success")
+        else
+          render Views::Lists::New.new(list: @list), status: :unprocessable_content
+        end
       end
     end
   end
 
   def update
     respond_to do |format|
-      if @list.update(list_params)
-        format.html { redirect_to @list, notice: t(".success"), status: :see_other }
-      else
-        format.html { render :edit, status: :unprocessable_content }
+      format.html do
+        if @list.update(list_params)
+          redirect_to @list, notice: t(".success"), status: :see_other
+        else
+          render Views::Lists::Edit.new(list: @list), status: :unprocessable_content
+        end
       end
     end
   end
@@ -53,7 +63,7 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(
+    params.require(:list).permit( # rubocop:todo Rails/StrongParametersExpect
       :name,
       list_items_attributes: [:id, :listable_type, :listable_id, :_destroy]
     )
