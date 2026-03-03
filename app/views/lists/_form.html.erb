@@ -1,16 +1,18 @@
 <%= form_with model: list, class: "container-md tabular-form" do |form| %>
   <%= TextInputRow(form: form, attribute: :name, label: List.human_attribute_name(:name)) %>
 
-  <div>
-    <%= form.label :list_items %>
-  </div>
-  <div>
-    <%= cocooned_container :ul, id: "cocooned-list-items", data: {controller: "cocooned"} do
-          form.fields_for :list_items do |f|
-            render "list_item_fields", f: f
-          end
-        end %>
-  </div>
+  <% if list.persisted? %>
+    <div>
+      <%= form.label :list_items %>
+    </div>
+    <div>
+      <%= cocooned_container :ul, id: "cocooned-list-items", data: {controller: "cocooned"} do
+            form.fields_for :list_items do |f|
+              render "list_item_fields", f: f
+            end
+          end %>
+    </div>
+  <% end %>
 
   <div>
     <%= form.submit class: "btn btn-primary" %>
