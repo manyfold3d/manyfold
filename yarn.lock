@@ -5909,14 +5909,14 @@ __metadata:
   linkType: hard
 
 "standard-engine@npm:^15.0.0":
-  version: 15.0.0
-  resolution: "standard-engine@npm:15.0.0"
+  version: 15.1.0
+  resolution: "standard-engine@npm:15.1.0"
   dependencies:
-    get-stdin: "npm:^8.0.0"
-    minimist: "npm:^1.2.6"
-    pkg-conf: "npm:^3.1.0"
-    xdg-basedir: "npm:^4.0.0"
-  checksum: fa67fb04b757e6fe43b32ec812bded81f193598072107f36632c265b5d94a6e1ef4ebdbf96dfcd2da8cfddc180f281160bc025a9c762796e69bda4e10269cda3
+    get-stdin: ^8.0.0
+    minimist: ^1.2.6
+    pkg-conf: ^3.1.0
+    xdg-basedir: ^4.0.0
+  checksum: cd530a9711778b6d8c15f66cc12c4fb9583df7a641a523eb84acb9f706674d97fe33bc89d57e621aeea9e2e1f91fa44aca235f76e661b91eaf2b5911d6b2cb23
   languageName: node
   linkType: hard
 
