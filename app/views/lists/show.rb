@@ -6,10 +6,9 @@ class Views::Lists::Show < Views::Base
   end
 
   def view_template
-    PageTitle title: @list.name, breadcrumbs: {
+    PageTitle title: t("views.lists.show.title", name: @list.name), breadcrumbs: {
       t("views.lists.index.title") => lists_path
     }
-    p { t("views.lists.show.description") }
     table class: "table table-striped" do
       tr do
         th { Model.model_name.human(count: 100) }
