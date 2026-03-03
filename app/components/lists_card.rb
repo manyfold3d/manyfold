@@ -22,9 +22,8 @@ class Components::ListsCard < Components::Base
     Card title: t("components.lists_card.title"), variant: :secondary do
       div class: "card-text" do
         on_lists if @on_lists.any?
-        add_dropdown if @off_lists.any?
+        add_dropdown
       end
-      GoButton icon: "plus-circle", label: t("views.lists.new.title"), href: new_list_path, variant: :secondary
     end
   end
 
@@ -66,6 +65,8 @@ class Components::ListsCard < Components::Base
         @off_lists.map do |list|
           DropdownItem label: list.name, path: add_path(list: list), method: :patch
         end
+        DropdownDivider() if @off_lists.any?
+        DropdownItem icon: "plus-circle", label: t("views.lists.new.title"), path: new_list_path
       end
     end
   end
