@@ -1554,9 +1554,9 @@ __metadata:
   linkType: hard
 
 "@webgpu/types@npm:*":
-  version: 0.1.46
-  resolution: "@webgpu/types@npm:0.1.46"
-  checksum: 8dd5fb8a5993e83cb910c6d7bd7d47b941f631b47a77f1280740b245556be615cc84a87de65dceea07aa6629e4bd392b4b6c53e238514958f985f3f5e999db1a
+  version: 0.1.69
+  resolution: "@webgpu/types@npm:0.1.69"
+  checksum: 721ccdaf9c8ebdb9c9751d56316616e1125fbeaf1c98564fdc183e34140d1f31ca20cc9cfc195d6fbc335c8ffa167229f248093334781e3da051422479950f96
   languageName: node
   linkType: hard
 
