@@ -41,6 +41,8 @@ class Model < ApplicationRecord
 
   accepts_nested_attributes_for :creator
 
+  has_many :list_items, as: :listable, dependent: :destroy
+
   before_validation :strip_separators_from_path, if: :path_changed?
   before_validation :publish_creator, if: :will_be_public?
   before_validation :normalize_license, if: -> { respond_to? :license }
