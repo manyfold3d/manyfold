@@ -1037,9 +1037,9 @@ __metadata:
   linkType: hard
 
 "@transloadit/prettier-bytes@npm:^0.3.4":
-  version: 0.3.4
-  resolution: "@transloadit/prettier-bytes@npm:0.3.4"
-  checksum: abd6b7a12f57d5db3e744cbfa793e1fbb2aa15943b55901882eed8f32fd95cb72a2805db4e8251862192d8ebaa889a696657f46c9cd41347538d377dea731d58
+  version: 0.3.5
+  resolution: "@transloadit/prettier-bytes@npm:0.3.5"
+  checksum: 4c7fb403faae46e775166e2b9024f7d8ee8c750c3da65546b06266d42fbe9b5a6ac977cf84b3c335df793e263f8d35587660a8f889faad432490e329c1994899
   languageName: node
   linkType: hard
 
