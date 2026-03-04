@@ -174,6 +174,17 @@ RSpec.describe "Models" do
           expect(private_creator.reload).to be_public
         end
 
+        it "adds links", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
+          model = library.models.first
+          put "/models/#{model.to_param}", params: {
+            model: {
+              links_attributes: {"0" => {url: "https://manyfold.app"}}
+            }
+          }
+          expect(response).to have_http_status(:redirect)
+          expect(model.reload.links.find_by(url: "https://manyfold.app")).to be_present
+        end
+
         it "is denied to non-moderators", :as_contributor do
           put "/models/#{library.models.first.to_param}"
           expect(response).to have_http_status(:forbidden)

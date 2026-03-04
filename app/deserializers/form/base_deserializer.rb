@@ -12,8 +12,9 @@ module Form
 
     private
 
-    def caber_relations_attributes(type: nil)
+    def caber_relations_attributes(type:)
       @params.require(type).permit(
+        :permission_preset,
         caber_relations_attributes: [:id, :subject_type, :subject_id, :permission, :_destroy]
       )
     end
