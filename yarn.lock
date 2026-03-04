@@ -4900,12 +4900,12 @@ __metadata:
   linkType: hard
 
 "p-queue@npm:^8.0.0":
-  version: 8.0.1
-  resolution: "p-queue@npm:8.0.1"
+  version: 8.1.1
+  resolution: "p-queue@npm:8.1.1"
   dependencies:
-    eventemitter3: "npm:^5.0.1"
-    p-timeout: "npm:^6.1.2"
-  checksum: 84a27a5b1faf2dcc96b8c0e423c34b5984b241acc07353d3cc6d8d3d1dadefb250b4ec84ce278cb1c946466999c6bf2a36ff718a75810bad8e11c7ca47ce80f5
+    eventemitter3: ^5.0.1
+    p-timeout: ^6.1.2
+  checksum: e380142c6f76b6d177e095f22c8d861d8c39829f8441ee554890a8cb054e4d9196ee97e185a06f8d00d3bf5bbc1dac192d33725783553a3c2c96ee22b7cd2eb4
   languageName: node
   linkType: hard
 
