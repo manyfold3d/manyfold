@@ -70,6 +70,8 @@ en:
       list:
         list_items: Items
         name: Name
+      list_item:
+        created_at: Added
       model:
         ai_indexable: Allow use for AI training
         caption: Caption

@@ -70,6 +70,8 @@ zh-CN:
       list:
         list_items:
         name:
+      list_item:
+        created_at:
       model:
         ai_indexable: 允许用于 AI 训练
         caption: 标题

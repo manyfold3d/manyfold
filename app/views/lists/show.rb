@@ -12,11 +12,14 @@ class Views::Lists::Show < Views::Base
     p { t("views.lists.show.description") }
     table class: "table table-striped" do
       tr do
-        th { Model.model_name.human(count: 100) }
+        th { Model.model_name.human }
+        th { ListItem.human_attribute_name(:created_at) }
       end
-      @list.models.each do |model|
+      @list.list_items.each do |item|
+        next unless item.listable.is_a? Model
         tr do
-          td { link_to model.name, model_path(model) }
+          td { link_to item.listable.name, model_path(item.listable) }
+          td { item.created_at.to_fs(:long_ordinal) }
         end
       end
     end
