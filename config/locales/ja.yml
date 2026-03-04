@@ -70,6 +70,8 @@ ja:
       list:
         list_items:
         name:
+      list_item:
+        created_at:
       model:
         ai_indexable:
         caption: キャプション

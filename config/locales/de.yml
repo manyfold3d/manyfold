@@ -70,6 +70,8 @@ de:
       list:
         list_items:
         name:
+      list_item:
+        created_at:
       model:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Bildunterschrift
