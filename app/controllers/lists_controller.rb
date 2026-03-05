@@ -80,7 +80,7 @@ class ListsController < ApplicationController
     params.values.each do |param|
       if param.is_a?(ActionController::Parameters) && param.has_key?("list_items_attributes")
         param["list_items_attributes"].transform_values! do |value|
-          if value["listable_id"] && value["listable_type"]
+          if value["listable_id"] && value["listable_type"].in?(List::SUPPORTED_ITEM_TYPES)
             listable = policy_scope(value["listable_type"].constantize)&.find(value["listable_id"])
             value["listable_id"] = listable&.id
             value["listable_type"] = listable&.class&.name
