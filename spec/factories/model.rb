@@ -48,6 +48,10 @@ FactoryBot.define do
       creator factory: [:creator, :public]
     end
 
+    trait :private do
+      permission_preset { :private }
+    end
+
     trait :remote do
       after(:create) do |model|
         model.federails_actor.update_attribute(:local, false) # rubocop:disable Rails/SkipsModelValidations
