@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   before_action :get_list, except: [:index, :new, :create]
+  before_action :check_list_item_permissions, only: [:create, :update]
 
   def index
     @lists = policy_scope(List).all
@@ -73,5 +74,23 @@ class ListsController < ApplicationController
       :name,
       list_items_attributes: [:id, :listable_type, :listable_id, :_destroy]
     )
+  end
+
+  def check_list_item_permissions
+    params.values.each do |param|
+      if param.is_a?(ActionController::Parameters) && param.has_key?("list_items_attributes")
+        param["list_items_attributes"].transform_values! do |value|
+          if value["listable_id"] && value["listable_type"]
+            listable = policy_scope(value["listable_type"].constantize)&.find(value["listable_id"])
+            value["listable_id"] = listable&.id
+            value["listable_type"] = listable&.class&.name
+          end
+          value
+        rescue ActiveRecord::RecordNotFound
+          nil
+        end
+        param["list_items_attributes"].compact!
+      end
+    end
   end
 end

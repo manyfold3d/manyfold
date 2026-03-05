@@ -96,6 +96,48 @@ RSpec.describe "/lists", :as_member do
         patch list_url(list), params: {list: {name: ""}}
         expect(response).to have_http_status(:unprocessable_content)
       end
+
+      it "silently filters out empty list items without failure" do # rubocop:disable RSpec/MultipleExpectations
+        expect {
+          patch list_url(list), params: {list: {list_items_attributes: {"0" => {id: "", listable_id: "", _destroy: "1"}, "1" => {}}}}
+        }.not_to change(ListItem, :count)
+        expect(response).not_to have_http_status(:unprocessable_content)
+      end
+    end
+
+    context "with private models" do
+      let(:private_model) { create(:model, :private) }
+
+      it "does not add private models to list" do
+        expect {
+          patch list_url(list), params: {list: {list_items_attributes: {"0" => {listable_type: "Model", listable_id: private_model.id}}}}
+        }.not_to change(ListItem, :count)
+      end
+    end
+
+    context "with unsupported item types" do
+      let(:collection) { create(:collection) }
+
+      it "does not add collection to list" do
+        expect {
+          patch list_url(list), params: {list: {list_items_attributes: {"0" => {listable_type: "Collection", listable_id: collection.id}}}}
+        }.not_to change(ListItem, :count)
+      end
+    end
+
+    context "with list items from different lists" do
+      let!(:other_list) { create(:list, owner: SiteSettings.default_user) }
+
+      before do
+        other_list.models << model
+      end
+
+      it "does not remove list item that's on a different list" do
+        item = other_list.list_items.last
+        expect {
+          patch list_url(list), params: {list: {list_items_attributes: {"0" => {id: item.id, _destroy: "1"}}}}
+        }.not_to change(ListItem, :count)
+      end
     end
   end
 
