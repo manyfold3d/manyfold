@@ -3,7 +3,7 @@ class ListsController < ApplicationController
   before_action :check_list_item_permissions, only: [:create, :update]
 
   def index
-    @lists = policy_scope(List).all
+    @lists = policy_scope(current_user.lists).all
     respond_to do |format|
       format.html { render Views::Lists::Index.new(lists: @lists) }
     end
