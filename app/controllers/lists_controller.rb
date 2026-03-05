@@ -30,7 +30,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(list_params)
+    @list = List.new(list_params.merge(owner: current_user))
     authorize @list
     respond_to do |format|
       format.html do
