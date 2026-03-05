@@ -45,6 +45,11 @@ RSpec.describe "/lists", :as_member do
         }.to change(List, :count).by(1)
       end
 
+      it "sets the correct owner" do
+        post lists_url, params: {list: attributes_for(:list)}
+        expect(List.last.grants_permission_to?("own", User.last)).to be true
+      end
+
       it "redirects to the created list" do
         post lists_url, params: {list: attributes_for(:list)}
         expect(response).to redirect_to(list_url(List.last))
