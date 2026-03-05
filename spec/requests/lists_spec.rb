@@ -78,7 +78,7 @@ RSpec.describe "/lists", :as_member do
 
       it "adds items" do
         expect {
-          patch list_url(list), params: {list: {list_items_attributes: [{listable_type: "Model", listable_id: model.id}]}}
+          patch list_url(list), params: {list: {list_items_attributes: {"0" => {listable_type: "Model", listable_id: model.id}}}}
         }.to change { list.reload.models.count }.from(0).to(1)
       end
 
@@ -86,7 +86,7 @@ RSpec.describe "/lists", :as_member do
         list.models << model
         item = list.list_items.last
         expect {
-          patch list_url(list), params: {list: {list_items_attributes: [{id: item.id, _destroy: "1"}]}}
+          patch list_url(list), params: {list: {list_items_attributes: {"0" => {id: item.id, _destroy: "1"}}}}
         }.to change { list.reload.models.count }.from(1).to(0)
       end
     end
