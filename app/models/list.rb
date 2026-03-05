@@ -11,6 +11,9 @@ class List < ApplicationRecord
 
   validates :name, presence: true, length: {maximum: 255}
   validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
+  validates :special, inclusion: {in: %w[liked], allow_nil: true}
+
+  scope :special, -> { where.not(special: nil) }
 
   def reject_list_items_attributes(item)
     # Reject blank
