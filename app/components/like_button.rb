@@ -11,17 +11,19 @@ class Components::LikeButton < Components::BaseButton
     @form_attributes = @liked ?
       {id: current_user.liked_list.list_items.find_by(listable: @thing), _destroy: "1"} :
       {listable_type: @thing.model_name, listable_id: @thing.id}
+    @count = @thing.list_items.includes(:list).where("list.special": :liked).count
+    @count = nil if @count == 0
   end
 
   def view_template
     DoButton(
-      icon_only: true,
       icon: (@liked ? "heart-fill" : "heart"),
       variant: :secondary,
       small: @small,
       href: list_path(current_user.liked_list, list: {list_items_attributes: {"0" => @form_attributes}}),
       method: :patch,
-      label: (@liked ? t("components.like_button.unlike") : t("components.like_button.like"))
+      label: @count,
+      help: (@liked ? t("components.like_button.unlike") : t("components.like_button.like"))
     )
   end
 end
