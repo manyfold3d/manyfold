@@ -14,6 +14,7 @@ class List < ApplicationRecord
   validates :special, inclusion: {in: %w[liked], allow_nil: true}
 
   scope :special, -> { where.not(special: nil) }
+  scope :without_special, -> { where(special: nil) }
 
   def reject_list_items_attributes(item)
     # Reject blank

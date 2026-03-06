@@ -14,7 +14,7 @@ class Components::ListsCard < Components::Base
   end
 
   def before_template
-    @all_lists = policy_scope(current_user.lists).all
+    @all_lists = policy_scope(current_user.lists.without_special).all
     @on_lists, @off_lists = @all_lists.partition { |it| @listable.in? it.models }
   end
 
