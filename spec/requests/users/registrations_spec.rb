@@ -389,9 +389,9 @@ RSpec.describe "Users::Registrations" do
           expect { form_post }.to change(Creator, :count).by(1)
         end
 
-        it "adds a permission" do
+        it "adds a permission on the creator" do
           allow(SiteSettings).to receive(:default_viewer_role).and_return(:private)
-          expect { form_post }.to change(Caber::Relation, :count).by(1)
+          expect { form_post }.to change { Caber::Relation.where(object_type: "Creator").count }.by(1)
         end
 
         it "sets up ownership relation with the Creator" do
