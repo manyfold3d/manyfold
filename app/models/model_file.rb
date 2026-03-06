@@ -141,17 +141,6 @@ class ModelFile < ApplicationRecord
     result
   end
 
-  # TODO: this should move to Shrine metadata processing to be more efficient
-  def calculate_digest
-    sha = Digest::SHA512.new
-    while (chunk = attachment.read(8192))
-      sha.update(chunk)
-    end
-    sha.hexdigest
-  rescue Errno::ENOENT
-    nil
-  end
-
   def dimensions
     bbox = attachment.metadata.dig("object", "bounding_box")
     return nil unless bbox
