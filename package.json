@@ -50,7 +50,7 @@
     "@types/i18n-js": "^4.0.1",
     "@types/jquery": "^4.0.0",
     "@types/lodash": "^4.17.24",
-    "@types/node": "~24.11",
+    "@types/node": "~24.12",
     "@types/three": "^0.183.1",
     "@types/webpack-env": "^1.18.8",
     "@types/webxr": "^0.5.24",
