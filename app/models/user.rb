@@ -1,6 +1,8 @@
 require "uri"
 
 class User < ApplicationRecord
+  extend Memoist
+
   include Lister
   include Follower
   include CaberSubject
@@ -250,6 +252,16 @@ class User < ApplicationRecord
     options[:username] ||= "invite_#{SecureRandom.hex(8)}"
     super(options)
   end
+
+  def liked_list
+    lists.find_by(special: :liked)
+  end
+  memoize :liked_list
+
+  def liked?(listable)
+    liked_list.list_items.where(listable: listable).any?
+  end
+  memoize :liked?
 
   private
 
