@@ -13,7 +13,7 @@ shared_examples "Caber::Subject" do
     end
 
     it "has permission in list" do
-      expect(caber_subject.caber_relations.length).to be 1
+      expect(caber_subject.caber_relations.where(object: model).length).to eq 1
     end
 
     it "has permission on object" do
