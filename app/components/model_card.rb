@@ -54,23 +54,6 @@ class Components::ModelCard < Components::Base
     end
   end
 
-  def like_button
-    liked = current_user.liked?(@model)
-    form_attributes = liked ?
-      {id: current_user.liked_list.list_items.find_by(listable: @model), _destroy: "1"} :
-      {listable_type: @model.model_name, listable_id: @model.id}
-
-    DoButton(
-      icon_only: true,
-      icon: (liked ? "heart-fill" : "heart"),
-      variant: :secondary,
-      small: true,
-      href: list_path(current_user.liked_list, list: {list_items_attributes: {"0" => form_attributes}}),
-      method: :patch,
-      label: (current_user.liked?(@model) ? t("general.unlike") : t("general.like"))
-    )
-  end
-
   def credits
     ul class: "list-unstyled" do
       if @actor && !@actor.local
@@ -127,7 +110,7 @@ class Components::ModelCard < Components::Base
         div class: "col" do
           open_button
           whitespace
-          like_button
+          LikeButton(thing: @model, small: true)
           whitespace
           StatusBadges model: @model
         end
