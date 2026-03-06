@@ -6,7 +6,6 @@ class Upgrade::CreateLikedListsJob < Upgrade::IterationJob
   end
 
   def each_iteration(user)
-    # i18n-tasks-use t('lists.special.liked')
-    List.create(name: "lists.special.liked", special: :liked, owner: user) if user.lists.find_by(special: :liked).nil?
+    user.create_special_lists
   end
 end

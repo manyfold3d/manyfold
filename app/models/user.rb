@@ -55,6 +55,7 @@ class User < ApplicationRecord
   end
 
   after_create :assign_default_role
+  after_create :create_special_lists
 
   # Explicitly explain serialization for MariaDB
   serialize :pagination_settings, coder: CrossDbJsonSerializer
@@ -311,5 +312,10 @@ class User < ApplicationRecord
       "tour_state"
     ].freeze
     (changed - settings_attributes).empty?
+  end
+
+  def create_special_lists
+    # i18n-tasks-use t('lists.special.liked')
+    List.create(name: "lists.special.liked", special: :liked, owner: self) if lists.find_by(special: :liked).nil?
   end
 end
