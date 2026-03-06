@@ -17,7 +17,7 @@
   <div>
     <%= form.submit class: "btn btn-primary" %>
     <% if list.persisted? && policy(list).destroy? %>
-      <%= link_to lists_path(list), {
+      <%= link_to list_path(list), {
             method: :delete,
             class: "float-end btn btn-outline-danger",
             data: {confirm: translate("views.lists.form.confirm_destroy")}
