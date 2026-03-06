@@ -415,6 +415,9 @@ fr:
       previous: Précédent
       select_slide: Choisir l'image à afficher
       slide_label: "%{name} (%{index} sur %{count})"
+    like_button:
+      like:
+      unlike:
     link_list:
       sync: Synchroniser
     lists_card:

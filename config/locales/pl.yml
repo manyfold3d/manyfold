@@ -415,6 +415,9 @@ pl:
       previous: Poprzednia
       select_slide: Wybierz obraz do wyświetlenia
       slide_label: "%{name} (%{index} z %{count})"
+    like_button:
+      like:
+      unlike:
     link_list:
       sync:
     lists_card:

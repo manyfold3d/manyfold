@@ -415,6 +415,9 @@ en:
       previous: Previous
       select_slide: Choose image to display
       slide_label: "%{name} (%{index} of %{count})"
+    like_button:
+      like: Like
+      unlike: Unlike
     link_list:
       sync: Synchronize
     lists_card:
