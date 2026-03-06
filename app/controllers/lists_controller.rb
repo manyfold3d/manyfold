@@ -46,8 +46,8 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       format.html do
-        if @list.update(list_params)
-          redirect_back_or_to @list, notice: t(".success"), status: :see_other
+        if @list.update(list_params(list: @list))
+          redirect_back_or_to @list, notice: (@list.special? ? nil : t(".success")), status: :see_other
         else
           render Views::Lists::Edit.new(list: @list), status: :unprocessable_content
         end
@@ -69,11 +69,17 @@ class ListsController < ApplicationController
     authorize @list
   end
 
-  def list_params
-    params.require(:list).permit( # rubocop:todo Rails/StrongParametersExpect
-      :name,
-      list_items_attributes: [:id, :listable_type, :listable_id, :_destroy]
-    )
+  def list_params(list: nil)
+    if list&.special
+      params.require(:list).permit( # rubocop:todo Rails/StrongParametersExpect
+        list_items_attributes: [:id, :listable_type, :listable_id, :_destroy]
+      )
+    else
+      params.require(:list).permit( # rubocop:todo Rails/StrongParametersExpect
+        :name,
+        list_items_attributes: [:id, :listable_type, :listable_id, :_destroy]
+      )
+    end
   end
 
   def check_list_item_permissions

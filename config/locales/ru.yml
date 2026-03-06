@@ -415,6 +415,9 @@ ru:
       previous:
       select_slide:
       slide_label:
+    like_button:
+      like:
+      unlike:
     link_list:
       sync:
     lists_card:
@@ -915,6 +918,8 @@ ru:
       success:
     destroy:
       success:
+    special:
+      liked:
     update:
       success:
   moderator_mailer:

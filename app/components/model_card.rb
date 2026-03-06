@@ -110,6 +110,8 @@ class Components::ModelCard < Components::Base
         div class: "col" do
           open_button
           whitespace
+          LikeButton(thing: @model, small: true)
+          whitespace
           StatusBadges model: @model
         end
         div class: "col col-auto" do

@@ -1,5 +1,5 @@
 <%= form_with model: list, class: "container-md tabular-form" do |form| %>
-  <%= TextInputRow(form: form, attribute: :name, label: List.human_attribute_name(:name)) %>
+  <%= TextInputRow(form: form, attribute: :name, label: List.human_attribute_name(:name)) unless @list.special %>
 
   <% if list.persisted? %>
     <div>

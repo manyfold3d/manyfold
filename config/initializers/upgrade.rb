@@ -16,10 +16,12 @@ Rails.application.config.after_initialize do
     Upgrade::BackfillDataPackages.set(queue: :upgrade).perform_later
     Upgrade::DisambiguateUsernamesJob.set(queue: :upgrade).perform_later
     Upgrade::UpdateActorsJob.set(queue: :upgrade).perform_later
+    Upgrade::CreateSpecialListsJob.set(queue: :upgrade).perform_later
     Upgrade::FixParentCollections.set(queue: :upgrade).perform_later
     Upgrade::PruneOrphanedProblems.set(queue: :upgrade).perform_later
     Upgrade::BackfillImageDerivatives.perform_later if SiteSettings.generate_image_derivatives
     Upgrade::BackfillModelRenders.perform_later if SiteSettings.generate_model_renders
+
   end
 rescue RedisClient::CannotConnectError
 end

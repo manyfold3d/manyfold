@@ -415,6 +415,9 @@ es:
       previous: Anterior
       select_slide: Elija la imagen que desea mostrar
       slide_label: "%{name} (%{index} de %{count})"
+    like_button:
+      like:
+      unlike:
     link_list:
       sync: Sincronice
     lists_card:
@@ -915,6 +918,8 @@ es:
       success:
     destroy:
       success:
+    special:
+      liked:
     update:
       success:
   moderator_mailer:

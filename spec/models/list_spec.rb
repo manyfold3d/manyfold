@@ -17,6 +17,17 @@ RSpec.describe List do
     expect(described_class.build(name: SecureRandom.alphanumeric(256))).not_to be_valid
   end
 
+  it "can be a special list" do
+    list = create(:list, special: :liked)
+    expect(described_class.special).to include list
+  end
+
+  it "does not include normal lists in special scope" do
+    normal = create(:list)
+    create(:list, special: :liked)
+    expect(described_class.special).not_to include normal
+  end
+
   context "with an existing list" do
     subject(:list) { described_class.create(name: "My Favourites") }
 

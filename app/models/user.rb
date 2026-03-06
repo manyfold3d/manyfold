@@ -1,6 +1,8 @@
 require "uri"
 
 class User < ApplicationRecord
+  extend Memoist
+
   include Lister
   include Follower
   include CaberSubject
@@ -53,6 +55,7 @@ class User < ApplicationRecord
   end
 
   after_create :assign_default_role
+  after_create :create_special_lists
 
   # Explicitly explain serialization for MariaDB
   serialize :pagination_settings, coder: CrossDbJsonSerializer
@@ -251,6 +254,16 @@ class User < ApplicationRecord
     super(options)
   end
 
+  def liked_list
+    lists.find_by(special: :liked)
+  end
+  memoize :liked_list
+
+  def liked?(listable)
+    liked_list.list_items.where(listable: listable).any?
+  end
+  memoize :liked?
+
   private
 
   def set_quota
@@ -299,5 +312,10 @@ class User < ApplicationRecord
       "tour_state"
     ].freeze
     (changed - settings_attributes).empty?
+  end
+
+  def create_special_lists
+    # i18n-tasks-use t('lists.special.liked')
+    List.create(name: "lists.special.liked", special: :liked, owner: self) if lists.find_by(special: :liked).nil?
   end
 end
