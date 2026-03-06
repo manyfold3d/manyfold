@@ -32,18 +32,18 @@ class Components::ListsCard < Components::Base
   def add_path(list:)
     list_path(list,
       list: {
-        list_items_attributes: [
-          {listable_type: @listable.model_name, listable_id: @listable.id}
-        ]
+        list_items_attributes: {
+          "0" => {listable_type: @listable.model_name, listable_id: @listable.id}
+        }
       })
   end
 
   def remove_path(list:)
     list_path(list,
       list: {
-        list_items_attributes: [
-          {id: list.list_items.find_by(listable: @listable), _destroy: "1"}
-        ]
+        list_items_attributes: {
+          "0" => {id: list.list_items.find_by(listable: @listable), _destroy: "1"}
+        }
       })
   end
 
