@@ -915,6 +915,8 @@ zh-CN:
       success:
     destroy:
       success:
+    special:
+      liked:
     update:
       success:
   moderator_mailer:

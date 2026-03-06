@@ -915,6 +915,8 @@ en:
       success: List created successfully
     destroy:
       success: List removed
+    special:
+      liked: Liked Items
     update:
       success: List updated successfully
   moderator_mailer:
