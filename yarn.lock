@@ -3587,18 +3587,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18n-js@npm:*":
-  version: 4.5.1
-  resolution: "i18n-js@npm:4.5.1"
-  dependencies:
-    bignumber.js: "*"
-    lodash: "*"
-    make-plural: "*"
-  checksum: 1cac75ffe65e116414784251daf306f6a60cd75a68c0b9c9b746a1dd76b31a2a027f0af2c93056611c9845659bcee7ebf6eea601a250009d934bdb7adb65be5e
-  languageName: node
-  linkType: hard
-
-"i18n-js@npm:^4.5.3":
+"i18n-js@npm:*, i18n-js@npm:^4.5.3":
   version: 4.5.3
   resolution: "i18n-js@npm:4.5.3"
   dependencies:
@@ -4335,13 +4324,6 @@ __metadata:
     promise-retry: ^2.0.1
     ssri: ^10.0.0
   checksum: 5c9fad695579b79488fa100da05777213dd9365222f85e4757630f8dd2a21a79ddd3206c78cfd6f9b37346819681782b67900ac847a57cf04190f52dda5343fd
-  languageName: node
-  linkType: hard
-
-"make-plural@npm:*":
-  version: 8.1.0
-  resolution: "make-plural@npm:8.1.0"
-  checksum: 85988e7eb63587fc7ca5da0d8628ba52caf56599c8c0563acecac8f6d92da6627d7a32b84d5f422182652576e26f9906c3bcb78a73884ac4b1e04cea04c6eaf4
   languageName: node
   linkType: hard
 
