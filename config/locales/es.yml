@@ -322,7 +322,7 @@ es:
       community: Únete a la comunidad
       instance_heading: Detalles de la instancia
       issues: Problemas
-      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> bajo <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">licencia MIT</a>.
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> bajo <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">GNU Affero GPL 3.0</a>.
       sponsor: Colaborar
       support: Apoyar esta instancia
       version: Versión

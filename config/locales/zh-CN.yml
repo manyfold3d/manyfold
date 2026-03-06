@@ -322,7 +322,7 @@ zh-CN:
       community: 加入社区
       instance_heading: 实例信息
       issues: 报告问题
-      open_source_html: 根据 <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT 许可</a> <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">开源</a>。
+      open_source_html: 根据 <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">GNU Affero GPL 3.0</a> <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">开源</a>。
       sponsor: 赞助
       support: 支持此实例
       version: 版本
