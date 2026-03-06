@@ -322,7 +322,7 @@ de:
       community: Tritt der Community bei
       instance_heading: Details zur Instanz
       issues: Einen Fehler melden
-      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> unter der <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">MIT-Lizenz</a>.
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> unter der <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">GNU Affero GPL 3.0</a>.
       sponsor: Entwickler unterstützen
       support: Diese Instanz unterstützen
       version: Version

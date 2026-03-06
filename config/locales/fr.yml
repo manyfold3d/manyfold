@@ -322,7 +322,7 @@ fr:
       community: Rejoindre la communauté
       instance_heading: Détails de l'instance
       issues: Problèmes
-      open_source_html: Open Source sous <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">licence MIT.</a>
+      open_source_html: Open Source sous <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">GNU Affero GPL 3.0</a>
       sponsor: Sponsor
       support:
       version: Version
