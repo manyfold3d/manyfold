@@ -58,7 +58,7 @@ class ListsController < ApplicationController
   def destroy
     @list.destroy!
     respond_to do |format|
-      format.html { redirect_back_or_to lists_path, notice: t(".success"), status: :see_other }
+      format.html { redirect_to lists_path, notice: t(".success"), status: :see_other }
     end
   end
 
