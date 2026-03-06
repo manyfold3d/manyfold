@@ -6,6 +6,10 @@ class Components::LikeButton < Components::BaseButton
     @small = small
   end
 
+  def render?
+    current_user
+  end
+
   def before_template
     @liked = current_user.liked?(@thing)
     @form_attributes = @liked ?
