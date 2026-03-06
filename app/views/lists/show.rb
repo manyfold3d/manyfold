@@ -5,11 +5,15 @@ class Views::Lists::Show < Views::Base
     @list = list
   end
 
+  def before_template
+    @title = @list.special ? t(@list.name) : t("views.lists.show.title", name: @list.name)
+  end
+
   def view_template
-    PageTitle title: t("views.lists.show.title", name: @list.name), breadcrumbs: {
+    PageTitle title: @title, breadcrumbs: {
       t("views.lists.index.title") => lists_path
     }
-    p { t("views.lists.show.description") }
+    p { t("views.lists.show.description") } unless @list.special
     table class: "table table-striped" do
       tr do
         th { Model.model_name.human }

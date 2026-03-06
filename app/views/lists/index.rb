@@ -16,7 +16,7 @@ class Views::Lists::Index < Views::Base
       end
       @lists.each do |list|
         tr do
-          td { link_to list.name, list_path(list) }
+          td { link_to (list.special ? t(list.name) : list.name), list_path(list) }
           td { list.list_items.count }
           td { GoButton label: t("views.lists.edit.title"), href: edit_list_path(list), icon: "pencil", variant: :secondary }
         end
