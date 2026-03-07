@@ -69,7 +69,7 @@ nl:
         url: Link
       list:
         list_items:
-        name:
+        name: Naam
       list_item:
         created_at:
       model:
