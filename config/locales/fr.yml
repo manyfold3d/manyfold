@@ -69,7 +69,7 @@ fr:
         url: Lien
       list:
         list_items:
-        name:
+        name: Nom
       list_item:
         created_at:
       model:
