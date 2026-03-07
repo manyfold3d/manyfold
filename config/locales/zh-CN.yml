@@ -69,7 +69,7 @@ zh-CN:
         url: 链接
       list:
         list_items:
-        name:
+        name: 名称
       list_item:
         created_at:
       model:
