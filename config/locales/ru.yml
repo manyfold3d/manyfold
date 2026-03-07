@@ -69,7 +69,7 @@ ru:
         url: Ссылка
       list:
         list_items:
-        name:
+        name: Имя
       list_item:
         created_at:
       model:
