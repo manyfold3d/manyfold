@@ -69,7 +69,7 @@ cs:
         url: Odkaz
       list:
         list_items:
-        name:
+        name: Jméno
       list_item:
         created_at:
       model:
