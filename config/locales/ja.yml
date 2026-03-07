@@ -69,7 +69,7 @@ ja:
         url: リンク
       list:
         list_items:
-        name:
+        name: 名前
       list_item:
         created_at:
       model:
