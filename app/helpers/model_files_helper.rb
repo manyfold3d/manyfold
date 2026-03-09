@@ -5,6 +5,10 @@ module ModelFilesHelper
       # i18n-tasks-use t('model_files.download.bambu')
       # Bambu Studio doesn't seem to open anything except 3MF by URL
 
+      crealityprint: [:threemf, :amf, :obj, :step, :stl, :svg],
+      # i18n-tasks-use t('model_files.download.crealityprint')
+      # From code at https://github.com/CrealityOfficial/CrealityPrint/tree/master/src/libslic3r/Format
+
       cura: [:threemf, :amf, :collada, :gcode, :gltf, :obj, :ply, :stl, :x3d],
       # i18n-tasks-use t('model_files.download.cura')
       # https://support.makerbot.com/s/article/1667411286871
@@ -68,6 +72,8 @@ module ModelFilesHelper
       else
         slic3r_family_open_url "bambustudio", signed_url
       end
+    when :crealityprint
+      slic3r_family_open_url "crealityprintlink", signed_url
     when :cura
       slic3r_family_open_url "cura", signed_url
     when :elegoo

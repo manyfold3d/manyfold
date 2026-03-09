@@ -22,6 +22,7 @@ pt:
       success:
     download:
       bambu:
+      crealityprint:
       cura:
       elegoo:
       flockxr:

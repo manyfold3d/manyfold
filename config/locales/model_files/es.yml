@@ -22,6 +22,7 @@ es:
       success: "¡Fichero eliminado!"
     download:
       bambu: Abrir en Bambu Studio
+      crealityprint:
       cura: Abrir en Ultimaker Cura
       elegoo: Abrir en ElegooSlicer
       flockxr: Abrir en FlockXR

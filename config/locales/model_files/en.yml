@@ -22,6 +22,7 @@ en:
       success: File deleted!
     download:
       bambu: Open in Bambu Studio
+      crealityprint: Open in Creality Print
       cura: Open in Ultimaker Cura
       elegoo: Open in ElegooSlicer
       flockxr: Open in FlockXR

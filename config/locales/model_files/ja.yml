@@ -22,6 +22,7 @@ ja:
       success:
     download:
       bambu: Bambu Studioにオープン
+      crealityprint:
       cura: Ultimaker Curaにオープン
       elegoo: ElegooSlicerにオープン
       flockxr:

@@ -22,6 +22,7 @@ de:
       success: Datei gelöscht!
     download:
       bambu: in Bambu Studio öffnen
+      crealityprint:
       cura: in Ultimaker Cura öffnen
       elegoo: Im ElegooSlicer öffnen
       flockxr:
