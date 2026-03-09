@@ -68,10 +68,10 @@ es:
       link:
         url: Enlace
       list:
-        list_items:
-        name:
+        list_items: Artículos
+        name: Nombre
       list_item:
-        created_at:
+        created_at: Añadido
       model:
         ai_indexable: Permitir el uso para el entrenamiento de IA
         caption: Subtítulo
@@ -237,12 +237,12 @@ es:
         two: Enlaces
         zero: Enlaces
       list:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Listas
+        many: Listas
+        one: Lista
+        other: Listas
+        two: Listas
+        zero: Listas
       model:
         few: Modelos
         many: Modelos
@@ -416,15 +416,15 @@ es:
       select_slide: Elija la imagen que desea mostrar
       slide_label: "%{name} (%{index} de %{count})"
     like_button:
-      like:
-      unlike:
+      like: Me gusta
+      unlike: No me gusta
     link_list:
       sync: Sincronice
     lists_card:
-      add_to_list:
-      on_lists:
-      remove:
-      title:
+      add_to_list: Añadir a la lista
+      on_lists: 'En las listas:'
+      remove: Eliminar de la lista
+      title: Listas
     modal:
       close: Cerrar
     model_card:
@@ -915,13 +915,13 @@ es:
     MIT: MIT
   lists:
     create:
-      success:
+      success: Lista creada correctamente
     destroy:
-      success:
+      success: Lista eliminada
     special:
-      liked:
+      liked: Artículos que te gustan
     update:
-      success:
+      success: Lista actualizada correctamente
   moderator_mailer:
     new_approval:
       message: Alguien nuevo se ha registrado para obtener una cuenta y requiere aprobación. Aprobar la cuenta en %{link}
@@ -989,17 +989,17 @@ es:
         title: Nuevo Grupo
     lists:
       edit:
-        title:
+        title: Editar lista
       form:
-        confirm_destroy:
+        confirm_destroy: "¿Está seguro de que desea eliminar esta lista?"
       index:
-        description:
-        title:
+        description: Las listas son una forma privada de organizar los modelos que te gustan, guardarlos para imprimirlos más tarde o lo que quieras
+        title: Mis listas
       new:
-        title:
+        title: Nueva lista
       show:
-        description:
-        title:
+        description: Añada más elementos a sus listas utilizando el cuadro de listas de las páginas modelo.
+        title: 'Lista: %{name}'
     pagination:
       first: "« Primera"
       last: Última »
