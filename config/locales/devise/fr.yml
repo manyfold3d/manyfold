@@ -21,13 +21,13 @@ fr:
       unconfirmed: Vous devez confirmer votre compte par email.
     invitations:
       edit:
-        header:
-        submit_button:
-      invitation_removed:
+        header: Définissez votre mot de passe
+        submit_button: Définir mon mot de passe
+      invitation_removed: Votre invitation a été retirée.
       invitation_token_invalid:
       new:
-        header:
-        submit_button:
+        header: Envoyer une invitation
+        submit_button: Envoyer une invitation
       no_invitations_remaining:
       send_instructions:
       updated:
@@ -44,9 +44,9 @@ fr:
         message_unconfirmed: Nous vous contactons pour vous notifier que votre adresse email a été changée en %{email}.
         subject: Email modifié
       invitation_instructions:
-        accept:
+        accept: Accepter l'invitation
         accept_until:
-        hello:
+        hello: Bonjour %{email}
         ignore:
         someone_invited_you:
         subject:

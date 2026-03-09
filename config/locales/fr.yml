@@ -20,9 +20,11 @@ fr:
         notes: Notes
         slug:
       doorkeeper/access_token:
-        active:
+        active: Actif
         created_at: Enregistré à
-        expires_in:
+        expires_in: 'Expire dans
+
+          '
         fingerprint:
         scopes: Portées
       doorkeeper/application:
@@ -45,7 +47,7 @@ fr:
         object: Objet
       group:
         description: Description
-        invitations:
+        invitations: Invitations
         memberships:
         name: Nom
         typed_id:
@@ -69,9 +71,9 @@ fr:
         url: Lien
       list:
         list_items:
-        name:
+        name: Nom
       list_item:
-        created_at:
+        created_at: Ajouté
       model:
         ai_indexable: Permettre l'utilisation pour l'entrainement d'IA
         caption: Légende
@@ -160,11 +162,11 @@ fr:
             path:
               cannot_be_contained:
               cannot_contain:
-              non_readable:
+              non_readable: doit être lisible
               non_readable_subfolder:
               non_writable: doit être accessible en écriture
               non_writable_subfolder:
-              not_a_directory:
+              not_a_directory: n'est pas un répertoire
               not_found: n'a pas pu être trouvé sur le disque
               unsafe: 'ne peut pas être un chemin privilégié du système '
         model:
@@ -237,12 +239,12 @@ fr:
         two: Liens
         zero: Liens
       list:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Listes
+        many: Listes
+        one: Liste
+        other: Listes
+        two: Listes
+        zero: Listes
       model:
         few: Modèles
         many: Modèles
@@ -342,7 +344,7 @@ fr:
       check_results:
         confirm:
         label:
-      developer:
+      developer: Développeurs
       home: Page d'accueil
       import_url: Importer l'URL
       log_in: Se connecter
@@ -387,7 +389,7 @@ fr:
     altcha_widget:
       help:
     column_header:
-      current_sort:
+      current_sort: Activer le tri
       sort_by: Trier par
     copy_button:
       copy: Copier dans le presse-papiers
@@ -416,15 +418,15 @@ fr:
       select_slide: Choisir l'image à afficher
       slide_label: "%{name} (%{index} sur %{count})"
     like_button:
-      like:
-      unlike:
+      like: Aimer
+      unlike: Ne plus aimer
     link_list:
       sync: Synchroniser
     lists_card:
-      add_to_list:
+      add_to_list: Ajouter à la liste
       on_lists:
-      remove:
-      title:
+      remove: Supprimer de la liste
+      title: Listes
     modal:
       close: Fermer
     model_card:
@@ -451,7 +453,7 @@ fr:
       simple:
       specific_fields:
       tag:
-      title:
+      title: Syntaxe de recherche
       unset:
       without_tag:
     sort_menu:
@@ -503,7 +505,7 @@ fr:
         application_id: ID de l'application
         callback_urls: URL du retour d'appel
         confidential: Confidential
-        not_defined:
+        not_defined: Non défini
         scopes: Portées
         secret: Secret
         secret_hashed:
@@ -595,16 +597,16 @@ fr:
       success:
     new:
       expiry:
-        label:
+        label: Expiration
       scopes:
         label: Portées
       submit: Envoyer
-      title:
+      title: Nouveau jeton d'accès
     show:
       bearer_token_help:
       description:
-      done:
-      title:
+      done: Terminé
+      title: Détails du jeton d'accès
   doorkeeper_applications:
     create:
       failure:
@@ -625,7 +627,7 @@ fr:
       description:
       moderator_notice:
       new: Nouvelle application
-      title:
+      title: Clé API
     new:
       title: Nouvelle application
     show:
@@ -643,9 +645,9 @@ fr:
       success:
   doorkeeper_applications_helper:
     token_expiry_string:
-      expired:
+      expired: Expiré
       never: Jamais
-      revoked:
+      revoked: Révoquée
   errors:
     messages:
       already_confirmed:
@@ -663,9 +665,9 @@ fr:
         approval_help:
         approve: Approuver
         backfill_requests:
-        capability:
+        capability: Capacité
         category: Catégorie
-        contact_details:
+        contact_details: Détails du contact
         created: Créée
         data_sharing: Partage des données
         deny: Refuser
@@ -687,7 +689,7 @@ fr:
         description_html:
         heading:
         provider_list_title:
-        registered_at:
+        registered_at: Enregistré à
         search_3dprint_social_html:
         status: Statut
         url: URL
@@ -700,9 +702,9 @@ fr:
       followed: Suivi de %{actor} avec succès
     index:
       explore_html:
-      followers:
-      following:
-      title:
+      followers: Abonnés
+      following: Abonné
+      title: Connexions
     new:
       no_results: Désolé, rien n'a été trouvé pour "%{query}". S'agit-il d'un compte ou d'une URL ActivityPub valide ?
       recommended: Recommandations
@@ -727,16 +729,16 @@ fr:
     edit: Modifier
     expand: Élargir
     followers:
-      few:
-      many:
-      one:
-      other:
-      two:
-      zero:
+      few: "%{count} Abonnés"
+      many: "%{count} Abonnés"
+      one: "%{count} Abonné"
+      other: "%{count} Abonnés"
+      two: "%{count} Abonnés"
+      zero: "%{count} Abonnés"
     menu: Menu
     new: Nouveau
-    no_change:
-    none:
+    no_change: Pas de changement
+    none: Aucun
     private: Privé
     public: Visibilité publique
     report: Rapporter %{type}
@@ -755,7 +757,7 @@ fr:
     create:
       success:
     form:
-      add:
+      add: ajouter un autre membre
       description:
         help:
       intro:
@@ -769,8 +771,8 @@ fr:
       success:
   home:
     activity:
-      created:
-      updated:
+      created: ajouté il y a %{time}
+      updated: ajouté il y a %{time}
     browsing:
       content:
       manual_link: Guide de l'utilisateur
@@ -797,21 +799,21 @@ fr:
         button:
         content:
       new_creator:
-        button:
+        button: Créer un nouveau profil de créateur
         content:
       title:
     support:
       content:
       manyfold_html:
-      support_link:
-      support_manyfold:
-      title:
+      support_link: Soutenir cette instance
+      support_manyfold: Soutenir Manyfold
+      title: Soutenir
     uploading:
       quota:
       title: Téléchargement
     welcome:
       lead:
-      title:
+      title: Bienvenue sur %{site_name} !
   imports:
     bad_url:
     create:
@@ -824,8 +826,8 @@ fr:
       import_type_html:
       integration_settings:
       placeholder:
-      submit:
-      supported_sites:
+      submit: Importer
+      supported_sites: Sites soutenus
   jobs:
     activity:
       collection_published:
@@ -886,14 +888,14 @@ fr:
       greeting: Bonjour !
     settings:
       appearance:
-      integrations_heading:
+      integrations_heading: Intégrations
       libraries: Bibliothèques
-      moderation_heading:
+      moderation_heading: Modération
       moderation_settings_title:
       organization: Organisation
       performance: Tableau de bord des performances
       pghero: PgHero
-      search_heading:
+      search_heading: Recherche et découverte
       sidekiq: Sidekiq
       site_settings_title: Paramètres
       tools_heading: Outils avancés
@@ -920,7 +922,7 @@ fr:
     create:
       success:
     destroy:
-      success:
+      success: Liste supprimée
     special:
       liked:
     update:
@@ -931,7 +933,7 @@ fr:
       subject:
     new_report:
       message:
-      subject:
+      subject: Nouveau rapport reçu
   renderer:
     errors:
       canvas: 'Impossible de trouver le canevas #webgl !'
@@ -948,7 +950,7 @@ fr:
       title: 'Rapporter %{type} : %{name}'
   scans:
     create:
-      success:
+      success: L'analyse a commencé.
   security:
     running_as_root_html: Manyfold s'exécute en tant que root, ce qui constitue un risque pour la sécurité. Exécute-le en tant qu'utilisateur différent en définissant les variables d'environnement <code>PUID</code> et <code>PGID</code>. Voir <a href='https://manyfold.app/sysadmin/configuration.html#required'>la documentation de configuration</a> pour plus de détails.
   sites:

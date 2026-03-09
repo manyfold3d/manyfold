@@ -21,17 +21,17 @@ fr:
         label: URL du logo
       site_name:
         help:
-        label:
+        label: Nom du site
       site_tagline:
         help:
         label: Légende
-      summary:
+      summary: Personnalisez votre instance.
       support_link:
         help:
         label:
       theme:
         help_html:
-        label:
+        label: Thème
     derivatives:
       description:
       download_expiry:
