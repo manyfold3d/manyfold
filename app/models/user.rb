@@ -260,7 +260,7 @@ class User < ApplicationRecord
   memoize :liked_list
 
   def liked?(listable)
-    liked_list.list_items.where(listable: listable).any?
+    liked_list&.list_items&.where(listable: listable)&.any?
   end
   memoize :liked?
 
