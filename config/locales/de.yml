@@ -69,7 +69,7 @@ de:
         url: Link
       list:
         list_items:
-        name:
+        name: Name
       list_item:
         created_at:
       model:
