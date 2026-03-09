@@ -55,7 +55,7 @@
     "@types/webpack-env": "^1.18.8",
     "@types/webxr": "^0.5.24",
     "@typescript-eslint/parser": "^8.56.1",
-    "eslint": "^10.0.2",
+    "eslint": "^10.0.3",
     "husky": "^9.1.7",
     "ts-standard": "^12.0.2",
     "typescript": "~5.9.3"
