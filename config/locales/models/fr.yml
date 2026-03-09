@@ -24,15 +24,15 @@ fr:
       heading:
       new_model:
         description:
-        title:
+        title: Nouveau modèle
     create:
       success: Fichier(s) téléchargé(s) avec succès.
     destroy:
       confirm: Cette opération supprimera les fichiers. Êtes-vous sûr de vouloir continuer ?
       success: Modèle supprimé !
     file:
-      delete:
-      edit:
+      delete: Supprimer le fichier
+      edit: Editer le fichier
       open_button:
         label: Voir les détails pour %{name}
         text: Ouvrir
@@ -66,7 +66,7 @@ fr:
         help: La bibliothèque vers laquelle télécharger.
       model_name:
         help:
-        label:
+        label: Nom du modèle
       multi_model:
       non-archives:
       permission_preset: Permissions
@@ -91,7 +91,7 @@ fr:
       files_card:
         bulk_edit: Modifier tous les fichiers
         heading: Fichiers
-      followers:
+      followers: Abonnés
       license: Licence
       menu:
         tour:

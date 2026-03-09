@@ -4,7 +4,7 @@ fr:
     categories:
       duplicate: Fichiers en double
       empty: Le modèle n'a pas de fichiers
-      file_naming:
+      file_naming: Le chemin d'accès ne correspond pas au modèle
       http_error:
       inefficient: Formats inefficaces
       inside_out: Le maillage est à l'envers
@@ -24,7 +24,7 @@ fr:
       title: Filtres
     index:
       bulk_confirm: Êtes-vous sûr de vouloir résoudre automatiquement tous les problèmes sélectionnés ? Cette opération peut supprimer des fichiers et des données.
-      bulk_ignore:
+      bulk_ignore: Cacher la sélection
       bulk_resolve: Résoudre les problèmes sélectionnés
       description: Description
       ignore: Cacher
