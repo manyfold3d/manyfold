@@ -22,6 +22,7 @@ zh-CN:
       success: 文件已删除！
     download:
       bambu: 在 Bambu Studio 中打开
+      crealityprint:
       cura: 在 Ultimaker Cura 中打开
       elegoo: 在 ElegooSlicer 中打开
       flockxr:

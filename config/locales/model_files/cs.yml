@@ -22,6 +22,7 @@ cs:
       success: Soubor smazán!
     download:
       bambu: Otevřít v Bambu Studio
+      crealityprint:
       cura: Otevřít v Ultimaker Cura
       elegoo: Otevřít v ElegooSlicer
       flockxr:

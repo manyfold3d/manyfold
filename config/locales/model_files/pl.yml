@@ -22,6 +22,7 @@ pl:
       success: Plik usunięty!
     download:
       bambu: Otwórz w Bambu Studio
+      crealityprint:
       cura: Otwórz w Ultimaker Cura
       elegoo: Otwórz w ElegooSlicer
       flockxr:
