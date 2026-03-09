@@ -6,6 +6,6 @@ class Upgrade::CreateSpecialListsJob < Upgrade::IterationJob
   end
 
   def each_iteration(user)
-    user.create_special_lists
+    user.send :create_special_lists
   end
 end
