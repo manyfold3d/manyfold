@@ -22,7 +22,7 @@ class Doorkeeper::ApplicationPolicy < ApplicationPolicy
   def update?
     all_of(
       one_of(
-        user == record,
+        record.owner == user,
         user&.is_administrator?
       ),
       SiteSettings.multiuser_enabled?,
