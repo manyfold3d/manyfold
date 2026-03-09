@@ -7,7 +7,7 @@ class Components::LikeButton < Components::BaseButton
   end
 
   def render?
-    current_user
+    current_user&.liked_list
   end
 
   def before_template
