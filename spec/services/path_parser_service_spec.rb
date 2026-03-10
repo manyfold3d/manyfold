@@ -1,8 +1,6 @@
 require "rails_helper"
 
 RSpec.describe PathParserService do
-  subject(:service) { described_class.new(SiteSettings.model_path_template, path) }
-
   let(:path) { "/top/middle/bottom/prefix - name#42" }
 
   {
@@ -15,7 +13,7 @@ RSpec.describe PathParserService do
     "{creator}/{collection}/{tags}/{modelName}{modelId}" => %r{^/?.*?(?<creator>[[:print:]&&[^/]]*?)/(?<collection>[[:print:]&&[^/]]*?)/(?<tags>[[:print:]]*)/(?<model_name>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$}
   }.each_pair do |tag, regexp|
     it "correctly converts #{tag} into a regexp matcher" do
-      allow(SiteSettings).to receive(:model_path_template).and_return(tag)
+      service = described_class.new(tag, path)
       expect(service.send(:path_parse_pattern)).to eql regexp
     end
   end
@@ -49,7 +47,7 @@ RSpec.describe PathParserService do
     }
   }.each_pair do |tag, values|
     it "correctly matches components of #{tag}" do
-      allow(SiteSettings).to receive(:model_path_template).and_return(tag)
+      service = described_class.new(tag, path)
       expect(service.call).to eql values
     end
   end
