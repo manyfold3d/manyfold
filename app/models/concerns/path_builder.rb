@@ -2,7 +2,7 @@ module PathBuilder
   extend ActiveSupport::Concern
 
   def formatted_path
-    SiteSettings.model_path_template.gsub(/{.+?}/) do |token|
+    library.path_template.gsub(/{.+?}/) do |token|
       case token
       when "{tags}"
         tags.exists? ?
@@ -26,6 +26,6 @@ module PathBuilder
 
   def path_component(object)
     return nil if object.nil?
-    (SiteSettings.safe_folder_names ? object.slug : object.name).first(ApplicationRecord::SAFE_NAME_LENGTH[:maximum])
+    (library.safe_folder_names ? object.slug : object.name).first(ApplicationRecord::SAFE_NAME_LENGTH[:maximum])
   end
 end
