@@ -28,10 +28,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
 
   context "when generating tags from folder name" do
     before do
-      allow(SiteSettings).to receive_messages(
-        model_tags_tag_model_directory_name: true,
-        parse_metadata_from_path: false
-      )
+      allow(SiteSettings).to receive(:model_tags_tag_model_directory_name).and_return(true)
     end
 
     it "preserves existing tags" do
@@ -98,14 +95,13 @@ RSpec.describe Scan::Model::ParseMetadataJob do
   end
 
   context "when parsing from template and folder name" do
-    let(:model) { create(:model, path: "/creator/tag1/tag2/model-name", tag_list: ["existing", "tags"]) }
+    let(:library) { create(:library, parse_metadata_from_path: true, path_template: "{creator}/{tags}/{modelName}{modelId}") }
+    let(:model) { create(:model, path: "/creator/tag1/tag2/model-name", tag_list: ["existing", "tags"], library: library) }
 
     before do
       allow(SiteSettings).to receive_messages(
         model_tags_tag_model_directory_name: true,
-        parse_metadata_from_path: true,
-        model_tags_auto_tag_new: "!new",
-        model_path_template: "{creator}/{tags}/{modelName}{modelId}"
+        model_tags_auto_tag_new: "!new"
       )
       described_class.perform_now(model.id)
       model.reload
@@ -133,47 +129,47 @@ RSpec.describe Scan::Model::ParseMetadataJob do
   end
 
   context "when parsing with a path template" do
-    let(:model) { create(:model, path: "/library-1/stuff/tags/are/greedy/model-name") }
+    let(:library) { create(:library, parse_metadata_from_path: true) }
+    let(:model) { create(:model, path: "/library-1/stuff/tags/are/greedy/model-name", library: library) }
 
     before do
       allow(SiteSettings).to receive_messages(
         model_tags_tag_model_directory_name: false,
-        parse_metadata_from_path: true,
         model_tags_auto_tag_new: nil,
         model_tags_filter_stop_words: false
       )
     end
 
     it "preserves existing tags" do
-      allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}{modelId}")
+      allow(library).to receive(:path_template).and_return("{tags}/{modelName}{modelId}")
       described_class.perform_now(model.id)
       model.reload
       expect(model.tag_list).to include "!new"
     end
 
     it "parses tags" do
-      allow(SiteSettings).to receive(:model_path_template).and_return("{tags}/{modelName}{modelId}")
+      library.update!(path_template: "{tags}/{modelName}{modelId}")
       described_class.perform_now(model.id)
       model.reload
       expect(model.tag_list).to include("library 1", "stuff", "tags", "are", "greedy")
     end
 
     it "parses creator" do
-      allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}{modelId}")
+      library.update!(path_template: "{creator}/{modelName}{modelId}")
       described_class.perform_now(model.id)
       model.reload
       expect(model.creator.name).to eq "Greedy"
     end
 
     it "parses collection" do
-      allow(SiteSettings).to receive(:model_path_template).and_return("{collection}/{modelName}{modelId}")
+      library.update!(path_template: "{collection}/{modelName}{modelId}")
       described_class.perform_now(model.id)
       model.reload
       expect(model.collection.name).to eq "Greedy"
     end
 
     it "parses everything at once" do # rubocop:todo RSpec/MultipleExpectations, RSpec/ExampleLength
-      allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{collection}/{tags}/{modelName}{modelId}")
+      library.update!(path_template: "{creator}/{collection}/{tags}/{modelName}{modelId}")
       described_class.perform_now(model.id)
       model.reload
       expect(model.creator.name).to eq "Library 1"
@@ -182,7 +178,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     end
 
     it "ignores extra path components" do # rubocop:todo RSpec/MultipleExpectations, RSpec/ExampleLength
-      allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}{modelId}")
+      library.update!(path_template: "{creator}/{modelName}{modelId}")
       described_class.perform_now(model.id)
       model.reload
       expect(model.creator.name).to eq "Greedy"
@@ -191,7 +187,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     end
 
     it "handles a completely empty template" do # rubocop:todo RSpec/MultipleExpectations, RSpec/ExampleLength
-      allow(SiteSettings).to receive(:model_path_template).and_return("")
+      library.update!(path_template: "")
       described_class.perform_now(model.id)
       model.reload
       expect(model.creator).to be_nil
@@ -203,8 +199,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       allow(SiteSettings).to receive_messages(
         model_tags_stop_words_locale: "en",
         model_tags_filter_stop_words: true,
-        model_tags_custom_stop_words: ["stuff"],
-        model_path_template: "{tags}/{modelName}{modelId}"
+        model_tags_custom_stop_words: ["stuff"]
       )
       described_class.perform_now(model.id)
       expect(model.tag_list).not_to include "stuff"
@@ -212,12 +207,10 @@ RSpec.describe Scan::Model::ParseMetadataJob do
   end
 
   context "when parsing creator out of a path" do
-    before do
-      allow(SiteSettings).to receive(:model_path_template).and_return("{creator}/{modelName}")
-    end
+    let(:library) { create(:library, path_template: "{creator}/{modelName}", parse_metadata_from_path: true) }
 
     it "creates a new creator from a human name if there's no match" do # rubocop:todo RSpec/MultipleExpectations
-      model = create(:model, path: "Bruce Wayne/model-name")
+      model = create(:model, path: "Bruce Wayne/model-name", library: library)
       described_class.perform_now(model.id)
       model.reload
       expect(model.creator.name).to eq "Bruce Wayne"
@@ -225,7 +218,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     end
 
     it "creates a new creator from a slug if there's no match" do # rubocop:todo RSpec/MultipleExpectations
-      model = create(:model, path: "bruce-wayne/model-name")
+      model = create(:model, path: "bruce-wayne/model-name", library: library)
       described_class.perform_now(model.id)
       model.reload
       expect(model.creator.name).to eq "Bruce Wayne"
@@ -236,14 +229,14 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       let!(:creator) { create(:creator, name: "Bruce Wayne", slug: "bruce-wayne") }
 
       it "matches safe path components" do
-        model = create(:model, path: "bruce-wayne/model-name")
+        model = create(:model, path: "bruce-wayne/model-name", library: library)
         described_class.perform_now(model.id)
         model.reload
         expect(model.creator).to eq creator
       end
 
       it "matches unsafe path components" do
-        model = create(:model, path: "Bruce Wayne/model-name")
+        model = create(:model, path: "Bruce Wayne/model-name", library: library)
         described_class.perform_now(model.id)
         model.reload
         expect(model.creator).to eq creator
@@ -251,11 +244,12 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     end
 
     context "with a creator already assigned" do
-      let(:model) { create(:model, path: "bruce-wayne/toys/model-name", creator: create(:creator, name: "Existing")) }
+      let(:library) { create(:library, path_template: "{creator}/{collection}/{modelName}", parse_metadata_from_path: true) }
+      let(:model) { create(:model, path: "bruce-wayne/toys/model-name", creator: create(:creator, name: "Existing"), library: library) }
 
       before do
-        allow(SiteSettings).to receive_messages(
-          model_path_template: "{creator}/{collection}/{modelName}",
+        allow(library).to receive_messages(
+          path_template: "{creator}/{collection}/{modelName}",
           parse_metadata_from_path: true
         )
       end
@@ -275,12 +269,10 @@ RSpec.describe Scan::Model::ParseMetadataJob do
   end
 
   context "when parsing collection out of a path" do
-    before do
-      allow(SiteSettings).to receive(:model_path_template).and_return("{collection}/{modelName}")
-    end
+    let(:library) { create(:library, path_template: "{collection}/{modelName}", parse_metadata_from_path: true) }
 
     it "creates a new collection from a human name if there's no match" do # rubocop:todo RSpec/MultipleExpectations
-      model = create(:model, path: "Wonderful Toys/model-name")
+      model = create(:model, path: "Wonderful Toys/model-name", library: library)
       described_class.perform_now(model.id)
       model.reload
       expect(model.collection.name).to eq "Wonderful Toys"
@@ -288,7 +280,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     end
 
     it "creates a new collection from a slug if there's no match" do # rubocop:todo RSpec/MultipleExpectations
-      model = create(:model, path: "wonderful-toys/model-name")
+      model = create(:model, path: "wonderful-toys/model-name", library: library)
       described_class.perform_now(model.id)
       model.reload
       expect(model.collection.name).to eq "Wonderful Toys"
@@ -299,14 +291,14 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       let!(:collection) { create(:collection, name: "Wonderful Toys", slug: "wonderful-toys") }
 
       it "matches safe path components" do
-        model = create(:model, path: "wonderful-toys/model-name")
+        model = create(:model, path: "wonderful-toys/model-name", library: library)
         described_class.perform_now(model.id)
         model.reload
         expect(model.collection).to eq collection
       end
 
       it "matches unsafe path components" do
-        model = create(:model, path: "Wonderful Toys/model-name")
+        model = create(:model, path: "Wonderful Toys/model-name", library: library)
         described_class.perform_now(model.id)
         model.reload
         expect(model.collection).to eq collection
@@ -314,14 +306,8 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     end
 
     context "with a creator already assigned" do
-      let(:model) { create(:model, path: "bruce-wayne/toys/model-name", collection: create(:collection, name: "Existing")) }
-
-      before do
-        allow(SiteSettings).to receive_messages(
-          model_path_template: "{creator}/{collection}/{modelName}",
-          parse_metadata_from_path: true
-        )
-      end
+      let(:library) { create(:library, path_template: "{creator}/{collection}/{modelName}", parse_metadata_from_path: true) }
+      let(:model) { create(:model, path: "bruce-wayne/toys/model-name", collection: create(:collection, name: "Existing"), library: library) }
 
       it "sets creator" do
         expect { described_class.perform_now(model.id) }.to change { model.reload.creator }
@@ -338,20 +324,16 @@ RSpec.describe Scan::Model::ParseMetadataJob do
   end
 
   it "discards model ID and doesn't include it in model name" do # rubocop:todo RSpec/MultipleExpectations
-    allow(SiteSettings).to receive(:model_path_template).and_return("{modelName}{modelId}")
-    model = create(:model, path: "model-name#1234")
+    library = create(:library, path_template: "{modelName}{modelId}", parse_metadata_from_path: true)
+    model = create(:model, path: "model-name#1234", library: library)
     described_class.perform_now(model.id)
     model.reload
     expect(model.name).to eq "Model Name"
   end
 
   it "handles paths matching a complex templates" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
-    allow(SiteSettings).to receive_messages(
-      parse_metadata_from_path: true,
-      model_path_template: "{tags}/{creator} - {modelName}{modelId}",
-      model_tags_auto_tag_new: nil
-    )
-    model = create(:model, path: "human/wizard/bruce-wayne - model-name#1234")
+    library = create(:library, path_template: "{tags}/{creator} - {modelName}{modelId}", parse_metadata_from_path: true)
+    model = create(:model, path: "human/wizard/bruce-wayne - model-name#1234", library: library)
     described_class.perform_now(model.id)
     model.reload
     expect(model.name).to eq "Model Name"
