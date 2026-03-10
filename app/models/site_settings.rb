@@ -7,14 +7,11 @@ class SiteSettings < RailsSettings::Base
   field :model_tags_stop_words_locale, type: :string, default: "en"
   field :model_tags_custom_stop_words, type: :array, default: SupportedMimeTypes.indexable_extensions
   field :model_tags_auto_tag_new, type: :string, default: "!new"
-  field :model_path_template, type: :string, default: "{tags}/{modelName}{modelId}"
   field :model_ignored_files, type: :array, default: [
     /^\.[^.]+/, # Hidden files starting with .
     /.*\/@eaDir\/.*/, # Synology temp files
     /__MACOSX/ # MACOS resource forks
   ]
-  field :parse_metadata_from_path, type: :boolean, default: true
-  field :safe_folder_names, type: :boolean, default: true
   field :analyse_manifold, type: :boolean, default: false
   field :anonymous_usage_id, type: :string, default: nil
   field :default_viewer_role, type: :string, default: "member"
@@ -52,6 +49,12 @@ class SiteSettings < RailsSettings::Base
   field :cults3d_api_username, type: :string
 
   validates :model_ignored_files, regex_array: {strict: true}
+
+  # DEPRECATED
+  # kept for upgrade compatibility
+  field :model_path_template, type: :string, default: "{tags}/{modelName}{modelId}"
+  field :parse_metadata_from_path, type: :boolean, default: true
+  field :safe_folder_names, type: :boolean, default: true
 
   def self.email_configured?
     !Rails.env.production? || ENV.fetch("SMTP_SERVER", false)
