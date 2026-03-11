@@ -132,6 +132,18 @@ RSpec.describe Library do
       library = build(:library, path: path)
       expect(library.path).to eq (Rails.root + "app").to_s
     end
+
+    it "is invalid without a path template" do # rubocop:todo RSpec/MultipleExpectations
+      l = build(:library, path: @library_path, path_template: "") # rubocop:todo RSpec/InstanceVariable
+      expect(l).not_to be_valid
+      expect(l.errors[:path_template]).to include "can't be blank"
+    end
+
+    it "is invalid if path template has bad tokens in" do # rubocop:todo RSpec/MultipleExpectations
+      l = build(:library, path: @library_path, path_template: "test/{tags}/{error}/{modelId}") # rubocop:todo RSpec/InstanceVariable
+      expect(l).not_to be_valid
+      expect(l.errors[:path_template]).to include "is invalid"
+    end
   end
 
   context "when using a folder containing files" do
