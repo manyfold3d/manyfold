@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe PathParserService do
-  let(:path) { "/top/middle/bottom/prefix - name#42" }
+  let(:path) { "/one/two/three/prefix - name#42" }
 
   {
     "{tags}" => %r{^/?.*?(?<tags>[[:print:]]*)$},
@@ -20,28 +20,28 @@ RSpec.describe PathParserService do
 
   {
     "{tags}/{modelName}{modelId}" => {
-      tags: ["top", "middle", "bottom"],
+      tags: ["one", "two", "three"],
       model_name: "prefix - name"
     },
     "{creator}/{modelName}{modelId}" => {
-      creator: "bottom",
+      creator: "three",
       model_name: "prefix - name"
     },
     "{collection}/{modelName}{modelId}" => {
-      collection: "bottom",
+      collection: "three",
       model_name: "prefix - name"
     },
     "{tags}/{creator}/{modelName}{modelId}" => {
-      creator: "bottom",
-      tags: ["top", "middle"],
+      creator: "three",
+      tags: ["one", "two"],
       model_name: "prefix - name"
     },
     "{creator}{modelId}" => {
       creator: "prefix - name"
     },
     "{tags}/{creator}/{collection} - {modelName}{modelId}" => {
-      tags: ["top", "middle"],
-      creator: "bottom",
+      tags: ["one", "two"],
+      creator: "three",
       collection: "prefix",
       model_name: "name"
     }
