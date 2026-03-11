@@ -56,13 +56,16 @@ nl:
         icon: Icoon
         name: Naam
         notes: Notities
+        parse_metadata_from_path: Vul metadata in vanuit pad en sjabloon tijdens scan
         path: Pad
+        path_template: Model pad sjabloon
         s3_access_key_id: Toegangssleutel ID
         s3_bucket: Bucket Naam
         s3_endpoint: Endpoint URL
         s3_path_style:
         s3_region: Regio
         s3_secret_access_key: Geheime Toegangssleutel
+        safe_folder_names: Gebruik veilige mapnamen
         storage_service: Opslagservice
         tag_regex: Vereiste Tags
       link:

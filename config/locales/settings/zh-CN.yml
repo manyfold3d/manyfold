@@ -88,24 +88,6 @@ zh-CN:
         label: 忽略文件正则过滤器
       summary: 更改文件设置，如忽略的文件等。
       title: 文件设置
-    folder_settings:
-      details: 文件夹结构遵循您使用标记定义的模板。您也可以在模板中包含其他文本（如文件夹分隔符），这些文本将按原样包含在内。
-      model_path_template:
-        label: 模型路径模板
-      parse_metadata_from_path:
-        help: 根据模板设置创建者、合集和 Tags
-        label: 扫描时从模型路径模板中填充元数据
-      safe_folder_names:
-        help_html: 例如，用 <code>spinal-tap</code> 代替 <code>Spın̈al Tap</code>
-        label: 使用安全的文件夹名称
-      summary: 定义 "整理文件" 和扫描时自动填充元数据所使用的文件夹结构。影响所有账户。
-      title: 文件夹命名
-      tokens:
-        collection: 模型所在集合的标题（如果已设置）。
-        creator: 创建者的名称（如果已设置）。
-        model_id: 模型的唯一数字标识符。我们强烈建议将其放在模板的末尾，以避免磁盘上的名称冲突。
-        model_name: 为模型名称使用文件系统安全的规范格式
-        tags_html: 在一系列嵌套文件夹中，每个文件夹被解析为一个 Tag，它们将按标签受欢迎程度排列。例如：<code>幻想/人类/巫师</code>。这个标记是 "贪婪" 的，意味着它会尽可能多地解析标签。
     general:
       submit: 保存设置
     integrations:

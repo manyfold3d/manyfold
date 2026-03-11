@@ -56,13 +56,16 @@ ja:
         icon: アイコン
         name: 名称
         notes: ノート
+        parse_metadata_from_path: スキャン中にモデル・パス・テンプレートからメタデータを入力する
         path: パス
+        path_template: モデル・パス・テンプレート
         s3_access_key_id: アクセスキーID
         s3_bucket: バケット名
         s3_endpoint: エンドポイントURL
         s3_path_style: パス式のURLを使用する
         s3_region: リージョン
         s3_secret_access_key: シークレットアクセスキー
+        safe_folder_names: 安全なフォルダ名を使用する
         storage_service: ストレージサービス
         tag_regex: 必須タグ
       link:

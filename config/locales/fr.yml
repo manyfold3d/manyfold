@@ -58,13 +58,16 @@ fr:
         icon: Icône
         name: Nom
         notes: Notes
+        parse_metadata_from_path: Remplir les métadonnées à partir du chemin d'accès et du modèle pendant le scan
         path: Chemin
+        path_template: Modèle de parcours
         s3_access_key_id: ID de la clé d'accès
         s3_bucket: Nom du bucket
         s3_endpoint: URL du endpoint
         s3_path_style: Utiliser des URL de type "chemin d'accès"
         s3_region: Région
         s3_secret_access_key: Clé d'accès secrète
+        safe_folder_names: Utiliser des noms de dossiers sûrs
         storage_service: Service de stockage
         tag_regex: Étiquettes requises
       link:

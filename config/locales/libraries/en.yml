@@ -17,13 +17,20 @@ en:
       default:
         help: Set this library as the default for uploads
       filesystem_description_html: To use storage on your local filesystem, firstly make sure it is mounted as a <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> or other volume inside your Docker container, then enter the Docker path; not the path on your host server! For instance, if you have a folder full of files at <code>/mnt/media/3d/models</code> on your host, and have bound <code>/mnt/media/3d</code> to <code>/libraries</code> in your Docker configuration, the required path would be <code>/libraries/models</code>.
+      folder_organisation:
+        description: Define the folder structure used by "organize files" and for auto-populating metadata during scan. Affects all accounts.
+        title: Folder naming
       icon:
         help_html: Optional; any icon from <a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">Boostrap icons</a> or <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a>.
         placeholder: boxes
       notes:
         help_html: Optional; shown only to administrators on the settings page. You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      parse_metadata_from_path:
+        help: Sets creator, collection, and tags based on template
       path:
         placeholder: e.g. /libraries/models
+      rules:
+        title: Rules
       s3_bucket:
         help: Just the bucket name, not the full URL
       s3_description_html: Manyfold can use any S3-compatible object storage for your library; this could be from any of a large number of <a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">open source</a> or <a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">commercial</a> services.
@@ -31,6 +38,8 @@ en:
         help: Optional; only needed for S3-compatible services, not AWS. Enter the full URL, starting with "https://"
       s3_path_style:
         help: Disable to use vhost-style bucket URLs. Only used for S3-compatible services, not AWS.
+      safe_folder_names:
+        help_html: e.g. <code>spinal-tap</code> instead of <code>Spın̈al Tap</code>
       tag_regex:
         help: Check for models missing tags matching these regex.
     general:
@@ -50,6 +59,14 @@ en:
       tag_regex:
         check: Check
         search_missing: Search Missing
+    path_template_help:
+      description: Folder structure follows a template that you define using tokens. You can also include other text in the template (such as folder separators) and it will be included as-is.
+      tokens:
+        collection: The title of the collection the model is in, if set.
+        creator: The name of the creator, if set.
+        model_id: A unique numerical identifier for the model. We strongly recommend always including this at the end of your template to avoid name conflicts on disk.
+        model_name: A filesystem-safe version of the model name.
+        tags_html: 'a series of nested folders, one for each tag, arranged in order of tag popularity. For example: <code>fantasy/human/wizard</code>. This token is "greedy"; it will parse as many tags as it can.'
     storage_services:
       filesystem: Local filesystem
       s3: S3-compatible cloud storage

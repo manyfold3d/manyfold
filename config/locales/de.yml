@@ -56,13 +56,16 @@ de:
         icon: Symbol
         name: Name
         notes: Notizen
+        parse_metadata_from_path: Metadaten aus der Modellpfadvorlage während des Scannens auffüllen
         path: Pfad
+        path_template: Modellpfad-Vorlage
         s3_access_key_id: Zugangsschlüssel-ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpunkt URL
         s3_path_style: Verwende pfad-ähnliche URLs
         s3_region: Region
         s3_secret_access_key: Geheimer Zugangsschlüssel
+        safe_folder_names: Dateisystem sichere Ordnernamen verwenden
         storage_service: Speicherdienst
         tag_regex: Erforderliche Tags
       link:

@@ -88,24 +88,6 @@ es:
         label: Filtros regex para archivos ignorados.
       summary: Cambiar la configuración de archivos como los archivos ignorados.
       title: Configuración de archivos
-    folder_settings:
-      details: La estructura de carpetas sigue una plantilla que usted define utilizando tokens. También puede incluir otro texto en la plantilla (como separadores de carpeta) y se incluirá tal cual.
-      model_path_template:
-        label: Plantilla de ruta del modelo
-      parse_metadata_from_path:
-        help: Establece el creador, la colección y las etiquetas en función de la plantilla
-        label: Rellenar metadatos a partir de la ruta y la plantilla durante el escaneo
-      safe_folder_names:
-        help_html: por ejemplo, <code>spinal-tap</code> en lugar de <code>Spın̈al Tap</code>
-        label: Utilice nombres de carpeta seguros
-      summary: Establece la estructura de carpetas que usa el "organizador de archivos" y que se utiliza para completar automáticamente los metadatos durante el escaneo. Afecta a todos los usuarios.
-      title: Nombres de las carpetas
-      tokens:
-        collection: El título de la colección en la que se encuentra el modelo, si está establecido.
-        creator: El nombre del creador, si se ha establecido.
-        model_id: Un identificador numérico único para el modelo. Recomendamos encarecidamente incluirlo siempre al final del modelo para evitar conflictos de nombres en el disco.
-        model_name: Una versión segura para el sistema de ficheros del nombre del modelo.
-        tags_html: 'una serie de carpetas anidadas, una para cada etiqueta, ordenadas según su popularidad. Por ejemplo: <code>fantasía/humano/mago</code>'
     general:
       submit: Guardar ajustes
     integrations:
