@@ -88,24 +88,6 @@ cs:
         label: Regex filtry ignorovaných souborů.
       summary: Změna nastavení souborů, například ignorované soubory.
       title: Nastavení souborů
-    folder_settings:
-      details: Struktura složky se řídí šablonou, kterou definujete pomocí tokenů. Do šablony můžete zahrnout i jiný text (například oddělovače složek) a bude zahrnut tak, jak je.
-      model_path_template:
-        label: Šablona cesty modelu
-      parse_metadata_from_path:
-        help: Nastaví autora, kolekci a štítky na základě šablony
-        label: Vyplnění metadat z cesty a šablony během kontroly
-      safe_folder_names:
-        help_html: např. <code>spinal-tap</code> místo <code>Spın̈al Tap</code>
-        label: Použít bezpečné názvy složek
-      summary: Definujte strukturu složek používanou pro "uspořádání souborů" a pro automatické doplňování metadat během kontroly. Týká se všech uživatelů.
-      title: Pojmenování složek
-      tokens:
-        collection: Název kolekce, ve které se model nachází, je-li nastavena.
-        creator: Jméno autora, je-li nastaveno.
-        model_id: Jedinečný číselný identifikátor modelu. Důrazně doporučujeme, aby byl vždy uveden na konci šablony, aby se předešlo konfliktům názvů na disku.
-        model_name: Verze názvu modelu bezpečná pro souborový systém.
-        tags_html: 'řada vnořených složek, jedna pro každý štítek, uspořádaných podle oblíbenosti štítků. Například: <code>fantasy/lidé/čarodějové</code>'
     general:
       submit: Uložit nastavení
     integrations:

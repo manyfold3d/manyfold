@@ -17,13 +17,20 @@ nl:
       default:
         help:
       filesystem_description_html: Om opslag op je lokale bestandssysteem te gebruiken, zorg er eerst voor dat het is gekoppeld als een <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> of ander volume in je Docker container, en voer dan het Docker-pad in; niet het pad op je hostserver! Bijvoorbeeld, als je een map met bestanden hebt op <code>/mnt/media/3d/models</code> op je host, en <code>/mnt/media/3d</code> hebt gekoppeld aan <code>/libraries</code> in je Docker-configuratie, dan zou het vereiste pad <code>/libraries/models</code> zijn.
+      folder_organisation:
+        description: Definieer de mapstructuur die wordt gebruikt door "bestanden organiseren" en voor het automatisch invullen van metadata tijdens het scannen. Beïnvloedt alle gebruikers.
+        title: Mapnaamgeving
       icon:
         help_html: Optioneel; elk pictogram van <a href="https://icons.getbootstrap.com/" target="_blank">Boostrap icons</a> of <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
         placeholder: boxes
       notes:
         help_html: Optioneel; alleen zichtbaar voor beheerders op de instellingenpagina. Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
+      parse_metadata_from_path:
+        help: Stelt maker, collectie en tags in op basis van sjabloon
       path:
         placeholder: "/libraries/models"
+      rules:
+        title:
       s3_bucket:
         help: Alleen de bucket-naam, niet de volledige URL
       s3_description_html: Manyfold kan elke S3-compatibele objectopslag gebruiken voor je bibliotheek; dit kan van een groot aantal <a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">open source</a> of <a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">commerciële</a> diensten zijn.
@@ -31,6 +38,8 @@ nl:
         help: Optioneel; alleen nodig voor S3-compatibele diensten, niet voor AWS.
       s3_path_style:
         help:
+      safe_folder_names:
+        help_html: bijv. <code>spinal-tap</code> in plaats van <code>Spın̈al Tap</code>
       tag_regex:
         help: Controleer op modellen die tags missen die overeenkomen met deze regex.
     general:
@@ -50,6 +59,14 @@ nl:
       tag_regex:
         check: Controleren
         search_missing: Zoek Ontbrekende
+    path_template_help:
+      description: Mapstructuur volgt een sjabloon dat je definieert met tokens. Je kunt ook andere tekst in het sjabloon opnemen (zoals mapscheidingstekens) en deze wordt ongewijzigd opgenomen.
+      tokens:
+        collection: De titel van de collectie waarin het model zich bevindt, indien ingesteld.
+        creator: De naam van de maker, indien ingesteld.
+        model_id: Een unieke numerieke identificatie voor het model. We raden sterk aan om dit altijd aan het einde van je sjabloon op te nemen om naamconflicten op schijf te voorkomen.
+        model_name: Een bestandssysteem-veilige versie van de modelnaam.
+        tags_html: 'een reeks geneste mappen, één voor elke tag, gerangschikt op volgorde van tagpopulariteit. Bijvoorbeeld: <code>fantasy/human/wizard</code>'
     storage_services:
       filesystem: Lokaal bestandssysteem
       s3: S3-compatibele cloudopslag

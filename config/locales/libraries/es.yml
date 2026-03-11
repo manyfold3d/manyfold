@@ -17,13 +17,20 @@ es:
       default:
         help: Establecer esta biblioteca como la predeterminada para las cargas
       filesystem_description_html: Para utilizar el almacenamiento de tu sistema local, en primer lugar asegúrate de que está montado como un <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> u otro volumen dentro de tu contenedor Docker, luego introduce la ruta Docker; ¡no la ruta del servidor host! Por ejemplo, si tienes una carpeta llena de archivos en <code>/mnt/media/3d/models</code> en tu host, y has enlazado <code>/mnt/media/3d</code> a <code>/libraries</code> en tu configuración Docker, la ruta requerida sería <code>/libraries/models</code>.
+      folder_organisation:
+        description: Establece la estructura de carpetas que usa el "organizador de archivos" y que se utiliza para completar automáticamente los metadatos durante el escaneo. Afecta a todos los usuarios.
+        title: Nombres de las carpetas
       icon:
         help_html: 'Opcional: Cualquier icono de <a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">Boostrap icons</a> o <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a>.'
         placeholder: boxes
       notes:
         help_html: Opcional - sólo se muestra a los administradores en la página de configuración. Puede utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      parse_metadata_from_path:
+        help: Establece el creador, la colección y las etiquetas en función de la plantilla
       path:
         placeholder: "/libraries/models"
+      rules:
+        title:
       s3_bucket:
         help: Sólo el nombre del bucket, no la URL completa
       s3_description_html: Manyfold puede utilizar cualquier almacenamiento de objetos compatible con S3 para su biblioteca, incluyendo una amplia gama de servicios <a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">open source</a> o <a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">comerciales</a>.
@@ -31,6 +38,8 @@ es:
         help: Opcional - Sólo necesario para servicios compatibles con S3, no con AWS.
       s3_path_style:
         help: Deshabilitar el uso de URLs de buckets con estilo vhost. Solo se utilizan para servicios compatibles con S3, no para AWS.
+      safe_folder_names:
+        help_html: por ejemplo, <code>spinal-tap</code> en lugar de <code>Spın̈al Tap</code>
       tag_regex:
         help: Compruebe si faltan etiquetas en los modelos que coincidan con estas expresiones regulares (regex).
     general:
@@ -50,6 +59,14 @@ es:
       tag_regex:
         check: Revisar
         search_missing: Buscar Desaparecidos
+    path_template_help:
+      description: La estructura de carpetas sigue una plantilla que usted define utilizando tokens. También puede incluir otro texto en la plantilla (como separadores de carpeta) y se incluirá tal cual.
+      tokens:
+        collection: El título de la colección en la que se encuentra el modelo, si está establecido.
+        creator: El nombre del creador, si se ha establecido.
+        model_id: Un identificador numérico único para el modelo. Recomendamos encarecidamente incluirlo siempre al final del modelo para evitar conflictos de nombres en el disco.
+        model_name: Una versión segura para el sistema de ficheros del nombre del modelo.
+        tags_html: 'una serie de carpetas anidadas, una para cada etiqueta, ordenadas según su popularidad. Por ejemplo: <code>fantasía/humano/mago</code>'
     storage_services:
       filesystem: Sistema de archivos local
       s3: Almacenamiento en la nube compatible con S3

@@ -56,13 +56,16 @@ es:
         icon: Icono
         name: Nombre
         notes: Notas
+        parse_metadata_from_path: Rellenar metadatos a partir de la ruta y la plantilla durante el escaneo
         path: Ruta
+        path_template: Plantilla de ruta del modelo
         s3_access_key_id: Clave de acceso ID
         s3_bucket: Nombre del Bucket
         s3_endpoint: Endpoint URL
         s3_path_style: Usar URLs path-style
         s3_region: Región
         s3_secret_access_key: Clave de acceso secreta
+        safe_folder_names: Utilice nombres de carpeta seguros
         storage_service: Servicio de almacenamiento
         tag_regex: Etiquetas obligatorias
       link:

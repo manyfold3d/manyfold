@@ -80,7 +80,7 @@ RSpec.describe "Libraries" do
       before { patch "/libraries/#{library.to_param}", params: {library: {name: "new"}} }
 
       it "updates the library", :as_administrator do
-        expect(response).to redirect_to("/models")
+        expect(response).to redirect_to("/settings/libraries")
       end
 
       it "is denied to non-administrators", :as_moderator do

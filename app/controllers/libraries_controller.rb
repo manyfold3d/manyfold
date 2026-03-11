@@ -40,7 +40,7 @@ class LibrariesController < ApplicationController
     @library.tag_regex = uptags
     if @library.save
       @library.make_default if params.dig("library", "default") == "1"
-      redirect_to models_path, notice: t(".success")
+      redirect_to settings_libraries_path, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
       render :edit, status: :unprocessable_content
@@ -62,7 +62,8 @@ class LibrariesController < ApplicationController
   def library_params
     params.expect(library: [
       :path, :create_path_if_not_on_disk, :name, :notes, :caption, :icon, {tag_regex: []}, :storage_service,
-      :s3_endpoint, :s3_bucket, :s3_region, :s3_access_key_id, :s3_secret_access_key, :s3_path_style
+      :s3_endpoint, :s3_bucket, :s3_region, :s3_access_key_id, :s3_secret_access_key, :s3_path_style,
+      :path_template, :parse_metadata_from_path, :safe_folder_names
     ])
   end
 

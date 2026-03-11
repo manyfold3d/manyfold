@@ -20,12 +20,12 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     # Set preview file
     options.reverse_merge! identify_preview_file(model)
     # Set path template attributes
-    options.reverse_merge! attributes_from_path_template(model.path)
+    options.reverse_merge! attributes_from_path_template(model.library, model.path)
     # Build combined tag list
     tag_list =
       model.tag_list +
       tags_from_directory_name(model.path) +
-      tags_from_path_template(model.path)
+      tags_from_path_template(model.library, model.path)
     # Load from datapackage
     if (datapackage_content = model.datapackage_content)
       data = DataPackage::ModelDeserializer.new(datapackage_content).deserialize
@@ -83,9 +83,9 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     File.split(path).last.split(/[\W_+-]/).filter { |it| it.length > 1 }
   end
 
-  def attributes_from_path_template(path)
-    return {} unless SiteSettings.parse_metadata_from_path && SiteSettings.model_path_template
-    components = PathParserService.new(SiteSettings.model_path_template, path).call
+  def attributes_from_path_template(library, path)
+    return {} unless library.parse_metadata_from_path && library.path_template
+    components = PathParserService.new(library.path_template, path).call
     {
       creator: find_or_create_from_path_component(Creator, components[:creator]),
       collection: find_or_create_from_path_component(Collection, components[:collection]),
@@ -149,9 +149,9 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     Spdx.licenses.find { |id, details| details["seeAlso"].map { |it| it.gsub("legalcode", "") }.include?(url.gsub("http:", "https:")) }&.dig(0)
   end
 
-  def tags_from_path_template(path)
-    return [] unless SiteSettings.parse_metadata_from_path && SiteSettings.model_path_template
-    components = PathParserService.new(SiteSettings.model_path_template, path).call
+  def tags_from_path_template(library, path)
+    return [] unless library.parse_metadata_from_path && library.path_template
+    components = PathParserService.new(library.path_template, path).call
     tags = components[:tags] ? components[:tags].map { |tag| tag.titleize.downcase } : []
     tags.delete("@untagged")
     tags

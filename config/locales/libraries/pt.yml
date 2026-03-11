@@ -17,13 +17,20 @@ pt:
       default:
         help:
       filesystem_description_html:
+      folder_organisation:
+        description:
+        title:
       icon:
         help_html:
         placeholder:
       notes:
         help_html:
+      parse_metadata_from_path:
+        help:
       path:
         placeholder:
+      rules:
+        title:
       s3_bucket:
         help:
       s3_description_html:
@@ -31,6 +38,8 @@ pt:
         help:
       s3_path_style:
         help:
+      safe_folder_names:
+        help_html:
       tag_regex:
         help:
     general:
@@ -50,6 +59,14 @@ pt:
       tag_regex:
         check:
         search_missing:
+    path_template_help:
+      description:
+      tokens:
+        collection:
+        creator:
+        model_id:
+        model_name:
+        tags_html:
     storage_services:
       filesystem:
       s3:

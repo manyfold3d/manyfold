@@ -56,13 +56,16 @@ ru:
         icon: Иконка
         name: Имя
         notes: Примечания
+        parse_metadata_from_path: Заполнить метаданные из пути и шаблона во время сканирования
         path: Путь
+        path_template: Шаблон пути к модели
         s3_access_key_id: Access Key ID (Идентификатор ключа доступа)
         s3_bucket: Bucket Name (Имя бакета)
         s3_endpoint: URL конечной точки
         s3_path_style:
         s3_region: Регион
         s3_secret_access_key: Секретный ключ доступа
+        safe_folder_names: Использовать безопасные имена папок
         storage_service: Сервис хранения данных
         tag_regex:
       link:

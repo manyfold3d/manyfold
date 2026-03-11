@@ -7,14 +7,11 @@ class SiteSettings < RailsSettings::Base
   field :model_tags_stop_words_locale, type: :string, default: "en"
   field :model_tags_custom_stop_words, type: :array, default: SupportedMimeTypes.indexable_extensions
   field :model_tags_auto_tag_new, type: :string, default: "!new"
-  field :model_path_template, type: :string, default: "{tags}/{modelName}{modelId}"
   field :model_ignored_files, type: :array, default: [
     /^\.[^.]+/, # Hidden files starting with .
     /.*\/@eaDir\/.*/, # Synology temp files
     /__MACOSX/ # MACOS resource forks
   ]
-  field :parse_metadata_from_path, type: :boolean, default: true
-  field :safe_folder_names, type: :boolean, default: true
   field :analyse_manifold, type: :boolean, default: false
   field :anonymous_usage_id, type: :string, default: nil
   field :default_viewer_role, type: :string, default: "member"
@@ -130,6 +127,15 @@ class SiteSettings < RailsSettings::Base
 
   def self.validated_theme
     AVAILABLE_THEMES.include?(theme) ? theme : "default"
+  end
+
+  def self.remove_field(field)
+    setting = SiteSettings.find_by(var: field)
+    if setting
+      previous_value = setting.value
+      setting.destroy!
+      previous_value
+    end
   end
 
   module UserDefaults

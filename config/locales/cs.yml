@@ -56,13 +56,16 @@ cs:
         icon: Ikona
         name: Název
         notes: Poznámky
+        parse_metadata_from_path: Vyplnění metadat z cesty a šablony během kontroly
         path: Cesta
+        path_template: Šablona cesty modelu
         s3_access_key_id: ID přístupového klíče
         s3_bucket: Název Bucketu
         s3_endpoint: Adresa URL koncového bodu
         s3_path_style: Použít URL jako cesty
         s3_region: Region
         s3_secret_access_key: Tajný přístupový klíč
+        safe_folder_names: Použít bezpečné názvy složek
         storage_service: Služba ukládání
         tag_regex: Povinné štítky
       link:

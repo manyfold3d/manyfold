@@ -56,13 +56,16 @@ pt:
         icon:
         name:
         notes:
+        parse_metadata_from_path:
         path:
+        path_template:
         s3_access_key_id:
         s3_bucket:
         s3_endpoint:
         s3_path_style:
         s3_region:
         s3_secret_access_key:
+        safe_folder_names:
         storage_service:
         tag_regex:
       link:

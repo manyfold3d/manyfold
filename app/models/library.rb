@@ -36,6 +36,8 @@ class Library < ApplicationRecord
   validates :s3_access_key_id, presence: true, if: -> { storage_service == "s3" }
   validates :s3_secret_access_key, presence: true, if: -> { storage_service == "s3" }
 
+  validates :path_template, presence: true
+
   default_scope { order(:name) }
 
   def name

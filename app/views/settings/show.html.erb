@@ -14,8 +14,6 @@
 
 <%= form_with url: settings_path, method: :patch, class: "tabular-form" do |form| %>
 
-  <%= render "folder_settings", form: form %>
-  <hr>
   <%= render "file_settings", form: form %>
   <hr>
   <%= render "tag_settings", form: form %>

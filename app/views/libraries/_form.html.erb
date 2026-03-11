@@ -27,7 +27,21 @@
   <%= text_input_row form, :icon, help: t(".icon.help_html"), placeholder: translate(".icon.placeholder") %>
   <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
 
+  <hr>
+
+  <h3><%= t(".folder_organisation.title") %></h3>
+
+  <p>
+    <%= t ".folder_organisation.description" %>
+  </p>
+
+  <%= TextInputRow form: form, attribute: :path_template, help: render("path_template_help"), label: Library.human_attribute_name(:path_template) %>
+  <%= CheckBoxInputRow form: form, attribute: :parse_metadata_from_path, help: t(".parse_metadata_from_path.help"), label: Library.human_attribute_name(:parse_metadata_from_path) %>
+  <%= CheckBoxInputRow form: form, attribute: :safe_folder_names, help: t(".safe_folder_names.help_html"), label: Library.human_attribute_name(:safe_folder_names) %>
+
   <% if @library.persisted? %>
+    <hr>
+    <h3><%= t(".rules.title") %></h3>
     <div>
       <%= form.label :tag_regex, class: "col-sm-2 col-form-label mb-0" %>
     </div>
@@ -51,6 +65,7 @@
     </div>
   <% end %>
 
+  <hr>
   <div>
     <%= form.submit translate("general.save"), class: "btn btn-primary" %>
 

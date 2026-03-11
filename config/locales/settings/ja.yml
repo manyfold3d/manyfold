@@ -88,24 +88,6 @@ ja:
         label: 正規表現フィルターは無視される。
       summary: 無視するファイルなどのファイル設定を変更する。
       title: ファイル設定
-    folder_settings:
-      details: フォルダ構造は、トークンを使って定義したテンプレートに従います。テンプレートに他のテキストを含めることもでき（フォルダーのセパレーターなど）、そのテキストはそのまま含まれます。
-      model_path_template:
-        label: モデル・パス・テンプレート
-      parse_metadata_from_path:
-        help: テンプレートに基づいてクリエイター、コレクション、タグを設定する
-        label: スキャン中にモデル・パス・テンプレートからメタデータを入力する
-      safe_folder_names:
-        help_html: 例：<code>Spın̈al Tap</code>の代わりに<code>spinal-tap</code>
-        label: 安全なフォルダ名を使用する
-      summary: "「ファイルの整理」とスキャン中のメタデータの自動入力で使用されるフォルダ構造を定義します。すべてのアカウントに影響します。"
-      title: フォルダ名式
-      tokens:
-        collection: モデルが入っているコレクションのタイトル（設定されている場合）。
-        creator: もし設定されていれば、作成者の名前。
-        model_id: モデルの一意な数値識別子。ディスク上での名前の衝突を避けるため、テンプレートの最後に必ず含めることを強くお勧めします。
-        model_name: モデル名のファイルシステムに安全なバージョン。
-        tags_html: 各タグに1つずつ、タグの人気順に並べられた、入れ子になった一連のフォルダ。例えば、<code>hogehoge/piyopiyp/piyohogeの</code>ように。このトークンは「貪欲」で、できるだけ多くのタグを解析します。
     general:
       submit: 設定の保存
     integrations:

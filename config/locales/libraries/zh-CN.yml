@@ -17,13 +17,20 @@ zh-CN:
       default:
         help: 将此资料库设置为上传的默认库
       filesystem_description_html: 要使用本地文件系统上的存储，首先要确保它已作为 <a href="https://docs.docker.com/storage/bind-mounts/">绑定挂载</a> 或其他卷挂载到 Docker 容器中，然后输入 Docker 路径；而不是主机服务器上的路径！例如，如果你在主机上的 <code>/mnt/media/3d/models</code> 文件夹中有大量文件，并在 Docker 配置中将 <code>/mnt/media/3d</code> 绑定到 <code>/libraries</code>，那么所需的路径就是 <code>/libraries/models</code>。
+      folder_organisation:
+        description: 定义 "整理文件" 和扫描时自动填充元数据所使用的文件夹结构。影响所有账户。
+        title: 文件夹命名
       icon:
         help_html: 可选；<a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">Boostrap 图标</a>或<a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a> 中的任何图标。
         placeholder: boxes
       notes:
         help_html: 可选项；仅在设置页面上向管理员显示。您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
+      parse_metadata_from_path:
+        help: 根据模板设置创建者、合集和 Tags
       path:
         placeholder: 例如：/libraries/models
+      rules:
+        title:
       s3_bucket:
         help: 只显示 Bucket 名称，不显示完整的 URL
       s3_description_html: Manyfold 可以使用任何与 S3 兼容的对象存储库；它们来自<a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">开源</a>或<a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">商业</a>服务。
@@ -31,6 +38,8 @@ zh-CN:
         help: 可选；仅 S3 兼容服务需要，AWS 不需要。输入完整的 URL，以 <code>https://</code> 开头
       s3_path_style:
         help: 禁用以使用 vhost 风格的 Bucket URL。仅用于 S3 兼容服务，不适用于 AWS。
+      safe_folder_names:
+        help_html: 例如，用 <code>spinal-tap</code> 代替 <code>Spın̈al Tap</code>
       tag_regex:
         help: 检查模型是否缺少与这些正则匹配的 Tags。
     general:
@@ -50,6 +59,14 @@ zh-CN:
       tag_regex:
         check: 检查
         search_missing:
+    path_template_help:
+      description: 文件夹结构遵循您使用标记定义的模板。您也可以在模板中包含其他文本（如文件夹分隔符），这些文本将按原样包含在内。
+      tokens:
+        collection: 模型所在集合的标题（如果已设置）。
+        creator: 创建者的名称（如果已设置）。
+        model_id: 模型的唯一数字标识符。我们强烈建议将其放在模板的末尾，以避免磁盘上的名称冲突。
+        model_name: 为模型名称使用文件系统安全的规范格式
+        tags_html: 在一系列嵌套文件夹中，每个文件夹被解析为一个 Tag，它们将按标签受欢迎程度排列。例如：<code>幻想/人类/巫师</code>。这个标记是 "贪婪" 的，意味着它会尽可能多地解析标签。
     storage_services:
       filesystem: 本地文件系统
       s3: 兼容 S3 的云存储

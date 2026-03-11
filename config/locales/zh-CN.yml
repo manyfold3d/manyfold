@@ -56,13 +56,16 @@ zh-CN:
         icon: 图标
         name: 名称
         notes: 说明
+        parse_metadata_from_path: 扫描时从模型路径模板中填充元数据
         path: 路径
+        path_template: 模型路径模板
         s3_access_key_id: Access Key ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpoint URL
         s3_path_style: 使用路径式 URL
         s3_region: Region
         s3_secret_access_key: Secret Access Key
+        safe_folder_names: 使用安全的文件夹名称
         storage_service: 存储服务
         tag_regex:
       link:

@@ -88,24 +88,6 @@ pt:
         label:
       summary:
       title:
-    folder_settings:
-      details:
-      model_path_template:
-        label:
-      parse_metadata_from_path:
-        help:
-        label:
-      safe_folder_names:
-        help_html:
-        label:
-      summary:
-      title:
-      tokens:
-        collection:
-        creator:
-        model_id:
-        model_name:
-        tags_html:
     general:
       submit:
     integrations:
