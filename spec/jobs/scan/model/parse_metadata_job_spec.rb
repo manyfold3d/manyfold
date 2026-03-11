@@ -187,7 +187,9 @@ RSpec.describe Scan::Model::ParseMetadataJob do
     end
 
     it "handles a completely empty template" do # rubocop:todo RSpec/MultipleExpectations, RSpec/ExampleLength
-      library.update!(path_template: "")
+      # This isn't possible due to validation, but we check it doesn't break anything just in case
+      library.path_template = ""
+      library.save(validate: false)
       described_class.perform_now(model.id)
       model.reload
       expect(model.creator).to be_nil
