@@ -56,9 +56,9 @@ en:
         icon: Icon
         name: Name
         notes: Notes
-        parse_metadata_from_path: Populate metadata from model path template during scan
+        parse_metadata_from_path: Infer metadata from path
         path: Path
-        path_template: Model path template
+        path_template: Folder name template
         s3_access_key_id: Access Key ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpoint URL
