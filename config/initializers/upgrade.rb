@@ -2,6 +2,17 @@ Rails.application.config.after_initialize do
   # Update site settings from old values
   SiteSettings.default_viewer_role = "private" if SiteSettings.default_viewer_role == ""
 
+  # Transfer path data from settings to libraries
+  deprecated_folder_settings = {
+    path_template: SiteSettings.remove_field("model_path_template"),
+    parse_metadata_from_path: SiteSettings.remove_field("parse_metadata_from_path"),
+    safe_folder_names: SiteSettings.remove_field("safe_folder_names")
+  }.compact
+  Library.find_each do |library|
+    library.assign_attributes(deprecated_folder_settings)
+    library.save(validate: false)
+  end
+
   # Attempt to connect to Redis first before queueing, and fail early
   Sidekiq.redis { |conn| conn.info }
   # Queue upgrade jobs if Redis is good to go
@@ -21,7 +32,6 @@ Rails.application.config.after_initialize do
     Upgrade::PruneOrphanedProblems.set(queue: :upgrade).perform_later
     Upgrade::BackfillImageDerivatives.perform_later if SiteSettings.generate_image_derivatives
     Upgrade::BackfillModelRenders.perform_later if SiteSettings.generate_model_renders
-
   end
 rescue RedisClient::CannotConnectError
 end

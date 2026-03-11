@@ -50,12 +50,6 @@ class SiteSettings < RailsSettings::Base
 
   validates :model_ignored_files, regex_array: {strict: true}
 
-  # DEPRECATED
-  # kept for upgrade compatibility
-  field :model_path_template, type: :string, default: "{tags}/{modelName}{modelId}"
-  field :parse_metadata_from_path, type: :boolean, default: true
-  field :safe_folder_names, type: :boolean, default: true
-
   def self.email_configured?
     !Rails.env.production? || ENV.fetch("SMTP_SERVER", false)
   end
@@ -133,6 +127,15 @@ class SiteSettings < RailsSettings::Base
 
   def self.validated_theme
     AVAILABLE_THEMES.include?(theme) ? theme : "default"
+  end
+
+  def self.remove_field(field)
+    setting = SiteSettings.find_by(var: field)
+    if setting
+      previous_value = setting.value
+      setting.destroy!
+      previous_value
+    end
   end
 
   module UserDefaults
