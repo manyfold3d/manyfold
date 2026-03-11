@@ -12,8 +12,7 @@ RSpec.describe PathTemplateValidator do
     it "doesn't add error to record if the template includes only valid tokens" do
       expect {
         validator.validate_each(record, :test, "testing/{tags}/{modelName}{modelId}")
-      }.to change(record.errors, :count).from(0).to(1)
-        .and change { record.errors.first&.type }.to eq(:invalid)
+      }.not_to change(record.errors, :count)
     end
 
     it "adds error to record if the template includes invalid tokens" do
