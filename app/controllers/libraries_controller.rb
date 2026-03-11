@@ -40,7 +40,7 @@ class LibrariesController < ApplicationController
     @library.tag_regex = uptags
     if @library.save
       @library.make_default if params.dig("library", "default") == "1"
-      redirect_to models_path, notice: t(".success")
+      redirect_to settings_libraries_path, notice: t(".success")
     else
       flash.now[:alert] = t(".failure")
       render :edit, status: :unprocessable_content
