@@ -2,16 +2,6 @@ class Scan::Library::DetectFilesystemChangesJob < ApplicationJob
   queue_as :scan
   unique :until_executed
 
-  # Find all files in the library that we might need to look at
-  def filenames_on_disk(library)
-    library.list_files(File.join("**", FileMatcher.file_pattern))
-  end
-
-  # Get a list of all the existing filenames
-  def known_filenames(library)
-    library.model_files.without_special.reload.map(&:path_within_library)
-  end
-
   def filter_out_common_subfolders(folders)
     matcher = /\/(#{FileMatcher.common_subfolders.keys.join("|")})$/i
     folders.map { |f| f.gsub(matcher, "") }.uniq
@@ -20,7 +10,7 @@ class Scan::Library::DetectFilesystemChangesJob < ApplicationJob
   def folders_with_changes(library)
     # Make a list of changed filenames using set XOR
     status[:step] = "jobs.scan.detect_filesystem_changes.building_filename_list" # i18n-tasks-use t('jobs.scan.detect_filesystem_changes.building_filename_list')
-    changes = (known_filenames(library).to_set ^ filenames_on_disk(library)).to_a
+    changes = (library.indexed_files.to_set ^ library.indexable_files).to_a
     # Double-check that we only consider indexable files in the changelist
     # This is because some non-indexable files might have been added by uploading
     # (that might be a bug - or a feature)

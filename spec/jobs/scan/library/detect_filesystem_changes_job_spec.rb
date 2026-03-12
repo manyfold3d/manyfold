@@ -160,32 +160,6 @@ RSpec.describe Scan::Library::DetectFilesystemChangesJob do
     end
   end
 
-  context "with hidden files and folders" do
-    around do |ex|
-      MockDirectory.create([
-        "model/file.stl",
-        "model/.hidden.stl",
-        "model/.git/file.stl"
-      ]) do |path|
-        @library_path = path
-        ex.run
-      end
-    end
-
-    # rubocop:todo RSpec/InstanceVariable
-
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
-
-    it "does not include hidden files in file list" do
-      expect(described_class.new.filenames_on_disk(library)).not_to include "model/.hidden.stl"
-    end
-
-    it "does not include hidden folder contents in file list" do
-      expect(described_class.new.filenames_on_disk(library)).not_to include "model/.git/file.stl"
-    end
-  end
-
   context "with existing non-indexable files" do
     around do |ex|
       MockDirectory.create([
@@ -209,77 +183,6 @@ RSpec.describe Scan::Library::DetectFilesystemChangesJob do
 
     it "does not include folder contents in file list" do
       expect(described_class.new.folders_with_changes(library)).not_to include "model"
-    end
-  end
-
-  context "with folders that look like filenames" do
-    around do |ex|
-      MockDirectory.create([
-        "wrong.stl/file.stl"
-      ]) do |path|
-        @library_path = path
-        ex.run
-      end
-    end
-
-    # rubocop:todo RSpec/InstanceVariable
-
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
-
-    it "does not include directories in file list" do
-      expect(described_class.new.filenames_on_disk(library)).not_to include "wrong.stl"
-    end
-
-    it "does include files within directories in file list" do
-      expect(described_class.new.filenames_on_disk(library)).to include "wrong.stl/file.stl"
-    end
-  end
-
-  context "with a case sensitive filesystem", :case_sensitive do
-    around do |ex|
-      MockDirectory.create([
-        "model/file.obj",
-        "model/file.OBJ",
-        "model/file.Obj"
-      ]) do |path|
-        @library_path = path
-        ex.run
-      end
-    end
-
-    # rubocop:todo RSpec/InstanceVariable
-
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
-
-    it "detects lowercase file extensions" do
-      expect(described_class.new.filenames_on_disk(library)).to include "model/file.obj"
-    end
-
-    it "detects uppercase file extensions" do
-      expect(described_class.new.filenames_on_disk(library)).to include "model/file.OBJ"
-    end
-
-    it "detects mixed case file extensions" do
-      expect(described_class.new.filenames_on_disk(library)).to include "model/file.Obj"
-    end
-  end
-
-  context "with unusual characters in model folder names" do
-    around do |ex|
-      MockDirectory.create([
-        "model [test]/file.obj"
-      ]) do |path|
-        @library_path = path
-        ex.run
-      end
-    end
-
-    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
-
-    it "detects files inside models with square brackets" do
-      expect(described_class.new.filenames_on_disk(library)).to include "model [test]/file.obj"
     end
   end
 

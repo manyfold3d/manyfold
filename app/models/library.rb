@@ -136,6 +136,15 @@ class Library < ApplicationRecord
     files.uniq.reject { |str| SiteSettings.ignored_file?(str) }
   end
 
+  # Get a list of all the files in the library storage that could be indexed
+  def indexable_files
+    list_files(File.join("**", FileMatcher.file_pattern))
+  end
+
+  def indexed_files
+    model_files.without_special.map(&:path_within_library)
+  end
+
   def has_file?(path)
     storage.exists?(path)
   end
