@@ -2,6 +2,7 @@ class Library < ApplicationRecord
   extend Memoist
   include PublicIDable
   include Problematic
+  include ChangeDetection
 
   STORAGE_SERVICES = [
     "filesystem",
@@ -134,15 +135,6 @@ class Library < ApplicationRecord
     end
     # Filter out files that should be ignored
     files.uniq.reject { |str| SiteSettings.ignored_file?(str) }
-  end
-
-  # Get a list of all the files in the library storage that could be indexed
-  def indexable_files
-    list_files(File.join("**", FileMatcher.file_pattern))
-  end
-
-  def indexed_files
-    model_files.includes(:model).without_special.pluck("models.path", :filename).map { |it| File.join(it) }
   end
 
   def has_file?(path)
