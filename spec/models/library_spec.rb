@@ -419,4 +419,51 @@ RSpec.describe Library do
       expect(library.indexable_files).to include "model [test]/file.obj"
     end
   end
+
+  context "with existing models and files" do
+    around do |ex|
+      MockDirectory.create([
+        "model/indexed.obj",
+        "model/datapackage.json",
+        "new/new.obj"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let!(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    before do
+      model = create(:model, library: library, path: "model")
+      create(:model_file, model: model, filename: "indexed.obj")
+      create(:model_file, model: model, filename: "datapackage.json")
+      gone = create(:model, library: library, path: "gone")
+      create(:model_file, model: gone, filename: "missing.obj")
+    end
+
+    it "lists indexed files" do
+      expect(library.indexed_files).to include "model/indexed.obj"
+    end
+
+    it "ignores datapackages when listing indexed files" do
+      expect(library.indexed_files).not_to include "model/datapackage.json"
+    end
+
+    it "ignores datapackages when listing indexable files" do
+      expect(library.indexable_files).not_to include "model/datapackage.json"
+    end
+
+    it "includes new files when listing indexable files" do
+      expect(library.indexable_files).to include "new/new.obj"
+    end
+
+    it "includes known files when listing indexable files" do
+      expect(library.indexable_files).to include "model/indexed.obj"
+    end
+
+    it "includes missing files when listing indexed files" do
+      expect(library.indexable_files).to include "gone/missing.obj"
+    end
+  end
 end
