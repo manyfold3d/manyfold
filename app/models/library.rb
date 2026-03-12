@@ -142,7 +142,7 @@ class Library < ApplicationRecord
   end
 
   def indexed_files
-    model_files.without_special.map(&:path_within_library)
+    model_files.includes(:model).without_special.pluck("models.path", :filename).map { |it| File.join(it) }
   end
 
   def has_file?(path)
