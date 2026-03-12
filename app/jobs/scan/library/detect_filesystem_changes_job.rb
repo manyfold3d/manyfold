@@ -4,7 +4,7 @@ class Scan::Library::DetectFilesystemChangesJob < ApplicationJob
 
   # Find all files in the library that we might need to look at
   def filenames_on_disk(library)
-    library.list_files(File.join("**", ApplicationJob.file_pattern))
+    library.list_files(File.join("**", FileMatcher.file_pattern))
   end
 
   # Get a list of all the existing filenames
@@ -13,7 +13,7 @@ class Scan::Library::DetectFilesystemChangesJob < ApplicationJob
   end
 
   def filter_out_common_subfolders(folders)
-    matcher = /\/(#{ApplicationJob.common_subfolders.keys.join("|")})$/i
+    matcher = /\/(#{FileMatcher.common_subfolders.keys.join("|")})$/i
     folders.map { |f| f.gsub(matcher, "") }.uniq
   end
 
