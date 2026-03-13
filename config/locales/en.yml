@@ -851,7 +851,6 @@ en:
         manifold_check: Checking that mesh is manifold
     scan:
       detect_filesystem_changes:
-        building_filename_list: Building file list
         building_folder_list: Building changed folder list
         creating_models: Creating models
     upgrade:

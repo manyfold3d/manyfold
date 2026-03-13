@@ -851,7 +851,6 @@ cs:
         manifold_check: Kontrola, zda je model manifold
     scan:
       detect_filesystem_changes:
-        building_filename_list: Sestavení seznamu souborů
         building_folder_list: Sestavení seznamu změněných složek
         creating_models: Vytváření modelů
     upgrade:

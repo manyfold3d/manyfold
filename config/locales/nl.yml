@@ -851,7 +851,6 @@ nl:
         manifold_check: Controleren of mesh manifold is
     scan:
       detect_filesystem_changes:
-        building_filename_list: Bestandslijst opbouwen
         building_folder_list: Lijst met gewijzigde mappen opbouwen
         creating_models: Modellen aanmaken
     upgrade:

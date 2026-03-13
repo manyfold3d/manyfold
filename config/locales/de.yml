@@ -853,7 +853,6 @@ de:
         manifold_check: Prüfe Mesh, auf nicht-verzweigte Maschen
     scan:
       detect_filesystem_changes:
-        building_filename_list: Dateiliste erstellen
         building_folder_list: Erstellen einer Liste geänderter Ordner
         creating_models: Modelle erstellen
     upgrade:
