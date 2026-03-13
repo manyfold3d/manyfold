@@ -50,18 +50,6 @@ RSpec.describe Scan::Library::DetectFilesystemChangesJob do
       expect(Scan::Library::CreateModelFromPathJob).to have_been_enqueued.with(library.id, "model_one")
       expect(Scan::Library::CreateModelFromPathJob).to have_been_enqueued.with(library.id, "model_one/nested")
     end
-
-    context "with existing model" do
-      before do
-        model = create(:model, library: library, path: "model_one")
-        create(:model_file, model: model, filename: "part_1.obj")
-        create(:model_file, model: model, filename: "nested/part_2.obj")
-      end
-
-      it "does not pick up already-merged subfolder" do
-        expect(described_class.new.folders_with_changes(library)).to be_empty
-      end
-    end
   end
 
   context "with a thingiverse-style model folder" do
@@ -83,30 +71,6 @@ RSpec.describe Scan::Library::DetectFilesystemChangesJob do
 
     it "understands that it's a single model" do
       expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::Library::CreateModelFromPathJob).with(library.id, "thingiverse_model").exactly(1).times
-    end
-  end
-
-  context "with a thingiverse-style folder with error files" do
-    around do |ex|
-      MockDirectory.create([
-        "thingiverse_model/files/part_one.stl",
-        "thingiverse_model/images/preview.stl"
-      ]) do |path|
-        @library_path = path
-        ex.run
-      end
-    end
-
-    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
-    let(:model) { create(:model, library: library, path: "thingiverse_model") }
-
-    it "detects changes of correct files" do
-      expect(described_class.new.folders_with_changes(library)).to contain_exactly("thingiverse_model")
-    end
-
-    it "doesn't detect changes because of incorrect file in images folder" do
-      create(:model_file, model: model, filename: "files/part_one.stl") # We already know about the correct file
-      expect(described_class.new.folders_with_changes(library)).to be_empty
     end
   end
 
@@ -157,129 +121,6 @@ RSpec.describe Scan::Library::DetectFilesystemChangesJob do
 
     it "ignores case and filters out subfolders correctly" do
       expect { described_class.perform_now(library.id) }.to have_enqueued_job(Scan::Library::CreateModelFromPathJob).with(library.id, "model").exactly(1).times
-    end
-  end
-
-  context "with hidden files and folders" do
-    around do |ex|
-      MockDirectory.create([
-        "model/file.stl",
-        "model/.hidden.stl",
-        "model/.git/file.stl"
-      ]) do |path|
-        @library_path = path
-        ex.run
-      end
-    end
-
-    # rubocop:todo RSpec/InstanceVariable
-
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
-
-    it "does not include hidden files in file list" do
-      expect(described_class.new.filenames_on_disk(library)).not_to include "model/.hidden.stl"
-    end
-
-    it "does not include hidden folder contents in file list" do
-      expect(described_class.new.filenames_on_disk(library)).not_to include "model/.git/file.stl"
-    end
-  end
-
-  context "with existing non-indexable files" do
-    around do |ex|
-      MockDirectory.create([
-        "model/test.pptx",
-        "model/test.stl"
-      ]) do |path|
-        @library_path = path
-        ex.run
-      end
-    end
-
-    # rubocop:todo RSpec/InstanceVariable
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
-
-    before do
-      m = create(:model, path: "model", library: library)
-      create(:model_file, model: m, filename: "test.pptx")
-      create(:model_file, model: m, filename: "test.stl")
-    end
-
-    it "does not include folder contents in file list" do
-      expect(described_class.new.folders_with_changes(library)).not_to include "model"
-    end
-  end
-
-  context "with folders that look like filenames" do
-    around do |ex|
-      MockDirectory.create([
-        "wrong.stl/file.stl"
-      ]) do |path|
-        @library_path = path
-        ex.run
-      end
-    end
-
-    # rubocop:todo RSpec/InstanceVariable
-
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
-
-    it "does not include directories in file list" do
-      expect(described_class.new.filenames_on_disk(library)).not_to include "wrong.stl"
-    end
-
-    it "does include files within directories in file list" do
-      expect(described_class.new.filenames_on_disk(library)).to include "wrong.stl/file.stl"
-    end
-  end
-
-  context "with a case sensitive filesystem", :case_sensitive do
-    around do |ex|
-      MockDirectory.create([
-        "model/file.obj",
-        "model/file.OBJ",
-        "model/file.Obj"
-      ]) do |path|
-        @library_path = path
-        ex.run
-      end
-    end
-
-    # rubocop:todo RSpec/InstanceVariable
-
-    let(:library) { create(:library, path: @library_path) }
-    # rubocop:enable RSpec/InstanceVariable
-
-    it "detects lowercase file extensions" do
-      expect(described_class.new.filenames_on_disk(library)).to include "model/file.obj"
-    end
-
-    it "detects uppercase file extensions" do
-      expect(described_class.new.filenames_on_disk(library)).to include "model/file.OBJ"
-    end
-
-    it "detects mixed case file extensions" do
-      expect(described_class.new.filenames_on_disk(library)).to include "model/file.Obj"
-    end
-  end
-
-  context "with unusual characters in model folder names" do
-    around do |ex|
-      MockDirectory.create([
-        "model [test]/file.obj"
-      ]) do |path|
-        @library_path = path
-        ex.run
-      end
-    end
-
-    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
-
-    it "detects files inside models with square brackets" do
-      expect(described_class.new.filenames_on_disk(library)).to include "model [test]/file.obj"
     end
   end
 

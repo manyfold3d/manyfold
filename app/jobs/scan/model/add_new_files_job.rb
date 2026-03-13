@@ -6,12 +6,12 @@ class Scan::Model::AddNewFilesJob < ApplicationJob
 
   def file_list(model_path, library, include_all_subfolders: false)
     glob = include_all_subfolders ?
-      [File.join(Shellwords.escape(model_path), "**", ApplicationJob.file_pattern)] :
-      [File.join(Shellwords.escape(model_path), ApplicationJob.file_pattern)] +
-        ApplicationJob.common_subfolders.map do |name, pattern|
+      [File.join(Shellwords.escape(model_path), "**", FileMatcher.file_pattern)] :
+      [File.join(Shellwords.escape(model_path), FileMatcher.file_pattern)] +
+        FileMatcher.common_subfolders.map do |name, pattern|
           File.join(
             Shellwords.escape(model_path),
-            ApplicationJob.case_insensitive_glob_string(name),
+            FileMatcher.case_insensitive_glob_string(name),
             pattern
           )
         end

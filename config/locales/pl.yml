@@ -851,7 +851,6 @@ pl:
         manifold_check: Sprawdzanie, czy siatka jest rozmaita
     scan:
       detect_filesystem_changes:
-        building_filename_list: Tworzenie listy plików
         building_folder_list: Tworzenie listy zmienionych folderów
         creating_models: Tworzenie modeli
     upgrade:

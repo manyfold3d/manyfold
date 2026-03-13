@@ -2,6 +2,7 @@ class Library < ApplicationRecord
   extend Memoist
   include PublicIDable
   include Problematic
+  include ChangeDetection
 
   STORAGE_SERVICES = [
     "filesystem",

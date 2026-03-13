@@ -856,7 +856,6 @@ fr:
         manifold_check: Vérification de la continuité du maillage
     scan:
       detect_filesystem_changes:
-        building_filename_list: Création d'une liste de fichiers
         building_folder_list: Création d'une liste de répertoires modifiés
         creating_models: Création de modèles
     upgrade:

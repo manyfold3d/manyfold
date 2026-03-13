@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ApplicationJob do
+RSpec.describe FileMatcher do
   it "generates a case-insensitive pattern for all supported files" do # rubocop:todo RSpec/MultipleExpectations
     pattern = described_class.file_pattern
     expect(pattern).to include "[Ss][Tt][Ll],"

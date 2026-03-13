@@ -851,7 +851,6 @@ es:
         manifold_check: Verificando que la malla sea válida
     scan:
       detect_filesystem_changes:
-        building_filename_list: Construyendo lista de archivos
         building_folder_list: Construyendo lista de carpetas modificadas
         creating_models: Creando modelos
     upgrade:
