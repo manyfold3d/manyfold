@@ -228,7 +228,8 @@ RSpec.describe ChangeDetection do
         "first/second/leaf/model.stl",
         "third/fourth/leaf/model.stl",
         "fifth/leaf/model.stl",
-        "sixth/leaf/model.stl",
+        "sixth/leaf/files/model.stl",
+        "sixth/leaf/images/model.png",
         "first/second/nonindexable/nope.nope",
         "first/.hidden/model.stl"
       ]) do |path|
@@ -249,6 +250,10 @@ RSpec.describe ChangeDetection do
 
     it "returns a leaf folder" do
       expect(library.sample(10)).to include "first/second/leaf"
+    end
+
+    it "treats common subfolders as if they weren't there" do
+      expect(library.sample(10)).to include "sixth/leaf"
     end
 
     it "doesn't include folders above leaves" do

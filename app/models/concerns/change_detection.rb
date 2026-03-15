@@ -36,7 +36,7 @@ module ChangeDetection
     folders.map { |f| f.gsub(matcher, "") }.uniq
   end
 
-  def sample(num)
+  def sample(num = 3)
     remaining_attempts = num * 5 # Got to have some kind of cutoff
     rng = Random.new(id) # See a random number generator with our ID so that the random selections are stable for each library
     results = []
@@ -63,7 +63,8 @@ module ChangeDetection
     if f
       next_folder = File.join([folder, f].compact)
       next_path = File.join(absolute_path, f)
-      dive_for_leaf_folder(next_path, next_folder, rng)
+      leaf = dive_for_leaf_folder(next_path, next_folder, rng)
+      f.in?(FileMatcher.common_subfolders) ? folder : leaf
     end
   end
 
