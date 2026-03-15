@@ -44,8 +44,9 @@ module ChangeDetection
       leaf = dive_for_leaf_folder(path, nil, rng)
       results << leaf if leaf
       remaining_attempts -= 1
+      results = results.compact.sort.uniq
     end
-    results.compact.sort.uniq
+    results
   end
 
   private
