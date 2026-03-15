@@ -35,4 +35,39 @@ module ChangeDetection
     matcher = /\/(#{FileMatcher.common_subfolders.keys.join("|")})$/i
     folders.map { |f| f.gsub(matcher, "") }.uniq
   end
+
+  def sample(num)
+    remaining_attempts = num * 5 # Got to have some kind of cutoff
+    rng = Random.new(id) # See a random number generator with our ID so that the random selections are stable for each library
+    results = []
+    while results.length < num && remaining_attempts > 0
+      leaf = dive_for_leaf_folder(path, nil, rng)
+      results << leaf if leaf
+      remaining_attempts -= 1
+    end
+    results.compact.sort.uniq
+  end
+
+  private
+
+  def dive_for_leaf_folder(absolute_path, folder, rng)
+    # If this is a leaf folder, we're done
+    return folder if leaf_folder?(absolute_path)
+    # Otherwise, choose a random folder
+    folders = Dir.entries(absolute_path).select do |it|
+      FileTest.directory?(File.join(absolute_path, it)) &&
+        !SiteSettings.ignored_file?(File.join(absolute_path, it)) &&
+        !it.starts_with?(".")
+    end
+    f = folders.sample(random: rng)
+    if f
+      next_folder = File.join([folder, f].compact)
+      next_path = File.join(absolute_path, f)
+      dive_for_leaf_folder(next_path, next_folder, rng)
+    end
+  end
+
+  def leaf_folder?(path)
+    Dir.glob(File.join(path, FileMatcher.file_pattern)).any?
+  end
 end

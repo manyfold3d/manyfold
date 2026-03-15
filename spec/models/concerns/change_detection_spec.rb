@@ -221,4 +221,50 @@ RSpec.describe ChangeDetection do
       expect(library.folders_with_changes).to be_empty
     end
   end
+
+  context "when randomly sampling folders" do
+    around do |ex|
+      MockDirectory.create([
+        "first/second/leaf/model.stl",
+        "third/fourth/leaf/model.stl",
+        "fifth/leaf/model.stl",
+        "sixth/leaf/model.stl",
+        "first/second/nonindexable/nope.nope",
+        "first/.hidden/model.stl"
+      ]) do |path|
+        @library_path = path
+        ex.run
+      end
+    end
+
+    let(:library) { create(:library, path: @library_path) } # rubocop:todo RSpec/InstanceVariable
+
+    it "returns as many folders as exist up to the requested amount" do
+      expect(library.sample(10).length).to eq 4
+    end
+
+    it "only returns the requested number of entries" do
+      expect(library.sample(2).length).to eq 2
+    end
+
+    it "returns a leaf folder" do
+      expect(library.sample(10)).to include "first/second/leaf"
+    end
+
+    it "doesn't include folders above leaves" do
+      expect(library.sample(10)).not_to include "first/second"
+    end
+
+    it "doesn't include folders without indexable files" do
+      expect(library.sample(10)).not_to include "first/second/nonindexable"
+    end
+
+    it "doesn't include hidden folders" do
+      expect(library.sample(10)).not_to include "first/.hidden"
+    end
+
+    it "doesn't include root folder" do
+      expect(library.sample(10)).not_to include("", ".", "./")
+    end
+  end
 end
