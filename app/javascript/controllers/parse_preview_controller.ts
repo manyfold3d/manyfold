@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="parse-preview"
 export default class extends Controller {
-  parsePreviewFrame: HTMLElement | null
+  parsePreviewFrame: HTMLFrameElement | null
   templateInput: HTMLInputElement | null
   parseMetadataInput: HTMLInputElement | null
 
