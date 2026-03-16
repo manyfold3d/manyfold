@@ -30,4 +30,19 @@ class Components::PathTemplatePreview < Components::Base
       end
     end
   end
+
+  private
+
+  def find_or_new_from_path_component(klass, path_component)
+    return unless path_component
+    klass.find_by(slug: path_component) ||
+      klass.find_by(
+        name: to_human_name(path_component)
+      ) ||
+      klass.new(name: to_human_name(path_component))
+  end
+
+  def to_human_name(str)
+    str&.humanize&.tr("+", " ")&.careful_titleize
+  end
 end
