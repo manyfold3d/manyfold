@@ -1,8 +1,4 @@
 <p>
   <%= t(".help") %>
 </p>
-<%= turbo_frame_tag "parse-preview", src: parse_preview_library_path(
-      @library,
-      template: @library.path_template,
-      enabled: @library.parse_metadata_from_path.to_s
-    ) %>
+<%= turbo_frame_tag "parse-preview", data: { src: parse_preview_library_path(@library) } %>
