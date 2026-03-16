@@ -9,7 +9,7 @@
       <%= form.select :storage_service, Library::STORAGE_SERVICES.map { |it| [translate("libraries.storage_services.%{service}" % {service: it}), it] }, {}, {class: "form-control col-auto form-select", "data-bs-collapse": "collapse", "data-controller": "storage-service", "data-action": "change->storage-service#onChange"} %>
       <div id="options-filesystem" class="card p-3 collapse show storage-collapse tabular-form" data-bs-parent="#library_storage_service">
         <p><%= t ".filesystem_description_html" %></p>
-        <%= text_input_row form, :path, placeholder: translate(".path.placeholder") %>
+        <%= text_input_row form, :path, placeholder: translate(".path.placeholder"), options: {data: {action: "change->parse-preview#handleChange"}} %>
         <%= checkbox_input_row form, :create_path_if_not_on_disk, help: t(".create_path_if_not_on_disk.help") %>
       </div>
       <div id="options-s3" class="card p-3 collapse show storage-collapse tabular-form" data-bs-parent="#library_storage_service">

@@ -6,12 +6,14 @@ class Components::PathTemplatePreview < Components::Base
   end
 
   def before_template
-    @paths = @library.sample(3).map { |it| [it, PathParserService.new(@library.path_template, it).call] }
+    if @library.valid? && @library.parse_metadata_from_path
+      @paths = @library.sample(3).map { |it| [it, PathParserService.new(@library.path_template, it).call] }
+    end
   end
 
   def view_template
     turbo_frame_tag "parse-preview" do
-      if @library.parse_metadata_from_path
+      if @paths
         p { t("components.path_template_preview.description") }
         table class: "table table-striped table-sm" do
           tr do

@@ -22,7 +22,7 @@ class LibraryPolicy < ApplicationPolicy
     create?
   end
 
-  def parse_preview?
+  def preview?
     create?
   end
 

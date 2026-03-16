@@ -90,8 +90,11 @@ Rails.application.routes.draw do
   end
 
   resources :libraries, except: [:index] do
+    collection do
+      get :preview
+    end
     member do
-      get :parse_preview
+      get :preview
     end
   end
 

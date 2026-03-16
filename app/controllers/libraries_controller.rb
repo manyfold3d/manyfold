@@ -1,5 +1,5 @@
 class LibrariesController < ApplicationController
-  before_action :get_library, except: [:index, :new, :create]
+  before_action :get_library, except: [:index, :new, :create, :preview]
   skip_after_action :verify_policy_scoped, only: [:index]
 
   def index
@@ -57,10 +57,12 @@ class LibrariesController < ApplicationController
     redirect_to settings_libraries_path, notice: t(".success")
   end
 
-  def parse_preview
-    # Set attributes temporarily, but we're not saving them
+  def preview
+    # Create temporary library; we're not saving it
+    @library = params[:id] ? Library.find_param(params[:id]) : Library.new(path: params[:path])
     @library.path_template = params[:template]
     @library.parse_metadata_from_path = (params[:enabled] === "true")
+    authorize @library
     render Components::PathTemplatePreview.new(library: @library), layout: nil
   end
 

@@ -38,7 +38,7 @@ module ChangeDetection
 
   def sample(num = 3)
     remaining_attempts = num * 5 # Got to have some kind of cutoff
-    rng = Random.new(id) # See a random number generator with our ID so that the random selections are stable for each library
+    rng = Random.new(path.unpack1("S")) # See a random number generator with the path so that the random selections are stable for each library
     results = []
     while results.length < num && remaining_attempts > 0
       leaf = dive_for_leaf_folder(path, nil, rng)
