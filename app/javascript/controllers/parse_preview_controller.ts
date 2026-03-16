@@ -15,7 +15,7 @@ export default class extends Controller {
 
   handleChange () {
     if (this.parsePreviewFrame && this.templateInput && this.parseMetadataInput) {
-      this.parsePreviewFrame.src = `${this.parsePreviewFrame.dataset.src}?template=${this.templateInput.value}&enabled=${this.parseMetadataInput.checked ? "true" : "false"}`
+      this.parsePreviewFrame.src = `${this.parsePreviewFrame.dataset.src}?template=${encodeURIComponent(this.templateInput.value)}&enabled=${this.parseMetadataInput.checked ? "true" : "false"}`
     }
   }
 }
