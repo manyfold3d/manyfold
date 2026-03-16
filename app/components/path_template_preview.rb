@@ -10,22 +10,24 @@ class Components::PathTemplatePreview < Components::Base
   end
 
   def view_template
-    p { t(".description") }
-    table class: "table table-striped table-sm" do
-      tr do
-        th { t(".path") }
-        th { Creator.model_name.human }
-        th { Collection.model_name.human }
-        th { ActsAsTaggableOn::Tag.model_name.human(count: 100) }
-        th { Model.model_name.human }
-      end
-      @paths.map do |path, parsed|
+    turbo_frame_tag "parse-preview" do
+      p { t(".description") }
+      table class: "table table-striped table-sm" do
         tr do
-          td { path }
-          td { find_or_new_from_path_component(Creator, parsed[:creator])&.name || "❌" }
-          td { find_or_new_from_path_component(Collection, parsed[:collection])&.name || "❌" }
-          td { parsed[:tags]&.map { |it| Tag tag: ActsAsTaggableOn::Tag.new(name: it) } || "❌" }
-          td { to_human_name(parsed[:model_name]) || "❌" }
+          th { t(".path") }
+          th { Creator.model_name.human }
+          th { Collection.model_name.human }
+          th { ActsAsTaggableOn::Tag.model_name.human(count: 100) }
+          th { Model.model_name.human }
+        end
+        @paths.map do |path, parsed|
+          tr do
+            td { path }
+            td { find_or_new_from_path_component(Creator, parsed[:creator])&.name || "❌" }
+            td { find_or_new_from_path_component(Collection, parsed[:collection])&.name || "❌" }
+            td { parsed[:tags]&.map { |it| Tag tag: ActsAsTaggableOn::Tag.new(name: it) } || "❌" }
+            td { to_human_name(parsed[:model_name]) || "❌" }
+          end
         end
       end
     end
