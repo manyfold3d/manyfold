@@ -58,7 +58,9 @@ class LibrariesController < ApplicationController
   end
 
   def parse_preview
-    @library.path_template = params[:path_template] if params[:path_template]
+    # Set attributes temporarily, but we're not saving them
+    @library.path_template = params[:template]
+    @library.parse_metadata_from_path = (params[:enabled] === "true")
     render Components::PathTemplatePreview.new(library: @library), layout: nil
   end
 

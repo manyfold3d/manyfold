@@ -11,6 +11,7 @@ class Components::PathTemplatePreview < Components::Base
 
   def view_template
     turbo_frame_tag "parse-preview" do
+      break unless @library.parse_metadata_from_path
       p { t(".description") }
       table class: "table table-striped table-sm" do
         tr do
