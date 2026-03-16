@@ -441,6 +441,9 @@ pl:
       open_button:
         label: Otwórz model %{name}
         text: Otwórz
+    path_template_preview:
+      description:
+      path:
     search_help:
       boolean: Użyj "or", aby znaleźć modele pasujące do któregokolwiek z terminów.
       federation: Wyszukaj dowolną nazwę użytkownika Fediverse, aby ją zaobserwować.

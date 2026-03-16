@@ -12,10 +12,10 @@ class Components::PathTemplatePreview < Components::Base
   def view_template
     turbo_frame_tag "parse-preview" do
       break unless @library.parse_metadata_from_path
-      p { t(".description") }
+      p { t("components.path_template_preview.description") }
       table class: "table table-striped table-sm" do
         tr do
-          th { t(".path") }
+          th { t("components.path_template_preview.path") }
           th { Creator.model_name.human }
           th { Collection.model_name.human }
           th { ActsAsTaggableOn::Tag.model_name.human(count: 100) }

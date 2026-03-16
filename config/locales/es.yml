@@ -441,6 +441,9 @@ es:
       open_button:
         label: Abrir modelo %{name}
         text: Abrir
+    path_template_preview:
+      description:
+      path:
     search_help:
       boolean: Utilice "or" para buscar modelos que coincidan con cualquiera de los términos.
       federation: Busca cualquier nombre de usuario de Fediverse para seguirlo.

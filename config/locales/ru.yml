@@ -441,6 +441,9 @@ ru:
       open_button:
         label:
         text:
+    path_template_preview:
+      description:
+      path:
     search_help:
       boolean:
       federation:

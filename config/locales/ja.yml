@@ -441,6 +441,9 @@ ja:
       open_button:
         label: モデル%{name}を開く
         text: 開く
+    path_template_preview:
+      description:
+      path:
     search_help:
       boolean: "「or」を使用して、いずれかの用語に一致するモデルを検索します。"
       federation:
