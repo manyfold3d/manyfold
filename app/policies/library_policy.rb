@@ -22,6 +22,10 @@ class LibraryPolicy < ApplicationPolicy
     create?
   end
 
+  def parse_preview?
+    create?
+  end
+
   class Scope
     attr_reader :user, :scope
 

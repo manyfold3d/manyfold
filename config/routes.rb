@@ -89,7 +89,11 @@ Rails.application.routes.draw do
     get "/welcome", to: "home#welcome", as: :welcome
   end
 
-  resources :libraries, except: [:index]
+  resources :libraries, except: [:index] do
+    member do
+      get :parse_preview
+    end
+  end
 
   concern :followable do |options|
     if SiteSettings.multiuser_enabled?

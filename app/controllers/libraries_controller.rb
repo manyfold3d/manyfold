@@ -57,6 +57,11 @@ class LibrariesController < ApplicationController
     redirect_to settings_libraries_path, notice: t(".success")
   end
 
+  def parse_preview
+    @library.path_template = params[:path_template] if params[:path_template]
+    render Components::PathTemplatePreview.new(library: @library), layout: nil
+  end
+
   private
 
   def library_params

@@ -41,8 +41,7 @@
   <div>
   </div>
   <div><small>
-    Random examples from this library:
-    <%= PathTemplatePreview library: @library %>
+    <%= turbo_frame_tag "parse-preview", src: parse_preview_library_path(@library, template: @library.path_template) %>
   </small></div>
 
   <%= CheckBoxInputRow form: form, attribute: :safe_folder_names, help: t(".safe_folder_names.help_html"), label: Library.human_attribute_name(:safe_folder_names) %>
