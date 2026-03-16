@@ -12,7 +12,7 @@ import CopyTextController from './copy_text_controller'
 import EditableController from './editable_controller'
 import I18nController from './i18n_controller'
 import ObfuscatedTextController from './obfuscated_text_controller'
-import ParsePreviewController from "./parse_preview_controller"
+import ParsePreviewController from './parse_preview_controller'
 import RendererController from './renderer_controller'
 import SearchableSelectController from './searchable_select_controller'
 import StorageServiceController from './storage_service_controller'
@@ -29,7 +29,7 @@ application.register('copy-text', CopyTextController)
 application.register('editable', EditableController)
 application.register('i18n', I18nController)
 application.register('obfuscated-text', ObfuscatedTextController)
-application.register("parse-preview", ParsePreviewController)
+application.register('parse-preview', ParsePreviewController)
 application.register('renderer', RendererController)
 application.register('searchable-select', SearchableSelectController)
 application.register('storage-service', StorageServiceController)
