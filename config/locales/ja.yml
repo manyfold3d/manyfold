@@ -325,7 +325,7 @@ ja:
       community: コミュニティに参加する
       instance_heading: インスタンスの詳細
       issues: 問題を報告する
-      open_source_html: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MITライセンスの</a><a href="https://github.com/manyfold3d/manyfold" target="_blank">オープンソース</a>です。
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">GNU Affero GPL 3.0</a> <a href="https://github.com/manyfold3d/manyfold" target="_blank">オープンソース</a>です。
       sponsor: 発明をスポンサー
       support: インスタンスをスポンサー
       version: バージョン

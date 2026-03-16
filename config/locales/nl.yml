@@ -325,7 +325,7 @@ nl:
       community:
       instance_heading:
       issues: Problemen
-      open_source_html: Open Source onder de <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">MIT-licentie</a>.
+      open_source_html: Open Source onder de <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">GNU Affero GPL 3.0</a>.
       sponsor: Sponsor
       support:
       version: Versie
