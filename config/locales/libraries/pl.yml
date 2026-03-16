@@ -25,8 +25,6 @@ pl:
         placeholder: boxes
       notes:
         help_html: Opcjonalne; widoczne tylko dla administratorów na stronie ustawień. Możesz używać <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
-      parse_metadata_from_path:
-        help: Ustawia twórcę, kolekcję i tagi na podstawie szablonu
       path:
         placeholder: "/libraries/models"
       rules:
@@ -59,6 +57,8 @@ pl:
       tag_regex:
         check: Sprawdź
         search_missing: Wyszukaj Brakujące
+    parse_metadata_help:
+      help: Ustawia twórcę, kolekcję i tagi na podstawie szablonu
     path_template_help:
       description: Struktura folderów jest zgodna z szablonem zdefiniowanym przy użyciu tokenów. Do szablonu możesz również dołączyć inny tekst (np. separatory folderów), który zostanie uwzględniony jak jest.
       tokens:

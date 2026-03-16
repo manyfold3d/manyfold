@@ -25,8 +25,6 @@ de:
         placeholder: boxes
       notes:
         help_html: Optional, Wird nur Administratoren in den Einstellungen angezeigt. Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> benutzten.
-      parse_metadata_from_path:
-        help: Legt Ersteller, Sammlung und Tags basierend auf der Vorlage fest
       path:
         placeholder: z.B. /Samlungen/modelle
       rules:
@@ -59,6 +57,8 @@ de:
       tag_regex:
         check: Check
         search_missing: Suche Fehlende
+    parse_metadata_help:
+      help: Legt Ersteller, Sammlung und Tags basierend auf der Vorlage fest
     path_template_help:
       description: Die Ordnerstruktur folgt einer Vorlage, die du mit Token definierst. Du kannst auch anderen Text in die Vorlage einfügen (z. B. Ordnertrennzeichen) und dieser wird unverändert übernommen.
       tokens:

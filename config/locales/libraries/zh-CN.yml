@@ -25,8 +25,6 @@ zh-CN:
         placeholder: boxes
       notes:
         help_html: 可选项；仅在设置页面上向管理员显示。您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
-      parse_metadata_from_path:
-        help: 根据模板设置创建者、合集和 Tags
       path:
         placeholder: 例如：/libraries/models
       rules:
@@ -59,6 +57,8 @@ zh-CN:
       tag_regex:
         check: 检查
         search_missing:
+    parse_metadata_help:
+      help: 根据模板设置创建者、合集和 Tags
     path_template_help:
       description: 文件夹结构遵循您使用标记定义的模板。您也可以在模板中包含其他文本（如文件夹分隔符），这些文本将按原样包含在内。
       tokens:

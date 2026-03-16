@@ -25,8 +25,6 @@ nl:
         placeholder: boxes
       notes:
         help_html: Optioneel; alleen zichtbaar voor beheerders op de instellingenpagina. Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
-      parse_metadata_from_path:
-        help: Stelt maker, collectie en tags in op basis van sjabloon
       path:
         placeholder: "/libraries/models"
       rules:
@@ -59,6 +57,8 @@ nl:
       tag_regex:
         check: Controleren
         search_missing: Zoek Ontbrekende
+    parse_metadata_help:
+      help: Stelt maker, collectie en tags in op basis van sjabloon
     path_template_help:
       description: Mapstructuur volgt een sjabloon dat je definieert met tokens. Je kunt ook andere tekst in het sjabloon opnemen (zoals mapscheidingstekens) en deze wordt ongewijzigd opgenomen.
       tokens:

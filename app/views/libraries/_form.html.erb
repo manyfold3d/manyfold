@@ -36,14 +36,7 @@
   </p>
 
   <%= TextInputRow form: form, attribute: :path_template, help: render("path_template_help"), label: Library.human_attribute_name(:path_template) %>
-  <%= CheckBoxInputRow form: form, attribute: :parse_metadata_from_path, help: t(".parse_metadata_from_path.help"), label: Library.human_attribute_name(:parse_metadata_from_path) %>
-
-  <div>
-  </div>
-  <div><small>
-    <%= turbo_frame_tag "parse-preview", src: parse_preview_library_path(@library, template: @library.path_template, enabled: @library.parse_metadata_from_path.to_s) %>
-  </small></div>
-
+  <%= CheckBoxInputRow form: form, attribute: :parse_metadata_from_path, help: render("parse_metadata_help"), label: Library.human_attribute_name(:parse_metadata_from_path) %>
   <%= CheckBoxInputRow form: form, attribute: :safe_folder_names, help: t(".safe_folder_names.help_html"), label: Library.human_attribute_name(:safe_folder_names) %>
 
   <% if @library.persisted? %>
