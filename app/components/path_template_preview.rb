@@ -26,7 +26,12 @@ class Components::PathTemplatePreview < Components::Base
             td { path }
             td { find_or_new_from_path_component(Creator, parsed[:creator])&.name || "❌" }
             td { find_or_new_from_path_component(Collection, parsed[:collection])&.name || "❌" }
-            td { parsed[:tags]&.map { |it| Tag tag: ActsAsTaggableOn::Tag.new(name: it) } || "❌" }
+            td {
+              parsed[:tags]&.map do |it|
+                Tag tag: ActsAsTaggableOn::Tag.new(name: it), link: false
+                whitespace
+              end || "❌"
+            }
             td { to_human_name(parsed[:model_name]) || "❌" }
           end
         end
