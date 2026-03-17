@@ -225,7 +225,7 @@ GEM
       database_cleaner-core (~> 2.0)
     database_cleaner-core (2.0.1)
     date (3.5.1)
-    devise (5.0.2)
+    devise (5.0.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 7.0)
@@ -1146,7 +1146,7 @@ CHECKSUMS
   database_cleaner-active_record (2.2.2) sha256=88296b9f3088c31f7c0d4fcec10f68e4b71c96698043916de59b04debec10388
   database_cleaner-core (2.0.1) sha256=8646574c32162e59ed7b5258a97a208d3c44551b854e510994f24683865d846c
   date (3.5.1) sha256=750d06384d7b9c15d562c76291407d89e368dda4d4fff957eb94962d325a0dc0
-  devise (5.0.2) sha256=254330c9290e612ad9681e8a18c96aa21fb95bc391af936b84480965444bb0b6
+  devise (5.0.3) sha256=c4c065051cdc4ace11547b2b7f5c3c4c97d0f1269250f5fe90f614ff78f29546
   devise_invitable (2.0.11) sha256=780014f74b8848218d93a297300590120f1742984396acf3d6799ab49b9a6a3f
   devise_zxcvbn (6.0.0) sha256=92b45f0b50657f17d9472dfb72b4414482f59942a0cbdd8c4346e054d77ee3ee
   diff-lcs (1.6.2) sha256=9ae0d2cba7d4df3075fe8cd8602a8604993efc0dfa934cff568969efb1909962
