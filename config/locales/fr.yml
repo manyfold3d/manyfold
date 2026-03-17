@@ -443,6 +443,9 @@ fr:
       open_button:
         label: Ouvrir le modèle %{name}
         text: Ouvrir
+    path_template_preview:
+      description:
+      path:
     search_help:
       boolean:
       federation:

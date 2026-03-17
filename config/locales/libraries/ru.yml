@@ -25,8 +25,6 @@ ru:
         placeholder:
       notes:
         help_html:
-      parse_metadata_from_path:
-        help: Устанавливает создателя, коллекцию и теги на основе шаблона
       path:
         placeholder:
       rules:
@@ -59,6 +57,8 @@ ru:
       tag_regex:
         check: Проверить
         search_missing: Найти отсутствующие
+    parse_metadata_help:
+      help: Устанавливает создателя, коллекцию и теги на основе шаблона
     path_template_help:
       description: Структура папок следует шаблону, который вы определяете с помощью токенов. Вы также можете включить другой текст в шаблон (например, разделители папок), и он будет включен без изменений.
       tokens:

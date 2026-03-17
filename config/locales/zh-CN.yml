@@ -441,6 +441,9 @@ zh-CN:
       open_button:
         label: 打开模型 %{name}
         text: 打开
+    path_template_preview:
+      description:
+      path:
     search_help:
       boolean: 使用 "or" 查找匹配的模型。
       federation: 搜索任何 Fediverse 用户名，即可关注该用户。

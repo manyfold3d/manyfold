@@ -25,8 +25,6 @@ en:
         placeholder: boxes
       notes:
         help_html: Optional; shown only to administrators on the settings page. You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
-      parse_metadata_from_path:
-        help: When scanning new models, try to work out information like creator, collection, and tags from the folder name, based on the folder name template.
       path:
         placeholder: e.g. /libraries/models
       rules:
@@ -59,6 +57,8 @@ en:
       tag_regex:
         check: Check
         search_missing: Search Missing
+    parse_metadata_help:
+      help: When scanning new models, try to work out information like creator, collection, and tags from the folder name, based on the folder name template.
     path_template_help:
       description: Folder structure follows a template that you define using tokens. You can also include other text in the template (such as folder separators) and it will be included as-is.
       tokens:

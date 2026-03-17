@@ -441,6 +441,9 @@ en:
       open_button:
         label: Open model %{name}
         text: Open
+    path_template_preview:
+      description: The table below shows some of the inferred metadata for folders in this library, based on the template above.
+      path: Path
     search_help:
       boolean: Use "or" to find models that match any of the terms.
       federation: Search for any Fediverse username to follow it.

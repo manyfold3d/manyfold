@@ -25,8 +25,6 @@ cs:
         placeholder: boxy
       notes:
         help_html: Nepovinné; zobrazeno pouze správcům na stránce nastavení. Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
-      parse_metadata_from_path:
-        help: Nastaví autora, kolekci a štítky na základě šablony
       path:
         placeholder: "/libraries/models"
       rules:
@@ -59,6 +57,8 @@ cs:
       tag_regex:
         check: Kontrola
         search_missing: Vyhledávání chybějících
+    parse_metadata_help:
+      help: Nastaví autora, kolekci a štítky na základě šablony
     path_template_help:
       description: Struktura složky se řídí šablonou, kterou definujete pomocí tokenů. Do šablony můžete zahrnout i jiný text (například oddělovače složek) a bude zahrnut tak, jak je.
       tokens:

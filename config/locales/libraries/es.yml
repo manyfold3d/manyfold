@@ -25,8 +25,6 @@ es:
         placeholder: boxes
       notes:
         help_html: Opcional - sólo se muestra a los administradores en la página de configuración. Puede utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
-      parse_metadata_from_path:
-        help: Establece el creador, la colección y las etiquetas en función de la plantilla
       path:
         placeholder: "/libraries/models"
       rules:
@@ -59,6 +57,8 @@ es:
       tag_regex:
         check: Revisar
         search_missing: Buscar Desaparecidos
+    parse_metadata_help:
+      help: Establece el creador, la colección y las etiquetas en función de la plantilla
     path_template_help:
       description: La estructura de carpetas sigue una plantilla que usted define utilizando tokens. También puede incluir otro texto en la plantilla (como separadores de carpeta) y se incluirá tal cual.
       tokens:

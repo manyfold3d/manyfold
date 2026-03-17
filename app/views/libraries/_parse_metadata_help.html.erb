@@ -1,0 +1,4 @@
+<p>
+  <%= t(".help") %>
+</p>
+<%= turbo_frame_tag "parse-preview", data: {src: @library.persisted? ? preview_library_path(@library) : preview_libraries_path} %>

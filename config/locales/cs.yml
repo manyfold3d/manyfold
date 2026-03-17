@@ -441,6 +441,9 @@ cs:
       open_button:
         label: Otevřít model %{name}
         text: Otevřít
+    path_template_preview:
+      description:
+      path:
     search_help:
       boolean:
       federation:

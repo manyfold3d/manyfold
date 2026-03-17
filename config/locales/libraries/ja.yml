@@ -25,8 +25,6 @@ ja:
         placeholder:
       notes:
         help_html:
-      parse_metadata_from_path:
-        help: テンプレートに基づいてクリエイター、コレクション、タグを設定する
       path:
         placeholder:
       rules:
@@ -59,6 +57,8 @@ ja:
       tag_regex:
         check:
         search_missing:
+    parse_metadata_help:
+      help: テンプレートに基づいてクリエイター、コレクション、タグを設定する
     path_template_help:
       description: フォルダ構造は、トークンを使って定義したテンプレートに従います。テンプレートに他のテキストを含めることもでき（フォルダーのセパレーターなど）、そのテキストはそのまま含まれます。
       tokens:

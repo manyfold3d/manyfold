@@ -441,6 +441,9 @@ nl:
       open_button:
         label: Open model %{name}
         text: Openen
+    path_template_preview:
+      description:
+      path:
     search_help:
       boolean:
       federation:

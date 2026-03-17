@@ -1,4 +1,4 @@
-<%= form_with model: @library, class: "container-md tabular-form" do |form| %>
+<%= form_with model: @library, class: "container-md tabular-form", data: {controller: "parse-preview"} do |form| %>
   <%= text_input_row form, :name %>
   <%= checkbox_input_row form, :default, help: t(".default.help"), checked: @library.default? %>
   <% unless @library.persisted? %>
@@ -9,7 +9,7 @@
       <%= form.select :storage_service, Library::STORAGE_SERVICES.map { |it| [translate("libraries.storage_services.%{service}" % {service: it}), it] }, {}, {class: "form-control col-auto form-select", "data-bs-collapse": "collapse", "data-controller": "storage-service", "data-action": "change->storage-service#onChange"} %>
       <div id="options-filesystem" class="card p-3 collapse show storage-collapse tabular-form" data-bs-parent="#library_storage_service">
         <p><%= t ".filesystem_description_html" %></p>
-        <%= text_input_row form, :path, placeholder: translate(".path.placeholder") %>
+        <%= text_input_row form, :path, placeholder: translate(".path.placeholder"), options: {data: {action: "change->parse-preview#handleChange"}} %>
         <%= checkbox_input_row form, :create_path_if_not_on_disk, help: t(".create_path_if_not_on_disk.help") %>
       </div>
       <div id="options-s3" class="card p-3 collapse show storage-collapse tabular-form" data-bs-parent="#library_storage_service">
@@ -35,8 +35,8 @@
     <%= t ".folder_organisation.description" %>
   </p>
 
-  <%= TextInputRow form: form, attribute: :path_template, help: render("path_template_help"), label: Library.human_attribute_name(:path_template) %>
-  <%= CheckBoxInputRow form: form, attribute: :parse_metadata_from_path, help: t(".parse_metadata_from_path.help"), label: Library.human_attribute_name(:parse_metadata_from_path) %>
+  <%= TextInputRow form: form, attribute: :path_template, help: render("path_template_help"), label: Library.human_attribute_name(:path_template), options: {data: {action: "change->parse-preview#handleChange"}} %>
+  <%= CheckBoxInputRow form: form, attribute: :parse_metadata_from_path, help: render("parse_metadata_help"), label: Library.human_attribute_name(:parse_metadata_from_path), options: {data: {action: "change->parse-preview#handleChange"}} %>
   <%= CheckBoxInputRow form: form, attribute: :safe_folder_names, help: t(".safe_folder_names.help_html"), label: Library.human_attribute_name(:safe_folder_names) %>
 
   <% if @library.persisted? %>
