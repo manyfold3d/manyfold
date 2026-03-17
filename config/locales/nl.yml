@@ -3,34 +3,34 @@ nl:
   activerecord:
     attributes:
       collection:
-        ai_indexable:
+        ai_indexable: Gebruik voor AI-training toestaan
         caption: Onderschrift
         collection:
-        indexable:
+        indexable: Indexering voor zoekopdrachten toestaan
         models: Modellen
         name: Naam
         notes: Notities
       creator:
-        ai_indexable:
-        avatar:
-        banner:
+        ai_indexable: Gebruik voor AI-training toestaan
+        avatar: Avatar afbeelding
+        banner: Afbeelding banner
         caption: Tagline
-        indexable:
+        indexable: Indexering voor zoekopdrachten toestaan
         name: Naam
         notes: Beschrijving
         slug:
       doorkeeper/access_token:
         active:
         created_at: Aangemaakt op
-        expires_in:
-        fingerprint:
+        expires_in: Verloopt over
+        fingerprint: Vingerafdruk
         scopes: Scopes
       doorkeeper/application:
-        access_token:
+        access_token: Toegangssleutel
         confidential: Confidentieel
-        created_at:
+        created_at: Aangemaakt op
         name: Naam
-        owner:
+        owner: Eigenaar
         redirect_uri: Redirect URI
         scopes: Scopes
         secret:
@@ -45,24 +45,24 @@ nl:
         object: Object
       group:
         description: Beschrijving
-        invitations:
-        memberships:
+        invitations: Uitnodigingen
+        memberships: Lidmaatschappen
         name: Naam
-        typed_id:
+        typed_id: Toestemming ID
       library:
         caption: Onderschrift
-        create_path_if_not_on_disk:
-        default:
+        create_path_if_not_on_disk: Map automatisch aanmaken
+        default: Standaard
         icon: Icoon
         name: Naam
         notes: Notities
-        parse_metadata_from_path: Vul metadata in vanuit pad en sjabloon tijdens scan
+        parse_metadata_from_path:
         path: Pad
-        path_template: Model pad sjabloon
+        path_template:
         s3_access_key_id: Toegangssleutel ID
         s3_bucket: Bucket Naam
         s3_endpoint: Endpoint URL
-        s3_path_style:
+        s3_path_style: Gebruik padachtige URL's
         s3_region: Regio
         s3_secret_access_key: Geheime Toegangssleutel
         safe_folder_names: Gebruik veilige mapnamen
@@ -71,19 +71,19 @@ nl:
       link:
         url: Link
       list:
-        list_items:
+        list_items: Items
         name: Naam
       list_item:
-        created_at:
+        created_at: Toegevoegd
       model:
-        ai_indexable:
+        ai_indexable: Gebruik voor AI-training toestaan
         caption: Onderschrift
         collection: Collectie
         collection_id: Collectie
         creator: Maker
         creator_id: Maker
-        images:
-        indexable:
+        images: Afbeeldingen
+        indexable: Indexering voor zoekopdrachten toestaan
         library_id: Bibliotheek
         license: Licentie
         model_files: Bestanden
@@ -96,7 +96,7 @@ nl:
       model_file:
         caption: Onderschrift
         digest: Digest
-        dimensions:
+        dimensions: Afmetingen
         filename: Bestandsnaam
         model_id: Model
         notes: Notities
@@ -114,7 +114,7 @@ nl:
         severity: Ernst
       user:
         approved: Account in behandeling
-        auth_uid:
+        auth_uid: OIDC
         confirmation_sent_at: Bevestiging verzonden op
         confirmation_token: Bevestigingstoken
         confirmed_at: Bevestigd op
@@ -138,15 +138,15 @@ nl:
         unconfirmed_email: Onbevestigde e-mail
         unlock_token: Ontgrendelingstoken
         updated_at: Bijgewerkt op
-        username:
+        username: Gebruikersnaam
     errors:
       models:
         collection:
           attributes:
             collection:
-              private:
+              private: moet openbaar zijn
             creator:
-              private:
+              private: moet openbaar zijn
         doorkeeper/application:
           attributes:
             redirect_uri:
@@ -161,19 +161,19 @@ nl:
         library:
           attributes:
             path:
-              cannot_be_contained:
-              cannot_contain:
-              non_readable:
-              non_readable_subfolder:
+              cannot_be_contained: kan niet in een andere bibliotheek staan
+              cannot_contain: kan geen andere bibliotheken bevatten
+              non_readable: moet leesbaar zijn
+              non_readable_subfolder: bevat onleesbare submappen
               non_writable: moet schrijfbaar zijn
-              non_writable_subfolder:
-              not_a_directory:
+              non_writable_subfolder: bevat niet-schrijfbare submappen
+              not_a_directory: is geen map
               not_found: kon niet worden gevonden op schijf
               unsafe: kan geen bevoorrecht systeempad zijn
         model:
           attributes:
             creator:
-              private:
+              private: moet openbaar zijn
             library:
               nested: kan niet worden gewijzigd, model bevat andere modellen
             license:
@@ -240,12 +240,12 @@ nl:
         two: Links
         zero: Links
       list:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Lijsten
+        many: Lijsten
+        one: Lijst
+        other: Lijsten
+        two: Lijsten
+        zero: Lijsten
       model:
         few: Modellen
         many: Modellen
@@ -307,22 +307,22 @@ nl:
     demo_mode: Deze instantie staat in demomodus. Je kunt geen modellen toevoegen of verwijderen, maar je kunt wel alles anders doen.
     filters_card:
       missing_tags: Ontbrekende tags
-      owner:
+      owner: Eigenaar
       remove_collection_filter: Collectiefilter verwijderen
       remove_creator_filter: Makerfilter verwijderen
       remove_library_filter: Bibliotheekfilter verwijderen
       remove_missing_tag_filter: Filter voor ontbrekende tag verwijderen
-      remove_owner_filter:
+      remove_owner_filter: Verwijder eigenaar filter
       remove_search_filter: Zoekfilter verwijderen
       remove_tag_filter: Tagfilter verwijderen
       search: Zoeken
       title: Filters
       unknown: Onbekend
     footer:
-      about:
-      api:
+      about: Over deze instantie
+      api: Verken onze API
       by_html: Ontworpen en gebouwd door <a href="https://floppy.org.uk" target="_blank">James</a> met hulp van <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">onze bijdragers</a>.
-      community:
+      community: Word lid van onze gemeenschap
       instance_heading:
       issues: Problemen
       open_source_html: Open Source onder de <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">GNU Affero GPL 3.0</a>.
@@ -443,7 +443,7 @@ nl:
         text: Openen
     path_template_preview:
       description:
-      path:
+      path: Pad
     search_help:
       boolean:
       federation:
@@ -987,24 +987,24 @@ nl:
       index:
         copy:
         description:
-        invite_count:
-        member_count:
+        invite_count: "%{count} open uitnodigingen"
+        member_count: "%{count} leden"
         title:
       new:
-        title:
+        title: Nieuwe groep
     lists:
       edit:
-        title:
+        title: Lijst bewerken
       form:
-        confirm_destroy:
+        confirm_destroy: Weet je zeker dat je deze lijst wilt verwijderen?
       index:
         description:
-        title:
+        title: Mijn lijsten
       new:
-        title:
+        title: Nieuwe lijst
       show:
         description:
-        title:
+        title: 'Lijst: %{name}'
     pagination:
       first: "« Eerste"
       last: Laatste »
