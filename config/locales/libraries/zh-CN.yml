@@ -18,7 +18,7 @@ zh-CN:
         help: 将此资料库设置为上传的默认库
       filesystem_description_html: 要使用本地文件系统上的存储，首先要确保它已作为 <a href="https://docs.docker.com/storage/bind-mounts/">绑定挂载</a> 或其他卷挂载到 Docker 容器中，然后输入 Docker 路径；而不是主机服务器上的路径！例如，如果你在主机上的 <code>/mnt/media/3d/models</code> 文件夹中有大量文件，并在 Docker 配置中将 <code>/mnt/media/3d</code> 绑定到 <code>/libraries</code>，那么所需的路径就是 <code>/libraries/models</code>。
       folder_organisation:
-        description: 定义 "整理文件" 和扫描时自动填充元数据所使用的文件夹结构。影响所有账户。
+        description:
         title: 文件夹命名
       icon:
         help_html: 可选；<a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">Boostrap 图标</a>或<a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a> 中的任何图标。
@@ -58,7 +58,7 @@ zh-CN:
         check: 检查
         search_missing:
     parse_metadata_help:
-      help: 根据模板设置创建者、合集和 Tags
+      help:
     path_template_help:
       description: 文件夹结构遵循您使用标记定义的模板。您也可以在模板中包含其他文本（如文件夹分隔符），这些文本将按原样包含在内。
       tokens:
