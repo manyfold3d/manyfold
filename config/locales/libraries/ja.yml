@@ -18,7 +18,7 @@ ja:
         help:
       filesystem_description_html:
       folder_organisation:
-        description: "「ファイルの整理」とスキャン中のメタデータの自動入力で使用されるフォルダ構造を定義します。すべてのアカウントに影響します。"
+        description:
         title: フォルダ名式
       icon:
         help_html:
@@ -58,7 +58,7 @@ ja:
         check:
         search_missing:
     parse_metadata_help:
-      help: テンプレートに基づいてクリエイター、コレクション、タグを設定する
+      help:
     path_template_help:
       description: フォルダ構造は、トークンを使って定義したテンプレートに従います。テンプレートに他のテキストを含めることもでき（フォルダーのセパレーターなど）、そのテキストはそのまま含まれます。
       tokens:
