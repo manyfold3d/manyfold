@@ -18,7 +18,7 @@ de:
         help: Diese Bibliothek als Standard für Uploads festlegen
       filesystem_description_html: Um Speicherplatz auf deinem lokalen Dateisystem zu verwenden, stelle zunächst sicher, dass er als <a href="https://docs.docker.com/storage/bind-mounts/">Bind-Mount</a> oder anderes Volume in deinem Docker-Container eingehängt ist, und gebe dann den Docker-Pfad ein; nicht den Pfad auf dem Host-Server! Wenn du zum Beispiel einen Ordner voller Dateien unter <code>/mnt/media/3d/models</code> auf deinem Host hast und <code>/mnt/media/3d</code> in deinem Docker-Konfiguration an <code>/libraries</code> gebunden hast, wäre der erforderliche Pfad <code>/libraries/models</code>.
       folder_organisation:
-        description: Definiere die Ordnerstruktur, die von "Dateien organisieren" und für das automatische Ausfüllen von Metadaten beim Scannen verwendet wird. Wirkt sich auf alle Accounts aus.
+        description:
         title: Ordner Benennung
       icon:
         help_html: Optional; ein beliebiges Symbol von <a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">Bootstrap icons</a> oder <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a>.
@@ -58,7 +58,7 @@ de:
         check: Check
         search_missing: Suche Fehlende
     parse_metadata_help:
-      help: Legt Ersteller, Sammlung und Tags basierend auf der Vorlage fest
+      help:
     path_template_help:
       description: Die Ordnerstruktur folgt einer Vorlage, die du mit Token definierst. Du kannst auch anderen Text in die Vorlage einfügen (z. B. Ordnertrennzeichen) und dieser wird unverändert übernommen.
       tokens:

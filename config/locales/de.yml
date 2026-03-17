@@ -56,9 +56,9 @@ de:
         icon: Symbol
         name: Name
         notes: Notizen
-        parse_metadata_from_path: Metadaten aus der Modellpfadvorlage während des Scannens auffüllen
+        parse_metadata_from_path:
         path: Pfad
-        path_template: Modellpfad-Vorlage
+        path_template:
         s3_access_key_id: Zugangsschlüssel-ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpunkt URL
@@ -445,7 +445,7 @@ de:
         text: Öffnen
     path_template_preview:
       description:
-      path:
+      path: Pfad
     search_help:
       boolean: Verwende "oder", um Modelle zu finden, die einem der Begriffe entsprechen.
       federation: Suche nach einem beliebigen Fediverse-Benutzernamen, um ihm zu folgen.
