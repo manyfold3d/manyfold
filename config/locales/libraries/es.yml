@@ -18,7 +18,7 @@ es:
         help: Establecer esta biblioteca como la predeterminada para las cargas
       filesystem_description_html: Para utilizar el almacenamiento de tu sistema local, en primer lugar asegúrate de que está montado como un <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> u otro volumen dentro de tu contenedor Docker, luego introduce la ruta Docker; ¡no la ruta del servidor host! Por ejemplo, si tienes una carpeta llena de archivos en <code>/mnt/media/3d/models</code> en tu host, y has enlazado <code>/mnt/media/3d</code> a <code>/libraries</code> en tu configuración Docker, la ruta requerida sería <code>/libraries/models</code>.
       folder_organisation:
-        description: Establece la estructura de carpetas que usa el "organizador de archivos" y que se utiliza para completar automáticamente los metadatos durante el escaneo. Afecta a todos los usuarios.
+        description: Defina la estructura de carpetas que se utilizará para organizar los archivos y cuándo se rellenarán automáticamente los metadatos durante el escaneado.
         title: Nombres de las carpetas
       icon:
         help_html: 'Opcional: Cualquier icono de <a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">Boostrap icons</a> o <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a>.'
@@ -28,7 +28,7 @@ es:
       path:
         placeholder: "/libraries/models"
       rules:
-        title:
+        title: Reglas
       s3_bucket:
         help: Sólo el nombre del bucket, no la URL completa
       s3_description_html: Manyfold puede utilizar cualquier almacenamiento de objetos compatible con S3 para su biblioteca, incluyendo una amplia gama de servicios <a href="https://github.com/okhosting/awesome-storage?tab=readme-ov-file#s3-compatible-file-servers">open source</a> o <a href="https://www.storageprovider.info/blog/all-s3-storage-providers/">comerciales</a>.
@@ -58,7 +58,7 @@ es:
         check: Revisar
         search_missing: Buscar Desaparecidos
     parse_metadata_help:
-      help: Establece el creador, la colección y las etiquetas en función de la plantilla
+      help: Al escanear nuevos modelos, intente obtener información como el creador, la colección y las etiquetas a partir del nombre de la carpeta, basándose en la plantilla de nombre de carpeta.
     path_template_help:
       description: La estructura de carpetas sigue una plantilla que usted define utilizando tokens. También puede incluir otro texto en la plantilla (como separadores de carpeta) y se incluirá tal cual.
       tokens:

@@ -56,9 +56,9 @@ es:
         icon: Icono
         name: Nombre
         notes: Notas
-        parse_metadata_from_path: Rellenar metadatos a partir de la ruta y la plantilla durante el escaneo
+        parse_metadata_from_path: Inferir metadatos a partir de la ruta
         path: Ruta
-        path_template: Plantilla de ruta del modelo
+        path_template: Plantilla de nombres de carpetas
         s3_access_key_id: Clave de acceso ID
         s3_bucket: Nombre del Bucket
         s3_endpoint: Endpoint URL
@@ -443,7 +443,7 @@ es:
         text: Abrir
     path_template_preview:
       description:
-      path:
+      path: Ruta
     search_help:
       boolean: Utilice "or" para buscar modelos que coincidan con cualquiera de los términos.
       federation: Busca cualquier nombre de usuario de Fediverse para seguirlo.
