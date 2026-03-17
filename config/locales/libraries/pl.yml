@@ -18,7 +18,7 @@ pl:
         help: Ustaw tę bibliotekę jako domyślną dla przesyłanych plików
       filesystem_description_html: Aby użyć przestrzeni w lokalnym systemie plików, najpierw upewnij się, że jest on zamontowany jako <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> lub inny wolumin wewnątrz twojego kontenera Dockera, a następnie wprowadź ścieżkę Dockera, a nie ścieżkę na serwerze hosta! Na przykład, jeśli masz folder pełen plików w <code>/mnt/media/3d/models</code> na hoście i powiązałeś <code>/mnt/media/3d</code> z <code>/libraries</code> w konfiguracji Dockera, wymaganą ścieżką będzie <code>/libraries/models</code>.
       folder_organisation:
-        description: Określ strukturę folderów używaną przez "organizuj pliki" i do automatycznego uzupełniania metadanych podczas skanowania. Dotyczy wszystkich kont.
+        description:
         title: Nazewnictwo folderów
       icon:
         help_html: Opcjonalne; wszystkie ikony z <a href="https://icons.getbootstrap.com/" target="_blank" rel="noreferrer">Boostrap icons</a> lub <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank" rel="noreferrer">RPG-Awesome</a>.
@@ -58,7 +58,7 @@ pl:
         check: Sprawdź
         search_missing: Wyszukaj Brakujące
     parse_metadata_help:
-      help: Ustawia twórcę, kolekcję i tagi na podstawie szablonu
+      help:
     path_template_help:
       description: Struktura folderów jest zgodna z szablonem zdefiniowanym przy użyciu tokenów. Do szablonu możesz również dołączyć inny tekst (np. separatory folderów), który zostanie uwzględniony jak jest.
       tokens:

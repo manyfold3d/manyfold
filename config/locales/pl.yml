@@ -56,9 +56,9 @@ pl:
         icon: Ikona
         name: Nazwa
         notes: Notatki
-        parse_metadata_from_path: Wypełnij metadane z szablonu ścieżki modelu podczas skanowania
+        parse_metadata_from_path:
         path: Ścieżka
-        path_template: Szablon ścieżki modelu
+        path_template:
         s3_access_key_id:
         s3_bucket:
         s3_endpoint:
@@ -443,7 +443,7 @@ pl:
         text: Otwórz
     path_template_preview:
       description:
-      path:
+      path: Ścieżka
     search_help:
       boolean: Użyj "or", aby znaleźć modele pasujące do któregokolwiek z terminów.
       federation: Wyszukaj dowolną nazwę użytkownika Fediverse, aby ją zaobserwować.
