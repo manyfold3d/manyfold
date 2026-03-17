@@ -56,9 +56,9 @@ ru:
         icon: Иконка
         name: Имя
         notes: Примечания
-        parse_metadata_from_path: Заполнить метаданные из пути и шаблона во время сканирования
+        parse_metadata_from_path:
         path: Путь
-        path_template: Шаблон пути к модели
+        path_template:
         s3_access_key_id: Access Key ID (Идентификатор ключа доступа)
         s3_bucket: Bucket Name (Имя бакета)
         s3_endpoint: URL конечной точки
@@ -443,7 +443,7 @@ ru:
         text:
     path_template_preview:
       description:
-      path:
+      path: Путь
     search_help:
       boolean:
       federation:
