@@ -58,9 +58,9 @@ fr:
         icon: Icône
         name: Nom
         notes: Notes
-        parse_metadata_from_path: Remplir les métadonnées à partir du chemin d'accès et du modèle pendant le scan
+        parse_metadata_from_path:
         path: Chemin
-        path_template: Modèle de parcours
+        path_template:
         s3_access_key_id: ID de la clé d'accès
         s3_bucket: Nom du bucket
         s3_endpoint: URL du endpoint
@@ -445,7 +445,7 @@ fr:
         text: Ouvrir
     path_template_preview:
       description:
-      path:
+      path: Chemin
     search_help:
       boolean:
       federation:
