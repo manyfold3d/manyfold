@@ -56,9 +56,9 @@ zh-CN:
         icon: 图标
         name: 名称
         notes: 说明
-        parse_metadata_from_path: 扫描时从模型路径模板中填充元数据
+        parse_metadata_from_path:
         path: 路径
-        path_template: 模型路径模板
+        path_template:
         s3_access_key_id: Access Key ID
         s3_bucket: Bucket Name
         s3_endpoint: Endpoint URL
@@ -443,7 +443,7 @@ zh-CN:
         text: 打开
     path_template_preview:
       description:
-      path:
+      path: 路径
     search_help:
       boolean: 使用 "or" 查找匹配的模型。
       federation: 搜索任何 Fediverse 用户名，即可关注该用户。
