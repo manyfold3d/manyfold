@@ -18,7 +18,7 @@ fr:
         help:
       filesystem_description_html: Pour utiliser le stockage sur votre système de fichiers local, assurez-vous tout d'abord qu'il est monté en tant que <a href="https://docs.docker.com/storage/bind-mounts/">"bind mount"</a> ou autre volume dans votre conteneur Docker, puis entrez le chemin d'accès Docker ; pas le chemin d'accès sur votre serveur hôte ! Par exemple, si vous avez un répertoire plein de fichiers dans <code>/mnt/media/3d/models</code> sur votre hôte, et que vous avez lié <code>/mnt/media/3d</code> à <code>/libraries</code> dans votre configuration Docker, le chemin requis serait <code>/libraries/models</code>.
       folder_organisation:
-        description: Définir la structure des dossiers utilisée par "organiser les fichiers" et pour le remplissage automatique des métadonnées lors de l'analyse. Concerne tous les utilisateurs.
+        description:
         title: Nom du dossier
       icon:
         help_html: Icônes par la <a href="https://icons.getbootstrap.com/" target="_blank">bibliothèque Bootstrap </a> ou <a href="https://nagoshiashumari.github.io/Rpg-Awesome/" target="_blank">RPG-Awesome</a>.
@@ -58,7 +58,7 @@ fr:
         check: Vérifier
         search_missing: Recherche manquante
     parse_metadata_help:
-      help: Définir le créateur, la collection et les étiquettes en fonction du modèle
+      help:
     path_template_help:
       description: La structure des dossiers suit un modèle que vous définissez à l'aide de jetons. Vous pouvez également inclure d'autres textes dans le modèle (comme des séparateurs de dossiers) et ils seront inclus tels quels.
       tokens:
