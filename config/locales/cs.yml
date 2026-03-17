@@ -56,9 +56,9 @@ cs:
         icon: Ikona
         name: Název
         notes: Poznámky
-        parse_metadata_from_path: Vyplnění metadat z cesty a šablony během kontroly
+        parse_metadata_from_path:
         path: Cesta
-        path_template: Šablona cesty modelu
+        path_template:
         s3_access_key_id: ID přístupového klíče
         s3_bucket: Název Bucketu
         s3_endpoint: Adresa URL koncového bodu
@@ -443,7 +443,7 @@ cs:
         text: Otevřít
     path_template_preview:
       description:
-      path:
+      path: Cesta
     search_help:
       boolean:
       federation:
