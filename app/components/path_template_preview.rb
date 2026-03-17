@@ -25,7 +25,7 @@ class Components::PathTemplatePreview < Components::Base
           end
           @paths.map do |path, parsed|
             tr do
-              td { path }
+              td(style: "word-break: break-all") { path }
               td { find_or_new_from_path_component(Creator, parsed[:creator])&.name || "❌" }
               td { find_or_new_from_path_component(Collection, parsed[:collection])&.name || "❌" }
               td {
