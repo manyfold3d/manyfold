@@ -1,6 +1,7 @@
 // Stylesheet for Components::Comment
 
-div.comment-component {
+div.comment-component,
+div.new-comment-form-component {
   @extend .card;
   @extend .mb-3;
 
@@ -12,8 +13,29 @@ div.comment-component {
     @extend .card-body;
   }
 
+  .comment-footer {
+    @extend .card-footer;
+  }
+
   .comment-time {
     font-style: italic;
     font-size: small;
+  }
+}
+
+div.new-comment-form-component {
+  @extend .border-secondary;
+
+  .comment-header {
+    @extend .text-bg-secondary;
+  }
+
+  .comment-body>textarea {
+    border: none;
+  }
+
+  .comment-footer>input {
+    @extend .btn;
+    @extend .btn-secondary;
   }
 }

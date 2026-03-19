@@ -384,6 +384,9 @@ en:
       inherit: Inherit from parent object or default site setting; currently '%{inherited}'
       'no': 'No'
       'yes': 'Yes'
+  comments:
+    destroy:
+      destroyed: Comment deleted!
   components:
     actor_card:
       non_manyfold_account: This is not a Manyfold account; you can follow it, but probably nothing interesting will happen, at least for now.
@@ -444,6 +447,9 @@ en:
       open_button:
         label: Open model %{name}
         text: Open
+    new_comment_form:
+      submit: Post
+      title: Post a comment
     path_template_preview:
       description: The table below shows some of the inferred metadata for folders in this library, based on the template above.
       path: Path
