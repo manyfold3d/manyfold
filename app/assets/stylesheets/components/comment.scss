@@ -1,0 +1,19 @@
+// Stylesheet for Components::Comment
+
+div.comment-component {
+  @extend .card;
+  @extend .mb-3;
+
+  .comment-header {
+    @extend .card-header;
+  }
+
+  .comment-body {
+    @extend .card-body;
+  }
+
+  .comment-time {
+    font-style: italic;
+    font-size: small;
+  }
+}

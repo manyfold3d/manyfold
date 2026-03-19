@@ -392,6 +392,9 @@ en:
     column_header:
       current_sort: Active sort
       sort_by: Sort by
+    comment:
+      posted: posted %{time} ago
+      system: Automated comment
     copy_button:
       copy: Copy to Clipboard
     copyable_text:
