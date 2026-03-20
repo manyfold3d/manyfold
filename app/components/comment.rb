@@ -2,6 +2,7 @@
 
 class Components::Comment < Components::Base
   include Phlex::Rails::Helpers::TimeAgoInWords
+  include Phlex::Rails::Helpers::LinkTo
 
   register_output_helper :markdownify
 
@@ -17,15 +18,20 @@ class Components::Comment < Components::Base
   def view_template
     div class: "comment-component" do
       div class: "comment-header" do
-        if @comment.system
-          Icon icon: "robot", label: t("components.comment.system")
-        else
-          Icon icon: "chat", role: "presentation"
+        div do
+          if @comment.system
+            Icon icon: "robot", label: t("components.comment.system")
+          else
+            Icon icon: "chat", role: "presentation"
+          end
+          whitespace
+          span { @comment.commenter.try(:name) || @comment.commenter.try(:username) }
+          whitespace
+          span(class: "comment-time", title: @comment.created_at) { t("components.comment.posted", time: time_ago_in_words(@comment.created_at)) }
         end
-        whitespace
-        span { @comment.commenter.try(:name) || @comment.commenter.try(:username) }
-        whitespace
-        span(class: "comment-time", title: @comment.created_at) { t("components.comment.posted", time: time_ago_in_words(@comment.created_at)) }
+        div class: "comment-header-links" do
+          link_to t("components.comment.delete"), [@comment.commentable, @comment], method: :delete, class: "link-danger", data: {confirm: t("components.comment.confirm_delete")} if policy(@comment).destroy?
+        end
       end
       div(class: "comment-body") { markdownify(@comment.comment) }
     end

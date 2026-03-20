@@ -9,6 +9,7 @@ module Components
     include Phlex::Rails::Helpers::Translate
 
     register_value_helper :current_user
+    register_value_helper :policy
 
     if Rails.env.development?
       def before_template

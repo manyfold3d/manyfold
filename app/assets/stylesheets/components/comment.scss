@@ -7,6 +7,14 @@ div.new-comment-form-component {
 
   .comment-header {
     @extend .card-header;
+    display: flex;
+    width: 100%;
+
+    .comment-header-links {
+      font-size: small;
+      text-align: end;
+      flex-grow: 1;
+    }
   }
 
   .comment-body {
