@@ -47,3 +47,11 @@ div.new-comment-form-component {
     @extend .btn-secondary;
   }
 }
+
+div.comment-reported {
+  @extend .border-danger;
+}
+
+div.comment-footer-reported {
+  @extend .text-bg-danger;
+}

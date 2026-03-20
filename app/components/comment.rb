@@ -15,8 +15,12 @@ class Components::Comment < Components::Base
     !@comment.system || @show_system
   end
 
+  def before_template
+    @reported = @comment.reports.any?
+  end
+
   def view_template
-    div class: "comment-component" do
+    div class: "comment-component #{"comment-reported" if @reported}" do
       div class: "comment-header" do
         div do
           if @comment.system
@@ -44,6 +48,11 @@ class Components::Comment < Components::Base
         end
       end
       div(class: "comment-body") { markdownify(@comment.comment) }
+      if current_user.is_moderator? && @comment.reports.any?
+        div(class: "comment-footer comment-footer-reported") do
+          span { t("components.comment.reported", time: @comment.reports.order(created_at: :desc).pick(:created_at)) }
+        end
+      end
     end
   end
 end

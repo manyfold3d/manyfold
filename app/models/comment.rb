@@ -3,6 +3,7 @@ require "federails/data_transformer/note"
 class Comment < ApplicationRecord
   include PublicIDable
   include Federails::DataEntity
+  include Reportable
 
   belongs_to :commenter, polymorphic: true, optional: true
   belongs_to :commentable, polymorphic: true
