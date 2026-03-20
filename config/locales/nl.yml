@@ -399,6 +399,8 @@ nl:
       confirm_delete:
       delete:
       posted:
+      report:
+      reported:
       system:
     copy_button:
       copy:
