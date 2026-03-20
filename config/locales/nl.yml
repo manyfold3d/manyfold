@@ -384,6 +384,9 @@ nl:
       inherit:
       'no': Nee
       'yes': Ja
+  comments:
+    destroy:
+      destroyed:
   components:
     actor_card:
       non_manyfold_account:
@@ -392,6 +395,11 @@ nl:
     column_header:
       current_sort:
       sort_by:
+    comment:
+      confirm_delete:
+      delete:
+      posted:
+      system:
     copy_button:
       copy:
     copyable_text:
@@ -441,6 +449,10 @@ nl:
       open_button:
         label: Open model %{name}
         text: Openen
+    new_comment_form:
+      placeholder:
+      submit:
+      title:
     path_template_preview:
       description:
       path: Pad

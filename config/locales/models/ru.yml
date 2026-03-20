@@ -85,6 +85,7 @@ ru:
     scan:
       success:
     show:
+      comments:
       download_preparing:
       download_requested:
       files:

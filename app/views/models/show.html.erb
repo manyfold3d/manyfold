@@ -44,6 +44,15 @@
           </div>
         <% end %>
       <% end %>
+      <% if policy_scope(@model.comments.where(system: false)).any? %>
+        <h2><a name="comments"><%= t(".comments") %></a></h2>
+      <% end %>
+      <div class="container">
+        <% policy_scope(@model.comments).each do |comment| %>
+          <%= Comment(comment: comment) %>
+        <% end %>
+        <%= NewCommentForm commentable: @model %>
+      </div>
     </div>
     <div class="col-md-3" id="sidebar">
       <%= card :secondary, t(".model_details") do %>

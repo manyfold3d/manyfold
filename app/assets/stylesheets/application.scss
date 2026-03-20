@@ -28,6 +28,8 @@ $ra-font-path: "../fonts" !default;
 
 @import "driver.js/dist/driver";
 
+@import './components/comment';
+
 .ts-control {
 	padding: 1px;
 }

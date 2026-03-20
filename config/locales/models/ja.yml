@@ -85,6 +85,7 @@ ja:
     scan:
       success: モデルスキャン開始
     show:
+      comments:
       download_preparing:
       download_requested:
       files:

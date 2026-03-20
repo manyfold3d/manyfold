@@ -384,6 +384,9 @@ zh-CN:
       inherit: 从父对象或默认网站设置继承；当前为 %{inherited}
       'no': 否
       'yes': 是
+  comments:
+    destroy:
+      destroyed:
   components:
     actor_card:
       non_manyfold_account: 这不是一个 Manyfold 账户；你可以关注它，但目前可能不会发生什么有趣的事情。
@@ -392,6 +395,11 @@ zh-CN:
     column_header:
       current_sort:
       sort_by: 排序方式
+    comment:
+      confirm_delete:
+      delete:
+      posted:
+      system:
     copy_button:
       copy: 复制到剪贴板
     copyable_text:
@@ -441,6 +449,10 @@ zh-CN:
       open_button:
         label: 打开模型 %{name}
         text: 打开
+    new_comment_form:
+      placeholder:
+      submit:
+      title:
     path_template_preview:
       description:
       path: 路径

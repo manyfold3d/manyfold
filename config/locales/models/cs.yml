@@ -85,6 +85,7 @@ cs:
     scan:
       success: Spuštěna kontrola modelu.
     show:
+      comments:
       download_preparing:
       download_requested:
       files: Soubory

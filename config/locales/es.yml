@@ -384,6 +384,9 @@ es:
       inherit: Hereda del objeto padre o de la configuración por defecto del sitio; actualmente '%{inherited}'
       'no': 'No'
       'yes': Sí
+  comments:
+    destroy:
+      destroyed:
   components:
     actor_card:
       non_manyfold_account: Esta no es una cuenta Manyfold. Puedes seguirla, pero probablemente no ocurra nada interesante, al menos por ahora.
@@ -392,6 +395,11 @@ es:
     column_header:
       current_sort: Ordenar por
       sort_by: Ordenar por
+    comment:
+      confirm_delete:
+      delete:
+      posted:
+      system:
     copy_button:
       copy: Copiar al portapapeles
     copyable_text:
@@ -441,6 +449,10 @@ es:
       open_button:
         label: Abrir modelo %{name}
         text: Abrir
+    new_comment_form:
+      placeholder:
+      submit:
+      title:
     path_template_preview:
       description:
       path: Ruta
