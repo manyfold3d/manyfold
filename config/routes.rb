@@ -109,7 +109,9 @@ Rails.application.routes.draw do
   end
 
   concern :commentable do |options|
-    resources :comments, {only: [:show, :create, :destroy]}.merge(options)
+    resources :comments, {only: [:show, :create, :destroy]}.merge(options) do
+      concerns :reportable, reportable_class: "Comment"
+    end
   end
   concern :reportable do |options|
     resources :reports, {only: [:new, :create]}.merge(options)
