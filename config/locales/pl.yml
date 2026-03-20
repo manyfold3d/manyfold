@@ -384,6 +384,9 @@ pl:
       inherit:
       'no': Nie
       'yes': Tak
+  comments:
+    destroy:
+      destroyed:
   components:
     actor_card:
       non_manyfold_account: To nie jest konto Manyfold; możesz je zaobserwować, ale prawdopodobnie nic ciekawego się nie stanie, przynajmniej na razie.
@@ -392,6 +395,11 @@ pl:
     column_header:
       current_sort:
       sort_by:
+    comment:
+      confirm_delete:
+      delete:
+      posted:
+      system:
     copy_button:
       copy: Kopiuj do schowka
     copyable_text:
@@ -441,6 +449,10 @@ pl:
       open_button:
         label: Otwórz model %{name}
         text: Otwórz
+    new_comment_form:
+      placeholder:
+      submit:
+      title:
     path_template_preview:
       description:
       path: Ścieżka

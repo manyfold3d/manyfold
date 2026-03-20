@@ -85,6 +85,7 @@ de:
     scan:
       success: Modell-Scan gestartet
     show:
+      comments:
       download_preparing: Download wird vorbereitet, bitte warten
       download_requested: Der Download wurde angefordert und wird in Kürze verfügbar sein, bitte warten.
       files: Dateien

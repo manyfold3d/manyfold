@@ -386,6 +386,9 @@ fr:
       inherit:
       'no': Non
       'yes': Oui
+  comments:
+    destroy:
+      destroyed:
   components:
     actor_card:
       non_manyfold_account: Il ne s'agit pas d'un compte Manyfold ; vous pouvez le suivre, mais il ne se passera probablement rien d'intéressant, du moins pour l'instant.
@@ -394,6 +397,11 @@ fr:
     column_header:
       current_sort: Activer le tri
       sort_by: Trier par
+    comment:
+      confirm_delete:
+      delete:
+      posted:
+      system:
     copy_button:
       copy: Copier dans le presse-papiers
     copyable_text:
@@ -443,6 +451,10 @@ fr:
       open_button:
         label: Ouvrir le modèle %{name}
         text: Ouvrir
+    new_comment_form:
+      placeholder:
+      submit:
+      title:
     path_template_preview:
       description:
       path: Chemin

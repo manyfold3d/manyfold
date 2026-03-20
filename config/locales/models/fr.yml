@@ -85,6 +85,7 @@ fr:
     scan:
       success: Début de l'analyse du modèle
     show:
+      comments:
       download_preparing:
       download_requested:
       files: Fichiers

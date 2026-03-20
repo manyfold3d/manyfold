@@ -384,6 +384,9 @@ ja:
       inherit:
       'no': いいえ
       'yes': はい
+  comments:
+    destroy:
+      destroyed:
   components:
     actor_card:
       non_manyfold_account:
@@ -392,6 +395,11 @@ ja:
     column_header:
       current_sort:
       sort_by:
+    comment:
+      confirm_delete:
+      delete:
+      posted:
+      system:
     copy_button:
       copy:
     copyable_text:
@@ -441,6 +449,10 @@ ja:
       open_button:
         label: モデル%{name}を開く
         text: 開く
+    new_comment_form:
+      placeholder:
+      submit:
+      title:
     path_template_preview:
       description:
       path: パス
