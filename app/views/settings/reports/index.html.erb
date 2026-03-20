@@ -13,7 +13,7 @@
     next unless report.object %>
     <tr>
       <td><%= Icon icon: icon_for(report.object.entity.class), label: "" %></td>
-      <td><%= link_to report.object.entity.name, report.object.entity if report.object&.entity %></td>
+      <td><%= link_to_reportable(report) %></td>
       <td>
         <%= Icon icon: report.local? ? "house" : "globe", label: "" %>
       </td>

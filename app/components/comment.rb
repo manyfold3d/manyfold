@@ -30,7 +30,17 @@ class Components::Comment < Components::Base
           span(class: "comment-time", title: @comment.created_at) { t("components.comment.posted", time: time_ago_in_words(@comment.created_at)) }
         end
         div class: "comment-header-links" do
-          link_to t("components.comment.delete"), [@comment.commentable, @comment], method: :delete, class: "link-danger", data: {confirm: t("components.comment.confirm_delete")} if policy(@comment).destroy?
+          link_to polymorphic_path([@comment.commentable, @comment, :report], action: :new) do
+            Icon(icon: "flag", label: t("components.comment.report"))
+          end
+          whitespace
+          if policy(@comment).destroy?
+            span(class: "ms-2") do
+              link_to [@comment.commentable, @comment], method: :delete, class: "link-danger", data: {confirm: t("components.comment.confirm_delete")} do
+                Icon(icon: "trash", label: t("components.comment.delete"))
+              end
+            end
+          end
         end
       end
       div(class: "comment-body") { markdownify(@comment.comment) }

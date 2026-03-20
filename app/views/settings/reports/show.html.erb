@@ -27,7 +27,7 @@
           <%= @report.object.entity.model_name.human %>
         </td>
         <td>
-          <%= link_to @report.object.entity.name, @report.object.entity %>
+          <%= link_to_reportable(@report) %>
         </td>
       <% end %>
     </tr>
