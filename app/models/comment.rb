@@ -20,4 +20,8 @@ class Comment < ApplicationRecord
   def public?
     commenter&.public? && commentable&.public?
   end
+
+  def name
+    "#{created_at} @ #{commentable.name}"
+  end
 end

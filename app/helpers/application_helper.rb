@@ -34,6 +34,8 @@ module ApplicationHelper
       "file"
     when "User"
       "person"
+    when "Comment"
+      "chat"
     end
   end
 

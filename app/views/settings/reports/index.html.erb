@@ -12,7 +12,7 @@
   <% @reports.each do |report|
     next unless report.object %>
     <tr>
-      <td><%= Icon icon: icon_for(report.object.entity.class), label: "" %></td>
+      <td><%= Icon icon: icon_for(report.object.try(:entity)&.class || report.object.class), label: "" %></td>
       <td><%= link_to_reportable(report) %></td>
       <td>
         <%= Icon icon: report.local? ? "house" : "globe", label: "" %>
