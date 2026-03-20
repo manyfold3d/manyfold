@@ -17,7 +17,11 @@ class ReportsController < ApplicationController
         object: @reportable.federails_actor
       })
     end
-    redirect_to(@reportable, notice: t(".success"))
+    if @reportable.is_a? Comment
+      redirect_to(@reportable.commentable, notice: t(".success"))
+    else
+      redirect_to(@reportable, notice: t(".success"))
+    end
   end
 
   private
