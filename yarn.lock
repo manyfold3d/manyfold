@@ -1002,9 +1002,9 @@ __metadata:
   linkType: hard
 
 "@rails/actioncable@npm:>=7.0":
-  version: 8.1.200
-  resolution: "@rails/actioncable@npm:8.1.200"
-  checksum: 2450430485a9f52705c72770a6c52cad6cdcc0269484094caf8592a1307875996ec128b579c8e5fb0f57e5673f94c783334fe869449dc0924b9c7af778b15cd9
+  version: 8.1.201
+  resolution: "@rails/actioncable@npm:8.1.201"
+  checksum: a21ca14db1cfe7eea69c6a186502846d6b40f9a02e57633d89c9213b6f3db45db2d7845f4eb28550be815c85e9124583274a630e8c450eb05d5060c82609d46d
   languageName: node
   linkType: hard
 
