@@ -28,21 +28,6 @@ GIT
     rubocop-pundit (0.1.0)
       rubocop
 
-GIT
-  remote: https://gitlab.com/experimentslabs/federails.git
-  revision: a5d616f4998b810890f7a55d1aa7004c7ef19354
-  branch: main
-  specs:
-    federails (0.7.0)
-      faraday
-      faraday-follow_redirects
-      jbuilder (~> 2.7)
-      json-ld (>= 3.2.0)
-      json-ld-preloaded (>= 3.2.0)
-      kaminari (>= 1.2.0)
-      pundit (>= 2.3.0)
-      rails (>= 7.0.4)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -281,9 +266,18 @@ GEM
       ed25519 (~> 1.4)
       linzer (~> 0.7)
       rails (~> 8.0)
-    federails-moderation (0.3.0)
-      federails (~> 0.4)
-      public_suffix (~> 6.0)
+    federails (0.8.0)
+      faraday
+      faraday-follow_redirects
+      jbuilder (~> 2.7)
+      json-ld (>= 3.2.0)
+      json-ld-preloaded (>= 3.2.0)
+      kaminari (>= 1.2.0)
+      pundit (>= 2.3.0)
+      rails (>= 7.0.4)
+    federails-moderation (0.4.0)
+      federails (~> 0.8)
+      public_suffix (>= 6, < 8)
       rails (>= 7.2.2)
     ffi (1.17.3)
     ffi (1.17.3-x64-mingw-ucrt)
@@ -986,8 +980,8 @@ DEPENDENCIES
   factory_bot
   faker (~> 3.6)
   fasp_client (~> 0.6)
-  federails!
-  federails-moderation (~> 0.3)
+  federails (~> 0.8)
+  federails-moderation (~> 0.4)
   ffi-libarchive (~> 1.1)
   get_process_mem (~> 1.0)
   graphlient (~> 0.8.0)
@@ -1170,8 +1164,8 @@ CHECKSUMS
   faraday-follow_redirects (0.5.0) sha256=5cde93c894b30943a5d2b93c2fe9284216a6b756f7af406a1e55f211d97d10ad
   faraday-net_http (3.4.2) sha256=f147758260d3526939bf57ecf911682f94926a3666502e24c69992765875906c
   fasp_client (0.6.0) sha256=c1fba106ec3608bc9e9d83b9384645e5339ad637169b696d28a1823164352775
-  federails (0.7.0)
-  federails-moderation (0.3.0) sha256=b9a49e17bd768a3c934b8e8fad7e14c77f18bdee5bef1b1c399bb2d733c2474a
+  federails (0.8.0) sha256=5264c670568d51595c095e1297b3ab4d4ed3d5c298077ccbb2828e0ae8b80b33
+  federails-moderation (0.4.0) sha256=3a0e56b4e75d3a9536b92f912193a18012e617d865ad68ffd0cd1265000f8798
   ffi (1.17.3) sha256=0e9f39f7bb3934f77ad6feab49662be77e87eedcdeb2a3f5c0234c2938563d4c
   ffi (1.17.3-x64-mingw-ucrt) sha256=5f1d7d067a9a1058ad183dba25b05557cd51c85fc1768c49338eabc1cf242d7c
   ffi (1.17.3-x86_64-darwin) sha256=1f211811eb5cfaa25998322cdd92ab104bfbd26d1c4c08471599c511f2c00bb5
