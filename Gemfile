@@ -168,7 +168,7 @@ gem "omniauth_openid_connect", "~> 0.8"
 gem "sidekiq-cron", "~> 2.3"
 
 group :development, :production do
-  gem "sys-cpu", "~> 1.2"
+  gem "sys-cpu", "~> 1.3"
   gem "get_process_mem", "~> 1.0"
   gem "rails_performance", "~> 1.6"
   gem "redis-namespace"

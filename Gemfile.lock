@@ -873,8 +873,11 @@ GEM
       attr_required (>= 0.0.5)
       faraday (~> 2.0)
       faraday-follow_redirects
-    sys-cpu (1.2.0)
+    sys-cpu (1.3.0)
       ffi (~> 1.1)
+    sys-cpu (1.3.0-universal-mingw32)
+      ffi (~> 1.1)
+      win32ole
     sys-filesystem (1.5.5)
       ffi (~> 1.1)
     terminal-table (4.0.0)
@@ -930,6 +933,7 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    win32ole (1.9.3)
     with_model (2.2.0)
       activerecord (>= 7.0)
     xpath (3.2.0)
@@ -1061,7 +1065,7 @@ DEPENDENCIES
   stimulus-rails (~> 1.3.4)
   stopwords-filter2
   string-similarity (~> 2.1)
-  sys-cpu (~> 1.2)
+  sys-cpu (~> 1.3)
   sys-filesystem (~> 1.5)
   to_regexp (~> 0.2)
   translation (~> 1.41)
@@ -1388,7 +1392,8 @@ CHECKSUMS
   string-similarity (2.1.0) sha256=ab949bdd39fdeeedf64fc6a40a75546419a9d36bdb370f2dbbfc488bcc00a3bf
   stringio (3.2.0) sha256=c37cb2e58b4ffbd33fe5cd948c05934af997b36e0b6ca6fdf43afa234cf222e1
   swd (2.0.3) sha256=4cdbe2a4246c19f093fce22e967ec3ebdd4657d37673672e621bf0c7eb770655
-  sys-cpu (1.2.0) sha256=a5148712c76509ae1fc7548cf572162d678eb200f99aa520e7c68e9b42c1a6d4
+  sys-cpu (1.3.0) sha256=feafc0236eda0e5d3779f677b91a43549e535d99405e1c55018d120b2c3d06aa
+  sys-cpu (1.3.0-universal-mingw32) sha256=170d024d1044fffde4e052dd81d58dfcedac6b50ecb694e272cc1dac247f5d82
   sys-filesystem (1.5.5) sha256=6f995890a734b9f0aa55df5e09d99adeb9fd1c288f2c4097269a1f8c95e15033
   terminal-table (4.0.0) sha256=f504793203f8251b2ea7c7068333053f0beeea26093ec9962e62ea79f94301d2
   text (1.3.1) sha256=2fbbbc82c1ce79c4195b13018a87cbb00d762bda39241bb3cdc32792759dd3f4
@@ -1419,6 +1424,7 @@ CHECKSUMS
   websocket (1.2.11) sha256=b7e7a74e2410b5e85c25858b26b3322f29161e300935f70a0e0d3c35e0462737
   websocket-driver (0.8.0) sha256=ed0dba4b943c22f17f9a734817e808bc84cdce6a7e22045f5315aa57676d4962
   websocket-extensions (0.1.5) sha256=1c6ba63092cda343eb53fc657110c71c754c56484aad42578495227d717a8241
+  win32ole (1.9.3) sha256=01f43dc5dc13806e6e58204f538b4a28f3d85968ea89074abc9a3cd118e94d96
   with_model (2.2.0) sha256=eb0f498752391917e8c0a990951a343756bb89df2d12190faa5915a3fd99277e
   xpath (3.2.0) sha256=6dfda79d91bb3b949b947ecc5919f042ef2f399b904013eb3ef6d20dd3a4082e
   yard (0.9.38) sha256=721fb82afb10532aa49860655f6cc2eaa7130889df291b052e1e6b268283010f
