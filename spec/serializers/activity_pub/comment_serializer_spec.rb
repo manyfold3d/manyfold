@@ -36,6 +36,10 @@ RSpec.describe ActivityPub::CommentSerializer do
         expect(ap["content"]).not_to include "<p role=\"list\">"
       end
     end
+
+    it "includes canonical comment link in url field" do
+      expect(ap["url"]).to eq "http://localhost:3214/models/#{model.public_id}#comment-#{comment.public_id}"
+    end
   end
 
   context "when the system comments on something with tags" do

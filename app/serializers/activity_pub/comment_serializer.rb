@@ -18,7 +18,8 @@ module ActivityPub
           "summary" => (@object.sensitive ? "Sensitive Content" : nil), # Adding a summary if sensitive, for Mastodon
           "tag" => hashtags,
           "f3di:compatibilityNote" => @object.system,
-          "inReplyTo" => @object.commentable.comments.where(system: true).first&.federated_url || @object.commentable.federails_actor&.federated_url
+          "inReplyTo" => @object.commentable.comments.where(system: true).first&.federated_url || @object.commentable.federails_actor&.federated_url,
+          "url" => Rails.application.routes.url_helpers.url_for([@object.commentable, {only_path: false, anchor: "comment-#{@object.to_param}"}])
         }.compact.merge(address_fields)
       )
     end
