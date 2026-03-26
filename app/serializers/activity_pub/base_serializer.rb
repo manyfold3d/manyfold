@@ -1,7 +1,5 @@
 module ActivityPub
   class BaseSerializer
-    PUBLIC_COLLECTION = "https://www.w3.org/ns/activitystreams#Public"
-
     def initialize(object)
       @object = object
     end

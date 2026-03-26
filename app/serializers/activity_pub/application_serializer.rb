@@ -5,7 +5,7 @@ module ActivityPub
     end
 
     def to
-      PUBLIC_COLLECTION if @object.public?
+      Fediverse::Collection::PUBLIC if @object.public?
     end
 
     private
