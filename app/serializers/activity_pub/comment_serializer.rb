@@ -18,7 +18,7 @@ module ActivityPub
           "summary" => (@object.sensitive ? "Sensitive Content" : nil), # Adding a summary if sensitive, for Mastodon
           "tag" => hashtags,
           "f3di:compatibilityNote" => @object.system,
-          "inReplyTo" => @object.commentable.comments.where(system: true).first&.federated_url || @object.commentable.federails_actor&.federated_url,
+          "inReplyTo" => in_reply_to,
           "url" => Rails.application.routes.url_helpers.url_for([@object.commentable, {only_path: false, anchor: "comment-#{@object.to_param}"}])
         }.compact.merge(address_fields)
       )
@@ -54,6 +54,13 @@ module ActivityPub
         content << "<p role=\"list\">#{tags.map { |t| %(<a role="listitem" href="#{t[:href]}" class="mention hashtag" rel="tag">#{t[:name]}</a>) }&.join(" ")}</p>"
       end
       content.join
+    end
+
+    def in_reply_to
+      # system notes aren't in reply to anything
+      return nil if @object.system
+      # Otherwise, find the system note or just use the actor URL if unavailable
+      @object.commentable.comments.where(system: true).first&.federated_url || @object.commentable.federails_actor&.federated_url
     end
   end
 end
