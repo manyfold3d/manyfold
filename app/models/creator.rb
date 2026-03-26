@@ -2,6 +2,7 @@ class Creator < ApplicationRecord
   include ApplicationUploader::Attachment(:avatar)
   include ApplicationUploader::Attachment(:banner)
   include Followable
+  include Talkative
   include CaberObject
   include Linkable
   include Sluggable
