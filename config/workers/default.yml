@@ -6,6 +6,7 @@
   - scan
   - default
   - low
+  - federation
   # legacy queues kept for a while for upgrade compatibility
   - analysis
   - activity
