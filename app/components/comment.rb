@@ -20,7 +20,7 @@ class Components::Comment < Components::Base
   end
 
   def view_template
-    div class: "comment-component #{"comment-reported" if @reported}" do
+    div class: "comment-component #{"comment-reported" if @reported}", id: "comment-#{@comment.to_param}" do
       div class: "comment-header" do
         div do
           if @comment.system
