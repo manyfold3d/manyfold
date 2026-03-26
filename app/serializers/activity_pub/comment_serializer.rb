@@ -17,7 +17,10 @@ module ActivityPub
           "sensitive" => @object.sensitive,
           "summary" => (@object.sensitive ? "Sensitive Content" : nil), # Adding a summary if sensitive, for Mastodon
           "tag" => hashtags,
-          "f3di:compatibilityNote" => @object.system
+          "f3di:compatibilityNote" => @object.system,
+          "inReplyTo" => [
+            @object.commentable&.federails_actor&.federated_url
+          ].compact
         }.compact.merge(address_fields)
       )
     end
