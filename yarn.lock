@@ -5159,17 +5159,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:^10.26.10":
+"preact@npm:^10.26.10, preact@npm:^10.5.13":
   version: 10.29.0
   resolution: "preact@npm:10.29.0"
   checksum: 46b6586c62c455788fc40546707826ce8ba458748e8d6f934e2dde5d5fcc428abf58ba918a47f4cb4de6c06e1054ea87d4f8b2262fc14cdbb6c539301b2771fb
-  languageName: node
-  linkType: hard
-
-"preact@npm:^10.5.13":
-  version: 10.28.4
-  resolution: "preact@npm:10.28.4"
-  checksum: 63d0c36e856bebf2d3722dad257c31cdea2dc18562d6c2800046264d2e52f1be5e2dfbba149e7188df37e3587ab8e6c5c13843c31cf958a513a575da72a1795d
   languageName: node
   linkType: hard
 
