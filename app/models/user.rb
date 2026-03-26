@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   include Lister
   include Follower
+  include Followable
   include CaberSubject
   include PublicIDable
 
