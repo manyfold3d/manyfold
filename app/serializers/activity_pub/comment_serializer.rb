@@ -19,7 +19,7 @@ module ActivityPub
           "tag" => hashtags,
           "f3di:compatibilityNote" => @object.system,
           "inReplyTo" => in_reply_to,
-          "url" => Rails.application.routes.url_helpers.url_for([@object.commentable, {only_path: false, anchor: "comment-#{@object.to_param}"}])
+          "url" => url
         }.compact.merge(address_fields)
       )
     end
@@ -54,6 +54,11 @@ module ActivityPub
         content << "<p role=\"list\">#{tags.map { |t| %(<a role="listitem" href="#{t[:href]}" class="mention hashtag" rel="tag">#{t[:name]}</a>) }&.join(" ")}</p>"
       end
       content.join
+    end
+
+    def url
+      anchor = @object.system ? nil : "comment-#{@object.to_param}"
+      Rails.application.routes.url_helpers.url_for([@object.commentable, {only_path: false, anchor: anchor}.compact])
     end
 
     def in_reply_to
