@@ -1546,6 +1546,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@uppy/utils@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "@uppy/utils@npm:7.2.0"
+  dependencies:
+    lodash: ^4.17.23
+    preact: ^10.26.10
+  checksum: 348173d51d9ca25ec1ff7b8659c581ee77cc6aae0a01eac489e76818c6e7a637e9b063e93ab120fd672b693d6c611809519726f03cb843c15d4d460919059772
+  languageName: node
+  linkType: hard
+
 "@webgpu/types@npm:*":
   version: 0.1.69
   resolution: "@webgpu/types@npm:0.1.69"
@@ -4274,7 +4284,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:*, lodash@npm:^4.17.21":
+"lodash@npm:*, lodash@npm:^4.17.21, lodash@npm:^4.17.23":
   version: 4.17.23
   resolution: "lodash@npm:4.17.23"
   checksum: 7daad39758a72872e94651630fbb54ba76868f904211089721a64516ce865506a759d9ad3d8ff22a2a49a50a09db5d27c36f22762d21766e47e3ba918d6d7bab
@@ -4362,7 +4372,7 @@ __metadata:
     "@uppy/form": ^5.1.0
     "@uppy/locales": ^5.1.1
     "@uppy/tus": ^5.1.1
-    "@uppy/utils": ^7.1.5
+    "@uppy/utils": ^7.2.0
     altcha: ^2.3.0
     autoprefixer: ^10.4.27
     bootstrap: ^5.3.8
@@ -5146,6 +5156,13 @@ __metadata:
     picocolors: ^1.1.1
     source-map-js: ^1.2.1
   checksum: 118cbec9551c7107c7884a585b45d7cce1632159065c7f6e112bbb4c4811253e78d507e49082b36d9b89f36a02a611c5a8cd210548dead55795c20c4f37ab9e8
+  languageName: node
+  linkType: hard
+
+"preact@npm:^10.26.10":
+  version: 10.29.0
+  resolution: "preact@npm:10.29.0"
+  checksum: 46b6586c62c455788fc40546707826ce8ba458748e8d6f934e2dde5d5fcc428abf58ba918a47f4cb4de6c06e1054ea87d4f8b2262fc14cdbb6c539301b2771fb
   languageName: node
   linkType: hard
 
