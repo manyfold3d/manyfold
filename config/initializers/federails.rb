@@ -21,6 +21,8 @@ Federails.configure do |conf|
   conf.nodeinfo_metadata = -> do
     {"faspBaseUrl" => Rails.application.routes.url_helpers.fasp_client_url}
   end
+
+  conf.job_queue = :federation
 end
 
 Federails::Moderation.configure do |conf|
