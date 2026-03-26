@@ -25,4 +25,13 @@ class Comment < ApplicationRecord
   def name
     "#{created_at} @ #{commentable.name}"
   end
+
+  def self.handle_federated_object?(activity)
+    # Don't handle anything yet
+    false
+  end
+
+  def self.from_activitypub_object(activity)
+    nil
+  end
 end
