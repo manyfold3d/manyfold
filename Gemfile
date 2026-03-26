@@ -82,7 +82,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "cocooned", "~> 3.0"
 
-gem "public_suffix", "~> 6.0"
+gem "public_suffix", "~> 7.0"
 
 gem "activerecord-nulldb-adapter", "~> 1.2"
 
