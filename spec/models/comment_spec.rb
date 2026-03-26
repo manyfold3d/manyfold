@@ -59,19 +59,23 @@ RSpec.describe Comment do
         expect(ap_object["cc"]).to include commenter.federails_actor.followers_url
       end
 
-      it "includes tags appended to content" do
-        {"tag+one": "#TagOne", tag2: "#Tag2"}.each_pair do |link, hashtag|
-          expect(ap_object["content"]).to include %(<a role="listitem" href="http://localhost:3214/models?tag=#{link}" class="mention hashtag" rel="tag">#{hashtag}</a>)
-        end
-      end
+      context "with a system comment" do
+        let!(:comment) { create(:comment, commenter: commenter, commentable: commentable, system: true) }
 
-      it "includes tags as mentions" do # rubocop:disable RSpec/ExampleLength
-        {"tag+one": "#TagOne", tag2: "#Tag2"}.each_pair do |link, hashtag|
-          expect(ap_object["tag"]).to include(
-            type: "Hashtag",
-            href: "http://localhost:3214/models?tag=#{link}",
-            name: hashtag
-          )
+        it "includes tags appended to content" do
+          {"tag+one": "#TagOne", tag2: "#Tag2"}.each_pair do |link, hashtag|
+            expect(ap_object["content"]).to include %(<a role="listitem" href="http://localhost:3214/models?tag=#{link}" class="mention hashtag" rel="tag">#{hashtag}</a>)
+          end
+        end
+
+        it "includes tags as mentions" do # rubocop:disable RSpec/ExampleLength
+          {"tag+one": "#TagOne", tag2: "#Tag2"}.each_pair do |link, hashtag|
+            expect(ap_object["tag"]).to include(
+              type: "Hashtag",
+              href: "http://localhost:3214/models?tag=#{link}",
+              name: hashtag
+            )
+          end
         end
       end
     end
