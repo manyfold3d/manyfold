@@ -7,7 +7,7 @@ RSpec.describe ActivityPub::CommentSerializer do
 
   context "when a user comments on a public model", :after_first_run do
     let(:user) { create(:user) }
-    let(:model) { create(:model) }
+    let(:model) { create(:model, tag_list: ["tag"]) }
     let(:comment) { create(:comment, commentable: model, commenter: user) }
 
     it "includes model's canonical URL as context" do
@@ -29,11 +29,18 @@ RSpec.describe ActivityPub::CommentSerializer do
     it "is not a f3di compatibility note" do
       expect(ap["f3di:compatibilityNote"]).to be false
     end
+
+    it "does not include model tags" do
+      aggregate_failures do
+        expect(ap).not_to have_key("tag")
+        expect(ap["content"]).not_to include "<p role=\"list\">"
+      end
+    end
   end
 
-  context "when commenting on something with tags" do
+  context "when the system comments on something with tags" do
     let(:model) { create(:model, tag_list: ["tag"]) }
-    let(:comment) { create(:comment, commentable: model, commenter: model) }
+    let(:comment) { create(:comment, commentable: model, commenter: model, system: true) }
 
     it "adds tag list to a trailing paragraph in content" do
       expect(ap["content"]).to include "<p role=\"list\">"

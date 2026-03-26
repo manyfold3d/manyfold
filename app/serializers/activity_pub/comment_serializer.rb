@@ -37,7 +37,7 @@ module ActivityPub
     private
 
     def hashtags
-      return nil unless @object.commentable.respond_to?(:tags)
+      return nil unless @object.system && @object.commentable.respond_to?(:tags)
 
       @object.commentable.tags.pluck(:name).map do |tag|
         {
@@ -51,7 +51,7 @@ module ActivityPub
     def to_html
       content = [Kramdown::Document.new(@object.comment, input: "GFM").to_html]
       tags = hashtags
-      if !tags&.empty?
+      if tags&.any?
         content << "<p role=\"list\">#{tags.map { |t| %(<a role="listitem" href="#{t[:href]}" class="mention hashtag" rel="tag">#{t[:name]}</a>) }&.join(" ")}</p>"
       end
       content.join
