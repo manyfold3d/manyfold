@@ -5,6 +5,32 @@ RSpec.describe ActivityPub::CommentSerializer do
 
   let(:ap) { serializer.serialize }
 
+  context "when a user comments on a public model", :after_first_run do
+    let(:user) { create(:user) }
+    let(:model) { create(:model) }
+    let(:comment) { create(:comment, commentable: model, commenter: user) }
+
+    it "includes model's canonical URL as context" do
+      expect(ap["context"]).to eq "http://localhost:3214/models/#{model.to_param}"
+    end
+
+    it "is posted as a reply to the model" do
+      expect(ap["inReplyTo"]).to include model.federails_actor.federated_url
+    end
+
+    it "has user's actor URL in atributedTo" do
+      expect(ap["attributedTo"]).to eq user.federails_actor.federated_url
+    end
+
+    it "is a Note" do
+      expect(ap["type"]).to eq "Note"
+    end
+
+    it "is not a f3di compatibility note" do
+      expect(ap["f3di:compatibilityNote"]).to be false
+    end
+  end
+
   context "when commenting on something with tags" do
     let(:model) { create(:model, tag_list: ["tag"]) }
     let(:comment) { create(:comment, commentable: model, commenter: model) }
