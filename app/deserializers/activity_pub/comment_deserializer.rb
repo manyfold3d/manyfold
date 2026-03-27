@@ -35,6 +35,7 @@ module ActivityPub
     def deserialize
       commenter = get_actor
       {
+        federated_url: @object["id"],
         federails_actor: commenter,
         commenter: commenter.entity || commenter,
         commentable: commentable,

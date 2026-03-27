@@ -27,6 +27,11 @@ RSpec.describe ActivityPub::CommentDeserializer do
         expect { deserializer.create! }.to change(Comment, :count).by(1)
       end
 
+      it "stores ID" do
+        comment = deserializer.create!
+        expect(comment.federated_url).to eq object.id
+      end
+
       it "parses correct commenter" do
         comment = deserializer.create!
         expect(comment.federails_actor.name).to eq "Manyfold"
