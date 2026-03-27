@@ -4496,11 +4496,11 @@ __metadata:
   linkType: hard
 
 "minipass-flush@npm:^1.0.5":
-  version: 1.0.6
-  resolution: "minipass-flush@npm:1.0.6"
+  version: 1.0.7
+  resolution: "minipass-flush@npm:1.0.7"
   dependencies:
-    minipass: ^7.1.3
-  checksum: 2d503c0d1b6997f40a2ba13a11d1919c4727e2670f1f414a3a5495be59bc1fafe1222873fdbf020e6b339fb18df18003595cef51f0d58557c2b563c5143935d2
+    minipass: ^3.0.0
+  checksum: dc43fd1644aaea31b6ba88281d928a136b9fcd5425c718791e1007db15cf2cd41c75d073548d2f46088f90971833b3bd86752d2a2612bf8256122dedf5b7f3db
   languageName: node
   linkType: hard
 
@@ -4538,7 +4538,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minipass@npm:^5.0.0 || ^6.0.2 || ^7.0.0, minipass@npm:^7.0.2, minipass@npm:^7.0.3, minipass@npm:^7.1.2, minipass@npm:^7.1.3":
+"minipass@npm:^5.0.0 || ^6.0.2 || ^7.0.0, minipass@npm:^7.0.2, minipass@npm:^7.0.3, minipass@npm:^7.1.2":
   version: 7.1.3
   resolution: "minipass@npm:7.1.3"
   checksum: 2ede17c0bf8fec499be3360fd07f0ec7666189e3907320a9b653f1530cf84af98928c5b12d80bfb75f321833bf2e97785b940540213ebdafe97a5f10327e664d
