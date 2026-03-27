@@ -8,7 +8,7 @@ RSpec.describe ActivityPub::CommentDeserializer do
     let(:output) { deserializer.create! }
 
     context "with a plain Note from another server" do
-      let(:object) { {"type" => "Note"} }
+      let(:object) { build(:note) }
 
       it "is not handled" do
         expect(described_class.can_handle?(object)).to be false
@@ -17,7 +17,7 @@ RSpec.describe ActivityPub::CommentDeserializer do
 
     context "with a Note from another server replying to a known system comment" do
       let(:system_comment) { create(:comment, commenter: model, commentable: model, system: true) }
-      let(:object) { {"type" => "Note", "inReplyTo" => system_comment.federated_url} }
+      let(:object) { build(:note, inReplyTo: system_comment.federated_url) }
 
       it "is handled" do
         expect(described_class.can_handle?(object)).to be true
@@ -25,7 +25,7 @@ RSpec.describe ActivityPub::CommentDeserializer do
     end
 
     context "with a Note from another server replying to a known model URL" do
-      let(:object) { {"type" => "Note", "inReplyTo" => model.federails_actor.federated_url} }
+      let(:object) { build(:note, inReplyTo: model.federails_actor.federated_url) }
 
       it "is handled" do
         expect(described_class.can_handle?(object)).to be true
@@ -33,7 +33,7 @@ RSpec.describe ActivityPub::CommentDeserializer do
     end
 
     context "with a compatibility Note" do
-      let(:object) { {"type" => "Note", "extensions" => {"f3di:comptibilityNote" => "true"}} }
+      let(:object) { build(:note, "f3di:compatibilityNote": "true") }
 
       it "is not handled" do
         expect(described_class.can_handle?(object)).to be false
