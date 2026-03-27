@@ -19,19 +19,20 @@ class Comment < ApplicationRecord
   end
 
   def public?
-    commenter&.public? && commentable&.public?
+    (!commenter&.local? || commenter&.public?) && commentable&.public?
   end
 
   def name
     "#{created_at} @ #{commentable.name}"
   end
 
-  def self.handle_federated_object?(activity)
-    # Don't handle anything yet
-    false
+  def self.handle_federated_object?(note)
+    ActivityPub::CommentDeserializer.can_handle?(note)
   end
 
-  def self.from_activitypub_object(activity)
-    nil
+  def self.from_activitypub_object(note)
+    ActivityPub::CommentDeserializer.new(note).send :deserialize
+  rescue ActiveRecord::RecordNotFound
+    {}
   end
 end

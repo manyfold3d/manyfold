@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://3dp.chat/@manyfold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=180, public
+      Content-Length:
+      - '2973'
+      Content-Security-Policy:
+      - 'base-uri ''none''; default-src ''none''; frame-ancestors ''none''; font-src
+        ''self'' https://3dp.chat; img-src ''self'' data: blob: https://3dp.chat https://m.f-h.co;
+        media-src ''self'' data: https://3dp.chat https://m.f-h.co; manifest-src ''self''
+        https://3dp.chat; form-action ''none''; child-src ''self'' blob: https://3dp.chat;
+        worker-src ''self'' blob: https://3dp.chat; connect-src ''self'' data: blob:
+        https://3dp.chat https://m.f-h.co wss://3dp.chat; script-src ''self'' https://3dp.chat
+        ''wasm-unsafe-eval''; frame-src ''self'' https:; style-src ''self'' https://3dp.chat
+        ''nonce-Lfj4IPK70m6Qr/3CC0a+4g=='''
+      Content-Type:
+      - application/activity+json; charset=utf-8
+      Date:
+      - Fri, 27 Mar 2026 16:03:20 GMT
+      Etag:
+      - W/"78d4a17222cfaa63ca77e42d29e840bf"
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - Mastodon
+      Strict-Transport-Security:
+      - max-age=31536000
+      - max-age=63072000; includeSubDomains
+      Vary:
+      - Accept, Accept-Language, Cookie, Origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Request-Id:
+      - '0447931b-8993-4707-b60a-8cf30ad490c7'
+      X-Runtime:
+      - '0.018970'
+      X-Xss-Protection:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '{"@context":["https://www.w3.org/ns/activitystreams","https://w3id.org/security/v1",{"manuallyApprovesFollowers":"as:manuallyApprovesFollowers","toot":"http://joinmastodon.org/ns#","featured":{"@id":"toot:featured","@type":"@id"},"featuredTags":{"@id":"toot:featuredTags","@type":"@id"},"alsoKnownAs":{"@id":"as:alsoKnownAs","@type":"@id"},"movedTo":{"@id":"as:movedTo","@type":"@id"},"schema":"http://schema.org#","PropertyValue":"schema:PropertyValue","value":"schema:value","discoverable":"toot:discoverable","suspended":"toot:suspended","memorial":"toot:memorial","indexable":"toot:indexable","attributionDomains":{"@id":"toot:attributionDomains","@type":"@id"},"focalPoint":{"@container":"@list","@id":"toot:focalPoint"}}],"id":"https://3dp.chat/ap/users/116109147753873220","type":"Person","following":"https://3dp.chat/ap/users/116109147753873220/following","followers":"https://3dp.chat/ap/users/116109147753873220/followers","inbox":"https://3dp.chat/ap/users/116109147753873220/inbox","outbox":"https://3dp.chat/ap/users/116109147753873220/outbox","featured":"https://3dp.chat/ap/users/116109147753873220/collections/featured","featuredTags":"https://3dp.chat/ap/users/116109147753873220/collections/tags","preferredUsername":"manyfold","name":"Manyfold","summary":"\u003cp\u003eOrganise
+        and share your 3d print files! 100% open source, self hosted, and (optionally)
+        federated!\u003c/p\u003e","url":"https://3dp.chat/@manyfold","manuallyApprovesFollowers":false,"discoverable":false,"indexable":true,"published":"2026-02-21T00:00:00Z","memorial":false,"publicKey":{"id":"https://3dp.chat/ap/users/116109147753873220#main-key","owner":"https://3dp.chat/ap/users/116109147753873220","publicKeyPem":"-----BEGIN
+        PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmkT5u5PG0dQ/8persBPO\nr3D70LbqRCHfdsGrIs776dTgdDybU2fCU40ZrmMY3TQuc76I7yTPoFAYfe/lOlel\n1hioN8opgXgCWmM0JU39HOl9qpIWtFxeFkYqM1ocVLewgk+FhKgylKwSiXyMagDC\noyUUvbRJ112OQQmBYJW7xS+FXcdRYvHvVXEuzXViWeXxp2qLrtx6NSB5z+MiAmCZ\nIipYjLZhvQXcu0KpJsJhrNGN17uvZPjBLRnLq0CIzlu7p3p9sQD8RGsjDhPHjnjc\nlXqGiV1/wha7xoiT6nQbpLb1dP1dmMHm/ymeXEMkCZ6S1xP01eAMGjj2IszFXQHZ\nYwIDAQAB\n-----END
+        PUBLIC KEY-----\n"},"tag":[],"attachment":[{"type":"PropertyValue","name":"Website","value":"\u003ca
+        href=\"https://manyfold.app\" target=\"_blank\" rel=\"nofollow noopener me\"
+        translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan
+        class=\"\"\u003emanyfold.app\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e"},{"type":"PropertyValue","name":"Videos","value":"@manyfold@makertube.net"}],"endpoints":{"sharedInbox":"https://3dp.chat/inbox"},"icon":{"type":"Image","mediaType":"image/png","url":"https://m.f-h.co/3dp-chat/accounts/avatars/116/109/147/753/873/220/original/a62b9d8672889a1d.png"},"image":{"type":"Image","mediaType":"image/png","url":"https://m.f-h.co/3dp-chat/accounts/headers/116/109/147/753/873/220/original/8991c7b03d6b1b32.png"}}'
+  recorded_at: Fri, 27 Mar 2026 16:03:20 GMT
+recorded_with: VCR 6.4.0
