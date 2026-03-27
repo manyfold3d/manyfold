@@ -31,6 +31,8 @@ class Comment < ApplicationRecord
   end
 
   def self.from_activitypub_object(note)
-    nil
+    ActivityPub::CommentDeserializer.new(note).send :deserialize
+  rescue ActiveRecord::RecordNotFound
+    {}
   end
 end
