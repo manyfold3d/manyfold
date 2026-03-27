@@ -26,12 +26,11 @@ class Comment < ApplicationRecord
     "#{created_at} @ #{commentable.name}"
   end
 
-  def self.handle_federated_object?(activity)
-    # Don't handle anything yet
-    false
+  def self.handle_federated_object?(note)
+    ActivityPub::CommentDeserializer.can_handle?(note)
   end
 
-  def self.from_activitypub_object(activity)
+  def self.from_activitypub_object(note)
     nil
   end
 end
