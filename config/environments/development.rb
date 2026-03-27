@@ -6,8 +6,10 @@ Rails.application.configure do
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
 
-  # Do not eager load code on boot.
-  config.eager_load = false
+  # Eager load code on boot if we're in federation mode
+  # otherwise models don't necessarily get registered with federails
+  # to recieve messages
+  config.eager_load = config.manyfold_features[:federation]
 
   # Show full error reports.
   config.consider_all_requests_local = true
