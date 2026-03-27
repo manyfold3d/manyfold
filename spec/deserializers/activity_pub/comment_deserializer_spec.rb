@@ -17,7 +17,7 @@ RSpec.describe ActivityPub::CommentDeserializer do
 
     context "with a Note from another server replying to a known system comment", vcr: {cassette_name: "ActivityPub_CreatorDeserializer/success"} do
       let!(:system_comment) { create(:comment, commenter: model, commentable: model, system: true) }
-      let(:object) { build(:note, inReplyTo: system_comment.federated_url) }
+      let(:object) { build(:note, inReplyTo: system_comment.federated_url, content: "<h1>Nice model!</h1>") }
 
       it "is handled" do
         expect(described_class.can_handle?(object)).to be true
@@ -35,6 +35,11 @@ RSpec.describe ActivityPub::CommentDeserializer do
       it "parses correct commentable item" do
         comment = deserializer.create!
         expect(comment.commentable).to eq model
+      end
+
+      it "stores the sanitized comment" do
+        comment = deserializer.create!
+        expect(comment.comment).to eq "Nice model!"
       end
     end
 

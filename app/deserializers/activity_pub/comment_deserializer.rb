@@ -1,5 +1,10 @@
 module ActivityPub
   class CommentDeserializer < ApplicationDeserializer
+    def initialize(object)
+      super
+      @sanitizer = Rails::HTML5::FullSanitizer.new
+    end
+
     def self.can_handle?(object)
       return false unless object["type"] == "Note"
       return false if object["f3di:compatibilityNote"] == "true"
@@ -23,12 +28,17 @@ module ActivityPub
       Comment.find_by(public_id: public_id)&.commentable || Federails::Actor.find_by(uuid: public_id)&.entity
     end
 
+    def content
+      @sanitizer.sanitize(@object["content"])
+    end
+
     def deserialize
       commenter = get_actor
       {
         federails_actor: commenter,
         commenter: commenter.entity || commenter,
-        commentable: commentable
+        commentable: commentable,
+        comment: content
       }
     end
   end
