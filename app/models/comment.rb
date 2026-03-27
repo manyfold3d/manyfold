@@ -19,7 +19,7 @@ class Comment < ApplicationRecord
   end
 
   def public?
-    commenter&.public? && commentable&.public?
+    (!commenter&.local? || commenter&.public?) && commentable&.public?
   end
 
   def name
