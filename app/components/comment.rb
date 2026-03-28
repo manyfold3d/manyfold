@@ -29,7 +29,13 @@ class Components::Comment < Components::Base
             Icon icon: "chat", role: "presentation"
           end
           whitespace
-          span { @comment.commenter.try(:name) || @comment.commenter.try(:username) }
+          span do
+            if @comment.commenter.is_a?(Federails::Actor)
+              link_to @comment.commenter.name, @comment.commenter.profile_url, title: @comment.commenter.at_address
+            else
+              @comment.commenter.try(:name) || @comment.commenter.try(:username)
+            end
+          end
           whitespace
           span(class: "comment-time", title: @comment.created_at) { t("components.comment.posted", time: time_ago_in_words(@comment.created_at)) }
         end
