@@ -9,6 +9,7 @@ class Comment < ApplicationRecord
   belongs_to :commentable, polymorphic: true
 
   acts_as_federails_data handles: "Note", actor_entity_method: :commenter, url_param: :public_id, should_federate_method: :federate?
+  on_federails_delete_requested :federated_delete
 
   def to_activitypub_object
     ActivityPub::CommentSerializer.new(self).serialize
@@ -34,5 +35,9 @@ class Comment < ApplicationRecord
     ActivityPub::CommentDeserializer.new(note).send :deserialize
   rescue ActiveRecord::RecordNotFound
     {}
+  end
+
+  def federated_delete
+    destroy
   end
 end
