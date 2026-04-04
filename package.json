@@ -36,7 +36,7 @@
     "nodemon": "^3.1.14",
     "postcss": "^8.5.8",
     "postcss-cli": "^11.0.1",
-    "sass-embedded": "^1.98.0",
+    "sass-embedded": "^1.99.0",
     "three": "^0.183.2",
     "threejs-webworker-3mf-loader": "https://github.com/manyfold3d/threejs-webworker-3mf-loader",
     "tom-select": "^2.5.2"
