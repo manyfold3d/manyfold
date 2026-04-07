@@ -554,7 +554,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/config-array@npm:^0.23.3":
+"@eslint/config-array@npm:^0.23.4":
   version: 0.23.4
   resolution: "@eslint/config-array@npm:0.23.4"
   dependencies:
@@ -565,7 +565,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/config-helpers@npm:^0.5.3":
+"@eslint/config-helpers@npm:^0.5.4":
   version: 0.5.4
   resolution: "@eslint/config-helpers@npm:0.5.4"
   dependencies:
@@ -574,7 +574,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/core@npm:^1.1.1, @eslint/core@npm:^1.2.0":
+"@eslint/core@npm:^1.2.0":
   version: 1.2.0
   resolution: "@eslint/core@npm:1.2.0"
   dependencies:
@@ -614,13 +614,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/plugin-kit@npm:^0.6.1":
-  version: 0.6.1
-  resolution: "@eslint/plugin-kit@npm:0.6.1"
+"@eslint/plugin-kit@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "@eslint/plugin-kit@npm:0.7.0"
   dependencies:
-    "@eslint/core": ^1.1.1
+    "@eslint/core": ^1.2.0
     levn: ^0.4.1
-  checksum: 4918571749af046fd42b27e0c768d6a15f1ac77c18ddb5a22ea42726681d4e7f413d583a621575b2f73b94302e7c9d17b63bf82329b966637d297eff349bb320
+  checksum: 5d0755f3c97429a4e7ca7b7e205cdafc5458f0faa0d21d90440616022a0673d762f631b031dca9c2295c1bd19e6e4c4148cadf450cf7d20bdba6b64d7a10cdba
   languageName: node
   linkType: hard
 
@@ -2856,16 +2856,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^10.1.0":
-  version: 10.1.0
-  resolution: "eslint@npm:10.1.0"
+"eslint@npm:^10.2.0":
+  version: 10.2.0
+  resolution: "eslint@npm:10.2.0"
   dependencies:
     "@eslint-community/eslint-utils": ^4.8.0
     "@eslint-community/regexpp": ^4.12.2
-    "@eslint/config-array": ^0.23.3
-    "@eslint/config-helpers": ^0.5.3
-    "@eslint/core": ^1.1.1
-    "@eslint/plugin-kit": ^0.6.1
+    "@eslint/config-array": ^0.23.4
+    "@eslint/config-helpers": ^0.5.4
+    "@eslint/core": ^1.2.0
+    "@eslint/plugin-kit": ^0.7.0
     "@humanfs/node": ^0.16.6
     "@humanwhocodes/module-importer": ^1.0.1
     "@humanwhocodes/retry": ^0.4.2
@@ -2897,7 +2897,7 @@ __metadata:
       optional: true
   bin:
     eslint: bin/eslint.js
-  checksum: c4f63b8a58505052d725b8a5c288f17f673a8f58cb13b946332e341b26aa9d77fc3b519ef6096ee9ca179c8e911e1366e0efdd244333184a3066d46e75f7fb93
+  checksum: b63e89221bd0c05e91378420b501a2de8b192d0fcd307453e72eca5ebf9d8e933c42187e636096d8971ffde61ac7eab4736f441f9c569c2d22d9d5a275077532
   languageName: node
   linkType: hard
 
@@ -4371,7 +4371,7 @@ __metadata:
     comlink: ^4.4.2
     driver.js: ^1.4.0
     esbuild: ^0.28.0
-    eslint: ^10.1.0
+    eslint: ^10.2.0
     husky: ^9.1.7
     i18n-js: ^4.5.3
     masonry-layout: ^4.2.2
