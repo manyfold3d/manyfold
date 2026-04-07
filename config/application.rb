@@ -85,7 +85,7 @@ end
 
 # Set default URL options from env vars
 # This is done *very* early, so that it cascades to all components
-require "./app/lib/public_url"
+require Rails.root.join("app/lib/public_url")
 Rails.application.default_url_options = {
   host: PublicUrl.hostname,
   port: PublicUrl.nonstandard_port
