@@ -574,16 +574,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/core@npm:^1.1.1":
-  version: 1.2.0
-  resolution: "@eslint/core@npm:1.2.0"
-  dependencies:
-    "@types/json-schema": ^7.0.15
-  checksum: bd2e8e9e9a960b371ddd65e99c7285c3ea965b96fca5150ec3782c4c804df52d221bfc535492160b6e22fe1861e96ca19102b654f5e4aabc0dc7f6c6cbe78cb6
-  languageName: node
-  linkType: hard
-
-"@eslint/core@npm:^1.2.0":
+"@eslint/core@npm:^1.1.1, @eslint/core@npm:^1.2.0":
   version: 1.2.0
   resolution: "@eslint/core@npm:1.2.0"
   dependencies:
@@ -1852,11 +1843,11 @@ __metadata:
   linkType: hard
 
 "baseline-browser-mapping@npm:^2.10.12":
-  version: 2.10.15
-  resolution: "baseline-browser-mapping@npm:2.10.15"
+  version: 2.10.16
+  resolution: "baseline-browser-mapping@npm:2.10.16"
   bin:
     baseline-browser-mapping: dist/cli.cjs
-  checksum: 589234f150f859113fd3a003adb4684b25098b0e1d808fd2d105ab188fd0b208498fb305e08acef549e320d112e692eb13e27da989f3f566f443b1041dc4d5da
+  checksum: b4e66b471a974eb1f145ace36c92f91a9ca0bb189e246613174965f4c05c2a51d110d970bdf1f077e1ca24b6d4da48cb63874ccc0056b0b15c9a59f62ef21eeb
   languageName: node
   linkType: hard
 
