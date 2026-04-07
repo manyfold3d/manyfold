@@ -38,7 +38,7 @@
       <%= render "tags_edit", form: form, name: :add_tags, label: translate(".add_tags"), tags: @available_tags || [] %>
       <%= render "tags_edit", form: form, name: :remove_tags, label: translate(".remove_tags"), tags: [] %>
 
-      <% if SiteSettings.show_libraries || current_user.is_administrator? %>
+      <% if SiteSettings.show_libraries || current_user&.is_administrator? %>
         <div>
           <%= form.label :new_library_id, class: "col-sm-2 col-form-label" %>
         </div>

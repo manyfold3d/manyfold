@@ -45,7 +45,7 @@
         <% end %>
       </ul>
     <% end %>
-    <% if policy(:settings).index? && current_user.is_administrator? %>
+    <% if policy(:settings).index? && current_user&.is_administrator? %>
       <hr>
       <h5><%= t(".search_heading") %></h5>
       <ul class="nav flex-column">
