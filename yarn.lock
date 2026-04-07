@@ -574,16 +574,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/core@npm:^1.1.1":
-  version: 1.2.0
-  resolution: "@eslint/core@npm:1.2.0"
-  dependencies:
-    "@types/json-schema": ^7.0.15
-  checksum: bd2e8e9e9a960b371ddd65e99c7285c3ea965b96fca5150ec3782c4c804df52d221bfc535492160b6e22fe1861e96ca19102b654f5e4aabc0dc7f6c6cbe78cb6
-  languageName: node
-  linkType: hard
-
-"@eslint/core@npm:^1.2.0":
+"@eslint/core@npm:^1.1.1, @eslint/core@npm:^1.2.0":
   version: 1.2.0
   resolution: "@eslint/core@npm:1.2.0"
   dependencies:
@@ -2330,9 +2321,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.328":
-  version: 1.5.331
-  resolution: "electron-to-chromium@npm:1.5.331"
-  checksum: bd6b748554db9135a53488a1df09bfe37b57da50f38a09d20c8f5e94456505cc2f8fa60f09508bb665e0f7102a2beabc80898fb255b3cecb5ab0db615386c415
+  version: 1.5.332
+  resolution: "electron-to-chromium@npm:1.5.332"
+  checksum: 0a9b0d9e2ca0363374e1f1e405b981e1c086b1fc780ba50e95f2c2b7d9a9e288a911f0d73892ff309e21366fcf8b9c78f1baa4cf49acc995112ec5dad8c825ea
   languageName: node
   linkType: hard
 
