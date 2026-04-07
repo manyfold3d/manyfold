@@ -54,7 +54,7 @@ class Components::Comment < Components::Base
         end
       end
       div(class: "comment-body") { markdownify(@comment.comment) }
-      if current_user.is_moderator? && @comment.reports.any?
+      if current_user&.is_moderator? && @comment.reports.any?
         div(class: "comment-footer comment-footer-reported") do
           span { t("components.comment.reported", time: @comment.reports.order(created_at: :desc).pick(:created_at)) }
         end
