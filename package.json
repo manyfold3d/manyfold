@@ -23,7 +23,7 @@
     "@uppy/locales": "^5.1.1",
     "@uppy/tus": "^5.1.1",
     "@uppy/utils": "^7.2.0",
-    "altcha": "^2.3.0",
+    "altcha": "^3.0.1",
     "autoprefixer": "^10.4.27",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
