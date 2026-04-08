@@ -566,11 +566,11 @@ __metadata:
   linkType: hard
 
 "@eslint/config-helpers@npm:^0.5.4":
-  version: 0.5.4
-  resolution: "@eslint/config-helpers@npm:0.5.4"
+  version: 0.5.5
+  resolution: "@eslint/config-helpers@npm:0.5.5"
   dependencies:
-    "@eslint/core": ^1.2.0
-  checksum: c2224054a809e81021c609e6e2e11f6914fa0d2299a6d47d7e54a3f5249afe9ece85e5692cdd3281f4a27017516831a8a98378b6e8911cd0f2b5badb42ec7d2a
+    "@eslint/core": ^1.2.1
+  checksum: 2442c0e5281b0a0733942a439fc3fd18b38bd69c2f49a284ec7cac8658f287c4356f6e83a513efd377c2d9e55c4624d47fa28461fa7d5431eef1f5f0d14f23d0
   languageName: node
   linkType: hard
 
@@ -580,6 +580,15 @@ __metadata:
   dependencies:
     "@types/json-schema": ^7.0.15
   checksum: bd2e8e9e9a960b371ddd65e99c7285c3ea965b96fca5150ec3782c4c804df52d221bfc535492160b6e22fe1861e96ca19102b654f5e4aabc0dc7f6c6cbe78cb6
+  languageName: node
+  linkType: hard
+
+"@eslint/core@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "@eslint/core@npm:1.2.1"
+  dependencies:
+    "@types/json-schema": ^7.0.15
+  checksum: 430f53c5c6bcfabe54d7232d6b74bf9f6f62b0337f73ca0db70a0a0dbe4843243ce24577df61619fcbc0ef45cc6e2872074bed3295538acd72361b69f3b5eb47
   languageName: node
   linkType: hard
 
