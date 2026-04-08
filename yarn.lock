@@ -555,13 +555,13 @@ __metadata:
   linkType: hard
 
 "@eslint/config-array@npm:^0.23.4":
-  version: 0.23.4
-  resolution: "@eslint/config-array@npm:0.23.4"
+  version: 0.23.5
+  resolution: "@eslint/config-array@npm:0.23.5"
   dependencies:
-    "@eslint/object-schema": ^3.0.4
+    "@eslint/object-schema": ^3.0.5
     debug: ^4.3.1
     minimatch: ^10.2.4
-  checksum: 426b1946a83ef822da7be3cf9b82a8942e3cfc3568fed54031fa077008105d6fbcf4fdec7a5bea93f78751ef36a137e6f56a3cf84935c6f2593dfb0b26530b61
+  checksum: 2cb8c3d3450f2b1c91dcc21109bfee58356915cbfa1429b9e82efc04c2acf7ccdf12ef20734989afdb1e676b8bf5f2e10548405efc6b8b2c89bbd9e89e5a8e49
   languageName: node
   linkType: hard
 
@@ -616,7 +616,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/object-schema@npm:^3.0.4":
+"@eslint/object-schema@npm:^3.0.5":
   version: 3.0.5
   resolution: "@eslint/object-schema@npm:3.0.5"
   checksum: 4e9aee969d73a5c12c06dcf9e3a7903d441cdc946b3768099dba1937f2af58bd8ed4b1bcf34bbc54432440cdd00dfab970edd5ce2b4fb1afd2d0e6018c87aa0b
