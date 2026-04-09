@@ -31,10 +31,19 @@ gem "ffi-libarchive", "~> 1.1"
 gem "bootsnap", "~> 1.24", require: false
 
 # Database adapters
-gem "activerecord-enhancedsqlite3-adapter", "~> 0.8"
-group :production do
+# All are installed by default, but you can exclude ones you don't want with bundler.
+# e.g. `bundle install --without="postgres mysql"` or `bundle config set without "postgres mysql"`
+group :sqlite3 do
+  gem "activerecord-enhancedsqlite3-adapter", "~> 0.8"
+  gem "sqlite3_ar_regexp", "~> 3.0"
+end
+group :mysql do
   gem "mysql2", "~> 0.5"
+end
+group :postgres do
   gem "pg", "~> 1.6"
+  gem "pghero", "~> 3.8"
+  gem "pg_query", "~> 6.2"
 end
 
 group :development, :test do
@@ -100,8 +109,6 @@ gem "kaminari", "~> 1.2"
 gem "lograge", "~> 0.14"
 
 gem "acts_as_favoritor", "~> 6.0"
-
-gem "sqlite3_ar_regexp", "~> 3.0"
 
 gem "mittsu", "~> 0.5"
 gem "mittsu-mesh_analysis"
@@ -173,9 +180,6 @@ group :development, :production do
   gem "rails_performance", "~> 1.6"
   gem "redis-namespace"
 end
-
-gem "pghero", "~> 3.8"
-gem "pg_query", "~> 6.2"
 
 gem "to_regexp", "~> 0.2"
 
