@@ -153,7 +153,7 @@ gem "better_content_security_policy", "~> 0.1"
 
 gem "devise_zxcvbn", "~> 6.0"
 
-gem "federails", "~> 0.8"
+gem "federails", git: "https://gitlab.com/experimentslabs/federails.git", branch: "main"
 gem "federails-moderation", "~> 0.4"
 gem "caber", github: "manyfold3d/caber"
 gem "fasp_client", "~> 0.6"
