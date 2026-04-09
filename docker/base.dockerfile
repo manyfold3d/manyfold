@@ -30,6 +30,6 @@ RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/co
 COPY --from=tonistiigi/xx / /
 
 # Install custom f3d package
-RUN wget "https://github.com/manyfold3d/f3d-alpine/releases/download/v3.4.1-r2/f3d-3.4.1-r2.`xx-info alpine-arch`.apk" -O /tmp/f3d.apk
+RUN wget "https://github.com/manyfold3d/f3d-alpine/releases/download/v3.5.0-r0/f3d-3.5.0-r0.`xx-info alpine-arch`.apk" -O /tmp/f3d.apk
 RUN apk add --no-cache --allow-untrusted /tmp/f3d.apk
 RUN rm /tmp/f3d.apk
