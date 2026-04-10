@@ -15,7 +15,7 @@ class Components::LikeButton < Components::BaseButton
     @form_attributes = @liked ?
       {id: current_user.liked_list.list_items.find_by(listable: @thing), _destroy: "1"} :
       {listable_type: @thing.model_name, listable_id: @thing.id}
-    @count = @thing.list_items.includes(:list).where("list.special": :liked).count
+    @count = @thing.like_count
     @count = nil if @count == 0
   end
 
