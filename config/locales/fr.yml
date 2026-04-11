@@ -399,9 +399,9 @@ fr:
       sort_by: Trier par
     comment:
       confirm_delete:
-      delete:
+      delete: Supprimer
       posted:
-      report:
+      report: Rapport
       reported:
       system:
     copy_button:
