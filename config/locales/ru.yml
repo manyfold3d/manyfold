@@ -397,7 +397,7 @@ ru:
       sort_by:
     comment:
       confirm_delete:
-      delete:
+      delete: Удалить
       posted:
       report:
       reported:
