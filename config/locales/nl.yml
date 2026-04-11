@@ -397,9 +397,9 @@ nl:
       sort_by:
     comment:
       confirm_delete:
-      delete:
+      delete: Verwijderen
       posted:
-      report:
+      report: Melding
       reported:
       system:
     copy_button:
