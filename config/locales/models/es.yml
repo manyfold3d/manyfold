@@ -85,7 +85,7 @@ es:
     scan:
       success: Escaneo de modelos iniciado
     show:
-      comments:
+      comments: Comentarios
       download_preparing: Se está preparando la descarga, por favor espere.
       download_requested: Descarga solicitada y estará lista en breve, por favor espere.
       files: Archivos
