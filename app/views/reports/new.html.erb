@@ -4,7 +4,7 @@
 
 <%= form_with model: [@reportable.try(:commentable), @reportable, @report].compact, class: "tabular-form" do |form| %>
 
-  <%= text_input_row form, :content %>
+  <%= text_input_row form, :content # i18n-tasks-use t("activerecord.attributes.federails/moderation/report.content") %>
 
   <div>
     <%= form.submit translate(".submit"), class: "btn btn-primary" %>
