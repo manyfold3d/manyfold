@@ -397,9 +397,9 @@ ja:
       sort_by:
     comment:
       confirm_delete:
-      delete:
+      delete: 削除
       posted:
-      report:
+      report: レポート
       reported:
       system:
     copy_button:
