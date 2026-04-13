@@ -118,7 +118,7 @@ fr:
         filename: Nom de fichier
         notes: Notes
         presupported: Présupporté
-        presupported_version: Version présupporté
+        presupported_version_id: Version présupporté
         printed: Imprimé
         size: Taille du fichier
         unsupported_version: Version non supportée

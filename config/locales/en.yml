@@ -116,7 +116,8 @@ en:
         filename: Filename
         notes: Notes
         presupported: Presupported
-        presupported_version: Presupported version
+        presupported_version_id: Presupported version
+        previewable: Previewable
         printed: Printed
         size: File Size
         unsupported_version: Unsupported version

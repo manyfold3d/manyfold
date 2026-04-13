@@ -116,7 +116,7 @@ nl:
         filename: Bestandsnaam
         notes: Notities
         presupported: Voorondersteund
-        presupported_version: Voorondersteunde versie
+        presupported_version_id: Voorondersteunde versie
         printed: Afgedrukt
         size: Bestandsgrootte
         unsupported_version: Niet-ondersteunde versie

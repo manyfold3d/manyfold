@@ -32,7 +32,6 @@ class ModelFilesController < ApplicationController
       end
     end
     # i18n-tasks-use t("activerecord.attributes.model_file.unsupported_version")
-    # i18n-tasks-use t("activerecord.attributes.model_file.presupported_version")
     # i18n-tasks-use t("activerecord.attributes.model_file.filename")
     # i18n-tasks-use t("activerecord.attributes.model_file.digest")
     # i18n-tasks-use t("activerecord.attributes.model_file.size")

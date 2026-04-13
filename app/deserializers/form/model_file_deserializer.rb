@@ -10,7 +10,7 @@ module Form
         :caption, # i18n-tasks-use t("activerecord.attributes.model_file.caption")
         :y_up, # i18n-tasks-use t("activerecord.attributes.model_file.y_up")
         :previewable, # i18n-tasks-use t("activerecord.attributes.model_file.previewable")
-        :presupported_version_id # i18n-tasks-use t("activerecord.attributes.model_file.presupported_version")
+        :presupported_version_id # i18n-tasks-use t("activerecord.attributes.model_file.presupported_version_id")
       ])
     end
   end

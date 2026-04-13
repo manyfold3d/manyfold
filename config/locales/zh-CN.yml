@@ -116,7 +116,7 @@ zh-CN:
         filename: 文件名
         notes: 说明
         presupported: 有支撑
-        presupported_version: 有支撑的版本
+        presupported_version_id: 有支撑的版本
         printed: 已打印
         size: 文件大小
         unsupported_version: 不支持的版本
@@ -224,6 +224,11 @@ zh-CN:
         zero: 合集
       comment:
         few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       creator:
         few: 创作者
         many: 创作者

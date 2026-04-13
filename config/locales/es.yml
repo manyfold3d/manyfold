@@ -116,7 +116,7 @@ es:
         filename: Archivo
         notes: Notas
         presupported: Soporte predefinido
-        presupported_version: Versión con soporte predefinido
+        presupported_version_id: Versión con soporte predefinido
         printed: Impreso
         size: Tamaño del archivo
         unsupported_version: Versión sin soporte

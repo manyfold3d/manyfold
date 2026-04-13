@@ -116,7 +116,7 @@ ja:
         filename: ファイル名
         notes: ノート
         presupported: サポート材付き
-        presupported_version: サポート材付きバージョン
+        presupported_version_id: サポート材付きバージョン
         printed: プリントされた
         size: ファイルサイズ
         unsupported_version: サポート材無しバージョン

@@ -116,7 +116,7 @@ pl:
         filename: Nazwa pliku
         notes: Notatki
         presupported:
-        presupported_version:
+        presupported_version_id:
         printed: Wydrukowane
         size: Rozmiar pliku
         unsupported_version: Niewspierana wersja
