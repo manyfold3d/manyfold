@@ -4,8 +4,8 @@
 
 <table class="table table-striped">
   <tr>
-    <th><%= Federails::Moderation::DomainBlock.human_attribute_name(:domain) %></th>
-    <th><%= Federails::Moderation::DomainBlock.human_attribute_name(:created_at) %></th>
+    <th><%= Federails::Moderation::DomainBlock.human_attribute_name(:domain) # i18n-tasks-use t("activerecord.attributes.federails/moderation/domain_block.domain") %></th>
+    <th><%= Federails::Moderation::DomainBlock.human_attribute_name(:created_at) # i18n-tasks-use t("activerecord.attributes.federails/moderation/domain_block.created_at") %></th>
     <th></th>
   </tr>
   <% @blocks.each do |block| %>
