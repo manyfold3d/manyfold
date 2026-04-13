@@ -25,6 +25,7 @@ class Components::NewCommentForm < Components::Base
           end
         end
         div(class: "comment-body") do
+          # i18n-tasks-use t("activerecord.attributes.comment.comment")
           f.text_area(:comment, class: "form-control", placeholder: translate("components.new_comment_form.placeholder"))
         end
         div(class: "comment-footer") do
