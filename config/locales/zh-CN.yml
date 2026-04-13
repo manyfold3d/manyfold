@@ -397,7 +397,7 @@ zh-CN:
       sort_by: 排序方式
     comment:
       confirm_delete:
-      delete:
+      delete: 删除
       posted:
       report:
       reported:
