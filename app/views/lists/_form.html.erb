@@ -1,9 +1,9 @@
 <%= form_with model: list, class: "container-md tabular-form" do |form| %>
-  <%= TextInputRow(form: form, attribute: :name, label: List.human_attribute_name(:name)) unless @list.special %>
+  <%= TextInputRow(form: form, attribute: :name, label: List.human_attribute_name(:name)) unless @list.special # i18n-tasks-use t("activerecord.attributes.list.name") %>
 
   <% if list.persisted? %>
     <div>
-      <%= form.label :list_items %>
+      <%= form.label :list_items # i18n-tasks-use t("activerecord.attributes.list.list_items") %>
     </div>
     <div>
       <%= cocooned_container :table, id: "cocooned-list-items", data: {controller: "cocooned"}, class: "table table-striped" do
