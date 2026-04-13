@@ -104,7 +104,6 @@ ja:
         path: パス
         preview_file: プレビューファイル
         sensitive: センシティブコンテンツ
-        tags: タグ
       model_file:
         caption: キャプション
         digest: ダイジェスト

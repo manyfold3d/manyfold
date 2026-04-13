@@ -104,7 +104,6 @@ es:
         path: Ruta
         preview_file: Vista previa
         sensitive: Contenido Sensible
-        tags: Etiquetas
       model_file:
         caption: Subtítulo
         digest: Digest

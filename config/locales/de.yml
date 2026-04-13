@@ -104,7 +104,6 @@ de:
         path: Pfad
         preview_file: Vorschau anzeigen
         sensitive: Möglicherweise verstörender Inhalt
-        tags: Tags
       model_file:
         caption: Beschreibung
         digest: Hash

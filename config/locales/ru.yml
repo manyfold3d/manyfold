@@ -104,7 +104,6 @@ ru:
         path: Путь
         preview_file: Файл предварительного просмотра
         sensitive: Чувствительный контент
-        tags: Теги
       model_file:
         caption: Описание
         digest:

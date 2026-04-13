@@ -104,7 +104,6 @@ nl:
         path: Pad
         preview_file: Voorbeeldbestand
         sensitive: Gevoelige Inhoud
-        tags: Tags
       model_file:
         caption: Onderschrift
         digest: Digest

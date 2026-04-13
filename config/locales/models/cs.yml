@@ -43,7 +43,6 @@ cs:
         help_html: Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
         help: Soubor zobrazený jako náhled modelu na stránkách knihovny
-      tags: Štítky
     general:
       edit: Upravit model
     list:

@@ -106,7 +106,6 @@ fr:
         path: Chemin
         preview_file: Prévisualisation
         sensitive: Contenu sensible
-        tags: Étiquettes
       model_file:
         caption: Légende
         digest: Absorber

@@ -43,7 +43,6 @@ en:
         help_html: You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
         help: The file displayed as a model preview in library pages
-      tags: Tags
     general:
       edit: Edit Model
     list:

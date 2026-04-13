@@ -43,7 +43,6 @@ nl:
         help_html: Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
       preview_file:
         help: Het bestand dat wordt weergegeven als modelvoorbeeld op bibliotheekpagina's
-      tags: Tags
     general:
       edit: Model Bewerken
     list:

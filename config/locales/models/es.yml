@@ -43,7 +43,6 @@ es:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
         help: El archivo que se mostrará como vista previa del modelo en las páginas de la biblioteca
-      tags: Etiquetas
     general:
       edit: Editar modelo
     list:

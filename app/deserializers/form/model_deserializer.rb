@@ -20,7 +20,7 @@ module Form
         :tag,
         :organize,
         :missingtag,
-        tag_list: [], # i18n-tasks-use t("activerecord.attributes.model.tags")
+        tag_list: [],
         links_attributes: [:id, :url, :_destroy] # i18n-tasks-use t("activerecord.attributes.model.links") t("activerecord.attributes.link.url")
       )
       return allowed unless user_can_set_permissions?

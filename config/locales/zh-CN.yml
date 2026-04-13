@@ -104,7 +104,6 @@ zh-CN:
         path: 路径
         preview_file: 预览文件
         sensitive: 敏感内容
-        tags: 标签
       model_file:
         caption: 标题
         digest: 摘要

@@ -104,7 +104,6 @@ cs:
         path: Cesta
         preview_file: Soubor náhledu
         sensitive: Citlivý obsah
-        tags: Štítky
       model_file:
         caption: Titulek
         digest: Digest

@@ -43,7 +43,6 @@ zh-CN:
         help_html: 您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
       preview_file:
         help: 在资料库页面中作为模型预览显示的文件
-      tags: Tags
     general:
       edit: 编辑模型
     list:
