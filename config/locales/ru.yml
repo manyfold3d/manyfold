@@ -92,9 +92,7 @@ ru:
       model:
         ai_indexable: Разрешить использование данных для обучения ИИ
         caption: Описание
-        collection: Коллекция
         collection_id: Коллекция
-        creator: Автор
         creator_id: Автор
         indexable: Разрешить индексацию поисковыми системами
         library_id: Библиотека

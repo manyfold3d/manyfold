@@ -92,9 +92,7 @@ ja:
       model:
         ai_indexable:
         caption: キャプション
-        collection: コレクション
         collection_id: コレクション
-        creator: クリエイター
         creator_id: クリエイター
         indexable:
         library_id: ライブラリー

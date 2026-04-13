@@ -92,9 +92,7 @@ zh-CN:
       model:
         ai_indexable: 允许用于 AI 训练
         caption: 标题
-        collection: 合集
         collection_id: 合集
-        creator: 创作者
         creator_id: 创作者
         indexable: 允许搜索索引
         library_id: 资料库

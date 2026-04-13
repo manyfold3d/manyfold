@@ -94,9 +94,7 @@ fr:
       model:
         ai_indexable: Permettre l'utilisation pour l'entrainement d'IA
         caption: Légende
-        collection: Collection
         collection_id: Collection
-        creator: Créateur
         creator_id: Créateur
         indexable:
         library_id: Bibliothèque

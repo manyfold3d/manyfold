@@ -92,9 +92,7 @@ cs:
       model:
         ai_indexable:
         caption: Titulek
-        collection: Kolekce
         collection_id: Kolekce
-        creator: Autor
         creator_id: Autor
         indexable:
         library_id: Knihovna

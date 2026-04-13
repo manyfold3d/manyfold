@@ -4,8 +4,8 @@ module Form
       return nil unless @params
       allowed = @params.require(:model).permit(
         :preview_file_id, # i18n-tasks-use t("activerecord.attributes.model.preview_file")
-        :creator_id, # i18n-tasks-use t("activerecord.attributes.model.creator") t("activerecord.attributes.model.creator_id")
-        :library_id, # i18n-tasks-use t("activerecord.attributes.model.library") t("activerecord.attributes.model.library_id")
+        :creator_id, # i18n-tasks-use t("activerecord.attributes.model.creator_id")
+        :library_id, # i18n-tasks-use t("activerecord.attributes.model.library_id")
         :name, # i18n-tasks-use t("activerecord.attributes.model.name")
         :caption, # i18n-tasks-use t("activerecord.attributes.model.caption")
         :notes, # i18n-tasks-use t("activerecord.attributes.model.notes")
@@ -13,7 +13,7 @@ module Form
         :sensitive, # i18n-tasks-use t("activerecord.attributes.model.sensitive")
         :indexable, # i18n-tasks-use t("activerecord.attributes.model.indexable")
         :ai_indexable, # i18n-tasks-use t("activerecord.attributes.model.ai_indexable")
-        :collection_id, # i18n-tasks-use t("activerecord.attributes.model.collection") t("activerecord.attributes.model.collection_id")
+        :collection_id, # i18n-tasks-use t("activerecord.attributes.model.collection_id")
         :q,
         :library,
         :creator,

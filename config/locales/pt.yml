@@ -92,9 +92,7 @@ pt:
       model:
         ai_indexable:
         caption:
-        collection:
         collection_id:
-        creator:
         creator_id:
         indexable:
         library_id:

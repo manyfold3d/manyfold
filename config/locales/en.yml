@@ -92,9 +92,7 @@ en:
       model:
         ai_indexable: Allow use for AI training
         caption: Caption
-        collection: Collection
         collection_id: Collection
-        creator: Creator
         creator_id: Creator
         indexable: Allow search indexing
         library_id: Library

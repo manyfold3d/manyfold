@@ -92,9 +92,7 @@ nl:
       model:
         ai_indexable: Gebruik voor AI-training toestaan
         caption: Onderschrift
-        collection: Collectie
         collection_id: Collectie
-        creator: Maker
         creator_id: Maker
         indexable: Indexering voor zoekopdrachten toestaan
         library_id: Bibliotheek
