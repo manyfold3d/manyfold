@@ -35,6 +35,21 @@ pt:
         scopes:
         secret:
         uid:
+      fasp_client_backfill_request:
+        category:
+        created_at:
+        max_count:
+      fasp_client_event_subscription:
+        subscription_type:
+      fasp_client_provider:
+        base_url:
+        contact_email: Email
+        created_at:
+        fediverse_account:
+        fingerprint:
+        privacy_policy:
+        sign_in_url: Entrar
+        status:
       federails/moderation/domain_block:
         created_at: Criado em
         domain:
@@ -211,6 +226,10 @@ pt:
         other:
         two:
         zero:
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few:
       federails/moderation/domain_block:
         few:
         many:
@@ -679,35 +698,21 @@ pt:
       edit:
         approval_help:
         approve:
-        backfill_requests:
         capability:
-        category:
         contact_details:
-        created:
         data_sharing:
         deny:
         disable:
-        email: Email
         enable:
-        event_subscriptions:
-        fediverse_account:
-        fingerprint:
         links:
-        max_count:
-        privacy_policy:
         registration:
-        sign_in: Entrar
-        subscription_type:
         versions:
       index:
         add_html:
         description_html:
         heading:
         provider_list_title:
-        registered_at:
         search_3dprint_social_html:
-        status:
-        url:
   follows:
     actor_table:
       actions:

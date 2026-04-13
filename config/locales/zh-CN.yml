@@ -35,6 +35,21 @@ zh-CN:
         scopes: 权限范围
         secret: Client Secret
         uid: Client ID
+      fasp_client_backfill_request:
+        category:
+        created_at:
+        max_count: 最大计数
+      fasp_client_event_subscription:
+        subscription_type: 订阅类型
+      fasp_client_provider:
+        base_url: URL
+        contact_email: 电子邮箱
+        created_at:
+        fediverse_account: Fediverse 地址
+        fingerprint: 指纹
+        privacy_policy: 隐私政策
+        sign_in_url: 登录
+        status:
       federails/moderation/domain_block:
         created_at: 创建于
         domain:
@@ -211,6 +226,10 @@ zh-CN:
         other: 创作者
         two: 创作者
         zero: 创作者
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few: 活动订阅
       federails/moderation/domain_block:
         few:
         many:
@@ -679,35 +698,21 @@ zh-CN:
       edit:
         approval_help:
         approve: 批准
-        backfill_requests:
         capability:
-        category:
         contact_details:
-        created:
         data_sharing: 数据共享
         deny: 拒绝授权
         disable: 禁用
-        email: 电子邮箱
         enable: 启用
-        event_subscriptions: 活动订阅
-        fediverse_account: Fediverse 地址
-        fingerprint: 指纹
         links: 链接
-        max_count: 最大计数
-        privacy_policy: 隐私政策
         registration: 注册
-        sign_in: 登录
-        subscription_type: 订阅类型
         versions: 版本
       index:
         add_html:
         description_html: 作为<a href="https://fediscovery.org" target="_new" rel="noopener">Fediscovery 项目</a>的一部分，Fediverse 辅助服务提供商 (FASP) 可为 Fediverse 服务器提供搜索、趋势、垃圾邮件检测等额外功能。
         heading:
         provider_list_title:
-        registered_at:
         search_3dprint_social_html:
-        status:
-        url: URL
   follows:
     actor_table:
       actions: 动作

@@ -35,6 +35,21 @@ nl:
         scopes: Scopes
         secret:
         uid:
+      fasp_client_backfill_request:
+        category: Categorie
+        created_at:
+        max_count:
+      fasp_client_event_subscription:
+        subscription_type:
+      fasp_client_provider:
+        base_url:
+        contact_email: E-mail
+        created_at:
+        fediverse_account: Fediverse-adres
+        fingerprint:
+        privacy_policy:
+        sign_in_url: Inloggen
+        status:
       federails/moderation/domain_block:
         created_at: Aangemaakt op
         domain: Domein
@@ -211,6 +226,10 @@ nl:
         other: Makers
         two: Makers
         zero: Makers
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few:
       federails/moderation/domain_block:
         few: Domeinblokkeringen
         many: Domeinblokkeringen
@@ -679,35 +698,21 @@ nl:
       edit:
         approval_help:
         approve:
-        backfill_requests:
         capability:
-        category: Categorie
         contact_details:
-        created:
         data_sharing:
         deny: Weigeren
         disable:
-        email: E-mail
         enable:
-        event_subscriptions:
-        fediverse_account: Fediverse-adres
-        fingerprint:
         links: Links
-        max_count:
-        privacy_policy:
         registration:
-        sign_in: Inloggen
-        subscription_type:
         versions:
       index:
         add_html:
         description_html:
         heading:
         provider_list_title:
-        registered_at:
         search_3dprint_social_html:
-        status:
-        url:
   follows:
     actor_table:
       actions: Acties

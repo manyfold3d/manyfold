@@ -35,6 +35,21 @@ de:
         scopes: Scopes
         secret: Client Secret
         uid: Client ID
+      fasp_client_backfill_request:
+        category: Kategorie
+        created_at: Erstellt
+        max_count: Maximale Anzahl
+      fasp_client_event_subscription:
+        subscription_type: Art des Abonnements
+      fasp_client_provider:
+        base_url: URL
+        contact_email: E-Mail
+        created_at: Registriert bei
+        fediverse_account: Fediverse-Adresse
+        fingerprint: Fingerabdruck
+        privacy_policy: Datenschutzeinstellungen
+        sign_in_url: Einloggen
+        status: Status
       federails/moderation/domain_block:
         created_at: Erstellt am
         domain: Domain
@@ -211,6 +226,10 @@ de:
         other: Autoren
         two: Autoren
         zero: Autoren
+      fasp_client_backfill_request:
+        few: Anträge auf Verfüllung
+      fasp_client_event_subscription:
+        few: Event-Abonnements
       federails/moderation/domain_block:
         few: Blockierte Domains
         many: Blockierte Domains
@@ -681,35 +700,21 @@ de:
       edit:
         approval_help: Überprüfe, ob der hier angezeigte Fingerabdruck mit dem des Anbieters übereinstimmt, und lasse nur Anbieter zu, denen du vertraust.
         approve: Genehmigen
-        backfill_requests: Anträge auf Verfüllung
         capability: Fähigkeit
-        category: Kategorie
         contact_details: Kontaktangaben
-        created: Erstellt
         data_sharing: Gemeinsame Datennutzung
         deny: Verweigern
         disable: Deaktivieren
-        email: E-Mail
         enable: Aktivieren
-        event_subscriptions: Event-Abonnements
-        fediverse_account: Fediverse-Adresse
-        fingerprint: Fingerabdruck
         links: URLs
-        max_count: Maximale Anzahl
-        privacy_policy: Datenschutzeinstellungen
         registration: Registrierung
-        sign_in: Einloggen
-        subscription_type: Art des Abonnements
         versions: Versionen
       index:
         add_html: 'Um einen neuen FASP zu aktivieren, besuche den Anbieter und gebe bei der Anmeldung die URL dieses Servers ein: <code>%{base_url}</code>. Du solltest nur Anbieter verwenden, denen du vertraust, und deren Datenschutzbestimmungen vollständig lesen, bevor du die Dienste aktivierst. Beachte, dass nur öffentliche indizierbare Inhalte mit FASPs geteilt werden.'
         description_html: Fediverse Auxiliary Service Providers (FASPs) ermöglichen im Rahmen des <a href="https://fediscovery.org" target="_new" rel="noopener">Fediscovery-Projekts</a> zusätzliche Funktionen für Fediverse-Server, wie Suche, Trends, Spam-Erkennung und mehr.
         heading: FASP Dienstleistungen
         provider_list_title: Registrierte FASP
-        registered_at: Registriert bei
         search_3dprint_social_html: Wir empfehlen, den <a href="https://search.3dprint.social/registration/new" rel="noreferrer">search.3dprint.social</a> FASP zu verbinden; er wird von den Manyfold-Entwicklern betrieben und ist speziell für die Suche nach 3D-Inhalten konfiguriert.
-        status: Status
-        url: URL
   follows:
     actor_table:
       actions: Aktionen

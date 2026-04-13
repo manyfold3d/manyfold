@@ -35,6 +35,21 @@ cs:
         scopes: Scopes
         secret: Klient secret
         uid: ID klienta
+      fasp_client_backfill_request:
+        category: Kategorie
+        created_at: Vytvořeno
+        max_count:
+      fasp_client_event_subscription:
+        subscription_type:
+      fasp_client_provider:
+        base_url:
+        contact_email: E-mail
+        created_at:
+        fediverse_account: Adresa Fediverse
+        fingerprint:
+        privacy_policy:
+        sign_in_url: Přihlásit se
+        status:
       federails/moderation/domain_block:
         created_at: Vytvořeno
         domain: Doména
@@ -211,6 +226,10 @@ cs:
         other: Autoři
         two: Autoři
         zero: Autoři
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few:
       federails/moderation/domain_block:
         few: Blokování domén
         many: Blokování domén
@@ -679,35 +698,21 @@ cs:
       edit:
         approval_help:
         approve:
-        backfill_requests:
         capability:
-        category: Kategorie
         contact_details:
-        created: Vytvořeno
         data_sharing:
         deny: Odmítnout
         disable:
-        email: E-mail
         enable:
-        event_subscriptions:
-        fediverse_account: Adresa Fediverse
-        fingerprint:
         links: Odkazy
-        max_count:
-        privacy_policy:
         registration:
-        sign_in: Přihlásit se
-        subscription_type:
         versions:
       index:
         add_html:
         description_html:
         heading:
         provider_list_title:
-        registered_at:
         search_3dprint_social_html:
-        status:
-        url:
   follows:
     actor_table:
       actions: Akce

@@ -35,6 +35,21 @@ ja:
         scopes: スコープ
         secret: クライアントシークレット
         uid: クライアントID
+      fasp_client_backfill_request:
+        category: カテゴリー
+        created_at: 作成日時
+        max_count:
+      fasp_client_event_subscription:
+        subscription_type:
+      fasp_client_provider:
+        base_url:
+        contact_email: Eメール
+        created_at:
+        fediverse_account: フェディバースアドレス
+        fingerprint:
+        privacy_policy:
+        sign_in_url: ログイン
+        status:
       federails/moderation/domain_block:
         created_at: 作成日時
         domain: ドメイン
@@ -211,6 +226,10 @@ ja:
         other: クリエイター
         two: クリエイター
         zero: クリエイター
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few:
       federails/moderation/domain_block:
         few: ドメインブロック
         many: ドメインブロック
@@ -679,35 +698,21 @@ ja:
       edit:
         approval_help:
         approve:
-        backfill_requests:
         capability:
-        category: カテゴリー
         contact_details:
-        created: 作成日時
         data_sharing:
         deny: 否認
         disable:
-        email: Eメール
         enable:
-        event_subscriptions:
-        fediverse_account: フェディバースアドレス
-        fingerprint:
         links: リンク
-        max_count:
-        privacy_policy:
         registration:
-        sign_in: ログイン
-        subscription_type:
         versions:
       index:
         add_html:
         description_html:
         heading:
         provider_list_title:
-        registered_at:
         search_3dprint_social_html:
-        status:
-        url:
   follows:
     actor_table:
       actions:

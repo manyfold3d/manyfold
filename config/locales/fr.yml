@@ -37,6 +37,21 @@ fr:
         scopes: Portées
         secret:
         uid: ID du client
+      fasp_client_backfill_request:
+        category: Catégorie
+        created_at: Créée
+        max_count:
+      fasp_client_event_subscription:
+        subscription_type: Type d'abonnement
+      fasp_client_provider:
+        base_url: URL
+        contact_email: Email
+        created_at: Enregistré à
+        fediverse_account: Adresse Fediverse
+        fingerprint:
+        privacy_policy:
+        sign_in_url: Se connecter
+        status: Statut
       federails/moderation/domain_block:
         created_at: Enregistré à
         domain: Domaine
@@ -213,6 +228,10 @@ fr:
         other: Créateurs
         two: Créateurs
         zero: Créateurs
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few:
       federails/moderation/domain_block:
         few: Blocages de domaines
         many: Blocages de domaines
@@ -684,35 +703,21 @@ fr:
       edit:
         approval_help:
         approve: Approuver
-        backfill_requests:
         capability: Capacité
-        category: Catégorie
         contact_details: Détails du contact
-        created: Créée
         data_sharing: Partage des données
         deny: Refuser
         disable: Désactiver
-        email: Email
         enable: Activer
-        event_subscriptions:
-        fediverse_account: Adresse Fediverse
-        fingerprint:
         links: Liens
-        max_count:
-        privacy_policy:
         registration: Inscription
-        sign_in: Se connecter
-        subscription_type: Type d'abonnement
         versions: Versions
       index:
         add_html:
         description_html:
         heading:
         provider_list_title:
-        registered_at: Enregistré à
         search_3dprint_social_html:
-        status: Statut
-        url: URL
   follows:
     actor_table:
       actions: Actions
