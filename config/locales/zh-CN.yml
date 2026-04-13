@@ -152,6 +152,7 @@ zh-CN:
         remember_me: 记住登录信息
         reset_password_sent_at: 重置密码发送于
         reset_password_token: 密码重置令牌
+        sensitive_content_handling: 敏感内容
         sign_in_count: 登录次数
         sort_order: 排序方式
         unconfirmed_email: 未确认邮件

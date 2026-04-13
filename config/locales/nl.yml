@@ -152,6 +152,7 @@ nl:
         remember_me: Onthoud mij
         reset_password_sent_at: Wachtwoord reset verzonden op
         reset_password_token: Wachtwoord reset token
+        sensitive_content_handling: Gevoelige Inhoud
         sign_in_count: Aantal keer ingelogd
         sort_order:
         unconfirmed_email: Onbevestigde e-mail

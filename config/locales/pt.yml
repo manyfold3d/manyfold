@@ -152,6 +152,7 @@ pt:
         remember_me: Lembrar-se de mim
         reset_password_sent_at: Recuperação de palavra-passe enviada em
         reset_password_token: Código para recuperar palavra-passe
+        sensitive_content_handling:
         sign_in_count: Número de entradas
         sort_order:
         unconfirmed_email: Email não confirmado

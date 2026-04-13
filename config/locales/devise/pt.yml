@@ -123,7 +123,6 @@ pt:
         sensitive_content:
           help:
           hide:
-          label:
           mask:
           show:
       new:

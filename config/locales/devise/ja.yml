@@ -123,7 +123,6 @@ ja:
         sensitive_content:
           help: "「センシティブ」とマークされたコンテンツがどのように表示されるかに影響します。"
           hide: 完全に隠す
-          label: センシティブコンテンツ
           mask: リストでぼかし
           show: 通常通り表示
       new:

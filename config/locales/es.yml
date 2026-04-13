@@ -152,6 +152,7 @@ es:
         remember_me: Recordarme
         reset_password_sent_at: Restablecimiento de contraseña enviado a
         reset_password_token: Restablecer contraseña
+        sensitive_content_handling: Contenido Sensible
         sign_in_count: Número inicios de sesión
         sort_order: Ordenar por
         unconfirmed_email: Email no confirmado

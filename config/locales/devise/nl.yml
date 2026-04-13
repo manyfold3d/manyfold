@@ -123,7 +123,6 @@ nl:
         sensitive_content:
           help: Beïnvloedt hoe inhoud gemarkeerd als "gevoelig" wordt weergegeven
           hide: Volledig verbergen
-          label: Gevoelige Inhoud
           mask: Vervagen in lijsten
           show: Normaal weergeven
       new:

@@ -152,6 +152,7 @@ pl:
         remember_me: Zapamiętaj mnie
         reset_password_sent_at: Data wysłania żądania resetu hasła
         reset_password_token: Token umożliwiający reset hasła
+        sensitive_content_handling: Wrażliwa Treść
         sign_in_count: Liczba logowań
         sort_order:
         unconfirmed_email: Niepotwierdzony adres e-mail

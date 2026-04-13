@@ -123,7 +123,6 @@ en:
         sensitive_content:
           help: Affects how content marked as "sensitive" will be displayed
           hide: Hide completely
-          label: Sensitive Content
           mask: Blur in lists
           show: Show as normal
       new:

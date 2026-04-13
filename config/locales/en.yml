@@ -153,6 +153,7 @@ en:
         remember_me: Remember me
         reset_password_sent_at: Reset password sent at
         reset_password_token: Reset password token
+        sensitive_content_handling: Sensitive Content
         sign_in_count: Sign in count
         sort_order: Sort by
         unconfirmed_email: Unconfirmed email

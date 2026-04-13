@@ -152,6 +152,7 @@ ja:
         remember_me: ログインを記憶する
         reset_password_sent_at: パスワードリセット送信時刻
         reset_password_token: パスワードリセット用トークン
+        sensitive_content_handling: センシティブコンテンツ
         sign_in_count: ログイン回数
         sort_order:
         unconfirmed_email: 未確認Eメール

@@ -14,7 +14,7 @@
     </div>
 
     <div>
-      <%= form.label :sensitive_content_handling, t(".sensitive_content.label"), class: "col-form-label" %>
+      <%= form.label :sensitive_content_handling, User.human_attribute_name(:sensitive_content_handling), class: "col-form-label" %>
     </div>
     <div>
       <%= form.select :sensitive_content_handling,

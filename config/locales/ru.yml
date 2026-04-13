@@ -152,6 +152,7 @@ ru:
         remember_me: Запомнить меня
         reset_password_sent_at: Дата отправки сброса пароля
         reset_password_token: Токен сброса пароля
+        sensitive_content_handling:
         sign_in_count: Количество входов
         sort_order:
         unconfirmed_email: Неподтвержденный email

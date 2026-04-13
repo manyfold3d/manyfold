@@ -154,6 +154,7 @@ fr:
         remember_me: Se souvenir de moi ?
         reset_password_sent_at: Clé de réinitialisation créée à
         reset_password_token: Clé de réinitialisation du mot de passe
+        sensitive_content_handling: Contenu sensible
         sign_in_count: Nombre des connexions
         sort_order: Trier par
         unconfirmed_email: Email non confirmé

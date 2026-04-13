@@ -152,6 +152,7 @@ de:
         remember_me: Angemeldet bleiben
         reset_password_sent_at: Passwort-Zurücksetzen-E-Mail gesendet am
         reset_password_token: Passwort-reset-Token
+        sensitive_content_handling: Möglicherweise verstörender Inhalt
         sign_in_count: Anzahl Anmeldungen
         sort_order: Sortieren nach
         unconfirmed_email: Unbestätigte E-Mail-Adresse

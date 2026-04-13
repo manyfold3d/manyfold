@@ -123,7 +123,6 @@ fr:
         sensitive_content:
           help: Affecte l'affichage du contenu marqué comme "sensible"
           hide: Cacher complètement
-          label: Contenu sensible
           mask: Flouter dans les listes
           show: Afficher comme les autres
       new:

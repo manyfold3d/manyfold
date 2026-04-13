@@ -123,7 +123,6 @@ zh-CN:
         sensitive_content:
           help: 影响标记为 "敏感" 的内容的显示方式
           hide: 完全隐藏
-          label: 敏感内容
           mask: 在列表中模糊
           show: 正常显示
       new:

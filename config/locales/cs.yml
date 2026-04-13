@@ -152,6 +152,7 @@ cs:
         remember_me: Zapamatuj si mě
         reset_password_sent_at: Obnova hesla poslána
         reset_password_token: Token obnovy hesla
+        sensitive_content_handling: Citlivý obsah
         sign_in_count: Počet přihlášení
         sort_order:
         unconfirmed_email: Nepotvrzený e-mail
