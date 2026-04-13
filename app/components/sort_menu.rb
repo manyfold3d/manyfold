@@ -10,7 +10,7 @@ class Components::SortMenu < Components::Base
       button type: "button", data: {bs_toggle: "dropdown"}, aria: {expanded: "false"}, class: "btn btn-sm dropdown-toggle" do
         Icon(icon: "sort-down")
         whitespace
-        span { t "components.sort_menu.sort-by" }
+        span { User.human_attribute_name(:sort_order) }
       end
       ul class: "dropdown-menu" do
         item "sort-alpha-down", "name", "asc" # i18n-tasks-use t('components.sort_menu.name')

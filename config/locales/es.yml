@@ -153,6 +153,7 @@ es:
         reset_password_sent_at: Restablecimiento de contraseña enviado a
         reset_password_token: Restablecer contraseña
         sign_in_count: Número inicios de sesión
+        sort_order: Ordenar por
         unconfirmed_email: Email no confirmado
         unlock_token: Código de desbloqueo
         updated_at: Actualizado el
@@ -501,7 +502,6 @@ es:
     sort_menu:
       name: Título
       recent: Más reciente
-      sort-by: Ordenar por
       updated: Actualizado
   concerns:
     linkable:

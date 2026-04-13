@@ -155,6 +155,7 @@ fr:
         reset_password_sent_at: Clé de réinitialisation créée à
         reset_password_token: Clé de réinitialisation du mot de passe
         sign_in_count: Nombre des connexions
+        sort_order: Trier par
         unconfirmed_email: Email non confirmé
         unlock_token: Clé de déverrouillage
         updated_at: Date de mise à jour
@@ -503,7 +504,6 @@ fr:
     sort_menu:
       name: Titre
       recent: Le plus récent
-      sort-by: Trier par
       updated: Mis à jour
   concerns:
     linkable:

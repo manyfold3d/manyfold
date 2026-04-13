@@ -153,6 +153,7 @@ pt:
         reset_password_sent_at: Recuperação de palavra-passe enviada em
         reset_password_token: Código para recuperar palavra-passe
         sign_in_count: Número de entradas
+        sort_order:
         unconfirmed_email: Email não confirmado
         unlock_token: Código de desbloqueio
         updated_at: Atualizado em
@@ -501,7 +502,6 @@ pt:
     sort_menu:
       name:
       recent:
-      sort-by:
       updated:
   concerns:
     linkable:

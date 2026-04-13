@@ -153,6 +153,7 @@ zh-CN:
         reset_password_sent_at: 重置密码发送于
         reset_password_token: 密码重置令牌
         sign_in_count: 登录次数
+        sort_order: 排序方式
         unconfirmed_email: 未确认邮件
         unlock_token: 帐户解锁令牌
         updated_at: 更新于
@@ -506,7 +507,6 @@ zh-CN:
     sort_menu:
       name: 标题
       recent: 上传时间
-      sort-by: 排序方式
       updated: 更新时间
   concerns:
     linkable:

@@ -153,6 +153,7 @@ cs:
         reset_password_sent_at: Obnova hesla poslána
         reset_password_token: Token obnovy hesla
         sign_in_count: Počet přihlášení
+        sort_order:
         unconfirmed_email: Nepotvrzený e-mail
         unlock_token: Odemykací token
         updated_at: Upraveno
@@ -501,7 +502,6 @@ cs:
     sort_menu:
       name:
       recent:
-      sort-by:
       updated:
   concerns:
     linkable:

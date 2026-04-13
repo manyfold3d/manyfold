@@ -154,6 +154,7 @@ en:
         reset_password_sent_at: Reset password sent at
         reset_password_token: Reset password token
         sign_in_count: Sign in count
+        sort_order: Sort by
         unconfirmed_email: Unconfirmed email
         unlock_token: Unlock token
         updated_at: Updated at
@@ -566,7 +567,6 @@ en:
     sort_menu:
       name: Title
       recent: Newest
-      sort-by: Sort by
       updated: Updated
   concerns:
     linkable:

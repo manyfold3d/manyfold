@@ -153,6 +153,7 @@ ru:
         reset_password_sent_at: Дата отправки сброса пароля
         reset_password_token: Токен сброса пароля
         sign_in_count: Количество входов
+        sort_order:
         unconfirmed_email: Неподтвержденный email
         unlock_token: Токен разблокировки
         updated_at: Дата обновления
@@ -501,7 +502,6 @@ ru:
     sort_menu:
       name:
       recent:
-      sort-by:
       updated:
   concerns:
     linkable:

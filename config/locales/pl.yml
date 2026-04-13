@@ -153,6 +153,7 @@ pl:
         reset_password_sent_at: Data wysłania żądania resetu hasła
         reset_password_token: Token umożliwiający reset hasła
         sign_in_count: Liczba logowań
+        sort_order:
         unconfirmed_email: Niepotwierdzony adres e-mail
         unlock_token: Token odblokowywujący
         updated_at: Data uaktualnienia
@@ -501,7 +502,6 @@ pl:
     sort_menu:
       name:
       recent:
-      sort-by:
       updated:
   concerns:
     linkable:

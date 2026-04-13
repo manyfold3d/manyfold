@@ -153,6 +153,7 @@ de:
         reset_password_sent_at: Passwort-Zurücksetzen-E-Mail gesendet am
         reset_password_token: Passwort-reset-Token
         sign_in_count: Anzahl Anmeldungen
+        sort_order: Sortieren nach
         unconfirmed_email: Unbestätigte E-Mail-Adresse
         unlock_token: Entsperrungs-Token
         updated_at: Aktualisiert am
@@ -503,7 +504,6 @@ de:
     sort_menu:
       name: Titel
       recent: Neueste
-      sort-by: Sortieren nach
       updated: Aktualisiert
   concerns:
     linkable:

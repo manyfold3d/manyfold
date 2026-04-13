@@ -153,6 +153,7 @@ nl:
         reset_password_sent_at: Wachtwoord reset verzonden op
         reset_password_token: Wachtwoord reset token
         sign_in_count: Aantal keer ingelogd
+        sort_order:
         unconfirmed_email: Onbevestigde e-mail
         unlock_token: Ontgrendelingstoken
         updated_at: Bijgewerkt op
@@ -501,7 +502,6 @@ nl:
     sort_menu:
       name:
       recent:
-      sort-by:
       updated:
   concerns:
     linkable:
