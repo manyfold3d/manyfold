@@ -21,7 +21,7 @@ module Form
         :organize,
         :missingtag,
         tag_list: [], # i18n-tasks-use t("activerecord.attributes.model.tags")
-        links_attributes: [:id, :url, :_destroy] # i18n-tasks-use t("activerecord.attributes.link.url")
+        links_attributes: [:id, :url, :_destroy] # i18n-tasks-use t("activerecord.attributes.model.links") t("activerecord.attributes.link.url")
       )
       return allowed unless user_can_set_permissions?
       allowed.deep_merge(caber_relations_attributes(type: :model))

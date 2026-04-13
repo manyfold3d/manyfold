@@ -10,7 +10,7 @@ module Form
         :notes, # i18n-tasks-use t("activerecord.attributes.collection.notes")
         :indexable, # i18n-tasks-use t("activerecord.attributes.collection.indexable")
         :ai_indexable, # i18n-tasks-use t("activerecord.attributes.collection.ai_indexable")
-        links_attributes: [:id, :url, :_destroy]
+        links_attributes: [:id, :url, :_destroy] # i18n-tasks-use t("activerecord.attributes.collection.links")
       )
       return allowed unless user_can_set_permissions?
       allowed.deep_merge(caber_relations_attributes(type: :collection))
