@@ -236,6 +236,20 @@ en:
         other: Creators
         two: Creators
         zero: Creators
+      doorkeeper/access_token:
+        few: Access Tokens
+        many: Access Tokens
+        one: Access Token
+        other: Access Tokens
+        two: Access Tokens
+        zero: Access Tokens
+      doorkeeper/application:
+        few: OAuth Applications
+        many: OAuth Applications
+        one: OAuth Application
+        other: OAuth Applications
+        two: OAuth Applications
+        zero: OAuth Applications
       fasp_client_backfill_request:
         few: Backfill requests
         many: Backfill requests
@@ -271,6 +285,13 @@ en:
         other: Reports
         two: Reports
         zero: Reports
+      group:
+        few: User Groups
+        many: User Groups
+        one: User Group
+        other: User Groups
+        two: User Groups
+        zero: User Groups
       library:
         few: Libraries
         many: Libraries
@@ -292,6 +313,20 @@ en:
         other: Lists
         two: Lists
         zero: Lists
+      list_item:
+        few: Items
+        many: Items
+        one: Item
+        other: Items
+        two: Items
+        zero: Items
+      membership:
+        few: Memberships
+        many: Memberships
+        one: Membership
+        other: Memberships
+        two: Memberships
+        zero: Memberships
       model:
         few: Models
         many: Models
