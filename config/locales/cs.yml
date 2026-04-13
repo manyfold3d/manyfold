@@ -397,9 +397,9 @@ cs:
       sort_by:
     comment:
       confirm_delete:
-      delete:
+      delete: Smazat
       posted:
-      report:
+      report: Hlášení
       reported:
       system:
     copy_button:
