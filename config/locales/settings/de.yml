@@ -46,8 +46,8 @@ de:
         help: Erzeugt Bilder mit geringerer Auflösung, welche in Listen und Modellseiten schneller laden.
         label: Bild-Miniaturansichten
       model_renders:
-        help:
-        label:
+        help: Rendert statische Bilder von 3D-Modellen, damit die Benutzer ein Modell schnell sehen können. Dies verbraucht viel CPU-Leistung, wenn es eingeschaltet ist, bis alle Modelle gerendert sind!
+        label: 3D-Renderings
       pregenerate_downloads:
         help: Wenn diese Option aktiviert ist, werden ZIP-Dateien immer dann erstellt, wenn ein Modell hinzugefügt oder aktualisiert wird. Wenn deaktiviert, werden ZIP-Dateien nur auf Anforderung erstellt.
         label: Proaktiv herunterladbare ZIP-Dateien erstellen
@@ -85,7 +85,9 @@ de:
     file_settings:
       custom_ignore_filters:
         details: Die Filter sind im Regex-Format und durch eine neue Zeile getrennt.
-        label: Ignorierte Dateien Regex-Filter.
+        label: 'Regex Filter zum Ignorieren von Dateien
+
+          '
       summary: Ändere Dateieinstellungen wie z. B. ignorierte Dateien.
       title: Datei-Einstellungen
     general:
@@ -96,7 +98,9 @@ de:
         label: API-Schlüssel
       cults3d_api_username:
         help_html: Der Name des Cults3D-Kontos, das den API-Schlüssel generiert hat.
-        label: Kontoname
+        label: 'Nutzername
+
+          '
       description: Einstellungen für die Integration von externen Diensten um beispielsweise die automatische Synchronisierung von Metadaten zu aktivieren.
       heading: Integrationen
       myminifactory_api_key:
@@ -162,7 +166,7 @@ de:
         resolved: Die Meldung wurde als Gelöst Markiert
     show:
       stats: Statistiken
-      total_file_size: Gesamtgröße aller Daten
+      total_file_size: Gesamtgröße aller Dateien
     tag_settings:
       auto_tag_new:
         label: Automatisch neue Modelle mit Tag(s) markieren
@@ -195,7 +199,7 @@ de:
         local: Lokal
         new: Neues Konto
         title: Konten verwaltung
-        view: Siehe
+        view: Details
       new:
         title: Konto erstellen
       quota:
