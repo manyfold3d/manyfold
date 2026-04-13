@@ -397,9 +397,9 @@ pl:
       sort_by:
     comment:
       confirm_delete:
-      delete:
+      delete: Usuń
       posted:
-      report:
+      report: Zgłoszenie
       reported:
       system:
     copy_button:
