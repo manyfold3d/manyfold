@@ -2,15 +2,15 @@
 <%- @creator.caber_relations.build if @creator.caber_relations.empty? %>
 
 <%= form_with model: @creator, class: "container-md tabular-form" do |form| %>
-  <%= text_input_row form, :name %>
-  <%= text_input_row form, :slug, help: t(".slug.help"), value: @attemped_slug || @creator.slug if @creator.slug.presence || !@creator.errors[:slug].empty? %>
+  <%= text_input_row form, :name # i18n-tasks-use t("activerecord.attributes.creator.name") %>
+  <%= text_input_row form, :slug, help: t(".slug.help"), value: @attemped_slug || @creator.slug if @creator.slug.presence || !@creator.errors[:slug].empty?  # i18n-tasks-use t("activerecord.attributes.creator.slug") %>
   <%= render "links_form", form: form %>
-  <%= text_input_row form, :caption %>
-  <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
-  <%= select_input_row form, :indexable, indexable_select_options(form.object) %>
-  <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots %>
-  <%= file_input_row form, :avatar, help: "#{t(".avatar.help")} #{@creator.avatar ? t(".avatar.current", filename: @creator.avatar.metadata["filename"]) : t(".avatar.none")}", remove: @creator.avatar.present?, remove_label: t(".avatar.remove") %>
-  <%= file_input_row form, :banner, help: "#{t(".banner.help")} #{@creator.banner ? t(".banner.current", filename: @creator.banner.metadata["filename"]) : t(".banner.none")}", remove: @creator.banner.present?, remove_label: t(".banner.remove") %>
+  <%= text_input_row form, :caption  # i18n-tasks-use t("activerecord.attributes.creator.caption") %>
+  <%= rich_text_input_row form, :notes, help: t(".notes.help_html")  # i18n-tasks-use t("activerecord.attributes.creator.notes") %>
+  <%= select_input_row form, :indexable, indexable_select_options(form.object)  # i18n-tasks-use t("activerecord.attributes.creator.indexable") %>
+  <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots  # i18n-tasks-use t("activerecord.attributes.creator.ai_indexable") %>
+  <%= file_input_row form, :avatar, help: "#{t(".avatar.help")} #{@creator.avatar ? t(".avatar.current", filename: @creator.avatar.metadata["filename"]) : t(".avatar.none")}", remove: @creator.avatar.present?, remove_label: t(".avatar.remove")  # i18n-tasks-use t("activerecord.attributes.creator.avatar") %>
+  <%= file_input_row form, :banner, help: "#{t(".banner.help")} #{@creator.banner ? t(".banner.current", filename: @creator.banner.metadata["filename"]) : t(".banner.none")}", remove: @creator.banner.present?, remove_label: t(".banner.remove")  # i18n-tasks-use t("activerecord.attributes.creator.banner") %>
   <%= render "caber_relations_form", form: form %>
   <div>
     <%= form.submit translate("general.save"), class: "btn btn-primary" %>
