@@ -27,7 +27,7 @@
   <%= text_input_row form, :caption # i18n-tasks-use t("activerecord.attributes.collection.caption") %>
   <%= rich_text_input_row form, :notes, help: t(".notes.help_html") # i18n-tasks-use t("activerecord.attributes.collection.notes") %>
   <%= select_input_row form, :indexable, indexable_select_options(form.object) # i18n-tasks-use t("activerecord.attributes.collection.indexable") %>
-  <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots # i18n-tasks-use t("activerecord.attributes.collection.ai_indexable")%>
+  <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots # i18n-tasks-use t("activerecord.attributes.collection.ai_indexable") %>
   <%= render "caber_relations_form", form: form %>
   <div>
     <%= form.submit translate("general.save"), class: "btn btn-primary" %>
