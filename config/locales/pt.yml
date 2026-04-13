@@ -7,7 +7,6 @@ pt:
         caption:
         collection:
         indexable:
-        models:
         name:
         notes:
       creator:
@@ -97,11 +96,9 @@ pt:
         collection_id:
         creator:
         creator_id:
-        images:
         indexable:
         library_id:
         license:
-        model_files:
         name:
         notes:
         path:
@@ -113,7 +110,6 @@ pt:
         digest:
         dimensions:
         filename:
-        model_id:
         notes:
         presupported:
         presupported_version:

@@ -7,7 +7,6 @@ es:
         caption: Subtítulo
         collection: Colección Principal
         indexable: Permitir la indexación de búsquedas
-        models: Modelos
         name: Nombre
         notes: Notas
       creator:
@@ -97,11 +96,9 @@ es:
         collection_id: Colección
         creator: Creador
         creator_id: Creador
-        images: Imágenes
         indexable: Permitir la indexación de búsquedas
         library_id: Biblioteca
         license: Licencia
-        model_files: Archivos
         name: Nombre
         notes: Descripción
         path: Ruta
@@ -113,7 +110,6 @@ es:
         digest: Digest
         dimensions: Dimensiones
         filename: Archivo
-        model_id: Modelo
         notes: Notas
         presupported: Soporte predefinido
         presupported_version: Versión con soporte predefinido

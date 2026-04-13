@@ -7,7 +7,6 @@ de:
         caption: Beschreibung
         collection: Übergeordnete Kollektion
         indexable: Suchindizierung zulassen
-        models: Modelle
         name: Name
         notes: Beschreibung
       creator:
@@ -97,11 +96,9 @@ de:
         collection_id: Kollektion
         creator: Autor
         creator_id: Autor
-        images: Bilder
         indexable: Suchindizierung zulassen
         library_id: Sammlung
         license: Lizenz
-        model_files: Dateien
         name: Name
         notes: Beschreibung
         path: Pfad
@@ -113,7 +110,6 @@ de:
         digest: Hash
         dimensions: Abmessungen
         filename: Dateiname
-        model_id: Modell
         notes: Notizen
         presupported: Supportstruktur schon vorhanden
         presupported_version: Version mit Supportstruktur

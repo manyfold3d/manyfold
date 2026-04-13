@@ -7,7 +7,6 @@ pl:
         caption: Napis
         collection:
         indexable:
-        models: Modele
         name: Nazwa
         notes: Opis
       creator:
@@ -97,11 +96,9 @@ pl:
         collection_id: Kolekcja
         creator: Twórca
         creator_id: Twórca
-        images:
         indexable:
         library_id: Biblioteka
         license: Licencja
-        model_files: Pliki
         name: Nazwa
         notes: Opis
         path: Ścieżka
@@ -113,7 +110,6 @@ pl:
         digest:
         dimensions:
         filename: Nazwa pliku
-        model_id: Model
         notes: Notatki
         presupported:
         presupported_version:

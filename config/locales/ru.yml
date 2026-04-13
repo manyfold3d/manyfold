@@ -7,7 +7,6 @@ ru:
         caption: Описание
         collection: Родительская коллекция
         indexable: Разрешить поисковую индексацию
-        models: Модели
         name: Имя
         notes: Примечания
       creator:
@@ -97,11 +96,9 @@ ru:
         collection_id: Коллекция
         creator: Автор
         creator_id: Автор
-        images: Изображения
         indexable: Разрешить индексацию поисковыми системами
         library_id: Библиотека
         license: Лицензия
-        model_files: Файлы
         name: Имя
         notes: Примечания
         path: Путь
@@ -113,7 +110,6 @@ ru:
         digest:
         dimensions: Размеры
         filename: Имя файла
-        model_id: Модель
         notes: Примечания
         presupported: С поддержками
         presupported_version: Версия с поддержками

@@ -7,7 +7,6 @@ zh-CN:
         caption: 标题
         collection: 父合集
         indexable: 允许搜索索引
-        models: 模型
         name: 名称
         notes: 说明
       creator:
@@ -97,11 +96,9 @@ zh-CN:
         collection_id: 合集
         creator: 创作者
         creator_id: 创作者
-        images: 图片
         indexable: 允许搜索索引
         library_id: 资料库
         license: 许可证
-        model_files: 文件
         name: 名称
         notes: 说明
         path: 路径
@@ -113,7 +110,6 @@ zh-CN:
         digest: 摘要
         dimensions: 尺寸
         filename: 文件名
-        model_id: 模型
         notes: 说明
         presupported: 有支撑
         presupported_version: 有支撑的版本

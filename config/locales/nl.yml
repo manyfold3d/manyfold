@@ -7,7 +7,6 @@ nl:
         caption: Onderschrift
         collection:
         indexable: Indexering voor zoekopdrachten toestaan
-        models: Modellen
         name: Naam
         notes: Notities
       creator:
@@ -97,11 +96,9 @@ nl:
         collection_id: Collectie
         creator: Maker
         creator_id: Maker
-        images: Afbeeldingen
         indexable: Indexering voor zoekopdrachten toestaan
         library_id: Bibliotheek
         license: Licentie
-        model_files: Bestanden
         name: Naam
         notes: Beschrijving
         path: Pad
@@ -113,7 +110,6 @@ nl:
         digest: Digest
         dimensions: Afmetingen
         filename: Bestandsnaam
-        model_id: Model
         notes: Notities
         presupported: Voorondersteund
         presupported_version: Voorondersteunde versie

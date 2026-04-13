@@ -7,7 +7,6 @@ ja:
         caption: キャプション
         collection:
         indexable:
-        models: モデル
         name: 名称
         notes: ノート
       creator:
@@ -97,11 +96,9 @@ ja:
         collection_id: コレクション
         creator: クリエイター
         creator_id: クリエイター
-        images:
         indexable:
         library_id: ライブラリー
         license: ライセンス
-        model_files: ファイル
         name: 名前
         notes: 説明
         path: パス
@@ -113,7 +110,6 @@ ja:
         digest: ダイジェスト
         dimensions:
         filename: ファイル名
-        model_id: モデル
         notes: ノート
         presupported: サポート材付き
         presupported_version: サポート材付きバージョン

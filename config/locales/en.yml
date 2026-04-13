@@ -7,7 +7,6 @@ en:
         caption: Caption
         collection: Parent Collection
         indexable: Allow search indexing
-        models: Models
         name: Name
         notes: Description
       creator:
@@ -97,11 +96,9 @@ en:
         collection_id: Collection
         creator: Creator
         creator_id: Creator
-        images: Images
         indexable: Allow search indexing
         library_id: Library
         license: License
-        model_files: Files
         name: Name
         notes: Description
         path: Path
@@ -113,7 +110,6 @@ en:
         digest: Digest
         dimensions: Dimensions
         filename: Filename
-        model_id: Model
         notes: Notes
         presupported: Presupported
         presupported_version: Presupported version

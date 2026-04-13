@@ -7,7 +7,6 @@ cs:
         caption: Titulek
         collection:
         indexable:
-        models: Modely
         name: Název
         notes: Poznámky
       creator:
@@ -97,11 +96,9 @@ cs:
         collection_id: Kolekce
         creator: Autor
         creator_id: Autor
-        images:
         indexable:
         library_id: Knihovna
         license: Licence
-        model_files: Soubory
         name: Název
         notes: Popis
         path: Cesta
@@ -113,7 +110,6 @@ cs:
         digest: Digest
         dimensions:
         filename: Název souboru
-        model_id: Model
         notes: Poznámky
         presupported: Předběžně podporované
         presupported_version: Předběžně podporovaná verze

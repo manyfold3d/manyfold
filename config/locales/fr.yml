@@ -7,7 +7,6 @@ fr:
         caption: Légende
         collection:
         indexable: Autoriser l'indexation de la recherche
-        models: Modèles
         name: Nom
         notes: Notes
       creator:
@@ -99,11 +98,9 @@ fr:
         collection_id: Collection
         creator: Créateur
         creator_id: Créateur
-        images: Images
         indexable:
         library_id: Bibliothèque
         license: Licence
-        model_files: Fichiers
         name: Nom
         notes: Description
         path: Chemin
@@ -115,7 +112,6 @@ fr:
         digest: Absorber
         dimensions: Dimensions
         filename: Nom de fichier
-        model_id: Modèle
         notes: Notes
         presupported: Présupporté
         presupported_version: Version présupporté
