@@ -24,7 +24,7 @@
               [t(".sensitive_content.hide"), "hide"]
             ],
             {selected: @user.sensitive_content_handling},
-            {class: "form-select"} %>
+            {class: "form-select"} # i18n-tasks-use t("activerecord.attributes.user.sensitive_content_handling") %>
       <small class="form-text"><%= t ".sensitive_content.help" %></small>
     </div>
 

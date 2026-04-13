@@ -7,14 +7,14 @@
 
 <table class="table table-striped">
   <tr>
-    <%= ColumnHeader label: User.human_attribute_name(:approved), sort_param: :order, sort_option: "pending", sort_default: true if SiteSettings.approve_signups %>
-    <%= ColumnHeader label: User.human_attribute_name(:username), sort_param: :order, sort_option: "name" %>
-    <%= ColumnHeader label: User.human_attribute_name(:email) %>
-    <%= ColumnHeader label: User.human_attribute_name(:auth_uid) if SiteSettings.oidc_enabled? %>
+    <%= ColumnHeader label: User.human_attribute_name(:approved), sort_param: :order, sort_option: "pending", sort_default: true if SiteSettings.approve_signups # i18n-tasks-use t("activerecord.attributes.user.approved") %>
+    <%= ColumnHeader label: User.human_attribute_name(:username), sort_param: :order, sort_option: "name" # i18n-tasks-use t("activerecord.attributes.user.name") %>
+    <%= ColumnHeader label: User.human_attribute_name(:email) # i18n-tasks-use t("activerecord.attributes.user.email") %>
+    <%= ColumnHeader label: User.human_attribute_name(:auth_uid) if SiteSettings.oidc_enabled? # i18n-tasks-use t("activerecord.attributes.user.auth_uid") %>
     <%= ColumnHeader label: t(".local") if SiteSettings.federation_enabled? %>
     <%= ColumnHeader label: t(".fediverse_address") if SiteSettings.federation_enabled? %>
-    <%= ColumnHeader label: User.human_attribute_name(:created_at), sort_param: :order, sort_option: "recent" %>
-    <%= ColumnHeader label: User.human_attribute_name(:roles) %>
+    <%= ColumnHeader label: User.human_attribute_name(:created_at), sort_param: :order, sort_option: "recent" # i18n-tasks-use t("activerecord.attributes.user.created_at") %>
+    <%= ColumnHeader label: Role.model_name.human(count: 100) %>
     <th></th>
   </tr>
   <% @users.each do |user| %>

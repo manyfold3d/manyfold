@@ -15,7 +15,7 @@
       <div class="tabular-form">
         <%= text_input_row form, :email, autofocus: true, autocomplete: "email" %>
         <%= password_input_row form, :password, autocomplete: "current-password" %>
-        <%= checkbox_input_row form, :remember_me if devise_mapping.rememberable? %>
+        <%= checkbox_input_row form, :remember_me if devise_mapping.rememberable? # i18n-tasks-use t("activerecord.attributes.user.remember_me") %>
         <div>
           <%= form.submit translate(".sign_in"), class: "btn btn-primary" %>
         </div>

@@ -26,7 +26,7 @@
             <%= password_input_row f, :password, autocomplete: "new-password" %>
             <%= password_input_row f, :password_confirmation, autocomplete: "new-password" %>
             <%= password_input_row f, :current_password, autocomplete: "current-password",
-                  help: t(".current_password_help") %>
+                  help: t(".current_password_help") # i18n-tasks-use t("activerecord.attributes.user.current_password") %>
           </div>
         </div>
       <% end %>

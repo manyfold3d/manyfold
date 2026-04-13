@@ -1,27 +1,27 @@
 <h3><%= t(".title", username: @user.username) %></h3>
 <table class="table table-striped">
   <tr>
-    <th><%= User.human_attribute_name(:username) %></th>
+    <th><%= User.human_attribute_name(:username) # i18n-tasks-use t("activerecord.attributes.user.username") %></th>
     <td><%= @user.username %></td>
   </tr>
   <tr>
-    <th><%= User.human_attribute_name(:email) %></th>
+    <th><%= User.human_attribute_name(:email) # i18n-tasks-use t("activerecord.attributes.user.email") %></th>
     <td><%= @user.email %></td>
   </tr>
   <% unless @user.approved? %>
     <tr>
-      <th><%= User.human_attribute_name(:approved) %></th>
+      <th><%= User.human_attribute_name(:approved) # i18n-tasks-use t("activerecord.attributes.user.approved") %></th>
       <td>
         <%= link_to safe_join([Icon(icon: "person-check", label: t(".approve")), t(".approve")], " "), settings_user_path(@user, approve: true), method: :patch, class: "btn btn-primary btn-sm" if policy(@user).edit? %>
       </td>
     </tr>
   <% end %>
   <tr>
-    <th><%= User.human_attribute_name(:created_at) %></th>
+    <th><%= User.human_attribute_name(:created_at) # i18n-tasks-use t("activerecord.attributes.user.created_at") %></th>
     <td><%= @user.created_at.to_fs(:long) %></td>
   </tr>
   <tr>
-    <th><%= User.human_attribute_name(:updated_at) %></th>
+    <th><%= User.human_attribute_name(:updated_at) # i18n-tasks-use t("activerecord.attributes.user.updated_at") %></th>
     <td><%= @user.updated_at.to_fs(:long) %></td>
   </tr>
   <tr>
@@ -39,12 +39,12 @@
     </tr>
   <% end %>
   <tr>
-    <th><%= User.human_attribute_name(:interface_language) %></th>
+    <th><%= User.human_attribute_name(:interface_language) # i18n-tasks-use t("activerecord.attributes.user.interface_language") %></th>
     <td><%= @user.interface_language.present? ? I18nData.languages(@user.interface_language)[@user.interface_language.to_s.first(2).upcase.to_s]&.capitalize : t("devise.registrations.general_settings.interface_language.autodetect") %></td>
   </tr>
   <% if SiteSettings.oidc_enabled? %>
     <tr>
-      <th><%= User.human_attribute_name(:auth_uid) %></th>
+      <th><%= User.human_attribute_name(:auth_uid) # i18n-tasks-use t("activerecord.attributes.user.auth_uid") %></th>
       <td><%= (@user.auth_uid ? "✅" : "❌") %></td>
     </tr>
   <% end %>
@@ -55,12 +55,12 @@
     </tr>
   <% else %>
     <tr>
-      <th><%= User.human_attribute_name(:public_id) %></th>
+      <th><%= User.human_attribute_name(:public_id) # i18n-tasks-use t("activerecord.attributes.user.public_id") %></th>
       <td><%= @user.public_id %></td>
     </tr>
   <% end %>
   <tr>
-    <th><%= User.human_attribute_name(:roles) %></th>
+    <th><%= Role.model_name.human(count: 100) %></th>
     <td><%= @user.roles.map(&:name).join(", ") %></td>
   </tr>
 </table>
