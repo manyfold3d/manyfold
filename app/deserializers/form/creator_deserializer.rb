@@ -13,7 +13,7 @@ module Form
         :remove_avatar,
         :banner, # i18n-tasks-use t("activerecord.attributes.creator.banner")
         :remove_banner,
-        links_attributes: [:id, :url, :_destroy] # i18n-tasks-use t("activerecord.attributes.creator.links")
+        links_attributes: [:id, :url, :_destroy]
       )
       return allowed unless user_can_set_permissions?
       allowed.deep_merge(caber_relations_attributes(type: :creator))
