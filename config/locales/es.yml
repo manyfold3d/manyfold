@@ -25,8 +25,8 @@ es:
         expires_in: Expira en
         fingerprint: Huella dactilar
         scopes: Ámbitos
+        token: Token de Acceso
       doorkeeper/application:
-        access_token: Token de Acceso
         confidential: Confidential
         created_at: Creado
         name: Nombre

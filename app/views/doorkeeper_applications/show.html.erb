@@ -10,11 +10,11 @@
     <td><%= @application.name %></td>
   </tr>
   <tr>
-    <td><%= Doorkeeper::Application.human_attribute_name :uid %></td>
+    <td><%= Doorkeeper::Application.human_attribute_name :uid # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.uid") %></td>
     <td><%= CopyableText text: @application.uid %></td>
   </tr>
   <tr>
-    <td><%= Doorkeeper::Application.human_attribute_name :secret %></td>
+    <td><%= Doorkeeper::Application.human_attribute_name :secret # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.secret") %></td>
     <td><%= CopyableText text: @application.secret, obfuscated: true %></td>
   </tr>
   <tr>

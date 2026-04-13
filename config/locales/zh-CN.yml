@@ -25,8 +25,8 @@ zh-CN:
         expires_in:
         fingerprint: 指纹
         scopes: 权限范围
+        token: 访问令牌
       doorkeeper/application:
-        access_token: 访问令牌
         confidential: 保密
         created_at: 创建于
         name: 应用名称

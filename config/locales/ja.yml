@@ -25,8 +25,8 @@ ja:
         expires_in:
         fingerprint:
         scopes: スコープ
+        token: アクセストークン
       doorkeeper/application:
-        access_token: アクセストークン
         confidential: 機密
         created_at: 作成日時
         name: 名前

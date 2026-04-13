@@ -25,8 +25,8 @@ nl:
         expires_in: Verloopt over
         fingerprint: Vingerafdruk
         scopes: Scopes
+        token: Toegangssleutel
       doorkeeper/application:
-        access_token: Toegangssleutel
         confidential: Confidentieel
         created_at: Aangemaakt op
         name: Naam

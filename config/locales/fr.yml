@@ -27,8 +27,8 @@ fr:
           '
         fingerprint:
         scopes: Portées
+        token: Jeton d'accès
       doorkeeper/application:
-        access_token: Jeton d'accès
         confidential: Confidential
         created_at: Créée
         name: Nom
