@@ -14,11 +14,11 @@ class Views::Groups::Index < Views::Base
     p { t("views.groups.index.description") }
     table class: "table table-striped" do
       tr do
-        th { Group.human_attribute_name :name }
-        th { Group.human_attribute_name :memberships }
-        th { Group.human_attribute_name :invitations }
-        th { Group.human_attribute_name :description }
-        th { Group.human_attribute_name :typed_id }
+        th { Group.human_attribute_name :name } # i18n-tasks-use t("activerecord.attributes.group.name")
+        th { Group.human_attribute_name :memberships } # i18n-tasks-use t("activerecord.attributes.group.memberships")
+        th { Group.human_attribute_name :invitations } # i18n-tasks-use t("activerecord.attributes.group.invitations")
+        th { Group.human_attribute_name :description } # i18n-tasks-use t("activerecord.attributes.group.description")
+        th { Group.human_attribute_name :typed_id } # i18n-tasks-use t("activerecord.attributes.group.typed_id")
         th
       end
       @groups.each do |group|
