@@ -5,7 +5,7 @@ ru:
       collection:
         ai_indexable: Разрешить использование данных для обучения ИИ
         caption: Описание
-        collection: Родительская коллекция
+        collection_id: Родительская коллекция
         indexable: Разрешить поисковую индексацию
         name: Имя
         notes: Примечания

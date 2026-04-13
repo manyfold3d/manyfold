@@ -5,7 +5,7 @@ ja:
       collection:
         ai_indexable:
         caption: キャプション
-        collection:
+        collection_id:
         indexable:
         name: 名称
         notes: ノート

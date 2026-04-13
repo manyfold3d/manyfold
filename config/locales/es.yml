@@ -5,7 +5,7 @@ es:
       collection:
         ai_indexable: Permitir el uso para el entrenamiento de IA
         caption: Subtítulo
-        collection: Colección Principal
+        collection_id: Colección Principal
         indexable: Permitir la indexación de búsquedas
         name: Nombre
         notes: Notas

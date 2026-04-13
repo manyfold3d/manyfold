@@ -5,7 +5,7 @@ nl:
       collection:
         ai_indexable: Gebruik voor AI-training toestaan
         caption: Onderschrift
-        collection:
+        collection_id:
         indexable: Indexering voor zoekopdrachten toestaan
         name: Naam
         notes: Notities

@@ -5,7 +5,7 @@ cs:
       collection:
         ai_indexable:
         caption: Titulek
-        collection:
+        collection_id:
         indexable:
         name: Název
         notes: Poznámky

@@ -5,7 +5,7 @@ pl:
       collection:
         ai_indexable:
         caption: Napis
-        collection:
+        collection_id:
         indexable:
         name: Nazwa
         notes: Opis

@@ -4,8 +4,8 @@ module Form
       return nil unless @params
       allowed = @params.require(:collection).permit(
         :name, # i18n-tasks-use t("activerecord.attributes.collection.name")
-        :creator_id, # i18n-tasks-use t("activerecord.attributes.collection.creator")
-        :collection_id, # i18n-tasks-use t("activerecord.attributes.collection.collection")
+        :creator_id, # i18n-tasks-use t("activerecord.attributes.collection.creator_id")
+        :collection_id, # i18n-tasks-use t("activerecord.attributes.collection.collection_id")
         :caption, # i18n-tasks-use t("activerecord.attributes.collection.caption")
         :notes, # i18n-tasks-use t("activerecord.attributes.collection.notes")
         :indexable, # i18n-tasks-use t("activerecord.attributes.collection.indexable")

@@ -5,7 +5,7 @@ de:
       collection:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Beschreibung
-        collection: Übergeordnete Kollektion
+        collection_id: Übergeordnete Kollektion
         indexable: Suchindizierung zulassen
         name: Name
         notes: Beschreibung

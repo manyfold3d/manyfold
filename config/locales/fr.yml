@@ -5,7 +5,7 @@ fr:
       collection:
         ai_indexable: Permettre l'utilisation pour l'entrainement d'IA
         caption: Légende
-        collection:
+        collection_id:
         indexable: Autoriser l'indexation de la recherche
         name: Nom
         notes: Notes

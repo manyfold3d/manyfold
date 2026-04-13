@@ -5,7 +5,7 @@ zh-CN:
       collection:
         ai_indexable: 允许用于 AI 训练
         caption: 标题
-        collection: 父合集
+        collection_id: 父合集
         indexable: 允许搜索索引
         name: 名称
         notes: 说明
