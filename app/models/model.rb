@@ -344,12 +344,15 @@ class Model < ApplicationRecord
 
   def check_for_submodels
     if contains_other_models?
+      # i18n-tasks-use t("activerecord.errors.models.model.attributes.library.nested")
+      # i18n-tasks-use t("activerecord.errors.models.model.attributes.path.nested")
       errors.add(library_id_changed? ? :library : :path, :nested)
     end
   end
 
   def destination_is_vacant
     if exists_on_storage? && need_to_move_files?
+      # i18n-tasks-use t("activerecord.errors.models.model.attributes.path.destination_exists")
       errors.add(:path, :destination_exists)
     end
   end
@@ -400,6 +403,7 @@ class Model < ApplicationRecord
     # Check required fields
     errors.add :license, :blank if license.nil?
     errors.add :creator, :blank if creator.nil?
+    # i18n-tasks-use t("activerecord.errors.models.model.attributes.creator.private")
     errors.add :creator, :private if creator && !creator.public?
   end
 

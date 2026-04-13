@@ -117,7 +117,9 @@ class Collection < ApplicationRecord
     # If the model will be public
     if caber_relations.find { |it| it.subject.nil? }
       # Check required fields
+      # i18n-tasks-use t("activerecord.errors.models.collection.attributes.creator.private")
       errors.add :creator, :private if creator && !creator.public?
+      # i18n-tasks-use t("activerecord.errors.models.collection.attributes.collection.private")
       errors.add :collection, :private if collection && !collection.public?
     end
   end
