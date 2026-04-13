@@ -6,6 +6,13 @@ es:
         ai_indexable: Permitir el uso para el entrenamiento de IA
         caption: Subtítulo
         collection_id: Colección Principal
+        creator_id:
+          few: Creadores
+          many: Creadores
+          one: Creador
+          other: Creadores
+          two: Creadores
+          zero: Creadores
         indexable: Permitir la indexación de búsquedas
         name: Nombre
         notes: Notas

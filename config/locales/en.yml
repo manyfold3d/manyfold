@@ -6,6 +6,13 @@ en:
         ai_indexable: Allow use for AI training
         caption: Caption
         collection_id: Parent Collection
+        creator_id:
+          few: Creators
+          many: Creators
+          one: Creator
+          other: Creators
+          two: Creators
+          zero: Creators
         indexable: Allow search indexing
         name: Name
         notes: Description

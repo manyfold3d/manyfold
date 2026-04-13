@@ -6,6 +6,13 @@ nl:
         ai_indexable: Gebruik voor AI-training toestaan
         caption: Onderschrift
         collection_id:
+        creator_id:
+          few: Makers
+          many: Makers
+          one: Maker
+          other: Makers
+          two: Makers
+          zero: Makers
         indexable: Indexering voor zoekopdrachten toestaan
         name: Naam
         notes: Notities

@@ -6,6 +6,13 @@ pl:
         ai_indexable:
         caption: Napis
         collection_id:
+        creator_id:
+          few: Twórców
+          many: Twórców
+          one: Twórca
+          other: Twórcy
+          two:
+          zero:
         indexable:
         name: Nazwa
         notes: Opis

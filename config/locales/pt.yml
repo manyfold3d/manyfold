@@ -6,6 +6,13 @@ pt:
         ai_indexable:
         caption:
         collection_id:
+        creator_id:
+          few:
+          many:
+          one:
+          other:
+          two:
+          zero:
         indexable:
         name:
         notes:

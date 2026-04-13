@@ -6,6 +6,13 @@ cs:
         ai_indexable:
         caption: Titulek
         collection_id:
+        creator_id:
+          few: Autoři
+          many: Autoři
+          one: Autor
+          other: Autoři
+          two: Autoři
+          zero: Autoři
         indexable:
         name: Název
         notes: Poznámky

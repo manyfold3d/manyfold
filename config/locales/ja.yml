@@ -6,6 +6,13 @@ ja:
         ai_indexable:
         caption: キャプション
         collection_id:
+        creator_id:
+          few: クリエイター
+          many: クリエイター
+          one: クリエイター
+          other: クリエイター
+          two: クリエイター
+          zero: クリエイター
         indexable:
         name: 名称
         notes: ノート

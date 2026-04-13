@@ -6,6 +6,13 @@ de:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Beschreibung
         collection_id: Übergeordnete Kollektion
+        creator_id:
+          few: Autoren
+          many: Autor
+          one: Autor
+          other: Autoren
+          two: Autoren
+          zero: Autoren
         indexable: Suchindizierung zulassen
         name: Name
         notes: Beschreibung
