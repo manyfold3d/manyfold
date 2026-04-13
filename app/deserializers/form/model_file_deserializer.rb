@@ -5,6 +5,7 @@ module Form
       @params.require(:model_file).permit([
         :filename, # i18n-tasks-use t("activerecord.attributes.model_file.filename")
         :presupported, # i18n-tasks-use t("activerecord.attributes.model_file.presupported")
+        :printed, # i18n-tasks-use t("activerecord.attributes.model_file.printed")
         :notes, # i18n-tasks-use t("activerecord.attributes.model_file.notes")
         :caption, # i18n-tasks-use t("activerecord.attributes.model_file.caption")
         :y_up, # i18n-tasks-use t("activerecord.attributes.model_file.y_up")
