@@ -146,6 +146,8 @@ pl:
         locked_at: Data zablokowania
         password: Hasło
         password_confirmation: Potwierdź hasło
+        quota:
+        quota_use_site_default:
         remember_created_at: Data utworzenia zapamiętania logowania
         remember_me: Zapamiętaj mnie
         reset_password_sent_at: Data wysłania żądania resetu hasła

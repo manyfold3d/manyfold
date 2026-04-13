@@ -199,11 +199,9 @@ ja:
       new:
         title: アカウント作成
       quota:
-        current_quota: 現在のファイル保存上限（MB）
         current_space_used: 現在使用中のファイルストレージ
         title: ファイルの保存制限
         unlimited_quota: 無制限
-        using_site_default: サイトのデフォルトのファイル保存制限を使用していますか？
       show:
         approve: アカウントの承認
         confirm_destroy: このアカウントをすぐに削除してもよろしいですか？これは元に戻せません！

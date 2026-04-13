@@ -29,9 +29,8 @@
 
   <% if SiteSettings.enable_user_quota %>
     <h3><%= t("settings.users.quota.title") %></h3>
-    <%= checkbox_input_row form, :quota_use_site_default, label: t("settings.users.quota.using_site_default") %>
+    <%= checkbox_input_row form, :quota_use_site_default %>
     <%= numeric_input_row form, :quota,
-          label: t("settings.users.quota.current_quota"),
           min: 0, step: 1,
           unit: "MB",
           value: (user.quota.to_i / 1.megabyte) %>

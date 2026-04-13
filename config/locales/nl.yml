@@ -146,6 +146,8 @@ nl:
         locked_at: Vergrendeld op
         password: Wachtwoord
         password_confirmation: Bevestig wachtwoord
+        quota:
+        quota_use_site_default:
         remember_created_at: Onthouden aangemaakt op
         remember_me: Onthoud mij
         reset_password_sent_at: Wachtwoord reset verzonden op

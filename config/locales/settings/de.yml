@@ -203,11 +203,9 @@ de:
       new:
         title: Konto erstellen
       quota:
-        current_quota: Aktuelles Speicherlimit in MB
         current_space_used: Derzeit verwendeter Speicherplatz
         title: Verbrauchter Speicherplatz
         unlimited_quota: Unbegrenzt
-        using_site_default: Verwende das Standard-Speicherlimit der Website?
       show:
         approve: Konto genehmigen
         confirm_destroy: Bist du sicher, dass du dieses Konto sofort entfernen möchtest? Dies kann nicht rückgängig gemacht werden!

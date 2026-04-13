@@ -199,11 +199,9 @@ fr:
       new:
         title: Créer un utilisateur
       quota:
-        current_quota:
         current_space_used:
         title:
         unlimited_quota: Illimité
-        using_site_default:
       show:
         approve: Approuver l'utilisateur
         confirm_destroy: Êtes-vous sûr de vouloir supprimer ce compte d'utilisateur immédiatement ? Cette action est irréversible !

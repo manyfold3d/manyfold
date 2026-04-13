@@ -146,6 +146,8 @@ cs:
         locked_at: Uzamčeno
         password: Heslo
         password_confirmation: Potvrzení hesla
+        quota:
+        quota_use_site_default:
         remember_created_at: Zapamatování vytvořeno
         remember_me: Zapamatuj si mě
         reset_password_sent_at: Obnova hesla poslána

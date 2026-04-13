@@ -146,6 +146,8 @@ es:
         locked_at: Bloqueado el
         password: Contraseña
         password_confirmation: Confirmar contraseña
+        quota: Tamaño máximo actual de archivos en MB
+        quota_use_site_default: "¿Utilizar el tamaño máximo de archivos por defecto del sitio?"
         remember_created_at: Guardar fecha de creación
         remember_me: Recordarme
         reset_password_sent_at: Restablecimiento de contraseña enviado a

@@ -30,11 +30,11 @@
   </tr>
   <% if SiteSettings.enable_user_quota %>
     <tr>
-      <th><%= t("settings.users.quota.using_site_default") %></th>
+      <th><%= User.human_attribute_name(:quota_use_site_default) %></th>
       <td><%= @user.quota_use_site_default? ? "✅" : "❌" %></td>
     </tr>
     <tr>
-      <th><%= t("settings.users.quota.title") %></th>
+      <th><%= User.human_attribute_name(:quota) %></th>
       <td><%= @user.has_quota? ? @user.quota.to_fs(:human_size) : t("settings.users.quota.unlimited_quota") %></td>
     </tr>
   <% end %>

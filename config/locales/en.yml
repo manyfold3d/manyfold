@@ -146,6 +146,8 @@ en:
         locked_at: Locked at
         password: Password
         password_confirmation: Confirm password
+        quota: Current file storage limit in MB
+        quota_use_site_default: Using site default file storage limit?
         remember_created_at: Remember created at
         remember_me: Remember me
         reset_password_sent_at: Reset password sent at

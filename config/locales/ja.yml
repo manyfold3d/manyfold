@@ -146,6 +146,8 @@ ja:
         locked_at: ロック時刻
         password: パスワード
         password_confirmation: パスワード（確認用）
+        quota: 現在のファイル保存上限（MB）
+        quota_use_site_default: サイトのデフォルトのファイル保存制限を使用していますか？
         remember_created_at: ログイン記憶時刻
         remember_me: ログインを記憶する
         reset_password_sent_at: パスワードリセット送信時刻

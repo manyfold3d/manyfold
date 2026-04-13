@@ -146,6 +146,8 @@ zh-CN:
         locked_at: 锁定于
         password: 密码
         password_confirmation: 密码确认
+        quota: 当前文件存储上限（MB）
+        quota_use_site_default: 使用网站默认文件存储限制？
         remember_created_at: 记住创建于
         remember_me: 记住登录信息
         reset_password_sent_at: 重置密码发送于

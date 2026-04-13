@@ -199,11 +199,9 @@ pl:
       new:
         title: Utwórz konto
       quota:
-        current_quota:
         current_space_used:
         title:
         unlimited_quota:
-        using_site_default:
       show:
         approve: Zatwierdź konto
         confirm_destroy: Czy na pewno chcesz natychmiast usunąć to konto? Nie można tego cofnąć!

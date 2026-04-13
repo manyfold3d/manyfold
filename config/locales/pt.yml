@@ -146,6 +146,8 @@ pt:
         locked_at: Bloqueado em
         password: Palavra-passe
         password_confirmation: Confirmar palavra-passe
+        quota:
+        quota_use_site_default:
         remember_created_at: Lembrança criada em
         remember_me: Lembrar-se de mim
         reset_password_sent_at: Recuperação de palavra-passe enviada em

@@ -146,6 +146,8 @@ de:
         locked_at: Gesperrt am
         password: Passwort
         password_confirmation: Bestätige Passwort
+        quota: Aktuelles Speicherlimit in MB
+        quota_use_site_default: Verwende das Standard-Speicherlimit der Website?
         remember_created_at: Angemeldet bleiben vom
         remember_me: Angemeldet bleiben
         reset_password_sent_at: Passwort-Zurücksetzen-E-Mail gesendet am

@@ -146,6 +146,8 @@ ru:
         locked_at: Дата блокировки
         password: Пароль
         password_confirmation: Подтверждение пароля
+        quota:
+        quota_use_site_default:
         remember_created_at: Дата создания запоминания
         remember_me: Запомнить меня
         reset_password_sent_at: Дата отправки сброса пароля
