@@ -386,7 +386,7 @@ es:
       'yes': Sí
   comments:
     destroy:
-      destroyed:
+      destroyed: Comentario eliminado
   components:
     actor_card:
       non_manyfold_account: Esta no es una cuenta Manyfold. Puedes seguirla, pero probablemente no ocurra nada interesante, al menos por ahora.
@@ -396,12 +396,12 @@ es:
       current_sort: Ordenar por
       sort_by: Ordenar por
     comment:
-      confirm_delete:
-      delete:
-      posted:
-      report:
-      reported:
-      system:
+      confirm_delete: "¿Seguro que quieres borrar este comentario?"
+      delete: Borrar
+      posted: enviado hace %{time}
+      report: Informe
+      reported: Reportado el %{time}
+      system: Comentario automatizado
     copy_button:
       copy: Copiar al portapapeles
     copyable_text:
@@ -452,11 +452,11 @@ es:
         label: Abrir modelo %{name}
         text: Abrir
     new_comment_form:
-      placeholder:
-      submit:
-      title:
+      placeholder: Comparta aquí sus opiniones...
+      submit: Publicar
+      title: Publicar un comentario
     path_template_preview:
-      description:
+      description: La siguiente tabla muestra algunos de los metadatos inferidos para las carpetas de esta biblioteca, basándose en la plantilla anterior.
       path: Ruta
     search_help:
       boolean: Utilice "or" para buscar modelos que coincidan con cualquiera de los términos.
