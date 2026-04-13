@@ -99,7 +99,7 @@ search:
   ##     User.human_attribute_name(:email) and User.model_name.human
   ##
   ## To implement your own, please see `I18n::Tasks::Scanners::AstMatchers::BaseMatcher`.
-  <%# I18n::Tasks.add_ast_matcher('I18n::Tasks::Scanners::AstMatchers::RailsModelMatcher') %>
+  <% I18n::Tasks.add_ast_matcher('I18n::Tasks::Scanners::AstMatchers::RailsModelMatcher') %>
 
   ## Multiple scanners can be used. Their results are merged.
   ## The options specified above are passed down to each scanner. Per-scanner options can be specified as well.
@@ -123,9 +123,6 @@ search:
 
 ## Consider these keys used:
 ignore_unused:
-- 'activerecord.attributes.*'
-- 'activerecord.errors.*'
-- 'activerecord.models.*'
 - 'errors.messages.weak_password'
 - 'errors.messages.already_confirmed'
 - 'errors.messages.confirmation_period_expired'
