@@ -46,6 +46,8 @@ es:
         created_at: Creado
         max_count: Recuento máximo
       fasp_client_event_subscription:
+        category:
+        created_at:
         subscription_type: Tipo de suscripción
       fasp_client_provider:
         base_url: URL
@@ -117,6 +119,7 @@ es:
         notes: Notas
         presupported: Soporte predefinido
         presupported_version_id: Versión con soporte predefinido
+        previewable:
         printed: Impreso
         size: Tamaño del archivo
         unsupported_version: Versión sin soporte
@@ -233,10 +236,31 @@ es:
         other: Creadores
         two: Creadores
         zero: Creadores
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_backfill_request:
         few: Solicitudes de relleno
       fasp_client_event_subscription:
         few: Suscripciones a eventos
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       federails/moderation/domain_block:
         few: Bloqueo de dominios
         many: Bloqueo de dominios
@@ -251,6 +275,13 @@ es:
         other: Informes
         two: Informes
         zero: Informes
+      group:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       library:
         few: Bibliotecas
         many: Bibliotecas
@@ -272,6 +303,20 @@ es:
         other: Listas
         two: Listas
         zero: Listas
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: Modelos
         many: Modelos
@@ -293,6 +338,13 @@ es:
         other: Problemas
         two: Problemas
         zero: Problemas
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       user:
         few: Usuarios
         many: Usuarios

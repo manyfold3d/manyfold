@@ -46,6 +46,8 @@ ru:
         created_at:
         max_count:
       fasp_client_event_subscription:
+        category:
+        created_at:
         subscription_type:
       fasp_client_provider:
         base_url:
@@ -117,6 +119,7 @@ ru:
         notes: Примечания
         presupported: С поддержками
         presupported_version_id: Версия с поддержками
+        previewable:
         printed: Напечатано
         size: Размер файла
         unsupported_version: Версия без поддержек
@@ -233,10 +236,31 @@ ru:
         other: Авторы
         two: Авторы
         zero: Авторы
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_backfill_request:
         few:
       fasp_client_event_subscription:
         few:
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       federails/moderation/domain_block:
         few:
         many:
@@ -245,6 +269,13 @@ ru:
         two:
         zero:
       federails/moderation/report:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      group:
         few:
         many:
         one:
@@ -272,6 +303,20 @@ ru:
         other:
         two:
         zero:
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: Модели
         many: Модели
@@ -293,6 +338,13 @@ ru:
         other: Проблемы
         two: Проблемы
         zero: Проблемы
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       user:
         few: Пользователя
         many: Пользователей

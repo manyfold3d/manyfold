@@ -46,6 +46,8 @@ cs:
         created_at: Vytvořeno
         max_count:
       fasp_client_event_subscription:
+        category:
+        created_at:
         subscription_type:
       fasp_client_provider:
         base_url:
@@ -117,6 +119,7 @@ cs:
         notes: Poznámky
         presupported: Předběžně podporované
         presupported_version_id: Předběžně podporovaná verze
+        previewable:
         printed: Vytisknuto
         size: Velikost souboru
         unsupported_version: Nepodporovaná verze
@@ -233,10 +236,31 @@ cs:
         other: Autoři
         two: Autoři
         zero: Autoři
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_backfill_request:
         few:
       fasp_client_event_subscription:
         few:
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       federails/moderation/domain_block:
         few: Blokování domén
         many: Blokování domén
@@ -251,6 +275,13 @@ cs:
         other: Hlášení
         two: Hlášení
         zero: Hlášení
+      group:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       library:
         few: Knihovny
         many: Knihovny
@@ -266,6 +297,20 @@ cs:
         two: Odkazy
         zero: Odkazy
       list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
         few:
         many:
         one:
@@ -293,6 +338,13 @@ cs:
         other: Problémy
         two: Problémy
         zero: Problémy
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       user:
         few: Uživatelé
         many: Uživatelé

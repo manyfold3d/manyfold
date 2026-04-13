@@ -46,6 +46,8 @@ nl:
         created_at:
         max_count:
       fasp_client_event_subscription:
+        category:
+        created_at:
         subscription_type:
       fasp_client_provider:
         base_url:
@@ -117,6 +119,7 @@ nl:
         notes: Notities
         presupported: Voorondersteund
         presupported_version_id: Voorondersteunde versie
+        previewable:
         printed: Afgedrukt
         size: Bestandsgrootte
         unsupported_version: Niet-ondersteunde versie
@@ -233,10 +236,31 @@ nl:
         other: Makers
         two: Makers
         zero: Makers
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_backfill_request:
         few:
       fasp_client_event_subscription:
         few:
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       federails/moderation/domain_block:
         few: Domeinblokkeringen
         many: Domeinblokkeringen
@@ -251,6 +275,13 @@ nl:
         other: Meldingen
         two: Meldingen
         zero: Meldingen
+      group:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       library:
         few: Bibliotheken
         many: Bibliotheken
@@ -272,6 +303,20 @@ nl:
         other: Lijsten
         two: Lijsten
         zero: Lijsten
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: Modellen
         many: Modellen
@@ -293,6 +338,13 @@ nl:
         other: Problemen
         two: Problemen
         zero: Problemen
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       user:
         few: Gebruikers
         many: Gebruikers

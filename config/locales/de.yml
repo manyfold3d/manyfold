@@ -46,6 +46,8 @@ de:
         created_at: Erstellt
         max_count: Maximale Anzahl
       fasp_client_event_subscription:
+        category:
+        created_at:
         subscription_type: Art des Abonnements
       fasp_client_provider:
         base_url: URL
@@ -117,6 +119,7 @@ de:
         notes: Notizen
         presupported: Supportstruktur schon vorhanden
         presupported_version_id: Version mit Supportstruktur
+        previewable:
         printed: Gedruckt
         size: Dateigröße
         unsupported_version: Nicht unterstützte Version
@@ -233,10 +236,31 @@ de:
         other: Autoren
         two: Autoren
         zero: Autoren
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_backfill_request:
         few: Anträge auf Verfüllung
       fasp_client_event_subscription:
         few: Event-Abonnements
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       federails/moderation/domain_block:
         few: Blockierte Domains
         many: Blockierte Domains
@@ -251,6 +275,13 @@ de:
         other: Meldungen
         two: Meldungen
         zero: Meldungen
+      group:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       library:
         few: Sammlungen
         many: Sammlungen
@@ -272,6 +303,20 @@ de:
         other: Listen
         two: Listen
         zero: Listen
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: Modelle
         many: Modelle
@@ -293,6 +338,13 @@ de:
         other: Probleme
         two: Probleme
         zero: Probleme
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       user:
         few: Konten
         many: Konten

@@ -46,6 +46,8 @@ zh-CN:
         created_at:
         max_count: 最大计数
       fasp_client_event_subscription:
+        category:
+        created_at:
         subscription_type: 订阅类型
       fasp_client_provider:
         base_url: URL
@@ -117,6 +119,7 @@ zh-CN:
         notes: 说明
         presupported: 有支撑
         presupported_version_id: 有支撑的版本
+        previewable:
         printed: 已打印
         size: 文件大小
         unsupported_version: 不支持的版本
@@ -238,10 +241,31 @@ zh-CN:
         other: 创作者
         two: 创作者
         zero: 创作者
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_backfill_request:
         few:
       fasp_client_event_subscription:
         few: 活动订阅
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       federails/moderation/domain_block:
         few:
         many:
@@ -250,6 +274,13 @@ zh-CN:
         two:
         zero:
       federails/moderation/report:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      group:
         few:
         many:
         one:
@@ -277,6 +308,20 @@ zh-CN:
         other:
         two:
         zero:
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: 模型
         many: 模型
@@ -298,6 +343,13 @@ zh-CN:
         other: 问题
         two: 问题
         zero: 问题
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       user:
         few: 账户
         many: 账户

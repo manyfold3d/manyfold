@@ -46,6 +46,8 @@ pl:
         created_at: Utworzony
         max_count:
       fasp_client_event_subscription:
+        category:
+        created_at:
         subscription_type:
       fasp_client_provider:
         base_url:
@@ -117,6 +119,7 @@ pl:
         notes: Notatki
         presupported:
         presupported_version_id:
+        previewable:
         printed: Wydrukowane
         size: Rozmiar pliku
         unsupported_version: Niewspierana wersja
@@ -233,10 +236,31 @@ pl:
         other: Twórcy
         two:
         zero:
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_backfill_request:
         few:
       fasp_client_event_subscription:
         few:
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       federails/moderation/domain_block:
         few: Bloki domen
         many: Bloków domen
@@ -249,6 +273,13 @@ pl:
         many: Zgłoszeń
         one: Zgłoszenie
         other: Zgłoszenia
+        two:
+        zero:
+      group:
+        few:
+        many:
+        one:
+        other:
         two:
         zero:
       library:
@@ -266,6 +297,20 @@ pl:
         two:
         zero:
       list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
         few:
         many:
         one:
@@ -291,6 +336,13 @@ pl:
         many: Problemów
         one: Problem
         other: Problemy
+        two:
+        zero:
+      role:
+        few:
+        many:
+        one:
+        other:
         two:
         zero:
       user:
