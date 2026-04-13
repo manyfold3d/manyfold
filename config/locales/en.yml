@@ -46,6 +46,8 @@ en:
         created_at: Created
         max_count: Max count
       fasp_client_event_subscription:
+        category: Category
+        created_at: Created
         subscription_type: Subscription type
       fasp_client_provider:
         base_url: URL
