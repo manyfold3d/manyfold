@@ -313,6 +313,13 @@ en:
         other: Problems
         two: Problems
         zero: Problems
+      role:
+        few: Roles
+        many: Roles
+        one: Role
+        other: Roles
+        two: Roles
+        zero: Roles
       user:
         few: Accounts
         many: Accounts
