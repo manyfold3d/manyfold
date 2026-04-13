@@ -6120,9 +6120,9 @@ __metadata:
   linkType: hard
 
 "thenby@npm:^1.3.4":
-  version: 1.3.4
-  resolution: "thenby@npm:1.3.4"
-  checksum: 2d2ef3d67fa851467f328f1373da75a760d6a469d45f667570703894656057a666a1fb488398ce7830606253dba24eb55a063d6ce939e9e872a2b9d2cdd68c2c
+  version: 1.4.0
+  resolution: "thenby@npm:1.4.0"
+  checksum: 2708caf1e19b5c2c8d7e236839318a6f9bb404233f11dc3ab2d528665745a98ce5dde5c75f6a40adabecf52664191160651f19e1600075fc5a33e78a34690d00
   languageName: node
   linkType: hard
 
