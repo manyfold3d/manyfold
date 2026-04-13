@@ -91,10 +91,10 @@
               <%= content_tag(:code, class: "path") { safe_join @model.path.split("/"), safe_join([tag.wbr, "/"]) } %>
             </div>
           <% end %>
-          <div><%= Icon icon: "tag", label: t(".tags") %></div>
+          <div><%= Icon icon: "tag", label: ActsAsTaggableOn::Tag.model_name.human(count: 100) %></div>
           <div><%= render "tag_list", tags: @model.tags.order(taggings_count: :desc, name: :asc), filter: @filter %></div>
           <% unless @model.links.empty? %>
-            <div><%= Icon icon: "link-45deg", role: "presentation", label: Model.human_attribute_name(:links) %></div>
+            <div><%= Icon icon: "link-45deg", role: "presentation", label: Link.model_name.human(count: 100) %></div>
             <%= LinkList links: @model.links, icons: false %>
           <% end %>
           <% if SiteSettings.social_enabled? %>

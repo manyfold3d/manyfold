@@ -103,12 +103,10 @@ de:
         warning: Bei der Zusammenführung werden alle Dateien dieses Modells auf das Ziel verschoben und das Modell wird entfernt. Die Metadaten der Dateien bleiben erhalten, aber alle Metadaten des Modelle gehen verloren!
         with: Zusammenführen mit
       model_details: Modelldetails
-      path: Pfad
       preview: Dies ist nur eine Vorschau des vollständigen Modells, das %{count} weitere Dateien enthält. Wende dich an den Eigentümer des Modells, um vollen Zugriff zu erhalten.
       rescan: Dateien neu scannen
       search: Suche im Internet nach Modellen mit diesem Namen
       submit: Dateien hochladen
-      tags: Tags
       upload_card:
         heading: Hochladen
     update:

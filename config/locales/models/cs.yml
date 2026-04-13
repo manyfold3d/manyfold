@@ -103,12 +103,10 @@ cs:
         warning: Sloučení přesune všechny soubory z tohoto modelu do cílového a odstraní tento model. Metadata souborů zůstanou zachována, ale všechna metadata modelu budou ztracena!
         with: Sloučit s
       model_details: Detaily modelu
-      path: Cesta
       preview:
       rescan: Znovu zkontrolovat soubory
       search: Vyhledávání modelů s tímto názvem na internetu
       submit: Nahrát soubory
-      tags: Štítky
       upload_card:
         heading: Nahrát
     update:

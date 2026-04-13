@@ -103,12 +103,10 @@ es:
         warning: La fusión mueve todos los archivos de este modelo al destino y elimina este modelo. Los metadatos de los archivos se conservan, pero los metadatos del modelo se pierden
         with: Fusionar con
       model_details: Información del modelo
-      path: Ruta
       preview: Esta es solo una vista previa del modelo completo, que contiene %{count} archivos más. Contacte con el propietario del modelo para obtener acceso completo.
       rescan: Re-escanear archivos
       search: Busca en Internet modelos con este nombre
       submit: Cargar archivos
-      tags: Etiquetas
       upload_card:
         heading: Cargar
     update:
