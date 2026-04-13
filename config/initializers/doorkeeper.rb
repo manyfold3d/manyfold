@@ -25,3 +25,5 @@ Doorkeeper.configure do
   # Per-user applications
   enable_application_owner confirmation: true
 end
+
+# i18n-tasks-use t("activerecord.models.doorkeeper/access_token")
