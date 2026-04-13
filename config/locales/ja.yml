@@ -222,6 +222,8 @@ ja:
         other: コレクション
         two: コレクション
         zero: コレクション
+      comment:
+        few:
       creator:
         few: クリエイター
         many: クリエイター

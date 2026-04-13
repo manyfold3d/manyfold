@@ -222,6 +222,8 @@ zh-CN:
         other: 合集
         two: 合集
         zero: 合集
+      comment:
+        few:
       creator:
         few: 创作者
         many: 创作者

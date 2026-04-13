@@ -222,6 +222,8 @@ de:
         other: Kollektionen
         two: Kollektionen
         zero: Kollektionen
+      comment:
+        few: Kommentare
       creator:
         few: Autoren
         many: Autor

@@ -84,7 +84,6 @@ pl:
     scan:
       success: Rozpoczęto skanowanie modelów
     show:
-      comments:
       download_preparing:
       download_requested:
       files: Pliki

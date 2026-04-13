@@ -222,6 +222,8 @@ nl:
         other: Collecties
         two: Collecties
         zero: Collecties
+      comment:
+        few:
       creator:
         few: Makers
         many: Makers

@@ -224,6 +224,8 @@ fr:
         other: Collections
         two: Collections
         zero: Collections
+      comment:
+        few:
       creator:
         few: Créateurs
         many: Créateurs

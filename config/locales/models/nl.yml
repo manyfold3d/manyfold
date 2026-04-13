@@ -84,7 +84,6 @@ nl:
     scan:
       success: Modelscan gestart
     show:
-      comments:
       download_preparing:
       download_requested:
       files: Bestanden

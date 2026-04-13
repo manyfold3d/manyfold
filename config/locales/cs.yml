@@ -222,6 +222,8 @@ cs:
         other: Kolekce
         two: Kolekce
         zero: Kolekce
+      comment:
+        few:
       creator:
         few: Autoři
         many: Autoři

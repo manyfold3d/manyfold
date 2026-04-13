@@ -222,6 +222,13 @@ en:
         other: Collections
         two: Collections
         zero: Collections
+      comment:
+        few: Comments
+        many: Comments
+        one: Comment
+        other: Comments
+        two: Comments
+        zero: Comments
       creator:
         few: Creators
         many: Creators

@@ -222,6 +222,8 @@ pl:
         other: Kolekcje
         two:
         zero:
+      comment:
+        few:
       creator:
         few: Twórców
         many: Twórców

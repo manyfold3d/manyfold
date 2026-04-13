@@ -45,7 +45,7 @@
         <% end %>
       <% end %>
       <% if policy_scope(@model.comments.where(system: false)).any? %>
-        <h2><a name="comments"><%= t(".comments") %></a></h2>
+        <h2><a name="comments"><%= Comment.model_name.human(count: 100) %></a></h2>
       <% end %>
       <div class="container">
         <% policy_scope(@model.comments).each do |comment| %>

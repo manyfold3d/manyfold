@@ -222,6 +222,8 @@ ru:
         other: Коллекции
         two: Коллекции
         zero: Коллекции
+      comment:
+        few:
       creator:
         few: Авторы
         many: Авторы

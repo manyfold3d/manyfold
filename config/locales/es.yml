@@ -222,6 +222,8 @@ es:
         other: Colecciones
         two: Colecciones
         zero: Colecciones
+      comment:
+        few: Comentarios
       creator:
         few: Creadores
         many: Creadores
