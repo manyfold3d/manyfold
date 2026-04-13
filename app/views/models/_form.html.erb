@@ -1,7 +1,7 @@
 <%= form_with model: @model, class: "container-md tabular-form" do |form| %>
-  <%= text_input_row form, :name # i18n-tasks-use t("activerecord.attributes.model.name") %>
+  <%= text_input_row form, :name %>
 
-  <%= collection_select_input_row form, :preview_file, @model.valid_preview_files, :id, :name, help: t(".preview_file.help") # i18n-tasks-use t("activerecord.attributes.model.preview_file") %>
+  <%= collection_select_input_row form, :preview_file, @model.valid_preview_files, :id, :name, help: t(".preview_file.help") %>
 
   <%= collection_select_input_row form,
         :creator, @creators, :id, :name_with_domain,
@@ -12,13 +12,13 @@
                      path: new_creator_path,
                      label: t("creators.general.new")
                    }
-                 end) # i18n-tasks-use t("activerecord.attributes.model.creator") %>
+                 end) %>
 
   <% if SiteSettings.show_libraries || current_user&.is_administrator? %>
     <%= unless @model.contains_other_models?
           collection_select_input_row form,
             :library, policy_scope(Library).all, :id, :name
-        end # i18n-tasks-use t("activerecord.attributes.model.library") %>
+        end %>
   <% end %>
 
   <%= render "tags_edit", form: form, name: "model[tag_list]", value: @model.tags.order(taggings_count: :desc, name: :asc).map { |tag| tag.name }.join(","), label: translate(".tags"), tags: @available_tags %>
@@ -31,15 +31,15 @@
                      path: new_collection_path,
                      label: t("collections.general.new")
                    }
-                 end) # i18n-tasks-use t("activerecord.attributes.model.collection") %>
+                 end) %>
 
   <%= render "links_form", form: form %>
-  <%= text_input_row form, :caption # i18n-tasks-use t("activerecord.attributes.model.caption") %>
-  <%= rich_text_input_row form, :notes, help: t(".notes.help_html") # i18n-tasks-use t("activerecord.attributes.model.notes") %>
-  <%= select_input_row form, :license, license_select_options(selected: @model.license), include_blank: t("general.none") # i18n-tasks-use t("activerecord.attributes.model.license") %>
-  <%= checkbox_input_row form, :sensitive # i18n-tasks-use t("activerecord.attributes.model.sensitive") %>
-  <%= select_input_row form, :indexable, indexable_select_options(form.object) # i18n-tasks-use t("activerecord.attributes.model.indexable") %>
-  <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots # i18n-tasks-use t("activerecord.attributes.model.ai_indexable") %>
+  <%= text_input_row form, :caption %>
+  <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
+  <%= select_input_row form, :license, license_select_options(selected: @model.license), include_blank: t("general.none") %>
+  <%= checkbox_input_row form, :sensitive %>
+  <%= select_input_row form, :indexable, indexable_select_options(form.object) %>
+  <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots %>
   <%= render "caber_relations_form", form: form %>
 
   <div>

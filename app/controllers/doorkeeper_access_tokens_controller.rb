@@ -7,6 +7,10 @@ class DoorkeeperAccessTokensController < ApplicationController
   def show
     @plaintext_token = flash[:plaintext_token]
     raise ActiveRecord::RecordNotFound unless @plaintext_token
+    # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.active")
+    # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.created_at")
+    # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.fingerprint")
+    # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.token")
   end
 
   def new
@@ -14,7 +18,10 @@ class DoorkeeperAccessTokensController < ApplicationController
   end
 
   def create
-    token_params = params.expect(doorkeeper_access_token: [:expires_in, scopes: []])
+    token_params = params.expect(doorkeeper_access_token: [
+      :expires_in, # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.expires_in")
+      scopes: [] # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.scopes")
+    ])
     @token = @application.access_tokens.create(
       expires_in: token_params[:expires_in].to_i,
       resource_owner_id: @application.owner.id,

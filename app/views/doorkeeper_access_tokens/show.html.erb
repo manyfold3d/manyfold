@@ -7,19 +7,19 @@
 
 <table class="table table-striped">
   <tr>
-    <th><%= Doorkeeper::AccessToken.human_attribute_name(:fingerprint) # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.fingerprint") %></th>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:fingerprint) %></th>
     <td><%= token_fingerprint(@token) %></td>
   </tr>
   <tr>
-    <th><%= Doorkeeper::AccessToken.human_attribute_name(:expires_in) # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.expires_in") %></th>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:expires_in) %></th>
     <td><%= token_expiry_string(@token) %></td>
   </tr>
   <tr>
-    <th><%= Doorkeeper::AccessToken.human_attribute_name(:scopes) # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.scopes") %></th>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:scopes) %></th>
     <td><%= @token.scopes %></td>
   </tr>
   <tr>
-    <th><%= Doorkeeper::AccessToken.human_attribute_name(:token) # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.token") %></th>
+    <th><%= Doorkeeper::AccessToken.human_attribute_name(:token) %></th>
     <td><%= CopyableText text: @plaintext_token, obfuscated: true %></td>
   </tr>
 </table>

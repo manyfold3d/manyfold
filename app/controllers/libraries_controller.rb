@@ -70,9 +70,23 @@ class LibrariesController < ApplicationController
 
   def library_params
     params.expect(library: [
-      :path, :create_path_if_not_on_disk, :name, :notes, :caption, :icon, {tag_regex: []}, :storage_service,
-      :s3_endpoint, :s3_bucket, :s3_region, :s3_access_key_id, :s3_secret_access_key, :s3_path_style,
-      :path_template, :parse_metadata_from_path, :safe_folder_names
+      :path, # i18n-tasks-use t("activerecord.attributes.library.path")
+      :create_path_if_not_on_disk, # i18n-tasks-use t("activerecord.attributes.library.create_path_if_not_on_disk")
+      :name, # i18n-tasks-use t("activerecord.attributes.library.name")
+      :notes, # i18n-tasks-use t("activerecord.attributes.library.notes")
+      :caption, # i18n-tasks-use t("activerecord.attributes.library.caption")
+      :icon, # i18n-tasks-use t("activerecord.attributes.library.icon")
+      {tag_regex: []}, # i18n-tasks-use t("activerecord.attributes.library.tag_regex")
+      :storage_service, # i18n-tasks-use t("activerecord.attributes.library.storage_service")
+      :s3_endpoint, # i18n-tasks-use t("activerecord.attributes.library.s3_endpoint")
+      :s3_bucket, # i18n-tasks-use t("activerecord.attributes.library.s3_bucket")
+      :s3_region, # i18n-tasks-use t("activerecord.attributes.library.s3_region")
+      :s3_access_key_id, # i18n-tasks-use t("activerecord.attributes.library.s3_access_key_id")
+      :s3_secret_access_key, # i18n-tasks-use t("activerecord.attributes.library.s3_secret_access_key")
+      :s3_path_style, # i18n-tasks-use t("activerecord.attributes.library.s3_path_style")
+      :path_template, # i18n-tasks-use t("activerecord.attributes.library.path_template")
+      :parse_metadata_from_path, # i18n-tasks-use t("activerecord.attributes.library.parse_metadata_from_path")
+      :safe_folder_names # i18n-tasks-use t("activerecord.attributes.library.safe_folder_names")
     ])
   end
 

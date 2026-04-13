@@ -331,6 +331,7 @@ end
 # i18n-tasks-use t("activerecord.attributes.user.unlock_token")
 # i18n-tasks-use t("activerecord.attributes.user.encrypted_password")
 # i18n-tasks-use t("activerecord.attributes.user.reset_password_token")
+# i18n-tasks-use t("activerecord.attributes.user.remember_me")
 
 # -- not actually used but built into devise so this silences some warnings
 # i18n-tasks-use t("activerecord.attributes.user.confirmation_sent_at")

@@ -33,7 +33,7 @@ class Settings::DomainBlocksController < ApplicationController
 
   def domain_block_params
     params.expect(domain_block: [
-      :domain
+      :domain # i18n-tasks-use t("activerecord.attributes.federails/moderation/domain_block.domain")
     ])
   end
 end

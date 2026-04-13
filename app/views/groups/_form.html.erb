@@ -1,11 +1,11 @@
 <p><%= t(".intro") %></p>
 
 <%= form_with model: [creator, group], class: "container-md tabular-form" do |form| %>
-  <%= TextInputRow(form: form, attribute: :name, label: Group.human_attribute_name(:name), help: t(".name.help")) # i18n-tasks-use t("activerecord.attributes.group.name") %>
-  <%= RichTextInputRow(form: form, attribute: :description, label: Group.human_attribute_name(:description), help: t(".description.help")) # i18n-tasks-use t("activerecord.attributes.group.description") %>
+  <%= TextInputRow(form: form, attribute: :name, label: Group.human_attribute_name(:name), help: t(".name.help")) %>
+  <%= RichTextInputRow(form: form, attribute: :description, label: Group.human_attribute_name(:description), help: t(".description.help")) %>
 
   <div>
-    <%= form.label :memberships # i18n-tasks-use t("activerecord.attributes.group.memberships") %>
+    <%= form.label :memberships %>
   </div>
   <div>
     <%= cocooned_container id: "cocooned-memberships", data: {controller: "cocooned"} do

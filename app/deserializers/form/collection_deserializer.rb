@@ -3,13 +3,13 @@ module Form
     def deserialize
       return nil unless @params
       allowed = @params.require(:collection).permit(
-        :name,
-        :creator_id,
-        :collection_id,
-        :caption,
-        :notes,
-        :indexable,
-        :ai_indexable,
+        :name, # i18n-tasks-use t("activerecord.attributes.collection.name")
+        :creator_id, # i18n-tasks-use t("activerecord.attributes.collection.creator")
+        :collection_id, # i18n-tasks-use t("activerecord.attributes.collection.collection")
+        :caption, # i18n-tasks-use t("activerecord.attributes.collection.caption")
+        :notes, # i18n-tasks-use t("activerecord.attributes.collection.notes")
+        :indexable, # i18n-tasks-use t("activerecord.attributes.collection.indexable")
+        :ai_indexable, # i18n-tasks-use t("activerecord.attributes.collection.ai_indexable")
         links_attributes: [:id, :url, :_destroy]
       )
       return allowed unless user_can_set_permissions?

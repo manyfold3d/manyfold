@@ -3,15 +3,15 @@ module Form
     def deserialize
       return nil unless @params
       allowed = @params.require(:creator).permit(
-        :name,
-        :slug,
-        :caption,
-        :notes,
-        :indexable,
-        :ai_indexable,
-        :avatar,
+        :name, # i18n-tasks-use t("activerecord.attributes.creator.name")
+        :slug, # i18n-tasks-use t("activerecord.attributes.creator.slug")
+        :caption, # i18n-tasks-use t("activerecord.attributes.creator.caption")
+        :notes, # i18n-tasks-use t("activerecord.attributes.creator.notes")
+        :indexable, # i18n-tasks-use t("activerecord.attributes.creator.indexable")
+        :ai_indexable, # i18n-tasks-use t("activerecord.attributes.creator.ai_indexable")
+        :avatar, # i18n-tasks-use t("activerecord.attributes.creator.avatar")
         :remove_avatar,
-        :banner,
+        :banner, # i18n-tasks-use t("activerecord.attributes.creator.banner")
         :remove_banner,
         links_attributes: [:id, :url, :_destroy]
       )

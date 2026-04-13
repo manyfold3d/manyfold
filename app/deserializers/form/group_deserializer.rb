@@ -3,9 +3,9 @@ module Form
     def deserialize
       return nil unless @params
       @params.require(:group).permit(
-        :name,
-        :description,
-        memberships_attributes: [:id, :user_id, :_destroy]
+        :name, # i18n-tasks-use t("activerecord.attributes.group.name")
+        :description, # i18n-tasks-use t("activerecord.attributes.group.description")
+        memberships_attributes: [:id, :user_id, :_destroy] # i18n-tasks-use t("activerecord.attributes.group.memberships")
       )
     end
   end

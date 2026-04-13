@@ -86,7 +86,7 @@
             </div>
           <% end %>
           <% if current_user&.is_administrator? %>
-            <div><%= Icon icon: "folder", label: t(".path") %></div>
+            <div><%= Icon icon: "folder", label: Model.human_attribute_name(:path) %></div>
             <div>
               <%= content_tag(:code, class: "path") { safe_join @model.path.split("/"), safe_join([tag.wbr, "/"]) } %>
             </div>

@@ -1,7 +1,7 @@
 <%= form_with model: [:settings, user], class: "tabular-form" do |form| %>
 
-  <%= text_input_row form, :username # i18n-tasks-use t("activerecord.attributes.user.username") %>
-  <%= text_input_row form, :email # i18n-tasks-use t("activerecord.attributes.user.email") %>
+  <%= text_input_row form, :username %>
+  <%= text_input_row form, :email %>
 
   <% if !user.persisted? %>
     <% if SiteSettings.email_configured? %>
@@ -10,8 +10,8 @@
         <%= t(".password_reset_help") %>
       </div>
     <% else %>
-      <%= password_input_row form, :password # i18n-tasks-use t("activerecord.attributes.user.password") %>
-      <%= password_input_row form, :password_confirmation # i18n-tasks-use t("activerecord.attributes.user.password_confirmation") %>
+      <%= password_input_row form, :password %>
+      <%= password_input_row form, :password_confirmation %>
     <% end %>
   <% end %>
 
@@ -29,12 +29,12 @@
 
   <% if SiteSettings.enable_user_quota %>
     <h3><%= t("settings.users.quota.title") %></h3>
-    <%= checkbox_input_row form, :quota_use_site_default, label: t("settings.users.quota.using_site_default") # i18n-tasks-use t("activerecord.attributes.user.quota_use_site_default") %>
+    <%= checkbox_input_row form, :quota_use_site_default, label: t("settings.users.quota.using_site_default") %>
     <%= numeric_input_row form, :quota,
           label: t("settings.users.quota.current_quota"),
           min: 0, step: 1,
           unit: "MB",
-          value: (user.quota.to_i / 1.megabyte) # i18n-tasks-use t("activerecord.attributes.user.quota") %>
+          value: (user.quota.to_i / 1.megabyte) %>
   <% end %>
 
   <div>

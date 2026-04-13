@@ -1,11 +1,11 @@
 <%= form_with model: @application, class: "container-md tabular-form" do |form| %>
-  <%= text_input_row form, :name, autofocus: true # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.name") %>
-  <%= text_input_row form, :redirect_uri, help: t(".redirect_uri.help") # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.redirect_uri") %>
+  <%= text_input_row form, :name, autofocus: true %>
+  <%= text_input_row form, :redirect_uri, help: t(".redirect_uri.help") %>
   <%= select_input_row form, :scopes,
         ["public", "read", "write", "delete"],
         label: t(".scopes.label"),
-        multiple: true # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.scopes") %>
-  <%= checkbox_input_row form, :confidential, help: t(".confidential.help") # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.confidential") %>
+        multiple: true %>
+  <%= checkbox_input_row form, :confidential, help: t(".confidential.help") %>
   <div>
     <%= form.submit translate(".submit"), class: "btn btn-primary" %>
   </div>

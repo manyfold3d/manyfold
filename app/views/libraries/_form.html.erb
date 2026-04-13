@@ -1,31 +1,31 @@
 <%= form_with model: @library, class: "container-md tabular-form", data: {controller: "parse-preview"} do |form| %>
-  <%= text_input_row form, :name # i18n-tasks-use t("activerecord.attributes.library.name") %>
-  <%= checkbox_input_row form, :default, help: t(".default.help"), checked: @library.default? # i18n-tasks-use t("activerecord.attributes.library.default") %>
+  <%= text_input_row form, :name %>
+  <%= checkbox_input_row form, :default, help: t(".default.help"), checked: @library.default? %>
   <% unless @library.persisted? %>
     <div>
-      <%= form.label :storage_service, class: "col-sm-2 col-form-label" # i18n-tasks-use t("activerecord.attributes.library.storage_service") %>
+      <%= form.label :storage_service, class: "col-sm-2 col-form-label" %>
     </div>
     <div>
       <%= form.select :storage_service, Library::STORAGE_SERVICES.map { |it| [translate("libraries.storage_services.%{service}" % {service: it}), it] }, {}, {class: "form-control col-auto form-select", "data-bs-collapse": "collapse", "data-controller": "storage-service", "data-action": "change->storage-service#onChange"} %>
       <div id="options-filesystem" class="card p-3 collapse show storage-collapse tabular-form" data-bs-parent="#library_storage_service">
         <p><%= t ".filesystem_description_html" %></p>
-        <%= text_input_row form, :path, placeholder: translate(".path.placeholder"), options: {data: {action: "change->parse-preview#handleChange"}} # i18n-tasks-use t("activerecord.attributes.library.path") %>
-        <%= checkbox_input_row form, :create_path_if_not_on_disk, help: t(".create_path_if_not_on_disk.help") # i18n-tasks-use t("activerecord.attributes.library.create_path_if_not_on_disk") %>
+        <%= text_input_row form, :path, placeholder: translate(".path.placeholder"), options: {data: {action: "change->parse-preview#handleChange"}} %>
+        <%= checkbox_input_row form, :create_path_if_not_on_disk, help: t(".create_path_if_not_on_disk.help") %>
       </div>
       <div id="options-s3" class="card p-3 collapse show storage-collapse tabular-form" data-bs-parent="#library_storage_service">
         <p><%= t ".s3_description_html" %></p>
-        <%= url_input_row form, :s3_endpoint, help: t(".s3_endpoint.help"), autocomplete: false # i18n-tasks-use t("activerecord.attributes.library.s3_endpoint") %>
-        <%= text_input_row form, :s3_bucket, help: t(".s3_bucket.help"), autocomplete: false # i18n-tasks-use t("activerecord.attributes.library.s3_bucket") %>
-        <%= text_input_row form, :s3_region, autocomplete: false # i18n-tasks-use t("activerecord.attributes.library.s3_region") %>
-        <%= text_input_row form, :s3_access_key_id, autocomplete: false # i18n-tasks-use t("activerecord.attributes.library.s3_access_key_id") %>
-        <%= password_input_row form, :s3_secret_access_key, autocomplete: false # i18n-tasks-use t("activerecord.attributes.library.s3_secret_access_key") %>
-        <%= checkbox_input_row form, :s3_path_style, help: t(".s3_path_style.help") # i18n-tasks-use t("activerecord.attributes.library.s3_path_style") %>
+        <%= url_input_row form, :s3_endpoint, help: t(".s3_endpoint.help"), autocomplete: false %>
+        <%= text_input_row form, :s3_bucket, help: t(".s3_bucket.help"), autocomplete: false %>
+        <%= text_input_row form, :s3_region, autocomplete: false %>
+        <%= text_input_row form, :s3_access_key_id, autocomplete: false %>
+        <%= password_input_row form, :s3_secret_access_key, autocomplete: false %>
+        <%= checkbox_input_row form, :s3_path_style, help: t(".s3_path_style.help") %>
       </div>
     </div>
   <% end %>
-  <%= text_input_row form, :caption, help: t(".caption.help") # i18n-tasks-use t("activerecord.attributes.library.caption") %>
-  <%= text_input_row form, :icon, help: t(".icon.help_html"), placeholder: translate(".icon.placeholder") # i18n-tasks-use t("activerecord.attributes.library.icon") %>
-  <%= rich_text_input_row form, :notes, help: t(".notes.help_html") # i18n-tasks-use t("activerecord.attributes.library.notes") %>
+  <%= text_input_row form, :caption, help: t(".caption.help") %>
+  <%= text_input_row form, :icon, help: t(".icon.help_html"), placeholder: translate(".icon.placeholder") %>
+  <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
 
   <hr>
 
@@ -35,15 +35,15 @@
     <%= t ".folder_organisation.description" %>
   </p>
 
-  <%= TextInputRow form: form, attribute: :path_template, help: render("path_template_help"), label: Library.human_attribute_name(:path_template), options: {data: {action: "change->parse-preview#handleChange"}} # i18n-tasks-use t("activerecord.attributes.library.path_template") %>
-  <%= CheckBoxInputRow form: form, attribute: :parse_metadata_from_path, help: render("parse_metadata_help"), label: Library.human_attribute_name(:parse_metadata_from_path), options: {data: {action: "change->parse-preview#handleChange"}} # i18n-tasks-use t("activerecord.attributes.library.parse_metadata_from_path") %>
-  <%= CheckBoxInputRow form: form, attribute: :safe_folder_names, help: t(".safe_folder_names.help_html"), label: Library.human_attribute_name(:safe_folder_names) # i18n-tasks-use t("activerecord.attributes.library.safe_folder_names") %>
+  <%= TextInputRow form: form, attribute: :path_template, help: render("path_template_help"), label: Library.human_attribute_name(:path_template), options: {data: {action: "change->parse-preview#handleChange"}} %>
+  <%= CheckBoxInputRow form: form, attribute: :parse_metadata_from_path, help: render("parse_metadata_help"), label: Library.human_attribute_name(:parse_metadata_from_path), options: {data: {action: "change->parse-preview#handleChange"}} %>
+  <%= CheckBoxInputRow form: form, attribute: :safe_folder_names, help: t(".safe_folder_names.help_html"), label: Library.human_attribute_name(:safe_folder_names) %>
 
   <% if @library.persisted? %>
     <hr>
     <h3><%= t(".rules.title") %></h3>
     <div>
-      <%= form.label :tag_regex, class: "col-sm-2 col-form-label mb-0" # i18n-tasks-use t("activerecord.attributes.library.tag_regex") %>
+      <%= form.label :tag_regex, class: "col-sm-2 col-form-label mb-0" %>
     </div>
     <div id="newinput">
       <% @library.tag_regex.each do |reg| %>

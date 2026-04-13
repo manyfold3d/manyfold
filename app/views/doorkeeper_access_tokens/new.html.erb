@@ -11,11 +11,11 @@
           [distance_of_time_in_words(3.months), 3.months],
           [distance_of_time_in_words(6.months), 6.months]
         ],
-        label: t(".expiry.label") # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.expires_in") %>
+        label: t(".expiry.label") %>
   <%= select_input_row form, :scopes,
         ["public", "read", "write", "delete"],
         label: t(".scopes.label"),
-        multiple: true # i18n-tasks-use t("activerecord.attributes.doorkeeper/access_token.scopes") %>
+        multiple: true %>
   <div>
     <%= form.submit translate(".submit"), class: "btn btn-primary" %>
   </div>

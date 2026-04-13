@@ -2,7 +2,7 @@
 
 <%= form_with model: [:settings, @domain_block], class: "tabular-form" do |form| %>
 
-  <%= text_input_row form, :domain # i18n-tasks-use t("activerecord.attributes.federails/moderation/domain_block.domain") %>
+  <%= text_input_row form, :domain %>
 
   <div>
     <%= form.submit translate(".submit"), class: "btn btn-primary" %>

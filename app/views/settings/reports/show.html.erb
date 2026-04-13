@@ -2,23 +2,23 @@
 
 <ul>
   <li>
-    <%= Federails::Moderation::Report.human_attribute_name(:created_at) # i18n-tasks-use t("activerecord.attributes.federails/moderation/report.created_at") %>:
+    <%= Federails::Moderation::Report.human_attribute_name(:created_at) %>:
     <%= @report.created_at %>
   </li>
   <li>
-    <%= Federails::Moderation::Report.human_attribute_name(:federails_actor) # i18n-tasks-use t("activerecord.attributes.federails/moderation/report.federails_actor") %>:
+    <%= Federails::Moderation::Report.human_attribute_name(:federails_actor) %>:
     <%= @report.reporter_address %>
   </li>
 </ul>
 
 <% if @report.content.present? %>
-  <h4><%= Federails::Moderation::Report.human_attribute_name(:content) # i18n-tasks-use t("activerecord.attributes.federails/moderation/report.content") %>:</h4>
+  <h4><%= Federails::Moderation::Report.human_attribute_name(:content) %>:</h4>
   <div class="alert alert-warning">
     <%= @report.content %>
   </div>
 <% end %>
 
-<h4><%= Federails::Moderation::Report.human_attribute_name(:object) # i18n-tasks-use t("activerecord.attributes.federails/moderation/report.object") %></h4>
+<h4><%= Federails::Moderation::Report.human_attribute_name(:object) %></h4>
 <table class="table table-striped">
   <% Array(@report.object).each do |object| %>
     <tr>

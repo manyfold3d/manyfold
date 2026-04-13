@@ -1,18 +1,18 @@
 <%= form_with model: [@model, @file], class: "container-md tabular-form" do |form| %>
-  <%= text_input_row form, :filename # i18n-tasks-use t("activerecord.attributes.model_file.filename") %>
+  <%= text_input_row form, :filename %>
   <% if @file.is_3d_model? %>
-    <%= checkbox_input_row form, :printed, checked: current_user.printed?(@file) # i18n-tasks-use t("activerecord.attributes.model_file.printed") %>
-    <%= checkbox_input_row form, :presupported # i18n-tasks-use t("activerecord.attributes.model_file.presupported") %>
-    <%= checkbox_input_row form, :y_up # i18n-tasks-use t("activerecord.attributes.model_file.y_up") %>
-    <%= checkbox_input_row form, :previewable # i18n-tasks-use t("activerecord.attributes.model_file.previewable") %>
+    <%= checkbox_input_row form, :printed, checked: current_user.printed?(@file) %>
+    <%= checkbox_input_row form, :presupported %>
+    <%= checkbox_input_row form, :y_up %>
+    <%= checkbox_input_row form, :previewable %>
     <%= unless @file.presupported
           collection_select_input_row form,
             :presupported_version, policy_scope(@model.model_files).presupported.select { |x| x.extension.downcase == @file.extension.downcase }, :id, :name,
             include_blank: t("general.none")
-        end # i18n-tasks-use t("activerecord.attributes.model_file.presupported_version") %>
+        end %>
   <% end %>
-  <%= text_input_row form, :caption # i18n-tasks-use t("activerecord.attributes.model_file.caption") %>
-  <%= rich_text_input_row form, :notes, help: t(".notes.help_html") # i18n-tasks-use t("activerecord.attributes.model_file.notes") %>
+  <%= text_input_row form, :caption %>
+  <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
   <div>
     <%= form.submit class: "btn btn-primary" %>
   </div>

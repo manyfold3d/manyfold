@@ -35,4 +35,10 @@ Rails.application.config.after_initialize do
 end
 
 # i18n-tasks-use t("activerecord.models.federails/moderation/domain_block")
+# i18n-tasks-use t("activerecord.attributes.federails/moderation/domain_block.created_at")
+# i18n-tasks-use t("activerecord.attributes.federails/moderation/domain_block.domain")
+
 # i18n-tasks-use t("activerecord.models.federails/moderation/report")
+# i18n-tasks-use t("activerecord.attributes.federails/moderation/report.created_at")
+# i18n-tasks-use t("activerecord.attributes.federails/moderation/report.federails_actor")
+# i18n-tasks-use t("activerecord.attributes.federails/moderation/report.object")
