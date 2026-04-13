@@ -31,7 +31,7 @@
           </li>
           <li class="nav-item">
             <% if @file.presupported_version %>
-              <%= link_to Model.human_attribute_name(:presupported_version), [@model, @file.presupported_version], class: "nav-link" %>
+              <%= link_to Model.human_attribute_name(:presupported_version), [@model, @file.presupported_version], class: "nav-link" # i18n-tasks-use t("activerecord.attributes.model_file.presupported_version") %>
             <% else %>
               <a class="nav-link active" aria-current="page" href="#"><%= Model.human_attribute_name :presupported_version %></a>
             <% end %>
