@@ -136,6 +136,7 @@ nl:
         email: E-mail
         encrypted_password: Versleuteld wachtwoord
         failed_attempts: Mislukte pogingen
+        interface_language: Interfacetaal
         last_sign_in_at: Laatste inlogtijd
         last_sign_in_ip: Laatste inlog IP
         locked_at: Vergrendeld op

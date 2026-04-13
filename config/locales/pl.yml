@@ -136,6 +136,7 @@ pl:
         email: Adres e-mail
         encrypted_password: Zaszyfrowane hasło
         failed_attempts: Nieudanych prób
+        interface_language: Język interfejsu
         last_sign_in_at: Data ostatniego logowania
         last_sign_in_ip: Adres IP ostatniego logowania
         locked_at: Data zablokowania

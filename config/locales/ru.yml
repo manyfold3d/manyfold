@@ -136,6 +136,7 @@ ru:
         email: Email
         encrypted_password: Зашифрованный пароль
         failed_attempts: Неудачные попытки
+        interface_language:
         last_sign_in_at: Дата последнего входа
         last_sign_in_ip: IP последнего входа
         locked_at: Дата блокировки

@@ -120,7 +120,6 @@ nl:
         interface_language:
           autodetect: Gebruik browserinstellingen
           help: 'Let op: sommige onvertaalde teksten kunnen nog steeds in het Engels verschijnen.'
-          label: Interfacetaal
         sensitive_content:
           help: Beïnvloedt hoe inhoud gemarkeerd als "gevoelig" wordt weergegeven
           hide: Volledig verbergen

@@ -138,6 +138,7 @@ fr:
         email: Email
         encrypted_password: Mot de passe chiffré
         failed_attempts: Tentatives échouées
+        interface_language: Langue de l'interface
         last_sign_in_at: Date de la dernière connexion
         last_sign_in_ip: IP de la dernière connexion
         locked_at: Verrouillé à

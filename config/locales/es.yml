@@ -136,6 +136,7 @@ es:
         email: Email
         encrypted_password: Contraseña cifrada
         failed_attempts: Intentos fallidos
+        interface_language: Idioma de la aplicación
         last_sign_in_at: Último inicio de sesión el
         last_sign_in_ip: IP último inicio de sesión
         locked_at: Bloqueado el

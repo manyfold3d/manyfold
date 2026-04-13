@@ -120,7 +120,6 @@ cs:
         interface_language:
           autodetect: Použít nastavení prohlížeče
           help: 'Poznámka: některé nepřeložené texty se mohou stále zobrazovat v angličtině.'
-          label: Jazyk rozhraní
         sensitive_content:
           help: Ovlivňuje způsob zobrazení obsahu označeného jako "citlivý"
           hide: Úplně skrýt

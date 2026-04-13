@@ -136,6 +136,7 @@ en:
         email: Email
         encrypted_password: Encrypted password
         failed_attempts: Failed attempts
+        interface_language: Interface language
         last_sign_in_at: Last sign in at
         last_sign_in_ip: Last sign in IP
         locked_at: Locked at

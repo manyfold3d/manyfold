@@ -136,6 +136,7 @@ cs:
         email: E-mail
         encrypted_password: Zašifrované heslo
         failed_attempts: Chybných pokusů
+        interface_language: Jazyk rozhraní
         last_sign_in_at: Poslední přihlášení
         last_sign_in_ip: Poslední přihlášení z IP
         locked_at: Uzamčeno

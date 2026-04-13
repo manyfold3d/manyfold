@@ -120,7 +120,6 @@ de:
         interface_language:
           autodetect: Browsereinstellungen verwenden
           help: 'Hinweis: Einige nicht übersetzte Texte werden möglicherweise noch auf Englisch angezeigt.'
-          label: Webseiten Sprache
         sensitive_content:
           help: Beeinflusst die Anzeige von als "Möglicherweise verstörender Inhalt" gekennzeichneten Inhalten
           hide: Vollständig ausblenden

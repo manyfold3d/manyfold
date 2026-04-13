@@ -120,7 +120,6 @@ ja:
         interface_language:
           autodetect: ブラウザの設定を使用する
           help: 注：未翻訳のテキストが英語で表示される場合があります。
-          label: 言語
         sensitive_content:
           help: "「センシティブ」とマークされたコンテンツがどのように表示されるかに影響します。"
           hide: 完全に隠す

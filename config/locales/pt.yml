@@ -136,6 +136,7 @@ pt:
         email: Email
         encrypted_password: Palavra-passe cifrada
         failed_attempts: Tentativas falhadas
+        interface_language:
         last_sign_in_at: Última entrada em
         last_sign_in_ip: Última entrada com IP
         locked_at: Bloqueado em
