@@ -1,4 +1,6 @@
 class Group < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.group")
+
   include CaberSubject
 
   belongs_to :creator

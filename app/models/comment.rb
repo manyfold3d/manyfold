@@ -1,6 +1,8 @@
 require "federails/data_transformer/note"
 
 class Comment < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.comment")
+
   include PublicIDable
   include Federails::DataEntity
   include Reportable

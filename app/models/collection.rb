@@ -1,4 +1,6 @@
 class Collection < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.collection")
+
   include Followable
   include Talkative
   include CaberObject

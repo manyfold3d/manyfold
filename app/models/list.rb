@@ -1,4 +1,6 @@
 class List < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.list")
+
   include CaberObject
   include PublicIDable
 

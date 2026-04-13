@@ -1,4 +1,6 @@
 class Model < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.model")
+
   extend Memoist
   include PathBuilder
   include Followable

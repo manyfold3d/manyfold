@@ -1,6 +1,8 @@
 require "uri"
 
 class User < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.user")
+
   extend Memoist
 
   include Lister

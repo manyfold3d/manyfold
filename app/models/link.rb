@@ -1,4 +1,6 @@
 class Link < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.link")
+
   include Problematic
 
   belongs_to :linkable, polymorphic: true

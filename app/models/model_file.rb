@@ -1,4 +1,6 @@
 class ModelFile < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.model_file")
+
   include ModelFileUploader::Attachment(:attachment)
   include Listable
   include PublicIDable

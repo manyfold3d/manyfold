@@ -1,4 +1,6 @@
 class Library < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.library")
+
   extend Memoist
   include PublicIDable
   include Problematic
