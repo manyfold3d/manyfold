@@ -104,7 +104,7 @@ export class ObjectPreview {
   onLoadProgress (percentage: number): void {
     if ((this.progressBar == null) || (this.progressLabel == null)) { return }
     if (percentage === 100) {
-      this.progressLabel.textContent = window.i18n.t('renderer.processing')
+      this.progressLabel.textContent = window.i18n.t('renderer.processing') // i18n-tasks-use t('renderer.processing')
     } else {
       this.progressLabel.textContent = `${percentage}%`
     }
@@ -123,7 +123,7 @@ export class ObjectPreview {
     if ((this.progressBar == null) || (this.progressLabel == null)) { return }
     this.progressBar.classList.add('bg-danger')
     this.progressBar.style.width = this.progressBar.ariaValueNow = '100%'
-    this.progressLabel.textContent = window.i18n.t('renderer.errors.load')
+    this.progressLabel.textContent = window.i18n.t('renderer.errors.load') // i18n-tasks-use t('renderer.errors.load')
   }
 
   onResize (): void {
