@@ -41,7 +41,7 @@ class ProblemsController < ApplicationController
     authorize @problem
     @problem.update!(permitted_params)
     notice = t(
-      (@problem.ignored ? ".ignored" : ".unignored"),
+      (@problem.ignored ? ".ignored" : ".unignored"), # i18n-tasks-use t("problems.update.ignored") t("problems.update.unignored")
       name: @problem.problematic.name,
       message: translate("problems.%{type}.%{category}.title" % {type: @problem.problematic_type.underscore, category: @problem.category})
     )

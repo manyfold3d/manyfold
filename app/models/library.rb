@@ -7,8 +7,8 @@ class Library < ApplicationRecord
   include ChangeDetection
 
   STORAGE_SERVICES = [
-    "filesystem",
-    "s3"
+    "filesystem", # i18n-tasks-use t("libraries.storage_services.filesystem")
+    "s3" # i18n-tasks-use t("libraries.storage_services.s3")
   ]
 
   has_many :models, dependent: :destroy

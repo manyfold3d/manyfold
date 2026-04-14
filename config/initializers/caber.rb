@@ -2,9 +2,9 @@
 Caber.configure do |config|
   # List the object-level permissions you want
   config.permissions = [
-    "preview",
-    "view",
-    "edit",
-    "own"
+    "preview", # i18n-tasks-use t("application.caber_relation_fields.permissions.preview")
+    "view", # i18n-tasks-use t("application.caber_relation_fields.permissions.view")
+    "edit", # i18n-tasks-use t("application.caber_relation_fields.permissions.edit")
+    "own" # i18n-tasks-use t("application.caber_relation_fields.permissions.own")
   ]
 end

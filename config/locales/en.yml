@@ -577,70 +577,6 @@ en:
         bad_request: 'Synchronization failed: missing link ID'
         success: Synchronization requested successfully
   doorkeeper:
-    applications:
-      buttons:
-        authorize: Authorize
-        cancel: Cancel
-        destroy: Destroy
-        edit: Edit
-        submit: Submit
-      confirmations:
-        destroy: Are you sure?
-      edit:
-        title: Edit application
-      form:
-        error: Whoops! Check your form for possible errors
-      help:
-        blank_redirect_uri: Leave it blank if you configured your provider to use Client Credentials, Resource Owner Password Credentials or any other grant type that doesn't require redirect URI.
-        confidential: Application will be used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential.
-        redirect_uri: Use one line per URI
-        scopes: Separate scopes with spaces. Leave blank to use the default scopes.
-      index:
-        actions: Actions
-        callback_url: Callback URL
-        confidential: Confidential?
-        confidentiality:
-          'no': 'No'
-          'yes': 'Yes'
-        name: Name
-        new: New Application
-        title: Your applications
-      new:
-        title: New Application
-      show:
-        actions: Actions
-        application_id: UID
-        callback_urls: Callback urls
-        confidential: Confidential
-        not_defined: Not defined
-        scopes: Scopes
-        secret: Secret
-        secret_hashed: Secret hashed
-        title: 'Application: %{name}'
-    authorizations:
-      buttons:
-        authorize: Authorize
-        deny: Deny
-      error:
-        title: An error has occurred
-      form_post:
-        title: Submit this form
-      new:
-        able_to: This application will be able to
-        prompt: Authorize %{client_name} to use your account?
-        title: Authorization required
-      show:
-        title: Authorization code
-    authorized_applications:
-      buttons:
-        revoke: Revoke
-      confirmations:
-        revoke: Are you sure?
-      index:
-        application: Application
-        created_at: Created At
-        date_format: "%Y-%m-%d %H:%M:%S"
-        title: Your authorized applications
     errors:
       messages:
         access_denied: The resource owner or authorization server denied the request.
@@ -685,17 +621,6 @@ en:
       authorized_applications:
         destroy:
           notice: Application revoked.
-    layouts:
-      admin:
-        nav:
-          applications: Applications
-          home: Home
-          oauth2_provider: OAuth2 Provider
-        title: Doorkeeper
-      application:
-        title: OAuth authorization required
-    pre_authorization:
-      status: Pre-authorization
   doorkeeper_access_tokens:
     create:
       failed: Access token creation failed
@@ -1028,9 +953,7 @@ en:
       subject: New report received
   renderer:
     errors:
-      canvas: 'Could not find #webgl canvas!'
       load: Load Error
-      webglrenderer: Could not create renderer!
     load: Load
     processing: Reticulating splines...
   reports:

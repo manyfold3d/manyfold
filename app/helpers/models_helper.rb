@@ -27,25 +27,25 @@ module ModelsHelper
   def license_select_options(selected: nil)
     # Generate a list of select options for select with a set of useful licenses
     options_for_select(
-      %w[
-        CC-BY-4.0
-        CC-BY-NC-4.0
-        CC-BY-ND-4.0
-        CC-BY-NC-ND-4.0
-        CC-BY-NC-SA-4.0
-        CC-BY-SA-4.0
-        CC-PDDC
-        CC0-1.0
-        CERN-OHL-P-2.0
-        CERN-OHL-S-2.0
-        CERN-OHL-W-2.0
-        MIT
-        GPL-2.0-only
-        GPL-3.0-only
-        LGPL-2.0-only
-        LGPL-3.0-only
-        0BSD
-        LicenseRef-Commercial
+      [
+        "CC-BY-4.0", # i18n-tasks-use t('licenses.CC-BY-40')
+        "CC-BY-NC-4.0", # i18n-tasks-use t('licenses.CC-BY-NC-40')
+        "CC-BY-ND-4.0", # i18n-tasks-use t('licenses.CC-BY-ND-40')
+        "CC-BY-NC-ND-4.0", # i18n-tasks-use t('licenses.CC-BY-NC-ND-40')
+        "CC-BY-NC-SA-4.0", # i18n-tasks-use t('licenses.CC-BY-NC-SA-40')
+        "CC-BY-SA-4.0", # i18n-tasks-use t('licenses.CC-BY-SA-40')
+        "CC-PDDC", # i18n-tasks-use t('licenses.CC-PDDC')
+        "CC0-1.0", # i18n-tasks-use t('licenses.CC0-10')
+        "CERN-OHL-P-2.0", # i18n-tasks-use t('licenses.CERN-OHL-P-20')
+        "CERN-OHL-S-2.0", # i18n-tasks-use t('licenses.CERN-OHL-S-20')
+        "CERN-OHL-W-2.0", # i18n-tasks-use t('licenses.CERN-OHL-W-20')
+        "MIT", # i18n-tasks-use t('licenses.MIT')
+        "GPL-2.0-only", # i18n-tasks-use t('licenses.GPL-20-only')
+        "GPL-3.0-only", # i18n-tasks-use t('licenses.GPL-30-only')
+        "LGPL-2.0-only", # i18n-tasks-use t('licenses.LGPL-20-only')
+        "LGPL-3.0-only", # i18n-tasks-use t('licenses.LGPL-30-only')
+        "0BSD", # i18n-tasks-use t('licenses.0BSD')
+        "LicenseRef-Commercial" # i18n-tasks-use t('licenses.LicenseRef-Commercial')
       ].map { |id|
         [
           t_license(id),
