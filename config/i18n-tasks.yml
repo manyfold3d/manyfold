@@ -132,8 +132,6 @@ ignore_unused:
 - 'errors.messages.not_locked'
 - 'problems.categories.*'
 - 'sites.*'
-- 'problems.update.ignored'
-- 'problems.update.unignored'
 - 'application.caber_relation_fields.permissions.*'
 - 'devise.*' # Used deep down
 - 'doorkeeper.*' # Used deep down
