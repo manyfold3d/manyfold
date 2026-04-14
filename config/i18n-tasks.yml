@@ -124,20 +124,19 @@ search:
 
 ## Consider these keys used:
 ignore_unused:
+# Site translations are fully dynamic, there's no code
+# anywhere to say what's what, so just assume they're all used
+- 'sites.*'
+# Devise internals
+- 'devise.*'
 - 'errors.messages.weak_password'
 - 'errors.messages.already_confirmed'
 - 'errors.messages.confirmation_period_expired'
 - 'errors.messages.expired'
 - 'errors.messages.not_found'
 - 'errors.messages.not_locked'
-- 'sites.*' # Fully dynamic, no code anywhere to say what's what, so just ignore
-- 'devise.*' # Used deep down
-- 'doorkeeper.*' # Used deep down
-
-# - '{devise,kaminari,will_paginate}.*'
-# - 'simple_form.{yes,no}'
-# - 'simple_form.{placeholders,hints,labels}.*'
-# - 'simple_form.{error_notification,required}.:'
+# Doorkeeper internals
+- 'doorkeeper.*'
 
 ## Exclude these keys from the `i18n-tasks eq-base' report:
 # ignore_eq_base:
