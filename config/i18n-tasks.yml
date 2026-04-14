@@ -132,7 +132,6 @@ ignore_unused:
 - 'errors.messages.not_locked'
 - 'problems.categories.*'
 - 'libraries.storage_services.*' # Names for storage services
-- 'licenses.*'
 - 'sites.*'
 - 'problems.update.ignored'
 - 'problems.update.unignored'
