@@ -136,7 +136,8 @@ ignore_unused:
 - 'errors.messages.not_found'
 - 'errors.messages.not_locked'
 # Doorkeeper internals
-- 'doorkeeper.*'
+- 'doorkeeper.flash.*'
+- 'doorkeeper.errors.*'
 
 ## Exclude these keys from the `i18n-tasks eq-base' report:
 # ignore_eq_base:
