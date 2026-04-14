@@ -43,7 +43,6 @@ fr:
         help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
         help: Le fichier affiché en tant qu'aperçu du modèle dans les pages de la bibliothèque
-      tags: Étiquette
     general:
       edit: Modifier le modèle
     list:
@@ -85,7 +84,6 @@ fr:
     scan:
       success: Début de l'analyse du modèle
     show:
-      comments:
       download_preparing:
       download_requested:
       files: Fichiers
@@ -103,12 +101,10 @@ fr:
         warning: La fusion déplace tous les fichiers de ce modèle vers la cible et supprime ce modèle. Les métadonnées des fichiers sont préservées, mais toutes les métadonnées du modèle sont perdues !
         with: Fusionner avec
       model_details: Détails du modèle
-      path: Chemin
       preview:
       rescan: Rescanner les fichiers
       search: Recherchez sur Internet des modèles portant ce nom
       submit: Téléverser les fichiers
-      tags: Étiquettes
       upload_card:
         heading: Télécharger
     update:

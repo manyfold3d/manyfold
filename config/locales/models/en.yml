@@ -43,7 +43,6 @@ en:
         help_html: You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
         help: The file displayed as a model preview in library pages
-      tags: Tags
     general:
       edit: Edit Model
     list:
@@ -85,7 +84,6 @@ en:
     scan:
       success: Model scan started
     show:
-      comments: Comments
       download_preparing: Download is being prepared, please wait.
       download_requested: Download requested and will be ready soon, please wait.
       files: Files
@@ -103,12 +101,10 @@ en:
         warning: Merging moves all files from this model to the target, and removes this model. File metadata is preserved, but any model metadata will be lost!
         with: Merge with
       model_details: Model Details
-      path: Path
       preview: This is just a preview of the complete model, which contains %{count} more files. Contact the model owner to get full access.
       rescan: Rescan files
       search: Search the Internet for models with this name
       submit: Upload Files
-      tags: Tags
       upload_card:
         heading: Upload
     update:

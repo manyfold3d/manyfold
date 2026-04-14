@@ -14,7 +14,7 @@
     <%= ColumnHeader label: t(".local") if SiteSettings.federation_enabled? %>
     <%= ColumnHeader label: t(".fediverse_address") if SiteSettings.federation_enabled? %>
     <%= ColumnHeader label: User.human_attribute_name(:created_at), sort_param: :order, sort_option: "recent" %>
-    <%= ColumnHeader label: User.human_attribute_name(:roles) %>
+    <%= ColumnHeader label: Role.model_name.human(count: 100) %>
     <th></th>
   </tr>
   <% @users.each do |user| %>

@@ -5,9 +5,15 @@ zh-CN:
       collection:
         ai_indexable: 允许用于 AI 训练
         caption: 标题
-        collection: 父合集
+        collection_id: 父合集
+        creator_id:
+          few: 创作者
+          many: 创作者
+          one: 创作者
+          other: 创作者
+          two: 创作者
+          zero: 创作者
         indexable: 允许搜索索引
-        models: 模型
         name: 名称
         notes: 说明
       creator:
@@ -25,8 +31,8 @@ zh-CN:
         expires_in:
         fingerprint: 指纹
         scopes: 权限范围
+        token: 访问令牌
       doorkeeper/application:
-        access_token: 访问令牌
         confidential: 保密
         created_at: 创建于
         name: 应用名称
@@ -35,6 +41,23 @@ zh-CN:
         scopes: 权限范围
         secret: Client Secret
         uid: Client ID
+      fasp_client_backfill_request:
+        category:
+        created_at:
+        max_count: 最大计数
+      fasp_client_event_subscription:
+        category:
+        created_at:
+        subscription_type: 订阅类型
+      fasp_client_provider:
+        base_url: URL
+        contact_email: 电子邮箱
+        created_at:
+        fediverse_account: Fediverse 地址
+        fingerprint: 指纹
+        privacy_policy: 隐私政策
+        sign_in_url: 登录
+        status:
       federails/moderation/domain_block:
         created_at: 创建于
         domain:
@@ -78,30 +101,25 @@ zh-CN:
       model:
         ai_indexable: 允许用于 AI 训练
         caption: 标题
-        collection: 合集
         collection_id: 合集
-        creator: 创作者
         creator_id: 创作者
-        images: 图片
         indexable: 允许搜索索引
         library_id: 资料库
         license: 许可证
-        model_files: 文件
         name: 名称
         notes: 说明
         path: 路径
         preview_file: 预览文件
         sensitive: 敏感内容
-        tags: 标签
       model_file:
         caption: 标题
         digest: 摘要
         dimensions: 尺寸
         filename: 文件名
-        model_id: 模型
         notes: 说明
         presupported: 有支撑
-        presupported_version: 有支撑的版本
+        presupported_version_id: 有支撑的版本
+        previewable:
         printed: 已打印
         size: 文件大小
         unsupported_version: 不支持的版本
@@ -125,16 +143,21 @@ zh-CN:
         email: 电子邮箱
         encrypted_password: 密码被加密
         failed_attempts: 失败尝试
+        interface_language: 界面语言
         last_sign_in_at: 最后登录于
         last_sign_in_ip: 最后登录的 IP
         locked_at: 锁定于
         password: 密码
         password_confirmation: 密码确认
+        quota: 当前文件存储上限（MB）
+        quota_use_site_default: 使用网站默认文件存储限制？
         remember_created_at: 记住创建于
         remember_me: 记住登录信息
         reset_password_sent_at: 重置密码发送于
         reset_password_token: 密码重置令牌
+        sensitive_content_handling: 敏感内容
         sign_in_count: 登录次数
+        sort_order: 排序方式
         unconfirmed_email: 未确认邮件
         unlock_token: 帐户解锁令牌
         updated_at: 更新于
@@ -204,6 +227,13 @@ zh-CN:
         other: 合集
         two: 合集
         zero: 合集
+      comment:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       creator:
         few: 创作者
         many: 创作者
@@ -211,6 +241,31 @@ zh-CN:
         other: 创作者
         two: 创作者
         zero: 创作者
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few: 活动订阅
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       federails/moderation/domain_block:
         few:
         many:
@@ -219,6 +274,13 @@ zh-CN:
         two:
         zero:
       federails/moderation/report:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      group:
         few:
         many:
         one:
@@ -246,6 +308,20 @@ zh-CN:
         other:
         two:
         zero:
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: 模型
         many: 模型
@@ -267,6 +343,13 @@ zh-CN:
         other: 问题
         two: 问题
         zero: 问题
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       user:
         few: 账户
         many: 账户
@@ -477,7 +560,6 @@ zh-CN:
     sort_menu:
       name: 标题
       recent: 上传时间
-      sort-by: 排序方式
       updated: 更新时间
   concerns:
     linkable:
@@ -679,35 +761,21 @@ zh-CN:
       edit:
         approval_help:
         approve: 批准
-        backfill_requests:
         capability:
-        category:
         contact_details:
-        created:
         data_sharing: 数据共享
         deny: 拒绝授权
         disable: 禁用
-        email: 电子邮箱
         enable: 启用
-        event_subscriptions: 活动订阅
-        fediverse_account: Fediverse 地址
-        fingerprint: 指纹
         links: 链接
-        max_count: 最大计数
-        privacy_policy: 隐私政策
         registration: 注册
-        sign_in: 登录
-        subscription_type: 订阅类型
         versions: 版本
       index:
         add_html:
         description_html: 作为<a href="https://fediscovery.org" target="_new" rel="noopener">Fediscovery 项目</a>的一部分，Fediverse 辅助服务提供商 (FASP) 可为 Fediverse 服务器提供搜索、趋势、垃圾邮件检测等额外功能。
         heading:
         provider_list_title:
-        registered_at:
         search_3dprint_social_html:
-        status:
-        url: URL
   follows:
     actor_table:
       actions: 动作

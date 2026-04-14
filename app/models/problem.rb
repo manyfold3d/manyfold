@@ -1,4 +1,6 @@
 class Problem < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.problem")
+
   include PublicIDable
 
   belongs_to :problematic, polymorphic: true

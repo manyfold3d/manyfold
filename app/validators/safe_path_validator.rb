@@ -19,6 +19,7 @@ class SafePathValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     return if value.nil?
     start = Pathname.new(value).each_filename.to_a.first
+    # i18n-tasks-use t("activerecord.errors.models.library.attributes.path.unsafe")
     record.errors.add attribute, :unsafe if UNSAFE.any?(start)
   end
 end

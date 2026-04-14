@@ -199,11 +199,9 @@ nl:
       new:
         title: Gebruiker aanmaken
       quota:
-        current_quota:
         current_space_used:
         title:
         unlimited_quota:
-        using_site_default:
       show:
         approve: Gebruiker goedkeuren
         confirm_destroy: Weet je zeker dat je dit gebruikersaccount direct wilt verwijderen? Dit kan niet ongedaan worden gemaakt!

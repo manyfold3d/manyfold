@@ -199,11 +199,9 @@ es:
       new:
         title: Crear usuario
       quota:
-        current_quota: Tamaño máximo actual de archivos en MB
         current_space_used: Almacenamiento de archivos utilizado actualmente
         title: Tamaño máximo de archivo
         unlimited_quota: Sin límites
-        using_site_default: "¿Utilizar el tamaño máximo de archivos por defecto del sitio?"
       show:
         approve: Aprobar usuario
         confirm_destroy: "¿Está seguro de que desea eliminar esta cuenta de usuario inmediatamente? Esto no se puede deshacer"

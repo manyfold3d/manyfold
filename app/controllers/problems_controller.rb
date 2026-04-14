@@ -29,6 +29,11 @@ class ProblemsController < ApplicationController
     @problems = query.page(page).per(params[:per_page]&.to_i || 50).order([:category, :problematic_type]).includes(problematic: [:library, :model])
     # Do we have any filters at all?
     @filters_applied = [:show_ignored, :severity, :category, :type].any? { |k| params.has_key?(k) }
+    # i18n-tasks-use t("activerecord.attributes.problem.category")
+    # i18n-tasks-use t("activerecord.attributes.problem.severity")
+    # i18n-tasks-use t("activerecord.attributes.problem.problematic_type")
+    # i18n-tasks-use t("activerecord.attributes.problem.ignored")
+    # i18n-tasks-use t("activerecord.attributes.problem.note")
   end
 
   def update

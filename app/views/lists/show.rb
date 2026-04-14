@@ -17,7 +17,7 @@ class Views::Lists::Show < Views::Base
     table class: "table table-striped" do
       tr do
         th { Model.model_name.human }
-        th { ListItem.human_attribute_name(:created_at) }
+        th { ListItem.human_attribute_name(:created_at) } # i18n-tasks-use t("activerecord.attributes.list_item.created_at")
       end
       @list.list_items.each do |item|
         next unless item.listable.is_a? Model

@@ -199,11 +199,9 @@ cs:
       new:
         title: Vytvořit uživatele
       quota:
-        current_quota:
         current_space_used:
         title:
         unlimited_quota:
-        using_site_default:
       show:
         approve: Schválit uživatele
         confirm_destroy: Opravdu chcete tento uživatelský účet okamžitě odebrat? To nelze vzít zpět!

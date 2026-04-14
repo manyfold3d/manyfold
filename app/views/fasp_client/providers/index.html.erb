@@ -29,15 +29,15 @@
           </div>
           <table class="table">
             <tr>
-              <td><%= t(".url") %></td>
+              <td><%= FaspClient::Provider.human_attribute_name(:base_url) %></td>
               <td><%= link_to provider.base_url, provider.base_url, rel: "noopener" %></td>
             </tr>
             <tr>
-              <td><%= t(".registered_at") %></td>
+              <td><%= FaspClient::Provider.human_attribute_name(:created_at) %></td>
               <td><%= provider.created_at %></td>
             </tr>
             <tr>
-              <td><%= t(".status") %></td>
+              <td><%= FaspClient::Provider.human_attribute_name(:status) %></td>
               <td><%= provider.status %></td>
             </tr>
           </table>

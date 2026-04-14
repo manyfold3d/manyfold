@@ -8,6 +8,10 @@ class Settings::UsersController < ApplicationController
     @users = apply_sort_order(@users)
     @users = @users.page(params[:page]&.to_i || 1).per(params[:per_page]&.to_i || 25)
     render layout: "settings"
+    # i18n-tasks-use t("activerecord.attributes.user.approved")
+    # i18n-tasks-use t("activerecord.attributes.user.auth_uid")
+    # i18n-tasks-use t("activerecord.attributes.user.created_at")
+    # i18n-tasks-use t("activerecord.attributes.user.updated_at")
   end
 
   def show
@@ -77,12 +81,12 @@ class Settings::UsersController < ApplicationController
   def user_params
     filtered = params.expect(
       user: [
-        :email,
-        :username,
-        :password,
-        :password_confirmation,
-        :quota,
-        :quota_use_site_default,
+        :email, # i18n-tasks-use t("activerecord.attributes.user.email")
+        :username, # i18n-tasks-use t("activerecord.attributes.user.username")
+        :password, # i18n-tasks-use t("activerecord.attributes.user.password")
+        :password_confirmation, # i18n-tasks-use t("activerecord.attributes.user.password_confirmation")
+        :quota, # i18n-tasks-use t("activerecord.attributes.user.quota")
+        :quota_use_site_default, # i18n-tasks-use t("activerecord.attributes.user.quota_use_site_default")
         role_ids: []
       ]
     )

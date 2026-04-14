@@ -93,14 +93,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update) do |user|
       user.permit(
-        :email,
-        :username,
-        :password,
-        :password_confirmation,
-        :current_password,
-        :interface_language,
-        :sensitive_content_handling,
-        :sort_order,
+        :email, # i18n-tasks-use t("activerecord.attributes.user.email")
+        :username, # i18n-tasks-use t("activerecord.attributes.user.username")
+        :password, # i18n-tasks-use t("activerecord.attributes.user.password")
+        :password_confirmation, # i18n-tasks-use t("activerecord.attributes.user.password_confirmation")
+        :current_password, # i18n-tasks-use t("activerecord.attributes.user.current_password")
+        :interface_language, # i18n-tasks-use t("activerecord.attributes.user.interface_language")
+        :sensitive_content_handling, # i18n-tasks-use t("activerecord.attributes.user.sensitive_content_handling")
+        :sort_order, # i18n-tasks-use t("activerecord.attributes.user.sort_order")
         pagination_settings: [
           :per_page
         ],

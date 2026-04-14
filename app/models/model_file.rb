@@ -1,4 +1,6 @@
 class ModelFile < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.model_file")
+
   include ModelFileUploader::Attachment(:attachment)
   include Listable
   include PublicIDable
@@ -274,12 +276,14 @@ class ModelFile < ApplicationRecord
 
   def presupported_files_cannot_have_presupported_version
     if presupported_version && presupported
+      # i18n-tasks-use t("activerecord.errors.models.model_file.attributes.presupported_version.already_presupported")
       errors.add(:presupported_version, :already_presupported)
     end
   end
 
   def presupported_version_is_presupported
     if presupported_version && !presupported_version.presupported
+      # i18n-tasks-use t("activerecord.errors.models.model_file.attributes.presupported_version.not_supported")
       errors.add(:presupported_version, :not_supported)
     end
   end

@@ -1,5 +1,5 @@
 <div>
-  <%= form.label :links %>
+  <%= form.label :links, Link.model_name.human(count: 100) %>
 </div>
 <div>
   <%= cocooned_container id: "cocooned-links", data: {controller: "cocooned"} do %>

@@ -28,7 +28,7 @@ class ReportsController < ApplicationController
 
   def report_params
     params.expect(report: [
-      :content
+      :content # i18n-tasks-use t("activerecord.attributes.federails/moderation/report.content")
     ])
   end
 

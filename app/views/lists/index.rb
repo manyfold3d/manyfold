@@ -11,7 +11,7 @@ class Views::Lists::Index < Views::Base
     table class: "table table-striped" do
       tr do
         th { List.human_attribute_name :name }
-        th { List.human_attribute_name :list_items }
+        th { ListItem.model_name.human(count: 100) }
         th
       end
       @lists.each do |list|

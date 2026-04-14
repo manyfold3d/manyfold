@@ -43,7 +43,6 @@ es:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
         help: El archivo que se mostrará como vista previa del modelo en las páginas de la biblioteca
-      tags: Etiquetas
     general:
       edit: Editar modelo
     list:
@@ -85,7 +84,6 @@ es:
     scan:
       success: Escaneo de modelos iniciado
     show:
-      comments: Comentarios
       download_preparing: Se está preparando la descarga, por favor espere.
       download_requested: Descarga solicitada y estará lista en breve, por favor espere.
       files: Archivos
@@ -103,12 +101,10 @@ es:
         warning: La fusión mueve todos los archivos de este modelo al destino y elimina este modelo. Los metadatos de los archivos se conservan, pero los metadatos del modelo se pierden
         with: Fusionar con
       model_details: Información del modelo
-      path: Ruta
       preview: Esta es solo una vista previa del modelo completo, que contiene %{count} archivos más. Contacte con el propietario del modelo para obtener acceso completo.
       rescan: Re-escanear archivos
       search: Busca en Internet modelos con este nombre
       submit: Cargar archivos
-      tags: Etiquetas
       upload_card:
         heading: Cargar
     update:

@@ -25,3 +25,15 @@ Doorkeeper.configure do
   # Per-user applications
   enable_application_owner confirmation: true
 end
+
+# i18n-tasks-use t("activerecord.models.doorkeeper/access_token")
+# i18n-tasks-use t("activerecord.models.doorkeeper/application")
+
+# Errors
+# i18n-tasks-use t("activerecord.errors.models.doorkeeper/application.attributes.redirect_uri.forbidden_uri")
+# i18n-tasks-use t("activerecord.errors.models.doorkeeper/application.attributes.redirect_uri.fragment_present")
+# i18n-tasks-use t("activerecord.errors.models.doorkeeper/application.attributes.redirect_uri.invalid_uri")
+# i18n-tasks-use t("activerecord.errors.models.doorkeeper/application.attributes.redirect_uri.relative_uri")
+# i18n-tasks-use t("activerecord.errors.models.doorkeeper/application.attributes.redirect_uri.secured_uri")
+# i18n-tasks-use t("activerecord.errors.models.doorkeeper/application.attributes.redirect_uri.unspecified_scheme")
+# i18n-tasks-use t("activerecord.errors.models.doorkeeper/application.attributes.scopes.not_match_configured")

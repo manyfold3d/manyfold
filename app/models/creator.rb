@@ -1,4 +1,6 @@
 class Creator < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.creator")
+
   include ApplicationUploader::Attachment(:avatar)
   include ApplicationUploader::Attachment(:banner)
   include Followable

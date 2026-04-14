@@ -1,6 +1,8 @@
 require "uri"
 
 class User < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.user")
+
   extend Memoist
 
   include Lister
@@ -320,3 +322,24 @@ class User < ApplicationRecord
     List.create(name: "lists.special.liked", special: :liked, owner: self) if lists.find_by(special: :liked).nil?
   end
 end
+
+# -- keep devise quiet
+# i18n-tasks-use t("activerecord.attributes.user.remember_created_at")
+# i18n-tasks-use t("activerecord.attributes.user.reset_password_sent_at")
+# i18n-tasks-use t("activerecord.attributes.user.failed_attempts")
+# i18n-tasks-use t("activerecord.attributes.user.locked_at")
+# i18n-tasks-use t("activerecord.attributes.user.unlock_token")
+# i18n-tasks-use t("activerecord.attributes.user.encrypted_password")
+# i18n-tasks-use t("activerecord.attributes.user.reset_password_token")
+# i18n-tasks-use t("activerecord.attributes.user.remember_me")
+
+# -- not actually used but built into devise so this silences some warnings
+# i18n-tasks-use t("activerecord.attributes.user.confirmation_sent_at")
+# i18n-tasks-use t("activerecord.attributes.user.confirmation_token")
+# i18n-tasks-use t("activerecord.attributes.user.confirmed_at")
+# i18n-tasks-use t("activerecord.attributes.user.current_sign_in_at")
+# i18n-tasks-use t("activerecord.attributes.user.current_sign_in_ip")
+# i18n-tasks-use t("activerecord.attributes.user.last_sign_in_at")
+# i18n-tasks-use t("activerecord.attributes.user.last_sign_in_ip")
+# i18n-tasks-use t("activerecord.attributes.user.sign_in_count")
+# i18n-tasks-use t("activerecord.attributes.user.unconfirmed_email")

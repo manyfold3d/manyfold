@@ -43,7 +43,6 @@ zh-CN:
         help_html: 您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
       preview_file:
         help: 在资料库页面中作为模型预览显示的文件
-      tags: Tags
     general:
       edit: 编辑模型
     list:
@@ -85,7 +84,6 @@ zh-CN:
     scan:
       success: 模型扫描开始
     show:
-      comments:
       download_preparing: 正在准备下载，请稍候。
       download_requested: 正在准备文件，如未自动开始下载，请刷新页面后再次点击。
       files: 文件
@@ -103,12 +101,10 @@ zh-CN:
         warning: 合并会将此模型中的所有文件移到目标文件中，并删除此模型。文件元数据会被保留，但任何模型元数据都会丢失！
         with: 合并至
       model_details: 详情
-      path: 路径
       preview: 这只是完整模型的预览，其中包含 %{count} 个文件。请联系模型所有者获取完整访问权限。
       rescan: 重新扫描文件
       search: 在互联网上搜索带有此名称的模型
       submit: 上传文件
-      tags: 标签
       upload_card:
         heading: 上传
     update:

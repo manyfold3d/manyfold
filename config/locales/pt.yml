@@ -5,9 +5,15 @@ pt:
       collection:
         ai_indexable:
         caption:
-        collection:
+        collection_id:
+        creator_id:
+          few:
+          many:
+          one:
+          other:
+          two:
+          zero:
         indexable:
-        models:
         name:
         notes:
       creator:
@@ -25,8 +31,8 @@ pt:
         expires_in:
         fingerprint:
         scopes:
+        token:
       doorkeeper/application:
-        access_token:
         confidential:
         created_at:
         name:
@@ -35,6 +41,23 @@ pt:
         scopes:
         secret:
         uid:
+      fasp_client_backfill_request:
+        category:
+        created_at:
+        max_count:
+      fasp_client_event_subscription:
+        category:
+        created_at:
+        subscription_type:
+      fasp_client_provider:
+        base_url:
+        contact_email: Email
+        created_at:
+        fediverse_account:
+        fingerprint:
+        privacy_policy:
+        sign_in_url: Entrar
+        status:
       federails/moderation/domain_block:
         created_at: Criado em
         domain:
@@ -78,30 +101,25 @@ pt:
       model:
         ai_indexable:
         caption:
-        collection:
         collection_id:
-        creator:
         creator_id:
-        images:
         indexable:
         library_id:
         license:
-        model_files:
         name:
         notes:
         path:
         preview_file:
         sensitive:
-        tags:
       model_file:
         caption:
         digest:
         dimensions:
         filename:
-        model_id:
         notes:
         presupported:
-        presupported_version:
+        presupported_version_id:
+        previewable:
         printed:
         size:
         unsupported_version:
@@ -125,16 +143,21 @@ pt:
         email: Email
         encrypted_password: Palavra-passe cifrada
         failed_attempts: Tentativas falhadas
+        interface_language:
         last_sign_in_at: Última entrada em
         last_sign_in_ip: Última entrada com IP
         locked_at: Bloqueado em
         password: Palavra-passe
         password_confirmation: Confirmar palavra-passe
+        quota:
+        quota_use_site_default:
         remember_created_at: Lembrança criada em
         remember_me: Lembrar-se de mim
         reset_password_sent_at: Recuperação de palavra-passe enviada em
         reset_password_token: Código para recuperar palavra-passe
+        sensitive_content_handling:
         sign_in_count: Número de entradas
+        sort_order:
         unconfirmed_email: Email não confirmado
         unlock_token: Código de desbloqueio
         updated_at: Atualizado em
@@ -204,7 +227,34 @@ pt:
         other:
         two:
         zero:
+      comment:
+        few:
       creator:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few:
+      fasp_client_provider:
         few:
         many:
         one:
@@ -219,6 +269,13 @@ pt:
         two:
         zero:
       federails/moderation/report:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      group:
         few:
         many:
         one:
@@ -246,6 +303,20 @@ pt:
         other:
         two:
         zero:
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few:
         many:
@@ -261,6 +332,13 @@ pt:
         two:
         zero:
       problem:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      role:
         few:
         many:
         one:
@@ -477,7 +555,6 @@ pt:
     sort_menu:
       name:
       recent:
-      sort-by:
       updated:
   concerns:
     linkable:
@@ -679,35 +756,21 @@ pt:
       edit:
         approval_help:
         approve:
-        backfill_requests:
         capability:
-        category:
         contact_details:
-        created:
         data_sharing:
         deny:
         disable:
-        email: Email
         enable:
-        event_subscriptions:
-        fediverse_account:
-        fingerprint:
         links:
-        max_count:
-        privacy_policy:
         registration:
-        sign_in: Entrar
-        subscription_type:
         versions:
       index:
         add_html:
         description_html:
         heading:
         provider_list_title:
-        registered_at:
         search_3dprint_social_html:
-        status:
-        url:
   follows:
     actor_table:
       actions:

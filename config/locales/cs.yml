@@ -5,9 +5,15 @@ cs:
       collection:
         ai_indexable:
         caption: Titulek
-        collection:
+        collection_id:
+        creator_id:
+          few: Autoři
+          many: Autoři
+          one: Autor
+          other: Autoři
+          two: Autoři
+          zero: Autoři
         indexable:
-        models: Modely
         name: Název
         notes: Poznámky
       creator:
@@ -25,8 +31,8 @@ cs:
         expires_in:
         fingerprint:
         scopes: Scopes
+        token: Přístupový token
       doorkeeper/application:
-        access_token: Přístupový token
         confidential: Důvěrné
         created_at: Vytvořeno
         name: Jméno
@@ -35,6 +41,23 @@ cs:
         scopes: Scopes
         secret: Klient secret
         uid: ID klienta
+      fasp_client_backfill_request:
+        category: Kategorie
+        created_at: Vytvořeno
+        max_count:
+      fasp_client_event_subscription:
+        category:
+        created_at:
+        subscription_type:
+      fasp_client_provider:
+        base_url:
+        contact_email: E-mail
+        created_at:
+        fediverse_account: Adresa Fediverse
+        fingerprint:
+        privacy_policy:
+        sign_in_url: Přihlásit se
+        status:
       federails/moderation/domain_block:
         created_at: Vytvořeno
         domain: Doména
@@ -78,30 +101,25 @@ cs:
       model:
         ai_indexable:
         caption: Titulek
-        collection: Kolekce
         collection_id: Kolekce
-        creator: Autor
         creator_id: Autor
-        images:
         indexable:
         library_id: Knihovna
         license: Licence
-        model_files: Soubory
         name: Název
         notes: Popis
         path: Cesta
         preview_file: Soubor náhledu
         sensitive: Citlivý obsah
-        tags: Štítky
       model_file:
         caption: Titulek
         digest: Digest
         dimensions:
         filename: Název souboru
-        model_id: Model
         notes: Poznámky
         presupported: Předběžně podporované
-        presupported_version: Předběžně podporovaná verze
+        presupported_version_id: Předběžně podporovaná verze
+        previewable:
         printed: Vytisknuto
         size: Velikost souboru
         unsupported_version: Nepodporovaná verze
@@ -125,16 +143,21 @@ cs:
         email: E-mail
         encrypted_password: Zašifrované heslo
         failed_attempts: Chybných pokusů
+        interface_language: Jazyk rozhraní
         last_sign_in_at: Poslední přihlášení
         last_sign_in_ip: Poslední přihlášení z IP
         locked_at: Uzamčeno
         password: Heslo
         password_confirmation: Potvrzení hesla
+        quota:
+        quota_use_site_default:
         remember_created_at: Zapamatování vytvořeno
         remember_me: Zapamatuj si mě
         reset_password_sent_at: Obnova hesla poslána
         reset_password_token: Token obnovy hesla
+        sensitive_content_handling: Citlivý obsah
         sign_in_count: Počet přihlášení
+        sort_order:
         unconfirmed_email: Nepotvrzený e-mail
         unlock_token: Odemykací token
         updated_at: Upraveno
@@ -204,6 +227,8 @@ cs:
         other: Kolekce
         two: Kolekce
         zero: Kolekce
+      comment:
+        few:
       creator:
         few: Autoři
         many: Autoři
@@ -211,6 +236,31 @@ cs:
         other: Autoři
         two: Autoři
         zero: Autoři
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few:
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       federails/moderation/domain_block:
         few: Blokování domén
         many: Blokování domén
@@ -225,6 +275,13 @@ cs:
         other: Hlášení
         two: Hlášení
         zero: Hlášení
+      group:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       library:
         few: Knihovny
         many: Knihovny
@@ -240,6 +297,20 @@ cs:
         two: Odkazy
         zero: Odkazy
       list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
         few:
         many:
         one:
@@ -267,6 +338,13 @@ cs:
         other: Problémy
         two: Problémy
         zero: Problémy
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       user:
         few: Uživatelé
         many: Uživatelé
@@ -477,7 +555,6 @@ cs:
     sort_menu:
       name:
       recent:
-      sort-by:
       updated:
   concerns:
     linkable:
@@ -679,35 +756,21 @@ cs:
       edit:
         approval_help:
         approve:
-        backfill_requests:
         capability:
-        category: Kategorie
         contact_details:
-        created: Vytvořeno
         data_sharing:
         deny: Odmítnout
         disable:
-        email: E-mail
         enable:
-        event_subscriptions:
-        fediverse_account: Adresa Fediverse
-        fingerprint:
         links: Odkazy
-        max_count:
-        privacy_policy:
         registration:
-        sign_in: Přihlásit se
-        subscription_type:
         versions:
       index:
         add_html:
         description_html:
         heading:
         provider_list_title:
-        registered_at:
         search_3dprint_social_html:
-        status:
-        url:
   follows:
     actor_table:
       actions: Akce

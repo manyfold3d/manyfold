@@ -43,7 +43,6 @@ nl:
         help_html: Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
       preview_file:
         help: Het bestand dat wordt weergegeven als modelvoorbeeld op bibliotheekpagina's
-      tags: Tags
     general:
       edit: Model Bewerken
     list:
@@ -85,7 +84,6 @@ nl:
     scan:
       success: Modelscan gestart
     show:
-      comments:
       download_preparing:
       download_requested:
       files: Bestanden
@@ -103,12 +101,10 @@ nl:
         warning: Samenvoegen verplaatst alle bestanden van dit model naar het doelmodel en verwijdert dit model. Bestandsmetadata blijft behouden, maar modelmetadata gaat verloren!
         with: Samenvoegen met
       model_details: Modeldetails
-      path: Pad
       preview:
       rescan: Bestanden opnieuw scannen
       search: Zoek op internet naar modellen met deze naam
       submit: Bestanden Uploaden
-      tags: Tags
       upload_card:
         heading: Uploaden
     update:

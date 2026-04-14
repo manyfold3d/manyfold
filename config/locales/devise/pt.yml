@@ -120,11 +120,9 @@ pt:
         interface_language:
           autodetect:
           help:
-          label:
         sensitive_content:
           help:
           hide:
-          label:
           mask:
           show:
       new:

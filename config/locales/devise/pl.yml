@@ -120,11 +120,9 @@ pl:
         interface_language:
           autodetect: Użyj ustawień przeglądarki
           help: 'Uwaga: niektóre nieprzetłumaczone teksty mogą nadal wyświetlać się w języku angielskim.'
-          label: Język interfejsu
         sensitive_content:
           help: Wpływa na sposób wyświetlania treści oznaczonych jako "wrażliwych"
           hide: Ukryj całkowicie
-          label: Wrażliwa Treść
           mask: Rozmyj w liście
           show: Pokaż jak zwykle
       new:

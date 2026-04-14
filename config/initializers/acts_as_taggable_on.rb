@@ -18,3 +18,5 @@ module ActsAsTaggableOn
 end
 
 ActsAsTaggableOn.default_parser = ActsAsTaggableOn::CustomParser
+
+# i18n-tasks-use t("activerecord.models.acts_as_taggable_on/tag")

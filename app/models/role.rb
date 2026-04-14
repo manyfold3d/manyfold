@@ -1,4 +1,6 @@
 class Role < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.role")
+
   include CaberSubject
 
   ROLES = [

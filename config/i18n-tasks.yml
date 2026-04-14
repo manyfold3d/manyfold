@@ -57,8 +57,9 @@ data:
 # Find translate calls
 search:
   ## Paths or `File.find` patterns to search in:
-  # paths:
-  #  - app/
+  paths:
+   - app/
+   - config/initializers/
 
   ## Root directories for relative keys resolution.
   relative_roots:
@@ -123,9 +124,6 @@ search:
 
 ## Consider these keys used:
 ignore_unused:
-- 'activerecord.attributes.*'
-- 'activerecord.errors.*'
-- 'activerecord.models.*'
 - 'errors.messages.weak_password'
 - 'errors.messages.already_confirmed'
 - 'errors.messages.confirmation_period_expired'

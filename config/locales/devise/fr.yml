@@ -120,11 +120,9 @@ fr:
         interface_language:
           autodetect: Utiliser les paramètres du navigateur
           help: 'Remarque : certains textes non traduits peuvent encore s''afficher en anglais.'
-          label: Langue de l'interface
         sensitive_content:
           help: Affecte l'affichage du contenu marqué comme "sensible"
           hide: Cacher complètement
-          label: Contenu sensible
           mask: Flouter dans les listes
           show: Afficher comme les autres
       new:

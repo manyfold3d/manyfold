@@ -5,9 +5,15 @@ en:
       collection:
         ai_indexable: Allow use for AI training
         caption: Caption
-        collection: Parent Collection
+        collection_id: Parent Collection
+        creator_id:
+          few: Creators
+          many: Creators
+          one: Creator
+          other: Creators
+          two: Creators
+          zero: Creators
         indexable: Allow search indexing
-        models: Models
         name: Name
         notes: Description
       creator:
@@ -25,8 +31,8 @@ en:
         expires_in: Expires in
         fingerprint: Fingerprint
         scopes: Scopes
+        token: Access Token
       doorkeeper/application:
-        access_token: Access Token
         confidential: Confidential
         created_at: Created
         name: Name
@@ -35,6 +41,23 @@ en:
         scopes: Scopes
         secret: Client Secret
         uid: Client ID
+      fasp_client_backfill_request:
+        category: Category
+        created_at: Created
+        max_count: Max count
+      fasp_client_event_subscription:
+        category: Category
+        created_at: Created
+        subscription_type: Subscription type
+      fasp_client_provider:
+        base_url: URL
+        contact_email: Email
+        created_at: Registered at
+        fediverse_account: Fediverse handle
+        fingerprint: Fingerprint
+        privacy_policy: Privacy policy
+        sign_in_url: Sign in
+        status: Status
       federails/moderation/domain_block:
         created_at: Created at
         domain: Domain
@@ -78,30 +101,25 @@ en:
       model:
         ai_indexable: Allow use for AI training
         caption: Caption
-        collection: Collection
         collection_id: Collection
-        creator: Creator
         creator_id: Creator
-        images: Images
         indexable: Allow search indexing
         library_id: Library
         license: License
-        model_files: Files
         name: Name
         notes: Description
         path: Path
         preview_file: Preview File
         sensitive: Sensitive Content
-        tags: Tags
       model_file:
         caption: Caption
         digest: Digest
         dimensions: Dimensions
         filename: Filename
-        model_id: Model
         notes: Notes
         presupported: Presupported
-        presupported_version: Presupported version
+        presupported_version_id: Presupported version
+        previewable: Previewable
         printed: Printed
         size: File Size
         unsupported_version: Unsupported version
@@ -125,16 +143,21 @@ en:
         email: Email
         encrypted_password: Encrypted password
         failed_attempts: Failed attempts
+        interface_language: Interface language
         last_sign_in_at: Last sign in at
         last_sign_in_ip: Last sign in IP
         locked_at: Locked at
         password: Password
         password_confirmation: Confirm password
+        quota: Current file storage limit in MB
+        quota_use_site_default: Using site default file storage limit?
         remember_created_at: Remember created at
         remember_me: Remember me
         reset_password_sent_at: Reset password sent at
         reset_password_token: Reset password token
+        sensitive_content_handling: Sensitive Content
         sign_in_count: Sign in count
+        sort_order: Sort by
         unconfirmed_email: Unconfirmed email
         unlock_token: Unlock token
         updated_at: Updated at
@@ -204,6 +227,13 @@ en:
         other: Collections
         two: Collections
         zero: Collections
+      comment:
+        few: Comments
+        many: Comments
+        one: Comment
+        other: Comments
+        two: Comments
+        zero: Comments
       creator:
         few: Creators
         many: Creators
@@ -211,6 +241,41 @@ en:
         other: Creators
         two: Creators
         zero: Creators
+      doorkeeper/access_token:
+        few: Access Tokens
+        many: Access Tokens
+        one: Access Token
+        other: Access Tokens
+        two: Access Tokens
+        zero: Access Tokens
+      doorkeeper/application:
+        few: OAuth Applications
+        many: OAuth Applications
+        one: OAuth Application
+        other: OAuth Applications
+        two: OAuth Applications
+        zero: OAuth Applications
+      fasp_client_backfill_request:
+        few: Backfill requests
+        many: Backfill requests
+        one: Backfill request
+        other: Backfill requests
+        two: Backfill requests
+        zero: Backfill requests
+      fasp_client_event_subscription:
+        few: Event subscriptions
+        many: Event subscriptions
+        one: Event subscription
+        other: Event subscriptions
+        two: Event subscriptions
+        zero: Event subscriptions
+      fasp_client_provider:
+        few: FASP Providers
+        many: FASP Providers
+        one: FASP Provider
+        other: FASP Providers
+        two: FASP Providers
+        zero: FASP Providers
       federails/moderation/domain_block:
         few: Domain Blocks
         many: Domain Blocks
@@ -225,6 +290,13 @@ en:
         other: Reports
         two: Reports
         zero: Reports
+      group:
+        few: User Groups
+        many: User Groups
+        one: User Group
+        other: User Groups
+        two: User Groups
+        zero: User Groups
       library:
         few: Libraries
         many: Libraries
@@ -246,6 +318,20 @@ en:
         other: Lists
         two: Lists
         zero: Lists
+      list_item:
+        few: Items
+        many: Items
+        one: Item
+        other: Items
+        two: Items
+        zero: Items
+      membership:
+        few: Memberships
+        many: Memberships
+        one: Membership
+        other: Memberships
+        two: Memberships
+        zero: Memberships
       model:
         few: Models
         many: Models
@@ -267,6 +353,13 @@ en:
         other: Problems
         two: Problems
         zero: Problems
+      role:
+        few: Roles
+        many: Roles
+        one: Role
+        other: Roles
+        two: Roles
+        zero: Roles
       user:
         few: Accounts
         many: Accounts
@@ -477,7 +570,6 @@ en:
     sort_menu:
       name: Title
       recent: Newest
-      sort-by: Sort by
       updated: Updated
   concerns:
     linkable:
@@ -679,35 +771,21 @@ en:
       edit:
         approval_help: Check that the fingerprint displayed here matches the one shown by the provider, and only approve providers you trust.
         approve: Approve
-        backfill_requests: Backfill requests
         capability: Capability
-        category: Category
         contact_details: Contact details
-        created: Created
         data_sharing: Data sharing
         deny: Deny
         disable: Disable
-        email: Email
         enable: Enable
-        event_subscriptions: Event subscriptions
-        fediverse_account: Fediverse handle
-        fingerprint: Fingerprint
         links: Links
-        max_count: Max count
-        privacy_policy: Privacy policy
         registration: Registration
-        sign_in: Sign in
-        subscription_type: Subscription type
         versions: Versions
       index:
         add_html: 'To enable a new FASP, visit the provider and enter this server''s URL on signup: <code>%{base_url}</code>. You should only use providers that you trust, and be sure to read their privacy policy in full before you enable services. Note that only public indexable content will be shared with FASPs.'
         description_html: Fediverse Auxiliary Service Providers (FASPs) enable extra features for Fediverse servers, such as search, trends, spam detection and more, as part of the <a href="https://fediscovery.org" target="_new" rel="noopener">Fediscovery project</a>.
         heading: FASP Services
         provider_list_title: Registered FASPs
-        registered_at: Registered at
         search_3dprint_social_html: We recommend connecting the <a href="https://search.3dprint.social/registration/new" rel="noreferrer">search.3dprint.social</a> FASP; it's run by the Manyfold developers, and is specifically configured for 3d content search.
-        status: Status
-        url: URL
   follows:
     actor_table:
       actions: Actions

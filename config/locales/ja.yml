@@ -5,9 +5,15 @@ ja:
       collection:
         ai_indexable:
         caption: キャプション
-        collection:
+        collection_id:
+        creator_id:
+          few: クリエイター
+          many: クリエイター
+          one: クリエイター
+          other: クリエイター
+          two: クリエイター
+          zero: クリエイター
         indexable:
-        models: モデル
         name: 名称
         notes: ノート
       creator:
@@ -25,8 +31,8 @@ ja:
         expires_in:
         fingerprint:
         scopes: スコープ
+        token: アクセストークン
       doorkeeper/application:
-        access_token: アクセストークン
         confidential: 機密
         created_at: 作成日時
         name: 名前
@@ -35,6 +41,23 @@ ja:
         scopes: スコープ
         secret: クライアントシークレット
         uid: クライアントID
+      fasp_client_backfill_request:
+        category: カテゴリー
+        created_at: 作成日時
+        max_count:
+      fasp_client_event_subscription:
+        category:
+        created_at:
+        subscription_type:
+      fasp_client_provider:
+        base_url:
+        contact_email: Eメール
+        created_at:
+        fediverse_account: フェディバースアドレス
+        fingerprint:
+        privacy_policy:
+        sign_in_url: ログイン
+        status:
       federails/moderation/domain_block:
         created_at: 作成日時
         domain: ドメイン
@@ -78,30 +101,25 @@ ja:
       model:
         ai_indexable:
         caption: キャプション
-        collection: コレクション
         collection_id: コレクション
-        creator: クリエイター
         creator_id: クリエイター
-        images:
         indexable:
         library_id: ライブラリー
         license: ライセンス
-        model_files: ファイル
         name: 名前
         notes: 説明
         path: パス
         preview_file: プレビューファイル
         sensitive: センシティブコンテンツ
-        tags: タグ
       model_file:
         caption: キャプション
         digest: ダイジェスト
         dimensions:
         filename: ファイル名
-        model_id: モデル
         notes: ノート
         presupported: サポート材付き
-        presupported_version: サポート材付きバージョン
+        presupported_version_id: サポート材付きバージョン
+        previewable:
         printed: プリントされた
         size: ファイルサイズ
         unsupported_version: サポート材無しバージョン
@@ -125,16 +143,21 @@ ja:
         email: Eメール
         encrypted_password: 暗号化パスワード
         failed_attempts: 失敗したログイン試行回数
+        interface_language: 言語
         last_sign_in_at: 最終ログイン時刻
         last_sign_in_ip: 最終ログインIPアドレス
         locked_at: ロック時刻
         password: パスワード
         password_confirmation: パスワード（確認用）
+        quota: 現在のファイル保存上限（MB）
+        quota_use_site_default: サイトのデフォルトのファイル保存制限を使用していますか？
         remember_created_at: ログイン記憶時刻
         remember_me: ログインを記憶する
         reset_password_sent_at: パスワードリセット送信時刻
         reset_password_token: パスワードリセット用トークン
+        sensitive_content_handling: センシティブコンテンツ
         sign_in_count: ログイン回数
+        sort_order:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
@@ -204,6 +227,8 @@ ja:
         other: コレクション
         two: コレクション
         zero: コレクション
+      comment:
+        few:
       creator:
         few: クリエイター
         many: クリエイター
@@ -211,6 +236,31 @@ ja:
         other: クリエイター
         two: クリエイター
         zero: クリエイター
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few:
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       federails/moderation/domain_block:
         few: ドメインブロック
         many: ドメインブロック
@@ -225,6 +275,13 @@ ja:
         other: レポート
         two: レポート
         zero: レポート
+      group:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       library:
         few: ライブラリー
         many: ライブラリー
@@ -240,6 +297,20 @@ ja:
         two: リンク
         zero: リンク
       list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
         few:
         many:
         one:
@@ -267,6 +338,13 @@ ja:
         other: 問題点
         two: 問題点
         zero: 問題点
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       user:
         few: アカウント
         many: アカウント
@@ -477,7 +555,6 @@ ja:
     sort_menu:
       name:
       recent:
-      sort-by:
       updated:
   concerns:
     linkable:
@@ -679,35 +756,21 @@ ja:
       edit:
         approval_help:
         approve:
-        backfill_requests:
         capability:
-        category: カテゴリー
         contact_details:
-        created: 作成日時
         data_sharing:
         deny: 否認
         disable:
-        email: Eメール
         enable:
-        event_subscriptions:
-        fediverse_account: フェディバースアドレス
-        fingerprint:
         links: リンク
-        max_count:
-        privacy_policy:
         registration:
-        sign_in: ログイン
-        subscription_type:
         versions:
       index:
         add_html:
         description_html:
         heading:
         provider_list_title:
-        registered_at:
         search_3dprint_social_html:
-        status:
-        url:
   follows:
     actor_table:
       actions:

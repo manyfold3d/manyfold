@@ -3,10 +3,14 @@ class DoorkeeperApplicationsController < ApplicationController
 
   def index
     @applications = policy_scope(Doorkeeper::Application)
+    # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.created_at")
+    # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.owner")
   end
 
   def show
     @access_tokens = @application.access_tokens
+    # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.uid")
+    # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.secret")
   end
 
   def new
@@ -50,10 +54,10 @@ class DoorkeeperApplicationsController < ApplicationController
 
   def application_params
     params.expect(doorkeeper_application: [
-      :name,
-      :redirect_uri,
-      :confidential,
-      scopes: []
+      :name, # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.name")
+      :redirect_uri, # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.redirect_uri")
+      :confidential, # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.confidential")
+      scopes: [] # i18n-tasks-use t("activerecord.attributes.doorkeeper/application.scopes")
     ])
   end
 

@@ -64,6 +64,7 @@ class ModelsController < ApplicationController
       format.oembed { render json: OEmbed::ModelSerializer.new(@model, helpers.oembed_params).serialize }
       format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelSerializer.new(@model).serialize }
     end
+    # i18n-tasks-use t("activerecord.attributes.model.path")
   end
 
   def new

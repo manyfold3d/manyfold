@@ -199,11 +199,9 @@ zh-CN:
       new:
         title: 创建账户
       quota:
-        current_quota: 当前文件存储上限（MB）
         current_space_used: 当前使用的文件存储
         title: 文件存储限制
         unlimited_quota: 无限制
-        using_site_default: 使用网站默认文件存储限制？
       show:
         approve: 批准账户
         confirm_destroy: 您确定要立即删除此帐户吗？无法撤销！

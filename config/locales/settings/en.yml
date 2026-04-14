@@ -199,11 +199,9 @@ en:
       new:
         title: Create account
       quota:
-        current_quota: Current file storage limit in MB
         current_space_used: Currently used file storage
         title: File storage limit
         unlimited_quota: Unlimited
-        using_site_default: Using site default file storage limit?
       show:
         approve: Approve account
         confirm_destroy: Are you sure you want to remove this account immediately? This cannot be undone!

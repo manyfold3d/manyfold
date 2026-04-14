@@ -5,9 +5,15 @@ ru:
       collection:
         ai_indexable: Разрешить использование данных для обучения ИИ
         caption: Описание
-        collection: Родительская коллекция
+        collection_id: Родительская коллекция
+        creator_id:
+          few: Авторы
+          many: Авторы
+          one: Автор
+          other: Авторы
+          two: Авторы
+          zero: Авторы
         indexable: Разрешить поисковую индексацию
-        models: Модели
         name: Имя
         notes: Примечания
       creator:
@@ -25,8 +31,8 @@ ru:
         expires_in:
         fingerprint:
         scopes: Скоупы
+        token: Токен доступа
       doorkeeper/application:
-        access_token: Токен доступа
         confidential: Конфиденциально
         created_at: Создано
         name: Наименование
@@ -35,6 +41,23 @@ ru:
         scopes: Скоупы
         secret: Клиентский ключ
         uid: Идентификатор клиента
+      fasp_client_backfill_request:
+        category: Категория
+        created_at:
+        max_count:
+      fasp_client_event_subscription:
+        category:
+        created_at:
+        subscription_type:
+      fasp_client_provider:
+        base_url:
+        contact_email: Email
+        created_at:
+        fediverse_account:
+        fingerprint:
+        privacy_policy:
+        sign_in_url: Войти
+        status:
       federails/moderation/domain_block:
         created_at: Дата создания
         domain: Домен
@@ -78,30 +101,25 @@ ru:
       model:
         ai_indexable: Разрешить использование данных для обучения ИИ
         caption: Описание
-        collection: Коллекция
         collection_id: Коллекция
-        creator: Автор
         creator_id: Автор
-        images: Изображения
         indexable: Разрешить индексацию поисковыми системами
         library_id: Библиотека
         license: Лицензия
-        model_files: Файлы
         name: Имя
         notes: Примечания
         path: Путь
         preview_file: Файл предварительного просмотра
         sensitive: Чувствительный контент
-        tags: Теги
       model_file:
         caption: Описание
         digest:
         dimensions: Размеры
         filename: Имя файла
-        model_id: Модель
         notes: Примечания
         presupported: С поддержками
-        presupported_version: Версия с поддержками
+        presupported_version_id: Версия с поддержками
+        previewable:
         printed: Напечатано
         size: Размер файла
         unsupported_version: Версия без поддержек
@@ -125,16 +143,21 @@ ru:
         email: Email
         encrypted_password: Зашифрованный пароль
         failed_attempts: Неудачные попытки
+        interface_language:
         last_sign_in_at: Дата последнего входа
         last_sign_in_ip: IP последнего входа
         locked_at: Дата блокировки
         password: Пароль
         password_confirmation: Подтверждение пароля
+        quota:
+        quota_use_site_default:
         remember_created_at: Дата создания запоминания
         remember_me: Запомнить меня
         reset_password_sent_at: Дата отправки сброса пароля
         reset_password_token: Токен сброса пароля
+        sensitive_content_handling:
         sign_in_count: Количество входов
+        sort_order:
         unconfirmed_email: Неподтвержденный email
         unlock_token: Токен разблокировки
         updated_at: Дата обновления
@@ -204,6 +227,8 @@ ru:
         other: Коллекции
         two: Коллекции
         zero: Коллекции
+      comment:
+        few:
       creator:
         few: Авторы
         many: Авторы
@@ -211,6 +236,31 @@ ru:
         other: Авторы
         two: Авторы
         zero: Авторы
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few:
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       federails/moderation/domain_block:
         few:
         many:
@@ -219,6 +269,13 @@ ru:
         two:
         zero:
       federails/moderation/report:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      group:
         few:
         many:
         one:
@@ -246,6 +303,20 @@ ru:
         other:
         two:
         zero:
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: Модели
         many: Модели
@@ -267,6 +338,13 @@ ru:
         other: Проблемы
         two: Проблемы
         zero: Проблемы
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       user:
         few: Пользователя
         many: Пользователей
@@ -477,7 +555,6 @@ ru:
     sort_menu:
       name:
       recent:
-      sort-by:
       updated:
   concerns:
     linkable:
@@ -679,35 +756,21 @@ ru:
       edit:
         approval_help:
         approve:
-        backfill_requests:
         capability:
-        category: Категория
         contact_details:
-        created:
         data_sharing:
         deny: Отклонить
         disable:
-        email: Email
         enable:
-        event_subscriptions:
-        fediverse_account:
-        fingerprint:
         links: Ссылки
-        max_count:
-        privacy_policy:
         registration:
-        sign_in: Войти
-        subscription_type:
         versions:
       index:
         add_html:
         description_html:
         heading:
         provider_list_title:
-        registered_at:
         search_3dprint_social_html:
-        status:
-        url:
   follows:
     actor_table:
       actions:

@@ -199,11 +199,9 @@ ru:
       new:
         title: Создать учетную запись
       quota:
-        current_quota:
         current_space_used:
         title:
         unlimited_quota:
-        using_site_default:
       show:
         approve: Подтвердить учетную запись
         confirm_destroy: Вы уверены что хотите удалить эту учетную запись навсегда? Это действие отменить невозможно.

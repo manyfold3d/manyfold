@@ -31,6 +31,11 @@ class ModelFilesController < ApplicationController
         end
       end
     end
+    # i18n-tasks-use t("activerecord.attributes.model_file.unsupported_version")
+    # i18n-tasks-use t("activerecord.attributes.model_file.filename")
+    # i18n-tasks-use t("activerecord.attributes.model_file.digest")
+    # i18n-tasks-use t("activerecord.attributes.model_file.size")
+    # i18n-tasks-use t("activerecord.attributes.model_file.dimensions")
   end
 
   def create

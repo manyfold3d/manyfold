@@ -5,9 +5,15 @@ de:
       collection:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Beschreibung
-        collection: Übergeordnete Kollektion
+        collection_id: Übergeordnete Kollektion
+        creator_id:
+          few: Autoren
+          many: Autor
+          one: Autor
+          other: Autoren
+          two: Autoren
+          zero: Autoren
         indexable: Suchindizierung zulassen
-        models: Modelle
         name: Name
         notes: Beschreibung
       creator:
@@ -25,8 +31,8 @@ de:
         expires_in: Läuft ab in
         fingerprint: Fingerabdruck
         scopes: Scopes
+        token: Zugangs-Token
       doorkeeper/application:
-        access_token: Zugangs-Token
         confidential: Vertraulich
         created_at: Erstellt
         name: Name
@@ -35,6 +41,23 @@ de:
         scopes: Scopes
         secret: Client Secret
         uid: Client ID
+      fasp_client_backfill_request:
+        category: Kategorie
+        created_at: Erstellt
+        max_count: Maximale Anzahl
+      fasp_client_event_subscription:
+        category:
+        created_at:
+        subscription_type: Art des Abonnements
+      fasp_client_provider:
+        base_url: URL
+        contact_email: E-Mail
+        created_at: Registriert bei
+        fediverse_account: Fediverse-Adresse
+        fingerprint: Fingerabdruck
+        privacy_policy: Datenschutzeinstellungen
+        sign_in_url: Einloggen
+        status: Status
       federails/moderation/domain_block:
         created_at: Erstellt am
         domain: Domain
@@ -78,30 +101,25 @@ de:
       model:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Bildunterschrift
-        collection: Kollektion
         collection_id: Kollektion
-        creator: Autor
         creator_id: Autor
-        images: Bilder
         indexable: Suchindizierung zulassen
         library_id: Sammlung
         license: Lizenz
-        model_files: Dateien
         name: Name
         notes: Beschreibung
         path: Pfad
         preview_file: Vorschau anzeigen
         sensitive: Möglicherweise verstörender Inhalt
-        tags: Tags
       model_file:
         caption: Beschreibung
         digest: Hash
         dimensions: Abmessungen
         filename: Dateiname
-        model_id: Modell
         notes: Notizen
         presupported: Supportstruktur schon vorhanden
-        presupported_version: Version mit Supportstruktur
+        presupported_version_id: Version mit Supportstruktur
+        previewable:
         printed: Gedruckt
         size: Dateigröße
         unsupported_version: Nicht unterstützte Version
@@ -125,16 +143,21 @@ de:
         email: E-Mail
         encrypted_password: Verschlüsseltes Passwort
         failed_attempts: Fehlversuche
+        interface_language: Webseiten Sprache
         last_sign_in_at: Letzte Anmeldung am
         last_sign_in_ip: IP der letzten Anmeldung
         locked_at: Gesperrt am
         password: Passwort
         password_confirmation: Bestätige Passwort
+        quota: Aktuelles Speicherlimit in MB
+        quota_use_site_default: Verwende das Standard-Speicherlimit der Website?
         remember_created_at: Angemeldet bleiben vom
         remember_me: Angemeldet bleiben
         reset_password_sent_at: Passwort-Zurücksetzen-E-Mail gesendet am
         reset_password_token: Passwort-reset-Token
+        sensitive_content_handling: Möglicherweise verstörender Inhalt
         sign_in_count: Anzahl Anmeldungen
+        sort_order: Sortieren nach
         unconfirmed_email: Unbestätigte E-Mail-Adresse
         unlock_token: Entsperrungs-Token
         updated_at: Aktualisiert am
@@ -204,6 +227,8 @@ de:
         other: Kollektionen
         two: Kollektionen
         zero: Kollektionen
+      comment:
+        few: Kommentare
       creator:
         few: Autoren
         many: Autor
@@ -211,6 +236,31 @@ de:
         other: Autoren
         two: Autoren
         zero: Autoren
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      fasp_client_backfill_request:
+        few: Anträge auf Verfüllung
+      fasp_client_event_subscription:
+        few: Event-Abonnements
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       federails/moderation/domain_block:
         few: Blockierte Domains
         many: Blockierte Domains
@@ -225,6 +275,13 @@ de:
         other: Meldungen
         two: Meldungen
         zero: Meldungen
+      group:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       library:
         few: Sammlungen
         many: Sammlungen
@@ -246,6 +303,20 @@ de:
         other: Listen
         two: Listen
         zero: Listen
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: Modelle
         many: Modelle
@@ -267,6 +338,13 @@ de:
         other: Probleme
         two: Probleme
         zero: Probleme
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       user:
         few: Konten
         many: Konten
@@ -479,7 +557,6 @@ de:
     sort_menu:
       name: Titel
       recent: Neueste
-      sort-by: Sortieren nach
       updated: Aktualisiert
   concerns:
     linkable:
@@ -681,35 +758,21 @@ de:
       edit:
         approval_help: Überprüfe, ob der hier angezeigte Fingerabdruck mit dem des Anbieters übereinstimmt, und lasse nur Anbieter zu, denen du vertraust.
         approve: Genehmigen
-        backfill_requests: Anträge auf Verfüllung
         capability: Fähigkeit
-        category: Kategorie
         contact_details: Kontaktangaben
-        created: Erstellt
         data_sharing: Gemeinsame Datennutzung
         deny: Verweigern
         disable: Deaktivieren
-        email: E-Mail
         enable: Aktivieren
-        event_subscriptions: Event-Abonnements
-        fediverse_account: Fediverse-Adresse
-        fingerprint: Fingerabdruck
         links: URLs
-        max_count: Maximale Anzahl
-        privacy_policy: Datenschutzeinstellungen
         registration: Registrierung
-        sign_in: Einloggen
-        subscription_type: Art des Abonnements
         versions: Versionen
       index:
         add_html: 'Um einen neuen FASP zu aktivieren, besuche den Anbieter und gebe bei der Anmeldung die URL dieses Servers ein: <code>%{base_url}</code>. Du solltest nur Anbieter verwenden, denen du vertraust, und deren Datenschutzbestimmungen vollständig lesen, bevor du die Dienste aktivierst. Beachte, dass nur öffentliche indizierbare Inhalte mit FASPs geteilt werden.'
         description_html: Fediverse Auxiliary Service Providers (FASPs) ermöglichen im Rahmen des <a href="https://fediscovery.org" target="_new" rel="noopener">Fediscovery-Projekts</a> zusätzliche Funktionen für Fediverse-Server, wie Suche, Trends, Spam-Erkennung und mehr.
         heading: FASP Dienstleistungen
         provider_list_title: Registrierte FASP
-        registered_at: Registriert bei
         search_3dprint_social_html: Wir empfehlen, den <a href="https://search.3dprint.social/registration/new" rel="noreferrer">search.3dprint.social</a> FASP zu verbinden; er wird von den Manyfold-Entwicklern betrieben und ist speziell für die Suche nach 3D-Inhalten konfiguriert.
-        status: Status
-        url: URL
   follows:
     actor_table:
       actions: Aktionen

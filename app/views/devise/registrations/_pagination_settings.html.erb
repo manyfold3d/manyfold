@@ -2,7 +2,7 @@
   <div class="card mb-2">
     <h3 class="card-header"><%= t(".heading") %></h3>
     <div class="card-body tabular-form">
-      <%= SelectInputRow form: form, attribute: :sort_order, label: t("components.sort_menu.sort-by"), select_options: [
+      <%= SelectInputRow form: form, attribute: :sort_order, label: User.human_attribute_name(:sort_order), select_options: [
             [t("components.sort_menu.name"), "name"],
             [t("components.sort_menu.recent"), "recent"],
             [t("components.sort_menu.updated"), "updated"]

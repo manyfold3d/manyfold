@@ -43,7 +43,6 @@ ru:
         help_html:
       preview_file:
         help:
-      tags:
     general:
       edit:
     list:
@@ -85,7 +84,6 @@ ru:
     scan:
       success:
     show:
-      comments:
       download_preparing:
       download_requested:
       files:
@@ -103,12 +101,10 @@ ru:
         warning:
         with:
       model_details:
-      path:
       preview:
       rescan:
       search:
       submit:
-      tags:
       upload_card:
         heading:
     update:

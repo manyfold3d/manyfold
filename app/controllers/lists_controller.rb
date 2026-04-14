@@ -76,8 +76,8 @@ class ListsController < ApplicationController
       )
     else
       params.require(:list).permit( # rubocop:todo Rails/StrongParametersExpect
-        :name,
-        list_items_attributes: [:id, :listable_type, :listable_id, :_destroy]
+        :name, # i18n-tasks-use t("activerecord.attributes.list.name")
+        list_items_attributes: [:id, :listable_type, :listable_id, :_destroy] # i18n-tasks-use t("activerecord.attributes.list.list_items")
       )
     end
   end

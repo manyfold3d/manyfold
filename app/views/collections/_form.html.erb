@@ -1,4 +1,4 @@
-<%- @collection.links.build if @collection.links.empty? # populate empty link %>
+<%- @collection.links.build if @collection.links.empty? %>
 <%- @collection.caber_relations.build if @collection.caber_relations.empty? %>
 
 <%= form_with model: @collection, class: "container-md tabular-form" do |form| %>

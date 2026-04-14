@@ -5,9 +5,15 @@ fr:
       collection:
         ai_indexable: Permettre l'utilisation pour l'entrainement d'IA
         caption: Légende
-        collection:
+        collection_id:
+        creator_id:
+          few: Créateurs
+          many: Créateurs
+          one: Créateur
+          other: Créateurs
+          two: Créateurs
+          zero: Créateurs
         indexable: Autoriser l'indexation de la recherche
-        models: Modèles
         name: Nom
         notes: Notes
       creator:
@@ -27,8 +33,8 @@ fr:
           '
         fingerprint:
         scopes: Portées
+        token: Jeton d'accès
       doorkeeper/application:
-        access_token: Jeton d'accès
         confidential: Confidential
         created_at: Créée
         name: Nom
@@ -37,6 +43,23 @@ fr:
         scopes: Portées
         secret:
         uid: ID du client
+      fasp_client_backfill_request:
+        category: Catégorie
+        created_at: Créée
+        max_count:
+      fasp_client_event_subscription:
+        category:
+        created_at:
+        subscription_type: Type d'abonnement
+      fasp_client_provider:
+        base_url: URL
+        contact_email: Email
+        created_at: Enregistré à
+        fediverse_account: Adresse Fediverse
+        fingerprint:
+        privacy_policy:
+        sign_in_url: Se connecter
+        status: Statut
       federails/moderation/domain_block:
         created_at: Enregistré à
         domain: Domaine
@@ -80,30 +103,25 @@ fr:
       model:
         ai_indexable: Permettre l'utilisation pour l'entrainement d'IA
         caption: Légende
-        collection: Collection
         collection_id: Collection
-        creator: Créateur
         creator_id: Créateur
-        images: Images
         indexable:
         library_id: Bibliothèque
         license: Licence
-        model_files: Fichiers
         name: Nom
         notes: Description
         path: Chemin
         preview_file: Prévisualisation
         sensitive: Contenu sensible
-        tags: Étiquettes
       model_file:
         caption: Légende
         digest: Absorber
         dimensions: Dimensions
         filename: Nom de fichier
-        model_id: Modèle
         notes: Notes
         presupported: Présupporté
-        presupported_version: Version présupporté
+        presupported_version_id: Version présupporté
+        previewable:
         printed: Imprimé
         size: Taille du fichier
         unsupported_version: Version non supportée
@@ -127,16 +145,21 @@ fr:
         email: Email
         encrypted_password: Mot de passe chiffré
         failed_attempts: Tentatives échouées
+        interface_language: Langue de l'interface
         last_sign_in_at: Date de la dernière connexion
         last_sign_in_ip: IP de la dernière connexion
         locked_at: Verrouillé à
         password: Mot de passe
         password_confirmation: Confirmation du mot de passe
+        quota:
+        quota_use_site_default:
         remember_created_at: Mémorisé à
         remember_me: Se souvenir de moi ?
         reset_password_sent_at: Clé de réinitialisation créée à
         reset_password_token: Clé de réinitialisation du mot de passe
+        sensitive_content_handling: Contenu sensible
         sign_in_count: Nombre des connexions
+        sort_order: Trier par
         unconfirmed_email: Email non confirmé
         unlock_token: Clé de déverrouillage
         updated_at: Date de mise à jour
@@ -206,6 +229,8 @@ fr:
         other: Collections
         two: Collections
         zero: Collections
+      comment:
+        few:
       creator:
         few: Créateurs
         many: Créateurs
@@ -213,6 +238,31 @@ fr:
         other: Créateurs
         two: Créateurs
         zero: Créateurs
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few:
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       federails/moderation/domain_block:
         few: Blocages de domaines
         many: Blocages de domaines
@@ -227,6 +277,13 @@ fr:
         other: Rapports
         two: Rapports
         zero: Rapports
+      group:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       library:
         few: Bibliothèques
         many: Bibliothèques
@@ -248,6 +305,20 @@ fr:
         other: Listes
         two: Listes
         zero: Listes
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       model:
         few: Modèles
         many: Modèles
@@ -269,6 +340,13 @@ fr:
         other: Problèmes
         two: Problèmes
         zero: Problèmes
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       user:
         few: Utilisateurs
         many: Utilisateurs
@@ -479,7 +557,6 @@ fr:
     sort_menu:
       name: Titre
       recent: Le plus récent
-      sort-by: Trier par
       updated: Mis à jour
   concerns:
     linkable:
@@ -684,35 +761,21 @@ fr:
       edit:
         approval_help:
         approve: Approuver
-        backfill_requests:
         capability: Capacité
-        category: Catégorie
         contact_details: Détails du contact
-        created: Créée
         data_sharing: Partage des données
         deny: Refuser
         disable: Désactiver
-        email: Email
         enable: Activer
-        event_subscriptions:
-        fediverse_account: Adresse Fediverse
-        fingerprint:
         links: Liens
-        max_count:
-        privacy_policy:
         registration: Inscription
-        sign_in: Se connecter
-        subscription_type: Type d'abonnement
         versions: Versions
       index:
         add_html:
         description_html:
         heading:
         provider_list_title:
-        registered_at: Enregistré à
         search_3dprint_social_html:
-        status: Statut
-        url: URL
   follows:
     actor_table:
       actions: Actions
