@@ -130,8 +130,7 @@ ignore_unused:
 - 'errors.messages.expired'
 - 'errors.messages.not_found'
 - 'errors.messages.not_locked'
-- 'sites.*'
-- 'application.caber_relation_fields.permissions.*'
+- 'sites.*' # Fully dynamic, no code anywhere to say what's what, so just ignore
 - 'devise.*' # Used deep down
 - 'doorkeeper.*' # Used deep down
 - 'renderer.errors.*' # Used client side via i18n-js
