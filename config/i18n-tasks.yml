@@ -130,7 +130,6 @@ ignore_unused:
 - 'errors.messages.expired'
 - 'errors.messages.not_found'
 - 'errors.messages.not_locked'
-- 'problems.categories.*'
 - 'sites.*'
 - 'application.caber_relation_fields.permissions.*'
 - 'devise.*' # Used deep down

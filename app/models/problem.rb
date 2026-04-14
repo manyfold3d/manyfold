@@ -18,22 +18,22 @@ class Problem < ApplicationRecord
   broadcasts_refreshes
 
   CATEGORIES = [
-    :missing, # i18n-tasks-use t("problems.model.missing.title") t("problems.model.missing.description_html") t("problems.model_file.missing.title") t("problems.model_file.missing.description_html")
-    :empty, # i18n-tasks-use t("problems.model.empty.title") t("problems.model.empty.description_html") t("problems.model_file.empty.title") t("problems.model_file.empty.description_html")
+    :missing, # i18n-tasks-use t("problems.categories.missing") t("problems.model.missing.title") t("problems.model.missing.description_html") t("problems.model_file.missing.title") t("problems.model_file.missing.description_html")
+    :empty, # i18n-tasks-use t("problems.categories.empty") t("problems.model.empty.title") t("problems.model.empty.description_html") t("problems.model_file.empty.title") t("problems.model_file.empty.description_html")
     :destination_exists, # No longer used, but kept for compatibility
-    :nesting, # i18n-tasks-use t("problems.model.nesting.title") t("problems.model.nesting.description_html")
-    :inefficient, # i18n-tasks-use t("problems.model_file.inefficient.title") t("problems.model_file.inefficient.description_html")
-    :duplicate, # i18n-tasks-use t("problems.model_file.duplicate.title") t("problems.model_file.duplicate.description_html")
-    :no_image, # i18n-tasks-use t("problems.model.no_image.title") t("problems.model.no_image.description_html")
-    :no_3d_model, # i18n-tasks-use t("problems.model.no_3d_model.title") t("problems.model.no_3d_model.description_html")
-    :non_manifold, # i18n-tasks-use t("problems.model_file.non_manifold.title") t("problems.model_file.non_manifold.description_html")
-    :inside_out, # i18n-tasks-use t("problems.model_file.inside_out.title") t("problems.model_file.inside_out.description_html")
-    :no_license, # i18n-tasks-use t("problems.model.no_license.title") t("problems.model.no_license.description_html")
-    :no_links, # i18n-tasks-use t("problems.model.no_links.title") t("problems.model.no_links.description_html")
-    :no_creator, # i18n-tasks-use t("problems.model.no_creator.title") t("problems.model.no_creator.description_html")
-    :no_tags, # i18n-tasks-use t("problems.model.no_tags.title") t("problems.model.no_tags.description_html")
-    :http_error, # i18n-tasks-use t("problems.link.http_error.title") t("problems.link.http_error.description")
-    :file_naming # i18n-tasks-use t("problems.model.file_naming.title") t("problems.model.file_naming.description_html")
+    :nesting, # i18n-tasks-use t("problems.categories.nesting") t("problems.model.nesting.title") t("problems.model.nesting.description_html")
+    :inefficient, # i18n-tasks-use t("problems.categories.inefficient") t("problems.model_file.inefficient.title") t("problems.model_file.inefficient.description_html")
+    :duplicate, # i18n-tasks-use t("problems.categories.duplicate") t("problems.model_file.duplicate.title") t("problems.model_file.duplicate.description_html")
+    :no_image, # i18n-tasks-use t("problems.categories.no_image") t("problems.model.no_image.title") t("problems.model.no_image.description_html")
+    :no_3d_model, # i18n-tasks-use t("problems.categories.no_3d_model") t("problems.model.no_3d_model.title") t("problems.model.no_3d_model.description_html")
+    :non_manifold, # i18n-tasks-use t("problems.categories.non_manifold") t("problems.model_file.non_manifold.title") t("problems.model_file.non_manifold.description_html")
+    :inside_out, # i18n-tasks-use t("problems.categories.inside_out") t("problems.model_file.inside_out.title") t("problems.model_file.inside_out.description_html")
+    :no_license, # i18n-tasks-use t("problems.categories.no_license") t("problems.model.no_license.title") t("problems.model.no_license.description_html")
+    :no_links, # i18n-tasks-use t("problems.categories.no_links") t("problems.model.no_links.title") t("problems.model.no_links.description_html")
+    :no_creator, # i18n-tasks-use t("problems.categories.no_creator") t("problems.model.no_creator.title") t("problems.model.no_creator.description_html")
+    :no_tags, # i18n-tasks-use t("problems.categories.no_tags") t("problems.model.no_tags.title") t("problems.model.no_tags.description_html")
+    :http_error, # i18n-tasks-use t("problems.categories.http_error") t("problems.link.http_error.title") t("problems.link.http_error.description")
+    :file_naming # i18n-tasks-use t("problems.categories.file_naming") t("problems.model.file_naming.title") t("problems.model.file_naming.description_html")
   ]
   enum :category, CATEGORIES
 
