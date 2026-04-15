@@ -252,8 +252,18 @@ pt:
         zero:
       fasp_client_backfill_request:
         few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_event_subscription:
         few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_provider:
         few:
         many:
@@ -562,70 +572,6 @@ pt:
         bad_request:
         success:
   doorkeeper:
-    applications:
-      buttons:
-        authorize:
-        cancel:
-        destroy:
-        edit:
-        submit:
-      confirmations:
-        destroy: Tem a certeza?
-      edit:
-        title:
-      form:
-        error:
-      help:
-        blank_redirect_uri:
-        confidential:
-        redirect_uri:
-        scopes:
-      index:
-        actions:
-        callback_url:
-        confidential:
-        confidentiality:
-          'no':
-          'yes':
-        name:
-        new:
-        title:
-      new:
-        title:
-      show:
-        actions:
-        application_id:
-        callback_urls:
-        confidential:
-        not_defined:
-        scopes:
-        secret:
-        secret_hashed:
-        title:
-    authorizations:
-      buttons:
-        authorize:
-        deny:
-      error:
-        title:
-      form_post:
-        title:
-      new:
-        able_to:
-        prompt:
-        title:
-      show:
-        title:
-    authorized_applications:
-      buttons:
-        revoke:
-      confirmations:
-        revoke: Tem a certeza?
-      index:
-        application:
-        created_at:
-        date_format:
-        title:
     errors:
       messages:
         access_denied:
@@ -670,17 +616,6 @@ pt:
       authorized_applications:
         destroy:
           notice:
-    layouts:
-      admin:
-        nav:
-          applications:
-          home:
-          oauth2_provider:
-        title:
-      application:
-        title:
-    pre_authorization:
-      status:
   doorkeeper_access_tokens:
     create:
       failed:

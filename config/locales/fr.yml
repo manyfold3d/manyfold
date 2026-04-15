@@ -48,8 +48,8 @@ fr:
         created_at: Créée
         max_count:
       fasp_client_event_subscription:
-        category:
-        created_at:
+        category: Catégorie
+        created_at: Créée
         subscription_type: Type d'abonnement
       fasp_client_provider:
         base_url: URL
@@ -241,7 +241,7 @@ fr:
       doorkeeper/access_token:
         few:
         many:
-        one:
+        one: Jeton d'accès
         other:
         two:
         zero:
@@ -254,8 +254,18 @@ fr:
         zero:
       fasp_client_backfill_request:
         few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_event_subscription:
         few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_provider:
         few:
         many:
@@ -308,7 +318,7 @@ fr:
       list_item:
         few:
         many:
-        one:
+        one: Objet
         other:
         two:
         zero:
@@ -564,73 +574,6 @@ fr:
         bad_request:
         success:
   doorkeeper:
-    applications:
-      buttons:
-        authorize: Autoriser
-        cancel: Annuler
-        destroy: Supprimer
-        edit: Modifier
-        submit: Envoyer
-      confirmations:
-        destroy: Êtes-vous certain?
-      edit:
-        title: Modifier l'application
-      form:
-        error: Oups! Vérifier votre formulaire pour des erreurs possibles
-      help:
-        blank_redirect_uri: Leave it blank if you configured your provider to use Client Credentials, Resource Owner Password Credentials or any other grant type that doesn't require redirect URI.
-        confidential: |
-          L'application sera utilisée quand la confidentialité du secret pourra
-          être maintenue. Les application mobile native, et les Applications
-          mono-page ne sont pas considérées comme sûr.
-        redirect_uri: Utiliser une ligne par URL
-        scopes: Utilisez un espace entre chaque portée. Laissez vide pour utiliser la portée par defaut
-      index:
-        actions: Actions
-        callback_url: URL de retour d'appel
-        confidential: Confidential?
-        confidentiality:
-          'no': Non
-          'yes': Oui
-        name: Nom
-        new: Nouvelle application
-        title: Vos applications
-      new:
-        title: Nouvelle application
-      show:
-        actions: Actions
-        application_id: ID de l'application
-        callback_urls: URL du retour d'appel
-        confidential: Confidential
-        not_defined: Non défini
-        scopes: Portées
-        secret: Secret
-        secret_hashed:
-        title: 'Application : %{name}'
-    authorizations:
-      buttons:
-        authorize: Autoriser
-        deny: Refuser
-      error:
-        title: Une erreur est survenue
-      form_post:
-        title: Envoyer ce formulaire
-      new:
-        able_to: Cette application pourra
-        prompt: Autorisez %{client_name} à utiliser votre compte?
-        title: Autorisation requise
-      show:
-        title: Code d'autorisation
-    authorized_applications:
-      buttons:
-        revoke: Annuler
-      confirmations:
-        revoke: Êtes-vous certain?
-      index:
-        application: Application
-        created_at: Créé le
-        date_format: "%Y-%m-%d %H:%M:%S"
-        title: Vos applications autorisées
     errors:
       messages:
         access_denied: Le propriétaire de la ressource ou le serveur d'autorisation a refusé la demande.
@@ -675,17 +618,6 @@ fr:
       authorized_applications:
         destroy:
           notice: Application annulée.
-    layouts:
-      admin:
-        nav:
-          applications: Applications
-          home: Home
-          oauth2_provider: Fournisseur OAuth2
-        title: Doorkeeper
-      application:
-        title: Autorisation OAuth requise
-    pre_authorization:
-      status: Pre-authorization
   doorkeeper_access_tokens:
     create:
       failed:

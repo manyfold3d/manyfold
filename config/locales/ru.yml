@@ -43,11 +43,11 @@ ru:
         uid: Идентификатор клиента
       fasp_client_backfill_request:
         category: Категория
-        created_at:
+        created_at: Создано
         max_count:
       fasp_client_event_subscription:
-        category:
-        created_at:
+        category: Категория
+        created_at: Создано
         subscription_type:
       fasp_client_provider:
         base_url:
@@ -155,7 +155,7 @@ ru:
         remember_me: Запомнить меня
         reset_password_sent_at: Дата отправки сброса пароля
         reset_password_token: Токен сброса пароля
-        sensitive_content_handling:
+        sensitive_content_handling: Чувствительный контент
         sign_in_count: Количество входов
         sort_order:
         unconfirmed_email: Неподтвержденный email
@@ -239,7 +239,7 @@ ru:
       doorkeeper/access_token:
         few:
         many:
-        one:
+        one: Токен доступа
         other:
         two:
         zero:
@@ -252,8 +252,18 @@ ru:
         zero:
       fasp_client_backfill_request:
         few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_event_subscription:
         few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_provider:
         few:
         many:
@@ -562,70 +572,6 @@ ru:
         bad_request:
         success:
   doorkeeper:
-    applications:
-      buttons:
-        authorize: Авторизовать
-        cancel: Отменить
-        destroy: Удалить
-        edit: Редактировать
-        submit: Сохранить
-      confirmations:
-        destroy: Вы уверены?
-      edit:
-        title: Редактировать приложение
-      form:
-        error: Возникли ошибки! Проверьте правильность заполнения полей
-      help:
-        blank_redirect_uri: Пакіньце пустым калі Ваш правайдар наладжаны на выкарыстанне Client Credentials, Resource Owner Password Credentials ці іншага метаду аўтарызацыі без URI зваротнага выкліку.
-        confidential: Приложение будет использоваться там, где секретный ключ защищён от просмотра. Мобильные приложения и одностраничные веб-приложения (SPA) рассматриваются как незащищённые.
-        redirect_uri: Указывайте каждый URI в отдельной строке
-        scopes: Записывайте скоупы через пробел. Оставьте поле пустым для использования значений по-умолчанию
-      index:
-        actions: Действия
-        callback_url: URL обратного вызова
-        confidential: Конфиденциально?
-        confidentiality:
-          'no': Нет
-          'yes': Да
-        name: Наименование
-        new: Новое приложение
-        title: Ваши приложения
-      new:
-        title: Новое приложение
-      show:
-        actions: Действия
-        application_id: ID приложения
-        callback_urls: Список URL обратного вызова
-        confidential: Конфиденциально
-        not_defined:
-        scopes: Скоупы
-        secret: Секретный ключ
-        secret_hashed:
-        title: 'Приложение: %{name}'
-    authorizations:
-      buttons:
-        authorize: Разрешить
-        deny: Отклонить
-      error:
-        title: Произошла ошибка
-      form_post:
-        title:
-      new:
-        able_to: 'Данное приложение требует следующие разрешения:'
-        prompt: Разрешить %{client_name} использовать данные Вашей учётной записи?
-        title: Требуется авторизация
-      show:
-        title: Код авторизации
-    authorized_applications:
-      buttons:
-        revoke: Отозвать авторизацию
-      confirmations:
-        revoke: Вы уверены?
-      index:
-        application: Приложение
-        created_at: Создано
-        date_format: "%d-%m-%Y %H:%M:%S"
-        title: Ваши авторизованные приложения
     errors:
       messages:
         access_denied: 'Доступ запрещен: сервер или владелец ресурса отклонил запрос'
@@ -670,17 +616,6 @@ ru:
       authorized_applications:
         destroy:
           notice: Приложение отозвано
-    layouts:
-      admin:
-        nav:
-          applications: Приложения
-          home: Главная
-          oauth2_provider: OAuth 2 провайдер
-        title: Doorkeeper
-      application:
-        title: Необходима авторизация
-    pre_authorization:
-      status: Предварительная авторизация
   doorkeeper_access_tokens:
     create:
       failed:

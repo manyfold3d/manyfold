@@ -46,8 +46,8 @@ ja:
         created_at: 作成日時
         max_count:
       fasp_client_event_subscription:
-        category:
-        created_at:
+        category: カテゴリー
+        created_at: 作成日時
         subscription_type:
       fasp_client_provider:
         base_url:
@@ -239,7 +239,7 @@ ja:
       doorkeeper/access_token:
         few:
         many:
-        one:
+        one: アクセストークン
         other:
         two:
         zero:
@@ -252,8 +252,18 @@ ja:
         zero:
       fasp_client_backfill_request:
         few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_event_subscription:
         few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_provider:
         few:
         many:
@@ -562,70 +572,6 @@ ja:
         bad_request:
         success:
   doorkeeper:
-    applications:
-      buttons:
-        authorize: 認証
-        cancel: キャンセル
-        destroy: 削除
-        edit: 編集
-        submit: 登録
-      confirmations:
-        destroy: 本当に削除しますか？
-      edit:
-        title: アプリケーションの編集
-      form:
-        error: おっと！フォームにエラーがないか確認してください
-      help:
-        blank_redirect_uri: リダイレクトURIを必要としないクライアントクレデンシャル、リソースオーナークレデンシャル、その他のグラントタイプの場合は空白のままにします。
-        confidential: クライアントシークレットの機密を保持できるアプリケーションで使われます。
-        redirect_uri: URIごとに1行で入力してください
-        scopes: 各スコープをスペースで区切ってください。初期設定のスコープを使用する場合は、空白のままにしてください。
-      index:
-        actions: 行動
-        callback_url: コールバックURL
-        confidential: 機密？
-        confidentiality:
-          'no': いいえ
-          'yes': はい
-        name: 名称
-        new: 新しいアプリケーション
-        title: アプリケーション
-      new:
-        title: アプリケーションの作成
-      show:
-        actions: アクション
-        application_id: アプリケーションID
-        callback_urls: コールバックURL
-        confidential: 機密
-        not_defined:
-        scopes: スコープ
-        secret: シークレット
-        secret_hashed:
-        title: 'アプリケーション: %{name}'
-    authorizations:
-      buttons:
-        authorize: 承認
-        deny: 否認
-      error:
-        title: エラーが発生しました
-      form_post:
-        title:
-      new:
-        able_to: このアプリケーションは次のことが可能です
-        prompt: あなたのアカウントで %{client_name} を承認しますか？
-        title: 承認が必要です
-      show:
-        title: 認可コード
-    authorized_applications:
-      buttons:
-        revoke: 取消
-      confirmations:
-        revoke: 本当に取消しますか？
-      index:
-        application: アプリケーション
-        created_at: 作成日時
-        date_format: "%Y年%m月%d日 %H:%M:%S"
-        title: あなたの認証されたアプリケーション
     errors:
       messages:
         access_denied: リソースオーナーもしくは認可サーバがリクエストを拒否しました。
@@ -670,17 +616,6 @@ ja:
       authorized_applications:
         destroy:
           notice: アプリケーションが取消されました。
-    layouts:
-      admin:
-        nav:
-          applications: アプリケーション
-          home: ホーム
-          oauth2_provider: OAuth2 プロバイダー
-        title: Doorkeeper
-      application:
-        title: OAuth認証が必要です
-    pre_authorization:
-      status: Pre-authorization
   doorkeeper_access_tokens:
     create:
       failed:

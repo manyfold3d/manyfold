@@ -8,7 +8,7 @@ de:
         collection_id: Übergeordnete Kollektion
         creator_id:
           few: Autoren
-          many: Autor
+          many: Autoren
           one: Autor
           other: Autoren
           two: Autoren
@@ -46,8 +46,8 @@ de:
         created_at: Erstellt
         max_count: Maximale Anzahl
       fasp_client_event_subscription:
-        category:
-        created_at:
+        category: Kategorie
+        created_at: Erstellt
         subscription_type: Art des Abonnements
       fasp_client_provider:
         base_url: URL
@@ -119,7 +119,7 @@ de:
         notes: Notizen
         presupported: Supportstruktur schon vorhanden
         presupported_version_id: Version mit Supportstruktur
-        previewable:
+        previewable: Vorschaubare
         printed: Gedruckt
         size: Dateigröße
         unsupported_version: Nicht unterstützte Version
@@ -237,30 +237,40 @@ de:
         two: Autoren
         zero: Autoren
       doorkeeper/access_token:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Zugangstoken
+        many: Zugangstoken
+        one: Zugangs-Token
+        other: Zugangstoken
+        two: Zugangstoken
+        zero: Zugangstoken
       doorkeeper/application:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: OAuth-Anwendungen
+        many: OAuth-Anwendungen
+        one: OAuth-Anwendung
+        other: OAuth-Anwendungen
+        two: OAuth-Anwendungen
+        zero: OAuth-Anwendungen
       fasp_client_backfill_request:
         few: Anträge auf Verfüllung
+        many: Anträge auf Verfüllung
+        one: Antrag auf Verfüllung
+        other: Anträge auf Verfüllung
+        two: Anträge auf Verfüllung
+        zero: Anträge auf Verfüllung
       fasp_client_event_subscription:
         few: Event-Abonnements
+        many: Event-Abonnements
+        one: Abonnement der Veranstaltung
+        other: Event-Abonnements
+        two: Event-Abonnements
+        zero: Event-Abonnements
       fasp_client_provider:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: FASP-Anbieter
+        many: FASP-Anbieter
+        one: FASP-Anbieter
+        other: FASP-Anbieter
+        two: FASP-Anbieter
+        zero: FASP-Anbieter
       federails/moderation/domain_block:
         few: Blockierte Domains
         many: Blockierte Domains
@@ -276,12 +286,12 @@ de:
         two: Meldungen
         zero: Meldungen
       group:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Benutzergruppen
+        many: Benutzergruppen
+        one: Benutzergruppe
+        other: Benutzergruppen
+        two: Benutzergruppen
+        zero: Benutzergruppen
       library:
         few: Sammlungen
         many: Sammlungen
@@ -304,19 +314,19 @@ de:
         two: Listen
         zero: Listen
       list_item:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Artikel
+        many: Artikel
+        one: Objekt
+        other: Artikel
+        two: Artikel
+        zero: Artikel
       membership:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Mitgliedschaften
+        many: Mitgliedschaften
+        one: Mitgliedschaft
+        other: Mitgliedschaften
+        two: Mitgliedschaften
+        zero: Mitgliedschaften
       model:
         few: Modelle
         many: Modelle
@@ -339,12 +349,12 @@ de:
         two: Probleme
         zero: Probleme
       role:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Rollen
+        many: Rollen
+        one: Rolle
+        other: Rollen
+        two: Rollen
+        zero: Rollen
       user:
         few: Konten
         many: Konten
@@ -564,70 +574,6 @@ de:
         bad_request: 'Synchronisierung fehlgeschlagen: fehlende Link-ID'
         success: Synchronisierung erfolgreich angefordert
   doorkeeper:
-    applications:
-      buttons:
-        authorize: Autorisieren
-        cancel: Abbrechen
-        destroy: Löschen
-        edit: Bearbeiten
-        submit: Übertragen
-      confirmations:
-        destroy: Bist du sicher?
-      edit:
-        title: Anwendung bearbeiten
-      form:
-        error: Whoops! Bitte überprüfe das Formular auf Fehler!
-      help:
-        blank_redirect_uri: Lasse das Feld leer, wenn Du deinen Anbieter so konfiguriert hast, dass er Client Credentials, Resource Owner Password Credentials oder einen anderen Authentifizierungs-Typ verwendet, der keine Redirect-URI benötigt.
-        confidential: Die Anwendung wird dort eingesetzt, wo das Kundengeheimnis vertraulich behandelt werden kann. Native mobile Anwendungen und Single Page Apps werden als nicht vertraulich betrachtet.
-        redirect_uri: Eine Zeile pro URI verwenden
-        scopes: Trenne die Bereiche durch Leerzeichen. Leer lassen, um die Standardbereiche zu verwenden.
-      index:
-        actions: Aktionen
-        callback_url: Callback URL
-        confidential: Vertraulich?
-        confidentiality:
-          'no': Nein
-          'yes': Ja
-        name: Name
-        new: Neue Anwendung
-        title: Deine Anwendung
-      new:
-        title: Neue Anwendung
-      show:
-        actions: Aktionen
-        application_id: Applikations-ID
-        callback_urls: Callback URLs
-        confidential: Vertraulich
-        not_defined: Nicht definiert
-        scopes: Scopes
-        secret: Secret
-        secret_hashed: Secret gehashed
-        title: 'Anwendung: %{name}'
-    authorizations:
-      buttons:
-        authorize: Autorisieren
-        deny: Verweigern
-      error:
-        title: Ein Fehler ist aufgetreten
-      form_post:
-        title: Dieses Formular abschicken
-      new:
-        able_to: Diese Anwendung wird folgende Rechte haben
-        prompt: Soll %{client_name} für die Benutzung dieses Accounts autorisiert werden?
-        title: Autorisierung erforderlich
-      show:
-        title: Autorisierungscode
-    authorized_applications:
-      buttons:
-        revoke: Widerrufen
-      confirmations:
-        revoke: Bist du sicher?
-      index:
-        application: Anmeldung
-        created_at: erstellt am
-        date_format: "%Y-%m-%d %H:%M:%S"
-        title: Deine autorisierten Anwendungen
     errors:
       messages:
         access_denied: Der Eigentümer der Ressource oder der Autorisierungsserver hat die Anfrage abgelehnt.
@@ -672,17 +618,6 @@ de:
       authorized_applications:
         destroy:
           notice: Anwendung widerrufen.
-    layouts:
-      admin:
-        nav:
-          applications: Anwendungen
-          home: Home
-          oauth2_provider: OAuth2-Anbieter
-        title: Doorkeeper
-      application:
-        title: OAuth Autorisierung erforderlich
-    pre_authorization:
-      status: Pre-authorization
   doorkeeper_access_tokens:
     create:
       failed: Erstellung des Zugriffstokens fehlgeschlagen
@@ -913,7 +848,7 @@ de:
       collection_published:
         comment: Eine neue Sammlung von 3D-Modellen, ["%{name}"](%{url}), wurde gerade veröffentlicht!
       model_collected:
-        comment: '["%{model_name}"](%{model_url}) wurde gerade der Sammlung ["%{collection_name}"](%{collection_url}) hinzugefügt.'
+        comment:
       model_published:
         comment: Ein neues 3D-Modell, ["%{name}"](%{url}), wurde gerade veröffentlicht!
       updated_model:

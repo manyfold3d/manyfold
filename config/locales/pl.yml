@@ -7,12 +7,12 @@ pl:
         caption: Napis
         collection_id:
         creator_id:
-          few: Twórców
-          many: Twórców
+          few: Twórcy
+          many: Twórcy
           one: Twórca
           other: Twórcy
-          two:
-          zero:
+          two: Twórcy
+          zero: Twórcy
         indexable:
         name: Nazwa
         notes: Opis
@@ -46,8 +46,8 @@ pl:
         created_at: Utworzony
         max_count:
       fasp_client_event_subscription:
-        category:
-        created_at:
+        category: Kategoria
+        created_at: Utworzony
         subscription_type:
       fasp_client_provider:
         base_url:
@@ -252,8 +252,18 @@ pl:
         zero:
       fasp_client_backfill_request:
         few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_event_subscription:
         few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_provider:
         few:
         many:
@@ -306,7 +316,7 @@ pl:
       list_item:
         few:
         many:
-        one:
+        one: Pozycja
         other:
         two:
         zero:
@@ -562,70 +572,6 @@ pl:
         bad_request:
         success:
   doorkeeper:
-    applications:
-      buttons:
-        authorize: Autoryzuj
-        cancel: Anuluj
-        destroy: Zniszcz
-        edit: Edytuj
-        submit:
-      confirmations:
-        destroy: Jesteś pewny?
-      edit:
-        title: Edytuj aplikację
-      form:
-        error: Ups! Sprawdź swój formularz pod kątem możliwych błędów
-      help:
-        blank_redirect_uri:
-        confidential:
-        redirect_uri:
-        scopes:
-      index:
-        actions: Akcje
-        callback_url:
-        confidential:
-        confidentiality:
-          'no': Nie
-          'yes': Tak
-        name: Nazwa
-        new: Nowa Aplikacja
-        title: Twoje aplikacje
-      new:
-        title: Nowa Aplikacja
-      show:
-        actions: Akcje
-        application_id: UID
-        callback_urls:
-        confidential:
-        not_defined: Nie zdefiniowane
-        scopes:
-        secret: Sekret
-        secret_hashed: Zhaszowany sekret
-        title: 'Aplikacja: %{name}'
-    authorizations:
-      buttons:
-        authorize: Autoryzuj
-        deny: Odmów
-      error:
-        title: Wystąpił błąd
-      form_post:
-        title: Prześlij ten formularz
-      new:
-        able_to: Aplikacja ta będzie w stanie
-        prompt: Autoryzować %{client_name} do zkorzystania z twojego konta?
-        title: Wymagana autoryzacja
-      show:
-        title: Kod autoryzacji
-    authorized_applications:
-      buttons:
-        revoke:
-      confirmations:
-        revoke: Jesteś pewny?
-      index:
-        application: Aplikacja
-        created_at:
-        date_format: "%Y-%m-%d %H:%M:%S"
-        title: Twoje autoryzowane aplikacje
     errors:
       messages:
         access_denied:
@@ -670,17 +616,6 @@ pl:
       authorized_applications:
         destroy:
           notice:
-    layouts:
-      admin:
-        nav:
-          applications: Aplikacje
-          home: Strona główna
-          oauth2_provider: Dostawca OAuth2
-        title: Doorkeeper
-      application:
-        title: Wymagana autoryzacja OAuth
-    pre_authorization:
-      status:
   doorkeeper_access_tokens:
     create:
       failed:
@@ -911,7 +846,7 @@ pl:
       collection_published:
         comment: Nowa kolekcja modeli 3D ["%{name}"](%{url}) została właśnie opublikowana!
       model_collected:
-        comment: '["%{model_name}"](%{model_url}) został właśnie dodany do kolekcji ["%{collection_name}"](%{collection_url}).'
+        comment:
       model_published:
         comment: Nowy model 3D ["%{name}"](%{url}) został właśnie opublikowany!
       updated_model:

@@ -42,12 +42,12 @@ zh-CN:
         secret: Client Secret
         uid: Client ID
       fasp_client_backfill_request:
-        category:
-        created_at:
+        category: 类别
+        created_at: 创建于
         max_count: 最大计数
       fasp_client_event_subscription:
-        category:
-        created_at:
+        category: 类别
+        created_at: 创建于
         subscription_type: 订阅类型
       fasp_client_provider:
         base_url: URL
@@ -244,7 +244,7 @@ zh-CN:
       doorkeeper/access_token:
         few:
         many:
-        one:
+        one: 访问令牌
         other:
         two:
         zero:
@@ -257,8 +257,18 @@ zh-CN:
         zero:
       fasp_client_backfill_request:
         few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       fasp_client_event_subscription:
         few: 活动订阅
+        many: 活动订阅
+        one:
+        other: 活动订阅
+        two: 活动订阅
+        zero: 活动订阅
       fasp_client_provider:
         few:
         many:
@@ -311,7 +321,7 @@ zh-CN:
       list_item:
         few:
         many:
-        one:
+        one: 项目
         other:
         two:
         zero:
@@ -567,70 +577,6 @@ zh-CN:
         bad_request: 同步失败：缺少链接 ID
         success: 同步请求成功
   doorkeeper:
-    applications:
-      buttons:
-        authorize: 授权
-        cancel: 取消
-        destroy: 销毁
-        edit: 编辑
-        submit: 提交
-      confirmations:
-        destroy: 确定要删除应用吗？
-      edit:
-        title: 修改应用
-      form:
-        error: 哎呀！检查您的表格是否有错误
-      help:
-        blank_redirect_uri: 如果您将服务供应商配置为使用客户端凭据、资源所有者密码凭据或任何其他不需要重定向 URI 的授予类型，则将其留空。
-        confidential: 在客户私密可以保密的情况下使用应用程序。本地移动应用程序和单页应用程序被视为非机密。
-        redirect_uri: 每行只能有一个 URI
-        scopes: 用空格分割权限范围，留空则使用默认设置
-      index:
-        actions: 动作
-        callback_url: 回调 URL
-        confidential: 保密？
-        confidentiality:
-          'no': 否
-          'yes': 是
-        name: 名称
-        new: 创建新应用
-        title: 你的应用
-      new:
-        title: 创建新应用
-      show:
-        actions: 操作
-        application_id: 应用 UID
-        callback_urls: 回调 URL
-        confidential: 保密
-        not_defined: 未定义
-        scopes: 权限范围
-        secret: 应用密钥
-        secret_hashed:
-        title: 应用：%{name}
-    authorizations:
-      buttons:
-        authorize: 同意授权
-        deny: 拒绝
-      error:
-        title: 发生错误
-      form_post:
-        title: 提交
-      new:
-        able_to: 此应用将能够
-        prompt: 授权 %{client_name} 使用你的帐户？
-        title: 需要授权
-      show:
-        title: 授权代码
-    authorized_applications:
-      buttons:
-        revoke: 撤销授权
-      confirmations:
-        revoke: 确定要撤销对此应用的授权吗？
-      index:
-        application: 应用
-        created_at: 授权时间
-        date_format: "%Y-%m-%d %H:%M:%S"
-        title: 已授权的应用
     errors:
       messages:
         access_denied: 资源所有者或服务器拒绝了请求。
@@ -675,17 +621,6 @@ zh-CN:
       authorized_applications:
         destroy:
           notice: 已成功撤销对此应用的授权。
-    layouts:
-      admin:
-        nav:
-          applications: 应用
-          home: 首页
-          oauth2_provider: OAuth2 提供商
-        title: Doorkeeper
-      application:
-        title: 需要 OAuth 认证
-    pre_authorization:
-      status: 预授权
   doorkeeper_access_tokens:
     create:
       failed:
