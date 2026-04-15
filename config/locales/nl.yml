@@ -845,8 +845,6 @@ nl:
     activity:
       collection_published:
         comment:
-      model_collected:
-        comment:
       model_published:
         comment:
       updated_model:
