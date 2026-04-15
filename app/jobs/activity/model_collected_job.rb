@@ -5,16 +5,8 @@ class Activity::ModelCollectedJob < ApplicationJob
   def perform(model_id, collection_id)
     model = Model.find(model_id)
     collection = Collection.find(collection_id)
-    Comment.create!(
-      system: true,
-      commentable: model,
-      commenter: model.creator || collection || model,
-      comment: I18n.t("jobs.activity.model_collected.comment", # rubocop:disable I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
-        model_name: model.name,
-        model_url: model.federails_actor.profile_url,
-        collection_name: collection.name,
-        collection_url: collection.federails_actor.profile_url),
-      sensitive: model.sensitive
-    )
+    # Boost the new model and its creation comment to the collection's followers
+    model.federails_actor.announce! actor: collection.federails_actor
+    model.creation_comment.announce! actor: collection.federails_actor
   end
 end

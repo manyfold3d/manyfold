@@ -316,6 +316,10 @@ class Model < ApplicationRecord
     end
   end
 
+  def creation_comment
+    comments.where(system: true).order(:created_at).first
+  end
+
   private
 
   def normalize_license
