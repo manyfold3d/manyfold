@@ -59,6 +59,11 @@ module CaberObject
     end
   end
 
+  def owner
+    # Get the first owner
+    permitted_users.with_permission("own").first
+  end
+
   def will_be_public?
     return false unless caber_ready?
     @permission_preset == "public" || caber_relations.find { |it| it.subject.nil? }

@@ -9,6 +9,10 @@ shared_examples "Likeable" do
   context "with federation", :federated do
     let(:actor) { create(:actor, :distant) }
 
+    it "posts a like activity when added to liked list" do
+      expect { user.liked_list.models << thing }.to change { Federails::Activity.where(action: "Like").count }.by(1)
+    end
+
     it "includes remote Like activities in count" do # rubocop:todo RSpec/ExampleLength
       activity = {
         "action" => "Like",
