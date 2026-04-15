@@ -13,6 +13,7 @@ class Model < ApplicationRecord
   include Problematic
   include Indexable
   include FaspClient::DataSharing::Lifecycle
+  include Likeable
 
   broadcasts_refreshes
 

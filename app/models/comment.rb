@@ -10,7 +10,7 @@ class Comment < ApplicationRecord
   belongs_to :commenter, polymorphic: true, optional: true
   belongs_to :commentable, polymorphic: true
 
-  acts_as_federails_data handles: "Note", actor_entity_method: :commenter, url_param: :public_id, should_federate_method: :federate?
+  acts_as_federails_data handles: "Note", actor_entity_method: :commenter, url_param: :public_id, should_federate_method: :federate?, route_path_segment: :comments
   on_federails_delete_requested :federated_delete
 
   def to_activitypub_object
