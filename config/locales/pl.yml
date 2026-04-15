@@ -845,8 +845,6 @@ pl:
     activity:
       collection_published:
         comment: Nowa kolekcja modeli 3D ["%{name}"](%{url}) została właśnie opublikowana!
-      model_collected:
-        comment:
       model_published:
         comment: Nowy model 3D ["%{name}"](%{url}) został właśnie opublikowany!
       updated_model:
