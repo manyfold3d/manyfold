@@ -1,7 +1,232 @@
 ---
 zh-CN:
   activerecord:
+    attributes:
+      collection:
+        ai_indexable: 允许用于 AI 训练
+        caption: 标题
+        collection_id: 父合集
+        creator_id:
+          few: 创作者
+          many: 创作者
+          one: 创作者
+          other: 创作者
+          two: 创作者
+          zero: 创作者
+        indexable: 允许搜索索引
+        name: 名称
+        notes: 说明
+      creator:
+        ai_indexable: 允许用于 AI 训练
+        avatar: 头像
+        banner: 横幅图片
+        caption: 标语
+        indexable: 允许搜索索引
+        name: 创作者姓名
+        notes: 说明
+        slug:
+      doorkeeper/access_token:
+        active:
+        created_at: 创建于
+        expires_in:
+        fingerprint: 指纹
+        scopes: 权限范围
+        token: 访问令牌
+      doorkeeper/application:
+        confidential: 保密
+        created_at: 创建于
+        name: 应用名称
+        owner: 所有者
+        redirect_uri: 重定向 URI
+        scopes: 权限范围
+        secret: Client Secret
+        uid: Client ID
+      fasp_client_backfill_request:
+        category: 类别
+        created_at: 创建于
+        max_count: 最大计数
+      fasp_client_event_subscription:
+        category: 类别
+        created_at: 创建于
+        subscription_type: 订阅类型
+      fasp_client_provider:
+        base_url: URL
+        contact_email: 电子邮箱
+        created_at:
+        fediverse_account: Fediverse 地址
+        fingerprint: 指纹
+        privacy_policy: 隐私政策
+        sign_in_url: 登录
+        status:
+      federails/moderation/domain_block:
+        created_at: 创建于
+        domain:
+      federails/moderation/report:
+        content:
+        created_at: 接收于
+        federails_actor: 报告人
+        object:
+      group:
+        description: 说明
+        invitations:
+        memberships:
+        name: 名称
+        typed_id:
+      library:
+        caption: 标题
+        create_path_if_not_on_disk: 自动创建文件夹
+        default: 默认
+        icon: 图标
+        name: 名称
+        notes: 说明
+        parse_metadata_from_path:
+        path: 路径
+        path_template:
+        s3_access_key_id: Access Key ID
+        s3_bucket: Bucket Name
+        s3_endpoint: Endpoint URL
+        s3_path_style: 使用路径式 URL
+        s3_region: Region
+        s3_secret_access_key: Secret Access Key
+        safe_folder_names: 使用安全的文件夹名称
+        storage_service: 存储服务
+        tag_regex:
+      link:
+        url: 链接
+      list:
+        list_items:
+        name: 名称
+      list_item:
+        created_at:
+      model:
+        ai_indexable: 允许用于 AI 训练
+        caption: 标题
+        collection_id: 合集
+        creator_id: 创作者
+        indexable: 允许搜索索引
+        library_id: 资料库
+        license: 许可证
+        name: 名称
+        notes: 说明
+        path: 路径
+        preview_file: 预览文件
+        sensitive: 敏感内容
+      model_file:
+        caption: 标题
+        digest: 摘要
+        dimensions: 尺寸
+        filename: 文件名
+        notes: 说明
+        presupported: 有支撑
+        presupported_version_id: 有支撑的版本
+        previewable:
+        printed: 已打印
+        size: 文件大小
+        unsupported_version: 不支持的版本
+        y_up: Y 向上
+      problem:
+        category: 类别
+        ignored: 隐藏
+        note: 备注
+        problematic_type: 对象类型
+        severity: 严重性
+      user:
+        approved:
+        auth_uid:
+        confirmation_sent_at: 确认邮件发送于
+        confirmation_token: 确认令牌
+        confirmed_at: 确认于
+        created_at: 创建于
+        current_password: 当前密码
+        current_sign_in_at: 最近登录于
+        current_sign_in_ip: 最近登录 IP
+        email: 电子邮箱
+        encrypted_password: 密码被加密
+        failed_attempts: 失败尝试
+        interface_language: 界面语言
+        last_sign_in_at: 最后登录于
+        last_sign_in_ip: 最后登录的 IP
+        locked_at: 锁定于
+        password: 密码
+        password_confirmation: 密码确认
+        quota: 当前文件存储上限（MB）
+        quota_use_site_default: 使用网站默认文件存储限制？
+        remember_created_at: 记住创建于
+        remember_me: 记住登录信息
+        reset_password_sent_at: 重置密码发送于
+        reset_password_token: 密码重置令牌
+        sensitive_content_handling: 敏感内容
+        sign_in_count: 登录次数
+        sort_order: 排序方式
+        unconfirmed_email: 未确认邮件
+        unlock_token: 帐户解锁令牌
+        updated_at: 更新于
+        username: 账户名称
+    errors:
+      models:
+        collection:
+          attributes:
+            collection:
+              private: 必须公开
+            creator:
+              private: 必须公开
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              forbidden_uri: 被服务器禁止。
+              fragment_present: 不能包含网址片段（#）
+              invalid_uri: 必须是有效的 URI 格式
+              relative_uri: 必须是绝对的 URI 地址
+              secured_uri: 必须是 HTTPS/SSL 的 URI 地址
+              unspecified_scheme: 必须指定 Scheme。
+            scopes:
+              not_match_configured: 不匹配服务器上的配置。
+        library:
+          attributes:
+            path:
+              cannot_be_contained: 不能位于另一个库中
+              cannot_contain: 不能包含另一个库
+              non_readable:
+              non_readable_subfolder:
+              non_writable: 必须可写
+              non_writable_subfolder:
+              not_a_directory:
+              not_found: 在磁盘上找不到
+              unsafe: 路径无权访问
+        model:
+          attributes:
+            creator:
+              private: 必须公开
+            library:
+              nested: 不能更改，该模型包含其他模型
+            license:
+              invalid_spdx: 许可证无效
+            path:
+              destination_exists: 已存在
+              nested: 不能更改，该模型包含其他模型
+        model_file:
+          attributes:
+            filename:
+              cannot_change_type: 不是同一文件类型
+              case_change_only:
+            presupported_version:
+              already_presupported: 不能在有支撑的文件上设置
+              not_supported: 不是一个有支撑的文件
     models:
+      acts_as_taggable_on/tag:
+        few: 标签
+        many: 标签
+        one: 标签
+        other: 标签
+        two: 标签
+        zero: 标签
+      collection:
+        few: 合集
+        many: 合集
+        one: 合集
+        other: 合集
+        two: 合集
+        zero: 合集
       comment:
         few:
         many:
@@ -9,6 +234,452 @@ zh-CN:
         other:
         two:
         zero:
+      creator:
+        few: 创作者
+        many: 创作者
+        one: 创作者
+        other: 创作者
+        two: 创作者
+        zero: 创作者
+      doorkeeper/access_token:
+        few:
+        many:
+        one: 访问令牌
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      fasp_client_backfill_request:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      fasp_client_event_subscription:
+        few: 活动订阅
+        many: 活动订阅
+        one:
+        other: 活动订阅
+        two: 活动订阅
+        zero: 活动订阅
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      federails/moderation/domain_block:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      federails/moderation/report:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      group:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      library:
+        few: 资料库
+        many: 资料库
+        one: 资料库
+        other: 资料库
+        two: 资料库
+        zero: 资料库
+      link:
+        few: 链接
+        many: 链接
+        one: 链接
+        other: 链接
+        two: 链接
+        zero: 链接
+      list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      list_item:
+        few:
+        many:
+        one: 项目
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      model:
+        few: 模型
+        many: 模型
+        one: 模型
+        other: 模型
+        two: 模型
+        zero: 模型
+      model_file:
+        few: 文件
+        many: 文件
+        one: 文件
+        other: 文件
+        two: 文件
+        zero: 文件
+      problem:
+        few: 问题
+        many: 问题
+        one: 问题
+        other: 问题
+        two: 问题
+        zero: 问题
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      user:
+        few: 账户
+        many: 账户
+        one: 账户
+        other: 账户
+        two: 账户
+        zero: 账户
+  activity:
+    index:
+      description: "%{retention_period}之前的条目将被丢弃。"
+      message: 消息
+      name: 名称
+      time: 时间
+      title: 系统活动
+  activity_helper:
+    status_icon:
+      completed: Complete
+      error: Errored
+      queued: Queued
+      working: Working
+  application:
+    caber_relation_fields:
+      delete: 删除
+      permissions:
+        edit: 可编辑
+        own: 所有者（可以查看、编辑、删除和共享）
+        preview: 预览：只预览特定的可预览文件
+        view: 仅查看
+      subject:
+        placeholder: 电邮地址、账户名称或角色
+        role:
+          member: 任何登录的本地账户
+          public: 所有人（无需登录）
+        you: "（你）"
+    caber_relations_form:
+      add: 增加一个权限
+      permissions: 共享
+    demo_mode: 此实例处于演示模式。您不能添加或删除模型，但可以进行其他操作。
+    filters_card:
+      missing_tags: 缺少标签
+      owner: 所有者
+      remove_collection_filter: 移除合集过滤器
+      remove_creator_filter: 移除创建者过滤器
+      remove_library_filter: 删除资料库过滤器
+      remove_missing_tag_filter: 删除丢失的标签过滤器
+      remove_owner_filter:
+      remove_search_filter: 移除搜索过滤器
+      remove_tag_filter: 移除标签过滤器
+      search: 搜索
+      title: 过滤
+      unknown: 未知
+    footer:
+      about: 关于本实例
+      api: 应用程序接口
+      by_html: 由 <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">James</a> 和 <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">贡献者们</a> 的帮助下设计和制作。
+      community: 加入社区
+      instance_heading: 实例信息
+      issues: 报告问题
+      open_source_html: 根据 <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">GNU Affero GPL 3.0</a> <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">开源</a>。
+      sponsor: 赞助
+      support: 支持此实例
+      version: 版本
+    link_fields:
+      url:
+        delete: 删除
+        placeholder: 任何相关的网页链接
+    links_form:
+      add: 添加新链接
+    navbar:
+      account: 我的设置
+      activity: 近期动态
+      add_models: 添加内容
+      check_existing:
+        confirm: 您确定要重新扫描所有现有模型吗？这可能需要很长时间！
+        label: 重新扫描所有模型
+      check_results:
+        confirm: 您确定要重新扫描所有已过滤的模型吗？这可能需要很长时间！
+        label: 重新扫描已过滤的模型
+      developer:
+      home: 主页
+      import_url: 导入 URL
+      log_in: 登录
+      log_out: 退出
+      moderator_settings: 管理员设置
+      my_stuff:
+      navbar:
+        toggler:
+          label: 切换导航
+      scan: 扫描
+      scan_changes:
+        confirm: 您确定要扫描所有库中的新文件吗？这可能需要很长时间！
+        label: 扫描新文件
+      scanning: 正在扫描
+      search: 搜索
+      settings: 网站设置
+      social:
+      upload: 上传模型
+    search_error: 搜索语法错误。请检查并重试！
+    tag_list:
+      unrelated_tag_count:
+        one: "%{count} 个无关标签已隐藏"
+        other: "%{count} 个无关标签已隐藏"
+    tagline: 帮助您管理 3D 打印文件
+    tags_card:
+      skip_tags: 跳过标签列表
+    title: Manyfold
+  application_helper:
+    ai_indexable_select_options:
+      always_no: 始终为否
+      always_yes: 始终为是
+      inherit: 从父对象或默认网站设置继承；当前为 %{inherited}
+    indexable_select_options:
+      always_no: 始终为否
+      always_yes: 始终为是
+      inherit: 从父对象或默认网站设置继承；当前为 %{inherited}
+      'no': 否
+      'yes': 是
+  comments:
+    destroy:
+      destroyed:
+  components:
+    actor_card:
+      non_manyfold_account: 这不是一个 Manyfold 账户；你可以关注它，但目前可能不会发生什么有趣的事情。
+    altcha_widget:
+      help:
+    column_header:
+      current_sort:
+      sort_by: 排序方式
+    comment:
+      confirm_delete:
+      delete: 删除
+      posted:
+      report:
+      reported:
+      system:
+    copy_button:
+      copy: 复制到剪贴板
+    copyable_text:
+      reveal:
+    display_user_quota:
+      request_increase: 如需增加配额，请联系管理员。
+    download_button:
+      download:
+        missing: 请求下载
+        preparing: 正在准备下载，请稍候
+        ready: 可下载
+      file_type: 仅限 %{type} 文件
+      label: 全部下载
+      menu_header: 下载选项
+      supported: 仅限支持的文件
+      unsupported: 仅限不支持的文件
+    follow_button:
+      follow: 关注 %{name}
+      pending: 已请求
+      unfollow: 取消关注 %{name}
+    image_carousel:
+      next:
+      play_pause:
+      previous:
+      select_slide: 选择要显示的图像
+      slide_label:
+    like_button:
+      like:
+      unlike:
+    link_list:
+      sync: 同步
+    lists_card:
+      add_to_list:
+      on_lists:
+      remove:
+      title:
+    modal:
+      close: 关闭
+    model_card:
+      delete_button:
+        label: 删除模型 %{name}
+        text: 删除
+      edit_button:
+        label: 编辑模型 %{name}
+        text: 编辑
+      no_preview: 预览不可用
+      open_button:
+        label: 打开模型 %{name}
+        text: 打开
+    new_comment_form:
+      placeholder:
+      submit:
+      title:
+    path_template_preview:
+      description:
+      path: 路径
+    search_help:
+      boolean: 使用 "or" 查找匹配的模型。
+      federation: 搜索任何 Fediverse 用户名，即可关注该用户。
+      filename: 您可以通过明确指定在文件名字段内进行搜索。
+      intro: 使用搜索语法查找所需内容：
+      more_details_html: 有关详细信息，请阅读 <a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">scoped_search 查询语言</a> 的完整文档。
+      negation: 使用 "not"、"!" 或 "-" 来排除。
+      parentheses: 用括号将搜索词分组，以实现更复杂的逻辑组合。
+      path: 通过明确指定在模型文件夹路径内搜索；使用 `~` 进行部分匹配。
+      quotes: 要查找多个单词，请使用引号；只有包含确切文本的模型才会显示。
+      simple: 默认情况下，搜索将查找符合所有条件的模型。
+      specific_fields: 您可以在几个特定字段中查找关键词。使用"~"匹配部分字段；"="将尝试匹配整个字段。只有在明确指定字段的情况下，才会搜索模型描述和库名。
+      tag: 查找带有特定 Tag 的模型
+      title: 搜索语法
+      unset: 使用 "set?" 查询特定字段是否已设置，添加 "not" 则可查找相反字段。
+      without_tag: 使用 "!tag" 查找不带有特定 Tag 的模型
+    sort_menu:
+      name: 标题
+      recent: 上传时间
+      updated: 更新时间
+  concerns:
+    linkable:
+      sync:
+        bad_request: 同步失败：缺少链接 ID
+        success: 同步请求成功
+  doorkeeper:
+    errors:
+      messages:
+        access_denied: 资源所有者或服务器拒绝了请求。
+        admin_authenticator_not_configured: 由于 Doorkeeper.configure.admin_authenticator 尚未配置，禁止访问管理员面板。
+        credential_flow_not_configured: 由于 Doorkeeper.configure.resource_owner_from_credentials 尚未配置，应用验证授权流程失败。
+        forbidden_token:
+          missing_scope:
+        invalid_client: 由于应用信息未知、未提交认证信息或使用了不支持的认证方式，认证失败。
+        invalid_code_challenge_method:
+          one:
+          other:
+          zero:
+        invalid_grant: 授权方式无效、过期或已被撤销、与授权请求中的回调地址不一致，或使用了其他应用的回调地址。
+        invalid_redirect_uri: 无效的登录回调地址。
+        invalid_request:
+          invalid_code_challenge:
+          missing_param: 'Missing required parameter: %{value}.'
+          request_not_authorized: Request need to be authorized. Required parameter for authorizing request is missing or invalid.
+          unknown: 请求缺少必要的参数，或者参数值、格式不正确。
+        invalid_scope: 请求的权限范围无效、未知或格式不正确。
+        invalid_token:
+          expired: 访问令牌已过期
+          revoked: 访问令牌已被吊销
+          unknown: 访问令牌无效
+        resource_owner_authenticator_not_configured: 由于 Doorkeeper.configure.resource_owner_authenticator 尚未配置，查找资源所有者失败。
+        revoke:
+          unauthorized: You are not authorized to revoke this token
+        server_error: 服务器异常，无法处理请求。
+        temporarily_unavailable: 服务器维护中或负载过高，暂时无法处理请求。
+        unauthorized_client: 未授权的应用，请求无法执行。
+        unsupported_grant_type: 服务器不支持此类型的授权方式。
+        unsupported_response_mode:
+        unsupported_response_type: 服务器不支持这种响应类型。
+    flash:
+      applications:
+        create:
+          notice: 应用创建成功。
+        destroy:
+          notice: 应用删除成功。
+        update:
+          notice: 应用修改成功。
+      authorized_applications:
+        destroy:
+          notice: 已成功撤销对此应用的授权。
+  doorkeeper_access_tokens:
+    create:
+      failed:
+      success:
+    destroy:
+      success:
+    new:
+      expiry:
+        label:
+      scopes:
+        label: 权限范围
+      submit: 提交
+      title:
+    show:
+      bearer_token_help:
+      description:
+      done:
+      title:
+  doorkeeper_applications:
+    create:
+      failure: 发生错误，应用无法创建。
+      success: 应用创建成功。
+    destroy:
+      success: 应用已成功删除。
+    edit:
+      title: 修改应用
+    form:
+      confidential:
+        help: 保密应用程序可以安全地保存机密（如网络服务器后台或机器到机器脚本）。
+      redirect_uri:
+        help:
+      scopes:
+        label: 权限范围
+      submit: 保存应用
+    index:
+      description: OAuth 应用程序允许您通过我们的 API 从其他服务访问 Manyfold 资源。
+      moderator_notice:
+      new: 创建新应用
+      title: OAuth 应用程序
+    new:
+      title: 新应用
+    show:
+      destroy: 删除
+      edit: 编辑
+      oauth_help:
+      revoke:
+        confirm:
+        label: 撤销授权
+      title: 应用详情
+      token_help:
+      tokens:
+    update:
+      failure: 发生错误，应用无法保存。
+      success: 应用已成功保存。
+  doorkeeper_applications_helper:
+    token_expiry_string:
+      expired:
+      never: 从不
+      revoked:
   errors:
     messages:
       already_confirmed:
@@ -20,3 +691,338 @@ zh-CN:
         one:
         other:
       weak_password:
+  fasp_client:
+    providers:
+      edit:
+        approval_help:
+        approve: 批准
+        capability:
+        contact_details:
+        data_sharing: 数据共享
+        deny: 拒绝授权
+        disable: 禁用
+        enable: 启用
+        links: 链接
+        registration: 注册
+        versions: 版本
+      index:
+        add_html:
+        description_html: 作为<a href="https://fediscovery.org" target="_new" rel="noopener">Fediscovery 项目</a>的一部分，Fediverse 辅助服务提供商 (FASP) 可为 Fediverse 服务器提供搜索、趋势、垃圾邮件检测等额外功能。
+        heading:
+        provider_list_title:
+        search_3dprint_social_html:
+  follows:
+    actor_table:
+      actions: 动作
+      address:
+      name: 名称
+    follow_remote_actor:
+      followed:
+    index:
+      explore_html:
+      followers: 粉丝
+      following:
+      title:
+    new:
+      no_results:
+      recommended:
+      results: 搜索结果
+      title:
+    remote_follow:
+      help:
+      no_results_html:
+      placeholder:
+      submit:
+      title:
+    search_form:
+      help: 您可以关注其他 Manyfold 服务器上的公共创作者、作品集或模型，实际上是 Fediverse 中的任何公共账户！只需在搜索框中输入账户名称即可！
+      placeholder:
+      submit: 搜索
+    unfollow_remote_actor:
+      unfollowed:
+  general:
+    copy_fediverse_handle:
+    delete: 删除
+    download: 下载
+    edit: 编辑
+    expand: 展开
+    followers:
+      few: "%{count} 粉丝"
+      many: "%{count} 粉丝"
+      one: "%{count} 粉丝"
+      other: "%{count} 粉丝"
+      two: "%{count} 粉丝"
+      zero: "%{count} 粉丝"
+    menu: 菜单
+    new:
+    no_change:
+    none:
+    private:
+    public: 公开可见
+    report:
+    save: 保存
+    shared: 与本地用户共享
+    view: 查看
+  group_mailer:
+    new_member:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
+  groups:
+    create:
+      success:
+    form:
+      add:
+      description:
+        help:
+      intro:
+      name:
+        help:
+    membership_fields:
+      user_id:
+        delete: 删除
+        placeholder: 账户名称
+    update:
+      success:
+  home:
+    activity:
+      created: 添加于 %{time} 前
+      updated: 更新于 %{time} 前
+    browsing:
+      content: 您可以点击菜单栏中的链接来浏览模型；浏览完整列表并按标签过滤，或按集合或创作者浏览。或者，只需在搜索框中输入您想要的内容即可！
+      manual_link: 用户指南
+      more_access: 目前，您对该实例仅有只读权限；要获得更多权限（如上传），请联系管理员。
+      title: 浏览
+    federation:
+      account_handle:
+      content_html: 这个 Manyfold 实例是<a href="https://jointhefediverse.net">Fediverse</a> 的一部分，<a href="https://jointhefediverse.net">Fediverse</a> 是一个由多个社交媒体网站组成的网络，所有这些网站都能协同工作。这意味着，如果您在这里拥有一个账户，您就可以关注其他 Manyfold 实例上的内容，或者人们可以关注您在其他平台（如 Mastodon）上的内容。
+      creator_handle:
+      creator_handle_html:
+      handle_html:
+      title:
+      users_v_creators:
+    index:
+      no_activities: 暂时没有动态要展示。
+      open_search_help: 搜索语法
+      recent_activity: 近期更新
+      search:
+        placeholder: 搜索本地模型库
+        submit: 搜索
+    publishing:
+      content: 您可以在项目的编辑页面上向 "公开 "角色授予 "查看 "或 "预览 "权限，从而公开发布内容。公开模型的创建者会自动公开，但如果想让收藏可见，则需要明确发布。
+      existing_creator:
+        button: 编辑创作者简介
+        content: 如果您要发布自己的作品，您可能需要自定义您的创作者简介：
+      new_creator:
+        button: 设置新的创建者简介
+        content: 如果您要发布自己的作品，您可能需要自定义您的创作者简介：
+      title: 发布
+    support:
+      content: 每个人都可以自由运行 Manyfold 实例！如果您觉得这个实例有用，可以点击下面的链接帮助它继续运行。
+      manyfold_html: 您可以在<a href="https://opencollective.com/manyfold">OpenCollective</a> 上支持 Manyfold 软件的开发。
+      support_link: 支持此实例
+      support_manyfold:
+      title: 支持
+    uploading:
+      quota: 您最多可以上传 %{quota} 个内容，可随时在设置页面上查看当前配额使用情况。
+      title: 正在上传
+    welcome:
+      lead: 该网站正在运行用于管理和共享 3D 模型的软件 Manyfold，以下是快速指南 ...
+      title: 欢迎来到 %{site_name}！
+  imports:
+    bad_url: 我们无法从该 URL 获取任何有用的信息；它可能是不正确的或不支持的。
+    create:
+      success: 已请求导入；结果很快就会出现。
+    new:
+      description: 在某些网站上，Manyfold 只需一个链接就能为您下载模型！
+      heading: 从链接导入
+      import: 导入此链接
+      import_capabilities: 我们可以从其它托管网站导入模型、创建者和收藏。您输入网址后，将显示可以导入的内容。
+      import_type_html: "<code>%{url}</code> 将被添加为新的 %{object_type}。可自动导入以下数据："
+      integration_settings: 编辑集成设置
+      placeholder: 粘贴要导入内容的地址（如 https://thingiverse.com/thing:1234）
+      submit: 导入
+      supported_sites: 支持的网站
+  jobs:
+    activity:
+      collection_published:
+        comment:
+      model_collected:
+        comment:
+      model_published:
+        comment:
+      updated_model:
+        comment:
+    analysis:
+      analyse_model_file:
+        detect_duplicates:
+        detect_ineffiency:
+        file_statistics:
+        matching:
+      file_conversion:
+        exporting:
+        loading_mesh:
+      geometric_analysis:
+        direction_check:
+        loading_mesh:
+        manifold_check:
+    scan:
+      detect_filesystem_changes:
+        building_folder_list:
+        creating_models:
+    upgrade:
+      backfill_image_derivatives:
+        processing:
+      backfill_model_renders:
+        rendering:
+  kaminari:
+    first_page:
+      label:
+    last_page:
+      label:
+    next_page:
+      label:
+    page:
+      current_page:
+      label:
+    paginator:
+      label:
+    prev_page:
+      label:
+  layouts:
+    application:
+      alert:
+        danger: 危险
+        info: 信息
+      skip_to_content: 退回到主站
+    card_list_page:
+      actions_heading: 动作
+    mailer:
+      footer:
+      greeting: Hi,
+    settings:
+      appearance: 外观
+      integrations_heading: 集成
+      libraries: 资料库
+      moderation_heading: 审核
+      moderation_settings_title: 审核设置
+      organization: 整理
+      performance: 性能仪表板
+      pghero: PgHero
+      search_heading: 搜索与发现
+      sidekiq: Sidekiq
+      site_settings_title: 网站设置
+      tools_heading: 高级工具
+  licenses:
+    0BSD: BSD Zero Clause License
+    CC-BY-40: Creative Commons Attribution
+    CC-BY-NC-40: Creative Commons Attribution NonCommercial
+    CC-BY-NC-ND-40: Creative Commons Attribution NonCommercial NoDerivatives
+    CC-BY-NC-SA-40: Creative Commons Attribution NonCommercial ShareAlike
+    CC-BY-ND-40: Creative Commons Attribution NoDerivatives
+    CC-BY-SA-40: Creative Commons Attribution ShareAlike
+    CC-PDDC: Creative Commons Public Domain Declaration
+    CC0-10: Creative Commons Zero
+    CERN-OHL-P-20: CERN Open Hardware Licence Version 2 - Permissive
+    CERN-OHL-S-20: CERN Open Hardware Licence Version 2 - Strongly Reciprocal
+    CERN-OHL-W-20: CERN Open Hardware Licence Version 2 - Weakly Reciprocal
+    GPL-20-only: GNU General Public License v2.0
+    GPL-30-only: GNU General Public License v3.0
+    LGPL-20-only: GNU Lesser General Public License v2
+    LGPL-30-only: GNU Lesser General Public License v3
+    LicenseRef-Commercial: Commercial; private use only
+    MIT: MIT
+  lists:
+    create:
+      success:
+    destroy:
+      success:
+    special:
+      liked:
+    update:
+      success:
+  moderator_mailer:
+    new_approval:
+      message: 有新用户注册了账户，需要批准。批准 %{link} 账户
+      subject: 新账户需要批准
+    new_report:
+      message: 有人报告了需要修改的内容。查看 %{link}
+      subject: 收到新报告
+  renderer:
+    errors:
+      load: 加载错误
+    load: 加载
+    processing: 加载中...
+  reports:
+    create:
+      success: 报告已提交。谢谢！
+    new:
+      description: 如果此项目违反了任何法律或服务器政策，您可以向管理员报告。添加评论，让我们知道原因！
+      submit: 发送报告
+      title: 报告 %{type}："%{name}"：
+  scans:
+    create:
+      success: 扫描已开始。
+  security:
+    running_as_root_html: Manyfold 以 root 用户身份运行，存在安全隐患。通过设置 <code>PUID</code> 和 <code>PGID</code> 环境变量，以不同的系统用户身份运行。详情请查看 <a href='https://manyfold.app/sysadmin/configuration.html#required'>配置文档</a>。
+  sites:
+    cgtrader: CGTrader
+    comicsgamesandthings: Comics, Games, and Things
+    cults3d: Cults3D
+    fediverse: The Fediverse
+    github: GitHub
+    makerworld: MakerWorld
+    manyfold: Manyfold
+    myminifactory: MyMiniFactory
+    printables: Printables
+    thangs: Thangs
+    theminiindex: The Mini Index
+    thingiverse: Thingiverse
+    yeggi: Yeggi
+  user_mailer:
+    account_approved:
+      message: 您的账户已获批准，您现在可以登录 %{link} 。
+      subject: 核准账户
+    test_email:
+      subject: 测试电子邮件
+      test_email_message: 测试电子邮件
+  users:
+    registrations:
+      create:
+        altcha_failed: ALTCHA 验证失败
+  views:
+    groups:
+      edit:
+        title: 编辑
+      form:
+        confirm_destroy:
+      index:
+        copy:
+        description:
+        invite_count:
+        member_count:
+        title:
+      new:
+        title:
+    lists:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:
+      show:
+        description:
+        title:
+    pagination:
+      first: "«  首页"
+      last: 末页 »
+      next: 下一页  ›
+      previous: "‹ 上一页"
+      truncate: "…"
