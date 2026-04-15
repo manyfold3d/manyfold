@@ -63,5 +63,13 @@ RSpec.describe ActivityPub::ModelSerializer do
         summary: "caption here"
       })
     end
+
+    it "includes a likes collection" do
+      expect(ap[:likes]).to include({
+        id: object.federails_actor.federated_url + "#likes",
+        type: "Collection",
+        totalItems: 0
+      })
+    end
   end
 end
