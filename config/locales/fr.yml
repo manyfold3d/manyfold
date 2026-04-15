@@ -1018,9 +1018,7 @@ fr:
       subject: Nouveau rapport reçu
   renderer:
     errors:
-      canvas: 'Impossible de trouver le canevas #webgl !'
       load: Erreur de chargement
-      webglrenderer: Impossible de créer le rendu !
     load: Chargement
     processing: Réticulation des splines...
   reports:

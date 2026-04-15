@@ -1017,9 +1017,7 @@ de:
       subject: Neuer Bericht eingegangen
   renderer:
     errors:
-      canvas: 'Konnte #webgl canvas nicht finden!'
       load: Fehler beim Laden
-      webglrenderer: Renderer konnte nicht erstellt werden!
     load: Lädt
     processing: verarbeite Mesh
   reports:

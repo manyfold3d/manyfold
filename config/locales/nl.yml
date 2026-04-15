@@ -1013,9 +1013,7 @@ nl:
       subject:
   renderer:
     errors:
-      canvas: 'Kon #webgl canvas niet vinden!'
       load: Laadfout
-      webglrenderer: Kon renderer niet maken!
     load: Laden
     processing: Splines herberekenen...
   reports:

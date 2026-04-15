@@ -1013,9 +1013,7 @@ pl:
       subject: Otrzymano nowe zgłoszenie
   renderer:
     errors:
-      canvas: 'Nie można znaleźć canvasu #webgl!'
       load: Błąd wczytywania
-      webglrenderer: Nie można utworzyć renderera!
     load: Wczytywanie
     processing: Procesowanie siatki
   reports:

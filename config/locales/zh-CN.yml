@@ -1018,9 +1018,7 @@ zh-CN:
       subject: 收到新报告
   renderer:
     errors:
-      canvas: '找不到 #webgl 画布！'
       load: 加载错误
-      webglrenderer: 无法创建渲染器！
     load: 加载
     processing: 加载中...
   reports:

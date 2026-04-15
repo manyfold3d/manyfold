@@ -63,8 +63,5 @@ RSpec.describe ActivityPub::ModelSerializer do
         summary: "caption here"
       })
     end
-
-    it "includes a likes collection" do
-    end
   end
 end

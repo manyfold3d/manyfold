@@ -1013,9 +1013,7 @@ es:
       subject: Nuevo informe recibido
   renderer:
     errors:
-      canvas: "¡No se encontró el canvas #webgl!"
       load: Error de carga
-      webglrenderer: No se ha podido crear el renderizado
     load: Carga
     processing: Generando splines...
   reports:
