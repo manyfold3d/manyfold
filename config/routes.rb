@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     end
     mount Sidekiq::Web => "/admin/sidekiq"
     mount RailsPerformance::Engine => "/admin/performance" unless Rails.env.test? || ENV["RAILS_ASSETS_PRECOMPILE"].present?
-    mount PgHero::Engine => "/admin/pghero"
+    mount PgHero::Engine => "/admin/pghero" if defined?(PgHero)
     get "/activity" => "activity#index", :as => :activity
   end
 
