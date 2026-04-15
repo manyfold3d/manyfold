@@ -53,6 +53,14 @@ RSpec.describe ActivityPub::CommentSerializer do
     it "adds tag link" do
       expect(ap["content"]).to include "<a role=\"listitem\" href=\"http://localhost:3214/models?tag=tag\" class=\"mention hashtag\" rel=\"tag\">#Tag</a>"
     end
+
+    it "includes a likes collection" do
+      expect(ap["likes"]).to include({
+        id: model.federails_actor.federated_url + "#likes",
+        type: "Collection",
+        totalItems: 0
+      })
+    end
   end
 
   context "when commenting on something with no tags" do
