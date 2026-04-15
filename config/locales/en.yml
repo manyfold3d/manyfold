@@ -953,7 +953,9 @@ en:
       subject: New report received
   renderer:
     errors:
+      canvas: 'Could not find #webgl canvas!'
       load: Load Error
+      webglrenderer: Could not create renderer!
     load: Load
     processing: Reticulating splines...
   reports:

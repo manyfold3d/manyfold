@@ -1,9 +1,745 @@
 ---
 nl:
   activerecord:
+    attributes:
+      collection:
+        ai_indexable: Gebruik voor AI-training toestaan
+        caption: Onderschrift
+        collection_id:
+        creator_id:
+          few: Makers
+          many: Makers
+          one: Maker
+          other: Makers
+          two: Makers
+          zero: Makers
+        indexable: Indexering voor zoekopdrachten toestaan
+        name: Naam
+        notes: Notities
+      creator:
+        ai_indexable: Gebruik voor AI-training toestaan
+        avatar: Avatar afbeelding
+        banner: Afbeelding banner
+        caption: Tagline
+        indexable: Indexering voor zoekopdrachten toestaan
+        name: Naam
+        notes: Beschrijving
+        slug:
+      doorkeeper/access_token:
+        active:
+        created_at: Aangemaakt op
+        expires_in: Verloopt over
+        fingerprint: Vingerafdruk
+        scopes: Scopes
+        token: Toegangssleutel
+      doorkeeper/application:
+        confidential: Confidentieel
+        created_at: Aangemaakt op
+        name: Naam
+        owner: Eigenaar
+        redirect_uri: Redirect URI
+        scopes: Scopes
+        secret:
+        uid:
+      fasp_client_backfill_request:
+        category: Categorie
+        created_at:
+        max_count:
+      fasp_client_event_subscription:
+        category:
+        created_at:
+        subscription_type:
+      fasp_client_provider:
+        base_url:
+        contact_email: E-mail
+        created_at:
+        fediverse_account: Fediverse-adres
+        fingerprint:
+        privacy_policy:
+        sign_in_url: Inloggen
+        status:
+      federails/moderation/domain_block:
+        created_at: Aangemaakt op
+        domain: Domein
+      federails/moderation/report:
+        content: Opmerking
+        created_at: Ontvangen op
+        federails_actor: Gerapporteerd door
+        object: Object
+      group:
+        description: Beschrijving
+        invitations: Uitnodigingen
+        memberships: Lidmaatschappen
+        name: Naam
+        typed_id: Toestemming ID
+      library:
+        caption: Onderschrift
+        create_path_if_not_on_disk: Map automatisch aanmaken
+        default: Standaard
+        icon: Icoon
+        name: Naam
+        notes: Notities
+        parse_metadata_from_path:
+        path: Pad
+        path_template:
+        s3_access_key_id: Toegangssleutel ID
+        s3_bucket: Bucket Naam
+        s3_endpoint: Endpoint URL
+        s3_path_style: Gebruik padachtige URL's
+        s3_region: Regio
+        s3_secret_access_key: Geheime Toegangssleutel
+        safe_folder_names: Gebruik veilige mapnamen
+        storage_service: Opslagservice
+        tag_regex: Vereiste Tags
+      link:
+        url: Link
+      list:
+        list_items: Items
+        name: Naam
+      list_item:
+        created_at: Toegevoegd
+      model:
+        ai_indexable: Gebruik voor AI-training toestaan
+        caption: Onderschrift
+        collection_id: Collectie
+        creator_id: Maker
+        indexable: Indexering voor zoekopdrachten toestaan
+        library_id: Bibliotheek
+        license: Licentie
+        name: Naam
+        notes: Beschrijving
+        path: Pad
+        preview_file: Voorbeeldbestand
+        sensitive: Gevoelige Inhoud
+      model_file:
+        caption: Onderschrift
+        digest: Digest
+        dimensions: Afmetingen
+        filename: Bestandsnaam
+        notes: Notities
+        presupported: Voorondersteund
+        presupported_version_id: Voorondersteunde versie
+        previewable:
+        printed: Afgedrukt
+        size: Bestandsgrootte
+        unsupported_version: Niet-ondersteunde versie
+        y_up: Y Omhoog
+      problem:
+        category: Categorie
+        ignored: Verborgen
+        note: Notitie
+        problematic_type: Objecttype
+        severity: Ernst
+      user:
+        approved: Account in behandeling
+        auth_uid: OIDC
+        confirmation_sent_at: Bevestiging verzonden op
+        confirmation_token: Bevestigingstoken
+        confirmed_at: Bevestigd op
+        created_at: Aangemaakt op
+        current_password: Huidig wachtwoord
+        current_sign_in_at: Huidige inlogtijd
+        current_sign_in_ip: Huidig inlog IP
+        email: E-mail
+        encrypted_password: Versleuteld wachtwoord
+        failed_attempts: Mislukte pogingen
+        interface_language: Interfacetaal
+        last_sign_in_at: Laatste inlogtijd
+        last_sign_in_ip: Laatste inlog IP
+        locked_at: Vergrendeld op
+        password: Wachtwoord
+        password_confirmation: Bevestig wachtwoord
+        quota:
+        quota_use_site_default:
+        remember_created_at: Onthouden aangemaakt op
+        remember_me: Onthoud mij
+        reset_password_sent_at: Wachtwoord reset verzonden op
+        reset_password_token: Wachtwoord reset token
+        sensitive_content_handling: Gevoelige Inhoud
+        sign_in_count: Aantal keer ingelogd
+        sort_order:
+        unconfirmed_email: Onbevestigde e-mail
+        unlock_token: Ontgrendelingstoken
+        updated_at: Bijgewerkt op
+        username: Gebruikersnaam
+    errors:
+      models:
+        collection:
+          attributes:
+            collection:
+              private: moet openbaar zijn
+            creator:
+              private: moet openbaar zijn
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              forbidden_uri: is forbidden by the server.
+              fragment_present: kan geen fragment bevatten.
+              invalid_uri: moet een geldige URI zijn.
+              relative_uri: moet een absolute URI zijn.
+              secured_uri: moet een HTTPS/SSL URI zijn.
+              unspecified_scheme: moet een schema specificeren.
+            scopes:
+              not_match_configured: komt niet overeen met server configuratie.
+        library:
+          attributes:
+            path:
+              cannot_be_contained: kan niet in een andere bibliotheek staan
+              cannot_contain: kan geen andere bibliotheken bevatten
+              non_readable: moet leesbaar zijn
+              non_readable_subfolder: bevat onleesbare submappen
+              non_writable: moet schrijfbaar zijn
+              non_writable_subfolder: bevat niet-schrijfbare submappen
+              not_a_directory: is geen map
+              not_found: kon niet worden gevonden op schijf
+              unsafe: kan geen bevoorrecht systeempad zijn
+        model:
+          attributes:
+            creator:
+              private: moet openbaar zijn
+            library:
+              nested: kan niet worden gewijzigd, model bevat andere modellen
+            license:
+              invalid_spdx: is geen geldige licentie
+            path:
+              destination_exists: bestaat al
+              nested: kan niet worden gewijzigd, model bevat andere modellen
+        model_file:
+          attributes:
+            filename:
+              cannot_change_type: is niet hetzelfde bestandstype
+              case_change_only: kan niet alleen hoofdletters/kleine letters wijzigen
+            presupported_version:
+              already_presupported: kan niet worden ingesteld op een voorondersteund bestand
+              not_supported: is geen voorondersteund bestand
     models:
+      acts_as_taggable_on/tag:
+        few: Tags
+        many: Tags
+        one: Tag
+        other: Tags
+        two: Tags
+        zero: Tags
+      collection:
+        few: Collecties
+        many: Collecties
+        one: Collectie
+        other: Collecties
+        two: Collecties
+        zero: Collecties
       comment:
         few:
+      creator:
+        few: Makers
+        many: Makers
+        one: Maker
+        other: Makers
+        two: Makers
+        zero: Makers
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few:
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      federails/moderation/domain_block:
+        few: Domeinblokkeringen
+        many: Domeinblokkeringen
+        one: Domeinblokkering
+        other: Domeinblokkeringen
+        two: Domeinblokkeringen
+        zero: Domeinblokkeringen
+      federails/moderation/report:
+        few: Meldingen
+        many: Meldingen
+        one: Melding
+        other: Meldingen
+        two: Meldingen
+        zero: Meldingen
+      group:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      library:
+        few: Bibliotheken
+        many: Bibliotheken
+        one: Bibliotheek
+        other: Bibliotheken
+        two: Bibliotheken
+        zero: Bibliotheken
+      link:
+        few: Links
+        many: Links
+        one: Link
+        other: Links
+        two: Links
+        zero: Links
+      list:
+        few: Lijsten
+        many: Lijsten
+        one: Lijst
+        other: Lijsten
+        two: Lijsten
+        zero: Lijsten
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      model:
+        few: Modellen
+        many: Modellen
+        one: Model
+        other: Modellen
+        two: Modellen
+        zero: Modellen
+      model_file:
+        few: Bestanden
+        many: Bestanden
+        one: Bestand
+        other: Bestanden
+        two: Bestanden
+        zero: Bestanden
+      problem:
+        few: Problemen
+        many: Problemen
+        one: Probleem
+        other: Problemen
+        two: Problemen
+        zero: Problemen
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      user:
+        few: Gebruikers
+        many: Gebruikers
+        one: Gebruiker
+        other: Gebruikers
+        two: Gebruikers
+        zero: Gebruikers
+  activity:
+    index:
+      description: Items worden verwijderd na %{retention_period}.
+      message: Bericht
+      name: Naam
+      time: Wanneer
+      title: Recente Activiteit
+  activity_helper:
+    status_icon:
+      completed: Voltooid
+      error: Fout
+      queued: In wachtrij
+      working: Bezig
+  application:
+    caber_relation_fields:
+      delete: Verwijderen
+      permissions:
+        edit: Kan bewerken
+        own: Eigenaar (kan bekijken, bewerken, verwijderen en delen)
+        preview:
+        view: Alleen bekijken
+      subject:
+        placeholder: E-mailadres, gebruikersnaam of rol
+        role:
+          member: Elke ingelogde lokale gebruiker
+          public: Iedereen (zonder inloggen)
+        you: "(jij)"
+    caber_relations_form:
+      add: nog een machtiging toevoegen
+      permissions: Delen
+    demo_mode: Deze instantie staat in demomodus. Je kunt geen modellen toevoegen of verwijderen, maar je kunt wel alles anders doen.
+    filters_card:
+      missing_tags: Ontbrekende tags
+      owner: Eigenaar
+      remove_collection_filter: Collectiefilter verwijderen
+      remove_creator_filter: Makerfilter verwijderen
+      remove_library_filter: Bibliotheekfilter verwijderen
+      remove_missing_tag_filter: Filter voor ontbrekende tag verwijderen
+      remove_owner_filter: Verwijder eigenaar filter
+      remove_search_filter: Zoekfilter verwijderen
+      remove_tag_filter: Tagfilter verwijderen
+      search: Zoeken
+      title: Filters
+      unknown: Onbekend
+    footer:
+      about: Over deze instantie
+      api: Verken onze API
+      by_html: Ontworpen en gebouwd door <a href="https://floppy.org.uk" target="_blank">James</a> met hulp van <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">onze bijdragers</a>.
+      community: Word lid van onze gemeenschap
+      instance_heading:
+      issues: Problemen
+      open_source_html: Open Source onder de <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">GNU Affero GPL 3.0</a>.
+      sponsor: Sponsor
+      support:
+      version: Versie
+    link_fields:
+      url:
+        delete: Verwijderen
+        placeholder: Elke gerelateerde webpagina
+    links_form:
+      add: nog een link toevoegen
+    navbar:
+      account: Mijn Instellingen
+      activity: Activiteit
+      add_models:
+      check_existing:
+        confirm:
+        label: Bestaande modellen controleren
+      check_results:
+        confirm:
+        label:
+      developer:
+      home: Startpagina
+      import_url:
+      log_in: Inloggen
+      log_out: Uitloggen
+      moderator_settings:
+      my_stuff:
+      navbar:
+        toggler:
+          label: Navigatie in-/uitklappen
+      scan: Scannen
+      scan_changes:
+        confirm:
+        label: Scannen op wijzigingen
+      scanning: Bezig met scannen
+      search: Zoeken
+      settings: Site-instellingen
+      social:
+      upload: Uploaden
+    search_error:
+    tag_list:
+      unrelated_tag_count:
+        one: "%{count} ongerelateerde tag verborgen"
+        other: "%{count} ongerelateerde tags verborgen"
+    tagline: Helpt je je 3D-printbestanden bij te houden
+    tags_card:
+      skip_tags: Taglijst overslaan
+    title: Manyfold
+  application_helper:
+    ai_indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+    indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+      'no': Nee
+      'yes': Ja
+  comments:
+    destroy:
+      destroyed:
+  components:
+    actor_card:
+      non_manyfold_account:
+    altcha_widget:
+      help:
+    column_header:
+      current_sort:
+      sort_by:
+    comment:
+      confirm_delete:
+      delete: Verwijderen
+      posted:
+      report: Melding
+      reported:
+      system:
+    copy_button:
+      copy:
+    copyable_text:
+      reveal:
+    display_user_quota:
+      request_increase:
+    download_button:
+      download:
+        missing:
+        preparing:
+        ready:
+      file_type: Alleen %{type} Bestanden
+      label: Alles Downloaden
+      menu_header: Download Opties
+      supported: Alleen Ondersteunde Bestanden
+      unsupported: Alleen Niet-ondersteunde Bestanden
+    follow_button:
+      follow: Volg %{name}
+      pending:
+      unfollow: Ontvolg %{name}
+    image_carousel:
+      next: Volgende
+      play_pause: Afbeeldingen afspelen of pauzeren
+      previous: Vorige
+      select_slide: Kies weer te geven afbeelding
+      slide_label: "%{name} (%{index} van %{count})"
+    like_button:
+      like:
+      unlike:
+    link_list:
+      sync:
+    lists_card:
+      add_to_list:
+      on_lists:
+      remove:
+      title:
+    modal:
+      close:
+    model_card:
+      delete_button:
+        label: Verwijder model %{name}
+        text: Verwijderen
+      edit_button:
+        label: Bewerk model %{name}
+        text: Bewerken
+      no_preview: Geen voorbeeld beschikbaar
+      open_button:
+        label: Open model %{name}
+        text: Openen
+    new_comment_form:
+      placeholder:
+      submit:
+      title:
+    path_template_preview:
+      description:
+      path: Pad
+    search_help:
+      boolean:
+      federation:
+      filename:
+      intro:
+      more_details_html:
+      negation:
+      parentheses:
+      path:
+      quotes:
+      simple:
+      specific_fields:
+      tag:
+      title:
+      unset:
+      without_tag:
+    sort_menu:
+      name:
+      recent:
+      updated:
+  concerns:
+    linkable:
+      sync:
+        bad_request:
+        success:
+  doorkeeper:
+    applications:
+      buttons:
+        authorize: Authoriseren
+        cancel: Annuleren
+        destroy: Verwijderen
+        edit: Bewerken
+        submit: Opslaan
+      confirmations:
+        destroy: Weet je het zeker?
+      edit:
+        title: Bewerk applicatie
+      form:
+        error: Oops! Controleer het formulier op fouten
+      help:
+        blank_redirect_uri: Laat het leeg indien u uw provider heeft geconfigureerd voor het gebruik van Client Credentials, Resource Owner Password Credentials of een ander type authorisatie dat geen omleiding van URI vereist.
+        confidential: Toepassing zal worden gebruikt waar de client secret vertrouwelijk kan worden gehouden. Native mobile apps en Single Page Apps worden beschouwd als niet-vertrouwelijk.
+        redirect_uri: 'Gebruik één regel per URI. '
+        scopes: Scheid scopes met spaties. Laat leeg om de standaard scopes te gebruiken.
+      index:
+        actions: Actions
+        callback_url: Callback URL
+        confidential: Confidential?
+        confidentiality:
+          'no': Nee
+          'yes': Ja
+        name: Naam
+        new: Nieuwe applicatie
+        title: Jouw applicaties
+      new:
+        title: Nieuwe applicatie
+      show:
+        actions: Acties
+        application_id: Applicatie UID
+        callback_urls: Callback urls
+        confidential: Confidentieel
+        not_defined:
+        scopes: Scopes
+        secret: Secret
+        secret_hashed:
+        title: 'Applicatie: %{name}'
+    authorizations:
+      buttons:
+        authorize: Authoriseren
+        deny: Weigeren
+      error:
+        title: Er is een fout opgetreden
+      form_post:
+        title:
+      new:
+        able_to: Deze applicatie zal in staat zijn om
+        prompt: "%{client_name} authoriseren om uw account te gebruiken?"
+        title: Authorisatie vereist
+      show:
+        title: Authorisatie code
+    authorized_applications:
+      buttons:
+        revoke: Intrekken
+      confirmations:
+        revoke: Weet je het zeker?
+      index:
+        application: Applicatie
+        created_at: Aangemaakt op
+        date_format: "%d-%m-%Y %H:%M:%S"
+        title: Jouw geauthoriseerde applicaties
+    errors:
+      messages:
+        access_denied: De resource eigenaar of authorisatie-server weigerde het verzoek.
+        admin_authenticator_not_configured: Toegang tot het adminpaneel is verboden omdat Doorkeeper.configure.admin_authenticator niet geconfigureerd is.
+        credential_flow_not_configured: Resource Owner Password Credentials flow is mislukt doordat Doorkeeper.configure.resource_owner_from_credentials niet geconfigureerd is.
+        forbidden_token:
+          missing_scope:
+        invalid_client: Client verificatie is mislukt door onbekende klant, geen client authenticatie opgegeven, of een niet-ondersteunde authenticatie methode.
+        invalid_code_challenge_method:
+          one:
+          other:
+          zero:
+        invalid_grant: De verstrekte authorisatie is ongeldig, verlopen, ingetrokken, komt niet overeen met de redirect uri die is opgegeven, of werd uitgegeven aan een andere klant.
+        invalid_redirect_uri: De opgegeven redirect uri is niet geldig.
+        invalid_request:
+          invalid_code_challenge:
+          missing_param: 'Ontbrekende vereiste parameter: %{value}.'
+          request_not_authorized: Verzoek moet worden geautoriseerd. Vereiste parameter voor het autoriseren van de aanvraag ontbreekt of is ongeldig.
+          unknown: Het verzoek mist een vereiste parameter, bevat een niet-ondersteunde parameter waarde of is anderszins onjuist.
+        invalid_scope: De opgevraagde scope is niet geldig, onbekend of onjuist.
+        invalid_token:
+          expired: Het toegangstoken is verlopen
+          revoked: Het toegangstoken is geweigerd
+          unknown: Het toegangstoken is ongeldig
+        resource_owner_authenticator_not_configured: Resource Owner opzoeking mislukt doordat Doorkeeper.configure.resource_owner_authenticator niet is gevonden.
+        revoke:
+          unauthorized: U bent niet bevoegd om dit token in te trekken...
+        server_error: De authorisatie server is een onverwachte voorwaarde tegengekomen die het verzoek verhinderd.
+        temporarily_unavailable: De authorisatie-server is momenteel niet in staat het verzoek te behandelen als gevolg van een tijdelijke overbelasting of onderhoud aan de server.
+        unauthorized_client: De client is niet bevoegd om dit verzoek met deze methode uit te voeren.
+        unsupported_grant_type: Het type authorisatie is niet ondersteund door de authorisatie-server
+        unsupported_response_mode:
+        unsupported_response_type: De authorisatie server ondersteunt dit response type niet
+    flash:
+      applications:
+        create:
+          notice: Applicatie aangemaakt.
+        destroy:
+          notice: Applicatie verwijderd.
+        update:
+          notice: Applicatie bewerkt.
+      authorized_applications:
+        destroy:
+          notice: Applicatie ingetrokken.
+    layouts:
+      admin:
+        nav:
+          applications: Applicaties
+          home: Home
+          oauth2_provider: OAuth2 Provider
+        title: Doorkeeper
+      application:
+        title: OAuth authorisatie vereist
+    pre_authorization:
+      status: Pre-authorization
+  doorkeeper_access_tokens:
+    create:
+      failed:
+      success:
+    destroy:
+      success:
+    new:
+      expiry:
+        label:
+      scopes:
+        label: Scopes
+      submit: Opslaan
+      title:
+    show:
+      bearer_token_help:
+      description:
+      done:
+      title:
+  doorkeeper_applications:
+    create:
+      failure:
+      success:
+    destroy:
+      success:
+    edit:
+      title: Bewerk applicatie
+    form:
+      confidential:
+        help:
+      redirect_uri:
+        help:
+      scopes:
+        label: Scopes
+      submit:
+    index:
+      description:
+      moderator_notice:
+      new:
+      title:
+    new:
+      title:
+    show:
+      destroy: Verwijderen
+      edit: Bewerken
+      oauth_help:
+      revoke:
+        confirm:
+        label: Intrekken
+      title:
+      token_help:
+      tokens:
+    update:
+      failure:
+      success:
+  doorkeeper_applications_helper:
+    token_expiry_string:
+      expired:
+      never: Nooit
+      revoked:
   errors:
     messages:
       already_confirmed: was al bevestigd, probeer in te loggen
@@ -15,3 +751,340 @@ nl:
         one: '1 fout verhinderde dat deze %{resource} werd opgeslagen:'
         other: "%{count} fouten verhinderden dat deze %{resource} werd opgeslagen:"
       weak_password: niet sterk genoeg. Overweeg een cijfer, symbolen of meer letters toe te voegen om het sterker te maken.
+  fasp_client:
+    providers:
+      edit:
+        approval_help:
+        approve:
+        capability:
+        contact_details:
+        data_sharing:
+        deny: Weigeren
+        disable:
+        enable:
+        links: Links
+        registration:
+        versions:
+      index:
+        add_html:
+        description_html:
+        heading:
+        provider_list_title:
+        search_3dprint_social_html:
+  follows:
+    actor_table:
+      actions: Acties
+      address:
+      name: Naam
+    follow_remote_actor:
+      followed: "%{actor} succesvol gevolgd"
+    index:
+      explore_html:
+      followers:
+      following:
+      title:
+    new:
+      no_results: Sorry, kon niets vinden voor "%{query}". Is het een geldig ActivityPub-account of URL?
+      recommended:
+      results: Zoekresultaten
+      title: Volg het Fediverse
+    remote_follow:
+      help: Je hebt geen account nodig op deze server om %{name} te volgen; voer hier je eigen accountnaam in, en we sturen je terug naar je eigen server om het proces te voltooien.
+      no_results_html: We konden je thuisaccount niet vinden; heb je het correct ingevoerd?
+      placeholder: Je Fediverse-gebruikersnaam, bijv. manyfold@3dp.chat
+      submit: Breng me naar huis
+      title: Volg %{name}
+    search_form:
+      help: Je kunt openbare makers, collecties of modellen op een andere Manyfold-server volgen, eigenlijk elk openbaar account in het Fediverse! Voer gewoon de accountnaam in het zoekvak in!
+      placeholder:
+      submit: Zoeken
+    unfollow_remote_actor:
+      unfollowed:
+  general:
+    copy_fediverse_handle:
+    delete: Verwijderen
+    download: Downloaden
+    edit: Bewerken
+    expand: Uitvouwen
+    followers:
+      few:
+      many:
+      one:
+      other:
+      two:
+      zero:
+    menu: Menu
+    new: Nieuw
+    no_change:
+    none:
+    private: Privé
+    public:
+    report: Rapporteer %{type}
+    save: Opslaan
+    shared:
+    view: Bekijken
+  group_mailer:
+    new_member:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
+  groups:
+    create:
+      success:
+    form:
+      add:
+      description:
+        help:
+      intro:
+      name:
+        help:
+    membership_fields:
+      user_id:
+        delete: Verwijderen
+        placeholder:
+    update:
+      success:
+  home:
+    activity:
+      created:
+      updated:
+    browsing:
+      content:
+      manual_link:
+      more_access:
+      title:
+    federation:
+      account_handle:
+      content_html:
+      creator_handle:
+      creator_handle_html:
+      handle_html:
+      title:
+      users_v_creators:
+    index:
+      no_activities: Er zijn momenteel geen activiteiten om weer te geven.
+      open_search_help:
+      recent_activity: Recente Activiteit
+      search:
+        placeholder: Waar zoek je naar?
+        submit: Zoeken
+    publishing:
+      content:
+      existing_creator:
+        button:
+        content:
+      new_creator:
+        button:
+        content:
+      title:
+    support:
+      content:
+      manyfold_html:
+      support_link:
+      support_manyfold:
+      title:
+    uploading:
+      quota:
+      title:
+    welcome:
+      lead:
+      title:
+  imports:
+    bad_url:
+    create:
+      success:
+    new:
+      description:
+      heading:
+      import:
+      import_capabilities:
+      import_type_html:
+      integration_settings:
+      placeholder:
+      submit:
+      supported_sites:
+  jobs:
+    activity:
+      collection_published:
+        comment:
+      model_collected:
+        comment:
+      model_published:
+        comment:
+      updated_model:
+        comment:
+    analysis:
+      analyse_model_file:
+        detect_duplicates: Dubbele bestanden detecteren
+        detect_ineffiency: Inefficiënte formaten detecteren
+        file_statistics: Bestandsstatistieken berekenen
+        matching: Ondersteunde bestanden matchen
+      file_conversion:
+        exporting: Nieuw bestand exporteren
+        loading_mesh: Mesh laden
+      geometric_analysis:
+        direction_check: Oppervlakteoriëntatie controleren
+        loading_mesh: Mesh laden
+        manifold_check: Controleren of mesh manifold is
+    scan:
+      detect_filesystem_changes:
+        building_folder_list: Lijst met gewijzigde mappen opbouwen
+        creating_models: Modellen aanmaken
+    upgrade:
+      backfill_image_derivatives:
+        processing:
+      backfill_model_renders:
+        rendering:
+  kaminari:
+    first_page:
+      label: Ga naar eerste pagina
+    last_page:
+      label: Ga naar laatste pagina
+    next_page:
+      label: Ga naar volgende pagina
+    page:
+      current_page: Huidige pagina
+      label: Ga naar pagina %{page}
+    paginator:
+      label: Paginanavigatie
+    prev_page:
+      label: Ga naar vorige pagina
+  layouts:
+    application:
+      alert:
+        danger: Gevaar
+        info: Info
+      skip_to_content: Ga naar hoofdinhoud
+    card_list_page:
+      actions_heading: Acties
+    mailer:
+      footer:
+      greeting: Hoi!
+    settings:
+      appearance:
+      integrations_heading:
+      libraries: Bibliotheken
+      moderation_heading:
+      moderation_settings_title:
+      organization: Organisatie
+      performance: Prestatie Dashboard
+      pghero: PgHero
+      search_heading:
+      sidekiq: Sidekiq
+      site_settings_title: Site-instellingen
+      tools_heading: Geavanceerde Tools
+  licenses:
+    0BSD:
+    CC-BY-40: Creative Commons Naamsvermelding
+    CC-BY-NC-40: Creative Commons Naamsvermelding NietCommercieel
+    CC-BY-NC-ND-40: Creative Commons Naamsvermelding NietCommercieel GeenAfgeleideWerken
+    CC-BY-NC-SA-40: Creative Commons Naamsvermelding NietCommercieel GelijkDelen
+    CC-BY-ND-40: Creative Commons Naamsvermelding GeenAfgeleideWerken
+    CC-BY-SA-40: Creative Commons Naamsvermelding GelijkDelen
+    CC-PDDC: Creative Commons Publiek Domein Verklaring
+    CC0-10: Creative Commons Zero
+    CERN-OHL-P-20:
+    CERN-OHL-S-20:
+    CERN-OHL-W-20:
+    GPL-20-only:
+    GPL-30-only:
+    LGPL-20-only:
+    LGPL-30-only:
+    LicenseRef-Commercial: Commercieel; alleen privégebruik
+    MIT: MIT
+  lists:
+    create:
+      success:
+    destroy:
+      success:
+    special:
+      liked:
+    update:
+      success:
+  moderator_mailer:
+    new_approval:
+      message:
+      subject:
+    new_report:
+      message:
+      subject:
+  renderer:
+    errors:
+      canvas: 'Kon #webgl canvas niet vinden!'
+      load: Laadfout
+      webglrenderer: Kon renderer niet maken!
+    load: Laden
+    processing: Splines herberekenen...
+  reports:
+    create:
+      success: Melding ingediend. Bedankt!
+    new:
+      description: Als dit item wetten of serverbeleid schendt, kun je het melden aan onze moderators. Voeg een opmerking toe om ons te laten weten waarom!
+      submit: Melding versturen
+      title: 'Rapporteer %{type}: "%{name}"'
+  scans:
+    create:
+      success:
+  security:
+    running_as_root_html: Manyfold draait als root, wat een beveiligingsrisico is. Draai als een andere systeemgebruiker door de <code>PUID</code> en <code>PGID</code> omgevingsvariabelen in te stellen. Zie <a href='https://manyfold.app/sysadmin/configuration.html#required'>de configuratiedocumentatie</a> voor details.
+  sites:
+    cgtrader: CGTrader
+    comicsgamesandthings: Comics, Games, and Things
+    cults3d: Cults3D
+    fediverse:
+    github:
+    makerworld:
+    manyfold: Manyfold
+    myminifactory: MyMiniFactory
+    printables:
+    thangs:
+    theminiindex: The Mini Index
+    thingiverse: Thingiverse
+    yeggi:
+  user_mailer:
+    account_approved:
+      message: Je account is goedgekeurd; je kunt nu inloggen op %{link}.
+      subject: Account goedgekeurd
+    test_email:
+      subject: Testmail
+      test_email_message: Testmail
+  users:
+    registrations:
+      create:
+        altcha_failed:
+  views:
+    groups:
+      edit:
+        title: Bewerken
+      form:
+        confirm_destroy:
+      index:
+        copy:
+        description:
+        invite_count: "%{count} open uitnodigingen"
+        member_count: "%{count} leden"
+        title:
+      new:
+        title: Nieuwe groep
+    lists:
+      edit:
+        title: Lijst bewerken
+      form:
+        confirm_destroy: Weet je zeker dat je deze lijst wilt verwijderen?
+      index:
+        description:
+        title: Mijn lijsten
+      new:
+        title: Nieuwe lijst
+      show:
+        description:
+        title: 'Lijst: %{name}'
+    pagination:
+      first: "« Eerste"
+      last: Laatste »
+      next: Volgende ›
+      previous: "‹ Vorige"
+      truncate: "…"

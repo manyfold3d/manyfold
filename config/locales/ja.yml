@@ -1,9 +1,745 @@
 ---
 ja:
   activerecord:
+    attributes:
+      collection:
+        ai_indexable:
+        caption: キャプション
+        collection_id:
+        creator_id:
+          few: クリエイター
+          many: クリエイター
+          one: クリエイター
+          other: クリエイター
+          two: クリエイター
+          zero: クリエイター
+        indexable:
+        name: 名称
+        notes: ノート
+      creator:
+        ai_indexable:
+        avatar:
+        banner:
+        caption: タグライン
+        indexable:
+        name: 名前
+        notes: 説明
+        slug: ハンドルネーム
+      doorkeeper/access_token:
+        active:
+        created_at: 作成日
+        expires_in:
+        fingerprint:
+        scopes: スコープ
+        token: アクセストークン
+      doorkeeper/application:
+        confidential: 機密
+        created_at: 作成日時
+        name: 名前
+        owner: オーナー
+        redirect_uri: リダイレクトURI
+        scopes: スコープ
+        secret: クライアントシークレット
+        uid: クライアントID
+      fasp_client_backfill_request:
+        category: カテゴリー
+        created_at: 作成日時
+        max_count:
+      fasp_client_event_subscription:
+        category:
+        created_at:
+        subscription_type:
+      fasp_client_provider:
+        base_url:
+        contact_email: Eメール
+        created_at:
+        fediverse_account: フェディバースアドレス
+        fingerprint:
+        privacy_policy:
+        sign_in_url: ログイン
+        status:
+      federails/moderation/domain_block:
+        created_at: 作成日時
+        domain: ドメイン
+      federails/moderation/report:
+        content: コメント
+        created_at: 受け取り作成日時
+        federails_actor: 報告者
+        object:
+      group:
+        description: ノート
+        invitations:
+        memberships:
+        name: 名前
+        typed_id:
+      library:
+        caption: キャプション
+        create_path_if_not_on_disk: フォルダを自動作成
+        default: デフォルト
+        icon: アイコン
+        name: 名称
+        notes: ノート
+        parse_metadata_from_path:
+        path: パス
+        path_template:
+        s3_access_key_id: アクセスキーID
+        s3_bucket: バケット名
+        s3_endpoint: エンドポイントURL
+        s3_path_style: パス式のURLを使用する
+        s3_region: リージョン
+        s3_secret_access_key: シークレットアクセスキー
+        safe_folder_names: 安全なフォルダ名を使用する
+        storage_service: ストレージサービス
+        tag_regex: 必須タグ
+      link:
+        url: リンク
+      list:
+        list_items:
+        name: 名前
+      list_item:
+        created_at:
+      model:
+        ai_indexable:
+        caption: キャプション
+        collection_id: コレクション
+        creator_id: クリエイター
+        indexable:
+        library_id: ライブラリー
+        license: ライセンス
+        name: 名前
+        notes: 説明
+        path: パス
+        preview_file: プレビューファイル
+        sensitive: センシティブコンテンツ
+      model_file:
+        caption: キャプション
+        digest: ダイジェスト
+        dimensions:
+        filename: ファイル名
+        notes: ノート
+        presupported: サポート材付き
+        presupported_version_id: サポート材付きバージョン
+        previewable:
+        printed: プリントされた
+        size: ファイルサイズ
+        unsupported_version: サポート材無しバージョン
+        y_up: Y上
+      problem:
+        category: カテゴリー
+        ignored: ヒドゥン
+        note: ノート
+        problematic_type: オブジェクトの種類
+        severity: 重大性
+      user:
+        approved: アカウント保留中
+        auth_uid:
+        confirmation_sent_at: パスワード確認送信時刻
+        confirmation_token: パスワード確認用トークン
+        confirmed_at: パスワード確認時刻
+        created_at: 作成日
+        current_password: 現在のパスワード
+        current_sign_in_at: 現在のログイン時刻
+        current_sign_in_ip: 現在のログインIPアドレス
+        email: Eメール
+        encrypted_password: 暗号化パスワード
+        failed_attempts: 失敗したログイン試行回数
+        interface_language: 言語
+        last_sign_in_at: 最終ログイン時刻
+        last_sign_in_ip: 最終ログインIPアドレス
+        locked_at: ロック時刻
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        quota: 現在のファイル保存上限（MB）
+        quota_use_site_default: サイトのデフォルトのファイル保存制限を使用していますか？
+        remember_created_at: ログイン記憶時刻
+        remember_me: ログインを記憶する
+        reset_password_sent_at: パスワードリセット送信時刻
+        reset_password_token: パスワードリセット用トークン
+        sensitive_content_handling: センシティブコンテンツ
+        sign_in_count: ログイン回数
+        sort_order:
+        unconfirmed_email: 未確認Eメール
+        unlock_token: ロック解除用トークン
+        updated_at: 更新日
+        username: アカウント名
+    errors:
+      models:
+        collection:
+          attributes:
+            collection:
+              private:
+            creator:
+              private:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              forbidden_uri: はサーバーによって禁止されています。
+              fragment_present: はURLフラグメントを含めることはできません。
+              invalid_uri: は有効なURIではありません。
+              relative_uri: は絶対URIでなければなりません。
+              secured_uri: はHTTPS/SSL URIでなければなりません。
+              unspecified_scheme: スキームを指定する必要があります。
+            scopes:
+              not_match_configured: はサーバーの設定と一致しません。
+        library:
+          attributes:
+            path:
+              cannot_be_contained: 他のライブラリの中にあることはできない
+              cannot_contain: 他のライブラリの中にあることはできない
+              non_readable:
+              non_readable_subfolder:
+              non_writable: 書き込み可能でなければならない
+              non_writable_subfolder:
+              not_a_directory:
+              not_found: ディスクに見つかりませんでした
+              unsafe: 特権システムパスであってはならない
+        model:
+          attributes:
+            creator:
+              private:
+            library:
+              nested: 変更不可、モデルは他のモデルを含む
+            license:
+              invalid_spdx: は有効なライセンスではない
+            path:
+              destination_exists: すでに存在している
+              nested: 変更不可、モデルは他のモデルを含む。
+        model_file:
+          attributes:
+            filename:
+              cannot_change_type: は同じファイルタイプではない
+              case_change_only: ケースのみの変更はできない
+            presupported_version:
+              already_presupported: サポート材付きファイルに設定することはできない。
+              not_supported: はサポート材付きファイルではない
     models:
+      acts_as_taggable_on/tag:
+        few: タグ
+        many: タグ
+        one: タグ
+        other: タグ
+        two: タグ
+        zero: タグ
+      collection:
+        few: コレクション
+        many: コレクション
+        one: コレクション
+        other: コレクション
+        two: コレクション
+        zero: コレクション
       comment:
         few:
+      creator:
+        few: クリエイター
+        many: クリエイター
+        one: クリエイター
+        other: クリエイター
+        two: クリエイター
+        zero: クリエイター
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few:
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      federails/moderation/domain_block:
+        few: ドメインブロック
+        many: ドメインブロック
+        one: ドメインブロック
+        other: ドメインブロック
+        two: ドメインブロック
+        zero: ドメインブロック
+      federails/moderation/report:
+        few: レポート
+        many: レポート
+        one: レポート
+        other: レポート
+        two: レポート
+        zero: レポート
+      group:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      library:
+        few: ライブラリー
+        many: ライブラリー
+        one: ライブラリー
+        other: ライブラリー
+        two: ライブラリー
+        zero: ライブラリー
+      link:
+        few: リンク
+        many: リンク
+        one: リンク
+        other: リンク
+        two: リンク
+        zero: リンク
+      list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      model:
+        few: モデル
+        many: モデル
+        one: モデル
+        other: モデル
+        two: モデル
+        zero: モデル
+      model_file:
+        few: ファイル
+        many: ファイル
+        one: ファイル
+        other: ファイル
+        two: ファイル
+        zero: ファイル
+      problem:
+        few: 問題点
+        many: 問題点
+        one: 問題点
+        other: 問題点
+        two: 問題点
+        zero: 問題点
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      user:
+        few: アカウント
+        many: アカウント
+        one: アカウント
+        other: アカウント
+        two: アカウント
+        zero: アカウント
+  activity:
+    index:
+      description: "%{retention_period}]以降のエントリーは破棄される"
+      message: メッセージ
+      name: 名称
+      time: いつ
+      title: 最近の活動
+  activity_helper:
+    status_icon:
+      completed: 完全
+      error: エラーが発生しました
+      queued: キュー入り
+      working: 作働中
+  application:
+    caber_relation_fields:
+      delete: 削除
+      permissions:
+        edit: 編集可
+        own: オーナー（閲覧、編集、削除、共有が可能）
+        preview:
+        view: 閲覧のみ
+      subject:
+        placeholder: メールアドレス、アカウント名、または役割
+        role:
+          member: ログインしているローカルアカウント
+          public: 全員（ログインなし）
+        you: "(あなた)"
+    caber_relations_form:
+      add: 許可を追加する
+      permissions: シェアリング
+    demo_mode: このインスタンスはデモモードです。モデルの追加や削除はできませんが、それ以外のことはすべてできます。
+    filters_card:
+      missing_tags: タグの欠落
+      owner: オーナー
+      remove_collection_filter: コレクションフィルターを削除する
+      remove_creator_filter: クリエイターフィルターを削除する
+      remove_library_filter: ライブラリーフィルタを削除する
+      remove_missing_tag_filter: タグの欠落フィルターを削除する
+      remove_owner_filter:
+      remove_search_filter: 検索フィルターを削除する
+      remove_tag_filter: タグフィルターを削除する
+      search: 検索
+      title: フィルター
+      unknown: 不明
+    footer:
+      about: このインスタンスについて
+      api: APIについて
+      by_html: <a href="https://floppy.org.uk" target="_blank">Jamesが</a>設計し、<a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank">我々の貢献者の</a>助けを借りて作り上げました。
+      community: コミュニティに参加する
+      instance_heading: インスタンスの詳細
+      issues: 問題を報告する
+      open_source_html: <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="license">GNU Affero GPL 3.0</a><a href="https://github.com/manyfold3d/manyfold" target="_blank">オープンソース</a>です。
+      sponsor: 発明をスポンサー
+      support: インスタンスをスポンサー
+      version: バージョン
+    link_fields:
+      url:
+        delete: 削除
+        placeholder: 関連ウェブページ
+    links_form:
+      add: リンク追加
+    navbar:
+      account: 設定
+      activity: アクティビティ
+      add_models:
+      check_existing:
+        confirm:
+        label: 既存モデルの再スキャン
+      check_results:
+        confirm:
+        label:
+      developer:
+      home: ホームページ
+      import_url:
+      log_in: ログイン
+      log_out: ログアウト
+      moderator_settings:
+      my_stuff:
+      navbar:
+        toggler:
+          label: ナビゲーションをトグル
+      scan: スキャン
+      scan_changes:
+        confirm:
+        label: 変更をスキャンする
+      scanning: スキャン中
+      search: 検索
+      settings: サイト設定
+      social: ソーシャル
+      upload: アップロード
+    search_error:
+    tag_list:
+      unrelated_tag_count:
+        one: "%{count} 関連性のないタグは非表示"
+        other: "%{count} 関連性のないタグは非表示"
+    tagline: 3Dプリントファイルの管理
+    tags_card:
+      skip_tags: タグリストをスキップする
+    title: Manyfold
+  application_helper:
+    ai_indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+    indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+      'no': いいえ
+      'yes': はい
+  comments:
+    destroy:
+      destroyed:
+  components:
+    actor_card:
+      non_manyfold_account:
+    altcha_widget:
+      help:
+    column_header:
+      current_sort:
+      sort_by:
+    comment:
+      confirm_delete:
+      delete: 削除
+      posted:
+      report: レポート
+      reported:
+      system:
+    copy_button:
+      copy:
+    copyable_text:
+      reveal:
+    display_user_quota:
+      request_increase:
+    download_button:
+      download:
+        missing: ダウンロードをリクエスト
+        preparing: ダウンロード準備中です。お待ちしてください。
+        ready: ダウンロード準備完了
+      file_type: "%{type} ファイルのみ"
+      label: すべてダウンロード
+      menu_header: ダウンロードオプション
+      supported: サポート材無しのみ
+      unsupported: サポート材付きのみ
+    follow_button:
+      follow: "%{name}]をフォローする"
+      pending: リクエストされた
+      unfollow: "%{name}]のフォローを解除する"
+    image_carousel:
+      next:
+      play_pause:
+      previous:
+      select_slide:
+      slide_label:
+    like_button:
+      like:
+      unlike:
+    link_list:
+      sync:
+    lists_card:
+      add_to_list:
+      on_lists:
+      remove:
+      title:
+    modal:
+      close: 閉じる
+    model_card:
+      delete_button:
+        label: モデル%{name}を削除
+        text: 削除
+      edit_button:
+        label: モデル%{name}を編集する
+        text: 編集
+      no_preview: プレビュー不可
+      open_button:
+        label: モデル%{name}を開く
+        text: 開く
+    new_comment_form:
+      placeholder:
+      submit:
+      title:
+    path_template_preview:
+      description:
+      path: パス
+    search_help:
+      boolean: "「or」を使用して、いずれかの用語に一致するモデルを検索します。"
+      federation:
+      filename: 特定のファイル名を検索することもできます。
+      intro: パワフルな検索構文で必要なものを見つけよう：
+      more_details_html: 詳しくは、<a href="https://github.com/wvanbergen/scoped_search/wiki/Query-language">scoped_searchのクエリー</a>言語の完全なドキュメントをお読みください。
+      negation: 用語を除外するには、「not」、「!」、「or」を使用する。
+      parentheses: より複雑なロジックの組み合わせのために、用語を括弧でグループ化する。
+      path:
+      quotes: 1つの用語で複数の単語を検索するには、引用符を使用します。
+      simple: デフォルトでは、すべての条件に一致するモデルを検索します。
+      specific_fields: いくつかの特定のフィールドから用語を探すことができる。フィールドの一部にマッチする場合は「~」を、全体にマッチする場合は「=」を使用する。
+      tag: 特定のタグを持つモデルを検索する
+      title: 検索構文
+      unset: 特定のフィールドがセットされているかどうかを調べるには 「set?」を使い、その反対を調べるには 「not」を加える。
+      without_tag: 特定のタグがないモデルを見つけるには「!tag」
+    sort_menu:
+      name:
+      recent:
+      updated:
+  concerns:
+    linkable:
+      sync:
+        bad_request:
+        success:
+  doorkeeper:
+    applications:
+      buttons:
+        authorize: 認証
+        cancel: キャンセル
+        destroy: 削除
+        edit: 編集
+        submit: 登録
+      confirmations:
+        destroy: 本当に削除しますか？
+      edit:
+        title: アプリケーションの編集
+      form:
+        error: おっと！フォームにエラーがないか確認してください
+      help:
+        blank_redirect_uri: リダイレクトURIを必要としないクライアントクレデンシャル、リソースオーナークレデンシャル、その他のグラントタイプの場合は空白のままにします。
+        confidential: クライアントシークレットの機密を保持できるアプリケーションで使われます。
+        redirect_uri: URIごとに1行で入力してください
+        scopes: 各スコープをスペースで区切ってください。初期設定のスコープを使用する場合は、空白のままにしてください。
+      index:
+        actions: 行動
+        callback_url: コールバックURL
+        confidential: 機密？
+        confidentiality:
+          'no': いいえ
+          'yes': はい
+        name: 名称
+        new: 新しいアプリケーション
+        title: アプリケーション
+      new:
+        title: アプリケーションの作成
+      show:
+        actions: アクション
+        application_id: アプリケーションID
+        callback_urls: コールバックURL
+        confidential: 機密
+        not_defined:
+        scopes: スコープ
+        secret: シークレット
+        secret_hashed:
+        title: 'アプリケーション: %{name}'
+    authorizations:
+      buttons:
+        authorize: 承認
+        deny: 否認
+      error:
+        title: エラーが発生しました
+      form_post:
+        title:
+      new:
+        able_to: このアプリケーションは次のことが可能です
+        prompt: あなたのアカウントで %{client_name} を承認しますか？
+        title: 承認が必要です
+      show:
+        title: 認可コード
+    authorized_applications:
+      buttons:
+        revoke: 取消
+      confirmations:
+        revoke: 本当に取消しますか？
+      index:
+        application: アプリケーション
+        created_at: 作成日時
+        date_format: "%Y年%m月%d日 %H:%M:%S"
+        title: あなたの認証されたアプリケーション
+    errors:
+      messages:
+        access_denied: リソースオーナーもしくは認可サーバがリクエストを拒否しました。
+        admin_authenticator_not_configured: Doorkeeper.configure.admin_authenticator being unconfigured が設定されていないため、管理者パネルへのアクセスが禁止されています。
+        credential_flow_not_configured: Doorkeeper.configure.resource_owner_from_credentials が設定されていないため、リソースオーナーパスワードクレデンシャルフローは失敗しました。
+        forbidden_token:
+          missing_scope:
+        invalid_client: クライアントが不明か、クライアント認証が含まれていないか、もしくは認証メソッドがサポートされていないため、クライアント認証は失敗しました。
+        invalid_code_challenge_method:
+          one:
+          other:
+          zero:
+        invalid_grant: 指定された認可グラントは無効か、有効期限切れか、リダイレクトURIが異なるか、もしくは別のクライアントに適用されています。
+        invalid_redirect_uri: 含まれるリダイレクトURIが正しくありません。
+        invalid_request:
+          invalid_code_challenge:
+          missing_param: '必須パラメーターが不足しています: %{value}'
+          request_not_authorized: リクエストは認可が必要です。リクエストを認可するための必須パラメータが不足しているか無効です。
+          unknown: 必須パラメータが不足しているか、サポートされていないパラメータが含まれているか、もしくはパラメータが無効であるため、リクエストを処理できませんでした。
+        invalid_scope: 指定されたスコープが無効か、不明か、もしくは正しくありません。
+        invalid_token:
+          expired: アクセストークンの有効期限が切れました
+          revoked: アクセストークンが取り消されました
+          unknown: アクセストークンが無効です
+        resource_owner_authenticator_not_configured: Doorkeeper.configure.resource_owner_authenticator が設定されていないため、リソースオーナーの取得に失敗しました。
+        revoke:
+          unauthorized: このトークンを無効化する権限がありません
+        server_error: 予期せぬ事態が発生したため、認可サーバはリクエストを処理できませんでした。
+        temporarily_unavailable: 認可サーバが一時的に高負荷な状態にあるか、もしくはメンテナンス中であるため、リクエストを処理できません。
+        unauthorized_client: クライアントはこのメソッドを用いたリクエストを実行する権限がありません。
+        unsupported_grant_type: この認可グラントのタイプは認可サーバではサポートされていません。
+        unsupported_response_mode:
+        unsupported_response_type: 認可サーバは指定されたレスポンスタイプをサポートしていません。
+    flash:
+      applications:
+        create:
+          notice: アプリケーションが作成されました。
+        destroy:
+          notice: アプリケーションが削除されました。
+        update:
+          notice: アプリケーションが更新されました。
+      authorized_applications:
+        destroy:
+          notice: アプリケーションが取消されました。
+    layouts:
+      admin:
+        nav:
+          applications: アプリケーション
+          home: ホーム
+          oauth2_provider: OAuth2 プロバイダー
+        title: Doorkeeper
+      application:
+        title: OAuth認証が必要です
+    pre_authorization:
+      status: Pre-authorization
+  doorkeeper_access_tokens:
+    create:
+      failed:
+      success:
+    destroy:
+      success:
+    new:
+      expiry:
+        label:
+      scopes:
+        label: スコープ
+      submit: 登録
+      title:
+    show:
+      bearer_token_help:
+      description:
+      done:
+      title:
+  doorkeeper_applications:
+    create:
+      failure:
+      success:
+    destroy:
+      success:
+    edit:
+      title: アプリケーションの編集
+    form:
+      confidential:
+        help:
+      redirect_uri:
+        help:
+      scopes:
+        label: スコープ
+      submit:
+    index:
+      description:
+      moderator_notice:
+      new:
+      title:
+    new:
+      title:
+    show:
+      destroy:
+      edit: 編集
+      oauth_help:
+      revoke:
+        confirm:
+        label: 取消
+      title:
+      token_help:
+      tokens:
+    update:
+      failure:
+      success:
+  doorkeeper_applications_helper:
+    token_expiry_string:
+      expired:
+      never: 決して
+      revoked:
   errors:
     messages:
       already_confirmed:
@@ -15,3 +751,340 @@ ja:
         one:
         other:
       weak_password:
+  fasp_client:
+    providers:
+      edit:
+        approval_help:
+        approve:
+        capability:
+        contact_details:
+        data_sharing:
+        deny: 否認
+        disable:
+        enable:
+        links: リンク
+        registration:
+        versions:
+      index:
+        add_html:
+        description_html:
+        heading:
+        provider_list_title:
+        search_3dprint_social_html:
+  follows:
+    actor_table:
+      actions:
+      address:
+      name:
+    follow_remote_actor:
+      followed:
+    index:
+      explore_html:
+      followers:
+      following:
+      title:
+    new:
+      no_results:
+      recommended:
+      results:
+      title:
+    remote_follow:
+      help:
+      no_results_html:
+      placeholder:
+      submit:
+      title:
+    search_form:
+      help:
+      placeholder:
+      submit:
+    unfollow_remote_actor:
+      unfollowed:
+  general:
+    copy_fediverse_handle:
+    delete:
+    download:
+    edit:
+    expand:
+    followers:
+      few:
+      many:
+      one:
+      other:
+      two:
+      zero:
+    menu:
+    new:
+    no_change:
+    none:
+    private: プライベート
+    public:
+    report:
+    save:
+    shared:
+    view:
+  group_mailer:
+    new_member:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
+  groups:
+    create:
+      success:
+    form:
+      add:
+      description:
+        help:
+      intro:
+      name:
+        help:
+    membership_fields:
+      user_id:
+        delete: 削除
+        placeholder: アカウント名
+    update:
+      success:
+  home:
+    activity:
+      created:
+      updated:
+    browsing:
+      content:
+      manual_link:
+      more_access:
+      title:
+    federation:
+      account_handle:
+      content_html:
+      creator_handle:
+      creator_handle_html:
+      handle_html:
+      title:
+      users_v_creators:
+    index:
+      no_activities:
+      open_search_help:
+      recent_activity:
+      search:
+        placeholder:
+        submit:
+    publishing:
+      content:
+      existing_creator:
+        button:
+        content:
+      new_creator:
+        button:
+        content:
+      title:
+    support:
+      content:
+      manyfold_html:
+      support_link: インスタンスをスポンサー
+      support_manyfold:
+      title:
+    uploading:
+      quota:
+      title:
+    welcome:
+      lead:
+      title:
+  imports:
+    bad_url:
+    create:
+      success:
+    new:
+      description:
+      heading:
+      import:
+      import_capabilities:
+      import_type_html:
+      integration_settings:
+      placeholder:
+      submit:
+      supported_sites:
+  jobs:
+    activity:
+      collection_published:
+        comment:
+      model_collected:
+        comment:
+      model_published:
+        comment:
+      updated_model:
+        comment:
+    analysis:
+      analyse_model_file:
+        detect_duplicates:
+        detect_ineffiency:
+        file_statistics:
+        matching:
+      file_conversion:
+        exporting:
+        loading_mesh:
+      geometric_analysis:
+        direction_check:
+        loading_mesh:
+        manifold_check:
+    scan:
+      detect_filesystem_changes:
+        building_folder_list:
+        creating_models:
+    upgrade:
+      backfill_image_derivatives:
+        processing:
+      backfill_model_renders:
+        rendering:
+  kaminari:
+    first_page:
+      label:
+    last_page:
+      label:
+    next_page:
+      label:
+    page:
+      current_page:
+      label:
+    paginator:
+      label:
+    prev_page:
+      label:
+  layouts:
+    application:
+      alert:
+        danger:
+        info:
+      skip_to_content:
+    card_list_page:
+      actions_heading:
+    mailer:
+      footer:
+      greeting: こんにちは！
+    settings:
+      appearance:
+      integrations_heading:
+      libraries:
+      moderation_heading:
+      moderation_settings_title:
+      organization:
+      performance:
+      pghero:
+      search_heading:
+      sidekiq:
+      site_settings_title: サイト設定
+      tools_heading:
+  licenses:
+    0BSD:
+    CC-BY-40:
+    CC-BY-NC-40:
+    CC-BY-NC-ND-40:
+    CC-BY-NC-SA-40:
+    CC-BY-ND-40:
+    CC-BY-SA-40:
+    CC-PDDC:
+    CC0-10:
+    CERN-OHL-P-20:
+    CERN-OHL-S-20:
+    CERN-OHL-W-20:
+    GPL-20-only:
+    GPL-30-only:
+    LGPL-20-only:
+    LGPL-30-only:
+    LicenseRef-Commercial:
+    MIT:
+  lists:
+    create:
+      success:
+    destroy:
+      success:
+    special:
+      liked:
+    update:
+      success:
+  moderator_mailer:
+    new_approval:
+      message:
+      subject:
+    new_report:
+      message:
+      subject:
+  renderer:
+    errors:
+      canvas:
+      load:
+      webglrenderer:
+    load:
+    processing: スプラインを網状にしています
+  reports:
+    create:
+      success:
+    new:
+      description:
+      submit:
+      title:
+  scans:
+    create:
+      success:
+  security:
+    running_as_root_html:
+  sites:
+    cgtrader: CGTrader
+    comicsgamesandthings: Comics, Games, and Things
+    cults3d: Cults3D
+    fediverse:
+    github: GitHub
+    makerworld: MakerWorld
+    manyfold: Manyfold
+    myminifactory: MyMiniFactory
+    printables: Printables
+    thangs: Thangs
+    theminiindex: The Mini Index
+    thingiverse: Thingiverse
+    yeggi: yeggi
+  user_mailer:
+    account_approved:
+      message: アカウントが承認されました。%{link}でサインインできます。
+      subject: アカウント承認
+    test_email:
+      subject: テストメール
+      test_email_message: テストメール
+  users:
+    registrations:
+      create:
+        altcha_failed:
+  views:
+    groups:
+      edit:
+        title: 編集
+      form:
+        confirm_destroy:
+      index:
+        copy:
+        description:
+        invite_count:
+        member_count:
+        title:
+      new:
+        title:
+    lists:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:
+      show:
+        description:
+        title:
+    pagination:
+      first: "&laquo; 最初"
+      last: 最後 &raquo;
+      next: 次 &rsaquo;
+      previous: "&lsaquo; 前"
+      truncate: "&hellip;"

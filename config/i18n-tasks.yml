@@ -138,6 +138,8 @@ ignore_unused:
 # Doorkeeper internals
 - 'doorkeeper.flash.*'
 - 'doorkeeper.errors.*'
+- 'renderer.errors.*' # Used client side via i18n-js
+- 'renderer.processing' # Used client side via i18n-js
 
 ## Exclude these keys from the `i18n-tasks eq-base' report:
 # ignore_eq_base:

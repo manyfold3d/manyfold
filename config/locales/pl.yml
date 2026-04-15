@@ -1,9 +1,745 @@
 ---
 pl:
   activerecord:
+    attributes:
+      collection:
+        ai_indexable:
+        caption: Napis
+        collection_id:
+        creator_id:
+          few: Twórców
+          many: Twórców
+          one: Twórca
+          other: Twórcy
+          two:
+          zero:
+        indexable:
+        name: Nazwa
+        notes: Opis
+      creator:
+        ai_indexable:
+        avatar:
+        banner:
+        caption: Napis
+        indexable:
+        name: Nazwa Twórcy
+        notes: Opis
+        slug:
+      doorkeeper/access_token:
+        active:
+        created_at: Data utworzenia
+        expires_in:
+        fingerprint:
+        scopes:
+        token:
+      doorkeeper/application:
+        confidential: Poufne
+        created_at: Utworzony
+        name: Nazwa
+        owner: Właściciel
+        redirect_uri: Przekierowanie URI
+        scopes:
+        secret:
+        uid:
+      fasp_client_backfill_request:
+        category: Kategoria
+        created_at: Utworzony
+        max_count:
+      fasp_client_event_subscription:
+        category:
+        created_at:
+        subscription_type:
+      fasp_client_provider:
+        base_url:
+        contact_email: Adres e-mail
+        created_at:
+        fediverse_account: Adres Fediverse
+        fingerprint:
+        privacy_policy:
+        sign_in_url: Zaloguj się
+        status:
+      federails/moderation/domain_block:
+        created_at: Data utworzenia
+        domain: Domena
+      federails/moderation/report:
+        content: Komentarz
+        created_at:
+        federails_actor: Zgłoszone przez
+        object: Obiekt
+      group:
+        description: Opis
+        invitations:
+        memberships:
+        name: Nazwa
+        typed_id:
+      library:
+        caption: Napis
+        create_path_if_not_on_disk: Automatycznie twórz folder
+        default: Domyślne
+        icon: Ikona
+        name: Nazwa
+        notes: Notatki
+        parse_metadata_from_path:
+        path: Ścieżka
+        path_template:
+        s3_access_key_id:
+        s3_bucket:
+        s3_endpoint:
+        s3_path_style:
+        s3_region: Region
+        s3_secret_access_key:
+        safe_folder_names: Używaj bezpiecznych nazw folderów
+        storage_service: Usługa przechowywania plików
+        tag_regex: Wymagane Tagi
+      link:
+        url: Link
+      list:
+        list_items:
+        name: Nazwa
+      list_item:
+        created_at:
+      model:
+        ai_indexable:
+        caption: Napis
+        collection_id: Kolekcja
+        creator_id: Twórca
+        indexable:
+        library_id: Biblioteka
+        license: Licencja
+        name: Nazwa
+        notes: Opis
+        path: Ścieżka
+        preview_file: Podgląd pliku
+        sensitive: Wrażliwa Treść
+      model_file:
+        caption: Napis
+        digest:
+        dimensions:
+        filename: Nazwa pliku
+        notes: Notatki
+        presupported:
+        presupported_version_id:
+        previewable:
+        printed: Wydrukowane
+        size: Rozmiar pliku
+        unsupported_version: Niewspierana wersja
+        y_up:
+      problem:
+        category: Kategoria
+        ignored: Ukryte
+        note: Notatka
+        problematic_type: Typ Obiektu
+        severity: Ważność
+      user:
+        approved:
+        auth_uid:
+        confirmation_sent_at: Data wysłania potwierdzenia
+        confirmation_token: Token potwierdzający
+        confirmed_at: Data potwierdzenia
+        created_at: Data utworzenia
+        current_password: Aktualne hasło
+        current_sign_in_at: Data bieżącego logowania
+        current_sign_in_ip: Bieżący adres IP
+        email: Adres e-mail
+        encrypted_password: Zaszyfrowane hasło
+        failed_attempts: Nieudanych prób
+        interface_language: Język interfejsu
+        last_sign_in_at: Data ostatniego logowania
+        last_sign_in_ip: Adres IP ostatniego logowania
+        locked_at: Data zablokowania
+        password: Hasło
+        password_confirmation: Potwierdź hasło
+        quota:
+        quota_use_site_default:
+        remember_created_at: Data utworzenia zapamiętania logowania
+        remember_me: Zapamiętaj mnie
+        reset_password_sent_at: Data wysłania żądania resetu hasła
+        reset_password_token: Token umożliwiający reset hasła
+        sensitive_content_handling: Wrażliwa Treść
+        sign_in_count: Liczba logowań
+        sort_order:
+        unconfirmed_email: Niepotwierdzony adres e-mail
+        unlock_token: Token odblokowywujący
+        updated_at: Data uaktualnienia
+        username:
+    errors:
+      models:
+        collection:
+          attributes:
+            collection:
+              private:
+            creator:
+              private:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              forbidden_uri: jest zabronione przez serwer.
+              fragment_present: nie może zawierać fragmentu.
+              invalid_uri:
+              relative_uri:
+              secured_uri:
+              unspecified_scheme:
+            scopes:
+              not_match_configured:
+        library:
+          attributes:
+            path:
+              cannot_be_contained: nie może znajdować się wewnątrz innej biblioteki
+              cannot_contain: nie może zawierać innych bibliotek
+              non_readable:
+              non_readable_subfolder:
+              non_writable:
+              non_writable_subfolder:
+              not_a_directory:
+              not_found: nie można znaleźć na dysku
+              unsafe:
+        model:
+          attributes:
+            creator:
+              private:
+            library:
+              nested: nie można zmienić, model zawiera inne modele
+            license:
+              invalid_spdx: nie jest poprawną licencją
+            path:
+              destination_exists: już istnieje
+              nested: nie można zmienić, model zawiera inne modele
+        model_file:
+          attributes:
+            filename:
+              cannot_change_type: nie jest plikiem tego samego typu
+              case_change_only: nie może być zmianą wyłącznie wielkości liter
+            presupported_version:
+              already_presupported:
+              not_supported:
     models:
+      acts_as_taggable_on/tag:
+        few: Tagi
+        many: Tagów
+        one: Tag
+        other: Tagi
+        two:
+        zero:
+      collection:
+        few: Kolekcje
+        many: Kolekcji
+        one: Kolekcja
+        other: Kolekcje
+        two:
+        zero:
       comment:
         few:
+      creator:
+        few: Twórców
+        many: Twórców
+        one: Twórca
+        other: Twórcy
+        two:
+        zero:
+      doorkeeper/access_token:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      doorkeeper/application:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      fasp_client_backfill_request:
+        few:
+      fasp_client_event_subscription:
+        few:
+      fasp_client_provider:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      federails/moderation/domain_block:
+        few: Bloki domen
+        many: Bloków domen
+        one: Blok domeny
+        other: Bloki domen
+        two:
+        zero:
+      federails/moderation/report:
+        few: Zgłoszenia
+        many: Zgłoszeń
+        one: Zgłoszenie
+        other: Zgłoszenia
+        two:
+        zero:
+      group:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      library:
+        few: Biblioteki
+        many: Bibliotek
+        one: Biblioteka
+        other: Biblioteki
+        two:
+        zero:
+      link:
+        few: Linki
+        many: Linków
+        one: Link
+        other: Linki
+        two:
+        zero:
+      list:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      list_item:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      membership:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      model:
+        few: Modele
+        many: Modeli
+        one: Model
+        other: Modele
+        two:
+        zero:
+      model_file:
+        few: Pliki
+        many: Plików
+        one: Plik
+        other: Pliki
+        two:
+        zero:
+      problem:
+        few: Problemy
+        many: Problemów
+        one: Problem
+        other: Problemy
+        two:
+        zero:
+      role:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
+      user:
+        few: Konta
+        many: Kont
+        one: Konto
+        other: Konta
+        two:
+        zero:
+  activity:
+    index:
+      description: Wpisy są odrzucane po %{retention_period}.
+      message: Wiadomość
+      name: Nazwa
+      time: Kiedy
+      title: Ostatnia aktywność
+  activity_helper:
+    status_icon:
+      completed: Zakończone
+      error: Błąd
+      queued: W kolejce
+      working: Działa
+  application:
+    caber_relation_fields:
+      delete: Usuń
+      permissions:
+        edit: Może edytować
+        own: Właściciel (może wyświetlać, edytować, usuwać i udostępniać)
+        preview:
+        view: Wyświetlaj tylko
+      subject:
+        placeholder: Adres e-mail, nazwa konta albo rola
+        role:
+          member: Dowolne zalogowane lokalne konto
+          public: Wszyscy (bez logowania)
+        you: "(ty)"
+    caber_relations_form:
+      add: dodaj kolejne uprawnienie
+      permissions: Udostępnianie
+    demo_mode: Ta instancja jest w trybie demonstracyjnym. Nie możesz dodawać ani usuwać modeli, ale możesz robić wszystko inne.
+    filters_card:
+      missing_tags: Brakujące tagi
+      owner: Właściciel
+      remove_collection_filter: Usuń filtr kolekcji
+      remove_creator_filter: Usuń filtr twórcy
+      remove_library_filter: Usuń filtr biblioteki
+      remove_missing_tag_filter:
+      remove_owner_filter:
+      remove_search_filter: Usuń filtr wyszukiwania
+      remove_tag_filter: Usuń filtr taga
+      search: Wyszukaj
+      title: Filtry
+      unknown: Nieznany
+    footer:
+      about: O tej instancji
+      api: Poznaj nasze API
+      by_html: Zaprojektowany i stworzony przez <a href="https://floppy.org.uk" target="_blank" rel="noreferrer">Jamesa</a> z pomocą od <a href="https://github.com/manyfold3d/manyfold/graphs/contributors" target="_blank" rel="noreferrer">naszych współautorów</a>.
+      community: Dołącz do społeczności
+      instance_heading: Szczegóły Instancji
+      issues: Zgłoś problem
+      open_source_html: Projekt <a href="https://github.com/manyfold3d/manyfold" target="_blank" rel="noreferrer">Open Source</a> na <a href="https://github.com/manyfold3d/manyfold/blob/main/LICENSE.md" target="_blank" rel="noreferrer" rel="license">GNU Affero GPL 3.0</a>.
+      sponsor: Sponsoruj rozwój
+      support: Wesprzyj tą instancje
+      version: Wersja
+    link_fields:
+      url:
+        delete: Usuń
+        placeholder: Dowolna powiązana strona internetowa
+    links_form:
+      add: dodaj kolejny link
+    navbar:
+      account: Moje Ustawienia
+      activity: Aktywność
+      add_models:
+      check_existing:
+        confirm:
+        label: Ponownie zeskanuj wszystkie modele
+      check_results:
+        confirm:
+        label:
+      developer:
+      home: Strona główna
+      import_url:
+      log_in: Zaloguj się
+      log_out: Wyloguj się
+      moderator_settings:
+      my_stuff:
+      navbar:
+        toggler:
+          label: Przełącz nawigację
+      scan: Zeskanuj
+      scan_changes:
+        confirm:
+        label: Zeskanuj w poszukiwaniu nowych plików
+      scanning: Skanowanie
+      search: Wyszukaj
+      settings: Ustawienia Strony
+      social:
+      upload: Prześlij modele
+    search_error:
+    tag_list:
+      unrelated_tag_count:
+        one: "%{count} niepowiązany tag ukryty"
+        other: "%{count} niepowiązanych tagów ukrytych"
+    tagline: Pomaga w śledzeniu plików do druku 3D
+    tags_card:
+      skip_tags: Pomiń listę tagów
+    title: Manyfold
+  application_helper:
+    ai_indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+    indexable_select_options:
+      always_no:
+      always_yes:
+      inherit:
+      'no': Nie
+      'yes': Tak
+  comments:
+    destroy:
+      destroyed:
+  components:
+    actor_card:
+      non_manyfold_account: To nie jest konto Manyfold; możesz je zaobserwować, ale prawdopodobnie nic ciekawego się nie stanie, przynajmniej na razie.
+    altcha_widget:
+      help:
+    column_header:
+      current_sort:
+      sort_by:
+    comment:
+      confirm_delete:
+      delete: Usuń
+      posted:
+      report: Zgłoszenie
+      reported:
+      system:
+    copy_button:
+      copy: Kopiuj do schowka
+    copyable_text:
+      reveal:
+    display_user_quota:
+      request_increase:
+    download_button:
+      download:
+        missing:
+        preparing:
+        ready: Gotowe do pobrania
+      file_type: Tylko Pliki %{type}
+      label: Pobierz Wszystko
+      menu_header: Opcje Pobierania
+      supported: Tylko Obsługiwane Pliki
+      unsupported: Tylko Nieobsługiwane Pliki
+    follow_button:
+      follow: Obserwuj %{name}
+      pending: Żądane
+      unfollow: Przestań obserwować %{name}
+    image_carousel:
+      next: Następna
+      play_pause: Odtwórz lub wstrzymaj obrazy
+      previous: Poprzednia
+      select_slide: Wybierz obraz do wyświetlenia
+      slide_label: "%{name} (%{index} z %{count})"
+    like_button:
+      like:
+      unlike:
+    link_list:
+      sync:
+    lists_card:
+      add_to_list:
+      on_lists:
+      remove:
+      title:
+    modal:
+      close: Zamknij
+    model_card:
+      delete_button:
+        label: Usuń model %{name}
+        text: Usuń
+      edit_button:
+        label: Edytuj model %{name}
+        text: Edytuj
+      no_preview: Podgląd jest niedostępny
+      open_button:
+        label: Otwórz model %{name}
+        text: Otwórz
+    new_comment_form:
+      placeholder:
+      submit:
+      title:
+    path_template_preview:
+      description:
+      path: Ścieżka
+    search_help:
+      boolean: Użyj "or", aby znaleźć modele pasujące do któregokolwiek z terminów.
+      federation: Wyszukaj dowolną nazwę użytkownika Fediverse, aby ją zaobserwować.
+      filename:
+      intro:
+      more_details_html:
+      negation: Aby wykluczyć terminy, użyj "not", "!" lub "-".
+      parentheses:
+      path:
+      quotes:
+      simple:
+      specific_fields:
+      tag:
+      title: Składnia Wyszukiwania
+      unset:
+      without_tag:
+    sort_menu:
+      name:
+      recent:
+      updated:
+  concerns:
+    linkable:
+      sync:
+        bad_request:
+        success:
+  doorkeeper:
+    applications:
+      buttons:
+        authorize: Autoryzuj
+        cancel: Anuluj
+        destroy: Zniszcz
+        edit: Edytuj
+        submit:
+      confirmations:
+        destroy: Jesteś pewny?
+      edit:
+        title: Edytuj aplikację
+      form:
+        error: Ups! Sprawdź swój formularz pod kątem możliwych błędów
+      help:
+        blank_redirect_uri:
+        confidential:
+        redirect_uri:
+        scopes:
+      index:
+        actions: Akcje
+        callback_url:
+        confidential:
+        confidentiality:
+          'no': Nie
+          'yes': Tak
+        name: Nazwa
+        new: Nowa Aplikacja
+        title: Twoje aplikacje
+      new:
+        title: Nowa Aplikacja
+      show:
+        actions: Akcje
+        application_id: UID
+        callback_urls:
+        confidential:
+        not_defined: Nie zdefiniowane
+        scopes:
+        secret: Sekret
+        secret_hashed: Zhaszowany sekret
+        title: 'Aplikacja: %{name}'
+    authorizations:
+      buttons:
+        authorize: Autoryzuj
+        deny: Odmów
+      error:
+        title: Wystąpił błąd
+      form_post:
+        title: Prześlij ten formularz
+      new:
+        able_to: Aplikacja ta będzie w stanie
+        prompt: Autoryzować %{client_name} do zkorzystania z twojego konta?
+        title: Wymagana autoryzacja
+      show:
+        title: Kod autoryzacji
+    authorized_applications:
+      buttons:
+        revoke:
+      confirmations:
+        revoke: Jesteś pewny?
+      index:
+        application: Aplikacja
+        created_at:
+        date_format: "%Y-%m-%d %H:%M:%S"
+        title: Twoje autoryzowane aplikacje
+    errors:
+      messages:
+        access_denied:
+        admin_authenticator_not_configured:
+        credential_flow_not_configured:
+        forbidden_token:
+          missing_scope:
+        invalid_client:
+        invalid_code_challenge_method:
+          one:
+          other:
+          zero:
+        invalid_grant:
+        invalid_redirect_uri:
+        invalid_request:
+          invalid_code_challenge:
+          missing_param:
+          request_not_authorized:
+          unknown:
+        invalid_scope:
+        invalid_token:
+          expired:
+          revoked:
+          unknown:
+        resource_owner_authenticator_not_configured:
+        revoke:
+          unauthorized:
+        server_error:
+        temporarily_unavailable:
+        unauthorized_client:
+        unsupported_grant_type:
+        unsupported_response_mode:
+        unsupported_response_type:
+    flash:
+      applications:
+        create:
+          notice:
+        destroy:
+          notice:
+        update:
+          notice:
+      authorized_applications:
+        destroy:
+          notice:
+    layouts:
+      admin:
+        nav:
+          applications: Aplikacje
+          home: Strona główna
+          oauth2_provider: Dostawca OAuth2
+        title: Doorkeeper
+      application:
+        title: Wymagana autoryzacja OAuth
+    pre_authorization:
+      status:
+  doorkeeper_access_tokens:
+    create:
+      failed:
+      success:
+    destroy:
+      success:
+    new:
+      expiry:
+        label:
+      scopes:
+        label:
+      submit:
+      title:
+    show:
+      bearer_token_help:
+      description:
+      done:
+      title:
+  doorkeeper_applications:
+    create:
+      failure:
+      success:
+    destroy:
+      success:
+    edit:
+      title:
+    form:
+      confidential:
+        help:
+      redirect_uri:
+        help:
+      scopes:
+        label:
+      submit:
+    index:
+      description:
+      moderator_notice:
+      new:
+      title:
+    new:
+      title:
+    show:
+      destroy: Usuń
+      edit: Edytuj
+      oauth_help:
+      revoke:
+        confirm:
+        label:
+      title:
+      token_help:
+      tokens:
+    update:
+      failure:
+      success:
+  doorkeeper_applications_helper:
+    token_expiry_string:
+      expired:
+      never: Nigdy
+      revoked:
   errors:
     messages:
       already_confirmed:
@@ -15,3 +751,340 @@ pl:
         one:
         other:
       weak_password:
+  fasp_client:
+    providers:
+      edit:
+        approval_help:
+        approve:
+        capability:
+        contact_details:
+        data_sharing:
+        deny: Odmów
+        disable:
+        enable:
+        links: Linki
+        registration:
+        versions:
+      index:
+        add_html:
+        description_html:
+        heading:
+        provider_list_title:
+        search_3dprint_social_html:
+  follows:
+    actor_table:
+      actions: Akcje
+      address: Adres Fediverse
+      name: Nazwa
+    follow_remote_actor:
+      followed: Pomyślnie zaczęto obserwować %{actor}
+    index:
+      explore_html:
+      followers: Obserwujący
+      following: Obserwowane
+      title: Połączenia
+    new:
+      no_results: Przepraszamy, nie mogliśmy znaleźć niczego dla "%{query}". Czy jest to prawidłowe konto ActivityPub lub adres URL?
+      recommended:
+      results: Wyniki wyszukiwania
+      title: Śledź Fediverse
+    remote_follow:
+      help: Nie potrzebujesz konta na tym serwerze, aby obserwować %{name}; wprowadź tutaj nazwę swojego konta, a my odeślemy Cię do domu, aby zakończyć proces.
+      no_results_html: Nie mogliśmy znaleźć Twojego konta domowego; czy wprowadziłeś je poprawnie?
+      placeholder: Twoja nazwa użytkownika Fediverse, np. @manyfold@3dp.chat
+      submit: Zabierz mnie do domu
+      title: Obserwuj %{name}
+    search_form:
+      help: Możesz obserwować publicznych twórców, kolekcje lub modele na innym serwerze Manyfold, a nawet każde publiczne konto w Fediversie! Wystarczy, że wpiszesz nazwę konta w polu wyszukiwania!
+      placeholder: Wprowadź konto Fediverse lub adres URL, np. @admin@try.manyfold.app
+      submit: Wyszukaj
+    unfollow_remote_actor:
+      unfollowed: Przestano obserwować %{actor}
+  general:
+    copy_fediverse_handle:
+    delete: Usuń
+    download: Pobierz
+    edit: Edytuj
+    expand: Rozwiń
+    followers:
+      few:
+      many:
+      one:
+      other:
+      two:
+      zero:
+    menu: Menu
+    new: Nowy
+    no_change:
+    none:
+    private: Prywatne
+    public:
+    report: Zgłoś %{type}
+    save: Zapisz
+    shared:
+    view: Widok
+  group_mailer:
+    new_member:
+      existing:
+        message:
+        subject:
+      inviting:
+        message:
+        subject:
+  groups:
+    create:
+      success:
+    form:
+      add:
+      description:
+        help:
+      intro:
+      name:
+        help:
+    membership_fields:
+      user_id:
+        delete: Usuń
+        placeholder:
+    update:
+      success:
+  home:
+    activity:
+      created: dodane %{time} temu
+      updated: zaktualizowane %{time} temu
+    browsing:
+      content:
+      manual_link:
+      more_access:
+      title:
+    federation:
+      account_handle:
+      content_html:
+      creator_handle:
+      creator_handle_html:
+      handle_html:
+      title:
+      users_v_creators:
+    index:
+      no_activities: Na razie nie ma żadnych aktywności do wyświetlenia.
+      open_search_help: Składnia wyszukiwania
+      recent_activity: Ostatnia Aktywność
+      search:
+        placeholder: Czego szukasz?
+        submit: Wyszukaj
+    publishing:
+      content:
+      existing_creator:
+        button:
+        content:
+      new_creator:
+        button:
+        content:
+      title:
+    support:
+      content:
+      manyfold_html:
+      support_link: Wesprzyj tą instancje
+      support_manyfold:
+      title:
+    uploading:
+      quota:
+      title:
+    welcome:
+      lead:
+      title:
+  imports:
+    bad_url:
+    create:
+      success:
+    new:
+      description:
+      heading:
+      import:
+      import_capabilities:
+      import_type_html:
+      integration_settings:
+      placeholder:
+      submit:
+      supported_sites:
+  jobs:
+    activity:
+      collection_published:
+        comment: Nowa kolekcja modeli 3D ["%{name}"](%{url}) została właśnie opublikowana!
+      model_collected:
+        comment: '["%{model_name}"](%{model_url}) został właśnie dodany do kolekcji ["%{collection_name}"](%{collection_url}).'
+      model_published:
+        comment: Nowy model 3D ["%{name}"](%{url}) został właśnie opublikowany!
+      updated_model:
+        comment: Model 3D ["%{name}"](%{url}) został właśnie zaktualizowany!
+    analysis:
+      analyse_model_file:
+        detect_duplicates: Wykrywanie zduplikowanych plików
+        detect_ineffiency: Wykrywanie niewydajnych formatów
+        file_statistics: Obliczanie statystyk plików
+        matching: Dopasowywanie obsługiwanych plików
+      file_conversion:
+        exporting: Eksportowanie nowego pliku
+        loading_mesh: Ładowanie siatki
+      geometric_analysis:
+        direction_check: Sprawdzanie orientacji powierzchni
+        loading_mesh: Ładowanie siatki
+        manifold_check: Sprawdzanie, czy siatka jest rozmaita
+    scan:
+      detect_filesystem_changes:
+        building_folder_list: Tworzenie listy zmienionych folderów
+        creating_models: Tworzenie modeli
+    upgrade:
+      backfill_image_derivatives:
+        processing:
+      backfill_model_renders:
+        rendering:
+  kaminari:
+    first_page:
+      label: Przejdź do pierwszej strony
+    last_page:
+      label: Przejdź do ostatniej strony
+    next_page:
+      label: Przejdź do następnej strony
+    page:
+      current_page: Bieżąca strona
+      label: Przejdź do %{page} strony
+    paginator:
+      label: Nawigacja strony
+    prev_page:
+      label: Przejdź do poprzedniej strony
+  layouts:
+    application:
+      alert:
+        danger: Niebezpieczeństwo
+        info: Informacja
+      skip_to_content: Przejdź do głównej treści
+    card_list_page:
+      actions_heading: Akcje
+    mailer:
+      footer:
+      greeting: Cześć!
+    settings:
+      appearance: Wygląd
+      integrations_heading:
+      libraries: Biblioteki
+      moderation_heading:
+      moderation_settings_title:
+      organization: Organizacja
+      performance: Pulpit Wydajności
+      pghero: PgHero
+      search_heading:
+      sidekiq: Sidekiq
+      site_settings_title: Ustawienia Strony
+      tools_heading: Zaawansowane Narzędzia
+  licenses:
+    0BSD:
+    CC-BY-40: Creative Commons Uznanie autorstwa
+    CC-BY-NC-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne
+    CC-BY-NC-ND-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne-Bez utworów zależnych
+    CC-BY-NC-SA-40: Creative Commons Uznanie autorstwa-Użycie niekomercyjne-Na tych samych warunkach
+    CC-BY-ND-40: Creative Commons Uznanie autorstwa-Bez utworów zależnych
+    CC-BY-SA-40: Creative Commons Uznanie autorstwa-Na tych samych warunkach
+    CC-PDDC: Creative Commons Deklaracja Domeny Publicznej
+    CC0-10: Creative Commons Zero
+    CERN-OHL-P-20:
+    CERN-OHL-S-20:
+    CERN-OHL-W-20:
+    GPL-20-only:
+    GPL-30-only:
+    LGPL-20-only:
+    LGPL-30-only:
+    LicenseRef-Commercial: Komercyjne; tylko do użytku prywatnego
+    MIT: MIT
+  lists:
+    create:
+      success:
+    destroy:
+      success:
+    special:
+      liked:
+    update:
+      success:
+  moderator_mailer:
+    new_approval:
+      message: Ktoś nowy zarejestrował konto i wymaga zatwierdzenia. Zatwierdź konto pod adresem %{link}
+      subject: Nowe konto wymaga zatwierdzenia
+    new_report:
+      message: Ktoś zgłosił zawartość wymagającą moderacji. Przejrzyj zgłoszenie pod adresem %{link}
+      subject: Otrzymano nowe zgłoszenie
+  renderer:
+    errors:
+      canvas: 'Nie można znaleźć canvasu #webgl!'
+      load: Błąd wczytywania
+      webglrenderer: Nie można utworzyć renderera!
+    load: Wczytywanie
+    processing: Procesowanie siatki
+  reports:
+    create:
+      success: Zgłoszenie przesłane. Dziękujemy!
+    new:
+      description: Jeśli ten element narusza jakiekolwiek prawa lub zasady serwera, możesz zgłosić go naszym moderatorom. Dodaj komentarz, aby poinformować nas dlaczego!
+      submit: Wyślij zgłoszenie
+      title: 'Zgłoś %{type}: "%{name}"'
+  scans:
+    create:
+      success:
+  security:
+    running_as_root_html: Manyfold działa jako root, co stanowi zagrożenie dla bezpieczeństwa. Uruchom jako inny użytkownik systemu przez ustawienie zmiennych środowiskowych <code>PUID</code> i <code>PGID</code>. Szczegółowe informacje możesz znaleźć w <a href='https://manyfold.app/sysadmin/configuration.html#required'>dokumentacji konfiguracji</a>.
+  sites:
+    cgtrader: CGTrader
+    comicsgamesandthings: Comics, Games, and Things
+    cults3d: Cults3D
+    fediverse:
+    github: GitHub
+    makerworld: MakerWorld
+    manyfold: Manyfold
+    myminifactory: MyMiniFactory
+    printables: Printables
+    thangs: Thangs
+    theminiindex: The Mini Index
+    thingiverse: Thingiverse
+    yeggi: yeggi
+  user_mailer:
+    account_approved:
+      message: Twoje konto zostało zatwierdzone; możesz teraz zalogować się pod adresem %{link}.
+      subject: Konto zatwierdzone
+    test_email:
+      subject: Testowy email
+      test_email_message: Testowy email
+  users:
+    registrations:
+      create:
+        altcha_failed:
+  views:
+    groups:
+      edit:
+        title: Edytuj
+      form:
+        confirm_destroy:
+      index:
+        copy:
+        description:
+        invite_count:
+        member_count:
+        title:
+      new:
+        title:
+    lists:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:
+      show:
+        description:
+        title:
+    pagination:
+      first: "« Pierwsza"
+      last: Ostatnia »
+      next: Następna ›
+      previous: "‹ Poprzednia"
+      truncate: "…"
