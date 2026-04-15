@@ -19,7 +19,8 @@ module ActivityPub
           "tag" => hashtags,
           "f3di:compatibilityNote" => @object.system,
           "inReplyTo" => in_reply_to,
-          "url" => url
+          "url" => url,
+          "likes" => likes
         }.compact.merge(address_fields)
       )
     end
@@ -66,6 +67,15 @@ module ActivityPub
       return nil if @object.system
       # Otherwise, find the system note or just use the actor URL if unavailable
       @object.commentable.comments.where(system: true).first&.federated_url || @object.commentable.federails_actor&.federated_url
+    end
+
+    def likes
+      return nil unless @object.system
+      {
+        id: @object.commentable.federails_actor.federated_url + "#likes",
+        type: "Collection",
+        totalItems: @object.commentable.like_count
+      }
     end
   end
 end

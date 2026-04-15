@@ -26,7 +26,8 @@ module ActivityPub
         attributedTo: short_creator(@object.creator),
         context: short_collection(@object.collection),
         "spdx:license": license,
-        preview: oembed_to_preview(OEmbed::ModelSerializer.new(@object, maxwidth: "100%", maxheight: "100%").serialize)
+        preview: oembed_to_preview(OEmbed::ModelSerializer.new(@object, maxwidth: "100%", maxheight: "100%").serialize),
+        likes: likes
       }.compact.merge(address_fields)
     end
 
@@ -58,6 +59,14 @@ module ActivityPub
           href: Rails.application.routes.url_helpers.models_url(tag: tag)
         }
       end
+    end
+
+    def likes
+      {
+        id: @object.federails_actor.federated_url + "#likes",
+        type: "Collection",
+        totalItems: @object.like_count
+      }
     end
   end
 end
