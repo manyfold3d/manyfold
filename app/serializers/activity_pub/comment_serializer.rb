@@ -9,6 +9,7 @@ module ActivityPub
             "https://purl.archive.org/miscellany",
             {
               f3di: "http://purl.org/f3di/ns#",
+              gts: "https://gotosocial.org/ns#",
               Hashtag: "as:Hashtag",
               sensitive: "as:sensitive"
             }
@@ -20,7 +21,12 @@ module ActivityPub
           "f3di:compatibilityNote" => @object.system,
           "inReplyTo" => in_reply_to,
           "url" => url,
-          "likes" => likes
+          "likes" => likes,
+          "gts:interactionPolicy" => @object.system ? {
+            "gts:canQuote" => {
+              "gts:automaticApproval" => Fediverse::Collection::PUBLIC
+            }
+          } : nil
         }.compact.merge(address_fields)
       )
     end

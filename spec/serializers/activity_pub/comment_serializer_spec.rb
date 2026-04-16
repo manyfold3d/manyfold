@@ -40,6 +40,10 @@ RSpec.describe ActivityPub::CommentSerializer do
     it "includes canonical comment link in url field" do
       expect(ap["url"]).to eq "http://localhost:3214/models/#{model.public_id}#comment-#{comment.public_id}"
     end
+
+    it "does not automatically allows quoting" do
+      expect(ap.dig("gts:interactionPolicy", "gts:canQuote", "gts:automaticApproval")).to be_nil
+    end
   end
 
   context "when the system comments on something with tags" do
@@ -59,6 +63,16 @@ RSpec.describe ActivityPub::CommentSerializer do
         id: model.federails_actor.federated_url + "#likes",
         type: "Collection",
         totalItems: 0
+      })
+    end
+
+    it "include gotosocial namespace in JSON-LD context, for quoting" do
+      expect(ap["@context"].last).to include({gts: "https://gotosocial.org/ns#"})
+    end
+
+    it "automatically allows quoting" do
+      expect(ap.dig("gts:interactionPolicy", "gts:canQuote")).to eq({
+        "gts:automaticApproval" => "https://www.w3.org/ns/activitystreams#Public"
       })
     end
   end
