@@ -572,6 +572,70 @@ nl:
         bad_request:
         success:
   doorkeeper:
+    applications:
+      buttons:
+        authorize: Authoriseren
+        cancel: Annuleren
+        destroy: Verwijderen
+        edit: Bewerken
+        submit: Opslaan
+      confirmations:
+        destroy: Weet je het zeker?
+      edit:
+        title: Bewerk applicatie
+      form:
+        error: Oops! Controleer het formulier op fouten
+      help:
+        blank_redirect_uri: Laat het leeg indien u uw provider heeft geconfigureerd voor het gebruik van Client Credentials, Resource Owner Password Credentials of een ander type authorisatie dat geen omleiding van URI vereist.
+        confidential: Toepassing zal worden gebruikt waar de client secret vertrouwelijk kan worden gehouden. Native mobile apps en Single Page Apps worden beschouwd als niet-vertrouwelijk.
+        redirect_uri: 'Gebruik één regel per URI. '
+        scopes: Scheid scopes met spaties. Laat leeg om de standaard scopes te gebruiken.
+      index:
+        actions: Actions
+        callback_url: Callback URL
+        confidential: Confidential?
+        confidentiality:
+          'no': Nee
+          'yes': Ja
+        name: Naam
+        new: Nieuwe applicatie
+        title: Jouw applicaties
+      new:
+        title: Nieuwe applicatie
+      show:
+        actions: Acties
+        application_id: Applicatie UID
+        callback_urls: Callback urls
+        confidential: Confidentieel
+        not_defined:
+        scopes: Scopes
+        secret: Secret
+        secret_hashed:
+        title: 'Applicatie: %{name}'
+    authorizations:
+      buttons:
+        authorize: Authoriseren
+        deny: Weigeren
+      error:
+        title: Er is een fout opgetreden
+      form_post:
+        title:
+      new:
+        able_to: Deze applicatie zal in staat zijn om
+        prompt: "%{client_name} authoriseren om uw account te gebruiken?"
+        title: Authorisatie vereist
+      show:
+        title: Authorisatie code
+    authorized_applications:
+      buttons:
+        revoke: Intrekken
+      confirmations:
+        revoke: Weet je het zeker?
+      index:
+        application: Applicatie
+        created_at: Aangemaakt op
+        date_format: "%d-%m-%Y %H:%M:%S"
+        title: Jouw geauthoriseerde applicaties
     errors:
       messages:
         access_denied: De resource eigenaar of authorisatie-server weigerde het verzoek.
@@ -616,6 +680,17 @@ nl:
       authorized_applications:
         destroy:
           notice: Applicatie ingetrokken.
+    layouts:
+      admin:
+        nav:
+          applications: Applicaties
+          home: Home
+          oauth2_provider: OAuth2 Provider
+        title: Doorkeeper
+      application:
+        title: OAuth authorisatie vereist
+    pre_authorization:
+      status: Pre-authorization
   doorkeeper_access_tokens:
     create:
       failed:
