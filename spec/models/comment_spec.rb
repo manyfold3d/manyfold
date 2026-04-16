@@ -8,7 +8,10 @@ RSpec.describe Comment do
 
     it "posts a Federails Activity on creation" do # rubocop:disable RSpec/MultipleExpectations
       expect { create(:comment, commenter: commenter, commentable: commentable) }.to change(Federails::Activity, :count).by(1)
-      expect(Federails::Activity.last.action).to eq "Create"
+      activity = Federails::Activity.last
+      expect(activity.action).to eq "Create"
+      expect(activity.actor).to eq commenter.federails_actor
+      expect(activity.entity.commentable).to eq commentable
     end
 
     it "posts a Federails Activity on update" do # rubocop:disable RSpec/MultipleExpectations
@@ -85,8 +88,10 @@ RSpec.describe Comment do
     let(:commenter) { create(:creator) }
     let(:commentable) { create(:model, :public) }
 
-    it "Does not post a Federails Activity on creation" do
-      expect { create(:comment, commenter: commenter, commentable: commentable) }.not_to change(Federails::Activity, :count)
+    it "does not post a Federails Activity on creation" do
+      expect {
+        create(:comment, commenter: commenter, commentable: commentable)
+      }.not_to change(Federails::Activity.where(actor: commenter.federails_actor), :count)
     end
 
     it "does not have a federated_url" do
@@ -99,8 +104,10 @@ RSpec.describe Comment do
     let(:commenter) { create(:creator, :public) }
     let(:commentable) { create(:model, creator: commenter) }
 
-    it "Does not post a Federails Activity on creation" do
-      expect { create(:comment, commenter: commenter, commentable: commentable) }.not_to change(Federails::Activity, :count)
+    it "does not post a Federails Activity on creation" do
+      expect {
+        create(:comment, commenter: commenter, commentable: commentable)
+      }.not_to change(Federails::Activity.where(actor: commenter.federails_actor), :count)
     end
 
     it "does not have a federated_url" do
