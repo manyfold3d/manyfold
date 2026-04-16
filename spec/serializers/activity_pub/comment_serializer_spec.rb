@@ -31,10 +31,7 @@ RSpec.describe ActivityPub::CommentSerializer do
     end
 
     it "does not include model tags" do
-      aggregate_failures do
-        expect(ap).not_to have_key("tag")
-        expect(ap["content"]).not_to include "<p role=\"list\">"
-      end
+      expect(ap).not_to have_key("tag")
     end
 
     it "includes canonical comment link in url field" do
@@ -50,12 +47,24 @@ RSpec.describe ActivityPub::CommentSerializer do
     let(:model) { create(:model, tag_list: ["tag"]) }
     let(:comment) { create(:comment, commentable: model, commenter: model, system: true) }
 
-    it "adds tag list to a trailing paragraph in content" do
-      expect(ap["content"]).to include "<p role=\"list\">"
+    it "includes model's canonical URL as context" do
+      expect(ap["context"]).to eq "http://localhost:3214/models/#{model.to_param}"
     end
 
-    it "adds tag link" do
-      expect(ap["content"]).to include "<a role=\"listitem\" href=\"http://localhost:3214/models?tag=tag\" class=\"mention hashtag\" rel=\"tag\">#Tag</a>"
+    it "has model's actor URL in atributedTo" do
+      expect(ap["attributedTo"]).to eq model.federails_actor.federated_url
+    end
+
+    it "is sent as a Page" do
+      expect(ap["type"]).to eq "Page"
+    end
+
+    it "includes model's canonical URL as url" do
+      expect(ap["url"]).to eq "http://localhost:3214/models/#{model.to_param}"
+    end
+
+    it "is a f3di compatibility note" do
+      expect(ap["f3di:compatibilityNote"]).to be true
     end
 
     it "includes a likes collection" do
@@ -74,6 +83,10 @@ RSpec.describe ActivityPub::CommentSerializer do
       expect(ap.dig("gts:interactionPolicy", "gts:canQuote")).to eq({
         "gts:automaticApproval" => "https://www.w3.org/ns/activitystreams#Public"
       })
+    end
+
+    it "adds structured tag list" do
+      expect(ap["tag"]).to include({href: "http://localhost:3214/models?tag=tag", name: "#Tag", type: "Hashtag"})
     end
   end
 
@@ -143,6 +156,19 @@ RSpec.describe ActivityPub::CommentSerializer do
 
     it "includes parent collection followers collection in cc" do
       expect(serializer.cc).to include parent_collection.federails_actor.followers_url
+    end
+  end
+
+  context "when creating system comments" do
+    let(:model) { create(:model) }
+    let(:comment) { create(:comment, commentable: model, commenter: model, system: true) }
+
+    context "when model has tags" do
+      let(:model) { create(:model, tag_list: ["tag"]) }
+
+      it "adds structured tag list" do
+        expect(ap["tag"]).to include({href: "http://localhost:3214/models?tag=tag", name: "#Tag", type: "Hashtag"})
+      end
     end
   end
 end

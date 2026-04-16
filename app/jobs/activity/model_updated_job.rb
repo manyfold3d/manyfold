@@ -10,7 +10,7 @@ class Activity::ModelUpdatedJob < ApplicationJob
       commenter: model.creator || model,
       comment: I18n.t("jobs.activity.updated_model.comment", # rubocop:disable I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
         name: model.name,
-        url: model.federails_actor.profile_url),
+        creator_handle: model.creator.federails_actor.at_address),
       sensitive: model.sensitive
     )
   end
