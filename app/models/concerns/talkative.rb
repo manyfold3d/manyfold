@@ -10,7 +10,7 @@ module Talkative
 
   def owning_actor
     return nil unless caber_ready?
-    owners.first&.federails_actor
+    owners.first&.federails_actor || federails_actor
   end
 
   private
