@@ -78,10 +78,6 @@ class SiteSettings < RailsSettings::Base
     Rails.application.config.manyfold_features[:oidc]
   end
 
-  def self.default_user
-    User.with_role(:administrator).first
-  end
-
   def self.social_enabled?
     multiuser_enabled? || federation_enabled?
   end
