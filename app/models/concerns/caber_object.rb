@@ -71,7 +71,7 @@ module CaberObject
     non_owner_total = caber_relations.where.not(permission: "own").count
     if non_owner_total == 0
       "private"
-    elsif non_owner_total == 1 && caber_relations.where(permission: "view", subject: Role.find_by!(name: "member")).one?
+    elsif non_owner_total == 1 && caber_relations.where(permission: "view", subject: Role.find_or_create_by(name: "member")).one?
       "member"
     elsif non_owner_total == 1 && caber_relations.where(permission: "view", subject: nil).one?
       "public"
