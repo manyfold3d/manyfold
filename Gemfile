@@ -174,7 +174,7 @@ group :development, :production do
   gem "redis-namespace"
 end
 
-gem "pghero", "~> 3.7"
+gem "pghero", "~> 3.8"
 gem "pg_query", "~> 6.2"
 
 gem "to_regexp", "~> 0.2"
