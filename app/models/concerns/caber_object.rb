@@ -53,15 +53,14 @@ module CaberObject
 
   def set_owner
     # Set owner if not already set
-    if permitted_users.with_permission("own").empty?
+    if owners.empty?
       o = @owner || SiteSettings.default_user
       grant_permission_to("own", o) if o
     end
   end
 
-  def owner
-    # Get the first owner
-    permitted_users.with_permission("own").first
+  def owners
+    permitted_users.with_permission("own")
   end
 
   def will_be_public?

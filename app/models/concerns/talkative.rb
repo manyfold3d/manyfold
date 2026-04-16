@@ -10,8 +10,7 @@ module Talkative
 
   def owning_actor
     return nil unless caber_ready?
-    user = permitted_users.with_permission("own").first || SiteSettings.default_user
-    user&.federails_actor
+    owners.first&.federails_actor
   end
 
   private
