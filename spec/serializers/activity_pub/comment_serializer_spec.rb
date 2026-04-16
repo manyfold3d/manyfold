@@ -47,6 +47,22 @@ RSpec.describe ActivityPub::CommentSerializer do
     let(:model) { create(:model, tag_list: ["tag"]) }
     let(:comment) { create(:comment, commentable: model, commenter: model, system: true) }
 
+    it "includes model's canonical URL as context" do
+      expect(ap["context"]).to eq "http://localhost:3214/models/#{model.to_param}"
+    end
+
+    it "has model's actor URL in atributedTo" do
+      expect(ap["attributedTo"]).to eq model.federails_actor.federated_url
+    end
+
+    it "includes model's canonical URL as url" do
+      expect(ap["url"]).to eq "http://localhost:3214/models/#{model.to_param}"
+    end
+
+    it "is a f3di compatibility note" do
+      expect(ap["f3di:compatibilityNote"]).to be true
+    end
+
     it "includes a likes collection" do
       expect(ap["likes"]).to include({
         id: model.federails_actor.federated_url + "#likes",
