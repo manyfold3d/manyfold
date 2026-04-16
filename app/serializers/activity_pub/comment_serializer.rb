@@ -55,12 +55,7 @@ module ActivityPub
     end
 
     def to_html
-      content = [Kramdown::Document.new(@object.comment, input: "GFM").to_html]
-      tags = hashtags
-      if tags&.any?
-        content << "<p role=\"list\">#{tags.map { |t| %(<a role="listitem" href="#{t[:href]}" class="mention hashtag" rel="tag">#{t[:name]}</a>) }&.join(" ")}</p>"
-      end
-      content.join
+      Kramdown::Document.new(@object.comment, input: "GFM").to_html
     end
 
     def url

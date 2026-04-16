@@ -31,10 +31,7 @@ RSpec.describe ActivityPub::CommentSerializer do
     end
 
     it "does not include model tags" do
-      aggregate_failures do
-        expect(ap).not_to have_key("tag")
-        expect(ap["content"]).not_to include "<p role=\"list\">"
-      end
+      expect(ap).not_to have_key("tag")
     end
 
     it "includes canonical comment link in url field" do
@@ -143,6 +140,20 @@ RSpec.describe ActivityPub::CommentSerializer do
 
     it "includes parent collection followers collection in cc" do
       expect(serializer.cc).to include parent_collection.federails_actor.followers_url
+    end
+  end
+
+  context "when creating system comments" do
+    let(:model) { create(:model) }
+    let(:comment) { create(:comment, commentable: model, commenter: model, system: true) }
+
+
+    context "when model has tags" do
+      let(:model) { create(:model, tag_list: ["tag"]) }
+
+      it "adds structured tag list" do
+        expect(ap["tag"]).to include({href: "http://localhost:3214/models?tag=tag", name: "#Tag", type: "Hashtag"})
+      end
     end
   end
 end
