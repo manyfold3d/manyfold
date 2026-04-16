@@ -8,15 +8,14 @@ shared_examples "Caber::Object" do
     expect(caber_object.class).to respond_to :can_grant_permissions_to
   end
 
-  it "is created with a default owner" do
+  it "is created with no default owner" do
     create(described_class.to_s.underscore.to_sym)
-    expect(caber_object.grants_permission_to?("own", admin)).to be true
+    expect(caber_object.caber_relations).to be_empty
   end
 
-  it "can be given an explicit owner at creation" do # rubocop:disable RSpec/MultipleExpectations, RSpec/ExampleLength
+  it "can be given an explicit owner at creation" do
     object = create(described_class.to_s.underscore.to_sym, owner: contributor)
     expect(object.grants_permission_to?("own", contributor)).to be true
-    expect(object.grants_permission_to?("own", admin)).to be false
   end
 
   context "when assigning permissions at creation" do
