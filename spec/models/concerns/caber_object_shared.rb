@@ -10,7 +10,7 @@ shared_examples "Caber::Object" do
 
   it "is created with no default owner" do
     create(described_class.to_s.underscore.to_sym)
-    expect(caber_object.caber_relations).to be_empty
+    expect(caber_object.owners).to be_empty
   end
 
   it "can be given an explicit owner at creation" do
