@@ -131,7 +131,7 @@ RSpec.describe "/lists", :as_member do
     end
 
     context "with list items from different lists" do
-      let!(:other_list) { create(:list, owner: SiteSettings.default_user) }
+      let!(:other_list) { create(:list, owner: create(:user)) }
 
       before do
         other_list.models << model
