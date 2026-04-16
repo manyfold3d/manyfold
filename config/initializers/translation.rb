@@ -15,7 +15,13 @@ if Rails.env.development?
       "datetime",
       "date",
       "time",
-      "helpers"
+      "helpers",
+      # Doorkeeper things I can't get rid of any other way
+      "doorkeeper.applications",
+      "doorkeeper.authorizations",
+      "doorkeeper.authorized_applications",
+      "doorkeeper.layouts",
+      "doorkeeper.pre_authorization"
     ]
     config.source_locale = "en"
     config.target_locales = YAML.load_file(Rails.root.join("config/locales.yml")).values.flatten.without(config.source_locale)
