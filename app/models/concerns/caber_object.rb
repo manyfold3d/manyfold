@@ -68,12 +68,12 @@ module CaberObject
   end
 
   def matching_permission_preset
-    total = caber_relations.count
-    if total == 1 && caber_relations.where(permission: "own").one?
+    non_owner_total = caber_relations.where.not(permission: "own").count
+    if non_owner_total == 0
       "private"
-    elsif total == 2 && caber_relations.where(permission: "view", subject: Role.find_by!(name: "member")).one?
+    elsif non_owner_total == 1 && caber_relations.where(permission: "view", subject: Role.find_by!(name: "member")).one?
       "member"
-    elsif total == 2 && caber_relations.where(permission: "view", subject: nil).one?
+    elsif non_owner_total == 1 && caber_relations.where(permission: "view", subject: nil).one?
       "public"
     else
       ""

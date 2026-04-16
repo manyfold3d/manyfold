@@ -194,7 +194,13 @@ shared_examples "Caber::Object" do
       expect(object.reload.matching_permission_preset).to eq "public"
     end
 
-    it "is member if there is a member view permission, an owner, and nothing else" do
+    it "is member if there is a member view permission, owner, and nothing else" do
+      object.grant_permission_to "view", Role.find_by(name: "member")
+      object.grant_permission_to "own", contributor
+      expect(object.reload.matching_permission_preset).to eq "member"
+    end
+
+    it "is member if there is a member view permission, no owner, and nothing else" do
       object.grant_permission_to "view", Role.find_by(name: "member")
       expect(object.reload.matching_permission_preset).to eq "member"
     end
