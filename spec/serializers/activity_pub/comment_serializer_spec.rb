@@ -47,14 +47,6 @@ RSpec.describe ActivityPub::CommentSerializer do
     let(:model) { create(:model, tag_list: ["tag"]) }
     let(:comment) { create(:comment, commentable: model, commenter: model, system: true) }
 
-    it "adds tag list to a trailing paragraph in content" do
-      expect(ap["content"]).to include "<p role=\"list\">"
-    end
-
-    it "adds tag link" do
-      expect(ap["content"]).to include "<a role=\"listitem\" href=\"http://localhost:3214/models?tag=tag\" class=\"mention hashtag\" rel=\"tag\">#Tag</a>"
-    end
-
     it "includes a likes collection" do
       expect(ap["likes"]).to include({
         id: model.federails_actor.federated_url + "#likes",
@@ -71,6 +63,10 @@ RSpec.describe ActivityPub::CommentSerializer do
       expect(ap.dig("gts:interactionPolicy", "gts:canQuote")).to eq({
         "gts:automaticApproval" => "https://www.w3.org/ns/activitystreams#Public"
       })
+    end
+
+    it "adds structured tag list" do
+      expect(ap["tag"]).to include({href: "http://localhost:3214/models?tag=tag", name: "#Tag", type: "Hashtag"})
     end
   end
 
@@ -146,7 +142,6 @@ RSpec.describe ActivityPub::CommentSerializer do
   context "when creating system comments" do
     let(:model) { create(:model) }
     let(:comment) { create(:comment, commentable: model, commenter: model, system: true) }
-
 
     context "when model has tags" do
       let(:model) { create(:model, tag_list: ["tag"]) }

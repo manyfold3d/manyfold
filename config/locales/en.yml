@@ -851,9 +851,9 @@ en:
       collection_published:
         comment: A new collection of 3D models, ["%{name}"](%{url}), was just published!
       model_published:
-        comment: A new 3D model, ["%{name}"](%{url}), was just published!
+        comment: 'New 3D model: "%{name}" by %{creator_handle}'
       updated_model:
-        comment: The 3D model ["%{name}"](%{url}), was just updated!
+        comment: '3D model updated: "%{name}" by %{creator_handle}'
     analysis:
       analyse_model_file:
         detect_duplicates: Detecting duplicate files
