@@ -1,34 +1,36 @@
 module ActivityPub
   class CommentSerializer < ApplicationSerializer
     def serialize
-      Federails::DataTransformer::Note.to_federation(
-        @object,
-        content: to_html,
-        custom: {
-          "@context" => [
-            "https://purl.archive.org/miscellany",
-            {
-              f3di: "http://purl.org/f3di/ns#",
-              gts: "https://gotosocial.org/ns#",
-              Hashtag: "as:Hashtag",
-              sensitive: "as:sensitive"
-            }
-          ],
-          "context" => Rails.application.routes.url_helpers.url_for([@object.commentable, {only_path: false}]),
-          "sensitive" => @object.sensitive,
-          "summary" => (@object.sensitive ? "Sensitive Content" : nil), # Adding a summary if sensitive, for Mastodon
-          "tag" => hashtags,
-          "f3di:compatibilityNote" => @object.system,
-          "inReplyTo" => in_reply_to,
-          "url" => url,
-          "likes" => likes,
-          "gts:interactionPolicy" => @object.system ? {
-            "gts:canQuote" => {
-              "gts:automaticApproval" => Fediverse::Collection::PUBLIC
-            }
-          } : nil
-        }.compact.merge(address_fields)
-      )
+      {
+        "@context" => Federails::Utils::Context.generate(additional: [
+          "https://purl.archive.org/miscellany",
+          {
+            f3di: "http://purl.org/f3di/ns#",
+            gts: "https://gotosocial.org/ns#",
+            Hashtag: "as:Hashtag",
+            sensitive: "as:sensitive"
+          }
+        ]),
+        "id" => @object.federated_url,
+        "type" => "Note",
+        "attributedTo" => @object.federails_actor.federated_url,
+        "published" => @object.created_at,
+        "updated" => @object.updated_at,
+        "context" => Rails.application.routes.url_helpers.url_for([@object.commentable, {only_path: false}]),
+        "sensitive" => @object.sensitive,
+        "summary" => (@object.sensitive ? "Sensitive Content" : nil), # Adding a summary if sensitive, for Mastodon
+        "content" => content,
+        "tag" => hashtags,
+        "f3di:compatibilityNote" => @object.system,
+        "inReplyTo" => in_reply_to,
+        "url" => url,
+        "likes" => likes,
+        "gts:interactionPolicy" => @object.system ? {
+          "gts:canQuote" => {
+            "gts:automaticApproval" => Fediverse::Collection::PUBLIC
+          }
+        } : nil
+      }.compact.merge(address_fields)
     end
 
     def cc
@@ -54,7 +56,7 @@ module ActivityPub
       end
     end
 
-    def to_html
+    def content
       Kramdown::Document.new(@object.comment, input: "GFM").to_html
     end
 
