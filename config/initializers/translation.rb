@@ -3,7 +3,6 @@ if Rails.env.development?
     config.api_key = ENV["TRANSLATION_IO_API_KEY"]
     config.disable_gettext = true
     config.ignored_key_prefixes = [
-      "activerecord.models.comment",
       "activerecord.errors.messages.record_invalid",
       "activerecord.errors.messages.restrict_dependent_destroy",
       "formtastic",
