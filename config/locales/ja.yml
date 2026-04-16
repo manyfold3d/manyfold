@@ -229,6 +229,11 @@ ja:
         zero: コレクション
       comment:
         few:
+        many:
+        one: コメント
+        other:
+        two:
+        zero:
       creator:
         few: クリエイター
         many: クリエイター

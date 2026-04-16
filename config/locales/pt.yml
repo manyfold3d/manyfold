@@ -229,6 +229,11 @@ pt:
         zero:
       comment:
         few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       creator:
         few:
         many:

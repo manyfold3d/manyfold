@@ -231,6 +231,11 @@ fr:
         zero: Collections
       comment:
         few:
+        many:
+        one: Commentaire
+        other:
+        two:
+        zero:
       creator:
         few: Créateurs
         many: Créateurs
