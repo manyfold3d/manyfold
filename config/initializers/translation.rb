@@ -3,7 +3,6 @@ if Rails.env.development?
     config.api_key = ENV["TRANSLATION_IO_API_KEY"]
     config.disable_gettext = true
     config.ignored_key_prefixes = [
-      "activerecord.models.comment",
       "activerecord.errors.messages.record_invalid",
       "activerecord.errors.messages.restrict_dependent_destroy",
       "formtastic",
@@ -16,7 +15,13 @@ if Rails.env.development?
       "datetime",
       "date",
       "time",
-      "helpers"
+      "helpers",
+      # Doorkeeper things I can't get rid of any other way
+      "doorkeeper.applications",
+      "doorkeeper.authorizations",
+      "doorkeeper.authorized_applications",
+      "doorkeeper.layouts",
+      "doorkeeper.pre_authorization"
     ]
     config.source_locale = "en"
     config.target_locales = YAML.load_file(Rails.root.join("config/locales.yml")).values.flatten.without(config.source_locale)

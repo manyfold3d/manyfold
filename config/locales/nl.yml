@@ -229,6 +229,11 @@ nl:
         zero: Collecties
       comment:
         few:
+        many:
+        one: Opmerking
+        other:
+        two:
+        zero:
       creator:
         few: Makers
         many: Makers

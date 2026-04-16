@@ -229,6 +229,11 @@ cs:
         zero: Kolekce
       comment:
         few:
+        many:
+        one: Komentář
+        other:
+        two:
+        zero:
       creator:
         few: Autoři
         many: Autoři

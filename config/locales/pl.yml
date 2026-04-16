@@ -229,6 +229,11 @@ pl:
         zero:
       comment:
         few:
+        many:
+        one: Komentarz
+        other:
+        two:
+        zero:
       creator:
         few: Twórców
         many: Twórców
