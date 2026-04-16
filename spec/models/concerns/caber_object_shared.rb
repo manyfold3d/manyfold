@@ -1,6 +1,5 @@
 shared_examples "Caber::Object" do
   let(:caber_object) { create(described_class.to_s.underscore.to_sym) }
-  let!(:admin) { create(:admin) }
   let(:contributor) { create(:contributor) }
   let(:member) { create(:user) }
 
