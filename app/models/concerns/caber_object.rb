@@ -53,9 +53,8 @@ module CaberObject
 
   def set_owner
     # Set owner if not already set
-    if owners.empty?
-      o = @owner || SiteSettings.default_user
-      grant_permission_to("own", o) if o
+    if @owner && owners.empty?
+      grant_permission_to("own", @owner)
     end
   end
 

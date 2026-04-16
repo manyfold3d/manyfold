@@ -183,7 +183,6 @@ shared_examples "Caber::Object" do
     before do
       allow(SiteSettings).to receive(:default_viewer_role).and_return(:private)
       object.caber_relations.destroy_all
-      object.grant_permission_to("own", SiteSettings.default_user)
     end
 
     it "is private if there is only one owner and no other permissions" do
@@ -216,7 +215,6 @@ shared_examples "Caber::Object" do
       group.members << user
       allow(SiteSettings).to receive(:default_viewer_role).and_return(:private)
       object.caber_relations.destroy_all
-      object.grant_permission_to("own", SiteSettings.default_user)
     end
 
     it "group does not have view permission by default" do
