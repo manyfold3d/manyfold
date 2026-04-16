@@ -75,7 +75,7 @@ module Manyfold
     # Load some feature settings from ENV
     # Some are automatically enabled in test mode because they impact initialization
     config.manyfold_features = {
-      multiuser: (ENV.fetch("MULTIUSER", nil) == "enabled"),
+      multiuser: ENV.fetch("MULTIUSER", nil) == "enabled" || ENV.fetch("FEDERATION", nil) == "enabled",
       federation: (ENV.fetch("FEDERATION", nil) == "enabled"),
       demo_mode: (ENV.fetch("DEMO_MODE", nil) == "enabled"),
       oidc: ENV.key?("OIDC_CLIENT_ID") && ENV.key?("OIDC_CLIENT_SECRET") && ENV.key?("OIDC_ISSUER")
