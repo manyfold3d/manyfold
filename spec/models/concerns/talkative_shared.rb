@@ -5,27 +5,41 @@ shared_examples "Talkative" do
     end
 
     it "posts an activity" do
+      expect {
+        create(described_class.to_s.underscore.to_sym)
+      }.to change { Federails::Activity.where(action: "Create").count }.from(0).to(1)
+    end
+
+    it "posts activity for the correct actor" do
       entity = create(described_class.to_s.underscore.to_sym)
-      expect(Federails::Activity.where(entity: entity.federails_actor, action: "Create").count).to eq 1
+      expect(Federails::Activity.where(action: "Create").last.entity).to eq entity.federails_actor
     end
   end
 
-  context "when being updated" do
-    let!(:entity) { create(described_class.to_s.underscore.to_sym) }
-
-    before do
-      create(:admin)
-    end
+  context "when updating a model that was created a while ago" do
+    let!(:entity) { create(described_class.to_s.underscore.to_sym, created_at: 1.hour.ago, updated_at: 1.hour.ago) }
 
     it "posts an activity after update" do
-      entity.update caption: "test"
-      expect(Federails::Activity.where(entity: entity.federails_actor, action: "Update").count).to eq 1
+      expect {
+        entity.update caption: "test"
+      }.to change { Federails::Activity.where(entity: entity.federails_actor, action: "Update").count }.from(0).to(1)
     end
 
     it "doesn't post an activity after update if there's already been one recently" do
       entity.update caption: "change"
-      entity.update caption: "change again"
-      expect(Federails::Activity.where(entity: entity.federails_actor, action: "Update").count).to eq 1
+      expect {
+        entity.update caption: "change again"
+      }.not_to change { Federails::Activity.where(entity: entity.federails_actor, action: "Update").count }
+    end
+  end
+
+  context "when updating a model that was just created" do
+    let!(:entity) { create(described_class.to_s.underscore.to_sym) }
+
+    it "doesn't post an activity after update" do
+      expect {
+        entity.update caption: "test"
+      }.not_to change { Federails::Activity.where(entity: entity.federails_actor, action: "Update").count }
     end
   end
 end

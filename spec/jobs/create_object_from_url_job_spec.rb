@@ -25,11 +25,10 @@ RSpec.describe CreateObjectFromUrlJob, :after_first_run do
     contributor = create(:contributor)
     job.perform(url: "https://www.thingiverse.com/thing:4049220", owner: contributor)
     expect(Model.last.grants_permission_to?("own", contributor)).to be true
-    expect(Model.last.grants_permission_to?("own", SiteSettings.default_user)).to be false
   end
 
-  it "sets default owner if not specified", :thingiverse_api_key do
+  it "has no owner if not specified", :thingiverse_api_key do
     job.perform(url: "https://www.thingiverse.com/thing:4049220")
-    expect(Model.last.grants_permission_to?("own", SiteSettings.default_user)).to be true
+    expect(Model.last.owners).to be_empty
   end
 end

@@ -53,15 +53,13 @@ module CaberObject
 
   def set_owner
     # Set owner if not already set
-    if permitted_users.with_permission("own").empty?
-      o = @owner || SiteSettings.default_user
-      grant_permission_to("own", o) if o
+    if @owner && owners.empty?
+      grant_permission_to("own", @owner)
     end
   end
 
-  def owner
-    # Get the first owner
-    permitted_users.with_permission("own").first
+  def owners
+    permitted_users.with_permission("own")
   end
 
   def will_be_public?
@@ -70,12 +68,12 @@ module CaberObject
   end
 
   def matching_permission_preset
-    total = caber_relations.count
-    if total == 1 && caber_relations.where(permission: "own").one?
+    non_owner_total = caber_relations.where.not(permission: "own").count
+    if non_owner_total == 0
       "private"
-    elsif total == 2 && caber_relations.where(permission: "view", subject: Role.find_by!(name: "member")).one?
+    elsif non_owner_total == 1 && caber_relations.where(permission: "view", subject: Role.find_or_create_by(name: "member")).one?
       "member"
-    elsif total == 2 && caber_relations.where(permission: "view", subject: nil).one?
+    elsif non_owner_total == 1 && caber_relations.where(permission: "view", subject: nil).one?
       "public"
     else
       ""

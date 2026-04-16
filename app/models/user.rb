@@ -214,8 +214,12 @@ class User < ApplicationRecord
     !(attributes["quota"] == 0) && SiteSettings.enable_user_quota
   end
 
+  def owned_models
+    permitted_models.with_permission("own")
+  end
+
   def current_space_used
-    permitted_models.with_permission("own").sum(&:size_on_disk)
+    owned_models.sum(&:size_on_disk)
   end
 
   def first_use?

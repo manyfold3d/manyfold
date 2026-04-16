@@ -55,14 +55,14 @@ RSpec.describe ProcessUploadedFileJob do
       expect { job.perform(library.id, file) }.to change(Model, :count).by(1)
     end
 
-    it "Sets default owner permission if no owner set" do
+    it "has no owner if no owner is explicitly set" do
       job.perform(library.id, file)
-      expect(Model.last.permitted_users.with_permission(:own)).to include SiteSettings.default_user
+      expect(Model.last.owners).to be_empty
     end
 
     it "Sets owner permission to provided user" do
       job.perform(library.id, file, owner: uploader)
-      expect(Model.last.permitted_users.with_permission(:own)).to include uploader
+      expect(Model.last.owners).to include uploader
     end
 
     it "Sets default visibility even if a owner is provided" do

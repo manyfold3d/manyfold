@@ -495,6 +495,8 @@ RSpec.describe Model do
       m
     }
 
+    let(:owner) { create(:user) }
+
     it "creates a new model" do
       expect { model.split! }.to change(described_class, :count).by(1)
     end
@@ -544,6 +546,7 @@ RSpec.describe Model do
     it "copies permissions" do # rubocop:disable RSpec/ExampleLength, RSpec/MultipleExpectations
       member_role = Role.find_by(name: :member)
       model.revoke_permission("view", member_role)
+      model.grant_permission_to("own", owner)
       new_model = model.split! files: [model.model_files.first]
       expect(model.caber_relations.count).to eq 1
       expect(new_model.caber_relations.count).to eq 1
