@@ -8,6 +8,7 @@
 
 ## Supported FEPs
 
+- [FEP-044f: Consent-respecting quote posts](https://codeberg.org/fediverse/fep/src/branch/main/fep/044f/fep-044f.md)
 - [FEP-5feb: Search indexing consent for actors](https://codeberg.org/fediverse/fep/src/branch/main/fep/5feb/fep-5feb.md)
 - [FEP-67ff: FEDERATION.md](https://codeberg.org/fediverse/fep/src/branch/main/fep/67ff/fep-67ff.md)
 - [FEP-a974: All Actor types should be followable](https://codeberg.org/fediverse/fep/src/branch/main/fep/a974/fep-a974.md)
