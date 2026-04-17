@@ -37,7 +37,7 @@
     "postcss": "^8.5.10",
     "postcss-cli": "^11.0.1",
     "sass-embedded": "^1.99.0",
-    "three": "^0.183.2",
+    "three": "^0.184.0",
     "threejs-webworker-3mf-loader": "https://github.com/manyfold3d/threejs-webworker-3mf-loader",
     "tom-select": "^2.5.2"
   },
@@ -51,7 +51,7 @@
     "@types/jquery": "^4.0.0",
     "@types/lodash": "^4.17.24",
     "@types/node": "~24.12",
-    "@types/three": "^0.183.1",
+    "@types/three": "^0.184.0",
     "@types/webpack-env": "^1.18.8",
     "@types/webxr": "^0.5.24",
     "@typescript-eslint/parser": "^8.58.2",
