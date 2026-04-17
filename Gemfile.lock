@@ -796,7 +796,7 @@ GEM
     rubyzip (2.4.1)
     scoped_search (4.3.1)
       activerecord (>= 4.2.0)
-    scout_apm (6.1.1)
+    scout_apm (6.2.0)
       parser
     securerandom (0.4.1)
     selenium-webdriver (4.43.0)
@@ -1362,7 +1362,7 @@ CHECKSUMS
   ruby-vips (2.3.0) sha256=e685ec02c13969912debbd98019e50492e12989282da5f37d05f5471442f5374
   rubyzip (2.4.1) sha256=8577c88edc1fde8935eb91064c5cb1aef9ad5494b940cf19c775ee833e075615
   scoped_search (4.3.1) sha256=0b013af6576d7393813e65a6c6971a60bfa6188cc95ac8702f06dfa3e4f64940
-  scout_apm (6.1.1) sha256=e7e37e2ce00e1fc248ba80059d5fd57792d06029ba657baf931f1b8b49ebda9d
+  scout_apm (6.2.0) sha256=e386d15a63250cc4d486227322b0299e6822948b862af0b47e2d7cd2429f4789
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   selenium-webdriver (4.43.0) sha256=a634377b964b701c6ac0a009ce3a08fa34ec1e1e7fe9a6d57e3088d14529a65c
   shellany (0.0.1) sha256=0e127a9132698766d7e752e82cdac8250b6adbd09e6c0a7fbbb6f61964fedee7
