@@ -80,8 +80,8 @@ RSpec.describe ActivityPub::CommentSerializer do
     end
 
     it "automatically allows quoting" do
-      expect(ap.dig("gts:interactionPolicy", "gts:canQuote")).to eq({
-        "gts:automaticApproval" => "https://www.w3.org/ns/activitystreams#Public"
+      expect(ap.dig("interactionPolicy", "canQuote")).to eq({
+        "automaticApproval" => "https://www.w3.org/ns/activitystreams#Public"
       })
     end
 
