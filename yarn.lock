@@ -554,7 +554,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/config-array@npm:^0.23.4":
+"@eslint/config-array@npm:^0.23.5":
   version: 0.23.5
   resolution: "@eslint/config-array@npm:0.23.5"
   dependencies:
@@ -565,7 +565,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/config-helpers@npm:^0.5.4":
+"@eslint/config-helpers@npm:^0.5.5":
   version: 0.5.5
   resolution: "@eslint/config-helpers@npm:0.5.5"
   dependencies:
@@ -574,7 +574,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/core@npm:^1.2.0, @eslint/core@npm:^1.2.1":
+"@eslint/core@npm:^1.2.1":
   version: 1.2.1
   resolution: "@eslint/core@npm:1.2.1"
   dependencies:
@@ -614,7 +614,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/plugin-kit@npm:^0.7.0":
+"@eslint/plugin-kit@npm:^0.7.1":
   version: 0.7.1
   resolution: "@eslint/plugin-kit@npm:0.7.1"
   dependencies:
@@ -2857,16 +2857,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^10.2.0":
-  version: 10.2.0
-  resolution: "eslint@npm:10.2.0"
+"eslint@npm:^10.2.1":
+  version: 10.2.1
+  resolution: "eslint@npm:10.2.1"
   dependencies:
     "@eslint-community/eslint-utils": ^4.8.0
     "@eslint-community/regexpp": ^4.12.2
-    "@eslint/config-array": ^0.23.4
-    "@eslint/config-helpers": ^0.5.4
-    "@eslint/core": ^1.2.0
-    "@eslint/plugin-kit": ^0.7.0
+    "@eslint/config-array": ^0.23.5
+    "@eslint/config-helpers": ^0.5.5
+    "@eslint/core": ^1.2.1
+    "@eslint/plugin-kit": ^0.7.1
     "@humanfs/node": ^0.16.6
     "@humanwhocodes/module-importer": ^1.0.1
     "@humanwhocodes/retry": ^0.4.2
@@ -2898,7 +2898,7 @@ __metadata:
       optional: true
   bin:
     eslint: bin/eslint.js
-  checksum: b63e89221bd0c05e91378420b501a2de8b192d0fcd307453e72eca5ebf9d8e933c42187e636096d8971ffde61ac7eab4736f441f9c569c2d22d9d5a275077532
+  checksum: cf17c9854f5f6dd9950d9fc89e993365b1176d94c683c913ec174ee443e8dc77c1b28758dca4d14396bfca384bc52b55af9a6e6aced9de946b2a85509f321023
   languageName: node
   linkType: hard
 
@@ -4372,7 +4372,7 @@ __metadata:
     comlink: ^4.4.2
     driver.js: ^1.4.0
     esbuild: ^0.28.0
-    eslint: ^10.2.0
+    eslint: ^10.2.1
     husky: ^9.1.7
     i18n-js: ^4.5.3
     masonry-layout: ^4.2.2
