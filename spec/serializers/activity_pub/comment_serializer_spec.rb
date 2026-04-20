@@ -55,8 +55,8 @@ RSpec.describe ActivityPub::CommentSerializer do
       expect(ap["attributedTo"]).to eq model.federails_actor.federated_url
     end
 
-    it "is sent as a Page" do
-      expect(ap["type"]).to eq "Page"
+    it "is sent as a Note" do
+      expect(ap["type"]).to eq "Note"
     end
 
     it "includes model's canonical URL as url" do

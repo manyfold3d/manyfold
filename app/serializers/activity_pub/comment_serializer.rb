@@ -24,7 +24,7 @@ module ActivityPub
           }
         ]),
         "id" => @object.federated_url,
-        "type" => @object.system ? "Page" : "Note",
+        "type" => "Note",
         "attributedTo" => @object.federails_actor.federated_url,
         "published" => @object.created_at,
         "updated" => @object.updated_at,

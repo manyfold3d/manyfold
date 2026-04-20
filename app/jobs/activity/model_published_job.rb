@@ -8,9 +8,11 @@ class Activity::ModelPublishedJob < ApplicationJob
       system: true,
       commentable: model,
       commenter: model.creator || model,
-      comment: I18n.t("jobs.activity.model_published.comment", # rubocop:disable I18n/RailsI18n/DecorateStringFormattingUsingInterpolation
+      comment: I18n.t("jobs.activity.model_published.comment",
         name: model.name,
-        creator_handle: model.creator.federails_actor.at_address),
+        url: model.federails_actor.profile_url,
+        creator_handle: model.creator.federails_actor.at_address,
+        creator_name: model.creator.name),
       sensitive: model.sensitive
     )
   end

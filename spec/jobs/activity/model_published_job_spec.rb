@@ -31,8 +31,16 @@ RSpec.describe Activity::ModelPublishedJob do
       expect(comment.comment).to include model.name
     end
 
+    it "includes URL in text" do
+      expect(comment.comment).to include "http://localhost:3214/models/#{model.public_id}"
+    end
+
     it "includes creator handle in text" do
       expect(comment.comment).to include "@#{creator.slug}@localhost:3214"
+    end
+
+    it "includes creator name in text" do
+      expect(comment.comment).to include creator.name
     end
 
     it "sets sensitive flag from model" do
