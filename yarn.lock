@@ -5,13 +5,6 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@altcha/crypto@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "@altcha/crypto@npm:0.0.1"
-  checksum: 8e2e65f32d3ede6354e423d710ad61f3058b430b41f38380aae02f99e0f1d243361f1783d99bd7a840fc904778e1e0efaf474ad5f4a79ea19e7c8ef4cb95b4b7
-  languageName: node
-  linkType: hard
-
 "@babel/code-frame@npm:^7.28.6, @babel/code-frame@npm:^7.29.0":
   version: 7.29.0
   resolution: "@babel/code-frame@npm:7.29.0"
@@ -1015,13 +1008,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-x64-gnu@npm:4.18.0":
-  version: 4.18.0
-  resolution: "@rollup/rollup-linux-x64-gnu@npm:4.18.0"
-  conditions: os=linux & cpu=x64 & libc=glibc
-  languageName: node
-  linkType: hard
-
 "@rtsao/scc@npm:^1.1.0":
   version: 1.1.0
   resolution: "@rtsao/scc@npm:1.1.0"
@@ -1606,16 +1592,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"altcha@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "altcha@npm:2.3.0"
+"altcha@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "altcha@npm:3.0.4"
   dependencies:
-    "@altcha/crypto": ^0.0.1
-    "@rollup/rollup-linux-x64-gnu": 4.18.0
-  dependenciesMeta:
-    "@rollup/rollup-linux-x64-gnu":
-      optional: true
-  checksum: 0e3a8611287c9bf02a2126a2106a5e9228c9a5ba7c866861e65bb4c88092ff5010533a69da76bb326308311a7e917bac001ee9c3d83e3424e8c6bd322a220a4c
+    hash-wasm: ^4.12.0
+  checksum: e0a7ad094c9e3acc03c3111129e097ce7df1344bc878bd32be65cf10b6088ede61e198c3f483af87da084b6399dd1066f84ad4a8b4bf5c81286187bd6c9848db
   languageName: node
   linkType: hard
 
@@ -3534,6 +3516,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hash-wasm@npm:^4.12.0":
+  version: 4.12.0
+  resolution: "hash-wasm@npm:4.12.0"
+  checksum: f292c94a19a3d7c075e1e7de2764ba8a006ae5a9551b1a35c61f693035df7977e6cb41f3fc036deb4a724e1949711b7cba06f7ad174f5aeb295edb64649b4a32
+  languageName: node
+  linkType: hard
+
 "hasown@npm:^2.0.2":
   version: 2.0.2
   resolution: "hasown@npm:2.0.2"
@@ -4354,7 +4343,7 @@ __metadata:
     "@uppy/locales": ^5.1.1
     "@uppy/tus": ^5.1.1
     "@uppy/utils": ^7.2.0
-    altcha: ^2.3.0
+    altcha: ^3.0.4
     autoprefixer: ^10.5.0
     bootstrap: ^5.3.8
     bootstrap-icons: ^1.13.1
