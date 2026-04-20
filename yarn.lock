@@ -5429,15 +5429,15 @@ __metadata:
   linkType: hard
 
 "safe-array-concat@npm:^1.1.3":
-  version: 1.1.3
-  resolution: "safe-array-concat@npm:1.1.3"
+  version: 1.1.4
+  resolution: "safe-array-concat@npm:1.1.4"
   dependencies:
-    call-bind: ^1.0.8
-    call-bound: ^1.0.2
-    get-intrinsic: ^1.2.6
+    call-bind: ^1.0.9
+    call-bound: ^1.0.4
+    get-intrinsic: ^1.3.0
     has-symbols: ^1.1.0
     isarray: ^2.0.5
-  checksum: 00f6a68140e67e813f3ad5e73e6dedcf3e42a9fa01f04d44b0d3f7b1f4b257af876832a9bfc82ac76f307e8a6cc652e3cf95876048a26cbec451847cf6ae3707
+  checksum: fd59dbf79f5ab6b56eb1b07bc7fd38ebdb9cb0478e7639606cd7a7f423d2fd22dc81eaf2371f74b5f3332ce75327669e1667272b34b33d06d07514e3e5305cf8
   languageName: node
   linkType: hard
 
