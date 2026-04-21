@@ -40,7 +40,8 @@ class Federails::QuoteAuthorization < ApplicationRecord
       actor: federails_actor,
       action: (state == "accepted") ? "Accept" : "Reject",
       entity: self,
-      to: quoting_actor.federated_url
+      to: quoting_actor.federated_url,
+      result: (state == "accepted") ? Rails.application.routes.url_helpers.federails_server_quote_authorization_url(self) : nil
     )
   end
 

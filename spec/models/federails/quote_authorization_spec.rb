@@ -25,6 +25,11 @@ RSpec.describe Federails::QuoteAuthorization do
     it "creates activity" do
       expect { auth.accept! }.to change(Federails::Activity.where(action: "Accept"), :count).by(1)
     end
+
+    it "sets result field pointing to approval stamp" do
+      activity = auth.accept!
+      expect(activity.result).to eq "http://localhost:3214/federation/quote_authorizations/#{auth.to_param}"
+    end
   end
 
   context "when rejecting" do
@@ -34,6 +39,11 @@ RSpec.describe Federails::QuoteAuthorization do
 
     it "creates activity" do
       expect { auth.reject! }.to change(Federails::Activity.where(action: "Reject"), :count).by(1)
+    end
+
+    it "does not set result field" do
+      activity = auth.reject!
+      expect(activity.result).to be_nil
     end
   end
 end
