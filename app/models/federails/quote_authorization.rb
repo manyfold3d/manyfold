@@ -9,6 +9,10 @@ class Federails::QuoteAuthorization < ApplicationRecord
 
   before_create :generate_uuid
 
+  def to_param
+    uuid
+  end
+
   def accept!
     update!(state: "accepted")
   end
