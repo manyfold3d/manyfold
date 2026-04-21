@@ -44,5 +44,7 @@ class Comment < ApplicationRecord
   end
 
   def on_new_quote_request(quote_authorization)
+    # Auto accept quote requests for system comments
+    system ? quote_authorization.accept! : quote_authorization.reject!
   end
 end
