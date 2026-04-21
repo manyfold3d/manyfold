@@ -17,19 +17,23 @@ RSpec.describe Federails::QuoteAuthorization do
     expect(auth.uuid).to be_present
   end
 
-  it "can be accepted" do
-    expect { auth.accept! }.to change(auth.reload, :state).from(nil).to("accepted")
+  context "when accepting" do
+    it "updates state" do
+      expect { auth.accept! }.to change(auth.reload, :state).from(nil).to("accepted")
+    end
+
+    it "creates activity" do
+      expect { auth.accept! }.to change(Federails::Activity.where(action: "Accept"), :count).by(1)
+    end
   end
 
-  it "can be rejected" do
-    expect { auth.reject! }.to change(auth.reload, :state).from(nil).to("rejected")
-  end
+  context "when rejecting" do
+    it "updates state" do
+      expect { auth.reject! }.to change(auth.reload, :state).from(nil).to("rejected")
+    end
 
-  it "creates appropriate activity when accepting" do
-    expect { auth.accept! }.to change(Federails::Activity.where(action: "Accept"), :count).by(1)
-  end
-
-  it "creates appropriate activity when rejecting" do
-    expect { auth.reject! }.to change(Federails::Activity.where(action: "Reject"), :count).by(1)
+    it "creates activity" do
+      expect { auth.reject! }.to change(Federails::Activity.where(action: "Reject"), :count).by(1)
+    end
   end
 end
