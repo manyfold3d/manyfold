@@ -11,7 +11,7 @@ RSpec.describe "Problems" do
   context "when signed in" do
     describe "GET /problems", :as_contributor do
       it "is denied to contributors" do
-        get "/problems/index"
+        get "/problems"
         expect(response).to have_http_status(:forbidden)
       end
     end
@@ -23,12 +23,12 @@ RSpec.describe "Problems" do
       end
 
       it "returns success" do
-        get "/problems/index"
+        get "/problems"
         expect(response).to have_http_status(:success)
       end
 
       it "lists problems" do
-        get "/problems/index"
+        get "/problems"
         expect(assigns(:problems).length).to eq 5
       end
 
@@ -41,50 +41,50 @@ RSpec.describe "Problems" do
         end
 
         it "doesn't show problems with silent severity" do
-          get "/problems/index"
+          get "/problems"
           expect(assigns(:problems).length).to eq 2
         end
       end
 
       context "when filtering by category" do
         it "only shows selected categories" do
-          get "/problems/index", params: {"category[]": "missing"}
+          get "/problems", params: {"category[]": "missing"}
           expect(assigns(:problems).length).to eq 3
         end
 
         it "can show more than one category" do
-          get "/problems/index", params: {"category[]": ["missing", "inefficient"]}
+          get "/problems", params: {"category[]": ["missing", "inefficient"]}
           expect(assigns(:problems).length).to eq 5
         end
       end
 
       context "when filtering by object type" do
         it "only shows selected types" do
-          get "/problems/index", params: {"type[]": "model"}
+          get "/problems", params: {"type[]": "model"}
           expect(assigns(:problems).length).to eq 3
         end
 
         it "can show more than one type" do
-          get "/problems/index", params: {"type[]": ["model", "model_file"]}
+          get "/problems", params: {"type[]": ["model", "model_file"]}
           expect(assigns(:problems).length).to eq 5
         end
       end
 
       context "when filtering by severity" do
         it "only shows selected severities" do
-          get "/problems/index", params: {"severity[]": "info"}
+          get "/problems", params: {"severity[]": "info"}
           expect(assigns(:problems).length).to eq 2
         end
 
         it "can show more than one severity" do
-          get "/problems/index", params: {"severity[]": ["danger", "info"]}
+          get "/problems", params: {"severity[]": ["danger", "info"]}
           expect(assigns(:problems).length).to eq 5
         end
       end
 
       context "when filtering by severity AND category" do
         it "only shows the intersection of both" do
-          get "/problems/index", params: {"category[]": ["missing"], "severity[]": ["danger", "info"]}
+          get "/problems", params: {"category[]": ["missing"], "severity[]": ["danger", "info"]}
           expect(assigns(:problems).length).to eq 3
         end
       end
