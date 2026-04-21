@@ -24,4 +24,12 @@ RSpec.describe Federails::QuoteAuthorization do
   it "can be rejected" do
     expect { auth.reject! }.to change(auth.reload, :state).from(nil).to("rejected")
   end
+
+  it "creates appropriate activity when accepting" do
+    expect { auth.accept! }.to change(Federails::Activity.where(action: "Accept"), :count).by(1)
+  end
+
+  it "creates appropriate activity when rejecting" do
+    expect { auth.reject! }.to change(Federails::Activity.where(action: "Reject"), :count).by(1)
+  end
 end

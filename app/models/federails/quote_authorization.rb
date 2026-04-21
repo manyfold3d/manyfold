@@ -15,10 +15,12 @@ class Federails::QuoteAuthorization < ApplicationRecord
 
   def accept!
     update!(state: "accepted")
+    create_response_activity
   end
 
   def reject!
     update!(state: "rejected")
+    create_response_activity
   end
 
   def to_activitypub_object
@@ -32,6 +34,15 @@ class Federails::QuoteAuthorization < ApplicationRecord
   end
 
   private
+
+  def create_response_activity
+    Federails::Activity.create!(
+      actor: federails_actor,
+      action: (state == "accepted") ? "Accept" : "Reject",
+      entity: self,
+      to: quoting_actor.federated_url
+    )
+  end
 
   def generate_uuid
     self.uuid = SecureRandom.uuid
