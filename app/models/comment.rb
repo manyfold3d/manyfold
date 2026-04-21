@@ -42,4 +42,7 @@ class Comment < ApplicationRecord
   def federated_delete
     destroy
   end
+
+  def on_new_quote_request(quote_authorization)
+  end
 end
