@@ -3,10 +3,8 @@ if SiteSettings.federation_enabled? || Rails.env.test?
   # Core federation capability
 
   mount Federails::Engine => "/"
-  namespace :federails do
-    namespace :server do
-      resources :quote_authorizations, only: [:show]
-    end
+  scope Federails.configuration.server_routes_path, module: "federails/server", as: "federails_server", defaults: {format: :activitypub} do
+    resources :quote_authorizations, only: [:show]
   end
 
   # Remote follow routes

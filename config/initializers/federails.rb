@@ -33,6 +33,7 @@ Rails.application.config.after_initialize do
   Fediverse::Inbox.register_handler("Create", "*", ActivityPub::ActorActivityHandler, :handle_create_activity)
   Fediverse::Inbox.register_handler("Update", "*", ActivityPub::ActorActivityHandler, :handle_update_activity)
   Fediverse::Inbox.register_handler("Like", "*", ActivityPub::LikeActivityHandler, :handle_like_activity)
+  Fediverse::Inbox.register_handler("QuoteRequest", "*", ActivityPub::QuoteRequestHandler, :handle_quote_request)
 end
 
 # i18n-tasks-use t("activerecord.models.federails/moderation/domain_block")
