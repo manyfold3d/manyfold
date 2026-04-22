@@ -228,12 +228,12 @@ es:
         two: Colecciones
         zero: Colecciones
       comment:
-        few:
-        many:
+        few: Comentarios
+        many: Comentarios
         one: Comentario
-        other:
-        two:
-        zero:
+        other: Comentarios
+        two: Comentarios
+        zero: Comentarios
       creator:
         few: Creadores
         many: Creadores
