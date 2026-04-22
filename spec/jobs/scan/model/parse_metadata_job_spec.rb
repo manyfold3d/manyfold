@@ -165,7 +165,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       library.update!(path_template: "{collection}/{modelName}{modelId}")
       described_class.perform_now(model.id)
       model.reload
-      expect(model.collection.name).to eq "Greedy"
+      expect(model.deprecated_collection.name).to eq "Greedy"
     end
 
     it "parses everything at once" do # rubocop:todo RSpec/MultipleExpectations, RSpec/ExampleLength
@@ -173,7 +173,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       described_class.perform_now(model.id)
       model.reload
       expect(model.creator.name).to eq "Library 1"
-      expect(model.collection.name).to eq "Stuff"
+      expect(model.deprecated_collection.name).to eq "Stuff"
       expect(model.tag_list).to include("tags", "are", "greedy")
     end
 
@@ -182,7 +182,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       described_class.perform_now(model.id)
       model.reload
       expect(model.creator.name).to eq "Greedy"
-      expect(model.collection).to be_nil
+      expect(model.deprecated_collection).to be_nil
       expect(model.tag_list).to contain_exactly("!new")
     end
 
@@ -193,7 +193,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       described_class.perform_now(model.id)
       model.reload
       expect(model.creator).to be_nil
-      expect(model.collection).to be_nil
+      expect(model.deprecated_collection).to be_nil
       expect(model.tag_list).to contain_exactly("!new")
     end
 
@@ -261,7 +261,7 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       end
 
       it "sets collection" do
-        expect { described_class.perform_now(model.id) }.to change { model.reload.collection }
+        expect { described_class.perform_now(model.id) }.to change { model.reload.deprecated_collection }
       end
 
       it "sets name" do
@@ -277,16 +277,16 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       model = create(:model, path: "Wonderful Toys/model-name", library: library)
       described_class.perform_now(model.id)
       model.reload
-      expect(model.collection.name).to eq "Wonderful Toys"
-      expect(model.collection.slug).to eq "wonderful-toys"
+      expect(model.deprecated_collection.name).to eq "Wonderful Toys"
+      expect(model.deprecated_collection.slug).to eq "wonderful-toys"
     end
 
     it "creates a new collection from a slug if there's no match" do # rubocop:todo RSpec/MultipleExpectations
       model = create(:model, path: "wonderful-toys/model-name", library: library)
       described_class.perform_now(model.id)
       model.reload
-      expect(model.collection.name).to eq "Wonderful Toys"
-      expect(model.collection.slug).to eq "wonderful-toys"
+      expect(model.deprecated_collection.name).to eq "Wonderful Toys"
+      expect(model.deprecated_collection.slug).to eq "wonderful-toys"
     end
 
     context "with an existing collection" do
@@ -296,27 +296,27 @@ RSpec.describe Scan::Model::ParseMetadataJob do
         model = create(:model, path: "wonderful-toys/model-name", library: library)
         described_class.perform_now(model.id)
         model.reload
-        expect(model.collection).to eq collection
+        expect(model.deprecated_collection).to eq collection
       end
 
       it "matches unsafe path components" do
         model = create(:model, path: "Wonderful Toys/model-name", library: library)
         described_class.perform_now(model.id)
         model.reload
-        expect(model.collection).to eq collection
+        expect(model.deprecated_collection).to eq collection
       end
     end
 
     context "with a creator already assigned" do
       let(:library) { create(:library, path_template: "{creator}/{collection}/{modelName}", parse_metadata_from_path: true) }
-      let(:model) { create(:model, path: "bruce-wayne/toys/model-name", collection: create(:collection, name: "Existing"), library: library) }
+      let(:model) { create(:model, path: "bruce-wayne/toys/model-name", deprecated_collection: create(:collection, name: "Existing"), library: library) }
 
       it "sets creator" do
         expect { described_class.perform_now(model.id) }.to change { model.reload.creator }
       end
 
       it "doesn't overwrite existing collection" do
-        expect { described_class.perform_now(model.id) }.not_to change { model.reload.collection }
+        expect { described_class.perform_now(model.id) }.not_to change { model.reload.deprecated_collection }
       end
 
       it "sets name" do

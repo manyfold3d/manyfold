@@ -50,7 +50,8 @@ module ActivityPub
         @object.commentable&.federails_actor&.followers_url,
         @object.commenter&.federails_actor&.followers_url,
         (@object.commentable&.creator&.federails_actor&.followers_url if @object.commentable.respond_to?(:creator)),
-        (@object.commentable&.collection&.federails_actor&.followers_url if @object.commentable.respond_to?(:collection))
+        (@object.commentable&.collection&.federails_actor&.followers_url if @object.commentable.respond_to?(:collection)),
+        (@object.commentable&.deprecated_collection&.federails_actor&.followers_url if @object.commentable.respond_to?(:deprecated_collection))
       ].compact
     end
 

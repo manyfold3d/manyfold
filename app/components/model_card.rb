@@ -65,7 +65,7 @@ class Components::ModelCard < Components::Base
         end
       else
         li { creator target: @model.creator, name: @model.creator.name } if @model.creator
-        li { collection target: @model.collection, name: @model.collection.name } if @model.collection
+        li { collection target: @model.deprecated_collection, name: @model.deprecated_collection.name } if @model.deprecated_collection
       end
     end
   end

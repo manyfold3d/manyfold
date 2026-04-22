@@ -323,15 +323,15 @@ RSpec.describe Model do
     end
 
     it "sets collection if target doesn't have one" do
-      model = create(:model, collection: create(:collection))
+      model = create(:model, :with_collection)
       target = create(:model)
-      expect { target.merge!(model) }.to change(target, :collection).to(model.collection)
+      expect { target.merge!(model) }.to change(target, :deprecated_collection).to(model.deprecated_collection)
     end
 
     it "doesn't set collection if target does have one" do
-      model = create(:model, collection: create(:collection))
-      target = create(:model, collection: create(:collection))
-      expect { target.merge!(model) }.not_to change(target, :collection)
+      model = create(:model, :with_collection)
+      target = create(:model, :with_collection)
+      expect { target.merge!(model) }.not_to change(target, :deprecated_collection)
     end
 
     it "sets license if target doesn't have one" do
@@ -487,7 +487,7 @@ RSpec.describe Model do
   context "when splitting" do
     subject!(:model) {
       create(:admin) # We need a user for permission setting
-      m = create(:model, creator: create(:creator), collection: create(:collection), license: "CC-BY-4.0", caption: "test", notes: "note")
+      m = create(:model, :with_collection, creator: create(:creator), license: "CC-BY-4.0", caption: "test", notes: "note")
       m.tag_list << "tag1"
       m.tag_list << "tag2"
       create(:model_file, model: m)
@@ -506,7 +506,7 @@ RSpec.describe Model do
       expect(new_model.name).to eq "Copy of #{model.name}"
     end
 
-    [:notes, :caption, :collection, :creator, :license, :tags].each do |field|
+    [:notes, :caption, :deprecated_collection, :creator, :license, :tags].each do |field|
       it "copies old model #{field}" do
         new_model = model.split!
         expect(new_model.send(field)).to eq model.send(field)
@@ -787,13 +787,13 @@ RSpec.describe Model do
 
     it "queues collected activity job if the collection was changed to a public one" do
       expect {
-        model.update!(collection: create(:collection, :public))
+        model.update!(deprecated_collection: create(:collection, :public))
       }.to have_enqueued_job(Activity::ModelCollectedJob).once
     end
 
     it "queues normal update activity job if the collection was changed to a private one" do
       expect {
-        model.update!(collection: create(:collection))
+        model.update!(deprecated_collection: create(:collection))
       }.to have_enqueued_job(Activity::ModelUpdatedJob).once
     end
   end

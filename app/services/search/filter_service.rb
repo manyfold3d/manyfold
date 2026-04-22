@@ -82,7 +82,7 @@ class Search::FilterService
     when ""
       scope.where(collection_id: nil)
     else
-      scope.where(collection: Collection.tree_down(@collection.id))
+      scope.where(deprecated_collection: Collection.tree_down(@collection.id))
     end
   end
 

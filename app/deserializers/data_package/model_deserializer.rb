@@ -12,7 +12,7 @@ module DataPackage
         license: @object.dig("licenses", 0, "name"),
         model_files: @object["resources"]&.map { |it| ModelFileDeserializer.new(it).deserialize },
         creator: CreatorDeserializer.new(@object["contributors"]&.find { |it| it["roles"].include?("creator") }).deserialize,
-        collection: CollectionDeserializer.new(@object.dig("collections", 0)).deserialize
+        deprecated_collection: CollectionDeserializer.new(@object.dig("collections", 0)).deserialize
       }.compact
     end
 

@@ -9,8 +9,8 @@ RSpec.describe Search::ModelSearchService do
       bats = create(:collection, name: "Chiroptera")
       create(:model, name: "cat in the hat", tag_list: ["dog", "log", "frog", "cat"], creator: seuss, notes: "lorem ipsum", caption: nil)
       create(:model, name: "hat on the cat", tag_list: ["dog"], creator: seuss, notes: nil, caption: "dolor sit amet")
-      create(:model, name: "bat on a mat", tag_list: ["log"], collection: bats, notes: nil, caption: nil)
-      model = create(:model, name: "bat on a hat", tag_list: ["frog"], collection: bats, notes: nil, caption: nil)
+      create(:model, name: "bat on a mat", tag_list: ["log"], deprecated_collection: bats, notes: nil, caption: nil)
+      model = create(:model, name: "bat on a hat", tag_list: ["frog"], deprecated_collection: bats, notes: nil, caption: nil)
       create(:model_file, filename: "big_hat.stl", model: model)
     end
 

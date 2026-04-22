@@ -11,7 +11,7 @@ module PathBuilder
       when "{creator}"
         path_component(creator) || "@unattributed"
       when "{collection}"
-        path_component(collection) || "@uncollected"
+        path_component(deprecated_collection) || "@uncollected"
       when "{modelName}"
         path_component(self)
       when "{modelId}"

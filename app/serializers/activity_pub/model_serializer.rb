@@ -24,7 +24,7 @@ module ActivityPub
         discoverable: @object.indexable?,
         tag: hashtags,
         attributedTo: short_creator(@object.creator),
-        context: short_collection(@object.collection),
+        context: short_collection(@object.deprecated_collection),
         "spdx:license": license,
         preview: oembed_to_preview(OEmbed::ModelSerializer.new(@object, maxwidth: "100%", maxheight: "100%").serialize),
         likes: likes
@@ -35,7 +35,7 @@ module ActivityPub
       [
         @object.federails_actor.followers_url,
         @object.creator&.federails_actor&.followers_url,
-        @object.collection&.federails_actor&.followers_url
+        @object.deprecated_collection&.federails_actor&.followers_url
       ].compact
     end
 

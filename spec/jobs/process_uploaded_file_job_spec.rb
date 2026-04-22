@@ -80,7 +80,7 @@ RSpec.describe ProcessUploadedFileJob do
     it "Stores collection if provided" do
       collection = create(:collection)
       job.perform(library.id, file, collection_id: collection.id)
-      expect(Model.last.collection).to eq collection
+      expect(Model.last.deprecated_collection).to eq collection
     end
 
     it "Stores license if provided" do

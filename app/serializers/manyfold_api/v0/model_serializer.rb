@@ -13,7 +13,7 @@ module ManyfoldApi::V0
             encodingFormat: file.mime_type.to_s
           )
         end,
-        isPartOf: collection_ref(@object.collection),
+        isPartOf: collection_ref(@object.deprecated_collection),
         creator: creator_ref(@object.creator),
         sensitive: @object.sensitive,
         keywords: @object.tag_list,

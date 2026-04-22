@@ -6,10 +6,9 @@ RSpec.describe DataPackage::ModelSerializer do
 
     let(:output) { serializer.serialize }
     let(:object) {
-      m = create(:model, :with_tags,
+      m = create(:model, :with_tags, :with_collection,
         name: "Test Model",
         creator: create(:creator),
-        collection: create(:collection),
         sensitive: true,
         links_attributes: [
           {url: "https://example.com"}

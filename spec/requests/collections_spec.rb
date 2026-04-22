@@ -69,7 +69,7 @@ RSpec.describe "Collections" do
       build_list(:collection, 13) do |collection|
         collection.save! # See https://dev.to/hernamvel/the-optimal-way-to-create-a-set-of-records-with-factorybot-createlist-factorybot-buildlist-1j64
         create_list(:link, 1, linkable: collection)
-        create_list(:model, 1, collection: collection)
+        create_list(:model, 1, deprecated_collection: collection)
       end
     end
 

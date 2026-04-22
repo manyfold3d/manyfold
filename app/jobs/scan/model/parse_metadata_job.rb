@@ -14,7 +14,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     options = {
       # Some things are preserved if already set
       creator: model.creator,
-      collection: model.collection,
+      deprecated_collection: model.deprecated_collection,
       preview_file: model.preview_file
     }.compact
     # Set preview file
@@ -39,9 +39,9 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       # match collection
       collection_data = data.delete(:collection)
       if collection_data
-        data[:collection] = collection_data[:id] ? Collection.find(collection_data.delete(:id)) :
+        data[:deprecated_collection] = collection_data[:id] ? Collection.find(collection_data.delete(:id)) :
           find_or_create_from_path_component(Collection, collection_data[:name])
-        data[:collection].update(collection_data)
+        data[:deprecated_collection].update(collection_data)
       end
       # match preview file
       data[:preview_file] = model.model_files.find_by(filename: data[:preview_file])
@@ -88,7 +88,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     components = PathParserService.new(library.path_template, path).call
     {
       creator: find_or_create_from_path_component(Creator, components[:creator]),
-      collection: find_or_create_from_path_component(Collection, components[:collection]),
+      deprecated_collection: find_or_create_from_path_component(Collection, components[:collection]),
       name: to_human_name(components[:model_name])
     }.compact
   end

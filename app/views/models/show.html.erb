@@ -63,9 +63,9 @@
             <div><%= Icon icon: "person", label: Creator.model_name.human %></div>
             <div><%= link_to @model.creator.name, @model.creator, itemprop: "author" %></div>
           <% end %>
-          <% if @model.collection %>
+          <% if @model.deprecated_collection %>
             <div><%= Icon icon: "collection", label: Collection.model_name.human(count: 100) %></div>
-            <div><%= link_to @model.collection.name, models_path({collection: @model.collection}.merge(@filter&.to_params)) %></div>
+            <div><%= link_to @model.deprecated_collection.name, models_path({collection: @model.deprecated_collection}.merge(@filter&.to_params)) %></div>
           <% end %>
           <% if SiteSettings.show_libraries || current_user&.is_administrator? %>
             <div><%= Icon icon: "boxes", label: Library.model_name.human %></div>

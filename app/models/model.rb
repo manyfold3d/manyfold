@@ -38,7 +38,8 @@ class Model < ApplicationRecord
 
   belongs_to :library
   belongs_to :creator, optional: true
-  belongs_to :collection, optional: true
+  belongs_to :deprecated_collection, class_name: "Collection", foreign_key: "collection_id", optional: true, inverse_of: :models
+  has_and_belongs_to_many :collections # rubocop:disable Rails/HasAndBelongsToMany
   belongs_to :preview_file, class_name: "ModelFile", optional: true
   has_many :model_files, dependent: :destroy
   acts_as_taggable_on :tags
@@ -74,7 +75,7 @@ class Model < ApplicationRecord
   scoped_search on: :notes, aliases: [:description], only_explicit: true
   scoped_search relation: :library, on: :name, rename: :library, only_explicit: true, default_operator: :eq
   scoped_search relation: :creator, on: :name, rename: :creator
-  scoped_search relation: :collection, on: :name, rename: :collection
+  scoped_search relation: :deprecated_collection, on: :name, rename: :collection
   scoped_search relation: :tags, on: :name, default_operator: :eq, rename: :tag
   scoped_search relation: :model_files, on: :filename, rename: :filename, only_explicit: true
   scoped_search on: :path, only_explicit: true
@@ -145,7 +146,7 @@ class Model < ApplicationRecord
       check_for_problems_later
       # Merge metadata
       self.creator ||= other.creator
-      self.collection ||= other.collection
+      self.deprecated_collection ||= other.deprecated_collection
       self.license ||= other.license
       self.caption ||= other.caption
       self.notes ||= other.notes
@@ -380,8 +381,8 @@ class Model < ApplicationRecord
   def post_update_activity
     if creator_previously_changed? && creator&.public?
       Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
-    elsif collection_previously_changed? && collection&.public?
-      Activity::ModelCollectedJob.set(wait: 5.seconds).perform_later(id, collection.id)
+    elsif deprecated_collection_previously_changed? && deprecated_collection&.public?
+      Activity::ModelCollectedJob.set(wait: 5.seconds).perform_later(id, deprecated_collection.id)
     elsif just_became_public?
       Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
     elsif public? && noteworthy_change?

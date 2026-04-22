@@ -5,8 +5,8 @@ describe "Models", :after_first_run, :multiuser do # rubocop:disable RSpec/Empty
   path "/models" do
     get "A list of models" do
       before do
-        create_list(:model, 9, creator: create(:creator), collection: create(:collection))
-        create_list(:model, 3, :public, creator: create(:creator, :public), collection: create(:collection, :public))
+        create_list(:model, 9, creator: create(:creator), deprecated_collection: create(:collection))
+        create_list(:model, 3, :public, creator: create(:creator, :public), deprecated_collection: create(:collection, :public))
       end
 
       tags "Models"
