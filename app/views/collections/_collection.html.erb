@@ -27,7 +27,7 @@
     </div>
     <div class='card-footer'>
       <div class='row'>
-        <% model_count = policy_scope(collection.models).count %>
+        <% model_count = policy_scope(collection.deprecated_models).count %>
         <% collection_count = policy_scope(collection.collections).count %>
         <div class='col'>
           <%= if policy(collection).show?

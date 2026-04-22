@@ -38,8 +38,7 @@ class Model < ApplicationRecord
 
   belongs_to :library
   belongs_to :creator, optional: true
-  belongs_to :deprecated_collection, class_name: "Collection", foreign_key: "collection_id", optional: true, inverse_of: :models
-  has_and_belongs_to_many :collections # rubocop:disable Rails/HasAndBelongsToMany
+  belongs_to :deprecated_collection, class_name: "Collection", foreign_key: "collection_id", optional: true, inverse_of: :deprecated_models
   belongs_to :preview_file, class_name: "ModelFile", optional: true
   has_many :model_files, dependent: :destroy
   acts_as_taggable_on :tags

@@ -25,7 +25,7 @@ class Collection < ApplicationRecord
     actor_type: "Group"
   )
 
-  has_many :models, dependent: :nullify, inverse_of: :deprecated_collection
+  has_many :deprecated_models, class_name: "Model", dependent: :nullify, inverse_of: :deprecated_collection
   has_many :collections, dependent: :nullify
   belongs_to :collection, optional: true
   belongs_to :creator, optional: true
