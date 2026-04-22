@@ -228,12 +228,12 @@ de:
         two: Kollektionen
         zero: Kollektionen
       comment:
-        few:
-        many:
+        few: Kommentare
+        many: Kommentare
         one: Kommentar
-        other:
-        two:
-        zero:
+        other: Kommentare
+        two: Kommentare
+        zero: Kommentare
       creator:
         few: Autoren
         many: Autor
@@ -853,9 +853,9 @@ de:
       collection_published:
         comment: Eine neue Sammlung von 3D-Modellen, ["%{name}"](%{url}), wurde gerade veröffentlicht!
       model_published:
-        comment: Ein neues 3D-Modell, ["%{name}"](%{url}), wurde gerade veröffentlicht!
+        comment: 'Neues 3D-Modell: "%{name}" von %{creator_handle}'
       updated_model:
-        comment: Das 3D-Modell ["%{name}"](%{url}), wurde gerade aktualisiert!
+        comment: '3D-Modell aktualisiert: "%{name}" durch %{creator_handle}'
     analysis:
       analyse_model_file:
         detect_duplicates: Doppelte Datei erkannt
