@@ -25,6 +25,7 @@ class Collection < ApplicationRecord
     actor_type: "Group"
   )
 
+  has_and_belongs_to_many :models # rubocop:disable Rails/HasAndBelongsToMany
   has_many :deprecated_models, class_name: "Model", dependent: :nullify, inverse_of: :deprecated_collection
   has_many :collections, dependent: :nullify
   belongs_to :collection, optional: true
