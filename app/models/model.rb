@@ -75,7 +75,7 @@ class Model < ApplicationRecord
   scoped_search on: :notes, aliases: [:description], only_explicit: true
   scoped_search relation: :library, on: :name, rename: :library, only_explicit: true, default_operator: :eq
   scoped_search relation: :creator, on: :name, rename: :creator
-  scoped_search relation: :deprecated_collection, on: :name, rename: :collection
+  scoped_search relation: :collections, on: :name, rename: :collection
   scoped_search relation: :tags, on: :name, default_operator: :eq, rename: :tag
   scoped_search relation: :model_files, on: :filename, rename: :filename, only_explicit: true
   scoped_search on: :path, only_explicit: true
