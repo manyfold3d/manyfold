@@ -40,7 +40,7 @@ FactoryBot.define do
     end
 
     trait :with_collection do
-      deprecated_collection { create(:collection) }
+      collections { [create(:collection)] }
     end
 
     trait :public do

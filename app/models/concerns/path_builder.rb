@@ -11,7 +11,7 @@ module PathBuilder
       when "{creator}"
         path_component(creator) || "@unattributed"
       when "{collection}"
-        path_component(deprecated_collection) || "@uncollected"
+        path_component(collections.order(created_at: :asc).first) || "@uncollected"
       when "{modelName}"
         path_component(self)
       when "{modelId}"

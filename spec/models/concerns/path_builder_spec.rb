@@ -8,7 +8,7 @@ RSpec.describe PathBuilder do
         name: "Batarang",
         creator: create(:creator, name: "Bruce Wayne"),
         tag_list: ["bat", "weapon"],
-        deprecated_collection: create(:collection, name: "gadgets"),
+        collections: [create(:collection, name: "gadgets")],
         library: library)
     }
 
@@ -107,7 +107,7 @@ RSpec.describe PathBuilder do
         name: "Bat-a-rang",
         creator: create(:creator, name: "Bruce Wayne"),
         tag_list: ["bat", "weapon"],
-        deprecated_collection: create(:collection, name: "Wonderful Toys"),
+        collections: [create(:collection, name: "Wonderful Toys")],
         library: library)
     }
 

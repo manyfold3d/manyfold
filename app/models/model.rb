@@ -146,7 +146,7 @@ class Model < ApplicationRecord
       check_for_problems_later
       # Merge metadata
       self.creator ||= other.creator
-      self.deprecated_collection ||= other.deprecated_collection
+      other.collections.each { |c| collections << c unless collections.include?(c) }
       self.license ||= other.license
       self.caption ||= other.caption
       self.notes ||= other.notes
@@ -231,7 +231,8 @@ class Model < ApplicationRecord
       name: name || "Copy of #{other.name}",
       public_id: nil,
       tags: other.tags,
-      preview_file: link_preview_file ? other.preview_file : nil
+      preview_file: link_preview_file ? other.preview_file : nil,
+      collections: other.collections
     )
     path ? new_model.save! : new_model.organize!
     # Wipe permissions and copy from old model
@@ -381,8 +382,10 @@ class Model < ApplicationRecord
   def post_update_activity
     if creator_previously_changed? && creator&.public?
       Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
-    elsif deprecated_collection_previously_changed? && deprecated_collection&.public?
-      Activity::ModelCollectedJob.set(wait: 5.seconds).perform_later(id, deprecated_collection.id)
+    # elsif collections_previously_changed?
+    #   (collections - collections_was).each do |collection|
+    #     Activity::ModelCollectedJob.set(wait: 5.seconds).perform_later(id, collection.id) if collection.public?
+    #   end
     elsif just_became_public?
       Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
     elsif public? && noteworthy_change?

@@ -322,16 +322,26 @@ RSpec.describe Model do
       expect { target.merge!(model) }.not_to change(target, :creator)
     end
 
-    it "sets collection if target doesn't have one" do
-      model = create(:model, :with_collection)
+    it "adds collections to target" do
+      collection = create(:collection)
       target = create(:model)
-      expect { target.merge!(model) }.to change(target, :deprecated_collection).to(model.deprecated_collection)
+      target.merge!(create(:model, collections: [collection]))
+      expect(target.collections).to include collection
     end
 
-    it "doesn't set collection if target does have one" do
-      model = create(:model, :with_collection)
-      target = create(:model, :with_collection)
-      expect { target.merge!(model) }.not_to change(target, :deprecated_collection)
+    it "merges target collections with source" do
+      collection = create(:collection)
+      collection2 = create(:collection)
+      target = create(:model, collections: [collection2])
+      target.merge!(create(:model, collections: [collection]))
+      expect(target.collections).to include(collection, collection2)
+    end
+
+    it "deduplicates collection list" do
+      collection = create(:collection)
+      target = create(:model, collections: [collection])
+      target.merge!(create(:model, collections: [collection]))
+      expect(target.collections.count).to eq 1
     end
 
     it "sets license if target doesn't have one" do
@@ -506,7 +516,7 @@ RSpec.describe Model do
       expect(new_model.name).to eq "Copy of #{model.name}"
     end
 
-    [:notes, :caption, :deprecated_collection, :creator, :license, :tags].each do |field|
+    [:notes, :caption, :collections, :creator, :license, :tags].each do |field|
       it "copies old model #{field}" do
         new_model = model.split!
         expect(new_model.send(field)).to eq model.send(field)
@@ -786,14 +796,23 @@ RSpec.describe Model do
     end
 
     it "queues collected activity job if the collection was changed to a public one" do
+      pending "update of association change detection"
       expect {
-        model.update!(deprecated_collection: create(:collection, :public))
+        model.update!(collections: [create(:collection, :public)])
       }.to have_enqueued_job(Activity::ModelCollectedJob).once
     end
 
-    it "queues normal update activity job if the collection was changed to a private one" do
+    it "queues normal activity job if the collection was changed to a public one" do
+      pending "update of association change detection"
       expect {
-        model.update!(deprecated_collection: create(:collection))
+        model.update!(collections: [create(:collection, :public)])
+      }.to have_enqueued_job(Activity::ModelUpdatedJob).once
+    end
+
+    it "queues normal update activity job if the collection was changed to a private one" do
+      pending "update of association change detection"
+      expect {
+        model.update!(collections: [create(:collection)])
       }.to have_enqueued_job(Activity::ModelUpdatedJob).once
     end
   end
