@@ -98,11 +98,11 @@ RSpec.describe DataPackage::ModelDeserializer do
 
     it "parses collection ID if collection exists" do
       collection = create(:collection, name: "Wonderful Toys", public_id: "abc123")
-      expect(output.dig(:deprecated_collection, :id)).to eq collection.id
+      expect(output.dig(:collections, 0, :id)).to eq collection.id
     end
 
     it "parses collection link if collection doesn't exist" do
-      expect(output.dig(:deprecated_collection, :links_attributes, 0, :url)).to eq "http://localhost:3214/collections/abc123"
+      expect(output.dig(:collections, 0, :links_attributes, 0, :url)).to eq "http://localhost:3214/collections/abc123"
     end
 
     it "parses sensitive flag" do
