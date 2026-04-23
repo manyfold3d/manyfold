@@ -7,7 +7,7 @@ module Cli
 
     desc "prune", "removes all empty collections"
     def prune
-      Collection.find_each { |it| it.destroy if it.deprecated_models.empty? && it.collections.empty? }
+      Collection.find_each { |it| it.destroy if it.models.empty? && it.collections.empty? }
     end
   end
 end
