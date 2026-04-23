@@ -53,13 +53,13 @@ class ProcessUploadedFileJob < ApplicationJob
       name: name,
       path: SecureRandom.uuid,
       creator_id: creator_id,
-      collection_id: collection_id,
+      collections: collection_id ? [Collection.find(collection_id)] : nil, # TODO change for multiple collections
       tag_list: tag_list,
       license: license,
       sensitive: sensitive,
       permission_preset: permission_preset,
       owner: owner
-    }.compact
+    }.compact_blank
     # Create model
     model = library.models.create!(params)
     model.organize!
