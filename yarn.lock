@@ -1845,11 +1845,11 @@ __metadata:
   linkType: hard
 
 "baseline-browser-mapping@npm:^2.10.12":
-  version: 2.10.20
-  resolution: "baseline-browser-mapping@npm:2.10.20"
+  version: 2.10.21
+  resolution: "baseline-browser-mapping@npm:2.10.21"
   bin:
     baseline-browser-mapping: dist/cli.cjs
-  checksum: b118fc2fb3f9f73172425a0f015198eb2ec451c5627228b9d20d71310234237b436055257e8b9b1b1ea4482c4a9328d359784f35cde75265d65b283abe203f47
+  checksum: 534e122d9ebbdac9f509eb018d2a6d6c9340dd7bdc100da5815b417e9210337906f579ce7239d09689e6c4e3af7329520827a0e332f18556c46724f484878d23
   languageName: node
   linkType: hard
 
