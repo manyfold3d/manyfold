@@ -120,7 +120,7 @@ RSpec.describe ActivityPub::CommentSerializer do
   context "when a public creator comments on a public model in a public collection" do
     let(:creator) { create(:creator, :public) }
     let(:collection) { create(:collection, :public) }
-    let(:model) { create(:model, :public, deprecated_collection: collection) }
+    let(:model) { create(:model, :public, collections: [collection]) }
     let(:comment) { create(:comment, commenter: creator, commentable: model) }
 
     it "includes collection followers collection in cc" do
