@@ -75,4 +75,41 @@ RSpec.describe Collection do
       expect(collection.reload.public?).to be false
     end
   end
+
+  context "when navigating collection hierarchy with tree_down" do
+    let(:root) { create(:collection) }
+    let(:branch) { create(:collection, collection: root) }
+    let(:leaf) { create(:collection, collection: branch) }
+    let(:other) { create(:collection) }
+
+    it "includes self" do
+      expect(described_class.tree_down(branch.id)).to include branch
+    end
+
+    it "returns child collections" do # rubocop:todo RSpec/MultipleExpectations
+      descendants = described_class.tree_down(branch.id)
+      expect(descendants).to include leaf
+      expect(descendants.count).to eq 2
+    end
+
+    it "returns grandchild collections" do # rubocop:todo RSpec/MultipleExpectations
+      descendants = described_class.tree_down(root.id)
+      expect(descendants).to include branch
+      expect(descendants).to include leaf
+      expect(descendants.count).to eq 3
+    end
+
+    it "does not return unrelated collections" do
+      descendants = described_class.tree_down(root.id)
+      expect(descendants).not_to include other
+    end
+
+    it "can query multiple collections at once" do # rubocop:todo RSpec/MultipleExpectations
+      descendants = described_class.tree_down([branch.id, other.id])
+      expect(descendants).to include branch
+      expect(descendants).to include leaf
+      expect(descendants).to include other
+      expect(descendants.count).to eq 3
+    end
+  end
 end
