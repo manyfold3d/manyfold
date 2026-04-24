@@ -352,6 +352,21 @@ RSpec.describe Scan::Model::ParseMetadataJob do
           {
             "path" => "https://thingiverse.com/thing:1234"
           }
+        ],
+        "contributors" => [
+          {
+            "title" => "Floppy",
+            "path" => "https://manyfold.floppy.org.uk/creators/floppy",
+            "roles" => ["creator"]
+          }
+        ],
+        "collections" => [
+          {
+            "title" =>	"Superheroes",
+            "path" => "https://manyfold.floppy.org.uk/collections/abc123",
+            "caption"	=> "this is the caption",
+            "description"	=> "longer description"
+          }
         ]
       })
       allow(Model).to receive(:find).with(model.id).and_return(model)
@@ -365,6 +380,46 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       # Parse twice so we might duplicate the links
       described_class.perform_now(model.id)
       expect { described_class.perform_now(model.id) }.not_to change { model.links.count }
+    end
+
+    it "creates a creator" do
+      expect { described_class.perform_now(model.id) }.to change(Creator, :count).by(1)
+    end
+
+    it "sets creator" do
+      described_class.perform_now(model.id)
+      expect(model.creator.name).to eq "Floppy"
+    end
+
+    it "creates a collection" do
+      expect { described_class.perform_now(model.id) }.to change(Collection, :count).by(1)
+    end
+
+    it "sets collection" do
+      described_class.perform_now(model.id)
+      expect(model.collection.name).to eq "Superheroes"
+    end
+
+    it "doesn't duplicate existing creator" do
+      create(:creator, name: "Floppy")
+      expect { described_class.perform_now(model.id) }.not_to change(Creator, :count)
+    end
+
+    it "matches existing creator" do
+      creator = create(:creator, name: "Floppy")
+      described_class.perform_now(model.id)
+      expect(model.creator).to eq creator
+    end
+
+    it "doesn't duplicate existing collection" do
+      create(:collection, name: "Superheroes")
+      expect { described_class.perform_now(model.id) }.not_to change(Collection, :count)
+    end
+
+    it "matches existing collection" do
+      collection = create(:collection, name: "Superheroes")
+      described_class.perform_now(model.id)
+      expect(model.collection).to eq collection
     end
   end
 
