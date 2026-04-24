@@ -796,21 +796,18 @@ RSpec.describe Model do
     end
 
     it "queues collected activity job if the collection was changed to a public one" do
-      pending "update of association change detection"
       expect {
         model.update!(collections: [create(:collection, :public)])
       }.to have_enqueued_job(Activity::ModelCollectedJob).once
     end
 
     it "queues normal activity job if the collection was changed to a public one" do
-      pending "update of association change detection"
       expect {
         model.update!(collections: [create(:collection, :public)])
       }.to have_enqueued_job(Activity::ModelUpdatedJob).once
     end
 
     it "queues normal update activity job if the collection was changed to a private one" do
-      pending "update of association change detection"
       expect {
         model.update!(collections: [create(:collection)])
       }.to have_enqueued_job(Activity::ModelUpdatedJob).once
