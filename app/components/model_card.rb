@@ -65,7 +65,7 @@ class Components::ModelCard < Components::Base
         end
       else
         li { creator target: @model.creator, name: @model.creator.name } if @model.creator
-        li { collection target: @model.deprecated_collection, name: @model.deprecated_collection.name } if @model.deprecated_collection
+        li { collection target: @model.collections.first, name: @model.collections.first.name, count: @model.collections.count } if @model.collections.any?
       end
     end
   end
@@ -76,10 +76,14 @@ class Components::ModelCard < Components::Base
     link_to name, target, "aria-label": [Creator.model_name.human, name].join(": ")
   end
 
-  def collection(target:, name:)
+  def collection(target:, name:, count:)
     Icon icon: "collection", label: Collection.model_name.human
     whitespace
     link_to name, target, "aria-label": [Collection.model_name.human, name].join(": ")
+    if count > 1
+      whitespace
+      span { "+#{count - 1}" }
+    end
   end
 
   def caption
