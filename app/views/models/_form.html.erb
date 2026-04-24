@@ -23,15 +23,17 @@
 
   <%= render "tags_edit", form: form, name: "model[tag_list]", value: @model.tags.order(taggings_count: :desc, name: :asc).map { |tag| tag.name }.join(","), label: ActsAsTaggableOn::Tag.model_name.human(count: 100), tags: @available_tags %>
 
-  <%= collection_select_input_row form,
-        :collection, @collections, :id, :name_with_domain,
-        include_blank: t("general.none"),
-        button: (if policy(:collection).new?
-                   {
-                     path: new_collection_path,
-                     label: t("collections.general.new")
-                   }
-                 end) %>
+  <div>
+    <%= form.label :collection_ids, Collection.model_name.human(count: 100) %>
+  </div>
+  <%= form.collection_select :collection_ids, @collections,
+        :public_id, :name_with_domain, {
+          selected: @model.collections.map(&:public_id)
+        }, {
+          multiple: true,
+          class: "form-select",
+          data: {controller: "tag-input", action: "turbo:morph@window->tag-input#reconnect"}
+        } %>
 
   <%= render "links_form", form: form %>
   <%= text_input_row form, :caption %>
