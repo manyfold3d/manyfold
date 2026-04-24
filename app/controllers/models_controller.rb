@@ -157,7 +157,7 @@ class ModelsController < ApplicationController
 
   def bulk_edit
     authorize Model
-    @models = @filter.models(policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope)).includes(:deprecated_collection, :creator)
+    @models = @filter.models(policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope)).includes(:collections, :creator)
     generate_available_tag_list
     page = params[:page] || 1
     # Double the normal page size for bulk editing
