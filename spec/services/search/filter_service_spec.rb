@@ -9,8 +9,8 @@ RSpec.describe Search::FilterService do
     before do
       create(:model, name: "cat in the hat", tag_list: ["dog", "log", "frog", "cat"], creator: creator, notes: "lorem ipsum", caption: nil)
       create(:model, name: "hat on the cat", tag_list: [], creator: creator, notes: nil, caption: "dolor sit amet")
-      create(:model, name: "bat on a mat", tag_list: ["log"], deprecated_collection: collection, notes: nil, caption: nil, links_attributes: [{url: "https://thingiverse.com/thing:1234"}])
-      create(:model, name: "bat on a hat", tag_list: ["frog"], deprecated_collection: collection, notes: nil, caption: nil, owner: contributor)
+      create(:model, name: "bat on a mat", tag_list: ["log"], collections: [collection], notes: nil, caption: nil, links_attributes: [{url: "https://thingiverse.com/thing:1234"}])
+      create(:model, name: "bat on a hat", tag_list: ["frog"], collections: [collection], notes: nil, caption: nil, owner: contributor)
     end
 
     it "returns all models with no filters" do
