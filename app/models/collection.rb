@@ -61,48 +61,6 @@ class Collection < ApplicationRecord
     ) select id from search_tree)") : where(collection_id: nil)
   }
 
-  # returns root top-level collections for given ids
-  scope :tree_up, ->(id) {
-    id ?
-    where("collections.id IN (WITH RECURSIVE search_tree(id, path) AS (
-      SELECT id, id
-      FROM collections
-      WHERE collection_id is NULL
-    UNION ALL
-      SELECT collections.id, path           FROM search_tree
-      JOIN collections ON collections.collection_id = search_tree.id
-      WHERE NOT collections.id IN (path)
-    ) select id from search_tree where id IN (?))", id) : where(collection_id: nil)
-  }
-
-  # returns root top-level collections for given collection ids, limited by the top-level ids
-  #    top:  @filter[:collection]
-  #    id:  collections from models resulting from searches
-  scope :tree_both, ->(top, id) {
-    top ?
-    where("collections.id IN (WITH RECURSIVE search_tree(id, path) AS (
-      SELECT id, id
-      FROM collections
-      WHERE collection_id IN (#{[*top].join(",")})
-    UNION ALL
-      SELECT collections.id, path           FROM search_tree
-      JOIN collections ON collections.collection_id = search_tree.id
-      WHERE NOT collections.id IN (path)
-    ) select id from search_tree where id IN (?))", id) : tree_up(id)
-  }
-
-  #  Basic query that returns list of all collections with their path as csv
-  #     WITH RECURSIVE search_tree(id, path) AS (
-  #         SELECT id, id
-  #         FROM collections
-  #         WHERE collection_id is NULL
-  #       UNION ALL
-  #         SELECT collections.id, path || ',' || collections.id
-  #         FROM search_tree
-  #         JOIN collections ON collections.collection_id = search_tree.id
-  #         WHERE NOT collections.id IN (path)
-  #     )  SELECT * FROM search_tree
-
   def to_activitypub_object
     ActivityPub::CollectionSerializer.new(self).serialize
   end
