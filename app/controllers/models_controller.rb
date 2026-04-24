@@ -230,16 +230,18 @@ class ModelsController < ApplicationController
   end
 
   def bulk_update_params
-    params.permit(
+    allowed = params.permit(
       :creator_id,
-      :collection_id,
       :new_library_id,
       :organize,
       :license,
       :sensitive,
+      collection_ids: [],
       add_tags: [],
       remove_tags: []
-    ).compact_blank
+    )
+    allowed[:collections] = CollectionPolicy::UpdateScope.new(current_user, Collection).resolve.where(public_id: allowed.delete(:collection_ids))
+    allowed.compact_blank
   end
 
   def model_params
