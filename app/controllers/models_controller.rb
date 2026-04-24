@@ -278,7 +278,7 @@ class ModelsController < ApplicationController
     @new_collection = Collection.find_param(params[:new_collection]) if params[:new_collection]
     @new_creator = Creator.find_param(params[:new_creator]) if params[:new_creator]
     if @model
-      @model.deprecated_collection = @new_collection if @new_collection
+      @model.collections << @new_collection if @new_collection
       @model.creator = @new_creator if @new_creator
     end
   end
