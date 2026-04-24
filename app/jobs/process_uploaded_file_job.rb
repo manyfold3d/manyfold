@@ -1,7 +1,7 @@
 class ProcessUploadedFileJob < ApplicationJob
   queue_as :critical
 
-  def perform(library_id, uploaded_file, name: nil, owner: nil, creator_id: nil, collection_id: nil, tag_list: nil, license: nil, model: nil, sensitive: nil, permission_preset: nil)
+  def perform(library_id, uploaded_file, name: nil, owner: nil, creator_id: nil, collection_ids: [], tag_list: nil, license: nil, model: nil, sensitive: nil, permission_preset: nil)
     new_files = []
     new_model = model.nil?
     attachers = []
@@ -19,7 +19,7 @@ class ProcessUploadedFileJob < ApplicationJob
       end
 
       name ||= File.basename(attachers.first.file.original_filename, ".*").humanize.tr("+", " ").careful_titleize
-      model ||= create_new_model(library, name: name, owner: owner, creator_id: creator_id, collection_id: collection_id, tag_list: tag_list, license: license, sensitive: sensitive, permission_preset: permission_preset)
+      model ||= create_new_model(library, name: name, owner: owner, creator_id: creator_id, collection_ids: collection_ids, tag_list: tag_list, license: license, sensitive: sensitive, permission_preset: permission_preset)
 
       attachers.each do |it|
         new_files << if new_model && (attachers.length == 1) && is_archive?(it.file)
@@ -48,12 +48,12 @@ class ProcessUploadedFileJob < ApplicationJob
     SupportedMimeTypes.archive_extensions.include? File.extname(file.original_filename).delete(".").downcase
   end
 
-  def create_new_model(library, name: nil, owner: nil, creator_id: nil, collection_id: nil, tag_list: nil, license: nil, sensitive: nil, permission_preset: nil)
+  def create_new_model(library, name: nil, owner: nil, creator_id: nil, collection_ids: [], tag_list: nil, license: nil, sensitive: nil, permission_preset: nil)
     params = {
       name: name,
       path: SecureRandom.uuid,
       creator_id: creator_id,
-      collections: collection_id ? [Collection.find(collection_id)] : nil, # TODO change for multiple collections
+      collections: collection_ids.map { |it| Collection.find(it) },
       tag_list: tag_list,
       license: license,
       sensitive: sensitive,

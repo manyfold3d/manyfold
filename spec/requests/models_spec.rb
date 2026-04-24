@@ -578,7 +578,7 @@ RSpec.describe "Models" do
                 }],
                 owner: User.last,
                 creator_id: creator.id.to_s,
-                collection_id: collection.id.to_s,
+                collection_ids: [collection.id.to_s],
                 license: "MIT",
                 sensitive: true,
                 permission_preset: "public",

@@ -79,7 +79,7 @@ RSpec.describe ProcessUploadedFileJob do
 
     it "Stores collection if provided" do
       collection = create(:collection)
-      job.perform(library.id, file, collection_id: collection.id)
+      job.perform(library.id, file, collection_ids: [collection.id])
       expect(Model.last.collections).to include collection
     end
 
