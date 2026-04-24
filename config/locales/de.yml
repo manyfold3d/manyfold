@@ -101,7 +101,6 @@ de:
       model:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Bildunterschrift
-        collection_id: Kollektion
         creator_id: Autor
         indexable: Suchindizierung zulassen
         library_id: Sammlung

@@ -101,7 +101,6 @@ pl:
       model:
         ai_indexable:
         caption: Napis
-        collection_id: Kolekcja
         creator_id: Twórca
         indexable:
         library_id: Biblioteka
