@@ -12,7 +12,7 @@ class Components::PreviewFrame < Components::Base
 
   def before_template
     return if remote?
-    @file = @object.is_a?(Model) ? @object.preview_file : policy_scope(@object.deprecated_models).first&.preview_file
+    @file = @object.is_a?(Model) ? @object.preview_file : policy_scope(@object.models).first&.preview_file
   end
 
   def view_template
