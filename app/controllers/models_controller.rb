@@ -89,7 +89,7 @@ class ModelsController < ApplicationController
       name: multiple ? nil : p[:name],
       owner: current_user,
       creator_id: p[:creator_id],
-      collection_id: p[:collection_id],
+      collection_ids: p[:collections].map(&:id),
       license: p[:license],
       sensitive: (p[:sensitive] == "1"),
       tag_list: p[:tag_list],
