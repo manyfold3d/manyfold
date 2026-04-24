@@ -18,8 +18,8 @@ class CreateObjectFromUrlJob < ApplicationJob
       Model.create(common_options.merge({
         library: Library.default,
         path: SecureRandom.uuid,
-        collection_id: collection_id
-      }))
+        collections: collection_id ? [Collection.find(collection_id)] : nil
+      }.compact))
     when "Creator"
       Creator.create(common_options)
     when "Collection"

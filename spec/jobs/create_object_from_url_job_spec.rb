@@ -31,4 +31,10 @@ RSpec.describe CreateObjectFromUrlJob, :after_first_run do
     job.perform(url: "https://www.thingiverse.com/thing:4049220")
     expect(Model.last.owners).to be_empty
   end
+
+  it "sets collection", :thingiverse_api_key do
+    collection = create(:collection)
+    job.perform(url: "https://www.thingiverse.com/thing:4049220", collection_id: collection.id)
+    expect(Model.last.collections).to include collection
+  end
 end
