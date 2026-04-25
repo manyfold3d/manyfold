@@ -12,7 +12,7 @@
     <tr>
       <th><input type="checkbox" aria-label="<%= translate ".select_all" %>" value="0" name="bulk-select-all"></th>
       <th><%= Model.human_attribute_name(:name) %></th>
-      <th><%= Model.human_attribute_name(:collection) %></th>
+      <th><%= Model.human_attribute_name(:collections) %></th>
       <th><%= Model.human_attribute_name(:tags) %></th>
       <th><%= Model.human_attribute_name(:creator) %></th>
       <th><%= Model.human_attribute_name(:sensitive) %></th>
@@ -21,7 +21,11 @@
       <tr>
         <td><%= form.check_box "models[#{model.to_param}]", data: {bulk_item: model.to_param}, "aria-label": translate(".select", name: model.name) %></td>
         <td><%= link_to model.name, model, title: model.path %></td>
-        <td><%= link_to model.collection.name, model.collection if model.collection %></td>
+        <td>
+          <% model.collections.each do |it| %>
+            <%= link_to it.name, it %>
+          <% end %>
+        </td>
         <td><%= render "tag_list", tags: model.tags.order(taggings_count: :desc, name: :asc), model_id: model.to_param, show_count: false, filter: @filter %></td>
         <td><%= link_to model.creator.name, model.creator if model.creator %></td>
         <td><%= Icon(icon: "explicit", label: Model.human_attribute_name(:sensitive)) if model.sensitive %></td>

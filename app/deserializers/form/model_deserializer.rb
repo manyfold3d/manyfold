@@ -13,16 +13,17 @@ module Form
         :sensitive, # i18n-tasks-use t("activerecord.attributes.model.sensitive")
         :indexable, # i18n-tasks-use t("activerecord.attributes.model.indexable")
         :ai_indexable, # i18n-tasks-use t("activerecord.attributes.model.ai_indexable")
-        :collection_id, # i18n-tasks-use t("activerecord.attributes.model.collection_id")
         :q,
         :library,
         :creator,
         :tag,
         :organize,
         :missingtag,
+        collection_ids: [],
         tag_list: [],
         links_attributes: [:id, :url, :_destroy] # i18n-tasks-use t("activerecord.attributes.link.url")
       )
+      allowed[:collections] = CollectionPolicy::Scope.new(@user, Collection).resolve.where(public_id: allowed.delete(:collection_ids))
       return allowed unless user_can_set_permissions?
       allowed.deep_merge(caber_relations_attributes(type: :model))
     end

@@ -5,7 +5,7 @@ module ManyfoldApi::V0
       {
         name: @object["name"],
         creator: dereference(@object.dig("creator", "@id"), Creator),
-        collection: dereference(@object.dig("isPartOf", "@id"), Collection),
+        collections: @object.dig("isPartOf")&.map { |it| CollectionDeserializer.new(object: it).deserialize },
         caption: @object["caption"],
         notes: @object["description"],
         links_attributes: @object["links"]&.map { |it| LinkDeserializer.new(object: it, user: @user).deserialize },
@@ -36,12 +36,14 @@ module ManyfoldApi::V0
             required: ["@id"]
           },
           isPartOf: {
-            type: :object,
-            properties: {
-              "@id": {type: :string, example: "https://example.com/collections/abc123"},
-              "@type": {type: :string, example: "Collection"}
-            },
-            required: ["@id"]
+            type: :array, items: {
+              type: :object,
+              properties: {
+                "@id": {type: :string, example: "https://example.com/collections/abc123"},
+                "@type": {type: :string, example: "Collection"}
+              },
+              required: ["@id"]
+            }
           },
           "spdx:license": {"$ref" => "#/components/schemas/spdxLicense"},
           sensitive: {type: :boolean, example: true},

@@ -101,7 +101,6 @@ en:
       model:
         ai_indexable: Allow use for AI training
         caption: Caption
-        collection_id: Collection
         creator_id: Creator
         indexable: Allow search indexing
         library_id: Library

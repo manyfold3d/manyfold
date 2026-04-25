@@ -89,7 +89,7 @@ class ModelsController < ApplicationController
       name: multiple ? nil : p[:name],
       owner: current_user,
       creator_id: p[:creator_id],
-      collection_id: p[:collection_id],
+      collection_ids: p[:collections]&.map(&:id),
       license: p[:license],
       sensitive: (p[:sensitive] == "1"),
       tag_list: p[:tag_list],
@@ -157,7 +157,7 @@ class ModelsController < ApplicationController
 
   def bulk_edit
     authorize Model
-    @models = @filter.models(policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope)).includes(:collection, :creator)
+    @models = @filter.models(policy_scope(Model, policy_scope_class: ApplicationPolicy::UpdateScope)).includes(:collections, :creator)
     generate_available_tag_list
     page = params[:page] || 1
     # Double the normal page size for bulk editing
@@ -230,16 +230,18 @@ class ModelsController < ApplicationController
   end
 
   def bulk_update_params
-    params.permit(
+    allowed = params.permit(
       :creator_id,
-      :collection_id,
       :new_library_id,
       :organize,
       :license,
       :sensitive,
+      collection_ids: [],
       add_tags: [],
       remove_tags: []
-    ).compact_blank
+    )
+    allowed[:collections] = CollectionPolicy::UpdateScope.new(current_user, Collection).resolve.where(public_id: allowed.delete(:collection_ids))
+    allowed.compact_blank
   end
 
   def model_params
@@ -278,7 +280,7 @@ class ModelsController < ApplicationController
     @new_collection = Collection.find_param(params[:new_collection]) if params[:new_collection]
     @new_creator = Creator.find_param(params[:new_creator]) if params[:new_creator]
     if @model
-      @model.collection = @new_collection if @new_collection
+      @model.collections << @new_collection if @new_collection
       @model.creator = @new_creator if @new_creator
     end
   end

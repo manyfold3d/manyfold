@@ -34,7 +34,7 @@ class CollectionsController < ApplicationController
     @filter_in_place = true
 
     # Count unassiged models
-    @unassigned_count = policy_scope(Model).where(collection: nil).count
+    @unassigned_count = policy_scope(Model).where.missing(:collections).count
     set_indexable @collections
     respond_to do |format|
       format.html { render layout: "card_list_page" }
@@ -45,7 +45,7 @@ class CollectionsController < ApplicationController
   def show
     respond_to do |format|
       format.html do
-        @models = policy_scope(Model).where(collection: @collection)
+        @models = policy_scope(@collection.models)
         prepare_model_list
         @additional_filters = {collection: @collection}
         render layout: "card_list_page"

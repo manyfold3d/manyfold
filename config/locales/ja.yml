@@ -101,7 +101,6 @@ ja:
       model:
         ai_indexable:
         caption: キャプション
-        collection_id: コレクション
         creator_id: クリエイター
         indexable:
         library_id: ライブラリー

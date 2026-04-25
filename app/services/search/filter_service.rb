@@ -78,11 +78,11 @@ class Search::FilterService
   def filter_by_collection(scope)
     case parameter(:collection)
     when nil
-      scope # No collection, move along
+      scope # No collection filter, move along
     when ""
-      scope.where(collection_id: nil)
+      scope.where.missing(:collections)
     else
-      scope.where(collection: Collection.tree_down(@collection.id))
+      scope.includes(:collections).where("collections.id": [Collection.tree_down(@collection.id)])
     end
   end
 

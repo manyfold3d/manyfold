@@ -37,7 +37,7 @@ RSpec.describe OEmbed::CollectionSerializer do
       }
       let(:collection) {
         c = create(:collection, :public)
-        model.update!(collection: c)
+        model.update!(collections: [c])
         c
       }
 
@@ -58,7 +58,7 @@ RSpec.describe OEmbed::CollectionSerializer do
       }
       let(:collection) {
         c = create(:collection, :public)
-        model.update!(collection: c)
+        model.update!(collections: [c])
         c
       }
 
@@ -79,7 +79,7 @@ RSpec.describe OEmbed::CollectionSerializer do
       }
       let(:collection) {
         c = create(:collection, :public)
-        model.update!(collection: c)
+        model.update!(collections: [c])
         c
       }
 
@@ -100,7 +100,7 @@ RSpec.describe OEmbed::CollectionSerializer do
       }
       let(:collection) {
         c = create(:collection, :public)
-        model.update!(collection: c)
+        model.update!(collections: [c])
         c
       }
 

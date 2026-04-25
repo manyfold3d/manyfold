@@ -21,7 +21,7 @@ module ModelListable
     @models = @models.page(page).per(helpers.pagination_settings["per_page"])
 
     # Load extra data
-    @models = @models.includes [:creator, :collection]
+    @models = @models.includes [:creator, :collections]
     @models = @models.preload [:model_files, :preview_file] # Use preload query to avoid joining JSON fields
   end
 end

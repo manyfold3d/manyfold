@@ -12,7 +12,7 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
       parameter name: :model_id, in: :path, type: :string, required: true, example: "abc123"
       parameter name: :body, in: :body, schema: ManyfoldApi::V0::UploadedFileDeserializer.schema_ref
 
-      let(:model) { create(:model, creator: create(:creator), collection: create(:collection)) }
+      let(:model) { create(:model, :with_collection, creator: create(:creator)) }
       let(:model_id) { model.to_param }
 
       response "202", "Accepted; the files will be added to the model after processing" do
@@ -55,7 +55,7 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
     parameter name: :model_id, in: :path, type: :string, required: true, example: "abc123"
     parameter name: :id, in: :path, type: :string, required: true, example: "def456"
 
-    let(:model) { create(:model, creator: create(:creator), collection: create(:collection)) }
+    let(:model) { create(:model, :with_collection, creator: create(:creator)) }
     let(:supported_file) { create(:model_file, model: model, presupported: true) }
     let(:file) { create(:model_file, model: model, presupported_version: supported_file) }
 

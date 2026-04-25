@@ -101,7 +101,6 @@ cs:
       model:
         ai_indexable:
         caption: Titulek
-        collection_id: Kolekce
         creator_id: Autor
         indexable:
         library_id: Knihovna

@@ -34,7 +34,7 @@
       <div class="col">
         <%= content_tag(:p, class: "lead") { @collection.caption } if @collection.caption %>
         <%= content_tag(:p, class: "card-text") { markdownify @collection.notes } if @collection.notes %>
-        <% model_count = policy_scope(Model).where(collection: @collection).count %>
+        <% model_count = @models.count %>
         <p><%= "#{model_count} #{Model.model_name.human count: model_count}" %></p>
         <%= content_tag(:p) { t("general.followers", count: @collection.followers.count) } if SiteSettings.social_enabled? %>
         <p><%= AccessIndicator(object: @collection, text: true) %></p>

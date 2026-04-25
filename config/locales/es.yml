@@ -101,7 +101,6 @@ es:
       model:
         ai_indexable: Permitir el uso para el entrenamiento de IA
         caption: Subtítulo
-        collection_id: Colección
         creator_id: Creador
         indexable: Permitir la indexación de búsquedas
         library_id: Biblioteca

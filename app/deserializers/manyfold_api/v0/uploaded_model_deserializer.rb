@@ -6,7 +6,7 @@ module ManyfoldApi::V0
         name: @object["name"],
         file: @object.dig("files")&.each_with_index.to_h.invert,
         creator_id: dereference(@object.dig("creator", "@id"), Creator)&.id,
-        collection_id: dereference(@object.dig("isPartOf", "@id"), Collection)&.id,
+        collections: @object["isPartOf"]&.filter_map { |it| dereference(it["@id"], Collection) },
         license: @object.dig("spdx:license", "licenseId"),
         sensitive: @object["sensitive"] ? "1" : "0",
         tag_list: @object["keywords"]

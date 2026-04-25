@@ -74,8 +74,8 @@ RSpec.describe "Models" do
         l = create(:library)
         build_list(:model, 5, library: l) { |it| it.save! }
         build_list(:model, 5, library: l, creator: creator) { |it| it.save! }
-        build_list(:model, 5, library: l, collection: collection) { |it| it.save! }
-        build_list(:model, 5, library: l, creator: creator, collection: collection) { |it| it.save! }
+        build_list(:model, 5, library: l, collections: [collection]) { |it| it.save! }
+        build_list(:model, 5, library: l, creator: creator, collections: [collection]) { |it| it.save! }
         l
       end
 
@@ -545,7 +545,7 @@ RSpec.describe "Models" do
               scan: "1",
               file: files,
               creator_id: creator.id,
-              collection_id: collection.id,
+              collection_ids: [collection.public_id],
               license: "MIT",
               sensitive: "1",
               permission_preset: "public",
@@ -578,7 +578,7 @@ RSpec.describe "Models" do
                 }],
                 owner: User.last,
                 creator_id: creator.id.to_s,
-                collection_id: collection.id.to_s,
+                collection_ids: [collection.id],
                 license: "MIT",
                 sensitive: true,
                 permission_preset: "public",

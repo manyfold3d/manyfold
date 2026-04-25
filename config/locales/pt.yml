@@ -101,7 +101,6 @@ pt:
       model:
         ai_indexable:
         caption:
-        collection_id:
         creator_id:
         indexable:
         library_id:

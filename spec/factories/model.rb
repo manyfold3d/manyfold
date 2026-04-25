@@ -40,7 +40,7 @@ FactoryBot.define do
     end
 
     trait :with_collection do
-      collection
+      collections { [create(:collection)] }
     end
 
     trait :public do

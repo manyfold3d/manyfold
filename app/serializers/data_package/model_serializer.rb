@@ -19,7 +19,7 @@ module DataPackage
         resources: @object.model_files.without_special.map { |it| ModelFileSerializer.new(it).serialize },
         sensitive: @object.sensitive,
         contributors: @object.creator ? [CreatorSerializer.new(@object.creator).serialize] : nil,
-        collections: @object.collection ? [CollectionSerializer.new(@object.collection).serialize] : nil,
+        collections: @object.collections.map { |c| CollectionSerializer.new(c).serialize },
         links: @object.links.map { |it| LinkSerializer.new(it).serialize }
       }.compact
     end

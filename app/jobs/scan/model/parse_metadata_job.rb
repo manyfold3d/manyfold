@@ -14,9 +14,9 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     options = {
       # Some things are preserved if already set
       creator: model.creator,
-      collection: model.collection,
+      collections: model.collections,
       preview_file: model.preview_file
-    }.compact
+    }.compact_blank
     # Set preview file
     options.reverse_merge! identify_preview_file(model)
     # Set path template attributes
@@ -36,12 +36,14 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
           find_or_create_from_path_component(Creator, creator_data[:name])
         data[:creator].update(creator_data)
       end
-      # match collection
-      collection_data = data.delete(:collection)
-      if collection_data
-        data[:collection] = collection_data[:id] ? Collection.find(collection_data.delete(:id)) :
+      # match collections
+      collections_data = data.delete(:collections) || []
+      data[:collections] = []
+      collections_data.each do |collection_data|
+        collection = collection_data[:id] ? Collection.find(collection_data.delete(:id)) :
           find_or_create_from_path_component(Collection, collection_data[:name])
-        data[:collection].update(collection_data)
+        collection.update(collection_data)
+        data[:collections] << collection
       end
       # match preview file
       data[:preview_file] = model.model_files.find_by(filename: data[:preview_file])
@@ -88,9 +90,9 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     components = PathParserService.new(library.path_template, path).call
     {
       creator: find_or_create_from_path_component(Creator, components[:creator]),
-      collection: find_or_create_from_path_component(Collection, components[:collection]),
+      collections: [find_or_create_from_path_component(Collection, components[:collection])].compact,
       name: to_human_name(components[:model_name])
-    }.compact
+    }.compact_blank
   end
 
   ASCII_ART_THINGIVERSE_README = /(?<url>https?:\/\/www\.thingiverse\.com\/thing:[0-9]+)\n(?<title>.*) by (?<creator>.*) is licensed under the (?<license_name>.*) license\.\n(?<license_url>https?:\/\/.*)\n\n# Summary\n\n(?<summary>.*)/

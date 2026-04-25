@@ -38,8 +38,12 @@ class Model < ApplicationRecord
 
   belongs_to :library
   belongs_to :creator, optional: true
-  belongs_to :collection, optional: true
+  has_and_belongs_to_many :collections, after_add: :post_collected_activity # rubocop:disable Rails/HasAndBelongsToMany
   belongs_to :preview_file, class_name: "ModelFile", optional: true
+
+  # old collection_id database field is deprecated but kept around for compatibility
+  belongs_to :deprecated_collection, class_name: "Collection", foreign_key: "collection_id", optional: true # rubocop:disable Rails/InverseOf
+
   has_many :model_files, dependent: :destroy
   acts_as_taggable_on :tags
 
@@ -74,7 +78,7 @@ class Model < ApplicationRecord
   scoped_search on: :notes, aliases: [:description], only_explicit: true
   scoped_search relation: :library, on: :name, rename: :library, only_explicit: true, default_operator: :eq
   scoped_search relation: :creator, on: :name, rename: :creator
-  scoped_search relation: :collection, on: :name, rename: :collection
+  scoped_search relation: :collections, on: :name, rename: :collection
   scoped_search relation: :tags, on: :name, default_operator: :eq, rename: :tag
   scoped_search relation: :model_files, on: :filename, rename: :filename, only_explicit: true
   scoped_search on: :path, only_explicit: true
@@ -145,7 +149,7 @@ class Model < ApplicationRecord
       check_for_problems_later
       # Merge metadata
       self.creator ||= other.creator
-      self.collection ||= other.collection
+      other.collections.each { |c| collections << c unless collections.include?(c) }
       self.license ||= other.license
       self.caption ||= other.caption
       self.notes ||= other.notes
@@ -230,7 +234,8 @@ class Model < ApplicationRecord
       name: name || "Copy of #{other.name}",
       public_id: nil,
       tags: other.tags,
-      preview_file: link_preview_file ? other.preview_file : nil
+      preview_file: link_preview_file ? other.preview_file : nil,
+      collections: other.collections
     )
     path ? new_model.save! : new_model.organize!
     # Wipe permissions and copy from old model
@@ -377,11 +382,14 @@ class Model < ApplicationRecord
     Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id) if public?
   end
 
+  def post_collected_activity(collection)
+    Activity::ModelCollectedJob.set(wait: 5.seconds).perform_later(id, collection.id) if collection.public?
+    Activity::ModelUpdatedJob.set(wait: 5.seconds).perform_later(id) if public?
+  end
+
   def post_update_activity
     if creator_previously_changed? && creator&.public?
       Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
-    elsif collection_previously_changed? && collection&.public?
-      Activity::ModelCollectedJob.set(wait: 5.seconds).perform_later(id, collection.id)
     elsif just_became_public?
       Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
     elsif public? && noteworthy_change?
