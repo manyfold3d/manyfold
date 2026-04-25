@@ -38,7 +38,7 @@ class Model < ApplicationRecord
 
   belongs_to :library
   belongs_to :creator, optional: true
-  has_and_belongs_to_many :collections # rubocop:disable Rails/HasAndBelongsToMany
+  has_and_belongs_to_many :collections, after_add: :post_collected_activity # rubocop:disable Rails/HasAndBelongsToMany
   belongs_to :preview_file, class_name: "ModelFile", optional: true
 
   # old collection_id database field is deprecated but kept around for compatibility
@@ -382,13 +382,14 @@ class Model < ApplicationRecord
     Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id) if public?
   end
 
+  def post_collected_activity(collection)
+    Activity::ModelCollectedJob.set(wait: 5.seconds).perform_later(id, collection.id) if collection.public?
+    Activity::ModelUpdatedJob.set(wait: 5.seconds).perform_later(id) if public?
+  end
+
   def post_update_activity
     if creator_previously_changed? && creator&.public?
       Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
-    # elsif collections_previously_changed?
-    #   (collections - collections_was).each do |collection|
-    #     Activity::ModelCollectedJob.set(wait: 5.seconds).perform_later(id, collection.id) if collection.public?
-    #   end
     elsif just_became_public?
       Activity::ModelPublishedJob.set(wait: 5.seconds).perform_later(id)
     elsif public? && noteworthy_change?
