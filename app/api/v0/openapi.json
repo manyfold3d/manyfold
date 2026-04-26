@@ -2622,20 +2622,23 @@
             ]
           },
           "isPartOf": {
-            "type": "object",
-            "properties": {
-              "@id": {
-                "type": "string",
-                "example": "https://example.com/collections/abc123"
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "example": "https://example.com/collections/abc123"
+                },
+                "@type": {
+                  "type": "string",
+                  "example": "Collection"
+                }
               },
-              "@type": {
-                "type": "string",
-                "example": "Collection"
-              }
-            },
-            "required": [
-              "@id"
-            ]
+              "required": [
+                "@id"
+              ]
+            }
           },
           "spdx:license": {
             "$ref": "#/components/schemas/spdxLicense"
@@ -2751,20 +2754,23 @@
             ]
           },
           "isPartOf": {
-            "type": "object",
-            "properties": {
-              "@id": {
-                "type": "string",
-                "example": "https://example.com/collections/abc123"
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "example": "https://example.com/collections/abc123"
+                },
+                "@type": {
+                  "type": "string",
+                  "example": "Collection"
+                }
               },
-              "@type": {
-                "type": "string",
-                "example": "Collection"
-              }
-            },
-            "required": [
-              "@id"
-            ]
+              "required": [
+                "@id"
+              ]
+            }
           },
           "spdx:license": {
             "$ref": "#/components/schemas/spdxLicense"
