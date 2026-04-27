@@ -15,7 +15,7 @@ class Components::PreviewFrame < Components::Base
     @cover = @object.cover if @object.respond_to?(:cover)
     if @cover.nil?
       @file = @object.try(:preview_file) ||
-        (ModelPolicy.new(current_user, @object.preview_model) && @object.preview_model&.preview_file) ||
+        (@object.try(:preview_model) && ModelPolicy.new(current_user, @object.preview_model) && @object.preview_model&.preview_file) ||
         policy_scope(@object.models).first&.preview_file
     end
   end
