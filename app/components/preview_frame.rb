@@ -12,12 +12,9 @@ class Components::PreviewFrame < Components::Base
 
   def before_template
     return if remote?
-    @cover = @object.cover if @object.respond_to?(:cover)
-    if @cover.nil?
-      @file = @object.try(:preview_file) ||
-        (@object.try(:preview_model) && ModelPolicy.new(current_user, @object.preview_model) && @object.preview_model&.preview_file) ||
-        policy_scope(@object.models).first&.preview_file
-    end
+    @cover = @object.try(:cover)
+    return if @cover
+    @file = @object.is_a?(Model) ? @object.preview_file : collection_preview_file
   end
 
   def view_template
@@ -31,6 +28,14 @@ class Components::PreviewFrame < Components::Base
   end
 
   private
+
+  def collection_preview_file
+    if @object.preview_model && ModelPolicy.new(current_user, @object.preview_model)
+      @object.preview_model&.preview_file
+    else
+      policy_scope(@object.models).first&.preview_file
+    end
+  end
 
   def remote?
     @object.is_a?(Federails::Actor) ? !@object.local : @object.remote?
