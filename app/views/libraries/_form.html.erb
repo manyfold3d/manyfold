@@ -1,84 +1,87 @@
-<%= form_with model: @library, class: "container-md tabular-form", data: {controller: "parse-preview"} do |form| %>
-  <%= text_input_row form, :name %>
-  <%= checkbox_input_row form, :default, help: t(".default.help"), checked: @library.default? %>
-  <% unless @library.persisted? %>
-    <div>
-      <%= form.label :storage_service, class: "col-sm-2 col-form-label" %>
-    </div>
-    <div>
-      <%= form.select :storage_service, Library::STORAGE_SERVICES.map { |it| [translate("libraries.storage_services.%{service}" % {service: it}), it] }, {}, {class: "form-control col-auto form-select", "data-bs-collapse": "collapse", "data-controller": "storage-service", "data-action": "change->storage-service#onChange"} %>
-      <div id="options-filesystem" class="card p-3 collapse show storage-collapse tabular-form" data-bs-parent="#library_storage_service">
-        <p><%= t ".filesystem_description_html" %></p>
-        <%= text_input_row form, :path, placeholder: translate(".path.placeholder"), options: {data: {action: "change->parse-preview#handleChange"}} %>
-        <%= checkbox_input_row form, :create_path_if_not_on_disk, help: t(".create_path_if_not_on_disk.help") %>
+<div class="form-container">
+  <%= form_with model: @library, class: "tabular-form", data: {controller: "parse-preview"} do |form| %>
+    <%= text_input_row form, :name %>
+    <%= checkbox_input_row form, :default, help: t(".default.help"), checked: @library.default? %>
+    <% unless @library.persisted? %>
+      <div>
+        <%= form.label :storage_service, class: "col-sm-2 col-form-label" %>
       </div>
-      <div id="options-s3" class="card p-3 collapse show storage-collapse tabular-form" data-bs-parent="#library_storage_service">
-        <p><%= t ".s3_description_html" %></p>
-        <%= url_input_row form, :s3_endpoint, help: t(".s3_endpoint.help"), autocomplete: false %>
-        <%= text_input_row form, :s3_bucket, help: t(".s3_bucket.help"), autocomplete: false %>
-        <%= text_input_row form, :s3_region, autocomplete: false %>
-        <%= text_input_row form, :s3_access_key_id, autocomplete: false %>
-        <%= password_input_row form, :s3_secret_access_key, autocomplete: false %>
-        <%= checkbox_input_row form, :s3_path_style, help: t(".s3_path_style.help") %>
+      <div>
+        <%= form.select :storage_service, Library::STORAGE_SERVICES.map { |it| [translate("libraries.storage_services.%{service}" % {service: it}), it] }, {}, {class: "form-control col-auto form-select", "data-bs-collapse": "collapse", "data-controller": "storage-service", "data-action": "change->storage-service#onChange"} %>
+        <div id="options-filesystem" class="card p-3 collapse show storage-collapse tabular-form" data-bs-parent="#library_storage_service">
+          <p><%= t ".filesystem_description_html" %></p>
+          <%= text_input_row form, :path, placeholder: translate(".path.placeholder"), options: {data: {action: "change->parse-preview#handleChange"}} %>
+          <%= checkbox_input_row form, :create_path_if_not_on_disk, help: t(".create_path_if_not_on_disk.help") %>
+        </div>
+        <div id="options-s3" class="card p-3 collapse show storage-collapse tabular-form" data-bs-parent="#library_storage_service">
+          <p><%= t ".s3_description_html" %></p>
+          <%= url_input_row form, :s3_endpoint, help: t(".s3_endpoint.help"), autocomplete: false %>
+          <%= text_input_row form, :s3_bucket, help: t(".s3_bucket.help"), autocomplete: false %>
+          <%= text_input_row form, :s3_region, autocomplete: false %>
+          <%= text_input_row form, :s3_access_key_id, autocomplete: false %>
+          <%= password_input_row form, :s3_secret_access_key, autocomplete: false %>
+          <%= checkbox_input_row form, :s3_path_style, help: t(".s3_path_style.help") %>
+        </div>
       </div>
-    </div>
-  <% end %>
-  <%= text_input_row form, :caption, help: t(".caption.help") %>
-  <%= text_input_row form, :icon, help: t(".icon.help_html"), placeholder: translate(".icon.placeholder") %>
-  <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
+    <% end %>
+    <%= text_input_row form, :caption, help: t(".caption.help") %>
+    <%= text_input_row form, :icon, help: t(".icon.help_html"), placeholder: translate(".icon.placeholder") %>
+    <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
 
-  <hr>
-
-  <h3><%= t(".folder_organisation.title") %></h3>
-
-  <p>
-    <%= t ".folder_organisation.description" %>
-  </p>
-
-  <%= TextInputRow form: form, attribute: :path_template, help: render("path_template_help"), label: Library.human_attribute_name(:path_template), options: {data: {action: "change->parse-preview#handleChange"}} %>
-  <%= CheckBoxInputRow form: form, attribute: :parse_metadata_from_path, help: render("parse_metadata_help"), label: Library.human_attribute_name(:parse_metadata_from_path), options: {data: {action: "change->parse-preview#handleChange"}} %>
-  <%= CheckBoxInputRow form: form, attribute: :safe_folder_names, help: t(".safe_folder_names.help_html"), label: Library.human_attribute_name(:safe_folder_names) %>
-
-  <% if @library.persisted? %>
     <hr>
-    <h3><%= t(".rules.title") %></h3>
-    <div>
-      <%= form.label :tag_regex, class: "col-sm-2 col-form-label mb-0" %>
-    </div>
-    <div id="newinput">
-      <% @library.tag_regex.each do |reg| %>
-        <div class="input-group">
-          <%= text_field_tag "library[tag_regex][]", reg, class: "form-control col-sm-11", autocomplete: "off" %>
-          <%= link_to Icon(icon: "trash", label: t("general.delete")), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
-        </div>
-      <% end %>
-      <div id="regexclone" style="display: none">
-        <div class="input-group">
-          <%= text_field_tag "library[tag_regex][]", "", class: "form-control col-sm-11", autocomplete: "off" %>
-          <%= link_to Icon(icon: "trash", label: t("general.delete")), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
-        </div>
-      </div>
-      <div class="col-sm-2"></div><div class="col-sm-10 p-0">
-        <%= link_to Icon(icon: "plus-square-dotted", label: t(".add_line")), "", onClick: "$('#newinput').append($('#regexclone').html()); return false;", class: "btn btn-primary" %>
-        <span id="libraryRegexHelp" class="form-text"><%= t(".tag_regex.help") %></span>
-      </div>
-    </div>
-  <% end %>
 
-  <hr>
-  <div>
-    <%= form.submit translate("general.save"), class: "btn btn-primary" %>
+    <h3><%= t(".folder_organisation.title") %></h3>
+
+    <p>
+      <%= t ".folder_organisation.description" %>
+    </p>
+
+    <%= TextInputRow form: form, attribute: :path_template, help: render("path_template_help"), label: Library.human_attribute_name(:path_template), options: {data: {action: "change->parse-preview#handleChange"}} %>
+    <%= CheckBoxInputRow form: form, attribute: :parse_metadata_from_path, help: render("parse_metadata_help"), label: Library.human_attribute_name(:parse_metadata_from_path), options: {data: {action: "change->parse-preview#handleChange"}} %>
+    <%= CheckBoxInputRow form: form, attribute: :safe_folder_names, help: t(".safe_folder_names.help_html"), label: Library.human_attribute_name(:safe_folder_names) %>
 
     <% if @library.persisted? %>
-      <%= if policy(@library).destroy?
-            link_to safe_join([Icon(icon: "trash", label: t("general.delete")), t("general.delete")], " "),
-              library_path(@library.public_id),
-              {
-                method: :delete,
-                class: "float-end btn btn-outline-danger",
-                data: {confirm: translate(".confirm_destroy.help", count: @library.models.count)}
-              }
-          end %>
+      <hr>
+      <h3><%= t(".rules.title") %></h3>
+      <div>
+        <%= form.label :tag_regex, class: "col-sm-2 col-form-label mb-0" %>
+      </div>
+      <div id="newinput">
+        <% @library.tag_regex.each do |reg| %>
+          <div class="input-group">
+            <%= text_field_tag "library[tag_regex][]", reg, class: "form-control col-sm-11", autocomplete: "off" %>
+            <%= link_to Icon(icon: "trash", label: t("general.delete")), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
+          </div>
+        <% end %>
+        <div id="regexclone" style="display: none">
+          <div class="input-group">
+            <%= text_field_tag "library[tag_regex][]", "", class: "form-control col-sm-11", autocomplete: "off" %>
+            <%= link_to Icon(icon: "trash", label: t("general.delete")), "", onClick: "jQuery(this).parents('div.input-group')[0].remove(); return false;", class: "input-group-text btn btn-outline-danger col-auto" %>
+          </div>
+        </div>
+        <div class="col-sm-2"></div><div class="col-sm-10 p-0">
+          <%= link_to Icon(icon: "plus-square-dotted", label: t(".add_line")), "", onClick: "$('#newinput').append($('#regexclone').html()); return false;", class: "btn btn-primary" %>
+          <span id="libraryRegexHelp" class="form-text"><%= t(".tag_regex.help") %></span>
+        </div>
+      </div>
     <% end %>
-  <div>
-<% end %>
+
+    <hr>
+    <div>
+      <%= form.submit translate("general.save"), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <% if @library.persisted? && policy(@library).destroy? %>
+    <span class="form-delete-button">
+      <%= DoButton(
+            icon: "trash",
+            label: t("general.delete"),
+            href: library_path(@library.public_id),
+            method: :delete,
+            variant: "outline-danger",
+            confirm: translate(".confirm_destroy.help", count: @library.models.count)
+          ) %>
+    </span>
+  <% end %>
+</div>

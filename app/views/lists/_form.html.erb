@@ -1,30 +1,36 @@
-<%= form_with model: list, class: "container-md tabular-form" do |form| %>
-  <%= TextInputRow(form: form, attribute: :name, label: List.human_attribute_name(:name)) unless @list.special %>
+<div class="form-container">
+  <%= form_with model: list, class: "tabular-form" do |form| %>
+    <%= TextInputRow(form: form, attribute: :name, label: List.human_attribute_name(:name)) unless @list.special %>
 
-  <% if list.persisted? %>
+    <% if list.persisted? %>
+      <div>
+        <%= form.label :list_items %>
+      </div>
+      <div>
+        <%= cocooned_container :table, id: "cocooned-list-items", data: {controller: "cocooned"}, class: "table table-striped" do
+              form.fields_for :list_items do |f|
+                render "list_item_fields", f: f
+              end
+            end %>
+      </div>
+    <% end %>
+
+    <hr>
     <div>
-      <%= form.label :list_items %>
-    </div>
-    <div>
-      <%= cocooned_container :table, id: "cocooned-list-items", data: {controller: "cocooned"}, class: "table table-striped" do
-            form.fields_for :list_items do |f|
-              render "list_item_fields", f: f
-            end
-          end %>
+      <%= form.submit class: "btn btn-primary" %>
     </div>
   <% end %>
 
-  <div>
-    <%= form.submit class: "btn btn-primary" %>
-    <% if list.persisted? && policy(list).destroy? %>
-      <%= link_to list_path(list), {
+  <% if list.persisted? && policy(list).destroy? %>
+    <span class="form-delete-button">
+      <%= DoButton(
+            icon: "trash",
+            label: t("general.delete"),
+            href: list_path(list),
             method: :delete,
-            class: "float-end btn btn-outline-danger",
-            data: {confirm: translate("views.lists.form.confirm_destroy")}
-          } do %>
-        <%= Icon(icon: "trash", label: t("general.delete")) %>
-        <%= t("general.delete") %>
-      <% end %>
-    <% end %>
-  </div>
-<% end %>
+            variant: "outline-danger",
+            confirm: translate("views.lists.form.confirm_destroy")
+          ) %>
+    </span>
+  <% end %>
+</div>

@@ -1,40 +1,51 @@
 <%- @collection.links.build if @collection.links.empty? %>
 <%- @collection.caber_relations.build if @collection.caber_relations.empty? %>
 
-<%= form_with model: @collection, class: "container-md tabular-form" do |form| %>
-  <%= text_input_row form, :name %>
+<div class="form-container">
+  <%= form_with model: @collection, class: "tabular-form" do |form| %>
+    <%= text_input_row form, :name %>
 
-  <%= collection_select_input_row form,
-        :creator, @creators, :id, :name_with_domain,
-        include_blank: t("general.none"),
-        selected: @default_creator&.id,
-        button: (if policy(:creator).new?
-                   {
-                     path: new_creator_path,
-                     label: t("creators.general.new")
-                   }
-                 end) %>
-  <%= collection_select_input_row form,
-        :collection, @collections, :id, :name_with_domain,
-        include_blank: t("general.none"),
-        button: (if policy(:collection).new?
-                   {
-                     path: new_collection_path,
-                     label: t("collections.general.new")
-                   }
-                 end) %>
-  <%= render "links_form", form: form %>
-  <%= text_input_row form, :caption %>
-  <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
-  <%= select_input_row form, :indexable, indexable_select_options(form.object) %>
-  <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots %>
-  <%= render "caber_relations_form", form: form %>
-  <div>
-    <%= form.submit translate("general.save"), class: "btn btn-primary" %>
-    <% if @collection.persisted? %>
-      <span class="float-end">
-        <%= DoButton(icon: "trash", label: t("general.delete"), href: collection_path(@collection), method: :delete, variant: "outline-danger", confirm: translate("collections.destroy.confirm")) if policy(@collection).destroy? %>
-      </span>
-    <% end %>
-  </div>
-<% end %>
+    <%= collection_select_input_row form,
+          :creator, @creators, :id, :name_with_domain,
+          include_blank: t("general.none"),
+          selected: @default_creator&.id,
+          button: (if policy(:creator).new?
+                     {
+                       path: new_creator_path,
+                       label: t("creators.general.new")
+                     }
+                   end) %>
+    <%= collection_select_input_row form,
+          :collection, @collections, :id, :name_with_domain,
+          include_blank: t("general.none"),
+          button: (if policy(:collection).new?
+                     {
+                       path: new_collection_path,
+                       label: t("collections.general.new")
+                     }
+                   end) %>
+    <%= render "links_form", form: form %>
+    <%= text_input_row form, :caption %>
+    <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
+    <%= select_input_row form, :indexable, indexable_select_options(form.object) %>
+    <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots %>
+    <%= render "caber_relations_form", form: form %>
+    <hr>
+    <div>
+      <%= form.submit translate("general.save"), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <% if @collection.persisted? && policy(@collection).destroy? %>
+    <span class="form-delete-button">
+      <%= DoButton(
+            icon: "trash",
+            label: t("general.delete"),
+            href: collection_path(@collection),
+            method: :delete,
+            variant: "outline-danger",
+            confirm: translate("collections.destroy.confirm")
+          ) %>
+    </span>
+  <% end %>
+</div>
