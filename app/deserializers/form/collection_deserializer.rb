@@ -11,6 +11,8 @@ module Form
         :indexable, # i18n-tasks-use t("activerecord.attributes.collection.indexable")
         :ai_indexable, # i18n-tasks-use t("activerecord.attributes.collection.ai_indexable")
         :preview_model_id, # i18n-tasks-use t("activerecord.attributes.collection.preview_model_id")
+        :cover, # i18n-tasks-use t("activerecord.attributes.collection.cover")
+        :remove_cover,
         links_attributes: [:id, :url, :_destroy]
       )
       return allowed unless user_can_set_permissions?

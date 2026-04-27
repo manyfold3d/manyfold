@@ -14,6 +14,11 @@
   <%= turbo_stream_from @collection %>
   <div class="card mb-3 <%= "remote-actor" if @collection.remote? %>">
     <div class="card-body row">
+      <% if @collection.cover %>
+        <div class="col col-auto">
+          <%= image_tag cover_collection_path(@collection), alt: @collection.name, style: "max-height: 15rem" %>
+        </div>
+      <% end %>
       <div class="col col-auto">
         <%= content_tag(:div, class: "text-center") do %>
           <h2>

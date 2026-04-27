@@ -84,6 +84,9 @@ Rails.application.routes.draw do
     concerns :commentable, commentable_class: "Collection"
     concerns :reportable, reportable_class: "Collection"
     concerns :linkable
+    member do
+      get :cover
+    end
   end
   resources :problems, only: [:index, :update] do
     collection do
