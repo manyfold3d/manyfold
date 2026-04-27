@@ -8,6 +8,7 @@ module ManyfoldApi::V0
         description: @object.notes,
         creator: creator_ref(@object.creator),
         isPartOf: collection_ref(@object.collection),
+        preview_model: model_ref(@object.preview_model),
         links: @object.links.map { |it| LinkSerializer.new(it).serialize }
       ).compact
     end

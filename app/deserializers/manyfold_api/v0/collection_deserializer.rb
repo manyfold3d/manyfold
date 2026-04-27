@@ -8,6 +8,7 @@ module ManyfoldApi::V0
         collection: dereference(@object.dig("isPartOf", "@id"), Collection),
         caption: @object["caption"],
         notes: @object["description"],
+        preview_model: dereference(@object.dig("preview_model", "@id"), Model),
         links_attributes: @object["links"]&.map { |it| LinkDeserializer.new(object: it, user: @user).deserialize }
       }.compact
     end
@@ -36,6 +37,14 @@ module ManyfoldApi::V0
             properties: {
               "@id": {type: :string, example: "https://example.com/collections/abc123"},
               "@type": {type: :string, example: "Collection"}
+            },
+            required: ["@id"]
+          },
+          preview_file: {
+            type: :object,
+            properties: {
+              "@id": {type: :string, example: "https://example.com/models/abc123"},
+              "@type": {type: :string, example: "3DModel"}
             },
             required: ["@id"]
           }
