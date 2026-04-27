@@ -49,6 +49,18 @@ RSpec.describe Collection do
       collection.update(collection: collection)
       expect(collection).not_to be_valid
     end
+
+    it "can set preview model to something in this collection" do
+      model = create(:model, collections: [collection])
+      collection.update(preview_model: model)
+      expect(collection).to be_valid
+    end
+
+    it "can't set preview model to something not in this collection" do
+      model = create(:model)
+      collection.update(preview_model: model)
+      expect(collection).not_to be_valid
+    end
   end
 
   context "when making a collection public" do
