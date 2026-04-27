@@ -6,6 +6,7 @@ de:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Beschreibung
         collection_id: Übergeordnete Kollektion
+        cover:
         creator_id:
           few: Autoren
           many: Autoren
@@ -16,6 +17,7 @@ de:
         indexable: Suchindizierung zulassen
         name: Name
         notes: Beschreibung
+        preview_model_id:
       creator:
         ai_indexable: Verwendung für KI-Training zulassen
         avatar: Avatar-Bild

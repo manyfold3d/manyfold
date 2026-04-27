@@ -19,8 +19,15 @@ ru:
       confirm:
       success: Коллекция удалена!
     form:
+      cover:
+        current:
+        help:
+        none:
+        remove:
       notes:
         help_html: Вы можете использовать <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      preview_model:
+        help:
     general:
       edit:
       new:

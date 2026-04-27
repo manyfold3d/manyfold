@@ -6,6 +6,7 @@ cs:
         ai_indexable:
         caption: Titulek
         collection_id:
+        cover:
         creator_id:
           few: Autoři
           many: Autoři
@@ -16,6 +17,7 @@ cs:
         indexable:
         name: Název
         notes: Poznámky
+        preview_model_id:
       creator:
         ai_indexable:
         avatar:

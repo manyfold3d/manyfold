@@ -19,8 +19,15 @@ pt:
       confirm:
       success:
     form:
+      cover:
+        current:
+        help:
+        none:
+        remove:
       notes:
         help_html:
+      preview_model:
+        help:
     general:
       edit:
       new:

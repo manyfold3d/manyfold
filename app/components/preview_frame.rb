@@ -12,11 +12,13 @@ class Components::PreviewFrame < Components::Base
 
   def before_template
     return if remote?
-    @file = @object.is_a?(Model) ? @object.preview_file : policy_scope(@object.models).first&.preview_file
+    @cover = @object.try(:cover)
+    return if @cover
+    @file = @object.is_a?(Model) ? @object.preview_file : collection_preview_file
   end
 
   def view_template
-    if @file
+    if @file || @cover
       render_local
     elsif remote?
       render_remote
@@ -27,12 +29,22 @@ class Components::PreviewFrame < Components::Base
 
   private
 
+  def collection_preview_file
+    if @object.preview_model && ModelPolicy.new(current_user, @object.preview_model)
+      @object.preview_model&.preview_file
+    else
+      policy_scope(@object.models).first&.preview_file
+    end
+  end
+
   def remote?
     @object.is_a?(Federails::Actor) ? !@object.local : @object.remote?
   end
 
   def render_local
-    if @file.is_image?
+    if @cover
+      image cover_collection_path(@object), @object.name
+    elsif @file.is_image?
       image model_model_file_path(@file.model, @file, format: @file.extension, derivative: "preview"), @file.name
     elsif @file.is_renderable?
       div class: "card-img-top #{"sensitive" if needs_hiding?}" do

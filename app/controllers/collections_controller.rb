@@ -118,6 +118,11 @@ class CollectionsController < ApplicationController
     end
   end
 
+  def cover
+    authorize @collection
+    send_file_content @collection.cover, disposition: :inline
+  end
+
   private
 
   def get_collection

@@ -6,6 +6,7 @@ fr:
         ai_indexable: Permettre l'utilisation pour l'entrainement d'IA
         caption: Légende
         collection_id:
+        cover:
         creator_id:
           few: Créateurs
           many: Créateurs
@@ -16,6 +17,7 @@ fr:
         indexable: Autoriser l'indexation de la recherche
         name: Nom
         notes: Notes
+        preview_model_id:
       creator:
         ai_indexable:
         avatar: Avatar

@@ -1,6 +1,7 @@
 class Collection < ApplicationRecord
   # i18n-tasks-use t("activerecord.models.collection")
 
+  include ApplicationUploader::Attachment(:cover)
   include Followable
   include Talkative
   include CaberObject
@@ -29,9 +30,12 @@ class Collection < ApplicationRecord
   has_many :collections, dependent: :nullify
   belongs_to :collection, optional: true
   belongs_to :creator, optional: true
+  belongs_to :preview_model, class_name: "Model", optional: true
+
   validates :name, uniqueness: {case_sensitive: false}, length: SAFE_NAME_LENGTH
   validates :public_id, multimodel_uniqueness: {punctuation_sensitive: false, case_sensitive: false, check: FederailsCommon::FEDIVERSE_USERNAMES}
   validates :collection_id, exclusion: {in: ->(it) { Array(it.id) }}
+  validates :preview_model, inclusion: {in: :models, allow_nil: true}
 
   before_validation :publish_creator, if: :will_be_public?
 
@@ -41,6 +45,8 @@ class Collection < ApplicationRecord
   after_update_commit :after_update
 
   fasp_share_lifecycle category: "account", uri_method: :fasp_uri, only_if: :public_and_indexable?
+
+  serialize :cover_data, coder: CrossDbJsonSerializer
 
   def fasp_uri
     federails_actor&.federated_url

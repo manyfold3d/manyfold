@@ -142,6 +142,12 @@ RSpec.describe "Collections" do
         patch "/collections/#{collection.to_param}", params: {collection: {name: "newname"}}
         expect(response).to redirect_to("/collections")
       end
+
+      it "saves preview model", :as_moderator do
+        model = create(:model, collections: [collection])
+        patch "/collections/#{collection.to_param}", params: {collection: {preview_model_id: model.id}}
+        expect(collection.reload.preview_model).to eq model
+      end
     end
 
     describe "DELETE /collections/:id" do

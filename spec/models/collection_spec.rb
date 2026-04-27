@@ -49,6 +49,25 @@ RSpec.describe Collection do
       collection.update(collection: collection)
       expect(collection).not_to be_valid
     end
+
+    it "can set preview model to something in this collection" do
+      model = create(:model, collections: [collection])
+      collection.update(preview_model: model)
+      expect(collection).to be_valid
+    end
+
+    it "can't set preview model to something not in this collection" do
+      model = create(:model)
+      collection.update(preview_model: model)
+      expect(collection).not_to be_valid
+    end
+
+    it "nullifies preview model if deleted" do
+      model = create(:model)
+      collection.update(preview_model: model)
+      model.destroy!
+      expect(collection.reload.preview_model).to be_nil
+    end
   end
 
   context "when making a collection public" do
@@ -110,6 +129,22 @@ RSpec.describe Collection do
       expect(descendants).to include leaf
       expect(descendants).to include other
       expect(descendants.count).to eq 3
+    end
+  end
+
+  context "when serializing JSON fields", :after_first_run do
+    let(:collection) { create(:collection, :with_cover) }
+
+    before do
+      create(:library)
+    end
+
+    [
+      :cover_data
+    ].each do |field|
+      it "deserializes #{field.to_s.humanize} correctly" do
+        expect(collection.reload.send(field)).to be_a Hash
+      end
     end
   end
 end

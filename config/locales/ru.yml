@@ -6,6 +6,7 @@ ru:
         ai_indexable: Разрешить использование данных для обучения ИИ
         caption: Описание
         collection_id: Родительская коллекция
+        cover:
         creator_id:
           few: Авторы
           many: Авторы
@@ -16,6 +17,7 @@ ru:
         indexable: Разрешить поисковую индексацию
         name: Имя
         notes: Примечания
+        preview_model_id:
       creator:
         ai_indexable: Разрешить использование данных для обучения ИИ
         avatar: Изображение аватара

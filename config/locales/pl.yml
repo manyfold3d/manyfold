@@ -6,6 +6,7 @@ pl:
         ai_indexable:
         caption: Napis
         collection_id:
+        cover:
         creator_id:
           few: Twórcy
           many: Twórcy
@@ -16,6 +17,7 @@ pl:
         indexable:
         name: Nazwa
         notes: Opis
+        preview_model_id:
       creator:
         ai_indexable:
         avatar:

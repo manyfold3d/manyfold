@@ -6,6 +6,7 @@ pt:
         ai_indexable:
         caption:
         collection_id:
+        cover:
         creator_id:
           few:
           many:
@@ -16,6 +17,7 @@ pt:
         indexable:
         name:
         notes:
+        preview_model_id:
       creator:
         ai_indexable:
         avatar:
