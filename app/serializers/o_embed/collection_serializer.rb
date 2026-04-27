@@ -9,7 +9,7 @@ module OEmbed
         @object.cover ?
           {
             type: "photo",
-            url: Rails.application.routes.url_helpers.cover_collection_path(@object),
+            url: Rails.application.routes.url_helpers.cover_collection_url(@object),
             mediaType: @object.cover.mime_type
           } :
           model_file_properties(
