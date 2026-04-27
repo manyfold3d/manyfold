@@ -21,6 +21,8 @@ zh-CN:
     form:
       notes:
         help_html: 您可以使用 <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> 语法。
+      preview_model:
+        help:
     general:
       edit: 编辑合集
       new: 新合集

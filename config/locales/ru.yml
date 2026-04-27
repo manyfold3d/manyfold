@@ -16,6 +16,7 @@ ru:
         indexable: Разрешить поисковую индексацию
         name: Имя
         notes: Примечания
+        preview_model_id:
       creator:
         ai_indexable: Разрешить использование данных для обучения ИИ
         avatar: Изображение аватара

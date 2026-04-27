@@ -21,6 +21,8 @@ es:
     form:
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      preview_model:
+        help:
     general:
       edit: Editar colección
       new: Nueva colección

@@ -24,6 +24,7 @@
                        label: t("collections.general.new")
                      }
                    end) %>
+    <%= collection_select_input_row form, :preview_model, @collection.models.order(:name), :id, :name, help: t(".preview_model.help"), include_blank: true %>
     <%= render "links_form", form: form %>
     <%= text_input_row form, :caption %>
     <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>

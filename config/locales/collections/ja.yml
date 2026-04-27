@@ -21,6 +21,8 @@ ja:
     form:
       notes:
         help_html: <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdownが</a>使える。
+      preview_model:
+        help:
     general:
       edit: コレクションを編集する
       new: 新作コレクション

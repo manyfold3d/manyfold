@@ -16,6 +16,7 @@ de:
         indexable: Suchindizierung zulassen
         name: Name
         notes: Beschreibung
+        preview_model_id:
       creator:
         ai_indexable: Verwendung für KI-Training zulassen
         avatar: Avatar-Bild

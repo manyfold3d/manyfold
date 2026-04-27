@@ -21,6 +21,8 @@ cs:
     form:
       notes:
         help_html: Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      preview_model:
+        help:
     general:
       edit: Upravit kolekci
       new: Nová kolekce

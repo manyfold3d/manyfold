@@ -16,6 +16,7 @@ es:
         indexable: Permitir la indexación de búsquedas
         name: Nombre
         notes: Notas
+        preview_model_id:
       creator:
         ai_indexable: Permitir el uso para el entrenamiento de IA
         avatar: Avatar

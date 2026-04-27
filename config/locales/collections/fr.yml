@@ -21,6 +21,8 @@ fr:
     form:
       notes:
         help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      preview_model:
+        help:
     general:
       edit: Modifier la collection
       new: Nouvelle collection

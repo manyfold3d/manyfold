@@ -61,6 +61,13 @@ RSpec.describe Collection do
       collection.update(preview_model: model)
       expect(collection).not_to be_valid
     end
+
+    it "nullifies preview model if deleted" do
+      model = create(:model)
+      collection.update(preview_model: model)
+      model.destroy!
+      expect(collection.reload.preview_model).to be_nil
+    end
   end
 
   context "when making a collection public" do

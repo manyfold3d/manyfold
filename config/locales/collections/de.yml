@@ -21,6 +21,8 @@ de:
     form:
       notes:
         help_html: Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden.
+      preview_model:
+        help:
     general:
       edit: Kollektion bearbeiten
       new: Neue Kollektion

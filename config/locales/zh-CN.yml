@@ -16,6 +16,7 @@ zh-CN:
         indexable: 允许搜索索引
         name: 名称
         notes: 说明
+        preview_model_id:
       creator:
         ai_indexable: 允许用于 AI 训练
         avatar: 头像

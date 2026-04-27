@@ -21,6 +21,8 @@ pt:
     form:
       notes:
         help_html:
+      preview_model:
+        help:
     general:
       edit:
       new:

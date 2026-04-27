@@ -21,6 +21,8 @@ en:
     form:
       notes:
         help_html: You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
+      preview_model:
+        help: Displayed as preview if no cover image is set.
     general:
       edit: Edit Collection
       new: New Collection

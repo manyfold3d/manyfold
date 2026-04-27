@@ -16,6 +16,7 @@ en:
         indexable: Allow search indexing
         name: Name
         notes: Description
+        preview_model_id: Preview model
       creator:
         ai_indexable: Allow use for AI training
         avatar: Avatar image
