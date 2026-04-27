@@ -1,6 +1,7 @@
 class Collection < ApplicationRecord
   # i18n-tasks-use t("activerecord.models.collection")
 
+  include ApplicationUploader::Attachment(:cover)
   include Followable
   include Talkative
   include CaberObject
@@ -44,6 +45,8 @@ class Collection < ApplicationRecord
   after_update_commit :after_update
 
   fasp_share_lifecycle category: "account", uri_method: :fasp_uri, only_if: :public_and_indexable?
+
+  serialize :cover_data, coder: CrossDbJsonSerializer
 
   def fasp_uri
     federails_actor&.federated_url

@@ -8,5 +8,9 @@ FactoryBot.define do
     trait :public do
       permission_preset { :public }
     end
+
+    trait :with_cover do
+      cover { Rack::Test::UploadedFile.new(StringIO.new, original_filename: "cover.png") }
+    end
   end
 end

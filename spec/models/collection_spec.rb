@@ -124,4 +124,20 @@ RSpec.describe Collection do
       expect(descendants.count).to eq 3
     end
   end
+
+  context "when serializing JSON fields", :after_first_run do
+    let(:collection) { create(:collection, :with_cover) }
+
+    before do
+      create(:library)
+    end
+
+    [
+      :cover_data
+    ].each do |field|
+      it "deserializes #{field.to_s.humanize} correctly" do
+        expect(collection.reload.send(field)).to be_a Hash
+      end
+    end
+  end
 end
