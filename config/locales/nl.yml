@@ -6,6 +6,7 @@ nl:
         ai_indexable: Gebruik voor AI-training toestaan
         caption: Onderschrift
         collection_id:
+        cover:
         creator_id:
           few: Makers
           many: Makers

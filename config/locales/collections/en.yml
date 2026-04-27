@@ -19,6 +19,11 @@ en:
       confirm: Are you sure you want to remove this item? No files will be affected.
       success: Collection deleted!
     form:
+      cover:
+        current: Currently using `%{filename}`.
+        help: An image (ideally square) in WEBP, PNG, GIF or JPG format.
+        none: Not currently set.
+        remove: Remove cover image
       notes:
         help_html: You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_model:

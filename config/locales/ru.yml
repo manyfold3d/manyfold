@@ -6,6 +6,7 @@ ru:
         ai_indexable: Разрешить использование данных для обучения ИИ
         caption: Описание
         collection_id: Родительская коллекция
+        cover:
         creator_id:
           few: Авторы
           many: Авторы

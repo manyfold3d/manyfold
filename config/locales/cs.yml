@@ -6,6 +6,7 @@ cs:
         ai_indexable:
         caption: Titulek
         collection_id:
+        cover:
         creator_id:
           few: Autoři
           many: Autoři

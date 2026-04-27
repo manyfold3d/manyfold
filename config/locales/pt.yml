@@ -6,6 +6,7 @@ pt:
         ai_indexable:
         caption:
         collection_id:
+        cover:
         creator_id:
           few:
           many:

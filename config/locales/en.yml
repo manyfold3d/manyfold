@@ -6,6 +6,7 @@ en:
         ai_indexable: Allow use for AI training
         caption: Caption
         collection_id: Parent Collection
+        cover: Cover image
         creator_id:
           few: Creators
           many: Creators

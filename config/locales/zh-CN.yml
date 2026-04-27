@@ -6,6 +6,7 @@ zh-CN:
         ai_indexable: 允许用于 AI 训练
         caption: 标题
         collection_id: 父合集
+        cover:
         creator_id:
           few: 创作者
           many: 创作者

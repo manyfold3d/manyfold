@@ -6,6 +6,7 @@ pl:
         ai_indexable:
         caption: Napis
         collection_id:
+        cover:
         creator_id:
           few: Twórcy
           many: Twórcy

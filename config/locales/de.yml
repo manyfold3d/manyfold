@@ -6,6 +6,7 @@ de:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Beschreibung
         collection_id: Übergeordnete Kollektion
+        cover:
         creator_id:
           few: Autoren
           many: Autoren

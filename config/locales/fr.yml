@@ -6,6 +6,7 @@ fr:
         ai_indexable: Permettre l'utilisation pour l'entrainement d'IA
         caption: Légende
         collection_id:
+        cover:
         creator_id:
           few: Créateurs
           many: Créateurs
