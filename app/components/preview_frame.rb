@@ -12,7 +12,9 @@ class Components::PreviewFrame < Components::Base
 
   def before_template
     return if remote?
-    @file = @object.try(:preview_file) || @object.preview_model&.preview_file || policy_scope(@object.models).first&.preview_file
+    @file = @object.try(:preview_file) ||
+      (ModelPolicy.new(current_user, @object.preview_model) && @object.preview_model&.preview_file) ||
+      policy_scope(@object.models).first&.preview_file
   end
 
   def view_template
