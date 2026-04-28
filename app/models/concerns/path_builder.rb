@@ -12,6 +12,9 @@ module PathBuilder
         path_component(creator) || "@unattributed"
       when "{collection}"
         path_component(collections.order(created_at: :asc).first) || "@uncollected"
+      when "{collections}"
+        scope = collections.order(models_count: :desc, name: :asc)
+        File.join(scope.map { |it| path_component(it) })
       when "{modelName}"
         path_component(self)
       when "{modelId}"

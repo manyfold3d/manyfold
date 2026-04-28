@@ -125,4 +125,40 @@ RSpec.describe PathBuilder do
       expect(model.formatted_path).to eq "Bruce Wayne/Wonderful Toys/bat/weapon/Bat-a-rang##{model.id}"
     end
   end
+
+  context "with a model in multiple collections" do
+    it "uses the oldest collection with singular {collection} token" do
+      c1 = create(:collection, name: "Newer Collection", created_at: 1.hour.ago)
+      c2 = create(:collection, name: "Older Collection", created_at: 2.hours.ago)
+      model = create(:model, name: "Model", collections: [c1, c2])
+      allow(model.library).to receive(:path_template).and_return("{collection}/{modelName}{modelId}")
+      expect(model.formatted_path).to eq "older-collection/model##{model.id}"
+    end
+
+    it "orders multiple {collections} alphabetically if they're not nested and the same size" do
+      c1 = create(:collection, name: "Beta")
+      c2 = create(:collection, name: "Alpha")
+      model = create(:model, name: "Model", collections: [c1, c2]).reload # Make sure counter caches are up to date
+      allow(model.library).to receive(:path_template).and_return("{collections}/{modelName}{modelId}")
+      expect(model.formatted_path).to eq "alpha/beta/model##{model.id}"
+    end
+
+    it "orders multiple {collections} by size" do # rubocop:disable RSpec/ExampleLength
+      c1 = create(:collection, name: "Alpha")
+      c2 = create(:collection, name: "Beta")
+      create(:model, collections: [c2])
+      model = create(:model, name: "Model", collections: [c1, c2]).reload # Make sure counter caches are up to date
+      allow(model.library).to receive(:path_template).and_return("{collections}/{modelName}{modelId}")
+      expect(model.formatted_path).to eq "beta/alpha/model##{model.id}"
+    end
+
+    it "includes parent collections in {collections} when nesting" do
+      pending "not implemented yet"
+      c1 = create(:collection, name: "Outer")
+      c2 = create(:collection, name: "Inner", collection: c1)
+      model = create(:model, name: "Model", collections: [c2]).reload
+      allow(model.library).to receive(:path_template).and_return("{collections}/{modelName}{modelId}")
+      expect(model.formatted_path).to eq "outer/inner/model##{model.id}"
+    end
+  end
 end
