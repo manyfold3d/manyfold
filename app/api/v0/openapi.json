@@ -2371,6 +2371,22 @@
             "required": [
               "@id"
             ]
+          },
+          "preview_file": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/models/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "3DModel"
+              }
+            },
+            "required": [
+              "@id"
+            ]
           }
         },
         "required": [
@@ -2435,6 +2451,22 @@
               "@type": {
                 "type": "string",
                 "example": "Collection"
+              }
+            },
+            "required": [
+              "@id"
+            ]
+          },
+          "preview_file": {
+            "type": "object",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "example": "https://example.com/models/abc123"
+              },
+              "@type": {
+                "type": "string",
+                "example": "3DModel"
               }
             },
             "required": [
