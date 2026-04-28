@@ -26,7 +26,9 @@ class Collection < ApplicationRecord
     actor_type: "Group"
   )
 
-  has_and_belongs_to_many :models # rubocop:disable Rails/HasAndBelongsToMany
+  has_many :collections_models, dependent: :destroy
+  has_many :models, through: :collections_models
+
   has_many :collections, dependent: :nullify
   belongs_to :collection, optional: true
   belongs_to :creator, optional: true
