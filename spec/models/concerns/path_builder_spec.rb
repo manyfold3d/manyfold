@@ -152,11 +152,10 @@ RSpec.describe PathBuilder do
       expect(model.formatted_path).to eq "beta/alpha/model##{model.id}"
     end
 
-    it "includes parent collections in {collections} when nesting" do # rubocop:disable RSpec/ExampleLength
-      pending "not implemented yet"
+    it "handles collections ordering in {collections} when in collections and subcollection" do # rubocop:disable RSpec/ExampleLength
       c1 = create(:collection, name: "Outer")
       c2 = create(:collection, name: "Inner", collection: c1)
-      model = create(:model, name: "Model", collections: [c2]).reload
+      model = create(:model, name: "Model", collections: [c2, c1]).reload
       allow(model.library).to receive(:path_template).and_return("{collections}/{modelName}{modelId}")
       expect(model.formatted_path).to eq "outer/inner/model##{model.id}"
     end

@@ -14,7 +14,11 @@ module PathBuilder
         path_component(collections.order(created_at: :asc).first) || "@uncollected"
       when "{collections}"
         scope = collections.order(models_count: :desc, name: :asc)
-        File.join(scope.map { |it| path_component(it) })
+        collections = scope.where(collection_id: nil).to_a
+        while scope.count > collections.count
+          collections.concat scope.where(collection_id: collections.map(&:id)).to_a
+        end
+        File.join(collections.map { |it| path_component(it) })
       when "{modelName}"
         path_component(self)
       when "{modelId}"
