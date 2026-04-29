@@ -63,7 +63,7 @@ en:
       description: Folder structure follows a template that you define using tokens. You can also include other text in the template (such as folder separators) and it will be included as-is.
       tokens:
         collection: The title of the collection the model is in, if set.
-        collections: 'A set of collection folders, one for every collection the model is in. When parsing, this token is "greedy"; it will parse as many as it can.'
+        collections: A set of collection folders, one for every collection the model is in. When parsing, this token is "greedy"; it will parse as many as it can.
         creator: The name of the creator, if set.
         model_id: A unique numerical identifier for the model. We strongly recommend always including this at the end of your template to avoid name conflicts on disk.
         model_name: A filesystem-safe version of the model name.
