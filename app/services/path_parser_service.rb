@@ -8,9 +8,10 @@ class PathParserService
     components = @path.match(path_parse_pattern)&.named_captures&.symbolize_keys
     return {} if components.nil?
     components.merge({
-      tags: components[:tags]&.split("/")&.compact_blank,
+      tags: components[:tags]&.split(File::SEPARATOR)&.compact_blank,
+      collections: components[:collection] ? [components.delete(:collection)] : components[:collections]&.split("/")&.compact_blank,
       model_id: nil # discard ID, never gonna use it in parsing
-    }).compact
+    }).compact_blank
   end
 
   private
@@ -22,15 +23,17 @@ class PathParserService
         when "{tags}"
           "(?<tags>[[:print:]]*)"
         when "{creator}"
-          "(?<creator>[[:print:]&&[^/]]*?)"
+          "(?<creator>[[:print:]&&[^#{File::SEPARATOR}]]*?)"
         when "{collection}"
-          "(?<collection>[[:print:]&&[^/]]*?)"
+          "(?<collection>[[:print:]&&[^#{File::SEPARATOR}]]*?)"
+        when "{collections}"
+          "(?<collections>[[:print:]]*)"
         when "{modelName}"
-          "(?<model_name>[[:print:]&&[^/]]*?)"
+          "(?<model_name>[[:print:]&&[^#{File::SEPARATOR}]]*?)"
         when "{modelId}"
           "(?<model_id>#[[:digit:]]+)?"
         else
-          "[[:print:]&&[^/]]*"
+          "[[:print:]&&[^#{File::SEPARATOR}]]*"
         end
       } + "$")
   end

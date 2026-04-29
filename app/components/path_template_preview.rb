@@ -27,7 +27,7 @@ class Components::PathTemplatePreview < Components::Base
             tr do
               td(style: "word-break: break-all") { path }
               td { find_or_new_from_path_component(Creator, parsed[:creator])&.name || "❌" }
-              td { find_or_new_from_path_component(Collection, parsed[:collection])&.name || "❌" }
+              td { parsed[:collections] ? Array(find_or_new_from_path_component(Collection, parsed[:collections])).map(&:name).join(", ") : "❌" }
               td {
                 parsed[:tags]&.map do |it|
                   Tag tag: ActsAsTaggableOn::Tag.new(name: it), link: false
@@ -46,11 +46,15 @@ class Components::PathTemplatePreview < Components::Base
 
   def find_or_new_from_path_component(klass, path_component)
     return unless path_component
-    klass.find_by(slug: path_component) ||
-      klass.find_by(
-        name: to_human_name(path_component)
-      ) ||
-      klass.new(name: to_human_name(path_component))
+    if path_component.is_a? Array
+      path_component.map { |it| find_or_new_from_path_component(klass, it) }
+    else
+      klass.find_by(slug: path_component) ||
+        klass.find_by(
+          name: to_human_name(path_component)
+        ) ||
+        klass.new(name: to_human_name(path_component))
+    end
   end
 
   def to_human_name(str)

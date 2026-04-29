@@ -90,7 +90,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
     components = PathParserService.new(library.path_template, path).call
     {
       creator: find_or_create_from_path_component(Creator, components[:creator]),
-      collections: [find_or_create_from_path_component(Collection, components[:collection])].compact,
+      collections: Array(find_or_create_from_path_component(Collection, components[:collections])),
       name: to_human_name(components[:model_name])
     }.compact_blank
   end
@@ -170,10 +170,14 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
 
   def find_or_create_from_path_component(klass, path_component)
     return unless path_component
-    klass.find_by(slug: path_component) ||
-      klass.create_with(slug: path_component.parameterize).find_or_create_by(
-        name: to_human_name(path_component)
-      )
+    if path_component.is_a? Array
+      path_component.map { |it| find_or_create_from_path_component(klass, it) }
+    else
+      klass.find_by(slug: path_component) ||
+        klass.create_with(slug: path_component.parameterize).find_or_create_by(
+          name: to_human_name(path_component)
+        )
+    end
   end
 
   def to_human_name(str)
