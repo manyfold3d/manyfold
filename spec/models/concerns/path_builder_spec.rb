@@ -152,7 +152,7 @@ RSpec.describe PathBuilder do
       expect(model.formatted_path).to eq "beta/alpha/model##{model.id}"
     end
 
-    it "includes parent collections in {collections} when nesting" do
+    it "includes parent collections in {collections} when nesting" do # rubocop:disable RSpec/ExampleLength
       pending "not implemented yet"
       c1 = create(:collection, name: "Outer")
       c2 = create(:collection, name: "Inner", collection: c1)
