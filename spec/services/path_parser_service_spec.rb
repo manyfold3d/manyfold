@@ -7,10 +7,12 @@ RSpec.describe PathParserService do
     "{tags}" => %r{^/?.*?(?<tags>[[:print:]]*)$},
     "{creator}" => %r{^/?.*?(?<creator>[[:print:]&&[^/]]*?)$},
     "{collection}" => %r{^/?.*?(?<collection>[[:print:]&&[^/]]*?)$},
+    "{collections}" => %r{^/?.*?(?<collections>[[:print:]]*)$},
     "{tags}/{creator}" => %r{^/?.*?(?<tags>[[:print:]]*)/(?<creator>[[:print:]&&[^/]]*?)$},
     "{tags}/{creator}/{modelName}{modelId}" => %r{^/?.*?(?<tags>[[:print:]]*)/(?<creator>[[:print:]&&[^/]]*?)/(?<model_name>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
     "@{creator}{modelId}" => %r{^/?.*?@(?<creator>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
-    "{creator}/{collection}/{tags}/{modelName}{modelId}" => %r{^/?.*?(?<creator>[[:print:]&&[^/]]*?)/(?<collection>[[:print:]&&[^/]]*?)/(?<tags>[[:print:]]*)/(?<model_name>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$}
+    "{creator}/{collection}/{tags}/{modelName}{modelId}" => %r{^/?.*?(?<creator>[[:print:]&&[^/]]*?)/(?<collection>[[:print:]&&[^/]]*?)/(?<tags>[[:print:]]*)/(?<model_name>[[:print:]&&[^/]]*?)(?<model_id>#[[:digit:]]+)?$},
+    "{collections}/{creator}" => %r{^/?.*?(?<collections>[[:print:]]*)/(?<creator>[[:print:]&&[^/]]*?)$}
   }.each_pair do |tag, regexp|
     it "correctly converts #{tag} into a regexp matcher" do
       service = described_class.new(tag, path)
@@ -28,7 +30,7 @@ RSpec.describe PathParserService do
       model_name: "prefix - name"
     },
     "{collection}/{modelName}{modelId}" => {
-      collection: "bottom",
+      collections: ["bottom"],
       model_name: "prefix - name"
     },
     "{tags}/{creator}/{modelName}{modelId}" => {
@@ -42,8 +44,13 @@ RSpec.describe PathParserService do
     "{tags}/{creator}/{collection} - {modelName}{modelId}" => {
       tags: ["top", "middle"],
       creator: "bottom",
-      collection: "prefix",
+      collections: ["prefix"],
       model_name: "name"
+    },
+    "{collections}/{creator}/{modelName}{modelId}" => {
+      collections: ["top", "middle"],
+      creator: "bottom",
+      model_name: "prefix - name"
     }
   }.each_pair do |tag, values|
     it "correctly matches components of #{tag}" do

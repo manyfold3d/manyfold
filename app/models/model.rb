@@ -38,7 +38,10 @@ class Model < ApplicationRecord
 
   belongs_to :library
   belongs_to :creator, optional: true
-  has_and_belongs_to_many :collections, after_add: :post_collected_activity # rubocop:disable Rails/HasAndBelongsToMany
+
+  has_many :collections_models, dependent: :destroy
+  has_many :collections, through: :collections_models, after_add: :post_collected_activity
+
   belongs_to :preview_file, class_name: "ModelFile", optional: true
 
   # old collection_id database field is deprecated but kept around for compatibility

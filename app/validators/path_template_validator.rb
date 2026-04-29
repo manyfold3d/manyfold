@@ -3,6 +3,7 @@ class PathTemplateValidator < ActiveModel::EachValidator
     "tags",
     "creator",
     "collection",
+    "collections",
     "modelName",
     "modelId"
   ]

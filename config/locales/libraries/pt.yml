@@ -63,6 +63,7 @@ pt:
       description:
       tokens:
         collection:
+        collections:
         creator:
         model_id:
         model_name:

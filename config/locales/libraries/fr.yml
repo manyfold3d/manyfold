@@ -63,6 +63,7 @@ fr:
       description: La structure des dossiers suit un modèle que vous définissez à l'aide de jetons. Vous pouvez également inclure d'autres textes dans le modèle (comme des séparateurs de dossiers) et ils seront inclus tels quels.
       tokens:
         collection: Le titre de la collection dans laquelle se trouve le modèle, s'il est défini.
+        collections:
         creator: Le nom du créateur, s'il est défini.
         model_id: Un identifiant numérique unique pour le modèle. Nous vous recommandons fortement de toujours l'inclure à la fin de votre modèle afin d'éviter les conflits de noms sur le disque.
         model_name: Une version sécurisée du nom du modèle pour le système de fichiers.

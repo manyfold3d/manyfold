@@ -63,6 +63,7 @@ cs:
       description: Struktura složky se řídí šablonou, kterou definujete pomocí tokenů. Do šablony můžete zahrnout i jiný text (například oddělovače složek) a bude zahrnut tak, jak je.
       tokens:
         collection: Název kolekce, ve které se model nachází, je-li nastavena.
+        collections:
         creator: Jméno autora, je-li nastaveno.
         model_id: Jedinečný číselný identifikátor modelu. Důrazně doporučujeme, aby byl vždy uveden na konci šablony, aby se předešlo konfliktům názvů na disku.
         model_name: Verze názvu modelu bezpečná pro souborový systém.

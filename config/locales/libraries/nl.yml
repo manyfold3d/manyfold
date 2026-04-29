@@ -63,6 +63,7 @@ nl:
       description: Mapstructuur volgt een sjabloon dat je definieert met tokens. Je kunt ook andere tekst in het sjabloon opnemen (zoals mapscheidingstekens) en deze wordt ongewijzigd opgenomen.
       tokens:
         collection: De titel van de collectie waarin het model zich bevindt, indien ingesteld.
+        collections:
         creator: De naam van de maker, indien ingesteld.
         model_id: Een unieke numerieke identificatie voor het model. We raden sterk aan om dit altijd aan het einde van je sjabloon op te nemen om naamconflicten op schijf te voorkomen.
         model_name: Een bestandssysteem-veilige versie van de modelnaam.
