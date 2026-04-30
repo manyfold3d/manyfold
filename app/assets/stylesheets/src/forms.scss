@@ -3,7 +3,7 @@ div.form-container {
 	position: relative
 }
 
-form.tabular-form {
+.tabular-form {
 	display: grid;
 	grid-template-columns: minmax(min-content, max-content) auto;
 	gap: 1em;
