@@ -20,14 +20,14 @@ es:
       success: "¡Colección eliminada!"
     form:
       cover:
-        current:
-        help:
-        none:
-        remove:
+        current: Actualmente se utiliza `%{filename}`.
+        help: Una imagen (idealmente cuadrada) en formato WEBP, PNG, GIF o JPG.
+        none: No establecido.
+        remove: Eliminar la imagen de portada
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_model:
-        help:
+        help: Se muestra como vista previa si no hay imagen de portada.
     general:
       edit: Editar colección
       new: Nueva colección
