@@ -20,9 +20,9 @@ de:
       success: Kollektion gelöscht!
     form:
       cover:
-        current:
+        current: Derzeit wird `%{filename}` verwendet.
         help:
-        none:
+        none: Derzeit nicht festgelegt.
         remove:
       notes:
         help_html: Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden.
