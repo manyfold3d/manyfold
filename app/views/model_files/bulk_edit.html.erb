@@ -3,50 +3,52 @@
       @model.name => model_path(@model)
     } %>
 
-<p class="lead"><%= t(".description") %></p>
+<div class="form-container">
+  <p class="lead"><%= t(".description") %></p>
 
-<%= form_with url: bulk_update_model_model_files_path(@model), method: :patch do |form| %>
+  <%= form_with url: bulk_update_model_model_files_path(@model), method: :patch do |form| %>
 
-  <table class="table table-striped" data-controller="bulk-edit" data-action="change->bulk-edit#handleCheckboxChange">
-    <tr>
-      <th><input type="checkbox" aria-label="<%= translate ".select_all" %>" value="0" name="bulk-select-all"></th>
-      <th><%= ModelFile.human_attribute_name(:name) %></th>
-      <th><%= ModelFile.human_attribute_name(:filename) %></th>
-      <th><%= ModelFile.human_attribute_name(:printed) %></th>
-      <th><%= ModelFile.human_attribute_name(:presupported) %></th>
-      <th><%= ModelFile.human_attribute_name(:y_up) %></th>
-      <th><%= ModelFile.human_attribute_name(:previewable) %></th>
-    </tr>
-    <% @files.each do |file| %>
+    <table class="table table-striped" data-controller="bulk-edit" data-action="change->bulk-edit#handleCheckboxChange">
       <tr>
-        <td><%= form.check_box "model_files[#{file.to_param}]", data: {bulk_item: file.to_param}, "aria-label": translate(".select", name: file.name) %></td>
-        <td><%= link_to file.name, [@model, file], title: file.filename %></td>
-        <td><code><%= file.filename %></code></td>
-        <td><%= Icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:printed) if current_user.printed?(file) %></td>
-        <td><%= Icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:presupported) if file.presupported %></td>
-        <td><%= Icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:y_up) if file.y_up %></td>
-        <td><%= Icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:previewable) if file.previewable %></td>
+        <th><input type="checkbox" aria-label="<%= translate ".select_all" %>" value="0" name="bulk-select-all"></th>
+        <th><%= ModelFile.human_attribute_name(:name) %></th>
+        <th><%= ModelFile.human_attribute_name(:filename) %></th>
+        <th><%= ModelFile.human_attribute_name(:printed) %></th>
+        <th><%= ModelFile.human_attribute_name(:presupported) %></th>
+        <th><%= ModelFile.human_attribute_name(:y_up) %></th>
+        <th><%= ModelFile.human_attribute_name(:previewable) %></th>
       </tr>
-    <% end %>
-  </table>
+      <% @files.each do |file| %>
+        <tr>
+          <td><%= form.check_box "model_files[#{file.to_param}]", data: {bulk_item: file.to_param}, "aria-label": translate(".select", name: file.name) %></td>
+          <td><%= link_to file.name, [@model, file], title: file.filename %></td>
+          <td><code><%= file.filename %></code></td>
+          <td><%= Icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:printed) if current_user.printed?(file) %></td>
+          <td><%= Icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:presupported) if file.presupported %></td>
+          <td><%= Icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:y_up) if file.y_up %></td>
+          <td><%= Icon icon: "check-circle-fill", label: ModelFile.human_attribute_name(:previewable) if file.previewable %></td>
+        </tr>
+      <% end %>
+    </table>
 
-  <p class="lead"><%= t ".form_subtitle" %></p>
+    <p class="lead"><%= t ".form_subtitle" %></p>
 
-  <div class="tabular-form">
-    <div>
-      <%= t(".rename") %>
-    </div>
-    <div class="border p-3 tabular-form">
-      <%= text_input_row form, :pattern, label: t(".pattern") %>
-      <%= text_input_row form, :replacement, label: t(".replacement") %>
-    </div>
-    <%= checkbox_input_row form, :printed, label: ModelFile.human_attribute_name(:printed) %>
-    <%= checkbox_input_row form, :presupported, label: ModelFile.human_attribute_name(:presupported) %>
-    <%= checkbox_input_row form, :y_up, label: ModelFile.human_attribute_name(:y_up) %>
-    <%= checkbox_input_row form, :previewable, label: ModelFile.human_attribute_name(:previewable) %>
-    <div>
-      <%= form.submit translate(".submit"), class: "btn btn-primary" %>
-      <%= form.submit translate(".split"), name: "split", class: "btn btn-warning" %>
+    <div class="tabular-form">
+      <div>
+        <%= t(".rename") %>
+      </div>
+      <div class="border p-3 tabular-form">
+        <%= text_input_row form, :pattern, label: t(".pattern") %>
+        <%= text_input_row form, :replacement, label: t(".replacement") %>
+      </div>
+      <%= checkbox_input_row form, :printed, label: ModelFile.human_attribute_name(:printed) %>
+      <%= checkbox_input_row form, :presupported, label: ModelFile.human_attribute_name(:presupported) %>
+      <%= checkbox_input_row form, :y_up, label: ModelFile.human_attribute_name(:y_up) %>
+      <%= checkbox_input_row form, :previewable, label: ModelFile.human_attribute_name(:previewable) %>
+      <div>
+        <%= form.submit translate(".submit"), class: "btn btn-primary" %>
+        <%= form.submit translate(".split"), name: "split", class: "btn btn-warning" %>
+      </div>
     </div>
   </div>
 
