@@ -395,7 +395,7 @@ GEM
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
     jmespath (1.6.2)
-    job-iteration (1.13.0)
+    job-iteration (1.13.1)
       activejob (>= 7.0)
     jsbundling-rails (1.3.1)
       railties (>= 6.0.0)
@@ -1216,7 +1216,7 @@ CHECKSUMS
   irb (1.17.0) sha256=168c4ddb93d8a361a045c41d92b2952c7a118fa73f23fe14e55609eb7a863aae
   jbuilder (2.14.1) sha256=4eb26376ff60ef100cb4fd6fd7533cd271f9998327e86adf20fd8c0e69fabb42
   jmespath (1.6.2) sha256=238d774a58723d6c090494c8879b5e9918c19485f7e840f2c1c7532cf84ebcb1
-  job-iteration (1.13.0) sha256=3300844e81309fbd06fd2310d6aa8e1f43bf30fe03a3fc5067580b62f456b7e1
+  job-iteration (1.13.1) sha256=af4d5ac624c35ed2f32ed78de92d4673f0a93212105b96d46877b8422e3ff5a3
   jsbundling-rails (1.3.1) sha256=0fa03f6d051c694cbf55a022d8be53399879f2c4cf38b2968f86379c62b1c2ca
   json (2.19.4) sha256=670a7d333fb3b18ca5b29cb255eb7bef099e40d88c02c80bd42a3f30fe5239ac
   json-canonicalization (1.0.0) sha256=d4848a8cca7534455c6721f2d9fc9e5e9adca49486864a898810024f67d59446
