@@ -281,6 +281,11 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       expect(model.collections.first.slug).to eq "wonderful-toys"
     end
 
+    it "leaves existing collections in place" do # rubocop:todo RSpec/MultipleExpectations
+      model = create(:model, :with_collection, path: "Wonderful Toys/model-name", library: library)
+      expect { described_class.perform_now(model.id) }.to change(model.reload.collections, :count).from(1).to(2)
+    end
+
     it "creates a new collection from a slug if there's no match" do # rubocop:todo RSpec/MultipleExpectations
       model = create(:model, path: "wonderful-toys/model-name", library: library)
       described_class.perform_now(model.id)
@@ -315,8 +320,8 @@ RSpec.describe Scan::Model::ParseMetadataJob do
         expect { described_class.perform_now(model.id) }.to change { model.reload.creator }
       end
 
-      it "doesn't overwrite existing collection" do
-        expect { described_class.perform_now(model.id) }.not_to change { model.collections.count }
+      it "combines collections" do
+        expect { described_class.perform_now(model.id) }.to change { model.collections.count }.from(1).to(2)
       end
 
       it "sets name" do
