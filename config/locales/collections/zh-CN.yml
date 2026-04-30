@@ -20,9 +20,9 @@ zh-CN:
       success: 合集已删除！
     form:
       cover:
-        current:
+        current: 目前使用 `%{filename}`。
         help:
-        none:
+        none: 目前尚未设置。
         remove:
       notes:
         help_html: 您可以使用 <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> 语法。
