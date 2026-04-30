@@ -22,7 +22,7 @@ fr:
       cover:
         current:
         help:
-        none:
+        none: Pas encore fixé.
         remove:
       notes:
         help_html: Vous pouvez utiliser du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
