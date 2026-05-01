@@ -24,9 +24,9 @@ __metadata:
   linkType: hard
 
 "@babel/compat-data@npm:^7.28.6":
-  version: 7.29.0
-  resolution: "@babel/compat-data@npm:7.29.0"
-  checksum: ad19db279dfd06cbe91b505d03be00d603c6d3fcc141cfc14f4ace5c558193e9b6aae4788cb01fd209c4c850e52d73c8f3c247680e3c0d84fa17ab8b3d50c808
+  version: 7.29.3
+  resolution: "@babel/compat-data@npm:7.29.3"
+  checksum: 977192bab334f66bc8150026340a33ed318c1a7ce18a9323f4c1b86f8ed1d8645bfe5600242bf682717c05c46a4ff06225242207c1d599f4296914b9b4e3efb5
   languageName: node
   linkType: hard
 
@@ -103,19 +103,19 @@ __metadata:
   linkType: hard
 
 "@babel/helper-create-class-features-plugin@npm:^7.28.6":
-  version: 7.28.6
-  resolution: "@babel/helper-create-class-features-plugin@npm:7.28.6"
+  version: 7.29.3
+  resolution: "@babel/helper-create-class-features-plugin@npm:7.29.3"
   dependencies:
     "@babel/helper-annotate-as-pure": ^7.27.3
     "@babel/helper-member-expression-to-functions": ^7.28.5
     "@babel/helper-optimise-call-expression": ^7.27.1
     "@babel/helper-replace-supers": ^7.28.6
     "@babel/helper-skip-transparent-expression-wrappers": ^7.27.1
-    "@babel/traverse": ^7.28.6
+    "@babel/traverse": ^7.29.0
     semver: ^6.3.1
   peerDependencies:
     "@babel/core": ^7.0.0
-  checksum: f886ab302a83f8e410384aa635806b22374897fd9e3387c737ab9d91d1214bf9f7e57ae92619bd25dea63c9c0a49b25b44eb807873332e0eb9549219adc73639
+  checksum: ed7e755d83a59679ea9554b733e2f4b41fd1dd68ef4d8d3e5009930d8ff323f7aabdb8577abea0d98e5cc62a7ce5d14aca501e4446ccfe397c6c2fa3d8164f4b
   languageName: node
   linkType: hard
 
@@ -230,13 +230,13 @@ __metadata:
   linkType: hard
 
 "@babel/parser@npm:^7.28.6, @babel/parser@npm:^7.29.0":
-  version: 7.29.2
-  resolution: "@babel/parser@npm:7.29.2"
+  version: 7.29.3
+  resolution: "@babel/parser@npm:7.29.3"
   dependencies:
     "@babel/types": ^7.29.0
   bin:
     parser: ./bin/babel-parser.js
-  checksum: 25249623ffceb61beda0ba67776cf3957ffd49bef3005ccb81da3049db52115c91ad97c97da661b714f92d062e052d07bd2ba6cba6b5460f168ff38dabaf4d6d
+  checksum: 046f46996bf4053b6e29f8a7f420f9e0a2878593c1c9a9914a36faca23fc544a307c78a0101ba3ae98936ade68bdde686a83e1ab2b74c2ebb80dc4a9df48476d
   languageName: node
   linkType: hard
 
