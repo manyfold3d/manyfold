@@ -35,12 +35,12 @@
       <% if @num_files > 0 %>
         <h2><a name="files"><%= t(".files") %></a></h2>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-          <%= render partial: "file", collection: @groups.delete(nil) %>
+          <%= render partial: "file", collection: Naturally.sort_by(@groups.delete(nil), :name) %>
         </div>
         <% @groups.each_pair do |group, files| %>
           <h3><a name="<%= group.parameterize %>"><%= group.strip.careful_titleize %>*</a></h3>
           <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3 mb-4">
-            <%= render partial: "file", collection: files %>
+            <%= render partial: "file", collection: Naturally.sort_by(files, :name) %>
           </div>
         <% end %>
       <% end %>

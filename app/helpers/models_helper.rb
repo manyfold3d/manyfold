@@ -17,7 +17,7 @@ module ModelsHelper
       end
     end
     # Sort and include empty set
-    {nil => files}.merge sections.sort_by { |k, v| k }.to_h
+    {nil => files}.merge Naturally.sort_by(sections) { |k, v| k }.to_h
   end
 
   def problems_including_files(model)

@@ -201,6 +201,10 @@ class ModelFile < ApplicationRecord
     end
   end
 
+  def name_and_filename
+    "#{name} (#{filename})"
+  end
+
   def convert_later(format, delay: 0.seconds)
     Analysis::FileConversionJob.set(wait: delay).perform_later(id, format.to_sym)
   end
