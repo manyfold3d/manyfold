@@ -1854,9 +1854,9 @@ __metadata:
   linkType: hard
 
 "bignumber.js@npm:*":
-  version: 11.0.0
-  resolution: "bignumber.js@npm:11.0.0"
-  checksum: 7589ad231817b7d2dbbbd07bb3847fd466423920b1128edaa44f0ee40f15708a07bf766b6eaeed9e0751d8089cb146a393c25c905ed83abbd5462fa11344b610
+  version: 11.1.0
+  resolution: "bignumber.js@npm:11.1.0"
+  checksum: c6a901bb204433c247953d227a6a03aecb1603603d0d52c633f66a7ee065a61901589b09f2c1c57d271d5aefe692be285e25f29ba4343685990d22ffe27f416f
   languageName: node
   linkType: hard
 
