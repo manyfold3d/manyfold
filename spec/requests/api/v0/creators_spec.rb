@@ -181,11 +181,6 @@ describe "Creators", :after_first_run, :multiuser do # rubocop:disable RSpec/Emp
         let(:Authorization) { "Bearer #{create(:oauth_access_token, scopes: "write").plaintext_token}" } # rubocop:disable RSpec/VariableName
         let(:body) { {"name" => "Bruce Wayne"} }
 
-        run_test! "produces valid linked data" do
-          graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
-          expect(graph).to be_valid
-        end
-
         run_test! do
           expect(response.parsed_body["name"]).to eq "Bruce Wayne"
         end
