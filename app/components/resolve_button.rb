@@ -43,9 +43,10 @@ class Components::ResolveButton < Components::Base
     }
   }
 
-  def initialize(problem:, user: nil)
+  def initialize(problem:, user: nil, inside_form: false)
     @problem = problem
     @user = user
+    @inside_form = inside_form
   end
 
   def before_template
@@ -60,6 +61,16 @@ class Components::ResolveButton < Components::Base
         whitespace
         span { @text }
       end
+    elsif @inside_form
+      GoButton(
+        label: @text,
+        href: resolve_problem_path(@problem, resolve: true),
+        variant: @options[:button_type],
+        icon: @options[:icon],
+        confirm: @options[:confirm] ? translate(@options[:confirm] % {type: @problem.problematic_type.underscore}) : nil,
+        nofollow: true,
+        data: {"turbo-method" => "post"}
+      )
     else
       DoButton(
         label: @text,

@@ -11,8 +11,7 @@
 <% end %>
 
 <%= form_with url: resolve_problems_path, method: :post, class: "mb-3" do |form| %>
-  <%= form.submit translate(".bulk_resolve"), name: "resolve", class: "btn btn-danger", data: {confirm: translate(".bulk_confirm")} %>
-  <%= form.submit translate(".bulk_ignore"), name: "ignore", class: "btn btn-secondary mb-3" %>
+  <%= render partial: "action_buttons", locals: {form: form} %>
 
   <table class="table table-striped" data-controller="bulk-edit" data-action="change->bulk-edit#handleCheckboxChange">
     <tr>
@@ -46,7 +45,7 @@
             <small><%= problem.note %></small>
           <% end %>
         </td>
-        <td><%= ResolveButton(problem: problem, user: current_user) %></td>
+        <td><%= ResolveButton(problem: problem, user: current_user, inside_form: true) %></td>
         <td>
           <% if problem.ignored %>
             <%= link_to Icon(icon: "eye-fill", label: t(".unignore")), problem_path(problem, problem: {ignored: false}), method: :patch, class: "btn btn-secondary" %>
@@ -58,8 +57,7 @@
     <% end %>
   </table>
 
-  <%= form.submit translate(".bulk_resolve"), name: "resolve", class: "btn btn-danger", data: {confirm: translate(".bulk_confirm")} %>
-  <%= form.submit translate(".bulk_ignore"), name: "ignore", class: "btn btn-secondary" %>
+  <%= render partial: "action_buttons", locals: {form: form} %>
 <% end %>
 
 <%= paginate @problems %>
