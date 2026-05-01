@@ -7,7 +7,7 @@
     <%= checkbox_input_row form, :previewable %>
     <%= unless @file.presupported
           collection_select_input_row form,
-            :presupported_version, policy_scope(@model.model_files).presupported.select { |x| x.extension.downcase == @file.extension.downcase }, :id, :name,
+            :presupported_version, Naturally.sort_by(policy_scope(@model.model_files).presupported.select { |x| x.extension.downcase == @file.extension.downcase }, :name_and_filename), :id, :name_and_filename,
             include_blank: t("general.none")
         end %>
   <% end %>
