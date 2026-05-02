@@ -2,7 +2,7 @@ class UpdateMetadataFromLinkJob < ApplicationJob
   queue_as :low
   unique :until_executed
 
-  def perform(link:, organize: false)
+  def perform(link:, organize: false, apply_permissions_after_sync: nil)
     return unless (data = link.deserializer&.deserialize)
     linkable = link.linkable
     # Preserve existing tags
@@ -17,6 +17,10 @@ class UpdateMetadataFromLinkJob < ApplicationJob
     # Import models for collections
     if linkable.is_a?(Collection) && data[:models]
       data[:models].each { |it| CreateObjectFromUrlJob.perform_later(url: it, collection_id: linkable.id) }
+    end
+    # Apply default permissions
+    if apply_permissions_after_sync
+      linkable.update(permission_preset: apply_permissions_after_sync)
     end
     # If successful, set sync time
     link.update!(synced_at: Time.now.utc)
