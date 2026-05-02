@@ -24,6 +24,11 @@ RSpec.describe UpdateMetadataFromLinkJob do
     it "creates a new creator if nothing matches" do
       expect { described_class.perform_now(link: link) }.to change(Creator, :count).by(1)
     end
+
+    it "applies permissions after sync" do
+      described_class.perform_now(link: link, apply_permissions_after_sync: :public)
+      expect(link.linkable).to be_public
+    end
   end
 
   context "when link fetch fails" do

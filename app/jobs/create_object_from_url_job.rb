@@ -10,7 +10,8 @@ class CreateObjectFromUrlJob < ApplicationJob
     common_options = {
       name: "Importing from #{url.split("://").last} ...",
       links_attributes: [{url: url}],
-      owner: owner
+      owner: owner,
+      permission_preset: :private
     }.compact
     # Create new object
     object = case deserializer&.capabilities&.dig(:class)&.name
@@ -25,6 +26,6 @@ class CreateObjectFromUrlJob < ApplicationJob
     when "Collection"
       Collection.create(common_options)
     end
-    object.links.first.update_metadata_from_link_later(organize: true) if object
+    object.links.first.update_metadata_from_link_later(organize: true, apply_permissions_after_sync: SiteSettings.default_viewer_role) if object
   end
 end
