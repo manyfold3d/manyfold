@@ -4377,7 +4377,7 @@ __metadata:
     i18n-js: ^4.5.3
     masonry-layout: ^4.2.2
     nodemon: ^3.1.14
-    postcss: ^8.5.13
+    postcss: ^8.5.14
     postcss-cli: ^11.0.1
     sass-embedded: ^1.99.0
     three: ^0.184.0
@@ -5139,14 +5139,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.5.13":
-  version: 8.5.13
-  resolution: "postcss@npm:8.5.13"
+"postcss@npm:^8.5.14":
+  version: 8.5.14
+  resolution: "postcss@npm:8.5.14"
   dependencies:
     nanoid: ^3.3.11
     picocolors: ^1.1.1
     source-map-js: ^1.2.1
-  checksum: f02410c109514c39cfae480359d6221627ff22a0ebbb257bacddee4b65028bfcb5a067b874e0c8c661403ef021bbbfaea7082c81fc4c36dd593991506976fda1
+  checksum: ec17d1519cd997b43aceb82bfa959f380085591269e286c53d5ba76eb1989525e7cde106a44f1565516fcbb50f206eb1858cc2cd5e5aaea3a8ee793886c8232c
   languageName: node
   linkType: hard
 
