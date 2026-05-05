@@ -27,5 +27,19 @@ module Cli
       end
       puts "\n#{scope.count} models queued for download creation" # rubocop:disable Pundit/UsePolicyScope
     end
+
+    desc "set_permissions", "set permission preset for all models"
+    option :search, required: false, type: :string
+    option :preset, required: true, type: :string, enum: %w[private member public]
+    def set_permissions
+      scope = Model
+      scope = Search::ModelSearchService.new(scope).search(options[:search]) if options[:search]
+      scope.find_each do |it|
+        it.update permission_preset: options[:preset].to_sym
+        print "."
+        sleep 0.01 # Slows down connections a bit so as not to saturate Redis
+      end
+      puts "\n#{scope.count} model permissions set to #{options[:preset]}" # rubocop:disable Pundit/UsePolicyScope
+    end
   end
 end
