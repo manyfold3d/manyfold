@@ -18,13 +18,19 @@ module Cli
 
     desc "password", "resets password for user"
     option :email, required: true, type: :string, aliases: :mail
+    option :interactive, required: false, type: :boolean, default: false
     def password
       u = User.find_by(email: options[:email])
       raise "User not found" if u.nil?
-      u.password = ask("Enter password: ", echo: false)
-      puts "\n"
-      u.password_confirmation = ask("Confirm password: ", echo: false)
-      puts "\nPassword changed!" if u.save!
+      if options[:interactive] || !SiteSettings.email_configured?
+        u.password = ask("Enter password: ", echo: false)
+        puts "\n"
+        u.password_confirmation = ask("Confirm password: ", echo: false)
+        puts "\nPassword changed!" if u.save!
+      else
+        u.send_reset_password_instructions
+        puts "\nPassword reset email sent!"
+      end
     rescue ActiveRecord::RecordInvalid => e
       puts "\n#{e}"
     rescue RuntimeError => e
