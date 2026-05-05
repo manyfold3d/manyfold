@@ -6,7 +6,7 @@ de:
         ai_indexable: Verwendung für KI-Training zulassen
         caption: Beschreibung
         collection_id: Übergeordnete Kollektion
-        cover:
+        cover: Titelbild
         creator_id:
           few: Autoren
           many: Autoren
@@ -17,7 +17,7 @@ de:
         indexable: Suchindizierung zulassen
         name: Name
         notes: Beschreibung
-        preview_model_id:
+        preview_model_id: Vorschau Modell
       creator:
         ai_indexable: Verwendung für KI-Training zulassen
         avatar: Avatar-Bild
@@ -854,9 +854,9 @@ de:
       collection_published:
         comment: Eine neue Sammlung von 3D-Modellen, ["%{name}"](%{url}), wurde gerade veröffentlicht!
       model_published:
-        comment: 'Neues 3D-Modell: "%{name}" von %{creator_handle}'
+        comment: 'Neues 3D-Modell:  ["%{name}"](%{url}) von %{creator_name} %{creator_handle}'
       updated_model:
-        comment: '3D-Modell aktualisiert: "%{name}" durch %{creator_handle}'
+        comment: 3D-Modell aktualisiert:["%{name}"](%{url}) durch %{creator_name} (%{creator_handle})
     analysis:
       analyse_model_file:
         detect_duplicates: Doppelte Datei erkannt

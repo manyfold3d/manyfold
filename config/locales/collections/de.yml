@@ -21,13 +21,13 @@ de:
     form:
       cover:
         current: Derzeit wird `%{filename}` verwendet.
-        help:
+        help: Ein Bild (idealerweise quadratisch) im Format WEBP, PNG, GIF oder JPG.
         none: Derzeit nicht festgelegt.
-        remove:
+        remove: Titelbild entfernen
       notes:
         help_html: Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden.
       preview_model:
-        help:
+        help: Wird als Vorschau angezeigt, wenn kein Titelbild eingestellt ist.
     general:
       edit: Kollektion bearbeiten
       new: Neue Kollektion
