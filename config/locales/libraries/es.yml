@@ -63,7 +63,7 @@ es:
       description: La estructura de carpetas sigue una plantilla que usted define utilizando tokens. También puede incluir otro texto en la plantilla (como separadores de carpeta) y se incluirá tal cual.
       tokens:
         collection: El título de la colección en la que se encuentra el modelo, si está establecido.
-        collections:
+        collections: Se incluyen carpetas de colección, una por cada colección donde aparece el modelo. Al leer esta información, el sistema tomará todas las carpetas que pueda encontrar.
         creator: El nombre del creador, si se ha establecido.
         model_id: Un identificador numérico único para el modelo. Recomendamos encarecidamente incluirlo siempre al final del modelo para evitar conflictos de nombres en el disco.
         model_name: Una versión segura para el sistema de ficheros del nombre del modelo.
