@@ -18,7 +18,7 @@ require "rack/contrib"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
+Bundler.require(:sqlite3, :postgres, :mysql, *Rails.groups)
 
 module Manyfold
   class Application < Rails::Application
