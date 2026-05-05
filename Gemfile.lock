@@ -328,7 +328,7 @@ GEM
     graphlient (0.8.0)
       faraday (~> 2.0)
       graphql-client
-    graphql (2.5.16)
+    graphql (2.5.26)
       base64
       fiber-storage
       logger
@@ -1197,7 +1197,7 @@ CHECKSUMS
   google-protobuf (4.33.4-x86_64-darwin) sha256=72906abcb572b324eba760b0abdbb827ab781b8e26f718fa3f7f49485295c8d3
   google-protobuf (4.33.4-x86_64-linux-gnu) sha256=a8cff953d742bc804ece78bd96e82d88cf65a7d8c1910e045359e2f53074e55d
   graphlient (0.8.0) sha256=98c408da1d083454e9f5e274f3b0b6261e2a0c2b5f2ed7b3ef9441d46f8e7cb1
-  graphql (2.5.16) sha256=1c156204cf6796a6a99c48d07e2f4e6b4a861fda2cec5753e1eb1f28c6220797
+  graphql (2.5.26) sha256=be3a148cc9ae52056d38f45cf9864a621a12fe138c027e324b0841dc19979576
   graphql-client (0.26.0) sha256=190b122707e0aa4937089229799ed4a6980092ef4cb9d8dc6042d07a85459cf1
   guard (2.20.1) sha256=ab9cd7873854e6b76080c0589f781ff3e390e441bdda20165804df54f977015a
   guard-compat (1.2.1) sha256=3ad21ab0070107f92edfd82610b5cdc2fb8e368851e72362ada9703443d646fe
