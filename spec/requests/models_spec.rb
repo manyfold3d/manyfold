@@ -113,8 +113,8 @@ RSpec.describe "Models" do
           expect(response).to have_http_status(:success)
         end
 
-        it "sets returnable session param", :as_moderator do
-          expect(session[:return_after_new]).to eq "/models/#{library.models.first.to_param}/edit"
+        it "sets returnable session flash param", :as_moderator do
+          expect(flash[:return_after_new]).to eq "/models/#{library.models.first.to_param}/edit"
         end
 
         it "is denied to non-moderators", :as_contributor do
@@ -127,11 +127,6 @@ RSpec.describe "Models" do
           put "/models/#{library.models.first.to_param}", params: {model: {tag_list: ["a", "b", "c"]}}
           expect(response).to have_http_status(:redirect)
           expect(library.models.first.tag_list).to include("a", "b", "c")
-        end
-
-        it "clears returnable session param", :as_moderator do
-          put "/models/#{library.models.first.to_param}", params: {model: {tag_list: ["a", "b", "c"]}}
-          expect(session[:return_after_new]).to be_nil
         end
 
         it "removes tags from a model", :as_moderator do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
@@ -210,8 +205,8 @@ RSpec.describe "Models" do
           expect(response).to have_http_status(:success)
         end
 
-        it "sets returnable session param", :as_moderator do
-          expect(session[:return_after_new]).to eq "/models/edit"
+        it "sets returnable session flash param", :as_moderator do
+          expect(flash[:return_after_new]).to eq "/models/edit"
         end
 
         it "is denied to non-moderators", :as_contributor do
@@ -280,11 +275,6 @@ RSpec.describe "Models" do
           expect(response).to have_http_status(:redirect)
           expect(library.models.tagged_with("c").count).to eq 2
           expect(library.models.tagged_with("a").count).to eq 0
-        end
-
-        it "clears returnable session param", :as_moderator do
-          patch update_models_path, params: {models: model_params, remove_tags: ["a", "b"]}
-          expect(session[:return_after_new]).to be_nil
         end
 
         it "is denied to non-moderators", :as_contributor do
@@ -526,8 +516,8 @@ RSpec.describe "Models" do
           expect(response).to have_http_status(:success)
         end
 
-        it "sets returnable session param", :as_contributor do
-          expect(session[:return_after_new]).to eq "/models/new"
+        it "sets returnable session flash param", :as_contributor do
+          expect(flash[:return_after_new]).to eq "/models/new"
         end
 
         it "denies member permission", :as_member do
@@ -589,11 +579,6 @@ RSpec.describe "Models" do
           it "redirect back to index after upload" do
             post_models
             expect(response).to redirect_to("/models")
-          end
-
-          it "clears returnable session param" do
-            post_models
-            expect(session[:return_after_new]).to be_nil
           end
 
           it "rate limits model uploads" do

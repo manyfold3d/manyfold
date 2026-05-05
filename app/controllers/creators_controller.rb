@@ -55,6 +55,7 @@ class CreatorsController < ApplicationController
     authorize Creator
     @creator = Creator.new
     @title = t("creators.general.new")
+    flash.keep(:return_after_new)
   end
 
   def edit
@@ -66,9 +67,8 @@ class CreatorsController < ApplicationController
     respond_to do |format|
       format.html do
         if @creator.valid?
-          if session[:return_after_new]
-            redirect_to session[:return_after_new] + "?new_creator=#{@creator.to_param}", notice: t(".success")
-            session[:return_after_new] = nil
+          if flash[:return_after_new]
+            redirect_to flash[:return_after_new] + "?new_creator=#{@creator.to_param}", notice: t(".success")
           else
             redirect_to creator_path(@creator), notice: t(".success")
           end

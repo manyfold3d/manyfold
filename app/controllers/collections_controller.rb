@@ -59,6 +59,7 @@ class CollectionsController < ApplicationController
     authorize Collection
     @collection = Collection.new
     @title = t("collections.general.new")
+    flash.keep(:return_after_new)
   end
 
   def edit
@@ -70,9 +71,8 @@ class CollectionsController < ApplicationController
     respond_to do |format|
       format.html do
         if @collection.valid?
-          if session[:return_after_new]
-            redirect_to session[:return_after_new] + "?new_collection=#{@collection.to_param}", notice: t(".success")
-            session[:return_after_new] = nil
+          if flash[:return_after_new]
+            redirect_to flash[:return_after_new] + "?new_collection=#{@collection.to_param}", notice: t(".success")
           else
             redirect_to collections_path, notice: t(".success")
           end

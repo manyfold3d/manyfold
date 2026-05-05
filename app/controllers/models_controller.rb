@@ -10,7 +10,6 @@ class ModelsController < ApplicationController
   before_action :redirect_search, only: [:index], if: -> { params.key?(:q) }
   before_action :get_creators_and_collections, only: [:new, :edit, :bulk_edit]
   before_action :set_returnable, only: [:bulk_edit, :edit, :new]
-  before_action :clear_returnable, only: [:bulk_update, :update, :create]
   before_action :get_filters, only: [:bulk_edit, :bulk_update, :index, :show] # rubocop:todo Rails/LexicallyScopedActionFilter
   before_action :get_model, except: [:bulk_edit, :bulk_update, :index, :new, :create]
   before_action -> { set_indexable @model if @model }
@@ -276,17 +275,13 @@ class ModelsController < ApplicationController
   end
 
   def set_returnable
-    session[:return_after_new] = request.fullpath.split("?")[0]
+    flash[:return_after_new] = request.fullpath.split("?")[0]
     @new_collection = Collection.find_param(params[:new_collection]) if params[:new_collection]
     @new_creator = Creator.find_param(params[:new_creator]) if params[:new_creator]
     if @model
       @model.collections << @new_collection if @new_collection
       @model.creator = @new_creator if @new_creator
     end
-  end
-
-  def clear_returnable
-    session[:return_after_new] = nil
   end
 
   def cached_file_data(file)
