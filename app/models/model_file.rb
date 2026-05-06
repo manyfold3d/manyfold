@@ -210,7 +210,7 @@ class ModelFile < ApplicationRecord
   end
 
   def loadable?
-    SupportedMimeTypes.can_load? mime_type.symbol
+    FileHandlers::Assimp.can_load? mime_type
   end
 
   def delete_from_disk_and_destroy

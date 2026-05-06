@@ -52,9 +52,6 @@ module SupportedMimeTypes
     end
     memoize :model_extensions
 
-    delegate :can_load?, to: :"FileHandlers::Assimp"
-    memoize :can_load?
-
     def can_export?(type)
       FileHandlers::Assimp.can_save? type
     end
