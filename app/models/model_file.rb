@@ -209,8 +209,9 @@ class ModelFile < ApplicationRecord
     Analysis::FileConversionJob.set(wait: delay).perform_later(id, format.to_sym)
   end
 
-  def loadable?
-    FileHandlers::Assimp.can_load? mime_type
+  def convertable?(to: nil)
+    return false unless FileHandlers::Assimp.can_load? mime_type
+    to.nil? || FileHandlers::Assimp.can_save?(to)
   end
 
   def delete_from_disk_and_destroy

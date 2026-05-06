@@ -52,11 +52,6 @@ module SupportedMimeTypes
     end
     memoize :model_extensions
 
-    def can_export?(type)
-      FileHandlers::Assimp.can_save? type
-    end
-    memoize :can_export?
-
     def indexable_types
       image_types + model_types + video_types + document_types + archive_types
     end

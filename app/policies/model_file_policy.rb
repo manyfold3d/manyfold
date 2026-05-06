@@ -9,7 +9,7 @@ class ModelFilePolicy < ApplicationPolicy
   end
 
   def convert?
-    can_update_model? && @record.loadable? && !@record.problems.exists?(category: :non_manifold)
+    can_update_model? && @record.convertable? && !@record.problems.exists?(category: :non_manifold)
   end
 
   def update?
