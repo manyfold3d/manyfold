@@ -1,5 +1,9 @@
 class FileHandlers::Assimp < FileHandlers::Base
   class << self
+    def scopes
+      [:server]
+    end
+
     def input_types
       Mime::EXTENSION_LOOKUP.slice(
         *::Assimp.extension_list.to_s.delete("*.").split(";")
