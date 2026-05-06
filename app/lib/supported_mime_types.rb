@@ -52,27 +52,11 @@ module SupportedMimeTypes
     end
     memoize :model_extensions
 
-    def loadable
-      Mime::EXTENSION_LOOKUP.slice(
-        *Assimp.extension_list.to_s.delete("*.").split(";")
-      ).values.map(&:to_sym)
-    end
-    memoize :loadable
-
-    def can_load?(type)
-      loadable.include? type
-    end
+    delegate :can_load?, to: :"FileHandlers::Assimp"
     memoize :can_load?
 
-    def exportable
-      Mime::EXTENSION_LOOKUP.slice(
-        *(0...Assimp.aiGetExportFormatCount).map { |it| Assimp.aiGetExportFormatDescription it }.map(&:file_extension)
-      ).values.map(&:to_sym)
-    end
-    memoize :exportable
-
     def can_export?(type)
-      exportable.include? type
+      FileHandlers::Assimp.can_save? type
     end
     memoize :can_export?
 
