@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Components::Renderer, type: :component do
+RSpec.describe Components::Renderers::Three, type: :component do
   context "when checking renderer support"
   {
     stl: true,

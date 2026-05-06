@@ -8,6 +8,13 @@ module ComponentsHelper
     end
   end
 
+  # and the same for Renderers
+  Components::Renderers.constants.each do |constant|
+    define_method "Renderers#{constant}" do |**args, &block|
+      render Components::Renderers.const_get(constant).new(**args, &block)
+    end
+  end
+
   def render_component_collection(component, param, collection, kwargs = {})
     safe_join(collection.map { |it| render component.new(**{param => it}.merge(kwargs)) }, " ")
   end

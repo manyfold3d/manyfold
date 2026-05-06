@@ -45,7 +45,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
 
   def preview_priority(file)
     return 0 if file.is_image?
-    return 1 if Components::Renderer.supports?(file)
+    return 1 if Components::Renderers::Three.supports?(file)
     100
   end
 

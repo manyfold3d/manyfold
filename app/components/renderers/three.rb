@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Components::Renderer < Components::Base
+class Components::Renderers::Three < Components::Base
   include Phlex::Rails::Helpers::JavascriptPath
   include Phlex::Rails::Helpers::NumberToHumanSize
 

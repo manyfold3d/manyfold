@@ -26,7 +26,7 @@ module OEmbed
     def model_file_properties(model_file)
       props = if model_file&.is_image?
         photo_properties(model_file)
-      elsif Components::Renderer.supports?(model_file)
+      elsif Components::Renderers::Three.supports?(model_file)
         renderable_properties(model_file)
       elsif model_file&.is_video?
         video_properties(model_file)
