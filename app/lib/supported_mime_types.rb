@@ -57,11 +57,6 @@ module SupportedMimeTypes
     end
     memoize :can_export?
 
-    def can_render?(type)
-      FileHandlers::F3d.can_load? type
-    end
-    memoize :can_render?
-
     def indexable_types
       image_types + model_types + video_types + document_types + archive_types
     end
