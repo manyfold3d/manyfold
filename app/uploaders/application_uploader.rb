@@ -126,7 +126,7 @@ class ApplicationUploader < Shrine
           carousel: magick.resize_to_limit!(1024, 768)
         }
       end
-    elsif SiteSettings.generate_model_renders && SupportedMimeTypes.can_render?(context[:record].mime_type)
+    elsif SiteSettings.generate_model_renders && FileHandlers::F3d.can_load?(context[:record].mime_type)
       Shrine.with_file(original) do |it|
         up = context[:record]&.up_direction
         options = F3D_OPTS.merge(

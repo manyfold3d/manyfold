@@ -3,9 +3,9 @@
     <% if file.is_image? %>
       <%= content_tag :div, nil, class: "card-img-top card-img-top-background", style: "background-image: url(#{model_model_file_path(@model, file, format: file.extension)})" %>
       <%= image_tag model_model_file_path(@model, file, format: file.extension), class: "card-img-top image-preview", alt: file.name %>
-    <% elsif file.is_renderable? %>
+    <% elsif Components::Renderers::Three.supports?(file) %>
       <div class="card-img-top">
-        <%= Renderer(file: file) %>
+        <%= RenderersThree(file: file) %>
       </div>
     <% elsif file.has_render? %>
       <%= content_tag :div, nil, class: "card-img-top card-img-top-background", style: "background-image: url(#{model_model_file_path(@model, file, format: file.extension)})" %>
@@ -65,7 +65,7 @@
                 <%= DropdownDivider() %>
               <% end %>
               <%= DropdownItem icon: "pencil-fill", label: t(".edit"), path: edit_model_model_file_path(@model, file) if policy(file).edit? %>
-              <%= DropdownItem icon: "image", label: t(".set_as_preview"), path: model_path(@model, "model[preview_file_id]": file.id), method: :patch if policy(@model).edit? && file.is_renderable? || file.is_image? %>
+              <%= DropdownItem icon: "image", label: t(".set_as_preview"), path: model_path(@model, "model[preview_file_id]": file.id), method: :patch if policy(@model).edit? && Components::Renderers::Three.supports?(file) || file.is_image? %>
               <%= DropdownItem icon: "trash", label: t(".delete"), path: model_model_file_path(@model, file), method: :delete, confirm: translate("model_files.destroy.confirm") if policy(file).destroy? %>
             <% end %>
           </div>

@@ -82,10 +82,6 @@ class ModelFile < ApplicationRecord
     SupportedMimeTypes.model_extensions.include? extension
   end
 
-  def is_renderable?
-    ["stl", "obj", "3mf", "ply", "gltf", "glb", "drc", "fbx", "3ds", "gcode", "mpd", "ldr", "3dm"].include? extension
-  end
-
   def has_render?
     is_3d_model? && attachment_attacher.derivatives.key?(:render)
   end
@@ -209,8 +205,9 @@ class ModelFile < ApplicationRecord
     Analysis::FileConversionJob.set(wait: delay).perform_later(id, format.to_sym)
   end
 
-  def loadable?
-    SupportedMimeTypes.can_load? mime_type.symbol
+  def convertable?(to: nil)
+    return false unless FileHandlers::Assimp.can_load? mime_type
+    to.nil? || FileHandlers::Assimp.can_save?(to)
   end
 
   def delete_from_disk_and_destroy

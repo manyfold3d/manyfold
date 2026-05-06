@@ -46,9 +46,9 @@ class Components::PreviewFrame < Components::Base
       image cover_collection_path(@object), @object.name
     elsif @file.is_image?
       image model_model_file_path(@file.model, @file, format: @file.extension, derivative: "preview"), @file.name
-    elsif @file.is_renderable?
+    elsif Renderers::Three.supports?(@file)
       div class: "card-img-top #{"sensitive" if needs_hiding?}" do
-        Renderer file: @file
+        Renderers::Three file: @file
       end
     elsif @file.has_render?
       image model_model_file_path(@file.model, @file, format: @file.extension, derivative: "render"), @file.name

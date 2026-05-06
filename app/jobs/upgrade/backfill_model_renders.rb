@@ -2,7 +2,7 @@ class Upgrade::BackfillModelRenders < Upgrade::BackfillDerivativesBase
   queue_as :performance
 
   def mime_types
-    SupportedMimeTypes.renderable_types
+    FileHandlers::F3d.input_types
   end
 
   def derivative

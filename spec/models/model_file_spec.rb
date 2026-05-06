@@ -227,18 +227,6 @@ RSpec.describe ModelFile do
     end
   end
 
-  {
-    stl: true,
-    png: false,
-    pdf: false,
-    lys: false
-  }.each_pair do |extension, result|
-    it "shows that #{extension} files are#{"n't" if result == false} renderable" do
-      file = create(:model_file, filename: "test.#{extension}")
-      expect(file.is_renderable?).to be result
-    end
-  end
-
   [true, false].each do |state|
     before do
       allow(SiteSettings).to receive_messages(default_indexable: state, default_ai_indexable: state)

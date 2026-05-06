@@ -16,7 +16,7 @@ class Analysis::FileConversionJob < ApplicationJob
     file = ModelFile.find(file_id)
 
     # Can we convert this format?
-    raise UnsupportedFormatError if !SupportedMimeTypes.can_export?(output_format) || !file.loadable?
+    raise UnsupportedFormatError unless file.convertable?(to: output_format)
     extension = Mime::EXTENSION_LOOKUP.select { |k, v| v.symbol == output_format }.keys.last
 
     status[:step] = "jobs.analysis.file_conversion.loading_mesh" # i18n-tasks-use t('jobs.analysis.file_conversion.loading_mesh')
