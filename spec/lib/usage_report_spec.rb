@@ -31,8 +31,8 @@ RSpec.describe UsageReport do
     end
 
     it "includes image type" do
-      ClimateControl.modify DOCKER_TAG: "ghcr.io/manyfold3d/manyfold:latest" do
-        expect(JSON.parse(described_class.generate)["version"]["image"]).to eq "ghcr.io/manyfold3d/manyfold"
+      ClimateControl.modify DOCKER_TAG: "manyfold3d/manyfold:latest" do
+        expect(JSON.parse(described_class.generate)["version"]["image"]).to eq "manyfold3d/manyfold"
       end
     end
 

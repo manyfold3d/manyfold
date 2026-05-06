@@ -92,7 +92,7 @@ jobs:
         run: curl http://localhost:3214/health --fail-with-body
     services:
       manyfold:
-        image: ghcr.io/${{ github.repository_owner }}/manyfold-solo:sha-${{ github.sha }}
+        image: manyfold3d/manyfold-solo:sha-${{ github.sha }}
         env:
           SECRET_KEY_BASE: abc123
         options: >-
