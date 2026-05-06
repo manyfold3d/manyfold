@@ -39,7 +39,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
 
   def identify_preview_file(model)
     {
-      preview_file: model.model_files.min_by { |it| preview_priority(it) }
+      preview_file: Naturally.sort_by(model.valid_preview_files, :filename).min_by { |it| preview_priority(it) }
     }
   end
 
