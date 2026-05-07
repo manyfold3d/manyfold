@@ -48,7 +48,7 @@ class ModelFilesController < ApplicationController
     authorize @file
     request.format = params[:format].downcase
     respond_to @file.mime_type.to_sym
-    send_file_content @file.attachment
+    send_file_content @file.attachment, disposition: (params[:download] == "true") ? :attachment : :inline
   end
 
   def create
