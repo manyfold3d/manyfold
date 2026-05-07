@@ -36,6 +36,11 @@ RSpec.describe SupportedMimeTypes do
     expect(described_class.document_extensions).to include("html")
   end
 
+  it "includes Javascript files in document list" do # rubocop:todo RSpec/MultipleExpectations
+    expect(described_class.document_types.map(&:to_s)).to include("text/javascript")
+    expect(described_class.document_extensions).to include("js")
+  end
+
   it "includes Word docs in document list" do # rubocop:todo RSpec/MultipleExpectations
     expect(described_class.document_types.map(&:to_s)).to include("application/msword")
     expect(described_class.document_extensions).to include("doc")
