@@ -84,6 +84,7 @@ module SupportedMimeTypes
         "text/markdown",
         "text/plain",
         "text/html",
+        "text/javascript",
         "application/msword",
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         "application/octet-stream",
