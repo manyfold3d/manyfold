@@ -4,7 +4,7 @@ class ModelFilesController < ApplicationController
   rate_limit to: 10, within: 3.minutes, only: :create
 
   before_action :get_model
-  before_action :get_file, except: [:create, :bulk_edit, :bulk_update]
+  before_action :get_file, except: [:create, :bulk_edit, :bulk_update, :raw]
   before_action -> { set_indexable @file }, except: [:create, :bulk_edit, :bulk_update]
 
   skip_after_action :verify_authorized, only: [:bulk_edit, :bulk_update]
@@ -36,6 +36,19 @@ class ModelFilesController < ApplicationController
     # i18n-tasks-use t("activerecord.attributes.model_file.digest")
     # i18n-tasks-use t("activerecord.attributes.model_file.size")
     # i18n-tasks-use t("activerecord.attributes.model_file.dimensions")
+  end
+
+  def raw
+    @file = @model.model_files.find_by!(
+      filename: [
+        params[:filename],
+        [params[:filename], params[:format]].join(".")
+      ]
+    )
+    authorize @file
+    request.format = params[:format].downcase
+    respond_to @file.mime_type.to_sym
+    send_file_content @file.attachment
   end
 
   def create

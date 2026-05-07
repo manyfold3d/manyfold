@@ -27,7 +27,7 @@ class Components::Renderers::Three < Components::Base
         tabindex: "0",
         data: {
           controller: "renderer",
-          preview_url: model_model_file_by_filename_path(@file.model, @file.filename),
+          preview_url: model_model_file_raw_path(@file.model, @file.filename),
           worker_url: javascript_path("offscreen_renderer.js"),
           format: @file.extension,
           y_up: @file.y_up.to_s,
