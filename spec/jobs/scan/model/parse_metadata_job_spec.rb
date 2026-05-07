@@ -466,6 +466,21 @@ RSpec.describe Scan::Model::ParseMetadataJob do
       end
     end
 
+    context "with tags in datapackage" do
+      before do
+        allow(Model).to receive(:find).with(model.id).and_return(model)
+        allow(model).to receive_messages(
+          model_files: instance_double(ActiveRecord::Relation, find_by: nil),
+          valid_preview_files: [],
+          datapackage_content: {"keywords" => ["test", "datapackage"]}
+        )
+      end
+
+      it "merges tags from datapackage" do
+        expect { described_class.perform_now(model.id) }.to change { model.reload.tag_list }.from(["!new"]).to(["!new", "test", "datapackage"])
+      end
+    end
+
     context "with already-set notes" do
       before do
         model.update!(notes: "already set")
