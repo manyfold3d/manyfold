@@ -70,11 +70,15 @@ class ProcessUploadedFileJob < ApplicationJob
     # Handle different file types
     case File.extname(file.original_filename).delete(".").downcase
     when *SupportedMimeTypes.indexable_extensions
-      new_file = model.model_files.create(filename: file.original_filename, attachment: file)
+      if (existing_file = model.model_files.where(filename: file.original_filename).first)
+        existing_file.update(attachment: file)
+        existing_file
+      else
+        model.model_files.create(filename: file.original_filename, attachment: file)
+      end
     else
       Rails.logger.warn("Ignoring #{file.inspect}")
     end
-    new_file
   end
 
   private
