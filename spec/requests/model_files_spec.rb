@@ -277,12 +277,36 @@ RSpec.describe "Model Files" do
       end
     end
 
-    describe "GET /models/:model_id/model_files/:filename", :as_member do
-      describe "GET a model file from its filename" do
-        before do
-          create(:model_file, model: model, filename: "subfolder/test.stl")
-          get model_model_file_by_filename_path(model_id: model.to_param, id: "subfolder/test", format: :stl)
+    describe "GET /models/:model_id/raw/:filename", :as_member do
+      before do
+        get model_model_file_raw_path(model_id: model.to_param, filename: file.filename)
+      end
+
+      describe "GET a raw HTML file" do
+        let(:file) {
+          create(
+            :model_file,
+            model: model,
+            filename: "subfolder/test.html",
+            attachment: Rack::Test::UploadedFile.new(StringIO.new("<html></html>"), original_filename: "subfolder/test.html")
+          )
+        }
+
+        it "returns http success" do
+          expect(response).to have_http_status(:success)
         end
+
+        it "has correct MIME type" do
+          expect(response.media_type).to eq("text/html")
+        end
+
+        it "has correct content" do
+          expect(response.body).to eq("<html></html>")
+        end
+      end
+
+      describe "GET a raw model file" do
+        let(:file) { create(:model_file, model: model, filename: "subfolder/test.stl") }
 
         it "returns http success" do
           expect(response).to have_http_status(:success)
@@ -293,11 +317,8 @@ RSpec.describe "Model Files" do
         end
       end
 
-      describe "GET a model file from its filename with uppercase content" do
-        before do
-          file = create(:model_file, model: model, filename: "subfolder/Test.STL")
-          get model_model_file_by_filename_path(model_id: model.to_param, id: file.filename)
-        end
+      describe "GET raw model file with uppercase extension" do
+        let(:file) { create(:model_file, model: model, filename: "subfolder/Test.STL") }
 
         it "returns http success" do
           expect(response).to have_http_status(:success)

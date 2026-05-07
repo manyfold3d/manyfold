@@ -68,6 +68,11 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  # Fallback routes for filename matching and signed downloads
+  get "/models/:model_id/model_files/signed/:sig/*id" => "model_files#show", :as => "model_model_file_by_signed_filename"
+  get "/models/:model_id/raw/*filename" => "model_files#raw", :as => "model_model_file_raw"
+
   resources :creators do
     concerns :followable, followable_class: "Creator"
     concerns :commentable, commentable_class: "Creator"
@@ -103,8 +108,4 @@ Rails.application.routes.draw do
     resources :imports, only: [:new, :create]
     resources :scans, only: [:create]
   end
-
-  # Fallback routes for filename matching and signed downloads
-  get "/models/:model_id/model_files/signed/:sig/*id" => "model_files#show", :as => "model_model_file_by_signed_filename"
-  get "/models/:model_id/model_files/*id" => "model_files#show", :as => "model_model_file_by_filename"
 end

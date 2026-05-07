@@ -4,6 +4,10 @@ class ModelFilePolicy < ApplicationPolicy
     @user&.is_moderator? || @record.previewable? || check_permissions(@record.model, ["view", "edit", "own"], @user)
   end
 
+  def raw?
+    show?
+  end
+
   def create?
     can_update_model?
   end
