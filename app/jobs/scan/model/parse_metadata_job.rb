@@ -137,8 +137,6 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
       data.delete(:model_files)&.each do |file|
         model.model_files.find_by(filename: file.delete(:filename))&.update(file)
       end
-      # Merge in to main lists
-      tag_list.concat data.delete(:tag_list) if data.key?(:tag_list)
       # Done
       data.compact_blank
     else
