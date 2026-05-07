@@ -172,7 +172,7 @@ gem "kramdown", "~> 2.5"
 gem "omniauth", "~> 2.1"
 gem "omniauth_openid_connect", "~> 0.8"
 
-gem "sidekiq-cron", "~> 2.3"
+gem "sidekiq-cron", "~> 2.4"
 
 group :development, :production do
   gem "sys-cpu", "~> 1.3"
