@@ -282,6 +282,29 @@ RSpec.describe "Model Files" do
         get model_model_file_raw_path(model_id: model.to_param, filename: file.filename)
       end
 
+      describe "GET a raw HTML file" do
+        let(:file) {
+          create(
+            :model_file,
+            model: model,
+            filename: "subfolder/test.html",
+            attachment: Rack::Test::UploadedFile.new(StringIO.new("<html></html>"), original_filename: "subfolder/test.html")
+          )
+        }
+
+        it "returns http success" do
+          expect(response).to have_http_status(:success)
+        end
+
+        it "has correct MIME type" do
+          expect(response.media_type).to eq("text/html")
+        end
+
+        it "has correct content" do
+          expect(response.body).to eq("<html></html>")
+        end
+      end
+
       describe "GET a raw model file" do
         let(:file) { create(:model_file, model: model, filename: "subfolder/test.stl") }
 
