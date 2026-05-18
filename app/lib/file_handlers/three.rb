@@ -1,7 +1,11 @@
 class FileHandlers::Three < FileHandlers::Base
   class << self
-    def scopes
+    def environments
       [:browser]
+    end
+
+    def component
+      Components::Renderers::Three
     end
 
     def input_types

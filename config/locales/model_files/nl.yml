@@ -21,15 +21,15 @@ nl:
       confirm: Weet je zeker dat je dit bestand wilt verwijderen van je bestandssysteem?
       success: Bestand verwijderd!
     download:
-      bambu:
-      crealityprint:
+      bambu_studio:
+      creality_print:
       cura:
-      elegoo:
-      flockxr:
+      elegoo_slicer:
+      flock_xr:
       lychee:
-      orca:
-      prusa:
-      superslicer:
+      orca_slicer:
+      prusa_slicer:
+      super_slicer:
     form:
       notes:
         help_html: Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.

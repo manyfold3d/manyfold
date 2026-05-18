@@ -21,15 +21,15 @@ zh-CN:
       confirm: 您确定要从文件系统中删除该文件吗？
       success: 文件已删除！
     download:
-      bambu: 在 Bambu Studio 中打开
-      crealityprint:
+      bambu_studio: 在 Bambu Studio 中打开
+      creality_print:
       cura: 在 Ultimaker Cura 中打开
-      elegoo: 在 ElegooSlicer 中打开
-      flockxr:
+      elegoo_slicer: 在 ElegooSlicer 中打开
+      flock_xr:
       lychee: 在 Lychee Slicer 中打开
-      orca: 在 OrcaSlicer 中打开
-      prusa: 在 PrusaSlicer 中打开
-      superslicer: 在 SuperSlicer 中打开
+      orca_slicer: 在 OrcaSlicer 中打开
+      prusa_slicer: 在 PrusaSlicer 中打开
+      super_slicer: 在 SuperSlicer 中打开
     form:
       notes:
         help_html: 您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
