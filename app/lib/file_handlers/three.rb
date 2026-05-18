@@ -4,6 +4,10 @@ class FileHandlers::Three < FileHandlers::Base
       [:browser]
     end
 
+    def component
+      Components::Renderers::Three
+    end
+
     def input_types
       Mime::EXTENSION_LOOKUP.slice(
         "stl", "obj", "3mf", "ply", "gltf", "glb", "drc", "fbx", "3ds", "gcode", "mpd", "ldr", "3dm"
