@@ -1,6 +1,6 @@
 class FileHandlers::F3d < FileHandlers::Base
   class << self
-    def scopes
+    def environments
       [:server]
     end
 

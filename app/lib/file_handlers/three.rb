@@ -1,6 +1,6 @@
 class FileHandlers::Three < FileHandlers::Base
   class << self
-    def scopes
+    def environments
       [:browser]
     end
 

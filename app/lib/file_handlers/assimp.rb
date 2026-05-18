@@ -1,6 +1,6 @@
 class FileHandlers::Assimp < FileHandlers::Base
   class << self
-    def scopes
+    def environments
       [:server]
     end
 
