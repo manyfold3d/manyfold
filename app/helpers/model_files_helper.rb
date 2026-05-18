@@ -1,6 +1,6 @@
 module ModelFilesHelper
   def app_links(file)
-    handlers = FileHandlers.constants.map { |it| FileHandlers.const_get(it) }.select { |it| it.environments.include? :client }.select { |it| it.can_load? Mime[file.mime_type] }
+    handlers = FileHandlers::Base.handlers_for(environment: :client, load_file: file)
     safe_join(
       handlers.map do |handler|
         name = handler.name.demodulize.underscore

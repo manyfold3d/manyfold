@@ -34,5 +34,12 @@ class FileHandlers::Base
     def open_url_for(target_url, client_os: nil)
       raise NotImplementedError
     end
+
+    def handlers_for(environment:, load_file:)
+      FileHandlers.constants
+        .map { |it| FileHandlers.const_get(it) }
+        .select { |it| it.environments.include? environment }
+        .select { |it| it.can_load? Mime[load_file.mime_type] }
+    end
   end
 end
