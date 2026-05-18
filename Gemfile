@@ -237,3 +237,5 @@ gem "user_agent_parser", "~> 2.21"
 gem "marcel", "~> 1.1"
 
 gem "naturally", "~> 2.3"
+
+gem "rouge", "~> 4.7"

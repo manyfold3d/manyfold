@@ -4,12 +4,16 @@ class FileHandlers::IframeTag < FileHandlers::Base
       [:browser]
     end
 
+    def priority
+      200
+    end
+
     def component
       Components::Renderers::IframeTag
     end
 
     def input_types
-      SupportedMimeTypes.document_types
+      Mime::EXTENSION_LOOKUP.slice("pdf", "html", "text", "md").values
     end
   end
 end
