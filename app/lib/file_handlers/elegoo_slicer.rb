@@ -1,5 +1,5 @@
 class FileHandlers::ElegooSlicer < FileHandlers::Slic3rFamily
-  # i18n-tasks-use t('model_files.download.elegoo')
+  # i18n-tasks-use t('model_files.download.elegoo_slicer')
 
   class << self
     def input_types

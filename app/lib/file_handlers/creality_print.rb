@@ -1,5 +1,5 @@
 class FileHandlers::CrealityPrint < FileHandlers::Slic3rFamily
-  # i18n-tasks-use t('model_files.download.crealityprint')
+  # i18n-tasks-use t('model_files.download.creality_print')
 
   class << self
     def input_types

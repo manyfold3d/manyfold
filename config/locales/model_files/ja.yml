@@ -21,15 +21,15 @@ ja:
       confirm:
       success:
     download:
-      bambu: Bambu Studioにオープン
-      crealityprint:
+      bambu_studio: Bambu Studioにオープン
+      creality_print:
       cura: Ultimaker Curaにオープン
-      elegoo: ElegooSlicerにオープン
-      flockxr:
+      elegoo_slicer: ElegooSlicerにオープン
+      flock_xr:
       lychee:
-      orca: OrcaSlicerにオープン
-      prusa: PrusaSlicerにオープン
-      superslicer: SuperSlicerにオープン
+      orca_slicer: OrcaSlicerにオープン
+      prusa_slicer: PrusaSlicerにオープン
+      super_slicer: SuperSlicerにオープン
     form:
       notes:
         help_html:

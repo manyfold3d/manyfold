@@ -21,15 +21,15 @@ cs:
       confirm: Opravdu chcete tento soubor odstranit ze svého souborového systému?
       success: Soubor smazán!
     download:
-      bambu: Otevřít v Bambu Studio
-      crealityprint:
+      bambu_studio: Otevřít v Bambu Studio
+      creality_print:
       cura: Otevřít v Ultimaker Cura
-      elegoo: Otevřít v ElegooSlicer
-      flockxr:
+      elegoo_slicer: Otevřít v ElegooSlicer
+      flock_xr:
       lychee:
-      orca: Otevřít v OrcaSlicer
-      prusa: Otevřít v PrusaSlicer
-      superslicer: Otevřít v SuperSlicer
+      orca_slicer: Otevřít v OrcaSlicer
+      prusa_slicer: Otevřít v PrusaSlicer
+      super_slicer: Otevřít v SuperSlicer
     form:
       notes:
         help_html: Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.

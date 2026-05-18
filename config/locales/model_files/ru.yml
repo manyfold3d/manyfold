@@ -21,15 +21,15 @@ ru:
       confirm:
       success:
     download:
-      bambu:
-      crealityprint:
+      bambu_studio:
+      creality_print:
       cura: Открыть в Ultimaker Cura
-      elegoo: Открыть в ElegooSlicer
-      flockxr:
+      elegoo_slicer: Открыть в ElegooSlicer
+      flock_xr:
       lychee: Открыть в Lychee Slicer
-      orca: Открыть в OrcaSlicer
-      prusa: Открыть в PrusaSlicer
-      superslicer: Открыть в SuperSlicer
+      orca_slicer: Открыть в OrcaSlicer
+      prusa_slicer: Открыть в PrusaSlicer
+      super_slicer: Открыть в SuperSlicer
     form:
       notes:
         help_html:

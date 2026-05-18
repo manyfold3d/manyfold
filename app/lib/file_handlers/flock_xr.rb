@@ -1,5 +1,5 @@
-class FileHandlers::FlockXR < FileHandlers::Base
-  # i18n-tasks-use t('model_files.download.flockxr')
+class FileHandlers::FlockXr < FileHandlers::Base
+  # i18n-tasks-use t('model_files.download.flock_xr')
 
   class << self
     def environments

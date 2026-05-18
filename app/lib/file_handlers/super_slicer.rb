@@ -1,5 +1,5 @@
 class FileHandlers::SuperSlicer < FileHandlers::Slic3rFamily
-  # i18n-tasks-use t('model_files.download.superslicer')
+  # i18n-tasks-use t('model_files.download.super_slicer')
 
   class << self
     def input_types

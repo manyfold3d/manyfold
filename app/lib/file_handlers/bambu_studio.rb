@@ -1,5 +1,5 @@
 class FileHandlers::BambuStudio < FileHandlers::Slic3rFamily
-  # i18n-tasks-use t('model_files.download.bambu')
+  # i18n-tasks-use t('model_files.download.bambu_studio')
   class << self
     def input_types
       # Bambu Studio doesn't seem to open anything except 3MF by URL

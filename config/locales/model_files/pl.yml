@@ -21,15 +21,15 @@ pl:
       confirm: Czy na pewno chcesz usunąć ten plik z systemu plików?
       success: Plik usunięty!
     download:
-      bambu: Otwórz w Bambu Studio
-      crealityprint:
+      bambu_studio: Otwórz w Bambu Studio
+      creality_print:
       cura: Otwórz w Ultimaker Cura
-      elegoo: Otwórz w ElegooSlicer
-      flockxr:
+      elegoo_slicer: Otwórz w ElegooSlicer
+      flock_xr:
       lychee:
-      orca: Otwórz w OrcaSlicer
-      prusa: Otwórz w PrusaSlicer
-      superslicer: Otwórz w SuperSlicer
+      orca_slicer: Otwórz w OrcaSlicer
+      prusa_slicer: Otwórz w PrusaSlicer
+      super_slicer: Otwórz w SuperSlicer
     form:
       notes:
         help_html: Możesz używać <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
