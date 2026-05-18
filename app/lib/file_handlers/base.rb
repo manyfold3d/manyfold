@@ -2,6 +2,10 @@ class FileHandlers::Base
   class << self
     extend Memoist
 
+    def priority
+      0
+    end
+
     def environments
       # Derived classes should return an array of places that this handler applies to.
       # Any of:
@@ -38,6 +42,7 @@ class FileHandlers::Base
     def handlers_for(environment:, load_file:)
       FileHandlers.constants
         .map { |it| FileHandlers.const_get(it) }
+        .sort { |a, b| b&.priority <=> a&.priority }
         .select { |it| it.environments.include? environment }
         .select { |it| it.can_load? Mime[load_file.mime_type] }
     end
