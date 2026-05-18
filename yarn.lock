@@ -1271,12 +1271,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/tsconfig-utils@npm:8.59.3, @typescript-eslint/tsconfig-utils@npm:^8.59.3":
+"@typescript-eslint/tsconfig-utils@npm:8.59.3":
   version: 8.59.3
   resolution: "@typescript-eslint/tsconfig-utils@npm:8.59.3"
   peerDependencies:
     typescript: ">=4.8.4 <6.1.0"
   checksum: 49ce0cd9d400c4370dd245782e3ad977280f47e315c39188df944cb301a0eda3de10af7e99b687341f403e9df2f8a15aa599295d4316183dab0061b32075b561
+  languageName: node
+  linkType: hard
+
+"@typescript-eslint/tsconfig-utils@npm:^8.59.3":
+  version: 8.59.4
+  resolution: "@typescript-eslint/tsconfig-utils@npm:8.59.4"
+  peerDependencies:
+    typescript: ">=4.8.4 <6.1.0"
+  checksum: 49c8ec2571969cacbd1f721c3dcdcbe3d4b22a8f9620e2144922e32b04f967f6f37a81683006960ffd4645510c93c3aa2dfb2321c60fdea9991cd3a927cdf6e2
   languageName: node
   linkType: hard
 
