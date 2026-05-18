@@ -1311,10 +1311,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/types@npm:8.59.3, @typescript-eslint/types@npm:^8.59.3":
+"@typescript-eslint/types@npm:8.59.3":
   version: 8.59.3
   resolution: "@typescript-eslint/types@npm:8.59.3"
   checksum: f2aa50683cc4364f8edc76cf24f529e951bb89526fd121577aaab69cbb005868600e4c50f70987dfc952ebd8fd330853fc76462075d74535b21a4390cc83ebca
+  languageName: node
+  linkType: hard
+
+"@typescript-eslint/types@npm:^8.59.3":
+  version: 8.59.4
+  resolution: "@typescript-eslint/types@npm:8.59.4"
+  checksum: ab4bdb1bf25f8cb49ff1933dc6f415c15fae80f15578b485090409abe76483e2b4191dfc2d97e442bc5095743fef70826739615649e53492aab0f586faec8188
   languageName: node
   linkType: hard
 
