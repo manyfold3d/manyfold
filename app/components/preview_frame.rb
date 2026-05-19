@@ -40,7 +40,7 @@ class Components::PreviewFrame < Components::Base
   end
 
   def remote?
-    @object.is_a?(Federails::Actor) ? !@object.local : @object.remote?
+    @object.is_a?(Federails::Actor) ? !@object.local : @object.try(:remote?)
   end
 
   def render_local
@@ -60,6 +60,8 @@ class Components::PreviewFrame < Components::Base
       url = model_model_file_path(@file.model, @file, format: @file.extension, derivative: "render")
       div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
       image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?}", alt: @file.name
+    elsif @file
+      file_icon
     else
       empty
     end
@@ -99,6 +101,33 @@ class Components::PreviewFrame < Components::Base
       @file&.model&.sensitive
     else
       false
+    end
+  end
+
+  def file_icon
+    div class: "card-img-top", style: "aspect-ratio: 1" do
+      svg height: "100%", width: "100%", viewBox: "0 0 100 100" do |svg|
+        svg.path stroke: "black", stroke_linecap: "round", stroke_width: "0.5", fill: "white", d: "
+            M60,15
+            h-30
+            q-5,0 -5,5
+            v65
+            q0,5 5,5
+            h40
+            q5,0 5,-5
+            v-55
+            L60,15
+          "
+        svg.path stroke: "black", stroke_linecap: "round", stroke_width: "0.5", fill: "transparent", d: "
+            M60,15
+            v10
+            q0,5 5,5
+            h10
+          "
+        svg.text x: "50%", y: "80%", fill: "black", dominant_baseline: "middle", text_anchor: "middle", style: "font-size: 8px" do
+          @file.extension&.upcase
+        end
+      end
     end
   end
 
