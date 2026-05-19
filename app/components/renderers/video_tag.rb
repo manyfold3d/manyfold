@@ -1,10 +1,6 @@
-class Components::Renderers::VideoTag < Components::Base
+class Components::Renderers::VideoTag < Components::Renderers::Base
   def self.supports?(file)
     FileHandlers::VideoTag.can_load? file&.mime_type
-  end
-
-  def initialize(file:)
-    @file = file
   end
 
   def view_template

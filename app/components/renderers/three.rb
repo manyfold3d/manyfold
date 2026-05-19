@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
-class Components::Renderers::Three < Components::Base
+class Components::Renderers::Three < Components::Renderers::Base
   include Phlex::Rails::Helpers::JavascriptPath
   include Phlex::Rails::Helpers::NumberToHumanSize
 
   def self.supports?(file)
     FileHandlers::Three.can_load? file&.mime_type
-  end
-
-  def initialize(file:)
-    @file = file
   end
 
   def before_template
