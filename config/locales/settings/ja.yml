@@ -109,9 +109,9 @@ ja:
         help_html:
         label:
     landing_pages:
-      all_collections:
-      all_creators:
-      all_models:
+      all_collections: コレクション
+      all_creators: クリエイター
+      all_models: モデル
       dashboard:
       my_models:
     multiuser:
