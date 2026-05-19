@@ -52,7 +52,7 @@ class Components::PreviewFrame < Components::Base
       url = model_model_file_path(@file.model, @file, format: @file.extension, derivative: "preview")
       div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
       image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?}", alt: @file.name
-    elsif (handler = FileHandlers::Base.handlers_for(environment: :browser, load_file: @file)&.first)
+    elsif (handler = FileHandlers::Base.handlers_for(environment: :preview_frame, load_file: @file)&.first)
       div class: "card-img-top #{"sensitive" if needs_hiding?}" do
         render handler.component.new(file: @file, derivative: "preview")
       end

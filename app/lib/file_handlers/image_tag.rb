@@ -1,7 +1,7 @@
 class FileHandlers::ImageTag < FileHandlers::Base
   class << self
     def environments
-      [:browser]
+      [:browser, :preview_frame]
     end
 
     def component
