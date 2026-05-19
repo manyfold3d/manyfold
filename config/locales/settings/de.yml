@@ -113,9 +113,9 @@ de:
         help_html: Erstelle eine "Web App" in der <a href="https://www.thingiverse.com/developers/my-apps">Entwicklerkonsole von Thingiverse</a>und füge den App Token hier ein.
         label: API-Schlüssel
     landing_pages:
-      all_collections:
-      all_creators:
-      all_models:
+      all_collections: Kollektionen
+      all_creators: Autoren
+      all_models: Modelle
       dashboard:
       my_models:
     multiuser:
