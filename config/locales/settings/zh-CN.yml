@@ -109,9 +109,9 @@ zh-CN:
         help_html: 在 <a href="https://www.thingiverse.com/developers/my-apps">Thingiverse 开发者控制台</a> 创建一个 "网络应用程序"，并在此粘贴 "应用程序令牌"。
         label: API 密钥
     landing_pages:
-      all_collections:
-      all_creators:
-      all_models:
+      all_collections: 合集
+      all_creators: 创作者
+      all_models: 模型
       dashboard:
       my_models:
     multiuser:
