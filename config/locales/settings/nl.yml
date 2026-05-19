@@ -109,9 +109,9 @@ nl:
         help_html:
         label:
     landing_pages:
-      all_collections:
-      all_creators:
-      all_models:
+      all_collections: Collecties
+      all_creators: Makers
+      all_models: Modellen
       dashboard:
       my_models:
     multiuser:
