@@ -1,9 +1,5 @@
-<% if @file.is_image? %>
-  <%= image_tag model_model_file_path(@model, @file, format: @file.extension), alt: @file.name, style: "width: 100%" %>
-<% elsif @file.is_video? %>
-  <%= video_tag model_model_file_path(@model, @file, format: @file.extension), alt: @file.name, style: "width: 100%", controls: true %>
-<% elsif @file.is_document? %>
-  <%= tag.iframe src: model_model_file_path(@model, @file, format: @file.extension), alt: @file.name, style: "width: 100%; aspect-ratio: 0.707" %>
-<% elsif Components::Renderers::Three.supports?(@file) %>
-  <%= RenderersThree(file: @file) %>
+<% if (handler = FileHandlers::Base.handlers_for(environment: :browser, load_file: @file)&.first) %>
+  <%= render handler.component.new(file: @file) %>
+<% elsif @file.has_render? %>
+  <%= render Renderer::ImageTag.new(file: @file) %>
 <% end %>
