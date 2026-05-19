@@ -211,7 +211,7 @@ class Model < ApplicationRecord
   end
 
   def valid_preview_files
-    model_files.select { |it| it.is_image? || Components::Renderers::Three.supports?(it) }
+    model_files.select { |it| it.is_image? || it.is_video? || Components::Renderers::Three.supports?(it) }
   end
 
   def image_files
