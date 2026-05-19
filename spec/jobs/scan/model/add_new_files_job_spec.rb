@@ -7,6 +7,8 @@ RSpec.describe Scan::Model::AddNewFilesJob do
       MockDirectory.create([
         "model_one/part_1.lys",
         "model_one/part_2.obj",
+        "model_one/part 3.stl",
+        "model_one/part  4.stl",
         "model_one/.manyfold/derivatives/part_2.obj/stream.glb"
       ]) do |path|
         @library_path = path
@@ -20,19 +22,27 @@ RSpec.describe Scan::Model::AddNewFilesJob do
       create(:model, path: "model_one", library: library)
     end
 
-    it "detects model files" do # rubocop:todo RSpec/MultipleExpectations
-      expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(2)
-      expect(model.model_files.pluck(:filename)).to include "part_1.lys"
-      expect(model.model_files.pluck(:filename)).to include "part_2.obj"
+    it "detects all indexable files" do
+      expect { described_class.perform_now(model.id) }.to change { model.model_files.count }.to(4)
+    end
+
+    it "detects files in various formats" do
+      described_class.perform_now(model.id)
+      expect(model.model_files.pluck(:filename)).to include("part_1.lys", "part_2.obj", "part 3.stl")
+    end
+
+    it "allows double spaces in filenames" do
+      described_class.perform_now(model.id)
+      expect(model.model_files.pluck(:filename)).to include "part  4.stl"
     end
 
     it "ignores derivatives" do
       described_class.perform_now(model.id)
-      expect(model.model_files.pluck(:filename)).not_to include "stream.glb"
+      expect(model.model_files.pluck(:filename)).not_to include ".manyfold/derivatives/part_2.obj/stream.glb"
     end
 
     it "queues up individual file metadata parsing" do
-      expect { described_class.perform_now(model.id) }.to have_enqueued_job(Scan::ModelFile::ParseMetadataJob).exactly(2).times
+      expect { described_class.perform_now(model.id) }.to have_enqueued_job(Scan::ModelFile::ParseMetadataJob).exactly(4).times
     end
 
     it "queues up metadata parsing" do
