@@ -68,7 +68,9 @@ class Components::PreviewFrame < Components::Base
     preview_data = actor&.extensions&.dig("preview")
     case preview_data&.dig("type")
     when "Image"
-      image sanitize(preview_data["url"]), sanitize(preview_data["summary"])
+      url = sanitize(preview_data["url"])
+      div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
+      image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?}", alt: sanitize(preview_data["summary"])
     when "Document"
       div class: "card-img-top #{"sensitive" if needs_hiding?}" do
         iframe(
