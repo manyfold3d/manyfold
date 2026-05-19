@@ -1,10 +1,6 @@
-class Components::Renderers::Rouge < Components::Base
+class Components::Renderers::Rouge < Components::Renderers::Base
   def self.supports?(file)
     FileHandlers::Rouge.can_load? file&.mime_type
-  end
-
-  def initialize(file:)
-    @file = file
   end
 
   def before_template

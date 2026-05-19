@@ -1,10 +1,6 @@
-class Components::Renderers::ImageTag < Components::Base
+class Components::Renderers::ImageTag < Components::Renderers::Base
   def self.supports?(file)
     FileHandlers::ImageTag.can_load? file&.mime_type
-  end
-
-  def initialize(file:)
-    @file = file
   end
 
   def view_template

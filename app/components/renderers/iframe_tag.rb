@@ -1,10 +1,6 @@
-class Components::Renderers::IframeTag < Components::Base
+class Components::Renderers::IframeTag < Components::Renderers::Base
   def self.supports?(file)
     FileHandlers::IframeTag.can_load? file&.mime_type
-  end
-
-  def initialize(file:)
-    @file = file
   end
 
   def view_template
