@@ -109,9 +109,9 @@ fr:
         help_html:
         label: Clé API
     landing_pages:
-      all_collections:
-      all_creators:
-      all_models:
+      all_collections: Collections
+      all_creators: Créateurs
+      all_models: Modèles
       dashboard:
       my_models:
     multiuser:
