@@ -109,9 +109,9 @@ pl:
         help_html:
         label:
     landing_pages:
-      all_collections:
-      all_creators:
-      all_models:
+      all_collections: Kolekcje
+      all_creators: Twórcy
+      all_models: Modele
       dashboard:
       my_models:
     multiuser:
