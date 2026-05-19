@@ -14,7 +14,9 @@ class Components::PreviewFrame < Components::Base
     return if remote?
     @cover = @object.try(:cover)
     return if @cover
-    @file = @object.is_a?(Model) ? @object.preview_file : collection_preview_file
+    @file = @object if @object.is_a?(ModelFile)
+    @file = @object.preview_file if @object.is_a?(Model)
+    @file = collection_preview_file if @object.is_a?(Collection)
   end
 
   def view_template
