@@ -121,7 +121,7 @@ es:
           autodetect: Utilizar la configuración del navegador
           help: 'Nota: es posible que algunos textos no traducidos sigan apareciendo en inglés.'
         landing_page:
-          help:
+          help: La página que ves por defecto cuando te conectas (y algunas otras veces).
         sensitive_content:
           help: Afecta al modo en que se mostrará el contenido marcado como "sensible"
           hide: Ocultar completamente

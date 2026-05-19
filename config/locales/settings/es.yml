@@ -12,8 +12,8 @@ es:
         help_html: Se muestra en la página de información. Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
         label: Acerca de esta instancia
       default_landing_page:
-        help:
-        label:
+        help: La página que los visitantes y usuarios registrados verán por defecto.
+        label: Página de inicio
       heading: Apariencia
       information: Información
       rules:
@@ -109,11 +109,11 @@ es:
         help_html: Cree una "aplicación web" en la <a href="https://www.thingiverse.com/developers/my-apps">consola de desarrollador de Thingiverse</a> y pegue aquí el "token de aplicación".
         label: Clave API
     landing_pages:
-      all_collections:
-      all_creators:
-      all_models:
-      dashboard:
-      my_models:
+      all_collections: Colecciones
+      all_creators: Creadores
+      all_models: Modelos
+      dashboard: Cuadro de mando
+      my_models: Mis modelos
     multiuser:
       approve_signups:
         help: Todas las cuentas nuevas deben ser aprobadas por un moderador antes de poder iniciar sesión.
