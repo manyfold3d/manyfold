@@ -50,9 +50,9 @@ class Components::PreviewFrame < Components::Base
       url = model_model_file_path(@file.model, @file, format: @file.extension, derivative: "preview")
       div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
       image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?}", alt: @file.name
-    elsif Renderers::Three.supports?(@file)
+    elsif (handler = FileHandlers::Base.handlers_for(environment: :browser, load_file: @file)&.first)
       div class: "card-img-top #{"sensitive" if needs_hiding?}" do
-        Renderers::Three file: @file
+        render handler.component.new(file: @file, derivative: "preview")
       end
     elsif @file.has_render?
       url = model_model_file_path(@file.model, @file, format: @file.extension, derivative: "render")
@@ -102,10 +102,5 @@ class Components::PreviewFrame < Components::Base
     div class: "preview-empty" do
       p { t("components.model_card.no_preview") }
     end
-  end
-
-  def image(url, alt)
-    div class: "card-img-top-background", style: "background-image: url(#{url})"
-    image_tag url, class: "image-preview #{"sensitive" if needs_hiding?}", alt: alt
   end
 end
