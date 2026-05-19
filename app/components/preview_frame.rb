@@ -43,15 +43,21 @@ class Components::PreviewFrame < Components::Base
 
   def render_local
     if @cover
-      image cover_collection_path(@object), @object.name
+      url = cover_collection_path(@object)
+      div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
+      image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?}", alt: @object.name
     elsif @file.is_image?
-      image model_model_file_path(@file.model, @file, format: @file.extension, derivative: "preview"), @file.name
+      url = model_model_file_path(@file.model, @file, format: @file.extension, derivative: "preview")
+      div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
+      image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?}", alt: @file.name
     elsif Renderers::Three.supports?(@file)
       div class: "card-img-top #{"sensitive" if needs_hiding?}" do
         Renderers::Three file: @file
       end
     elsif @file.has_render?
-      image model_model_file_path(@file.model, @file, format: @file.extension, derivative: "render"), @file.name
+      url = model_model_file_path(@file.model, @file, format: @file.extension, derivative: "render")
+      div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
+      image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?}", alt: @file.name
     else
       empty
     end
@@ -99,7 +105,7 @@ class Components::PreviewFrame < Components::Base
   end
 
   def image(url, alt)
-    div class: "card-img-top card-img-top-background", style: "background-image: url(#{url})"
-    image_tag url, class: "card-img-top image-preview #{"sensitive" if needs_hiding?}", alt: alt
+    div class: "card-img-top-background", style: "background-image: url(#{url})"
+    image_tag url, class: "image-preview #{"sensitive" if needs_hiding?}", alt: alt
   end
 end
