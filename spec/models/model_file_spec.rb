@@ -23,9 +23,14 @@ RSpec.describe ModelFile do
     "../../../../etc/passwd" => "etc/passwd"
   }.each_pair do |filename, sanitized|
     it "silently sanitizes filenames (#{filename} to #{sanitized})" do
-      m = build(:model_file, filename: filename)
+      m = create(:model_file, filename: filename)
       expect(m.filename).to eq sanitized
     end
+  end
+
+  it "allows double spaces in filenames" do
+    m = create(:model_file, filename: "model  1.stl")
+    expect(m.filename).to eq "model  1.stl"
   end
 
   it "is not valid without being part of a model" do
