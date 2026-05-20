@@ -21,6 +21,21 @@ RSpec.describe Relationship do
       relationship = described_class.create(subject: first, objekt: second, predicate: "supported_version_of")
       expect(relationship).not_to be_valid
     end
+
+    it "lists related files" do
+      described_class.create(subject: first, objekt: second, predicate: "supported_version_of")
+      expect(first.related_files).to include(second)
+    end
+
+    it "can include related files by predicate" do
+      described_class.create(subject: first, objekt: second, predicate: "supported_version_of")
+      expect(first.related_files.where("relationships.predicate": "supported_version_of")).to include(second)
+    end
+
+    it "can exclude related files by predicate" do
+      described_class.create(subject: first, objekt: second, predicate: "supported_version_of")
+      expect(first.related_files.where("relationships.predicate": "adapted_from")).not_to include(second)
+    end
   end
 
   context "when creating relationships between models" do
@@ -30,6 +45,21 @@ RSpec.describe Relationship do
     it "creates valid objects" do
       relationship = described_class.create(subject: first, objekt: second, predicate: "adapted_from")
       expect(relationship).to be_valid
+    end
+
+    it "lists related models" do
+      described_class.create(subject: first, objekt: second, predicate: "adapted_from")
+      expect(first.related_models).to include(second)
+    end
+
+    it "can include related models by predicate" do
+      described_class.create(subject: first, objekt: second, predicate: "adapted_from")
+      expect(first.related_models.where("relationships.predicate": "adapted_from")).to include(second)
+    end
+
+    it "can exclude related models by predicate" do
+      described_class.create(subject: first, objekt: second, predicate: "adapted_from")
+      expect(first.related_models.where("relationships.predicate": "supported_version_of")).not_to include(second)
     end
   end
 

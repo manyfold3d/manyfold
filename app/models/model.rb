@@ -14,6 +14,7 @@ class Model < ApplicationRecord
   include Indexable
   include FaspClient::DataSharing::Lifecycle
   include Likeable
+  include Relatable
 
   broadcasts_refreshes
 
@@ -41,6 +42,8 @@ class Model < ApplicationRecord
 
   has_many :collections_models, dependent: :destroy
   has_many :collections, through: :collections_models, after_add: :after_collection_added, after_remove: :after_collection_removed
+
+  has_many :related_models, through: :relationships, source_type: "Model", source: "objekt"
 
   belongs_to :preview_file, class_name: "ModelFile", optional: true
   belongs_to :entrypoint, class_name: "ModelFile", optional: true
