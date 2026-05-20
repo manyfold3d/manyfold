@@ -22,24 +22,12 @@ class ModelFile < ApplicationRecord
   before_destroy :rescan_duplicates
   after_commit :reattach!, on: :update, if: :filename_previously_changed?
 
-  belongs_to :presupported_version, class_name: "ModelFile", optional: true
-  has_one :unsupported_version, class_name: "ModelFile", foreign_key: "presupported_version_id",
-    inverse_of: :presupported_version, dependent: :nullify
-
-  # This is here to handle cleanup of duplicate presupported version links
-  # There should only ever be one relation (above), but there's a bug.
-  # Hopefully one day we can remove this when we build proper file relationships.
-  has_many :duplicate_unsupported_versions, class_name: "ModelFile", foreign_key: "presupported_version_id",
-    inverse_of: :presupported_version, dependent: :nullify
-
   has_many :related_files, through: :relationships, source_type: "ModelFile", source: "objekt"
   has_many :files_related_to_me, through: :reverse_relationships, source_type: "ModelFile", source: "subject"
 
   normalizes :filename, with: ->(filename) { normalize_filename(filename) }
 
   validates :filename, presence: true, length: {maximum: 255}, uniqueness: {scope: :model}, stable_mime_type: true, change_case_only: true
-  validate :presupported_version_is_presupported
-  validate :presupported_files_cannot_have_presupported_version
 
   after_commit :clear_presupported_relation, on: :update, if: :presupported_previously_changed?
   after_commit :check_derivatives!, on: :update, if: :y_up_previously_changed?
@@ -285,28 +273,28 @@ class ModelFile < ApplicationRecord
     end
   end
 
+  def unsupported_version
+    relationships.where(predicate: "supported_version_of").first&.objekt
+  end
+
+  def presupported_version
+    reverse_relationships.where(predicate: "supported_version_of").first&.subject
+  end
+
+  def presupported_version=(file)
+    clear_presupported_relation and return if file.nil?
+    return unless !presupported && file.presupported
+    reverse_relationships.find_or_create_by(subject: file, predicate: "supported_version_of")
+  end
+
   private
 
   def rescan_duplicates
     duplicates.each { |it| it.analyse_later }
   end
 
-  def presupported_files_cannot_have_presupported_version
-    if presupported_version && presupported
-      # i18n-tasks-use t("activerecord.errors.models.model_file.attributes.presupported_version.already_presupported")
-      errors.add(:presupported_version, :already_presupported)
-    end
-  end
-
-  def presupported_version_is_presupported
-    if presupported_version && !presupported_version.presupported
-      # i18n-tasks-use t("activerecord.errors.models.model_file.attributes.presupported_version.not_supported")
-      errors.add(:presupported_version, :not_supported)
-    end
-  end
-
   def clear_presupported_relation
-    unsupported_version&.update presupported_version: nil
+    relationships.where(predicate: "supported_version_of").destroy_all
   end
 
   class << self
