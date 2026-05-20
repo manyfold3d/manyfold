@@ -69,7 +69,7 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
       matches = same_format unless same_format.empty?
       matches.max_by { |it| it[0] }[1]
     end
-    file.update(presupported_version: best)
+    file.presupported_version = best
   end
 
   def inefficiency_problem(file)
