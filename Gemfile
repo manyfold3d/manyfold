@@ -234,7 +234,7 @@ gem "devise_invitable", "~> 2.0"
 
 gem "user_agent_parser", "~> 2.21"
 
-gem "marcel", "~> 1.1"
+gem "marcel", "~> 1.2"
 
 gem "naturally", "~> 2.3"
 
