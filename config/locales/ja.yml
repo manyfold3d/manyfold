@@ -213,9 +213,6 @@ ja:
             filename:
               cannot_change_type: は同じファイルタイプではない
               case_change_only: ケースのみの変更はできない
-            presupported_version:
-              already_presupported: サポート材付きファイルに設定することはできない。
-              not_supported: はサポート材付きファイルではない
     models:
       acts_as_taggable_on/tag:
         few: タグ

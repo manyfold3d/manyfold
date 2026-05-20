@@ -213,9 +213,6 @@ es:
             filename:
               cannot_change_type: no es el mismo tipo de archivo
               case_change_only: El cambio no puede limitarse solo a las mayúsculas y minúsculas
-            presupported_version:
-              already_presupported: no se puede establecer en un archivo con soporte predefinido
-              not_supported: no es un archivo con soporte predefinido.
     models:
       acts_as_taggable_on/tag:
         few: Etiquetas

@@ -213,9 +213,6 @@ de:
             filename:
               cannot_change_type: ist nicht der gleiche Dateityp
               case_change_only: kann nicht eine reine Falländerung sein
-            presupported_version:
-              already_presupported: kann nicht auf eine Datei gesetzt werden mit Supportstruktur
-              not_supported: Ist keine Datei mit Supportstruktur
     models:
       acts_as_taggable_on/tag:
         few: Tags

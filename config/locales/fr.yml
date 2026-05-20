@@ -215,9 +215,6 @@ fr:
             filename:
               cannot_change_type: n'est pas le même type de fichier
               case_change_only: ne peut pas être juste un changement de casse
-            presupported_version:
-              already_presupported: ne peut pas être défini sur un fichier présupporté
-              not_supported: n'est pas un fichier présupporté
     models:
       acts_as_taggable_on/tag:
         few: Étiquettes

@@ -213,9 +213,6 @@ pl:
             filename:
               cannot_change_type: nie jest plikiem tego samego typu
               case_change_only: nie może być zmianą wyłącznie wielkości liter
-            presupported_version:
-              already_presupported:
-              not_supported:
     models:
       acts_as_taggable_on/tag:
         few: Tagi

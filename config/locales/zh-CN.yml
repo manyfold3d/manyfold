@@ -213,9 +213,6 @@ zh-CN:
             filename:
               cannot_change_type: 不是同一文件类型
               case_change_only:
-            presupported_version:
-              already_presupported: 不能在有支撑的文件上设置
-              not_supported: 不是一个有支撑的文件
     models:
       acts_as_taggable_on/tag:
         few: 标签
