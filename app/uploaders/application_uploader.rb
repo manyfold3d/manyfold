@@ -109,9 +109,11 @@ class ApplicationUploader < Shrine
           }
         }
       }
-    rescue => ex
+    rescue SystemStackError, StandardError => ex
       # Assimp doesn't raise a specific error for failed load,
-      # just throws a string, so we have to catch all and absorb
+      # just throws a string, so we have to catch all and absorb.
+      # SystemStackError is a direct child of Exception (not StandardError),
+      # so it escapes the default `rescue =>` — see #5166.
       Rails.logger.debug { "Load error: '#{ex.message}'" }
       nil
     end
