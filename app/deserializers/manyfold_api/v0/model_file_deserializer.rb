@@ -9,7 +9,12 @@ module ManyfoldApi::V0
         presupported: @object["presupported"],
         y_up: @object["up"] == "+y",
         previewable: @object["presupported"],
-        presupported_version: dereference(@object["related"]&.find { |it| it["relationship"] == "presupported_version" }&.dig("@id"), ModelFile)
+        reverse_relationships_attributes: [
+          {
+            subject: dereference(@object["related"]&.find { |it| it["relationship"] == "presupported_version" }&.dig("@id"), ModelFile),
+            predicate: "supported_version_of"
+          }
+        ]
       }.compact
     end
 
