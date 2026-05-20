@@ -33,6 +33,7 @@ class ModelFile < ApplicationRecord
     inverse_of: :presupported_version, dependent: :nullify
 
   has_many :related_files, through: :relationships, source_type: "ModelFile", source: "objekt"
+  has_many :files_related_to_me, through: :reverse_relationships, source_type: "ModelFile", source: "subject"
 
   normalizes :filename, with: ->(filename) { normalize_filename(filename) }
 

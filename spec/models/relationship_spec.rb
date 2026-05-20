@@ -36,6 +36,11 @@ RSpec.describe Relationship do
       described_class.create(subject: first, objekt: second, predicate: "supported_version_of")
       expect(first.related_files.where("relationships.predicate": "adapted_from")).not_to include(second)
     end
+
+    it "can find files that are related to this one" do
+      described_class.create(subject: first, objekt: second, predicate: "supported_version_of")
+      expect(second.files_related_to_me).to include(first)
+    end
   end
 
   context "when creating relationships between models" do
@@ -60,6 +65,11 @@ RSpec.describe Relationship do
     it "can exclude related models by predicate" do
       described_class.create(subject: first, objekt: second, predicate: "adapted_from")
       expect(first.related_models.where("relationships.predicate": "supported_version_of")).not_to include(second)
+    end
+
+    it "can find models that are related to this one" do
+      described_class.create(subject: first, objekt: second, predicate: "supported_version_of")
+      expect(second.models_related_to_me).to include(first)
     end
   end
 

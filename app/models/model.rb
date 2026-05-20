@@ -44,6 +44,7 @@ class Model < ApplicationRecord
   has_many :collections, through: :collections_models, after_add: :after_collection_added, after_remove: :after_collection_removed
 
   has_many :related_models, through: :relationships, source_type: "Model", source: "objekt"
+  has_many :models_related_to_me, through: :reverse_relationships, source_type: "Model", source: "subject"
 
   belongs_to :preview_file, class_name: "ModelFile", optional: true
   belongs_to :entrypoint, class_name: "ModelFile", optional: true
