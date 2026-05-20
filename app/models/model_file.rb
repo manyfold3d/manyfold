@@ -5,6 +5,7 @@ class ModelFile < ApplicationRecord
   include Listable
   include PublicIDable
   include Problematic
+  include Relatable
 
   extend Memoist
 
@@ -30,6 +31,9 @@ class ModelFile < ApplicationRecord
   # Hopefully one day we can remove this when we build proper file relationships.
   has_many :duplicate_unsupported_versions, class_name: "ModelFile", foreign_key: "presupported_version_id",
     inverse_of: :presupported_version, dependent: :nullify
+
+  has_many :related_files, through: :relationships, source_type: "ModelFile", source: "objekt"
+  has_many :files_related_to_me, through: :reverse_relationships, source_type: "ModelFile", source: "subject"
 
   normalizes :filename, with: ->(filename) { normalize_filename(filename) }
 
