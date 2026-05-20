@@ -26,6 +26,7 @@ Rails.application.config.after_initialize do
     Upgrade::BackfillCollectionCounterCache.set(queue: :high).perform_later
     Upgrade::ConvertCollectionsJob.set(queue: :upgrade).perform_later
     Upgrade::RemoveDuplicateCollectionRelationsJob.set(queue: :upgrade).perform_later
+    Upgrade::ConvertSupportedRelationshipsJob.set(queue: :upgrade).perform_later
     Upgrade::FixStaleAttachmentDataJob.set(queue: :upgrade).perform_later
     Upgrade::FixMimeTypes.set(queue: :high).perform_later
     Upgrade::FixNilFileSizeValues.set(queue: :upgrade).perform_later
