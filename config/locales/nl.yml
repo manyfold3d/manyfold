@@ -866,6 +866,7 @@ nl:
         detect_duplicates: Dubbele bestanden detecteren
         detect_ineffiency: Inefficiënte formaten detecteren
         file_statistics: Bestandsstatistieken berekenen
+        generating_derivatives:
         matching: Ondersteunde bestanden matchen
       file_conversion:
         exporting: Nieuw bestand exporteren

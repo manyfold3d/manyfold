@@ -38,6 +38,9 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
       :duplicate,
       file.duplicate?
     )
+    status[:step] = "jobs.analysis.analyse_model_file.generating_derivatives" # i18n-tasks-use t('jobs.analysis.analyse_model_file.generating_derivatives')
+    # Check and update derivatives
+    file.create_derivatives!
   end
 
   def match_with_supported_file(file)

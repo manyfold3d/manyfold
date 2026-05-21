@@ -866,6 +866,7 @@ ru:
         detect_duplicates:
         detect_ineffiency:
         file_statistics:
+        generating_derivatives:
         matching:
       file_conversion:
         exporting:

@@ -866,6 +866,7 @@ es:
         detect_duplicates: Buscando ficheros duplicados
         detect_ineffiency: Buscando formatos ineficientes
         file_statistics: Calculando estadísticas de archivos
+        generating_derivatives:
         matching: Buscando archivos compatibles
       file_conversion:
         exporting: Exportando nuevo fichero
