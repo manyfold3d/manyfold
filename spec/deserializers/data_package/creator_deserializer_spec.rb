@@ -49,6 +49,44 @@ RSpec.describe DataPackage::CreatorDeserializer do
       end
     end
 
+    context "with a valid creator linked to this server but with the wrong ID" do
+      let(:creator) { create(:creator) }
+      let(:object) do
+        {
+          "title" => creator.name,
+          "path" => "http://localhost:3214/creators/#{creator.to_param.reverse}",
+          "roles" => ["creator"]
+        }
+      end
+
+      it "matches creator on name instead of path" do
+        expect(output[:id]).to eq creator.id
+      end
+
+      it "does not add main detected path as link" do
+        expect(output[:links_attributes]).to be_nil
+      end
+    end
+
+    context "with a valid creator linked to this server but with a bad path" do
+      let(:creator) { create(:creator) }
+      let(:object) do
+        {
+          "title" => creator.name,
+          "path" => "complete rubbish",
+          "roles" => ["creator"]
+        }
+      end
+
+      it "matches creator on name instead of path" do
+        expect(output[:id]).to eq creator.id
+      end
+
+      it "does not add main detected path as link" do
+        expect(output[:links_attributes]).to be_nil
+      end
+    end
+
     context "with a valid creator hosted elsewhere" do
       let(:object) do
         {

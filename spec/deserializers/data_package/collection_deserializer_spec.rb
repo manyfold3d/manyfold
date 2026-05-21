@@ -48,6 +48,42 @@ RSpec.describe DataPackage::CollectionDeserializer do
       end
     end
 
+    context "with a valid collection linked to this server but with the wrong ID" do
+      let(:collection) { create(:collection) }
+      let(:object) do
+        {
+          "title" => collection.name,
+          "path" => "http://localhost:3214/collections/#{collection.to_param.reverse}"
+        }
+      end
+
+      it "matches collection by name instead" do
+        expect(output[:id]).to eq collection.id
+      end
+
+      it "does not add main detected path as link" do
+        expect(output[:links_attributes]).to be_nil
+      end
+    end
+
+    context "with a valid collection linked to this server but with a bad path" do
+      let(:collection) { create(:collection) }
+      let(:object) do
+        {
+          "title" => collection.name,
+          "path" => "complete rubbish"
+        }
+      end
+
+      it "matches collection by name instead" do
+        expect(output[:id]).to eq collection.id
+      end
+
+      it "does not add main detected path as link" do
+        expect(output[:links_attributes]).to be_nil
+      end
+    end
+
     context "with a valid collection hosted elsewhere" do
       let(:object) do
         {
