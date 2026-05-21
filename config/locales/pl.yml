@@ -866,6 +866,7 @@ pl:
         detect_duplicates: Wykrywanie zduplikowanych plików
         detect_ineffiency: Wykrywanie niewydajnych formatów
         file_statistics: Obliczanie statystyk plików
+        generating_derivatives:
         matching: Dopasowywanie obsługiwanych plików
       file_conversion:
         exporting: Eksportowanie nowego pliku

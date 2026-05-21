@@ -868,6 +868,7 @@ fr:
         detect_duplicates: Détection des fichiers en double
         detect_ineffiency: Détection des formats inefficaces
         file_statistics: Calcul des statistiques sur les fichiers
+        generating_derivatives:
         matching: Correspondance entre les fichiers pris en charge
       file_conversion:
         exporting: Export de nouveau fichier

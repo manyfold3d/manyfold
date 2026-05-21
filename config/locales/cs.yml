@@ -866,6 +866,7 @@ cs:
         detect_duplicates: Detekce duplicitních souborů
         detect_ineffiency: Detekce neefektivních formátů
         file_statistics: Výpočet statistik souborů
+        generating_derivatives:
         matching: Přiřazení podporovaných souborů
       file_conversion:
         exporting: Export nového souboru

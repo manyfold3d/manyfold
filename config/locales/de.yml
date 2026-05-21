@@ -868,6 +868,7 @@ de:
         detect_duplicates: Doppelte Datei erkannt
         detect_ineffiency: Erkennung ineffizienter Formate
         file_statistics: Berechnung von Dateistatistiken
+        generating_derivatives:
         matching: Unterstützte Dateien abgleichen
       file_conversion:
         exporting: Neue Datei exportieren

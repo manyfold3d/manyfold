@@ -385,7 +385,7 @@ class Model < ApplicationRecord
     # Move all the files
     model_files.each(&:reattach!)
     # Recreate derivatives in new place
-    model_files.each(&:create_derivatives!)
+    model_files.each(&:check_derivatives!)
     # Remove the old folder if it's still there
     previous_library.storage.delete_prefixed(previous_path)
   end
