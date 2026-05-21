@@ -321,27 +321,27 @@ RSpec.describe ModelFile do
     end
 
     it "regenerates derivatives on demand" do
-      expect { file.create_derivatives! }.to change { file.attachment_derivatives.count }.from(0).to(2)
+      expect { file.check_derivatives! }.to change { file.attachment_derivatives.count }.from(0).to(2)
     end
 
     it "does not change the updated_at time of the file" do
-      expect { file.create_derivatives! }.not_to change(file.reload, :updated_at)
+      expect { file.check_derivatives! }.not_to change(file.reload, :updated_at)
     end
 
     it "does not change the updated_at time of the owning model" do
-      expect { file.create_derivatives! }.not_to change(model.reload, :updated_at)
+      expect { file.check_derivatives! }.not_to change(model.reload, :updated_at)
     end
 
     it "sends UI update for owning model" do
-      expect { file.create_derivatives! }.to have_enqueued_job(Turbo::Streams::BroadcastStreamJob).once
+      expect { file.check_derivatives! }.to have_enqueued_job(Turbo::Streams::BroadcastStreamJob).once
     end
 
     it "does not create followup jobs for owning model" do
-      expect { file.create_derivatives! }.not_to have_enqueued_job(Scan::Model::CheckForProblemsJob).once
+      expect { file.check_derivatives! }.not_to have_enqueued_job(Scan::Model::CheckForProblemsJob).once
     end
 
     it "does not create federated activites for change to owning model", :federation do
-      expect { file.create_derivatives! }.not_to change(Federails::Activity, :count)
+      expect { file.check_derivatives! }.not_to change(Federails::Activity, :count)
     end
   end
 end

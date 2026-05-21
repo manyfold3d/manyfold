@@ -12,6 +12,6 @@ class Upgrade::BackfillDerivativesBase < Upgrade::FileTypeIterationJob
   end
 
   def apply(modelfile)
-    modelfile.create_derivatives!
+    modelfile.check_derivatives!
   end
 end

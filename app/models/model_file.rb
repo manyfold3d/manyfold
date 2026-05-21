@@ -42,7 +42,7 @@ class ModelFile < ApplicationRecord
   validate :presupported_files_cannot_have_presupported_version
 
   after_commit :clear_presupported_relation, on: :update, if: :presupported_previously_changed?
-  after_commit :create_derivatives!, on: :update, if: :y_up_previously_changed?
+  after_commit :check_derivatives!, on: :update, if: :y_up_previously_changed?
 
   scope :without_special, -> { where.not(filename: SPECIAL_FILES) }
   scope :unsupported, -> { where(presupported: false) }
@@ -268,10 +268,20 @@ class ModelFile < ApplicationRecord
     end
   end
 
-  def create_derivatives!
+  def check_derivatives!
     ApplicationRecord.no_touching do
-      attachment_attacher&.create_derivatives
-      save!(validate: false, touch: false)
+      regen = attachment_derivatives.empty?
+      # Clear out missing derivatives
+      attachment_derivatives.each do |k, v|
+        unless model.library.has_file?(v.id)
+          attachment_attacher&.remove_derivative(k)
+          regen = true
+        end
+      end
+      if regen
+        attachment_attacher&.create_derivatives
+        save!(validate: false, touch: false)
+      end
     end
   end
 
