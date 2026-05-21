@@ -11,11 +11,11 @@ FactoryBot.define do
     end
 
     trait :with_avatar do
-      avatar { Rack::Test::UploadedFile.new(StringIO.new, original_filename: "avatar.png") }
+      avatar { mock_upload(filename: "avatar.png") }
     end
 
     trait :with_banner do
-      banner { Rack::Test::UploadedFile.new(StringIO.new, original_filename: "banner.png") }
+      banner { mock_upload(filename: "banner.png") }
     end
   end
 end
