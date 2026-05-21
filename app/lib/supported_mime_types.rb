@@ -110,7 +110,8 @@ module SupportedMimeTypes
         "application/x-3ds",
         "application/x-amf",
         "application/x-ldraw",
-        "application/vnd.flock+json"
+        "application/vnd.flock+json",
+        "application/vnd.dragonfruit.voxl"
       ]
       type.to_s.start_with?("model/") || extras.include?(type.to_s)
     end
