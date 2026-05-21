@@ -136,7 +136,8 @@ GEM
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
     aes_key_wrap (1.1.0)
-    altcha-rails (0.0.6)
+    altcha-rails (0.1.0)
+      base64 (~> 0.2)
     arel_extensions (2.4.0)
       activerecord (>= 6.0)
     ast (2.4.3)
@@ -963,7 +964,7 @@ DEPENDENCIES
   activerecord-nulldb-adapter (~> 1.2)
   acts-as-taggable-on (~> 13.0)
   acts_as_favoritor (~> 6.0)
-  altcha-rails (~> 0.0.6)
+  altcha-rails (~> 0.1.0)
   arel_extensions (~> 2.4)
   assimp-ffi!
   aws-sdk-s3 (< 1.224)
@@ -1107,7 +1108,7 @@ CHECKSUMS
   acts_as_favoritor (6.0.2) sha256=8aa14accb36232d350e9e11153ffbfae4d956917d0c8c9d86e3e405b3025f93e
   addressable (2.9.0) sha256=7fdf6ac3660f7f4e867a0838be3f6cf722ace541dd97767fa42bc6cfa980c7af
   aes_key_wrap (1.1.0) sha256=b935f4756b37375895db45669e79dfcdc0f7901e12d4e08974d5540c8e0776a5
-  altcha-rails (0.0.6) sha256=0da0f081439abae730a797ab2f6b86a46ad2b533017db2a872488785cc35fae4
+  altcha-rails (0.1.0) sha256=e3362fa1a07f3d3951a118f9beffd42a4959a7b64fe396ad4d65aa5cc6f22ee4
   arel_extensions (2.4.0) sha256=62d25fc118f600e56d9d735547986eb6640893401521669339b108a47565eb67
   assimp-ffi (0.1.8)
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
