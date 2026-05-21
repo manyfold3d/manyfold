@@ -99,5 +99,12 @@ RSpec.describe Problem do
         described_class.create_or_clear model, :no_license, model.license.blank?
       }.not_to change(described_class, :count)
     end
+
+    it "does nothing with a problem that should exist and does, but is ignored" do
+      described_class.create_or_clear model, :no_license, model.license.blank?, ignored: true
+      expect {
+        described_class.create_or_clear model, :no_license, model.license.blank?
+      }.not_to raise_error
+    end
   end
 end

@@ -76,9 +76,9 @@ class Problem < ApplicationRecord
 
   def self.create_or_clear(problematic, category, should_exist, options = {})
     if should_exist
-      problematic.problems.where(category: category).first_or_create.update(options)
+      problematic.problems.including_ignored.where(category: category).first_or_create!.update(options)
     else
-      problematic.problems.where(category: category).destroy_all
+      problematic.problems.including_ignored.where(category: category).destroy_all
     end
     should_exist
   end
