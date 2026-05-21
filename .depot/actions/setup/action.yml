@@ -1,0 +1,27 @@
+# Inspired by https://github.com/Energy-Sparks/energy-sparks/blob/master/.github/actions/setup/action.yml
+name: Setup
+description: Set up Manyfold build environment
+runs:
+  using: composite
+  steps:
+    - name: Install system requirements
+      uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: libassimp-dev f3d
+    - name: Install imagemagick
+      uses: mfinelli/setup-imagemagick@e5a049b136cb833d5c0474b38d166f0bdb0e4497
+    - name: Set up Ruby and install gems
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - name: Enable Corepack
+      run: corepack enable
+      shell: bash
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: ".node-version"
+        cache: yarn
+    - name: Install yarn packages
+      run: yarn install
+      shell: bash
