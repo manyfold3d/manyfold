@@ -250,6 +250,14 @@ RSpec.describe ModelFile do
       expect { presupported.presupported_version = another_presupported }.not_to change(Relationship, :count)
     end
 
+    it "changes existing presupported_version" do # rubocop:todo RSpec/MultipleExpectations
+      another_presupported = create(:model_file, model: model, presupported: true)
+      expect { unsupported.presupported_version = another_presupported }.not_to change(Relationship, :count)
+      expect(unsupported.reload.presupported_version).to eq another_presupported
+      expect(another_presupported.reload.unsupported_version).to eq unsupported
+      expect(presupported.reload.unsupported_version).to be_nil
+    end
+
     it "clears presupported version if presupported file is set to unsupported" do
       expect { presupported.update!(presupported: false) }.to change(Relationship, :count).by(-1)
     end

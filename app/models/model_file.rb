@@ -284,7 +284,9 @@ class ModelFile < ApplicationRecord
   def presupported_version=(file)
     clear_presupported_relation and return if file.nil?
     return unless !presupported && file.presupported
-    reverse_relationships.find_or_create_by(subject: file, predicate: "supported_version_of")
+    if file != presupported_version
+      reverse_relationships.where(predicate: "supported_version_of").create_with(subject: file).first_or_create!.update(subject: file)
+    end
   end
 
   private
