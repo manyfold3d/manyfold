@@ -2,6 +2,7 @@ module ManyfoldApi::V0
   class ModelFileDeserializer < BaseDeserializer
     def deserialize
       return unless @object
+      supported_version = dereference(@object["related"]&.find { |it| it["relationship"] == "presupported_version" }&.dig("@id"), ModelFile)
       {
         filename: @object["filename"],
         notes: @object["description"],
@@ -9,12 +10,7 @@ module ManyfoldApi::V0
         presupported: @object["presupported"],
         y_up: @object["up"] == "+y",
         previewable: @object["presupported"],
-        reverse_relationships_attributes: [
-          {
-            subject: dereference(@object["related"]&.find { |it| it["relationship"] == "presupported_version" }&.dig("@id"), ModelFile),
-            predicate: "supported_version_of"
-          }
-        ]
+        presupported_version: supported_version
       }.compact
     end
 
