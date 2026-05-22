@@ -73,9 +73,11 @@ class Analysis::AnalyseModelFileJob < ApplicationJob
   end
 
   def inefficiency_problem(file)
-    return "ASCII STL" if (file.extension === "stl") && (file.head(6) === "solid ")
+    head = file.head(16)
+    file.attachment_attacher.reload
+    return "ASCII STL" if (file.extension === "stl") && (head.slice(0, 6) === "solid ")
     return "Wavefront OBJ" if file.extension === "obj"
-    return "ASCII PLY" if (file.extension === "ply") && (file.head(16) === "ply\rformat ascii")
+    return "ASCII PLY" if (file.extension === "ply") && (head === "ply\rformat ascii")
     nil
   end
 

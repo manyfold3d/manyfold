@@ -34,7 +34,7 @@ RSpec.describe Analysis::AnalyseModelFileJob do
 
     it "detects ASCII STL files and creates a Problem record" do # rubocop:todo RSpec/ExampleLength, RSpec/MultipleExpectations
       allow(file).to receive_messages(extension: "stl", size: 1234)
-      allow(file).to receive(:head).with(6).once.and_return("solid ")
+      allow(file).to receive(:head).with(16).once.and_return("solid xxxxxxxxxx")
       expect { described_class.perform_now file.id }.to change(Problem, :count).from(0).to(1)
       expect(Problem.first.category).to eq "inefficient"
       expect(Problem.first.note).to eq "ASCII STL"
