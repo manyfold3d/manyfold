@@ -5,22 +5,24 @@
     <%= checkbox_input_row form, :presupported %>
     <%= checkbox_input_row form, :y_up %>
     <%= checkbox_input_row form, :previewable %>
-    <div>
-      <%= form.label :presupported_version %>
-    </div>
-    <div>
-      <%= form.select :presupported_version_id,
-        Naturally.sort_by(
-          policy_scope(@model.model_files).presupported.select { |x| x.extension.downcase == @file.extension.downcase },
-          :name_and_filename
-        ).map{ |it| [it.name_and_filename, it.id] },
-        {
-          include_blank: t("general.none"),
-          selected: @file.presupported_version.id
-        }, {
-          class: "form-select"
-        } %>
-    </div>
+    <% unless @file.presupported %>
+      <div>
+        <%= form.label :presupported_version %>
+      </div>
+      <div>
+        <%= form.select :presupported_version_id,
+          Naturally.sort_by(
+            policy_scope(@model.model_files).presupported.select { |x| x.extension.downcase == @file.extension.downcase },
+            :name_and_filename
+          ).map{ |it| [it.name_and_filename, it.id] },
+          {
+            include_blank: t("general.none"),
+            selected: @file.presupported_version&.id
+          }, {
+            class: "form-select"
+          } %>
+      </div>
+    <% end %>
   <% end %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
