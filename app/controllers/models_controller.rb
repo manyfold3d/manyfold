@@ -37,10 +37,10 @@ class ModelsController < ApplicationController
         @images = files.select(&:is_image?)
         @images.unshift(@model.preview_file) if @images.delete(@model.preview_file)
         if helpers.file_list_settings["hide_presupported_versions"]
-          hidden_ids = files.select(:presupported_version_id).where.not(presupported_version_id: nil)
+          hidden_ids = files.includes(:relationships).where("relationships.predicate": "supported_version_of")
           files = files.where.not(id: hidden_ids)
         end
-        files = files.includes(:presupported_version, :problems)
+        files = files.includes(:problems)
         files = files.reject(&:is_image?)
         @groups = helpers.group(files)
         @num_files = files.count

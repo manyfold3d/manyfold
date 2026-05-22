@@ -213,9 +213,6 @@ cs:
             filename:
               cannot_change_type: není stejný typ souboru
               case_change_only: nemůže jít pouze o změnu velikosti písmen
-            presupported_version:
-              already_presupported: nelze nastavit u předběžně podporovaného souboru
-              not_supported: není předběžně podporovaný soubor
     models:
       acts_as_taggable_on/tag:
         few: Štítky

@@ -80,7 +80,7 @@ RSpec.describe ModelFile do
     end
 
     it "updates model timestamp when changed" do
-      expect { part.update!(presupported: true) }.to change(model, :updated_at)
+      expect { part.update!(y_up: true) }.to change(model, :updated_at)
     end
   end
 
@@ -229,8 +229,8 @@ RSpec.describe ModelFile do
 
   context "with different versions of the same file" do
     let!(:model) { create(:model) }
-    let!(:presupported) { create(:model_file, model: model, presupported: true) }
-    let!(:unsupported) { create(:model_file, model: model, presupported: false, presupported_version: presupported) }
+    let!(:unsupported) { create(:model_file, model: model, presupported: false) }
+    let!(:presupported) { create(:model_file, model: model, presupported: true, relationships_attributes: [{objekt: unsupported, predicate: "supported_version_of"}]) }
 
     it "can access supported part from unsupported part" do
       expect(unsupported.presupported_version).to eq presupported
@@ -242,21 +242,24 @@ RSpec.describe ModelFile do
 
     it "only let presupported files be set as the presupported_version" do # rubocop:todo RSpec/MultipleExpectations
       another_unsupported = create(:model_file, model: model, presupported: false)
-      unsupported.presupported_version = another_unsupported
-      expect(unsupported).not_to be_valid
-      expect(unsupported.errors[:presupported_version].first).to eq "is not a presupported file"
+      expect { unsupported.presupported_version = another_unsupported }.not_to change(Relationship, :count)
     end
 
     it "does not allow a presupported_version to be set for presupported files" do # rubocop:todo RSpec/MultipleExpectations
       another_presupported = create(:model_file, model: model, presupported: true)
-      presupported.presupported_version = another_presupported
-      expect(presupported).not_to be_valid
-      expect(presupported.errors[:presupported_version].first).to eq "cannot be set on a presupported file"
+      expect { presupported.presupported_version = another_presupported }.not_to change(Relationship, :count)
+    end
+
+    it "changes existing presupported_version" do # rubocop:todo RSpec/MultipleExpectations
+      another_presupported = create(:model_file, model: model, presupported: true)
+      expect { unsupported.presupported_version = another_presupported }.not_to change(Relationship, :count)
+      expect(unsupported.reload.presupported_version).to eq another_presupported
+      expect(another_presupported.reload.unsupported_version).to eq unsupported
+      expect(presupported.reload.unsupported_version).to be_nil
     end
 
     it "clears presupported version if presupported file is set to unsupported" do
-      presupported.update!(presupported: false)
-      expect(unsupported.reload.presupported_version).to be_nil
+      expect { presupported.update!(presupported: false) }.to change(Relationship, :count).by(-1)
     end
   end
 

@@ -5,6 +5,9 @@ module Relatable
     has_many :relationships, dependent: :destroy, as: "subject"
     has_many :reverse_relationships, dependent: :destroy, class_name: "Relationship", as: "objekt"
 
+    accepts_nested_attributes_for :relationships
+    accepts_nested_attributes_for :reverse_relationships
+
     # Add through relationships in models like so:
     # has_many :related_models, through: :relationships, source_type: "Model", source: "objekt"
 

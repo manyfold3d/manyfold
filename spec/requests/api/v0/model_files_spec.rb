@@ -56,8 +56,8 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
     parameter name: :id, in: :path, type: :string, required: true, example: "def456"
 
     let(:model) { create(:model, :with_collection, creator: create(:creator)) }
-    let(:supported_file) { create(:model_file, model: model, presupported: true) }
-    let(:file) { create(:model_file, model: model, presupported_version: supported_file) }
+    let(:file) { create(:model_file, model: model) }
+    let(:supported_file) { create(:model_file, model: model, presupported: true, relationships_attributes: [{objekt: file, predicate: "supported_version_of"}]) }
 
     let(:model_id) { model.to_param }
     let(:id) { file.to_param }
@@ -112,16 +112,10 @@ describe "ModelFiles", :after_first_run, :multiuser do # rubocop:disable RSpec/E
           }
         }
 
-        run_test! "produces valid linked data" do
+        run_test! do # rubocop:disable RSpec/MultipleExpectations
           graph = RDF::Graph.new << JSON::LD::API.toRdf(response.parsed_body)
           expect(graph).to be_valid
-        end
-
-        run_test! do
           expect(response.parsed_body["description"]).to eq "lorem ipsum etc"
-        end
-
-        run_test! do
           expect(response.parsed_body.dig("related", 0, "@id")).to eq "http://localhost:3214/models/#{model_id}/model_files/#{new_supported_file.to_param}"
         end
       end

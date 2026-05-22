@@ -86,6 +86,7 @@ class ModelFilesController < ApplicationController
     respond_to do |format|
       format.html do
         if result
+          @file.presupported_version = @model.model_files.find(params[:model_file][:presupported_version_id]) if params[:model_file][:presupported_version_id]
           current_user.set_list_state(@file, :printed, params[:model_file][:printed] === "1")
           redirect_to [@model, @file], notice: t(".success")
         else

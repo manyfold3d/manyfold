@@ -213,9 +213,6 @@ pt:
             filename:
               cannot_change_type:
               case_change_only:
-            presupported_version:
-              already_presupported:
-              not_supported:
     models:
       acts_as_taggable_on/tag:
         few:

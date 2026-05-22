@@ -213,9 +213,6 @@ nl:
             filename:
               cannot_change_type: is niet hetzelfde bestandstype
               case_change_only: kan niet alleen hoofdletters/kleine letters wijzigen
-            presupported_version:
-              already_presupported: kan niet worden ingesteld op een voorondersteund bestand
-              not_supported: is geen voorondersteund bestand
     models:
       acts_as_taggable_on/tag:
         few: Tags
