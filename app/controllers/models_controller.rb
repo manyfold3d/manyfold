@@ -40,7 +40,7 @@ class ModelsController < ApplicationController
           hidden_ids = files.select(:presupported_version_id).where.not(presupported_version_id: nil)
           files = files.where.not(id: hidden_ids)
         end
-        files = files.includes(:presupported_version, :problems)
+        files = files.includes(:problems)
         files = files.reject(&:is_image?)
         @groups = helpers.group(files)
         @num_files = files.count
