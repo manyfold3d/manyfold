@@ -2476,11 +2476,11 @@ __metadata:
   linkType: hard
 
 "es-object-atoms@npm:^1.0.0, es-object-atoms@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "es-object-atoms@npm:1.1.1"
+  version: 1.1.2
+  resolution: "es-object-atoms@npm:1.1.2"
   dependencies:
     es-errors: ^1.3.0
-  checksum: 214d3767287b12f36d3d7267ef342bbbe1e89f899cfd67040309fc65032372a8e60201410a99a1645f2f90c1912c8c49c8668066f6bdd954bcd614dda2e3da97
+  checksum: b821f39e4f48bd85b13fee80aea9068a674bcb78b95ff01267aa4da1111f83e6944049b3329b2ffdb3acaa266fb5b8b885476fe8cada05034dc7c87c8016c86d
   languageName: node
   linkType: hard
 
