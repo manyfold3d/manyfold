@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<%= I18n.locale %>" data-controller="i18n">
+<html lang="<%= I18n.locale %>" data-controller="i18n" data-bs-theme="<%= current_user&.theme || 'default' %>">
   <head>
     <title><%= @title || site_name %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">

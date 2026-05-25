@@ -38,6 +38,18 @@
             {class: "form-select"} %>
       <small class="form-text"><%= t ".sensitive_content.help" %></small>
     </div>
-
+<div>
+      <%= form.label :theme, class: "col-form-label" %>
+    </div>
+    <div>
+      <%= form.select :theme,
+            [
+              [t(".theme.default"), "default"],
+              [t(".theme.modern"), "modern"]
+            ],
+            {selected: @user.theme || "default"},
+            {class: "form-select"} %>
+      <small class="form-text"><%= t ".theme.help" %></small>
+    </div>
   </div>
 </div>

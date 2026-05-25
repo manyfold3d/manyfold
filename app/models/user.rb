@@ -318,7 +318,8 @@ class User < ApplicationRecord
       "tag_cloud_settings",
       "problem_settings",
       "file_list_settings",
-      "tour_state"
+      "tour_state",
+      "theme"
     ].freeze
     (changed - settings_attributes).empty?
   end

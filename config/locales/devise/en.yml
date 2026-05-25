@@ -127,6 +127,10 @@ en:
           hide: Hide completely
           mask: Blur in lists
           show: Show as normal
+          theme:
+          help: Choose the visual style of the interface
+          default: Default
+          modern: Modern (Dark)
       new:
         approval_help: After creating your account, it will be manually reviewed by our moderators. We'll let you know when approval is complete and you can sign in.
         creators:

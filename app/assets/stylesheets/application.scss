@@ -1,4 +1,4 @@
-$color-mode-type: media-query;
+$color-mode-type: data;
 $table-bg-scale: -90%;
 
 $breadcrumb-margin-bottom: 0;
@@ -29,6 +29,7 @@ $ra-font-path: "../fonts" !default;
 @import "driver.js/dist/driver";
 
 @import './components/comment';
+@import './src/themes/modern';
 
 .ts-control {
 	padding: 1px;
