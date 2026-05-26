@@ -42,7 +42,25 @@ RSpec.describe Analysis::FileConversionJob do
       expect { ModelFile.find(file.id) }.not_to raise_error
     end
 
-    it "should create a file equivalence with the original file"
+    it "creates a file equivalence with the original file" do # rubocop:todo RSpec/ExampleLength
+      described_class.perform_now(file.id, :threemf)
+      new_file = ModelFile.where.not(id: file.id).first
+      expect(new_file.relationships.first.attributes).to include({
+        "subject_id" => new_file.id,
+        "objekt_id" => file.id,
+        "predicate" => "alternative_format_of"
+      })
+    end
+
+    it "creates a reverse file equivalence with the original file" do # rubocop:todo RSpec/ExampleLength
+      described_class.perform_now(file.id, :threemf)
+      new_file = ModelFile.where.not(id: file.id).first
+      expect(file.relationships.first.attributes).to include({
+        "subject_id" => file.id,
+        "objekt_id" => new_file.id,
+        "predicate" => "alternative_format_of"
+      })
+    end
 
     it "logs an error for non-manifold meshes" do
       pending "temporarily disabled"

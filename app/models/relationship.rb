@@ -1,7 +1,8 @@
 class Relationship < ApplicationRecord
   PREDICATES = [
-    "supported_version_of",
-    "adapted_from"
+    "adapted_from",
+    "alternative_format_of",
+    "supported_version_of"
   ]
 
   belongs_to :subject, polymorphic: true
