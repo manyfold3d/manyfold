@@ -727,7 +727,7 @@ de:
       explore_html: Oder finde <a href="%{link}">empfohlene Inhalte</a>, denen du folgen kannst!
       followers: Follower
       following: Folge ich
-      title: Verbindungen
+      title: Abos
     new:
       no_results: Ich konnte leider nichts zu "%{query}" finden. Handelt es sich um ein gültiges ActivityPub-Konto oder eine URL?
       recommended: Empfehlungen
