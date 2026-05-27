@@ -101,7 +101,7 @@ class ProblemsController < ApplicationController
     when "Model"
       redirect_to edit_model_path(problem.problematic)
     when "ModelFile"
-      redirect_to edit_model_model_file_path([problem.problematic.model, problem.problematic])
+      redirect_to edit_model_model_file_path(problem.problematic.model, problem.problematic)
     when "Link"
       redirect_to edit_model_path(problem.problematic.linkable)
     else
