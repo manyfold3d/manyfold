@@ -19,6 +19,7 @@ RUN apk add --no-cache \
   imagemagick-jpeg \
   imagemagick-webp \
   imagemagick-heic \
+  imath \
   assimp-dev \
   mesa-egl
 
