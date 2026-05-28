@@ -31,10 +31,15 @@ pt:
       prusa_slicer:
       super_slicer:
     form:
+      add:
       notes:
         help_html:
     general:
       edit:
+    relationship_fields:
+      delete:
+      edit_related:
+      this_file:
     show:
       convert:
       details_heading:

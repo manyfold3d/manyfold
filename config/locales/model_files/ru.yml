@@ -31,10 +31,15 @@ ru:
       prusa_slicer: Открыть в PrusaSlicer
       super_slicer: Открыть в SuperSlicer
     form:
+      add:
       notes:
         help_html:
     general:
       edit:
+    relationship_fields:
+      delete:
+      edit_related:
+      this_file:
     show:
       convert:
       details_heading:

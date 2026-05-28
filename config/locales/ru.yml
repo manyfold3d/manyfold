@@ -124,6 +124,7 @@ ru:
         presupported_version: Версия с поддержками
         previewable:
         printed: Напечатано
+        relationships:
         size: Размер файла
         unsupported_version: Версия без поддержек
         y_up: Осью Y вверх
@@ -354,6 +355,11 @@ ru:
         other: Проблемы
         two: Проблемы
         zero: Проблемы
+      relationships:
+        predicates:
+          adapted_from:
+          alternative_format_of:
+          supported_version_of:
       role:
         few:
         many:

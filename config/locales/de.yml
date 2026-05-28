@@ -124,6 +124,7 @@ de:
         presupported_version: Version mit Supportstruktur
         previewable: Vorschaubare
         printed: Gedruckt
+        relationships:
         size: Dateigröße
         unsupported_version: Nicht unterstützte Version
         y_up: Y Aufwärts
@@ -354,6 +355,11 @@ de:
         other: Probleme
         two: Probleme
         zero: Probleme
+      relationships:
+        predicates:
+          adapted_from:
+          alternative_format_of:
+          supported_version_of:
       role:
         few: Rollen
         many: Rollen

@@ -124,6 +124,7 @@ pt:
         presupported_version:
         previewable:
         printed:
+        relationships:
         size:
         unsupported_version:
         y_up:
@@ -354,6 +355,11 @@ pt:
         other:
         two:
         zero:
+      relationships:
+        predicates:
+          adapted_from:
+          alternative_format_of:
+          supported_version_of:
       role:
         few:
         many:

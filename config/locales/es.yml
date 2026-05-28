@@ -124,6 +124,7 @@ es:
         presupported_version: Versión con soporte predefinido
         previewable: Vista previa
         printed: Impreso
+        relationships:
         size: Tamaño del archivo
         unsupported_version: Versión sin soporte
         y_up: Eje Y Arriba
@@ -354,6 +355,11 @@ es:
         other: Problemas
         two: Problemas
         zero: Problemas
+      relationships:
+        predicates:
+          adapted_from:
+          alternative_format_of:
+          supported_version_of:
       role:
         few: Roles
         many: Roles

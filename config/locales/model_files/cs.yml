@@ -31,10 +31,15 @@ cs:
       prusa_slicer: Otevřít v PrusaSlicer
       super_slicer: Otevřít v SuperSlicer
     form:
+      add:
       notes:
         help_html: Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit: Upravit informace o souboru
+    relationship_fields:
+      delete:
+      edit_related:
+      this_file:
     show:
       convert: Převést do 3MF
       details_heading: Detaily

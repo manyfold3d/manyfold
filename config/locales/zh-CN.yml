@@ -124,6 +124,7 @@ zh-CN:
         presupported_version: 有支撑的版本
         previewable:
         printed: 已打印
+        relationships:
         size: 文件大小
         unsupported_version: 不支持的版本
         y_up: Y 向上
@@ -354,6 +355,11 @@ zh-CN:
         other: 问题
         two: 问题
         zero: 问题
+      relationships:
+        predicates:
+          adapted_from:
+          alternative_format_of:
+          supported_version_of:
       role:
         few:
         many:

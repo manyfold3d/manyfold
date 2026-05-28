@@ -31,10 +31,15 @@ de:
       prusa_slicer: in PrusaSlicer öffnen
       super_slicer: Im SuperSlicer öffnen
     form:
+      add:
       notes:
         help_html: 'Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden. '
     general:
       edit: Dateiinformationen bearbeiten
+    relationship_fields:
+      delete:
+      edit_related:
+      this_file:
     show:
       convert: zu 3MF konvertieren
       details_heading: Datei-Details
