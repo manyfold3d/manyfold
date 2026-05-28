@@ -34,7 +34,7 @@
     <% if (handler = FileHandlers::Base.handlers_for(environment: :browser, load_file: @file)&.first) %>
       <%= render handler.component.new(file: @file) %>
     <% elsif @file.has_render? %>
-      <%= render Renderer::ImageTag.new(file: @file) %>
+      <%= image_tag model_model_file_path(@file.model, @file, format: @file.extension, derivative: "render"), style: "width: 100%", alt: @file.name %>
     <% end %>
     <% if @file.notes %>
       <%= card(:secondary, t(".notes_heading")) do %>
