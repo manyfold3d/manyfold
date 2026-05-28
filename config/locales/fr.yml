@@ -123,9 +123,10 @@ fr:
         filename: Nom de fichier
         notes: Notes
         presupported: Présupporté
-        presupported_version_id: Version présupporté
+        presupported_version: Version présupporté
         previewable:
         printed: Imprimé
+        relationships:
         size: Taille du fichier
         unsupported_version: Version non supportée
         y_up: Y Up
@@ -356,6 +357,11 @@ fr:
         other: Problèmes
         two: Problèmes
         zero: Problèmes
+      relationships:
+        predicates:
+          adapted_from:
+          alternative_format_of:
+          supported_version_of:
       role:
         few:
         many:

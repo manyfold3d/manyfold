@@ -121,9 +121,10 @@ cs:
         filename: Název souboru
         notes: Poznámky
         presupported: Předběžně podporované
-        presupported_version_id: Předběžně podporovaná verze
+        presupported_version: Předběžně podporovaná verze
         previewable:
         printed: Vytisknuto
+        relationships:
         size: Velikost souboru
         unsupported_version: Nepodporovaná verze
         y_up: Y nahoru
@@ -354,6 +355,11 @@ cs:
         other: Problémy
         two: Problémy
         zero: Problémy
+      relationships:
+        predicates:
+          adapted_from:
+          alternative_format_of:
+          supported_version_of:
       role:
         few:
         many:

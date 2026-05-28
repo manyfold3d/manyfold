@@ -1,0 +1,30 @@
+<%= cocooned_item :tr do %>
+  <%= content_tag(:td) do %>
+    <%= t(".this_file") %>
+    <br>
+    <code><%= f.object.subject.filename %></code>
+  <% end %>
+  <% if f.object.persisted? %>
+    <%= content_tag(:td) { translate("activerecord.models.relationships.predicates.%{predicate}" % {predicate: f.object.predicate}) } %>
+    <%= content_tag(:td) do %>
+      <%= f.object.objekt.name %>
+      <br>
+      <code><%= f.object.objekt.filename %></code>
+    <% end %>
+  <% else %>
+    <td>
+      <%= f.select :predicate, Relationship::FILE_TO_FILE_PREDICATES.map { |it| [translate("activerecord.models.relationships.predicates.%{predicate}" % {predicate: it}), it] },
+            {selected: f.object&.predicate},
+            {class: "form-control"} %>
+    </td>
+    <td>
+      <%= f.select :objekt_id, @model.model_files.without_special.map { |it| [it.name_and_filename, it.public_id] },
+            {selected: f.object&.objekt&.public_id},
+            {class: "form-control"} %>
+    </td>
+  <% end %>
+  <td>
+    <%= link_to(Icon(icon: "pencil-square", label: translate(".edit_related")), edit_model_model_file_path(@model, f.object.objekt), class: "btn btn-outline-secondary") if f.object.persisted? %>
+    <%= cocooned_remove_item_button Icon(icon: "trash", label: translate(".delete")), f, class: "btn btn-outline-danger" %>
+  </td>
+<% end %>

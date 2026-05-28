@@ -5,27 +5,45 @@
     <%= checkbox_input_row form, :presupported %>
     <%= checkbox_input_row form, :y_up %>
     <%= checkbox_input_row form, :previewable %>
-    <% unless @file.presupported %>
-      <div>
-        <%= form.label :presupported_version %>
-      </div>
-      <div>
-        <%= form.select :presupported_version_id,
-              Naturally.sort_by(
-                policy_scope(@model.model_files).presupported.select { |x| x.extension.downcase == @file.extension.downcase },
-                :name_and_filename
-              ).map { |it| [it.name_and_filename, it.id] },
-              {
-                include_blank: t("general.none"),
-                selected: @file.presupported_version&.id
-              }, {
-                class: "form-select"
-              } %>
-      </div>
-    <% end %>
   <% end %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
+
+  <div>
+    <%= form.label :relationships %>
+    <%= cocooned_add_item_button Icon(icon: "node-plus", label: t(".add")), form, :relationships,
+          class: "btn btn-secondary btn-sm",
+          insertion_node: "#cocooned-relationships",
+          insertion_method: "append" %>
+  </div>
+  <div>
+    <table class="table">
+      <tbody>
+        <% @file.reverse_relationships.each do |r| %>
+        <tr>
+          <%= content_tag(:td) do %>
+            <%= r.subject.name %>
+            <br>
+            <code><%= r.subject.filename %></code>
+          <% end %>
+          <td><%= t("activerecord.models.relationships.predicates.%{predicate}" % {predicate: r.predicate}) %></td>
+          <%= content_tag(:td) do %>
+            <%= t("model_files.relationship_fields.this_file") %>
+            <br>
+            <code><%= @file.filename %></code>
+          <% end %>
+          <td><%= link_to Icon(icon: "pencil-square", label: translate("model_files.relationship_fields.edit_related")), edit_model_model_file_path(@model, r.subject), class: "btn btn-outline-secondary" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+      <%= cocooned_container :tbody, id: "cocooned-relationships", data: {controller: "cocooned"} do
+            form.fields_for :relationships do |f|
+              render "relationship_fields", f: f
+            end
+          end %>
+    </table>
+  </div>
+
   <div>
     <%= form.submit class: "btn btn-primary" %>
   </div>

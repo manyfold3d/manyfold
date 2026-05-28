@@ -31,10 +31,15 @@ ja:
       prusa_slicer: PrusaSlicerにオープン
       super_slicer: SuperSlicerにオープン
     form:
+      add:
       notes:
         help_html:
     general:
       edit:
+    relationship_fields:
+      delete:
+      edit_related:
+      this_file:
     show:
       convert: 3MFに変換
       details_heading:

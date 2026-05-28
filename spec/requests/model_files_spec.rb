@@ -312,22 +312,6 @@ RSpec.describe "Model Files" do
         expect { patch model_model_file_path(model, stl_file), params: params }
           .to change { stl_file.reload.y_up }.from(false).to(true)
       end
-
-      context "when setting supported and unsupported relation" do # rubocop:disable RSpec/MultipleMemoizedHelpers
-        let(:supported_file) { create(:model_file, model: model, presupported: true) }
-        let(:params) {
-          {
-            "model_file" => {
-              "presupported_version_id" => supported_file.id.to_s
-            }
-          }
-        }
-
-        it "sets presupported relationship" do
-          expect { patch model_model_file_path(model, stl_file), params: params }
-            .to change { stl_file.reload.presupported_version }.from(nil).to(supported_file)
-        end
-      end
     end
 
     describe "DELETE /models/:model_id/model_files/:id", :as_moderator do

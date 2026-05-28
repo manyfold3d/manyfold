@@ -121,9 +121,10 @@ nl:
         filename: Bestandsnaam
         notes: Notities
         presupported: Voorondersteund
-        presupported_version_id: Voorondersteunde versie
+        presupported_version: Voorondersteunde versie
         previewable:
         printed: Afgedrukt
+        relationships:
         size: Bestandsgrootte
         unsupported_version: Niet-ondersteunde versie
         y_up: Y Omhoog
@@ -354,6 +355,11 @@ nl:
         other: Problemen
         two: Problemen
         zero: Problemen
+      relationships:
+        predicates:
+          adapted_from:
+          alternative_format_of:
+          supported_version_of:
       role:
         few:
         many:

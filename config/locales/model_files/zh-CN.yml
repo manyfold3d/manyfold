@@ -31,10 +31,15 @@ zh-CN:
       prusa_slicer: 在 PrusaSlicer 中打开
       super_slicer: 在 SuperSlicer 中打开
     form:
+      add:
       notes:
         help_html: 您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
     general:
       edit: 编辑文件信息
+    relationship_fields:
+      delete:
+      edit_related:
+      this_file:
     show:
       convert: 转换为 3MF
       details_heading: 详细信息

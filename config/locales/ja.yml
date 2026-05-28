@@ -121,9 +121,10 @@ ja:
         filename: ファイル名
         notes: ノート
         presupported: サポート材付き
-        presupported_version_id: サポート材付きバージョン
+        presupported_version: サポート材付きバージョン
         previewable:
         printed: プリントされた
+        relationships:
         size: ファイルサイズ
         unsupported_version: サポート材無しバージョン
         y_up: Y上
@@ -354,6 +355,11 @@ ja:
         other: 問題点
         two: 問題点
         zero: 問題点
+      relationships:
+        predicates:
+          adapted_from:
+          alternative_format_of:
+          supported_version_of:
       role:
         few:
         many:
