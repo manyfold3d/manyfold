@@ -11,8 +11,6 @@ module Form
         :caption, # i18n-tasks-use t("activerecord.attributes.model_file.caption")
         :y_up, # i18n-tasks-use t("activerecord.attributes.model_file.y_up")
         :previewable, # i18n-tasks-use t("activerecord.attributes.model_file.previewable")
-        # not actually deserialized here
-        # i18n-tasks-use t("activerecord.attributes.model_file.presupported_version_id")
         relationships_attributes: [:id, :predicate, :objekt_id, :_destroy] # i18n-tasks-use t("activerecord.attributes.model_file.relationships")
       ])
       if allowed[:relationships_attributes]
