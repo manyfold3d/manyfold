@@ -22,14 +22,13 @@ RUN apk add --no-cache \
   assimp-dev \
   mesa-egl
 
-# Install latest VTK from Alpine edge
-RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
-  vtk
+# Install latest VTK and OpenCascade from Alpine edge
+RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community vtk opencascade
 
 # Scripts for cross-platform architecture detection
 COPY --from=tonistiigi/xx / /
 
 # Install custom f3d package
-RUN wget "https://github.com/manyfold3d/f3d-alpine/releases/download/v3.5.0-r0/f3d-3.5.0-r0.`xx-info alpine-arch`.apk" -O /tmp/f3d.apk
+RUN wget "https://github.com/manyfold3d/f3d-alpine/releases/download/v3.5.0-r0-1/f3d-3.5.0-r0.`xx-info alpine-arch`.apk" -O /tmp/f3d.apk
 RUN apk add --no-cache --allow-untrusted /tmp/f3d.apk
 RUN rm /tmp/f3d.apk
