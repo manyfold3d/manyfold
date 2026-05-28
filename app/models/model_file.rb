@@ -154,6 +154,11 @@ class ModelFile < ApplicationRecord
     bbox.size
   end
 
+  def planar?
+    i = dimensions.to_a.index { |it| it.zero? }
+    i ? [:x, :y, :z].at(i) : nil
+  end
+
   def duplicates
     return ModelFile.none if digest.nil? # rubocop:todo Pundit/UsePolicyScope
     ModelFile.where(digest: digest).where.not(id: id) # rubocop:todo Pundit/UsePolicyScope

@@ -72,9 +72,9 @@
             <%= ModelFile.human_attribute_name :dimensions %>
           </div>
           <div>
-            𝒙 <code><%= format("%g", @file.dimensions.x.round(1)) %></code>
-            𝒚 <code><%= format("%g", @file.dimensions.y.round(1)) %></code>
-            𝒛 <code><%= format("%g", @file.dimensions.z.round(1)) %></code>
+            𝒙 <code><%= format("%g", @file.dimensions.x.round(2)) %></code>
+            𝒚 <code><%= format("%g", @file.dimensions.y.round(2)) %></code>
+            𝒛 <code><%= format("%g", @file.dimensions.z.round(2)) %></code>
           </div>
         <% end %>
       </div>
