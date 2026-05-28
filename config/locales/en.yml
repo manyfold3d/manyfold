@@ -124,6 +124,7 @@ en:
         presupported_version_id: Presupported version
         previewable: Previewable
         printed: Printed
+        relationships: Relationships
         size: File Size
         unsupported_version: Unsupported version
         y_up: Y Up
@@ -354,6 +355,11 @@ en:
         other: Problems
         two: Problems
         zero: Problems
+      relationships:
+        predicates:
+          adapted_from: is a remix of
+          alternative_format_of: is an alternative format of
+          supported_version_of: is a supported version of
       role:
         few: Roles
         many: Roles
