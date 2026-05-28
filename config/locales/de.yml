@@ -121,7 +121,7 @@ de:
         filename: Dateiname
         notes: Notizen
         presupported: Supportstruktur schon vorhanden
-        presupported_version_id: Version mit Supportstruktur
+        presupported_version: Version mit Supportstruktur
         previewable: Vorschaubare
         printed: Gedruckt
         size: Dateigröße

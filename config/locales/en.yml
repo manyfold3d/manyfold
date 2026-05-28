@@ -121,7 +121,7 @@ en:
         filename: Filename
         notes: Notes
         presupported: Presupported
-        presupported_version_id: Presupported version
+        presupported_version: Presupported version
         previewable: Previewable
         printed: Printed
         relationships: Relationships

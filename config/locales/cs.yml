@@ -121,7 +121,7 @@ cs:
         filename: Název souboru
         notes: Poznámky
         presupported: Předběžně podporované
-        presupported_version_id: Předběžně podporovaná verze
+        presupported_version: Předběžně podporovaná verze
         previewable:
         printed: Vytisknuto
         size: Velikost souboru

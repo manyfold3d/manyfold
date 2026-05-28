@@ -121,7 +121,7 @@ ru:
         filename: Имя файла
         notes: Примечания
         presupported: С поддержками
-        presupported_version_id: Версия с поддержками
+        presupported_version: Версия с поддержками
         previewable:
         printed: Напечатано
         size: Размер файла

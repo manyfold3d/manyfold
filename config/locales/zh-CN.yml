@@ -121,7 +121,7 @@ zh-CN:
         filename: 文件名
         notes: 说明
         presupported: 有支撑
-        presupported_version_id: 有支撑的版本
+        presupported_version: 有支撑的版本
         previewable:
         printed: 已打印
         size: 文件大小
