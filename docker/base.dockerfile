@@ -19,12 +19,11 @@ RUN apk add --no-cache \
   imagemagick-jpeg \
   imagemagick-webp \
   imagemagick-heic \
-  imath \
   assimp-dev \
   mesa-egl
 
 # Install latest VTK and OpenCascade from Alpine edge
-RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community vtk opencascade
+RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community vtk opencascade imath alembic-libs  openexr-libopenexr
 
 # Scripts for cross-platform architecture detection
 COPY --from=tonistiigi/xx / /
