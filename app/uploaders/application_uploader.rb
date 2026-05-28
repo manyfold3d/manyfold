@@ -134,8 +134,21 @@ class ApplicationUploader < Shrine
         options = F3D_OPTS.merge(
           "up" => up,
           "camera-direction" => CAMERA_OPTS[up]
-        ).map { |k, v| "--#{k}=#{v}" }
-        output, _err = Open3.capture3("f3d", it.path, *options)
+        )
+        if (plane = context[:record]&.planar?)
+          options["grid"] = "0"
+          options["up"] = {
+            x: "-x",
+            y: "-y",
+            z: "-z"
+          }[plane]
+          options["camera-direction"] = {
+            x: "0,0,-1",
+            y: "-1,0,0",
+            z: "0,-1,0"
+          }[plane]
+        end
+        output, _err = Open3.capture3("f3d", it.path, *options.map { |k, v| "--#{k}=#{v}" })
         {
           render: (output.length > 0) ? StringIO.new(output) : nil
         }.compact
