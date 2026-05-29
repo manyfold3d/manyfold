@@ -1,7 +1,7 @@
 Rails.root.glob("lib/file_handlers/*.rb") { require it }
 
 module FileHandlers
-  ALL_HANDLERS = FileHandlers.constants.without(:Base).map { |it| FileHandlers.const_get("FileHandlers::#{it}") }.freeze
+  ALL_HANDLERS = FileHandlers.constants.without(:Base, :Slic3rFamily).map { |it| FileHandlers.const_get("FileHandlers::#{it}") }.freeze
 
   def self.handlers_for(environment:, load_file:)
     ALL_HANDLERS # rubocop:disable Pundit/UsePolicyScope
