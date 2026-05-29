@@ -5,13 +5,13 @@ class FileHandlers::Base
   #  :browser (the visitor's web browser - Safari, Chrome, etc)
   #  :preview_frame (like browser, but specifically for use inside a PreviewFrame component)
   #  :client (the visitor's machine, that the browser is running on)
-  ENVIRONMENTS = [].freeze
+  # ENVIRONMENTS = [].freeze
 
   # Derived classes should set the INPUT_TYPES constant to an array of mime types that this handler can load (if any)
-  INPUT_TYPES = [].freeze
+  # INPUT_TYPES = [].freeze
 
   # Derived classes should set the OUTPUT_TYPES constant to an array of mime types that this handler can save (if any)
-  OUTPUT_TYPES = [].freeze
+  # OUTPUT_TYPES = [].freeze
 
   class << self
     extend Memoist
@@ -21,12 +21,26 @@ class FileHandlers::Base
     end
 
     def can_load?(type)
-      type.in? INPUT_TYPES
+      case type.class.name
+      when "String"
+        type.in? self::INPUT_TYPES.filter_map(&:to_s)
+      when "Symbol"
+        type.in? self::INPUT_TYPES.filter_map(&:to_sym)
+      else
+        type.in? self::INPUT_TYPES
+      end
     end
     memoize :can_load?
 
     def can_save?(type)
-      type.in? OUTPUT_TYPES
+      case type.class.name
+      when "String"
+        type.in? self::OUTPUT_TYPES.filter_map(&:to_s)
+      when "Symbol"
+        type.in? self::OUTPUT_TYPES.filter_map(&:to_sym)
+      else
+        type.in? self::OUTPUT_TYPES
+      end
     end
     memoize :can_save?
 
