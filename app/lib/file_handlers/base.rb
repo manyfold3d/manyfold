@@ -21,7 +21,6 @@ class FileHandlers::Base
     end
 
     def can_load?(type)
-      Rails.logger.warn "#{class_name}#can_load? #{type}"
       type.in? INPUT_TYPES
     end
     memoize :can_load?
