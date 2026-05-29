@@ -20,6 +20,11 @@ class FileHandlers::Base
       0
     end
 
+    # For test mocking only
+    def input_types
+      INPUT_TYPES
+    end
+
     def can_load?(type)
       case type.class.name
       when "String"
@@ -31,6 +36,11 @@ class FileHandlers::Base
       end
     end
     memoize :can_load?
+
+    # For test mocking only
+    def output_types
+      OUTPUT_TYPES
+    end
 
     def can_save?(type)
       case type.class.name
