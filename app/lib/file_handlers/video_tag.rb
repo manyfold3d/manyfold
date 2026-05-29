@@ -1,15 +1,8 @@
 class FileHandlers::VideoTag < FileHandlers::Base
-  class << self
-    def environments
-      [:browser, :preview_frame]
-    end
+  ENVIRONMENTS = [:browser, :preview_frame].freeze
+  INPUT_TYPES = SupportedMimeTypes.video_types.freeze
 
-    def component
-      Components::Renderers::VideoTag
-    end
-
-    def input_types
-      SupportedMimeTypes.video_types
-    end
+  def self.component
+    Components::Renderers::VideoTag
   end
 end

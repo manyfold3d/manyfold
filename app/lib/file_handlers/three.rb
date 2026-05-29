@@ -1,17 +1,10 @@
 class FileHandlers::Three < FileHandlers::Base
-  class << self
-    def environments
-      [:browser, :preview_frame]
-    end
+  ENVIRONMENTS = [:browser, :preview_frame].freeze
+  INPUT_TYPES = Mime::EXTENSION_LOOKUP.slice(
+    "stl", "obj", "3mf", "ply", "gltf", "glb", "drc", "fbx", "3ds", "gcode", "mpd", "ldr", "3dm"
+  ).values.freeze
 
-    def component
-      Components::Renderers::Three
-    end
-
-    def input_types
-      Mime::EXTENSION_LOOKUP.slice(
-        "stl", "obj", "3mf", "ply", "gltf", "glb", "drc", "fbx", "3ds", "gcode", "mpd", "ldr", "3dm"
-      ).values
-    end
+  def self.component
+    Components::Renderers::Three
   end
 end

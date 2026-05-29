@@ -1,5 +1,5 @@
 class Upgrade::FileTypeIterationJob < Upgrade::IterationJob
-  def mime_type
+  def mime_types
     raise NotImplementedError
   end
 

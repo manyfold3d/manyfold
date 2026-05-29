@@ -1,19 +1,12 @@
 class FileHandlers::IframeTag < FileHandlers::Base
-  class << self
-    def environments
-      [:browser]
-    end
+  ENVIRONMENTS = [:browser].freeze
+  INPUT_TYPES = Mime::EXTENSION_LOOKUP.slice("pdf", "html", "text", "md").values.freeze
 
-    def priority
-      200
-    end
+  def self.priority
+    200
+  end
 
-    def component
-      Components::Renderers::IframeTag
-    end
-
-    def input_types
-      Mime::EXTENSION_LOOKUP.slice("pdf", "html", "text", "md").values
-    end
+  def self.component
+    Components::Renderers::IframeTag
   end
 end

@@ -1,19 +1,11 @@
 class FileHandlers::Assimp < FileHandlers::Base
-  class << self
-    def environments
-      [:server]
-    end
+  ENVIRONMENTS = [:server].freeze
 
-    def input_types
-      Mime::EXTENSION_LOOKUP.slice(
-        *::Assimp.extension_list.to_s.delete("*.").split(";")
-      ).values
-    end
+  INPUT_TYPES = Mime::EXTENSION_LOOKUP.slice(
+    *::Assimp.extension_list.to_s.delete("*.").split(";")
+  ).values.freeze
 
-    def output_types
-      Mime::EXTENSION_LOOKUP.slice(
-        *(0...::Assimp.aiGetExportFormatCount).map { |it| ::Assimp.aiGetExportFormatDescription it }.map(&:file_extension)
-      ).values
-    end
-  end
+  OUTPUT_TYPES = Mime::EXTENSION_LOOKUP.slice(
+      *(0...::Assimp.aiGetExportFormatCount).map { |it| ::Assimp.aiGetExportFormatDescription it }.map(&:file_extension)
+    ).values.freeze
 end

@@ -1,14 +1,10 @@
 class FileHandlers::SuperSlicer < FileHandlers::Slic3rFamily
   # i18n-tasks-use t('model_files.download.super_slicer')
 
-  class << self
-    def input_types
-      # From code at https://github.com/supermerill/SuperSlicer/tree/master_27/src/libslic3r/Format
-      Mime::EXTENSION_LOOKUP.slice("3mf", "amf", "obj", "step", "stl", "svg").values
-    end
+  # From code at https://github.com/supermerill/SuperSlicer/tree/master_27/src/libslic3r/Format
+  INPUT_TYPES = Mime::EXTENSION_LOOKUP.slice("3mf", "amf", "obj", "step", "stl", "svg").values.freeze
 
-    def scheme
-      "prusaslicer"
-    end
+  def self.scheme
+    "prusaslicer"
   end
 end

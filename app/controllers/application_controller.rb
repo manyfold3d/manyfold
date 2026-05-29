@@ -110,7 +110,7 @@ class ApplicationController < ActionController::Base
     content_security_policy.script_src :self
     content_security_policy.style_src :self
     content_security_policy.style_src_attr :unsafe_inline
-    content_security_policy.style_src_elem :self, "nonce-#{content_security_policy_nonce}", "https://fonts.googleapis.com"
+    content_security_policy.style_src_elem :self, "https://fonts.googleapis.com"
     # Add library origins
     origins = Library.all.filter_map(&:storage_origin) # rubocop:disable Pundit/UsePolicyScope
     content_security_policy.img_src(*origins)
@@ -122,10 +122,12 @@ class ApplicationController < ActionController::Base
       content_security_policy.img_src(*scout_csp)
       content_security_policy.script_src(*scout_csp)
       content_security_policy.style_src(*scout_csp)
+      content_security_policy.style_src_elem(*scout_csp)
       content_security_policy.connect_src(*scout_csp)
       content_security_policy.frame_src(*scout_csp)
     else
       content_security_policy.script_src "nonce-#{content_security_policy_nonce}"
+      content_security_policy.style_src_elem "nonce-#{content_security_policy_nonce}"
     end
   end
 

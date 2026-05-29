@@ -1,21 +1,15 @@
 class FileHandlers::Rouge < FileHandlers::Base
-  class << self
-    def environments
-      [:browser]
-    end
+  ENVIRONMENTS = [:browser].freeze
 
-    def priority
-      100
-    end
+  INPUT_TYPES = ::Rouge::Lexer.all.filter_map { |lexer| # rubocop:disable Pundit/UsePolicyScope
+    (Mime::LOOKUP.keys & lexer.mimetypes).map { |it| Mime::LOOKUP[it] }.uniq
+  }.flatten.freeze
 
-    def component
-      Components::Renderers::Rouge
-    end
+  def self.priority
+    100
+  end
 
-    def input_types
-      ::Rouge::Lexer.all.filter_map do |lexer| # rubocop:disable Pundit/UsePolicyScope
-        (Mime::LOOKUP.keys & lexer.mimetypes).map { |it| Mime::LOOKUP[it] }.uniq
-      end.flatten
-    end
+  def self.component
+    Components::Renderers::Rouge
   end
 end
