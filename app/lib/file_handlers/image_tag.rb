@@ -1,15 +1,8 @@
 class FileHandlers::ImageTag < FileHandlers::Base
-  class << self
-    def environments
-      [:browser, :preview_frame]
-    end
+  ENVIRONMENTS = [:browser, :preview_frame].freeze
+  INPUT_TYPES = SupportedMimeTypes.image_types
 
-    def component
-      Components::Renderers::ImageTag
-    end
-
-    def input_types
-      SupportedMimeTypes.image_types
-    end
+  def self.component
+    Components::Renderers::ImageTag
   end
 end

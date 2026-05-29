@@ -1,4 +1,18 @@
 class FileHandlers::Base
+  # Derived classes should set the ENVIRONMENTS constant to an array of places that this handler applies to.
+  # Any of:
+  #  :server (the thing running Manyfold)
+  #  :browser (the visitor's web browser - Safari, Chrome, etc)
+  #  :preview_frame (like browser, but specifically for use inside a PreviewFrame component)
+  #  :client (the visitor's machine, that the browser is running on)
+  ENVIRONMENTS = [].freeze
+
+  # Derived classes should set the INPUT_TYPES constant to an array of mime types that this handler can load (if any)
+  INPUT_TYPES = [].freeze
+
+  # Derived classes should set the OUTPUT_TYPES constant to an array of mime types that this handler can save (if any)
+  OUTPUT_TYPES = [].freeze
+
   class << self
     extend Memoist
 
@@ -6,45 +20,19 @@ class FileHandlers::Base
       0
     end
 
-    def environments
-      # Derived classes should return an array of places that this handler applies to.
-      # Any of:
-      #  :server (the thing running Manyfold)
-      #  :browser (the visitor's web browser - Safari, Chrome, etc)
-      #  :client (the visitor's machine, that the browser is running on)
-      []
-    end
-
     def can_load?(type)
-      type.in? input_types
+      Rails.logger.warn "#{class_name}#can_load? #{type}"
+      type.in? INPUT_TYPES
     end
     memoize :can_load?
 
-    def input_types
-      []
-    end
-    memoize :input_types
-
     def can_save?(type)
-      type.in? output_types
+      type.in? OUTPUT_TYPES
     end
     memoize :can_save?
 
-    def output_types
-      []
-    end
-    memoize :output_types
-
     def open_url_for(target_url, client_os: nil)
       raise NotImplementedError
-    end
-
-    def handlers_for(environment:, load_file:)
-      FileHandlers.constants
-        .map { |it| FileHandlers.const_get(it) }
-        .sort { |a, b| b&.priority <=> a&.priority }
-        .select { |it| it.environments.include? environment }
-        .select { |it| it.can_load? Mime[load_file.mime_type] }
     end
   end
 end

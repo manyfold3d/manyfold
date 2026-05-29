@@ -1,14 +1,9 @@
 class FileHandlers::Cura < FileHandlers::Slic3rFamily
   # i18n-tasks-use t('model_files.download.cura')
 
-  class << self
-    def input_types
-      # https://support.makerbot.com/s/article/1667411286871
-      Mime::EXTENSION_LOOKUP.slice("3mf", "amf", "dae", "gcode", "gltf", "obj", "ply", "stl", "x3d").values
-    end
+  INPUT_TYPES = Mime::EXTENSION_LOOKUP.slice("3mf", "amf", "dae", "gcode", "gltf", "obj", "ply", "stl", "x3d").values.freeze
 
-    def scheme
-      "cura"
-    end
+  def self.scheme
+    "cura"
   end
 end
