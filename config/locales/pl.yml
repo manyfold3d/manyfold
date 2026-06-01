@@ -121,12 +121,10 @@ pl:
         filename: Nazwa pliku
         notes: Notatki
         presupported:
-        presupported_version:
         previewable:
         printed: Wydrukowane
         relationships:
         size: Rozmiar pliku
-        unsupported_version: Niewspierana wersja
         y_up:
       problem:
         category: Kategoria
@@ -953,6 +951,9 @@ pl:
       liked:
     update:
       success:
+  model_files_helper:
+    tab_title:
+      presupported:
   moderator_mailer:
     new_approval:
       message: Ktoś nowy zarejestrował konto i wymaga zatwierdzenia. Zatwierdź konto pod adresem %{link}

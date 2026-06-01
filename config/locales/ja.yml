@@ -121,12 +121,10 @@ ja:
         filename: ファイル名
         notes: ノート
         presupported: サポート材付き
-        presupported_version: サポート材付きバージョン
         previewable:
         printed: プリントされた
         relationships:
         size: ファイルサイズ
-        unsupported_version: サポート材無しバージョン
         y_up: Y上
       problem:
         category: カテゴリー
@@ -953,6 +951,9 @@ ja:
       liked:
     update:
       success:
+  model_files_helper:
+    tab_title:
+      presupported: サポート材付きバージョン
   moderator_mailer:
     new_approval:
       message:

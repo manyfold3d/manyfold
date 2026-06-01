@@ -123,12 +123,10 @@ fr:
         filename: Nom de fichier
         notes: Notes
         presupported: Présupporté
-        presupported_version: Version présupporté
         previewable:
         printed: Imprimé
         relationships:
         size: Taille du fichier
-        unsupported_version: Version non supportée
         y_up: Y Up
       problem:
         category: Catégorie
@@ -955,6 +953,9 @@ fr:
       liked:
     update:
       success:
+  model_files_helper:
+    tab_title:
+      presupported: Version présupporté
   moderator_mailer:
     new_approval:
       message:
