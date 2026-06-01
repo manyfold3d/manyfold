@@ -954,7 +954,7 @@ GEM
 PLATFORMS
   ruby
   x64-mingw-ucrt
-  x86_64-darwin-22
+  x86_64-darwin
   x86_64-linux
 
 DEPENDENCIES
