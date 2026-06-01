@@ -28,7 +28,12 @@ class Analysis::FileConversionJob < ApplicationJob
     status[:step] = "jobs.analysis.file_conversion.exporting" # i18n-tasks-use t('jobs.analysis.file_conversion.exporting')
     new_file = ModelFile.new(
       model: file.model,
-      filename: Pathname.new(file.filename).sub_ext(".#{extension}")
+      filename: Pathname.new(file.filename).sub_ext(".#{extension}"),
+      presupported: file.presupported,
+      y_up: file.y_up,
+      previewable: file.previewable,
+      caption: file.caption,
+      notes: file.notes
     )
     dedup = 0
     while new_file.exists_on_storage?
