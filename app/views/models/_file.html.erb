@@ -9,7 +9,13 @@
         <% if file.caption %>
           <p><%= sanitize file.caption %></p>
         <% end %>
-        <small><code><%= sanitize file.filename %></code></small>
+        <small>
+          <code><%= sanitize file.filename %></code>
+          <%- alts = file.alternative_formats %>
+          <% if alts.any? %> +
+            <%= safe_join(alts.map(&:extension).map { |it| content_tag(:code) { it.upcase } }, ", ") %>
+          <% end %>
+        </small>
       </div>
       <div class="row">
         <div class="col">
