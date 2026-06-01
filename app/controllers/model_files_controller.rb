@@ -22,6 +22,7 @@ class ModelFilesController < ApplicationController
       end
     elsif stale?(@file)
       @duplicates = @file.duplicates
+      @related = Naturally.sort([@file, @file.related_files, @file.files_related_to_me].flatten.uniq, by: :name_and_filename)
       respond_to do |format|
         format.html
         format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelFileSerializer.new(@file).serialize }
@@ -31,8 +32,6 @@ class ModelFilesController < ApplicationController
         end
       end
     end
-    # i18n-tasks-use t("activerecord.attributes.model_file.unsupported_version")
-    # i18n-tasks-use t("activerecord.attributes.model_file.presupported_version")
     # i18n-tasks-use t("activerecord.attributes.model_file.filename")
     # i18n-tasks-use t("activerecord.attributes.model_file.digest")
     # i18n-tasks-use t("activerecord.attributes.model_file.size")

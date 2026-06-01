@@ -26,4 +26,11 @@ module ModelFilesHelper
   def app_icon_tag(app, alt:)
     image_tag("external-icons/#{app}.png", class: "app-icon", alt: alt)
   end
+
+  def tab_title(file)
+    [
+      file.extension.upcase,
+      (file.presupported ? t("model_files_helper.tab_title.presupported") : nil)
+    ].compact_blank.join(", ")
+  end
 end

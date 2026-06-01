@@ -121,12 +121,10 @@ de:
         filename: Dateiname
         notes: Notizen
         presupported: Supportstruktur schon vorhanden
-        presupported_version: Version mit Supportstruktur
         previewable: Vorschaubare
         printed: Gedruckt
         relationships:
         size: Dateigröße
-        unsupported_version: Nicht unterstützte Version
         y_up: Y Aufwärts
       problem:
         category: Kategorie
@@ -957,6 +955,9 @@ de:
       liked: Beliebte Modelle
     update:
       success: Liste erfolgreich aktualisiert
+  model_files_helper:
+    tab_title:
+      presupported: Version mit Supportstruktur
   moderator_mailer:
     new_approval:
       message: Eine neue Person hat sich für ein Konto angemeldet und benötigt eine Genehmigung. Genehmige das Konto hier %{link}

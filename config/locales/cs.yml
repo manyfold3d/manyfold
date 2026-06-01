@@ -121,12 +121,10 @@ cs:
         filename: Název souboru
         notes: Poznámky
         presupported: Předběžně podporované
-        presupported_version: Předběžně podporovaná verze
         previewable:
         printed: Vytisknuto
         relationships:
         size: Velikost souboru
-        unsupported_version: Nepodporovaná verze
         y_up: Y nahoru
       problem:
         category: Kategorie
@@ -953,6 +951,9 @@ cs:
       liked:
     update:
       success:
+  model_files_helper:
+    tab_title:
+      presupported: Předběžně podporovaná verze
   moderator_mailer:
     new_approval:
       message: Někdo nový si vytvořil účet a vyžaduje schválení. Schvalte účet na adrese %{link}

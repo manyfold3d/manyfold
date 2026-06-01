@@ -121,12 +121,10 @@ ru:
         filename: Имя файла
         notes: Примечания
         presupported: С поддержками
-        presupported_version: Версия с поддержками
         previewable:
         printed: Напечатано
         relationships:
         size: Размер файла
-        unsupported_version: Версия без поддержек
         y_up: Осью Y вверх
       problem:
         category: Категория
@@ -953,6 +951,9 @@ ru:
       liked:
     update:
       success:
+  model_files_helper:
+    tab_title:
+      presupported: Версия с поддержками
   moderator_mailer:
     new_approval:
       message:

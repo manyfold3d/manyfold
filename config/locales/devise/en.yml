@@ -105,7 +105,7 @@ en:
       file_list_settings:
         heading: Model pages
         hide_presupported_versions:
-          label: Combine linked unsupported and presupported files
+          label: Combine linked files into one entry
         summary: Control how model file lists are displayed
       first_use:
         email_help: Never shown publicly; only used for login and account security emails.

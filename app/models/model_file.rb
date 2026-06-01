@@ -286,6 +286,10 @@ class ModelFile < ApplicationRecord
     reverse_relationships.where(predicate: "supported_version_of").first&.subject
   end
 
+  def alternative_formats
+    files_related_to_me.where("relationships.predicate" => "alternative_format_of")
+  end
+
   def presupported_version=(file)
     clear_presupported_relation and return if file.nil?
     return unless !presupported && file.presupported

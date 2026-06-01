@@ -22,7 +22,7 @@ class FileHandlers::Base
 
     # For test mocking only
     def input_types
-      INPUT_TYPES
+      self::INPUT_TYPES
     end
 
     def can_load?(type)

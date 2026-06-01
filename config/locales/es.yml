@@ -121,12 +121,10 @@ es:
         filename: Archivo
         notes: Notas
         presupported: Soporte predefinido
-        presupported_version: Versión con soporte predefinido
         previewable: Vista previa
         printed: Impreso
         relationships:
         size: Tamaño del archivo
-        unsupported_version: Versión sin soporte
         y_up: Eje Y Arriba
       problem:
         category: Categoría
@@ -953,6 +951,9 @@ es:
       liked: Artículos que te gustan
     update:
       success: Lista actualizada correctamente
+  model_files_helper:
+    tab_title:
+      presupported: Versión con soporte predefinido
   moderator_mailer:
     new_approval:
       message: Alguien nuevo se ha registrado para obtener una cuenta y requiere aprobación. Aprobar la cuenta en %{link}

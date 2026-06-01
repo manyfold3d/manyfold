@@ -37,7 +37,7 @@ class ModelsController < ApplicationController
         @images = files.select(&:is_image?)
         @images.unshift(@model.preview_file) if @images.delete(@model.preview_file)
         if helpers.file_list_settings["hide_presupported_versions"]
-          hidden_ids = files.includes(:relationships).where("relationships.predicate": "supported_version_of")
+          hidden_ids = files.includes(:relationships).where("relationships.predicate": ["supported_version_of", "alternative_format_of"])
           files = files.where.not(id: hidden_ids)
         end
         files = files.includes(:problems)

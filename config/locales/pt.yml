@@ -121,12 +121,10 @@ pt:
         filename:
         notes:
         presupported:
-        presupported_version:
         previewable:
         printed:
         relationships:
         size:
-        unsupported_version:
         y_up:
       problem:
         category:
@@ -953,6 +951,9 @@ pt:
       liked:
     update:
       success:
+  model_files_helper:
+    tab_title:
+      presupported:
   moderator_mailer:
     new_approval:
       message:
