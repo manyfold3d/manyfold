@@ -47,9 +47,8 @@ class Analysis::FileConversionJob < ApplicationJob
         }
       )
     end
-    # Set relationships between files
+    # Set relationship between new file and old
     new_file.relationships << Relationship.new(subject: new_file, objekt: file, predicate: "alternative_format_of")
-    file.relationships << Relationship.new(subject: file, objekt: new_file, predicate: "alternative_format_of")
     # Store record in database
     new_file.save
     # Queue up file scan
