@@ -22,7 +22,7 @@ class ModelFilesController < ApplicationController
       end
     elsif stale?(@file)
       @duplicates = @file.duplicates
-      @related = Naturally.sort([@file, @file.related_files, @file.files_related_to_me].flatten.uniq, by: :name_and_filename)
+      @related = Naturally.sort([@file, @file.related_files, @file.files_related_to_me].flatten.uniq, by: :name_and_filename) if @file.relationships.any? || @file.reverse_relationships.any?
       respond_to do |format|
         format.html
         format.manyfold_api_v0 { render json: ManyfoldApi::V0::ModelFileSerializer.new(@file).serialize }
