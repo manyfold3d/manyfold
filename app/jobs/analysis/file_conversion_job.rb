@@ -53,6 +53,8 @@ class Analysis::FileConversionJob < ApplicationJob
     new_file.save
     # Queue up file scan
     new_file.analyse_later
+    # Update the UI
+    file.broadcast_refresh
   rescue NonManifoldError
     # Log non-manifold error as a problem, and absorb error so we don't retry
     Problem.create_or_clear(
