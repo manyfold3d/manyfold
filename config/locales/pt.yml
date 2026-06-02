@@ -951,9 +951,6 @@ pt:
       liked:
     update:
       success:
-  model_files_helper:
-    tab_title:
-      presupported:
   moderator_mailer:
     new_approval:
       message:

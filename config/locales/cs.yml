@@ -951,9 +951,6 @@ cs:
       liked:
     update:
       success:
-  model_files_helper:
-    tab_title:
-      presupported: Předběžně podporovaná verze
   moderator_mailer:
     new_approval:
       message: Někdo nový si vytvořil účet a vyžaduje schválení. Schvalte účet na adrese %{link}

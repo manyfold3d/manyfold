@@ -951,9 +951,6 @@ zh-CN:
       liked:
     update:
       success:
-  model_files_helper:
-    tab_title:
-      presupported: 有支撑的版本
   moderator_mailer:
     new_approval:
       message: 有新用户注册了账户，需要批准。批准 %{link} 账户

@@ -30,7 +30,7 @@ module ModelFilesHelper
   def tab_title(file)
     [
       file.extension.upcase,
-      (file.presupported ? t("model_files_helper.tab_title.presupported") : nil)
+      (file.presupported ? t("activerecord.attributes.model_file.presupported") : nil)
     ].compact_blank.join(", ")
   end
 end
