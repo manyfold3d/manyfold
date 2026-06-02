@@ -135,6 +135,7 @@ class ApplicationUploader < Shrine
           "up" => up,
           "camera-direction" => CAMERA_OPTS[up]
         )
+        options["color"] = "1,1,1" if context[:record].mime_type.to_s == "model/obj"
         if (plane = context[:record]&.planar?)
           options["grid"] = "0"
           options["up"] = {
