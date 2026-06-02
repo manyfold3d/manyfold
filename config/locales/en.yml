@@ -951,9 +951,6 @@ en:
       liked: Liked Items
     update:
       success: List updated successfully
-  model_files_helper:
-    tab_title:
-      presupported: Supported
   moderator_mailer:
     new_approval:
       message: Someone new has signed up for an account, and requires approval. Approve the account at %{link}

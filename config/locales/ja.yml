@@ -951,9 +951,6 @@ ja:
       liked:
     update:
       success:
-  model_files_helper:
-    tab_title:
-      presupported: サポート材付きバージョン
   moderator_mailer:
     new_approval:
       message:

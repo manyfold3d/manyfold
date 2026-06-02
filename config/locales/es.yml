@@ -951,9 +951,6 @@ es:
       liked: Artículos que te gustan
     update:
       success: Lista actualizada correctamente
-  model_files_helper:
-    tab_title:
-      presupported: Versión con soporte predefinido
   moderator_mailer:
     new_approval:
       message: Alguien nuevo se ha registrado para obtener una cuenta y requiere aprobación. Aprobar la cuenta en %{link}

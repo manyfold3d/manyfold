@@ -951,9 +951,6 @@ ru:
       liked:
     update:
       success:
-  model_files_helper:
-    tab_title:
-      presupported: Версия с поддержками
   moderator_mailer:
     new_approval:
       message:

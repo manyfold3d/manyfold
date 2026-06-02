@@ -955,9 +955,6 @@ de:
       liked: Beliebte Modelle
     update:
       success: Liste erfolgreich aktualisiert
-  model_files_helper:
-    tab_title:
-      presupported: Version mit Supportstruktur
   moderator_mailer:
     new_approval:
       message: Eine neue Person hat sich für ein Konto angemeldet und benötigt eine Genehmigung. Genehmige das Konto hier %{link}
