@@ -1053,12 +1053,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/bootstrap@npm:^5.2.10":
-  version: 5.2.10
-  resolution: "@types/bootstrap@npm:5.2.10"
+"@types/bootstrap@npm:^5.2.11":
+  version: 5.2.11
+  resolution: "@types/bootstrap@npm:5.2.11"
   dependencies:
-    "@popperjs/core": "npm:^2.9.2"
-  checksum: d1253a2f19c96d667e280c07eb29cca00529f31fc3b799d5feef928476735994411a1a2643e3f1581855250d031f120e628396b79bade491ea956a99192eaeea
+    "@popperjs/core": ^2.9.2
+  checksum: 79e9c02179b49d72ef5cfcd9dcdc1bd665f4ba5f6272c3009bd2e425ed288a7c7d7ee2a107653fb25388280ed2b02fe0598e8b171f26f7d9f33ed52e1bcf6188
   languageName: node
   linkType: hard
 
@@ -4349,7 +4349,7 @@ __metadata:
     "@notus.sh/cocooned": ^3.0.1
     "@popperjs/core": ^2.11.8
     "@rails/ujs": ^7.1.600
-    "@types/bootstrap": ^5.2.10
+    "@types/bootstrap": ^5.2.11
     "@types/i18n-js": ^4.0.1
     "@types/jquery": ^4.0.0
     "@types/lodash": ^4.17.24
