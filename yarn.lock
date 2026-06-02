@@ -614,7 +614,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/plugin-kit@npm:^0.7.1":
+"@eslint/plugin-kit@npm:^0.7.2":
   version: 0.7.2
   resolution: "@eslint/plugin-kit@npm:0.7.2"
   dependencies:
@@ -2857,16 +2857,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^10.4.0":
-  version: 10.4.0
-  resolution: "eslint@npm:10.4.0"
+"eslint@npm:^10.4.1":
+  version: 10.4.1
+  resolution: "eslint@npm:10.4.1"
   dependencies:
     "@eslint-community/eslint-utils": ^4.8.0
     "@eslint-community/regexpp": ^4.12.2
     "@eslint/config-array": ^0.23.5
     "@eslint/config-helpers": ^0.6.0
     "@eslint/core": ^1.2.1
-    "@eslint/plugin-kit": ^0.7.1
+    "@eslint/plugin-kit": ^0.7.2
     "@humanfs/node": ^0.16.6
     "@humanwhocodes/module-importer": ^1.0.1
     "@humanwhocodes/retry": ^0.4.2
@@ -2898,7 +2898,7 @@ __metadata:
       optional: true
   bin:
     eslint: bin/eslint.js
-  checksum: 83e7e58a9ad7e9286fe8ab727a694548896b596cb4094963a9212ceb1d525f194041db8f9e08f1810bed6e0d5a2cf13ffa8dee837f8ea51b68cc81c96cbcf376
+  checksum: dc799503f619f097617e2a7d32dc5b8855c83d52df15278e4584730d94ad58aaf258cd6d113bec53f63aa694e34a43871f00bf90030b04661d445c598a403dd1
   languageName: node
   linkType: hard
 
@@ -4372,7 +4372,7 @@ __metadata:
     comlink: ^4.4.2
     driver.js: ^1.4.0
     esbuild: ^0.28.0
-    eslint: ^10.4.0
+    eslint: ^10.4.1
     husky: ^9.1.7
     i18n-js: ^4.5.3
     masonry-layout: ^4.2.2
