@@ -238,4 +238,4 @@ gem "marcel", "~> 1.2"
 
 gem "naturally", "~> 2.3"
 
-gem "rouge", "~> 4.7"
+gem "rouge", "~> 5.0"
