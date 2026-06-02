@@ -123,7 +123,7 @@ es:
         presupported: Soporte predefinido
         previewable: Vista previa
         printed: Impreso
-        relationships:
+        relationships: Relaciones
         size: Tamaño del archivo
         y_up: Eje Y Arriba
       problem:
@@ -355,9 +355,9 @@ es:
         zero: Problemas
       relationships:
         predicates:
-          adapted_from:
-          alternative_format_of:
-          supported_version_of:
+          adapted_from: es un remix de
+          alternative_format_of: es un formato alternativo de
+          supported_version_of: es una versión compatible de
       role:
         few: Roles
         many: Roles
