@@ -953,7 +953,7 @@ nl:
       success:
   model_files_helper:
     tab_title:
-      presupported: Voorondersteunde versie
+      presupported:
   moderator_mailer:
     new_approval:
       message:
