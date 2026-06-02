@@ -123,7 +123,7 @@ de:
         presupported: Supportstruktur schon vorhanden
         previewable: Vorschaubare
         printed: Gedruckt
-        relationships:
+        relationships: Beziehungen
         size: Dateigröße
         y_up: Y Aufwärts
       problem:
@@ -146,7 +146,7 @@ de:
         encrypted_password: Verschlüsseltes Passwort
         failed_attempts: Fehlversuche
         interface_language: Webseiten Sprache
-        landing_page:
+        landing_page: Landing Page
         last_sign_in_at: Letzte Anmeldung am
         last_sign_in_ip: IP der letzten Anmeldung
         locked_at: Gesperrt am
@@ -355,9 +355,9 @@ de:
         zero: Probleme
       relationships:
         predicates:
-          adapted_from:
-          alternative_format_of:
-          supported_version_of:
+          adapted_from: ist ein Remix von
+          alternative_format_of: ist ein alternatives Format von
+          supported_version_of: ist eine unterstützte Version von
       role:
         few: Rollen
         many: Rollen
@@ -770,7 +770,7 @@ de:
     public: Öffentlich sichtbar
     report: Melden %{type}
     save: Speichern
-    setup_mode:
+    setup_mode: Diese Website befindet sich derzeit im Einrichtungsmodus; komme später wieder!
     shared: mit Lokalen Nutzern geteilt
     view: Siehe
   group_mailer:
@@ -869,7 +869,7 @@ de:
         detect_duplicates: Doppelte Datei erkannt
         detect_ineffiency: Erkennung ineffizienter Formate
         file_statistics: Berechnung von Dateistatistiken
-        generating_derivatives:
+        generating_derivatives: Generierung von Derivaten
         matching: Unterstützte Dateien abgleichen
       file_conversion:
         exporting: Neue Datei exportieren

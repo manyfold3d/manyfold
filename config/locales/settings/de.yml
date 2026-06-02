@@ -12,8 +12,8 @@ de:
         help_html: Gezeigt auf der Info-Seite; kannst du <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden.
         label: Über diese Instanz
       default_landing_page:
-        help:
-        label:
+        help: Die Seite, die Besucher und Kontoinhaber standardmäßig sehen werden.
+        label: Landing Page
       heading: Erscheinungsbild
       information: Informationen
       rules:
@@ -116,8 +116,8 @@ de:
       all_collections: Kollektionen
       all_creators: Autoren
       all_models: Modelle
-      dashboard:
-      my_models:
+      dashboard: Dashboard
+      my_models: Meine Modelle
     multiuser:
       approve_signups:
         help: Alle neuen Konten müssen von einem Moderator genehmigt werden, bevor man sich anmelden kann.
