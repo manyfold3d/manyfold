@@ -5,7 +5,6 @@
   },
   "development": {
     "autoBuild": true,
-    "skipProxy": true,
     "publicOutputDir": "vite-dev",
     "port": 3036
   },
