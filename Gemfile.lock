@@ -966,12 +966,12 @@ GEM
       activerecord (>= 7.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yard (0.9.42)
-    yard-lint (1.5.1)
+    yard (0.9.44)
+    yard-lint (1.5.2)
       yard (~> 0.9)
       zeitwerk (~> 2.6)
     zaru (1.0.1)
-    zeitwerk (2.8.1)
+    zeitwerk (2.8.2)
     zxcvbn (0.1.10)
 
 PLATFORMS
@@ -1478,10 +1478,10 @@ CHECKSUMS
   win32ole (1.9.3) sha256=01f43dc5dc13806e6e58204f538b4a28f3d85968ea89074abc9a3cd118e94d96
   with_model (2.2.0) sha256=eb0f498752391917e8c0a990951a343756bb89df2d12190faa5915a3fd99277e
   xpath (3.2.0) sha256=6dfda79d91bb3b949b947ecc5919f042ef2f399b904013eb3ef6d20dd3a4082e
-  yard (0.9.42) sha256=4e2be01f8623556093497731d44c801e600d7c9759ec7a35a2dd5dd83bbbba68
-  yard-lint (1.5.1) sha256=41d194855b4f54aa957a0337720c6f48e252e4a31d7412c46cc94a12399c0149
+  yard (0.9.44) sha256=eb087e9b631ccd887b049f303d489963945452d5e2a7eb49a5a74a7cf6887f28
+  yard-lint (1.5.2) sha256=bbb37c45babdba61d7fb18b2c40ad4136760413cfcf4e9becd9390a36c60792b
   zaru (1.0.1) sha256=9bc6e3ea24d3253eaf812a00c826f24df5791523e3a3cef128a1508512ca1f3f
-  zeitwerk (2.8.1) sha256=1c85e0f28954d68cd16e575da37f26846f609b68d80b5942ccfd31030c2449d5
+  zeitwerk (2.8.2) sha256=7212a61311083c604184b1ea2574b9aa05cd14f855a0841c06985cabe9181d12
   zxcvbn (0.1.10) sha256=46e49a7cadcaab543b0073715341607ed99ffcacfc96d6f883bf1bfefaf0aaa5
 
 RUBY VERSION
