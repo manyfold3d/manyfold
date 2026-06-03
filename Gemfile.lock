@@ -829,7 +829,7 @@ GEM
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
     shellany (0.0.1)
-    shrine (3.7.0)
+    shrine (3.7.1)
       content_disposition (~> 1.0)
       down (~> 5.1)
     shrine-tus (2.1.1)
@@ -1411,7 +1411,7 @@ CHECKSUMS
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   selenium-webdriver (4.44.0) sha256=6f1df072529af369589c46f0e01132952aabb250cfd683c274d74dc1eb5d8477
   shellany (0.0.1) sha256=0e127a9132698766d7e752e82cdac8250b6adbd09e6c0a7fbbb6f61964fedee7
-  shrine (3.7.0) sha256=3832f63bb0a9466237d8db2354c390ceb635b94ca73155006f741ea7c450e142
+  shrine (3.7.1) sha256=963d44c0e7cab2abb71c5dd514ba5c62ab039c2a0ccdccebe0fbcd376274d747
   shrine-tus (2.1.1) sha256=fc16e11b7f806963b0ba8d61271bb5fbae24d8065aa8eed889abc9f46e841f99
   shrine-url (2.4.1) sha256=e086a9c3017b881483a8aaa516b369cfc3bc6dcbbe2bff55a26c8ace08634429
   sidekiq (8.0.10) sha256=37ccd8da8d46f6779b8655cb30c1bfcb0decd57e890ff56d8b8252a5d9a84cd6
