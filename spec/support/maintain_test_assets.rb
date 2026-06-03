@@ -47,7 +47,6 @@ class MaintainTestAssets
   # entries in the "scripts" section of 'package.json'.
   #
   EXPECTED_ASSETS = %w[
-    application.js
     themes/default.css
   ]
 
@@ -88,7 +87,6 @@ class MaintainTestAssets
     end
 
     if run_build
-      Rake::Task["javascript:build"].invoke
       Rake::Task["css:build"].invoke
 
       built_assets.each { |filename| FileUtils.touch(filename, nocreate: true) }
