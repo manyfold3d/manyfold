@@ -9,8 +9,8 @@ gem "rails", "~> 8.0.5"
 gem "puma", "~> 8.0"
 # Deliver assets with Propshaft
 gem "propshaft", "~> 1.3"
-# Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
-gem "jsbundling-rails"
+# Bundle CSS and JS
+gem "vite_rails", "~> 3.11"
 gem "cssbundling-rails", "~> 1.4"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.15"

@@ -1,7 +1,7 @@
 rails: SCOUT_DEV_TRACE=false bin/rails server -p $PORT -b [::]
 default_worker: bundle exec sidekiq -C config/workers/default.yml
 performance_worker: bundle exec sidekiq -C config/workers/performance.yml
-js: yarn watch:js
+vite: bin/vite dev
 css: yarn watch:css
 typecheck: yarn typecheck --watch --preserveWatchOutput
 ngrok: ngrok start manyfold
