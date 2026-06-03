@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Components::Renderers::Three < Components::Renderers::Base
-  include Phlex::Rails::Helpers::JavascriptPath
   include Phlex::Rails::Helpers::NumberToHumanSize
+
+  register_value_helper :vite_asset_url
 
   def self.supports?(file)
     FileHandlers::Three.can_load? file&.mime_type
@@ -24,7 +25,7 @@ class Components::Renderers::Three < Components::Renderers::Base
         data: {
           controller: "renderer",
           preview_url: model_model_file_raw_path(@file.model, @file.filename),
-          worker_url: javascript_path("offscreen_renderer.js"),
+          worker_url: vite_asset_url("offscreen_renderer"),
           format: @file.extension,
           y_up: @file.y_up.to_s,
           grid_size_x: @settings["grid_width"],
