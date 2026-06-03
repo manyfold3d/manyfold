@@ -3,12 +3,10 @@
   "private": true,
   "scripts": {
     "lint:ts": "ts-standard --fix",
-    "build": "bundle exec i18n export --config=./config/i18n-js.yml && ./esbuild.js",
     "build:css": "yarn build:css:compile && yarn build:css:prefix",
     "build:css:compile": "sass ./app/assets/stylesheets/entrypoints:./app/assets/builds --no-source-map --load-path=node_modules --quiet-deps --silence-deprecation import",
     "build:css:prefix": "postcss ./app/assets/builds/themes/*.css --use=autoprefixer -d ./app/assets/builds/themes",
     "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext scss --exec \"yarn build:css\"",
-    "watch:js": "bundle exec i18n export --config=./config/i18n-js.yml && ./esbuild.js --watch",
     "typecheck": "bundle exec i18n export --config=./config/i18n-js.yml && tsc --project tsconfig.json"
   },
   "dependencies": {
