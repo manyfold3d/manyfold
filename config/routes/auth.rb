@@ -1,4 +1,3 @@
-get "/altcha", to: "altcha#new"
 get ".well-known/change-password", to: redirect("/users/edit")
 
 devise_controllers = {

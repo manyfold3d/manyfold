@@ -32,7 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /users
   def create
     authorize User
-    if AltchaSolution.verify_and_save(params.permit(:altcha)[:altcha])
+    if Altcha.verify(params.permit(:altcha)[:altcha])
       super do |user|
         opts = {}
         opts [:approved] = false if SiteSettings.approve_signups

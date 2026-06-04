@@ -9,7 +9,7 @@ class Components::AltchaWidget < Components::Base
       altcha_widget(
         id: "altcha-widget",
         auto: "onload",
-        challengeurl: altcha_url,
+        challenge: Altcha.create_challenge.to_json,
         hidefooter: true,
         hidelogo: true,
         workerurl: javascript_url("altcha_worker.js")

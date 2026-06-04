@@ -6,7 +6,7 @@ class Users::InvitationsController < Devise::InvitationsController
 
   def update
     skip_authorization
-    if AltchaSolution.verify_and_save(params.permit(:altcha)[:altcha])
+    if Altcha.verify(params.permit(:altcha)[:altcha])
       super
     else
       params[:invitation_token] = params[:user][:invitation_token]
