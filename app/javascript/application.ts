@@ -5,7 +5,7 @@ import './controllers/index'
 import Rails from '@rails/ujs'
 import 'masonry-layout'
 
-import 'altcha/external'
+import 'altcha'
 import 'altcha/i18n/cs'
 import 'altcha/i18n/de'
 import 'altcha/i18n/en'

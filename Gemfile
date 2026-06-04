@@ -205,7 +205,7 @@ gem "stimulus-rails", "~> 1.3.4"
 
 gem "scoped_search", "~> 4.3"
 
-gem "altcha-rails", "~> 0.0.6"
+gem "altcha-rails", "~> 0.1.0"
 
 gem "reverse_markdown", "~> 3.0"
 

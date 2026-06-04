@@ -285,7 +285,7 @@ RSpec.describe "Users::Registrations" do
       describe "POST /users with approval disabled" do
         before do
           allow(SiteSettings).to receive(:approve_signups).and_return(false)
-          allow(AltchaSolution).to receive(:verify_and_save).and_return(true)
+          allow(Altcha).to receive(:verify).and_return(true)
         end
 
         it "creates a new user" do
@@ -311,7 +311,7 @@ RSpec.describe "Users::Registrations" do
       describe "POST /users when at the rate limit" do
         before do
           allow(SiteSettings).to receive(:approve_signups).and_return(false)
-          allow(AltchaSolution).to receive(:verify_and_save).and_return(true)
+          allow(Altcha).to receive(:verify).and_return(true)
         end
 
         it "rate limits login attempts" do
@@ -327,7 +327,7 @@ RSpec.describe "Users::Registrations" do
             approve_signups: false,
             autocreate_creator_for_new_users: true
           )
-          allow(AltchaSolution).to receive(:verify_and_save).and_return(true)
+          allow(Altcha).to receive(:verify).and_return(true)
         }
 
         let(:post_with_creator_options) {
@@ -364,7 +364,7 @@ RSpec.describe "Users::Registrations" do
             approve_signups: false,
             autocreate_creator_for_new_users: true
           )
-          allow(AltchaSolution).to receive(:verify_and_save).and_return(true)
+          allow(Altcha).to receive(:verify).and_return(true)
         }
 
         let(:post_with_creator_options) {
@@ -411,7 +411,7 @@ RSpec.describe "Users::Registrations" do
       describe "POST /users with approval enabled" do
         before do
           allow(SiteSettings).to receive(:approve_signups).and_return(true)
-          allow(AltchaSolution).to receive(:verify_and_save).and_return(true)
+          allow(Altcha).to receive(:verify).and_return(true)
         end
 
         it "creates a new user" do
