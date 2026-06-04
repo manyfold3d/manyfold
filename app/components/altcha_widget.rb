@@ -11,8 +11,7 @@ class Components::AltchaWidget < Components::Base
         auto: "onload",
         challenge: Altcha.create_challenge.to_json,
         hidefooter: true,
-        hidelogo: true,
-        workerurl: javascript_url("altcha_worker.js")
+        hidelogo: true
       )
     end
   end
