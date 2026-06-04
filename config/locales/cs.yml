@@ -490,8 +490,6 @@ cs:
   components:
     actor_card:
       non_manyfold_account: Toto není účet Manyfold; můžete ho sledovat, ale pravděpodobně se nic zajímavého nestane, alespoň prozatím.
-    altcha_widget:
-      help:
     column_header:
       current_sort:
       sort_by:

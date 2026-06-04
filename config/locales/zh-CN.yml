@@ -490,8 +490,6 @@ zh-CN:
   components:
     actor_card:
       non_manyfold_account: 这不是一个 Manyfold 账户；你可以关注它，但目前可能不会发生什么有趣的事情。
-    altcha_widget:
-      help:
     column_header:
       current_sort:
       sort_by: 排序方式
