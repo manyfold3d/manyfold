@@ -11,7 +11,6 @@ gem "puma", "~> 8.0"
 gem "propshaft", "~> 1.3"
 # Bundle CSS and JS
 gem "vite_rails", "~> 3.11"
-gem "cssbundling-rails", "~> 1.4"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.15"
 # Use Redis adapter to run Action Cable in production

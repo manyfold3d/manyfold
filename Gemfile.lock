@@ -215,8 +215,6 @@ GEM
     cronex (0.15.0)
       tzinfo
       unicode (>= 0.4.4.5)
-    cssbundling-rails (1.4.3)
-      railties (>= 6.0.0)
     csv (3.3.5)
     data_migrate (11.3.1)
       activerecord (>= 6.1)
@@ -1017,7 +1015,6 @@ DEPENDENCIES
   climate_control (~> 1.2)
   cocooned (~> 3.0)
   connection_pool (>= 2.2.5, < 3.0)
-  cssbundling-rails (~> 1.4)
   csv (~> 3.3)
   data_migrate (~> 11.3)
   database_cleaner-active_record (~> 2.2)
@@ -1188,7 +1185,6 @@ CHECKSUMS
   crack (1.0.1) sha256=ff4a10390cd31d66440b7524eb1841874db86201d5b70032028553130b6d4c7e
   crass (1.0.6) sha256=dc516022a56e7b3b156099abc81b6d2b08ea1ed12676ac7a5657617f012bd45d
   cronex (0.15.0) sha256=21c794e085fad2951c4f2e279f440340a35ba2297e0b738f22f263f69fbe2186
-  cssbundling-rails (1.4.3) sha256=53aecd5a7d24ac9c8fcd92975acd0e830fead4ee4583d3d3d49bb64651946e41
   csv (3.3.5) sha256=6e5134ac3383ef728b7f02725d9872934f523cb40b961479f69cf3afa6c8e73f
   data_migrate (11.3.1) sha256=18b9b2189d15e482d5335f3fc2248b8b447204bd8257ded872dd077737168ffb
   database_cleaner-active_record (2.2.2) sha256=88296b9f3088c31f7c0d4fcec10f68e4b71c96698043916de59b04debec10388
