@@ -57,7 +57,7 @@ namespace :themes do
       name = theme["name"].downcase
       contents = <<~EOF
         @import "bootswatch/dist/#{name}/variables";
-        @import '../../../assets/stylesheets/application';
+        @import '~/stylesheets/application';
         @import "bootswatch/dist/#{name}/bootswatch";
       EOF
       Rails.root.join("app/frontend/entrypoints/themes/#{name}.scss").write(contents)
