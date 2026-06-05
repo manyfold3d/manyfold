@@ -60,7 +60,7 @@ namespace :themes do
         @import '../../../assets/stylesheets/application';
         @import "bootswatch/dist/#{name}/bootswatch";
       EOF
-      Rails.root.join("app/assets/stylesheets/entrypoints/themes/#{name}.scss").write(contents)
+      Rails.root.join("app/frontend/entrypoints/themes/#{name}.scss").write(contents)
     end
   end
 end
