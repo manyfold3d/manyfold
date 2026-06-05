@@ -23,10 +23,10 @@ $ra-font-path: "../fonts" !default;
 @import 'tom-select/dist/css/tom-select.bootstrap5';
 @import './src/tom-select-prefers-color-scheme-dark';
 
-@import '@uppy/core/dist/style.min';
-@import '@uppy/dashboard/dist/style.min';
+@import '@uppy/core/css/style.min.css';
+@import '@uppy/dashboard/css/style.min.css';
 
-@import "driver.js/dist/driver";
+@import "driver.js/dist/driver.css";
 
 @import './components/comment';
 
