@@ -7,9 +7,7 @@ ruby file: ".ruby-version"
 gem "rails", "~> 8.0.5"
 # Use Puma as the app server
 gem "puma", "~> 8.0"
-# Deliver assets with Propshaft
-gem "propshaft", "~> 1.3"
-# Bundle CSS and JS
+# Bundle and deliver assets
 gem "vite_rails", "~> 3.11"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.15"
