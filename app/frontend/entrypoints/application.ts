@@ -1,6 +1,6 @@
 // Turbo and Stimulus
 import '@hotwired/turbo-rails'
-import '../controllers/index'
+import '../../javascript/controllers/index'
 
 import Rails from '@rails/ujs'
 import 'masonry-layout'
