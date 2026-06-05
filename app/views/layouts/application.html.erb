@@ -10,7 +10,7 @@
     <%= tag.meta name: "apple-mobile-web-app-title", content: site_name %>
     <%= vite_client_tag %>
     <%= vite_typescript_tag "application", nonce: true, defer: true %>
-    <%= stylesheet_link_tag "themes/#{SiteSettings.validated_theme}", nonce: true %>
+    <%= vite_stylesheet_tag "themes/#{SiteSettings.validated_theme}", nonce: true %>
     <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
     <%= tag.meta name: "robots", content: @indexing_directives if @indexing_directives.presence %>
     <%= yield :head %>
