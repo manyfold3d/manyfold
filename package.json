@@ -1,6 +1,7 @@
 {
   "name": "manyfold",
   "private": true,
+  "type": "module",
   "scripts": {
     "lint:ts": "ts-standard --fix",
     "typecheck": "bundle exec i18n export --config=./config/i18n-js.yml && tsc --project tsconfig.json"
@@ -52,6 +53,9 @@
     "@typescript-eslint/parser": "^8.60.1",
     "eslint": "^10.4.1",
     "husky": "^9.1.7",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^16.1.1",
+    "postcss-preset-env": "^11.3.0",
     "ts-standard": "^12.0.2",
     "typescript": "~5.9.3",
     "vite": "^8.0.0",
