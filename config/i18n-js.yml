@@ -2,6 +2,6 @@
 # This config file is for the i18n-js gem
 # and provides translation into javascript
 translations:
-  - file: app/javascript/src/locales.json
+  - file: app/frontend/javascript/src/locales.json
     patterns:
       - "*.renderer.*"
