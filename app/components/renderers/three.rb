@@ -25,7 +25,7 @@ class Components::Renderers::Three < Components::Renderers::Base
         data: {
           controller: "renderer",
           preview_url: model_model_file_raw_path(@file.model, @file.filename),
-          worker_url: vite_asset_url("offscreen_renderer"),
+          worker_url: vite_asset_url("offscreen_renderer.ts"),
           format: @file.extension,
           y_up: @file.y_up.to_s,
           grid_size_x: @settings["grid_width"],
