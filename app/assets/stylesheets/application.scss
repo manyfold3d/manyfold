@@ -5,10 +5,10 @@ $breadcrumb-margin-bottom: 0;
 
 @import 'bootstrap/scss/bootstrap';
 
-$bootstrap-icons-font-dir: "../fonts" !default;
+$bootstrap-icons-font-dir: "bootstrap-icons/font/fonts" !default;
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-$ra-font-path: "../fonts" !default;
+$ra-font-path: "@infinizhen/rpg-awesome-continued/fonts" !default;
 @import '@infinizhen/rpg-awesome-continued/scss/rpg-awesome-continued';
 
 @import './src/layout';
