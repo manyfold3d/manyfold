@@ -11,24 +11,24 @@ $bootstrap-icons-font-dir: "bootstrap-icons/font/fonts" !default;
 $ra-font-path: "@infinizhen/rpg-awesome-continued/fonts" !default;
 @import '@infinizhen/rpg-awesome-continued/scss/rpg-awesome-continued';
 
-@import './src/layout';
-@import './src/libraries';
-@import './src/models';
-@import './src/model_files';
-@import './src/effects';
-@import './src/altcha';
-@import './src/avatars';
-@import './src/forms';
+@import '~/stylesheets/src/layout';
+@import '~/stylesheets/src/libraries';
+@import '~/stylesheets/src/models';
+@import '~/stylesheets/src/model_files';
+@import '~/stylesheets/src/effects';
+@import '~/stylesheets/src/altcha';
+@import '~/stylesheets/src/avatars';
+@import '~/stylesheets/src/forms';
 
 @import 'tom-select/dist/css/tom-select.bootstrap5';
-@import './src/tom-select-prefers-color-scheme-dark';
+@import '~/stylesheets/src/tom-select-prefers-color-scheme-dark';
 
 @import '@uppy/core/css/style.min.css';
 @import '@uppy/dashboard/css/style.min.css';
 
 @import "driver.js/dist/driver.css";
 
-@import './components/comment';
+@import '~/stylesheets/components/comment';
 
 .ts-control {
 	padding: 1px;
