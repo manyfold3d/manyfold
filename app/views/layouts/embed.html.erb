@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= tag.meta name: "csp-nonce", content: content_security_policy_nonce if content_security_policy_nonce %>
     <%= vite_client_tag %>
-    <%= vite_typescript_tag "application", nonce: true, defer: true %>
+    <%= vite_typescript_tag "entrypoints/application", nonce: true, defer: true %>
     <%= vite_stylesheet_tag "entrypoints/themes/#{SiteSettings.validated_theme}", nonce: true %>
     <%= yield :head %>
   </head>

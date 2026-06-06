@@ -9,7 +9,7 @@
     <%= tag.link rel: "apple-touch-icon", href: asset_path("square-180.png") %>
     <%= tag.meta name: "apple-mobile-web-app-title", content: site_name %>
     <%= vite_client_tag %>
-    <%= vite_typescript_tag "application", nonce: true, defer: true %>
+    <%= vite_typescript_tag "entrypoints/application", nonce: true, defer: true %>
     <%= vite_stylesheet_tag "themes/#{SiteSettings.validated_theme}", nonce: true %>
     <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
     <%= tag.meta name: "robots", content: @indexing_directives if @indexing_directives.presence %>
