@@ -24,7 +24,7 @@ module ModelFilesHelper
   end
 
   def app_icon_tag(app, alt:)
-    image_tag("external-icons/#{app}.png", class: "app-icon", alt: alt)
+    vite_image_tag("images/external-icons/#{app}.png", class: "app-icon", alt: alt)
   end
 
   def tab_title(file)

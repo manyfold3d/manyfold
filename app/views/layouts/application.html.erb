@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= tag.meta name: "csp-nonce", content: content_security_policy_nonce if content_security_policy_nonce %>
-    <%= favicon_link_tag "roundel.svg" %>
+    <%= favicon_link_tag vite_asset_path("images/roundel.svg") %>
     <%= tag.link rel: "apple-touch-icon", href: asset_path("square-180.png") %>
     <%= tag.meta name: "apple-mobile-web-app-title", content: site_name %>
     <%= vite_client_tag %>
