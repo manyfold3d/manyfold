@@ -65,10 +65,12 @@ namespace :themes do
   end
 end
 
-Rake::Task["assets:precompile"].enhance(["i18n_js:export"])
-
 namespace :i18n_js do
   task export: :environment do
     I18nJS.call(config_file: Rails.root.join("config/i18n-js.yml"))
   end
+end
+
+namespace :vite do
+  task install_dependencies: "i18n_js:export"
 end
