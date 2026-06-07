@@ -1,6 +1,6 @@
 import * as Comlink from 'comlink'
 import './comlink_event_handler'
-import type { OffscreenRenderer } from '../../frontend/entrypoints/offscreen_renderer'
+import type { OffscreenRenderer } from '../../entrypoints/offscreen_renderer'
 
 export class ObjectPreview {
   progressBar: HTMLDivElement | null
