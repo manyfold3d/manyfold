@@ -3362,6 +3362,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"f3d@npm:^3.5.0":
+  version: 3.5.0
+  resolution: "f3d@npm:3.5.0"
+  checksum: d4155b6481c99e4976cb2582152ec84bfed7f206b6ff7c8ad46d6b623721bcc70819ccd02211adaa1be8aa473abf179e8ebdfe762c5732c6649bb9225b8388cd
+  languageName: node
+  linkType: hard
+
 "fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -4735,6 +4742,7 @@ __metadata:
     comlink: ^4.4.2
     driver.js: ^1.6.0
     eslint: ^10.6.0
+    f3d: ^3.5.0
     husky: ^9.1.7
     i18n-js: ^4.5.3
     masonry-layout: ^4.2.2
