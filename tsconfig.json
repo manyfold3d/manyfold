@@ -16,7 +16,7 @@
     "target": "es2022",
     "noEmit": true,
     "types": [
-      "./app/javascript/src/window_extensions",
+      "./app/frontend/javascript/src/window_extensions",
       "node",
       "webpack-env",
       "three",

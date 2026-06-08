@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= tag.meta name: "csp-nonce", content: content_security_policy_nonce if content_security_policy_nonce %>
-    <%= favicon_link_tag "roundel.svg" %>
+    <%= favicon_link_tag vite_asset_path("images/roundel.svg") %>
     <%= tag.link rel: "apple-touch-icon", href: asset_path("square-180.png") %>
     <%= tag.meta name: "apple-mobile-web-app-title", content: site_name %>
     <%= vite_client_tag %>
-    <%= vite_typescript_tag "application", nonce: true, defer: true %>
-    <%= stylesheet_link_tag "themes/#{SiteSettings.validated_theme}", nonce: true %>
+    <%= vite_typescript_tag "entrypoints/application.ts", nonce: true, defer: true %>
+    <%= vite_stylesheet_tag "entrypoints/themes/#{SiteSettings.validated_theme}.scss", nonce: true %>
     <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
     <%= tag.meta name: "robots", content: @indexing_directives if @indexing_directives.presence %>
     <%= yield :head %>

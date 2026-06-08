@@ -1,0 +1,61 @@
+$color-mode-type: media-query;
+$table-bg-scale: -90%;
+
+$breadcrumb-margin-bottom: 0;
+
+@import 'bootstrap/scss/bootstrap';
+
+$bootstrap-icons-font-dir: "bootstrap-icons/font/fonts" !default;
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+$ra-font-path: "@infinizhen/rpg-awesome-continued/fonts" !default;
+@import '@infinizhen/rpg-awesome-continued/scss/rpg-awesome-continued';
+
+@import '~/stylesheets/src/layout';
+@import '~/stylesheets/src/libraries';
+@import '~/stylesheets/src/models';
+@import '~/stylesheets/src/model_files';
+@import '~/stylesheets/src/effects';
+@import '~/stylesheets/src/altcha';
+@import '~/stylesheets/src/avatars';
+@import '~/stylesheets/src/forms';
+
+@import 'tom-select/dist/css/tom-select.bootstrap5';
+@import '~/stylesheets/src/tom-select-prefers-color-scheme-dark';
+
+@import '@uppy/core/css/style.min.css';
+@import '@uppy/dashboard/css/style.min.css';
+
+@import "driver.js/dist/driver.css";
+
+@import '~/stylesheets/components/comment';
+
+.ts-control {
+	padding: 1px;
+}
+
+p.alert:empty,
+p.notice:empty {
+	display: none;
+}
+
+.button_to,
+.button_to .div {
+	display: inline;
+}
+
+.creator-card {
+	height: 100%;
+}
+
+#navbar>ul.navbar-nav>li>a.nav-link {
+	color: var(--bs-navbar-hover-color) !important;
+}
+
+span.obfuscated {
+	-webkit-text-security: disc;
+}
+
+span.deobfuscated {
+	-webkit-text-security: none;
+}

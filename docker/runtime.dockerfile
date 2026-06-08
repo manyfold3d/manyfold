@@ -4,7 +4,7 @@ FROM base as runtime
 
 COPY . .
 COPY --from=build /usr/src/app/vendor/bundle vendor/bundle
-COPY --from=build /usr/src/app/public/assets public/assets
+COPY --from=build /usr/src/app/public/vite public/vite
 
 # Copy only the dynamic libraries we need from the build image
 # It would be better to statically link the gems during build, if we can

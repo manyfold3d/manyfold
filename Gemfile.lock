@@ -215,8 +215,6 @@ GEM
     cronex (0.15.0)
       tzinfo
       unicode (>= 0.4.4.5)
-    cssbundling-rails (1.4.3)
-      railties (>= 6.0.0)
     csv (3.3.5)
     data_migrate (11.3.1)
       activerecord (>= 6.1)
@@ -606,10 +604,6 @@ GEM
       forwardable
       singleton
     prism (1.9.0)
-    propshaft (1.3.2)
-      actionpack (>= 7.0.0)
-      activesupport (>= 7.0.0)
-      rack
     pry (0.16.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -1017,7 +1011,6 @@ DEPENDENCIES
   climate_control (~> 1.2)
   cocooned (~> 3.0)
   connection_pool (>= 2.2.5, < 3.0)
-  cssbundling-rails (~> 1.4)
   csv (~> 3.3)
   data_migrate (~> 11.3)
   database_cleaner-active_record (~> 2.2)
@@ -1066,7 +1059,6 @@ DEPENDENCIES
   pg_query (~> 6.2)
   pghero (~> 3.8)
   phlex-rails (~> 2.4)
-  propshaft (~> 1.3)
   public_suffix (~> 7.0)
   puma (~> 8.0)
   pundit (~> 2.5)
@@ -1188,7 +1180,6 @@ CHECKSUMS
   crack (1.0.1) sha256=ff4a10390cd31d66440b7524eb1841874db86201d5b70032028553130b6d4c7e
   crass (1.0.6) sha256=dc516022a56e7b3b156099abc81b6d2b08ea1ed12676ac7a5657617f012bd45d
   cronex (0.15.0) sha256=21c794e085fad2951c4f2e279f440340a35ba2297e0b738f22f263f69fbe2186
-  cssbundling-rails (1.4.3) sha256=53aecd5a7d24ac9c8fcd92975acd0e830fead4ee4583d3d3d49bb64651946e41
   csv (3.3.5) sha256=6e5134ac3383ef728b7f02725d9872934f523cb40b961479f69cf3afa6c8e73f
   data_migrate (11.3.1) sha256=18b9b2189d15e482d5335f3fc2248b8b447204bd8257ded872dd077737168ffb
   database_cleaner-active_record (2.2.2) sha256=88296b9f3088c31f7c0d4fcec10f68e4b71c96698043916de59b04debec10388
@@ -1351,7 +1342,6 @@ CHECKSUMS
   prettyprint (0.2.0) sha256=2bc9e15581a94742064a3cc8b0fb9d45aae3d03a1baa6ef80922627a0766f193
   prime (0.1.4) sha256=4d755ebf7c2994a6f3a3fee0d072063be3fff2d4042ebff6cd5eebd4747a225e
   prism (1.9.0) sha256=7b530c6a9f92c24300014919c9dcbc055bf4cdf51ec30aed099b06cd6674ef85
-  propshaft (1.3.2) sha256=1d56a3e56a92c21bfc29caf07406b5386b00d4c47ddf357cf989a5a234b1389e
   pry (0.16.0) sha256=d76c69065698ed1f85e717bd33d7942c38a50868f6b0673c636192b3d1b6054e
   psych (5.4.0) sha256=14f72d69a611af663d7d70e4a7b67d9eb1f3ae9f8d916b478961d5a0075ba5b7
   public_suffix (7.0.5) sha256=1a8bb08f1bbea19228d3bed6e5ed908d1cb4f7c2726d18bd9cadf60bc676f623

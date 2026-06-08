@@ -1,6 +1,5 @@
 {
   "all": {
-    "sourceCodeDir": "app/javascript",
     "watchAdditionalPaths": []
   },
   "development": {

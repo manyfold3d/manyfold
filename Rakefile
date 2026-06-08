@@ -57,18 +57,20 @@ namespace :themes do
       name = theme["name"].downcase
       contents = <<~EOF
         @import "bootswatch/dist/#{name}/variables";
-        @import '../../application';
+        @import '~/stylesheets/application';
         @import "bootswatch/dist/#{name}/bootswatch";
       EOF
-      Rails.root.join("app/assets/stylesheets/entrypoints/themes/#{name}.scss").write(contents)
+      Rails.root.join("app/frontend/entrypoints/themes/#{name}.scss").write(contents)
     end
   end
 end
-
-Rake::Task["assets:precompile"].enhance(["i18n_js:export"])
 
 namespace :i18n_js do
   task export: :environment do
     I18nJS.call(config_file: Rails.root.join("config/i18n-js.yml"))
   end
+end
+
+namespace :vite do
+  task install_dependencies: "i18n_js:export"
 end
