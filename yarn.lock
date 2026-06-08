@@ -1886,10 +1886,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jquery@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@types/jquery@npm:4.0.0"
-  checksum: d70744bde560144b758d25a5cfb43cd009c99afe41fb59ceebf405c0547a4ac41e29ccf1ac64b7f9b945c91ed7dac272f686208d4ffe3a6ff41d0d21c3693ac4
+"@types/jquery@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@types/jquery@npm:4.0.1"
+  checksum: f4e0c12b0e24aa630ad4aaa2e72b616e2330ac55f4dc17a06e9a4365acb1a71f589784421ef25c50bda06fa5e1f1c9e5458e11162049a087bc4f397c03411fdc
   languageName: node
   linkType: hard
 
@@ -5324,7 +5324,7 @@ __metadata:
     "@rails/ujs": ^7.1.600
     "@types/bootstrap": ^5.2.11
     "@types/i18n-js": ^4.0.1
-    "@types/jquery": ^4.0.0
+    "@types/jquery": ^4.0.1
     "@types/lodash": ^4.17.24
     "@types/node": ~24.13
     "@types/three": ^0.184.1
