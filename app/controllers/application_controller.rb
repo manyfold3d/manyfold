@@ -116,6 +116,10 @@ class ApplicationController < ActionController::Base
     origins = Library.all.filter_map(&:storage_origin) # rubocop:disable Pundit/UsePolicyScope
     content_security_policy.img_src(*origins)
     content_security_policy.connect_src(*origins)
+    # Allow vite connection in dev
+    if Rails.env.development?
+      content_security_policy.connect_src("wss:", "ws:")
+    end
     # If we're using Scout DevTrace in local development, we need to allow a load
     # of inline stuff, so we need to add that and NOT add the nonce
     if Rails.env.development? && ENV.fetch("SCOUT_DEV_TRACE", false) === "true"
