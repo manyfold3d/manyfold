@@ -3321,7 +3321,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es-object-atoms@npm:^1.0.0, es-object-atoms@npm:^1.1.1":
+"es-object-atoms@npm:^1.0.0, es-object-atoms@npm:^1.1.1, es-object-atoms@npm:^1.1.2":
   version: 1.1.2
   resolution: "es-object-atoms@npm:1.1.2"
   dependencies:
@@ -7451,17 +7451,18 @@ __metadata:
   linkType: hard
 
 "string.prototype.trim@npm:^1.2.10":
-  version: 1.2.10
-  resolution: "string.prototype.trim@npm:1.2.10"
+  version: 1.2.11
+  resolution: "string.prototype.trim@npm:1.2.11"
   dependencies:
-    call-bind: ^1.0.8
-    call-bound: ^1.0.2
+    call-bind: ^1.0.9
+    call-bound: ^1.0.4
     define-data-property: ^1.1.4
     define-properties: ^1.2.1
-    es-abstract: ^1.23.5
-    es-object-atoms: ^1.0.0
+    es-abstract: ^1.24.2
+    es-object-atoms: ^1.1.2
     has-property-descriptors: ^1.0.2
-  checksum: 87659cd8561237b6c69f5376328fda934693aedde17bb7a2c57008e9d9ff992d0c253a391c7d8d50114e0e49ff7daf86a362f7961cf92f7564cd01342ca2e385
+    safe-regex-test: ^1.1.0
+  checksum: 1aa0868afe15a54e781cd7fdcc851af4b0d71522108006f136ba35ecfde65b042496ca6926f85192923e6e9287750b772afb13860db15574bf1da454343db0ca
   languageName: node
   linkType: hard
 
