@@ -20,7 +20,7 @@ module ModelFilesHelper
   def app_url(handler, file)
     signed_id = file.signed_id expires_in: 1.hour, purpose: "download"
     signed_url = model_model_file_by_signed_filename_url(file.model, file.filename, sig: signed_id)
-    handler.open_url_for(signed_url, client_os: UserAgentParser.parse(request&.user_agent)&.os)
+    handler.open_url_for(signed_url, client_os: -> { client_os })
   end
 
   def app_icon_tag(app, alt:)

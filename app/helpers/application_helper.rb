@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def client_os
+    UserAgentParser.parse(request&.user_agent)&.os
+  end
+
   def landing_page_path
     SiteSettings.clear_cache
     preference = current_user&.landing_page || SiteSettings.default_landing_page

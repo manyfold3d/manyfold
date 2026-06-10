@@ -9,7 +9,8 @@ class FileHandlers::BambuStudio < FileHandlers::Slic3rFamily
   end
 
   def self.open_url_for(target, client_os: nil)
-    if client_os&.family == "Mac OS X"
+    os = client_os&.call
+    if os&.family == "Mac OS X"
       URI::Generic.new(
         "bambustudioopen", nil,
         CGI.escapeURIComponent(target), nil, nil, nil, nil,
