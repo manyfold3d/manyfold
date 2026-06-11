@@ -32,13 +32,12 @@ class Components::Renderers::F3d < Components::Renderers::Base
           background_colour: @settings["background_colour"],
           object_colour: @settings["object_colour"],
           render_style: @settings["render_style"],
-          auto_load: ((@file.size || 9_999_999.megabytes) < (@settings["auto_load_max_size"] || 9_999_999).megabytes) ? "true" : "false",
-          action: "click->f3d-renderer#onLoad"
+          auto_load: ((@file.size || 9_999_999.megabytes) < (@settings["auto_load_max_size"] || 9_999_999).megabytes) ? "true" : "false"
         }
       div class: "p-0 btn btn-secondary load-progress object-preview-progress position-absolute start-50 #{@loading_bar_position_classes}", role: "presentation" do
         div class: "progress-bar bg-info progress-bar-animated progress-bar-striped", role: "progressbar", style: "width: 0%; height: 100%",
           aria_label: "Loading progress", aria_valuenow: "0", aria_valuemin: "0", aria_valuemax: "100"
-        span class: "progress-label position-absolute top-50 start-50 translate-middle", role: "button", data: {action: "click->f3d-renderer#onLoad"} do
+        span class: "progress-label position-absolute top-50 start-50 translate-middle", role: "button" do
           Icon icon: "box"
           whitespace
           span { t("renderer.load") }
