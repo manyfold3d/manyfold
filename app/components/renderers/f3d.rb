@@ -4,7 +4,7 @@ class Components::Renderers::F3d < Components::Renderers::Base
   include Phlex::Rails::Helpers::NumberToHumanSize
 
   def self.supports?(file)
-    FileHandlers::F3d.can_load? file&.mime_type
+    FileHandlers::F3dWasm.can_load? file&.mime_type
   end
 
   def before_template
