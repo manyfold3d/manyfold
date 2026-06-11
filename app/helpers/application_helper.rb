@@ -29,7 +29,7 @@ module ApplicationHelper
   end
 
   def site_icon
-    SiteSettings.site_icon.presence || "roundel.svg"
+    SiteSettings.site_icon.presence || vite_asset_path("images/roundel.svg")
   end
 
   def checkmark(value)
