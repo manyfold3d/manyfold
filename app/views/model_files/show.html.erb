@@ -25,7 +25,7 @@
         <%- end %>
       </ul>
     <% end %>
-    <% if (handler = FileHandlers.handlers_for(environment: :browser, load_file: @file)&.first) %>
+    <% if (handler = FileHandlers.handlers_for(environment: :browser, mime_type: @file.mime_type)&.first) %>
       <%= render handler.component.new(file: @file) %>
     <% elsif @file.has_render? %>
       <%= image_tag model_model_file_path(@file.model, @file, format: @file.extension, derivative: "render"), style: "width: 100%", alt: @file.name %>

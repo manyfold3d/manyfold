@@ -1,4 +1,4 @@
-<% if (handler = FileHandlers.handlers_for(environment: :browser, load_file: @file)&.first) %>
+<% if (handler = FileHandlers.handlers_for(environment: :browser, mime_type: @file.mime_type)&.first) %>
   <%= render handler.component.new(file: @file) %>
 <% elsif @file.has_render? %>
   <%= render Renderer::ImageTag.new(file: @file) %>
