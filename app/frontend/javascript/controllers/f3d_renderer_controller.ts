@@ -12,8 +12,10 @@ export default class extends Controller {
     };
     f3d(settings).then(async (F3D) => {
       F3D.Engine.autoloadPlugins();
-      this.engine = F3D.Engine.create();
-      const options = this.engine.getOptions();
+      // Uncomment this to get an updated list of formats in dev
+      // console.log(`F3D supported types: ${F3D.Engine.getReadersInfo().map((reader) => (`${reader["extensions"][0]}: ${reader["mimeTypes"][0]}`)).flat()}`);
+      this.engine = F3D.Engine.create()
+      const options = this.engine.getOptions()
       // background must be set to black for proper blending with transparent canvas
       options.setAsString('render.background.color', '#000000')
 
