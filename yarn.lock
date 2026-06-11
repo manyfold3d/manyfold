@@ -6516,12 +6516,12 @@ __metadata:
   linkType: hard
 
 "postcss-selector-parser@npm:^7.1.1":
-  version: 7.1.2
-  resolution: "postcss-selector-parser@npm:7.1.2"
+  version: 7.1.3
+  resolution: "postcss-selector-parser@npm:7.1.3"
   dependencies:
     cssesc: ^3.0.0
     util-deprecate: ^1.0.2
-  checksum: 22e094cd002c46473496b4dc083d454c17f2d076df87221ab63b9b321ac89143b61e6ece8588ce927e9bdb7bf58f9b4bc5bfe6787269093f68b95e0ab747828e
+  checksum: 3ec6e2d35873b9615f55bfede12bb46fe3dbb002dda28f6a913d5fd31d38489588e2768d6f5b1a395788f07c4c1ef86394d24b49211d6c810330b9837da432a0
   languageName: node
   linkType: hard
 
