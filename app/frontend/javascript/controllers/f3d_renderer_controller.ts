@@ -64,17 +64,19 @@ export default class extends Controller {
   }
 
   async onLoad () {
-    const url = this.element.dataset.previewUrl;
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
+    const url = (this.element as HTMLCanvasElement).dataset.previewUrl;
+    if (url) {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
 
-      const result = await response.bytes();
-      this.init(result);
-    } catch (error) {
-      console.error(error.message);
+        const result = await response.bytes();
+        this.init(result);
+      } catch (error) {
+        console.error(error.message);
+      }
     }
   }
 }
