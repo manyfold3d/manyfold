@@ -15,7 +15,7 @@ export default class extends Controller {
       this.engine = F3D.Engine.create();
       const options = this.engine.getOptions();
       // background must be set to black for proper blending with transparent canvas
-      options.setAsString("render.background.color", "#555555");
+      options.setAsString('render.background.color', '#000000')
 
       // make it look nice
       options.toggle('render.effect.antialiasing.enable')
