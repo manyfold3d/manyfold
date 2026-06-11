@@ -853,7 +853,7 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
-    simplecov-cobertura (3.1.0)
+    simplecov-cobertura (3.1.2)
       rexml
       simplecov (~> 0.19)
     simplecov-html (0.13.2)
@@ -1163,7 +1163,7 @@ CHECKSUMS
   browser (6.2.0) sha256=281d5295788825c9396427c292c2d2be0a5c91875c93c390fde6e5d61a5ace2d
   builder (3.3.0) sha256=497918d2f9dca528fdca4b88d84e4ef4387256d984b8154e9d5d3fe5a9c8835f
   bullet (8.1.3) sha256=c8163c527324fe1180775be48719875726891622f0a73784658b2992acf3c7cb
-  bundler (4.0.12) sha256=7f8b757d28dfb636e7b24fba2344ac6dd13b5b24f4b46d62573d483f211825ac
+  bundler (4.0.14) sha256=d09a0a965cf772266a7e49e83610be7c2f4e49e61134c42a56804bb383cc24b8
   byebug (13.0.0) sha256=d2263efe751941ca520fa29744b71972d39cbc41839496706f5d9b22e92ae05d
   caber (0.4.0)
   capybara (3.40.0) sha256=42dba720578ea1ca65fd7a41d163dd368502c191804558f6e0f71b391054aeef
@@ -1422,7 +1422,7 @@ CHECKSUMS
   sidekiq-cron (2.4.0) sha256=25595c5aee0c16d13a89466e5108af047fa4cfbf388199b39e1a600ca39472d4
   simple_po_parser (1.1.6) sha256=122687d44d3de516a0e69e2f383a4180f5015e8c5ed5a7f2258f2b376f64cbf3
   simplecov (0.22.0) sha256=fe2622c7834ff23b98066bb0a854284b2729a569ac659f82621fc22ef36213a5
-  simplecov-cobertura (3.1.0) sha256=6d7f38aa32c965ca2174b2e5bd88cb17138eaf629518854976ac50e628925dc5
+  simplecov-cobertura (3.1.2) sha256=d000b11aef138f964fc3863aae065b7607c5cfde7fe02be66d82bd2971474dca
   simplecov-html (0.13.2) sha256=bd0b8e54e7c2d7685927e8d6286466359b6f16b18cb0df47b508e8d73c777246
   simplecov_json_formatter (0.1.4) sha256=529418fbe8de1713ac2b2d612aa3daa56d316975d307244399fa4838c601b428
   singleton (0.3.0) sha256=83ea1bca5f4aa34d00305ab842a7862ea5a8a11c73d362cb52379d94e9615778
