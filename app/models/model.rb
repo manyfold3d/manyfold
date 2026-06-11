@@ -1,7 +1,7 @@
 class Model < ApplicationRecord
   # i18n-tasks-use t("activerecord.models.model")
 
-  extend Memoist
+  prepend MemoWise
   include PathBuilder
   include Followable
   include Talkative
@@ -96,7 +96,7 @@ class Model < ApplicationRecord
       library.models.find_by(path: path.to_s)
     end
   end
-  memoize :parents
+  memo_wise :parents
 
   def was_changed?
     !previous_changes.empty?

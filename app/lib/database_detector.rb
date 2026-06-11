@@ -1,6 +1,6 @@
 module DatabaseDetector
   class << self
-    extend Memoist
+    prepend MemoWise
 
     def server
       ActiveRecord::Base.with_connection do |connection|
@@ -18,33 +18,33 @@ module DatabaseDetector
         end
       end
     end
-    memoize :server
+    memo_wise :server
 
     def is_mysql?
       server == :mysql
     end
-    memoize :is_mysql?
+    memo_wise :is_mysql?
 
     def is_mariadb?
       is_mysql?
     end
-    memoize :is_mariadb?
+    memo_wise :is_mariadb?
 
     def is_postgres?
       server == :postgresql
     end
-    memoize :is_postgres?
+    memo_wise :is_postgres?
 
     def is_sqlite?
       server == :sqlite
     end
-    memoize :is_sqlite?
+    memo_wise :is_sqlite?
 
     def table_ready?(table_name)
       ActiveRecord::Base.with_connection do |connection|
         connection.data_source_exists? table_name
       end
     end
-    memoize :table_ready?
+    memo_wise :table_ready?
   end
 end

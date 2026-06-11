@@ -92,7 +92,7 @@ gem "public_suffix", "~> 7.0"
 
 gem "activerecord-nulldb-adapter", "~> 1.2"
 
-gem "memoist", "~> 0.16"
+gem "memo_wise", "~> 1.13"
 gem "stopwords-filter2", require: "stopwords"
 
 gem "devise", "~> 5.0"

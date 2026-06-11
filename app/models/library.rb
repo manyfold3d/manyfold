@@ -1,7 +1,7 @@
 class Library < ApplicationRecord
   # i18n-tasks-use t("activerecord.models.library")
 
-  extend Memoist
+  prepend MemoWise
   include PublicIDable
   include Problematic
   include ChangeDetection
@@ -89,7 +89,7 @@ class Library < ApplicationRecord
       URI.parse(storage.presign(nil)[:url]).origin
     end
   end
-  memoize :storage_origin
+  memo_wise :storage_origin
 
   def storage
     case storage_service
@@ -109,7 +109,7 @@ class Library < ApplicationRecord
       raise "Invalid storage service: #{storage_service}"
     end
   end
-  memoize :storage
+  memo_wise :storage
 
   def register_storage
     ModelFileUploader.storages[storage_key] = storage

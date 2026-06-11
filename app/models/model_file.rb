@@ -7,7 +7,7 @@ class ModelFile < ApplicationRecord
   include Problematic
   include Relatable
 
-  extend Memoist
+  prepend MemoWise
 
   broadcasts_refreshes
 
