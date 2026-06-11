@@ -105,7 +105,7 @@ de:
       file_list_settings:
         heading: Modell-Seiten
         hide_presupported_versions:
-          label: Kombiniere verknüpfte Dateien mit und ohne Supportstruktur.
+          label: Verknüpfte Dateien in einem Eintrag zusammenfassen
         summary: Steuere, wie Modelle und Dateilisten angezeigt werden
       first_use:
         email_help: Wird nie öffentlich angezeigt; wird nur für Anmelde- und Kontosicherheits-E-Mails verwendet.
