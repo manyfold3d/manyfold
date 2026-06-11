@@ -19,7 +19,11 @@ export default class extends Controller {
       canvas: this.element,
     };
     f3d(settings).then(async (F3D) => {
-      F3D.Engine.autoloadPlugins();
+      this.progressBar?.parentElement?.remove()
+      this.progressBar = null
+      this.progressLabel = null
+
+      F3D.Engine.autoloadPlugins()
       // Uncomment this to get an updated list of formats in dev
       // console.log(`F3D supported types: ${F3D.Engine.getReadersInfo().map((reader) => (`${reader["extensions"][0]}: ${reader["mimeTypes"][0]}`)).flat()}`);
       this.engine = F3D.Engine.create()
@@ -73,18 +77,37 @@ export default class extends Controller {
 
   async load (): Promise<void> {
     const url = (this.element as HTMLCanvasElement).dataset.previewUrl
-    if (url) {
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
+    if (url != null) {
+      const xhr = new XMLHttpRequest()
+      xhr.open('GET', url)
+      xhr.responseType = 'arraybuffer'
+      xhr.addEventListener('progress', this.onLoadProgress.bind(this))
+      xhr.addEventListener('error', this.onLoadError.bind(this))
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          this.init(new Uint8Array(xhr.response))
         }
-
-        const result = await response.bytes();
-        this.init(result);
-      } catch (error) {
-        console.error(error.message);
-      }
+      }.bind(this)
+      xhr.send()
     }
+  }
+
+  onLoadProgress (event): void {
+    const percentage = Math.round((event.loaded / event.total) * 100)
+    if ((this.progressBar == null) || (this.progressLabel == null)) { return }
+    if (percentage === 100) {
+      this.progressLabel.textContent = window.i18n.t('renderer.processing') // i18n-tasks-use t('renderer.processing')
+    } else {
+      this.progressLabel.textContent = `${percentage}%`
+    }
+    this.progressBar.style.width = `${percentage}%`
+    this.progressBar.ariaValueNow = percentage.toString()
+  }
+
+  onLoadError (): void {
+    if ((this.progressBar == null) || (this.progressLabel == null)) { return }
+    this.progressBar.classList.add('bg-danger')
+    this.progressBar.style.width = this.progressBar.ariaValueNow = '100%'
+    this.progressLabel.textContent = window.i18n.t('renderer.errors.load') // i18n-tasks-use t('renderer.errors.load')
   }
 }
