@@ -1,66 +1,66 @@
 module SupportedMimeTypes
   class << self
-    extend Memoist
+    prepend MemoWise
 
     def image_types
       Mime::LOOKUP.filter { |k, v| is_image_mime_type?(v) }.values
     end
-    memoize :image_types
+    memo_wise :image_types
 
     def image_extensions
       Mime::EXTENSION_LOOKUP.filter { |k, v| is_image_mime_type?(v) }.keys
     end
-    memoize :image_extensions
+    memo_wise :image_extensions
 
     def video_types
       Mime::LOOKUP.filter { |k, v| is_video_mime_type?(v) }.values
     end
-    memoize :video_types
+    memo_wise :video_types
 
     def video_extensions
       Mime::EXTENSION_LOOKUP.filter { |k, v| is_video_mime_type?(v) }.keys
     end
-    memoize :video_extensions
+    memo_wise :video_extensions
 
     def document_types
       Mime::LOOKUP.filter { |k, v| is_document_mime_type?(v) }.values
     end
-    memoize :document_types
+    memo_wise :document_types
 
     def document_extensions
       Mime::EXTENSION_LOOKUP.filter { |k, v| is_document_mime_type?(v) }.keys
     end
-    memoize :document_extensions
+    memo_wise :document_extensions
 
     def archive_types
       Mime::LOOKUP.filter { |k, v| is_archive_mime_type?(v) }.values
     end
-    memoize :archive_types
+    memo_wise :archive_types
 
     def archive_extensions
       Mime::EXTENSION_LOOKUP.filter { |k, v| is_archive_mime_type?(v) }.keys
     end
-    memoize :archive_extensions
+    memo_wise :archive_extensions
 
     def model_types
       Mime::LOOKUP.filter { |k, v| is_model_mime_type?(v) }.values
     end
-    memoize :model_types
+    memo_wise :model_types
 
     def model_extensions
       Mime::EXTENSION_LOOKUP.filter { |k, v| is_model_mime_type?(v) }.keys
     end
-    memoize :model_extensions
+    memo_wise :model_extensions
 
     def indexable_types
       image_types + model_types + video_types + document_types + archive_types
     end
-    memoize :indexable_types
+    memo_wise :indexable_types
 
     def indexable_extensions
       image_extensions + model_extensions + video_extensions + document_extensions + archive_extensions
     end
-    memoize :indexable_extensions
+    memo_wise :indexable_extensions
 
     private
 
@@ -71,12 +71,12 @@ module SupportedMimeTypes
       ]
       type.to_s.start_with?("image/") && exclusions.exclude?(type.to_s)
     end
-    memoize :is_image_mime_type?
+    memo_wise :is_image_mime_type?
 
     def is_video_mime_type?(type)
       type.to_s.start_with?("video/")
     end
-    memoize :is_video_mime_type?
+    memo_wise :is_video_mime_type?
 
     def is_document_mime_type?(type)
       [
@@ -99,7 +99,7 @@ module SupportedMimeTypes
         "application/x-kicad-worksheet"
       ].include?(type.to_s)
     end
-    memoize :is_document_mime_type?
+    memo_wise :is_document_mime_type?
 
     def is_model_mime_type?(type)
       extras = [
@@ -115,7 +115,7 @@ module SupportedMimeTypes
       ]
       type.to_s.start_with?("model/") || extras.include?(type.to_s)
     end
-    memoize :is_model_mime_type?
+    memo_wise :is_model_mime_type?
 
     def is_archive_mime_type?(type)
       [
@@ -126,6 +126,6 @@ module SupportedMimeTypes
         "application/x-bzip2"
       ].include?(type.to_s)
     end
-    memoize :is_archive_mime_type?
+    memo_wise :is_archive_mime_type?
   end
 end

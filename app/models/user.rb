@@ -3,7 +3,7 @@ require "uri"
 class User < ApplicationRecord
   # i18n-tasks-use t("activerecord.models.user")
 
-  extend Memoist
+  prepend MemoWise
 
   include Lister
   include Follower
@@ -266,12 +266,12 @@ class User < ApplicationRecord
   def liked_list
     lists.find_by(special: :liked)
   end
-  memoize :liked_list
+  memo_wise :liked_list
 
   def liked?(listable)
     liked_list&.list_items&.where(listable: listable)&.any?
   end
-  memoize :liked?
+  memo_wise :liked?
 
   private
 
