@@ -3,8 +3,16 @@ import f3d from 'f3d'
 
 // Connects to data-controller="f3d-renderer"
 export default class extends Controller {
+  engine: any
+  progressBar: HTMLDivElement
+  progressLabel: HTMLDivElement
 
-  engine: any;
+  connect (): void {
+    this.progressBar = this.element.parentElement?.getElementsByClassName('progress-bar')[0] as HTMLDivElement
+    this.progressLabel = this.element.parentElement?.getElementsByClassName('progress-label')[0] as HTMLSpanElement
+    const loadButton = this.element.parentElement?.getElementsByClassName('object-preview-progress')[0] as HTMLDivElement
+    loadButton.addEventListener('click', this.load.bind(this))
+  }
 
   init (data: Uint8Array): void {
     const settings = {
@@ -63,8 +71,8 @@ export default class extends Controller {
     })
   }
 
-  async onLoad () {
-    const url = (this.element as HTMLCanvasElement).dataset.previewUrl;
+  async load () {
+    const url = (this.element as HTMLCanvasElement).dataset.previewUrl
     if (url) {
       try {
         const response = await fetch(url);
