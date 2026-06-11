@@ -111,7 +111,21 @@ module SupportedMimeTypes
         "application/x-amf",
         "application/x-ldraw",
         "application/vnd.flock+json",
-        "application/vnd.dragonfruit.voxl"
+        "application/vnd.dragonfruit.voxl",
+        "application/dicom",
+        "application/gml+xml",
+        "application/vnd.pts",
+        "application/vnd.vtk",
+        "application/vnd.vtp",
+        "application/vnd.off",
+        "application/vnd.x",
+        "application/vnd.xbf",
+        "application/vnd.mdl",
+        "application/vnd.ifc",
+        "application/vnd.mhd",
+        "application/vnd.nrrd",
+        "application/vnd.splat",
+        "application/vnd.spz"
       ]
       type.to_s.start_with?("model/") || extras.include?(type.to_s)
     end
