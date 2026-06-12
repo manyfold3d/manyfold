@@ -31,7 +31,6 @@ es:
       prusa_slicer: Abrir en PrusaSlicer
       super_slicer: Abrir en SuperSlicer
     form:
-      add: Añadir una nueva relación de archivos
       notes:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
@@ -40,6 +39,8 @@ es:
       delete: Eliminar relación
       edit_related: Editar archivo relacionado
       this_file: Este fichero
+    relationships_form:
+      add: Añadir una nueva relación de archivos
     show:
       convert: Convertir a 3MF
       details_heading: Detalles

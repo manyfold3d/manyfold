@@ -31,7 +31,6 @@ pl:
       prusa_slicer: Otwórz w PrusaSlicer
       super_slicer: Otwórz w SuperSlicer
     form:
-      add:
       notes:
         help_html: Możesz używać <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
@@ -40,6 +39,8 @@ pl:
       delete:
       edit_related:
       this_file:
+    relationships_form:
+      add:
     show:
       convert: Konwertuj do 3MF
       details_heading: Szczegóły
