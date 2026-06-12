@@ -353,6 +353,13 @@ en:
         other: Problems
         two: Problems
         zero: Problems
+      relationship:
+        few: Relationships
+        many: Relationships
+        one: Relationship
+        other: Relationships
+        two: Relationships
+        zero: Relationships
       relationships:
         predicates:
           adapted_from: is a remix of

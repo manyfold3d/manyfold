@@ -353,6 +353,13 @@ ru:
         other: Проблемы
         two: Проблемы
         zero: Проблемы
+      relationship:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       relationships:
         predicates:
           adapted_from:
