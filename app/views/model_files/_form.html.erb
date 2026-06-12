@@ -1,13 +1,18 @@
 <%= form_with model: [@model, @file], class: "container-md tabular-form" do |form| %>
   <%= text_input_row form, :filename %>
-  <% if @file.is_3d_model? %>
-    <%= checkbox_input_row form, :printed, checked: current_user.printed?(@file) %>
-    <%= checkbox_input_row form, :presupported %>
-    <%= checkbox_input_row form, :y_up %>
-    <%= checkbox_input_row form, :previewable %>
-  <% end %>
   <%= text_input_row form, :caption %>
   <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
+
+  <% if @file.is_3d_model? %>
+    <%= checkbox_input_row form, :printed, checked: current_user.printed?(@file) %>
+    <hr>
+    <h4><%= t("general.settings") %></h4>
+    <%= checkbox_input_row form, :presupported %>
+    <%= checkbox_input_row form, :y_up %>
+  <% end %>
+
+  <hr>
+  <h4><%= t("general.related_content") %></h4>
 
   <div>
     <%= form.label :relationships %>
@@ -44,7 +49,11 @@
     </table>
   </div>
 
-  <div>
-    <%= form.submit class: "btn btn-primary" %>
+  <hr>
+  <h4><%= t("general.access") %></h4>
+  <%= checkbox_input_row form, :previewable %>
+
+  <div class="form-save-button">
+    <%= form.submit %>
   </div>
 <% end %>

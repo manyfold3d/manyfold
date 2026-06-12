@@ -746,6 +746,7 @@ zh-CN:
     unfollow_remote_actor:
       unfollowed:
   general:
+    access:
     copy_fediverse_handle:
     delete: 删除
     download: 下载
@@ -764,8 +765,10 @@ zh-CN:
     none:
     private:
     public: 公开可见
+    related_content:
     report:
     save: 保存
+    settings:
     setup_mode:
     shared: 与本地用户共享
     view: 查看

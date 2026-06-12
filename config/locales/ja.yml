@@ -746,6 +746,7 @@ ja:
     unfollow_remote_actor:
       unfollowed:
   general:
+    access:
     copy_fediverse_handle:
     delete:
     download:
@@ -764,8 +765,10 @@ ja:
     none:
     private: プライベート
     public:
+    related_content:
     report:
     save:
+    settings:
     setup_mode:
     shared:
     view:

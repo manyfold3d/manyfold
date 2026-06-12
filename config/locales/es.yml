@@ -746,6 +746,7 @@ es:
     unfollow_remote_actor:
       unfollowed: Dejar de seguir a %{actor}
   general:
+    access:
     copy_fediverse_handle: Copiar handle de Fediverse al portapapeles
     delete: Borrar
     download: Descargar
@@ -764,8 +765,10 @@ es:
     none: Ninguno
     private: Privado
     public: Público
+    related_content:
     report: Informe %{type}
     save: Guardar
+    settings:
     setup_mode: Este sitio está actualmente en modo de configuración. ¡Vuelva más tarde!
     shared: Compartido con usuarios locales
     view: Ver

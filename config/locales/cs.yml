@@ -746,6 +746,7 @@ cs:
     unfollow_remote_actor:
       unfollowed: Již nesledován %{actor}
   general:
+    access:
     copy_fediverse_handle:
     delete: Smazat
     download: Stáhnout
@@ -764,8 +765,10 @@ cs:
     none:
     private: Soukromé
     public:
+    related_content:
     report: Nahlásit %{type}
     save: Uložit
+    settings:
     setup_mode:
     shared:
     view: Zobrazení

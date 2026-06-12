@@ -746,6 +746,7 @@ pt:
     unfollow_remote_actor:
       unfollowed:
   general:
+    access:
     copy_fediverse_handle:
     delete:
     download:
@@ -764,8 +765,10 @@ pt:
     none:
     private:
     public:
+    related_content:
     report:
     save:
+    settings:
     setup_mode:
     shared:
     view:

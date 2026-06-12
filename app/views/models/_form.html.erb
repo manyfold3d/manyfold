@@ -1,7 +1,7 @@
 <%= form_with model: @model, class: "container-md tabular-form" do |form| %>
   <%= text_input_row form, :name %>
-
-  <%= collection_select_input_row form, :preview_file, Naturally.sort_by(@model.valid_preview_files, :name_and_filename), :id, :name_and_filename, help: t(".preview_file.help") %>
+  <%= text_input_row form, :caption %>
+  <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
 
   <%= collection_select_input_row form,
         :creator, @creators, :id, :name_with_domain,
@@ -13,15 +13,6 @@
                      label: t("creators.general.new")
                    }
                  end) %>
-
-  <% if SiteSettings.show_libraries || current_user&.is_administrator? %>
-    <%= unless @model.contains_other_models?
-          collection_select_input_row form,
-            :library, policy_scope(Library).all, :id, :name
-        end %>
-  <% end %>
-
-  <%= render "tags_edit", form: form, name: "model[tag_list]", value: @model.tags.order(taggings_count: :desc, name: :asc).map { |tag| tag.name }.join(","), label: ActsAsTaggableOn::Tag.model_name.human(count: 100), tags: @available_tags %>
 
   <div>
     <%= form.label :collection_ids, Collection.model_name.human(count: 100) %>
@@ -38,20 +29,36 @@
     <%= link_to t("collections.general.new"), new_collection_path, class: "btn btn-secondary" %>
   </div>
 
-  <%= render "links_form", form: form %>
-  <%= text_input_row form, :caption %>
-  <%= rich_text_input_row form, :notes, help: t(".notes.help_html") %>
+  <%= render "tags_edit", form: form, name: "model[tag_list]", value: @model.tags.order(taggings_count: :desc, name: :asc).map { |tag| tag.name }.join(","), label: ActsAsTaggableOn::Tag.model_name.human(count: 100), tags: @available_tags %>
   <%= select_input_row form, :license, license_select_options(selected: @model.license), include_blank: t("general.none") %>
   <%= checkbox_input_row form, :sensitive %>
+
+  <hr>
+  <h4><%= t("general.related_content") %></h4>
+
+  <%= render "links_form", form: form %>
+
+  <hr>
+  <h4><%= t("general.access") %></h4>
+
+  <%= render "caber_relations_form", form: form %>
   <%= select_input_row form, :indexable, indexable_select_options(form.object) %>
   <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots %>
 
+  <hr>
+  <h4><%= t("general.settings") %></h4>
+
+  <% if SiteSettings.show_libraries || current_user&.is_administrator? %>
+    <%= unless @model.contains_other_models?
+          collection_select_input_row form,
+            :library, policy_scope(Library).all, :id, :name
+        end %>
+  <% end %>
+  <%= collection_select_input_row form, :preview_file, Naturally.sort_by(@model.valid_preview_files, :name_and_filename), :id, :name_and_filename, help: t(".preview_file.help") %>
   <%= collection_select_input_row form, :entrypoint, Naturally.sort_by(@model.three_d_files, :name_and_filename), :id, :name_and_filename, help: t(".entrypoint.help_html"), include_blank: true %>
   <%= text_input_row form, :entrypoint_fragment, help: t(".entrypoint_fragment.help") %>
 
-  <%= render "caber_relations_form", form: form %>
-
-  <div>
-    <%= form.submit translate("general.save"), class: "btn btn-primary" %>
+  <div class="form-save-button">
+    <%= form.submit translate("general.save") %>
   </div>
 <% end %>

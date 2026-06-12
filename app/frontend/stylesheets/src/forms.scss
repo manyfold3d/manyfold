@@ -47,3 +47,15 @@ span.form-delete-button {
 .ts-wrapper.single>.ts-control>.item {
 	margin-left: 12px;
 }
+
+div.form-save-button {
+	@extend .sticky-bottom;
+	@extend .text-end;
+
+	input {
+		@extend .btn;
+		@extend .btn-lg;
+		@extend .btn-primary;
+		@extend .mb-3;
+	}
+}
