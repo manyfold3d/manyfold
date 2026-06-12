@@ -16,9 +16,9 @@ export default class extends Controller {
 
   async init (data: Uint8Array): Promise<void> {
     const settings = {
-      canvas: this.element,
-    };
-    f3d(settings).then(async (F3D) => {
+      canvas: this.element
+    }
+    await f3d(settings).then(async (F3D) => {
       this.progressBar?.parentElement?.remove()
       this.progressBar = null
       this.progressLabel = null
