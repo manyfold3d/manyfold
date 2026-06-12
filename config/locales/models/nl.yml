@@ -39,6 +39,7 @@ nl:
       presupported:
       set_as_preview: Als voorbeeld instellen
     form:
+      access:
       entrypoint:
         help_html:
       entrypoint_fragment:
@@ -47,6 +48,8 @@ nl:
         help_html: Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
       preview_file:
         help: Het bestand dat wordt weergegeven als modelvoorbeeld op bibliotheekpagina's
+      related_content:
+      settings:
     general:
       edit: Model Bewerken
     list:

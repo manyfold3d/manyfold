@@ -39,6 +39,7 @@ de:
       presupported: Version mit Supportstruktur
       set_as_preview: Als Vorschau setzen
     form:
+      access:
       entrypoint:
         help_html: Wähle optional eine 3D-Datei, die als Einstiegspunkt (oder Index oder Hauptdatei) für dieses Modell verwendet werden soll. Wird für <a href="https://xrfragment.org/#XRF%20microformat">XRF-Fragmente</a> verwendet.
       entrypoint_fragment:
@@ -47,6 +48,8 @@ de:
         help_html: 'Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden. '
       preview_file:
         help: Die Datei wird als Modellvorschau auf den Sammlungsseiten angezeigt
+      related_content:
+      settings:
     general:
       edit: Modell bearbeiten
     list:

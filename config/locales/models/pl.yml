@@ -39,6 +39,7 @@ pl:
       presupported:
       set_as_preview: Ustaw jako podgląd
     form:
+      access:
       entrypoint:
         help_html:
       entrypoint_fragment:
@@ -47,6 +48,8 @@ pl:
         help_html: Możesz używać <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
         help: Plik wyświetlany jako podgląd modelu na stronach biblioteki
+      related_content:
+      settings:
     general:
       edit: Edytuj Model
     list:

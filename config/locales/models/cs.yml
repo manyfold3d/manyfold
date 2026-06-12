@@ -39,6 +39,7 @@ cs:
       presupported: Předběžně podporovaná verze
       set_as_preview: Nastavit jako náhled
     form:
+      access:
       entrypoint:
         help_html:
       entrypoint_fragment:
@@ -47,6 +48,8 @@ cs:
         help_html: Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
         help: Soubor zobrazený jako náhled modelu na stránkách knihovny
+      related_content:
+      settings:
     general:
       edit: Upravit model
     list:
