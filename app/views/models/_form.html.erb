@@ -34,19 +34,19 @@
   <%= checkbox_input_row form, :sensitive %>
 
   <hr>
-  <h4><%= t(".related_content") %></h4>
+  <h4><%= t("general.related_content") %></h4>
 
   <%= render "links_form", form: form %>
 
   <hr>
-  <h4><%= t(".access") %></h4>
+  <h4><%= t("general.access") %></h4>
 
   <%= render "caber_relations_form", form: form %>
   <%= select_input_row form, :indexable, indexable_select_options(form.object) %>
   <%= select_input_row form, :ai_indexable, ai_indexable_select_options(form.object) if SiteSettings.allow_ai_bots %>
 
   <hr>
-  <h4><%= t(".settings") %></h4>
+  <h4><%= t("general.settings") %></h4>
 
   <% if SiteSettings.show_libraries || current_user&.is_administrator? %>
     <%= unless @model.contains_other_models?

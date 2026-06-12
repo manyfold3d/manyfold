@@ -11,12 +11,12 @@
     <%= file_input_row form, :banner, help: "#{t(".banner.help")} #{@creator.banner ? t(".banner.current", filename: @creator.banner.metadata["filename"]) : t(".banner.none")}", remove: @creator.banner.present?, remove_label: t(".banner.remove") %>
 
     <hr>
-    <h4><%= t(".related_content") %></h4>
+    <h4><%= t("general.related_content") %></h4>
 
     <%= render "links_form", form: form %>
 
     <hr>
-    <h4><%= t(".access") %></h4>
+    <h4><%= t("general.access") %></h4>
 
     <%= render "caber_relations_form", form: form %>
     <%= select_input_row form, :indexable, indexable_select_options(form.object) %>

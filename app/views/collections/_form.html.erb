@@ -21,7 +21,7 @@
     <%= collection_select_input_row form, :preview_model, @collection.models.order(:name), :id, :name, help: t(".preview_model.help"), include_blank: true %>
 
     <hr>
-    <h4><%= t(".related_content") %></h4>
+    <h4><%= t("general.related_content") %></h4>
 
     <%= collection_select_input_row form,
           :collection, @collections, :id, :name_with_domain,
@@ -35,7 +35,7 @@
     <%= render "links_form", form: form %>
 
     <hr>
-    <h4><%= t(".access") %></h4>
+    <h4><%= t("general.access") %></h4>
 
     <%= render "caber_relations_form", form: form %>
     <%= select_input_row form, :indexable, indexable_select_options(form.object) %>

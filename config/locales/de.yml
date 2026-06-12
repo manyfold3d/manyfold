@@ -748,6 +748,7 @@ de:
     unfollow_remote_actor:
       unfollowed: "%{actor} nicht mehr Folgen"
   general:
+    access:
     copy_fediverse_handle: Fediverse-Adresse in die Zwischenablage kopieren
     delete: Löschen
     download: Herunterladen
@@ -766,8 +767,10 @@ de:
     none: Keine
     private: Privat
     public: Öffentlich sichtbar
+    related_content:
     report: Melden %{type}
     save: Speichern
+    settings:
     setup_mode: Diese Website befindet sich derzeit im Einrichtungsmodus; komme später wieder!
     shared: mit Lokalen Nutzern geteilt
     view: Siehe

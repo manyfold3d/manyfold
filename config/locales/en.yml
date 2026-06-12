@@ -746,6 +746,7 @@ en:
     unfollow_remote_actor:
       unfollowed: Unfollowed %{actor}
   general:
+    access: Access
     copy_fediverse_handle: Copy Fediverse handle to clipboard
     delete: Delete
     download: Download
@@ -764,8 +765,10 @@ en:
     none: None
     private: Private
     public: Publicly visible
+    related_content: Related content
     report: Report %{type}
     save: Save
+    settings: Settings
     setup_mode: This site is currently in setup mode; come back later!
     shared: Shared with local users
     view: View

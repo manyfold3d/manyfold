@@ -39,7 +39,6 @@ es:
       presupported: Versión con soporte predefinido
       set_as_preview: Establecer como vista previa
     form:
-      access:
       entrypoint:
         help_html: Opcionalmente, elija un archivo 3D que se utilizará como archivo de punto de entrada (o índice, o principal) para este modelo. Se utiliza para <a href="https://xrfragment.org/#XRF%20microformat">los fragmentos XRF</a>.
       entrypoint_fragment:
@@ -48,8 +47,6 @@ es:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
       preview_file:
         help: El archivo que se mostrará como vista previa del modelo en las páginas de la biblioteca
-      related_content:
-      settings:
     general:
       edit: Editar modelo
     list:

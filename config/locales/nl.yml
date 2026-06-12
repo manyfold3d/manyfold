@@ -746,6 +746,7 @@ nl:
     unfollow_remote_actor:
       unfollowed:
   general:
+    access:
     copy_fediverse_handle:
     delete: Verwijderen
     download: Downloaden
@@ -764,8 +765,10 @@ nl:
     none:
     private: Privé
     public:
+    related_content:
     report: Rapporteer %{type}
     save: Opslaan
+    settings:
     setup_mode:
     shared:
     view: Bekijken

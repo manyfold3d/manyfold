@@ -746,6 +746,7 @@ pl:
     unfollow_remote_actor:
       unfollowed: Przestano obserwować %{actor}
   general:
+    access:
     copy_fediverse_handle:
     delete: Usuń
     download: Pobierz
@@ -764,8 +765,10 @@ pl:
     none:
     private: Prywatne
     public:
+    related_content:
     report: Zgłoś %{type}
     save: Zapisz
+    settings:
     setup_mode:
     shared:
     view: Widok

@@ -39,7 +39,6 @@ zh-CN:
       presupported: 有支撑的版本
       set_as_preview: 设置为预览
     form:
-      access:
       entrypoint:
         help_html:
       entrypoint_fragment:
@@ -48,8 +47,6 @@ zh-CN:
         help_html: 您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
       preview_file:
         help: 在资料库页面中作为模型预览显示的文件
-      related_content:
-      settings:
     general:
       edit: 编辑模型
     list:
