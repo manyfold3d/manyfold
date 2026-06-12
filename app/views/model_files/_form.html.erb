@@ -14,10 +14,10 @@
   <hr>
   <h4><%= t("general.related_content") %></h4>
 
-  <div>
+  <div class="form-control-plaintext">
     <%= form.label :relationships %>
     <%= cocooned_add_item_button Icon(icon: "node-plus", label: t(".add")), form, :relationships,
-          class: "btn btn-secondary btn-sm",
+          class: "btn btn-secondary btn-sm float-end ms-2",
           insertion_node: "#cocooned-relationships",
           insertion_method: "append" %>
   </div>
