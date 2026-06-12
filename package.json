@@ -44,7 +44,7 @@
     "@babel/preset-typescript": "^7.29.7",
     "@types/bootstrap": "^5.2.11",
     "@types/i18n-js": "^4.0.1",
-    "@types/jquery": "^4.0.0",
+    "@types/jquery": "^4.0.1",
     "@types/lodash": "^4.17.24",
     "@types/node": "~24.13",
     "@types/three": "^0.184.1",
