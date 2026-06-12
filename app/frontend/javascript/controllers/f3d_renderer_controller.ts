@@ -16,8 +16,8 @@ export default class extends Controller {
 
   init (data: Uint8Array): void {
     const settings = {
-      canvas: this.element,
-    };
+      canvas: this.element
+    }
     f3d(settings).then(async (F3D) => {
       this.progressBar?.parentElement?.remove()
       this.progressBar = null
