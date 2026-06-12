@@ -56,6 +56,7 @@
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^16.1.1",
     "postcss-preset-env": "^11.3.0",
+    "rollup": "^4.61.1",
     "ts-standard": "^12.0.2",
     "typescript": "~5.9.3",
     "vite": "^8.0.0",
