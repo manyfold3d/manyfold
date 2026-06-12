@@ -58,7 +58,7 @@
   <%= collection_select_input_row form, :entrypoint, Naturally.sort_by(@model.three_d_files, :name_and_filename), :id, :name_and_filename, help: t(".entrypoint.help_html"), include_blank: true %>
   <%= text_input_row form, :entrypoint_fragment, help: t(".entrypoint_fragment.help") %>
 
-  <div class="sticky-bottom text-end">
-    <%= form.submit translate("general.save"), class: "btn btn-lg btn-primary mb-3" %>
+  <div class="form-save-button">
+    <%= form.submit translate("general.save") %>
   </div>
 <% end %>
