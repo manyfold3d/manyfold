@@ -5376,6 +5376,7 @@ __metadata:
     vite: ^8.0.0
     vite-plugin-rails: ^0.6.0
     vite-plugin-ruby: ^5.2.0
+    vite-plugin-wasm: ^3.6.0
   languageName: unknown
   linkType: soft
 
@@ -8013,6 +8014,15 @@ __metadata:
     debug: ^4.3
     stimulus-vite-helpers: ^3.0.0
   checksum: d1740b22e06650c07ca91121744acd4ca141c7a3203c3d16aad37e687c92d47b506b167e408d8a41f78a7bc6ef0bc6ed63004042723d04e863f29c91f01dd440
+  languageName: node
+  linkType: hard
+
+"vite-plugin-wasm@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "vite-plugin-wasm@npm:3.6.0"
+  peerDependencies:
+    vite: ^2 || ^3 || ^4 || ^5 || ^6 || ^7 || ^8
+  checksum: 9693d055a2cad4ea46336bfb4f29d5a07b85d57b3dbe1a565013b2fb461e4798a602b78e7d2f9fbcaa87bd196b303d6f6f0dba26f5ce1efdeace1b936d4903c9
   languageName: node
   linkType: hard
 
