@@ -31,7 +31,6 @@ nl:
       prusa_slicer:
       super_slicer:
     form:
-      add:
       notes:
         help_html: Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
     general:
@@ -40,6 +39,8 @@ nl:
       delete:
       edit_related:
       this_file:
+    relationships_form:
+      add:
     show:
       convert: Converteren naar 3MF
       details_heading: Details

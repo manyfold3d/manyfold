@@ -14,40 +14,7 @@
   <hr>
   <h4><%= t("general.related_content") %></h4>
 
-  <div class="form-control-plaintext">
-    <%= form.label :relationships %>
-    <%= cocooned_add_item_button Icon(icon: "node-plus", label: t(".add")), form, :relationships,
-          class: "btn btn-secondary btn-sm float-end ms-2",
-          insertion_node: "#cocooned-relationships",
-          insertion_method: "append" %>
-  </div>
-  <div>
-    <table class="table">
-      <tbody>
-        <% @file.reverse_relationships.each do |r| %>
-        <tr>
-          <%= content_tag(:td) do %>
-            <%= r.subject.name %>
-            <br>
-            <code><%= r.subject.filename %></code>
-          <% end %>
-          <td><%= t("activerecord.models.relationships.predicates.%{predicate}" % {predicate: r.predicate}) %></td>
-          <%= content_tag(:td) do %>
-            <%= t("model_files.relationship_fields.this_file") %>
-            <br>
-            <code><%= @file.filename %></code>
-          <% end %>
-          <td><%= link_to Icon(icon: "pencil-square", label: translate("model_files.relationship_fields.edit_related")), edit_model_model_file_path(@model, r.subject), class: "btn btn-outline-secondary" %></td>
-        </tr>
-        <% end %>
-      </tbody>
-      <%= cocooned_container :tbody, id: "cocooned-relationships", data: {controller: "cocooned"} do
-            form.fields_for :relationships do |f|
-              render "relationship_fields", f: f
-            end
-          end %>
-    </table>
-  </div>
+  <%= render "relationships_form", form: form %>
 
   <hr>
   <h4><%= t("general.access") %></h4>

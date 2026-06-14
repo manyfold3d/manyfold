@@ -31,7 +31,6 @@ pt:
       prusa_slicer:
       super_slicer:
     form:
-      add:
       notes:
         help_html:
     general:
@@ -40,6 +39,8 @@ pt:
       delete:
       edit_related:
       this_file:
+    relationships_form:
+      add:
     show:
       convert:
       details_heading:

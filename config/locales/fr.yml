@@ -355,6 +355,13 @@ fr:
         other: Problèmes
         two: Problèmes
         zero: Problèmes
+      relationship:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       relationships:
         predicates:
           adapted_from:

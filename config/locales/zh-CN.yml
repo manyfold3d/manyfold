@@ -353,6 +353,13 @@ zh-CN:
         other: 问题
         two: 问题
         zero: 问题
+      relationship:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       relationships:
         predicates:
           adapted_from:

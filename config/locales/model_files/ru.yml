@@ -31,7 +31,6 @@ ru:
       prusa_slicer: Открыть в PrusaSlicer
       super_slicer: Открыть в SuperSlicer
     form:
-      add:
       notes:
         help_html:
     general:
@@ -40,6 +39,8 @@ ru:
       delete:
       edit_related:
       this_file:
+    relationships_form:
+      add:
     show:
       convert:
       details_heading:

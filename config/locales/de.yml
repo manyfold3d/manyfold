@@ -353,6 +353,13 @@ de:
         other: Probleme
         two: Probleme
         zero: Probleme
+      relationship:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       relationships:
         predicates:
           adapted_from: ist ein Remix von

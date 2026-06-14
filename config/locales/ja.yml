@@ -353,6 +353,13 @@ ja:
         other: 問題点
         two: 問題点
         zero: 問題点
+      relationship:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       relationships:
         predicates:
           adapted_from:
