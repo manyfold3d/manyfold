@@ -380,19 +380,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-color-parser@npm:^4.1.7":
-  version: 4.1.7
-  resolution: "@csstools/css-color-parser@npm:4.1.7"
-  dependencies:
-    "@csstools/color-helpers": ^6.0.2
-    "@csstools/css-calc": ^3.2.1
-  peerDependencies:
-    "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-tokenizer": ^4.0.0
-  checksum: 299e6c180a8a5e13f47e55af5382cac3129d7f0113b828b168deb382cc7079f195512e8f184259464460c4252be47f3b5ffe25c78d53bfa59c0c24e98ae54fd3
-  languageName: node
-  linkType: hard
-
 "@csstools/css-parser-algorithms@npm:^4.0.0":
   version: 4.0.0
   resolution: "@csstools/css-parser-algorithms@npm:4.0.0"
