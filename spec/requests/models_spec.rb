@@ -388,7 +388,7 @@ RSpec.describe "Models", :after_first_run do
         it "returns paginated models" do # rubocop:todo RSpec/MultipleExpectations
           get "/models?library=#{library.to_param}&page=2"
           expect(response).to have_http_status(:success)
-          expect(response.body).to match(/pagination/)
+          expect(response.body).to include("pagination")
         end
       end
 
