@@ -380,6 +380,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/css-color-parser@npm:^4.1.7":
+  version: 4.1.7
+  resolution: "@csstools/css-color-parser@npm:4.1.7"
+  dependencies:
+    "@csstools/color-helpers": ^6.0.2
+    "@csstools/css-calc": ^3.2.1
+  peerDependencies:
+    "@csstools/css-parser-algorithms": ^4.0.0
+    "@csstools/css-tokenizer": ^4.0.0
+  checksum: 299e6c180a8a5e13f47e55af5382cac3129d7f0113b828b168deb382cc7079f195512e8f184259464460c4252be47f3b5ffe25c78d53bfa59c0c24e98ae54fd3
+  languageName: node
+  linkType: hard
+
 "@csstools/css-parser-algorithms@npm:^4.0.0":
   version: 4.0.0
   resolution: "@csstools/css-parser-algorithms@npm:4.0.0"
@@ -464,17 +477,17 @@ __metadata:
   linkType: hard
 
 "@csstools/postcss-color-mix-function@npm:^4.0.4":
-  version: 4.0.4
-  resolution: "@csstools/postcss-color-mix-function@npm:4.0.4"
+  version: 4.0.5
+  resolution: "@csstools/postcss-color-mix-function@npm:4.0.5"
   dependencies:
-    "@csstools/css-color-parser": ^4.1.1
+    "@csstools/css-color-parser": ^4.1.7
     "@csstools/css-parser-algorithms": ^4.0.0
     "@csstools/css-tokenizer": ^4.0.0
     "@csstools/postcss-progressive-custom-properties": ^5.1.0
     "@csstools/utilities": ^3.0.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 973246aa163cab2a03128462d021cf6c9aec876f69a3de6b8604d503c02ce8ad5a2b35ca69e1f0db91fd0e69ce333fe9aa2644c8db126d697492151e3f0d561d
+  checksum: b9c2c61f41b4e7b9a107012f9e0cab32d2abe1b1b3e36062bb84218b4ffd6658046fe127203a8de61de20addf618a9065f8011ceafd82cd95caa0f7fd430caed
   languageName: node
   linkType: hard
 
