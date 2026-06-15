@@ -304,6 +304,26 @@ RSpec.describe ModelFile do
     end
   end
 
+  context "when creating derivatives for a GCODE file" do
+    let(:model) { create(:model) }
+    let(:file) {
+      create(:model_file, model: model, filename: "test.gcode",
+        attachment: ModelFileUploader.upload(
+          File.open(Rails.root.join("spec/fixtures/model_file_spec/test.gcode")),
+          :cache
+        ))
+    }
+
+    before do
+      allow(SiteSettings).to receive_messages(generate_model_renders: true)
+      file.reload
+    end
+
+    it "extracts thumbnail to render derivative" do
+      expect(file.attachment_derivatives).to have_key(:render)
+    end
+  end
+
   context "with missing derivatives" do
     let(:model) { create(:model) }
     let(:file) {
