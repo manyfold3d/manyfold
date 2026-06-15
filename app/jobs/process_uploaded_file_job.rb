@@ -11,7 +11,7 @@ class ProcessUploadedFileJob < ApplicationJob
       library = Library.find(library_id)
       return if library.nil?
 
-      attachers = Array.wrap(uploaded_file).map do |it|
+      attachers = Array.wrap(uploaded_file).map do
         # Attach cached upload file
         attacher = ModelFileUploader::Attacher.new
         attacher.attach_cached(it)
@@ -21,7 +21,7 @@ class ProcessUploadedFileJob < ApplicationJob
       name ||= File.basename(attachers.first.file.original_filename, ".*").humanize.tr("+", " ").careful_titleize
       model ||= create_new_model(library, name: name, owner: owner, creator_id: creator_id, collection_ids: collection_ids, tag_list: tag_list, license: license, sensitive: sensitive, permission_preset: permission_preset)
 
-      attachers.each do |it|
+      attachers.each do
         new_files << if new_model && (attachers.length == 1) && is_archive?(it.file)
           unzip_into_model(model, it.file)
         else
@@ -38,7 +38,7 @@ class ProcessUploadedFileJob < ApplicationJob
     end
     new_files.flatten.each(&:parse_metadata_later)
 
-    attachers.each do |it|
+    attachers.each do
       # Discard cached file
       it.destroy
     end
@@ -53,7 +53,7 @@ class ProcessUploadedFileJob < ApplicationJob
       name: name,
       path: SecureRandom.uuid,
       creator_id: creator_id,
-      collections: collection_ids.map { |it| Collection.find(it) },
+      collections: collection_ids.map { Collection.find(it) },
       tag_list: tag_list,
       license: license,
       sensitive: sensitive,
@@ -127,6 +127,6 @@ class ProcessUploadedFileJob < ApplicationJob
     return 0 if arrays.empty?
     first = arrays.shift
     zip = first.zip(*arrays)
-    zip.count { |it| it.uniq.count == 1 }
+    zip.count { it.uniq.count == 1 }
   end
 end

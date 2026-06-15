@@ -2,7 +2,7 @@ class FileHandlers::Rouge < FileHandlers::Base
   ENVIRONMENTS = [:browser].freeze
 
   INPUT_TYPES = ::Rouge::Lexer.all.filter_map { |lexer| # rubocop:disable Pundit/UsePolicyScope
-    (Mime::LOOKUP.keys & lexer.mimetypes).map { |it| Mime::LOOKUP[it] }.uniq
+    (Mime::LOOKUP.keys & lexer.mimetypes).map { Mime::LOOKUP[it] }.uniq
   }.flatten.freeze
 
   def self.priority

@@ -5,7 +5,7 @@ class Components::Renderers::Rouge < Components::Renderers::Base
 
   def before_template
     @formatter = ::Rouge::Formatters::HTMLLineTable.new(::Rouge::Formatters::HTML.new)
-    @lexer = ::Rouge::Lexer.all.find { |it| @file.mime_type.in? it.mimetypes } # rubocop:disable Pundit/UsePolicyScope
+    @lexer = ::Rouge::Lexer.all.find { @file.mime_type.in? it.mimetypes } # rubocop:disable Pundit/UsePolicyScope
   end
 
   def view_template

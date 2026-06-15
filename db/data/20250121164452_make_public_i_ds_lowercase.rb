@@ -11,7 +11,7 @@ class MakePublicIDsLowercase < ActiveRecord::Migration[7.2]
       Model,
       Problem,
       User
-    ].each do |it|
+    ].each do
       it.update_all("public_id = lower(public_id)") # rubocop:disable Rails/SkipsModelValidations
     end
   end

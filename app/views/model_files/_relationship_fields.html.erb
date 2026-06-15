@@ -13,12 +13,12 @@
     <% end %>
   <% else %>
     <td>
-      <%= f.select :predicate, Relationship::FILE_TO_FILE_PREDICATES.map { |it| [translate("activerecord.models.relationships.predicates.%{predicate}" % {predicate: it}), it] },
+      <%= f.select :predicate, Relationship::FILE_TO_FILE_PREDICATES.map { [translate("activerecord.models.relationships.predicates.%{predicate}" % {predicate: it}), it] },
             {selected: f.object&.predicate},
             {class: "form-control"} %>
     </td>
     <td>
-      <%= f.select :objekt_id, @model.model_files.without_special.map { |it| [it.name_and_filename, it.public_id] },
+      <%= f.select :objekt_id, @model.model_files.without_special.map { [it.name_and_filename, it.public_id] },
             {selected: f.object&.objekt&.public_id},
             {class: "form-control"} %>
     </td>

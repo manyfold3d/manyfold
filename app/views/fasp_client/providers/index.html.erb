@@ -7,7 +7,7 @@
   <%= t(".add_html", base_url: fasp_client_url) %>
 </p>
 
-<% if @providers.none? { |it| it.base_url == "https://search.3dprint.social/fasp"} %>
+<% if @providers.none? { it.base_url == "https://search.3dprint.social/fasp"} %>
   <div class="alert alert-info">
     <%= t(".search_3dprint_social_html") %>
   </div>

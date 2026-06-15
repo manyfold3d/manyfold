@@ -7,7 +7,7 @@ module ChangeDetection
   end
 
   def indexed_files
-    model_files.includes(:model).without_special.pluck("models.path", :filename).map { |it| File.join(it) }
+    model_files.includes(:model).without_special.pluck("models.path", :filename).map { File.join(it) }
   end
 
   def folders_with_changes
@@ -18,8 +18,8 @@ module ChangeDetection
     # (that might be a bug - or a feature)
     changes.select! { |f| SupportedMimeTypes.indexable_extensions.include? File.extname(f).tr(".", "") }
     # Discard thingiverse false-positives - sometimes they add images that have model extensions.
-    patterns = SupportedMimeTypes.model_extensions.map { |it| %r{images/[^/]*\.#{it}} }
-    changes = changes.reject { |f| patterns.any? { |it| f =~ it } }
+    patterns = SupportedMimeTypes.model_extensions.map { %r{images/[^/]*\.#{it}} }
+    changes = changes.reject { |f| patterns.any? { f =~ it } }
     # Make a list of library-relative folders with changed files
     folders_with_changes = changes.map { |f| File.dirname(f) }.uniq
     folders_with_changes = filter_out_common_subfolders(folders_with_changes)
@@ -55,7 +55,7 @@ module ChangeDetection
     # If this is a leaf folder, we're done
     return folder if leaf_folder?(absolute_path)
     # Otherwise, choose a random folder
-    folders = Dir.entries(absolute_path).select do |it|
+    folders = Dir.entries(absolute_path).select do
       FileTest.directory?(File.join(absolute_path, it)) &&
         !SiteSettings.ignored_file?(File.join(absolute_path, it)) &&
         !it.starts_with?(".")

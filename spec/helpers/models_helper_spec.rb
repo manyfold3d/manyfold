@@ -11,7 +11,7 @@ RSpec.describe ModelsHelper do
         leg_r.stl
         model.stl
         model.stp
-      ].map { |it| build(:model_file, filename: it) }
+      ].map { build(:model_file, filename: it) }
     end
 
     it "groups strings together with similar prefixes" do # rubocop:todo RSpec/MultipleExpectations

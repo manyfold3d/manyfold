@@ -82,7 +82,7 @@ class ModelsController < ApplicationController
     authorize :model
     p = upload_params
     # First, is this a single or multi-model event?
-    multiple = p[:file]&.values&.all? { |it| SupportedMimeTypes.archive_extensions.include? File.extname(it[:name]).delete(".").downcase }
+    multiple = p[:file]&.values&.all? { SupportedMimeTypes.archive_extensions.include? File.extname(it[:name]).delete(".").downcase }
     # Then run validations on a dummy object
     common_args = {
       name: multiple ? nil : p[:name],
@@ -100,12 +100,12 @@ class ModelsController < ApplicationController
       # Handle actual files
       jobs = if multiple
         # If this is all separate archives, enqueue separate jobs for each
-        p[:file]&.values&.map { |it| cached_file_data(it) }
+        p[:file]&.values&.map { cached_file_data(it) }
       else
         # Otherwise, enqueue one job for all files and add name to args
-        [p[:file]&.values&.map { |it| cached_file_data(it) }]
+        [p[:file]&.values&.map { cached_file_data(it) }]
       end
-      jobs&.each do |it|
+      jobs&.each do
         ProcessUploadedFileJob.perform_later(library.id, it, **common_args)
       end
       respond_to do |format|

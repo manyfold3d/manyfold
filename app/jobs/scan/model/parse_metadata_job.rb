@@ -39,7 +39,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
 
   def identify_preview_file(model)
     {
-      preview_file: Naturally.sort_by(model.valid_preview_files, :filename).min_by { |it| preview_priority(it) }
+      preview_file: Naturally.sort_by(model.valid_preview_files, :filename).min_by { preview_priority(it) }
     }
   end
 
@@ -51,7 +51,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
 
   def tags_from_directory_name(path)
     return [] unless SiteSettings.model_tags_tag_model_directory_name
-    File.split(path).last.split(/[\W_+-]/).filter { |it| it.length > 1 }
+    File.split(path).last.split(/[\W_+-]/).filter { it.length > 1 }
   end
 
   def attributes_from_path_template(library, path)
@@ -152,7 +152,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   end
 
   def license_id_from_url(url)
-    Spdx.licenses.find { |id, details| details["seeAlso"].map { |it| it.gsub("legalcode", "") }.include?(url.gsub("http:", "https:")) }&.dig(0)
+    Spdx.licenses.find { |id, details| details["seeAlso"].map { it.gsub("legalcode", "") }.include?(url.gsub("http:", "https:")) }&.dig(0)
   end
 
   def tags_from_path_template(library, path)
@@ -175,7 +175,7 @@ class Scan::Model::ParseMetadataJob < ApplicationJob
   def find_or_create_from_path_component(klass, path_component)
     return unless path_component
     if path_component.is_a? Array
-      path_component.map { |it| find_or_create_from_path_component(klass, it) }
+      path_component.map { find_or_create_from_path_component(klass, it) }
     else
       klass.find_by(slug: path_component) ||
         klass.create_with(slug: path_component.parameterize).find_or_create_by(

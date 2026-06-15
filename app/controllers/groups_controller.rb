@@ -90,7 +90,7 @@ class GroupsController < ApplicationController
   private
 
   def send_notifications
-    @new_memberships&.each do |it|
+    @new_memberships&.each do
       NewGroupMemberNotifier.with(membership: it).deliver(it.user)
     end
   end

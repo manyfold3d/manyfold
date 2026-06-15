@@ -9,7 +9,7 @@ module ManyfoldApi::V0
         creator: creator_ref(@object.creator),
         isPartOf: collection_ref(@object.collection),
         preview_model: model_ref(@object.preview_model),
-        links: @object.links.map { |it| LinkSerializer.new(it).serialize }
+        links: @object.links.map { LinkSerializer.new(it).serialize }
       ).compact
     end
 

@@ -5,10 +5,10 @@ module ManyfoldApi::V0
       {
         name: @object["name"],
         creator: dereference(@object.dig("creator", "@id"), Creator),
-        collections: @object.dig("isPartOf")&.map { |it| CollectionDeserializer.new(object: it).deserialize },
+        collections: @object.dig("isPartOf")&.map { CollectionDeserializer.new(object: it).deserialize },
         caption: @object["caption"],
         notes: @object["description"],
-        links_attributes: @object["links"]&.map { |it| LinkDeserializer.new(object: it, user: @user).deserialize },
+        links_attributes: @object["links"]&.map { LinkDeserializer.new(object: it, user: @user).deserialize },
         license: @object.dig("spdx:license", "licenseId"),
         sensitive: @object["sensitive"],
         preview_file: dereference(@object.dig("preview_file", "@id"), ModelFile),

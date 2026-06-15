@@ -10,9 +10,9 @@ module DataPackage
         tag_list: @object["keywords"],
         sensitive: @object["sensitive"],
         license: @object.dig("licenses", 0, "name"),
-        model_files: @object["resources"]&.map { |it| ModelFileDeserializer.new(it).deserialize },
-        creator: CreatorDeserializer.new(@object["contributors"]&.find { |it| it["roles"].include?("creator") }).deserialize,
-        collections: (@object["collections"] || []).map { |it| CollectionDeserializer.new(it).deserialize },
+        model_files: @object["resources"]&.map { ModelFileDeserializer.new(it).deserialize },
+        creator: CreatorDeserializer.new(@object["contributors"]&.find { it["roles"].include?("creator") }).deserialize,
+        collections: (@object["collections"] || []).map { CollectionDeserializer.new(it).deserialize },
         entrypoint: @object.dig("entrypoint", "path"),
         entrypoint_fragment: @object.dig("entrypoint", "fragment")
       }.compact
@@ -21,7 +21,7 @@ module DataPackage
     private
 
     def parse_links
-      links = (@object["links"] || []).map { |it| LinkDeserializer.new(it).deserialize }
+      links = (@object["links"] || []).map { LinkDeserializer.new(it).deserialize }
       links << {url: @object["homepage"]} if @object["homepage"]
       links
     end

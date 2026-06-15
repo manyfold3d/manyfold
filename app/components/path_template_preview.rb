@@ -7,7 +7,7 @@ class Components::PathTemplatePreview < Components::Base
 
   def before_template
     if @library.valid? && @library.parse_metadata_from_path
-      @paths = @library.sample(3).map { |it| [it, PathParserService.new(@library.path_template, it).call] }
+      @paths = @library.sample(3).map { [it, PathParserService.new(@library.path_template, it).call] }
     end
   end
 
@@ -29,7 +29,7 @@ class Components::PathTemplatePreview < Components::Base
               td { find_or_new_from_path_component(Creator, parsed[:creator])&.name || "❌" }
               td { parsed[:collections] ? Array(find_or_new_from_path_component(Collection, parsed[:collections])).map(&:name).join(", ") : "❌" }
               td {
-                parsed[:tags]&.map do |it|
+                parsed[:tags]&.map do
                   Tag tag: ActsAsTaggableOn::Tag.new(name: it), link: false
                   whitespace
                 end || "❌"
@@ -47,7 +47,7 @@ class Components::PathTemplatePreview < Components::Base
   def find_or_new_from_path_component(klass, path_component)
     return unless path_component
     if path_component.is_a? Array
-      path_component.map { |it| find_or_new_from_path_component(klass, it) }
+      path_component.map { find_or_new_from_path_component(klass, it) }
     else
       klass.find_by(slug: path_component) ||
         klass.find_by(
