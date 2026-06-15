@@ -775,7 +775,7 @@ cs:
     related_content:
     report: Nahlásit %{type}
     save: Uložit
-    settings:
+    settings: Nastavení
     setup_mode:
     shared:
     view: Zobrazení
