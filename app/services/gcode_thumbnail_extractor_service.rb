@@ -1,16 +1,25 @@
 class GcodeThumbnailExtractorService
   def initialize(file:)
     @file = file
+    @remaining = nil
   end
 
   def call
-    match = @file.read.match(/thumbnail[^\n]*begin[^\n]*?([0-9]+)\n(.*?)thumbnail[^\n]*end/m)
-    return unless match
-    length = match[1].to_i
-    encoded = match[2].gsub(/[;\s]/, "")
-    return unless encoded.length == length
-    StringIO.new(Base64.strict_decode64(encoded))
-  rescue
-    nil
+    data = ""
+    while (line = @file.gets("\n"))
+      if @remaining.nil?
+        if line =~ /thumbnail[^\n]*begin[^\n]*? ([0-9]+)$/
+          @remaining = $1.to_i
+        end
+      elsif line =~ /thumbnail[^\n]*end$/ || @remaining <= 0
+        @remaining = nil
+        break
+      else
+        new_data = line.gsub(/^;\s*/, "").chomp
+        data += new_data
+        @remaining -= new_data.length
+      end
+    end
+    StringIO.new(Base64.strict_decode64(data))
   end
 end
