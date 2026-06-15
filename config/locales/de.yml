@@ -354,12 +354,12 @@ de:
         two: Probleme
         zero: Probleme
       relationship:
-        few:
-        many:
+        few: Beziehungen
+        many: Beziehungen
         one:
-        other:
-        two:
-        zero:
+        other: Beziehungen
+        two: Beziehungen
+        zero: Beziehungen
       relationships:
         predicates:
           adapted_from: ist ein Remix von
@@ -777,7 +777,7 @@ de:
     related_content:
     report: Melden %{type}
     save: Speichern
-    settings:
+    settings: Einstellungen
     setup_mode: Diese Website befindet sich derzeit im Einrichtungsmodus; komme später wieder!
     shared: mit Lokalen Nutzern geteilt
     view: Siehe
