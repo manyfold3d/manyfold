@@ -16,7 +16,13 @@
     <td>
       <%= f.select :objekt_id, policy_scope(Model).all.map { [it.name, it.public_id] },
             {selected: f.object&.objekt&.public_id},
-            {class: "form-control"} %>
+            {
+              class: "form-control",
+              data: {
+                controller: "searchable-select"
+              }
+            }
+      %>
     </td>
   <% end %>
   <td>
