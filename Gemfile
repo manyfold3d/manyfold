@@ -211,6 +211,7 @@ gem "graphlient", "~> 0.8.0"
 gem "webmock", "~> 3.26", group: :test
 
 gem "image_processing"
+gem "mini_magick"
 
 gem "csv", "~> 3.3"
 
@@ -218,7 +219,7 @@ gem "arel_extensions", "~> 2.4"
 
 gem "assimp-ffi", git: "https://github.com/Kerilk/assimp-ruby.git"
 
-gem "yard-lint", "~> 1.5", group: :development
+gem "yard-lint", "~> 1.6", group: :development
 
 gem "zaru", "~> 1.0"
 
