@@ -85,6 +85,12 @@ ru:
       tour:
         description:
         title: Проблемы
+    relationship_fields:
+      delete:
+      edit_related:
+      this_model:
+    relationships_form:
+      add:
     scan:
       success:
     show:

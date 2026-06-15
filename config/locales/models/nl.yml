@@ -85,6 +85,12 @@ nl:
       tour:
         description:
         title: Problemen
+    relationship_fields:
+      delete:
+      edit_related:
+      this_model:
+    relationships_form:
+      add:
     scan:
       success: Modelscan gestart
     show:

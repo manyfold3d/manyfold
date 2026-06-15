@@ -113,6 +113,7 @@ ru:
         notes: Примечания
         path: Путь
         preview_file: Файл предварительного просмотра
+        relationships:
         sensitive: Чувствительный контент
       model_file:
         caption: Описание
@@ -563,6 +564,8 @@ ru:
     path_template_preview:
       description:
       path: Путь
+    remixes_card:
+      title:
     search_help:
       boolean:
       federation:
@@ -583,6 +586,8 @@ ru:
       name:
       recent:
       updated:
+    sources_card:
+      title:
   concerns:
     linkable:
       sync:

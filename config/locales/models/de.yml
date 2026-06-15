@@ -85,6 +85,12 @@ de:
       tour:
         description: Diese Karte zeigt alle Probleme an, die bei diesem Modell festgestellt wurden. Du kannst die Einstellungen für die Sichtbarkeit von Problemen in deinen Kontoeinstellungen ändern.
         title: Probleme
+    relationship_fields:
+      delete:
+      edit_related:
+      this_model:
+    relationships_form:
+      add:
     scan:
       success: Modell-Scan gestartet
     show:

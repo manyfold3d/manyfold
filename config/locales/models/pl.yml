@@ -85,6 +85,12 @@ pl:
       tour:
         description:
         title: Problemy
+    relationship_fields:
+      delete:
+      edit_related:
+      this_model:
+    relationships_form:
+      add:
     scan:
       success: Rozpoczęto skanowanie modelów
     show:

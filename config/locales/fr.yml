@@ -115,6 +115,7 @@ fr:
         notes: Description
         path: Chemin
         preview_file: Prévisualisation
+        relationships:
         sensitive: Contenu sensible
       model_file:
         caption: Légende
@@ -565,6 +566,8 @@ fr:
     path_template_preview:
       description:
       path: Chemin
+    remixes_card:
+      title:
     search_help:
       boolean:
       federation:
@@ -585,6 +588,8 @@ fr:
       name: Titre
       recent: Le plus récent
       updated: Mis à jour
+    sources_card:
+      title:
   concerns:
     linkable:
       sync:

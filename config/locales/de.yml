@@ -113,6 +113,7 @@ de:
         notes: Beschreibung
         path: Pfad
         preview_file: Vorschau anzeigen
+        relationships:
         sensitive: Möglicherweise verstörender Inhalt
       model_file:
         caption: Beschreibung
@@ -565,6 +566,8 @@ de:
     path_template_preview:
       description: Die folgende Tabelle zeigt einige der abgeleiteten Metadaten für Ordner in dieser Bibliothek, die auf der obigen Vorlage basieren.
       path: Pfad
+    remixes_card:
+      title:
     search_help:
       boolean: Verwende "oder", um Modelle zu finden, die einem der Begriffe entsprechen.
       federation: Suche nach einem beliebigen Fediverse-Benutzernamen, um ihm zu folgen.
@@ -585,6 +588,8 @@ de:
       name: Titel
       recent: Neueste
       updated: Aktualisiert
+    sources_card:
+      title:
   concerns:
     linkable:
       sync:

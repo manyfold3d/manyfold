@@ -85,6 +85,12 @@ fr:
       tour:
         description:
         title: Problèmes
+    relationship_fields:
+      delete:
+      edit_related:
+      this_model:
+    relationships_form:
+      add:
     scan:
       success: Début de l'analyse du modèle
     show:

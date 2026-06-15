@@ -113,6 +113,7 @@ pl:
         notes: Opis
         path: Ścieżka
         preview_file: Podgląd pliku
+        relationships:
         sensitive: Wrażliwa Treść
       model_file:
         caption: Napis
@@ -563,6 +564,8 @@ pl:
     path_template_preview:
       description:
       path: Ścieżka
+    remixes_card:
+      title:
     search_help:
       boolean: Użyj "or", aby znaleźć modele pasujące do któregokolwiek z terminów.
       federation: Wyszukaj dowolną nazwę użytkownika Fediverse, aby ją zaobserwować.
@@ -583,6 +586,8 @@ pl:
       name:
       recent:
       updated:
+    sources_card:
+      title:
   concerns:
     linkable:
       sync:
