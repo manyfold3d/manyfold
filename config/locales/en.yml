@@ -113,6 +113,7 @@ en:
         notes: Description
         path: Path
         preview_file: Preview File
+        relationships: Relationships
         sensitive: Sensitive Content
       model_file:
         caption: Caption
