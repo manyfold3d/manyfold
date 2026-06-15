@@ -21,7 +21,7 @@ module ActivityPub
         "f3di:concreteType": "Creator",
         indexable: @object.indexable?,
         discoverable: @object.indexable?,
-        attachment: @object.links.map { |it| {type: "Link", href: it.url, name: it.text}.compact },
+        attachment: @object.links.map { {type: "Link", href: it.url, name: it.text}.compact },
         icon: @object.avatar ? {
           type: "Image",
           mediaType: @object.avatar.mime_type,

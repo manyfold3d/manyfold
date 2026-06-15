@@ -90,7 +90,7 @@ class ModelFile < ApplicationRecord
 
   def filename_without_extension
     dirname = File.dirname(filename)
-    File.join([dirname, basename(include_extension: false)].reject { |it| it == "." })
+    File.join([dirname, basename(include_extension: false)].reject { it == "." })
   end
 
   def name
@@ -155,7 +155,7 @@ class ModelFile < ApplicationRecord
   end
 
   def planar?
-    i = dimensions.to_a.index { |it| it.zero? }
+    i = dimensions.to_a.index { it.zero? }
     i ? [:x, :y, :z].at(i) : nil
   end
 
@@ -175,7 +175,7 @@ class ModelFile < ApplicationRecord
   end
 
   def scene
-    Shrine.with_file(attachment.open) do |it|
+    Shrine.with_file(attachment.open) do
       scene = Assimp.import_file(it.path)
       scene.apply_post_processing(Assimp::PostProcessSteps[
         :JoinIdenticalVertices,
@@ -301,7 +301,7 @@ class ModelFile < ApplicationRecord
   private
 
   def rescan_duplicates
-    duplicates.each { |it| it.analyse_later }
+    duplicates.each { it.analyse_later }
   end
 
   def clear_presupported_relation
@@ -315,7 +315,7 @@ class ModelFile < ApplicationRecord
       parts = filename.split(File::SEPARATOR).compact_blank
       parts.delete("..")
       parts.delete(".")
-      File.join(parts.map { |it| Zaru.sanitize!(it) })
+      File.join(parts.map { Zaru.sanitize!(it) })
     end
   end
 end

@@ -69,7 +69,7 @@
           <% if @model.collections.any? %>
             <div><%= Icon icon: "collection", label: Collection.model_name.human(count: 100) %></div>
             <div>
-              <% @model.collections.each do |it| %>
+              <% @model.collections.each do %>
                 <%= link_to it.name, models_path({collection: it}.merge(@filter&.to_params)) %>
                 <br>
               <% end %>

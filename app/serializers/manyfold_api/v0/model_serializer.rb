@@ -13,12 +13,12 @@ module ManyfoldApi::V0
             encodingFormat: file.mime_type.to_s
           )
         end,
-        isPartOf: @object.collections.map { |it| collection_ref(it) },
+        isPartOf: @object.collections.map { collection_ref(it) },
         creator: creator_ref(@object.creator),
         sensitive: @object.sensitive,
         keywords: @object.tag_list,
         preview_file: file_ref(@object.preview_file),
-        links: @object.links.map { |it| LinkSerializer.new(it).serialize }
+        links: @object.links.map { LinkSerializer.new(it).serialize }
       ).compact
     end
 

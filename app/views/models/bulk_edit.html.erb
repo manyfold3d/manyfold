@@ -23,7 +23,7 @@
           <td><%= form.check_box "models[#{model.to_param}]", data: {bulk_item: model.to_param}, "aria-label": translate(".select", name: model.name) %></td>
           <td><%= link_to model.name, model, title: model.path %></td>
           <td>
-            <% model.collections.each do |it| %>
+            <% model.collections.each do %>
               <%= link_to it.name, it %>
             <% end %>
           </td>

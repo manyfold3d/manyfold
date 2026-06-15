@@ -18,7 +18,7 @@
     </div>
     <div>
       <%= form.select :landing_page,
-            SiteSettings::LANDING_PAGES.map { |it| [t("settings.landing_pages.%{option}" % {option: it}), it] },
+            SiteSettings::LANDING_PAGES.map { [t("settings.landing_pages.%{option}" % {option: it}), it] },
             {selected: @user.landing_page || SiteSettings.default_landing_page},
             {class: "form-select"} %>
       <small class="form-text"><%= t ".landing_page.help" %></small>

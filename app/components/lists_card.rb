@@ -15,7 +15,7 @@ class Components::ListsCard < Components::Base
 
   def before_template
     @all_lists = policy_scope(current_user.lists.without_special).all
-    @on_lists, @off_lists = @all_lists.partition { |it| @listable.in? it.models }
+    @on_lists, @off_lists = @all_lists.partition { @listable.in? it.models }
   end
 
   def view_template
@@ -76,7 +76,7 @@ class Components::ListsCard < Components::Base
   def on_lists
     span { t("components.lists_card.on_lists") }
     table class: "table table-striped" do
-      @on_lists.map do |it|
+      @on_lists.map do
         tr do
           td { link_to it.name, list_path(it) }
           td do

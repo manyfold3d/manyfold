@@ -21,7 +21,7 @@ module DataPackage
         attributes[:id] = Collection.find_by(name: attributes[:name])&.id
         attributes[:links_attributes] << {url: @object["path"]} if @object["path"]&.match?(URI::RFC2396_PARSER.make_regexp)
       end
-      attributes[:links_attributes].concat(@object["links"]&.map { |it| LinkDeserializer.new(it).deserialize } || [])
+      attributes[:links_attributes].concat(@object["links"]&.map { LinkDeserializer.new(it).deserialize } || [])
       attributes.compact_blank
     end
   end

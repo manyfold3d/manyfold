@@ -6,11 +6,11 @@
   <%= text_input_row form, "appearance[site_tagline]", label: t(".site_tagline.label"), value: SiteSettings.site_tagline, placeholder: t("application.tagline"), help: t(".site_tagline.help") %>
   <%= url_input_row form, "appearance[site_icon]", label: t(".site_icon.label"), value: SiteSettings.site_icon, help: t(".site_icon.help") %>
   <%= url_input_row form, "appearance[support_link]", label: t(".support_link.label"), value: SiteSettings.support_link, help: t(".support_link.help") %>
-  <%= select_input_row form, "appearance[theme]", SiteSettings::AVAILABLE_THEMES.map { |it| [it.titleize, it] },
+  <%= select_input_row form, "appearance[theme]", SiteSettings::AVAILABLE_THEMES.map { [it.titleize, it] },
         label: t(".theme.label"),
         selected: SiteSettings.validated_theme,
         help: t(".theme.help_html") %>
-  <%= select_input_row form, "appearance[default_landing_page]", SiteSettings::LANDING_PAGES.map { |it| [t("settings.landing_pages.%{option}" % {option: it}), it] },
+  <%= select_input_row form, "appearance[default_landing_page]", SiteSettings::LANDING_PAGES.map { [t("settings.landing_pages.%{option}" % {option: it}), it] },
         label: t(".default_landing_page.label"),
         selected: SiteSettings.default_landing_page,
         help: t(".default_landing_page.help") %>
