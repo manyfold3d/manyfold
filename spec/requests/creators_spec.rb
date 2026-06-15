@@ -75,7 +75,7 @@ RSpec.describe "Creators", :after_first_run do
       it "returns paginated creators", :as_member do # rubocop:todo RSpec/MultipleExpectations
         get "/creators?page=2"
         expect(response).to have_http_status(:success)
-        expect(response.body).to match(/pagination/)
+        expect(response.body).to include("pagination")
       end
     end
 
