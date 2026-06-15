@@ -4,11 +4,13 @@ class GcodeThumbnailExtractorService
   end
 
   def call
-    match = @file.read.match(/thumbnail[^\n]*begin[^\n]*\n(.*?)thumbnail[^\n]*end/m)
+    match = @file.read.match(/thumbnail[^\n]*begin[^\n]*?([0-9]+)\n(.*?)thumbnail[^\n]*end/m)
     return unless match
-    encoded = match[1].gsub(/[;\s]/,"")
+    length = match[1].to_i
+    encoded = match[2].gsub(/[;\s]/, "")
+    return unless encoded.length == length
     StringIO.new(Base64.strict_decode64(encoded))
-  rescue ArgumentError
+  rescue
     nil
   end
 end
