@@ -221,7 +221,7 @@ gem "assimp-ffi", git: "https://github.com/Kerilk/assimp-ruby.git"
 
 gem "yard-lint", "~> 1.6", group: :development
 
-gem "zaru", "~> 1.0"
+gem "zaru", "~> 1.1"
 
 # v3 causes us problems
 gem "connection_pool", ">= 2.2.5", "< 3.0"
