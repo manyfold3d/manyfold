@@ -16,10 +16,8 @@
         <td><%= t("activerecord.models.relationships.predicates.%{predicate}" % {predicate: r.predicate}) %></td>
         <%= content_tag(:td) do %>
           <%= t("models.relationship_fields.this_model") %>
-          <br>
-          <code><%= form.object.name %></code>
         <% end %>
-        <td><%= link_to Icon(icon: "pencil-square", label: translate("models.relationship_fields.edit_related")), edit_model_path(@model), class: "btn btn-outline-secondary" %></td>
+        <td><%= link_to Icon(icon: "pencil-square", label: translate("models.relationship_fields.edit_related")), edit_model_path(r.subject), class: "btn btn-outline-secondary" %></td>
       </tr>
       <% end %>
     </tbody>
