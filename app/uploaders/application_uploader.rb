@@ -128,6 +128,15 @@ class ApplicationUploader < Shrine
           carousel: magick.resize_to_limit!(1024, 768)
         }
       end
+    elsif SiteSettings.generate_model_renders && FileHandlers::GcodeThumbnailExtractor.can_load?(context[:record].mime_type)
+      Shrine.with_file(original) do
+        match = original.read.match(/thumbnail begin[^\n]*\n(.*)thumbnail end/m)
+        return {} unless match
+        encoded = match[1].gsub(/[;\s]/,"")
+        { render: StringIO.new(Base64.strict_decode64(encoded)) }
+      rescue ArgumentError
+        {}
+      end
     elsif SiteSettings.generate_model_renders && FileHandlers::F3d.can_load?(context[:record].mime_type) && context[:record]&.is_3d_model?
       Shrine.with_file(original) do
         up = context[:record]&.up_direction
