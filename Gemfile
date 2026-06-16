@@ -146,7 +146,7 @@ gem "logstash-event", "~> 1.2"
 
 gem "climate_control", "~> 1.2", group: :test
 
-gem "sys-filesystem", "~> 1.5"
+gem "sys-filesystem", "~> 1.6"
 gem "shrine", "~> 3.7"
 gem "tus-server", "~> 2.3"
 gem "shrine-tus", "~> 2.1"
