@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   draw(:oauth)
   draw(:oembed)
   draw(:upload)
+  draw(:print)
   draw(:api)
 
   resources :libraries, except: [:index] do

@@ -127,6 +127,10 @@ ja:
         relationships:
         size: ファイルサイズ
         y_up: Y上
+      print_host:
+        endpoint:
+        name:
+        protocol:
       problem:
         category: カテゴリー
         ignored: ヒドゥン
@@ -347,6 +351,13 @@ ja:
         other: ファイル
         two: ファイル
         zero: ファイル
+      print_host:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       problem:
         few: 問題点
         many: 問題点
@@ -971,6 +982,22 @@ ja:
     new_report:
       message:
       subject:
+  print_hosts:
+    create:
+      success:
+    destroy:
+      success:
+    form:
+      endpoint:
+        help:
+      name:
+        help:
+      protocol:
+        help:
+    protocols:
+      moonraker:
+    update:
+      success:
   renderer:
     errors:
       load:
@@ -1046,3 +1073,13 @@ ja:
       next: 次 &rsaquo;
       previous: "&lsaquo; 前"
       truncate: "&hellip;"
+    print_hosts:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:

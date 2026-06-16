@@ -127,6 +127,10 @@ pl:
         relationships:
         size: Rozmiar pliku
         y_up:
+      print_host:
+        endpoint:
+        name:
+        protocol:
       problem:
         category: Kategoria
         ignored: Ukryte
@@ -345,6 +349,13 @@ pl:
         many: Plików
         one: Plik
         other: Pliki
+        two:
+        zero:
+      print_host:
+        few:
+        many:
+        one:
+        other:
         two:
         zero:
       problem:
@@ -971,6 +982,22 @@ pl:
     new_report:
       message: Ktoś zgłosił zawartość wymagającą moderacji. Przejrzyj zgłoszenie pod adresem %{link}
       subject: Otrzymano nowe zgłoszenie
+  print_hosts:
+    create:
+      success:
+    destroy:
+      success:
+    form:
+      endpoint:
+        help:
+      name:
+        help:
+      protocol:
+        help:
+    protocols:
+      moonraker:
+    update:
+      success:
   renderer:
     errors:
       load: Błąd wczytywania
@@ -1046,3 +1073,13 @@ pl:
       next: Następna ›
       previous: "‹ Poprzednia"
       truncate: "…"
+    print_hosts:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:
