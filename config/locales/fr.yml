@@ -782,7 +782,7 @@ fr:
     related_content:
     report: Rapporter %{type}
     save: Sauvegarder
-    settings:
+    settings: Paramètres
     setup_mode:
     shared: Partagé avec les utilisateurs locaux
     view: Afficher
