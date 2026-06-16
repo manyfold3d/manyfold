@@ -354,12 +354,12 @@ es:
         two: Problemas
         zero: Problemas
       relationship:
-        few:
-        many:
-        one:
-        other:
-        two:
-        zero:
+        few: Relaciones
+        many: Relaciones
+        one: Relación
+        other: Relaciones
+        two: Relaciones
+        zero: Relaciones
       relationships:
         predicates:
           adapted_from: es un remix de
@@ -753,7 +753,7 @@ es:
     unfollow_remote_actor:
       unfollowed: Dejar de seguir a %{actor}
   general:
-    access:
+    access: Acceso
     copy_fediverse_handle: Copiar handle de Fediverse al portapapeles
     delete: Borrar
     download: Descargar
@@ -772,10 +772,10 @@ es:
     none: Ninguno
     private: Privado
     public: Público
-    related_content:
+    related_content: Contenidos relacionados
     report: Informe %{type}
     save: Guardar
-    settings:
+    settings: Ajustes
     setup_mode: Este sitio está actualmente en modo de configuración. ¡Vuelva más tarde!
     shared: Compartido con usuarios locales
     view: Ver
