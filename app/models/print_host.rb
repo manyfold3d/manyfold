@@ -6,4 +6,8 @@ class PrintHost < ApplicationRecord
   validates :name, presence: true
   validates :endpoint, presence: true
   validates :protocol, presence: true, inclusion: {in: PROTOCOLS.keys}
+
+  def service
+    PROTOCOLS[protocol].new(print_host: self)
+  end
 end
