@@ -1,9 +1,7 @@
 class PrintHost < ApplicationRecord
   # i18n-tasks-use t("activerecord.models.print_host")
 
-  PROTOCOLS = [
-    "moonraker" # i18n-tasks-use t("print_hosts.protocols.moonraker")
-  ].freeze
+  PROTOCOLS = Print.constants.map { const_get("Print::#{it}::PROTOCOL") }.freeze
 
   validates :name, presence: true
   validates :endpoint, presence: true
