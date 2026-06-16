@@ -26,14 +26,14 @@ export default class extends Controller {
   }
 
   fetchData (query, callback): void {
-    console.log(query)
-    const url = '/models.manyfold_api_v0?q=' + encodeURIComponent(query)
-    fetch(url)
+    const params = new URLSearchParams()
+    params.append('q', query)
+    fetch(`/models?${params}`, { headers: { Accept: 'application/vnd.manyfold.v0+json' } })
       .then(async response => await response.json())
       .then(json => {
-        const items = json.member.map((it) => ({ id: it['@id'].split('/').pop(), name: it.name }))
-        console.log(items)
-        callback(items)
+        callback(
+          json.member.map((it) => ({ id: it['@id'].split('/').pop(), name: it.name }))
+        )
       }).catch(() => {
         callback()
       })
