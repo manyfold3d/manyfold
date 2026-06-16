@@ -780,7 +780,7 @@ pl:
     related_content:
     report: Zgłoś %{type}
     save: Zapisz
-    settings:
+    settings: Ustawienia
     setup_mode:
     shared:
     view: Widok
