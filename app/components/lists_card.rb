@@ -76,11 +76,11 @@ class Components::ListsCard < Components::Base
   def on_lists
     span { t("components.lists_card.on_lists") }
     table class: "table table-striped" do
-      @on_lists.map do
+      @on_lists.map do |list|
         tr do
-          td { link_to it.name, list_path(it) }
+          td { link_to list.name, list_path(list) }
           td do
-            link_to remove_path(list: it), method: :patch, class: "link-danger link-underline-opacity-0" do
+            link_to remove_path(list: list), method: :patch, class: "link-danger link-underline-opacity-0" do
               Icon(icon: "trash", label: t("components.lists_card.remove"))
             end
           end
