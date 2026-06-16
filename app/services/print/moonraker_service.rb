@@ -7,6 +7,7 @@ class Print::MoonrakerService
   end
 
   def upload(file:, start_print: true)
+    raise ArgumentError unless file.mime_type.to_sym == :gcode
     connection.post(uri, payload(file: file, start_print: start_print))
   end
 
