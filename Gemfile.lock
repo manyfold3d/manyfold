@@ -968,7 +968,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.44)
-    yard-lint (1.6.1)
+    yard-lint (1.7.0)
       yard (~> 0.9)
       zeitwerk (~> 2.6)
     zaru (1.1)
@@ -1111,7 +1111,7 @@ DEPENDENCIES
   web-console (~> 4.3)
   webmock (~> 3.26)
   with_model (~> 2.2)
-  yard-lint (~> 1.6)
+  yard-lint (~> 1.7)
   zaru (~> 1.1)
 
 CHECKSUMS
@@ -1480,7 +1480,7 @@ CHECKSUMS
   with_model (2.2.0) sha256=eb0f498752391917e8c0a990951a343756bb89df2d12190faa5915a3fd99277e
   xpath (3.2.0) sha256=6dfda79d91bb3b949b947ecc5919f042ef2f399b904013eb3ef6d20dd3a4082e
   yard (0.9.44) sha256=eb087e9b631ccd887b049f303d489963945452d5e2a7eb49a5a74a7cf6887f28
-  yard-lint (1.6.1) sha256=f751e3a53ed6f1c6ef9a039ca127f8c8ed584653e95d72e89917e56d12a58d30
+  yard-lint (1.7.0) sha256=ce20d800558c1fe443e2e6906cc34a805870959326d9ccc774f7c40f2d8e6812
   zaru (1.1) sha256=5c2f8b83d9598da062ed146bd464d00d5f1f53bc80d4abf8c5aeacd6f1a4406a
   zeitwerk (2.8.2) sha256=7212a61311083c604184b1ea2574b9aa05cd14f855a0841c06985cabe9181d12
   zxcvbn (0.1.10) sha256=46e49a7cadcaab543b0073715341607ed99ffcacfc96d6f883bf1bfefaf0aaa5
