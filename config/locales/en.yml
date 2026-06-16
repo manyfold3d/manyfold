@@ -1077,7 +1077,7 @@ en:
       form:
         confirm_destroy: Are you sure you want to remove this printer?
       index:
-        description: Connecting Manyfold to your 3D printer lets you send sliced files to print directly.
+        description: Connecting Manyfold to your 3D printer lets you send sliced files to print directly (currently restricted to administrator users only).
         title: Printers
       new:
         title: New Printer

@@ -1,4 +1,5 @@
 class PrintHostsController < ApplicationController
+  layout "settings"
   before_action :get_print_host, except: [:index, :new, :create]
 
   def index

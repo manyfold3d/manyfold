@@ -6,7 +6,7 @@ class Views::PrintHosts::Index < Views::Base
   end
 
   def view_template
-    PageTitle title: t("views.print_hosts.index.title")
+    h3 { t("views.print_hosts.index.title") }
     p { t("views.print_hosts.index.description") }
     table class: "table table-striped" do
       tr do

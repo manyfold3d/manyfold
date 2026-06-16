@@ -2,9 +2,7 @@
 
 class Views::PrintHosts::New < Views::PrintHosts::Form
   def view_template
-    PageTitle title: t("views.print_hosts.new.title"), breadcrumbs: {
-      t("views.print_hosts.index.title") => print_hosts_path
-    }
+    h3 { t("views.print_hosts.new.title") }
     super
   end
 end
