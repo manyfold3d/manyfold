@@ -6,18 +6,27 @@ class Print::MoonrakerService
     @server_root = server_root
   end
 
-  def upload(file:, print: true)
-    payload = {}
-    conn = Faraday.new do |builder|
-      builder.request :multipart
-      payload[:print] = print ? "true" : "false"
-      payload[:file] = Faraday::Multipart::FilePart.new(
+  def upload(file:, start_print: true)
+    connection.post(uri, payload(file: file, start_print: start_print))
+  end
+
+  private
+
+  def connection
+    Faraday.new do
+      it.request :multipart
+    end
+  end
+
+  def payload(file:, start_print: true)
+    {
+      print: start_print ? "true" : "false",
+      file: Faraday::Multipart::FilePart.new(
         file.attachment.open,
         file.mime_type.to_s,
         file.filename
       )
-    end
-    conn.post(uri, payload)
+    }
   end
 
   def uri
