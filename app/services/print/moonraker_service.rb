@@ -12,6 +12,8 @@ class Print::MoonrakerService
   def ok?
     response = connection.get(info_uri)
     response.success?
+  rescue
+    false
   end
 
   def upload(file:, start_print: true)
