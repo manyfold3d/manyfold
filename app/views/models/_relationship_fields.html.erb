@@ -14,15 +14,13 @@
             {class: "form-control"} %>
     </td>
     <td>
-      <%= f.select :objekt_id, policy_scope(Model).all.map { [it.name, it.public_id] },
-            {selected: f.object&.objekt&.public_id},
-            {
-              class: "form-control",
-              data: {
-                controller: "searchable-select"
-              }
+      <%= f.select :objekt_id, [], {}, {
+            class: "form-control",
+            placeholder: translate(".type_to_search"),
+            data: {
+              controller: "model-select"
             }
-      %>
+          } %>
     </td>
   <% end %>
   <td>

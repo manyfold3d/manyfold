@@ -12,6 +12,7 @@ import CollectionInputController from './collection_input_controller'
 import CopyTextController from './copy_text_controller'
 import EditableController from './editable_controller'
 import I18nController from './i18n_controller'
+import ModelSelectController from './model_select_controller'
 import ObfuscatedTextController from './obfuscated_text_controller'
 import ParsePreviewController from './parse_preview_controller'
 import RendererController from './renderer_controller'
@@ -30,6 +31,7 @@ application.register('collection-input', CollectionInputController)
 application.register('copy-text', CopyTextController)
 application.register('editable', EditableController)
 application.register('i18n', I18nController)
+application.register('model-select', ModelSelectController)
 application.register('obfuscated-text', ObfuscatedTextController)
 application.register('parse-preview', ParsePreviewController)
 application.register('renderer', RendererController)

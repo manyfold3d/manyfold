@@ -89,6 +89,7 @@ es:
       delete:
       edit_related:
       this_model:
+      type_to_search:
     relationships_form:
       add:
     scan:

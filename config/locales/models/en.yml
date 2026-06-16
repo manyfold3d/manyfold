@@ -89,6 +89,7 @@ en:
       delete: Remove relationship
       edit_related: Edit related model
       this_model: This model
+      type_to_search: Type to search...
     relationships_form:
       add: Add a new model relationship
     scan:
