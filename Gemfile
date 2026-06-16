@@ -219,7 +219,7 @@ gem "arel_extensions", "~> 2.4"
 
 gem "assimp-ffi", git: "https://github.com/Kerilk/assimp-ruby.git"
 
-gem "yard-lint", "~> 1.6", group: :development
+gem "yard-lint", "~> 1.7", group: :development
 
 gem "zaru", "~> 1.1"
 
