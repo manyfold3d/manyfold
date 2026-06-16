@@ -352,6 +352,12 @@ cs:
         two: Soubory
         zero: Soubory
       print_host:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       problem:
         few: Problémy
         many: Problémy
@@ -988,6 +994,8 @@ cs:
         help:
       protocol:
         help:
+    protocols:
+      moonraker:
     update:
       success:
   renderer:

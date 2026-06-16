@@ -994,6 +994,8 @@ en:
         help: A friendly name for your printer
       protocol:
         help: The printer's API protocol
+    protocols:
+      moonraker: Moonraker / Klipper
     update:
       success: Printer created successfully
   renderer:

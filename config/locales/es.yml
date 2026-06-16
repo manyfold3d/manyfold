@@ -352,6 +352,12 @@ es:
         two: Archivos
         zero: Archivos
       print_host:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       problem:
         few: Problemas
         many: Problemas
@@ -988,6 +994,8 @@ es:
         help:
       protocol:
         help:
+    protocols:
+      moonraker:
     update:
       success:
   renderer:

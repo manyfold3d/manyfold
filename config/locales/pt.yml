@@ -352,6 +352,12 @@ pt:
         two:
         zero:
       print_host:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       problem:
         few:
         many:
@@ -988,6 +994,8 @@ pt:
         help:
       protocol:
         help:
+    protocols:
+      moonraker:
     update:
       success:
   renderer:

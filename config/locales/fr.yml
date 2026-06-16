@@ -354,6 +354,12 @@ fr:
         two: Fichiers
         zero: Fichiers
       print_host:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       problem:
         few: Problèmes
         many: Problèmes
@@ -990,6 +996,8 @@ fr:
         help:
       protocol:
         help:
+    protocols:
+      moonraker:
     update:
       success:
   renderer:

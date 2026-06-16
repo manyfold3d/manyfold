@@ -352,6 +352,12 @@ nl:
         two: Bestanden
         zero: Bestanden
       print_host:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       problem:
         few: Problemen
         many: Problemen
@@ -988,6 +994,8 @@ nl:
         help:
       protocol:
         help:
+    protocols:
+      moonraker:
     update:
       success:
   renderer:

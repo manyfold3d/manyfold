@@ -352,6 +352,12 @@ ja:
         two: ファイル
         zero: ファイル
       print_host:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       problem:
         few: 問題点
         many: 問題点
@@ -988,6 +994,8 @@ ja:
         help:
       protocol:
         help:
+    protocols:
+      moonraker:
     update:
       success:
   renderer:

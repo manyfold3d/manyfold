@@ -12,13 +12,14 @@ class Views::PrintHosts::Index < Views::Base
       tr do
         th { PrintHost.human_attribute_name :name }
         th { PrintHost.human_attribute_name :endpoint }
+        th { PrintHost.human_attribute_name :protocol }
         th
       end
       @print_hosts.each do |print_host|
         tr do
           td { print_host.name }
           td { code { print_host.endpoint } }
-          td { print_host.protocol }
+          td { translate("print_hosts.protocols.%{protocol}" % {protocol: print_host.protocol}) }
           td { GoButton label: t("views.print_hosts.edit.title"), icon_only: true, href: edit_print_host_path(print_host), icon: "pencil", variant: :secondary }
         end
       end

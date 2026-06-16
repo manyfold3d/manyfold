@@ -352,6 +352,12 @@ pl:
         two:
         zero:
       print_host:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       problem:
         few: Problemy
         many: Problemów
@@ -988,6 +994,8 @@ pl:
         help:
       protocol:
         help:
+    protocols:
+      moonraker:
     update:
       success:
   renderer:

@@ -352,6 +352,12 @@ ru:
         two: Файлы
         zero: Файлы
       print_host:
+        few:
+        many:
+        one:
+        other:
+        two:
+        zero:
       problem:
         few: Проблемы
         many: Проблемы
@@ -988,6 +994,8 @@ ru:
         help:
       protocol:
         help:
+    protocols:
+      moonraker:
     update:
       success:
   renderer:

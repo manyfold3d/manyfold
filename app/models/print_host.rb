@@ -2,7 +2,7 @@ class PrintHost < ApplicationRecord
   # i18n-tasks-use t("activerecord.models.print_host")
 
   PROTOCOLS = [
-    "moonraker"
+    "moonraker" # i18n-tasks-use t("print_hosts.protocols.moonraker")
   ].freeze
 
   validates :name, presence: true
