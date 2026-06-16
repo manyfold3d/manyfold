@@ -1,0 +1,26 @@
+<div class="form-container">
+  <%= form_with model: print_host, class: "tabular-form" do |form| %>
+    <%= TextInputRow(form: form, attribute: :name, label: PrintHost.human_attribute_name(:name), help: t(".name.help")) %>
+    <%= TextInputRow(form: form, attribute: :endpoint, label: PrintHost.human_attribute_name(:endpoint), help: t(".endpoint.help")) %>
+    <%= TextInputRow(form: form, attribute: :protocol, label: PrintHost.human_attribute_name(:protocol), help: t(".protocol.help")) %>
+
+    <hr>
+    <div>
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+
+  <% if print_host.persisted? && policy(print_host).destroy? %>
+    <span class="form-delete-button">
+      <%= DoButton(
+            icon: "trash",
+            label: t("general.delete"),
+            href: print_host_path(print_host),
+            method: :delete,
+            variant: "outline-danger",
+            confirm: translate("views.print_hosts.form.confirm_destroy")
+          ) %>
+    </span>
+  <% end %>
+</div>
