@@ -8,6 +8,10 @@ class Print::MoonrakerService
   def initialize(print_host:)
     @print_host = print_host
   end
+
+  def ok?
+    response = connection.get(info_uri)
+    response.success?
   end
 
   def upload(file:, start_print: true)
@@ -32,6 +36,10 @@ class Print::MoonrakerService
         file.filename
       )
     }
+  end
+
+  def info_uri
+    "#{@print_host.endpoint}/server/info"
   end
 
   def upload_uri
