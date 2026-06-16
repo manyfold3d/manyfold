@@ -3396,6 +3396,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"es-abstract-get@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "es-abstract-get@npm:1.0.0"
+  dependencies:
+    es-errors: ^1.3.0
+    es-object-atoms: ^1.1.2
+    is-callable: ^1.2.7
+    object-inspect: ^1.13.4
+  checksum: 625bb67d41ebc22e7585875a6ebb90dc9c153998c9866dc7d50ff7b1b9e178e216c0d23914e5dbfd0addb38aab344c142ad27ff4375c6d2acf095432a4d85fe3
+  languageName: node
+  linkType: hard
+
 "es-abstract@npm:^1.17.5, es-abstract@npm:^1.23.2, es-abstract@npm:^1.23.3, es-abstract@npm:^1.23.5, es-abstract@npm:^1.23.6, es-abstract@npm:^1.23.9, es-abstract@npm:^1.24.0, es-abstract@npm:^1.24.2":
   version: 1.24.2
   resolution: "es-abstract@npm:1.24.2"
@@ -3527,13 +3539,15 @@ __metadata:
   linkType: hard
 
 "es-to-primitive@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "es-to-primitive@npm:1.3.0"
+  version: 1.3.1
+  resolution: "es-to-primitive@npm:1.3.1"
   dependencies:
+    es-abstract-get: ^1.0.0
+    es-errors: ^1.3.0
     is-callable: ^1.2.7
-    is-date-object: ^1.0.5
-    is-symbol: ^1.0.4
-  checksum: 966965880356486cd4d1fe9a523deda2084c81b3702d951212c098f5f2ee93605d1b7c1840062efb48a07d892641c7ed1bc194db563645c0dd2b919cb6d65b93
+    is-date-object: ^1.1.0
+    is-symbol: ^1.1.1
+  checksum: 60de686fcad3169be681968f661c75f7efe7932fb01bd81ff62e53f4854b8885a067fcaa239db342a858606dae456c2d42bf255cf4f76e4f2dd1ea76161cd5ca
   languageName: node
   linkType: hard
 
@@ -4806,7 +4820,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-date-object@npm:^1.0.5, is-date-object@npm:^1.1.0":
+"is-date-object@npm:^1.1.0":
   version: 1.1.0
   resolution: "is-date-object@npm:1.1.0"
   dependencies:
@@ -4967,7 +4981,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-symbol@npm:^1.0.4, is-symbol@npm:^1.1.1":
+"is-symbol@npm:^1.1.1":
   version: 1.1.1
   resolution: "is-symbol@npm:1.1.1"
   dependencies:
