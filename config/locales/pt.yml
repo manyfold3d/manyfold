@@ -127,6 +127,10 @@ pt:
         relationships:
         size:
         y_up:
+      print_host:
+        endpoint:
+        name:
+        protocol:
       problem:
         category:
         ignored:
@@ -347,6 +351,7 @@ pt:
         other:
         two:
         zero:
+      print_host:
       problem:
         few:
         many:
@@ -971,6 +976,20 @@ pt:
     new_report:
       message:
       subject:
+  print_hosts:
+    create:
+      success:
+    destroy:
+      success:
+    form:
+      endpoint:
+        help:
+      name:
+        help:
+      protocol:
+        help:
+    update:
+      success:
   renderer:
     errors:
       load:
@@ -1046,3 +1065,13 @@ pt:
       next:
       previous:
       truncate:
+    print_hosts:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:

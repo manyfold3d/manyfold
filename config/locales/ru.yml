@@ -127,6 +127,10 @@ ru:
         relationships:
         size: Размер файла
         y_up: Осью Y вверх
+      print_host:
+        endpoint:
+        name:
+        protocol:
       problem:
         category: Категория
         ignored: Скрытый
@@ -347,6 +351,7 @@ ru:
         other: Файлы
         two: Файлы
         zero: Файлы
+      print_host:
       problem:
         few: Проблемы
         many: Проблемы
@@ -971,6 +976,20 @@ ru:
     new_report:
       message:
       subject:
+  print_hosts:
+    create:
+      success:
+    destroy:
+      success:
+    form:
+      endpoint:
+        help:
+      name:
+        help:
+      protocol:
+        help:
+    update:
+      success:
   renderer:
     errors:
       load:
@@ -1046,3 +1065,13 @@ ru:
       next: Следующая &rsaquo;
       previous: "&lsaquo; Предыдущая"
       truncate: "&hellip;"
+    print_hosts:
+      edit:
+        title:
+      form:
+        confirm_destroy:
+      index:
+        description:
+        title:
+      new:
+        title:

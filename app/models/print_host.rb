@@ -1,4 +1,5 @@
 class PrintHost < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.print_host")
 
   PROTOCOLS = [
     "moonraker"

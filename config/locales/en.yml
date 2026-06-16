@@ -127,6 +127,10 @@ en:
         relationships: Relationships
         size: File Size
         y_up: Y Up
+      print_host:
+        endpoint: Endpoint
+        name: Name
+        protocol: Protocol
       problem:
         category: Category
         ignored: Hidden
@@ -347,6 +351,13 @@ en:
         other: Files
         two: Files
         zero: Files
+      print_host:
+        few: Printers
+        many: Printers
+        one: Printer
+        other: Printers
+        two: Printers
+        zero: Printers
       problem:
         few: Problems
         many: Problems
@@ -971,6 +982,20 @@ en:
     new_report:
       message: Someone has reported content which needs moderations. Review the report at %{link}
       subject: New report received
+  print_hosts:
+    create:
+      success: Printer created successfully
+    destroy:
+      success: Printer removed
+    form:
+      endpoint:
+        help: The URL of your printer's API (e.g. http://printer.local)
+      name:
+        help: A friendly name for your printer
+      protocol:
+        help: The printer's API protocol
+    update:
+      success: Printer created successfully
   renderer:
     errors:
       load: Load Error
@@ -1046,3 +1071,13 @@ en:
       next: Next ›
       previous: "‹ Prev"
       truncate: "…"
+    print_hosts:
+      edit:
+        title: Edit Printer
+      form:
+        confirm_destroy: Are you sure you want to remove this printer?
+      index:
+        description: Connecting Manyfold to your 3D printer lets you send sliced files to print directly.
+        title: Printers
+      new:
+        title: New Printer
