@@ -18,7 +18,8 @@ class Views::PrintHosts::Index < Views::Base
         tr do
           td { print_host.name }
           td { code { print_host.endpoint } }
-          td { GoButton label: t("views.print_hosts.edit.title"), href: edit_print_host_path(print_host), icon: "pencil", variant: :secondary }
+          td { print_host.protocol }
+          td { GoButton label: t("views.print_hosts.edit.title"), icon_only: true, href: edit_print_host_path(print_host), icon: "pencil", variant: :secondary }
         end
       end
     end
