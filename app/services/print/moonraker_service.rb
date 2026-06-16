@@ -1,8 +1,7 @@
-require 'faraday'
-require 'faraday/multipart'
+require "faraday"
+require "faraday/multipart"
 
-class MoonrakerPrintService
-
+class Print::MoonrakerService
   def initialize(server_root:)
     @server_root = server_root
   end
@@ -14,7 +13,7 @@ class MoonrakerPrintService
       payload[:print] = print ? "true" : "false"
       payload[:file] = Faraday::Multipart::FilePart.new(
         file.attachment.open,
-        'application/octet-stream',
+        file.mime_type.to_s,
         file.filename
       )
     end
@@ -24,5 +23,4 @@ class MoonrakerPrintService
   def uri
     "#{@server_root}/server/files/upload"
   end
-
 end
