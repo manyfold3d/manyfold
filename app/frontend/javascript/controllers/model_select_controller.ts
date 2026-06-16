@@ -28,7 +28,7 @@ export default class extends Controller {
   fetchData (query, callback): void {
     const params = new URLSearchParams()
     params.append('q', query)
-    fetch(`/models?${params}`, { headers: { Accept: 'application/vnd.manyfold.v0+json' } })
+    fetch(`/models?${params.toString()}`, { headers: { Accept: 'application/vnd.manyfold.v0+json' } })
       .then(async response => await response.json())
       .then(json => {
         callback(
