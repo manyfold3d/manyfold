@@ -113,6 +113,7 @@ ja:
         notes: 説明
         path: パス
         preview_file: プレビューファイル
+        relationships:
         sensitive: センシティブコンテンツ
       model_file:
         caption: キャプション
@@ -563,6 +564,8 @@ ja:
     path_template_preview:
       description:
       path: パス
+    remixes_card:
+      title:
     search_help:
       boolean: "「or」を使用して、いずれかの用語に一致するモデルを検索します。"
       federation:
@@ -583,6 +586,8 @@ ja:
       name:
       recent:
       updated:
+    sources_card:
+      title:
   concerns:
     linkable:
       sync:

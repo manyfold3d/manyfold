@@ -1,0 +1,30 @@
+<div class="form-control-plaintext">
+  <%= form.label :relationships, Relationship.model_name.human(count: 100) %>
+  <%= cocooned_add_item_button Icon(icon: "node-plus", label: t(".add")), form, :relationships,
+        class: "btn btn-secondary btn-sm float-end ms-2",
+        insertion_node: "#cocooned-relationships",
+        insertion_method: "append" %>
+</div>
+<div>
+  <table class="table">
+    <tbody>
+      <% form.object.reverse_relationships.each do |r| %>
+      <tr>
+        <%= content_tag(:td) do %>
+          <%= r.subject.name %>
+        <% end %>
+        <td><%= t("activerecord.models.relationships.predicates.%{predicate}" % {predicate: r.predicate}) %></td>
+        <%= content_tag(:td) do %>
+          <%= t("models.relationship_fields.this_model") %>
+        <% end %>
+        <td><%= link_to Icon(icon: "pencil-square", label: translate("models.relationship_fields.edit_related")), edit_model_path(r.subject), class: "btn btn-outline-secondary" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    <%= cocooned_container :tbody, id: "cocooned-relationships", data: {controller: "cocooned"} do
+          form.fields_for :relationships do |f|
+            render "relationship_fields", f: f
+          end
+        end %>
+  </table>
+</div>

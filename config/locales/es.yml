@@ -113,6 +113,7 @@ es:
         notes: Descripción
         path: Ruta
         preview_file: Vista previa
+        relationships:
         sensitive: Contenido Sensible
       model_file:
         caption: Subtítulo
@@ -563,6 +564,8 @@ es:
     path_template_preview:
       description: La siguiente tabla muestra algunos de los metadatos inferidos para las carpetas de esta biblioteca, basándose en la plantilla anterior.
       path: Ruta
+    remixes_card:
+      title:
     search_help:
       boolean: Utilice "or" para buscar modelos que coincidan con cualquiera de los términos.
       federation: Busca cualquier nombre de usuario de Fediverse para seguirlo.
@@ -583,6 +586,8 @@ es:
       name: Título
       recent: Más reciente
       updated: Actualizado
+    sources_card:
+      title:
   concerns:
     linkable:
       sync:

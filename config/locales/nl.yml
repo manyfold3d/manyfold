@@ -113,6 +113,7 @@ nl:
         notes: Beschrijving
         path: Pad
         preview_file: Voorbeeldbestand
+        relationships:
         sensitive: Gevoelige Inhoud
       model_file:
         caption: Onderschrift
@@ -563,6 +564,8 @@ nl:
     path_template_preview:
       description:
       path: Pad
+    remixes_card:
+      title:
     search_help:
       boolean:
       federation:
@@ -583,6 +586,8 @@ nl:
       name:
       recent:
       updated:
+    sources_card:
+      title:
   concerns:
     linkable:
       sync:

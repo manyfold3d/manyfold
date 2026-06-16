@@ -146,6 +146,9 @@
 
       <%= ListsCard(listable: @model) if policy(:list).show? %>
 
+      <%= SourcesCard(model: @model) %>
+      <%= RemixesCard(model: @model) %>
+
       <% if policy(:problem).show? %>
         <% if !@model.parents.empty? && policy(@model).merge? %>
           <%= card :danger, t(".merge.heading") do %>

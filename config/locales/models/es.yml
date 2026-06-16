@@ -85,6 +85,13 @@ es:
       tour:
         description: Esta tarjeta muestra los problemas detectados en este modelo. Puede cambiar la configuración de visibilidad de problemas en las preferencias de su cuenta.
         title: Problemas
+    relationship_fields:
+      delete:
+      edit_related:
+      this_model:
+      type_to_search:
+    relationships_form:
+      add:
     scan:
       success: Escaneo de modelos iniciado
     show:

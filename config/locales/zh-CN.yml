@@ -113,6 +113,7 @@ zh-CN:
         notes: 说明
         path: 路径
         preview_file: 预览文件
+        relationships:
         sensitive: 敏感内容
       model_file:
         caption: 标题
@@ -563,6 +564,8 @@ zh-CN:
     path_template_preview:
       description:
       path: 路径
+    remixes_card:
+      title:
     search_help:
       boolean: 使用 "or" 查找匹配的模型。
       federation: 搜索任何 Fediverse 用户名，即可关注该用户。
@@ -583,6 +586,8 @@ zh-CN:
       name: 标题
       recent: 上传时间
       updated: 更新时间
+    sources_card:
+      title:
   concerns:
     linkable:
       sync:

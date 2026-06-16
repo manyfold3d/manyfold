@@ -85,6 +85,13 @@ en:
       tour:
         description: This card shows any problems that were detected on this model. You can change problem visibility settings in your account preferences.
         title: Problems
+    relationship_fields:
+      delete: Remove relationship
+      edit_related: Edit related model
+      this_model: This model
+      type_to_search: Type to search...
+    relationships_form:
+      add: Add a new model relationship
     scan:
       success: Model scan started
     show:
