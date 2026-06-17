@@ -128,6 +128,7 @@ en:
         size: File Size
         y_up: Y Up
       print_host:
+        credentials: Credentials
         endpoint: Endpoint
         name: Name
         protocol: Protocol
@@ -988,6 +989,8 @@ en:
     destroy:
       success: Printer removed
     form:
+      credentials:
+        help: API key or password, if required
       endpoint:
         help: The URL of your printer's API (e.g. http://printer.local)
       name:

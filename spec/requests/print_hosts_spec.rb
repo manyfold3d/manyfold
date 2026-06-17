@@ -57,10 +57,18 @@ RSpec.describe "PrintHosts", :after_first_run do
     end
 
     describe "PATCH /print_hosts/:id" do
-      before { patch "/print_hosts/#{print_host.to_param}", params: {print_host: {name: "changed"}} }
+      before { patch "/print_hosts/#{print_host.to_param}", params: {print_host: {name: "changed", credentials: "passw0rd"}} }
 
-      it "updates the print host", :as_administrator do
+      it "redirects back to list afterwards", :as_administrator do
         expect(response).to redirect_to("/print_hosts")
+      end
+
+      it "updates credentials", :as_administrator do
+        expect(print_host.reload.credentials).to eq "passw0rd"
+      end
+
+      it "updates name", :as_administrator do
+        expect(print_host.reload.name).to eq "changed"
       end
 
       it "is denied to non-administrators", :as_moderator do

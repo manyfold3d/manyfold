@@ -4,6 +4,7 @@
     <%= TextInputRow(form: form, attribute: :endpoint, label: PrintHost.human_attribute_name(:endpoint), help: t(".endpoint.help")) %>
     <%= SelectInputRow form: form, attribute: :protocol, label: PrintHost.human_attribute_name(:protocol), help: t(".protocol.help"),
           select_options: Naturally.sort(PrintHost::PROTOCOLS.keys).map { [translate("print_hosts.protocols.%{protocol}" % {protocol: it}), it] } %>
+    <%= PasswordInputRow(form: form, attribute: :credentials, label: PrintHost.human_attribute_name(:credentials), help: t(".credentials.help")) %>
     <hr>
     <div>
       <%= form.submit class: "btn btn-primary" %>

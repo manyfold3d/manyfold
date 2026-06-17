@@ -63,7 +63,8 @@ class PrintHostsController < ApplicationController
     params.require(:print_host).permit( # rubocop:todo Rails/StrongParametersExpect
       :name, # i18n-tasks-use t("activerecord.attributes.print_host.name")
       :endpoint, # i18n-tasks-use t("activerecord.attributes.print_host.endpoint")
-      :protocol # i18n-tasks-use t("activerecord.attributes.print_host.protocol")
+      :protocol, # i18n-tasks-use t("activerecord.attributes.print_host.protocol")
+      :credentials # i18n-tasks-use t("activerecord.attributes.print_host.credentials")
     )
   end
 
