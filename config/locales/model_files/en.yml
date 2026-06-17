@@ -50,6 +50,8 @@ en:
       download:
         menu_header: Download options
       notes_heading: Notes
+      print_card:
+        heading: Print
     update:
       failure: An error occurred and file details could not be saved.
       success: File details saved.

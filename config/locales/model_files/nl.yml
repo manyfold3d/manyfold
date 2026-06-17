@@ -50,6 +50,8 @@ nl:
       download:
         menu_header:
       notes_heading: Notities
+      print_card:
+        heading:
     update:
       failure: Er is een fout opgetreden en de bestandsdetails konden niet worden opgeslagen.
       success: Bestandsdetails opgeslagen.

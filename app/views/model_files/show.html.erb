@@ -92,6 +92,14 @@
       <% end %>
     <% end %>
 
+    <% if can_print? @file %>
+      <%= card("secondary", t(".print_card.heading")) do %>
+        <ul class="list-unstyled">
+          <%= print_links(@file) %>
+        </ul>
+      <% end %>
+    <% end %>
+
     <%= render partial: "problems_card", locals: {problems: @file.problems.visible(problem_settings)} %>
 
   </div>

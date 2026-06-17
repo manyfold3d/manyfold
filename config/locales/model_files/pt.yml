@@ -50,6 +50,8 @@ pt:
       download:
         menu_header:
       notes_heading:
+      print_card:
+        heading:
     update:
       failure:
       success:

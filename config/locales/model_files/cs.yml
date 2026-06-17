@@ -50,6 +50,8 @@ cs:
       download:
         menu_header: Možnosti stahování
       notes_heading: Poznámky
+      print_card:
+        heading:
     update:
       failure: Došlo k chybě a údaje o souboru nelze uložit.
       success: Detaily souboru uloženy.

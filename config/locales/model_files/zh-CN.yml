@@ -50,6 +50,8 @@ zh-CN:
       download:
         menu_header: 下载选项
       notes_heading: 说明
+      print_card:
+        heading:
     update:
       failure: 发生错误，无法保存文件详细信息。
       success: 保存成功。
