@@ -128,6 +128,7 @@ ru:
         size: Размер файла
         y_up: Осью Y вверх
       print_host:
+        credentials:
         endpoint:
         name:
         protocol:
@@ -988,6 +989,8 @@ ru:
     destroy:
       success:
     form:
+      credentials:
+        help:
       endpoint:
         help:
       name:

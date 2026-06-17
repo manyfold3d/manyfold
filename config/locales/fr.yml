@@ -130,6 +130,7 @@ fr:
         size: Taille du fichier
         y_up: Y Up
       print_host:
+        credentials:
         endpoint:
         name:
         protocol:
@@ -990,6 +991,8 @@ fr:
     destroy:
       success:
     form:
+      credentials:
+        help:
       endpoint:
         help:
       name:

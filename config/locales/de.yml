@@ -128,6 +128,7 @@ de:
         size: Dateigröße
         y_up: Y Aufwärts
       print_host:
+        credentials:
         endpoint:
         name:
         protocol:
@@ -992,6 +993,8 @@ de:
     destroy:
       success:
     form:
+      credentials:
+        help:
       endpoint:
         help:
       name:

@@ -128,6 +128,7 @@ ja:
         size: ファイルサイズ
         y_up: Y上
       print_host:
+        credentials:
         endpoint:
         name:
         protocol:
@@ -988,6 +989,8 @@ ja:
     destroy:
       success:
     form:
+      credentials:
+        help:
       endpoint:
         help:
       name:

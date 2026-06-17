@@ -128,6 +128,7 @@ es:
         size: Tamaño del archivo
         y_up: Eje Y Arriba
       print_host:
+        credentials:
         endpoint:
         name:
         protocol:
@@ -988,6 +989,8 @@ es:
     destroy:
       success:
     form:
+      credentials:
+        help:
       endpoint:
         help:
       name:
