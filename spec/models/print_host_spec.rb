@@ -24,4 +24,12 @@ RSpec.describe PrintHost do
       expect(described_class.create(attributes.merge(protocol: :nope))).not_to be_valid
     end
   end
+
+  context "with a valid print host" do
+    let(:print_host) { create(:print_host) }
+
+    it "can list input types" do
+      expect(print_host.input_types.map(&:to_s)).to eq ["text/x-gcode"]
+    end
+  end
 end
