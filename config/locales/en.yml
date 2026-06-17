@@ -1001,6 +1001,7 @@ en:
       sent: File sent to printer
     protocols:
       moonraker: Moonraker / Klipper
+      octoprint: Octoprint
     update:
       success: Printer created successfully
   renderer:
