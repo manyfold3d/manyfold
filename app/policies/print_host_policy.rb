@@ -19,4 +19,8 @@ class PrintHostPolicy < ApplicationPolicy
   def destroy?
     index?
   end
+
+  def print?
+    index?
+  end
 end

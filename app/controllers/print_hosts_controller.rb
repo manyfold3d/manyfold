@@ -57,6 +57,15 @@ class PrintHostsController < ApplicationController
     end
   end
 
+  def print
+    @file = ModelFile.find_param(params[:file_id])
+    authorize @file
+    # Start print
+
+    # Done
+    redirect_back_or_to model_model_file_path(@file.model, @file), notice: t(".sent"), status: :see_other
+  end
+
   private
 
   def print_host_params

@@ -2,7 +2,10 @@ require "rails_helper"
 
 RSpec.describe "PrintHosts", :after_first_run do
   context "when signed out" do
-    it "needs testing when multiuser is enabled"
+    it "sends logged-out users to login" do
+      get "/print_hosts"
+      expect(response).to redirect_to("/users/sign_in")
+    end
   end
 
   context "when signed in" do
@@ -75,6 +78,23 @@ RSpec.describe "PrintHosts", :after_first_run do
 
       it "removes the print host", :as_administrator do
         expect(response).to redirect_to("/print_hosts")
+      end
+
+      it "is denied to non-administrators", :as_moderator do
+        expect(response).to have_http_status(:forbidden)
+      end
+    end
+
+    describe "POST /print_hosts/:id/print" do
+      let(:file) { create :model_file }
+      before { post "/print_hosts/#{print_host.to_param}/print", params: {file_id: file.public_id} }
+
+      context "when the user has access to the file", :as_administrator do
+        it "redirects back to file by default" do
+          expect(response).to redirect_to(model_model_file_path(file.model, file))
+        end
+
+        it "starts print job"
       end
 
       it "is denied to non-administrators", :as_moderator do
