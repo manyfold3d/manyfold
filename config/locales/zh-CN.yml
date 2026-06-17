@@ -1001,6 +1001,7 @@ zh-CN:
       sent:
     protocols:
       moonraker:
+      octoprint:
     update:
       success:
   renderer:

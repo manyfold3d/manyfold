@@ -1001,6 +1001,7 @@ ru:
       sent:
     protocols:
       moonraker:
+      octoprint:
     update:
       success:
   renderer:
