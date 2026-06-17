@@ -2,6 +2,9 @@ require "faraday"
 require "faraday/multipart"
 
 class Print::MoonrakerService
+  # i18n-tasks-use t("print_hosts.protocols.moonraker")
+  PROTOCOL = "moonraker".freeze
+
   def initialize(server_root:)
     @server_root = server_root
   end
