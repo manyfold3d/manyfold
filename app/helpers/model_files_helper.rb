@@ -7,9 +7,16 @@ module ModelFilesHelper
           link_to safe_join(
             [
               Icon(icon: "printer", role: "presentation"),
-              t("model_files.print", print_host_name: print_host.name)
+              t("model_files.print.link", print_host_name: print_host.name)
             ], " "
-          ), print_print_host_path(print_host, file_id: file.public_id), method: "post", role: "menuitem", class: "dropdown-item"
+          ),
+            print_print_host_path(print_host, file_id: file.public_id),
+            method: "post",
+            role: "menuitem",
+            class: "dropdown-item",
+            data: {
+              confirm: translate("model_files.print.confirm")
+            }
         }
       end
     )

@@ -36,6 +36,8 @@ fr:
     general:
       edit: Modifier les informations du fichier
     print:
+      confirm:
+      link:
     relationship_fields:
       delete:
       edit_related:

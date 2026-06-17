@@ -36,6 +36,8 @@ es:
     general:
       edit: Editar la información del archivo
     print:
+      confirm:
+      link:
     relationship_fields:
       delete: Eliminar relación
       edit_related: Editar archivo relacionado

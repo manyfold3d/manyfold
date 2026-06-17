@@ -36,6 +36,8 @@ cs:
     general:
       edit: Upravit informace o souboru
     print:
+      confirm:
+      link:
     relationship_fields:
       delete:
       edit_related:
