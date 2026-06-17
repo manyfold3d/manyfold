@@ -10,4 +10,8 @@ class PrintHost < ApplicationRecord
   def service
     PROTOCOLS[protocol].new(print_host: self)
   end
+
+  def input_types
+    PROTOCOLS[protocol]::INPUT_TYPES
+  end
 end
