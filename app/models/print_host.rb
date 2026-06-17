@@ -3,6 +3,9 @@ class PrintHost < ApplicationRecord
 
   PROTOCOLS = Print.constants.map { [const_get("Print::#{it}::PROTOCOL"), const_get("Print::#{it}")] }.to_h.freeze
 
+  class NotReady < RuntimeError
+  end
+
   validates :name, presence: true
   validates :endpoint, presence: true
   validates :protocol, presence: true, inclusion: {in: PROTOCOLS.keys}
