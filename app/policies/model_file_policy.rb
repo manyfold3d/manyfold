@@ -8,6 +8,10 @@ class ModelFilePolicy < ApplicationPolicy
     show?
   end
 
+  def print?
+    show?
+  end
+
   def create?
     can_update_model?
   end

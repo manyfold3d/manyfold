@@ -35,6 +35,9 @@ ru:
         help_html:
     general:
       edit:
+    print:
+      confirm:
+      link:
     relationship_fields:
       delete:
       edit_related:
@@ -47,6 +50,8 @@ ru:
       download:
         menu_header:
       notes_heading:
+      print_card:
+        heading:
     update:
       failure:
       success:

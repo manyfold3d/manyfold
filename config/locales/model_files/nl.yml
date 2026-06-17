@@ -35,6 +35,9 @@ nl:
         help_html: Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
     general:
       edit: Bestandsinformatie Bewerken
+    print:
+      confirm:
+      link:
     relationship_fields:
       delete:
       edit_related:
@@ -47,6 +50,8 @@ nl:
       download:
         menu_header:
       notes_heading: Notities
+      print_card:
+        heading:
     update:
       failure: Er is een fout opgetreden en de bestandsdetails konden niet worden opgeslagen.
       success: Bestandsdetails opgeslagen.

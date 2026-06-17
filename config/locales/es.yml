@@ -997,6 +997,8 @@ es:
         help:
       protocol:
         help:
+    print:
+      sent:
     protocols:
       moonraker:
     update:

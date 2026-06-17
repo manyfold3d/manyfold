@@ -35,6 +35,9 @@ cs:
         help_html: Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit: Upravit informace o souboru
+    print:
+      confirm:
+      link:
     relationship_fields:
       delete:
       edit_related:
@@ -47,6 +50,8 @@ cs:
       download:
         menu_header: Možnosti stahování
       notes_heading: Poznámky
+      print_card:
+        heading:
     update:
       failure: Došlo k chybě a údaje o souboru nelze uložit.
       success: Detaily souboru uloženy.

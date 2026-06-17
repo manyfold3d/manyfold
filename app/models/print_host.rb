@@ -17,4 +17,8 @@ class PrintHost < ApplicationRecord
   def input_types
     PROTOCOLS[protocol]::INPUT_TYPES
   end
+
+  def print_later(file:)
+    SendFileToPrintHostJob.perform_later(print_host: self, file: file)
+  end
 end

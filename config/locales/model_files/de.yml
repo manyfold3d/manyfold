@@ -35,6 +35,9 @@ de:
         help_html: 'Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden. '
     general:
       edit: Dateiinformationen bearbeiten
+    print:
+      confirm:
+      link:
     relationship_fields:
       delete: Beziehung entfernen
       edit_related: Zugehörige Datei bearbeiten
@@ -47,6 +50,8 @@ de:
       download:
         menu_header: Download optionen
       notes_heading: Notizen
+      print_card:
+        heading:
     update:
       failure: Es ist ein Fehler aufgetreten und die Dateidetails konnten nicht gespeichert werden.
       success: Dateieigenschaften gespeichert.
