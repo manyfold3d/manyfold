@@ -5,6 +5,8 @@ class Print::MoonrakerService
   # i18n-tasks-use t("print_hosts.protocols.moonraker")
   PROTOCOL = "moonraker".freeze
 
+  INPUT_TYPES = [Mime[:gcode]].freeze
+
   def initialize(print_host:)
     @print_host = print_host
   end
