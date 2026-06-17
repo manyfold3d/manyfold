@@ -12,7 +12,7 @@ class Print::MoonrakerService
   end
 
   def ok?
-    response = connection.get(info_uri)
+    response = connection.get(info_uri, {}, headers)
     response.success?
   rescue
     false
@@ -20,7 +20,7 @@ class Print::MoonrakerService
 
   def upload(file:, start_print: true)
     raise ArgumentError unless file.mime_type.to_sym == :gcode
-    connection.post(upload_uri, payload(file: file, start_print: start_print))
+    connection.post(upload_uri, payload(file: file, start_print: start_print), headers)
   end
 
   private
@@ -48,5 +48,11 @@ class Print::MoonrakerService
 
   def upload_uri
     "#{@print_host.endpoint}/server/files/upload"
+  end
+
+  def headers
+    {
+      "X-Api-Key" => @print_host.credentials
+    }.compact_blank
   end
 end
