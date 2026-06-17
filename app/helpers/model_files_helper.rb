@@ -1,4 +1,20 @@
 module ModelFilesHelper
+  def print_links(file)
+    print_hosts = policy_scope(PrintHost).all.select { file.mime_type.in? it.input_types }
+    safe_join(
+      print_hosts.map do |print_host|
+        content_tag(:li, role: "presentation") {
+          link_to safe_join(
+            [
+              Icon(icon: "printer", role: "presentation"),
+              t("model_files.print", print_host_name: print_host.name)
+            ], " "
+          ), print_print_host_path(print_host, file_id: file.public_id), method: "post", role: "menuitem", class: "dropdown-item"
+        }
+      end
+    )
+  end
+
   def app_links(file)
     handlers = FileHandlers.handlers_for(environment: :client, mime_type: file.mime_type)
     safe_join(

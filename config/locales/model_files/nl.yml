@@ -35,6 +35,7 @@ nl:
         help_html: Je kunt <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> gebruiken.
     general:
       edit: Bestandsinformatie Bewerken
+    print:
     relationship_fields:
       delete:
       edit_related:

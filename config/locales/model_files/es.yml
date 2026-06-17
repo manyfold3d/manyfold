@@ -35,6 +35,7 @@ es:
         help_html: Puedes utilizar <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit: Editar la información del archivo
+    print:
     relationship_fields:
       delete: Eliminar relación
       edit_related: Editar archivo relacionado

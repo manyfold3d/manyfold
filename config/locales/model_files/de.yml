@@ -35,6 +35,7 @@ de:
         help_html: 'Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden. '
     general:
       edit: Dateiinformationen bearbeiten
+    print:
     relationship_fields:
       delete: Beziehung entfernen
       edit_related: Zugehörige Datei bearbeiten

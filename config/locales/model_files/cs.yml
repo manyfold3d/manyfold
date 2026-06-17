@@ -35,6 +35,7 @@ cs:
         help_html: Můžete použít <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit: Upravit informace o souboru
+    print:
     relationship_fields:
       delete:
       edit_related:

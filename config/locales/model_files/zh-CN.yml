@@ -35,6 +35,7 @@ zh-CN:
         help_html: 您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
     general:
       edit: 编辑文件信息
+    print:
     relationship_fields:
       delete:
       edit_related:
