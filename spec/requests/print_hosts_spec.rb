@@ -86,18 +86,23 @@ RSpec.describe "PrintHosts", :after_first_run do
     end
 
     describe "POST /print_hosts/:id/print" do
-      let(:file) { create :model_file }
-      before { post "/print_hosts/#{print_host.to_param}/print", params: {file_id: file.public_id} }
+      let(:file) { create(:model_file) }
 
       context "when the user has access to the file", :as_administrator do
         it "redirects back to file by default" do
+          post "/print_hosts/#{print_host.to_param}/print", params: {file_id: file.public_id}
           expect(response).to redirect_to(model_model_file_path(file.model, file))
         end
 
-        it "starts print job"
+        it "starts print job" do
+          expect {
+            post "/print_hosts/#{print_host.to_param}/print", params: {file_id: file.public_id}
+          }.to have_enqueued_job(SendFileToPrintHostJob).with(print_host: print_host, file: file)
+        end
       end
 
       it "is denied to non-administrators", :as_moderator do
+        post "/print_hosts/#{print_host.to_param}/print", params: {file_id: file.public_id}
         expect(response).to have_http_status(:forbidden)
       end
     end
