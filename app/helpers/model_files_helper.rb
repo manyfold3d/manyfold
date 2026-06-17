@@ -1,8 +1,18 @@
 module ModelFilesHelper
+  prepend MemoWise
+
+  def can_print?(file)
+    print_hosts_for(file.mime_type).any?
+  end
+
+  def print_hosts_for(mime_type)
+    policy_scope(PrintHost).all.select { mime_type.in? it.input_types }
+  end
+  memo_wise :print_hosts_for
+
   def print_links(file)
-    print_hosts = policy_scope(PrintHost).all.select { file.mime_type.in? it.input_types }
     safe_join(
-      print_hosts.map do |print_host|
+      print_hosts_for(file.mime_type).map do |print_host|
         content_tag(:li, role: "presentation") {
           link_to safe_join(
             [
