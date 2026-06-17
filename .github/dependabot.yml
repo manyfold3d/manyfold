@@ -18,9 +18,6 @@ updates:
     uppy:
       patterns:
         - "@uppy/*"
-    babel:
-      patterns:
-        - "@babel/*"
 
 - package-ecosystem: "github-actions"
   directory: "/"
