@@ -1084,6 +1084,7 @@ en:
         title: Edit Printer
       form:
         confirm_destroy: Are you sure you want to remove this printer?
+        description: Configure printers and print hosts. Manyfold will connect to the endpoint directly, so you should enter the appropriate server name or IP from the perspective of the Manyfold server.
       index:
         description: Connecting Manyfold to your 3D printer lets you send sliced files to print directly (currently restricted to administrator users only).
         title: Printers
