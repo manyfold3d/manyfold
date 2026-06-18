@@ -7,6 +7,7 @@ RSpec.describe SendFileToPrintHostJob do
   it "raises PrintHost::NotReady if printer is not ok" do
     stub_service = instance_double(Print::MoonrakerService)
     allow(stub_service).to receive(:ok?).and_return(false)
+    allow(stub_service).to receive(:upload).and_raise(PrintHost::NotReady)
     allow(print_host).to receive(:service).and_return(stub_service)
 
     expect { described_class.perform_now(print_host: print_host, file: file) }.to raise_error PrintHost::NotReady
