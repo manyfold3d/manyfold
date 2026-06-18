@@ -42,7 +42,7 @@ RSpec.describe Print::OctoprintService, :after_first_run, :vcr do
   end
 
   context "with bad endpoint" do
-    let(:endpoint) { "http://dev.null.local" }
+    let(:endpoint) { "not-a-url" }
 
     it "flags connection error" do
       expect(print_host.service.ok?).to be false
