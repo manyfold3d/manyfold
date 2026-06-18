@@ -1,0 +1,31 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<ODYSSEY_ENDPOINT>/status"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '118'
+      Date:
+      - Thu, 18 Jun 2026 22:49:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"layer":null,"paused":null,"physical_state":{"curing":false,"z":0.0,"z_microns":0},"print_data":null,"status":"Idle"}'
+  recorded_at: Thu, 18 Jun 2026 22:49:55 GMT
+recorded_with: VCR 6.4.0

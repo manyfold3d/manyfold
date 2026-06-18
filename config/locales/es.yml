@@ -11,6 +11,9 @@ es:
         one:
         other:
       weak_password:
+  print_hosts:
+    protocols:
+      odyssey:
   views:
     print_hosts:
       form:
