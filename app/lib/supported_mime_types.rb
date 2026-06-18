@@ -52,13 +52,23 @@ module SupportedMimeTypes
     end
     memo_wise :model_extensions
 
+    def slicer_types
+      Mime::LOOKUP.filter { |k, v| is_slicer_mime_type?(v) }.values
+    end
+    memo_wise :slicer_types
+
+    def slicer_extensions
+      Mime::EXTENSION_LOOKUP.filter { |k, v| is_slicer_mime_type?(v) }.keys
+    end
+    memo_wise :slicer_extensions
+
     def indexable_types
-      image_types + model_types + video_types + document_types + archive_types
+      image_types + model_types + video_types + document_types + archive_types + slicer_types
     end
     memo_wise :indexable_types
 
     def indexable_extensions
-      image_extensions + model_extensions + video_extensions + document_extensions + archive_extensions
+      image_extensions + model_extensions + video_extensions + document_extensions + archive_extensions + slicer_extensions
     end
     memo_wise :indexable_extensions
 
@@ -141,5 +151,19 @@ module SupportedMimeTypes
       ].include?(type.to_s)
     end
     memo_wise :is_archive_mime_type?
+
+    def is_slicer_mime_type?(type)
+      [
+        "application/x-chitubox",
+        "application/x-prusa-sl1",
+        "application/x-phrozen",
+        "application/x-photon",
+        "application/x-crealitybox",
+        "application/x-elegoo",
+        "application/x-lumen",
+        "application/x-nanodlp"
+      ].include?(type.to_s)
+    end
+    memo_wise :is_slicer_mime_type?
   end
 end
