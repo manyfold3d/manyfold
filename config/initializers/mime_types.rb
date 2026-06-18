@@ -59,7 +59,14 @@ Mime::Type.register "application/vnd.spz", :spz, [], [] # Compressed 3D Gaussian
 # Slicer formats
 Mime::Type.register "text/x-gcode", :gcode, [], ["bgcode"]
 Mime::Type.register "model/x-lychee", :lychee, [], ["lys", "lyt"]
-Mime::Type.register "model/x-chitubox", :chitubox, [], ["ctb"]
+Mime::Type.register "application/x-chitubox", :chitubox, [], ["ctb", "cbddlp"]
+Mime::Type.register "application/x-prusa-sl1", :sl1, [], ["sl1s"]
+Mime::Type.register "application/x-phrozen", :prz, [], ["phz"]
+Mime::Type.register "application/x-photon", :photon, [], ["photons"]
+Mime::Type.register "application/x-crealitybox", :crealitybox, [], ["cxdlp", "cxdlpv4"]
+Mime::Type.register "application/x-elegoo", :goo
+Mime::Type.register "application/x-lumen", :lumen
+Mime::Type.register "application/x-nanodlp", :nanodlp
 
 # Images
 Mime::Type.register "image/webp", :webp
