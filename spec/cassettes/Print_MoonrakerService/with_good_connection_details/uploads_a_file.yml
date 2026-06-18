@@ -1,0 +1,94 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<ENDPOINT>/server/info"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      X-Api-Key:
+      - "<API_KEY>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.18.0
+      Date:
+      - Thu, 18 Jun 2026 11:54:13 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - W/"c1e8a011717268459c7bf5d2e561de7da6624674"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"result": {"klippy_connected": true, "klippy_state": "shutdown", "components":
+        ["secrets", "template", "klippy_connection", "jsonrpc", "internal_transport",
+        "application", "websockets", "database", "dbus_manager", "file_manager", "authorization",
+        "klippy_apis", "shell_command", "machine", "data_store", "proc_stats", "job_state",
+        "job_queue", "history", "http_client", "announcements", "webcam", "extensions",
+        "octoprint_compat", "power", "update_manager"], "failed_components": [], "registered_directories":
+        ["config", "logs", "gcodes", "config_examples", "docs"], "warnings": [], "websocket_count":
+        1, "moonraker_version": "v0.9.3-85-g6ff9a7c", "missing_klippy_requirements":
+        [], "api_version": [1, 5, 0], "api_version_string": "1.5.0"}}'
+  recorded_at: Thu, 18 Jun 2026 11:54:13 GMT
+- request:
+    method: post
+    uri: "<ENDPOINT>/server/files/upload"
+    body:
+      encoding: UTF-8
+      string: "-------------RubyMultipartPost-47b8c2d4039de450f24cdb5119b29057\r\nContent-Disposition:
+        form-data; name=\"print\"\r\n\r\ntrue\r\n-------------RubyMultipartPost-47b8c2d4039de450f24cdb5119b29057\r\nContent-Disposition:
+        form-data; name=\"file\"; filename=\"test.gcode\"\r\nContent-Length: 0\r\nContent-Type:
+        text/x-gcode\r\nContent-Transfer-Encoding: binary\r\n\r\n\r\n-------------RubyMultipartPost-47b8c2d4039de450f24cdb5119b29057--\r\n"
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      X-Api-Key:
+      - "<API_KEY>"
+      Content-Type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost-47b8c2d4039de450f24cdb5119b29057
+      Content-Length:
+      - '405'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/1.18.0
+      Date:
+      - Thu, 18 Jun 2026 11:54:14 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '185'
+      Connection:
+      - keep-alive
+      Location:
+      - "<ENDPOINT>/server/files/gcodes/test.gcode"
+    body:
+      encoding: UTF-8
+      string: '{"action": "create_file", "item": {"modified": 1781783653.676128, "size":
+        0, "permissions": "rw", "path": "test.gcode", "root": "gcodes"}, "print_started":
+        false, "print_queued": false}'
+  recorded_at: Thu, 18 Jun 2026 11:54:14 GMT
+recorded_with: VCR 6.4.0
