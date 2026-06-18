@@ -3,13 +3,13 @@ require "rails_helper"
 RSpec.describe Print::OctoprintService, :after_first_run, :vcr do
   let(:endpoint) { ENV.fetch("OCTOPRINT_ENDPOINT", "http://octoprint.example.com") }
   let(:credentials) { ENV.fetch("OCTOPRINT_API_KEY", "fake_api_key") }
-  let(:print_host) {
-    create(:print_host,
+  subject(:service) { described_class.new(
+    print_host: create(:print_host,
       protocol: "octoprint",
       name: "Octoprint",
       endpoint: endpoint,
       credentials: credentials)
-  }
+  )}
   let(:file) { create(:model_file, filename: "test.gcode") }
 
   before do
@@ -21,11 +21,11 @@ RSpec.describe Print::OctoprintService, :after_first_run, :vcr do
 
   context "with good connection details" do
     it "verifies connection" do
-      expect(print_host.service.ok?).to be true
+      expect(service.ok?).to be true
     end
 
     it "uploads a file" do
-      expect(print_host.service.upload(file: file, start_print: true)).to be true
+      expect(service.upload(file: file, start_print: true)).to be true
     end
   end
 
@@ -33,11 +33,11 @@ RSpec.describe Print::OctoprintService, :after_first_run, :vcr do
     let(:credentials) { "bad_api_key" }
 
     it "flags connection error" do
-      expect(print_host.service.ok?).to be false
+      expect(service.ok?).to be false
     end
 
     it "doesn't upload file" do
-      expect { print_host.service.upload(file: file, start_print: true) }.to raise_error(PrintHost::NotReady)
+      expect { service.upload(file: file, start_print: true) }.to raise_error(PrintHost::NotReady)
     end
   end
 
@@ -45,11 +45,11 @@ RSpec.describe Print::OctoprintService, :after_first_run, :vcr do
     let(:endpoint) { "not-a-url" }
 
     it "flags connection error" do
-      expect(print_host.service.ok?).to be false
+      expect(service.ok?).to be false
     end
 
     it "doesn't upload file" do
-      expect { print_host.service.upload(file: file, start_print: true) }.to raise_error(PrintHost::NotReady)
+      expect { service.upload(file: file, start_print: true) }.to raise_error(PrintHost::NotReady)
     end
   end
 end
