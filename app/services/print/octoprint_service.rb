@@ -13,6 +13,7 @@ class Print::OctoprintService
 
   def ok?
     response = connection.get(info_uri, {}, headers)
+    Rails.logger.warn(response.inspect) unless response.success?
     response.success?
   rescue => ex
     Rails.logger.warn(ex.message)
@@ -23,6 +24,7 @@ class Print::OctoprintService
     raise ArgumentError unless file.mime_type.to_sym == :gcode
     raise PrintHost::NotReady unless ok?
     response = connection.post(upload_uri, payload(file: file, start_print: start_print), headers)
+    Rails.logger.warn(response.inspect) unless response.success?
     response.success?
   end
 
