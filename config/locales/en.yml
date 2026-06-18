@@ -1002,6 +1002,7 @@ en:
     protocols:
       moonraker: Moonraker / Klipper
       octoprint: Octoprint
+      odyssey: Odyssey
     update:
       success: Printer created successfully
   renderer:
