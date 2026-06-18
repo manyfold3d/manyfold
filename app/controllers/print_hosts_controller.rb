@@ -42,7 +42,7 @@ class PrintHostsController < ApplicationController
     respond_to do |format|
       format.html do
         if @print_host.update(print_host_params)
-          redirect_back_or_to print_hosts_path, notice: t(".success"), status: :see_other
+          redirect_to print_hosts_path, notice: t(".success"), status: :see_other
         else
           render Views::PrintHosts::Edit.new(print_host: @print_host), status: :unprocessable_content
         end
