@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: "<ENDPOINT>/api/server"
+    uri: "<OCTOPRINT_ENDPOINT>/api/server"
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Manyfold/unknown
       X-Api-Key:
-      - "<API_KEY>"
+      - "<OCTOPRINT_API_KEY>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -51,7 +51,7 @@ http_interactions:
   recorded_at: Thu, 18 Jun 2026 11:43:26 GMT
 - request:
     method: post
-    uri: "<ENDPOINT>/api/files/local"
+    uri: "<OCTOPRINT_ENDPOINT>/api/files/local"
     body:
       encoding: UTF-8
       string: "-------------RubyMultipartPost-652fd76b9bd3b54b182aeb7f9802a936\r\nContent-Disposition:
@@ -62,7 +62,7 @@ http_interactions:
       User-Agent:
       - Manyfold/unknown
       X-Api-Key:
-      - "<API_KEY>"
+      - "<OCTOPRINT_API_KEY>"
       Content-Type:
       - multipart/form-data; boundary=-----------RubyMultipartPost-652fd76b9bd3b54b182aeb7f9802a936
       Content-Length:
@@ -81,7 +81,7 @@ http_interactions:
       Content-Length:
       - '357'
       Location:
-      - "<ENDPOINT>/api/files/local/test.gcode"
+      - "<OCTOPRINT_ENDPOINT>/api/files/local/test.gcode"
       Cache-Control:
       - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
       Pragma:
@@ -116,8 +116,8 @@ http_interactions:
               "origin": "local",
               "path": "test.gcode",
               "refs": {
-                "download": "<ENDPOINT>/downloads/files/local/test.gcode",
-                "resource": "<ENDPOINT>/api/files/local/test.gcode"
+                "download": "<OCTOPRINT_ENDPOINT>/downloads/files/local/test.gcode",
+                "resource": "<OCTOPRINT_ENDPOINT>/api/files/local/test.gcode"
               }
             }
           }

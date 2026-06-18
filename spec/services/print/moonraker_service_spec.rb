@@ -1,21 +1,24 @@
 require "rails_helper"
 
 RSpec.describe Print::MoonrakerService, :after_first_run, :vcr do
-  let(:endpoint) { ENV.fetch("MOONRAKER_ENDPOINT", "http://klipper.example.com") }
-  let(:credentials) { ENV.fetch("MOONRAKER_API_KEY", "fake_api_key") }
-  subject(:service) { described_class.new(
+  subject(:service) {
+    described_class.new(
     print_host: create(:print_host,
       protocol: "moonraker",
       name: "Moonraker",
       endpoint: endpoint,
       credentials: credentials)
-  )}
+  )
+  }
+
+  let(:endpoint) { ENV.fetch("MOONRAKER_ENDPOINT", "http://klipper.example.com") }
+  let(:credentials) { ENV.fetch("MOONRAKER_API_KEY", "fake_api_key") }
   let(:file) { create(:model_file, filename: "test.gcode") }
 
-  before do
+  before :all do # rubocop:disable RSpec/BeforeAfterAll
     VCR.configure do |c|
-      c.filter_sensitive_data("<API_KEY>") { credentials }
-      c.filter_sensitive_data("<ENDPOINT>") { endpoint }
+      c.filter_sensitive_data("<MOONRAKER_API_KEY>") { credentials }
+      c.filter_sensitive_data("<MOONRAKER_ENDPOINT>") { endpoint }
     end
   end
 

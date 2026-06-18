@@ -1,21 +1,24 @@
 require "rails_helper"
 
 RSpec.describe Print::OctoprintService, :after_first_run, :vcr do
-  let(:endpoint) { ENV.fetch("OCTOPRINT_ENDPOINT", "http://octoprint.example.com") }
-  let(:credentials) { ENV.fetch("OCTOPRINT_API_KEY", "fake_api_key") }
-  subject(:service) { described_class.new(
+  subject(:service) {
+    described_class.new(
     print_host: create(:print_host,
       protocol: "octoprint",
       name: "Octoprint",
       endpoint: endpoint,
       credentials: credentials)
-  )}
+  )
+  }
+
+  let(:endpoint) { ENV.fetch("OCTOPRINT_ENDPOINT", "http://octoprint.example.com") }
+  let(:credentials) { ENV.fetch("OCTOPRINT_API_KEY", "fake_api_key") }
   let(:file) { create(:model_file, filename: "test.gcode") }
 
-  before do
+  before :all do # rubocop:disable RSpec/BeforeAfterAll
     VCR.configure do |c|
-      c.filter_sensitive_data("<API_KEY>") { credentials }
-      c.filter_sensitive_data("<ENDPOINT>") { endpoint }
+      c.filter_sensitive_data("<OCTOPRINT_API_KEY>") { credentials }
+      c.filter_sensitive_data("<OCTOPRINT_ENDPOINT>") { endpoint }
     end
   end
 

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: "<ENDPOINT>/api/server"
+    uri: "<OCTOPRINT_ENDPOINT>/api/server"
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Manyfold/unknown
       X-Api-Key:
-      - "<API_KEY>"
+      - "<OCTOPRINT_API_KEY>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:

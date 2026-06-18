@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: "<ENDPOINT>/server/info"
+    uri: "<MOONRAKER_ENDPOINT>/server/info"
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Manyfold/unknown
       X-Api-Key:
-      - "<API_KEY>"
+      - "<MOONRAKER_API_KEY>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -48,7 +48,7 @@ http_interactions:
   recorded_at: Thu, 18 Jun 2026 11:54:13 GMT
 - request:
     method: post
-    uri: "<ENDPOINT>/server/files/upload"
+    uri: "<MOONRAKER_ENDPOINT>/server/files/upload"
     body:
       encoding: UTF-8
       string: "-------------RubyMultipartPost-47b8c2d4039de450f24cdb5119b29057\r\nContent-Disposition:
@@ -59,7 +59,7 @@ http_interactions:
       User-Agent:
       - Manyfold/unknown
       X-Api-Key:
-      - "<API_KEY>"
+      - "<MOONRAKER_API_KEY>"
       Content-Type:
       - multipart/form-data; boundary=-----------RubyMultipartPost-47b8c2d4039de450f24cdb5119b29057
       Content-Length:
@@ -84,7 +84,7 @@ http_interactions:
       Connection:
       - keep-alive
       Location:
-      - "<ENDPOINT>/server/files/gcodes/test.gcode"
+      - "<MOONRAKER_ENDPOINT>/server/files/gcodes/test.gcode"
     body:
       encoding: UTF-8
       string: '{"action": "create_file", "item": {"modified": 1781783653.676128, "size":
