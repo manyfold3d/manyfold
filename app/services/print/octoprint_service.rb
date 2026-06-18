@@ -21,7 +21,9 @@ class Print::OctoprintService
 
   def upload(file:, start_print: true)
     raise ArgumentError unless file.mime_type.to_sym == :gcode
-    connection.post(upload_uri, payload(file: file, start_print: start_print), headers)
+    raise PrintHost::NotReady unless ok?
+    response = connection.post(upload_uri, payload(file: file, start_print: start_print), headers)
+    response.success?
   end
 
   private

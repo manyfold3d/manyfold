@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<ENDPOINT>/api/server"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      X-Api-Key:
+      - "<API_KEY>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '46'
+      Cache-Control:
+      - max-age=0
+      X-Clacks-Overhead:
+      - GNU Terry Pratchett
+      Server-Timing:
+      - app;dur=2
+      Vary:
+      - Cookie
+      Set-Cookie:
+      - session_P80=.eJxNik0KgCAUBu_yrSX6o8LLiOSjHukr0hYS3T1pFcxqZm7MJzmSxNZHE4kEuhmnQlfXQ9W2Qz81CvwtKVf2SqtJ-SBoubz_FXbQMPZgKPh9YTGB5tUKx1BC8RtlPC8sdSXX.ajPZ3g.9aWTBCcaoKc9SM7xxIqztJGmGMQ;
+        HttpOnly; Path=/; SameSite=Lax
+      X-Robots-Tag:
+      - noindex, nofollow, noimageindex
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "safemode": null,
+          "version": "1.11.6"
+        }
+  recorded_at: Thu, 18 Jun 2026 11:43:26 GMT
+recorded_with: VCR 6.4.0

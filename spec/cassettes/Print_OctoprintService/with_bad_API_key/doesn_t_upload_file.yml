@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<ENDPOINT>/api/server"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      X-Api-Key:
+      - "<API_KEY>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: FORBIDDEN
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '140'
+      Cache-Control:
+      - max-age=0
+      X-Clacks-Overhead:
+      - GNU Terry Pratchett
+      Server-Timing:
+      - app;dur=4
+      Vary:
+      - Cookie
+      X-Robots-Tag:
+      - noindex, nofollow, noimageindex
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "error": "You don't have the permission to access the requested resource. It is either read-protected or not readable by the server."
+        }
+  recorded_at: Thu, 18 Jun 2026 11:43:26 GMT
+recorded_with: VCR 6.4.0
