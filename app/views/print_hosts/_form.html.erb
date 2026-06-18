@@ -1,3 +1,7 @@
+<p>
+  <%= t("views.print_hosts.form.description") %>
+</p>
+
 <div class="form-container">
   <%= form_with model: print_host, class: "tabular-form" do |form| %>
     <%= TextInputRow(form: form, attribute: :name, label: PrintHost.human_attribute_name(:name), help: t(".name.help")) %>
