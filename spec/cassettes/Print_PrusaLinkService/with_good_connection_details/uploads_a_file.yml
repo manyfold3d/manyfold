@@ -1,0 +1,90 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<PRUSALINK_ENDPOINT>/api/printer"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      X-Api-Key:
+      - "<PRUSALINK_API_KEY>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Powered-By:
+      - Express
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '668'
+      Etag:
+      - W/"29c-nT9PeheX0pALRDhE3c+qhvfF4kM"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 19 Jun 2026 10:14:17 GMT
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+    body:
+      encoding: UTF-8
+      string: '{"telemetry":{"tempCpu":59.56909349283287,"tempUvLed":0,"tempAmbient":16.62789234121469,"fanUvLed":0,"fanBlower":0,"fanRear":0,"coverClosed":true},"temperature":{"tool0":{"actual":3.0866652537920536,"target":0,"offset":0},"bed":{"actual":59.56909349283287,"target":0,"offset":0},"chamber":{"actual":16.62789234121469,"target":0,"offset":0}},"sd":{"ready":true},"state":{"text":"Operational","flags":{"operational":true,"paused":false,"printing":false,"cancelling":false,"pausing":false,"sdReady":true,"error":false,"ready":true,"closedOrError":false,"checked":false}},"storage":{"local":{"free_space":123,"total_space":256},"usb":{"free_space":256,"total_space":512}}}'
+  recorded_at: Fri, 19 Jun 2026 10:14:17 GMT
+- request:
+    method: post
+    uri: "<PRUSALINK_ENDPOINT>/api/files/local"
+    body:
+      encoding: UTF-8
+      string: "-------------RubyMultipartPost-59a18a9516b78de31acbe3ecb9979fb0\r\nContent-Disposition:
+        form-data; name=\"select\"\r\n\r\ntrue\r\n-------------RubyMultipartPost-59a18a9516b78de31acbe3ecb9979fb0\r\nContent-Disposition:
+        form-data; name=\"file\"; filename=\"test.gcode\"\r\nContent-Length: 0\r\nContent-Type:
+        text/x-gcode\r\nContent-Transfer-Encoding: binary\r\n\r\n\r\n-------------RubyMultipartPost-59a18a9516b78de31acbe3ecb9979fb0--\r\n"
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      X-Api-Key:
+      - "<PRUSALINK_API_KEY>"
+      Content-Type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost-59a18a9516b78de31acbe3ecb9979fb0
+      Content-Length:
+      - '406'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Powered-By:
+      - Express
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '207'
+      Etag:
+      - W/"cf-CM7Y59Vn4gyhQV2HRxo00O1YoKg"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 19 Jun 2026 10:14:17 GMT
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+    body:
+      encoding: UTF-8
+      string: '{"files":{"local":{"name":"test.gcode","origin":"local","refs":{"resource":"<PRUSALINK_ENDPOINT>/api/files/local/test.gcode","download":"<PRUSALINK_ENDPOINT>/api/downloads/local/test.gcode"}}},"done":true}'
+  recorded_at: Fri, 19 Jun 2026 10:14:17 GMT
+recorded_with: VCR 6.4.0
