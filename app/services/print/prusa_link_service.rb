@@ -2,7 +2,7 @@ require "faraday"
 require "faraday/multipart"
 
 class Print::PrusaLinkService
-  # i18n-tasks-use t("print_hosts.protocols.octoprint")
+  # i18n-tasks-use t("print_hosts.protocols.prusalink")
   PROTOCOL = "prusalink".freeze
 
   INPUT_TYPES = [Mime[:gcode], Mime[:sl1]].freeze

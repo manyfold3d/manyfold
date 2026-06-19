@@ -37,7 +37,7 @@ en:
       edit: Edit File Information
     print:
       confirm: Are you sure this file is correctly set up for your printer? Manyfold doesn't check what you're sending!
-      link: Print using %{print_host_name}
+      link: Send to %{print_host_name}
     relationship_fields:
       delete: Remove relationship
       edit_related: Edit related file
