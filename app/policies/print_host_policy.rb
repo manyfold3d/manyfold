@@ -1,7 +1,7 @@
 class PrintHostPolicy < ApplicationPolicy
   def index?
     all_of(
-      user&.is_administrator?,
+      @user&.is_administrator?,
       none_of(
         SiteSettings.demo_mode_enabled?
       )
@@ -21,6 +21,11 @@ class PrintHostPolicy < ApplicationPolicy
   end
 
   def print?
-    index?
+    all_of(
+      @user&.is_printer?,
+      none_of(
+        SiteSettings.demo_mode_enabled?
+      )
+    )
   end
 end

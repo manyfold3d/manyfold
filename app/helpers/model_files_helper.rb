@@ -2,7 +2,7 @@ module ModelFilesHelper
   prepend MemoWise
 
   def can_print?(file)
-    print_hosts_for(file.mime_type).any?
+    policy(file).print? && print_hosts_for(file.mime_type).any?
   end
 
   def print_hosts_for(mime_type)

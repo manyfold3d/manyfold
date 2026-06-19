@@ -18,6 +18,10 @@ RSpec.describe "PrintHosts", :after_first_run do
         expect(response).to have_http_status(:forbidden)
       end
 
+      it "denies permission to people with print-only permissions", :as_printer do
+        expect(response).to have_http_status(:forbidden)
+      end
+
       it "shows list to admins", :as_administrator do
         expect(response).to have_http_status(:success)
       end
@@ -33,6 +37,10 @@ RSpec.describe "PrintHosts", :after_first_run do
       it "is denied to non-admins", :as_moderator do
         expect(response).to have_http_status(:forbidden)
       end
+
+      it "denies permission to people with print-only permissions", :as_printer do
+        expect(response).to have_http_status(:forbidden)
+      end
     end
 
     describe "GET /print_hosts/new" do
@@ -45,6 +53,10 @@ RSpec.describe "PrintHosts", :after_first_run do
       it "is denied to non-admins", :as_moderator do
         expect(response).to have_http_status(:forbidden)
       end
+
+      it "denies permission to people with print-only permissions", :as_printer do
+        expect(response).to have_http_status(:forbidden)
+      end
     end
 
     describe "GET /print_hosts/:id/edit" do
@@ -55,6 +67,10 @@ RSpec.describe "PrintHosts", :after_first_run do
       end
 
       it "is denied to non-administrators", :as_moderator do
+        expect(response).to have_http_status(:forbidden)
+      end
+
+      it "denies permission to people with print-only permissions", :as_printer do
         expect(response).to have_http_status(:forbidden)
       end
     end
@@ -77,6 +93,10 @@ RSpec.describe "PrintHosts", :after_first_run do
       it "is denied to non-administrators", :as_moderator do
         expect(response).to have_http_status(:forbidden)
       end
+
+      it "denies permission to people with print-only permissions", :as_printer do
+        expect(response).to have_http_status(:forbidden)
+      end
     end
 
     describe "DELETE /print_hosts/:id" do
@@ -89,6 +109,10 @@ RSpec.describe "PrintHosts", :after_first_run do
       end
 
       it "is denied to non-administrators", :as_moderator do
+        expect(response).to have_http_status(:forbidden)
+      end
+
+      it "denies permission to people with print-only permissions", :as_printer do
         expect(response).to have_http_status(:forbidden)
       end
     end
@@ -112,6 +136,12 @@ RSpec.describe "PrintHosts", :after_first_run do
       it "is denied to non-administrators", :as_moderator do
         post "/print_hosts/#{print_host.to_param}/print", params: {file_id: file.public_id}
         expect(response).to have_http_status(:forbidden)
+      end
+
+      it "accepts print requests from people with print-only permissions", :as_printer do
+        expect {
+          post "/print_hosts/#{print_host.to_param}/print", params: {file_id: file.public_id}
+        }.to have_enqueued_job(SendFileToPrintHostJob).with(print_host: print_host, file: file)
       end
     end
   end
