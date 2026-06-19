@@ -5,7 +5,7 @@ class Print::PrusaLinkService
   # i18n-tasks-use t("print_hosts.protocols.octoprint")
   PROTOCOL = "prusalink".freeze
 
-  INPUT_TYPES = [Mime[:gcode]].freeze
+  INPUT_TYPES = [Mime[:gcode], Mime[:sl1]].freeze
 
   def initialize(print_host:)
     @print_host = print_host
@@ -21,7 +21,7 @@ class Print::PrusaLinkService
   end
 
   def upload(file:, start_print: true)
-    raise ArgumentError unless file.mime_type.to_sym == :gcode
+    raise ArgumentError unless file.mime_type.in? INPUT_TYPES
     raise PrintHost::NotReady unless ok?
     response = v1_upload(file: file)
     Rails.logger.warn(response.inspect) unless response.success?
