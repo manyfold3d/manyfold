@@ -1,0 +1,126 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<OCTOPRINT_ENDPOINT>/api/server"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      X-Api-Key:
+      - "<OCTOPRINT_API_KEY>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '46'
+      Cache-Control:
+      - max-age=0
+      X-Clacks-Overhead:
+      - GNU Terry Pratchett
+      Server-Timing:
+      - app;dur=2
+      Vary:
+      - Cookie
+      Set-Cookie:
+      - session_P80=.eJxNik0KgCAUBu_yrSMMox8vI5KPemSvSFtIdPekVTCrmbkxneRJErsQbSQSmKYfClqprtZKt2NXgb8l5dpdabEpHwQjVwi_wh4G1h2MCmGfWexG0-KE41ZC8StlPC8tAiXZ.ajPZ3g.Mo2kVUxQNpfltgU_ikPO8Nq_x1A;
+        HttpOnly; Path=/; SameSite=Lax
+      X-Robots-Tag:
+      - noindex, nofollow, noimageindex
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "safemode": null,
+          "version": "1.11.6"
+        }
+  recorded_at: Thu, 18 Jun 2026 11:43:26 GMT
+- request:
+    method: post
+    uri: "<OCTOPRINT_ENDPOINT>/api/files/local"
+    body:
+      encoding: UTF-8
+      string: "-------------RubyMultipartPost-652fd76b9bd3b54b182aeb7f9802a936\r\nContent-Disposition:
+        form-data; name=\"print\"\r\n\r\ntrue\r\n-------------RubyMultipartPost-652fd76b9bd3b54b182aeb7f9802a936\r\nContent-Disposition:
+        form-data; name=\"file\"; filename=\"test.gcode\"\r\nContent-Length: 0\r\nContent-Type:
+        text/x-gcode\r\nContent-Transfer-Encoding: binary\r\n\r\n\r\n-------------RubyMultipartPost-652fd76b9bd3b54b182aeb7f9802a936--\r\n"
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      X-Api-Key:
+      - "<OCTOPRINT_API_KEY>"
+      Content-Type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost-652fd76b9bd3b54b182aeb7f9802a936
+      Content-Length:
+      - '405'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '357'
+      Location:
+      - "<OCTOPRINT_ENDPOINT>/api/files/local/test.gcode"
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      X-Clacks-Overhead:
+      - GNU Terry Pratchett
+      Server-Timing:
+      - app;dur=8
+      Vary:
+      - Cookie
+      Set-Cookie:
+      - session_P80=.eJxNik0KgCAUBu_yrSX6gQovI6KPeqSvSFtIdPekVTCrmbnhTvIkmW1IJhEJdDfNlaFtx2bopn7uFfhbcmnslVeTy0HQcoXwK-yhYezBUAj7wmIiudUKp1hD9RsVPC8sdSXX.ajPZ3g.eQYBR35PL4e9HgGgcf7K16JZklw;
+        HttpOnly; Path=/; SameSite=Lax
+      X-Robots-Tag:
+      - noindex, nofollow, noimageindex
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "done": true,
+          "effectivePrint": false,
+          "effectiveSelect": false,
+          "files": {
+            "local": {
+              "name": "test.gcode",
+              "origin": "local",
+              "path": "test.gcode",
+              "refs": {
+                "download": "<OCTOPRINT_ENDPOINT>/downloads/files/local/test.gcode",
+                "resource": "<OCTOPRINT_ENDPOINT>/api/files/local/test.gcode"
+              }
+            }
+          }
+        }
+  recorded_at: Thu, 18 Jun 2026 11:43:26 GMT
+recorded_with: VCR 6.4.0

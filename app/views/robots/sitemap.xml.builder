@@ -5,22 +5,22 @@ xml.urlset "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
   xml.url { xml.loc creators_url }
   xml.url { xml.loc collections_url }
   xml.url { xml.loc models_url }
-  @creators.each do |it|
+  @creators.each do |creator|
     xml.url do
-      xml.loc creator_url(it)
-      xml.lastmod it.updated_at.iso8601
+      xml.loc creator_url(creator)
+      xml.lastmod creator.updated_at.iso8601
     end
   end
-  @collections.each do |it|
+  @collections.each do |collection|
     xml.url do
-      xml.loc collection_url(it)
-      xml.lastmod it.updated_at.iso8601
+      xml.loc collection_url(collection)
+      xml.lastmod collection.updated_at.iso8601
     end
   end
-  @models.each do |it|
+  @models.each do |model|
     xml.url do
-      xml.loc model_url(it)
-      xml.lastmod it.updated_at.iso8601
+      xml.loc model_url(model)
+      xml.lastmod model.updated_at.iso8601
     end
   end
 end

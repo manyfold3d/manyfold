@@ -64,6 +64,9 @@
       <h5><%= t(".integrations_heading") %></h5>
       <ul class="nav flex-column">
         <li class="nav-item">
+          <%= link_to t("views.print_hosts.index.title"), print_hosts_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
           <%= link_to t("doorkeeper_applications.index.title"), doorkeeper_applications_path, class: "nav-link" %>
         </li>
         <li class="nav-item">

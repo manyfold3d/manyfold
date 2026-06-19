@@ -3,7 +3,7 @@ require "uri"
 class User < ApplicationRecord
   # i18n-tasks-use t("activerecord.models.user")
 
-  extend Memoist
+  prepend MemoWise
 
   include Lister
   include Follower
@@ -266,12 +266,12 @@ class User < ApplicationRecord
   def liked_list
     lists.find_by(special: :liked)
   end
-  memoize :liked_list
+  memo_wise :liked_list
 
   def liked?(listable)
     liked_list&.list_items&.where(listable: listable)&.any?
   end
-  memoize :liked?
+  memo_wise :liked?
 
   private
 
@@ -280,13 +280,13 @@ class User < ApplicationRecord
   end
 
   def has_any_role_of?(*args)
-    args.map { |it| has_role? it }.any?
+    args.map { has_role? it }.any?
   end
 
   def assign_default_role
     return unless roles.empty?
     default_roles = [:member, SiteSettings.default_signup_role.to_sym].uniq
-    default_roles.each { |it| add_role(it) }
+    default_roles.each { add_role(it) }
   end
 
   def password_required?

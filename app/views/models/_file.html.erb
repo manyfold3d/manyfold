@@ -13,7 +13,7 @@
           <code><%= sanitize file.filename %></code>
           <%- alts = file.alternative_formats %>
           <% if alts.any? %> +
-            <%= safe_join(alts.map(&:extension).map { |it| content_tag(:code) { it.upcase } }, ", ") %>
+            <%= safe_join(alts.map(&:extension).map { content_tag(:code) { it.upcase } }, ", ") %>
           <% end %>
         </small>
       </div>
@@ -35,6 +35,10 @@
                 <%= DropdownHeader text: t(".presupported") %>
                 <%= link_to t("general.download"), model_model_file_raw_path(@model, file.presupported_version.filename, download: true), {class: "dropdown-item", download: "download"} %>
                 <%= app_links(file.presupported_version) %>
+                <%= DropdownDivider() %>
+              <% end %>
+              <% if can_print? file %>
+                <%= print_links(file) %>
                 <%= DropdownDivider() %>
               <% end %>
               <%= DropdownItem icon: "pencil-fill", label: t(".edit"), path: edit_model_model_file_path(@model, file) if policy(file).edit? %>

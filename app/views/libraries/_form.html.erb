@@ -7,7 +7,7 @@
         <%= form.label :storage_service, class: "col-sm-2 col-form-label" %>
       </div>
       <div>
-        <%= form.select :storage_service, Library::STORAGE_SERVICES.map { |it| [translate("libraries.storage_services.%{service}" % {service: it}), it] }, {}, {class: "form-control col-auto form-select", "data-bs-collapse": "collapse", "data-controller": "storage-service", "data-action": "change->storage-service#onChange"} %>
+        <%= form.select :storage_service, Library::STORAGE_SERVICES.map { [translate("libraries.storage_services.%{service}" % {service: it}), it] }, {}, {class: "form-control col-auto form-select", "data-bs-collapse": "collapse", "data-controller": "storage-service", "data-action": "change->storage-service#onChange"} %>
         <div id="options-filesystem" class="card p-3 collapse show storage-collapse tabular-form" data-bs-parent="#library_storage_service">
           <p><%= t ".filesystem_description_html" %></p>
           <%= text_input_row form, :path, placeholder: translate(".path.placeholder"), options: {data: {action: "change->parse-preview#handleChange"}} %>

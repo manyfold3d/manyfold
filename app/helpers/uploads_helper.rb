@@ -15,8 +15,8 @@ module UploadsHelper
 
   def input_accept_string
     safe_join [
-      uploadable_file_extensions.map { |it| Mime::EXTENSION_LOOKUP[it].to_s },
-      uploadable_file_extensions.map { |it| ".#{it}" }
+      uploadable_file_extensions.map { Mime::EXTENSION_LOOKUP[it].to_s },
+      uploadable_file_extensions.map { ".#{it}" }
     ].uniq.flatten, ","
   end
 end

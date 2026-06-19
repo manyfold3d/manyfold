@@ -4,14 +4,14 @@ module ManyfoldApi::V0
       return unless @object
       members = []
       if @object["add_members"]
-        members += @object["add_members"].filter_map do |it|
+        members += @object["add_members"].filter_map do
           {user: User.match!(identifier: it, invite: true)}
         rescue ActiveRecord::RecordNotFound
           nil
         end
       end
       if @object["remove_members"] && @record
-        members += @object["remove_members"].filter_map do |it|
+        members += @object["remove_members"].filter_map do
           {id: @record.memberships.find_by(user: User.match!(identifier: it))&.id, _destroy: "1"}
         rescue ActiveRecord::RecordNotFound
           nil

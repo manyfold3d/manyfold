@@ -14,7 +14,7 @@ class FileHandlers::Base
   # OUTPUT_TYPES = [].freeze
 
   class << self
-    extend Memoist
+    prepend MemoWise
 
     def priority
       0
@@ -35,7 +35,7 @@ class FileHandlers::Base
         type.in? self::INPUT_TYPES
       end
     end
-    memoize :can_load?
+    memo_wise :can_load?
 
     # For test mocking only
     def output_types
@@ -52,7 +52,7 @@ class FileHandlers::Base
         type.in? self::OUTPUT_TYPES
       end
     end
-    memoize :can_save?
+    memo_wise :can_save?
 
     def open_url_for(target_url, client_os: nil)
       raise NotImplementedError

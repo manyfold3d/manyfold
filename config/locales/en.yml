@@ -113,6 +113,7 @@ en:
         notes: Description
         path: Path
         preview_file: Preview File
+        relationships: Relationships
         sensitive: Sensitive Content
       model_file:
         caption: Caption
@@ -126,6 +127,11 @@ en:
         relationships: Relationships
         size: File Size
         y_up: Y Up
+      print_host:
+        credentials: Credentials
+        endpoint: Endpoint
+        name: Name
+        protocol: Protocol
       problem:
         category: Category
         ignored: Hidden
@@ -346,6 +352,13 @@ en:
         other: Files
         two: Files
         zero: Files
+      print_host:
+        few: Printers
+        many: Printers
+        one: Printer
+        other: Printers
+        two: Printers
+        zero: Printers
       problem:
         few: Problems
         many: Problems
@@ -353,6 +366,13 @@ en:
         other: Problems
         two: Problems
         zero: Problems
+      relationship:
+        few: Relationships
+        many: Relationships
+        one: Relationship
+        other: Relationships
+        two: Relationships
+        zero: Relationships
       relationships:
         predicates:
           adapted_from: is a remix of
@@ -556,6 +576,8 @@ en:
     path_template_preview:
       description: The table below shows some of the inferred metadata for folders in this library, based on the template above.
       path: Path
+    remixes_card:
+      title: Remixed by
     search_help:
       boolean: Use "or" to find models that match any of the terms.
       federation: Search for any Fediverse username to follow it.
@@ -576,6 +598,8 @@ en:
       name: Title
       recent: Newest
       updated: Updated
+    sources_card:
+      title: Remixed from
   concerns:
     linkable:
       sync:
@@ -746,6 +770,7 @@ en:
     unfollow_remote_actor:
       unfollowed: Unfollowed %{actor}
   general:
+    access: Access
     copy_fediverse_handle: Copy Fediverse handle to clipboard
     delete: Delete
     download: Download
@@ -764,8 +789,10 @@ en:
     none: None
     private: Private
     public: Publicly visible
+    related_content: Related content
     report: Report %{type}
     save: Save
+    settings: Settings
     setup_mode: This site is currently in setup mode; come back later!
     shared: Shared with local users
     view: View
@@ -956,6 +983,28 @@ en:
     new_report:
       message: Someone has reported content which needs moderations. Review the report at %{link}
       subject: New report received
+  print_hosts:
+    create:
+      success: Printer created successfully
+    destroy:
+      success: Printer removed
+    form:
+      credentials:
+        help: API key or password, if required
+      endpoint:
+        help: The URL of your printer's API (e.g. http://printer.local)
+      name:
+        help: A friendly name for your printer
+      protocol:
+        help: The printer's API protocol
+    print:
+      sent: File sent to printer
+    protocols:
+      moonraker: Moonraker / Klipper
+      octoprint: Octoprint
+      odyssey: Odyssey
+    update:
+      success: Printer created successfully
   renderer:
     errors:
       load: Load Error
@@ -1031,3 +1080,14 @@ en:
       next: Next ›
       previous: "‹ Prev"
       truncate: "…"
+    print_hosts:
+      edit:
+        title: Edit Printer
+      form:
+        confirm_destroy: Are you sure you want to remove this printer?
+        description: Configure printers and print hosts. Manyfold will connect to the endpoint directly, so you should enter the appropriate server name or IP from the perspective of the Manyfold server.
+      index:
+        description: Connecting Manyfold to your 3D printer lets you send sliced files to print directly (currently restricted to administrator users only).
+        title: Printers
+      new:
+        title: New Printer

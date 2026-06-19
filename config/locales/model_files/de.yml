@@ -31,21 +31,27 @@ de:
       prusa_slicer: in PrusaSlicer öffnen
       super_slicer: Im SuperSlicer öffnen
     form:
-      add: Eine neue Dateibeziehung hinzufügen
       notes:
         help_html: 'Du kannst <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a> verwenden. '
     general:
       edit: Dateiinformationen bearbeiten
+    print:
+      confirm:
+      link:
     relationship_fields:
       delete: Beziehung entfernen
       edit_related: Zugehörige Datei bearbeiten
       this_file: Diese Datei
+    relationships_form:
+      add: Eine neue Dateibeziehung hinzufügen
     show:
       convert: zu 3MF konvertieren
       details_heading: Datei-Details
       download:
         menu_header: Download optionen
       notes_heading: Notizen
+      print_card:
+        heading:
     update:
       failure: Es ist ein Fehler aufgetreten und die Dateidetails konnten nicht gespeichert werden.
       success: Dateieigenschaften gespeichert.

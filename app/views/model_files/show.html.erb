@@ -25,7 +25,7 @@
         <%- end %>
       </ul>
     <% end %>
-    <% if (handler = FileHandlers.handlers_for(environment: :browser, load_file: @file)&.first) %>
+    <% if (handler = FileHandlers.handlers_for(environment: :browser, mime_type: @file.mime_type)&.first) %>
       <%= render handler.component.new(file: @file) %>
     <% elsif @file.has_render? %>
       <%= image_tag model_model_file_path(@file.model, @file, format: @file.extension, derivative: "render"), style: "width: 100%", alt: @file.name %>
@@ -89,6 +89,14 @@
       <%= BurgerMenu do %>
         <%= DropdownItem(icon: "pencil", label: translate("general.edit"), path: edit_model_model_file_path(@model, @file)) if policy(@model).edit? %>
         <%= DropdownItem(icon: "trash", label: translate("general.delete"), path: model_model_file_path(@model, @file), method: :delete, confirm: t("model_files.destroy.confirm")) if policy(@file).destroy? %>
+      <% end %>
+    <% end %>
+
+    <% if can_print? @file %>
+      <%= card("secondary", t(".print_card.heading")) do %>
+        <ul class="list-unstyled">
+          <%= print_links(@file) %>
+        </ul>
       <% end %>
     <% end %>
 

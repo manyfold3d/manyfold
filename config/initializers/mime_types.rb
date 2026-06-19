@@ -41,10 +41,32 @@ Mime::Type.register "model/x-hfp", :hfp
 Mime::Type.register "model/x-speedtree", :speedtree, [], ["spm"]
 Mime::Type.register "model/x3d", :x3d, ["model/x3d+xml", "model/x3d-vrml", "model/x3d+fastinfoset"]
 
+Mime::Type.register "application/dicom", :dcm, [], [] # DICOM
+Mime::Type.register "application/gml+xml", :gml, [], [] # CityGML
+Mime::Type.register "application/vnd.pts", :pts, [], [] # Point Cloud
+Mime::Type.register "application/vnd.vtk", :vtk, [], [] # VTK Legacy
+Mime::Type.register "application/vnd.vtp", :vtp, ["application/vnd.vtu", "application/vnd.vti", "application/vnd.vtr", "application/vnd.vts"], ["vtu", "vti", "vtr", "vts"] # VTK XML
+Mime::Type.register "application/vnd.off", :off, [], [] # Object File Format
+Mime::Type.register "application/vnd.x", :x, [], [] # DirectX
+Mime::Type.register "application/vnd.xbf", :xbf, [], [] # Open CASCADE Technology XBF format
+Mime::Type.register "application/vnd.mdl", :mdl, [], [] # QuakeMDL
+Mime::Type.register "application/vnd.ifc", :ifc, [], [] # Industry Foundation Classes
+Mime::Type.register "application/vnd.mhd", :mha, [], ["mhd"] # MetaHeader MetaIO
+Mime::Type.register "application/vnd.nrrd", :nrrd, [], ["nhdr"] # NRRD ("nearly raw raster data")
+Mime::Type.register "application/vnd.splat", :splat, [], [] # 3D Gaussian Splatting
+Mime::Type.register "application/vnd.spz", :spz, [], [] # Compressed 3D Gaussian Splatting
+
 # Slicer formats
 Mime::Type.register "text/x-gcode", :gcode, [], ["bgcode"]
 Mime::Type.register "model/x-lychee", :lychee, [], ["lys", "lyt"]
-Mime::Type.register "model/x-chitubox", :chitubox, [], ["ctb"]
+Mime::Type.register "application/x-chitubox", :chitubox, [], ["ctb", "cbddlp"]
+Mime::Type.register "application/x-prusa-sl1", :sl1, [], ["sl1s"]
+Mime::Type.register "application/x-phrozen", :prz, [], ["phz"]
+Mime::Type.register "application/x-photon", :photon, [], ["photons"]
+Mime::Type.register "application/x-crealitybox", :crealitybox, [], ["cxdlp", "cxdlpv4"]
+Mime::Type.register "application/x-elegoo", :goo
+Mime::Type.register "application/x-lumen", :lumen
+Mime::Type.register "application/x-nanodlp", :nanodlp
 
 # Images
 Mime::Type.register "image/webp", :webp

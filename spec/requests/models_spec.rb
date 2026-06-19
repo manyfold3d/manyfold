@@ -72,10 +72,10 @@ RSpec.describe "Models", :after_first_run do
       let!(:collection) { create(:collection) }
       let!(:library) do
         l = create(:library)
-        build_list(:model, 5, library: l) { |it| it.save! }
-        build_list(:model, 5, library: l, creator: creator) { |it| it.save! }
-        build_list(:model, 5, library: l, collections: [collection]) { |it| it.save! }
-        build_list(:model, 5, library: l, creator: creator, collections: [collection]) { |it| it.save! }
+        build_list(:model, 5, library: l) { it.save! }
+        build_list(:model, 5, library: l, creator: creator) { it.save! }
+        build_list(:model, 5, library: l, collections: [collection]) { it.save! }
+        build_list(:model, 5, library: l, creator: creator, collections: [collection]) { it.save! }
         l
       end
 
@@ -238,6 +238,31 @@ RSpec.describe "Models", :after_first_run do
           }.to change(Link, :count).by(-1)
         end
 
+        it "adds remix relationship to other Model", :as_moderator do # rubocop:todo RSpec/ExampleLength
+          model = library.models.first
+          remixed_from = create(:model, library: library)
+          expect {
+            put "/models/#{model.to_param}", params: {
+              model: {
+                relationships_attributes: {"0" => {objekt_id: remixed_from.public_id, predicate: "adapted_from"}}
+              }
+            }
+          }.to change(Relationship, :count).from(0).to(1)
+        end
+
+        it "removes remix relationship to other Model", :as_moderator do # rubocop:todo RSpec/ExampleLength
+          model = library.models.first
+          remixed_from = create(:model, library: library)
+          model.relationships << Relationship.new(objekt: remixed_from, predicate: "adapted_from")
+          expect {
+            put "/models/#{model.to_param}", params: {
+              model: {
+                relationships_attributes: {"0" => {id: model.relationships.first.id, _destroy: "1)"}}
+              }
+            }
+          }.to change(Relationship, :count).from(1).to(0)
+        end
+
         it "is denied to non-moderators", :as_contributor do
           put "/models/#{library.models.first.to_param}"
           expect(response).to have_http_status(:forbidden)
@@ -337,7 +362,7 @@ RSpec.describe "Models", :after_first_run do
 
         it "is denied to non-moderators", :as_contributor do
           update = {}
-          library.models.take(2).each { |it| update[it.to_param] = 1 }
+          library.models.take(2).each { update[it.to_param] = 1 }
           patch update_models_path, params: {models: model_params, remove_tags: ["a", "b"]}
           expect(response).to have_http_status(:forbidden)
         end
@@ -388,7 +413,7 @@ RSpec.describe "Models", :after_first_run do
         it "returns paginated models" do # rubocop:todo RSpec/MultipleExpectations
           get "/models?library=#{library.to_param}&page=2"
           expect(response).to have_http_status(:success)
-          expect(response.body).to match(/pagination/)
+          expect(response.body).to include("pagination")
         end
       end
 

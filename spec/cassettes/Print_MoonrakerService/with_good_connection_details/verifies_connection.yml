@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<MOONRAKER_ENDPOINT>/server/info"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      X-Api-Key:
+      - "<MOONRAKER_API_KEY>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.18.0
+      Date:
+      - Thu, 18 Jun 2026 11:54:12 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - W/"c1e8a011717268459c7bf5d2e561de7da6624674"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"result": {"klippy_connected": true, "klippy_state": "shutdown", "components":
+        ["secrets", "template", "klippy_connection", "jsonrpc", "internal_transport",
+        "application", "websockets", "database", "dbus_manager", "file_manager", "authorization",
+        "klippy_apis", "shell_command", "machine", "data_store", "proc_stats", "job_state",
+        "job_queue", "history", "http_client", "announcements", "webcam", "extensions",
+        "octoprint_compat", "power", "update_manager"], "failed_components": [], "registered_directories":
+        ["config", "logs", "gcodes", "config_examples", "docs"], "warnings": [], "websocket_count":
+        1, "moonraker_version": "v0.9.3-85-g6ff9a7c", "missing_klippy_requirements":
+        [], "api_version": [1, 5, 0], "api_version_string": "1.5.0"}}'
+  recorded_at: Thu, 18 Jun 2026 11:54:12 GMT
+recorded_with: VCR 6.4.0

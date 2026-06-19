@@ -74,4 +74,16 @@ RSpec.describe SupportedMimeTypes do
       expect(described_class.model_extensions).to include("dxf")
     end
   end
+
+  context "when indexing slicer files" do
+    it "includes Chitubox files" do # rubocop:todo RSpec/MultipleExpectations
+      expect(described_class.indexable_types).to include("application/x-chitubox")
+      expect(described_class.indexable_extensions).to include("cbddlp")
+    end
+
+    it "includes Lumen files" do # rubocop:todo RSpec/MultipleExpectations
+      expect(described_class.indexable_types).to include("application/x-lumen")
+      expect(described_class.indexable_extensions).to include("lumen")
+    end
+  end
 end

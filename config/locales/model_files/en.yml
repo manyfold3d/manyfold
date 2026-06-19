@@ -31,21 +31,27 @@ en:
       prusa_slicer: Open in PrusaSlicer
       super_slicer: Open in SuperSlicer
     form:
-      add: Add a new file relationship
       notes:
         help_html: You can use <a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>.
     general:
       edit: Edit File Information
+    print:
+      confirm: Are you sure this file is correctly set up for your printer? Manyfold doesn't check what you're sending!
+      link: Print using %{print_host_name}
     relationship_fields:
       delete: Remove relationship
       edit_related: Edit related file
       this_file: This file
+    relationships_form:
+      add: Add a new file relationship
     show:
       convert: Convert to 3MF
       details_heading: File Details
       download:
         menu_header: Download options
       notes_heading: Notes
+      print_card:
+        heading: Print
     update:
       failure: An error occurred and file details could not be saved.
       success: File details saved.

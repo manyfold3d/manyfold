@@ -6,7 +6,7 @@ module PathBuilder
       case token
       when "{tags}"
         tags.exists? ?
-          File.join(tags.order(taggings_count: :desc, name: :asc).map { |it| it.to_s.parameterize }) :
+          File.join(tags.order(taggings_count: :desc, name: :asc).map { it.to_s.parameterize }) :
           "@untagged"
       when "{creator}"
         path_component(creator) || "@unattributed"
@@ -18,7 +18,7 @@ module PathBuilder
         while scope.count > collections.count
           collections.concat scope.where(collection_id: collections.map(&:id)).to_a
         end
-        File.join(collections.map { |it| path_component(it) })
+        File.join(collections.map { path_component(it) })
       when "{modelName}"
         path_component(self)
       when "{modelId}"

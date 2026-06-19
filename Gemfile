@@ -47,7 +47,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :windows]
   gem "rspec-rails"
-  gem "standard", "~> 1.54"
+  gem "standard", "~> 1.55"
   gem "factory_bot"
   gem "faker", "~> 3.8"
   gem "guard", "~> 2.20"
@@ -92,7 +92,7 @@ gem "public_suffix", "~> 7.0"
 
 gem "activerecord-nulldb-adapter", "~> 1.2"
 
-gem "memoist", "~> 0.16"
+gem "memo_wise", "~> 1.13"
 gem "stopwords-filter2", require: "stopwords"
 
 gem "devise", "~> 5.0"
@@ -146,12 +146,12 @@ gem "logstash-event", "~> 1.2"
 
 gem "climate_control", "~> 1.2", group: :test
 
-gem "sys-filesystem", "~> 1.5"
+gem "sys-filesystem", "~> 1.6"
 gem "shrine", "~> 3.7"
 gem "tus-server", "~> 2.3"
 gem "shrine-tus", "~> 2.1"
 
-gem "aws-sdk-s3", "< 1.226"
+gem "aws-sdk-s3", "< 1.227"
 
 gem "better_content_security_policy", "~> 0.1"
 
@@ -211,6 +211,7 @@ gem "graphlient", "~> 0.8.0"
 gem "webmock", "~> 3.26", group: :test
 
 gem "image_processing"
+gem "mini_magick"
 
 gem "csv", "~> 3.3"
 
@@ -218,9 +219,9 @@ gem "arel_extensions", "~> 2.4"
 
 gem "assimp-ffi", git: "https://github.com/Kerilk/assimp-ruby.git"
 
-gem "yard-lint", "~> 1.5", group: :development
+gem "yard-lint", "~> 1.8", group: :development
 
-gem "zaru", "~> 1.0"
+gem "zaru", "~> 1.1"
 
 # v3 causes us problems
 gem "connection_pool", ">= 2.2.5", "< 3.0"
@@ -236,3 +237,5 @@ gem "marcel", "~> 1.2"
 gem "naturally", "~> 2.3"
 
 gem "rouge", "~> 5.0"
+
+gem "faraday-multipart", "~> 1.2"

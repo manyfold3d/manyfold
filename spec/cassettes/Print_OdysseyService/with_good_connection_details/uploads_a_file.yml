@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<ODYSSEY_ENDPOINT>/status"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '118'
+      Date:
+      - Thu, 18 Jun 2026 22:55:37 GMT
+    body:
+      encoding: UTF-8
+      string: '{"layer":null,"paused":null,"physical_state":{"curing":false,"z":0.0,"z_microns":0},"print_data":null,"status":"Idle"}'
+  recorded_at: Thu, 18 Jun 2026 22:55:37 GMT
+- request:
+    method: post
+    uri: "<ODYSSEY_ENDPOINT>/files"
+    body:
+      encoding: UTF-8
+      string: "-------------RubyMultipartPost-b63b7f799ef075894996ef39655f6936\r\nContent-Disposition:
+        form-data; name=\"file\"; filename=\"test.sl1\"\r\nContent-Length: 0\r\nContent-Type:
+        application/x-prusa-sl1\r\nContent-Transfer-Encoding: binary\r\n\r\n\r\n-------------RubyMultipartPost-b63b7f799ef075894996ef39655f6936--\r\n"
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Content-Type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost-b63b7f799ef075894996ef39655f6936
+      Content-Length:
+      - '295'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '0'
+      Date:
+      - Thu, 18 Jun 2026 22:55:37 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 18 Jun 2026 22:55:37 GMT
+- request:
+    method: post
+    uri: "<ODYSSEY_ENDPOINT>/print/start?filename=test.sl1"
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '0'
+      Date:
+      - Thu, 18 Jun 2026 22:55:37 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 18 Jun 2026 22:55:37 GMT
+recorded_with: VCR 6.4.0

@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<MOONRAKER_ENDPOINT>/server/info"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      X-Api-Key:
+      - "<MOONRAKER_API_KEY>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Server:
+      - nginx/1.18.0
+      Date:
+      - Thu, 18 Jun 2026 11:54:02 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '614'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error": {"code": 401, "message": "Unauthorized", "traceback": "Traceback
+        (most recent call last):\n\n  File \"/home/pi/moonraker-env/lib/python3.9/site-packages/tornado/web.py\",
+        line 1827, in _execute\n    result = await result  # type: ignore\n\n  File
+        \"/home/pi/moonraker/moonraker/components/application.py\", line 503, in prepare\n    self.current_user
+        = await auth.authenticate_request(\n\n  File \"/home/pi/moonraker/moonraker/components/authorization.py\",
+        line 896, in authenticate_request\n    raise HTTPError(401, \"Unauthorized\")\n\ntornado.web.HTTPError:
+        HTTP 401: Unauthorized (Unauthorized)\n"}}'
+  recorded_at: Thu, 18 Jun 2026 11:54:02 GMT
+recorded_with: VCR 6.4.0

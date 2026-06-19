@@ -31,21 +31,27 @@ pt:
       prusa_slicer:
       super_slicer:
     form:
-      add:
       notes:
         help_html:
     general:
       edit:
+    print:
+      confirm:
+      link:
     relationship_fields:
       delete:
       edit_related:
       this_file:
+    relationships_form:
+      add:
     show:
       convert:
       details_heading:
       download:
         menu_header:
       notes_heading:
+      print_card:
+        heading:
     update:
       failure:
       success:

@@ -1,7 +1,7 @@
 class Model < ApplicationRecord
   # i18n-tasks-use t("activerecord.models.model")
 
-  extend Memoist
+  prepend MemoWise
   include PathBuilder
   include Followable
   include Talkative
@@ -96,7 +96,7 @@ class Model < ApplicationRecord
       library.models.find_by(path: path.to_s)
     end
   end
-  memoize :parents
+  memo_wise :parents
 
   def was_changed?
     !previous_changes.empty?
@@ -107,9 +107,9 @@ class Model < ApplicationRecord
     return nil unless models.map(&:library_id).uniq.one?
     # Get each path, split, and working from the front, find the common elements
 
-    first, *remainder = models.map { |it| it.path.split(File::SEPARATOR).without(".") }
+    first, *remainder = models.map { it.path.split(File::SEPARATOR).without(".") }
     parts = first.zip(*remainder)
-    common = parts.map { |it| (it.uniq.length == 1) ? it.first : nil }
+    common = parts.map { (it.uniq.length == 1) ? it.first : nil }
     common = common.first(common.index(nil) || 99999)
     common.empty? ? nil : File.join(common)
   end
@@ -153,7 +153,7 @@ class Model < ApplicationRecord
       # Remove datapackage
       other.datapackage&.destroy
       # Move files
-      other.model_files.each { |it| adopt_file(it, path_prefix: relative_path) }
+      other.model_files.each { adopt_file(it, path_prefix: relative_path) }
       check_for_problems_later
       # Merge metadata
       self.creator ||= other.creator
@@ -163,7 +163,7 @@ class Model < ApplicationRecord
       self.notes ||= other.notes
       self.sensitive ||= other.sensitive
       tag_list.add(*other.tag_list)
-      self.links_attributes = other.links.map { |it| {url: it.url} }
+      self.links_attributes = other.links.map { {url: it.url} }
       save!
       # Destroy the other model
       other.reload
@@ -212,7 +212,7 @@ class Model < ApplicationRecord
   end
 
   def valid_preview_files
-    model_files.select { |it| it.is_image? || it.is_video? || FileHandlers::F3d.can_load?(it.mime_type) || FileHandlers::Three.can_load?(it.mime_type) }
+    model_files.select { it.is_image? || it.is_video? || FileHandlers::F3d.can_load?(it.mime_type) || FileHandlers::Three.can_load?(it.mime_type) }
   end
 
   def image_files
@@ -247,7 +247,7 @@ class Model < ApplicationRecord
     # Wipe permissions and copy from old model
     new_model.caber_relations.delete_all
     new_model.update!(
-      caber_relations_attributes: other.caber_relations.all.map { |it| {permission: it.permission, subject: it.subject} }
+      caber_relations_attributes: other.caber_relations.all.map { {permission: it.permission, subject: it.subject} }
     )
     new_model
   end
@@ -261,7 +261,7 @@ class Model < ApplicationRecord
     # Clear entrypoint file if it was moved
     update!(entrypoint: nil) if entrypoint_will_move
     # Move files
-    files.each { |it| new_model.adopt_file(it) }
+    files.each { new_model.adopt_file(it) }
     # Done!
     new_model
   end

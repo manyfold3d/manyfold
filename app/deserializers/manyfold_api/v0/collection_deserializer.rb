@@ -9,7 +9,7 @@ module ManyfoldApi::V0
         caption: @object["caption"],
         notes: @object["description"],
         preview_model: dereference(@object.dig("preview_model", "@id"), Model),
-        links_attributes: @object["links"]&.map { |it| LinkDeserializer.new(object: it, user: @user).deserialize }
+        links_attributes: @object["links"]&.map { LinkDeserializer.new(object: it, user: @user).deserialize }
       }.compact
     end
 

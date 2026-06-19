@@ -16,7 +16,7 @@ class UpdateMetadataFromLinkJob < ApplicationJob
     end
     # Import models for collections
     if linkable.is_a?(Collection) && data[:models]
-      data[:models].each { |it| CreateObjectFromUrlJob.perform_later(url: it, collection_id: linkable.id) }
+      data[:models].each { CreateObjectFromUrlJob.perform_later(url: it, collection_id: linkable.id) }
     end
     # Apply default permissions
     if apply_permissions_after_sync
@@ -31,7 +31,7 @@ class UpdateMetadataFromLinkJob < ApplicationJob
   end
 
   def import_files(data, model)
-    data.dig(:file_urls)&.each do |it|
+    data.dig(:file_urls)&.each do
       model.create_or_update_file_from_url(url: it[:url], filename: it[:filename])
     rescue ActiveRecord::RecordInvalid
       Rails.logger.info("Couldn't add file #{it[:url]} to model #{model.to_param}")

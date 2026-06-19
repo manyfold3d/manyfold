@@ -11,7 +11,7 @@ module Cli
         Model,
         Creator,
         Collection
-      ].each do |it|
+      ].each do
         Pundit::PolicyFinder.new(it).scope.new(nil, it).resolve.each do |x|
           x.send :fasp_emit_lifecycle_announcement, "new"
         end

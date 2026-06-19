@@ -31,21 +31,27 @@ zh-CN:
       prusa_slicer: 在 PrusaSlicer 中打开
       super_slicer: 在 SuperSlicer 中打开
     form:
-      add:
       notes:
         help_html: 您可以使用<a href="https://www.markdownguide.org/cheat-sheet/" target="markdown">Markdown</a>。
     general:
       edit: 编辑文件信息
+    print:
+      confirm:
+      link:
     relationship_fields:
       delete:
       edit_related:
       this_file:
+    relationships_form:
+      add:
     show:
       convert: 转换为 3MF
       details_heading: 详细信息
       download:
         menu_header: 下载选项
       notes_heading: 说明
+      print_card:
+        heading:
     update:
       failure: 发生错误，无法保存文件详细信息。
       success: 保存成功。

@@ -1,5 +1,9 @@
-<div>
+<div class="form-control-plaintext">
   <%= form.label :links, Link.model_name.human(count: 100) %>
+  <%= cocooned_add_item_button Icon(icon: "node-plus", label: t(".add")), form, :links,
+        class: "btn btn-secondary btn-sm float-end ms-2",
+        insertion_node: "#cocooned-links",
+        insertion_method: "append" %>
 </div>
 <div>
   <%= cocooned_container id: "cocooned-links", data: {controller: "cocooned"} do %>
@@ -7,10 +11,4 @@
       <%= render "link_fields", f: f %>
     <% end %>
   <% end %>
-  <div>
-    <%= cocooned_add_item_button t(".add"), form, :links,
-          class: "btn btn-secondary",
-          insertion_node: "#cocooned-links",
-          insertion_method: "append" %>
-  </div>
 </div>

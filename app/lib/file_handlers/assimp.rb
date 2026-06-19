@@ -6,6 +6,6 @@ class FileHandlers::Assimp < FileHandlers::Base
   ).values.freeze
 
   OUTPUT_TYPES = Mime::EXTENSION_LOOKUP.slice(
-      *(0...::Assimp.aiGetExportFormatCount).map { |it| ::Assimp.aiGetExportFormatDescription it }.map(&:file_extension)
+      *(0...::Assimp.aiGetExportFormatCount).map { ::Assimp.aiGetExportFormatDescription it }.map(&:file_extension)
     ).values.freeze
 end

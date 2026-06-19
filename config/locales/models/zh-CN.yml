@@ -85,6 +85,13 @@ zh-CN:
       tour:
         description: 这个卡片显示该模型检测到的任何问题。您可以在账户首选项中更改问题可见性设置。
         title: 问题
+    relationship_fields:
+      delete:
+      edit_related:
+      this_model:
+      type_to_search:
+    relationships_form:
+      add:
     scan:
       success: 模型扫描开始
     show:

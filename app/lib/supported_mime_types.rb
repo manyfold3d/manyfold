@@ -1,66 +1,76 @@
 module SupportedMimeTypes
   class << self
-    extend Memoist
+    prepend MemoWise
 
     def image_types
       Mime::LOOKUP.filter { |k, v| is_image_mime_type?(v) }.values
     end
-    memoize :image_types
+    memo_wise :image_types
 
     def image_extensions
       Mime::EXTENSION_LOOKUP.filter { |k, v| is_image_mime_type?(v) }.keys
     end
-    memoize :image_extensions
+    memo_wise :image_extensions
 
     def video_types
       Mime::LOOKUP.filter { |k, v| is_video_mime_type?(v) }.values
     end
-    memoize :video_types
+    memo_wise :video_types
 
     def video_extensions
       Mime::EXTENSION_LOOKUP.filter { |k, v| is_video_mime_type?(v) }.keys
     end
-    memoize :video_extensions
+    memo_wise :video_extensions
 
     def document_types
       Mime::LOOKUP.filter { |k, v| is_document_mime_type?(v) }.values
     end
-    memoize :document_types
+    memo_wise :document_types
 
     def document_extensions
       Mime::EXTENSION_LOOKUP.filter { |k, v| is_document_mime_type?(v) }.keys
     end
-    memoize :document_extensions
+    memo_wise :document_extensions
 
     def archive_types
       Mime::LOOKUP.filter { |k, v| is_archive_mime_type?(v) }.values
     end
-    memoize :archive_types
+    memo_wise :archive_types
 
     def archive_extensions
       Mime::EXTENSION_LOOKUP.filter { |k, v| is_archive_mime_type?(v) }.keys
     end
-    memoize :archive_extensions
+    memo_wise :archive_extensions
 
     def model_types
       Mime::LOOKUP.filter { |k, v| is_model_mime_type?(v) }.values
     end
-    memoize :model_types
+    memo_wise :model_types
 
     def model_extensions
       Mime::EXTENSION_LOOKUP.filter { |k, v| is_model_mime_type?(v) }.keys
     end
-    memoize :model_extensions
+    memo_wise :model_extensions
+
+    def slicer_types
+      Mime::LOOKUP.filter { |k, v| is_slicer_mime_type?(v) }.values
+    end
+    memo_wise :slicer_types
+
+    def slicer_extensions
+      Mime::EXTENSION_LOOKUP.filter { |k, v| is_slicer_mime_type?(v) }.keys
+    end
+    memo_wise :slicer_extensions
 
     def indexable_types
-      image_types + model_types + video_types + document_types + archive_types
+      image_types + model_types + video_types + document_types + archive_types + slicer_types
     end
-    memoize :indexable_types
+    memo_wise :indexable_types
 
     def indexable_extensions
-      image_extensions + model_extensions + video_extensions + document_extensions + archive_extensions
+      image_extensions + model_extensions + video_extensions + document_extensions + archive_extensions + slicer_extensions
     end
-    memoize :indexable_extensions
+    memo_wise :indexable_extensions
 
     private
 
@@ -71,12 +81,12 @@ module SupportedMimeTypes
       ]
       type.to_s.start_with?("image/") && exclusions.exclude?(type.to_s)
     end
-    memoize :is_image_mime_type?
+    memo_wise :is_image_mime_type?
 
     def is_video_mime_type?(type)
       type.to_s.start_with?("video/")
     end
-    memoize :is_video_mime_type?
+    memo_wise :is_video_mime_type?
 
     def is_document_mime_type?(type)
       [
@@ -99,7 +109,7 @@ module SupportedMimeTypes
         "application/x-kicad-worksheet"
       ].include?(type.to_s)
     end
-    memoize :is_document_mime_type?
+    memo_wise :is_document_mime_type?
 
     def is_model_mime_type?(type)
       extras = [
@@ -111,11 +121,25 @@ module SupportedMimeTypes
         "application/x-amf",
         "application/x-ldraw",
         "application/vnd.flock+json",
-        "application/vnd.dragonfruit.voxl"
+        "application/vnd.dragonfruit.voxl",
+        "application/dicom",
+        "application/gml+xml",
+        "application/vnd.pts",
+        "application/vnd.vtk",
+        "application/vnd.vtp",
+        "application/vnd.off",
+        "application/vnd.x",
+        "application/vnd.xbf",
+        "application/vnd.mdl",
+        "application/vnd.ifc",
+        "application/vnd.mhd",
+        "application/vnd.nrrd",
+        "application/vnd.splat",
+        "application/vnd.spz"
       ]
       type.to_s.start_with?("model/") || extras.include?(type.to_s)
     end
-    memoize :is_model_mime_type?
+    memo_wise :is_model_mime_type?
 
     def is_archive_mime_type?(type)
       [
@@ -126,6 +150,20 @@ module SupportedMimeTypes
         "application/x-bzip2"
       ].include?(type.to_s)
     end
-    memoize :is_archive_mime_type?
+    memo_wise :is_archive_mime_type?
+
+    def is_slicer_mime_type?(type)
+      [
+        "application/x-chitubox",
+        "application/x-prusa-sl1",
+        "application/x-phrozen",
+        "application/x-photon",
+        "application/x-crealitybox",
+        "application/x-elegoo",
+        "application/x-lumen",
+        "application/x-nanodlp"
+      ].include?(type.to_s)
+    end
+    memo_wise :is_slicer_mime_type?
   end
 end

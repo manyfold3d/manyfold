@@ -6,8 +6,7 @@ FakeNote = Struct.new(
   :inReplyTo,
   :url,
   :sensitive,
-  :"f3di:compatibilityNote",
-  keyword_init: true
+  :"f3di:compatibilityNote"
 )
 
 FactoryBot.define do

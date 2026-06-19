@@ -85,6 +85,13 @@ cs:
       tour:
         description:
         title: Problémy
+    relationship_fields:
+      delete:
+      edit_related:
+      this_model:
+      type_to_search:
+    relationships_form:
+      add:
     scan:
       success: Spuštěna kontrola modelu.
     show:

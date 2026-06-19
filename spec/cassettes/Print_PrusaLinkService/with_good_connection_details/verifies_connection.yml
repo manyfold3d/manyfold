@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<PRUSALINK_ENDPOINT>/api/printer"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      X-Api-Key:
+      - "<PRUSALINK_API_KEY>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Powered-By:
+      - Express
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '664'
+      Etag:
+      - W/"298-6+4fvypG/uxKzf+x4Qv3VEzFicg"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 19 Jun 2026 10:14:17 GMT
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+    body:
+      encoding: UTF-8
+      string: '{"telemetry":{"tempCpu":97.2173389200903,"tempUvLed":0,"tempAmbient":78.06711891305206,"fanUvLed":0,"fanBlower":0,"fanRear":0,"coverClosed":true},"temperature":{"tool0":{"actual":66.4630782228566,"target":0,"offset":0},"bed":{"actual":97.2173389200903,"target":0,"offset":0},"chamber":{"actual":78.06711891305206,"target":0,"offset":0}},"sd":{"ready":true},"state":{"text":"Operational","flags":{"operational":true,"paused":false,"printing":false,"cancelling":false,"pausing":false,"sdReady":true,"error":false,"ready":true,"closedOrError":false,"checked":false}},"storage":{"local":{"free_space":123,"total_space":256},"usb":{"free_space":256,"total_space":512}}}'
+  recorded_at: Fri, 19 Jun 2026 10:14:17 GMT
+recorded_with: VCR 6.4.0

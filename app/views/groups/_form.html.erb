@@ -5,7 +5,7 @@
     <%= TextInputRow(form: form, attribute: :name, label: Group.human_attribute_name(:name), help: t(".name.help")) %>
     <%= RichTextInputRow(form: form, attribute: :description, label: Group.human_attribute_name(:description), help: t(".description.help")) %>
 
-    <div>
+    <div class="form-control-plaintext">
       <%= form.label :memberships %>
     </div>
     <div>

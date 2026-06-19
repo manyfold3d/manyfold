@@ -1,4 +1,6 @@
 class Relationship < ApplicationRecord
+  # i18n-tasks-use t("activerecord.models.relationship")
+
   MODEL_TO_MODEL_PREDICATES = [
     "adapted_from" # i18n-tasks-use t("activerecord.models.relationships.predicates.adapted_from")
   ]
