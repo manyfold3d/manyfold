@@ -14,6 +14,18 @@ RSpec.describe Role do
     expect(user.has_role?(:batman)).to be false
   end
 
+  context "when printer" do
+    let(:admin) { create(:printer) }
+
+    it "has print permission" do
+      expect(admin.is_printer?).to be true
+    end
+
+    it "doesn't get administrator permission" do
+      expect(admin.is_administrator?).to be false
+    end
+  end
+
   context "when administrator" do
     let(:admin) { create(:admin) }
 

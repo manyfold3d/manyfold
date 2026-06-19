@@ -15,5 +15,9 @@ FactoryBot.define do
     factory :contributor do
       after(:create) { |a| a.add_role :contributor }
     end
+
+    factory :printer do
+      after(:create) { |a| a.add_role :printer }
+    end
   end
 end
