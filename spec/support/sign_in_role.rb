@@ -26,4 +26,9 @@ RSpec.configure do |config|
     @current_user = create(:user)
     sign_in @current_user
   end
+
+  config.before(:each, :as_printer) do
+    @current_user = create(:printer)
+    sign_in @current_user
+  end
 end
