@@ -121,6 +121,10 @@ class User < ApplicationRecord
     listed?(file, :printed)
   end
 
+  def is_printer?
+    has_any_role_of? :printer
+  end
+
   def is_administrator?
     has_any_role_of? :administrator
   end
