@@ -1000,7 +1000,7 @@ en:
     print:
       sent: File sent to printer
     protocols:
-      moonraker: Moonraker / Klipper
+      moonraker: Klipper (Moonraker)
       octoprint: Octoprint
       odyssey: Odyssey
       prusalink: PrusaLink
