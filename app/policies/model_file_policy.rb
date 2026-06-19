@@ -10,10 +10,7 @@ class ModelFilePolicy < ApplicationPolicy
 
   def print?
     all_of(
-      one_of(
-        @user&.is_printer?,
-        @user&.is_administrator?
-      ),
+      @user&.is_printer?,
       none_of(
         SiteSettings.demo_mode_enabled?
       )

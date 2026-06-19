@@ -122,7 +122,7 @@ class User < ApplicationRecord
   end
 
   def is_printer?
-    has_any_role_of? :printer
+    has_any_role_of? :administrator, :printer
   end
 
   def is_administrator?
