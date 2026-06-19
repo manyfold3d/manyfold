@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<PRUSALINK_ENDPOINT>/api/printer"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Manyfold/unknown
+      X-Api-Key:
+      - bad_api_key
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Powered-By:
+      - Express
+      Www-Authenticate:
+      - ApiKey realm="401"
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '254'
+      Etag:
+      - W/"fe-5B4WR9YlBO102M9uQHh/K1b+qKU"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 19 Jun 2026 10:14:16 GMT
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=5
+    body:
+      encoding: UTF-8
+      string: '{"code":"#10405","title":"INVALID API KEY","message":"Please turn on
+        the HTTP digest (which is the recommended security option) or correct the
+        API key. You can find it in Settings > Network > Login credentials.","url":"https://help.prusa3d.com/en/10405"}'
+  recorded_at: Fri, 19 Jun 2026 10:14:16 GMT
+recorded_with: VCR 6.4.0
