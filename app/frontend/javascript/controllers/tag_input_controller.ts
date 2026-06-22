@@ -9,6 +9,8 @@ export default class extends Controller {
   connect (): void {
     this.tomSelect = new TomSelect((this.element as HTMLSelectElement), { // eslint-disable-line no-new
       addPrecedence: true,
+      maxOptions: null,
+      refreshThrottle: 0,
       create: true,
       plugins: ['remove_button'],
       onItemAdd: function () {
