@@ -338,21 +338,25 @@ RSpec.describe Library do
 
     before do
       allow(library).to receive_message_chain(:storage, :bucket, :objects).and_return([ # rubocop:todo RSpec/MessageChain
-        OpenStruct.new(key: "model1/model.stl"),
-        OpenStruct.new(key: "model2/test.png")
+        OpenStruct.new(key: "model/test.png"),
+        OpenStruct.new(key: "model/nope.nope")
       ])
     end
 
     it "mocks object list correctly" do
-      expect(library.storage.bucket.objects.map(&:key)).to include "model2/test.png"
+      expect(library.storage.bucket.objects.map(&:key)).to include "model/test.png"
     end
 
     it "lists available files in storage using simple matcher" do
-      expect(library.list_files("**/*.*")).to include "model2/test.png"
+      expect(library.list_files("**/*.*")).to include "model/test.png", "model/nope.nope"
     end
 
     it "lists available files in storage using full matcher" do
-      expect(library.indexable_files).to include "model2/test.png"
+      expect(library.indexable_files).to include "model/test.png"
+    end
+
+    it "doesn't match unwanted files in storage using full matcher" do
+      expect(library.indexable_files).not_to include "model/nope.nope"
     end
   end
 end
