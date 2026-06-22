@@ -33,6 +33,10 @@ module PathBuilder
 
   def path_component(object)
     return nil if object.nil?
-    (library.safe_folder_names ? object.slug : object.name).first(ApplicationRecord::SAFE_NAME_LENGTH[:maximum])
+    (
+      library.safe_folder_names ?
+      Zaru.sanitize!(object.name).downcase.tr(" ", "-") :
+      Zaru.sanitize!(object.name)
+    ).first(ApplicationRecord::SAFE_NAME_LENGTH[:maximum])
   end
 end
