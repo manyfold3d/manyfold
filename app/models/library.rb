@@ -129,7 +129,7 @@ class Library < ApplicationRecord
       keys = []
       pattern_array = [pattern].flatten
       storage.bucket.objects.each do |object|
-        keys << object.key if pattern_array.any? { |p| File.fnmatch?(p, object.key) }
+        keys << object.key if pattern_array.any? { File.fnmatch?(it, object.key, File::FNM_EXTGLOB) }
       end
       keys
     else
