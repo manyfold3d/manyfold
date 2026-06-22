@@ -93,8 +93,12 @@ class ProcessUploadedFileJob < ApplicationJob
       Archive::Reader.open_filename(archive.path, strip_components: strip) do |reader|
         reader.each_entry do |entry|
           next if !entry.file? || entry.size > SiteSettings.max_file_extract_size
-          next if SiteSettings.ignored_file?(entry.pathname)
-          filename = entry.pathname # Stored because pathname gets mutated by the extract and we want the original
+          filename = begin
+            entry.pathname.encode(Encoding::UTF_8).scrub
+          rescue EncodingError
+            entry.pathname.force_encoding(Encoding::UTF_8).scrub
+          end
+          next if SiteSettings.ignored_file?(filename)
           reader.extract(entry, Archive::EXTRACT_SECURE, destination: tmpdir.to_s)
           new_files << model.model_files.create(filename: filename, attachment: ModelFileUploader.uploaded_file(
             storage: :cache,
