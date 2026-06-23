@@ -86,12 +86,12 @@ es:
         description: Esta tarjeta muestra los problemas detectados en este modelo. Puede cambiar la configuración de visibilidad de problemas en las preferencias de su cuenta.
         title: Problemas
     relationship_fields:
-      delete:
-      edit_related:
-      this_model:
-      type_to_search:
+      delete: Eliminar relación
+      edit_related: Editar el modelo correspondiente
+      this_model: Este modelo
+      type_to_search: Escribe para buscar...
     relationships_form:
-      add:
+      add: Añadir una nueva relación entre modelos
     scan:
       success: Escaneo de modelos iniciado
     show:

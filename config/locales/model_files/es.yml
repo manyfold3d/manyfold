@@ -36,8 +36,8 @@ es:
     general:
       edit: Editar la información del archivo
     print:
-      confirm:
-      link:
+      confirm: "¿Estás seguro de que este archivo está configurado correctamente para tu impresora? ¡Manyfold no comprueba lo que envías!"
+      link: Imprimir utilizando %{print_host_name}
     relationship_fields:
       delete: Eliminar relación
       edit_related: Editar archivo relacionado
@@ -51,7 +51,7 @@ es:
         menu_header: Opciones de Descarga
       notes_heading: Notas
       print_card:
-        heading:
+        heading: Imprimir
     update:
       failure: Se ha producido un error y no se ha podido guardar la información del fichero.
       success: Información del fichero guardada.
