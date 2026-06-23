@@ -36,8 +36,8 @@ de:
     general:
       edit: Dateiinformationen bearbeiten
     print:
-      confirm:
-      link:
+      confirm: Bist du sicher, dass diese Datei korrekt für deinen Drucker eingerichtet ist? Manyfold überprüft nicht, was du sendest!
+      link: Drucken mit %{print_host_name}
     relationship_fields:
       delete: Beziehung entfernen
       edit_related: Zugehörige Datei bearbeiten
@@ -51,7 +51,7 @@ de:
         menu_header: Download optionen
       notes_heading: Notizen
       print_card:
-        heading:
+        heading: Drucken
     update:
       failure: Es ist ein Fehler aufgetreten und die Dateidetails konnten nicht gespeichert werden.
       success: Dateieigenschaften gespeichert.
