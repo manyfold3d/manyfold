@@ -145,6 +145,7 @@ class SiteSettings < RailsSettings::Base
 
   module UserDefaults
     RENDERER = ActiveSupport::HashWithIndifferentAccess.new(
+      auto_load_max_size: 0,
       grid_width: 200,
       grid_depth: 200,
       show_grid: true,
