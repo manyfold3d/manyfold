@@ -19,6 +19,7 @@ RSpec.describe SiteSettings do
       .test/test.stl
       model/@eaDir/test.png/SYNOPHOTO_THUMB_S.png
       model/__MACOSX
+      model/.manyfold/derivatives/test.png/carousel.png
     ].each do |pathname|
       it "ignores `#{pathname}`" do
         expect(described_class.send(:ignored_file?, pathname)).to be true
