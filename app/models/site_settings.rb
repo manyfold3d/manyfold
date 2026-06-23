@@ -93,7 +93,7 @@ class SiteSettings < RailsSettings::Base
 
   def self.ignored_file?(pathname)
     patterns ||= model_ignored_files
-    (File.split(pathname) - ["."]).any? do |path_component|
+    ((pathname.split(File::SEPARATOR) + File.split(pathname)) - ["."]).any? do |path_component|
       patterns.any? { |pattern| path_component =~ pattern.to_regexp }
     end
   end

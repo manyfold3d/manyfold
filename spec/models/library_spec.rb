@@ -339,6 +339,7 @@ RSpec.describe Library do
     before do
       allow(library).to receive_message_chain(:storage, :bucket, :objects).and_return([ # rubocop:todo RSpec/MessageChain
         OpenStruct.new(key: "model/test.png"),
+        OpenStruct.new(key: "model/.manyfold/derivatives/test.png/carousel.png"),
         OpenStruct.new(key: "model/nope.nope")
       ])
     end
@@ -357,6 +358,10 @@ RSpec.describe Library do
 
     it "doesn't match unwanted files in storage using full matcher" do
       expect(library.indexable_files).not_to include "model/nope.nope"
+    end
+
+    it "ignores manyfold-specific hidden files" do
+      expect(library.indexable_files).not_to include "model/.manyfold/derivatives/test.png/carousel.png"
     end
   end
 end
