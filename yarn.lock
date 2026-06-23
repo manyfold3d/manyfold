@@ -4995,14 +4995,14 @@ __metadata:
   linkType: hard
 
 "node-exports-info@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "node-exports-info@npm:1.6.0"
+  version: 1.6.2
+  resolution: "node-exports-info@npm:1.6.2"
   dependencies:
     array.prototype.flatmap: ^1.3.3
     es-errors: ^1.3.0
     object.entries: ^1.1.9
     semver: ^6.3.1
-  checksum: 6bb93ec7ae95717aa2a2c315a5df1f7efa9f0592ee6fcde83256e112db33b59f0942d4188e154e84ec03f9de2d5ea62aa278e2d57b8624f6434168e8d7701e44
+  checksum: d8642f3dc0c03023a0249ab737ab052796b7ae6d51401b49cfcd0c8c41a22dc464e8aeb3207d6d2ea1f3807f37000bc88bcfad111e4ec191d0f9e1eafa768804
   languageName: node
   linkType: hard
 
