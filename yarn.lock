@@ -1458,11 +1458,11 @@ __metadata:
   linkType: hard
 
 "@tybys/wasm-util@npm:^0.10.2":
-  version: 0.10.2
-  resolution: "@tybys/wasm-util@npm:0.10.2"
+  version: 0.10.3
+  resolution: "@tybys/wasm-util@npm:0.10.3"
   dependencies:
     tslib: ^2.4.0
-  checksum: acff4b9d831efcb4292e4c1562accc3921d004e3edba3b2d05f7ab9313f42294d49ff46eacafd93df6f32e0736466d52e435ed0210073d77e826210ea2d31be3
+  checksum: 865f76e01c5834550e634690fa85b21a89cac90d9ef65354e9f7b022582d85f394bf4b8b7710c987dac2b66bb3de37f1d79e28605c3e09b3384ae09a864b5ab6
   languageName: node
   linkType: hard
 
