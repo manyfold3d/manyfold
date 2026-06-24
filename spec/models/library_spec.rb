@@ -285,8 +285,14 @@ RSpec.describe Library do
   end
 
   context "with multiple libraries" do
-    let!(:first_library) { create(:library) }
-    let!(:second_library) { create(:library) }
+    let(:first_library) { create(:library) }
+    let(:second_library) { create(:library) }
+
+    before do
+      # Ensure correct order of creation
+      first_library
+      second_library
+    end
 
     it "uses first library as default if not explicitly set" do
       expect(described_class.default).to eq first_library
