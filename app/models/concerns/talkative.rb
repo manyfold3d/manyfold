@@ -21,10 +21,12 @@ module Talkative
   end
 
   def followable_post_creation_activity
+    return unless SiteSettings.federation_enabled?
     followable_post_activity("Create")
   end
 
   def followable_post_update_activity
+    return unless SiteSettings.federation_enabled?
     followable_post_activity("Update") unless recently_posted?
   end
 
